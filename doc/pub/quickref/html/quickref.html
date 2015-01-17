@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 17, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -907,7 +907,7 @@ commands: format <span class="nb">help </span>sphinx_dir subst replace replace_f
 
 
 <span class="c"># transform doconce file to another format</span>
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
+doconce format html<span class="p">|</span>latex<span class="p">|</span>pdflatex<span class="p">|</span>rst<span class="p">|</span>sphinx<span class="p">|</span>plain<span class="p">|</span>gwiki<span class="p">|</span>mwiki<span class="p">|</span>cwiki<span class="p">|</span>pandoc<span class="p">|</span>st<span class="p">|</span>epytext dofile
 
 <span class="c"># substitute a phrase by another using regular expressions</span>
 doconce subst <span class="o">[</span>-s -m -x --restore<span class="o">]</span> regex-pattern regex-replacement file1 file2 ...
@@ -979,7 +979,7 @@ doconce grab   --from<span class="o">[</span>-<span class="o">]</span> from-text
 doconce remove --from<span class="o">[</span>-<span class="o">]</span> from-text <span class="o">[</span>--to<span class="o">[</span>-<span class="o">]</span> to-text<span class="o">]</span> somefile &gt; result
 
 <span class="c"># list all figure, movie or included code files</span>
-doconce grep FIGURE|MOVIE|CODE dofile
+doconce grep FIGURE<span class="p">|</span>MOVIE<span class="p">|</span>CODE dofile
 
 <span class="c"># run spellcheck on a set of files</span>
 doconce spellcheck <span class="o">[</span>-d .mydict.txt<span class="o">]</span> *.do.txt
@@ -987,7 +987,7 @@ doconce spellcheck <span class="o">[</span>-d .mydict.txt<span class="o">]</span
 <span class="c"># transform ptex2tex files (.p.tex) to ordinary latex file</span>
 <span class="c"># and manage the code environments</span>
 doconce ptex2tex mydoc -DMINTED <span class="nv">pycod</span><span class="o">=</span>minted <span class="nv">sys</span><span class="o">=</span>Verbatim <span class="se">\</span>
-        <span class="nv">dat</span><span class="o">=</span><span class="se">\b</span>egin<span class="o">{</span>quote<span class="o">}</span><span class="se">\b</span>egin<span class="o">{</span>verbatim<span class="o">}</span>;<span class="se">\e</span>nd<span class="o">{</span>verbatim<span class="o">}</span><span class="se">\e</span>nd<span class="o">{</span>quote<span class="o">}</span>
+        <span class="nv">dat</span><span class="o">=</span><span class="se">\b</span>egin<span class="o">{</span>quote<span class="o">}</span><span class="se">\b</span>egin<span class="o">{</span>verbatim<span class="o">}</span><span class="p">;</span><span class="se">\e</span>nd<span class="o">{</span>verbatim<span class="o">}</span><span class="se">\e</span>nd<span class="o">{</span>quote<span class="o">}</span>
 
 <span class="c"># make HTML file via pandoc from Markdown (.md) file</span>
 doconce md2html file.md
@@ -1326,7 +1326,7 @@ examine the DocOnce source and the <tt class="docutils literal"><span class="pre
     </div>
     <div class="footer">
         &copy; Copyright 2015, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

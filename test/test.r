@@ -29799,18 +29799,18 @@ Let's do some copying from files too. First from subroutine up to the very end,
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
-      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
-      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
-      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
-      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
-         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span>i
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> r
+      r = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span>i = <span style="color: #B452CD">1</span>, i
+         r = r + i
       <span style="color: #8B008B; font-weight: bold">end do</span>
 <span style="color: #8B008B; font-weight: bold">      return</span>
-<span style="color: #00688B">C</span>     <span style="color: #00688B">END1</span>
+C     END1
 
-      <span style="color: #8B008B; font-weight: bold">program </span><span style="color: #00688B">testme</span>
-      <span style="color: #8B008B; font-weight: bold">call </span><span style="color: #00688B">test</span>()
+      <span style="color: #8B008B; font-weight: bold">program </span>testme
+      <span style="color: #8B008B; font-weight: bold">call </span>test()
       <span style="color: #8B008B; font-weight: bold">return</span>
 </pre></div>
 </td></tr></table><p>
@@ -29825,12 +29825,12 @@ and then just the subroutine,
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span><span style="color: #00688B">test</span>()
-      <span style="color: #a7a7a7; font-weight: bold">integer </span><span style="color: #00688B">i</span>
-      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> <span style="color: #00688B">r</span>
-      <span style="color: #00688B">r</span> = <span style="color: #B452CD">0</span>
-      <span style="color: #8B008B; font-weight: bold">do </span><span style="color: #00688B">i</span> = <span style="color: #B452CD">1</span>, <span style="color: #00688B">i</span>
-         <span style="color: #00688B">r</span> = <span style="color: #00688B">r</span> + <span style="color: #00688B">i</span>
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
+      <span style="color: #a7a7a7; font-weight: bold">integer </span>i
+      <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> r
+      r = <span style="color: #B452CD">0</span>
+      <span style="color: #8B008B; font-weight: bold">do </span>i = <span style="color: #B452CD">1</span>, i
+         r = r + i
       <span style="color: #8B008B; font-weight: bold">end do</span>
 <span style="color: #8B008B; font-weight: bold">      return</span>
 </pre></div>
@@ -32417,18 +32417,18 @@ Let's do some copying from files too. First from subroutine up to the very end,
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+C     END1
 
-      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
-      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">program </span>testme
+      <span style="color: #008000; font-weight: bold">call </span>test()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -32436,12 +32436,12 @@ and then just the subroutine,
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
@@ -34491,18 +34491,18 @@ Let's do some copying from files too. First from subroutine up to the very end,
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+C     END1
 
-      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
-      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">program </span>testme
+      <span style="color: #008000; font-weight: bold">call </span>test()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -34510,12 +34510,12 @@ and then just the subroutine,
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
@@ -38489,13 +38489,13 @@ And more code:
 ************** File: automake_sphinx_testdoc.py *****************
 #!/usr/bin/env python
 # Autogenerated file (by doconce sphinx_dir).
-# Purpose: create HTML Sphinx version of testdoc.
-
-# Command-line arguments are transferred to the doconce format sphinx file
-# compilation command.
-
+# Purpose: create HTML Sphinx version of document "testdoc".
+#
 # To force compilation of the doconce file to sphinx format, remove
 # the sphinx (.rst) file first.
+# Command-line arguments are transferred to the "doconce format sphinx"
+# compilation command.
+#
 
 import glob, sys, os, commands, shutil
 
@@ -38518,25 +38518,30 @@ def system(cmd, capture_output=False, echo=True):
 
 # Copy generated sphinx files to sphinx root directory
 filename = 'testdoc'
-# Not used: shutil.copy('%s.rst' % filename, sphinx_rootdir)
+rst_text = ''  # holds all text in all .rst files
 for part in ['._testdoc000', '._testdoc001', '._testdoc002']:
     shutil.copy('%s.rst' % part, source_dir)
+    with open('%s.rst' % part, 'r') as rst_file:
+        rst_text += rst_file.read()
 
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
+    destdir = None
     if figdir.startswith('fig'):
         # Figures can be anywhere (copied by sphinx to _images)
         destdir = os.path.join(source_dir, figdir)
     elif figdir.startswith('mov'):
         # Movies must be in _static
-        destdir = os.path.join(source_dir, '_static', figdir)
-    if os.path.isdir(figdir) and not os.path.isdir(destdir):
+        # Copy only the movies if they are needed through local filenames
+        if '"'+ figdir in rst_text or '<' + figdir in rst_text:
+            destdir = os.path.join(source_dir, '_static', figdir)
+    if destdir is not None and os.path.isdir(figdir) and not os.path.isdir(destdir):
         shutil.copytree(figdir, destdir)
         print 'copying', figdir, 'to', destdir
 
-# Copy needed figure files in current dir (not in fig*)
-for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) +                glob.glob(os.path.join(source_dir, '.*.rst')):
+# Copy needed figure files in current dir (not in fig* directories)
+for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.join(source_dir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
@@ -38613,13 +38618,13 @@ google-chrome sphinx-testdoc/_build/html/index.html
 ************** File: automake_sphinx_math_test.py *****************
 #!/usr/bin/env python
 # Autogenerated file (by doconce sphinx_dir).
-# Purpose: create HTML Sphinx version of math_test.
-
-# Command-line arguments are transferred to the doconce format sphinx file
-# compilation command.
-
+# Purpose: create HTML Sphinx version of document "math_test".
+#
 # To force compilation of the doconce file to sphinx format, remove
 # the sphinx (.rst) file first.
+# Command-line arguments are transferred to the "doconce format sphinx"
+# compilation command.
+#
 
 import glob, sys, os, commands, shutil
 
@@ -38657,22 +38662,27 @@ if not os.path.isfile(filename + '.rst'):
 
 # Copy generated sphinx file to sphinx directory
 shutil.copy('%s.rst' % filename, source_dir)
+with open('%s.rst' % filename, 'r') as rst_file:
+    rst_text = rst_file.read()
 
 # Copy figures and movies directories
 figdirs = glob.glob('fig*') + glob.glob('mov*')
 for figdir in figdirs:
+    destdir = None
     if figdir.startswith('fig'):
         # Figures can be anywhere (copied by sphinx to _images)
         destdir = os.path.join(source_dir, figdir)
     elif figdir.startswith('mov'):
         # Movies must be in _static
-        destdir = os.path.join(source_dir, '_static', figdir)
-    if os.path.isdir(figdir) and not os.path.isdir(destdir):
+        # Copy only the movies if they are needed through local filenames
+        if '"'+ figdir in rst_text or '<' + figdir in rst_text:
+            destdir = os.path.join(source_dir, '_static', figdir)
+    if destdir is not None and os.path.isdir(figdir) and not os.path.isdir(destdir):
         shutil.copytree(figdir, destdir)
         print 'copying', figdir, 'to', destdir
 
-# Copy needed figure files in current dir (not in fig*)
-for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) +                glob.glob(os.path.join(source_dir, '.*.rst')):
+# Copy needed figure files in current dir (not in fig* directories)
+for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.join(source_dir, '.*.rst')):
     f = open(rstfile, 'r')
     text = text_orig = f.read()
     f.close()
@@ -41601,18 +41611,18 @@ Let's do some copying from files too. First from subroutine up to the very end,
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+C     END1
 
-      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
-      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">program </span>testme
+      <span style="color: #008000; font-weight: bold">call </span>test()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -41620,12 +41630,12 @@ and then just the subroutine,
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
@@ -52794,7 +52804,7 @@ exercises (and problems and projects too).</p>
     </div>
     <div class="footer">
         &copy; Copyright 2015, hpl.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>
@@ -57783,7 +57793,7 @@ style):
 <!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #00688B">var</span>=10
 <span style="color: #228B22"># $1, $2, ... are command-line args</span>
-<span style="color: #8B008B; font-weight: bold">if</span> [ <span style="color: #00688B">$?</span> -eq 0 ]; <span style="color: #8B008B; font-weight: bold">then</span>   <span style="color: #228B22"># $? reflects success or not</span>
+<span style="color: #8B008B; font-weight: bold">if</span> [ <span style="color: #00688B">$?</span> -eq <span style="color: #B452CD">0</span> ]; <span style="color: #8B008B; font-weight: bold">then</span>   <span style="color: #228B22"># $? reflects success or not</span>
   <span style="color: #658b00">echo</span> <span style="color: #CD5555">&quot;Great!&quot;</span>
 <span style="color: #8B008B; font-weight: bold">fi</span>
 </pre></div>
@@ -58595,7 +58605,7 @@ style):
 <!-- code=bash (!bc shcod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #00688B">var</span>=10
 <span style="color: #228B22"># $1, $2, ... are command-line args</span>
-<span style="color: #8B008B; font-weight: bold">if</span> [ <span style="color: #00688B">$?</span> -eq 0 ]; <span style="color: #8B008B; font-weight: bold">then</span>   <span style="color: #228B22"># $? reflects success or not</span>
+<span style="color: #8B008B; font-weight: bold">if</span> [ <span style="color: #00688B">$?</span> -eq <span style="color: #B452CD">0</span> ]; <span style="color: #8B008B; font-weight: bold">then</span>   <span style="color: #228B22"># $? reflects success or not</span>
   <span style="color: #658b00">echo</span> <span style="color: #CD5555">&quot;Great!&quot;</span>
 <span style="color: #8B008B; font-weight: bold">fi</span>
 </pre></div>
@@ -59058,7 +59068,7 @@ style):
 <!-- code=bash (!bc shcod) typeset with pygments style "emacs" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">var</span><span style="color: #666666">=</span>10
 <span style="color: #008800; font-style: italic"># $1, $2, ... are command-line args</span>
-<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq 0 <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
+<span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #B8860B">$?</span> -eq <span style="color: #666666">0</span> <span style="color: #666666">]</span>; <span style="color: #AA22FF; font-weight: bold">then</span>   <span style="color: #008800; font-style: italic"># $? reflects success or not</span>
   <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Great!&quot;</span>
 <span style="color: #AA22FF; font-weight: bold">fi</span>
 </pre></div>
@@ -70754,7 +70764,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fa681b79848>
+verbatim is to be replaced using <function html_verbatim at 0x7f07db1d71b8>
 
 
 First occurence: " `mako`."
@@ -74715,7 +74725,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jan 12 18:08:59 2015.
+# sphinx-quickstart on Sat Jan 17 04:48:14 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -91538,12 +91548,12 @@ done testdoc.p.tex -> testdoc.tex
 + rm -f '*.aux'
 + system pdflatex -shell-escape testdoc
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -91567,7 +91577,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -91627,75 +91637,113 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
-ioning.code.tex)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
-ws.code.tex
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
-gs.code.tex
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex)))) 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
@@ -91703,34 +91751,14 @@ with amsmath equation tags
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-
+(/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
@@ -91803,7 +91831,7 @@ dmap/pdftex.map}] [2]
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [4])
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=67, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=75, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] [7]
 
@@ -91814,15 +91842,15 @@ dmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=112, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=120, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=124, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=132, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=125, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=133, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -91862,17 +91890,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=161, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=154, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=162, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=155, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=164, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=157, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=165, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=158, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=166, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92136,7 +92164,7 @@ No file testdoc.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -92162,7 +92190,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -92175,9 +92203,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -92191,7 +92219,7 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -92224,24 +92252,26 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
- xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+ xkeyval.sty    2014/05/25 v2.7 package option processing (HA)
+ xkeyval.tex    2014/05/25 v2.7 key=value parser (HA)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
@@ -92249,31 +92279,11 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -92375,12 +92385,12 @@ Output written on testdoc.pdf (27 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -92404,7 +92414,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -92464,75 +92474,113 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
-ioning.code.tex)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
-ws.code.tex
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
-gs.code.tex
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex)))) 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
@@ -92540,34 +92588,14 @@ with amsmath equation tags
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-
+(/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
@@ -92600,15 +92628,15 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=299, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=307, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=352, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=357, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=358, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92648,17 +92676,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=391, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=392, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=393, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=386, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=394, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=387, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=395, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=388, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=396, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -92824,7 +92852,7 @@ No file testdoc.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -92850,7 +92878,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -92863,9 +92891,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -92879,7 +92907,7 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -92912,24 +92940,26 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
- xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+ xkeyval.sty    2014/05/25 v2.7 package option processing (HA)
+ xkeyval.tex    2014/05/25 v2.7 key=value parser (HA)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
@@ -92937,31 +92967,11 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -93060,14 +93070,14 @@ fb>
 Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
-This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
 Scanning input file testdoc.idx....done (7 entries accepted, 0 rejected).
 Sorting entries....done (23 comparisons).
 Generating output file testdoc.ind....done (26 lines written, 0 warnings).
 Output written in testdoc.ind.
 Transcript written in testdoc.ilg.
 + bibtex testdoc
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2014/Debian)
 The top-level auxiliary file: testdoc.aux
 The style file: plain.bst
 Database file #1: papers.bib
@@ -93078,12 +93088,12 @@ Warning--entry type for "Langtangen:85" isn't style-file defined
 Warning--can't use both author and editor fields in Langtangen:95
 (There were 3 warnings)
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -93107,7 +93117,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -93167,75 +93177,113 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
-ioning.code.tex)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
-ws.code.tex
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
-gs.code.tex
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex)))) 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
@@ -93243,34 +93291,14 @@ with amsmath equation tags
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-
+(/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
@@ -93303,15 +93331,15 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=299, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=307, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=352, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=357, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=358, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -93351,17 +93379,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=391, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=392, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=393, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=386, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=394, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=387, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=395, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=388, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=396, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -93527,7 +93555,7 @@ e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -93553,7 +93581,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -93566,9 +93594,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -93582,7 +93610,7 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -93615,24 +93643,26 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
- xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+ xkeyval.sty    2014/05/25 v2.7 package option processing (HA)
+ xkeyval.tex    2014/05/25 v2.7 key=value parser (HA)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
@@ -93640,31 +93670,11 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -93765,12 +93775,12 @@ fb>
 Output written on testdoc.pdf (30 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -93794,7 +93804,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -93854,75 +93864,113 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
-ioning.code.tex)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
-ws.code.tex
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
-gs.code.tex
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex)))) 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
@@ -93930,34 +93978,14 @@ with amsmath equation tags
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-
+(/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
@@ -93990,15 +94018,15 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=299, 64.24pt x 64.24pt>
+<latex_figs/dizzy_face.png, id=307, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=352, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=357, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=358, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94038,17 +94066,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=383, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=391, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=384, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=392, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=385, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=393, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=386, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=394, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=387, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=395, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=388, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=396, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94100,7 +94128,7 @@ e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -94126,7 +94154,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -94139,9 +94167,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -94155,7 +94183,7 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -94188,24 +94216,26 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
- xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+ xkeyval.sty    2014/05/25 v2.7 package option processing (HA)
+ xkeyval.tex    2014/05/25 v2.7 key=value parser (HA)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
@@ -94213,31 +94243,11 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -94340,12 +94350,12 @@ Transcript written on testdoc.log.
 + rm -f testdoc.aux
 + system pdflatex -shell-escape testdoc
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -94369,7 +94379,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -94423,75 +94433,113 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryposit
-ioning.code.tex)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshado
-ws.code.tex
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadin
-gs.code.tex
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex)))) 
 (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
@@ -94499,34 +94547,14 @@ with amsmath equation tags
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-
+(/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
@@ -94611,7 +94639,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./testdoc.out.pyg) (./testdoc.out.pyg)
 
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=239, 64.24pt x 64.24pt>
+(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=247, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
 .png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
 
@@ -94621,15 +94649,15 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=279, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=287, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=296, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=304, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=297, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=305, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94669,17 +94697,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=322, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=330, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=323, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=331, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=332, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=325, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=333, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=326, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=334, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=327, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=335, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94963,7 +94991,7 @@ e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
@@ -94989,16 +95017,16 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
 fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
@@ -95013,7 +95041,7 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -95046,24 +95074,26 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
- xkeyval.sty    2012/10/14 v2.6b package option processing (HA)
- xkeyval.tex    2012/10/14 v2.6b key=value parser (HA)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+ xkeyval.sty    2014/05/25 v2.7 package option processing (HA)
+ xkeyval.tex    2014/05/25 v2.7 key=value parser (HA)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
@@ -95071,31 +95101,11 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -95133,7 +95143,7 @@ newcommands_replace.tex
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
-lstlang1.sty    2013/08/26 1.5b listings language file
+lstlang1.sty    2014/03/04 1.5c listings language file
  testdoc.out.pyg
  testdoc.out.pyg
  testdoc.out.pyg
@@ -95300,19 +95310,19 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
     (also note: some of these automatic fixes may not be what you want)
 
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
-    recommended to be _static/frame_0085.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0085.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
-    recommended to be _static/frame_0100.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0100.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
-    recommended to be _static/frame_0095.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0095.png for sphinx
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
-    recommended to be _static/frame_0090.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0090.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
-    recommended to be _static/frame_0080.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0080.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
-    recommended to be _static/frame_0105.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0105.png for sphinx
 *** warning: hyperlink to URL google.com is to a local file,
     recommended to be _static/google.com for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
@@ -95368,19 +95378,19 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
     (also note: some of these automatic fixes may not be what you want)
 
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0085.png is to a local file,
-    recommended to be _static/frame_0085.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0085.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0100.png is to a local file,
-    recommended to be _static/frame_0100.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0100.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0095.png is to a local file,
-    recommended to be _static/frame_0095.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0095.png for sphinx
 *** warning: hyperlink to URL mailto:hpl@simula.no is to a local file,
     recommended to be _static/mailto:hpl@simula.no for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0090.png is to a local file,
-    recommended to be _static/frame_0090.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0090.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0080.png is to a local file,
-    recommended to be _static/frame_0080.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0080.png for sphinx
 *** warning: hyperlink to URL ../doc/src/manual/mov/wave_frames/frame_0105.png is to a local file,
-    recommended to be _static/frame_0105.png for sphinx
+    recommended to be _static/../doc/src/manual/mov/wave_frames/frame_0105.png for sphinx
 *** warning: hyperlink to URL google.com is to a local file,
     recommended to be _static/google.com for sphinx
 *** warning: hyperlink to URL testdoc.do.txt is to a local file,
@@ -95424,7 +95434,7 @@ testdoc split into
 + system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc
-Welcome to the Sphinx 1.2 quickstart utility.
+Welcome to the Sphinx 1.2.3 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -95434,7 +95444,7 @@ Enter the root path for documentation.
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/N) [n]: 
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
@@ -95457,13 +95467,13 @@ of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
 > Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/N) [n]: 
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/N) [n]: > doctest: automatically test code snippets in doctest blocks (y/N) [n]: > intersphinx: link between Sphinx documentation of different projects (y/N) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/N) [n]: > coverage: checks for documentation coverage (y/N) [n]: > pngmath: include math, rendered as PNG images (y/N) [n]: > mathjax: include math, rendered in the browser by MathJax (y/N) [n]: > ifconfig: conditional inclusion of content based on config values (y/N) [n]: > viewcode: include links to the source code of documented Python objects (y/N) [n]: 
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (Y/n) [y]: > Create Windows command file? (Y/n) [y]: 
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file sphinx-testdoc/conf.py.
 Creating file sphinx-testdoc/index.rst.
 Creating file sphinx-testdoc/Makefile.
@@ -95494,7 +95504,7 @@ or just run it by
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2
+Running Sphinx v1.2.3
 loading pickled environment... not yet created
 building [html]: targets for 4 source files that are out of date
 updating environment: 4 added, 0 changed, 0 removed
@@ -95522,17 +95532,17 @@ writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
-copying extra files... dumping search index... done
+copying extra files... done
+dumping search index... done
 dumping object inventory... done
 build succeeded, 6 warnings.
 
 Build finished. The HTML pages are in _build/html.
-copying movie_demo to sphinx-testdoc/_static/movie_demo
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
 /home/hpl/vc/doconce/test/sphinx-testdoc
 running make clean
 running make html
-Fix generated files: search.html index.html genindex.html ._testdoc002.html ._testdoc001.html ._testdoc000.html 
+Fix generated files: index.html search.html genindex.html ._testdoc002.html ._testdoc000.html ._testdoc001.html 
 
 google-chrome sphinx-testdoc/_build/html/index.html
 
@@ -96058,26 +96068,26 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile slides1.pd
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape slides1
 + pdflatex -shell-escape slides1
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./slides1.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
-(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 
-Document Class: beamer 2012/10/15 development version 3.24 A class for typesett
-ing presentations (rcs-revision 24853e6b98cf)
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
+Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
+cs-revision 332bfd3ce558)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
 
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
 
 
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
@@ -96085,52 +96095,80 @@ ing presentations (rcs-revision 24853e6b98cf)
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
 
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex))) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
@@ -96149,15 +96187,15 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaserequires.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaserequires.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasetranslator.sty
-(/usr/share/texmf/tex/latex/beamer/base/translator/translator.sty
-(/usr/share/texmf/tex/latex/beamer/base/translator/translator-language-mappings
-.tex))) 
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator-language-
+mappings.tex)))
 
 
 
@@ -96169,13 +96207,14 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty
 
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -96184,56 +96223,61 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemedefault.sty
-
-
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemedefault.st
-y)
-(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemedefault.st
-y)
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemedefault.st
-y))) (/home/hpl/texmf/tex/latex/misc/beamerthemeblue_shadow.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemedefault
+.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemedefa
+ult.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemede
+fault.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemede
+fault.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemede
+fault.sty))) (/home/hpl/texmf/tex/latex/misc/beamerthemeblue_shadow.sty
 
 LaTeX Warning: You have requested package `beamerthemeblue_shadow',
                but the package provides `beamerthemeshadow'.
 
 
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemesmoothbars
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesm
+oothbars.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemero
+unded.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemeor
+chid.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemewh
+ale.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesh
+adow.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesp
+lit.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemestru
+cturebold.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty)
-(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemerounded.st
-y)
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeorchid.sty
-)
-
-
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemeshadow.sty
-
-)
-(/usr/share/texmf/tex/latex/beamer/base/themes/font/beamerfontthemestructurebol
-d.sty)) (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfarrows.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfarrows.sty
 
 Package pgfarrows Warning: This package is obsolete. pgf.sty will load arrow ma
 nagement automatically on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfnodes.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfnodes.sty
 
 Package pgfnodes Warning: This package is obsolete. pgf.sty will load node mana
 gement automatically on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfautomata.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfautomata.sty
 
 Package pgfautomata Warning: This package is obsolete. on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfheaps.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfheaps.sty
 
 Package pgfheaps Warning: This package is obsolete. on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfshade.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfshade.sty
 
 Package pgfshade Warning: This package is obsolete. pgf.sty will load shade man
 agement automatically on .
@@ -96264,16 +96308,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+
 Writing index file slides1.idx
 No file slides1.aux.
 *geometry* driver: auto-detecting
@@ -96286,18 +96337,18 @@ No file slides1.aux.
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
-onary/translator-basic-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-bibliograph
-y-dictionary/translator-bibliography-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-environment
--dictionary/translator-environment-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-months-dict
-ionary/translator-months-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-numbers-dic
-tionary/translator-numbers-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-theorem-dic
-tionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
+ic-dictionary/translator-basic-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bib
+liography-dictionary/translator-bibliography-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-env
+ironment-dictionary/translator-environment-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-mon
+ths-dictionary/translator-months-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-num
+bers-dictionary/translator-numbers-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-the
+orem-dictionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
 (./slides1.nav) (./newcommands_bfmath.tex) (./newcommands_replace.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
@@ -96308,7 +96359,7 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 onts/map/pdftex/updmap/pdftex.map}]
 No file slides1.toc.
 (./slides1.vrb
-<../doc/src/manual/fig/wave1D.png, id=38, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=45, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [2 <../doc/src/manual/fig/wave1D.png>]
 (./slides1.vrb) [3] (./slides1.vrb (./slides1.out.pyg
 
@@ -96367,26 +96418,26 @@ slides written to slides1.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape slides1
 + pdflatex -shell-escape slides1
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./slides1.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
-(/usr/share/texmf/tex/latex/beamer/base/beamer.cls
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 
-Document Class: beamer 2012/10/15 development version 3.24 A class for typesett
-ing presentations (rcs-revision 24853e6b98cf)
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasemodes.sty
+Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
+cs-revision 332bfd3ce558)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
 
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaseoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
 
 
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
@@ -96394,52 +96445,80 @@ ing presentations (rcs-revision 24853e6b98cf)
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
 
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex))) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
@@ -96458,15 +96537,15 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaserequires.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaserequires.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasefont.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasetranslator.sty
-(/usr/share/texmf/tex/latex/beamer/base/translator/translator.sty
-(/usr/share/texmf/tex/latex/beamer/base/translator/translator-language-mappings
-.tex))) 
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator-language-
+mappings.tex)))
 
 
 
@@ -96478,13 +96557,14 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasetemplates.sty
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaseauxtemplates.sty
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbaselocalstructure.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty
 
 
-(/usr/share/texmf/tex/latex/beamer/base/beamerbasetheorems.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -96493,56 +96573,61 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/beamer/base/themes/theme/beamerthemedefault.sty
-
-
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemedefault.st
-y)
-(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemedefault.st
-y)
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemedefault.st
-y))) (/home/hpl/texmf/tex/latex/misc/beamerthemeblue_shadow.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/theme/beamerthemedefault
+.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemedefa
+ult.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemede
+fault.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemede
+fault.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemede
+fault.sty))) (/home/hpl/texmf/tex/latex/misc/beamerthemeblue_shadow.sty
 
 LaTeX Warning: You have requested package `beamerthemeblue_shadow',
                but the package provides `beamerthemeshadow'.
 
 
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemesmoothbars
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesm
+oothbars.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/inner/beamerinnerthemero
+unded.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemeor
+chid.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemewh
+ale.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesh
+adow.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/outer/beamerouterthemesp
+lit.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/font/beamerfontthemestru
+cturebold.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty)
-(/usr/share/texmf/tex/latex/beamer/base/themes/inner/beamerinnerthemerounded.st
-y)
-(/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeorchid.sty
-)
-
-
-(/usr/share/texmf/tex/latex/beamer/base/themes/outer/beamerouterthemeshadow.sty
-
-)
-(/usr/share/texmf/tex/latex/beamer/base/themes/font/beamerfontthemestructurebol
-d.sty)) (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfarrows.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfarrows.sty
 
 Package pgfarrows Warning: This package is obsolete. pgf.sty will load arrow ma
 nagement automatically on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfnodes.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfnodes.sty
 
 Package pgfnodes Warning: This package is obsolete. pgf.sty will load node mana
 gement automatically on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfautomata.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfautomata.sty
 
 Package pgfautomata Warning: This package is obsolete. on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfheaps.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfheaps.sty
 
 Package pgfheaps Warning: This package is obsolete. on .
 
-) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfshade.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfshade.sty
 
 Package pgfshade Warning: This package is obsolete. pgf.sty will load shade man
 agement automatically on .
@@ -96573,16 +96658,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))
+
 Writing index file slides1.idx
 (./slides1.aux)
 *geometry* driver: auto-detecting
@@ -96596,18 +96688,18 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./slides1.out) (./slides1.out)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
-onary/translator-basic-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-bibliograph
-y-dictionary/translator-bibliography-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-environment
--dictionary/translator-environment-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-months-dict
-ionary/translator-months-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-numbers-dic
-tionary/translator-numbers-dictionary-English.dict)
-(/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-theorem-dic
-tionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bas
+ic-dictionary/translator-basic-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-bib
+liography-dictionary/translator-bibliography-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-env
+ironment-dictionary/translator-environment-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-mon
+ths-dictionary/translator-months-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-num
+bers-dictionary/translator-numbers-dictionary-English.dict)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-the
+orem-dictionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
 (./slides1.nav) (./newcommands_bfmath.tex) (./newcommands_replace.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
@@ -96616,7 +96708,7 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 (./slides1.vrb 
  [1{/var/lib/texmf/f
 onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
-<../doc/src/manual/fig/wave1D.png, id=61, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=72, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [3 <../doc/src/manual/fig/wave1D.png>]
 (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [4] (./slides1.vrb)
 [5] (./slides1.vrb) [6] (./slides1.vrb (./slides1.out.pyg
@@ -96977,12 +97069,12 @@ output in math_test.p.tex
 
 output in math_test.tex
 + pdflatex math_test
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./math_test.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -97001,7 +97093,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -97095,13 +97187,13 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -97209,7 +97301,7 @@ Not recommended for sphinx output: math environment {eqnarray*}
 output in math_test.rst
 + doconce sphinx_dir dirname=sphinx-rootdir-math math_test
 Making sphinx-rootdir-math
-Welcome to the Sphinx 1.2 quickstart utility.
+Welcome to the Sphinx 1.2.3 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -97219,7 +97311,7 @@ Enter the root path for documentation.
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/N) [n]: 
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
@@ -97242,13 +97334,13 @@ of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
 > Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/N) [n]: 
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/N) [n]: > doctest: automatically test code snippets in doctest blocks (y/N) [n]: > intersphinx: link between Sphinx documentation of different projects (y/N) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/N) [n]: > coverage: checks for documentation coverage (y/N) [n]: > pngmath: include math, rendered as PNG images (y/N) [n]: > mathjax: include math, rendered in the browser by MathJax (y/N) [n]: > ifconfig: conditional inclusion of content based on config values (y/N) [n]: > viewcode: include links to the source code of documented Python objects (y/N) [n]: 
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (Y/n) [y]: > Create Windows command file? (Y/n) [y]: 
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file sphinx-rootdir-math/conf.py.
 Creating file sphinx-rootdir-math/index.rst.
 Creating file sphinx-rootdir-math/Makefile.
@@ -97281,7 +97373,7 @@ or just run it by
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2
+Running Sphinx v1.2.3
 loading pickled environment... not yet created
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -97297,16 +97389,16 @@ writing output... [100%] math_test
 
 writing additional files... (0 module code pages) genindex search
 copying static files... done
-copying extra files... dumping search index... done
+copying extra files... done
+dumping search index... done
 dumping object inventory... done
 build succeeded.
 
 Build finished. The HTML pages are in _build/html.
-copying movie_demo to sphinx-rootdir-math/_static/movie_demo
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
 running make clean
 running make html
-Fix generated files: search.html index.html math_test.html genindex.html 
+Fix generated files: index.html search.html genindex.html math_test.html 
 
 google-chrome sphinx-rootdir-math/_build/html/index.html
 
@@ -97365,12 +97457,12 @@ output in admon.tex
 + cp admon.tex admon_colors1.tex
 + system pdflatex -shell-escape admon_colors1
 + pdflatex -shell-escape admon_colors1
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_colors1.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -97389,7 +97481,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -97541,10 +97633,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -97564,7 +97656,7 @@ admon_colors1.w18
 admon_colors1.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -97719,12 +97811,12 @@ output in admon.tex
 + cp admon.tex admon_mdfbox.tex
 + system pdflatex -shell-escape admon_mdfbox
 + pdflatex -shell-escape admon_mdfbox
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_mdfbox.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -97743,7 +97835,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -97798,94 +97890,111 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file admon_mdfbox.idx
 No file admon_mdfbox.aux.
 
@@ -98008,10 +98117,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -98031,7 +98140,7 @@ admon_mdfbox.w18
 admon_mdfbox.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -98066,51 +98175,33 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
@@ -98211,12 +98302,12 @@ output in admon.tex
 + cp admon.tex admon_paragraph.tex
 + system pdflatex -shell-escape admon_paragraph
 + pdflatex -shell-escape admon_paragraph
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_paragraph.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -98235,7 +98326,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -98290,94 +98381,111 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file admon_paragraph.idx
 No file admon_paragraph.aux.
 
@@ -98431,10 +98539,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -98454,7 +98562,7 @@ admon_paragraph.w18
 admon_paragraph.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -98489,51 +98597,33 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
@@ -98630,12 +98720,12 @@ output in admon.tex
 + cp admon.tex admon_graybox2.tex
 + system pdflatex -shell-escape admon_graybox2
 + pdflatex -shell-escape admon_graybox2
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_graybox2.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -98654,7 +98744,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -98710,94 +98800,111 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file admon_graybox2.idx
 No file admon_graybox2.aux.
 
@@ -98916,10 +99023,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -98939,7 +99046,7 @@ admon_graybox2.w18
 admon_graybox2.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -98975,51 +99082,33 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
@@ -99116,12 +99205,12 @@ output in admon.tex
 + cp admon.tex admon_yellowicon.tex
 + system pdflatex -shell-escape admon_yellowicon
 + pdflatex -shell-escape admon_yellowicon
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_yellowicon.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -99140,7 +99229,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -99265,10 +99354,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -99288,7 +99377,7 @@ admon_yellowicon.w18
 admon_yellowicon.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -99429,12 +99518,12 @@ output in admon.tex
 + cp admon.tex admon_grayicon.tex
 + system pdflatex -shell-escape admon_grayicon
 + pdflatex -shell-escape admon_grayicon
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_grayicon.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -99453,7 +99542,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -99576,10 +99665,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -99599,7 +99688,7 @@ admon_grayicon.w18
 admon_grayicon.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -99740,12 +99829,12 @@ output in admon.tex
 + cp admon.tex admon_colors2.tex
 + system pdflatex -shell-escape admon_colors2
 + pdflatex -shell-escape admon_colors2
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_colors2.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -99764,7 +99853,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -99884,10 +99973,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
@@ -99907,7 +99996,7 @@ admon_colors2.w18
 admon_colors2.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -100172,7 +100261,7 @@ output in admon.html
 + system doconce sphinx_dir dirname=tmp_admon admon
 + doconce sphinx_dir dirname=tmp_admon admon
 Making tmp_admon
-Welcome to the Sphinx 1.2 quickstart utility.
+Welcome to the Sphinx 1.2.3 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -100182,7 +100271,7 @@ Enter the root path for documentation.
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/N) [n]: 
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
@@ -100205,13 +100294,13 @@ of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
 > Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/N) [n]: 
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/N) [n]: > doctest: automatically test code snippets in doctest blocks (y/N) [n]: > intersphinx: link between Sphinx documentation of different projects (y/N) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/N) [n]: > coverage: checks for documentation coverage (y/N) [n]: > pngmath: include math, rendered as PNG images (y/N) [n]: > mathjax: include math, rendered in the browser by MathJax (y/N) [n]: > ifconfig: conditional inclusion of content based on config values (y/N) [n]: > viewcode: include links to the source code of documented Python objects (y/N) [n]: 
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (Y/n) [y]: > Create Windows command file? (Y/n) [y]: 
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file tmp_admon/conf.py.
 Creating file tmp_admon/index.rst.
 Creating file tmp_admon/Makefile.
@@ -100253,7 +100342,7 @@ output in admon.rst
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2
+Running Sphinx v1.2.3
 loading pickled environment... not yet created
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -100271,7 +100360,8 @@ writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
 copying static files... done
-copying extra files... dumping search index... done
+copying extra files... done
+dumping search index... done
 dumping object inventory... done
 build succeeded.
 
@@ -100279,12 +100369,11 @@ Build finished. The HTML pages are in _build/html.
 doconce format sphinx admon 
 running doconce format sphinx admon 
 running doconce guess_encoding admon.rst
-copying movie_demo to tmp_admon/_static/movie_demo
 copying ../doc/src/manual/fig/wave1D.png to tmp_admon
 /home/hpl/vc/doconce/test/tmp_admon
 running make clean
 running make html
-Fix generated files: search.html index.html genindex.html admon.html 
+Fix generated files: index.html search.html genindex.html admon.html 
 
 google-chrome tmp_admon/_build/html/index.html
 
@@ -100391,12 +100480,12 @@ output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
 + pdflatex movies
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -100415,7 +100504,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -100430,28 +100519,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
@@ -100463,74 +100531,122 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 )) 
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/atenddvi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-lastpage.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
-
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -100545,7 +100661,6 @@ hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -100578,178 +100693,179 @@ ABD: EveryShipout initializing macros
 
 
 *************************************************
-* media9 warning: "zero size"
+* media9 warning: "zero height"
 * 
-* Media annotation on line 162 has zero
-* size in at least one dimension.
+* Media annotation on line 162 has zero height.
 * 
-* Provide a poster text with non-zero width and
-* height, or specify a suitable size via `width'
-* and `height' options.
+* Provide a poster text with non-zero height or
+* set a valid height using one of `height' or
+* `totalheight' options.
 *************************************************
 <<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
 *************************************************
-* media9 warning: "zero size"
+* media9 warning: "zero height"
 * 
-* Media annotation on line 189 has zero
-* size in at least one dimension.
+* Media annotation on line 189 has zero height.
 * 
-* Provide a poster text with non-zero width and
-* height, or specify a suitable size via `width'
-* and `height' options.
+* Provide a poster text with non-zero height or
+* set a valid height using one of `height' or
+* `totalheight' options.
 *************************************************
 <<../doc/src/manual/mov/wave.flv>>
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=42, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=48, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=53, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=63, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=68, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=73, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=78, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
-mov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
-mov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
-mov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
-mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=83, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
+ov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=88, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
+ov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=93, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
+ov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=98, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
+ov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=103, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=108, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=113, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=118, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=123, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=133, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=148, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=153, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=168, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=173, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=178, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=183, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=188, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=193, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=203, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=208, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=213, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=218, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=228, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=238, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=243, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=248, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=253, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=258, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=263, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=273, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=283, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=288, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
-mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
+mov/wave_frames/frame_0129.png> <a0,fr49>
+
+
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (81.58096pt too wide) 
  []\T1/lmr/m/n/10 (-20) : 
 [2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
@@ -100758,6 +100874,7 @@ Overfull \hbox (81.58096pt too wide)
 
 
 No file movies.ind.
+[5]
 *************************************************
 * media9 warning: "rerun"
 * 
@@ -100768,7 +100885,11 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[5] (./movies.aux)
+(./movies.aux
+
+Package atenddvi Warning: Rerun LaTeX, last page not yet found.
+
+)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -100793,80 +100914,72 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/07/24 v4576 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+ l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
+l3tl-build.sty    2014/05/06 v4745 L3 Experimental token list construction
+l3tl-analysis.sty    2014/05/06 v4745 L3 Experimental token lists analysis
+   l3str.sty    2014/05/26 v4889 L3 Experimental strings
+  l3flag.sty    2014/05/06 v4745 L3 Experimental flags
+l3str-convert.sty    2014/06/03 v5028 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+l3keys2e.sty    2014/06/10 v5105 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+zref-lastpage.sty    2012/04/04 v2.24 Module lastpage for zref (HO)
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
- animate.sty    2014/02/11 PDF animations from files and inline graphics
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ animate.sty    2014/07/02 PDF animations from files and inline graphics
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -100878,10 +100991,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
@@ -100889,11 +100998,9 @@ uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
 letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -100993,12 +101100,12 @@ Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
 + pdflatex movies
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -101017,7 +101124,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -101032,28 +101139,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
@@ -101065,74 +101151,122 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 )) 
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/atenddvi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-lastpage.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
-
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -101147,7 +101281,6 @@ hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -101179,175 +101312,173 @@ ABD: EveryShipout initializing macros
 
 
 *************************************************
-* media9 warning: "zero size"
+* media9 warning: "zero height"
 * 
-* Media annotation on line 162 has zero
-* size in at least one dimension.
+* Media annotation on line 162 has zero height.
 * 
-* Provide a poster text with non-zero width and
-* height, or specify a suitable size via `width'
-* and `height' options.
+* Provide a poster text with non-zero height or
+* set a valid height using one of `height' or
+* `totalheight' options.
 *************************************************
 <<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
 *************************************************
-* media9 warning: "zero size"
+* media9 warning: "zero height"
 * 
-* Media annotation on line 189 has zero
-* size in at least one dimension.
+* Media annotation on line 189 has zero height.
 * 
-* Provide a poster text with non-zero width and
-* height, or specify a suitable size via `width'
-* and `height' options.
+* Provide a poster text with non-zero height or
+* set a valid height using one of `height' or
+* `totalheight' options.
 *************************************************
 <<../doc/src/manual/mov/wave.flv>>
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=42, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=48, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=53, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=63, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=68, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=73, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=78, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
-mov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
-mov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
-mov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
-mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=83, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
+ov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=88, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
+ov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=93, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
+ov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=98, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
+ov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=103, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=108, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=113, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=118, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=123, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=133, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=148, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=153, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=168, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=173, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=178, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=183, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=188, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=193, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=203, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=208, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=213, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=218, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=228, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=238, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=243, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=248, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=253, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=258, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=263, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=273, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=283, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=288, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -101356,12 +101487,13 @@ Overfull \hbox (81.58096pt too wide)
 [2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
 ]
 No file movies.ind.
+[5]
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Rerun to get object references right! @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[5] (./movies.aux)
+(./movies.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -101386,80 +101518,72 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/07/24 v4576 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+ l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
+l3tl-build.sty    2014/05/06 v4745 L3 Experimental token list construction
+l3tl-analysis.sty    2014/05/06 v4745 L3 Experimental token lists analysis
+   l3str.sty    2014/05/26 v4889 L3 Experimental strings
+  l3flag.sty    2014/05/06 v4745 L3 Experimental flags
+l3str-convert.sty    2014/06/03 v5028 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+l3keys2e.sty    2014/06/10 v5105 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+zref-lastpage.sty    2012/04/04 v2.24 Module lastpage for zref (HO)
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
- animate.sty    2014/02/11 PDF animations from files and inline graphics
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ animate.sty    2014/07/02 PDF animations from files and inline graphics
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -101471,10 +101595,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
@@ -101482,11 +101602,9 @@ uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
 letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -101594,12 +101712,12 @@ output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
 + pdflatex movies
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -101618,7 +101736,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -101633,28 +101751,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
@@ -101666,74 +101763,122 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 )) 
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
 
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/atenddvi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-lastpage.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
-
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -101748,7 +101893,6 @@ hs.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -101780,175 +101924,173 @@ ABD: EveryShipout initializing macros
 
 
 *************************************************
-* media9 warning: "zero size"
+* media9 warning: "zero height"
 * 
-* Media annotation on line 162 has zero
-* size in at least one dimension.
+* Media annotation on line 162 has zero height.
 * 
-* Provide a poster text with non-zero width and
-* height, or specify a suitable size via `width'
-* and `height' options.
+* Provide a poster text with non-zero height or
+* set a valid height using one of `height' or
+* `totalheight' options.
 *************************************************
 <<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
 *************************************************
-* media9 warning: "zero size"
+* media9 warning: "zero height"
 * 
-* Media annotation on line 189 has zero
-* size in at least one dimension.
+* Media annotation on line 189 has zero height.
 * 
-* Provide a poster text with non-zero width and
-* height, or specify a suitable size via `width'
-* and `height' options.
+* Provide a poster text with non-zero height or
+* set a valid height using one of `height' or
+* `totalheight' options.
 *************************************************
 <<../doc/src/manual/mov/wave.flv>>
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=43, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=42, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=51, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=48, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=58, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=53, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=65, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=58, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=72, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=63, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=79, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=68, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=86, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=73, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=93, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=78, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=100, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/
-mov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=107, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/
-mov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=114, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
-mov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=121, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
-mov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=128, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=83, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
+ov/wave_frames/frame_0088.png> <a0,fr8>
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=88, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
+ov/wave_frames/frame_0089.png> <a0,fr9>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=93, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
+ov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=98, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
+ov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=103, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=135, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=108, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=142, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=113, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=149, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=118, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=156, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=123, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=170, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=133, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=177, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=138, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=184, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=191, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=148, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=198, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=153, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=205, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=212, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=219, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=168, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=226, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=173, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=233, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=178, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=240, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=183, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=247, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=188, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=254, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=193, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=261, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=198, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=268, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=203, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=275, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=208, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=282, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=213, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=289, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=218, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=296, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=303, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=228, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=310, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=233, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=317, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=238, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=324, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=243, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=331, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=248, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=338, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=253, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=346, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=258, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=353, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=263, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=360, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=268, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=367, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=273, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=374, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=381, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=283, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=388, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=288, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -101982,80 +102124,72 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  media9.sty    2014/02/06 v0.39 acrobat-9/X compatible media
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
-   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
- l3regex.sty    2013/12/14 v4623 L3 Experimental regular expressions
-l3tl-build.sty    2011/12/08 v3039 L3 Experimental token list construction
-l3tl-analysis.sty    2011/12/08 v3039 L3 Experimental token lists analysis
-   l3str.sty    2013/07/24 v4576 L3 Experimental strings
-  l3flag.sty    2011/12/08 v3039 L3 Experimental flags
-l3str-convert.sty    2013/01/08 v4339 L3 Experimental string encoding conversio
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+ l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
+l3tl-build.sty    2014/05/06 v4745 L3 Experimental token list construction
+l3tl-analysis.sty    2014/05/06 v4745 L3 Experimental token lists analysis
+   l3str.sty    2014/05/26 v4889 L3 Experimental strings
+  l3flag.sty    2014/05/06 v4745 L3 Experimental flags
+l3str-convert.sty    2014/06/03 v5028 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2013/12/31 v4634 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
+l3keys2e.sty    2014/06/10 v5105 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+zref-lastpage.sty    2012/04/04 v2.24 Module lastpage for zref (HO)
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
  movie15.sty    2009/07/07
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
- animate.sty    2014/02/11 PDF animations from files and inline graphics
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+ animate.sty    2014/07/02 PDF animations from files and inline graphics
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -102067,10 +102201,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
@@ -102078,11 +102208,9 @@ uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
 letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -102191,12 +102319,12 @@ output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
 + pdflatex movies
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -102215,7 +102343,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -102235,6 +102363,17 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/atenddvi.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-lastpage.sty
+
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -102252,7 +102391,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -102286,154 +102424,157 @@ No file movies.aux.
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=19, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=27, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=25, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=34, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=30, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=41, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=35, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=40, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=45, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=62, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=50, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=69, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=55, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=76, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=60, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
 ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=65, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
 ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=90, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=70, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
 ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=97, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=75, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
 ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=104, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
-mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=111, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
-mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=118, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
-mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=125, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
-mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=132, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=80, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/m
+ov/wave_frames/frame_0092.png> <a0,fr12>
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=85, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/m
+ov/wave_frames/frame_0093.png> <a0,fr13>
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=90, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/m
+ov/wave_frames/frame_0094.png> <a0,fr14>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=95, 586.8324pt x 442.2924
+pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/m
+ov/wave_frames/frame_0095.png> <a0,fr15>
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=100, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=139, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=105, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=146, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=110, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=115, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=120, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=167, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=125, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=174, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=130, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=135, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=145, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=202, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=150, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=209, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=155, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=216, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=160, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=165, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=237, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=175, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=244, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=180, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=251, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=185, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=190, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=195, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=272, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=200, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=279, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=286, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=210, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=293, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=215, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=300, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=220, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=307, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=225, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=314, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=230, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=321, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=235, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=328, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=240, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=335, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=245, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=342, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=250, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=349, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=255, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=356, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=260, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=363, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=265, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
-mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
+mov/wave_frames/frame_0129.png> <a0,fr49>
+
+
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Overfull \hbox (81.58096pt too wide) 
  []\T1/lmr/m/n/10 (-20) : 
 [2]
@@ -102441,7 +102582,11 @@ Overfull \hbox (81.58096pt too wide)
 
 
 No file movies.ind.
-[3] (./movies.aux)
+[3] (./movies.aux
+
+Package atenddvi Warning: Rerun LaTeX, last page not yet found.
+
+)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -102466,26 +102611,37 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
- animate.sty    2014/02/11 PDF animations from files and inline graphics
+ animate.sty    2014/07/02 PDF animations from files and inline graphics
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+zref-lastpage.sty    2012/04/04 v2.24 Module lastpage for zref (HO)
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -102497,10 +102653,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
@@ -102508,12 +102660,9 @@ uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
 letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
  hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
 xcolor-patch.sty    2011/01/30 xcolor patch
-atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
- auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -102701,12 +102850,12 @@ done Springer_T2_book.p.tex -> Springer_T2_book.tex
 + rm -rf Springer_T2_book.aux Springer_T2_book.ind Springer_T2_book.idx Springer_T2_book.bbl Springer_T2_book.toc Springer_T2_book.loe
 + system pdflatex Springer_T2_book
 + pdflatex Springer_T2_book
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Springer_T2_book.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -102775,7 +102924,7 @@ See the caption package documentation for explanation.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 
 
@@ -102813,94 +102962,111 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file Springer_T2_book.idx
 
 LaTeX Warning: Unused global option(s):
@@ -103061,12 +103227,12 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
     t2do.sty    
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -103080,9 +103246,9 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+tabularx.sty    2014/05/13 v2.10 `tabularx' package (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
@@ -103107,9 +103273,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
@@ -103145,51 +103311,33 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
@@ -103256,14 +103404,14 @@ Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system bibtex Springer_T2_book
 + bibtex Springer_T2_book
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2014/Debian)
 The top-level auxiliary file: Springer_T2_book.aux
 The style file: plain.bst
 Database file #1: papers.bib
 + '[' 0 -ne 0 ']'
 + system makeindex Springer_T2_book
 + makeindex Springer_T2_book
-This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
 Scanning input file Springer_T2_book.idx....done (22 entries accepted, 0 rejected).
 Sorting entries....done (100 comparisons).
 Generating output file Springer_T2_book.ind....done (46 lines written, 0 warnings).
@@ -103272,12 +103420,12 @@ Transcript written in Springer_T2_book.ilg.
 + '[' 0 -ne 0 ']'
 + system pdflatex Springer_T2_book
 + pdflatex Springer_T2_book
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Springer_T2_book.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -103346,7 +103494,7 @@ See the caption package documentation for explanation.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 
 
@@ -103384,94 +103532,111 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file Springer_T2_book.idx
 
 LaTeX Warning: Unused global option(s):
@@ -103622,12 +103787,12 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
     t2do.sty    
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -103641,9 +103806,9 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+tabularx.sty    2014/05/13 v2.10 `tabularx' package (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
@@ -103668,9 +103833,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
@@ -103706,51 +103871,33 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
@@ -103821,12 +103968,12 @@ Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex Springer_T2_book
 + pdflatex Springer_T2_book
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Springer_T2_book.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -103895,7 +104042,7 @@ See the caption package documentation for explanation.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 
 
@@ -103933,94 +104080,111 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file Springer_T2_book.idx
 
 LaTeX Warning: Unused global option(s):
@@ -104150,12 +104314,12 @@ infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
     t2do.sty    
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -104169,9 +104333,9 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    1999/01/07 v2.07 `tabularx' package (DPC)
+tabularx.sty    2014/05/13 v2.10 `tabularx' package (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2011/06/27 v1.7a multicolumn formatting (FMi)
+multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
@@ -104196,9 +104360,9 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2013/08/26 1.5b (Carsten Heinz)
- lstmisc.sty    2013/08/26 1.5b (Carsten Heinz)
-listings.cfg    2013/08/26 1.5b listings configuration
+listings.sty    2014/03/04 1.5c (Carsten Heinz)
+ lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
+listings.cfg    2014/03/04 1.5c listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
@@ -104234,51 +104398,33 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
@@ -104600,7 +104746,7 @@ replacing wave1D width by wave1D,  width in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 *** warning: hyperlink to URL ../lib/doconce/doconce.py is to a local file,
-    recommended to be _static/doconce.py for sphinx
+    recommended to be _static/../lib/doconce/doconce.py for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
@@ -104613,7 +104759,7 @@ replacing doc/manual by doc/src/manual in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 *** warning: hyperlink to URL ../lib/doconce/doconce.py is to a local file,
-    recommended to be _static/doconce.py for sphinx
+    recommended to be _static/../lib/doconce/doconce.py for sphinx
     move linked file to _static and change URLs unless
     you really know that the links will be correct when the
     sphinx build directory is moved to its final destination
@@ -104836,12 +104982,12 @@ output in quickref.tex
 + '[' 0 -ne 0 ']'
 + system latex -shell-escape quickref.tex
 + latex -shell-escape quickref.tex
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -104865,7 +105011,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -104901,97 +105047,114 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postsc
+ript.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file quickref.idx
 No file quickref.aux.
 
@@ -105080,16 +105243,16 @@ No file quickref.ind.
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+   dvips.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-dvipsnam.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+dvipsnam.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -105109,7 +105272,7 @@ microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -105151,55 +105314,37 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+mdframed.sty    2014/05/30 2.0: mdframed
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+ l3dvips.def    2014/05/06 v4748 L3 Experimental driver: dvips
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -105234,12 +105379,12 @@ Output written on quickref.dvi (20 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + latex -shell-escape quickref.tex
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -105263,7 +105408,7 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 
@@ -105299,97 +105444,114 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3names.sty
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
-(/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfrcs.sty
-
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfutil-latex.def
-
-
-(/usr/share/texmf/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texmf/tex/latex/pgf/systemlayer/pgfsys.sty
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys.code.tex
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
-(/usr/share/texmf/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postsc
+ript.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
 
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcore.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 
-(/usr/share/texmf/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
-
-
-
-
-
-
-
-
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
-
-
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-1.mdf
-))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
+)
 Writing index file quickref.idx
 (./quickref.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -105453,16 +105615,16 @@ No file quickref.ind.
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-   dvips.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+   dvips.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-dvipsnam.def    1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+dvipsnam.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -105482,7 +105644,7 @@ microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
-inputenc.sty    2008/03/30 v1.1d Input encoding file
+inputenc.sty    2014/04/30 v1.2b Input encoding file
     utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
    t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
   ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
@@ -105524,55 +105686,37 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2013/12/31 v4634 L3 Experimental document command parser
-   expl3.sty    2014/01/07 v4646 L3 Experimental code bundle wrapper
- l3names.sty    2014/01/04 v4640 L3 Namespace for primitives
-l3bootstrap.sty    2014/01/04 v4640 L3 Experimental bootstrap code
+mdframed.sty    2014/05/30 2.0: mdframed
+  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3basics.sty    2014/01/04 v4642 L3 Basic definitions
- l3expan.sty    2014/01/04 v4642 L3 Argument expansion
-    l3tl.sty    2013/12/27 v4625 L3 Token lists
-   l3seq.sty    2013/12/14 v4623 L3 Sequences and stacks
-   l3int.sty    2013/08/02 v4583 L3 Integers
- l3quark.sty    2013/12/14 v4623 L3 Quarks
-   l3prg.sty    2014/01/04 v4642 L3 Control structures
- l3clist.sty    2013/07/28 v4581 L3 Comma separated lists
- l3token.sty    2013/08/25 v4587 L3 Experimental token manipulation
-  l3prop.sty    2013/12/14 v4623 L3 Property lists
-   l3msg.sty    2013/07/28 v4581 L3 Messages
-  l3file.sty    2013/10/13 v4596 L3 File and I/O operations
-  l3skip.sty    2013/07/28 v4581 L3 Dimensions and skips
-  l3keys.sty    2013/12/08 v4614 L3 Experimental key-value interfaces
-    l3fp.sty    2014/01/04 v4642 L3 Floating points
-   l3box.sty    2013/07/28 v4581 L3 Experimental boxes
-l3coffins.sty    2013/12/14 v4624 L3 Coffin code layer
- l3color.sty    2012/08/29 v4156 L3 Experimental color support
-l3luatex.sty    2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-l3candidates.sty    2014/01/06 v4643 L3 Experimental additions to l3kernel
+ l3dvips.def    2014/05/06 v4748 L3 Experimental driver: dvips
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
-    tikz.sty    2010/10/13 v2.10 (rcs-revision 1.76)
-     pgf.sty    2008/01/15 v2.10 (rcs-revision 1.12)
-  pgfrcs.sty    2010/10/25 v2.10 (rcs-revision 1.24)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
- pgfcore.sty    2010/04/11 v2.10 (rcs-revision 1.7)
-  pgfsys.sty    2010/06/30 v2.10 (rcs-revision 1.37)
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
-pgfsyssoftpath.code.tex    2008/07/18  (rcs-revision 1.7)
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
 pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
  pgfcore.code.tex
-pgfcomp-version-0-65.sty    2007/07/03 v2.10 (rcs-revision 1.7)
-pgfcomp-version-1-18.sty    2007/07/23 v2.10 (rcs-revision 1.1)
-  pgffor.sty    2010/03/23 v2.10 (rcs-revision 1.18)
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
  pgfkeys.sty    
  pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -105616,7 +105760,7 @@ output in quickref.rst
 + system doconce sphinx_dir author=HPL version=0.7 quickref
 + doconce sphinx_dir author=HPL version=0.7 quickref
 Making sphinx-rootdir
-Welcome to the Sphinx 1.2 quickstart utility.
+Welcome to the Sphinx 1.2.3 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -105626,7 +105770,7 @@ Enter the root path for documentation.
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/N) [n]: 
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
@@ -105649,13 +105793,13 @@ of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
 > Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/N) [n]: 
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/N) [n]: > doctest: automatically test code snippets in doctest blocks (y/N) [n]: > intersphinx: link between Sphinx documentation of different projects (y/N) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/N) [n]: > coverage: checks for documentation coverage (y/N) [n]: > pngmath: include math, rendered as PNG images (y/N) [n]: > mathjax: include math, rendered in the browser by MathJax (y/N) [n]: > ifconfig: conditional inclusion of content based on config values (y/N) [n]: > viewcode: include links to the source code of documented Python objects (y/N) [n]: 
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (Y/n) [y]: > Create Windows command file? (Y/n) [y]: 
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file sphinx-rootdir/conf.py.
 Creating file sphinx-rootdir/index.rst.
 Creating file sphinx-rootdir/Makefile.
@@ -105689,7 +105833,7 @@ replacing doconce format sphinx %s by doconce format sphinx %s --no-preprocess i
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
-Running Sphinx v1.2
+Running Sphinx v1.2.3
 loading pickled environment... not yet created
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -105705,7 +105849,8 @@ writing output... [100%] quickref
 
 writing additional files... (0 module code pages) genindex search
 copying static files... done
-copying extra files... dumping search index... done
+copying extra files... done
+dumping search index... done
 dumping object inventory... done
 build succeeded.
 
@@ -105713,7 +105858,7 @@ Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
 running make clean
 running make html
-Fix generated files: search.html index.html quickref.html genindex.html 
+Fix generated files: index.html search.html genindex.html quickref.html 
 
 google-chrome sphinx-rootdir/_build/html/index.html
 
@@ -105732,12 +105877,12 @@ output in quickref.rst
 + rst2latex.py quickref.rst
 + system latex quickref.rst.tex
 + latex quickref.rst.tex
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
  restricted \write18 enabled.
 entering extended mode
 (./quickref.rst.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
@@ -106253,12 +106398,12 @@ Output written on quickref.rst.dvi (20 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
  restricted \write18 enabled.
 entering extended mode
 (./quickref.rst.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 

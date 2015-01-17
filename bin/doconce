@@ -425,7 +425,7 @@ if not os.path.isfile(filename + '.rst'):
 
 # Copy generated sphinx file to sphinx directory
 shutil.copy('%%s.rst' %% filename, source_dir)
-with open('%%s.rst' %% part, 'r') as rst_file:
+with open('%%s.rst' %% filename, 'r') as rst_file:
     rst_text = rst_file.read()
 ''' % vars())
     else:
