@@ -1289,7 +1289,9 @@ pdftk, pdfnup and pdfcrop.
 Images are combined with two each row, by default, but
 doconce combine_images -3 ... gives 3 images in each row.
 The first command-line argument can be a file extension and
-the filenames can then be given without extension.
+the filenames can then be given without extension:
+
+doconce combine_images pdf -2 u1 u2 u12
 """
 
 def combine_images():

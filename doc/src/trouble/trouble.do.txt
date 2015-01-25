@@ -35,6 +35,11 @@ Terminal> git commit -am updates
 Terminal> git push origin gh-pages
 !ec
 
+===== GitHub gh-pages will not display files =====
+
+A common error is to link to addresses starting with `https//github.com`
+rather than the required `http://username.github.io/`.
+
 ===== A newline in equations (double backslash) becomes single backslash and eats up spaces =====
 
 This is a problem with the Mako preprocessor and files that have beed
