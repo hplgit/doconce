@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 29, 2014</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 25, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -100,6 +100,23 @@ can go wrong.</p>
 </div>
 <div class="section" id="general-problems">
 <h2>General Problems<a class="headerlink" href="#general-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">
+<h3>GitHub gh-pages will not display files starting with a dot or underscore<a class="headerlink" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore" title="Permalink to this headline">¶</a></h3>
+<p>This is a typical problem related to publishing either splitted HTML documents
+or Sphinx versions of documents on GitHub, using a gh-pages branch.
+Filenames starting with a dot (as in <tt class="docutils literal"><span class="pre">._mydoc001.html</span></tt>) or located in
+a directory whose name starts with an underscore (as in <tt class="docutils literal"><span class="pre">spninx/_static</span></tt>)
+will not be properly shown in HTML if not the root directory of the
+gh-pages branch contains a file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt>. This file can be empty.
+A typical fix is</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout gh-pages
+Terminal&gt; touch .nojekyll
+Terminal&gt; git add .nojekyll
+Terminal&gt; git commit -am updates
+Terminal&gt; git push origin gh-pages
+</pre></div>
+</div>
+</div>
 <div class="section" id="a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">
 <h3>A newline in equations (double backslash) becomes single backslash and eats up spaces<a class="headerlink" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces" title="Permalink to this headline">¶</a></h3>
 <p>This is a problem with the Mako preprocessor and files that have beed
@@ -943,6 +960,11 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 </div>
 <div class="section" id="problems-with-reveal-deck-html5-slides">
 <h2>Problems with reveal/deck HTML5 slides<a class="headerlink" href="#problems-with-reveal-deck-html5-slides" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-online-tutor-code-does-not-work-in-reveal">
+<h3>Python Online Tutor code does not work in reveal<a class="headerlink" href="#python-online-tutor-code-does-not-work-in-reveal" title="Permalink to this headline">¶</a></h3>
+<p>Use the Chrome browser (the code does not work in Firefox in combination
+with reveal HTML5, but it works in plain HTML).</p>
+</div>
 <div class="section" id="reveal-slides-are-stacked-on-top-of-each-other">
 <h3>Reveal slides are stacked on top of each other<a class="headerlink" href="#reveal-slides-are-stacked-on-top-of-each-other" title="Permalink to this headline">¶</a></h3>
 <p>This problem can be caused by having a <tt class="docutils literal"><span class="pre">!bblock</span></tt> environment crossing two
@@ -979,6 +1001,7 @@ clickable.</p>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting</a><ul>
 <li><a class="reference internal" href="#general-problems">General Problems</a><ul>
+<li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
 <li><a class="reference internal" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
@@ -1069,6 +1092,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-reveal-deck-html5-slides">Problems with reveal/deck HTML5 slides</a><ul>
+<li><a class="reference internal" href="#python-online-tutor-code-does-not-work-in-reveal">Python Online Tutor code does not work in reveal</a></li>
 <li><a class="reference internal" href="#reveal-slides-are-stacked-on-top-of-each-other">Reveal slides are stacked on top of each other</a></li>
 <li><a class="reference internal" href="#reveal-slides-are-moving-steadily-to-the-left">Reveal slides are moving steadily to the left</a></li>
 <li><a class="reference internal" href="#youtube-movies-do-not-work">YouTube movies do not work</a></li>
@@ -1117,8 +1141,8 @@ clickable.</p>
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2014, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+        &copy; Copyright 2015, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

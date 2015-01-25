@@ -6092,21 +6092,13 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     # Standardize newlines
     text = re.sub(r'(\r\n|\r|\n)', '\n', text)
 
-    # Remove inline quotes before inline verbatim
-    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
-    text = re.sub(pattern, r'\g<1>', text)
-    # Remove inline verbatim and !bc and !bt blocks
-    text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
-    code = re.compile(r'^!bc(.*?)\n(.*?)^!ec', re.DOTALL|re.MULTILINE)
-    text = code.sub('', text)
-    tex = re.compile(r'^!bt\n(.*?)^!et *\n', re.DOTALL|re.MULTILINE)
-    text = tex.sub('', text)
-    if verbose > 0:
-        print 'removal of quotes, inline verbatim, code and tex blocks\nnew text:\n'
-        print text
-        print '==================\n'
+    # Remove all !bc and !bt blocks
+    text = re.sub(r'^!bc(.*?)\n(.*?)^!ec', '',
+                  text, flags=re.DOTALL|re.MULTILINE)
+    text = re.sub(r'^!bt *\n(.*?)^!et', '', text,
+                  flags=re.DOTALL|re.MULTILINE)
 
-    # First check for double words
+    # Check for double words (before removing verbatim)
 
     pattern = r"\b([\w'\-]+)(\s+\1)+\b"
     found = False
@@ -6126,7 +6118,7 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
                 is_word = '_' not in word
 
             if is_word:
-                print "\ndouble words detected in %s (see inside [...]):\n------------------------" % filename
+                print "\ndouble words detected in %s (marked inside [...]):\n------------------------" % filename
                 print "%s[%s]%s\n------------------------" % \
                       (text[max(0,start+m.start()-offset):start+m.start()],
                        word,
@@ -6140,6 +6132,16 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         pass
         #print '\nAbort because of double words.'
         #sys.exit(1)
+
+    # Remove inline quotes before inline verbatim
+    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
+    text = re.sub(pattern, r'\g<1>', text)
+    # Remove inline verbatim
+    text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
+    if verbose > 0:
+        print 'removal of quotes, inline verbatim, code and tex blocks\nnew text:\n'
+        print text
+        print '==================\n'
 
     # Continue with spell checking
 
