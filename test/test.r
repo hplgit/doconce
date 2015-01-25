@@ -139,13 +139,14 @@ def f(x):
 !ec
 
 # #if FORMAT not in ("rst", "plain", "epytext", "st")
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 __Paragraph heading before code.__
 
 !bc pycod-t
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 !ec
 
 === Subsubsection heading before code ===
@@ -372,15 +373,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 !ec
 
 It is time to test `verbatim inline font` especially with `a newline
-inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the `Verb` typesetting, but this should now
-be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+inside the text` and an exclamation mark at the end: `BEGIN`! For
+spellcheck, test `a verbatim expression` in `another` in a `third`.
+Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
-`\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a DocOnce directive a la `!bc`.
+`\end{this}\end{that}`, and `{something \inside braces}`.
 
 # #if FORMAT not in ("latex", "pdflatex", "html")
 The following attempt to exemplify colored text does not work in
@@ -2370,13 +2367,14 @@ def f(x):
     return x+1
 \epycod
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 \paragraph{Paragraph heading before code.}
 
 \bpycod
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 \epycod
 
 \paragraph{Subsubsection heading before code.}
@@ -2579,15 +2577,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 \edo
 
 It is time to test \code{verbatim inline font} especially with \code{a newline
-inside the text} and an exclamation mark at the end: \code{BEGIN}! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the \code{Verb} typesetting, but this should now
-be fixed: test \code{!bc} and \code{!ec} as well as \code{!bsummary}.
+inside the text} and an exclamation mark at the end: \code{BEGIN}! For
+spellcheck, test \code{a verbatim expression} in \code{another} in a \code{third}.
+Also test exclamation mark as in \code{!bc} and \code{!ec} as well as \code{a != b}.
 Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
-\code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
-and a DocOnce directive a la \code{!bc}.
+\code{\end{this}\end{that}}, and \code{{something \inside braces}}.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
@@ -4602,13 +4596,14 @@ def f(x):
 \end{minted}
 \noindent
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 \paragraph{Paragraph heading before code.}
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 \end{minted}
 \noindent
 
@@ -4841,15 +4836,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 \end{Verbatim}
 \noindent
 
-It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the \texttt{Verb} typesetting, but this should now
-be fixed: test {\Verb~!bc~} and {\Verb~!ec~} as well as {\Verb~!bsummary~}.
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
+spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
+Also test exclamation mark as in {\Verb~!bc~} and {\Verb~!ec~} as well as {\Verb~a != b~}.
 Also test backslashes and braces like {\Verb!\begin!}, {\Verb!\begin{enumerate}!},
-{\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!} in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in {\LaTeX} inline verbatim, we need to test it, as in {\Verb~a != b~},
-and a DocOnce directive a la {\Verb~!bc~}.
+{\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!}.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
@@ -6911,13 +6902,14 @@ def f(x):
     return x+1
 \end{minted}
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 \paragraph{Paragraph heading before code.}
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 \end{minted}
 
 \paragraph{Subsubsection heading before code.}
@@ -7116,15 +7108,11 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 __Paragraph heading.__ Paragraphs may have headings.
 \end{minted}
 
-It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the \Verb!Verb! typesetting, but this should now
-be fixed: test \Verb?!bc? and \Verb?!ec? as well as \Verb?!bsummary?.
+It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
+spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
-\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}! in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in {\LaTeX} inline verbatim, we need to test it, as in \Verb?a != b?,
-and a DocOnce directive a la \Verb?!bc?.
+\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
@@ -8930,15 +8918,11 @@ Finally, ``!bc do`` supports highlighting of DocOnce source::
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
-inside the text`` and an exclamation mark at the end: ``BEGIN``! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the ``Verb`` typesetting, but this should now
-be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
+inside the text`` and an exclamation mark at the end: ``BEGIN``! For
+spellcheck, test ``a verbatim expression`` in ``another`` in a ``third``.
+Also test exclamation mark as in ``!bc`` and ``!ec`` as well as ``a != b``.
 Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
-``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in ``a != b``,
-and a DocOnce directive a la ``!bc``.
+``\end{this}\end{that}``, and ``{something \inside braces}``.
 
 The following attempt to exemplify colored text does not work in
 format rst.
@@ -10482,14 +10466,15 @@ which gets rendered as
         def f(x):
             return x+1
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 **Paragraph heading before code.**
 
 .. code-block:: python
 
-        def g(y):
-            return y+1
+        import sys
+        sys.path.insert(0, os.pardir)
 
 Subsubsection heading before code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -10684,15 +10669,11 @@ Finally, ``!bc do`` supports highlighting of DocOnce source:
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
-inside the text`` and an exclamation mark at the end: ``BEGIN``! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the ``Verb`` typesetting, but this should now
-be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
+inside the text`` and an exclamation mark at the end: ``BEGIN``! For
+spellcheck, test ``a verbatim expression`` in ``another`` in a ``third``.
+Also test exclamation mark as in ``!bc`` and ``!ec`` as well as ``a != b``.
 Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
-``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in ``a != b``,
-and a DocOnce directive a la ``!bc``.
+``\end{this}\end{that}``, and ``{something \inside braces}``.
 
 The following attempt to exemplify colored text does not work in
 format sphinx.
@@ -12257,13 +12238,14 @@ def f(x):
     return x+1
 }}}
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 *Paragraph heading before code.*
 
 {{{
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 }}}
 
 ==== Subsubsection heading before code ====
@@ -12466,15 +12448,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 }}}
 
 It is time to test `verbatim inline font` especially with `a newline
-inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the `Verb` typesetting, but this should now
-be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+inside the text` and an exclamation mark at the end: `BEGIN`! For
+spellcheck, test `a verbatim expression` in `another` in a `third`.
+Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
-`\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a DocOnce directive a la `!bc`.
+`\end{this}\end{that}`, and `{something \inside braces}`.
 
 The following attempt to exemplify colored text does not work in
 format gwiki.
@@ -13834,13 +13812,14 @@ def f(x):
     return x+1
 </syntaxhighlight>
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 ''Paragraph heading before code.''
 
 <syntaxhighlight lang="python">
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 </syntaxhighlight>
 
 ==== Subsubsection heading before code ====
@@ -14043,15 +14022,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 </syntaxhighlight>
 
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the <code>Verb</code> typesetting, but this should now
-be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
+spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
+Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a DocOnce directive a la <code>!bc</code>.
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 The following attempt to exemplify colored text does not work in
 format mwiki.
@@ -15499,13 +15474,14 @@ def f(x):
     return x+1
 }}}
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 //Paragraph heading before code.//
 
 {{{
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 }}}
 
 === Subsubsection heading before code ===
@@ -15708,15 +15684,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 }}}
 
 It is time to test {{{verbatim inline font}}} especially with {{{a newline
-inside the text}}} and an exclamation mark at the end: {{{BEGIN}}}! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the {{{Verb}}} typesetting, but this should now
-be fixed: test {{{!bc}}} and {{{!ec}}} as well as {{{!bsummary}}}.
+inside the text}}} and an exclamation mark at the end: {{{BEGIN}}}! For
+spellcheck, test {{{a verbatim expression}}} in {{{another}}} in a {{{third}}}.
+Also test exclamation mark as in {{{!bc}}} and {{{!ec}}} as well as {{{a != b}}}.
 Also test backslashes and braces like {{{\begin}}}, {{{\begin{enumerate}}}},
-{{{\end{this}\end{that}}}}, and {{{{something \inside braces}}}} in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in {{{a != b}}},
-and a DocOnce directive a la {{{!bc}}}.
+{{{\end{this}\end{that}}}}, and {{{{something \inside braces}}}}.
 
 The following attempt to exemplify colored text does not work in
 format cwiki.
@@ -17151,15 +17123,11 @@ Finally, '!bc do' supports highlighting of DocOnce source::
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test 'verbatim inline font' especially with 'a newline
-inside the text' and an exclamation mark at the end: 'BEGIN'! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the 'Verb' typesetting, but this should now
-be fixed: test '!bc' and '!ec' as well as '!bsummary'.
+inside the text' and an exclamation mark at the end: 'BEGIN'! For
+spellcheck, test 'a verbatim expression' in 'another' in a 'third'.
+Also test exclamation mark as in '!bc' and '!ec' as well as 'a != b'.
 Also test backslashes and braces like '\begin', '\begin{enumerate}',
-'\end{this}\end{that}', and '{something \inside braces}' in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in 'a != b',
-and a DocOnce directive a la '!bc'.
+'\end{this}\end{that}', and '{something \inside braces}'.
 
 The following attempt to exemplify colored text does not work in
 format st.
@@ -18456,15 +18424,11 @@ Finally, C{!bc do} supports highlighting of DocOnce source::
                   it causes problems for Epytext.
 
 It is time to test C{verbatim inline font} especially with C{a newline
-inside the text} and an exclamation mark at the end: C{BEGIN}! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the C{Verb} typesetting, but this should now
-be fixed: test C{!bc} and C{!ec} as well as C{!bsummary}.
+inside the text} and an exclamation mark at the end: C{BEGIN}! For
+spellcheck, test C{a verbatim expression} in C{another} in a C{third}.
+Also test exclamation mark as in C{!bc} and C{!ec} as well as C{a != b}.
 Also test backslashes and braces like C{\begin}, C{\begin{enumerate}},
-C{\end{this}\end{that}}, and C{{something \inside braces}} in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in C{a != b},
-and a DocOnce directive a la C{!bc}.
+C{\end{this}\end{that}}, and C{{something \inside braces}}.
 
 The following attempt to exemplify colored text does not work in
 format epytext.
@@ -19925,15 +19889,11 @@ Finally, !bc do supports highlighting of DocOnce source::
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test verbatim inline font especially with a newline
-inside the text and an exclamation mark at the end: BEGIN! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the Verb typesetting, but this should now
-be fixed: test !bc and !ec as well as !bsummary.
+inside the text and an exclamation mark at the end: BEGIN! For
+spellcheck, test a verbatim expression in another in a third.
+Also test exclamation mark as in !bc and !ec as well as a != b.
 Also test backslashes and braces like \begin, \begin{enumerate},
-\end{this}\end{that}, and {something \inside braces} in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in a != b,
-and a DocOnce directive a la !bc.
+\end{this}\end{that}, and {something \inside braces}.
 
 The following attempt to exemplify colored text does not work in
 format plain.
@@ -21224,14 +21184,15 @@ def f(x):
     return x+1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 *Paragraph heading before code.*
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Subsubsection heading before code
@@ -21449,15 +21410,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is time to test `verbatim inline font` especially with `a newline
-inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the `Verb` typesetting, but this should now
-be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+inside the text` and an exclamation mark at the end: `BEGIN`! For
+spellcheck, test `a verbatim expression` in `another` in a `third`.
+Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
-`\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a DocOnce directive a la `!bc`.
+`\end{this}\end{that}`, and `{something \inside braces}`.
 
 The following attempt to exemplify colored text does not work in
 format pandoc.
@@ -22974,7 +22931,8 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "Test paragraph and subsubsection headings before code.\n",
+      "Test paragraph and subsubsection headings before\n",
+      "before code.\n",
       "\n",
       "**Paragraph heading before code.**"
      ]
@@ -22984,8 +22942,8 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "```Python\n",
-      "        def g(y):\n",
-      "            return y+1\n",
+      "        import sys\n",
+      "        sys.path.insert(0, os.pardir)\n",
       "\n",
       "```"
      ]
@@ -23352,15 +23310,11 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "It is time to test `verbatim inline font` especially with `a newline\n",
-      "inside the text` and an exclamation mark at the end: `BEGIN`! The\n",
-      "exclamation mark inside the verbatim text is potentially not smart\n",
-      "since latex use ! in the `Verb` typesetting, but this should now\n",
-      "be fixed: test `!bc` and `!ec` as well as `!bsummary`.\n",
+      "inside the text` and an exclamation mark at the end: `BEGIN`! For\n",
+      "spellcheck, test `a verbatim expression` in `another` in a `third`.\n",
+      "Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.\n",
       "Also test backslashes and braces like `\\begin`, `\\begin{enumerate}`,\n",
-      "`\\end{this}\\end{that}`, and `{something \\inside braces}` in inline\n",
-      "verbatim text. Since the exclamation mark is used as delimiter\n",
-      "in LaTeX inline verbatim, we need to test it, as in `a != b`,\n",
-      "and a DocOnce directive a la `!bc`.\n",
+      "`\\end{this}\\end{that}`, and `{something \\inside braces}`.\n",
       "\n",
       "The following attempt to exemplify colored text does not work in\n",
       "format ipynb.\n",
@@ -25478,14 +25432,15 @@ def f(x):
     return x+1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 *Paragraph heading before code.*
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #### Subsubsection heading before code
@@ -25703,15 +25658,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is time to test `verbatim inline font` especially with `a newline
-inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the `Verb` typesetting, but this should now
-be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+inside the text` and an exclamation mark at the end: `BEGIN`! For
+spellcheck, test `a verbatim expression` in `another` in a `third`.
+Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
-`\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a DocOnce directive a la `!bc`.
+`\end{this}\end{that}`, and `{something \inside braces}`.
 
 The following attempt to exemplify colored text does not work in
 format pandoc.
@@ -29896,7 +29847,8 @@ which gets rendered as
     <span style="color: #8B008B; font-weight: bold">return</span> x+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 <p>
 <b>Paragraph heading before code.</b>
@@ -29905,8 +29857,8 @@ Test paragraph and subsubsection headings before code.
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(y):
-    <span style="color: #8B008B; font-weight: bold">return</span> y+<span style="color: #B452CD">1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+sys.path.insert(<span style="color: #B452CD">0</span>, os.pardir)
 </pre></div>
 </td></tr></table><h3 id="___sec5">Subsubsection heading before code </h3>
 
@@ -30214,15 +30166,11 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the <code>Verb</code> typesetting, but this should now
-be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
+spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
+Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a DocOnce directive a la <code>!bc</code>.
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 <p>
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
@@ -32489,7 +32437,8 @@ which gets rendered as
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
 </pre></div>
 <p>
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 <p>
 <b>Paragraph heading before code.</b>
@@ -32497,8 +32446,8 @@ Test paragraph and subsubsection headings before code.
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
-    <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+sys<span style="color: #666666">.</span>path<span style="color: #666666">.</span>insert(<span style="color: #666666">0</span>, os<span style="color: #666666">.</span>pardir)
 </pre></div>
 
 <h3 id="___sec5">Subsubsection heading before code </h3>
@@ -32712,15 +32661,11 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the <code>Verb</code> typesetting, but this should now
-be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
+spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
+Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a DocOnce directive a la <code>!bc</code>.
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 <p>
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
@@ -34563,7 +34508,8 @@ which gets rendered as
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
 </pre></div>
 <p>
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 <p>
 <b>Paragraph heading before code.</b>
@@ -34571,8 +34517,8 @@ Test paragraph and subsubsection headings before code.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
-    <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+sys<span style="color: #666666">.</span>path<span style="color: #666666">.</span>insert(<span style="color: #666666">0</span>, os<span style="color: #666666">.</span>pardir)
 </pre></div>
 
 <h3 id="___sec5">Subsubsection heading before code </h3>
@@ -34790,15 +34736,11 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the <code>Verb</code> typesetting, but this should now
-be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
+spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
+Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a DocOnce directive a la <code>!bc</code>.
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 <p>
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
@@ -36775,13 +36717,14 @@ def f(x):
     return x+1
 \epycod
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 \paragraph{Paragraph heading before code.}
 
 \bpycod
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 \epycod
 
 \paragraph{Subsubsection heading before code.}
@@ -36984,15 +36927,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 \edo
 
 It is time to test \code{verbatim inline font} especially with \code{a newline
-inside the text} and an exclamation mark at the end: \code{BEGIN}! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the \code{Verb} typesetting, but this should now
-be fixed: test \code{!bc} and \code{!ec} as well as \code{!bsummary}.
+inside the text} and an exclamation mark at the end: \code{BEGIN}! For
+spellcheck, test \code{a verbatim expression} in \code{another} in a \code{third}.
+Also test exclamation mark as in \code{!bc} and \code{!ec} as well as \code{a != b}.
 Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
-\code{\end{this}\end{that}}, and \code{{something \inside braces}} in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in {\LaTeX} inline verbatim, we need to test it, as in \code{a != b},
-and a DocOnce directive a la \code{!bc}.
+\code{\end{this}\end{that}}, and \code{{something \inside braces}}.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
@@ -41683,7 +41622,8 @@ which gets rendered as
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
 </pre></div>
 <p>
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 <p>
 <b>Paragraph heading before code.</b>
@@ -41691,8 +41631,8 @@ Test paragraph and subsubsection headings before code.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">g</span>(y):
-    <span style="color: #008000; font-weight: bold">return</span> y<span style="color: #666666">+1</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+sys<span style="color: #666666">.</span>path<span style="color: #666666">.</span>insert(<span style="color: #666666">0</span>, os<span style="color: #666666">.</span>pardir)
 </pre></div>
 
 <h3 id="___sec5">Subsubsection heading before code </h3>
@@ -41910,15 +41850,11 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 </pre></div>
 <p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the <code>Verb</code> typesetting, but this should now
-be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
+spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
+Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a DocOnce directive a la <code>!bc</code>.
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 <p>
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
@@ -43746,14 +43682,15 @@ which gets rendered as
         def f(x):
             return x+1
 
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 **Paragraph heading before code.**
 
 .. code-block:: python
 
-        def g(y):
-            return y+1
+        import sys
+        sys.path.insert(0, os.pardir)
 
 Subsubsection heading before code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43948,15 +43885,11 @@ Finally, ``!bc do`` supports highlighting of DocOnce source:
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
-inside the text`` and an exclamation mark at the end: ``BEGIN``! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the ``Verb`` typesetting, but this should now
-be fixed: test ``!bc`` and ``!ec`` as well as ``!bsummary``.
+inside the text`` and an exclamation mark at the end: ``BEGIN``! For
+spellcheck, test ``a verbatim expression`` in ``another`` in a ``third``.
+Also test exclamation mark as in ``!bc`` and ``!ec`` as well as ``a != b``.
 Also test backslashes and braces like ``\begin``, ``\begin{enumerate}``,
-``\end{this}\end{that}``, and ``{something \inside braces}`` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in ``a != b``,
-and a DocOnce directive a la ``!bc``.
+``\end{this}\end{that}``, and ``{something \inside braces}``.
 
 The following attempt to exemplify colored text does not work in
 format sphinx.
@@ -70764,7 +70697,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f07db1d71b8>
+verbatim is to be replaced using <function html_verbatim at 0x7f28bd076230>
 
 
 First occurence: " `mako`."
@@ -74725,7 +74658,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Jan 17 04:48:14 2015.
+# sphinx-quickstart on Sun Jan 25 00:28:07 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -91071,6 +91004,14 @@ Saving backup copy of database to file "papers.pub.bak"
 Saving database to file "papers.pub"
 + system doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
 + doconce spellcheck -d .dict4spell.txt _testdoc.do.txt
+
+double words detected in _testdoc.do.txt (marked inside [...]):
+------------------------
+ph and subsubsection headings [before
+before] code.
+
+__Paragraph heading be
+------------------------
 + '[' 0 -ne 0 ']'
 + ex=--examples_as_exercises
 + rawgit=--html_raw_github_url=raw.github
@@ -91838,12 +91779,13 @@ dmap/pdftex.map}] [2]
 
 ...rest of part of LaTeX line number...
 
+
+
+
+<../doc/src/manual/fig/wave1D.pdf, id=100, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [8]
 
-
-
-<../doc/src/manual/fig/wave1D.pdf, id=120, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
@@ -91851,7 +91793,7 @@ dmap/pdftex.map}] [2]
 <../doc/src/manual/fig/wave1D.png, id=132, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=133, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -91876,7 +91818,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <../doc/src/manual/fig/wave1D.png>]
+[11 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -91929,7 +91871,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1272.
+t line 1269.
 
 
 
@@ -91949,7 +91891,7 @@ t line 1272.
 
 
 
-t line 1281.
+t line 1278.
 
 
 
@@ -91970,7 +91912,7 @@ t line 1281.
 
 
 
-t line 1285.
+t line 1282.
 
 
 
@@ -92630,14 +92572,16 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
 <latex_figs/dizzy_face.png, id=307, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=352, 586.83241pt x 442.29242pt>
+.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9]
+
 [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -92662,7 +92606,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <../doc/src/manual/fig/wave1D.png>]
+[12 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -92715,7 +92659,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1272.
+t line 1269.
 
 
 
@@ -92735,7 +92679,7 @@ t line 1272.
 
 
 
-t line 1281.
+t line 1278.
 
 
 
@@ -92756,7 +92700,7 @@ t line 1281.
 
 
 
-t line 1285.
+t line 1282.
 
 
 
@@ -93333,14 +93277,16 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
 <latex_figs/dizzy_face.png, id=307, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=352, 586.83241pt x 442.29242pt>
+.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9]
+
 [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -93365,7 +93311,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <../doc/src/manual/fig/wave1D.png>]
+[12 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -93418,7 +93364,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1272.
+t line 1269.
 
 
 
@@ -93438,7 +93384,7 @@ t line 1272.
 
 
 
-t line 1281.
+t line 1278.
 
 
 
@@ -93459,7 +93405,7 @@ t line 1281.
 
 
 
-t line 1285.
+t line 1282.
 
 
 
@@ -94020,14 +93966,16 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./testdoc.out.pyg) [6] (./testdoc.out.pyg)
 <latex_figs/dizzy_face.png, id=307, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=352, 586.83241pt x 442.29242pt>
+.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9]
+
 [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -94052,7 +94000,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <../doc/src/manual/fig/wave1D.png>]
+[12 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -94641,7 +94589,12 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=247, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
-.png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
+.png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
+
+
+...rest of part of LaTeX line number...
+
+[8]
 
 
 ...rest of part of LaTeX line number...
@@ -94752,7 +94705,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1223.
+t line 1220.
 
 
 
@@ -94772,7 +94725,7 @@ t line 1223.
 
 
 
-t line 1232.
+t line 1229.
 
 
 
@@ -94792,7 +94745,7 @@ t line 1232.
 
 
 
-t line 1236.
+t line 1233.
 
 
 
@@ -95513,9 +95466,9 @@ reading sources... [ 50%] ._testdoc001
 reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:390: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:427: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:427: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:387: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:424: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:424: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found

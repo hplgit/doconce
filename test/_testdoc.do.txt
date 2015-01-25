@@ -124,13 +124,14 @@ def f(x):
 !ec
 
 # #if FORMAT not in ("rst", "plain", "epytext", "st")
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 __Paragraph heading before code.__
 
 !bc pycod-t
-def g(y):
-    return y+1
+import sys
+sys.path.insert(0, os.pardir)
 !ec
 
 === Subsubsection heading before code ===
@@ -357,15 +358,11 @@ __Paragraph heading.__ Paragraphs may have headings.
 !ec
 
 It is time to test `verbatim inline font` especially with `a newline
-inside the text` and an exclamation mark at the end: `BEGIN`! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the `Verb` typesetting, but this should now
-be fixed: test `!bc` and `!ec` as well as `!bsummary`.
+inside the text` and an exclamation mark at the end: `BEGIN`! For
+spellcheck, test `a verbatim expression` in `another` in a `third`.
+Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.
 Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
-`\end{this}\end{that}`, and `{something \inside braces}` in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in `a != b`,
-and a DocOnce directive a la `!bc`.
+`\end{this}\end{that}`, and `{something \inside braces}`.
 
 # #if FORMAT not in ("latex", "pdflatex", "html")
 The following attempt to exemplify colored text does not work in

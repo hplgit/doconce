@@ -6093,8 +6093,8 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     # Remove all !bc and !bt blocks
     text = re.sub(r'^!bc(.*?)\n(.*?)^!ec', '',
                   text, flags=re.DOTALL|re.MULTILINE)
-    tex = re.sub(r'^!bt\n(.*?)^!et *\n', '', text,
-                 flags=re.DOTALL|re.MULTILINE)
+    text = re.sub(r'^!bt *\n(.*?)^!et', '', text,
+                  flags=re.DOTALL|re.MULTILINE)
 
     # Check for double words (before removing verbatim)
 
