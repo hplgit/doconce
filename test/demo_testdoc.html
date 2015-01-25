@@ -246,7 +246,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Jan 17, 2015</h4></center> <!-- date -->
+<center><h4>Jan 25, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -522,7 +522,8 @@ which gets rendered as
     <span style="color: #8B008B; font-weight: bold">return</span> x+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
-Test paragraph and subsubsection headings before code.
+Test paragraph and subsubsection headings before
+before code.
 
 <p>
 <b>Paragraph heading before code.</b>
@@ -531,8 +532,8 @@ Test paragraph and subsubsection headings before code.
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(y):
-    <span style="color: #8B008B; font-weight: bold">return</span> y+<span style="color: #B452CD">1</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+sys.path.insert(<span style="color: #B452CD">0</span>, os.pardir)
 </pre></div>
 </td></tr></table><h3 id="___sec5">Subsubsection heading before code </h3>
 
@@ -840,15 +841,11 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 </pre></div>
 </td></tr></table><p>
 It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! The
-exclamation mark inside the verbatim text is potentially not smart
-since latex use ! in the <code>Verb</code> typesetting, but this should now
-be fixed: test <code>!bc</code> and <code>!ec</code> as well as <code>!bsummary</code>.
+inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
+spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
+Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
 Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code> in inline
-verbatim text. Since the exclamation mark is used as delimiter
-in LaTeX inline verbatim, we need to test it, as in <code>a != b</code>,
-and a DocOnce directive a la <code>!bc</code>.
+<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 <p>
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
