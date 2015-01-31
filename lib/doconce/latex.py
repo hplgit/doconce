@@ -5,7 +5,7 @@ from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
-from misc import option, _abort
+from misc import option, _abort, replace_code_command
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -69,7 +69,7 @@ def latex_code_envir(
 
     package = envir_spec[envir2]['package']
     background = envir_spec[envir2]['background']
-    lst_style = 'default'
+    lst_style = 'style=simple'
     vrb_style = 'numbers=none,fontsize=\\fontsize{9pt}{9pt},baselinestretch=0.95'
     # mathescape can be used with minted and lstlisting
     # see http://tex.stackexchange.com/questions/149710/how-to-write-math-symbols-in-a-verbatim, minted can only have math in comments within the code
@@ -119,7 +119,10 @@ def latex_code_envir(
         end = '\\end{minted}'
 
     elif package == 'lst':
-        begin = '\\begin{lstlisting}[language=%s,style=%s]' % (envir2lst[envir], lst_style)
+        if envir2lst[envir] == 'text':
+            begin = '\\begin{lstlisting}[%s]' % (lst_style)
+        else:
+            begin = '\\begin{lstlisting}[language=%s,%s]' % (envir2lst[envir], lst_style)
         end = '\\end{lstlisting}'
     else:
         begin = '\\begin{Verbatim}[%s]' % vrb_style
@@ -181,7 +184,7 @@ def interpret_latex_code_style():
 
 def latex_code_lstlisting():
     s = ''  # Resulting latex code
-    s += """
+    s += r"""
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
@@ -288,6 +291,8 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
     latex_code_style = interpret_latex_code_style()
+
+    filestr = replace_code_command(filestr)  # subst \code{...}
 
     lines = filestr.splitlines()
     current_code_envir = None
@@ -2586,7 +2591,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 """
             if 'lst' in latex_code_style:
-                INTRO['latex'] += r'\usepackage{listings}' + '\n'
+                INTRO['latex'] += r'\usepackage{listingsutf8}' + '\n'
                 INTRO['latex'] += latex_code_lstlisting()
             if 'pyg' in latex_code_style:
                 INTRO['latex'] += r'\usepackage{minted}' + '\n'
@@ -2615,7 +2620,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 """
     if latex_font == 'helvetica':
         INTRO['latex'] += r"""
@@ -2670,8 +2676,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%%
-    breaklines=true,
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=%(linkcolor)s,
     urlcolor=%(linkcolor)s,
@@ -2681,7 +2688,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   %% Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  %% number chapter, section, subsection

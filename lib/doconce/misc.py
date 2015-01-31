@@ -1852,7 +1852,15 @@ download preprocess from http://code.google.com/p/preprocess""")
             print 'Terminal> cd pygments; sudo python setup.py install'
             _abort()
 
-    # --- Treat the \code{} commands ---
+    filestr = replace_code_command(filestr)
+
+    f = open(output_filename, 'w')
+    f.write(filestr)
+    f.close()
+    print 'output in', output_filename
+
+def replace_code_command(filestr):
+    """Replace \code{...} by \Verb!...! or \textttt{...}."""
 
     # Remove one newline (two implies far too long inline verbatim)
     pattern = re.compile(r'\\code\{([^\n}]*?)\n(.*?)\}', re.DOTALL)
@@ -1915,12 +1923,7 @@ download preprocess from http://code.google.com/p/preprocess""")
                      r'\\texttt{\g<1>}', filestr)
     filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
-
-    f = open(output_filename, 'w')
-    f.write(filestr)
-    f.close()
-    print 'output in', output_filename
-
+    return filestr
 
 def _usage_grab():
     print 'Usage: doconce grab --from[-] from-text [--to[-] to-text] file'

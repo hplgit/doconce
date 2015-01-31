@@ -1,0 +1,77 @@
+TITLE: Test of DocOnce support for LaTeX code block environments
+AUTHOR: HPL
+DATE: today
+
+======= Demo 1 =======
+
+Suppose we have some data in a file:
+
+@@@CODE mydat.txt envir=dat
+
+This program
+# #if FORMAT in ('latex', 'pdflatex')
+(which breaks a page)
+# #endif
+reads the data and performs analysis:
+
+@@@CODE fileread.py
+
+The output becomes
+
+!bc sys
+Terminal> python fileread.py
+
+mean=-0.006005
+st.dev=0.583542
+correlation matrix:
+[[ 1.          0.0509676   0.52406366  0.20964645  0.1574504 ]
+ [ 0.0509676   1.         -0.30920845 -0.12129049  0.7611538 ]
+ [ 0.52406366 -0.30920845  1.          0.49355806 -0.42263817]
+ [ 0.20964645 -0.12129049  0.49355806  1.         -0.38286589]
+ [ 0.1574504   0.7611538  -0.42263817 -0.38286589  1.        ]]
+!ec
+
+======= Demo 2 =======
+
+The file `mypro.py` contains the program
+
+!bc pypro
+#!/usr/bin/env python
+
+def run(program):
+    import os
+    failure = os.system(os.path.join(os.curdir, program))
+    if failure:
+        raise OSError('Could not run Fortran program')
+
+run('hw')
+!ec
+
+The program `hw` is defined in `hw.f`:
+
+!bc fpro
+       program hw
+       call print_msg()
+       end
+!ec
+This program must be linked with the definition of `print_msg` in
+a file `routines.f`:
+
+!bc fcod
+       subroutine print_msg()
+       write(*,*) 'Hello, World!'
+       end
+!ec
+
+The Fortran files can be compiled by
+
+!bc sys
+Terminal> gfortran -o hw hw.f routines.f
+!ec
+Finally, we can run our `mypro.py` program:
+
+!bc sys
+Terminal> python mypro.py
+Hello, World!
+!ec
+
