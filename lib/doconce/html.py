@@ -650,6 +650,11 @@ def html_code(filestr, code_blocks, code_block_types,
 
     html_style = option('html_style=', '')
     pygm_style = option('pygments_html_style=', default=None)
+    legal_pygm_styles = 'monokai manni rrt perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs vim pastie friendly native'.split()
+    if pygm_style not in legal_pygm_styles:
+        print '*** error: wrong pygments style "%s"' % pygm_style
+        print '    must be among\n%s' % str(legal_pygm_styles)[1:-1]
+        _abort()
 
     # Mapping from envir (+cod/pro if present) to pygment style
     envir2pygments = dict(

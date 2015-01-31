@@ -38,7 +38,22 @@
 \definecolor{lightgray}{gray}{.95}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{inputbackground}{rgb}{.95, .95, .85}
-\definecolor{inputbackground_1}{rgb}{.98, .98, 0.8}
+
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{cbg_yellow1_vbar}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1_vbar}{rgb}{1, 0.75, 0.85}
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{cbg_blue1_vbar}{rgb}{0.7,     0.95686, 1}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{cbg_yellowgray_vbar}{rgb}{.95, .95, .65}
+
 \definecolor{outputbackground}{rgb}{.95, .95, .95}
 \definecolor{traceback}{rgb}{1, .95, .95}
 
@@ -56,9 +71,12 @@
 % various uses of \unskip (or not) at the end were fine-tuned by hand, so don't
 % randomly change them unless you're sure of the effect it will have.
 \usepackage{framed}
+\usepackage[framemethod=TikZ]{mdframed}
+
+% method: search for usepackage{framed - if not, include before framemethod=TikZ...
 
 % remove extraneous vertical space in boxes
-\setlength\fboxsep{0pt}
+%\setlength\fboxsep{0pt} %???? not important[[[
 
 % codecell is the whole input+output set of blocks that a Code cell can
 % generate.
@@ -94,15 +112,22 @@
    \MakeFramed{\advance\hsize-\width \FrameRestore}}
  {\unskip\medskip\endMakeFramed}
 
-\newenvironment{code}[1][]{%
+\newenvironment{code}[1]{%
    \def\FrameCommand{\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
  {\unskip\medskip\endMakeFramed}
 
-\newenvironment{pro}[1][]{%
-   \def\FrameCommand{\color[rgb]{0.7,0.95686,1}\vrule width 1mm\normalcolor\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
+%\newenvironment{pro}[1][]{%
+%   \def\FrameCommand{\color[rgb]{0.7,0.95686,1}\vrule width 1mm\normalcolor\colorbox{#1}}%
+%   \MakeFramed{\advance\hsize-\width \FrameRestore}}
+% {\unskip\medskip\endMakeFramed}
+
+\newenvironment{pro}[2]{%
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
  {\unskip\medskip\endMakeFramed}
+
+\newenvironment{test}[2]{#1, #2!}{end of test}
 
 % New code to replace ptex2tex:
 % Keep old doconce code that creates ptex2tex output
@@ -172,6 +197,10 @@
 %  columns=fullflexible,  % tighter character kerning, like verb
 %}
 
+\lstset{
+  basicstyle=\small \ttfamily,
+}
+
 \lstdefinestyle{redblue}{
   inputencoding=utf8x,
   extendedchars=\true,
@@ -179,7 +208,6 @@
   belowskip=\smallskipamount,
   xleftmargin=2mm,
   breaklines=true,
-  basicstyle=\small \ttfamily,
   showstringspaces=false,
   keywordstyle=\color{blue}\bfseries,
   commentstyle=\color{myteal},
@@ -222,11 +250,13 @@
 We use the method of manufactured solutions to get an indication of
 whether we have implemented the PDE correctly or not.
 
-\begin{codecell}
+\begin{test}{Hello}{World}
+Some text.
+\end{test}
 
-
-%\begin{code}[inputbackground]
-\begin{pro}[inputbackground_1]
+%\begin{code}{inputbackground}
+\begin{pro}{cbg_gray}{bar_gray}
+%\begin{pro}{inputbackground_1}{hei}
 %\begin{codeinput}
 % pycod=yellow,lst:redblue
 % pycod=blue,minted
@@ -249,7 +279,7 @@ print ccode(f.simplify())
 %\end{code}
 %\end{codeinput}
 
-\begin{code}[outputbackground]
+\begin{code}{outputbackground}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -260,11 +290,8 @@ print ccode(f.simplify())
 
 \end{code}
 
-\end{codecell}
 
 And now:
-
-\begin{codecell}
 
 
 \begin{codeinput}
@@ -285,11 +312,6 @@ t*pow(x[0], 4)*pow(dt - t, 2)*pow(x[0] - 1, 2)*
 \end{Verbatim}
 
 \end{codeoutput}
-
-\end{codecell}
-
-
-\begin{codecell}
 
 
 \begin{codeinput}
@@ -437,10 +459,6 @@ if __name__ == '__main__':
     outfile.close()
 \end{lstlisting}
 \end{codeinput}
-
-\end{codecell}
-
-
 
 \end{document}
 

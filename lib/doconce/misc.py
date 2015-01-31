@@ -40,13 +40,14 @@ of intermediate results"""),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
-     'Specify the minted style to be used for typesetting code in LaTeX.'),
+     """Specify the minted style to be used for typesetting code in LaTeX.
+See pygmetize -L styles for legal names."""),
     ('--pygments_html_style=',
      """Specify the minted/pygments style to be used for typesetting code
 in HTML.
 Default: default (other values: monokai, manni, rrt, perldoc,
 borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
-vim, pastie, friendly, native).
+vim, pastie, friendly, native, see pygmentize -L styles).
 none, no, off: turn off pygments to typeset computer code in HTML,
 use plain <pre> tags.
 highlight.js: use highlight.js syntax highlighting, not pygments."""),
@@ -176,6 +177,30 @@ siamltex: SIAM's standard LaTeX style for papers,
 siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
     ('--latex_font=',
      """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
+    ('--latex_code_style=', """Typesetting of code blocks.
+pyg: use pygments (minted), style is set with --minted_latex_style=
+lst: use lstlistings
+vrb: use Verbatim (default)
+
+Specifications across languages:
+pyg-blue1
+lst, lst-yellowgray[style=redblue]
+vrb[frame=lines,framesep=2.5mm,framerule=0.7pt]
+
+Detailed specification for each language:
+default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+
+Here, Verbatim[frame=lines] is used for all code environments, except
+pycod, pypro and sys, which have their own specifications.
+pycod: lst package with redblue style (and white background)
+pypro: lst package with default style and blue1 background
+style, sys: Verbatim with the specified arguments and white background.
+
+(Note: @ is delimiter for the language specifications, syntax is
+envir:package-background[style parameters]@)
+"""),
+    ('--latex_code_leftmargin=', 'Sets the left margin in code blocks. Default: 7 (mm).'),
+    ('--latex_code_bg=', 'Background color code blocks. Default: white.'),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
     ('--section_numbering=',
@@ -507,7 +532,9 @@ def option(name, default=None):
     if option_name.endswith('='):
         for arg in sys.argv[1:]:
             if arg.startswith(option_name):
-                opt, value = arg.split('=')
+                parts = arg.split('=')
+                opt = parts[0]
+                value = '='.join(parts[1:])
                 break
     elif option_name in sys.argv:
         value = True
@@ -536,7 +563,9 @@ def misc_option(name, default=None):
     if option_name.endswith('='):
         for arg in sys.argv[1:]:
             if arg.startswith(option_name):
-                opt, value = arg.split('=')
+                parts = arg.split('=')
+                opt = parts[0]
+                value = '='.join(parts[1:])
                 break
     elif option_name in sys.argv:
         value = True
