@@ -5,7 +5,7 @@ from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
-from misc import option, _abort
+from misc import option, _abort, replace_code_command
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -32,6 +32,241 @@ def get_bib_index_pages():
         if '{Index}' in line:
             idx_page = line.split('}{')[-2]
     return bib_page, idx_page
+
+# Mappings from DocOnce code environments to Pygments and lstlisting names
+envir2pyg = dict(
+    pyshell='python',
+    py='python', cy='cython', f='fortran',
+    c='c', cpp='c++', sh='bash', rst='rst',
+    m ='matlab', pl='perl', swig='c++',
+    latex='latex', html='html', js='js',
+    java='java',
+    xml='xml', rb='ruby', sys='console',
+    dat='text', txt='text', csv='text',
+    ipy='ipy', do='doconce',
+    # pyopt and pysc are treated explicitly
+    )
+envir2lst = dict(
+    pyshell='Python',
+    py='Python', cy='Python', f='Fortran',
+    c='C', cpp='C++', sh='bash', rst='text',
+    m ='Matlab', pl='Perl', swig='C++',
+    latex='TeX', html='HTML', js='Java',
+    java='Java',
+    xml='XML', rb='Ruby', sys='bash',
+    dat='text', txt='text', csv='text',
+    ipy='Python', do='text',
+    # pyopt and pysc are treated explicitly
+    )
+
+def latex_code_envir(
+    envir,
+    envir_spec,
+    ):
+    leftmargin = option('latex_code_leftmargin=', '2')
+
+    envir2 = envir if envir in envir_spec else 'default'
+
+    package = envir_spec[envir2]['package']
+    background = envir_spec[envir2]['background']
+    # Default styles
+    lst_style = 'style=simple,xleftmargin=%smm' % leftmargin
+    vrb_style = 'numbers=none,fontsize=\\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=%smm' % leftmargin
+    # mathescape can be used with minted and lstlisting
+    # see http://tex.stackexchange.com/questions/149710/how-to-write-math-symbols-in-a-verbatim, minted can only have math in comments within the code
+    # but mathescape make problems with bash and $#
+    # (can perhaps be fixed with escapechar=... but I haven't found out)
+    if envir != 'sh':
+        pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
+    else:
+        pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
+    if envir_spec[envir2]['style'] is not None:
+        # Override default style
+        if package == 'lst':
+            lst_style = envir_spec[envir2]['style']
+        if package == 'vrb':
+            vrb_style = envir_spec[envir2]['style']
+        if package == 'pyg':
+            pyg_style = envir_spec[envir2]['style']
+
+    envir_tp = ''
+    if envir.endswith('pro'):
+        envir_tp = 'pro'
+        envir = envir[:-3]
+    elif envir.endswith('cod'):
+        envir_tp = 'cod'
+        envir = envir[:-3]
+
+    from common import get_legal_pygments_lexers
+    global envir2pyg, envir2lst
+
+    if envir in ('ipy', 'do'):
+        # Find substitutes for ipy and doconce if these lexers
+        # are not installed
+        # (third-party repos, does not come with pygments, but
+        # warnings have been issued by doconce format, with
+        # URLs to where the code can be obtained)
+        from pygments.lexers import get_lexer_by_name
+        try:
+            get_lexer_by_name('ipy')
+        except:
+            envir2pyg['ipy'] = 'python'
+        try:
+            get_lexer_by_name('doconce')
+        except:
+            envir2pyg['do'] = 'text'
+
+    if package == 'pyg':
+        begin = '\\begin{minted}[%s]{%s}' % (pyg_style, envir2pyg.get(envir, 'text'))
+        end = '\\end{minted}'
+
+    elif package == 'lst':
+        if envir2lst.get(envir, 'text') == 'text':
+            begin = '\\begin{lstlisting}[language=Python,%s]' % (lst_style, )
+        else:
+            begin = '\\begin{lstlisting}[language=%s,%s]' % (envir2lst.get(envir, 'text'), lst_style)
+        end = '\\end{lstlisting}'
+    else:
+        begin = '\\begin{Verbatim}[%s]' % vrb_style
+        end = '\\end{Verbatim}'
+
+    if background != 'white':
+        if envir_tp == 'pro':
+            begin = '\\begin{pro}{cbg_%s}{bar_%s}' % (background, background) + begin
+            if package == 'vrb':
+                end = end + '\n\\end{pro}'
+            else:
+                end = end + '\\end{pro}'
+        else:
+            begin = '\\begin{cod}{cbg_%s}' % background + begin
+            if package == 'vrb':
+                end = end + '\n\\end{cod}'
+            else:
+                end = end + '\\end{cod}'
+    return begin, end
+
+def interpret_latex_code_style():
+    latex_code_style = option('latex_code_style=', None)
+    if latex_code_style is None:
+        return None
+
+    def interpret(text):
+        # Extract style parameters inside []
+        m = re.search(r'\[(.+?)\]', text)
+        if m:
+            style = m.group(1)
+            text = text.replace('[%s]' % style, '')
+        else:
+            style = None
+        # Find background, if specified
+        if '-' in text:
+            pkg, bg = text.split('-')
+        else:
+            bg = 'white'
+            pkg = text
+        # Strip off envir if present
+        if ':' in pkg:
+            envir, pkg = pkg.split(':')
+        return pkg, bg, style
+
+    legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
+    d = {}
+    if '@' not in latex_code_style:
+        # Common definition for all languages
+        pkg, bg, style = interpret(latex_code_style)
+        d['default'] = dict(package=pkg, background=bg, style=style)
+    else:
+        parts = latex_code_style.split('@')
+        for part in parts:
+            if not ':' in part:
+                print '*** error: wrong syntax in --latex_code_style= specification'
+                _abort()
+            envir, spec = part.split(':')
+            if envir not in legal_envirs:
+                print '*** warning: not registered code environment "%s"' % envir
+            pkg, bg, style = interpret(spec)
+            d[envir] = dict(package=pkg, background=bg, style=style)
+    if 'default' not in d:
+        # Use Verbatim as default
+        d['default'] = dict(package='vrb', background='white', style=None)
+
+    return d
+
+
+def latex_code_lstlisting():
+    s = ''  # Resulting latex code
+    s += r"""
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+}
+
+% Various styles for lstlisting
+\lstdefinestyle{simple}{
+  inputencoding=utf8x,
+  extendedchars=\true,
+  aboveskip=\smallskipamount,
+  belowskip=\smallskipamount,
+  breaklines=false,
+  breakatwhitespace=true,
+  breakindent=30,
+  showstringspaces=false,
+  columns=fullflexible,  % tighter character kerning, like verb
+}
+
+\lstdefinestyle{redblue}{
+  inputencoding=utf8x,
+  extendedchars=\true,
+  aboveskip=\smallskipamount,
+  belowskip=\smallskipamount,
+  breaklines=false,
+  breakatwhitespace=true,
+  breakindent=30,
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{myteal},
+  stringstyle=\color{darkgreen},
+  identifierstyle=\color{darkorange},
+  columns=fullflexible,  % tighter character kerning, like verb
+}
+
+% Use this one without additional background color
+\lstdefinestyle{fenicsbook}{
+tab=,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black},             % frame color
+backgroundcolor=\color{yellow!10},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{keywordcolour}\bfseries,
+commentstyle=\color{commentcolour}\slshape,
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+%backgroundcolor=\color{yellow!10},
+}
+
+"""
+    filename = option('latex_code_lststyles=', None)
+    if filename is not None:
+        # User has specified additional lst styles
+        if os.path.isfile(filename):
+            text = open(filename, 'r').read()
+            s += text
+        else:
+            print '*** error: file "%s" does not exist' % filename
+            _abort()
+
+    return s
 
 def latex_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -104,34 +339,6 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = safe_join(lines, '\n')
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
-    lines = filestr.splitlines()
-    current_code_envir = None
-    for i in range(len(lines)):
-        if lines[i].startswith('!bc'):
-            words = lines[i].split()
-            if len(words) == 1:
-                current_code_envir = 'ccq'
-            else:
-                if words[1] in ('pyoptpro', 'pyscpro'):
-                    current_code_envir = 'pypro'
-                else:
-                    current_code_envir = words[1]
-            if current_code_envir is None:
-                # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec'
-                print '\n'.join(lines[i-3:i+4])
-                _abort()
-            lines[i] = '\\b' + current_code_envir
-        if lines[i].startswith('!ec'):
-            if current_code_envir is None:
-                # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec'
-                print '\n'.join(lines[i-3:i+4])
-                _abort()
-            lines[i] = '\\e' + current_code_envir
-            current_code_envir = None
-    filestr = safe_join(lines, '\n')
-
     filestr = re.sub(r'^!bt\n', '', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'!et\n', '', filestr)
 
@@ -158,8 +365,8 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # \texttt{>>>} gives very strange typesetting in the Springer book,
     # but not in ordinary latex, so we need to fix that with hack back
-    # to to \code{>>>}
-    filestr = filestr.replace(r'\texttt{>>>}', r'\code{>>>}')
+    # to \code{>>>}
+    filestr = filestr.replace(r'\texttt{>>>}', r'\Verb!>>>!')
 
     # Remove "Appendix: " from headings in appendices
     appendix_pattern = r'\\(chapter|section\*?)\{Appendix:\s+'
@@ -402,7 +609,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(pattern, subst, filestr)
 
     # \code{} in section headings and paragraph needs a \protect
-    pattern = r'^\s*(\\.*section\*?|\\paragraph)\{(.*)\}\s*$'
+    pattern = r'^(\\.*?section\*?|\\paragraph)\{(.+)\}'  # (no .+? - must go to the last }!)
     headings = re.findall(pattern, filestr, flags=re.MULTILINE)
 
     for tp, heading in headings:
@@ -469,6 +676,50 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
+
+    # Translate to .tex or .p.tex format
+
+    latex_code_style = interpret_latex_code_style()
+
+    filestr = replace_code_command(filestr)  # subst \code{...}
+
+    lines = filestr.splitlines()
+    current_code_envir = None
+    for i in range(len(lines)):
+        if lines[i].startswith('!bc'):
+            words = lines[i].split()
+            if len(words) == 1:
+                current_code_envir = 'ccq'
+            else:
+                if words[1] in ('pyoptpro', 'pyscpro'):
+                    current_code_envir = 'pypro'
+                else:
+                    current_code_envir = words[1]
+            if current_code_envir is None:
+                # There should have been checks for this in doconce.py
+                print '*** errror: mismatch between !bc and !ec'
+                print '\n'.join(lines[i-3:i+4])
+                _abort()
+            if latex_code_style is None:
+                lines[i] = '\\b' + current_code_envir
+            else:
+                begin, end = latex_code_envir(current_code_envir,
+                                              latex_code_style)
+                lines [i] = begin
+        if lines[i].startswith('!ec'):
+            if current_code_envir is None:
+                # There should have been checks for this in doconce.py
+                print '*** errror: mismatch between !bc and !ec'
+                print '\n'.join(lines[i-3:i+4])
+                _abort()
+            if latex_code_style is None:
+                lines[i] = '\\e' + current_code_envir
+            else:
+                begin, end = latex_code_envir(current_code_envir,
+                                              latex_code_style)
+                lines [i] = end
+            current_code_envir = None
+    filestr = safe_join(lines, '\n')
 
     return filestr
 
@@ -1924,7 +2175,12 @@ def define(FILENAME_EXTENSION,
     m = re.search(INLINE_TAGS['inlinecomment'], filestr, flags=re.DOTALL)
     has_inline_comments = True if m else False
 
-    FILENAME_EXTENSION['latex'] = '.p.tex'
+    latex_code_style = option('latex_code_style=', None)
+    if latex_code_style is None:
+        FILENAME_EXTENSION['latex'] = '.p.tex'
+    else:
+        FILENAME_EXTENSION['latex'] = '.tex'
+
     BLANKLINE['latex'] = '\n'
 
     INLINE_TAGS_SUBST['latex'] = {
@@ -2099,6 +2355,10 @@ def define(FILENAME_EXTENSION,
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+"""
+    if latex_code_style is None:
+        # We rely on the ptex2tex step
+        INTRO['latex'] += r"""%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -2123,6 +2383,7 @@ def define(FILENAME_EXTENSION,
 %% minted style without needing -DMINTED.
 % #endif
 """
+
     if latex_style == 'Springer_collection':
         INTRO['latex'] += r"""
 % #undef PREAMBLE
@@ -2270,9 +2531,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
 """
-    INTRO['latex'] += r"""
-\usepackage{ptex2tex}
-"""
     xelatex = option('xelatex')
 
     # Add packages for movies
@@ -2318,12 +2576,100 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
-        INTRO['latex'] += r"""
+        if latex_code_style is None:
+            # Rely on ptex2tex step
+            INTRO['latex'] += r"""
+\usepackage{ptex2tex}
+
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
 """
+        else:
+            # Rely on generating all code block environments directly
+            INTRO['latex'] += r"""
+% Packages for typesetting blocks of computer code
+\usepackage{framed,fancyvrb,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+
+\colorlet{commentcolour}{green!50!black}
+\colorlet{stringcolour}{red!60!black}
+\colorlet{keywordcolour}{magenta!90!black}
+\colorlet{exceptioncolour}{yellow!50!red}
+\colorlet{commandcolour}{blue!60!black}
+\colorlet{numpycolour}{blue!60!green}
+\colorlet{literatecolour}{magenta!90!black}
+\colorlet{promptcolour}{green!50!black}
+\colorlet{specmethodcolour}{violet}
+\colorlet{indendifiercolour}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_fenicsbook}{yellow!10}
+\colorlet{bar_fenicsbook}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+% New ansi colors
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+% Background for code blocks (parameter is color name)
+\newenvironment{cod}[1]{%
+   \def\FrameCommand{\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+% Background for complete program blocks (parameter 1 is color name
+% for background, parameter 2 is color for left bar)
+\newenvironment{pro}[2]{%
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+"""
+            if 'lst' in latex_code_style:
+                INTRO['latex'] += r'\usepackage{listingsutf8}' + '\n'
+                INTRO['latex'] += latex_code_lstlisting()
+            if 'pyg' in latex_code_style:
+                INTRO['latex'] += r'\usepackage{minted}' + '\n'
+                pygm_style = option('minted_latex_style=', default='default')
+                legal_pygm_styles = 'monokai manni rrt perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs vim pastie friendly native'.split()
+                if pygm_style not in legal_pygm_styles:
+                    print '*** error: wrong minted style "%s"' % pygm_style
+                    print '    must be among\n%s' % str(legal_pygm_styles)[1:-1]
+                    _abort()
+
+                INTRO['latex'] += r'\usemintedstyle{%s}' % pygm_style + '\n'
+
+
     if xelatex:
         INTRO['latex'] += r"""
 % xelatex settings
@@ -2339,7 +2685,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 """
     if latex_font == 'helvetica':
         INTRO['latex'] += r"""
@@ -2394,7 +2741,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=%(linkcolor)s,
     urlcolor=%(linkcolor)s,
@@ -2404,7 +2753,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   %% Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  %% number chapter, section, subsection
@@ -2989,13 +3338,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
     if option('device=', '') == 'paper':
         INTRO['latex'] = INTRO['latex'].replace('oneside,', 'twoside,')
-
-    # (We do replacement rather than parameter in the preamble since
-    # that will imply double %% in a lot of places)
-    pygm_style = option('minted_latex_style=', default='default')
-    if not pygm_style == 'default':
-        INTRO['latex'] = INTRO['latex'].replace('usemintedstyle{default}',
-                                       'usemintedstyle{%s}' % pygm_style)
 
     newcommands_files = list(sorted([name
                                      for name in glob.glob('newcommands*.tex')

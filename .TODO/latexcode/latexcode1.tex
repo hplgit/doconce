@@ -38,6 +38,22 @@
 \definecolor{lightgray}{gray}{.95}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{inputbackground}{rgb}{.95, .95, .85}
+
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{cbg_yellow1_vbar}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1_vbar}{rgb}{1, 0.75, 0.85}
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{cbg_blue1_vbar}{rgb}{0.7,     0.95686, 1}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{cbg_yellowgray_vbar}{rgb}{.95, .95, .65}
+
 \definecolor{outputbackground}{rgb}{.95, .95, .95}
 \definecolor{traceback}{rgb}{1, .95, .95}
 
@@ -55,9 +71,12 @@
 % various uses of \unskip (or not) at the end were fine-tuned by hand, so don't
 % randomly change them unless you're sure of the effect it will have.
 \usepackage{framed}
+\usepackage[framemethod=TikZ]{mdframed}
+
+% method: search for usepackage{framed - if not, include before framemethod=TikZ...
 
 % remove extraneous vertical space in boxes
-\setlength\fboxsep{0pt}
+%\setlength\fboxsep{0pt} %???? not important[[[
 
 % codecell is the whole input+output set of blocks that a Code cell can
 % generate.
@@ -72,13 +91,15 @@
 % definition here (a thin vertical bar) for reference, in case we find a
 % solution to the page break issue.
 
-%% \newenvironment{codecell}{%
-%%     \def\FrameCommand{\color{mediumgray} \vrule width 1pt \hspace{5pt}}%
-%%    \MakeFramed{\vspace{-0.5em}}}
-%%  {\unskip\endMakeFramed}
+%\newenvironment{codecell}{%
+%     \def\FrameCommand{\color{mediumgray} \vrule width 1pt \hspace{5pt}}%
+%    \MakeFramed{\vspace{-0.5em}}}
+%  {\unskip\endMakeFramed}
 
 % For now, make this a no-op...
 \newenvironment{codecell}{}
+
+
 
  \newenvironment{codeinput}{%
    \def\FrameCommand{\colorbox{inputbackground}}%
@@ -91,10 +112,22 @@
    \MakeFramed{\advance\hsize-\width \FrameRestore}}
  {\unskip\medskip\endMakeFramed}
 
-\newenvironment{traceback}{%
-   \def\FrameCommand{\colorbox{traceback}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\endMakeFramed}
+\newenvironment{code}[1]{%
+   \def\FrameCommand{\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+%\newenvironment{pro}[1][]{%
+%   \def\FrameCommand{\color[rgb]{0.7,0.95686,1}\vrule width 1mm\normalcolor\colorbox{#1}}%
+%   \MakeFramed{\advance\hsize-\width \FrameRestore}}
+% {\unskip\medskip\endMakeFramed}
+
+\newenvironment{pro}[2]{%
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+\newenvironment{test}[2]{#1, #2!}{end of test}
 
 % New code to replace ptex2tex:
 % Keep old doconce code that creates ptex2tex output
@@ -147,15 +180,34 @@
 % (maybe as latex_code_style=name)
 
 \usepackage{listingsutf8}
+%\lstset{
+%  %language=python,
+%  inputencoding=utf8x,
+%  extendedchars=\true,
+%  aboveskip=\smallskipamount,
+%  belowskip=\smallskipamount,
+%  xleftmargin=2mm,
+%  breaklines=true,
+%  basicstyle=\small \ttfamily,
+%  showstringspaces=false,
+%  keywordstyle=\color{blue}\bfseries,
+%  commentstyle=\color{myteal},
+%  stringstyle=\color{darkgreen},
+%  identifierstyle=\color{darkorange},
+%  columns=fullflexible,  % tighter character kerning, like verb
+%}
+
 \lstset{
-  language=python,
+  basicstyle=\small \ttfamily,
+}
+
+\lstdefinestyle{redblue}{
   inputencoding=utf8x,
   extendedchars=\true,
   aboveskip=\smallskipamount,
   belowskip=\smallskipamount,
   xleftmargin=2mm,
   breaklines=true,
-  basicstyle=\small \ttfamily,
   showstringspaces=false,
   keywordstyle=\color{blue}\bfseries,
   commentstyle=\color{myteal},
@@ -192,145 +244,23 @@
 
 
 \[\renewcommand{\vec}{\mathbf}\]
-\section{INF5620 Project 4}
+\section{Test}
 
-By Svenn-Arne Dragly
-
-We are working with the nonlinear diffusion equation,
-
-\[\rho u_t = \nabla \cdot (\alpha(u) \nabla u) + f(\vec x, t)\]
-
-with initial condition
-
-\[u(\vec x,0) = I(\vec x)\]
-
-and boundary condition
-
-\[\frac{\partial u}{\partial n} = 0\]
-
-$\rho$ is a constant and $\alpha(u)$ is known.
-\subsection{a) Finite difference approximation in time}
-
-We introduce a finite difference approximation in time using Backward
-Euler and Crank-Nicolson.
-
-\subsubsection{Backward Euler}
-
-For Backward Euler we rewrite our original equation as
-
-\begin{align}
-\left [\rho D_t^{-} u \right . & = \left . \nabla \cdot (\alpha(u) \nabla u) + f(\vec x, t) \right ]^n \\
-\rho \left ( \frac{u^{n} - u^{n-1}}{\Delta t} \right) & = \nabla \cdot (\alpha(u^n) \nabla u^n) + f(\vec x, t_n)  \\
-\rho u^{n} - \rho u^{n-1} & = \Delta t \left ( \nabla \cdot (\alpha(u^n) \nabla u^n) \right) + \Delta t f(\vec x, t_n)   \\
-\rho u^{n} - \Delta t \left ( \nabla \cdot (\alpha(u^n) \nabla u^n) \right) & = \Delta t f(\vec x, t_n) + \rho u^{n-1}
-\end{align}
-
-Multiplying by $\psi_i$ and integrating yields
-
-\begin{align}
-\int_{\Omega} \left( \rho u^{n} \psi_i - \Delta t \left ( \nabla \cdot (\alpha(u^n) \nabla u^n) \right) \psi_i \right) ~ dx & = \int_\Omega \Delta t f(\vec x, t_n) \psi_i + \rho u^{n-1} \psi_i ~ dx
-\end{align}
-
-We need to linearize the second term, which is done by integration by
-parts
-
-\begin{align}
-\int_{\Omega} \left( \rho u^{n} \psi_i + \Delta t \alpha(u^n) \nabla u^n \cdot \nabla \psi_i \right) ~ dx + \int_{\partial \Omega} \Delta t \alpha(u^n) \frac{\partial u^n}{\partial n} \psi_i ~ dx  & = \int_\Omega \Delta t f(\vec x, t_n) \psi_i + \rho u^{n-1} \psi_i ~ dx
-\end{align}
-
-Inserting for the boundary condition $\partial u / \partial n = 0$, we
-get
-
-\begin{align}
-\int_{\Omega} \left( \rho u^{n} \psi_i + \Delta t \alpha(u^n) \nabla u^n \cdot \nabla \psi_i \right) ~ dx  & = \int_\Omega \Delta t f(\vec x, t_n) \psi_i + \rho u^{n-1} \psi_i ~ dx
-\end{align}
-
-\subsubsection{Crank-Nicolson}
-\subsection{b) Picard iteration method at PDE level}
-
-\subsubsection{Starting from the Backward Euler formulation}
-
-We start with
-
-\begin{align}
-\rho u^{n} - \Delta t \left ( \nabla \cdot (\alpha(u^n) \nabla u^n) \right) & = \Delta t f(\vec x, t_n) + \rho u^{n-1}
-\end{align}
-
-and change the notation to use $u = u^n$ and $u_{1} = u^{n-1}$. We also
-introduce $u_{\_}$ as an approximation to $u^{n-1}$, which will first be
-set to the previous value, i.e. $u_{\_} = u^{n-1}$ in the first
-iteration. This results in
-
-\begin{align}
-\rho u - \Delta t \left ( \nabla \cdot (\alpha(u) \nabla u) \right) & = \Delta t f(\vec x, t_n) + \rho u_{1}
-\end{align}
-
-Because this is a nonlinear equation, we rewrite it to use picard
-iteration by replacing $u$ with $u_{\_}$ in $\alpha(u)$:
-
-\begin{align}
-\rho u - \Delta t \left ( \nabla \cdot (\alpha(u_{\_}) \nabla u) \right) & = \Delta t f(\vec x, t_n) + \rho u_{1}
-\end{align}
-
-This leads to the variational form
-
-\begin{align}
-\int_{\Omega} \Delta t \alpha(u_{\_}) \nabla u \cdot \nabla \psi_i ~ dx
-+ \int_{\Omega}  \rho u \psi_i ~ dx  - \int_\Omega \Delta t f(\vec x, t_n) \psi_i - \rho u_1 \psi_i ~ dx &= 0
-\end{align}
-
-or in more compact notation:
-
-\[\Delta t (\alpha(u_{\_}) \nabla u, \nabla \psi_i) + \rho(u, \psi_i) - \Delta t (f(\vec x, t_n), \psi_i) - \rho (u_1 ,\psi_i) = 0\]
-\subsection{c) Singe Picard iteration implementation in FEniCS}
-
-This is implemented in all the following exercises.
-\subsection{d) Convergence test}
-
-We now have to rewrite our problem into something that is solveable by
-FEniCS:
-\[\Delta t (\alpha(u_{\_}) \nabla u, \nabla \psi_i) + \rho(u, \psi_i) = \Delta t (f(\vec x, t_n), \psi_i) + \rho (u_1 ,\psi_i)\]
-which may be written in terms of $a$ and $L$:
-\[a(u,\psi_i) = \Delta t (\alpha(u_{\_}) \nabla u, \nabla \psi_i) + \rho(u, \psi_i)\]
-
-\[L(\psi_i) = \Delta t (f(\vec x, t_n), \psi_i) + \rho (u_1 ,\psi_i)\]
-
-In the code, we will write $v = \psi_i$.
-
-To perform a convergence test, we perform several experiments with
-different values of $h$ and calculate the error in each experiment. We
-then compare the error of two and two consecutive experiments,
-$E_i = Ch_i^r$ and $E_{i-1} Ch_{i-1}^r$, and find $r$:
-
-\[r = \frac{\ln(E_i / E_{i-1})}{\ln(h_i / h_{i-1})}\]
-
-This has been implemented in convergence.py and results in the following
-output:
-
-\begin{verbatim}
-h=  5.00e-02 E=  2.85e-04 r=1.28283
-h=  2.50e-02 E=  8.32e-05 r=1.77900
-h=  1.25e-02 E=  2.76e-05 r=1.59004
-h=  6.25e-03 E=  1.24e-05 r=1.15326
-h=  3.13e-03 E=  6.05e-06 r=1.03878
-h=  1.56e-03 E=  2.90e-06 r=1.05933
-h=  7.81e-04 E=  1.41e-06 r=1.03981
-h=  3.91e-04 E=  7.01e-07 r=1.00998
-h=  1.95e-04 E=  3.50e-07 r=1.00250
-\end{verbatim}
-
-As we approach finer meshes, we get that $r$ goes towards a constant
-$r = 1.0$, as expected.
-\subsection{e) Manufactured solution test}
 
 We use the method of manufactured solutions to get an indication of
 whether we have implemented the PDE correctly or not.
 
-\begin{codecell}
+\begin{test}{Hello}{World}
+Some text.
+\end{test}
 
-
-\begin{codeinput}
-\begin{lstlisting}
+%\begin{code}{inputbackground}
+\begin{pro}{cbg_gray}{bar_gray}
+%\begin{pro}{inputbackground_1}{hei}
+%\begin{codeinput}
+% pycod=yellow,lst:redblue
+% pycod=blue,minted
+\begin{lstlisting}[language=python,style=redblue]
 from sympy import *
 x, t, rho, dt = symbols('x[0] t rho dt')
 
@@ -345,37 +275,23 @@ u = u_simple(x, t)
 f = rho*diff(u, t) - diff(a(u)*diff(u, x), x)
 print ccode(f.simplify())
 \end{lstlisting}
-\end{codeinput}
-\begin{codeoutput}
+\end{pro}
+%\end{code}
+%\end{codeinput}
+
+\begin{code}{outputbackground}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
--rho*pow(x[0], 3)/3 + rho*pow(x[0], 2)/2 + 8*pow(t, 3)*pow(x[0], 7)/9 - 28*pow(t, 3)*pow(x[0], 6)/9 + 7*pow(t, 3)*pow(x[0], 5)/2 - 5*pow(t, 3)*pow(x[0], 4)/4 + 2*t*x[0] - t
+-rho*pow(x[0], 3)/3 + rho*pow(x[0], 2)/2 + 8*pow(t, 3)*pow(x[0], 7)/9
+- 28*pow(t, 3)*pow(x[0], 6)/9 + 7*pow(t, 3)*pow(x[0], 5)/2 -
+5*pow(t, 3)*pow(x[0], 4)/4 + 2*t*x[0] - t
 \end{Verbatim}
 
-\end{codeoutput}
+\end{code}
 
-\end{codecell}
 
-This has been implemented in the file manufactured.py, which results in
-the following output:
-
-\begin{verbatim}
-T=0.10 E=  6.68e-08
-T=1.00 E=  2.12e-05
-T=2.00 E=  2.04e-04
-T=5.00 E=  7.45e-03
-T=10.00 E=  1.28e-01
-\end{verbatim}
-
-We see that the error is quite big, even though we would might have
-expected a much smaller error for a manufactured solution test?
-\subsection{f) More precise manufactured solution}
-
-We may go further, and introduce a manufactured solution based on the
-Picard iteration $\alpha(u_1)$ in $f$:
-
-\begin{codecell}
+And now:
 
 
 \begin{codeinput}
@@ -389,57 +305,160 @@ print ccode(f.simplify())
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
--rho*pow(x[0], 2)*(2*x[0] - 3)/6 + t*pow(x[0], 4)*pow(dt - t, 2)*pow(x[0] - 1, 2)*(2*x[0] - 3)/3 + t*(2*x[0] - 1)*(pow(x[0], 4)*pow(dt - t, 2)*pow(2*x[0] - 3, 2) + 36)/36
+-rho*pow(x[0], 2)*(2*x[0] - 3)/6 +
+t*pow(x[0], 4)*pow(dt - t, 2)*pow(x[0] - 1, 2)*
+(2*x[0] - 3)/3 + t*(2*x[0] - 1)*
+(pow(x[0], 4)*pow(dt - t, 2)*pow(2*x[0] - 3, 2) + 36)/36
 \end{Verbatim}
 
 \end{codeoutput}
 
-\end{codecell}
-
-This results in the following output:
-
-\begin{verbatim}
-T=0.10 E=  3.05e-08
-T=1.00 E=  1.49e-05
-T=2.00 E=  1.92e-04
-T=5.00 E=  7.43e-03
-T=10.00 E=  1.28e-01
-\end{verbatim}
-
-These results are in fact worse than without our improvement. Perhaps
-something else is wrong?
-\subsection{g) Errors in FEniCS}
-
-Some of the numerical errors in the above programs have the following
-sources:
-
-\begin{itemize}
-\itemsep1pt\parskip0pt\parsep0pt
-\item
-  Time step from the backward Euler scheme.
-\item
-  Using only one Picard iteration.
-\item
-  Degree of our basis functions.
-\item
-  Evaluation of integrals in inner products.
-\end{itemize}
-\subsection{h) Nonlinear diffusion of Gaussian function}
-
-This exercise is implemented in gaussian.py.
-
-\begin{codecell}
-
 
 \begin{codeinput}
 \begin{lstlisting}
+import sys, os
+import numpy as np
 
+def bumpy_road(url=None, m=60, b=80, k=60, v=5, cy=False):
+    """
+    Solve model for verticle vehicle vibrations.
+
+    =========   ==============================================
+    variable    description
+    =========   ==============================================
+    url         either URL of file with excitation force data,
+                or name of a local file
+    m           mass of system
+    b           friction parameter
+    k           spring parameter
+    v           (constant) velocity of vehicle
+    cy          Cython version of function solver
+    Return      data (list) holding input and output data
+                [x, t, [h,a,u], [h,a,u], ...]
+    =========   ==============================================
+    """
+    # Download file (if url is not the name of a local file)
+    if url.startswith('http://') or url.startswith('file://'):
+        import urllib
+        filename = os.path.basename(url)  # strip off path
+        urllib.urlretrieve(url, filename)
+    else:
+        # Check if url is the name of a local file
+        filename = url
+        if not os.path.isfile(filename):
+            print url, 'must be a URL or a filename'
+            sys.exit(1)
+
+    # Load file data into array h_data
+    try:
+        h_data = np.loadtxt(filename)  # read numpy array from file
+    except ValueError:
+        print 'Wrong format in file', url
+        sys.exit(1)
+
+    x = h_data[0,:]                # 1st column: x coordinates
+    h_data = h_data[1:,:]          # other columns: h shapes
+
+    t = x/v                        # time corresponding to x
+    dt = t[1] - t[0]
+    if dt > 2/np.sqrt(k/float(m)):
+        print 'Unstable scheme'
+
+    if cy:
+        from solver_cy import solver, Spring
+        s = Spring(k)
+    else:
+        from solver import solver
+
+        def s(u):
+            return k*u
+
+    data = [x, t]      # key input and output data (arrays)
+    for i in range(h_data.shape[0]):
+        h = h_data[i,:]            # extract a column
+        a = acceleration(h, x, v)
+        F = -m*a
+
+        u, t = solver(I=0, V=0, m=m, b=b, s=s, F=F, t=t,
+                      damping='linear')
+        data.append([h, F, u])
+    return data
+
+def acceleration(h, x, v):
+    """Compute 2nd-order derivative of h."""
+    # Method: standard finite difference aproximation
+    d2h = np.zeros(h.size)
+    dx = x[1] - x[0]
+    for i in range(1, h.size-1, 1):
+        d2h[i] = (h[i-1] - 2*h[i] + h[i+1])/dx**2
+    # Extraplolate end values from first interior value
+    d2h[0] = d2h[1]
+    d2h[-1] = d2h[-2]
+    a = d2h*v**2
+    return a
+
+def acceleration_vectorized(h, x, v):
+    """Compute 2nd-order derivative of h. Vectorized version."""
+    d2h = np.zeros(h.size)
+    dx = x[1] - x[0]
+    d2h[1:-1] = (h[:-2] - 2*h[1:-1] + h[2:])/dx**2
+    # Extraplolate end values from first interior value
+    d2h[0] = d2h[1]
+    d2h[-1] = d2h[-2]
+    a = d2h*v**2
+    return a
+
+def prepare_input():
+    url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
+    m = 60
+    k = 60
+    v = 5
+    try:
+        b = float(sys.argv[1])
+    except IndexError:
+        b = 80  # default
+    return url, m, b, k, v
+
+def command_line_options():
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--m', '--mass', type=float,
+                        default=60, help='mass of vehicle')
+    parser.add_argument('--k', '--spring', type=float,
+                        default=60, help='spring parameter')
+    parser.add_argument('--b', '--damping', type=float,
+                        default=80, help='damping parameter')
+    parser.add_argument('--v', '--velocity', type=float,
+                        default=5, help='velocity of vehicle')
+    parser.add_argument('--cython', action='store_true')
+    url = 'http://hplbit.bitbucket.org/data/bumpy/bumpy.dat.gz'
+    parser.add_argument('--roadfile', type=str,
+              default=url, help='filename/URL with road data')
+    args = parser.parse_args()
+    # Extract input parameters
+    m = args.m; k = args.k; b = args.b; v = args.v
+    url = args.roadfile; cy = args.cython
+    return url, m, b, k, v, cy
+
+if __name__ == '__main__':
+    #url, m, b, k, v = prepare_input()
+    url, m, b, k, v, cy = command_line_options()
+
+    data = bumpy_road(url=url, m=m, b=b, k=m, v=v, cy=cy)
+
+    # Root mean square values
+    u_rms = [np.sqrt((1./len(u))*np.sum(u**2))
+             for h, F, u in data[2:]]
+    print 'u_rms:', u_rms
+    print 'Simulated for t in [0,%g]' % data[1][-1]
+
+    # Save data list to file
+    import cPickle
+    outfile = open('bumpy.res', 'w')
+    cPickle.dump(data, outfile)
+    outfile.close()
 \end{lstlisting}
 \end{codeinput}
-
-\end{codecell}
-
-
 
 \end{document}
 

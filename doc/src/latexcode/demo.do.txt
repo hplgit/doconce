@@ -1,0 +1,287 @@
+TITLE: Demonstration of DocOnce support for LaTeX code block environments
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+__Summary.__
+This note demonstrates the DocOnce capabilities for generating LaTeX
+code for verbatim blocks of computer code. These new capabilities
+replaces the need for both the stand-alone program `ptex2tex` and
+the simplified `doconce ptex2tex` utility. In fact, the
+new capabilities are more flexible than `ptex2tex` and results in
+much cleaner code.
+
+======= Blocks of computer code in LaTeX =======
+
+===== History =====
+
+Originally, DocOnce relied on generating code for `ptex2tex` rather than
+plain LaTeX, the reason being that `ptex2tex` offered about 40 different
+styles for typesetting verbatim blocks of code. The `ptex2tex` utility
+relies on a comprehensive configure file for setting the style of every
+code environment (`pycod`, `fpro`, `sys`, etc.). A simpler and quicker
+alternative, `doconce ptex2tex` was developed later such that DocOnce
+was not dependent on the comprehensive `ptex2tex` set up.
+
+In 2015, a new implementation in DocOnce could replace `ptex2tex` and
+`doconce ptex2tex`, and in fact generate LaTeX code directly.
+Rather than offering a range of packages for typesetting computer code,
+as the `ptex2tex` tool did, the implementation made use of only three
+choices: `fancyvrb`, `minted`, or `listing`.
+
+===== Quick overview of the functionality =====
+
+When running `doconce format latex mydoc` or `doconce format pdflatex mydoc`,
+the command-line argument `--latex_code_style=...` specifies the typesetting
+of blocks of computer code. The result of the `doconce format` command
+is then a LaTeX file `mydoc.tex`, which can be processed by `latex`,
+`pdflatex`, or `xelatex`.
+
+We use the term *code environment* for the DocOnce environments in which
+blocks of code are typset. For example, the `pycod` environment is
+surrounded by the `!bc pycod` and `!ec` directives. DocOnce supports
+a lot of such environments: `pycod` for code snippets in Python, `pypro`
+for complete executable Python programs, `fcod` and `fpro` for
+snippets and complete programs in Fortran, `cppcod` and `cpppro` for
+the C++ counterparts, `mcod` and `mpro` for Matlab, to mention some.
+
+The user can choose between three well-known packages for typesetting
+computer code in LaTeX:
+
+ * `vrb`: `fancyvrb` and the `Verbatim` LaTeX environment
+ * `pyg`: `minted`, i.e., the Pygments tool, and the `minted` LaTeX environment
+ * `lst`: `listingsutf8` and the `lstlisting` LaTeX environment
+
+The terms `vrb`, `pyg`, and `lst` are the abbreviations for these
+packages/environments on the command line when running `doconce format`.
+
+In addition, the user can specify a possibly colored background for
+the blocks of computer code and also set the parameters in the
+various environments. This information can be specified for each
+DocOnce code environment (`pycod`, `sys`, etc.) independently, including a
+common default choice for the code environments that are not specified.
+
+===== The simplest choice: a single LaTeX environment for all blocks =====
+
+The following command speficies the `Verbatim` (`vrb`)
+environment for all code blocks:
+
+!bc sys
+Terminal> doconce format pdflatex mydoc --latex_code_style=vrb
+!ec
+A "DocOnce demo document": "doc.do.txt.html" has been made to illustrate
+how the various typesettings look like. The document contains
+a data file with the code environment `dat`, a complete executable
+Python program in the code environment `pypro`, and a terminal session
+in the code environment `sys`. The result of
+`--latex_code_style=vrb` gives the most plain and standard way of
+typesetting verbatim code blocks in LaTeX, see "the result": "doc_1.pdf".
+Or more precisely, DocOnce generates a `Verbatim` environment with
+several parameters set:
+
+!bc latexcod
+\begin{Verbatim}[numbers=none,fontsize=\\fontsize{9pt}{9pt},%
+                 baselinestretch=0.95,xleftmargin=2mm]
+...
+\end{Verbatim}
+!ec
+This results in slightly smaller font and slightly squeezed lines in
+the code block. It matches well running text in 10pt font.
+
+The `xleftmargin=2mm` parameter can be explicitly set to something
+else on the command line: `--latex_code_leftmargin=7` (e.g.). The number
+is measured in mm. (Using square brackets, as shown below, it can also
+be set individually for different code environments.)
+
+===== Using the `minted` (Pygments) tool =====
+
+Replacing `vrb` by `pyg` switches the LaTeX environments to `minted`:
+
+!bc sys
+Terminal> doconce format pdflatex mydoc --latex_code_style=vrb
+!ec
+Now, "the resulting PDF file": "doc_vrb.pdf"
+has typesetting of computer code that depends
+on the programming language. For example, the Python program leads to
+
+!bc latexcod
+\begin{minted}[%
+   fontsize=\\fontsize{9pt}{9pt},linenos=false,%
+   baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+...
+\end{minted}
+!ec
+
+!bwarning Remember `-shell-escape` when compiling `minted` (Pygments) code!
+The `minted` LaTeX environment requires `latex` or `pdflatex` to be
+run with the `-shell-escape` option:
+
+!bc sys
+Terminal> pdflatex -shell-escape mydoc
+!ec
+!ewarning
+
+The `minted` style to be used can be
+specified by the `--minted_latex_style=` option, e.g.,
+
+!bc sys
+Terminal> doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style
+!ec
+The `perldoc` choice "changes the colors": "doc_pyg_perldoc.pdf" from
+the default (Pygments `default`) "choice": "doc_pyg.pdf" generated above.
+
+===== Using the `lstlisting` tool =====
+
+The third package for typesetting of verbatim blocks of code is
+`listingsutf8` and the `lstlisting` LaTeX environment, which in
+the following most plain form gives a "look": "doc_lst.pdf" not
+much different from the `Verbatim` environment:
+
+!bc sys
+Terminal> doconce format pdflatex mydoc --latex_code_style=lst
+!ec
+The resulting LaTeX code is:
+
+!bc latexcod
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
+...
+\end{listlisting}
+!ec
+However, all possible `lstlisting` options can be set, as will
+be shown later.
+
+===== Adding a colored background =====
+
+In the previous example, we can add one of the predefined backgrounds
+in DocOnce:
+
+!bc sys
+doconce format pdflatex doc --latex_code_style=lst-fenicsbook
+!ec
+The `fenicsbook` background is "light yellow": "doc_lst_fenicsyellow.pdf".
+For colored backgrounds, one should notice that the `pro` code environments
+(as in `pypro`)
+for complete executable programs get a 1mm slightly darker bar at the left
+side of the code block. This almost invisible color change indicates for
+the reader that the code can be copied and run as it stands.
+(The `cod` code environments are used for snippets that will not
+normally run unless some additional statements is supplied.)
+
+The general specification of a background is `pkg-bg`, where
+`pkg` is the package specification (`vrb`, `pyg`, or `lst`) and `bg`
+is the DocOnce name of a background:
+
+ * `gray`: light gray
+ * `yellowgray`: light yellow, somewhat gray-ish
+ * `fenicsbook`: light yellow
+ * `yellow1`: yellow
+ * `blue1`: light blue
+ * `red1`: light red, somewhat apricot-ish
+ * `white`: no background
+
+If you want to tailor the background color, say change the `yellow1`
+color to have RGB values (0.95, 0.95, 0.8) rather than (0.98, 0.98, 0.8),
+autoedit the `.tex` file with a regular expression:
+
+!bc sys
+Terminal> doconce subst 'yellow1\}\{rgb.+' \
+          'yellow1{rgb}{0.95, 0.95, 0.8} mydoc.tex
+!ec
+or just replace the exact text:
+
+!bc sys
+Terminal> doconce replace \
+          'cbg_yellow1}{rgb}{.98, .98, 0.8}' \
+          'cbg_yellow1}{rgb}{.95, .95, 0.8}' mydoc.tex
+!ec
+
+===== Setting LaTeX environment parameters =====
+
+It is easy to specify parameters to the `lstlisting` or the two
+other LaTeX environments:
+
+!bc sys
+Terminal> doconce format pdflatex doc "--latex_code_style=lst-fenicsbook[numbers=left,numberstyle=\\tiny,numbersep=15pt]"
+!ec
+These parameters specifies "line numbers in the code blocks": "doc_lst_fenicsbook_linenos.pdf". *Note that any backslash in LaTeX command must be a
+double backslash* on the command line!
+
+===== Specifying individual code environments =====
+
+The colored background might be appropriate for computer code in the
+previous example, but maybe not so appropriate for the terminal
+session. Let us typeset the terminal session using the `Verbatim`
+environment, but rely on `lst` without line numbers as above for the
+other code environments:
+
+!bc sys
+Terminal> doconce format pdflatex doc \
+          "--latex_code_style=default:lst-fenicsbook@sys:vrb"
+!ec
+That is, we specify  the default choice (`default`) and the `sys`
+environment. The specifications are separated by `@`. One can
+add parameters to the LaTeX environments, e.g.,
+
+!bc sys
+Terminal> doconce format pdflatex doc \
+  "--latex_code_style=default:lst-fenicsbook[numbers=left]@sys:vrb"
+!ec
+Here is a more fancy typesetting of `sys` environments with lines
+above and below and a title `Terminal` inside a box:
+
+!bc sys
+Terminal> doconce format pdflatex doc "--latex_code_style=default:lst-fenicsbook@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+!ec
+"Here is the result": "doc_lst_sys.pdf".
+
+===== Specifying the `lst` style =====
+
+DocOnce comes with some predefined styles for the `lstlisting` LaTeX
+environment:
+
+ * `simple` for no coloring of code (but comments are typeset
+   with italic font)
+ * `redblue` for coloring of code dominated by red and blue
+ * `fenicsbook` for a coloring that matches the previously
+   shown `fenicsbook` background (but the background is included in the
+   style, so do not also specify the `fenicsbook` background!).
+
+The user can also define any number of additional styles and put them
+in a file, say `.mylststyles`, and give them to `doconce format` through
+the command-line option `--latex_code_lststyles=.mylststyles`.
+Just include `\lstdefinestyle{name}{...}` commands in the file.
+
+Here is an example of specifying the `fenicsbook` style with yellow
+background, coloring of code, and a frame around all code blocks:
+
+!bc sys
+Terminal> doconce format pdflatex doc \
+  "--latex_code_style=default:lst[style=fenicsbook]"
+!ec
+You may check out the "corresponding result": "doc_lst_stylefb.pdf".
+
+===== General syntax for `--latex_code_style=` =====
+
+The `--latex_code_style=` option can take a set of code environment
+specifications separated by `@`. Each specification is of the form
+`envir:pgk-bg[prms]`,
+where `envir` is the code environment name (`pypro`, `sys`, etc., or `default`),
+`pkg` is the package name (`vrb`, `pyg`, `lst`), `bg` is
+the DocOnce name of a potential background (can be omitted), and
+`prms` is a list of parameters for the LaTeX environment.
+
+As an example, we may specify a default typesetting with `lst` and the `blue1`
+background, using the `redblue` style and numbering of lines;
+then we let the `dat` environment be typeset with the `Verbatim`
+environment with a light gray background; and finally we let `sys` also use
+`Verbatim`, but with many parameters for more fancy layout. The
+value of `--latex_code_style=` is then (split over several lines for
+increased readability - it must be one line as a terminal command!):
+
+!bc
+"--latex_code_style=default:lst-blue1[style=redblue,
+   numbers=left,numberstyle=\\tiny,stepnumber=3,
+   numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray
+   @sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
+   framesep=2.5mm,framerule=0.7pt]"
+!ec
+Here is the "result": "doc_lots.pdf" of this detailed specification.

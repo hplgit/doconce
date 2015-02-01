@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
-<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
+<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format notebook,IPython notebook,notebook,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
 
 <title>DocOnce Description</title>
 
@@ -200,12 +200,15 @@ Automatically generated HTML file from DocOnce source
                1,
                'doconce2formats',
                'doconce2formats'),
-              (' Generating a makefile ', 2, None, '___sec103'),
-              (' Preprocessing ', 2, None, '___sec104'),
-              (' Removal of inline comments ', 2, None, '___sec105'),
-              (' Notes ', 2, None, '___sec106'),
+              (' Generating a makefile ', 2, 'do2any:make', 'do2any:make'),
+              (' Preprocessing ', 2, 'do2any:pre', 'do2any:pre'),
+              (' Removal of inline comments ',
+               2,
+               'do2any:inlinecomments',
+               'do2any:inlinecomments'),
+              (' Notes ', 2, 'do2any:notes', 'do2any:notes'),
               (' Demo of different formats ', 2, None, '___sec107'),
-              (' HTML ', 2, None, '___sec108'),
+              (' HTML ', 2, 'do2any:html', 'do2any:html'),
               (' Basics ', 3, None, '___sec109'),
               (' Typesetting of Code ', 3, None, '___sec110'),
               (' Handling of Movies ', 3, None, '___sec111'),
@@ -216,8 +219,8 @@ Automatically generated HTML file from DocOnce source
               (' Filenames ', 3, None, '___sec116'),
               (' URL to files hosted on GitHub ', 3, None, '___sec117'),
               (' Other HTML options ', 3, None, '___sec118'),
-              (' Blog Posts ', 2, None, '___sec119'),
-              (' Pandoc and Markdown ', 2, None, '___sec120'),
+              (' Blog Posts ', 2, 'do2any:blog', 'do2any:blog'),
+              (' Pandoc and Markdown ', 2, 'do2any:pandoc', 'do2any:pandoc'),
               (' Markdown to HTML conversion ', 3, None, '___sec121'),
               (' Strict Markdown ', 3, None, '___sec122'),
               (' GitHub-flavored Markdown ', 3, None, '___sec123'),
@@ -230,50 +233,63 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec126'),
-              (' LaTeX ', 2, None, '___sec127'),
-              (' PDFLaTeX ', 2, None, '___sec128'),
-              (' XeLaTeX ', 2, None, '___sec129'),
-              (' From PDF to e-book formats ', 2, None, '___sec130'),
-              (' Microsoft Word or LibreOffice ', 2, None, '___sec131'),
-              (' Plain ASCII Text ', 2, None, '___sec132'),
-              (' reStructuredText ', 2, None, '___sec133'),
-              (' Sphinx ', 2, None, '___sec134'),
-              (' The manual Sphinx procedure ', 3, None, '___sec135'),
-              (' Wiki Formats ', 2, None, '___sec136'),
-              (' Google Docs ', 2, None, '___sec137'),
-              (' Tweaking the DocOnce Output ', 2, None, '___sec138'),
-              (' Options for the `doconce` commands ', 1, None, '___sec139'),
+              (' LaTeX ', 2, 'do2any:latex', 'do2any:latex'),
+              (' PDFLaTeX ', 2, 'do2any:pdflatex', 'do2any:pdflatex'),
+              (' XeLaTeX ', 2, 'do2any:xelatex', 'do2any:xelatex'),
+              (' From PDF to e-book formats ',
+               2,
+               'do2any:epub',
+               'do2any:epub'),
+              (' Microsoft Word or LibreOffice ',
+               2,
+               'do2any:MS:ooffice',
+               'do2any:MS:ooffice'),
+              (' IPython Notebooks ', 2, 'do2any:ipynb', 'do2any:ipynb'),
+              (' Plain ASCII Text ', 2, 'do2any:ascii', 'do2any:ascii'),
+              (' reStructuredText ', 2, 'do2any:rst', 'do2any:rst'),
+              (' Sphinx ', 2, 'do2any:sphinx', 'do2any:sphinx'),
+              (' The manual Sphinx procedure ', 3, None, '___sec136'),
+              (' Wiki Formats ', 2, 'do2any:wiki', 'do2any:wiki'),
+              (' Google Docs ',
+               2,
+               'do2any:google:docs',
+               'do2any:google:docs'),
+              (' Tweaking the DocOnce Output ',
+               2,
+               'do2any:tweaking',
+               'do2any:tweaking'),
+              (' Options for the `doconce` commands ', 1, None, '___sec140'),
               (' `doconce format` command-line options ',
                2,
                None,
-               '___sec140'),
+               '___sec141'),
               (' Installation of DocOnce and its Dependencies ',
                1,
                'install:doconce',
                'install:doconce'),
-              (' DocOnce ', 2, None, '___sec142'),
-              (' Dependencies ', 2, None, '___sec143'),
-              (' Preprocessors ', 3, None, '___sec144'),
-              (' Image file handling ', 3, None, '___sec145'),
-              (' Spellcheck ', 3, None, '___sec146'),
-              (' Bibliography ', 3, None, '___sec147'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec148'),
-              (' LaTeX packages ', 3, None, '___sec149'),
-              (' reStructuredText (reST) Output ', 3, None, '___sec150'),
-              (' Sphinx Output ', 3, None, '___sec151'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec152'),
-              (' Epydoc Output ', 3, None, '___sec153'),
-              (' Analyzing file differences ', 3, None, '___sec154'),
+              (' DocOnce ', 2, None, '___sec143'),
+              (' Dependencies ', 2, None, '___sec144'),
+              (' Preprocessors ', 3, None, '___sec145'),
+              (' Image file handling ', 3, None, '___sec146'),
+              (' Spellcheck ', 3, None, '___sec147'),
+              (' Bibliography ', 3, None, '___sec148'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec149'),
+              (' LaTeX packages ', 3, None, '___sec150'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec151'),
+              (' Sphinx Output ', 3, None, '___sec152'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec153'),
+              (' Epydoc Output ', 3, None, '___sec154'),
+              (' Analyzing file differences ', 3, None, '___sec155'),
               (' Quick Debian/Ubuntu Install ',
                2,
                'install:debian:script',
                'install:debian:script'),
-              (' Basic Parsing Ideas ', 1, None, '___sec156'),
+              (' Basic Parsing Ideas ', 1, None, '___sec157'),
               (' Typesetting of Function Arguments, Return Values, and Variables ',
                2,
                None,
-               '___sec157'),
-              (' References ', 1, None, '___sec158')]}
+               '___sec158'),
+              (' References ', 1, None, '___sec159')]}
 end of tocinfo -->
 
 <body>
@@ -320,10 +336,10 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._manual022.html#___sec87" style="font-size: 80%;">Misc</a></li>
      <!-- navigation toc: --> <li><a href="._manual023.html#manual:mako" style="font-size: 80%;">Mako Programming</a></li>
      <!-- navigation toc: --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec139" style="font-size: 80%;">Options for the `doconce` commands</a></li>
+     <!-- navigation toc: --> <li><a href="._manual028.html#___sec140" style="font-size: 80%;">Options for the `doconce` commands</a></li>
      <!-- navigation toc: --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec156" style="font-size: 80%;">Basic Parsing Ideas</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec158" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec157" style="font-size: 80%;">Basic Parsing Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec159" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -339,7 +355,7 @@ MathJax.Hub.Config({
 <a name="part0015"></a>
 <!-- !split -->
 
-<h2 id="mathtext">LaTeX Blocks of Mathematical Text<a name="mathtext"></a></h2>
+<h2 id="mathtext">LaTeX Blocks of Mathematical Text</h2>
 
 <p>
 Blocks of mathematical text are like computer code blocks, but
@@ -358,7 +374,7 @@ line and followed by a newline.
 !et
 </pre></div>
 
-<h3 id="___sec49">Support of LaTeX Math in Various Output Formats <a name="___sec49"></a></h3>
+<h3 id="___sec49">Support of LaTeX Math in Various Output Formats </h3>
 
 <p>
 The support of LaTeX mathematics varies among the formats:
@@ -405,7 +421,7 @@ The <code>.iba</code> files of iBooks documents can be renamed to <code>.zip</co
 the file can be unzipped, and the XML code of iBooks documents
 are then available (see some <a href="http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html" target="_self">ideas</a>).
 
-<h3 id="___sec50">Dealing with Mathematics in Formats without LaTeX Math Support <a name="___sec50"></a></h3>
+<h3 id="___sec50">Dealing with Mathematics in Formats without LaTeX Math Support </h3>
 
 <p>
 If the document targets formats with and without support of LaTeX
@@ -431,7 +447,7 @@ alternatively:
 % endif
 </pre></div>
 
-<h3 id="___sec51">Mathematics for PowerPoint/OpenOffice <a name="___sec51"></a></h3>
+<h3 id="___sec51">Mathematics for PowerPoint/OpenOffice </h3>
 
 <p>
 If you have LaTeX mathematics written in DocOnce, it is fairly easy

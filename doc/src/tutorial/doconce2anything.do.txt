@@ -622,8 +622,27 @@ LaTeX. The minor differences are described in separate sections
 of the documentation of the DocOnce to LaTeX translation.
 !enotice
 
-Making a LaTeX file `mydoc.tex` from `mydoc.do.txt` is done in two steps:
-1) compile the DocOnce source to the `ptex2tex` format, and 2) compile
+Making a LaTeX file `mydoc.tex` from `mydoc.do.txt` can be done in two
+ways:
+
+ o direct translation to a `.tex` file
+ o translation to a `.p.tex` file
+
+In the latter case, one must apply the `ptex2tex` program or the
+simplified `doconce ptex2tex` program to translate the `.p.tex` file
+to a plain `.tex` file. This step involves the specification of how
+blocks of verbatim code should be typeset in LaTeX. Before 2015,
+DocOnce always translated to the `.p.tex` syntax and required the
+use of `ptex2tex` or `doconce ptex2tex`. Now, one can choose a direct
+translation, which is simpler and actually more versatile than even
+using the `ptex2tex` program.
+
+Direct translation is specified by the `--latex_code_style=` command-line
+option. A "separate document": "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" describes how this option is used and the demonstrates
+various possibilities that are available.
+
+Here, we describe the old translation via a `.p.tex` file, i.e., first we
+compile the DocOnce source to the `ptex2tex` format, and then we compile
 the `ptex2tex` format to standard LaTeX.
 The "`ptex2tex`": "http://code.google.com/p/ptex2tex" format can be
 viewed as an extended LaTeX. For DocOnce users, the `ptex2tex` format
@@ -672,10 +691,16 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.
 idx{`ptex2tex` program}
 idx{`ptex2tex` doconce version}
 
-__Step 1.__ Filter the doconce text to the `ptex2tex` "pre-LaTeX form"
+__Step 1.__ Filter the doconce text to the `ptex2tex` pre-LaTeX form
 `mydoc.p.tex`:
+
 !bc sys
 Terminal> doconce format latex mydoc
+!ec
+Or filter the doconce text directly to valid LaTeX:
+
+!bc sys
+Terminal> doconce format latex mydoc --latex_code_style=vrb
 !ec
 
 LaTeX-specific commands ("newcommands") in math formulas and similar
@@ -733,13 +758,18 @@ mark overful lines (hboxes).
 
 idx{LaTeX syntax highlighting}
 
-__Step 2.__ Run `ptex2tex` (if you have installed the
+__Step 2.__ In case you did not specify the `--latex_code_style=` option,
+you must run `ptex2tex` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
+
 !bc sys
 Terminal> ptex2tex mydoc
 !ec
-In case you do not have `ptex2tex`, you may run the (simplified) version
-that comes with DocOnce:
+If you do not have `ptex2tex`, or do not bother to make the required
+configuration file for `ptex2tex` (you may of course rely on the default
+file), a (simplified) version of `ptex2tex`
+that comes with DocOnce can be run:
+
 !bc sys
 Terminal> doconce ptex2tex mydoc
 !ec

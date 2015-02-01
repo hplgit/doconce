@@ -7,7 +7,7 @@ DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Dec 26, 2014
+:Date: Feb 1, 2015
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -517,6 +517,8 @@ or just drop the extension:
 
         Terminal> doconce format formatname mydoc
 
+.. _do2any:make:
+
 Generating a makefile
 ---------------------
 
@@ -541,6 +543,8 @@ various options that can be added to the basic commands.
 A handy feature of the generated ``make.py`` script is that it
 inserts checks for successful runs of the many ``doconce`` commands,
 and if something goes wrong, the script aborts.
+
+.. _do2any:pre:
 
 Preprocessing
 -------------
@@ -598,6 +602,8 @@ the result of running ``mako`` is available in
 ``tmp_mako__mydoc.do.txt``. By examining these files one can see exactly
 what the preprocessors have done.
 
+.. _do2any:inlinecomments:
+
 Removal of inline comments
 --------------------------
 
@@ -621,6 +627,8 @@ file by running:
 
 This action is convenient when a DocOnce document reaches its final form
 and comments by different authors should be removed.
+
+.. _do2any:notes:
 
 Notes
 -----
@@ -646,6 +654,8 @@ Demo of different formats
 A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/doconce_commands.html>`__.
 How to create the different formats is explained in more depth
 in the coming sections.
+
+.. _do2any:html:
 
 HTML
 ----
@@ -921,6 +931,8 @@ Other options:
    figures. ``X`` is ``top`` by default; other values are ``none`` (no rules),
    ``bottom`` and ``top+bottom``.
 
+.. _do2any:blog:
+
 Blog Posts
 ----------
 
@@ -1005,6 +1017,8 @@ to see blog posts with mathematics and code on WordPress.
 Speaking of WordPress, the related project `<http://pressbooks.com>`_ can take raw HTML code (from DocOnce, for
 instance) and produce very nice-looking books.  There is no support
 for mathematics in the text, though.
+
+.. _do2any:pandoc:
 
 Pandoc and Markdown
 -------------------
@@ -1190,6 +1204,8 @@ replace`` and ``doconce subst`` edits might be needed on the ``.mkd`` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
+.. _do2any:latex:
+
 LaTeX
 -----
 
@@ -1207,8 +1223,28 @@ LaTeX
 
 
 
-Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` is done in two steps:
-1) compile the DocOnce source to the ``ptex2tex`` format, and 2) compile
+Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` can be done in two
+ways:
+
+1. direct translation to a ``.tex`` file
+
+2. translation to a ``.p.tex`` file
+
+In the latter case, one must apply the ``ptex2tex`` program or the
+simplified ``doconce ptex2tex`` program to translate the ``.p.tex`` file
+to a plain ``.tex`` file. This step involves the specification of how
+blocks of verbatim code should be typeset in LaTeX. Before 2015,
+DocOnce always translated to the ``.p.tex`` syntax and required the
+use of ``ptex2tex`` or ``doconce ptex2tex``. Now, one can choose a direct
+translation, which is simpler and actually more versatile than even
+using the ``ptex2tex`` program.
+
+Direct translation is specified by the ``--latex_code_style=`` command-line
+option. A `separate document <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__ describes how this option is used and the demonstrates
+various possibilities that are available.
+
+Here, we describe the old translation via a ``.p.tex`` file, i.e., first we
+compile the DocOnce source to the ``ptex2tex`` format, and then we compile
 the ``ptex2tex`` format to standard LaTeX.
 The `ptex2tex <http://code.google.com/p/ptex2tex>`__ format can be
 viewed as an extended LaTeX. For DocOnce users, the ``ptex2tex`` format
@@ -1267,12 +1303,18 @@ either the ``ptex2tex`` program or DocOnce's (simplified) version of it:
 .. index:: ptex2tex doconce version
 
 **Step 1.**
-Filter the doconce text to the ``ptex2tex`` "pre-LaTeX form"
+Filter the doconce text to the ``ptex2tex`` pre-LaTeX form
 ``mydoc.p.tex``:
 
 .. code-block:: text
 
         Terminal> doconce format latex mydoc
+
+Or filter the doconce text directly to valid LaTeX:
+
+.. code-block:: text
+
+        Terminal> doconce format latex mydoc --latex_code_style=vrb
 
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files ``newcommands.tex``, ``newcommands_keep.tex``, or
@@ -1351,15 +1393,18 @@ mark overful lines (hboxes).
 .. index:: LaTeX syntax highlighting
 
 **Step 2.**
-Run ``ptex2tex`` (if you have installed the
+In case you did not specify the ``--latex_code_style=`` option,
+you must run ``ptex2tex`` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
 
 .. code-block:: text
 
         Terminal> ptex2tex mydoc
 
-In case you do not have ``ptex2tex``, you may run the (simplified) version
-that comes with DocOnce:
+If you do not have ``ptex2tex``, or do not bother to make the required
+configuration file for ``ptex2tex`` (you may of course rely on the default
+file), a (simplified) version of ``ptex2tex``
+that comes with DocOnce can be run:
 
 .. code-block:: text
 
@@ -1490,6 +1535,8 @@ If the minted style is used, ``latex`` (or ``pdflatex`` or ``xelatex``)
         Terminal> latex -shell-escape mydoc
         Terminal> dvipdf mydoc
 
+.. _do2any:pdflatex:
+
 PDFLaTeX
 --------
 
@@ -1514,6 +1561,8 @@ Then ``ptex2tex`` is run as explained above, and finally
         Terminal> bibitem mydoc     # if bibliography
         Terminal> pdflatex -shell-escape mydoc
 
+.. _do2any:xelatex:
+
 XeLaTeX
 -------
 
@@ -1531,6 +1580,8 @@ same way, except for the ``--xelatex`` flag to ``doconce format``:
         Terminal> doconce ptex2tex mydoc
         Terminal> xelatex mydoc
 
+.. _do2any:epub:
+
 From PDF to e-book formats
 --------------------------
 
@@ -1544,6 +1595,8 @@ However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The `Calibre <http://calibre-ebook.com/>`__
 program can produce epub, mobi, and other e-book formats from PDF,
 see a `description <http://www.dedoimedo.com/computers/latex-lyx-e-books.html>`__.
+
+.. _do2any:MS:ooffice:
 
 Microsoft Word or LibreOffice
 -----------------------------
@@ -1570,6 +1623,79 @@ file:
 The transformation works well for simple text files, but LaTeX mathematics
 does not work.
 
+.. _do2any:ipynb:
+
+IPython Notebooks
+-----------------
+
+.. index::
+   single: output format; notebook
+
+.. index:: IPython notebook
+
+.. index:: notebook
+
+DocOnce can generate json files for IPython notebook (Jupyter):
+
+.. code-block:: text
+
+        Terminal> doconce format ipynb mydoc  # results in mydoc.ipynb
+
+It is no guarantee that the notebook can be executed. For example,
+having the code
+
+.. code-block:: python
+
+        print sys.version
+
+will not execute unless ``sys`` is imported. While a book may show such
+code and skip (potentially tedious) initializing statements, they must
+be present in the notebook. To this end, use the ``!bc *hid`` environment
+for hidden code. In the present example, we use ``!bc pyhid`` to specify
+Python code that needs to be executed, but that should normally be
+hidden (other formats, with the exception of certain interactive Sphinx
+documents, will hide such code).
+
+.. code-block:: text
+
+        !bc pyhid
+        import sys
+        !ec
+
+The notebook will feature the ``import sys`` statement in a cell prior to the
+``print sys.version`` cell, and the latter will work.
+
+Similarly, if you import from your own modules, say ``from mymod import hello``,
+the ``mymod.py`` must be accessible for the notebook. Suppose this file
+is in ``src-test/mymod.py``. Then you need to add ``src-test`` to ``sys.path``
+for the import statement to work:
+
+.. code-block:: text
+
+        !bc pyhid
+        sys.path.append('src-test')
+        !ec
+
+Some code blocks may just be there for explanation and are not
+meant to be executed. These can be marked by ``!bc pycod-t`` (or
+``!bc Xcod-t`` for any supported programming language ``X``):
+
+.. code-block:: text
+
+        !bc pycod-t
+        if isinstance(myvar, float):
+            raise TypeError('myvar must be array, not %s' % type(myvar))
+        !ec
+
+The code segment above will then be typeset as verbatim text and not
+an executable cell, and there is no need to worry about a missing
+definition of ``myvar`` (which would cause problems in an executable cell).
+
+As with HTML files, you need to ensure that the notebook has access to
+figures and source code as requested.
+
+.. _do2any:ascii:
+
 Plain ASCII Text
 ----------------
 
@@ -1590,6 +1716,8 @@ computer source code:
 .. code-block:: text
 
         Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
+
+.. _do2any:rst:
 
 reStructuredText
 ----------------
@@ -1649,6 +1777,8 @@ Some links for going from LaTeX to Word are listed below.
  * `<http://tug.org/utilities/texconv/textopc.html>`_
 
  * `<http://nileshbansal.blogspot.com/2007/12/latex-to-openofficeword.html>`_
+
+.. _do2any:sphinx:
 
 Sphinx
 ------
@@ -1947,6 +2077,8 @@ depending the argument that follows ``!bc``: ``cod`` gives Python
 (``code-block:: python`` in Sphinx syntax) and ``cppcod`` gives C++, but
 all such arguments can be customized both for Sphinx and LaTeX output.
 
+.. _do2any:wiki:
+
 Wiki Formats
 ------------
 
@@ -2007,6 +2139,8 @@ the ``.gwiki`` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
 
+.. _do2any:google:docs:
+
 Google Docs
 -----------
 
@@ -2041,6 +2175,8 @@ This is not yet much tested. It remains to see how code becomes in
 Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the `googledoc2latex <http://code.google.com/p/googledoc2latex>`__ script can convert a Google document to LaTeX.
+
+.. _do2any:tweaking:
 
 Tweaking the DocOnce Output
 ---------------------------
@@ -2172,6 +2308,7 @@ here for convenience.
         --minted_latex_style=...
         
         Specify the minted style to be used for typesetting code in LaTeX.
+        See pygmetize -L styles for legal names.
         
         
         --pygments_html_style=...
@@ -2180,7 +2317,7 @@ here for convenience.
         in HTML.
         Default: default (other values: monokai, manni, rrt, perldoc,
         borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
-        vim, pastie, friendly, native).
+        vim, pastie, friendly, native, see pygmentize -L styles).
         none, no, off: turn off pygments to typeset computer code in HTML,
         use plain <pre> tags.
         highlight.js: use highlight.js syntax highlighting, not pygments.
@@ -2326,10 +2463,10 @@ here for convenience.
         
         Values of --html_raw_github_url=:
         safe or cdn.rawgit: use this for ready-made sites with potentially some traffic.
-        The URL becomes https:://cdn.rawgit.com/hplgit/doconce/...
+        The URL becomes https://cdn.rawgit.com/hplgit/doconce/...
         
         test or rawgit: use this for test purposes and development with low traffic.
-        The URL becomes https:://rawgit.com/hplgit/doconce/...
+        The URL becomes https://rawgit.com/hplgit/doconce/...
         
         github or raw.github: the URL becomes https://raw.github.com and may fail to
         load properly.
@@ -2386,6 +2523,11 @@ here for convenience.
         Set device to paper, screen, or other (paper impacts LaTeX output).
         
         
+        --number_all_equations
+        
+        Switch latex environments such that all equations get a number.
+        
+        
         --latex_style=...
         
         LaTeX style package used for the document.
@@ -2403,6 +2545,47 @@ here for convenience.
         --latex_font=...
         
         LaTeX font choice: helvetica, palatino, std (Computer Modern, default).
+        
+        
+        --latex_code_style=...
+        
+        Typesetting of code blocks.
+        pyg: use pygments (minted), style is set with --minted_latex_style=
+        lst: use lstlistings
+        vrb: use Verbatim (default)
+        
+        Specifications across languages:
+        pyg-blue1
+        lst, lst-yellowgray[style=redblue]
+        vrb[frame=lines,framesep=2.5mm,framerule=0.7pt]
+        
+        Detailed specification for each language:
+        default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+        
+        Here, Verbatim[frame=lines] is used for all code environments, except
+        pycod, pypro and sys, which have their own specifications.
+        pycod: lst package with redblue style (and white background)
+        pypro: lst package with default style and blue1 background
+        style, sys: Verbatim with the specified arguments and white background.
+        
+        (Note: @ is delimiter for the language specifications, syntax is
+        envir:package-background[style parameters]@)
+        
+        
+        
+        --latex_code_leftmargin=...
+        
+        Sets the left margin in code blocks. Default: 7 (mm).
+        
+        
+        --latex_code_bg=...
+        
+        Background color code blocks. Default: white.
+        
+        
+        --latex_code_lststyles=...
+        
+        Filename with LaTeX definitions of lst styles.
         
         
         --latex_bibstyle=...

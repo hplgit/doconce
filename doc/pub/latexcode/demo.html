@@ -1,0 +1,497 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Demonstration of DocOnce support for LaTeX code block environments">
+
+<title>Demonstration of DocOnce support for LaTeX code block environments</title>
+
+<!-- Bootstrap style: bootstrap_bloodish -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bloodish.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Blocks of computer code in LaTeX ', 1, None, '___sec0'),
+              (' History ', 2, None, '___sec1'),
+              (' Quick overview of the functionality ', 2, None, '___sec2'),
+              (' The simplest choice: a single LaTeX environment for all blocks ',
+               2,
+               None,
+               '___sec3'),
+              (' Using the `minted` (Pygments) tool ', 2, None, '___sec4'),
+              (' Using the `lstlisting` tool ', 2, None, '___sec5'),
+              (' Adding a colored background ', 2, None, '___sec6'),
+              (' Setting LaTeX environment parameters ', 2, None, '___sec7'),
+              (' Specifying individual code environments ',
+               2,
+               None,
+               '___sec8'),
+              (' Specifying the `lst` style ', 2, None, '___sec9'),
+              (' General syntax for `--latex_code_style=` ',
+               2,
+               None,
+               '___sec10')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Blocks of computer code in LaTeX</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;History</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick overview of the functionality</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The simplest choice: a single LaTeX environment for all blocks</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the `minted` (Pygments) tool</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the `lstlisting` tool</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Adding a colored background</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Setting LaTeX environment parameters</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying the `lst` style</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;General syntax for `--latex_code_style=`</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Demonstration of DocOnce support for LaTeX code block environments</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<p>
+<center><h4>Feb 1, 2015</h4></center> <!-- date -->
+<p>
+<b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
+code for verbatim blocks of computer code. These new capabilities
+replaces the need for both the stand-alone program <code>ptex2tex</code> and
+the simplified <code>doconce ptex2tex</code> utility. In fact, the
+new capabilities are more flexible than <code>ptex2tex</code> and results in
+much cleaner code.
+
+<p>
+
+
+
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0">Blocks of computer code in LaTeX </h1>
+
+<h2 id="___sec1">History </h2>
+
+<p>
+Originally, DocOnce relied on generating code for <code>ptex2tex</code> rather than
+plain LaTeX, the reason being that <code>ptex2tex</code> offered about 40 different
+styles for typesetting verbatim blocks of code. The <code>ptex2tex</code> utility
+relies on a comprehensive configure file for setting the style of every
+code environment (<code>pycod</code>, <code>fpro</code>, <code>sys</code>, etc.). A simpler and quicker
+alternative, <code>doconce ptex2tex</code> was developed later such that DocOnce
+was not dependent on the comprehensive <code>ptex2tex</code> set up.
+
+<p>
+In 2015, a new implementation in DocOnce could replace <code>ptex2tex</code> and
+<code>doconce ptex2tex</code>, and in fact generate LaTeX code directly.
+Rather than offering a range of packages for typesetting computer code,
+as the <code>ptex2tex</code> tool did, the implementation made use of only three
+choices: <code>fancyvrb</code>, <code>minted</code>, or <code>listing</code>.
+
+<h2 id="___sec2">Quick overview of the functionality </h2>
+
+<p>
+When running <code>doconce format latex mydoc</code> or <code>doconce format pdflatex mydoc</code>,
+the command-line argument <code>--latex_code_style=...</code> specifies the typesetting
+of blocks of computer code. The result of the <code>doconce format</code> command
+is then a LaTeX file <code>mydoc.tex</code>, which can be processed by <code>latex</code>,
+<code>pdflatex</code>, or <code>xelatex</code>.
+
+<p>
+We use the term <em>code environment</em> for the DocOnce environments in which
+blocks of code are typset. For example, the <code>pycod</code> environment is
+surrounded by the <code>!bc pycod</code> and <code>!ec</code> directives. DocOnce supports
+a lot of such environments: <code>pycod</code> for code snippets in Python, <code>pypro</code>
+for complete executable Python programs, <code>fcod</code> and <code>fpro</code> for
+snippets and complete programs in Fortran, <code>cppcod</code> and <code>cpppro</code> for
+the C++ counterparts, <code>mcod</code> and <code>mpro</code> for Matlab, to mention some.
+
+<p>
+The user can choose between three well-known packages for typesetting
+computer code in LaTeX:
+
+<ul>
+ <li> <code>vrb</code>: <code>fancyvrb</code> and the <code>Verbatim</code> LaTeX environment</li>
+ <li> <code>pyg</code>: <code>minted</code>, i.e., the Pygments tool, and the <code>minted</code> LaTeX environment</li>
+ <li> <code>lst</code>: <code>listingsutf8</code> and the <code>lstlisting</code> LaTeX environment</li>
+</ul>
+
+The terms <code>vrb</code>, <code>pyg</code>, and <code>lst</code> are the abbreviations for these
+packages/environments on the command line when running <code>doconce format</code>.
+
+<p>
+In addition, the user can specify a possibly colored background for
+the blocks of computer code and also set the parameters in the
+various environments. This information can be specified for each
+DocOnce code environment (<code>pycod</code>, <code>sys</code>, etc.) independently, including a
+common default choice for the code environments that are not specified.
+
+<h2 id="___sec3">The simplest choice: a single LaTeX environment for all blocks </h2>
+
+<p>
+The following command speficies the <code>Verbatim</code> (<code>vrb</code>)
+environment for all code blocks:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
+</pre></div>
+<p>
+A <a href="doc.do.txt.html" target="_self">DocOnce demo document</a> has been made to illustrate
+how the various typesettings look like. The document contains
+a data file with the code environment <code>dat</code>, a complete executable
+Python program in the code environment <code>pypro</code>, and a terminal session
+in the code environment <code>sys</code>. The result of
+<code>--latex_code_style=vrb</code> gives the most plain and standard way of
+typesetting verbatim code blocks in LaTeX, see <a href="doc_1.pdf" target="_self">the result</a>.
+Or more precisely, DocOnce generates a <code>Verbatim</code> environment with
+several parameters set:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>Verbatim<span style="color: #008000">}</span>[numbers=none,fontsize=<span style="color: #008000; font-weight: bold">\\</span>fontsize<span style="color: #008000">{</span>9pt<span style="color: #008000">}{</span>9pt<span style="color: #008000">}</span>,<span style="color: #408080; font-style: italic">%</span>
+                 baselinestretch=0.95,xleftmargin=2mm]
+...
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>Verbatim<span style="color: #008000">}</span>
+</pre></div>
+<p>
+This results in slightly smaller font and slightly squeezed lines in
+the code block. It matches well running text in 10pt font.
+
+<p>
+The <code>xleftmargin=2mm</code> parameter can be explicitly set to something
+else on the command line: <code>--latex_code_leftmargin=7</code> (e.g.). The number
+is measured in mm. (Using square brackets, as shown below, it can also
+be set individually for different code environments.)
+
+<h2 id="___sec4">Using the <code>minted</code> (Pygments) tool </h2>
+
+<p>
+Replacing <code>vrb</code> by <code>pyg</code> switches the LaTeX environments to <code>minted</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
+</pre></div>
+<p>
+Now, <a href="doc_vrb.pdf" target="_self">the resulting PDF file</a>
+has typesetting of computer code that depends
+on the programming language. For example, the Python program leads to
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>minted<span style="color: #008000">}</span>[<span style="color: #408080; font-style: italic">%</span>
+   fontsize=<span style="color: #008000; font-weight: bold">\\</span>fontsize<span style="color: #008000">{</span>9pt<span style="color: #008000">}{</span>9pt<span style="color: #008000">}</span>,linenos=false,<span style="color: #408080; font-style: italic">%</span>
+   baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]<span style="color: #008000">{</span>python<span style="color: #008000">}</span>
+...
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>minted<span style="color: #008000">}</span>
+</pre></div>
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Remember <code>-shell-escape</code> when compiling <code>minted</code> (Pygments) code!</b>
+The <code>minted</code> LaTeX environment requires <code>latex</code> or <code>pdflatex</code> to be
+run with the <code>-shell-escape</code> option:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">Terminal&gt; pdflatex -shell-escape mydoc
+</pre></div>
+<p>
+</div>
+
+
+<p>
+The <code>minted</code> style to be used can be
+specified by the <code>--minted_latex_style=</code> option, e.g.,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style
+</pre></div>
+<p>
+The <code>perldoc</code> choice <a href="doc_pyg_perldoc.pdf" target="_self">changes the colors</a> from
+the default (Pygments <code>default</code>) <a href="doc_pyg.pdf" target="_self">choice</a> generated above.
+
+<h2 id="___sec5">Using the <code>lstlisting</code> tool </h2>
+
+<p>
+The third package for typesetting of verbatim blocks of code is
+<code>listingsutf8</code> and the <code>lstlisting</code> LaTeX environment, which in
+the following most plain form gives a <a href="doc_lst.pdf" target="_self">look</a> not
+much different from the <code>Verbatim</code> environment:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=lst
+</pre></div>
+<p>
+The resulting LaTeX code is:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>lstlisting<span style="color: #008000">}</span>[language=Python,style=simple,xleftmargin=2mm]
+...
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>listlisting<span style="color: #008000">}</span>
+</pre></div>
+<p>
+However, all possible <code>lstlisting</code> options can be set, as will
+be shown later.
+
+<h2 id="___sec6">Adding a colored background </h2>
+
+<p>
+In the previous example, we can add one of the predefined backgrounds
+in DocOnce:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex doc --latex_code_style=lst-fenicsbook
+</pre></div>
+<p>
+The <code>fenicsbook</code> background is <a href="doc_lst_fenicsyellow.pdf" target="_self">light yellow</a>.
+For colored backgrounds, one should notice that the <code>pro</code> code environments
+(as in <code>pypro</code>)
+for complete executable programs get a 1mm slightly darker bar at the left
+side of the code block. This almost invisible color change indicates for
+the reader that the code can be copied and run as it stands.
+(The <code>cod</code> code environments are used for snippets that will not
+normally run unless some additional statements is supplied.)
+
+<p>
+The general specification of a background is <code>pkg-bg</code>, where
+<code>pkg</code> is the package specification (<code>vrb</code>, <code>pyg</code>, or <code>lst</code>) and <code>bg</code>
+is the DocOnce name of a background:
+
+<ul>
+ <li> <code>gray</code>: light gray</li>
+ <li> <code>yellowgray</code>: light yellow, somewhat gray-ish</li>
+ <li> <code>fenicsbook</code>: light yellow</li>
+ <li> <code>yellow1</code>: yellow</li>
+ <li> <code>blue1</code>: light blue</li>
+ <li> <code>red1</code>: light red, somewhat apricot-ish</li>
+ <li> <code>white</code>: no background</li>
+</ul>
+
+If you want to tailor the background color, say change the <code>yellow1</code>
+color to have RGB values (0.95, 0.95, 0.8) rather than (0.98, 0.98, 0.8),
+autoedit the <code>.tex</code> file with a regular expression:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce subst &#39;yellow1\}\{rgb.+&#39; \
+          &#39;yellow1{rgb}{0.95, 0.95, 0.8} mydoc.tex
+</pre></div>
+<p>
+or just replace the exact text:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce replace \
+          &#39;cbg_yellow1}{rgb}{.98, .98, 0.8}&#39; \
+          &#39;cbg_yellow1}{rgb}{.95, .95, 0.8}&#39; mydoc.tex
+</pre></div>
+
+<h2 id="___sec7">Setting LaTeX environment parameters </h2>
+
+<p>
+It is easy to specify parameters to the <code>lstlisting</code> or the two
+other LaTeX environments:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-fenicsbook[numbers=left,numberstyle=\\tiny,numbersep=15pt]&quot;
+</pre></div>
+<p>
+These parameters specifies <a href="doc_lst_fenicsbook_linenos.pdf" target="_self">line numbers in the code blocks</a>. <em>Note that any backslash in LaTeX command must be a
+double backslash</em> on the command line!
+
+<h2 id="___sec8">Specifying individual code environments </h2>
+
+<p>
+The colored background might be appropriate for computer code in the
+previous example, but maybe not so appropriate for the terminal
+session. Let us typeset the terminal session using the <code>Verbatim</code>
+environment, but rely on <code>lst</code> without line numbers as above for the
+other code environments:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+          &quot;--latex_code_style=default:lst-fenicsbook@sys:vrb&quot;
+</pre></div>
+<p>
+That is, we specify  the default choice (<code>default</code>) and the <code>sys</code>
+environment. The specifications are separated by <code>@</code>. One can
+add parameters to the LaTeX environments, e.g.,
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+  &quot;--latex_code_style=default:lst-fenicsbook[numbers=left]@sys:vrb&quot;
+</pre></div>
+<p>
+Here is a more fancy typesetting of <code>sys</code> environments with lines
+above and below and a title <code>Terminal</code> inside a box:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=default:lst-fenicsbook@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+<p>
+<a href="doc_lst_sys.pdf" target="_self">Here is the result</a>.
+
+<h2 id="___sec9">Specifying the <code>lst</code> style </h2>
+
+<p>
+DocOnce comes with some predefined styles for the <code>lstlisting</code> LaTeX
+environment:
+
+<ul>
+ <li> <code>simple</code> for no coloring of code (but comments are typeset
+   with italic font)</li>
+ <li> <code>redblue</code> for coloring of code dominated by red and blue</li>
+ <li> <code>fenicsbook</code> for a coloring that matches the previously
+   shown <code>fenicsbook</code> background (but the background is included in the
+   style, so do not also specify the <code>fenicsbook</code> background!).</li>
+</ul>
+
+The user can also define any number of additional styles and put them
+in a file, say <code>.mylststyles</code>, and give them to <code>doconce format</code> through
+the command-line option <code>--latex_code_lststyles=.mylststyles</code>.
+Just include <code>\lstdefinestyle{name}{...}</code> commands in the file.
+
+<p>
+Here is an example of specifying the <code>fenicsbook</code> style with yellow
+background, coloring of code, and a frame around all code blocks:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+  &quot;--latex_code_style=default:lst[style=fenicsbook]&quot;
+</pre></div>
+<p>
+You may check out the <a href="doc_lst_stylefb.pdf" target="_self">corresponding result</a>.
+
+<h2 id="___sec10">General syntax for <code>--latex_code_style=</code> </h2>
+
+<p>
+The <code>--latex_code_style=</code> option can take a set of code environment
+specifications separated by <code>@</code>. Each specification is of the form
+<code>envir:pgk-bg[prms]</code>,
+where <code>envir</code> is the code environment name (<code>pypro</code>, <code>sys</code>, etc., or <code>default</code>),
+<code>pkg</code> is the package name (<code>vrb</code>, <code>pyg</code>, <code>lst</code>), <code>bg</code> is
+the DocOnce name of a potential background (can be omitted), and
+<code>prms</code> is a list of parameters for the LaTeX environment.
+
+<p>
+As an example, we may specify a default typesetting with <code>lst</code> and the <code>blue1</code>
+background, using the <code>redblue</code> style and numbering of lines;
+then we let the <code>dat</code> environment be typeset with the <code>Verbatim</code>
+environment with a light gray background; and finally we let <code>sys</code> also use
+<code>Verbatim</code>, but with many parameters for more fancy layout. The
+value of <code>--latex_code_style=</code> is then (split over several lines for
+increased readability - it must be one line as a terminal command!):
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst-blue1[style=redblue,
+   numbers=left,numberstyle=\\tiny,stepnumber=3,
+   numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray
+   @sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
+   framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+<p>
+Here is the <a href="doc_lots.pdf" target="_self">result</a> of this detailed specification.
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

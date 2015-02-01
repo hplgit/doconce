@@ -1,0 +1,50 @@
+TITLE: Demo document with computer code
+AUTHOR: HPL
+DATE: today
+
+======= Data file =======
+
+Suppose we have some data in a file:
+
+@@@CODE mydat.txt envir=dat
+
+======= Program =======
+
+The following program
+# #if FORMAT in ('latex', 'pdflatex')
+(which breaks a page)
+# #endif
+reads the data in the file and performs analysis:
+
+@@@CODE fileread.py
+The output becomes
+
+!bc sys
+Terminal> python fileread.py
+
+mean=-0.006005
+st.dev=0.583542
+correlation matrix:
+[[ 1.          0.0509676   0.52406366  0.20964645  0.1574504 ]
+ [ 0.0509676   1.         -0.30920845 -0.12129049  0.7611538 ]
+ [ 0.52406366 -0.30920845  1.          0.49355806 -0.42263817]
+ [ 0.20964645 -0.12129049  0.49355806  1.         -0.38286589]
+ [ 0.1574504   0.7611538  -0.42263817 -0.38286589  1.        ]]
+!ec
+
+======= Fortran example =======
+
+Here is an example of a Fortran 77 snippet:
+
+!bc fcod
+       subroutine process(a, n, c, r)
+C      Return array r = c*a
+       integer n
+       real*8 a(n), c, r(n)
+       integer i
+       do i = 1,n
+          r(i) = c*a(i)
+       end do
+       return
+       end
+!ec

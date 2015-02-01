@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
-<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
+<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format notebook,IPython notebook,notebook,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,doconce format options,command-line options doconce format,installation">
 
 <title>DocOnce Description</title>
 
@@ -200,12 +200,15 @@ Automatically generated HTML file from DocOnce source
                1,
                'doconce2formats',
                'doconce2formats'),
-              (' Generating a makefile ', 2, None, '___sec103'),
-              (' Preprocessing ', 2, None, '___sec104'),
-              (' Removal of inline comments ', 2, None, '___sec105'),
-              (' Notes ', 2, None, '___sec106'),
+              (' Generating a makefile ', 2, 'do2any:make', 'do2any:make'),
+              (' Preprocessing ', 2, 'do2any:pre', 'do2any:pre'),
+              (' Removal of inline comments ',
+               2,
+               'do2any:inlinecomments',
+               'do2any:inlinecomments'),
+              (' Notes ', 2, 'do2any:notes', 'do2any:notes'),
               (' Demo of different formats ', 2, None, '___sec107'),
-              (' HTML ', 2, None, '___sec108'),
+              (' HTML ', 2, 'do2any:html', 'do2any:html'),
               (' Basics ', 3, None, '___sec109'),
               (' Typesetting of Code ', 3, None, '___sec110'),
               (' Handling of Movies ', 3, None, '___sec111'),
@@ -216,8 +219,8 @@ Automatically generated HTML file from DocOnce source
               (' Filenames ', 3, None, '___sec116'),
               (' URL to files hosted on GitHub ', 3, None, '___sec117'),
               (' Other HTML options ', 3, None, '___sec118'),
-              (' Blog Posts ', 2, None, '___sec119'),
-              (' Pandoc and Markdown ', 2, None, '___sec120'),
+              (' Blog Posts ', 2, 'do2any:blog', 'do2any:blog'),
+              (' Pandoc and Markdown ', 2, 'do2any:pandoc', 'do2any:pandoc'),
               (' Markdown to HTML conversion ', 3, None, '___sec121'),
               (' Strict Markdown ', 3, None, '___sec122'),
               (' GitHub-flavored Markdown ', 3, None, '___sec123'),
@@ -230,50 +233,63 @@ Automatically generated HTML file from DocOnce source
                3,
                None,
                '___sec126'),
-              (' LaTeX ', 2, None, '___sec127'),
-              (' PDFLaTeX ', 2, None, '___sec128'),
-              (' XeLaTeX ', 2, None, '___sec129'),
-              (' From PDF to e-book formats ', 2, None, '___sec130'),
-              (' Microsoft Word or LibreOffice ', 2, None, '___sec131'),
-              (' Plain ASCII Text ', 2, None, '___sec132'),
-              (' reStructuredText ', 2, None, '___sec133'),
-              (' Sphinx ', 2, None, '___sec134'),
-              (' The manual Sphinx procedure ', 3, None, '___sec135'),
-              (' Wiki Formats ', 2, None, '___sec136'),
-              (' Google Docs ', 2, None, '___sec137'),
-              (' Tweaking the DocOnce Output ', 2, None, '___sec138'),
-              (' Options for the `doconce` commands ', 1, None, '___sec139'),
+              (' LaTeX ', 2, 'do2any:latex', 'do2any:latex'),
+              (' PDFLaTeX ', 2, 'do2any:pdflatex', 'do2any:pdflatex'),
+              (' XeLaTeX ', 2, 'do2any:xelatex', 'do2any:xelatex'),
+              (' From PDF to e-book formats ',
+               2,
+               'do2any:epub',
+               'do2any:epub'),
+              (' Microsoft Word or LibreOffice ',
+               2,
+               'do2any:MS:ooffice',
+               'do2any:MS:ooffice'),
+              (' IPython Notebooks ', 2, 'do2any:ipynb', 'do2any:ipynb'),
+              (' Plain ASCII Text ', 2, 'do2any:ascii', 'do2any:ascii'),
+              (' reStructuredText ', 2, 'do2any:rst', 'do2any:rst'),
+              (' Sphinx ', 2, 'do2any:sphinx', 'do2any:sphinx'),
+              (' The manual Sphinx procedure ', 3, None, '___sec136'),
+              (' Wiki Formats ', 2, 'do2any:wiki', 'do2any:wiki'),
+              (' Google Docs ',
+               2,
+               'do2any:google:docs',
+               'do2any:google:docs'),
+              (' Tweaking the DocOnce Output ',
+               2,
+               'do2any:tweaking',
+               'do2any:tweaking'),
+              (' Options for the `doconce` commands ', 1, None, '___sec140'),
               (' `doconce format` command-line options ',
                2,
                None,
-               '___sec140'),
+               '___sec141'),
               (' Installation of DocOnce and its Dependencies ',
                1,
                'install:doconce',
                'install:doconce'),
-              (' DocOnce ', 2, None, '___sec142'),
-              (' Dependencies ', 2, None, '___sec143'),
-              (' Preprocessors ', 3, None, '___sec144'),
-              (' Image file handling ', 3, None, '___sec145'),
-              (' Spellcheck ', 3, None, '___sec146'),
-              (' Bibliography ', 3, None, '___sec147'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec148'),
-              (' LaTeX packages ', 3, None, '___sec149'),
-              (' reStructuredText (reST) Output ', 3, None, '___sec150'),
-              (' Sphinx Output ', 3, None, '___sec151'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec152'),
-              (' Epydoc Output ', 3, None, '___sec153'),
-              (' Analyzing file differences ', 3, None, '___sec154'),
+              (' DocOnce ', 2, None, '___sec143'),
+              (' Dependencies ', 2, None, '___sec144'),
+              (' Preprocessors ', 3, None, '___sec145'),
+              (' Image file handling ', 3, None, '___sec146'),
+              (' Spellcheck ', 3, None, '___sec147'),
+              (' Bibliography ', 3, None, '___sec148'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec149'),
+              (' LaTeX packages ', 3, None, '___sec150'),
+              (' reStructuredText (reST) Output ', 3, None, '___sec151'),
+              (' Sphinx Output ', 3, None, '___sec152'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec153'),
+              (' Epydoc Output ', 3, None, '___sec154'),
+              (' Analyzing file differences ', 3, None, '___sec155'),
               (' Quick Debian/Ubuntu Install ',
                2,
                'install:debian:script',
                'install:debian:script'),
-              (' Basic Parsing Ideas ', 1, None, '___sec156'),
+              (' Basic Parsing Ideas ', 1, None, '___sec157'),
               (' Typesetting of Function Arguments, Return Values, and Variables ',
                2,
                None,
-               '___sec157'),
-              (' References ', 1, None, '___sec158')]}
+               '___sec158'),
+              (' References ', 1, None, '___sec159')]}
 end of tocinfo -->
 
 <body>
@@ -320,10 +336,10 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._manual022.html#___sec87" style="font-size: 80%;">Misc</a></li>
      <!-- navigation toc: --> <li><a href="._manual023.html#manual:mako" style="font-size: 80%;">Mako Programming</a></li>
      <!-- navigation toc: --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec139" style="font-size: 80%;">Options for the `doconce` commands</a></li>
+     <!-- navigation toc: --> <li><a href="._manual028.html#___sec140" style="font-size: 80%;">Options for the `doconce` commands</a></li>
      <!-- navigation toc: --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec156" style="font-size: 80%;">Basic Parsing Ideas</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec158" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec157" style="font-size: 80%;">Basic Parsing Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec159" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -339,7 +355,7 @@ MathJax.Hub.Config({
 <a name="part0010"></a>
 <!-- !split -->
 
-<h1 id="inline:tagging">Inline Tagging<a name="inline:tagging"></a></h1>
+<h1 id="inline:tagging">Inline Tagging</h1>
 
 <p>
 DocOnce supports tags for <em>emphasized phrases</em>, <b>boldface phrases</b>,
@@ -364,7 +380,7 @@ examples.
 </div>
 
 
-<h2 id="___sec21">Emphasized Words <a name="___sec21"></a></h2>
+<h2 id="___sec21">Emphasized Words </h2>
 
 <p>
 Emphasized text is typeset inside a pair of asterisk, and there should
@@ -399,7 +415,7 @@ Colored text is formatted as
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">some text color{red}{more text in red}
 </pre></div>
 
-<h2 id="___sec22">Inline Verbatim Text <a name="___sec22"></a></h2>
+<h2 id="___sec22">Inline Verbatim Text </h2>
 
 <p>
 Verbatim text, typically used for short inline code,
@@ -434,7 +450,7 @@ DocOnce source and the output.
 </div>
 
 
-<h2 id="___sec23">Links to Web Addresses <a name="___sec23"></a></h2>
+<h2 id="___sec23">Links to Web Addresses </h2>
 
 <p>
 Web addresses with links are typeset as
@@ -467,7 +483,7 @@ Click on this link: <a href="https://github.com/hplgit/doconce" target="_self"><
 with a leading space and a trailing space, comma, semi-colon, or question
 mark (but not period!) becomes a link with the web address as link text.)
 
-<h2 id="___sec24">Links to Mail Addresses <a name="___sec24"></a></h2>
+<h2 id="___sec24">Links to Mail Addresses </h2>
 
 <p>
 Links that launches a mail to a specified address is written as
@@ -484,7 +500,7 @@ to &quot;`hpl@simula.no`&quot;: &quot;mailto:hpl@simula.no&quot;.
 which appears as Send <a href="mailto:hpl@simula.no" target="_self">mail</a> to
 <a href="mailto:hpl@simula.no" target="_self"><tt>hpl@simula.no</tt></a>.
 
-<h2 id="___sec25">Links to Local Files <a name="___sec25"></a></h2>
+<h2 id="___sec25">Links to Local Files </h2>
 
 <p>
 Links to files ending in <code>.txt</code>, <code>.html</code>, <code>.pdf</code>, <code>.py</code>, <code>.f</code>,
@@ -570,7 +586,7 @@ resulting in the link <a href="manual.html" target="_self"><tt>manual.html</tt><
 <!-- <code>_static</code> directory - links in the <code>.rst</code> files are automatically -->
 <!-- adjusted.) -->
 
-<h2 id="___sec26">Quotes <a name="___sec26"></a></h2>
+<h2 id="___sec26">Quotes </h2>
 
 <p>
 Quotations employ either the emphasized font or double quotation marks.
@@ -599,7 +615,7 @@ This search may give many false hits as double quotes are frequently
 used in computer code and preprocessor instructions (URLs and hyperlinks
 should not give hits in the above regular expressions).
 
-<h2 id="___sec27">Non-Breaking Space <a name="___sec27"></a></h2>
+<h2 id="___sec27">Non-Breaking Space </h2>
 
 <p>
 The non-breaking space character is tilde:
@@ -627,7 +643,7 @@ This is rendered as
 </blockquote>
 
 
-<h2 id="___sec28">Horizontal rule <a name="___sec28"></a></h2>
+<h2 id="___sec28">Horizontal rule </h2>
 
 <p>
 A horizontal rule for separating content vertically, like this:
@@ -644,7 +660,7 @@ is typeset as four or more hyphens on a single line:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">---------
 </pre></div>
 
-<h2 id="___sec29">Em-dash <a name="___sec29"></a></h2>
+<h2 id="___sec29">Em-dash </h2>
 
 <p>
 The <code>latex</code>, <code>pdflatex</code>, <code>sphinx</code>, and <code>html</code> formats support em-dash,
@@ -668,7 +684,7 @@ The associated DocOnce source reads
 !equote
 </pre></div>
 
-<h2 id="___sec30">Ampersand <a name="___sec30"></a></h2>
+<h2 id="___sec30">Ampersand </h2>
 
 <p>
 An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
@@ -679,7 +695,7 @@ preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
 after <code>&</code> will result in wrong typesetting of the ampersand in the <code>html</code>,
 <code>latex</code>, and <code>pdflatex</code> formats.
 
-<h2 id="___sec31">Footnotes <a name="___sec31"></a></h2>
+<h2 id="___sec31">Footnotes </h2>
 
 <p>
 Typesetting of footnotes employs a common email or Extended Markdown syntax:
@@ -712,29 +728,29 @@ case of spaces.
 The text above looks as follows.
 
 <p>
-Footnotes are typeset according to the output format <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>.
+Footnotes are typeset according to the output format <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>.
 The syntax is optional spaces, opening bracket, hat,
-a name without spaces <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Just put in dashes or underscores in case of spaces."><a name="link_footnote_2"><a><a href="#def_footnote_2" style="color: white">2</a></button>, and closing
+a name without spaces <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Just put in dashes or underscores in case of spaces."><a href="#def_footnote_2" id="link_footnote_2" style="color: white">2</a></button>, and closing
 bracket. The logical name of the footnote is not used in LaTeX,
 HTML, reStructuredText, or Sphinx, because these languages employ
 numbered footnotes. Other formats employ the logical name.
 
-<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
 Plain text does nothing, LaTeX removes the
 definition and inserts the footnote as part of the LaTeX text.
 reStructuredText and Sphinx employ a similar type of typesetting
 as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.
+syntax, just displayed properly in HTML.</p>
 
 <p>
 Footnotes are preferably defined after the paragraph they are used.
 The definition is the footnote syntax (some optional space, bracket,
 hat, name, bracket) followed by colon and a text.
 
-<p><a name="def_footnote_2"></a><a href="#link_footnote_2"><b>2:</b></a> Just put in dashes or underscores in
-case of spaces.
+<p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> Just put in dashes or underscores in
+case of spaces.</p>
 
-<h2 id="___sec32">Inline Comments <a name="___sec32"></a></h2>
+<h2 id="___sec32">Inline Comments </h2>
 
 <p>
 DocOnce also supports inline comments in the text:
@@ -772,7 +788,7 @@ parenthesis. However, with the <code>--latex_todonotes</code> option, LaTeX will
 apply the <code>todonotespackage</code> to typeset the comments in very visible
 color boxes.
 
-<h2 id="___sec33">Inline Comments for Editing <a name="___sec33"></a></h2>
+<h2 id="___sec33">Inline Comments for Editing </h2>
 
 <p>
 Inline comments can also be used to markup editing of the text.
@@ -852,7 +868,7 @@ file by the command
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce apply_edit_comments mydoc.do.txt
 </pre></div>
 
-<h2 id="___sec34">Forced Line Breaks <a name="___sec34"></a></h2>
+<h2 id="___sec34">Forced Line Breaks </h2>
 
 <p>
 By <em>ending</em> a line in the DocOnce file
@@ -902,7 +918,7 @@ the line.
 </div>
 
 
-<h2 id="___sec35">Inline Mathematics <a name="___sec35"></a></h2>
+<h2 id="___sec35">Inline Mathematics </h2>
 
 <p>
 Inline mathematics is written as in LaTeX, i.e., inside dollar signs.

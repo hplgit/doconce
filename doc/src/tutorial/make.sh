@@ -13,8 +13,8 @@ function system {
   fi
 }
 
-# html
-system doconce format html tutorial  --html_style=bootswatch_readable
+# html (need no_abort because of equation ref demo)
+system doconce format html tutorial  --html_style=bootswatch_readable --no_abort
 
 # latex
 system doconce format latex tutorial --latex_font=helvetica

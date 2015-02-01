@@ -40,13 +40,14 @@ of intermediate results"""),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',
-     'Specify the minted style to be used for typesetting code in LaTeX.'),
+     """Specify the minted style to be used for typesetting code in LaTeX.
+See pygmetize -L styles for legal names."""),
     ('--pygments_html_style=',
      """Specify the minted/pygments style to be used for typesetting code
 in HTML.
 Default: default (other values: monokai, manni, rrt, perldoc,
 borland, colorful, murphy, trac, tango, fruity, autumn, emacs,
-vim, pastie, friendly, native).
+vim, pastie, friendly, native, see pygmentize -L styles).
 none, no, off: turn off pygments to typeset computer code in HTML,
 use plain <pre> tags.
 highlight.js: use highlight.js syntax highlighting, not pygments."""),
@@ -176,6 +177,31 @@ siamltex: SIAM's standard LaTeX style for papers,
 siamltexmm: SIAM's extended (blue) multimedia style for papers."""),
     ('--latex_font=',
      """LaTeX font choice: helvetica, palatino, std (Computer Modern, default)."""),
+    ('--latex_code_style=', """Typesetting of code blocks.
+pyg: use pygments (minted), style is set with --minted_latex_style=
+lst: use lstlistings
+vrb: use Verbatim (default)
+
+Specifications across languages:
+pyg-blue1
+lst, lst-yellowgray[style=redblue]
+vrb[frame=lines,framesep=2.5mm,framerule=0.7pt]
+
+Detailed specification for each language:
+default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+
+Here, Verbatim[frame=lines] is used for all code environments, except
+pycod, pypro and sys, which have their own specifications.
+pycod: lst package with redblue style (and white background)
+pypro: lst package with default style and blue1 background
+style, sys: Verbatim with the specified arguments and white background.
+
+(Note: @ is delimiter for the language specifications, syntax is
+envir:package-background[style parameters]@)
+"""),
+    ('--latex_code_leftmargin=', 'Sets the left margin in code blocks. Default: 7 (mm).'),
+    ('--latex_code_bg=', 'Background color code blocks. Default: white.'),
+    ('--latex_code_lststyles=', """Filename with LaTeX definitions of lst styles."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
     ('--section_numbering=',
@@ -507,7 +533,9 @@ def option(name, default=None):
     if option_name.endswith('='):
         for arg in sys.argv[1:]:
             if arg.startswith(option_name):
-                opt, value = arg.split('=')
+                parts = arg.split('=')
+                opt = parts[0]
+                value = '='.join(parts[1:])
                 break
     elif option_name in sys.argv:
         value = True
@@ -536,7 +564,9 @@ def misc_option(name, default=None):
     if option_name.endswith('='):
         for arg in sys.argv[1:]:
             if arg.startswith(option_name):
-                opt, value = arg.split('=')
+                parts = arg.split('=')
+                opt = parts[0]
+                value = '='.join(parts[1:])
                 break
     elif option_name in sys.argv:
         value = True
@@ -1289,7 +1319,9 @@ pdftk, pdfnup and pdfcrop.
 Images are combined with two each row, by default, but
 doconce combine_images -3 ... gives 3 images in each row.
 The first command-line argument can be a file extension and
-the filenames can then be given without extension.
+the filenames can then be given without extension:
+
+doconce combine_images pdf -2 u1 u2 u12
 """
 
 def combine_images():
@@ -1821,7 +1853,15 @@ download preprocess from http://code.google.com/p/preprocess""")
             print 'Terminal> cd pygments; sudo python setup.py install'
             _abort()
 
-    # --- Treat the \code{} commands ---
+    filestr = replace_code_command(filestr)
+
+    f = open(output_filename, 'w')
+    f.write(filestr)
+    f.close()
+    print 'output in', output_filename
+
+def replace_code_command(filestr):
+    """Replace \code{...} by \Verb!...! or \textttt{...}."""
 
     # Remove one newline (two implies far too long inline verbatim)
     pattern = re.compile(r'\\code\{([^\n}]*?)\n(.*?)\}', re.DOTALL)
@@ -1884,12 +1924,7 @@ download preprocess from http://code.google.com/p/preprocess""")
                      r'\\texttt{\g<1>}', filestr)
     filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%&\\]+?)!\}',
                      r'\\texttt{\g<1>}', filestr)
-
-    f = open(output_filename, 'w')
-    f.write(filestr)
-    f.close()
-    print 'output in', output_filename
-
+    return filestr
 
 def _usage_grab():
     print 'Usage: doconce grab --from[-] from-text [--to[-] to-text] file'
@@ -2387,8 +2422,9 @@ Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --
 slide_type: reveal deck csss dzslides
 note: reveal and deck slide styles are doconce variants, different from the
 original styles
+(note: remark style is not generated by slides_html, but by slides_markdown)
 
-or:    doconce slides_html mydoc.html all  (generate all types of slides)
+alternative:  doconce slides_html mydoc.html all  (generate all types of slides)
 
 themename is the reveal or deck theme:
 
@@ -2422,8 +2458,10 @@ bottom (default) or top+bottom.
 theme is used in the document.
 
 Note: if slide_tp is doconce, the doconce split_html command is
-more versatile since it allows the --method argument (can split,
-or keep all parts in one file with space or rulers for separating parts).
+more versatile than slides_html since it allows the --method
+argument, which can be used for physical splits (as in slides_html)
+or "split" via just space or rules for separating the parts in
+one (big) file.
 """
 
 def slides_html():
