@@ -188,7 +188,7 @@ lst, lst-yellowgray[style=redblue]
 vrb[frame=lines,framesep=2.5mm,framerule=0.7pt]
 
 Detailed specification for each language:
-default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
 
 Here, Verbatim[frame=lines] is used for all code environments, except
 pycod, pypro and sys, which have their own specifications.
