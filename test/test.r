@@ -1872,6 +1872,7 @@ MathJax.Hub.Config({
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -1928,7 +1929,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -1937,7 +1939,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -1947,7 +1951,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -2333,7 +2337,7 @@ and then just the subroutine,
       return
 \efcod
 and finally the complete file with a plain text verbatim environment
-(\code{envir=ccq}):
+(\Verb!envir=ccq!):
 \bccq
 C     a comment
 
@@ -2495,7 +2499,7 @@ HTML:
 \ehtmlcod
 
 But inline HTML code is also important, like text that starts with
-\code{<a href="} (which can destroy the following text if not properly
+\Verb!<a href="! (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -2536,7 +2540,7 @@ Some text.
 
 
 
-Finally, \code{!bc do} supports highlighting of DocOnce source:
+Finally, \Verb?!bc do? supports highlighting of DocOnce source:
 
 \bdo
 ======= DocOnce test file =======
@@ -2576,17 +2580,16 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 __Paragraph heading.__ Paragraphs may have headings.
 \edo
 
-It is time to test \code{verbatim inline font} especially with \code{a newline
-inside the text} and an exclamation mark at the end: \code{BEGIN}! For
-spellcheck, test \code{a verbatim expression} in \code{another} in a \code{third}.
-Also test exclamation mark as in \code{!bc} and \code{!ec} as well as \code{a != b}.
-Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
-\code{\end{this}\end{that}}, and \code{{something \inside braces}}.
+It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
+spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
+Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
+\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \code{html} \\
+this correctly when \Verb!html! \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -2633,7 +2636,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \code{[~x for x in y]} or in \code{y=~x}, and should
+computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -2677,7 +2680,7 @@ and an extra space before the FIGURE keyword.
 \begin{figure}[ht]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
-  A long caption spanning several lines and containing verbatim words like \protect \code{my\_file\_v1} and \protect \code{my\_file\_v2} as well as math with subscript as in $t_{i+1}$. \label{myfig}
+  A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
 \end{figure}
 %\clearpage % flush figures myfig
@@ -2699,7 +2702,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \code{movies.do.txt}.
+Movies are tested in separate file \Verb!movies.do.txt!.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -2743,7 +2746,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \code{.tex} by proper begin-end {\LaTeX} environments for theorems.
+the \Verb!.tex! by proper begin-end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -2840,7 +2843,7 @@ symbol:
 \begin{quote}
 \begin{tabular}{lrrr}
 \hline
-\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \code{L\_i} } \\
+\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \Verb!L\_i! } \\
 \hline
 0   & 0      & 288        & -0.0065    \\
 1   & 11,000 & 216        & 0.0        \\
@@ -2848,21 +2851,21 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \code{NaN} \\
+6   & 71,000 & 214        & \Verb!NaN! \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \code{|-} because of a negative number,
-and \code{|} right before and after verbatim word (with no space):
+and rows starting with \Verb!|-! because of a negative number,
+and \Verb!|! right before and after verbatim word (with no space):
 
 
 \begin{quote}
 \begin{tabular}{rrrr}
 \hline
-\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \code{v\_1} } & \multicolumn{1}{c}{ $a_i$ + \code{v\_2} } & \multicolumn{1}{c}{ \code{verb\_3\_} } \\
+\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \Verb!v\_1! } & \multicolumn{1}{c}{ $a_i$ + \Verb!v\_2! } & \multicolumn{1}{c}{ \Verb!verb\_3\_! } \\
 \hline
 9     & 9.62       & 5.57               & 8.98           \\
 -20   & -23.39     & -7.65              & -19.93         \\
@@ -2882,8 +2885,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \code{norm|length} \\
-$x\cap y$   & \code{x|y}         \\
+$ ||a_0|| $ & \Verb!norm|length! \\
+$x\cap y$   & \Verb!x|y!         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -2911,10 +2914,10 @@ $\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave
 
 \noindent
 
-\subsection{A test of verbatim words in heading with subscript $a_i$: \protect\code{my\_file\_v1} and \protect\code{my\_file\_v2} }
+\subsection{A test of verbatim words in heading with subscript $a_i$: \protect\Verb!my\_file\_v1! and \protect\Verb!my\_file\_v2! }
 
-\paragraph{Paragraph with verbatim and math: \protect\code{my\_file\_v1.py} and \protect\code{my\_file\_v2.py} define some math $a_{i-1}$.}
-Here is more \code{__verbatim__} code and
+\paragraph{Paragraph with verbatim and math: \protect\Verb!my\_file\_v1.py! and \protect\Verb!my\_file\_v2.py! define some math $a_{i-1}$.}
+Here is more \Verb!__verbatim__! code and
 some plain text on a new line.
 
 % Test various types of headlines
@@ -2926,7 +2929,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\code{Just verbatim} }
+\subsection{\protect\Verb!Just verbatim! }
 
 Some text.
 
@@ -2938,7 +2941,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\code{Verbatim} beginning}
+\subsection{\protect\Verb!Verbatim! beginning}
 
 Some text.
 
@@ -2950,7 +2953,7 @@ Some text.
 
 Some text.
 
-\subsection{Maybe \protect\code{verbatim end} }
+\subsection{Maybe \protect\Verb!verbatim end! }
 
 Some text.
 
@@ -2962,7 +2965,7 @@ Some text.
 
 Some text.
 
-\subsection{The middle has \protect\code{verbatim} word}
+\subsection{The middle has \protect\Verb!verbatim! word}
 
 Some text.
 
@@ -2971,7 +2974,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\code{Just verbatim}.}
+\paragraph{\protect\Verb!Just verbatim!.}
 Some text.
 
 
@@ -2979,7 +2982,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\code{Verbatim beginning}.}
+\paragraph{\protect\Verb!Verbatim beginning!.}
 Some text.
 
 
@@ -2987,7 +2990,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\code{verbatim end}.}
+\paragraph{Maybe \protect\Verb!verbatim end!.}
 Some text.
 
 
@@ -2995,14 +2998,14 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\code{verbatim} word.}
+\paragraph{The middle has \protect\Verb!verbatim! word.}
 Some text.
 
 
 \paragraph{Ampersand.}
 We can test Hennes {\&} Mauritz, often abbreviated H{\&}M, but written
-as \code{Hennes & Mauritz} and \code{H & M}.
-A sole \code{&} must also work.
+as \Verb!Hennes & Mauritz! and \Verb!H & M!.
+A sole \Verb!&! must also work.
 % Note: substitutions must not occur inside verbatim, just in ordinary text.
 
 \bccq
@@ -3017,7 +3020,7 @@ in the standard LaTeX-style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \code{.txt}.
+period, like \Verb!.txt!.
 
 
 \subsection{Bibliography test}
@@ -3058,8 +3061,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \code{Example:}
-and then, with the command-line option \code{--examples_as_exercises} be
+Examples can start with a subsection heading starting with \Verb!Example:!
+and then, with the command-line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
@@ -3096,7 +3099,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \code{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -3105,16 +3108,16 @@ colon, semi-colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}}, or just a \href{{mailto:hpl@simula.no}}{mail link}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}}.
 
-Here are some tough tests of URLs, especially for the \code{latex} format:
+Here are some tough tests of URLs, especially for the \Verb!latex! format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \code{--device=paper} option it is important to test that URLs with
+For the \Verb!--device=paper! option it is important to test that URLs with
 monospace font link text get a footnote
-(unless the \code{--latex_no_program_footnotelink}
+(unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -3125,10 +3128,10 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 
 % Note that when there is no http: or file:, it can be a file link
 % if the link name is URL, url, "URL", or "url". Such files should,
-% if rst output is desired, but placed in a \code{_static*} folder.
+% if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\code{--device=paper} option must be correct. We have
+\Verb!--device=paper! option must be correct. We have
 \href{{http://google.com}}{google}, \href{{http://google.com}}{google}, and
 \href{{http://google.com}}{google}, which should result in exactly three
 footnotes.
@@ -3174,7 +3177,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier-Stokes equations. And test {\LaTeX} hyphen in \code{CG-2}.
+the Navier-Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non-latex formats.
@@ -3245,7 +3248,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \code{r = random.random()} and define head as \code{r <= 0.5}.
+Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 % --- end hint in exercise ---
 
@@ -3253,14 +3256,14 @@ Use \code{r = random.random()} and define head as \code{r <= 0.5}.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\code{r = random.randint(1,2)} and define head when \code{r} is 1.
+\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the \code{random.random()} function returns a number $<1/2$, let it be
+If the \Verb!random.random()! function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -3288,12 +3291,12 @@ Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
 
 \subex{c)}
-Vectorize the code in a) using \code{numpy.sum}.
+Vectorize the code in a) using \Verb!numpy.sum!.
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-\code{np.sum(np.where(r <= 0.5, 1, 0))} or \code{np.sum(r <= 0.5)}.
+\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
 
 % --- end answer of exercise ---
 
@@ -3312,7 +3315,7 @@ after the last subexercise. Test a list too:
 \end{enumerate}
 
 \noindent
-\noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 
 % Closing remarks for this Problem
 
@@ -3342,7 +3345,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \code{myexer1.py}.
+\noindent Filename: \Verb!myexer1.py!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -3379,7 +3382,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \code{random} module,
+draw $N$ such random numbers using Python's standard \Verb!random! module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -3408,7 +3411,7 @@ y &= y_0 + R\sin 2\pi t,
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ is a point on the circle.
-The formula can be used to generate \code{n} points on a circle:
+The formula can be used to generate \Verb!n! points on a circle:
 
 \bpypro
 import numpy as np
@@ -3426,7 +3429,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \code{circle} function
+center and radius. Plot each circle using the \Verb!circle! function
 above.
 
 
@@ -3436,7 +3439,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \code{numpy.random} module to draw the
+Use the \Verb!numpy.random! module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -3457,13 +3460,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \code{norm.py}.
+\noindent Filename: \Verb!norm.py!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \code{circles.pdf}.
+\noindent Filename: \Verb!circles.pdf!.
 
 % Closing remarks for this Project
 
@@ -3494,7 +3497,7 @@ Intro to this exercise. Questions are in subexercises below.
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code \code{a=b} in this solution:
+And code \Verb!a=b! in this solution:
 \bccq
 a = b  # code in solution
 \eccq
@@ -3537,7 +3540,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-\noindent Filename: \code{subexer_a.pdf}.
+\noindent Filename: \Verb!subexer_a.pdf!.
 
 
 % --- begin answer of exercise ---
@@ -3561,7 +3564,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-\noindent Filename: \code{subexer_b.pdf}.
+\noindent Filename: \Verb!subexer_b.pdf!.
 
 
 % --- begin solution of exercise ---
@@ -3610,7 +3613,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \code{lambda x: x+2} is correctly placed here:
+And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 
 \bccq
 lambda x: x+2
@@ -3682,7 +3685,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
-\textbf{C}: Wrong. Ooops, forgot a minus: \code{exp(-x)}, otherwise this Python code
+\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
@@ -3762,7 +3765,7 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-\noindent Filename: \code{verify_formula.py}.
+\noindent Filename: \Verb!verify_formula.py!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -3781,7 +3784,7 @@ hint, etc.):
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-\noindent Filename: \code{selc_composed.pdf}.
+\noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -3979,7 +3982,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \code{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -3992,9 +3995,9 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\subsection{Appendix: Testing headings ending with \protect\code{verbatim inline} }
+\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
 
-The point here is to test 1) \code{verbatim} code in headings, and 2)
+The point here is to test 1) \Verb!verbatim! code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -4008,7 +4011,7 @@ or in quotes:
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \code{admon.do.txt}.
+in a separate document: \Verb!admon.do.txt!.
 
 
 % ------------------- end of main content ---------------
@@ -4024,6 +4027,7 @@ in a separate document: \code{admon.do.txt}.
 %%
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
+%%
 %%
 
 
@@ -4056,7 +4060,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 % Set palatino as the default font family:
 \usepackage[sc]{mathpazo}    % Palatino fonts
@@ -4069,7 +4074,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=black,
     urlcolor=black,
@@ -4079,7 +4086,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -4557,7 +4564,7 @@ and then just the subroutine,
 \end{minted}
 \noindent
 and finally the complete file with a plain text verbatim environment
-(\texttt{envir=ccq}):
+(\Verb!envir=ccq!):
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 C     a comment
@@ -4749,7 +4756,7 @@ HTML:
 \noindent
 
 But inline HTML code is also important, like text that starts with
-\texttt{<a href="} (which can destroy the following text if not properly
+\Verb!<a href="! (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -4795,7 +4802,7 @@ Some text.
 
 
 
-Finally, {\Verb~!bc do~} supports highlighting of DocOnce source:
+Finally, \Verb?!bc do? supports highlighting of DocOnce source:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
 ======= DocOnce test file =======
@@ -4836,16 +4843,16 @@ __Paragraph heading.__ Paragraphs may have headings.
 \end{Verbatim}
 \noindent
 
-It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
-spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
-Also test exclamation mark as in {\Verb~!bc~} and {\Verb~!ec~} as well as {\Verb~a != b~}.
-Also test backslashes and braces like {\Verb!\begin!}, {\Verb!\begin{enumerate}!},
-{\Verb!\end{this}\end{that}!}, and {\Verb!{something \inside braces}!}.
+It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
+spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
+Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
+\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \texttt{html} \\
+this correctly when \Verb!html! \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -4894,7 +4901,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}\footnote{\texttt{http://google.com}}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \texttt{[~x for x in y]} or in \texttt{y=~x}, and should
+computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -4938,7 +4945,7 @@ and an extra space before the FIGURE keyword.
 \begin{figure}[ht]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
   \caption{
-  A long caption spanning several lines and containing verbatim words like {\protect\Verb!my\_file\_v1!} and {\protect\Verb!my\_file\_v2!} as well as math with subscript as in $t_{i+1}$. \label{myfig}
+  A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
 \end{figure}
 %\clearpage % flush figures myfig
@@ -4960,7 +4967,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \texttt{movies.do.txt}.
+Movies are tested in separate file \Verb!movies.do.txt!.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -5006,7 +5013,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \texttt{.tex} by proper begin--end {\LaTeX} environments for theorems.
+the \Verb!.tex! by proper begin--end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -5105,7 +5112,7 @@ symbol:
 \begin{quote}
 \begin{tabular}{lrrr}
 \hline
-\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ {\Verb!L\_i!} } \\
+\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \Verb!L\_i! } \\
 \hline
 0   & 0      & 288        & -0.0065    \\
 1   & 11,000 & 216        & 0.0        \\
@@ -5113,21 +5120,21 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \texttt{NaN} \\
+6   & 71,000 & 214        & \Verb!NaN! \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \texttt{|-} because of a negative number,
-and \texttt{|} right before and after verbatim word (with no space):
+and rows starting with \Verb!|-! because of a negative number,
+and \Verb!|! right before and after verbatim word (with no space):
 
 
 \begin{quote}
 \begin{tabular}{rrrr}
 \hline
-\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ {\Verb!v\_1!} } & \multicolumn{1}{c}{ $a_i$ + {\Verb!v\_2!} } & \multicolumn{1}{c}{ {\Verb!verb\_3\_!} } \\
+\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \Verb!v\_1! } & \multicolumn{1}{c}{ $a_i$ + \Verb!v\_2! } & \multicolumn{1}{c}{ \Verb!verb\_3\_! } \\
 \hline
 9     & 9.62       & 5.57               & 8.98           \\
 -20   & -23.39     & -7.65              & -19.93         \\
@@ -5147,8 +5154,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \texttt{norm|length} \\
-$x\cap y$   & \texttt{x|y}         \\
+$ ||a_0|| $ & \Verb!norm|length! \\
+$x\cap y$   & \Verb!x|y!         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -5176,10 +5183,10 @@ $\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave
 
 \noindent
 
-\subsection{A test of verbatim words in heading with subscript $a_i$: {\protect\Verb!my\_file\_v1!} and {\protect\Verb!my\_file\_v2!} }
+\subsection{A test of verbatim words in heading with subscript $a_i$: \protect\Verb!my\_file\_v1! and \protect\Verb!my\_file\_v2! }
 
-\paragraph{Paragraph with verbatim and math: {\protect\Verb!my\_file\_v1.py!} and {\protect\Verb!my\_file\_v2.py!} define some math $a_{i-1}$.}
-Here is more {\Verb!__verbatim__!} code and
+\paragraph{Paragraph with verbatim and math: \protect\Verb!my\_file\_v1.py! and \protect\Verb!my\_file\_v2.py! define some math $a_{i-1}$.}
+Here is more \Verb!__verbatim__! code and
 some plain text on a new line.
 
 % Test various types of headlines
@@ -5191,7 +5198,7 @@ Some text.
 
 Some text.
 
-\subsection{\texttt{Just verbatim} }
+\subsection{\protect\Verb!Just verbatim! }
 
 Some text.
 
@@ -5203,7 +5210,7 @@ Some text.
 
 Some text.
 
-\subsection{\texttt{Verbatim} beginning}
+\subsection{\protect\Verb!Verbatim! beginning}
 
 Some text.
 
@@ -5215,7 +5222,7 @@ Some text.
 
 Some text.
 
-\subsection{Maybe \texttt{verbatim end} }
+\subsection{Maybe \protect\Verb!verbatim end! }
 
 Some text.
 
@@ -5227,7 +5234,7 @@ Some text.
 
 Some text.
 
-\subsection{The middle has \texttt{verbatim} word}
+\subsection{The middle has \protect\Verb!verbatim! word}
 
 Some text.
 
@@ -5236,7 +5243,7 @@ Some text.
 Some text.
 
 
-\paragraph{\texttt{Just verbatim}.}
+\paragraph{\protect\Verb!Just verbatim!.}
 Some text.
 
 
@@ -5244,7 +5251,7 @@ Some text.
 Some text.
 
 
-\paragraph{\texttt{Verbatim beginning}.}
+\paragraph{\protect\Verb!Verbatim beginning!.}
 Some text.
 
 
@@ -5252,7 +5259,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \texttt{verbatim end}.}
+\paragraph{Maybe \protect\Verb!verbatim end!.}
 Some text.
 
 
@@ -5260,14 +5267,14 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \texttt{verbatim} word.}
+\paragraph{The middle has \protect\Verb!verbatim! word.}
 Some text.
 
 
 \paragraph{Ampersand.}
 We can test Hennes {\&} Mauritz, often abbreviated H{\&}M, but written
-as {\Verb!Hennes & Mauritz!} and {\Verb!H & M!}.
-A sole {\Verb!&!} must also work.
+as \Verb!Hennes & Mauritz! and \Verb!H & M!.
+A sole \Verb!&! must also work.
 % Note: substitutions must not occur inside verbatim, just in ordinary text.
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
@@ -5284,7 +5291,7 @@ in the standard LaTeX--style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non--LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \texttt{.txt}.
+period, like \Verb!.txt!.
 
 
 \subsection{Bibliography test}
@@ -5326,8 +5333,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \texttt{Example:}
-and then, with the command--line option {\Verb!--examples_as_exercises!} be
+Examples can start with a subsection heading starting with \Verb!Example:!
+and then, with the command--line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
@@ -5364,7 +5371,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -5373,16 +5380,16 @@ colon, semi--colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}, or just a \href{{mailto:hpl@simula.no}}{mail link}\footnote{\texttt{mailto:hpl@simula.no}}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}.
 
-Here are some tough tests of URLs, especially for the \texttt{latex} format:
+Here are some tough tests of URLs, especially for the \Verb!latex! format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes}\footnote{\texttt{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes\_formulas}} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}\footnote{\texttt{http://www.springer.com/mathematics/computational+science+\%26+engineering/book/978-3-642-23098-1}}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \texttt{--device=paper} option it is important to test that URLs with
+For the \Verb!--device=paper! option it is important to test that URLs with
 monospace font link text get a footnote
-(unless the {\Verb!--latex_no_program_footnotelink!}
+(unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -5393,10 +5400,10 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 
 % Note that when there is no http: or file:, it can be a file link
 % if the link name is URL, url, "URL", or "url". Such files should,
-% if rst output is desired, but placed in a {\Verb!_static*!} folder.
+% if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\texttt{--device=paper} option must be correct. We have
+\Verb!--device=paper! option must be correct. We have
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, and
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, which should result in exactly three
 footnotes.
@@ -5442,7 +5449,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier--Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
+the Navier--Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non--latex formats.
@@ -5514,7 +5521,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
+Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 % --- end hint in exercise ---
 
@@ -5522,14 +5529,14 @@ Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
+\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the \texttt{random.random()} function returns a number $<1/2$, let it be
+If the \Verb!random.random()! function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -5558,12 +5565,12 @@ Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
 
 \subex{c)}
-Vectorize the code in a) using \texttt{numpy.sum}.
+Vectorize the code in a) using \Verb!numpy.sum!.
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-\texttt{np.sum(np.where(r <= 0.5, 1, 0))} or \texttt{np.sum(r <= 0.5)}.
+\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
 
 % --- end answer of exercise ---
 
@@ -5582,7 +5589,7 @@ after the last subexercise. Test a list too:
 \end{enumerate}
 
 \noindent
-\noindent Filenames: {\Verb!flip_coin.py!}, {\Verb!flip_coin.pdf!}.
+\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 
 % Closing remarks for this Problem
 
@@ -5613,7 +5620,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \texttt{myexer1.py}.
+\noindent Filename: \Verb!myexer1.py!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -5651,7 +5658,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \texttt{random} module,
+draw $N$ such random numbers using Python's standard \Verb!random! module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -5681,7 +5688,7 @@ y &= y_0 + R\sin 2\pi t,
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ is a point on the circle.
-The formula can be used to generate \texttt{n} points on a circle:
+The formula can be used to generate \Verb!n! points on a circle:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import numpy as np
@@ -5700,7 +5707,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \texttt{circle} function
+center and radius. Plot each circle using the \Verb!circle! function
 above.
 
 
@@ -5710,7 +5717,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \texttt{numpy.random} module to draw the
+Use the \Verb!numpy.random! module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -5731,13 +5738,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \texttt{norm.py}.
+\noindent Filename: \Verb!norm.py!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \texttt{circles.pdf}.
+\noindent Filename: \Verb!circles.pdf!.
 
 % Closing remarks for this Project
 
@@ -5769,7 +5776,7 @@ Intro to this exercise. Questions are in subexercises below.
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code \texttt{a=b} in this solution:
+And code \Verb!a=b! in this solution:
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 a = b  # code in solution
@@ -5816,7 +5823,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-\noindent Filename: {\Verb!subexer_a.pdf!}.
+\noindent Filename: \Verb!subexer_a.pdf!.
 
 
 % --- begin answer of exercise ---
@@ -5840,7 +5847,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-\noindent Filename: {\Verb!subexer_b.pdf!}.
+\noindent Filename: \Verb!subexer_b.pdf!.
 
 
 % --- begin solution of exercise ---
@@ -5891,7 +5898,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \texttt{lambda x: x+2} is correctly placed here:
+And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
@@ -5967,7 +5974,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
-\textbf{C}: Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
+\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
@@ -6049,7 +6056,7 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-\noindent Filename: {\Verb!verify_formula.py!}.
+\noindent Filename: \Verb!verify_formula.py!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -6069,7 +6076,7 @@ hint, etc.):
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-\noindent Filename: {\Verb!selc_composed.pdf!}.
+\noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -6267,7 +6274,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -6280,9 +6287,9 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
+\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
 
-The point here is to test 1) \texttt{verbatim} code in headings, and 2)
+The point here is to test 1) \Verb!verbatim! code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -6296,7 +6303,7 @@ or in quotes:
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \texttt{admon.do.txt}.
+in a separate document: \Verb!admon.do.txt!.
 
 
 % ------------------- end of main content ---------------
@@ -6338,6 +6345,7 @@ output in testdoc.tex
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -6369,7 +6377,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 % Set palatino as the default font family:
 \usepackage[sc]{mathpazo}    % Palatino fonts
@@ -6382,7 +6391,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=black,
     urlcolor=black,
@@ -6392,7 +6403,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -28163,6 +28174,7 @@ Inline math, \( a=b \), is the only math in this document.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -28214,13 +28226,16 @@ open=right               % start new chapters on odd-numbered pages
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -28230,7 +28245,7 @@ open=right               % start new chapters on odd-numbered pages
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -28319,29 +28334,28 @@ are to exist side by side, a flexible way of referencing is needed.
 For this purpose, DocOnce offers \emph{generalized references} which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since {\LaTeX} supports
-references to labels in external documents via the \code{xr} package,
+references to labels in external documents via the \Verb!xr! package,
 the generalized references in DocOnce has a syntax that may utilize
-the \code{xr} feature in {\LaTeX}.
+the \Verb!xr! feature in {\LaTeX}.
 
 The syntax of generalized references reads
 \bccq
 ref[internal][cite][external]
 \eccq
-If all \code{ref{label}} references in the text \code{internal} are references
-to labels in the present document, the above \code{ref} command is replaced
-by the text \code{internal}. Otherwise, if cite is non-empty and the format
-is \code{latex} or \code{pdflatex} one assumes that the references in \code{internal}
-are to external documents declared by a comment line \code{#
-Externaldocuments: testdoc, mydoc} (usually after the title, authors,
-and date). In this case the output text is \code{internal cite} and the
-{\LaTeX} package \code{xr} is used to handle the labels in the external documents.
+If all \Verb!ref{label}! references in the text \Verb!internal! are references
+to labels in the present document, the above \Verb!ref! command is replaced
+by the text \Verb!internal!. Otherwise, if cite is non-empty and the format
+is \Verb!latex! or \Verb!pdflatex! one assumes that the references in \Verb!internal!
+are to external documents declared by a comment line \Verb!# Externaldocuments: testdoc, mydoc! (usually after the title, authors,
+and date). In this case the output text is \Verb!internal cite! and the
+{\LaTeX} package \Verb!xr! is used to handle the labels in the external documents.
 When referring to a complete chapter (not a section in it), which
 corresponds to a complete external document, it does not make sense
-to write out \code{internal cite} since the \code{internal} reference is a
-chapter number. In such cases, the \code{internal} syntax can be used,
-and if the label is in another {\LaTeX} document, the output is just \code{cite}.
+to write out \Verb!internal cite! since the \Verb!internal! reference is a
+chapter number. In such cases, the \Verb!internal! syntax can be used,
+and if the label is in another {\LaTeX} document, the output is just \Verb!cite!.
 For all
-output formats other than \code{latex} and \code{pdflatex}, the \code{external}
+output formats other than \Verb!latex! and \Verb!pdflatex!, the \Verb!external!
 text will be the output.
 
 Here is an example on a specific generalized reference to a section
@@ -28356,12 +28370,12 @@ the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], DocOnce documents may include tables.
 \eccq
-With \code{latex} or \code{pdflatex} as output, this translates to
+With \Verb!latex! or \Verb!pdflatex! as output, this translates to
 \bccq
 As explained in
 Section ref{subsec:ex}, DocOnce documents may include tables.
 \eccq
-if the label \code{{subsec:ex}} appears in the present DocOnce source, and
+if the label \Verb!{subsec:ex}! appears in the present DocOnce source, and
 otherwise
 \bccq
 As explained in
@@ -28369,7 +28383,7 @@ Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
 cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-In a format different from \code{latex} and \code{pdflatex}, the effective DocOnce
+In a format different from \Verb!latex! and \Verb!pdflatex!, the effective DocOnce
 text becomes
 \bccq
 As explained in
@@ -28379,7 +28393,7 @@ the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-The rendered text in the current format \code{latex} becomes
+The rendered text in the current format \Verb!latex! becomes
 
 
 \begin{quote}
@@ -28391,7 +28405,7 @@ Section~\ref{subsec:ex}in \href{{http://hplgit.github.io/doconce/test/demo_testd
 
 A reference to an entire external document, which is usually a chapter
 if the reference is internal in the DocOnce source, applies the
-\code{refch} syntax:
+\Verb!refch! syntax:
 
 \bccq
 As explained in
@@ -28402,8 +28416,8 @@ cite{testdoc:12}][the document
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], DocOnce documents may include tables.
 \eccq
-The output now if \code{ch:testdoc} is not a label in the document,
-becomes in the \code{latex} and \code{pdflatex} case
+The output now if \Verb!ch:testdoc! is not a label in the document,
+becomes in the \Verb!latex! and \Verb!pdflatex! case
 
 \bccq
 As explained in
@@ -28411,9 +28425,9 @@ As explained in
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-That is, the internal reference \code{Chapter ...} is omitted since
+That is, the internal reference \Verb!Chapter ...! is omitted since
 it is not meaningful to refer to an external document as "Chapter".
-The resulting rendered text in the current format \code{latex} becomes
+The resulting rendered text in the current format \Verb!latex! becomes
 
 
 \begin{quote}
@@ -28425,7 +28439,7 @@ As explained in
 
 Note that {\LaTeX} cannot
 have links to local files, so a complete URL on the form
-\code{http://...} must be used.
+\Verb!http://...! must be used.
 
 And here is another example with internal references only:
 
@@ -28817,6 +28831,7 @@ Inline math, a=b, is the only math in this document.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -28830,17 +28845,18 @@ Inline math, a=b, is the only math in this document.
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -28850,7 +28866,7 @@ Inline math, a=b, is the only math in this document.
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -28944,6 +28960,7 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -28967,17 +28984,18 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -28987,7 +29005,7 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -36179,6 +36197,7 @@ is at the end with only one newline.</p>
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -36235,7 +36254,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
@@ -36244,7 +36264,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -36254,7 +36276,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -36683,7 +36705,7 @@ and then just the subroutine,
       return
 \efcod
 and finally the complete file with a plain text verbatim environment
-(\code{envir=ccq}):
+(\Verb!envir=ccq!):
 \bccq
 C     a comment
 
@@ -36845,7 +36867,7 @@ HTML:
 \ehtmlcod
 
 But inline HTML code is also important, like text that starts with
-\code{<a href="} (which can destroy the following text if not properly
+\Verb!<a href="! (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -36886,7 +36908,7 @@ Some text.
 
 
 
-Finally, \code{!bc do} supports highlighting of DocOnce source:
+Finally, \Verb?!bc do? supports highlighting of DocOnce source:
 
 \bdo
 ======= DocOnce test file =======
@@ -36926,17 +36948,16 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 __Paragraph heading.__ Paragraphs may have headings.
 \edo
 
-It is time to test \code{verbatim inline font} especially with \code{a newline
-inside the text} and an exclamation mark at the end: \code{BEGIN}! For
-spellcheck, test \code{a verbatim expression} in \code{another} in a \code{third}.
-Also test exclamation mark as in \code{!bc} and \code{!ec} as well as \code{a != b}.
-Also test backslashes and braces like \code{\begin}, \code{\begin{enumerate}},
-\code{\end{this}\end{that}}, and \code{{something \inside braces}}.
+It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
+spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
+Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
+\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
 
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \code{html} \\
+this correctly when \Verb!html! \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -36983,7 +37004,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \code{[~x for x in y]} or in \code{y=~x}, and should
+computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -37027,7 +37048,7 @@ and an extra space before the FIGURE keyword.
 \begin{figure}[ht]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
-  A long caption spanning several lines and containing verbatim words like \protect \code{my\_file\_v1} and \protect \code{my\_file\_v2} as well as math with subscript as in $t_{i+1}$. \label{myfig}
+  A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
   }
 \end{figure}
 %\clearpage % flush figures myfig
@@ -37049,7 +37070,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \code{movies.do.txt}.
+Movies are tested in separate file \Verb!movies.do.txt!.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -37092,7 +37113,7 @@ Or with align with label and numbers:
 \paragraph{Custom Environments.}
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \code{.tex} by proper begin-end {\LaTeX} environments for theorems.
+the \Verb!.tex! by proper begin-end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -37189,7 +37210,7 @@ symbol:
 \begin{quote}
 \begin{tabular}{lrrr}
 \hline
-\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \code{L\_i} } \\
+\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \Verb!L\_i! } \\
 \hline
 0   & 0      & 288        & -0.0065    \\
 1   & 11,000 & 216        & 0.0        \\
@@ -37197,21 +37218,21 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \code{NaN} \\
+6   & 71,000 & 214        & \Verb!NaN! \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \code{|-} because of a negative number,
-and \code{|} right before and after verbatim word (with no space):
+and rows starting with \Verb!|-! because of a negative number,
+and \Verb!|! right before and after verbatim word (with no space):
 
 
 \begin{quote}
 \begin{tabular}{rrrr}
 \hline
-\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \code{v\_1} } & \multicolumn{1}{c}{ $a_i$ + \code{v\_2} } & \multicolumn{1}{c}{ \code{verb\_3\_} } \\
+\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \Verb!v\_1! } & \multicolumn{1}{c}{ $a_i$ + \Verb!v\_2! } & \multicolumn{1}{c}{ \Verb!verb\_3\_! } \\
 \hline
 9     & 9.62       & 5.57               & 8.98           \\
 -20   & -23.39     & -7.65              & -19.93         \\
@@ -37231,8 +37252,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \code{norm|length} \\
-$x\cap y$   & \code{x|y}         \\
+$ ||a_0|| $ & \Verb!norm|length! \\
+$x\cap y$   & \Verb!x|y!         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -37260,9 +37281,9 @@ $\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave
 
 \noindent
 
-\paragraph{A test of verbatim words in heading with subscript $a_i$: \protect\code{my\_file\_v1} and \protect\code{my\_file\_v2}.}
-\paragraph{Paragraph with verbatim and math: \protect\code{my\_file\_v1.py} and \protect\code{my\_file\_v2.py} define some math $a_{i-1}$.}
-Here is more \code{__verbatim__} code and
+\paragraph{A test of verbatim words in heading with subscript $a_i$: \protect\Verb!my\_file\_v1! and \protect\Verb!my\_file\_v2!.}
+\paragraph{Paragraph with verbatim and math: \protect\Verb!my\_file\_v1.py! and \protect\Verb!my\_file\_v2.py! define some math $a_{i-1}$.}
+Here is more \Verb!__verbatim__! code and
 some plain text on a new line.
 
 % Test various types of headlines
@@ -37272,7 +37293,7 @@ Some text.
 \paragraph{\emph{Just emphasize}.}
 Some text.
 
-\paragraph{\protect\code{Just verbatim}.}
+\paragraph{\protect\Verb!Just verbatim!.}
 Some text.
 
 \paragraph{\textbf{Bold} beginning.}
@@ -37281,7 +37302,7 @@ Some text.
 \paragraph{\emph{Emphasize} beginning.}
 Some text.
 
-\paragraph{\protect\code{Verbatim} beginning.}
+\paragraph{\protect\Verb!Verbatim! beginning.}
 Some text.
 
 \paragraph{Maybe \textbf{bold end}.}
@@ -37290,7 +37311,7 @@ Some text.
 \paragraph{Maybe \emph{emphasize end}.}
 Some text.
 
-\paragraph{Maybe \protect\code{verbatim end}.}
+\paragraph{Maybe \protect\Verb!verbatim end!.}
 Some text.
 
 \paragraph{The middle has \textbf{bold} word.}
@@ -37299,7 +37320,7 @@ Some text.
 \paragraph{The middle has \emph{emphasize} word.}
 Some text.
 
-\paragraph{The middle has \protect\code{verbatim} word.}
+\paragraph{The middle has \protect\Verb!verbatim! word.}
 Some text.
 
 
@@ -37307,7 +37328,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\code{Just verbatim}.}
+\paragraph{\protect\Verb!Just verbatim!.}
 Some text.
 
 
@@ -37315,7 +37336,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\code{Verbatim beginning}.}
+\paragraph{\protect\Verb!Verbatim beginning!.}
 Some text.
 
 
@@ -37323,7 +37344,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\code{verbatim end}.}
+\paragraph{Maybe \protect\Verb!verbatim end!.}
 Some text.
 
 
@@ -37331,14 +37352,14 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\code{verbatim} word.}
+\paragraph{The middle has \protect\Verb!verbatim! word.}
 Some text.
 
 
 \paragraph{Ampersand.}
 We can test Hennes {\&} Mauritz, often abbreviated H{\&}M, but written
-as \code{Hennes & Mauritz} and \code{H & M}.
-A sole \code{&} must also work.
+as \Verb!Hennes & Mauritz! and \Verb!H & M!.
+A sole \Verb!&! must also work.
 % Note: substitutions must not occur inside verbatim, just in ordinary text.
 
 \bccq
@@ -37353,7 +37374,7 @@ in the standard LaTeX-style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \code{.txt}.
+period, like \Verb!.txt!.
 
 
 \paragraph{Bibliography test.}
@@ -37393,8 +37414,8 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \code{Example:}
-and then, with the command-line option \code{--examples_as_exercises} be
+Examples can start with a subsection heading starting with \Verb!Example:!
+and then, with the command-line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
 
@@ -37431,7 +37452,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \code{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -37440,16 +37461,16 @@ colon, semi-colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}}, or just a \href{{mailto:hpl@simula.no}}{mail link}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}}.
 
-Here are some tough tests of URLs, especially for the \code{latex} format:
+Here are some tough tests of URLs, especially for the \Verb!latex! format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \code{--device=paper} option it is important to test that URLs with
+For the \Verb!--device=paper! option it is important to test that URLs with
 monospace font link text get a footnote
-(unless the \code{--latex_no_program_footnotelink}
+(unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
 \href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
 and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
@@ -37460,10 +37481,10 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 
 % Note that when there is no http: or file:, it can be a file link
 % if the link name is URL, url, "URL", or "url". Such files should,
-% if rst output is desired, but placed in a \code{_static*} folder.
+% if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\code{--device=paper} option must be correct. We have
+\Verb!--device=paper! option must be correct. We have
 \href{{http://google.com}}{google}, \href{{http://google.com}}{google}, and
 \href{{http://google.com}}{google}, which should result in exactly three
 footnotes.
@@ -37508,7 +37529,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier-Stokes equations. And test {\LaTeX} hyphen in \code{CG-2}.
+the Navier-Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non-latex formats.
@@ -37579,7 +37600,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \code{r = random.random()} and define head as \code{r <= 0.5}.
+Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 % --- end hint in exercise ---
 
@@ -37587,7 +37608,7 @@ Use \code{r = random.random()} and define head as \code{r <= 0.5}.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\code{r = random.randint(1,2)} and define head when \code{r} is 1.
+\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
 
 % --- end hint in exercise ---
 
@@ -37606,7 +37627,7 @@ Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
 
 \subex{c)}
-Vectorize the code in a) using \code{numpy.sum}.
+Vectorize the code in a) using \Verb!numpy.sum!.
 
 
 % removed !bans ... !eans environment
@@ -37616,7 +37637,7 @@ In this latter subexercise, we have an
 example where the code is easy to read.
 
 
-\noindent Filenames: \code{flip_coin.py}, \code{flip_coin.pdf}.
+\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
 
 % Closing remarks for this Problem
 
@@ -37656,7 +37677,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \code{myexer1.py}.
+\noindent Filename: \Verb!myexer1.py!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -37693,7 +37714,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \code{random} module,
+draw $N$ such random numbers using Python's standard \Verb!random! module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -37722,7 +37743,7 @@ y &= y_0 + R\sin 2\pi t,
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ is a point on the circle.
-The formula can be used to generate \code{n} points on a circle:
+The formula can be used to generate \Verb!n! points on a circle:
 
 \bpypro
 import numpy as np
@@ -37740,7 +37761,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \code{circle} function
+center and radius. Plot each circle using the \Verb!circle! function
 above.
 
 
@@ -37750,7 +37771,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \code{numpy.random} module to draw the
+Use the \Verb!numpy.random! module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -37765,13 +37786,13 @@ $x_0$, $y_0$, and $R$ quantities.
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \code{norm.py}.
+\noindent Filename: \Verb!norm.py!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \code{circles.pdf}.
+\noindent Filename: \Verb!circles.pdf!.
 
 % Closing remarks for this Project
 
@@ -37835,7 +37856,7 @@ Test list in hint:
 
 \noindent
 % --- end hint in exercise ---
-\noindent Filename: \code{subexer_a.pdf}.
+\noindent Filename: \Verb!subexer_a.pdf!.
 
 
 % removed !bans ... !eans environment
@@ -37855,7 +37876,7 @@ Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 A hint for this subexercise.
 
 % --- end hint in exercise ---
-\noindent Filename: \code{subexer_b.pdf}.
+\noindent Filename: \Verb!subexer_b.pdf!.
 
 
 % removed !bsol ... !esol environment
@@ -37901,7 +37922,7 @@ to test that math block insertion is correct:
 
 \begin{equation}  \exp{(0)} = 1 \end{equation} 
 
-And a test that the code \code{lambda x: x+2} is correctly placed here:
+And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 
 \bccq
 lambda x: x+2
@@ -38025,7 +38046,7 @@ hint, etc.):
 \end{enumerate}
 
 \noindent
-\noindent Filename: \code{verify_formula.py}.
+\noindent Filename: \Verb!verify_formula.py!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -38044,7 +38065,7 @@ hint, etc.):
 Refer to the previous exercise as Exercise~\ref{exer:some:formula},
 the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
 and this one as Project~\ref{exer:you}.
-\noindent Filename: \code{selc_composed.pdf}.
+\noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -38215,7 +38236,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \code{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -38228,8 +38249,8 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\paragraph{Appendix: Testing headings ending with \protect\code{verbatim inline}.}
-The point here is to test 1) \code{verbatim} code in headings, and 2)
+\paragraph{Appendix: Testing headings ending with \protect\Verb!verbatim inline!.}
+The point here is to test 1) \Verb!verbatim! code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -38243,7 +38264,7 @@ or in quotes:
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \code{admon.do.txt}.
+in a separate document: \Verb!admon.do.txt!.
 
 
 % ------------------- end of main content ---------------
@@ -40035,6 +40056,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -40084,13 +40106,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -40100,7 +40125,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -40294,7 +40319,7 @@ We have
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 and $\nabla\u (\x)\cdot\normalvec$
-with plain old pmb. Here are the same formulas using \code{\bm}:
+with plain old pmb. Here are the same formulas using \Verb!\bm!:
 
 \[ \color{blue}{\frac{\partial\ubm}{\partial t}} +
 \nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
@@ -45321,6 +45346,7 @@ in a separate document: ``admon.do.txt``.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -45375,13 +45401,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -45391,7 +45420,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -45977,7 +46006,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \code{remarks} and \code{hint} environments are not allowed outside
+The \Verb!remarks! and \Verb!hint! environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -45994,6 +46023,7 @@ exercises (and problems and projects too).
 %%
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
+%%
 %%
 
 
@@ -46022,13 +46052,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -46038,7 +46071,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -46589,6 +46622,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -46616,13 +46650,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -46632,7 +46669,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -47190,6 +47227,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -47217,13 +47255,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -47233,7 +47274,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -47834,6 +47875,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -47861,13 +47903,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -47877,7 +47922,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -48394,6 +48439,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -48421,13 +48467,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -48437,7 +48486,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -49000,6 +49049,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -49027,13 +49077,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -49043,7 +49096,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -49516,6 +49569,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -49543,13 +49597,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -49559,7 +49616,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -50122,6 +50179,7 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -50149,13 +50207,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -50165,7 +50226,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -59635,6 +59696,7 @@ title (Warning) since no title is specified.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -59686,13 +59748,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -59702,7 +59767,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -60027,7 +60092,7 @@ bla-bla
 \end{block}
 
 \begin{block}{Bash demanded more of DocOnce than Python, so let's do Bash: }
-First, inline \code{$? != 0}, then comments with dollar variables (and minted
+First, inline \Verb@$? != 0@, then comments with dollar variables (and minted
 style):
 
 \bshcod
@@ -62577,6 +62642,7 @@ Reveal.initialize({
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -62619,12 +62685,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{graphicx}
 
-\usepackage{ptex2tex}
-
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
+
+\usepackage{ptex2tex}
 
 % #ifdef MINTED
 \usepackage{minted}
@@ -62633,13 +62699,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -62649,7 +62718,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -63090,16 +63159,16 @@ Probably not, but I have a solution :-)
  \item {\LaTeX} equation math:
 \begin{itemize}
 
-    \item \textbf{LaTeX}: \code{equation*}, \code{equation}, \code{align*}, \code{align} +
-      \code{eqnarray}, \code{split}, \code{alignat}, ... (numerous!)
+    \item \textbf{LaTeX}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align! +
+      \Verb!eqnarray!, \Verb!split!, \Verb!alignat!, ... (numerous!)
 
-    \item \textbf{MathJax}: \code{equation*}, \code{equation}, \code{align*}, \code{align}
+    \item \textbf{MathJax}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align!
 
-    \item \textbf{MediaWiki}: \code{equation*}, \code{equation}, \code{align*}, \code{align}
+    \item \textbf{MediaWiki}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align!
 
-    \item \textbf{Sphinx}: \code{equation*}, \code{equation}, \code{align*}
+    \item \textbf{Sphinx}: \Verb!equation*!, \Verb!equation!, \Verb!align*!
 
-    \item \textbf{Markdown}: \code{equation*}, \code{equation}, \code{eqnarray*}, \code{align*} (but no labels)
+    \item \textbf{Markdown}: \Verb!equation*!, \Verb!equation!, \Verb!eqnarray*!, \Verb!align*! (but no labels)
 \end{itemize}
 
 \noindent
@@ -63113,7 +63182,7 @@ Probably not, but I have a solution :-)
 \begin{itemize}
  \item Figures: all
 
- \item Subfigures: {\LaTeX} (\code{subfigure})
+ \item Subfigures: {\LaTeX} (\Verb!subfigure!)
 
  \item Movies: {\LaTeX} (can run separately), just raw embedded HTML in others
 
@@ -63205,7 +63274,7 @@ Here goes the summary...
 % !split
 \subsection{DocOnce: section headings}
 
-Headings are surrounded by \code{=} signs:
+Headings are surrounded by \Verb!=! signs:
 \bccq
 ======= This is an H1/chapter heading =======
 
@@ -63236,7 +63305,7 @@ __This is a paragraph heading.__
 This gets rendered as
 
 \begin{itemize}
- \item Bullet lists start with \code{*}
+ \item Bullet lists start with \Verb!*!
    and may span several lines
 
  \item \emph{Emphasized words} are possible
@@ -63245,10 +63314,10 @@ This gets rendered as
 
  \item \textcolor{red}{colored words} too
 
- \item \code{inline verbatim code} is featured
+ \item \Verb!inline verbatim code! is featured
 \begin{enumerate}
 
-  \item and sublists with enumerated items starting with \code{o}
+  \item and sublists with enumerated items starting with \Verb!o!
 
   \item items are just indented as you would do in email
 \end{enumerate}
@@ -63324,7 +63393,7 @@ Inline math as in {\LaTeX}:
 gets rendered as ...where $a=\int_{\Omega}fdx$ is an integral.
 
 
-An equation environment is surrounded by \code{!bt} and \code{!et} tags,
+An equation environment is surrounded by \Verb?!bt? and \Verb?!et? tags,
 the rest is plain {\LaTeX}:
 
 \bccq
@@ -63350,7 +63419,7 @@ which is rendered as
 % !split
 \subsection{DocOnce: displaying code}
 
-Code is enclosed in \code{!bc} and \code{!ec} tags:
+Code is enclosed in \Verb?!bc? and \Verb?!ec? tags:
 
 \bccq
 !bc pycod
@@ -63386,10 +63455,10 @@ def solver(I, a, T, dt, theta):
 \epycod
 
 \begin{block}{Language-dependent typesetting of code: }
-The \code{!bc} command can be followed by a specification of the computer
-language: \code{pycod} for Python code snippet, \code{pypro} for complete Python
-program, \code{fcod} for Fortran snippet, \code{fpro} for Fortran program, and so
-forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} for Matlab).
+The \Verb?!bc? command can be followed by a specification of the computer
+language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
+program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
+forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
 \end{block}
 
 
@@ -63397,7 +63466,7 @@ forth (\code{c} for C, \code{cpp} for C++, \code{sh} for Unix shells, \code{m} f
 \subsection{DocOnce: displaying interactive demo code}
 \label{slide:pot}
 
-With \code{!bc pyoptpro} or a file \code{*.pyopt}, the code applies the
+With \Verb?!bc pyoptpro? or a file \Verb!*.pyopt!, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
@@ -63501,7 +63570,7 @@ And maybe a final comment?
 
 One can introduce a table-like layout with MxN cells and
 put slide elements in various cell. A cell with position
-MN is surrounded by \code{!bslidecell MN} and \code{!eslidecell}
+MN is surrounded by \Verb?!bslidecell MN? and \Verb?!eslidecell?
 tags. Below is an example with a bullet list to the left and
 a figure to the right (two cells, numbered 00 and 01).
 
@@ -65211,6 +65280,7 @@ demonstrated.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -65262,13 +65332,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -65278,7 +65351,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -67605,6 +67678,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -67648,8 +67722,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
 
-\usepackage{ptex2tex}
-
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
@@ -67658,6 +67730,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 
+\usepackage{ptex2tex}
+
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -67665,13 +67739,16 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -67681,7 +67758,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -67807,7 +67884,7 @@ Movie \arabic{doconce:movie:counter}: 1D wave in Flash.
 
 
 And here is a collection of images shown as an animation
-(\code{frame_*.png}):
+(\Verb!frame_*.png!):
 
 
 \begin{doconce:movie}
@@ -67932,7 +68009,7 @@ http://hplgit.github.io/animate/..../frame_%04d.png:80->129
 \begin{doconce:movie}
 \refstepcounter{doconce:movie:counter}
 \begin{center}
-Taking images to animate from cyberspace. \code{http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129}: load \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{movie_player1.html}} into a browser
+Taking images to animate from cyberspace. \Verb!http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129!: load \href{{file:///home/hpl/vc/doconce/test/movie_player1.html}}{\nolinkurl{movie_player1.html}} into a browser
 \end{center}
 
 \begin{center}  % movie caption
@@ -68038,6 +68115,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -68056,8 +68134,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
@@ -68066,16 +68142,21 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -68085,7 +68166,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -68439,6 +68520,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -68457,8 +68539,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-
 % Movies are handled by the media9 package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
@@ -68468,16 +68548,21 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -68487,7 +68572,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -70364,7 +70449,7 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 Text with a name like Åsmund Ødegård works in general.
 
 This block (in format latex)
-triggers use of \code{mako}. For all formats, \code{mako} has
+triggers use of \Verb!mako!. For all formats, \Verb!mako! has
 problem with non-ASCII characters anywhere in the text. The remedy
 for all formats is to read the file with UTF-8 encoding. With --debug
 one can see the internal str/unicode representation of the text
@@ -70697,7 +70782,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f28bd076230>
+verbatim is to be replaced using <function html_verbatim at 0x7febd4b10320>
 
 
 First occurence: " `mako`."
@@ -71667,6 +71752,7 @@ BIBFILE: papers.pub
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -71719,13 +71805,16 @@ BIBFILE: papers.pub
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=black,
     urlcolor=black,
@@ -71735,7 +71824,7 @@ BIBFILE: papers.pub
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -72022,10 +72111,10 @@ and modules that make the differences beween version 2 and 3 very small.
 This strategy is adopted in the present book. Only two
 differences between versions 2 and 3 are expected to be significant for
 the programs in the book:
-\code{a/b} implies float division in version 3 if \code{a} and \code{b}
+\Verb!a/b! implies float division in version 3 if \Verb!a! and \Verb!b!
 are integers,
-and \code{print 'Hello'} in version 2 must be turned into a function call
-\code{print('Hello')} in version 3. None of these differences should lead
+and \Verb!print 'Hello'! in version 2 must be turned into a function call
+\Verb!print('Hello')! in version 3. None of these differences should lead
 to any annoying problems when future readers study the book's v2.7
 examples, but program in version 3. Anyway, running 2to3 on the
 example files generates the corresponding version 3 code.
@@ -72099,20 +72188,20 @@ demonstrates how to create these three types of lists:
 \epy
 Here we have used list comprehensions for achieving compact code. Make
 sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard \code{for} loops and
+(if not, try to write the same code using standard \Verb!for! loops and
 appending new list elements in each pass of the loops).
 
 \index{heterogeneous lists}
 
 The list elements consist of objects of the same type: any element in
-\code{pairs} is a list of two \code{float} objects, while any element in \code{xlist}
-or \code{ylist} is a \code{float}. Lists are more flexible than that, because an
+\Verb!pairs! is a list of two \Verb!float! objects, while any element in \Verb!xlist!
+or \Verb!ylist! is a \Verb!float!. Lists are more flexible than that, because an
 element can be an object of any type, e.g.,
 
 \bpycod
 mylist = [2, 6.0, 'tmp.ps', [0,1]]
 \epycod
-Here \code{mylist} holds an \code{int}, a \code{float}, a string, and a list. This
+Here \Verb!mylist! holds an \Verb!int!, a \Verb!float!, a string, and a list. This
 combination of diverse object types makes up what is known as
 \emph{heterogeneous} lists.  We can also easily remove elements from a list
 or add new elements anywhere in the list.  This flexibility of lists
@@ -72153,9 +72242,9 @@ following assumptions and features:
 
   \item The number of elements must be known when the array is created.
 
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \code{import} statements, is \code{numpy}.
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \Verb!import! statements, is \Verb!numpy!.
 
-  \item With \code{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+  \item With \Verb!numpy!, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
 
   \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
 \end{itemize}
@@ -72166,7 +72255,7 @@ following assumptions and features:
 
 \begin{enumerate}
 \item There is actually an
-   object type called \code{array} in standard Python, but this data type is
+   object type called \Verb!array! in standard Python, but this data type is
    not so efficient for mathematical computations, and we will not use it
    in this book.
 
@@ -72198,7 +72287,7 @@ The statement
 \bpycod
 import numpy as np
 \epycod
-with subsequent prefixing of all NumPy functions and variables by \code{np.},
+with subsequent prefixing of all NumPy functions and variables by \Verb!np.!,
 has evolved as a standard syntax in the Python scientific computing
 community. However, to make Python programs look closer to MATLAB
 and ease the transition to and from that language, one can do
@@ -72208,7 +72297,7 @@ from numpy import *
 \epycod
 to get rid of the prefix (this is evolved as the standard in
 \emph{interactive} Python shells). This author prefers mathematical
-functions from \code{numpy} to be written without the prefix to
+functions from \Verb!numpy! to be written without the prefix to
 make the formulas as close as possible to the mathematics.
 So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
 
@@ -72219,41 +72308,41 @@ def f(x):
     return sinh(x-1)*sin(w*t)
 \epycod
 or one may take the less recommended
-lazy approach \code{from numpy import *} and fill up
-the program with \emph{a lot} of functions and variables from \code{numpy}.
+lazy approach \Verb!from numpy import *! and fill up
+the program with \emph{a lot} of functions and variables from \Verb!numpy!.
 \end{notice_mdfboxadmon}
 
 
 
-To convert a list \code{r} to an array,
-we use the \code{array} function
-from \code{numpy}:
+To convert a list \Verb!r! to an array,
+we use the \Verb!array! function
+from \Verb!numpy!:
 
 \bpycod
 a = np.array(r)
 \epycod
-To create a new array of length \code{n}, filled with zeros, we write
+To create a new array of length \Verb!n!, filled with zeros, we write
 
 \bpycod
 a = np.zeros(n)
 \epycod
 The array elements are of a type that corresponds to Python's
-\code{float} type. A second argument to \code{np.zeros} can be used to
-specify other element types, e.g., \code{int}.
+\Verb!float! type. A second argument to \Verb!np.zeros! can be used to
+specify other element types, e.g., \Verb!int!.
 A similar function,
 
 \bpycod
 a = np.zeros_like(c)
 \epycod
-generates an array of zeros where the length is that of the array \code{c}
-and the element type is the same as those in \code{c}.  Arrays with more
+generates an array of zeros where the length is that of the array \Verb!c!
+and the element type is the same as those in \Verb!c!.  Arrays with more
 than one index are treated in Section~\ref{sec:plot:2Darrays}.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
 Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The \code{numpy} function
-\code{linspace} creates such arrays:
+distributed values in an interval $[p,q]$. The \Verb!numpy! function
+\Verb!linspace! creates such arrays:
 
 \bpycod
 a = np.linspace(p, q, n)
@@ -72269,23 +72358,23 @@ a = np.linspace(p, q, n)
 \hline
 \multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
 \hline
-\code{array(ld)}       & copy list data \code{ld} to a \code{numpy} array                    \\
-\code{asarray(d)}      & make array of data \code{d} (no data copy if already array)         \\
-\code{zeros(n)}        & make a \code{float} vector/array of length \code{n}, with zeros     \\
-\code{zeros(n, int)}   & make an \code{int} vector/array of length \code{n} with zeros       \\
-\code{zeros((m,n))}    & make a two-dimensional \code{float} array with shape (\code{m},`n`) \\
-\code{zeros_like(x)}   & make array of same shape and element type as \code{x}               \\
-\code{linspace(a,b,m)} & uniform sequence of \code{m} numbers in $[a,b]$                     \\
-\code{a.shape}         & tuple containing \code{a}'s shape                                   \\
-\code{a.size}          & total no of elements in \code{a}                                    \\
-\code{len(a)}          & length of a one-dim. array \code{a} (same as \code{a.shape[0]})     \\
-\code{a.dtype}         & the type of elements in \code{a}                                    \\
-\code{a.reshape(3,2)}  & return \code{a} reshaped as $3\times 2$ array                       \\
-\code{a[i]}            & vector indexing                                                     \\
-\code{a[i,j]}          & two-dim. array indexing                                             \\
-\code{a[1:k]}          & slice: reference data with indices \code{1},\ldots,`k-1`            \\
-\code{a[1:8:3]}        & slice: reference data with indices \code{1}, \code{4},\ldots,`7`    \\
-\code{b = a.copy()}    & copy an array                                                       \\
+\Verb!array(ld)!       & copy list data \Verb!ld! to a \Verb!numpy! array                    \\
+\Verb!asarray(d)!      & make array of data \Verb!d! (no data copy if already array)         \\
+\Verb!zeros(n)!        & make a \Verb!float! vector/array of length \Verb!n!, with zeros     \\
+\Verb!zeros(n, int)!   & make an \Verb!int! vector/array of length \Verb!n! with zeros       \\
+\Verb!zeros((m,n))!    & make a two-dimensional \Verb!float! array with shape (\Verb!m!,`n`) \\
+\Verb!zeros_like(x)!   & make array of same shape and element type as \Verb!x!               \\
+\Verb!linspace(a,b,m)! & uniform sequence of \Verb!m! numbers in $[a,b]$                     \\
+\Verb!a.shape!         & tuple containing \Verb!a!'s shape                                   \\
+\Verb!a.size!          & total no of elements in \Verb!a!                                    \\
+\Verb!len(a)!          & length of a one-dim. array \Verb!a! (same as \Verb!a.shape[0]!)     \\
+\Verb!a.dtype!         & the type of elements in \Verb!a!                                    \\
+\Verb!a.reshape(3,2)!  & return \Verb!a! reshaped as $3\times 2$ array                       \\
+\Verb!a[i]!            & vector indexing                                                     \\
+\Verb!a[i,j]!          & two-dim. array indexing                                             \\
+\Verb!a[1:k]!          & slice: reference data with indices \Verb!1!,\ldots,`k-1`            \\
+\Verb!a[1:8:3]!        & slice: reference data with indices \Verb!1!, \Verb!4!,\ldots,`7`    \\
+\Verb!b = a.copy()!    & copy an array                                                       \\
 \hline
 \end{tabular}
 
@@ -72316,10 +72405,10 @@ means we need a lot of URLs, e.g., to files:
 \label{sec:files:writing}
 
 Writing data to file is easy.
-There is basically one function to pay attention to: \code{outfile.write(s)},
-which writes a string \code{s} to
-a file handled by the file object \code{outfile}. Unlike \code{print},
-\code{outfile.write(s)}
+There is basically one function to pay attention to: \Verb!outfile.write(s)!,
+which writes a string \Verb!s! to
+a file handled by the file object \Verb!outfile!. Unlike \Verb!print!,
+\Verb!outfile.write(s)!
 does not append a newline character to the written string.
 It will therefore
 often be necessary to add a newline character,
@@ -72327,14 +72416,14 @@ often be necessary to add a newline character,
 \bpycod
 outfile.write(s + '\n')
 \epycod
-if the string \code{s} is meant to appear on a single line in the file
-and \code{s} does not already contain a trailing newline character.
+if the string \Verb!s! is meant to appear on a single line in the file
+and \Verb!s! does not already contain a trailing newline character.
 File writing is then a matter of constructing strings containing the
 text we want to have in the file and for each such string call
-\code{outfile.write}.
+\Verb!outfile.write!.
 
 Writing to a file demands
-the file object \code{f}
+the file object \Verb!f!
 to be opened for writing:
 
 \bpycod
@@ -72385,7 +72474,7 @@ row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
 row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
 \edat
 To obtain this end result, we need to the add some statements to
-the program \code{write1.py}. For the column headings we need
+the program \Verb!write1.py!. For the column headings we need
 to know the number of columns, i.e., the length of the rows,
 and loop from 1 to this length:
 
@@ -72398,8 +72487,8 @@ outfile.write('\n')
 \epycod
 Note the use of a nested printf construction: The text we want to
 insert is itself a printf string. We could also have written the
-text as \code{'column  ' + str(i)}, but then the length of the
-resulting string would depend on the number of digits in \code{i}.
+text as \Verb!'column  ' + str(i)!, but then the length of the
+resulting string would depend on the number of digits in \Verb!i!.
 It is recommended to always use printf constructions for
 a tabular output format, because this gives automatic padding of
 blanks so that the width of the output strings remain the same.
@@ -72448,22 +72537,22 @@ are
 \index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
 
 Reading user input from the keyboard applies the function
-\code{raw_input} as explained in Section~\ref{sec:input:rawinput}.
+\Verb!raw_input! as explained in Section~\ref{sec:input:rawinput}.
 The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
 
-The \code{print} command prints text in the terminal window. This medium
+The \Verb!print! command prints text in the terminal window. This medium
 is also viewed as a file from the computer's point of view and called
 \emph{standard output}. All general-purpose programming languages
 allow reading from standard input and
 writing to standard output. This reading and writing can be done with
 two types of tools, either file-like objects or special tools like
-\code{raw_input}
-and \code{print} in Python.
+\Verb!raw_input!
+and \Verb!print! in Python.
 We will here describe the file-line objects:
-\code{sys.stdin} for standard input
-and \code{sys.stdout} for standard output. These objects
+\Verb!sys.stdin! for standard input
+and \Verb!sys.stdout! for standard output. These objects
 behave as file objects, except that they do not need to be opened or
 closed. The statement
 
@@ -72476,8 +72565,8 @@ is equivalent to
 print 'Give s: ',
 s = sys.stdin.readline()
 \epycod
-Recall that the trailing comma in the \code{print} statement avoids the
-newline that \code{print} by default adds to the output string.
+Recall that the trailing comma in the \Verb!print! statement avoids the
+newline that \Verb!print! by default adds to the output string.
 Similarly,
 
 \bpycod
@@ -72502,8 +72591,8 @@ sys.stdout.write(s + '\n')
 
 Why it is handy to have access to standard input and output
 as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object \code{infile}
-and writes data to a file object \code{outfile}.
+function that reads data from a file object \Verb!infile!
+and writes data to a file object \Verb!outfile!.
 A sample function may take the form
 
 \bpycod
@@ -72514,12 +72603,12 @@ def x2f(infile, outfile, f):
         outfile.write('%g\n' % y)
 \epycod
 This function works with all types of files, including
-web pages as \code{infile} (see Section~\ref{sec:files:webtxt}).
-With \code{sys.stdin} as \code{infile} and/or \code{sys.stdout}
-as \code{outfile}, the \code{x2f} function also works with standard input
-and/or standard output. Without \code{sys.stdin} and \code{sys.stdout},
-we would need different code, employing \code{raw_input}
-and \code{print},
+web pages as \Verb!infile! (see Section~\ref{sec:files:webtxt}).
+With \Verb!sys.stdin! as \Verb!infile! and/or \Verb!sys.stdout!
+as \Verb!outfile!, the \Verb!x2f! function also works with standard input
+and/or standard output. Without \Verb!sys.stdin! and \Verb!sys.stdout!,
+we would need different code, employing \Verb!raw_input!
+and \Verb!print!,
 to deal with standard input and output. Now we can write a single
 function that deals with all file media in a unified way.
 
@@ -72532,27 +72621,27 @@ programs can distinguish between writing ordinary output to standard
 output and error messages to standard error, and these output media
 can be redirected to, e.g., files such that one can separate
 error messages from ordinary output.
-In Python, standard error is the file-like object \code{sys.stderr}.
-A typical application of \code{sys.stderr} is to report errors:
+In Python, standard error is the file-like object \Verb!sys.stderr!.
+A typical application of \Verb!sys.stderr! is to report errors:
 
 \bpycod
 if x < 0:
     sys.stderr.write('Illegal value of x'); sys.exit(1)
 \epycod
-This message to \code{sys.stderr} is an alternative to
-\code{print} or raising an exception.
+This message to \Verb!sys.stderr! is an alternative to
+\Verb!print! or raising an exception.
 
 \paragraph{Redirecting standard input, output, and error.}
-Standard output from a program \code{prog}
+Standard output from a program \Verb!prog!
 can be redirected to a file
-\code{output} instead of the screen, by
+\Verb!output! instead of the screen, by
 using the greater than sign:
 
 \bsys
 Terminal> prog > output
 \esys
-Here, \code{prog} can be any
-program, including a Python program run as \code{python myprog.py}.
+Here, \Verb!prog! can be any
+program, including a Python program run as \Verb!python myprog.py!.
 Similarly, output to the medium called \emph{standard error}
 can be redirected by
 
@@ -72573,7 +72662,7 @@ ls: cannot access bla-bla2: No such file or directory
 \esys
 When the program reads from standard input (the keyboard),
 we can equally well redirect
-standard input to a file, say with name \code{raw_input}, such that
+standard input to a file, say with name \Verb!raw_input!, such that
 the program reads from this file rather than from the keyboard:
 
 \bsys
@@ -72587,7 +72676,7 @@ Terminal> prog < input > output
 
 \paragraph{Note.}
 The redirection of standard output, input, and error
-does not work for Python programs executed with the \code{run}
+does not work for Python programs executed with the \Verb!run!
 command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
@@ -72606,12 +72695,12 @@ as well as Python itself \cite{Python}, and of course NumPy
 \chapter{Styles for Springer T2}
 
 The T2 style for DocOnce-generated {\LaTeX} should make use of
-slightly modified \code{svmono.cls} and \code{t2.sty} files:
+slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \begin{itemize}
- \item \code{svmonodo.cls}
+ \item \Verb!svmonodo.cls!
 
- \item \code{t2do.sty}
+ \item \Verb!t2do.sty!
 \end{itemize}
 
 \noindent
@@ -72642,6 +72731,7 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 
 
 %-------------------- begin preamble ----------------------
@@ -72665,13 +72755,16 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=black,
     urlcolor=black,
@@ -72681,7 +72774,7 @@ slightly modified \code{svmono.cls} and \code{t2.sty} files:
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -72967,10 +73060,10 @@ and modules that make the differences beween version 2 and 3 very small.
 This strategy is adopted in the present book. Only two
 differences between versions 2 and 3 are expected to be significant for
 the programs in the book:
-\texttt{a/b} implies float division in version 3 if \texttt{a} and \texttt{b}
+\Verb!a/b! implies float division in version 3 if \Verb!a! and \Verb!b!
 are integers,
-and \texttt{print 'Hello'} in version 2 must be turned into a function call
-\texttt{print('Hello')} in version 3. None of these differences should lead
+and \Verb!print 'Hello'! in version 2 must be turned into a function call
+\Verb!print('Hello')! in version 3. None of these differences should lead
 to any annoying problems when future readers study the book's v2.7
 examples, but program in version 3. Anyway, running 2to3 on the
 example files generates the corresponding version 3 code.
@@ -73061,14 +73154,14 @@ demonstrates how to create these three types of lists:
 \noindent
 Here we have used list comprehensions for achieving compact code. Make
 sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard \texttt{for} loops and
+(if not, try to write the same code using standard \Verb!for! loops and
 appending new list elements in each pass of the loops).
 
 \index{heterogeneous lists}
 
 The list elements consist of objects of the same type: any element in
-\texttt{pairs} is a list of two \texttt{float} objects, while any element in \texttt{xlist}
-or \texttt{ylist} is a \texttt{float}. Lists are more flexible than that, because an
+\Verb!pairs! is a list of two \Verb!float! objects, while any element in \Verb!xlist!
+or \Verb!ylist! is a \Verb!float!. Lists are more flexible than that, because an
 element can be an object of any type, e.g.,
 
 \providecommand{\shadedskip}{}
@@ -73091,7 +73184,7 @@ mylist = [2, 6.0, 'tmp.ps', [0,1]]
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-Here \texttt{mylist} holds an \texttt{int}, a \texttt{float}, a string, and a list. This
+Here \Verb!mylist! holds an \Verb!int!, a \Verb!float!, a string, and a list. This
 combination of diverse object types makes up what is known as
 \emph{heterogeneous} lists.  We can also easily remove elements from a list
 or add new elements anywhere in the list.  This flexibility of lists
@@ -73132,9 +73225,9 @@ following assumptions and features:
 
   \item The number of elements must be known when the array is created.
 
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \texttt{import} statements, is \texttt{numpy}.
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \Verb!import! statements, is \Verb!numpy!.
 
-  \item With \texttt{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+  \item With \Verb!numpy!, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
 
   \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
 \end{itemize}
@@ -73145,7 +73238,7 @@ following assumptions and features:
 
 \begin{enumerate}
 \item There is actually an
-   object type called \texttt{array} in standard Python, but this data type is
+   object type called \Verb!array! in standard Python, but this data type is
    not so efficient for mathematical computations, and we will not use it
    in this book.
 
@@ -73181,7 +73274,7 @@ import numpy as np
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-with subsequent prefixing of all NumPy functions and variables by \texttt{np.},
+with subsequent prefixing of all NumPy functions and variables by \Verb!np.!,
 has evolved as a standard syntax in the Python scientific computing
 community. However, to make Python programs look closer to MATLAB
 and ease the transition to and from that language, one can do
@@ -73195,7 +73288,7 @@ from numpy import *
 \noindent
 to get rid of the prefix (this is evolved as the standard in
 \emph{interactive} Python shells). This author prefers mathematical
-functions from \texttt{numpy} to be written without the prefix to
+functions from \Verb!numpy! to be written without the prefix to
 make the formulas as close as possible to the mathematics.
 So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
 
@@ -73210,15 +73303,15 @@ def f(x):
 \end{shadedquoteBlue}
 \noindent
 or one may take the less recommended
-lazy approach \texttt{from numpy import *} and fill up
-the program with \emph{a lot} of functions and variables from \texttt{numpy}.
+lazy approach \Verb!from numpy import *! and fill up
+the program with \emph{a lot} of functions and variables from \Verb!numpy!.
 \end{notice_mdfboxadmon}
 
 
 
-To convert a list \texttt{r} to an array,
-we use the \texttt{array} function
-from \texttt{numpy}:
+To convert a list \Verb!r! to an array,
+we use the \Verb!array! function
+from \Verb!numpy!:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -73227,7 +73320,7 @@ a = np.array(r)
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-To create a new array of length \texttt{n}, filled with zeros, we write
+To create a new array of length \Verb!n!, filled with zeros, we write
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -73237,8 +73330,8 @@ a = np.zeros(n)
 \end{shadedquoteBlue}
 \noindent
 The array elements are of a type that corresponds to Python's
-\texttt{float} type. A second argument to \texttt{np.zeros} can be used to
-specify other element types, e.g., \texttt{int}.
+\Verb!float! type. A second argument to \Verb!np.zeros! can be used to
+specify other element types, e.g., \Verb!int!.
 A similar function,
 
 \begin{shadedquoteBlue}
@@ -73248,15 +73341,15 @@ a = np.zeros_like(c)
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-generates an array of zeros where the length is that of the array \texttt{c}
-and the element type is the same as those in \texttt{c}.  Arrays with more
+generates an array of zeros where the length is that of the array \Verb!c!
+and the element type is the same as those in \Verb!c!.  Arrays with more
 than one index are treated in Section~\ref{sec:plot:2Darrays}.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
 Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The \texttt{numpy} function
-\texttt{linspace} creates such arrays:
+distributed values in an interval $[p,q]$. The \Verb!numpy! function
+\Verb!linspace! creates such arrays:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -73276,23 +73369,23 @@ a = np.linspace(p, q, n)
 \hline
 \multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
 \hline
-\texttt{array(ld)}       & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
-\texttt{asarray(d)}      & make array of data \texttt{d} (no data copy if already array)         \\
-\texttt{zeros(n)}        & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
-\texttt{zeros(n, int)}   & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
-\texttt{zeros((m,n))}    & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
-{\Verb!zeros_like(x)!}   & make array of same shape and element type as \texttt{x}               \\
-\texttt{linspace(a,b,m)} & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
-\texttt{a.shape}         & tuple containing \texttt{a}'s shape                                   \\
-\texttt{a.size}          & total no of elements in \texttt{a}                                    \\
-\texttt{len(a)}          & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
-\texttt{a.dtype}         & the type of elements in \texttt{a}                                    \\
-\texttt{a.reshape(3,2)}  & return \texttt{a} reshaped as $3\times 2$ array                       \\
-\texttt{a[i]}            & vector indexing                                                     \\
-\texttt{a[i,j]}          & two-dim. array indexing                                             \\
-\texttt{a[1:k]}          & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
-\texttt{a[1:8:3]}        & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
-\texttt{b = a.copy()}    & copy an array                                                       \\
+\Verb!array(ld)!       & copy list data \Verb!ld! to a \Verb!numpy! array                    \\
+\Verb!asarray(d)!      & make array of data \Verb!d! (no data copy if already array)         \\
+\Verb!zeros(n)!        & make a \Verb!float! vector/array of length \Verb!n!, with zeros     \\
+\Verb!zeros(n, int)!   & make an \Verb!int! vector/array of length \Verb!n! with zeros       \\
+\Verb!zeros((m,n))!    & make a two-dimensional \Verb!float! array with shape (\Verb!m!,`n`) \\
+\Verb!zeros_like(x)!   & make array of same shape and element type as \Verb!x!               \\
+\Verb!linspace(a,b,m)! & uniform sequence of \Verb!m! numbers in $[a,b]$                     \\
+\Verb!a.shape!         & tuple containing \Verb!a!'s shape                                   \\
+\Verb!a.size!          & total no of elements in \Verb!a!                                    \\
+\Verb!len(a)!          & length of a one-dim. array \Verb!a! (same as \Verb!a.shape[0]!)     \\
+\Verb!a.dtype!         & the type of elements in \Verb!a!                                    \\
+\Verb!a.reshape(3,2)!  & return \Verb!a! reshaped as $3\times 2$ array                       \\
+\Verb!a[i]!            & vector indexing                                                     \\
+\Verb!a[i,j]!          & two-dim. array indexing                                             \\
+\Verb!a[1:k]!          & slice: reference data with indices \Verb!1!,\ldots,`k-1`            \\
+\Verb!a[1:8:3]!        & slice: reference data with indices \Verb!1!, \Verb!4!,\ldots,`7`    \\
+\Verb!b = a.copy()!    & copy an array                                                       \\
 \hline
 \end{tabular}
 
@@ -73323,10 +73416,10 @@ means we need a lot of URLs, e.g., to files:
 \label{sec:files:writing}
 
 Writing data to file is easy.
-There is basically one function to pay attention to: \texttt{outfile.write(s)},
-which writes a string \texttt{s} to
-a file handled by the file object \texttt{outfile}. Unlike \texttt{print},
-\texttt{outfile.write(s)}
+There is basically one function to pay attention to: \Verb!outfile.write(s)!,
+which writes a string \Verb!s! to
+a file handled by the file object \Verb!outfile!. Unlike \Verb!print!,
+\Verb!outfile.write(s)!
 does not append a newline character to the written string.
 It will therefore
 often be necessary to add a newline character,
@@ -73338,14 +73431,14 @@ outfile.write(s + '\n')
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-if the string \texttt{s} is meant to appear on a single line in the file
-and \texttt{s} does not already contain a trailing newline character.
+if the string \Verb!s! is meant to appear on a single line in the file
+and \Verb!s! does not already contain a trailing newline character.
 File writing is then a matter of constructing strings containing the
 text we want to have in the file and for each such string call
-\texttt{outfile.write}.
+\Verb!outfile.write!.
 
 Writing to a file demands
-the file object \texttt{f}
+the file object \Verb!f!
 to be opened for writing:
 
 \begin{shadedquoteBlue}
@@ -73403,7 +73496,7 @@ row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
 \end{Verbatim}
 \noindent
 To obtain this end result, we need to the add some statements to
-the program \texttt{write1.py}. For the column headings we need
+the program \Verb!write1.py!. For the column headings we need
 to know the number of columns, i.e., the length of the rows,
 and loop from 1 to this length:
 
@@ -73420,8 +73513,8 @@ outfile.write('\n')
 \noindent
 Note the use of a nested printf construction: The text we want to
 insert is itself a printf string. We could also have written the
-text as \texttt{'column  ' + str(i)}, but then the length of the
-resulting string would depend on the number of digits in \texttt{i}.
+text as \Verb!'column  ' + str(i)!, but then the length of the
+resulting string would depend on the number of digits in \Verb!i!.
 It is recommended to always use printf constructions for
 a tabular output format, because this gives automatic padding of
 blanks so that the width of the output strings remain the same.
@@ -73478,22 +73571,22 @@ are
 \index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
 
 Reading user input from the keyboard applies the function
-{\Verb!raw_input!} as explained in Section~\ref{sec:input:rawinput}.
+\Verb!raw_input! as explained in Section~\ref{sec:input:rawinput}.
 The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
 
-The \texttt{print} command prints text in the terminal window. This medium
+The \Verb!print! command prints text in the terminal window. This medium
 is also viewed as a file from the computer's point of view and called
 \emph{standard output}. All general-purpose programming languages
 allow reading from standard input and
 writing to standard output. This reading and writing can be done with
 two types of tools, either file-like objects or special tools like
-{\Verb!raw_input!}
-and \texttt{print} in Python.
+\Verb!raw_input!
+and \Verb!print! in Python.
 We will here describe the file-line objects:
-\texttt{sys.stdin} for standard input
-and \texttt{sys.stdout} for standard output. These objects
+\Verb!sys.stdin! for standard input
+and \Verb!sys.stdout! for standard output. These objects
 behave as file objects, except that they do not need to be opened or
 closed. The statement
 
@@ -73514,8 +73607,8 @@ s = sys.stdin.readline()
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-Recall that the trailing comma in the \texttt{print} statement avoids the
-newline that \texttt{print} by default adds to the output string.
+Recall that the trailing comma in the \Verb!print! statement avoids the
+newline that \Verb!print! by default adds to the output string.
 Similarly,
 
 \begin{shadedquoteBlue}
@@ -73556,8 +73649,8 @@ sys.stdout.write(s + '\n')
 
 Why it is handy to have access to standard input and output
 as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object \texttt{infile}
-and writes data to a file object \texttt{outfile}.
+function that reads data from a file object \Verb!infile!
+and writes data to a file object \Verb!outfile!.
 A sample function may take the form
 
 \begin{shadedquoteBlue}
@@ -73572,12 +73665,12 @@ def x2f(infile, outfile, f):
 \end{shadedquoteBlue}
 \noindent
 This function works with all types of files, including
-web pages as \texttt{infile} (see Section~\ref{sec:files:webtxt}).
-With \texttt{sys.stdin} as \texttt{infile} and/or \texttt{sys.stdout}
-as \texttt{outfile}, the \texttt{x2f} function also works with standard input
-and/or standard output. Without \texttt{sys.stdin} and \texttt{sys.stdout},
-we would need different code, employing {\Verb!raw_input!}
-and \texttt{print},
+web pages as \Verb!infile! (see Section~\ref{sec:files:webtxt}).
+With \Verb!sys.stdin! as \Verb!infile! and/or \Verb!sys.stdout!
+as \Verb!outfile!, the \Verb!x2f! function also works with standard input
+and/or standard output. Without \Verb!sys.stdin! and \Verb!sys.stdout!,
+we would need different code, employing \Verb!raw_input!
+and \Verb!print!,
 to deal with standard input and output. Now we can write a single
 function that deals with all file media in a unified way.
 
@@ -73590,8 +73683,8 @@ programs can distinguish between writing ordinary output to standard
 output and error messages to standard error, and these output media
 can be redirected to, e.g., files such that one can separate
 error messages from ordinary output.
-In Python, standard error is the file-like object \texttt{sys.stderr}.
-A typical application of \texttt{sys.stderr} is to report errors:
+In Python, standard error is the file-like object \Verb!sys.stderr!.
+A typical application of \Verb!sys.stderr! is to report errors:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -73601,21 +73694,21 @@ if x < 0:
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-This message to \texttt{sys.stderr} is an alternative to
-\texttt{print} or raising an exception.
+This message to \Verb!sys.stderr! is an alternative to
+\Verb!print! or raising an exception.
 
 \paragraph{Redirecting standard input, output, and error.}
-Standard output from a program \texttt{prog}
+Standard output from a program \Verb!prog!
 can be redirected to a file
-\texttt{output} instead of the screen, by
+\Verb!output! instead of the screen, by
 using the greater than sign:
 
 \vspace{4pt}
 \begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
 Terminal> prog > output
 \end{Verbatim}
-Here, \texttt{prog} can be any
-program, including a Python program run as \texttt{python myprog.py}.
+Here, \Verb!prog! can be any
+program, including a Python program run as \Verb!python myprog.py!.
 Similarly, output to the medium called \emph{standard error}
 can be redirected by
 
@@ -73638,7 +73731,7 @@ ls: cannot access bla-bla2: No such file or directory
 \end{Verbatim}
 When the program reads from standard input (the keyboard),
 we can equally well redirect
-standard input to a file, say with name {\Verb!raw_input!}, such that
+standard input to a file, say with name \Verb!raw_input!, such that
 the program reads from this file rather than from the keyboard:
 
 \vspace{4pt}
@@ -73654,7 +73747,7 @@ Terminal> prog < input > output
 
 \paragraph{Note.}
 The redirection of standard output, input, and error
-does not work for Python programs executed with the \texttt{run}
+does not work for Python programs executed with the \Verb!run!
 command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
@@ -73673,12 +73766,12 @@ as well as Python itself \cite{Python}, and of course NumPy
 \chapter{Styles for Springer T2}
 
 The T2 style for DocOnce-generated {\LaTeX} should make use of
-slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
+slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \begin{itemize}
- \item \texttt{svmonodo.cls}
+ \item \Verb!svmonodo.cls!
 
- \item \texttt{t2do.sty}
+ \item \Verb!t2do.sty!
 \end{itemize}
 
 \noindent
@@ -74658,7 +74751,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jan 25 00:28:07 2015.
+# sphinx-quickstart on Sun Feb  1 09:54:57 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78478,6 +78571,7 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
+%%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
@@ -78525,12 +78619,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
 
-\usepackage{ptex2tex}
-
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
+
+\usepackage{ptex2tex}
 
 % #ifdef MINTED
 \usepackage{minted}
@@ -78539,7 +78633,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
 
 % Set helvetica as the default font family:
 \RequirePackage{helvet}
@@ -78549,7 +78644,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage[%
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
     colorlinks=true,
     linkcolor=linkcolor,
     urlcolor=linkcolor,
@@ -78559,7 +78656,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
     pdfmenubar=true,
     pdftoolbar=true,
     bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
-            ]{hyperref}
+    }
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
@@ -78815,7 +78912,7 @@ Enable writing documentation with much mathematics and
 computer code \emph{once, in one place} and include it in traditional {\LaTeX}
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
-include Google's \code{blogger.com}, Wikipedia/Wikibooks, IPython
+include Google's \Verb!blogger.com!, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
@@ -78824,35 +78921,35 @@ mathematics and code.
 DocOnce currently translates files to the following formats:
 
 \begin{itemize}
- \item {\LaTeX} (format \code{latex} and \code{pdflatex})
+ \item {\LaTeX} (format \Verb!latex! and \Verb!pdflatex!)
 
- \item HTML (format \code{html})
+ \item HTML (format \Verb!html!)
 
- \item reStructuredText (format \code{rst})
+ \item reStructuredText (format \Verb!rst!)
 
- \item plain (untagged) ASCII (format \code{plain})
+ \item plain (untagged) ASCII (format \Verb!plain!)
 
- \item Sphinx (format \code{sphinx})
+ \item Sphinx (format \Verb!sphinx!)
 
- \item IPython notebook (format \code{ipynb})
+ \item IPython notebook (format \Verb!ipynb!)
 
- \item MediaWiki (format \code{mwiki})
+ \item MediaWiki (format \Verb!mwiki!)
 
- \item (Pandoc extended) Markdown (format \code{pandoc})
+ \item (Pandoc extended) Markdown (format \Verb!pandoc!)
 
- \item Googlecode wiki (format \code{gwiki})
+ \item Googlecode wiki (format \Verb!gwiki!)
 
- \item Creoloe wiki (format \code{cwiki})
+ \item Creoloe wiki (format \Verb!cwiki!)
 
- \item Epydoc (format \code{epydoc})
+ \item Epydoc (format \Verb!epydoc!)
 
- \item StructuredText (format \code{st})
+ \item StructuredText (format \Verb!st!)
 \end{itemize}
 
 \noindent
 For documents with much code and mathematics, the best (and most supported)
-formats are \code{latex}, \code{pdflatex}, \code{sphinx}, and \code{html}; and to a slightly
-less extent \code{mwiki} and \code{pandoc}. The HTML format supports blog posts on
+formats are \Verb!latex!, \Verb!pdflatex!, \Verb!sphinx!, and \Verb!html!; and to a slightly
+less extent \Verb!mwiki! and \Verb!pandoc!. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -78861,7 +78958,7 @@ Google and Wordpress.
 The file \href{{https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el}}{.doconce-mode.el}
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
-\code{(load-file "~/.doconce-mode.el")} to the \code{.emacs} file.
+\Verb!(load-file "~/.doconce-mode.el")! to the \Verb!.emacs! file.
 
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -78878,10 +78975,10 @@ Ctrl+c h1     & heading level 1 (section/h1)                     \\
 Ctrl+c h2     & heading level 2 (subsection/h2)                  \\
 Ctrl+c h3     & heading level 2 (subsection/h3)                  \\
 Ctrl+c hp     & heading for paragraph                            \\
-Ctrl+c me     & math environment: \code{!bt} equation \code{!et} \\
-Ctrl+c ma     & math environment: \code{!bt} align \code{!et}    \\
-Ctrl+c ce     & code environment: \code{!bc} code \code{!ec}     \\
-Ctrl+c cf     & code from file: \code{@@@CODE}                   \\
+Ctrl+c me     & math environment: \Verb?!bt? equation \Verb?!et? \\
+Ctrl+c ma     & math environment: \Verb?!bt? align \Verb?!et?    \\
+Ctrl+c ce     & code environment: \Verb?!bc? code \Verb?!ec?     \\
+Ctrl+c cf     & code from file: \Verb!@@@CODE!                   \\
 Ctrl+c table2 & table with 2 columns                             \\
 Ctrl+c table3 & table with 3 columns                             \\
 Ctrl+c table4 & table with 4 columns                             \\
@@ -78913,18 +79010,18 @@ The author syntax is
 name Email: somename@adr.net at institution1 & institution2
 \eccq
 where the email is optional, the "at" keyword is required if one or
-more institutions are to be specified, and the \code{&} keyword
-separates the institutions (the keyword \code{and} works too).
+more institutions are to be specified, and the \Verb!&! keyword
+separates the institutions (the keyword \Verb!and! works too).
 Each author specification must appear
 on a single line.
 When more than one author belong to the
 same institution, make sure that the institution is specified in an identical
 way for each author.
 
-The date can be set as any text different from \code{today} if not the
-current date is wanted, e.g., \code{Jan 32, 2100}.
+The date can be set as any text different from \Verb!today! if not the
+current date is wanted, e.g., \Verb!Jan 32, 2100!.
 
-The table of contents is removed by writing \code{TOC: off}.
+The table of contents is removed by writing \Verb!TOC: off!.
 
 
 \subsection{Section Types}
@@ -78936,35 +79033,35 @@ The table of contents is removed by writing \code{TOC: off}.
 \hline
 \multicolumn{1}{c}{ Section type } & \multicolumn{1}{c}{ Syntax } \\
 \hline
-chapter       & \code{========= Heading ========} (9 \code{=})        \\
-section       & \code{======= Heading =======}    (7 \code{=})        \\
-subsection    & \code{===== Heading =====}        (5 \code{=})        \\
-subsubsection & \code{=== Heading ===}            (3 \code{=})        \\
-paragraph     & \code{__Heading.__}               (2 \code{_})        \\
-abstract      & \code{__Abstract.__} Running text...                  \\
-appendix      & \code{======= Appendix: heading =======} (7 \code{=}) \\
-appendix      & \code{===== Appendix: heading =====} (5 \code{=})     \\
-exercise      & \code{======= Exercise: heading =======} (7 \code{=}) \\
-exercise      & \code{===== Exercise: heading =====} (5 \code{=})     \\
+chapter       & \Verb!========= Heading ========! (9 \Verb!=!)        \\
+section       & \Verb!======= Heading =======!    (7 \Verb!=!)        \\
+subsection    & \Verb!===== Heading =====!        (5 \Verb!=!)        \\
+subsubsection & \Verb!=== Heading ===!            (3 \Verb!=!)        \\
+paragraph     & \Verb!__Heading.__!               (2 \Verb!_!)        \\
+abstract      & \Verb!__Abstract.__! Running text...                  \\
+appendix      & \Verb!======= Appendix: heading =======! (7 \Verb!=!) \\
+appendix      & \Verb!===== Appendix: heading =====! (5 \Verb!=!)     \\
+exercise      & \Verb!======= Exercise: heading =======! (7 \Verb!=!) \\
+exercise      & \Verb!===== Exercise: heading =====! (5 \Verb!=!)     \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
-Note that abstracts are recognized by starting with \code{__Abstract.__} or
-\code{__Summary.__} at the beginning of a line and ending with three or
-more \code{=} signs of the next heading.
+Note that abstracts are recognized by starting with \Verb!__Abstract.__! or
+\Verb!__Summary.__! at the beginning of a line and ending with three or
+more \Verb!=! signs of the next heading.
 
-The \code{Exercise:} keyword kan be substituted by \code{Problem:} or \code{Project:}.
+The \Verb!Exercise:! keyword kan be substituted by \Verb!Problem:! or \Verb!Project:!.
 A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
 
 \subsection{Inline Formatting}
 
-Words surrounded by \code{*} are emphasized: \code{*emphasized words*} becomes
+Words surrounded by \Verb!*! are emphasized: \Verb!*emphasized words*! becomes
 \emph{emphasized words}. Similarly, an underscore surrounds words that
-appear in boldface: \code{_boldface_} becomes \textbf{boldface}. Colored words
+appear in boldface: \Verb!_boldface_! becomes \textbf{boldface}. Colored words
 are also possible: the text
 
 \bccq
@@ -78978,7 +79075,7 @@ Quotations appear inside double backticks and double single quotes:
 This is a sentence with ``words to be quoted''.
 \eccq
 
-A forced linebreak is specified by \code{<linebreak>} at the point where the
+A forced linebreak is specified by \Verb!<linebreak>! at the point where the
 linebreak in the output is wanted.
 
 Footnotes use a label in the text with the footnote text separate,
@@ -79010,8 +79107,8 @@ is typeset as four or more hyphens on a single line:
 ---------
 \eccq
 
-The \code{latex}, \code{pdflatex}, \code{sphinx}, and \code{html} formats support em-dash,
-indicated by three hyphens: \code{---}. Here is an example:
+The \Verb!latex!, \Verb!pdflatex!, \Verb!sphinx!, and \Verb!html! formats support em-dash,
+indicated by three hyphens: \Verb!---!. Here is an example:
 
 \bccq
 The em-dash is used - without spaces - as alternative to hyphen with
@@ -79025,26 +79122,26 @@ space around in sentences---this way, or in quotes:
 \emph{Premature optimization is the root of all evil.}--- Donald Knuth.
 
 An ampersand, as in Guns {\&} Roses or Texas A{\&}M, is written as a
-plain \code{&} \emph{with space(s) on both sides}. Single upper case letters on each
-side of \code{&}, as in \code{Texas A & M}, remove the spaces and result in
-Texas A{\&}M, while words on both sides of \code{&}, as in \code{Guns & Roses},
+plain \Verb!&! \emph{with space(s) on both sides}. Single upper case letters on each
+side of \Verb!&!, as in \Verb!Texas A & M!, remove the spaces and result in
+Texas A{\&}M, while words on both sides of \Verb!&!, as in \Verb!Guns & Roses!,
 preserve the spaces: Guns {\&} Roses. Failing to have spaces before and
-after \code{&} will result in wrong typesetting of the ampersand in the \code{html},
-\code{latex}, and \code{pdflatex} formats.
+after \Verb!&! will result in wrong typesetting of the ampersand in the \Verb!html!,
+\Verb!latex!, and \Verb!pdflatex! formats.
 
 Emojis, as defined in \href{{http://www.emoji-cheat-sheet.com}}{\nolinkurl{http://www.emoji-cheat-sheet.com}}, can be
-inserted in the text, as (e.g.) \code{:dizzy_face:} with blank or newline
-before or after. Only the \code{pdflatex} and \code{html} output formats translates
+inserted in the text, as (e.g.) \Verb!:dizzy_face:! with blank or newline
+before or after. Only the \Verb!pdflatex! and \Verb!html! output formats translates
 emoji specifications to images, while all other formats leaves the
 textual specification in the document. The command-line option
-\code{--no_emoji} removes all emojis from the output document.
+\Verb!--no_emoji! removes all emojis from the output document.
 
 \subsection{Lists}
 
 There are three types of lists: \emph{bullet lists}, where each item starts
-with \code{*}, \emph{enumeration lists}, where each item starts with \code{o} and gets
+with \Verb!*!, \emph{enumeration lists}, where each item starts with \Verb!o! and gets
 consqutive numbers,
-and \emph{description} lists, where each item starts with \code{-} followed
+and \emph{description} lists, where each item starts with \Verb!-! followed
 by a keyword and a colon.
 \bccq
 Here is a bullet list:
@@ -79155,19 +79252,19 @@ Indented lines may give strange output in some formats.
 
 \subsection{Comment lines}
 
-Lines starting with \code{#} are treated as comments in the document and
+Lines starting with \Verb!#! are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before {\LaTeX} math
-blocks, verbatim code blocks, or lists if the formats \code{rst} and
-\code{sphinx} are desired.
+blocks, verbatim code blocks, or lists if the formats \Verb!rst! and
+\Verb!sphinx! are desired.
 
-Comment lines starting with \code{##} are not propagated to the output
+Comment lines starting with \Verb!##! are not propagated to the output
 document and can be used for comments that are only of interest in
 the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
-\code{# #ifdef EXTRA} and \code{# #endif} around the text. The command line
-option \code{-DEXTRA} will bring the text alive again.
+\Verb!# #ifdef EXTRA! and \Verb!# #endif! around the text. The command line
+option \Verb!-DEXTRA! will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
@@ -79182,9 +79279,9 @@ are enabled by the syntax
 \bccq
 [name: running text]
 \eccq
-where \code{name} is the name or ID of an author or reader making the comment,
-and \code{running text} is the comment. The name can contain upper and lower
-case characters, digits, single quote, \code{+} and \code{-}, as well
+where \Verb!name! is the name or ID of an author or reader making the comment,
+and \Verb!running text! is the comment. The name can contain upper and lower
+case characters, digits, single quote, \Verb!+! and \Verb!-!, as well
 as space. Here goes an example.
 
 \bccq
@@ -79201,9 +79298,9 @@ Some running text. \shortinlinecomment{hpl 1}{ There must be a space after the c
 
 The inline comments have simple typesetting in most formats, typically
 boldface name, a comment number, with everything surrounded by
-parenthesis.  However, with {\LaTeX} output and the \code{--latex_todonotes}
-option to \code{doconce format}, colorful margin or inline boxes (using the
-\code{todonotes} package) make it very easy to spot the comments.
+parenthesis.  However, with {\LaTeX} output and the \Verb!--latex_todonotes!
+option to \Verb!doconce format!, colorful margin or inline boxes (using the
+\Verb!todonotes! package) make it very easy to spot the comments.
 
 Running
 \bsys
@@ -79274,30 +79371,30 @@ Inline verbatim code is typeset within back-ticks, as in
 \bccq
 Some sentence with `words in verbatim style`.
 \eccq
-resulting in Some sentence with \code{words in verbatim style}.
+resulting in Some sentence with \Verb!words in verbatim style!.
 
 Multi-line blocks of verbatim text, typically computer code, is typeset
-in between \code{!bc xxx} and \code{!ec} directives, which must appear on the
-beginning of the line. A specification \code{xxx} indicates what verbatim
-formatting style that is to be used. Typical values for \code{xxx} are
-nothing, \code{cod} for a code snippet, \code{pro} for a complete program,
-\code{sys} for a terminal session, \code{dat} for a data file (or output from a
+in between \Verb?!bc xxx? and \Verb?!ec? directives, which must appear on the
+beginning of the line. A specification \Verb!xxx! indicates what verbatim
+formatting style that is to be used. Typical values for \Verb!xxx! are
+nothing, \Verb!cod! for a code snippet, \Verb!pro! for a complete program,
+\Verb!sys! for a terminal session, \Verb!dat! for a data file (or output from a
 program),
-\code{Xpro} or \code{Xcod} for a program or code snipped, respectively,
-in programming \code{X}, where \code{X} may be \code{py} for Python,
-\code{cy} for Cython, \code{sh} for Bash or other Unix shells,
-\code{f} for Fortran, \code{c} for C, \code{cpp} for C++, \code{m} for MATLAB,
-\code{pl} for Perl. For output in \code{latex} one can let \code{xxx} reflect any
-defined verbatim environment in the \code{ptex2tex} configuration file
-(\code{.ptex2tex.cfg}). For \code{sphinx} output one can insert a comment
+\Verb!Xpro! or \Verb!Xcod! for a program or code snipped, respectively,
+in programming \Verb!X!, where \Verb!X! may be \Verb!py! for Python,
+\Verb!cy! for Cython, \Verb!sh! for Bash or other Unix shells,
+\Verb!f! for Fortran, \Verb!c! for C, \Verb!cpp! for C++, \Verb!m! for MATLAB,
+\Verb!pl! for Perl. For output in \Verb!latex! one can let \Verb!xxx! reflect any
+defined verbatim environment in the \Verb!ptex2tex! configuration file
+(\Verb!.ptex2tex.cfg!). For \Verb!sphinx! output one can insert a comment
 \bccq
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 \eccq
-that maps environments (\code{xxx}) onto valid language types for
-Pygments (which is what \code{sphinx} applies to typeset computer code).
+that maps environments (\Verb!xxx!) onto valid language types for
+Pygments (which is what \Verb!sphinx! applies to typeset computer code).
 
-The \code{xxx} specifier has only effect for \code{latex} and
-\code{sphinx} output. All other formats use a fixed monospace font for all
+The \Verb!xxx! specifier has only effect for \Verb!latex! and
+\Verb!sphinx! output. All other formats use a fixed monospace font for all
 kinds of verbatim output.
 
 Here is an example of computer code (see the source of this document
@@ -79319,26 +79416,26 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 \eccq
-The \code{@@@CODE} identifier must appear at the very beginning of the line.
-The first line copies the complete file \code{doconce_program.sh}.
+The \Verb!@@@CODE! identifier must appear at the very beginning of the line.
+The first line copies the complete file \Verb!doconce_program.sh!.
 The second line copies from the first line matching the \emph{regular
-expression} \code{doconce clean} up to, but not including, the line
-matching the \emph{regular expression} \code{^doconce split_rst}.
+expression} \Verb!doconce clean! up to, but not including, the line
+matching the \emph{regular expression} \Verb!^doconce split_rst!.
 The third line behaves as the second, but the line matching
 the first regular expression is not copied (this construction often
 used for copying text between begin-end comment pair in the file).
 
-The copied lines from file are in this example put inside \code{!bc shpro}
-and \code{!ec} directives, if a complete file is copied, while the
-directives become \code{!bc shcod} and \code{!ec} when a code snippet is copied
-from file. In general, for a filename extension \code{.X}, the environment
-becomes \code{!bc Xpro} or \code{!bc Xcod} for a complete program or snippet,
-respectively. The enivorments (\code{Xcod} and \code{Xpro}) are only active for
-\code{latex}, \code{pdflatex}, html`, and \code{sphinx} outout.  The fourth line
-above specifies the code environment explicitly (\code{envir=shpro}) such
-that it indicates a complete shell program (\code{shpro}) even if we copy a
-part of the file (here from \code{name=} until the end of the file).
-Copying a part will by default lead to \code{!bc shcod}, which indicates a
+The copied lines from file are in this example put inside \Verb?!bc shpro?
+and \Verb?!ec? directives, if a complete file is copied, while the
+directives become \Verb?!bc shcod? and \Verb?!ec? when a code snippet is copied
+from file. In general, for a filename extension \Verb!.X!, the environment
+becomes \Verb?!bc Xpro? or \Verb?!bc Xcod? for a complete program or snippet,
+respectively. The enivorments (\Verb!Xcod! and \Verb!Xpro!) are only active for
+\Verb!latex!, \Verb!pdflatex!, html`, and \Verb!sphinx! outout.  The fourth line
+above specifies the code environment explicitly (\Verb!envir=shpro!) such
+that it indicates a complete shell program (\Verb!shpro!) even if we copy a
+part of the file (here from \Verb!name=! until the end of the file).
+Copying a part will by default lead to \Verb?!bc shcod?, which indicates a
 code snippet that normally needs more code to run properly.
 
 Important warnings:
@@ -79357,14 +79454,14 @@ Important warnings:
 \subsection{{\LaTeX} Mathematics}
 
 DocOnce supports inline mathematics and blocks of mathematics, using
-standard {\LaTeX} syntax. The output formats \code{html}, \code{sphinx}, \code{latex},
-pdflatex`, \code{pandoc}, and \code{mwiki} work with this syntax while all other
+standard {\LaTeX} syntax. The output formats \Verb!html!, \Verb!sphinx!, \Verb!latex!,
+pdflatex`, \Verb!pandoc!, and \Verb!mwiki! work with this syntax while all other
 formats will just display the raw {\LaTeX} code.
 
 Inline expressions are written in the standard
 {\LaTeX} way with the mathematics surrounded by dollar signs, as in
-$Ax=b$. To help increase readability in other formats than \code{sphinx},
-\code{latex}, and \code{pdflatex}, inline mathematics may have a more human
+$Ax=b$. To help increase readability in other formats than \Verb!sphinx!,
+\Verb!latex!, and \Verb!pdflatex!, inline mathematics may have a more human
 readable companion expression. The syntax is like
 \bccq
 $\sin(\norm{\bf u})$|$sin(||u||)$
@@ -79374,9 +79471,9 @@ symbol) and the more readable expression appears to the right. Both
 expressions are surrounded by dollar signs.
 
 Blocks of {\LaTeX} mathematics are written within
-\code{!bt}
+\Verb?!bt?
 and
-\code{!et} (begin/end TeX) directives starting on the beginning of a line:
+\Verb?!et? (begin/end TeX) directives starting on the beginning of a line:
 
 \bccq
 !bt
@@ -79404,37 +79501,37 @@ which results in
 
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 
-Any {\LaTeX} syntax is accepted, but if output in the \code{sphinx}, \code{pandoc},
-\code{mwiki}, \code{html}, or \code{ipynb} formats
+Any {\LaTeX} syntax is accepted, but if output in the \Verb!sphinx!, \Verb!pandoc!,
+\Verb!mwiki!, \Verb!html!, or \Verb!ipynb! formats
 is also important, one should follow these rules:
 
 \begin{itemize}
- \item AMS {\LaTeX} mathematics is supported, also for the \code{html}, \code{sphinx},
-   and \code{ipynb} formats.
+ \item AMS {\LaTeX} mathematics is supported, also for the \Verb!html!, \Verb!sphinx!,
+   and \Verb!ipynb! formats.
 
- \item Only five equation environments can be used: \code{\[ ... \]},
-   \code{equation*}, \code{equation}, \code{align*}, and \code{align}.
+ \item Only five equation environments can be used: \Verb!\[ ... \]!,
+   \Verb!equation*!, \Verb!equation!, \Verb!align*!, and \Verb!align!.
 
  \item Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
-   \code{newcommands*.tex}.
+   \Verb!newcommands*.tex!.
 
- \item MediaWiki (\code{mwiki}) does not support references to equations.
+ \item MediaWiki (\Verb!mwiki!) does not support references to equations.
 \end{itemize}
 
 \noindent
-(DocOnce performs extensions to \code{sphinx} and other formats such that
-labels in \code{align} environments work well.)
+(DocOnce performs extensions to \Verb!sphinx! and other formats such that
+labels in \Verb!align! environments work well.)
 
 
 \begin{notice_mdfboxadmon}[Notice.]
 {\LaTeX} supports lots of fancy formatting, for example, multiple
-plots in the same figure (\code{subfigure} package), margin notes, multi-page
+plots in the same figure (\Verb!subfigure! package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as \code{sphinx} and \code{html}, make it necessary for DocOnce
+Other output formats, such as \Verb!sphinx! and \Verb!html!, make it necessary for DocOnce
 to only utilze very standard {\LaTeX}. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using \code{doconce combine_images}),
+one plot per figure (combine them into one using \Verb!doconce combine_images!),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see \emph{Typesetting of Algorithms} in the DocOnce
 manual), newcommands outside mathematics (use Mako variables or functions
@@ -79442,27 +79539,27 @@ instead), code listings in figures (use just inline blocks), to mention
 some.
 
 However, one can use preprocessor if-tests on
-the format (typically \code{#if FORMAT in ("latex", "pdflatex")}) to
-include special code for \code{latex} and \code{pdflatex} output and more
+the format (typically \Verb!#if FORMAT in ("latex", "pdflatex")!) to
+include special code for \Verb!latex! and \Verb!pdflatex! output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced {\LaTeX} features and fine tuning of the resulting
 PDF document. More tuning can be done by automatic editing of the
-\code{.tex} produced by DocOnce.
+\Verb!.tex! produced by DocOnce.
 \end{notice_mdfboxadmon}
 
 
 
 \paragraph{LaTeX Newcommands.}
-The author can define \code{newcommand} statements in files with names
-\code{newcommands*.tex}. Such commands should only be used for mathematics
+The author can define \Verb!newcommand! statements in files with names
+\Verb!newcommands*.tex!. Such commands should only be used for mathematics
 (other {\LaTeX} constructions are only understood by {\LaTeX} itself).
-The convention is that \code{newcommands_keep.tex}
+The convention is that \Verb!newcommands_keep.tex!
 contains the newcommands that are kept in the document, while
-those in \code{newcommands_replace.tex} will be replaced by their full
+those in \Verb!newcommands_replace.tex! will be replaced by their full
 {\LaTeX} code. This conventions helps make readable documents in formats
-without {\LaTeX} support. For \code{html}, \code{sphinx}, \code{latex}, \code{pdflatex},
-\code{mwiki}, \code{ipynb}, and \code{pandoc}, the mathematics in newcommands is
-rendered nicely anyway. If you desire \code{newcommand} outside {\LaTeX}
+without {\LaTeX} support. For \Verb!html!, \Verb!sphinx!, \Verb!latex!, \Verb!pdflatex!,
+\Verb!mwiki!, \Verb!ipynb!, and \Verb!pandoc!, the mathematics in newcommands is
+rendered nicely anyway. If you desire \Verb!newcommand! outside {\LaTeX}
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
@@ -79498,8 +79595,8 @@ Note three important syntax details:
 \begin{enumerate}
  \item A mandatory comma after the figure/movie filename,
 
- \item no comments between \code{width}, \code{height}, and \code{frac} and no spaces
-    around the \code{=} characters,
+ \item no comments between \Verb!width!, \Verb!height!, and \Verb!frac! and no spaces
+    around the \Verb!=! characters,
 
  \item all of the command must appear on a single line,
 
@@ -79513,10 +79610,10 @@ output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
-no use of any figure environment in HTML or {\LaTeX} formats). The \code{width}
-and \code{height} parameters affect HTML formats (\code{html}, \code{rst}, \code{sphinx}),
-while \code{frac} is the width of the image as a fraction of the total text
-width in the \code{latex} and \code{pdflatex} formats.
+no use of any figure environment in HTML or {\LaTeX} formats). The \Verb!width!
+and \Verb!height! parameters affect HTML formats (\Verb!html!, \Verb!rst!, \Verb!sphinx!),
+while \Verb!frac! is the width of the image as a fraction of the total text
+width in the \Verb!latex! and \Verb!pdflatex! formats.
 
 Movie files can either be a video or a wildcard expression for a
 series of frames. In the latter case, a simple device in an HTML page
@@ -79526,10 +79623,10 @@ Combining several image files into one can be done by the
 \bsys
 doconce combine_images image1 image2 ... output_image
 \esys
-This command applies \code{montage} or PDF-based tools to combine the images
+This command applies \Verb!montage! or PDF-based tools to combine the images
 to get the highest quality.
 
-YouTube and Vimeo movies will be embedded in \code{html} and \code{sphinx} documents
+YouTube and Vimeo movies will be embedded in \Verb!html! and \Verb!sphinx! documents
 and otherwise be represented by a link. The syntax is
 
 \bccq
@@ -79596,9 +79693,9 @@ Note that
 \end{itemize}
 
 \noindent
-The command-line option \code{--tables2csv} (to \code{doconce format})
-makes DocOnce dump each table to CSV format in a file \code{table_X.csv},
-where \code{X} is the table number. This feature makes it easy to
+The command-line option \Verb!--tables2csv! (to \Verb!doconce format!)
+makes DocOnce dump each table to CSV format in a file \Verb!table_X.csv!,
+where \Verb!X! is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
 DocOnce tables can be efficiently made directly from data in CSV files.
@@ -79606,8 +79703,8 @@ DocOnce tables can be efficiently made directly from data in CSV files.
 \bsys
 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
 \esys
-Now we can do \code{# #include "mydata_table.do.txt"} in the DocOnce
-source file or simply copy the table in \code{mydata_table.do.txt}
+Now we can do \Verb!# #include "mydata_table.do.txt"! in the DocOnce
+source file or simply copy the table in \Verb!mydata_table.do.txt!
 into the DocOnce file.
 
 \subsection{Labels and References}
@@ -79620,16 +79717,16 @@ inserted anywhere, using the syntax
 label{name}
 \eccq
 with no backslash
-preceding the label keyword. It is common practice to choose \code{name}
-as some hierarchical name, say \code{a:b:c}, where \code{a} and \code{b} indicate
+preceding the label keyword. It is common practice to choose \Verb!name!
+as some hierarchical name, say \Verb!a:b:c!, where \Verb!a! and \Verb!b! indicate
 some abbreviations for a section and/or subsection for the topic and
-\code{c} is some name for the particular unit that has a label.
+\Verb!c! is some name for the particular unit that has a label.
 
-A reference to the label \code{name} is written as
+A reference to the label \Verb!name! is written as
 \bccq
 ref{name}
 \eccq
-again with no backslash before \code{ref}.
+again with no backslash before \Verb!ref!.
 
 Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
@@ -79642,28 +79739,28 @@ Single citations are written as
 \bccq
 cite{name}
 \eccq
-where \code{name} is a logical name
+where \Verb!name! is a logical name
 of the reference (again, {\LaTeX} writers must not insert a backslash).
-Bibliography citations often have \code{name} on the form
-\code{Author1_Author2_YYYY}, \code{Author_YYYY}, or \code{Author1_etal_YYYY}, where
-\code{YYYY} is the year of the publication.
+Bibliography citations often have \Verb!name! on the form
+\Verb!Author1_Author2_YYYY!, \Verb!Author_YYYY!, or \Verb!Author1_etal_YYYY!, where
+\Verb!YYYY! is the year of the publication.
 Multiple citations at once is possible by separating the logical names
 by comma:
 \bccq
 cite{name1,name2,name3}
 \eccq
 
-The bibliography is specified by a line \code{BIBFILE: papers.pub},
-where \code{papers.pub} is a publication database in the
+The bibliography is specified by a line \Verb!BIBFILE: papers.pub!,
+where \Verb!papers.pub! is a publication database in the
 \href{{https://bitbucket.org/logg/publish}}{Publish} format.
-\textsc{Bib}\negthinspace{\TeX} \code{.bib} files can easily be combined to a Publish database
+\textsc{Bib}\negthinspace{\TeX} \Verb!.bib! files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than {\LaTeX}).
 
 \subsection{Generalized Citations}
 
 There is a \emph{generalized referencing} feature in DocOnce that allows
-a reference with \code{ref} to have one formulation if the label is
+a reference with \Verb!ref! to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
@@ -79679,16 +79776,15 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
 DocOnce documents may include movies.
 \eccq
-The output from a generalized reference is the text \code{internal} if all
-\code{ref{label}} references in \code{internal} are references to labels in the
+The output from a generalized reference is the text \Verb!internal! if all
+\Verb!ref{label}! references in \Verb!internal! are references to labels in the
 present document. Otherwise, if cite is non-empty and the format is
-\code{latex} or \code{pdflatex} one assumes that the references in \code{internal}
-are to external documents declared by a comment line \code{#
-Externaldocuments: testdoc, mydoc} (usually after the title, authors,
-and date). In this case the output text is \code{internal cite} and the
-{\LaTeX} package \code{xr} is used to handle the labels in the external
+\Verb!latex! or \Verb!pdflatex! one assumes that the references in \Verb!internal!
+are to external documents declared by a comment line \Verb!# Externaldocuments: testdoc, mydoc! (usually after the title, authors,
+and date). In this case the output text is \Verb!internal cite! and the
+{\LaTeX} package \Verb!xr! is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
-\code{external} text will be the output.
+\Verb!external! text will be the output.
 
 \subsection{Index of Keywords}
 
@@ -79702,13 +79798,13 @@ It is recommended to place any index of this type outside
 running text, i.e., after (sub)section titles and in the space between
 paragraphs. Index specifications placed right before paragraphs also
 gives the doconce source code an indication of the content in the
-forthcoming text. The index is only produced for the \code{latex},
-\code{pdflatex}, \code{rst}, and \code{sphinx} formats.
+forthcoming text. The index is only produced for the \Verb!latex!,
+\Verb!pdflatex!, \Verb!rst!, and \Verb!sphinx! formats.
 
-\subsection{Capabilities of The Program \protect\code{doconce} }
+\subsection{Capabilities of The Program \protect\Verb!doconce! }
 
-The \code{doconce} program can be used for a number of purposes besides
-transforming a \code{.do.txt} file to some format. Here is the
+The \Verb!doconce! program can be used for a number of purposes besides
+transforming a \Verb!.do.txt! file to some format. Here is the
 list of capabilities:
 
 \bshpro
@@ -79981,50 +80077,50 @@ Here goes a full solution of the whole exercise.
 
 \eccq
 By default, answers, solutions, and hints are typeset as paragraphs.
-The command-line arguments \code{--without_answers} and \code{--without_solutions}
+The command-line arguments \Verb!--without_answers! and \Verb!--without_solutions!
 turn off output of answers and solutions, respectively, except for
 examples.
 
 
 \subsection{Environments}
 
-DocOnce environments start with \code{!benvirname} and end with \code{!eenvirname},
-where \code{envirname} is the name of the environment. Here is a listing of
+DocOnce environments start with \Verb?!benvirname? and end with \Verb?!eenvirname?,
+where \Verb!envirname! is the name of the environment. Here is a listing of
 the environments:
 
 \begin{itemize}
- \item \code{c}: computer code (or verbatim text)
+ \item \Verb!c!: computer code (or verbatim text)
 
- \item \code{t}: math blocks with {\LaTeX} syntax
+ \item \Verb!t!: math blocks with {\LaTeX} syntax
 
- \item \code{subex}: sub-exercise
+ \item \Verb!subex!: sub-exercise
 
- \item \code{ans}: short answer to exercise or sub-exercise
+ \item \Verb!ans!: short answer to exercise or sub-exercise
 
- \item \code{sol}: full solution to exercise or sub-exercise
+ \item \Verb!sol!: full solution to exercise or sub-exercise
 
- \item \code{quote}: indented text
+ \item \Verb!quote!: indented text
 
- \item \code{notice}, \code{summary}, \code{warning}, \code{question}, \code{hint}: admonition boxes with
+ \item \Verb!notice!, \Verb!summary!, \Verb!warning!, \Verb!question!, \Verb!hint!: admonition boxes with
     custom title, special icon, and (frequently) background color
 
- \item \code{pop}: text to gradually pop up in slide presentations
+ \item \Verb!pop!: text to gradually pop up in slide presentations
 
- \item \code{slidecell}: indication of cells in a grid layout for elements on a
+ \item \Verb!slidecell!: indication of cells in a grid layout for elements on a
    slide
 \end{itemize}
 
 \noindent
 \subsection{Preprocessing}
 
-DocOnce documents may utilize a preprocessor, either \code{preprocess} and/or
-\code{mako}. The former is a C-style preprocessor that allows if-tests
+DocOnce documents may utilize a preprocessor, either \Verb!preprocess! and/or
+\Verb!mako!. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
-The \code{mako} preprocessor is much more advanced - it is actually a full
+The \Verb!mako! preprocessor is much more advanced - it is actually a full
 programming language, very similar to Python.
 
-The command \code{doconce format} first runs \code{preprocess} and then \code{mako}.
-Here is a typical example on utilizing \code{preprocess} to include another
+The command \Verb!doconce format! first runs \Verb!preprocess! and then \Verb!mako!.
+Here is a typical example on utilizing \Verb!preprocess! to include another
 document, "comment out" a large portion of text, and to write format-specific
 constructions:
 
@@ -80059,10 +80155,10 @@ constructions:
 # #endif
 \eccq
 
-With the \code{mako} preprocessor the if-else tests have slightly different syntax.
+With the \Verb!mako! preprocessor the if-else tests have slightly different syntax.
 An \href{{http://hplgit.github.com/bioinf-py/}}{example document} contains
-some illustrations on how to utilize \code{mako} (clone the GitHub project and
-examine the DocOnce source and the \code{doc/src/make.sh} script).
+some illustrations on how to utilize \Verb!mako! (clone the GitHub project and
+examine the DocOnce source and the \Verb!doc/src/make.sh! script).
 
 \subsection{Resources}
 
@@ -91556,10 +91652,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./testdoc.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -91715,6 +91810,7 @@ No file testdoc.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
@@ -91868,18 +91964,26 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
 [14]
 
-
-t line 1269.
-
-
-
-...rest of part of LaTeX line number...
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 
-...rest of part of LaTeX line number...
+t line 1273.
 
 
 
@@ -91891,7 +91995,15 @@ t line 1269.
 
 
 
-t line 1278.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1282.
 
 
 
@@ -91912,7 +92024,7 @@ t line 1278.
 
 
 
-t line 1282.
+t line 1286.
 
 
 
@@ -92099,6 +92211,10 @@ Underfull \hbox (badness 10000)
 ...rest of part of LaTeX line number...
 
 [26]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
 No file testdoc.ind.
 [27] (./testdoc.aux)
 
@@ -92161,11 +92277,10 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
 mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -92242,6 +92357,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -92394,10 +92510,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./testdoc.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -92552,6 +92667,7 @@ Writing index file testdoc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
@@ -92656,18 +92772,26 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
 [15]
 
-
-t line 1269.
-
-
-
-...rest of part of LaTeX line number...
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 
-...rest of part of LaTeX line number...
+t line 1273.
 
 
 
@@ -92679,7 +92803,15 @@ t line 1269.
 
 
 
-t line 1278.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1282.
 
 
 
@@ -92700,7 +92832,7 @@ t line 1278.
 
 
 
-t line 1282.
+t line 1286.
 
 
 
@@ -92789,6 +92921,10 @@ No file testdoc.bbl.
 Underfull \hbox (badness 10000) 
 
 [25] [26] [27]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
 No file testdoc.ind.
 [28] (./testdoc.aux)
 
@@ -92851,11 +92987,10 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
 mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -92932,6 +93067,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -93099,10 +93235,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./testdoc.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -93257,6 +93392,7 @@ Writing index file testdoc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
@@ -93361,18 +93497,26 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
 [15]
 
-
-t line 1269.
-
-
-
-...rest of part of LaTeX line number...
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
 
 
 
-...rest of part of LaTeX line number...
+t line 1273.
 
 
 
@@ -93384,7 +93528,15 @@ t line 1269.
 
 
 
-t line 1278.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1282.
 
 
 
@@ -93405,7 +93557,7 @@ t line 1278.
 
 
 
-t line 1282.
+t line 1286.
 
 
 
@@ -93491,7 +93643,12 @@ Underfull \hbox (badness 10000)
 [24] (./testdoc.bbl [25]) [26]
 Underfull \hbox (badness 10000) 
 
-[27] [28] (./testdoc.ind [29]
+[27] [28]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+(./testdoc.ind [29]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -93556,11 +93713,10 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
 mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -93637,6 +93793,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -93788,10 +93945,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./testdoc.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -93946,6 +94102,7 @@ Writing index file testdoc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
@@ -94050,7 +94207,24 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[15] [16] [17]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+[15]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+[16] [17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -94066,7 +94240,12 @@ Underfull \hbox (badness 10000)
 [24] (./testdoc.bbl [25]) [26]
 Underfull \hbox (badness 10000) 
 
-[27] [28] (./testdoc.ind [29]
+[27] [28]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+(./testdoc.ind [29]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -94131,11 +94310,10 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
 mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -94212,6 +94390,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -94359,10 +94538,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./testdoc.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -94516,6 +94694,7 @@ No file testdoc.aux.
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -94705,27 +94884,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1220.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1229.
+t line 1224.
 
 
 
@@ -94746,6 +94905,26 @@ t line 1229.
 
 
 t line 1233.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1237.
 
 
 
@@ -94994,11 +95173,10 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
 mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -95075,6 +95253,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
  testdoc.out
@@ -95120,11 +95299,6 @@ downloaded_figures/f_plot.png
  testdoc.bbl
  testdoc.ind
  ***********
-
-
-Package rerunfilecheck Warning: File `testdoc.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
 
 
 LaTeX Warning: There were undefined references.
@@ -97059,10 +97233,9 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -97085,6 +97258,7 @@ No file math_test.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
@@ -97146,11 +97320,10 @@ microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -97187,6 +97360,7 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -97465,10 +97639,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_colors1.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -97494,6 +97667,7 @@ No file admon_colors1.aux.
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -97609,11 +97783,10 @@ admon_colors1.w18
 admon_colors1.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -97651,6 +97824,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -97819,10 +97993,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_mdfbox.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -97955,6 +98128,7 @@ No file admon_mdfbox.aux.
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -98093,11 +98267,10 @@ admon_mdfbox.w18
 admon_mdfbox.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -98165,6 +98338,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -98310,10 +98484,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_paragraph.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -98448,6 +98621,7 @@ No file admon_paragraph.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
@@ -98515,11 +98689,10 @@ admon_paragraph.w18
 admon_paragraph.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -98587,6 +98760,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -98728,10 +98902,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_graybox2.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -98867,6 +99040,7 @@ No file admon_graybox2.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
@@ -98999,11 +99173,10 @@ admon_graybox2.w18
 admon_graybox2.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -99072,6 +99245,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -99213,10 +99387,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_yellowicon.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -99243,6 +99416,7 @@ No file admon_yellowicon.aux.
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -99330,11 +99504,10 @@ admon_yellowicon.w18
 admon_yellowicon.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -99373,6 +99546,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -99526,10 +99700,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_grayicon.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -99556,6 +99729,7 @@ No file admon_grayicon.aux.
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -99641,11 +99815,10 @@ admon_grayicon.w18
 admon_grayicon.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -99684,6 +99857,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -99837,10 +100011,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 ) (./admon_colors2.pyg)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -99867,6 +100040,7 @@ No file admon_colors2.aux.
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -99949,11 +100123,10 @@ admon_colors2.w18
 admon_colors2.pyg
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -99992,6 +100165,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -100468,9 +100642,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
@@ -100604,12 +100776,13 @@ zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -100633,6 +100806,7 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./newcommands_bfmath.tex) (./newcommands_replace.tex)
@@ -100648,7 +100822,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 162 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -100658,7 +100832,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 189 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -100871,7 +101045,6 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
-fancyvrb.sty    2008/02/07
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
 expl3-code.tex    2014/06/10 v5105 L3 programming layer 
@@ -100930,13 +101103,13 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -100966,6 +101139,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_bfmath.tex
@@ -101088,9 +101262,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
@@ -101224,12 +101396,13 @@ zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -101252,6 +101425,7 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
@@ -101267,7 +101441,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 162 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101277,7 +101451,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 189 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101475,7 +101649,6 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
-fancyvrb.sty    2008/02/07
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
 expl3-code.tex    2014/06/10 v5105 L3 programming layer 
@@ -101534,13 +101707,13 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -101570,6 +101743,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
@@ -101700,9 +101874,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
 
@@ -101836,12 +102008,13 @@ zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -101864,6 +102037,7 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
@@ -101879,7 +102053,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 162 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101889,7 +102063,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 189 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102081,7 +102255,6 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
-fancyvrb.sty    2008/02/07
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
 expl3-code.tex    2014/06/10 v5105 L3 programming layer 
@@ -102140,13 +102313,13 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
+fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -102176,6 +102349,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
@@ -102307,10 +102481,7 @@ For additional information on amsmath, use the `?' option.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
-) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
 
 
 
@@ -102334,12 +102505,13 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -102360,6 +102532,7 @@ No file movies.aux.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -102568,7 +102741,6 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
-fancyvrb.sty    2008/02/07
  animate.sty    2014/07/02 PDF animations from files and inline graphics
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -102592,13 +102764,13 @@ graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -102628,6 +102800,7 @@ RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   movies.out
@@ -102841,11 +103014,6 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -102871,7 +103039,6 @@ See the caption package documentation for explanation.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
 
 
 
@@ -102896,6 +103063,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -103034,6 +103205,7 @@ No file Springer_T2_book.aux.
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_keep.tex)
@@ -103063,7 +103235,7 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
-[6]
+ [6]
 Overfull \hbox (120.12047pt too wide) 
 |[] 
 [7] [8]
@@ -103107,6 +103279,9 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 ...rest of part of LaTeX line number...
 
+
+Underfull \hbox (badness 5862) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 
 
 ...rest of part of LaTeX line number...
@@ -103185,11 +103360,6 @@ graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -103207,7 +103377,6 @@ multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
 textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
@@ -103231,6 +103400,10 @@ listings.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -103302,6 +103475,7 @@ epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 newcommands_keep.tex
@@ -103315,6 +103489,7 @@ newcommands_keep.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+   uni-0.def    2013/05/13 UCS: Unicode data U+0000..U+00FF
   ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ***********
 
@@ -103411,11 +103586,6 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -103441,7 +103611,6 @@ See the caption package documentation for explanation.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
 
 
 
@@ -103466,6 +103635,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -103603,6 +103776,7 @@ LaTeX Warning: Unused global option(s):
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./Springer_T2_book.out) (./Springer_T2_book.out)
@@ -103633,7 +103807,7 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
-[6]
+ [6]
 Overfull \hbox (120.12047pt too wide) 
 |[] 
 (./Springer_T2_book.toc) [7] [8]
@@ -103672,7 +103846,10 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 
 
- [2] [3]
+ [2]
+Underfull \hbox (badness 5862) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+[3]
 
 
 ...rest of part of LaTeX line number...
@@ -103745,11 +103922,6 @@ graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -103767,7 +103939,6 @@ multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
 textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
@@ -103791,6 +103962,10 @@ listings.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -103862,6 +104037,7 @@ epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 Springer_T2_book.out
@@ -103877,6 +104053,7 @@ newcommands_keep.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+   uni-0.def    2013/05/13 UCS: Unicode data U+0000..U+00FF
   ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 Springer_T2_book.bbl
 Springer_T2_book.ind
@@ -103959,11 +104136,6 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -103989,7 +104161,6 @@ See the caption package documentation for explanation.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
 
 
 
@@ -104014,6 +104185,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
@@ -104151,6 +104326,7 @@ LaTeX Warning: Unused global option(s):
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./Springer_T2_book.out) (./Springer_T2_book.out)
@@ -104181,7 +104357,7 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
-[6]
+ [6]
 Overfull \hbox (120.12047pt too wide) 
 |[] 
 (./Springer_T2_book.toc) [7] [8]
@@ -104216,7 +104392,10 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[1]  [2] [3]
+[1]  [2]
+Underfull \hbox (badness 5862) 
+\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
+[3]
 
 
 ...rest of part of LaTeX line number...
@@ -104272,11 +104451,6 @@ graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -104294,7 +104468,6 @@ multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
 textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-  ts1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
@@ -104318,6 +104491,10 @@ listings.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -104389,6 +104566,7 @@ epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 Springer_T2_book.out
@@ -104404,6 +104582,7 @@ newcommands_keep.tex
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+   uni-0.def    2013/05/13 UCS: Unicode data U+0000..U+00FF
   ts1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 Springer_T2_book.bbl
 Springer_T2_book.ind
@@ -104977,10 +105156,9 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -105111,6 +105289,7 @@ zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
 Writing index file quickref.idx
 No file quickref.aux.
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 
@@ -105135,7 +105314,8 @@ Overfull \hbox (18.62192pt too wide)
 
 [3]
 Overfull \hbox (3.86172pt too wide) 
-[]\T1/phv/m/n/10 Emojis, as de-fined in [][][][][][], can be in-serted
+[]\T1/phv/m/n/10 Emojis, as de-fined in [][][]$\T1/lmtt/m/n/10 http : / / www .
+ emoji-[]cheat-[]sheet . com$[][][][]\T1/phv/m/n/10 , can be in-serted
 [4] [5]
 
 
@@ -105225,11 +105405,10 @@ microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -105299,6 +105478,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     tikz.code.tex
 md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -105374,10 +105554,9 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
 
 
 
@@ -105507,6 +105686,7 @@ zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
 )
 Writing index file quickref.idx
 (./quickref.aux) 
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./quickref.out) (./quickref.out) ABD: EveryShipout initializing macros
@@ -105526,7 +105706,8 @@ Overfull \hbox (18.62192pt too wide)
 
 [4]
 Overfull \hbox (3.86172pt too wide) 
-[]\T1/phv/m/n/10 Emojis, as de-fined in [][][][][][], can be in-serted
+[]\T1/phv/m/n/10 Emojis, as de-fined in [][][]$\T1/lmtt/m/n/10 http : / / www .
+ emoji-[]cheat-[]sheet . com$[][][][]\T1/phv/m/n/10 , can be in-serted
 [5] [6]
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
@@ -105597,11 +105778,10 @@ microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
-    utf8.def    2008/04/05 v1.1m UTF-8 support for inputenc
-   t1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  ot1enc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
-  omsenc.dfu    2008/04/05 v1.1m UTF-8 support for inputenc
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
   helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
@@ -105671,6 +105851,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     tikz.code.tex
 md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
 quickref.out

@@ -117,14 +117,14 @@ def latex_code_envir(
             envir2pyg['do'] = 'text'
 
     if package == 'pyg':
-        begin = '\\begin{minted}[%s]{%s}' % (pyg_style, envir2pyg[envir])
+        begin = '\\begin{minted}[%s]{%s}' % (pyg_style, envir2pyg.get(envir, 'text'))
         end = '\\end{minted}'
 
     elif package == 'lst':
-        if envir2lst[envir] == 'text':
+        if envir2lst.get(envir, 'text') == 'text':
             begin = '\\begin{lstlisting}[language=Python,%s]' % (lst_style, )
         else:
-            begin = '\\begin{lstlisting}[language=%s,%s]' % (envir2lst[envir], lst_style)
+            begin = '\\begin{lstlisting}[language=%s,%s]' % (envir2lst.get(envir, 'text'), lst_style)
         end = '\\end{lstlisting}'
     else:
         begin = '\\begin{Verbatim}[%s]' % vrb_style
@@ -339,48 +339,6 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = safe_join(lines, '\n')
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
-    latex_code_style = interpret_latex_code_style()
-
-    filestr = replace_code_command(filestr)  # subst \code{...}
-
-    lines = filestr.splitlines()
-    current_code_envir = None
-    for i in range(len(lines)):
-        if lines[i].startswith('!bc'):
-            words = lines[i].split()
-            if len(words) == 1:
-                current_code_envir = 'ccq'
-            else:
-                if words[1] in ('pyoptpro', 'pyscpro'):
-                    current_code_envir = 'pypro'
-                else:
-                    current_code_envir = words[1]
-            if current_code_envir is None:
-                # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec'
-                print '\n'.join(lines[i-3:i+4])
-                _abort()
-            if latex_code_style is None:
-                lines[i] = '\\b' + current_code_envir
-            else:
-                begin, end = latex_code_envir(current_code_envir,
-                                              latex_code_style)
-                lines [i] = begin
-        if lines[i].startswith('!ec'):
-            if current_code_envir is None:
-                # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec'
-                print '\n'.join(lines[i-3:i+4])
-                _abort()
-            if latex_code_style is None:
-                lines[i] = '\\e' + current_code_envir
-            else:
-                begin, end = latex_code_envir(current_code_envir,
-                                              latex_code_style)
-                lines [i] = end
-            current_code_envir = None
-    filestr = safe_join(lines, '\n')
-
     filestr = re.sub(r'^!bt\n', '', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'!et\n', '', filestr)
 
@@ -408,7 +366,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     # \texttt{>>>} gives very strange typesetting in the Springer book,
     # but not in ordinary latex, so we need to fix that with hack back
     # to \code{>>>}
-    filestr = filestr.replace(r'\texttt{>>>}', r'\code{>>>}')
+    filestr = filestr.replace(r'\texttt{>>>}', r'\Verb!>>>!')
 
     # Remove "Appendix: " from headings in appendices
     appendix_pattern = r'\\(chapter|section\*?)\{Appendix:\s+'
@@ -651,7 +609,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         filestr = re.sub(pattern, subst, filestr)
 
     # \code{} in section headings and paragraph needs a \protect
-    pattern = r'^\s*(\\.*section\*?|\\paragraph)\{(.*)\}\s*$'
+    pattern = r'^(\\.*?section\*?|\\paragraph)\{(.+)\}'  # (no .+? - must go to the last }!)
     headings = re.findall(pattern, filestr, flags=re.MULTILINE)
 
     for tp, heading in headings:
@@ -718,6 +676,50 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
+
+    # Translate to .tex or .p.tex format
+
+    latex_code_style = interpret_latex_code_style()
+
+    filestr = replace_code_command(filestr)  # subst \code{...}
+
+    lines = filestr.splitlines()
+    current_code_envir = None
+    for i in range(len(lines)):
+        if lines[i].startswith('!bc'):
+            words = lines[i].split()
+            if len(words) == 1:
+                current_code_envir = 'ccq'
+            else:
+                if words[1] in ('pyoptpro', 'pyscpro'):
+                    current_code_envir = 'pypro'
+                else:
+                    current_code_envir = words[1]
+            if current_code_envir is None:
+                # There should have been checks for this in doconce.py
+                print '*** errror: mismatch between !bc and !ec'
+                print '\n'.join(lines[i-3:i+4])
+                _abort()
+            if latex_code_style is None:
+                lines[i] = '\\b' + current_code_envir
+            else:
+                begin, end = latex_code_envir(current_code_envir,
+                                              latex_code_style)
+                lines [i] = begin
+        if lines[i].startswith('!ec'):
+            if current_code_envir is None:
+                # There should have been checks for this in doconce.py
+                print '*** errror: mismatch between !bc and !ec'
+                print '\n'.join(lines[i-3:i+4])
+                _abort()
+            if latex_code_style is None:
+                lines[i] = '\\e' + current_code_envir
+            else:
+                begin, end = latex_code_envir(current_code_envir,
+                                              latex_code_style)
+                lines [i] = end
+            current_code_envir = None
+    filestr = safe_join(lines, '\n')
 
     return filestr
 
