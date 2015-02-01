@@ -229,7 +229,7 @@ Here is a more fancy typesetting of `sys` environments with lines
 above and below and a title `Terminal` inside a box:
 
 !bc sys
-Terminal> doconce format pdflatex doc "--latex_code_style=default:lst-fenicsbook@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+Terminal> doconce format pdflatex doc "--latex_code_style=default:lst-fenicsbook@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 !ec
 "Here is the result": "doc_lst_sys.pdf".
 
@@ -281,7 +281,7 @@ increased readability - it must be one line as a terminal command!):
 "--latex_code_style=default:lst-blue1[style=redblue,
    numbers=left,numberstyle=\\tiny,stepnumber=3,
    numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray
-   @sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+   @sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
    framesep=2.5mm,framerule=0.7pt]"
 !ec
 Here is the "result": "doc_lots.pdf" of this detailed specification.
