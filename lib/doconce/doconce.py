@@ -3623,7 +3623,12 @@ def preprocess(filename, format, preprocessor_options=[]):
     # are set for preprocess too (but enclose value in quotes)
     for opt in preprocessor_options:
         if opt[0] != '-' and '=' in opt:
-            var, value = opt.split('=')
+            try:
+                var, value = opt.split('=')
+            except ValueError:
+                print '*** error: illegal command-line argument:'
+                print opt
+                _abort()
             preprocess_options.append('-D%s="%s"' % (var, value))
 
     # Look for mako variables

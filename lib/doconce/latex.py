@@ -63,14 +63,15 @@ def latex_code_envir(
     envir,
     envir_spec,
     ):
-    leftmargin = option('latex_code_leftmargin=', '7')
+    leftmargin = option('latex_code_leftmargin=', '2')
 
     envir2 = envir if envir in envir_spec else 'default'
 
     package = envir_spec[envir2]['package']
     background = envir_spec[envir2]['background']
-    lst_style = 'style=simple'
-    vrb_style = 'numbers=none,fontsize=\\fontsize{9pt}{9pt},baselinestretch=0.95'
+    # Default styles
+    lst_style = 'style=simple,xleftmargin=%smm' % leftmargin
+    vrb_style = 'numbers=none,fontsize=\\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=%smm' % leftmargin
     # mathescape can be used with minted and lstlisting
     # see http://tex.stackexchange.com/questions/149710/how-to-write-math-symbols-in-a-verbatim, minted can only have math in comments within the code
     # but mathescape make problems with bash and $#
@@ -80,6 +81,7 @@ def latex_code_envir(
     else:
         pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
     if envir_spec[envir2]['style'] is not None:
+        # Override default style
         if package == 'lst':
             lst_style = envir_spec[envir2]['style']
         if package == 'vrb':
@@ -120,7 +122,7 @@ def latex_code_envir(
 
     elif package == 'lst':
         if envir2lst[envir] == 'text':
-            begin = '\\begin{lstlisting}[%s]' % (lst_style)
+            begin = '\\begin{lstlisting}[language=Python,%s]' % (lst_style, )
         else:
             begin = '\\begin{lstlisting}[language=%s,%s]' % (envir2lst[envir], lst_style)
         end = '\\end{lstlisting}'
@@ -134,7 +136,10 @@ def latex_code_envir(
             end = end + '\\end{pro}'
         else:
             begin = '\\begin{cod}{cbg_%s}' % background + begin
-            end = end + '\\end{cod}'
+            if package == 'vrb':
+                end = end + '\n\\end{cod}'
+            else:
+                end = end + '\\end{cod}'
     return begin, end
 
 def interpret_latex_code_style():
@@ -196,8 +201,9 @@ def latex_code_lstlisting():
   extendedchars=\true,
   aboveskip=\smallskipamount,
   belowskip=\smallskipamount,
-  xleftmargin=2mm,
-  breaklines=true,
+  breaklines=false,
+  breakatwhitespace=true,
+  breakindent=30,
   showstringspaces=false,
   columns=fullflexible,  % tighter character kerning, like verb
 }
@@ -207,8 +213,9 @@ def latex_code_lstlisting():
   extendedchars=\true,
   aboveskip=\smallskipamount,
   belowskip=\smallskipamount,
-  xleftmargin=2mm,
-  breaklines=true,
+  breaklines=false,
+  breakatwhitespace=true,
+  breakindent=30,
   showstringspaces=false,
   keywordstyle=\color{blue}\bfseries,
   commentstyle=\color{myteal},
