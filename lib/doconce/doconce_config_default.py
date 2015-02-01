@@ -59,6 +59,7 @@ number_all_equations = False
 #latex_code_style = 
 #latex_code_leftmargin = 
 #latex_code_bg = 
+#latex_code_lststyles = 
 #latex_bibstyle = 
 #section_numbering = 
 #latex_table_format = 

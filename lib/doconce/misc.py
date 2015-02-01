@@ -188,7 +188,7 @@ lst, lst-yellowgray[style=redblue]
 vrb[frame=lines,framesep=2.5mm,framerule=0.7pt]
 
 Detailed specification for each language:
-default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+default:vrb-red1[frame=lines]@pycod:lst[style=redblue]@pypro:lst-blue1[style=default]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
 
 Here, Verbatim[frame=lines] is used for all code environments, except
 pycod, pypro and sys, which have their own specifications.
@@ -201,6 +201,7 @@ envir:package-background[style parameters]@)
 """),
     ('--latex_code_leftmargin=', 'Sets the left margin in code blocks. Default: 7 (mm).'),
     ('--latex_code_bg=', 'Background color code blocks. Default: white.'),
+    ('--latex_code_lststyles=', """Filename with LaTeX definitions of lst styles."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
     ('--section_numbering=',

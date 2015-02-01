@@ -30,6 +30,7 @@ def wide_clean():
     dirs = [os.path.join('lib', 'doconce', 'docstrings'),
             os.path.join('doc', 'src', 'tutorial'),
             os.path.join('doc', 'src', 'manual'),
+            os.path.join('doc', 'src', 'latexcode'),
             os.path.join('doc', 'src', 'quickref'),
             os.path.join('doc', 'src', 'slides'),
             os.path.join('doc', 'src', 'blog'),

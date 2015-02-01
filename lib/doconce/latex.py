@@ -133,7 +133,10 @@ def latex_code_envir(
     if background != 'white':
         if envir_tp == 'pro':
             begin = '\\begin{pro}{cbg_%s}{bar_%s}' % (background, background) + begin
-            end = end + '\\end{pro}'
+            if package == 'vrb':
+                end = end + '\n\\end{pro}'
+            else:
+                end = end + '\\end{pro}'
         else:
             begin = '\\begin{cod}{cbg_%s}' % background + begin
             if package == 'vrb':
@@ -161,6 +164,9 @@ def interpret_latex_code_style():
         else:
             bg = 'white'
             pkg = text
+        # Strip off envir if present
+        if ':' in pkg:
+            envir, pkg = pkg.split(':')
         return pkg, bg, style
 
     legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
@@ -223,7 +229,43 @@ def latex_code_lstlisting():
   identifierstyle=\color{darkorange},
   columns=fullflexible,  % tighter character kerning, like verb
 }
+
+% Use this one without additional background color
+\lstdefinestyle{fenicsbook}{
+tab=,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black},             % frame color
+backgroundcolor=\color{yellow!10},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{keywordcolour}\bfseries,
+commentstyle=\color{commentcolour}\slshape,
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+%backgroundcolor=\color{yellow!10},
+}
+
 """
+    filename = option('latex_code_lststyles=', None)
+    if filename is not None:
+        # User has specified additional lst styles
+        if os.path.isfile(filename):
+            text = open(filename, 'r').read()
+            s += text
+        else:
+            print '*** error: file "%s" does not exist' % filename
+            _abort()
+
     return s
 
 def latex_code(filestr, code_blocks, code_block_types,
@@ -2557,12 +2599,26 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
 
+\colorlet{commentcolour}{green!50!black}
+\colorlet{stringcolour}{red!60!black}
+\colorlet{keywordcolour}{magenta!90!black}
+\colorlet{exceptioncolour}{yellow!50!red}
+\colorlet{commandcolour}{blue!60!black}
+\colorlet{numpycolour}{blue!60!green}
+\colorlet{literatecolour}{magenta!90!black}
+\colorlet{promptcolour}{green!50!black}
+\colorlet{specmethodcolour}{violet}
+\colorlet{indendifiercolour}{green!70!white}
+
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
 \definecolor{bar_gray}{rgb}{.92, .92, .92}
 
 \definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
 \definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_fenicsbook}{yellow!10}
+\colorlet{bar_fenicsbook}{yellow!20}
 
 \definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
 \definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
