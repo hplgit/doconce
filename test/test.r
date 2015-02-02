@@ -8572,6 +8572,2317 @@ in a separate document: \Verb!admon.do.txt!.
 
 \end{document}
 
+************** File: testdoc.tex_direct *****************
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+
+% #define PREAMBLE
+
+% #ifdef PREAMBLE
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+twoside,                 % oneside: electronic viewing, twoside: printing
+final,                   % or draft (marks overfull hboxes, figures with paths)
+10pt]{article}
+
+\listfiles               % print all files needed to compile this document
+
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm,microtype}
+
+\usepackage{graphicx}
+
+% Tools for marking corrections
+\usepackage{soul}
+\newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
+\newcommand{\remove}[1]{{\color{red}\st{#1}}}
+
+% Packages for typesetting blocks of computer code
+\usepackage{framed,fancyvrb,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% New ansi colors
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+% Background for code blocks (parameter is color name)
+\newenvironment{cod}[1]{%
+   \def\FrameCommand{\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+% Background for complete program blocks (parameter 1 is color name
+% for background, parameter 2 is color for left bar)
+\newenvironment{pro}[2]{%
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+}
+
+% Various styles for lstlisting
+\lstdefinestyle{simple}{
+  inputencoding=utf8x,
+  extendedchars=\true,
+  aboveskip=\smallskipamount,
+  belowskip=\smallskipamount,
+  breaklines=false,
+  breakatwhitespace=true,
+  breakindent=30,
+  showstringspaces=false,
+  columns=fullflexible,  % tighter character kerning, like verb
+}
+
+\lstdefinestyle{redblue}{
+  inputencoding=utf8x,
+  extendedchars=\true,
+  aboveskip=\smallskipamount,
+  belowskip=\smallskipamount,
+  breaklines=false,
+  breakatwhitespace=true,
+  breakindent=30,
+  showstringspaces=false,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{myteal},
+  stringstyle=\color{darkgreen},
+  identifierstyle=\color{darkorange},
+  columns=fullflexible,  % tighter character kerning, like verb
+}
+
+% Use this one without additional background color
+\lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
+tab=,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black},             % frame color
+backgroundcolor=\color{yellow!10},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+}
+
+\lstdefinestyle{gray}{
+tab=,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black!40},          % frame color
+backgroundcolor=\color{gray},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{keyword_pink}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+}
+
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+\newenvironment{doconcequiz}{}{}
+\newcounter{doconcequizcounter}
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+    }
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+% Tricks for having figures close to where they are defined:
+% 1. define less restrictive rules for where to put figures
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.7}
+% 2. ensure all figures are flushed before next section
+\usepackage[section]{placeins}
+% 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
+%\usepackage{float}\restylefloat{figure}
+
+% newcommands for typesetting inline (doconce) comments
+\newcommand{\shortinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+\newcommand{\longinlinecomment}[3]{{\color{red}{\bf #1}: #2}}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+% --- begin definitions of admonition environments ---
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "notice" admon
+\colorlet{mdfbox_notice_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_notice_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{notice_mdfboxmdframed}
+
+\newenvironment{notice_mdfboxadmon}[1][]{
+\begin{notice_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{notice_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "summary" admon
+\colorlet{mdfbox_summary_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_summary_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{summary_mdfboxmdframed}
+
+\newenvironment{summary_mdfboxadmon}[1][]{
+\begin{summary_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{summary_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "warning" admon
+\colorlet{mdfbox_warning_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_warning_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{warning_mdfboxmdframed}
+
+\newenvironment{warning_mdfboxadmon}[1][]{
+\begin{warning_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{warning_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "question" admon
+\colorlet{mdfbox_question_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_question_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{question_mdfboxmdframed}
+
+\newenvironment{question_mdfboxadmon}[1][]{
+\begin{question_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{question_mdfboxmdframed}
+}
+
+% Admonition style "mdfbox" is an oval colored box based on mdframed
+% "block" admon
+\colorlet{mdfbox_block_background}{gray!5}
+\newmdenv[
+  skipabove=15pt,
+  skipbelow=15pt,
+  outerlinewidth=0,
+  backgroundcolor=mdfbox_block_background,
+  linecolor=black,
+  linewidth=2pt,       % frame thickness
+  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlerule=true,
+  frametitlefont=\normalfont\bfseries,
+  shadow=false,        % frame shadow?
+  shadowsize=11pt,
+  leftmargin=0,
+  rightmargin=0,
+  roundcorner=5,
+  needspace=0pt,
+]{block_mdfboxmdframed}
+
+\newenvironment{block_mdfboxadmon}[1][]{
+\begin{block_mdfboxmdframed}[frametitle=#1]
+}
+{
+\end{block_mdfboxmdframed}
+}
+
+% --- end of definitions of admonition environments ---
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+\usepackage{calc}
+
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{\section*{List of Examples, Exercises, Problems, and Projects}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
+
+
+% ------ header in subexercises ------
+%\newcommand{\subex}[1]{\paragraph{#1}}
+%\newcommand{\subex}[1]{\par\vspace{1.7mm}\noindent{\bf #1}\ \ }
+\makeatletter
+% 1.5ex is the spacing above the header, 0.5em the spacing after subex title
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                  {1.5ex\@plus1ex \@minus.2ex}%
+                  {-0.5em}%
+                  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% #endif
+
+\input{newcommands_bfmath}
+\input{newcommands_replace}
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+A Document for Testing DocOnce
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
+\end{center}
+
+    
+\begin{center}
+{\bf Kaare Dump${}^{3}$} \\ [0mm]
+\end{center}
+
+    
+\begin{center}
+{\bf A. Dummy Author${}^{}$} \\ [0mm]
+\end{center}
+
+    
+\begin{center}
+{\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
+\end{center}
+
+    
+\begin{center}
+{\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
+\end{center}
+
+    \begin{center}
+% List of all institutions:
+\centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
+\centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
+\centerline{{\small ${}^3$Segfault, Cyberspace}}
+\centerline{{\small ${}^4$Inst1}}
+\centerline{{\small ${}^5$Inst2, Somewhere}}
+\centerline{{\small ${}^6$Third Inst, Elsewhere}}
+\centerline{{\small ${}^7$Fourth Inst}}
+\end{center}
+    
+% ----------------- end author(s) -------------------------
+
+\begin{center} % date
+Jan 32, 2100
+\end{center}
+
+\vspace{1cm}
+
+
+\tableofcontents
+
+
+\vspace{1cm} % after toc
+
+
+
+
+
+% !split
+
+
+
+
+The format of this document is
+plain, homemade \textsc{pdf}{\LaTeX} (from DocOnce).
+
+\begin{abstract}
+This is a document with many test constructions for doconce syntax.
+It was used heavily for the development and kept for testing
+numerous constructions, also special and less common cases.
+
+And exactly for test purposes we have an extra line here, which
+is part of the abstract.
+
+% Cannot demonstrate chapter headings since abstract and chapter
+% is mutually exclusive in {\LaTeX}
+\end{abstract}
+
+\section{Section 1}
+\label{sec1}
+
+Here is a nested list:
+
+\begin{itemize}
+  \item item1
+
+  \item item2
+
+  \item item3 which continues
+    on the next line to test that feature
+
+  \item and a sublist
+\begin{itemize}
+
+    \item with indented subitem1
+
+    \item and a subitem2
+
+\end{itemize}
+
+\noindent
+  \item and perhaps an ordered sublist
+\begin{enumerate}
+
+   \item first item
+
+   \item second item,
+      continuing on a new line
+\end{enumerate}
+
+\noindent
+\end{itemize}
+
+\noindent
+\paragraph{Here is a list with paragraph heading.}
+
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
+\paragraph{Here is a list with subsubsection heading.}
+\begin{itemize}
+  \item item1
+
+  \item item2
+\end{itemize}
+
+\noindent
+
+\begin{quote}
+Here are two lines that make up
+a block quote for testing \emph{emphasized words} and \textbf{boldface words},
+also with hypens:
+\emph{pre}-fix, post-\emph{fix}, \textbf{pre}-fix, post-\textbf{fix}.
+\end{quote}
+
+
+Here are two references. Equation~(\ref{my:eq1}) is fine. Eq.~(\ref{my:eq1}) too.
+Even Equation (\ref{my:eq1}) without the tilde.
+
+
+\subsection{Subsection 1}
+\label{subsec1}
+
+\index{somefunc@{\rm\texttt{somefunc}} function}
+
+% Refer to section/appendix etc. at the beginning of the line
+% and other special fix situations for HTML.
+
+More text, with a reference back to
+Section~\ref{sec1} and~\ref{subsec1}, and further to the
+sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+encourages you to do the tasks in the
+Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
+Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+
+\paragraph{Test Section reference at beginning of line and after a sentence.}
+Section~\ref{subsec1} is fine.
+Section~\ref{subsubsec:ex} too.
+
+
+% sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
+
+\paragraph{Computer code.}
+Let's do some copying from files too. First from subroutine up to the very end,
+
+\begin{cod}{cbg_gray}\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+      subroutine test()
+      integer i
+      real*8 r
+      r = 0
+      do i = 1, i
+         r = r + i
+      end do
+      return
+C     END1
+
+      program testme
+      call test()
+      return
+\end{Verbatim}
+\end{cod}
+and then just the subroutine,
+\begin{cod}{cbg_gray}\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+
+      subroutine test()
+      integer i
+      real*8 r
+      r = 0
+      do i = 1, i
+         r = r + i
+      end do
+      return
+\end{Verbatim}
+\end{cod}
+and finally the complete file with a plain text verbatim environment
+(\Verb!envir=ccq!):
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+C     a comment
+
+      subroutine test()
+      integer i
+      real*8 r
+      r = 0
+      do i = 1, i
+         r = r + i
+      end do
+      return
+C     END1
+
+      program testme
+      call test()
+      return
+\end{lstlisting}\end{cod}
+
+Testing other code environments. First Python:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+!bc pycod
+def f(x):
+    return x+1
+!ec
+\end{lstlisting}\end{cod}
+which gets rendered as
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+def f(x):
+    return x+1
+\end{lstlisting}\end{cod}
+
+Test paragraph and subsubsection headings before
+before code.
+
+\paragraph{Paragraph heading before code.}
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+import sys
+sys.path.insert(0, os.pardir)
+\end{lstlisting}\end{cod}
+
+\paragraph{Subsubsection heading before code.}
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+def h(z):
+    return z+1
+\end{lstlisting}\end{cod}
+
+Now a complete program to be shown via Python Online Tutorial:
+
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+class Line:
+    def __init__(self, a, b):
+        self.a, self.b = a, b
+
+    def __call__(self, x):
+        a, b = self.a, self.b
+        return a*x + b
+
+line = Line(2, 1)
+y = line(x=3)
+print y
+\end{lstlisting}\end{pro}
+\noindent
+(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
+
+
+Some more Python code (actually specified as a sage cell, but
+such cells are not supported by this format).
+
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
+plot(x, y)
+xlabel('x'); ylabel('y')
+show()
+\end{lstlisting}\end{pro}
+
+
+Then Cython:
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+cpdef f(double x):
+    return x + 1
+\end{lstlisting}\end{cod}
+
+Standard Python shell sessions:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+>>> from numpy import sin
+>>> # Some comment
+>>> x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{lstlisting}\end{cod}
+
+IPython sessions:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+In [1]: from numpy import sin
+
+In [2]: # Some comment
+
+In [3]: x = sin(1.2); print 'Value:', x
+Value: 0.932039085967
+\end{lstlisting}\end{cod}
+
+
+% This one tests a + sign before a code environment
+C++:
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=C++,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+#include <iostream>
+
+int main()
+{
+   std::cout << "Sample output" << std::endl;
+   return 0
+}
+\end{lstlisting}\end{pro}
+% The next should get correctly typset in sphinx (cod is fcod)
+% It also tests emoji before code
+And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{latex_figs/dizzy_face.png}}
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+!bc cod
+      subroutine midpt(x, length, a, b)
+      real*8 a, b, x
+      x = (a + b)/2
+      length = b - a
+      return
+      end
+!ec
+\end{lstlisting}\end{cod}
+which then is typeset as
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+      subroutine midpt(x, length, a, b)
+      real*8 a, b, x
+      x = (a + b)/2
+      length = b - a
+      return
+      end
+\end{lstlisting}\end{cod}
+
+HTML:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=HTML,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+<table>
+<tr><td>Column 1</td><td>Column 2</td></tr>
+<tr><td>0.67526 </td><td>0.92871 </td></tr>
+<!-- comment -->
+</table>
+\end{lstlisting}\end{cod}
+
+But inline HTML code is also important, like text that starts with
+\Verb!<a href="! (which can destroy the following text if not properly
+quoted).
+
+And here is a system call:
+
+\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+Terminal> mkdir test
+Terminal> cd test
+Terminal> myprog -f
+output1
+output2
+\end{Verbatim}
+
+Any valid pygments lexer/language name can appear to, e.g.,
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+!bc restructuredtext
+=======
+Heading
+=======
+
+Some text.
+!ec
+\end{lstlisting}\end{cod}
+results in
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+=======
+Heading
+=======
+
+Some text.
+\end{lstlisting}\end{cod}
+
+% Here goes hidden code.
+% Python can be treated by some formats, Fortran is always out.
+
+
+
+
+
+Finally, \Verb?!bc do? supports highlighting of DocOnce source:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+======= DocOnce test file =======
+
+===== Computer code =====
+
+Inline verbatim code, as in `import numpy as np`, is allowed, as well as
+code blocks:
+
+!bc pycod
+from math import sin
+
+def f(x):
+    """Example on a function."""
+    return sin(x) + 1
+
+print f(0)
+!ec
+
+
+===== Mathematics =====
+
+Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
+as equations:
+
+!bt
+\begin{align*}
+\nabla\cdot\bm{u} &= 0,\\ 
+\bm{u} &= \nabla\phi .
+\end{align*}
+!et
+
+=== Subsubsection heading ===
+
+DocOnce files can have chapters, sections, subsections, and subsubsections.
+
+__Paragraph heading.__ Paragraphs may have headings.
+\end{lstlisting}\end{cod}
+
+It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
+spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
+Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
+\Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
+
+Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
+green color containing a linebreak\\
+code.} Some formats will only display \\
+this correctly when \Verb!html! \\
+is the output format.
+But here some more running text is added which is not part of
+the previous blocks with line breaks.
+
+\paragraph{Running OS commands.}
+\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
+Testing
+output
+from
+Python.
+\end{Verbatim}
+
+
+\paragraph{Footnotes.}
+Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+They are used in different flavors, now in
+
+\begin{itemize}
+ \item list items
+
+ \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
+
+ \item and code `h[i] += 1`\footnote{One-line footnote.},
+
+ \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
+\end{itemize}
+
+\noindent
+which gives flexibility in writing.
+This is the third\footnote{Not much to add here, but the footnote is at the end with only one newline.} example.
+
+
+
+
+
+Here is some more text before a new definition of a footnote that was
+used above.
+
+
+\begin{notice_mdfboxadmon}[Non-breaking space character.]
+This paragraph aims to test \href{{http://en.wikipedia.org/wiki/Non-breaking_space}}{non-breaking space character}, and a typical
+example where this is needed is in physical units: 7.4~km is traveled
+in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}~is
+not broken across lines (drag the browser window to test this).
+(On the other hand, the tilde is used in
+computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
+of course remain a tilde in those contexts.)
+\end{notice_mdfboxadmon}
+
+
+
+\subsection{Subsection 2: Testing figures}
+\label{subsec:ex}
+\index{figures}
+
+Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
+there is a flow.
+
+
+\begin{figure}[ht]
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+  \caption{
+  Visualization of a wave. \label{fig:impact}
+  }
+\end{figure}
+%\clearpage % flush figures fig:impact
+
+
+Figures without captions are allowed and will be inlined.
+
+
+
+% inline figure
+\centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
+
+
+
+\index{movies}
+
+
+% Test multi-line caption in figure
+
+Here is figure~\ref{myfig} with a long multi-line caption
+and an extra space before the FIGURE keyword.
+
+
+\begin{figure}[ht]
+  \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
+  \caption{
+  A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
+  }
+\end{figure}
+%\clearpage % flush figures myfig
+
+
+% Must be a blank line after MOVIE or FIGURE to detect this problem
+
+Test URL as figure name:
+
+
+
+% inline figure
+\centerline{\includegraphics[width=0.8\linewidth]{downloaded_figures/f_plot.png}}
+
+
+
+
+% Test wikimedia type of files that otherwise reside in subdirs
+
+
+\paragraph{Remark.}
+Movies are tested in separate file \Verb!movies.do.txt!.
+
+
+% Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
+
+\subsection{The $\theta$ parameter (not $\nabla$?)}
+\label{decay:sec:theta}
+
+Functions do not always need to be advanced, here is one
+involving $\theta$:
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+def f(theta):
+    return theta**2
+\end{lstlisting}\end{cod}
+
+\paragraph{More on $\theta$.}
+Here is more text following headline with math.
+
+Newcommands must also be tested in this \report:
+$\half$, $\halfi$, $\x$, $\Ddt{u}$,
+both inline and in block:
+
+\begin{align*}
+\Ddt{u} &= 0
+\\ 
+\half &= \halfi\\ 
+\half\x &= \normalvec
+\end{align*}
+
+Or with align with label and numbers:
+
+\begin{align}
+\Ddt{u} &= 0
+\label{aligneq1}\\ 
+\half &= \halfi\\ 
+\half\x &= \normalvec
+\label{aligneq2}
+\end{align}
+
+
+\subsection{Custom Environments}
+
+Here is an attempt to create a theorem environment via Mako
+(for counting theorems) and comment lines to help replacing lines in
+the \Verb!.tex! by proper begin-end {\LaTeX} environments for theorems.
+Should look nice in most formats!
+
+
+
+% begin theorem
+\label{theorem:fundamental1}
+
+
+\paragraph{Theorem 5.}
+Let $a=1$ and $b=2$. Then $c=3$.
+% end theorem
+
+% begin proof
+\paragraph{Proof.}
+Since $c=a+b$, the result follows from straightforward addition.
+$\Diamond$
+% end proof
+
+As we see, the proof of Theorem 5 is a modest
+achievement.
+
+
+\subsection{Tables}
+\label{subsec:table}
+
+\index{test index with verbatim text@test index with {\rm\texttt{verbatim text}} which is possible}
+\index{test two@test {\rm\texttt{two}} (separate) {\rm\texttt{verbatim expressions}} which is also possible}
+\index{index with!subindex}
+
+% index with comma could fool sphinx
+\index{index, with comma, and one more}
+
+Let us take this table from the manual:
+
+\begin{table}
+\caption{
+Testing table environment in {\LaTeX}, enabled by testing on the "latex" format
+with the preprocessor.
+\label{mytab}
+}
+
+
+
+\begin{quote}
+\begin{tabular}{lrr}
+\hline
+\multicolumn{1}{c}{ time } & \multicolumn{1}{c}{ velocity } & \multicolumn{1}{c}{ acceleration } \\
+\hline
+0.0  & 1.4186   & -5.01        \\
+2.0  & 1.376512 & 11.919       \\
+4.0  & 1.1E+1   & 14.717624    \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+\end{table}
+
+The DocOnce source code reads
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+
+  |--------------------------------|
+  |time  | velocity | acceleration |
+  |--l--------r-----------r--------|
+  | 0.0  | 1.4186   | -5.01        |
+  | 2.0  | 1.376512 | 11.919       |
+  | 4.0  | 1.1E+1   | 14.717624    |
+  |--------------------------------|
+
+\end{lstlisting}\end{cod}
+
+Here is yet another table to test that we can handle more than
+one table:
+
+
+\begin{quote}
+\begin{tabular}{lll}
+\hline
+\multicolumn{1}{l}{ time } & \multicolumn{1}{l}{ velocity } & \multicolumn{1}{l}{ acceleration } \\
+\hline
+0.0  & 1.4186   & -5.01        \\
+1.0  & 1.376512 & 11.919       \\
+3.0  & 1.1E+1   & 14.717624    \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+And one with math headings (that are expanded and must be treated
+accordingly), verbatim heading and entry, and no space around the pipe
+symbol:
+
+
+\begin{quote}
+\begin{tabular}{lrrr}
+\hline
+\multicolumn{1}{c}{ $i$ } & \multicolumn{1}{c}{ $h_i$ } & \multicolumn{1}{c}{ $\bar T_i$ } & \multicolumn{1}{c}{ \Verb!L\_i! } \\
+\hline
+0   & 0      & 288        & -0.0065    \\
+1   & 11,000 & 216        & 0.0        \\
+2   & 20,000 & 216        & 0.001      \\
+3   & 32,000 & 228        & 0.0028     \\
+4   & 47,000 & 270        & 0.0        \\
+5   & 51,000 & 270        & -0.0028    \\
+6   & 71,000 & 214        & \Verb!NaN! \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+And add one with verbatim headings (with underscores),
+and rows starting with \Verb!|-! because of a negative number,
+and \Verb!|! right before and after verbatim word (with no space):
+
+
+\begin{quote}
+\begin{tabular}{rrrr}
+\hline
+\multicolumn{1}{c}{ exact } & \multicolumn{1}{c}{ \Verb!v\_1! } & \multicolumn{1}{c}{ $a_i$ + \Verb!v\_2! } & \multicolumn{1}{c}{ \Verb!verb\_3\_! } \\
+\hline
+9     & 9.62       & 5.57               & 8.98           \\
+-20   & -23.39     & -7.65              & -19.93         \\
+10    & 17.74      & -4.50              & 9.96           \\
+0     & -9.19      & 4.13               & -0.26          \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+Pipe symbols in verbatim and math text in tables used to pose difficulties,
+but not anymore:
+
+
+\begin{quote}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
+\hline
+$ ||a_0|| $ & \Verb!norm|length! \\
+$x\cap y$   & \Verb!x|y!         \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+Finally, a table with math
+and URLs.
+
+% Mako code to expand URLs in the table
+% (These types of tables did not work before Jan 2014)
+
+
+
+\begin{quote}
+\begin{tabular}{ccc}
+\hline
+ \\
+\hline
+$\mathcal{L}=0$         & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0080.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0085.png} \\
+$a=b$                   & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0090.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0095.png} \\
+$\nabla\cdot\bm{u} =0 $ & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0100.png} & \includegraphics[width=2cm]{../doc/src/manual/mov/wave_frames/frame_0105.png} \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
+\subsection{A test of verbatim words in heading with subscript $a_i$: \protect\Verb!my\_file\_v1! and \protect\Verb!my\_file\_v2! }
+
+\paragraph{Paragraph with verbatim and math: \protect\Verb!my\_file\_v1.py! and \protect\Verb!my\_file\_v2.py! define some math $a_{i-1}$.}
+Here is more \Verb!__verbatim__! code and
+some plain text on a new line.
+
+% Test various types of headlines
+\subsection{\textbf{Just bold}}
+
+Some text.
+
+\subsection{\emph{Just emphasize}}
+
+Some text.
+
+\subsection{\protect\Verb!Just verbatim! }
+
+Some text.
+
+\subsection{\textbf{Bold} beginning}
+
+Some text.
+
+\subsection{\emph{Emphasize} beginning}
+
+Some text.
+
+\subsection{\protect\Verb!Verbatim! beginning}
+
+Some text.
+
+\subsection{Maybe \textbf{bold end}}
+
+Some text.
+
+\subsection{Maybe \emph{emphasize end}}
+
+Some text.
+
+\subsection{Maybe \protect\Verb!verbatim end! }
+
+Some text.
+
+\subsection{The middle has \textbf{bold} word}
+
+Some text.
+
+\subsection{The middle has \emph{emphasize} word}
+
+Some text.
+
+\subsection{The middle has \protect\Verb!verbatim! word}
+
+Some text.
+
+
+\paragraph{\emph{Just emphasize}.}
+Some text.
+
+
+\paragraph{\protect\Verb!Just verbatim!.}
+Some text.
+
+
+\paragraph{\emph{Emphasize} beginning.}
+Some text.
+
+
+\paragraph{\protect\Verb!Verbatim beginning!.}
+Some text.
+
+
+\paragraph{Maybe \emph{emphasize end}.}
+Some text.
+
+
+\paragraph{Maybe \protect\Verb!verbatim end!.}
+Some text.
+
+
+\paragraph{The middle has \emph{emphasize} word.}
+Some text.
+
+
+\paragraph{The middle has \protect\Verb!verbatim! word.}
+Some text.
+
+
+\paragraph{Ampersand.}
+We can test Hennes {\&} Mauritz, often abbreviated H{\&}M, but written
+as \Verb!Hennes & Mauritz! and \Verb!H & M!.
+A sole \Verb!&! must also work.
+% Note: substitutions must not occur inside verbatim, just in ordinary text.
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+# Just to check that ampersand works in code blocks:
+c = a & b
+\end{lstlisting}\end{cod}
+
+\paragraph{Quotes.}
+Let us also add a test of quotes such as ``double quotes, with numbers
+like 3.14 and newline/comma and hyphen (as in double-quote)''; written
+in the standard LaTeX-style that gives correct {\LaTeX} formatting and
+ordinary double quotes for all non-LaTeX formats.  Here is another
+sentence that ``caused'' a bug in the past because double backtick
+quotes could imply verbatim text up to a verbatim word starting with
+period, like \Verb!.txt!.
+
+
+\subsection{Bibliography test}
+
+Here is an example: \cite{Langtangen_Pedersen_2002} discussed propagation of
+large destructive water waves, \cite{Langtangen_et_al_2002} gave
+an overview of numerical methods for solving the Navier-Stokes equations,
+while the use of Backward Kolmogorov equations for analyzing
+random vibrations was investigated in \cite{Langtangen_1994a}.
+The book chapter \cite{Mardal_et_al_2003a} contains information on
+C++ software tools for programming multigrid methods. A real retro
+reference is \cite{Langtangen_1988d} about a big FORTRAN package.
+Multiple references are also possible, e.g., see
+\cite{Langtangen_Pedersen_2002,Mardal_et_al_2003a}.
+
+We need to cite more than 10 papers to reproduce an old formatting
+problem with blanks in the keys in reST format:
+\cite{Langtangen_1992c,Langtangen_1994a,Mortensen_et_al_2011,Langtangen_Pedersen_2002}
+and
+\cite{Langtangen_et_al_2002,Glimsdal_et_al_20006,Rahman_et_al_2006b,Haga_et_al_2011a,Langtangen_2003a,Langtangen_2008a,Langtangen:95}
+and all the work of
+\cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
+old work \cite{Langtangen_1988d} and \cite{Langtangen_1989e}, and the
+talk \cite{Langtangen_talk_2007a}.
+Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}.
+More retro citations are
+the old ME-IN323 book \cite{Langtangen:91} and the
+\cite{Langtangen:94b} OONSKI '94 paper.
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Example \thedoconceexercisecounter: Examples can be typeset as exercises}
+
+\label{Example}
+
+Examples can start with a subsection heading starting with \Verb!Example:!
+and then, with the command-line option \Verb!--examples_as_exercises! be
+typeset as exercises. This is useful if one has solution
+environments as part of the example.
+
+
+\subex{a)}
+State some problem.
+
+\paragraph{Solution.}
+The answer to this subproblem can be written here.
+
+\subex{b)}
+State some other problem.
+
+\paragraph{Hint 1.}
+A hint can be given.
+
+\paragraph{Hint 2.}
+Maybe even another hint?
+
+\paragraph{Solution.}
+The answer to this other subproblem goes here,
+maybe over multiple doconce input lines.
+
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+\subsection{URLs}
+\label{subsubsec:ex}
+
+Testing of URLs: hpl's home page \href{{http://folk.uio.no/hpl}}{hpl}, or
+the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}.  Here is a
+plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or
+\href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{a link with
+newline}. Can test spaces with the link with word
+too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+file} is
+fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
+colon, semi-colon, question mark, exclamation mark, but not a period
+(which gets confused with the periods inside the URL).
+
+Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}}, or just a \href{{mailto:hpl@simula.no}}{mail link}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}}.
+
+Here are some tough tests of URLs, especially for the \Verb!latex! format:
+\href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes} formulas
+and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}. Need to test
+Newton-Cotes with percentage in URL too:
+\href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
+and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
+
+For the \Verb!--device=paper! option it is important to test that URLs with
+monospace font link text get a footnote
+(unless the \Verb!--latex_no_program_footnotelink!
+is used), as in this reference to
+\href{{https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py}}{\nolinkurl{decay_mod}}, \href{{http://tinyurl.com/pwyasaa/formulas.ball1.py}}{\nolinkurl{ball1.py}},
+and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
+
+
+% Comments should be inserted outside paragraphs (because in the rst
+% format extra blanks make a paragraph break).
+
+% Note that when there is no http: or file:, it can be a file link
+% if the link name is URL, url, "URL", or "url". Such files should,
+% if rst output is desired, but placed in a \Verb!_static*! folder.
+
+More tough tests: repeated URLs whose footnotes when using the
+\Verb!--device=paper! option must be correct. We have
+\href{{http://google.com}}{google}, \href{{http://google.com}}{google}, and
+\href{{http://google.com}}{google}, which should result in exactly three
+footnotes.
+
+
+
+\subsection{Test of Some {\LaTeX} Fixes}
+
+Let's check abbr.~of some common kind, e.g.~the well-known i.e.
+expression as an example, and 1 vs.~2 which is also often used.
+Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
+will go to the Dept.~of Science to test how Mr.~Hansen is doing together
+with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
+Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+handled. Likewise, this is test no.~$i$ of DocOnce features.
+Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Percentage must be fixed: 7\%,  87.65\% and
+50\% at the beginning of the line.
+
+
+% !split and check if these extra words are included properly in the comment
+
+\section{{\LaTeX} Mathematics}
+
+Here is an equation without label using backslash-bracket environment:
+\[ a = b + c \]
+or with number and label, as in (\ref{my:eq1}), using the equation environment:
+\begin{equation}
+{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
+\end{equation}
+We can refer to this equation by (\ref{my:eq1}).
+
+Here is a system without equation numbers, using the align-asterisk environment:
+\begin{align*}
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
+b &= \nabla^2 u + \nabla^4 v
+\end{align*}
+
+
+And here is a system of equations with labels in an align environment:
+\begin{align}
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
+b &= \nabla^2 u + \nabla^4 x \label{eq2}
+\end{align}
+We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
+the Navier-Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
+Also test $a_{i-j}$ as well as $kx-wt$.
+
+Many of the next environments will fail in non-latex formats.
+Testing multiline:
+\begin{multline}
+a = b = q + \\ 
+  f + \nabla\cdot\nabla u
+\label{multiline:eq1}
+\end{multline}
+Testing split:
+\begin{equation}
+\label{split:envir:eq}
+\begin{split}
+a = b = q &+ \\ 
+  & f + \nabla\cdot\nabla u
+\end{split}
+\end{equation}
+We can refer to the last equation by (\ref{split:envir:eq}).
+
+Testing gather:
+\begin{gather}
+a = b \\ 
+c = d + 7 + 9
+\end{gather}
+
+Testing alignat:
+\begin{alignat}{2}
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
+b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
+\end{alignat}
+Let us refer to (\ref{eq1})-(\ref{eq2}) again, and to the
+alignat variant (\ref{eq1a})-(\ref{eq2a}), and to (\ref{my:eq1}).
+
+Testing eqnarray:
+\begin{eqnarray}
+{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
+{\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
+\end{eqnarray}
+
+More mathematical typesetting is demonstrated in the coming exercises.
+
+Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
+as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
+between there we have Exercise~\ref{exer:some:formula}.
+
+
+\section{Exercises}
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
+
+\label{demo:ex:1}
+% keywords = random numbers; Monte Carlo simulation
+
+% Torture tests
+
+
+\subex{a)}
+Make a program that simulates flipping a coin $N$ times.
+Print out ``tail'' or ``head'' for each flip and
+let the program count the number of heads.
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint 1.}
+Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+
+% --- end hint in exercise ---
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint 2.}
+Draw an integer among $\{1,2\}$ with
+\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+
+% --- end hint in exercise ---
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+If the \Verb!random.random()! function returns a number $<1/2$, let it be
+head, otherwise tail. Repeat this $N$ number of times.
+
+% --- end answer of exercise ---
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+import sys, random
+N = int(sys.argv[1])
+heads = 0
+for i in range(N):
+    r = random.random()
+    if r <= 0.5:
+        heads += 1
+print 'Flipping a coin %d times gave %d heads' % (N, heads)
+\end{lstlisting}\end{cod}
+
+% --- end solution of exercise ---
+
+\subex{b)}
+Vectorize the code in a) using boolean indexing.
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+\subex{c)}
+Vectorize the code in a) using \Verb!numpy.sum!.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
+
+% --- end answer of exercise ---
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+
+\paragraph{My remarks.}
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+\begin{enumerate}
+\item Mark 1.
+
+\item Mark 2.
+\end{enumerate}
+
+\noindent
+\noindent Filenames: \Verb!flip_coin.py!, \Verb!flip_coin.pdf!.
+
+% Closing remarks for this Problem
+
+\paragraph{Remarks.}
+These are the exercise remarks, appearing at the very end.
+
+% solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+\subsection{Not an exercise}
+
+Should be possible to stick a normal section in the middle of many
+exercises.
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Test of plain text exercise}
+
+\label{my:exer1}
+
+Very short exercise. What is the capital
+of Norway?
+\noindent Filename: \Verb!myexer1.py!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Project \thedoconceexercisecounter: Compute a Probability}
+
+\label{demo:ex:2}
+
+% Minimalistic exercise
+
+
+What is the probability of getting a number between 0.5 and 0.6 when
+drawing uniformly distributed random numbers from the interval $[0,1)$?
+
+
+At the end we have a list because that caused problems in {\LaTeX}
+in previous DocOnce versions:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
+% --- begin hint in exercise ---
+
+\paragraph{Hint.}
+To answer this question empirically, let a program
+draw $N$ such random numbers using Python's standard \Verb!random! module,
+count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
+compute the probability as $M/N$.
+
+% --- end hint in exercise ---
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
+
+\label{proj:circle1}
+
+The formula for a circle is given by
+
+\begin{align}
+x &= x_0 + R\cos 2\pi t,\\ 
+y &= y_0 + R\sin 2\pi t,
+\end{align}
+where $R$ is the radius of the circle, $(x_0,y_0)$ is the
+center point, and $t$ is a parameter in the unit interval $[0,1]$.
+For any $t$, $(x,y)$ is a point on the circle.
+The formula can be used to generate \Verb!n! points on a circle:
+
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+import numpy as np
+
+def circle(R, x0, y0, n=501):
+    t = np.linspace(0, 1, n)
+    x = x0 + R*np.cos(2*np.pi*t)
+    y = y0 + R*np.sin(2*np.pi*t)
+    return x, y
+
+x, y = circle(2.0, 0, 0)
+\end{lstlisting}\end{pro}
+
+% Often in an exercise we have some comments about the solution
+% which we normally want to keep where they are.
+
+The goal of this project is to draw $N$ circles with random
+center and radius. Plot each circle using the \Verb!circle! function
+above.
+
+
+\subex{a)}
+Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint.}
+Use the \Verb!numpy.random! module to draw the
+$x_0$, $y_0$, and $R$ quantities.
+
+% --- end hint in exercise ---
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+Here goes the short answer to part a).
+
+% --- end answer of exercise ---
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes a full solution to part a).
+
+% --- end solution of exercise ---
+
+\subex{b)}
+Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
+\noindent Filename: \Verb!norm.py!.
+
+\subex{c)}
+Let $R$ and $(x_0,y_0)$ be normally distributed.
+
+
+\noindent Filename: \Verb!circles.pdf!.
+
+% Closing remarks for this Project
+
+\paragraph{Remarks.}
+At the very end of the exercise it may be appropriate to summarize
+and give some perspectives.
+
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Determine some Distance}
+
+\label{exer:dist}
+
+Intro to this exercise. Questions are in subexercises below.
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+\[ \hbox{math in solution: } a = b \]
+And code \Verb!a=b! in this solution:
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+a = b  # code in solution
+\end{lstlisting}\end{cod}
+End of solution is here.
+
+% --- end solution of exercise ---
+
+
+\subex{a)}
+Subexercises are numbered a), b), etc.
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint 1.}
+First hint to subexercise a).
+With math $a=b$ in hint:
+
+\[ a=b. \]
+And with code (in plain verbatim) returning $x+1$ in hint:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+def func(x):
+    return x + 1  # with code in hint
+\end{lstlisting}\end{cod}
+
+% --- end hint in exercise ---
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint 2.}
+Second hint to subexercise a).
+
+Test list in hint:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
+% --- end hint in exercise ---
+\noindent Filename: \Verb!subexer_a.pdf!.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+Short answer to subexercise a).
+With math in answer: $a=b$.
+
+% --- end answer of exercise ---
+
+\subex{b)}
+Here goes the text for subexercise b).
+
+
+Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
+
+\[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint.}
+A hint for this subexercise.
+
+% --- end hint in exercise ---
+\noindent Filename: \Verb!subexer_b.pdf!.
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes the solution of this subexercise.
+
+% --- end solution of exercise ---
+
+
+
+% No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+\begin{enumerate}
+\item item1
+
+\item item2
+% Closing remarks for this Exercise
+\end{enumerate}
+
+\noindent
+\paragraph{Remarks.}
+Some final closing remarks, e.g., summarizing the main findings
+and their implications in other problems can be made. These
+remarks will appear at the end of the typeset exercise.
+
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+
+\subsection{Some exercise without the "Exercise:" prefix}
+
+% Another minimalistic exercise
+
+Just some text. And some math saying that $e^0=1$ on a single line,
+to test that math block insertion is correct:
+
+\[ \exp{(0)} = 1 \]
+
+And a test that the code \Verb!lambda x: x+2! is correctly placed here:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+lambda x: x+2
+\end{lstlisting}\end{cod}
+
+% the Filename: ... is written correctly.
+% Have some comments at the end of the exercise to see that
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Solution of differential equation}
+
+\label{sec:this:exer:de}
+
+
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:diff:eq1}
+
+
+\noindent\textbf{\large SOlution of differential equation}
+
+\noindent
+Given
+
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+What is the solution of this equation?
+
+\vspace{2mm}
+
+\textbf{A}. 
+$y=e^{-y}$
+
+\textbf{B}. 
+$y=e^{y}$
+
+\textbf{C}. 
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+from math import exp
+def f(x):
+    return exp(x)
+\end{lstlisting}\end{cod}
+
+\textbf{D}. 
+The solution cannot be found because there is a derivative in the equation.
+
+\textbf{E}. 
+The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} A.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\noindent {\bf Solution:}\\
+
+
+\textbf{A}: Right. 
+
+\textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
+
+\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+\[ y(x) = e^{-y}.\]
+
+\textbf{D}: Wrong. Equations with derivatives can be solved;
+they are termed \emph{differential
+equations}.
+
+\textbf{E}: Wrong. 
+
+
+% --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+\end{doconcequiz}
+
+
+% --- end explanation of choice 5 ---
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Example \thedoconceexercisecounter: Just an example}
+
+
+% This example needs the --examples_as_exercises option, otherwise
+% it is just typeset as it is written.
+
+
+\subex{a)}
+What is the capital of Norway?
+
+\paragraph{Answer.}
+Oslo.
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+\section{Here goes another section}
+
+With some text, before we continue with exercises.
+
+\section{More Exercises}
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Exercise \thedoconceexercisecounter: Make references to projects and problems}
+
+\label{exer:some:formula}
+
+% Test comments not at the end only
+Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
+and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+\begin{enumerate}
+\item item1
+
+\item item2
+\end{enumerate}
+
+\noindent
+\noindent Filename: \Verb!verify_formula.py!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+
+\label{exer:you}
+
+Refer to the previous exercise as Exercise~\ref{exer:some:formula},
+the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
+and this one as Project~\ref{exer:you}.
+\noindent Filename: \Verb!selc_composed.pdf!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{papers}
+
+
+
+
+
+\appendix
+
+\section{Just for testing; part I}
+\label{app1}
+
+This is the first appendix.
+
+\subsection{A subsection within an appendix}
+
+Some text.
+
+\section{Just for testing; part II}
+\label{app2}
+
+This is more stuff for an appendix.
+
+\subsection{Appendix: Testing identical titles}
+
+Without label.
+
+
+\subsection{Appendix: Testing identical titles}
+\label{test:title:id1}
+
+With label.
+
+\subsection{Appendix: Testing identical titles}
+\label{test:title:id2}
+
+What about inserting a quiz?
+
+
+\begin{doconcequiz}
+\refstepcounter{doconcequizcounter}
+\label{quiz:2}
+
+
+\noindent\textbf{\large Capital of Norway}
+\paragraph{Fundamental test:}
+What is the capital of Norway?
+
+\vspace{2mm}
+
+\textbf{A}. 
+Stockholm
+
+\textbf{B}. 
+London
+
+\textbf{C}. 
+Oslo
+
+\textbf{D}. 
+Bergen
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer:} C.
+% --- end answer of exercise ---
+
+% --- begin solution of exercise ---
+\noindent {\bf Solution:}\\
+
+
+\textbf{A}: Wrong. Stockholm is the capital of Sweden.
+
+\textbf{B}: Wrong. 
+
+\textbf{C}: Right. 
+
+\textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
+
+
+% --- end solution of exercise ---
+
+
+\vspace{3mm}
+
+\end{doconcequiz}
+
+
+
+
+\subsection{Appendix: Testing identical titles}
+
+Without label.
+
+
+\begin{notice_mdfboxadmon}[Tip.]
+Here is a tip or hint box, typeset as a notice box.
+\end{notice_mdfboxadmon}
+
+
+
+
+\clearpage
+
+Need a lot of text to surround the summary box.
+Version control systems allow you to record the history of files
+and share files among several computers and collaborators in a
+professional way. File changes on one computer are updated or
+merged with changes on another computer. Especially when working
+with programs or technical reports it is essential
+to have changes documented and to
+ensure that every computer and person involved in the project
+have the latest updates of the files.
+Greg Wilson' excellent \href{{http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/}}{Script for Introduction to Version Control} provides a more detailed motivation why you will benefit greatly
+from using version control systems.
+
+
+\begin{summary_mdfboxadmon}[Summary.]
+\textbf{Bold remark:} Make some text with this summary.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+Much testing in this document, otherwise stupid content.
+\end{summary_mdfboxadmon}
+
+
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that site. I strongly
+recommend you to use such sites for all serious programming and
+scientific writing work - and all other important files.
+
+The simplest services for hosting project files are \href{{http://dropbox.com}}{Dropbox} and \href{{http://drive.google.com}}{Google Drive}.
+It is very easy to get started with these systems, and they allow you
+to share files among laptops and mobile units with as many users as
+you want. The systems offer a kind of version control in that the
+files are stored frequently (several times per minute), and you can go
+back to previous versions for the last 30 days. However, it is
+challenging  to find the right version from the past when there are
+so many of them.
+
+More seriously, when several people may edit files simultaneously, it
+can be difficult detect who did what when, roll back to previous
+versions, and to manually merge the edits when these are
+incompatible. Then one needs more sophisticated tools than Dropbox or
+Google Drive: project hosting services with true version control
+systems.  The following text aims at providing you with the minimum
+information to started with such systems. Numerous other tutorials
+contain more comprehensive material and in-depth explanations of the
+concepts and tools.
+
+The idea with project hosting services is that you have the files
+associated with a project in the cloud. Many people may share these
+files.  Every time you want to work on the project you explicitly
+update your version of the files, edit the files as you like, and
+synchronize the files with the "master version" at the site where the
+project is hosted.  If you at some point need to go back to a
+version of the files at some particular point in the past,
+this is an easy operation. You can also use tools to see
+what various people have done with the files in the various versions.
+
+All these services are very similar. Below we describe how you get
+started with Bitbucket, GitHub, and Googlecode. Launchpad works very
+similarly to the latter three. All the project hosting services have
+excellent introductions available at their web sites, but the recipes
+below are much shorter and aim at getting you started as quickly as
+possible by concentrating on the most important need-to-know steps.
+The Git tutorials we refer to later in this document contain more
+detailed information and constitute of course very valuable readings
+when you use version control systems every day. The point now is
+to get started.
+
+
+\subsection{Appendix: Testing inline comments}
+
+% Names can be [ A-Za-z0-9_'+-]+
+
+Projects that you want to share among several computers or project
+workers are today most conveniently stored at some web site "in the
+cloud" and updated through communication with that
+site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is understood by all. }{ not sure if in } I strongly recommend you to use such sites for all serious
+programming and scientific writing work - and all other important
+files.
+
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+is very easy to get started with Dropbox, and it allows you to share
+files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
+
+% Test horizontal rule
+
+------
+
+% Coments for editing
+
+First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
+$Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
+
+\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
+
+The point here is to test 1) \Verb!verbatim! code in headings, and 2)
+ending a heading with verbatim code as this triggers a special
+case in {\LaTeX}.
+
+We also test mdash---used as alternative to hyphen without spaces around,
+or in quotes:
+
+
+\begin{quote}
+\emph{Fun is fun.}--- Unknown.
+\end{quote}
+
+
+And finally, what about admons, quotes, and boxes? They are tested
+in a separate document: \Verb!admon.do.txt!.
+
+
+% ------------------- end of main content ---------------
+
+
+% #ifdef PREAMBLE
+\printindex
+
+\end{document}
+% #endif
+
 ************** File: testdoc.rst *****************
 
 .. raw:: html
@@ -25280,1695 +27591,6 @@ iso-8859-1
 iso-8859-1
 iso-8859-1
 
-************** File: testdoc.md *****************
-% A Document for Testing DocOnce
-% **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo;  **Kaare Dump** at Segfault, Cyberspace;  **A. Dummy Author**;  **I. S. Overworked and Outburned** at Inst1 and Inst2, Somewhere and Third Inst, Elsewhere and Fourth Inst;  **J. Doe**
-% Jan 32, 2100
-
-<!-- Table of contents: Run pandoc with --toc option -->
-
-
-
-
-<!-- !split -->
-
-
-
-
-The format of this document is
-pandoc
-*Abstract.* This is a document with many test constructions for doconce syntax.
-It was used heavily for the development and kept for testing
-numerous constructions, also special and less common cases.
-
-And exactly for test purposes we have an extra line here, which
-is part of the abstract.
-
-<!-- Cannot demonstrate chapter headings since abstract and chapter -->
-<!-- is mutually exclusive in LaTeX -->
-
-
-
-## Section 1
-<div id="sec1"></div>
-
-Here is a nested list:
-
-  * item1
-  * item2
-  * item3 which continues
-    on the next line to test that feature
-  * and a sublist
-    * with indented subitem1
-    * and a subitem2
-
-  * and perhaps an ordered sublist
-   1. first item
-   2. second item,
-      continuing on a new line
-
-
-*Here is a list with paragraph heading.*
-
-  * item1
-  * item2
-
-#### Here is a list with subsubsection heading
-
-  * item1
-  * item2
-
-> Here are two lines that make up
-> a block quote for testing *emphasized words* and **boldface words**,
-> also with hypens:
-> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.
-
-
-
-Here are two references. Equation\ \eqref{my:eq1} is fine. Eq.\ \eqref{my:eq1} too.
-Even Equation \eqref{my:eq1} without the tilde.
-
-
-### Subsection 1
-<div id="subsec1"></div>
-
-
-<!-- Refer to section/appendix etc. at the beginning of the line -->
-<!-- and other special fix situations for HTML. -->
-
-More text, with a reference back to
-the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the
-the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which
-encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 10: Make references to projects and problems](#exer:some:formula).
-Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.
-
-#### Test Section reference at beginning of line and after a sentence
-
-The section [Subsection 1](#subsec1) is fine.
-The section [URLs](#subsubsec:ex) too.
-
-
-<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->
-
-#### Computer code
-
-Let's do some copying from files too. First from subroutine up to the very end,
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Fortran}
-      subroutine test()
-      integer i
-      real*8 r
-      r = 0
-      do i = 1, i
-         r = r + i
-      end do
-      return
-C     END1
-
-      program testme
-      call test()
-      return
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-and then just the subroutine,
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Fortran}
-      subroutine test()
-      integer i
-      real*8 r
-      r = 0
-      do i = 1, i
-         r = r + i
-      end do
-      return
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-and finally the complete file with a plain text verbatim environment
-(`envir=ccq`):
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-C     a comment
-
-      subroutine test()
-      integer i
-      real*8 r
-      r = 0
-      do i = 1, i
-         r = r + i
-      end do
-      return
-C     END1
-
-      program testme
-      call test()
-      return
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Testing other code environments. First Python:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!bc pycod
-def f(x):
-    return x+1
-!ec
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-which gets rendered as
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-def f(x):
-    return x+1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Test paragraph and subsubsection headings before
-before code.
-
-*Paragraph heading before code.*
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-import sys
-sys.path.insert(0, os.pardir)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#### Subsubsection heading before code
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-def h(z):
-    return z+1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Here is a program that is supposed to be interactive via
-Python Online Tutorial, but that service is not accessible
-for the present format.
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-class Line:
-    def __init__(self, a, b):
-        self.a, self.b = a, b
-
-    def __call__(self, x):
-        a, b = self.a, self.b
-        return a*x + b
-
-line = Line(2, 1)
-y = line(x=3)
-print y
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some more Python code (actually specified as a sage cell, but
-such cells are not supported by this format).
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-a = 2
-b = 3
-print 'a+b:', a + b
-
-# In a sage cell we can also plot
-from matplotlib.pyplot import *
-from numpy import *
-x = linspace(0, 4*pi, 101)
-y = exp(-0.1*x)*cos(x)
-plot(x, y)
-xlabel('x'); ylabel('y')
-show()
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Then Cython:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-cpdef f(double x):
-    return x + 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Standard Python shell sessions:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
->>> from numpy import sin
->>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-IPython sessions:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-In [1]: from numpy import sin
-
-In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- This one tests a + sign before a code environment -->
-C++:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Cpp}
-#include <iostream>
-
-int main()
-{
-   std::cout << "Sample output" << std::endl;
-   return 0
-}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- The next should get correctly typset in sphinx (cod is fcod) -->
-<!-- It also tests emoji before code -->
-And a little bit of Fortran: :dizzy_face:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!bc cod
-      subroutine midpt(x, length, a, b)
-      real*8 a, b, x
-      x = (a + b)/2
-      length = b - a
-      return
-      end
-!ec
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-which then is typeset as
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-      subroutine midpt(x, length, a, b)
-      real*8 a, b, x
-      x = (a + b)/2
-      length = b - a
-      return
-      end
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-HTML:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.HTML}
-<table>
-<tr><td>Column 1</td><td>Column 2</td></tr>
-<tr><td>0.67526 </td><td>0.92871 </td></tr>
-<!-- comment -->
-</table>
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-But inline HTML code is also important, like text that starts with
-`<a href="` (which can destroy the following text if not properly
-quoted).
-
-And here is a system call:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Terminal> mkdir test
-Terminal> cd test
-Terminal> myprog -f
-output1
-output2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Any valid pygments lexer/language name can appear to, e.g.,
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!bc restructuredtext
-=======
-Heading
-=======
-
-Some text.
-!ec
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-results in
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-=======
-Heading
-=======
-
-Some text.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- Here goes hidden code. -->
-<!-- Python can be treated by some formats, Fortran is always out. -->
-
-
-
-
-
-Finally, `!bc do` supports highlighting of DocOnce source:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-======= DocOnce test file =======
-
-===== Computer code =====
-
-Inline verbatim code, as in `import numpy as np`, is allowed, as well as
-code blocks:
-
-!bc pycod
-from math import sin
-
-def f(x):
-    """Example on a function."""
-    return sin(x) + 1
-
-print f(0)
-!ec
-
-
-===== Mathematics =====
-
-Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
-as equations:
-
-!bt
-\begin{align*}
-\nabla\cdot\boldsymbol{u} &= 0,\\ 
-\boldsymbol{u} &= \nabla\phi .
-\end{align*}
-!et
-
-=== Subsubsection heading ===
-
-DocOnce files can have chapters, sections, subsections, and subsubsections.
-
-__Paragraph heading.__ Paragraphs may have headings.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-It is time to test `verbatim inline font` especially with `a newline
-inside the text` and an exclamation mark at the end: `BEGIN`! For
-spellcheck, test `a verbatim expression` in `another` in a `third`.
-Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.
-Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
-`\end{this}\end{that}`, and `{something \inside braces}`.
-
-The following attempt to exemplify colored text does not work in
-format pandoc.
-Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
-green color containing a linebreak\n
-code.</font> Some formats will only display \n
-this correctly when `html` \n
-is the output format.
-But here some more running text is added which is not part of
-the previous blocks with line breaks.
-
-#### Running OS commands
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
-Testing
-output
-from
-Python.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-#### Footnotes
-
-Here is a test of footnotes[^footnote], which are handy in text.
-They are used in different flavors, now in
-
- * list items
- * even with math $\nabla^2u$ [^math1]
- * and code `h[i] += 1` [^code],
- * and [links](http://google.com) [^google-search]
-
-which gives flexibility in writing.
-This is the third[^example-of-the-third-footnote] example.
-
-  [^footnote]: Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.
-[^math1]: Math footnotes can be dangerous since it
-interferes with an exponent.
-[^code]: One-line footnote.
-
-[^google-search]: <google.com> is perhaps the most famous
-web site today.
-
-Here is some more text before a new definition of a footnote that was
-used above.
-
-*Non-breaking space character.* 
-This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical
-example where this is needed is in physical units: 7.4\ km is traveled
-in\ $7.4/5.5\approx 1.345$\ s.  Also check that a~[link](http://google.com)\ is
-not broken across lines (drag the browser window to test this).
-(On the other hand, the tilde is used in
-computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should
-of course remain a tilde in those contexts.)
-
-
-
-### Subsection 2: Testing figures
-<div id="subsec:ex"></div>
-
-Test of figures. In particular we refer to [Figure](#fig:impact) in which
-there is a flow.
-
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200><p><em>Visualization of a wave. <div id="fig:impact"></div></em></p> -->
-![<p><em>Visualization of a wave. <div id="fig:impact"></div></em></p>](../doc/src/manual/fig/wave1D.png)
-
-Figures without captions are allowed and will be inlined.
-
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=200> -->
-![](../doc/src/manual/fig/wave1D.png)
-
-
-
-<!-- Test multi-line caption in figure -->
-
-Here is [figure](#myfig) with a long multi-line caption
-and an extra space before the FIGURE keyword.
-
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <div id="myfig"></div></em></p> -->
-![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <div id="myfig"></div></em></p>](../doc/src/manual/fig/wave1D.png)
-
-<!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
-
-Test URL as figure name:
-
-<!-- <img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" width=500,> -->
-![](https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png)
-
-
-<!-- Test wikimedia type of files that otherwise reside in subdirs -->
-
-
-*Remark.*
-Movies are tested in separate file `movies.do.txt`.
-
-
-<!-- Somewhat challenging heading with latex math, \t, \n, ? and parenthesis -->
-
-### The $\theta$ parameter (not $\nabla$?)
-<div id="decay:sec:theta"></div>
-
-Functions do not always need to be advanced, here is one
-involving $\theta$:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-def f(theta):
-    return theta**2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*More on $\theta$.* Here is more text following headline with math.
-
-Newcommands must also be tested in this test report:
-$\frac{1}{2}$, ${1/2}$, $\pmb{x}$, $\frac{Du}{dt}$,
-both inline and in block:
-
-$$
-
-\frac{Du}{dt} = 0
-
-
-$$
-
-$$
-  
-\frac{1}{2} = {1/2}
-
-$$
-
-$$
-  
-\frac{1}{2}\pmb{x} = \pmb{n}
-
-$$
-
-Or with align with label and numbers:
-
-$$
-\begin{equation}
-\frac{Du}{dt} = 0
-\label{aligneq1}
-\end{equation}
-$$
-
-$$
-\begin{equation}  
-\frac{1}{2} = {1/2}
-\end{equation}
-$$
-
-$$
-\begin{equation}  
-\frac{1}{2}\pmb{x} = \pmb{n}
-\label{aligneq2}
-\end{equation}
-$$
-
-
-### Custom Environments
-
-Here is an attempt to create a theorem environment via Mako
-(for counting theorems) and comment lines to help replacing lines in
-the `.tex` by proper begin-end LaTeX environments for theorems.
-Should look nice in most formats!
-
-
-
-<!-- begin theorem -->
-<div id="theorem:fundamental1"></div>
-
-
-*Theorem 5.*
-Let $a=1$ and $b=2$. Then $c=3$.
-<!-- end theorem -->
-
-<!-- begin proof -->
-*Proof.*
-Since $c=a+b$, the result follows from straightforward addition.
-$\Diamond$
-<!-- end proof -->
-
-As we see, the proof of Theorem 5 is a modest
-achievement.
-
-
-### Tables
-<div id="subsec:table"></div>
-
-
-<!-- index with comma could fool sphinx -->
-
-Let us take this table from the manual:
-
-
-
-time  velocity  acceleration  
-----  --------  ------------  
-0.0     1.4186         -5.01  
-2.0   1.376512        11.919  
-4.0     1.1E+1     14.717624  
-
-
-
-The DocOnce source code reads
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  |--------------------------------|
-  |time  | velocity | acceleration |
-  |--l--------r-----------r--------|
-  | 0.0  | 1.4186   | -5.01        |
-  | 2.0  | 1.376512 | 11.919       |
-  | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Here is yet another table to test that we can handle more than
-one table:
-
-
-time  velocity  acceleration  
-----  --------  ------------  
-0.0   1.4186    -5.01         
-1.0   1.376512  11.919        
-3.0   1.1E+1    14.717624     
-
-
-And one with math headings (that are expanded and must be treated
-accordingly), verbatim heading and entry, and no space around the pipe
-symbol:
-
-
-$i$  $h_i$   $\bar T_i$   `L_i`   
----  ------  ----------  -------  
-0         0         288  -0.0065  
-1    11,000         216      0.0  
-2    20,000         216    0.001  
-3    32,000         228   0.0028  
-4    47,000         270      0.0  
-5    51,000         270  -0.0028  
-6    71,000         214    `NaN`  
-
-
-And add one with verbatim headings (with underscores),
-and rows starting with `|-` because of a negative number,
-and `|` right before and after verbatim word (with no space):
-
-
-exact  `v_1`   $a_i$ + `v_2`  `verb_3_`  
------  ------  -------------  ---------  
-    9    9.62           5.57       8.98  
-  -20  -23.39          -7.65     -19.93  
-   10   17.74          -4.50       9.96  
-    0   -9.19           4.13      -0.26  
-
-
-Pipe symbols in verbatim and math text in tables used to pose difficulties,
-but not anymore:
-
-
-    $S$         command     
------------  -------------  
-$ ||a_0|| $  `norm|length`  
-$x\cap y$            `x|y`  
-
-
-Finally, a table with math
-(`bm` that expands to `boldsymbol`, was tricky, but
-cleanly handled now)
-and URLs.
-
-<!-- Mako code to expand URLs in the table -->
-<!-- (These types of tables did not work before Jan 2014) -->
-
-
-
-                                                                                                                                                       
--------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
-        $\mathcal{L}=0$          [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
-             $a=b$               [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
-$\nabla\cdot\boldsymbol{u} =0 $  [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
-
-
-
-### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`
-
-*Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.* Here is more `__verbatim__` code and
-some plain text on a new line.
-
-<!-- Test various types of headlines -->
-### **Just bold**
-
-Some text.
-
-### *Just emphasize*
-
-Some text.
-
-### `Just verbatim`
-
-Some text.
-
-### **Bold** beginning
-
-Some text.
-
-### *Emphasize* beginning
-
-Some text.
-
-### `Verbatim` beginning
-
-Some text.
-
-### Maybe **bold end**
-
-Some text.
-
-### Maybe *emphasize end*
-
-Some text.
-
-### Maybe `verbatim end`
-
-Some text.
-
-### The middle has **bold** word
-
-Some text.
-
-### The middle has *emphasize* word
-
-Some text.
-
-### The middle has `verbatim` word
-
-Some text.
-
-
-**Just emphasize*.* Some text.
-
-
-*`Just verbatim`.* Some text.
-
-
-**Emphasize* beginning.* Some text.
-
-
-*`Verbatim beginning`.* Some text.
-
-
-*Maybe *emphasize end*.* Some text.
-
-
-*Maybe `verbatim end`.* Some text.
-
-
-*The middle has *emphasize* word.* Some text.
-
-
-*The middle has `verbatim` word.* Some text.
-
-
-*Ampersand.*
-We can test Hennes & Mauritz, often abbreviated H&M, but written
-as `Hennes & Mauritz` and `H & M`.
-A sole `&` must also work.
-<!-- Note: substitutions must not occur inside verbatim, just in ordinary text. -->
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Just to check that ampersand works in code blocks:
-c = a & b
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-*Quotes.*
-Let us also add a test of quotes such as "double quotes, with numbers
-like 3.14 and newline/comma and hyphen (as in double-quote)"; written
-in the standard LaTeX-style that gives correct LaTeX formatting and
-ordinary double quotes for all non-LaTeX formats.  Here is another
-sentence that "caused" a bug in the past because double backtick
-quotes could imply verbatim text up to a verbatim word starting with
-period, like `.txt`.
-
-
-### Bibliography test
-
-Here is an example: [@Langtangen_Pedersen_2002] discussed propagation of
-large destructive water waves, [@Langtangen_et_al_2002] gave
-an overview of numerical methods for solving the Navier-Stokes equations,
-while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in [@Langtangen_1994a].
-The book chapter [@Mardal_et_al_2003a] contains information on
-C++ software tools for programming multigrid methods. A real retro
-reference is [@Langtangen_1988d] about a big FORTRAN package.
-Multiple references are also possible, e.g., see
-[@Langtangen_Pedersen_2002;@Mardal_et_al_2003a].
-
-We need to cite more than 10 papers to reproduce an old formatting
-problem with blanks in the keys in reST format:
-[@Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002]
-and
-[@Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95]
-and all the work of
-[@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004] as well as
-old work [@Langtangen_1988d] and [@Langtangen_1989e], and the
-talk [@Langtangen_talk_2007a].
-Langtangen also had two thesis [@Langtangen:85;@Langtangen_1989e].
-More retro citations are
-the old ME-IN323 book [@Langtangen:91] and the
-[@Langtangen:94b] OONSKI '94 paper.
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Example 1: Examples can be typeset as exercises
-<div id="Example"></div>
-
-Examples can start with a subsection heading starting with `Example:`
-and then, with the command-line option `--examples_as_exercises` be
-typeset as exercises. This is useful if one has solution
-environments as part of the example.
-
-
-*a)*
-State some problem.
-
-*Solution.*
-The answer to this subproblem can be written here.
-
-*b)*
-State some other problem.
-
-*Hint 1.*
-A hint can be given.
-
-*Hint 2.*
-Maybe even another hint?
-
-*Solution.*
-The answer to this other subproblem goes here,
-maybe over multiple doconce input lines.
-
-
-<!-- --- end exercise --- -->
-
-
-### URLs
-<div id="subsubsec:ex"></div>
-
-Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or
-the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a
-plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or
-<testdoc.do.txt> or <testdoc.do.txt> or [a link with
-newline](testdoc.do.txt). Can test spaces with the link with word
-too: [hpl](http://folk.uio.no/hpl) or [hpl](http://folk.uio.no/hpl). Also `file:///` works: [link to a
-file](file:///home/hpl/vc/doconce/doc/demos/manual/manual.html) is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
-the plain URL as in <http://folk.uio.no/hpl>, if followed by space, comma,
-colon, semi-colon, question mark, exclamation mark, but not a period
-(which gets confused with the periods inside the URL).
-
-Mail addresses can also be used: [`hpl@simula.no`](mailto:hpl@simula.no), or just a [mail link](mailto:hpl@simula.no), or a raw <mailto:hpl@simula.no>.
-
-Here are some tough tests of URLs, especially for the `latex` format:
-[Newton-Cotes](http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas) formulas
-and a [good book](http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1). Need to test
-Newton-Cotes with percentage in URL too:
-<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>
-and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.
-
-For the `--device=paper` option it is important to test that URLs with
-monospace font link text get a footnote
-(unless the `--latex_no_program_footnotelink`
-is used), as in this reference to
-[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),
-and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).
-
-
-<!-- Comments should be inserted outside paragraphs (because in the rst -->
-<!-- format extra blanks make a paragraph break). -->
-
-<!-- Note that when there is no http: or file:, it can be a file link -->
-<!-- if the link name is URL, url, "URL", or "url". Such files should, -->
-<!-- if rst output is desired, but placed in a `_static*` folder. -->
-
-More tough tests: repeated URLs whose footnotes when using the
-`--device=paper` option must be correct. We have
-[google](http://google.com), [google](http://google.com), and
-[google](http://google.com), which should result in exactly three
-footnotes.
-
-
-
-<!-- !split and check if these extra words are included properly in the comment -->
-
-## LaTeX Mathematics
-
-Here is an equation without label using backslash-bracket environment:
-$$
- a = b + c 
-$$
-or with number and label, as in \eqref{my:eq1}, using the equation environment:
-$$
-\begin{equation}
-{\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
-\end{equation}
-$$
-We can refer to this equation by \eqref{my:eq1}.
-
-Here is a system without equation numbers, using the align-asterisk environment:
-$$
-
-\pmb{a} = \pmb{q}\times\pmb{n} 
-
-$$
-
-$$
-  
-b = \nabla^2 u + \nabla^4 v
-
-$$
-
-
-And here is a system of equations with labels in an align environment:
-$$
-\begin{equation}
-a = q + 4 + 5+ 6 \label{eq1} 
-\end{equation}
-$$
-
-$$
-\begin{equation}  
-b = \nabla^2 u + \nabla^4 x \label{eq2}
-\end{equation}
-$$
-We can refer to \eqref{eq1}-\eqref{eq2}. They are a bit simpler than
-the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
-Also test $a_{i-j}$ as well as $kx-wt$.
-
-
-More mathematical typesetting is demonstrated in the coming exercises.
-
-Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 4: Compute a Probability](#demo:ex:2),
-as well as  [Project 5: Explore Distributions of Random Circles](#proj:circle1) and [Project 11: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you), and in
-between there we have  [Exercise 10: Make references to projects and problems](#exer:some:formula).
-
-
-## Exercises
-
-
-
-<!-- --- begin exercise --- -->
-
-### Problem 2: Flip a Coin
-<div id="demo:ex:1"></div>
-<!-- keywords = random numbers; Monte Carlo simulation -->
-
-<!-- Torture tests -->
-
-
-*a)*
-Make a program that simulates flipping a coin $N$ times.
-Print out "tail" or "head" for each flip and
-let the program count the number of heads.
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint 1.*
-Use `r = random.random()` and define head as `r <= 0.5`.
-
-<!-- --- end hint in exercise --- -->
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint 2.*
-Draw an integer among $\{1,2\}$ with
-`r = random.randint(1,2)` and define head when `r` is 1.
-
-<!-- --- end hint in exercise --- -->
-
-
-<!-- --- begin answer of exercise --- -->
-*Answer.*
-If the `random.random()` function returns a number $<1/2$, let it be
-head, otherwise tail. Repeat this $N$ number of times.
-
-<!-- --- end answer of exercise --- -->
-
-
-<!-- --- begin solution of exercise --- -->
-*Solution.*
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-import sys, random
-N = int(sys.argv[1])
-heads = 0
-for i in range(N):
-    r = random.random()
-    if r <= 0.5:
-        heads += 1
-print 'Flipping a coin %d times gave %d heads' % (N, heads)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- --- end solution of exercise --- -->
-
-*b)*
-Vectorize the code in a) using boolean indexing.
-
-Vectorized code can be written in many ways.
-Sometimes the code is less intuitive, sometimes not.
-
-*c)*
-Vectorize the code in a) using `numpy.sum`.
-
-
-<!-- --- begin answer of exercise --- -->
-*Answer.*
-`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
-
-<!-- --- end answer of exercise --- -->
-
-In this latter subexercise, we have an
-example where the code is easy to read.
-
-
-#### My remarks
-
-Remarks with such a subsubsection is treated as more text
-after the last subexercise. Test a list too:
-
-1. Mark 1.
-2. Mark 2.
-
-Filenames: `flip_coin.py`, `flip_coin.pdf`.
-
-<!-- Closing remarks for this Problem -->
-
-#### Remarks
-
-These are the exercise remarks, appearing at the very end.
-
-<!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->
-
-<!-- --- end exercise --- -->
-
-
-### Not an exercise
-
-Should be possible to stick a normal section in the middle of many
-exercises.
-
-
-
-<!-- --- begin exercise --- -->
-
-### Exercise 3: Test of plain text exercise
-<div id="my:exer1"></div>
-
-Very short exercise. What is the capital
-of Norway?
-Filename: `myexer1.py`.
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Project 4: Compute a Probability
-<div id="demo:ex:2"></div>
-
-<!-- Minimalistic exercise -->
-
-
-What is the probability of getting a number between 0.5 and 0.6 when
-drawing uniformly distributed random numbers from the interval $[0,1)$?
-
-
-At the end we have a list because that caused problems in LaTeX
-in previous DocOnce versions:
-
-1. item1
-2. item2
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint.*
-To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard `random` module,
-count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
-compute the probability as $M/N$.
-
-<!-- --- end hint in exercise --- -->
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Project 5: Explore Distributions of Random Circles
-<div id="proj:circle1"></div>
-
-The formula for a circle is given by
-
-$$
-\begin{equation}
-x = x_0 + R\cos 2\pi t,
-\end{equation}
-$$
-
-$$
-\begin{equation}  
-y = y_0 + R\sin 2\pi t,
-\end{equation}
-$$
-where $R$ is the radius of the circle, $(x_0,y_0)$ is the
-center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
-The formula can be used to generate `n` points on a circle:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-import numpy as np
-
-def circle(R, x0, y0, n=501):
-    t = np.linspace(0, 1, n)
-    x = x0 + R*np.cos(2*np.pi*t)
-    y = y0 + R*np.sin(2*np.pi*t)
-    return x, y
-
-x, y = circle(2.0, 0, 0)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- Often in an exercise we have some comments about the solution -->
-<!-- which we normally want to keep where they are. -->
-
-The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the `circle` function
-above.
-
-
-*a)*
-Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint.*
-Use the `numpy.random` module to draw the
-$x_0$, $y_0$, and $R$ quantities.
-
-<!-- --- end hint in exercise --- -->
-
-
-<!-- --- begin answer of exercise --- -->
-*Answer.*
-Here goes the short answer to part a).
-
-<!-- --- end answer of exercise --- -->
-
-
-<!-- --- begin solution of exercise --- -->
-*Solution.*
-Here goes a full solution to part a).
-
-<!-- --- end solution of exercise --- -->
-
-*b)*
-Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-Filename: `norm.py`.
-
-*c)*
-Let $R$ and $(x_0,y_0)$ be normally distributed.
-
-
-Filename: `circles.pdf`.
-
-<!-- Closing remarks for this Project -->
-
-#### Remarks
-
-At the very end of the exercise it may be appropriate to summarize
-and give some perspectives.
-
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Exercise 6: Determine some Distance
-<div id="exer:dist"></div>
-
-Intro to this exercise. Questions are in subexercises below.
-
-
-<!-- --- begin solution of exercise --- -->
-*Solution.*
-Here goes a full solution of the whole exercise.
-With some math $a=b$ in this solution:
-$$
- \hbox{math in solution: } a = b 
-$$
-And code `a=b` in this solution:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-a = b  # code in solution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-End of solution is here.
-
-<!-- --- end solution of exercise --- -->
-
-
-*a)*
-Subexercises are numbered a), b), etc.
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint 1.*
-First hint to subexercise a).
-With math $a=b$ in hint:
-
-$$
- a=b. 
-$$
-And with code (in plain verbatim) returning $x+1$ in hint:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-def func(x):
-    return x + 1  # with code in hint
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- --- end hint in exercise --- -->
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint 2.*
-Second hint to subexercise a).
-
-Test list in hint:
-
-1. item1
-2. item2
-
-<!-- --- end hint in exercise --- -->
-Filename: `subexer_a.pdf`.
-
-
-<!-- --- begin answer of exercise --- -->
-*Answer.*
-Short answer to subexercise a).
-With math in answer: $a=b$.
-
-<!-- --- end answer of exercise --- -->
-
-*b)*
-Here goes the text for subexercise b).
-
-
-Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
-
-$$
- \cos^2 x + \sin^2 x = 1 \thinspace .
-$$
-
-<!-- --- begin hint in exercise --- -->
-
-*Hint.*
-A hint for this subexercise.
-
-<!-- --- end hint in exercise --- -->
-Filename: `subexer_b.pdf`.
-
-
-<!-- --- begin solution of exercise --- -->
-*Solution.*
-Here goes the solution of this subexercise.
-
-<!-- --- end solution of exercise --- -->
-
-
-
-<!-- No meaning in this weired test example: -->
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-2. item2
-<!-- Closing remarks for this Exercise -->
-
-#### Remarks
-
-Some final closing remarks, e.g., summarizing the main findings
-and their implications in other problems can be made. These
-remarks will appear at the end of the typeset exercise.
-
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Some exercise without the "Exercise:" prefix
-
-<!-- Another minimalistic exercise -->
-
-Just some text. And some math saying that $e^0=1$ on a single line,
-to test that math block insertion is correct:
-
-$$
- \exp{(0)} = 1 
-$$
-
-And a test that the code `lambda x: x+2` is correctly placed here:
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-lambda x: x+2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-<!-- the Filename: ... is written correctly. -->
-<!-- Have some comments at the end of the exercise to see that -->
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Exercise 8: Solution of differential equation
-<div id="sec:this:exer:de"></div>
-
-*Cannot typeset quiz*: "Given
-
-$$
- \frac{dy}{dx} = -y(x),\quad y(0)=1 
-$$
-What is the solution of this equation?"
-<!-- --- end explanation of choice 5 --- -->
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Example 9: Just an example
-
-<!-- This example needs the --examples_as_exercises option, otherwise -->
-<!-- it is just typeset as it is written. -->
-
-
-*a)*
-What is the capital of Norway?
-
-*Answer.*
-Oslo.
-
-<!-- --- end exercise --- -->
-
-
-## Here goes another section
-
-With some text, before we continue with exercises.
-
-## More Exercises
-
-
-
-<!-- --- begin exercise --- -->
-
-### Exercise 10: Make references to projects and problems
-<div id="exer:some:formula"></div>
-
-<!-- Test comments not at the end only -->
-Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)
-and verify it.
-
-Test list at the end of an exercise without other elements (like subexercise,
-hint, etc.):
-
-1. item1
-2. item2
-
-Filename: `verify_formula.py`.
-
-<!-- --- end exercise --- -->
-
-
-
-
-<!-- --- begin exercise --- -->
-
-### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for pandoc
-<div id="exer:you"></div>
-
-Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),
-the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),
-and this one as  [Project 11: References to Project ref{demo:ex:2} in a heading works for pandoc](#exer:you).
-Filename: `selc_composed.pdf`.
-
-<!-- --- end exercise --- -->
-
-
-## References
-
- 1. <div id="Langtangen_Pedersen_2002"></div> **H. P. Langtangen and G. Pedersen**. 
-    Propagation of Large Destructive Waves,
-    *International Journal of Applied Mechanics and Engineering*,
-    7(1),
-    pp. 187-204,
-    2002.
- 2. <div id="Langtangen_et_al_2002"></div> **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
-    Numerical Methods for Incompressible Viscous Flow,
-    *Advances in Water Resources*,
-    25,
-    pp. 1125-1146,
-    2002.
- 3. <div id="Langtangen_1994a"></div> **H. P. Langtangen**. 
-    Numerical Solution of First Passage Problems in Random Vibrations,
-    *SIAM Journal of Scientific and Statistical Computing*,
-    15,
-    pp. 997-996,
-    1994.
- 4. <div id="Mardal_et_al_2003a"></div> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
-    Software Tools for Multigrid Methods,
-    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
-    edited by **H. P. Langtangen and A. Tveito**,
-    Springer,
-    2003.
- 5. <div id="Langtangen_1988d"></div> **H. P. Langtangen**. 
-    The FEMDEQS Program System,
-    *Department of Mathematics, University of Oslo*,
-    1989.
- 6. <div id="Langtangen_1992c"></div> **H. P. Langtangen**. 
-    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
-    *SIAM Journal on Scientific Computing*,
-    13,
-    pp. 1394-1417,
-    1992.
- 7. <div id="Mortensen_et_al_2011"></div> **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
-    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
-    *Advances in Water Resources*,
-    34(9),
-    [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
-    2011.
- 8. <div id="Glimsdal_et_al_20006"></div> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
-    Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
-    *International Journal of Fluid Mechanics Research*,
-    33(1),
-    pp. 15-43,
-    2006.
- 9. <div id="Rahman_et_al_2006b"></div> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
-    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
-    *Physical Review B: Condensed Matter and Materials Physics*,
-    74,
-    2006.
-10. <div id="Haga_et_al_2011a"></div> **J. B. Haga, H. Osnes and H. P. Langtangen**. 
-    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
-    *International Journal of Analytical and Numerical Methods in Geomechanics*,
-    [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
-    2011,
-    <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
-11. <div id="Langtangen_2003a"></div> **H. P. Langtangen**. 
-    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
-    Springer,
-    2003.
-12. <div id="Langtangen_2008a"></div> **H. P. Langtangen**. 
-    *Python Scripting for Computational Science*,
-    Springer,
-    2008.
-13. <div id="Langtangen:95"></div> **H. P. Langtangen and G. Pedersen**. 
-    Finite Elements for the Boussinesq Wave Equations,
-    Waves and Non-linear Processes in Hydrodynamics,
-    edited by **J. Grue, B. Gjevik and J. E. Weber**,
-    Kluwer Academic Publishers,
-    pp. pp. 117-126,
-    1995,
-    <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
-14. <div id="Langtangen_2012"></div> **H. P. Langtangen**. 
-    *A Primer on Scientific Programming With Python*,
-    Springer,
-    2012.
-15. <div id="Jeberg_et_al_2004"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
-    Optimization With Diffpack: Practical Example From Welding,
-    *Simula Research Laboratory*,
-    2004.
-16. <div id="Langtangen_1989e"></div> **H. P. Langtangen**. 
-    Computational Methods for Two-Phase Flow in Oil Reservoirs,
-    Ph.D. Thesis,
-    Mechanics Division, Department of Mathematics, University of Oslo,
-    1989.
-17. <div id="Langtangen_talk_2007a"></div> **H. P. Langtangen**. 
-    Computational Modeling of Huge Tsunamis From Asteroid Impacts,
-    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
-    2007.
-18. <div id="Langtangen:85"></div> **H. P. Langtangen**. 
-    Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
-    M.Sc. Thesis,
-    Mechanics Division, Department of Mathematics, University of Oslo,
-    1985.
-19. <div id="Langtangen:91"></div> **H. P. Langtangen and A. Tveito**. 
-    Numerical Methods in Continuum Mechanics,
-    *Center for Industrial Research*,
-    1991.
-20. <div id="Langtangen:94b"></div> **H. P. Langtangen**. 
-    Diffpack: Software for Partial Differential Equations,
-    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
-    edited by **A. Vermeulen**,
-    1994.
-
-## Appendix: Just for testing; part I
-<div id="app1"></div>
-
-This is the first appendix.
-
-### A subsection within an appendix
-
-Some text.
-
-## Appendix: Just for testing; part II
-<div id="app2"></div>
-
-This is more stuff for an appendix.
-
-### Appendix: Testing identical titles
-
-Without label.
-
-
-### Appendix: Testing identical titles
-<div id="test:title:id1"></div>
-
-With label.
-
-### Appendix: Testing identical titles
-<div id="test:title:id2"></div>
-
-What about inserting a quiz?
-
-*Cannot typeset quiz*: "What is the capital of Norway?"
-
-
-### Appendix: Testing identical titles
-
-Without label.
-
-*Tip.* 
-Here is a tip or hint box, typeset as a notice box.
-
-
-
-
-
-Need a lot of text to surround the summary box.
-Version control systems allow you to record the history of files
-and share files among several computers and collaborators in a
-professional way. File changes on one computer are updated or
-merged with changes on another computer. Especially when working
-with programs or technical reports it is essential
-to have changes documented and to
-ensure that every computer and person involved in the project
-have the latest updates of the files.
-Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly
-from using version control systems.
-
-*Summary.* 
-**Bold remark:** Make some text with this summary.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-
-
-
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
-
-The simplest services for hosting project files are [Dropbox](http://dropbox.com) and [Google Drive](http://drive.google.com).
-It is very easy to get started with these systems, and they allow you
-to share files among laptops and mobile units with as many users as
-you want. The systems offer a kind of version control in that the
-files are stored frequently (several times per minute), and you can go
-back to previous versions for the last 30 days. However, it is
-challenging  to find the right version from the past when there are
-so many of them.
-
-More seriously, when several people may edit files simultaneously, it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools than Dropbox or
-Google Drive: project hosting services with true version control
-systems.  The following text aims at providing you with the minimum
-information to started with such systems. Numerous other tutorials
-contain more comprehensive material and in-depth explanations of the
-concepts and tools.
-
-The idea with project hosting services is that you have the files
-associated with a project in the cloud. Many people may share these
-files.  Every time you want to work on the project you explicitly
-update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to a
-version of the files at some particular point in the past,
-this is an easy operation. You can also use tools to see
-what various people have done with the files in the various versions.
-
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three. All the project hosting services have
-excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know steps.
-The Git tutorials we refer to later in this document contain more
-detailed information and constitute of course very valuable readings
-when you use version control systems every day. The point now is
-to get started.
-
-
-### Appendix: Testing inline comments
-
-<!-- Names can be [ A-Za-z0-9_'+-]+ -->
-
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that
-site. [hpl's semi opinion 1: not sure if in the cloud is
-understood by
-all.] I strongly recommend you to use such sites for all serious
-programming and scientific writing work - and all other important
-files.
-
-The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <http://dropbox.com> and watch the video. It explains
-how files, like `myfile.py`, perhaps containing much math, like
-$\partial u/\partial t$, are easily communicated between machines.] It
-is very easy to get started with Dropbox, and it allows you to share
-files among [hpl 3: laptops and mobile units -> computers, tablets,
-and phones].
-
-<!-- Test horizontal rule -->
-
-------
-
-<!-- Coments for editing -->
-
-First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
-$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities
-are] [del 8: just] negative. [add 9: This comes as no surprise.]
-
-### Appendix: Testing headings ending with `verbatim inline`
-
-The point here is to test 1) `verbatim` code in headings, and 2)
-ending a heading with verbatim code as this triggers a special
-case in LaTeX.
-
-We also test mdash---used as alternative to hyphen without spaces around,
-or in quotes:
-
-> *Fun is fun.*--- Unknown.
-
-
-
-And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: `admon.do.txt`.
-
-[^example-of-the-third-footnote]: Not much to add here, but the footnote
-is at the end with only one newline.
-
 ************** File: html_template.do.txt *****************
 DATE: today
 
@@ -38803,6 +39425,10 @@ system doconce split_html testdoc.html --nav_button=gray2,bottom
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
+
+system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+cp testdoc.tex testdoc.tex_direct
+
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
@@ -70782,7 +71408,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7febd4b10320>
+verbatim is to be replaced using <function html_verbatim at 0x7f612fdc8320>
 
 
 First occurence: " `mako`."
@@ -74751,7 +75377,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Feb  1 09:54:57 2015.
+# sphinx-quickstart on Mon Feb  2 00:34:02 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -91497,6 +92123,70 @@ figure file ../doc/src/manual/fig/wave1D:
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
++ system doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]'
++ doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]'
+
+Summary of papers
+-----------------
+
+Articles in International Journals: 8
+Books:                              3
+Edited Books:                       0
+Chapters in Books:                  1
+Refereed Proceedings:               0
+Conference Proceedings:             2
+Technical Reports:                  4
+Manuals:                            0
+Theses:                             2
+Courses:                            0
+Talks:                              0
+Posters:                            0
+Public Outreach:                    0
+Preprints:                          0
+Other Publications:                 1
+Total:                              21
+
+Exported 21 paper(s) to papers.bib.
+running preprocess -DFORMAT=pdflatex -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
+running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
+translating doconce text in tmp_mako__testdoc.do.txt to pdflatex
+
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
+
+ A long
+caption spanning
+several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
+as well as math with subscript as in $t_{i+1}$. label{myfig}
+
+    fix: collected this text to one single line (right?)
+
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
+
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
+copying from regex "subroutine" until end of file
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
+copying after regex "a comment" until "^C\s+END1"
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+found info about 11 exercises
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
+
+exporting publish database papers.pub to papers.bib:
+output in testdoc.tex
++ '[' 0 -ne 0 ']'
++ cp testdoc.tex testdoc.tex_direct
 + system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 + doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 
