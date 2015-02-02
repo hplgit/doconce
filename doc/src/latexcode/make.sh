@@ -17,19 +17,19 @@ doconce format pdflatex doc --latex_code_style=lst
 pdflatex doc
 cp doc.pdf doc_lst.pdf
 
-doconce format pdflatex doc --latex_code_style=lst-fenicsbook
+doconce format pdflatex doc --latex_code_style=lst-yellow2
 pdflatex doc
-cp doc.pdf doc_lst_fenicsyellow.pdf
+cp doc.pdf doc_lst_yellow2.pdf
 
-doconce format pdflatex doc "--latex_code_style=lst-fenicsbook[numbers=left,numberstyle=\\tiny,numbersep=15pt]"
+doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt]"
 pdflatex doc
-cp doc.pdf doc_lst_fenicsyellow_linenos.pdf
+cp doc.pdf doc_lst_yellow2_linenos.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:lst-fenicsbook@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+doconce format pdflatex doc "--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 pdflatex doc
 cp doc.pdf doc_lst_sys.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:lst[style=fenicsbook]"
+doconce format pdflatex doc "--latex_code_style=default:lst[style=yellow2_fb]"
 pdflatex doc
 cp doc.pdf doc_lst_stylefb.pdf
 

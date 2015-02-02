@@ -231,7 +231,7 @@ def latex_code_lstlisting():
 }
 
 % Use this one without additional background color
-\lstdefinestyle{fenicsbook}{
+\lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
 tab=,
 tabsize=2,                           % tab means 2 spaces
 basicstyle=\ttfamily\footnotesize,   % fonts used for the code
@@ -247,12 +247,34 @@ xleftmargin=5pt,
 xrightmargin=5pt,
 %numbers=left,                       % put line numbers on the left
 %stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
-keywordstyle=\color{keywordcolour}\bfseries,
-commentstyle=\color{commentcolour}\slshape,
-stringstyle=\color{darkgreen},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
 identifierstyle=\color{darkorange},
 columns=fullflexible,  % tighter character kerning, like verb
-%backgroundcolor=\color{yellow!10},
+}
+
+\lstdefinestyle{gray}{
+tab=,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black!40},          % frame color
+backgroundcolor=\color{gray},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{keyword_pink}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
 }
 
 """
@@ -2601,35 +2623,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
 
-\colorlet{commentcolour}{green!50!black}
-\colorlet{stringcolour}{red!60!black}
-\colorlet{keywordcolour}{magenta!90!black}
-\colorlet{exceptioncolour}{yellow!50!red}
-\colorlet{commandcolour}{blue!60!black}
-\colorlet{numpycolour}{blue!60!green}
-\colorlet{literatecolour}{magenta!90!black}
-\colorlet{promptcolour}{green!50!black}
-\colorlet{specmethodcolour}{violet}
-\colorlet{indendifiercolour}{green!70!white}
-
-% Backgrounds for code
-\definecolor{cbg_gray}{rgb}{.95, .95, .95}
-\definecolor{bar_gray}{rgb}{.92, .92, .92}
-
-\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
-\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
-
-\colorlet{cbg_fenicsbook}{yellow!10}
-\colorlet{bar_fenicsbook}{yellow!20}
-
-\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
-\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
-
-\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
-\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
-
-\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
-\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{indendifier_green}{green!70!white}
 
 % New ansi colors
 \definecolor{brown}{rgb}{0.54,0.27,0.07}
@@ -2640,6 +2637,25 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
 \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
 \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
 
 % Background for code blocks (parameter is color name)
 \newenvironment{cod}[1]{%

@@ -111,7 +111,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 1, 2015</h4></center> <!-- date -->
+<center><h4>Feb 2, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
@@ -202,7 +202,7 @@ a data file with the code environment <code>dat</code>, a complete executable
 Python program in the code environment <code>pypro</code>, and a terminal session
 in the code environment <code>sys</code>. The result of
 <code>--latex_code_style=vrb</code> gives the most plain and standard way of
-typesetting verbatim code blocks in LaTeX, see <a href="doc_1.pdf" target="_self">the result</a>.
+typesetting verbatim code blocks in LaTeX, see <a href="doc_vrb.pdf" target="_self">the result</a>.
 Or more precisely, DocOnce generates a <code>Verbatim</code> environment with
 several parameters set:
 
@@ -311,10 +311,10 @@ in DocOnce:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex doc --latex_code_style=lst-fenicsbook
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex doc --latex_code_style=lst-yellow2
 </pre></div>
 <p>
-The <code>fenicsbook</code> background is <a href="doc_lst_fenicsyellow.pdf" target="_self">light yellow</a>.
+The <code>yellow2</code> background is <a href="doc_lst_yellow2.pdf" target="_self">light yellow</a>.
 For colored backgrounds, one should notice that the <code>pro</code> code environments
 (as in <code>pypro</code>)
 for complete executable programs get a 1mm slightly darker bar at the left
@@ -331,8 +331,8 @@ is the DocOnce name of a background:
 <ul>
  <li> <code>gray</code>: light gray</li>
  <li> <code>yellowgray</code>: light yellow, somewhat gray-ish</li>
- <li> <code>fenicsbook</code>: light yellow</li>
  <li> <code>yellow1</code>: yellow</li>
+ <li> <code>yellow2</code>: light yellow</li>
  <li> <code>blue1</code>: light blue</li>
  <li> <code>red1</code>: light red, somewhat apricot-ish</li>
  <li> <code>white</code>: no background</li>
@@ -368,10 +368,10 @@ other LaTeX environments:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-fenicsbook[numbers=left,numberstyle=\\tiny,numbersep=15pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt]&quot;
 </pre></div>
 <p>
-These parameters specifies <a href="doc_lst_fenicsbook_linenos.pdf" target="_self">line numbers in the code blocks</a>. <em>Note that any backslash in LaTeX command must be a
+These parameters specifies <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a>. <em>Note that any backslash in LaTeX command must be a
 double backslash</em> on the command line!
 
 <h2 id="___sec8">Specifying individual code environments </h2>
@@ -387,7 +387,7 @@ other code environments:
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
-          &quot;--latex_code_style=default:lst-fenicsbook@sys:vrb&quot;
+          &quot;--latex_code_style=default:lst-yellow2@sys:vrb&quot;
 </pre></div>
 <p>
 That is, we specify  the default choice (<code>default</code>) and the <code>sys</code>
@@ -398,7 +398,7 @@ add parameters to the LaTeX environments, e.g.,
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
-  &quot;--latex_code_style=default:lst-fenicsbook[numbers=left]@sys:vrb&quot;
+  &quot;--latex_code_style=default:lst-yellow2[numbers=left]@sys:vrb&quot;
 </pre></div>
 <p>
 Here is a more fancy typesetting of <code>sys</code> environments with lines
@@ -407,7 +407,7 @@ above and below and a title <code>Terminal</code> inside a box:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=default:lst-fenicsbook@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
 </pre></div>
 <p>
 <a href="doc_lst_sys.pdf" target="_self">Here is the result</a>.
@@ -422,25 +422,31 @@ environment:
  <li> <code>simple</code> for no coloring of code (but comments are typeset
    with italic font)</li>
  <li> <code>redblue</code> for coloring of code dominated by red and blue</li>
- <li> <code>fenicsbook</code> for a coloring that matches the previously
-   shown <code>fenicsbook</code> background (but the background is included in the
-   style, so do not also specify the <code>fenicsbook</code> background!).</li>
+ <li> <code>yellow2_fb</code> for a coloring (from the FEniCS book)
+   that matches the previously
+   shown <code>yellow2</code> background</li>
+ <li> <code>gray</code> for a gray background (green comments, pink keywords, red strings)</li>
 </ul>
 
+The styles with a colored background (<code>yellow2_fb</code> and <code>gray</code>)
+should of course not be combined with another colored background
+(skip background specification or set it to <code>white</code>).
+
+<p>
 The user can also define any number of additional styles and put them
 in a file, say <code>.mylststyles</code>, and give them to <code>doconce format</code> through
 the command-line option <code>--latex_code_lststyles=.mylststyles</code>.
 Just include <code>\lstdefinestyle{name}{...}</code> commands in the file.
 
 <p>
-Here is an example of specifying the <code>fenicsbook</code> style with yellow
+Here is an example of specifying the <code>yellow2_fb</code> style with yellow
 background, coloring of code, and a frame around all code blocks:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
-  &quot;--latex_code_style=default:lst[style=fenicsbook]&quot;
+  &quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
 </pre></div>
 <p>
 You may check out the <a href="doc_lst_stylefb.pdf" target="_self">corresponding result</a>.
