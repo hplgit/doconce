@@ -7,6 +7,8 @@ here.
 import re, sys, urllib, os
 from misc import option, _abort
 
+format = None   # latex, pdflatex, html, plain, etc
+
 # Identifiers in the text used to identify code and math blocks
 _CODE_BLOCK = '<<<!!CODE_BLOCK'
 _MATH_BLOCK = '<<<!!MATH_BLOCK'
