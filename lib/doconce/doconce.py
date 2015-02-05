@@ -3962,6 +3962,8 @@ def format_driver():
         format = sys.argv[1]
         filename = sys.argv[2]
         del sys.argv[1:3]
+        import common
+        common.format = format
     except IndexError:
         from misc import get_legal_command_line_options
         options = ' '.join(get_legal_command_line_options())

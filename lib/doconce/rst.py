@@ -649,9 +649,11 @@ def define(FILENAME_EXTENSION,
 
 """
         if 'TITLE:' not in filestr:
-            print '*** error: non-breaking space character ~ is used,'
-            print '    but this will give an error when the document does'
-            print '    not have a title.'
-            _abort()
+            import common
+            if common.format in ('rst', 'sphinx'):
+                print '*** error: non-breaking space character ~ is used,'
+                print '    but this will give an error when the document does'
+                print '    not have a title.'
+                _abort()
         else:
             INTRO['rst'] += nbsp
