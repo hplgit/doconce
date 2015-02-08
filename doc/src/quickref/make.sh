@@ -50,7 +50,7 @@ system doconce format mwiki quickref --no_preprocess
 system doconce format cwiki quickref --no_preprocess
 system doconce format st quickref --no_preprocess
 system doconce format epytext quickref --no_preprocess
-system doconce format pandoc quickref --no_preprocess
+system doconce format pandoc quickref --no_preprocess --strict_markdown_output --github_md
 
 rm -rf demo
 mkdir demo

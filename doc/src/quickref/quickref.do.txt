@@ -730,9 +730,8 @@ label{name}
 !ec
 with no backslash
 preceding the label keyword. It is common practice to choose `name`
-as some hierarchical name, say `a:b:c`, where `a` and `b` indicate
-some abbreviations for a section and/or subsection for the topic and
-`c` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like `:` or `_` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label `name` is written as
 !bc
