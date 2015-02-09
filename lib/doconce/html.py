@@ -987,6 +987,21 @@ def html_code(filestr, code_blocks, code_block_types,
         print '    template from bundled/html_styles/style_vagrant'
         html_style == 'bootstrap'
 
+    # Make toc for navigation
+    toc_html = ''
+    if html_style == 'bootstrap':
+        toc_html = toc2html(bootstrap=True)
+    elif html_style in ('solarized',):
+        toc_html = toc2html(bootstrap=False)
+    # toc_html lacks formatting, run some basic formatting here
+    tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
+    # drop URLs in headings?
+    import common
+    for tag in tags:
+        toc_html = re.sub(common.INLINE_TAGS[tag],
+                          common.INLINE_TAGS_SUBST[format][tag],
+                          toc_html)
+
     if template:
         title = ''
         date = ''
@@ -1030,20 +1045,6 @@ def html_code(filestr, code_blocks, code_block_types,
             # remove date since date is in template
             filestr = re.sub(pattern, '', filestr)
 
-        # Make toc for navigation
-        toc_html = ''
-        if html_style == 'bootstrap':
-            toc_html = toc2html(bootstrap=True)
-        elif html_style in ('solarized',):
-            toc_html = toc2html(bootstrap=False)
-        # toc_html lacks formatting, run some basic formatting here
-        tags = 'emphasize', 'bold', 'math', 'verbatim', 'colortext'
-        # drop URLs in headings?
-        import common
-        for tag in tags:
-            toc_html = re.sub(common.INLINE_TAGS[tag],
-                              common.INLINE_TAGS_SUBST[format][tag],
-                              toc_html)
         # Load template file
         try:
             f = open(template, 'r'); template = f.read(); f.close()
@@ -1099,7 +1100,7 @@ def html_code(filestr, code_blocks, code_block_types,
     if html_style.startswith('boots'):
         # Insert toc
         if '***TABLE_OF_CONTENTS***' in filestr:
-            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc2html())
+            filestr = filestr.replace('***TABLE_OF_CONTENTS***', toc_html)
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
