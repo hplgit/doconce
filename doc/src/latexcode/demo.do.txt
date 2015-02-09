@@ -8,7 +8,8 @@ code for verbatim blocks of computer code. These new capabilities
 replaces the need for both the stand-alone program `ptex2tex` and
 the simplified `doconce ptex2tex` utility. In fact, the
 new capabilities are more flexible than `ptex2tex` and results in
-much cleaner code.
+much cleaner LaTeX code (especially for verbatim blocks with
+background color).
 
 ======= Blocks of computer code in LaTeX =======
 

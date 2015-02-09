@@ -16,6 +16,10 @@ formats you want to work with. On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. See the [Installation Guide](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies) for
 details. Basically, you can run a [Bash script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh).
 
+*Install from GitHub repo, not from binary packages.*
+If you rely on the Debian package on Linux systems (`sudo apt-get install python-doconce`), note that this version of DocOnce is old and out of sync with the documentation.
+
+
 
 ### Document once, include anywhere
 
@@ -66,6 +70,7 @@ DocOnce has support for HTML documents with design and functionality
 based on Bootstrap styles.  A [demo](http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html)
 illustrates the many possibilities for colors and layouts.
 
+
 A [complete book](http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_1?s=books&ie=UTF8&qid=1419162166&sr=1-1&keywords=langtangen)
 (900 pages) has been written entirely in DocOnce. The primary format
 is a publisher-specific LaTeX style, but HTML or Sphinx formats can
@@ -113,3 +118,4 @@ index entries, figures, tables, and admonitions).
 ### License
 
 DocOnce is licensed under the BSD license, see the included LICENSE file.
+

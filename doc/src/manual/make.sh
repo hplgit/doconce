@@ -75,7 +75,7 @@ latex manual.rst.tex
 dvipdf manual.rst.dvi
 
 system doconce format plain manual.do.txt --skip_inline_comments --no_mako
-system doconce format pandoc manual.do.txt --no_mako
+system doconce format pandoc manual.do.txt --no_mako --strict_markdown_output --github_md
 system doconce format epytext manual.do.txt --no_mako
 
 # doconce latex:

@@ -16,6 +16,9 @@ formats you want to work with. On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. See the "Installation Guide": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies" for
 details. Basically, you can run a "Bash script": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh".
 
+!bwarning Install from GitHub repo, not from binary packages
+If you rely on the Debian package on Linux systems (`sudo apt-get install python-doconce`), note that this version of DocOnce is old and out of sync with the documentation.
+!ewarning
 
 ===== Document once, include anywhere =====
 

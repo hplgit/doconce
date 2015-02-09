@@ -56,7 +56,7 @@ system doconce format cwiki tutorial.do.txt
 system doconce format mwiki tutorial.do.txt
 system doconce format st tutorial.do.txt
 system doconce format epytext tutorial.do.txt
-system doconce format pandoc tutorial.do.txt
+system doconce format pandoc tutorial.do.txt --strict_markdown_output --github_md
 
 # Make PDF of most of the above:
 #a2ps_plain='a2ps --left_title='\'''\'' --right_title='\'''\'' --left_footer='\'''\'' --right_footer='\'''\'' --footer='\'''\'''
