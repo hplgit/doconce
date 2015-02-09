@@ -989,7 +989,7 @@ def html_code(filestr, code_blocks, code_block_types,
 
     # Make toc for navigation
     toc_html = ''
-    if html_style == 'bootstrap':
+    if html_style.startswith('boots'):
         toc_html = toc2html(bootstrap=True)
     elif html_style in ('solarized',):
         toc_html = toc2html(bootstrap=False)
