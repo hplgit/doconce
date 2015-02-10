@@ -45,6 +45,7 @@ def pandoc_title(m):
     elif option('multimarkdown_output'):
         return 'Title: ' + title
     else:
+        # pandoc-extended markdown syntax
         return '% ' + title
 
 def pandoc_author(authors_and_institutions, auth2index,
@@ -70,8 +71,21 @@ def pandoc_author(authors_and_institutions, auth2index,
     elif option('multimarkdown_output'):
         return 'Author: ' + ', '.join(authors) + '\n'
     else:
+        # pandoc-extended markdown syntax
         return '% ' + ';  '.join(authors) + '\n'
 
+
+def pandoc_date(m):
+    date = m.group('date')
+    if option('strapdown'):
+        return '#### Date: ' + date
+    elif option('strict_markdown_output'):
+        return '#### Date: ' + date
+    elif option('multimarkdown_output'):
+        return 'Date: ' + date + '\n'
+    else:
+        # pandoc-extended markdown syntax
+        return '% ' + date + '\n'
 
 def pandoc_code(filestr, code_blocks, code_block_types,
                 tex_blocks, format):
@@ -383,7 +397,7 @@ def define(FILENAME_EXTENSION,
         # "Reference links" in pandoc are not yet supported
         'title':     pandoc_title,
         'author':    pandoc_author,
-        'date':      '% \g<subst>\n',
+        'date':      pandoc_date,
         'chapter':       lambda m: '# '    + m.group('subst'),
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),

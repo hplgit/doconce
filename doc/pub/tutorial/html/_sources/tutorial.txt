@@ -7,7 +7,7 @@ DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Feb 1, 2015
+:Date: Feb 10, 2015
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -46,7 +46,7 @@ Some DocOnce Features
 
    * `Sphinx HTML documents with 20+ different designs <http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html>`__
 
-   * `Plain HTML <http://hplgit.github.com/teamods/writing_reports/_static/report.html>`__ or with a `template <http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html>`__ or `another template <http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html>`__ or `solarized <http://hplgit.github.com/teamods/writing_reports/_static/report_solarized.html>`__
+   * `Plain HTML <http://hplgit.github.com/teamods/writing_reports/_static/report.html>`__, `Boostrap HTML <http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_bluegray.html>`__, or with a `template <http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html>`__, or with `another template <http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html>`__, or `solarized <http://hplgit.github.com/teamods/writing_reports/_static/report_solarized3_light.html>`__
 
    * HTML for `Google <http://doconce-report-demo.blogspot.no/>`__ or `Wordpress <http://doconcereportdemo.wordpress.com/>`__ blog posts
 
