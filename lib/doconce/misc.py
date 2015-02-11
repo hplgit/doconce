@@ -8343,17 +8343,19 @@ def pygmentize():
 
 def _usage_makefile():
     print 'Usage:   doconce makefile doconce-file [html pdflatex latex sphinx gwiki pandoc ipynb deck reveal beamer ...]'
-    print 'Example: doconce makefile main_wave.do.txt html sphinx'
+    print 'Example: doconce makefile mydoc.do.txt html sphinx'
     print """
-A script make.sh is generated with the basic steps for running a
-spellcheck on .do.txt files followed by commands for producing html,
-pdflatex, latex, and/or a sphinx document depending on which of these
-name that appear on the command line. If no formats are specified on
-the command line, html, pdflatex, and sphinx are produced.
+A script make.py is generated with the basic steps for running a
+spellcheck on .do.txt files followed by commands for producing
+output in various formats (in the sequence specified on the command
+line). If no formats are specified, html, pdflatex, and sphinx are
+produced.
 
-Some extra lines added that exemplify typical options can be used
-to the various commands (HTML styles, latex/pdflatex paper size
-and font, extra info about sphinx theme, authors, version, etc.).
+make.py is a template: edit to set the desired options for compiling
+to the various formats.
+
+make.py autogenerates a unix shell script with all commands: you may
+use this shell script instead of make.py.
 """
 
 def makefile():
@@ -8381,7 +8383,7 @@ def makefile():
 """
 Automatically generated file for compiling doconce documents.
 """
-import sys, glob, os, shutil
+import sys, glob, os, shutil, subprocess
 
 logfile = 'tmp_output.log'  # store all output of all operating system commands
 f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
@@ -8389,13 +8391,26 @@ f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
 unix_command_recorder = []
 
 def system(cmd):
-    """Run system command cmd."""
+    """Run system command cmd using the simple os.system command."""
+    print cmd
+    failure = os.system(cmd)
+    if failure:
+        print """Command
+  %s
+failed""" % cmd
+        sys.exit(1)
+    unix_command_recorder.append(cmd)  # record command for bash script
+
+def system(cmd):
+    """Run system command cmd using subprocess module."""
     print cmd
     try:
         output = subprocess.check_output(cmd, shell=True,
                                          stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
-        print 'Command\n  %%s\nfailed.' %% cmd
+        print """Command
+  %s
+failed""" % cmd
         print 'Return code:', e.returncode
         print e.output
         sys.exit(1)
@@ -8411,23 +8426,24 @@ def spellcheck():
 
 def latex(name,
           latex_program='pdflatex',    # or 'latex'
-          options='',
-          ptex2tex_program='doconce',  # or 'ptex2tex' (with .ptex2tex.cfg file)
-          ptex2tex_options='',
-          ptex2tex_envir='minted',
+          options='--latex_code_style=vrb',
+          ptex2tex='',
           version='paper',             # or 'screen', '2up', 'A4', 'A4-2up'
           postfix='',                  # or 'auto'
           ):
     """
-    Make latex/pdflatex (according to `latex_program`) PDF file from
-    the doconce file `name` (without any .do.txt extension).
+    Make latex/pdflatex (according to latex_program) PDF file from
+    the doconce file name (without any .do.txt extension).
 
-    version:
-      * paper: normal page size, ``--device=paper``
-      * 2up: normal page size, ``--device=paper``, 2 pages per sheet
-      * A4: A4 page size, ``--device=paper``
-      * A4-2up: A4 page size, ``--device=paper``, 2 pages per sheet
-      * screen: normal pages size, ``--device=screen``
+    version can take the following values:
+      * paper: normal page size, --device=paper
+      * 2up: normal page size, --device=paper, 2 pages per sheet
+      * A4: A4 page size, --device=paper
+      * A4-2up: A4 page size, --device=paper, 2 pages per sheet
+      * screen: normal pages size, --device=screen
+
+    If a separate ptex2tex step is wanted, fill in all necessary
+    commands in the ptex2tex string.
     """
     if name.endswith('.do.txt'):
         name = name.replace('.do.txt', '')
@@ -8435,12 +8451,12 @@ def latex(name,
 
     if version in ('paper', 'A4', '2up', 'A4-2up'):
         if not '--device=paper' in options:
-            options.append('--device=paper')
-    elif version == 'screen" and '--device=paper' in options:
-        options.remove('--device=paper')
+            options += ' --device=paper'
+    elif version == 'screen' and '--device=paper' in options:
+        options = options.replace('--device=paper', '')
     if version in ('A4', 'A4-2up'):
-        if not '-DA4PAPER' in ptex2tex_options:
-            ptex2tex_options.append('-DA4PAPER')
+        if not '--latex_papersize=a4' in options:
+            options += ' --latex_papersize=a4'
     if postfix == 'auto':
         if version == 'paper':
             postfix = '4print'
@@ -8450,23 +8466,26 @@ def latex(name,
             postfix = version
 
     # Compile source
-    cmd = 'doconce format %(latex_program)ss %(name)s %(options)s ' % vars()
+    cmd = 'doconce format %(latex_program)s %(name)s %(options)s ' % vars()
     system(cmd)
 
-    # Transform .p.tex to .tex
-    if ptex2tex_program == 'doconce':
-        cmd = 'doconce ptex2tex %(name) %(ptex2tex_options)s envir="%(ptex2tex_envir)s"' % vars()
-    else:
-        cmd = 'ptex2tex %(ptex2tex_options)s %(name)' % vars()
-    system(cmd)
+    # Transform .p.tex to .tex?
+    if ptex2tex:
+        cmd = ptex2tex
+        system(cmd)
 
-    dofile = open(name + '.do.txt', 'r')
+    # Load latex file into string for examination
+    dofile = open(name + '.tex', 'r')
     text = dofile.read()
     dofile.close()
 
+    latex_options = ''
+    if latex_program == 'pdflatex':
+        latex_options = '-file-line-error -interaction nonstopmode'
+
     # Run latex
-    shell_escape = '-shell-escape' if '{minted}' in text else ''
-    cmd_latex = '%(latex_program)s %(shell_escape)s %(name)s' % vars()
+    shell_escape = ' -shell-escape' if 'begin{minted}' in text else ''
+    cmd_latex = '%(latex_program)s%(shell_escape)s %(latex_options)s %(name)s' % vars()
     system(cmd_latex)
 
     if 'idx{' in text:
@@ -8480,7 +8499,7 @@ def latex(name,
     if latex_program == 'latex':
         cmd = 'dvipdf %(name)s' % vars()
         system(cmd)
-        # Could instead of dvipdf run dvips and ps2pdf
+        # Could instead of dvipdf run the old-fashioned dvips and ps2pdf
 
     if version in ('2up', 'A4-2up'):
         # Use pdfnup to make two pages per sheet
@@ -8490,7 +8509,7 @@ def latex(name,
         shutil.copy(name + '.pdf', name + '-' + postfix + '.pdf')
 
 
-def html(name, options='', postfix='', split=False):
+def html(name, options='', split=False):
     """
     Make HTML file from the doconce file `name`
     (without any .do.txt extension).
@@ -8504,9 +8523,6 @@ def html(name, options='', postfix='', split=False):
 
     if split:
         cmd = 'doconce split_html %(name)s' % vars()
-
-    if postfix:
-        shutil.copy(name + '.html', name + '-' + postfix + '.html')
 
 
 def reveal_slides(name, options='', postfix='reveal', theme='darkgray'):
@@ -8587,12 +8603,13 @@ def sphinx(name, options='', dirname='sphinx-rootdir',
     # Compile source
     cmd = 'doconce format sphinx %(name)s %(options)s ' % vars()
     system(cmd)
-    # Create sphinx directory
-    cmd = 'doconce sphinx_dir theme=%(theme)s %(options)s' % vars()
-    system(cmd)
 
     if split:
         cmd = 'doconce split_rst %(name)s' % vars()
+
+    # Create sphinx directory
+    cmd = 'doconce sphinx_dir theme=%(theme)s %(options)s %(name)s' % vars()
+    system(cmd)
 
     # Compile sphinx
     cmd = 'python automake_sphinx.py %(automake_sphinx_options)s' % vars()
@@ -8641,39 +8658,45 @@ def main():
     for format in formats:
         if format.endswith('latex'):
             make.write("""
+    # --- latex ---
+
+    common_latex_options = ' --latex_code_style=vrb'
+
     for version in 'paper', 'screen':  # , 'A4', '2up', 'A4-2up':
         latex(
           dofile,
           latex_program='pdflatex',
-          options=common_options,
-          ptex2tex_program='doconce',
-          ptex2tex_options='',
-          ptex2tex_envir='minted',
+          options=common_options + common_latex_options,
           version=version,
           postfix='auto')
 """)
         elif format == 'html':
             make.write("""
-    # One long HTML file
+    # --- HTML ---
+
+    common_html_options = ''
+
+    # HTML Bootstrap
+    bootstrap_options = ' --html_style=bootswatch_readable --html_code_style=inherit --html_pre_style=inherit --html_toc_depth=2 --pygments_html_style=default'
+
     html(
       dofile,
-      options=common_options,
-      split=False,
-      postfix='1')
+      options=common_options + common_html_options + bootstrap_options,
+      split=True)
 
-    # Splitted HTML file
-    #html(dofile, options=common_options, split=True)
+    # One long HTML file
+    #html(dofile, options=common_options + common_html_options + ' --html_style=bloodish --html_output=%s-1' % dofile, split=False)
 
     # Solarized HTML
-    #html(dofile, options=common_options + '--html_style=solarized',
-    #     split=True, postfix='solarized')
+    #html(dofile, options=common_options + common_html_options + ' --html_style=solarized3 --html_output=%s-solarized' % dofile, split=True)
 """)
         elif format == 'sphinx':
             make.write("""
-    sphinx_themes = ['pyramid']
+    # --- Sphinx ---
+
+    sphinx_themes = ['pyramid',]
     for theme in sphinx_themes:
-        dirname = 'sphinx-rootdir' if len(sphinx-themes) == 1 \
-                  else 'sphinx-rootdir-%s' % theme
+        dirname = 'sphinx-rootdir' if len(sphinx_themes) == 1 else 'sphinx-rootdir-%s' % theme
         sphinx(
           dofile,
           options=common_options + '',
@@ -8684,6 +8707,9 @@ def main():
 """)
         elif format == 'reveal':
             make.write("""
+
+    # --- reveal.js slides ---
+
     reveal_slides(
       dofile,
       options=common_options + '',
@@ -8692,6 +8718,8 @@ def main():
 """)
         elif format == 'deck':
             make.write("""
+    # --- deck.js slides ---
+
     deck_slides(
       dofile,
       options=common_options + '',
@@ -8700,6 +8728,8 @@ def main():
 """)
         elif format == 'beamer':
             make.write("""
+    # --- latex beamer slides ---
+
     beamer_slides(
       dofile,
       options=common_options + '',
@@ -8766,26 +8796,24 @@ def main():
                 make.write("""
     beamer_slides(
       dofile,
-      options=common_options + '',
+      options=common_options + ' --latex_code_style=pyg',
       postfix='beamer',
-      theme='red_shadow',
-      ptex2tex_envir='minted')  # 'ans:nt'
+      theme='red_shadow')
 
     # Ordinary latex document (for printing)
     latex(
       dofile,
       latex_program='pdflatex',
       options=common_options + ' --device=paper' + with_toc,
-      ptex2tex_program='doconce',
-      ptex2tex_options='',
-      ptex2tex_envir='minted')
+      )
 """)
     make.write("""
     # Dump all Unix commands run above as a Bash script
     bash = open('tmp_make.sh', 'w')
+    print 'see tmp_make.sh for an equivalent auto-generated unix script'
     bash.write('''\
 #!/bin/bash
-set - x  # display all commands when run
+set -x  # display all commands in output
 
 # Safe execution of a Unix command: exit if failure
 function system {
@@ -8799,9 +8827,11 @@ function system {
 ''')
     for cmd in unix_command_recorder:
         if cmd.startswith('doconce format') or cmd.startswith('rm '):
-            f.write('\\n')  # delimiter line in script
-        f.write('system ' + command + '\\n')
-    f.close()
+            bash.write('\\n')  # delimiter line in script
+        bash.write('system ' + cmd + '\\n')
+    bash.close()
+
+    print 'see tmp_output.log for the output of all the commands'
 """)
     make.write("""
 
@@ -8809,6 +8839,9 @@ if __name__ == '__main__':
     main()
 """)
     make.close()
+    print 'generated make.py for compiling %s.do.txt' % dofile
+    print 'make.py is basically a template: edit to set the desired options'
+    print '\n*** warning: the generated make.py script is experimental\n    and tested to a very little extent! (latex, html, sphinx are tested)'
 
 
 def _usage_fix_bibtex4publish():
