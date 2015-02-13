@@ -93,6 +93,7 @@ latex_double_hyphen = False
 #ipynb_movie = 
 verbose = False
 examples_as_exercises = False
+solutions_at_end = False
 without_solutions = False
 without_answers = False
 without_hints = False

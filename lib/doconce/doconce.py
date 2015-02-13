@@ -1382,10 +1382,25 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
     filestr = '\n'.join(newlines)
     solutions = '\n'.join(solutions)
-    # Temporary:
-    f = open('.tmp_exersol.do.txt', 'w')
-    f.write(solutions)
-    f.close()
+
+    if option('without_solutions') and option('solutions_at_end'):
+        solfilename = dofile_basename + '_exersol.do.txt'
+        f = open(solfilename, 'w')
+        f.write('======= Solutions =======\nlabel{sec:solutions}\n\n')
+        f.write(solutions)
+        f.close()
+        #print 'solutions to exercises in', dofile_basename
+
+        pattern = '^={5,7} (References|Bibliography) ={5,7}'
+        sol_sec = '======= Solutions =======\nlabel{sec:solutions}\n\n' + \
+                  solutions
+        if re.search(pattern, filestr, flags=re.MULTILINE):
+            filestr = re.sub(pattern,
+                             sol_sec + '\n\n\\g<1>',
+                             filestr, flags=re.MULTILINE)
+        else:
+            # Just add solutions at the end
+            filestr += '\n\n\n' + sol_sec
 
     if all_exer:
         # Replace code and math blocks by actual code.
@@ -1424,6 +1439,10 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                 text = text.replace(from_, to_)
             return text
 
+        # Should have sol here too, but this solution of substituting in
+        # the data structure is not good, it's better to extract exercises
+        # via comment lines as we do with quizzes and make them
+        # separate.
         for e in range(len(all_exer)):
             for key in all_exer[e]:
                 if key == 'subex':
