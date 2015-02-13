@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Feb 1, 2015
+:Date: Feb 10, 2015
 
 .. lines beginning with # are doconce comment lines
 

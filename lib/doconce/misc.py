@@ -363,6 +363,8 @@ local: local video files with encoding."""),
     ('--examples_as_exercises',
      """Treat examples of the form "==== Example: ..."
 as in exercise environments."""),
+    ('--solutions_at_end',
+     'Place solutions to exercises at the end of the document.'),
     ('--without_solutions',
      'Leave out solution environments from exercises.'),
     ('--without_answers',

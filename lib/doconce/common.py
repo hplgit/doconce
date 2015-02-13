@@ -486,8 +486,11 @@ def remove_code_and_tex(filestr, format):
 
 
 def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
-    # Consistency check
-    n = filestr.count(_CODE_BLOCK)
+    # Consistency check: find no of distinct code and math blocks
+    # (can be duplicates when solutions are copied at the end)
+    import sets
+    pattern = r'^\d+ ' + _CODE_BLOCK
+    n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
     if len(code_blocks) != n:
         print '*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks))
         print """    Possible causes:
@@ -498,7 +501,8 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
     (run doconce on each file to locate the problem, then on
      smaller and smaller parts of each file)"""
         _abort()
-    n = filestr.count(_MATH_BLOCK)
+    pattern = r'^\d+ ' + _MATH_BLOCK
+    n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
     if len(tex_blocks) != n:
         print '*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks))
         print """    Possible causes:
@@ -579,21 +583,6 @@ def doconce_exercise_output(exer,
     # there will be fewer blocks in the end that what was extracted
     # at the beginning of the translation process.
 
-    s = '\n\n# ' + envir_delimiter_lines['exercise'][0] + '\n\n'
-    s += exer['heading']  # result string
-    comments = ''  # collect comments at the end of the exercises
-
-    if include_numbering and not include_type:
-        include_type = True
-    if not exer['type_visible']:
-        include_type = False
-    if include_type:
-        s += ' ' + exer['type']
-        if include_numbering:
-            s += ' ' + str(exer['no'])
-        s += ':'
-    s += ' ' + exer['title'] + ' ' + exer['heading'] + '\n'
-
     # Store solutions in a separate string
     has_solutions = False
     if exer['solution']:
@@ -605,13 +594,39 @@ def doconce_exercise_output(exer,
             has_solutions = True
         if subex['answer']:
             has_solutions = True
+
+    sol = ''
+    s = '\n\n# ' + envir_delimiter_lines['exercise'][0] + '\n\n'
+    s += exer['heading']  # result string
     if has_solutions:
-        sol = s  # Include headline since solution/answer is coming
-    else:
-        sol = ''
+        sol += '\n\n# ' + envir_delimiter_lines['exercise'][0] + ' solution\n\n'
+        sol += exer['heading']
+
+    comments = ''  # collect comments at the end of the exercises
+
+    if include_numbering and not include_type:
+        include_type = True
+    if not exer['type_visible']:
+        include_type = False
+    if include_type:
+        s += ' ' + exer['type']
+        if sol:
+            sol += ' Solution to ' + exer['type']
+        if include_numbering:
+            s += ' ' + str(exer['no'])
+            if sol:
+                sol += ' ' + str(exer['no'])
+        s += ':'
+        if sol:
+            sol += ':'
+    s += ' ' + exer['title'] + ' ' + exer['heading'] + '\n'
+    if sol:
+        sol += ' ' + exer['title'] + ' ' + exer['heading'] + '\n'
 
     if exer['label']:
         s += 'label{%s}' % exer['label'] + '\n'
+        if sol:
+            sol += '# Solution to Exercise ref{%s}' % exer['label'] + '\n'
 
     if exer['keywords']:
         s += '# keywords = %s' % '; '.join(exer['keywords']) + '\n'
@@ -657,11 +672,13 @@ def doconce_exercise_output(exer,
         # avoid marking such sections for deletion (--without_answers)
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
+            sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
         s += answer_header + '\n' + exer['answer'] + '\n'
+        ssol += answer_header + '\n' + exer['answer'] + '\n'
+
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
-        sol += '\n' + exer['answer'] + '\n'
-
+            sol += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
 
     if exer['solution']:
         s += '\n'
@@ -683,12 +700,15 @@ def doconce_exercise_output(exer,
 
     if exer['subex']:
         s += '\n'
-        sol += '\n'
+        if sol:
+            sol += '\n'
         import string
         for i, subex in enumerate(exer['subex']):
             letter = string.ascii_lowercase[i]
             s += '\n__%s)__\n' % letter
-            sol += '\n__%s)__\n' % letter
+
+            if subex['solution'] or (subex['answer'] and not option('without_answers')):
+                sol += '\n__%s)__\n' % letter
 
             if subex['text']:
                 s += subex['text'] + '\n'
@@ -716,10 +736,12 @@ def doconce_exercise_output(exer,
                     s += '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
+                        sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
                     s += answer_header + '\n' + subex['answer'] + '\n'
+                    sol += answer_header + '\n' + subex['answer'] + '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
-                    sol += '\n' + subex['answer'] + '\n'
+                        sol += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
 
                 if subex['solution']:
                     s += '\n'
@@ -768,6 +790,9 @@ def doconce_exercise_output(exer,
         s += '\n' + comments
 
     s += '\n# ' + envir_delimiter_lines['exercise'][1] + '\n\n'
+    if sol:
+        sol += '\n# ' + envir_delimiter_lines['exercise'][1] + ' solution\n\n'
+
     return s, sol
 
 def plain_exercise(exer):
