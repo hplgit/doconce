@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Feb 2, 2015
+:Date: Feb 16, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -828,9 +828,8 @@ inserted anywhere, using the syntax
 
 with no backslash
 preceding the label keyword. It is common practice to choose ``name``
-as some hierarchical name, say ``a:b:c``, where ``a`` and ``b`` indicate
-some abbreviations for a section and/or subsection for the topic and
-``c`` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like ``:`` or ``_`` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label ``name`` is written as
 
@@ -932,6 +931,7 @@ list of capabilities:
 
 .. code-block:: bash
 
+        DocOnce version 1.0.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         

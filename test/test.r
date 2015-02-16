@@ -1921,7 +1921,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -2650,7 +2649,7 @@ Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -2677,7 +2676,7 @@ Here is figure~\ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
@@ -4054,7 +4053,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
 
 \usepackage{ptex2tex}
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -4915,7 +4913,7 @@ Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -4942,7 +4940,7 @@ Here is figure~\ref{myfig} with a long multi--line caption
 and an extra space before the FIGURE keyword.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
@@ -6371,7 +6369,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
 
 \usepackage{anslistings,fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -7189,7 +7186,7 @@ Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -7216,7 +7213,7 @@ Here is figure~\ref{myfig} with a long multi--line caption
 and an extra space before the FIGURE keyword.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
@@ -9510,7 +9507,7 @@ Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -9537,7 +9534,7 @@ Here is figure~\ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.png}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
@@ -28840,7 +28837,6 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage{bm,microtype}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -36868,7 +36864,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -37640,7 +37635,7 @@ Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -37667,7 +37662,7 @@ Here is figure~\ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   A long caption spanning several lines and containing verbatim words like \protect \Verb!my\_file\_v1! and \protect \Verb!my\_file\_v2! as well as math with subscript as in $t_{i+1}$. \label{myfig}
@@ -40724,7 +40719,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -46019,7 +46013,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -46672,7 +46665,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -47270,7 +47262,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -47875,7 +47866,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -48523,7 +48513,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -49087,7 +49076,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -49697,7 +49685,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -50217,7 +50204,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -50827,7 +50813,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\setlength{\fboxsep}{8pt}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 \usepackage{minted}
 \usemintedstyle{default}
 
@@ -60366,7 +60351,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -63317,7 +63301,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -65950,7 +65933,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -68357,7 +68339,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -68770,7 +68751,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -69175,7 +69155,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
-
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -71408,7 +71387,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f612fdc8320>
+verbatim is to be replaced using <function html_verbatim at 0x7f967a937320>
 
 
 First occurence: " `mako`."
@@ -72423,7 +72402,6 @@ BIBFILE: papers.pub
 \usepackage{bm,microtype}
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -73377,7 +73355,6 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 \usepackage{bm,microtype}
 
 \usepackage{ptex2tex}
-
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -75377,7 +75354,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Feb  2 00:34:02 2015.
+# sphinx-quickstart on Mon Feb 16 04:59:55 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76619,7 +76596,7 @@ system doconce format mwiki quickref --no_preprocess
 system doconce format cwiki quickref --no_preprocess
 system doconce format st quickref --no_preprocess
 system doconce format epytext quickref --no_preprocess
-system doconce format pandoc quickref --no_preprocess
+system doconce format pandoc quickref --no_preprocess --strict_markdown_output --github_md
 
 rm -rf demo
 mkdir demo
@@ -77416,9 +77393,8 @@ label{name}
 !ec
 with no backslash
 preceding the label keyword. It is common practice to choose `name`
-as some hierarchical name, say `a:b:c`, where `a` and `b` indicate
-some abbreviations for a section and/or subsection for the topic and
-`c` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like `:` or `_` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label `name` is written as
 !bc
@@ -78727,9 +78703,8 @@ inserted anywhere, using the syntax
 <!-- end verbatim block -->
 with no backslash
 preceding the label keyword. It is common practice to choose <code>name</code>
-as some hierarchical name, say <code>a:b:c</code>, where <code>a</code> and <code>b</code> indicate
-some abbreviations for a section and/or subsection for the topic and
-<code>c</code> is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like <code>:</code> or <code>_</code> between
+(e.g.) section, subsection, and topic.
 
 <p>
 A reference to the label <code>name</code> is written as
@@ -78830,7 +78805,8 @@ list of capabilities:
 
 <p>
 <!-- begin verbatim block  shpro-->
-<pre><code>Usage: doconce command [optional arguments]
+<pre><code>DocOnce version 1.0.2
+Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
@@ -79251,7 +79227,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -80344,9 +80319,8 @@ label{name}
 \eccq
 with no backslash
 preceding the label keyword. It is common practice to choose \Verb!name!
-as some hierarchical name, say \Verb!a:b:c!, where \Verb!a! and \Verb!b! indicate
-some abbreviations for a section and/or subsection for the topic and
-\Verb!c! is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like \Verb!:! or \Verb!_! between
+(e.g.) section, subsection, and topic.
 
 A reference to the label \Verb!name! is written as
 \bccq
@@ -80434,6 +80408,7 @@ transforming a \Verb!.do.txt! file to some format. Here is the
 list of capabilities:
 
 \bshpro
+DocOnce version 1.0.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -81573,9 +81548,8 @@ inserted anywhere, using the syntax::
 
 with no backslash
 preceding the label keyword. It is common practice to choose ``name``
-as some hierarchical name, say ``a:b:c``, where ``a`` and ``b`` indicate
-some abbreviations for a section and/or subsection for the topic and
-``c`` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like ``:`` or ``_`` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label ``name`` is written as::
 
@@ -81665,6 +81639,7 @@ The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
 
+        DocOnce version 1.0.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -82844,9 +82819,8 @@ inserted anywhere, using the syntax
 
 with no backslash
 preceding the label keyword. It is common practice to choose ``name``
-as some hierarchical name, say ``a:b:c``, where ``a`` and ``b`` indicate
-some abbreviations for a section and/or subsection for the topic and
-``c`` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like ``:`` or ``_`` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label ``name`` is written as
 
@@ -82948,6 +82922,7 @@ list of capabilities:
 
 .. code-block:: bash
 
+        DocOnce version 1.0.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -84020,9 +83995,8 @@ label{name}
 }}}
 with no backslash
 preceding the label keyword. It is common practice to choose `name`
-as some hierarchical name, say `a:b:c`, where `a` and `b` indicate
-some abbreviations for a section and/or subsection for the topic and
-`c` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like `:` or `_` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label `name` is written as
 {{{
@@ -84111,6 +84085,7 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 {{{
+DocOnce version 1.0.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -85229,9 +85204,8 @@ label{name}
 </syntaxhighlight>
 with no backslash
 preceding the label keyword. It is common practice to choose <code>name</code>
-as some hierarchical name, say <code>a:b:c</code>, where <code>a</code> and <code>b</code> indicate
-some abbreviations for a section and/or subsection for the topic and
-<code>c</code> is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like <code>:</code> or <code>_</code> between
+(e.g.) section, subsection, and topic.
 
 A reference to the label <code>name</code> is written as
 <syntaxhighlight lang="text">
@@ -85320,6 +85294,7 @@ transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
 
 <syntaxhighlight lang="bash">
+DocOnce version 1.0.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -86381,9 +86356,8 @@ label{name}
 }}}
 with no backslash
 preceding the label keyword. It is common practice to choose {{{name}}}
-as some hierarchical name, say {{{a:b:c}}}, where {{{a}}} and {{{b}}} indicate
-some abbreviations for a section and/or subsection for the topic and
-{{{c}}} is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like {{{:}}} or {{{_}}} between
+(e.g.) section, subsection, and topic.
 
 A reference to the label {{{name}}} is written as
 {{{
@@ -86472,6 +86446,7 @@ transforming a {{{.do.txt}}} file to some format. Here is the
 list of capabilities:
 
 {{{
+DocOnce version 1.0.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -87489,9 +87464,8 @@ inserted anywhere, using the syntax::
 
 with no backslash
 preceding the label keyword. It is common practice to choose 'name'
-as some hierarchical name, say 'a:b:c', where 'a' and 'b' indicate
-some abbreviations for a section and/or subsection for the topic and
-'c' is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like ':' or '_' between
+(e.g.) section, subsection, and topic.
 
 A reference to the label 'name' is written as::
 
@@ -87577,6 +87551,7 @@ The 'doconce' program can be used for a number of purposes besides
 transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
 
+        DocOnce version 1.0.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -88593,9 +88568,8 @@ inserted anywhere, using the syntax::
 
 with no backslash
 preceding the label keyword. It is common practice to choose C{name}
-as some hierarchical name, say C{a:b:c}, where C{a} and C{b} indicate
-some abbreviations for a section and/or subsection for the topic and
-C{c} is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like C{:} or C{_} between
+(e.g.) section, subsection, and topic.
 
 A reference to the label C{name} is written as::
 
@@ -88685,6 +88659,7 @@ The C{doconce} program can be used for a number of purposes besides
 transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
 
+        DocOnce version 1.0.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -89759,9 +89734,8 @@ inserted anywhere, using the syntax::
 
 with no backslash
 preceding the label keyword. It is common practice to choose name
-as some hierarchical name, say a:b:c, where a and b indicate
-some abbreviations for a section and/or subsection for the topic and
-c is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like : or _ between
+(e.g.) section, subsection, and topic.
 
 A reference to the label name is written as::
 
@@ -89851,6 +89825,7 @@ The doconce program can be used for a number of purposes besides
 transforming a .do.txt file to some format. Here is the
 list of capabilities::
 
+        DocOnce version 1.0.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -90200,10 +90175,11 @@ Resources
  * Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"
 
 ************** File: quickref.md *****************
-% DocOnce Quick Reference
-% **Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
-% Jan 32, 2100
+# DocOnce Quick Reference
+### Author
 
+**Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
+#### Date: Jan 32, 2100
 <!-- Table of contents: Run pandoc with --toc option -->
 
 
@@ -90251,27 +90227,29 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-
-  Emacs key                    Action                  
--------------  --------------------------------------  
-Ctrl+c f       figure                                  
-Ctrl+c v       movie/video                             
-Ctrl+c h1      heading level 1 (section/h1)            
-Ctrl+c h2      heading level 2 (subsection/h2)         
-Ctrl+c h3      heading level 2 (subsection/h3)         
-Ctrl+c hp      heading for paragraph                   
-Ctrl+c me      math environment: `!bt` equation `!et`  
-Ctrl+c ma      math environment: `!bt` align `!et`     
-Ctrl+c ce      code environment: `!bc` code `!ec`      
-Ctrl+c cf      code from file: `@@@CODE`               
-Ctrl+c table2  table with 2 columns                    
-Ctrl+c table3  table with 3 columns                    
-Ctrl+c table4  table with 4 columns                    
-Ctrl+c exer    exercise outline                        
-Ctrl+c slide   slide outline                           
-Ctrl+c help    print this table                        
-
-
+<table border="1">
+<thead>
+<tr><th align="center">  Emacs key  </th> <th align="center">                Action                </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   Ctrl+c f         </td> <td align="left">   figure                                    </td> </tr>
+<tr><td align="left">   Ctrl+c v         </td> <td align="left">   movie/video                               </td> </tr>
+<tr><td align="left">   Ctrl+c h1        </td> <td align="left">   heading level 1 (section/h1)              </td> </tr>
+<tr><td align="left">   Ctrl+c h2        </td> <td align="left">   heading level 2 (subsection/h2)           </td> </tr>
+<tr><td align="left">   Ctrl+c h3        </td> <td align="left">   heading level 2 (subsection/h3)           </td> </tr>
+<tr><td align="left">   Ctrl+c hp        </td> <td align="left">   heading for paragraph                     </td> </tr>
+<tr><td align="left">   Ctrl+c me        </td> <td align="left">   math environment: <code>!bt</code> equation <code>!et</code>    </td> </tr>
+<tr><td align="left">   Ctrl+c ma        </td> <td align="left">   math environment: <code>!bt</code> align <code>!et</code>       </td> </tr>
+<tr><td align="left">   Ctrl+c ce        </td> <td align="left">   code environment: <code>!bc</code> code <code>!ec</code>        </td> </tr>
+<tr><td align="left">   Ctrl+c cf        </td> <td align="left">   code from file: <code>@@@CODE</code>                 </td> </tr>
+<tr><td align="left">   Ctrl+c table2    </td> <td align="left">   table with 2 columns                      </td> </tr>
+<tr><td align="left">   Ctrl+c table3    </td> <td align="left">   table with 3 columns                      </td> </tr>
+<tr><td align="left">   Ctrl+c table4    </td> <td align="left">   table with 4 columns                      </td> </tr>
+<tr><td align="left">   Ctrl+c exer      </td> <td align="left">   exercise outline                          </td> </tr>
+<tr><td align="left">   Ctrl+c slide     </td> <td align="left">   slide outline                             </td> </tr>
+<tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                          </td> </tr>
+</tbody>
+</table>
 ### Title, Authors, and Date
 
 A typical example of giving a title, a set of authors, a date,
@@ -90279,21 +90257,17 @@ and an optional table of contents
 reads
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-TITLE: On an Ultimate Markup Language
-AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
-AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
-AUTHOR: A. Dummy Author
-DATE: today
-TOC: on
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        TITLE: On an Ultimate Markup Language
+        AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
+        AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
+        AUTHOR: A. Dummy Author
+        DATE: today
+        TOC: on
 
 The entire title must appear on a single line.
 The author syntax is
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-name Email: somename@adr.net at institution1 & institution2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        name Email: somename@adr.net at institution1 & institution2
 
 where the email is optional, the "at" keyword is required if one or
 more institutions are to be specified, and the `&` keyword
@@ -90313,21 +90287,23 @@ The table of contents is removed by writing `TOC: off`.
 ### Section Types
 <div id="quick:sections"></div>
 
-
- Section type                     Syntax                    
--------------  -------------------------------------------  
-chapter        `========= Heading ========` (9 `=`)         
-section        `======= Heading =======`    (7 `=`)         
-subsection     `===== Heading =====`        (5 `=`)         
-subsubsection  `=== Heading ===`            (3 `=`)         
-paragraph      `__Heading.__`               (2 `_`)         
-abstract       `__Abstract.__` Running text...              
-appendix       `======= Appendix: heading =======` (7 `=`)  
-appendix       `===== Appendix: heading =====` (5 `=`)      
-exercise       `======= Exercise: heading =======` (7 `=`)  
-exercise       `===== Exercise: heading =====` (5 `=`)      
-
-
+<table border="1">
+<thead>
+<tr><th align="center"> Section type</th> <th align="center">                   Syntax                  </th> </tr>
+</thead>
+<tbody>
+<tr><td align="left">   chapter          </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
+<tr><td align="left">   section          </td> <td align="left">   <code>======= Heading =======</code>    (7 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsection       </td> <td align="left">   <code>===== Heading =====</code>        (5 <code>=</code>)           </td> </tr>
+<tr><td align="left">   subsubsection    </td> <td align="left">   <code>=== Heading ===</code>            (3 <code>=</code>)           </td> </tr>
+<tr><td align="left">   paragraph        </td> <td align="left">   <code>__Heading.__</code>               (2 <code>_</code>)           </td> </tr>
+<tr><td align="left">   abstract         </td> <td align="left">   <code>__Abstract.__</code> Running text...                </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>======= Appendix: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   appendix         </td> <td align="left">   <code>===== Appendix: heading =====</code> (5 <code>=</code>)        </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
+<tr><td align="left">   exercise         </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
+</tbody>
+</table>
 Note that abstracts are recognized by starting with `__Abstract.__` or
 `__Summary.__` at the beginning of a line and ending with three or
 more `=` signs of the next heading.
@@ -90345,9 +90321,7 @@ appear in boldface: `_boldface_` becomes **boldface**. Colored words
 are also possible: the text
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-`color{red}{two red words}`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        `color{red}{two red words}`
 
 becomes <font color="red">two red words</font>.
 (But colors do not work in format pandoc).
@@ -90355,9 +90329,7 @@ becomes <font color="red">two red words</font>.
 Quotations appear inside double backticks and double single quotes:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This is a sentence with ``words to be quoted''.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        This is a sentence with ``words to be quoted''.
 
 A forced linebreak is specified by `<linebreak>` at the point where the
 linebreak in the output is wanted.
@@ -90366,22 +90338,18 @@ Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Differentiating[^diff2] \eqref{eq1} leads
-to a new and simpler equation.
-
-[^diff2]: More precisely, we apply the divergence
-$\nabla\cdot$ on both sides.
-
-Here comes a new paragraph...
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Differentiating[^diff2] \eqref{eq1} leads
+        to a new and simpler equation.
+        
+        [^diff2]: More precisely, we apply the divergence
+        $\nabla\cdot$ on both sides.
+        
+        Here comes a new paragraph...
 
 Non-breaking space is inserted using the tilde character as in LaTeX:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
 
 A horizontal rule for separating content vertically, like this:
 
@@ -90390,19 +90358,15 @@ A horizontal rule for separating content vertically, like this:
 is typeset as four or more hyphens on a single line:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
----------
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ---------
 
 The `latex`, `pdflatex`, `sphinx`, and `html` formats support em-dash,
 indicated by three hyphens: `---`. Here is an example:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The em-dash is used - without spaces - as alternative to hyphen with
-space around in sentences---this way, or in quotes:
-*Premature optimization is the root of all evil.*--- Donald Knuth.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        The em-dash is used - without spaces - as alternative to hyphen with
+        space around in sentences---this way, or in quotes:
+        *Premature optimization is the root of all evil.*--- Donald Knuth.
 
 This text is in the pandoc rendered as
 
@@ -90433,40 +90397,38 @@ consqutive numbers,
 and *description* lists, where each item starts with `-` followed
 by a keyword and a colon.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Here is a bullet list:
-
- * item1
- * item2
-  * subitem1 of item2
-  * subitem2 of item2,
-    second line of subitem2
- * item3
-
-Note that sublists are consistently indented by one or more blanks as
-shown: bullets must exactly match and continuation lines must start
-right below the line above.
-
-Here is an enumeration list:
-
- o item1
- o item2
-   may appear on
-   multiple lines
-  o subitem1 of item2
-  o subitem2 of item2
- o item3
-
-And finally a description list:
-
- - keyword1: followed by
-   some text
-   over multiple
-   lines
- - keyword2:
-   followed by text on the next line
- - keyword3: and its description may fit on one line
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Here is a bullet list:
+        
+         * item1
+         * item2
+          * subitem1 of item2
+          * subitem2 of item2,
+            second line of subitem2
+         * item3
+        
+        Note that sublists are consistently indented by one or more blanks as
+        shown: bullets must exactly match and continuation lines must start
+        right below the line above.
+        
+        Here is an enumeration list:
+        
+         o item1
+         o item2
+           may appear on
+           multiple lines
+          o subitem1 of item2
+          o subitem2 of item2
+         o item3
+        
+        And finally a description list:
+        
+         - keyword1: followed by
+           some text
+           over multiple
+           lines
+         - keyword2:
+           followed by text on the next line
+         - keyword3: and its description may fit on one line
 
 The code above follows.
 
@@ -90544,9 +90506,7 @@ Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[name: running text]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        [name: running text]
 
 where `name` is the name or ID of an author or reader making the comment,
 and `running text` is the comment. The name can contain upper and lower
@@ -90554,10 +90514,8 @@ case characters, digits, single quote, `+` and `-`, as well
 as space. Here goes an example.
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Some running text. [hpl: There must be a space after the colon,
-but the running text can occupy multiple lines.]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Some running text. [hpl: There must be a space after the colon,
+        but the running text can occupy multiple lines.]
 
 which is rendered as
 
@@ -90574,9 +90532,7 @@ option to `doconce format`, colorful margin or inline boxes (using the
 
 Running
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-doconce format html mydoc.do.txt --skip_inline_comments
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        doconce format html mydoc.do.txt --skip_inline_comments
 
 removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
@@ -90584,46 +90540,38 @@ to turn on and off notes to authors during the development of the document.
 All inline comments to readers can also be physically
 removed from the DocOnce source by
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-doconce remove_inline_comments mydoc.do.txt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        doconce remove_inline_comments mydoc.do.txt
 
 Inline comments can also be used to markup edits. There are add, delete, and
 replacement comments for editing:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-[add: ,]
-[add: .]
-[add: ;]
-[del: ,]
-[del: ,]
-[del: .]
-[del: ;]
-[add: some text]
-[del: some text]
-[edit: some text -> some replacement for text]
-[name: some text -> some replacement for text]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        [add: ,]
+        [add: .]
+        [add: ;]
+        [del: ,]
+        [del: ,]
+        [del: .]
+        [del: ;]
+        [add: some text]
+        [del: some text]
+        [edit: some text -> some replacement for text]
+        [name: some text -> some replacement for text]
 
 For example, the text
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-First consider a quantity $Q$. Without loss of generality, we assume
-$Q>0$. There are three, fundamental, basic property of $Q$.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        First consider a quantity $Q$. Without loss of generality, we assume
+        $Q>0$. There are three, fundamental, basic property of $Q$.
 
 can be edited as
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-First[add: ,] consider [edit: a quantity -> the flux]
-[del: $Q$. Without loss of generality,
-we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
-[edit: property -> properties] of $Q$. [add: These are not
-important for the following discussion.]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        First[add: ,] consider [edit: a quantity -> the flux]
+        [del: $Q$. Without loss of generality,
+        we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
+        [edit: property -> properties] of $Q$. [add: These are not
+        important for the following discussion.]
 
 which in the pandoc output format results in
 
@@ -90638,17 +90586,13 @@ which in the pandoc output format results in
 To implement these edits, run
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Terminal> doconce apply_edit_comments mydoc.do.txt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Terminal> doconce apply_edit_comments mydoc.do.txt
 
 ### Verbatim/Computer Code
 
 Inline verbatim code is typeset within back-ticks, as in
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Some sentence with `words in verbatim style`.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Some sentence with `words in verbatim style`.
 
 resulting in Some sentence with `words in verbatim style`.
 
@@ -90667,9 +90611,7 @@ in programming `X`, where `X` may be `py` for Python,
 defined verbatim environment in the `ptex2tex` configuration file
 (`.ptex2tex.cfg`). For `sphinx` output one can insert a comment
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 
 that maps environments (`xxx`) onto valid language types for
 Pygments (which is what `sphinx` applies to typeset computer code).
@@ -90682,23 +90624,19 @@ Here is an example of computer code (see the source of this document
 for exact syntax):
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-from numpy import sin, cos, exp, pi
-
-def f(x, y, z, t):
-    return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        from numpy import sin, cos, exp, pi
+        
+        def f(x, y, z, t):
+            return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
 <!-- When showing copy from file in !bc envir, indent a character - otherwise -->
 <!-- ptex2tex is confused and starts copying... -->
 Computer code can also be copied from a file:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- @@@CODE doconce_program.sh
- @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
- @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
- @@@CODE doconce_program.sh  envir=shpro fromto: name=@
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         @@@CODE doconce_program.sh
+         @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
+         @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 
 The `@@@CODE` identifier must appear at the very beginning of the line.
 The first line copies the complete file `doconce_program.sh`.
@@ -90744,9 +90682,7 @@ $Ax=b$. To help increase readability in other formats than `sphinx`,
 `latex`, and `pdflatex`, inline mathematics may have a more human
 readable companion expression. The syntax is like
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$\sin(\norm{\bf u})$|$sin(||u||)$
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        $\sin(\norm{\bf u})$|$sin(||u||)$
 
 That is, the LaTeX expression appears to the left of a vertical bar (pipe
 symbol) and the more readable expression appears to the right. Both
@@ -90758,14 +90694,12 @@ and
 `!et` (begin/end TeX) directives starting on the beginning of a line:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!bt
-\begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\ 
-\nabla\times \pmb{u} &= 0.
-\end{align*}
-!et
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        !bt
+        \begin{align*}
+        \nabla\cdot \pmb{u} &= 0,\\ 
+        \nabla\times \pmb{u} &= 0.
+        \end{align*}
+        !et
 
 This LaTeX code gets rendered as
 
@@ -90778,11 +90712,9 @@ $$
 Here is a single equation:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-!bt
-\[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
-!et
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        !bt
+        \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
+        !et
 
 which results in
 
@@ -90850,29 +90782,25 @@ will be much more flexible and powerful).
 Links use either a link text or the raw URL:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Here is some "some link text": "http://some.net/address"
-(as in "search google": "http://google.com")
-or just the raw address: URL: "http://google.com".
-
-Links to files typeset in verbatim mode applies backtics:
-"`myfile.py`": "http://some.net/some/place/myfile.py".
-
-Mail addresses works too: send problems to
-"`hpl@simula.no`": "mailto:hpl@simula.no"
-or just "send mail": "mailto:hpl@simula.no".
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Here is some "some link text": "http://some.net/address"
+        (as in "search google": "http://google.com")
+        or just the raw address: URL: "http://google.com".
+        
+        Links to files typeset in verbatim mode applies backtics:
+        "`myfile.py`": "http://some.net/some/place/myfile.py".
+        
+        Mail addresses works too: send problems to
+        "`hpl@simula.no`": "mailto:hpl@simula.no"
+        or just "send mail": "mailto:hpl@simula.no".
 
 ### Figures and Movies
 
 Figures and movies have almost equal syntax:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. \label{some:fig:label}
-
-MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. \label{some:fig:label}
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. \label{some:fig:label}
+        
+        MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. \label{some:fig:label}
+        
 
 Note three important syntax details:
 
@@ -90899,9 +90827,7 @@ will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-doconce combine_images image1 image2 ... output_image
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        doconce combine_images image1 image2 ... output_image
 
 This command applies `montage` or PDF-based tools to combine the images
 to get the highest quality.
@@ -90910,12 +90836,10 @@ YouTube and Vimeo movies will be embedded in `html` and `sphinx` documents
 and otherwise be represented by a link. The syntax is
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
-MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
+        
+        MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
+        
 
 The latter results in
 
@@ -90932,19 +90856,17 @@ The latter results in
 The table in the section [Section Types](#quick:sections) was written with this
 syntax:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-|----------------c--------|------------------c--------------------|
-|      Section type       |        Syntax                         |
-|----------------l--------|------------------l--------------------|
-| chapter                 | `========= Heading ========` (9 `=`)  |
-| section                 | `======= Heading =======`    (7 `=`)  |
-| subsection              | `===== Heading =====`        (5 `=`)  |
-| subsubsection           | `=== Heading ===`            (3 `=`)  |
-| paragraph               | `__Heading.__`               (2 `_`)  |
-|-----------------------------------------------------------------|
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        
+        |----------------c--------|------------------c--------------------|
+        |      Section type       |        Syntax                         |
+        |----------------l--------|------------------l--------------------|
+        | chapter                 | `========= Heading ========` (9 `=`)  |
+        | section                 | `======= Heading =======`    (7 `=`)  |
+        | subsection              | `===== Heading =====`        (5 `=`)  |
+        | subsubsection           | `=== Heading ===`            (3 `=`)  |
+        | paragraph               | `__Heading.__`               (2 `_`)  |
+        |-----------------------------------------------------------------|
+        
 
 Note that
 
@@ -90972,9 +90894,7 @@ load tables into spreadsheet programs for further analysis.
 DocOnce tables can be efficiently made directly from data in CSV files.
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
 
 Now we can do `# #include "mydata_table.do.txt"` in the DocOnce
 source file or simply copy the table in `mydata_table.do.txt`
@@ -90987,21 +90907,16 @@ is adopted
 from LaTeX with a very similar syntax. As in LaTeX, a label can be
 inserted anywhere, using the syntax
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\label{name}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        \label{name}
 
 with no backslash
 preceding the label keyword. It is common practice to choose `name`
-as some hierarchical name, say `a:b:c`, where `a` and `b` indicate
-some abbreviations for a section and/or subsection for the topic and
-`c` is some name for the particular unit that has a label.
+as some hierarchical name, using a delimiter like `:` or `_` between
+(e.g.) section, subsection, and topic.
 
 A reference to the label `name` is written as
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ref{name}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ref{name}
 
 again with no backslash before `ref`.
 
@@ -91014,9 +90929,7 @@ reference by parenthesis.
 
 Single citations are written as
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-cite{name}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        cite{name}
 
 where `name` is a logical name
 of the reference (again, LaTeX writers must not insert a backslash).
@@ -91026,9 +90939,7 @@ Bibliography citations often have `name` on the form
 Multiple citations at once is possible by separating the logical names
 by comma:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-cite{name1,name2,name3}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        cite{name1,name2,name3}
 
 The bibliography is specified by a line `BIBFILE: papers.pub`,
 where `papers.pub` is a publication database in the
@@ -91047,16 +90958,14 @@ to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ref[internal][cite][external]
-
-# Example:
-As explained in
-ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
-"testdoc.html#___sec2" in the document
-"A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
-DocOnce documents may include movies.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ref[internal][cite][external]
+        
+        # Example:
+        As explained in
+        ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
+        "testdoc.html#___sec2" in the document
+        "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
+        DocOnce documents may include movies.
 
 The output from a generalized reference is the text `internal` if all
 `ref{label}` references in `internal` are references to labels in the
@@ -91075,9 +90984,7 @@ DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-index{name}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        index{name}
 
 It is recommended to place any index of this type outside
 running text, i.e., after (sub)section titles and in the space between
@@ -91093,161 +91000,160 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Shell}
-Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
-# transform doconce file to another format
-doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
-# substitute a phrase by another using regular expressions
-doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
-(-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
- -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
-# replace a phrase by another literally
-doconce replace from-text to-text file1 file2 ...
-(exact text substutition)
-
-# doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
-
-# replace all mako function calls by the results of the calls
-doconce expand_mako mako_code_file funcname file1 file2 ...
-
-# remove all inline comments in a doconce file
-doconce remove_inline_comments dofile
-
-# apply all edits specified through inline comments
-apply_inline_edits
-
-# create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
-    short_title="Short title" version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
-(requires sphinx version >= 1.1)
-
-# walk through a directory tree and insert doconce files as
-# docstrings in *.p.py files
-doconce insertdocstr rootdir
-
-# remove all files that the doconce format can regenerate
-doconce clean
-
-# change encoding
-doconce change_encoding utf-8 latin1 dofile
-
-# guess the encoding in a text
-doconce guess_encoding filename
-
-# split a sphinx/rst file into parts
-doconce format sphinx complete_file
-doconce split_rst complete_file        # !split specifies the splitting points
-doconce sphinx_dir complete_file
-python automake_sphinx.py
-
-# split an html file into parts according to !split commands
-doconce split_html complete_file.html
-
-# create HTML slides from a (doconce) html file
-doconce slides_html slide_type complete_file.html
-
-# create LaTeX Beamer slides from a (doconce) latex/pdflatex file
-doconce slides_beamer complete_file.tex
-
-# create Remark slides from Markdown
-doconce slides_markdown complete_file.md remark --slide_style=light
-
-# replace bullets in lists by colored bullets
-doconce html_colorbullets file1.html file2.html ...
-
-# grab selected text from a file
-doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
-# remove selected text from a file
-doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
-# list all figure, movie or included code files
-doconce grep FIGURE|MOVIE|CODE dofile
-
-# run spellcheck on a set of files
-doconce spellcheck [-d .mydict.txt] *.do.txt
-
-# transform ptex2tex files (.p.tex) to ordinary latex file
-# and manage the code environments
-doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
-        dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
-# make HTML file via pandoc from Markdown (.md) file
-doconce md2html file.md
-
-# make LaTeX file via pandoc from Markdown (.md) file
-doconce md2latex file.md
-
-# combine several images into one
-doconce combine_images image1 image2 ... output_file
-
-# report problems from a LaTeX .log file
-doconce latex_problems mydoc.log [overfull-hbox-limit]
-
-# list all labels in a document (for purposes of cleaning them up)
-doconce list_labels myfile
-
-# generate script for substituting generalized references
-doconce ref_external mydoc [pubfile]
-
-# check all links in HTML files
-doconce linkchecker *.html
-
-# change headings from "This is a Heading" to "This is a heading"
-doconce capitalize [-d .mydict.txt] *.do.txt
-
-# translate a latex document to doconce (requires usually manual fixing)
-doconce latex2doconce latexfile
-
-# check if there are problems with translating latex to doconce
-doconce latex_dislikes latexfile
-
-# typeset a doconce document with pygments (for pretty print of doconce itself)
-doconce pygmentize myfile [pygments-style]
-
-# generate a make.sh script for translating a doconce file to various formats
-doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
-# find differences between two files
-doconce diff file1.do.txt file2.do.txt [diffprog]
-(diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
-# find differences between the last two Git versions of several files
-doconce gitdiff file1 file2 file3 ...
-
-# convert csv file to doconce table format
-doconce csv2table somefile.csv
-
-# edit URLs to local files and place them in _static
-doconce sphinxfix_local_URLs file.rst
-
-# replace latex-1 (non-ascii) characters by html codes
-doconce latin2html file.html
-
-# fix common problems in bibtex files for publish import
-doconce fix_bibtex4publish file1.bib file2.bib ...
-
-# print the header (preamble) for latex file
-doconce latex_header
-
-# print the footer for latex files
-doconce latex_footer
-
-# expand short cut commands to full form in files
-doconce expand_commands file1 file2 ...
-
-# insert a table of exercises in a latex file myfile.p.tex
-doconce latex_exercise_toc myfile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        DocOnce version 1.0.2
+        Usage: doconce command [optional arguments]
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
+        # transform doconce file to another format
+        doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
+        
+        # substitute a phrase by another using regular expressions
+        doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
+        (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
+         -x is the re.VERBOSE modifier, --restore copies backup files back again)
+        
+        # replace a phrase by another literally
+        doconce replace from-text to-text file1 file2 ...
+        (exact text substutition)
+        
+        # doconce replace using from and to phrases from file
+        doconce replace_from_file file-with-from-to file1 file2 ...
+        (exact text substitution, but a set of from-to relations)
+        
+        # replace all mako function calls by the results of the calls
+        doconce expand_mako mako_code_file funcname file1 file2 ...
+        
+        # remove all inline comments in a doconce file
+        doconce remove_inline_comments dofile
+        
+        # apply all edits specified through inline comments
+        apply_inline_edits
+        
+        # create a directory for the sphinx format
+        doconce sphinx_dir author='John Doe' title='Long title' \
+            short_title="Short title" version=0.1 intersphinx \
+            dirname=sphinx-rootdir theme=default logo=mylogo.png \
+            do_file [do_file2 do_file3 ...]
+        (requires sphinx version >= 1.1)
+        
+        # walk through a directory tree and insert doconce files as
+        # docstrings in *.p.py files
+        doconce insertdocstr rootdir
+        
+        # remove all files that the doconce format can regenerate
+        doconce clean
+        
+        # change encoding
+        doconce change_encoding utf-8 latin1 dofile
+        
+        # guess the encoding in a text
+        doconce guess_encoding filename
+        
+        # split a sphinx/rst file into parts
+        doconce format sphinx complete_file
+        doconce split_rst complete_file        # !split specifies the splitting points
+        doconce sphinx_dir complete_file
+        python automake_sphinx.py
+        
+        # split an html file into parts according to !split commands
+        doconce split_html complete_file.html
+        
+        # create HTML slides from a (doconce) html file
+        doconce slides_html slide_type complete_file.html
+        
+        # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
+        doconce slides_beamer complete_file.tex
+        
+        # create Remark slides from Markdown
+        doconce slides_markdown complete_file.md remark --slide_style=light
+        
+        # replace bullets in lists by colored bullets
+        doconce html_colorbullets file1.html file2.html ...
+        
+        # grab selected text from a file
+        doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
+        
+        # remove selected text from a file
+        doconce remove --from[-] from-text [--to[-] to-text] somefile > result
+        
+        # list all figure, movie or included code files
+        doconce grep FIGURE|MOVIE|CODE dofile
+        
+        # run spellcheck on a set of files
+        doconce spellcheck [-d .mydict.txt] *.do.txt
+        
+        # transform ptex2tex files (.p.tex) to ordinary latex file
+        # and manage the code environments
+        doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
+                dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
+        
+        # make HTML file via pandoc from Markdown (.md) file
+        doconce md2html file.md
+        
+        # make LaTeX file via pandoc from Markdown (.md) file
+        doconce md2latex file.md
+        
+        # combine several images into one
+        doconce combine_images image1 image2 ... output_file
+        
+        # report problems from a LaTeX .log file
+        doconce latex_problems mydoc.log [overfull-hbox-limit]
+        
+        # list all labels in a document (for purposes of cleaning them up)
+        doconce list_labels myfile
+        
+        # generate script for substituting generalized references
+        doconce ref_external mydoc [pubfile]
+        
+        # check all links in HTML files
+        doconce linkchecker *.html
+        
+        # change headings from "This is a Heading" to "This is a heading"
+        doconce capitalize [-d .mydict.txt] *.do.txt
+        
+        # translate a latex document to doconce (requires usually manual fixing)
+        doconce latex2doconce latexfile
+        
+        # check if there are problems with translating latex to doconce
+        doconce latex_dislikes latexfile
+        
+        # typeset a doconce document with pygments (for pretty print of doconce itself)
+        doconce pygmentize myfile [pygments-style]
+        
+        # generate a make.sh script for translating a doconce file to various formats
+        doconce makefile docname doconcefile [html sphinx pdflatex ...]
+        
+        # find differences between two files
+        doconce diff file1.do.txt file2.do.txt [diffprog]
+        (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
+        
+        # find differences between the last two Git versions of several files
+        doconce gitdiff file1 file2 file3 ...
+        
+        # convert csv file to doconce table format
+        doconce csv2table somefile.csv
+        
+        # edit URLs to local files and place them in _static
+        doconce sphinxfix_local_URLs file.rst
+        
+        # replace latex-1 (non-ascii) characters by html codes
+        doconce latin2html file.html
+        
+        # fix common problems in bibtex files for publish import
+        doconce fix_bibtex4publish file1.bib file2.bib ...
+        
+        # print the header (preamble) for latex file
+        doconce latex_header
+        
+        # print the footer for latex files
+        doconce latex_footer
+        
+        # expand short cut commands to full form in files
+        doconce expand_commands file1 file2 ...
+        
+        # insert a table of exercises in a latex file myfile.p.tex
+        doconce latex_exercise_toc myfile
 
 ### Exercises
 
@@ -91272,34 +91178,30 @@ Exercise, problem, project, or example sections contains certain *elements*:
 
 A typical sketch of a a problem without subexercises goes as follows:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-===== Problem: Derive the Formula for the Area of an Ellipse =====
-\label{problem:ellipsearea1}
-file=ellipse_area.pdf
-solution=ellipse_area1_sol.pdf
-
-Derive an expression for the area of an ellipse by integrating
-the area under a curve that defines half of the allipse.
-Show each step in the mathematical derivation.
-
-!bhint
-Wikipedia has the formula for the curve.
-!ehint
-
-!bhint
-"Wolframalpha": "http://wolframalpha.com" can perhaps
-compute the integral.
-!ehint
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ===== Problem: Derive the Formula for the Area of an Ellipse =====
+        \label{problem:ellipsearea1}
+        file=ellipse_area.pdf
+        solution=ellipse_area1_sol.pdf
+        
+        Derive an expression for the area of an ellipse by integrating
+        the area under a curve that defines half of the allipse.
+        Show each step in the mathematical derivation.
+        
+        !bhint
+        Wikipedia has the formula for the curve.
+        !ehint
+        
+        !bhint
+        "Wolframalpha": "http://wolframalpha.com" can perhaps
+        compute the integral.
+        !ehint
 
 If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-===== {Problem}: Derive the Formula for the Area of an Ellipse =====
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
 
 the title becomes just "Derive the ...".
 
@@ -91307,55 +91209,53 @@ An exercise with subproblems, answers and full solutions has this
 setup-up:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-===== Exercise: Determine the Distance to the Moon =====
-\label{exer:moondist}
-
-Intro to this exercise. Questions are in subexercises below.
-
-!bsubex
-Subexercises are numbered a), b), etc.
-
-file=subexer_a.pdf
-
-!bans
-Short answer to subexercise a).
-!eans
-
-!bhint
-First hint to subexercise a).
-!ehint
-
-!bhint
-Second hint to subexercise a).
-!ehint
-!esubex
-
-!bsubex
-Here goes the text for subexercise b).
-
-file=subexer_b.pdf
-
-!bhint
-A hint for this subexercise.
-!ehint
-
-!bsol
-Here goes the solution of this subexercise.
-!esol
-!esubex
-
-!bremarks
-At the very end of the exercise it may be appropriate to summarize
-and give some perspectives. The text inside the `!bremarks` and `!eremarks`
-directives is always typeset at the end of the exercise.
-!eremarks
-
-!bsol
-Here goes a full solution of the whole exercise.
-!esol
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        ===== Exercise: Determine the Distance to the Moon =====
+        \label{exer:moondist}
+        
+        Intro to this exercise. Questions are in subexercises below.
+        
+        !bsubex
+        Subexercises are numbered a), b), etc.
+        
+        file=subexer_a.pdf
+        
+        !bans
+        Short answer to subexercise a).
+        !eans
+        
+        !bhint
+        First hint to subexercise a).
+        !ehint
+        
+        !bhint
+        Second hint to subexercise a).
+        !ehint
+        !esubex
+        
+        !bsubex
+        Here goes the text for subexercise b).
+        
+        file=subexer_b.pdf
+        
+        !bhint
+        A hint for this subexercise.
+        !ehint
+        
+        !bsol
+        Here goes the solution of this subexercise.
+        !esol
+        !esubex
+        
+        !bremarks
+        At the very end of the exercise it may be appropriate to summarize
+        and give some perspectives. The text inside the `!bremarks` and `!eremarks`
+        directives is always typeset at the end of the exercise.
+        !eremarks
+        
+        !bsol
+        Here goes a full solution of the whole exercise.
+        !esol
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments `--without_answers` and `--without_solutions`
@@ -91395,36 +91295,34 @@ document, "comment out" a large portion of text, and to write format-specific
 constructions:
 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# #include "myotherdoc.do.txt"
-
-# #if FORMAT in ("latex", "pdflatex")
-\begin{table}
-\caption{Some words... \label{mytab}}
-\begin{tabular}{lrr}
-\hline\noalign{\smallskip}
-\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
-\hline
-0.0          & 1.4186       & -5.01        \\ 
-2.0          & 1.376512     & 11.919       \\ 
-4.0          & 1.1E+1       & 14.717624    \\ 
-\hline
-\end{tabular}
-\end{table}
-# #else
-  |--------------------------------|
-  |time  | velocity | acceleration |
-  |--l--------r-----------r--------|
-  | 0.0  | 1.4186   | -5.01        |
-  | 2.0  | 1.376512 | 11.919       |
-  | 4.0  | 1.1E+1   | 14.717624    |
-  |--------------------------------|
-# #endif
-
-# #ifdef EXTRA_MATERIAL
-....large portions of text...
-# #endif
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # #include "myotherdoc.do.txt"
+        
+        # #if FORMAT in ("latex", "pdflatex")
+        \begin{table}
+        \caption{Some words... \label{mytab}}
+        \begin{tabular}{lrr}
+        \hline\noalign{\smallskip}
+        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
+        \hline
+        0.0          & 1.4186       & -5.01        \\ 
+        2.0          & 1.376512     & 11.919       \\ 
+        4.0          & 1.1E+1       & 14.717624    \\ 
+        \hline
+        \end{tabular}
+        \end{table}
+        # #else
+          |--------------------------------|
+          |time  | velocity | acceleration |
+          |--l--------r-----------r--------|
+          | 0.0  | 1.4186   | -5.01        |
+          | 2.0  | 1.376512 | 11.919       |
+          | 4.0  | 1.1E+1   | 14.717624    |
+          |--------------------------------|
+        # #endif
+        
+        # #ifdef EXTRA_MATERIAL
+        ....large portions of text...
+        # #endif
 
 With the `mako` preprocessor the if-else tests have slightly different syntax.
 An [example document](http://hplgit.github.com/bioinf-py/) contains
@@ -92673,7 +92571,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1273.
+t line 1272.
 
 
 
@@ -92693,7 +92591,7 @@ t line 1273.
 
 
 
-t line 1282.
+t line 1281.
 
 
 
@@ -92714,7 +92612,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1285.
 
 
 
@@ -93481,7 +93379,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1273.
+t line 1272.
 
 
 
@@ -93501,7 +93399,7 @@ t line 1273.
 
 
 
-t line 1282.
+t line 1281.
 
 
 
@@ -93522,7 +93420,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1285.
 
 
 
@@ -94206,7 +94104,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1273.
+t line 1272.
 
 
 
@@ -94226,7 +94124,7 @@ t line 1273.
 
 
 
-t line 1282.
+t line 1281.
 
 
 
@@ -94247,7 +94145,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1285.
 
 
 
@@ -95574,7 +95472,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1224.
+t line 1223.
 
 
 
@@ -95594,7 +95492,7 @@ t line 1224.
 
 
 
-t line 1233.
+t line 1232.
 
 
 
@@ -95614,7 +95512,7 @@ t line 1233.
 
 
 
-t line 1237.
+t line 1236.
 
 
 
@@ -101512,7 +101410,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 165 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101522,7 +101420,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 192 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102131,7 +102029,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 165 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102141,7 +102039,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 192 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102743,7 +102641,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 165 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102753,7 +102651,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 192 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -107032,7 +106930,7 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
-[14]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
 
@@ -107041,7 +106939,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[14]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -107784,8 +107682,8 @@ copy complete file doconce_program.sh  (format: shpro)
     http://vimeo.com/55562330
 output in quickref.epytext
 + '[' 0 -ne 0 ']'
-+ system doconce format pandoc quickref --no_preprocess
-+ doconce format pandoc quickref --no_preprocess
++ system doconce format pandoc quickref --no_preprocess --strict_markdown_output --github_md
++ doconce format pandoc quickref --no_preprocess --strict_markdown_output --github_md
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to pandoc
 copy complete file doconce_program.sh  (format: shpro)

@@ -458,6 +458,16 @@ def syntax_check(filestr, format):
             print '---------------------------------'
             _abort()
 
+    # If latex format and native latex code for tables are inserted,
+    # ampersands cannot be quoted and --no_ampersand_quote is needed.
+    if format in ('latex', 'pdflatex'):
+        if 'begin{tabular}' in filestr:
+            if not option('no_ampersand_quote'):
+                print """*** error: the document has a native latex table
+    (search for begin{tabular}) with ampersands (&). To prevent these
+    from being quoted, add the --no_ampersand_quote option."""
+                _abort()
+
     # Syntax error `try`-`except`, should be `try-except`,
     # similarly `tuple`/`list` or `int` `N` must be rewritten
     pattern = r'(([`A-Za-z0-9._]+)`(-|/| +)`([`A-Za-z0-9._]+))'
@@ -2926,7 +2936,7 @@ def inline_tag_subst(filestr, format):
 
     # Treat tags that have format-dependent typesetting
 
-    ordered_tags = (
+    ordered_tags = [
         'horizontal-rule',  # must be done before sections (they can give ---- in some formats)
         'title',
         'date',
@@ -2952,7 +2962,11 @@ def inline_tag_subst(filestr, format):
         'chapter', 'section', 'subsection', 'subsubsection',
         'linebreak',
         'non-breaking-space',  # must become after math, colortext, links, etc
-        )
+        ]
+    if option('no_ampersand_quote'):
+        ordered_tags.remove('ampersand1')
+        ordered_tags.remove('ampersand2')
+
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)
         tag_pattern = INLINE_TAGS[tag]

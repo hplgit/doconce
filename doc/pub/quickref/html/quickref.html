@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 2, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 16, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -817,9 +817,8 @@ inserted anywhere, using the syntax</p>
 </div>
 <p>with no backslash
 preceding the label keyword. It is common practice to choose <tt class="docutils literal"><span class="pre">name</span></tt>
-as some hierarchical name, say <tt class="docutils literal"><span class="pre">a:b:c</span></tt>, where <tt class="docutils literal"><span class="pre">a</span></tt> and <tt class="docutils literal"><span class="pre">b</span></tt> indicate
-some abbreviations for a section and/or subsection for the topic and
-<tt class="docutils literal"><span class="pre">c</span></tt> is some name for the particular unit that has a label.</p>
+as some hierarchical name, using a delimiter like <tt class="docutils literal"><span class="pre">:</span></tt> or <tt class="docutils literal"><span class="pre">_</span></tt> between
+(e.g.) section, subsection, and topic.</p>
 <p>A reference to the label <tt class="docutils literal"><span class="pre">name</span></tt> is written as</p>
 <div class="highlight-text"><div class="highlight"><pre>ref{name}
 </pre></div>
@@ -902,7 +901,8 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 <p>The <tt class="docutils literal"><span class="pre">doconce</span></tt> program can be used for a number of purposes besides
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
-<div class="highlight-bash"><div class="highlight"><pre>Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
+<div class="highlight-bash"><div class="highlight"><pre>DocOnce version 1.0.2
+Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
 commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
