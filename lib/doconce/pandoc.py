@@ -76,7 +76,7 @@ def pandoc_author(authors_and_institutions, auth2index,
 
 
 def pandoc_date(m):
-    date = m.group('date')
+    date = m.group('subst')
     if option('strapdown'):
         return '#### Date: ' + date
     elif option('strict_markdown_output'):

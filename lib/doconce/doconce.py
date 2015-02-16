@@ -458,6 +458,16 @@ def syntax_check(filestr, format):
             print '---------------------------------'
             _abort()
 
+    # If latex format and native latex code for tables are inserted,
+    # ampersands cannot be quoted and --no_ampersand_quote is needed.
+    if format in ('latex', 'pdflatex'):
+        if 'begin{tabular}' in filestr:
+            if not option('no_ampersand_quote'):
+                print """*** error: the document has a native latex table
+    (search for begin{tabular}) with ampersands (&). To prevent these
+    from being quoted, add the --no_ampersand_quote option."""
+                _abort()
+
     # Syntax error `try`-`except`, should be `try-except`,
     # similarly `tuple`/`list` or `int` `N` must be rewritten
     pattern = r'(([`A-Za-z0-9._]+)`(-|/| +)`([`A-Za-z0-9._]+))'

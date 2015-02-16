@@ -51,7 +51,7 @@ system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
-cp testdoc.p.tex testdoc_no_solutions.p.tex --latex_quote=&
+cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
 system doconce format html testdoc.do.txt $ex --html_style=bootstrap --html_template=template_vagrant.html --html_toc_indent=0 $rawgit
@@ -68,12 +68,12 @@ system doconce split_html testdoc.html --nav_button=gray2,bottom
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
-system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments --latex_quote=&
+system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
 
-system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]" --latex_quote=&
+system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_quote=&
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -136,7 +136,7 @@ system doconce format ipynb testdoc.do.txt $ex
 system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 MYVAR2='a string' $ex
 
 # Test pandoc: from latex to markdown, from markdown to html
-system doconce format latex testdoc.do.txt $ex --latex_title_layout=std --latex_quote=&
+system doconce format latex testdoc.do.txt $ex --latex_title_layout=std
 system doconce ptex2tex testdoc
 
 #doconce subst -s 'And here is a system of equations with labels.+?\\section' '\\section' testdoc.tex
