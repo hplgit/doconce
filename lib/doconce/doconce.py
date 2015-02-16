@@ -2926,7 +2926,7 @@ def inline_tag_subst(filestr, format):
 
     # Treat tags that have format-dependent typesetting
 
-    ordered_tags = (
+    ordered_tags = [
         'horizontal-rule',  # must be done before sections (they can give ---- in some formats)
         'title',
         'date',
@@ -2952,7 +2952,11 @@ def inline_tag_subst(filestr, format):
         'chapter', 'section', 'subsection', 'subsubsection',
         'linebreak',
         'non-breaking-space',  # must become after math, colortext, links, etc
-        )
+        ]
+    if option('no_ampersand_quote'):
+        ordered_tags.remove('ampersand1')
+        ordered_tags.remove('ampersand2')
+
     for tag in ordered_tags:
         debugpr('\n*************** Working with tag "%s"' % tag)
         tag_pattern = INLINE_TAGS[tag]

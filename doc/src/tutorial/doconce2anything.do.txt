@@ -756,6 +756,12 @@ This is enabled by the options `--latex_line_numbers --latex_double_spacing --la
 `final` argument in the `documentclass` heading to `draft` as this will
 mark overful lines (hboxes).
 
+Another useful option for LaTeX documents is `--no_ampersand_quote`, which
+prevents ampersands from getting a backskash. This is necessary if one
+inserts native latex code for tables
+inside `% if FORMAT in ('latex', 'pdflatex'):` (or similar `preprocess` syntax)
+tests.
+
 idx{LaTeX syntax highlighting}
 
 __Step 2.__ In case you did not specify the `--latex_code_style=` option,

@@ -703,6 +703,9 @@ __${heading}.__ Some text.
 
 % endfor
 
+## Recall that latex requires --latex_quote=& for the ampersands tests
+## below to work
+
 __Ampersand.__
 We can test Hennes & Mauritz, often abbreviated H & M, but written
 as `Hennes & Mauritz` and `H & M`.
