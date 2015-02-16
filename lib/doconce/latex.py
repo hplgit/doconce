@@ -119,7 +119,6 @@ def latex_code_envir(
     if package == 'pyg':
         begin = '\\begin{minted}[%s]{%s}' % (pyg_style, envir2pyg.get(envir, 'text'))
         end = '\\end{minted}'
-
     elif package == 'lst':
         if envir2lst.get(envir, 'text') == 'text':
             begin = '\\begin{lstlisting}[language=Python,%s]' % (lst_style, )
@@ -383,6 +382,9 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # --- Final fixes for latex format ---
 
+    # AMS move this line from below and here 
+    latex_style = option('latex_style=', 'std')
+
     chapters = True if re.search(r'\\chapter\{', filestr) is not None else False
 
     # \texttt{>>>} gives very strange typesetting in the Springer book,
@@ -440,12 +442,22 @@ def latex_code(filestr, code_blocks, code_block_types,
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
-    replacement = pattern + r"""\begin{doconceexercise}
+# AMS begin
+    if latex_style == 'Springer_lnup':
+        replacement = pattern
+    else:
+        replacement = pattern + r"""\begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 """
+# AMS end
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    replacement = r'\end{doconceexercise}' + '\n' + pattern
+    # AMS begin
+    if latex_style != 'Springer_lnup':
+        replacement = r'\end{doconceexercise}' + '\n' + pattern
+    else:
+        replacement = r'\end{exercise}' + '\n' + pattern
+    # AMS end
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
@@ -467,9 +479,16 @@ def latex_code(filestr, code_blocks, code_block_types,
         exercise_headings = re.findall(exercise_pattern, filestr)
         if exercise_headings:
             if option('latex_list_of_exercises=', 'none') == 'none':
-                filestr = re.sub(exercise_pattern,
+                # AMS begin
+                if latex_style == 'Springer_lnup':
+                    filestr = re.sub(exercise_pattern,
+        r"""begin{exercise}{\g<3>
+""", filestr)
+                else:
+                    filestr = re.sub(exercise_pattern,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
+                # AMS end
             elif option('latex_list_of_exercises=', 'none') == 'toc':
                 filestr = re.sub(exercise_pattern,
         r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
@@ -561,15 +580,16 @@ def latex_code(filestr, code_blocks, code_block_types,
                     target = r'\tableofcontents'
                     filestr = filestr.replace(
                         target, target + insert_listofexercises)
-
-
+    # AMS begin
+    if latex_style != 'Springer_lnup':
     # Subexercise headings should utilize \subex{} and not plain \paragraph{}
-    subex_header_postfix = option('latex_subex_header_postfix=', ')')
+        subex_header_postfix = option('latex_subex_header_postfix=', ')')
     # Default is a), b), but could be a:, b:, or a. b.
-    filestr = re.sub(r'\\paragraph\{([a-z])\)\}',
+        filestr = re.sub(r'\\paragraph\{([a-z])\)\}',
                      r'\subex{\g<1>%s}' % subex_header_postfix,
                      filestr)
-
+    # AMS end
+    
     # Avoid Filename: as a new paragraph with indentation
     filestr = re.sub(r'^(Filenames?): +?\\code\{',
                      r'\\noindent \g<1>: \code{', filestr,
@@ -664,7 +684,8 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = filestr.replace(line, new_line)
     # paragraphadmon also needs \protect\Verb
 
-    latex_style = option('latex_style=', 'std')
+    # AMS commented out the following line and moved up
+    #latex_style = option('latex_style=', 'std')
     if latex_style == 'elsevier':
         filestr = filestr.replace(r'\title{', r"""\begin{frontmatter}
 
@@ -779,14 +800,27 @@ def latex_figure(m, includegraphics=True):
     # fraction is 0.9/linewidth by default, but can be adjusted with
     # the fraction keyword
     frac = 0.9
+    # AMS begin
+    sidecaption = 0
+    # AMS end
     opts = m.group('options')
     if opts:
         info = [s.split('=') for s in opts.split()]
         for opt, value in info:
             if opt == 'frac':
                 frac = float(value)
+        # AMS begin 
+        for opt, value in info:
+            if opt == 'sidecap':
+                sidecaption = 1
+        # AMS end
     if includegraphics:
-        includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+        # AMS begin
+        if sidecaption==1:
+            includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+        else:
+            includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+        # AMS end
     else:
         includeline = r'\centerline{\psfig{figure=%s,width=%s\linewidth}}' % (filename, frac)
 
@@ -835,9 +869,13 @@ def latex_figure(m, includegraphics=True):
         verbatim_text_new.append(new_words)
     for from_, to_ in zip(verbatim_text, verbatim_text_new):
         caption = caption.replace(from_, to_)
+    # AMS begin
+    if sidecaption == 1:
+        includeline='\sidecaption[t] '+includeline
+    # AMS end        
     if caption:
         result = r"""
-\begin{figure}[ht]
+\begin{figure}[t]
   %s
   \caption{
   %s
@@ -1202,13 +1240,15 @@ def latex_title(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     section_headings = option('latex_section_headings=', 'std')
 
-    if latex_style in ("Springer_T2", "Springer_lncse"):
+    # AMS begin
+    if latex_style in ("Springer_T2", "Springer_lncse", "Springer_lnup"):
+    # AMS end
         text += r"""
 \frontmatter
 \setcounter{page}{3}
 \pagestyle{headings}
 """
-    elif latex_style == "Springer_lncse":
+    elif latex_style in ("Springer_lncse"):
         text += r"""
 % With hyperref loaded, \contentsline needs 3 args
 %\contentsline{chapter}{Bibliography}{829}{chapter.Bib}
@@ -1218,8 +1258,10 @@ def latex_title(m):
 
 % ----------------- title -------------------------
 """
+    # AMS begin
     if title_layout == "std" or \
-           latex_style in ('siamltex', 'siamltexmm', 'elsevier'):
+           latex_style in ('siamltex', 'siamltexmm', 'elsevier','Springer_lnup'):
+    # AMS end
         if section_headings in ("blue", "strongblue"):
             text += r"""
 \title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
@@ -1320,7 +1362,9 @@ def latex_author(authors_and_institutions, auth2index,
     title_layout = option('latex_title_layout=', 'doconce_heading')
     latex_style = option('latex_style=', 'std')
 
-    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm'):
+    # AMS begin
+    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm','Springer_lnup'):
+    # AMS end
         # Traditional latex heading
         text += r"""
 \author{"""
@@ -2311,17 +2355,21 @@ def define(FILENAME_EXTENSION,
     latex_style = option('latex_style=', 'std')
     title_layout = option('latex_title_layout=', 'doconce_heading')
 
+    # AMS begin
     if latex_style not in ('std', 'Springer_T2', 'siamltex', 'siamltexmm',
-                           'elsevier'):
+                           'elsevier','Springer_lnup'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
-
+    # AMS end
+    
     toc_part = ''
     if title_layout != 'beamer':
         toc_part += r"""
 \tableofcontents
 """
-    if latex_style == 'Springer_lncse':
+    # AMS begin
+    if latex_style in  ('Springer_lncse', 'Springer_lnup'):
+    # AMS end
         toc_part += r"""
 \contentsline{chapter}{\refname}{%(bib_page)s}{chapter.Bib}
 \contentsline{chapter}{Index}{%(idx_page)s}{chapter.Index}
@@ -2342,6 +2390,13 @@ def define(FILENAME_EXTENSION,
 \mymainmatter
 """
 
+    # AMS begin
+    if latex_style == 'Springer_lnup':
+        toc_part += r"""
+\mainmatter
+"""
+    #AMS end
+    
     TOC['latex'] = lambda s: toc_part
     QUIZ['latex'] = latex_quiz
 
@@ -2454,6 +2509,25 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \documentclass[envcountsect,open=right]{lncse}
 \pagestyle{headings}
 """
+    # AMS begin
+    elif latex_style == 'Springer_lnup':
+        copy_latex_packages(['svmonodo.cls', 't2do.sty'])
+        INTRO['latex'] += r"""
+% Style: Lecture Notes in Undergraduate Physics 2 (Springer)
+\documentclass[graybox,envcountchap,sectrefs]{svmonodo}
+%\pagestyle{headings}
+\usepackage{mathptmx}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{type1cm}
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage{subeqnarray}
+\usepackage[bottom]{footmisc}
+\usepackage{cite}
+\usepackage{multicol}
+"""
+    # AMS end
     elif latex_style == 'Springer_T2':
         copy_latex_packages(['svmonodo.cls', 't2do.sty'])
         INTRO['latex'] += r"""
@@ -2526,11 +2600,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
   ]{geometry}
 """
 
-    INTRO['latex'] += r"""
+    # AMS begin
+    if latex_style != 'Springer_lnup':
+      INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 """
+    else:
+      INTRO['latex'] += r"""
+\usepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage[table]{xcolor}
+\usepackage{bm}
+"""
+    # AMS end
+    
     if 'FIGURE' in filestr:
         INTRO['latex'] += r"""
 \usepackage{graphicx}
@@ -2595,14 +2679,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 INTRO['latex'] += '\n' + r'\usepackage{graphicx}'
 
             INTRO['latex'] += '\n\n'
-
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
         if latex_code_style is None:
             # Rely on ptex2tex step
             INTRO['latex'] += r"""
 \usepackage{ptex2tex}
-
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
@@ -2697,10 +2779,19 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 """
-    else:
+    # AMS begin
+    elif latex_style == 'Springer_lnup':
         INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
+\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+"""
+    # AMS end
+    else:
+        INTRO['latex'] += r"""
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
 \usepackage{ucs}
 \usepackage[utf8x]{inputenc}
 """
@@ -2716,10 +2807,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
-    INTRO['latex'] += r"""
+    # AMS begin
+    if latex_style != 'Springer_lnup':
+        INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
-
+    # AMS end
+    
     if '!bquiz' in filestr:
         INTRO['latex'] += r"""
 \newenvironment{doconcequiz}{}{}
@@ -2776,7 +2870,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
 
     if 'FIGURE:' in filestr:
-        INTRO['latex'] += r"""
+        # AMS begin
+        if latex_style != 'Springer_lnup':
+        # AMS end
+           INTRO['latex'] += r"""
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
@@ -3312,7 +3409,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             break
 
-    if chapters and latex_style not in ("Koma_Script", "Springer_T2"):
+    # AMS begin
+    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_lnup"):
+    # AMS end
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
         # (Koma has its own solution to the problem, svmono.cls has the command)
