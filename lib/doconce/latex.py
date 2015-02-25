@@ -2647,6 +2647,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 INTRO['latex'] += '\n' + r'\usepackage{graphicx}'
 
             INTRO['latex'] += '\n\n'
+
+    m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
+    if m:
+        INTRO['latex'] += '\\usepackage{fancyvrb}\n'
+
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
         if latex_code_style is None:
