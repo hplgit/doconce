@@ -269,21 +269,18 @@ Automatically generated HTML file from DocOnce source
                'install:doconce'),
               (' DocOnce ', 2, None, '___sec143'),
               (' Dependencies ', 2, None, '___sec144'),
-              (' Preprocessors ', 3, None, '___sec145'),
-              (' Image file handling ', 3, None, '___sec146'),
-              (' Spellcheck ', 3, None, '___sec147'),
-              (' Bibliography ', 3, None, '___sec148'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec149'),
-              (' LaTeX packages ', 3, None, '___sec150'),
-              (' reStructuredText (reST) Output ', 3, None, '___sec151'),
-              (' Sphinx Output ', 3, None, '___sec152'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec153'),
-              (' Epydoc Output ', 3, None, '___sec154'),
-              (' Analyzing file differences ', 3, None, '___sec155'),
-              (' Quick Debian/Ubuntu Install ',
-               2,
-               'install:debian:script',
-               'install:debian:script'),
+              (' Python v2.7 ', 3, None, '___sec145'),
+              (' Preprocessors ', 3, None, '___sec146'),
+              (' Bibliography ', 3, None, '___sec147'),
+              (' Image file handling ', 3, None, '___sec148'),
+              (' Spellcheck ', 3, None, '___sec149'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec150'),
+              (' Pygments and the Minted Code Style ', 3, None, '___sec151'),
+              (' LaTeX packages ', 3, None, '___sec152'),
+              (' Sphinx or reStructuredText Output ', 3, None, '___sec153'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec154'),
+              (' Epydoc Output ', 3, None, '___sec155'),
+              (' Analyzing file differences ', 3, None, '___sec156'),
               (' Basic Parsing Ideas ', 1, None, '___sec157'),
               (' Typesetting of Function Arguments, Return Values, and Variables ',
                2,
@@ -1150,7 +1147,7 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_papersize=a4,a6</code></li>
  <li> <code>--latex_bibstyle=plain</code> (name of BibTeX style)</li>
  <li> <code>--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection</code></li>
- <li> <code>--latex_style=std, Springer_lncse, Springer_llncs, Springer_T2, siamltex, siamltexmm, elsevier</code></li>
+ <li> <code>--latex_style=std, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, siamltex, siamltexmm, elsevier</code></li>
  <li> <code>--latex_list_of_exercises=loe,toc,none</code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
  <li> <code>--latex_fancy_header</code> (chapter/section headings at top of pages, style depends on value of <code>--latex_section_headings</code>)</li>
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -1173,13 +1170,20 @@ look for options starting with <code>--latex</code> to get a more verbose descri
 The LaTeX style is much governed by <code>--latex_title_layout</code> and <code>--latex_style</code>.
 For the former, <code>titlepage</code> gives a separate title page; <code>std</code> is just standard
 LaTeX handling of title, author, and date; <code>doconce_heading</code> is a more modern heading, <code>Springer_collection</code> is used with <code>--latex_style=Springer_lncse</code> for an edited book; <code>beamer</code> is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For <code>--latex_style</code>,
-<code>std</code> gives standard LaTeX behavior; <code>Springer_lncse</code> is for Springer's LNCSE book series style (to be used with <code>--latex_title_layout=Springer_collection</code> if the book is an edited book); <code>Springer_llncs</code> is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres <code>--latex_title_layout=Springer_collection</code>); <code>Springer_T2</code> for Springer's T2 book layout, <code>siamltex</code>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>siamltexmm</code> for the new multimedia SIAM journal style (requires <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>elsevier</code> for the style of papers to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can be used to set the journal name, and the style requires <code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
+<code>std</code> gives standard LaTeX behavior; <code>Springer_lncse</code> is for Springer's LNCSE book series style (to be used with <code>--latex_title_layout=Springer_collection</code> if the book is an edited book); <code>Springer_llncs</code> is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres <code>--latex_title_layout=Springer_collection</code>); <code>Springer_lnup</code> for Springer's Lecture Notes for Undergraduate Physics books, <code>Springer_T2</code> for Springer's T2 book layout, <code>siamltex</code>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>siamltexmm</code> for the new multimedia SIAM journal style (requires <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>elsevier</code> for the style of papers to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can be used to set the journal name, and the style requires <code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
 
 <p>
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <code>--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin</code>. One may also (automatically) edit the
 <code>final</code> argument in the <code>documentclass</code> heading to <code>draft</code> as this will
 mark overful lines (hboxes).
+
+<p>
+Another useful option for LaTeX documents is <code>--no_ampersand_quote</code>, which
+prevents ampersands from getting a backskash. This is necessary if one
+inserts native latex code for tables
+inside <code>% if FORMAT in ('latex', 'pdflatex'):</code> (or similar <code>preprocess</code> syntax)
+tests.
 
 <p>
 <b>Step 2.</b>
@@ -2024,6 +2028,11 @@ Remove all inline comments of the form [ID: comment].
 Specify encoding (e.g., latin1 or utf-8).
 
 
+--no_ampersand_quote
+
+Turn off special treatment of ampersand (&amp;). Needed, e.g., when native latex code for tables are inserted in the document.
+
+
 --no_mako
 
 Do not run the Mako preprocessor program.
@@ -2372,6 +2381,12 @@ doconce_heading (default): authors with &quot;footnotes&quot; for institutions,
 beamer: layout for beamer slides.
 
 
+--latex_encoding=...
+
+Encoding for \usepackage[encoding]{inputenc}.
+Values: utf8 (default) or latin1.
+
+
 --latex_papersize=...
 
 Geometry of page size: a6, a4, std (default).
@@ -2606,6 +2621,11 @@ Write out all OS commands run by doconce.
 
 Treat examples of the form &quot;==== Example: ...&quot;
 as in exercise environments.
+
+
+--solutions_at_end
+
+Place solutions to exercises at the end of the document.
 
 
 --without_solutions

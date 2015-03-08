@@ -958,7 +958,7 @@ programming language, very similar to Python.
 
 The command `doconce format` first runs `preprocess` and then `mako`.
 Here is a typical example on utilizing `preprocess` to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, ``comment out'' a large portion of text, and to write format-specific
 constructions:
 
 !bc

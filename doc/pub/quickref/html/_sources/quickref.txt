@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Feb 16, 2015
+:Date: Mar 8, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -233,8 +233,8 @@ after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 
 Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
 inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
-before or after. Only the ``pdflatex`` and ``html`` output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the ``pdflatex`` and ``html`` output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 ``--no_emoji`` removes all emojis from the output document.
 
@@ -243,7 +243,7 @@ Lists
 
 There are three types of lists: *bullet lists*, where each item starts
 with ``*``, *enumeration lists*, where each item starts with ``o`` and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon.
 
@@ -894,7 +894,7 @@ The syntax of a generalized reference is
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
-`:ref:`label`` references in ``internal`` are references to labels in the
+`:ref:`label" references in ``internal`` are references to labels in the
 present document. Otherwise, if cite is non-empty and the format is
 ``latex`` or ``pdflatex`` one assumes that the references in ``internal``
 are to external documents declared by a comment line ``#
@@ -931,7 +931,7 @@ list of capabilities:
 
 .. code-block:: bash
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -1244,7 +1244,7 @@ programming language, very similar to Python.
 
 The command ``doconce format`` first runs ``preprocess`` and then ``mako``.
 Here is a typical example on utilizing ``preprocess`` to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, ``comment out" a large portion of text, and to write format-specific
 constructions:
 
 .. code-block:: text
