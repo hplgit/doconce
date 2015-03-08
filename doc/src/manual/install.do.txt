@@ -105,6 +105,8 @@ A much more advanced alternative to Preprocess is
 !bc sys
 pip install Mako
 !ec
+
+# #ifdef EXTRA
 This command requires `pip` to be installed. On Debian Linux systems,
 such as Ubuntu, the installation is simply done by
 
@@ -112,17 +114,18 @@ such as Ubuntu, the installation is simply done by
 sudo apt-get install python-pip
 !ec
 Alternatively, one can install from the `pip` "source code": "http://pypi.python.org/pypi/pip".
+# #endif
 
-Mako can also be installed directly from
-"source": "http://www.makotemplates.org/download.html": download the
-tarball, pack it out, go to the directory and run
-the usual `sudo python setup.py install`.
+Note that neither Preprocess nor Mako is run if you do not have
+preprocessor directives in your DocOnce source. That is, you only need
+this extra software if you make active use of preprocessors.
 
 === Bibliography ===
 
 The Python package "Publish":
 "https://bitbucket.org/logg/publish" is needed if you use a bibliography
-in your document:
+in your document (`cite` commands and a `BIBFILE:` specification).
+The installation is done by
 
 !bc sys
 pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
@@ -131,8 +134,9 @@ pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 === Image file handling ===
 
 Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for
-`latex` output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
+For example, PDF or PNG is used for `pdflatex`,
+PostScript for
+`latex`, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
 calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The "ImageMagick suite":
 "http://www.imagemagick.org/script/index.php" can be installed on all

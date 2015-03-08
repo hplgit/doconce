@@ -8749,25 +8749,16 @@ A much more advanced alternative to Preprocess is
 
         pip install Mako
 
-This command requires ``pip`` to be installed. On Debian Linux systems,
-such as Ubuntu, the installation is simply done by
-
-.. code-block:: text
-
-        sudo apt-get install python-pip
-
-Alternatively, one can install from the ``pip`` `source code <http://pypi.python.org/pypi/pip>`__.
-
-Mako can also be installed directly from
-`source <http://www.makotemplates.org/download.html>`__: download the
-tarball, pack it out, go to the directory and run
-the usual ``sudo python setup.py install``.
+Note that neither Preprocess nor Mako is run if you do not have
+preprocessor directives in your DocOnce source. That is, you only need
+this extra software if you make active use of preprocessors.
 
 Bibliography
 ~~~~~~~~~~~~
 
 The Python package `Publish <https://bitbucket.org/logg/publish>`__ is needed if you use a bibliography
-in your document:
+in your document (``cite`` commands and a ``BIBFILE:`` specification).
+The installation is done by
 
 .. code-block:: text
 

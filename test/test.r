@@ -71387,7 +71387,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f967a937320>
+verbatim is to be replaced using <function html_verbatim at 0x7fc695f43320>
 
 
 First occurence: " `mako`."
@@ -75354,7 +75354,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Feb 16 04:59:55 2015.
+# sphinx-quickstart on Sun Mar  8 01:43:08 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76545,6 +76545,7 @@ And here is a table:
 
 ************** File: make.sh *****************
 #!/bin/bash -x
+name=quickref
 
 function system {
   "$@"
@@ -76561,46 +76562,47 @@ sh ./clean.sh
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-doconce format html quickref --pygments_html_style=none --no_preprocess --no_abort
+doconce format html $name --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
 
-# latex (shpro because of @@@CODE copy, need minted style)
-system doconce format latex quickref --no_preprocess --latex_font=helvetica
-system doconce ptex2tex quickref envir=Verbatim
-# cannot run ptex2tex since it always runs preprocess
-system latex -shell-escape quickref.tex
-latex -shell-escape quickref.tex
-dvipdf quickref.dvi
+# pdflatex
+system doconce format pdflatex $name --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
+# Since we have native latex table and --no_ampersand_quote, we need to
+# manually fix the quote examples elsewhere
+doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' $name.tex
+doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' $name.tex
+system pdflatex -shell-escape $name
+system pdflatex -shell-escape $name
 
 # Sphinx
-system doconce format sphinx quickref --no_preprocess
+system doconce format sphinx $name --no_preprocess
 rm -rf sphinx-rootdir
-system doconce sphinx_dir author='HPL' version=0.7 quickref
+system doconce sphinx_dir author='HPL' $name
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 system python automake_sphinx.py
-cp quickref.rst quickref.sphinx.rst  # save
+cp $name.rst $name.sphinx.rst  # save
 
 # reStructuredText:
-system doconce format rst quickref --no_preprocess
-rst2xml.py quickref.rst > quickref.xml
-rst2odt.py quickref.rst > quickref.odt
-rst2html.py quickref.rst > quickref.rst.html
-rst2latex.py quickref.rst > quickref.rst.tex
-system latex quickref.rst.tex
-latex quickref.rst.tex
-dvipdf quickref.rst.dvi
+system doconce format rst $name --no_preprocess
+rst2xml.py $name.rst > $name.xml
+rst2odt.py $name.rst > $name.odt
+rst2html.py $name.rst > $name.rst.html
+rst2latex.py $name.rst > $name.rst.tex
+system latex $name.rst.tex
+latex $name.rst.tex
+dvipdf $name.rst.dvi
 
 # Other formats:
-system doconce format plain quickref --no_preprocess
-system doconce format gwiki quickref --no_preprocess
-system doconce format mwiki quickref --no_preprocess
-system doconce format cwiki quickref --no_preprocess
-system doconce format st quickref --no_preprocess
-system doconce format epytext quickref --no_preprocess
-system doconce format pandoc quickref --no_preprocess --strict_markdown_output --github_md
+system doconce format plain $name --no_preprocess
+system doconce format gwiki $name --no_preprocess
+system doconce format mwiki $name --no_preprocess
+system doconce format cwiki $name --no_preprocess
+system doconce format st $name --no_preprocess
+system doconce format epytext $name --no_preprocess
+system doconce format pandoc $name --no_preprocess --strict_markdown_output --github_md
 
 rm -rf demo
 mkdir demo
-cp -r quickref.do.txt quickref.html quickref.p.tex quickref.tex quickref.pdf quickref.rst quickref.xml quickref.rst.html quickref.rst.tex quickref.rst.pdf quickref.gwiki quickref.mwiki quickref.cwiki quickref.txt quickref.epytext quickref.st quickref.md sphinx-rootdir/_build/html demo
+cp -r $name.do.txt $name.html $name.p.tex $name.tex $name.pdf $name.rst $name.xml $name.rst.html $name.rst.tex $name.rst.pdf $name.gwiki $name.mwiki $name.cwiki $name.txt $name.epytext $name.st $name.md sphinx-rootdir/_build/html demo
 
 cd demo
 cat > index.html <<EOF
@@ -76609,44 +76611,44 @@ cat > index.html <<EOF
 <H3>Doconce demo</H3>
 
 Doconce is a minimum tagged markup language. The file
-<a href="quickref.do.txt">quickref.do.txt</a> is the source of the
-Doconce quickref, written in the Doconce format.
+<a href="$name.do.txt">$name.do.txt</a> is the source of the
+Doconce $name, written in the Doconce format.
 Running
 <pre>
-doconce format html quickref.do.txt
+doconce format html $name.do.txt
 </pre>
-produces the HTML file <a href="quickref.html">quickref.html</a>.
+produces the HTML file <a href="$name.html">$name.html</a>.
 Going from Doconce to LaTeX is done by
 <pre>
-doconce format latex quickref.do.txt
+doconce format latex $name.do.txt
 </pre>
-resulting in the file <a href="quickref.tex">quickref.tex</a>, which can
-be compiled to a PDF file <a href="quickref.pdf">quickref.pdf</a>
+resulting in the file <a href="$name.tex">$name.tex</a>, which can
+be compiled to a PDF file <a href="$name.pdf">$name.pdf</a>
 by running <tt>latex</tt> and <tt>dvipdf</tt> the standard way.
 <p>
 The reStructuredText (reST) format is of particular interest:
 <pre>
-doconce format rst    quickref.do.txt  # standard reST
-doconce format sphinx quickref.do.txt  # Sphinx extension of reST
+doconce format rst    $name.do.txt  # standard reST
+doconce format sphinx $name.do.txt  # Sphinx extension of reST
 </pre>
-The reST file <a href="quickref.rst">quickref.rst</a> is a starting point
+The reST file <a href="$name.rst">$name.rst</a> is a starting point
 for conversion to many other formats: OpenOffice,
-<a href="quickref.xml">XML</a>, <a href="quickref.rst.html">HTML</a>,
-<a href="quickref.rst.tex">LaTeX</a>,
-and from LaTeX to <a href="quickref.rst.pdf">PDF</a>.
-The <a href="quickref.sphinx.rst">Sphinx</a> dialect of reST
-can be translated to <a href="quickref.sphinx.pdf">PDF</a>
+<a href="$name.xml">XML</a>, <a href="$name.rst.html">HTML</a>,
+<a href="$name.rst.tex">LaTeX</a>,
+and from LaTeX to <a href="$name.rst.pdf">PDF</a>.
+The <a href="$name.sphinx.rst">Sphinx</a> dialect of reST
+can be translated to <a href="$name.sphinx.pdf">PDF</a>
 and <a href="html/index.html">HTML</a>.
 <p>
 Doconce can also be converted to
-<a href="quickref.gwiki">Googlecode wiki</a>,
-<a href="quickref.mwiki">MediaWiki</a>,
-<a href="quickref.cwiki">Creole wiki</a>,
-<a href="quickref.md">aPandoc</a>,
-<a href="quickref.st">Structured Text</a>,
-<a href="quickref.epytext">Epytext</a>,
+<a href="$name.gwiki">Googlecode wiki</a>,
+<a href="$name.mwiki">MediaWiki</a>,
+<a href="$name.cwiki">Creole wiki</a>,
+<a href="$name.md">aPandoc</a>,
+<a href="$name.st">Structured Text</a>,
+<a href="$name.epytext">Epytext</a>,
 and maybe the most important format of all:
-<a href="quickref.txt">plain untagged ASCII text</a>.
+<a href="$name.txt">plain untagged ASCII text</a>.
 </BODY>
 </HTML>
 EOF
@@ -76655,10 +76657,10 @@ echo
 echo "Go to the demo directory and load index.html into a web browser."
 
 cd ..
-dest=../../pub/quickref
-cp -r demo/html demo/quickref.pdf demo/quickref.html $dest
+dest=../../pub/$name
+cp -r demo/html demo/$name.pdf demo/$name.html $dest
 dest=../../../../doconce.wiki
-cp -r demo/quickref.rst $dest
+cp -r demo/$name.rst $dest
 
 ************** File: quickref.do.txt *****************
 TITLE: DocOnce Quick Reference
@@ -76869,8 +76871,8 @@ after `&` will result in wrong typesetting of the ampersand in the `html`,
 
 Emojis, as defined in URL: "http://www.emoji-cheat-sheet.com", can be
 inserted in the text, as (e.g.) `:dizzy_face:` with blank or newline
-before or after. Only the `pdflatex` and `html` output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the `pdflatex` and `html` output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 `--no_emoji` removes all emojis from the output document.
 
@@ -76878,7 +76880,7 @@ textual specification in the document. The command-line option
 
 There are three types of lists: *bullet lists*, where each item starts
 with `*`, *enumeration lists*, where each item starts with `o` and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with `-` followed
 by a keyword and a colon.
 !bc
@@ -77621,7 +77623,7 @@ programming language, very similar to Python.
 
 The command `doconce format` first runs `preprocess` and then `mako`.
 Here is a typical example on utilizing `preprocess` to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, ``comment out'' a large portion of text, and to write format-specific
 constructions:
 
 !bc
@@ -77677,58 +77679,11 @@ Automatically generated HTML file from DocOnce source
 
 <title>DocOnce Quick Reference</title>
 
-
-<style type="text/css">
-/* blueish style */
-
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
-
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-pre { background: #ededed; color: #000; padding: 15px;}
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-.alert-text-small   { font-size: 80%;  }
-.alert-text-large   { font-size: 130%; }
-.alert-text-normal  { font-size: 90%;  }
-.alert {
-  padding:8px 35px 8px 14px; margin-bottom:18px;
-  text-shadow:0 1px 0 rgba(255,255,255,0.5);
-  border:1px solid #bababa;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  color: #555;
-  background-color: #f8f8f8;
-  background-position: 10px 5px;
-  background-repeat: no-repeat;
-  background-size: 38px;
-  padding-left: 55px;
-  width: 75%;
- }
-.alert-block {padding-top:14px; padding-bottom:14px}
-.alert-block > p, .alert-block > ul {margin-bottom:1em}
-.alert li {margin-top: 1em}
-.alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
-
-div { text-align: justify; text-justify: inter-word; }
-</style>
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
 
 </head>
@@ -77781,10 +77736,38 @@ MathJax.Hub.Config({
 
 
     
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="quickref.html">DocOnce Quick Reference</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
 <!-- ------------------- main content ---------------------- -->
 
 
 
+<div class="jumbotron">
 <center><h1>DocOnce Quick Reference</h1></center>  <!-- document title -->
 
 <p>
@@ -77842,6 +77825,11 @@ include Google's <code>blogger.com</code>, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
+<p>
+
+
+</div> <!-- end jumbotron -->
+
 <h2 id="___sec0">Supported Formats </h2>
 
 <p>
@@ -77880,9 +77868,12 @@ Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-8">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">  Emacs key  </th> <th align="center">                           Action                           </th> </tr>
+<tr><td align="center"><b>  Emacs key  </b></td> <td align="center"><b>                           Action                           </b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   Ctrl+c f         </td> <td align="left">   figure                                                          </td> </tr>
@@ -77902,7 +77893,9 @@ provides a lot of shortcuts for setting up many elements in a document:
 <tr><td align="left">   Ctrl+c slide     </td> <td align="left">   slide outline                                                   </td> </tr>
 <tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                                                </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-8 -->
 
 <h2 id="___sec2">Title, Authors, and Date </h2>
 
@@ -77946,9 +77939,12 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <h2 id="quick:sections">Section Types</h2>
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-9">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
+<tr><td align="center"><b> Section type</b></td> <td align="center"><b>                              Syntax                             </b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   chapter          </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
@@ -77962,7 +77958,9 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <tr><td align="left">   exercise         </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
 <tr><td align="left">   exercise         </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-9 -->
 <p>
 Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
 <code>__Summary.__</code> at the beginning of a line and ending with three or
@@ -78072,8 +78070,8 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 <p>
 Emojis, as defined in <a href="http://www.emoji-cheat-sheet.com" target="_self"><tt>http://www.emoji-cheat-sheet.com</tt></a>, can be
 inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
-before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 <code>--no_emoji</code> removes all emojis from the output document.
 
@@ -78082,7 +78080,7 @@ textual specification in the document. The command-line option
 <p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
 with <code>*</code>, <em>enumeration lists</em>, where each item starts with <code>o</code> and gets
-consqutive numbers,
+consecutive numbers,
 and <em>description</em> lists, where each item starts with <code>-</code> followed
 by a keyword and a colon.
 <!-- begin verbatim block -->
@@ -78174,9 +78172,7 @@ And finally a description list:
    and its description may fit on one line
 </dl>
 
-<div class="alert alert-block alert-warning alert-text-normal">
-<b>No indentation - except in lists!</b>
-<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>No indentation - except in lists!</b>
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -78503,9 +78499,7 @@ is also important, one should follow these rules:
 labels in <code>align</code> environments work well.)
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal">
-<b>Notice.</b>
-<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -78805,7 +78799,7 @@ list of capabilities:
 
 <p>
 <!-- begin verbatim block  shpro-->
-<pre><code>DocOnce version 1.0.2
+<pre><code>DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -79111,7 +79105,7 @@ programming language, very similar to Python.
 <p>
 The command <code>doconce format</code> first runs <code>preprocess</code> and then <code>mako</code>.
 Here is a typical example on utilizing <code>preprocess</code> to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, &quot;comment out&quot; a large portion of text, and to write format-specific
 constructions:
 
 <p>
@@ -79162,41 +79156,28 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 <!-- ------------------- end of main content --------------- -->
 
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
 
 </body>
 </html>
     
 
 
-************** File: quickref.p.tex *****************
+************** File: quickref.tex *****************
 %%
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
-% #ifdef PTEX2TEX_EXPLANATION
-%%
-%% The file follows the ptex2tex extended LaTeX format, see
-%% ptex2tex: http://code.google.com/p/ptex2tex/
-%%
-%% Run
-%%      ptex2tex myfile
-%% or
-%%      doconce ptex2tex myfile
-%%
-%% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
-%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
-%% Many preprocess options can be added to ptex2tex or doconce ptex2tex
-%%
-%%      ptex2tex -DMINTED myfile
-%%      doconce ptex2tex myfile envir=minted
-%%
-%% ptex2tex will typeset code environments according to a global or local
-%% .ptex2tex.cfg configure file. doconce ptex2tex will typeset code
-%% according to options on the command line (just type doconce ptex2tex to
-%% see examples). If doconce ptex2tex has envir=minted, it enables the
-%% minted style without needing -DMINTED.
-% #endif
 
 % #define PREAMBLE
 
@@ -79210,7 +79191,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \listfiles               % print all files needed to compile this document
 
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
@@ -79226,11 +79207,65 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconce:movie:counter}
 
 
-\usepackage{ptex2tex}
-% #ifdef MINTED
-\usepackage{minted}
-\usemintedstyle{default}
-% #endif
+% Packages for typesetting blocks of computer code
+\usepackage{framed,fancyvrb,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% New ansi colors
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+% Background for code blocks (parameter is color name)
+\newenvironment{cod}[1]{%
+   \def\FrameCommand{\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
+% Background for complete program blocks (parameter 1 is color name
+% for background, parameter 2 is color for left bar)
+\newenvironment{pro}[2]{%
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+ {\unskip\medskip\endMakeFramed}
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -79597,19 +79632,19 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
 AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
 AUTHOR: A. Dummy Author
 DATE: today
 TOC: on
-\eccq
+\end{Verbatim}
 The entire title must appear on a single line.
 The author syntax is
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 name Email: somename@adr.net at institution1 & institution2
-\eccq
+\end{Verbatim}
 where the email is optional, the "at" keyword is required if one or
 more institutions are to be specified, and the \Verb!&! keyword
 separates the institutions (the keyword \Verb!and! works too).
@@ -79665,16 +79700,16 @@ Words surrounded by \Verb!*! are emphasized: \Verb!*emphasized words*! becomes
 appear in boldface: \Verb!_boldface_! becomes \textbf{boldface}. Colored words
 are also possible: the text
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 `color{red}{two red words}`
-\eccq
+\end{Verbatim}
 becomes \textcolor{red}{two red words}.
 
 Quotations appear inside double backticks and double single quotes:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 This is a sentence with ``words to be quoted''.
-\eccq
+\end{Verbatim}
 
 A forced linebreak is specified by \Verb!<linebreak>! at the point where the
 linebreak in the output is wanted.
@@ -79682,7 +79717,7 @@ linebreak in the output is wanted.
 Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Differentiating[^diff2] (ref{eq1}) leads
 to a new and simpler equation.
 
@@ -79690,13 +79725,13 @@ to a new and simpler equation.
 $\nabla\cdot$ on both sides.
 
 Here comes a new paragraph...
-\eccq
+\end{Verbatim}
 
 Non-breaking space is inserted using the tilde character as in {\LaTeX}:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 This distance corresponds to 7.5~km, which is traveled in $7.5/5$~s.
-\eccq
+\end{Verbatim}
 
 A horizontal rule for separating content vertically, like this:
 
@@ -79704,36 +79739,35 @@ A horizontal rule for separating content vertically, like this:
 
 is typeset as four or more hyphens on a single line:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ---------
-\eccq
+\end{Verbatim}
 
 The \Verb!latex!, \Verb!pdflatex!, \Verb!sphinx!, and \Verb!html! formats support em-dash,
 indicated by three hyphens: \Verb!---!. Here is an example:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences---this way, or in quotes:
 *Premature optimization is the root of all evil.*--- Donald Knuth.
-\eccq
-This text is in the latex rendered as
+\end{Verbatim}
+This text is in the pdflatex rendered as
 
 The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences---this way, or in quotes:
 \emph{Premature optimization is the root of all evil.}--- Donald Knuth.
 
-An ampersand, as in Guns {\&} Roses or Texas A{\&}M, is written as a
+An ampersand, as in Guns {\&} Roses or,Texas A {\&} M, is written as a
 plain \Verb!&! \emph{with space(s) on both sides}. Single upper case letters on each
-side of \Verb!&!, as in \Verb!Texas A & M!, remove the spaces and result in
-Texas A{\&}M, while words on both sides of \Verb!&!, as in \Verb!Guns & Roses!,
+side of \Verb!&!, as in \Verb!Texas A {\&} M!, remove the spaces and result in,Texas A {\&} M, while words on both sides of \Verb!&!, as in \Verb!Guns {\&} Roses!,
 preserve the spaces: Guns {\&} Roses. Failing to have spaces before and
 after \Verb!&! will result in wrong typesetting of the ampersand in the \Verb!html!,
 \Verb!latex!, and \Verb!pdflatex! formats.
 
 Emojis, as defined in \href{{http://www.emoji-cheat-sheet.com}}{\nolinkurl{http://www.emoji-cheat-sheet.com}}, can be
 inserted in the text, as (e.g.) \Verb!:dizzy_face:! with blank or newline
-before or after. Only the \Verb!pdflatex! and \Verb!html! output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the \Verb!pdflatex! and \Verb!html! output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 \Verb!--no_emoji! removes all emojis from the output document.
 
@@ -79741,10 +79775,10 @@ textual specification in the document. The command-line option
 
 There are three types of lists: \emph{bullet lists}, where each item starts
 with \Verb!*!, \emph{enumeration lists}, where each item starts with \Verb!o! and gets
-consqutive numbers,
+consecutive numbers,
 and \emph{description} lists, where each item starts with \Verb!-! followed
 by a keyword and a colon.
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Here is a bullet list:
 
  * item1
@@ -79777,7 +79811,7 @@ And finally a description list:
  - keyword2:
    followed by text on the next line
  - keyword3: and its description may fit on one line
-\eccq
+\end{Verbatim}
 The code above follows.
 
 Here is a bullet list:
@@ -79877,18 +79911,18 @@ DocOnce starts processing the file.
 Inline comments meant as messages or notes, to authors during development
 in particular,
 are enabled by the syntax
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 [name: running text]
-\eccq
+\end{Verbatim}
 where \Verb!name! is the name or ID of an author or reader making the comment,
 and \Verb!running text! is the comment. The name can contain upper and lower
 case characters, digits, single quote, \Verb!+! and \Verb!-!, as well
 as space. Here goes an example.
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
-\eccq
+\end{Verbatim}
 which is rendered as
 
 
@@ -79904,22 +79938,22 @@ option to \Verb!doconce format!, colorful margin or inline boxes (using the
 \Verb!todonotes! package) make it very easy to spot the comments.
 
 Running
-\bsys
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 doconce format html mydoc.do.txt --skip_inline_comments
-\esys
+\end{Verbatim}
 removes all inline comments from the output. This feature makes it easy
 to turn on and off notes to authors during the development of the document.
 
 All inline comments to readers can also be physically
 removed from the DocOnce source by
-\bsys
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 doconce remove_inline_comments mydoc.do.txt
-\esys
+\end{Verbatim}
 
 Inline comments can also be used to markup edits. There are add, delete, and
 replacement comments for editing:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 [add: ,]
 [add: .]
 [add: ;]
@@ -79931,24 +79965,24 @@ replacement comments for editing:
 [del: some text]
 [edit: some text -> some replacement for text]
 [name: some text -> some replacement for text]
-\eccq
+\end{Verbatim}
 
 For example, the text
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 First consider a quantity $Q$. Without loss of generality, we assume
 $Q>0$. There are three, fundamental, basic property of $Q$.
-\eccq
+\end{Verbatim}
 can be edited as
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 First[add: ,] consider [edit: a quantity -> the flux]
 [del: $Q$. Without loss of generality,
 we assume] $Q>0$. There are three[del: ,] fundamental[del: , basic]
 [edit: property -> properties] of $Q$. [add: These are not
 important for the following discussion.]
-\eccq
-which in the latex output format results in
+\end{Verbatim}
+which in the pdflatex output format results in
 
 
 \begin{quote}
@@ -79962,16 +79996,16 @@ important for the following discussion.}
 
 To implement these edits, run
 
-\bsys
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Terminal> doconce apply_edit_comments mydoc.do.txt
-\esys
+\end{Verbatim}
 
 \subsection{Verbatim/Computer Code}
 
 Inline verbatim code is typeset within back-ticks, as in
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Some sentence with `words in verbatim style`.
-\eccq
+\end{Verbatim}
 resulting in Some sentence with \Verb!words in verbatim style!.
 
 Multi-line blocks of verbatim text, typically computer code, is typeset
@@ -79988,9 +80022,9 @@ in programming \Verb!X!, where \Verb!X! may be \Verb!py! for Python,
 \Verb!pl! for Perl. For output in \Verb!latex! one can let \Verb!xxx! reflect any
 defined verbatim environment in the \Verb!ptex2tex! configuration file
 (\Verb!.ptex2tex.cfg!). For \Verb!sphinx! output one can insert a comment
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
-\eccq
+\end{Verbatim}
 that maps environments (\Verb!xxx!) onto valid language types for
 Pygments (which is what \Verb!sphinx! applies to typeset computer code).
 
@@ -80001,22 +80035,22 @@ kinds of verbatim output.
 Here is an example of computer code (see the source of this document
 for exact syntax):
 
-\bcod
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 from numpy import sin, cos, exp, pi
 
 def f(x, y, z, t):
     return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
-\ecod
+\end{Verbatim}
 
 % When showing copy from file in !bc envir, indent a character - otherwise
 % ptex2tex is confused and starts copying...
 Computer code can also be copied from a file:
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
  @@@CODE doconce_program.sh
  @@@CODE doconce_program.sh  fromto: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
-\eccq
+\end{Verbatim}
 The \Verb!@@@CODE! identifier must appear at the very beginning of the line.
 The first line copies the complete file \Verb!doconce_program.sh!.
 The second line copies from the first line matching the \emph{regular
@@ -80064,9 +80098,9 @@ Inline expressions are written in the standard
 $Ax=b$. To help increase readability in other formats than \Verb!sphinx!,
 \Verb!latex!, and \Verb!pdflatex!, inline mathematics may have a more human
 readable companion expression. The syntax is like
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 $\sin(\norm{\bf u})$|$sin(||u||)$
-\eccq
+\end{Verbatim}
 That is, the {\LaTeX} expression appears to the left of a vertical bar (pipe
 symbol) and the more readable expression appears to the right. Both
 expressions are surrounded by dollar signs.
@@ -80076,14 +80110,14 @@ Blocks of {\LaTeX} mathematics are written within
 and
 \Verb?!et? (begin/end TeX) directives starting on the beginning of a line:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 !bt
 \begin{align*}
 \nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 !et
-\eccq
+\end{Verbatim}
 
 This {\LaTeX} code gets rendered as
 
@@ -80093,11 +80127,11 @@ This {\LaTeX} code gets rendered as
 \end{align*}
 Here is a single equation:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 !bt
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 !et
-\eccq
+\end{Verbatim}
 which results in
 
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
@@ -80169,7 +80203,7 @@ will be much more flexible and powerful).
 
 Links use either a link text or the raw URL:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Here is some "some link text": "http://some.net/address"
 (as in "search google": "http://google.com")
 or just the raw address: URL: "http://google.com".
@@ -80180,17 +80214,17 @@ Links to files typeset in verbatim mode applies backtics:
 Mail addresses works too: send problems to
 "`hpl@simula.no`": "mailto:hpl@simula.no"
 or just "send mail": "mailto:hpl@simula.no".
-\eccq
+\end{Verbatim}
 
 \subsection{Figures and Movies}
 
 Figures and movies have almost equal syntax:
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
 
 MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
 
-\eccq
+\end{Verbatim}
 Note three important syntax details:
 
 \begin{enumerate}
@@ -80221,21 +80255,21 @@ series of frames. In the latter case, a simple device in an HTML page
 will display the individual frame files as a movie.
 
 Combining several image files into one can be done by the
-\bsys
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 doconce combine_images image1 image2 ... output_image
-\esys
+\end{Verbatim}
 This command applies \Verb!montage! or PDF-based tools to combine the images
 to get the highest quality.
 
 YouTube and Vimeo movies will be embedded in \Verb!html! and \Verb!sphinx! documents
 and otherwise be represented by a link. The syntax is
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
 
 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 
-\eccq
+\end{Verbatim}
 The latter results in
 
 
@@ -80254,7 +80288,7 @@ Movie \arabic{doconce:movie:counter}: Vimeo movie.
 
 The table in Section~\ref{quick:sections} was written with this
 syntax:
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 
 |----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
@@ -80266,7 +80300,7 @@ syntax:
 | paragraph               | `__Heading.__`               (2 `_`)  |
 |-----------------------------------------------------------------|
 
-\eccq
+\end{Verbatim}
 
 Note that
 
@@ -80301,9 +80335,9 @@ load tables into spreadsheet programs for further analysis.
 
 DocOnce tables can be efficiently made directly from data in CSV files.
 
-\bsys
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
-\esys
+\end{Verbatim}
 Now we can do \Verb!# #include "mydata_table.do.txt"! in the DocOnce
 source file or simply copy the table in \Verb!mydata_table.do.txt!
 into the DocOnce file.
@@ -80314,18 +80348,18 @@ The notion of labels and references (as well as bibliography and index)
 is adopted
 from {\LaTeX} with a very similar syntax. As in {\LaTeX}, a label can be
 inserted anywhere, using the syntax
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 label{name}
-\eccq
+\end{Verbatim}
 with no backslash
 preceding the label keyword. It is common practice to choose \Verb!name!
 as some hierarchical name, using a delimiter like \Verb!:! or \Verb!_! between
 (e.g.) section, subsection, and topic.
 
 A reference to the label \Verb!name! is written as
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ref{name}
-\eccq
+\end{Verbatim}
 again with no backslash before \Verb!ref!.
 
 Use labels for sections and equations only, and preceed the reference
@@ -80336,9 +80370,9 @@ reference by parenthesis.
 \subsection{Citations and Bibliography}
 
 Single citations are written as
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 cite{name}
-\eccq
+\end{Verbatim}
 where \Verb!name! is a logical name
 of the reference (again, {\LaTeX} writers must not insert a backslash).
 Bibliography citations often have \Verb!name! on the form
@@ -80346,9 +80380,9 @@ Bibliography citations often have \Verb!name! on the form
 \Verb!YYYY! is the year of the publication.
 Multiple citations at once is possible by separating the logical names
 by comma:
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 cite{name1,name2,name3}
-\eccq
+\end{Verbatim}
 
 The bibliography is specified by a line \Verb!BIBFILE: papers.pub!,
 where \Verb!papers.pub! is a publication database in the
@@ -80366,7 +80400,7 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ref[internal][cite][external]
 
 # Example:
@@ -80375,7 +80409,7 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
 DocOnce documents may include movies.
-\eccq
+\end{Verbatim}
 The output from a generalized reference is the text \Verb!internal! if all
 \Verb!ref{label}! references in \Verb!internal! are references to labels in the
 present document. Otherwise, if cite is non-empty and the format is
@@ -80391,9 +80425,9 @@ documents.  If none of the two situations above applies, the
 DocOnce supports creating an index of keywords. A certain keyword
 is registered for the index by a syntax like (no
 backslash!)
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 index{name}
-\eccq
+\end{Verbatim}
 It is recommended to place any index of this type outside
 running text, i.e., after (sub)section titles and in the space between
 paragraphs. Index specifications placed right before paragraphs also
@@ -80407,8 +80441,8 @@ The \Verb!doconce! program can be used for a number of purposes besides
 transforming a \Verb!.do.txt! file to some format. Here is the
 list of capabilities:
 
-\bshpro
-DocOnce version 1.0.2
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -80562,7 +80596,7 @@ doconce expand_commands file1 file2 ...
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
-\eshpro
+\end{Verbatim}
 
 \subsection{Exercises}
 
@@ -80597,7 +80631,7 @@ Exercise, problem, project, or example sections contains certain \emph{elements}
 
 \noindent
 A typical sketch of a a problem without subexercises goes as follows:
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ===== Problem: Derive the Formula for the Area of an Ellipse =====
 label{problem:ellipsearea1}
 file=ellipse_area.pdf
@@ -80615,20 +80649,20 @@ Wikipedia has the formula for the curve.
 "Wolframalpha": "http://wolframalpha.com" can perhaps
 compute the integral.
 !ehint
-\eccq
+\end{Verbatim}
 If the exercise type (Exercise, Problem, Project, or Example)
 is enclosed in braces, the type is left out of the title in the
 output. For example, the if the title line above reads
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ===== {Problem}: Derive the Formula for the Area of an Ellipse =====
-\eccq
+\end{Verbatim}
 the title becomes just "Derive the ...".
 
 An exercise with subproblems, answers and full solutions has this
 setup-up:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ===== Exercise: Determine the Distance to the Moon =====
 label{exer:moondist}
 
@@ -80676,7 +80710,7 @@ directives is always typeset at the end of the exercise.
 Here goes a full solution of the whole exercise.
 !esol
 
-\eccq
+\end{Verbatim}
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments \Verb!--without_answers! and \Verb!--without_solutions!
 turn off output of answers and solutions, respectively, except for
@@ -80722,10 +80756,10 @@ programming language, very similar to Python.
 
 The command \Verb!doconce format! first runs \Verb!preprocess! and then \Verb!mako!.
 Here is a typical example on utilizing \Verb!preprocess! to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, ``comment out'' a large portion of text, and to write format-specific
 constructions:
 
-\bccq
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 # #include "myotherdoc.do.txt"
 
 # #if FORMAT in ("latex", "pdflatex")
@@ -80754,7 +80788,7 @@ constructions:
 # #ifdef EXTRA_MATERIAL
 ....large portions of text...
 # #endif
-\eccq
+\end{Verbatim}
 
 With the \Verb!mako! preprocessor the if-else tests have slightly different syntax.
 An \href{{http://hplgit.github.com/bioinf-py/}}{example document} contains
@@ -81000,8 +81034,8 @@ after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 
 Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
 inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
-before or after. Only the ``pdflatex`` and ``html`` output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the ``pdflatex`` and ``html`` output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 ``--no_emoji`` removes all emojis from the output document.
 
@@ -81010,7 +81044,7 @@ Lists
 
 There are three types of lists: *bullet lists*, where each item starts
 with ``*``, *enumeration lists*, where each item starts with ``o`` and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon::
 
@@ -81606,7 +81640,7 @@ The syntax of a generalized reference is::
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
-``label`_` references in ``internal`` are references to labels in the
+"label`_` references in ``internal`` are references to labels in the
 present document. Otherwise, if cite is non-empty and the format is
 ``latex`` or ``pdflatex`` one assumes that the references in ``internal``
 are to external documents declared by a comment line ``#
@@ -81639,7 +81673,7 @@ The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -81946,7 +81980,7 @@ programming language, very similar to Python.
 
 The command ``doconce format`` first runs ``preprocess`` and then ``mako``.
 Here is a typical example on utilizing ``preprocess`` to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, ``comment out" a large portion of text, and to write format-specific
 constructions::
 
         # #include "myotherdoc.do.txt"
@@ -82224,8 +82258,8 @@ after ``&`` will result in wrong typesetting of the ampersand in the ``html``,
 
 Emojis, as defined in `<http://www.emoji-cheat-sheet.com>`_, can be
 inserted in the text, as (e.g.) ``:dizzy_face:`` with blank or newline
-before or after. Only the ``pdflatex`` and ``html`` output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the ``pdflatex`` and ``html`` output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 ``--no_emoji`` removes all emojis from the output document.
 
@@ -82234,7 +82268,7 @@ Lists
 
 There are three types of lists: *bullet lists*, where each item starts
 with ``*``, *enumeration lists*, where each item starts with ``o`` and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon.
 
@@ -82885,7 +82919,7 @@ The syntax of a generalized reference is
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
-`:ref:`label`` references in ``internal`` are references to labels in the
+`:ref:`label" references in ``internal`` are references to labels in the
 present document. Otherwise, if cite is non-empty and the format is
 ``latex`` or ``pdflatex`` one assumes that the references in ``internal``
 are to external documents declared by a comment line ``#
@@ -82922,7 +82956,7 @@ list of capabilities:
 
 .. code-block:: bash
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -83235,7 +83269,7 @@ programming language, very similar to Python.
 
 The command ``doconce format`` first runs ``preprocess`` and then ``mako``.
 Here is a typical example on utilizing ``preprocess`` to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, ``comment out" a large portion of text, and to write format-specific
 constructions:
 
 .. code-block:: text
@@ -83487,8 +83521,8 @@ after `&` will result in wrong typesetting of the ampersand in the `html`,
 
 Emojis, as defined in http://www.emoji-cheat-sheet.com, can be
 inserted in the text, as (e.g.) `:dizzy_face:` with blank or newline
-before or after. Only the `pdflatex` and `html` output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the `pdflatex` and `html` output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 `--no_emoji` removes all emojis from the output document.
 
@@ -83496,7 +83530,7 @@ textual specification in the document. The command-line option
 
 There are three types of lists: *bullet lists*, where each item starts
 with `*`, *enumeration lists*, where each item starts with `o` and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with `-` followed
 by a keyword and a colon.
 {{{
@@ -84085,7 +84119,7 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 {{{
-DocOnce version 1.0.2
+DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -84635,8 +84669,8 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 
 Emojis, as defined in http://www.emoji-cheat-sheet.com, can be
 inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
-before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 <code>--no_emoji</code> removes all emojis from the output document.
 
@@ -84644,7 +84678,7 @@ textual specification in the document. The command-line option
 
 There are three types of lists: ''bullet lists'', where each item starts
 with <code>*</code>, ''enumeration lists'', where each item starts with <code>o</code> and gets
-consqutive numbers,
+consecutive numbers,
 and ''description'' lists, where each item starts with <code>-</code> followed
 by a keyword and a colon.
 <syntaxhighlight lang="text">
@@ -85294,7 +85328,7 @@ transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
 
 <syntaxhighlight lang="bash">
-DocOnce version 1.0.2
+DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -85848,8 +85882,8 @@ after {{{&}}} will result in wrong typesetting of the ampersand in the {{{html}}
 
 Emojis, as defined in [[http://www.emoji-cheat-sheet.com]], can be
 inserted in the text, as (e.g.) {{{:dizzy_face:}}} with blank or newline
-before or after. Only the {{{pdflatex}}} and {{{html}}} output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the {{{pdflatex}}} and {{{html}}} output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 {{{--no_emoji}}} removes all emojis from the output document.
 
@@ -85857,7 +85891,7 @@ textual specification in the document. The command-line option
 
 There are three types of lists: //bullet lists//, where each item starts
 with {{{*}}}, //enumeration lists//, where each item starts with {{{o}}} and gets
-consqutive numbers,
+consecutive numbers,
 and //description// lists, where each item starts with {{{-}}} followed
 by a keyword and a colon.
 {{{
@@ -86446,7 +86480,7 @@ transforming a {{{.do.txt}}} file to some format. Here is the
 list of capabilities:
 
 {{{
-DocOnce version 1.0.2
+DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -86970,8 +87004,8 @@ after '&' will result in wrong typesetting of the ampersand in the 'html',
 
 Emojis, as defined in "http://www.emoji-cheat-sheet.com":http://www.emoji-cheat-sheet.com, can be
 inserted in the text, as (e.g.) ':dizzy_face:' with blank or newline
-before or after. Only the 'pdflatex' and 'html' output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the 'pdflatex' and 'html' output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 '--no_emoji' removes all emojis from the output document.
 
@@ -86979,7 +87013,7 @@ Lists
 
 There are three types of lists: *bullet lists*, where each item starts
 with '*', *enumeration lists*, where each item starts with 'o' and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with '-' followed
 by a keyword and a colon::
 
@@ -87551,7 +87585,7 @@ The 'doconce' program can be used for a number of purposes besides
 transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -88070,8 +88104,8 @@ C{latex}, and C{pdflatex} formats.
 
 Emojis, as defined in U{http://www.emoji-cheat-sheet.com<http://www.emoji-cheat-sheet.com>}, can be
 inserted in the text, as (e.g.) C{:dizzy_face:} with blank or newline
-before or after. Only the C{pdflatex} and C{html} output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the C{pdflatex} and C{html} output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 C{--no_emoji} removes all emojis from the output document.
 
@@ -88080,7 +88114,7 @@ Lists
 
 There are three types of lists: I{bullet lists}, where each item starts
 with C{*}, I{enumeration lists}, where each item starts with C{o} and gets
-consqutive numbers,
+consecutive numbers,
 and I{description} lists, where each item starts with C{-} followed
 by a keyword and a colon::
 
@@ -88659,7 +88693,7 @@ The C{doconce} program can be used for a number of purposes besides
 transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -89204,8 +89238,8 @@ latex, and pdflatex formats.
 
 Emojis, as defined in http://www.emoji-cheat-sheet.com, can be
 inserted in the text, as (e.g.) :dizzy_face: with blank or newline
-before or after. Only the pdflatex and html output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the pdflatex and html output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 --no_emoji removes all emojis from the output document.
 
@@ -89214,7 +89248,7 @@ Lists
 
 There are three types of lists: *bullet lists*, where each item starts
 with *, *enumeration lists*, where each item starts with o and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with - followed
 by a keyword and a colon::
 
@@ -89825,7 +89859,7 @@ The doconce program can be used for a number of purposes besides
 transforming a .do.txt file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -90384,8 +90418,8 @@ after `&` will result in wrong typesetting of the ampersand in the `html`,
 
 Emojis, as defined in <http://www.emoji-cheat-sheet.com>, can be
 inserted in the text, as (e.g.) `:dizzy_face:` with blank or newline
-before or after. Only the `pdflatex` and `html` output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the `pdflatex` and `html` output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 `--no_emoji` removes all emojis from the output document.
 
@@ -90393,7 +90427,7 @@ textual specification in the document. The command-line option
 
 There are three types of lists: *bullet lists*, where each item starts
 with `*`, *enumeration lists*, where each item starts with `o` and gets
-consqutive numbers,
+consecutive numbers,
 and *description* lists, where each item starts with `-` followed
 by a keyword and a colon.
 
@@ -91000,7 +91034,7 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 
-        DocOnce version 1.0.2
+        DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
         
@@ -105669,11 +105703,12 @@ When we reach this point in the script,
 + echo 'it is clearly a successful run of all tests!'
 it is clearly a successful run of all tests!
 
++ name=quickref
 + set -x
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/src/quickref:
 + doconce
-+ doconce format html quickref --pygments_html_style=none --no_preprocess --no_abort
++ doconce format html quickref --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
@@ -105681,28 +105716,20 @@ copy complete file doconce_program.sh  (format: shpro)
     label{eq1} in equations
 avoided abortion because of --no-abort
 output in quickref.html
-+ system doconce format latex quickref --no_preprocess --latex_font=helvetica
-+ doconce format latex quickref --no_preprocess --latex_font=helvetica
++ system doconce format pdflatex quickref --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
++ doconce format pdflatex quickref --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
-translating doconce text in tmp_mako__quickref.do.txt to latex
+translating doconce text in tmp_mako__quickref.do.txt to pdflatex
 copy complete file doconce_program.sh  (format: shpro)
-output in quickref.p.tex
-+ '[' 0 -ne 0 ']'
-+ system doconce ptex2tex quickref envir=Verbatim
-+ doconce ptex2tex quickref envir=Verbatim
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-
-\bsys (!bc sys) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-
-\bcod (!bc cod) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-
-\bshpro (!bc shpro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=0mm]
-
 output in quickref.tex
 + '[' 0 -ne 0 ']'
-+ system latex -shell-escape quickref.tex
-+ latex -shell-escape quickref.tex
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
++ doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' quickref.tex
+([^`])Guns & Roses([^`]) replaced by \g<1>Guns {\&} Roses\g<2> in quickref.tex
++ doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' quickref.tex
+([^`])Texas A & M([^`]) replaced by \g<2>Texas A {\&} M\g<2> in quickref.tex
++ system pdflatex -shell-escape quickref
++ pdflatex -shell-escape quickref
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
@@ -105712,15 +105739,10 @@ Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
-
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
 
 
@@ -105740,9 +105762,18 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
 
@@ -105760,10 +105791,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
-Package hyperref Message: Driver (default): hdvips.
+Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
 (/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
@@ -105790,9 +105820,9 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
 ex)) 
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postsc
-ript.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
@@ -105877,11 +105907,13 @@ zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
 Writing index file quickref.idx
 No file quickref.aux.
 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
 
 ABD: EveryShipout initializing macros 
  
@@ -105896,14 +105928,15 @@ ABD: EveryShipout initializing macros
 Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
 
- [1] [2]
+ [1{/var/lib/texmf/fo
+nts/map/pdftex/updmap/pdftex.map}] [2]
 Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
 [3]
 Overfull \hbox (3.86172pt too wide) 
-[]\T1/phv/m/n/10 Emojis, as de-fined in [][][]$\T1/lmtt/m/n/10 http : / / www .
- emoji-[]cheat-[]sheet . com$[][][][]\T1/phv/m/n/10 , can be in-serted
+[]\T1/phv/m/n/10 Emojis, as de-fined in [][]$\T1/lmtt/m/n/10 http : / / www . e
+moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 [4] [5]
 
 
@@ -105963,17 +105996,12 @@ No file quickref.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-   dvips.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-dvipsnam.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -105987,10 +106015,18 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -106003,8 +106039,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
@@ -106030,8 +106064,7 @@ kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
-  hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
- pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2014/05/30 2.0: mdframed
@@ -106039,7 +106072,7 @@ mdframed.sty    2014/05/30 2.0: mdframed
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
 expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- l3dvips.def    2014/05/06 v4748 L3 Experimental driver: dvips
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -106066,6 +106099,10 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     tikz.code.tex
 md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -106095,12 +106132,26 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)
-Output written on quickref.dvi (20 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
+lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
+8a.pfb>
+Output written on quickref.pdf (20 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
-+ latex -shell-escape quickref.tex
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
++ system pdflatex -shell-escape quickref
++ pdflatex -shell-escape quickref
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
@@ -106110,15 +106161,10 @@ Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
-
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 
 
 
@@ -106138,9 +106184,18 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
 
@@ -106158,10 +106213,9 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
-Package hyperref Message: Driver (default): hdvips.
+Package hyperref Message: Driver (autodetected): hpdftex.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
 (/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
@@ -106188,9 +106242,9 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
 ex)) 
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postsc
-ript.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
@@ -106274,6 +106328,11 @@ zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
 )
 Writing index file quickref.idx
 (./quickref.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -106287,15 +106346,16 @@ Writing index file quickref.idx
 
 
  (./quickref.toc
- [1]
- [2] [3]
+ [1{/var/lib/texmf/fonts/map/pdftex/u
+pdmap/pdftex.map}] 
+[2] [3]
 Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
 [4]
 Overfull \hbox (3.86172pt too wide) 
-[]\T1/phv/m/n/10 Emojis, as de-fined in [][][]$\T1/lmtt/m/n/10 http : / / www .
- emoji-[]cheat-[]sheet . com$[][][][]\T1/phv/m/n/10 , can be in-serted
+[]\T1/phv/m/n/10 Emojis, as de-fined in [][]$\T1/lmtt/m/n/10 http : / / www . e
+moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 [5] [6]
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
@@ -106336,17 +106396,12 @@ No file quickref.ind.
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
-  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
-   dvips.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
  makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
-dvipsnam.def    2014/04/23 v3.0j Driver-dependant file (DPC,SPQR)
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 setspace.sty    2011/12/19 v6.7a set line spacing
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
@@ -106360,10 +106415,18 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
    array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
       bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -106376,8 +106439,6 @@ hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
-infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
- ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
@@ -106403,8 +106464,7 @@ kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
-  hdvips.def    2012/11/06 v6.83m Hyperref driver for dvips
- pdfmark.def    2012/11/06 v6.83m Hyperref definitions for pdfmark specials
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2014/05/30 2.0: mdframed
@@ -106412,7 +106472,7 @@ mdframed.sty    2014/05/30 2.0: mdframed
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
 expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- l3dvips.def    2014/05/06 v4748 L3 Experimental driver: dvips
+l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -106439,6 +106499,10 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
     tikz.code.tex
 md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1phv.fd    2001/06/04 scalable font definitions for T1/phv.
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -106462,10 +106526,23 @@ RS)
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)
-Output written on quickref.dvi (21 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
+lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
+8a.pfb>
+Output written on quickref.pdf (21 pages, ).
 Transcript written on quickref.log.
-+ dvipdf quickref.dvi
++ '[' 0 -ne 0 ']'
 + system doconce format sphinx quickref --no_preprocess
 + doconce format sphinx quickref --no_preprocess
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
@@ -106479,8 +106556,8 @@ copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
-+ system doconce sphinx_dir author=HPL version=0.7 quickref
-+ doconce sphinx_dir author=HPL version=0.7 quickref
++ system doconce sphinx_dir author=HPL quickref
++ doconce sphinx_dir author=HPL quickref
 Making sphinx-rootdir
 Welcome to the Sphinx 1.2.3 quickstart utility.
 
@@ -106504,7 +106581,7 @@ software. Each version can have multiple releases. For example, for
 Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
-> Project version: > Project release [0.7]: 
+> Project version: > Project release [1.0]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
 > Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
@@ -106562,6 +106639,7 @@ updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
 reading sources... [100%] quickref
 
+/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:1245: WARNING: Inline literal start-string without end-string.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -106574,7 +106652,7 @@ copying static files... done
 copying extra files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
@@ -106594,9 +106672,13 @@ copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rst2xml.py quickref.rst
+quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + rst2odt.py quickref.rst
+quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + rst2html.py quickref.rst
+quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + rst2latex.py quickref.rst
+quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + system latex quickref.rst.tex
 + latex quickref.rst.tex
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
@@ -106618,6 +106700,10 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 
@@ -106645,10 +106731,6 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 No file quickref.rst.aux.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-
-
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -107092,6 +107174,10 @@ Overfull \hbox (4.60825pt too wide)
 Overfull \hbox (47.10902pt too wide) 
 []
 [19]
+Overfull \hbox (2.78717pt too wide) 
+\T1/ptm/m/n/10 is a typ-i-cal ex-am-ple on uti-liz-ing \T1/pcr/m/n/10 preproces
+s \T1/ptm/m/n/10 to in-clude an-other doc-u-ment, [][][][][][][]comment
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
@@ -107142,6 +107228,10 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+
 
 
 
@@ -107166,10 +107256,6 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 (./quickref.rst.aux) 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./quickref.rst.out) (./quickref.rst.out)
@@ -107602,6 +107688,10 @@ Overfull \hbox (4.60825pt too wide)
 
 Overfull \hbox (47.10902pt too wide) 
 []
+
+Overfull \hbox (2.78717pt too wide) 
+\T1/ptm/m/n/10 is a typ-i-cal ex-am-ple on uti-liz-ing \T1/pcr/m/n/10 preproces
+s \T1/ptm/m/n/10 to in-clude an-other doc-u-ment, [][][][][][][]comment
 [20]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
@@ -107692,6 +107782,7 @@ output in quickref.md
 + rm -rf demo
 + mkdir demo
 + cp -r quickref.do.txt quickref.html quickref.p.tex quickref.tex quickref.pdf quickref.rst quickref.xml quickref.rst.html quickref.rst.tex quickref.rst.pdf quickref.gwiki quickref.mwiki quickref.cwiki quickref.txt quickref.epytext quickref.st quickref.md sphinx-rootdir/_build/html demo
+cp: cannot stat ‘quickref.p.tex’: No such file or directory
 + cd demo
 + cat
 + echo

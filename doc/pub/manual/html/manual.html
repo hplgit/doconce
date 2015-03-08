@@ -7364,21 +7364,15 @@ preprocessor, this program must be installed:</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install Mako
 </pre></div>
 </div>
-<p>This command requires <tt class="docutils literal"><span class="pre">pip</span></tt> to be installed. On Debian Linux systems,
-such as Ubuntu, the installation is simply done by</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install python-pip
-</pre></div>
-</div>
-<p>Alternatively, one can install from the <tt class="docutils literal"><span class="pre">pip</span></tt> <a class="reference external" href="http://pypi.python.org/pypi/pip">source code</a>.</p>
-<p>Mako can also be installed directly from
-<a class="reference external" href="http://www.makotemplates.org/download.html">source</a>: download the
-tarball, pack it out, go to the directory and run
-the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
+<p>Note that neither Preprocess nor Mako is run if you do not have
+preprocessor directives in your DocOnce source. That is, you only need
+this extra software if you make active use of preprocessors.</p>
 </div>
 <div class="section" id="bibliography">
 <h4>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h4>
 <p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
-in your document:</p>
+in your document (<tt class="docutils literal"><span class="pre">cite</span></tt> commands and a <tt class="docutils literal"><span class="pre">BIBFILE:</span></tt> specification).
+The installation is done by</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 </pre></div>
 </div>
