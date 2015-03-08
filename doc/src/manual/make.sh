@@ -79,8 +79,12 @@ system doconce format pandoc manual.do.txt --no_mako --strict_markdown_output --
 system doconce format epytext manual.do.txt --no_mako
 
 # doconce latex:
-system doconce format latex manual.do.txt --no_mako --latex_font=helvetica  # produces ptex2tex: manual.p.tex
+system doconce format latex manual.do.txt --no_mako --latex_font=helvetica --no_ampersand_quote # produces ptex2tex: manual.p.tex
 doconce ptex2tex manual envir=ans:nt
+# Since we have native latex table and --no_ampersand_quote, we need to
+# manually fix the quote examples elsewhere
+doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' manual.tex
+doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' manual.tex
 latex -shell-escape manual
 latex -shell-escape manual
 bibtex manual
@@ -91,9 +95,13 @@ dvipdf manual.dvi
 cp manual.pdf manual_latex.pdf
 
 # doconce pdflatex:
-system doconce format pdflatex manual.do.txt --no_mako --latex_font=helvetica
+system doconce format pdflatex manual.do.txt --no_mako --latex_font=helvetica --no_ampersand_quote
 
 doconce ptex2tex manual envir=ans:nt
+# Since we have native latex table and --no_ampersand_quote, we need to
+# manually fix the quote examples elsewhere
+doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' manual.tex
+doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' manual.tex
 pdflatex -shell-escape manual
 bibtex manual
 makeindex manual

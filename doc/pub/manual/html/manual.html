@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 10, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 8, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -2474,7 +2474,10 @@ side of <tt class="docutils literal"><span class="pre">&amp;</span></tt>, as in 
 Texas A&amp;M, while words on both sides of <tt class="docutils literal"><span class="pre">&amp;</span></tt>, as in <tt class="docutils literal"><span class="pre">Guns</span> <span class="pre">&amp;</span> <span class="pre">Roses</span></tt>,
 preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
 after <tt class="docutils literal"><span class="pre">&amp;</span></tt> will result in wrong typesetting of the ampersand in the <tt class="docutils literal"><span class="pre">html</span></tt>,
-<tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> formats.</p>
+<tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> formats. If special quoting of the ampersand
+is undesired, e.g., when one has inserted native LaTeX code for tables,
+the command-line option <tt class="docutils literal"><span class="pre">--no_ampersand_quote</span></tt> for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> turns
+off the ampersand treatment for all formats.</p>
 </div>
 <div class="section" id="footnotes">
 <h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
@@ -5819,7 +5822,7 @@ look for options starting with <tt class="docutils literal"><span class="pre">--
 <li><tt class="docutils literal"><span class="pre">--latex_papersize=a4,a6</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></tt> (name of BibTeX style)</li>
 <li><tt class="docutils literal"><span class="pre">--latex_title_layout=titlepage,</span> <span class="pre">std,</span> <span class="pre">beamer,</span> <span class="pre">doconce_heading,</span> <span class="pre">Springer_collection</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_T2,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></tt> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
 <li><tt class="docutils literal"><span class="pre">--latex_fancy_header</span></tt> (chapter/section headings at top of pages, style depends on value of <tt class="docutils literal"><span class="pre">--latex_section_headings</span></tt>)</li>
 <li><tt class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></tt> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -5842,11 +5845,16 @@ look for options starting with <tt class="docutils literal"><span class="pre">--
 <p>The LaTeX style is much governed by <tt class="docutils literal"><span class="pre">--latex_title_layout</span></tt> and <tt class="docutils literal"><span class="pre">--latex_style</span></tt>.
 For the former, <tt class="docutils literal"><span class="pre">titlepage</span></tt> gives a separate title page; <tt class="docutils literal"><span class="pre">std</span></tt> is just standard
 LaTeX handling of title, author, and date; <tt class="docutils literal"><span class="pre">doconce_heading</span></tt> is a more modern heading, <tt class="docutils literal"><span class="pre">Springer_collection</span></tt> is used with <tt class="docutils literal"><span class="pre">--latex_style=Springer_lncse</span></tt> for an edited book; <tt class="docutils literal"><span class="pre">beamer</span></tt> is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For <tt class="docutils literal"><span class="pre">--latex_style</span></tt>,
-<tt class="docutils literal"><span class="pre">std</span></tt> gives standard LaTeX behavior; <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt> is for Springer&#8217;s LNCSE book series style (to be used with <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt> if the book is an edited book); <tt class="docutils literal"><span class="pre">Springer_llncs</span></tt> is for Springer&#8217;s Lecture Notes in Computer Science series (normally an edited book that also requres <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt>); <tt class="docutils literal"><span class="pre">Springer_T2</span></tt> for Springer&#8217;s T2 book layout, <tt class="docutils literal"><span class="pre">siamltex</span></tt>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">siamltexmm</span></tt> for the new multimedia SIAM journal style (requires <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">elsevier</span></tt> for the style of papers to be submitted to Elsevier journals (<tt class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></tt> can be used to set the journal name, and the style requires <tt class="docutils literal"><span class="pre">elsarticle.cls</span></tt> and <tt class="docutils literal"><span class="pre">elsarticle-num.bst</span></tt>).</p>
+<tt class="docutils literal"><span class="pre">std</span></tt> gives standard LaTeX behavior; <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt> is for Springer&#8217;s LNCSE book series style (to be used with <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt> if the book is an edited book); <tt class="docutils literal"><span class="pre">Springer_llncs</span></tt> is for Springer&#8217;s Lecture Notes in Computer Science series (normally an edited book that also requres <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt>); <tt class="docutils literal"><span class="pre">Springer_lnup</span></tt> for Springer&#8217;s Lecture Notes for Undergraduate Physics books, <tt class="docutils literal"><span class="pre">Springer_T2</span></tt> for Springer&#8217;s T2 book layout, <tt class="docutils literal"><span class="pre">siamltex</span></tt>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">siamltexmm</span></tt> for the new multimedia SIAM journal style (requires <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">elsevier</span></tt> for the style of papers to be submitted to Elsevier journals (<tt class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></tt> can be used to set the journal name, and the style requires <tt class="docutils literal"><span class="pre">elsarticle.cls</span></tt> and <tt class="docutils literal"><span class="pre">elsarticle-num.bst</span></tt>).</p>
 <p>During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <tt class="docutils literal"><span class="pre">--latex_line_numbers</span> <span class="pre">--latex_double_spacing</span> <span class="pre">--latex_todonotes</span> <span class="pre">--latex_labels_in_margin</span></tt>. One may also (automatically) edit the
 <tt class="docutils literal"><span class="pre">final</span></tt> argument in the <tt class="docutils literal"><span class="pre">documentclass</span></tt> heading to <tt class="docutils literal"><span class="pre">draft</span></tt> as this will
 mark overful lines (hboxes).</p>
+<p>Another useful option for LaTeX documents is <tt class="docutils literal"><span class="pre">--no_ampersand_quote</span></tt>, which
+prevents ampersands from getting a backskash. This is necessary if one
+inserts native latex code for tables
+inside <tt class="docutils literal"><span class="pre">%</span> <span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">('latex',</span> <span class="pre">'pdflatex'):</span></tt> (or similar <tt class="docutils literal"><span class="pre">preprocess</span></tt> syntax)
+tests.</p>
 <p id="index-150"><strong>Step 2.</strong>
 In case you did not specify the <tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option,
 you must run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have installed the
@@ -6497,6 +6505,11 @@ Remove all inline comments of the form [ID: comment].
 Specify encoding (e.g., latin1 or utf-8).
 
 
+--no_ampersand_quote
+
+Turn off special treatment of ampersand (&amp;). Needed, e.g., when native latex code for tables are inserted in the document.
+
+
 --no_mako
 
 Do not run the Mako preprocessor program.
@@ -6845,6 +6858,12 @@ doconce_heading (default): authors with &quot;footnotes&quot; for institutions,
 beamer: layout for beamer slides.
 
 
+--latex_encoding=...
+
+Encoding for \usepackage[encoding]{inputenc}.
+Values: utf8 (default) or latin1.
+
+
 --latex_papersize=...
 
 Geometry of page size: a6, a4, std (default).
@@ -7081,6 +7100,11 @@ Treat examples of the form &quot;==== Example: ...&quot;
 as in exercise environments.
 
 
+--solutions_at_end
+
+Place solutions to exercises at the end of the document.
+
+
 --without_solutions
 
 Leave out solution environments from exercises.
@@ -7267,10 +7291,25 @@ Combine paragraphs to one line (does not work well).
 <span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
 <p id="index-186">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the
-<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh">install_doconce.sh</a> (or
-<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py">install_doconce.py</a>) script.</p>
+The impatient way to install everything what is needed on a Debian-based Linux
+computer (running, e.g., Ubuntu) is to run the Bash script
+<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh">install_doconce.sh</a> or the equivalent Python script
+<a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py">install_doconce.py</a>.
+These scripts gives a comprehensive installation. Some users will prefer to
+install what is needed, and this is explained below.</p>
+<div class="admonition-version-control-systems-are-needed admonition">
+<p class="first admonition-title">Version control systems are needed</p>
+<p class="last">The coming installation instructions require that the version control systems
+Subversion, Mercurial, and Git are installed on your computer.</p>
+</div>
+<div class="admonition-what-about-mac-and-windows admonition">
+<p class="first admonition-title">What about Mac and Windows</p>
+<p class="last">DocOnce is primarily tested on GNU/Debian Linux systems, but also to
+a minor extent on Mac OS X. Experience with Windows is limited.
+Since most packages are Python-based and can be installed via <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></tt>
+no problems should arise on Mac and Windows. However, some of the
+image processing tools and spell checking apply Unix-specific software.</p>
+</div>
 <div class="section" id="doconce">
 <h3>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.
@@ -7280,16 +7319,16 @@ Installation can be done via</p>
 sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
 </pre></div>
 </div>
-<p>Alternatively, one can run the standard procedure</p>
+<p>However, the recommended approach is to have a copy of the source on
+the local computer and run <tt class="docutils literal"><span class="pre">setup.py</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
 cd ..
 </pre></div>
 </div>
-<p>Since DocOnce is frequently updated, it is recommended to use the
-above procedure and whenever a problem occurs, make sure to
-update to the most recent version:</p>
+<p>Since DocOnce is frequently updated, it becomes necessary to ensure
+that you work with the most recent version:</p>
 <div class="highlight-text"><div class="highlight"><pre>cd doconce
 git pull origin master
 sudo python setup.py install
@@ -7303,23 +7342,25 @@ and wikis can be done without installing any other
 software. However, if you want other formats as output
 (LaTeX, Sphinx, reStructuredText) and assisting utilities such
 as preprocesors, spellcheck, file differences, bibliographies,
-and so on, the software below must be installed.</p>
-<p>To install all needed packages on a GNU/Linux Debian system, such as
-Ubuntu, you can jump to the script in the section <a class="reference internal" href="#install-debian-script"><em>Quick Debian/Ubuntu Install</em></a>.</p>
+and so on, a lot of extra software must be installed.</p>
+<div class="section" id="python-v2-7">
+<h4>Python v2.7<a class="headerlink" href="#python-v2-7" title="Permalink to this headline">¶</a></h4>
+<p>First you need Python version 2.7 and the <tt class="docutils literal"><span class="pre">pip</span></tt> installation program.
+Unless you already have these, we recommend to install a comprehensive
+Python bundle like <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>.</p>
+<p>You do not need more software if you avoid using preprocessors, there
+is no bibliography, and you stick to the output formats LaTeX and HTML
+(you need of course LaTeX installed to process <tt class="docutils literal"><span class="pre">.tex</span></tt> files).</p>
+</div>
 <div class="section" id="preprocessors">
 <h4>Preprocessors<a class="headerlink" href="#preprocessors" title="Permalink to this headline">¶</a></h4>
 <p>If you make use of the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a>
 preprocessor, this program must be installed:</p>
-<div class="highlight-text"><div class="highlight"><pre>svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
-cd preprocess
-cd doconce
-sudo python setup.py install
-cd ..
+<div class="highlight-text"><div class="highlight"><pre>pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
 </pre></div>
 </div>
 <p>A much more advanced alternative to Preprocess is
-<a class="reference external" href="http://www.makotemplates.org">Mako</a>. Its installation is most
-conveniently done by <tt class="docutils literal"><span class="pre">pip</span></tt>,</p>
+<a class="reference external" href="http://www.makotemplates.org">Mako</a>. Its installation is done by</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install Mako
 </pre></div>
 </div>
@@ -7333,6 +7374,14 @@ such as Ubuntu, the installation is simply done by</p>
 <a class="reference external" href="http://www.makotemplates.org/download.html">source</a>: download the
 tarball, pack it out, go to the directory and run
 the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
+</div>
+<div class="section" id="bibliography">
+<h4>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h4>
+<p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
+in your document:</p>
+<div class="highlight-text"><div class="highlight"><pre>pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+</pre></div>
+</div>
 </div>
 <div class="section" id="image-file-handling">
 <h4>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h4>
@@ -7367,26 +7416,15 @@ spellcheck. On Debian (including Ubuntu) it is installed by</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="bibliography">
-<h4>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h4>
-<p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
-in your document. On the website, click on <em>Clone</em>, copy the
-command and run it:</p>
-<div class="highlight-text"><div class="highlight"><pre>hg clone https://bitbucket.org/logg/publish
-</pre></div>
-</div>
-<p>Thereafter go to the <tt class="docutils literal"><span class="pre">publish</span></tt> directory and run the <tt class="docutils literal"><span class="pre">setup.py</span></tt> script
-for installing Publish:</p>
-<div class="highlight-text"><div class="highlight"><pre>cd publish
-sudo python setup.py
-</pre></div>
-</div>
-</div>
 <div class="section" id="ptex2tex-for-latex-output">
 <h4>Ptex2tex for LaTeX Output<a class="headerlink" href="#ptex2tex-for-latex-output" title="Permalink to this headline">¶</a></h4>
-<p>To make LaTeX documents with very flexible choice of typesetting of
-verbatim code blocks you need <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a>,
-which is installed by</p>
+<p>Originally, DocOnce relied on the <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a> program for very flexible choice of typesetting of
+verbatim code blocks. A simplified version, <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>, is bundled
+with DocOnce. However, even greater flexibility is now offered by the
+<tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> so unless you already are
+a <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> user, it is recommended to forget about <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> and
+just use the <tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option.</p>
+<p>The stand-alone <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program is installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
 cd ptex2tex
 sudo python setup.py install
@@ -7411,30 +7449,19 @@ manually in the <tt class="docutils literal"><span class="pre">~/texmf/tex/latex
 <p>Note that the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> command, which needs no installation
 beyond DocOnce itself, can be used as a simpler alternative to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
 program.</p>
-<p>The <em>minted</em> LaTeX style is offered by <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptext2tex</span></tt>
-and popular among many
-users. This style requires the package <a class="reference external" href="http://pygments.org">Pygments</a>
-to be installed. On Debian Linux,</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install python-pygments
-</pre></div>
 </div>
-<p>Alternatively, the package can be installed manually:</p>
-<div class="highlight-text"><div class="highlight"><pre>hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
-cd pygments
-sudo python setup.py install
-</pre></div>
-</div>
-<p>One can also do the simple</p>
+<div class="section" id="pygments-and-the-minted-code-style">
+<h4>Pygments and the Minted Code Style<a class="headerlink" href="#pygments-and-the-minted-code-style" title="Permalink to this headline">¶</a></h4>
+<p>The <em>minted</em> LaTeX style is
+popular for typesetting code.
+This style requires the package <a class="reference external" href="http://pygments.org">Pygments</a>
+to be installed. On Debian Linux, the simplest approach is to
+install <tt class="docutils literal"><span class="pre">sphinx</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install sphinx
 </pre></div>
 </div>
-<p>which also installs pygments.</p>
-<p>If you use the minted style together with <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>, you have to
-enable it by the <tt class="docutils literal"><span class="pre">-DMINTED</span></tt> command-line argument to <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>.
-This is not necessary if you run the alternative <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> program.</p>
 <p>All use of the minted style requires the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> command-line
-argument when running LaTeX, i.e., <tt class="docutils literal"><span class="pre">latex</span> <span class="pre">-shell-escape</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span>
-<span class="pre">-shell-escape</span></tt>.</p>
+argument when running LaTeX, i.e., <tt class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">-shell-escape</span></tt>.</p>
 <p>Inline comments apply the <tt class="docutils literal"><span class="pre">todonotes</span></tt> LaTeX package if the option
 <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> is given.  The <tt class="docutils literal"><span class="pre">todonotes</span></tt> package requires
 several other packages: <tt class="docutils literal"><span class="pre">xcolor</span></tt>, <tt class="docutils literal"><span class="pre">ifthen</span></tt>, <tt class="docutils literal"><span class="pre">xkeyval</span></tt>, <tt class="docutils literal"><span class="pre">tikz</span></tt>, <tt class="docutils literal"><span class="pre">calc</span></tt>,
@@ -7443,16 +7470,14 @@ installing all this are listed below.</p>
 </div>
 <div class="section" id="latex-packages">
 <h4>LaTeX packages<a class="headerlink" href="#latex-packages" title="Permalink to this headline">¶</a></h4>
-<p>Many LaTeX packages are potentially needed (depending on various
-preprocessor variables given to <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>.  The
-standard packages always included are <tt class="docutils literal"><span class="pre">relsize</span></tt>, <tt class="docutils literal"><span class="pre">epsfig</span></tt>, <tt class="docutils literal"><span class="pre">makeidx</span></tt>,
+<p>Many LaTeX packages are potentially needed, depending on various
+constructions in the text and command-line options used when compling DocOnce to
+LaTeX. The
+standard packages always required are <tt class="docutils literal"><span class="pre">relsize</span></tt>, <tt class="docutils literal"><span class="pre">makeidx</span></tt>,
 <tt class="docutils literal"><span class="pre">setspace</span></tt>, <tt class="docutils literal"><span class="pre">color</span></tt>, <tt class="docutils literal"><span class="pre">amsmath</span></tt>, <tt class="docutils literal"><span class="pre">amsfonts</span></tt>, <tt class="docutils literal"><span class="pre">xcolor</span></tt>, <tt class="docutils literal"><span class="pre">bm</span></tt>,
-<tt class="docutils literal"><span class="pre">microtype</span></tt>, <tt class="docutils literal"><span class="pre">titlesec</span></tt>, and <tt class="docutils literal"><span class="pre">hyperref</span></tt>.  The <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> package (from
-<a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a>) is also included, but
-removed again if <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> is run instead of the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
-program, meaning that if you do not use <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>, you do not need
-<tt class="docutils literal"><span class="pre">ptex2tex.sty</span></tt>. Optional packages that might be included are <tt class="docutils literal"><span class="pre">minted</span></tt>,
-<tt class="docutils literal"><span class="pre">fontspec</span></tt>, <tt class="docutils literal"><span class="pre">xunicode</span></tt>, <tt class="docutils literal"><span class="pre">inputenc</span></tt>, <tt class="docutils literal"><span class="pre">helvet</span></tt>, <tt class="docutils literal"><span class="pre">mathpazo</span></tt>, <tt class="docutils literal"><span class="pre">wrapfig</span></tt>,
+<tt class="docutils literal"><span class="pre">microtype</span></tt>, <tt class="docutils literal"><span class="pre">inputenc</span></tt>, and <tt class="docutils literal"><span class="pre">hyperref</span></tt>.
+Optional packages that might be included in the <tt class="docutils literal"><span class="pre">.tex</span></tt> output are <tt class="docutils literal"><span class="pre">minted</span></tt>,
+<tt class="docutils literal"><span class="pre">listings</span></tt>, <tt class="docutils literal"><span class="pre">fancyvrb</span></tt>, <tt class="docutils literal"><span class="pre">xunicode</span></tt>, <tt class="docutils literal"><span class="pre">inputenc</span></tt>, <tt class="docutils literal"><span class="pre">helvet</span></tt>, <tt class="docutils literal"><span class="pre">mathpazo</span></tt>, <tt class="docutils literal"><span class="pre">wrapfig</span></tt>,
 <tt class="docutils literal"><span class="pre">calc</span></tt>, <tt class="docutils literal"><span class="pre">ifthen</span></tt>, <tt class="docutils literal"><span class="pre">xkeyval</span></tt>, <tt class="docutils literal"><span class="pre">tikz</span></tt>, <tt class="docutils literal"><span class="pre">graphicx</span></tt>, <tt class="docutils literal"><span class="pre">setspace</span></tt>, <tt class="docutils literal"><span class="pre">shadow</span></tt>,
 <tt class="docutils literal"><span class="pre">disable</span></tt>, <tt class="docutils literal"><span class="pre">todonotes</span></tt>, <tt class="docutils literal"><span class="pre">lineno</span></tt>, <tt class="docutils literal"><span class="pre">xr</span></tt>, <tt class="docutils literal"><span class="pre">framed</span></tt>, <tt class="docutils literal"><span class="pre">mdframe</span></tt>,
 <tt class="docutils literal"><span class="pre">movie15</span></tt>, <tt class="docutils literal"><span class="pre">a4paper</span></tt>, and <tt class="docutils literal"><span class="pre">a6paper</span></tt>.</p>
@@ -7463,68 +7488,28 @@ texlive-latex-extra
 texlive-font-utils
 </pre></div>
 </div>
-<p>On old Ubuntu 12.04 one has to do <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">add-apt-repository</span> <span class="pre">ppa:texlive-backports/ppa</span></tt> and <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></tt> first, or alternatively install these as well:</p>
-<div class="highlight-text"><div class="highlight"><pre>texlive-math-extra
-texlive-bibtex-extra
-texlive-xetex
-texlive-humanities
-texlive-pictures
-</pre></div>
-</div>
 <p>Alternatively, one may pull in <tt class="docutils literal"><span class="pre">texlive-full</span></tt> to get all available
 style files.</p>
 <p>If you want to use the <em>anslistings</em> code environment with <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
 (<tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> styles <tt class="docutils literal"><span class="pre">Python_ANS</span></tt>, <tt class="docutils literal"><span class="pre">Python_ANSt</span></tt>, <tt class="docutils literal"><span class="pre">Cpp_ANS</span></tt>, etc.) or
 <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> (<tt class="docutils literal"><span class="pre">envir=ans</span></tt> or <tt class="docutils literal"><span class="pre">envir=ans:nt</span></tt>), you need the
 <tt class="docutils literal"><span class="pre">anslistings.sty</span></tt> file. It can be obtained from
-the <a class="reference external" href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty">ptex2tex source</a>. It should get installed
-by the <tt class="docutils literal"><span class="pre">cp2texmf.sh</span></tt> script executed above.</p>
-</div>
-<div class="section" id="restructuredtext-rest-output">
-<h4>reStructuredText (reST) Output<a class="headerlink" href="#restructuredtext-rest-output" title="Permalink to this headline">¶</a></h4>
-<p>The <tt class="docutils literal"><span class="pre">rst</span></tt> output from DocOnce allows further transformation to LaTeX,
-HTML, XML, OpenOffice, and so on, through the <a class="reference external" href="http://docutils.sourceforge.net">docutils</a> package.  The installation of the
-most recent version can be done by</p>
-<div class="highlight-text"><div class="highlight"><pre>svn checkout \
-  http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
-cd docutils
-sudo python setup.py install
-cd ..
+the <a class="reference external" href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty">ptex2tex source</a>. The same code style is in
+&#8220;modern DocOnce&#8221; just implemented by the command-line option</p>
+<div class="highlight-text"><div class="highlight"><pre>&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
 </pre></div>
 </div>
-<p>The command</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install sphinx
-</pre></div>
 </div>
-<p>installs Docutils along with Sphinx and Pygments.</p>
-<p>To use the OpenOffice suite you will typically on Debian systems install</p>
-<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install unovonv libreoffice libreoffice-dmaths
-</pre></div>
-</div>
-<p>There is a possibility to create PDF files from reST documents
-using ReportLab instead of LaTeX. The enabling software is
-<a class="reference external" href="http://code.google.com/p/rst2pdf">rst2pdf</a>. Either download the tarball
-or clone the svn repository, go to the <tt class="docutils literal"><span class="pre">rst2pdf</span></tt> directory and
-run the usual <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
-</div>
-<div class="section" id="sphinx-output">
-<h4>Sphinx Output<a class="headerlink" href="#sphinx-output" title="Permalink to this headline">¶</a></h4>
-<p>Output to <tt class="docutils literal"><span class="pre">sphinx</span></tt> requires of course the
+<div class="section" id="sphinx-or-restructuredtext-output">
+<h4>Sphinx or reStructuredText Output<a class="headerlink" href="#sphinx-or-restructuredtext-output" title="Permalink to this headline">¶</a></h4>
+<p>Output to <tt class="docutils literal"><span class="pre">sphinx</span></tt> or <tt class="docutils literal"><span class="pre">rst</span></tt> requires the
 <a class="reference external" href="http://sphinx.pocoo.org">Sphinx software</a>,
 installed by</p>
-<div class="highlight-text"><div class="highlight"><pre>hg clone https://bitbucket.org/birkenfeld/sphinx
-cd sphinx
-sudo python setup.py install
-cd ..
-</pre></div>
-</div>
-<p>An alternative is</p>
-<div class="highlight-text"><div class="highlight"><pre>pip install sphinx
+<div class="highlight-text"><div class="highlight"><pre>pip install sphinx --upgrade
 </pre></div>
 </div>
 <p>DocOnce comes with many Sphinx themes that are not part of the
-standard Sphinx source distribution. Some of these themes require
-additional Python/Sphinx modules to be installed:</p>
+standard Sphinx source distribution:</p>
 <blockquote>
 <div><ul class="simple">
 <li>cloud and redcloud: <a class="reference external" href="https://bitbucket.org/ecollins/cloud_sptheme">https://bitbucket.org/ecollins/cloud_sptheme</a></li>
@@ -7534,14 +7519,31 @@ additional Python/Sphinx modules to be installed:</p>
 <li>sagecellserver: <a class="reference external" href="https://github.com/kriskda/sphinx-sagecell">https://github.com/kriskda/sphinx-sagecell</a></li>
 </ul>
 </div></blockquote>
-<p>These must be downloaded or cloned, and <tt class="docutils literal"><span class="pre">setup.py</span></tt> must be run as shown
-above.</p>
+<p>Appropriate installation commands for these themes are</p>
+<div class="highlight-text"><div class="highlight"><pre>pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+</pre></div>
+</div>
+<p>It can also be handy to have special typesetting of IPython sessions:</p>
+<div class="highlight-text"><div class="highlight"><pre>pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
+</pre></div>
+</div>
+<p>To make OpenOffice or LibreOffice documents from <tt class="docutils literal"><span class="pre">rst</span></tt> output, you
+will need more software, typically the following on a Debian system:</p>
+<div class="highlight-text"><div class="highlight"><pre>sudo apt-get install unovonv libreoffice libreoffice-dmaths
+</pre></div>
+</div>
 </div>
 <div class="section" id="markdown-and-pandoc-output">
 <h4>Markdown and Pandoc Output<a class="headerlink" href="#markdown-and-pandoc-output" title="Permalink to this headline">¶</a></h4>
-<p>The DocOnce format <tt class="docutils literal"><span class="pre">pandoc</span></tt> outputs the document in the Pandoc
-extended Markdown format, which via the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program can be
-translated to a range of other formats. Installation of <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, written in Haskell, is most
+<p>The DocOnce format <tt class="docutils literal"><span class="pre">pandoc</span></tt> outputs the document in various Markdown
+versions: the Pandoc
+extended Markdown format (which via the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program can be
+translated to a range of other formats), strict Markdown, and
+GitHub-flavored Markdown. Installation of <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, written in Haskell, is most
 easily done by</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install pandoc
 </pre></div>
@@ -7620,60 +7622,6 @@ appear in the table below.</p>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="quick-debian-ubuntu-install">
-<span id="install-debian-script"></span><h3>Quick Debian/Ubuntu Install<a class="headerlink" href="#quick-debian-ubuntu-install" title="Permalink to this headline">¶</a></h3>
-<p>On Debian (including Ubuntu) systems, it is straightforward to install the
-long series of DocOnce dependencies:</p>
-<div class="highlight-text"><div class="highlight"><pre># Version control systems
-sudo apt-get install -y mercurial git subversion
-
-# Python
-sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
-
-# LaTeX
-sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
-# or sudo apt-get install -y texlive-full  # get everything
-sudo apt-get install -y latexdiff auctex
-
-# Image and movie tools
-sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
-
-# Misc
-sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
-
-# More Python software
-sudo pip install sphinx  # install pygments and docutils too
-sudo pip install mako
-sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
-
-sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
-sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
-
-# DocOnce itself
-rm -rf srclib   # put downloaded software in srclib
-mkdir srclib
-cd srclib
-git clone git@github.com:hplgit/doconce.git
-cd doconce
-sudo python setup.py install -y
-cd ../..
-
-# Ptex2tex
-cd srclib
-svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
-cd ptex2tex
-sudo python setup.py install -y
-cd latex
-sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
-cd ../../..
-</pre></div>
 </div>
 </div>
 </div>
@@ -8070,20 +8018,20 @@ Springer,
 <li><a class="reference internal" href="#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
 <li><a class="reference internal" href="#doconce">DocOnce</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a><ul>
+<li><a class="reference internal" href="#python-v2-7">Python v2.7</a></li>
 <li><a class="reference internal" href="#preprocessors">Preprocessors</a></li>
+<li><a class="reference internal" href="#bibliography">Bibliography</a></li>
 <li><a class="reference internal" href="#image-file-handling">Image file handling</a></li>
 <li><a class="reference internal" href="#spellcheck">Spellcheck</a></li>
-<li><a class="reference internal" href="#bibliography">Bibliography</a></li>
 <li><a class="reference internal" href="#ptex2tex-for-latex-output">Ptex2tex for LaTeX Output</a></li>
+<li><a class="reference internal" href="#pygments-and-the-minted-code-style">Pygments and the Minted Code Style</a></li>
 <li><a class="reference internal" href="#latex-packages">LaTeX packages</a></li>
-<li><a class="reference internal" href="#restructuredtext-rest-output">reStructuredText (reST) Output</a></li>
-<li><a class="reference internal" href="#sphinx-output">Sphinx Output</a></li>
+<li><a class="reference internal" href="#sphinx-or-restructuredtext-output">Sphinx or reStructuredText Output</a></li>
 <li><a class="reference internal" href="#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
 <li><a class="reference internal" href="#epydoc-output">Epydoc Output</a></li>
 <li><a class="reference internal" href="#analyzing-file-differences">Analyzing file differences</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#quick-debian-ubuntu-install">Quick Debian/Ubuntu Install</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#basic-parsing-ideas">Basic Parsing Ideas</a><ul>

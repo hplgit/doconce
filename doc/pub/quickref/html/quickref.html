@@ -16,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.7',
+        VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 16, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 8, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -330,8 +330,8 @@ after <tt class="docutils literal"><span class="pre">&amp;</span></tt> will resu
 <tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> formats.</p>
 <p>Emojis, as defined in <a class="reference external" href="http://www.emoji-cheat-sheet.com">http://www.emoji-cheat-sheet.com</a>, can be
 inserted in the text, as (e.g.) <tt class="docutils literal"><span class="pre">:dizzy_face:</span></tt> with blank or newline
-before or after. Only the <tt class="docutils literal"><span class="pre">pdflatex</span></tt> and <tt class="docutils literal"><span class="pre">html</span></tt> output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the <tt class="docutils literal"><span class="pre">pdflatex</span></tt> and <tt class="docutils literal"><span class="pre">html</span></tt> output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 <tt class="docutils literal"><span class="pre">--no_emoji</span></tt> removes all emojis from the output document.</p>
 </div>
@@ -339,7 +339,7 @@ textual specification in the document. The command-line option
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
 <p>There are three types of lists: <em>bullet lists</em>, where each item starts
 with <tt class="docutils literal"><span class="pre">*</span></tt>, <em>enumeration lists</em>, where each item starts with <tt class="docutils literal"><span class="pre">o</span></tt> and gets
-consqutive numbers,
+consecutive numbers,
 and <em>description</em> lists, where each item starts with <tt class="docutils literal"><span class="pre">-</span></tt> followed
 by a keyword and a colon.</p>
 <div class="highlight-text"><div class="highlight"><pre>Here is a bullet list:
@@ -871,7 +871,7 @@ DocOnce documents may include movies.
 </pre></div>
 </div>
 <p>The output from a generalized reference is the text <tt class="docutils literal"><span class="pre">internal</span></tt> if all
-<cite>:ref:`label`</cite> references in <tt class="docutils literal"><span class="pre">internal</span></tt> are references to labels in the
+<cite>:ref:`label&#8221; references in ``internal`</cite> are references to labels in the
 present document. Otherwise, if cite is non-empty and the format is
 <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> one assumes that the references in <tt class="docutils literal"><span class="pre">internal</span></tt>
 are to external documents declared by a comment line <tt class="docutils literal"><span class="pre">#</span>
@@ -901,7 +901,7 @@ forthcoming text. The index is only produced for the <tt class="docutils literal
 <p>The <tt class="docutils literal"><span class="pre">doconce</span></tt> program can be used for a number of purposes besides
 transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
 list of capabilities:</p>
-<div class="highlight-bash"><div class="highlight"><pre>DocOnce version 1.0.2
+<div class="highlight-bash"><div class="highlight"><pre>DocOnce version 1.0.3
 Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
 commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -1205,7 +1205,7 @@ The <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor
 programming language, very similar to Python.</p>
 <p>The command <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> first runs <tt class="docutils literal"><span class="pre">preprocess</span></tt> and then <tt class="docutils literal"><span class="pre">mako</span></tt>.
 Here is a typical example on utilizing <tt class="docutils literal"><span class="pre">preprocess</span></tt> to include another
-document, &#8220;comment out&#8221; a large portion of text, and to write format-specific
+document, <a href="#id1"><span class="problematic" id="id2">``</span></a>comment out&#8221; a large portion of text, and to write format-specific
 constructions:</p>
 <div class="highlight-text"><div class="highlight"><pre># #include &quot;myotherdoc.do.txt&quot;
 

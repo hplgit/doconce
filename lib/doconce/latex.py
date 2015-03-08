@@ -2458,7 +2458,13 @@ def define(FILENAME_EXTENSION,
         chapters = False
 
     if latex_style == 'std':
-        if chapters:
+        book = False
+        if chapters and not option('sections_down'):
+            book = True
+        elif '======= ' in filestr and option('sections_up'):
+            # Sections become chapters
+            book = True
+        if book:
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing

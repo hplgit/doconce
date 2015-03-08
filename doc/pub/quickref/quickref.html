@@ -10,58 +10,11 @@ Automatically generated HTML file from DocOnce source
 
 <title>DocOnce Quick Reference</title>
 
-
-<style type="text/css">
-/* blueish style */
-
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
-
-body {
-  margin-top: 1.0em;
-  background-color: #ffffff;
-  font-family: Helvetica, Arial, FreeSans, san-serif;
-  color: #000000;
-}
-h1 { font-size: 1.8em; color: #1e36ce; }
-h2 { font-size: 1.6em; color: #1e36ce; }
-h3 { font-size: 1.4em; color: #1e36ce; }
-a { color: #1e36ce; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-pre { background: #ededed; color: #000; padding: 15px;}
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-.alert-text-small   { font-size: 80%;  }
-.alert-text-large   { font-size: 130%; }
-.alert-text-normal  { font-size: 90%;  }
-.alert {
-  padding:8px 35px 8px 14px; margin-bottom:18px;
-  text-shadow:0 1px 0 rgba(255,255,255,0.5);
-  border:1px solid #bababa;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  color: #555;
-  background-color: #f8f8f8;
-  background-position: 10px 5px;
-  background-repeat: no-repeat;
-  background-size: 38px;
-  padding-left: 55px;
-  width: 75%;
- }
-.alert-block {padding-top:14px; padding-bottom:14px}
-.alert-block > p, .alert-block > ul {margin-bottom:1em}
-.alert li {margin-top: 1em}
-.alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
-
-div { text-align: justify; text-justify: inter-word; }
-</style>
+<!-- Bootstrap style: bootswatch_readable -->
+<link href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/readable/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
 
 
 </head>
@@ -114,10 +67,38 @@ MathJax.Hub.Config({
 
 
     
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="quickref.html">DocOnce Quick Reference</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
 <!-- ------------------- main content ---------------------- -->
 
 
 
+<div class="jumbotron">
 <center><h1>DocOnce Quick Reference</h1></center>  <!-- document title -->
 
 <p>
@@ -134,7 +115,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 16, 2015</h4></center> <!-- date -->
+<center><h4>Mar 8, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -175,6 +156,11 @@ include Google's <code>blogger.com</code>, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
+<p>
+
+
+</div> <!-- end jumbotron -->
+
 <h2 id="___sec0">Supported Formats </h2>
 
 <p>
@@ -213,9 +199,12 @@ Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-8">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center">  Emacs key  </th> <th align="center">                           Action                           </th> </tr>
+<tr><td align="center"><b>  Emacs key  </b></td> <td align="center"><b>                           Action                           </b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   Ctrl+c f         </td> <td align="left">   figure                                                          </td> </tr>
@@ -235,7 +224,9 @@ provides a lot of shortcuts for setting up many elements in a document:
 <tr><td align="left">   Ctrl+c slide     </td> <td align="left">   slide outline                                                   </td> </tr>
 <tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                                                </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-8 -->
 
 <h2 id="___sec2">Title, Authors, and Date </h2>
 
@@ -279,9 +270,12 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <h2 id="quick:sections">Section Types</h2>
 
 <p>
-<table border="1">
+
+<div class="row">
+  <div class="col-xs-9">
+    <table class="table table-striped table-hover table-condensed">
 <thead>
-<tr><th align="center"> Section type</th> <th align="center">                              Syntax                             </th> </tr>
+<tr><td align="center"><b> Section type</b></td> <td align="center"><b>                              Syntax                             </b></td> </tr>
 </thead>
 <tbody>
 <tr><td align="left">   chapter          </td> <td align="left">   <code>========= Heading ========</code> (9 <code>=</code>)           </td> </tr>
@@ -295,7 +289,9 @@ The table of contents is removed by writing <code>TOC: off</code>.
 <tr><td align="left">   exercise         </td> <td align="left">   <code>======= Exercise: heading =======</code> (7 <code>=</code>)    </td> </tr>
 <tr><td align="left">   exercise         </td> <td align="left">   <code>===== Exercise: heading =====</code> (5 <code>=</code>)        </td> </tr>
 </tbody>
-</table>
+    </table>
+  </div>
+</div> <!-- col-xs-9 -->
 <p>
 Note that abstracts are recognized by starting with <code>__Abstract.__</code> or
 <code>__Summary.__</code> at the beginning of a line and ending with three or
@@ -405,8 +401,8 @@ after <code>&</code> will result in wrong typesetting of the ampersand in the <c
 <p>
 Emojis, as defined in <a href="http://www.emoji-cheat-sheet.com" target="_self"><tt>http://www.emoji-cheat-sheet.com</tt></a>, can be
 inserted in the text, as (e.g.) <code>:dizzy_face:</code> with blank or newline
-before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translates
-emoji specifications to images, while all other formats leaves the
+before or after. Only the <code>pdflatex</code> and <code>html</code> output formats translate
+emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 <code>--no_emoji</code> removes all emojis from the output document.
 
@@ -415,7 +411,7 @@ textual specification in the document. The command-line option
 <p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
 with <code>*</code>, <em>enumeration lists</em>, where each item starts with <code>o</code> and gets
-consqutive numbers,
+consecutive numbers,
 and <em>description</em> lists, where each item starts with <code>-</code> followed
 by a keyword and a colon.
 <!-- begin verbatim block -->
@@ -507,9 +503,7 @@ And finally a description list:
    and its description may fit on one line
 </dl>
 
-<div class="alert alert-block alert-warning alert-text-normal">
-<b>No indentation - except in lists!</b>
-<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>No indentation - except in lists!</b>
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -836,9 +830,7 @@ is also important, one should follow these rules:
 labels in <code>align</code> environments work well.)
 
 <p>
-<div class="alert alert-block alert-notice alert-text-normal">
-<b>Notice.</b>
-<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -1138,7 +1130,7 @@ list of capabilities:
 
 <p>
 <!-- begin verbatim block  shpro-->
-<pre><code>DocOnce version 1.0.2
+<pre><code>DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
@@ -1444,7 +1436,7 @@ programming language, very similar to Python.
 <p>
 The command <code>doconce format</code> first runs <code>preprocess</code> and then <code>mako</code>.
 Here is a typical example on utilizing <code>preprocess</code> to include another
-document, "comment out" a large portion of text, and to write format-specific
+document, &quot;comment out&quot; a large portion of text, and to write format-specific
 constructions:
 
 <p>
@@ -1494,6 +1486,17 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 
 <!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
 
 
 </body>

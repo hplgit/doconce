@@ -269,21 +269,18 @@ Automatically generated HTML file from DocOnce source
                'install:doconce'),
               (' DocOnce ', 2, None, '___sec143'),
               (' Dependencies ', 2, None, '___sec144'),
-              (' Preprocessors ', 3, None, '___sec145'),
-              (' Image file handling ', 3, None, '___sec146'),
-              (' Spellcheck ', 3, None, '___sec147'),
-              (' Bibliography ', 3, None, '___sec148'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec149'),
-              (' LaTeX packages ', 3, None, '___sec150'),
-              (' reStructuredText (reST) Output ', 3, None, '___sec151'),
-              (' Sphinx Output ', 3, None, '___sec152'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec153'),
-              (' Epydoc Output ', 3, None, '___sec154'),
-              (' Analyzing file differences ', 3, None, '___sec155'),
-              (' Quick Debian/Ubuntu Install ',
-               2,
-               'install:debian:script',
-               'install:debian:script'),
+              (' Python v2.7 ', 3, None, '___sec145'),
+              (' Preprocessors ', 3, None, '___sec146'),
+              (' Bibliography ', 3, None, '___sec147'),
+              (' Image file handling ', 3, None, '___sec148'),
+              (' Spellcheck ', 3, None, '___sec149'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec150'),
+              (' Pygments and the Minted Code Style ', 3, None, '___sec151'),
+              (' LaTeX packages ', 3, None, '___sec152'),
+              (' Sphinx or reStructuredText Output ', 3, None, '___sec153'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec154'),
+              (' Epydoc Output ', 3, None, '___sec155'),
+              (' Analyzing file differences ', 3, None, '___sec156'),
               (' Basic Parsing Ideas ', 1, None, '___sec157'),
               (' Typesetting of Function Arguments, Return Values, and Variables ',
                2,
@@ -693,7 +690,10 @@ side of <code>&</code>, as in <code>Texas A & M</code>, remove the spaces and re
 Texas A&amp;M, while words on both sides of <code>&</code>, as in <code>Guns & Roses</code>,
 preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
 after <code>&</code> will result in wrong typesetting of the ampersand in the <code>html</code>,
-<code>latex</code>, and <code>pdflatex</code> formats.
+<code>latex</code>, and <code>pdflatex</code> formats. If special quoting of the ampersand
+is undesired, e.g., when one has inserted native LaTeX code for tables,
+the command-line option <code>--no_ampersand_quote</code> for <code>doconce format</code> turns
+off the ampersand treatment for all formats.
 
 <h2 id="___sec31">Footnotes </h2>
 

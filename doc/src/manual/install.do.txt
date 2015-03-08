@@ -7,10 +7,25 @@ idx{installation}
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the
-"`install_doconce.sh`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" (or
-"`install_doconce.py`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py") script.
+The impatient way to install everything what is needed on a Debian-based Linux
+computer (running, e.g., Ubuntu) is to run the Bash script
+"`install_doconce.sh`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" or the equivalent Python script
+"`install_doconce.py`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py".
+These scripts gives a comprehensive installation. Some users will prefer to
+install what is needed, and this is explained below.
+
+!bwarning Version control systems are needed!
+The coming installation instructions require that the version control systems
+Subversion, Mercurial, and Git are installed on your computer.
+!ewarning
+
+!bnotice What about Mac and Windows?
+DocOnce is primarily tested on GNU/Debian Linux systems, but also to
+a minor extent on Mac OS X. Experience with Windows is limited.
+Since most packages are Python-based and can be installed via `pip install`
+no problems should arise on Mac and Windows. However, some of the
+image processing tools and spell checking apply Unix-specific software.
+!enotice
 
 ===== DocOnce =====
 
@@ -23,7 +38,8 @@ sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce
 # or if doconce is already installed
 sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
 !ec
-Alternatively, one can run the standard procedure
+However, the recommended approach is to have a copy of the source on
+the local computer and run `setup.py`:
 
 !bc sys
 git clone git@github.com:hplgit/doconce.git
@@ -31,9 +47,8 @@ cd doconce
 sudo python setup.py install
 cd ..
 !ec
-Since DocOnce is frequently updated, it is recommended to use the
-above procedure and whenever a problem occurs, make sure to
-update to the most recent version:
+Since DocOnce is frequently updated, it becomes necessary to ensure
+that you work with the most recent version:
 
 !bc sys
 cd doconce
@@ -63,12 +78,17 @@ and wikis can be done without installing any other
 software. However, if you want other formats as output
 (LaTeX, Sphinx, reStructuredText) and assisting utilities such
 as preprocesors, spellcheck, file differences, bibliographies,
-and so on, the software below must be installed.
+and so on, a lot of extra software must be installed.
 
-To install all needed packages on a GNU/Linux Debian system, such as
-Ubuntu, you can jump to the script in Section ref{install:debian:script}.
+=== Python v2.7 ===
 
-# Make a debpkg_doconce.txt file with everything that is needed on Debian
+First you need Python version 2.7 and the `pip` installation program.
+Unless you already have these, we recommend to install a comprehensive
+Python bundle like "Anaconda": "https://store.continuum.io/cshop/anaconda/".
+
+You do not need more software if you avoid using preprocessors, there
+is no bibliography, and you stick to the output formats LaTeX and HTML
+(you need of course LaTeX installed to process `.tex` files).
 
 === Preprocessors ===
 
@@ -76,16 +96,11 @@ If you make use of the "Preprocess": "http://code.google.com/p/preprocess"
 preprocessor, this program must be installed:
 
 !bc sys
-svn checkout http://preprocess.googlecode.com/svn/trunk/ preprocess
-cd preprocess
-cd doconce
-sudo python setup.py install
-cd ..
+pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
 !ec
 
 A much more advanced alternative to Preprocess is
-"Mako": "http://www.makotemplates.org". Its installation is most
-conveniently done by `pip`,
+"Mako": "http://www.makotemplates.org". Its installation is done by
 
 !bc sys
 pip install Mako
@@ -102,6 +117,16 @@ Mako can also be installed directly from
 "source": "http://www.makotemplates.org/download.html": download the
 tarball, pack it out, go to the directory and run
 the usual `sudo python setup.py install`.
+
+=== Bibliography ===
+
+The Python package "Publish":
+"https://bitbucket.org/logg/publish" is needed if you use a bibliography
+in your document:
+
+!bc sys
+pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
+!ec
 
 === Image file handling ===
 
@@ -144,30 +169,17 @@ sudo apt-get install ispell
 !ec
 
 
-=== Bibliography ===
-
-The Python package "Publish":
-"https://bitbucket.org/logg/publish" is needed if you use a bibliography
-in your document. On the website, click on *Clone*, copy the
-command and run it:
-
-!bc sys
-hg clone https://bitbucket.org/logg/publish
-!ec
-Thereafter go to the `publish` directory and run the `setup.py` script
-for installing Publish:
-
-!bc sys
-cd publish
-sudo python setup.py
-!ec
-
 
 === Ptex2tex for LaTeX Output ===
 
-To make LaTeX documents with very flexible choice of typesetting of
-verbatim code blocks you need "ptex2tex": "http://code.google.com/p/ptex2tex",
-which is installed by
+Originally, DocOnce relied on the "ptex2tex": "http://code.google.com/p/ptex2tex" program for very flexible choice of typesetting of
+verbatim code blocks. A simplified version, `doconce ptex2tex`, is bundled
+with DocOnce. However, even greater flexibility is now offered by the
+`--latex_code_style=` option to `doconce format` so unless you already are
+a `ptex2tex` user, it is recommended to forget about `ptex2tex` and
+just use the `--latex_code_style=` option.
+
+The stand-alone `ptex2tex` program is installed by
 
 !bc sys
 svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
@@ -197,33 +209,20 @@ Note that the `doconce ptex2tex` command, which needs no installation
 beyond DocOnce itself, can be used as a simpler alternative to the `ptex2tex`
 program.
 
-The *minted* LaTeX style is offered by `ptex2tex` and `doconce ptext2tex`
-and popular among many
-users. This style requires the package "Pygments": "http://pygments.org"
-to be installed. On Debian Linux,
-!bc sys
-sudo apt-get install python-pygments
-!ec
-Alternatively, the package can be installed manually:
-!bc sys
-hg clone ssh://hg@bitbucket.org/birkenfeld/pygments-main pygments
-cd pygments
-sudo python setup.py install
-!ec
-One can also do the simple
+=== Pygments and the Minted Code Style ===
+
+The *minted* LaTeX style is
+popular for typesetting code.
+This style requires the package "Pygments": "http://pygments.org"
+to be installed. On Debian Linux, the simplest approach is to
+install `sphinx`:
 
 !bc sys
 pip install sphinx
 !ec
-which also installs pygments.
-
-If you use the minted style together with `ptex2tex`, you have to
-enable it by the `-DMINTED` command-line argument to `ptex2tex`.
-This is not necessary if you run the alternative `doconce ptex2tex` program.
 
 All use of the minted style requires the `-shell-escape` command-line
-argument when running LaTeX, i.e., `latex -shell-escape` or `pdflatex
--shell-escape`.
+argument when running LaTeX, i.e., `pdflatex -shell-escape`.
 
 Inline comments apply the `todonotes` LaTeX package if the option
 `--latex_todonotes` is given.  The `todonotes` package requires
@@ -231,18 +230,17 @@ several other packages: `xcolor`, `ifthen`, `xkeyval`, `tikz`, `calc`,
 `graphicx`, and `setspace`. The relevant Debian packages for
 installing all this are listed below.
 
+
 === LaTeX packages ===
 
-Many LaTeX packages are potentially needed (depending on various
-preprocessor variables given to `ptex2tex` or `doconce ptex2tex`.  The
-standard packages always included are `relsize`, `epsfig`, `makeidx`,
+Many LaTeX packages are potentially needed, depending on various
+constructions in the text and command-line options used when compling DocOnce to
+LaTeX. The
+standard packages always required are `relsize`, `makeidx`,
 `setspace`, `color`, `amsmath`, `amsfonts`, `xcolor`, `bm`,
-`microtype`, `titlesec`, and `hyperref`.  The `ptex2tex` package (from
-"ptex2tex": "http://code.google.com/p/ptex2tex") is also included, but
-removed again if `doconce ptex2tex` is run instead of the `ptex2tex`
-program, meaning that if you do not use `ptex2tex`, you do not need
-`ptex2tex.sty`. Optional packages that might be included are `minted`,
-`fontspec`, `xunicode`, `inputenc`, `helvet`, `mathpazo`, `wrapfig`,
+`microtype`, `inputenc`, and `hyperref`.
+Optional packages that might be included in the `.tex` output are `minted`,
+`listings`, `fancyvrb`, `xunicode`, `inputenc`, `helvet`, `mathpazo`, `wrapfig`,
 `calc`, `ifthen`, `xkeyval`, `tikz`, `graphicx`, `setspace`, `shadow`,
 `disable`, `todonotes`, `lineno`, `xr`, `framed`, `mdframe`,
 `movie15`, `a4paper`, and `a6paper`.
@@ -255,15 +253,6 @@ texlive-extra-utils
 texlive-latex-extra
 texlive-font-utils
 !ec
-On old Ubuntu 12.04 one has to do `sudo add-apt-repository ppa:texlive-backports/ppa` and `sudo apt-get update` first, or alternatively install these as well:
-
-!bc
-texlive-math-extra
-texlive-bibtex-extra
-texlive-xetex
-texlive-humanities
-texlive-pictures
-!ec
 Alternatively, one may pull in `texlive-full` to get all available
 style files.
 
@@ -271,63 +260,27 @@ If you want to use the *anslistings* code environment with `ptex2tex`
 (`.ptex2tex.cfg` styles `Python_ANS`, `Python_ANSt`, `Cpp_ANS`, etc.) or
 `doconce ptex2tex` (`envir=ans` or `envir=ans:nt`), you need the
 `anslistings.sty` file. It can be obtained from
-the "ptex2tex source": "https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty". It should get installed
-by the `cp2texmf.sh` script executed above.
+the "ptex2tex source": "https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty". The same code style is in
+``modern DocOnce'' just implemented by the command-line option
 
-
-=== reStructuredText (reST) Output ===
-
-The `rst` output from DocOnce allows further transformation to LaTeX,
-HTML, XML, OpenOffice, and so on, through the "docutils":
-"http://docutils.sourceforge.net" package.  The installation of the
-most recent version can be done by
-
-!bc sys
-svn checkout \
-  http://docutils.svn.sourceforge.net/svnroot/docutils/trunk/docutils
-cd docutils
-sudo python setup.py install
-cd ..
-!ec
-The command
-
-!bc sys
-pip install sphinx
-!ec
-installs Docutils along with Sphinx and Pygments.
-
-To use the OpenOffice suite you will typically on Debian systems install
-!bc sys
-sudo apt-get install unovonv libreoffice libreoffice-dmaths
+!bc
+"--latex_code_style=default:lst[style=yellow2_fb]"
 !ec
 
-There is a possibility to create PDF files from reST documents
-using ReportLab instead of LaTeX. The enabling software is
-"rst2pdf": "http://code.google.com/p/rst2pdf". Either download the tarball
-or clone the svn repository, go to the `rst2pdf` directory and
-run the usual `sudo python setup.py install`.
 
-=== Sphinx Output ===
 
-Output to `sphinx` requires of course the
+=== Sphinx or reStructuredText Output ===
+
+Output to `sphinx` or `rst` requires the
 "Sphinx software": "http://sphinx.pocoo.org",
 installed by
 
 !bc sys
-hg clone https://bitbucket.org/birkenfeld/sphinx
-cd sphinx
-sudo python setup.py install
-cd ..
-!ec
-An alternative is
-
-!bc sys
-pip install sphinx
+pip install sphinx --upgrade
 !ec
 
 DocOnce comes with many Sphinx themes that are not part of the
-standard Sphinx source distribution. Some of these themes require
-additional Python/Sphinx modules to be installed:
+standard Sphinx source distribution:
 
  * cloud and redcloud: URL: "https://bitbucket.org/ecollins/cloud_sptheme"
  * bootstrap: URL: "https://github.com/ryan-roemer/sphinx-bootstrap-theme"
@@ -335,14 +288,42 @@ additional Python/Sphinx modules to be installed:
  * impressjs: URL: "https://github.com/shkumagai/sphinxjp.themes.impressjs"
  * sagecellserver: URL: "https://github.com/kriskda/sphinx-sagecell"
 
-These must be downloaded or cloned, and `setup.py` must be run as shown
-above.
+Appropriate installation commands for these themes are
+
+!bc sys
+pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+!ec
+
+It can also be handy to have special typesetting of IPython sessions:
+
+!bc sys
+pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
+!ec
+
+To make OpenOffice or LibreOffice documents from `rst` output, you
+will need more software, typically the following on a Debian system:
+
+!bc sys
+sudo apt-get install unovonv libreoffice libreoffice-dmaths
+!ec
+
+#There is a possibility to create PDF files from reST documents
+#using ReportLab instead of LaTeX. The enabling software is
+#"rst2pdf": "http://code.google.com/p/rst2pdf". Either download the tarball
+#or clone the svn repository, go to the `rst2pdf` directory and
+#run the usual `sudo python setup.py install`.
 
 === Markdown and Pandoc Output ===
 
-The DocOnce format `pandoc` outputs the document in the Pandoc
-extended Markdown format, which via the `pandoc` program can be
-translated to a range of other formats. Installation of "Pandoc":
+The DocOnce format `pandoc` outputs the document in various Markdown
+versions: the Pandoc
+extended Markdown format (which via the `pandoc` program can be
+translated to a range of other formats), strict Markdown, and
+GitHub-flavored Markdown. Installation of "Pandoc":
 "http://johnmacfarlane.net/pandoc/", written in Haskell, is most
 easily done by
 
@@ -392,59 +373,3 @@ appear in the table below.
 | `meld`       | "meld": "http://meldmerge.org/" | `sudo apt-get install meld` |
 | `tkdiff.tcl` | "tkdiff": "https://sourceforge.net/projects/tkdiff/" | not in Debian |
 |---------------------------------------------------------------------------|
-
-===== Quick Debian/Ubuntu Install =====
-label{install:debian:script}
-
-On Debian (including Ubuntu) systems, it is straightforward to install the
-long series of DocOnce dependencies:
-
-!bc
-# Version control systems
-sudo apt-get install -y mercurial git subversion
-
-# Python
-sudo apt-get install -y idle ipython python-pip python-pdftools texinfo
-
-# LaTeX
-sudo apt-get install -y texlive texlive-extra-utils texlive-latex-extra texlive-math-extra texlive-font-utils
-# or sudo apt-get install -y texlive-full  # get everything
-sudo apt-get install -y latexdiff auctex
-
-# Image and movie tools
-sudo apt-get install -y imagemagick netpbm mjpegtools pdftk giftrans gv libav-tools libavcodec-extra-53 libx264-dev ffmpeg mencoder evince mplayer gnome-mplayer totem vlc browser-plugin-vlc
-
-# Misc
-sudo apt-get install -y ispell pandoc libreoffice unoconv libreoffice-dmaths curl a2ps wdiff meld xxdiff diffpdf kdiff3 diffuse
-
-# More Python software
-sudo pip install sphinx  # install pygments and docutils too
-sudo pip install mako
-sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
-
-sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
-sudo pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
-
-# DocOnce itself
-rm -rf srclib   # put downloaded software in srclib
-mkdir srclib
-cd srclib
-git clone git@github.com:hplgit/doconce.git
-cd doconce
-sudo python setup.py install -y
-cd ../..
-
-# Ptex2tex
-cd srclib
-svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
-cd ptex2tex
-sudo python setup.py install -y
-cd latex
-sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
-cd ../../..
-!ec
