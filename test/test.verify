@@ -128,7 +128,7 @@ clean_and_make()
 
 log = open(logfilename, 'a')
 add('make.sh', log)
-files = '.do.txt', '.html', '.p.tex', '.rst', '.sphinx.rst', '.gwiki', '.mwiki', '.cwiki', '.st', '.epytext', '.txt', '.md'
+files = '.do.txt', '.html', '.tex', '.rst', '.sphinx.rst', '.gwiki', '.mwiki', '.cwiki', '.st', '.epytext', '.txt', '.md'
 files = ['quickref' + ext for ext in files]
 for f in files:
     add(f, log)

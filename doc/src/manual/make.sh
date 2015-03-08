@@ -120,7 +120,7 @@ rm -f *.ps
 
 rm -rf demo
 mkdir demo
-cp -r manual.do.txt manual.html ._manual*.html fig mov manual.p.tex manual.tex manual.pdf manual_latex.pdf manual.rst manual.sphinx.rst manual.xml manual.rst.html manual.rst.tex manual.rst.pdf manual.gwiki manual.cwiki manual.mwiki manual.txt manual.epytext manual.md sphinx-rootdir/_build/html demo
+cp -r manual.do.txt manual.html ._manual*.html fig mov manual.tex manual.tex manual.pdf manual_latex.pdf manual.rst manual.sphinx.rst manual.xml manual.rst.html manual.rst.tex manual.rst.pdf manual.gwiki manual.cwiki manual.mwiki manual.txt manual.epytext manual.md sphinx-rootdir/_build/html demo
 
 cd demo
 cat > index.html <<EOF
