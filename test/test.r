@@ -1919,6 +1919,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -4051,6 +4052,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 \usepackage{minted}
@@ -6367,6 +6369,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\usepackage{fancyvrb}
 
 \usepackage{anslistings,fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -8597,6 +8600,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\usepackage{fancyvrb}
 
 % Packages for typesetting blocks of computer code
 \usepackage{framed,fancyvrb,moreverb}
@@ -12300,12 +12304,13 @@ References
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
-   2003.
+   2003,
+   Edited book.
 
 .. [Ref05]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
-   1989.
+   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_.
 
 .. [Ref06]
    **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -12368,7 +12373,7 @@ References
 .. [Ref15]
    **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
    *Simula Research Laboratory*,
-   2004.
+   Internal report.
 
 .. [Ref16]
    **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -12377,8 +12382,7 @@ References
    1989.
 
 .. [Ref17]
-   [Ref17]. **H. P. Langtangen**,
-   Computational Modeling of Huge Tsunamis From Asteroid Impacts,
+   **H. P. Langtangen**. Computational Modeling of Huge Tsunamis From Asteroid Impacts,
    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
    2007.
 
@@ -12390,8 +12394,7 @@ References
 
 .. [Ref19]
    **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*,
-   1991.
+   *Center for Industrial Research*.
 
 .. [Ref20]
    **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
@@ -14102,12 +14105,13 @@ References
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
-   2003.
+   2003,
+   Edited book.
 
 .. [Ref05]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
-   1989.
+   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_.
 
 .. [Ref06]
    **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -14170,7 +14174,7 @@ References
 .. [Ref15]
    **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
    *Simula Research Laboratory*,
-   2004.
+   Internal report.
 
 .. [Ref16]
    **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -14179,8 +14183,7 @@ References
    1989.
 
 .. [Ref17]
-   [Ref17]. **H. P. Langtangen**,
-   Computational Modeling of Huge Tsunamis From Asteroid Impacts,
+   **H. P. Langtangen**. Computational Modeling of Huge Tsunamis From Asteroid Impacts,
    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
    2007.
 
@@ -14192,8 +14195,7 @@ References
 
 .. [Ref19]
    **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*,
-   1991.
+   *Center for Industrial Research*.
 
 .. [Ref20]
    **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
@@ -15785,8 +15787,8 @@ Filename: `selc_composed.pdf`.
  # H. P. Langtangen and G. Pedersen.     Propagation of Large Destructive Waves,    *International Journal of Applied Mechanics and Engineering*,    7(1),    pp. 187-204,    2002.
  # H. P. Langtangen, K.-A. Mardal and R. Winther.     Numerical Methods for Incompressible Viscous Flow,    *Advances in Water Resources*,    25,    pp. 1125-1146,    2002.
  # H. P. Langtangen.     Numerical Solution of First Passage Problems in Random Vibrations,    *SIAM Journal of Scientific and Statistical Computing*,    15,    pp. 997-996,    1994.
- # K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen.     Software Tools for Multigrid Methods,    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,    edited by H. P. Langtangen and A. Tveito,    Springer,    2003.
- # H. P. Langtangen.     The FEMDEQS Program System,    *Department of Mathematics, University of Oslo*,    1989.
+ # K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen.     Software Tools for Multigrid Methods,    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,    edited by H. P. Langtangen and A. Tveito,    Springer,    2003,    Edited book.
+ # H. P. Langtangen.     The FEMDEQS Program System,    *Department of Mathematics, University of Oslo*,    http://www.math.uio.no/old/days/hpl/femdeqs.pdf,    1989.
  # H. P. Langtangen.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    *SIAM Journal on Scientific Computing*,    13,    pp. 1394-1417,    1992.
  # M. Mortensen, H. P. Langtangen and G. N. Wells.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    *Advances in Water Resources*,    34(9),    [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],    2011.
  # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    *International Journal of Fluid Mechanics Research*,    33(1),    pp. 15-43,    2006.
@@ -15796,7 +15798,7 @@ Filename: `selc_composed.pdf`.
 # H. P. Langtangen.     *Python Scripting for Computational Science*,    Springer,    2008.
 # H. P. Langtangen and G. Pedersen.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by J. Grue, B. Gjevik and J. E. Weber,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
 # H. P. Langtangen.     *A Primer on Scientific Programming With Python*,    Springer,    2012.
-# P. V. Jeberg, H. P. Langtangen and C. B. Terp.     Optimization With Diffpack: Practical Example From Welding,    *Simula Research Laboratory*,    2004.
+# P. V. Jeberg, H. P. Langtangen and C. B. Terp.     Optimization With Diffpack: Practical Example From Welding,    *Simula Research Laboratory*,    Internal report,    2004.
 # H. P. Langtangen.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
 # H. P. Langtangen.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
 # H. P. Langtangen.     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,    M.Sc. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1985.
@@ -17378,10 +17380,12 @@ Filename: <code>selc_composed.pdf</code>.
     ''Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming'',
     edited by H. P. Langtangen and A. Tveito,
     Springer,
-    2003.
+    2003,
+    Edited book.
  <li> H. P. Langtangen. 
     The FEMDEQS Program System,
     ''Department of Mathematics, University of Oslo'',
+    http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
  <li> H. P. Langtangen. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -17435,6 +17439,7 @@ Filename: <code>selc_composed.pdf</code>.
 <li> P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
     Optimization With Diffpack: Practical Example From Welding,
     ''Simula Research Laboratory'',
+    Internal report,
     2004.
 <li> H. P. Langtangen. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -18976,8 +18981,8 @@ Filename: {{{selc_composed.pdf}}}.
  # H. P. Langtangen and G. Pedersen.     Propagation of Large Destructive Waves,    //International Journal of Applied Mechanics and Engineering//,    7(1),    pp. 187-204,    2002.
  # H. P. Langtangen, K.-A. Mardal and R. Winther.     Numerical Methods for Incompressible Viscous Flow,    //Advances in Water Resources//,    25,    pp. 1125-1146,    2002.
  # H. P. Langtangen.     Numerical Solution of First Passage Problems in Random Vibrations,    //SIAM Journal of Scientific and Statistical Computing//,    15,    pp. 997-996,    1994.
- # K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen.     Software Tools for Multigrid Methods,    //Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming//,    edited by H. P. Langtangen and A. Tveito,    Springer,    2003.
- # H. P. Langtangen.     The FEMDEQS Program System,    //Department of Mathematics, University of Oslo//,    1989.
+ # K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen.     Software Tools for Multigrid Methods,    //Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming//,    edited by H. P. Langtangen and A. Tveito,    Springer,    2003,    Edited book.
+ # H. P. Langtangen.     The FEMDEQS Program System,    //Department of Mathematics, University of Oslo//,    [[http://www.math.uio.no/old/days/hpl/femdeqs.pdf]],    1989.
  # H. P. Langtangen.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    //SIAM Journal on Scientific Computing//,    13,    pp. 1394-1417,    1992.
  # M. Mortensen, H. P. Langtangen and G. N. Wells.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    //Advances in Water Resources//,    34(9),    [[http://dx.doi.org/10.1016/j.advwatres.2011.02.013|doi: 10.1016/j.advwatres.2011.02.013]],    2011.
  # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    //International Journal of Fluid Mechanics Research//,    33(1),    pp. 15-43,    2006.
@@ -18987,7 +18992,7 @@ Filename: {{{selc_composed.pdf}}}.
 # H. P. Langtangen.     //Python Scripting for Computational Science//,    Springer,    2008.
 # H. P. Langtangen and G. Pedersen.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by J. Grue, B. Gjevik and J. E. Weber,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    [[http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310]].
 # H. P. Langtangen.     //A Primer on Scientific Programming With Python//,    Springer,    2012.
-# P. V. Jeberg, H. P. Langtangen and C. B. Terp.     Optimization With Diffpack: Practical Example From Welding,    //Simula Research Laboratory//,    2004.
+# P. V. Jeberg, H. P. Langtangen and C. B. Terp.     Optimization With Diffpack: Practical Example From Welding,    //Simula Research Laboratory//,    Internal report,    2004.
 # H. P. Langtangen.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
 # H. P. Langtangen.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
 # H. P. Langtangen.     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,    M.Sc. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1985.
@@ -20255,10 +20260,12 @@ References
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by H. P. Langtangen and A. Tveito,
     Springer,
-    2003.
+    2003,
+    Edited book.
  5. H. P. Langtangen. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
+    "http://www.math.uio.no/old/days/hpl/femdeqs.pdf":http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
  6. H. P. Langtangen. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -20312,6 +20319,7 @@ References
 15. P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
+    Internal report,
     2004.
 16. H. P. Langtangen. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -21592,10 +21600,12 @@ References
     I{Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming},
     edited by H. P. Langtangen and A. Tveito,
     Springer,
-    2003.
+    2003,
+    Edited book.
  5. H. P. Langtangen. 
     The FEMDEQS Program System,
     I{Department of Mathematics, University of Oslo},
+    U{http://www.math.uio.no/old/days/hpl/femdeqs.pdf<http://www.math.uio.no/old/days/hpl/femdeqs.pdf>},
     1989.
  6. H. P. Langtangen. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -21649,6 +21659,7 @@ References
 15. P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
     Optimization With Diffpack: Practical Example From Welding,
     I{Simula Research Laboratory},
+    Internal report,
     2004.
 16. H. P. Langtangen. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -23080,11 +23091,13 @@ References
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by H. P. Langtangen and A. Tveito,
     Springer,
-    2003.
+    2003,
+    Edited book.
 
  5. H. P. Langtangen. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
+    http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
 
  6. H. P. Langtangen. 
@@ -23148,6 +23161,7 @@ References
 15. P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
+    Internal report,
     2004.
 
 16. H. P. Langtangen. 
@@ -24782,10 +24796,12 @@ Filename: `selc_composed.pdf`.
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by **H. P. Langtangen and A. Tveito**,
     Springer,
-    2003.
+    2003,
+    Edited book.
  5. <div id="Langtangen_1988d"></div> **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
+    <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>,
     1989.
  6. <div id="Langtangen_1992c"></div> **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -24839,6 +24855,7 @@ Filename: `selc_composed.pdf`.
 15. <div id="Jeberg_et_al_2004"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
+    Internal report,
     2004.
 16. <div id="Langtangen_1989e"></div> **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -27007,11 +27024,13 @@ is at the end with only one newline.
       "    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,\n",
       "    edited by **H. P. Langtangen and A. Tveito**,\n",
       "    Springer,\n",
-      "    2003.\n",
+      "    2003,\n",
+      "    Edited book.\n",
       "\n",
       " 5. <div id=\"Langtangen_1988d\"></div> **H. P. Langtangen**. \n",
       "    The FEMDEQS Program System,\n",
       "    *Department of Mathematics, University of Oslo*,\n",
+      "    <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>,\n",
       "    1989.\n",
       "\n",
       " 6. <div id=\"Langtangen_1992c\"></div> **H. P. Langtangen**. \n",
@@ -27075,6 +27094,7 @@ is at the end with only one newline.
       "15. <div id=\"Jeberg_et_al_2004\"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. \n",
       "    Optimization With Diffpack: Practical Example From Welding,\n",
       "    *Simula Research Laboratory*,\n",
+      "    Internal report,\n",
       "    2004.\n",
       "\n",
       "16. <div id=\"Langtangen_1989e\"></div> **H. P. Langtangen**. \n",
@@ -28774,8 +28794,8 @@ Inline math, \( a=b \), is the only math in this document.
  <li> <div id="testdoc:12"></div> <b>H. P. Langtangen</b>. 
     A Document for Testing Doconce,
     <em>Simula Research Laboratory</em>,
-    2013,
-    <a href="http://doconce.googlecode.com/hg/test/demo_testdoc.html" target="_self"><tt>http://doconce.googlecode.com/hg/test/demo_testdoc.html</tt></a>.</li>
+    <a href="http://doconce.googlecode.com/hg/test/demo_testdoc.html" target="_self"><tt>http://doconce.googlecode.com/hg/test/demo_testdoc.html</tt></a>,
+    2013.</li>
 </ol>
 
 <!-- end bibliography -->
@@ -28835,6 +28855,7 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -29293,7 +29314,6 @@ Inline math, :math:`a=b`, is the only math in this document.
 .. [Ref1]
    **H. P. Langtangen**. A Document for Testing Doconce,
    *Simula Research Laboratory*,
-   2013,
    `http://doconce.googlecode.com/hg/test/demo_testdoc.html <http://doconce.googlecode.com/hg/test/demo_testdoc.html>`_.
 
 
@@ -29441,8 +29461,8 @@ Inline math, a=b, is the only math in this document.
  1. H. P. Langtangen. 
     A Document for Testing Doconce,
     *Simula Research Laboratory*,
-    2013,
-    http://doconce.googlecode.com/hg/test/demotestdoc.html.
+    http://doconce.googlecode.com/hg/test/demotestdoc.html,
+    2013.
 
 ************** File: author2_siamltex.tex *****************
 %%
@@ -32192,10 +32212,12 @@ Filename: <code>selc_composed.pdf</code>.
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
-    2003.</li>
+    2003,
+    Edited book.</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
+    <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_self"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -32249,6 +32271,7 @@ Filename: <code>selc_composed.pdf</code>.
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
+    Internal report,
     2004.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -34358,10 +34381,12 @@ Filename: <code>selc_composed.pdf</code>.
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
-    2003.</li>
+    2003,
+    Edited book.</li>
  <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
+    <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_blank"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
  <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -34415,6 +34440,7 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
+    Internal report,
     2004.</li>
 <li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -36503,10 +36529,12 @@ Filename: <code>selc_composed.pdf</code>.
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
-    2003.</li>
+    2003,
+    Edited book.</li>
  <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
+    <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_self"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
  <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -36560,6 +36588,7 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
+    Internal report,
     2004.</li>
 <li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -36862,6 +36891,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -40717,6 +40747,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -44002,10 +44033,12 @@ Filename: <code>selc_composed.pdf</code>.
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
-    2003.</li>
+    2003,
+    Edited book.</li>
  <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
+    <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_self"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
  <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -44059,6 +44092,7 @@ Filename: <code>selc_composed.pdf</code>.
 <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
+    Internal report,
     2004.</li>
 <li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -45661,12 +45695,13 @@ References
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
-   2003.
+   2003,
+   Edited book.
 
 .. [Ref05]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
-   1989.
+   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_.
 
 .. [Ref06]
    **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -45729,7 +45764,7 @@ References
 .. [Ref15]
    **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
    *Simula Research Laboratory*,
-   2004.
+   Internal report.
 
 .. [Ref16]
    **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -45738,8 +45773,7 @@ References
    1989.
 
 .. [Ref17]
-   [Ref17]. **H. P. Langtangen**,
-   Computational Modeling of Huge Tsunamis From Asteroid Impacts,
+   **H. P. Langtangen**. Computational Modeling of Huge Tsunamis From Asteroid Impacts,
    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
    2007.
 
@@ -45751,8 +45785,7 @@ References
 
 .. [Ref19]
    **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*,
-   1991.
+   *Center for Industrial Research*.
 
 .. [Ref20]
    **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
@@ -46011,6 +46044,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -46663,6 +46697,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -47260,6 +47295,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -47864,6 +47900,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -48511,6 +48548,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -49074,6 +49112,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -49683,6 +49722,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -50202,6 +50242,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -50811,6 +50852,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -60349,6 +60391,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{graphicx}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -63299,6 +63342,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -68337,6 +68381,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{animate}
 \usepackage{graphicx}
 
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -68748,6 +68793,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{animate}
 \usepackage{graphicx}
 
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -69153,6 +69199,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{animate}
 \usepackage{graphicx}
 
+\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 
@@ -71387,7 +71434,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fc695f43320>
+verbatim is to be replaced using <function html_verbatim at 0x7fb0142aa320>
 
 
 First occurence: " `mako`."
@@ -72400,6 +72447,7 @@ BIBFILE: papers.pub
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -73353,6 +73401,7 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 
@@ -75354,7 +75403,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Mar  8 01:43:08 2015.
+# sphinx-quickstart on Wed Mar 11 09:05:33 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79206,6 +79255,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
+\usepackage{fancyvrb}
 
 % Packages for typesetting blocks of computer code
 \usepackage{framed,fancyvrb,moreverb}
@@ -92249,10 +92299,9 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -92605,7 +92654,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1272.
+t line 1273.
 
 
 
@@ -92625,7 +92674,7 @@ t line 1272.
 
 
 
-t line 1281.
+t line 1282.
 
 
 
@@ -92646,7 +92695,7 @@ t line 1281.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -92875,8 +92924,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -93107,10 +93156,9 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -93413,7 +93461,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1272.
+t line 1273.
 
 
 
@@ -93433,7 +93481,7 @@ t line 1272.
 
 
 
-t line 1281.
+t line 1282.
 
 
 
@@ -93454,7 +93502,7 @@ t line 1281.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -93585,8 +93633,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -93784,9 +93832,9 @@ The top-level auxiliary file: testdoc.aux
 The style file: plain.bst
 Database file #1: papers.bib
 Warning--entry type for "Langtangen_1989e" isn't style-file defined
---line 166 of file papers.bib
+--line 170 of file papers.bib
 Warning--entry type for "Langtangen:85" isn't style-file defined
---line 175 of file papers.bib
+--line 179 of file papers.bib
 Warning--can't use both author and editor fields in Langtangen:95
 (There were 3 warnings)
 + pdflatex -shell-escape testdoc
@@ -93832,10 +93880,9 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -94138,7 +94185,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1272.
+t line 1273.
 
 
 
@@ -94158,7 +94205,7 @@ t line 1272.
 
 
 
-t line 1281.
+t line 1282.
 
 
 
@@ -94179,7 +94226,7 @@ t line 1281.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -94311,8 +94358,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -94542,10 +94589,9 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -94908,8 +94954,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -95141,13 +95187,13 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
 
@@ -95506,7 +95552,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1223.
+t line 1224.
 
 
 
@@ -95526,7 +95572,7 @@ t line 1223.
 
 
 
-t line 1232.
+t line 1233.
 
 
 
@@ -95546,7 +95592,7 @@ t line 1232.
 
 
 
-t line 1236.
+t line 1237.
 
 
 
@@ -95776,12 +95822,12 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
+fancyvrb.sty    2008/02/07
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
 listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
-fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -101444,7 +101490,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 165 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101454,7 +101500,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 192 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102063,7 +102109,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 165 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102073,7 +102119,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 192 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102675,7 +102721,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 165 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102685,7 +102731,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 192 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103673,10 +103719,9 @@ See the caption package documentation for explanation.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -104010,8 +104055,8 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -104245,10 +104290,9 @@ See the caption package documentation for explanation.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -104572,8 +104616,8 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -104795,10 +104839,9 @@ See the caption package documentation for explanation.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
-(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -105101,8 +105144,8 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty    
 fancyvrb.sty    2008/02/07
+ptex2tex.sty    
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -105767,11 +105810,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
-
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
@@ -106023,8 +106065,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 fancyvrb.sty    2008/02/07
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
  fontenc.sty
@@ -106189,11 +106231,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
-
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz))
-(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
@@ -106423,8 +106464,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 fancyvrb.sty    2008/02/07
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
  fontenc.sty

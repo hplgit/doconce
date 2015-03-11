@@ -429,6 +429,7 @@ def rst_bib(filestr, citations, pubfile, pubdata, numbering=True):
             filestr = filestr.replace('cite{%s}' % label, '[%s]_' % label)
 
     if pubfile is not None:
+        # Could use rst format, but we stick to the common doconce format
         bibtext = bibliography(pubdata, citations, format='rst')
         if numbering:
             for label in citations:
