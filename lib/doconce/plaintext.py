@@ -67,7 +67,6 @@ def plain_index_bib(filestr, index, citations, pubfile, pubdata):
     if pubfile is not None:
         bibtext = bibliography(pubdata, citations, format='doconce')
         bibtext = re.sub(r'label\{.+?\} ', '', bibtext)
-        bibtext = bibtext.replace('_', '')
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
 
     # remove all index entries:

@@ -2,7 +2,7 @@
 
 # can reuse most of rst module:
 from rst import *
-from common import align2equations, online_python_tutor, bibliography, \
+from common import align2equations, online_python_tutor, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option, _abort
 
