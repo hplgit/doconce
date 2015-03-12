@@ -12310,7 +12310,8 @@ References
 .. [Ref05]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
-   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_.
+   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_,
+   1989.
 
 .. [Ref06]
    **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -12373,7 +12374,8 @@ References
 .. [Ref15]
    **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
    *Simula Research Laboratory*,
-   Internal report.
+   Internal report,
+   2004.
 
 .. [Ref16]
    **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -12394,7 +12396,8 @@ References
 
 .. [Ref19]
    **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*.
+   *Center for Industrial Research*,
+   1991.
 
 .. [Ref20]
    **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
@@ -14111,7 +14114,8 @@ References
 .. [Ref05]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
-   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_.
+   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_,
+   1989.
 
 .. [Ref06]
    **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -14174,7 +14178,8 @@ References
 .. [Ref15]
    **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
    *Simula Research Laboratory*,
-   Internal report.
+   Internal report,
+   2004.
 
 .. [Ref16]
    **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -14195,7 +14200,8 @@ References
 
 .. [Ref19]
    **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*.
+   *Center for Industrial Research*,
+   1991.
 
 .. [Ref20]
    **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
@@ -15784,26 +15790,26 @@ Filename: `selc_composed.pdf`.
 == References ==
 
 
- # H. P. Langtangen and G. Pedersen.     Propagation of Large Destructive Waves,    *International Journal of Applied Mechanics and Engineering*,    7(1),    pp. 187-204,    2002.
- # H. P. Langtangen, K.-A. Mardal and R. Winther.     Numerical Methods for Incompressible Viscous Flow,    *Advances in Water Resources*,    25,    pp. 1125-1146,    2002.
- # H. P. Langtangen.     Numerical Solution of First Passage Problems in Random Vibrations,    *SIAM Journal of Scientific and Statistical Computing*,    15,    pp. 997-996,    1994.
- # K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen.     Software Tools for Multigrid Methods,    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,    edited by H. P. Langtangen and A. Tveito,    Springer,    2003,    Edited book.
- # H. P. Langtangen.     The FEMDEQS Program System,    *Department of Mathematics, University of Oslo*,    http://www.math.uio.no/old/days/hpl/femdeqs.pdf,    1989.
- # H. P. Langtangen.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    *SIAM Journal on Scientific Computing*,    13,    pp. 1394-1417,    1992.
- # M. Mortensen, H. P. Langtangen and G. N. Wells.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    *Advances in Water Resources*,    34(9),    [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],    2011.
- # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    *International Journal of Fluid Mechanics Research*,    33(1),    pp. 15-43,    2006.
- # S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    *Physical Review B: Condensed Matter and Materials Physics*,    74,    2006.
-# J. B. Haga, H. Osnes and H. P. Langtangen.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    *International Journal of Analytical and Numerical Methods in Geomechanics*,    [http://dx.doi.org/10.1002/nag.1062 doi: 10.1002/nag.1062],    2011,    http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
-# H. P. Langtangen.     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,    Springer,    2003.
-# H. P. Langtangen.     *Python Scripting for Computational Science*,    Springer,    2008.
-# H. P. Langtangen and G. Pedersen.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by J. Grue, B. Gjevik and J. E. Weber,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
-# H. P. Langtangen.     *A Primer on Scientific Programming With Python*,    Springer,    2012.
-# P. V. Jeberg, H. P. Langtangen and C. B. Terp.     Optimization With Diffpack: Practical Example From Welding,    *Simula Research Laboratory*,    Internal report,    2004.
-# H. P. Langtangen.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
-# H. P. Langtangen.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
-# H. P. Langtangen.     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,    M.Sc. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1985.
-# H. P. Langtangen and A. Tveito.     Numerical Methods in Continuum Mechanics,    *Center for Industrial Research*,    1991.
-# H. P. Langtangen.     Diffpack: Software for Partial Differential Equations,    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,    edited by A. Vermeulen,    1994.
+ # *H. P. Langtangen and G. Pedersen*.     Propagation of Large Destructive Waves,    *International Journal of Applied Mechanics and Engineering*,    7(1),    pp. 187-204,    2002.
+ # *H. P. Langtangen, K.-A. Mardal and R. Winther*.     Numerical Methods for Incompressible Viscous Flow,    *Advances in Water Resources*,    25,    pp. 1125-1146,    2002.
+ # *H. P. Langtangen*.     Numerical Solution of First Passage Problems in Random Vibrations,    *SIAM Journal of Scientific and Statistical Computing*,    15,    pp. 997-996,    1994.
+ # *K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen*.     Software Tools for Multigrid Methods,    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,    edited by *H. P. Langtangen and A. Tveito*,    Springer,    2003,    Edited book.
+ # *H. P. Langtangen*.     The FEMDEQS Program System,    *Department of Mathematics, University of Oslo*,    http://www.math.uio.no/old/days/hpl/femdeqs.pdf,    1989.
+ # *H. P. Langtangen*.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    *SIAM Journal on Scientific Computing*,    13,    pp. 1394-1417,    1992.
+ # *M. Mortensen, H. P. Langtangen and G. N. Wells*.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    *Advances in Water Resources*,    34(9),    [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],    2011.
+ # *S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt*.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    *International Journal of Fluid Mechanics Research*,    33(1),    pp. 15-43,    2006.
+ # *S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen*.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    *Physical Review B: Condensed Matter and Materials Physics*,    74,    2006.
+# *J. B. Haga, H. Osnes and H. P. Langtangen*.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    *International Journal of Analytical and Numerical Methods in Geomechanics*,    [http://dx.doi.org/10.1002/nag.1062 doi: 10.1002/nag.1062],    2011,    http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
+# *H. P. Langtangen*.     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,    Springer,    2003.
+# *H. P. Langtangen*.     *Python Scripting for Computational Science*,    Springer,    2008.
+# *H. P. Langtangen and G. Pedersen*.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by *J. Grue, B. Gjevik and J. E. Weber*,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
+# *H. P. Langtangen*.     *A Primer on Scientific Programming With Python*,    Springer,    2012.
+# *P. V. Jeberg, H. P. Langtangen and C. B. Terp*.     Optimization With Diffpack: Practical Example From Welding,    *Simula Research Laboratory*,    Internal report,    2004.
+# *H. P. Langtangen*.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
+# *H. P. Langtangen*.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
+# *H. P. Langtangen*.     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,    M.Sc. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1985.
+# *H. P. Langtangen and A. Tveito*.     Numerical Methods in Continuum Mechanics,    *Center for Industrial Research*,    1991.
+# *H. P. Langtangen*.     Diffpack: Software for Partial Differential Equations,    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,    edited by *A. Vermeulen*,    1994.
 
 == Appendix: Just for testing; part I ==
 
@@ -17357,112 +17363,112 @@ Filename: <code>selc_composed.pdf</code>.
 
 
 <ol>
- <li> H. P. Langtangen and G. Pedersen. 
+ <li> '''H. P. Langtangen and G. Pedersen'''. 
     Propagation of Large Destructive Waves,
     ''International Journal of Applied Mechanics and Engineering'',
     7(1),
     pp. 187-204,
     2002.
- <li> H. P. Langtangen, K.-A. Mardal and R. Winther. 
+ <li> '''H. P. Langtangen, K.-A. Mardal and R. Winther'''. 
     Numerical Methods for Incompressible Viscous Flow,
     ''Advances in Water Resources'',
     25,
     pp. 1125-1146,
     2002.
- <li> H. P. Langtangen. 
+ <li> '''H. P. Langtangen'''. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     ''SIAM Journal of Scientific and Statistical Computing'',
     15,
     pp. 997-996,
     1994.
- <li> K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen. 
+ <li> '''K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen'''. 
     Software Tools for Multigrid Methods,
     ''Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming'',
-    edited by H. P. Langtangen and A. Tveito,
+    edited by '''H. P. Langtangen and A. Tveito''',
     Springer,
     2003,
     Edited book.
- <li> H. P. Langtangen. 
+ <li> '''H. P. Langtangen'''. 
     The FEMDEQS Program System,
     ''Department of Mathematics, University of Oslo'',
     http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
- <li> H. P. Langtangen. 
+ <li> '''H. P. Langtangen'''. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     ''SIAM Journal on Scientific Computing'',
     13,
     pp. 1394-1417,
     1992.
- <li> M. Mortensen, H. P. Langtangen and G. N. Wells. 
+ <li> '''M. Mortensen, H. P. Langtangen and G. N. Wells'''. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     ''Advances in Water Resources'',
     34(9),
     [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],
     2011.
- <li> S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
+ <li> '''S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt'''. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     ''International Journal of Fluid Mechanics Research'',
     33(1),
     pp. 15-43,
     2006.
- <li> S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen. 
+ <li> '''S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen'''. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     ''Physical Review B: Condensed Matter and Materials Physics'',
     74,
     2006.
-<li> J. B. Haga, H. Osnes and H. P. Langtangen. 
+<li> '''J. B. Haga, H. Osnes and H. P. Langtangen'''. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     ''International Journal of Analytical and Numerical Methods in Geomechanics'',
     [http://dx.doi.org/10.1002/nag.1062 doi: 10.1002/nag.1062],
     2011,
     http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     ''Computational Partial Differential Equations - Numerical Methods and Diffpack Programming'',
     Springer,
     2003.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     ''Python Scripting for Computational Science'',
     Springer,
     2008.
-<li> H. P. Langtangen and G. Pedersen. 
+<li> '''H. P. Langtangen and G. Pedersen'''. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
-    edited by J. Grue, B. Gjevik and J. E. Weber,
+    edited by '''J. Grue, B. Gjevik and J. E. Weber''',
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
     http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     ''A Primer on Scientific Programming With Python'',
     Springer,
     2012.
-<li> P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
+<li> '''P. V. Jeberg, H. P. Langtangen and C. B. Terp'''. 
     Optimization With Diffpack: Practical Example From Welding,
     ''Simula Research Laboratory'',
     Internal report,
     2004.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-<li> H. P. Langtangen and A. Tveito. 
+<li> '''H. P. Langtangen and A. Tveito'''. 
     Numerical Methods in Continuum Mechanics,
     ''Center for Industrial Research'',
     1991.
-<li> H. P. Langtangen. 
+<li> '''H. P. Langtangen'''. 
     Diffpack: Software for Partial Differential Equations,
     ''Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA'',
-    edited by A. Vermeulen,
+    edited by '''A. Vermeulen''',
     1994.
 </ol>
 
@@ -18978,26 +18984,26 @@ Filename: {{{selc_composed.pdf}}}.
 = References =
 
 
- # H. P. Langtangen and G. Pedersen.     Propagation of Large Destructive Waves,    //International Journal of Applied Mechanics and Engineering//,    7(1),    pp. 187-204,    2002.
- # H. P. Langtangen, K.-A. Mardal and R. Winther.     Numerical Methods for Incompressible Viscous Flow,    //Advances in Water Resources//,    25,    pp. 1125-1146,    2002.
- # H. P. Langtangen.     Numerical Solution of First Passage Problems in Random Vibrations,    //SIAM Journal of Scientific and Statistical Computing//,    15,    pp. 997-996,    1994.
- # K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen.     Software Tools for Multigrid Methods,    //Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming//,    edited by H. P. Langtangen and A. Tveito,    Springer,    2003,    Edited book.
- # H. P. Langtangen.     The FEMDEQS Program System,    //Department of Mathematics, University of Oslo//,    [[http://www.math.uio.no/old/days/hpl/femdeqs.pdf]],    1989.
- # H. P. Langtangen.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    //SIAM Journal on Scientific Computing//,    13,    pp. 1394-1417,    1992.
- # M. Mortensen, H. P. Langtangen and G. N. Wells.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    //Advances in Water Resources//,    34(9),    [[http://dx.doi.org/10.1016/j.advwatres.2011.02.013|doi: 10.1016/j.advwatres.2011.02.013]],    2011.
- # S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    //International Journal of Fluid Mechanics Research//,    33(1),    pp. 15-43,    2006.
- # S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    //Physical Review B: Condensed Matter and Materials Physics//,    74,    2006.
-# J. B. Haga, H. Osnes and H. P. Langtangen.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    //International Journal of Analytical and Numerical Methods in Geomechanics//,    [[http://dx.doi.org/10.1002/nag.1062|doi: 10.1002/nag.1062]],    2011,    [[http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract]].
-# H. P. Langtangen.     //Computational Partial Differential Equations - Numerical Methods and Diffpack Programming//,    Springer,    2003.
-# H. P. Langtangen.     //Python Scripting for Computational Science//,    Springer,    2008.
-# H. P. Langtangen and G. Pedersen.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by J. Grue, B. Gjevik and J. E. Weber,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    [[http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310]].
-# H. P. Langtangen.     //A Primer on Scientific Programming With Python//,    Springer,    2012.
-# P. V. Jeberg, H. P. Langtangen and C. B. Terp.     Optimization With Diffpack: Practical Example From Welding,    //Simula Research Laboratory//,    Internal report,    2004.
-# H. P. Langtangen.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
-# H. P. Langtangen.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
-# H. P. Langtangen.     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,    M.Sc. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1985.
-# H. P. Langtangen and A. Tveito.     Numerical Methods in Continuum Mechanics,    //Center for Industrial Research//,    1991.
-# H. P. Langtangen.     Diffpack: Software for Partial Differential Equations,    //Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA//,    edited by A. Vermeulen,    1994.
+ # **H. P. Langtangen and G. Pedersen**.     Propagation of Large Destructive Waves,    //International Journal of Applied Mechanics and Engineering//,    7(1),    pp. 187-204,    2002.
+ # **H. P. Langtangen, K.-A. Mardal and R. Winther**.     Numerical Methods for Incompressible Viscous Flow,    //Advances in Water Resources//,    25,    pp. 1125-1146,    2002.
+ # **H. P. Langtangen**.     Numerical Solution of First Passage Problems in Random Vibrations,    //SIAM Journal of Scientific and Statistical Computing//,    15,    pp. 997-996,    1994.
+ # **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**.     Software Tools for Multigrid Methods,    //Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming//,    edited by **H. P. Langtangen and A. Tveito**,    Springer,    2003,    Edited book.
+ # **H. P. Langtangen**.     The FEMDEQS Program System,    //Department of Mathematics, University of Oslo//,    [[http://www.math.uio.no/old/days/hpl/femdeqs.pdf]],    1989.
+ # **H. P. Langtangen**.     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,    //SIAM Journal on Scientific Computing//,    13,    pp. 1394-1417,    1992.
+ # **M. Mortensen, H. P. Langtangen and G. N. Wells**.     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,    //Advances in Water Resources//,    34(9),    [[http://dx.doi.org/10.1016/j.advwatres.2011.02.013|doi: 10.1016/j.advwatres.2011.02.013]],    2011.
+ # **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    //International Journal of Fluid Mechanics Research//,    33(1),    pp. 15-43,    2006.
+ # **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    //Physical Review B: Condensed Matter and Materials Physics//,    74,    2006.
+# **J. B. Haga, H. Osnes and H. P. Langtangen**.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    //International Journal of Analytical and Numerical Methods in Geomechanics//,    [[http://dx.doi.org/10.1002/nag.1062|doi: 10.1002/nag.1062]],    2011,    [[http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract]].
+# **H. P. Langtangen**.     //Computational Partial Differential Equations - Numerical Methods and Diffpack Programming//,    Springer,    2003.
+# **H. P. Langtangen**.     //Python Scripting for Computational Science//,    Springer,    2008.
+# **H. P. Langtangen and G. Pedersen**.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by **J. Grue, B. Gjevik and J. E. Weber**,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    [[http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310]].
+# **H. P. Langtangen**.     //A Primer on Scientific Programming With Python//,    Springer,    2012.
+# **P. V. Jeberg, H. P. Langtangen and C. B. Terp**.     Optimization With Diffpack: Practical Example From Welding,    //Simula Research Laboratory//,    Internal report,    2004.
+# **H. P. Langtangen**.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
+# **H. P. Langtangen**.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
+# **H. P. Langtangen**.     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,    M.Sc. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1985.
+# **H. P. Langtangen and A. Tveito**.     Numerical Methods in Continuum Mechanics,    //Center for Industrial Research//,    1991.
+# **H. P. Langtangen**.     Diffpack: Software for Partial Differential Equations,    //Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA//,    edited by **A. Vermeulen**,    1994.
 
 = Appendix: Just for testing; part I =
 
@@ -20237,112 +20243,112 @@ Filename: 'selc_composed.pdf'.
 
 References
 
- 1. H. P. Langtangen and G. Pedersen. 
+ 1. **H. P. Langtangen and G. Pedersen**. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
- 2. H. P. Langtangen, K.-A. Mardal and R. Winther. 
+ 2. **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
- 3. H. P. Langtangen. 
+ 3. **H. P. Langtangen**. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
- 4. K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen. 
+ 4. **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
-    edited by H. P. Langtangen and A. Tveito,
+    edited by **H. P. Langtangen and A. Tveito**,
     Springer,
     2003,
     Edited book.
- 5. H. P. Langtangen. 
+ 5. **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     "http://www.math.uio.no/old/days/hpl/femdeqs.pdf":http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
- 6. H. P. Langtangen. 
+ 6. **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
- 7. M. Mortensen, H. P. Langtangen and G. N. Wells. 
+ 7. **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     "http://dx.doi.org/10.1016/j.advwatres.2011.02.013":doi: 10.1016/j.advwatres.2011.02.013,
     2011.
- 8. S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
+ 8. **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
- 9. S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen. 
+ 9. **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-10. J. B. Haga, H. Osnes and H. P. Langtangen. 
+10. **J. B. Haga, H. Osnes and H. P. Langtangen**. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     "http://dx.doi.org/10.1002/nag.1062":doi: 10.1002/nag.1062,
     2011,
     "http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract":http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
-11. H. P. Langtangen. 
+11. **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     Springer,
     2003.
-12. H. P. Langtangen. 
+12. **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
     Springer,
     2008.
-13. H. P. Langtangen and G. Pedersen. 
+13. **H. P. Langtangen and G. Pedersen**. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
-    edited by J. Grue, B. Gjevik and J. E. Weber,
+    edited by **J. Grue, B. Gjevik and J. E. Weber**,
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
     "http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310":http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
-14. H. P. Langtangen. 
+14. **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     Springer,
     2012.
-15. P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
+15. **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     Internal report,
     2004.
-16. H. P. Langtangen. 
+16. **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. H. P. Langtangen. 
+17. **H. P. Langtangen**. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. H. P. Langtangen. 
+18. **H. P. Langtangen**. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. H. P. Langtangen and A. Tveito. 
+19. **H. P. Langtangen and A. Tveito**. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-20. H. P. Langtangen. 
+20. **H. P. Langtangen**. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
-    edited by A. Vermeulen,
+    edited by **A. Vermeulen**,
     1994.
 
 Appendix: Just for testing; part I
@@ -21577,112 +21583,112 @@ Filename: C{selc_composed.pdf}.
 References
 ==========
 
- 1. H. P. Langtangen and G. Pedersen. 
+ 1. B{H. P. Langtangen and G. Pedersen}. 
     Propagation of Large Destructive Waves,
     I{International Journal of Applied Mechanics and Engineering},
     7(1),
     pp. 187-204,
     2002.
- 2. H. P. Langtangen, K.-A. Mardal and R. Winther. 
+ 2. B{H. P. Langtangen, K.-A. Mardal and R. Winther}. 
     Numerical Methods for Incompressible Viscous Flow,
     I{Advances in Water Resources},
     25,
     pp. 1125-1146,
     2002.
- 3. H. P. Langtangen. 
+ 3. B{H. P. Langtangen}. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     I{SIAM Journal of Scientific and Statistical Computing},
     15,
     pp. 997-996,
     1994.
- 4. K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen. 
+ 4. B{K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen}. 
     Software Tools for Multigrid Methods,
     I{Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming},
-    edited by H. P. Langtangen and A. Tveito,
+    edited by B{H. P. Langtangen and A. Tveito},
     Springer,
     2003,
     Edited book.
- 5. H. P. Langtangen. 
+ 5. B{H. P. Langtangen}. 
     The FEMDEQS Program System,
     I{Department of Mathematics, University of Oslo},
     U{http://www.math.uio.no/old/days/hpl/femdeqs.pdf<http://www.math.uio.no/old/days/hpl/femdeqs.pdf>},
     1989.
- 6. H. P. Langtangen. 
+ 6. B{H. P. Langtangen}. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     I{SIAM Journal on Scientific Computing},
     13,
     pp. 1394-1417,
     1992.
- 7. M. Mortensen, H. P. Langtangen and G. N. Wells. 
+ 7. B{M. Mortensen, H. P. Langtangen and G. N. Wells}. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     I{Advances in Water Resources},
     34(9),
     U{doi: 10.1016/j.advwatres.2011.02.013<http://dx.doi.org/10.1016/j.advwatres.2011.02.013>},
     2011.
- 8. S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
+ 8. B{S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt}. 
     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     I{International Journal of Fluid Mechanics Research},
     33(1),
     pp. 15-43,
     2006.
- 9. S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen. 
+ 9. B{S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen}. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     I{Physical Review B: Condensed Matter and Materials Physics},
     74,
     2006.
-10. J. B. Haga, H. Osnes and H. P. Langtangen. 
+10. B{J. B. Haga, H. Osnes and H. P. Langtangen}. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     I{International Journal of Analytical and Numerical Methods in Geomechanics},
     U{doi: 10.1002/nag.1062<http://dx.doi.org/10.1002/nag.1062>},
     2011,
     U{http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract<http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>}.
-11. H. P. Langtangen. 
+11. B{H. P. Langtangen}. 
     I{Computational Partial Differential Equations - Numerical Methods and Diffpack Programming},
     Springer,
     2003.
-12. H. P. Langtangen. 
+12. B{H. P. Langtangen}. 
     I{Python Scripting for Computational Science},
     Springer,
     2008.
-13. H. P. Langtangen and G. Pedersen. 
+13. B{H. P. Langtangen and G. Pedersen}. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
-    edited by J. Grue, B. Gjevik and J. E. Weber,
+    edited by B{J. Grue, B. Gjevik and J. E. Weber},
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
     U{http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310<http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>}.
-14. H. P. Langtangen. 
+14. B{H. P. Langtangen}. 
     I{A Primer on Scientific Programming With Python},
     Springer,
     2012.
-15. P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
+15. B{P. V. Jeberg, H. P. Langtangen and C. B. Terp}. 
     Optimization With Diffpack: Practical Example From Welding,
     I{Simula Research Laboratory},
     Internal report,
     2004.
-16. H. P. Langtangen. 
+16. B{H. P. Langtangen}. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. H. P. Langtangen. 
+17. B{H. P. Langtangen}. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. H. P. Langtangen. 
+18. B{H. P. Langtangen}. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. H. P. Langtangen and A. Tveito. 
+19. B{H. P. Langtangen and A. Tveito}. 
     Numerical Methods in Continuum Mechanics,
     I{Center for Industrial Research},
     1991.
-20. H. P. Langtangen. 
+20. B{H. P. Langtangen}. 
     Diffpack: Software for Partial Differential Equations,
     I{Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA},
-    edited by A. Vermeulen,
+    edited by B{A. Vermeulen},
     1994.
 
 Appendix: Just for testing; part I
@@ -23065,131 +23071,131 @@ Filename: selc_composed.pdf.
 References
 ==========
 
- 1. H. P. Langtangen and G. Pedersen. 
+ 1. _H. P. Langtangen and G. Pedersen_. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
 
- 2. H. P. Langtangen, K.-A. Mardal and R. Winther. 
+ 2. _H. P. Langtangen, K.-A. Mardal and R. Winther_. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
 
- 3. H. P. Langtangen. 
+ 3. _H. P. Langtangen_. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
 
- 4. K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen. 
+ 4. _K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen_. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
-    edited by H. P. Langtangen and A. Tveito,
+    edited by _H. P. Langtangen and A. Tveito_,
     Springer,
     2003,
     Edited book.
 
- 5. H. P. Langtangen. 
+ 5. _H. P. Langtangen_. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
 
- 6. H. P. Langtangen. 
+ 6. _H. P. Langtangen_. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
 
- 7. M. Mortensen, H. P. Langtangen and G. N. Wells. 
+ 7. _M. Mortensen, H. P. Langtangen and G. N. Wells_. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     doi: 10.1016/j.advwatres.2011.02.013 (http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
 
- 8. S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt. 
+ 8. _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt_. 
     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
 
- 9. S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen. 
+ 9. _S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen_. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
 
-10. J. B. Haga, H. Osnes and H. P. Langtangen. 
+10. _J. B. Haga, H. Osnes and H. P. Langtangen_. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     doi: 10.1002/nag.1062 (http://dx.doi.org/10.1002/nag.1062),
     2011,
     http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
 
-11. H. P. Langtangen. 
+11. _H. P. Langtangen_. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     Springer,
     2003.
 
-12. H. P. Langtangen. 
+12. _H. P. Langtangen_. 
     *Python Scripting for Computational Science*,
     Springer,
     2008.
 
-13. H. P. Langtangen and G. Pedersen. 
+13. _H. P. Langtangen and G. Pedersen_. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
-    edited by J. Grue, B. Gjevik and J. E. Weber,
+    edited by _J. Grue, B. Gjevik and J. E. Weber_,
     Kluwer Academic Publishers,
     pp. pp. 117-126,
     1995,
     http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
 
-14. H. P. Langtangen. 
+14. _H. P. Langtangen_. 
     *A Primer on Scientific Programming With Python*,
     Springer,
     2012.
 
-15. P. V. Jeberg, H. P. Langtangen and C. B. Terp. 
+15. _P. V. Jeberg, H. P. Langtangen and C. B. Terp_. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     Internal report,
     2004.
 
-16. H. P. Langtangen. 
+16. _H. P. Langtangen_. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
 
-17. H. P. Langtangen. 
+17. _H. P. Langtangen_. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
 
-18. H. P. Langtangen. 
+18. _H. P. Langtangen_. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
 
-19. H. P. Langtangen and A. Tveito. 
+19. _H. P. Langtangen and A. Tveito_. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
 
-20. H. P. Langtangen. 
+20. _H. P. Langtangen_. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
-    edited by A. Vermeulen,
+    edited by _A. Vermeulen_,
     1994.
 
 Appendix: Just for testing; part I
@@ -28794,8 +28800,8 @@ Inline math, \( a=b \), is the only math in this document.
  <li> <div id="testdoc:12"></div> <b>H. P. Langtangen</b>. 
     A Document for Testing Doconce,
     <em>Simula Research Laboratory</em>,
-    <a href="http://doconce.googlecode.com/hg/test/demo_testdoc.html" target="_self"><tt>http://doconce.googlecode.com/hg/test/demo_testdoc.html</tt></a>,
-    2013.</li>
+    <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self"><tt>http://hplgit.github.io/doconce/test/demo_testdoc.html</tt></a>,
+    2015.</li>
 </ol>
 
 <!-- end bibliography -->
@@ -29314,7 +29320,8 @@ Inline math, :math:`a=b`, is the only math in this document.
 .. [Ref1]
    **H. P. Langtangen**. A Document for Testing Doconce,
    *Simula Research Laboratory*,
-   `http://doconce.googlecode.com/hg/test/demo_testdoc.html <http://doconce.googlecode.com/hg/test/demo_testdoc.html>`_.
+   `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_,
+   2015.
 
 
 ************** File: author1.txt *****************
@@ -29458,11 +29465,11 @@ Test of math
 
 Inline math, a=b, is the only math in this document.
 
- 1. H. P. Langtangen. 
+ 1. _H. P. Langtangen_. 
     A Document for Testing Doconce,
     *Simula Research Laboratory*,
-    http://doconce.googlecode.com/hg/test/demotestdoc.html,
-    2013.
+    http://hplgit.github.io/doconce/test/demo_testdoc.html,
+    2015.
 
 ************** File: author2_siamltex.tex *****************
 %%
@@ -45701,7 +45708,8 @@ References
 .. [Ref05]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
-   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_.
+   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_,
+   1989.
 
 .. [Ref06]
    **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
@@ -45764,7 +45772,8 @@ References
 .. [Ref15]
    **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
    *Simula Research Laboratory*,
-   Internal report.
+   Internal report,
+   2004.
 
 .. [Ref16]
    **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
@@ -45785,7 +45794,8 @@ References
 
 .. [Ref19]
    **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*.
+   *Center for Industrial Research*,
+   1991.
 
 .. [Ref20]
    **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
@@ -71434,7 +71444,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fb0142aa320>
+verbatim is to be replaced using <function html_verbatim at 0x7ffcac993320>
 
 
 First occurence: " `mako`."
@@ -75403,7 +75413,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Mar 11 09:05:33 2015.
+# sphinx-quickstart on Wed Mar 11 09:26:50 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
