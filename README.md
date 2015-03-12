@@ -76,9 +76,14 @@ Another demo shows how DocOnce can be used to [create slides](http://hplgit.gith
 various formats (HTML5 reveal.js, deck.js, etc., as well as LaTeX
 Beamer).
 
-DocOnce has support for HTML documents with design and functionality
-based on Bootstrap styles.  A [demo](http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html)
+DocOnce has support for *responsive* HTML documents with design and
+functionality based on Bootstrap styles.  A [demo](http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html)
 illustrates the many possibilities for colors and layouts.
+
+DocOnce also has support for exercises in [quiz format](http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html). Pure quiz files can be *automatically
+uploaded* to [Kahoot!](https://getkahoot.com) online quiz games operated
+through smart phones, using [quiztools](https://github.com/hplgit/quiztools).
+
 
 
 A [complete book](http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_1?s=books&ie=UTF8&qid=1419162166&sr=1-1&keywords=langtangen)
