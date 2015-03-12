@@ -59,7 +59,7 @@ LaTeX. DocOnce also has special support for exercises, "quizzes": "http://hplgit
 three very desired features when developing educational material.
 Books can be composed of many smaller documents that may exist
 independently of the book, thus *lowering the barrier of writing books*
-(see URL: "https://github.com/hplgit/setup4book-doconce").
+(see "example": "https://github.com/hplgit/setup4book-doconce").
 
 
 ===== Demo =====
