@@ -35,15 +35,14 @@ If you rely on the Debian package on Linux systems (`sudo apt-get install python
 
 You should take a look at DocOnce if any of these questions are of interest.
 
-*Users are strongly encouraged to use the most recent software in the "GitHub repository": "https://github.com/hplgit/doconce" and not the tarballs!*
 
 ===== Highlights =====
 
  * DocOnce is a modestly tagged markup language (see "example": "http://hplgit.github.io/teamods/writing_reports/index.html"), quite like Markdown, but with many more features, targeting web pages, scientific reports, software documentation, books, and slides involving *much math and code in the text*.
  * A single source for the text can be used for addressing different media, such as traditional paper-based books, ebooks in PDF, PDF documents for phones, documents in HTML with various layouts (including many Bootstrap and Sphinx styles), and blog posts.
- * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output has many fancy layouts typesetting of computer code.
+ * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output has many fancy layouts typesetting of computer code.
  * DocOnce can also output other formats (though without support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and other formats.
- * The document source is first preprocessed by Preprocess and Mako, which gives you full programming capabilities in the text. For example, with Mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you can determine the language at compile time of the document. New features of DocOnce can also be implemented via Mako.
+ * The document source is first preprocessed by Preprocess and Mako, which gives you full programming capabilities in the document's text. For example, with Mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you can determine the language at compile time of the document. New user-specific features of DocOnce can also be implemented via Mako.
  * DocOnce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations. DocOnce also adjusts Sphinx and HTML code such that it is possible to refer to equations outside the current web page.
  * DocOnce makes it very easy to write slides with math and code by stripping down running text in a report or book. LaTeX Beamer slides, HTML5 slides (reveal.js, deck.js, dzslides), and Remark (Markdown) slides are supported. Slide elements can be arranged in a grid of cells to easily control the layout.
 
@@ -58,7 +57,7 @@ LaTeX. DocOnce also has special support for exercises, "quizzes": "http://hplgit
 "http://hplgit.github.io/doconce/doc/pub/manual/._manual017.html#___sec55",
 three very desired features when developing educational material.
 Books can be composed of many smaller documents that may exist
-independently of the book, thus *lowering the barrier of writing books*
+independently of the book, thus lowering the barrier of writing books
 (see "example": "https://github.com/hplgit/setup4book-doconce").
 
 
@@ -89,7 +88,7 @@ DocOnce also has support for exercises in "quiz format":
 files can be *automatically uploaded* to "Kahoot!":
 "https://getkahoot.com" online quiz games operated through smart
 phones (with the aid of "quiztools":
-"https://github.com/hplgit/quiztools" for DocOnce to Kahoot
+"https://github.com/hplgit/quiztools" for DocOnce to Kahoot!
 translation).
 
 

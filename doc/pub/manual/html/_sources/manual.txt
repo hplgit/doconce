@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 8, 2015
+:Date: Mar 13, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -6929,6 +6929,8 @@ on a screen where links are just clickable.
 There are many additional options (run ``doconce format --help`` and
 look for options starting with ``--latex`` to get a more verbose description):
 
+ * ``--latex_code_style=lst,vrb,pyg``
+
  * ``--latex_font=helvetica,palatino``
 
  * ``--latex_papersize=a4,a6``
@@ -6973,10 +6975,67 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--xelatex`` (prepare for XeLaTeX)
 
-The LaTeX style is much governed by ``--latex_title_layout`` and ``--latex_style``.
-For the former, ``titlepage`` gives a separate title page; ``std`` is just standard
-LaTeX handling of title, author, and date; ``doconce_heading`` is a more modern heading, ``Springer_collection`` is used with ``--latex_style=Springer_lncse`` for an edited book; ``beamer`` is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For ``--latex_style``,
-``std`` gives standard LaTeX behavior; ``Springer_lncse`` is for Springer's LNCSE book series style (to be used with ``--latex_title_layout=Springer_collection`` if the book is an edited book); ``Springer_llncs`` is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres ``--latex_title_layout=Springer_collection``); ``Springer_lnup`` for Springer's Lecture Notes for Undergraduate Physics books, ``Springer_T2`` for Springer's T2 book layout, ``siamltex``, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles ``siamltex.cls`` and ``siam10.clo``), ``siamltexmm`` for the new multimedia SIAM journal style (requires ``siamltex.cls`` and ``siam10.clo``), ``elsevier`` for the style of papers to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can be used to set the journal name, and the style requires ``elsarticle.cls`` and ``elsarticle-num.bst``).
+The overall LaTeX style is much governed by ``--latex_title_layout`` and
+``--latex_style``.  For the former, ``titlepage`` gives a separate title
+page; ``std`` is just standard LaTeX handling of title, author, and
+date; ``doconce_heading`` is a more modern heading,
+``Springer_collection`` is used with ``--latex_style=Springer_lncse`` for
+an edited book; ``beamer`` is needed if the DocOnce document is to be
+translated to LaTeX Beamer slides. For ``--latex_style``, ``std`` gives
+standard LaTeX behavior; ``Springer_lncse`` is for Springer's LNCSE book
+series style (to be used with
+``--latex_title_layout=Springer_collection`` if the book is an edited
+book); ``Springer_llncs`` is for Springer's Lecture Notes in Computer
+Science series (normally an edited book that also requres
+``--latex_title_layout=Springer_collection``); ``Springer_lnup`` for
+Springer's Lecture Notes for Undergraduate Physics books,
+``Springer_T2`` for Springer's T2 book layout, ``siamltex``, for the LaTeX
+style of papers in standard SIAM journals (also used far beyond SIAM
+journals and requires the stylefiles ``siamltex.cls`` and ``siam10.clo``),
+``siamltexmm`` for the new multimedia SIAM journal style (requires
+``siamltex.cls`` and ``siam10.clo``), ``elsevier`` for the style of papers
+to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can
+be used to set the journal name, and the style requires
+``elsarticle.cls`` and ``elsarticle-num.bst``).
+
+The style of verbatim blocks of computer code is specified by
+``--latex_code_style=X``, where ``X`` can be set in a very flexible way.
+There are three main values, corresponding to three LaTeX tools
+for verbatim type setting:
+
+ * ``vrb`` for plain ``Verbatim`` style (``fancyvrb`` LaTeX package)
+
+ * ``pyg`` for the Pygments style (``mintex`` LaTeX package)
+
+ * ``lst`` for the Listings styles (``listingsutf8`` LaTeX package)
+
+A separate `demo <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__ explains
+the many possible settings of ``X``. Popular choices are minimalistic
+plain verbatim,
+
+.. code-block:: text
+
+        --latex_code_style=vrb
+
+maybe with an added light blue background color,
+
+.. code-block:: text
+
+        --latex_code_style=vrb-blue1
+
+or the default Pygments style,
+
+.. code-block:: text
+
+        --latex_code_style=pyg
+
+or the Listings-based style with yellow background color
+
+.. code-block:: text
+
+        --latex_code_style=lst-yellow2_fb
+
+It is easy to specify different styles for different code environments.
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
@@ -6992,7 +7051,7 @@ tests.
 .. index:: LaTeX syntax highlighting
 
 **Step 2.**
-In case you did not specify the ``--latex_code_style=`` option,
+In case you *did not* specify the ``--latex_code_style=`` option,
 you must run ``ptex2tex`` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
 
@@ -7103,7 +7162,7 @@ and create the PDF file:
         Terminal> latex mydoc
         Terminal> latex mydoc
         Terminal> makeindex mydoc   # if index
-        Terminal> bibitem mydoc     # if bibliography
+        Terminal> bibtex mydoc      # if bibliography
         Terminal> latex mydoc
         Terminal> dvipdf mydoc
 
@@ -7130,7 +7189,7 @@ If the minted style is used, ``latex`` (or ``pdflatex`` or ``xelatex``)
         Terminal> latex -shell-escape mydoc
         Terminal> latex -shell-escape mydoc
         Terminal> makeindex mydoc   # if index
-        Terminal> bibitem mydoc     # if bibliography
+        Terminal> bibtex mydoc      # if bibliography
         Terminal> latex -shell-escape mydoc
         Terminal> dvipdf mydoc
 
@@ -7157,7 +7216,7 @@ Then ``ptex2tex`` is run as explained above, and finally
 
         Terminal> pdflatex -shell-escape mydoc
         Terminal> makeindex mydoc   # if index
-        Terminal> bibitem mydoc     # if bibliography
+        Terminal> bibtex mydoc      # if bibliography
         Terminal> pdflatex -shell-escape mydoc
 
 .. _do2any:xelatex:
@@ -8768,8 +8827,9 @@ Image file handling
 ~~~~~~~~~~~~~~~~~~~
 
 Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for
-``latex`` output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
+For example, PDF or PNG is used for ``pdflatex``,
+PostScript for
+``latex``, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
 calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The `ImageMagick suite <http://www.imagemagick.org/script/index.php>`__ can be installed on all
 major platforms.  On Debian Linux (including Ubuntu) systems one can
@@ -9164,13 +9224,11 @@ References
    1985.
 
 .. [Ref2]
-   [Ref2]. **T. H. E. Author**,
-   Some Equations,
+   **T. H. E. Author**. Some Equations,
    2008.
 
 .. [Ref3]
-   [Ref3]. **H. P. Langtangen**,
-   A Document for Testing DocOnce,
+   **H. P. Langtangen**. A Document for Testing DocOnce,
    `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
 
 .. [Ref4]

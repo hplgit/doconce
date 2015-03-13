@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 8, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 13, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -5818,6 +5818,7 @@ on a screen where links are just clickable.</p>
 look for options starting with <tt class="docutils literal"><span class="pre">--latex</span></tt> to get a more verbose description):</p>
 <blockquote>
 <div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">--latex_code_style=lst,vrb,pyg</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_font=helvetica,palatino</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_papersize=a4,a6</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></tt> (name of BibTeX style)</li>
@@ -5842,10 +5843,58 @@ look for options starting with <tt class="docutils literal"><span class="pre">--
 <li><tt class="docutils literal"><span class="pre">--xelatex</span></tt> (prepare for XeLaTeX)</li>
 </ul>
 </div></blockquote>
-<p>The LaTeX style is much governed by <tt class="docutils literal"><span class="pre">--latex_title_layout</span></tt> and <tt class="docutils literal"><span class="pre">--latex_style</span></tt>.
-For the former, <tt class="docutils literal"><span class="pre">titlepage</span></tt> gives a separate title page; <tt class="docutils literal"><span class="pre">std</span></tt> is just standard
-LaTeX handling of title, author, and date; <tt class="docutils literal"><span class="pre">doconce_heading</span></tt> is a more modern heading, <tt class="docutils literal"><span class="pre">Springer_collection</span></tt> is used with <tt class="docutils literal"><span class="pre">--latex_style=Springer_lncse</span></tt> for an edited book; <tt class="docutils literal"><span class="pre">beamer</span></tt> is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For <tt class="docutils literal"><span class="pre">--latex_style</span></tt>,
-<tt class="docutils literal"><span class="pre">std</span></tt> gives standard LaTeX behavior; <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt> is for Springer&#8217;s LNCSE book series style (to be used with <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt> if the book is an edited book); <tt class="docutils literal"><span class="pre">Springer_llncs</span></tt> is for Springer&#8217;s Lecture Notes in Computer Science series (normally an edited book that also requres <tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt>); <tt class="docutils literal"><span class="pre">Springer_lnup</span></tt> for Springer&#8217;s Lecture Notes for Undergraduate Physics books, <tt class="docutils literal"><span class="pre">Springer_T2</span></tt> for Springer&#8217;s T2 book layout, <tt class="docutils literal"><span class="pre">siamltex</span></tt>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">siamltexmm</span></tt> for the new multimedia SIAM journal style (requires <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">elsevier</span></tt> for the style of papers to be submitted to Elsevier journals (<tt class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></tt> can be used to set the journal name, and the style requires <tt class="docutils literal"><span class="pre">elsarticle.cls</span></tt> and <tt class="docutils literal"><span class="pre">elsarticle-num.bst</span></tt>).</p>
+<p>The overall LaTeX style is much governed by <tt class="docutils literal"><span class="pre">--latex_title_layout</span></tt> and
+<tt class="docutils literal"><span class="pre">--latex_style</span></tt>.  For the former, <tt class="docutils literal"><span class="pre">titlepage</span></tt> gives a separate title
+page; <tt class="docutils literal"><span class="pre">std</span></tt> is just standard LaTeX handling of title, author, and
+date; <tt class="docutils literal"><span class="pre">doconce_heading</span></tt> is a more modern heading,
+<tt class="docutils literal"><span class="pre">Springer_collection</span></tt> is used with <tt class="docutils literal"><span class="pre">--latex_style=Springer_lncse</span></tt> for
+an edited book; <tt class="docutils literal"><span class="pre">beamer</span></tt> is needed if the DocOnce document is to be
+translated to LaTeX Beamer slides. For <tt class="docutils literal"><span class="pre">--latex_style</span></tt>, <tt class="docutils literal"><span class="pre">std</span></tt> gives
+standard LaTeX behavior; <tt class="docutils literal"><span class="pre">Springer_lncse</span></tt> is for Springer&#8217;s LNCSE book
+series style (to be used with
+<tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt> if the book is an edited
+book); <tt class="docutils literal"><span class="pre">Springer_llncs</span></tt> is for Springer&#8217;s Lecture Notes in Computer
+Science series (normally an edited book that also requres
+<tt class="docutils literal"><span class="pre">--latex_title_layout=Springer_collection</span></tt>); <tt class="docutils literal"><span class="pre">Springer_lnup</span></tt> for
+Springer&#8217;s Lecture Notes for Undergraduate Physics books,
+<tt class="docutils literal"><span class="pre">Springer_T2</span></tt> for Springer&#8217;s T2 book layout, <tt class="docutils literal"><span class="pre">siamltex</span></tt>, for the LaTeX
+style of papers in standard SIAM journals (also used far beyond SIAM
+journals and requires the stylefiles <tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>),
+<tt class="docutils literal"><span class="pre">siamltexmm</span></tt> for the new multimedia SIAM journal style (requires
+<tt class="docutils literal"><span class="pre">siamltex.cls</span></tt> and <tt class="docutils literal"><span class="pre">siam10.clo</span></tt>), <tt class="docutils literal"><span class="pre">elsevier</span></tt> for the style of papers
+to be submitted to Elsevier journals (<tt class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></tt> can
+be used to set the journal name, and the style requires
+<tt class="docutils literal"><span class="pre">elsarticle.cls</span></tt> and <tt class="docutils literal"><span class="pre">elsarticle-num.bst</span></tt>).</p>
+<p>The style of verbatim blocks of computer code is specified by
+<tt class="docutils literal"><span class="pre">--latex_code_style=X</span></tt>, where <tt class="docutils literal"><span class="pre">X</span></tt> can be set in a very flexible way.
+There are three main values, corresponding to three LaTeX tools
+for verbatim type setting:</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">vrb</span></tt> for plain <tt class="docutils literal"><span class="pre">Verbatim</span></tt> style (<tt class="docutils literal"><span class="pre">fancyvrb</span></tt> LaTeX package)</li>
+<li><tt class="docutils literal"><span class="pre">pyg</span></tt> for the Pygments style (<tt class="docutils literal"><span class="pre">mintex</span></tt> LaTeX package)</li>
+<li><tt class="docutils literal"><span class="pre">lst</span></tt> for the Listings styles (<tt class="docutils literal"><span class="pre">listingsutf8</span></tt> LaTeX package)</li>
+</ul>
+</div></blockquote>
+<p>A separate <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">demo</a> explains
+the many possible settings of <tt class="docutils literal"><span class="pre">X</span></tt>. Popular choices are minimalistic
+plain verbatim,</p>
+<div class="highlight-text"><div class="highlight"><pre>--latex_code_style=vrb
+</pre></div>
+</div>
+<p>maybe with an added light blue background color,</p>
+<div class="highlight-text"><div class="highlight"><pre>--latex_code_style=vrb-blue1
+</pre></div>
+</div>
+<p>or the default Pygments style,</p>
+<div class="highlight-text"><div class="highlight"><pre>--latex_code_style=pyg
+</pre></div>
+</div>
+<p>or the Listings-based style with yellow background color</p>
+<div class="highlight-text"><div class="highlight"><pre>--latex_code_style=lst-yellow2_fb
+</pre></div>
+</div>
+<p>It is easy to specify different styles for different code environments.</p>
 <p>During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <tt class="docutils literal"><span class="pre">--latex_line_numbers</span> <span class="pre">--latex_double_spacing</span> <span class="pre">--latex_todonotes</span> <span class="pre">--latex_labels_in_margin</span></tt>. One may also (automatically) edit the
 <tt class="docutils literal"><span class="pre">final</span></tt> argument in the <tt class="docutils literal"><span class="pre">documentclass</span></tt> heading to <tt class="docutils literal"><span class="pre">draft</span></tt> as this will
@@ -5856,7 +5905,7 @@ inserts native latex code for tables
 inside <tt class="docutils literal"><span class="pre">%</span> <span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">('latex',</span> <span class="pre">'pdflatex'):</span></tt> (or similar <tt class="docutils literal"><span class="pre">preprocess</span></tt> syntax)
 tests.</p>
 <p id="index-150"><strong>Step 2.</strong>
-In case you did not specify the <tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option,
+In case you <em>did not</em> specify the <tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option,
 you must run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex mydoc
@@ -5950,7 +5999,7 @@ and create the PDF file:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex mydoc
 Terminal&gt; latex mydoc
 Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; latex mydoc
 Terminal&gt; dvipdf mydoc
 </pre></div>
@@ -5972,7 +6021,7 @@ the minted style is used, while you have to include the
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; dvipdf mydoc
 </pre></div>
@@ -5988,7 +6037,7 @@ but the start is</p>
 <p>Then <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> is run as explained above, and finally</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pdflatex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; pdflatex -shell-escape mydoc
 </pre></div>
 </div>
@@ -7380,8 +7429,9 @@ The installation is done by</p>
 <div class="section" id="image-file-handling">
 <h4>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h4>
 <p>Different output formats require different formats of image files.
-For example, PostScript or Encapuslated PostScript is required for
-<tt class="docutils literal"><span class="pre">latex</span></tt> output, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
+For example, PDF or PNG is used for <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
+PostScript for
+<tt class="docutils literal"><span class="pre">latex</span></tt>, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
 calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all
 major platforms.  On Debian Linux (including Ubuntu) systems one can
@@ -7737,16 +7787,14 @@ pp. 14-21,
 <table class="docutils citation" frame="void" id="ref2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref2]</td><td>[Ref2]. <strong>T. H. E. Author</strong>,
-Some Equations,
+<tr><td class="label">[Ref2]</td><td><strong>T. H. E. Author</strong>. Some Equations,
 2008.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> [Ref3]. <strong>H. P. Langtangen</strong>,
-A Document for Testing DocOnce,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>H. P. Langtangen</strong>. A Document for Testing DocOnce,
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
 </tbody>
 </table>

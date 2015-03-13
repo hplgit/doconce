@@ -125,10 +125,10 @@ The `minted` style to be used can be
 specified by the `--minted_latex_style=` option, e.g.,
 
 !bc sys
-Terminal> doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style
+Terminal> doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style=perldoc
 !ec
 The `perldoc` choice "changes the colors": "doc_pyg_perldoc.pdf" from
-the default (Pygments `default`) "choice": "doc_pyg.pdf" generated above.
+the default (Pygments `default`) "choice": "doc_pyg.pdf" generated previously.
 
 ===== Using the `lstlisting` tool =====
 
