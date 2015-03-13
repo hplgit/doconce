@@ -1143,6 +1143,7 @@ There are many additional options (run <code>doconce format --help</code> and
 look for options starting with <code>--latex</code> to get a more verbose description):
 
 <ul>
+ <li> <code>--latex_code_style=lst,vrb,pyg</code></li>
  <li> <code>--latex_font=helvetica,palatino</code></li>
  <li> <code>--latex_papersize=a4,a6</code></li>
  <li> <code>--latex_bibstyle=plain</code> (name of BibTeX style)</li>
@@ -1167,10 +1168,76 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--xelatex</code> (prepare for XeLaTeX)</li>
 </ul>
 
-The LaTeX style is much governed by <code>--latex_title_layout</code> and <code>--latex_style</code>.
-For the former, <code>titlepage</code> gives a separate title page; <code>std</code> is just standard
-LaTeX handling of title, author, and date; <code>doconce_heading</code> is a more modern heading, <code>Springer_collection</code> is used with <code>--latex_style=Springer_lncse</code> for an edited book; <code>beamer</code> is needed if the DocOnce document is to be translated to LaTeX Beamer slides. For <code>--latex_style</code>,
-<code>std</code> gives standard LaTeX behavior; <code>Springer_lncse</code> is for Springer's LNCSE book series style (to be used with <code>--latex_title_layout=Springer_collection</code> if the book is an edited book); <code>Springer_llncs</code> is for Springer's Lecture Notes in Computer Science series (normally an edited book that also requres <code>--latex_title_layout=Springer_collection</code>); <code>Springer_lnup</code> for Springer's Lecture Notes for Undergraduate Physics books, <code>Springer_T2</code> for Springer's T2 book layout, <code>siamltex</code>, for the LaTeX style of papers in standard SIAM journals (also used far beyond SIAM journals and requires the stylefiles <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>siamltexmm</code> for the new multimedia SIAM journal style (requires <code>siamltex.cls</code> and <code>siam10.clo</code>), <code>elsevier</code> for the style of papers to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can be used to set the journal name, and the style requires <code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
+The overall LaTeX style is much governed by <code>--latex_title_layout</code> and
+<code>--latex_style</code>.  For the former, <code>titlepage</code> gives a separate title
+page; <code>std</code> is just standard LaTeX handling of title, author, and
+date; <code>doconce_heading</code> is a more modern heading,
+<code>Springer_collection</code> is used with <code>--latex_style=Springer_lncse</code> for
+an edited book; <code>beamer</code> is needed if the DocOnce document is to be
+translated to LaTeX Beamer slides. For <code>--latex_style</code>, <code>std</code> gives
+standard LaTeX behavior; <code>Springer_lncse</code> is for Springer's LNCSE book
+series style (to be used with
+<code>--latex_title_layout=Springer_collection</code> if the book is an edited
+book); <code>Springer_llncs</code> is for Springer's Lecture Notes in Computer
+Science series (normally an edited book that also requres
+<code>--latex_title_layout=Springer_collection</code>); <code>Springer_lnup</code> for
+Springer's Lecture Notes for Undergraduate Physics books,
+<code>Springer_T2</code> for Springer's T2 book layout, <code>siamltex</code>, for the LaTeX
+style of papers in standard SIAM journals (also used far beyond SIAM
+journals and requires the stylefiles <code>siamltex.cls</code> and <code>siam10.clo</code>),
+<code>siamltexmm</code> for the new multimedia SIAM journal style (requires
+<code>siamltex.cls</code> and <code>siam10.clo</code>), <code>elsevier</code> for the style of papers
+to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can
+be used to set the journal name, and the style requires
+<code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
+
+<p>
+The style of verbatim blocks of computer code is specified by
+<code>--latex_code_style=X</code>, where <code>X</code> can be set in a very flexible way.
+There are three main values, corresponding to three LaTeX tools
+for verbatim type setting:
+
+<ul>
+ <li> <code>vrb</code> for plain <code>Verbatim</code> style (<code>fancyvrb</code> LaTeX package)</li>
+ <li> <code>pyg</code> for the Pygments style (<code>mintex</code> LaTeX package)</li>
+ <li> <code>lst</code> for the Listings styles (<code>listingsutf8</code> LaTeX package)</li>
+</ul>
+
+A separate <a href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" target="_self">demo</a> explains
+the many possible settings of <code>X</code>. Popular choices are minimalistic
+plain verbatim,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">--latex_code_style=vrb
+</pre></div>
+<p>
+maybe with an added light blue background color,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">--latex_code_style=vrb-blue1
+</pre></div>
+<p>
+or the default Pygments style,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">--latex_code_style=pyg
+</pre></div>
+<p>
+or the Listings-based style with yellow background color
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">--latex_code_style=lst-yellow2_fb
+</pre></div>
+<p>
+It is easy to specify different styles for different code environments.
 
 <p>
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
@@ -1187,7 +1254,7 @@ tests.
 
 <p>
 <b>Step 2.</b>
-In case you did not specify the <code>--latex_code_style=</code> option,
+In case you <em>did not</em> specify the <code>--latex_code_style=</code> option,
 you must run <code>ptex2tex</code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
 
@@ -1313,7 +1380,7 @@ and create the PDF file:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex mydoc
 Terminal&gt; latex mydoc
 Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; latex mydoc
 Terminal&gt; dvipdf mydoc
 </pre></div>
@@ -1344,7 +1411,7 @@ If the minted style is used, <code>latex</code> (or <code>pdflatex</code> or <co
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; latex -shell-escape mydoc
 Terminal&gt; dvipdf mydoc
 </pre></div>
@@ -1366,7 +1433,7 @@ Then <code>ptex2tex</code> is run as explained above, and finally
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pdflatex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibitem mydoc     # if bibliography
+Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; pdflatex -shell-escape mydoc
 </pre></div>
 
