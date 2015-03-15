@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -51,6 +51,7 @@ body .nt { color: #008000; font-weight: bold } /* Name.Tag */
 body .nv { color: #B8860B } /* Name.Variable */
 body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
 body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
 body .mf { color: #666666 } /* Literal.Number.Float */
 body .mh { color: #666666 } /* Literal.Number.Hex */
 body .mi { color: #666666 } /* Literal.Number.Integer */
@@ -85,18 +86,27 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
     <span class="nt">&lt;title&gt;</span>Solve the world&#39;s simplest differential equation<span class="nt">&lt;/title&gt;</span>
 
     <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;css/styles.css&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span>
-     <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1, user-scalable=no&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content=</span><span class="s">&quot;width=device-width, initial-scale=1, user-scalable=no&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;</span>
+<span class="c">    &lt;script src=&quot;//html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</span>
+<span class="c">    &lt;![endif]--&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;wrapper&quot;</span><span class="nt">&gt;</span>
       <span class="nt">&lt;header&gt;</span>
-        <span class="nt">&lt;h1&gt;</span>Exercise<span class="nt">&lt;/h1&gt;</span>
-        <span class="nt">&lt;p&gt;</span>Differential Equations<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Main Permanent Header<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Permanent SubHeader<span class="nt">&lt;/p&gt;</span>
 
         <span class="c">&lt;!-- picture below the heading on the left --&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;fig/discrete_function.png&quot;</span> <span class="na">width=</span><span class="s">220</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;https://raw.github.com/hplgit/doconce/master/doc/design/fig/discrete_function.png&quot;</span> <span class="na">width=</span><span class="s">220</span><span class="nt">&gt;</span>
 
+        <span class="c">&lt;!-- *Three* potential link buttons below the picture</span>
+<span class="c">        &lt;ul&gt;</span>
+<span class="c">         &lt;li&gt;&lt;a href=&quot;...&quot;&gt;Button &lt;strong&gt;1&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="c">         &lt;li&gt;&lt;a href=&quot;...&quot;&gt;Button &lt;strong&gt;2&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="c">         &lt;li&gt;&lt;a href=&quot;...&quot;&gt;Button &lt;strong&gt;3&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="c">        &lt;/ul&gt;</span>
+<span class="c">        --&gt;</span>
       <span class="nt">&lt;/header&gt;</span>
 
       <span class="c">&lt;!-- Here goes the main page ---&gt;</span>
@@ -123,29 +133,25 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
   <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
      <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span>  <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span>  <span class="p">},</span>
-     <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span> <span class="s2">&quot;autobold.js&quot;</span><span class="p">]</span>
+     <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span> <span class="s2">&quot;autobold.js&quot;</span><span class="p">,</span> <span class="s2">&quot;color.js&quot;</span><span class="p">]</span>
   <span class="p">}</span>
 <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
  <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/script&gt;</span>
-<span class="c">&lt;!-- Fix slow MathJax rendering in IE8 --&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=EmulateIE7&quot;</span><span class="nt">&gt;</span>
-
 
 
 
 <span class="c">&lt;!-- ------------------- main content ---------------------- --&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>Solve the world&#39;s simplest differential equation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec0&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec0&quot;</span><span class="nt">&gt;</span>Solve the world&#39;s simplest differential equation <span class="nt">&lt;/h1&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>Mathematical problem  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec1&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec1&quot;</span><span class="nt">&gt;</span>Mathematical problem <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 This exercise addresses the differential equation problem
 
-<span class="nt">&lt;p&gt;</span>
 $$
 \begin{align}
 u&#39;(t) <span class="err">&amp;</span>= -au(t), \quad t \in (0,T], \label{ode}\\
@@ -158,13 +164,12 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-<span class="nt">&lt;h3&gt;</span>Numerical solution method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;</span>Numerical solution method <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
 with time step \( \Delta t \):
 
-<span class="nt">&lt;p&gt;</span>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
@@ -176,15 +181,17 @@ Here, \( n=0,1,\ldots,N-1 \).
 Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
 Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
 
-<span class="nt">&lt;h3&gt;</span>Implementation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;</span>Implementation <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 The numerical method is implemented in a Python function
-<span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
+<span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
 
 <span class="nt">&lt;p&gt;</span>
 
-<span class="c">&lt;!-- code=python (from !bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
+<span class="c">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;highlight&quot;</span> <span class="na">style=</span><span class="s">&quot;background: #f8f8f8&quot;</span><span class="nt">&gt;&lt;pre</span> <span class="na">style=</span><span class="s">&quot;line-height: 125%&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>from<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>numpy<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>import<span class="nt">&lt;/span&gt;</span> linspace, zeros
 
 <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF&quot;</span><span class="nt">&gt;</span>solver<span class="nt">&lt;/span&gt;</span>(I, a, T, dt, theta):
@@ -201,7 +208,7 @@ The numerical method is implemented in a Python function
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>return<span class="nt">&lt;/span&gt;</span> u, t
 <span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>Numerical experiments  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>Numerical experiments <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 Fix the values of where \( I \), \( a \), and \( T \).
@@ -220,8 +227,8 @@ rate for \( \theta=0,1/2,1 \).
       <span class="nt">&lt;/section&gt;</span>
 
       <span class="nt">&lt;footer&gt;</span>
-        <span class="nt">&lt;p&gt;</span>This project is maintained by ...<span class="nt">&lt;/p&gt;</span>
-        <span class="nt">&lt;p&gt;&lt;small&gt;</span>Hosted on GitHub Pages <span class="ni">&amp;mdash;</span> Theme by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/orderedlist&quot;</span><span class="nt">&gt;</span>orderedlist<span class="nt">&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</span>
+        <span class="c">&lt;!-- &lt;p&gt;&lt;small&gt;Hosted on GitHub Pages &amp;mdash; --&gt;</span>
+        Theme by <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/orderedlist&quot;</span><span class="nt">&gt;</span>orderedlist<span class="nt">&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</span>
       <span class="nt">&lt;/footer&gt;</span>
 
     <span class="nt">&lt;/div&gt;</span>
