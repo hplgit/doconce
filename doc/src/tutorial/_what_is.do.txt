@@ -2,7 +2,7 @@ DocOnce is a very simple and minimally tagged markup language that
 looks like ordinary ASCII text, much like what you would use in an
 email, but the text can be transformed to numerous other formats,
 including HTML, Sphinx, LaTeX, PDF, reStructuredText (reST), Markdown,
-MediaWiki, Google wiki, Creole wiki, blogger.com, wordpress.com,
+MediaWiki, Creole wiki, blogger.com, wordpress.com,
 Epytext, and also plain (untagged) text for email.
 From reST or Markdown you can go to XML, OpenOffice, MS
 Word, HTML, LaTeX, PDF, DocBook, GNU Texinfo, and more.

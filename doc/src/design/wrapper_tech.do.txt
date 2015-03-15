@@ -1,9 +1,15 @@
-TITLE: How to Wrap Plain HTML Files with an Available Look and Feel
+TITLE: Wrapping Plain HTML Files in Fancy Design Templates
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 
-========= Problem setting =========
+__Summary.__
+You want to write your web pages as simple text, but at the same time you
+need the design and layout to be compatible with a given look-and-feel standard.
+This is easy to accomplish by writing the HTML pages in plain DocOnce text
+and using *HTML templates*. The present note explains the details.
+
+========= Example on a problem setting =========
 
  o You need to write web pages, say for a course, and want to have
    complete control of the core text in a plain text editor without

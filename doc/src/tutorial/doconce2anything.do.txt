@@ -1456,7 +1456,8 @@ standard LaTeX book, a Sphinx web document, or a collection of HTML files.
 The Googlecode wiki document, `mydoc.gwiki`, is most conveniently stored
 in a directory which is a clone of the wiki part of the Googlecode project.
 This is far easier than copying and pasting the entire text into the
-wiki editor in a web browser.
+wiki editor in a web browser. Note that Google decided to close down its
+Googlecode service in 2015.
 
 When the DocOnce file contains figures, each figure filename must in
 the `.gwiki` file be replaced by a URL where the figure is

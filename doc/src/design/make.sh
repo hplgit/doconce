@@ -1,7 +1,7 @@
 #!/bin/sh
 pub=../../pub/design
 
-# Compile plain HTML doc
+# Compile plain HTML demo doc
 doconce format html mydoc.do.txt
 pygmentize -f html -O full,style=emacs -o mydoc_plain_pygmentized.html -l html mydoc.html
 cp mydoc.html $pub/mydoc_plain.html
@@ -35,5 +35,6 @@ cp mydoc.html $pub/mydoc_vagrant.html
 cp -r style_vagrant mydoc_vagrant_pygmentized.html $pub/
 
 # Report about the technology
-doconce format html wrapper_tech
+# (must use --no_abort because of demo code with ref/label error message)
+doconce format html wrapper_tech --html_style=bootswatch_readable --html_code_style=inherit --no_abort
 cp wrapper_tech.html $pub/index.html
