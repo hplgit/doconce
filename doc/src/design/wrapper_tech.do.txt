@@ -244,6 +244,8 @@ application we customize the template:
    replaced by something appropriate, here `Exercise` and
    `Differential Equations`.
 
+DocOnce features a "GitHub minimal template": "https://github.com/hplgit/doconce/blob/master/bundled/html_styles/style_github_minimal/template_github_minimal.html" that you can adapt to your own purposes.
+
 
 ===== Step 5: Embed your HTML document in the template =====
 
@@ -271,7 +273,10 @@ to a web page with fancy design!
 
 ======= Making a template from Vortex pages at the University of Oslo =======
 
-As case, we invoke the page for a "course": "http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/". The "source code": "uio/5620_pygmentized.html"
+As another example, we want to make web pages that has the
+look and feel of the Vortex web system at the University of Oslo.
+Let us look at a specific "course": "http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/" from the official web pages. The associated HTML
+"source code": "uio/5620_pygmentized.html"
 is huge. Here is a glimpse:
 
 !bc
@@ -295,10 +300,14 @@ is huge. Here is a glimpse:
             <div id="right-main">
               <!--startindex-->
 !ec
+Our aim is to make a template out of this file by keeping header, footer,
+style information, links, etc., which are common to all web pages, and
+replacing the course-specific information, title, and date by
+``slots'' like `%(main)s`, `%(title)s`, and `%(date)s`.
 We do the following:
 
- o The part of the text which we want to replace by our document must
-   be deleted and substituted by `%(main)s`.
+ o The part of the text which we want to replace by our course-specific
+   plain text must be deleted and substituted by `%(main)s`.
  o A more challenging task is to deal with all the links to *local files*
    of the type `/vrtx/decorating/resources/...` and similar.
    However, clicking on these links when viewing the source code of
@@ -332,19 +341,16 @@ templates for web documents anywhere else.
 ======= Using the Vagrant template =======
 
 Besides the GitHub "minimal" theme, DocOnce comes with a template
-"`template_vagrant.html`":
-"../../bundled/html_styles/vagrant/template_vagrant.html" adopted from
-the style in the documentation of the "Vagrant":
+"`template_vagrant.html`": "https://github.com/hplgit/doconce/blob/master/bundled/html_styles/style_vagrant/template_vagrant.html"
+adopted from
+the style in the original documentation of the "Vagrant":
 "http://docs.vagrantup.com/v1/docs/getting-started/index.html" virtual machine
 tool.
 
 FIGURE: [fig/vagrant_web, width=900]
 
-This template, found in
-"`bundled/html_styles/style_vagrant/template_vagrant.html`":
-"http://hplgit.github.io/doconce/bundled/html_styles/style_vagrant/template_vagrant.html"
-in the DocOnce source code tree, is easy to adopt to a particular set
-of web pages. It looks as
+This template is easy to adopt to a particular set
+of web pages. The plain template looks as
 
 FIGURE: [fig/template_vagrant, width=900]
 
@@ -384,10 +390,10 @@ We have seen have to write web pages in a text-like format, with full
 support of LaTeX mathematics and nicely typeset (pygmentized) computer code.
 These pages can easily be embedded in various fancy HTML styles by
 simply grabbing a web page with the desired style and editing it as
-explained.
+explained to make an *HTML template*. DocOnce can then embed our plain
+text in the template.
 
-However, embedding DocOnce documents in fancy web pages is just possibility
-for publishing the content. One can equally well make a traditional
-LaTeX file and include the document in a book, or make a special adapted
-version of the PDF for viewing on phones, or one can generate Sphinx
-output which has "a lot of different nice styles": "http://hplgit.github.com/teamods/writing_reports/index.html" for viewing on the web.
+However, embedding DocOnce documents in fancy web pages is just *one*
+technique to achive nice web designs. DocOnce features Bootstrap and
+Sphinx HTML styles, which offer a lot of different designs, see our
+"Bootstrap demo": "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" and our extensive "report demo": "http://hplgit.github.com/teamods/writing_reports/index.html".

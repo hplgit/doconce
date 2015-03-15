@@ -1,3 +1,43 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+
+<title></title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
 
 <!-- tocinfo
 {'highest level': 1,
@@ -11,7 +51,7 @@
               (' Numerical experiments ', 2, None, '___sec4')]}
 end of tocinfo -->
 
-
+<body>
 
 
 
@@ -19,32 +59,29 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 <p>
-<center><h4>Aug 16, 2013</h4></center> <!-- date -->
+<center><h4>Mar 15, 2015</h4></center> <!-- date -->
 
-<h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
+<h1 id="___sec0">Solve the world's simplest differential equation </h1>
 
-<h3>Mathematical problem  <a name="___sec1"></a></h3>
+<h2 id="___sec1">Mathematical problem </h2>
 
 <p>
 This exercise addresses the differential equation problem
 
-<p>
 $$
 \begin{align}
 u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
@@ -57,13 +94,12 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-<h3>Numerical solution method  <a name="___sec2"></a></h3>
+<h2 id="___sec2">Numerical solution method </h2>
 
 <p>
 Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
 with time step \( \Delta t \):
 
-<p>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
@@ -75,15 +111,17 @@ Here, \( n=0,1,\ldots,N-1 \).
 Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
 Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
 
-<h3>Implementation  <a name="___sec3"></a></h3>
+
+
+<h2 id="___sec3">Implementation </h2>
 
 <p>
 The numerical method is implemented in a Python function
-<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
+<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
@@ -100,7 +138,7 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h3>Numerical experiments  <a name="___sec4"></a></h3>
+<h2 id="___sec4">Numerical experiments </h2>
 
 <p>
 Fix the values of where \( I \), \( a \), and \( T \).
@@ -114,4 +152,9 @@ Perform experiments and determine empirically the convergence
 rate for \( \theta=0,1/2,1 \).
 
 <!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
 

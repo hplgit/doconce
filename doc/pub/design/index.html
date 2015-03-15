@@ -372,6 +372,8 @@ application we customize the template:
    <code>Differential Equations</code>.</li>
 </ul>
 
+DocOnce features a <a href="https://github.com/hplgit/doconce/blob/master/bundled/html_styles/style_github_minimal/template_github_minimal.html" target="_self">GitHub minimal template</a> that you can adapt to your own purposes.
+
 <h2 id="___sec6">Step 5: Embed your HTML document in the template </h2>
 
 <p>
@@ -406,7 +408,10 @@ to a web page with fancy design!
 <h1 id="___sec7">Making a template from Vortex pages at the University of Oslo </h1>
 
 <p>
-As case, we invoke the page for a <a href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/" target="_self">course</a>. The <a href="uio/5620_pygmentized.html" target="_self">source code</a>
+As another example, we want to make web pages that has the
+look and feel of the Vortex web system at the University of Oslo.
+Let us look at a specific <a href="http://www.uio.no/studier/emner/matnat/ifi/INF5620/h12/" target="_self">course</a> from the official web pages. The associated HTML
+<a href="uio/5620_pygmentized.html" target="_self">source code</a>
 is huge. Here is a glimpse:
 
 <p>
@@ -433,11 +438,15 @@ is huge. Here is a glimpse:
               &lt;!--startindex--&gt;
 </pre></div>
 <p>
+Our aim is to make a template out of this file by keeping header, footer,
+style information, links, etc., which are common to all web pages, and
+replacing the course-specific information, title, and date by
+&quot;slots&quot; like <code>%(main)s</code>, <code>%(title)s</code>, and <code>%(date)s</code>.
 We do the following:
 
 <ol>
-<li> The part of the text which we want to replace by our document must
-   be deleted and substituted by <code>%(main)s</code>.</li>
+<li> The part of the text which we want to replace by our course-specific
+   plain text must be deleted and substituted by <code>%(main)s</code>.</li>
 <li> A more challenging task is to deal with all the links to <em>local files</em>
    of the type <code>/vrtx/decorating/resources/...</code> and similar.
    However, clicking on these links when viewing the source code of
@@ -479,18 +488,17 @@ templates for web documents anywhere else.
 
 <p>
 Besides the GitHub "minimal" theme, DocOnce comes with a template
-<a href="../../bundled/html_styles/vagrant/template_vagrant.html" target="_self"><tt>template_vagrant.html</tt></a> adopted from
-the style in the documentation of the <a href="http://docs.vagrantup.com/v1/docs/getting-started/index.html" target="_self">Vagrant</a> virtual machine
+<a href="https://github.com/hplgit/doconce/blob/master/bundled/html_styles/style_vagrant/template_vagrant.html" target="_self"><tt>template_vagrant.html</tt></a>
+adopted from
+the style in the original documentation of the <a href="http://docs.vagrantup.com/v1/docs/getting-started/index.html" target="_self">Vagrant</a> virtual machine
 tool.
 
 <p>
 <center><p><img src="fig/vagrant_web.png" align="bottom" width=900></p></center>
 
 <p>
-This template, found in
-<a href="http://hplgit.github.io/doconce/bundled/html_styles/style_vagrant/template_vagrant.html" target="_self"><tt>bundled/html_styles/style_vagrant/template_vagrant.html</tt></a>
-in the DocOnce source code tree, is easy to adopt to a particular set
-of web pages. It looks as
+This template is easy to adopt to a particular set
+of web pages. The plain template looks as
 
 <p>
 <center><p><img src="fig/template_vagrant.png" align="bottom" width=900></p></center>
@@ -540,14 +548,14 @@ We have seen have to write web pages in a text-like format, with full
 support of LaTeX mathematics and nicely typeset (pygmentized) computer code.
 These pages can easily be embedded in various fancy HTML styles by
 simply grabbing a web page with the desired style and editing it as
-explained.
+explained to make an <em>HTML template</em>. DocOnce can then embed our plain
+text in the template.
 
 <p>
-However, embedding DocOnce documents in fancy web pages is just possibility
-for publishing the content. One can equally well make a traditional
-LaTeX file and include the document in a book, or make a special adapted
-version of the PDF for viewing on phones, or one can generate Sphinx
-output which has <a href="http://hplgit.github.com/teamods/writing_reports/index.html" target="_self">a lot of different nice styles</a> for viewing on the web.
+However, embedding DocOnce documents in fancy web pages is just <em>one</em>
+technique to achive nice web designs. DocOnce features Bootstrap and
+Sphinx HTML styles, which offer a lot of different designs, see our
+<a href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" target="_self">Bootstrap demo</a> and our extensive <a href="http://hplgit.github.com/teamods/writing_reports/index.html" target="_self">report demo</a>.
 
 <!-- ------------------- end of main content --------------- -->
 

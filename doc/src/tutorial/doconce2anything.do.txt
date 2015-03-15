@@ -212,10 +212,16 @@ idx{HTML templates}
 
 === HTML templates ===
 
-Templates are HTML files with "slots" `%(main)s` for the main body
+Templates are HTML files with ready-made headers, footers, and style
+specifications where plain HTML text can be inserted in "slots" in the
+template file. Typically, there is a slot `%(main)s` for the main body
 of text, `%(title)s` for the title, and `%(date)s` for the date.
-DocOnce comes with a few templates. The usage of templates is
-described in a "separate document": "". That document describes how you your DocOnce-generated
+Templates are designed beforehand and `doconce format` puts
+the translated HTML text into the template to form the complete HTML
+document.
+
+DocOnce comes with a few ready-made HTML templates. The usage of templates is
+described in a "separate document": "http://hplgit.github.io/doconce/doc/pub/design/". That document describes how you your DocOnce-generated
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored

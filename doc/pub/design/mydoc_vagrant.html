@@ -1,12 +1,11 @@
 <html>
 <head>
-<!--
-This style is adopted from the (now old) vagrant 1.0 web
-pages. The style builds on the Twitter Bootstrap style.
-Modifications by Hans Petter Langtangen, hpl@simula.no.
+<!-- Bootstrap style: vagrant 1.0 web pages -->
 
-This style file should be copied and the following
-elements edited:
+<!--
+This style is adopted from the (now old) vagrant 1.0 web pages.
+
+This style file should be copied and the following elements edited:
 
 Logo heading:
 
@@ -18,14 +17,19 @@ Navigation links at the top:
  GO TO 1
  GO TO 2
 
-Footer at the end:
-
- &copy; 2013
-
+Footer at the end
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Doconce: http://code.google.com/p/doconce/" />
+
+<title>Solve the world's simplest differential equation</title>
+
+<!-- If you copy the css subdirectory (and, e.g., make optional edits):
+<link rel="stylesheet" href="css/twitter_bootstrap.css">
+<link rel="stylesheet" href="css/vagrant.css">
+Otherwise, rely on the URLs below (vagrant.css adapted to Doconce layout)
+-->
 
 <link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/twitter_bootstrap.css">
 <link rel="stylesheet" href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_vagrant/css/vagrant.css">
@@ -40,8 +44,6 @@ h1, h2, h3, h4, h5, h6 {
 </style>
 </head>
 <body>
-
-<title> Numerical experiments </title>
 
 <div class="container">
  <div class="row Header with-border">
@@ -68,25 +70,17 @@ h1, h2, h3, h4, h5, h6 {
  <div class="span3 Module sidebar">
   <div class="well" style="padding: 8px 0px;">
    <ul class="nav nav-list">
-     <!-- Syntax:
-     <li> <a href="...">Section 1</a></li>
-     <li class="active"> <a href="...">Section 2</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2a</a></li>
-     <li> &nbsp;&nbsp;&nbsp; <a href="...">Section 2b</a></li>
-     -->
-     <!-- Doconce automatically fills in the table of contents -->
-          <!-- vagrant nav toc: " Solve the world's simplest differential equation " --> <li>  <a href="#___sec0"> Solve the world's simplest differential equation </a>
-     <!-- vagrant nav toc: " Mathematical problem " --> <li> &nbsp;  <a href="#___sec1"> Mathematical problem </a>
-     <!-- vagrant nav toc: " Numerical solution method " --> <li> &nbsp;  <a href="#___sec2"> Numerical solution method </a>
-     <!-- vagrant nav toc: " Implementation " --> <li> &nbsp;  <a href="#___sec3"> Implementation </a>
-     <!-- vagrant nav toc: " Numerical experiments " --> <li> &nbsp;  <a href="#___sec4"> Numerical experiments </a>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Solve the world's simplest differential equation</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematical problem</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical solution method</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Implementation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numerical experiments</a></li>
 
-    </ul>
-   </div>
+   </ul>
   </div>
+ </div>
 
-  <div class="span9">
-
+ <div class="span9">
 
 <!-- tocinfo
 {'highest level': 1,
@@ -108,29 +102,25 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "AMS"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
 <!-- ------------------- main content ---------------------- -->
 
-<h2>Solve the world's simplest differential equation  <a name="___sec0"></a></h2>
+<h1 id="___sec0">Solve the world's simplest differential equation </h1>
 
-<h3>Mathematical problem  <a name="___sec1"></a></h3>
+<h2 id="___sec1">Mathematical problem </h2>
 
 <p>
 This exercise addresses the differential equation problem
 
-<p>
 $$
 \begin{align}
 u'(t) &= -au(t), \quad t \in (0,T], \label{ode}\\
@@ -143,13 +133,12 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-<h3>Numerical solution method  <a name="___sec2"></a></h3>
+<h2 id="___sec2">Numerical solution method </h2>
 
 <p>
 Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
 with time step \( \Delta t \):
 
-<p>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
@@ -161,15 +150,17 @@ Here, \( n=0,1,\ldots,N-1 \).
 Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
 Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
 
-<h3>Implementation  <a name="___sec3"></a></h3>
+
+
+<h2 id="___sec3">Implementation </h2>
 
 <p>
 The numerical method is implemented in a Python function
-<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py"><tt>decay_mod</tt></a> module):
+<code>solver</code> (found in the <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_self"><tt>decay_mod</tt></a> module):
 
 <p>
 
-<!-- code=python (from !bc pycod) typeset with pygments style "default" -->
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, zeros
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
@@ -186,7 +177,7 @@ The numerical method is implemented in a Python function
     <span style="color: #008000; font-weight: bold">return</span> u, t
 </pre></div>
 
-<h3>Numerical experiments  <a name="___sec4"></a></h3>
+<h2 id="___sec4">Numerical experiments </h2>
 
 <p>
 Fix the values of where \( I \), \( a \), and \( T \).
@@ -201,43 +192,14 @@ rate for \( \theta=0,1/2,1 \).
 
 <!-- ------------------- end of main content --------------- -->
 
-
-<!--
-Preliminary examples/discussion on vagrant style syntax
-
-<div class='alert alert-block alert-notice'>
-  <h3>What about PHP? Python? Java?</h3>
-<p>
-bla-bla.
-</div>
-
-<p>
-While the <div class="deep-blue">rest of the</div> getting started
--->
-
-<!-- Navigation buttons at the bottom:
-     Doconce will automatically fill in the right URL in these
-     buttons when doconce html_split is run. Otherwise they are empty.
-<ul class="pager">
-  <li class="previous">
-    <a href="">&larr; </a>
-  </li>
-  <li class="next">
-    <a href=""> &rarr;</a>
- </li>
-</ul>
--->
-
  </div>
 
  <div class="row Footer">
   <div class="span12">
-  &copy; 2013
+  <!-- footer --> Here goes a footer, if desired, maybe with author(s) and a copyright &copy;
   </div>
  </div>
 </div>
 </body>
 </html>
-
-
 

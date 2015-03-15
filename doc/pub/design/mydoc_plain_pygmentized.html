@@ -4,7 +4,7 @@
 <html>
 <head>
   <title></title>
-  <meta http-equiv="content-type" content="text/html; charset=latin1">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <style type="text/css">
 td.linenos { background-color: #f0f0f0; padding-right: 10px; }
 span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
@@ -51,6 +51,7 @@ body .nt { color: #008000; font-weight: bold } /* Name.Tag */
 body .nv { color: #B8860B } /* Name.Variable */
 body .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
 body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #666666 } /* Literal.Number.Bin */
 body .mf { color: #666666 } /* Literal.Number.Float */
 body .mh { color: #666666 } /* Literal.Number.Hex */
 body .mi { color: #666666 } /* Literal.Number.Integer */
@@ -77,7 +78,48 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <body>
 <h2></h2>
 
-<div class="highlight"><pre><span class="c">&lt;!-- tocinfo</span>
+<div class="highlight"><pre><span class="c">&lt;!--</span>
+<span class="c">Automatically generated HTML file from DocOnce source</span>
+<span class="c">(https://github.com/hplgit/doconce/)</span>
+<span class="c">--&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;generator&quot;</span> <span class="na">content=</span><span class="s">&quot;DocOnce: https://github.com/hplgit/doconce/&quot;</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;title&gt;&lt;/title&gt;</span>
+
+
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+<span class="c">/* blueish style */</span>
+
+<span class="c">/* Color definitions:  http://www.december.com/html/spec/color0.html</span>
+<span class="c">   CSS examples:       http://www.w3schools.com/css/css_examples.asp */</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="k">margin-top</span><span class="o">:</span> <span class="m">1.0em</span><span class="p">;</span>
+  <span class="k">background-color</span><span class="o">:</span> <span class="m">#ffffff</span><span class="p">;</span>
+  <span class="k">font-family</span><span class="o">:</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="n">Arial</span><span class="o">,</span> <span class="n">FreeSans</span><span class="o">,</span> <span class="n">san</span><span class="o">-</span><span class="k">serif</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span> <span class="m">#000000</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h1</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">1.8em</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span> <span class="m">#1e36ce</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h2</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">1.6em</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span> <span class="m">#1e36ce</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">h3</span> <span class="p">{</span> <span class="k">font-size</span><span class="o">:</span> <span class="m">1.4em</span><span class="p">;</span> <span class="k">color</span><span class="o">:</span> <span class="m">#1e36ce</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="m">#1e36ce</span><span class="p">;</span> <span class="k">text-decoration</span><span class="o">:</span><span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">tt</span> <span class="p">{</span> <span class="k">font-family</span><span class="o">:</span> <span class="s2">&quot;Courier New&quot;</span><span class="o">,</span> <span class="n">Courier</span><span class="p">;</span> <span class="p">}</span>
+<span class="c">/* pre style removed because it will interfer with pygments */</span>
+<span class="nt">p</span> <span class="p">{</span> <span class="k">text-indent</span><span class="o">:</span> <span class="m">0px</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">hr</span> <span class="p">{</span> <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span> <span class="m">80%</span><span class="p">;</span> <span class="k">border-bottom</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#aaa</span><span class="p">}</span>
+<span class="nt">p</span><span class="nc">.caption</span> <span class="p">{</span> <span class="k">width</span><span class="o">:</span> <span class="m">80%</span><span class="p">;</span> <span class="k">font-style</span><span class="o">:</span> <span class="k">normal</span><span class="p">;</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">hr</span><span class="nc">.figure</span> <span class="p">{</span> <span class="k">border</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span> <span class="k">width</span><span class="o">:</span> <span class="m">80%</span><span class="p">;</span> <span class="k">border-bottom</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#aaa</span><span class="p">}</span>
+
+<span class="nt">div</span> <span class="p">{</span> <span class="k">text-align</span><span class="o">:</span> <span class="k">justify</span><span class="p">;</span> <span class="k">text</span><span class="o">-</span><span class="k">justify</span><span class="o">:</span> <span class="n">inter</span><span class="o">-</span><span class="n">word</span><span class="p">;</span> <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+
+
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="c">&lt;!-- tocinfo</span>
 <span class="c">{&#39;highest level&#39;: 1,</span>
 <span class="c"> &#39;sections&#39;: [(&quot; Solve the world&#39;s simplest differential equation &quot;,</span>
 <span class="c">               1,</span>
@@ -89,7 +131,7 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="c">              (&#39; Numerical experiments &#39;, 2, None, &#39;___sec4&#39;)]}</span>
 <span class="c">end of tocinfo --&gt;</span>
 
-
+<span class="nt">&lt;body&gt;</span>
 
 
 
@@ -97,32 +139,29 @@ body .il { color: #666666 } /* Literal.Number.Integer.Long */
 <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
   <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
      <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span>  <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span>  <span class="p">},</span>
-     <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span> <span class="s2">&quot;autobold.js&quot;</span><span class="p">]</span>
+     <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span> <span class="s2">&quot;autobold.js&quot;</span><span class="p">,</span> <span class="s2">&quot;color.js&quot;</span><span class="p">]</span>
   <span class="p">}</span>
 <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
  <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/script&gt;</span>
-<span class="c">&lt;!-- Fix slow MathJax rendering in IE8 --&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content=</span><span class="s">&quot;IE=EmulateIE7&quot;</span><span class="nt">&gt;</span>
 
 
 
-
+    
 <span class="c">&lt;!-- ------------------- main content ---------------------- --&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
-<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Aug 16, 2013<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
+<span class="nt">&lt;center&gt;&lt;h4&gt;</span>Mar 15, 2015<span class="nt">&lt;/h4&gt;&lt;/center&gt;</span> <span class="c">&lt;!-- date --&gt;</span>
 
-<span class="nt">&lt;h2&gt;</span>Solve the world&#39;s simplest differential equation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec0&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+<span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">&quot;___sec0&quot;</span><span class="nt">&gt;</span>Solve the world&#39;s simplest differential equation <span class="nt">&lt;/h1&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>Mathematical problem  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec1&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec1&quot;</span><span class="nt">&gt;</span>Mathematical problem <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 This exercise addresses the differential equation problem
 
-<span class="nt">&lt;p&gt;</span>
 $$
 \begin{align}
 u&#39;(t) <span class="err">&amp;</span>= -au(t), \quad t \in (0,T], \label{ode}\\
@@ -135,13 +174,12 @@ the unknown function to be estimated. This mathematical model
 is relevant for physical phenomena featuring exponential decay
 in time.
 
-<span class="nt">&lt;h3&gt;</span>Numerical solution method  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec2&quot;</span><span class="nt">&gt;</span>Numerical solution method <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 Derive the \( \theta \)-rule scheme for solving \eqref{ode} numerically
 with time step \( \Delta t \):
 
-<span class="nt">&lt;p&gt;</span>
 $$
 u^{n+1} = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}u^n,
 $$
@@ -153,15 +191,17 @@ Here, \( n=0,1,\ldots,N-1 \).
 Set up the Forward Euler, Backward Euler, and the Crank-Nicolson (or
 Midpoint) schemes first. Then generalize to the \( \theta \)-rule above.
 
-<span class="nt">&lt;h3&gt;</span>Implementation  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+
+
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec3&quot;</span><span class="nt">&gt;</span>Implementation <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 The numerical method is implemented in a Python function
-<span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
+<span class="nt">&lt;code&gt;</span>solver<span class="nt">&lt;/code&gt;</span> (found in the <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py&quot;</span> <span class="na">target=</span><span class="s">&quot;_self&quot;</span><span class="nt">&gt;&lt;tt&gt;</span>decay_mod<span class="nt">&lt;/tt&gt;&lt;/a&gt;</span> module):
 
 <span class="nt">&lt;p&gt;</span>
 
-<span class="c">&lt;!-- code=python (from !bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
+<span class="c">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;highlight&quot;</span> <span class="na">style=</span><span class="s">&quot;background: #f8f8f8&quot;</span><span class="nt">&gt;&lt;pre</span> <span class="na">style=</span><span class="s">&quot;line-height: 125%&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>from<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF; font-weight: bold&quot;</span><span class="nt">&gt;</span>numpy<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>import<span class="nt">&lt;/span&gt;</span> linspace, zeros
 
 <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>def<span class="nt">&lt;/span&gt;</span> <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #0000FF&quot;</span><span class="nt">&gt;</span>solver<span class="nt">&lt;/span&gt;</span>(I, a, T, dt, theta):
@@ -178,7 +218,7 @@ The numerical method is implemented in a Python function
     <span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;color: #008000; font-weight: bold&quot;</span><span class="nt">&gt;</span>return<span class="nt">&lt;/span&gt;</span> u, t
 <span class="nt">&lt;/pre&gt;&lt;/div&gt;</span>
 
-<span class="nt">&lt;h3&gt;</span>Numerical experiments  <span class="nt">&lt;a</span> <span class="na">name=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;&lt;/a&gt;&lt;/h3&gt;</span>
+<span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;___sec4&quot;</span><span class="nt">&gt;</span>Numerical experiments <span class="nt">&lt;/h2&gt;</span>
 
 <span class="nt">&lt;p&gt;</span>
 Fix the values of where \( I \), \( a \), and \( T \).
@@ -192,6 +232,11 @@ Perform experiments and determine empirically the convergence
 rate for \( \theta=0,1/2,1 \).
 
 <span class="c">&lt;!-- ------------------- end of main content --------------- --&gt;</span>
+
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+    
 </pre></div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 #!/bin/sh
 pub=../../pub/design
+templates=../../../bundled/html_styles
 
 # Compile plain HTML demo doc
 doconce format html mydoc.do.txt
@@ -21,7 +22,7 @@ cp mydoc.html $pub/mydoc_uio.html
 cp -r uio $pub/
 
 # Utilize the vagrant template
-cp ../../bundled/html_styles/style_vagrant/template_vagrant.html .
+cp $templates/style_vagrant/template_vagrant.html .
 # Customize the template
 doconce replace LogoWord 'DiffEq' template_vagrant.html
 doconce replace withSubWord '101' template_vagrant.html
