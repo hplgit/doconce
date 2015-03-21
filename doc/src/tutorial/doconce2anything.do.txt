@@ -806,7 +806,7 @@ or the default Pygments style,
 or the Listings-based style with yellow background color
 
 !bc
---latex_code_style=lst-yellow2_fb
+--latex_code_style=lst-yellow2
 !ec
 It is easy to specify different styles for different code environments.
 

@@ -1745,6 +1745,7 @@ def html_toc(sections):
         if level < level_min:
             level_min = level
 
+    toc_depth = int(option('html_toc_depth=', 2))
 
     extended_sections = []  # extended list for toc in HTML file
     #hr = '<hr>'
@@ -1754,7 +1755,8 @@ def html_toc(sections):
         title, level, label = sections[i]
         href = label if label is not None else '___sec%d' % i
         indent = '&nbsp; '*(3*(level - level_min))
-        s += indent + '<a href="#%s">%s</a>' % (href, title ) + '<br>\n'
+        if level <= toc_depth:
+            s += indent + '<a href="#%s">%s</a>' % (href, title ) + '<br>\n'
         extended_sections.append((title, level, label, href))
     s += '</p>%s\n<p>\n' % hr
 

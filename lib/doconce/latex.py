@@ -231,8 +231,7 @@ def latex_code_lstlisting():
 
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
-tab=,
-tabsize=2,                           % tab means 2 spaces
+tabsize=4,                           % tab means 4 spaces
 basicstyle=\ttfamily\footnotesize,   % fonts used for the code
 breaklines=true,                     % break lines
 breakatwhitespace=true,              % let linebreaks happen at whitespace

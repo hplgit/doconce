@@ -1794,13 +1794,7 @@ MathJax.Hub.Config({
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec10"> Custom Environments </a><br>
@@ -1824,15 +1818,11 @@ MathJax.Hub.Config({
 <a href="._testdoc002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> My remarks </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec39"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec42"> Example 9: Just an example </a><br>
@@ -8699,8 +8689,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
-tab=,
-tabsize=2,                           % tab means 2 spaces
+tabsize=4,                           % tab means 4 spaces
 basicstyle=\ttfamily\footnotesize,   % fonts used for the code
 breaklines=true,                     % break lines
 breakatwhitespace=true,              % let linebreaks happen at whitespace
@@ -30008,13 +29997,7 @@ MathJax.Hub.Config({
 
 <p>
 <a href="._testdoc001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec4"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec5"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec6"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc001.html#___sec10"> Custom Environments </a><br>
@@ -30038,15 +30021,11 @@ MathJax.Hub.Config({
 <a href="._testdoc002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec31"> My remarks </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec32"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec33"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec37"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec39"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc002.html#___sec42"> Example 9: Just an example </a><br>
@@ -32884,13 +32863,7 @@ div { text-align: justify; text-justify: inter-word; }
 
 <p>
 <a href="#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The $latex \theta$ parameter (not $latex \nabla$?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec10"> Custom Environments </a><br>
@@ -32914,15 +32887,11 @@ div { text-align: justify; text-justify: inter-word; }
 <a href="#___sec28"> LaTeX Mathematics </a><br>
 <a href="#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> My remarks </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec33"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec39"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec42"> Example 9: Just an example </a><br>
@@ -34941,13 +34910,7 @@ MathJax.Hub.Config({
 
 <p>
 <a href="#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec4"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec10"> Custom Environments </a><br>
@@ -34971,15 +34934,11 @@ MathJax.Hub.Config({
 <a href="#___sec28"> LaTeX Mathematics </a><br>
 <a href="#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec31"> My remarks </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec32"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec33"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec37"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec39"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec42"> Example 9: Just an example </a><br>
@@ -41476,13 +41435,7 @@ MathJax.Hub.Config({
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Custom Environments </a><br>
@@ -41506,15 +41459,11 @@ MathJax.Hub.Config({
 <a href="._testdoc_vagrant002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc_vagrant002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> My remarks </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec39"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec42"> Example 9: Just an example </a><br>
@@ -41826,13 +41775,7 @@ MathJax.Hub.Config({
 
 <p>
 <a href="._testdoc_vagrant001.html#sec1"> Section 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec1"> Here is a list with subsubsection heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec1"> Subsection 1 </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec3"> Test Section reference at beginning of line and after a sentence </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec4"> Computer code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec5"> Subsubsection heading before code </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec6"> Running OS commands </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec7"> Footnotes </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#subsec:ex"> Subsection 2: Testing figures </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#decay:sec:theta"> The \( \theta \) parameter (not \( \nabla \)?) </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant001.html#___sec10"> Custom Environments </a><br>
@@ -41856,15 +41799,11 @@ MathJax.Hub.Config({
 <a href="._testdoc_vagrant002.html#___sec28"> LaTeX Mathematics </a><br>
 <a href="._testdoc_vagrant002.html#___sec29"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec31"> My remarks </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec32"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec33"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec37"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec39"> Remarks </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
 &nbsp; &nbsp; &nbsp; <a href="._testdoc_vagrant002.html#___sec42"> Example 9: Just an example </a><br>
@@ -62199,7 +62138,6 @@ MathJax.Hub.Config({
 <a href="#___sec13"> This is an H1/chapter heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec14"> This is an H2/section heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec15"> This is an H3/subsection heading </a><br>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#___sec16"> This is an H4/paragraph heading </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec17"> DocOnce: markup and lists </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec18"> DocOnce: labels, references, index items </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec19"> DocOnce: figures and movies </a><br>
@@ -71444,7 +71382,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7ffcac993320>
+verbatim is to be replaced using <function html_verbatim at 0x7f6c4fa8b320>
 
 
 First occurence: " `mako`."
@@ -75413,7 +75351,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Mar 11 09:26:50 2015.
+# sphinx-quickstart on Sat Mar 21 04:24:43 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
