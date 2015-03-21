@@ -84,8 +84,7 @@ Default: on (use the css-specified typesetting of <pre> tags).
 This option is most relevant for Bootstrap styles to
 avoid white background in code blocks inside colorful admons."""),
     ('--html_toc_depth=',
-     """No of levels in the table of contents in HTML output for
-Bootstrap-based styles. Default: 2."""),
+     """No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections)."""),
     ('--html_toc_indent=',
      """No of spaces for indentation of subsections in the table of
 contents in HTML output. Default: 3 (0 gives toc as nested list
