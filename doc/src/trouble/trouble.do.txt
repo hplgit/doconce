@@ -115,7 +115,7 @@ work, and *thinking constantly about it*.
 The `<linebreak>` is a newline in LaTeX if it has preceding text,
 otherwise it is a `\vspace{3mm}`. In HTML, `<linebreak>` is `<br>`.
 
-===== Spellcheck reports a mistakes that I cannot find =====
+===== Spellcheck reports mistakes that I cannot find =====
 
 The `doconce spellcheck` command strips off a lot of text
 (math, code, syntax tags) before it starts spellchecking. The
