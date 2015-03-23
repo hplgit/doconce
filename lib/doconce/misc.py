@@ -214,6 +214,9 @@ std: traditional LaTeX layout,
 titlepage: separate page,
 doconce_heading (default): authors with "footnotes" for institutions,
 beamer: layout for beamer slides."""),
+    ('--latex_title_reference=', """latex code placed in a footnote for the title,
+typically used for acknowledging publisher/source of original
+version of the document."""),
     ('--latex_encoding=', 'Encoding for \\usepackage[encoding]{inputenc}.\nValues: utf8 (default) or latin1.'),
     ('--latex_papersize=',
      """Geometry of page size: a6, a4, std (default)."""),
@@ -2331,7 +2334,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination'
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --acknowledgment="..."'
 --method=split|space8|hrule|colorline specifies physical pagebreak
 split (split) or just N blank lines (spaceN) or a horizontal
 rule (hrule) with blank lines above and below, or a colored rule
@@ -2350,6 +2353,12 @@ bottom (default) or top+bottom.
 
 --pagination means that one can click on pages at the button
 if a bootstrap theme is used in the document.
+
+--reference=... is used to insert a reference for acknowledging where
+the source of the text is published, typically the reference of a
+book if the document is the HTML version of a chapter in the book.
+Example:
+--reference="This text is taken from Appendix H.2 in the book <em>A Primer on Scientific Programming with Python</em> by H. P. Langtangen, 4th edition, Springer, 2014."
 """
 
 def split_html():
@@ -2368,10 +2377,7 @@ def split_html():
     else:
         basename = filename[:-5]
 
-    method = 'split'
-    if len(sys.argv) > 2:
-        if sys.argv[2].startswith('--method='):
-            method = sys.argv[2].split('=')[1]
+    method = misc_option('method=', 'split')
 
     # Note: can only do tablify and support slidecell specifications
     # if --method=split (tablify requires the file split into parts)
@@ -3125,9 +3131,32 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         # and in general we should strip local references anyway)
         part_text = part_text.replace('<a href="%s#' % part_filename,
                                       '<a href="#')
+
+        # Insert reference to published version of document?
+        ackn = misc_option('reference=', None)
+        if ackn is not None:
+            ackn1 = '<center style="font-size:80%%">%s</center>' % ackn
+            ackn1 = '<p style="font-size:80%%">%s</p>' % ackn
+            ackn2 = '<div style="font-size:80%%">%s</div>' % ackn
+            if pn >= 1:
+                # Place the acknowledgment/reference at the top, right after
+                # the (only) !split command in each file
+                part_text = part_text.replace(
+                    '<!-- !split -->', '<!-- !split -->\n%s' % ackn1)
+            elif pn == 0:
+                # Include in front page if jumbotron button
+                pattern = r'<p><a href=".+?" class="btn btn-primary btn-lg">Read &raquo;</a></p>'
+                m = re.search(pattern, part_text)
+                if m:
+                    button = m.group()
+                    part_text = part_text.replace(
+                        button, '\n<p>' + ackn2 + '</p>\n' + button)
+
+        # Write part to ._*.html file
         f = open(part_filename, 'w')
         f.write(part_text)
         f.close()
+
         # Make sure main html file equals the first part
         if pn == 0:
             shutil.copy(part_filename, filename)

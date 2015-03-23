@@ -1218,6 +1218,11 @@ def latex_title(m):
     else:
         short_title_cmd = ''
 
+    # Acknowledgment/reference associated with the title?
+    ackn = option('latex_title_reference=', None)
+    if ackn is not None:
+        title += r'\footnote{%s}' % ackn
+
     text = ''
     latex_style = option('latex_style=', 'std')
     title_layout = option('latex_title_layout=', 'doconce_heading')
