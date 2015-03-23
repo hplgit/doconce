@@ -12338,11 +12338,15 @@ References
 
 .. [Ref11]
    **H. P. Langtangen**. *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+   second edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2003.
 
 .. [Ref12]
    **H. P. Langtangen**. *Python Scripting for Computational Science*,
+   third edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2008.
 
@@ -12357,6 +12361,8 @@ References
 
 .. [Ref14]
    **H. P. Langtangen**. *A Primer on Scientific Programming With Python*,
+   third edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2012.
 
@@ -14142,11 +14148,15 @@ References
 
 .. [Ref11]
    **H. P. Langtangen**. *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+   second edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2003.
 
 .. [Ref12]
    **H. P. Langtangen**. *Python Scripting for Computational Science*,
+   third edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2008.
 
@@ -14161,6 +14171,8 @@ References
 
 .. [Ref14]
    **H. P. Langtangen**. *A Primer on Scientific Programming With Python*,
+   third edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2012.
 
@@ -15789,10 +15801,10 @@ Filename: `selc_composed.pdf`.
  # *S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt*.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    *International Journal of Fluid Mechanics Research*,    33(1),    pp. 15-43,    2006.
  # *S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen*.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    *Physical Review B: Condensed Matter and Materials Physics*,    74,    2006.
 # *J. B. Haga, H. Osnes and H. P. Langtangen*.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    *International Journal of Analytical and Numerical Methods in Geomechanics*,    [http://dx.doi.org/10.1002/nag.1062 doi: 10.1002/nag.1062],    2011,    http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
-# *H. P. Langtangen*.     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,    Springer,    2003.
-# *H. P. Langtangen*.     *Python Scripting for Computational Science*,    Springer,    2008.
+# *H. P. Langtangen*.     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,    second edition,    *Texts in Computational Science and Engineering*,    Springer,    2003.
+# *H. P. Langtangen*.     *Python Scripting for Computational Science*,    third edition,    *Texts in Computational Science and Engineering*,    Springer,    2008.
 # *H. P. Langtangen and G. Pedersen*.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by *J. Grue, B. Gjevik and J. E. Weber*,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
-# *H. P. Langtangen*.     *A Primer on Scientific Programming With Python*,    Springer,    2012.
+# *H. P. Langtangen*.     *A Primer on Scientific Programming With Python*,    third edition,    *Texts in Computational Science and Engineering*,    Springer,    2012.
 # *P. V. Jeberg, H. P. Langtangen and C. B. Terp*.     Optimization With Diffpack: Practical Example From Welding,    *Simula Research Laboratory*,    Internal report,    2004.
 # *H. P. Langtangen*.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
 # *H. P. Langtangen*.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
@@ -17413,10 +17425,14 @@ Filename: <code>selc_composed.pdf</code>.
     http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
 <li> '''H. P. Langtangen'''. 
     ''Computational Partial Differential Equations - Numerical Methods and Diffpack Programming'',
+    second edition,
+    ''Texts in Computational Science and Engineering'',
     Springer,
     2003.
 <li> '''H. P. Langtangen'''. 
     ''Python Scripting for Computational Science'',
+    third edition,
+    ''Texts in Computational Science and Engineering'',
     Springer,
     2008.
 <li> '''H. P. Langtangen and G. Pedersen'''. 
@@ -17429,6 +17445,8 @@ Filename: <code>selc_composed.pdf</code>.
     http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
 <li> '''H. P. Langtangen'''. 
     ''A Primer on Scientific Programming With Python'',
+    third edition,
+    ''Texts in Computational Science and Engineering'',
     Springer,
     2012.
 <li> '''P. V. Jeberg, H. P. Langtangen and C. B. Terp'''. 
@@ -18983,10 +19001,10 @@ Filename: {{{selc_composed.pdf}}}.
  # **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**.     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,    //International Journal of Fluid Mechanics Research//,    33(1),    pp. 15-43,    2006.
  # **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**.     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,    //Physical Review B: Condensed Matter and Materials Physics//,    74,    2006.
 # **J. B. Haga, H. Osnes and H. P. Langtangen**.     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,    //International Journal of Analytical and Numerical Methods in Geomechanics//,    [[http://dx.doi.org/10.1002/nag.1062|doi: 10.1002/nag.1062]],    2011,    [[http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract]].
-# **H. P. Langtangen**.     //Computational Partial Differential Equations - Numerical Methods and Diffpack Programming//,    Springer,    2003.
-# **H. P. Langtangen**.     //Python Scripting for Computational Science//,    Springer,    2008.
+# **H. P. Langtangen**.     //Computational Partial Differential Equations - Numerical Methods and Diffpack Programming//,    second edition,    //Texts in Computational Science and Engineering//,    Springer,    2003.
+# **H. P. Langtangen**.     //Python Scripting for Computational Science//,    third edition,    //Texts in Computational Science and Engineering//,    Springer,    2008.
 # **H. P. Langtangen and G. Pedersen**.     Finite Elements for the Boussinesq Wave Equations,    Waves and Non-linear Processes in Hydrodynamics,    edited by **J. Grue, B. Gjevik and J. E. Weber**,    Kluwer Academic Publishers,    pp. pp. 117-126,    1995,    [[http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310]].
-# **H. P. Langtangen**.     //A Primer on Scientific Programming With Python//,    Springer,    2012.
+# **H. P. Langtangen**.     //A Primer on Scientific Programming With Python//,    third edition,    //Texts in Computational Science and Engineering//,    Springer,    2012.
 # **P. V. Jeberg, H. P. Langtangen and C. B. Terp**.     Optimization With Diffpack: Practical Example From Welding,    //Simula Research Laboratory//,    Internal report,    2004.
 # **H. P. Langtangen**.     Computational Methods for Two-Phase Flow in Oil Reservoirs,    Ph.D. Thesis,    Mechanics Division, Department of Mathematics, University of Oslo,    1989.
 # **H. P. Langtangen**.     Computational Modeling of Huge Tsunamis From Asteroid Impacts,    Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,    2007.
@@ -20293,10 +20311,14 @@ References
     "http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract":http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
 11. **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+    second edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2003.
 12. **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
+    third edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2008.
 13. **H. P. Langtangen and G. Pedersen**. 
@@ -20309,6 +20331,8 @@ References
     "http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310":http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
 14. **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
+    third edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2012.
 15. **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
@@ -21633,10 +21657,14 @@ References
     U{http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract<http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>}.
 11. B{H. P. Langtangen}. 
     I{Computational Partial Differential Equations - Numerical Methods and Diffpack Programming},
+    second edition,
+    I{Texts in Computational Science and Engineering},
     Springer,
     2003.
 12. B{H. P. Langtangen}. 
     I{Python Scripting for Computational Science},
+    third edition,
+    I{Texts in Computational Science and Engineering},
     Springer,
     2008.
 13. B{H. P. Langtangen and G. Pedersen}. 
@@ -21649,6 +21677,8 @@ References
     U{http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310<http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>}.
 14. B{H. P. Langtangen}. 
     I{A Primer on Scientific Programming With Python},
+    third edition,
+    I{Texts in Computational Science and Engineering},
     Springer,
     2012.
 15. B{P. V. Jeberg, H. P. Langtangen and C. B. Terp}. 
@@ -23131,11 +23161,15 @@ References
 
 11. _H. P. Langtangen_. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+    second edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2003.
 
 12. _H. P. Langtangen_. 
     *Python Scripting for Computational Science*,
+    third edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2008.
 
@@ -23150,6 +23184,8 @@ References
 
 14. _H. P. Langtangen_. 
     *A Primer on Scientific Programming With Python*,
+    third edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2012.
 
@@ -24829,10 +24865,14 @@ Filename: `selc_composed.pdf`.
     <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
 11. <div id="Langtangen_2003a"></div> **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+    second edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2003.
 12. <div id="Langtangen_2008a"></div> **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
+    third edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2008.
 13. <div id="Langtangen:95"></div> **H. P. Langtangen and G. Pedersen**. 
@@ -24845,6 +24885,8 @@ Filename: `selc_composed.pdf`.
     <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
 14. <div id="Langtangen_2012"></div> **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
+    third edition,
+    *Texts in Computational Science and Engineering*,
     Springer,
     2012.
 15. <div id="Jeberg_et_al_2004"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
@@ -27064,11 +27106,15 @@ is at the end with only one newline.
       "\n",
       "11. <div id=\"Langtangen_2003a\"></div> **H. P. Langtangen**. \n",
       "    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,\n",
+      "    second edition,\n",
+      "    *Texts in Computational Science and Engineering*,\n",
       "    Springer,\n",
       "    2003.\n",
       "\n",
       "12. <div id=\"Langtangen_2008a\"></div> **H. P. Langtangen**. \n",
       "    *Python Scripting for Computational Science*,\n",
+      "    third edition,\n",
+      "    *Texts in Computational Science and Engineering*,\n",
       "    Springer,\n",
       "    2008.\n",
       "\n",
@@ -27083,6 +27129,8 @@ is at the end with only one newline.
       "\n",
       "14. <div id=\"Langtangen_2012\"></div> **H. P. Langtangen**. \n",
       "    *A Primer on Scientific Programming With Python*,\n",
+      "    third edition,\n",
+      "    *Texts in Computational Science and Engineering*,\n",
       "    Springer,\n",
       "    2012.\n",
       "\n",
@@ -32236,10 +32284,14 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
+    second edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -32252,6 +32304,8 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
@@ -34395,10 +34449,14 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_blank"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
+    second edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
 <li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
 <li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -34411,6 +34469,8 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_blank"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
 <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
@@ -36533,10 +36593,14 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
+    second edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
 <li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
 <li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -36549,6 +36613,8 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
 <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
@@ -44017,10 +44083,14 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
 <li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
+    second edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
 <li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
 <li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
@@ -44033,6 +44103,8 @@ Filename: <code>selc_composed.pdf</code>.
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
 <li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
+    third edition,
+    <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
 <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
@@ -45686,11 +45758,15 @@ References
 
 .. [Ref11]
    **H. P. Langtangen**. *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
+   second edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2003.
 
 .. [Ref12]
    **H. P. Langtangen**. *Python Scripting for Computational Science*,
+   third edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2008.
 
@@ -45705,6 +45781,8 @@ References
 
 .. [Ref14]
    **H. P. Langtangen**. *A Primer on Scientific Programming With Python*,
+   third edition,
+   *Texts in Computational Science and Engineering*,
    Springer,
    2012.
 
@@ -71382,7 +71460,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f6c4fa8b320>
+verbatim is to be replaced using <function html_verbatim at 0x7f223e4cb320>
 
 
 First occurence: " `mako`."
@@ -75351,7 +75429,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Mar 21 04:24:43 2015.
+# sphinx-quickstart on Sun Mar 22 23:32:36 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

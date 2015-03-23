@@ -66,6 +66,10 @@ def doconce_format_books(paper):
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
     values.append('*%s*' % _doconce_format_title(paper))
+    if "edition" in paper:
+        values.append(_doconce_format_edition(paper))
+    if "series" in paper:
+        values.append(_doconce_format_bookseries(paper))
     values.append(paper["publisher"])
     values.append(paper["year"])
     if "doi" in paper: values.append(_doconce_format_doi(paper["doi"]))
@@ -225,6 +229,12 @@ def _doconce_format_title(paper):
 def _doconce_format_booktitle(paper):
     return '*%s*' % paper["booktitle"]
 
+def _doconce_format_edition(paper):
+    return paper["edition"].lower() + ' edition'
+
+def _doconce_format_bookseries(paper):
+    return '*%s*' % paper["series"]
+
 def _doconce_format_editors(paper):
     "Convert editor tuple to author string"
     return "edited by %s" % _doconce_get_authors_string(paper["editor"])
@@ -354,6 +364,10 @@ def rst_format_books(paper):
     values.append(_rst_get_key_string(paper))
     values.append(_rst_get_authors_string(paper["author"]))
     values.append('*%s*' % _rst_format_title(paper))
+    if "edition" in paper:
+        values.append(_rst_format_edition(paper))
+    if "series" in paper:
+        values.append(_rst_format_bookseries(paper))
     values.append(paper["publisher"])
     values.append(paper["year"])
     if "doi" in paper: values.append(_rst_format_doi(paper["doi"]))
@@ -510,6 +524,12 @@ def _rst_format_title(paper):
     #return "*%s*" % title
     return title
 
+def _rst_format_edition(paper):
+    return paper["edition"].lower() + ' edition'
+
+def _rst_format_bookseries(paper):
+    return '*%s*' % paper["series"]
+
 def _rst_format_editors(paper):
     "Convert editor tuple to author string"
     return "edited by %s" % _rst_get_authors_string(paper["editor"])
@@ -613,6 +633,10 @@ def xml_format_books(paper):
     values.append(_xml('key', paper))
     values.append(_xml_get_authors_string(paper["author"]))
     values.append(_xml_format_title(paper))
+    if "edition" in paper:
+        values.append(_xml_format_edtion(paper))
+    if "series" in paper:
+        values.append(_xml_format_bookseries(paper))
     values.append(_xml("publisher", paper))
     values.append(_xml("year", paper))
     if "doi" in paper: values.append(_xml('doi', paper))
@@ -763,6 +787,12 @@ def _xml_format_institution(paper):
 
 def _xml_format_booktitle(paper):
     return '*%s*' % paper["booktitle"]
+
+def _xml_format_edition(paper):
+    return paper["edition"].lower() + ' edition'
+
+def _xml_format_bookseries(paper):
+    return '*%s*' % paper["series"]
 
 def _xml_format_editors(paper):
     "Convert editor tuple to author string"
