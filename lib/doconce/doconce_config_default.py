@@ -65,6 +65,7 @@ number_all_equations = False
 #section_numbering = 
 #latex_table_format = 
 #latex_title_layout = 
+#latex_title_reference = 
 #latex_encoding = 
 #latex_papersize = 
 #latex_list_of_exercises = 
