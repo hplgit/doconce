@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 25, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 22, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -116,6 +116,11 @@ Terminal&gt; git commit -am updates
 Terminal&gt; git push origin gh-pages
 </pre></div>
 </div>
+</div>
+<div class="section" id="github-gh-pages-will-not-display-files">
+<h3>GitHub gh-pages will not display files<a class="headerlink" href="#github-gh-pages-will-not-display-files" title="Permalink to this headline">¶</a></h3>
+<p>A common error is to link to addresses starting with <tt class="docutils literal"><span class="pre">https//github.com</span></tt>
+rather than the required <tt class="docutils literal"><span class="pre">http://username.github.io/</span></tt>.</p>
 </div>
 <div class="section" id="a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">
 <h3>A newline in equations (double backslash) becomes single backslash and eats up spaces<a class="headerlink" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces" title="Permalink to this headline">¶</a></h3>
@@ -184,6 +189,22 @@ work, and <em>thinking constantly about it</em>.</p>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is a newline in LaTeX if it has preceding text,
 otherwise it is a <tt class="docutils literal"><span class="pre">\vspace{3mm}</span></tt>. In HTML, <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is <tt class="docutils literal"><span class="pre">&lt;br&gt;</span></tt>.</p>
+</div>
+<div class="section" id="spellcheck-reports-a-mistakes-that-i-cannot-find">
+<h3>Spellcheck reports a mistakes that I cannot find<a class="headerlink" href="#spellcheck-reports-a-mistakes-that-i-cannot-find" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> command strips off a lot of text
+(math, code, syntax tags) before it starts spellchecking. The
+spellchecked text is therefore different from the doconce source!
+Fortunately, the file that is actually spellchecked can be examined.
+If the spellcheck command is</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce spellcheck mydoc
+</pre></div>
+</div>
+<p>the file <tt class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></tt> contains the text that is actually
+run through spellchecker. Search for the misspelled word there and
+try to find it in the doconce source code. Very often, strange misspellings
+come from a syntax typo that has led to a strange word in the stripped
+version.</p>
 </div>
 <div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
 <h3>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h3>
@@ -1002,9 +1023,11 @@ clickable.</p>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting</a><ul>
 <li><a class="reference internal" href="#general-problems">General Problems</a><ul>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
+<li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
 <li><a class="reference internal" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
+<li><a class="reference internal" href="#spellcheck-reports-a-mistakes-that-i-cannot-find">Spellcheck reports a mistakes that I cannot find</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li><a class="reference internal" href="#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
 <li><a class="reference internal" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">DocOnce aborts because of a syntax error that is not an error</a></li>

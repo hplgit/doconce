@@ -2,6 +2,8 @@ TITLE: DocOnce Troubleshooting
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
+TOC: on
+
 !bwarning Disclaimer
 DocOnce has some support for syntax checking.  If you encounter Python
 errors while running `doconce format`, the reason for the error is
@@ -112,6 +114,23 @@ work, and *thinking constantly about it*.
 
 The `<linebreak>` is a newline in LaTeX if it has preceding text,
 otherwise it is a `\vspace{3mm}`. In HTML, `<linebreak>` is `<br>`.
+
+===== Spellcheck reports a mistakes that I cannot find =====
+
+The `doconce spellcheck` command strips off a lot of text
+(math, code, syntax tags) before it starts spellchecking. The
+spellchecked text is therefore different from the doconce source!
+Fortunately, the file that is actually spellchecked can be examined.
+If the spellcheck command is
+
+!bc
+doconce spellcheck mydoc
+!ec
+the file `tmp_stripped_mydoc.do.txt` contains the text that is actually
+run through spellchecker. Search for the misspelled word there and
+try to find it in the doconce source code. Very often, strange misspellings
+come from a syntax typo that has led to a strange word in the stripped
+version.
 
 ===== Spellcheck reports a lot of mistakes related to LaTeX math =====
 
