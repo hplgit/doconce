@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 25, 2015
+:Date: Mar 22, 2015
 
 
 .. admonition:: Disclaimer
@@ -46,6 +46,12 @@ A typical fix is
         Terminal> git add .nojekyll
         Terminal> git commit -am updates
         Terminal> git push origin gh-pages
+
+GitHub gh-pages will not display files
+--------------------------------------
+
+A common error is to link to addresses starting with ``https//github.com``
+rather than the required ``http://username.github.io/``.
 
 A newline in equations (double backslash) becomes single backslash and eats up spaces
 -------------------------------------------------------------------------------------
@@ -132,6 +138,25 @@ Without ``<linebreak>`` the rendering becomes
 
 The ``<linebreak>`` is a newline in LaTeX if it has preceding text,
 otherwise it is a ``\vspace{3mm}``. In HTML, ``<linebreak>`` is ``<br>``.
+
+Spellcheck reports a mistakes that I cannot find
+------------------------------------------------
+
+The ``doconce spellcheck`` command strips off a lot of text
+(math, code, syntax tags) before it starts spellchecking. The
+spellchecked text is therefore different from the doconce source!
+Fortunately, the file that is actually spellchecked can be examined.
+If the spellcheck command is
+
+.. code-block:: text
+
+        doconce spellcheck mydoc
+
+the file ``tmp_stripped_mydoc.do.txt`` contains the text that is actually
+run through spellchecker. Search for the misspelled word there and
+try to find it in the doconce source code. Very often, strange misspellings
+come from a syntax typo that has led to a strange word in the stripped
+version.
 
 Spellcheck reports a lot of mistakes related to LaTeX math
 ----------------------------------------------------------
