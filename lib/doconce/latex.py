@@ -749,6 +749,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # No envir set by previous !bc?
                 # There should have been checks for this in doconce.py
                 print 'XXX2', i
+                print filestr
                 print '*** error: mismatch between !bc and !ec'
                 print '\n'.join(lines[i-3:i+4])
                 _abort()
