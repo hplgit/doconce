@@ -716,6 +716,10 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     filestr = replace_code_command(filestr)  # subst \code{...}
 
+    # Fix footnotes `verbatim`[^footnote] (originally without space)
+    # (this forced 3 extra spaces in latex_footnotes)
+    filestr = re.sub(r'([!?@|}])   \\footnote{', r'\g<1>\\footnote{', filestr)
+
     lines = filestr.splitlines()
     current_code_envir = None
     for i in range(len(lines)):
@@ -1109,6 +1113,7 @@ def latex_linebreak(m):
         return '\n\n\\vspace{3mm}\n\n'
 
 def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
+    # Collect all footnote definitions in a dict (for insertion in \footnote{})
     footnotes = {name: text for name, text, dummy in
                  re.findall(pattern_def, filestr, flags=re.MULTILINE|re.DOTALL)}
     # Remove definitions
@@ -1116,6 +1121,8 @@ def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
 
     def subst_footnote(m):
         name = m.group('name')
+        space = m.group('space')
+        lookbehind = m.group(1)
         try:
             text = footnotes[name].strip()
         except KeyError:
@@ -1125,7 +1132,12 @@ def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
         # Make the footnote on one line in case it appears in lists
         # (newline will then end the list)
         text = ' '.join(text.splitlines())
-        return '\\footnote{%s}' % text
+
+        if lookbehind in ('`', '_',) and space == '':
+            # Inline verbatim: need extra space for the inline verbatim subst
+            # to work (fixed later in latex_code fix part)
+            space = '   '  # 3 spaces to be recognized for later subst to ''
+        return '%s\\footnote{%s}' % (space, text)
 
     filestr = re.sub(pattern_footnote, subst_footnote, filestr)
     return filestr

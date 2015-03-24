@@ -1155,18 +1155,17 @@ Typesetting of footnotes employs a common email or Extended Markdown syntax:
 
 !bc do
 Footnotes are typeset according to the output format[^typesetting].
-The syntax is optional spaces, opening bracket, hat,
-a footnote name without spaces[^remedy-for-name-with-spaces], and closing
-bracket. The logical name of the footnote is not used in LaTeX,
-HTML, reStructuredText, or Sphinx, because these languages employ
-numbered footnotes. Other formats employ the logical name.
+The syntax is optional spaces, opening bracket, hat, a footnote name
+without spaces[^remedy-for-name-with-spaces], and closing bracket. The
+logical name of the footnote is not used in LaTeX, HTML,
+reStructuredText, or Sphinx, because these languages employ numbered
+footnotes. Other formats employ the logical name.
 
-  [^typesetting]: Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.
+[^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the definition and inserts the
+footnote as part of the LaTeX text.  reStructuredText and Sphinx
+employ a similar type of typesetting as Extended Markdown and DocOnce,
+and in HTML we keep the same syntax, just displayed properly in HTML.
 
 Footnotes are preferably defined after the paragraph they are used.
 The definition is the footnote syntax (some optional space, bracket,
@@ -1179,26 +1178,25 @@ case of spaces.
 The text above looks as follows.
 
 Footnotes are typeset according to the output format[^typesetting].
-The syntax is optional spaces, opening bracket, hat,
-a name without spaces [^remedy-for-name-with-spaces], and closing
-bracket. The logical name of the footnote is not used in LaTeX,
-HTML, reStructuredText, or Sphinx, because these languages employ
-numbered footnotes. Other formats employ the logical name.
+The syntax is optional spaces, opening bracket, hat, a footnote name
+without spaces[^remedy-for-name-with-spaces], and closing bracket. The
+logical name of the footnote is not used in LaTeX, HTML,
+reStructuredText, or Sphinx, because these languages employ numbered
+footnotes. Other formats employ the logical name.
 
   [^typesetting]: Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.
+Plain text does nothing, LaTeX removes the definition and inserts the
+footnote as part of the LaTeX text.  reStructuredText and Sphinx
+employ a similar type of typesetting as Extended Markdown and DocOnce,
+and in HTML we keep the same syntax, just displayed properly in HTML.
 
 Footnotes are preferably defined after the paragraph they are used.
 The definition is the footnote syntax (some optional space, bracket,
 hat, name, bracket) followed by colon and a text.
+A new paragraph marks the end of a footnote.
 
 [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
 case of spaces.
-
 
 ===== Inline Comments =====
 

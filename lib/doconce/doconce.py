@@ -2323,7 +2323,7 @@ def handle_index_and_bib(filestr, format):
     #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
     # Footnote pattern has a word prior to the footnote [^name]
     # or math, inline code, link
-    pattern_footnote = r'(?<=(\w|[$`").,;?]))(?P<footnote> *\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
+    pattern_footnote = r'(?<=(\w|[$`").,;?]))(?P<footnote>(?P<space> *)\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
     # (Note: cannot have footnote at beginning of line, because look behind
     # does not tolerate ^ in (\w|[$`")]|^)
     # Keep footnotes for pandoc, plain text

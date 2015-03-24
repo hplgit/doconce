@@ -382,13 +382,14 @@ the previous blocks with line breaks.
 
 === Footnotes ===
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
- * list items
- * even with math $\nabla^2u$ [^math1]
- * and code `h[i] += 1` [^code],
- * and "links": "http://google.com" [^google-search]
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ * even with math $\nabla^2u$[^math1]
+ * and code `h[i] += 1`[^code]
+   (*must* have space between inline code and footnote!)
+ * and "links": "http://google.com"[^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
