@@ -2717,6 +2717,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \definecolor{brown}{rgb}{0.54,0.27,0.07}
 \definecolor{purple}{rgb}{0.5,0.0,0.5}
 \definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
 \definecolor{lightred}{rgb}{1.0,0.39,0.28}
 \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
 \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
