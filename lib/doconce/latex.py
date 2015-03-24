@@ -1116,7 +1116,12 @@ def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
 
     def subst_footnote(m):
         name = m.group('name')
-        text = footnotes[name].strip()
+        try:
+            text = footnotes[name].strip()
+        except KeyError:
+            print '*** error: definition of footnote with name "%s"' % name
+            print '    has no corresponding footnote [^%s]' % name
+            _abort()
         # Make the footnote on one line in case it appears in lists
         # (newline will then end the list)
         text = ' '.join(text.splitlines())
