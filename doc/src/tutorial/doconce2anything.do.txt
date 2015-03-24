@@ -808,7 +808,13 @@ or the Listings-based style with yellow background color
 !bc
 --latex_code_style=lst-yellow2
 !ec
-It is easy to specify different styles for different code environments.
+It is easy to specify different styles for different code environments, say
+blue background with plain verbatim style for code but a special terminal
+window for the `sys` environment:
+
+!bc
+"--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+!ec
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options `--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin`. One may also (automatically) edit the

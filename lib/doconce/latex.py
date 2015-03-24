@@ -729,8 +729,9 @@ def latex_code(filestr, code_blocks, code_block_types,
                 else:
                     current_code_envir = words[1]
             if current_code_envir is None:
+                print 'XXX', words
                 # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec'
+                print '*** error: mismatch between !bc and !ec'
                 print '\n'.join(lines[i-3:i+4])
                 _abort()
             if latex_code_style is None:
@@ -742,7 +743,8 @@ def latex_code(filestr, code_blocks, code_block_types,
         if lines[i].startswith('!ec'):
             if current_code_envir is None:
                 # There should have been checks for this in doconce.py
-                print '*** errror: mismatch between !bc and !ec'
+                print 'XXX2', i
+                print '*** error: mismatch between !bc and !ec'
                 print '\n'.join(lines[i-3:i+4])
                 _abort()
             if latex_code_style is None:

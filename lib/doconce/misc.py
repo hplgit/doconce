@@ -3135,9 +3135,9 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         # Insert reference to published version of document?
         ackn = misc_option('reference=', None)
         if ackn is not None:
-            ackn1 = '<center style="font-size:80%%">%s</center>' % ackn
             ackn1 = '<p style="font-size:80%%">%s</p>' % ackn
             ackn2 = '<div style="font-size:80%%">%s</div>' % ackn
+            ackn3 = '<center style="font-size:80%%">%s</center>' % ackn
             if pn >= 1:
                 # Place the acknowledgment/reference at the top, right after
                 # the (only) !split command in each file
@@ -3147,10 +3147,15 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 # Include in front page if jumbotron button
                 pattern = r'<p><a href=".+?" class="btn btn-primary btn-lg">Read &raquo;</a></p>'
                 m = re.search(pattern, part_text)
-                if m:
+                if m:  # jumbotron button?
                     button = m.group()
                     part_text = part_text.replace(
                         button, '\n<p>' + ackn2 + '</p>\n' + button)
+                else:
+                    # Put text after navigation
+                    part_text = part_text.replace(
+                        '<!-- end bottom navigation -->\n</p>\n',
+                        '<!-- end bottom navigation -->\n</p>%s\n' % ackn1)
 
         # Write part to ._*.html file
         f = open(part_filename, 'w')
