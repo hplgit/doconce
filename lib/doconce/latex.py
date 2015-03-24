@@ -139,9 +139,9 @@ def latex_code_envir(
         else:
             begin = '\\begin{cod}{cbg_%s}' % background + begin
             if package == 'vrb':
-                end = end + '\n\\end{cod}'
+                end = end + '\n\\end{cod}\n\\noindent'
             else:
-                end = end + '\\end{cod}'
+                end = end + '\\end{cod}\n\\noindent'
     return begin, end
 
 def interpret_latex_code_style():
