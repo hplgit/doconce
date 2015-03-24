@@ -397,7 +397,7 @@ the previous blocks with line breaks.
 
 === Footnotes ===
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
  * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
@@ -2596,7 +2596,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -4862,7 +4862,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -7137,7 +7137,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -9475,7 +9475,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -14839,7 +14839,7 @@ Python.
 
 ==== Footnotes ====
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
 
@@ -16410,7 +16410,7 @@ Python.
 
 ==== Footnotes ====
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
 
@@ -18082,7 +18082,7 @@ Python.
 
 === Footnotes ===
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
 
@@ -19518,7 +19518,7 @@ Running OS commands::
 
 Footnotes
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
  - list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
@@ -20828,7 +20828,7 @@ Running OS commands
 Footnotes
 ~~~~~~~~~
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
  - list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
@@ -22306,7 +22306,7 @@ Running OS commands
 Footnotes
 ~~~~~~~~~
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
  * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
@@ -23838,7 +23838,7 @@ Python.
 
 #### Footnotes
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
  * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
@@ -25755,7 +25755,7 @@ is at the end with only one newline.
      "source": [
       "#### Footnotes\n",
       "\n",
-      "Here is a test of footnotes[^footnote], which are handy in text.\n",
+      "Here is a test of footnotes [^footnote], which are handy in text.\n",
       "They are used in different flavors, now in\n",
       "\n",
       " * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)\n",
@@ -37692,7 +37692,7 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
@@ -71503,7 +71503,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f127bac0398>
+verbatim is to be replaced using <function html_verbatim at 0x7fc7817f6398>
 
 
 First occurence: " `mako`."
@@ -75472,7 +75472,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Mar 24 11:25:45 2015.
+# sphinx-quickstart on Tue Mar 24 11:33:42 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
