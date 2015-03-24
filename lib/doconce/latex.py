@@ -720,7 +720,6 @@ def latex_code(filestr, code_blocks, code_block_types,
     current_code_envir = None
     for i in range(len(lines)):
         if lines[i].startswith('!bc'):
-            print 'XXX4', lines[i]
             words = lines[i].split()
             if len(words) == 1:
                 current_code_envir = 'ccq'
@@ -729,7 +728,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                     current_code_envir = 'pypro'
                 else:
                     current_code_envir = words[1]
-            print 'XXX3 Found !bc and set current_code_envir to', current_code_envir
             if current_code_envir is None:
                 # Should not happen since a !bc is encountered first and
                 # current_code_envir is then set above
@@ -744,14 +742,11 @@ def latex_code(filestr, code_blocks, code_block_types,
                                               latex_code_style)
                 lines [i] = begin
         if lines[i].startswith('!ec'):
-            print 'XXX5', lines[i]
             if current_code_envir is None:
                 # No envir set by previous !bc?
-                # There should have been checks for this in doconce.py
-                print 'XXX2', i
-                print filestr
                 print '*** error: mismatch between !bc and !ec'
-                print '\n'.join(lines[i-3:i+4])
+                print '    check that every !bc matches !ec in the following text:'
+                print filestr
                 _abort()
             if latex_code_style is None:
                 lines[i] = '\\e' + current_code_envir
