@@ -2779,7 +2779,7 @@ the document &quot;Mathematical Equations&quot;:
 </pre></div>
 </div>
 <p>(Note that there must be no spaces between closing and opening brackets: <tt class="docutils literal"><span class="pre">][</span></tt>.)
-When `` is found in the current DocOnce document,
+When the label <tt class="docutils literal"><span class="pre">sec:eqs</span></tt> is found in the current DocOnce document,
 this generalized reference becomes</p>
 <div class="highlight-doconce"><div class="highlight"><pre>Section ref{sec:eqs}
 </pre></div>
@@ -2813,44 +2813,47 @@ the <tt class="docutils literal"><span class="pre">Externaldocument</span></tt> 
 <p>When compiling DocOnce documents with generalized references
 to <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
 all documents listed in
-the <tt class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></tt> comment must have been recently compiled
+the <tt class="docutils literal"><span class="pre">Externaldocuments</span></tt> comment must have been recently compiled
 such that their <tt class="docutils literal"><span class="pre">.aux</span></tt> files <em>are available and updated</em>.</p>
 <p class="last">Note that cleaning (<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></tt>)
 of the directory holding an external document will destroy the
-<tt class="docutils literal"><span class="pre">.aux</span></tt> file, and <tt class="docutils literal"><span class="pre">latex</span></tt> or &#8216;pdflatex` may then complain that
+<tt class="docutils literal"><span class="pre">.aux</span></tt> file, and <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> may then complain that
 a file listed as <tt class="docutils literal"><span class="pre">\externaldocument{}</span></tt> has no <tt class="docutils literal"><span class="pre">.aux</span></tt> file.</p>
 </div>
 </div>
 <div class="section" id="generalized-references-to-chapters">
 <h4>Generalized References to Chapters<a class="headerlink" href="#generalized-references-to-chapters" title="Permalink to this headline">¶</a></h4>
-<p>Very often a reference to a chapter in a book becomes just
-a reference to a complete document, not a specific section,
-if chapters are compiled individually. Here is an example of
-a reference to a chapter in a book:</p>
+<p>A reference to a chapter in a book becomes just
+a reference to a complete stand-alone document
+if chapters are compiled individually. Here is an example:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in Chapter ref{ch:model}.
 </pre></div>
 </div>
-<p>If the chapter with label <tt class="docutils literal"><span class="pre">ch:model</span></tt> is compiled separately, we would
+<p>This reference works fine if the present document is a book and <tt class="docutils literal"><span class="pre">ch:model</span></tt>
+is a label of a chapter in the book. However,
+if the chapter with label <tt class="docutils literal"><span class="pre">ch:model</span></tt> is compiled separately, we would
 rather write</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in cite{math_eqs_2020}.
 </pre></div>
 </div>
-<p>in printed output and perhaps</p>
+<p>where <tt class="docutils literal"><span class="pre">math_eqs_2020</span></tt> is the citation label for the external document
+as listed in the Publish database. Or if the output format supports
+hyperlinks, we would perhaps add such a link:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>the document &quot;Mathematical Equations&quot;:
 <span class="s">&quot;http://some.net/doc/matheqs.html&quot;</span> cite{math_eqs_2020}.
 </pre></div>
 </div>
-<p>in electronic documents with hyperlinks. Such references to
-chapters or complete documents are much like the previously
-generalized references, but now written with <tt class="docutils literal"><span class="pre">refch</span></tt> instead
+<p>Such references to
+chapters or complete documents are very much like the previously
+generalized references, but written with <tt class="docutils literal"><span class="pre">refch</span></tt> instead
 of <tt class="docutils literal"><span class="pre">ref</span></tt>:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>refch[internal][cite][external]
 </pre></div>
 </div>
 <p>The only difference between <tt class="docutils literal"><span class="pre">refch</span></tt> and <tt class="docutils literal"><span class="pre">ref</span></tt> is that the former,
 for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output, just use the <tt class="docutils literal"><span class="pre">cite</span></tt> text
-and not <tt class="docutils literal"><span class="pre">internal</span></tt> if the labels <tt class="docutils literal"><span class="pre">internal</span></tt> are not found in
-the document. The following reference,</p>
+and not <tt class="docutils literal"><span class="pre">internal</span></tt> if the labels in the <tt class="docutils literal"><span class="pre">internal</span></tt> text are not found in
+the document. To be precise, the reference</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in refch[Chapter ref{ch:eqs}][cite{eqs_doc_2008}][
 the document &quot;Some Equations&quot;: &quot;http://some.net/someeqs/&quot;].
 </pre></div>
@@ -2859,7 +2862,7 @@ the document &quot;Some Equations&quot;: &quot;http://some.net/someeqs/&quot;].
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in Chapter ref{ch:eqs}.
 </pre></div>
 </div>
-<p>if <tt class="docutils literal"><span class="pre">ch:eqs</span></tt> is a label in the present document. It becomes</p>
+<p>if <tt class="docutils literal"><span class="pre">ch:eqs</span></tt> is a label defined in the present document. It becomes</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in Chapter cite{eqs_doc_2008}.
 </pre></div>
 </div>
@@ -2890,13 +2893,13 @@ the Publish file, and make a substitution command</p>
 <div class="highlight-doconce"><div class="highlight"><pre>doconce subst &quot;Section\s+ref{sec:eqs}&quot; &quot;...&quot; $files
 </pre></div>
 </div>
-<p>where <tt class="docutils literal"><span class="pre">&quot;...&quot;</span></tt> is the generalized reference as shown in the
-examples above.
+<p>where <tt class="docutils literal"><span class="pre">&quot;...&quot;</span></tt> is the complete generalized reference for this particular
+reference.
 In other words, with <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span></tt> one can automatically
 generate generalized references between, for example, chapters in
 a book that exist as stand-alone documents.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<div class="admonition-references-to-equations admonition">
+<p class="first admonition-title">References to equations</p>
 <p>Generalized references to equations work well in LaTeX, but
 not in other formats as one cannot resolve the equation number
 in the external document. It is then better to write different

@@ -768,7 +768,7 @@ BibTeX `.bib` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-===== Generalized Citations =====
+===== Generalized References =====
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
@@ -777,10 +777,13 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
-!bc
-ref[internal][cite][external]
 
-# Example:
+!bc do
+ref[internal][cite][external]
+!ec
+with a specific example being
+
+!bc do
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
@@ -788,12 +791,14 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 DocOnce documents may include movies.
 !ec
 The output from a generalized reference is the text `internal` if all
-`ref{label}` references in `internal` are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-`latex` or `pdflatex` one assumes that the references in `internal`
-are to external documents declared by a comment line `#
-Externaldocuments: testdoc, mydoc` (usually after the title, authors,
-and date). In this case the output text is `internal cite` and the
+references with `ref` in the text `internal` are references to labels
+defined in the
+present document. Otherwise, if `cite` is non-empty and the format is
+`latex` or `pdflatex`, one assumes that the references in `internal`
+are to external documents declared by a comment line
+`# Externaldocuments: testdoc, mydoc` (usually after the title, authors,
+and date). In this case the output text is `internal` followed by `cite`,
+and the
 LaTeX package `xr` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 `external` text will be the output.
