@@ -1498,7 +1498,7 @@ the document "Mathematical Equations":
 "http://some.net/doc/matheqs.html" cite{math_eqs_2020}].
 !ec
 (Note that there must be no spaces between closing and opening brackets: `][`.)
-When `label{sec:eqs}` is found in the current DocOnce document,
+When the label `sec:eqs` is found in the current DocOnce document,
 this generalized reference becomes
 
 !bc do
@@ -1538,40 +1538,43 @@ the `Externaldocument` comment after the title, author, and date.
 When compiling DocOnce documents with generalized references
 to `latex` or `pdflatex`,
 all documents listed in
-the `# Externaldocuments:` comment must have been recently compiled
+the `Externaldocuments` comment must have been recently compiled
 such that their `.aux` files *are available and updated*.
 
 Note that cleaning (`doconce clean`)
 of the directory holding an external document will destroy the
-`.aux` file, and `latex` or 'pdflatex` may then complain that
+`.aux` file, and `latex` or `pdflatex` may then complain that
 a file listed as `\externaldocument{}` has no `.aux` file.
 !ewarning
 
 === Generalized References to Chapters ===
 
-Very often a reference to a chapter in a book becomes just
-a reference to a complete document, not a specific section,
-if chapters are compiled individually. Here is an example of
-a reference to a chapter in a book:
+A reference to a chapter in a book becomes just
+a reference to a complete stand-alone document
+if chapters are compiled individually. Here is an example:
 
 !bc do
 ...as shown in Chapter ref{ch:model}.
 !ec
-If the chapter with label `ch:model` is compiled separately, we would
+This reference works fine if the present document is a book and `ch:model`
+is a label of a chapter in the book. However,
+if the chapter with label `ch:model` is compiled separately, we would
 rather write
 
 !bc do
 ...as shown in cite{math_eqs_2020}.
 !ec
-in printed output and perhaps
+where `math_eqs_2020` is the citation label for the external document
+as listed in the Publish database. Or if the output format supports
+hyperlinks, we would perhaps add such a link:
 
 !bc do
 the document "Mathematical Equations":
 "http://some.net/doc/matheqs.html" cite{math_eqs_2020}.
 !ec
-in electronic documents with hyperlinks. Such references to
-chapters or complete documents are much like the previously
-generalized references, but now written with `refch` instead
+Such references to
+chapters or complete documents are very much like the previously
+generalized references, but written with `refch` instead
 of `ref`:
 
 !bc do
@@ -1579,8 +1582,8 @@ refch[internal][cite][external]
 !ec
 The only difference between `refch` and `ref` is that the former,
 for `latex` and `pdflatex` output, just use the `cite` text
-and not `internal` if the labels `internal` are not found in
-the document. The following reference,
+and not `internal` if the labels in the `internal` text are not found in
+the document. To be precise, the reference
 
 !bc do
 ...as shown in refch[Chapter ref{ch:eqs}][cite{eqs_doc_2008}][
@@ -1591,7 +1594,7 @@ will be
 !bc do
 ...as shown in Chapter ref{ch:eqs}.
 !ec
-if `ch:eqs` is a label in the present document. It becomes
+if `ch:eqs` is a label defined in the present document. It becomes
 
 !bc do
 ...as shown in Chapter cite{eqs_doc_2008}.
@@ -1626,8 +1629,8 @@ the Publish file, and make a substitution command
 !bc do
 doconce subst "Section\s+ref{sec:eqs}" "..." $files
 !ec
-where `"..."` is the generalized reference as shown in the
-examples above.
+where `"..."` is the complete generalized reference for this particular
+reference.
 In other words, with `doconce ref_external` one can automatically
 generate generalized references between, for example, chapters in
 a book that exist as stand-alone documents.
@@ -1640,7 +1643,7 @@ a book that exist as stand-alone documents.
 
 # `\label{eqs:g1}` and `\label{eqs:g4}`
 
-!bwarning
+!bwarning References to equations
 Generalized references to equations work well in LaTeX, but
 not in other formats as one cannot resolve the equation number
 in the external document. It is then better to write different
