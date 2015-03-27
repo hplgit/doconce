@@ -1463,6 +1463,10 @@ write the above reference as
 ...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
 !ec
 and get output like ``...as shown in Section 3.4 in [12].''
+When the numbering of sections in `file2.tex` changes later,
+the output from the shown line in `file1.tex` will automatically
+be changed if `file2.aux` is recently compiled
+(so `file2.aux` with the mapping from labels to section numbers is updated).
 
 === Generalized References ===
 
@@ -1529,6 +1533,19 @@ on *a single line*. The `Externaldocuments` comment leads to use
 of the `xr` package and insertion of `\externaldocument{file2}`
 in the `.tex` output file. It is a good habit to place
 the `Externaldocument` comment after the title, author, and date.
+
+!bwarning External documents must be recently compiled
+When compiling DocOnce documents with generalized references
+to `latex` or `pdflatex`,
+all documents listed in
+the `# Externaldocuments:` comment must have been recently compiled
+such that their `.aux` files *are available and updated*.
+
+Note that cleaning (`doconce clean`)
+of the directory holding an external document will destroy the
+`.aux` file, and `latex` or 'pdflatex` may then complain that
+a file listed as `\externaldocument{}` has no `.aux` file.
+!ewarning
 
 === Generalized References to Chapters ===
 
