@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 13, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 27, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -93,7 +93,7 @@
 looks like ordinary ASCII text, much like what you would use in an
 email, but the text can be transformed to numerous other formats,
 including HTML, Sphinx, LaTeX, PDF, reStructuredText (reST), Markdown,
-MediaWiki, Google wiki, Creole wiki, blogger.com, wordpress.com,
+MediaWiki, Creole wiki, blogger.com, wordpress.com,
 Epytext, and also plain (untagged) text for email.
 From reST or Markdown you can go to XML, OpenOffice, MS
 Word, HTML, LaTeX, PDF, DocBook, GNU Texinfo, and more.</p>
@@ -2483,22 +2483,22 @@ off the ampersand treatment for all formats.</p>
 <h3>Footnotes<a class="headerlink" href="#footnotes" title="Permalink to this headline">¶</a></h3>
 <p id="index-46">Typesetting of footnotes employs a common email or Extended Markdown syntax:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>Footnotes are typeset according to the output format[^typesetting].
-The syntax is optional spaces, opening bracket, hat,
-a name without spaces [^remedy-for-name-with-spaces], and closing
-bracket. The logical name of the footnote is not used in LaTeX,
-HTML, reStructuredText, or Sphinx, because these languages employ
-numbered footnotes. Other formats employ the logical name.
+The syntax is optional spaces, opening bracket, hat, a footnote name
+without spaces[^remedy-for-name-with-spaces], and closing bracket. The
+logical name of the footnote is not used in LaTeX, HTML,
+reStructuredText, or Sphinx, because these languages employ numbered
+footnotes. Other formats employ the logical name.
 
-  [^typesetting]: Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.
+[^typesetting]: Typesetting of the footnote depends on the format.
+Plain text does nothing, LaTeX removes the definition and inserts the
+footnote as part of the LaTeX text.  reStructuredText and Sphinx
+employ a similar type of typesetting as Extended Markdown and DocOnce,
+and in HTML we keep the same syntax, just displayed properly in HTML.
 
 Footnotes are preferably defined after the paragraph they are used.
 The definition is the footnote syntax (some optional space, bracket,
 hat, name, bracket) followed by colon and a text.
+A new paragraph marks the end of a footnote.
 
 [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
 case of spaces.
@@ -2506,25 +2506,25 @@ case of spaces.
 </div>
 <p>The text above looks as follows.</p>
 <p>Footnotes are typeset according to the output format <a class="footnote-reference" href="#typesetting" id="id7">[1]</a>.
-The syntax is optional spaces, opening bracket, hat,
-a name without spaces <a class="footnote-reference" href="#remedy-for-name-with-spaces" id="id8">[2]</a>, and closing
-bracket. The logical name of the footnote is not used in LaTeX,
-HTML, reStructuredText, or Sphinx, because these languages employ
-numbered footnotes. Other formats employ the logical name.</p>
+The syntax is optional spaces, opening bracket, hat, a footnote name
+without spaces <a class="footnote-reference" href="#remedy-for-name-with-spaces" id="id8">[2]</a>, and closing bracket. The
+logical name of the footnote is not used in LaTeX, HTML,
+reStructuredText, or Sphinx, because these languages employ numbered
+footnotes. Other formats employ the logical name.</p>
 <table class="docutils footnote" frame="void" id="typesetting" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td>Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.</td></tr>
+Plain text does nothing, LaTeX removes the definition and inserts the
+footnote as part of the LaTeX text.  reStructuredText and Sphinx
+employ a similar type of typesetting as Extended Markdown and DocOnce,
+and in HTML we keep the same syntax, just displayed properly in HTML.</td></tr>
 </tbody>
 </table>
 <p>Footnotes are preferably defined after the paragraph they are used.
 The definition is the footnote syntax (some optional space, bracket,
-hat, name, bracket) followed by colon and a text.</p>
+hat, name, bracket) followed by colon and a text.
+A new paragraph marks the end of a footnote.</p>
 <table class="docutils footnote" frame="void" id="remedy-for-name-with-spaces" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -2699,8 +2699,8 @@ replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 <tt class="docutils literal"><span class="pre">rst</span></tt> and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats, the end effect is the same, but
 the &#8220;label&#8221; and &#8220;ref&#8221; commands are first translated to the proper
-reST commands by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>. In the HTML and (Google
-Code) wiki formats, labels become anchors and references become links,
+reST commands by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>. In the HTML and wiki formats,
+labels become anchors and references become links,
 and with LaTeX &#8220;label&#8221; and &#8220;ref&#8221; are just equipped with backslashes so
 these commands work as usual in LaTeX.</p>
 <p>It is, in general, recommended to use labels and references for
@@ -2727,7 +2727,7 @@ have text like</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in Section ref{sec:eqs}.
 </pre></div>
 </div>
-<p>with &#8221; defined in another file <tt class="docutils literal"><span class="pre">file2.do.txt</span></tt>.
+<p>with the label <tt class="docutils literal"><span class="pre">sec:eqs</span></tt> defined in another file <tt class="docutils literal"><span class="pre">file2.do.txt</span></tt>.
 If <tt class="docutils literal"><span class="pre">file1.do.txt</span></tt> and <tt class="docutils literal"><span class="pre">file2.do.txt</span></tt> are combined to a single
 document, the reference is treated correctly, but if <tt class="docutils literal"><span class="pre">file1.do.txt</span></tt>
 is compiled as a single document, the label <tt class="docutils literal"><span class="pre">sec:eqs</span></tt> becomes
@@ -2736,31 +2736,37 @@ undefined. Then one would instead write</p>
 <span class="s">&quot;http://some.net/doc/matheqs.html&quot;</span> cite{math_eqs_2020}.
 </pre></div>
 </div>
-<p>However, LaTeX has functionality for referring to labels
-in external documents: these work fine when the <tt class="docutils literal"><span class="pre">xr</span></tt> package
-is used and the external documents are listed as
-<tt class="docutils literal"><span class="pre">externaldocument{name}</span></tt>. In that case, we would write
-the above reference as</p>
+<p>LaTeX has functionality for referring to labels
+in external documents. One must use the <tt class="docutils literal"><span class="pre">xr</span></tt> package
+and list external documents with a command
+<tt class="docutils literal"><span class="pre">\externaldocument{name}</span></tt> such that LaTeX can extract label
+information from the <tt class="docutils literal"><span class="pre">name.aux</span></tt> file. We are then able to
+write the above reference as</p>
 <div class="highlight-doconce"><div class="highlight"><pre>\externaldocument{file2}
 ...
 ...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
 </pre></div>
 </div>
-<p>To treat all these cases simultanesouly, DocOnce
-features <em>generalized references</em> which allows
-a reference to have different formulations, depending on whether
-the label is present in the document or is present in an
-external document.
+<p>and get output like &#8221;...as shown in Section 3.4 in [12].&#8221;</p>
+<div class="section" id="generalized-references">
+<h4>Generalized References<a class="headerlink" href="#generalized-references" title="Permalink to this headline">¶</a></h4>
+<p>DocOnce mimics a generalization of the LaTeX functionality in the
+<tt class="docutils literal"><span class="pre">xr</span></tt> package such that one can refer to external documents in
+other formats than LaTeX (HTML, Sphinx, IPython notebooks, wikis, etc.).
+This feature is called a <em>generalized reference</em> and involves
+a reference with <em>three</em> values.
 The syntax of generalized references reads</p>
 <div class="highlight-doconce"><div class="highlight"><pre>ref[internal][cite][external]
 </pre></div>
 </div>
-<p>If all <cite>:ref:`label`</cite> references in the text <tt class="docutils literal"><span class="pre">internal</span></tt> are
-to labels defined in the DocOnce document, the
+<p>If all references in the text <tt class="docutils literal"><span class="pre">internal</span></tt> are
+to labels defined in the present DocOnce document, the
 generalized reference becomes the text <tt class="docutils literal"><span class="pre">internal</span></tt>.
-If one or more labels are not present in the document and
-<tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> is output format, the generalized reference becomes the
-text <tt class="docutils literal"><span class="pre">internal</span></tt> plus <tt class="docutils literal"><span class="pre">cite</span></tt>, while for all other formats the
+If one or more references in <tt class="docutils literal"><span class="pre">internal</span></tt> are not labels
+present in the document and
+<tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> is the output format,
+the generalized reference becomes the
+text <tt class="docutils literal"><span class="pre">internal</span></tt> followed by <tt class="docutils literal"><span class="pre">cite</span></tt>, while for all other formats the
 text in <tt class="docutils literal"><span class="pre">external</span></tt> is used.</p>
 <p>The example above can now be written as the generalized reference</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in ref[Section ref{sec:eqs}][ in cite{math_eqs_2020}][
@@ -2768,12 +2774,14 @@ the document &quot;Mathematical Equations&quot;:
 <span class="s">&quot;http://some.net/doc/matheqs.html&quot;</span> cite{math_eqs_2020}].
 </pre></div>
 </div>
-<p>When `` is found in the current DocOnce document,
-the generalized reference becomes</p>
+<p>(Note that there must be no spaces between closing and opening brackets: <tt class="docutils literal"><span class="pre">][</span></tt>.)
+When &#8221; is found in the current DocOnce document,
+this generalized reference becomes</p>
 <div class="highlight-doconce"><div class="highlight"><pre>Section ref{sec:eqs}
 </pre></div>
 </div>
-<p>If not, and <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> is output, the reference becomes</p>
+<p>If not, and <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> is the output format,
+the reference becomes</p>
 <div class="highlight-doconce"><div class="highlight"><pre>Section ref{sec:eqs}] in cite{math_eqs_2020}
 </pre></div>
 </div>
@@ -2794,32 +2802,75 @@ document in the DocOnce file as</p>
 </div>
 <p>on <em>a single line</em>. The <tt class="docutils literal"><span class="pre">Externaldocuments</span></tt> comment leads to use
 of the <tt class="docutils literal"><span class="pre">xr</span></tt> package and insertion of <tt class="docutils literal"><span class="pre">\externaldocument{file2}</span></tt>
-in the LaTeX output file. It is a good habit to place
+in the <tt class="docutils literal"><span class="pre">.tex</span></tt> output file. It is a good habit to place
 the <tt class="docutils literal"><span class="pre">Externaldocument</span></tt> comment after the title, author, and date.</p>
+</div>
+<div class="section" id="generalized-references-to-chapters">
+<h4>Generalized References to Chapters<a class="headerlink" href="#generalized-references-to-chapters" title="Permalink to this headline">¶</a></h4>
 <p>Very often a reference to a chapter in a book becomes just
 a reference to a complete document, not a specific section,
-if chapters are compiled individually. For <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>
-output one would then do a reference <cite>the chapter :ref:`ch:eqs`</cite>
-as just <tt class="docutils literal"><span class="pre">[Ref2]_</span></tt>. That is, one would just use
-the <tt class="docutils literal"><span class="pre">cite</span></tt> text and not <tt class="docutils literal"><span class="pre">internal</span></tt> plus <tt class="docutils literal"><span class="pre">cite</span></tt>. This is enabled
-by writing the generalized reference with <tt class="docutils literal"><span class="pre">refch</span></tt> instead of
-<tt class="docutils literal"><span class="pre">ref</span></tt>:</p>
+if chapters are compiled individually. Here is an example of
+a reference to a chapter in a book:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>...as shown in Chapter ref{ch:model}.
+</pre></div>
+</div>
+<p>If the chapter with label <tt class="docutils literal"><span class="pre">ch:model</span></tt> is compiled separately, we would
+rather write</p>
+<div class="highlight-doconce"><div class="highlight"><pre>...as shown in cite{math_eqs_2020}.
+</pre></div>
+</div>
+<p>in printed output and perhaps</p>
+<div class="highlight-doconce"><div class="highlight"><pre>the document &quot;Mathematical Equations&quot;:
+<span class="s">&quot;http://some.net/doc/matheqs.html&quot;</span> cite{math_eqs_2020}.
+</pre></div>
+</div>
+<p>in electronic documents with hyperlinks. Such references to
+chapters or complete documents are much like the previously
+generalized references, but now written with <tt class="docutils literal"><span class="pre">refch</span></tt> instead
+of <tt class="docutils literal"><span class="pre">ref</span></tt>:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>refch[internal][cite][external]
+</pre></div>
+</div>
+<p>The only difference between <tt class="docutils literal"><span class="pre">refch</span></tt> and <tt class="docutils literal"><span class="pre">ref</span></tt> is that the former,
+for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output, just use the <tt class="docutils literal"><span class="pre">cite</span></tt> text
+and not <tt class="docutils literal"><span class="pre">internal</span></tt> if the labels <tt class="docutils literal"><span class="pre">internal</span></tt> are not found in
+the document. The following reference,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>...as shown in refch[Chapter ref{ch:eqs}][cite{eqs_doc_2008}][
 the document &quot;Some Equations&quot;: &quot;http://some.net/someeqs/&quot;].
 </pre></div>
 </div>
+<p>will be</p>
+<div class="highlight-doconce"><div class="highlight"><pre>...as shown in Chapter ref{ch:eqs}.
+</pre></div>
+</div>
+<p>if <tt class="docutils literal"><span class="pre">ch:eqs</span></tt> is a label in the present document. It becomes</p>
+<div class="highlight-doconce"><div class="highlight"><pre>...as shown in Chapter cite{eqs_doc_2008}.
+</pre></div>
+</div>
+<p>if <tt class="docutils literal"><span class="pre">ch:eqs</span></tt> is not found in the present document <em>and</em> the output
+format is <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>. In all other cases the result becomes</p>
+<div class="highlight-doconce"><div class="highlight"><pre>...as shown in
+the document &quot;Some Equations&quot;: &quot;http://some.net/someeqs/&quot;].
+</pre></div>
+</div>
+</div>
+<div class="section" id="tool-for-generating-generalizedd-references">
+<h4>Tool for Generating Generalizedd References<a class="headerlink" href="#tool-for-generating-generalizedd-references" title="Permalink to this headline">¶</a></h4>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span></tt> command will read all the labels in the
 external documents listed in the <tt class="docutils literal"><span class="pre">Externaldocuments:</span></tt> comment
-and use the publish file of the current document to automatically
-generate substitution commands that translates ordinary references
-to generalized references. For example, <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span> <span class="pre">file1</span></tt>
+and use the Publish database file of the current document
+(specified by <tt class="docutils literal"><span class="pre">BIBFILE:</span></tt>) to automatically
+generate substitution commands that translate ordinary LaTeX-style
+internal references
+to generalized references in DocOnce syntax.
+For example, <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span> <span class="pre">file1</span></tt>
 will find the reference</p>
 <div class="highlight-doconce"><div class="highlight"><pre>......as shown in Section ref{sec:eqs}.
 </pre></div>
 </div>
-<p>as a reference to an label <tt class="docutils literal"><span class="pre">sec:eqs</span></tt> defined in <tt class="docutils literal"><span class="pre">file2</span></tt>, grab
-the title of <tt class="docutils literal"><span class="pre">file2.do.txt</span></tt> and find the bibliographic data in
-the publish file and make a substitution command</p>
+<p>as a reference to a label <tt class="docutils literal"><span class="pre">sec:eqs</span></tt> defined in <tt class="docutils literal"><span class="pre">file2</span></tt>, grab
+the title of <tt class="docutils literal"><span class="pre">file2.do.txt</span></tt>, find the bibliographic data in
+the Publish file, and make a substitution command</p>
 <div class="highlight-doconce"><div class="highlight"><pre>doconce subst &quot;Section\s+ref{sec:eqs}&quot; &quot;...&quot; $files
 </pre></div>
 </div>
@@ -2857,7 +2908,8 @@ to a range of sections like</p>
 </pre></div>
 </div>
 <p class="last">The automatically generated generalized references should always
-be manually checked and edited.</p>
+be manually checked and edited!</p>
+</div>
 </div>
 <div class="section" id="a-worked-example">
 <h4>A Worked Example<a class="headerlink" href="#a-worked-example" title="Permalink to this headline">¶</a></h4>
@@ -2909,7 +2961,7 @@ cite{DocOnce:test}, DocOnce documents may include tables.
 <div>As explained in
 a <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
 the document <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing DocOnce</a>
-<a class="reference internal" href="#ref3" id="id12">[Ref3]</a>, DocOnce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref2" id="id12">[Ref2]</a>, DocOnce documents may include tables.</div></blockquote>
 <p>A complete &#8220;chapter&#8221; reference may look like</p>
 <div class="highlight-doconce"><div class="highlight"><pre>As explained in
 refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
@@ -2935,7 +2987,7 @@ The resulting rendered text in the current format becomes</p>
 <div>As explained in
 the document
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing DocOnce</a>
-<a class="reference internal" href="#ref3" id="id13">[Ref3]</a>, DocOnce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref2" id="id13">[Ref2]</a>, DocOnce documents may include tables.</div></blockquote>
 <p>Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 <tt class="docutils literal"><span class="pre">http://...</span></tt> must be used.</p>
@@ -2948,6 +3000,14 @@ to compile your document before running <tt class="docutils literal"><span class
 again since the command applies the compiled files to get information
 (<tt class="docutils literal"><span class="pre">tmp_preprocess_*</span></tt> or <tt class="docutils literal"><span class="pre">tmp_mako_*</span></tt>) if you use any of the Preprocess
 or Mako preprocessors.</p>
+</div>
+<div class="admonition-splitting-documents-into-smaller-parts-is-easy admonition">
+<p class="first admonition-title">Splitting documents into smaller parts is easy</p>
+<p class="last">The generalized references and the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span></tt> are great
+tools for splitting an existing document into smaller parts, say one
+chapter into two or one book into two books. Such a split will normally
+create a lot of difficulties with cross-document referencing (unless
+you just write directly in LaTeX with the <tt class="docutils literal"><span class="pre">xr</span></tt> packcage).</p>
 </div>
 </div>
 </div>
@@ -3931,22 +3991,22 @@ the output format is <tt class="docutils literal"><span class="pre">latex</span>
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <tt class="docutils literal"><span class="pre">key</span></tt>.
-Here is an example: <a class="reference internal" href="#ref4" id="id15">[Ref4]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref5" id="id16">[Ref5]</a> gave
+Here is an example: <a class="reference internal" href="#ref3" id="id15">[Ref3]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref4" id="id16">[Ref4]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref6" id="id17">[Ref6]</a>.
-The book chapter <a class="reference internal" href="#ref7" id="id18">[Ref7]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref5" id="id17">[Ref5]</a>.
+The book chapter <a class="reference internal" href="#ref6" id="id18">[Ref6]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref8" id="id19">[Ref8]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref7" id="id19">[Ref7]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref4" id="id20">[Ref4]</a> <a class="reference internal" href="#ref7" id="id21">[Ref7]</a>.</p>
+<a class="reference internal" href="#ref3" id="id20">[Ref3]</a> <a class="reference internal" href="#ref6" id="id21">[Ref6]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref5" id="id22">[Ref5]</a> (Section 2)
-or <a class="reference internal" href="#ref5" id="id23">[Ref5]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref4" id="id22">[Ref4]</a> (Section 2)
+or <a class="reference internal" href="#ref4" id="id23">[Ref4]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <tt class="docutils literal"><span class="pre">cite</span></tt> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -5360,10 +5420,15 @@ be specified: <tt class="docutils literal"><span class="pre">--ccs=file1.css,fil
 </div>
 <div class="section" id="html-templates">
 <span id="index-131"></span><h4>HTML templates<a class="headerlink" href="#html-templates" title="Permalink to this headline">¶</a></h4>
-<p>Templates are HTML files with &#8220;slots&#8221; <tt class="docutils literal"><span class="pre">%(main)s</span></tt> for the main body
+<p>Templates are HTML files with ready-made headers, footers, and style
+specifications where plain HTML text can be inserted in &#8220;slots&#8221; in the
+template file. Typically, there is a slot <tt class="docutils literal"><span class="pre">%(main)s</span></tt> for the main body
 of text, <tt class="docutils literal"><span class="pre">%(title)s</span></tt> for the title, and <tt class="docutils literal"><span class="pre">%(date)s</span></tt> for the date.
-DocOnce comes with a few templates. The usage of templates is
-described in a &#8220;separate document&#8221;: &#8220;&#8221;. That document describes how you your DocOnce-generated
+Templates are designed beforehand and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> puts
+the translated HTML text into the template to form the complete HTML
+document.</p>
+<p>DocOnce comes with a few ready-made HTML templates. The usage of templates is
+described in a <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/design/">separate document</a>. That document describes how you your DocOnce-generated
 HTML file can have any specified layout.</p>
 <p>The HTML file can be embedded in a template with your own tailored
 design, see a <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tech_wrapper.htl">tutorial</a> on this topic. The template file must contain
@@ -5891,10 +5956,15 @@ plain verbatim,</p>
 </pre></div>
 </div>
 <p>or the Listings-based style with yellow background color</p>
-<div class="highlight-text"><div class="highlight"><pre>--latex_code_style=lst-yellow2_fb
+<div class="highlight-text"><div class="highlight"><pre>--latex_code_style=lst-yellow2
 </pre></div>
 </div>
-<p>It is easy to specify different styles for different code environments.</p>
+<p>It is easy to specify different styles for different code environments, say
+blue background with plain verbatim style for code but a special terminal
+window for the <tt class="docutils literal"><span class="pre">sys</span></tt> environment:</p>
+<div class="highlight-text"><div class="highlight"><pre>&quot;--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+</div>
 <p>During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <tt class="docutils literal"><span class="pre">--latex_line_numbers</span> <span class="pre">--latex_double_spacing</span> <span class="pre">--latex_todonotes</span> <span class="pre">--latex_labels_in_margin</span></tt>. One may also (automatically) edit the
 <tt class="docutils literal"><span class="pre">final</span></tt> argument in the <tt class="docutils literal"><span class="pre">documentclass</span></tt> heading to <tt class="docutils literal"><span class="pre">draft</span></tt> as this will
@@ -6446,7 +6516,8 @@ standard LaTeX book, a Sphinx web document, or a collection of HTML files.</p>
 <p>The Googlecode wiki document, <tt class="docutils literal"><span class="pre">mydoc.gwiki</span></tt>, is most conveniently stored
 in a directory which is a clone of the wiki part of the Googlecode project.
 This is far easier than copying and pasting the entire text into the
-wiki editor in a web browser.</p>
+wiki editor in a web browser. Note that Google decided to close down its
+Googlecode service in 2015.</p>
 <p>When the DocOnce file contains figures, each figure filename must in
 the <tt class="docutils literal"><span class="pre">.gwiki</span></tt> file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
@@ -6675,8 +6746,7 @@ avoid white background in code blocks inside colorful admons.
 
 --html_toc_depth=...
 
-No of levels in the table of contents in HTML output for
-Bootstrap-based styles. Default: 2.
+No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections).
 
 
 --html_toc_indent=...
@@ -6823,6 +6893,11 @@ Set device to paper, screen, or other (paper impacts LaTeX output).
 Switch latex environments such that all equations get a number.
 
 
+--denumber_all_equations
+
+Switch latex environments such no equations get a number (useful for removing equation labels in slides). Error messages are issued about references to numbered equations in the text.
+
+
 --latex_style=...
 
 LaTeX style package used for the document.
@@ -6905,6 +6980,13 @@ std: traditional LaTeX layout,
 titlepage: separate page,
 doconce_heading (default): authors with &quot;footnotes&quot; for institutions,
 beamer: layout for beamer slides.
+
+
+--latex_title_reference=...
+
+latex code placed in a footnote for the title,
+typically used for acknowledging publisher/source of original
+version of the document.
 
 
 --latex_encoding=...
@@ -7787,61 +7869,54 @@ pp. 14-21,
 <table class="docutils citation" frame="void" id="ref2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref2]</td><td><strong>T. H. E. Author</strong>. Some Equations,
-2008.</td></tr>
+<tr><td class="label">[Ref2]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>H. P. Langtangen</strong>. A Document for Testing DocOnce,
+<a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> <strong>H. P. Langtangen</strong>. A Document for Testing DocOnce,
-<a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="ref4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref5" rules="none">
+<table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref5]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref6" rules="none">
+<table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[Ref6]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id17">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
 1994.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref7" rules="none">
+<table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref7]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
 2003.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="ref8" rules="none">
+<table class="docutils citation" frame="void" id="ref7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[Ref8]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id19">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>
@@ -7909,6 +7984,9 @@ Springer,
 <li><a class="reference internal" href="#inline-mathematics">Inline Mathematics</a></li>
 <li><a class="reference internal" href="#cross-referencing">Cross-Referencing</a></li>
 <li><a class="reference internal" href="#generalized-cross-referencing">Generalized Cross-Referencing</a><ul>
+<li><a class="reference internal" href="#generalized-references">Generalized References</a></li>
+<li><a class="reference internal" href="#generalized-references-to-chapters">Generalized References to Chapters</a></li>
+<li><a class="reference internal" href="#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
 <li><a class="reference internal" href="#a-worked-example">A Worked Example</a></li>
 </ul>
 </li>

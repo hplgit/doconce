@@ -164,6 +164,8 @@ top+bottom: rule at top and bottom"""),
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--number_all_equations',
      """Switch latex environments such that all equations get a number."""),
+    ('--denumber_all_equations',
+     """Switch latex environments such no equations get a number (useful for removing equation labels in slides). Error messages are issued about references to numbered equations in the text."""),
     ('--latex_style=',
      """LaTeX style package used for the document.
 std: standard LaTeX article or book style,
@@ -4781,10 +4783,12 @@ def slides_beamer():
 
 def _usage_slides_markdown():
     print """
-Usage: doconce slides_markdown mydoc.html slide_type --slide_theme=dark
+Usage: doconce slides_markdown mydoc slide_type --slide_theme=dark
 
 slide_type: remark (the only implemented so far)
---slide_theme: dark or light (default)
+--slide_theme: light (default) or dark
+
+Output: mydoc.html
 """
 
 def slides_markdown():
@@ -5620,9 +5624,9 @@ def teamod():
     os.chdir(name)
     os.mkdir('fig-%s' % name)
     os.mkdir('src-%s' % name)
-    os.mkdir('lec-%s' % name)
-    f = open('wrap_%s.do.txt' % name, 'w')
-    f.write("""# Wrapper file for teaching module "%s"
+    os.mkdir('slides-%s' % name)
+    f = open('main_%s.do.txt' % name, 'w')
+    f.write("""# Main file for teaching module "%s"
 
 TITLE: Here Goes The Title ...
 AUTHOR: name1 email:..@.. at institution1, institution2, ...
@@ -8779,18 +8783,16 @@ def main():
     doconce2format(dofile, format, options=common_options + '')
 
 """)
-    # Are there lectures/slides documents in addition?
-    dofile_lectures = glob.glob('lec*.do.txt')
-    for dofile in dofile_lectures:
+    # Are there slides documents in addition?
+    dofile_slides = glob.glob('slides_*.do.txt')
+    for dofile in dofile_slides:
         # Is the TOC surrounded by a WITH_TOC test directive?
-        lec_dofile = open(dofile, 'r')
-        text = lec_dofile.read()
-        lec_dofile.close()
+        f = open(dofile, 'r'); text = .read(); f.close()
         with_toc = ' -DWITH_TOC' if 'WITH_TOC' in text else ''
 
         dofile = dofile[:-7]
         make.write("""
-    # Lecture/slide file %(dofile)s
+    # Slides file %(dofile)s
     dofile = "%(dofile)s"
 """ % vars())
         for format in formats:

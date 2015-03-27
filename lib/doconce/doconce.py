@@ -365,6 +365,15 @@ def syntax_check(filestr, format):
             print filestr[m.start()-100:m.start()+len(m.group())+100]
             _abort()
 
+    # Generalized references with whitespace between ] and [
+    pattern = r'(ref(ch)?\[[^\]]*?\]\s+\[[^\]]*?\]\s+\[[^\]]*?\])'
+    refgens = [refgen for refgen, dummy in re.findall(pattern, filestr)]
+    if refgens:
+        print '*** error: found generalized references ref[][][] with spaces'
+        print '    between closing (]) and opening ([) brackets, and that'
+        print '    is not legal syntax.\n'
+        print '\n\n'.join(refgens)
+        _abort()
     # Linebreaks must have space before them if verbatim
     pattern = r'`<linebreak>[^`]'
     m = re.search(pattern, filestr)

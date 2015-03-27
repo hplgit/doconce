@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 13, 2015
+:Date: Mar 27, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -27,7 +27,7 @@ DocOnce is a very simple and minimally tagged markup language that
 looks like ordinary ASCII text, much like what you would use in an
 email, but the text can be transformed to numerous other formats,
 including HTML, Sphinx, LaTeX, PDF, reStructuredText (reST), Markdown,
-MediaWiki, Google wiki, Creole wiki, blogger.com, wordpress.com,
+MediaWiki, Creole wiki, blogger.com, wordpress.com,
 Epytext, and also plain (untagged) text for email.
 From reST or Markdown you can go to XML, OpenOffice, MS
 Word, HTML, LaTeX, PDF, DocBook, GNU Texinfo, and more.
@@ -2778,22 +2778,22 @@ Typesetting of footnotes employs a common email or Extended Markdown syntax:
 .. code-block:: doconce
 
         Footnotes are typeset according to the output format[^typesetting].
-        The syntax is optional spaces, opening bracket, hat,
-        a name without spaces [^remedy-for-name-with-spaces], and closing
-        bracket. The logical name of the footnote is not used in LaTeX,
-        HTML, reStructuredText, or Sphinx, because these languages employ
-        numbered footnotes. Other formats employ the logical name.
+        The syntax is optional spaces, opening bracket, hat, a footnote name
+        without spaces[^remedy-for-name-with-spaces], and closing bracket. The
+        logical name of the footnote is not used in LaTeX, HTML,
+        reStructuredText, or Sphinx, because these languages employ numbered
+        footnotes. Other formats employ the logical name.
         
-          [^typesetting]: Typesetting of the footnote depends on the format.
-        Plain text does nothing, LaTeX removes the
-        definition and inserts the footnote as part of the LaTeX text.
-        reStructuredText and Sphinx employ a similar type of typesetting
-        as Extended Markdown and DocOnce, and in HTML we keep the same
-        syntax, just displayed properly in HTML.
+        [^typesetting]: Typesetting of the footnote depends on the format.
+        Plain text does nothing, LaTeX removes the definition and inserts the
+        footnote as part of the LaTeX text.  reStructuredText and Sphinx
+        employ a similar type of typesetting as Extended Markdown and DocOnce,
+        and in HTML we keep the same syntax, just displayed properly in HTML.
         
         Footnotes are preferably defined after the paragraph they are used.
         The definition is the footnote syntax (some optional space, bracket,
         hat, name, bracket) followed by colon and a text.
+        A new paragraph marks the end of a footnote.
         
         [^remedy-for-name-with-spaces]: Just put in dashes or underscores in
         case of spaces.
@@ -2801,22 +2801,22 @@ Typesetting of footnotes employs a common email or Extended Markdown syntax:
 The text above looks as follows.
 
 Footnotes are typeset according to the output format [#typesetting]_.
-The syntax is optional spaces, opening bracket, hat,
-a name without spaces [#remedy-for-name-with-spaces]_, and closing
-bracket. The logical name of the footnote is not used in LaTeX,
-HTML, reStructuredText, or Sphinx, because these languages employ
-numbered footnotes. Other formats employ the logical name.
+The syntax is optional spaces, opening bracket, hat, a footnote name
+without spaces [#remedy-for-name-with-spaces]_, and closing bracket. The
+logical name of the footnote is not used in LaTeX, HTML,
+reStructuredText, or Sphinx, because these languages employ numbered
+footnotes. Other formats employ the logical name.
 
 .. [#typesetting] Typesetting of the footnote depends on the format.
-   Plain text does nothing, LaTeX removes the
-   definition and inserts the footnote as part of the LaTeX text.
-   reStructuredText and Sphinx employ a similar type of typesetting
-   as Extended Markdown and DocOnce, and in HTML we keep the same
-   syntax, just displayed properly in HTML.
+   Plain text does nothing, LaTeX removes the definition and inserts the
+   footnote as part of the LaTeX text.  reStructuredText and Sphinx
+   employ a similar type of typesetting as Extended Markdown and DocOnce,
+   and in HTML we keep the same syntax, just displayed properly in HTML.
 
 Footnotes are preferably defined after the paragraph they are used.
 The definition is the footnote syntax (some optional space, bracket,
 hat, name, bracket) followed by colon and a text.
+A new paragraph marks the end of a footnote.
 
 .. [#remedy-for-name-with-spaces] Just put in dashes or underscores in
    case of spaces.
@@ -3056,8 +3056,8 @@ replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 ``rst`` and ``sphinx`` formats, the end effect is the same, but
 the "label" and "ref" commands are first translated to the proper
-reST commands by ``doconce format``. In the HTML and (Google
-Code) wiki formats, labels become anchors and references become links,
+reST commands by ``doconce format``. In the HTML and wiki formats,
+labels become anchors and references become links,
 and with LaTeX "label" and "ref" are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
@@ -3102,7 +3102,7 @@ have text like
 
         ...as shown in Section ref{sec:eqs}.
 
-with " defined in another file ``file2.do.txt``.
+with the label ``sec:eqs`` defined in another file ``file2.do.txt``.
 If ``file1.do.txt`` and ``file2.do.txt`` are combined to a single
 document, the reference is treated correctly, but if ``file1.do.txt``
 is compiled as a single document, the label ``sec:eqs`` becomes
@@ -3113,11 +3113,12 @@ undefined. Then one would instead write
         ...as shown in the document "Mathematical Equations":
         "http://some.net/doc/matheqs.html" cite{math_eqs_2020}.
 
-However, LaTeX has functionality for referring to labels
-in external documents: these work fine when the ``xr`` package
-is used and the external documents are listed as
-``externaldocument{name}``. In that case, we would write
-the above reference as
+LaTeX has functionality for referring to labels
+in external documents. One must use the ``xr`` package
+and list external documents with a command
+``\externaldocument{name}`` such that LaTeX can extract label
+information from the ``name.aux`` file. We are then able to
+write the above reference as
 
 .. code-block:: doconce
 
@@ -3125,23 +3126,30 @@ the above reference as
         ...
         ...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
 
-To treat all these cases simultanesouly, DocOnce
-features *generalized references* which allows
-a reference to have different formulations, depending on whether
-the label is present in the document or is present in an
-external document.
+and get output like "...as shown in Section 3.4 in [12]."
+
+Generalized References
+~~~~~~~~~~~~~~~~~~~~~~
+
+DocOnce mimics a generalization of the LaTeX functionality in the
+``xr`` package such that one can refer to external documents in
+other formats than LaTeX (HTML, Sphinx, IPython notebooks, wikis, etc.).
+This feature is called a *generalized reference* and involves
+a reference with *three* values.
 The syntax of generalized references reads
 
 .. code-block:: doconce
 
         ref[internal][cite][external]
 
-If all `:ref:`label`` references in the text ``internal`` are
-to labels defined in the DocOnce document, the
+If all references in the text ``internal`` are
+to labels defined in the present DocOnce document, the
 generalized reference becomes the text ``internal``.
-If one or more labels are not present in the document and
-``latex`` or ``pdflatex`` is output format, the generalized reference becomes the
-text ``internal`` plus ``cite``, while for all other formats the
+If one or more references in ``internal`` are not labels
+present in the document and
+``latex`` or ``pdflatex`` is the output format,
+the generalized reference becomes the
+text ``internal`` followed by ``cite``, while for all other formats the
 text in ``external`` is used.
 
 The example above can now be written as the generalized reference
@@ -3152,14 +3160,16 @@ The example above can now be written as the generalized reference
         the document "Mathematical Equations":
         "http://some.net/doc/matheqs.html" cite{math_eqs_2020}].
 
-When `` is found in the current DocOnce document,
-the generalized reference becomes
+(Note that there must be no spaces between closing and opening brackets: ``][``.)
+When " is found in the current DocOnce document,
+this generalized reference becomes
 
 .. code-block:: doconce
 
         Section ref{sec:eqs}
 
-If not, and ``latex`` or ``pdflatex`` is output, the reference becomes
+If not, and ``latex`` or ``pdflatex`` is the output format,
+the reference becomes
 
 .. code-block:: doconce
 
@@ -3188,37 +3198,94 @@ Several external documents can be listed with comma as delimiter:
 
 on *a single line*. The ``Externaldocuments`` comment leads to use
 of the ``xr`` package and insertion of ``\externaldocument{file2}``
-in the LaTeX output file. It is a good habit to place
+in the ``.tex`` output file. It is a good habit to place
 the ``Externaldocument`` comment after the title, author, and date.
+
+Generalized References to Chapters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Very often a reference to a chapter in a book becomes just
 a reference to a complete document, not a specific section,
-if chapters are compiled individually. For ``latex`` and ``pdflatex``
-output one would then do a reference `the chapter :ref:`ch:eqs``
-as just ``[Ref2]_``. That is, one would just use
-the ``cite`` text and not ``internal`` plus ``cite``. This is enabled
-by writing the generalized reference with ``refch`` instead of
-``ref``:
+if chapters are compiled individually. Here is an example of
+a reference to a chapter in a book:
+
+.. code-block:: doconce
+
+        ...as shown in Chapter ref{ch:model}.
+
+If the chapter with label ``ch:model`` is compiled separately, we would
+rather write
+
+.. code-block:: doconce
+
+        ...as shown in cite{math_eqs_2020}.
+
+in printed output and perhaps
+
+.. code-block:: doconce
+
+        the document "Mathematical Equations":
+        "http://some.net/doc/matheqs.html" cite{math_eqs_2020}.
+
+in electronic documents with hyperlinks. Such references to
+chapters or complete documents are much like the previously
+generalized references, but now written with ``refch`` instead
+of ``ref``:
+
+.. code-block:: doconce
+
+        refch[internal][cite][external]
+
+The only difference between ``refch`` and ``ref`` is that the former,
+for ``latex`` and ``pdflatex`` output, just use the ``cite`` text
+and not ``internal`` if the labels ``internal`` are not found in
+the document. The following reference,
 
 .. code-block:: doconce
 
         ...as shown in refch[Chapter ref{ch:eqs}][cite{eqs_doc_2008}][
         the document "Some Equations": "http://some.net/someeqs/"].
 
+will be
+
+.. code-block:: doconce
+
+        ...as shown in Chapter ref{ch:eqs}.
+
+if ``ch:eqs`` is a label in the present document. It becomes
+
+.. code-block:: doconce
+
+        ...as shown in Chapter cite{eqs_doc_2008}.
+
+if ``ch:eqs`` is not found in the present document *and* the output
+format is ``latex`` or ``pdflatex``. In all other cases the result becomes
+
+.. code-block:: doconce
+
+        ...as shown in
+        the document "Some Equations": "http://some.net/someeqs/"].
+
+Tool for Generating Generalizedd References
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The ``doconce ref_external`` command will read all the labels in the
 external documents listed in the ``Externaldocuments:`` comment
-and use the publish file of the current document to automatically
-generate substitution commands that translates ordinary references
-to generalized references. For example, ``doconce ref_external file1``
+and use the Publish database file of the current document
+(specified by ``BIBFILE:``) to automatically
+generate substitution commands that translate ordinary LaTeX-style
+internal references
+to generalized references in DocOnce syntax.
+For example, ``doconce ref_external file1``
 will find the reference
 
 .. code-block:: doconce
 
         ......as shown in Section ref{sec:eqs}.
 
-as a reference to an label ``sec:eqs`` defined in ``file2``, grab
-the title of ``file2.do.txt`` and find the bibliographic data in
-the publish file and make a substitution command
+as a reference to a label ``sec:eqs`` defined in ``file2``, grab
+the title of ``file2.do.txt``, find the bibliographic data in
+the Publish file, and make a substitution command
 
 .. code-block:: doconce
 
@@ -3279,7 +3346,7 @@ a book that exist as stand-alone documents.
            Sections ref{mydoc:sec1}-ref{mydoc:sec2}
    
    The automatically generated generalized references should always
-   be manually checked and edited.
+   be manually checked and edited!
 
 
 
@@ -3348,7 +3415,7 @@ The rendered text in the current format becomes
     As explained in
     a `section <http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex>`__ in
     the document `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
-    [Ref3]_, DocOnce documents may include tables.
+    [Ref2]_, DocOnce documents may include tables.
 
 
 
@@ -3383,7 +3450,7 @@ The resulting rendered text in the current format becomes
     As explained in
     the document
     `A Document for Testing DocOnce <http://hplgit.github.io/doconce/test/demo_testdoc.html>`__
-    [Ref3]_, DocOnce documents may include tables.
+    [Ref2]_, DocOnce documents may include tables.
 
 
 
@@ -3401,6 +3468,18 @@ have links to local files, so a complete URL on the form
    again since the command applies the compiled files to get information
    (``tmp_preprocess_*`` or ``tmp_mako_*``) if you use any of the Preprocess
    or Mako preprocessors.
+
+
+
+
+
+.. admonition:: Splitting documents into smaller parts is easy
+
+   The generalized references and the ``doconce ref_external`` are great
+   tools for splitting an existing document into smaller parts, say one
+   chapter into two or one book into two books. Such a split will normally
+   create a lot of difficulties with cross-document referencing (unless
+   you just write directly in LaTeX with the ``xr`` packcage).
 
 
 
@@ -4660,16 +4739,16 @@ We use the command
         cite{key}
 
 to refer to a publication with bibliographic key ``key``.
-Here is an example: [Ref4]_ discussed propagation of
-large destructive water waves, [Ref5]_ gave
+Here is an example: [Ref3]_ discussed propagation of
+large destructive water waves, [Ref4]_ gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in [Ref6]_.
-The book chapter [Ref7]_ contains information on
+random vibrations was investigated in [Ref5]_.
+The book chapter [Ref6]_ contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is [Ref8]_ about a big FORTRAN package.
+reference is [Ref7]_ about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-[Ref4]_ [Ref7]_.
+[Ref3]_ [Ref6]_.
 
 A LaTeX-style cite command with additional detailed reference is also possible,
 
@@ -4677,8 +4756,8 @@ A LaTeX-style cite command with additional detailed reference is also possible,
 
         cite[details]{key}
 
-for example as in [Ref5]_ (Section 2)
-or [Ref5]_ (Equation (4.2)).
+for example as in [Ref4]_ (Section 2)
+or [Ref4]_ (Equation (4.2)).
 
 In LaTeX, the ``cite`` command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
@@ -6337,10 +6416,16 @@ be specified: ``--ccs=file1.css,file2.css,file3.css``.
 HTML templates
 ~~~~~~~~~~~~~~
 
-Templates are HTML files with "slots" ``%(main)s`` for the main body
+Templates are HTML files with ready-made headers, footers, and style
+specifications where plain HTML text can be inserted in "slots" in the
+template file. Typically, there is a slot ``%(main)s`` for the main body
 of text, ``%(title)s`` for the title, and ``%(date)s`` for the date.
-DocOnce comes with a few templates. The usage of templates is
-described in a "separate document": "". That document describes how you your DocOnce-generated
+Templates are designed beforehand and ``doconce format`` puts
+the translated HTML text into the template to form the complete HTML
+document.
+
+DocOnce comes with a few ready-made HTML templates. The usage of templates is
+described in a `separate document <http://hplgit.github.io/doconce/doc/pub/design/>`__. That document describes how you your DocOnce-generated
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored
@@ -7033,9 +7118,15 @@ or the Listings-based style with yellow background color
 
 .. code-block:: text
 
-        --latex_code_style=lst-yellow2_fb
+        --latex_code_style=lst-yellow2
 
-It is easy to specify different styles for different code environments.
+It is easy to specify different styles for different code environments, say
+blue background with plain verbatim style for code but a special terminal
+window for the ``sys`` environment:
+
+.. code-block:: text
+
+        "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
@@ -7790,7 +7881,8 @@ standard LaTeX book, a Sphinx web document, or a collection of HTML files.
 The Googlecode wiki document, ``mydoc.gwiki``, is most conveniently stored
 in a directory which is a clone of the wiki part of the Googlecode project.
 This is far easier than copying and pasting the entire text into the
-wiki editor in a web browser.
+wiki editor in a web browser. Note that Google decided to close down its
+Googlecode service in 2015.
 
 When the DocOnce file contains figures, each figure filename must in
 the ``.gwiki`` file be replaced by a URL where the figure is
@@ -8043,8 +8135,7 @@ here for convenience.
         
         --html_toc_depth=...
         
-        No of levels in the table of contents in HTML output for
-        Bootstrap-based styles. Default: 2.
+        No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections).
         
         
         --html_toc_indent=...
@@ -8191,6 +8282,11 @@ here for convenience.
         Switch latex environments such that all equations get a number.
         
         
+        --denumber_all_equations
+        
+        Switch latex environments such no equations get a number (useful for removing equation labels in slides). Error messages are issued about references to numbered equations in the text.
+        
+        
         --latex_style=...
         
         LaTeX style package used for the document.
@@ -8273,6 +8369,13 @@ here for convenience.
         titlepage: separate page,
         doconce_heading (default): authors with "footnotes" for institutions,
         beamer: layout for beamer slides.
+        
+        
+        --latex_title_reference=...
+        
+        latex code placed in a footnote for the title,
+        typically used for acknowledging publisher/source of original
+        version of the document.
         
         
         --latex_encoding=...
@@ -9224,42 +9327,38 @@ References
    1985.
 
 .. [Ref2]
-   **T. H. E. Author**. Some Equations,
-   2008.
-
-.. [Ref3]
    **H. P. Langtangen**. A Document for Testing DocOnce,
    `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_.
 
-.. [Ref4]
+.. [Ref3]
    **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
    *International Journal of Applied Mechanics and Engineering*,
    7(1),
    pp. 187-204,
    2002.
 
-.. [Ref5]
+.. [Ref4]
    **H. P. Langtangen, K.-A. Mardal and R. Winther**. Numerical Methods for Incompressible Viscous Flow,
    *Advances in Water Resources*,
    25,
    pp. 1125-1146,
    2002.
 
-.. [Ref6]
+.. [Ref5]
    **H. P. Langtangen**. Numerical Solution of First Passage Problems in Random Vibrations,
    *SIAM Journal of Scientific and Statistical Computing*,
    15,
    pp. 997-996,
    1994.
 
-.. [Ref7]
+.. [Ref6]
    **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. Software Tools for Multigrid Methods,
    Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
    edited by **H. P. Langtangen and A. Tveito**,
    Springer,
    2003.
 
-.. [Ref8]
+.. [Ref7]
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
    1989.
