@@ -365,6 +365,15 @@ def syntax_check(filestr, format):
             print filestr[m.start()-100:m.start()+len(m.group())+100]
             _abort()
 
+    # Generalized references with whitespace between ] and [
+    pattern = r'(ref(ch)?\[[^\]]*?\]\s+\[[^\]]*?\]\s+\[[^\]]*?\])'
+    refgens = [refgen for refgen, dummy in re.findall(pattern, filestr)]
+    if refgens:
+        print '*** error: found generalized references ref[][][] with spaces'
+        print '    between closing (]) and opening ([) brackets, and that'
+        print '    is not legal syntax.\n'
+        print '\n\n'.join(refgens)
+        _abort()
     # Linebreaks must have space before them if verbatim
     pattern = r'`<linebreak>[^`]'
     m = re.search(pattern, filestr)
@@ -2323,7 +2332,7 @@ def handle_index_and_bib(filestr, format):
     #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
     # Footnote pattern has a word prior to the footnote [^name]
     # or math, inline code, link
-    pattern_footnote = r'(?<=(\w|[$`").,;?]))(?P<footnote> *\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
+    pattern_footnote = r'(?<=(\w|[$`").,;?]))(?P<footnote>(?P<space> *)\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
     # (Note: cannot have footnote at beginning of line, because look behind
     # does not tolerate ^ in (\w|[$`")]|^)
     # Keep footnotes for pandoc, plain text

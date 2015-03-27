@@ -453,6 +453,14 @@ def remove_code_and_tex(filestr, format):
                  ('\\begin{align*}', '\\begin{align}'),
                  ('\\end{align*}', '\\end{align}'),
                  ]
+    if option('denumber_all_equations'):
+        # Remove equation numbers and also labels in those equations
+        subst = [('\\begin{equation}', '\\begin{equation*}'),
+                 ('\\end{equation}', '\\end{equation*}'),
+                 ('\\begin{align}', '\\begin{align*}'),
+                 ('\\end{align}', '\\end{align*}'),
+                 ]
+        removed_labels = []
         for i in range(len(tex_blocks)):
             found = False
             for construction, dummy in subst:
@@ -462,6 +470,20 @@ def remove_code_and_tex(filestr, format):
             if found:
                 for from_, to_ in subst:
                     tex_blocks[i] = tex_blocks[i].replace(from_, to_)
+                removed_labels += re.findall(r'label\{(.+?)\}', tex_blocks[i])
+                tex_blocks[i] = re.sub(r'label\{.+?\}\n', '', tex_blocks[i])
+                tex_blocks[i] = re.sub(r'label\{.+?\}', '', tex_blocks[i])
+        all_refs = re.findall(r'ref\{(.+?)\}', filestr)
+        problematic_refs = []
+        for ref in all_refs:
+            if ref in removed_labels:
+                problematic_refs.append(ref)
+        if problematic_refs:
+            print '*** error: removed all equation labels from the DocOnce source,'
+            print '    but there are still references (ref{...}) to equation labels:'
+            print '\n   ', ', '.join(problematic_refs)
+            print '\n    remove all these references!'
+            _abort()
 
     # Give error if blocks contain !bt
     for i in range(len(tex_blocks)):
@@ -857,6 +879,8 @@ def has_custom_pygments_lexer(name):
             print '*** warning: !bc do used for DocOnce code, but'
             print '    not supported for syntax highlighting!'
             print '    install:'
+            print '    sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce'
+            print '\n    or manually:'
             print '    git clone https://github.com/hplgit/pygments-doconce.git; cd pygments-doconce; sudo python setup.py install'
             print e
             return False

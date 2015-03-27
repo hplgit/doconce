@@ -211,6 +211,18 @@ The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
 
 
+===== Inline verbatim code or boldface is not detected when used with a footnote =====
+
+There must be a space between the verbatim code (or boldface words)
+and the footnote bracket:
+
+!bc do
+The construction `def f(x,y):`[^whitespace] is standard.
+
+[^whitespace]: Well, a space before the `y` argument, as in `f(x, y)`,
+would be the standard.
+!ec
+
 ===== Inline verbatim code is not detected =====
 
 Make sure there is a space before the first back-tick.

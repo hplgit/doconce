@@ -397,13 +397,14 @@ the previous blocks with line breaks.
 
 === Footnotes ===
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
- * list items
- * even with math $\nabla^2u$ [^math1]
- * and code `h[i] += 1` [^code],
- * and "links": "http://google.com" [^google-search]
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ * even with math $\nabla^2u$[^math1]
+ * and code `h[i] += 1`[^code]
+   (*must* have space between inline code and footnote!)
+ * and "links": "http://google.com"[^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -2595,15 +2596,16 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
- \item list items
+ \item list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code `h[i] += 1`\footnote{One-line footnote.},
+ \item and code \Verb!h[i] += 1!\footnote{One-line footnote.}
+   (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
 \end{itemize}
@@ -4860,15 +4862,16 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
- \item list items
+ \item list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code `h[i] += 1`\footnote{One--line footnote.},
+ \item and code \Verb!h[i] += 1!\footnote{One--line footnote.}
+   (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\texttt{http://google.com}}\footnote{\href{{google.com}}{\nolinkurl{google.com}\footnote{\texttt{google.com}}} is perhaps the most famous web site today.}
 \end{itemize}
@@ -7134,15 +7137,16 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
- \item list items
+ \item list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code `h[i] += 1`\footnote{One--line footnote.},
+ \item and code \Verb!h[i] += 1!\footnote{One--line footnote.}
+   (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\texttt{http://google.com}}\footnote{\href{{google.com}}{\nolinkurl{google.com}\footnote{\texttt{google.com}}} is perhaps the most famous web site today.}
 \end{itemize}
@@ -9173,6 +9177,7 @@ C     END1
       return
 \end{Verbatim}
 \end{cod}
+\noindent
 and then just the subroutine,
 \begin{cod}{cbg_gray}\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 
@@ -9186,6 +9191,7 @@ and then just the subroutine,
       return
 \end{Verbatim}
 \end{cod}
+\noindent
 and finally the complete file with a plain text verbatim environment
 (\Verb!envir=ccq!):
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
@@ -9205,6 +9211,7 @@ C     END1
       call test()
       return
 \end{lstlisting}\end{cod}
+\noindent
 
 Testing other code environments. First Python:
 
@@ -9214,12 +9221,14 @@ def f(x):
     return x+1
 !ec
 \end{lstlisting}\end{cod}
+\noindent
 which gets rendered as
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def f(x):
     return x+1
 \end{lstlisting}\end{cod}
+\noindent
 
 Test paragraph and subsubsection headings before
 before code.
@@ -9230,12 +9239,14 @@ before code.
 import sys
 sys.path.insert(0, os.pardir)
 \end{lstlisting}\end{cod}
+\noindent
 
 \paragraph{Subsubsection heading before code.}
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def h(z):
     return z+1
 \end{lstlisting}\end{cod}
+\noindent
 
 Now a complete program to be shown via Python Online Tutorial:
 
@@ -9280,6 +9291,7 @@ Then Cython:
 cpdef f(double x):
     return x + 1
 \end{lstlisting}\end{cod}
+\noindent
 
 Standard Python shell sessions:
 
@@ -9289,6 +9301,7 @@ Standard Python shell sessions:
 >>> x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 \end{lstlisting}\end{cod}
+\noindent
 
 IPython sessions:
 
@@ -9300,6 +9313,7 @@ In [2]: # Some comment
 In [3]: x = sin(1.2); print 'Value:', x
 Value: 0.932039085967
 \end{lstlisting}\end{cod}
+\noindent
 
 
 % This one tests a + sign before a code environment
@@ -9327,6 +9341,7 @@ And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[h
       end
 !ec
 \end{lstlisting}\end{cod}
+\noindent
 which then is typeset as
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
@@ -9337,6 +9352,7 @@ which then is typeset as
       return
       end
 \end{lstlisting}\end{cod}
+\noindent
 
 HTML:
 
@@ -9347,6 +9363,7 @@ HTML:
 <!-- comment -->
 </table>
 \end{lstlisting}\end{cod}
+\noindent
 
 But inline HTML code is also important, like text that starts with
 \Verb!<a href="! (which can destroy the following text if not properly
@@ -9373,6 +9390,7 @@ Heading
 Some text.
 !ec
 \end{lstlisting}\end{cod}
+\noindent
 results in
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
@@ -9382,6 +9400,7 @@ Heading
 
 Some text.
 \end{lstlisting}\end{cod}
+\noindent
 
 % Here goes hidden code.
 % Python can be treated by some formats, Fortran is always out.
@@ -9429,6 +9448,7 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 
 __Paragraph heading.__ Paragraphs may have headings.
 \end{lstlisting}\end{cod}
+\noindent
 
 It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
 spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
@@ -9455,15 +9475,16 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
- \item list items
+ \item list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code `h[i] += 1`\footnote{One-line footnote.},
+ \item and code \Verb!h[i] += 1!\footnote{One-line footnote.}
+   (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
 \end{itemize}
@@ -9566,6 +9587,7 @@ involving $\theta$:
 def f(theta):
     return theta**2
 \end{lstlisting}\end{cod}
+\noindent
 
 \paragraph{More on $\theta$.}
 Here is more text following headline with math.
@@ -9667,6 +9689,7 @@ The DocOnce source code reads
   |--------------------------------|
 
 \end{lstlisting}\end{cod}
+\noindent
 
 Here is yet another table to test that we can handle more than
 one table:
@@ -9862,6 +9885,7 @@ A sole \Verb!&! must also work.
 # Just to check that ampersand works in code blocks:
 c = a & b
 \end{lstlisting}\end{cod}
+\noindent
 
 \paragraph{Quotes.}
 Let us also add a test of quotes such as ``double quotes, with numbers
@@ -10131,6 +10155,7 @@ for i in range(N):
         heads += 1
 print 'Flipping a coin %d times gave %d heads' % (N, heads)
 \end{lstlisting}\end{cod}
+\noindent
 
 % --- end solution of exercise ---
 
@@ -10351,6 +10376,7 @@ And code \Verb!a=b! in this solution:
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 a = b  # code in solution
 \end{lstlisting}\end{cod}
+\noindent
 End of solution is here.
 
 % --- end solution of exercise ---
@@ -10372,6 +10398,7 @@ And with code (in plain verbatim) returning $x+1$ in hint:
 def func(x):
     return x + 1  # with code in hint
 \end{lstlisting}\end{cod}
+\noindent
 
 % --- end hint in exercise ---
 
@@ -10468,6 +10495,7 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 lambda x: x+2
 \end{lstlisting}\end{cod}
+\noindent
 
 % the Filename: ... is written correctly.
 % Have some comments at the end of the exercise to see that
@@ -10514,6 +10542,7 @@ from math import exp
 def f(x):
     return exp(x)
 \end{lstlisting}\end{cod}
+\noindent
 
 \textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
@@ -11263,11 +11292,12 @@ Footnotes
 Here is a test of footnotes [#footnote]_, which are handy in text.
 They are used in different flavors, now in
 
- * list items
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  * even with math \\( \nabla^2u \\) [#math1]_
 
- * and code ``h[i] += 1`` [#code]_,
+ * and code ``h[i] += 1`` [#code]_
+   (*must* have space between inline code and footnote!)
 
  * and `links <http://google.com>`__ [#google-search]_
 
@@ -13024,11 +13054,12 @@ Footnotes
 Here is a test of footnotes [#footnote]_, which are handy in text.
 They are used in different flavors, now in
 
- * list items
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  * even with math :math:`\nabla^2u` [#math1]_
 
- * and code ``h[i] += 1`` [#code]_,
+ * and code ``h[i] += 1`` [#code]_
+   (*must* have space between inline code and footnote!)
 
  * and `links <http://google.com>`__ [#google-search]_
 
@@ -14808,14 +14839,14 @@ Python.
 
 ==== Footnotes ====
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
 
- * list items
- * even with math `\nabla^2u` [^math1]
- * and code `h[i] += 1` [^code],
- * and [http://google.com links] [^google-search]
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ * even with math `\nabla^2u`[^math1]
+ * and code `h[i] += 1`[^code]   (*must* have space between inline code and footnote!)
+ * and [http://google.com links][^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -16379,15 +16410,16 @@ Python.
 
 ==== Footnotes ====
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
 
 <ul>
- <li> list items
- <li> even with math <math>\nabla^2u</math> [^math1]
- <li> and code <code>h[i] += 1</code> [^code],
- <li> and [http://google.com links] [^google-search]
+ <li> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ <li> even with math <math>\nabla^2u</math>[^math1]
+ <li> and code <code>h[i] += 1</code>[^code]
+   (''must'' have space between inline code and footnote!)
+ <li> and [http://google.com links][^google-search]
 </ul>
 
 which gives flexibility in writing.
@@ -18050,14 +18082,14 @@ Python.
 
 === Footnotes ===
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
 
- * list items
- * even with math {{{\nabla^2u}}} [^math1]
- * and code {{{h[i] += 1}}} [^code],
- * and [[http://google.com|links]] [^google-search]
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ * even with math {{{\nabla^2u}}}[^math1]
+ * and code {{{h[i] += 1}}}[^code]   (//must// have space between inline code and footnote!)
+ * and [[http://google.com|links]][^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -19486,13 +19518,14 @@ Running OS commands::
 
 Footnotes
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
- - list items
- - even with math \nabla^2u [^math1]
- - and code 'h[i] += 1' [^code],
- - and "http://google.com":links [^google-search]
+ - list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ - even with math \nabla^2u[^math1]
+ - and code 'h[i] += 1'[^code]
+   (*must* have space between inline code and footnote!)
+ - and "http://google.com":links[^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -20795,13 +20828,14 @@ Running OS commands
 Footnotes
 ~~~~~~~~~
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
- - list items
- - even with math M{\nabla^2u} [^math1]
- - and code C{h[i] += 1} [^code],
- - and U{links<http://google.com>} [^google-search]
+ - list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ - even with math M{\nabla^2u}[^math1]
+ - and code C{h[i] += 1}[^code]
+   (I{must} have space between inline code and footnote!)
+ - and U{links<http://google.com>}[^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -22272,16 +22306,17 @@ Running OS commands
 Footnotes
 ~~~~~~~~~
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
- * list items
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
- * even with math \nabla^2u [^math1]
+ * even with math \nabla^2u[^math1]
 
- * and code h[i] += 1 [^code],
+ * and code h[i] += 1[^code]
+   (*must* have space between inline code and footnote!)
 
- * and links (http://google.com) [^google-search]
+ * and links (http://google.com)[^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -23803,13 +23838,14 @@ Python.
 
 #### Footnotes
 
-Here is a test of footnotes[^footnote], which are handy in text.
+Here is a test of footnotes [^footnote], which are handy in text.
 They are used in different flavors, now in
 
- * list items
- * even with math $\nabla^2u$ [^math1]
- * and code `h[i] += 1` [^code],
- * and [links](http://google.com) [^google-search]
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
+ * even with math $\nabla^2u$[^math1]
+ * and code `h[i] += 1`[^code]
+   (*must* have space between inline code and footnote!)
+ * and [links](http://google.com)[^google-search]
 
 which gives flexibility in writing.
 This is the third[^example-of-the-third-footnote] example.
@@ -25719,16 +25755,17 @@ is at the end with only one newline.
      "source": [
       "#### Footnotes\n",
       "\n",
-      "Here is a test of footnotes[^footnote], which are handy in text.\n",
+      "Here is a test of footnotes [^footnote], which are handy in text.\n",
       "They are used in different flavors, now in\n",
       "\n",
-      " * list items\n",
+      " * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)\n",
       "\n",
-      " * even with math $\\nabla^2u$ [^math1]\n",
+      " * even with math $\\nabla^2u$[^math1]\n",
       "\n",
-      " * and code `h[i] += 1` [^code],\n",
+      " * and code `h[i] += 1`[^code]\n",
+      "   (*must* have space between inline code and footnote!)\n",
       "\n",
-      " * and [links](http://google.com) [^google-search]\n",
+      " * and [links](http://google.com)[^google-search]\n",
       "\n",
       "which gives flexibility in writing.\n",
       "This is the third[^example-of-the-third-footnote] example.\n",
@@ -30894,9 +30931,10 @@ They are used in different flavors, now in
 
 <p><table border="0">
 
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> list items</li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> even with math \( \nabla^2u \) [<a id="link_footnote_2" href="#def_footnote_2">2</a>]</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>],</li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>]
+   (<em>must</em> have space between inline code and footnote!)</li>
  </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> and <a href="http://google.com" target="_self">links</a> [<a id="link_footnote_4" href="#def_footnote_4">4</a>]</li>
 </td></tr></table>
 
@@ -33384,9 +33422,10 @@ Here is a test of footnotes [<a id="link_footnote_1" href="#def_footnote_1">1</a
 They are used in different flavors, now in
 
 <ul>
- <li> list items</li>
+ <li> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)</li>
  <li> even with math $latex \nabla^2u$ [<a id="link_footnote_2" href="#def_footnote_2">2</a>]</li>
- <li> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>],</li>
+ <li> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>]
+   (<em>must</em> have space between inline code and footnote!)</li>
  <li> and <a href="http://google.com" target="_blank">links</a> [<a id="link_footnote_4" href="#def_footnote_4">4</a>]</li>
 </ul>
 
@@ -35458,9 +35497,10 @@ Here is a test of footnotes [<a id="link_footnote_1" href="#def_footnote_1">1</a
 They are used in different flavors, now in
 
 <ul>
- <li> list items</li>
+ <li> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)</li>
  <li> even with math \( \nabla^2u \) [<a id="link_footnote_2" href="#def_footnote_2">2</a>]</li>
- <li> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>],</li>
+ <li> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>]
+   (<em>must</em> have space between inline code and footnote!)</li>
  <li> and <a href="http://google.com" target="_self">links</a> [<a id="link_footnote_4" href="#def_footnote_4">4</a>]</li>
 </ul>
 
@@ -37652,15 +37692,16 @@ Python.
 
 
 \paragraph{Footnotes.}
-Here is a test of footnotes\footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
+Here is a test of footnotes \footnote{Typesetting of the footnote depends on the format. Plain text does nothing, {\LaTeX} removes the definition and inserts the footnote as part of the {\LaTeX} text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.}, which are handy in text.
 They are used in different flavors, now in
 
 \begin{itemize}
- \item list items
+ \item list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code `h[i] += 1`\footnote{One-line footnote.},
+ \item and code \Verb!h[i] += 1!\footnote{One-line footnote.}
+   (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
 \end{itemize}
@@ -42572,9 +42613,10 @@ Here is a test of footnotes <button type="button" class="btn btn-primary btn-xs"
 They are used in different flavors, now in
 
 <ul>
- <li> list items</li>
+ <li> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)</li>
  <li> even with math \( \nabla^2u \) <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Math footnotes can be dangerous since it interferes with an exponent."><a href="#def_footnote_2" id="link_footnote_2" style="color: white">2</a></button></li>
- <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="One-line footnote."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>,</li>
+ <li> and code <code>h[i] += 1</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="One-line footnote."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>
+   (<em>must</em> have space between inline code and footnote!)</li>
  <li> and <a href="http://google.com" target="_self">links</a> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="google.com is perhaps the most famous web site today."><a href="#def_footnote_4" id="link_footnote_4" style="color: white">4</a></button></li>
 </ul>
 
@@ -44617,11 +44659,12 @@ Footnotes
 Here is a test of footnotes [#footnote]_, which are handy in text.
 They are used in different flavors, now in
 
- * list items
+ * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)
 
  * even with math :math:`\nabla^2u` [#math1]_
 
- * and code ``h[i] += 1`` [#code]_,
+ * and code ``h[i] += 1`` [#code]_
+   (*must* have space between inline code and footnote!)
 
  * and `links <http://google.com>`__ [#google-search]_
 
@@ -71460,7 +71503,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f223e4cb320>
+verbatim is to be replaced using <function html_verbatim at 0x7fc7817f6398>
 
 
 First occurence: " `mako`."
@@ -75429,7 +75472,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Mar 22 23:32:36 2015.
+# sphinx-quickstart on Tue Mar 24 11:33:42 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -92577,16 +92620,14 @@ dmap/pdftex.map}] [2]
 
 <../doc/src/manual/fig/wave1D.pdf, id=100, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8]
-
-[9 <../doc/src/manual/fig/wave1D.pdf>]
+[8] [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
 <../doc/src/manual/fig/wave1D.png, id=132, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=133, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <../doc/src/manual/fig/wave1D.png>]
+<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -92611,7 +92652,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <./downloaded_figures/f_plot.png>]
+[11 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -92680,7 +92721,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1273.
+t line 1274.
 
 
 
@@ -92700,7 +92741,7 @@ t line 1273.
 
 
 
-t line 1282.
+t line 1283.
 
 
 
@@ -92721,7 +92762,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1287.
 
 
 
@@ -93387,13 +93428,11 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 .png>] [8]
 <../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
-
-[10 <../doc/src/manual/fig/wave1D.pdf>]
+[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -93418,7 +93457,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <./downloaded_figures/f_plot.png>]
+[12 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -93487,7 +93526,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1273.
+t line 1274.
 
 
 
@@ -93507,7 +93546,7 @@ t line 1273.
 
 
 
-t line 1282.
+t line 1283.
 
 
 
@@ -93528,7 +93567,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1287.
 
 
 
@@ -94111,13 +94150,11 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 .png>] [8]
 <../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
-
-[10 <../doc/src/manual/fig/wave1D.pdf>]
+[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -94142,7 +94179,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <./downloaded_figures/f_plot.png>]
+[12 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -94211,7 +94248,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1273.
+t line 1274.
 
 
 
@@ -94231,7 +94268,7 @@ t line 1273.
 
 
 
-t line 1282.
+t line 1283.
 
 
 
@@ -94252,7 +94289,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1287.
 
 
 
@@ -94820,13 +94857,11 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 .png>] [8]
 <../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
-
-[10 <../doc/src/manual/fig/wave1D.pdf>]
+[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -94851,7 +94886,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <./downloaded_figures/f_plot.png>]
+[12 <../doc/src/manual/fig/wave1D.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -95462,12 +95497,7 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
 (./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=247, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
-.png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7]
-
-
-...rest of part of LaTeX line number...
-
-[8]
+.png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
 
 
 ...rest of part of LaTeX line number...
@@ -95578,7 +95608,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1224.
+t line 1225.
 
 
 
@@ -95598,7 +95628,7 @@ t line 1224.
 
 
 
-t line 1233.
+t line 1234.
 
 
 
@@ -95618,7 +95648,7 @@ t line 1233.
 
 
 
-t line 1237.
+t line 1238.
 
 
 
@@ -96335,8 +96365,8 @@ reading sources... [ 75%] ._testdoc002
 reading sources... [100%] index
 
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:387: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:424: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:424: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 looking for now-outdated files... none found

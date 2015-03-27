@@ -70,7 +70,8 @@ def doconce_format_books(paper):
         values.append(_doconce_format_edition(paper))
     if "series" in paper:
         values.append(_doconce_format_bookseries(paper))
-    values.append(paper["publisher"])
+    if "publisher" in paper:
+        values.append(paper["publisher"])
     values.append(paper["year"])
     if "doi" in paper: values.append(_doconce_format_doi(paper["doi"]))
     values = _doconce_url(paper, values)
@@ -82,7 +83,8 @@ def doconce_format_edited(paper):
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
     values.append(_doconce_format_title(paper))
-    values.append(paper["publisher"])
+    if "publisher" in paper:
+        values.append(paper["publisher"])
     values.append(paper["year"])
     values = _doconce_url(paper, values)
     return _doconce_join(values)
@@ -95,9 +97,12 @@ def doconce_format_chapters(paper):
     values.append(_doconce_format_title(paper))
     values.append(paper["booktitle"])
     values.append(_doconce_format_editors(paper))
-    values.append(paper["publisher"])
-    if "chapter" in paper: values.append("Chapter %s" % paper["chapter"])
-    if "pages" in paper: values.append("pp. %s" % _doconce_format_pages(paper["pages"]))
+    if "publisher" in paper:
+        values.append(paper["publisher"])
+    if "chapter" in paper:
+        values.append("Chapter %s" % paper["chapter"])
+    if "pages" in paper:
+        values.append("pp. %s" % _doconce_format_pages(paper["pages"]))
     values.append(paper["year"])
     values = _doconce_url(paper, values)
     return _doconce_join(values)
@@ -368,7 +373,8 @@ def rst_format_books(paper):
         values.append(_rst_format_edition(paper))
     if "series" in paper:
         values.append(_rst_format_bookseries(paper))
-    values.append(paper["publisher"])
+    if "publisher" in paper:
+        values.append(paper["publisher"])
     values.append(paper["year"])
     if "doi" in paper: values.append(_rst_format_doi(paper["doi"]))
     values = _rst_url(paper, values)
@@ -380,7 +386,8 @@ def rst_format_edited(paper):
     values.append(_rst_get_key_string(paper))
     values.append(_rst_get_authors_string(paper["author"]))
     values.append(_rst_format_title(paper))
-    values.append(paper["publisher"])
+    if "publisher" in paper:
+        values.append(paper["publisher"])
     values.append(paper["year"])
     values = _rst_url(paper, values)
     return _rst_join(values)
@@ -393,7 +400,8 @@ def rst_format_chapters(paper):
     values.append(_rst_format_title(paper))
     values.append(paper["booktitle"])
     values.append(_rst_format_editors(paper))
-    values.append(paper["publisher"])
+    if "publisher" in paper:
+        values.append(paper["publisher"])
     if "chapter" in paper: values.append("Chapter %s" % paper["chapter"])
     if "pages" in paper: values.append("pp. %s" % _rst_format_pages(paper["pages"]))
     values.append(paper["year"])
@@ -637,7 +645,8 @@ def xml_format_books(paper):
         values.append(_xml_format_edtion(paper))
     if "series" in paper:
         values.append(_xml_format_bookseries(paper))
-    values.append(_xml("publisher", paper))
+    if "publisher" in paper:
+        values.append(_xml("publisher", paper))
     values.append(_xml("year", paper))
     if "doi" in paper: values.append(_xml('doi', paper))
     if "url" in paper: values.append(_xml('url', paper))
@@ -649,7 +658,8 @@ def xml_format_edited(paper):
     values.append(_xml('key', paper))
     values.append(_xml_get_authors_string(paper["author"]))
     values.append(_xml_format_title(paper))
-    values.append(paper["publisher"])
+    if "publisher" in paper:
+        values.append(paper["publisher"])
     values.append(paper["year"])
     if "url" in paper: values.append(_xml('url', paper))
     return _xml_join(values)
@@ -662,9 +672,12 @@ def xml_format_chapters(paper):
     values.append(_xml_format_title(paper))
     values.append(_xml("booktitle", paper))
     values.append(_xml_format_editors(paper))
-    values.append(_xml("publisher", paper))
-    if "chapter" in paper: values.append(_xml("chapter", paper))
-    if "pages" in paper: values.append(_xml_format_pages(paper["pages"]))
+    if "publisher" in paper:
+        values.append(_xml("publisher", paper))
+    if "chapter" in paper:
+        values.append(_xml("chapter", paper))
+    if "pages" in paper:
+        values.append(_xml_format_pages(paper["pages"]))
     values.append(_xml('year', paper))
     if "url" in paper: values.append(_xml('url', paper))
     return _xml_join(values)

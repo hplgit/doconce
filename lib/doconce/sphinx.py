@@ -646,6 +646,8 @@ def sphinx_code_orig(filestr, format):
                               '', tex_blocks[i])
         # remove those without \ if there are any:
         tex_blocks[i] = re.sub(r'label\{.+?\}', '', tex_blocks[i])
+        # side effects: `label{eq1}` as verbatim, but this is mostly a
+        # problem for doconce documentation and can be rephrased...
 
         # fix latex constructions that do not work with sphinx math
         commands = [r'\begin{equation}',

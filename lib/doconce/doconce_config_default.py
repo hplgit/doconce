@@ -55,6 +55,7 @@ html_links_in_new_window = False
 #html_figure_hrule = 
 #device = 
 number_all_equations = False
+denumber_all_equations = False
 #latex_style = 
 #latex_font = 
 #latex_code_style = 
