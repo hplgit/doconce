@@ -8617,6 +8617,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \definecolor{brown}{rgb}{0.54,0.27,0.07}
 \definecolor{purple}{rgb}{0.5,0.0,0.5}
 \definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
 \definecolor{lightred}{rgb}{1.0,0.39,0.28}
 \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
 \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
@@ -37812,12 +37813,12 @@ Newcommands must also be tested in this \report:
 $\half$, $\halfi$, $\x$, $\Ddt{u}$,
 both inline and in block:
 
-\begin{align}
+\begin{align*}
 \Ddt{u} &= 0
 \\ 
 \half &= \halfi\\ 
 \half\x &= \normalvec
-\end{align}
+\end{align*}
 
 Or with align with label and numbers:
 
@@ -38229,7 +38230,7 @@ Percentage must be fixed: 7\%,  87.65\% and
 \subsection{{\LaTeX} Mathematics}
 
 Here is an equation without label using backslash-bracket environment:
-\begin{equation}  a = b + c \end{equation} 
+\[ a = b + c \]
 or with number and label, as in (\ref{my:eq1}), using the equation environment:
 \begin{equation}
 {\partial u\over\partial t} = \nabla^2 u \label{my:eq1}
@@ -38237,10 +38238,10 @@ or with number and label, as in (\ref{my:eq1}), using the equation environment:
 We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align-asterisk environment:
-\begin{align}
+\begin{align*}
 \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
-\end{align}
+\end{align*}
 
 
 And here is a system of equations with labels in an align environment:
@@ -38551,7 +38552,7 @@ Subexercises are numbered a), b), etc.
 First hint to subexercise a).
 With math $a=b$ in hint:
 
-\begin{equation}  a=b. \end{equation} 
+\[ a=b. \]
 And with code (in plain verbatim) returning $x+1$ in hint:
 
 \bccq
@@ -38588,7 +38589,7 @@ Here goes the text for subexercise b).
 
 Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
 
-\begin{equation}  \cos^2 x + \sin^2 x = 1 \thinspace .\end{equation} 
+\[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
 
 % --- begin hint in exercise ---
 
@@ -38640,7 +38641,7 @@ remarks will appear at the end of the typeset exercise.
 Just some text. And some math saying that $e^0=1$ on a single line,
 to test that math block insertion is correct:
 
-\begin{equation}  \exp{(0)} = 1 \end{equation} 
+\[ \exp{(0)} = 1 \]
 
 And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 
@@ -38676,7 +38677,7 @@ lambda x: x+2
 \noindent
 Given
 
-\begin{equation}  \frac{dy}{dx} = -y(x),\quad y(0)=1 \end{equation} 
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 What is the solution of this equation?
 
 \vspace{2mm}
@@ -71503,7 +71504,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fc7817f6398>
+verbatim is to be replaced using <function html_verbatim at 0x7f07c3c85398>
 
 
 First occurence: " `mako`."
@@ -75472,7 +75473,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Mar 24 11:33:42 2015.
+# sphinx-quickstart on Fri Mar 27 02:06:59 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79347,6 +79348,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \definecolor{brown}{rgb}{0.54,0.27,0.07}
 \definecolor{purple}{rgb}{0.5,0.0,0.5}
 \definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
 \definecolor{lightred}{rgb}{1.0,0.39,0.28}
 \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
 \definecolor{lightblue}{rgb}{0.53,0.81,0.92}

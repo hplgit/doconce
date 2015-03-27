@@ -443,6 +443,10 @@ write the above reference as
 </pre></div>
 <p>
 and get output like &quot;...as shown in Section 3.4 in [12].&quot;
+When the numbering of sections in <code>file2.tex</code> changes later,
+the output from the shown line in <code>file1.tex</code> will automatically
+be changed if <code>file2.aux</code> is recently compiled
+(so <code>file2.aux</code> with the mapping from labels to section numbers is updated).
 
 <h3 id="___sec38">Generalized References </h3>
 
@@ -531,6 +535,22 @@ on <em>a single line</em>. The <code>Externaldocuments</code> comment leads to u
 of the <code>xr</code> package and insertion of <code>\externaldocument{file2}</code>
 in the <code>.tex</code> output file. It is a good habit to place
 the <code>Externaldocument</code> comment after the title, author, and date.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>External documents must be recently compiled.</b>
+When compiling DocOnce documents with generalized references
+to <code>latex</code> or <code>pdflatex</code>,
+all documents listed in
+the <code># Externaldocuments:</code> comment must have been recently compiled
+such that their <code>.aux</code> files <em>are available and updated</em>.
+
+<p>
+Note that cleaning (<code>doconce clean</code>)
+of the directory holding an external document will destroy the
+<code>.aux</code> file, and <code>latex</code> or 'pdflatex` may then complain that
+a file listed as <code>\externaldocument{}</code> has no <code>.aux</code> file.
+</div>
+
 
 <h3 id="___sec39">Generalized References to Chapters </h3>
 

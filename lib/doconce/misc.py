@@ -8787,7 +8787,7 @@ def main():
     dofile_slides = glob.glob('slides_*.do.txt')
     for dofile in dofile_slides:
         # Is the TOC surrounded by a WITH_TOC test directive?
-        f = open(dofile, 'r'); text = .read(); f.close()
+        f = open(dofile, 'r'); text = f.read(); f.close()
         with_toc = ' -DWITH_TOC' if 'WITH_TOC' in text else ''
 
         dofile = dofile[:-7]
