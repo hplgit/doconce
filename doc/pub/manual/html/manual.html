@@ -2747,7 +2747,11 @@ write the above reference as</p>
 ...as shown in Section ref{sec:eqs} in cite{math_eqs_2020}.
 </pre></div>
 </div>
-<p>and get output like &#8221;...as shown in Section 3.4 in [12].&#8221;</p>
+<p>and get output like &#8221;...as shown in Section 3.4 in [12].&#8221;
+When the numbering of sections in <tt class="docutils literal"><span class="pre">file2.tex</span></tt> changes later,
+the output from the shown line in <tt class="docutils literal"><span class="pre">file1.tex</span></tt> will automatically
+be changed if <tt class="docutils literal"><span class="pre">file2.aux</span></tt> is recently compiled
+(so <tt class="docutils literal"><span class="pre">file2.aux</span></tt> with the mapping from labels to section numbers is updated).</p>
 <div class="section" id="generalized-references">
 <h4>Generalized References<a class="headerlink" href="#generalized-references" title="Permalink to this headline">¶</a></h4>
 <p>DocOnce mimics a generalization of the LaTeX functionality in the
@@ -2775,7 +2779,7 @@ the document &quot;Mathematical Equations&quot;:
 </pre></div>
 </div>
 <p>(Note that there must be no spaces between closing and opening brackets: <tt class="docutils literal"><span class="pre">][</span></tt>.)
-When &#8221; is found in the current DocOnce document,
+When `` is found in the current DocOnce document,
 this generalized reference becomes</p>
 <div class="highlight-doconce"><div class="highlight"><pre>Section ref{sec:eqs}
 </pre></div>
@@ -2804,6 +2808,18 @@ document in the DocOnce file as</p>
 of the <tt class="docutils literal"><span class="pre">xr</span></tt> package and insertion of <tt class="docutils literal"><span class="pre">\externaldocument{file2}</span></tt>
 in the <tt class="docutils literal"><span class="pre">.tex</span></tt> output file. It is a good habit to place
 the <tt class="docutils literal"><span class="pre">Externaldocument</span></tt> comment after the title, author, and date.</p>
+<div class="admonition-external-documents-must-be-recently-compiled admonition">
+<p class="first admonition-title">External documents must be recently compiled</p>
+<p>When compiling DocOnce documents with generalized references
+to <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
+all documents listed in
+the <tt class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></tt> comment must have been recently compiled
+such that their <tt class="docutils literal"><span class="pre">.aux</span></tt> files <em>are available and updated</em>.</p>
+<p class="last">Note that cleaning (<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></tt>)
+of the directory holding an external document will destroy the
+<tt class="docutils literal"><span class="pre">.aux</span></tt> file, and <tt class="docutils literal"><span class="pre">latex</span></tt> or &#8216;pdflatex` may then complain that
+a file listed as <tt class="docutils literal"><span class="pre">\externaldocument{}</span></tt> has no <tt class="docutils literal"><span class="pre">.aux</span></tt> file.</p>
+</div>
 </div>
 <div class="section" id="generalized-references-to-chapters">
 <h4>Generalized References to Chapters<a class="headerlink" href="#generalized-references-to-chapters" title="Permalink to this headline">¶</a></h4>
