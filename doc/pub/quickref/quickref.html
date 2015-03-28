@@ -36,7 +36,7 @@ Automatically generated HTML file from DocOnce source
               (' Tables ', 2, None, '___sec12'),
               (' Labels and References ', 2, None, '___sec13'),
               (' Citations and Bibliography ', 2, None, '___sec14'),
-              (' Generalized Citations ', 2, None, '___sec15'),
+              (' Generalized References ', 2, None, '___sec15'),
               (' Index of Keywords ', 2, None, '___sec16'),
               (' Capabilities of The Program `doconce` ',
                2,
@@ -115,7 +115,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Mar 27, 2015</h4></center> <!-- date -->
+<center><h4>Mar 28, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -135,7 +135,7 @@ MathJax.Hub.Config({
 <a href="#___sec12"> Tables </a><br>
 <a href="#___sec13"> Labels and References </a><br>
 <a href="#___sec14"> Citations and Bibliography </a><br>
-<a href="#___sec15"> Generalized Citations </a><br>
+<a href="#___sec15"> Generalized References </a><br>
 <a href="#___sec16"> Index of Keywords </a><br>
 <a href="#___sec17"> Capabilities of The Program <code>doconce</code> </a><br>
 <a href="#___sec18"> Exercises </a><br>
@@ -1072,7 +1072,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-<h2 id="___sec15">Generalized Citations </h2>
+<h2 id="___sec15">Generalized References </h2>
 
 <p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
@@ -1082,11 +1082,17 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
-<!-- begin verbatim block -->
-<pre><code>ref[internal][cite][external]
 
-# Example:
-As explained in
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>ref[internal][cite][external]
+</code></pre>
+<!-- end verbatim block -->
+with a specific example being
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
 &quot;testdoc.html#___sec2&quot; in the document
 &quot;A Document for Testing DocOnce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
@@ -1094,12 +1100,14 @@ DocOnce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
 The output from a generalized reference is the text <code>internal</code> if all
-<code>ref{label}</code> references in <code>internal</code> are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-<code>latex</code> or <code>pdflatex</code> one assumes that the references in <code>internal</code>
-are to external documents declared by a comment line <code>#
-Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
-and date). In this case the output text is <code>internal cite</code> and the
+references with <code>ref</code> in the text <code>internal</code> are references to labels
+defined in the
+present document. Otherwise, if <code>cite</code> is non-empty and the format is
+<code>latex</code> or <code>pdflatex</code>, one assumes that the references in <code>internal</code>
+are to external documents declared by a comment line
+<code># Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
+and date). In this case the output text is <code>internal</code> followed by <code>cite</code>,
+and the
 LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.

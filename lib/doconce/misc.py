@@ -407,6 +407,8 @@ Used if the just the specified movie format should be played."""),
      'Makes slides output suited for printing.'),
     ('--urlcheck',
      'Check that all URLs referred to in the document are valid.'),
+    ('--labelcheck=',
+     'Check that all ref{X} has a corresponding label{X}. Fake examples will fail this check and so will generalized references.\nTurn on when useful. Values: off (default), on.'),
     ('--short_title=',
      "Short version of the document's title."),
     ('--markdown',
@@ -2941,18 +2943,19 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         for label in parts_label[i]:
             parts_label2part[label] = i
     # Check if there are eqrefs to undefined labels
-    undefined_labels = []
-    for i in range(len(parts_eqref)):
-        for label in parts_eqref[i]:
-            if label not in parts_label2part:
-                undefined_labels.append(label)
-    if undefined_labels:
-        for label in undefined_labels:
-            print '*** error: (ref{%s}) but no label{%s}' % (label, label)
-        print '*** error: found references to undefined equation labels!'
-        print '    (use generalized references ref[][][] if labels are'
-        print '    defined outside this doconce document)'
-        _abort()
+    if misc_option('labelcheck=', 'off') == 'on':
+        undefined_labels = []
+        for i in range(len(parts_eqref)):
+            for label in parts_eqref[i]:
+                if label not in parts_label2part:
+                    undefined_labels.append(label)
+        if undefined_labels:
+            for label in undefined_labels:
+                print '*** error: equation ref (ref{%s}) but no label{%s}' % (label, label)
+            print '*** error: found references to undefined equation labels'
+            print '    (use generalized references ref[][][] if labels are'
+            print '    defined outside this doconce document)'
+            _abort()
     # Substitute eqrefs in each part.
     # MathJax cannot refer to labels in other HTML files.
     # We generate tag number for each label, in the right numbering
@@ -2986,6 +2989,8 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
     # right navigation to an equation)
     for i in range(len(parts_eqref)):
         for label in parts_eqref[i]:
+            if not label in parts_label2part:
+                continue
             n = parts_label2part[label]   # part where this label is defined
             if i < len(parts):
                 part = parts[i]

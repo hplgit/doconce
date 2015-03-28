@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 27, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 28, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -851,8 +851,8 @@ BibTeX <tt class="docutils literal"><span class="pre">.bib</span></tt> files can
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).</p>
 </div>
-<div class="section" id="generalized-citations">
-<h2>Generalized Citations<a class="headerlink" href="#generalized-citations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generalized-references">
+<h2>Generalized References<a class="headerlink" href="#generalized-references" title="Permalink to this headline">¶</a></h2>
 <p>There is a <em>generalized referencing</em> feature in DocOnce that allows
 a reference with <tt class="docutils literal"><span class="pre">ref</span></tt> to have one formulation if the label is
 in the same document and another formulation if the reference is
@@ -860,23 +860,26 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is</p>
-<div class="highlight-text"><div class="highlight"><pre>ref[internal][cite][external]
-
-# Example:
-As explained in
+<div class="highlight-doconce"><div class="highlight"><pre>ref[internal][cite][external]
+</pre></div>
+</div>
+<p>with a specific example being</p>
+<div class="highlight-doconce"><div class="highlight"><pre>As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
-&quot;testdoc.html#___sec2&quot; in the document
-&quot;A Document for Testing DocOnce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
+<span class="s">&quot;testdoc.html#___sec2&quot;</span> in the document
+<span class="s">&quot;A Document for Testing DocOnce&quot;</span>: &quot;testdoc.html&quot; cite{testdoc:12}],
 DocOnce documents may include movies.
 </pre></div>
 </div>
 <p>The output from a generalized reference is the text <tt class="docutils literal"><span class="pre">internal</span></tt> if all
-<cite>:ref:`label&#8221; references in ``internal`</cite> are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-<tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> one assumes that the references in <tt class="docutils literal"><span class="pre">internal</span></tt>
-are to external documents declared by a comment line <tt class="docutils literal"><span class="pre">#</span>
-<span class="pre">Externaldocuments:</span> <span class="pre">testdoc,</span> <span class="pre">mydoc</span></tt> (usually after the title, authors,
-and date). In this case the output text is <tt class="docutils literal"><span class="pre">internal</span> <span class="pre">cite</span></tt> and the
+references with <tt class="docutils literal"><span class="pre">ref</span></tt> in the text <tt class="docutils literal"><span class="pre">internal</span></tt> are references to labels
+defined in the
+present document. Otherwise, if <tt class="docutils literal"><span class="pre">cite</span></tt> is non-empty and the format is
+<tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, one assumes that the references in <tt class="docutils literal"><span class="pre">internal</span></tt>
+are to external documents declared by a comment line
+<tt class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span> <span class="pre">testdoc,</span> <span class="pre">mydoc</span></tt> (usually after the title, authors,
+and date). In this case the output text is <tt class="docutils literal"><span class="pre">internal</span></tt> followed by <tt class="docutils literal"><span class="pre">cite</span></tt>,
+and the
 LaTeX package <tt class="docutils literal"><span class="pre">xr</span></tt> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <tt class="docutils literal"><span class="pre">external</span></tt> text will be the output.</p>
@@ -1205,7 +1208,7 @@ The <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor
 programming language, very similar to Python.</p>
 <p>The command <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> first runs <tt class="docutils literal"><span class="pre">preprocess</span></tt> and then <tt class="docutils literal"><span class="pre">mako</span></tt>.
 Here is a typical example on utilizing <tt class="docutils literal"><span class="pre">preprocess</span></tt> to include another
-document, <a href="#id1"><span class="problematic" id="id2">``</span></a>comment out&#8221; a large portion of text, and to write format-specific
+document, &#8220;comment out&#8221; a large portion of text, and to write format-specific
 constructions:</p>
 <div class="highlight-text"><div class="highlight"><pre># #include &quot;myotherdoc.do.txt&quot;
 
@@ -1276,7 +1279,7 @@ examine the DocOnce source and the <tt class="docutils literal"><span class="pre
 <li><a class="reference internal" href="#tables">Tables</a></li>
 <li><a class="reference internal" href="#labels-and-references">Labels and References</a></li>
 <li><a class="reference internal" href="#citations-and-bibliography">Citations and Bibliography</a></li>
-<li><a class="reference internal" href="#generalized-citations">Generalized Citations</a></li>
+<li><a class="reference internal" href="#generalized-references">Generalized References</a></li>
 <li><a class="reference internal" href="#index-of-keywords">Index of Keywords</a></li>
 <li><a class="reference internal" href="#capabilities-of-the-program-doconce">Capabilities of The Program <tt class="docutils literal"><span class="pre">doconce</span></tt></a></li>
 <li><a class="reference internal" href="#exercises">Exercises</a></li>

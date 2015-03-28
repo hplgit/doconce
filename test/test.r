@@ -1910,13 +1910,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -1946,6 +1946,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -4044,11 +4046,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -4082,6 +4084,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -6362,11 +6366,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\usepackage{fancyvrb}
 
 \usepackage{anslistings,fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -6400,6 +6404,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -8594,10 +8600,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\usepackage{fancyvrb}
 
 % Packages for typesetting blocks of computer code
-\usepackage{framed,fancyvrb,moreverb}
+\usepackage{fancyvrb,framed,moreverb}
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
@@ -8767,6 +8772,8 @@ columns=fullflexible,  % tighter character kerning, like verb
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -9265,6 +9272,7 @@ y = line(x=3)
 print y
 \end{lstlisting}\end{pro}
 \noindent
+\noindent
 (\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
 
 
@@ -9285,6 +9293,7 @@ plot(x, y)
 xlabel('x'); ylabel('y')
 show()
 \end{lstlisting}\end{pro}
+\noindent
 
 
 Then Cython:
@@ -9328,6 +9337,7 @@ int main()
    return 0
 }
 \end{lstlisting}\end{pro}
+\noindent
 % The next should get correctly typset in sphinx (cod is fcod)
 % It also tests emoji before code
 And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{latex_figs/dizzy_face.png}}
@@ -10300,6 +10310,7 @@ def circle(R, x0, y0, n=501):
 
 x, y = circle(2.0, 0, 0)
 \end{lstlisting}\end{pro}
+\noindent
 
 % Often in an exercise we have some comments about the solution
 % which we normally want to keep where they are.
@@ -28936,13 +28947,13 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -28969,6 +28980,8 @@ open=right               % start new chapters on odd-numbered pages
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -36964,13 +36977,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -37000,6 +37013,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -40821,13 +40836,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -40854,6 +40869,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -46115,13 +46132,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -46148,6 +46165,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -46768,11 +46787,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -46799,6 +46818,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -47366,11 +47387,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -47397,6 +47418,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -47971,11 +47994,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -48002,6 +48025,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -48619,11 +48644,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -48650,6 +48675,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -49183,11 +49210,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -49214,6 +49241,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -49793,11 +49822,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -49824,6 +49853,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -50313,11 +50344,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -50344,6 +50375,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -50923,11 +50956,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
 \usemintedstyle{default}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -50954,6 +50987,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -60462,13 +60497,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{graphicx}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -60495,6 +60530,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -63412,13 +63449,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -63445,6 +63482,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -68451,13 +68490,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{animate}
 \usepackage{graphicx}
 
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -68484,6 +68523,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -68863,9 +68904,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{animate}
 \usepackage{graphicx}
 
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -68892,6 +68933,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -69269,9 +69312,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{animate}
 \usepackage{graphicx}
 
-\usepackage{fancyvrb}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -69298,6 +69341,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -71504,7 +71549,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f07c3c85398>
+verbatim is to be replaced using <function html_verbatim at 0x7f4bcc123320>
 
 
 First occurence: " `mako`."
@@ -72517,13 +72562,13 @@ BIBFILE: papers.pub
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
 \usemintedstyle{default}
 % #endif
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -72550,6 +72595,8 @@ BIBFILE: papers.pub
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -73471,9 +73518,9 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
-\usepackage{fancyvrb}
 
 \usepackage{ptex2tex}
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -73500,6 +73547,8 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -75473,7 +75522,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Mar 27 02:06:59 2015.
+# sphinx-quickstart on Sat Mar 28 08:19:48 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -77552,7 +77601,7 @@ BibTeX `.bib` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-===== Generalized Citations =====
+===== Generalized References =====
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
@@ -77561,10 +77610,13 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
-!bc
-ref[internal][cite][external]
 
-# Example:
+!bc do
+ref[internal][cite][external]
+!ec
+with a specific example being
+
+!bc do
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
@@ -77572,12 +77624,14 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 DocOnce documents may include movies.
 !ec
 The output from a generalized reference is the text `internal` if all
-`ref{label}` references in `internal` are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-`latex` or `pdflatex` one assumes that the references in `internal`
-are to external documents declared by a comment line `#
-Externaldocuments: testdoc, mydoc` (usually after the title, authors,
-and date). In this case the output text is `internal cite` and the
+references with `ref` in the text `internal` are references to labels
+defined in the
+present document. Otherwise, if `cite` is non-empty and the format is
+`latex` or `pdflatex`, one assumes that the references in `internal`
+are to external documents declared by a comment line
+`# Externaldocuments: testdoc, mydoc` (usually after the title, authors,
+and date). In this case the output text is `internal` followed by `cite`,
+and the
 LaTeX package `xr` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 `external` text will be the output.
@@ -77824,7 +77878,7 @@ Automatically generated HTML file from DocOnce source
               (' Tables ', 2, None, '___sec12'),
               (' Labels and References ', 2, None, '___sec13'),
               (' Citations and Bibliography ', 2, None, '___sec14'),
-              (' Generalized Citations ', 2, None, '___sec15'),
+              (' Generalized References ', 2, None, '___sec15'),
               (' Index of Keywords ', 2, None, '___sec16'),
               (' Capabilities of The Program `doconce` ',
                2,
@@ -77923,7 +77977,7 @@ MathJax.Hub.Config({
 <a href="#___sec12"> Tables </a><br>
 <a href="#___sec13"> Labels and References </a><br>
 <a href="#___sec14"> Citations and Bibliography </a><br>
-<a href="#___sec15"> Generalized Citations </a><br>
+<a href="#___sec15"> Generalized References </a><br>
 <a href="#___sec16"> Index of Keywords </a><br>
 <a href="#___sec17"> Capabilities of The Program <code>doconce</code> </a><br>
 <a href="#___sec18"> Exercises </a><br>
@@ -78860,7 +78914,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-<h2 id="___sec15">Generalized Citations </h2>
+<h2 id="___sec15">Generalized References </h2>
 
 <p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
@@ -78870,11 +78924,17 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
-<!-- begin verbatim block -->
-<pre><code>ref[internal][cite][external]
 
-# Example:
-As explained in
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>ref[internal][cite][external]
+</code></pre>
+<!-- end verbatim block -->
+with a specific example being
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
 &quot;testdoc.html#___sec2&quot; in the document
 &quot;A Document for Testing DocOnce&quot;: &quot;testdoc.html&quot; cite{testdoc:12}],
@@ -78882,12 +78942,14 @@ DocOnce documents may include movies.
 </code></pre>
 <!-- end verbatim block -->
 The output from a generalized reference is the text <code>internal</code> if all
-<code>ref{label}</code> references in <code>internal</code> are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-<code>latex</code> or <code>pdflatex</code> one assumes that the references in <code>internal</code>
-are to external documents declared by a comment line <code>#
-Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
-and date). In this case the output text is <code>internal cite</code> and the
+references with <code>ref</code> in the text <code>internal</code> are references to labels
+defined in the
+present document. Otherwise, if <code>cite</code> is non-empty and the format is
+<code>latex</code> or <code>pdflatex</code>, one assumes that the references in <code>internal</code>
+are to external documents declared by a comment line
+<code># Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
+and date). In this case the output text is <code>internal</code> followed by <code>cite</code>,
+and the
 LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.
@@ -79325,10 +79387,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconce:movie}{}{}
 \newcounter{doconce:movie:counter}
 
-\usepackage{fancyvrb}
 
 % Packages for typesetting blocks of computer code
-\usepackage{framed,fancyvrb,moreverb}
+\usepackage{fancyvrb,framed,moreverb}
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
@@ -79417,6 +79478,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
+
+\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -80512,7 +80575,7 @@ where \Verb!papers.pub! is a publication database in the
 (which DocOnce needs to create bibliographies in other formats
 than {\LaTeX}).
 
-\subsection{Generalized Citations}
+\subsection{Generalized References}
 
 There is a \emph{generalized referencing} feature in DocOnce that allows
 a reference with \Verb!ref! to have one formulation if the label is
@@ -80521,10 +80584,13 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
+
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ref[internal][cite][external]
+\end{Verbatim}
+with a specific example being
 
-# Example:
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
@@ -80532,11 +80598,14 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 DocOnce documents may include movies.
 \end{Verbatim}
 The output from a generalized reference is the text \Verb!internal! if all
-\Verb!ref{label}! references in \Verb!internal! are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-\Verb!latex! or \Verb!pdflatex! one assumes that the references in \Verb!internal!
-are to external documents declared by a comment line \Verb!# Externaldocuments: testdoc, mydoc! (usually after the title, authors,
-and date). In this case the output text is \Verb!internal cite! and the
+references with \Verb!ref! in the text \Verb!internal! are references to labels
+defined in the
+present document. Otherwise, if \Verb!cite! is non-empty and the format is
+\Verb!latex! or \Verb!pdflatex!, one assumes that the references in \Verb!internal!
+are to external documents declared by a comment line
+\Verb!# Externaldocuments: testdoc, mydoc! (usually after the title, authors,
+and date). In this case the output text is \Verb!internal! followed by \Verb!cite!,
+and the
 {\LaTeX} package \Verb!xr! is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 \Verb!external! text will be the output.
@@ -81740,8 +81809,8 @@ BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-Generalized Citations
----------------------
+Generalized References
+----------------------
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with ``ref`` to have one formulation if the label is
@@ -81752,8 +81821,9 @@ a book assembly of some of the small elements.
 The syntax of a generalized reference is::
 
         ref[internal][cite][external]
-        
-        # Example:
+
+with a specific example being::
+
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
@@ -81761,12 +81831,14 @@ The syntax of a generalized reference is::
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
-"label`_` references in ``internal`` are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-``latex`` or ``pdflatex`` one assumes that the references in ``internal``
-are to external documents declared by a comment line ``#
-Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
-and date). In this case the output text is ``internal cite`` and the
+references with ``ref`` in the text ``internal`` are references to labels
+defined in the
+present document. Otherwise, if ``cite`` is non-empty and the format is
+``latex`` or ``pdflatex``, one assumes that the references in ``internal``
+are to external documents declared by a comment line
+``# Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
+and date). In this case the output text is ``internal`` followed by ``cite``,
+and the
 LaTeX package ``xr`` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 ``external`` text will be the output.
@@ -82101,7 +82173,7 @@ programming language, very similar to Python.
 
 The command ``doconce format`` first runs ``preprocess`` and then ``mako``.
 Here is a typical example on utilizing ``preprocess`` to include another
-document, ``comment out" a large portion of text, and to write format-specific
+document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
         # #include "myotherdoc.do.txt"
@@ -83017,8 +83089,8 @@ BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-Generalized Citations
----------------------
+Generalized References
+----------------------
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with ``ref`` to have one formulation if the label is
@@ -83028,11 +83100,14 @@ to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
 
-.. code-block:: text
+.. code-block:: doconce
 
         ref[internal][cite][external]
-        
-        # Example:
+
+with a specific example being
+
+.. code-block:: doconce
+
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
@@ -83040,12 +83115,14 @@ The syntax of a generalized reference is
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text ``internal`` if all
-`:ref:`label" references in ``internal`` are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-``latex`` or ``pdflatex`` one assumes that the references in ``internal``
-are to external documents declared by a comment line ``#
-Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
-and date). In this case the output text is ``internal cite`` and the
+references with ``ref`` in the text ``internal`` are references to labels
+defined in the
+present document. Otherwise, if ``cite`` is non-empty and the format is
+``latex`` or ``pdflatex``, one assumes that the references in ``internal``
+are to external documents declared by a comment line
+``# Externaldocuments: testdoc, mydoc`` (usually after the title, authors,
+and date). In this case the output text is ``internal`` followed by ``cite``,
+and the
 LaTeX package ``xr`` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 ``external`` text will be the output.
@@ -83390,7 +83467,7 @@ programming language, very similar to Python.
 
 The command ``doconce format`` first runs ``preprocess`` and then ``mako``.
 Here is a typical example on utilizing ``preprocess`` to include another
-document, ``comment out" a large portion of text, and to write format-specific
+document, "comment out" a large portion of text, and to write format-specific
 constructions:
 
 .. code-block:: text
@@ -84188,7 +84265,7 @@ BibTeX `.bib` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-==== Generalized Citations ====
+==== Generalized References ====
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
@@ -84197,10 +84274,13 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
+
 {{{
 ref[internal][cite][external]
+}}}
+with a specific example being
 
-# Example:
+{{{
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
@@ -84208,12 +84288,14 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 DocOnce documents may include movies.
 }}}
 The output from a generalized reference is the text `internal` if all
-`label` references in `internal` are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-`latex` or `pdflatex` one assumes that the references in `internal`
-are to external documents declared by a comment line `#
-Externaldocuments: testdoc, mydoc` (usually after the title, authors,
-and date). In this case the output text is `internal cite` and the
+references with `ref` in the text `internal` are references to labels
+defined in the
+present document. Otherwise, if `cite` is non-empty and the format is
+`latex` or `pdflatex`, one assumes that the references in `internal`
+are to external documents declared by a comment line
+`# Externaldocuments: testdoc, mydoc` (usually after the title, authors,
+and date). In this case the output text is `internal` followed by `cite`,
+and the
 LaTeX package `xr` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 `external` text will be the output.
@@ -85397,7 +85479,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-==== Generalized Citations ====
+==== Generalized References ====
 
 There is a ''generalized referencing'' feature in DocOnce that allows
 a reference with <code>ref</code> to have one formulation if the label is
@@ -85406,10 +85488,13 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
+
 <syntaxhighlight lang="text">
 ref[internal][cite][external]
+</syntaxhighlight>
+with a specific example being
 
-# Example:
+<syntaxhighlight lang="text">
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
@@ -85417,12 +85502,14 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 DocOnce documents may include movies.
 </syntaxhighlight>
 The output from a generalized reference is the text <code>internal</code> if all
-<code>label</code> references in <code>internal</code> are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-<code>latex</code> or <code>pdflatex</code> one assumes that the references in <code>internal</code>
-are to external documents declared by a comment line <code>#
-Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
-and date). In this case the output text is <code>internal cite</code> and the
+references with <code>ref</code> in the text <code>internal</code> are references to labels
+defined in the
+present document. Otherwise, if <code>cite</code> is non-empty and the format is
+<code>latex</code> or <code>pdflatex</code>, one assumes that the references in <code>internal</code>
+are to external documents declared by a comment line
+<code># Externaldocuments: testdoc, mydoc</code> (usually after the title, authors,
+and date). In this case the output text is <code>internal</code> followed by <code>cite</code>,
+and the
 LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.
@@ -86549,7 +86636,7 @@ BibTeX {{{.bib}}} files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-== Generalized Citations ==
+== Generalized References ==
 
 There is a //generalized referencing// feature in DocOnce that allows
 a reference with {{{ref}}} to have one formulation if the label is
@@ -86558,10 +86645,13 @@ to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
+
 {{{
 ref[internal][cite][external]
+}}}
+with a specific example being
 
-# Example:
+{{{
 As explained in
 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "testdoc.html#___sec2" in the document
@@ -86569,12 +86659,14 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 DocOnce documents may include movies.
 }}}
 The output from a generalized reference is the text {{{internal}}} if all
-{{{label}}} references in {{{internal}}} are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-{{{latex}}} or {{{pdflatex}}} one assumes that the references in {{{internal}}}
-are to external documents declared by a comment line {{{#
-Externaldocuments: testdoc, mydoc}}} (usually after the title, authors,
-and date). In this case the output text is {{{internal cite}}} and the
+references with {{{ref}}} in the text {{{internal}}} are references to labels
+defined in the
+present document. Otherwise, if {{{cite}}} is non-empty and the format is
+{{{latex}}} or {{{pdflatex}}}, one assumes that the references in {{{internal}}}
+are to external documents declared by a comment line
+{{{# Externaldocuments: testdoc, mydoc}}} (usually after the title, authors,
+and date). In this case the output text is {{{internal}}} followed by {{{cite}}},
+and the
 LaTeX package {{{xr}}} is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 {{{external}}} text will be the output.
@@ -87655,7 +87747,7 @@ BibTeX '.bib' files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-Generalized Citations
+Generalized References
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with 'ref' to have one formulation if the label is
@@ -87666,8 +87758,9 @@ a book assembly of some of the small elements.
 The syntax of a generalized reference is::
 
         ref[internal][cite][external]
-        
-        # Example:
+
+with a specific example being::
+
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
@@ -87675,12 +87768,14 @@ The syntax of a generalized reference is::
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text 'internal' if all
-'ref{label}' references in 'internal' are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-'latex' or 'pdflatex' one assumes that the references in 'internal'
-are to external documents declared by a comment line '#
-Externaldocuments: testdoc, mydoc' (usually after the title, authors,
-and date). In this case the output text is 'internal cite' and the
+references with 'ref' in the text 'internal' are references to labels
+defined in the
+present document. Otherwise, if 'cite' is non-empty and the format is
+'latex' or 'pdflatex', one assumes that the references in 'internal'
+are to external documents declared by a comment line
+'# Externaldocuments: testdoc, mydoc' (usually after the title, authors,
+and date). In this case the output text is 'internal' followed by 'cite',
+and the
 LaTeX package 'xr' is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 'external' text will be the output.
@@ -88760,8 +88855,8 @@ BibTeX C{.bib} files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-Generalized Citations
----------------------
+Generalized References
+----------------------
 
 There is a I{generalized referencing} feature in DocOnce that allows
 a reference with C{ref} to have one formulation if the label is
@@ -88772,8 +88867,9 @@ a book assembly of some of the small elements.
 The syntax of a generalized reference is::
 
         ref[internal][cite][external]
-        
-        # Example:
+
+with a specific example being::
+
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
@@ -88781,12 +88877,14 @@ The syntax of a generalized reference is::
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text C{internal} if all
-C{ref{label}} references in C{internal} are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-C{latex} or C{pdflatex} one assumes that the references in C{internal}
-are to external documents declared by a comment line C{#
-Externaldocuments: testdoc, mydoc} (usually after the title, authors,
-and date). In this case the output text is C{internal cite} and the
+references with C{ref} in the text C{internal} are references to labels
+defined in the
+present document. Otherwise, if C{cite} is non-empty and the format is
+C{latex} or C{pdflatex}, one assumes that the references in C{internal}
+are to external documents declared by a comment line
+C{# Externaldocuments: testdoc, mydoc} (usually after the title, authors,
+and date). In this case the output text is C{internal} followed by C{cite},
+and the
 LaTeX package C{xr} is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 C{external} text will be the output.
@@ -89149,7 +89247,7 @@ Table of contents:
  Tables 
  Labels and References 
  Citations and Bibliography 
- Generalized Citations 
+ Generalized References 
  Index of Keywords 
  Capabilities of The Program doconce 
  Exercises 
@@ -89926,8 +90024,8 @@ BibTeX .bib files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-Generalized Citations
----------------------
+Generalized References
+----------------------
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with ref to have one formulation if the label is
@@ -89938,8 +90036,9 @@ a book assembly of some of the small elements.
 The syntax of a generalized reference is::
 
         ref[internal][cite][external]
-        
-        # Example:
+
+with a specific example being::
+
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
@@ -89947,12 +90046,14 @@ The syntax of a generalized reference is::
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text internal if all
-ref{label} references in internal are references to labels in the
+references with ref in the text internal are references to labels
+defined in the
 present document. Otherwise, if cite is non-empty and the format is
-latex or pdflatex one assumes that the references in internal
-are to external documents declared by a comment line #
-Externaldocuments: testdoc, mydoc (usually after the title, authors,
-and date). In this case the output text is internal cite and the
+latex or pdflatex, one assumes that the references in internal
+are to external documents declared by a comment line
+# Externaldocuments: testdoc, mydoc (usually after the title, authors,
+and date). In this case the output text is internal followed by cite,
+and the
 LaTeX package xr is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 external text will be the output.
@@ -91103,7 +91204,7 @@ BibTeX `.bib` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-### Generalized Citations
+### Generalized References
 
 There is a *generalized referencing* feature in DocOnce that allows
 a reference with `ref` to have one formulation if the label is
@@ -91113,9 +91214,12 @@ to work with many small, independent documents in parallel with
 a book assembly of some of the small elements.
 The syntax of a generalized reference is
 
+
         ref[internal][cite][external]
-        
-        # Example:
+
+with a specific example being
+
+
         As explained in
         ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
         "testdoc.html#___sec2" in the document
@@ -91123,12 +91227,14 @@ The syntax of a generalized reference is
         DocOnce documents may include movies.
 
 The output from a generalized reference is the text `internal` if all
-`ref{label}` references in `internal` are references to labels in the
-present document. Otherwise, if cite is non-empty and the format is
-`latex` or `pdflatex` one assumes that the references in `internal`
-are to external documents declared by a comment line `#
-Externaldocuments: testdoc, mydoc` (usually after the title, authors,
-and date). In this case the output text is `internal cite` and the
+references with `ref` in the text `internal` are references to labels
+defined in the
+present document. Otherwise, if `cite` is non-empty and the format is
+`latex` or `pdflatex`, one assumes that the references in `internal`
+are to external documents declared by a comment line
+`# Externaldocuments: testdoc, mydoc` (usually after the title, authors,
+and date). In this case the output text is `internal` followed by `cite`,
+and the
 LaTeX package `xr` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 `external` text will be the output.
@@ -92370,9 +92476,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -92621,8 +92728,8 @@ dmap/pdftex.map}] [2]
 
 
 <../doc/src/manual/fig/wave1D.pdf, id=100, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8] [9 <../doc/src/manual/fig/wave1D.pdf>]
+<use ../doc/src/manual/fig/wave1D.pdf> [8]
+<use ../doc/src/manual/fig/wave1D.pdf> [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
@@ -92723,7 +92830,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1274.
+t line 1276.
 
 
 
@@ -92743,7 +92850,7 @@ t line 1274.
 
 
 
-t line 1283.
+t line 1285.
 
 
 
@@ -92764,7 +92871,7 @@ t line 1283.
 
 
 
-t line 1287.
+t line 1289.
 
 
 
@@ -92993,8 +93100,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -93225,9 +93332,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -93429,8 +93537,8 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8]
 <../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+<use ../doc/src/manual/fig/wave1D.pdf> [9]
+<use ../doc/src/manual/fig/wave1D.pdf> [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
@@ -93528,7 +93636,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1274.
+t line 1276.
 
 
 
@@ -93548,7 +93656,7 @@ t line 1274.
 
 
 
-t line 1283.
+t line 1285.
 
 
 
@@ -93569,7 +93677,7 @@ t line 1283.
 
 
 
-t line 1287.
+t line 1289.
 
 
 
@@ -93700,8 +93808,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -93947,9 +94055,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -94151,8 +94260,8 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8]
 <../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+<use ../doc/src/manual/fig/wave1D.pdf> [9]
+<use ../doc/src/manual/fig/wave1D.pdf> [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
@@ -94250,7 +94359,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1274.
+t line 1276.
 
 
 
@@ -94270,7 +94379,7 @@ t line 1274.
 
 
 
-t line 1283.
+t line 1285.
 
 
 
@@ -94291,7 +94400,7 @@ t line 1283.
 
 
 
-t line 1287.
+t line 1289.
 
 
 
@@ -94423,8 +94532,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -94654,9 +94763,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -94858,8 +94968,8 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 <use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
 .png>] [8]
 <../doc/src/manual/fig/wave1D.pdf, id=333, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+<use ../doc/src/manual/fig/wave1D.pdf> [9]
+<use ../doc/src/manual/fig/wave1D.pdf> [10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=365, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=366, 578.16pt x 433.62pt>
@@ -95017,8 +95127,8 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -95250,13 +95360,13 @@ For additional information on amsmath, use the `?' option.
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-(/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
 
@@ -95610,7 +95720,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1225.
+t line 1227.
 
 
 
@@ -95630,7 +95740,7 @@ t line 1225.
 
 
 
-t line 1234.
+t line 1236.
 
 
 
@@ -95650,7 +95760,7 @@ t line 1234.
 
 
 
-t line 1238.
+t line 1240.
 
 
 
@@ -95880,12 +95990,12 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-fancyvrb.sty    2008/02/07
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
 listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
+fancyvrb.sty    2008/02/07
   minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -97618,12 +97728,6 @@ figure file ../doc/src/slides/fig/latex_paper1:
     can use ../doc/src/slides/fig/latex_paper1.png for format html
 figure file ../doc/src/slides/fig/doconce1b:
     can use ../doc/src/slides/fig/doconce1b.png for format html
-*** error: equation ref. (ref{eq1}) has no corresponding
-    label{eq1} in equations
-avoided abortion because of --no-abort
-*** error: equation ref. (ref{myeq}) has no corresponding
-    label{myeq} in equations
-avoided abortion because of --no-abort
 output in slides2.html
 + system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 + doconce slides_html slides2 reveal --html_slide_theme=beigesmall
@@ -97828,6 +97932,9 @@ running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to latex
 
 exporting publish database papers.pub to papers.bib:
+
+*** warning: need external file testdoc.aux,
+    but it does not exist (compile latex/pdflatex!)
 output in author1.p.tex
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx author1
@@ -101548,7 +101655,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 168 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101558,7 +101665,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 195 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102167,7 +102274,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 168 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102177,7 +102284,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 195 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102779,7 +102886,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 168 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102789,7 +102896,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 195 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103777,9 +103884,10 @@ See the caption package documentation for explanation.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -104038,7 +104146,7 @@ Overfull \hbox (120.12047pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[8]
+[8] [9]
 
 
 ...rest of part of LaTeX line number...
@@ -104055,7 +104163,7 @@ Overfull \hbox (120.12047pt too wide)
 
 
 
-[9] [10]
+[10]
 Appendix A.
 
 Overfull \hbox (30.77882pt too wide) 
@@ -104113,8 +104221,8 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -104348,9 +104456,10 @@ See the caption package documentation for explanation.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -104596,7 +104705,7 @@ Overfull \hbox (120.12047pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[8]
+[8] [9]
 
 
 ...rest of part of LaTeX line number...
@@ -104613,7 +104722,7 @@ Overfull \hbox (120.12047pt too wide)
 
 
 
-[9] [10]
+[10]
 Appendix A.
 
 Overfull \hbox (30.77882pt too wide) 
@@ -104674,8 +104783,8 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -104897,9 +105006,10 @@ See the caption package documentation for explanation.
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 
 
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+<2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 
@@ -105202,8 +105312,8 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-fancyvrb.sty    2008/02/07
 ptex2tex.sty    
+fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
@@ -105813,9 +105923,6 @@ Removing in /home/hpl/vc/doconce/doc/src/quickref:
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
-*** error: equation ref. (ref{eq1}) has no corresponding
-    label{eq1} in equations
-avoided abortion because of --no-abort
 output in quickref.html
 + system doconce format pdflatex quickref --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
 + doconce format pdflatex quickref --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
@@ -106738,7 +106845,6 @@ updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
 reading sources... [100%] quickref
 
-/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:1245: WARNING: Inline literal start-string without end-string.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
@@ -106751,7 +106857,7 @@ copying static files... done
 copying extra files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
@@ -106771,13 +106877,9 @@ copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rst2xml.py quickref.rst
-quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + rst2odt.py quickref.rst
-quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + rst2html.py quickref.rst
-quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + rst2latex.py quickref.rst
-quickref.rst:1165: (WARNING/2) Inline literal start-string without end-string.
 + system latex quickref.rst.tex
 + latex quickref.rst.tex
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
@@ -106799,10 +106901,6 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
 
@@ -106830,6 +106928,10 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 No file quickref.rst.aux.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -107273,10 +107375,6 @@ Overfull \hbox (4.60825pt too wide)
 Overfull \hbox (47.10902pt too wide) 
 []
 [19]
-Overfull \hbox (2.78717pt too wide) 
-\T1/ptm/m/n/10 is a typ-i-cal ex-am-ple on uti-liz-ing \T1/pcr/m/n/10 preproces
-s \T1/ptm/m/n/10 to in-clude an-other doc-u-ment, [][][][][][][]comment
-
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
@@ -107327,10 +107425,6 @@ Package cmap Warning: pdftex in DVI mode - exiting.
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
-
-
-
 
 
 
@@ -107355,6 +107449,10 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
 (./quickref.rst.aux) 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./quickref.rst.out) (./quickref.rst.out)
@@ -107787,10 +107885,6 @@ Overfull \hbox (4.60825pt too wide)
 
 Overfull \hbox (47.10902pt too wide) 
 []
-
-Overfull \hbox (2.78717pt too wide) 
-\T1/ptm/m/n/10 is a typ-i-cal ex-am-ple on uti-liz-ing \T1/pcr/m/n/10 preproces
-s \T1/ptm/m/n/10 to in-clude an-other doc-u-ment, [][][][][][][]comment
 [20]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul

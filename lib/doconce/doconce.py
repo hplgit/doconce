@@ -369,7 +369,7 @@ def syntax_check(filestr, format):
     pattern = r'(ref(ch)?\[[^\]]*?\]\s+\[[^\]]*?\]\s+\[[^\]]*?\])'
     refgens = [refgen for refgen, dummy in re.findall(pattern, filestr)]
     if refgens:
-        print '*** error: found generalized references ref[][][] with spaces'
+        print '*** error: found generalized references ref[][][] with whitespaces'
         print '    between closing (]) and opening ([) brackets, and that'
         print '    is not legal syntax.\n'
         print '\n\n'.join(refgens)
@@ -2332,7 +2332,7 @@ def handle_index_and_bib(filestr, format):
     #pattern_footnote = r'(?P<footnote> *\[\^(?P<name>.+?)\](?=([^:]))'
     # Footnote pattern has a word prior to the footnote [^name]
     # or math, inline code, link
-    pattern_footnote = r'(?<=(\w|[$`").,;?]))(?P<footnote>(?P<space> *)\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
+    pattern_footnote = r'(?<=(\w|[$`").,;?!]))(?P<footnote>(?P<space> *)\[\^(?P<name>.+?)\])(?=[.,:;?)\s])'
     # (Note: cannot have footnote at beginning of line, because look behind
     # does not tolerate ^ in (\w|[$`")]|^)
     # Keep footnotes for pandoc, plain text
@@ -3262,6 +3262,25 @@ def doconce2format(filestr, format):
     # Next step: standardize newlines
     filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
 
+    # Check that all eqrefs have labels in tex blocks (\label{})
+    if option('labelcheck=', 'off') == 'on':
+        num_problems = 0
+        labels = re.findall(r'label\{(.+?)\}', filestr)
+        refs = re.findall(r'ref\{(.+?)\}', filestr)
+        missing_labels = []
+        for ref in refs:
+            if not ref in labels:
+                if ref not in missing_labels:
+                    missing_labels.append(ref)
+        if missing_labels:
+            print '*** error: ref{} has no corresponding label{}:'
+            print '\n'.join(missing_labels)
+            print '    reasons:'
+            print '1.  maybe ref{} is already inside a generalized reference ref[][][]'
+            print '2.  maybe ref{} is needed in a generalized reference ref[][][]'
+            print '3.  this compatibility test is not useful - turn off by --labelcheck=off'
+            _abort()
+
     # Next step: first reformatting of quizzes
     filestr, num_quizzes = typeset_quizzes1(
         filestr, insert_missing_quiz_header=False)
@@ -3934,7 +3953,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 print '*** mako error: ${func(...)} calls undefined function "func",\ncheck all ${...} calls in the file(s) for possible typos and lack of includes!\n%s' % calls
                 _abort()
             else:
-                # Just dump everything mako has
+                    # Just dump everything mako has
                 print '*** mako error:'
                 filestr = temp.render(**mako_kwargs)
 
@@ -3963,6 +3982,18 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                     print filestr[index-50:index], ' -- problematic char -- ', filestr[index+1:index+50]
                     print 'ord(problematic char)=%d' % ord(filestr[0])
                 _abort()
+            else:
+                # Just dump everything mako has
+                print '*** mako error:'
+                filestr = temp.render(**mako_kwargs)
+        except SystemExit as e:
+            # Just dump everything mako has
+            print '*** mako SystemExit exception:', e
+            filestr = temp.render(**mako_kwargs)
+        except:
+            print '*** mako error: mako terminated with exception', sys.exc_info()[0]
+            # Just dump everything mako has
+            filestr = temp.render(**mako_kwargs)
 
         if encoding:
             f = codecs.open(resultfile2, 'w', encoding)
