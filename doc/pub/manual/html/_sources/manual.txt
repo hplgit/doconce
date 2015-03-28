@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 27, 2015
+:Date: Mar 28, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -36,7 +36,7 @@ DocOnce supports a working strategy of never duplicating information.
 Text is written in a single place and then transformed to a number of
 different destinations of diverse type: scientific reports, software
 manuals, books, thesis, software source code, wikis, blog posts, emails,
-etc.  The slogan is: "Write once, include anywhere".
+etc.  The slogan is: "Document once, include anywhere".
 
 Here are some DocOnce features:
 
@@ -55,7 +55,8 @@ Here are some DocOnce features:
 
   * DocOnce targets in particular large book projects where many different
     pieces of text and software can be assembled in different ways
-    and published in different formats for different devices.
+    and published in different formats for different devices
+    (see `example <http://hplgit.github.io/setup4book-doconce/doc/web/index.html>`__).
 
   * DocOnce enables authors who write for many times of media
     (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
@@ -6352,6 +6353,44 @@ A simple scientific report is available in `a lot of different formats <http://h
 How to create the different formats is explained in more depth
 in the coming sections.
 
+Useful Options for ``doconce format``
+-------------------------------------
+
+The ``doconce format`` command used to translate a DocOnce document to
+an output format performs some syntax check and to notify the user
+about common problems. There are some useful options for turning on
+additional checks:
+
+ * ``--labelcheck=on`` (or ``off``) to check that every ``ref`` reference
+   has a corresponding ``label`` definition within the document (this check
+   may lead to wrong diagnostics, e.g., when a label is defined in an
+   external document and referred via generalized references, so the
+   check must be used with care)
+
+ * ``--urlcheck`` checks that all URLs referred to in the document are valid.
+
+Other useful options are
+
+ * ``--os_prompt=PROMPT>`` sets the prompt, here ``PROMPT>``, as terminal
+   prompt in output from running OS commands with the ``@@@OSCMD`` instruction.
+   The value ``None`` gives no prompt.
+
+ * ``--code_prefix=X`` prefixes all ``@@@CODE`` imports with some path ``X``
+   (if the source files are located in some other directory)
+
+ * ``--figure_prefix=X`` and ``--movie_prefix=X`` prefix figure/movie file
+   names with a path or URL
+
+ * ``--sections_down`` and ``--sections_up`` move all sections down or up
+   (e.g., sections become subsections or chapters).
+
+ * ``--tables2csv`` translates each table to a CSV file.
+
+ * ``--short_title=X`` sets a short title ``X`` for the document.
+
+Many more options, depending on the output format, are listed in the
+following sections.
+
 .. _do2any:html:
 
 HTML
@@ -8726,6 +8765,12 @@ here for convenience.
         --urlcheck
         
         Check that all URLs referred to in the document are valid.
+        
+        
+        --labelcheck=...
+        
+        Check that all ref{X} has a corresponding label{X}. Fake examples will fail this check and so will generalized references.
+        Turn on when useful. Values: off (default), on.
         
         
         --short_title=...
