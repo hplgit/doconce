@@ -7,7 +7,7 @@ DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 13, 2015
+:Date: Mar 28, 2015
 
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
@@ -655,6 +655,44 @@ A simple scientific report is available in `a lot of different formats <http://h
 How to create the different formats is explained in more depth
 in the coming sections.
 
+Useful Options for ``doconce format``
+-------------------------------------
+
+The ``doconce format`` command used to translate a DocOnce document to
+an output format performs some syntax check and to notify the user
+about common problems. There are some useful options for turning on
+additional checks:
+
+ * ``--labelcheck=on`` (or ``off``) to check that every ``ref`` reference
+   has a corresponding ``label`` definition within the document (this check
+   may lead to wrong diagnostics, e.g., when a label is defined in an
+   external document and referred via generalized references, so the
+   check must be used with care)
+
+ * ``--urlcheck`` checks that all URLs referred to in the document are valid.
+
+Other useful options are
+
+ * ``--os_prompt=PROMPT>`` sets the prompt, here ``PROMPT>``, as terminal
+   prompt in output from running OS commands with the ``@@@OSCMD`` instruction.
+   The value ``None`` gives no prompt.
+
+ * ``--code_prefix=X`` prefixes all ``@@@CODE`` imports with some path ``X``
+   (if the source files are located in some other directory)
+
+ * ``--figure_prefix=X`` and ``--movie_prefix=X`` prefix figure/movie file
+   names with a path or URL
+
+ * ``--sections_down`` and ``--sections_up`` move all sections down or up
+   (e.g., sections become subsections or chapters).
+
+ * ``--tables2csv`` translates each table to a CSV file.
+
+ * ``--short_title=X`` sets a short title ``X`` for the document.
+
+Many more options, depending on the output format, are listed in the
+following sections.
+
 .. _do2any:html:
 
 HTML
@@ -744,10 +782,16 @@ be specified: ``--ccs=file1.css,file2.css,file3.css``.
 HTML templates
 ~~~~~~~~~~~~~~
 
-Templates are HTML files with "slots" ``%(main)s`` for the main body
+Templates are HTML files with ready-made headers, footers, and style
+specifications where plain HTML text can be inserted in "slots" in the
+template file. Typically, there is a slot ``%(main)s`` for the main body
 of text, ``%(title)s`` for the title, and ``%(date)s`` for the date.
-DocOnce comes with a few templates. The usage of templates is
-described in a "separate document": "". That document describes how you your DocOnce-generated
+Templates are designed beforehand and ``doconce format`` puts
+the translated HTML text into the template to form the complete HTML
+document.
+
+DocOnce comes with a few ready-made HTML templates. The usage of templates is
+described in a `separate document <http://hplgit.github.io/doconce/doc/pub/design/>`__. That document describes how you your DocOnce-generated
 HTML file can have any specified layout.
 
 The HTML file can be embedded in a template with your own tailored
@@ -1440,9 +1484,15 @@ or the Listings-based style with yellow background color
 
 .. code-block:: text
 
-        --latex_code_style=lst-yellow2_fb
+        --latex_code_style=lst-yellow2
 
-It is easy to specify different styles for different code environments.
+It is easy to specify different styles for different code environments, say
+blue background with plain verbatim style for code but a special terminal
+window for the ``sys`` environment:
+
+.. code-block:: text
+
+        "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
@@ -2197,7 +2247,8 @@ standard LaTeX book, a Sphinx web document, or a collection of HTML files.
 The Googlecode wiki document, ``mydoc.gwiki``, is most conveniently stored
 in a directory which is a clone of the wiki part of the Googlecode project.
 This is far easier than copying and pasting the entire text into the
-wiki editor in a web browser.
+wiki editor in a web browser. Note that Google decided to close down its
+Googlecode service in 2015.
 
 When the DocOnce file contains figures, each figure filename must in
 the ``.gwiki`` file be replaced by a URL where the figure is
@@ -2450,8 +2501,7 @@ here for convenience.
         
         --html_toc_depth=...
         
-        No of levels in the table of contents in HTML output for
-        Bootstrap-based styles. Default: 2.
+        No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections).
         
         
         --html_toc_indent=...
@@ -2598,6 +2648,11 @@ here for convenience.
         Switch latex environments such that all equations get a number.
         
         
+        --denumber_all_equations
+        
+        Switch latex environments such no equations get a number (useful for removing equation labels in slides). Error messages are issued about references to numbered equations in the text.
+        
+        
         --latex_style=...
         
         LaTeX style package used for the document.
@@ -2680,6 +2735,13 @@ here for convenience.
         titlepage: separate page,
         doconce_heading (default): authors with "footnotes" for institutions,
         beamer: layout for beamer slides.
+        
+        
+        --latex_title_reference=...
+        
+        latex code placed in a footnote for the title,
+        typically used for acknowledging publisher/source of original
+        version of the document.
         
         
         --latex_encoding=...
@@ -3005,6 +3067,12 @@ here for convenience.
         --urlcheck
         
         Check that all URLs referred to in the document are valid.
+        
+        
+        --labelcheck=...
+        
+        Check that all ref{X} has a corresponding label{X}. Fake examples will fail this check and so will generalized references.
+        Turn on when useful. Values: off (default), on.
         
         
         --short_title=...
