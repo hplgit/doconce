@@ -890,14 +890,6 @@ def html_code(filestr, code_blocks, code_block_types,
         # (note: this affects also (ref{...}) syntax in verbatim blocks...)
         filestr = re.sub(r'\(ref\{(.+?)\}\)', r'\eqref{\g<1>}', filestr)
 
-        # Check that all eqrefs have labels
-        labels = re.findall(r'\\label\{(.+?)\}', filestr)
-        eqrefs = re.findall(r'\\eqref\{(.+?)\}', filestr)
-        for eqref in eqrefs:
-            if not eqref in labels:
-                print '*** error: equation ref. (ref{%s}) has no corresponding\n    label{%s} in equations' % (eqref, eqref)
-                _abort()
-
     elif MATH_TYPESETTING == 'WordPress':
         filestr = re.sub(r'!bt *\n', '\n', filestr)
         filestr = re.sub(r'!et *\n', '\n', filestr)

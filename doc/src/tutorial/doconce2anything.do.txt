@@ -139,6 +139,37 @@ A simple scientific report is available in "a lot of different formats":
 How to create the different formats is explained in more depth
 in the coming sections.
 
+===== Useful Options for `doconce format` =====
+
+The `doconce format` command used to translate a DocOnce document to
+an output format performs some syntax check and to notify the user
+about common problems. There are some useful options for turning on
+additional checks:
+
+ * `--labelcheck=on` (or `off`) to check that every `ref` reference
+   has a corresponding `label` definition within the document (this check
+   may lead to wrong diagnostics, e.g., when a label is defined in an
+   external document and referred via generalized references, so the
+   check must be used with care)
+ * `--urlcheck` checks that all URLs referred to in the document are valid.
+
+Other useful options are
+
+ * `--os_prompt=PROMPT>` sets the prompt, here `PROMPT>`, as terminal
+   prompt in output from running OS commands with the `@@@OSCMD` instruction.
+   The value `None` gives no prompt.
+ * `--code_prefix=X` prefixes all `@@@CODE` imports with some path `X`
+   (if the source files are located in some other directory)
+ * `--figure_prefix=X` and `--movie_prefix=X` prefix figure/movie file
+   names with a path or URL
+ * `--sections_down` and `--sections_up` move all sections down or up
+   (e.g., sections become subsections or chapters).
+ * `--tables2csv` translates each table to a CSV file.
+ * `--short_title=X` sets a short title `X` for the document.
+
+Many more options, depending on the output format, are listed in the
+following sections.
+
 ===== HTML =====
 label{do2any:html}
 

@@ -133,9 +133,9 @@ def latex_code_envir(
         if envir_tp == 'pro':
             begin = '\\begin{pro}{cbg_%s}{bar_%s}' % (background, background) + begin
             if package == 'vrb':
-                end = end + '\n\\end{pro}'
+                end = end + '\n\\end{pro}\n\\noindent'
             else:
-                end = end + '\\end{pro}'
+                end = end + '\\end{pro}\n\\noindent'
         else:
             begin = '\\begin{cod}{cbg_%s}' % background + begin
             if package == 'vrb':
@@ -337,6 +337,16 @@ def latex_code(filestr, code_blocks, code_block_types,
 %% insert custom LaTeX commands...
 """ % ('\n'.join(commands))
         filestr = filestr.replace('% insert custom LaTeX commands...', new_text)
+        # Check that the files exist
+        for name in m.group(1).split(','):
+            name2 = name.strip() + '.aux'
+            if not os.path.isfile(name2):
+                print '\n*** warning: need external file %s,' % name2
+                print '    but it does not exist (compile latex/pdflatex!)'
+                name2 = name + '.do.txt'
+                if not os.path.isfile(name2):
+                    print '*** error: external document %s listed in # Externaldocuments does not exist' % name2
+                    _abort()
 
     # labels inside tex envirs must have backslash \label:
     for i in range(len(tex_blocks)):
@@ -2678,10 +2688,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             INTRO['latex'] += '\n\n'
 
-    m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
-    if m:
-        INTRO['latex'] += '\\usepackage{fancyvrb}\n'
-
     m = re.search('^(!bc|@@@CODE|@@@CMD)', filestr, flags=re.MULTILINE)
     if m:
         if latex_code_style is None:
@@ -2697,7 +2703,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             # Rely on generating all code block environments directly
             INTRO['latex'] += r"""
 % Packages for typesetting blocks of computer code
-\usepackage{framed,fancyvrb,moreverb}
+\usepackage{fancyvrb,framed,moreverb}
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
@@ -2771,6 +2777,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
                 INTRO['latex'] += r'\usemintedstyle{%s}' % pygm_style + '\n'
 
+
+    m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
+    if m and 'usepackage{fancyvrb' not in INTRO['latex']:
+        INTRO['latex'] += '\\usepackage{fancyvrb}\n'
+        # Recall to insert \VerbatimFootnotes later, after hyperref
 
     if xelatex:
         INTRO['latex'] += r"""
@@ -2876,6 +2887,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  %% number chapter, section, subsection
 """ % vars()
+
+    if 'fancyvrb' in INTRO['latex']:
+        INTRO['latex'] += '\n\\VerbatimFootnotes\n'
 
     if 'FIGURE:' in filestr:
         if latex_style != 'Springer_lnup':
