@@ -81,6 +81,10 @@ system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-
 system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized')
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
+# Runestone sphinx books
+system('sudo pip install sphinxcontrib-paverutils')
+system('sudo pip install paver')
+system('sudo pip install cogapp')
 
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 system('sudo pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console')
