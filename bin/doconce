@@ -247,7 +247,6 @@ def sphinx_dir():
     f.write("""\
 #!/bin/bash
 rm -rf %(sphinx_rootdir)s
-rm -rf RunestoneTools
 echo Making %(sphinx_rootdir)s
 mkdir %(sphinx_rootdir)s
 sphinx-quickstart <<EOF
@@ -481,81 +480,87 @@ for staticdir in staticdirs:
 ''' % vars())
     # (Note: must do cp -r above since shutil.copy/copytree cannot copy a la cp -r)
     f.write('''
-# Compile web version of the sphinx document
 os.chdir(sphinx_rootdir)
-print os.getcwd()
-system('make clean')
-system('make html')
+if '--runestone' not in sys.argv:
+    # Compile web version of the sphinx document
+    print os.getcwd()
+    system('make clean')
+    system('make html')
 
-print 'Fix generated files:',
-os.chdir('_build/html')
-for filename in glob.glob('*.html') + glob.glob('.*.html'):
-    print filename,
-    f = open(filename, 'r'); text = f.read(); f.close()
-    # Fix double title in <title> tags
-    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
-    # Fix untranslated math (e.g. in figure captions and raw html)
-    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
-    # Fix links to movies
-    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
-    # Fix movie frames in javascript player
-    text = text.replace(r'.src = "mov', '.src = "_static/mov')
-    # Fix admonition style
-    text = text.replace('</head>', """
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-""")
+    print 'Fix generated files:',
+    os.chdir('_build/html')
+    for filename in glob.glob('*.html') + glob.glob('.*.html'):
+        print filename,
+        f = open(filename, 'r'); text = f.read(); f.close()
+        # Fix double title in <title> tags
+        text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+        # Fix untranslated math (e.g. in figure captions and raw html)
+        text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+        # Fix links to movies
+        text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+        # Fix movie frames in javascript player
+        text = text.replace(r'.src = "mov', '.src = "_static/mov')
+        # Fix admonition style
+        text = text.replace('</head>', """
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    """)
 
-    if os.path.isfile(filename + '.old~~'):
-        os.remove(filename + '.old~~')
-    # Check if external links should pop up in separate windows
-    if '.. NOTE: Open external links in new windows.' in text:
-        text = text.replace('<a class="reference external"',
-                            '<a class="reference external" target="_blank"')
-    f = open(filename, 'w'); f.write(text); f.close()
+        if os.path.isfile(filename + '.old~~'):
+            os.remove(filename + '.old~~')
+        # Check if external links should pop up in separate windows
+        if '.. NOTE: Open external links in new windows.' in text:
+            text = text.replace('<a class="reference external"',
+                                '<a class="reference external" target="_blank"')
+        f = open(filename, 'w'); f.write(text); f.close()
+    os.chdir('../../')
+    print """
 
-# Add directory for RunestoneInteractive book?
-os.chdir('../../../')
-if '--runestone' in sys.argv:
+google-chrome %(sphinx_rootdir)s/_build/html/index.html
+"""
+
+else:
+    # Add directory for RunestoneInteractive book
     use_runestonebooks_style = True  # False: use user-chosen style
     print """
 
 create RunestoneInteractive directory
 """
-    sys.path.insert(0, source_dir)
+    sys.path.insert(0, os.curdir)
     import conf as source_dir_conf  # read data from conf.py
+
     if not os.path.isdir('RunestoneTools'):
         system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
     os.chdir('RunestoneTools')
+
+    # Edit conf.py
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)
-    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../%%s/_themes"]' %% source_dir)
+    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../_themes"]')
     if not use_runestonebooks_style:
         text = text.replace("html_theme = 'sphinx_bootstrap'", "html_theme = '%%s'" %% source_dir_conf.html_theme)
         text = re.sub(r'html_theme_options = \{.+?\}', 'html_theme_options = ' + str(source_dir_conf.html_theme_options) if hasattr(source_dir_conf, 'html_theme_options') else 'html_theme_options = {}', text, flags=re.DOTALL)
     f = open('conf.py', 'w');  f.write(text);  f.close()
 
     # Copy .rst files from sphinx dir
-    rst_files = [os.path.join(os.pardir, source_dir, 'index.rst')] + glob.glob(os.path.join(os.pardir, source_dir, '._*.rst'))
+    rst_files = [os.path.join(os.pardir, 'index.rst')] + glob.glob(os.path.join(os.pardir, '*.rst')) + glob.glob(os.path.join(os.pardir, '._*.rst'))
     for filename in rst_files:
         shutil.copy(filename, '_sources')
+        print 'copying', filename, 'to _sources'
     print '*** running paver build to build the RunestoneInteractive book'
     system('paver build')
 
     print """
 
-google-chrome runestonetools/build/index.html
-"""
-print """
-google-chrome %(sphinx_rootdir)s/_build/html/index.html
+google-chrome %(sphinx_rootdir)s/RunestoneTools/build/index.html
 """
 ''' % vars())
     f.close()

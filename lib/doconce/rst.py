@@ -449,7 +449,8 @@ def rst_index_bib(filestr, index, citations, pubfile, pubdata):
 def rst_box(block, format, text_size='normal'):
     return """
 .. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
 
 %s
 """ % block
@@ -537,7 +538,7 @@ def rst_quiz(quiz):
     else:
         text += '\n\n**%s** ' % (question_prefix)
 
-    text += quiz['question'] + '\n'
+    text += quiz['question'] + '\n\n\n'
 
     # List choices as paragraphs
     for i, choice in enumerate(quiz['choices']):
@@ -552,17 +553,23 @@ def rst_quiz(quiz):
         else:
             choice_prefix += ' %d:' % choice_no
         if 1:
-            tooltip = answer
+            tooltip = ''
             if len(choice) == 3:
                 expl = choice[2]
+                # Must strip away all special typesetting in a tooltip,
+                # just plain text is allowed
+                for c in '`_*{}<>$()':
+                    if c in expl:
+                        expl = ''
             else:
                 expl = ''
             if expl:
                 tooltip += ' ' + ' '.join(expl.splitlines())
-            tooltip = ' title="%s"' % tooltip
+                text += '**%s** %s :abbr:`? (%s)` :abbr:`# (%s)`\n\n' % (choice_prefix, choice[1], answer, tooltip)
+            else: # no explanation
+                text += '**%s** %s :abbr:`? (%s)`\n\n' % (choice_prefix, choice[1], answer)
             #text += '**%s** :abbr:`%s (%s)`\n' % (choice_prefix, choice[1], tooltip)
             # or
-            text += '**%s** %s :abbr:`??? (%s)` :abbr:`explanation (%s)`\n' % (choice_prefix, choice[1], answer, tooltip)
 
     text += '.. end quiz\n\n'
     return text
