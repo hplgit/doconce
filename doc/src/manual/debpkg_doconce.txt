@@ -41,6 +41,10 @@ pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sph
 pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
 pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+# Runestone sphinx books
+pip install sphinxcontrib-paverutils
+pip install paver
+pip install cogapp
 
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console

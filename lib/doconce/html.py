@@ -1843,10 +1843,9 @@ def html_quiz(quiz):
             tooltip = answer
             if len(choice) == 3:
                 expl = choice[2]
-                formatted_code = False
                 for c in '\\$<>{}':
                     if c in expl:
-                        # formatted code in explanation, don't show
+                        # formatted code in explanation, don't show in tooltip
                         expl = ''
             else:
                 expl = ''

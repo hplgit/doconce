@@ -8654,6 +8654,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
    \MakeFramed{\advance\hsize-\width \FrameRestore}}%
  {\unskip\medskip\endMakeFramed}
 
+% Alternative (\vskip with positive skip adds colored space)
+%\newenvironment{cod}[1]{%
+%   \def\FrameCommand{\colorbox{#1}}%
+%   \MakeFramed{\FrameRestore}\vskip 0mm}%
+% {\vskip 0mm\endMakeFramed}
+
 % Background for complete program blocks (parameter 1 is color name
 % for background, parameter 2 is color for left bar)
 \newenvironment{pro}[2]{%
@@ -39199,6 +39205,7 @@ command_line_options = ' '.join(['"%s"' % arg for arg in sys.argv[1:]])
 
 sphinx_rootdir = 'sphinx-testdoc'
 source_dir = sphinx_rootdir
+
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
@@ -39306,8 +39313,43 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
     f = open(filename, 'w'); f.write(text); f.close()
-print """
 
+# Add directory for RunestoneInteractive book?
+os.chdir('../../../')
+if '--runestone' in sys.argv:
+    use_runestonebooks_style = True  # False: use user-chosen style
+    print """
+
+create RunestoneInteractive directory
+"""
+    sys.path.insert(0, source_dir)
+    import conf as source_dir_conf  # read data from conf.py
+    if not os.path.isdir('RunestoneTools'):
+        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
+    os.chdir('RunestoneTools')
+    f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
+    text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
+    text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
+    text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
+    text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)
+    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../%s/_themes"]' % source_dir)
+    if not use_runestonebooks_style:
+        text = text.replace("html_theme = 'sphinx_bootstrap'", "html_theme = '%s'" % source_dir_conf.html_theme)
+        text = re.sub(r'html_theme_options = \{.+?\}', 'html_theme_options = ' + str(source_dir_conf.html_theme_options) if hasattr(source_dir_conf, 'html_theme_options') else 'html_theme_options = {}', text, flags=re.DOTALL)
+    f = open('conf.py', 'w');  f.write(text);  f.close()
+
+    # Copy .rst files from sphinx dir
+    rst_files = [os.path.join(os.pardir, source_dir, 'index.rst')] + glob.glob(os.path.join(os.pardir, source_dir, '._*.rst'))
+    for filename in rst_files:
+        shutil.copy(filename, '_sources')
+    print '*** running paver build to build the RunestoneInteractive book'
+    system('paver build')
+
+    print """
+
+google-chrome runestonetools/build/index.html
+"""
+print """
 google-chrome sphinx-testdoc/_build/html/index.html
 """
 
@@ -39328,6 +39370,7 @@ command_line_options = ' '.join(['"%s"' % arg for arg in sys.argv[1:]])
 
 sphinx_rootdir = 'sphinx-rootdir-math'
 source_dir = sphinx_rootdir
+
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
@@ -39447,8 +39490,43 @@ for filename in glob.glob('*.html') + glob.glob('.*.html'):
         text = text.replace('<a class="reference external"',
                             '<a class="reference external" target="_blank"')
     f = open(filename, 'w'); f.write(text); f.close()
-print """
 
+# Add directory for RunestoneInteractive book?
+os.chdir('../../../')
+if '--runestone' in sys.argv:
+    use_runestonebooks_style = True  # False: use user-chosen style
+    print """
+
+create RunestoneInteractive directory
+"""
+    sys.path.insert(0, source_dir)
+    import conf as source_dir_conf  # read data from conf.py
+    if not os.path.isdir('RunestoneTools'):
+        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
+    os.chdir('RunestoneTools')
+    f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
+    text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
+    text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
+    text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
+    text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)
+    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../%s/_themes"]' % source_dir)
+    if not use_runestonebooks_style:
+        text = text.replace("html_theme = 'sphinx_bootstrap'", "html_theme = '%s'" % source_dir_conf.html_theme)
+        text = re.sub(r'html_theme_options = \{.+?\}', 'html_theme_options = ' + str(source_dir_conf.html_theme_options) if hasattr(source_dir_conf, 'html_theme_options') else 'html_theme_options = {}', text, flags=re.DOTALL)
+    f = open('conf.py', 'w');  f.write(text);  f.close()
+
+    # Copy .rst files from sphinx dir
+    rst_files = [os.path.join(os.pardir, source_dir, 'index.rst')] + glob.glob(os.path.join(os.pardir, source_dir, '._*.rst'))
+    for filename in rst_files:
+        shutil.copy(filename, '_sources')
+    print '*** running paver build to build the RunestoneInteractive book'
+    system('paver build')
+
+    print """
+
+google-chrome runestonetools/build/index.html
+"""
+print """
 google-chrome sphinx-rootdir-math/_build/html/index.html
 """
 
@@ -71549,7 +71627,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f4bcc123320>
+verbatim is to be replaced using <function html_verbatim at 0x7f4d56cd32a8>
 
 
 First occurence: " `mako`."
@@ -75522,7 +75600,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Mar 28 08:19:48 2015.
+# sphinx-quickstart on Sat Mar 28 17:33:29 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79440,6 +79518,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
    \def\FrameCommand{\colorbox{#1}}%
    \MakeFramed{\advance\hsize-\width \FrameRestore}}%
  {\unskip\medskip\endMakeFramed}
+
+% Alternative (\vskip with positive skip adds colored space)
+%\newenvironment{cod}[1]{%
+%   \def\FrameCommand{\colorbox{#1}}%
+%   \MakeFramed{\FrameRestore}\vskip 0mm}%
+% {\vskip 0mm\endMakeFramed}
 
 % Background for complete program blocks (parameter 1 is color name
 % for background, parameter 2 is color for left bar)
@@ -96506,7 +96590,6 @@ copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html ._testdoc002.html ._testdoc000.html ._testdoc001.html 
-
 google-chrome sphinx-testdoc/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
@@ -98359,7 +98442,6 @@ Build finished. The HTML pages are in _build/html.
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html math_test.html 
-
 google-chrome sphinx-rootdir-math/_build/html/index.html
 
 + doconce format pandoc math_test
@@ -101334,7 +101416,6 @@ copying ../doc/src/manual/fig/wave1D.png to tmp_admon
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html admon.html 
-
 google-chrome tmp_admon/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
@@ -106864,7 +106945,6 @@ Build finished. The HTML pages are in _build/html.
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html quickref.html 
-
 google-chrome sphinx-rootdir/_build/html/index.html
 
 + '[' 0 -ne 0 ']'

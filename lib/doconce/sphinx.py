@@ -6,6 +6,7 @@ from common import align2equations, online_python_tutor, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option, _abort
 
+codelens_counter = 0
 video_counter = 0
 activecode_counter = 0
 edit_markup_warning = False
