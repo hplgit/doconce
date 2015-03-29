@@ -241,16 +241,10 @@ def sphinx_dir():
     print
     time.sleep(1.5)
 
-    if runestone:
-        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git %(sphinx-rootdir)s' % vars())
-        os.chdir(sphinx_rootdir)
-        if conf_py is None:
-            shutil.copy('conf.py.prototype', 'conf.py')
-            make_conf_py_runestone(themes, theme, title, short_title,
-                                   author, logo, intersphinx)
-    else:
-        f = open('tmp_sphinx_gen.sh', 'w')
-        f.write("""\
+    #make_conf_py_runestone(themes, theme, title, short_title,
+    #                       author, logo, intersphinx)
+    f = open('tmp_sphinx_gen.sh', 'w')
+    f.write("""\
 #!/bin/bash
 rm -rf %(sphinx_rootdir)s
 echo Making %(sphinx_rootdir)s
@@ -280,37 +274,37 @@ y
 y
 EOF
 """ % vars())
-        f.close()
-        system('sh tmp_sphinx_gen.sh', failure_info='to generate sphinx directory')
-        os.remove('tmp_sphinx_gen.sh')
-        os.chdir(sphinx_rootdir)
+    f.close()
+    system('sh tmp_sphinx_gen.sh', failure_info='to generate sphinx directory')
+    os.remove('tmp_sphinx_gen.sh')
+    os.chdir(sphinx_rootdir)
 
-        if theme_dir is None:
-            # Copy themes
-            import doconce.common
-            install_dir = doconce.common.where()
-            shutil.copy(os.path.join(install_dir, 'sphinx_themes.zip'), os.curdir)
-            system('unzip sphinx_themes.zip > /dev/null')
-            os.remove('sphinx_themes.zip')
-            os.rename('sphinx_themes', '_themes')
-            files = sorted(glob.glob(os.path.join('_themes', '*')))
-            themes = [name[8:] for name in files
-                      if os.path.isdir(name)] + ['default']
-            print 'These Sphinx themes were found:', ', '.join(themes)
+    if theme_dir is None:
+        # Copy themes
+        import doconce.common
+        install_dir = doconce.common.where()
+        shutil.copy(os.path.join(install_dir, 'sphinx_themes.zip'), os.curdir)
+        system('unzip sphinx_themes.zip > /dev/null')
+        os.remove('sphinx_themes.zip')
+        os.rename('sphinx_themes', '_themes')
+        files = sorted(glob.glob(os.path.join('_themes', '*')))
+        themes = [name[8:] for name in files
+                  if os.path.isdir(name)] + ['default']
+        print 'These Sphinx themes were found:', ', '.join(themes)
 
-            if conf_py is None:
-                make_conf_py(themes, theme, title, short_title,
-                             author, logo, intersphinx)
-        else:
-            # Copy theme_dir
-            os.mkdir('_themes')
-            shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
+        if conf_py is None:
+            make_conf_py(themes, theme, title, short_title,
+                         author, logo, intersphinx)
+    else:
+        # Copy theme_dir
+        os.mkdir('_themes')
+        shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
-        if conf_py is not None:
-            shutil.copy(os.path.join(os.pardir, conf_py), os.basename(conf.py))
+    if conf_py is not None:
+        shutil.copy(os.path.join(os.pardir, conf_py), os.basename(conf.py))
 
-        f = open('make_themes.sh', 'w')
-        f.write("""#!/bin/sh
+    f = open('make_themes.sh', 'w')
+    f.write("""#!/bin/sh
 # Make all themes given on the command line (or if no themes are
 # given, make all themes in _themes/)
 
@@ -333,11 +327,9 @@ ls -d sphinx-*
 echo "for i in sphinx-*; do google-chrome $i/index.html; done"
 
 """ % (' '.join(themes)))
-        f.close()
-        os.chmod('make_themes.sh', 0755)
+    f.close()
+    os.chmod('make_themes.sh', 0755)
 
-    if runestone:
-        os.chdir('_sources')
     f = open('index.rst', 'w')
     if parts:
         files = parts
@@ -367,8 +359,6 @@ Indices and tables
 * :ref:`search`
 """ % vars())
     f.close()
-    if runestone:
-        os.chdir(os.pardir)
     os.chdir(os.pardir)
     f = open('automake_sphinx.py', 'w')
     f.write('''\
@@ -387,12 +377,8 @@ import glob, sys, os, commands, shutil
 command_line_options = ' '.join(['"%%s"' %% arg for arg in sys.argv[1:]])
 
 sphinx_rootdir = '%(sphinx_rootdir)s'
-''' % vars())
-    if runestone:
-        f.write("source_dir = os.path.join(sphinx_rootdir, '_sources')\n")
-    else:
-        f.write("source_dir = sphinx_rootdir")
-    f.write('''
+source_dir = sphinx_rootdir
+
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
@@ -493,58 +479,88 @@ for staticdir in staticdirs:
     system('cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars())
 ''' % vars())
     # (Note: must do cp -r above since shutil.copy/copytree cannot copy a la cp -r)
-    if runestone:
-        # Fix paver script
-        system("""doconce replace "project_name = 'template'" "project_name = '%s'" pavement.py""" % title)
-        f.write('''
-# Compile RunestoneInteractive document
+    f.write('''
 os.chdir(sphinx_rootdir)
-print os.getcwd()
-paver build
+if '--runestone' not in sys.argv:
+    # Compile web version of the sphinx document
+    print os.getcwd()
+    system('make clean')
+    system('make html')
 
-''' % vars())
-    else:
-        f.write('''
-# Compile web version of the sphinx document
-os.chdir(sphinx_rootdir)
-print os.getcwd()
-system('make clean')
-system('make html')
+    print 'Fix generated files:',
+    os.chdir('_build/html')
+    for filename in glob.glob('*.html') + glob.glob('.*.html'):
+        print filename,
+        f = open(filename, 'r'); text = f.read(); f.close()
+        # Fix double title in <title> tags
+        text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+        # Fix untranslated math (e.g. in figure captions and raw html)
+        text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+        # Fix links to movies
+        text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+        # Fix movie frames in javascript player
+        text = text.replace(r'.src = "mov', '.src = "_static/mov')
+        # Fix admonition style
+        text = text.replace('</head>', """
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    """)
 
-print 'Fix generated files:',
-os.chdir('_build/html')
-for filename in glob.glob('*.html') + glob.glob('.*.html'):
-    print filename,
-    f = open(filename, 'r'); text = f.read(); f.close()
-    # Fix double title in <title> tags
-    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
-    # Fix untranslated math (e.g. in figure captions and raw html)
-    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
-    # Fix links to movies
-    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
-    # Fix movie frames in javascript player
-    text = text.replace(r'.src = "mov', '.src = "_static/mov')
-    # Fix admonition style
-    text = text.replace('</head>', """
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-""")
-
-    if os.path.isfile(filename + '.old~~'):
-        os.remove(filename + '.old~~')
-    # Check if external links should pop up in separate windows
-    if '.. NOTE: Open external links in new windows.' in text:
-        text = text.replace('<a class="reference external"',
-                            '<a class="reference external" target="_blank"')
-    f = open(filename, 'w'); f.write(text); f.close()
-print """
+        if os.path.isfile(filename + '.old~~'):
+            os.remove(filename + '.old~~')
+        # Check if external links should pop up in separate windows
+        if '.. NOTE: Open external links in new windows.' in text:
+            text = text.replace('<a class="reference external"',
+                                '<a class="reference external" target="_blank"')
+        f = open(filename, 'w'); f.write(text); f.close()
+    os.chdir('../../')
+    print """
 
 google-chrome %(sphinx_rootdir)s/_build/html/index.html
+"""
+
+else:
+    # Add directory for RunestoneInteractive book
+    use_runestonebooks_style = True  # False: use user-chosen style
+    print """
+
+create RunestoneInteractive directory
+"""
+    sys.path.insert(0, os.curdir)
+    import conf as source_dir_conf  # read data from conf.py
+
+    if not os.path.isdir('RunestoneTools'):
+        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
+    os.chdir('RunestoneTools')
+
+    # Edit conf.py
+    f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
+    text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
+    text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
+    text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
+    text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)
+    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../_themes"]')
+    if not use_runestonebooks_style:
+        text = text.replace("html_theme = 'sphinx_bootstrap'", "html_theme = '%%s'" %% source_dir_conf.html_theme)
+        text = re.sub(r'html_theme_options = \{.+?\}', 'html_theme_options = ' + str(source_dir_conf.html_theme_options) if hasattr(source_dir_conf, 'html_theme_options') else 'html_theme_options = {}', text, flags=re.DOTALL)
+    f = open('conf.py', 'w');  f.write(text);  f.close()
+
+    # Copy .rst files from sphinx dir
+    rst_files = [os.path.join(os.pardir, 'index.rst')] + glob.glob(os.path.join(os.pardir, '*.rst')) + glob.glob(os.path.join(os.pardir, '._*.rst'))
+    for filename in rst_files:
+        shutil.copy(filename, '_sources')
+        print 'copying', filename, 'to _sources'
+    print '*** running paver build to build the RunestoneInteractive book'
+    system('paver build')
+
+    print """
+
+google-chrome %(sphinx_rootdir)s/RunestoneTools/build/index.html
 """
 ''' % vars())
     f.close()

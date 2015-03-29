@@ -449,7 +449,8 @@ def rst_index_bib(filestr, index, citations, pubfile, pubdata):
 def rst_box(block, format, text_size='normal'):
     return """
 .. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
 
 %s
 """ % block
@@ -515,9 +516,67 @@ def rst_notice(block, format, title='Notice', text_size='normal'):
         return rst_admon(block, format, title, text_size)
 
 def rst_quiz(quiz):
-    text = html_quiz(quiz)
-    text = '.. raw:: html\n' + indent_lines(text, format, ' '*4) + '\n'
+    # Note: should be a native rendering here, and one for sphinx, otherwise
+    # math and code will not work properly in raw html environments (only
+    # plain text quiz)
+
+    question_prefix = quiz.get('question prefix',
+                               option('quiz_question_prefix=', 'Question:'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
+
+    # Sphinx tooltop: :abbr:`TERM (explanation in tooltip)`
+    # Can e.g. just have the right answer number as tooltip!
+
+    text = ''
+    if 'new page' in quiz:
+        text += '.. !split\n%s\n%s' % (quiz['new page'], '-'*len(quiz['new page']))
+
+    text += '.. begin quiz\n\n'
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
+        pass
+    else:
+        text += '\n\n**%s** ' % (question_prefix)
+
+    text += quiz['question'] + '\n\n\n'
+
+    # List choices as paragraphs
+    for i, choice in enumerate(quiz['choices']):
+        choice_no = i+1
+        answer = choice[0].capitalize() + '!'
+        choice_prefix = common_choice_prefix
+        if 'choice prefix' in quiz:
+            if isinstance(quiz['choice prefix'][i], basestring):
+                choice_prefix = quiz['choice prefix'][i]
+        if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
+            pass  # don't add choice number
+        else:
+            choice_prefix += ' %d:' % choice_no
+        if 1:
+            tooltip = ''
+            if len(choice) == 3:
+                expl = choice[2]
+                # Must strip away all special typesetting in a tooltip,
+                # just plain text is allowed
+                for c in '`_*{}<>$()':
+                    if c in expl:
+                        expl = ''
+            else:
+                expl = ''
+            if expl:
+                tooltip += ' ' + ' '.join(expl.splitlines())
+                text += '**%s** %s :abbr:`? (%s)` :abbr:`# (%s)`\n\n' % (choice_prefix, choice[1], answer, tooltip)
+            else: # no explanation
+                text += '**%s** %s :abbr:`? (%s)`\n\n' % (choice_prefix, choice[1], answer)
+            #text += '**%s** :abbr:`%s (%s)`\n' % (choice_prefix, choice[1], tooltip)
+            # or
+
+    text += '.. end quiz\n\n'
     return text
+
+    #text = html_quiz(quiz)
+    #text = '.. raw:: html\n' + indent_lines(text, format, ' '*4) + '\n'
+    #return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

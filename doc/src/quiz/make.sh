@@ -1,6 +1,19 @@
 #!/bin/sh
 sh -x clean.sh
 
+# Sphinx
+doconce format sphinx quiz
+doconce split_rst quiz
+doconce sphinx_dir dirname=sphinx quiz
+python automake_sphinx.py
+
+# Sphinx RunestoneInteractive
+doconce format sphinx quiz --runestone
+doconce split_rst quiz
+doconce sphinx_dir dirname=sphinx-rs quiz
+python automake_sphinx.py --runestone
+exit
+
 # HTML Bootstrap format
 doconce format html quiz --html_style=bootstrap --html_code_style=inherit -DDOCONCE --quiz_horizontal_rule=off
 doconce split_html quiz.html #--pagination

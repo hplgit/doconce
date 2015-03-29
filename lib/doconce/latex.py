@@ -2755,6 +2755,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
    \MakeFramed{\advance\hsize-\width \FrameRestore}}%
  {\unskip\medskip\endMakeFramed}
 
+% Alternative (\vskip with positive skip adds colored space)
+%\newenvironment{cod}[1]{%
+%   \def\FrameCommand{\colorbox{#1}}%
+%   \MakeFramed{\FrameRestore}\vskip 0mm}%
+% {\vskip 0mm\endMakeFramed}
+
 % Background for complete program blocks (parameter 1 is color name
 % for background, parameter 2 is color for left bar)
 \newenvironment{pro}[2]{%

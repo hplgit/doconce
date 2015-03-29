@@ -6,8 +6,12 @@ from common import align2equations, online_python_tutor, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
 from misc import option, _abort
 
+# RunestoneInteractive book counters
+question_counter = 0
+codelens_counter = 0
 video_counter = 0
 activecode_counter = 0
+
 edit_markup_warning = False
 
 def sphinx_figure(m):
@@ -87,6 +91,66 @@ def sphinx_movie(m):
         return rst_movie(m)
 
 
+def sphinx_quiz_runestone(quiz):
+    text = ''
+    if 'new page' in quiz:
+        text += '.. !split\n%s\n%s' % (quiz['new page'], '-'*len(quiz['new page']))
+
+    text += '.. begin quiz\n\n'
+    global question_counter
+    question_counter += 1
+    # Multiple correct answers?
+    if sum([1 for choice in quiz['choices'] if choice[0] == 'right']) > 1:
+        text += '.. mchoicema:: question_%d' % question_counter + '\n'
+    else:
+        text += '.. mchoicemf:: question_%d' % question_counter + '\n'
+
+    def fix_text(s):
+        """
+        Answers and feedback in RunestoneInteractive book quizzes
+        cannot contain math and rst markup. Perform fixes.
+        """
+        if 'math::' in s:
+            print '\n*** warning: quiz content with math block not supported:'
+            print s
+        if '\\(' in s:
+            print '\n*** warning: quiz content with inline math not supported:'
+            print s
+        if '.. code-block::' in s:
+            print '\n*** warning: quiz content with code block not supported:'
+            print s
+        pattern = r'`(.+?) (<https?.+?)>`__'  # URL
+        s = re.sub(pattern, '<a href="\g<2>"> \g<1> </a>', s)
+        pattern = r'``(.+?)``'  # verbatim
+        s = re.sub(pattern, '<tt>\g<1></tt>', s)
+        return s
+
+    import string
+    correct = []
+    for i, choice in enumerate(quiz['choices']):
+        letter = string.ascii_lowercase[i]
+        text += '   :answer_%s: ' % letter
+        answer = fix_text(' '.join(choice[1].splitlines()).rstrip())
+        text += answer + '\n'
+        if choice[0] == 'right':
+            correct.append(letter)
+    text += '   :correct: ' + ', '.join(correct) + '\n'
+    for i, choice in enumerate(quiz['choices']):
+        letter = string.ascii_lowercase[i]
+        if len(choice) == 3:
+            feedback = fix_text(' '.join(choice[2].splitlines()).rstrip())
+            text += '   :feedback_%s: ' % letter + feedback + '\n'
+
+    text += '\n' + indent_lines(quiz['question'], 'sphinx', ' '*3) + '\n\n\n'
+    return text
+
+def sphinx_quiz(quiz):
+    if option('runestone'):
+        return sphinx_quiz_runestone(quiz)
+    else:
+        return rst_quiz(quiz)
+
+
 from latex import fix_latex_command_regex as fix_latex
 
 def sphinx_code(filestr, code_blocks, code_block_types,
@@ -136,7 +200,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     # First indent all code blocks
 
     for i in range(len(code_blocks)):
-        if code_block_types[i].startswith('pyoptpro'):
+        if code_block_types[i].startswith('pyoptpro') and not option('runestone'):
             code_blocks[i] = online_python_tutor(code_blocks[i],
                                                  return_tp='iframe')
         code_blocks[i] = indent_lines(code_blocks[i], format)
@@ -588,7 +652,7 @@ def define(FILENAME_EXTENSION,
         }
 
     TOC['sphinx'] = lambda s: ''  # Sphinx automatically generates a toc
-    QUIZ['sphinx'] = QUIZ['rst']
+    QUIZ['sphinx'] = sphinx_quiz
 
 
 
