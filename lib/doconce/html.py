@@ -1853,15 +1853,14 @@ def html_quiz(quiz):
             # Should remove markup
             pattern = r'<a href="(.+?)">(.*?)</a>'  # URL
             expl = re.sub(pattern, '\g<2> (\g<1>)', expl)
-            pattern = r'<code>(.+?)</code>'  # verbatim
-            expl = re.sub(pattern, '\g<1>', expl)
             pattern = r'\\( (.+?) \\)'  # inline math
             expl = re.sub(pattern, '\g<1>', expl)  # mimic italic....
-            tooltip = ' '.join(expl.splitlines())
-            if expl:
-                tooltip += ' ' + ' '.join(expl.splitlines())
-            tooltip = ' title="%s"' % tooltip
-            text += '\n<p><div%s><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
+            tags = 'p blockquote em code b'.split()
+            for tag in tags:
+                expl = expl.replace('<%s>' % tag, ' ')
+                expl = expl.replace('</%s>' % tag, ' ')
+            tooltip = answer + ' ' + ' '.join(expl.splitlines())
+            text += '\n<p><div title="%s"><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
         else:
             id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
             if len(choice) == 3:
