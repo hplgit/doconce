@@ -541,6 +541,7 @@ create RunestoneInteractive directory
     # Edit conf.py
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
+    text = text.replace('<INSERT YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)

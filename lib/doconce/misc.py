@@ -452,6 +452,10 @@ results in no prefix/title before the the answer "Two".
 """),
     ('--quiz_horizontal_rule=',
      'on (default): <hr> before and after quiz in HTML. off: no <hr>.'),
+    ('--quiz_explanations=',
+     """on/off
+(some output formats do not support explanations with figures,
+math and/or code, this option turns all explanations off."""),
     ('--rst_uio',
      'Univ. of Oslo version of rst files for their Vortex system.'),
     ('--rst_mathjax',

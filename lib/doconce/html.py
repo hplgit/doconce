@@ -1279,8 +1279,8 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
                 newtext, n = re.subn(r'`(.+?)`', r'\g<1>', text)
                 if n > 0:
                     print '*** warning: found inline code tag `...` in footnote, which was removed'
-                    print '    in tooltip (since it does not work with bootstrap tooltips)'
-                    print text
+                    print '    in tooltip (since it does not work with bootstrap tooltips):'
+                    print text, '\n'
                 text = newtext
             if '"' in text:
                 newtext, n1 = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
@@ -1813,6 +1813,7 @@ def html_quiz(quiz):
                                option('quiz_question_prefix=', 'Question:'))
     common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
     hr = '<hr>' if option('quiz_horizontal_rule=', 'on') == 'on' else ''
+    quiz_expl = option('quiz_explanations=', 'on')
 
     text = ''
     if 'new page' in quiz:
@@ -1841,14 +1842,22 @@ def html_quiz(quiz):
             choice_prefix += ' %d:' % choice_no
         if not bootstrap:  # plain html: show tooltip when hovering over choices
             tooltip = answer
-            if len(choice) == 3:
+            expl = ''
+            if len(choice) == 3 and quiz_expl == 'on':
                 expl = choice[2]
-                for c in '\\$<>{}':
-                    if c in expl:
-                        # formatted code in explanation, don't show in tooltip
-                        expl = ''
-            else:
-                expl = ''
+            if '<img' in expl or '$$' in expl or '<pre' in expl:
+                print '*** warning: quiz explanation contains block (fig/code/math)'
+                print '    and is therefore skipped'
+                print expl, '\n'
+                expl = ''  # drop explanation when it needs blocks
+            # Should remove markup
+            pattern = r'<a href="(.+?)">(.*?)</a>'  # URL
+            expl = re.sub(pattern, '\g<2> (\g<1>)', expl)
+            pattern = r'<code>(.+?)</code>'  # verbatim
+            expl = re.sub(pattern, '\g<1>', expl)
+            pattern = r'\\( (.+?) \\)'  # inline math
+            expl = re.sub(pattern, '\g<1>', expl)  # mimic italic....
+            tooltip = ' '.join(expl.splitlines())
             if expl:
                 tooltip += ' ' + ' '.join(expl.splitlines())
             tooltip = ' title="%s"' % tooltip

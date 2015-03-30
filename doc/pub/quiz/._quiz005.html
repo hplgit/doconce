@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Software Tool for Typesetting Quizzes">
 
-
+<title>A Software Tool for Typesetting Quizzes</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 */
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -34,7 +35,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' Question and choices ', 2, None, '___sec1'),
               (' Explanations of choices ', 2, None, '___sec2'),
               (' Typesetting ', 2, None, '___sec3'),
-              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
+              (' Quiz inside admonitions ', 2, None, '___sec4'),
               (' Typesetting of mathematics and computer code ',
                1,
                None,
@@ -61,7 +62,8 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                3,
                None,
                '___sec18'),
-              (' LaTeX ', 2, None, '___sec19')]}
+              (' LaTeX ', 2, None, '___sec19'),
+              (' Sphinx ', 2, None, '___sec20')]}
 end of tocinfo -->
 
 <body>
@@ -72,16 +74,13 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -101,20 +100,21 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "A pure text quiz" --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
-     <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
-     <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
-     <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
-     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
-     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
-     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
-     <!-- navigation toc: "Computer code" --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
-     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
-     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
-     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
-     <!-- navigation toc: "Translating the quiz format to HTML or PDF" --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
-     <!-- navigation toc: "HTML" --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
-     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
 
         </ul>
       </li>
@@ -130,8 +130,9 @@ MathJax.Hub.Config({
 <a name="part0005"></a>
 <!-- !split -->
 
-<h1>Translating the quiz format to HTML or PDF  <a name="___sec13"></a></h1>
+<h1 id="___sec13">Translating the quiz format to HTML or PDF </h1>
 
+<p>
 The program <code>doconce</code> must be run to interpret the quiz format, translate
 it to LaTeX, HTML, or other formats, and produce the Python representation
 of the collection of quizzes in a document. Let the name of the
@@ -139,10 +140,11 @@ document with quiz specifications and optional text be <code>myquiz.do.txt</code
 Documents to play around with are <a href="https://github.com/hplgit/doconce/tree/master/doc/src/quiz/pure_quiz.do.txt" target="_self"><tt>pure_quiz.do.txt</tt></a> or
 <a href="https://github.com/hplgit/doconce/tree/master/doc/src/quiz/quiz.do.txt" target="_self">the present document</a>.
 
-<h2>HTML  <a name="___sec14"></a></h2>
+<h2 id="___sec14">HTML </h2>
 
-<h3>Plain HTML  <a name="___sec15"></a></h3>
+<h3 id="___sec15">Plain HTML </h3>
 
+<p>
 A simple HTML rendering of quizzes is done by
 
 <p>
@@ -153,8 +155,9 @@ A simple HTML rendering of quizzes is done by
 <p>
 The result <code>myquiz.html</code> can be loaded into a browser.
 
-<h3>Bootstrap HTML  <a name="___sec16"></a></h3>
+<h3 id="___sec16">Bootstrap HTML </h3>
 
+<p>
 A more sophisticated rendering is offered if a Bootstrap HTML style
 is adopted,
 
@@ -170,15 +173,16 @@ Other variations of this class of styles are <code>bootswatch</code>, and
 
 <p>
 The Bootstrap-based styles have a striking red color for inline computer
-code, which can be avoided by giving the option <code>html_code_style=inherit</code>.
-See the documentation of <a href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" target="_self">DocOnce and Bootstrap</a> for details and examples.
+code, which can be avoided by giving the option <code>--html_code_style=inherit</code>
+(see the documentation of <a href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" target="_self">DocOnce and Bootstrap</a> for details and examples).
 
 <p>
 By default, there is a horizontal rule enclosing each quiz in the HTML format.
 This can be turned off by the option <code>--quiz_horizontal_rule=off</code>.
 
-<h3>Multiple page HTML document  <a name="___sec17"></a></h3>
+<h3 id="___sec17">Multiple page HTML document </h3>
 
+<p>
 By inserting <code>!split</code> before headings in a DocOnce document, one can run
 
 <p>
@@ -190,24 +194,27 @@ By inserting <code>!split</code> before headings in a DocOnce document, one can 
 to create a multi-page document with navigation arrows. Bootstrap styles
 will also have a <em>Contents</em> pull-down menu to the right in the top bar.
 Without the <code>split_html</code> command (and <code>!split</code> instructions in the document),
-all the text will be in one HTML page.
+all quizzes will be in one HTML page.
 
-<h3>Setting the question and choice prefix  <a name="___sec18"></a></h3>
+<h3 id="___sec18">Setting the question and choice prefix </h3>
 
+<p>
 The prefix before a question is <code>Question:</code> and before a choice is <code>Choice X</code>,
 where <code>X</code> is a number. To set a different prefix, see the
 <code>--quiz_question_prefix</code> and <code>--quiz_choice_prefix</code> commands
 when running <code>doconce format --help</code>.
 
-<h2>LaTeX  <a name="___sec19"></a></h2>
+<h2 id="___sec19">LaTeX </h2>
 
+<p>
 The standard command to produce a LaTeX document is
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex myquiz \
-          --without_answers --without_solutions
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex myquiz \ 
+          --without_answers --without_solutions \ 
+          --latex_code_style=pyg
 </pre></div>
 <p>
 If desired, the correct answer to each quiz can be included by omitting
@@ -215,24 +222,51 @@ If desired, the correct answer to each quiz can be included by omitting
 the right answers and the available explanations below the quiz.
 
 <p>
-The next steps are
+The next step is to compile the document:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce ptex2tex myquiz envir=minted
-Terminal&gt; pdflatex -shell-escape myquiz
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; pdflatex -shell-escape myquiz
 </pre></div>
 <p>
-to produce a PDF <code>myquiz.pdf</code>. The <code>doconce ptex2tex</code> step enables a lot
-of different typesetting of blocks of computer code.
-Here, we use the <code>minted</code> style, which applies the Pygments package.
-The default (no <code>envir</code> specification) is a plain LaTeX verbatim environment.
-Even more possibilities for typesetting computer code exist if
-one runs the <code>ptex2tex</code> program (and not <code>doconce ptex2tex</code>).
+to produce a PDF <code>myquiz.pdf</code>.
+Here, we use the <code>pyg</code> (Pygments, LaTeX package <code>minted</code>) style
+for code blocks, which requires the <code>-shell-escape</code> option when running
+<code>pdflatex</code>.
+
+<h2 id="___sec20">Sphinx </h2>
+
+<p>
+A typical session for creating a Sphinx document is
 
 <p>
 
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphinx myquiz
+Terminal&gt; doconce split_rst myquiz
+Terminal&gt; doconce sphinx_dir dirname=sphinx theme=default myquiz
+Terminal&gt; python automake_sphinx.py
+</pre></div>
+<p>
+A disadvantage of Sphinx in a quiz context is that admonitions cannot
+contain quizzes. However, an advantage of Sphinx is that one can
+create RunestoneInteractive Sphinx books, which have nice browser
+support of quizzes. A RunestoneInteractive version is created by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphinx myquiz --runestone
+Terminal&gt; doconce split_rst myquiz
+Terminal&gt; doconce sphinx_dir dirname=sphinx theme=default myquiz
+Terminal&gt; python automake_sphinx.py --runestone
+</pre></div>
+<p>
+<!-- Pointer to demo -->
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._quiz004.html">&larr; Prev</a>
@@ -255,4 +289,3 @@ one runs the <code>ptex2tex</code> program (and not <code>doconce ptex2tex</code
 </body>
 </html>
     
-

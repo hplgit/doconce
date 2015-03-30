@@ -523,7 +523,7 @@ def rst_quiz(quiz):
     question_prefix = quiz.get('question prefix',
                                option('quiz_question_prefix=', 'Question:'))
     common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
-
+    quiz_expl = option('quiz_explanations=', 'on')
     # Sphinx tooltop: :abbr:`TERM (explanation in tooltip)`
     # Can e.g. just have the right answer number as tooltip!
 
@@ -536,7 +536,12 @@ def rst_quiz(quiz):
     if quiz.get('embedding', 'None') in ['exercise',]:
         pass
     else:
-        text += '\n\n**%s** ' % (question_prefix)
+        text += '\n\n'
+        if question_prefix:
+            text += '**%s** ' % (question_prefix)
+            if quiz['question'].lstrip().startswith('..'):
+                # block, add extra \n
+                text += '\n\n'
 
     text += quiz['question'] + '\n\n\n'
 
@@ -552,24 +557,31 @@ def rst_quiz(quiz):
             pass  # don't add choice number
         else:
             choice_prefix += ' %d:' % choice_no
-        if 1:
-            tooltip = ''
-            if len(choice) == 3:
-                expl = choice[2]
-                # Must strip away all special typesetting in a tooltip,
-                # just plain text is allowed
-                for c in '`_*{}<>$()':
-                    if c in expl:
-                        expl = ''
-            else:
-                expl = ''
-            if expl:
-                tooltip += ' ' + ' '.join(expl.splitlines())
-                text += '**%s** %s :abbr:`? (%s)` :abbr:`# (%s)`\n\n' % (choice_prefix, choice[1], answer, tooltip)
-            else: # no explanation
-                text += '**%s** %s :abbr:`? (%s)`\n\n' % (choice_prefix, choice[1], answer)
-            #text += '**%s** :abbr:`%s (%s)`\n' % (choice_prefix, choice[1], tooltip)
-            # or
+
+        expl = ''
+        if len(choice) == 3 and quiz_expl == 'on':
+            expl = choice[2]
+            if '.. figure::' in expl or 'math::' in expl or '.. code-block::' in expl:
+                print '*** warning: quiz explanation contains block (fig/code/math)'
+                print '    and is therefore skipped'
+                print expl, '\n'
+                expl = ''  # drop explanation when it needs blocks
+            # Should remove markup
+            pattern = r'`(.+?) (<https?.+?)>`__'  # URL
+            expl = re.sub(pattern, '\g<1> (\g<2>)', expl)
+            pattern = r'``(.+?)``'  # verbatim
+            expl = re.sub(pattern, '\g<1>', expl)
+            pattern = r':math:`(.+?)`'  # inline math
+            expl = re.sub(pattern, '\g<1>', expl)  # mimic italic....
+            pattern = r':\*\*(.+?)\*\*'  # bold
+            expl = re.sub(pattern, '\g<1>', expl, flags=re.DOTALL)
+            pattern = r':\*(.+?)\*'  # emphasize
+            expl = re.sub(pattern, '\g<1>', expl, flags=re.DOTALL)
+            tooltip = ' '.join(expl.splitlines())
+        if expl:
+            text += '**%s** %s :abbr:`? (%s)` :abbr:`# (%s)`\n\n' % (choice_prefix, choice[1], answer, tooltip)
+        else: # no explanation
+            text += '**%s** %s :abbr:`? (%s)`\n\n' % (choice_prefix, choice[1], answer)
 
     text += '.. end quiz\n\n'
     return text
