@@ -124,6 +124,7 @@ multimarkdown_output = False
 #quiz_question_prefix = 
 #quiz_choice_prefix = 
 #quiz_horizontal_rule = 
+#quiz_explanations = 
 rst_uio = False
 rst_mathjax = False
 sphinx_keep_splits = False

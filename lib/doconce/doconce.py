@@ -2766,10 +2766,15 @@ def extract_quizzes(filestr, format):
     ect = end_comment_tag
     cp = INLINE_TAGS_SUBST[format].get('comment', '# %s') # comment pattern
     if format in ("rst", "sphinx"):
-        cp = '.. %s\n'
+        #cp = '.. %s\n'  # \n gives error if text follows right after !equiz
+        cp = '.. %s'
     if not isinstance(cp, str):
         raise TypeError
-    pattern = '^' + bct('quiz', cp) + '.+?' + ect('quiz', cp)
+    # line start: must allow spaces first in rst/sphinx, but quiz inside
+    # indented admons do not work anyway in rst/sphix
+    line_start = '^ *'  # could be rst/sphinx fix, but does not work
+    line_start = '^'  # comments start in 1st column
+    pattern = line_start + bct('quiz', cp) + '.+?' + ect('quiz', cp)
     quizzes = re.findall(pattern, filestr, flags=re.DOTALL|re.MULTILINE)
     data = []
     for i, quiz in enumerate(quizzes):
@@ -2777,20 +2782,20 @@ def extract_quizzes(filestr, format):
         data[-1]['no'] = i+1
         filestr = filestr.replace(quiz, '%d %s' % (i, _QUIZ_BLOCK))
         # Extract data in quiz
-        pattern = '^' + ct('--- new quiz page: (.+)', cp)
+        pattern = line_start + ct('--- new quiz page: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['new page'] = m.group(1).strip()
-        pattern = '^' + ct('--- quiz heading: (.+)', cp)
+        pattern = line_start + ct('--- quiz heading: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['heading'] = m.group(1).strip()
-        pattern = '^' + ct('--- previous heading type: (.+)', cp)
+        pattern = line_start + ct('--- previous heading type: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['embedding'] = m.group(1).strip()
 
-        pattern = '^' + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
+        pattern = line_start + bct('quiz question', cp) + '(.+?)' + ect('quiz question', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         if m:
             question = m.group(1).strip()
@@ -2809,7 +2814,7 @@ def extract_quizzes(filestr, format):
             print '\n     Examine the corresponding doconce source code for syntax errors.'
             _abort()
 
-        pattern = '^' + ct('--- keywords: (.+)', cp)
+        pattern = line_start + ct('--- keywords: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             try:
@@ -2821,12 +2826,12 @@ def extract_quizzes(filestr, format):
                 _abort()
             data[-1]['keywords'] = keywords
 
-        pattern = '^' + ct('--- label: (.+)', cp)
+        pattern = line_start + ct('--- label: (.+)', cp)
         m = re.search(pattern, quiz, flags=re.MULTILINE)
         if m:
             data[-1]['label'] = m.group(1).strip()
 
-        pattern = '^' + bct('quiz choice (\d+) \((right|wrong)\)', cp) + '(.+?)' + ect('quiz choice .+?', cp)
+        pattern = line_start + bct('quiz choice (\d+) \((right|wrong)\)', cp) + '(.+?)' + ect('quiz choice .+?', cp)
         choices = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         data[-1]['choices'] = []
         data[-1]['choice prefix'] = [None]*len(choices)
@@ -2842,7 +2847,7 @@ def extract_quizzes(filestr, format):
         # Include choice prefix only if it is needed
         if data[-1]['choice prefix'] == [None]*len(choices):
             del data[-1]['choice prefix']
-        pattern = '^' + bct('explanation of choice (\d+)', cp) + '(.+?)' + ect('explanation of choice \d+', cp)
+        pattern = line_start + bct('explanation of choice (\d+)', cp) + '(.+?)' + ect('explanation of choice \d+', cp)
         explanations = re.findall(pattern, quiz, flags=re.MULTILINE|re.DOTALL)
         for i_str, explanation in explanations:
             i = int(i_str)
@@ -2898,6 +2903,18 @@ def typeset_quizzes2(filestr, format):
         except UnicodeEncodeError as e:
             encode_error_message(e, quiz)
     f.close()
+
+    # quiz inside admon does not work in rst/sphinx - check that
+    if format in ('rst', 'sphinx'):
+        pattern = r'^ +\.\. --- begin quiz question ---(.+)^ +\.\. --- end quiz question ---'
+        questions = [q.strip() for q in
+                     re.findall(pattern, filestr, flags=re.MULTILINE|re.DOTALL)]
+        if questions:
+            print '*** error: quiz inside admon is not possible with rst/sphinx'
+            print '    edit these quizzes:'
+            for q in questions:
+                print 'Quiz:', q
+            _abort()
     return filestr
 
 def inline_tag_subst(filestr, format):

@@ -92,6 +92,8 @@ def sphinx_movie(m):
 
 
 def sphinx_quiz_runestone(quiz):
+    quiz_feedback = option('quiz_explanations=', 'on')
+
     text = ''
     if 'new page' in quiz:
         text += '.. !split\n%s\n%s' % (quiz['new page'], '-'*len(quiz['new page']))
@@ -105,40 +107,67 @@ def sphinx_quiz_runestone(quiz):
     else:
         text += '.. mchoicemf:: question_%d' % question_counter + '\n'
 
-    def fix_text(s):
+    def fix_text(s, tp='answer'):
         """
         Answers and feedback in RunestoneInteractive book quizzes
-        cannot contain math and rst markup. Perform fixes.
+        cannot contain math, figure and rst markup. Perform fixes.
         """
+        drop = False
         if 'math::' in s:
-            print '\n*** warning: quiz content with math block not supported:'
+            print '\n*** warning: quiz %s with math block not supported:' % tp
             print s
-        if '\\(' in s:
-            print '\n*** warning: quiz content with inline math not supported:'
-            print s
+            drop = True
         if '.. code-block::' in s:
-            print '\n*** warning: quiz content with code block not supported:'
+            print '\n*** warning: quiz %s with code block not supported:' % tp
             print s
+            drop = True
+        if '.. figure::' in s:
+            print '\n*** warning: quiz %s with figure not supported:' % tp
+            print s
+            drop = True
+        if drop:
+            return ''
+        # Make multi-line paragraph a one-liner
+        s = ' '.join(s.splitlines()).rstrip()
+        # Fixes
         pattern = r'`(.+?) (<https?.+?)>`__'  # URL
         s = re.sub(pattern, '<a href="\g<2>"> \g<1> </a>', s)
         pattern = r'``(.+?)``'  # verbatim
         s = re.sub(pattern, '<tt>\g<1></tt>', s)
+        pattern = r':math:`(.+?)`'  # inline math
+        s = re.sub(pattern, '<em>\g<1></em>', s)  # mimic italic....
+        pattern = r':\*(.+?)\*'  # emphasize
+        s = re.sub(pattern, '\g<1>', s, flags=re.DOTALL)
         return s
 
     import string
     correct = []
     for i, choice in enumerate(quiz['choices']):
+        if i > 4:  # not supported
+            print '*** warning: quiz with %d choices gets truncated (first 5)' % len(quiz['choices'])
+            break
         letter = string.ascii_lowercase[i]
         text += '   :answer_%s: ' % letter
-        answer = fix_text(' '.join(choice[1].splitlines()).rstrip())
+        answer = fix_text(choice[1], tp='answer')
+        if not answer:
+            answer = 'Too advanced typesetting prevents the text from being rendered'
         text += answer + '\n'
         if choice[0] == 'right':
             correct.append(letter)
-    text += '   :correct: ' + ', '.join(correct) + '\n'
+    if correct:
+        text += '   :correct: ' + ', '.join(correct) + '\n'
+    else:
+        print '*** error: correct choice in quiz has index > 5 (max 5 allowed for RunestoneInteractive books)'
+        print quiz['question']
+        _abort()
     for i, choice in enumerate(quiz['choices']):
+        if i > 4:  # not supported
+            break
         letter = string.ascii_lowercase[i]
-        if len(choice) == 3:
-            feedback = fix_text(' '.join(choice[2].splitlines()).rstrip())
+        if len(choice) == 3 and quiz_feedback == 'on':
+            feedback = fix_text(choice[2], tp='explanation')
+            if not feedback:
+                feedback = 'Too advanced typesetting prevents the text from being rendered'
             text += '   :feedback_%s: ' % letter + feedback + '\n'
 
     text += '\n' + indent_lines(quiz['question'], 'sphinx', ' '*3) + '\n\n\n'

@@ -1,0 +1,11 @@
+TITLE: Demo of the DocOnce quiz features
+AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+DATE: today
+
+ * "Standard PDF": "quiz.pdf"
+ * "PDF with answers": "quiz_wans.pdf"
+ * "PDF with answers and explanations": "quiz_wsol.pdf"
+ * "Bootstrap HTML": "quiz.html"
+ * "Solarized HTML": "quiz-solarized.html"
+ * "Standard Sphinx": "sphinx/index.html"
+ * "RunestoneInteractive Sphinx": "sphinx-rs/index.html"

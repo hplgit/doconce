@@ -26,10 +26,14 @@ Cw: Drammen
 Cr: Oslo
 Cw: Denmark
 !equiz
-# #if FORMAT == "html"
+% if FORMAT == 'html':
 Click on the pencil symbol to the left of _Choice_ to see whether the choice is
 correct or not.
-# #endif
+% elif FORMAT in ('rst', 'sphinx'):
+Hover `?` to see whether the choice is correct or not.
+% elif FORMAT in ('latex', 'pdflatex'):
+% endif
+
 
 The above quiz can be specified by the compact text
 
@@ -89,8 +93,13 @@ Cw: New York
 
 Sometimes it is desireable to give some explanation why certain choices
 are wrong (or right).
+% if FORMAT == 'html':
 If you click on the symbols in the quiz below, explanations
 will be shown for Choices 1 and 2.
+% elif FORMAT in ('rst', 'sphinx'):
+Hover `#` to see an explanation.
+% elif FORMAT in ('latex', 'pdflatex'):
+% endif
 
 !bquiz
 Q: What is the capital of Norway?
@@ -187,10 +196,10 @@ quote.
 !ec
 
 
-# #ifdef DOCONCE
-===== Quiz inside admonitions in DocOnce =====
+===== Quiz inside admonitions =====
 
-Question admonitions may well feature quizzes. A plain question
+Question admonitions may well feature quizzes unless the output
+format is reStructuredText (`rst`, `sphinx`). A plain question
 admonition is
 
 !bquestion
@@ -203,7 +212,9 @@ specified by the DocOnce syntax
 What is the capital of Norway?
 |equestion
 !ec
-The quiz version is
+
+% if FORMAT not in ('rst', 'sphinx'):
+Putting a quiz inside the question admonition looks like
 
 !bquestion
 !bquiz
@@ -245,18 +256,26 @@ Cw: Denmark
 !bnotice Choice and question prefix
 In the above example, we demonstrate the possibility to control
 the word preceding the question and the choices.
-# #if FORMAT in ("html",)
-For the current HTML format, questions are by default preceded by
+For the current output format (`${FORMAT}`), questions are by default preceded by
 `Question:` and choices by `Choice X:`, where `X` is the
 number of the choice.
-# #endif
+
 The prefix appears inside square brackets. Empty brackets, as those
 in the question, leads to no prefix. The choice `Stockholm` has
 a prefix `[Answer:]`, and exactly the text inside the square brackets
 precedes the text of this choice in the output.
 !enotice
 
-# #endif
+% else:
+!bwarning No quiz inside admons for output format `${FORMAT}`!
+Putting a quiz inside any type of admon is not possible with `rst` or
+`sphinx` output. Use Preprocess or Mako to turn the admon environment
+on or off if the DocOnce source features admons with quizzes.
+!ewarning
+% endif
+
+
+
 
 !split
 ======= Typesetting of mathematics and computer code =======
@@ -264,7 +283,7 @@ precedes the text of this choice in the output.
 ===== Mathematics =====
 label{sec:math}
 
-Mathematical typesetting follows a restricted LaTeX syntax. Inline
+Typesetting of mathematics in a quiz follows a restricted LaTeX syntax. Inline
 formulas appear inside dollar signs, while separate equations
 appear inside `!bt` (``begin TeX'') and `!et` (``end TeX'') tags.
 
@@ -326,7 +345,7 @@ E: It is indeed possible to add pure numbers without any units.
 |equiz
 !ec
 
-!bwarning Only a subset of LaTeX equation environment is supported!
+!bwarning Only a subset of all LaTeX equation environments is supported!
 To make sure blocks with equations come out correctly in different
 output formats (LaTeX, HTML, Sphinx, Markdown), only four types
 of standard LaTeX equation environments should be used:
@@ -395,14 +414,16 @@ Note two new features:
    construction allows specification of a set of keywords separated
    by semi-colon. The feature is handy when automatically selecting
    quizzes from a large database. There is no output of the keywords
-   in typeset quizzes.
+   in a typeset quiz.
  * `L: div:assert` defines a label for the quiz. This can be used
    as a logical name in the same way as labels are used in LaTeX.
    For example, a collection of labels can be specified for selecting
-   a collection quizzes. The label is invisible in a typeset quiz.
+   a collection of quizzes. The label is invisible in a typeset quiz.
 
 Keywords and label should appear before or right after the question
 and they cannot span more than one line.
+
+Now we present the complete code for the quiz above:
 
 !bc
 |bquiz
@@ -652,7 +673,8 @@ for quadratic polynomials!
 
 Instead of using the compact text specification with DocOnce
 formatting, one can use a more verbose syntax and specify everything
-in HTML. The second example in Section ref{sec:math} then reads
+in HTML. The second example in Section ref{sec:math} goes as
+follows with HTML syntax.
 
 ## Note that the HTML text is indented such that it is not interpreted
 ## as a quiz by DocOnce.
@@ -747,9 +769,6 @@ displaying the quiz in a browser, it is just an application of the
 HTML language to specify information and have full control of
 the typesetting details. Some program must interpret the
 HTML above and typset questions, choices, and explanations adequately.
-# #if FORMAT in ("sphinx", "html")
-(As done elsewhere in this document.)
-# #endif
 !ewarning
 
 
@@ -895,8 +914,8 @@ Other variations of this class of styles are `bootswatch`, and
 `journal`.
 
 The Bootstrap-based styles have a striking red color for inline computer
-code, which can be avoided by giving the option `html_code_style=inherit`.
-See the documentation of "DocOnce and Bootstrap": "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" for details and examples.
+code, which can be avoided by giving the option `--html_code_style=inherit`
+(see the documentation of "DocOnce and Bootstrap": "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html" for details and examples).
 
 By default, there is a horizontal rule enclosing each quiz in the HTML format.
 This can be turned off by the option `--quiz_horizontal_rule=off`.
@@ -911,7 +930,7 @@ Terminal> doconce split_html myquiz.html
 to create a multi-page document with navigation arrows. Bootstrap styles
 will also have a *Contents* pull-down menu to the right in the top bar.
 Without the `split_html` command (and `!split` instructions in the document),
-all the text will be in one HTML page.
+all quizzes will be in one HTML page.
 
 === Setting the question and choice prefix ===
 
@@ -926,21 +945,43 @@ The standard command to produce a LaTeX document is
 
 !bc sys
 Terminal> doconce format pdflatex myquiz \
-          --without_answers --without_solutions
+          --without_answers --without_solutions \
+          --latex_code_style=pyg
 !ec
 If desired, the correct answer to each quiz can be included by omitting
 `--without_answers`. Omitting `--without_solutions` will print
 the right answers and the available explanations below the quiz.
 
-The next steps are
+The next step is to compile the document:
 
 !bc sys
-Terminal> doconce ptex2tex myquiz envir=minted
 Terminal> pdflatex -shell-escape myquiz
 !ec
-to produce a PDF `myquiz.pdf`. The `doconce ptex2tex` step enables a lot
-of different typesetting of blocks of computer code.
-Here, we use the `minted` style, which applies the Pygments package.
-The default (no `envir` specification) is a plain LaTeX verbatim environment.
-Even more possibilities for typesetting computer code exist if
-one runs the `ptex2tex` program (and not `doconce ptex2tex`).
+to produce a PDF `myquiz.pdf`.
+Here, we use the `pyg` (Pygments, LaTeX package `minted`) style
+for code blocks, which requires the `-shell-escape` option when running
+`pdflatex`.
+
+===== Sphinx =====
+
+A typical session for creating a Sphinx document is
+
+!bc sys
+Terminal> doconce format sphinx myquiz
+Terminal> doconce split_rst myquiz
+Terminal> doconce sphinx_dir dirname=sphinx theme=default myquiz
+Terminal> python automake_sphinx.py
+!ec
+A disadvantage of Sphinx in a quiz context is that admonitions cannot
+contain quizzes. However, an advantage of Sphinx is that one can
+create RunestoneInteractive Sphinx books, which have nice browser
+support of quizzes. A RunestoneInteractive version is created by
+
+!bc sys
+Terminal> doconce format sphinx myquiz --runestone
+Terminal> doconce split_rst myquiz
+Terminal> doconce sphinx_dir dirname=sphinx theme=default myquiz
+Terminal> python automake_sphinx.py --runestone
+!ec
+
+# Pointer to demo
