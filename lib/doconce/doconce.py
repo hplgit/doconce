@@ -3447,12 +3447,15 @@ def doconce2format(filestr, format):
     # Next step: deal with exercises
     filestr = exercises(filestr, format, code_blocks, tex_blocks)
 
+    debugpr('The file after handling exercises:', filestr)
+
     # Next step: deal with figures
     if format != 'ipynb' or not call_handle_figures:
         filestr = handle_figures(filestr, format)
     # else: ipynb figures/movies must be handled early above
 
     report_progress('figures')
+    debugpr('The file after handling figures:', filestr)
 
     # Next step: deal with cross referencing (must occur before other format subst)
     filestr = handle_cross_referencing(filestr, format)

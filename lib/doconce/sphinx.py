@@ -164,11 +164,13 @@ def sphinx_quiz_runestone(quiz):
         if i > 4:  # not supported
             break
         letter = string.ascii_lowercase[i]
+        text += '   :feedback_%s: ' % letter  # must be present
         if len(choice) == 3 and quiz_feedback == 'on':
             feedback = fix_text(choice[2], tp='explanation')
             if not feedback:
-                feedback = 'Too advanced typesetting prevents the text from being rendered'
-            text += '   :feedback_%s: ' % letter + feedback + '\n'
+                feedback = '(Too advanced typesetting prevents the text from being rendered)'
+            text += feedback
+        text += '\n'
 
     text += '\n' + indent_lines(quiz['question'], 'sphinx', ' '*3) + '\n\n\n'
     return text
@@ -513,13 +515,18 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
 
     # Special fix early in the process:
     # Deal with !split - by default we place splits before
-    # the topmost sections (assuming the document also has a title
-    # so split on the topmost sections makes sense)
+    # the next topmost sections (assuming the document also has a title
+    # so split on the next topmost sections makes sense)
     if not option('sphinx_keep_splits'):
+        print '*** warning: new !split inserted (override existing ones)'
         topmost_section = 0
         for i in [9, 7, 5]:
             if re.search(r'^%s' % ('='*i), filestr, flags=re.MULTILINE):
                 topmost_section = i
+                if i == 9:
+                    # Title level, adjust to section level
+                    i = 7
+                print '    before every %s heading %s' % ('='*i, '='*i)
                 break
         if topmost_section:
             # First remove all !split

@@ -1,0 +1,1252 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>A Software Tool for Typesetting Quizzes &mdash; A Software Tool for Typesetting Quizzes</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.0.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/video.css" type="text/css" />
+    <link rel="stylesheet" href="_static/poll.css" type="text/css" />
+    <link rel="stylesheet" href="_static/tabbedstuff.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/pytutor.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/codemirror.css" type="text/css" />
+    <link rel="stylesheet" href="_static/activecode.css" type="text/css" />
+    <link rel="stylesheet" href="_static/parsons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/lib/prettify.css" type="text/css" />
+    <link rel="stylesheet" href="_static/jquery-ui-1.10.3.custom.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/user-highlights.css" type="text/css" />
+    <link rel="stylesheet" href="_static/runestone-custom-sphinx-bootstrap.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/poll.js"></script>
+    <script type="text/javascript" src="_static/js/d3.v2.min.js"></script>
+    <script type="text/javascript" src="_static/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery.ba-bbq.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery.jsPlumb-1.3.10-all-min.js"></script>
+    <script type="text/javascript" src="_static/js/pytutor.js"></script>
+    <script type="text/javascript" src="_static/jquery.highlight.js"></script>
+    <script type="text/javascript" src="_static/bookfuncs.js"></script>
+    <script type="text/javascript" src="_static/codemirror.js"></script>
+    <script type="text/javascript" src="_static/python.js"></script>
+    <script type="text/javascript" src="_static/javascript.js"></script>
+    <script type="text/javascript" src="_static/activecode.js"></script>
+    <script type="text/javascript" src="_static/skulpt.min.js"></script>
+    <script type="text/javascript" src="_static/skulpt-stdlib.js"></script>
+    <script type="text/javascript" src="_static/assess.js"></script>
+    <script type="text/javascript" src="_static/animationbase.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="_static/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="_static/lib/prettify.js"></script>
+    <script type="text/javascript" src="_static/lib/underscore-min.js"></script>
+    <script type="text/javascript" src="_static/lib/lis.js"></script>
+    <script type="text/javascript" src="_static/parsons.js"></script>
+    <script type="text/javascript" src="_static/parsons-noconflict.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="_static/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="_static/waypoints.min.js"></script>
+    <script type="text/javascript" src="_static/rangy-core.js"></script>
+    <script type="text/javascript" src="_static/rangy-textrange.js"></script>
+    <script type="text/javascript" src="_static/rangy-cssclassapplier.js"></script>
+    <script type="text/javascript" src="_static/user-highlights.js"></script>
+    <script type="text/javascript" src="_static/jquery.idle-timer.js"></script>
+    <script type="text/javascript" src="_static/processing-1.4.1.min.js"></script>
+    <script type="text/javascript" src="_static/jquery.hotkey.js"></script>
+    <link rel="top" title="A Software Tool for Typesetting Quizzes" href="index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="._quiz000.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<script type="text/javascript">
+  eBookConfig = {};
+  eBookConfig.host = 'http://interactivepython.org' ? 'http://interactivepython.org' : 'http://127.0.0.1:8000';
+  eBookConfig.app = eBookConfig.host+'/runestone';
+  eBookConfig.ajaxURL = eBookConfig.app+'/ajax/';
+  eBookConfig.course = 'template';
+  eBookConfig.logLevel = 10;
+  eBookConfig.loginRequired = false
+  eBookConfig.build_info = "";
+  eBookConfig.isLoggedIn = false;
+</script>
+
+<div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+  </head>
+  <body>
+
+
+<!-- Begin navbar -->
+<div id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+  <div class="container">
+
+    <div class="navbar-header">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button type='button' class='navbar-toggle' data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div>
+        <a class="brand-logo" style='background: transparent url("_static/img/logo_small.png") no-repeat 0px 0px;' href="/runestone/default/user/login">&nbsp; </a>
+        <a class="navbar-brand" href="index.html">A Software Tool for Typesetting Quizzes</a>
+      </div>
+    </div>
+
+    <div class="navbar-collapse collapse navbar-ex1-collapse">
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <li class="divider-vertical"></li>
+
+        <!-- social media dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-share-alt" style="opacity: 0.9"></i>
+          </a>
+          <ul class="dropdown-menu social-menu">
+              <li>
+                <div>
+                  <b>Runestone in social media:</b>
+                </div>
+                <a href="https://twitter.com/iRunestone" class="twitter-follow-button" data-show-count="true">Follow @iRunestone</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                <div class="fb-like" data-href="https://www.facebook.com/RunestoneInteractive" data-send="false" data-layout="button_count" data-width="300" data-show-faces="false" data-font="arial"></div>
+              </li>
+
+              <li class="divider"></li>
+              <li>
+                <div>
+                  <b>Help support us:</b>
+                </div>
+                <div class="gittip">
+                  <iframe style="border:0;"
+                    src="https://www.gittip.com/bnmnetp/widget.html"
+                    width="48pt" height="22pt" class="gittip-button">
+                  </iframe>
+                </div>
+              </li>
+          </ul>
+        </li>
+        <!-- end social media dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- search dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-search" style='opacity:0.9;'></i>
+          </a>
+          <ul class='dropdown-menu'>
+            
+                <li><a href='index.html'>Table of Contents</a></li>
+            
+            <li><a href='/runestone/static/template/genindex.html'>Book Index</a></li>
+            <li class="divider"></li>
+            <li id="scratch_ac_link"><a href="javascript:toggleScratchActivecode()">Scratch ActiveCode</a></li>
+            <li class="divider"></li>
+            <li style="width: 240px;">
+              <form class="navbar-search" style="margin:10px;" action="search.html" method="get">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="q" placeholder="Search this book" />
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" style="margin:0;" type="submit">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+            </li>
+          </ul>
+        </li>
+        <!-- end search dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- user account dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-user" style="opacity:0.9;"></i>
+          </a>
+          <ul class="dropdown-menu user-menu">
+            <li><span class='loggedinuser'></span></li>
+            <li class="divider"></li>
+            <li><a href='http://interactivepython.org/runestone/admin/index'>Instructor's Page</a></li>
+            <li class="divider"></li>
+            <li><a href="http://interactivepython.org/runestone/default/user/profile" id="profilelink">Edit Profile</a></li>
+            <li><a href="http://interactivepython.org/runestone/default/user/change_password" id="passwordlink">Change Password</a></li>
+            <li><a href="http://interactivepython.org/runestone/default/user/register" id="registerlink">Register</a></li>
+            <li class='loginout'><a href='#'>Login</a></li> <!-- correct link populated by addNavbarLoginLink() -->
+          </ul>
+        </li>
+        <!-- end user account dropdown -->
+
+        <li class="divider-vertical"></li>
+
+        <!-- help menu dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-question-sign" style="opacity:0.9;"></i>
+          </a>
+          <ul class="dropdown-menu user-menu">
+            <li><a href='/runestone/static/template/navhelp.html'>Navigation Help</a></li>
+            <li><a href='/runestone/static/overview/instructor.html'>Help for Instructors</a></li>            
+            <li class="divider"></li>
+            <li><a href='http://runestoneinteractive.org'>About Runestone</a></li>
+            <li><a href='https://github.com/bnmnetp/runestone/issues/new'>Report A Problem</a></li>
+          </ul>
+        </li>
+        <!-- end help menu dropdown -->
+
+        <li class="divider-vertical"></li>
+
+      </ul>
+
+      <ul class="nav navbar-nav">
+        <li class="divider-vertical"></li>
+        
+          <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"><ul>
+<li><a class="reference internal" href="#">A Software Tool for Typesetting Quizzes</a><ul>
+<li><a class="reference internal" href="#a-pure-text-quiz">A pure text quiz</a><ul>
+<li><a class="reference internal" href="#question-and-choices">Question and choices</a></li>
+<li><a class="reference internal" href="#explanations-of-choices">Explanations of choices</a></li>
+<li><a class="reference internal" href="#typesetting">Typesetting</a></li>
+<li><a class="reference internal" href="#quiz-inside-admonitions">Quiz inside admonitions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typesetting-of-mathematics-and-computer-code">Typesetting of mathematics and computer code</a><ul>
+<li><a class="reference internal" href="#mathematics">Mathematics</a><ul>
+<li><a class="reference internal" href="#simple-example">Simple example</a></li>
+<li><a class="reference internal" href="#a-more-complicated-example">A more complicated example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#computer-code">Computer code</a></li>
+<li><a class="reference internal" href="#example-putting-it-all-together">Example: Putting it all together</a></li>
+<li><a class="reference internal" href="#specification-in-html">Specification in HTML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-python-data-structure-for-quizzes">The Python data structure for quizzes</a></li>
+<li><a class="reference internal" href="#translating-the-quiz-format-to-html-or-pdf">Translating the quiz format to HTML or PDF</a><ul>
+<li><a class="reference internal" href="#html">HTML</a><ul>
+<li><a class="reference internal" href="#plain-html">Plain HTML</a></li>
+<li><a class="reference internal" href="#bootstrap-html">Bootstrap HTML</a></li>
+<li><a class="reference internal" href="#multiple-page-html-document">Multiple page HTML document</a></li>
+<li><a class="reference internal" href="#setting-the-question-and-choice-prefix">Setting the question and choice prefix</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#latex">LaTeX</a></li>
+<li><a class="reference internal" href="#sphinx">Sphinx</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+          <li class="divider-vertical"></li>
+        
+        
+          
+  <li id="relations-prev" title="Previous Chapter - &lt;no title&gt;" data-toggle="tooltip">
+    <a href="._quiz000.html" >
+      <i class='glyphicon glyphicon-backward' style='opacity:0.9;'></i>
+    </a>
+  </li>
+  
+    <li class="divider-vertical"></li>
+  
+
+<script type="text/javascript">
+  opts = {'placement':'bottom',
+          'selector': '',
+          'delay': { show: 100, hide: 50}
+         };
+
+  $('#relations-prev').tooltip(opts);
+  $('#relations-next').tooltip(opts);
+</script>
+        
+        
+          <li></li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  
+  <div class="section" id="a-software-tool-for-typesetting-quizzes">
+<h1>A Software Tool for Typesetting Quizzes<a class="headerlink" href="#a-software-tool-for-typesetting-quizzes" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 30, 2015</td>
+</tr>
+</tbody>
+</table>
+<p><em>Summary.</em> This note describes a system for writing quizzes
+(multiple-choice questions) in a compact text format with support
+for mathematics, computer code, and flexible formatting. The text
+format can be automatically translated to HTML and to a Python
+data structure. The HTML can be rendered directly in web pages,
+and the data structure can (in the future) be fed to online quiz/survey
+services a la Kahoot, JotForm, and Google forms.</p>
+<div class="section" id="a-pure-text-quiz">
+<h2>A pure text quiz<a class="headerlink" href="#a-pure-text-quiz" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="question-and-choices">
+<h3>Question and choices<a class="headerlink" href="#question-and-choices" title="Permalink to this headline">¶</a></h3>
+<p>Here is a typical quiz with a question and four alternative answers:</p>
+
+            <div id="question_1" class="alert alert-warning">
+            Q-1: What is the capital of Norway?<form name="question_1_form" method="get" action="" onsubmit="return false;">
+            <input type="radio" name="group1" value="a" id="question_1_opt_a" />
+            <label for= "question_1_opt_a">  a) Helsinki</label><br />
+            
+            <input type="radio" name="group1" value="b" id="question_1_opt_b" />
+            <label for= "question_1_opt_b">  b) Drammen</label><br />
+            
+            <input type="radio" name="group1" value="c" id="question_1_opt_c" />
+            <label for= "question_1_opt_c">  c) Oslo</label><br />
+            
+            <input type="radio" name="group1" value="d" id="question_1_opt_d" />
+            <label for= "question_1_opt_d">  d) Denmark</label><br />
+            
+
+            <script>
+            $(document).ready(function(){checkRadio('question_1');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_1','c',['', '', '', ''])">Check Me</button>
+            <button class='btn btn-default' id="question_1_bcomp" disabled name="compare" onclick="compareAnswers('question_1');">Compare Me</button>
+            </form><br />
+            <div id="question_1_feedback">
+            </div>
+            </div>
+            <p>Hover <tt class="docutils literal"><span class="pre">?</span></tt> to see whether the choice is correct or not.</p>
+<p>The above quiz can be specified by the compact text</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: What is the capital of Norway?
+Cw: Helsinki
+Cw: Drammen
+Cr: Oslo
+Cw: Denmark
+!equiz
+</pre></div>
+</div>
+<div class="admonition-syntax admonition">
+<p class="first admonition-title">Syntax</p>
+<ul class="last simple">
+<li>Each individual quiz (question with multiple-choice answers)
+is specified between <tt class="docutils literal"><span class="pre">!bquiz</span></tt> (&#8220;begin quiz&#8221;) and <tt class="docutils literal"><span class="pre">!equiz</span></tt>
+(&#8220;end quiz&#8221;) tags.</li>
+<li>The question starts right after <tt class="docutils literal"><span class="pre">Q:</span></tt> (&#8220;question&#8221;).</li>
+<li>Wrong choices are specified with <tt class="docutils literal"><span class="pre">Cw:</span></tt>, and right choices with <tt class="docutils literal"><span class="pre">Cr:</span></tt>.</li>
+<li>The instructions <tt class="docutils literal"><span class="pre">!bquiz</span></tt>, <tt class="docutils literal"><span class="pre">!equiz</span></tt>, <tt class="docutils literal"><span class="pre">Q:</span></tt>, <tt class="docutils literal"><span class="pre">Cw:</span></tt>, and <tt class="docutils literal"><span class="pre">Cr:</span></tt> must appear
+at the beginning of a line.</li>
+<li>The text of (e.g.) a wrong answer (<tt class="docutils literal"><span class="pre">Cr:</span></tt>) lasts up to the next
+instruction (like <tt class="docutils literal"><span class="pre">Cw:</span></tt>, <tt class="docutils literal"><span class="pre">Cr:</span></tt>, <tt class="docutils literal"><span class="pre">!equiz</span></tt>).</li>
+<li>One can have as many wrong and right
+choices as desired.</li>
+</ul>
+</div>
+<p>Multiple correct choices are possible. Here is an example with three
+right choices:</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: Which of the following cities are capitals?
+Cw: Sidney
+Cr: Kigali
+Cw: Bonn
+Cr: Bern
+Cr: Ottawa
+Cw: New York
+!equiz
+</pre></div>
+</div>
+
+            <div id="question_2" class="alert alert-warning">
+            Q-2: Which of the following cities are capitals?<form name="question_2_form" method="get" action="" onsubmit="return false;">
+            <input type="checkbox" name="group1" value="a" id="question_2_opt_a" />
+            <label for= "question_2_opt_a">  a) Sidney</label><br />
+            
+            <input type="checkbox" name="group1" value="b" id="question_2_opt_b" />
+            <label for= "question_2_opt_b">  b) Kigali</label><br />
+            
+            <input type="checkbox" name="group1" value="c" id="question_2_opt_c" />
+            <label for= "question_2_opt_c">  c) Bonn</label><br />
+            
+            <input type="checkbox" name="group1" value="d" id="question_2_opt_d" />
+            <label for= "question_2_opt_d">  d) Bern</label><br />
+            
+            <input type="checkbox" name="group1" value="e" id="question_2_opt_e" />
+            <label for= "question_2_opt_e">  e) Ottawa</label><br />
+            
+            <script>
+            $(document).ready(function(){checkMultipleSelect('question_2');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMAStorage('question_2','b, d, e',['', '', '', '', ''])">Check Me</button>
+            <button class='btn btn-default' id="question_2_bcomp" disabled name="compare" onclick="compareAnswers('question_2');">Compare Me</button>
+            </form><br />
+            <div id="question_2_feedback">
+            </div>
+            </div>
+            </div>
+<div class="section" id="explanations-of-choices">
+<h3>Explanations of choices<a class="headerlink" href="#explanations-of-choices" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes it is desireable to give some explanation why certain choices
+are wrong (or right).
+Hover <tt class="docutils literal"><span class="pre">#</span></tt> to see an explanation.</p>
+
+            <div id="question_3" class="alert alert-warning">
+            Q-3: What is the capital of Norway?<form name="question_3_form" method="get" action="" onsubmit="return false;">
+            <input type="radio" name="group1" value="a" id="question_3_opt_a" />
+            <label for= "question_3_opt_a">  a) Helsinki</label><br />
+            
+            <input type="radio" name="group1" value="b" id="question_3_opt_b" />
+            <label for= "question_3_opt_b">  b) Drammen</label><br />
+            
+            <input type="radio" name="group1" value="c" id="question_3_opt_c" />
+            <label for= "question_3_opt_c">  c) Oslo</label><br />
+            
+            <input type="radio" name="group1" value="d" id="question_3_opt_d" />
+            <label for= "question_3_opt_d">  d) Denmark</label><br />
+            
+
+            <script>
+            $(document).ready(function(){checkRadio('question_3');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_3','c',['Helsinki is the capital of Finland.', 'Drammen is a small city close to Oslo.', '', ''])">Check Me</button>
+            <button class='btn btn-default' id="question_3_bcomp" disabled name="compare" onclick="compareAnswers('question_3');">Compare Me</button>
+            </form><br />
+            <div id="question_3_feedback">
+            </div>
+            </div>
+            <p>The quiz syntax applies <tt class="docutils literal"><span class="pre">E:</span> <span class="pre">...</span></tt> after the choice to
+give an explanation of that choice.</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: What is the capital of Norway?
+
+Cw: Helsinki
+E: Helsinki is the capital of Finland.
+
+Cw: Drammen
+E: Drammen is a small city close to Oslo.
+
+Cr: Oslo
+
+Cw: Denmark
+!equiz
+</pre></div>
+</div>
+<p>This time we also added some whitespace for enhanced reading of the text.</p>
+</div>
+<div class="section" id="typesetting">
+<h3>Typesetting<a class="headerlink" href="#typesetting" title="Permalink to this headline">¶</a></h3>
+<p>It is easy to use <em>emphasize font</em>, <strong>boldface</strong>, <strong>color</strong>,
+<a class="reference external" href="http://google.com">hyperlinks</a>, etc.,
+since the text in the specification of questions, choices,
+and explanations are rendered according to the
+<a class="reference external" href="https://github.com/hplgit/doconce">DocOnce</a> markup language.
+For simple typesetting (emphasize, boldface, links) DocOnce also
+accepts Markdown syntax.
+Here is an example:</p>
+
+            <div id="question_4" class="alert alert-warning">
+            <p>Q-4: This is a very famous quote:</p>
+<blockquote>
+<div><em>Premature optimization is the root of all evil.</em></div></blockquote>
+<p>This quote is attributed to</p>
+<form name="question_4_form" method="get" action="" onsubmit="return false;">
+            <input type="radio" name="group1" value="a" id="question_4_opt_a" />
+            <label for= "question_4_opt_a">  a) Geroge W. Bush</label><br />
+            
+            <input type="radio" name="group1" value="b" id="question_4_opt_b" />
+            <label for= "question_4_opt_b">  b) Donald Knuth</label><br />
+            
+            <input type="radio" name="group1" value="c" id="question_4_opt_c" />
+            <label for= "question_4_opt_c">  c) Ole-Johan Dahl</label><br />
+            
+
+            <script>
+            $(document).ready(function(){checkRadio('question_4');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_4','b',['', 'According to \u003Ca href\u003D\u0022\u003Chttp://en.wikiquote.org/wiki/Donald_Knuth\u0022\u003E Wikiquote \u003C/a\u003E, Donald Knuth wrote this statement in *Structured Programming with Goto Statements*. Computing Surveys, **6**:4, pp. 261\u002D301, **1974**.', 'Ole\u002DJohan Dahl was a famous Norwegian professor of computer science and together with Kristen Nygaard the inventor of object\u002Doriented programming, but he is not the man behind this quote.'])">Check Me</button>
+            <button class='btn btn-default' id="question_4_bcomp" disabled name="compare" onclick="compareAnswers('question_4');">Compare Me</button>
+            </form><br />
+            <div id="question_4_feedback">
+            </div>
+            </div>
+            <p>The corresponding specification reads</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: Here is a famous quote:
+
+!bquote
+*Premature optimization is the root of all evil.*
+!equote
+This quote is attributed to
+
+Cw: Geroge W. Bush
+
+Cr: Donald Knuth
+E: According to &quot;Wikiquote&quot;: &quot;http://en.wikiquote.org/wiki/Donald_Knuth&quot;,
+Donald Knuth wrote this statement in *Structured Programming with
+Goto Statements*. Computing Surveys, _6_:4,
+pp. 261-301, _1974_.
+
+Cw: Ole-Johan Dahl
+E: Ole-Johan Dahl was a famous Norwegian professor of computer
+science and together with Kristen Nygaard the inventor of
+object-oriented programming, but he is not the man behind this
+quote.
+!equiz
+</pre></div>
+</div>
+</div>
+<div class="section" id="quiz-inside-admonitions">
+<h3>Quiz inside admonitions<a class="headerlink" href="#quiz-inside-admonitions" title="Permalink to this headline">¶</a></h3>
+<p>Question admonitions may well feature quizzes unless the output
+format is reStructuredText (<tt class="docutils literal"><span class="pre">rst</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>). A plain question
+admonition is</p>
+<div class="admonition-question admonition">
+<p class="first admonition-title">Question</p>
+<p class="last">What is the capital of Norway?</p>
+</div>
+<p>specified by the DocOnce syntax</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquestion
+What is the capital of Norway?
+!equestion
+</pre></div>
+</div>
+<div class="admonition-no-quiz-inside-admons-for-output-format-sphinx admonition">
+<p class="first admonition-title">No quiz inside admons for output format <tt class="docutils literal"><span class="pre">sphinx</span></tt></p>
+<p class="last">Putting a quiz inside any type of admon is not possible with <tt class="docutils literal"><span class="pre">rst</span></tt> or
+<tt class="docutils literal"><span class="pre">sphinx</span></tt> output. Use Preprocess or Mako to turn the admon environment
+on or off if the DocOnce source features admons with quizzes.</p>
+</div>
+</div>
+</div>
+<div class="section" id="typesetting-of-mathematics-and-computer-code">
+<h2>Typesetting of mathematics and computer code<a class="headerlink" href="#typesetting-of-mathematics-and-computer-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mathematics">
+<span id="sec-math"></span><h3>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h3>
+<p>Typesetting of mathematics in a quiz follows a restricted LaTeX syntax. Inline
+formulas appear inside dollar signs, while separate equations
+appear inside <tt class="docutils literal"><span class="pre">!bt</span></tt> (&#8220;begin TeX&#8221;) and <tt class="docutils literal"><span class="pre">!et</span></tt> (&#8220;end TeX&#8221;) tags.</p>
+<div class="section" id="simple-example">
+<h4>Simple example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h4>
+
+            <div id="question_5" class="alert alert-warning">
+            Q-5: Compute the result of <span class="math">\(a+b\)</span> in the case <span class="math">\(a=2\)</span> and <span class="math">\(b=2\)</span>.<form name="question_5_form" method="get" action="" onsubmit="return false;">
+            <input type="radio" name="group1" value="a" id="question_5_opt_a" />
+            <label for= "question_5_opt_a">  a) 5.</label><br />
+            
+            <input type="radio" name="group1" value="b" id="question_5_opt_b" />
+            <label for= "question_5_opt_b">  b) 4.</label><br />
+            
+            <input type="radio" name="group1" value="c" id="question_5_opt_c" />
+            <label for= "question_5_opt_c">  c) The computation does not make sense when <em>a</em> and <em>b</em> are given without units.</label><br />
+            
+
+            <script>
+            $(document).ready(function(){checkRadio('question_5');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_5','b',['Good attempt, especially when referring to the following story.   ..      An anthropologist was asking a primitive tribesman about arithmetic.     When the anthropologist asked, *What does two and two make?* the     tribesman replied, *Five.* Asked to explain, the tribesman said, *If I     have a rope with two knots, and another rope with two knots, and I     join the ropes together, then I have five knots.*', 'Too advanced typesetting prevents the text from being rendered', 'It is indeed possible to add pure numbers without any units.'])">Check Me</button>
+            <button class='btn btn-default' id="question_5_bcomp" disabled name="compare" onclick="compareAnswers('question_5');">Compare Me</button>
+            </form><br />
+            <div id="question_5_feedback">
+            </div>
+            </div>
+            <p>The source code for defining the above quiz reads</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: Compute the result of $a+b$ in the case $a=2$ and $b=2$.
+
+Cw: 5.
+
+E: Good attempt, especially when referring to the following story.
+
+!bquote
+An anthropologist was asking a primitive tribesman about arithmetic.
+When the anthropologist asked, *What does two and two make?* the
+tribesman replied, *Five.* Asked to explain, the tribesman said, *If I
+have a rope with two knots, and another rope with two knots, and I
+join the ropes together, then I have five knots.*
+!equote
+
+Cr: 4.
+E: Seems trivial, but once upon a time...
+
+FIGURE: [fig/1p1, width=180 frac=0.3]
+
+Cw: The computation does not make sense when $a$ and $b$ are given without
+units.
+
+E: It is indeed possible to add pure numbers without any units.
+!equiz
+</pre></div>
+</div>
+<div class="admonition-only-a-subset-of-all-latex-equation-environments-is-supported admonition">
+<p class="first admonition-title">Only a subset of all LaTeX equation environments is supported</p>
+<p>To make sure blocks with equations come out correctly in different
+output formats (LaTeX, HTML, Sphinx, Markdown), only four types
+of standard LaTeX equation environments should be used:</p>
+<ol class="arabic simple">
+<li>Single equation without number: <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></tt> or <tt class="docutils literal"><span class="pre">equation*</span></tt> environment</li>
+<li>Single equation with number: <tt class="docutils literal"><span class="pre">equation</span></tt> environment</li>
+<li>Multiple, aligned equations without numbers: <tt class="docutils literal"><span class="pre">align*</span></tt> environment</li>
+<li>Multiple, aligned equations with numbers: <tt class="docutils literal"><span class="pre">align</span></tt> environment</li>
+</ol>
+<p class="last">This means that one has to stay away from <tt class="docutils literal"><span class="pre">eqnarray</span></tt>, <tt class="docutils literal"><span class="pre">alignat</span></tt>,
+and other common LaTeX equation environments. However, inside an equation,
+standard LaTeX math typesetting works (like <tt class="docutils literal"><span class="pre">\alpha</span></tt>, <tt class="docutils literal"><span class="pre">\mbox{...}</span></tt>, etc.).</p>
+</div>
+</div>
+<div class="section" id="a-more-complicated-example">
+<h4>A more complicated example<a class="headerlink" href="#a-more-complicated-example" title="Permalink to this headline">¶</a></h4>
+
+            <div id="question_6" class="alert alert-warning">
+            Q-6: The equation<form name="question_6_form" method="get" action="" onsubmit="return false;">
+            <input type="checkbox" name="group1" value="a" id="question_6_opt_a" />
+            <label for= "question_6_opt_a">  a) The equation tells that the net outflow of something with velocity <em>\boldsymbol{u}</em> in region is zero.</label><br />
+            
+            <input type="checkbox" name="group1" value="b" id="question_6_opt_b" />
+            <label for= "question_6_opt_b">  b) The equation tells that the vector field <em>\boldsymbol{u}</em> is divergence free.</label><br />
+            
+            <input type="checkbox" name="group1" value="c" id="question_6_opt_c" />
+            <label for= "question_6_opt_c">  c) The equation implies that there exists a vector potential <em>\boldsymbol{A}</em> such that <em>\boldsymbol{u}=\nabla\times\boldsymbol{A}</em>.</label><br />
+            
+            <input type="checkbox" name="group1" value="d" id="question_6_opt_d" />
+            <label for= "question_6_opt_d">  d) The equation implies <em>\nabla\times\boldsymbol{u}=0</em>.</label><br />
+            
+            <input type="checkbox" name="group1" value="e" id="question_6_opt_e" />
+            <label for= "question_6_opt_e">  e) The equation implies that <em>\boldsymbol{u}</em> must be a constant vector field.</label><br />
+            
+            <script>
+            $(document).ready(function(){checkMultipleSelect('question_6');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMAStorage('question_6','d, e',['Too advanced typesetting prevents the text from being rendered', 'Yes, *divergence free* is often used as synonym for *zero divergence*, and \u003Cem\u003E\u005Cnabla\u005Ccdot\u005Cboldsymbol{u}\u003C/em\u003E is the divergence of a vector field \u003Cem\u003E\u005Cboldsymbol{u}\u003C/em\u003E.', 'Yes, this is an important result in vector calculus that is much used in electromagnetics.', 'No, only if \u003Cem\u003E\u005Cboldsymbol{u}\u003D\u005Cnabla\u005Cphi\u003C/em\u003E, for some scalar potential \u003Cem\u003E\u005Cphi\u003C/em\u003E, we have \u003Cem\u003E\u005Cnabla\u005Ctimes\u005Cboldsymbol{u}\u003D0\u003C/em\u003E.', 'No, it is the *sum* of derivatives of different components of \u003Cem\u003E\u005Cboldsymbol{u}\u003C/em\u003E that is zero. Only in one dimension, where \u003Cem\u003E\u005Cboldsymbol{u}\u003Du_x\u005Cboldsymbol{i}\u003C/em\u003E and consequently \u003Cem\u003E\u005Cnabla\u005Ccdot\u005Cboldsymbol{u}\u003Ddu/dx\u003C/em\u003E, the vector field must be constant.'])">Check Me</button>
+            <button class='btn btn-default' id="question_6_bcomp" disabled name="compare" onclick="compareAnswers('question_6');">Compare Me</button>
+            </form><br />
+            <div id="question_6_feedback">
+            </div>
+            </div>
+            <div class="math" id="equation-cont:eq">
+<span id="eq-cont-eq"></span><span class="eqno">(1)</span>\[        \nabla\cdot\boldsymbol{u} = 0\]\[is famous in physics. Select the wrong assertion(s):\]</div>
+<p>The corresponding code needed to define this quiz is listed below.
+Note two new features:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The <tt class="docutils literal"><span class="pre">K:</span> <span class="pre">gradient;</span> <span class="pre">divergence;</span> <span class="pre">...</span></tt>
+construction allows specification of a set of keywords separated
+by semi-colon. The feature is handy when automatically selecting
+quizzes from a large database. There is no output of the keywords
+in a typeset quiz.</li>
+<li><tt class="docutils literal"><span class="pre">L:</span> <span class="pre">div:assert</span></tt> defines a label for the quiz. This can be used
+as a logical name in the same way as labels are used in LaTeX.
+For example, a collection of labels can be specified for selecting
+a collection of quizzes. The label is invisible in a typeset quiz.</li>
+</ul>
+</div></blockquote>
+<p>Keywords and label should appear before or right after the question
+and they cannot span more than one line.</p>
+<p>Now we present the complete code for the quiz above:</p>
+<div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: The equation
+
+!bt
+\begin{equation}
+\nabla\cdot\boldsymbol{u} = 0
+label{cont:eq}
+\end{equation}
+!et
+is famous in physics. Select the wrong assertion(s):
+
+K: gradient; divergence; curl; vector calculus
+L: div:assert
+
+Cw: The equation tells that the net outflow of something with
+velocity $\boldsymbol{u}$ in region is zero.
+E: This is right: integrating (ref{cont:eq}) over an arbitrary domain
+$\Omega$ and using Gauss&#39; divergence theorem, we get the surface integral
+
+!bt
+\[ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,\]
+!et
+where $\boldsymbol{n}$ is an outward unit normal on the boundary $\partial\Omega$.
+The quantity $\boldsymbol{u}\cdot\boldsymbol{n}dS$ is the outflow of volume per
+time unit if $\boldsymbol{u}$ is velocity.
+
+Cw: The equation tells that the vector field $\boldsymbol{u}$ is divergence free.
+E: Yes, *divergence free* is often used as synonym for *zero divergence*,
+and $\nabla\cdot\boldsymbol{u}$ is the divergence of a vector field $\boldsymbol{u}$.
+
+Cw: The equation implies that there exists a vector potential $\boldsymbol{A}$
+such that $\boldsymbol{u}=\nabla\times\boldsymbol{A}$.
+E: Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+
+Cr: The equation implies $\nabla\times\boldsymbol{u}=0$.
+E: No, only if $\boldsymbol{u}=\nabla\phi$, for some scalar potential $\phi$,
+we have $\nabla\times\boldsymbol{u}=0$.
+
+Cr: The equation implies that $\boldsymbol{u}$ must be a constant vector field.
+E: No, it is the *sum* of derivatives of different components of $\boldsymbol{u}$
+that is zero. Only in one dimension, where $\boldsymbol{u}=u_x\boldsymbol{i}$
+and consequently $\nabla\cdot\boldsymbol{u}=du/dx$, the vector field must be constant.
+!equiz
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="computer-code">
+<h3>Computer code<a class="headerlink" href="#computer-code" title="Permalink to this headline">¶</a></h3>
+<p>Inline computer code (variables, expressions, statements) are
+normally typeset with a monospace font, and this is enabled by
+enclosing the code in backticks. Blocks of computer code are typeset
+with <tt class="docutils literal"><span class="pre">!bc</span></tt> (&#8220;begin code&#8221;) and <tt class="docutils literal"><span class="pre">!ec</span></tt> (&#8220;end code&#8221;) tags.
+One can specify the computer language as part of the <tt class="docutils literal"><span class="pre">!bc</span></tt> tag:
+<tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">LX</span></tt>, where <tt class="docutils literal"><span class="pre">L</span></tt> is the language (<tt class="docutils literal"><span class="pre">py</span></tt> for Python, <tt class="docutils literal"><span class="pre">m</span></tt> for Matlab,
+<tt class="docutils literal"><span class="pre">cpp</span></tt> for C++, for instance) and <tt class="docutils literal"><span class="pre">X</span></tt> can be <tt class="docutils literal"><span class="pre">pro</span></tt> for a complete
+executable program or <tt class="docutils literal"><span class="pre">cod</span></tt> for a code snippet (cannot be executed without
+additional statements) <a class="footnote-reference" href="#hide-code" id="id1">[1]</a>. The quizzes below demonstrate the syntax.</p>
+<table class="docutils footnote" frame="void" id="hide-code" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><tt class="docutils literal"><span class="pre">X</span></tt> can also be <tt class="docutils literal"><span class="pre">hide</span></tt> for code that is not supposed to be
+shown, but possibly required to execute other snippets in an
+interactive document (that allows code to be edited and executed
+by the reader). This is currently being implemented in DocOnce&#8217;s
+support for Runestone Interactive books (using the Sphinx format).</td></tr>
+</tbody>
+</table>
+
+            <div id="question_7" class="alert alert-warning">
+            <p>Q-7: We want to create a Python list object of length <tt class="docutils literal"><span class="pre">n</span></tt> where each
+element is <tt class="docutils literal"><span class="pre">0</span></tt>. Is the following code then what we need?</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="n">mylist</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+<form name="question_7_form" method="get" action="" onsubmit="return false;">
+            <input type="radio" name="group1" value="a" id="question_7_opt_a" />
+            <label for= "question_7_opt_a">  a) Yes.</label><br />
+            
+            <input type="radio" name="group1" value="b" id="question_7_opt_b" />
+            <label for= "question_7_opt_b">  b) Too advanced typesetting prevents the text from being rendered</label><br />
+            
+            <input type="radio" name="group1" value="c" id="question_7_opt_c" />
+            <label for= "question_7_opt_c">  c) No.</label><br />
+            
+
+            <script>
+            $(document).ready(function(){checkRadio('question_7');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_7','c',['Not exactly: \u003Ctt\u003Enumpy.zeros\u003C/tt\u003E creates an array of zeros, not a list.', 'No, this is fully equivalent to the original code, so \u003Ctt\u003Emylist\u003C/tt\u003E becomes an array, not a list.', 'One would need to do \u003Ctt\u003Emylist \u003D [0]*n\u003C/tt\u003E or \u003Ctt\u003Enumpy.zeros(n).tolist()\u003C/tt\u003E.'])">Check Me</button>
+            <button class='btn btn-default' id="question_7_bcomp" disabled name="compare" onclick="compareAnswers('question_7');">Compare Me</button>
+            </form><br />
+            <div id="question_7_feedback">
+            </div>
+            </div>
+            <div class="highlight-text"><div class="highlight"><pre>!bquiz
+Q: We want to create a Python list object of length `n` where each
+element is `0`. Is the following code then what we need?
+
+!bc pycod
+import numpy
+mylist = numpy.zeros(n)
+!ec
+
+K: list, array
+
+Cw: Yes.
+
+E: Not exactly: `numpy.zeros` creates an array of zeros, not a list.
+
+Cw: Yes, provided we write `np` instead of `numpy`:
+
+!bc pycod
+import numpy as np
+mylist = np.zeros(n)
+!ec
+
+E: No, this is fully equivalent to the original code, so `mylist` becomes
+an array, not a list.
+
+Cr: No.
+E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
+!equiz
+</pre></div>
+</div>
+<div class="admonition-summary-of-quiz-syntax admonition">
+<p class="first admonition-title">Summary of quiz syntax</p>
+<ul class="last simple">
+<li>Each quiz is enclosed in <tt class="docutils literal"><span class="pre">!bquiz</span></tt> and <tt class="docutils literal"><span class="pre">!equiz</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">Q</span></tt>: question</li>
+<li><tt class="docutils literal"><span class="pre">Q</span> <span class="pre">[prefix]</span></tt>: question with prefix (defaults to <em>Question</em>)</li>
+<li><tt class="docutils literal"><span class="pre">Cr</span></tt>: right (correct) choice</li>
+<li><tt class="docutils literal"><span class="pre">Cw</span></tt>: wrong (incorrect) choice</li>
+<li><tt class="docutils literal"><span class="pre">Cr</span> <span class="pre">[prefix]</span></tt>: right (correct) choice with prefix (defaults to <em>Choice X</em>,
+where <em>X</em> is the choice number in HTML, and to an upper case letter in
+LaTeX)</li>
+<li><tt class="docutils literal"><span class="pre">Cw</span> <span class="pre">[prefix]</span></tt>: wrong (incorrect) choice with prefix</li>
+<li><tt class="docutils literal"><span class="pre">E</span></tt>: explanation of last choice</li>
+<li><tt class="docutils literal"><span class="pre">K</span></tt>: keywords</li>
+<li><tt class="docutils literal"><span class="pre">L</span></tt>: label (logical name)</li>
+<li><tt class="docutils literal"><span class="pre">NP</span></tt>: heading for new page</li>
+<li><tt class="docutils literal"><span class="pre">H</span></tt>: quiz heading</li>
+</ul>
+</div>
+</div>
+<div class="section" id="example-putting-it-all-together">
+<h3>Example: Putting it all together<a class="headerlink" href="#example-putting-it-all-together" title="Permalink to this headline">¶</a></h3>
+
+            <div id="question_8" class="alert alert-warning">
+            <p>Q-8: 
+
+.. code-block:: python</p>
+<blockquote>
+<div><p>from math import sin</p>
+<dl class="docutils">
+<dt>def D(u, t, dt=1E-5):</dt>
+<dd>return (u(t + dt) - u(t - dt))/(2*dt)</dd>
+<dt>def u(t):</dt>
+<dd>&#8220;A quadratic function.&#8221;
+return t^2</dd>
+</dl>
+<p>print D(u, t=4),
+print D(lambda x: return 2*x, 2)</p>
+</div></blockquote>
+<p>The purpose of this program is to differentiate the two mathematical
+functions</p>
+<div class="math">
+\[\begin{split}u(t) &amp;= t^2,\\
+f(x) &amp;= 2x.\end{split}\]</div>
+<p>Determine which of the following assertions that is <strong>wrong</strong>.</p>
+<form name="question_8_form" method="get" action="" onsubmit="return false;">
+            <input type="radio" name="group1" value="a" id="question_8_opt_a" />
+            <label for= "question_8_opt_a">  a) In Python, the syntax for <em>t^2</em> is <tt>t**2</tt>, not <tt>t^2</tt>, so the <tt>u</tt> function contains an error.</label><br />
+            
+            <input type="radio" name="group1" value="b" id="question_8_opt_b" />
+            <label for= "question_8_opt_b">  b) The string in the <tt>u</tt> function is a valid doc string.</label><br />
+            
+            <input type="radio" name="group1" value="c" id="question_8_opt_c" />
+            <label for= "question_8_opt_c">  c) The output from the program is on a single line, despite two <tt>print</tt> statements.</label><br />
+            
+            <input type="radio" name="group1" value="d" id="question_8_opt_d" />
+            <label for= "question_8_opt_d">  d) One cannot use <tt>u</tt> both inside the <tt>D</tt> function and in the outer calling code (the main program).</label><br />
+            
+            <input type="radio" name="group1" value="e" id="question_8_opt_e" />
+            <label for= "question_8_opt_e">  e) Too advanced typesetting prevents the text from being rendered</label><br />
+            
+
+            <script>
+            $(document).ready(function(){checkRadio('question_8');});
+            </script>
+            <button class='btn btn-success' name="do answer" onclick="checkMCMFStorage('question_8','d',['True. However, \u003Ctt\u003Et^2\u003C/tt\u003E will work for integer \u003Ctt\u003Et\u003C/tt\u003E in Python, but the computation is nonsense in this case since \u003Cem\u003Eu(t)\u003C/em\u003E is supposed to be \u003Cem\u003Et^2\u003C/em\u003E.', 'Yes, a doc string can be any string after the function heading. It can have single quotes \u003Ctt\u003E\u0027...\u0027\u003C/tt\u003E, double quotes \u003Ctt\u003E\u0022...\u0022\u003C/tt\u003E, triple single quotes \u003Ctt\u003E\u0027\u0027\u0027...\u0027\u0027\u0027\u003C/tt\u003E, or triple double quotes \u003Ctt\u003E\u0022\u0022\u0022...\u0022\u0022\u0022\u003C/tt\u003E. The latter is the most popular for doc strings. Recall that triple quotes allow the string to span multiple lines.', 'Yes, because of the comma after the first \u003Ctt\u003Eprint\u003C/tt\u003E statement: it suppresses the newline character that is normally appended to \u003Ctt\u003Eprint\u003C/tt\u003E statements in Python.', 'Yes, you can, because the \u003Ctt\u003Eu\u003C/tt\u003E argument in the \u003Ctt\u003ED\u003C/tt\u003E function (holding a function) is a *local* variable inside the \u003Ctt\u003ED\u003C/tt\u003E function. The \u003Ctt\u003Eu\u003C/tt\u003E in the calling code is *global* variable, holding a function object. Inside \u003Ctt\u003ED\u003C/tt\u003E, \u003Ctt\u003Eu\u003C/tt\u003E refers to the local variable, while in the main program, \u003Ctt\u003Eu\u003C/tt\u003E refers to the global variable, and the local variable \u003Ctt\u003Eu\u003C/tt\u003E in \u003Ctt\u003ED\u003C/tt\u003E no longer exists, because it was deleted when returning from the function.  Inside \u003Ctt\u003ED\u003C/tt\u003E, we can actually access the global \u003Ctt\u003Eu\u003C/tt\u003E by \u003Ctt\u003Eglobals()[\u0027u\u0027]\u003C/tt\u003E, but that almost never comes to use and is also bad coding.', 'Too advanced typesetting prevents the text from being rendered'])">Check Me</button>
+            <button class='btn btn-default' id="question_8_bcomp" disabled name="compare" onclick="compareAnswers('question_8');">Compare Me</button>
+            </form><br />
+            <div id="question_8_feedback">
+            </div>
+            </div>
+            </div>
+<div class="section" id="specification-in-html">
+<h3>Specification in HTML<a class="headerlink" href="#specification-in-html" title="Permalink to this headline">¶</a></h3>
+<p>Instead of using the compact text specification with DocOnce
+formatting, one can use a more verbose syntax and specify everything
+in HTML. The second example in the section <a class="reference internal" href="#sec-math"><em>Mathematics</em></a> goes as
+follows with HTML syntax.</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="c">&lt;!-- --- begin quiz --- --&gt;</span>
+<span class="c">&lt;!-- --- begin quiz question --- --&gt;</span>
+The equation
+
+$$
+\begin{equation}
+\nabla\cdot\boldsymbol{u} = 0
+\label{cont:eq}
+\end{equation}
+$$
+
+is famous in physics. Select the wrong assertion(s):
+<span class="c">&lt;!-- --- end quiz question --- --&gt;</span>
+<span class="c">&lt;!-- --- keywords:[&#39;gradient&#39;, &#39;divergence&#39;, &#39;curl&#39;, &#39;vector calculus&#39;] --&gt;</span>
+<span class="c">&lt;!-- --- label:div:assert --&gt;</span>
+
+<span class="c">&lt;!-- --- begin quiz choice 1 (wrong) --- --&gt;</span>
+The equation tells that the net outflow of something with
+velocity \( \boldsymbol{u} \) in region is zero.
+<span class="c">&lt;!-- --- end quiz choice 1 (wrong) --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin explanation of choice 1 --- --&gt;</span>
+This is right: integrating \eqref{cont:eq} over an arbitrary
+domain \( \Omega \) and using Gauss&#39; divergence theorem, we
+get the surface integral
+
+$$ \int_{\partial\Omega}\boldsymbol{u}\cdot\boldsymbol{n}dS=0,$$
+
+where \( \boldsymbol{n} \) is an outward unit normal on the
+boundary \( \partial\Omega \).
+The quantity \( \boldsymbol{u}\cdot\boldsymbol{n}dS \) is the
+outflow of volume per time unit if \( \boldsymbol{u} \) is
+velocity.
+<span class="c">&lt;!-- --- end explanation of choice 1 --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin quiz choice 2 (wrong) --- --&gt;</span>
+The equation tells that the vector field \( \boldsymbol{u} \)
+is divergence free.
+<span class="c">&lt;!-- --- end quiz choice 2 (wrong) --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin explanation of choice 2 --- --&gt;</span>
+Yes, <span class="nt">&lt;em&gt;</span>divergence free<span class="nt">&lt;/em&gt;</span> is often used as synonym for
+<span class="nt">&lt;em&gt;</span>zero divergence<span class="nt">&lt;/em&gt;</span>, and \( \nabla\cdot\boldsymbol{u} \)
+is the divergence of a vector field \( \boldsymbol{u} \).
+<span class="c">&lt;!-- --- end explanation of choice 2 --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin quiz choice 3 (wrong) --- --&gt;</span>
+The equation implies that there exists a vector potential
+\( \boldsymbol{A} \) such that
+\( \boldsymbol{u}=\nabla\times\boldsymbol{A} \).
+<span class="c">&lt;!-- --- end quiz choice 3 (wrong) --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin explanation of choice 3 --- --&gt;</span>
+Yes, this is an important result in vector calculus that is much
+used in electromagnetics.
+<span class="c">&lt;!-- --- end explanation of choice 3 --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin quiz choice 4 (right) --- --&gt;</span>
+The equation implies \( \nabla\times\boldsymbol{u}=0 \).
+<span class="c">&lt;!-- --- end quiz choice 4 (right) --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin explanation of choice 4 --- --&gt;</span>
+No, only if \( \boldsymbol{u}=\nabla\phi \), for some scalar
+potential \( \phi \), we have \( \nabla\times\boldsymbol{u}=0 \).
+<span class="c">&lt;!-- --- end explanation of choice 4 --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin quiz choice 5 (right) --- --&gt;</span>
+The equation implies that \( \boldsymbol{u} \)
+must be a constant vector field.
+<span class="c">&lt;!-- --- end quiz choice 5 (right) --- --&gt;</span>
+
+<span class="c">&lt;!-- --- begin explanation of choice 5 --- --&gt;</span>
+No, it is the <span class="nt">&lt;em&gt;</span>sum<span class="nt">&lt;/em&gt;</span> of derivatives of different components
+of \( \boldsymbol{u} \) that is zero. Only in one dimension,
+where \( \boldsymbol{u}=u_x\boldsymbol{i} \) and consequently
+\( \nabla\cdot\boldsymbol{u}=du/dx \), the vector field must be
+constant.
+<span class="c">&lt;!-- --- end explanation of choice 5 --- --&gt;</span>
+<span class="c">&lt;!-- --- end quiz --- --&gt;</span>
+</pre></div>
+</div>
+<p>This syntax applies begin-end comments to mark the start and end
+of the question, the choices, and the explanations.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The HTML specification of a quiz is not a meaningful HTML code for
+displaying the quiz in a browser, it is just an application of the
+HTML language to specify information and have full control of
+the typesetting details. Some program must interpret the
+HTML above and typset questions, choices, and explanations adequately.</p>
+</div>
+</div>
+</div>
+<div class="section" id="the-python-data-structure-for-quizzes">
+<h2>The Python data structure for quizzes<a class="headerlink" href="#the-python-data-structure-for-quizzes" title="Permalink to this headline">¶</a></h2>
+<p>When a DocOnce file <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> containing quizzes (and other types
+of text, like this document) is translated to some format by the
+<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command, a Python list of all the quizzes is created
+and written to <tt class="docutils literal"><span class="pre">.mydoc.quiz</span></tt>. Each list element represents one quiz as
+a dictionary. The list corresponding to the quizzes in the current
+document starts with</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span><span class="s">&#39;choices&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span> <span class="s">u&#39;Helsinki&#39;</span><span class="p">],</span>
+              <span class="p">[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span> <span class="s">u&#39;Drammen&#39;</span><span class="p">],</span>
+              <span class="p">[</span><span class="s">u&#39;right&#39;</span><span class="p">,</span> <span class="s">u&#39;Oslo&#39;</span><span class="p">],</span>
+              <span class="p">[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span> <span class="s">u&#39;Denmark&#39;</span><span class="p">]],</span>
+  <span class="s">&#39;no&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s">&#39;question&#39;</span><span class="p">:</span> <span class="s">u&#39;What is the capital of Norway?&#39;</span><span class="p">},</span>
+</pre></div>
+</div>
+<p>A more complicated quiz with specification of prefix for the question and
+one choice (see example above in the question admonition) has explanations
+in the list for each choice, as well as two more
+keys (<tt class="docutils literal"><span class="pre">choice</span> <span class="pre">prefix</span></tt> and <tt class="docutils literal"><span class="pre">question</span> <span class="pre">prefix</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;choice prefix&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">u&#39;Answer:&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>
+ <span class="s">&#39;choices&#39;</span><span class="p">:</span> <span class="p">[</span>
+   <span class="p">[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span>
+    <span class="s">u&#39;Stockholm&#39;</span><span class="p">,</span>
+    <span class="s">u&quot;Stockholm is the capital of Sweden, Norway&#39;s neighboring country.&quot;</span><span class="p">],</span>
+   <span class="p">[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span>
+    <span class="s">u&#39;Bergen&#39;</span><span class="p">,</span>
+    <span class="s">u&#39;Some people from Bergen may claim so... It is just the second</span><span class="se">\n</span><span class="s">largest city in Norway.&#39;</span><span class="p">],</span>
+   <span class="p">[</span><span class="s">u&#39;right&#39;</span><span class="p">,</span> <span class="s">u&#39;Oslo&#39;</span><span class="p">],</span>
+   <span class="p">[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span> <span class="s">u&#39;Denmark&#39;</span><span class="p">]],</span>
+ <span class="s">&#39;no&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+ <span class="s">&#39;question&#39;</span><span class="p">:</span> <span class="s">u&#39;What is the capital of Norway?&#39;</span><span class="p">,</span>
+ <span class="s">&#39;question prefix&#39;</span><span class="p">:</span> <span class="s">u&#39;&#39;</span><span class="p">},</span>
+</pre></div>
+</div>
+<p>The text in the Python list-dictionary data structure is ready-made for
+being displayed in HTML. Here is an example involving mathematics
+(MathJax syntax):</p>
+<div class="highlight-python"><div class="highlight"><pre> {&#39;choices&#39;: [
+   [u&#39;wrong&#39;,
+    u&#39;5.&#39;,
+    u&#39;Good attempt, especially when referring to the following story.
+\n\n&lt;p&gt;\n&lt;blockquote&gt;\n    An anthropologist was asking a primitive tribesman ab
+out arithmetic.\n    When the anthropologist asked, &lt;em&gt;What does two and two ma
+ke?&lt;/em&gt; the\n    tribesman replied, &lt;em&gt;Five.&lt;/em&gt; Asked to explain, the tribes
+man said, &lt;em&gt;If I\n    have a rope with two knots, and another rope with two kn
+ots, and I\n    join the ropes together, then I have five knots.&lt;/em&gt;\n&lt;/blockqu
+ote&gt;&#39;],
+   [u&#39;right&#39;,
+    u&#39;4.&#39;,
+    u&#39;Seems trivial, but once upon a time...\n\n&lt;p&gt;\n&lt;center&gt;&lt;p&gt;&lt;img src=&quot;fig/1p1.gif&quot; align=&quot;bottom&quot; width=180&gt;&lt;/p&gt;&lt;/center&gt;&#39;],
+   [u&#39;wrong&#39;,
+    u&#39;The computation does not make sense when \\( a \\) and \\( b \\) are given without\nunits.&#39;,
+    u&#39;It is indeed possible to add pure numbers without any units.&#39;]],
+  &#39;no&#39;: 6,
+  &#39;question&#39;: u&#39;Compute the result of \\( a+b \\) in the case \\( a=2 \\) and \\( b=2 \\).&#39;},
+</pre></div>
+</div>
+<p>Computer code gets typeset by nice colors by default (using the Pygments
+package):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;choices&#39;</span><span class="p">:</span>
+   <span class="p">[[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span>
+     <span class="s">u&#39;Yes.&#39;</span><span class="p">,</span>
+     <span class="s">u&#39;Not exactly: &lt;code&gt;numpy.zeros&lt;/code&gt; creates an array of zeros</span>
+<span class="p">,</span> <span class="ow">not</span> <span class="n">a</span> <span class="nb">list</span><span class="o">.</span><span class="s">&#39;],</span>
+    <span class="p">[</span><span class="s">u&#39;wrong&#39;</span><span class="p">,</span>
+     <span class="s">u&#39;Yes, provided we write &lt;code&gt;np&lt;/code&gt; instead of &lt;code&gt;numpy&lt;/code&gt;:</span><span class="se">\n\n</span><span class="s">&lt;p&gt;</span><span class="se">\n\n</span><span class="s">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span><span class="se">\n</span><span class="s">&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt; &lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;as&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;np&lt;/span&gt;</span><span class="se">\n</span><span class="s">mylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; np&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)</span><span class="se">\n</span><span class="s">&lt;/pre&gt;&lt;/div&gt;</span><span class="se">\n</span><span class="s">&lt;p&gt;&#39;</span><span class="p">,</span>
+     <span class="s">u&#39;No, this is fully equivalent to the original code, so &lt;code&gt;mylist&lt;/code&gt; becomes</span><span class="se">\n</span><span class="s">an array, not a list.&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s">u&#39;right&#39;</span><span class="p">,</span>
+     <span class="s">u&#39;No.&#39;</span><span class="p">,</span>
+     <span class="s">u&#39;One would need to do &lt;code&gt;mylist = [0]*n&lt;/code&gt; or &lt;code&gt;numpy.zeros(n).tolist()&lt;/code&gt;.&#39;</span><span class="p">]],</span>
+  <span class="s">&#39;no&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="s">&#39;question&#39;</span><span class="p">:</span> <span class="s">u&#39;We want to create a Python list object of length &lt;code&gt;n&lt;/code&gt; where each</span><span class="se">\n</span><span class="s">element is &lt;code&gt;0&lt;/code&gt;. Is the following code then what we need?</span><span class="se">\n\n</span><span class="s">&lt;p&gt;</span><span class="se">\n\n</span><span class="s">&lt;!-- code=python (!bc pycod) typeset with pygments style &quot;default&quot; --&gt;</span><span class="se">\n</span><span class="s">&lt;div class=&quot;highlight&quot; style=&quot;background: #f8f8f8&quot;&gt;&lt;pre style=&quot;line-height: 125%&quot;&gt;&lt;span style=&quot;color: #008000; font-weight: bold&quot;&gt;import&lt;/span&gt; &lt;span style=&quot;color: #0000FF; font-weight: bold&quot;&gt;numpy&lt;/span&gt;</span><span class="se">\n</span><span class="s">mylist &lt;span style=&quot;color: #666666&quot;&gt;=&lt;/span&gt; numpy&lt;span style=&quot;color: #666666&quot;&gt;.&lt;/span&gt;zeros(n)</span><span class="se">\n</span><span class="s">&lt;/pre&gt;&lt;/div&gt;</span><span class="se">\n</span><span class="s">&lt;p&gt;&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The keys in the dictionaries in this data structure are</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">question</span></tt>: the text of the question. This key is always present.</li>
+<li><tt class="docutils literal"><span class="pre">no</span></tt>: the number of the quiz (starts at 1). This key is always present.</li>
+<li><tt class="docutils literal"><span class="pre">keywords</span></tt>: an optional list of keywords for the quiz.</li>
+<li><tt class="docutils literal"><span class="pre">label</span></tt>: an optional logical name for this quiz.</li>
+<li><tt class="docutils literal"><span class="pre">choices</span></tt>: list of all the choices as 2- or 3-lists. First element
+is <tt class="docutils literal"><span class="pre">right</span></tt> or <tt class="docutils literal"><span class="pre">wrong</span></tt>, second is the text of the choice, the optional
+third element is the explanation (if it was specified). This key
+is always present.</li>
+<li><tt class="docutils literal"><span class="pre">choice</span> <span class="pre">prefix</span></tt>: optional list of the prefix specified for each choice.
+<tt class="docutils literal"><span class="pre">None</span></tt> implies the default prefix (depends on the format,
+see the documentation
+of the <tt class="docutils literal"><span class="pre">--quiz_choice_prefix=</span></tt> option by typing <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt>).
+This key is absent if there are no specifications of such a prefix.</li>
+<li><tt class="docutils literal"><span class="pre">question</span> <span class="pre">prefix</span></tt>: The optional prefix specified for the question,
+if different from the default value <tt class="docutils literal"><span class="pre">Question:</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">new</span> <span class="pre">page</span></tt>: Optional headline for a new page of quizzes. Also
+indicates that a new page is to be made.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="translating-the-quiz-format-to-html-or-pdf">
+<h2>Translating the quiz format to HTML or PDF<a class="headerlink" href="#translating-the-quiz-format-to-html-or-pdf" title="Permalink to this headline">¶</a></h2>
+<p>The program <tt class="docutils literal"><span class="pre">doconce</span></tt> must be run to interpret the quiz format, translate
+it to LaTeX, HTML, or other formats, and produce the Python representation
+of the collection of quizzes in a document. Let the name of the
+document with quiz specifications and optional text be <tt class="docutils literal"><span class="pre">myquiz.do.txt</span></tt>.
+Documents to play around with are <a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/quiz/pure_quiz.do.txt">pure_quiz.do.txt</a> or
+<a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/quiz/quiz.do.txt">the present document</a>.</p>
+<div class="section" id="html">
+<h3>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="plain-html">
+<h4>Plain HTML<a class="headerlink" href="#plain-html" title="Permalink to this headline">¶</a></h4>
+<p>A simple HTML rendering of quizzes is done by</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html myquiz
+</pre></div>
+</div>
+<p>The result <tt class="docutils literal"><span class="pre">myquiz.html</span></tt> can be loaded into a browser.</p>
+</div>
+<div class="section" id="bootstrap-html">
+<h4>Bootstrap HTML<a class="headerlink" href="#bootstrap-html" title="Permalink to this headline">¶</a></h4>
+<p>A more sophisticated rendering is offered if a Bootstrap HTML style
+is adopted,</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html myquiz --html_style=bootstrap
+</pre></div>
+</div>
+<p>Other variations of this class of styles are <tt class="docutils literal"><span class="pre">bootswatch</span></tt>, and
+<tt class="docutils literal"><span class="pre">bootswatch_X</span></tt>, where <tt class="docutils literal"><span class="pre">X</span></tt> is the name of a Bootswatch style, e.g.,
+<tt class="docutils literal"><span class="pre">journal</span></tt>.</p>
+<p>The Bootstrap-based styles have a striking red color for inline computer
+code, which can be avoided by giving the option <tt class="docutils literal"><span class="pre">--html_code_style=inherit</span></tt>
+(see the documentation of <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html">DocOnce and Bootstrap</a> for details and examples).</p>
+<p>By default, there is a horizontal rule enclosing each quiz in the HTML format.
+This can be turned off by the option <tt class="docutils literal"><span class="pre">--quiz_horizontal_rule=off</span></tt>.</p>
+</div>
+<div class="section" id="multiple-page-html-document">
+<h4>Multiple page HTML document<a class="headerlink" href="#multiple-page-html-document" title="Permalink to this headline">¶</a></h4>
+<p>By inserting <tt class="docutils literal"><span class="pre">!split</span></tt> before headings in a DocOnce document, one can run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce split_html myquiz.html
+</pre></div>
+</div>
+<p>to create a multi-page document with navigation arrows. Bootstrap styles
+will also have a <em>Contents</em> pull-down menu to the right in the top bar.
+Without the <tt class="docutils literal"><span class="pre">split_html</span></tt> command (and <tt class="docutils literal"><span class="pre">!split</span></tt> instructions in the document),
+all quizzes will be in one HTML page.</p>
+</div>
+<div class="section" id="setting-the-question-and-choice-prefix">
+<h4>Setting the question and choice prefix<a class="headerlink" href="#setting-the-question-and-choice-prefix" title="Permalink to this headline">¶</a></h4>
+<p>The prefix before a question is <tt class="docutils literal"><span class="pre">Question:</span></tt> and before a choice is <tt class="docutils literal"><span class="pre">Choice</span> <span class="pre">X</span></tt>,
+where <tt class="docutils literal"><span class="pre">X</span></tt> is a number. To set a different prefix, see the
+<tt class="docutils literal"><span class="pre">--quiz_question_prefix</span></tt> and <tt class="docutils literal"><span class="pre">--quiz_choice_prefix</span></tt> commands
+when running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="latex">
+<h3>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h3>
+<p>The standard command to produce a LaTeX document is</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex myquiz \
+          --without_answers --without_solutions \
+          --latex_code_style=pyg
+</pre></div>
+</div>
+<p>If desired, the correct answer to each quiz can be included by omitting
+<tt class="docutils literal"><span class="pre">--without_answers</span></tt>. Omitting <tt class="docutils literal"><span class="pre">--without_solutions</span></tt> will print
+the right answers and the available explanations below the quiz.</p>
+<p>The next step is to compile the document:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pdflatex -shell-escape myquiz
+</pre></div>
+</div>
+<p>to produce a PDF <tt class="docutils literal"><span class="pre">myquiz.pdf</span></tt>.
+Here, we use the <tt class="docutils literal"><span class="pre">pyg</span></tt> (Pygments, LaTeX package <tt class="docutils literal"><span class="pre">minted</span></tt>) style
+for code blocks, which requires the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> option when running
+<tt class="docutils literal"><span class="pre">pdflatex</span></tt>.</p>
+</div>
+<div class="section" id="sphinx">
+<h3>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
+<p>A typical session for creating a Sphinx document is</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format sphinx myquiz
+Terminal&gt; doconce split_rst myquiz
+Terminal&gt; doconce sphinx_dir dirname=sphinx theme=default myquiz
+Terminal&gt; python automake_sphinx.py
+</pre></div>
+</div>
+<p>A disadvantage of Sphinx in a quiz context is that admonitions cannot
+contain quizzes. However, an advantage of Sphinx is that one can
+create RunestoneInteractive Sphinx books, which have nice browser
+support of quizzes. A RunestoneInteractive version is created by</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format sphinx myquiz --runestone
+Terminal&gt; doconce split_rst myquiz
+Terminal&gt; doconce sphinx_dir dirname=sphinx theme=default myquiz
+Terminal&gt; python automake_sphinx.py --runestone
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <span id='numuserspan'></span> readers online now | <span class='loggedinuser'></span> | <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Hans Petter Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+    </p>
+  </div>
+</footer>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(addUserToFooter);
+    $(document).ready(addNavbarLoginLink);
+    $(document).ready(createEditors);
+    $(document).ready(getNumUsers);
+    $(document).ready(getOnlineUsers);
+    $(document).ready(createScratchActivecode());
+    $(document).ready(styleUnittestResults());
+</script>
+
+<script type="text/javascript">
+  // add the video play button overlay image
+  $(".video-play-overlay").each(function() {
+    $(this).css('background-image', "url(\'_static/play_overlay_icon.png\')")
+    });
+
+  // This function is needed to allow the dropdown search bar to work;
+  // The default behaviour is that the dropdown menu closes when something in
+  // it (like the search bar) is clicked
+  $(function() {
+    // Fix input element click problem
+    $('.dropdown input, .dropdown label').click(function(e) {
+      e.stopPropagation();
+      });
+  });
+
+  // style codelens buttons (doing it here because PyTutor is a submodule owned by someone else
+  $(function() {
+    $(".ExecutionVisualizer").each(function() {
+      $(this).find("#jmpFirstInstr").addClass('btn btn-default');
+      $(this).find("#jmpStepBack").addClass('btn btn-danger');
+      $(this).find("#jmpStepFwd").addClass('btn btn-success');
+      $(this).find("#jmpLastInstr").addClass('btn btn-default');
+      });
+  });
+
+</script>
+
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32029811-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>

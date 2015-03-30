@@ -1,5 +1,5 @@
 #!/bin/sh
-sh -x clean.sh
+sh -x clean.sh  # important to clean first to avoid wrong ._*.rst files
 name=quiz
 
 # Sphinx
@@ -9,18 +9,17 @@ doconce sphinx_dir dirname=sphinx theme=default $name
 python automake_sphinx.py
 
 # Sphinx RunestoneInteractive
-doconce format sphinx $name --runestone
+doconce format sphinx $name --runestone -DRUNESTONE
 doconce split_rst $name
 doconce sphinx_dir dirname=sphinx-rs $name
 python automake_sphinx.py --runestone
-exit
 
 # HTML Bootstrap format
-doconce format html $name --html_style=bootstrap --html_code_style=inherit --${name}_horizontal_rule=off
+doconce format html $name --html_style=bootstrap --html_code_style=inherit --quiz_horizontal_rule=off -DBOOTSTRAP
 doconce split_html $name.html #--pagination
 
-# HTML solarized format
-doconce format html $name --html_style=solarized --html_output=${name}-solarized --${name}_horizontal_rule=off
+# HTML plain format
+doconce format html $name --html_style=blueish --html_output=${name}-plain --quiz_horizontal_rule=off
 
 # PDF via latex including full solutions
 doconce format pdflatex $name --max_bc_linelength=67 --without_answers
@@ -40,7 +39,7 @@ doconce ptex2tex $name envir=minted
 pdflatex -shell-escape $name
 
 # Index
-doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window
+doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window --html_bootstrap_navbar=off
 
 # publish
 dest=../../pub/quiz

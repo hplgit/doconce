@@ -6,6 +6,6 @@ DATE: today
  * "PDF with answers": "quiz_wans.pdf"
  * "PDF with answers and explanations": "quiz_wsol.pdf"
  * "Bootstrap HTML": "quiz.html"
- * "Solarized HTML": "quiz-solarized.html"
+ * "Plain HTML": "quiz-plain.html"
  * "Standard Sphinx": "sphinx/index.html"
  * "RunestoneInteractive Sphinx": "sphinx-rs/index.html"

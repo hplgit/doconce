@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Software Tool for Typesetting Quizzes">
 
-
+<title>A Software Tool for Typesetting Quizzes</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 */
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -34,7 +35,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' Question and choices ', 2, None, '___sec1'),
               (' Explanations of choices ', 2, None, '___sec2'),
               (' Typesetting ', 2, None, '___sec3'),
-              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
+              (' Quiz inside admonitions ', 2, None, '___sec4'),
               (' Typesetting of mathematics and computer code ',
                1,
                None,
@@ -61,7 +62,8 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                3,
                None,
                '___sec18'),
-              (' LaTeX ', 2, None, '___sec19')]}
+              (' LaTeX ', 2, None, '___sec19'),
+              (' Sphinx ', 2, None, '___sec20')]}
 end of tocinfo -->
 
 <body>
@@ -72,16 +74,13 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -101,20 +100,21 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "A pure text quiz" --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
-     <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
-     <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
-     <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
-     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
-     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
-     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
-     <!-- navigation toc: "Computer code" --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
-     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
-     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
-     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
-     <!-- navigation toc: "Translating the quiz format to HTML or PDF" --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
-     <!-- navigation toc: "HTML" --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
-     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
 
         </ul>
       </li>
@@ -130,11 +130,13 @@ MathJax.Hub.Config({
 <a name="part0003"></a>
 <!-- !split -->
 
-<h2>Specification in HTML  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Specification in HTML </h2>
 
+<p>
 Instead of using the compact text specification with DocOnce
 formatting, one can use a more verbose syntax and specify everything
-in HTML. The second example in the section <a href="._quiz002.html#sec:math">Mathematics</a> then reads
+in HTML. The second example in the section <a href="._quiz002.html#sec:math">Mathematics</a> goes as
+follows with HTML syntax.
 
 <p>
 
@@ -230,13 +232,12 @@ displaying the quiz in a browser, it is just an application of the
 HTML language to specify information and have full control of
 the typesetting details. Some program must interpret the
 HTML above and typset questions, choices, and explanations adequately.
-(As done elsewhere in this document.)
 </div>
 
 
 <p>
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._quiz002.html">&larr; Prev</a>
@@ -262,4 +263,3 @@ HTML above and typset questions, choices, and explanations adequately.
 </body>
 </html>
     
-

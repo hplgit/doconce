@@ -1,14 +1,14 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="A Software Tool for Typesetting Quizzes">
 
-
+<title>A Software Tool for Typesetting Quizzes</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 */
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -34,7 +35,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               (' Question and choices ', 2, None, '___sec1'),
               (' Explanations of choices ', 2, None, '___sec2'),
               (' Typesetting ', 2, None, '___sec3'),
-              (' Quiz inside admonitions in DocOnce ', 2, None, '___sec4'),
+              (' Quiz inside admonitions ', 2, None, '___sec4'),
               (' Typesetting of mathematics and computer code ',
                1,
                None,
@@ -61,7 +62,8 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                3,
                None,
                '___sec18'),
-              (' LaTeX ', 2, None, '___sec19')]}
+              (' LaTeX ', 2, None, '___sec19'),
+              (' Sphinx ', 2, None, '___sec20')]}
 end of tocinfo -->
 
 <body>
@@ -72,16 +74,13 @@ end of tocinfo -->
 MathJax.Hub.Config({
   TeX: {
      equationNumbers: {  autoNumber: "none"  },
-     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js"]
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
 </script>
 <script type="text/javascript"
  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-<!-- Fix slow MathJax rendering in IE8 -->
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
-
 
 
 
@@ -101,20 +100,21 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: "A pure text quiz" --> <li><a href="._quiz001.html#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
-     <!-- navigation toc: "Question and choices" --> <li><a href="._quiz001.html#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
-     <!-- navigation toc: "Explanations of choices" --> <li><a href="._quiz001.html#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
-     <!-- navigation toc: "Typesetting" --> <li><a href="._quiz001.html#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
-     <!-- navigation toc: "Quiz inside admonitions in DocOnce" --> <li><a href="._quiz001.html#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions in DocOnce</a></li>
-     <!-- navigation toc: "Typesetting of mathematics and computer code" --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
-     <!-- navigation toc: "Mathematics" --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
-     <!-- navigation toc: "Computer code" --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
-     <!-- navigation toc: "Example: Putting it all together" --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
-     <!-- navigation toc: "Specification in HTML" --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
-     <!-- navigation toc: "The Python data structure for quizzes" --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
-     <!-- navigation toc: "Translating the quiz format to HTML or PDF" --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
-     <!-- navigation toc: "HTML" --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
-     <!-- navigation toc: "LaTeX" --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>A pure text quiz</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Question and choices</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Explanations of choices</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Typesetting</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quiz inside admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec5" style="font-size: 80%;"><b>Typesetting of mathematics and computer code</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#sec:math" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer code</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz002.html#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Putting it all together</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz003.html#___sec11" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specification in HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz004.html#___sec12" style="font-size: 80%;"><b>The Python data structure for quizzes</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec13" style="font-size: 80%;"><b>Translating the quiz format to HTML or PDF</b></a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;HTML</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="._quiz005.html#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Sphinx</a></li>
 
         </ul>
       </li>
@@ -130,10 +130,11 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1>A pure text quiz  <a name="___sec0"></a></h1>
+<h1 id="___sec0">A pure text quiz </h1>
 
-<h2>Question and choices  <a name="___sec1"></a></h2>
+<h2 id="___sec1">Question and choices </h2>
 
+<p>
 Here is a typical quiz with a question and four alternative answers:
 
 <p>
@@ -149,7 +150,7 @@ Here is a typical quiz with a question and four alternative answers:
 Helsinki
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_1_1">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -162,7 +163,7 @@ Wrong!
 Drammen
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_1_2">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -175,7 +176,7 @@ Wrong!
 Oslo
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_1_3">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
 </div>
@@ -188,7 +189,7 @@ Correct!
 Denmark
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_1_4">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -261,7 +262,7 @@ Cw: New York
 Sidney
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_2_1">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -274,7 +275,7 @@ Wrong!
 Kigali
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_2_2">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
 </div>
@@ -287,7 +288,7 @@ Correct!
 Bonn
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_2_3">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -300,7 +301,7 @@ Wrong!
 Bern
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_2_4">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
 </div>
@@ -313,7 +314,7 @@ Correct!
 Ottawa
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_2_5">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
 </div>
@@ -326,7 +327,7 @@ Correct!
 New York
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_2_6">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -334,8 +335,9 @@ Wrong!
 <!-- end quiz -->
 
 
-<h2>Explanations of choices  <a name="___sec2"></a></h2>
+<h2 id="___sec2">Explanations of choices </h2>
 
+<p>
 Sometimes it is desireable to give some explanation why certain choices
 are wrong (or right).
 If you click on the symbols in the quiz below, explanations
@@ -354,7 +356,7 @@ will be shown for Choices 1 and 2.
 Helsinki
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_3_1">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Helsinki is the capital of Finland.
 </div></p>
 </div>
@@ -367,7 +369,7 @@ Helsinki is the capital of Finland.
 Drammen
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_3_2">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Drammen is a small city close to Oslo.
 </div></p>
 </div>
@@ -380,7 +382,7 @@ Drammen is a small city close to Oslo.
 Oslo
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_3_3">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
 </div>
@@ -393,7 +395,7 @@ Correct!
 Denmark
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_3_4">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -423,8 +425,9 @@ Cw: Denmark
 <p>
 This time we also added some whitespace for enhanced reading of the text.
 
-<h2>Typesetting  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Typesetting </h2>
 
+<p>
 It is easy to use <em>emphasize font</em>, <b>boldface</b>, <font color="red">color</font>,
 <a href="http://google.com" target="_self">hyperlinks</a>, etc.,
 since the text in the specification of questions, choices,
@@ -454,7 +457,7 @@ This quote is attributed to</p>
 Geroge W. Bush
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_4_1">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -467,7 +470,7 @@ Wrong!
 Donald Knuth
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_4_2">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 According to <a href="http://en.wikiquote.org/wiki/Donald_Knuth" target="_self">Wikiquote</a>,
 Donald Knuth wrote this statement in <em>Structured Programming with
 Goto Statements</em>. Computing Surveys, <b>6</b>:4,
@@ -483,7 +486,7 @@ pp. 261-301, <b>1974</b>.
 Ole-Johan Dahl
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_4_3">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Ole-Johan Dahl was a famous Norwegian professor of computer
 science and together with Kristen Nygaard the inventor of
 object-oriented programming, but he is not the man behind this
@@ -524,9 +527,11 @@ quote.
 !equiz
 </pre></div>
 
-<h2>Quiz inside admonitions in DocOnce  <a name="___sec4"></a></h2>
+<h2 id="___sec4">Quiz inside admonitions </h2>
 
-Question admonitions may well feature quizzes. A plain question
+<p>
+Question admonitions may well feature quizzes unless the output
+format is reStructuredText (<code>rst</code>, <code>sphinx</code>). A plain question
 admonition is
 
 <p>
@@ -544,7 +549,7 @@ What is the capital of Norway?
 !equestion
 </pre></div>
 <p>
-The quiz version is
+Putting a quiz inside the question admonition looks like
 
 <p>
 <div class="alert alert-block alert-info alert-text-normal"><b>Question.</b>
@@ -560,7 +565,7 @@ The quiz version is
 Stockholm
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_5_1">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Stockholm is the capital of Sweden, Norway's neighboring country.
 </div></p>
 </div>
@@ -573,7 +578,7 @@ Stockholm is the capital of Sweden, Norway's neighboring country.
 Bergen
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_5_2">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Some people from Bergen may claim so... It is just the second
 largest city in Norway.
 </div></p>
@@ -587,7 +592,7 @@ largest city in Norway.
 Oslo
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_5_3">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
 </div>
@@ -600,7 +605,7 @@ Correct!
 Denmark
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_5_4">
-<img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
 </div>
@@ -635,9 +640,11 @@ Cw: Denmark
 <div class="alert alert-block alert-success alert-text-normal"><b>Choice and question prefix.</b>
 In the above example, we demonstrate the possibility to control
 the word preceding the question and the choices.
-For the current HTML format, questions are by default preceded by
+For the current output format (<code>html</code>), questions are by default preceded by
 <code>Question:</code> and choices by <code>Choice X:</code>, where <code>X</code> is the
 number of the choice.
+
+<p>
 The prefix appears inside square brackets. Empty brackets, as those
 in the question, leads to no prefix. The choice <code>Stockholm</code> has
 a prefix <code>[Answer:]</code>, and exactly the text inside the square brackets
@@ -647,7 +654,7 @@ precedes the text of this choice in the output.
 
 <p>
 <p>
-
+<!-- navigation buttons at the bottom of the page -->
 <ul class="pager">
   <li class="previous">
     <a href="._quiz000.html">&larr; Prev</a>
@@ -673,4 +680,3 @@ precedes the text of this choice in the output.
 </body>
 </html>
     
-
