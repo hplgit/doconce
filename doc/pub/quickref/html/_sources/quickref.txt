@@ -4,13 +4,13 @@
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-.. !split
+.. Document title:
 
 DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 28, 2015
+:Date: Mar 31, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -22,6 +22,8 @@ professionally looking web versions with Sphinx or HTML. Other outlets
 include Google's ``blogger.com``, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
+
+.. !split
 
 Supported Formats
 -----------------
@@ -57,6 +59,8 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
+.. !split
+
 Emacs syntax support
 --------------------
 
@@ -88,6 +92,8 @@ Ctrl+c exer    exercise outline
 Ctrl+c slide   slide outline                               
 Ctrl+c help    print this table                            
 =============  ==========================================  
+
+.. !split
 
 Title, Authors, and Date
 ------------------------
@@ -128,6 +134,8 @@ The table of contents is removed by writing ``TOC: off``.
 
 .. _quick:sections:
 
+.. !split
+
 Section Types
 -------------
 
@@ -154,6 +162,8 @@ The ``Exercise:`` keyword kan be substituted by ``Problem:`` or ``Project:``.
 A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
+
+.. !split
 
 Inline Formatting
 -----------------
@@ -237,6 +247,8 @@ before or after. Only the ``pdflatex`` and ``html`` output formats translate
 emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 ``--no_emoji`` removes all emojis from the output document.
+
+.. !split
 
 Lists
 -----
@@ -338,6 +350,8 @@ And finally a description list:
 
 
 
+.. !split
+
 Comment lines
 -------------
 
@@ -358,6 +372,8 @@ option ``-DEXTRA`` will bring the text alive again.
 When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.
+
+.. !split
 
 Inline comments
 ---------------
@@ -464,6 +480,8 @@ To implement these edits, run
 
         Terminal> doconce apply_edit_comments mydoc.do.txt
 
+.. !split
+
 Verbatim/Computer Code
 ----------------------
 
@@ -555,6 +573,8 @@ Important warnings:
  * Verbatim code blocks inside lists can be ugly typeset in some
    output formats. A more robust approach is to replace the list by
    paragraphs with headings.
+
+.. !split
 
 LaTeX Mathematics
 -----------------
@@ -672,6 +692,8 @@ rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
+.. !split
+
 Hyperlinks
 ----------
 
@@ -689,6 +711,8 @@ Links use either a link text or the raw URL:
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
+
+.. !split
 
 Figures and Movies
 ------------------
@@ -756,6 +780,8 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
+.. !split
+
 Tables
 ------
 
@@ -814,6 +840,8 @@ Now we can do ``# #include "mydata_table.do.txt"`` in the DocOnce
 source file or simply copy the table in ``mydata_table.do.txt``
 into the DocOnce file.
 
+.. !split
+
 Labels and References
 ---------------------
 
@@ -843,6 +871,8 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
+.. !split
+
 Citations and Bibliography
 --------------------------
 
@@ -870,6 +900,8 @@ where ``papers.pub`` is a publication database in the
 BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
+
+.. !split
 
 Generalized References
 ----------------------
@@ -909,6 +941,8 @@ LaTeX package ``xr`` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 ``external`` text will be the output.
 
+.. !split
+
 Index of Keywords
 -----------------
 
@@ -926,6 +960,8 @@ paragraphs. Index specifications placed right before paragraphs also
 gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the ``latex``,
 ``pdflatex``, ``rst``, and ``sphinx`` formats.
+
+.. !split
 
 Capabilities of The Program ``doconce``
 ---------------------------------------
@@ -1091,6 +1127,8 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
+.. !split
+
 Exercises
 ---------
 
@@ -1211,6 +1249,8 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
+.. !split
+
 Environments
 ------------
 
@@ -1237,6 +1277,8 @@ the environments:
 
  * ``slidecell``: indication of cells in a grid layout for elements on a
    slide
+
+.. !split
 
 Preprocessing
 -------------
@@ -1287,6 +1329,8 @@ With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
 examine the DocOnce source and the ``doc/src/make.sh`` script).
+
+.. !split
 
 Resources
 ---------

@@ -695,8 +695,12 @@ def html_code(filestr, code_blocks, code_block_types,
         if pygm_style is None:
             # Set sensible default values
             if option('html_style=', '').startswith('solarized'):
-                pygm_style = 'none'
-                # 2nd best: perldoc (light), see below
+                if 'pyscpro' in code_block_types:
+                    # Must have pygments style for Sage Cells to work
+                    pygm_style = 'perldoc'
+                else:
+                    pygm_style = 'none'
+                    # 2nd best: perldoc (light), see below
             elif option('html_style=', '').startswith('tactile'):
                 pygm_style = 'trac'
             elif option('html_style=', '') == 'rossant':
@@ -737,8 +741,15 @@ def html_code(filestr, code_blocks, code_block_types,
             code_blocks[i] = online_python_tutor(code_blocks[i],
                                                  return_tp='iframe')
 
-        #elif code_block_types[i].startswith('pyscpro'):
-        # not yet implemented
+        elif code_block_types[i].startswith('pyscpro'):
+            # Wrap Sage Cell code around the code
+            # https://github.com/sagemath/sagecell/blob/master/doc/embedding.rst
+            code_blocks[i] = """
+<div class="compute"><script type="text/x-sage">
+%s
+</script></div>
+""" % code_blocks[i]
+
         elif pygm is not None:
             # Typeset with pygments
             #lexer = guess_lexer(code_blocks[i])
@@ -1853,15 +1864,14 @@ def html_quiz(quiz):
             # Should remove markup
             pattern = r'<a href="(.+?)">(.*?)</a>'  # URL
             expl = re.sub(pattern, '\g<2> (\g<1>)', expl)
-            pattern = r'<code>(.+?)</code>'  # verbatim
-            expl = re.sub(pattern, '\g<1>', expl)
             pattern = r'\\( (.+?) \\)'  # inline math
             expl = re.sub(pattern, '\g<1>', expl)  # mimic italic....
-            tooltip = ' '.join(expl.splitlines())
-            if expl:
-                tooltip += ' ' + ' '.join(expl.splitlines())
-            tooltip = ' title="%s"' % tooltip
-            text += '\n<p><div%s><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
+            tags = 'p blockquote em code b'.split()
+            for tag in tags:
+                expl = expl.replace('<%s>' % tag, ' ')
+                expl = expl.replace('</%s>' % tag, ' ')
+            tooltip = answer + ' ' + ' '.join(expl.splitlines())
+            text += '\n<p><div title="%s"><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
         else:
             id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
             if len(choice) == 3:
@@ -2523,6 +2533,27 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 <script src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 """
+
+    if '!bc pyscpro' in filestr or 'envir=pyscpro' in filestr:
+        # Embed Sage Cell server
+        # See https://github.com/sagemath/sagecell/blob/master/doc/embedding.rst
+        scripts += """
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+"""
+
     # Had to take DOCTYPE out from 1st line to load css files from github...
     # <!DOCTYPE html>
     INTRO['html'] = """\

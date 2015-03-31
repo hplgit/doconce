@@ -340,9 +340,9 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
         max_heading = max(max_heading, len(heading))
 
     # Typeset TITLE so that it gets the highest+1 (but no higher) section sevel
-    max_heading += 2  # one level up
+    max_heading += 2  # one level up (2 =)
     max_heading = min(max_heading, 9)
-    filestr = re.sub(r'^TITLE:\s*(.+)$', '%s \g<1> %s\n' %
+    filestr = re.sub(r'^TITLE:\s*(.+)$', '.. Document title:\n\n%s \g<1> %s\n' %
                      ('='*max_heading, '='*max_heading),
                      filestr, flags=re.MULTILINE)
     # Make new titles
@@ -527,7 +527,7 @@ def rst_quiz(quiz):
     # Sphinx tooltop: :abbr:`TERM (explanation in tooltip)`
     # Can e.g. just have the right answer number as tooltip!
 
-    text = ''
+    text = '\n\n'
     if 'new page' in quiz:
         text += '.. !split\n%s\n%s' % (quiz['new page'], '-'*len(quiz['new page']))
 

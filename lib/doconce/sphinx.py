@@ -515,18 +515,30 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
 
     # Special fix early in the process:
     # Deal with !split - by default we place splits before
-    # the next topmost sections (assuming the document also has a title
-    # so split on the next topmost sections makes sense)
+    # the topmost sections
     if not option('sphinx_keep_splits'):
-        print '*** warning: new !split inserted (override existing ones)'
+        print '*** warning: new !split inserted (override all existing !split)'
+        # Note: the title is at this stage translated to a chapter heading!
+        # This title/heading must be removed for the algorithm below to work
+        # (remove it, then insert afterwards)
+        pattern = r'^.. Document title:\n\n={3,9}.+?={3,9}'
+        m = re.search(pattern, filestr, flags=re.MULTILINE)
+        title_replacement = '<<<<<<<DOCUMENT TITLE>>>>>>>>>>>>' # "unlikely" str
+        if m:
+            title = m.group()
+            filestr = filestr.replace(title, title_replacement)
+        else:
+            title = ''
+
         topmost_section = 0
         for i in [9, 7, 5]:
             if re.search(r'^%s' % ('='*i), filestr, flags=re.MULTILINE):
                 topmost_section = i
-                if i == 9:
-                    # Title level, adjust to section level
-                    i = 7
-                print '    before every %s heading %s' % ('='*i, '='*i)
+                print '    before every %s heading %s' % \
+                      ('='*topmost_section, '='*topmost_section)
+                print '    because this strategy gives a well-functioning'
+                print '    table of contents in Sphinx'
+                print '    (use --sphinx_keep_splits to enforce your own !split commands)'
                 break
         if topmost_section:
             # First remove all !split
@@ -538,7 +550,9 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
             for i in range(len(lines)):
                 if re.search(pattern, lines[i]):
                     lines[i] = '!split\n' + lines[i]
+
             filestr = '\n'.join(lines)
+        filestr = filestr.replace(title_replacement, title)
 
     return filestr
 

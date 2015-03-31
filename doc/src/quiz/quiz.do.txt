@@ -26,11 +26,15 @@ Cw: Drammen
 Cr: Oslo
 Cw: Denmark
 !equiz
-% if FORMAT == 'html' and BOOSTRAP:
+% if FORMAT == 'html':
+% if BOOSTRAP:
 Click on the pencil symbol to the left of _Choice_ to see whether the choice is
 correct or not.
+% else:
+Hover over the choice to see if it is correct or not.
+% endif
 % elif FORMAT in ('rst', 'sphinx') and not RUNESTONE:
-Hover `?` to see whether the choice is correct or not.
+Hover over `?` to see whether the choice is correct or not.
 % elif FORMAT in ('latex', 'pdflatex'):
 % endif
 
@@ -93,11 +97,17 @@ Cw: New York
 
 Sometimes it is desireable to give some explanation why certain choices
 are wrong (or right).
-% if FORMAT == 'html' and BOOTSTRAP:
+% if FORMAT == 'html':
+% if BOOSTRAP:
 If you click on the symbols in the quiz below, explanations
 will be shown for Choices 1 and 2.
+% else:
+If you hover over the choice, the explanation will pop up if
+it is simple text (otherwise it cannot be formatted).
+% endif
 % elif FORMAT in ('rst', 'sphinx') and not RUNESTONE:
-Hover `#` to see an explanation.
+If you hover over the choice, the explanation will pop up if
+it is simple text (otherwise it cannot be formatted).
 % elif FORMAT in ('latex', 'pdflatex'):
 % endif
 
@@ -590,7 +600,7 @@ def u(t):
 print D(u, t=4),
 print D(lambda x: return 2*x, 2)
 !ec
-The purpose of this program is to differentiate the two mathematical
+The purpose of the above program is to differentiate the two mathematical
 functions
 
 !bt
