@@ -615,7 +615,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         text = re.sub(r'([^\\])\%', r'\g<1>\\%', text)
         text = re.sub(r'([^\\])\#', r'\g<1>\\#', text)
         return '\\href{{%s}}{%s}' % (url, text)
-    filestr = re.sub(pattern, subst, filestr)
+    filestr = re.sub(pattern, subst, filestr, flags=re.DOTALL)
 
     if option('device=', '') == 'paper':
         # Make adjustments for printed versions of the PDF document.
@@ -650,7 +650,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 return return_str
             else: # no substitution, URL is in the link text
                 return '\\href{{%s}}{%s}' % (url, text)
-        filestr = re.sub(pattern, subst, filestr)
+        filestr = re.sub(pattern, subst, filestr, flags=re.DOTALL)
 
     # \code{} in section headings and paragraph needs a \protect
     pattern = r'^(\\.*?section\*?|\\paragraph)\{(.+)\}'  # (no .+? - must go to the last }!)
