@@ -2787,7 +2787,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
     if m and 'usepackage{fancyvrb' not in INTRO['latex']:
         INTRO['latex'] += '\\usepackage{fancyvrb}\n'
-        # Recall to insert \VerbatimFootnotes later, after hyperref
+        # Recall to insert \VerbatimFootnotes later, after hyperref, if
+        # we have footnotes with verbatim
 
     if xelatex:
         INTRO['latex'] += r"""
@@ -2894,8 +2895,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \setcounter{tocdepth}{2}  %% number chapter, section, subsection
 """ % vars()
 
+    # Footnotes with verbatim?
     if 'fancyvrb' in INTRO['latex']:
-        INTRO['latex'] += '\n\\VerbatimFootnotes\n'
+        has_footnotes_with_verbatim = False
+        pattern = r'\[\^.+\]:(?P<text>.+?)(?=(\n\n|\[\^|\Z))'
+        footnotes = [groups[0] for groups in re.findall(pattern, filestr, flags=re.MULTILINE)]
+        for footnote in footnotes:
+            m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
+            if m:
+                has_footnotes_with_verbatim = True
+                break
+        if has_footnotes_with_verbatim:
+            if 'usepackage{t2do}' in INTRO['latex']:
+                print '*** warning: footnotes with verbatim has strange typesetting with svmonodo/t2do styles'
+                INTRO['latex'] += '\n% Must use \\VerbatimFootnotes since there are footnotes with inline\n% verbatim text, but \\VerbatimFootnotes interfers\n%with svmonodo/t2do styles so that the footmisc package settings\n% do not work and the typesetting looks strange...'
+            INTRO['latex'] += '\n%\\VerbatimFootnotes must come after hyperref and footmisc packages\n\\VerbatimFootnotes\n'
 
     if 'FIGURE:' in filestr:
         if latex_style != 'Springer_lnup':

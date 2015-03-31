@@ -1614,6 +1614,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -10944,6 +10959,8 @@ in a separate document: \Verb!admon.do.txt!.
 .. |nbsp| unicode:: 0xA0
    :trim:
 
+.. Document title:
+
 A Document for Testing DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12209,42 +12226,36 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
 Exercise 8: Solution of differential equation
 ---------------------------------------------
 
+
+
+.. begin quiz
+
+Given
+
 .. raw:: html
-    <!-- begin quiz -->
-    Given
-    
-    .. raw:: html
-    
-            $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
-    
-    What is the solution of this equation?</p>
-    
-    <p><div title="Right!"><b>Choice 1:</b>
-    \\( y=e^{-y} \\)
-    </div></p>
-    
-    <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
-    \\( y=e^{y} \\)
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Choice 3:</b>
-    Code::
-    
-            from math import exp
-            def f(x):
-                return exp(x)
-    </div></p>
-    
-    <p><div title="Wrong! Equations with derivatives can be solved; they are termed *differential equations*."><b>Choice 4:</b>
-    The solution cannot be found because there is a derivative in the equation.
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Choice 5:</b>
-    The equation is meaningless: an equation must be an equation
-    for \\( x \\) or \\( y \\), not a function \\( y(x) \\).
-    </div></p>
-    <hr>
-    <!-- end quiz -->
+
+        $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
+
+What is the solution of this equation?
+
+
+**Choice 1:** \\( y=e^{-y} \\) :abbr:`? (Right!)`
+
+**Choice 2:** \\( y=e^{y} \\) :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
+
+**Choice 3:** Code::
+
+        from math import exp
+        def f(x):
+            return exp(x) :abbr:`? (Wrong!)` :abbr:`# (Ooops, forgot a minus: exp(-x), otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation  .. raw:: html          $$ y(x) = e^{-y}.$$)`
+
+**Choice 4:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
+
+**Choice 5:** The equation is meaningless: an equation must be an equation
+for \\( x \\) or \\( y \\), not a function \\( y(x) \\). :abbr:`? (Wrong!)`
+
+.. end quiz
+
 
 
 .. --- end explanation of choice 5 ---
@@ -12486,32 +12497,27 @@ Appendix: Testing identical titles  (3)
 
 What about inserting a quiz?
 
-.. raw:: html
-    <!-- !split -->
-    <h2>Test of quizzes</h2>
-    
-    <!-- begin quiz -->
-    <hr>
-    <p>
-    <b>Fundamental test:</b> What is the capital of Norway?</p>
-    
-    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
-    Stockholm
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Answer 2:</b>
-    London
-    </div></p>
-    
-    <p><div title="Right!"><b>Answer 3:</b>
-    Oslo
-    </div></p>
-    
-    <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
-    Bergen
-    </div></p>
-    <hr>
-    <!-- end quiz -->
+
+
+.. !split
+Test of quizzes
+---------------.. begin quiz
+
+
+
+**Fundamental test:** What is the capital of Norway?
+
+
+**Answer 1:** Stockholm :abbr:`? (Wrong!)` :abbr:`# (Stockholm is the capital of Sweden.)`
+
+**Answer 2:** London :abbr:`? (Wrong!)`
+
+**Answer 3:** Oslo :abbr:`? (Right!)`
+
+**Choice 4:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
+
+.. end quiz
+
 
 
 Appendix: Testing identical titles  (4)
@@ -12662,7 +12668,7 @@ in a separate document: ``admon.do.txt``.
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-.. !split
+.. Document title:
 
 A Document for Testing DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -12685,6 +12691,8 @@ is part of the abstract.
 .. is mutually exclusive in LaTeX
 
 .. _sec1:
+
+.. !split
 
 Section 1
 =========
@@ -13582,6 +13590,8 @@ footnotes.
 
 .. !split and check if these extra words are included properly in the comment
 
+.. !split
+
 LaTeX Mathematics
 =================
 
@@ -13631,6 +13641,8 @@ More mathematical typesetting is demonstrated in the coming exercises.
 Below, we have :ref:`demo:ex:1` and :ref:`demo:ex:2`,
 as well as :ref:`proj:circle1` and :ref:`exer:you`, and in
 between there we have :ref:`exer:some:formula`.
+
+.. !split
 
 Exercises
 =========
@@ -14021,41 +14033,35 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 Exercise 8: Solution of differential equation
 ---------------------------------------------
 
-.. raw:: html
-    <!-- begin quiz -->
-    Given
-    
-    .. math::
-             \frac{dy}{dx} = -y(x),\quad y(0)=1 
-    
-    What is the solution of this equation?</p>
-    
-    <p><div title="Right!"><b>Choice 1:</b>
-    :math:`y=e^{-y}`
-    </div></p>
-    
-    <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
-    :math:`y=e^{y}`
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Choice 3:</b>
-    .. code-block:: python
-    
-            from math import exp
-            def f(x):
-                return exp(x)
-    </div></p>
-    
-    <p><div title="Wrong! Equations with derivatives can be solved; they are termed *differential equations*."><b>Choice 4:</b>
-    The solution cannot be found because there is a derivative in the equation.
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Choice 5:</b>
-    The equation is meaningless: an equation must be an equation
-    for :math:`x` or :math:`y`, not a function :math:`y(x)`.
-    </div></p>
-    <hr>
-    <!-- end quiz -->
+
+
+.. begin quiz
+
+Given
+
+.. math::
+         \frac{dy}{dx} = -y(x),\quad y(0)=1 
+
+What is the solution of this equation?
+
+
+**Choice 1:** :math:`y=e^{-y}` :abbr:`? (Right!)`
+
+**Choice 2:** :math:`y=e^{y}` :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
+
+**Choice 3:** .. code-block:: python
+
+        from math import exp
+        def f(x):
+            return exp(x) :abbr:`? (Wrong!)`
+
+**Choice 4:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
+
+**Choice 5:** The equation is meaningless: an equation must be an equation
+for :math:`x` or :math:`y`, not a function :math:`y(x)`. :abbr:`? (Wrong!)`
+
+.. end quiz
+
 
 
 .. --- end explanation of choice 5 ---
@@ -14078,10 +14084,14 @@ Oslo.
 
 .. --- end exercise ---
 
+.. !split
+
 Here goes another section
 =========================
 
 With some text, before we continue with exercises.
+
+.. !split
 
 More Exercises
 ==============
@@ -14122,6 +14132,8 @@ and this one as :ref:`exer:you`.
 Filename: ``selc_composed.pdf``.
 
 .. --- end exercise ---
+
+.. !split
 
 References
 ==========
@@ -14261,6 +14273,8 @@ References
 
 .. _app1:
 
+.. !split
+
 Appendix: Just for testing; part I
 ==================================
 
@@ -14272,6 +14286,8 @@ A subsection within an appendix
 Some text.
 
 .. _app2:
+
+.. !split
 
 Appendix: Just for testing; part II
 ===================================
@@ -14297,32 +14313,27 @@ Appendix: Testing identical titles  (3)
 
 What about inserting a quiz?
 
-.. raw:: html
-    <!-- !split -->
-    <h2>Test of quizzes</h2>
-    
-    <!-- begin quiz -->
-    <hr>
-    <p>
-    <b>Fundamental test:</b> What is the capital of Norway?</p>
-    
-    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
-    Stockholm
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Answer 2:</b>
-    London
-    </div></p>
-    
-    <p><div title="Right!"><b>Answer 3:</b>
-    Oslo
-    </div></p>
-    
-    <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
-    Bergen
-    </div></p>
-    <hr>
-    <!-- end quiz -->
+
+
+.. !split
+Test of quizzes
+---------------.. begin quiz
+
+
+
+**Fundamental test:** What is the capital of Norway?
+
+
+**Answer 1:** Stockholm :abbr:`? (Wrong!)` :abbr:`# (Stockholm is the capital of Sweden.)`
+
+**Answer 2:** London :abbr:`? (Wrong!)`
+
+**Answer 3:** Oslo :abbr:`? (Right!)`
+
+**Choice 4:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
+
+.. end quiz
+
 
 
 Appendix: Testing identical titles  (4)
@@ -28987,8 +28998,6 @@ open=right               % start new chapters on odd-numbered pages
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -29230,7 +29239,7 @@ Inline math, $a=b$, is the only math in this document.
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
-.. !split
+.. Document title:
 
 Test of one author at one institution
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29921,6 +29930,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -30239,6 +30263,21 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
 
 </head>
 
@@ -30630,32 +30669,23 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (!bc pyscpro) typeset with pygments style "perldoc" -->
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = <span style="color: #B452CD">2</span>
-b = <span style="color: #B452CD">3</span>
-<span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;a+b:&#39;</span>, a + b
 
-<span style="color: #228B22"># In a sage cell we can also plot</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
-x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">4</span>*pi, <span style="color: #B452CD">101</span>)
-y = exp(-<span style="color: #B452CD">0.1</span>*x)*cos(x)
+<div class="compute"><script type="text/x-sage">
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
 plot(x, y)
-xlabel(<span style="color: #CD5555">&#39;x&#39;</span>); ylabel(<span style="color: #CD5555">&#39;y&#39;</span>)
+xlabel('x'); ylabel('y')
 show()
-</pre></div>
-</td></tr></table><p>
+
+</script></div>
+<p>
 Then Cython:
 <p>
 
@@ -31586,6 +31616,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -32175,7 +32220,7 @@ $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><div title="Right!"><b>Choice 1:</b>
+<p><div title="Right! "><b>Choice 1:</b>
 \( y=e^{-y} \)
 </div></p>
 
@@ -32183,7 +32228,7 @@ What is the solution of this equation?</p>
 \( y=e^{y} \)
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 3:</b>
+<p><div title="Wrong! "><b>Choice 3:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -32196,11 +32241,11 @@ What is the solution of this equation?</p>
 </td></tr></table><p>
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 4:</b>
+<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice 4:</b>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 5:</b>
+<p><div title="Wrong! "><b>Choice 5:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
@@ -32520,6 +32565,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -32666,11 +32726,11 @@ MathJax.Hub.Config({
 Stockholm
 </div></p>
 
-<p><div title="Wrong!"><b>Answer 2:</b>
+<p><div title="Wrong! "><b>Answer 2:</b>
 London
 </div></p>
 
-<p><div title="Right!"><b>Answer 3:</b>
+<p><div title="Right! "><b>Answer 3:</b>
 Oslo
 </div></p>
 
@@ -32920,6 +32980,21 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
 
 </head>
 
@@ -33220,19 +33295,21 @@ such cells are not supported by this format).
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
-<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
+<div class="compute"><script type="text/x-sage">
+a = 2
+b = 3
+print 'a+b:', a + b
 
-<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
 plot(x, y)
-xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+xlabel('x'); ylabel('y')
 show()
-</pre></div>
+
+</script></div>
 <p>
 Then Cython:
 <p>
@@ -34849,6 +34926,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -35290,20 +35382,22 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (!bc pyscpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
-<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
+<div class="compute"><script type="text/x-sage">
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
 plot(x, y)
-xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+xlabel('x'); ylabel('y')
 show()
-</pre></div>
+
+</script></div>
 <p>
 Then Cython:
 <p>
@@ -36488,7 +36582,7 @@ $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><div title="Right!"><b>Choice 1:</b>
+<p><div title="Right! "><b>Choice 1:</b>
 \( y=e^{-y} \)
 </div></p>
 
@@ -36496,7 +36590,7 @@ What is the solution of this equation?</p>
 \( y=e^{y} \)
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 3:</b>
+<p><div title="Wrong! "><b>Choice 3:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -36507,11 +36601,11 @@ What is the solution of this equation?</p>
 <p>
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 4:</b>
+<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice 4:</b>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong!"><b>Choice 5:</b>
+<p><div title="Wrong! "><b>Choice 5:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
@@ -36752,11 +36846,11 @@ What about inserting a quiz?
 Stockholm
 </div></p>
 
-<p><div title="Wrong!"><b>Answer 2:</b>
+<p><div title="Wrong! "><b>Answer 2:</b>
 London
 </div></p>
 
-<p><div title="Right!"><b>Answer 3:</b>
+<p><div title="Right! "><b>Answer 3:</b>
 Oslo
 </div></p>
 
@@ -39222,7 +39316,7 @@ def system(cmd, capture_output=False, echo=True):
 # Copy generated sphinx files to sphinx root directory
 filename = 'testdoc'
 rst_text = ''  # holds all text in all .rst files
-for part in ['._testdoc000', '._testdoc001', '._testdoc002']:
+for part in ['._testdoc000', '._testdoc001', '._testdoc002', '._testdoc003', '._testdoc004', '._testdoc005', '._testdoc006', '._testdoc007', '._testdoc008', '._testdoc009', '._testdoc010']:
     shutil.copy('%s.rst' % part, source_dir)
     with open('%s.rst' % part, 'r') as rst_file:
         rst_text += rst_file.read()
@@ -39276,81 +39370,88 @@ staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
     system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
 
-# Compile web version of the sphinx document
 os.chdir(sphinx_rootdir)
-print os.getcwd()
-system('make clean')
-system('make html')
+if '--runestone' not in sys.argv:
+    # Compile web version of the sphinx document
+    print os.getcwd()
+    system('make clean')
+    system('make html')
 
-print 'Fix generated files:',
-os.chdir('_build/html')
-for filename in glob.glob('*.html') + glob.glob('.*.html'):
-    print filename,
-    f = open(filename, 'r'); text = f.read(); f.close()
-    # Fix double title in <title> tags
-    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
-    # Fix untranslated math (e.g. in figure captions and raw html)
-    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
-    # Fix links to movies
-    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
-    # Fix movie frames in javascript player
-    text = text.replace(r'.src = "mov', '.src = "_static/mov')
-    # Fix admonition style
-    text = text.replace('</head>', """
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-""")
+    print 'Fix generated files:',
+    os.chdir('_build/html')
+    for filename in glob.glob('*.html') + glob.glob('.*.html'):
+        print filename,
+        f = open(filename, 'r'); text = f.read(); f.close()
+        # Fix double title in <title> tags
+        text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+        # Fix untranslated math (e.g. in figure captions and raw html)
+        text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+        # Fix links to movies
+        text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+        # Fix movie frames in javascript player
+        text = text.replace(r'.src = "mov', '.src = "_static/mov')
+        # Fix admonition style
+        text = text.replace('</head>', """
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    """)
 
-    if os.path.isfile(filename + '.old~~'):
-        os.remove(filename + '.old~~')
-    # Check if external links should pop up in separate windows
-    if '.. NOTE: Open external links in new windows.' in text:
-        text = text.replace('<a class="reference external"',
-                            '<a class="reference external" target="_blank"')
-    f = open(filename, 'w'); f.write(text); f.close()
+        if os.path.isfile(filename + '.old~~'):
+            os.remove(filename + '.old~~')
+        # Check if external links should pop up in separate windows
+        if '.. NOTE: Open external links in new windows.' in text:
+            text = text.replace('<a class="reference external"',
+                                '<a class="reference external" target="_blank"')
+        f = open(filename, 'w'); f.write(text); f.close()
+    os.chdir('../../')
+    print """
 
-# Add directory for RunestoneInteractive book?
-os.chdir('../../../')
-if '--runestone' in sys.argv:
+google-chrome sphinx-testdoc/_build/html/index.html
+"""
+
+else:
+    # Add directory for RunestoneInteractive book
     use_runestonebooks_style = True  # False: use user-chosen style
     print """
 
 create RunestoneInteractive directory
 """
-    sys.path.insert(0, source_dir)
+    sys.path.insert(0, os.curdir)
     import conf as source_dir_conf  # read data from conf.py
+
     if not os.path.isdir('RunestoneTools'):
         system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
     os.chdir('RunestoneTools')
+
+    # Edit conf.py
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
+    text = text.replace('<INSERT YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)
-    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../%s/_themes"]' % source_dir)
+    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../_themes"]')
     if not use_runestonebooks_style:
         text = text.replace("html_theme = 'sphinx_bootstrap'", "html_theme = '%s'" % source_dir_conf.html_theme)
         text = re.sub(r'html_theme_options = \{.+?\}', 'html_theme_options = ' + str(source_dir_conf.html_theme_options) if hasattr(source_dir_conf, 'html_theme_options') else 'html_theme_options = {}', text, flags=re.DOTALL)
     f = open('conf.py', 'w');  f.write(text);  f.close()
 
     # Copy .rst files from sphinx dir
-    rst_files = [os.path.join(os.pardir, source_dir, 'index.rst')] + glob.glob(os.path.join(os.pardir, source_dir, '._*.rst'))
+    rst_files = [os.path.join(os.pardir, 'index.rst')] + glob.glob(os.path.join(os.pardir, '*.rst')) + glob.glob(os.path.join(os.pardir, '._*.rst'))
     for filename in rst_files:
         shutil.copy(filename, '_sources')
+        print 'copying', filename, 'to _sources'
     print '*** running paver build to build the RunestoneInteractive book'
     system('paver build')
 
     print """
 
-google-chrome runestonetools/build/index.html
-"""
-print """
-google-chrome sphinx-testdoc/_build/html/index.html
+google-chrome sphinx-testdoc/RunestoneTools/build/index.html
 """
 
 ************** File: automake_sphinx_math_test.py *****************
@@ -39453,81 +39554,88 @@ staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
     system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
 
-# Compile web version of the sphinx document
 os.chdir(sphinx_rootdir)
-print os.getcwd()
-system('make clean')
-system('make html')
+if '--runestone' not in sys.argv:
+    # Compile web version of the sphinx document
+    print os.getcwd()
+    system('make clean')
+    system('make html')
 
-print 'Fix generated files:',
-os.chdir('_build/html')
-for filename in glob.glob('*.html') + glob.glob('.*.html'):
-    print filename,
-    f = open(filename, 'r'); text = f.read(); f.close()
-    # Fix double title in <title> tags
-    text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
-    # Fix untranslated math (e.g. in figure captions and raw html)
-    text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
-    # Fix links to movies
-    text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
-    # Fix movie frames in javascript player
-    text = text.replace(r'.src = "mov', '.src = "_static/mov')
-    # Fix admonition style
-    text = text.replace('</head>', """
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-""")
+    print 'Fix generated files:',
+    os.chdir('_build/html')
+    for filename in glob.glob('*.html') + glob.glob('.*.html'):
+        print filename,
+        f = open(filename, 'r'); text = f.read(); f.close()
+        # Fix double title in <title> tags
+        text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
+        # Fix untranslated math (e.g. in figure captions and raw html)
+        text = re.sub(r':math:`(.+?)`', r' \( \g<1> \) ', text)
+        # Fix links to movies
+        text = re.sub(r"""src=['"](mov.+?)['"]""", r'src="_static/\g<1>"', text)
+        # Fix movie frames in javascript player
+        text = text.replace(r'.src = "mov', '.src = "_static/mov')
+        # Fix admonition style
+        text = text.replace('</head>', """
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    """)
 
-    if os.path.isfile(filename + '.old~~'):
-        os.remove(filename + '.old~~')
-    # Check if external links should pop up in separate windows
-    if '.. NOTE: Open external links in new windows.' in text:
-        text = text.replace('<a class="reference external"',
-                            '<a class="reference external" target="_blank"')
-    f = open(filename, 'w'); f.write(text); f.close()
+        if os.path.isfile(filename + '.old~~'):
+            os.remove(filename + '.old~~')
+        # Check if external links should pop up in separate windows
+        if '.. NOTE: Open external links in new windows.' in text:
+            text = text.replace('<a class="reference external"',
+                                '<a class="reference external" target="_blank"')
+        f = open(filename, 'w'); f.write(text); f.close()
+    os.chdir('../../')
+    print """
 
-# Add directory for RunestoneInteractive book?
-os.chdir('../../../')
-if '--runestone' in sys.argv:
+google-chrome sphinx-rootdir-math/_build/html/index.html
+"""
+
+else:
+    # Add directory for RunestoneInteractive book
     use_runestonebooks_style = True  # False: use user-chosen style
     print """
 
 create RunestoneInteractive directory
 """
-    sys.path.insert(0, source_dir)
+    sys.path.insert(0, os.curdir)
     import conf as source_dir_conf  # read data from conf.py
+
     if not os.path.isdir('RunestoneTools'):
         system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
     os.chdir('RunestoneTools')
+
+    # Edit conf.py
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
+    text = text.replace('<INSERT YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<ENTER YOUR COPYRIGHT NOTICE HERE>', source_dir_conf.copyright)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER TITLE HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME OR OTHER SHORT TITLE HERE>', source_dir_conf.project)
-    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../%s/_themes"]' % source_dir)
+    text = text.replace('html_theme_path = ["_templates"]', 'html_theme_path = ["_templates", "../_themes"]')
     if not use_runestonebooks_style:
         text = text.replace("html_theme = 'sphinx_bootstrap'", "html_theme = '%s'" % source_dir_conf.html_theme)
         text = re.sub(r'html_theme_options = \{.+?\}', 'html_theme_options = ' + str(source_dir_conf.html_theme_options) if hasattr(source_dir_conf, 'html_theme_options') else 'html_theme_options = {}', text, flags=re.DOTALL)
     f = open('conf.py', 'w');  f.write(text);  f.close()
 
     # Copy .rst files from sphinx dir
-    rst_files = [os.path.join(os.pardir, source_dir, 'index.rst')] + glob.glob(os.path.join(os.pardir, source_dir, '._*.rst'))
+    rst_files = [os.path.join(os.pardir, 'index.rst')] + glob.glob(os.path.join(os.pardir, '*.rst')) + glob.glob(os.path.join(os.pardir, '._*.rst'))
     for filename in rst_files:
         shutil.copy(filename, '_sources')
+        print 'copying', filename, 'to _sources'
     print '*** running paver build to build the RunestoneInteractive book'
     system('paver build')
 
     print """
 
-google-chrome runestonetools/build/index.html
-"""
-print """
-google-chrome sphinx-rootdir-math/_build/html/index.html
+google-chrome sphinx-rootdir-math/RunestoneTools/build/index.html
 """
 
 ************** File: .testdoc_html_file_collection *****************
@@ -40948,8 +41056,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -41162,6 +41268,8 @@ and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 ************** File: math_test.rst *****************
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
+
+.. Document title:
 
 How various formats can deal with LaTeX math
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42482,20 +42590,22 @@ such cells are not supported by this format).
 
 <p>
 
-<!-- code=python (!bc pyscpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a <span style="color: #666666">=</span> <span style="color: #666666">2</span>
-b <span style="color: #666666">=</span> <span style="color: #666666">3</span>
-<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;a+b:&#39;</span>, a <span style="color: #666666">+</span> b
 
-<span style="color: #408080; font-style: italic"># In a sage cell we can also plot</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>pi, <span style="color: #666666">101</span>)
-y <span style="color: #666666">=</span> exp(<span style="color: #666666">-0.1*</span>x)<span style="color: #666666">*</span>cos(x)
+<div class="compute"><script type="text/x-sage">
+a = 2
+b = 3
+print 'a+b:', a + b
+
+# In a sage cell we can also plot
+from matplotlib.pyplot import *
+from numpy import *
+x = linspace(0, 4*pi, 101)
+y = exp(-0.1*x)*cos(x)
 plot(x, y)
-xlabel(<span style="color: #BA2121">&#39;x&#39;</span>); ylabel(<span style="color: #BA2121">&#39;y&#39;</span>)
+xlabel('x'); ylabel('y')
 show()
-</pre></div>
+
+</script></div>
 <p>
 Then Cython:
 <p>
@@ -44338,14 +44448,7 @@ What about inserting a quiz?
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-
-************** File: ._testdoc001.rst *****************
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
-.. !split
+.. Document title:
 
 A Document for Testing DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44368,6 +44471,15 @@ is part of the abstract.
 .. is mutually exclusive in LaTeX
 
 .. _sec1:
+
+
+************** File: ._testdoc001.rst *****************
+
+
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
+.. !split
 
 Section 1
 =========
@@ -44417,8 +44529,8 @@ Here is a list with subsubsection heading
 
 
 
-Here are two references. Equation |nbsp| :ref:`(3.1) <Eq:my:eq1>` is fine. Eq. |nbsp| :ref:`(3.1) <Eq:my:eq1>` too.
-Even Equation :ref:`(3.1) <Eq:my:eq1>` without the tilde.
+Here are two references. Equation |nbsp| :ref:`(4.1) <Eq:my:eq1>` is fine. Eq. |nbsp| :ref:`(4.1) <Eq:my:eq1>` too.
+Even Equation :ref:`(4.1) <Eq:my:eq1>` without the tilde.
 This equation appears in another part if this document is split.
 
 .. _subsec1:
@@ -45276,890 +45388,7 @@ footnotes.
 
 .. !split and check if these extra words are included properly in the comment
 
-LaTeX Mathematics
-=================
 
-Here is an equation without label using backslash-bracket environment:
-
-.. math::
-         a = b + c 
-
-or with number and label, as in :eq:`my:eq1`, using the equation environment:
-
-.. _Eq:my:eq1:
-
-.. math::
-   :label: my:eq1
-        
-        {\partial u\over\partial t} = \nabla^2 u 
-        
-
-We can refer to this equation by :eq:`my:eq1`.
-
-Here is a system without equation numbers, using the align-asterisk environment:
-
-.. math::
-        
-        \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
-        b &= \nabla^2 u + \nabla^4 v
-        
-
-And here is a system of equations with labels in an align environment:
-
-.. _Eq:eq1:
-
-.. math::
-   :label: eq1
-        
-        a = q + 4 + 5+ 6  
-        
-
-.. _Eq:eq2:
-
-.. math::
-   :label: eq2
-          
-        b = \nabla^2 u + \nabla^4 x 
-        
-
-We can refer to :eq:`eq1`-:eq:`eq2`. They are a bit simpler than
-the Navier-Stokes equations. And test LaTeX hyphen in ``CG-2``.
-Also test :math:`a_{i-j}` as well as :math:`kx-wt`.
-
-More mathematical typesetting is demonstrated in the coming exercises.
-
-Below, we have :ref:`demo:ex:1` and :ref:`demo:ex:2`,
-as well as :ref:`proj:circle1` and :ref:`exer:you`, and in
-between there we have :ref:`exer:some:formula`.
-
-Exercises
-=========
-
-.. --- begin exercise ---
-
-.. _demo:ex:1:
-
-Problem 2: Flip a Coin
-----------------------
-
-.. keywords = random numbers; Monte Carlo simulation
-
-.. Torture tests
-
-**a)**
-Make a program that simulates flipping a coin :math:`N` times.
-Print out "tail" or "head" for each flip and
-let the program count the number of heads.
-
-.. --- begin hint in exercise ---
-
-**Hint 1.**
-Use ``r = random.random()`` and define head as ``r <= 0.5``.
-
-.. --- end hint in exercise ---
-
-.. --- begin hint in exercise ---
-
-**Hint 2.**
-Draw an integer among :math:`\{1,2\}` with
-``r = random.randint(1,2)`` and define head when ``r`` is 1.
-
-.. --- end hint in exercise ---
-
-.. --- begin answer of exercise ---
-
-**Answer.**
-If the ``random.random()`` function returns a number :math:`<1/2`, let it be
-head, otherwise tail. Repeat this :math:`N` number of times.
-
-.. --- end answer of exercise ---
-
-.. --- begin solution of exercise ---
-
-**Solution.**
-
-.. code-block:: python
-
-        import sys, random
-        N = int(sys.argv[1])
-        heads = 0
-        for i in range(N):
-            r = random.random()
-            if r <= 0.5:
-                heads += 1
-        print 'Flipping a coin %d times gave %d heads' % (N, heads)
-
-.. --- end solution of exercise ---
-
-**b)**
-Vectorize the code in a) using boolean indexing.
-
-Vectorized code can be written in many ways.
-Sometimes the code is less intuitive, sometimes not.
-
-**c)**
-Vectorize the code in a) using ``numpy.sum``.
-
-.. --- begin answer of exercise ---
-
-**Answer.**
-``np.sum(np.where(r <= 0.5, 1, 0))`` or ``np.sum(r <= 0.5)``.
-
-.. --- end answer of exercise ---
-
-In this latter subexercise, we have an
-example where the code is easy to read.
-
-My remarks
-~~~~~~~~~~
-
-Remarks with such a subsubsection is treated as more text
-after the last subexercise. Test a list too:
-
-1. Mark 1.
-
-2. Mark 2.
-
-Filenames: ``flip_coin.py``, ``flip_coin.pdf``.
-
-.. Closing remarks for this Problem
-
-Remarks  (1)
-~~~~~~~~~~~~
-
-These are the exercise remarks, appearing at the very end.
-
-.. solution files: mysol.txt, mysol_flip_coin.py, yet_another.file
-
-.. --- end exercise ---
-
-Not an exercise
----------------
-
-Should be possible to stick a normal section in the middle of many
-exercises.
-
-.. --- begin exercise ---
-
-.. _my:exer1:
-
-Exercise 3: Test of plain text exercise
----------------------------------------
-
-Very short exercise. What is the capital
-of Norway?
-Filename: ``myexer1.py``.
-
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-.. _demo:ex:2:
-
-Project 4: Compute a Probability
---------------------------------
-
-.. Minimalistic exercise
-
-What is the probability of getting a number between 0.5 and 0.6 when
-drawing uniformly distributed random numbers from the interval :math:`[0,1)`?
-
-At the end we have a list because that caused problems in LaTeX
-in previous DocOnce versions:
-
-1. item1
-
-2. item2
-
-.. --- begin hint in exercise ---
-
-**Hint.**
-To answer this question empirically, let a program
-draw :math:`N` such random numbers using Python's standard ``random`` module,
-count how many of them, :math:`M`, that fall in the interval :math:`(0.5,0.6)`, and
-compute the probability as :math:`M/N`.
-
-.. --- end hint in exercise ---
-
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-.. _proj:circle1:
-
-Project 5: Explore Distributions of Random Circles
---------------------------------------------------
-
-The formula for a circle is given by
-
-.. math::
-        
-        x = x_0 + R\cos 2\pi t,
-        
-
-.. math::
-          
-        y = y_0 + R\sin 2\pi t,
-        
-
-where :math:`R` is the radius of the circle, :math:`(x_0,y_0)` is the
-center point, and :math:`t` is a parameter in the unit interval :math:`[0,1]`.
-For any :math:`t`, :math:`(x,y)` is a point on the circle.
-The formula can be used to generate ``n`` points on a circle:
-
-.. code-block:: python
-
-        import numpy as np
-        
-        def circle(R, x0, y0, n=501):
-            t = np.linspace(0, 1, n)
-            x = x0 + R*np.cos(2*np.pi*t)
-            y = y0 + R*np.sin(2*np.pi*t)
-            return x, y
-        
-        x, y = circle(2.0, 0, 0)
-
-.. Often in an exercise we have some comments about the solution
-
-.. which we normally want to keep where they are.
-
-The goal of this project is to draw :math:`N` circles with random
-center and radius. Plot each circle using the ``circle`` function
-above.
-
-**a)**
-Let :math:`R` be normally distributed and :math:`(x_0,y_0)` uniformly distributed.
-
-.. --- begin hint in exercise ---
-
-**Hint.**
-Use the ``numpy.random`` module to draw the
-:math:`x_0`, :math:`y_0`, and :math:`R` quantities.
-
-.. --- end hint in exercise ---
-
-.. --- begin answer of exercise ---
-
-**Answer.**
-Here goes the short answer to part a).
-
-.. --- end answer of exercise ---
-
-.. --- begin solution of exercise ---
-
-**Solution.**
-Here goes a full solution to part a).
-
-.. --- end solution of exercise ---
-
-**b)**
-Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
-Filename: ``norm.py``.
-
-**c)**
-Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
-
-Filename: ``circles.pdf``.
-
-.. Closing remarks for this Project
-
-Remarks  (2)
-~~~~~~~~~~~~
-
-At the very end of the exercise it may be appropriate to summarize
-and give some perspectives.
-
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-.. _exer:dist:
-
-Exercise 6: Determine some Distance
------------------------------------
-
-Intro to this exercise. Questions are in subexercises below.
-
-.. --- begin solution of exercise ---
-
-**Solution.**
-Here goes a full solution of the whole exercise.
-With some math :math:`a=b` in this solution:
-
-.. math::
-         \hbox{math in solution: } a = b 
-
-And code ``a=b`` in this solution:
-
-.. code-block:: text
-
-        a = b  # code in solution
-
-End of solution is here.
-
-.. --- end solution of exercise ---
-
-**a)**
-Subexercises are numbered a), b), etc.
-
-.. --- begin hint in exercise ---
-
-**Hint 1.**
-First hint to subexercise a).
-With math :math:`a=b` in hint:
-
-.. math::
-         a=b. 
-
-And with code (in plain verbatim) returning :math:`x+1` in hint:
-
-.. code-block:: text
-
-        def func(x):
-            return x + 1  # with code in hint
-
-.. --- end hint in exercise ---
-
-.. --- begin hint in exercise ---
-
-**Hint 2.**
-Second hint to subexercise a).
-
-Test list in hint:
-
-1. item1
-
-2. item2
-
-.. --- end hint in exercise ---
-
-Filename: ``subexer_a.pdf``.
-
-.. --- begin answer of exercise ---
-
-**Answer.**
-Short answer to subexercise a).
-With math in answer: :math:`a=b`.
-
-.. --- end answer of exercise ---
-
-**b)**
-Here goes the text for subexercise b).
-
-Some math :math:`\cos^2 x + \sin^2 x = 1` written one a single line:
-
-.. math::
-         \cos^2 x + \sin^2 x = 1 \thinspace .
-
-.. --- begin hint in exercise ---
-
-**Hint.**
-A hint for this subexercise.
-
-.. --- end hint in exercise ---
-
-Filename: ``subexer_b.pdf``.
-
-.. --- begin solution of exercise ---
-
-**Solution.**
-Here goes the solution of this subexercise.
-
-.. --- end solution of exercise ---
-
-.. No meaning in this weired test example:
-
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
-
-Test list in exercise:
-
-1. item1
-
-2. item2
-
-.. Closing remarks for this Exercise
-
-Remarks  (3)
-~~~~~~~~~~~~
-
-Some final closing remarks, e.g., summarizing the main findings
-and their implications in other problems can be made. These
-remarks will appear at the end of the typeset exercise.
-
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-Some exercise without the "Exercise:" prefix
---------------------------------------------
-
-.. Another minimalistic exercise
-
-Just some text. And some math saying that :math:`e^0=1` on a single line,
-to test that math block insertion is correct:
-
-.. math::
-         \exp{(0)} = 1 
-
-And a test that the code ``lambda x: x+2`` is correctly placed here:
-
-.. code-block:: text
-
-        lambda x: x+2
-
-.. the Filename: ... is written correctly.
-
-.. Have some comments at the end of the exercise to see that
-
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-.. _sec:this:exer:de:
-
-Exercise 8: Solution of differential equation
----------------------------------------------
-
-.. raw:: html
-    <!-- begin quiz -->
-    Given
-    
-    .. math::
-             \frac{dy}{dx} = -y(x),\quad y(0)=1 
-    
-    What is the solution of this equation?</p>
-    
-    <p><div title="Right!"><b>Choice 1:</b>
-    :math:`y=e^{-y}`
-    </div></p>
-    
-    <p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
-    :math:`y=e^{y}`
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Choice 3:</b>
-    .. code-block:: python
-    
-            from math import exp
-            def f(x):
-                return exp(x)
-    </div></p>
-    
-    <p><div title="Wrong! Equations with derivatives can be solved; they are termed *differential equations*."><b>Choice 4:</b>
-    The solution cannot be found because there is a derivative in the equation.
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Choice 5:</b>
-    The equation is meaningless: an equation must be an equation
-    for :math:`x` or :math:`y`, not a function :math:`y(x)`.
-    </div></p>
-    <hr>
-    <!-- end quiz -->
-
-
-.. --- end explanation of choice 5 ---
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-Example 9: Just an example
---------------------------
-
-.. This example needs the --examples_as_exercises option, otherwise
-
-.. it is just typeset as it is written.
-
-**a)**
-What is the capital of Norway?
-
-**Answer.**
-Oslo.
-
-.. --- end exercise ---
-
-Here goes another section
-=========================
-
-With some text, before we continue with exercises.
-
-More Exercises
-==============
-
-.. --- begin exercise ---
-
-.. _exer:some:formula:
-
-Exercise 10: Make references to projects and problems
------------------------------------------------------
-
-.. Test comments not at the end only
-
-Pick a statement from :ref:`proj:circle1` or :ref:`demo:ex:1`
-and verify it.
-
-Test list at the end of an exercise without other elements (like subexercise,
-hint, etc.):
-
-1. item1
-
-2. item2
-
-Filename: ``verify_formula.py``.
-
-.. --- end exercise ---
-
-.. --- begin exercise ---
-
-.. _exer:you:
-
-Project 11: References in a headings do not work well in sphinx
----------------------------------------------------------------
-
-Refer to the previous exercise as :ref:`exer:some:formula`,
-the two before that as :ref:`demo:ex:2` and :ref:`proj:circle1`,
-and this one as :ref:`exer:you`.
-Filename: ``selc_composed.pdf``.
-
-.. --- end exercise ---
-
-References
-==========
-
-.. [Ref01]
-   **H. P. Langtangen and G. Pedersen**. Propagation of Large Destructive Waves,
-   *International Journal of Applied Mechanics and Engineering*,
-   7(1),
-   pp. 187-204,
-   2002.
-
-.. [Ref02]
-   **H. P. Langtangen, K.-A. Mardal and R. Winther**. Numerical Methods for Incompressible Viscous Flow,
-   *Advances in Water Resources*,
-   25,
-   pp. 1125-1146,
-   2002.
-
-.. [Ref03]
-   **H. P. Langtangen**. Numerical Solution of First Passage Problems in Random Vibrations,
-   *SIAM Journal of Scientific and Statistical Computing*,
-   15,
-   pp. 997-996,
-   1994.
-
-.. [Ref04]
-   **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. Software Tools for Multigrid Methods,
-   Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming,
-   edited by **H. P. Langtangen and A. Tveito**,
-   Springer,
-   2003,
-   Edited book.
-
-.. [Ref05]
-   **H. P. Langtangen**. The FEMDEQS Program System,
-   *Department of Mathematics, University of Oslo*,
-   `http://www.math.uio.no/old/days/hpl/femdeqs.pdf <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>`_,
-   1989.
-
-.. [Ref06]
-   **H. P. Langtangen**. Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
-   *SIAM Journal on Scientific Computing*,
-   13,
-   pp. 1394-1417,
-   1992.
-
-.. [Ref07]
-   **M. Mortensen, H. P. Langtangen and G. N. Wells**. A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
-   *Advances in Water Resources*,
-   34(9),
-   `doi: 10.1016/j.advwatres.2011.02.013 <http://dx.doi.org/10.1016/j.advwatres.2011.02.013>`__,
-   2011.
-
-.. [Ref08]
-   **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. Propagation of the Dec. |nbsp| 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
-   *International Journal of Fluid Mechanics Research*,
-   33(1),
-   pp. 15-43,
-   2006.
-
-.. [Ref09]
-   **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
-   *Physical Review B: Condensed Matter and Materials Physics*,
-   74,
-   2006.
-
-.. [Ref10]
-   **J. B. Haga, H. Osnes and H. P. Langtangen**. On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
-   *International Journal of Analytical and Numerical Methods in Geomechanics*,
-   `doi: 10.1002/nag.1062 <http://dx.doi.org/10.1002/nag.1062>`__,
-   2011,
-   `http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>`_.
-
-.. [Ref11]
-   **H. P. Langtangen**. *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
-   second edition,
-   *Texts in Computational Science and Engineering*,
-   Springer,
-   2003.
-
-.. [Ref12]
-   **H. P. Langtangen**. *Python Scripting for Computational Science*,
-   third edition,
-   *Texts in Computational Science and Engineering*,
-   Springer,
-   2008.
-
-.. [Ref13]
-   **H. P. Langtangen and G. Pedersen**. Finite Elements for the Boussinesq Wave Equations,
-   Waves and Non-linear Processes in Hydrodynamics,
-   edited by **J. Grue, B. Gjevik and J. E. Weber**,
-   Kluwer Academic Publishers,
-   pp. pp. 117-126,
-   1995,
-   `http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310 <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>`_.
-
-.. [Ref14]
-   **H. P. Langtangen**. *A Primer on Scientific Programming With Python*,
-   third edition,
-   *Texts in Computational Science and Engineering*,
-   Springer,
-   2012.
-
-.. [Ref15]
-   **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. Optimization With Diffpack: Practical Example From Welding,
-   *Simula Research Laboratory*,
-   Internal report,
-   2004.
-
-.. [Ref16]
-   **H. P. Langtangen**. Computational Methods for Two-Phase Flow in Oil Reservoirs,
-   Ph.D. Thesis,
-   Mechanics Division, Department of Mathematics, University of Oslo,
-   1989.
-
-.. [Ref17]
-   **H. P. Langtangen**. Computational Modeling of Huge Tsunamis From Asteroid Impacts,
-   Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
-   2007.
-
-.. [Ref18]
-   **H. P. Langtangen**. Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
-   M.Sc. Thesis,
-   Mechanics Division, Department of Mathematics, University of Oslo,
-   1985.
-
-.. [Ref19]
-   **H. P. Langtangen and A. Tveito**. Numerical Methods in Continuum Mechanics,
-   *Center for Industrial Research*,
-   1991.
-
-.. [Ref20]
-   **H. P. Langtangen**. Diffpack: Software for Partial Differential Equations,
-   Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA,
-   edited by **A. Vermeulen**,
-   1994.
-
-.. _app1:
-
-Appendix: Just for testing; part I
-==================================
-
-This is the first appendix.
-
-A subsection within an appendix
--------------------------------
-
-Some text.
-
-.. _app2:
-
-Appendix: Just for testing; part II
-===================================
-
-This is more stuff for an appendix.
-
-Appendix: Testing identical titles  (1)
----------------------------------------
-
-Without label.
-
-.. _test:title:id1:
-
-Appendix: Testing identical titles  (2)
----------------------------------------
-
-With label.
-
-.. _test:title:id2:
-
-Appendix: Testing identical titles  (3)
----------------------------------------
-
-What about inserting a quiz?
-
-.. raw:: html
-    <!-- !split -->
-    <h2>Test of quizzes</h2>
-    
-    <!-- begin quiz -->
-    <hr>
-    <p>
-    <b>Fundamental test:</b> What is the capital of Norway?</p>
-    
-    <p><div title="Wrong! Stockholm is the capital of Sweden."><b>Answer 1:</b>
-    Stockholm
-    </div></p>
-    
-    <p><div title="Wrong!"><b>Answer 2:</b>
-    London
-    </div></p>
-    
-    <p><div title="Right!"><b>Answer 3:</b>
-    Oslo
-    </div></p>
-    
-    <p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
-    Bergen
-    </div></p>
-    <hr>
-    <!-- end quiz -->
-
-
-Appendix: Testing identical titles  (4)
----------------------------------------
-
-Without label.
-
-
-.. admonition:: Tip
-
-   Here is a tip or hint box, typeset as a notice box.
-
-
-
-
-Need a lot of text to surround the summary box.
-Version control systems allow you to record the history of files
-and share files among several computers and collaborators in a
-professional way. File changes on one computer are updated or
-merged with changes on another computer. Especially when working
-with programs or technical reports it is essential
-to have changes documented and to
-ensure that every computer and person involved in the project
-have the latest updates of the files.
-Greg Wilson' excellent `Script for Introduction to Version Control <http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>`__ provides a more detailed motivation why you will benefit greatly
-from using version control systems.
-
-
-.. admonition:: Summary
-
-   **Bold remark:** Make some text with this summary.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-   Much testing in this document, otherwise stupid content.
-
-
-
-
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
-
-The simplest services for hosting project files are `Dropbox <http://dropbox.com>`__ and `Google Drive <http://drive.google.com>`__.
-It is very easy to get started with these systems, and they allow you
-to share files among laptops and mobile units with as many users as
-you want. The systems offer a kind of version control in that the
-files are stored frequently (several times per minute), and you can go
-back to previous versions for the last 30 days. However, it is
-challenging  to find the right version from the past when there are
-so many of them.
-
-More seriously, when several people may edit files simultaneously, it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools than Dropbox or
-Google Drive: project hosting services with true version control
-systems.  The following text aims at providing you with the minimum
-information to started with such systems. Numerous other tutorials
-contain more comprehensive material and in-depth explanations of the
-concepts and tools.
-
-The idea with project hosting services is that you have the files
-associated with a project in the cloud. Many people may share these
-files.  Every time you want to work on the project you explicitly
-update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to a
-version of the files at some particular point in the past,
-this is an easy operation. You can also use tools to see
-what various people have done with the files in the various versions.
-
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three. All the project hosting services have
-excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know steps.
-The Git tutorials we refer to later in this document contain more
-detailed information and constitute of course very valuable readings
-when you use version control systems every day. The point now is
-to get started.
-
-Appendix: Testing inline comments
----------------------------------
-
-.. Names can be [ A-Za-z0-9_'+-]+
-
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that
-site. [**hpl's semi opinion 1**: not sure if in the cloud is understood by all.] I strongly recommend you to use such sites for all serious
-programming and scientific writing work - and all other important
-files.
-
-The simplest services for hosting project files is Dropbox. [**mp 2**: Simply go to `<http://dropbox.com>`_ and watch the video. It explains how files, like ``myfile.py``, perhaps containing much math, like :math:`\partial u/\partial t`, are easily communicated between machines.] It
-is very easy to get started with Dropbox, and it allows you to share
-files among (**hpl 3: remove** laptops and mobile units) (**insert:**)computers, tablets, and phones (**end insert**).
-
-.. Test horizontal rule
-
----------
-
-.. Coments for editing
-
-First, (**edit 4: add comma**) consider a quantity :math:`Q`. (**edit 5: remove** To this end,) (**insert:**)We note that (**end insert**)
-:math:`Q>0`, because (**edit 6**: **delete** a) negative (**edit 7: remove** quantity is) (**insert:**)quantities are (**end insert**) (**edit 8**: **delete** just) negative.  (**edit 9: add**) This comes as no surprise. (**end add**)
-
-Appendix: Testing headings ending with ``verbatim inline``
-----------------------------------------------------------
-
-The point here is to test 1) ``verbatim`` code in headings, and 2)
-ending a heading with verbatim code as this triggers a special
-case in LaTeX.
-
-We also test mdash---used as alternative to hyphen without spaces around,
-or in quotes:
-
-
-..
-
-    *Fun is fun.*--- Unknown.
-
-
-
-And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: ``admon.do.txt``.
-
-.. [#example-of-the-third-footnote] Not much to add here, but the footnote
-   is at the end with only one newline.
 ************** File: admon.p.tex *****************
 %%
 %% Automatically generated file from DocOnce source
@@ -46243,8 +45472,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -46897,8 +46124,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
@@ -47496,8 +46721,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -48103,8 +47326,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -48754,8 +47975,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
@@ -49319,8 +48538,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -49932,8 +49149,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
@@ -50453,8 +49668,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -51065,8 +50278,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -53269,14 +52480,14 @@ exercises (and problems and projects too).
     <link rel="prev" title="Testing admons" href="index.html" />
  
   
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -57413,13 +56624,15 @@ exercises (and problems and projects too).
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
-.. !split
+.. Document title:
 
 Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: hpl
 :Date: Jan 32, 2100
+
+.. !split
 
 Introduction
 ============
@@ -57484,7 +56697,8 @@ First a simple block with text, an equation, and a list:
 
 
 .. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
 
 A generic equation
 
@@ -57506,7 +56720,8 @@ box, it is not a new paragraph):
 
 
 .. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
 
 
 .. math::
@@ -57517,7 +56732,8 @@ Let's begin a new paragraph and show a box with code only:
 
 
 .. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
 
 
 .. code-block:: python
@@ -60609,8 +59825,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
@@ -63560,8 +62774,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -68602,8 +67814,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -69012,8 +68222,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -69419,8 +68627,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -70567,6 +69773,22 @@ str>>> The tex blocks:
 []
 
 ************************************************************
+str>>> The file after handling exercises:
+
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
+str>>> The file after handling figures:
+
+Text with a name like Åsmund Ødegård works in general.
+
+
+
+
+************************************************************
 unicode>>> The file after handling ref and label cross referencing:
 
 Text with a name like &#197;smund &#216;deg&#229;rd works in general.
@@ -70954,6 +70176,30 @@ unicode>>> The code block types:
 unicode>>> The tex blocks:
 
 []
+
+************************************************************
+unicode>>> The file after handling exercises:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+
+
+************************************************************
+unicode>>> The file after handling figures:
+
+Text with a name like Åsmund Ødegård works in general.
+Verbatim blocks with non-ASCII text does not work for HTML, but it works
+for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
+
+0 <<<!!CODE_BLOCK 
+
+
+
 
 ************************************************************
 unicode>>> The file after handling ref and label cross referencing:
@@ -71450,6 +70696,38 @@ unicode>>> The tex blocks:
 []
 
 ************************************************************
+unicode>>> The file after handling exercises:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
+unicode>>> The file after handling figures:
+
+Text with a name like Åsmund Ødegård works in general.
+
+This block (in format html)
+triggers use of `mako`. For all formats, `mako` has
+problem with non-ASCII characters anywhere in the text. The remedy
+for all formats is to read the file with UTF-8 encoding. With --debug
+one can see the internal str/unicode representation of the text
+through the various stages of the text transformation process.
+
+$b = 1$ is a value suggested by Åsmund Ødegård.
+
+
+
+************************************************************
 unicode>>> The file after handling ref and label cross referencing:
 
 Text with a name like Åsmund Ødegård works in general.
@@ -71627,7 +70905,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f4d56cd32a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f80964062a8>
 
 
 First occurence: " `mako`."
@@ -72674,8 +71952,6 @@ BIBFILE: papers.pub
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 \usepackage[framemethod=TikZ]{mdframed}
 
 % --- begin definitions of admonition environments ---
@@ -73625,8 +72901,6 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
-
-\VerbatimFootnotes
 
 \usepackage[framemethod=TikZ]{mdframed}
 
@@ -75600,7 +74874,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Mar 28 17:33:29 2015.
+# sphinx-quickstart on Tue Mar 31 05:38:01 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79563,8 +78837,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
-\VerbatimFootnotes
-
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
 \setcounter{topnumber}{2}
@@ -81094,6 +80366,8 @@ examine the DocOnce source and the \Verb!doc/src/make.sh! script).
 .. |nbsp| unicode:: 0xA0
    :trim:
 
+.. Document title:
+
 DocOnce Quick Reference
 =======================
 
@@ -82306,7 +81580,7 @@ Resources
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-.. !split
+.. Document title:
 
 DocOnce Quick Reference
 =======================
@@ -82324,6 +81598,8 @@ professionally looking web versions with Sphinx or HTML. Other outlets
 include Google's ``blogger.com``, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
+
+.. !split
 
 Supported Formats
 -----------------
@@ -82359,6 +81635,8 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
+.. !split
+
 Emacs syntax support
 --------------------
 
@@ -82390,6 +81668,8 @@ Ctrl+c exer    exercise outline
 Ctrl+c slide   slide outline                               
 Ctrl+c help    print this table                            
 =============  ==========================================  
+
+.. !split
 
 Title, Authors, and Date
 ------------------------
@@ -82430,6 +81710,8 @@ The table of contents is removed by writing ``TOC: off``.
 
 .. _quick:sections:
 
+.. !split
+
 Section Types
 -------------
 
@@ -82456,6 +81738,8 @@ The ``Exercise:`` keyword kan be substituted by ``Problem:`` or ``Project:``.
 A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
+
+.. !split
 
 Inline Formatting
 -----------------
@@ -82539,6 +81823,8 @@ before or after. Only the ``pdflatex`` and ``html`` output formats translate
 emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 ``--no_emoji`` removes all emojis from the output document.
+
+.. !split
 
 Lists
 -----
@@ -82640,6 +81926,8 @@ And finally a description list:
 
 
 
+.. !split
+
 Comment lines
 -------------
 
@@ -82660,6 +81948,8 @@ option ``-DEXTRA`` will bring the text alive again.
 When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.
+
+.. !split
 
 Inline comments
 ---------------
@@ -82766,6 +82056,8 @@ To implement these edits, run
 
         Terminal> doconce apply_edit_comments mydoc.do.txt
 
+.. !split
+
 Verbatim/Computer Code
 ----------------------
 
@@ -82857,6 +82149,8 @@ Important warnings:
  * Verbatim code blocks inside lists can be ugly typeset in some
    output formats. A more robust approach is to replace the list by
    paragraphs with headings.
+
+.. !split
 
 LaTeX Mathematics
 -----------------
@@ -82974,6 +82268,8 @@ rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
+.. !split
+
 Hyperlinks
 ----------
 
@@ -82991,6 +82287,8 @@ Links use either a link text or the raw URL:
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
+
+.. !split
 
 Figures and Movies
 ------------------
@@ -83058,6 +82356,8 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
+.. !split
+
 Tables
 ------
 
@@ -83116,6 +82416,8 @@ Now we can do ``# #include "mydata_table.do.txt"`` in the DocOnce
 source file or simply copy the table in ``mydata_table.do.txt``
 into the DocOnce file.
 
+.. !split
+
 Labels and References
 ---------------------
 
@@ -83145,6 +82447,8 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
+.. !split
+
 Citations and Bibliography
 --------------------------
 
@@ -83172,6 +82476,8 @@ where ``papers.pub`` is a publication database in the
 BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
+
+.. !split
 
 Generalized References
 ----------------------
@@ -83211,6 +82517,8 @@ LaTeX package ``xr`` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 ``external`` text will be the output.
 
+.. !split
+
 Index of Keywords
 -----------------
 
@@ -83228,6 +82536,8 @@ paragraphs. Index specifications placed right before paragraphs also
 gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the ``latex``,
 ``pdflatex``, ``rst``, and ``sphinx`` formats.
+
+.. !split
 
 Capabilities of The Program ``doconce``
 ---------------------------------------
@@ -83393,6 +82703,8 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
+.. !split
+
 Exercises
 ---------
 
@@ -83513,6 +82825,8 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
+.. !split
+
 Environments
 ------------
 
@@ -83539,6 +82853,8 @@ the environments:
 
  * ``slidecell``: indication of cells in a grid layout for elements on a
    slide
+
+.. !split
 
 Preprocessing
 -------------
@@ -83589,6 +82905,8 @@ With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
 examine the DocOnce source and the ``doc/src/make.sh`` script).
+
+.. !split
 
 Resources
 ---------
@@ -92066,6 +91384,15 @@ figure file ../doc/src/manual/fig/wave1D:
     found!
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
+*** warning: quiz explanation contains block (fig/code/math)
+    and is therefore skipped
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+$$ y(x) = e^{-y}.$$ 
+
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce split_html testdoc.html --method=space10
@@ -92244,6 +91571,15 @@ figure file ../doc/src/manual/fig/wave1D:
     automatically changed to --html_style=perldoc
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
+*** warning: quiz explanation contains block (fig/code/math)
+    and is therefore skipped
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+$$ y(x) = e^{-y}.$$ 
+
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce remove_exercise_answers testdoc.html
@@ -92300,6 +91636,15 @@ figure file ../doc/src/manual/fig/wave1D:
     automatically changed to --html_style=perldoc
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
+*** warning: quiz explanation contains block (fig/code/math)
+    and is therefore skipped
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+$$ y(x) = e^{-y}.$$ 
+
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
 + system doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments
@@ -96397,12 +95742,27 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: new !split inserted (override all existing !split)
+    before every ======= heading =======
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: sphinx/rst is a suboptimal format for
     typesetting edit markup such as
     [hpl 3: laptops and mobile units -> computers, tablets,
 and phones]
     Use HTML or LaTeX output instead, implement the
     edits (doconce apply_edit_comments) and then use sphinx.
+*** warning: quiz explanation contains block (fig/code/math)
+    and is therefore skipped
+Ooops, forgot a minus: ``exp(-x)``, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+.. math::
+         y(x) = e^{-y}. 
+
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + mv -f testdoc.rst testdoc.sphinx.rst
@@ -96465,18 +95825,33 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: new !split inserted (override all existing !split)
+    before every ======= heading =======
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: sphinx/rst is a suboptimal format for
     typesetting edit markup such as
     [hpl 3: laptops and mobile units -> computers, tablets,
 and phones]
     Use HTML or LaTeX output instead, implement the
     edits (doconce apply_edit_comments) and then use sphinx.
+*** warning: quiz explanation contains block (fig/code/math)
+    and is therefore skipped
+Ooops, forgot a minus: ``exp(-x)``, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+.. math::
+         y(x) = e^{-y}. 
+
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
 + system doconce split_rst testdoc
 + doconce split_rst testdoc
 testdoc split into
-._testdoc000.rst ._testdoc001.rst ._testdoc002.rst
+._testdoc000.rst ._testdoc001.rst ._testdoc002.rst ._testdoc003.rst ._testdoc004.rst ._testdoc005.rst ._testdoc006.rst ._testdoc007.rst ._testdoc008.rst ._testdoc009.rst ._testdoc010.rst
 + '[' 0 -ne 0 ']'
 + system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
@@ -96553,28 +95928,49 @@ sphinx-build -b html -d _build/doctrees   . _build/html
 Making output directory...
 Running Sphinx v1.2.3
 loading pickled environment... not yet created
-building [html]: targets for 4 source files that are out of date
-updating environment: 4 added, 0 changed, 0 removed
-reading sources... [ 25%] ._testdoc000
-reading sources... [ 50%] ._testdoc001
-reading sources... [ 75%] ._testdoc002
+building [html]: targets for 12 source files that are out of date
+updating environment: 12 added, 0 changed, 0 removed
+reading sources... [  8%] ._testdoc000
+reading sources... [ 16%] ._testdoc001
+reading sources... [ 25%] ._testdoc002
+reading sources... [ 33%] ._testdoc003
+reading sources... [ 41%] ._testdoc004
+reading sources... [ 50%] ._testdoc005
+reading sources... [ 58%] ._testdoc006
+reading sources... [ 66%] ._testdoc007
+reading sources... [ 75%] ._testdoc008
+reading sources... [ 83%] ._testdoc009
+reading sources... [ 91%] ._testdoc010
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:387: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:425: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:365: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:403: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:403: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:417: ERROR: Unexpected indentation.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc010.rst:7: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done
 preparing documents... done
-writing output... [ 25%] ._testdoc000
-writing output... [ 50%] ._testdoc001
-writing output... [ 75%] ._testdoc002
+writing output... [  8%] ._testdoc000
+writing output... [ 16%] ._testdoc001
+writing output... [ 25%] ._testdoc002
+writing output... [ 33%] ._testdoc003
+writing output... [ 41%] ._testdoc004
+writing output... [ 50%] ._testdoc005
+writing output... [ 58%] ._testdoc006
+writing output... [ 66%] ._testdoc007
+writing output... [ 75%] ._testdoc008
+writing output... [ 83%] ._testdoc009
+writing output... [ 91%] ._testdoc010
 writing output... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc000' that doesn't have a title: no link will be generated
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app1 (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app2 (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc002' that doesn't have a title: no link will be generated
 writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
 
@@ -96582,14 +95978,15 @@ copying static files... done
 copying extra files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded, 6 warnings.
+build succeeded, 11 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
 /home/hpl/vc/doconce/test/sphinx-testdoc
 running make clean
 running make html
-Fix generated files: index.html search.html genindex.html ._testdoc002.html ._testdoc000.html ._testdoc001.html 
+Fix generated files: index.html search.html genindex.html ._testdoc007.html ._testdoc002.html ._testdoc003.html ._testdoc006.html ._testdoc000.html ._testdoc010.html ._testdoc001.html ._testdoc005.html ._testdoc009.html ._testdoc004.html ._testdoc008.html 
+
 google-chrome sphinx-testdoc/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
@@ -98024,6 +97421,11 @@ output in author1.p.tex
 + doconce format sphinx author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to sphinx
+*** warning: new !split inserted (override all existing !split)
+    before every ========= heading =========
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 output in author1.rst
 + '[' 0 -ne 0 ']'
 + system doconce format plain author1
@@ -98333,6 +97735,7 @@ translating doconce text in tmp_mako__math_test.do.txt to sphinx
 Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {eqnarray*}
+*** warning: new !split inserted (override all existing !split)
 
 *** warning: detected non-align math environment with multiple labels
     (Sphinx cannot handle this equation system - labels will be removed
@@ -98442,6 +97845,7 @@ Build finished. The HTML pages are in _build/html.
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html math_test.html 
+
 google-chrome sphinx-rootdir-math/_build/html/index.html
 
 + doconce format pandoc math_test
@@ -101378,6 +100782,11 @@ translating doconce text in tmp_preprocess__admon.do.txt to sphinx
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format sphinx
+*** warning: new !split inserted (override all existing !split)
+    before every ======= heading =======
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 output in admon.rst
@@ -101416,6 +100825,7 @@ copying ../doc/src/manual/fig/wave1D.png to tmp_admon
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html admon.html 
+
 google-chrome tmp_admon/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
@@ -101736,7 +101146,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 168 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -101746,7 +101156,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 195 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102355,7 +101765,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 168 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102365,7 +101775,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 195 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102967,7 +102377,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 168 has zero height.
+* Media annotation on line 166 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -102977,7 +102387,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 195 has zero height.
+* Media annotation on line 193 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104227,7 +103637,7 @@ Overfull \hbox (120.12047pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[8] [9]
+[8]
 
 
 ...rest of part of LaTeX line number...
@@ -104244,7 +103654,7 @@ Overfull \hbox (120.12047pt too wide)
 
 
 
-[10]
+[9] [10]
 Appendix A.
 
 Overfull \hbox (30.77882pt too wide) 
@@ -104786,7 +104196,7 @@ Overfull \hbox (120.12047pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[8] [9]
+[8]
 
 
 ...rest of part of LaTeX line number...
@@ -104803,7 +104213,7 @@ Overfull \hbox (120.12047pt too wide)
 
 
 
-[10]
+[9] [10]
 Appendix A.
 
 Overfull \hbox (30.77882pt too wide) 
@@ -105917,6 +105327,11 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 *** warning: math only in sphinx figure caption
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
+*** warning: new !split inserted (override all existing !split)
+    before every ===== heading =====
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
@@ -105942,6 +105357,11 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 *** warning: math only in sphinx figure caption
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
+*** warning: new !split inserted (override all existing !split)
+    before every ===== heading =====
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
@@ -106835,6 +106255,11 @@ Transcript written on quickref.log.
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: new !split inserted (override all existing !split)
+    before every ===== heading =====
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: sphinx/rst is a suboptimal format for
     typesetting edit markup such as
     [add 2: ,]
@@ -106933,18 +106358,20 @@ preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] quickref
 
+/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:788: WARNING: undefined label: quick:sections (if the link has no caption the label must precede a section header)
 writing additional files... (0 module code pages) genindex search
 copying static files... done
 copying extra files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
 running make clean
 running make html
 Fix generated files: index.html search.html genindex.html quickref.html 
+
 google-chrome sphinx-rootdir/_build/html/index.html
 
 + '[' 0 -ne 0 ']'
