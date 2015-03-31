@@ -814,7 +814,7 @@ newline": "testdoc.do.txt". Can test spaces with the link with word
 too: "hpl": "http://folk.uio.no/hpl" or "hpl" :
 "http://folk.uio.no/hpl". Also `file:///` works: "link to a
 file":"file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in http://folk.uio.no/hpl, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -1962,6 +1962,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+%\VerbatimFootnotes must come after hyperref and footmisc packages
 \VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
@@ -3110,7 +3111,7 @@ plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{t
 newline}. Can test spaces with the link with word
 too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -4100,6 +4101,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+%\VerbatimFootnotes must come after hyperref and footmisc packages
 \VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
@@ -5382,10 +5384,10 @@ Testing of URLs: hpl's home page \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\
 the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}.  Here is a
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
-newline}. Can test spaces with the link with word
+newline}\footnote{\texttt{testdoc.do.txt}}. Can test spaces with the link with word
 too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
-file} is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+file}\footnote{\texttt{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}} is
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
 colon, semi--colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -6420,6 +6422,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+%\VerbatimFootnotes must come after hyperref and footmisc packages
 \VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
@@ -7653,10 +7656,10 @@ Testing of URLs: hpl's home page \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\
 the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}.  Here is a
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
-newline}. Can test spaces with the link with word
+newline}\footnote{\texttt{testdoc.do.txt}}. Can test spaces with the link with word
 too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
-file} is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+file}\footnote{\texttt{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}} is
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
 colon, semi--colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -8794,6 +8797,7 @@ columns=fullflexible,  % tighter character kerning, like verb
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+%\VerbatimFootnotes must come after hyperref and footmisc packages
 \VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
@@ -10007,7 +10011,7 @@ plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{t
 newline}. Can test spaces with the link with word
 too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -37114,6 +37118,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \setcounter{tocdepth}{2}  % number chapter, section, subsection
 
+%\VerbatimFootnotes must come after hyperref and footmisc packages
 \VerbatimFootnotes
 
 % Tricks for having figures close to where they are defined:
@@ -70905,7 +70910,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f80964062a8>
+verbatim is to be replaced using <function html_verbatim at 0x7fdde24c92a8>
 
 
 First occurence: " `mako`."
@@ -74874,7 +74879,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Mar 31 05:38:01 2015.
+# sphinx-quickstart on Tue Mar 31 08:57:13 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -92259,7 +92264,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -92279,7 +92284,7 @@ t line 1276.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -92300,7 +92305,7 @@ t line 1285.
 
 
 
-t line 1289.
+t line 1290.
 
 
 
@@ -92426,6 +92431,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[18]
 
 
 
@@ -92443,7 +92449,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[18] (./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21] (./testdoc.out.pyg
+(./testdoc.out.pyg) [19] (./testdoc.out.pyg) [20] [21] (./testdoc.out.pyg
 [22])
 Underfull \hbox (badness 10000) 
 
@@ -93065,7 +93071,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -93085,7 +93091,7 @@ t line 1276.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -93106,7 +93112,7 @@ t line 1285.
 
 
 
-t line 1289.
+t line 1290.
 
 
 
@@ -93788,7 +93794,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -93808,7 +93814,7 @@ t line 1276.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -93829,7 +93835,7 @@ t line 1285.
 
 
 
-t line 1289.
+t line 1290.
 
 
 
@@ -95149,7 +95155,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1227.
+t line 1228.
 
 
 
@@ -95169,7 +95175,7 @@ t line 1227.
 
 
 
-t line 1236.
+t line 1237.
 
 
 
@@ -95189,7 +95195,7 @@ t line 1236.
 
 
 
-t line 1240.
+t line 1241.
 
 
 
@@ -95315,6 +95321,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[18]
 
 
 
@@ -95332,7 +95339,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[18] (./testdoc.out.pyg) [19] [20] [21] [22] (./testdoc.out.pyg)
+(./testdoc.out.pyg) [19] [20] [21] [22] (./testdoc.out.pyg)
 Underfull \hbox (badness 10000) 
 
 [23]

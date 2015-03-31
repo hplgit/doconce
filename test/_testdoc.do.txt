@@ -799,7 +799,7 @@ newline": "testdoc.do.txt". Can test spaces with the link with word
 too: "hpl": "http://folk.uio.no/hpl" or "hpl" :
 "http://folk.uio.no/hpl". Also `file:///` works: "link to a
 file":"file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in http://folk.uio.no/hpl, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
