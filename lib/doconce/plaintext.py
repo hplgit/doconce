@@ -2,6 +2,7 @@
 import re, sys
 from common import default_movie, plain_exercise, bibliography, \
      cite_with_multiple_args2multiple_cites
+from misc import option
 
 
 def plain_author(authors_and_institutions, auth2index,
@@ -166,9 +167,17 @@ def plain_quiz(quiz):
             pass  # don't add choice number/letter
         else:
             choice_prefix += ' %s:' % choice_no
+        # Let choice start with a newline if pure code starts the choice
+        # (test for different code block types so this function can work
+        # for other formats too...)
+        choice = choice[1].lstrip()
+        code_starters = 'Code::', '~~~', '```', '{{{'
+        for code_starter in code_starters:
+            if choice.startswith(code_starter):
+                choice = '\n' + choice
 
         # Cannot treat explanations
-        text += '%s %s\n\n' % (choice_prefix, choice[1])
+        text += '%s %s\n\n' % (choice_prefix, choice)
     return text
 
 def define(FILENAME_EXTENSION,

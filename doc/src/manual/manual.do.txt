@@ -2812,6 +2812,63 @@ a summary, while a box is often used to highlight a key finding
 in the running text: an equation, a hypothesis, a theorem, a
 rule, or a conclusion.
 
+===== User-Defined Environments =====
+
+To be implemented.
+
+!bc
+|bu-name optional title line
+|eu-name
+
+file .user_environments.py:
+
+{
+'intro': {'latex': r'\usepackage{mypack}'},
+'name': {
+'html': myfunc,
+'ipynb': 'specific code',
+}
+}
+
+def myfunc(text, titleline, format):
+    return rendered_text_in_this_format
+
+|bu-example heading="This is my example"; label="ex1"
+Addition:
+
+!bt
+\[ 1+1 = 2 \]
+!et
+!eu-example
+
+def example(text, titleline, format):
+    title = ''
+    label = ''
+    exec(titleline)
+    if not title:
+        print '*** error: title not given as part of !bu-example heading!'
+        sys.exit(1)
+    if format == 'latex':
+        if label:
+            label = '\\label{%s}' % label
+        rendered_text = r"""
+\begin{example}{%s}
+%s
+%s
+\end{example}
+""" % (title, label, text)
+    else:
+        # Rely on simple DocOnce formatting
+        if label:
+            label = 'label{%s}' % label
+        rendered_text = r"""
+===== Example: %s =====
+%s
+
+%s
+
+""" % (title, label, text)
+!ec
 
 ======= Bibliography (References) =======
 

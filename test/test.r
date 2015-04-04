@@ -8667,6 +8667,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
 
 % Background for code blocks (parameter is color name)
+%\setlength{\fboxsep}{-1.5mm}  % makes cod/pro background box smaller
 \newenvironment{cod}[1]{%
    \def\FrameCommand{\colorbox{#1}}%
    \MakeFramed{\advance\hsize-\width \FrameRestore}}%
@@ -12243,19 +12244,19 @@ Given
 What is the solution of this equation?
 
 
-**Choice 1:** \\( y=e^{-y} \\) :abbr:`? (Right!)`
+**Choice A:** \\( y=e^{-y} \\) :abbr:`? (Right!)`
 
-**Choice 2:** \\( y=e^{y} \\) :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
+**Choice B:** \\( y=e^{y} \\) :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
 
-**Choice 3:** Code::
+**Choice C:** Code::
 
         from math import exp
         def f(x):
             return exp(x) :abbr:`? (Wrong!)` :abbr:`# (Ooops, forgot a minus: exp(-x), otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation  .. raw:: html          $$ y(x) = e^{-y}.$$)`
 
-**Choice 4:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
+**Choice D:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
 
-**Choice 5:** The equation is meaningless: an equation must be an equation
+**Choice E:** The equation is meaningless: an equation must be an equation
 for \\( x \\) or \\( y \\), not a function \\( y(x) \\). :abbr:`? (Wrong!)`
 
 .. end quiz
@@ -12518,7 +12519,7 @@ Test of quizzes
 
 **Answer 3:** Oslo :abbr:`? (Right!)`
 
-**Choice 4:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
+**Choice D:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
 
 .. end quiz
 
@@ -14049,19 +14050,19 @@ Given
 What is the solution of this equation?
 
 
-**Choice 1:** :math:`y=e^{-y}` :abbr:`? (Right!)`
+**Choice A:** :math:`y=e^{-y}` :abbr:`? (Right!)`
 
-**Choice 2:** :math:`y=e^{y}` :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
+**Choice B:** :math:`y=e^{y}` :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
 
-**Choice 3:** .. code-block:: python
+**Choice C:** .. code-block:: python
 
         from math import exp
         def f(x):
             return exp(x) :abbr:`? (Wrong!)`
 
-**Choice 4:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
+**Choice D:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
 
-**Choice 5:** The equation is meaningless: an equation must be an equation
+**Choice E:** The equation is meaningless: an equation must be an equation
 for :math:`x` or :math:`y`, not a function :math:`y(x)`. :abbr:`? (Wrong!)`
 
 .. end quiz
@@ -14334,7 +14335,7 @@ Test of quizzes
 
 **Answer 3:** Oslo :abbr:`? (Right!)`
 
-**Choice 4:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
+**Choice D:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
 
 .. end quiz
 
@@ -15781,12 +15782,32 @@ lambda x: x+2
 
 ==== Exercise 8: Solution of differential equation ====
 
-Cannot typeset quiz: "Given
+
+
+Given
 
 {{{
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 }}}
-What is the solution of this equation?"
+What is the solution of this equation?
+
+Choice A: `y=e^{-y}`
+
+Choice B: `y=e^{y}`
+
+Choice C: 
+{{{
+from math import exp
+def f(x):
+    return exp(x)
+}}}
+
+Choice D: The solution cannot be found because there is a derivative in the equation.
+
+Choice E: The equation is meaningless: an equation must be an equation
+for `x` or `y`, not a function `y(x)`.
+
+
 <wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -15903,7 +15924,22 @@ With label.
 
 What about inserting a quiz?
 
-Cannot typeset quiz: "What is the capital of Norway?"
+
+
+======= Test of quizzes =======
+
+
+Fundamental test: What is the capital of Norway?
+
+Answer 1: Stockholm
+
+Answer 2: London
+
+Answer 3: Oslo
+
+Choice D: Bergen
+
+
 
 
 ==== Appendix: Testing identical titles ====
@@ -17352,12 +17388,31 @@ lambda x: x+2
 
 ==== Exercise 8: Solution of differential equation ====
 
-Cannot typeset quiz: "Given
+
+
+Given
 
 :<math>
  \frac{dy}{dx} = -y(x),\quad y(0)=1 
 </math>
-What is the solution of this equation?"
+What is the solution of this equation?
+
+Choice A: <math>y=e^{-y}</math>
+
+Choice B: <math>y=e^{y}</math>
+
+Choice C: <syntaxhighlight lang="python">
+from math import exp
+def f(x):
+    return exp(x)
+</syntaxhighlight>
+
+Choice D: The solution cannot be found because there is a derivative in the equation.
+
+Choice E: The equation is meaningless: an equation must be an equation
+for <math>x</math> or <math>y</math>, not a function <math>y(x)</math>.
+
+
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
 
@@ -17571,7 +17626,22 @@ With label.
 
 What about inserting a quiz?
 
-Cannot typeset quiz: "What is the capital of Norway?"
+
+
+======= Test of quizzes =======
+
+
+Fundamental test: What is the capital of Norway?
+
+Answer 1: Stockholm
+
+Answer 2: London
+
+Answer 3: Oslo
+
+Choice D: Bergen
+
+
 
 
 ==== Appendix: Testing identical titles ====
@@ -18980,12 +19050,34 @@ lambda x: x+2
 == Exercise 8: Solution of differential equation ==
 
 
-**Cannot typeset quiz**: "Given
+
+
+Given
 
 {{{
 \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 }}}
-What is the solution of this equation?"
+What is the solution of this equation?
+
+Choice A: 
+{{{y=e^{-y}}}}
+
+Choice B: 
+{{{y=e^{y}}}}
+
+Choice C: 
+{{{
+from math import exp
+def f(x):
+    return exp(x)
+}}}
+
+Choice D: The solution cannot be found because there is a derivative in the equation.
+
+Choice E: The equation is meaningless: an equation must be an equation
+for {{{x}}} or {{{y}}}, not a function {{{y(x)}}}.
+
+
 <wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -19106,7 +19198,22 @@ With label.
 
 What about inserting a quiz?
 
-**Cannot typeset quiz**: "What is the capital of Norway?"
+
+
+======= Test of quizzes =======
+
+
+Fundamental test: What is the capital of Norway?
+
+Answer 1: Stockholm
+
+Answer 2: London
+
+Answer 3: Oslo
+
+Choice D: Bergen
+
+
 
 
 == Appendix: Testing identical titles ==
@@ -20259,12 +20366,32 @@ And a test that the code 'lambda x: x+2' is correctly placed here::
 
 Exercise 8: Solution of differential equation
 
-Here goes a quiz "Given::
+
+
+
+Question: Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 
-What is the solution of this equation?"
-But typesetting of quiz is not yet implemented in this format.
+What is the solution of this equation?
+
+Choice A: y=e^{-y}
+
+Choice B: y=e^{y}
+
+Choice C: 
+Code::
+
+        from math import exp
+        def f(x):
+            return exp(x)
+
+Choice D: The solution cannot be found because there is a derivative in the equation.
+
+Choice E: The equation is meaningless: an equation must be an equation
+for x or y, not a function y(x).
+
+
 # --- end explanation of choice 5 ---
 # --- end exercise ---
 
@@ -20454,8 +20581,20 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-Here goes a quiz "What is the capital of Norway?"
-But typesetting of quiz is not yet implemented in this format.
+
+
+
+Fundamental test: What is the capital of Norway?
+
+Answer 1: Stockholm
+
+Answer 2: London
+
+Answer 3: Oslo
+
+Choice D: Bergen
+
+
 
 Appendix: Testing identical titles
 
@@ -21600,12 +21739,32 @@ And a test that the code C{lambda x: x+2} is correctly placed here::
 Exercise 8: Solution of differential equation
 ---------------------------------------------
 
-Here goes a quiz "Given::
+
+
+
+Question: Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 
-What is the solution of this equation?"
-But typesetting of quiz is not yet implemented in this format.
+What is the solution of this equation?
+
+Choice A: M{y=e^{-y}}
+
+Choice B: M{y=e^{y}}
+
+Choice C: 
+Code::
+
+        from math import exp
+        def f(x):
+            return exp(x)
+
+Choice D: The solution cannot be found because there is a derivative in the equation.
+
+Choice E: The equation is meaningless: an equation must be an equation
+for M{x} or M{y}, not a function M{y(x)}.
+
+
 # --- end explanation of choice 5 ---
 # --- end exercise ---
 
@@ -21807,8 +21966,20 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-Here goes a quiz "What is the capital of Norway?"
-But typesetting of quiz is not yet implemented in this format.
+
+
+
+Fundamental test: What is the capital of Norway?
+
+Answer 1: Stockholm
+
+Answer 2: London
+
+Answer 3: Oslo
+
+Choice D: Bergen
+
+
 
 Appendix: Testing identical titles
 ----------------------------------
@@ -23094,12 +23265,32 @@ And a test that the code lambda x: x+2 is correctly placed here::
 Exercise 8: Solution of differential equation
 ---------------------------------------------
 
-Here goes a quiz "Given::
+
+
+
+Question: Given::
 
         \[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
 
-What is the solution of this equation?"
-But typesetting of quiz is not yet implemented in this format.
+What is the solution of this equation?
+
+Choice A: y=e^{-y}
+
+Choice B: y=e^{y}
+
+Choice C: 
+Code::
+
+        from math import exp
+        def f(x):
+            return exp(x)
+
+Choice D: The solution cannot be found because there is a derivative in the equation.
+
+Choice E: The equation is meaningless: an equation must be an equation
+for x or y, not a function y(x).
+
+
 # --- end explanation of choice 5 ---
 # --- end exercise ---
 
@@ -23321,8 +23512,20 @@ Appendix: Testing identical titles
 
 What about inserting a quiz?
 
-Here goes a quiz "What is the capital of Norway?"
-But typesetting of quiz is not yet implemented in this format.
+
+
+
+Fundamental test: What is the capital of Norway?
+
+Answer 1: Stockholm
+
+Answer 2: London
+
+Answer 3: Oslo
+
+Choice D: Bergen
+
+
 
 Appendix: Testing identical titles
 ----------------------------------
@@ -24799,12 +25002,36 @@ lambda x: x+2
 ### Exercise 8: Solution of differential equation
 <div id="sec:this:exer:de"></div>
 
-*Cannot typeset quiz*: "Given
+
+
+Given
 
 $$
  \frac{dy}{dx} = -y(x),\quad y(0)=1 
 $$
-What is the solution of this equation?"
+What is the solution of this equation?
+
+**Choice A:**
+ $y=e^{-y}$
+
+**Choice B:**
+ $y=e^{y}$
+
+**Choice C:**
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+from math import exp
+def f(x):
+    return exp(x)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Choice D:**
+ The solution cannot be found because there is a derivative in the equation.
+
+**Choice E:**
+ The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+
+
 <!-- --- end explanation of choice 5 --- -->
 <!-- --- end exercise --- -->
 
@@ -25016,7 +25243,26 @@ With label.
 
 What about inserting a quiz?
 
-*Cannot typeset quiz*: "What is the capital of Norway?"
+
+
+## Test of quizzes
+
+
+**Fundamental test:** What is the capital of Norway?
+
+**Answer 1:**
+ Stockholm
+
+**Answer 2:**
+ London
+
+**Answer 3:**
+ Oslo
+
+**Choice D:**
+ Bergen
+
+
 
 
 ### Appendix: Testing identical titles
@@ -26932,12 +27178,8 @@ is at the end with only one newline.
       "### Exercise 8: Solution of differential equation\n",
       "<div id=\"sec:this:exer:de\"></div>\n",
       "\n",
-      "<!-- --- begin quiz --- -->\n",
-      "<!-- --- quiz heading: SOlution of differential equation -->\n",
-      "<!-- --- previous heading type: exercise -->\n",
-      "<!-- --- keywords: ['derivatives', 'exponential function', 'equation, differential', 'differential equation'] -->\n",
       "\n",
-      "<!-- --- begin quiz question --- -->\n",
+      "\n",
       "Given"
      ]
     },
@@ -26955,87 +27197,37 @@ is at the end with only one newline.
      "metadata": {},
      "source": [
       "What is the solution of this equation?\n",
-      "<!-- --- end quiz question --- -->\n",
-      "<!-- --- label: quiz:diff:eq1 -->\n",
       "\n",
+      "**Choice A:**\n",
+      " $y=e^{-y}$\n",
       "\n",
-      "<!-- --- begin quiz choice 1 (right) --- -->\n",
-      "$y=e^{-y}$\n",
-      "<!-- --- end quiz choice 1 (right) --- -->\n",
+      "**Choice B:**\n",
+      " $y=e^{y}$\n",
       "\n",
-      "<!-- --- begin quiz choice 2 (wrong) --- -->\n",
-      "$y=e^{y}$\n",
-      "<!-- --- end quiz choice 2 (wrong) --- -->\n",
-      "\n",
-      "<!-- --- begin explanation of choice 2 --- -->\n",
-      "Almost, but the sign is wrong (note the minus!).\n",
-      "<!-- --- end explanation of choice 2 --- -->\n",
-      "\n",
-      "<!-- --- begin quiz choice 3 (wrong) --- -->"
+      "**Choice C:**"
      ]
     },
     {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
       "from math import exp\n",
       "def f(x):\n",
       "    return exp(x)\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- --- end quiz choice 3 (wrong) --- -->\n",
-      "\n",
-      "<!-- --- begin explanation of choice 3 --- -->\n",
-      "Ooops, forgot a minus: `exp(-x)`, otherwise this Python code\n",
-      "must be considered as a good answer. It is more natural,\n",
-      "though, to write the solution to the problem\n",
-      "in mathematical notation:"
      ]
     },
     {
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "$$\n",
-      "y(x) = e^{-y}.\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- --- end explanation of choice 3 --- -->\n",
+      "**Choice D:**\n",
+      " The solution cannot be found because there is a derivative in the equation.\n",
       "\n",
-      "<!-- --- begin quiz choice 4 (wrong) --- -->\n",
-      "The solution cannot be found because there is a derivative in the equation.\n",
-      "<!-- --- end quiz choice 4 (wrong) --- -->\n",
-      "\n",
-      "<!-- --- begin explanation of choice 4 --- -->\n",
-      "Equations with derivatives can be solved;\n",
-      "they are termed *differential\n",
-      "equations*.\n",
-      "<!-- --- end explanation of choice 4 --- -->\n",
-      "\n",
-      "<!-- --- begin quiz choice 5 (wrong) --- -->\n",
-      "The equation is meaningless: an equation must be an equation\n",
+      "**Choice E:**\n",
+      " The equation is meaningless: an equation must be an equation\n",
       "for $x$ or $y$, not a function $y(x)$.\n",
-      "<!-- --- end quiz choice 5 (wrong) --- -->\n",
       "\n",
-      "<!-- --- begin explanation of choice 5 --- -->\n",
-      "Equations where the unknown is a function, as $y(x)$\n",
-      "here, are called *differential equations*, and are solved by\n",
-      "special techniques.\n",
       "\n",
-      "<!-- --- end quiz --- -->\n",
       "<!-- --- end explanation of choice 5 --- -->\n",
       "<!-- --- end exercise --- -->\n",
       "\n",
@@ -27267,41 +27459,26 @@ is at the end with only one newline.
       "\n",
       "What about inserting a quiz?\n",
       "\n",
-      "<!-- --- begin quiz --- -->\n",
-      "<!-- --- new quiz page: Test of quizzes -->\n",
-      "<!-- --- quiz heading: Capital of Norway -->\n",
-      "<!-- --- previous heading type: subsection -->\n",
-      "<!-- --- keywords: ['capitals', 'basic intelligence', 'geography'] -->\n",
       "\n",
       "\n",
-      "<!-- --- begin quiz question --- -->\n",
-      "[Fundamental test:] What is the capital of Norway?\n",
-      "<!-- --- end quiz question --- -->\n",
+      "## Test of quizzes\n",
       "\n",
-      "<!-- --- begin quiz choice 1 (wrong) --- -->\n",
-      "[Answer 1:] Stockholm\n",
-      "<!-- --- end quiz choice 1 (wrong) --- -->\n",
       "\n",
-      "<!-- --- begin explanation of choice 1 --- -->\n",
-      "Stockholm is the capital of Sweden.\n",
-      "<!-- --- end explanation of choice 1 --- -->\n",
+      "**Fundamental test:** What is the capital of Norway?\n",
       "\n",
-      "<!-- --- begin quiz choice 2 (wrong) --- -->\n",
-      "[Answer 2:] London\n",
-      "<!-- --- end quiz choice 2 (wrong) --- -->\n",
+      "**Answer 1:**\n",
+      " Stockholm\n",
       "\n",
-      "<!-- --- begin quiz choice 3 (right) --- -->\n",
-      "[Answer 3:] Oslo\n",
-      "<!-- --- end quiz choice 3 (right) --- -->\n",
+      "**Answer 2:**\n",
+      " London\n",
       "\n",
-      "<!-- --- begin quiz choice 4 (wrong) --- -->\n",
-      "Bergen\n",
-      "<!-- --- end quiz choice 4 (wrong) --- -->\n",
+      "**Answer 3:**\n",
+      " Oslo\n",
       "\n",
-      "<!-- --- begin explanation of choice 4 --- -->\n",
-      "Those from Bergen would claim so, but nobody else.\n",
-      "<!-- --- end explanation of choice 4 --- -->\n",
-      "<!-- --- end quiz --- -->\n",
+      "**Choice D:**\n",
+      " Bergen\n",
+      "\n",
+      "\n",
       "\n",
       "\n",
       "### Appendix: Testing identical titles\n",
@@ -27447,6 +27624,7 @@ is at the end with only one newline.
   }
  ]
 }
+
 ************** File: testdoc.tmp *****************
 label{subsec1}
 
@@ -31488,7 +31666,7 @@ plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt><
 newline</a>. Can test spaces with the link with word
 too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just
 the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -32224,15 +32402,15 @@ $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><div title="Right! "><b>Choice 1:</b>
+<p><div title="Right! "><b>Choice A:</b>
 \( y=e^{-y} \)
 </div></p>
 
-<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
+<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice B:</b>
 \( y=e^{y} \)
 </div></p>
 
-<p><div title="Wrong! "><b>Choice 3:</b>
+<p><div title="Wrong! "><b>Choice C:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -32245,11 +32423,11 @@ What is the solution of this equation?</p>
 </td></tr></table><p>
 </div></p>
 
-<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice 4:</b>
+<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice D:</b>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong! "><b>Choice 5:</b>
+<p><div title="Wrong! "><b>Choice E:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
@@ -32738,7 +32916,7 @@ London
 Oslo
 </div></p>
 
-<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
+<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice D:</b>
 Bergen
 </div></p>
 <hr>
@@ -33998,7 +34176,7 @@ plain file link <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt>
 newline</a>. Can test spaces with the link with word
 too: <a href="http://folk.uio.no/hpl" target="_blank">hpl</a> or <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_blank">link to a
 file</a> is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just
 the plain URL as in <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -36109,7 +36287,7 @@ plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt><
 newline</a>. Can test spaces with the link with word
 too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just
 the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -36586,15 +36764,15 @@ $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><div title="Right! "><b>Choice 1:</b>
+<p><div title="Right! "><b>Choice A:</b>
 \( y=e^{-y} \)
 </div></p>
 
-<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
+<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice B:</b>
 \( y=e^{y} \)
 </div></p>
 
-<p><div title="Wrong! "><b>Choice 3:</b>
+<p><div title="Wrong! "><b>Choice C:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -36605,11 +36783,11 @@ What is the solution of this equation?</p>
 <p>
 </div></p>
 
-<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice 4:</b>
+<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice D:</b>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong! "><b>Choice 5:</b>
+<p><div title="Wrong! "><b>Choice E:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
@@ -36858,7 +37036,7 @@ London
 Oslo
 </div></p>
 
-<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
+<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice D:</b>
 Bergen
 </div></p>
 <hr>
@@ -38295,7 +38473,7 @@ plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{t
 newline}. Can test spaces with the link with word
 too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -43346,7 +43524,7 @@ plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt><
 newline</a>. Can test spaces with the link with word
 too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just
 the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -44122,11 +44300,11 @@ What is the solution of this equation?</p>
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_1" style="font-size: 80%;"></a>
-&nbsp;<b>Choice 1:</b>
+ data-target="#quiz_id_1_A" style="font-size: 80%;"></a>
+&nbsp;<b>Choice A:</b>
 \( y=e^{-y} \)
 <div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_1">
+<p><div class="collapse" id="quiz_id_1_A">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/correct.gif">
 Correct!
 </div></p>
@@ -44135,11 +44313,11 @@ Correct!
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_2" style="font-size: 80%;"></a>
-&nbsp;<b>Choice 2:</b>
+ data-target="#quiz_id_1_B" style="font-size: 80%;"></a>
+&nbsp;<b>Choice B:</b>
 \( y=e^{y} \)
 <div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_2">
+<p><div class="collapse" id="quiz_id_1_B">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Almost, but the sign is wrong (note the minus!).
 </div></p>
@@ -44148,8 +44326,8 @@ Almost, but the sign is wrong (note the minus!).
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_3" style="font-size: 80%;"></a>
-&nbsp;<b>Choice 3:</b>
+ data-target="#quiz_id_1_C" style="font-size: 80%;"></a>
+&nbsp;<b>Choice C:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -44159,7 +44337,7 @@ Almost, but the sign is wrong (note the minus!).
 </pre></div>
 <p>
 <div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_3">
+<p><div class="collapse" id="quiz_id_1_C">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
 must be considered as a good answer. It is more natural,
@@ -44173,11 +44351,11 @@ $$ y(x) = e^{-y}.$$
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_4" style="font-size: 80%;"></a>
-&nbsp;<b>Choice 4:</b>
+ data-target="#quiz_id_1_D" style="font-size: 80%;"></a>
+&nbsp;<b>Choice D:</b>
 The solution cannot be found because there is a derivative in the equation.
 <div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_4">
+<p><div class="collapse" id="quiz_id_1_D">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Equations with derivatives can be solved;
 they are termed <em>differential
@@ -44188,12 +44366,12 @@ equations</em>.
 
 <p>
 <a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#quiz_id_1_5" style="font-size: 80%;"></a>
-&nbsp;<b>Choice 5:</b>
+ data-target="#quiz_id_1_E" style="font-size: 80%;"></a>
+&nbsp;<b>Choice E:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 <div class="collapse-group">
-<p><div class="collapse" id="quiz_id_1_5">
+<p><div class="collapse" id="quiz_id_1_E">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
 Wrong!
 </div></p>
@@ -70910,7 +71088,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fdde24c92a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f778240a2a8>
 
 
 First occurence: " `mako`."
@@ -74879,7 +75057,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Mar 31 08:57:13 2015.
+# sphinx-quickstart on Sat Apr  4 11:49:44 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78793,6 +78971,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
 
 % Background for code blocks (parameter is color name)
+%\setlength{\fboxsep}{-1.5mm}  % makes cod/pro background box smaller
 \newenvironment{cod}[1]{%
    \def\FrameCommand{\colorbox{#1}}%
    \MakeFramed{\advance\hsize-\width \FrameRestore}}%

@@ -390,6 +390,9 @@ def pandoc_quiz(quiz):
             choice_prefix += ' %s:' % choice_no
         if choice_prefix:
             choice_prefix = '**%s**' % choice_prefix
+        # Always have a newline after choice in case code or tex
+        # blocks appear first
+        choice_prefix = choice_prefix + '\n'
 
         # Cannot treat explanations and answers
         text += '%s %s\n\n' % (choice_prefix, choice[1])

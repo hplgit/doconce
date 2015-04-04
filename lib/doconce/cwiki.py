@@ -5,7 +5,8 @@ See http://www.wikicreole.org/wiki/Creole1.0 for syntax.
 # Simple edit of gwiki.py
 
 import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex, plain_quiz
+from common import default_movie, plain_exercise, insert_code_and_tex
+from plaintext import plain_quiz
 from misc import _abort
 
 def cwiki_code(filestr, code_blocks, code_block_types,

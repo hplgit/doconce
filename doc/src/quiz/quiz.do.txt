@@ -100,7 +100,7 @@ are wrong (or right).
 % if FORMAT == 'html':
 % if BOOSTRAP:
 If you click on the symbols in the quiz below, explanations
-will be shown for Choices 1 and 2.
+will be shown for Choices A and B.
 % else:
 If you hover over the choice, the explanation will pop up if
 it is simple text (otherwise it cannot be formatted).

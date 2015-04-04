@@ -33,7 +33,8 @@ go back.
 
 
 import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex, plain_quiz
+from common import default_movie, plain_exercise, insert_code_and_tex
+from plaintext import plain_quiz
 from misc import _abort
 
 def align2equations(math_text):

@@ -3549,6 +3549,12 @@ def doconce2format(filestr, format):
             filestr = filestr + OUTRO[format]
 
 
+    # Need to treat quizzes for ipynb before code and text blocks are inserted
+    if num_quizzes and format == 'ipynb':
+        filestr = typeset_quizzes2(filestr, format)
+        debugpr('The file after second reformatting of quizzes:', filestr)
+        report_progress('handled second reformatting of quizzes')
+
     # Next step: insert verbatim and math code blocks again and
     # substitute code and tex environments:
     # (this is the place to do package-specific fixes too!)
@@ -3610,7 +3616,7 @@ def doconce2format(filestr, format):
         debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
 
     # Second reformatting of quizzes
-    if num_quizzes:
+    if num_quizzes and format != 'ipynb':
         filestr = typeset_quizzes2(filestr, format)
         debugpr('The file after second reformatting of quizzes:', filestr)
         report_progress('handled second reformatting of quizzes')
