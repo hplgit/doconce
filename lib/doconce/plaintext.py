@@ -133,8 +133,43 @@ def plain_box(text, title=''):
 
 def plain_quiz(quiz):
     # Simple typesetting of a quiz
-    s = 'Here goes a quiz "%s"\nBut typesetting of quiz is not yet implemented in this format.' % quiz['question']
-    return s
+    import string
+    question_prefix = quiz.get('question prefix',
+                               option('quiz_question_prefix=', 'Question:'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
+    quiz_expl = option('quiz_explanations=', 'on')
+
+    text = '\n\n'
+    if 'new page' in quiz:
+        text += '======= %s =======\n\n' % (quiz['new page'])
+
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
+        pass
+    else:
+        text += '\n'
+        if question_prefix:
+            text += '%s ' % (question_prefix)
+
+    text += quiz['question'] + '\n\n'
+
+    # List choices as paragraphs
+    for i, choice in enumerate(quiz['choices']):
+        #choice_no = i+1
+        choice_no = string.ascii_uppercase[i]
+        answer = choice[0].capitalize() + '!'
+        choice_prefix = common_choice_prefix
+        if 'choice prefix' in quiz:
+            if isinstance(quiz['choice prefix'][i], basestring):
+                choice_prefix = quiz['choice prefix'][i]
+        if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
+            pass  # don't add choice number/letter
+        else:
+            choice_prefix += ' %s:' % choice_no
+
+        # Cannot treat explanations
+        text += '%s %s\n\n' % (choice_prefix, choice[1])
+    return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

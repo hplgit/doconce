@@ -268,7 +268,7 @@ In the above example, we demonstrate the possibility to control
 the word preceding the question and the choices.
 For the current output format (`${FORMAT}`), questions are by default preceded by
 `Question:` and choices by `Choice X:`, where `X` is the
-number of the choice.
+letter corresponding to the choice.
 
 The prefix appears inside square brackets. Empty brackets, as those
 in the question, leads to no prefix. The choice `Stockholm` has
@@ -571,8 +571,7 @@ E: One would need to do `mylist = [0]*n` or `numpy.zeros(n).tolist()`.
  * `Cr`: right (correct) choice
  * `Cw`: wrong (incorrect) choice
  * `Cr [prefix]`: right (correct) choice with prefix (defaults to *Choice X*,
-   where *X* is the choice number in HTML, and to an upper case letter in
-   LaTeX)
+   where *X* is an upper case letter)
  * `Cw [prefix]`: wrong (incorrect) choice with prefix
  * `E`: explanation of last choice
  * `K`: keywords
@@ -791,17 +790,36 @@ HTML above and typset questions, choices, and explanations adequately.
 When a DocOnce file `mydoc.do.txt` containing quizzes (and other types
 of text, like this document) is translated to some format by the
 `doconce format` command, a Python list of all the quizzes is created
-and written to `.mydoc.quiz`. Each list element represents one quiz as
-a dictionary. The list corresponding to the quizzes in the current
-document starts with
+and written to `.mydoc.quiz`.
+Each list element represents one quiz as
+a dictionary. Such `.quiz` files holds all the information in a collection
+of quizzes and can be given to, e.g.,
+"Quiztools": "https://github.com/hplgit/quiztools"
+for automatic generation of
+"Kahoot!":
+"https://getkahoot.com" online games where you can participate via
+smart phones. Note that a collection of `.*.`quiz` files are trivially
+loaded into a Python list of dictionaries by this very short code:
 
 !bc pycod
-[{'choices': [[u'wrong', u'Helsinki'],
-              [u'wrong', u'Drammen'],
-              [u'right', u'Oslo'],
-              [u'wrong', u'Denmark']],
-  'no': 1,
-  'question': u'What is the capital of Norway?'},
+import glob
+quizfiles = glob.glob('.*.quiz')
+quizzes = []
+for filename in quizfiles:
+    f = open(filename, 'r');  text = f.read();  f.close()
+    quizzes += eval(text)
+!ec
+
+The list corresponding to the quizzes in the current
+document starts with the dictionary
+
+!bc pycod
+{'choices': [[u'wrong', u'Helsinki'],
+             [u'wrong', u'Drammen'],
+             [u'right', u'Oslo'],
+             [u'wrong', u'Denmark']],
+ 'no': 1,
+ 'question': u'What is the capital of Norway?'}
 !ec
 
 A more complicated quiz with specification of prefix for the question and
@@ -891,7 +909,7 @@ The keys in the dictionaries in this data structure are
  * `question prefix`: The optional prefix specified for the question,
    if different from the default value `Question:`.
  * `new page`: Optional headline for a new page of quizzes. Also
-   indicates that a new page is to be made.
+   indicates that a new page is to be made for the current quiz.
 
 !split
 ======= Translating the quiz format to HTML or PDF =======
@@ -948,7 +966,7 @@ all quizzes will be in one HTML page.
 === Setting the question and choice prefix ===
 
 The prefix before a question is `Question:` and before a choice is `Choice X`,
-where `X` is a number. To set a different prefix, see the
+where `X` is an upper case letter. To set a different prefix, see the
 `--quiz_question_prefix` and `--quiz_choice_prefix` commands
 when running `doconce format --help`.
 

@@ -3,7 +3,7 @@ from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, indent_lines
 from html import html_movie, html_table
 from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
-     language2pandoc
+     language2pandoc, pandoc_quiz
 from misc import option, _abort
 
 # Global variables
@@ -645,4 +645,4 @@ def define(FILENAME_EXTENSION,
     EXERCISE['ipynb'] = plain_exercise
     TOC['ipynb'] = lambda s: ''
     FIGURE_EXT['ipynb'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
-    QUIZ['ipynb'] = lambda quiz: '**Cannot typeset quiz**: "%s"' % quiz.get('heading', '')
+    QUIZ['ipynb'] = pandoc_quiz

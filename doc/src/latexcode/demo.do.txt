@@ -23,11 +23,18 @@ code environment (`pycod`, `fpro`, `sys`, etc.). A simpler and quicker
 alternative, `doconce ptex2tex` was developed later such that DocOnce
 was not dependent on the comprehensive `ptex2tex` set up.
 
-In 2015, a new implementation in DocOnce could replace `ptex2tex` and
-`doconce ptex2tex`, and in fact generate LaTeX code directly.
+In 2015, a new implementation in DocOnce replaced `ptex2tex` and
+`doconce ptex2tex`[^ptex2tex], and can in fact generate LaTeX code directly.
 Rather than offering a range of packages for typesetting computer code,
 as the `ptex2tex` tool did, the implementation made use of only three
 choices: `fancyvrb`, `minted`, or `listing`.
+
+[^ptex2tex]: The `ptex2tex` program is not made redundant by the new
+implemention. In fact, for colored backgrounds (e.g., the `Blue`
+environment in the `ptex2tex` configuration file), the size of
+the box is in the new implementation clearly larger than what is
+required for the code. The corresponding `Blue` environment in `ptex2tex`
+applies some hacks to reduce and fine tune the size.
 
 ===== Quick overview of the functionality =====
 

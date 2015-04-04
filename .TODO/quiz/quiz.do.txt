@@ -1,10 +1,10 @@
-TITLE: Ideas for automatically generating surveys and quizzes
+TITLE: Survey of potential tools for automatic generation of surveys and quizzes
 AUTHOR: Hans Petter Langtangen
 DATE: today
 
 __Summary.__
 We want to create (large amounts of)
-online surveys and quizzes, primarily for use
+online quizzes, primarily for use
 in regular university teaching and various tutorials and short courses.
 Our scientific topic is the blend of physics, mathematics, and programming so
 most questions will involve
@@ -15,8 +15,9 @@ syntax highlighting*.
 
 In addition, we will frequently need images, videos, and some control
 of basic HTML formatting (emphasize, tables, etc.). How can we
-do this effectively and without being tied forever to a particular
-web service?
+generate the information effectively, without manual interactive work
+in the web browser and without losing the provided information in
+the web site's internal storage?
 
 !bquestion Idea
 There are numerous web services with support for surveys and quizzes.
@@ -28,6 +29,8 @@ to automate the construction of surveys and quizzes in a program*.
 Only web services that has an API or file format for creating questions are of
 interest.
 !equestion
+
+
 
 !split
 ===== More specific problem statement =====
@@ -56,28 +59,36 @@ URL: "http://latex.codecogs.com/png.latex?". Though possible, this
 is something we want to avoid.
 
 
-===== Project status =====
-
-Hans Petter Langtangen has looked at various sites, communicated
-with some of the site developers regarding APIs and HTML/MathJax,
-and summarized his impressions so far.
-
-===== Preliminary ranking of sites =====
+===== Ranking of sites =====
 
 Only two seems to be of relevance for math and code:
 
- o JotForm
  o Kahoot
+ o JotForm
 
-We also have a home-made pure HTML solution that easily can
-do what we want, but at with any feedback to a database
-and hence recording of the students' scores.
+We also have a home-made solution as part of DocOnce that easily can
+do what we want, but at present without any feedback to a database
+for recording of the students' scores.
 
 These sites are fine for pure text questions:
 
  o ClassMarker
  o SurveyGizmo
  o Google forms
+
+===== Status of the project and the current report =====
+
+Hans Petter Langtangen has looked at various sites, communicated
+with some of the site developers regarding APIs and HTML/MathJax,
+and summarized his impressions so far.
+
+Note that this survey has lots of comments and open-ended questions,
+and is therefore not a finished report with clear conclusions.  After
+doing implementations, we ended up with Kahoot as our definite choice
+and JotForm as a potential future competitor.
+
+The tool for automatically generating quizzes is called
+Quiztools and is available at GitHub: URL: "https://github.com/hplgit/quiztools". Quiztools can generate Kahoot quizzes. There is also code for JotForm.
 
 
 ===== Google forms =====
@@ -134,8 +145,9 @@ There is a "technical explanation": "https://groups.google.com/forum/#!topic/mat
  * Killer feature: This service can embed the quizzes in a gaming environment.
  * Simple and attractive design.
  * Does not support any HTML or MathJax at all, just plain text.
- * Undocumented API, but we can get help to use it.
- * We have contact with the developers regarding
+ * Undocumented API, but the developers are eager to assist in using it.
+ * The developers have extended Kahoot to handle MathJax mathematics and
+   nice typesetting of computer code.
 
 ===== ClassMarker =====
 

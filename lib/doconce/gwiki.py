@@ -6,7 +6,7 @@ Here called gwiki to make the dialect clear (g for google).
 
 
 import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex
+from common import default_movie, plain_exercise, insert_code_and_tex, plain_quiz
 from misc import _abort
 
 def gwiki_code(filestr, code_blocks, code_block_types,
@@ -180,7 +180,7 @@ def gwiki_ref_and_label(section_label2title, format, filestr):
     return wiki_ref_and_label_common(section_label2title, format, filestr)
 
 def gwiki_quiz(quiz):
-    return 'Cannot typeset quiz: "%s"' % quiz.get('question', '')
+    return plain_quiz(quiz)
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
