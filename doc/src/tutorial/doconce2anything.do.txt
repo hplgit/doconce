@@ -1359,6 +1359,13 @@ doconce sphinx_dir theme=scipy_lectures \
                    conf.py=../some/path/conf.py mydoc
 !ec
 
+__RunestoneInteractive books.__
+The `doconce format sphinx` command accepts an option `--runestone`
+for generating "RunestoneInteractive": "http://runestoneinteractive.org"
+books (which build on Sphinx).
+You must run the generated `automake_sphinx.py` also with a `--runestone`
+option to generate these type of documents.
+
 idx{Sphinx directory}
 
 === The manual Sphinx procedure ===
