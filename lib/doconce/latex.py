@@ -3465,6 +3465,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % --- end of standard preamble for documents ---
 """
 
+    if '!bu-' in filestr:
+        INTRO['latex'] += r"""
+%%% USER-DEFINED ENVIRONMENTS
+"""
     INTRO['latex'] += r"""
 % USER PREAMBLE
 % insert custom LaTeX commands...

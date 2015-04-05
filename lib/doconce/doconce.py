@@ -1764,6 +1764,63 @@ def typeset_tables(filestr, format):
                 result.write(line + '\n')
     return result.getvalue()
 
+def typeset_userdef_envirs(filestr, format):
+    userdef_envirs = re.findall(r'^!bu-([^ ]+)', filestr, flags=re.MULTILINE)
+    if not userdef_envirs:
+        return filestr
+    userfile = 'userdef_environments.py'
+    if os.path.isfile(userfile):
+        import userdef_environments as ue
+    else:
+        print '*** error: found user-defined environments'
+        import sets
+        print '   ', ', '.join(list(sets.Set(userdef_envirs)))
+        print '    but no file', userfile, 'for defining the environments!'
+        _abort()
+    if not hasattr(ue, 'envir2format'):
+        print '*** error: envir2format not defined in', userfile
+        _abort()
+
+    pattern = r'^(!bu-([^ ]+)(.*?)\n(.+?)\s*^!eu-([^\s]+))'
+    userdef_envirs = re.findall(pattern, filestr, flags=re.MULTILINE|re.DOTALL)
+    if 'intro' in ue.envir2format:
+        intro = ue.envir2format['intro'].get(format, '')
+    else:
+        intro = ''
+    # html and latex can have intros
+    global INTRO
+    if format == 'html':
+        INTRO[format] = INTRO[format].replace('<!-- USER-DEFINED ENVIRONMENTS -->', intro)
+    elif format in ('latex', 'pdflatex'):
+        INTRO[format] = INTRO[format].replace('%%% USER-DEFINED ENVIRONMENTS', intro)
+    print 'XXX4', format, '%%% USER-DEFINED ENVIRONMENTS' in INTRO[format], INTRO[format]
+
+    for all, user_envir, titleline, text, user_envir_end in userdef_envirs:
+        print '----XXX', user_envir
+        print titleline
+        print text
+        print '----'
+        if not ue.envir2format[user_envir]:
+            print '*** error: user-defined environment "%s" is not defined in' % user_envir, userfile
+            _abort()
+        instructions = ''
+        if format in ue.envir2format[user_envir]:
+            instructions = ue.envir2format[user_envir][format]
+        elif 'do' in ue.envir2format[user_envir]:
+            instructions = ue.envir2format[user_envir]['do']
+        if instructions == '':
+            replacement = text  # just strip off begin/end
+        elif callable(instructions):
+            titleline = titleline.strip()
+            replacement = instructions(text, titleline, format)
+            print 'XXX replacement:\n', replacement, '---'
+        else:
+            print '*** error: envir2format["%s"]["%s"] is not string or function' % (user_envir, format)
+            _abort()
+        filestr = filestr.replace(all, replacement)
+        print 'XXX3 filestr:\n', filestr
+    return filestr
+
 def typeset_envirs(filestr, format):
     # Note: exercises are done (and translated to doconce syntax)
     # before this function is called. bt/bc are taken elsewhere.
@@ -3358,6 +3415,12 @@ def doconce2format(filestr, format):
             filestr = re.sub(INLINE_TAGS['movie'],
                              INLINE_TAGS_SUBST[format]['movie'],
                              filestr, flags=re.MULTILINE)
+
+
+    # Next step: deal with user-defined environments
+    if '!bu-' in filestr:
+        filestr = typeset_userdef_envirs(filestr, format)
+        debugpr('The file after inserting user-defined environments:', filestr)
 
     # Next step: remove all verbatim and math blocks
 

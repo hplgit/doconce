@@ -2555,6 +2555,10 @@ $(function () {
 });
 </script>
 """
+    if '!bu-' in filestr:
+        scripts += """
+<!-- USER-DEFINED ENVIRONMENTS -->
+"""
 
     # Had to take DOCTYPE out from 1st line to load css files from github...
     # <!DOCTYPE html>

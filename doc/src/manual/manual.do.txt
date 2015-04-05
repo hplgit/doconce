@@ -2822,7 +2822,7 @@ To be implemented.
 
 file .user_environments.py:
 
-{
+envir2format = {
 'intro': {'latex': r'\usepackage{mypack}'},
 'name': {
 'html': myfunc,
@@ -2869,6 +2869,8 @@ def example(text, titleline, format):
 
 """ % (title, label, text)
 !ec
+
+Do this: `python userdef_environments.py`.
 
 ======= Bibliography (References) =======
 
