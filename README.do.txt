@@ -4,6 +4,24 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting web pages
 ## pieces can exist on their own in various versions for various purposes.
 !equote
 
+===== News =====
+
+Here are some of the most recent features in DocOnce:
+
+ * "User-defined environments": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments" with begin-end tags, doing
+   exactly what you want (you may (e.g.) use your favorite *native* example
+   LaTeX environment when writing LaTeX)
+ * Interactive Python code in HTML and Sphinx via the `pyscpro` code
+   environment (Sage Math Cells)
+ * Support for "RunestoneInteractive books": "http://runestoneinteractive.org"
+   (as a special case of the Sphinx output format)
+ * New support for "verbatim code blocks in LaTeX": "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" with a lot of flexibility for fancy typesetting via the Pygments and Listings packages (i.e., no more need for the `ptex2tex` step)
+ * "New document": "http://hplgit.github.io/setup4book-doconce/doc/web/index.html" explaining the effient way to use DocOnce for book writing
+ * Embedded "quizzes or multiple-choice questions": "http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html", which can be automatically uploaded to
+   "Kahoot online games": "https://getkahoot.com"
+ * "Admonitions": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions", i.e., boxes for notifications, tips, warnings, etc., with
+   great flexibility in the typesetting (at least in HTML and LaTeX)
+
 ===== Installation =====
 
 DocOnce is a pure Python package and installed by
