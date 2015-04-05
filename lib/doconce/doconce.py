@@ -1770,7 +1770,12 @@ def typeset_userdef_envirs(filestr, format):
         return filestr
     userfile = 'userdef_environments.py'
     if os.path.isfile(userfile):
-        import userdef_environments as ue
+        try:
+            import userdef_environments as ue
+        except Exception as e:
+            print '*** error in %s:' % userfile
+            print e
+            _abort()
     else:
         print '*** error: found user-defined environments'
         import sets
@@ -1793,13 +1798,14 @@ def typeset_userdef_envirs(filestr, format):
         INTRO[format] = INTRO[format].replace('<!-- USER-DEFINED ENVIRONMENTS -->', intro)
     elif format in ('latex', 'pdflatex'):
         INTRO[format] = INTRO[format].replace('%%% USER-DEFINED ENVIRONMENTS', intro)
-    print 'XXX4', format, '%%% USER-DEFINED ENVIRONMENTS' in INTRO[format], INTRO[format]
 
+    counter = {}
     for all, user_envir, titleline, text, user_envir_end in userdef_envirs:
-        print '----XXX', user_envir
-        print titleline
-        print text
-        print '----'
+        if user_envir in counter:
+            counter[user_envir] += 1
+        else:
+            counter[user_envir] = 1
+
         if not ue.envir2format[user_envir]:
             print '*** error: user-defined environment "%s" is not defined in' % user_envir, userfile
             _abort()
@@ -1812,13 +1818,12 @@ def typeset_userdef_envirs(filestr, format):
             replacement = text  # just strip off begin/end
         elif callable(instructions):
             titleline = titleline.strip()
-            replacement = instructions(text, titleline, format)
-            print 'XXX replacement:\n', replacement, '---'
+            replacement = instructions(text, titleline,
+                                       counter[user_envir], format)
         else:
             print '*** error: envir2format["%s"]["%s"] is not string or function' % (user_envir, format)
             _abort()
         filestr = filestr.replace(all, replacement)
-        print 'XXX3 filestr:\n', filestr
     return filestr
 
 def typeset_envirs(filestr, format):

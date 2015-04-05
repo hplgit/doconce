@@ -2814,6 +2814,155 @@ rule, or a conclusion.
 
 ===== User-Defined Environments =====
 
+Special environments can always be implemented by Mako code as illustrated
+in Section ref{manual:theorem:envir}, but DocOnce also features more
+ready-made *user-defined* environments. For example, suppose you want
+to use an *example* environment in LaTeX, while other formats can
+typeset examples as subsections. You can introduce your own example
+environment and write the environment like this:
+
+!bc do
+|bu-example Addition label=ex:math:1p1
+We have
+
+|bt
+\[ 1 + 1 = 2 \]
+|et
+|!eu-example
+!ec
+The convention is to have a title in the environment, and the title line
+may feature `label=xxx`, where we can use `xxx` as a label as we want
+in the definition of the example environment.
+The example environment above is in the `${FORMAT}` output format
+typeset like this:
+
+!bu-example Addition label=ex:math:1p1
+We have
+
+!bt
+\[ 1 + 1 = 2 \]
+!et
+!eu-example
+
+The definition of the example environment must be done in a Python
+module `userdef_environments`, located in the same directory as the
+DocOnce source code. In this file (`userdef_environments.py`),
+we must provide a dictionary `envir2format` for translating an
+environment into the right code for a specific format:
+
+!bc pycod
+envir2format = {
+    'intro': {
+        'latex': r"""
+\usepackage{amsthm,tcolorbox}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+""",},
+    'example': {
+        'latex': example,
+        'do': do_example,
+        },
+}
+!ec
+The `intro` key contains initializing statements for the LaTeX and
+HTML formats (the preamble and the `head` tag, respectively).
+Here, we need the `amsthm` package and a definition of the `example`
+environment in LaTeX. No initialization is needed for HTML.
+The other keys are the names of the environments. For each environment,
+we use a function to format the code for a specific output format.
+The `do` key is a default DocOnce formatting, expressed in
+DocOnce syntax and applied if the output format is not present amont
+the other keys. The LaTeX output is here defined by the function
+`example`:
+
+!bc pycod
+def example(text, titleline, counter, format):
+    """LaTeX typesetting of example environment."""
+    label, titleline = get_label(titleline)
+    s = r"""
+\begin{example}
+"""
+    if label:
+        s += 'label{%s}\n' % label  # no \ (is added by DocOnce)
+    s += r"""
+\noindent\emph{%s}.
+
+%s
+\end{example}
+""" % (titleline, text)
+    return s
+!ec
+The arguments are `text` for the body of the environment, `titleline`
+for the title (everything that comes after `!bc-example` on the line),
+an integer `counter` that counts the number of the current environment
+(1, 2, and so on, which can be used for reference as an alternative to
+the label), and the `format` string holding the user's output format.
+In the present case,
+we add the label inside the example environment if we have a  label
+in the title, and we typeset the title in the emphasize font.
+Otherwise, we rely on the standard `example` (or `newtheorem`)
+LaTeX environment.
+
+In HTML and other formats, we simply typeset the example as a subsection:
+
+!bc pycod
+def do_example(text, titleline, counter, format):
+    """General typesetting of example environment via a section."""
+    label, titleline = get_label(titleline)
+    s = """
+
+===== Example %d: %s =====
+""" % (counter, titleline)
+    if label:
+        s += 'label{%s}\n' % label
+    s += '\n%s\n\n' % text
+    return s
+!ec
+
+We quickly encounter a problem when referring to a specific example.
+In LaTeX, we want to write `Example ref{label}`, using the label
+defined in the example heading. In other formats, this label is a
+section number, or usually the section (example) heading. Different
+wording is needed for different formats. This is easiest accomplished
+by a little Mako function in the top of the DocOnce source:
+
+!bc
+<%
+def refex(label, capital=False):
+    if FORMAT in ('latex', 'pdflatex'):
+        return 'Example ref{%s}' % label
+    else:
+        s = 'The ' if capital else 'the '
+        s += 'example in Section ref{%s}' % label
+        return s
+%>
+!ec
+We can then write something like
+
+!bc
+${refex('ex:test:1p1', capital=True)} demonstrates how to write a test function.
+That is, a special test function for a function `add` appears in
+${refex('ex:test:1p1')}.
+!ec
+and get it out like
+
+!bc
+Example~\ref{ex:test:1p1} demonstrates how to write a test function.
+That is, a special test function for a function \Verb!add! appears in
+Example~\ref{ex:test:1p1}.
+!ec
+in LaTeX, while in HTML we get
+
+!bc
+The example in the section
+<a href="#ex:test:1p1">Example 1: A test function</a>
+demonstrates how to write a test function.
+That is, a special test function for a function <code>add</code>
+appears in the example in the section
+<a href="#ex:test:1p1">Example 1: A test function</a>.
+!ec
+
+
 To be implemented.
 
 !bc
