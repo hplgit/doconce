@@ -2,6 +2,7 @@
 import re, sys
 from common import default_movie, plain_exercise, bibliography, \
      cite_with_multiple_args2multiple_cites
+from misc import option
 
 
 def plain_author(authors_and_institutions, auth2index,
@@ -133,8 +134,51 @@ def plain_box(text, title=''):
 
 def plain_quiz(quiz):
     # Simple typesetting of a quiz
-    s = 'Here goes a quiz "%s"\nBut typesetting of quiz is not yet implemented in this format.' % quiz['question']
-    return s
+    import string
+    question_prefix = quiz.get('question prefix',
+                               option('quiz_question_prefix=', 'Question:'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
+    quiz_expl = option('quiz_explanations=', 'on')
+
+    text = '\n\n'
+    if 'new page' in quiz:
+        text += '======= %s =======\n\n' % (quiz['new page'])
+
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
+        pass
+    else:
+        text += '\n'
+        if question_prefix:
+            text += '%s ' % (question_prefix)
+
+    text += quiz['question'] + '\n\n'
+
+    # List choices as paragraphs
+    for i, choice in enumerate(quiz['choices']):
+        #choice_no = i+1
+        choice_no = string.ascii_uppercase[i]
+        answer = choice[0].capitalize() + '!'
+        choice_prefix = common_choice_prefix
+        if 'choice prefix' in quiz:
+            if isinstance(quiz['choice prefix'][i], basestring):
+                choice_prefix = quiz['choice prefix'][i]
+        if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
+            pass  # don't add choice number/letter
+        else:
+            choice_prefix += ' %s:' % choice_no
+        # Let choice start with a newline if pure code starts the choice
+        # (test for different code block types so this function can work
+        # for other formats too...)
+        choice = choice[1].lstrip()
+        code_starters = 'Code::', '~~~', '```', '{{{'
+        for code_starter in code_starters:
+            if choice.startswith(code_starter):
+                choice = '\n' + choice
+
+        # Cannot treat explanations
+        text += '%s %s\n\n' % (choice_prefix, choice)
+    return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

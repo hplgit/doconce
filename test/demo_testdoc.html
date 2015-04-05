@@ -87,6 +87,8 @@ $(function () {
 });
 </script>
 
+
+
 </head>
 
 <!-- tocinfo
@@ -136,13 +138,19 @@ $(function () {
                2,
                'Example',
                'Example'),
+              (' User-defined environments ', 2, None, '___sec27'),
+              (' Example 1: A test function ',
+               2,
+               'ex:test:1p1',
+               'ex:test:1p1'),
+              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
               (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec28'),
-              (' Exercises ', 1, None, '___sec29'),
+              (' LaTeX Mathematics ', 1, None, '___sec31'),
+              (' Exercises ', 1, None, '___sec32'),
               (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec31'),
-              (' Remarks ', 3, None, '___sec32'),
-              (' Not an exercise ', 2, None, '___sec33'),
+              (' My remarks ', 3, None, '___sec34'),
+              (' Remarks ', 3, None, '___sec35'),
+              (' Not an exercise ', 2, None, '___sec36'),
               (' Exercise 3: Test of plain text exercise ',
                2,
                'my:exer1',
@@ -155,23 +163,23 @@ $(function () {
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec37'),
+              (' Remarks ', 3, None, '___sec40'),
               (' Exercise 6: Determine some Distance ',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec39'),
+              (' Remarks ', 3, None, '___sec42'),
               (' Some exercise without the "Exercise:" prefix ',
                2,
                None,
-               '___sec40'),
+               '___sec43'),
               (' Exercise 8: Solution of differential equation ',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec42'),
-              (' Here goes another section ', 1, None, '___sec43'),
-              (' More Exercises ', 1, None, '___sec44'),
+              (' Example 9: Just an example ', 2, None, '___sec45'),
+              (' Here goes another section ', 1, None, '___sec46'),
+              (' More Exercises ', 1, None, '___sec47'),
               (' Exercise 10: Make references to projects and problems ',
                2,
                'exer:some:formula',
@@ -180,11 +188,11 @@ $(function () {
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec47'),
+              (' References ', 1, None, '___sec50'),
               (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec49'),
+              (' A subsection within an appendix ', 2, None, '___sec52'),
               (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec51'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
               (' Appendix: Testing identical titles ',
                2,
                'test:title:id1',
@@ -193,12 +201,12 @@ $(function () {
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec55'),
+              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
+              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
               (' Appendix: Testing headings ending with `verbatim inline` ',
                2,
                None,
-               '___sec56')]}
+               '___sec59')]}
 end of tocinfo -->
 
 <body>
@@ -261,7 +269,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>Mar 31, 2015</h4></center> <!-- date -->
+<center><h4>Apr 5, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -287,32 +295,35 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec24"> The middle has <code>verbatim</code> word </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec25"> Bibliography test </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#Example"> Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> User-defined environments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#ex:test:1p1"> Example 1: A test function </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#ex:math:1p1"> Example 2: Addition </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#subsubsec:ex"> URLs </a><br>
-<a href="#___sec28"> LaTeX Mathematics </a><br>
-<a href="#___sec29"> Exercises </a><br>
+<a href="#___sec31"> LaTeX Mathematics </a><br>
+<a href="#___sec32"> Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:1"> Problem 2: Flip a Coin </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Not an exercise </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Not an exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#my:exer1"> Exercise 3: Test of plain text exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#demo:ex:2"> Project 4: Compute a Probability </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#proj:circle1"> Project 5: Explore Distributions of Random Circles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:dist"> Exercise 6: Determine some Distance </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Some exercise without the "Exercise:" prefix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Some exercise without the "Exercise:" prefix </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:this:exer:de"> Exercise 8: Solution of differential equation </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Example 9: Just an example </a><br>
-<a href="#___sec43"> Here goes another section </a><br>
-<a href="#___sec44"> More Exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Example 9: Just an example </a><br>
+<a href="#___sec46"> Here goes another section </a><br>
+<a href="#___sec47"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 11: References in a headings do not work well in html </a><br>
-<a href="#___sec47"> References </a><br>
+<a href="#___sec50"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec49"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec55"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec56"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec57"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec59"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -1366,6 +1377,57 @@ maybe over multiple doconce input lines.
 <p>
 <!-- --- end exercise --- -->
 
+<h2 id="___sec27">User-defined environments </h2>
+
+<p>
+The example in the section <a href="#ex:test:1p1">Example 1: A test function</a> demonstrates how to write a test function.
+That is, a special test function for a function <code>add</code> appears in
+the example in the section <a href="#ex:test:1p1">Example 1: A test function</a>.
+
+<h2 id="ex:test:1p1">Example 1: A test function</h2>
+
+<p>
+Suppose we want to write a test function for checking the
+implementation of a Python function for addition.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add</span>(a, b):
+    <span style="color: #8B008B; font-weight: bold">return</span> a + b
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_add</span>():
+    a = <span style="color: #B452CD">1</span>; b = <span style="color: #B452CD">1</span>
+    expected = a + b
+    computed = add(a, b)
+    <span style="color: #8B008B; font-weight: bold">assert</span> expected == computed
+</pre></div>
+</td></tr></table><h2 id="ex:math:1p1">Example 2: Addition</h2>
+
+<p>
+We have
+
+$$ 1 + 1 = 2 $$
+
+
+<p>
+<div style="width: 60%; padding: 10px; border: 1px solid #000;
+ border-radius: 4px; box-shadow: 8px 8px 5px #888888;
+ background: #cce5ff;">
+ <b>Highlight box!</b><hr>
+This environment is used to highlight something:
+
+$$ E = mc^2 $$
+
+</div>
+
 <h2 id="subsubsec:ex">URLs</h2>
 
 <p>
@@ -1376,7 +1438,7 @@ plain file link <a href="testdoc.do.txt" target="_self"><tt>testdoc.do.txt</tt><
 newline</a>. Can test spaces with the link with word
 too: <a href="http://folk.uio.no/hpl" target="_self">hpl</a> or <a href="http://folk.uio.no/hpl" target="_self">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_self">link to a
 file</a> is
-fine to have. Moreover, "loose" URLs work, i.e., no quotes, just
+fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just
 the plain URL as in <a href="http://folk.uio.no/hpl" target="_self"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
 colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
@@ -1419,7 +1481,7 @@ footnotes.
 <p>
 <!-- !split and check if these extra words are included properly in the comment -->
 
-<h1 id="___sec28">LaTeX Mathematics </h1>
+<h1 id="___sec31">LaTeX Mathematics </h1>
 
 <p>
 Here is an equation without label using backslash-bracket environment:
@@ -1465,7 +1527,7 @@ Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#dem
 as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
 between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
-<h1 id="___sec29">Exercises </h1>
+<h1 id="___sec32">Exercises </h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -1561,7 +1623,7 @@ Vectorize the code in a) using <code>numpy.sum</code>.
 In this latter subexercise, we have an
 example where the code is easy to read.
 
-<h3 id="___sec31">My remarks </h3>
+<h3 id="___sec34">My remarks </h3>
 
 <p>
 Remarks with such a subsubsection is treated as more text
@@ -1577,7 +1639,7 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 <p>
 <!-- Closing remarks for this Problem -->
 
-<h3 id="___sec32">Remarks </h3>
+<h3 id="___sec35">Remarks </h3>
 
 <p>
 These are the exercise remarks, appearing at the very end.
@@ -1588,7 +1650,7 @@ These are the exercise remarks, appearing at the very end.
 <p>
 <!-- --- end exercise --- -->
 
-<h2 id="___sec33">Not an exercise </h2>
+<h2 id="___sec36">Not an exercise </h2>
 
 <p>
 Should be possible to stick a normal section in the middle of many
@@ -1739,7 +1801,7 @@ Filename: <code>circles.pdf</code>.
 <p>
 <!-- Closing remarks for this Project -->
 
-<h3 id="___sec37">Remarks </h3>
+<h3 id="___sec40">Remarks </h3>
 
 <p>
 At the very end of the exercise it may be appropriate to summarize
@@ -1871,7 +1933,7 @@ Test list in exercise:
 <!-- Closing remarks for this Exercise --></li>
 </ol>
 
-<h3 id="___sec39">Remarks </h3>
+<h3 id="___sec42">Remarks </h3>
 
 <p>
 Some final closing remarks, e.g., summarizing the main findings
@@ -1884,7 +1946,7 @@ remarks will appear at the end of the typeset exercise.
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec40">Some exercise without the "Exercise:" prefix </h2>
+<h2 id="___sec43">Some exercise without the "Exercise:" prefix </h2>
 
 <p>
 <!-- Another minimalistic exercise -->
@@ -1924,15 +1986,15 @@ $$ \frac{dy}{dx} = -y(x),\quad y(0)=1 $$
 
 What is the solution of this equation?</p>
 
-<p><div title="Right! "><b>Choice 1:</b>
+<p><div title="Right! "><b>Choice A:</b>
 \( y=e^{-y} \)
 </div></p>
 
-<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice 2:</b>
+<p><div title="Wrong! Almost, but the sign is wrong (note the minus!)."><b>Choice B:</b>
 \( y=e^{y} \)
 </div></p>
 
-<p><div title="Wrong! "><b>Choice 3:</b>
+<p><div title="Wrong! "><b>Choice C:</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1945,11 +2007,11 @@ What is the solution of this equation?</p>
 </td></tr></table><p>
 </div></p>
 
-<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice 4:</b>
+<p><div title="Wrong! Equations with derivatives can be solved; they are termed  differential equations ."><b>Choice D:</b>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong! "><b>Choice 5:</b>
+<p><div title="Wrong! "><b>Choice E:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
@@ -1962,7 +2024,7 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <p>
 <!-- --- begin exercise --- -->
 
-<h2 id="___sec42">Example 9: Just an example </h2>
+<h2 id="___sec45">Example 9: Just an example </h2>
 
 <p>
 <!-- This example needs the --examples_as_exercises option, otherwise -->
@@ -1979,12 +2041,12 @@ Oslo.
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec43">Here goes another section </h1>
+<h1 id="___sec46">Here goes another section </h1>
 
 <p>
 With some text, before we continue with exercises.
 
-<h1 id="___sec44">More Exercises </h1>
+<h1 id="___sec47">More Exercises </h1>
 
 <p>
 <!-- --- begin exercise --- -->
@@ -2024,7 +2086,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec47">References </h1>
+<h1 id="___sec50">References </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -2152,7 +2214,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2 id="___sec49">A subsection within an appendix </h2>
+<h2 id="___sec52">A subsection within an appendix </h2>
 
 <p>
 Some text.
@@ -2162,7 +2224,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2 id="___sec51">Appendix: Testing identical titles </h2>
+<h2 id="___sec54">Appendix: Testing identical titles </h2>
 
 <p>
 Without label.
@@ -2198,14 +2260,14 @@ London
 Oslo
 </div></p>
 
-<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice 4:</b>
+<p><div title="Wrong! Those from Bergen would claim so, but nobody else."><b>Choice D:</b>
 Bergen
 </div></p>
 <hr>
 <!-- end quiz -->
 
 
-<h2 id="___sec54">Appendix: Testing identical titles </h2>
+<h2 id="___sec57">Appendix: Testing identical titles </h2>
 
 <p>
 Without label.
@@ -2299,7 +2361,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2 id="___sec55">Appendix: Testing inline comments </h2>
+<h2 id="___sec58">Appendix: Testing inline comments </h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -2338,7 +2400,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2 id="___sec56">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
+<h2 id="___sec59">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)

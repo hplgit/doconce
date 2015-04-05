@@ -354,7 +354,50 @@ def pandoc_quote(block, format, text_size='normal'):
     return '\n'.join(lines) + '\n\n'
 
 def pandoc_quiz(quiz):
-    return '*Cannot typeset quiz*: "%s"' % quiz.get('question', '')
+    # Simple typesetting of a quiz
+    import string
+    question_prefix = quiz.get('question prefix',
+                               option('quiz_question_prefix=', 'Question:'))
+    common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
+    quiz_expl = option('quiz_explanations=', 'on')
+
+    text = '\n\n'
+    if 'new page' in quiz:
+        text += '## %s\n\n' % (quiz['new page'])
+
+    # Don't write Question: ... if inside an exercise section
+    if quiz.get('embedding', 'None') in ['exercise',]:
+        pass
+    else:
+        text += '\n'
+        if question_prefix:
+            text += '**%s** ' % (question_prefix)
+
+    text += quiz['question'] + '\n\n'
+
+    # List choices as paragraphs
+    for i, choice in enumerate(quiz['choices']):
+        #choice_no = i+1
+        choice_no = string.ascii_uppercase[i]
+        answer = choice[0].capitalize() + '!'
+        choice_prefix = common_choice_prefix
+        if 'choice prefix' in quiz:
+            if isinstance(quiz['choice prefix'][i], basestring):
+                choice_prefix = quiz['choice prefix'][i]
+        if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
+            pass  # don't add choice number/letter
+        else:
+            choice_prefix += ' %s:' % choice_no
+        if choice_prefix:
+            choice_prefix = '**%s**' % choice_prefix
+        # Always have a newline after choice in case code or tex
+        # blocks appear first
+        choice_prefix = choice_prefix + '\n'
+
+        # Cannot treat explanations and answers
+        text += '%s %s\n\n' % (choice_prefix, choice[1])
+    return text
+
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

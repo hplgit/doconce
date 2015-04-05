@@ -8,9 +8,7 @@ from misc import option, _abort
 
 # RunestoneInteractive book counters
 question_counter = 0
-codelens_counter = 0
 video_counter = 0
-activecode_counter = 0
 
 edit_markup_warning = False
 
@@ -341,8 +339,6 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         if not has_custom_pygments_lexer('doconce'):
             envir2pygments['do'] = 'text'
 
-    global activecode_counter  # used for Runestone books
-
     # Make correct code-block:: language constructions
     legal_pygments_languages = get_legal_pygments_lexers()
     import sets
@@ -374,42 +370,38 @@ found in line:
 
         if key == 'pyoptpro':
             if option('runestone'):
-                global codelens_counter
-                codelens_counter += 1
                 filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
-                                 '\n.. codelens:: codelens_%d\n   :showoutput:\n\n' % codelens_counter,
-                                 filestr, flags=re.MULTILINE)
+                    '\n.. codelens:: codelens_\n   :showoutput:\n\n',
+                    filestr, flags=re.MULTILINE)
             else:
                 filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                                  '\n.. raw:: html\n\n',
                                  filestr, flags=re.MULTILINE)
         elif key == 'pyscpro':
             if option('runestone'):
-                activecode_counter += 1
                 filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                                  """
-.. activecode:: activecode_%d
+.. activecode:: activecode_
    :language: python
 
-""" % (activecode_counter), filestr, flags=re.MULTILINE)
+""", filestr, flags=re.MULTILINE)
             else:
                 filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                                  '\n.. sagecellserver::\n\n',
                                  filestr, flags=re.MULTILINE)
         elif key == 'pysccod':
             if option('runestone'):
-                activecode_counter += 1
                 # Include (i.e., run) all previous code segments...
                 # NOTE: this is most likely not what we want
                 include = ', '.join([i for i in range(1, activecode_counter)])
                 filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
                                  """
-.. activecode:: activecode_%d
+.. activecode:: activecode_
    :language: python
    "include: %s
-""" % (activecode_counter, include), filestr, flags=re.MULTILINE)
+""" % include, filestr, flags=re.MULTILINE)
             else:
-                print '*** error: pysccod is not supported without the --runestone flag'
+                print '*** error: pysccod for sphinx is not supported without the --runestone flag\n    (but pyscpro is via Sage Cell Server)'
                 _abort()
 
         elif key == '':
@@ -424,18 +416,17 @@ found in line:
                     if code_block_types[i] == key:
                         code_block_types[i] = key.replace('hid', 'cod')
 
-                activecode_counter += 1
                 key2language = dict(py='python', js='javascript', html='html')
                 language = key2language[key.replace('hid', '')]
                 include = ', '.join([i for i in range(1, activecode_counter)])
                 filestr = re.sub(r'^!bc +%s\s*\n' % key,
                                  """
-.. activecode:: activecode_%d
+.. activecode:: activecode_
    :language: %s
    :include: %s
    :hidecode:
 
-""" % (activecode_counter, language, include), filestr, flags=re.MULTILINE)
+""" % (language, include), filestr, flags=re.MULTILINE)
             else:
                 # Remove hidden code block
                 pattern = r'^!bc +%s\n.+?^!ec' % key
@@ -464,6 +455,23 @@ found in line:
     #filestr = re.sub(r'^!ec\n', '', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!bt *\n', '\n.. math::\n', filestr, flags=re.MULTILINE)
     filestr = re.sub(r'^!et *\n', '\n', filestr, flags=re.MULTILINE)
+
+    # Insert counters for runestone blocks
+    if option('runestone'):
+        codelens_counter = 0
+        activecode_counter = 0
+        lines = filestr.splitlines()
+        for i in range(len(lines)):
+            if '.. codelens:: codelens_' in lines[i]:
+                codelens_counter += 1
+                lines[i] = lines[i].replace('codelens_', 'codelens_%d' %
+                                            codelens_counter)
+            if '.. activecode:: activecode_' in lines[i]:
+                activecode_counter += 1
+                lines[i] = lines[i].replace('activecode_', 'activecode_%d' %
+                                            activecode_counter)
+        filestr = '\n'.join(lines)
+
 
     # Final fixes
 

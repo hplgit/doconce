@@ -4,19 +4,21 @@
 .. |nbsp| unicode:: 0xA0
    :trim:
 
-.. !split
+.. Document title:
 
 DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 28, 2015
+:Date: Apr 5, 2015
 
 .. lines beginning with # are doconce comment lines
 
 .. (documents can also have mako comment lines)
 
 .. _what:is:doconce:
+
+.. !split
 
 What Is DocOnce?
 ================
@@ -186,6 +188,8 @@ and
 .. The DocOnce format introduces four constructs to markup text:
 
 .. lists, special lines, inline tags, and environments.
+
+.. !split
 
 Markup Based on Special Lines
 =============================
@@ -2416,6 +2420,8 @@ The result becomes
 
 .. _inline:tagging:
 
+.. !split
+
 Inline Tagging
 ==============
 
@@ -3563,6 +3569,8 @@ DocOnce supports emojis for the ``html`` and ``pdflatex`` formats. All other
 formats will just print the raw emoji name (like ``:sweat_smile:``).
 The command-line option ``--no_emoji`` removes all emojis from the output.
 
+.. !split
+
 Environments
 ============
 
@@ -4625,7 +4633,8 @@ resulting in
 
 
 .. The below box could be typeset as .. admonition: Attention
-   but we have decided not to do so (the box formatting is just ignored)
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
 
 
 .. math::
@@ -4637,6 +4646,226 @@ from the running text: a warning, a remark, a notification, a question,
 a summary, while a box is often used to highlight a key finding
 in the running text: an equation, a hypothesis, a theorem, a
 rule, or a conclusion.
+
+User-Defined Environments
+-------------------------
+
+LaTeX writers are often fond of their favorite environments and think
+that formats like DocOnce, Markdown, and HTML are primitive without
+these favorite environments. DocOnce, however, offers *user-defined* environments with begin and end tags, as typical in LaTeX. This section explains
+how to define such user-defined environments.
+
+**Remark.**
+Special environments can always be implemented by Mako code as illustrated
+in the section :ref:`manual:theorem:envir`, but the DocOnce user-defined
+environments are easier to use.
+
+For example, suppose you want to typeset examples using
+a native *example* environment in LaTeX, while other formats can
+simply typeset examples as subsections. You can
+then introduce your own example
+environment in DocOnce and write the environment like this:
+
+.. code-block:: doconce
+
+        |bu-example Addition label=ex:math:1p1
+        We have
+        
+        !bt
+        \[ 1 + 1 = 2 \]
+        !et
+        |!eu-example
+
+The convention for this type of examples is to have a title,
+and the title line
+may feature ``label=xxx``, where we can use ``xxx`` as a label for the
+example.
+The example environment above is in the ``${FORMAT}`` output format
+typeset like this:
+
+.. _ex:math:1p1:
+
+Example 1: Addition
+-------------------
+
+We have
+
+.. math::
+         1 + 1 = 2 
+
+The definition of the example environment must be done in a Python
+module ``userdef_environments``, located in the same directory as the
+DocOnce source code. In this file (``userdef_environments.py``),
+we must provide a dictionary ``envir2format`` for translating an
+environment into the right code for a specific format:
+
+.. code-block:: python
+
+        envir2format = {
+            'intro': {
+                'latex': r"""
+        \usepackage{amsthm}
+        \theoremstyle{definition}
+        \newtheorem{example}{Example}[section]
+        """,},
+            'example': {
+                'latex': example,
+                'do': do_example,
+                },
+        }
+
+The ``intro`` key contains initializing statements for the LaTeX and
+HTML formats (the preamble and the ``head`` tag, respectively).
+Here, we need the ``amsthm`` package and a definition of the ``example``
+environment in LaTeX. No initialization is needed for HTML.
+The other keys are the names of the environments. For each environment,
+we use a function to format the code for a specific output format.
+The ``do`` key is a default DocOnce formatting, expressed in
+DocOnce syntax and applied if the output format is not present amont
+the other keys. The LaTeX output is here defined by the function
+``example``:
+
+.. code-block:: python
+
+        def example(text, titleline, counter, format):
+            """LaTeX typesetting of example environment."""
+            label, titleline = get_label(titleline)
+            s = r"""
+        \begin{example}
+        """
+            if label:
+                s += 'label{%s}\n' % label  # no \ (is added by DocOnce)
+            s += r"""
+        \noindent\emph{%s}.
+        
+        %s
+        \end{example}
+        """ % (titleline, text)
+            return s
+
+The arguments are ``text`` for the body of the environment, ``titleline``
+for the title (everything that comes after ``!bc-example`` on the line),
+an integer ``counter`` that counts the number of the current environment
+(1, 2, and so on, which can be used for reference as an alternative to
+the label), and the ``format`` string holding the user's output format.
+In the present case,
+we add the label inside the example environment if we have a  label
+in the title, and we typeset the title in the emphasize font.
+Otherwise, we rely on the standard ``example`` (or ``newtheorem``)
+LaTeX environment.
+
+In HTML and other formats, we simply typeset the example as a subsection:
+
+.. code-block:: python
+
+        def do_example(text, titleline, counter, format):
+            """General typesetting of example environment via a section."""
+            label, titleline = get_label(titleline)
+            s = """
+        
+        ===== Example %d: %s =====
+        """ % (counter, titleline)
+            if label:
+                s += 'label{%s}\n' % label
+            s += '\n%s\n\n' % text
+            return s
+
+We quickly encounter a problem when referring to a specific example.
+In LaTeX, we want to write `Example :ref:`label", using the label
+defined in the example heading. In other formats, this label is a
+section number, or usually the section (example) heading. Different
+wording is needed for different formats. This is easiest accomplished
+by a little Mako function in the top of the DocOnce source:
+
+.. code-block:: text
+
+        <%
+        def refex(label, capital=False):
+            if FORMAT in ('latex', 'pdflatex'):
+                return 'Example ref{%s}' % label
+            else:
+                s = 'The ' if capital else 'the '
+                s += 'example in Section ref{%s}' % label
+                return s
+        %>
+
+We can then write something like
+
+.. code-block:: text
+
+        ${refex('ex:test:1p1', capital=True)} demonstrates how to do 1+1.
+        That is, the calculation 1+1 appears in ${refex('ex:test:1p1')}.
+
+Note that we distinguish between ``capital=True``, which means that the
+example reference opens a sentence, and ``capital=False``, which refers
+to a reference later in the sentence. In HTML we see the difference:
+
+.. code-block:: text
+
+        The example in the section
+        <a href="#ex:test:1p1">Example 1: A test function</a>
+        demonstrates how to do 1+1.
+        That is, the calculation 1+1 appears in the example in the section
+        <a href="#ex:test:1p1">Example 1: A test function</a>.
+
+while there is no difference in LaTeX since we refer to *Example* with
+capital E anyway:
+
+.. code-block:: text
+
+        Example~\ref{ex:test:1p1} demonstrates how to do 1+1.
+        That is, the calculation 1+1 appears in Example~\ref{ex:test:1p1}.
+
+To summarize, the *example* environment together with the ``refex`` Mako
+function allows you to work with native LaTeX example environments, while
+there is a neat alternative solution for all other formats.
+
+You may take a look at a complete `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py>`__
+file to see this example environment and another *highligh* environment
+where we define blue boxes in LaTeX and HTML and rely on a standard
+notice admon for all other formats. The highlight environment is
+written like
+
+.. code-block:: doconce
+
+        |bu-highlight Highlight box!
+        This environment is used to highlight something:
+        
+        !bt
+        \[ E = mc^2 \]
+        !et
+        |eu-highlight
+
+and typeset (in ``${FORMAT}``) as
+
+
+.. admonition:: Highlight box
+
+   This environment is used to highlight something:
+   
+   .. math::
+            E = mc^2
+
+
+
+
+
+.. admonition:: Tip: Test ``userdef_environments.py``
+
+   Make sure you run the ``userdef_environments.py`` file to check
+   that all syntax is correct:
+   
+   .. code-block:: text
+   
+           Terminal> python userdef_environments.py
+   
+   A common error is to have the ``envir2format`` dictionary defined
+   before the functions it refers to.
+
+
+
+
+.. !split
 
 Bibliography (References)
 =========================
@@ -4802,7 +5031,7 @@ is done one a line containing ``BIBFILE: papers.pub`` (you may give
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
 Before the command you will often want to have a headline with
-"References", "Bibliography", or similar.
+``References", "Bibliography", or similar.
 Here is an example:
 
 .. code-block:: doconce
@@ -4827,6 +5056,8 @@ edit the ``.p.tex`` file. For example,
 
         doconce format latex mydoc
         doconce replace 'bibliographystyle{plain}' 'bibliographystyle{abbrev}' mydoc.p.tex
+
+.. !split
 
 Preprocessing and Postprocessing
 ================================
@@ -5085,6 +5316,8 @@ LaTeX Beamer slides generated from DocOnce source also apply ``!split`` to
 indicate the start of individual slides. However, the split is
 performed by the ``doconce slides_beamer`` command and does not result
 in individual files like ``split_rst`` and ``split_html`` do.
+
+.. !split
 
 Writing Slides
 ==============
@@ -5417,6 +5650,8 @@ The cycle is
 
  * standard pdfLaTeX compilation of ``mydoc.tex``
 
+.. !split
+
 Misc
 ====
 
@@ -5499,6 +5734,8 @@ the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!
 
 .. _manual:mako:
+
+.. !split
 
 Mako Programming
 ================
@@ -6196,6 +6433,8 @@ format, and you need to know these steps to make use of the logfile.
 .. Example on including another DocOnce file:
 
 .. _doconce2formats:
+
+.. !split
 
 From DocOnce to Other Formats
 =============================
@@ -8011,6 +8250,8 @@ from a script to automate all steps in going from DocOnce to the final
 format(s). The ``make.sh`` files in ``docs/manual`` and ``docs/tutorial``
 constitute comprehensive examples on how such scripts can be made.
 
+.. !split
+
 Options for the ``doconce`` commands
 ====================================
 
@@ -8852,6 +9093,13 @@ here for convenience.
         on (default): <hr> before and after quiz in HTML. off: no <hr>.
         
         
+        --quiz_explanations=...
+        
+        on/off
+        (some output formats do not support explanations with figures,
+        math and/or code, this option turns all explanations off.
+        
+        
         --rst_uio
         
         Univ. of Oslo version of rst files for their Vortex system.
@@ -8876,6 +9124,8 @@ here for convenience.
         
 
 .. _install:doconce:
+
+.. !split
 
 Installation of DocOnce and its Dependencies
 ============================================
@@ -9260,6 +9510,8 @@ appear in the table below.
 ``tkdiff.tcl``  `tkdiff <https://sourceforge.net/projects/tkdiff/>`__                                        not in Debian                                                                      
 ==============  ===========================================================================================  =================================================================================  
 
+.. !split
+
 Basic Parsing Ideas
 ===================
 
@@ -9376,6 +9628,8 @@ Typesetting of Function Arguments, Return Values, and Variables
           the iterations.
 
 
+
+.. !split
 
 References
 ==========

@@ -5960,6 +5960,7 @@ _replacements = [
     (r'![be]block', ''),
     (r'![be]remarks', ''),
     (r'![be]quiz', ''),
+    (r'![be]u-[^ ]+', ''),  # user-def envirs
     # Preprocess
     (r"^#.*ifn?def.*$", "", re.MULTILINE),
     (r"^#.*else.*$", "", re.MULTILINE),

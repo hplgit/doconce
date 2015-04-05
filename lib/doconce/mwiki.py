@@ -34,6 +34,7 @@ go back.
 
 import re, os, commands, sys
 from common import default_movie, plain_exercise, insert_code_and_tex
+from plaintext import plain_quiz
 from misc import _abort
 
 def align2equations(math_text):
@@ -431,7 +432,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['mwiki'] = plain_exercise
     INDEX_BIB['mwiki'] = plain_index_bib
     TOC['mwiki'] = lambda s: '<<<TOC>>>'  # __TOC__ will be wrongly translated to paragraph headline and needs a fix
-    QUIZ['mwiki'] = lambda quiz: 'Cannot typeset quiz: "%s"' % quiz.get('question', '')
+    QUIZ['mwiki'] = plain_quiz
 
     # document start:
     INTRO['mwiki'] = ''

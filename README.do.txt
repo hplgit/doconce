@@ -12,7 +12,7 @@ DocOnce is a pure Python package and installed by
 Terminal> sudo python setup.py install
 !ec
 However, DocOnce has *a lot* of dependencies, depending on what type of
-formats you want to work with and how advanced constructiosn that are
+formats you want to work with and how advanced constructions that are
 used in the text.
 
 On Debian/Ubuntu it is fairly straightforward
@@ -20,6 +20,8 @@ to get the packages you need. Basically, you can run a "Bash script": "https://r
 a very comprehensive bundle of software. You can read the
 "Installation Guide": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies" to get a more
 detailed description of what is needed of software for various purposes.
+For HTML output, for example, you can usually get away with just installing
+the pure DocOnce source (and perhaps the preprocessors if you use them).
 
 !bwarning Install from GitHub repo, not from binary packages
 If you rely on the Debian package on Linux systems (`sudo apt-get install python-doconce`), note that this version of DocOnce is old and out of sync with the documentation.

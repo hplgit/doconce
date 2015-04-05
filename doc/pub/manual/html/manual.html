@@ -48,14 +48,14 @@
     <link rel="prev" title="Doconce Manual" href="index.html" />
  
   
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -83,12 +83,12 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 28, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 5, 2015</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="what-is-doconce">
-<span id="id1"></span><h2>What Is DocOnce?<a class="headerlink" href="#what-is-doconce" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="what-is-doconce"></span><div class="section" id="id1">
+<h2>What Is DocOnce?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p id="index-0">DocOnce is a very simple and minimally tagged markup language that
 looks like ordinary ASCII text, much like what you would use in an
 email, but the text can be transformed to numerous other formats,
@@ -181,7 +181,7 @@ directory</p>
 formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <tt class="docutils literal"><span class="pre">demo</span></tt>.
 To successfully run this script and compile all the different versions,
 you must have quite a lot of software installed, see
-the the section <a class="reference internal" href="#install-doconce"><em>Installation of DocOnce and its Dependencies</em></a> for detailed information.
+the the section <em class="xref std std-ref">install:doconce</em> for detailed information.
 However,
 the most commonly used formats of this manual are
 fortunately also accessible through the web:
@@ -1981,7 +1981,7 @@ set the (terminal) prompt that prefixes the command:</p>
 <h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
 <p id="index-16">Comments intended to be (sometimes) visible in the output document and
 read by readers are known as <em>inline comments</em> in DocOnce and
-described in the section <a class="reference internal" href="#inline-tagging"><em>Inline Tagging</em></a>.</p>
+described in the section <em class="xref std std-ref">inline:tagging</em>.</p>
 <p>Here we address comments in the DocOnce source file that are not
 intended to be visible in the output document. Basic comment
 lines start with the hash <tt class="docutils literal"><span class="pre">#</span></tt>:</p>
@@ -2248,10 +2248,10 @@ Indented lines may give strange output in some formats.
 Also note that extra whitespace after <tt class="docutils literal"><span class="pre">item&quot;</span> <span class="pre">indicators</span> <span class="pre">(``*</span></tt>, <tt class="docutils literal"><span class="pre">o</span></tt>, or <tt class="docutils literal"><span class="pre">-</span></tt>)
 in lists may give strange behavior.</p>
 </div>
+<span class="target" id="inline-tagging"></span></div>
 </div>
-</div>
-<div class="section" id="inline-tagging">
-<span id="id6"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Inline Tagging<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>DocOnce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
 and <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">text</span></tt> (also called type writer text, for inline code),
 plus LaTeX/TeX inline mathematics, such as <span class="math">\(\nu = \sin(x)\)</span>.
@@ -2548,11 +2548,11 @@ as space. Next is an example.
 [<strong>hpl&#8217;s comment 1</strong>: Inline comments can span several lines, if desired.]</p>
 <p>The name and comment are visible in the output unless <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
 is run with a command-line argument <tt class="docutils literal"><span class="pre">--skip_inline_comments</span></tt>
-(see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an example). Inline comments
+(see the section <em class="xref std std-ref">doconce2formats</em> for an example). Inline comments
 are helpful during development of a document since different authors
 and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file
-by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">remove_inline_comments</span></tt> (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a>).</p>
+by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">remove_inline_comments</span></tt> (see the section <em class="xref std std-ref">doconce2formats</em>).</p>
 <p>Inline comments are typeset in a simple way: boldface name, a
 numbering of the comment, and then the comment, all in red and in
 parenthesis. However, with the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> option, LaTeX will
@@ -2714,7 +2714,7 @@ say (<em class="xref std std-ref">myeq1</em>)-(<em class="xref std std-ref">myeq
 the source of this document illustrates how labels and references
 are handled by the format in question.</p>
 <p>Hyperlinks to files or web addresses are handled as explained
-in the section <a class="reference internal" href="#inline-tagging"><em>Inline Tagging</em></a>.</p>
+in the section <em class="xref std std-ref">inline:tagging</em>.</p>
 </div>
 <div class="section" id="generalized-cross-referencing">
 <span id="manual-genrefs"></span><h3>Generalized Cross-Referencing<a class="headerlink" href="#generalized-cross-referencing" title="Permalink to this headline">¶</a></h3>
@@ -3606,7 +3606,7 @@ expressions).</p>
 <p class="first admonition-title">Note</p>
 <p class="last">If you desire a newcommand for the running text, using a Mako function
 (written in plain Python) is much more flexible. See
-the section <a class="reference internal" href="#manual-mako"><em>Mako Programming</em></a>.</p>
+the section <em class="xref std std-ref">manual:mako</em>.</p>
 </div>
 </div>
 <div class="section" id="guidelines-for-latex-writers">
@@ -3921,6 +3921,185 @@ in the running text: an equation, a hypothesis, a theorem, a
 rule, or a conclusion.</p>
 </div>
 </div>
+<div class="section" id="user-defined-environments">
+<h3>User-Defined Environments<a class="headerlink" href="#user-defined-environments" title="Permalink to this headline">¶</a></h3>
+<p>LaTeX writers are often fond of their favorite environments and think
+that formats like DocOnce, Markdown, and HTML are primitive without
+these favorite environments. DocOnce, however, offers <em>user-defined</em> environments with begin and end tags, as typical in LaTeX. This section explains
+how to define such user-defined environments.</p>
+<p><strong>Remark.</strong>
+Special environments can always be implemented by Mako code as illustrated
+in the section <a class="reference internal" href="#manual-theorem-envir"><em>Example: Defining a Theorem Environment</em></a>, but the DocOnce user-defined
+environments are easier to use.</p>
+<p>For example, suppose you want to typeset examples using
+a native <em>example</em> environment in LaTeX, while other formats can
+simply typeset examples as subsections. You can
+then introduce your own example
+environment in DocOnce and write the environment like this:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>|bu-example Addition label=ex:math:1p1
+We have
+
+<span class="k">!bt</span>
+\[ 1 + 1 = 2 \]
+<span class="k">!et</span>
+|!eu-example
+</pre></div>
+</div>
+<p>The convention for this type of examples is to have a title,
+and the title line
+may feature <tt class="docutils literal"><span class="pre">label=xxx</span></tt>, where we can use <tt class="docutils literal"><span class="pre">xxx</span></tt> as a label for the
+example.
+The example environment above is in the <tt class="docutils literal"><span class="pre">${FORMAT}</span></tt> output format
+typeset like this:</p>
+</div>
+<div class="section" id="example-1-addition">
+<span id="ex-math-1p1"></span><h3>Example 1: Addition<a class="headerlink" href="#example-1-addition" title="Permalink to this headline">¶</a></h3>
+<p>We have</p>
+<div class="math">
+\[1 + 1 = 2\]</div>
+<p>The definition of the example environment must be done in a Python
+module <tt class="docutils literal"><span class="pre">userdef_environments</span></tt>, located in the same directory as the
+DocOnce source code. In this file (<tt class="docutils literal"><span class="pre">userdef_environments.py</span></tt>),
+we must provide a dictionary <tt class="docutils literal"><span class="pre">envir2format</span></tt> for translating an
+environment into the right code for a specific format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">envir2format</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;intro&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;latex&#39;</span><span class="p">:</span> <span class="s">r&quot;&quot;&quot;</span>
+<span class="s">\usepackage{amsthm}</span>
+<span class="s">\theoremstyle{definition}</span>
+<span class="s">\newtheorem{example}{Example}[section]</span>
+<span class="s">&quot;&quot;&quot;</span><span class="p">,},</span>
+    <span class="s">&#39;example&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;latex&#39;</span><span class="p">:</span> <span class="n">example</span><span class="p">,</span>
+        <span class="s">&#39;do&#39;</span><span class="p">:</span> <span class="n">do_example</span><span class="p">,</span>
+        <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">intro</span></tt> key contains initializing statements for the LaTeX and
+HTML formats (the preamble and the <tt class="docutils literal"><span class="pre">head</span></tt> tag, respectively).
+Here, we need the <tt class="docutils literal"><span class="pre">amsthm</span></tt> package and a definition of the <tt class="docutils literal"><span class="pre">example</span></tt>
+environment in LaTeX. No initialization is needed for HTML.
+The other keys are the names of the environments. For each environment,
+we use a function to format the code for a specific output format.
+The <tt class="docutils literal"><span class="pre">do</span></tt> key is a default DocOnce formatting, expressed in
+DocOnce syntax and applied if the output format is not present amont
+the other keys. The LaTeX output is here defined by the function
+<tt class="docutils literal"><span class="pre">example</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">titleline</span><span class="p">,</span> <span class="n">counter</span><span class="p">,</span> <span class="n">format</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;LaTeX typesetting of example environment.&quot;&quot;&quot;</span>
+    <span class="n">label</span><span class="p">,</span> <span class="n">titleline</span> <span class="o">=</span> <span class="n">get_label</span><span class="p">(</span><span class="n">titleline</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s">r&quot;&quot;&quot;</span>
+<span class="s">\begin{example}</span>
+<span class="s">&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s">&#39;label{</span><span class="si">%s</span><span class="s">}</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">label</span>  <span class="c"># no \ (is added by DocOnce)</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="s">r&quot;&quot;&quot;</span>
+<span class="s">\noindent\emph{</span><span class="si">%s</span><span class="s">}.</span>
+
+<span class="si">%s</span><span class="s"></span>
+<span class="s">\end{example}</span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">titleline</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>The arguments are <tt class="docutils literal"><span class="pre">text</span></tt> for the body of the environment, <tt class="docutils literal"><span class="pre">titleline</span></tt>
+for the title (everything that comes after <tt class="docutils literal"><span class="pre">!bc-example</span></tt> on the line),
+an integer <tt class="docutils literal"><span class="pre">counter</span></tt> that counts the number of the current environment
+(1, 2, and so on, which can be used for reference as an alternative to
+the label), and the <tt class="docutils literal"><span class="pre">format</span></tt> string holding the user&#8217;s output format.
+In the present case,
+we add the label inside the example environment if we have a  label
+in the title, and we typeset the title in the emphasize font.
+Otherwise, we rely on the standard <tt class="docutils literal"><span class="pre">example</span></tt> (or <tt class="docutils literal"><span class="pre">newtheorem</span></tt>)
+LaTeX environment.</p>
+<p>In HTML and other formats, we simply typeset the example as a subsection:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">do_example</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">titleline</span><span class="p">,</span> <span class="n">counter</span><span class="p">,</span> <span class="n">format</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;General typesetting of example environment via a section.&quot;&quot;&quot;</span>
+    <span class="n">label</span><span class="p">,</span> <span class="n">titleline</span> <span class="o">=</span> <span class="n">get_label</span><span class="p">(</span><span class="n">titleline</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+
+<span class="s">===== Example </span><span class="si">%d</span><span class="s">: </span><span class="si">%s</span><span class="s"> =====</span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">titleline</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">label</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="s">&#39;label{</span><span class="si">%s</span><span class="s">}</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">label</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="s">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">text</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>We quickly encounter a problem when referring to a specific example.
+In LaTeX, we want to write <a href="#id15"><span class="problematic" id="id16">`</span></a>Example :ref:<a href="#id17"><span class="problematic" id="id18">`</span></a>label&#8221;, using the label
+defined in the example heading. In other formats, this label is a
+section number, or usually the section (example) heading. Different
+wording is needed for different formats. This is easiest accomplished
+by a little Mako function in the top of the DocOnce source:</p>
+<div class="highlight-text"><div class="highlight"><pre>&lt;%
+def refex(label, capital=False):
+    if FORMAT in (&#39;latex&#39;, &#39;pdflatex&#39;):
+        return &#39;Example ref{%s}&#39; % label
+    else:
+        s = &#39;The &#39; if capital else &#39;the &#39;
+        s += &#39;example in Section ref{%s}&#39; % label
+        return s
+%&gt;
+</pre></div>
+</div>
+<p>We can then write something like</p>
+<div class="highlight-text"><div class="highlight"><pre>${refex(&#39;ex:test:1p1&#39;, capital=True)} demonstrates how to do 1+1.
+That is, the calculation 1+1 appears in ${refex(&#39;ex:test:1p1&#39;)}.
+</pre></div>
+</div>
+<p>Note that we distinguish between <tt class="docutils literal"><span class="pre">capital=True</span></tt>, which means that the
+example reference opens a sentence, and <tt class="docutils literal"><span class="pre">capital=False</span></tt>, which refers
+to a reference later in the sentence. In HTML we see the difference:</p>
+<div class="highlight-text"><div class="highlight"><pre>The example in the section
+&lt;a href=&quot;#ex:test:1p1&quot;&gt;Example 1: A test function&lt;/a&gt;
+demonstrates how to do 1+1.
+That is, the calculation 1+1 appears in the example in the section
+&lt;a href=&quot;#ex:test:1p1&quot;&gt;Example 1: A test function&lt;/a&gt;.
+</pre></div>
+</div>
+<p>while there is no difference in LaTeX since we refer to <em>Example</em> with
+capital E anyway:</p>
+<div class="highlight-text"><div class="highlight"><pre>Example~\ref{ex:test:1p1} demonstrates how to do 1+1.
+That is, the calculation 1+1 appears in Example~\ref{ex:test:1p1}.
+</pre></div>
+</div>
+<p>To summarize, the <em>example</em> environment together with the <tt class="docutils literal"><span class="pre">refex</span></tt> Mako
+function allows you to work with native LaTeX example environments, while
+there is a neat alternative solution for all other formats.</p>
+<p>You may take a look at a complete <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py">userdef_environments.py</a>
+file to see this example environment and another <em>highligh</em> environment
+where we define blue boxes in LaTeX and HTML and rely on a standard
+notice admon for all other formats. The highlight environment is
+written like</p>
+<div class="highlight-doconce"><div class="highlight"><pre>|bu-highlight Highlight box!
+This environment is used to highlight something:
+
+<span class="k">!bt</span>
+\[ E = mc^2 \]
+<span class="k">!et</span>
+|eu-highlight
+</pre></div>
+</div>
+<p>and typeset (in <tt class="docutils literal"><span class="pre">${FORMAT}</span></tt>) as</p>
+<div class="admonition-highlight-box admonition">
+<p class="first admonition-title">Highlight box</p>
+<p>This environment is used to highlight something:</p>
+<div class="last math">
+\[E = mc^2\]</div>
+</div>
+<div class="admonition-tip-test-userdef-environments-py admonition">
+<p class="first admonition-title">Tip: Test <tt class="docutils literal"><span class="pre">userdef_environments.py</span></tt></p>
+<p>Make sure you run the <tt class="docutils literal"><span class="pre">userdef_environments.py</span></tt> file to check
+that all syntax is correct:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python userdef_environments.py
+</pre></div>
+</div>
+<p class="last">A common error is to have the <tt class="docutils literal"><span class="pre">envir2format</span></tt> dictionary defined
+before the functions it refers to.</p>
+</div>
+</div>
 </div>
 <div class="section" id="bibliography-references">
 <h2>Bibliography (References)<a class="headerlink" href="#bibliography-references" title="Permalink to this headline">¶</a></h2>
@@ -4011,22 +4190,22 @@ the output format is <tt class="docutils literal"><span class="pre">latex</span>
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <tt class="docutils literal"><span class="pre">key</span></tt>.
-Here is an example: <a class="reference internal" href="#ref3" id="id15">[Ref3]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref4" id="id16">[Ref4]</a> gave
+Here is an example: <a class="reference internal" href="#ref3" id="id19">[Ref3]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref4" id="id20">[Ref4]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref5" id="id17">[Ref5]</a>.
-The book chapter <a class="reference internal" href="#ref6" id="id18">[Ref6]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref5" id="id21">[Ref5]</a>.
+The book chapter <a class="reference internal" href="#ref6" id="id22">[Ref6]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref7" id="id19">[Ref7]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref7" id="id23">[Ref7]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref3" id="id20">[Ref3]</a> <a class="reference internal" href="#ref6" id="id21">[Ref6]</a>.</p>
+<a class="reference internal" href="#ref3" id="id24">[Ref3]</a> <a class="reference internal" href="#ref6" id="id25">[Ref6]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref4" id="id22">[Ref4]</a> (Section 2)
-or <a class="reference internal" href="#ref4" id="id23">[Ref4]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref4" id="id26">[Ref4]</a> (Section 2)
+or <a class="reference internal" href="#ref4" id="id27">[Ref4]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <tt class="docutils literal"><span class="pre">cite</span></tt> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -4043,7 +4222,7 @@ is done one a line containing <tt class="docutils literal"><span class="pre">BIB
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
 Before the command you will often want to have a headline with
-&#8220;References&#8221;, &#8220;Bibliography&#8221;, or similar.
+<a href="#id28"><span class="problematic" id="id29">``</span></a>References&#8221;, &#8220;Bibliography&#8221;, or similar.
 Here is an example:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= References =======</span>
 
@@ -4130,7 +4309,7 @@ but the command-line argument <tt class="docutils literal"><span class="pre">--d
 makes it possible to test if the output is on paper media, a sreen,
 or a particular device.</p>
 <p>Other user-defined variables for the preprocessor can be set at
-the command line as explained in the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a>.</p>
+the command line as explained in the section <em class="xref std std-ref">doconce2formats</em>.</p>
 <p>More advanced use of mako can include Python code that may automate
 the writing of parts of the document.</p>
 <div class="admonition-on-the-type-of-a-mako-variable-from-the-command-line admonition">
@@ -4672,10 +4851,10 @@ many keyboard shortcuts are defined:</p>
 <p>Typing <tt class="docutils literal"><span class="pre">Ctrl+c</span> <span class="pre">help</span></tt> prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!</p>
-</div>
+<span class="target" id="manual-mako"></span></div>
 </div>
 <div class="section" id="mako-programming">
-<span id="manual-mako"></span><h2>Mako Programming<a class="headerlink" href="#mako-programming" title="Permalink to this headline">¶</a></h2>
+<h2>Mako Programming<a class="headerlink" href="#mako-programming" title="Permalink to this headline">¶</a></h2>
 <p id="index-117">The <a class="reference external" href="http://docs.makotemplates.org/">Mako</a> templating engine is used
 as preprocessor for DocOnce documents, but the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a> is run prior to Mako and is recommended for
 including other files via <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;filename&quot;</span></tt>. Preprocess is also
@@ -5266,10 +5445,10 @@ is <tt class="docutils literal"><span class="pre">debug</span></tt>. The logfile
 may still give some idea of what is wrong.  The section &#8220;Basic Parsing
 Ideas&#8221; explains how the DocOnce text is transformed into a specific
 format, and you need to know these steps to make use of the logfile.</p>
-</div>
+<span class="target" id="doconce2formats"></span></div>
 </div>
 <div class="section" id="from-doconce-to-other-formats">
-<span id="doconce2formats"></span><h2>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
+<h2>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
 <p id="index-118">Transformation of a DocOnce document <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> to various other
 formats is done with the script <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format formatname mydoc.do.txt
@@ -7454,6 +7633,13 @@ results in no prefix/title before the the answer &quot;Two&quot;.
 on (default): &lt;hr&gt; before and after quiz in HTML. off: no &lt;hr&gt;.
 
 
+--quiz_explanations=...
+
+on/off
+(some output formats do not support explanations with figures,
+math and/or code, this option turns all explanations off.
+
+
 --rst_uio
 
 Univ. of Oslo version of rst files for their Vortex system.
@@ -7477,10 +7663,10 @@ the document into multiple parts.
 Combine paragraphs to one line (does not work well).
 </pre></div>
 </div>
-</div>
+<span class="target" id="install-doconce"></span></div>
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
-<span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
+<h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
 <p id="index-186">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install everything what is needed on a Debian-based Linux
@@ -7937,7 +8123,7 @@ pp. 14-21,
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id24">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
@@ -7947,7 +8133,7 @@ pp. 187-204,
 <table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id23">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id26">2</a>, <a class="fn-backref" href="#id27">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
@@ -7957,7 +8143,7 @@ pp. 1125-1146,
 <table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id21">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
@@ -7967,7 +8153,7 @@ pp. 997-996,
 <table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id22">1</a>, <a class="fn-backref" href="#id25">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
@@ -7977,7 +8163,7 @@ Springer,
 <table class="docutils citation" frame="void" id="ref7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id23">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>
@@ -7999,7 +8185,7 @@ Springer,
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Description</a><ul>
-<li><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
+<li><a class="reference internal" href="#id1">What Is DocOnce?</a><ul>
 <li><a class="reference internal" href="#demos">Demos</a></li>
 </ul>
 </li>
@@ -8027,7 +8213,7 @@ Springer,
 <li><a class="reference internal" href="#lists">Lists</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#inline-tagging">Inline Tagging</a><ul>
+<li><a class="reference internal" href="#id6">Inline Tagging</a><ul>
 <li><a class="reference internal" href="#emphasized-words">Emphasized Words</a></li>
 <li><a class="reference internal" href="#inline-verbatim-text">Inline Verbatim Text</a></li>
 <li><a class="reference internal" href="#links-to-web-addresses">Links to Web Addresses</a></li>
@@ -8083,6 +8269,8 @@ Springer,
 <li><a class="reference internal" href="#the-box-environment">The Box Environment</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#user-defined-environments">User-Defined Environments</a></li>
+<li><a class="reference internal" href="#example-1-addition">Example 1: Addition</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#bibliography-references">Bibliography (References)</a><ul>

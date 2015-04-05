@@ -1764,6 +1764,68 @@ def typeset_tables(filestr, format):
                 result.write(line + '\n')
     return result.getvalue()
 
+def typeset_userdef_envirs(filestr, format):
+    userdef_envirs = re.findall(r'^!bu-([^ ]+)', filestr, flags=re.MULTILINE)
+    if not userdef_envirs:
+        return filestr
+    userfile = 'userdef_environments.py'
+    if os.path.isfile(userfile):
+        try:
+            import userdef_environments as ue
+        except Exception as e:
+            print '*** error in %s:' % userfile
+            print e
+            _abort()
+    else:
+        print '*** error: found user-defined environments'
+        import sets
+        print '   ', ', '.join(list(sets.Set(userdef_envirs)))
+        print '    but no file', userfile, 'for defining the environments!'
+        _abort()
+    if not hasattr(ue, 'envir2format'):
+        print '*** error: envir2format not defined in', userfile
+        _abort()
+
+    pattern = r'^(!bu-([^ ]+)(.*?)\n(.+?)\s*^!eu-([^\s]+))'
+    userdef_envirs = re.findall(pattern, filestr, flags=re.MULTILINE|re.DOTALL)
+    if 'intro' in ue.envir2format:
+        intro = ue.envir2format['intro'].get(format, '')
+    else:
+        intro = ''
+    # html and latex can have intros
+    global INTRO
+    if format == 'html':
+        INTRO[format] = INTRO[format].replace('<!-- USER-DEFINED ENVIRONMENTS -->', intro)
+    elif format in ('latex', 'pdflatex'):
+        INTRO[format] = INTRO[format].replace('%%% USER-DEFINED ENVIRONMENTS', intro)
+
+    counter = {}
+    for all, user_envir, titleline, text, user_envir_end in userdef_envirs:
+        if user_envir in counter:
+            counter[user_envir] += 1
+        else:
+            counter[user_envir] = 1
+
+        if not ue.envir2format[user_envir]:
+            print '*** error: user-defined environment "%s" is not defined in' % user_envir, userfile
+            _abort()
+        instructions = ''
+        if format in ue.envir2format[user_envir]:
+            instructions = ue.envir2format[user_envir][format]
+        elif 'do' in ue.envir2format[user_envir]:
+            instructions = ue.envir2format[user_envir]['do']
+        if instructions == '':
+            replacement = text  # just strip off begin/end
+        elif callable(instructions):
+            titleline = titleline.strip()
+            replacement = instructions(text, titleline,
+                                       counter[user_envir], format)
+        else:
+            print '*** error: envir2format["%s"]["%s"] is not string or function' % (user_envir, format)
+            _abort()
+        filestr = filestr.replace(all, replacement)
+    return filestr
+
 def typeset_envirs(filestr, format):
     # Note: exercises are done (and translated to doconce syntax)
     # before this function is called. bt/bc are taken elsewhere.
@@ -3359,6 +3421,12 @@ def doconce2format(filestr, format):
                              INLINE_TAGS_SUBST[format]['movie'],
                              filestr, flags=re.MULTILINE)
 
+
+    # Next step: deal with user-defined environments
+    if '!bu-' in filestr:
+        filestr = typeset_userdef_envirs(filestr, format)
+        debugpr('The file after inserting user-defined environments:', filestr)
+
     # Next step: remove all verbatim and math blocks
 
     filestr, code_blocks, code_block_types, tex_blocks = \
@@ -3549,6 +3617,12 @@ def doconce2format(filestr, format):
             filestr = filestr + OUTRO[format]
 
 
+    # Need to treat quizzes for ipynb before code and text blocks are inserted
+    if num_quizzes and format == 'ipynb':
+        filestr = typeset_quizzes2(filestr, format)
+        debugpr('The file after second reformatting of quizzes:', filestr)
+        report_progress('handled second reformatting of quizzes')
+
     # Next step: insert verbatim and math code blocks again and
     # substitute code and tex environments:
     # (this is the place to do package-specific fixes too!)
@@ -3610,7 +3684,7 @@ def doconce2format(filestr, format):
         debugpr('The file after replacing |bc and |bt environments by true !bt and !et (in code blocks):', filestr)
 
     # Second reformatting of quizzes
-    if num_quizzes:
+    if num_quizzes and format != 'ipynb':
         filestr = typeset_quizzes2(filestr, format)
         debugpr('The file after second reformatting of quizzes:', filestr)
         report_progress('handled second reformatting of quizzes')

@@ -516,10 +516,7 @@ def rst_notice(block, format, title='Notice', text_size='normal'):
         return rst_admon(block, format, title, text_size)
 
 def rst_quiz(quiz):
-    # Note: should be a native rendering here, and one for sphinx, otherwise
-    # math and code will not work properly in raw html environments (only
-    # plain text quiz)
-
+    import string
     question_prefix = quiz.get('question prefix',
                                option('quiz_question_prefix=', 'Question:'))
     common_choice_prefix = option('quiz_choice_prefix=', 'Choice')
@@ -547,16 +544,17 @@ def rst_quiz(quiz):
 
     # List choices as paragraphs
     for i, choice in enumerate(quiz['choices']):
-        choice_no = i+1
+        #choice_no = i+1
+        choice_no = string.ascii_uppercase[i]
         answer = choice[0].capitalize() + '!'
         choice_prefix = common_choice_prefix
         if 'choice prefix' in quiz:
             if isinstance(quiz['choice prefix'][i], basestring):
                 choice_prefix = quiz['choice prefix'][i]
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
-            pass  # don't add choice number
+            pass  # don't add choice number/letter
         else:
-            choice_prefix += ' %d:' % choice_no
+            choice_prefix += ' %s:' % choice_no
 
         expl = ''
         if len(choice) == 3 and quiz_expl == 'on':
@@ -585,10 +583,6 @@ def rst_quiz(quiz):
 
     text += '.. end quiz\n\n'
     return text
-
-    #text = html_quiz(quiz)
-    #text = '.. raw:: html\n' + indent_lines(text, format, ' '*4) + '\n'
-    #return text
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

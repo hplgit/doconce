@@ -787,6 +787,54 @@ maybe over multiple doconce input lines.
 !esol
 !esubex
 
+===== User-defined environments =====
+
+<%
+def refex(label, capital=False):
+    if FORMAT in ('latex', 'pdflatex'):
+        return 'Example ref{%s}' % label
+    else:
+        s = 'The ' if capital else 'the '
+        s += 'example in Section ref{%s}' % label
+        return s
+%>
+
+${refex('ex:test:1p1', capital=True)} demonstrates how to write a test function.
+That is, a special test function for a function `add` appears in
+${refex('ex:test:1p1')}.
+
+!bu-example A test function label=ex:test:1p1
+Suppose we want to write a test function for checking the
+implementation of a Python function for addition.
+
+!bc pycod
+def add(a, b):
+    return a + b
+
+def test_add():
+    a = 1; b = 1
+    expected = a + b
+    computed = add(a, b)
+    assert expected == computed
+!ec
+!eu-example
+
+!bu-example Addition label=ex:math:1p1
+We have
+
+!bt
+\[ 1 + 1 = 2 \]
+!et
+!eu-example
+
+!bu-highlight Highlight box!
+This environment is used to highlight something:
+
+!bt
+\[ E = mc^2 \]
+!et
+!eu-highlight
+
 
 ===== URLs =====
 label{subsubsec:ex}

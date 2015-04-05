@@ -1818,6 +1818,7 @@ def html_inline_comment(m):
             return '\n<!-- begin inline comment -->\n<font color="red">(<b>%s</b>: %s)</font>\n<!-- end inline comment -->\n' % (name, comment)
 
 def html_quiz(quiz):
+    import string
     bootstrap = option('html_style=', '').startswith('boots')
     button_text = option('html_quiz_button_text=', '')
     question_prefix = quiz.get('question prefix',
@@ -1841,16 +1842,17 @@ def html_quiz(quiz):
 
     # List choices as paragraphs
     for i, choice in enumerate(quiz['choices']):
-        choice_no = i+1
+        #choice_no = i+1
+        choice_no = string.ascii_uppercase[i]
         answer = choice[0].capitalize() + '!'
         choice_prefix = common_choice_prefix
         if 'choice prefix' in quiz:
             if isinstance(quiz['choice prefix'][i], basestring):
                 choice_prefix = quiz['choice prefix'][i]
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
-            pass  # don't add choice number
+            pass  # don't add choice number/letter
         else:
-            choice_prefix += ' %d:' % choice_no
+            choice_prefix += ' %s:' % choice_no
         if not bootstrap:  # plain html: show tooltip when hovering over choices
             tooltip = answer
             expl = ''
@@ -1873,7 +1875,7 @@ def html_quiz(quiz):
             tooltip = answer + ' ' + ' '.join(expl.splitlines())
             text += '\n<p><div title="%s"><b>%s</b>\n%s\n</div></p>\n' % (tooltip, choice_prefix, choice[1])
         else:
-            id = 'quiz_id_%d_%d' % (quiz['no'], choice_no)
+            id = 'quiz_id_%d_%s' % (quiz['no'], choice_no)
             if len(choice) == 3:
                 expl = choice[2]
             else:
@@ -2552,6 +2554,10 @@ $(function () {
                            evalButtonText: 'Evaluate'});
 });
 </script>
+"""
+    if '!bu-' in filestr:
+        scripts += """
+<!-- USER-DEFINED ENVIRONMENTS -->
 """
 
     # Had to take DOCTYPE out from 1st line to load css files from github...

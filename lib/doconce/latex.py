@@ -2750,6 +2750,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
 
 % Background for code blocks (parameter is color name)
+%\setlength{\fboxsep}{-1.5mm}  % makes cod/pro background box smaller
 \newenvironment{cod}[1]{%
    \def\FrameCommand{\colorbox{#1}}%
    \MakeFramed{\advance\hsize-\width \FrameRestore}}%
@@ -3464,6 +3465,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % --- end of standard preamble for documents ---
 """
 
+    if '!bu-' in filestr:
+        INTRO['latex'] += r"""
+%%% USER-DEFINED ENVIRONMENTS
+"""
     INTRO['latex'] += r"""
 % USER PREAMBLE
 % insert custom LaTeX commands...

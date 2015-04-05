@@ -6,6 +6,7 @@ See http://www.wikicreole.org/wiki/Creole1.0 for syntax.
 
 import re, os, commands, sys
 from common import default_movie, plain_exercise, insert_code_and_tex
+from plaintext import plain_quiz
 from misc import _abort
 
 def cwiki_code(filestr, code_blocks, code_block_types,
@@ -199,7 +200,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['cwiki'] = plain_exercise
     INDEX_BIB['cwiki'] = plain_index_bib
     TOC['cwiki'] = lambda s: '<<TableOfContents>>'
-    QUIZ['cwiki'] = lambda quiz: '**Cannot typeset quiz**: "%s"' % quiz.get('question', '')
+    QUIZ['cwiki'] = plain_quiz
     # document start:
     INTRO['cwiki'] = ''
     #INTRO['cwiki'] = '#summary YourOneLineSummary\n<wiki:toc max_depth="1" />\n'
