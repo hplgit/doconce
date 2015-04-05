@@ -805,7 +805,7 @@ ${refex('ex:test:1p1')}.
 
 !bu-example A test function label=ex:test:1p1
 Suppose we want to write a test function for checking the
-implementation of a Python function for addtion.
+implementation of a Python function for addition.
 
 !bc pycod
 def add(a, b):

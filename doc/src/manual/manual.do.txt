@@ -2814,12 +2814,21 @@ rule, or a conclusion.
 
 ===== User-Defined Environments =====
 
+LaTeX writers are often fond of their favorite environments and think
+that formats like DocOnce, Markdown, and HTML are primitive without
+these favorite environments. DocOnce, however, offers *user-defined* environments with begin and end tags, as typical in LaTeX. This section explains
+how to define such user-defined environments.
+
+__Remark.__
 Special environments can always be implemented by Mako code as illustrated
-in Section ref{manual:theorem:envir}, but DocOnce also features more
-ready-made *user-defined* environments. For example, suppose you want
-to use an *example* environment in LaTeX, while other formats can
-typeset examples as subsections. You can introduce your own example
-environment and write the environment like this:
+in Section ref{manual:theorem:envir}, but the DocOnce user-defined
+environments are easier to use.
+
+For example, suppose you want to typeset examples using
+a native *example* environment in LaTeX, while other formats can
+simply typeset examples as subsections. You can
+then introduce your own example
+environment in DocOnce and write the environment like this:
 
 !bc do
 |bu-example Addition label=ex:math:1p1
@@ -2830,9 +2839,10 @@ We have
 |et
 |!eu-example
 !ec
-The convention is to have a title in the environment, and the title line
-may feature `label=xxx`, where we can use `xxx` as a label as we want
-in the definition of the example environment.
+The convention for this type of examples is to have a title,
+and the title line
+may feature `label=xxx`, where we can use `xxx` as a label for the
+example.
 The example environment above is in the `${FORMAT}` output format
 typeset like this:
 
@@ -2854,7 +2864,7 @@ environment into the right code for a specific format:
 envir2format = {
     'intro': {
         'latex': r"""
-\usepackage{amsthm,tcolorbox}
+\usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{example}{Example}[section]
 """,},
@@ -2940,86 +2950,69 @@ def refex(label, capital=False):
 We can then write something like
 
 !bc
-${refex('ex:test:1p1', capital=True)} demonstrates how to write a test function.
-That is, a special test function for a function `add` appears in
-${refex('ex:test:1p1')}.
+${refex('ex:test:1p1', capital=True)} demonstrates how to do 1+1.
+That is, the calculation 1+1 appears in ${refex('ex:test:1p1')}.
 !ec
-and get it out like
-
-!bc
-Example~\ref{ex:test:1p1} demonstrates how to write a test function.
-That is, a special test function for a function \Verb!add! appears in
-Example~\ref{ex:test:1p1}.
-!ec
-in LaTeX, while in HTML we get
+Note that we distinguish between `capital=True`, which means that the
+example reference opens a sentence, and `capital=False`, which refers
+to a reference later in the sentence. In HTML we see the difference:
 
 !bc
 The example in the section
 <a href="#ex:test:1p1">Example 1: A test function</a>
-demonstrates how to write a test function.
-That is, a special test function for a function <code>add</code>
-appears in the example in the section
+demonstrates how to do 1+1.
+That is, the calculation 1+1 appears in the example in the section
 <a href="#ex:test:1p1">Example 1: A test function</a>.
 !ec
-
-
-To be implemented.
+while there is no difference in LaTeX since we refer to *Example* with
+capital E anyway:
 
 !bc
-|bu-name optional title line
-|eu-name
+Example~\ref{ex:test:1p1} demonstrates how to do 1+1.
+That is, the calculation 1+1 appears in Example~\ref{ex:test:1p1}.
+!ec
+To summarize, the *example* environment together with the `refex` Mako
+function allows you to work with native LaTeX example environments, while
+there is a neat alternative solution for all other formats.
 
-file .user_environments.py:
+You may take a look at a complete "`userdef_environments.py`":
+"https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py"
+file to see this example environment and another *highligh* environment
+where we define blue boxes in LaTeX and HTML and rely on a standard
+notice admon for all other formats. The highlight environment is
+written like
 
-envir2format = {
-'intro': {'latex': r'\usepackage{mypack}'},
-'name': {
-'html': myfunc,
-'ipynb': 'specific code',
-}
-}
+!bc do
+|bu-highlight Highlight box!
+This environment is used to highlight something:
 
-def myfunc(text, titleline, format):
-    return rendered_text_in_this_format
+|bt
+\[ E = mc^2 \]
+|et
+|eu-highlight
+!ec
+and typeset (in `${FORMAT}`) as
 
-|bu-example heading="This is my example"; label="ex1"
-Addition:
+!bu-highlight Highlight box!
+This environment is used to highlight something:
 
 !bt
-\[ 1+1 = 2 \]
+\[ E = mc^2 \]
 !et
-!eu-example
+!eu-highlight
 
-def example(text, titleline, format):
-    title = ''
-    label = ''
-    exec(titleline)
-    if not title:
-        print '*** error: title not given as part of !bu-example heading!'
-        sys.exit(1)
-    if format == 'latex':
-        if label:
-            label = '\\label{%s}' % label
-        rendered_text = r"""
-\begin{example}{%s}
-%s
-%s
-\end{example}
-""" % (title, label, text)
-    else:
-        # Rely on simple DocOnce formatting
-        if label:
-            label = 'label{%s}' % label
-        rendered_text = r"""
-===== Example: %s =====
-%s
+!bwarning Tip: Test `userdef_environments.py`!
+Make sure you run the `userdef_environments.py` file to check
+that all syntax is correct:
 
-%s
-
-""" % (title, label, text)
+!bc sys
+Terminal> python userdef_environments.py
 !ec
 
-Do this: `python userdef_environments.py`.
+A common error is to have the `envir2format` dictionary defined
+before the functions it refers to.
+!ewarning
+
 
 ======= Bibliography (References) =======
 

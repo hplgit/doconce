@@ -81,6 +81,15 @@ moving constructions with braces (`label`, `cite`) out of the
 text to be colored.
 !ec
 
+===== How can I get a native LaTeX example or other environments? =====
+
+LaTeX writers often lack their favorite environments, but DocOnce
+has a way to define such environments, with corresponding typesetting
+also for HTML and all other output formats. See the
+section *User-Defined Environments* in the DocOnce manual. It contains
+all the details for using a standard example or theorem environment
+in LaTeX output.
+
 ===== How can I control the vertical spacing in slides? =====
 
 HTML5 and LaTeX slides control the spacings for you. However, sometimes

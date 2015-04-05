@@ -7,12 +7,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    
     <title>DocOnce Troubleshooting</title>
-
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -42,19 +42,19 @@
                 }
         </style>
 
-
+    
     <link rel="top" title="DocOnce Troubleshooting" href="index.html" />
     <link rel="prev" title="DocOnce Troubleshooting" href="index.html" />
-
-
-   <style type="text/css">
-     div.admonition {
-       background-color: whiteSmoke;
-       border: 1px solid #bababa;
-     }
-   </style>
-  </head>
-
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -65,15 +65,15 @@
         <li class="right" >
           <a href="index.html" title="DocOnce Troubleshooting"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">DocOnce Troubleshooting</a> &raquo;</li>
+        <li><a href="index.html">DocOnce Troubleshooting</a> &raquo;</li> 
       </ul>
-    </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-
+            
   <div class="section" id="doconce-troubleshooting">
 <h1>DocOnce Troubleshooting<a class="headerlink" href="#doconce-troubleshooting" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 22, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 5, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -158,6 +158,15 @@ text to be colored.
 </pre></div>
 </div>
 </div>
+<div class="section" id="how-can-i-get-a-native-latex-example-or-other-environments">
+<h3>How can I get a native LaTeX example or other environments?<a class="headerlink" href="#how-can-i-get-a-native-latex-example-or-other-environments" title="Permalink to this headline">¶</a></h3>
+<p>LaTeX writers often lack their favorite environments, but DocOnce
+has a way to define such environments, with corresponding typesetting
+also for HTML and all other output formats. See the
+section <em>User-Defined Environments</em> in the DocOnce manual. It contains
+all the details for using a standard example or theorem environment
+in LaTeX output.</p>
+</div>
 <div class="section" id="how-can-i-control-the-vertical-spacing-in-slides">
 <h3>How can I control the vertical spacing in slides?<a class="headerlink" href="#how-can-i-control-the-vertical-spacing-in-slides" title="Permalink to this headline">¶</a></h3>
 <p>HTML5 and LaTeX slides control the spacings for you. However, sometimes
@@ -190,8 +199,8 @@ work, and <em>thinking constantly about it</em>.</p>
 <p>The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is a newline in LaTeX if it has preceding text,
 otherwise it is a <tt class="docutils literal"><span class="pre">\vspace{3mm}</span></tt>. In HTML, <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is <tt class="docutils literal"><span class="pre">&lt;br&gt;</span></tt>.</p>
 </div>
-<div class="section" id="spellcheck-reports-a-mistakes-that-i-cannot-find">
-<h3>Spellcheck reports mistakes that I cannot find<a class="headerlink" href="#spellcheck-reports-a-mistakes-that-i-cannot-find" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="spellcheck-reports-mistakes-that-i-cannot-find">
+<h3>Spellcheck reports mistakes that I cannot find<a class="headerlink" href="#spellcheck-reports-mistakes-that-i-cannot-find" title="Permalink to this headline">¶</a></h3>
 <p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> command strips off a lot of text
 (math, code, syntax tags) before it starts spellchecking. The
 spellchecked text is therefore different from the doconce source!
@@ -201,7 +210,7 @@ If the spellcheck command is</p>
 </pre></div>
 </div>
 <p>the file <tt class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></tt> contains the text that is actually
-run through spellchecker. Search for the misspelled word there and
+run through the spellchecker (<tt class="docutils literal"><span class="pre">ispell</span></tt>). Search for the misspelled word there and
 try to find it in the doconce source code. Very often, strange misspellings
 come from a syntax typo that has led to a strange word in the stripped
 version.</p>
@@ -283,6 +292,17 @@ in links are allowed if the whole link is typeset in verbatim:</p>
 </div>
 <p>The back-ticks must be removed, or the text can be reformulated as
 in the line above it.</p>
+</div>
+<div class="section" id="inline-verbatim-code-or-boldface-is-not-detected-when-used-with-a-footnote">
+<h3>Inline verbatim code or boldface is not detected when used with a footnote<a class="headerlink" href="#inline-verbatim-code-or-boldface-is-not-detected-when-used-with-a-footnote" title="Permalink to this headline">¶</a></h3>
+<p>There must be a space between the verbatim code (or boldface words)
+and the footnote bracket:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>The construction `def f(x,y):`[^whitespace] is standard.
+
+[^whitespace]: Well, a space before the `y` argument, as in `f(x, y)`,
+would be the standard.
+</pre></div>
+</div>
 </div>
 <div class="section" id="inline-verbatim-code-is-not-detected">
 <h3>Inline verbatim code is not detected<a class="headerlink" href="#inline-verbatim-code-is-not-detected" title="Permalink to this headline">¶</a></h3>
@@ -1026,8 +1046,9 @@ clickable.</p>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
 <li><a class="reference internal" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
+<li><a class="reference internal" href="#how-can-i-get-a-native-latex-example-or-other-environments">How can I get a native LaTeX example or other environments?</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
-<li><a class="reference internal" href="#spellcheck-reports-a-mistakes-that-i-cannot-find">Spellcheck reports mistakes that I cannot find</a></li>
+<li><a class="reference internal" href="#spellcheck-reports-mistakes-that-i-cannot-find">Spellcheck reports mistakes that I cannot find</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li><a class="reference internal" href="#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
 <li><a class="reference internal" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">DocOnce aborts because of a syntax error that is not an error</a></li>
@@ -1035,6 +1056,7 @@ clickable.</p>
 <li><a class="reference internal" href="#problems-with-boldface-and-emphasize">Problems with boldface and emphasize</a></li>
 <li><a class="reference internal" href="#links-to-local-directories-do-not-work">Links to local directories do not work</a></li>
 <li><a class="reference internal" href="#links-are-not-typeset-correctly">Links are not typeset correctly</a></li>
+<li><a class="reference internal" href="#inline-verbatim-code-or-boldface-is-not-detected-when-used-with-a-footnote">Inline verbatim code or boldface is not detected when used with a footnote</a></li>
 <li><a class="reference internal" href="#inline-verbatim-code-is-not-detected">Inline verbatim code is not detected</a></li>
 <li><a class="reference internal" href="#inline-verbatim-text-is-not-formatted-correctly">Inline verbatim text is not formatted correctly</a></li>
 <li><a class="reference internal" href="#strange-non-english-characters">Strange non-English characters</a></li>
@@ -1160,7 +1182,7 @@ clickable.</p>
         <li class="right" >
           <a href="index.html" title="DocOnce Troubleshooting"
              >previous</a> |</li>
-        <li><a href="index.html">DocOnce Troubleshooting</a> &raquo;</li>
+        <li><a href="index.html">DocOnce Troubleshooting</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

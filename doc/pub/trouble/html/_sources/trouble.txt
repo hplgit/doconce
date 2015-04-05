@@ -1,13 +1,13 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
-.. !split
+.. Document title:
 
 DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 22, 2015
+:Date: Apr 5, 2015
 
 
 .. admonition:: Disclaimer
@@ -24,6 +24,8 @@ DocOnce Troubleshooting
 
 
 
+
+.. !split
 
 General Problems
 ================
@@ -94,6 +96,16 @@ end of the coloring. Here is an example:
         moving constructions with braces (`label`, `cite`) out of the
         text to be colored.
 
+How can I get a native LaTeX example or other environments?
+-----------------------------------------------------------
+
+LaTeX writers often lack their favorite environments, but DocOnce
+has a way to define such environments, with corresponding typesetting
+also for HTML and all other output formats. See the
+section *User-Defined Environments* in the DocOnce manual. It contains
+all the details for using a standard example or theorem environment
+in LaTeX output.
+
 How can I control the vertical spacing in slides?
 -------------------------------------------------
 
@@ -139,8 +151,8 @@ Without ``<linebreak>`` the rendering becomes
 The ``<linebreak>`` is a newline in LaTeX if it has preceding text,
 otherwise it is a ``\vspace{3mm}``. In HTML, ``<linebreak>`` is ``<br>``.
 
-Spellcheck reports a mistakes that I cannot find
-------------------------------------------------
+Spellcheck reports mistakes that I cannot find
+----------------------------------------------
 
 The ``doconce spellcheck`` command strips off a lot of text
 (math, code, syntax tags) before it starts spellchecking. The
@@ -153,7 +165,7 @@ If the spellcheck command is
         doconce spellcheck mydoc
 
 the file ``tmp_stripped_mydoc.do.txt`` contains the text that is actually
-run through spellchecker. Search for the misspelled word there and
+run through the spellchecker (``ispell``). Search for the misspelled word there and
 try to find it in the doconce source code. Very often, strange misspellings
 come from a syntax typo that has led to a strange word in the stripped
 version.
@@ -250,6 +262,19 @@ However, the following will not be typeset correctly:
 
 The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
+
+Inline verbatim code or boldface is not detected when used with a footnote
+--------------------------------------------------------------------------
+
+There must be a space between the verbatim code (or boldface words)
+and the footnote bracket:
+
+.. code-block:: doconce
+
+        The construction `def f(x,y):`[^whitespace] is standard.
+        
+        [^whitespace]: Well, a space before the `y` argument, as in `f(x, y)`,
+        would be the standard.
 
 Inline verbatim code is not detected
 ------------------------------------
@@ -492,6 +517,8 @@ employs a simple rule: ``text`` lasts up to the first end-tag
 character (``*``, ``_``, and ``}`` above), but code and math blocks
 do not count.
 
+.. !split
+
 Preprocess/Mako problems
 ========================
 
@@ -620,6 +647,8 @@ Make sure the preprocessor instructions, in Preprocess or Mako, have
 correct syntax. Also make sure that you do not mix Preprocess and Mako
 instructions. DocOnce will then only run Preprocess.
 
+.. !split
+
 Problems with code or Tex Blocks
 ================================
 
@@ -687,6 +716,8 @@ previous paragraph. Make sure the ``!bt`` and ``!et`` tags are in column 1
 and that the rest of the non-LaTeX surrounding text is correctly indented.
 Using paragraphs instead of list items is a good idea also here.
 
+.. !split
+
 Problems with reST/Sphinx Output
 ================================
 
@@ -750,6 +781,8 @@ The ``!bc ipy`` directive behaves this way for ``sphinx`` output because
 interactive sessions are automatically handled. If this is not
 appropriate, shift to ``!bc cod`` or another specification of the
 verbatim environment.
+
+.. !split
 
 Problems with LaTeX Output
 ==========================
@@ -978,6 +1011,8 @@ order. A working remedy is to insert a text before the code:
         !ec
         !esol
 
+.. !split
+
 Problems with gwiki Output
 ==========================
 
@@ -996,6 +1031,8 @@ and because of the indentation in the original DocOnce text, the gwiki
 output looks somewhat ugly. The good thing is that this gwiki source
 is seldom to be looked at - it is the DocOnce source that one edits
 further.
+
+.. !split
 
 Problems with HTML Output
 =========================
@@ -1063,6 +1100,8 @@ simply by automatic editing of the HTML code in a little shell script:
          '<p style="width: 50%; font-style: italic; color: blue">' mydoc.html
         doconce replace '<hr class="figure">' \
          '<hr style="width: 50%">' mydoc.html
+
+.. !split
 
 Problems with reveal/deck HTML5 slides
 ======================================
