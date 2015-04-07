@@ -73,7 +73,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 

@@ -220,7 +220,7 @@ other LaTeX environments:
 !bc sys
 Terminal> doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]"
 !ec
-These parameters specifies "line numbers in the code blocks": "doc_lst_yellow2_linenos.pdf" as well as wrapping of too long lines (`breaklines=true`).
+These parameters specify "line numbers in the code blocks": "doc_lst_yellow2_linenos.pdf" as well as wrapping of too long lines (`breaklines=true`).
 *Note that any backslash in LaTeX command must be a
 double backslash* on the command line!
 
