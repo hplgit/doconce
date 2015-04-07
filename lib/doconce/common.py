@@ -504,6 +504,12 @@ def remove_code_and_tex(filestr, format):
             print block
             _abort()
 
+    # Remove |\pause| in code blocks if not latex
+    if format not in ('latex', 'pdflatex'):
+        for i in range(len(code_blocks)):
+            if r'|\pause|' in code_blocks[i]:
+                code_blocks[i] = re.sub(r'^\|\\pause\|\n', '', code_blocks[i], flags=re.MULTILINE)
+
     return filestr, code_blocks, code_block_types, tex_blocks
 
 

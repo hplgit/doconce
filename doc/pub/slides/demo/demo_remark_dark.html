@@ -80,7 +80,7 @@ class: center, middle, inverse
 ###**Hans Petter Langtangen** at Center for Biomedical Computing, Simula Research Laboratory and Department of Informatics, University of Oslo
 
 
-### Nov 23, 2014
+### Apr 7, 2015
 
 .center[<img src="fig/CN_logo.png" width=300>]
 
@@ -190,7 +190,7 @@ class: inverse
 *Implementation in a Python function:* 
 
 
-```Python
+```python
 def solver(I, a, T, dt, theta):
     """Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt."""
     dt = float(dt)           # avoid integer division
@@ -210,6 +210,32 @@ def solver(I, a, T, dt, theta):
 ---
 class: inverse
 
+## How to use the solver function
+
+
+*A complete main program.* 
+
+```python
+# Set problem parameters
+I = 1.2
+a = 0.2
+T = 8
+dt = 0.25
+theta = 0.5
+
+from solver import solver, exact_solution
+u, t = solver(I, a, T, dt, theta)
+
+import matplotlib.pyplot as plt
+plt.plot(t, u, t, exact_solution)
+plt.legend(['numerical', 'exact'])
+plt.show()
+```
+
+
+
+---
+class: inverse
 
 # Results
 

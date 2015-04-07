@@ -55,10 +55,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -80,15 +80,16 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec3'),
               (' The Forward Euler scheme explained ', 2, None, '___sec4'),
               (' Implementation ', 2, None, '___sec5'),
-              (' Results ', 1, None, '___sec6'),
+              (' How to use the solver function ', 2, None, '___sec6'),
+              (' Results ', 1, None, '___sec7'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec7'),
+               '___sec8'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec8')]}
+               '___sec9')]}
 end of tocinfo -->
 
 <body>
@@ -113,10 +114,33 @@ MathJax.Hub.Config({
 <a name="part0007"></a>
 <!-- !split -->
 
-<h1>Results  <a name="___sec6"></a></h1>
+<h2 id="___sec6">How to use the solver function </h2>
 
 <p>
-<center><p><img src="fig/results.jpg" align="bottom" width=600></p></center>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>A complete main program.</b>
+<p>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Set problem parameters</span>
+I <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
+a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
+T <span style="color: #666666">=</span> <span style="color: #666666">8</span>
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>
+theta <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">solver</span> <span style="color: #008000; font-weight: bold">import</span> solver, exact_solution
+u, t <span style="color: #666666">=</span> solver(I, a, T, dt, theta)
+
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+plt<span style="color: #666666">.</span>plot(t, u, t, exact_solution)
+plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;numerical&#39;</span>, <span style="color: #BA2121">&#39;exact&#39;</span>])
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+
+</div>
+
 
 <p>
 <p>

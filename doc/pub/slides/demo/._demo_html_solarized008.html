@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>On Schemes for Exponential Decay</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
@@ -36,10 +36,10 @@ a:hover { color: #268bd2; }
 h1, h2, h3 { margin:.8em 0 .2em 0; padding:0; line-height: 125%; }
 h2 { font-variant: small-caps; }
 tt, code { font-family: monospace, sans-serif; box-shadow: none; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 p { text-indent: 0px; }
 p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa; }
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -62,10 +62,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -87,15 +87,16 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec3'),
               (' The Forward Euler scheme explained ', 2, None, '___sec4'),
               (' Implementation ', 2, None, '___sec5'),
-              (' Results ', 1, None, '___sec6'),
+              (' How to use the solver function ', 2, None, '___sec6'),
+              (' Results ', 1, None, '___sec7'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec7'),
+               '___sec8'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec8')]}
+               '___sec9')]}
 end of tocinfo -->
 
 <body>
@@ -120,10 +121,10 @@ MathJax.Hub.Config({
 <a name="part0008"></a>
 <!-- !split -->
 
-<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec7"></a></h2>
+<h1 id="___sec7">Results </h1>
 
 <p>
-<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+<center><p><img src="fig/results.jpg" align="bottom" width=600></p></center>
 
 <p>
 <p>

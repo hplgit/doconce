@@ -344,8 +344,7 @@ the corresponding pure HTML code)...
 % endfor
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer --latex_admon_title_no_period
-doconce ptex2tex demo envir=minted
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer --latex_admon_title_no_period --latex_code_style=pyg
 doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 !ec
@@ -356,8 +355,7 @@ use `--latex_admon_title_no_period`.)
 "Beamer blocks converted to mdframed boxes": "demo_red_plain_mdbox.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer --latex_admon_title_no_period
-doconce ptex2tex demo envir=minted
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer --latex_admon_title_no_period "--latex_code_style=default:lst[style=yellow2_fb]"
 doconce slides_beamer demo --beamer_slide_theme=red_plain --beamer_block_style=mdbox
 # Change the title background in mdframed boxes
 doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!5,' demo.tex
@@ -367,8 +365,7 @@ pdflatex -shell-escape demo
 "Traditional handouts (2x3) in PDF": "demo_red_plain_handouts2x3.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer
-doconce ptex2tex demo envir=minted
+doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer --latex_code_style=pyg
 
 # --handout prevents pop ups from generating multiple pages
 doconce slides_beamer demo --beamer_slide_theme=red_plain --handout  # note --handout!
@@ -380,10 +377,19 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile demo.pdf d
 "Handouts in PDF (plain LaTeX, not Beamer slides)": "demo.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="latex" SLIDE_THEME="std. latex"
-doconce ptex2tex demo envir=minted
+doconce format pdflatex demo SLIDE_TYPE="latex" SLIDE_THEME="std. latex" --latex_code_style=pyg
 pdflatex -shell-escape demo
 !ec
+
+!bnotice Pop up of code blocks in Beamer slides
+Note that one can insert lines with `|\pause|` in code blocks to
+indicate a place where Beamer will make a pause and one must
+click the mouse or down-arrow to proceed with more of the code.
+(All other formats ignore this `|\pause|` command. However, if
+you compile the document before doing `doconce slides_beamer`,
+`|\pause|` is not recognized and must be manually removed, i.e.,
+`doconce subst '\|\\pause\|\n' '' mydoc.tex`.)
+!enotice
 
 ===== IPython notebook =====
 

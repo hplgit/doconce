@@ -116,6 +116,21 @@ fi
 !eblock
 
 !split
+===== Pop ups inside code blocks (for Beamer slides only) =====
+
+!bc pycod
+def f(x):
+    return 42 + x
+
+|\pause|
+def g(x):
+    return f(42)
+
+|\pause|
+print g(13)
+!ec
+
+!split
 ===== Various admon blocks =====
 
 Can use admons to simulate blocks:

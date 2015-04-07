@@ -62,6 +62,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -244,12 +259,12 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Grid layout of slide: MxN cells   <a name="___sec59"></a></h2>
+<h2 id="___sec59">Grid layout of slide: MxN cells  </h2>
 
 <p>
 Last page gets rendered to
 
-<h2>Headline  <a name="___sec60"></a></h2>
+<h2 id="___sec60">Headline </h2>
 
 <p>
 

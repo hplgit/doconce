@@ -55,10 +55,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -80,15 +80,16 @@ div { text-align: justify; text-justify: inter-word; }
                '___sec3'),
               (' The Forward Euler scheme explained ', 2, None, '___sec4'),
               (' Implementation ', 2, None, '___sec5'),
-              (' Results ', 1, None, '___sec6'),
+              (' How to use the solver function ', 2, None, '___sec6'),
+              (' Results ', 1, None, '___sec7'),
               (' The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone ',
                2,
                None,
-               '___sec7'),
+               '___sec8'),
               (' The artifacts can be explained by some theory ',
                2,
                None,
-               '___sec8')]}
+               '___sec9')]}
 end of tocinfo -->
 
 <body>
@@ -113,47 +114,18 @@ MathJax.Hub.Config({
 <a name="part0009"></a>
 <!-- !split -->
 
-<h2>The artifacts can be explained by some theory  <a name="___sec8"></a></h2>
+<h2 id="___sec8">The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone </h2>
 
 <p>
-<!-- !bpop -->
-Exact solution of the scheme:
-
-$$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thinspace .$$
-
-<!-- !epop -->
+<center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
-Key results:
-
-<p>
-<!-- !bpop -->
-
-<ul>
- <li> Stability: \( |A| < 1 \)</li>
- <li> No oscillations: \( A>0 \)</li>
- <li> \( \Delta t < 1/a \) for Forward Euler (\( \theta=0 \))</li>
- <li> \( \Delta t < 2/a \) for Crank-Nicolson (\( \theta=1/2 \))</li>
-</ul>
-
-<!-- !epop -->
-
-<p>
-<!-- !bpop -->
-<div class="alert alert-block alert-summary alert-text-normal">
-<b>Concluding remarks:</b>
-<p>
-Only the Backward Euler scheme is guaranteed to always give
-qualitatively correct results.
-</div>
-
-<!-- !epop -->
-
 <p>
 <!-- begin bottom navigation -->
 <table style="width: 100%"><tr><td>
 <div style="text-align: left;"><a href="._demo008.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
 </td><td>
+<div style="text-align: right;"><a href="._demo010.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
 </td></tr></table>
 <!-- end bottom navigation -->
 </p>

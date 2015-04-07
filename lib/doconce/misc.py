@@ -5036,6 +5036,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 \usepackage{fancyvrb}
 %%\usepackage{minted} %% requires pygments and latex -shell-escape filename
 %%\usepackage{anslistings}
+%%\usepackage{listingsutf8}
 
 \usepackage{amsmath,amssymb,bm}
 %%\usepackage[latin1]{inputenc}
@@ -5095,6 +5096,11 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     if re.search('\\usepackage.+minted', header):
         slides = slides.replace(
             r'%\usepackage{minted}', r'\usepackage{minted}')
+    if re.search('\\usepackage.+listings', header):
+        m = re.search(r'^% Define colors.+?^% end of custom lstdefinestyles', header, flags=re.DOTALL|re.MULTILINE)
+        lststyles = m.group() if m else ''
+        slides = slides.replace(
+            r'%\usepackage{listingsutf8}', r'\usepackage{listingsutf8}' + '\n\n' + lststyles)
     if re.search('\\usepackage.+anslistings', header):
         slides = slides.replace(
             r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
@@ -8983,6 +8989,39 @@ def fix_bibtex4publish():
         f = open(bibfile, 'w')
         f.writelines(lines)
         f.close()
+
+def _usage_list_fig_src_files():
+    print 'Usage: doconce list_fig_src_files *.do.txt'
+
+def list_fig_src_files():
+    """
+    List all figure, movie, and source code files needed in a
+    set of .do.txt files. Useful when splitting a document into
+    new chapters and directories.
+    """
+    if len(sys.argv) < 2:
+        _usage_list_fig_src_files()
+        sys.exit(0)
+
+    from common import INLINE_TAGS
+    code_pattern = '^@@@CODE +([^ ]+)'
+    figs = []
+    movs = []
+    cods = []
+    for filename in sys.argv[1:]:
+        f = open(filename, 'r');  text = f.read();  f.close()
+        figs += [figfile for figfile, options, caption in
+                 re.findall(INLINE_TAGS['figure'], text, flags=re.MULTILINE)]
+        movs += [movfile for movfile, options, caption in
+                 re.findall(INLINE_TAGS['movie'], text, flags=re.MULTILINE)]
+        cods += re.findall(code_pattern, text, flags=re.MULTILINE)
+    if figs:
+        print '\n'.join(figs)
+    if movs:
+        print '\n'.join(movs)
+    if cods:
+        print '\n'.join(cods)
+
 
 def _usage_csv2table():
     print 'Usage: doconce csv2table somefile.csv [--headings=clr --columns=rrl --delimiter=;] > outfile'

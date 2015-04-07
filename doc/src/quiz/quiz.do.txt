@@ -163,7 +163,7 @@ Q: This is a very famous quote:
 !equote
 This quote is attributed to
 
-Cw: Geroge W. Bush
+Cw: George W. Bush
 
 Cr: Donald Knuth
 E: According to "Wikiquote": "http://en.wikiquote.org/wiki/Donald_Knuth",
@@ -189,7 +189,7 @@ Q: Here is a famous quote:
 |equote
 This quote is attributed to
 
-Cw: Geroge W. Bush
+Cw: George W. Bush
 
 Cr: Donald Knuth
 E: According to "Wikiquote": "http://en.wikiquote.org/wiki/Donald_Knuth",
@@ -672,7 +672,7 @@ function `u(t)`.
 E: Yes, `D` applies a widely used finite difference approximation
 formula to the derivative.
 
-Cw: Both calls to `D` results in the exact derivative, provided we
+Cw: Both calls to `D` result in the exact derivative, provided we
 replace `t^2` by `t**2`.
 
 E: Yes, the finite difference approximation used in `D` is exact

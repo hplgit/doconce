@@ -197,7 +197,7 @@ MathJax.Hub.Config({
 <center>[1] <b style="font-weight: bold">Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">Department of Informatics, University of Oslo</b></center>
 <p>
-<center><b style="font-weight: bold">Nov 23, 2014</b></center> <!-- date -->
+<center><b style="font-weight: bold">Apr 7, 2015</b></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -214,7 +214,7 @@ MathJax.Hub.Config({
 
 <section class="slide">
 
-<h2>Goal  <a name="___sec0"></a></h2>
+<h2 id="___sec0">Goal </h2>
 
 <p>
 The primary goal of this demo talk is to demonstrate how to write
@@ -256,7 +256,7 @@ demonstrated.
 
 <section class="slide">
 
-<h1 style="text-align: center;">Problem setting and methods  <a name="___sec1"></a></h1>
+<h1 id="___sec1">Problem setting and methods </h1>
 <!-- Short title: Problem -->
 
 <p>
@@ -269,7 +269,7 @@ demonstrated.
 
 <section class="slide">
 
-<h2>We aim to solve the (almost) simplest possible differential equation problem  <a name="___sec2"></a></h2>
+<h2 id="___sec2">We aim to solve the (almost) simplest possible differential equation problem </h2>
 
 <p>
 
@@ -317,7 +317,7 @@ Here,
 
 <section class="slide">
 
-<h2>The ODE problem is solved by a finite difference scheme  <a name="___sec3"></a></h2>
+<h2 id="___sec3">The ODE problem is solved by a finite difference scheme </h2>
 
 <p>
 
@@ -359,7 +359,7 @@ schemes.
 
 <section class="slide">
 
-<h2>The Forward Euler scheme explained  <a name="___sec4"></a></h2>
+<h2 id="___sec4">The Forward Euler scheme explained </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -377,7 +377,7 @@ schemes.
 
 <section class="slide">
 
-<h2>Implementation  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Implementation </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -411,7 +411,42 @@ schemes.
 
 <section class="slide">
 
-<h1 style="text-align: center;">Results  <a name="___sec6"></a></h1>
+<h2 id="___sec6">How to use the solver function </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b style="font-weight: bold">A complete main program.</b>
+<p>
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22"># Set problem parameters</span>
+I = <span style="color: #B452CD">1.2</span>
+a = <span style="color: #B452CD">0.2</span>
+T = <span style="color: #B452CD">8</span>
+dt = <span style="color: #B452CD">0.25</span>
+theta = <span style="color: #B452CD">0.5</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">solver</span> <span style="color: #8B008B; font-weight: bold">import</span> solver, exact_solution
+u, t = solver(I, a, T, dt, theta)
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+plt.plot(t, u, t, exact_solution)
+plt.legend([<span style="color: #CD5555">&#39;numerical&#39;</span>, <span style="color: #CD5555">&#39;exact&#39;</span>])
+plt.show()
+</pre></div>
+
+</div>
+
+
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h1 id="___sec7">Results </h1>
 
 <p>
 <center><p><img src="fig/results.jpg" align="bottom" width=600></p></center>
@@ -423,7 +458,7 @@ schemes.
 
 <section class="slide">
 
-<h2>The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone  <a name="___sec7"></a></h2>
+<h2 id="___sec8">The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone </h2>
 
 <p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
@@ -435,7 +470,7 @@ schemes.
 
 <section class="slide">
 
-<h2>The artifacts can be explained by some theory  <a name="___sec8"></a></h2>
+<h2 id="___sec9">The artifacts can be explained by some theory </h2>
 
 <p>
 

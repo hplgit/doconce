@@ -963,7 +963,7 @@ Very effective way to generate slides from running text:
  * Focus on key equations, figures, movies, key code snippets
  * Insert `!split` wherever you want a new slide to begin
  * Insert `!bpop` and `!epop` around elements to pop up
-   in sequence
+   in sequence (or insert `|\pause|` inside code blocks)
  * Use 7 `=` or 5 `=` in headings (H2 or H3)
  * Supported slide types: Beamer, HTML,
    HTML5 (reveal.js, deck.js, csss, dzslides)
@@ -1166,24 +1166,11 @@ and paste the code into the text area.
 ===== DocOnce to pdfLaTeX =====
 
 !bc
-doconce format pdflatex doconcefile
-
-# Result: doconcefile.p.tex (ptex2tex file)
-# Run either
-ptex2tex doconcefile
-# or
-doconce ptex2tex doconcefile -DHELVETICA envir=minted
+doconce format pdflatex doconcefile --latex_code_style=lst
 
 pdflatex doconcefile
 bibtex doconcefile
 pdflatex doconcefile
-
-# More control of how code is typeset
-doconce format pdflatex doconcefile --minted_latex_style=trac
-doconce ptex2tex doconcefile envir=minted
-
-doconce format pdflatex doconcefile
-doconce ptex2tex doconcefile envir=ans:nt
 !ec
 
 !split
@@ -1239,13 +1226,12 @@ doconce format plain  doconcefile  # plain, untagged text for email
 !split
 ===== Installation =====
 
- * Ubuntu: `sudo apt-get install python-doconce` (old!)
  * Source at &quot;GitHub&quot;: &quot;https://github.com/hplgit/doconce&quot; (recommended!)
-   * `hg clone` + `sudo python setyp.py install`
+   * `git clone` + `sudo python setyp.py install`
  * Many &quot;dependencies...&quot;: &quot;http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies&quot;
    * Must have `preprocess` and `mako`
    * Need `latex`, `sphinx`, `pandoc`, etc. (see the &quot;Installation&quot;: &quot;http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies&quot; description)
-   * Easy for slides: only `preprocess` is needed :-)
+   * Easy for slides: only `preprocess` and `mako` are needed :-)
 
 !split
 ===== Writing tips for LaTeX writers who want to convert to DocOnce *and generate other formats* =====

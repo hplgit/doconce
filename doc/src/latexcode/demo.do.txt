@@ -5,7 +5,7 @@ DATE: today
 __Summary.__
 This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
-replaces the need for both the stand-alone program `ptex2tex` and
+(almost) replaces the need for both the stand-alone program `ptex2tex` and
 the simplified `doconce ptex2tex` utility. In fact, the
 new capabilities are more flexible than `ptex2tex` and results in
 much cleaner LaTeX code (especially for verbatim blocks with
@@ -14,6 +14,7 @@ background color).
 ======= Blocks of computer code in LaTeX =======
 
 ===== History =====
+label{latexcode:history}
 
 Originally, DocOnce relied on generating code for `ptex2tex` rather than
 plain LaTeX, the reason being that `ptex2tex` offered about 40 different
@@ -26,7 +27,7 @@ was not dependent on the comprehensive `ptex2tex` set up.
 In 2015, a new implementation in DocOnce replaced `ptex2tex` and
 `doconce ptex2tex`[^ptex2tex], and can in fact generate LaTeX code directly.
 Rather than offering a range of packages for typesetting computer code,
-as the `ptex2tex` tool did, the implementation made use of only three
+as the `ptex2tex` tool does, the implementation made use of only three
 choices: `fancyvrb`, `minted`, or `listing`.
 
 [^ptex2tex]: The `ptex2tex` program is not made redundant by the new
@@ -35,8 +36,12 @@ environment in the `ptex2tex` configuration file), the size of
 the box is in the new implementation clearly larger than what is
 required for the code. The corresponding `Blue` environment in `ptex2tex`
 applies some hacks to reduce and fine tune the size.
+One can reduce the size with the new tool too, but not to the same
+extent, and it requires that there are no `!bbox` environments in
+the document.
 
 ===== Quick overview of the functionality =====
+label{latexcode:overview}
 
 When running `doconce format latex mydoc` or `doconce format pdflatex mydoc`,
 the command-line argument `--latex_code_style=...` specifies the typesetting
@@ -69,6 +74,7 @@ DocOnce code environment (`pycod`, `sys`, etc.) independently, including a
 common default choice for the code environments that are not specified.
 
 ===== The simplest choice: a single LaTeX environment for all blocks =====
+label{latexcode:uniform}
 
 The following command speficies the `Verbatim` (`vrb`)
 environment for all code blocks:
@@ -101,6 +107,7 @@ is measured in mm. (Using square brackets, as shown below, it can also
 be set individually for different code environments.)
 
 ===== Using the `minted` (Pygments) tool =====
+label{latexcode:pyg}
 
 Replacing `vrb` by `pyg` switches the LaTeX environments to `minted`:
 
@@ -138,6 +145,7 @@ The `perldoc` choice "changes the colors": "doc_pyg_perldoc.pdf" from
 the default (Pygments `default`) "choice": "doc_pyg.pdf" generated previously.
 
 ===== Using the `lstlisting` tool =====
+label{latexcode:lst}
 
 The third package for typesetting of verbatim blocks of code is
 `listingsutf8` and the `lstlisting` LaTeX environment, which in
@@ -158,6 +166,7 @@ However, all possible `lstlisting` options can be set, as will
 be shown later.
 
 ===== Adding a colored background =====
+label{latexcode:background}
 
 In the previous example, we can add one of the predefined backgrounds
 in DocOnce:
@@ -203,17 +212,20 @@ Terminal> doconce replace \
 !ec
 
 ===== Setting LaTeX environment parameters =====
+label{latexcode:latex:prms}
 
 It is easy to specify parameters to the `lstlisting` or the two
 other LaTeX environments:
 
 !bc sys
-Terminal> doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt]"
+Terminal> doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]"
 !ec
-These parameters specifies "line numbers in the code blocks": "doc_lst_yellow2_linenos.pdf". *Note that any backslash in LaTeX command must be a
+These parameters specifies "line numbers in the code blocks": "doc_lst_yellow2_linenos.pdf" as well as wrapping of too long lines (`breaklines=true`).
+*Note that any backslash in LaTeX command must be a
 double backslash* on the command line!
 
 ===== Specifying individual code environments =====
+label{latexcode:nonuniform}
 
 The colored background might be appropriate for computer code in the
 previous example, but maybe not so appropriate for the terminal
@@ -242,6 +254,7 @@ Terminal> doconce format pdflatex doc "--latex_code_style=default:lst-yellow2@sy
 "Here is the result": "doc_lst_sys.pdf".
 
 ===== Specifying the `lst` style =====
+label{latexcode:lst:style}
 
 DocOnce comes with some predefined styles for the `lstlisting` LaTeX
 environment:
@@ -274,6 +287,7 @@ Terminal> doconce format pdflatex doc \
 You may check out the "corresponding result": "doc_lst_stylefb.pdf".
 
 ===== General syntax for `--latex_code_style=` =====
+label{latexcode:syntax}
 
 The `--latex_code_style=` option can take a set of code environment
 specifications separated by `@`. Each specification is of the form
@@ -299,3 +313,16 @@ increased readability - it must be one line as a terminal command!):
    framesep=2.5mm,framerule=0.7pt]"
 !ec
 Here is the "result": "doc_lots.pdf" of this detailed specification.
+
+!bnotice Size of colored background
+The default colored background is significantly larger than the
+verbatim text. The surrounding space can be reduced by setting
+`\fboxsep` to a negative value,
+see the line right before the definition of the `cod`
+environment in the `.tex` file. However, if a `!bbox` is used in
+the document, `\fboxsep` cannot be set to a negative value without
+destroying those boxes. If one really wants the colored background
+to be about as large as the text, there is at present no other
+option than using `ptex2tex` with the `Blue` and similar environments in the
+`.ptex2tex.cfg` file.
+!enotice
