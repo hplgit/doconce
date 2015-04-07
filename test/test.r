@@ -1817,7 +1817,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
@@ -1837,7 +1837,7 @@ MathJax.Hub.Config({
 </center>
 
 <center>
-<b>A. Dummy Author</b>
+<b>A. Dummy Author</b> 
 </center>
 
 <center>
@@ -2477,7 +2477,7 @@ y = line(x=3)
 print y
 \epypro
 \noindent
-(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution})
+(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
 
 
 Some more Python code (actually specified as a sage cell, but
@@ -2642,7 +2642,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -2801,8 +2801,8 @@ both inline and in block:
 
 \begin{align*}
 \Ddt{u} &= 0
-\\
-\half &= \halfi\\
+\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \end{align*}
 
@@ -2810,8 +2810,8 @@ Or with align with label and numbers:
 
 \begin{align}
 \Ddt{u} &= 0
-\label{aligneq1}\\
-\half &= \halfi\\
+\label{aligneq1}\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \label{aligneq2}
 \end{align}
@@ -3208,7 +3208,7 @@ We have
 
 
 
-\begin{tcolorbox}[skin=widget,
+\begin{tcolorbox}[%skin=widget,
 boxrule=1mm,
 coltitle=black,
 colframe=blue!45!white,
@@ -3297,14 +3297,14 @@ We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align-asterisk environment:
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 
 
 And here is a system of equations with labels in an align environment:
 \begin{align}
-a &= q + 4 + 5+ 6 \label{eq1} \\
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
@@ -3314,7 +3314,7 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 \begin{multline}
-a = b = q + \\
+a = b = q + \\ 
   f + \nabla\cdot\nabla u
 \label{multiline:eq1}
 \end{multline}
@@ -3322,7 +3322,7 @@ Testing split:
 \begin{equation}
 \label{split:envir:eq}
 \begin{split}
-a = b = q &+ \\
+a = b = q &+ \\ 
   & f + \nabla\cdot\nabla u
 \end{split}
 \end{equation}
@@ -3330,13 +3330,13 @@ We can refer to the last equation by (\ref{split:envir:eq}).
 
 Testing gather:
 \begin{gather}
-a = b \\
+a = b \\ 
 c = d + 7 + 9
 \end{gather}
 
 Testing alignat:
 \begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
 b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
 \end{alignat}
 Let us refer to (\ref{eq1})-(\ref{eq2}) again, and to the
@@ -3344,7 +3344,7 @@ alignat variant (\ref{eq1a})-(\ref{eq2a}), and to (\ref{my:eq1}).
 
 Testing eqnarray:
 \begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\
+{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
 \end{eqnarray}
 
@@ -3536,7 +3536,7 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
@@ -3783,23 +3783,23 @@ What is the solution of this equation?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 $y=e^{-y}$
 
-\textbf{B}.
+\textbf{B}. 
 $y=e^{y}$
 
-\textbf{C}.
+\textbf{C}. 
 \bpycod
 from math import exp
 def f(x):
     return exp(x)
 \epycod
 
-\textbf{D}.
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-\textbf{E}.
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -3812,7 +3812,7 @@ for $x$ or $y$, not a function $y(x)$.
 \noindent {\bf Solution:}\\
 
 
-\textbf{A}: Right.
+\textbf{A}: Right. 
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
@@ -3827,7 +3827,7 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong.
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
@@ -3973,16 +3973,16 @@ What is the capital of Norway?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 Stockholm
 
-\textbf{B}.
+\textbf{B}. 
 London
 
-\textbf{C}.
+\textbf{C}. 
 Oslo
 
-\textbf{D}.
+\textbf{D}. 
 Bergen
 
 
@@ -3996,9 +3996,9 @@ Bergen
 
 \textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-\textbf{B}: Wrong.
+\textbf{B}: Wrong. 
 
-\textbf{C}: Right.
+\textbf{C}: Right. 
 
 \textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
@@ -4247,9 +4247,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
  \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-
-\usepackage[mathlines]{lineno}  % show line numbers
-\linenumbers
 
 % Display labels for sections, equations, and citations in the margin
 \usepackage{showlabels}
@@ -4966,7 +4963,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -5130,8 +5127,8 @@ both inline and in block:
 
 \begin{align*}
 \Ddt{u} &= 0
-\\
-\half &= \halfi\\
+\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \end{align*}
 
@@ -5139,8 +5136,8 @@ Or with align with label and numbers:
 
 \begin{align}
 \Ddt{u} &= 0
-\label{aligneq1}\\
-\half &= \halfi\\
+\label{aligneq1}\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \label{aligneq2}
 \end{align}
@@ -5630,14 +5627,14 @@ We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align--asterisk environment:
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 
 
 And here is a system of equations with labels in an align environment:
 \begin{align}
-a &= q + 4 + 5+ 6 \label{eq1} \\
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
@@ -5647,7 +5644,7 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 Many of the next environments will fail in non--latex formats.
 Testing multiline:
 \begin{multline}
-a = b = q + \\
+a = b = q + \\ 
   f + \nabla\cdot\nabla u
 \label{multiline:eq1}
 \end{multline}
@@ -5655,7 +5652,7 @@ Testing split:
 \begin{equation}
 \label{split:envir:eq}
 \begin{split}
-a = b = q &+ \\
+a = b = q &+ \\ 
   & f + \nabla\cdot\nabla u
 \end{split}
 \end{equation}
@@ -5663,13 +5660,13 @@ We can refer to the last equation by (\ref{split:envir:eq}).
 
 Testing gather:
 \begin{gather}
-a = b \\
+a = b \\ 
 c = d + 7 + 9
 \end{gather}
 
 Testing alignat:
 \begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
 b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
 \end{alignat}
 Let us refer to (\ref{eq1})-(\ref{eq2}) again, and to the
@@ -5677,7 +5674,7 @@ alignat variant (\ref{eq1a})-(\ref{eq2a}), and to (\ref{my:eq1}).
 
 Testing eqnarray:
 \begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\
+{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
 \end{eqnarray}
 
@@ -5874,7 +5871,7 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
@@ -6132,13 +6129,13 @@ What is the solution of this equation?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 $y=e^{-y}$
 
-\textbf{B}.
+\textbf{B}. 
 $y=e^{y}$
 
-\textbf{C}.
+\textbf{C}. 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from math import exp
 def f(x):
@@ -6146,10 +6143,10 @@ def f(x):
 \end{minted}
 \noindent
 
-\textbf{D}.
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-\textbf{E}.
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -6162,7 +6159,7 @@ for $x$ or $y$, not a function $y(x)$.
 \noindent {\bf Solution:}\\
 
 
-\textbf{A}: Right.
+\textbf{A}: Right. 
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
@@ -6177,7 +6174,7 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong.
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
@@ -6326,16 +6323,16 @@ What is the capital of Norway?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 Stockholm
 
-\textbf{B}.
+\textbf{B}. 
 London
 
-\textbf{C}.
+\textbf{C}. 
 Oslo
 
-\textbf{D}.
+\textbf{D}. 
 Bergen
 
 
@@ -6349,9 +6346,9 @@ Bergen
 
 \textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-\textbf{B}: Wrong.
+\textbf{B}: Wrong. 
 
-\textbf{C}: Right.
+\textbf{C}: Right. 
 
 \textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
@@ -6625,9 +6622,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
  \begin{spacing}{0.75}{\bf #1}: #2\end{spacing}}}
 \newcommand{\longinlinecomment}[3]{%
 \todo[inline,color=orange!40,caption={#3}]{{\bf #1}: #2}}
-
-\usepackage[mathlines]{lineno}  % show line numbers
-\linenumbers
 
 % Display labels for sections, equations, and citations in the margin
 \usepackage{showlabels}
@@ -7304,7 +7298,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -7463,8 +7457,8 @@ both inline and in block:
 
 \begin{align*}
 \Ddt{u} &= 0
-\\
-\half &= \halfi\\
+\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \end{align*}
 
@@ -7472,8 +7466,8 @@ Or with align with label and numbers:
 
 \begin{align}
 \Ddt{u} &= 0
-\label{aligneq1}\\
-\half &= \halfi\\
+\label{aligneq1}\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \label{aligneq2}
 \end{align}
@@ -7958,14 +7952,14 @@ We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align--asterisk environment:
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 
 
 And here is a system of equations with labels in an align environment:
 \begin{align}
-a &= q + 4 + 5+ 6 \label{eq1} \\
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
@@ -7975,7 +7969,7 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 Many of the next environments will fail in non--latex formats.
 Testing multiline:
 \begin{multline}
-a = b = q + \\
+a = b = q + \\ 
   f + \nabla\cdot\nabla u
 \label{multiline:eq1}
 \end{multline}
@@ -7983,7 +7977,7 @@ Testing split:
 \begin{equation}
 \label{split:envir:eq}
 \begin{split}
-a = b = q &+ \\
+a = b = q &+ \\ 
   & f + \nabla\cdot\nabla u
 \end{split}
 \end{equation}
@@ -7991,13 +7985,13 @@ We can refer to the last equation by (\ref{split:envir:eq}).
 
 Testing gather:
 \begin{gather}
-a = b \\
+a = b \\ 
 c = d + 7 + 9
 \end{gather}
 
 Testing alignat:
 \begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
 b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
 \end{alignat}
 Let us refer to (\ref{eq1})-(\ref{eq2}) again, and to the
@@ -8005,7 +7999,7 @@ alignat variant (\ref{eq1a})-(\ref{eq2a}), and to (\ref{my:eq1}).
 
 Testing eqnarray:
 \begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\
+{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
 \end{eqnarray}
 
@@ -8201,7 +8195,7 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
@@ -8452,23 +8446,23 @@ What is the solution of this equation?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 $y=e^{-y}$
 
-\textbf{B}.
+\textbf{B}. 
 $y=e^{y}$
 
-\textbf{C}.
+\textbf{C}. 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from math import exp
 def f(x):
     return exp(x)
 \end{minted}
 
-\textbf{D}.
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-\textbf{E}.
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -8481,7 +8475,7 @@ for $x$ or $y$, not a function $y(x)$.
 \noindent {\bf Solution:}\\
 
 
-\textbf{A}: Right.
+\textbf{A}: Right. 
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
@@ -8496,7 +8490,7 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong.
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
@@ -8645,16 +8639,16 @@ What is the capital of Norway?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 Stockholm
 
-\textbf{B}.
+\textbf{B}. 
 London
 
-\textbf{C}.
+\textbf{C}. 
 Oslo
 
-\textbf{D}.
+\textbf{D}. 
 Bergen
 
 
@@ -8668,9 +8662,9 @@ Bergen
 
 \textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-\textbf{B}: Wrong.
+\textbf{B}: Wrong. 
 
-\textbf{C}: Right.
+\textbf{C}: Right. 
 
 \textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
@@ -8901,59 +8895,53 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
 
 % Background for code blocks (parameter is color name)
-%\setlength{\fboxsep}{-1.5mm}  % makes cod/pro background box smaller
-\newenvironment{cod}[1]{%
-   \def\FrameCommand{\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
- {\unskip\medskip\endMakeFramed}
-
-% Alternative (\vskip with positive skip adds colored space)
-%\newenvironment{cod}[1]{%
-%   \def\FrameCommand{\colorbox{#1}}%
-%   \MakeFramed{\FrameRestore}\vskip 0mm}%
-% {\vskip 0mm\endMakeFramed}
+\setlength{\fboxsep}{2mm}  % adjust cod/pro background box
+\newenvironment{cod}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
 
 % Background for complete program blocks (parameter 1 is color name
 % for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{%
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
- {\unskip\medskip\endMakeFramed}
-
+\newenvironment{pro}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
 \usepackage{listingsutf8}
 
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
+  escapeinside={||},
 }
 
 % Various styles for lstlisting
 \lstdefinestyle{simple}{
-  inputencoding=utf8x,
-  extendedchars=\true,
-  aboveskip=\smallskipamount,
-  belowskip=\smallskipamount,
-  breaklines=false,
-  breakatwhitespace=true,
-  breakindent=30,
-  showstringspaces=false,
-  columns=fullflexible,  % tighter character kerning, like verb
+inputencoding=utf8x,
+extendedchars=\true,
+aboveskip=\smallskipamount,
+belowskip=\smallskipamount,
+breaklines=false,
+breakatwhitespace=true,
+breakindent=30,
+showstringspaces=false,
+columns=fullflexible,  % tighter character kerning, like verb
 }
 
 \lstdefinestyle{redblue}{
-  inputencoding=utf8x,
-  extendedchars=\true,
-  aboveskip=\smallskipamount,
-  belowskip=\smallskipamount,
-  breaklines=false,
-  breakatwhitespace=true,
-  breakindent=30,
-  showstringspaces=false,
-  keywordstyle=\color{blue}\bfseries,
-  commentstyle=\color{myteal},
-  stringstyle=\color{darkgreen},
-  identifierstyle=\color{darkorange},
-  columns=fullflexible,  % tighter character kerning, like verb
+inputencoding=utf8x,
+extendedchars=\true,
+aboveskip=\smallskipamount,
+belowskip=\smallskipamount,
+breaklines=false,
+breakatwhitespace=true,
+breakindent=30,
+showstringspaces=false,
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
 }
 
 % Use this one without additional background color
@@ -9001,7 +8989,7 @@ stringstyle=\color{string_red},
 identifierstyle=\color{darkorange},
 columns=fullflexible,  % tighter character kerning, like verb
 }
-
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -9271,22 +9259,22 @@ A Document for Testing DocOnce
 {\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf Kaare Dump${}^{3}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf A. Dummy Author${}^{}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
 \end{center}
@@ -9301,7 +9289,7 @@ A Document for Testing DocOnce
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
 \centerline{{\small ${}^7$Fourth Inst}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -9535,7 +9523,7 @@ print y
 \end{lstlisting}\end{pro}
 \noindent
 \noindent
-(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution})
+(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
 
 
 Some more Python code (actually specified as a sage cell, but
@@ -9710,7 +9698,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -9871,8 +9859,8 @@ both inline and in block:
 
 \begin{align*}
 \Ddt{u} &= 0
-\\
-\half &= \halfi\\
+\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \end{align*}
 
@@ -9880,8 +9868,8 @@ Or with align with label and numbers:
 
 \begin{align}
 \Ddt{u} &= 0
-\label{aligneq1}\\
-\half &= \halfi\\
+\label{aligneq1}\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \label{aligneq2}
 \end{align}
@@ -10366,14 +10354,14 @@ We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align-asterisk environment:
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 
 
 And here is a system of equations with labels in an align environment:
 \begin{align}
-a &= q + 4 + 5+ 6 \label{eq1} \\
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
@@ -10383,7 +10371,7 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 \begin{multline}
-a = b = q + \\
+a = b = q + \\ 
   f + \nabla\cdot\nabla u
 \label{multiline:eq1}
 \end{multline}
@@ -10391,7 +10379,7 @@ Testing split:
 \begin{equation}
 \label{split:envir:eq}
 \begin{split}
-a = b = q &+ \\
+a = b = q &+ \\ 
   & f + \nabla\cdot\nabla u
 \end{split}
 \end{equation}
@@ -10399,13 +10387,13 @@ We can refer to the last equation by (\ref{split:envir:eq}).
 
 Testing gather:
 \begin{gather}
-a = b \\
+a = b \\ 
 c = d + 7 + 9
 \end{gather}
 
 Testing alignat:
 \begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
 b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
 \end{alignat}
 Let us refer to (\ref{eq1})-(\ref{eq2}) again, and to the
@@ -10413,7 +10401,7 @@ alignat variant (\ref{eq1a})-(\ref{eq2a}), and to (\ref{my:eq1}).
 
 Testing eqnarray:
 \begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\
+{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
 \end{eqnarray}
 
@@ -10606,7 +10594,7 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
@@ -10857,13 +10845,13 @@ What is the solution of this equation?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 $y=e^{-y}$
 
-\textbf{B}.
+\textbf{B}. 
 $y=e^{y}$
 
-\textbf{C}.
+\textbf{C}. 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 from math import exp
 def f(x):
@@ -10871,10 +10859,10 @@ def f(x):
 \end{lstlisting}\end{cod}
 \noindent
 
-\textbf{D}.
+\textbf{D}. 
 The solution cannot be found because there is a derivative in the equation.
 
-\textbf{E}.
+\textbf{E}. 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -10887,7 +10875,7 @@ for $x$ or $y$, not a function $y(x)$.
 \noindent {\bf Solution:}\\
 
 
-\textbf{A}: Right.
+\textbf{A}: Right. 
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
@@ -10902,7 +10890,7 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong.
+\textbf{E}: Wrong. 
 
 
 % --- end solution of exercise ---
@@ -11048,16 +11036,16 @@ What is the capital of Norway?
 
 \vspace{2mm}
 
-\textbf{A}.
+\textbf{A}. 
 Stockholm
 
-\textbf{B}.
+\textbf{B}. 
 London
 
-\textbf{C}.
+\textbf{C}. 
 Oslo
 
-\textbf{D}.
+\textbf{D}. 
 Bergen
 
 
@@ -11071,9 +11059,9 @@ Bergen
 
 \textbf{A}: Wrong. Stockholm is the capital of Sweden.
 
-\textbf{B}: Wrong.
+\textbf{B}: Wrong. 
 
-\textbf{C}: Right.
+\textbf{C}: Right. 
 
 \textbf{D}: Wrong. Those from Bergen would claim so, but nobody else.
 
@@ -11244,8 +11232,8 @@ in a separate document: \Verb!admon.do.txt!.
         <script type="text/javascript"
          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         </script>
-
-
+        
+        
 
 .. Automatically generated reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
@@ -11370,14 +11358,14 @@ Let's do some copying from files too. First from subroutine up to the very end::
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
 
 and then just the subroutine::
 
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -11391,7 +11379,7 @@ and finally the complete file with a plain text verbatim environment
 (``envir=ccq``)::
 
         C     a comment
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -11401,7 +11389,7 @@ and finally the complete file with a plain text verbatim environment
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -11425,11 +11413,11 @@ for the present format::
         class Line:
             def __init__(self, a, b):
                 self.a, self.b = a, b
-
+        
             def __call__(self, x):
                 a, b = self.a, self.b
                 return a*x + b
-
+        
         line = Line(2, 1)
         y = line(x=3)
         print y
@@ -11440,7 +11428,7 @@ such cells are not supported by this format)::
         a = 2
         b = 3
         print 'a+b:', a + b
-
+        
         # In a sage cell we can also plot
         from matplotlib.pyplot import *
         from numpy import *
@@ -11465,9 +11453,9 @@ Standard Python shell sessions::
 IPython sessions::
 
         In [1]: from numpy import sin
-
+        
         In [2]: # Some comment
-
+        
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
@@ -11476,7 +11464,7 @@ IPython sessions::
 C++::
 
         #include <iostream>
-
+        
         int main()
         {
            std::cout << "Sample output" << std::endl;
@@ -11533,7 +11521,7 @@ Any valid pygments lexer/language name can appear to, e.g.::
         =======
         Heading
         =======
-
+        
         Some text.
         !ec
 
@@ -11542,7 +11530,7 @@ results in::
         =======
         Heading
         =======
-
+        
         Some text.
 
 .. Here goes hidden code.
@@ -11552,39 +11540,39 @@ results in::
 Finally, ``!bc do`` supports highlighting of DocOnce source::
 
         ======= DocOnce test file =======
-
+        
         ===== Computer code =====
-
+        
         Inline verbatim code, as in `import numpy as np`, is allowed, as well as
         code blocks:
-
+        
         !bc pycod
         from math import sin
-
+        
         def f(x):
             """Example on a function."""
             return sin(x) + 1
-
+        
         print f(0)
         !ec
-
-
+        
+        
         ===== Mathematics =====
-
+        
         Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
         as equations:
-
+        
         !bt
         \begin{align*}
-        \nabla\cdot\bm{u} &= 0,\\
+        \nabla\cdot\bm{u} &= 0,\\ 
         \bm{u} &= \nabla\phi .
         \end{align*}
         !et
-
+        
         === Subsubsection heading ===
-
+        
         DocOnce files can have chapters, sections, subsections, and subsubsections.
-
+        
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
@@ -11599,8 +11587,8 @@ format rst.
 Here is some **red color** and an attempt to write **with
 green color containing a linebreak
 
-| code.** Some formats will only display
-| this correctly when ``html``
+| code.** Some formats will only display 
+| this correctly when ``html`` 
 | is the output format.
 
 But here some more running text is added which is not part of
@@ -11734,8 +11722,8 @@ both inline and in block
         $$
         \begin{align*}
         \frac{Du}{dt} &= 0
-        \\
-        \frac{1}{2} &= {1/2}\\
+        \\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
         $$
@@ -11747,8 +11735,8 @@ Or with align with label and numbers
         $$
         \begin{align}
         \frac{Du}{dt} &= 0
-        \label{aligneq1}\\
-        \frac{1}{2} &= {1/2}\\
+        \label{aligneq1}\\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \label{aligneq2}
         \end{align}
@@ -11789,17 +11777,17 @@ Tables
 
 Let us take this table from the manual:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
-
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -11807,57 +11795,57 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
+        
 
 Here is yet another table to test that we can handle more than
 one table:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-=========  ===========  ================  =======
-\\( i \\)  \\( h_i \\)  \\( \bar T_i \\)  ``L_i``
-=========  ===========  ================  =======
-0                    0               288  -0.0065
-1               11,000               216      0.0
-2               20,000               216    0.001
-3               32,000               228   0.0028
-4               47,000               270      0.0
-5               51,000               270  -0.0028
-6               71,000               214  ``NaN``
-=========  ===========  ================  =======
+=========  ===========  ================  =======  
+\\( i \\)  \\( h_i \\)  \\( \bar T_i \\)  ``L_i``  
+=========  ===========  ================  =======  
+0                    0               288  -0.0065  
+1               11,000               216      0.0  
+2               20,000               216    0.001  
+3               32,000               228   0.0028  
+4               47,000               270      0.0  
+5               51,000               270  -0.0028  
+6               71,000               214  ``NaN``  
+=========  ===========  ================  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=====  =======  =====================  ===========
-exact  ``v_1``  \\( a_i \\) + ``v_2``  ``verb_3_``
-=====  =======  =====================  ===========
-    9     9.62                   5.57         8.98
-  -20   -23.39                  -7.65       -19.93
-   10    17.74                  -4.50         9.96
-    0    -9.19                   4.13        -0.26
-=====  =======  =====================  ===========
+=====  =======  =====================  ===========  
+exact  ``v_1``  \\( a_i \\) + ``v_2``  ``verb_3_``  
+=====  =======  =====================  ===========  
+    9     9.62                   5.57         8.98  
+  -20   -23.39                  -7.65       -19.93  
+   10    17.74                  -4.50         9.96  
+    0    -9.19                   4.13        -0.26  
+=====  =======  =====================  ===========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===============  ===============
-   \\( S \\)         command
-===============  ===============
-$ ||a_0|| $      ``norm|length``
-\\( x\cap y \\)          ``x|y``
-===============  ===============
+===============  ===============  
+   \\( S \\)         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+\\( x\cap y \\)          ``x|y``  
+===============  ===============  
 
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
@@ -11868,13 +11856,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-=============================  ==========================================================  ==========================================================
-
-=============================  ==========================================================  ==========================================================
-    \\( \mathcal{L}=0 \\)      `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__
-         \\( a=b \\)           `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__
-\\( \nabla\cdot\bm{u} =0  \\)  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__
-=============================  ==========================================================  ==========================================================
+=============================  ==========================================================  ==========================================================  
+                                                                                                                                                       
+=============================  ==========================================================  ==========================================================  
+    \\( \mathcal{L}=0 \\)      `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+         \\( a=b \\)           `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+\\( \nabla\cdot\bm{u} =0  \\)  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+=============================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript \\( a_i \\): ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -12066,7 +12054,7 @@ implementation of a Python function for addition::
 
         def add(a, b):
             return a + b
-
+        
         def test_add():
             a = 1; b = 1
             expected = a + b
@@ -12088,9 +12076,9 @@ We have
 .. admonition:: Highlight box
 
    This environment is used to highlight something
-
+   
    .. raw:: html
-
+   
            $$ E = mc^2 $$
 
 
@@ -12174,7 +12162,7 @@ Here is a system without equation numbers, using the align-asterisk environment
 
         $$
         \begin{align*}
-        \pmb{a} &= \pmb{q}\times\pmb{n} \\
+        \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
         $$
@@ -12347,7 +12335,7 @@ The formula for a circle is given by
 
         $$
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\
+        x &= x_0 + R\cos 2\pi t,\\ 
         y &= y_0 + R\sin 2\pi t,
         \end{align}
         $$
@@ -12358,13 +12346,13 @@ For any \\( t \\), \\( (x,y) \\) is a point on the circle.
 The formula can be used to generate ``n`` points on a circle::
 
         import numpy as np
-
+        
         def circle(R, x0, y0, n=501):
             t = np.linspace(0, 1, n)
             x = x0 + R*np.cos(2*np.pi*t)
             y = y0 + R*np.sin(2*np.pi*t)
             return x, y
-
+        
         x, y = circle(2.0, 0, 0)
 
 .. Often in an exercise we have some comments about the solution
@@ -13128,7 +13116,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -13152,7 +13140,7 @@ and finally the complete file with a plain text verbatim environment
 .. code-block:: text
 
         C     a comment
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -13162,7 +13150,7 @@ and finally the complete file with a plain text verbatim environment
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -13216,7 +13204,7 @@ Another complete program to be typeset as a sage cell:
         a = 2
         b = 3
         print 'a+b:', a + b
-
+        
         # In a sage cell we can also plot
         from matplotlib.pyplot import *
         from numpy import *
@@ -13247,9 +13235,9 @@ IPython sessions:
 .. code-block:: ipy
 
         In [1]: from numpy import sin
-
+        
         In [2]: # Some comment
-
+        
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
@@ -13260,7 +13248,7 @@ C++:
 .. code-block:: c++
 
         #include <iostream>
-
+        
         int main()
         {
            std::cout << "Sample output" << std::endl;
@@ -13327,7 +13315,7 @@ Any valid pygments lexer/language name can appear to, e.g.,
         =======
         Heading
         =======
-
+        
         Some text.
         !ec
 
@@ -13338,7 +13326,7 @@ results in
         =======
         Heading
         =======
-
+        
         Some text.
 
 .. Here goes hidden code.
@@ -13350,39 +13338,39 @@ Finally, ``!bc do`` supports highlighting of DocOnce source:
 .. code-block:: doconce
 
         ======= DocOnce test file =======
-
+        
         ===== Computer code =====
-
+        
         Inline verbatim code, as in `import numpy as np`, is allowed, as well as
         code blocks:
-
+        
         !bc pycod
         from math import sin
-
+        
         def f(x):
             """Example on a function."""
             return sin(x) + 1
-
+        
         print f(0)
         !ec
-
-
+        
+        
         ===== Mathematics =====
-
+        
         Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
         as equations:
-
+        
         !bt
         \begin{align*}
-        \nabla\cdot\boldsymbol{u} &= 0,\\
+        \nabla\cdot\boldsymbol{u} &= 0,\\ 
         \boldsymbol{u} &= \nabla\phi .
         \end{align*}
         !et
-
+        
         === Subsubsection heading ===
-
+        
         DocOnce files can have chapters, sections, subsections, and subsubsections.
-
+        
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
@@ -13397,8 +13385,8 @@ format sphinx.
 Here is some **red color** and an attempt to write **with
 green color containing a linebreak
 
-| code.** Some formats will only display
-| this correctly when ``html``
+| code.** Some formats will only display 
+| this correctly when ``html`` 
 | is the output format.
 
 But here some more running text is added which is not part of
@@ -13541,33 +13529,33 @@ Newcommands must also be tested in this test report:
 both inline and in block:
 
 .. math::
-
+        
         \frac{Du}{dt} &= 0
-        \\
-        \frac{1}{2} &= {1/2}\\
+        \\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
-
+        
 
 Or with align with label and numbers:
 
 .. math::
    :label: aligneq1
-
+        
         \frac{Du}{dt} = 0
-
-
+        
+        
 
 .. math::
-
+          
         \frac{1}{2} = {1/2}
-
+        
 
 .. math::
    :label: aligneq2
-
+          
         \frac{1}{2}\pmb{x} = \pmb{n}
-
-
+        
+        
 
 Sphinx makes a fix here and splits align into multiple equation
 environments.
@@ -13617,13 +13605,13 @@ Tables
 
 Let us take this table from the manual:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads
 
@@ -13636,57 +13624,57 @@ The DocOnce source code reads
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
+        
 
 Here is yet another table to test that we can handle more than
 one table:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-=========  ===========  ================  =======
-:math:`i`  :math:`h_i`  :math:`\bar T_i`  ``L_i``
-=========  ===========  ================  =======
-0                    0               288  -0.0065
-1               11,000               216      0.0
-2               20,000               216    0.001
-3               32,000               228   0.0028
-4               47,000               270      0.0
-5               51,000               270  -0.0028
-6               71,000               214  ``NaN``
-=========  ===========  ================  =======
+=========  ===========  ================  =======  
+:math:`i`  :math:`h_i`  :math:`\bar T_i`  ``L_i``  
+=========  ===========  ================  =======  
+0                    0               288  -0.0065  
+1               11,000               216      0.0  
+2               20,000               216    0.001  
+3               32,000               228   0.0028  
+4               47,000               270      0.0  
+5               51,000               270  -0.0028  
+6               71,000               214  ``NaN``  
+=========  ===========  ================  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=====  =======  =====================  ===========
-exact  ``v_1``  :math:`a_i` + ``v_2``  ``verb_3_``
-=====  =======  =====================  ===========
-    9     9.62                   5.57         8.98
-  -20   -23.39                  -7.65       -19.93
-   10    17.74                  -4.50         9.96
-    0    -9.19                   4.13        -0.26
-=====  =======  =====================  ===========
+=====  =======  =====================  ===========  
+exact  ``v_1``  :math:`a_i` + ``v_2``  ``verb_3_``  
+=====  =======  =====================  ===========  
+    9     9.62                   5.57         8.98  
+  -20   -23.39                  -7.65       -19.93  
+   10    17.74                  -4.50         9.96  
+    0    -9.19                   4.13        -0.26  
+=====  =======  =====================  ===========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===============  ===============
-   :math:`S`         command
-===============  ===============
-$ ||a_0|| $      ``norm|length``
-:math:`x\cap y`          ``x|y``
-===============  ===============
+===============  ===============  
+   :math:`S`         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+:math:`x\cap y`          ``x|y``  
+===============  ===============  
 
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
@@ -13697,13 +13685,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-====================================  ==========================================================  ==========================================================
-
-====================================  ==========================================================  ==========================================================
-       :math:`\mathcal{L}=0`          `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__
-            :math:`a=b`               `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__
-:math:`\nabla\cdot\boldsymbol{u} =0`  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__
-====================================  ==========================================================  ==========================================================
+====================================  ==========================================================  ==========================================================  
+                                                                                                                                                              
+====================================  ==========================================================  ==========================================================  
+       :math:`\mathcal{L}=0`          `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+            :math:`a=b`               `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+:math:`\nabla\cdot\boldsymbol{u} =0`  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+====================================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -13899,7 +13887,7 @@ implementation of a Python function for addition.
 
         def add(a, b):
             return a + b
-
+        
         def test_add():
             a = 1; b = 1
             expected = a + b
@@ -13914,13 +13902,13 @@ Example 2: Addition
 We have
 
 .. math::
-         1 + 1 = 2
+         1 + 1 = 2 
 
 
 .. admonition:: Highlight box
 
    This environment is used to highlight something:
-
+   
    .. math::
             E = mc^2
 
@@ -13986,39 +13974,39 @@ LaTeX Mathematics
 Here is an equation without label using backslash-bracket environment:
 
 .. math::
-         a = b + c
+         a = b + c 
 
 or with number and label, as in :eq:`my:eq1`, using the equation environment:
 
 .. math::
    :label: my:eq1
-
-        {\partial u\over\partial t} = \nabla^2 u
-
+        
+        {\partial u\over\partial t} = \nabla^2 u 
+        
 
 We can refer to this equation by :eq:`my:eq1`.
 
 Here is a system without equation numbers, using the align-asterisk environment:
 
 .. math::
-
-        \pmb{a} &= \pmb{q}\times\pmb{n} \\
+        
+        \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
         b &= \nabla^2 u + \nabla^4 v
-
+        
 
 And here is a system of equations with labels in an align environment:
 
 .. math::
    :label: eq1
-
-        a = q + 4 + 5+ 6
-
+        
+        a = q + 4 + 5+ 6  
+        
 
 .. math::
    :label: eq2
-
-        b = \nabla^2 u + \nabla^4 x
-
+          
+        b = \nabla^2 u + \nabla^4 x 
+        
 
 We can refer to :eq:`eq1`-:eq:`eq2`. They are a bit simpler than
 the Navier-Stokes equations. And test LaTeX hyphen in ``CG-2``.
@@ -14193,14 +14181,14 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by
 
 .. math::
-
+        
         x = x_0 + R\cos 2\pi t,
-
+        
 
 .. math::
-
+          
         y = y_0 + R\sin 2\pi t,
-
+        
 
 where :math:`R` is the radius of the circle, :math:`(x_0,y_0)` is the
 center point, and :math:`t` is a parameter in the unit interval :math:`[0,1]`.
@@ -14210,13 +14198,13 @@ The formula can be used to generate ``n`` points on a circle:
 .. code-block:: python
 
         import numpy as np
-
+        
         def circle(R, x0, y0, n=501):
             t = np.linspace(0, 1, n)
             x = x0 + R*np.cos(2*np.pi*t)
             y = y0 + R*np.sin(2*np.pi*t)
             return x, y
-
+        
         x, y = circle(2.0, 0, 0)
 
 .. Often in an exercise we have some comments about the solution
@@ -14287,7 +14275,7 @@ Here goes a full solution of the whole exercise.
 With some math :math:`a=b` in this solution:
 
 .. math::
-         \hbox{math in solution: } a = b
+         \hbox{math in solution: } a = b 
 
 And code ``a=b`` in this solution:
 
@@ -14309,7 +14297,7 @@ First hint to subexercise a).
 With math :math:`a=b` in hint:
 
 .. math::
-         a=b.
+         a=b. 
 
 And with code (in plain verbatim) returning :math:`x+1` in hint:
 
@@ -14400,7 +14388,7 @@ Just some text. And some math saying that :math:`e^0=1` on a single line,
 to test that math block insertion is correct:
 
 .. math::
-         \exp{(0)} = 1
+         \exp{(0)} = 1 
 
 And a test that the code ``lambda x: x+2`` is correctly placed here:
 
@@ -14428,7 +14416,7 @@ Exercise 8: Solution of differential equation
 Given
 
 .. math::
-         \frac{dy}{dx} = -y(x),\quad y(0)=1
+         \frac{dy}{dx} = -y(x),\quad y(0)=1 
 
 What is the solution of this equation?
 
@@ -15211,7 +15199,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -15235,9 +15223,9 @@ format gwiki.
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
 green color containing a linebreak
 
-code.</font> Some formats will only display
+code.</font> Some formats will only display 
 
-this correctly when `html`
+this correctly when `html` 
 
 is the output format.
 But here some more running text is added which is not part of
@@ -15284,7 +15272,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was
 used above.
 
-*Non-breaking space character.*
+*Non-breaking space character.* 
 This paragraph aims to test [http://en.wikipedia.org/wiki/Non-breaking_space non-breaking space character], and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in `7.4/5.5\approx 1.345` s.  Also check that a~[http://google.com link]~is
@@ -15322,7 +15310,7 @@ Figures without captions are allowed and will be inlined.
 
 ---------------------------------------------------------------
 
-Figure:
+Figure: 
 
 (the URL of the image file ../doc/src/manual/fig/wave1D.png must be inserted here)
 
@@ -15345,7 +15333,7 @@ and an extra space before the FIGURE keyword.
 
 ---------------------------------------------------------------
 
-Figure:  A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in `t_{i+1}`. (myfig)
+Figure:  A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in `t_{i+1}`. (myfig) 
 
 (the URL of the image file ../doc/src/manual/fig/wave1D.png must be inserted here)
 
@@ -15365,7 +15353,7 @@ Test URL as figure name:
 
 ---------------------------------------------------------------
 
-Figure:
+Figure: 
 
 (the URL of the image file https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png must be inserted here)
 
@@ -15405,8 +15393,8 @@ both inline and in block:
 {{{
 \begin{align*}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 }}}
@@ -15416,8 +15404,8 @@ Or with align with label and numbers:
 {{{
 \begin{align}
 \frac{Du}{dt} &= 0
-label{aligneq1}\\
-\frac{1}{2} &= {1/2}\\
+label{aligneq1}\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 label{aligneq2}
 \end{align}
@@ -15739,7 +15727,7 @@ We have
 
 
 
-*Highlight box!*
+*Highlight box!* 
 This environment is used to highlight something:
 
 {{{
@@ -15815,7 +15803,7 @@ We can refer to this equation by Equation (my:eq1).
 Here is a system without equation numbers, using the align-asterisk environment:
 {{{
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 }}}
@@ -15989,7 +15977,7 @@ The formula for a circle is given by
 
 {{{
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 }}}
@@ -16226,7 +16214,7 @@ Choice A: `y=e^{-y}`
 
 Choice B: `y=e^{y}`
 
-Choice C:
+Choice C: 
 {{{
 from math import exp
 def f(x):
@@ -16377,7 +16365,7 @@ Choice D: Bergen
 
 Without label.
 
-*Tip.*
+*Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -16396,7 +16384,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/ Script for Introduction to Version Control] provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.*
+*Summary.* 
 *Bold remark:* Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -16478,8 +16466,8 @@ files among .
 
 <wiki:comment> Coments for editing </wiki:comment>
 
-First consider a quantity `Q`.
-`Q>0`, because  negative   negative.
+First consider a quantity `Q`. 
+`Q>0`, because  negative   negative. 
 
 ==== Appendix: Testing headings ending with `verbatim inline` ====
 
@@ -16868,7 +16856,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -17027,8 +17015,8 @@ both inline and in block:
 :<math>
 \begin{align*}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 </math>
@@ -17038,8 +17026,8 @@ Or with align with label and numbers:
 :<math>
 \begin{align}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align}
 </math>
@@ -17383,7 +17371,7 @@ def test_add():
 We have
 
 :<math>
- 1 + 1 = 2
+ 1 + 1 = 2 
 </math>
 
 
@@ -17395,7 +17383,7 @@ We have
 | text = '''Highlight box!''' This environment is used to highlight something:
 
 :<math>
- E = mc^2
+ E = mc^2 
 </math>
 }}
 
@@ -17455,7 +17443,7 @@ footnotes.
 
 Here is an equation without label using backslash-bracket environment:
 :<math>
- a = b + c
+ a = b + c 
 </math>
 or with number and label, as in Equation (my:eq1), using the equation environment:
 :<math>
@@ -17465,7 +17453,7 @@ We can refer to this equation by Equation (my:eq1).
 Here is a system without equation numbers, using the align-asterisk environment:
 :<math>
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 </math>
@@ -17643,7 +17631,7 @@ The formula for a circle is given by
 
 :<math>
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 </math>
@@ -17732,7 +17720,7 @@ Intro to this exercise. Questions are in subexercises below.
 Here goes a full solution of the whole exercise.
 With some math <math>a=b</math> in this solution:
 :<math>
- \hbox{math in solution: } a = b
+ \hbox{math in solution: } a = b 
 </math>
 And code <code>a=b</code> in this solution:
 <syntaxhighlight lang="text">
@@ -17753,7 +17741,7 @@ First hint to subexercise a).
 With math <math>a=b</math> in hint:
 
 :<math>
- a=b.
+ a=b. 
 </math>
 And with code (in plain verbatim) returning <math>x+1</math> in hint:
 
@@ -17850,7 +17838,7 @@ Just some text. And some math saying that <math>e^0=1</math> on a single line,
 to test that math block insertion is correct:
 
 :<math>
- \exp{(0)} = 1
+ \exp{(0)} = 1 
 </math>
 
 And a test that the code <code>lambda x: x+2</code> is correctly placed here:
@@ -17876,7 +17864,7 @@ lambda x: x+2
 Given
 
 :<math>
- \frac{dy}{dx} = -y(x),\quad y(0)=1
+ \frac{dy}{dx} = -y(x),\quad y(0)=1 
 </math>
 What is the solution of this equation?
 
@@ -17967,78 +17955,78 @@ Filename: <code>selc_composed.pdf</code>.
 
 
 <ol>
- <li> '''H. P. Langtangen and G. Pedersen'''.
+ <li> '''H. P. Langtangen and G. Pedersen'''. 
     Propagation of Large Destructive Waves,
     ''International Journal of Applied Mechanics and Engineering'',
     7(1),
     pp. 187-204,
     2002.
- <li> '''H. P. Langtangen, K.-A. Mardal and R. Winther'''.
+ <li> '''H. P. Langtangen, K.-A. Mardal and R. Winther'''. 
     Numerical Methods for Incompressible Viscous Flow,
     ''Advances in Water Resources'',
     25,
     pp. 1125-1146,
     2002.
- <li> '''H. P. Langtangen'''.
+ <li> '''H. P. Langtangen'''. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     ''SIAM Journal of Scientific and Statistical Computing'',
     15,
     pp. 997-996,
     1994.
- <li> '''K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen'''.
+ <li> '''K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen'''. 
     Software Tools for Multigrid Methods,
     ''Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming'',
     edited by '''H. P. Langtangen and A. Tveito''',
     Springer,
     2003,
     Edited book.
- <li> '''H. P. Langtangen'''.
+ <li> '''H. P. Langtangen'''. 
     The FEMDEQS Program System,
     ''Department of Mathematics, University of Oslo'',
     http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
- <li> '''H. P. Langtangen'''.
+ <li> '''H. P. Langtangen'''. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     ''SIAM Journal on Scientific Computing'',
     13,
     pp. 1394-1417,
     1992.
- <li> '''M. Mortensen, H. P. Langtangen and G. N. Wells'''.
+ <li> '''M. Mortensen, H. P. Langtangen and G. N. Wells'''. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     ''Advances in Water Resources'',
     34(9),
     [http://dx.doi.org/10.1016/j.advwatres.2011.02.013 doi: 10.1016/j.advwatres.2011.02.013],
     2011.
- <li> '''S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt'''.
+ <li> '''S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt'''. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     ''International Journal of Fluid Mechanics Research'',
     33(1),
     pp. 15-43,
     2006.
- <li> '''S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen'''.
+ <li> '''S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen'''. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     ''Physical Review B: Condensed Matter and Materials Physics'',
     74,
     2006.
-<li> '''J. B. Haga, H. Osnes and H. P. Langtangen'''.
+<li> '''J. B. Haga, H. Osnes and H. P. Langtangen'''. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     ''International Journal of Analytical and Numerical Methods in Geomechanics'',
     [http://dx.doi.org/10.1002/nag.1062 doi: 10.1002/nag.1062],
     2011,
     http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     ''Computational Partial Differential Equations - Numerical Methods and Diffpack Programming'',
     second edition,
     ''Texts in Computational Science and Engineering'',
     Springer,
     2003.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     ''Python Scripting for Computational Science'',
     third edition,
     ''Texts in Computational Science and Engineering'',
     Springer,
     2008.
-<li> '''H. P. Langtangen and G. Pedersen'''.
+<li> '''H. P. Langtangen and G. Pedersen'''. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by '''J. Grue, B. Gjevik and J. E. Weber''',
@@ -18046,36 +18034,36 @@ Filename: <code>selc_composed.pdf</code>.
     pp. pp. 117-126,
     1995,
     http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     ''A Primer on Scientific Programming With Python'',
     third edition,
     ''Texts in Computational Science and Engineering'',
     Springer,
     2012.
-<li> '''P. V. Jeberg, H. P. Langtangen and C. B. Terp'''.
+<li> '''P. V. Jeberg, H. P. Langtangen and C. B. Terp'''. 
     Optimization With Diffpack: Practical Example From Welding,
     ''Simula Research Laboratory'',
     Internal report,
     2004.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-<li> '''H. P. Langtangen and A. Tveito'''.
+<li> '''H. P. Langtangen and A. Tveito'''. 
     Numerical Methods in Continuum Mechanics,
     ''Center for Industrial Research'',
     1991.
-<li> '''H. P. Langtangen'''.
+<li> '''H. P. Langtangen'''. 
     Diffpack: Software for Partial Differential Equations,
     ''Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA'',
     edited by '''A. Vermeulen''',
@@ -18626,7 +18614,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -18696,7 +18684,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was
 used above.
 
-//Non-breaking space character.//
+//Non-breaking space character.// 
 This paragraph aims to test [[http://en.wikipedia.org/wiki/Non-breaking_space|non-breaking space character]], and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in {{{7.4/5.5\approx 1.345}}} s.  Also check that a~[[http://google.com|link]]~is
@@ -18763,8 +18751,8 @@ both inline and in block:
 {{{
 \begin{align*}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 }}}
@@ -18774,8 +18762,8 @@ Or with align with label and numbers:
 {{{
 \begin{align}
 \frac{Du}{dt} &= 0
-label{aligneq1}\\
-\frac{1}{2} &= {1/2}\\
+label{aligneq1}\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 label{aligneq2}
 \end{align}
@@ -19105,7 +19093,7 @@ We have
 
 
 
-//Highlight box!//
+//Highlight box!// 
 This environment is used to highlight something:
 
 {{{
@@ -19182,7 +19170,7 @@ We can refer to this equation by Equation (my:eq1).
 Here is a system without equation numbers, using the align-asterisk environment:
 {{{
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 }}}
@@ -19359,7 +19347,7 @@ The formula for a circle is given by
 
 {{{
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 }}}
@@ -19594,13 +19582,13 @@ Given
 }}}
 What is the solution of this equation?
 
-Choice A:
+Choice A: 
 {{{y=e^{-y}}}}
 
-Choice B:
+Choice B: 
 {{{y=e^{y}}}}
 
-Choice C:
+Choice C: 
 {{{
 from math import exp
 def f(x):
@@ -19755,7 +19743,7 @@ Choice D: Bergen
 
 Without label.
 
-//Tip.//
+//Tip.// 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -19774,7 +19762,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [[http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/|Script for Introduction to Version Control]] provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-//Summary.//
+//Summary.// 
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -19959,14 +19947,14 @@ Let's do some copying from files too. First from subroutine up to the very end::
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
 
 and then just the subroutine::
 
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -19980,7 +19968,7 @@ and finally the complete file with a plain text verbatim environment
 ('envir=ccq')::
 
         C     a comment
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -19990,7 +19978,7 @@ and finally the complete file with a plain text verbatim environment
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -20014,11 +20002,11 @@ for the present format::
         class Line:
             def __init__(self, a, b):
                 self.a, self.b = a, b
-
+        
             def __call__(self, x):
                 a, b = self.a, self.b
                 return a*x + b
-
+        
         line = Line(2, 1)
         y = line(x=3)
         print y
@@ -20029,7 +20017,7 @@ such cells are not supported by this format)::
         a = 2
         b = 3
         print 'a+b:', a + b
-
+        
         # In a sage cell we can also plot
         from matplotlib.pyplot import *
         from numpy import *
@@ -20054,16 +20042,16 @@ Standard Python shell sessions::
 IPython sessions::
 
         In [1]: from numpy import sin
-
+        
         In [2]: # Some comment
-
+        
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
 C++::
 
         #include <iostream>
-
+        
         int main()
         {
            std::cout << "Sample output" << std::endl;
@@ -20116,7 +20104,7 @@ Any valid pygments lexer/language name can appear to, e.g.::
         =======
         Heading
         =======
-
+        
         Some text.
         !ec
 
@@ -20125,45 +20113,45 @@ results in::
         =======
         Heading
         =======
-
+        
         Some text.
 
 Finally, '!bc do' supports highlighting of DocOnce source::
 
         ======= DocOnce test file =======
-
+        
         ===== Computer code =====
-
+        
         Inline verbatim code, as in `import numpy as np`, is allowed, as well as
         code blocks:
-
+        
         !bc pycod
         from math import sin
-
+        
         def f(x):
             """Example on a function."""
             return sin(x) + 1
-
+        
         print f(0)
         !ec
-
-
+        
+        
         ===== Mathematics =====
-
+        
         Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
         as equations:
-
+        
         !bt
         \begin{align*}
-        \nabla\cdot\bm{u} &= 0,\\
+        \nabla\cdot\bm{u} &= 0,\\ 
         \bm{u} &= \nabla\phi .
         \end{align*}
         !et
-
+        
         === Subsubsection heading ===
-
+        
         DocOnce files can have chapters, sections, subsections, and subsubsections.
-
+        
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test 'verbatim inline font' especially with 'a newline
@@ -20177,8 +20165,8 @@ The following attempt to exemplify colored text does not work in
 format st.
 Here is some red color and an attempt to write with
 green color containing a linebreak
-code. Some formats will only display
-this correctly when 'html'
+code. Some formats will only display 
+this correctly when 'html' 
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -20221,7 +20209,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was
 used above.
 
-*Non-breaking space character.*
+*Non-breaking space character.* 
 This paragraph aims to test "http://en.wikipedia.org/wiki/Non-breaking_space":non-breaking space character, and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in 7.4/5.5\approx 1.345 s.  Also check that a~"http://google.com":link is
@@ -20246,7 +20234,7 @@ FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like 'my_file_v1' and 'my_file_v2' as well as math with subscript as in t_{i+1}. {myfig}
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like 'my_file_v1' and 'my_file_v2' as well as math with subscript as in t_{i+1}. {myfig} 
 
 Test URL as figure name:
 
@@ -20271,8 +20259,8 @@ both inline and in block::
 
         \begin{align*}
         \frac{Du}{dt} &= 0
-        \\
-        \frac{1}{2} &= {1/2}\\
+        \\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
@@ -20280,8 +20268,8 @@ Or with align with label and numbers::
 
         \begin{align}
         \frac{Du}{dt} &= 0
-        label{aligneq1}\\
-        \frac{1}{2} &= {1/2}\\
+        label{aligneq1}\\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         label{aligneq2}
         \end{align}
@@ -20307,17 +20295,17 @@ Tables
 
 Let us take this table from the manual:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
-
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -20325,68 +20313,68 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
+        
 
 Here is yet another table to test that we can handle more than
 one table:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-=  ======  ========  =======
-i   h_i    \bar T_i   'L_i'
-=  ======  ========  =======
-0       0       288  -0.0065
-1  11,000       216      0.0
-2  20,000       216    0.001
-3  32,000       228   0.0028
-4  47,000       270      0.0
-5  51,000       270  -0.0028
-6  71,000       214    'NaN'
-=  ======  ========  =======
+=  ======  ========  =======  
+i   h_i    \bar T_i   'L_i'   
+=  ======  ========  =======  
+0       0       288  -0.0065  
+1  11,000       216      0.0  
+2  20,000       216    0.001  
+3  32,000       228   0.0028  
+4  47,000       270      0.0  
+5  51,000       270  -0.0028  
+6  71,000       214    'NaN'  
+=  ======  ========  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with '|-' because of a negative number,
 and '|' right before and after verbatim word (with no space):
 
-=====  ======  ===========  =========
-exact  'v_1'   a_i + 'v_2'  'verb_3_'
-=====  ======  ===========  =========
-    9    9.62         5.57       8.98
-  -20  -23.39        -7.65     -19.93
-   10   17.74        -4.50       9.96
-    0   -9.19         4.13      -0.26
-=====  ======  ===========  =========
+=====  ======  ===========  =========  
+exact  'v_1'   a_i + 'v_2'  'verb_3_'  
+=====  ======  ===========  =========  
+    9    9.62         5.57       8.98  
+  -20  -23.39        -7.65     -19.93  
+   10   17.74        -4.50       9.96  
+    0   -9.19         4.13      -0.26  
+=====  ======  ===========  =========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===========  =======  =======
-     S       command
-===========  =======  =======
-$ ||a_0|| $    'norm
-x\cap y           'x
-===========  =======  =======
+===========  =======  =======  
+     S       command  
+===========  =======  =======  
+$ ||a_0|| $    'norm  
+x\cap y           'x  
+===========  =======  =======  
 
 Finally, a table with math
 and URLs.
 
-====================  ======================================================  ======================================================
-
-====================  ======================================================  ======================================================
-   \mathcal{L}=0      ../doc/src/manual/mov/wave_frames/frame_0080.png:'080'  ../doc/src/manual/mov/wave_frames/frame_0085.png:'085'
-        a=b           ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'
-\nabla\cdot\bm{u} =0  ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'
-====================  ======================================================  ======================================================
+====================  ======================================================  ======================================================  
+                                                                                                                                      
+====================  ======================================================  ======================================================  
+   \mathcal{L}=0      ../doc/src/manual/mov/wave_frames/frame_0080.png:'080'  ../doc/src/manual/mov/wave_frames/frame_0085.png:'085'  
+        a=b           ../doc/src/manual/mov/wave_frames/frame_0090.png:'090'  ../doc/src/manual/mov/wave_frames/frame_0095.png:'095'  
+\nabla\cdot\bm{u} =0  ../doc/src/manual/mov/wave_frames/frame_0100.png:'100'  ../doc/src/manual/mov/wave_frames/frame_0105.png:'105'  
+====================  ======================================================  ======================================================  
 
 A test of verbatim words in heading with subscript a_i: 'my_file_v1' and 'my_file_v2'
 
@@ -20544,7 +20532,7 @@ implementation of a Python function for addition::
 
         def add(a, b):
             return a + b
-
+        
         def test_add():
             a = 1; b = 1
             expected = a + b
@@ -20557,7 +20545,7 @@ We have::
 
         \[ 1 + 1 = 2 \]
 
-*Highlight box!*
+*Highlight box!* 
 This environment is used to highlight something::
 
         \[ E = mc^2 \]
@@ -20619,7 +20607,7 @@ We can refer to this equation by Equation (my:eq1).
 Here is a system without equation numbers, using the align-asterisk environment::
 
         \begin{align*}
-        \pmb{a} &= \pmb{q}\times\pmb{n} \\
+        \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
 
@@ -20757,7 +20745,7 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by::
 
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\
+        x &= x_0 + R\cos 2\pi t,\\ 
         y &= y_0 + R\sin 2\pi t,
         \end{align}
 
@@ -20767,13 +20755,13 @@ For any t, (x,y) is a point on the circle.
 The formula can be used to generate 'n' points on a circle::
 
         import numpy as np
-
+        
         def circle(R, x0, y0, n=501):
             t = np.linspace(0, 1, n)
             x = x0 + R*np.cos(2*np.pi*t)
             y = y0 + R*np.sin(2*np.pi*t)
             return x, y
-
+        
         x, y = circle(2.0, 0, 0)
 
 The goal of this project is to draw N circles with random
@@ -20947,7 +20935,7 @@ Choice A: y=e^{-y}
 
 Choice B: y=e^{y}
 
-Choice C:
+Choice C: 
 Code::
 
         from math import exp
@@ -21011,78 +20999,78 @@ Filename: 'selc_composed.pdf'.
 
 References
 
- 1. **H. P. Langtangen and G. Pedersen**.
+ 1. **H. P. Langtangen and G. Pedersen**. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
- 2. **H. P. Langtangen, K.-A. Mardal and R. Winther**.
+ 2. **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
- 3. **H. P. Langtangen**.
+ 3. **H. P. Langtangen**. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
- 4. **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**.
+ 4. **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by **H. P. Langtangen and A. Tveito**,
     Springer,
     2003,
     Edited book.
- 5. **H. P. Langtangen**.
+ 5. **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     "http://www.math.uio.no/old/days/hpl/femdeqs.pdf":http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
- 6. **H. P. Langtangen**.
+ 6. **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
- 7. **M. Mortensen, H. P. Langtangen and G. N. Wells**.
+ 7. **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     "http://dx.doi.org/10.1016/j.advwatres.2011.02.013":doi: 10.1016/j.advwatres.2011.02.013,
     2011.
- 8. **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**.
+ 8. **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
- 9. **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**.
+ 9. **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-10. **J. B. Haga, H. Osnes and H. P. Langtangen**.
+10. **J. B. Haga, H. Osnes and H. P. Langtangen**. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     "http://dx.doi.org/10.1002/nag.1062":doi: 10.1002/nag.1062,
     2011,
     "http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract":http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
-11. **H. P. Langtangen**.
+11. **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     second edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2003.
-12. **H. P. Langtangen**.
+12. **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
     third edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2008.
-13. **H. P. Langtangen and G. Pedersen**.
+13. **H. P. Langtangen and G. Pedersen**. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by **J. Grue, B. Gjevik and J. E. Weber**,
@@ -21090,36 +21078,36 @@ References
     pp. pp. 117-126,
     1995,
     "http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310":http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
-14. **H. P. Langtangen**.
+14. **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     third edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2012.
-15. **P. V. Jeberg, H. P. Langtangen and C. B. Terp**.
+15. **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     Internal report,
     2004.
-16. **H. P. Langtangen**.
+16. **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. **H. P. Langtangen**.
+17. **H. P. Langtangen**. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. **H. P. Langtangen**.
+18. **H. P. Langtangen**. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. **H. P. Langtangen and A. Tveito**.
+19. **H. P. Langtangen and A. Tveito**. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-20. **H. P. Langtangen**.
+20. **H. P. Langtangen**. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
     edited by **A. Vermeulen**,
@@ -21168,7 +21156,7 @@ Appendix: Testing identical titles
 
 Without label.
 
-*Tip.*
+*Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -21185,7 +21173,7 @@ have the latest updates of the files.
 Greg Wilson' excellent "http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/":Script for Introduction to Version Control provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.*
+*Summary.* 
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -21368,14 +21356,14 @@ Let's do some copying from files too. First from subroutine up to the very end::
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
 
 and then just the subroutine::
 
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -21389,7 +21377,7 @@ and finally the complete file with a plain text verbatim environment
 (C{envir=ccq})::
 
         C     a comment
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -21399,7 +21387,7 @@ and finally the complete file with a plain text verbatim environment
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -21423,11 +21411,11 @@ for the present format::
         class Line:
             def __init__(self, a, b):
                 self.a, self.b = a, b
-
+        
             def __call__(self, x):
                 a, b = self.a, self.b
                 return a*x + b
-
+        
         line = Line(2, 1)
         y = line(x=3)
         print y
@@ -21438,7 +21426,7 @@ such cells are not supported by this format)::
         a = 2
         b = 3
         print 'a+b:', a + b
-
+        
         # In a sage cell we can also plot
         from matplotlib.pyplot import *
         from numpy import *
@@ -21463,16 +21451,16 @@ Standard Python shell sessions::
 IPython sessions::
 
         In [1]: from numpy import sin
-
+        
         In [2]: # Some comment
-
+        
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
 C++::
 
         #include <iostream>
-
+        
         int main()
         {
            std::cout << "Sample output" << std::endl;
@@ -21525,7 +21513,7 @@ Any valid pygments lexer/language name can appear to, e.g.::
         =======
         Heading
         =======
-
+        
         Some text.
         !ec
 
@@ -21534,7 +21522,7 @@ results in::
         =======
         Heading
         =======
-
+        
         Some text.
 
 Finally, C{!bc do} supports highlighting of DocOnce source::
@@ -21553,8 +21541,8 @@ The following attempt to exemplify colored text does not work in
 format epytext.
 Here is some red color and an attempt to write with
 green color containing a linebreak
-code. Some formats will only display
-this correctly when C{html}
+code. Some formats will only display 
+this correctly when C{html} 
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -21596,7 +21584,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was
 used above.
 
-I{Non-breaking space character.}
+I{Non-breaking space character.} 
 This paragraph aims to test U{non-breaking space character<http://en.wikipedia.org/wiki/Non-breaking_space>}, and a typical
 example where this is needed is in physical units: 7.4 km is traveled
 in M{7.4/5.5\approx 1.345} s.  Also check that a U{link<http://google.com>} is
@@ -21622,7 +21610,7 @@ FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like C{my_file_v1} and C{my_file_v2} as well as math with subscript as in M{t_{i+1}}. {myfig}
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like C{my_file_v1} and C{my_file_v2} as well as math with subscript as in M{t_{i+1}}. {myfig} 
 
 Test URL as figure name:
 
@@ -21648,8 +21636,8 @@ both inline and in block::
 
         \begin{align*}
         \frac{Du}{dt} &= 0
-        \\
-        \frac{1}{2} &= {1/2}\\
+        \\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
@@ -21657,8 +21645,8 @@ Or with align with label and numbers::
 
         \begin{align}
         \frac{Du}{dt} &= 0
-        label{aligneq1}\\
-        \frac{1}{2} &= {1/2}\\
+        label{aligneq1}\\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         label{aligneq2}
         \end{align}
@@ -21686,17 +21674,17 @@ Tables
 
 Let us take this table from the manual:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
-
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -21704,68 +21692,68 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
+        
 
 Here is yet another table to test that we can handle more than
 one table:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-====  ======  ===========  =======
-M{i}  M{h_i}  M{\bar T_i}   C{L_i}
-====  ======  ===========  =======
-0          0          288  -0.0065
-1     11,000          216      0.0
-2     20,000          216    0.001
-3     32,000          228   0.0028
-4     47,000          270      0.0
-5     51,000          270  -0.0028
-6     71,000          214   C{NaN}
-====  ======  ===========  =======
+====  ======  ===========  =======  
+M{i}  M{h_i}  M{\bar T_i}   C{L_i}  
+====  ======  ===========  =======  
+0          0          288  -0.0065  
+1     11,000          216      0.0  
+2     20,000          216    0.001  
+3     32,000          228   0.0028  
+4     47,000          270      0.0  
+5     51,000          270  -0.0028  
+6     71,000          214   C{NaN}  
+====  ======  ===========  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with C{|-} because of a negative number,
 and C{|} right before and after verbatim word (with no space):
 
-=====  ======  ===============  ==========
-exact  C{v_1}  M{a_i} + C{v_2}  C{verb_3_}
-=====  ======  ===============  ==========
-    9    9.62             5.57        8.98
-  -20  -23.39            -7.65      -19.93
-   10   17.74            -4.50        9.96
-    0   -9.19             4.13       -0.26
-=====  ======  ===============  ==========
+=====  ======  ===============  ==========  
+exact  C{v_1}  M{a_i} + C{v_2}  C{verb_3_}  
+=====  ======  ===============  ==========  
+    9    9.62             5.57        8.98  
+  -20  -23.39            -7.65      -19.93  
+   10   17.74            -4.50        9.96  
+    0   -9.19             4.13       -0.26  
+=====  ======  ===============  ==========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===========  ==============
-    M{S}        command
-===========  ==============
-$ ||a_0|| $  C{norm|length}
-M{x\cap y}           C{x|y}
-===========  ==============
+===========  ==============  
+    M{S}        command      
+===========  ==============  
+$ ||a_0|| $  C{norm|length}  
+M{x\cap y}           C{x|y}  
+===========  ==============  
 
 Finally, a table with math
 and URLs.
 
-========================  ===========================================================  ===========================================================
-
-========================  ===========================================================  ===========================================================
-    M{\mathcal{L}=0}      U{C{080}<../doc/src/manual/mov/wave_frames/frame_0080.png>}  U{C{085}<../doc/src/manual/mov/wave_frames/frame_0085.png>}
-         M{a=b}           U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}
-M{\nabla\cdot\bm{u} =0 }  U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}
-========================  ===========================================================  ===========================================================
+========================  ===========================================================  ===========================================================  
+                                                                                                                                                    
+========================  ===========================================================  ===========================================================  
+    M{\mathcal{L}=0}      U{C{080}<../doc/src/manual/mov/wave_frames/frame_0080.png>}  U{C{085}<../doc/src/manual/mov/wave_frames/frame_0085.png>}  
+         M{a=b}           U{C{090}<../doc/src/manual/mov/wave_frames/frame_0090.png>}  U{C{095}<../doc/src/manual/mov/wave_frames/frame_0095.png>}  
+M{\nabla\cdot\bm{u} =0 }  U{C{100}<../doc/src/manual/mov/wave_frames/frame_0100.png>}  U{C{105}<../doc/src/manual/mov/wave_frames/frame_0105.png>}  
+========================  ===========================================================  ===========================================================  
 
 A test of verbatim words in heading with subscript M{a_i}: C{my_file_v1} and C{my_file_v2}
 ------------------------------------------------------------------------------------------
@@ -21940,7 +21928,7 @@ implementation of a Python function for addition::
 
         def add(a, b):
             return a + b
-
+        
         def test_add():
             a = 1; b = 1
             expected = a + b
@@ -21954,7 +21942,7 @@ We have::
 
         \[ 1 + 1 = 2 \]
 
-I{Highlight box!}
+I{Highlight box!} 
 This environment is used to highlight something::
 
         \[ E = mc^2 \]
@@ -22161,7 +22149,7 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by::
 
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\
+        x &= x_0 + R\cos 2\pi t,\\ 
         y &= y_0 + R\sin 2\pi t,
         \end{align}
 
@@ -22171,13 +22159,13 @@ For any M{t}, M{(x,y)} is a point on the circle.
 The formula can be used to generate C{n} points on a circle::
 
         import numpy as np
-
+        
         def circle(R, x0, y0, n=501):
             t = np.linspace(0, 1, n)
             x = x0 + R*np.cos(2*np.pi*t)
             y = y0 + R*np.sin(2*np.pi*t)
             return x, y
-
+        
         x, y = circle(2.0, 0, 0)
 
 The goal of this project is to draw M{N} circles with random
@@ -22356,7 +22344,7 @@ Choice A: M{y=e^{-y}}
 
 Choice B: M{y=e^{y}}
 
-Choice C:
+Choice C: 
 Code::
 
         from math import exp
@@ -22426,78 +22414,78 @@ Filename: C{selc_composed.pdf}.
 References
 ==========
 
- 1. B{H. P. Langtangen and G. Pedersen}.
+ 1. B{H. P. Langtangen and G. Pedersen}. 
     Propagation of Large Destructive Waves,
     I{International Journal of Applied Mechanics and Engineering},
     7(1),
     pp. 187-204,
     2002.
- 2. B{H. P. Langtangen, K.-A. Mardal and R. Winther}.
+ 2. B{H. P. Langtangen, K.-A. Mardal and R. Winther}. 
     Numerical Methods for Incompressible Viscous Flow,
     I{Advances in Water Resources},
     25,
     pp. 1125-1146,
     2002.
- 3. B{H. P. Langtangen}.
+ 3. B{H. P. Langtangen}. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     I{SIAM Journal of Scientific and Statistical Computing},
     15,
     pp. 997-996,
     1994.
- 4. B{K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen}.
+ 4. B{K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen}. 
     Software Tools for Multigrid Methods,
     I{Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming},
     edited by B{H. P. Langtangen and A. Tveito},
     Springer,
     2003,
     Edited book.
- 5. B{H. P. Langtangen}.
+ 5. B{H. P. Langtangen}. 
     The FEMDEQS Program System,
     I{Department of Mathematics, University of Oslo},
     U{http://www.math.uio.no/old/days/hpl/femdeqs.pdf<http://www.math.uio.no/old/days/hpl/femdeqs.pdf>},
     1989.
- 6. B{H. P. Langtangen}.
+ 6. B{H. P. Langtangen}. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     I{SIAM Journal on Scientific Computing},
     13,
     pp. 1394-1417,
     1992.
- 7. B{M. Mortensen, H. P. Langtangen and G. N. Wells}.
+ 7. B{M. Mortensen, H. P. Langtangen and G. N. Wells}. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     I{Advances in Water Resources},
     34(9),
     U{doi: 10.1016/j.advwatres.2011.02.013<http://dx.doi.org/10.1016/j.advwatres.2011.02.013>},
     2011.
- 8. B{S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt}.
+ 8. B{S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt}. 
     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     I{International Journal of Fluid Mechanics Research},
     33(1),
     pp. 15-43,
     2006.
- 9. B{S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen}.
+ 9. B{S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen}. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     I{Physical Review B: Condensed Matter and Materials Physics},
     74,
     2006.
-10. B{J. B. Haga, H. Osnes and H. P. Langtangen}.
+10. B{J. B. Haga, H. Osnes and H. P. Langtangen}. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     I{International Journal of Analytical and Numerical Methods in Geomechanics},
     U{doi: 10.1002/nag.1062<http://dx.doi.org/10.1002/nag.1062>},
     2011,
     U{http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract<http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>}.
-11. B{H. P. Langtangen}.
+11. B{H. P. Langtangen}. 
     I{Computational Partial Differential Equations - Numerical Methods and Diffpack Programming},
     second edition,
     I{Texts in Computational Science and Engineering},
     Springer,
     2003.
-12. B{H. P. Langtangen}.
+12. B{H. P. Langtangen}. 
     I{Python Scripting for Computational Science},
     third edition,
     I{Texts in Computational Science and Engineering},
     Springer,
     2008.
-13. B{H. P. Langtangen and G. Pedersen}.
+13. B{H. P. Langtangen and G. Pedersen}. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by B{J. Grue, B. Gjevik and J. E. Weber},
@@ -22505,36 +22493,36 @@ References
     pp. pp. 117-126,
     1995,
     U{http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310<http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>}.
-14. B{H. P. Langtangen}.
+14. B{H. P. Langtangen}. 
     I{A Primer on Scientific Programming With Python},
     third edition,
     I{Texts in Computational Science and Engineering},
     Springer,
     2012.
-15. B{P. V. Jeberg, H. P. Langtangen and C. B. Terp}.
+15. B{P. V. Jeberg, H. P. Langtangen and C. B. Terp}. 
     Optimization With Diffpack: Practical Example From Welding,
     I{Simula Research Laboratory},
     Internal report,
     2004.
-16. B{H. P. Langtangen}.
+16. B{H. P. Langtangen}. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. B{H. P. Langtangen}.
+17. B{H. P. Langtangen}. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. B{H. P. Langtangen}.
+18. B{H. P. Langtangen}. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. B{H. P. Langtangen and A. Tveito}.
+19. B{H. P. Langtangen and A. Tveito}. 
     Numerical Methods in Continuum Mechanics,
     I{Center for Industrial Research},
     1991.
-20. B{H. P. Langtangen}.
+20. B{H. P. Langtangen}. 
     Diffpack: Software for Partial Differential Equations,
     I{Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA},
     edited by B{A. Vermeulen},
@@ -22590,7 +22578,7 @@ Appendix: Testing identical titles
 
 Without label.
 
-I{Tip.}
+I{Tip.} 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -22607,7 +22595,7 @@ have the latest updates of the files.
 Greg Wilson' excellent U{Script for Introduction to Version Control<http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/>} provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-I{Summary.}
+I{Summary.} 
 B{Bold remark:} Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -22716,9 +22704,9 @@ A Document for Testing DocOnce
 ==============================
 
 Hans Petter Langtangen [1, 2] (hpl@simula.no)
-Kaare Dump [3]
-A. Dummy Author
-I. S. Overworked and Outburned [4, 5, 6, 7]
+Kaare Dump [3] 
+A. Dummy Author  
+I. S. Overworked and Outburned [4, 5, 6, 7] 
 J. Doe  (j_doe@cyberspace.com)
 
 [1] Center for Biomedical Computing, Simula Research Laboratory
@@ -22733,65 +22721,65 @@ Date: Jan 32, 2100
 
 Table of contents:
 
- Section 1
-     Here is a list with subsubsection heading
-   Subsection 1
-     Test Section reference at beginning of line and after a sentence
-     Computer code
-     Running OS commands
-     Footnotes
-   Subsection 2: Testing figures
-   The \theta parameter (not \nabla?)
-   Custom Environments
-   Tables
-   A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
-   _Just bold_
-   *Just emphasize*
-   Just verbatim
-   _Bold_ beginning
-   *Emphasize* beginning
-   Verbatim beginning
-   Maybe _bold end_
-   Maybe *emphasize end*
-   Maybe verbatim end
-   The middle has _bold_ word
-   The middle has *emphasize* word
-   The middle has verbatim word
-   Bibliography test
-   Example 1: Examples can be typeset as exercises
-   User-defined environments
-   Example 1: A test function
-   Example 2: Addition
-   URLs
- LaTeX Mathematics
- Exercises
-   Problem 2: Flip a Coin
-     My remarks
-     Remarks
-   Not an exercise
-   Exercise 3: Test of plain text exercise
-   Project 4: Compute a Probability
-   Project 5: Explore Distributions of Random Circles
-     Remarks
-   Exercise 6: Determine some Distance
-     Remarks
-   Some exercise without the "Exercise:" prefix
-   Exercise 8: Solution of differential equation
-   Example 9: Just an example
- Here goes another section
- More Exercises
-   Exercise 10: Make references to projects and problems
-   Project 11: References to  "Project 4: Compute a Probability" in a heading works for plain
- References
- Appendix: Just for testing; part I
-   A subsection within an appendix
- Appendix: Just for testing; part II
-   Appendix: Testing identical titles
-   Appendix: Testing identical titles
-   Appendix: Testing identical titles
-   Appendix: Testing identical titles
-   Appendix: Testing inline comments
-   Appendix: Testing headings ending with verbatim inline
+ Section 1 
+     Here is a list with subsubsection heading 
+   Subsection 1 
+     Test Section reference at beginning of line and after a sentence 
+     Computer code 
+     Running OS commands 
+     Footnotes 
+   Subsection 2: Testing figures 
+   The \theta parameter (not \nabla?) 
+   Custom Environments 
+   Tables 
+   A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2 
+   _Just bold_ 
+   *Just emphasize* 
+   Just verbatim 
+   _Bold_ beginning 
+   *Emphasize* beginning 
+   Verbatim beginning 
+   Maybe _bold end_ 
+   Maybe *emphasize end* 
+   Maybe verbatim end 
+   The middle has _bold_ word 
+   The middle has *emphasize* word 
+   The middle has verbatim word 
+   Bibliography test 
+   Example 1: Examples can be typeset as exercises 
+   User-defined environments 
+   Example 1: A test function 
+   Example 2: Addition 
+   URLs 
+ LaTeX Mathematics 
+ Exercises 
+   Problem 2: Flip a Coin 
+     My remarks 
+     Remarks 
+   Not an exercise 
+   Exercise 3: Test of plain text exercise 
+   Project 4: Compute a Probability 
+   Project 5: Explore Distributions of Random Circles 
+     Remarks 
+   Exercise 6: Determine some Distance 
+     Remarks 
+   Some exercise without the "Exercise:" prefix 
+   Exercise 8: Solution of differential equation 
+   Example 9: Just an example 
+ Here goes another section 
+ More Exercises 
+   Exercise 10: Make references to projects and problems 
+   Project 11: References to  "Project 4: Compute a Probability" in a heading works for plain 
+ References 
+ Appendix: Just for testing; part I 
+   A subsection within an appendix 
+ Appendix: Just for testing; part II 
+   Appendix: Testing identical titles 
+   Appendix: Testing identical titles 
+   Appendix: Testing identical titles 
+   Appendix: Testing identical titles 
+   Appendix: Testing inline comments 
+   Appendix: Testing headings ending with verbatim inline 
 
 # !split
 
@@ -22881,14 +22869,14 @@ Let's do some copying from files too. First from subroutine up to the very end::
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
 
 and then just the subroutine::
 
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -22902,7 +22890,7 @@ and finally the complete file with a plain text verbatim environment
 (envir=ccq)::
 
         C     a comment
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -22912,7 +22900,7 @@ and finally the complete file with a plain text verbatim environment
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -22936,11 +22924,11 @@ for the present format::
         class Line:
             def __init__(self, a, b):
                 self.a, self.b = a, b
-
+        
             def __call__(self, x):
                 a, b = self.a, self.b
                 return a*x + b
-
+        
         line = Line(2, 1)
         y = line(x=3)
         print y
@@ -22951,7 +22939,7 @@ such cells are not supported by this format)::
         a = 2
         b = 3
         print 'a+b:', a + b
-
+        
         # In a sage cell we can also plot
         from matplotlib.pyplot import *
         from numpy import *
@@ -22976,16 +22964,16 @@ Standard Python shell sessions::
 IPython sessions::
 
         In [1]: from numpy import sin
-
+        
         In [2]: # Some comment
-
+        
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
 C++::
 
         #include <iostream>
-
+        
         int main()
         {
            std::cout << "Sample output" << std::endl;
@@ -23038,7 +23026,7 @@ Any valid pygments lexer/language name can appear to, e.g.::
         =======
         Heading
         =======
-
+        
         Some text.
         !ec
 
@@ -23047,45 +23035,45 @@ results in::
         =======
         Heading
         =======
-
+        
         Some text.
 
 Finally, !bc do supports highlighting of DocOnce source::
 
         ======= DocOnce test file =======
-
+        
         ===== Computer code =====
-
+        
         Inline verbatim code, as in `import numpy as np`, is allowed, as well as
         code blocks:
-
+        
         !bc pycod
         from math import sin
-
+        
         def f(x):
             """Example on a function."""
             return sin(x) + 1
-
+        
         print f(0)
         !ec
-
-
+        
+        
         ===== Mathematics =====
-
+        
         Formulas can be inline, as in $\nabla\cdot\bm{u} = 0$, or typeset
         as equations:
-
+        
         !bt
         \begin{align*}
-        \nabla\cdot\bm{u} &= 0,\\
+        \nabla\cdot\bm{u} &= 0,\\ 
         \bm{u} &= \nabla\phi .
         \end{align*}
         !et
-
+        
         === Subsubsection heading ===
-
+        
         DocOnce files can have chapters, sections, subsections, and subsubsections.
-
+        
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test verbatim inline font especially with a newline
@@ -23099,8 +23087,8 @@ The following attempt to exemplify colored text does not work in
 format plain.
 Here is some red color and an attempt to write with
 green color containing a linebreak
-code. Some formats will only display
-this correctly when html
+code. Some formats will only display 
+this correctly when html 
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -23176,7 +23164,7 @@ FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 Here is figure ref{myfig} with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
-FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. {myfig}
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long caption spanning several lines and containing verbatim words like my_file_v1 and my_file_v2 as well as math with subscript as in t_{i+1}. {myfig} 
 
 Test URL as figure name:
 
@@ -23202,8 +23190,8 @@ both inline and in block::
 
         \begin{align*}
         \frac{Du}{dt} &= 0
-        \\
-        \frac{1}{2} &= {1/2}\\
+        \\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         \end{align*}
 
@@ -23211,8 +23199,8 @@ Or with align with label and numbers::
 
         \begin{align}
         \frac{Du}{dt} &= 0
-        label{aligneq1}\\
-        \frac{1}{2} &= {1/2}\\
+        label{aligneq1}\\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
         label{aligneq2}
         \end{align}
@@ -23240,17 +23228,17 @@ Tables
 
 Let us take this table from the manual:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads::
 
-
+        
           |--------------------------------|
           |time  | velocity | acceleration |
           |--l--------r-----------r--------|
@@ -23258,57 +23246,57 @@ The DocOnce source code reads::
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
+        
 
 Here is yet another table to test that we can handle more than
 one table:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-=  ======  ========  =======
-i   h_i    \bar T_i    L_i
-=  ======  ========  =======
-0       0       288  -0.0065
-1  11,000       216      0.0
-2  20,000       216    0.001
-3  32,000       228   0.0028
-4  47,000       270      0.0
-5  51,000       270  -0.0028
-6  71,000       214      NaN
-=  ======  ========  =======
+=  ======  ========  =======  
+i   h_i    \bar T_i    L_i    
+=  ======  ========  =======  
+0       0       288  -0.0065  
+1  11,000       216      0.0  
+2  20,000       216    0.001  
+3  32,000       228   0.0028  
+4  47,000       270      0.0  
+5  51,000       270  -0.0028  
+6  71,000       214      NaN  
+=  ======  ========  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with |- because of a negative number,
 and | right before and after verbatim word (with no space):
 
-=====  ======  =========  =======
-exact   v_1    a_i + v_2  verb_3_
-=====  ======  =========  =======
-    9    9.62       5.57     8.98
-  -20  -23.39      -7.65   -19.93
-   10   17.74      -4.50     9.96
-    0   -9.19       4.13    -0.26
-=====  ======  =========  =======
+=====  ======  =========  =======  
+exact   v_1    a_i + v_2  verb_3_  
+=====  ======  =========  =======  
+    9    9.62       5.57     8.98  
+  -20  -23.39      -7.65   -19.93  
+   10   17.74      -4.50     9.96  
+    0   -9.19       4.13    -0.26  
+=====  ======  =========  =======  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===========  =======  ======
-     S       command
-===========  =======  ======
-$ ||a_0|| $     norm
-x\cap y            x
-===========  =======  ======
+===========  =======  ======  
+     S       command  
+===========  =======  ======  
+$ ||a_0|| $     norm  
+x\cap y            x  
+===========  =======  ======  
 
 NOTE: The above table is not correctly handled in the plain text format
 because in this format inline verbatim text look like normal text,
@@ -23317,13 +23305,13 @@ and the first line in the table then looks like three columns.
 Finally, a table with math
 and URLs.
 
-====================  ======================================================  ======================================================
-
-====================  ======================================================  ======================================================
-   \mathcal{L}=0      080 (../doc/src/manual/mov/wave_frames/frame_0080.png)  085 (../doc/src/manual/mov/wave_frames/frame_0085.png)
-        a=b           090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)
-\nabla\cdot\bm{u} =0  100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)
-====================  ======================================================  ======================================================
+====================  ======================================================  ======================================================  
+                                                                                                                                      
+====================  ======================================================  ======================================================  
+   \mathcal{L}=0      080 (../doc/src/manual/mov/wave_frames/frame_0080.png)  085 (../doc/src/manual/mov/wave_frames/frame_0085.png)  
+        a=b           090 (../doc/src/manual/mov/wave_frames/frame_0090.png)  095 (../doc/src/manual/mov/wave_frames/frame_0095.png)  
+\nabla\cdot\bm{u} =0  100 (../doc/src/manual/mov/wave_frames/frame_0100.png)  105 (../doc/src/manual/mov/wave_frames/frame_0105.png)  
+====================  ======================================================  ======================================================  
 
 A test of verbatim words in heading with subscript a_i: my_file_v1 and my_file_v2
 ---------------------------------------------------------------------------------
@@ -23498,7 +23486,7 @@ implementation of a Python function for addition::
 
         def add(a, b):
             return a + b
-
+        
         def test_add():
             a = 1; b = 1
             expected = a + b
@@ -23578,7 +23566,7 @@ We can refer to this equation by Equation (my:eq1).
 Here is a system without equation numbers, using the align-asterisk environment::
 
         \begin{align*}
-        \pmb{a} &= \pmb{q}\times\pmb{n} \\
+        \pmb{a} &= \pmb{q}\times\pmb{n} \\ 
         b &= \nabla^2 u + \nabla^4 v
         \end{align*}
 
@@ -23726,7 +23714,7 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by::
 
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\
+        x &= x_0 + R\cos 2\pi t,\\ 
         y &= y_0 + R\sin 2\pi t,
         \end{align}
 
@@ -23736,13 +23724,13 @@ For any t, (x,y) is a point on the circle.
 The formula can be used to generate n points on a circle::
 
         import numpy as np
-
+        
         def circle(R, x0, y0, n=501):
             t = np.linspace(0, 1, n)
             x = x0 + R*np.cos(2*np.pi*t)
             y = y0 + R*np.sin(2*np.pi*t)
             return x, y
-
+        
         x, y = circle(2.0, 0, 0)
 
 The goal of this project is to draw N circles with random
@@ -23923,7 +23911,7 @@ Choice A: y=e^{-y}
 
 Choice B: y=e^{y}
 
-Choice C:
+Choice C: 
 Code::
 
         from math import exp
@@ -23994,28 +23982,28 @@ Filename: selc_composed.pdf.
 References
 ==========
 
- 1. _H. P. Langtangen and G. Pedersen_.
+ 1. _H. P. Langtangen and G. Pedersen_. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
 
- 2. _H. P. Langtangen, K.-A. Mardal and R. Winther_.
+ 2. _H. P. Langtangen, K.-A. Mardal and R. Winther_. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
 
- 3. _H. P. Langtangen_.
+ 3. _H. P. Langtangen_. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
 
- 4. _K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen_.
+ 4. _K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen_. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by _H. P. Langtangen and A. Tveito_,
@@ -24023,61 +24011,61 @@ References
     2003,
     Edited book.
 
- 5. _H. P. Langtangen_.
+ 5. _H. P. Langtangen_. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     http://www.math.uio.no/old/days/hpl/femdeqs.pdf,
     1989.
 
- 6. _H. P. Langtangen_.
+ 6. _H. P. Langtangen_. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
 
- 7. _M. Mortensen, H. P. Langtangen and G. N. Wells_.
+ 7. _M. Mortensen, H. P. Langtangen and G. N. Wells_. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     doi: 10.1016/j.advwatres.2011.02.013 (http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
 
- 8. _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt_.
+ 8. _S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt_. 
     Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
 
- 9. _S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen_.
+ 9. _S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen_. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
 
-10. _J. B. Haga, H. Osnes and H. P. Langtangen_.
+10. _J. B. Haga, H. Osnes and H. P. Langtangen_. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     doi: 10.1002/nag.1062 (http://dx.doi.org/10.1002/nag.1062),
     2011,
     http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract.
 
-11. _H. P. Langtangen_.
+11. _H. P. Langtangen_. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     second edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2003.
 
-12. _H. P. Langtangen_.
+12. _H. P. Langtangen_. 
     *Python Scripting for Computational Science*,
     third edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2008.
 
-13. _H. P. Langtangen and G. Pedersen_.
+13. _H. P. Langtangen and G. Pedersen_. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by _J. Grue, B. Gjevik and J. E. Weber_,
@@ -24086,42 +24074,42 @@ References
     1995,
     http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310.
 
-14. _H. P. Langtangen_.
+14. _H. P. Langtangen_. 
     *A Primer on Scientific Programming With Python*,
     third edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2012.
 
-15. _P. V. Jeberg, H. P. Langtangen and C. B. Terp_.
+15. _P. V. Jeberg, H. P. Langtangen and C. B. Terp_. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     Internal report,
     2004.
 
-16. _H. P. Langtangen_.
+16. _H. P. Langtangen_. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
 
-17. _H. P. Langtangen_.
+17. _H. P. Langtangen_. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
 
-18. _H. P. Langtangen_.
+18. _H. P. Langtangen_. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
 
-19. _H. P. Langtangen and A. Tveito_.
+19. _H. P. Langtangen and A. Tveito_. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
 
-20. _H. P. Langtangen_.
+20. _H. P. Langtangen_. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
     edited by _A. Vermeulen_,
@@ -24677,7 +24665,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\boldsymbol{u} &= 0,\\
+\nabla\cdot\boldsymbol{u} &= 0,\\ 
 \boldsymbol{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -24747,7 +24735,7 @@ web site today.
 Here is some more text before a new definition of a footnote that was
 used above.
 
-*Non-breaking space character.*
+*Non-breaking space character.* 
 This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical
 example where this is needed is in physical units: 7.4\ km is traveled
 in\ $7.4/5.5\approx 1.345$\ s.  Also check that a~[link](http://google.com)\ is
@@ -24824,13 +24812,13 @@ $$
 $$
 
 $$
-
+  
 \frac{1}{2} = {1/2}
 
 $$
 
 $$
-
+  
 \frac{1}{2}\pmb{x} = \pmb{n}
 
 $$
@@ -24845,13 +24833,13 @@ $$
 $$
 
 $$
-\begin{equation}
+\begin{equation}  
 \frac{1}{2} = {1/2}
 \end{equation}
 $$
 
 $$
-\begin{equation}
+\begin{equation}  
 \frac{1}{2}\pmb{x} = \pmb{n}
 \label{aligneq2}
 \end{equation}
@@ -24895,11 +24883,11 @@ Let us take this table from the manual:
 
 
 
-time  velocity  acceleration
-----  --------  ------------
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
+time  velocity  acceleration  
+----  --------  ------------  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
 
 
 
@@ -24921,11 +24909,11 @@ Here is yet another table to test that we can handle more than
 one table:
 
 
-time  velocity  acceleration
-----  --------  ------------
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
+time  velocity  acceleration  
+----  --------  ------------  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
 
 
 And one with math headings (that are expanded and must be treated
@@ -24933,15 +24921,15 @@ accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
 
-$i$  $h_i$   $\bar T_i$   `L_i`
----  ------  ----------  -------
-0         0         288  -0.0065
-1    11,000         216      0.0
-2    20,000         216    0.001
-3    32,000         228   0.0028
-4    47,000         270      0.0
-5    51,000         270  -0.0028
-6    71,000         214    `NaN`
+$i$  $h_i$   $\bar T_i$   `L_i`   
+---  ------  ----------  -------  
+0         0         288  -0.0065  
+1    11,000         216      0.0  
+2    20,000         216    0.001  
+3    32,000         228   0.0028  
+4    47,000         270      0.0  
+5    51,000         270  -0.0028  
+6    71,000         214    `NaN`  
 
 
 And add one with verbatim headings (with underscores),
@@ -24949,22 +24937,22 @@ and rows starting with `|-` because of a negative number,
 and `|` right before and after verbatim word (with no space):
 
 
-exact  `v_1`   $a_i$ + `v_2`  `verb_3_`
------  ------  -------------  ---------
-    9    9.62           5.57       8.98
-  -20  -23.39          -7.65     -19.93
-   10   17.74          -4.50       9.96
-    0   -9.19           4.13      -0.26
+exact  `v_1`   $a_i$ + `v_2`  `verb_3_`  
+-----  ------  -------------  ---------  
+    9    9.62           5.57       8.98  
+  -20  -23.39          -7.65     -19.93  
+   10   17.74          -4.50       9.96  
+    0   -9.19           4.13      -0.26  
 
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
 
-    $S$         command
------------  -------------
-$ ||a_0|| $  `norm|length`
-$x\cap y$            `x|y`
+    $S$         command     
+-----------  -------------  
+$ ||a_0|| $  `norm|length`  
+$x\cap y$            `x|y`  
 
 
 Finally, a table with math
@@ -24977,11 +24965,11 @@ and URLs.
 
 
 
-
--------------------------------  ---------------------------------------------------------  ---------------------------------------------------------
-        $\mathcal{L}=0$          [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)
-             $a=b$               [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)
-$\nabla\cdot\boldsymbol{u} =0 $  [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)
+                                                                                                                                                       
+-------------------------------  ---------------------------------------------------------  ---------------------------------------------------------  
+        $\mathcal{L}=0$          [`080`](../doc/src/manual/mov/wave_frames/frame_0080.png)  [`085`](../doc/src/manual/mov/wave_frames/frame_0085.png)  
+             $a=b$               [`090`](../doc/src/manual/mov/wave_frames/frame_0090.png)  [`095`](../doc/src/manual/mov/wave_frames/frame_0095.png)  
+$\nabla\cdot\boldsymbol{u} =0 $  [`100`](../doc/src/manual/mov/wave_frames/frame_0100.png)  [`105`](../doc/src/manual/mov/wave_frames/frame_0105.png)  
 
 
 
@@ -25183,16 +25171,16 @@ def test_add():
 We have
 
 $$
- 1 + 1 = 2
+ 1 + 1 = 2 
 $$
 
 
 
-*Highlight box!*
+*Highlight box!* 
 This environment is used to highlight something:
 
 $$
- E = mc^2
+ E = mc^2 
 $$
 
 
@@ -25252,7 +25240,7 @@ footnotes.
 
 Here is an equation without label using backslash-bracket environment:
 $$
- a = b + c
+ a = b + c 
 $$
 or with number and label, as in \eqref{my:eq1}, using the equation environment:
 $$
@@ -25265,12 +25253,12 @@ We can refer to this equation by \eqref{my:eq1}.
 Here is a system without equation numbers, using the align-asterisk environment:
 $$
 
-\pmb{a} = \pmb{q}\times\pmb{n}
+\pmb{a} = \pmb{q}\times\pmb{n} 
 
 $$
 
 $$
-
+  
 b = \nabla^2 u + \nabla^4 v
 
 $$
@@ -25279,12 +25267,12 @@ $$
 And here is a system of equations with labels in an align environment:
 $$
 \begin{equation}
-a = q + 4 + 5+ 6 \label{eq1}
+a = q + 4 + 5+ 6 \label{eq1} 
 \end{equation}
 $$
 
 $$
-\begin{equation}
+\begin{equation}  
 b = \nabla^2 u + \nabla^4 x \label{eq2}
 \end{equation}
 $$
@@ -25467,7 +25455,7 @@ x = x_0 + R\cos 2\pi t,
 $$
 
 $$
-\begin{equation}
+\begin{equation}  
 y = y_0 + R\sin 2\pi t,
 \end{equation}
 $$
@@ -25558,7 +25546,7 @@ Intro to this exercise. Questions are in subexercises below.
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 $$
- \hbox{math in solution: } a = b
+ \hbox{math in solution: } a = b 
 $$
 And code `a=b` in this solution:
 
@@ -25581,7 +25569,7 @@ First hint to subexercise a).
 With math $a=b$ in hint:
 
 $$
- a=b.
+ a=b. 
 $$
 And with code (in plain verbatim) returning $x+1$ in hint:
 
@@ -25673,7 +25661,7 @@ Just some text. And some math saying that $e^0=1$ on a single line,
 to test that math block insertion is correct:
 
 $$
- \exp{(0)} = 1
+ \exp{(0)} = 1 
 $$
 
 And a test that the code `lambda x: x+2` is correctly placed here:
@@ -25701,7 +25689,7 @@ lambda x: x+2
 Given
 
 $$
- \frac{dy}{dx} = -y(x),\quad y(0)=1
+ \frac{dy}{dx} = -y(x),\quad y(0)=1 
 $$
 What is the solution of this equation?
 
@@ -25794,78 +25782,78 @@ Filename: `selc_composed.pdf`.
 
 ## References
 
- 1. <div id="Langtangen_Pedersen_2002"></div> **H. P. Langtangen and G. Pedersen**.
+ 1. <div id="Langtangen_Pedersen_2002"></div> **H. P. Langtangen and G. Pedersen**. 
     Propagation of Large Destructive Waves,
     *International Journal of Applied Mechanics and Engineering*,
     7(1),
     pp. 187-204,
     2002.
- 2. <div id="Langtangen_et_al_2002"></div> **H. P. Langtangen, K.-A. Mardal and R. Winther**.
+ 2. <div id="Langtangen_et_al_2002"></div> **H. P. Langtangen, K.-A. Mardal and R. Winther**. 
     Numerical Methods for Incompressible Viscous Flow,
     *Advances in Water Resources*,
     25,
     pp. 1125-1146,
     2002.
- 3. <div id="Langtangen_1994a"></div> **H. P. Langtangen**.
+ 3. <div id="Langtangen_1994a"></div> **H. P. Langtangen**. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     *SIAM Journal of Scientific and Statistical Computing*,
     15,
     pp. 997-996,
     1994.
- 4. <div id="Mardal_et_al_2003a"></div> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**.
+ 4. <div id="Mardal_et_al_2003a"></div> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. 
     Software Tools for Multigrid Methods,
     *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,
     edited by **H. P. Langtangen and A. Tveito**,
     Springer,
     2003,
     Edited book.
- 5. <div id="Langtangen_1988d"></div> **H. P. Langtangen**.
+ 5. <div id="Langtangen_1988d"></div> **H. P. Langtangen**. 
     The FEMDEQS Program System,
     *Department of Mathematics, University of Oslo*,
     <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>,
     1989.
- 6. <div id="Langtangen_1992c"></div> **H. P. Langtangen**.
+ 6. <div id="Langtangen_1992c"></div> **H. P. Langtangen**. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     *SIAM Journal on Scientific Computing*,
     13,
     pp. 1394-1417,
     1992.
- 7. <div id="Mortensen_et_al_2011"></div> **M. Mortensen, H. P. Langtangen and G. N. Wells**.
+ 7. <div id="Mortensen_et_al_2011"></div> **M. Mortensen, H. P. Langtangen and G. N. Wells**. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     *Advances in Water Resources*,
     34(9),
     [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),
     2011.
- 8. <div id="Glimsdal_et_al_20006"></div> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**.
+ 8. <div id="Glimsdal_et_al_20006"></div> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt**. 
     Propagation of the Dec.\ 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     *International Journal of Fluid Mechanics Research*,
     33(1),
     pp. 15-43,
     2006.
- 9. <div id="Rahman_et_al_2006b"></div> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**.
+ 9. <div id="Rahman_et_al_2006b"></div> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     *Physical Review B: Condensed Matter and Materials Physics*,
     74,
     2006.
-10. <div id="Haga_et_al_2011a"></div> **J. B. Haga, H. Osnes and H. P. Langtangen**.
+10. <div id="Haga_et_al_2011a"></div> **J. B. Haga, H. Osnes and H. P. Langtangen**. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     *International Journal of Analytical and Numerical Methods in Geomechanics*,
     [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),
     2011,
     <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.
-11. <div id="Langtangen_2003a"></div> **H. P. Langtangen**.
+11. <div id="Langtangen_2003a"></div> **H. P. Langtangen**. 
     *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,
     second edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2003.
-12. <div id="Langtangen_2008a"></div> **H. P. Langtangen**.
+12. <div id="Langtangen_2008a"></div> **H. P. Langtangen**. 
     *Python Scripting for Computational Science*,
     third edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2008.
-13. <div id="Langtangen:95"></div> **H. P. Langtangen and G. Pedersen**.
+13. <div id="Langtangen:95"></div> **H. P. Langtangen and G. Pedersen**. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by **J. Grue, B. Gjevik and J. E. Weber**,
@@ -25873,36 +25861,36 @@ Filename: `selc_composed.pdf`.
     pp. pp. 117-126,
     1995,
     <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.
-14. <div id="Langtangen_2012"></div> **H. P. Langtangen**.
+14. <div id="Langtangen_2012"></div> **H. P. Langtangen**. 
     *A Primer on Scientific Programming With Python*,
     third edition,
     *Texts in Computational Science and Engineering*,
     Springer,
     2012.
-15. <div id="Jeberg_et_al_2004"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**.
+15. <div id="Jeberg_et_al_2004"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. 
     Optimization With Diffpack: Practical Example From Welding,
     *Simula Research Laboratory*,
     Internal report,
     2004.
-16. <div id="Langtangen_1989e"></div> **H. P. Langtangen**.
+16. <div id="Langtangen_1989e"></div> **H. P. Langtangen**. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.
-17. <div id="Langtangen_talk_2007a"></div> **H. P. Langtangen**.
+17. <div id="Langtangen_talk_2007a"></div> **H. P. Langtangen**. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.
-18. <div id="Langtangen:85"></div> **H. P. Langtangen**.
+18. <div id="Langtangen:85"></div> **H. P. Langtangen**. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.
-19. <div id="Langtangen:91"></div> **H. P. Langtangen and A. Tveito**.
+19. <div id="Langtangen:91"></div> **H. P. Langtangen and A. Tveito**. 
     Numerical Methods in Continuum Mechanics,
     *Center for Industrial Research*,
     1991.
-20. <div id="Langtangen:94b"></div> **H. P. Langtangen**.
+20. <div id="Langtangen:94b"></div> **H. P. Langtangen**. 
     Diffpack: Software for Partial Differential Equations,
     *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,
     edited by **A. Vermeulen**,
@@ -25963,7 +25951,7 @@ What about inserting a quiz?
 
 Without label.
 
-*Tip.*
+*Tip.* 
 Here is a tip or hint box, typeset as a notice box.
 
 
@@ -25982,7 +25970,7 @@ have the latest updates of the files.
 Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly
 from using version control systems.
 
-*Summary.*
+*Summary.* 
 **Bold remark:** Make some text with this summary.
 Much testing in this document, otherwise stupid content.
 Much testing in this document, otherwise stupid content.
@@ -29643,7 +29631,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -29850,7 +29838,7 @@ Inline math, \( a=b \), is the only math in this document.
 <!-- begin bibliography -->
 
 <ol>
- <li> <div id="testdoc:12"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="testdoc:12"></div> <b>H. P. Langtangen</b>. 
     A Document for Testing Doconce,
     <em>Simula Research Laboratory</em>,
     <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self"><tt>http://hplgit.github.io/doconce/test/demo_testdoc.html</tt></a>,
@@ -29864,7 +29852,7 @@ Inline math, \( a=b \), is the only math in this document.
 
 </body>
 </html>
-
+    
 
 
 ************** File: author1.p.tex *****************
@@ -30007,7 +29995,7 @@ Test of one author at one institution
 % List of all institutions:
 \centerline{{\small Cyberspace Inc.}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -30518,7 +30506,7 @@ Test of math
 
 Inline math, a=b, is the only math in this document.
 
- 1. _H. P. Langtangen_.
+ 1. _H. P. Langtangen_. 
     A Document for Testing Doconce,
     *Simula Research Laboratory*,
     http://hplgit.github.io/doconce/test/demo_testdoc.html,
@@ -31035,7 +31023,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <a name="part0000"></a>
 <!-- ------------------- main content ---------------------- -->
 
@@ -31055,7 +31043,7 @@ MathJax.Hub.Config({
 </center>
 
 <center>
-<b>A. Dummy Author</b>
+<b>A. Dummy Author</b> 
 </center>
 
 <center>
@@ -31380,7 +31368,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <a name="part0001"></a>
 <!-- !split -->
 
@@ -31899,7 +31887,7 @@ as equations:
 
 !bt
 <span style="color: #658b00">\begin{align*}</span>
-\nabla\cdot\boldsymbol{u} &amp;= 0,\\
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
 <span style="color: #658b00">\end{align*}</span>
 !et
@@ -32076,8 +32064,8 @@ both inline and in block:
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 $$
@@ -32089,8 +32077,8 @@ Or with align with label and numbers:
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
-\tag{1}\\
-\frac{1}{2} &= {1/2}\\
+\tag{1}\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \tag{2}
 \end{align}
@@ -32791,7 +32779,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <a name="part0002"></a>
 <!-- !split and check if these extra words are included properly in the comment -->
 
@@ -32814,7 +32802,7 @@ We can refer to this equation by <a href="#mjx-eqn-3">(3)</a>.
 Here is a system without equation numbers, using the align-asterisk environment:
 $$
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 $$
@@ -32824,7 +32812,7 @@ $$
 And here is a system of equations with labels in an align environment:
 $$
 \begin{align}
-a &= q + 4 + 5+ 6 \tag{4} \\
+a &= q + 4 + 5+ 6 \tag{4} \\ 
 b &= \nabla^2 u + \nabla^4 x \tag{5}
 \end{align}
 $$
@@ -33006,7 +32994,7 @@ The formula for a circle is given by
 
 $$
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 $$
@@ -33354,78 +33342,78 @@ Filename: <code>selc_composed.pdf</code>.
 <!-- begin bibliography -->
 
 <ol>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
     <em>International Journal of Applied Mechanics and Engineering</em>,
     7(1),
     pp. 187-204,
     2002.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
     Numerical Methods for Incompressible Viscous Flow,
     <em>Advances in Water Resources</em>,
     25,
     pp. 1125-1146,
     2002.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     <em>SIAM Journal of Scientific and Statistical Computing</em>,
     15,
     pp. 997-996,
     1994.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
     Software Tools for Multigrid Methods,
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
     2003,
     Edited book.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
     <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_self"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     <em>SIAM Journal on Scientific Computing</em>,
     13,
     pp. 1394-1417,
     1992.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
     2006.</li>
- </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>.
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     <em>Physical Review B: Condensed Matter and Materials Physics</em>,
     74,
     2006.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
     <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     second edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
@@ -33433,36 +33421,36 @@ Filename: <code>selc_composed.pdf</code>.
     pp. pp. 117-126,
     1995,
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
     Internal report,
     2004.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
     Numerical Methods in Continuum Mechanics,
     <em>Center for Industrial Research</em>,
     1991.</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>.
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
     Diffpack: Software for Partial Differential Equations,
     <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,
     edited by <b>A. Vermeulen</b>,
@@ -33748,7 +33736,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <a name="part0003"></a>
 <!-- !split -->
 <h2>Test of quizzes</h2>
@@ -33880,7 +33868,7 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site.
+site. 
 <!-- begin inline comment -->
 <font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 <!-- end inline comment -->
@@ -33889,7 +33877,7 @@ programming and scientific writing work - and all other important
 files.
 
 <p>
-The simplest services for hosting project files is Dropbox.
+The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
 <font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like \( \partial u/\partial t \), are easily communicated between machines.)</font>
 <!-- end inline comment -->
@@ -34040,12 +34028,12 @@ $(function () {
 
 <body>
 
+    
 
 
 
 
-
-<center><h1>A Document for Testing DocOnce</h1></center>
+<center><h1>A Document for Testing DocOnce</h1></center>  
 
 <p>
 
@@ -34059,7 +34047,7 @@ $(function () {
 </center>
 
 <center>
-<b>A. Dummy Author</b>
+<b>A. Dummy Author</b> 
 </center>
 
 <center>
@@ -34513,7 +34501,7 @@ as equations:
 
 !bt
 <span style="color: #008000">\begin{align*}</span>
-\nabla\cdot\boldsymbol{u} &amp;= 0,\\
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
 <span style="color: #008000">\end{align*}</span>
 !et
@@ -34610,7 +34598,7 @@ Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in
 there is a flow.
 
 <p>
-<center>
+<center> 
 <hr class="figure">
 <center><p class="caption">Figure 1:  Visualization of a wave. <div id="fig:impact"></div> </p></center>
 <p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
@@ -34627,7 +34615,7 @@ Here is figure <a href="#myfig">2</a> with a long multi-line caption
 and an extra space before the FIGURE keyword.
 
 <p>
-<center>
+<center> 
 <hr class="figure">
 <center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in $latex t_{i+1}$. <div id="myfig"></div> </p></center>
 <p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
@@ -34671,14 +34659,14 @@ both inline and in block:
 
 <p>
 
-$latex
+$latex 
 \frac{Du}{dt} = 0
  $
 
-$latex
+$latex  
 \frac{1}{2} = {1/2} $
 
-$latex
+$latex  
 \frac{1}{2}\pmb{x} = \pmb{n}
  $
 
@@ -34689,14 +34677,14 @@ Or with align with label and numbers:
 
 <p>
 
-$latex
+$latex 
 \frac{Du}{dt} = 0
  $
 
-$latex
+$latex  
 \frac{1}{2} = {1/2} $
 
-$latex
+$latex  
 \frac{1}{2}\pmb{x} = \pmb{n}
 
  $
@@ -35127,8 +35115,8 @@ $latex  a = b + c  $
 
 or with number and label, as in <b>(REF to equation my:eq1 not supported)</b>, using the equation environment:
 
-$latex
-{\partial u\over\partial t} = \nabla^2 u
+$latex 
+{\partial u\over\partial t} = \nabla^2 u 
  $
 
 
@@ -35137,10 +35125,10 @@ We can refer to this equation by <b>(REF to equation my:eq1 not supported)</b>.
 <p>
 Here is a system without equation numbers, using the align-asterisk environment:
 
-$latex
+$latex 
 \pmb{a} = \pmb{q}\times\pmb{n}  $
 
-$latex
+$latex  
 b = \nabla^2 u + \nabla^4 v
  $
 
@@ -35149,11 +35137,11 @@ b = \nabla^2 u + \nabla^4 v
 <p>
 And here is a system of equations with labels in an align environment:
 
-$latex
+$latex 
 a = q + 4 + 5+ 6   $
 
-$latex
-b = \nabla^2 u + \nabla^4 x
+$latex  
+b = \nabla^2 u + \nabla^4 x 
  $
 
 
@@ -35293,10 +35281,10 @@ The formula for a circle is given by
 
 <p>
 
-$latex
+$latex 
 x = x_0 + R\cos 2\pi t, $
 
-$latex
+$latex  
 y = y_0 + R\sin 2\pi t,
  $
 
@@ -35616,78 +35604,78 @@ Filename: <code>selc_composed.pdf</code>.
 <h1 id="___sec50">References </h1>
 
 <ol>
- <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+ <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
     <em>International Journal of Applied Mechanics and Engineering</em>,
     7(1),
     pp. 187-204,
     2002.</li>
- <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>.
+ <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
     Numerical Methods for Incompressible Viscous Flow,
     <em>Advances in Water Resources</em>,
     25,
     pp. 1125-1146,
     2002.</li>
- <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     <em>SIAM Journal of Scientific and Statistical Computing</em>,
     15,
     pp. 997-996,
     1994.</li>
- <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>.
+ <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
     Software Tools for Multigrid Methods,
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
     2003,
     Edited book.</li>
- <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
     <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_blank"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
- <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     <em>SIAM Journal on Scientific Computing</em>,
     13,
     pp. 1394-1417,
     1992.</li>
- <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>.
+ <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_blank">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
- <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>.
+ <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
     2006.</li>
- <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>.
+ <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     <em>Physical Review B: Condensed Matter and Materials Physics</em>,
     74,
     2006.</li>
-<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>.
+<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
     <a href="http://dx.doi.org/10.1002/nag.1062" target="_blank">doi: 10.1002/nag.1062</a>,
     2011,
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_blank"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
-<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     second edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
-<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
-<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
@@ -35695,36 +35683,36 @@ Filename: <code>selc_composed.pdf</code>.
     pp. pp. 117-126,
     1995,
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_blank"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
-<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
-<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>.
+<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
     Internal report,
     2004.</li>
-<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.</li>
-<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.</li>
-<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.</li>
-<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>.
+<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
     Numerical Methods in Continuum Mechanics,
     <em>Center for Industrial Research</em>,
     1991.</li>
-<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
     Diffpack: Software for Partial Differential Equations,
     <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,
     edited by <b>A. Vermeulen</b>,
@@ -35895,7 +35883,7 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site.
+site. 
 
 <font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 
@@ -35904,7 +35892,7 @@ programming and scientific writing work - and all other important
 files.
 
 <p>
-The simplest services for hosting project files is Dropbox.
+The simplest services for hosting project files is Dropbox. 
 
 <font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like $latex \partial u/\partial t$, are easily communicated between machines.)</font>
 
@@ -35948,7 +35936,7 @@ is at the end with only one newline.</p>
 
 </body>
 </html>
-
+    
 
 ************** File: testdoc_no_solutions.html *****************
 <!--
@@ -36173,7 +36161,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -36192,7 +36180,7 @@ MathJax.Hub.Config({
 </center>
 
 <center>
-<b>A. Dummy Author</b>
+<b>A. Dummy Author</b> 
 </center>
 
 <center>
@@ -36667,7 +36655,7 @@ as equations:
 
 !bt
 <span style="color: #008000">\begin{align*}</span>
-\nabla\cdot\boldsymbol{u} &amp;= 0,\\
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
 <span style="color: #008000">\end{align*}</span>
 !et
@@ -36838,8 +36826,8 @@ both inline and in block:
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 $$
@@ -36851,8 +36839,8 @@ Or with align with label and numbers:
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
-\label{aligneq1}\\
-\frac{1}{2} &= {1/2}\\
+\label{aligneq1}\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \label{aligneq2}
 \end{align}
@@ -37315,7 +37303,7 @@ We can refer to this equation by \eqref{my:eq1}.
 Here is a system without equation numbers, using the align-asterisk environment:
 $$
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 $$
@@ -37325,7 +37313,7 @@ $$
 And here is a system of equations with labels in an align environment:
 $$
 \begin{align}
-a &= q + 4 + 5+ 6 \label{eq1} \\
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 $$
@@ -37500,7 +37488,7 @@ The formula for a circle is given by
 
 $$
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 $$
@@ -37834,78 +37822,78 @@ Filename: <code>selc_composed.pdf</code>.
 <!-- begin bibliography -->
 
 <ol>
- <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+ <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
     <em>International Journal of Applied Mechanics and Engineering</em>,
     7(1),
     pp. 187-204,
     2002.</li>
- <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>.
+ <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
     Numerical Methods for Incompressible Viscous Flow,
     <em>Advances in Water Resources</em>,
     25,
     pp. 1125-1146,
     2002.</li>
- <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     <em>SIAM Journal of Scientific and Statistical Computing</em>,
     15,
     pp. 997-996,
     1994.</li>
- <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>.
+ <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
     Software Tools for Multigrid Methods,
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
     2003,
     Edited book.</li>
- <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
     <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_self"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
- <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     <em>SIAM Journal on Scientific Computing</em>,
     13,
     pp. 1394-1417,
     1992.</li>
- <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>.
+ <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
- <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>.
+ <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
     2006.</li>
- <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>.
+ <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     <em>Physical Review B: Condensed Matter and Materials Physics</em>,
     74,
     2006.</li>
-<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>.
+<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
     <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
-<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     second edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
-<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
-<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
@@ -37913,36 +37901,36 @@ Filename: <code>selc_composed.pdf</code>.
     pp. pp. 117-126,
     1995,
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
-<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
-<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>.
+<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
     Internal report,
     2004.</li>
-<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.</li>
-<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.</li>
-<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.</li>
-<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>.
+<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
     Numerical Methods in Continuum Mechanics,
     <em>Center for Industrial Research</em>,
     1991.</li>
-<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
     Diffpack: Software for Partial Differential Equations,
     <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,
     edited by <b>A. Vermeulen</b>,
@@ -38112,7 +38100,7 @@ to get started.
 Projects that you want to share among several computers or project
 workers are today most conveniently stored at some web site "in the
 cloud" and updated through communication with that
-site.
+site. 
 <!-- begin inline comment -->
 <font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 <!-- end inline comment -->
@@ -38121,7 +38109,7 @@ programming and scientific writing work - and all other important
 files.
 
 <p>
-The simplest services for hosting project files is Dropbox.
+The simplest services for hosting project files is Dropbox. 
 <!-- begin inline comment -->
 <font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_self"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like \( \partial u/\partial t \), are easily communicated between machines.)</font>
 <!-- end inline comment -->
@@ -38171,7 +38159,7 @@ is at the end with only one newline.</p>
 
 </body>
 </html>
-
+    
 
 ************** File: testdoc_no_solutions.p.tex *****************
 %%
@@ -38505,22 +38493,22 @@ A Document for Testing DocOnce
 {\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf Kaare Dump${}^{3}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf A. Dummy Author${}^{}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
-
+    
 \begin{center}
 {\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
 \end{center}
@@ -38535,7 +38523,7 @@ A Document for Testing DocOnce
 \centerline{{\small ${}^6$Third Inst, Elsewhere}}
 \centerline{{\small ${}^7$Fourth Inst}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -38761,7 +38749,7 @@ y = line(x=3)
 print y
 \epypro
 \noindent
-(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution})
+(\href{{http://pythontutor.com/visualize.html\#code=class+Line\%3A\%0A++++def+__init__\%28self\%2C+a\%2C+b\%29\%3A\%0A++++++++self.a\%2C+self.b+\%3D+a\%2C+b\%0A\%0A++++def+__call__\%28self\%2C+x\%29\%3A\%0A++++++++a\%2C+b+\%3D+self.a\%2C+self.b\%0A++++++++return+a\%2Ax+\%2B+b\%0A\%0Aline+\%3D+Line\%282\%2C+1\%29\%0Ay+\%3D+line\%28x\%3D3\%29\%0Aprint+y&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
 
 
 Some more Python code (actually specified as a sage cell, but
@@ -38926,7 +38914,7 @@ as equations:
 
 !bt
 \begin{align*}
-\nabla\cdot\bm{u} &= 0,\\
+\nabla\cdot\bm{u} &= 0,\\ 
 \bm{u} &= \nabla\phi .
 \end{align*}
 !et
@@ -39085,8 +39073,8 @@ both inline and in block:
 
 \begin{align*}
 \Ddt{u} &= 0
-\\
-\half &= \halfi\\
+\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \end{align*}
 
@@ -39094,8 +39082,8 @@ Or with align with label and numbers:
 
 \begin{align}
 \Ddt{u} &= 0
-\label{aligneq1}\\
-\half &= \halfi\\
+\label{aligneq1}\\ 
+\half &= \halfi\\ 
 \half\x &= \normalvec
 \label{aligneq2}
 \end{align}
@@ -39474,7 +39462,7 @@ We have
 
 
 
-\begin{tcolorbox}[skin=widget,
+\begin{tcolorbox}[%skin=widget,
 boxrule=1mm,
 coltitle=black,
 colframe=blue!45!white,
@@ -39562,14 +39550,14 @@ We can refer to this equation by (\ref{my:eq1}).
 
 Here is a system without equation numbers, using the align-asterisk environment:
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 
 
 And here is a system of equations with labels in an align environment:
 \begin{align}
-a &= q + 4 + 5+ 6 \label{eq1} \\
+a &= q + 4 + 5+ 6 \label{eq1} \\ 
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
@@ -39579,7 +39567,7 @@ Also test $a_{i-j}$ as well as $kx-wt$.
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
 \begin{multline}
-a = b = q + \\
+a = b = q + \\ 
   f + \nabla\cdot\nabla u
 \label{multiline:eq1}
 \end{multline}
@@ -39587,7 +39575,7 @@ Testing split:
 \begin{equation}
 \label{split:envir:eq}
 \begin{split}
-a = b = q &+ \\
+a = b = q &+ \\ 
   & f + \nabla\cdot\nabla u
 \end{split}
 \end{equation}
@@ -39595,13 +39583,13 @@ We can refer to the last equation by (\ref{split:envir:eq}).
 
 Testing gather:
 \begin{gather}
-a = b \\
+a = b \\ 
 c = d + 7 + 9
 \end{gather}
 
 Testing alignat:
 \begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
 b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
 \end{alignat}
 Let us refer to (\ref{eq1})-(\ref{eq2}) again, and to the
@@ -39609,7 +39597,7 @@ alignat variant (\ref{eq1a})-(\ref{eq2a}), and to (\ref{my:eq1}).
 
 Testing eqnarray:
 \begin{eqnarray}
-{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\
+{\partial u\over\partial t} &=& \nabla^2 u + f, \label{myeq1}\\ 
 {\partial v\over\partial t} &=& \nabla\cdot(q(u)\nabla v) + g \label{myeq2}
 \end{eqnarray}
 
@@ -39781,7 +39769,7 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
@@ -40005,23 +39993,23 @@ What is the solution of this equation?
 
 \vspace{2mm}
 
-\textbf{A}. $\Box$
+\textbf{A}. $\Box$ 
 $y=e^{-y}$
 
-\textbf{B}. $\Box$
+\textbf{B}. $\Box$ 
 $y=e^{y}$
 
-\textbf{C}. $\Box$
+\textbf{C}. $\Box$ 
 \bpycod
 from math import exp
 def f(x):
     return exp(x)
 \epycod
 
-\textbf{D}. $\Box$
+\textbf{D}. $\Box$ 
 The solution cannot be found because there is a derivative in the equation.
 
-\textbf{E}. $\Box$
+\textbf{E}. $\Box$ 
 The equation is meaningless: an equation must be an equation
 for $x$ or $y$, not a function $y(x)$.
 
@@ -40161,16 +40149,16 @@ What is the capital of Norway?
 
 \vspace{2mm}
 
-\textbf{A}. $\Box$
+\textbf{A}. $\Box$ 
 Stockholm
 
-\textbf{B}. $\Box$
+\textbf{B}. $\Box$ 
 London
 
-\textbf{C}. $\Box$
+\textbf{C}. $\Box$ 
 Oslo
 
-\textbf{D}. $\Box$
+\textbf{D}. $\Box$ 
 Bergen
 
 
@@ -40937,7 +40925,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -41051,8 +41039,7 @@ cp slides1.tex slides1_handout.tex
 cp slides1.pdf slides1_handout.pdf
 
 # Ordinary beamer slides (not handout)
-system doconce format pdflatex slides1 --latex_title_layout=beamer
-system doconce ptex2tex slides1 envir=minted
+system doconce format pdflatex slides1 --latex_title_layout=beamer "--latex_code_style=default:lst[style=yellow2_fb]"
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
 system pdflatex -shell-escape slides1
 
@@ -41582,7 +41569,7 @@ test math and doconce and various output formats.
 *Test 2: A single equation without label.* Here it is
 
 $$
- u(t)=e^{-at}
+ u(t)=e^{-at} 
 $$
 
 *Test 3: A single equation with label.* Here it is as a one-line
@@ -41629,7 +41616,7 @@ multiple, aligned equations. The code reads
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !bt
 \begin{align*}
-u(t)&=e^{-at}\\
+u(t)&=e^{-at}\\ 
 v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 !et
@@ -41644,7 +41631,7 @@ u(t)=e^{-at}
 $$
 
 $$
-
+  
 v(t) - 1 = \frac{du}{dt}
 
 $$
@@ -41657,7 +41644,7 @@ labels:
 !bt
 \begin{align}
 u(t)&=e^{-at}
-\label{eq2b}\\
+\label{eq2b}\\ 
 v(t) - 1 &= \frac{du}{dt}
 \label{eq3b}
 \end{align}
@@ -41673,7 +41660,7 @@ u(t)=e^{-at} \label{eq2b}
 $$
 
 $$
-\begin{equation}
+\begin{equation}  
 v(t) - 1 = \frac{du}{dt} \label{eq3b}
 \end{equation}
 $$
@@ -41698,7 +41685,7 @@ try the old eqnarray environment.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 !bt
 \begin{eqnarray*}
-u(t)&=& e^{-at}\\
+u(t)&=& e^{-at}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 !et
@@ -41708,7 +41695,7 @@ and results in
 
 $$
 \begin{eqnarray*}
-u(t)&=& e^{-at}\\
+u(t)&=& e^{-at}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 $$
@@ -41721,7 +41708,7 @@ labels:
 !bt
 \begin{eqnarray}
 u(t)&=& e^{-at}
-\label{eq2c}\\
+\label{eq2c}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 \label{eq3c}
 \end{eqnarray}
@@ -41732,7 +41719,7 @@ and results in
 
 $$
 \begin{eqnarray}
-u(t)&=& e^{-at} \label{eq2c}\\
+u(t)&=& e^{-at} \label{eq2c}\\ 
 v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
 \end{eqnarray}
 $$
@@ -41835,7 +41822,7 @@ $$
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -41846,7 +41833,7 @@ $$
 <!-- author(s): HPL -->
 
 <center>
-<b>HPL</b>
+<b>HPL</b> 
 </center>
 
 
@@ -41921,7 +41908,7 @@ multiple, aligned equations. The code reads
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
 \begin{align*}
-u(t)&amp;=e^{-at}\\
+u(t)&amp;=e^{-at}\\ 
 v(t) - 1 &amp;= \frac{du}{dt}
 \end{align*}
 !et
@@ -41931,7 +41918,7 @@ and results in
 
 $$
 \begin{align*}
-u(t)&=e^{-at}\\
+u(t)&=e^{-at}\\ 
 v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 $$
@@ -41948,7 +41935,7 @@ labels:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
 \begin{align}
 u(t)&amp;=e^{-at}
-label{eq2b}\\
+label{eq2b}\\ 
 v(t) - 1 &amp;= \frac{du}{dt}
 label{eq3b}
 \end{align}
@@ -41959,7 +41946,7 @@ and results in
 
 $$
 \begin{align}
-u(t)&=e^{-at} \label{eq2b}\\
+u(t)&=e^{-at} \label{eq2b}\\ 
 v(t) - 1 &= \frac{du}{dt} \label{eq3b}
 \end{align}
 $$
@@ -41976,7 +41963,7 @@ try the old eqnarray environment.
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
 \begin{eqnarray*}
-u(t)&amp;=&amp; e^{-at}\\
+u(t)&amp;=&amp; e^{-at}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 \end{eqnarray*}
 !et
@@ -41986,7 +41973,7 @@ and results in
 
 $$
 \begin{eqnarray*}
-u(t)&=& e^{-at}\\
+u(t)&=& e^{-at}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 $$
@@ -42003,7 +41990,7 @@ labels:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
 \begin{eqnarray}
 u(t)&amp;=&amp; e^{-at}
-label{eq2c}\\
+label{eq2c}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 label{eq3c}
 \end{eqnarray}
@@ -42014,7 +42001,7 @@ and results in
 
 $$
 \begin{eqnarray}
-u(t)&=& e^{-at} \label{eq2c}\\
+u(t)&=& e^{-at} \label{eq2c}\\ 
 v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
 \end{eqnarray}
 $$
@@ -42049,7 +42036,7 @@ to <code>\boldsymbol</code>.
 
 </body>
 </html>
-
+    
 
 
 ************** File: math_test_pandoc.html *****************
@@ -42062,7 +42049,7 @@ to <code>\boldsymbol</code>.
   <meta name="author" content="HPL" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
-
+  
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
@@ -42083,7 +42070,7 @@ MathJax.Hub.Config({
 <p><em>Test 1: Inline math.</em> Here is a sentence contains the equation <span class="math">\(u(t)=e^{-at}\)</span>.</p>
 <p><em>Test 2: A single equation without label.</em> Here it is</p>
 <p><span class="math">\[
- u(t)=e^{-at}
+ u(t)=e^{-at} 
 \]</span></p>
 <p><em>Test 3: A single equation with label.</em> Here it is as a one-line latex code,</p>
 <pre><code>!bt
@@ -42107,7 +42094,7 @@ u(t)=e^{-at} \label{eq1b}
 <p><em>Test 4: Multiple, aligned equations without label.</em> Only the align environment is supported by other formats than LaTeX for typesetting multiple, aligned equations. The code reads</p>
 <pre><code>!bt
 \begin{align*}
-u(t)&amp;=e^{-at}\\
+u(t)&amp;=e^{-at}\\ 
 v(t) - 1 &amp;= \frac{du}{dt}
 \end{align*}
 !et</code></pre>
@@ -42122,7 +42109,7 @@ v(t) - 1 &amp;= \frac{du}{dt}
 <pre><code>!bt
 \begin{align}
 u(t)&amp;=e^{-at}
-\label{eq2b}\\
+\label{eq2b}\\ 
 v(t) - 1 &amp;= \frac{du}{dt}
 \label{eq3b}
 \end{align}
@@ -42134,7 +42121,7 @@ u(t)=e^{-at} \label{eq2b}
 \end{equation}
 \]</span></p>
 <p><span class="math">\[
-\begin{equation}
+\begin{equation}  
 v(t) - 1 = \frac{du}{dt} \label{eq3b}
 \end{equation}
 \]</span> We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.</p>
@@ -42143,14 +42130,14 @@ v(t) - 1 = \frac{du}{dt} \label{eq3b}
 <p><em>Test 6: Multiple, aligned eqnarray equations without label.</em> Let us try the old eqnarray environment.</p>
 <pre><code>!bt
 \begin{eqnarray*}
-u(t)&amp;=&amp; e^{-at}\\
+u(t)&amp;=&amp; e^{-at}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 \end{eqnarray*}
 !et</code></pre>
 <p>and results in</p>
 <p><span class="math">\[
 \begin{eqnarray*}
-u(t)&amp;=&amp; e^{-at}\\
+u(t)&amp;=&amp; e^{-at}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 \end{eqnarray*}
 \]</span></p>
@@ -42158,7 +42145,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt}
 <pre><code>!bt
 \begin{eqnarray}
 u(t)&amp;=&amp; e^{-at}
-\label{eq2c}\\
+\label{eq2c}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 \label{eq3c}
 \end{eqnarray}
@@ -42166,7 +42153,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt}
 <p>and results in</p>
 <p><span class="math">\[
 \begin{eqnarray}
-u(t)&amp;=&amp; e^{-at} \label{eq2c}\\
+u(t)&amp;=&amp; e^{-at} \label{eq2c}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 \end{eqnarray}
 \]</span> Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}?</p>
@@ -42310,7 +42297,7 @@ How various formats can deal with {\LaTeX} math
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -42368,7 +42355,7 @@ multiple, aligned equations. The code reads
 \bccq
 !bt
 \begin{align*}
-u(t)&=e^{-at}\\
+u(t)&=e^{-at}\\ 
 v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 !et
@@ -42376,7 +42363,7 @@ v(t) - 1 &= \frac{du}{dt}
 and results in
 
 \begin{align*}
-u(t)&=e^{-at}\\
+u(t)&=e^{-at}\\ 
 v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 
@@ -42388,7 +42375,7 @@ labels:
 !bt
 \begin{align}
 u(t)&=e^{-at}
-label{eq2b}\\
+label{eq2b}\\ 
 v(t) - 1 &= \frac{du}{dt}
 label{eq3b}
 \end{align}
@@ -42397,7 +42384,7 @@ label{eq3b}
 and results in
 
 \begin{align}
-u(t)&=e^{-at} \label{eq2b}\\
+u(t)&=e^{-at} \label{eq2b}\\ 
 v(t) - 1 &= \frac{du}{dt} \label{eq3b}
 \end{align}
 We can refer to the last equations as the system (\ref{eq2b})-(\ref{eq3b}).
@@ -42412,7 +42399,7 @@ try the old eqnarray environment.
 \bccq
 !bt
 \begin{eqnarray*}
-u(t)&=& e^{-at}\\
+u(t)&=& e^{-at}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 !et
@@ -42420,7 +42407,7 @@ v(t) - 1 &=& \frac{du}{dt}
 and results in
 
 \begin{eqnarray*}
-u(t)&=& e^{-at}\\
+u(t)&=& e^{-at}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 
@@ -42432,7 +42419,7 @@ labels:
 !bt
 \begin{eqnarray}
 u(t)&=& e^{-at}
-label{eq2c}\\
+label{eq2c}\\ 
 v(t) - 1 &=& \frac{du}{dt}
 label{eq3c}
 \end{eqnarray}
@@ -42441,7 +42428,7 @@ label{eq3c}
 and results in
 
 \begin{eqnarray}
-u(t)&=& e^{-at} \label{eq2c}\\
+u(t)&=& e^{-at} \label{eq2c}\\ 
 v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
 \end{eqnarray}
 Can we refer to the last equations as the system (\ref{eq2c})-(\ref{eq3c})?
@@ -42495,7 +42482,7 @@ Here is a sentence contains the equation :math:`u(t)=e^{-at}`.
 Here it is
 
 .. math::
-         u(t)=e^{-at}
+         u(t)=e^{-at} 
 
 **Test 3: A single equation with label.**
 Here it is as a one-line
@@ -42511,7 +42498,7 @@ looking like
 
 .. math::
    :label: eq1
-         u(t)=e^{-at}
+         u(t)=e^{-at} 
 
 and as a three-line latex code:
 
@@ -42527,9 +42514,9 @@ looking like
 
 .. math::
    :label: eq1b
-
-        u(t)=e^{-at}
-
+        
+        u(t)=e^{-at} 
+        
 
 This equation has label :eq:`eq1b`.
 
@@ -42542,7 +42529,7 @@ multiple, aligned equations. The code reads
 
         !bt
         \begin{align*}
-        u(t)&=e^{-at}\\
+        u(t)&=e^{-at}\\ 
         v(t) - 1 &= \frac{du}{dt}
         \end{align*}
         !et
@@ -42550,10 +42537,10 @@ multiple, aligned equations. The code reads
 and results in
 
 .. math::
-
-        u(t)&=e^{-at}\\
+        
+        u(t)&=e^{-at}\\ 
         v(t) - 1 &= \frac{du}{dt}
-
+        
 
 **Test 5: Multiple, aligned equations with label.**
 We use align with
@@ -42564,7 +42551,7 @@ labels:
         !bt
         \begin{align}
         u(t)&=e^{-at}
-        label{eq2b}\\
+        label{eq2b}\\ 
         v(t) - 1 &= \frac{du}{dt}
         label{eq3b}
         \end{align}
@@ -42574,15 +42561,15 @@ and results in
 
 .. math::
    :label: eq2b
-
-        u(t)=e^{-at}
-
+        
+        u(t)=e^{-at} 
+        
 
 .. math::
    :label: eq3b
-
-        v(t) - 1 = \frac{du}{dt}
-
+          
+        v(t) - 1 = \frac{du}{dt} 
+        
 
 We can refer to the last equations as the system :eq:`eq2b`-:eq:`eq3b`.
 
@@ -42597,15 +42584,15 @@ in the present case is
 
         .. math::
            :label: eq2b
-
+        
                 u(t)=e^{-at}
-
-
+        
+        
         .. math::
            :label: eq3b
-
+        
                 v(t) - 1 = \frac{du}{dt}
-
+        
 
 **Test 6: Multiple, aligned eqnarray equations without label.**
 Let us
@@ -42615,7 +42602,7 @@ try the old eqnarray environment.
 
         !bt
         \begin{eqnarray*}
-        u(t)&=& e^{-at}\\
+        u(t)&=& e^{-at}\\ 
         v(t) - 1 &=& \frac{du}{dt}
         \end{eqnarray*}
         !et
@@ -42623,10 +42610,10 @@ try the old eqnarray environment.
 and results in
 
 .. math::
-
-        u(t) &=  e^{-at}\\
+        
+        u(t) &=  e^{-at}\\ 
         v(t) - 1  &=  \frac{du}{dt}
-
+        
 
 **Test 7: Multiple, eqnarrayed equations with label.**
 We use eqnarray with
@@ -42637,7 +42624,7 @@ labels:
         !bt
         \begin{eqnarray}
         u(t)&=& e^{-at}
-        label{eq2c}\\
+        label{eq2c}\\ 
         v(t) - 1 &=& \frac{du}{dt}
         label{eq3c}
         \end{eqnarray}
@@ -42646,10 +42633,10 @@ labels:
 and results in
 
 .. math::
-
-        u(t) &=  e^{-at} \\
-        v(t) - 1  &=  \frac{du}{dt}
-
+        
+        u(t) &=  e^{-at} \\ 
+        v(t) - 1  &=  \frac{du}{dt} 
+        
 
 Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`?
 No, unfortunately not.
@@ -42659,8 +42646,8 @@ by the Sphinx code
 .. code-block:: rst
 
         .. math::
-
-                u(t) &=  e^{-at} \\
+        
+                u(t) &=  e^{-at} \\ 
                 v(t)  &=  \frac{du}{dt}
 
 That is why the equation numbers are gone and that eqnarray seemingly
@@ -42933,7 +42920,7 @@ MathJax.Hub.Config({
 </center>
 
 <center>
-<b>A. Dummy Author</b>
+<b>A. Dummy Author</b> 
 </center>
 
 <center>
@@ -43282,7 +43269,7 @@ MathJax.Hub.Config({
 </center>
 
 <center>
-<b>A. Dummy Author</b>
+<b>A. Dummy Author</b> 
 </center>
 
 <center>
@@ -44004,7 +43991,7 @@ as equations:
 
 !bt
 <span style="color: #008000">\begin{align*}</span>
-\nabla\cdot\boldsymbol{u} &amp;= 0,\\
+\nabla\cdot\boldsymbol{u} &amp;= 0,\\ 
 \boldsymbol{u} &amp;= \nabla\phi .
 <span style="color: #008000">\end{align*}</span>
 !et
@@ -44173,8 +44160,8 @@ both inline and in block:
 $$
 \begin{align*}
 \frac{Du}{dt} &= 0
-\\
-\frac{1}{2} &= {1/2}\\
+\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 $$
@@ -44186,8 +44173,8 @@ Or with align with label and numbers:
 $$
 \begin{align}
 \frac{Du}{dt} &= 0
-\tag{1}\\
-\frac{1}{2} &= {1/2}\\
+\tag{1}\\ 
+\frac{1}{2} &= {1/2}\\ 
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \tag{2}
 \end{align}
@@ -44928,7 +44915,7 @@ We can refer to this equation by <a href="#mjx-eqn-3">(3)</a>.
 Here is a system without equation numbers, using the align-asterisk environment:
 $$
 \begin{align*}
-\pmb{a} &= \pmb{q}\times\pmb{n} \\
+\pmb{a} &= \pmb{q}\times\pmb{n} \\ 
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 $$
@@ -44938,7 +44925,7 @@ $$
 And here is a system of equations with labels in an align environment:
 $$
 \begin{align}
-a &= q + 4 + 5+ 6 \tag{4} \\
+a &= q + 4 + 5+ 6 \tag{4} \\ 
 b &= \nabla^2 u + \nabla^4 x \tag{5}
 \end{align}
 $$
@@ -45136,7 +45123,7 @@ The formula for a circle is given by
 
 $$
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 $$
@@ -45553,78 +45540,78 @@ Filename: <code>selc_composed.pdf</code>.
 <!-- begin bibliography -->
 
 <ol>
- <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+ <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
     <em>International Journal of Applied Mechanics and Engineering</em>,
     7(1),
     pp. 187-204,
     2002.</li>
- <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>.
+ <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
     Numerical Methods for Incompressible Viscous Flow,
     <em>Advances in Water Resources</em>,
     25,
     pp. 1125-1146,
     2002.</li>
- <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
     Numerical Solution of First Passage Problems in Random Vibrations,
     <em>SIAM Journal of Scientific and Statistical Computing</em>,
     15,
     pp. 997-996,
     1994.</li>
- <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>.
+ <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
     Software Tools for Multigrid Methods,
     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
     2003,
     Edited book.</li>
- <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
     The FEMDEQS Program System,
     <em>Department of Mathematics, University of Oslo</em>,
     <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_self"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
     1989.</li>
- <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>.
+ <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
     Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
     <em>SIAM Journal on Scientific Computing</em>,
     13,
     pp. 1394-1417,
     1992.</li>
- <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>.
+ <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
     A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
     <em>Advances in Water Resources</em>,
     34(9),
     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_self">doi: 10.1016/j.advwatres.2011.02.013</a>,
     2011.</li>
- <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>.
+ <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
     Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
     2006.</li>
- <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>.
+ <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
     Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
     <em>Physical Review B: Condensed Matter and Materials Physics</em>,
     74,
     2006.</li>
-<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>.
+<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
     On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
     <a href="http://dx.doi.org/10.1002/nag.1062" target="_self">doi: 10.1002/nag.1062</a>,
     2011,
     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_self"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
-<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
     second edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2003.</li>
-<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2008.</li>
-<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>.
+<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Finite Elements for the Boussinesq Wave Equations,
     Waves and Non-linear Processes in Hydrodynamics,
     edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
@@ -45632,36 +45619,36 @@ Filename: <code>selc_composed.pdf</code>.
     pp. pp. 117-126,
     1995,
     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_self"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
-<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
     third edition,
     <em>Texts in Computational Science and Engineering</em>,
     Springer,
     2012.</li>
-<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>.
+<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
     Optimization With Diffpack: Practical Example From Welding,
     <em>Simula Research Laboratory</em>,
     Internal report,
     2004.</li>
-<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1989.</li>
-<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
     2007.</li>
-<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
     1985.</li>
-<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>.
+<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
     Numerical Methods in Continuum Mechanics,
     <em>Center for Industrial Research</em>,
     1991.</li>
-<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>.
+<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
     Diffpack: Software for Partial Differential Equations,
     <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,
     edited by <b>A. Vermeulen</b>,
@@ -45857,7 +45844,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -45881,7 +45868,7 @@ and finally the complete file with a plain text verbatim environment
 .. code-block:: text
 
         C     a comment
-
+        
               subroutine test()
               integer i
               real*8 r
@@ -45891,7 +45878,7 @@ and finally the complete file with a plain text verbatim environment
               end do
               return
         C     END1
-
+        
               program testme
               call test()
               return
@@ -45945,7 +45932,7 @@ Another complete program to be typeset as a sage cell:
         a = 2
         b = 3
         print 'a+b:', a + b
-
+        
         # In a sage cell we can also plot
         from matplotlib.pyplot import *
         from numpy import *
@@ -45976,9 +45963,9 @@ IPython sessions:
 .. code-block:: ipy
 
         In [1]: from numpy import sin
-
+        
         In [2]: # Some comment
-
+        
         In [3]: x = sin(1.2); print 'Value:', x
         Value: 0.932039085967
 
@@ -45989,7 +45976,7 @@ C++:
 .. code-block:: c++
 
         #include <iostream>
-
+        
         int main()
         {
            std::cout << "Sample output" << std::endl;
@@ -46056,7 +46043,7 @@ Any valid pygments lexer/language name can appear to, e.g.,
         =======
         Heading
         =======
-
+        
         Some text.
         !ec
 
@@ -46067,7 +46054,7 @@ results in
         =======
         Heading
         =======
-
+        
         Some text.
 
 .. Here goes hidden code.
@@ -46079,39 +46066,39 @@ Finally, ``!bc do`` supports highlighting of DocOnce source:
 .. code-block:: doconce
 
         ======= DocOnce test file =======
-
+        
         ===== Computer code =====
-
+        
         Inline verbatim code, as in `import numpy as np`, is allowed, as well as
         code blocks:
-
+        
         !bc pycod
         from math import sin
-
+        
         def f(x):
             """Example on a function."""
             return sin(x) + 1
-
+        
         print f(0)
         !ec
-
-
+        
+        
         ===== Mathematics =====
-
+        
         Formulas can be inline, as in $\nabla\cdot\boldsymbol{u} = 0$, or typeset
         as equations:
-
+        
         !bt
         \begin{align*}
-        \nabla\cdot\boldsymbol{u} &= 0,\\
+        \nabla\cdot\boldsymbol{u} &= 0,\\ 
         \boldsymbol{u} &= \nabla\phi .
         \end{align*}
         !et
-
+        
         === Subsubsection heading ===
-
+        
         DocOnce files can have chapters, sections, subsections, and subsubsections.
-
+        
         __Paragraph heading.__ Paragraphs may have headings.
 
 It is time to test ``verbatim inline font`` especially with ``a newline
@@ -46126,8 +46113,8 @@ format sphinx.
 Here is some **red color** and an attempt to write **with
 green color containing a linebreak
 
-| code.** Some formats will only display
-| this correctly when ``html``
+| code.** Some formats will only display 
+| this correctly when ``html`` 
 | is the output format.
 
 But here some more running text is added which is not part of
@@ -46270,12 +46257,12 @@ Newcommands must also be tested in this test report:
 both inline and in block:
 
 .. math::
-
+        
         \frac{Du}{dt} &= 0
-        \\
-        \frac{1}{2} &= {1/2}\\
+        \\ 
+        \frac{1}{2} &= {1/2}\\ 
         \frac{1}{2}\pmb{x} &= \pmb{n}
-
+        
 
 Or with align with label and numbers:
 
@@ -46283,24 +46270,24 @@ Or with align with label and numbers:
 
 .. math::
    :label: aligneq1
-
+        
         \frac{Du}{dt} = 0
-
-
+        
+        
 
 .. math::
-
+          
         \frac{1}{2} = {1/2}
-
+        
 
 .. _Eq:aligneq2:
 
 .. math::
    :label: aligneq2
-
+          
         \frac{1}{2}\pmb{x} = \pmb{n}
-
-
+        
+        
 
 Sphinx makes a fix here and splits align into multiple equation
 environments.
@@ -46350,13 +46337,13 @@ Tables
 
 Let us take this table from the manual:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0     1.4186         -5.01
-2.0   1.376512        11.919
-4.0     1.1E+1     14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0     1.4186         -5.01  
+2.0   1.376512        11.919  
+4.0     1.1E+1     14.717624  
+====  ========  ============  
 
 The DocOnce source code reads
 
@@ -46369,57 +46356,57 @@ The DocOnce source code reads
           | 2.0  | 1.376512 | 11.919       |
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
-
+        
 
 Here is yet another table to test that we can handle more than
 one table:
 
-====  ========  ============
-time  velocity  acceleration
-====  ========  ============
-0.0   1.4186    -5.01
-1.0   1.376512  11.919
-3.0   1.1E+1    14.717624
-====  ========  ============
+====  ========  ============  
+time  velocity  acceleration  
+====  ========  ============  
+0.0   1.4186    -5.01         
+1.0   1.376512  11.919        
+3.0   1.1E+1    14.717624     
+====  ========  ============  
 
 And one with math headings (that are expanded and must be treated
 accordingly), verbatim heading and entry, and no space around the pipe
 symbol:
 
-=========  ===========  ================  =======
-:math:`i`  :math:`h_i`  :math:`\bar T_i`  ``L_i``
-=========  ===========  ================  =======
-0                    0               288  -0.0065
-1               11,000               216      0.0
-2               20,000               216    0.001
-3               32,000               228   0.0028
-4               47,000               270      0.0
-5               51,000               270  -0.0028
-6               71,000               214  ``NaN``
-=========  ===========  ================  =======
+=========  ===========  ================  =======  
+:math:`i`  :math:`h_i`  :math:`\bar T_i`  ``L_i``  
+=========  ===========  ================  =======  
+0                    0               288  -0.0065  
+1               11,000               216      0.0  
+2               20,000               216    0.001  
+3               32,000               228   0.0028  
+4               47,000               270      0.0  
+5               51,000               270  -0.0028  
+6               71,000               214  ``NaN``  
+=========  ===========  ================  =======  
 
 And add one with verbatim headings (with underscores),
 and rows starting with ``|-`` because of a negative number,
 and ``|`` right before and after verbatim word (with no space):
 
-=====  =======  =====================  ===========
-exact  ``v_1``  :math:`a_i` + ``v_2``  ``verb_3_``
-=====  =======  =====================  ===========
-    9     9.62                   5.57         8.98
-  -20   -23.39                  -7.65       -19.93
-   10    17.74                  -4.50         9.96
-    0    -9.19                   4.13        -0.26
-=====  =======  =====================  ===========
+=====  =======  =====================  ===========  
+exact  ``v_1``  :math:`a_i` + ``v_2``  ``verb_3_``  
+=====  =======  =====================  ===========  
+    9     9.62                   5.57         8.98  
+  -20   -23.39                  -7.65       -19.93  
+   10    17.74                  -4.50         9.96  
+    0    -9.19                   4.13        -0.26  
+=====  =======  =====================  ===========  
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not anymore:
 
-===============  ===============
-   :math:`S`         command
-===============  ===============
-$ ||a_0|| $      ``norm|length``
-:math:`x\cap y`          ``x|y``
-===============  ===============
+===============  ===============  
+   :math:`S`         command      
+===============  ===============  
+$ ||a_0|| $      ``norm|length``  
+:math:`x\cap y`          ``x|y``  
+===============  ===============  
 
 Finally, a table with math
 (``bm`` that expands to ``boldsymbol``, was tricky, but
@@ -46430,13 +46417,13 @@ and URLs.
 
 .. (These types of tables did not work before Jan 2014)
 
-====================================  ==========================================================  ==========================================================
-
-====================================  ==========================================================  ==========================================================
-       :math:`\mathcal{L}=0`          `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__
-            :math:`a=b`               `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__
-:math:`\nabla\cdot\boldsymbol{u} =0`  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__
-====================================  ==========================================================  ==========================================================
+====================================  ==========================================================  ==========================================================  
+                                                                                                                                                              
+====================================  ==========================================================  ==========================================================  
+       :math:`\mathcal{L}=0`          `080 <../doc/src/manual/mov/wave_frames/frame_0080.png>`__  `085 <../doc/src/manual/mov/wave_frames/frame_0085.png>`__  
+            :math:`a=b`               `090 <../doc/src/manual/mov/wave_frames/frame_0090.png>`__  `095 <../doc/src/manual/mov/wave_frames/frame_0095.png>`__  
+:math:`\nabla\cdot\boldsymbol{u} =0`  `100 <../doc/src/manual/mov/wave_frames/frame_0100.png>`__  `105 <../doc/src/manual/mov/wave_frames/frame_0105.png>`__  
+====================================  ==========================================================  ==========================================================  
 
 A test of verbatim words in heading with subscript :math:`a_i`: ``my_file_v1`` and ``my_file_v2``
 -------------------------------------------------------------------------------------------------
@@ -46632,7 +46619,7 @@ implementation of a Python function for addition.
 
         def add(a, b):
             return a + b
-
+        
         def test_add():
             a = 1; b = 1
             expected = a + b
@@ -46647,13 +46634,13 @@ Example 2: Addition
 We have
 
 .. math::
-         1 + 1 = 2
+         1 + 1 = 2 
 
 
 .. admonition:: Highlight box
 
    This environment is used to highlight something:
-
+   
    .. math::
             E = mc^2
 
@@ -46768,7 +46755,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -47009,7 +46996,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -47421,7 +47408,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -47609,7 +47596,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -48019,7 +48006,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -48214,7 +48201,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -48624,7 +48611,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -48862,7 +48849,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -49272,7 +49259,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -49403,7 +49390,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -49836,7 +49823,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -50036,7 +50023,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -50446,7 +50433,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -50544,7 +50531,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -50966,7 +50953,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -51166,7 +51153,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -51576,7 +51563,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
 \usepackage{minted}
@@ -51814,7 +51801,7 @@ Testing admons
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -52287,7 +52274,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -52298,7 +52285,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -52692,7 +52679,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_gray.html *****************
@@ -52795,7 +52782,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -52806,7 +52793,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -53226,7 +53213,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_yellow.html *****************
@@ -53326,7 +53313,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -53337,7 +53324,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -53757,7 +53744,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_sphinx/admon.html *****************
@@ -53770,12 +53757,12 @@ exercises (and problems and projects too).
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    
     <title>Testing admons</title>
-
+    
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -53805,11 +53792,11 @@ exercises (and problems and projects too).
                 }
         </style>
 
-
+    
     <link rel="top" title="Testing admons" href="index.html" />
     <link rel="prev" title="Testing admons" href="index.html" />
-
-
+ 
+  
        <style type="text/css">
          div.admonition {
            background-color: whiteSmoke;
@@ -53817,7 +53804,7 @@ exercises (and problems and projects too).
          }
        </style>
       </head>
-
+    
   <body>
     <div class="related">
       <h3>Navigation</h3>
@@ -53828,15 +53815,15 @@ exercises (and problems and projects too).
         <li class="right" >
           <a href="index.html" title="Testing admons"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li>
+        <li><a href="index.html">Testing admons</a> &raquo;</li> 
       </ul>
-    </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body">
-
+            
   <div class="section" id="testing-admons">
 <h1>Testing admons<a class="headerlink" href="#testing-admons" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
@@ -54171,7 +54158,7 @@ exercises (and problems and projects too).</p>
         <li class="right" >
           <a href="index.html" title="Testing admons"
              >previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li>
+        <li><a href="index.html">Testing admons</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
@@ -54257,7 +54244,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -54268,7 +54255,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -54760,7 +54747,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_paragraph.html *****************
@@ -54840,7 +54827,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -54851,7 +54838,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -55284,7 +55271,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_apricot.html *****************
@@ -55391,7 +55378,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -55402,7 +55389,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -55816,7 +55803,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_vagrant.html *****************
@@ -55944,7 +55931,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -56398,7 +56385,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -56450,7 +56437,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -56489,7 +56476,7 @@ MathJax.Hub.Config({
 
 </body>
 </html>
-
+    
 
 
 ************** File: admon_bootswatch_panel.html *****************
@@ -56542,7 +56529,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -56587,7 +56574,7 @@ MathJax.Hub.Config({
 <!-- author(s): hpl -->
 
 <center>
-<b>hpl</b>
+<b>hpl</b> 
 </center>
 
 
@@ -57054,7 +57041,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: ._admon_bootstrap_alert001.html *****************
@@ -57107,7 +57094,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -57551,7 +57538,7 @@ exercises (and problems and projects too).
 
 </body>
 </html>
-
+    
 
 
 ************** File: ._admon_bootstrap_alert002.html *****************
@@ -57613,12 +57600,12 @@ First a simple block with text, an equation, and a list:
 
 
 {{mbox
-| type =
+| type = 
 | textstyle = font-size: 90%;
 | text = '''''' A generic equation
 
 :<math>
- f(x) = 0
+ f(x) = 0 
 </math>
 must be solved by a numerical method, such as
 
@@ -57637,7 +57624,7 @@ box, it is not a new paragraph):
 
 
 {{mbox
-| type =
+| type = 
 | textstyle = font-size: 90%;
 | text = '''''' :<math>
 f(x) = \sin(x)e^{1-x} </math>
@@ -57649,7 +57636,7 @@ Let's begin a new paragraph and show a box with code only:
 
 
 {{mbox
-| type =
+| type = 
 | textstyle = font-size: 90%;
 | text = '''''' <syntaxhighlight lang="python">
 def some_code(x):
@@ -57744,7 +57731,7 @@ of understanding.
 
 
 {{mbox
-| type =
+| type = 
 | textstyle = font-size: 90%;
 | text = '''''' Here is a block of text with no title. As above, it is typeset without any icon
 and is useful when you want some admons with icon and some without.
@@ -57796,7 +57783,7 @@ But first a bit of math where we define <math>\theta</math> and <math>\bm{r}</ma
 {{mbox
 | type = Question.
 | textstyle = font-size: 90%;
-| text = '''Question.'''
+| text = '''Question.''' 
 <ol>
  <li> Once more, how many admonition environments does DocOnce support?
 </ol>
@@ -57999,10 +57986,10 @@ Here is a plain quote environment.
 
     Sayre's law states that
     "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake."
-
-    | By way of corollary, it adds:
-    | "That is why academic politics are so bitter."
+    proportional to the value of the issues at stake." 
+    
+    | By way of corollary, it adds: 
+    | "That is why academic politics are so bitter." 
     | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`__
 
 
@@ -58033,7 +58020,7 @@ First a simple block with text, an equation, and a list:
 A generic equation
 
 .. math::
-         f(x) = 0
+         f(x) = 0 
 
 must be solved by a numerical method, such as
 
@@ -58082,11 +58069,11 @@ Let us start with a plain warning environment.
     And here is a warning about something to pay attention to. We
     test how the heading behave and add quite some extra texts
     in comparison with the other admons.
-
+    
       * and a list
-
+    
       * with items
-
+    
     We continue with more text to see how that affects the layout.
     And more and more text.
     And more and more text.
@@ -58104,18 +58091,18 @@ Test warning with title:
 .. admonition:: Title ending with math :math:`\sqrt{2}\approx 1.4`
 
    And here comes some text with bad news in larger font.
-
+   
    Also some code:
-
+   
    .. code-block:: python
-
+   
            def f(x):
                return x
-
+   
    And a complete program
-
+   
    .. code-block:: python
-
+   
            print "Hello, World!"
 
 
@@ -58171,9 +58158,9 @@ applies the generic title "Notice:" for the Sphinx format:
 
    Ah, we are soon close to the end (with illegal font size specification!).
    But first a bit of math where we define :math:`\theta` and :math:`\boldsymbol{r}`:
-
+   
    .. math::
-
+           
            \theta &= q^2,\\
            \boldsymbol{r} &= \varrho\boldsymbol{i}
 
@@ -58210,17 +58197,17 @@ applies the generic title "Notice:" for the Sphinx format:
 .. admonition:: Tip
 
    It is of outmost important to
-
+   
    1. stay cool
-
+   
    2. read hints and tips carefully
-
+   
    Because here the thing is to do
-
+   
    .. code-block:: python
-
+   
            import urllib
-
+           
            def grab(url, filename):
                urllib.urlretrieve(url, filename=filename)
 
@@ -58254,75 +58241,75 @@ text, math and code.
    meaning, is what counts here. We need desperately to fill up the
    page in the hope that some admonitions will experience a page break,
    which the LaTeX environment should handle with ease.
-
+   
    Let us start with some equations:
-
+   
    .. math::
-
+           
            \frac{Du}{dt} &= 0
            \\
            \frac{1}{2} &= {1/2}\\
            \frac{1}{2}\pmb{x} &= \pmb{n}
-
-
+           
+   
    The implementation of such complicated equations in computer
    code is task that this "Going deeper" environment targets.
-
+   
    .. code-block:: python
-
+   
            def Dudt(u):
                r = diff(u, t) + u*grad(u)
                return r
-
+           
            half = 0.5
            x = 2*n
-
+   
    And some more text that can help going into the next page.
    Longer computer code requires vertical space:
-
+   
    .. code-block:: python
-
+   
            class Diff:
                def __init__(self, f, h=1E-5):
                    self.f = f
                    self.h = float(h)
-
+           
            class Forward1(Diff):
                def __call__(self, x):
                    f, h = self.f, self.h
                    return (f(x+h) - f(x))/h
-
+           
            class Backward1(Diff):
                def __call__(self, x):
                    f, h = self.f, self.h
                    return (f(x) - f(x-h))/h
-
+           
            class Central2(Diff):
                def __call__(self, x):
                    f, h = self.f, self.h
                    return (f(x+h) - f(x-h))/(2*h)
-
+           
            class Central4(Diff):
                def __call__(self, x):
                    f, h = self.f, self.h
                    return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
                           (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
-
+           
            class Central6(Diff):
                def __call__(self, x):
                    f, h = self.f, self.h
                    return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
                           (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
                           (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
-
+           
            class Forward3(Diff):
                def __call__(self, x):
                    f, h = self.f, self.h
                    return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                            (1./3)*f(x-h))/h
-
+   
    And then we add a figure too.
-
+   
    .. figure:: ../doc/src/manual/fig/wave1D.png
       :width: 400
 
@@ -58384,9 +58371,9 @@ Here is a plain quote environment.
 
         Sayre's law states that
         "in any dispute the intensity of feeling is inversely
-        proportional to the value of the issues at stake."
-        By way of corollary, it adds:
-        "That is why academic politics are so bitter."
+        proportional to the value of the issues at stake." 
+        By way of corollary, it adds: 
+        "That is why academic politics are so bitter." 
         *Source*: wikipedia (http://en.wikipedia.org/wiki/Sayre's_law)
 
 
@@ -58791,6 +58778,21 @@ fi
 !eblock
 
 !split
+===== Pop ups inside code blocks (for Beamer slides only) =====
+
+!bc pycod
+def f(x):
+    return 42 + x
+
+|\pause|
+def g(x):
+    return f(42)
+
+|\pause|
+print g(13)
+!ec
+
+!split
 ===== Various admon blocks =====
 
 Can use admons to simulate blocks:
@@ -58936,7 +58938,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 
 
 
@@ -59185,7 +59187,27 @@ style):
 
 <section>
 
-<h2 id="___sec7">Various admon blocks </h2>
+<h2 id="___sec7">Pop ups inside code blocks (for Beamer slides only) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">42</span> + x
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> f(<span style="color: #B452CD">42</span>)
+
+<span style="color: #8B008B; font-weight: bold">print</span> g(<span style="color: #B452CD">13</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2 id="___sec8">Various admon blocks </h2>
 
 <p>
 Can use admons to simulate blocks:
@@ -59780,7 +59802,11 @@ div { text-align: justify; text-justify: inter-word; }
               (' An HTML document ', 2, None, '___sec4'),
               (' Second section ', 1, None, '___sec5'),
               (' Some math and computer code ', 2, None, '___sec6'),
-              (' Various admon blocks ', 2, None, '___sec7')]}
+              (' Pop ups inside code blocks (for Beamer slides only) ',
+               2,
+               None,
+               '___sec7'),
+              (' Various admon blocks ', 2, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -59801,7 +59827,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -59993,7 +60019,23 @@ style):
 <p>
 <!-- !split -->
 
-<h2 id="___sec7">Various admon blocks </h2>
+<h2 id="___sec7">Pop ups inside code blocks (for Beamer slides only) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">42</span> + x
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">g</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> f(<span style="color: #B452CD">42</span>)
+
+<span style="color: #8B008B; font-weight: bold">print</span> g(<span style="color: #B452CD">13</span>)
+</pre></div>
+<p>
+<!-- !split -->
+
+<h2 id="___sec8">Various admon blocks </h2>
 
 <p>
 Can use admons to simulate blocks:
@@ -60037,7 +60079,7 @@ title (Warning) since no title is specified.
 
 </body>
 </html>
-
+    
 
 
 ************** File: slides1_deck.html *****************
@@ -60215,7 +60257,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 
 
 
@@ -60460,7 +60502,27 @@ style):
 
 <section class="slide">
 
-<h2 id="___sec7">Various admon blocks </h2>
+<h2 id="___sec7">Pop ups inside code blocks (for Beamer slides only) </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "emacs" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">f</span>(x):
+    <span style="color: #AA22FF; font-weight: bold">return</span> <span style="color: #666666">42</span> <span style="color: #666666">+</span> x
+
+<span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">g</span>(x):
+    <span style="color: #AA22FF; font-weight: bold">return</span> f(<span style="color: #666666">42</span>)
+
+<span style="color: #AA22FF; font-weight: bold">print</span> g(<span style="color: #666666">13</span>)
+</pre></div>
+<p>
+
+</section>
+
+
+<section class="slide">
+
+<h2 id="___sec8">Various admon blocks </h2>
 
 <p>
 Can use admons to simulate blocks:
@@ -60945,7 +61007,7 @@ class: center, middle
 
 ## Figure and bullet list
 
-*Title with comma, and brackets: \\( [a,b] \\)*
+*Title with comma, and brackets: \\( [a,b] \\)* 
   * Here is a *wave signal* \\( f(x-ct) \\)
   * It moves with velocity \\( c \\)
   * But here it is just a figure
@@ -60985,7 +61047,7 @@ Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
 \maketitle
 ```
 
-*Notice.*
+*Notice.* 
 LaTeX has a lot of backslashes.
 
 
@@ -61021,12 +61083,12 @@ bla-bla
 ## Some math and computer code
 
 
-*A simple, mathematical formula where \\( t\in [0,\pi] \\):*
+*A simple, mathematical formula where \\( t\in [0,\pi] \\):* 
 $$
 f(x,y,t) = e^{-xt}\sin\pi y
 $$
 
-*Bash demanded more of DocOnce than Python, so let's do Bash:*
+*Bash demanded more of DocOnce than Python, so let's do Bash:* 
 First, inline `\\( ? != 0`, then comments with dollar variables (and minted
 style):
 
@@ -61043,16 +61105,31 @@ fi
 
 ---
 
+## Pop ups inside code blocks (for Beamer slides only)
+
+
+```python
+def f(x):
+    return 42 + x
+
+def g(x):
+    return f(42)
+
+print g(13)
+```
+
+---
+
 ## Various admon blocks
 
 Can use admons to simulate blocks:
 
-*Key PDE (with large title and math font):*
+*Key PDE (with large title and math font):* 
 $$
 \frac{\partial u}{\partial t} = \nabla^2 u
 $$
 
-*None*
+*None* 
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 
@@ -61488,6 +61565,21 @@ fi
 \end{block}
 
 % !split
+\subsection{Pop ups inside code blocks (for Beamer slides only)}
+
+\bpycod
+def f(x):
+    return 42 + x
+
+|\pause|
+def g(x):
+    return f(42)
+
+|\pause|
+print g(13)
+\epycod
+
+% !split
 \subsection{Various admon blocks}
 
 Can use admons to simulate blocks:
@@ -61568,8 +61660,136 @@ title (Warning) since no title is specified.
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 
 \usepackage{fancyvrb}
-\usepackage{minted} % requires pygments and latex -shell-escape filename
+%\usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
+\usepackage{listingsutf8}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% New ansi colors
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  escapeinside={||},
+}
+
+% Various styles for lstlisting
+\lstdefinestyle{simple}{
+inputencoding=utf8x,
+extendedchars=\true,
+aboveskip=\smallskipamount,
+belowskip=\smallskipamount,
+breaklines=false,
+breakatwhitespace=true,
+breakindent=30,
+showstringspaces=false,
+columns=fullflexible,  % tighter character kerning, like verb
+}
+
+\lstdefinestyle{redblue}{
+inputencoding=utf8x,
+extendedchars=\true,
+aboveskip=\smallskipamount,
+belowskip=\smallskipamount,
+breaklines=false,
+breakatwhitespace=true,
+breakindent=30,
+showstringspaces=false,
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+}
+
+% Use this one without additional background color
+\lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
+tabsize=4,                           % tab means 4 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black},             % frame color
+backgroundcolor=\color{yellow!10},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+}
+
+\lstdefinestyle{gray}{
+tab=,
+tabsize=2,                           % tab means 2 spaces
+basicstyle=\ttfamily\footnotesize,   % fonts used for the code
+breaklines=true,                     % break lines
+breakatwhitespace=true,              % let linebreaks happen at whitespace
+showspaces=false,                    % true: show spaces with a particular underscore
+aboveskip=1ex,
+frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
+%framerule=0.4pt                     % thickness of frame
+rulecolor=\color{black!40},          % frame color
+backgroundcolor=\color{gray},
+xleftmargin=5pt,
+xrightmargin=5pt,
+%numbers=left,                       % put line numbers on the left
+%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+keywordstyle=\color{keyword_pink}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
+}
+% end of custom lstdefinestyles
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
@@ -61640,6 +61860,7 @@ title (Warning) since no title is specified.
 
 \begin{document}
 
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -61723,7 +61944,7 @@ Over multiple lines.
 \frametitle{A {\LaTeX} document}
 
 \pause
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{latex}
+\begin{lstlisting}[language=TeX,style=yellow2_fb]
 \documentclass[11pt]{article}
 \usepackage{fancyvrb}
 \begin{document}
@@ -61733,7 +61954,7 @@ Over multiple lines.
 Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
 \date{\today}
 \maketitle
-\end{minted}
+\end{lstlisting}
 
 \pause
 \begin{block}{Notice}
@@ -61741,23 +61962,23 @@ Jane Doe\footnote{\texttt{jane.doe@cyber.net}.}}
 \end{block}
 
 \pause
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{latex}
+\begin{lstlisting}[language=TeX,style=yellow2_fb]
 \section{Heading}
 bla-bla
 \end{document}
-\end{minted}
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[plain,fragile]
 \frametitle{An HTML document}
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{html}
+\begin{lstlisting}[language=HTML,style=yellow2_fb]
 <html><head></head><body bgcolor="red">
 <title>Here goes the title...<title>
 <h1>Section heading</h1>
 </body>
 </html>
-\end{minted}
+\end{lstlisting}
 \end{frame}
 
 \section{Second section}
@@ -61789,14 +62010,30 @@ bla-bla
 First, inline \Verb@$? != 0@, then comments with dollar variables (and minted
 style):
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{bash}
+\begin{lstlisting}[language=bash,style=yellow2_fb]
 var=10
 # $1, $2, ... are command-line args
 if [ $? -eq 0 ]; then   # $? reflects success or not
   echo "Great!"
 fi
-\end{minted}
+\end{lstlisting}
 \end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Pop ups inside code blocks (for Beamer slides only)}
+
+\begin{lstlisting}[language=Python,style=yellow2_fb]
+def f(x):
+    return 42 + x
+
+|\pause|
+def g(x):
+    return f(42)
+
+|\pause|
+print g(13)
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -61872,6 +62109,7 @@ title (Warning) since no title is specified.
 \usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
+%\usepackage{listingsutf8}
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
@@ -62099,6 +62337,22 @@ if [ $? -eq 0 ]; then   # $? reflects success or not
 fi
 \end{minted}
 \end{block}
+\end{frame}
+
+\begin{frame}[plain,fragile]
+\frametitle{Pop ups inside code blocks (for Beamer slides only)}
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=2mm]{python}
+def f(x):
+    return 42 + x
+
+|\pause|
+def g(x):
+    return f(42)
+
+|\pause|
+print g(13)
+\end{minted}
 \end{frame}
 
 \begin{frame}[plain,fragile]
@@ -62865,7 +63119,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 
 
 
@@ -62880,7 +63134,7 @@ MathJax.Hub.Config({
 <!-- author(s): Core Dump -->
 
 <center>
-<b>Core Dump</b>
+<b>Core Dump</b> 
 </center>
 
 
@@ -64869,7 +65123,7 @@ u, t = solver(I=1, a=1, T=3, dt=1., theta=0.5)
 print u
 \epypro
 \noindent
-(\href{{http://pythontutor.com/visualize.html\#code=def+solver\%28I\%2C+a\%2C+T\%2C+dt\%2C+theta\%29\%3A\%0A++++dt+\%3D+float\%28dt\%29\%0A++++N+\%3D+int\%28round\%28T\%2Fdt\%29\%29\%0A++++T+\%3D+N\%2Adt\%0A++++u+\%3D+\%5B0.0\%5D\%2A\%28N\%2B1\%29\%0A++++t+\%3D+\%5Bi\%2Adt+for+i+in+range\%28N\%2B1\%29\%5D\%0A\%0A++++u\%5B0\%5D+\%3D+I\%0A++++for+n+in+range\%280\%2C+N\%29\%3A\%0A++++++++u\%5Bn\%2B1\%5D+\%3D+\%281+-+\%281-theta\%29\%2Aa\%2Adt\%29\%2F\%281+\%2B+theta\%2Adt\%2Aa\%29\%2Au\%5Bn\%5D\%0A++++return+u\%2C+t\%0A\%0Au\%2C+t+\%3D+solver\%28I\%3D1\%2C+a\%3D1\%2C+T\%3D3\%2C+dt\%3D1.\%2C+theta\%3D0.5\%29\%0Aprint+u&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution})
+(\href{{http://pythontutor.com/visualize.html\#code=def+solver\%28I\%2C+a\%2C+T\%2C+dt\%2C+theta\%29\%3A\%0A++++dt+\%3D+float\%28dt\%29\%0A++++N+\%3D+int\%28round\%28T\%2Fdt\%29\%29\%0A++++T+\%3D+N\%2Adt\%0A++++u+\%3D+\%5B0.0\%5D\%2A\%28N\%2B1\%29\%0A++++t+\%3D+\%5Bi\%2Adt+for+i+in+range\%28N\%2B1\%29\%5D\%0A\%0A++++u\%5B0\%5D+\%3D+I\%0A++++for+n+in+range\%280\%2C+N\%29\%3A\%0A++++++++u\%5Bn\%2B1\%5D+\%3D+\%281+-+\%281-theta\%29\%2Aa\%2Adt\%29\%2F\%281+\%2B+theta\%2Adt\%2Aa\%29\%2Au\%5Bn\%5D\%0A++++return+u\%2C+t\%0A\%0Au\%2C+t+\%3D+solver\%28I\%3D1\%2C+a\%3D1\%2C+T\%3D3\%2C+dt\%3D1.\%2C+theta\%3D0.5\%29\%0Aprint+u&mode=display&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&py=2&curInstr=0}}{Visualize execution}) 
 
 
 
@@ -65039,6 +65293,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 \usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
+%\usepackage{listingsutf8}
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
@@ -65129,7 +65384,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 % ----------------- end author(s) -------------------------
 
 \date{Jan 32, 2100
-\\ \ \\
+\\ \ \\ 
 \centerline{\includegraphics[width=0.5\linewidth]{../doc/src/slides/fig/doconce1b.png}}
 }
 
@@ -66087,7 +66342,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 
 
 
@@ -66185,7 +66440,7 @@ demonstrated.
 $$
 \begin{align}
 u'(t) &= -au(t),
-\tag{1}\\
+\tag{1}\\ 
 u(0)  &= I,
 \tag{2}
 \end{align}
@@ -66604,7 +66859,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <a name="part0001"></a>
 <!-- !split -->
 
@@ -66654,7 +66909,7 @@ demonstrated.
 
 </body>
 </html>
-
+    
 
 
 ************** File: slides3.p.tex *****************
@@ -66978,7 +67233,7 @@ demonstrated.
 
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\
+\label{ode}\\ 
 u(0)  &= I,
 \label{initial:value}
 \end{align}
@@ -67150,6 +67405,7 @@ qualitatively correct results.
 \usepackage{fancyvrb}
 \usepackage{minted} % requires pygments and latex -shell-escape filename
 %\usepackage{anslistings}
+%\usepackage{listingsutf8}
 
 \usepackage{amsmath,amssymb,bm}
 %\usepackage[latin1]{inputenc}
@@ -67242,7 +67498,7 @@ Department of Informatics, University of Oslo\inst{2}}
 % ----------------- end author(s) -------------------------
 
 \date{Jan 32, 2100
-\\ \ \\
+\\ \ \\ 
 \centerline{\includegraphics[width=0.4\linewidth]{../doc/src/slides/fig/CN_logo.pdf}}
 }
 
@@ -67283,7 +67539,7 @@ demonstrated.
 \column{0.5\textwidth}
 \begin{align}
 u'(t) &= -au(t),
-\label{ode}\\
+\label{ode}\\ 
 u(0)  &= I,
 \label{initial:value}
 \end{align}
@@ -67460,15 +67716,15 @@ i,h_i,\bar T_i,L_i
 <!-- Translate with doconce format pandoc githu_md --github_md -->
 
 > ### Problems with a function
->
+> 
 > There is a problem with the `f(x)` function
->
->
+> 
+> 
 > ```python
 > def f(x):
 >     return 1 + x
 > ```
->
+> 
 > This function should be quadratic.
 
 
@@ -67617,7 +67873,7 @@ end of tocinfo -->
 
 <body>
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -67628,7 +67884,7 @@ end of tocinfo -->
 <!-- author(s): HPL -->
 
 <center>
-<b>HPL</b>
+<b>HPL</b> 
 </center>
 
 
@@ -67717,203 +67973,203 @@ function preload_images____doc_src_manual_mov_wave_frames_frame_0080()
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[0] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[1] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[2] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[3] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[4] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[5] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[6] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[7] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[8] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[9] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[10] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[11] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[12] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[13] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[14] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[15] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[16] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[17] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[18] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[19] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[20] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[21] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[22] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[23] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[24] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[25] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[26] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[27] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[28] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[29] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[30] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[31] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[32] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[33] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[34] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[35] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[36] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[37] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[38] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[39] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[40] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[41] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[42] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[43] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[44] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[45] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[46] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[47] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[48] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[49] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-
+        
    t.innerHTML = "";
 }
 
@@ -67991,203 +68247,203 @@ function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_fram
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
-
+        
    t.innerHTML = "";
 }
 
@@ -68308,7 +68564,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 
 </body>
 </html>
-
+    
 
 
 ************** File: movies.html *****************
@@ -68360,7 +68616,7 @@ end of tocinfo -->
 
 <body>
 
-
+    
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -68371,7 +68627,7 @@ end of tocinfo -->
 <!-- author(s): HPL -->
 
 <center>
-<b>HPL</b>
+<b>HPL</b> 
 </center>
 
 
@@ -68460,203 +68716,203 @@ function preload_images____doc_src_manual_mov_wave_frames_frame_0080()
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[0] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[1] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[2] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[3] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[4] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[5] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[6] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[7] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[8] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[9] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[10] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[11] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[12] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[13] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[14] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[15] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[16] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[17] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[18] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[19] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[20] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[21] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[22] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[23] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[24] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[25] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[26] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[27] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[28] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[29] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[30] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[31] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[32] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[33] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[34] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[35] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[36] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[37] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[38] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[39] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[40] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[41] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[42] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[43] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[44] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[45] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[46] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[47] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[48] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[49] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-
+        
    t.innerHTML = "";
 }
 
@@ -68734,203 +68990,203 @@ function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_fram
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
-
+        
    t.innerHTML = "";
 }
 
@@ -69051,7 +69307,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 
 </body>
 </html>
-
+    
 
 
 ************** File: movies.p.tex *****************
@@ -69101,7 +69357,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
@@ -69190,7 +69446,7 @@ This is a demo of movies in DocOnce
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -69513,7 +69769,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
@@ -69597,7 +69853,7 @@ This is a demo of movies in DocOnce
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -69918,7 +70174,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm,microtype}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
 % Movies are handled by the media9 package
 \newenvironment{doconce:movie}{}{}
@@ -70003,7 +70259,7 @@ This is a demo of movies in DocOnce
     \begin{center}
 % List of all institutions:
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -70457,203 +70713,203 @@ function preload_images____doc_src_manual_mov_wave_frames_frame_0080()
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[0] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[0].src = "../doc/src/manual/mov/wave_frames/frame_0080.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[1] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[1].src = "../doc/src/manual/mov/wave_frames/frame_0081.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[2] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[2].src = "../doc/src/manual/mov/wave_frames/frame_0082.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[3] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[3].src = "../doc/src/manual/mov/wave_frames/frame_0083.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[4] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[4].src = "../doc/src/manual/mov/wave_frames/frame_0084.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[5] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[5].src = "../doc/src/manual/mov/wave_frames/frame_0085.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[6] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[6].src = "../doc/src/manual/mov/wave_frames/frame_0086.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[7] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[7].src = "../doc/src/manual/mov/wave_frames/frame_0087.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[8] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[8].src = "../doc/src/manual/mov/wave_frames/frame_0088.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[9] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[9].src = "../doc/src/manual/mov/wave_frames/frame_0089.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[10] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[10].src = "../doc/src/manual/mov/wave_frames/frame_0090.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[11] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[11].src = "../doc/src/manual/mov/wave_frames/frame_0091.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[12] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[12].src = "../doc/src/manual/mov/wave_frames/frame_0092.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[13] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[13].src = "../doc/src/manual/mov/wave_frames/frame_0093.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[14] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[14].src = "../doc/src/manual/mov/wave_frames/frame_0094.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[15] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[15].src = "../doc/src/manual/mov/wave_frames/frame_0095.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[16] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[16].src = "../doc/src/manual/mov/wave_frames/frame_0096.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[17] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[17].src = "../doc/src/manual/mov/wave_frames/frame_0097.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[18] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[18].src = "../doc/src/manual/mov/wave_frames/frame_0098.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[19] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[19].src = "../doc/src/manual/mov/wave_frames/frame_0099.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[20] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[20].src = "../doc/src/manual/mov/wave_frames/frame_0100.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[21] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[21].src = "../doc/src/manual/mov/wave_frames/frame_0101.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[22] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[22].src = "../doc/src/manual/mov/wave_frames/frame_0102.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[23] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[23].src = "../doc/src/manual/mov/wave_frames/frame_0103.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[24] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[24].src = "../doc/src/manual/mov/wave_frames/frame_0104.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[25] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[25].src = "../doc/src/manual/mov/wave_frames/frame_0105.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[26] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[26].src = "../doc/src/manual/mov/wave_frames/frame_0106.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[27] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[27].src = "../doc/src/manual/mov/wave_frames/frame_0107.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[28] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[28].src = "../doc/src/manual/mov/wave_frames/frame_0108.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[29] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[29].src = "../doc/src/manual/mov/wave_frames/frame_0109.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[30] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[30].src = "../doc/src/manual/mov/wave_frames/frame_0110.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[31] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[31].src = "../doc/src/manual/mov/wave_frames/frame_0111.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[32] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[32].src = "../doc/src/manual/mov/wave_frames/frame_0112.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[33] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[33].src = "../doc/src/manual/mov/wave_frames/frame_0113.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[34] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[34].src = "../doc/src/manual/mov/wave_frames/frame_0114.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[35] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[35].src = "../doc/src/manual/mov/wave_frames/frame_0115.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[36] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[36].src = "../doc/src/manual/mov/wave_frames/frame_0116.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[37] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[37].src = "../doc/src/manual/mov/wave_frames/frame_0117.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[38] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[38].src = "../doc/src/manual/mov/wave_frames/frame_0118.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[39] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[39].src = "../doc/src/manual/mov/wave_frames/frame_0119.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[40] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[40].src = "../doc/src/manual/mov/wave_frames/frame_0120.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[41] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[41].src = "../doc/src/manual/mov/wave_frames/frame_0121.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[42] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[42].src = "../doc/src/manual/mov/wave_frames/frame_0122.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[43] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[43].src = "../doc/src/manual/mov/wave_frames/frame_0123.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[44] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[44].src = "../doc/src/manual/mov/wave_frames/frame_0124.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[45] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[45].src = "../doc/src/manual/mov/wave_frames/frame_0125.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[46] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[46].src = "../doc/src/manual/mov/wave_frames/frame_0126.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[47] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[47].src = "../doc/src/manual/mov/wave_frames/frame_0127.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[48] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[48].src = "../doc/src/manual/mov/wave_frames/frame_0128.png";
-
+        
    t.innerHTML = "Preloading image ";
    images____doc_src_manual_mov_wave_frames_frame_0080[49] = new Image(img_width____doc_src_manual_mov_wave_frames_frame_0080, img_height____doc_src_manual_mov_wave_frames_frame_0080);
    images____doc_src_manual_mov_wave_frames_frame_0080[49].src = "../doc/src/manual/mov/wave_frames/frame_0129.png";
-
+        
    t.innerHTML = "";
 }
 
@@ -70731,203 +70987,203 @@ function preload_images_http___hplgit_github_io_animate_doc_pub_mov_animate_fram
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[0].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0080.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[1].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0081.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[2].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0082.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[3].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0083.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[4].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0084.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[5].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0085.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[6].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0086.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[7].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0087.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[8].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0088.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[9].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0089.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[10].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0090.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[11].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0091.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[12].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0092.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[13].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0093.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[14].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0094.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[15].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0095.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[16].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0096.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[17].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0097.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[18].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0098.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[19].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0099.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[20].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0100.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[21].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0101.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[22].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0102.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[23].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0103.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[24].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0104.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[25].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0105.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[26].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0106.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[27].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0107.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[28].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0108.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[29].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0109.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[30].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0110.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[31].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0111.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[32].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0112.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[33].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0113.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[34].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0114.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[35].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0115.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[36].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0116.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[37].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0117.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[38].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0118.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[39].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0119.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[40].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0120.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[41].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0121.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[42].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0122.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[43].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0123.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[44].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0124.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[45].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0125.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[46].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0126.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[47].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0127.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[48].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0128.png";
-
+        
    t.innerHTML = "Preloading image ";
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49] = new Image(img_width_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080, img_height_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080);
    images_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame_0080[49].src = "http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_0129.png";
-
+        
    t.innerHTML = "";
 }
 
@@ -71040,7 +71296,7 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
     to doconce format. Without that command-line argument,
     this file is not produced.
 
-
+    
 
 ******* output format: html *******
 
@@ -71423,7 +71679,7 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
     to doconce format. Without that command-line argument,
     this file is not produced.
 
-
+    
 
 ******* output format: html *******
 
@@ -71487,7 +71743,7 @@ Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 
 
@@ -71514,7 +71770,7 @@ Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 
 
@@ -71526,7 +71782,7 @@ Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 
 
@@ -71538,7 +71794,7 @@ Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 
 
@@ -71549,7 +71805,7 @@ Text with a name like Åsmund Ødegård works in general.
 Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 
 *** List typesetting phase + comments and blank lines ***
@@ -71576,7 +71832,7 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 <p>
 
@@ -71713,7 +71969,7 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 <p>
 
@@ -71726,7 +71982,7 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 <p>
 
@@ -71739,7 +71995,7 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 <p>
 
@@ -71755,7 +72011,7 @@ Verbatim blocks with non-ASCII text does not work for HTML, but it works
 for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 <p>
-0 <<<!!CODE_BLOCK
+0 <<<!!CODE_BLOCK 
 
 <p>
 
@@ -71929,7 +72185,7 @@ through the various stages of the text transformation process.
     to doconce format. Without that command-line argument,
     this file is not produced.
 
-
+    
 
 ******* output format: html *******
 
@@ -72235,7 +72491,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fac79b442a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f0d0ca58398>
 
 
 First occurence: " `mako`."
@@ -75549,7 +75805,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -75637,7 +75893,7 @@ Here goes optional text.
 
 </body>
 </html>
-
+    
 
 
 ************** File: ._test_boots001.html *****************
@@ -75704,7 +75960,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -75907,7 +76163,7 @@ And then with plain words:
 
 </body>
 </html>
-
+    
 
 
 ************** File: ._test_boots002.html *****************
@@ -75974,7 +76230,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -76197,14 +76453,14 @@ we can run the program:
 
 </body>
 </html>
-
+    
 
 
 ************** File: sphinx-testdoc/conf.py *****************
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Apr  5 08:31:32 2015.
+# sphinx-quickstart on Tue Apr  7 13:14:31 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76722,7 +76978,7 @@ and transform such text to native DocOnce.
 # comments work well and are never confused with Markdown headings.
 
 # Markdown applies standard HTML
-# comments
+# comments 
 
 [hpl: This is a special comment on text that
 is rendered by extended Markdown versions. ]
@@ -76788,7 +77044,7 @@ And HTML:
 !bc htmlcod
 
 <h1>Some heading</h1>
-# And a comment
+# And a comment 
 !ec
 
 
@@ -76947,7 +77203,7 @@ in plain text.
 
 Some text for the subsection.
 
-__Test of a Paragraph.__
+__Test of a Paragraph.__ 
 Some paragraph text taken from "Documenting Python": The Python language
 has a substantial body of documentation, much of it contributed by various
 authors. The markup used for the Python documentation is based on
@@ -77051,7 +77307,7 @@ in plain text.
 
 Some text for the subsection.
 
-__Test of a Paragraph.__
+__Test of a Paragraph.__ 
 Some paragraph text taken from "Documenting Python": The Python language
 has a substantial body of documentation, much of it contributed by various
 authors. The markup used for the Python documentation is based on
@@ -78590,7 +78846,7 @@ MathJax.Hub.Config({
 
 
 
-
+    
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="navbar-header">
@@ -79016,14 +79272,14 @@ And finally a description list:
 <p>
 
 <dl>
- <dt>keyword1:<dd>
+ <dt>keyword1:<dd> 
    followed by
    some text
    over multiple
    lines
- <dt>keyword2:<dd>
+ <dt>keyword2:<dd> 
    followed by text on the next line
- <dt>keyword3:<dd>
+ <dt>keyword3:<dd> 
    and its description may fit on one line
 </dl>
 
@@ -79083,7 +79339,7 @@ which is rendered as
 
 <p>
 <blockquote>
-    Some running text.
+    Some running text. 
     <!-- begin inline comment -->
     <font color="red">(<b>hpl 1</b>: There must be a space after the colon, but the running text can occupy multiple lines.)</font>
     <!-- end inline comment -->
@@ -79303,7 +79559,7 @@ and
 <!-- begin verbatim block -->
 <pre><code>!bt
 \begin{align*}
-\nabla\cdot \pmb{u} &amp;= 0,\\
+\nabla\cdot \pmb{u} &amp;= 0,\\ 
 \nabla\times \pmb{u} &amp;= 0.
 \end{align*}
 !et
@@ -79315,7 +79571,7 @@ This LaTeX code gets rendered as
 
 $$
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 $$
@@ -79664,7 +79920,7 @@ list of capabilities:
 <!-- begin verbatim block  shpro-->
 <pre><code>DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -79761,6 +80017,9 @@ doconce combine_images image1 image2 ... output_file
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
+
+# list all figure files, movie files, and source code files needed
+doconce list_fig_src_files *.do.txt
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -79980,11 +80239,11 @@ constructions:
 \caption{Some words... label{mytab}}
 \begin{tabular}{lrr}
 \hline\noalign{\smallskip}
-\multicolumn{1}{c}{time} &amp; \multicolumn{1}{c}{velocity} &amp; \multicolumn{1}{c}{acceleration} \\
+\multicolumn{1}{c}{time} &amp; \multicolumn{1}{c}{velocity} &amp; \multicolumn{1}{c}{acceleration} \\ 
 \hline
-0.0          &amp; 1.4186       &amp; -5.01        \\
-2.0          &amp; 1.376512     &amp; 11.919       \\
-4.0          &amp; 1.1E+1       &amp; 14.717624    \\
+0.0          &amp; 1.4186       &amp; -5.01        \\ 
+2.0          &amp; 1.376512     &amp; 11.919       \\ 
+4.0          &amp; 1.1E+1       &amp; 14.717624    \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -80033,7 +80292,7 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 </body>
 </html>
-
+    
 
 
 ************** File: quickref.tex *****************
@@ -80116,27 +80375,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
-
-% Background for code blocks (parameter is color name)
-%\setlength{\fboxsep}{-1.5mm}  % makes cod/pro background box smaller
-\newenvironment{cod}[1]{%
-   \def\FrameCommand{\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
- {\unskip\medskip\endMakeFramed}
-
-% Alternative (\vskip with positive skip adds colored space)
-%\newenvironment{cod}[1]{%
-%   \def\FrameCommand{\colorbox{#1}}%
-%   \MakeFramed{\FrameRestore}\vskip 0mm}%
-% {\vskip 0mm\endMakeFramed}
-
-% Background for complete program blocks (parameter 1 is color name
-% for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{%
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
- {\unskip\medskip\endMakeFramed}
-
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -80394,7 +80632,7 @@ DocOnce Quick Reference
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
 \end{center}
-
+    
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
@@ -80732,16 +80970,16 @@ Here is an enumeration list:
 And finally a description list:
 
 \begin{description}
- \item[keyword1:]
+ \item[keyword1:] 
    followed by
    some text
    over multiple
    lines
 
- \item[keyword2:]
+ \item[keyword2:] 
    followed by text on the next line
 
- \item[keyword3:]
+ \item[keyword3:] 
    and its description may fit on one line
 \end{description}
 
@@ -80984,7 +81222,7 @@ and
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 !bt
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 !et
@@ -80993,7 +81231,7 @@ and
 This {\LaTeX} code gets rendered as
 
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 Here is a single equation:
@@ -81321,7 +81559,7 @@ list of capabilities:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -81418,6 +81656,9 @@ doconce combine_images image1 image2 ... output_file
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
+
+# list all figure files, movie files, and source code files needed
+doconce list_fig_src_files *.do.txt
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -81644,11 +81885,11 @@ constructions:
 \caption{Some words... label{mytab}}
 \begin{tabular}{lrr}
 \hline\noalign{\smallskip}
-\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0          & 1.4186       & -5.01        \\ 
+2.0          & 1.376512     & 11.919       \\ 
+4.0          & 1.1E+1       & 14.717624    \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -81764,26 +82005,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-=============  ==========================================
-  Emacs key                      Action
-=============  ==========================================
-Ctrl+c f       figure
-Ctrl+c v       movie/video
-Ctrl+c h1      heading level 1 (section/h1)
-Ctrl+c h2      heading level 2 (subsection/h2)
-Ctrl+c h3      heading level 2 (subsection/h3)
-Ctrl+c hp      heading for paragraph
-Ctrl+c me      math environment: ``!bt`` equation ``!et``
-Ctrl+c ma      math environment: ``!bt`` align ``!et``
-Ctrl+c ce      code environment: ``!bc`` code ``!ec``
-Ctrl+c cf      code from file: ``@@@CODE``
-Ctrl+c table2  table with 2 columns
-Ctrl+c table3  table with 3 columns
-Ctrl+c table4  table with 4 columns
-Ctrl+c exer    exercise outline
-Ctrl+c slide   slide outline
-Ctrl+c help    print this table
-=============  ==========================================
+=============  ==========================================  
+  Emacs key                      Action                    
+=============  ==========================================  
+Ctrl+c f       figure                                      
+Ctrl+c v       movie/video                                 
+Ctrl+c h1      heading level 1 (section/h1)                
+Ctrl+c h2      heading level 2 (subsection/h2)             
+Ctrl+c h3      heading level 2 (subsection/h3)             
+Ctrl+c hp      heading for paragraph                       
+Ctrl+c me      math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma      math environment: ``!bt`` align ``!et``     
+Ctrl+c ce      code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf      code from file: ``@@@CODE``                 
+Ctrl+c table2  table with 2 columns                        
+Ctrl+c table3  table with 3 columns                        
+Ctrl+c table4  table with 4 columns                        
+Ctrl+c exer    exercise outline                            
+Ctrl+c slide   slide outline                               
+Ctrl+c help    print this table                            
+=============  ==========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -81823,20 +82064,20 @@ The table of contents is removed by writing ``TOC: off``.
 Section Types
 -------------
 
-=============  ===============================================
- Section type                       Syntax
-=============  ===============================================
-chapter        ``========= Heading ========`` (9 ``=``)
-section        ``======= Heading =======``    (7 ``=``)
-subsection     ``===== Heading =====``        (5 ``=``)
-subsubsection  ``=== Heading ===``            (3 ``=``)
-paragraph      ``__Heading.__``               (2 ``_``)
-abstract       ``__Abstract.__`` Running text...
-appendix       ``======= Appendix: heading =======`` (7 ``=``)
-appendix       ``===== Appendix: heading =====`` (5 ``=``)
-exercise       ``======= Exercise: heading =======`` (7 ``=``)
-exercise       ``===== Exercise: heading =====`` (5 ``=``)
-=============  ===============================================
+=============  ===============================================  
+ Section type                       Syntax                      
+=============  ===============================================  
+chapter        ``========= Heading ========`` (9 ``=``)         
+section        ``======= Heading =======``    (7 ``=``)         
+subsection     ``===== Heading =====``        (5 ``=``)         
+subsubsection  ``=== Heading ===``            (3 ``=``)         
+paragraph      ``__Heading.__``               (2 ``_``)         
+abstract       ``__Abstract.__`` Running text...                
+appendix       ``======= Appendix: heading =======`` (7 ``=``)  
+appendix       ``===== Appendix: heading =====`` (5 ``=``)      
+exercise       ``======= Exercise: heading =======`` (7 ``=``)  
+exercise       ``===== Exercise: heading =====`` (5 ``=``)      
+=============  ===============================================  
 
 Note that abstracts are recognized by starting with ``__Abstract.__`` or
 ``__Summary.__`` at the beginning of a line and ending with three or
@@ -81872,10 +82113,10 @@ preferably after the paragraph where the footnote appears::
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
-
+        
         [^diff2]: More precisely, we apply the divergence
         $\nabla\cdot$ on both sides.
-
+        
         Here comes a new paragraph...
 
 Non-breaking space is inserted using the tilde character as in LaTeX::
@@ -81928,20 +82169,20 @@ and *description* lists, where each item starts with ``-`` followed
 by a keyword and a colon::
 
         Here is a bullet list:
-
+        
          * item1
          * item2
           * subitem1 of item2
           * subitem2 of item2,
             second line of subitem2
          * item3
-
+        
         Note that sublists are consistently indented by one or more blanks as
         shown: bullets must exactly match and continuation lines must start
         right below the line above.
-
+        
         Here is an enumeration list:
-
+        
          o item1
          o item2
            may appear on
@@ -81949,9 +82190,9 @@ by a keyword and a colon::
           o subitem1 of item2
           o subitem2 of item2
          o item3
-
+        
         And finally a description list:
-
+        
          - keyword1: followed by
            some text
            over multiple
@@ -81994,16 +82235,16 @@ Here is an enumeration list:
 
 And finally a description list:
 
- keyword1:
+ keyword1: 
    followed by
    some text
    over multiple
    lines
 
- keyword2:
+ keyword2: 
    followed by text on the next line
 
- keyword3:
+ keyword3: 
    and its description may fit on one line
 
 
@@ -82164,7 +82405,7 @@ Here is an example of computer code (see the source of this document
 for exact syntax)::
 
         from numpy import sin, cos, exp, pi
-
+        
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
@@ -82238,7 +82479,7 @@ and
 
         !bt
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
@@ -82246,7 +82487,7 @@ and
 This LaTeX code gets rendered as::
 
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
 
@@ -82293,7 +82534,7 @@ labels in ``align`` environments work well.)
    manual), newcommands outside mathematics (use Mako variables or functions
    instead), code listings in figures (use just inline blocks), to mention
    some.
-
+   
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
    include special code for ``latex`` and ``pdflatex`` output and more
@@ -82327,10 +82568,10 @@ Links use either a link text or the raw URL::
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
         or just the raw address: URL: "http://google.com".
-
+        
         Links to files typeset in verbatim mode applies backtics:
         "`myfile.py`": "http://some.net/some/place/myfile.py".
-
+        
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
@@ -82341,9 +82582,9 @@ Figures and Movies
 Figures and movies have almost equal syntax::
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
         MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
 
 Note three important syntax details:
 
@@ -82382,18 +82623,18 @@ YouTube and Vimeo movies will be embedded in ``html`` and ``sphinx`` documents
 and otherwise be represented by a link. The syntax is::
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
+        
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
+        
 
 The latter results in
 
 .. raw:: html
-
+        
         <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
+        
         <em>Vimeo movie.</em>
-
+        
 
 Tables
 ------
@@ -82401,7 +82642,7 @@ Tables
 The table in the section `Section Types`_ was written with this
 syntax::
 
-
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -82411,7 +82652,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
+        
 
 Note that
 
@@ -82557,156 +82798,159 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
         # transform doconce file to another format
         doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
+        
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
         (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
          -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
+        
         # replace a phrase by another literally
         doconce replace from-text to-text file1 file2 ...
         (exact text substutition)
-
+        
         # doconce replace using from and to phrases from file
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
-
+        
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
-
+        
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
-
+        
         # apply all edits specified through inline comments
         apply_inline_edits
-
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
-
+        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
-
+        
         # remove all files that the doconce format can regenerate
         doconce clean
-
+        
         # change encoding
         doconce change_encoding utf-8 latin1 dofile
-
+        
         # guess the encoding in a text
         doconce guess_encoding filename
-
+        
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
         doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-
+        
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
-
+        
         # create HTML slides from a (doconce) html file
         doconce slides_html slide_type complete_file.html
-
+        
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
-
+        
         # create Remark slides from Markdown
         doconce slides_markdown complete_file.md remark --slide_style=light
-
+        
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
-
+        
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # list all figure, movie or included code files
         doconce grep FIGURE|MOVIE|CODE dofile
-
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
-
+        
         # transform ptex2tex files (.p.tex) to ordinary latex file
         # and manage the code environments
         doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
+        
         # make HTML file via pandoc from Markdown (.md) file
         doconce md2html file.md
-
+        
         # make LaTeX file via pandoc from Markdown (.md) file
         doconce md2latex file.md
-
+        
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-
+        
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
-
+        
+        # list all figure files, movie files, and source code files needed
+        doconce list_fig_src_files *.do.txt
+        
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
-
+        
         # generate script for substituting generalized references
         doconce ref_external mydoc [pubfile]
-
+        
         # check all links in HTML files
         doconce linkchecker *.html
-
+        
         # change headings from "This is a Heading" to "This is a heading"
         doconce capitalize [-d .mydict.txt] *.do.txt
-
+        
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
-
+        
         # check if there are problems with translating latex to doconce
         doconce latex_dislikes latexfile
-
+        
         # typeset a doconce document with pygments (for pretty print of doconce itself)
         doconce pygmentize myfile [pygments-style]
-
+        
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
+        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
+        
         # find differences between the last two Git versions of several files
         doconce gitdiff file1 file2 file3 ...
-
+        
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
-
+        
         # edit URLs to local files and place them in _static
         doconce sphinxfix_local_URLs file.rst
-
+        
         # replace latex-1 (non-ascii) characters by html codes
         doconce latin2html file.html
-
+        
         # fix common problems in bibtex files for publish import
         doconce fix_bibtex4publish file1.bib file2.bib ...
-
+        
         # print the header (preamble) for latex file
         doconce latex_header
-
+        
         # print the footer for latex files
         doconce latex_footer
-
+        
         # expand short cut commands to full form in files
         doconce expand_commands file1 file2 ...
-
+        
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
@@ -82746,15 +82990,15 @@ A typical sketch of a a problem without subexercises goes as follows::
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
         solution=ellipse_area1_sol.pdf
-
+        
         Derive an expression for the area of an ellipse by integrating
         the area under a curve that defines half of the allipse.
         Show each step in the mathematical derivation.
-
+        
         !bhint
         Wikipedia has the formula for the curve.
         !ehint
-
+        
         !bhint
         "Wolframalpha": "http://wolframalpha.com" can perhaps
         compute the integral.
@@ -82773,51 +83017,51 @@ setup-up::
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
-
+        
         Intro to this exercise. Questions are in subexercises below.
-
+        
         !bsubex
         Subexercises are numbered a), b), etc.
-
+        
         file=subexer_a.pdf
-
+        
         !bans
         Short answer to subexercise a).
         !eans
-
+        
         !bhint
         First hint to subexercise a).
         !ehint
-
+        
         !bhint
         Second hint to subexercise a).
         !ehint
         !esubex
-
+        
         !bsubex
         Here goes the text for subexercise b).
-
+        
         file=subexer_b.pdf
-
+        
         !bhint
         A hint for this subexercise.
         !ehint
-
+        
         !bsol
         Here goes the solution of this subexercise.
         !esol
         !esubex
-
+        
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
         and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
-
+        
         !bsol
         Here goes a full solution of the whole exercise.
         !esol
-
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments ``--without_answers`` and ``--without_solutions``
@@ -82866,17 +83110,17 @@ document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
         # #include "myotherdoc.do.txt"
-
+        
         # #if FORMAT in ("latex", "pdflatex")
         \begin{table}
         \caption{Some words... label{mytab}}
         \begin{tabular}{lrr}
         \hline\noalign{\smallskip}
-        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
         \hline
-        0.0          & 1.4186       & -5.01        \\
-        2.0          & 1.376512     & 11.919       \\
-        4.0          & 1.1E+1       & 14.717624    \\
+        0.0          & 1.4186       & -5.01        \\ 
+        2.0          & 1.376512     & 11.919       \\ 
+        4.0          & 1.1E+1       & 14.717624    \\ 
         \hline
         \end{tabular}
         \end{table}
@@ -82889,7 +83133,7 @@ constructions::
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
         # #endif
-
+        
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
@@ -82979,26 +83223,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-=============  ==========================================
-  Emacs key                      Action
-=============  ==========================================
-Ctrl+c f       figure
-Ctrl+c v       movie/video
-Ctrl+c h1      heading level 1 (section/h1)
-Ctrl+c h2      heading level 2 (subsection/h2)
-Ctrl+c h3      heading level 2 (subsection/h3)
-Ctrl+c hp      heading for paragraph
-Ctrl+c me      math environment: ``!bt`` equation ``!et``
-Ctrl+c ma      math environment: ``!bt`` align ``!et``
-Ctrl+c ce      code environment: ``!bc`` code ``!ec``
-Ctrl+c cf      code from file: ``@@@CODE``
-Ctrl+c table2  table with 2 columns
-Ctrl+c table3  table with 3 columns
-Ctrl+c table4  table with 4 columns
-Ctrl+c exer    exercise outline
-Ctrl+c slide   slide outline
-Ctrl+c help    print this table
-=============  ==========================================
+=============  ==========================================  
+  Emacs key                      Action                    
+=============  ==========================================  
+Ctrl+c f       figure                                      
+Ctrl+c v       movie/video                                 
+Ctrl+c h1      heading level 1 (section/h1)                
+Ctrl+c h2      heading level 2 (subsection/h2)             
+Ctrl+c h3      heading level 2 (subsection/h3)             
+Ctrl+c hp      heading for paragraph                       
+Ctrl+c me      math environment: ``!bt`` equation ``!et``  
+Ctrl+c ma      math environment: ``!bt`` align ``!et``     
+Ctrl+c ce      code environment: ``!bc`` code ``!ec``      
+Ctrl+c cf      code from file: ``@@@CODE``                 
+Ctrl+c table2  table with 2 columns                        
+Ctrl+c table3  table with 3 columns                        
+Ctrl+c table4  table with 4 columns                        
+Ctrl+c exer    exercise outline                            
+Ctrl+c slide   slide outline                               
+Ctrl+c help    print this table                            
+=============  ==========================================  
 
 .. !split
 
@@ -83046,20 +83290,20 @@ The table of contents is removed by writing ``TOC: off``.
 Section Types
 -------------
 
-=============  ===============================================
- Section type                       Syntax
-=============  ===============================================
-chapter        ``========= Heading ========`` (9 ``=``)
-section        ``======= Heading =======``    (7 ``=``)
-subsection     ``===== Heading =====``        (5 ``=``)
-subsubsection  ``=== Heading ===``            (3 ``=``)
-paragraph      ``__Heading.__``               (2 ``_``)
-abstract       ``__Abstract.__`` Running text...
-appendix       ``======= Appendix: heading =======`` (7 ``=``)
-appendix       ``===== Appendix: heading =====`` (5 ``=``)
-exercise       ``======= Exercise: heading =======`` (7 ``=``)
-exercise       ``===== Exercise: heading =====`` (5 ``=``)
-=============  ===============================================
+=============  ===============================================  
+ Section type                       Syntax                      
+=============  ===============================================  
+chapter        ``========= Heading ========`` (9 ``=``)         
+section        ``======= Heading =======``    (7 ``=``)         
+subsection     ``===== Heading =====``        (5 ``=``)         
+subsubsection  ``=== Heading ===``            (3 ``=``)         
+paragraph      ``__Heading.__``               (2 ``_``)         
+abstract       ``__Abstract.__`` Running text...                
+appendix       ``======= Appendix: heading =======`` (7 ``=``)  
+appendix       ``===== Appendix: heading =====`` (5 ``=``)      
+exercise       ``======= Exercise: heading =======`` (7 ``=``)  
+exercise       ``===== Exercise: heading =====`` (5 ``=``)      
+=============  ===============================================  
 
 Note that abstracts are recognized by starting with ``__Abstract.__`` or
 ``__Summary.__`` at the beginning of a line and ending with three or
@@ -83103,10 +83347,10 @@ preferably after the paragraph where the footnote appears:
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
-
+        
         [^diff2]: More precisely, we apply the divergence
         $\nabla\cdot$ on both sides.
-
+        
         Here comes a new paragraph...
 
 Non-breaking space is inserted using the tilde character as in LaTeX:
@@ -83169,20 +83413,20 @@ by a keyword and a colon.
 .. code-block:: text
 
         Here is a bullet list:
-
+        
          * item1
          * item2
           * subitem1 of item2
           * subitem2 of item2,
             second line of subitem2
          * item3
-
+        
         Note that sublists are consistently indented by one or more blanks as
         shown: bullets must exactly match and continuation lines must start
         right below the line above.
-
+        
         Here is an enumeration list:
-
+        
          o item1
          o item2
            may appear on
@@ -83190,9 +83434,9 @@ by a keyword and a colon.
           o subitem1 of item2
           o subitem2 of item2
          o item3
-
+        
         And finally a description list:
-
+        
          - keyword1: followed by
            some text
            over multiple
@@ -83235,16 +83479,16 @@ Here is an enumeration list:
 
 And finally a description list:
 
- keyword1:
+ keyword1: 
    followed by
    some text
    over multiple
    lines
 
- keyword2:
+ keyword2: 
    followed by text on the next line
 
- keyword3:
+ keyword3: 
    and its description may fit on one line
 
 
@@ -83432,7 +83676,7 @@ for exact syntax):
 .. code-block:: python
 
         from numpy import sin, cos, exp, pi
-
+        
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
@@ -83514,7 +83758,7 @@ and
 
         !bt
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
@@ -83522,10 +83766,10 @@ and
 This LaTeX code gets rendered as
 
 .. math::
-
-        \nabla\cdot \pmb{u} &= 0,\\
+        
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
-
+        
 
 Here is a single equation:
 
@@ -83573,7 +83817,7 @@ labels in ``align`` environments work well.)
    manual), newcommands outside mathematics (use Mako variables or functions
    instead), code listings in figures (use just inline blocks), to mention
    some.
-
+   
    However, one can use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
    include special code for ``latex`` and ``pdflatex`` output and more
@@ -83611,10 +83855,10 @@ Links use either a link text or the raw URL:
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
         or just the raw address: URL: "http://google.com".
-
+        
         Links to files typeset in verbatim mode applies backtics:
         "`myfile.py`": "http://some.net/some/place/myfile.py".
-
+        
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
@@ -83629,9 +83873,9 @@ Figures and movies have almost equal syntax:
 .. code-block:: text
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
         MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
 
 Note three important syntax details:
 
@@ -83674,18 +83918,18 @@ and otherwise be represented by a link. The syntax is
 .. code-block:: text
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
+        
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
+        
 
 The latter results in
 
 .. raw:: html
-
+        
         <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
-
+        
         <em>Vimeo movie.</em>
-
+        
 
 .. !split
 
@@ -83697,7 +83941,7 @@ syntax:
 
 .. code-block:: text
 
-
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -83707,7 +83951,7 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
+        
 
 Note that
 
@@ -83881,156 +84125,159 @@ list of capabilities:
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
         # transform doconce file to another format
         doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
+        
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
         (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
          -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
+        
         # replace a phrase by another literally
         doconce replace from-text to-text file1 file2 ...
         (exact text substutition)
-
+        
         # doconce replace using from and to phrases from file
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
-
+        
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
-
+        
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
-
+        
         # apply all edits specified through inline comments
         apply_inline_edits
-
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
-
+        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
-
+        
         # remove all files that the doconce format can regenerate
         doconce clean
-
+        
         # change encoding
         doconce change_encoding utf-8 latin1 dofile
-
+        
         # guess the encoding in a text
         doconce guess_encoding filename
-
+        
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
         doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-
+        
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
-
+        
         # create HTML slides from a (doconce) html file
         doconce slides_html slide_type complete_file.html
-
+        
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
-
+        
         # create Remark slides from Markdown
         doconce slides_markdown complete_file.md remark --slide_style=light
-
+        
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
-
+        
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # list all figure, movie or included code files
         doconce grep FIGURE|MOVIE|CODE dofile
-
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
-
+        
         # transform ptex2tex files (.p.tex) to ordinary latex file
         # and manage the code environments
         doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
+        
         # make HTML file via pandoc from Markdown (.md) file
         doconce md2html file.md
-
+        
         # make LaTeX file via pandoc from Markdown (.md) file
         doconce md2latex file.md
-
+        
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-
+        
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
-
+        
+        # list all figure files, movie files, and source code files needed
+        doconce list_fig_src_files *.do.txt
+        
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
-
+        
         # generate script for substituting generalized references
         doconce ref_external mydoc [pubfile]
-
+        
         # check all links in HTML files
         doconce linkchecker *.html
-
+        
         # change headings from "This is a Heading" to "This is a heading"
         doconce capitalize [-d .mydict.txt] *.do.txt
-
+        
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
-
+        
         # check if there are problems with translating latex to doconce
         doconce latex_dislikes latexfile
-
+        
         # typeset a doconce document with pygments (for pretty print of doconce itself)
         doconce pygmentize myfile [pygments-style]
-
+        
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
+        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
+        
         # find differences between the last two Git versions of several files
         doconce gitdiff file1 file2 file3 ...
-
+        
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
-
+        
         # edit URLs to local files and place them in _static
         doconce sphinxfix_local_URLs file.rst
-
+        
         # replace latex-1 (non-ascii) characters by html codes
         doconce latin2html file.html
-
+        
         # fix common problems in bibtex files for publish import
         doconce fix_bibtex4publish file1.bib file2.bib ...
-
+        
         # print the header (preamble) for latex file
         doconce latex_header
-
+        
         # print the footer for latex files
         doconce latex_footer
-
+        
         # expand short cut commands to full form in files
         doconce expand_commands file1 file2 ...
-
+        
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
@@ -84074,15 +84321,15 @@ A typical sketch of a a problem without subexercises goes as follows:
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
         solution=ellipse_area1_sol.pdf
-
+        
         Derive an expression for the area of an ellipse by integrating
         the area under a curve that defines half of the allipse.
         Show each step in the mathematical derivation.
-
+        
         !bhint
         Wikipedia has the formula for the curve.
         !ehint
-
+        
         !bhint
         "Wolframalpha": "http://wolframalpha.com" can perhaps
         compute the integral.
@@ -84105,51 +84352,51 @@ setup-up:
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
-
+        
         Intro to this exercise. Questions are in subexercises below.
-
+        
         !bsubex
         Subexercises are numbered a), b), etc.
-
+        
         file=subexer_a.pdf
-
+        
         !bans
         Short answer to subexercise a).
         !eans
-
+        
         !bhint
         First hint to subexercise a).
         !ehint
-
+        
         !bhint
         Second hint to subexercise a).
         !ehint
         !esubex
-
+        
         !bsubex
         Here goes the text for subexercise b).
-
+        
         file=subexer_b.pdf
-
+        
         !bhint
         A hint for this subexercise.
         !ehint
-
+        
         !bsol
         Here goes the solution of this subexercise.
         !esol
         !esubex
-
+        
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
         and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
-
+        
         !bsol
         Here goes a full solution of the whole exercise.
         !esol
-
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments ``--without_answers`` and ``--without_solutions``
@@ -84204,17 +84451,17 @@ constructions:
 .. code-block:: text
 
         # #include "myotherdoc.do.txt"
-
+        
         # #if FORMAT in ("latex", "pdflatex")
         \begin{table}
         \caption{Some words... label{mytab}}
         \begin{tabular}{lrr}
         \hline\noalign{\smallskip}
-        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
         \hline
-        0.0          & 1.4186       & -5.01        \\
-        2.0          & 1.376512     & 11.919       \\
-        4.0          & 1.1E+1       & 14.717624    \\
+        0.0          & 1.4186       & -5.01        \\ 
+        2.0          & 1.376512     & 11.919       \\ 
+        4.0          & 1.1E+1       & 14.717624    \\ 
         \hline
         \end{tabular}
         \end{table}
@@ -84227,7 +84474,7 @@ constructions:
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
         # #endif
-
+        
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
@@ -84531,13 +84778,13 @@ Here is an enumeration list:
 And finally a description list:
 
 
- * keyword1:
+ * keyword1:  
    followed by   some text   over multiple   lines
  * keyword2:     followed by text on the next line
- * keyword3:
+ * keyword3:  
    and its description may fit on one line
 
-*No indentation - except in lists!*
+*No indentation - except in lists!* 
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -84758,7 +85005,7 @@ and
 {{{
 !bt
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 !et
@@ -84768,7 +85015,7 @@ This LaTeX code gets rendered as
 
 {{{
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 }}}
@@ -84798,7 +85045,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
-*Notice.*
+*Notice.* 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -85057,7 +85304,7 @@ list of capabilities:
 {{{
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -85154,6 +85401,9 @@ doconce combine_images image1 image2 ... output_file
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
+
+# list all figure files, movie files, and source code files needed
+doconce list_fig_src_files *.do.txt
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -85354,11 +85604,11 @@ constructions:
 \caption{Some words... label{mytab}}
 \begin{tabular}{lrr}
 \hline\noalign{\smallskip}
-\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0          & 1.4186       & -5.01        \\ 
+2.0          & 1.376512     & 11.919       \\ 
+4.0          & 1.1E+1       & 14.717624    \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -85693,14 +85943,14 @@ And finally a description list:
 
 
 <dl>
- <dt>keyword1:<dd>
+ <dt>keyword1:<dd> 
    followed by
    some text
    over multiple
    lines
- <dt>keyword2:<dd>
+ <dt>keyword2:<dd> 
    followed by text on the next line
- <dt>keyword3:<dd>
+ <dt>keyword3:<dd> 
    and its description may fit on one line
 </dl>
 
@@ -85948,7 +86198,7 @@ and
 <syntaxhighlight lang="text">
 !bt
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 !et
@@ -85958,7 +86208,7 @@ This LaTeX code gets rendered as
 
 :<math>
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 </math>
@@ -86271,7 +86521,7 @@ list of capabilities:
 <syntaxhighlight lang="bash">
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -86368,6 +86618,9 @@ doconce combine_images image1 image2 ... output_file
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
+
+# list all figure files, movie files, and source code files needed
+doconce list_fig_src_files *.do.txt
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -86578,11 +86831,11 @@ constructions:
 \caption{Some words... label{mytab}}
 \begin{tabular}{lrr}
 \hline\noalign{\smallskip}
-\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0          & 1.4186       & -5.01        \\ 
+2.0          & 1.376512     & 11.919       \\ 
+4.0          & 1.1E+1       & 14.717624    \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -86902,13 +87155,13 @@ Here is an enumeration list:
 And finally a description list:
 
 
- * keyword1:
+ * keyword1:  
    followed by   some text   over multiple   lines
  * keyword2:     followed by text on the next line
- * keyword3:
+ * keyword3:  
    and its description may fit on one line
 
-//No indentation - except in lists!//
+//No indentation - except in lists!// 
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -87129,7 +87382,7 @@ and
 {{{
 !bt
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 !et
@@ -87139,7 +87392,7 @@ This LaTeX code gets rendered as
 
 {{{
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 }}}
@@ -87169,7 +87422,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to {{{sphinx}}} and other formats such that
 labels in {{{align}}} environments work well.)
 
-//Notice.//
+//Notice.// 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure ({{{subfigure}}} package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -87428,7 +87681,7 @@ list of capabilities:
 {{{
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
 
 
 # transform doconce file to another format
@@ -87525,6 +87778,9 @@ doconce combine_images image1 image2 ... output_file
 
 # report problems from a LaTeX .log file
 doconce latex_problems mydoc.log [overfull-hbox-limit]
+
+# list all figure files, movie files, and source code files needed
+doconce list_fig_src_files *.do.txt
 
 # list all labels in a document (for purposes of cleaning them up)
 doconce list_labels myfile
@@ -87725,11 +87981,11 @@ constructions:
 \caption{Some words... label{mytab}}
 \begin{tabular}{lrr}
 \hline\noalign{\smallskip}
-\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+\multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
 \hline
-0.0          & 1.4186       & -5.01        \\
-2.0          & 1.376512     & 11.919       \\
-4.0          & 1.1E+1       & 14.717624    \\
+0.0          & 1.4186       & -5.01        \\ 
+2.0          & 1.376512     & 11.919       \\ 
+4.0          & 1.1E+1       & 14.717624    \\ 
 \hline
 \end{tabular}
 \end{table}
@@ -87806,26 +88062,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-=============  ======================================
-  Emacs key                    Action
-=============  ======================================
-Ctrl+c f       figure
-Ctrl+c v       movie/video
-Ctrl+c h1      heading level 1 (section/h1)
-Ctrl+c h2      heading level 2 (subsection/h2)
-Ctrl+c h3      heading level 2 (subsection/h3)
-Ctrl+c hp      heading for paragraph
-Ctrl+c me      math environment: '!bt' equation '!et'
-Ctrl+c ma      math environment: '!bt' align '!et'
-Ctrl+c ce      code environment: '!bc' code '!ec'
-Ctrl+c cf      code from file: '@@@CODE'
-Ctrl+c table2  table with 2 columns
-Ctrl+c table3  table with 3 columns
-Ctrl+c table4  table with 4 columns
-Ctrl+c exer    exercise outline
-Ctrl+c slide   slide outline
-Ctrl+c help    print this table
-=============  ======================================
+=============  ======================================  
+  Emacs key                    Action                  
+=============  ======================================  
+Ctrl+c f       figure                                  
+Ctrl+c v       movie/video                             
+Ctrl+c h1      heading level 1 (section/h1)            
+Ctrl+c h2      heading level 2 (subsection/h2)         
+Ctrl+c h3      heading level 2 (subsection/h3)         
+Ctrl+c hp      heading for paragraph                   
+Ctrl+c me      math environment: '!bt' equation '!et'  
+Ctrl+c ma      math environment: '!bt' align '!et'     
+Ctrl+c ce      code environment: '!bc' code '!ec'      
+Ctrl+c cf      code from file: '@@@CODE'               
+Ctrl+c table2  table with 2 columns                    
+Ctrl+c table3  table with 3 columns                    
+Ctrl+c table4  table with 4 columns                    
+Ctrl+c exer    exercise outline                        
+Ctrl+c slide   slide outline                           
+Ctrl+c help    print this table                        
+=============  ======================================  
 
 Title, Authors, and Date
 
@@ -87861,20 +88117,20 @@ The table of contents is removed by writing 'TOC: off'.
 
 Section Types
 
-=============  ===========================================
- Section type                     Syntax
-=============  ===========================================
-chapter        '========= Heading ========' (9 '=')
-section        '======= Heading ======='    (7 '=')
-subsection     '===== Heading ====='        (5 '=')
-subsubsection  '=== Heading ==='            (3 '=')
-paragraph      '__Heading.__'               (2 '_')
-abstract       '__Abstract.__' Running text...
-appendix       '======= Appendix: heading =======' (7 '=')
-appendix       '===== Appendix: heading =====' (5 '=')
-exercise       '======= Exercise: heading =======' (7 '=')
-exercise       '===== Exercise: heading =====' (5 '=')
-=============  ===========================================
+=============  ===========================================  
+ Section type                     Syntax                    
+=============  ===========================================  
+chapter        '========= Heading ========' (9 '=')         
+section        '======= Heading ======='    (7 '=')         
+subsection     '===== Heading ====='        (5 '=')         
+subsubsection  '=== Heading ==='            (3 '=')         
+paragraph      '__Heading.__'               (2 '_')         
+abstract       '__Abstract.__' Running text...              
+appendix       '======= Appendix: heading =======' (7 '=')  
+appendix       '===== Appendix: heading =====' (5 '=')      
+exercise       '======= Exercise: heading =======' (7 '=')  
+exercise       '===== Exercise: heading =====' (5 '=')      
+=============  ===========================================  
 
 Note that abstracts are recognized by starting with '__Abstract.__' or
 '__Summary.__' at the beginning of a line and ending with three or
@@ -87909,10 +88165,10 @@ preferably after the paragraph where the footnote appears::
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
-
+        
         [^diff2]: More precisely, we apply the divergence
         $\nabla\cdot$ on both sides.
-
+        
         Here comes a new paragraph...
 
 Non-breaking space is inserted using the tilde character as in LaTeX::
@@ -87964,20 +88220,20 @@ and *description* lists, where each item starts with '-' followed
 by a keyword and a colon::
 
         Here is a bullet list:
-
+        
          * item1
          * item2
           * subitem1 of item2
           * subitem2 of item2,
             second line of subitem2
          * item3
-
+        
         Note that sublists are consistently indented by one or more blanks as
         shown: bullets must exactly match and continuation lines must start
         right below the line above.
-
+        
         Here is an enumeration list:
-
+        
          o item1
          o item2
            may appear on
@@ -87985,9 +88241,9 @@ by a keyword and a colon::
           o subitem1 of item2
           o subitem2 of item2
          o item3
-
+        
         And finally a description list:
-
+        
          - keyword1: followed by
            some text
            over multiple
@@ -88024,17 +88280,17 @@ Here is an enumeration list:
 
 And finally a description list:
 
- keyword1: --
+ keyword1: --  
    followed by
    some text
    over multiple
    lines
- keyword2: --
+ keyword2: --  
    followed by text on the next line
- keyword3: --
+ keyword3: --  
    and its description may fit on one line
 
-*No indentation - except in lists!*
+*No indentation - except in lists!* 
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -88175,7 +88431,7 @@ Here is an example of computer code (see the source of this document
 for exact syntax)::
 
         from numpy import sin, cos, exp, pi
-
+        
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
@@ -88243,7 +88499,7 @@ and
 
         !bt
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
@@ -88251,7 +88507,7 @@ and
 This LaTeX code gets rendered as::
 
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
 
@@ -88281,7 +88537,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to 'sphinx' and other formats such that
 labels in 'align' environments work well.)
 
-*Notice.*
+*Notice.* 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure ('subfigure' package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -88326,10 +88582,10 @@ Links use either a link text or the raw URL::
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
         or just the raw address: URL: "http://google.com".
-
+        
         Links to files typeset in verbatim mode applies backtics:
         "`myfile.py`": "http://some.net/some/place/myfile.py".
-
+        
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
@@ -88339,9 +88595,9 @@ Figures and Movies
 Figures and movies have almost equal syntax::
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
         MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
 
 Note three important syntax details:
 
@@ -88377,9 +88633,9 @@ YouTube and Vimeo movies will be embedded in 'html' and 'sphinx' documents
 and otherwise be represented by a link. The syntax is::
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
+        
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
+        
 
 The latter results in
 
@@ -88390,7 +88646,7 @@ Tables
 The table in the section "Section Types" was written with this
 syntax::
 
-
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -88400,7 +88656,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
+        
 
 Note that
 
@@ -88536,156 +88792,159 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
         # transform doconce file to another format
         doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
+        
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
         (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
          -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
+        
         # replace a phrase by another literally
         doconce replace from-text to-text file1 file2 ...
         (exact text substutition)
-
+        
         # doconce replace using from and to phrases from file
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
-
+        
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
-
+        
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
-
+        
         # apply all edits specified through inline comments
         apply_inline_edits
-
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
-
+        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
-
+        
         # remove all files that the doconce format can regenerate
         doconce clean
-
+        
         # change encoding
         doconce change_encoding utf-8 latin1 dofile
-
+        
         # guess the encoding in a text
         doconce guess_encoding filename
-
+        
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
         doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-
+        
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
-
+        
         # create HTML slides from a (doconce) html file
         doconce slides_html slide_type complete_file.html
-
+        
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
-
+        
         # create Remark slides from Markdown
         doconce slides_markdown complete_file.md remark --slide_style=light
-
+        
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
-
+        
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # list all figure, movie or included code files
         doconce grep FIGURE|MOVIE|CODE dofile
-
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
-
+        
         # transform ptex2tex files (.p.tex) to ordinary latex file
         # and manage the code environments
         doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
+        
         # make HTML file via pandoc from Markdown (.md) file
         doconce md2html file.md
-
+        
         # make LaTeX file via pandoc from Markdown (.md) file
         doconce md2latex file.md
-
+        
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-
+        
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
-
+        
+        # list all figure files, movie files, and source code files needed
+        doconce list_fig_src_files *.do.txt
+        
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
-
+        
         # generate script for substituting generalized references
         doconce ref_external mydoc [pubfile]
-
+        
         # check all links in HTML files
         doconce linkchecker *.html
-
+        
         # change headings from "This is a Heading" to "This is a heading"
         doconce capitalize [-d .mydict.txt] *.do.txt
-
+        
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
-
+        
         # check if there are problems with translating latex to doconce
         doconce latex_dislikes latexfile
-
+        
         # typeset a doconce document with pygments (for pretty print of doconce itself)
         doconce pygmentize myfile [pygments-style]
-
+        
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
+        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
+        
         # find differences between the last two Git versions of several files
         doconce gitdiff file1 file2 file3 ...
-
+        
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
-
+        
         # edit URLs to local files and place them in _static
         doconce sphinxfix_local_URLs file.rst
-
+        
         # replace latex-1 (non-ascii) characters by html codes
         doconce latin2html file.html
-
+        
         # fix common problems in bibtex files for publish import
         doconce fix_bibtex4publish file1.bib file2.bib ...
-
+        
         # print the header (preamble) for latex file
         doconce latex_header
-
+        
         # print the footer for latex files
         doconce latex_footer
-
+        
         # expand short cut commands to full form in files
         doconce expand_commands file1 file2 ...
-
+        
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
@@ -88716,15 +88975,15 @@ A typical sketch of a a problem without subexercises goes as follows::
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
         solution=ellipse_area1_sol.pdf
-
+        
         Derive an expression for the area of an ellipse by integrating
         the area under a curve that defines half of the allipse.
         Show each step in the mathematical derivation.
-
+        
         !bhint
         Wikipedia has the formula for the curve.
         !ehint
-
+        
         !bhint
         "Wolframalpha": "http://wolframalpha.com" can perhaps
         compute the integral.
@@ -88743,51 +89002,51 @@ setup-up::
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
-
+        
         Intro to this exercise. Questions are in subexercises below.
-
+        
         !bsubex
         Subexercises are numbered a), b), etc.
-
+        
         file=subexer_a.pdf
-
+        
         !bans
         Short answer to subexercise a).
         !eans
-
+        
         !bhint
         First hint to subexercise a).
         !ehint
-
+        
         !bhint
         Second hint to subexercise a).
         !ehint
         !esubex
-
+        
         !bsubex
         Here goes the text for subexercise b).
-
+        
         file=subexer_b.pdf
-
+        
         !bhint
         A hint for this subexercise.
         !ehint
-
+        
         !bsol
         Here goes the solution of this subexercise.
         !esol
         !esubex
-
+        
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
         and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
-
+        
         !bsol
         Here goes a full solution of the whole exercise.
         !esol
-
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments '--without_answers' and '--without_solutions'
@@ -88826,17 +89085,17 @@ document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
         # #include "myotherdoc.do.txt"
-
+        
         # #if FORMAT in ("latex", "pdflatex")
         \begin{table}
         \caption{Some words... label{mytab}}
         \begin{tabular}{lrr}
         \hline\noalign{\smallskip}
-        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
         \hline
-        0.0          & 1.4186       & -5.01        \\
-        2.0          & 1.376512     & 11.919       \\
-        4.0          & 1.1E+1       & 14.717624    \\
+        0.0          & 1.4186       & -5.01        \\ 
+        2.0          & 1.376512     & 11.919       \\ 
+        4.0          & 1.1E+1       & 14.717624    \\ 
         \hline
         \end{tabular}
         \end{table}
@@ -88849,7 +89108,7 @@ constructions::
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
         # #endif
-
+        
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
@@ -88911,26 +89170,26 @@ C{(load-file "~/.doconce-mode.el")} to the C{.emacs} file.
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-=============  ========================================
-  Emacs key                     Action
-=============  ========================================
-Ctrl+c f       figure
-Ctrl+c v       movie/video
-Ctrl+c h1      heading level 1 (section/h1)
-Ctrl+c h2      heading level 2 (subsection/h2)
-Ctrl+c h3      heading level 2 (subsection/h3)
-Ctrl+c hp      heading for paragraph
-Ctrl+c me      math environment: C{!bt} equation C{!et}
-Ctrl+c ma      math environment: C{!bt} align C{!et}
-Ctrl+c ce      code environment: C{!bc} code C{!ec}
-Ctrl+c cf      code from file: C{@@@CODE}
-Ctrl+c table2  table with 2 columns
-Ctrl+c table3  table with 3 columns
-Ctrl+c table4  table with 4 columns
-Ctrl+c exer    exercise outline
-Ctrl+c slide   slide outline
-Ctrl+c help    print this table
-=============  ========================================
+=============  ========================================  
+  Emacs key                     Action                   
+=============  ========================================  
+Ctrl+c f       figure                                    
+Ctrl+c v       movie/video                               
+Ctrl+c h1      heading level 1 (section/h1)              
+Ctrl+c h2      heading level 2 (subsection/h2)           
+Ctrl+c h3      heading level 2 (subsection/h3)           
+Ctrl+c hp      heading for paragraph                     
+Ctrl+c me      math environment: C{!bt} equation C{!et}  
+Ctrl+c ma      math environment: C{!bt} align C{!et}     
+Ctrl+c ce      code environment: C{!bc} code C{!ec}      
+Ctrl+c cf      code from file: C{@@@CODE}                
+Ctrl+c table2  table with 2 columns                      
+Ctrl+c table3  table with 3 columns                      
+Ctrl+c table4  table with 4 columns                      
+Ctrl+c exer    exercise outline                          
+Ctrl+c slide   slide outline                             
+Ctrl+c help    print this table                          
+=============  ========================================  
 
 Title, Authors, and Date
 ------------------------
@@ -88968,20 +89227,20 @@ The table of contents is removed by writing C{TOC: off}.
 Section Types
 -------------
 
-=============  =============================================
- Section type                      Syntax
-=============  =============================================
-chapter        C{========= Heading ========} (9 C{=})
-section        C{======= Heading =======}    (7 C{=})
-subsection     C{===== Heading =====}        (5 C{=})
-subsubsection  C{=== Heading ===}            (3 C{=})
-paragraph      C{__Heading.__}               (2 C{_})
-abstract       C{__Abstract.__} Running text...
-appendix       C{======= Appendix: heading =======} (7 C{=})
-appendix       C{===== Appendix: heading =====} (5 C{=})
-exercise       C{======= Exercise: heading =======} (7 C{=})
-exercise       C{===== Exercise: heading =====} (5 C{=})
-=============  =============================================
+=============  =============================================  
+ Section type                      Syntax                     
+=============  =============================================  
+chapter        C{========= Heading ========} (9 C{=})         
+section        C{======= Heading =======}    (7 C{=})         
+subsection     C{===== Heading =====}        (5 C{=})         
+subsubsection  C{=== Heading ===}            (3 C{=})         
+paragraph      C{__Heading.__}               (2 C{_})         
+abstract       C{__Abstract.__} Running text...               
+appendix       C{======= Appendix: heading =======} (7 C{=})  
+appendix       C{===== Appendix: heading =====} (5 C{=})      
+exercise       C{======= Exercise: heading =======} (7 C{=})  
+exercise       C{===== Exercise: heading =====} (5 C{=})      
+=============  =============================================  
 
 Note that abstracts are recognized by starting with C{__Abstract.__} or
 C{__Summary.__} at the beginning of a line and ending with three or
@@ -89068,20 +89327,20 @@ and I{description} lists, where each item starts with C{-} followed
 by a keyword and a colon::
 
         Here is a bullet list:
-
+        
          * item1
          * item2
           * subitem1 of item2
           * subitem2 of item2,
             second line of subitem2
          * item3
-
+        
         Note that sublists are consistently indented by one or more blanks as
         shown: bullets must exactly match and continuation lines must start
         right below the line above.
-
+        
         Here is an enumeration list:
-
+        
          o item1
          o item2
            may appear on
@@ -89089,9 +89348,9 @@ by a keyword and a colon::
           o subitem1 of item2
           o subitem2 of item2
          o item3
-
+        
         And finally a description list:
-
+        
          - keyword1: followed by
            some text
            over multiple
@@ -89128,17 +89387,17 @@ Here is an enumeration list:
 
 And finally a description list:
 
- - keyword1:
+ - keyword1: 
    followed by
    some text
    over multiple
    lines
- - keyword2:
+ - keyword2: 
    followed by text on the next line
- - keyword3:
+ - keyword3: 
    and its description may fit on one line
 
-I{No indentation - except in lists!}
+I{No indentation - except in lists!} 
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -89282,7 +89541,7 @@ Here is an example of computer code (see the source of this document
 for exact syntax)::
 
         from numpy import sin, cos, exp, pi
-
+        
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
@@ -89384,7 +89643,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to C{sphinx} and other formats such that
 labels in C{align} environments work well.)
 
-I{Notice.}
+I{Notice.} 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (C{subfigure} package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -89430,10 +89689,10 @@ Links use either a link text or the raw URL::
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
         or just the raw address: URL: "http://google.com".
-
+        
         Links to files typeset in verbatim mode applies backtics:
         "`myfile.py`": "http://some.net/some/place/myfile.py".
-
+        
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
@@ -89444,9 +89703,9 @@ Figures and Movies
 Figures and movies have almost equal syntax::
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
         MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
 
 Note three important syntax details:
 
@@ -89482,9 +89741,9 @@ YouTube and Vimeo movies will be embedded in C{html} and C{sphinx} documents
 and otherwise be represented by a link. The syntax is::
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
+        
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
+        
 
 The latter results in
 
@@ -89496,7 +89755,7 @@ Tables
 The table in the section "Section Types" was written with this
 syntax::
 
-
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -89506,7 +89765,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
+        
 
 Note that
 
@@ -89647,156 +89906,159 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
         # transform doconce file to another format
         doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
+        
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
         (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
          -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
+        
         # replace a phrase by another literally
         doconce replace from-text to-text file1 file2 ...
         (exact text substutition)
-
+        
         # doconce replace using from and to phrases from file
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
-
+        
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
-
+        
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
-
+        
         # apply all edits specified through inline comments
         apply_inline_edits
-
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
-
+        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
-
+        
         # remove all files that the doconce format can regenerate
         doconce clean
-
+        
         # change encoding
         doconce change_encoding utf-8 latin1 dofile
-
+        
         # guess the encoding in a text
         doconce guess_encoding filename
-
+        
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
         doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-
+        
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
-
+        
         # create HTML slides from a (doconce) html file
         doconce slides_html slide_type complete_file.html
-
+        
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
-
+        
         # create Remark slides from Markdown
         doconce slides_markdown complete_file.md remark --slide_style=light
-
+        
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
-
+        
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # list all figure, movie or included code files
         doconce grep FIGURE|MOVIE|CODE dofile
-
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
-
+        
         # transform ptex2tex files (.p.tex) to ordinary latex file
         # and manage the code environments
         doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
+        
         # make HTML file via pandoc from Markdown (.md) file
         doconce md2html file.md
-
+        
         # make LaTeX file via pandoc from Markdown (.md) file
         doconce md2latex file.md
-
+        
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-
+        
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
-
+        
+        # list all figure files, movie files, and source code files needed
+        doconce list_fig_src_files *.do.txt
+        
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
-
+        
         # generate script for substituting generalized references
         doconce ref_external mydoc [pubfile]
-
+        
         # check all links in HTML files
         doconce linkchecker *.html
-
+        
         # change headings from "This is a Heading" to "This is a heading"
         doconce capitalize [-d .mydict.txt] *.do.txt
-
+        
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
-
+        
         # check if there are problems with translating latex to doconce
         doconce latex_dislikes latexfile
-
+        
         # typeset a doconce document with pygments (for pretty print of doconce itself)
         doconce pygmentize myfile [pygments-style]
-
+        
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
+        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
+        
         # find differences between the last two Git versions of several files
         doconce gitdiff file1 file2 file3 ...
-
+        
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
-
+        
         # edit URLs to local files and place them in _static
         doconce sphinxfix_local_URLs file.rst
-
+        
         # replace latex-1 (non-ascii) characters by html codes
         doconce latin2html file.html
-
+        
         # fix common problems in bibtex files for publish import
         doconce fix_bibtex4publish file1.bib file2.bib ...
-
+        
         # print the header (preamble) for latex file
         doconce latex_header
-
+        
         # print the footer for latex files
         doconce latex_footer
-
+        
         # expand short cut commands to full form in files
         doconce expand_commands file1 file2 ...
-
+        
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
@@ -89828,15 +90090,15 @@ A typical sketch of a a problem without subexercises goes as follows::
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
         solution=ellipse_area1_sol.pdf
-
+        
         Derive an expression for the area of an ellipse by integrating
         the area under a curve that defines half of the allipse.
         Show each step in the mathematical derivation.
-
+        
         !bhint
         Wikipedia has the formula for the curve.
         !ehint
-
+        
         !bhint
         "Wolframalpha": "http://wolframalpha.com" can perhaps
         compute the integral.
@@ -89855,51 +90117,51 @@ setup-up::
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
-
+        
         Intro to this exercise. Questions are in subexercises below.
-
+        
         !bsubex
         Subexercises are numbered a), b), etc.
-
+        
         file=subexer_a.pdf
-
+        
         !bans
         Short answer to subexercise a).
         !eans
-
+        
         !bhint
         First hint to subexercise a).
         !ehint
-
+        
         !bhint
         Second hint to subexercise a).
         !ehint
         !esubex
-
+        
         !bsubex
         Here goes the text for subexercise b).
-
+        
         file=subexer_b.pdf
-
+        
         !bhint
         A hint for this subexercise.
         !ehint
-
+        
         !bsol
         Here goes the solution of this subexercise.
         !esol
         !esubex
-
+        
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
         and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
-
+        
         !bsol
         Here goes a full solution of the whole exercise.
         !esol
-
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments C{--without_answers} and C{--without_solutions}
@@ -89956,7 +90218,7 @@ Resources
 DocOnce Quick Reference
 =======================
 
-Hans Petter Langtangen [1, 2]
+Hans Petter Langtangen [1, 2] 
 
 [1] Center for Biomedical Computing, Simula Research Laboratory
 [2] Department of Informatics, University of Oslo
@@ -89965,28 +90227,28 @@ Date: Jan 32, 2100
 
 Table of contents:
 
- Supported Formats
- Emacs syntax support
- Title, Authors, and Date
- Section Types
- Inline Formatting
- Lists
- Comment lines
- Inline comments
- Verbatim/Computer Code
- LaTeX Mathematics
- Hyperlinks
- Figures and Movies
- Tables
- Labels and References
- Citations and Bibliography
- Generalized References
- Index of Keywords
- Capabilities of The Program doconce
- Exercises
- Environments
- Preprocessing
- Resources
+ Supported Formats 
+ Emacs syntax support 
+ Title, Authors, and Date 
+ Section Types 
+ Inline Formatting 
+ Lists 
+ Comment lines 
+ Inline comments 
+ Verbatim/Computer Code 
+ LaTeX Mathematics 
+ Hyperlinks 
+ Figures and Movies 
+ Tables 
+ Labels and References 
+ Citations and Bibliography 
+ Generalized References 
+ Index of Keywords 
+ Capabilities of The Program doconce 
+ Exercises 
+ Environments 
+ Preprocessing 
+ Resources 
 
 _WARNING: This quick reference is very incomplete!_
 
@@ -90043,26 +90305,26 @@ Emacs. Store the raw version of the file in the home directory and add
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
 
-=============  ==================================
-  Emacs key                  Action
-=============  ==================================
-Ctrl+c f       figure
-Ctrl+c v       movie/video
-Ctrl+c h1      heading level 1 (section/h1)
-Ctrl+c h2      heading level 2 (subsection/h2)
-Ctrl+c h3      heading level 2 (subsection/h3)
-Ctrl+c hp      heading for paragraph
-Ctrl+c me      math environment: !bt equation !et
-Ctrl+c ma      math environment: !bt align !et
-Ctrl+c ce      code environment: !bc code !ec
-Ctrl+c cf      code from file: @@@CODE
-Ctrl+c table2  table with 2 columns
-Ctrl+c table3  table with 3 columns
-Ctrl+c table4  table with 4 columns
-Ctrl+c exer    exercise outline
-Ctrl+c slide   slide outline
-Ctrl+c help    print this table
-=============  ==================================
+=============  ==================================  
+  Emacs key                  Action                
+=============  ==================================  
+Ctrl+c f       figure                              
+Ctrl+c v       movie/video                         
+Ctrl+c h1      heading level 1 (section/h1)        
+Ctrl+c h2      heading level 2 (subsection/h2)     
+Ctrl+c h3      heading level 2 (subsection/h3)     
+Ctrl+c hp      heading for paragraph               
+Ctrl+c me      math environment: !bt equation !et  
+Ctrl+c ma      math environment: !bt align !et     
+Ctrl+c ce      code environment: !bc code !ec      
+Ctrl+c cf      code from file: @@@CODE             
+Ctrl+c table2  table with 2 columns                
+Ctrl+c table3  table with 3 columns                
+Ctrl+c table4  table with 4 columns                
+Ctrl+c exer    exercise outline                    
+Ctrl+c slide   slide outline                       
+Ctrl+c help    print this table                    
+=============  ==================================  
 
 Title, Authors, and Date
 ------------------------
@@ -90100,20 +90362,20 @@ The table of contents is removed by writing TOC: off.
 Section Types
 -------------
 
-=============  =======================================
- Section type                   Syntax
-=============  =======================================
-chapter        ========= Heading ======== (9 =)
-section        ======= Heading =======    (7 =)
-subsection     ===== Heading =====        (5 =)
-subsubsection  === Heading ===            (3 =)
-paragraph      __Heading.__               (2 _)
-abstract       __Abstract.__ Running text...
-appendix       ======= Appendix: heading ======= (7 =)
-appendix       ===== Appendix: heading ===== (5 =)
-exercise       ======= Exercise: heading ======= (7 =)
-exercise       ===== Exercise: heading ===== (5 =)
-=============  =======================================
+=============  =======================================  
+ Section type                   Syntax                  
+=============  =======================================  
+chapter        ========= Heading ======== (9 =)         
+section        ======= Heading =======    (7 =)         
+subsection     ===== Heading =====        (5 =)         
+subsubsection  === Heading ===            (3 =)         
+paragraph      __Heading.__               (2 _)         
+abstract       __Abstract.__ Running text...            
+appendix       ======= Appendix: heading ======= (7 =)  
+appendix       ===== Appendix: heading ===== (5 =)      
+exercise       ======= Exercise: heading ======= (7 =)  
+exercise       ===== Exercise: heading ===== (5 =)      
+=============  =======================================  
 
 Note that abstracts are recognized by starting with __Abstract.__ or
 *Summary.* at the beginning of a line and ending with three or
@@ -90149,10 +90411,10 @@ preferably after the paragraph where the footnote appears::
 
         Differentiating[^diff2] (ref{eq1}) leads
         to a new and simpler equation.
-
+        
         [^diff2]: More precisely, we apply the divergence
         $\nabla\cdot$ on both sides.
-
+        
         Here comes a new paragraph...
 
 Non-breaking space is inserted using the tilde character as in LaTeX::
@@ -90205,20 +90467,20 @@ and *description* lists, where each item starts with - followed
 by a keyword and a colon::
 
         Here is a bullet list:
-
+        
          * item1
          * item2
           * subitem1 of item2
           * subitem2 of item2,
             second line of subitem2
          * item3
-
+        
         Note that sublists are consistently indented by one or more blanks as
         shown: bullets must exactly match and continuation lines must start
         right below the line above.
-
+        
         Here is an enumeration list:
-
+        
          o item1
          o item2
            may appear on
@@ -90226,9 +90488,9 @@ by a keyword and a colon::
           o subitem1 of item2
           o subitem2 of item2
          o item3
-
+        
         And finally a description list:
-
+        
          - keyword1: followed by
            some text
            over multiple
@@ -90271,16 +90533,16 @@ Here is an enumeration list:
 
 And finally a description list:
 
- keyword1:
+ keyword1: 
    followed by
    some text
    over multiple
    lines
 
- keyword2:
+ keyword2: 
    followed by text on the next line
 
- keyword3:
+ keyword3: 
    and its description may fit on one line
 
 
@@ -90432,7 +90694,7 @@ Here is an example of computer code (see the source of this document
 for exact syntax)::
 
         from numpy import sin, cos, exp, pi
-
+        
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
@@ -90502,7 +90764,7 @@ and
 
         !bt
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
@@ -90510,7 +90772,7 @@ and
 This LaTeX code gets rendered as::
 
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
 
@@ -90591,10 +90853,10 @@ Links use either a link text or the raw URL::
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
         or just the raw address: URL: "http://google.com".
-
+        
         Links to files typeset in verbatim mode applies backtics:
         "`myfile.py`": "http://some.net/some/place/myfile.py".
-
+        
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
@@ -90605,9 +90867,9 @@ Figures and Movies
 Figures and movies have almost equal syntax::
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
         MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. label{some:fig:label}
-
+        
 
 Note three important syntax details:
 
@@ -90646,9 +90908,9 @@ YouTube and Vimeo movies will be embedded in html and sphinx documents
 and otherwise be represented by a link. The syntax is::
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
+        
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
+        
 
 The latter results in
 
@@ -90660,7 +90922,7 @@ Tables
 The table in the section "Section Types" was written with this
 syntax::
 
-
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -90670,7 +90932,7 @@ syntax::
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
+        
 
 Note that
 
@@ -90816,156 +91078,159 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
         # transform doconce file to another format
         doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
+        
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
         (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
          -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
+        
         # replace a phrase by another literally
         doconce replace from-text to-text file1 file2 ...
         (exact text substutition)
-
+        
         # doconce replace using from and to phrases from file
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
-
+        
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
-
+        
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
-
+        
         # apply all edits specified through inline comments
         apply_inline_edits
-
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
-
+        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
-
+        
         # remove all files that the doconce format can regenerate
         doconce clean
-
+        
         # change encoding
         doconce change_encoding utf-8 latin1 dofile
-
+        
         # guess the encoding in a text
         doconce guess_encoding filename
-
+        
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
         doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-
+        
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
-
+        
         # create HTML slides from a (doconce) html file
         doconce slides_html slide_type complete_file.html
-
+        
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
-
+        
         # create Remark slides from Markdown
         doconce slides_markdown complete_file.md remark --slide_style=light
-
+        
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
-
+        
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # list all figure, movie or included code files
         doconce grep FIGURE|MOVIE|CODE dofile
-
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
-
+        
         # transform ptex2tex files (.p.tex) to ordinary latex file
         # and manage the code environments
         doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
+        
         # make HTML file via pandoc from Markdown (.md) file
         doconce md2html file.md
-
+        
         # make LaTeX file via pandoc from Markdown (.md) file
         doconce md2latex file.md
-
+        
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-
+        
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
-
+        
+        # list all figure files, movie files, and source code files needed
+        doconce list_fig_src_files *.do.txt
+        
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
-
+        
         # generate script for substituting generalized references
         doconce ref_external mydoc [pubfile]
-
+        
         # check all links in HTML files
         doconce linkchecker *.html
-
+        
         # change headings from "This is a Heading" to "This is a heading"
         doconce capitalize [-d .mydict.txt] *.do.txt
-
+        
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
-
+        
         # check if there are problems with translating latex to doconce
         doconce latex_dislikes latexfile
-
+        
         # typeset a doconce document with pygments (for pretty print of doconce itself)
         doconce pygmentize myfile [pygments-style]
-
+        
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
+        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
+        
         # find differences between the last two Git versions of several files
         doconce gitdiff file1 file2 file3 ...
-
+        
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
-
+        
         # edit URLs to local files and place them in _static
         doconce sphinxfix_local_URLs file.rst
-
+        
         # replace latex-1 (non-ascii) characters by html codes
         doconce latin2html file.html
-
+        
         # fix common problems in bibtex files for publish import
         doconce fix_bibtex4publish file1.bib file2.bib ...
-
+        
         # print the header (preamble) for latex file
         doconce latex_header
-
+        
         # print the footer for latex files
         doconce latex_footer
-
+        
         # expand short cut commands to full form in files
         doconce expand_commands file1 file2 ...
-
+        
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
@@ -91005,15 +91270,15 @@ A typical sketch of a a problem without subexercises goes as follows::
         label{problem:ellipsearea1}
         file=ellipse_area.pdf
         solution=ellipse_area1_sol.pdf
-
+        
         Derive an expression for the area of an ellipse by integrating
         the area under a curve that defines half of the allipse.
         Show each step in the mathematical derivation.
-
+        
         !bhint
         Wikipedia has the formula for the curve.
         !ehint
-
+        
         !bhint
         "Wolframalpha": "http://wolframalpha.com" can perhaps
         compute the integral.
@@ -91032,51 +91297,51 @@ setup-up::
 
         ===== Exercise: Determine the Distance to the Moon =====
         label{exer:moondist}
-
+        
         Intro to this exercise. Questions are in subexercises below.
-
+        
         !bsubex
         Subexercises are numbered a), b), etc.
-
+        
         file=subexer_a.pdf
-
+        
         !bans
         Short answer to subexercise a).
         !eans
-
+        
         !bhint
         First hint to subexercise a).
         !ehint
-
+        
         !bhint
         Second hint to subexercise a).
         !ehint
         !esubex
-
+        
         !bsubex
         Here goes the text for subexercise b).
-
+        
         file=subexer_b.pdf
-
+        
         !bhint
         A hint for this subexercise.
         !ehint
-
+        
         !bsol
         Here goes the solution of this subexercise.
         !esol
         !esubex
-
+        
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
         and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
-
+        
         !bsol
         Here goes a full solution of the whole exercise.
         !esol
-
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments --without_answers and --without_solutions
@@ -91125,17 +91390,17 @@ document, "comment out" a large portion of text, and to write format-specific
 constructions::
 
         # #include "myotherdoc.do.txt"
-
+        
         # #if FORMAT in ("latex", "pdflatex")
         \begin{table}
         \caption{Some words... label{mytab}}
         \begin{tabular}{lrr}
         \hline\noalign{\smallskip}
-        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
         \hline
-        0.0          & 1.4186       & -5.01        \\
-        2.0          & 1.376512     & 11.919       \\
-        4.0          & 1.1E+1       & 14.717624    \\
+        0.0          & 1.4186       & -5.01        \\ 
+        2.0          & 1.376512     & 11.919       \\ 
+        4.0          & 1.1E+1       & 14.717624    \\ 
         \hline
         \end{tabular}
         \end{table}
@@ -91148,7 +91413,7 @@ constructions::
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
         # #endif
-
+        
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
@@ -91329,10 +91594,10 @@ preferably after the paragraph where the footnote appears:
 
         Differentiating[^diff2] \eqref{eq1} leads
         to a new and simpler equation.
-
+        
         [^diff2]: More precisely, we apply the divergence
         $\nabla\cdot$ on both sides.
-
+        
         Here comes a new paragraph...
 
 Non-breaking space is inserted using the tilde character as in LaTeX:
@@ -91387,20 +91652,20 @@ and *description* lists, where each item starts with `-` followed
 by a keyword and a colon.
 
         Here is a bullet list:
-
+        
          * item1
          * item2
           * subitem1 of item2
           * subitem2 of item2,
             second line of subitem2
          * item3
-
+        
         Note that sublists are consistently indented by one or more blanks as
         shown: bullets must exactly match and continuation lines must start
         right below the line above.
-
+        
         Here is an enumeration list:
-
+        
          o item1
          o item2
            may appear on
@@ -91408,9 +91673,9 @@ by a keyword and a colon.
           o subitem1 of item2
           o subitem2 of item2
          o item3
-
+        
         And finally a description list:
-
+        
          - keyword1: followed by
            some text
            over multiple
@@ -91448,19 +91713,19 @@ Here is an enumeration list:
 And finally a description list:
 
  keyword1:
-  :
+  :    
    followed by
    some text
    over multiple
    lines
  keyword2:
-  :
+  :    
    followed by text on the next line
  keyword3:
-  :
+  :    
    and its description may fit on one line
 
-*No indentation - except in lists!*
+*No indentation - except in lists!* 
 DocOnce syntax is sensitive to whitespace.
 No lines should be indented, only lines belonging to lists.
 Indented lines may give strange output in some formats.
@@ -91614,7 +91879,7 @@ for exact syntax):
 
 
         from numpy import sin, cos, exp, pi
-
+        
         def f(x, y, z, t):
             return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
 
@@ -91685,7 +91950,7 @@ and
 
         !bt
         \begin{align*}
-        \nabla\cdot \pmb{u} &= 0,\\
+        \nabla\cdot \pmb{u} &= 0,\\ 
         \nabla\times \pmb{u} &= 0.
         \end{align*}
         !et
@@ -91694,7 +91959,7 @@ This LaTeX code gets rendered as
 
 $$
 \begin{align*}
-\nabla\cdot \pmb{u} &= 0,\\
+\nabla\cdot \pmb{u} &= 0,\\ 
 \nabla\times \pmb{u} &= 0.
 \end{align*}
 $$
@@ -91727,7 +91992,7 @@ is also important, one should follow these rules:
 (DocOnce performs extensions to `sphinx` and other formats such that
 labels in `align` environments work well.)
 
-*Notice.*
+*Notice.* 
 LaTeX supports lots of fancy formatting, for example, multiple
 plots in the same figure (`subfigure` package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
@@ -91774,10 +92039,10 @@ Links use either a link text or the raw URL:
         Here is some "some link text": "http://some.net/address"
         (as in "search google": "http://google.com")
         or just the raw address: URL: "http://google.com".
-
+        
         Links to files typeset in verbatim mode applies backtics:
         "`myfile.py`": "http://some.net/some/place/myfile.py".
-
+        
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
@@ -91787,9 +92052,9 @@ Links use either a link text or the raw URL:
 Figures and movies have almost equal syntax:
 
         FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here goes the caption which must be on a single line. \label{some:fig:label}
-
+        
         MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must be on a single line. \label{some:fig:label}
-
+        
 
 Note three important syntax details:
 
@@ -91826,9 +92091,9 @@ and otherwise be represented by a link. The syntax is
 
 
         MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
-
+        
         MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
-
+        
 
 The latter results in
 
@@ -91845,7 +92110,7 @@ The latter results in
 The table in the section [Section Types](#quick:sections) was written with this
 syntax:
 
-
+        
         |----------------c--------|------------------c--------------------|
         |      Section type       |        Syntax                         |
         |----------------l--------|------------------l--------------------|
@@ -91855,7 +92120,7 @@ syntax:
         | subsubsection           | `=== Heading ===`            (3 `=`)  |
         | paragraph               | `__Heading.__`               (2 `_`)  |
         |-----------------------------------------------------------------|
-
+        
 
 Note that
 
@@ -91996,156 +92261,159 @@ list of capabilities:
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_labels teamod sphinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
-
-
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        
+        
         # transform doconce file to another format
         doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
-
+        
         # substitute a phrase by another using regular expressions
         doconce subst [-s -m -x --restore] regex-pattern regex-replacement file1 file2 ...
         (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier,
          -x is the re.VERBOSE modifier, --restore copies backup files back again)
-
+        
         # replace a phrase by another literally
         doconce replace from-text to-text file1 file2 ...
         (exact text substutition)
-
+        
         # doconce replace using from and to phrases from file
         doconce replace_from_file file-with-from-to file1 file2 ...
         (exact text substitution, but a set of from-to relations)
-
+        
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
-
+        
         # remove all inline comments in a doconce file
         doconce remove_inline_comments dofile
-
+        
         # apply all edits specified through inline comments
         apply_inline_edits
-
+        
         # create a directory for the sphinx format
         doconce sphinx_dir author='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
         (requires sphinx version >= 1.1)
-
+        
         # walk through a directory tree and insert doconce files as
         # docstrings in *.p.py files
         doconce insertdocstr rootdir
-
+        
         # remove all files that the doconce format can regenerate
         doconce clean
-
+        
         # change encoding
         doconce change_encoding utf-8 latin1 dofile
-
+        
         # guess the encoding in a text
         doconce guess_encoding filename
-
+        
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
         doconce split_rst complete_file        # !split specifies the splitting points
         doconce sphinx_dir complete_file
         python automake_sphinx.py
-
+        
         # split an html file into parts according to !split commands
         doconce split_html complete_file.html
-
+        
         # create HTML slides from a (doconce) html file
         doconce slides_html slide_type complete_file.html
-
+        
         # create LaTeX Beamer slides from a (doconce) latex/pdflatex file
         doconce slides_beamer complete_file.tex
-
+        
         # create Remark slides from Markdown
         doconce slides_markdown complete_file.md remark --slide_style=light
-
+        
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
-
+        
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # remove selected text from a file
         doconce remove --from[-] from-text [--to[-] to-text] somefile > result
-
+        
         # list all figure, movie or included code files
         doconce grep FIGURE|MOVIE|CODE dofile
-
+        
         # run spellcheck on a set of files
         doconce spellcheck [-d .mydict.txt] *.do.txt
-
+        
         # transform ptex2tex files (.p.tex) to ordinary latex file
         # and manage the code environments
         doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
                 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{quote}
-
+        
         # make HTML file via pandoc from Markdown (.md) file
         doconce md2html file.md
-
+        
         # make LaTeX file via pandoc from Markdown (.md) file
         doconce md2latex file.md
-
+        
         # combine several images into one
         doconce combine_images image1 image2 ... output_file
-
+        
         # report problems from a LaTeX .log file
         doconce latex_problems mydoc.log [overfull-hbox-limit]
-
+        
+        # list all figure files, movie files, and source code files needed
+        doconce list_fig_src_files *.do.txt
+        
         # list all labels in a document (for purposes of cleaning them up)
         doconce list_labels myfile
-
+        
         # generate script for substituting generalized references
         doconce ref_external mydoc [pubfile]
-
+        
         # check all links in HTML files
         doconce linkchecker *.html
-
+        
         # change headings from "This is a Heading" to "This is a heading"
         doconce capitalize [-d .mydict.txt] *.do.txt
-
+        
         # translate a latex document to doconce (requires usually manual fixing)
         doconce latex2doconce latexfile
-
+        
         # check if there are problems with translating latex to doconce
         doconce latex_dislikes latexfile
-
+        
         # typeset a doconce document with pygments (for pretty print of doconce itself)
         doconce pygmentize myfile [pygments-style]
-
+        
         # generate a make.sh script for translating a doconce file to various formats
         doconce makefile docname doconcefile [html sphinx pdflatex ...]
-
+        
         # find differences between two files
         doconce diff file1.do.txt file2.do.txt [diffprog]
         (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diffuse, ...)
-
+        
         # find differences between the last two Git versions of several files
         doconce gitdiff file1 file2 file3 ...
-
+        
         # convert csv file to doconce table format
         doconce csv2table somefile.csv
-
+        
         # edit URLs to local files and place them in _static
         doconce sphinxfix_local_URLs file.rst
-
+        
         # replace latex-1 (non-ascii) characters by html codes
         doconce latin2html file.html
-
+        
         # fix common problems in bibtex files for publish import
         doconce fix_bibtex4publish file1.bib file2.bib ...
-
+        
         # print the header (preamble) for latex file
         doconce latex_header
-
+        
         # print the footer for latex files
         doconce latex_footer
-
+        
         # expand short cut commands to full form in files
         doconce expand_commands file1 file2 ...
-
+        
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
@@ -92176,15 +92444,15 @@ A typical sketch of a a problem without subexercises goes as follows:
         \label{problem:ellipsearea1}
         file=ellipse_area.pdf
         solution=ellipse_area1_sol.pdf
-
+        
         Derive an expression for the area of an ellipse by integrating
         the area under a curve that defines half of the allipse.
         Show each step in the mathematical derivation.
-
+        
         !bhint
         Wikipedia has the formula for the curve.
         !ehint
-
+        
         !bhint
         "Wolframalpha": "http://wolframalpha.com" can perhaps
         compute the integral.
@@ -92205,51 +92473,51 @@ setup-up:
 
         ===== Exercise: Determine the Distance to the Moon =====
         \label{exer:moondist}
-
+        
         Intro to this exercise. Questions are in subexercises below.
-
+        
         !bsubex
         Subexercises are numbered a), b), etc.
-
+        
         file=subexer_a.pdf
-
+        
         !bans
         Short answer to subexercise a).
         !eans
-
+        
         !bhint
         First hint to subexercise a).
         !ehint
-
+        
         !bhint
         Second hint to subexercise a).
         !ehint
         !esubex
-
+        
         !bsubex
         Here goes the text for subexercise b).
-
+        
         file=subexer_b.pdf
-
+        
         !bhint
         A hint for this subexercise.
         !ehint
-
+        
         !bsol
         Here goes the solution of this subexercise.
         !esol
         !esubex
-
+        
         !bremarks
         At the very end of the exercise it may be appropriate to summarize
         and give some perspectives. The text inside the `!bremarks` and `!eremarks`
         directives is always typeset at the end of the exercise.
         !eremarks
-
+        
         !bsol
         Here goes a full solution of the whole exercise.
         !esol
-
+        
 
 By default, answers, solutions, and hints are typeset as paragraphs.
 The command-line arguments `--without_answers` and `--without_solutions`
@@ -92290,17 +92558,17 @@ constructions:
 
 
         # #include "myotherdoc.do.txt"
-
+        
         # #if FORMAT in ("latex", "pdflatex")
         \begin{table}
         \caption{Some words... \label{mytab}}
         \begin{tabular}{lrr}
         \hline\noalign{\smallskip}
-        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\
+        \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \multicolumn{1}{c}{acceleration} \\ 
         \hline
-        0.0          & 1.4186       & -5.01        \\
-        2.0          & 1.376512     & 11.919       \\
-        4.0          & 1.1E+1       & 14.717624    \\
+        0.0          & 1.4186       & -5.01        \\ 
+        2.0          & 1.376512     & 11.919       \\ 
+        4.0          & 1.1E+1       & 14.717624    \\ 
         \hline
         \end{tabular}
         \end{table}
@@ -92313,7 +92581,7 @@ constructions:
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
         # #endif
-
+        
         # #ifdef EXTRA_MATERIAL
         ....large portions of text...
         # #endif
@@ -92360,7 +92628,7 @@ Validating paper: (Langtangen_1992c) - Stochastic breakthrough time analysis of 
   [1] Replace journal.
   [2] Add journal.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 Validating paper: (Langtangen_1994a) - Numerical solution of first passage problems in random...
   Status is not defined, assuming status is "published".
 
@@ -92370,7 +92638,7 @@ Validating paper: (Langtangen_1994a) - Numerical solution of first passage probl
   [1] Replace journal.
   [2] Add journal.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 
 Validated 5 paper(s) ok.
 Found 0 invalid paper(s).
@@ -92449,7 +92717,7 @@ Validating paper: (Langtangen_1988d) - The {FEMDEQS} Program System
   [1] Replace institution.
   [2] Add institution.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 Validating paper: (Langtangen_1989e) - Computational Methods for Two-Phase Flow in Oil Reserv...
   Status is not defined, assuming status is "published".
 
@@ -92459,7 +92727,7 @@ Validating paper: (Langtangen_1989e) - Computational Methods for Two-Phase Flow 
   [1] Replace school.
   [2] Add school.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 Validating paper: (Langtangen_talk_2007a) - Computational Modeling of Huge Tsunamis from Aste...
   Status is not defined, assuming status is "published".
 
@@ -92550,7 +92818,7 @@ Validating paper: (Rahman_et_al_2006b) - Numerical Investigation of a Piezoelect
   [1] Replace journal.
   [2] Add journal.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 Validating paper: (Haga_et_al_2011a) - On the causes of pressure oscillations in low-permeabl...
   Status is not defined, assuming status is "published".
 
@@ -92560,7 +92828,7 @@ Validating paper: (Haga_et_al_2011a) - On the causes of pressure oscillations in
   [1] Replace journal.
   [2] Add journal.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 Validating paper: (Langtangen:95) - Finite elements for the {Boussinesq} wave equations
   Status is not defined, assuming status is "published".
 Validating paper: (Langtangen:85) - Solution of the {Navier-Stokes} equations with the finite...
@@ -92580,7 +92848,7 @@ Validating paper: (testdoc:12) - A Document for Testing Doconce
   [1] Replace institution.
   [2] Add institution.
   [3] Skip paper.
-Please enter 1, 2 or 3 (or press return to choose [1]):
+Please enter 1, 2 or 3 (or press return to choose [1]): 
 
 Validated 10 paper(s) ok.
 Found 0 invalid paper(s).
@@ -92722,7 +92990,7 @@ must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
-$$ y(x) = e^{-y}.$$
+$$ y(x) = e^{-y}.$$ 
 
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -92909,7 +93177,7 @@ must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
-$$ y(x) = e^{-y}.$$
+$$ y(x) = e^{-y}.$$ 
 
 output in testdoc.html
 + '[' 0 -ne 0 ']'
@@ -92974,7 +93242,7 @@ must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
 
-$$ y(x) = e^{-y}.$$
+$$ y(x) = e^{-y}.$$ 
 
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
@@ -93106,8 +93374,8 @@ exporting publish database papers.pub to papers.bib:
 output in testdoc.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.tex testdoc.tex_direct
-+ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
-+ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_line_numbers --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
++ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
++ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
 
 Summary of papers
 -----------------
@@ -93238,7 +93506,7 @@ For additional information on amsmath, use the `?' option.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -93249,16 +93517,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./testdoc.w18))/usr/local/bin/pygmentize
-) (./testdoc.pyg)
+(./testdoc.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -93269,7 +93544,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -93297,7 +93571,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -93388,16 +93662,13 @@ zlibraryshadows.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfadings.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
-.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
-)
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -93415,7 +93686,7 @@ No file testdoc.aux.
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -93423,7 +93694,7 @@ No file testdoc.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -93432,7 +93703,7 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] [2]
+dmap/pdftex.map}] [2] 
 
 
 
@@ -93474,12 +93745,30 @@ dmap/pdftex.map}] [2]
 
 
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg [4])
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) [5] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=75, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
-.png>] [7]
+
+(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
+2768.pygtex [4])
+(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
+0399.pygtex)
+(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [5]
+(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
+515A.pygtex) <latex_figs/dizzy_face.png, id=74, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png>
+(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
+CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>] [7]
 
 
 ...rest of part of LaTeX line number...
@@ -93487,15 +93776,15 @@ dmap/pdftex.map}] [2]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=100, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [8]
-<use ../doc/src/manual/fig/wave1D.pdf> [9 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.pdf, id=99, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[8] [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=132, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=131, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=133, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=132, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -93522,8 +93811,8 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11 <../doc/src/manual/fig/wave1D.png>]
-Underfull \hbox (badness 3291)
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate)
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
 
 
@@ -93535,17 +93824,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=161, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=160, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=162, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=161, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=162, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=164, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=165, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=164, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=166, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=165, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -93590,7 +93879,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1279.
+t line 1276.
 
 
 
@@ -93610,7 +93899,7 @@ t line 1279.
 
 
 
-t line 1288.
+t line 1285.
 
 
 
@@ -93631,7 +93920,7 @@ t line 1288.
 
 
 
-t line 1292.
+t line 1289.
 
 
 
@@ -93709,15 +93998,17 @@ t line 1292.
 
 
 
-(./testdoc.out.pyg) [16]
+
+(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [16]
 
 
 ...rest of part of LaTeX line number...
 
 
-Overfull \hbox (5.03835pt too wide)
+Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1|
+%26+engineering/book/978-3-642-23098-1| 
 [17]
 
 
@@ -93788,9 +94079,14 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[19] (./testdoc.out.pyg) [20] (./testdoc.out.pyg) [21] [22] (./testdoc.out.pyg
-[23])
-Underfull \hbox (badness 10000)
+[19]
+(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [20]
+(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [21] [22]
+(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
+2768.pygtex [23])
+Underfull \hbox (badness 10000) 
 
 
 
@@ -93819,7 +94115,7 @@ Underfull \hbox (badness 10000)
 
 No file testdoc.bbl.
 
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 [25]
 
@@ -93874,7 +94170,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -93885,31 +94181,36 @@ livier@maths.lth.se>
 listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
- testdoc.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -93923,7 +94224,6 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -93946,23 +94246,20 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 showlabels.sty    2013/12/06 v1.6.6
-fancyhdr.sty
+fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -93993,18 +94290,29 @@ newcommands_replace.tex
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
+9.pygtex
+_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
+A.pygtex
 latex_figs/dizzy_face.png
- testdoc.out.pyg
+_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
+7.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -94015,10 +94323,14 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
  ***********
 
 
@@ -94053,14 +94365,13 @@ nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb>
 public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/palatino/uplr8a.pfb>
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
@@ -94109,7 +94420,7 @@ For additional information on amsmath, use the `?' option.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -94120,16 +94431,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./testdoc.w18))/usr/local/bin/pygmentize
-) (./testdoc.pyg)
+(./testdoc.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -94140,7 +94458,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -94168,7 +94485,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -94259,16 +94576,13 @@ zlibraryshadows.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfadings.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
-.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
-)
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -94280,12 +94594,12 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -94304,19 +94618,36 @@ Writing index file testdoc.idx
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
-
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=314, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=340, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [9]
-<use ../doc/src/manual/fig/wave1D.pdf> [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
+ [4]
+(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
+2768.pygtex [5])
+(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
+0399.pygtex)
+(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [6]
+(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
+515A.pygtex) <latex_figs/dizzy_face.png, id=313, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png>
+(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
+CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=339, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=371, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=372, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94343,8 +94674,8 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [12 <../doc/src/manual/fig/wave1D.png>]
-Underfull \hbox (badness 3291)
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate)
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
 
 
@@ -94356,17 +94687,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=397, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94411,7 +94742,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1279.
+t line 1276.
 
 
 
@@ -94431,7 +94762,7 @@ t line 1279.
 
 
 
-t line 1288.
+t line 1285.
 
 
 
@@ -94452,7 +94783,7 @@ t line 1288.
 
 
 
-t line 1292.
+t line 1289.
 
 
 
@@ -94522,24 +94853,31 @@ t line 1292.
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [17]
-Overfull \hbox (5.03835pt too wide)
+
+(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [17]
+Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1|
+%26+engineering/book/978-3-642-23098-1| 
 [18]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] [20] (./testdoc.out.pyg) [21] (./testdoc.out.pyg) [22] [23]
-(./testdoc.out.pyg [24])
-Underfull \hbox (badness 10000)
+[19] [20]
+(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [21]
+(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [22] [23]
+(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
+2768.pygtex [24])
+Underfull \hbox (badness 10000) 
 
 [25]
 No file testdoc.bbl.
 
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 [26] [27] [28]
 
@@ -94584,7 +94922,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -94595,31 +94933,36 @@ livier@maths.lth.se>
 listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
- testdoc.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -94633,7 +94976,6 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -94656,23 +94998,20 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 showlabels.sty    2013/12/06 v1.6.6
-fancyhdr.sty
+fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -94705,18 +95044,29 @@ newcommands_replace.tex
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
+9.pygtex
+_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
+A.pygtex
 latex_figs/dizzy_face.png
- testdoc.out.pyg
+_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
+7.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -94727,10 +95077,14 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
  ***********
 
 
@@ -94760,15 +95114,14 @@ nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
 /public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
-fb>
+/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (29 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
@@ -94834,7 +95187,7 @@ For additional information on amsmath, use the `?' option.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -94845,16 +95198,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./testdoc.w18))/usr/local/bin/pygmentize
-) (./testdoc.pyg)
+(./testdoc.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -94865,7 +95225,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -94893,7 +95252,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -94984,16 +95343,13 @@ zlibraryshadows.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfadings.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
-.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
-)
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -95005,12 +95361,12 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -95029,19 +95385,36 @@ Writing index file testdoc.idx
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
-
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=314, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=340, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [9]
-<use ../doc/src/manual/fig/wave1D.pdf> [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
+ [4]
+(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
+2768.pygtex [5])
+(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
+0399.pygtex)
+(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [6]
+(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
+515A.pygtex) <latex_figs/dizzy_face.png, id=313, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png>
+(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
+CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=339, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=371, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=372, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95068,8 +95441,8 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [12 <../doc/src/manual/fig/wave1D.png>]
-Underfull \hbox (badness 3291)
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate)
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
 
 
@@ -95081,17 +95454,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=397, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95136,7 +95509,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1279.
+t line 1276.
 
 
 
@@ -95156,7 +95529,7 @@ t line 1279.
 
 
 
-t line 1288.
+t line 1285.
 
 
 
@@ -95177,7 +95550,7 @@ t line 1288.
 
 
 
-t line 1292.
+t line 1289.
 
 
 
@@ -95247,22 +95620,29 @@ t line 1292.
 
 ...rest of part of LaTeX line number...
 
-(./testdoc.out.pyg) [17]
-Overfull \hbox (5.03835pt too wide)
+
+(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [17]
+Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1|
+%26+engineering/book/978-3-642-23098-1| 
 [18]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] [20] (./testdoc.out.pyg) [21] (./testdoc.out.pyg) [22] [23]
-(./testdoc.out.pyg [24])
-Underfull \hbox (badness 10000)
+[19] [20]
+(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [21]
+(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [22] [23]
+(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
+2768.pygtex [24])
+Underfull \hbox (badness 10000) 
 
 [25] (./testdoc.bbl [26]) [27]
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 [28] [29]
 
@@ -95270,7 +95650,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 (./testdoc.ind [30]
-Overfull \hbox (9.21497pt too wide)
+Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
 [31]) (./testdoc.aux)
@@ -95310,7 +95690,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -95321,31 +95701,36 @@ livier@maths.lth.se>
 listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
- testdoc.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -95359,7 +95744,6 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -95382,23 +95766,20 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 showlabels.sty    2013/12/06 v1.6.6
-fancyhdr.sty
+fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -95431,18 +95812,29 @@ newcommands_replace.tex
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
+9.pygtex
+_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
+A.pygtex
 latex_figs/dizzy_face.png
- testdoc.out.pyg
+_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
+7.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -95453,10 +95845,14 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
  testdoc.bbl
  testdoc.ind
  ***********
@@ -95488,15 +95884,14 @@ nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
 /public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
-fb>
+/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
@@ -95544,7 +95939,7 @@ For additional information on amsmath, use the `?' option.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -95555,16 +95950,23 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./testdoc.w18))/usr/local/bin/pygmentize
-) (./testdoc.pyg)
+(./testdoc.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -95575,7 +95977,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -95603,7 +96004,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -95694,16 +96095,13 @@ zlibraryshadows.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfadings.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
-.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
-)
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -95715,12 +96113,12 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
 
 Writing index file testdoc.idx
-(./testdoc.aux)
+(./testdoc.aux) 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -95739,19 +96137,36 @@ Writing index file testdoc.idx
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
-
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg) (./testdoc.out.pyg)
-(./testdoc.out.pyg) [6] (./testdoc.out.pyg)
-<latex_figs/dizzy_face.png, id=314, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [7 <./latex_figs/dizzy_face
-.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=340, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [9]
-<use ../doc/src/manual/fig/wave1D.pdf> [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
+ [4]
+(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
+2768.pygtex [5])
+(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
+0399.pygtex)
+(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [6]
+(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
+515A.pygtex) <latex_figs/dizzy_face.png, id=313, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png>
+(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
+CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
+<../doc/src/manual/fig/wave1D.pdf, id=339, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
+[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=371, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=372, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95778,8 +96193,8 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [12 <../doc/src/manual/fig/wave1D.png>]
-Underfull \hbox (badness 3291)
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate)
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
 
 
@@ -95791,17 +96206,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=397, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95844,22 +96259,29 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[16] (./testdoc.out.pyg) [17]
-Overfull \hbox (5.03835pt too wide)
+[16]
+(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [17]
+Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1|
+%26+engineering/book/978-3-642-23098-1| 
 [18]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] [20] (./testdoc.out.pyg) [21] (./testdoc.out.pyg) [22] [23]
-(./testdoc.out.pyg [24])
-Underfull \hbox (badness 10000)
+[19] [20]
+(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [21]
+(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [22] [23]
+(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
+2768.pygtex [24])
+Underfull \hbox (badness 10000) 
 
 [25] (./testdoc.bbl [26]) [27]
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 [28] [29]
 
@@ -95867,7 +96289,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 (./testdoc.ind [30]
-Overfull \hbox (9.21497pt too wide)
+Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
 [31]) (./testdoc.aux)
@@ -95907,7 +96329,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -95918,31 +96340,36 @@ livier@maths.lth.se>
 listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
- testdoc.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -95956,7 +96383,6 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -95979,23 +96405,20 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 showlabels.sty    2013/12/06 v1.6.6
-fancyhdr.sty
+fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -96028,18 +96451,29 @@ newcommands_replace.tex
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
+9.pygtex
+_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
+A.pygtex
 latex_figs/dizzy_face.png
- testdoc.out.pyg
+_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
+7.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -96050,10 +96484,14 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
  testdoc.bbl
  testdoc.ind
  ***********
@@ -96079,15 +96517,14 @@ nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
 /public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss8
-.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
-ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.p
-fb>
+/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
+/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
@@ -96146,18 +96583,25 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
 
-(./testdoc.w18))/usr/local/bin/pygmentize
-) (./testdoc.pyg)
+(./testdoc.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -96168,7 +96612,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -96196,7 +96639,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -96287,16 +96730,13 @@ zlibraryshadows.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryfadings.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
-.tex))))
-(/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
 Package: `showlabels' v1.6.6 <2013/12/06>
 with amsmath equation tags
-)
+) 
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -96314,7 +96754,7 @@ No file testdoc.aux.
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -96342,7 +96782,7 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
-[2]
+[2] 
 
 
 
@@ -96384,13 +96824,32 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-(./testdoc.out.pyg) (./testdoc.out.pyg) [4] (./testdoc.out.pyg)
-(./testdoc.out.pyg) (./testdoc.out.pyg)
 
-(./testdoc.out.pyg) (./testdoc.out.pyg [5]) (./testdoc.out.pyg)
-(./testdoc.out.pyg) <latex_figs/dizzy_face.png, id=251, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> (./testdoc.out.pyg) [6 <./latex_figs/dizzy_face
-.png>] (./testdoc.out.pyg) (./testdoc.out.pyg) [7] [8]
+(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
+4A09.pygtex)
+(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
+2768.pygtex [4])
+(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
+(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
+2768.pygtex) 
+(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
+0399.pygtex)
+(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+2768.pygtex [5])
+(./_minted-testdoc/65AADE4BB2997117C9A24F71CFD3E9C07C5D04F18B5ECF473885AEE833B1
+4F29.pygtex)
+(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
+515A.pygtex) <latex_figs/dizzy_face.png, id=250, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png>
+(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
+CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>]
+(./_minted-testdoc/31694FBE2107EB6C5A701C5DEB889172170388258ECB494ED08D68BAB3CD
+E68F.pygtex)
+(./_minted-testdoc/751AAEDF86B68C96684E0B2E1DAD79345B805DEF588DFB75F5378543B444
+240C.pygtex) [7] [8]
 
 
 ...rest of part of LaTeX line number...
@@ -96398,15 +96857,15 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=291, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=290, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=308, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=307, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=309, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=308, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -96433,8 +96892,8 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
 [11 <../doc/src/manual/fig/wave1D.png>]
-Underfull \hbox (badness 3291)
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate)
+Underfull \hbox (badness 3291) 
+[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
 
 
@@ -96446,17 +96905,17 @@ Underfull \hbox (badness 3291)
 
 
 [12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=334, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=333, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=335, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=334, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=336, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=335, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=337, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=336, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=338, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=337, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=339, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -96501,7 +96960,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1230.
+t line 1227.
 
 
 
@@ -96521,7 +96980,7 @@ t line 1230.
 
 
 
-t line 1239.
+t line 1236.
 
 
 
@@ -96541,7 +97000,7 @@ t line 1239.
 
 
 
-t line 1243.
+t line 1240.
 
 
 
@@ -96620,15 +97079,17 @@ t line 1243.
 
 
 
-(./testdoc.out.pyg) [16]
+
+(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [16]
 
 
 ...rest of part of LaTeX line number...
 
 
-Overfull \hbox (5.03835pt too wide)
+Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1|
+%26+engineering/book/978-3-642-23098-1| 
 [17]
 
 
@@ -96699,8 +97160,12 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[19] (./testdoc.out.pyg) [20] [21] [22] (./testdoc.out.pyg [23])
-Underfull \hbox (badness 10000)
+[19]
+(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
+2768.pygtex) [20] [21] [22]
+(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
+2768.pygtex [23])
+Underfull \hbox (badness 10000) 
 
 
 
@@ -96728,7 +97193,7 @@ Underfull \hbox (badness 10000)
 
 
 (./testdoc.bbl [25]) [26]
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 
 
@@ -96745,7 +97210,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 (./testdoc.ind [29]
-Overfull \hbox (9.21497pt too wide)
+Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
 [30]) (./testdoc.aux)
@@ -96791,31 +97256,36 @@ listings.sty    2014/03/04 1.5c (Carsten Heinz)
  lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
 listings.cfg    2014/03/04 1.5c listings configuration
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
  testdoc.w18
- testdoc.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS)
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
 hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -96829,7 +97299,6 @@ atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -96852,23 +97321,20 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
 todonotes.sty    2012/07/25
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
 showlabels.sty    2013/12/06 v1.6.6
-fancyhdr.sty
+fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -96901,20 +97367,32 @@ newcommands_replace.tex
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
+9.pygtex
+_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
 lstlang1.sty    2014/03/04 1.5c listings language file
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
+9.pygtex
+_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/65AADE4BB2997117C9A24F71CFD3E9C07C5D04F18B5ECF473885AEE833B14F2
+9.pygtex
+_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
+A.pygtex
 latex_figs/dizzy_face.png
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
+7.pygtex
+_minted-testdoc/31694FBE2107EB6C5A701C5DEB889172170388258ECB494ED08D68BAB3CDE68
+F.pygtex
+_minted-testdoc/751AAEDF86B68C96684E0B2E1DAD79345B805DEF588DFB75F5378543B444240
+C.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.pdf
 ../doc/src/manual/fig/wave1D.png
@@ -96925,9 +97403,12 @@ downloaded_figures/f_plot.png
 ../doc/src/manual/mov/wave_frames/frame_0095.png
 ../doc/src/manual/mov/wave_frames/frame_0100.png
 ../doc/src/manual/mov/wave_frames/frame_0105.png
- testdoc.out.pyg
- testdoc.out.pyg
- testdoc.out.pyg
+_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
+8.pygtex
  testdoc.bbl
  testdoc.ind
  ***********
@@ -96959,15 +97440,14 @@ nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb>
 public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/sha
 re/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a
-.pfb>
+f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
+8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (30 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
@@ -97128,7 +97608,7 @@ though, to write the solution to the problem
 in mathematical notation:
 
 .. math::
-         y(x) = e^{-y}.
+         y(x) = e^{-y}. 
 
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
@@ -97211,7 +97691,7 @@ though, to write the solution to the problem
 in mathematical notation:
 
 .. math::
-         y(x) = e^{-y}.
+         y(x) = e^{-y}. 
 
 output in testdoc.rst
 + '[' 0 -ne 0 ']'
@@ -97229,40 +97709,40 @@ Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
 
 Enter the root path for documentation.
-> Root path for the documentation [.]:
+> Root path for the documentation [.]: 
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/n) [n]:
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
-> Name prefix for templates and static dir [_]:
+> Name prefix for templates and static dir [_]: 
 The project name will occur in several places in the built documentation.
-> Project name: > Author name(s):
+> Project name: > Author name(s): 
 Sphinx has the notion of a "version" and a "release" for the
 software. Each version can have multiple releases. For example, for
 Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
-> Project version: > Project release [0.1]:
+> Project version: > Project release [0.1]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
 > Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
-> Source file suffix [.rst]:
+> Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
 of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
-> Name of your master document (without suffix) [index]:
+> Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/n) [n]:
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]:
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file sphinx-testdoc/conf.py.
 Creating file sphinx-testdoc/index.rst.
 Creating file sphinx-testdoc/Makefile.
@@ -97352,7 +97832,7 @@ copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
 /home/hpl/vc/doconce/test/sphinx-testdoc
 running make clean
 running make html
-Fix generated files: index.html search.html genindex.html ._testdoc007.html ._testdoc002.html ._testdoc003.html ._testdoc006.html ._testdoc000.html ._testdoc010.html ._testdoc001.html ._testdoc005.html ._testdoc009.html ._testdoc004.html ._testdoc008.html
+Fix generated files: index.html search.html genindex.html ._testdoc007.html ._testdoc002.html ._testdoc003.html ._testdoc006.html ._testdoc000.html ._testdoc010.html ._testdoc001.html ._testdoc005.html ._testdoc009.html ._testdoc004.html ._testdoc008.html 
 
 google-chrome sphinx-testdoc/_build/html/index.html
 
@@ -97866,6 +98346,8 @@ output in slides1.p.tex
 
 \bshcod (!bc sh) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
 
+\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
 \bhtml (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
 
 output in slides1.tex
@@ -97915,7 +98397,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -97978,7 +98460,7 @@ x)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
 ode.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
-tex)))
+tex))) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
@@ -98092,20 +98574,26 @@ Package pgfheaps Warning: This package is obsolete. on .
 Package pgfshade Warning: This package is obsolete. pgf.sty will load shade man
 agement automatically on .
 
-)
+) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
 
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 
-(./slides1.w18))/usr/local/bin/pygmentize
-)
+(./slides1.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-slides1/default.pygstyle)
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -98158,25 +98646,32 @@ ths-dictionary/translator-months-dictionary-English.dict)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-num
 bers-dictionary/translator-numbers-dictionary-English.dict)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-the
-orem-dictionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
-(./slides1.nav) (./newcommands_bfmath.tex) (./newcommands_replace.tex)
+orem-dictionary/translator-theorem-dictionary-English.dict) (./slides1.nav)
+(./newcommands_bfmath.tex) (./newcommands_replace.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on .
 
-(./slides1.vrb
+(./slides1.vrb 
  [1{/var/lib/texmf/f
 onts/map/pdftex/updmap/pdftex.map}]
 No file slides1.toc.
 (./slides1.vrb
 <../doc/src/manual/fig/wave1D.png, id=45, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [2 <../doc/src/manual/fig/wave1D.png>]
-(./slides1.vrb) [3] (./slides1.vrb (./slides1.out.pyg
-
-[4] (./slides1.vrb (./slides1.out.pyg)) [5]
+(./slides1.vrb) [3] (./slides1.vrb
+(./_minted-slides1/0893CC217D51D0CBC433EDBB5A666FA2022ED8A1EEE5DAE4AFAE499B629F
+3722.pygtex 
+(./_minted-slides1/060FC7AC1E9D4F253252631E9EA135E6022ED8A1EEE5DAE4AFAE499B629F
+3722.pygtex)) [4] (./slides1.vrb
+(./_minted-slides1/C4C90514AC6E085087FA855922BE3D653320B2B90ABBCF5F786C172F090F
+A2BE.pygtex)) [5]
 No file slides1.toc.
 (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [6] (./slides1.vrb
-(./slides1.out.pyg)) [7] (./slides1.vrb) [8] (./slides1.aux)
+(./_minted-slides1/AF8C00EFC34CD85EA93C5EF97E49A0DAEDED52CCFCCD7EE177EC89690B86
+95FB.pygtex)) [7] (./slides1.vrb
+(./_minted-slides1/4C5E638604A4B78DF83DBC32446CED97D01DCAF580A3099F7601DFE5B0AC
+1A4A.pygtex)) [8] (./slides1.vrb) [9] (./slides1.aux)
 
 Package rerunfilecheck Warning: File `slides1.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -98202,24 +98697,14 @@ e1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy9.pfb>
-Output written on slides1.pdf (8 pages, ).
+Output written on slides1.pdf (9 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
 + cp slides1.tex slides1_handout.tex
 + cp slides1.pdf slides1_handout.pdf
-+ system doconce format pdflatex slides1 --latex_title_layout=beamer
-+ doconce format pdflatex slides1 --latex_title_layout=beamer
++ system doconce format pdflatex slides1 --latex_title_layout=beamer '--latex_code_style=default:lst[style=yellow2_fb]'
++ doconce format pdflatex slides1 --latex_title_layout=beamer '--latex_code_style=default:lst[style=yellow2_fb]'
 translating doconce text in slides1.do.txt to pdflatex
-output in slides1.p.tex
-+ '[' 0 -ne 0 ']'
-+ system doconce ptex2tex slides1 envir=minted
-+ doconce ptex2tex slides1 envir=minted
-\blatex (!bc latex) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{latex}
-
-\bshcod (!bc sh) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{bash}
-
-\bhtml (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
-
 output in slides1.tex
 + '[' 0 -ne 0 ']'
 + system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
@@ -98265,7 +98750,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -98328,7 +98813,7 @@ x)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
 ode.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
-tex)))
+tex))) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
@@ -98442,20 +98927,19 @@ Package pgfheaps Warning: This package is obsolete. on .
 Package pgfshade Warning: This package is obsolete. pgf.sty will load shade man
 agement automatically on .
 
-)
+) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 
-(./slides1.w18))/usr/local/bin/pygmentize
-)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -98509,28 +98993,42 @@ ths-dictionary/translator-months-dictionary-English.dict)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-num
 bers-dictionary/translator-numbers-dictionary-English.dict)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/dicts/translator-the
-orem-dictionary/translator-theorem-dictionary-English.dict) (./slides1.pyg)
-(./slides1.nav) (./newcommands_bfmath.tex) (./newcommands_replace.tex)
+orem-dictionary/translator-theorem-dictionary-English.dict) (./slides1.nav)
+(./newcommands_bfmath.tex) (./newcommands_replace.tex)
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on .
 
-(./slides1.vrb
+(./slides1.vrb 
  [1{/var/lib/texmf/f
 onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
 <../doc/src/manual/fig/wave1D.png, id=72, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [3 <../doc/src/manual/fig/wave1D.png>]
 (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [4] (./slides1.vrb)
-[5] (./slides1.vrb) [6] (./slides1.vrb (./slides1.out.pyg
+[5] (./slides1.vrb) [6] (./slides1.vrb
 
-[7] (./slides1.vrb (./slides1.out.pyg) (./slides1.out.pyg)) [8] (./slides1.vrb
-(./slides1.out.pyg) (./slides1.out.pyg)) [9] (./slides1.vrb (./slides1.out.pyg)
-(./slides1.out.pyg)) [10] (./slides1.vrb (./slides1.out.pyg)) [11]
+
+
+
+
+
+
+
+
+
+
+[8] (./slides1.vrb) [9] (./slides1.vrb) [10] (./slides1.vrb
+
+ [11]
 (./slides1.toc) [12] (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>)
-[13] (./slides1.vrb (./slides1.out.pyg)) [14] (./slides1.vrb) [15]
-(./slides1.vrb) [16] (./slides1.vrb) [17] (./slides1.vrb) [18] (./slides1.aux)
+[13] (./slides1.vrb
+
+ [14]
+(./slides1.vrb 
+ [15] (./slides1.vrb) [16] (./slides1.vrb) [17] (./slides1.vrb) [18]
+(./slides1.vrb) [19] (./slides1.vrb) [20] (./slides1.vrb) [21] (./slides1.aux) 
 ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl/
-.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/fo
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst0900.600pk> </home/hpl/.texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
 /jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/
 ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600p
@@ -98549,7 +99047,7 @@ c/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on slides1.pdf (18 pages, ).
+Output written on slides1.pdf (21 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
 + doconce format html slides2 --pygments_html_style=emacs --html_raw_github_url=raw.github --no_abort
@@ -98915,7 +99413,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -98942,7 +99440,7 @@ No file math_test.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -99120,40 +99618,40 @@ Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
 
 Enter the root path for documentation.
-> Root path for the documentation [.]:
+> Root path for the documentation [.]: 
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/n) [n]:
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
-> Name prefix for templates and static dir [_]:
+> Name prefix for templates and static dir [_]: 
 The project name will occur in several places in the built documentation.
-> Project name: > Author name(s):
+> Project name: > Author name(s): 
 Sphinx has the notion of a "version" and a "release" for the
 software. Each version can have multiple releases. For example, for
 Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
-> Project version: > Project release [1.0]:
+> Project version: > Project release [1.0]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
 > Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
-> Source file suffix [.rst]:
+> Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
 of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
-> Name of your master document (without suffix) [index]:
+> Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/n) [n]:
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]:
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file sphinx-rootdir-math/conf.py.
 Creating file sphinx-rootdir-math/index.rst.
 Creating file sphinx-rootdir-math/Makefile.
@@ -99211,7 +99709,7 @@ Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
 running make clean
 running make html
-Fix generated files: index.html search.html genindex.html math_test.html
+Fix generated files: index.html search.html genindex.html math_test.html 
 
 google-chrome sphinx-rootdir-math/_build/html/index.html
 
@@ -99310,8 +99808,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -99319,10 +99821,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_colors1.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_colors1.w18))/usr/local/bin/pygmentize
-) (./admon_colors1.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_colors1/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -99332,7 +99838,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -99351,7 +99856,7 @@ No file admon_colors1.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -99367,55 +99872,66 @@ No file admon_colors1.aux.
 
 
 
-(./admon_colors1.out.pyg
+(./_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD04
+8D22074625.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_colors1.out.pyg)
-<latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
+dmap/pdftex.map}]
+(./_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD04
+8D22074625.pygtex) <latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 <use latex_figs/warning.pdf>
-Underfull \hbox (badness 10000)
-
-(./admon_colors1.out.pyg) (./admon_colors1.out.pyg) [2 <./latex_figs/warning.pd
-f>] <use latex_figs/warning.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 
-Underfull \hbox (badness 10000)
+(./_minted-admon_colors1/5D3C69AAEC9B2D5839B63A50A912F1C9F0EE26821BCBD074DCFD04
+8D22074625.pygtex)
+(./_minted-admon_colors1/7D5BCA49BDCAEFC7C2C56FB99A18615CF0EE26821BCBD074DCFD04
+8D22074625.pygtex) [2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
+Underfull \hbox (badness 10000) 
 
 
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
+
+
+Underfull \hbox (badness 10000) 
 
 <latex_figs/notice.pdf, id=39, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 [3 <./latex_figs/notice.pdf>] <use latex_figs/notice.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 <latex_figs/question.pdf, id=52, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 <use latex_figs/question.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 <use latex_figs/warning.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
-(./admon_colors1.out.pyg) <use latex_figs/warning.pdf>
-Underfull \hbox (badness 10000)
+
+(./_minted-admon_colors1/5AD40B0702261AEEF99883B3C88DC895F0EE26821BCBD074DCFD04
+8D22074625.pygtex) <use latex_figs/warning.pdf>
+Underfull \hbox (badness 10000) 
 
 [4 <./latex_figs/question.pdf>] <use latex_figs/notice.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
-(./admon_colors1.out.pyg) (./admon_colors1.out.pyg)
+
+(./_minted-admon_colors1/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1F0EE26821BCBD074DCFD04
+8D22074625.pygtex)
+(./_minted-admon_colors1/F107D7B836712BD3FF9DDE90E09765E8F0EE26821BCBD074DCFD04
+8D22074625.pygtex)
 <../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> [5]
 <latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 
 
 
@@ -99455,18 +99971,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_colors1.w18
-admon_colors1.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_colors1/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -99480,7 +100002,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -99495,7 +100016,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -99523,25 +100043,32 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_colors1.out.pyg
+_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD048D2
+2074625.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_colors1.out.pyg
+_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD048D2
+2074625.pygtex
 latex_figs/warning.pdf
 latex_figs/warning.pdf
-admon_colors1.out.pyg
-admon_colors1.out.pyg
+_minted-admon_colors1/5D3C69AAEC9B2D5839B63A50A912F1C9F0EE26821BCBD074DCFD048D2
+2074625.pygtex
+_minted-admon_colors1/7D5BCA49BDCAEFC7C2C56FB99A18615CF0EE26821BCBD074DCFD048D2
+2074625.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
 latex_figs/question.pdf
 latex_figs/question.pdf
 latex_figs/warning.pdf
-admon_colors1.out.pyg
+_minted-admon_colors1/5AD40B0702261AEEF99883B3C88DC895F0EE26821BCBD074DCFD048D2
+2074625.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
-admon_colors1.out.pyg
-admon_colors1.out.pyg
+_minted-admon_colors1/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1F0EE26821BCBD074DCFD048D2
+2074625.pygtex
+_minted-admon_colors1/F107D7B836712BD3FF9DDE90E09765E8F0EE26821BCBD074DCFD048D2
+2074625.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/summary.pdf
  ***********
@@ -99664,8 +100191,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -99673,10 +100204,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_mdfbox.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_mdfbox.w18))/usr/local/bin/pygmentize
-) (./admon_mdfbox.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_mdfbox/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -99693,7 +100228,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
-
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -99702,8 +100236,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -99722,7 +100254,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -99812,7 +100344,7 @@ No file admon_mdfbox.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -99820,7 +100352,7 @@ No file admon_mdfbox.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -99828,14 +100360,21 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./admon_mdfbox.out.pyg
+(./_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F4
+04D526A9C.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_mdfbox.out.pyg)
+dmap/pdftex.map}]
+(./_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F4
+04D526A9C.pygtex)
 
 
 ...rest of part of LaTeX line number...
 
-(./admon_mdfbox.out.pyg) (./admon_mdfbox.out.pyg)
+
+(./_minted-admon_mdfbox/5D3C69AAEC9B2D5839B63A50A912F1C9194ADA0704F83C10D8892F4
+04D526A9C.pygtex)
+(./_minted-admon_mdfbox/7D5BCA49BDCAEFC7C2C56FB99A18615C194ADA0704F83C10D8892F4
+04D526A9C.pygtex)
 
 
 ...rest of part of LaTeX line number...
@@ -99874,7 +100413,9 @@ dmap/pdftex.map}] (./admon_mdfbox.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_mdfbox.out.pyg)
+
+(./_minted-admon_mdfbox/5AD40B0702261AEEF99883B3C88DC895194ADA0704F83C10D8892F4
+04D526A9C.pygtex)
 
 
 ...rest of part of LaTeX line number...
@@ -99883,7 +100424,11 @@ dmap/pdftex.map}] (./admon_mdfbox.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_mdfbox.out.pyg) (./admon_mdfbox.out.pyg)
+
+(./_minted-admon_mdfbox/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1194ADA0704F83C10D8892F4
+04D526A9C.pygtex)
+(./_minted-admon_mdfbox/F107D7B836712BD3FF9DDE90E09765E8194ADA0704F83C10D8892F4
+04D526A9C.pygtex)
 <../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
@@ -99939,18 +100484,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_mdfbox.w18
-admon_mdfbox.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_mdfbox/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -99964,7 +100515,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -99979,7 +100529,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -99988,11 +100537,9 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -100010,9 +100557,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -100037,15 +100584,22 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_mdfbox.out.pyg
+_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F404D
+526A9C.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_mdfbox.out.pyg
-admon_mdfbox.out.pyg
-admon_mdfbox.out.pyg
-admon_mdfbox.out.pyg
-admon_mdfbox.out.pyg
-admon_mdfbox.out.pyg
+_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F404D
+526A9C.pygtex
+_minted-admon_mdfbox/5D3C69AAEC9B2D5839B63A50A912F1C9194ADA0704F83C10D8892F404D
+526A9C.pygtex
+_minted-admon_mdfbox/7D5BCA49BDCAEFC7C2C56FB99A18615C194ADA0704F83C10D8892F404D
+526A9C.pygtex
+_minted-admon_mdfbox/5AD40B0702261AEEF99883B3C88DC895194ADA0704F83C10D8892F404D
+526A9C.pygtex
+_minted-admon_mdfbox/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1194ADA0704F83C10D8892F404D
+526A9C.pygtex
+_minted-admon_mdfbox/F107D7B836712BD3FF9DDE90E09765E8194ADA0704F83C10D8892F404D
+526A9C.pygtex
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -100155,8 +100709,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -100164,10 +100722,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_paragraph.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_paragraph.w18))/usr/local/bin/pygmentize
-) (./admon_paragraph.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_paragraph/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -100184,7 +100746,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
-
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -100193,8 +100754,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -100213,7 +100772,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -100303,7 +100862,7 @@ No file admon_paragraph.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -100311,7 +100870,7 @@ No file admon_paragraph.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -100319,11 +100878,22 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./admon_paragraph.out.pyg
+(./_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg)
-(./admon_paragraph.out.pyg) [2] (./admon_paragraph.out.pyg) [3]
-(./admon_paragraph.out.pyg) (./admon_paragraph.out.pyg [4])
+dmap/pdftex.map}]
+(./_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex)
+(./_minted-admon_paragraph/5D3C69AAEC9B2D5839B63A50A912F1C97B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex)
+(./_minted-admon_paragraph/7D5BCA49BDCAEFC7C2C56FB99A18615C7B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex) [2]
+(./_minted-admon_paragraph/5AD40B0702261AEEF99883B3C88DC8957B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex) [3]
+(./_minted-admon_paragraph/0C0793CD9D0F3C4F2D0D5D6F8F9C81B17B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex)
+(./_minted-admon_paragraph/F107D7B836712BD3FF9DDE90E09765E87B9EA5448A27AA2AA739
+DBBD1C5533E1.pygtex [4])
 <../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
@@ -100361,18 +100931,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_paragraph.w18
-admon_paragraph.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_paragraph/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -100386,7 +100962,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -100401,7 +100976,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -100410,11 +100984,9 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -100432,9 +101004,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -100459,15 +101031,22 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_paragraph.out.pyg
+_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_paragraph.out.pyg
-admon_paragraph.out.pyg
-admon_paragraph.out.pyg
-admon_paragraph.out.pyg
-admon_paragraph.out.pyg
-admon_paragraph.out.pyg
+_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
+_minted-admon_paragraph/5D3C69AAEC9B2D5839B63A50A912F1C97B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
+_minted-admon_paragraph/7D5BCA49BDCAEFC7C2C56FB99A18615C7B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
+_minted-admon_paragraph/5AD40B0702261AEEF99883B3C88DC8957B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
+_minted-admon_paragraph/0C0793CD9D0F3C4F2D0D5D6F8F9C81B17B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
+_minted-admon_paragraph/F107D7B836712BD3FF9DDE90E09765E87B9EA5448A27AA2AA739DBB
+D1C5533E1.pygtex
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -100573,8 +101152,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -100582,10 +101165,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_graybox2.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_graybox2.w18))/usr/local/bin/pygmentize
-) (./admon_graybox2.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_graybox2/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -100602,7 +101189,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
-
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -100612,8 +101198,6 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
-
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -100632,7 +101216,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -100722,7 +101306,7 @@ No file admon_graybox2.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -100730,7 +101314,7 @@ No file admon_graybox2.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -100738,14 +101322,21 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./admon_graybox2.out.pyg
+(./_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEA
+EA147F6FAD8.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_graybox2.out.pyg)
+dmap/pdftex.map}]
+(./_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEA
+EA147F6FAD8.pygtex)
 
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
+
+(./_minted-admon_graybox2/5D3C69AAEC9B2D5839B63A50A912F1C9E684B96910E559538BDEA
+EA147F6FAD8.pygtex)
+(./_minted-admon_graybox2/7D5BCA49BDCAEFC7C2C56FB99A18615CE684B96910E559538BDEA
+EA147F6FAD8.pygtex)
 
 
 ...rest of part of LaTeX line number...
@@ -100784,7 +101375,9 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox2.out.pyg)
+
+(./_minted-admon_graybox2/5AD40B0702261AEEF99883B3C88DC895E684B96910E559538BDEA
+EA147F6FAD8.pygtex)
 
 
 ...rest of part of LaTeX line number...
@@ -100793,7 +101386,11 @@ dmap/pdftex.map}] (./admon_graybox2.out.pyg)
 
 ...rest of part of LaTeX line number...
 
-(./admon_graybox2.out.pyg) (./admon_graybox2.out.pyg)
+
+(./_minted-admon_graybox2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1E684B96910E559538BDEA
+EA147F6FAD8.pygtex)
+(./_minted-admon_graybox2/F107D7B836712BD3FF9DDE90E09765E8E684B96910E559538BDEA
+EA147F6FAD8.pygtex)
 <../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
@@ -100845,18 +101442,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_graybox2.w18
-admon_graybox2.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_graybox2/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -100870,7 +101473,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -100885,7 +101487,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -100895,11 +101496,9 @@ placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -100917,9 +101516,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -100944,15 +101543,22 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_graybox2.out.pyg
+_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEAEA1
+47F6FAD8.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_graybox2.out.pyg
-admon_graybox2.out.pyg
-admon_graybox2.out.pyg
-admon_graybox2.out.pyg
-admon_graybox2.out.pyg
-admon_graybox2.out.pyg
+_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEAEA1
+47F6FAD8.pygtex
+_minted-admon_graybox2/5D3C69AAEC9B2D5839B63A50A912F1C9E684B96910E559538BDEAEA1
+47F6FAD8.pygtex
+_minted-admon_graybox2/7D5BCA49BDCAEFC7C2C56FB99A18615CE684B96910E559538BDEAEA1
+47F6FAD8.pygtex
+_minted-admon_graybox2/5AD40B0702261AEEF99883B3C88DC895E684B96910E559538BDEAEA1
+47F6FAD8.pygtex
+_minted-admon_graybox2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1E684B96910E559538BDEAEA1
+47F6FAD8.pygtex
+_minted-admon_graybox2/F107D7B836712BD3FF9DDE90E09765E8E684B96910E559538BDEAEA1
+47F6FAD8.pygtex
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -101058,8 +101664,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -101067,10 +101677,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_yellowicon.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_yellowicon.w18))/usr/local/bin/pygmentize
-) (./admon_yellowicon.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_yellowicon/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -101080,7 +101694,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -101100,7 +101713,7 @@ No file admon_yellowicon.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -101116,13 +101729,19 @@ No file admon_yellowicon.aux.
 
 
 
-(./admon_yellowicon.out.pyg
+(./_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_yellowicon.out.pyg)
+dmap/pdftex.map}]
+(./_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex)
 <latex_figs/small_yellow_warning.pdf, id=20, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_warning.pdf> (./admon_yellowicon.out.pyg)
-(./admon_yellowicon.out.pyg) [2 <./latex_figs/small_yellow_warning.pdf>]
+<use latex_figs/small_yellow_warning.pdf>
+(./_minted-admon_yellowicon/5D3C69AAEC9B2D5839B63A50A912F1C9573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex)
+(./_minted-admon_yellowicon/7D5BCA49BDCAEFC7C2C56FB99A18615C573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex) [2 <./latex_figs/small_yellow_warning.pdf>]
 <use latex_figs/small_yellow_warning.pdf>
 <latex_figs/small_yellow_notice.pdf, id=42, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
@@ -101131,10 +101750,14 @@ dmap/pdftex.map}] (./admon_yellowicon.out.pyg)
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
 .pdf> <./latex_figs/small_yellow_question.pdf>]
 <use latex_figs/small_yellow_question.pdf>
-<use latex_figs/small_yellow_warning.pdf> (./admon_yellowicon.out.pyg)
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_notice.pdf> (./admon_yellowicon.out.pyg)
-(./admon_yellowicon.out.pyg)
+(./_minted-admon_yellowicon/5AD40B0702261AEEF99883B3C88DC895573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex) <use latex_figs/small_yellow_warning.pdf>
+<use latex_figs/small_yellow_notice.pdf>
+(./_minted-admon_yellowicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex)
+(./_minted-admon_yellowicon/F107D7B836712BD3FF9DDE90E09765E8573B8D7B85BCA73BCD9
+5CBE40A285E54.pygtex)
 <../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
@@ -101176,18 +101799,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_yellowicon.w18
-admon_yellowicon.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_yellowicon/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -101201,7 +101830,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -101216,7 +101844,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -101245,25 +101872,32 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_yellowicon.out.pyg
+_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_yellowicon.out.pyg
+_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
-admon_yellowicon.out.pyg
-admon_yellowicon.out.pyg
+_minted-admon_yellowicon/5D3C69AAEC9B2D5839B63A50A912F1C9573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
+_minted-admon_yellowicon/7D5BCA49BDCAEFC7C2C56FB99A18615C573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_question.pdf
 latex_figs/small_yellow_question.pdf
 latex_figs/small_yellow_warning.pdf
-admon_yellowicon.out.pyg
+_minted-admon_yellowicon/5AD40B0702261AEEF99883B3C88DC895573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
-admon_yellowicon.out.pyg
-admon_yellowicon.out.pyg
+_minted-admon_yellowicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
+_minted-admon_yellowicon/F107D7B836712BD3FF9DDE90E09765E8573B8D7B85BCA73BCD95CB
+E40A285E54.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/small_yellow_summary.pdf
  ***********
@@ -101371,8 +102005,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -101380,10 +102018,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_grayicon.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_grayicon.w18))/usr/local/bin/pygmentize
-) (./admon_grayicon.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_grayicon/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -101393,7 +102035,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -101413,7 +102054,7 @@ No file admon_grayicon.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -101429,13 +102070,19 @@ No file admon_grayicon.aux.
 
 
 
-(./admon_grayicon.out.pyg
+(./_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2E
+CC4CADE157E.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_grayicon.out.pyg)
+dmap/pdftex.map}]
+(./_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2E
+CC4CADE157E.pygtex)
 <latex_figs/small_gray_warning.pdf, id=20, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
-<use latex_figs/small_gray_warning.pdf> (./admon_grayicon.out.pyg)
-(./admon_grayicon.out.pyg) [2 <./latex_figs/small_gray_warning.pdf>]
+<use latex_figs/small_gray_warning.pdf>
+(./_minted-admon_grayicon/5D3C69AAEC9B2D5839B63A50A912F1C953DEBD49688AD92B75F2E
+CC4CADE157E.pygtex)
+(./_minted-admon_grayicon/7D5BCA49BDCAEFC7C2C56FB99A18615C53DEBD49688AD92B75F2E
+CC4CADE157E.pygtex) [2 <./latex_figs/small_gray_warning.pdf>]
 <use latex_figs/small_gray_warning.pdf>
 <latex_figs/small_gray_notice.pdf, id=42, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
@@ -101443,9 +102090,14 @@ dmap/pdftex.map}] (./admon_grayicon.out.pyg)
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
 f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_question2.pdf>
-<use latex_figs/small_gray_warning.pdf> (./admon_grayicon.out.pyg)
-<use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
-(./admon_grayicon.out.pyg) (./admon_grayicon.out.pyg)
+<use latex_figs/small_gray_warning.pdf>
+(./_minted-admon_grayicon/5AD40B0702261AEEF99883B3C88DC89553DEBD49688AD92B75F2E
+CC4CADE157E.pygtex) <use latex_figs/small_gray_warning.pdf>
+<use latex_figs/small_gray_notice.pdf>
+(./_minted-admon_grayicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B153DEBD49688AD92B75F2E
+CC4CADE157E.pygtex)
+(./_minted-admon_grayicon/F107D7B836712BD3FF9DDE90E09765E853DEBD49688AD92B75F2E
+CC4CADE157E.pygtex)
 <../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
@@ -101487,18 +102139,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_grayicon.w18
-admon_grayicon.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_grayicon/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -101512,7 +102170,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -101527,7 +102184,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -101556,25 +102212,32 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_grayicon.out.pyg
+_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_grayicon.out.pyg
+_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
-admon_grayicon.out.pyg
-admon_grayicon.out.pyg
+_minted-admon_grayicon/5D3C69AAEC9B2D5839B63A50A912F1C953DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
+_minted-admon_grayicon/7D5BCA49BDCAEFC7C2C56FB99A18615C53DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_question2.pdf
 latex_figs/small_gray_question2.pdf
 latex_figs/small_gray_warning.pdf
-admon_grayicon.out.pyg
+_minted-admon_grayicon/5AD40B0702261AEEF99883B3C88DC89553DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
-admon_grayicon.out.pyg
-admon_grayicon.out.pyg
+_minted-admon_grayicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B153DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
+_minted-admon_grayicon/F107D7B836712BD3FF9DDE90E09765E853DEBD49688AD92B75F2ECC4
+CADE157E.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/small_gray_summary.pdf
  ***********
@@ -101682,8 +102345,12 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
 
 
 
@@ -101691,10 +102358,14 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+(./admon_colors2.w18))
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 
-(./admon_colors2.w18))/usr/local/bin/pygmentize
-) (./admon_colors2.pyg)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+/usr/local/bin/pygmentize
+
+(./_minted-admon_colors2/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -101704,7 +102375,6 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
-
 
 
 
@@ -101724,7 +102394,7 @@ No file admon_colors2.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -101740,20 +102410,28 @@ No file admon_colors2.aux.
 
 
 
-(./admon_colors2.out.pyg
+(./_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2C
+C88367214C.pygtex 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./admon_colors2.out.pyg)
-<latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
+dmap/pdftex.map}]
+(./_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2C
+C88367214C.pygtex) <latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf> <use latex_figs/warning.pdf>
-(./admon_colors2.out.pyg) (./admon_colors2.out.pyg) [2 <./latex_figs/warning.pd
-f>] <use latex_figs/warning.pdf>
+(./_minted-admon_colors2/5D3C69AAEC9B2D5839B63A50A912F1C9114153FEE734A61F8B1F2C
+C88367214C.pygtex)
+(./_minted-admon_colors2/7D5BCA49BDCAEFC7C2C56FB99A18615C114153FEE734A61F8B1F2C
+C88367214C.pygtex) [2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
 <latex_figs/notice.pdf, id=40, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
 <latex_figs/question.pdf, id=41, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf> [3 <./latex_figs/notice.pdf> <./latex_figs/questi
 on.pdf>] <use latex_figs/question.pdf> <use latex_figs/warning.pdf>
-(./admon_colors2.out.pyg) <use latex_figs/warning.pdf>
-<use latex_figs/notice.pdf> (./admon_colors2.out.pyg) (./admon_colors2.out.pyg)
+(./_minted-admon_colors2/5AD40B0702261AEEF99883B3C88DC895114153FEE734A61F8B1F2C
+C88367214C.pygtex) <use latex_figs/warning.pdf> <use latex_figs/notice.pdf>
+(./_minted-admon_colors2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1114153FEE734A61F8B1F2C
+C88367214C.pygtex)
+(./_minted-admon_colors2/F107D7B836712BD3FF9DDE90E09765E8114153FEE734A61F8B1F2C
+C88367214C.pygtex)
 <../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
@@ -101795,18 +102473,24 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2010/01/27 v1.6 Yet another Pygments shim for LaTeX
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
     calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 admon_colors2.w18
-admon_colors2.pyg
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+_minted-admon_colors2/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -101820,7 +102504,6 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
@@ -101835,7 +102518,6 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -101864,25 +102546,32 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-admon_colors2.out.pyg
+_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2CC88
+367214C.pygtex
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-admon_colors2.out.pyg
+_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2CC88
+367214C.pygtex
 latex_figs/warning.pdf
 latex_figs/warning.pdf
-admon_colors2.out.pyg
-admon_colors2.out.pyg
+_minted-admon_colors2/5D3C69AAEC9B2D5839B63A50A912F1C9114153FEE734A61F8B1F2CC88
+367214C.pygtex
+_minted-admon_colors2/7D5BCA49BDCAEFC7C2C56FB99A18615C114153FEE734A61F8B1F2CC88
+367214C.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
 latex_figs/question.pdf
 latex_figs/question.pdf
 latex_figs/warning.pdf
-admon_colors2.out.pyg
+_minted-admon_colors2/5AD40B0702261AEEF99883B3C88DC895114153FEE734A61F8B1F2CC88
+367214C.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
-admon_colors2.out.pyg
-admon_colors2.out.pyg
+_minted-admon_colors2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1114153FEE734A61F8B1F2CC88
+367214C.pygtex
+_minted-admon_colors2/F107D7B836712BD3FF9DDE90E09765E8114153FEE734A61F8B1F2CC88
+367214C.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/summary.pdf
  ***********
@@ -102080,40 +102769,40 @@ Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
 
 Enter the root path for documentation.
-> Root path for the documentation [.]:
+> Root path for the documentation [.]: 
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/n) [n]:
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
-> Name prefix for templates and static dir [_]:
+> Name prefix for templates and static dir [_]: 
 The project name will occur in several places in the built documentation.
-> Project name: > Author name(s):
+> Project name: > Author name(s): 
 Sphinx has the notion of a "version" and a "release" for the
 software. Each version can have multiple releases. For example, for
 Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
-> Project version: > Project release [1.0]:
+> Project version: > Project release [1.0]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
 > Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
-> Source file suffix [.rst]:
+> Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
 of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
-> Name of your master document (without suffix) [index]:
+> Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/n) [n]:
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]:
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file tmp_admon/conf.py.
 Creating file tmp_admon/index.rst.
 Creating file tmp_admon/Makefile.
@@ -102184,14 +102873,14 @@ dumping object inventory... done
 build succeeded.
 
 Build finished. The HTML pages are in _build/html.
-doconce format sphinx admon
-running doconce format sphinx admon
+doconce format sphinx admon 
+running doconce format sphinx admon 
 running doconce guess_encoding admon.rst
 copying ../doc/src/manual/fig/wave1D.png to tmp_admon
 /home/hpl/vc/doconce/test/tmp_admon
 running make clean
 running make html
-Fix generated files: index.html search.html genindex.html admon.html
+Fix generated files: index.html search.html genindex.html admon.html 
 
 google-chrome tmp_admon/_build/html/index.html
 
@@ -102286,7 +102975,7 @@ output in movies.html
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
@@ -102344,7 +103033,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-))
+)) 
 
 
 
@@ -102376,7 +103065,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -102468,7 +103157,7 @@ zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 )) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -102512,9 +103201,9 @@ ABD: EveryShipout initializing macros
 
 *************************************************
 * media9 warning: "zero height"
-*
+* 
 * Media annotation on line 166 has zero height.
-*
+* 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
 * `totalheight' options.
@@ -102522,9 +103211,9 @@ ABD: EveryShipout initializing macros
 <<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
 *************************************************
 * media9 warning: "zero height"
-*
+* 
 * Media annotation on line 193 has zero height.
-*
+* 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
 * `totalheight' options.
@@ -102684,8 +103373,8 @@ mov/wave_frames/frame_0129.png> <a0,fr49>
 
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (81.58096pt too wide)
- []\T1/lmr/m/n/10 (-20) :
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
 [2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
 ]
 
@@ -102695,7 +103384,7 @@ No file movies.ind.
 [5]
 *************************************************
 * media9 warning: "rerun"
-*
+* 
 * Rerun to get media labels right!
 *************************************************
 
@@ -102737,8 +103426,8 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
  l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
@@ -102781,9 +103470,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -102964,7 +103653,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-))
+)) 
 
 
 
@@ -102996,7 +103685,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -103088,7 +103777,7 @@ zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 )) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -103110,7 +103799,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 Writing index file movies.idx
-(./movies.aux)
+(./movies.aux) 
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -103120,7 +103809,7 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -103131,9 +103820,9 @@ ABD: EveryShipout initializing macros
 
 *************************************************
 * media9 warning: "zero height"
-*
+* 
 * Media annotation on line 166 has zero height.
-*
+* 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
 * `totalheight' options.
@@ -103141,9 +103830,9 @@ ABD: EveryShipout initializing macros
 <<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
 *************************************************
 * media9 warning: "zero height"
-*
+* 
 * Media annotation on line 193 has zero height.
-*
+* 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
 * `totalheight' options.
@@ -103300,8 +103989,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.58096pt too wide)
- []\T1/lmr/m/n/10 (-20) :
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
 [2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
 ]
 No file movies.ind.
@@ -103341,8 +104030,8 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
  l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
@@ -103385,9 +104074,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -103518,7 +104207,7 @@ Transcript written on movies.log.
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
@@ -103576,7 +104265,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3str-convert.sty
-))
+)) 
 
 
 
@@ -103608,7 +104297,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -103700,7 +104389,7 @@ zlibrarytopaths.code.tex)))) (/home/hpl/texmf/tex/latex/misc/movie15.sty
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 )) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -103722,7 +104411,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 Writing index file movies.idx
-(./movies.aux)
+(./movies.aux) 
 
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -103732,7 +104421,7 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -103743,9 +104432,9 @@ ABD: EveryShipout initializing macros
 
 *************************************************
 * media9 warning: "zero height"
-*
+* 
 * Media annotation on line 166 has zero height.
-*
+* 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
 * `totalheight' options.
@@ -103753,9 +104442,9 @@ ABD: EveryShipout initializing macros
 <<VPlayer.swf>><<../doc/src/manual/mov/wave.mp4>>
 *************************************************
 * media9 warning: "zero height"
-*
+* 
 * Media annotation on line 193 has zero height.
-*
+* 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
 * `totalheight' options.
@@ -103912,8 +104601,8 @@ mov/wave_frames/frame_0128.png> <a0,fr48>
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-Overfull \hbox (81.58096pt too wide)
- []\T1/lmr/m/n/10 (-20) :
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
 [2] [3<<../doc/src/manual/mov/wave.mpeg>>] [4<<../doc/src/manual/mov/wave.avi>>
 ]
 No file movies.ind.
@@ -103947,8 +104636,8 @@ microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 fancybox.sty    2010/05/15 1.4
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
  l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
@@ -103991,9 +104680,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -104125,7 +104814,7 @@ Transcript written on movies.log.
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to pdflatex
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 output in movies.p.tex
 + '[' 0 -ne 0 ']'
@@ -104197,7 +104886,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -104229,7 +104918,7 @@ No file movies.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
 (./movies.out) (./movies.out) (./newcommands_bfmath.tex)
-(./newcommands_replace.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -104392,8 +105081,8 @@ mov/wave_frames/frame_0129.png> <a0,fr49>
 
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (81.58096pt too wide)
- []\T1/lmr/m/n/10 (-20) :
+Overfull \hbox (81.58096pt too wide) 
+ []\T1/lmr/m/n/10 (-20) : 
 [2]
 
 
@@ -104580,28 +105269,28 @@ Transcript written on movies.log.
 running preprocess -DFORMAT=plain -DDEVICE=screen  movies.do.txt > tmp_preprocess__movies.do.txt
 translating doconce text in tmp_preprocess__movies.do.txt to plain
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave.webm
 *** made link to new HTML file movie_player2.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave.ogg
 *** made link to new HTML file movie_player3.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave.mp4
 *** made link to new HTML file movie_player4.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave.flv
 *** made link to new HTML file movie_player5.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave_frames/frame_*.png
 *** made link to new HTML file movie_player6.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/frames/frame_%04d.png:80->129
 *** made link to new HTML file movie_player7.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave.mpeg
 *** made link to new HTML file movie_player8.html
-    with code to display the movie
+    with code to display the movie 
     ../doc/src/manual/mov/wave.avi
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.mp4 ...
     found!
@@ -104610,13 +105299,13 @@ translating doconce text in tmp_preprocess__movies.do.txt to plain
 ... movie: trying to find http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg ...
     found!
 *** made link to new HTML file movie_player9.html
-    with code to display the movie
+    with code to display the movie 
     http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg
 *** made link to new HTML file movie_player10.html
-    with code to display the movie
+    with code to display the movie 
     http://www.youtube.com/watch?v=_O7iUiftbKU
 *** made link to new HTML file movie_player11.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in movies.txt
 + '[' 0 -ne 0 ']'
@@ -104678,16 +105367,16 @@ Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 LaTeX Warning: You have requested document class `svmonodo',
                but the document class provides `svmono'.
 
-Document Class: svmono 2007/06/25 v5.4
+Document Class: svmono 2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
 
-Class Springer-SVMono Warning: Specified option or subpackage "sectrefs"
-(Springer-SVMono)              not found passing it to article class
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
 
-Class Springer-SVMono Warning: Specified option or subpackage "open=right"
-(Springer-SVMono)              not found passing it to article class
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -104714,7 +105403,7 @@ For additional information on amsmath, use the `?' option.
 
 Package amsmath Warning: Unable to redefine math accent \vec.
 
-)
+) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 
@@ -104744,7 +105433,7 @@ See the caption package documentation for explanation.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -104797,7 +105486,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -104911,9 +105600,9 @@ ABD: EveryShipout initializing macros (./newcommands_keep.tex)
  [3
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [4]
-Overfull \hbox (120.12047pt too wide)
-|[]
-[5]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
 (Font)              size <5> substituted on .
@@ -104927,16 +105616,16 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
  [6]
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [7] [8]
 Chapter 1.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
 (Font)              size <8> substituted on .
@@ -104971,7 +105660,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 ...rest of part of LaTeX line number...
 
 
-Underfull \hbox (badness 5862)
+Underfull \hbox (badness 5862) 
 \T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 
 
@@ -104989,11 +105678,11 @@ Underfull \hbox (badness 5862)
 [4]
 Chapter 2.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [5] [6]
 
 
@@ -105024,18 +105713,18 @@ Overfull \hbox (120.12047pt too wide)
 [9] [10]
 Appendix A.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [11] [12]
 No file Springer_T2_book.bbl.
 No file Springer_T2_book.ind.
 (./Springer_T2_book.aux)
 
  *File List*
-svmonodo.cls    2007/06/25 v5.4
+svmonodo.cls    2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
@@ -105045,7 +105734,7 @@ Springer Verlag global LaTeX document class for monographs
 infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty
+    t2do.sty    
 graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -105079,7 +105768,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -105129,8 +105818,8 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
@@ -105151,9 +105840,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -105250,16 +105939,16 @@ Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 LaTeX Warning: You have requested document class `svmonodo',
                but the document class provides `svmono'.
 
-Document Class: svmono 2007/06/25 v5.4
+Document Class: svmono 2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
 
-Class Springer-SVMono Warning: Specified option or subpackage "sectrefs"
-(Springer-SVMono)              not found passing it to article class
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
 
-Class Springer-SVMono Warning: Specified option or subpackage "open=right"
-(Springer-SVMono)              not found passing it to article class
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -105286,7 +105975,7 @@ For additional information on amsmath, use the `?' option.
 
 Package amsmath Warning: Unable to redefine math accent \vec.
 
-)
+) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 
@@ -105316,7 +106005,7 @@ See the caption package documentation for explanation.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -105369,7 +106058,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -105483,9 +106172,9 @@ ABD: EveryShipout initializing macros (./newcommands_keep.tex)
  [3
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [4]
-Overfull \hbox (120.12047pt too wide)
-|[]
-[5]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
 (Font)              size <5> substituted on .
@@ -105499,16 +106188,16 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
  [6]
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 (./Springer_T2_book.toc) [7] [8]
 Chapter 1.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
 (Font)              size <8> substituted on .
@@ -105538,7 +106227,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 
  [2]
-Underfull \hbox (badness 5862)
+Underfull \hbox (badness 5862) 
 \T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 [3]
 
@@ -105548,11 +106237,11 @@ Underfull \hbox (badness 5862)
 [4]
 Chapter 2.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [5] [6]
 
 
@@ -105583,21 +106272,21 @@ Overfull \hbox (120.12047pt too wide)
 [9] [10]
 Appendix A.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [11] [12] (./Springer_T2_book.bbl
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 ) [13] [14] (./Springer_T2_book.ind
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [15]) (./Springer_T2_book.aux)
 
  *File List*
-svmonodo.cls    2007/06/25 v5.4
+svmonodo.cls    2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
@@ -105607,7 +106296,7 @@ Springer Verlag global LaTeX document class for monographs
 infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty
+    t2do.sty    
 graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -105641,7 +106330,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -105691,8 +106380,8 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
@@ -105713,9 +106402,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -105800,16 +106489,16 @@ Babel <3.9k> and hyphenation patterns for 2 languages loaded.
 LaTeX Warning: You have requested document class `svmonodo',
                but the document class provides `svmono'.
 
-Document Class: svmono 2007/06/25 v5.4
+Document Class: svmono 2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
 
-Class Springer-SVMono Warning: Specified option or subpackage "sectrefs"
-(Springer-SVMono)              not found passing it to article class
+Class Springer-SVMono Warning: Specified option or subpackage "sectrefs" 
+(Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
 
-Class Springer-SVMono Warning: Specified option or subpackage "open=right"
-(Springer-SVMono)              not found passing it to article class
+Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -105836,7 +106525,7 @@ For additional information on amsmath, use the `?' option.
 
 Package amsmath Warning: Unable to redefine math accent \vec.
 
-)
+) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 
@@ -105866,7 +106555,7 @@ See the caption package documentation for explanation.
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz))
 (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
@@ -105919,7 +106608,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -106033,9 +106722,9 @@ ABD: EveryShipout initializing macros (./newcommands_keep.tex)
  [3
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [4]
-Overfull \hbox (120.12047pt too wide)
-|[]
-[5]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
+[5] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
 (Font)              size <5> substituted on .
@@ -106049,16 +106738,16 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
  [6]
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 (./Springer_T2_book.toc) [7] [8]
 Chapter 1.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
 (Font)              size <8> substituted on .
@@ -106084,7 +106773,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
 [1]  [2]
-Underfull \hbox (badness 5862)
+Underfull \hbox (badness 5862) 
 \T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
 [3]
 
@@ -106094,11 +106783,11 @@ Underfull \hbox (badness 5862)
 [4]
 Chapter 2.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [5] [6]
 
 
@@ -106112,21 +106801,21 @@ Overfull \hbox (120.12047pt too wide)
 [8] [9] [10]
 Appendix A.
 
-Overfull \hbox (30.77882pt too wide)
-[][][]
+Overfull \hbox (30.77882pt too wide) 
+[][][] 
 
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [11] [12] (./Springer_T2_book.bbl
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 ) [13] [14] (./Springer_T2_book.ind
-Overfull \hbox (120.12047pt too wide)
-|[]
+Overfull \hbox (120.12047pt too wide) 
+|[] 
 [15]) (./Springer_T2_book.aux)
 
  *File List*
-svmonodo.cls    2007/06/25 v5.4
+svmonodo.cls    2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
   size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
@@ -106136,7 +106825,7 @@ Springer Verlag global LaTeX document class for monographs
 infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty
+    t2do.sty    
 graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -106170,7 +106859,7 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
-ptex2tex.sty
+ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
 verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
@@ -106220,8 +106909,8 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
@@ -106242,9 +106931,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -106480,7 +107169,7 @@ table, or comment:
 
 ---------------------------------
 fore code is caught by the syntax check ===
-
+ 
 
 !bc
 more verbatime stuff
@@ -106756,7 +107445,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
     Recommendation: rewrite caption.
 
 -----------
-"Google": "http://google.com".
+"Google": "http://google.com". 
 -----------
 
 Abort! (add --no_abort on the command line to avoid this abortion)
@@ -106844,8 +107533,8 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
-<2008/02/07> (tvz))
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) 
  (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -106894,7 +107583,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -106990,8 +107679,8 @@ No file quickref.aux.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-ABD: EveryShipout initializing macros
-
+ABD: EveryShipout initializing macros 
+ 
 
 
 
@@ -107005,11 +107694,11 @@ Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
  [1{/var/lib/texmf/fo
 nts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (18.62192pt too wide)
+Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
 [3]
-Overfull \hbox (3.86172pt too wide)
+Overfull \hbox (3.86172pt too wide) 
 []\T1/phv/m/n/10 Emojis, as de-fined in [][]$\T1/lmtt/m/n/10 http : / / www . e
 moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 [4] [5]
@@ -107018,18 +107707,18 @@ moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 ...rest of part of LaTeX line number...
 
 
-Overfull \hbox (29.09389pt too wide)
+Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
 [6]
-Overfull \hbox (12.68103pt too wide)
+Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
 [7] [8] [9]
-Overfull \hbox (32.16707pt too wide)
+Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
-.
+. 
 
-Overfull \hbox (8.97565pt too wide)
+Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
 
 
@@ -107046,11 +107735,11 @@ Overfull \hbox (8.97565pt too wide)
 ...rest of part of LaTeX line number...
 
 [12] [13]
-Overfull \hbox (59.24634pt too wide)
-\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
+Overfull \hbox (59.24634pt too wide) 
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
-Overfull \hbox (20.06982pt too wide)
+Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 [14]
 
@@ -107058,14 +107747,14 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 [15] [16] [17] [18] [19]
-Overfull \hbox (0.31688pt too wide)
+Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
-Overfull \hbox (88.36455pt too wide)
+Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
-ethz.ch/ creller/web/tricks/reST.html"
+ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[20] (./quickref.aux)
+[20] [21] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -107108,7 +107797,7 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-  helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS)
+  helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -107144,8 +107833,8 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2014/05/30 2.0: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
@@ -107166,9 +107855,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -107192,7 +107881,7 @@ RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  omsphv.fd
+  omsphv.fd    
  ***********
 
 
@@ -107221,7 +107910,7 @@ are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
 lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb>
-Output written on quickref.pdf (20 pages, ).
+Output written on quickref.pdf (21 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape quickref
@@ -107265,8 +107954,8 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
-<2008/02/07> (tvz))
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)) 
  (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -107315,7 +108004,7 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex))
+ex)) 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f)))
@@ -107401,7 +108090,7 @@ tex)))
 zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
 )
 Writing index file quickref.idx
-(./quickref.aux)
+(./quickref.aux) 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -107421,35 +108110,35 @@ Writing index file quickref.idx
 
  (./quickref.toc
  [1{/var/lib/texmf/fonts/map/pdftex/u
-pdmap/pdftex.map}]
+pdmap/pdftex.map}] 
 [2] [3]
-Overfull \hbox (18.62192pt too wide)
+Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
 [4]
-Overfull \hbox (3.86172pt too wide)
+Overfull \hbox (3.86172pt too wide) 
 []\T1/phv/m/n/10 Emojis, as de-fined in [][]$\T1/lmtt/m/n/10 http : / / www . e
 moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 [5] [6]
-Overfull \hbox (29.09389pt too wide)
+Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
 
-Overfull \hbox (12.68103pt too wide)
+Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
 [7] [8] [9] [10]
-Overfull \hbox (32.16707pt too wide)
+Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
-.
+. 
 
-Overfull \hbox (8.97565pt too wide)
+Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
 [11] [12] [13]
-Overfull \hbox (59.24634pt too wide)
-\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have []
+Overfull \hbox (59.24634pt too wide) 
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
-Overfull \hbox (20.06982pt too wide)
+Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
 [14]
 
@@ -107457,12 +108146,12 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 [15] [16] [17] [18] [19] [20]
-Overfull \hbox (0.31688pt too wide)
+Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
-Overfull \hbox (88.36455pt too wide)
+Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
-ethz.ch/ creller/web/tricks/reST.html"
+ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
 [21] (./quickref.aux)
 
@@ -107507,7 +108196,7 @@ verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 uni-global.def    2013/05/13 UCS: Unicode global data
 inputenc.sty    2014/04/30 v1.2b Input encoding file
    utf8x.def    2004/10/17 UCS: Input encoding UTF-8
-  helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS)
+  helvet.sty    2005/04/12 PSNFSS-v9.2a (WaS) 
  lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
 hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
 hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
@@ -107543,8 +108232,8 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2014/05/30 2.0: mdframed
   xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader)
-expl3-code.tex    2014/06/10 v5105 L3 programming layer
+   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
+expl3-code.tex    2014/06/10 v5105 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
@@ -107565,9 +108254,9 @@ pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
 pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
 pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
- pgfkeys.sty
+ pgfkeys.sty    
  pgfkeys.code.tex
- pgfmath.sty
+ pgfmath.sty    
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
@@ -107593,7 +108282,7 @@ RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  omsphv.fd
+  omsphv.fd    
  ***********
 
 
@@ -107644,40 +108333,40 @@ Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
 
 Enter the root path for documentation.
-> Root path for the documentation [.]:
+> Root path for the documentation [.]: 
 You have two options for placing the build directory for Sphinx output.
 Either, you use a directory "_build" within the root path, or you separate
 "source" and "build" directories within the root path.
-> Separate source and build directories (y/n) [n]:
+> Separate source and build directories (y/n) [n]: 
 Inside the root directory, two more directories will be created; "_templates"
 for custom HTML templates and "_static" for custom stylesheets and other static
 files. You can enter another prefix (such as ".") to replace the underscore.
-> Name prefix for templates and static dir [_]:
+> Name prefix for templates and static dir [_]: 
 The project name will occur in several places in the built documentation.
-> Project name: > Author name(s):
+> Project name: > Author name(s): 
 Sphinx has the notion of a "version" and a "release" for the
 software. Each version can have multiple releases. For example, for
 Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
-> Project version: > Project release [1.0]:
+> Project version: > Project release [1.0]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
 > Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
-> Source file suffix [.rst]:
+> Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
 of the documents. Normally, this is "index", but if your "index"
 document is a custom template, you can also set this to another filename.
-> Name of your master document (without suffix) [index]:
+> Name of your master document (without suffix) [index]: 
 Sphinx can also add configuration for epub output:
-> Do you want to use the epub builder (y/n) [n]:
+> Do you want to use the epub builder (y/n) [n]: 
 Please indicate if you want to use one of the following Sphinx extensions:
-> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
 A Makefile and a Windows command file can be generated for you so that you
 only have to run e.g. `make html' instead of invoking sphinx-build
 directly.
-> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]:
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
 Creating file sphinx-rootdir/conf.py.
 Creating file sphinx-rootdir/index.rst.
 Creating file sphinx-rootdir/Makefile.
@@ -107737,7 +108426,7 @@ Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
 running make clean
 running make html
-Fix generated files: index.html search.html genindex.html quickref.html
+Fix generated files: index.html search.html genindex.html quickref.html 
 
 google-chrome sphinx-rootdir/_build/html/index.html
 
@@ -107770,7 +108459,7 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 Package cmap Warning: pdftex in DVI mode - exiting.
 
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -107821,444 +108510,448 @@ Package hyperref Warning: Rerun to get /PageLabels entry.
 Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
 
-Overfull \hbox (4.55762pt too wide)
+Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
  [1]
-Overfull \hbox (455.00006pt too wide)
+Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
-imula Research Laboratory & Dept. of Informatics, Univ. of Oslo
+imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
 
-Overfull \hbox (143.00006pt too wide)
+Overfull \hbox (143.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cybe
-rspace Inc.
+rspace Inc.  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 [2]
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Appendix: heading
 
-Underfull \hbox (badness 1168)
+Underfull \hbox (badness 1168) 
 []|\T1/pcr/m/n/10 ===== Appendix: heading ===== \T1/ptm/m/n/10 (5
 
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Exercise: heading
 
-Underfull \hbox (badness 1168)
+Underfull \hbox (badness 1168) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading ===== \T1/ptm/m/n/10 (5
 
-Overfull \hbox (15.61775pt too wide)
+Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
 m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
 
-Overfull \hbox (27.20697pt too wide)
+Overfull \hbox (27.20697pt too wide) 
 \T1/ptm/m/it/10 sized words\T1/ptm/m/n/10 . Sim-i-larly, an un-der-score sur-ro
 unds words that ap-pear in bold-face: \T1/pcr/m/n/10 _boldface_
 [3]
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 This distance corresponds to 7.5~km, which is traveled in $7.5
-/5$~s.
+/5$~s. 
 
-Overfull \hbox (113.00006pt too wide)
-\T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen
-with
+Overfull \hbox (113.00006pt too wide) 
+\T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen 
+with  
 
-Overfull \hbox (11.00006pt too wide)
-[]\T1/pcr/m/n/10 space around in sentences---this way, or in quotes:
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 space around in sentences---this way, or in quotes:  
 
-Overfull \hbox (95.00006pt too wide)
+Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
-th.
+th. 
 [4]
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
-anks as
+anks as  
 
-Overfull \hbox (107.00006pt too wide)
-[]\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must
-start
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must 
+start  
 
-Overfull \hbox (17.00006pt too wide)
-[] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line
+Overfull \hbox (17.00006pt too wide) 
+[] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
 [5]
-Overfull \hbox (83.00006pt too wide)
-\T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon,
+Overfull \hbox (83.00006pt too wide) 
+\T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
+ 
 
-
-Overfull \hbox (35.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments
+Overfull \hbox (35.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
 [6]
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
-sume
+sume  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 $Q>0$. There are three, fundamental, basic property of $Q$.
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 $Q>0$. There are three, fundamental, basic property of $Q$. 
 
-Overfull \hbox (23.00006pt too wide)
-\T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]
+Overfull \hbox (23.00006pt too wide) 
+\T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
-asic]
+asic]  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
 
-Overfull \hbox (4.66663pt too wide)
+Overfull \hbox (4.66663pt too wide) 
 \T1/ptm/m/n/10 three-color{red}{(\T1/ptm/b/n/10 del 5\T1/ptm/m/n/10 : ,}) fun-d
 a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 /n/10 (**edit
 
-Overfull \hbox (5.00006pt too wide)
-[]\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
 [7]
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
-console
+console 
 
-Overfull \hbox (5.00006pt too wide)
-[]    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
+Overfull \hbox (5.00006pt too wide) 
+[]    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z) 
 
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  fromto: doconce clean@^doconce spl
-it_rst
+it_rst  
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
-lit_rst
+lit_rst  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
 [8]
-Overfull \hbox (8.347pt too wide)
-\T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a
+Overfull \hbox (8.347pt too wide) 
+\T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
 
-Overfull \hbox (137.00006pt too wide)
+Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
-{u} = 0.\]
+{u} = 0.\]  
 
-Overfull \hbox (137.00006pt too wide)
+Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
-{u} = 0.\]
+{u} = 0.\] 
 [9]
-Overfull \hbox (29.72876pt too wide)
+Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
 
-Overfull \hbox (41.00006pt too wide)
-\T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"
+Overfull \hbox (41.00006pt too wide) 
+\T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 [10]
-Overfull \hbox (5.00006pt too wide)
-[]\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
 
-Overfull \hbox (503.00006pt too wide)
+Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
-oes the caption which must be on a single line. label{some:fig:label}
+oes the caption which must be on a single line. label{some:fig:label}  
 
-Overfull \hbox (437.00006pt too wide)
+Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
-aption which must be on a single line. label{some:fig:label}
+aption which must be on a single line. label{some:fig:label} 
 
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
 
-Overfull \hbox (233.00006pt too wide)
+Overfull \hbox (233.00006pt too wide) 
 \T1/pcr/m/n/10 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 he
-ight=315] YouTube movie.
+ight=315] YouTube movie.  
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
- movie.
+ movie. 
 
 
 ...rest of part of LaTeX line number...
 
 [11]
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
---|
+--|  
 
-Overfull \hbox (107.00006pt too wide)
-[]\T1/pcr/m/n/10 |      Section type       |        Syntax
-    |
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 |      Section type       |        Syntax                     
+    |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
-----|
+----|  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | section                 | `======= Heading =======`    (7 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | subsection              | `===== Heading =====`        (5 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | subsubsection           | `=== Heading ===`            (3 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
-----|
+----| 
 
-Overfull \hbox (65.00006pt too wide)
-[]\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
 [12]
-Overfull \hbox (54.34767pt too wide)
+Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
 
-Overfull \hbox (26.41858pt too wide)
+Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
 
-Overfull \hbox (71.00006pt too wide)
-[]\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
+ 
 
-
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
-12}],
+12}],  
 [13]
-Overfull \hbox (3671.00006pt too wide)
+Overfull \hbox (3647.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
 e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
-it_html slides_html slides_beamer slides_markdown latin2html grep latex_header
-latex_footer latex_problems ref_external html_colorbullets list_labels teamod s
-phinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2n
-ew_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize make
-file diff gitdiff fix_bibtex4publish csv2table
+it_html slides_html slides_beamer slides_markdown latin2html grep latex_header 
+latex_footer latex_problems ref_external html_colorbullets list_fig_src_files l
+ist_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_f
+ormat linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile
+ diff gitdiff fix_bibtex4publish csv2table  
 
-Overfull \hbox (269.00006pt too wide)
+Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
-i|cwiki|pandoc|st|epytext dofile
+i|cwiki|pandoc|st|epytext dofile  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
 
-Overfull \hbox (197.00006pt too wide)
+Overfull \hbox (197.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce subst [-s -m -x --restore] regex-pattern regex-replace
-ment file1 file2 ...
+ment file1 file2 ...  
 
-Overfull \hbox (83.00006pt too wide)
+Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier
-,
+,  
 
-Overfull \hbox (143.00006pt too wide)
-[] \T1/pcr/m/n/10 -x is the re.VERBOSE modifier, --restore copies backup files
-back again)
+Overfull \hbox (143.00006pt too wide) 
+[] \T1/pcr/m/n/10 -x is the re.VERBOSE modifier, --restore copies backup files 
+back again)  
 
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 # doconce replace using from and to phrases from file
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 # doconce replace using from and to phrases from file  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
 
-Overfull \hbox (71.00006pt too wide)
-[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
+ 
 
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
-Overfull \hbox (11.00006pt too wide)
-[]\T1/pcr/m/n/10 # apply all edits specified through inline comments
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \
+Overfull \hbox (35.00006pt too wide) 
+[]    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
 
-Overfull \hbox (35.00006pt too wide)
-[]    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \
-
-Overfull \hbox (53.00006pt too wide)
-[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \
+Overfull \hbox (53.00006pt too wide) 
+[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
 [14]
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
-Overfull \hbox (173.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the
-splitting points
+Overfull \hbox (173.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
+splitting points  
 
-Overfull \hbox (65.00006pt too wide)
-[]\T1/pcr/m/n/10 # split an html file into parts according to !split commands
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
 
-Overfull \hbox (95.00006pt too wide)
+Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
-ile
+ile  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
-light
+light  
 
-Overfull \hbox (11.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
-Overfull \hbox (125.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile
-> result
+Overfull \hbox (125.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
+> result  
 
-Overfull \hbox (125.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile
-> result
+Overfull \hbox (125.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
+> result  
 [15]
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []        \T1/pcr/m/n/10 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{q
-uote}
+uote}  
 
-Overfull \hbox (17.00006pt too wide)
-[]\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
 
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
-Overfull \hbox (17.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
 
-Overfull \hbox (101.00006pt too wide)
+Overfull \hbox (101.00006pt too wide) 
+[]\T1/pcr/m/n/10 # list all figure files, movie files, and source code files ne
+eded  
+
+Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
- up)
+ up)  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 # generate script for substituting generalized references
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
-Overfull \hbox (95.00006pt too wide)
+Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
-ng"
+ng"  
 
-Overfull \hbox (137.00006pt too wide)
+Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
-al fixing)
+al fixing)  
 
-Overfull \hbox (83.00006pt too wide)
+Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 # check if there are problems with translating latex to doconc
-e
+e  
 
-Overfull \hbox (179.00006pt too wide)
+Overfull \hbox (179.00006pt too wide) 
 []\T1/pcr/m/n/10 # typeset a doconce document with pygments (for pretty print o
-f doconce itself)
+f doconce itself)  
 
-Overfull \hbox (167.00006pt too wide)
-[]\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to
-various formats
+Overfull \hbox (167.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to 
+various formats  
 
-Overfull \hbox (83.00006pt too wide)
+Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
-]
+]  
 
-Overfull \hbox (131.00006pt too wide)
+Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
-use, ...)
+use, ...)  
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
-l files
+l files  
 [16]
-Overfull \hbox (17.00006pt too wide)
-[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
 
-Overfull \hbox (41.00006pt too wide)
-[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
-Overfull \hbox (5.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
 
-Overfull \hbox (101.00006pt too wide)
+Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
-==
+==  
 [17]
-Overfull \hbox (77.00006pt too wide)
+Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
+  
 
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
 
-Overfull \hbox (41.00006pt too wide)
-[]\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps
-
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
- =====
+ ===== 
 
-Overfull \hbox (41.00006pt too wide)
-\T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====
+Overfull \hbox (41.00006pt too wide) 
+\T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
-Overfull \hbox (65.00006pt too wide)
-[]\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
 [18]
-Overfull \hbox (101.00006pt too wide)
+Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
-rize
+rize  
 
-Overfull \hbox (155.00006pt too wide)
+Overfull \hbox (155.00006pt too wide) 
 []\T1/pcr/m/n/10 and give some perspectives. The text inside the `!bremarks` an
-d `!eremarks`
+d `!eremarks`  
 
-Overfull \hbox (41.00006pt too wide)
-[]\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
 
-Overfull \hbox (4.60825pt too wide)
+Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
-Overfull \hbox (47.10902pt too wide)
+Overfull \hbox (47.10902pt too wide) 
 []
 [19]
-Overfull \hbox (263.00006pt too wide)
+Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
-ticolumn{1}{c}{acceleration} \\
+ticolumn{1}{c}{acceleration} \\  
 
-Overfull \hbox (4.19656pt too wide)
-[][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize
+Overfull \hbox (4.19656pt too wide) 
+[][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
-Overfull \hbox (113.41505pt too wide)
-[]\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]"
+Overfull \hbox (113.41505pt too wide) 
+[]\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
 [20] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
@@ -108291,7 +108984,7 @@ Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 
 Package cmap Warning: pdftex in DVI mode - exiting.
 
-)
+) 
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
@@ -108322,7 +109015,7 @@ Package hyperref Message: Driver (default): hdvips.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
 
-(./quickref.rst.aux)
+(./quickref.rst.aux) 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
 
@@ -108336,440 +109029,444 @@ Package hyperref Message: Driver (default): hdvips.
 
  (./quickref.rst.toc
 
-Overfull \hbox (4.55762pt too wide)
+Overfull \hbox (4.55762pt too wide) 
 \T1/ptm/m/n/10 HTML. Other out-lets in-clude Google's \T1/pcr/m/n/10 blogger.co
 m\T1/ptm/m/n/10 , Wikipedia/Wikibooks, IPython
  [2]
-Overfull \hbox (455.00006pt too wide)
+Overfull \hbox (455.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, S
-imula Research Laboratory & Dept. of Informatics, Univ. of Oslo
+imula Research Laboratory & Dept. of Informatics, Univ. of Oslo  
 
-Overfull \hbox (143.00006pt too wide)
+Overfull \hbox (143.00006pt too wide) 
 []\T1/pcr/m/n/10 AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cybe
-rspace Inc.
+rspace Inc.  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Appendix: heading
 
-Underfull \hbox (badness 1168)
+Underfull \hbox (badness 1168) 
 []|\T1/pcr/m/n/10 ===== Appendix: heading ===== \T1/ptm/m/n/10 (5
 
-Underfull \hbox (badness 10000)
+Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Exercise: heading
 
-Underfull \hbox (badness 1168)
+Underfull \hbox (badness 1168) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading ===== \T1/ptm/m/n/10 (5
 [3]
-Overfull \hbox (15.61775pt too wide)
+Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
 m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
 
-Overfull \hbox (27.20697pt too wide)
+Overfull \hbox (27.20697pt too wide) 
 \T1/ptm/m/it/10 sized words\T1/ptm/m/n/10 . Sim-i-larly, an un-der-score sur-ro
 unds words that ap-pear in bold-face: \T1/pcr/m/n/10 _boldface_
 
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 This distance corresponds to 7.5~km, which is traveled in $7.5
-/5$~s.
+/5$~s. 
 [4]
-Overfull \hbox (113.00006pt too wide)
-\T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen
-with
+Overfull \hbox (113.00006pt too wide) 
+\T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen 
+with  
 
-Overfull \hbox (11.00006pt too wide)
-[]\T1/pcr/m/n/10 space around in sentences---this way, or in quotes:
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 space around in sentences---this way, or in quotes:  
 
-Overfull \hbox (95.00006pt too wide)
+Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
-th.
+th. 
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
-anks as
+anks as  
 
-Overfull \hbox (107.00006pt too wide)
-[]\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must
-start
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must 
+start  
 [5]
-Overfull \hbox (17.00006pt too wide)
-[] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line
+Overfull \hbox (17.00006pt too wide) 
+[] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
 [6]
-Overfull \hbox (83.00006pt too wide)
-\T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon,
+Overfull \hbox (83.00006pt too wide) 
+\T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
+ 
 
-
-Overfull \hbox (35.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments
+Overfull \hbox (35.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
 [7]
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
-sume
+sume  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 $Q>0$. There are three, fundamental, basic property of $Q$.
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 $Q>0$. There are three, fundamental, basic property of $Q$. 
 
-Overfull \hbox (23.00006pt too wide)
-\T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]
+Overfull \hbox (23.00006pt too wide) 
+\T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
-asic]
+asic]  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
 
-Overfull \hbox (4.66663pt too wide)
+Overfull \hbox (4.66663pt too wide) 
 \T1/ptm/m/n/10 three-color{red}{(\T1/ptm/b/n/10 del 5\T1/ptm/m/n/10 : ,}) fun-d
 a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 /n/10 (**edit
 
-Overfull \hbox (5.00006pt too wide)
-[]\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
 [8]
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
-console
+console 
 
-Overfull \hbox (5.00006pt too wide)
-[]    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z)
+Overfull \hbox (5.00006pt too wide) 
+[]    \T1/pcr/m/n/10 return exp(-t)*sin(pi*x)*sin(pi*y)*cos(2*pi*z) 
 
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  fromto: doconce clean@^doconce spl
-it_rst
+it_rst  
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
-lit_rst
+lit_rst  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
 
-Overfull \hbox (8.347pt too wide)
-\T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a
+Overfull \hbox (8.347pt too wide) 
+\T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
 [9]
-Overfull \hbox (137.00006pt too wide)
+Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
-{u} = 0.\]
+{u} = 0.\]  
 
-Overfull \hbox (137.00006pt too wide)
+Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
-{u} = 0.\]
+{u} = 0.\] 
 
-Overfull \hbox (29.72876pt too wide)
+Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
 [10]
-Overfull \hbox (41.00006pt too wide)
-\T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"
+Overfull \hbox (41.00006pt too wide) 
+\T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
-Overfull \hbox (5.00006pt too wide)
-[]\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
 [11]
-Overfull \hbox (503.00006pt too wide)
+Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
-oes the caption which must be on a single line. label{some:fig:label}
+oes the caption which must be on a single line. label{some:fig:label}  
 
-Overfull \hbox (437.00006pt too wide)
+Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
-aption which must be on a single line. label{some:fig:label}
+aption which must be on a single line. label{some:fig:label} 
 
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
 
-Overfull \hbox (233.00006pt too wide)
+Overfull \hbox (233.00006pt too wide) 
 \T1/pcr/m/n/10 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 he
-ight=315] YouTube movie.
+ight=315] YouTube movie.  
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
- movie.
+ movie. 
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
---|
+--|  
 
-Overfull \hbox (107.00006pt too wide)
-[]\T1/pcr/m/n/10 |      Section type       |        Syntax
-    |
+Overfull \hbox (107.00006pt too wide) 
+[]\T1/pcr/m/n/10 |      Section type       |        Syntax                     
+    |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |----------------l--------|------------------l----------------
-----|
+----|  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | chapter                 | `========= Heading ========` (9 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | section                 | `======= Heading =======`    (7 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | subsection              | `===== Heading =====`        (5 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | subsubsection           | `=== Heading ===`            (3 `=
-`)  |
+`)  |  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
-`)  |
+`)  |  
 [12]
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
-----|
+----| 
 
-Overfull \hbox (65.00006pt too wide)
-[]\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
 [13]
-Overfull \hbox (54.34767pt too wide)
+Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
 \T1/ptm/m/n/10 ,
 
-Overfull \hbox (26.41858pt too wide)
+Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
 
-Overfull \hbox (71.00006pt too wide)
-[]\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
+ 
 
-
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
-12}],
+12}],  
 [14]
-Overfull \hbox (3671.00006pt too wide)
+Overfull \hbox (3647.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
 e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
-it_html slides_html slides_beamer slides_markdown latin2html grep latex_header
-latex_footer latex_problems ref_external html_colorbullets list_labels teamod s
-phinxfix_localURLs make_figure_code_links latex_exercise_toc insertdocstr old2n
-ew_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize make
-file diff gitdiff fix_bibtex4publish csv2table
+it_html slides_html slides_beamer slides_markdown latin2html grep latex_header 
+latex_footer latex_problems ref_external html_colorbullets list_fig_src_files l
+ist_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_f
+ormat linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile
+ diff gitdiff fix_bibtex4publish csv2table  
 
-Overfull \hbox (269.00006pt too wide)
+Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
-i|cwiki|pandoc|st|epytext dofile
+i|cwiki|pandoc|st|epytext dofile  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
 
-Overfull \hbox (197.00006pt too wide)
+Overfull \hbox (197.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce subst [-s -m -x --restore] regex-pattern regex-replace
-ment file1 file2 ...
+ment file1 file2 ...  
 
-Overfull \hbox (83.00006pt too wide)
+Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 (-s is the re.DOTALL modifier, -m is the re.MULTILINE modifier
-,
+,  
 
-Overfull \hbox (143.00006pt too wide)
-[] \T1/pcr/m/n/10 -x is the re.VERBOSE modifier, --restore copies backup files
-back again)
+Overfull \hbox (143.00006pt too wide) 
+[] \T1/pcr/m/n/10 -x is the re.VERBOSE modifier, --restore copies backup files 
+back again)  
 
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 # doconce replace using from and to phrases from file
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 # doconce replace using from and to phrases from file  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
 
-Overfull \hbox (71.00006pt too wide)
-[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls
+Overfull \hbox (71.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
+ 
 
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
-Overfull \hbox (11.00006pt too wide)
-[]\T1/pcr/m/n/10 # apply all edits specified through inline comments
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \
+Overfull \hbox (35.00006pt too wide) 
+[]    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
 
-Overfull \hbox (35.00006pt too wide)
-[]    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \
+Overfull \hbox (53.00006pt too wide) 
+[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
 
-Overfull \hbox (53.00006pt too wide)
-[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \
-
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 [15]
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
-Overfull \hbox (173.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the
-splitting points
+Overfull \hbox (173.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce split_rst complete_file        # !split specifies the 
+splitting points  
 
-Overfull \hbox (65.00006pt too wide)
-[]\T1/pcr/m/n/10 # split an html file into parts according to !split commands
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
 
-Overfull \hbox (95.00006pt too wide)
+Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
-ile
+ile  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
-light
+light  
 
-Overfull \hbox (11.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
-Overfull \hbox (125.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile
-> result
+Overfull \hbox (125.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
+> result  
 
-Overfull \hbox (125.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile
-> result
+Overfull \hbox (125.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
+> result  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
-Overfull \hbox (59.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \
+Overfull \hbox (59.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
 
-Overfull \hbox (107.00006pt too wide)
+Overfull \hbox (107.00006pt too wide) 
 []        \T1/pcr/m/n/10 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{q
-uote}
+uote}  
 
-Overfull \hbox (17.00006pt too wide)
-[]\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
 [16]
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
-Overfull \hbox (17.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_file  
 
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce latex_problems mydoc.log [overfull-hbox-limit]  
 
-Overfull \hbox (101.00006pt too wide)
+Overfull \hbox (101.00006pt too wide) 
+[]\T1/pcr/m/n/10 # list all figure files, movie files, and source code files ne
+eded  
+
+Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
- up)
+ up)  
 
-Overfull \hbox (47.00006pt too wide)
-[]\T1/pcr/m/n/10 # generate script for substituting generalized references
+Overfull \hbox (47.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
-Overfull \hbox (95.00006pt too wide)
+Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
-ng"
+ng"  
 
-Overfull \hbox (137.00006pt too wide)
+Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
-al fixing)
+al fixing)  
 
-Overfull \hbox (83.00006pt too wide)
+Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 # check if there are problems with translating latex to doconc
-e
+e  
 
-Overfull \hbox (179.00006pt too wide)
+Overfull \hbox (179.00006pt too wide) 
 []\T1/pcr/m/n/10 # typeset a doconce document with pygments (for pretty print o
-f doconce itself)
+f doconce itself)  
 
-Overfull \hbox (167.00006pt too wide)
-[]\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to
-various formats
+Overfull \hbox (167.00006pt too wide) 
+[]\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to 
+various formats  
 
-Overfull \hbox (83.00006pt too wide)
+Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
-]
+]  
 
-Overfull \hbox (131.00006pt too wide)
+Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
-use, ...)
+use, ...)  
 
-Overfull \hbox (119.00006pt too wide)
+Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
-l files
+l files  
 
-Overfull \hbox (17.00006pt too wide)
-[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static
-
-Overfull \hbox (29.00006pt too wide)
-[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes
+Overfull \hbox (17.00006pt too wide) 
+[]\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 [17]
-Overfull \hbox (41.00006pt too wide)
-[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import
+Overfull \hbox (29.00006pt too wide) 
+[]\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
 
-Overfull \hbox (5.00006pt too wide)
-[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 # fix common problems in bibtex files for publish import  
 
-Overfull \hbox (53.00006pt too wide)
-[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex
+Overfull \hbox (5.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
 
-Overfull \hbox (101.00006pt too wide)
+Overfull \hbox (53.00006pt too wide) 
+[]\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
+
+Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
-==
+==  
 
-Overfull \hbox (77.00006pt too wide)
+Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
+  
 
-
-Overfull \hbox (41.00006pt too wide)
-[]\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
 [18]
-Overfull \hbox (23.00006pt too wide)
-[]\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps
+Overfull \hbox (23.00006pt too wide) 
+[]\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
-Overfull \hbox (113.00006pt too wide)
+Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
- =====
+ ===== 
 
-Overfull \hbox (41.00006pt too wide)
-\T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====
+Overfull \hbox (41.00006pt too wide) 
+\T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
 
-Overfull \hbox (65.00006pt too wide)
-[]\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
 [19]
-Overfull \hbox (101.00006pt too wide)
+Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
-rize
+rize  
 
-Overfull \hbox (155.00006pt too wide)
+Overfull \hbox (155.00006pt too wide) 
 []\T1/pcr/m/n/10 and give some perspectives. The text inside the `!bremarks` an
-d `!eremarks`
+d `!eremarks`  
 
-Overfull \hbox (41.00006pt too wide)
-[]\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.
+Overfull \hbox (41.00006pt too wide) 
+[]\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
 
-Overfull \hbox (4.60825pt too wide)
+Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
-Overfull \hbox (47.10902pt too wide)
+Overfull \hbox (47.10902pt too wide) 
 []
 [20]
-Overfull \hbox (263.00006pt too wide)
+Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
-ticolumn{1}{c}{acceleration} \\
+ticolumn{1}{c}{acceleration} \\  
 
-Overfull \hbox (4.19656pt too wide)
-[][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize
+Overfull \hbox (4.19656pt too wide) 
+[][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
-Overfull \hbox (113.41505pt too wide)
-[]\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]"
+Overfull \hbox (113.41505pt too wide) 
+[]\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
 [21] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
@@ -108785,7 +109482,7 @@ running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to plain
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.txt
 + '[' 0 -ne 0 ']'
@@ -108795,7 +109492,7 @@ running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.gwiki
 + '[' 0 -ne 0 ']'
@@ -108805,7 +109502,7 @@ running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.mwiki
 + '[' 0 -ne 0 ']'
@@ -108815,7 +109512,7 @@ running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.cwiki
 + '[' 0 -ne 0 ']'
@@ -108825,7 +109522,7 @@ running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.st
 + '[' 0 -ne 0 ']'
@@ -108835,7 +109532,7 @@ running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
 copy complete file doconce_program.sh  (format: shpro)
 *** made link to new HTML file movie_player1.html
-    with code to display the movie
+    with code to display the movie 
     http://vimeo.com/55562330
 output in quickref.epytext
 + '[' 0 -ne 0 ']'

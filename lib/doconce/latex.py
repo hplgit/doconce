@@ -3523,6 +3523,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 """

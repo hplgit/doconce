@@ -187,8 +187,7 @@ cp slides1.tex slides1_handout.tex
 cp slides1.pdf slides1_handout.pdf
 
 # Ordinary beamer slides (not handout)
-system doconce format pdflatex slides1 --latex_title_layout=beamer
-system doconce ptex2tex slides1 envir=minted
+system doconce format pdflatex slides1 --latex_title_layout=beamer "--latex_code_style=default:lst[style=yellow2_fb]"
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow
 system pdflatex -shell-escape slides1
 
