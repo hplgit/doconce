@@ -62,6 +62,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -244,7 +259,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Demonstrating code execution; IPython notebook <a name="slide:ipynb"></a></h2>
+<h2 id="slide:ipynb">Demonstrating code execution; IPython notebook</h2>
 
 <p>
 Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_blank">DocOnce source</a> and transform to an <a href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" target="_blank">IPython notebook</a> with <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html" target="_blank">source</a>

@@ -28,25 +28,43 @@ code { color: inherit; background-color: transparent; }
 <!-- tocinfo
 {'highest level': 1,
  'sections': [(' Blocks of computer code in LaTeX ', 1, None, '___sec0'),
-              (' History ', 2, None, '___sec1'),
-              (' Quick overview of the functionality ', 2, None, '___sec2'),
+              (' History ', 2, 'latexcode:history', 'latexcode:history'),
+              (' Quick overview of the functionality ',
+               2,
+               'latexcode:overview',
+               'latexcode:overview'),
               (' The simplest choice: a single LaTeX environment for all blocks ',
                2,
-               None,
-               '___sec3'),
-              (' Using the `minted` (Pygments) tool ', 2, None, '___sec4'),
-              (' Using the `lstlisting` tool ', 2, None, '___sec5'),
-              (' Adding a colored background ', 2, None, '___sec6'),
-              (' Setting LaTeX environment parameters ', 2, None, '___sec7'),
+               'latexcode:uniform',
+               'latexcode:uniform'),
+              (' Using the `minted` (Pygments) tool ',
+               2,
+               'latexcode:pyg',
+               'latexcode:pyg'),
+              (' Using the `lstlisting` tool ',
+               2,
+               'latexcode:lst',
+               'latexcode:lst'),
+              (' Adding a colored background ',
+               2,
+               'latexcode:background',
+               'latexcode:background'),
+              (' Setting LaTeX environment parameters ',
+               2,
+               'latexcode:latex:prms',
+               'latexcode:latex:prms'),
               (' Specifying individual code environments ',
                2,
-               None,
-               '___sec8'),
-              (' Specifying the `lst` style ', 2, None, '___sec9'),
+               'latexcode:nonuniform',
+               'latexcode:nonuniform'),
+              (' Specifying the `lst` style ',
+               2,
+               'latexcode:lst:style',
+               'latexcode:lst:style'),
               (' General syntax for `--latex_code_style=` ',
                2,
-               None,
-               '___sec10')]}
+               'latexcode:syntax',
+               'latexcode:syntax')]}
 end of tocinfo -->
 
 <body>
@@ -68,16 +86,16 @@ end of tocinfo -->
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Blocks of computer code in LaTeX</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;History</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick overview of the functionality</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The simplest choice: a single LaTeX environment for all blocks</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>minted</code> (Pygments) tool</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>lstlisting</code> tool</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Adding a colored background</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Setting LaTeX environment parameters</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying the <code>lst</code> style</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;General syntax for <code>--latex_code_style=</code></a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:history" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;History</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:overview" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Quick overview of the functionality</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:uniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The simplest choice: a single LaTeX environment for all blocks</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:pyg" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>minted</code> (Pygments) tool</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:lst" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>lstlisting</code> tool</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:background" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Adding a colored background</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:latex:prms" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Setting LaTeX environment parameters</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:nonuniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:lst:style" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying the <code>lst</code> style</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:syntax" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;General syntax for <code>--latex_code_style=</code></a></li>
 
         </ul>
       </li>
@@ -111,11 +129,11 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Feb 9, 2015</h4></center> <!-- date -->
+<center><h4>Apr 7, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
-replaces the need for both the stand-alone program <code>ptex2tex</code> and
+(almost) replaces the need for both the stand-alone program <code>ptex2tex</code> and
 the simplified <code>doconce ptex2tex</code> utility. In fact, the
 new capabilities are more flexible than <code>ptex2tex</code> and results in
 much cleaner LaTeX code (especially for verbatim blocks with
@@ -129,7 +147,7 @@ background color).
 
 <h1 id="___sec0">Blocks of computer code in LaTeX </h1>
 
-<h2 id="___sec1">History </h2>
+<h2 id="latexcode:history">History</h2>
 
 <p>
 Originally, DocOnce relied on generating code for <code>ptex2tex</code> rather than
@@ -141,13 +159,23 @@ alternative, <code>doconce ptex2tex</code> was developed later such that DocOnce
 was not dependent on the comprehensive <code>ptex2tex</code> set up.
 
 <p>
-In 2015, a new implementation in DocOnce could replace <code>ptex2tex</code> and
-<code>doconce ptex2tex</code>, and in fact generate LaTeX code directly.
+In 2015, a new implementation in DocOnce replaced <code>ptex2tex</code> and
+<code>doconce ptex2tex</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="The ptex2tex program is not made redundant by the new implemention. In fact, for colored backgrounds (e.g., the Blue environment in the ptex2tex configuration file), the size of the box is in the new implementation clearly larger than what is required for the code. The corresponding Blue environment in ptex2tex applies some hacks to reduce and fine tune the size. One can reduce the size with the new tool too, but not to the same extent, and it requires that there are no !bbox environments in the document."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>, and can in fact generate LaTeX code directly.
 Rather than offering a range of packages for typesetting computer code,
-as the <code>ptex2tex</code> tool did, the implementation made use of only three
+as the <code>ptex2tex</code> tool does, the implementation made use of only three
 choices: <code>fancyvrb</code>, <code>minted</code>, or <code>listing</code>.
 
-<h2 id="___sec2">Quick overview of the functionality </h2>
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The <code>ptex2tex</code> program is not made redundant by the new
+implemention. In fact, for colored backgrounds (e.g., the <code>Blue</code>
+environment in the <code>ptex2tex</code> configuration file), the size of
+the box is in the new implementation clearly larger than what is
+required for the code. The corresponding <code>Blue</code> environment in <code>ptex2tex</code>
+applies some hacks to reduce and fine tune the size.
+One can reduce the size with the new tool too, but not to the same
+extent, and it requires that there are no <code>!bbox</code> environments in
+the document.</p>
+
+<h2 id="latexcode:overview">Quick overview of the functionality</h2>
 
 <p>
 When running <code>doconce format latex mydoc</code> or <code>doconce format pdflatex mydoc</code>,
@@ -185,7 +213,7 @@ various environments. This information can be specified for each
 DocOnce code environment (<code>pycod</code>, <code>sys</code>, etc.) independently, including a
 common default choice for the code environments that are not specified.
 
-<h2 id="___sec3">The simplest choice: a single LaTeX environment for all blocks </h2>
+<h2 id="latexcode:uniform">The simplest choice: a single LaTeX environment for all blocks</h2>
 
 <p>
 The following command speficies the <code>Verbatim</code> (<code>vrb</code>)
@@ -225,7 +253,7 @@ else on the command line: <code>--latex_code_leftmargin=7</code> (e.g.). The num
 is measured in mm. (Using square brackets, as shown below, it can also
 be set individually for different code environments.)
 
-<h2 id="___sec4">Using the <code>minted</code> (Pygments) tool </h2>
+<h2 id="latexcode:pyg">Using the <code>minted</code> (Pygments) tool</h2>
 
 <p>
 Replacing <code>vrb</code> by <code>pyg</code> switches the LaTeX environments to <code>minted</code>:
@@ -270,13 +298,13 @@ specified by the <code>--minted_latex_style=</code> option, e.g.,
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style=perldoc
 </pre></div>
 <p>
 The <code>perldoc</code> choice <a href="doc_pyg_perldoc.pdf" target="_self">changes the colors</a> from
-the default (Pygments <code>default</code>) <a href="doc_pyg.pdf" target="_self">choice</a> generated above.
+the default (Pygments <code>default</code>) <a href="doc_pyg.pdf" target="_self">choice</a> generated previously.
 
-<h2 id="___sec5">Using the <code>lstlisting</code> tool </h2>
+<h2 id="latexcode:lst">Using the <code>lstlisting</code> tool</h2>
 
 <p>
 The third package for typesetting of verbatim blocks of code is
@@ -303,7 +331,7 @@ The resulting LaTeX code is:
 However, all possible <code>lstlisting</code> options can be set, as will
 be shown later.
 
-<h2 id="___sec6">Adding a colored background </h2>
+<h2 id="latexcode:background">Adding a colored background</h2>
 
 <p>
 In the previous example, we can add one of the predefined backgrounds
@@ -360,7 +388,7 @@ or just replace the exact text:
           &#39;cbg_yellow1}{rgb}{.95, .95, 0.8}&#39; mydoc.tex
 </pre></div>
 
-<h2 id="___sec7">Setting LaTeX environment parameters </h2>
+<h2 id="latexcode:latex:prms">Setting LaTeX environment parameters</h2>
 
 <p>
 It is easy to specify parameters to the <code>lstlisting</code> or the two
@@ -369,13 +397,14 @@ other LaTeX environments:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]&quot;
 </pre></div>
 <p>
-These parameters specifies <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a>. <em>Note that any backslash in LaTeX command must be a
+These parameters specifies <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
+<em>Note that any backslash in LaTeX command must be a
 double backslash</em> on the command line!
 
-<h2 id="___sec8">Specifying individual code environments </h2>
+<h2 id="latexcode:nonuniform">Specifying individual code environments</h2>
 
 <p>
 The colored background might be appropriate for computer code in the
@@ -413,7 +442,7 @@ above and below and a title <code>Terminal</code> inside a box:
 <p>
 <a href="doc_lst_sys.pdf" target="_self">Here is the result</a>.
 
-<h2 id="___sec9">Specifying the <code>lst</code> style </h2>
+<h2 id="latexcode:lst:style">Specifying the <code>lst</code> style</h2>
 
 <p>
 DocOnce comes with some predefined styles for the <code>lstlisting</code> LaTeX
@@ -452,7 +481,7 @@ background, coloring of code, and a frame around all code blocks:
 <p>
 You may check out the <a href="doc_lst_stylefb.pdf" target="_self">corresponding result</a>.
 
-<h2 id="___sec10">General syntax for <code>--latex_code_style=</code> </h2>
+<h2 id="latexcode:syntax">General syntax for <code>--latex_code_style=</code></h2>
 
 <p>
 The <code>--latex_code_style=</code> option can take a set of code environment

@@ -177,7 +177,34 @@ MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
 !eblock
 
 !split
+===== How to use the solver function =====
 
+## Demonstrate how to use the |\pause| command to pop up
+## parts of the code in beamer (ignored in all other formats)
+## (minted or lstlisting package must be used with beamer)
+
+!bblock A complete main program
+!bc pypro
+# Set problem parameters
+I = 1.2
+a = 0.2
+T = 8
+dt = 0.25
+theta = 0.5
+|\pause|
+
+from solver import solver, exact_solution
+u, t = solver(I, a, T, dt, theta)
+|\pause|
+
+import matplotlib.pyplot as plt
+plt.plot(t, u, t, exact_solution)
+plt.legend(['numerical', 'exact'])
+plt.show()
+!ec
+!eblock
+
+!split
 ======= Results =======
 
 FIGURE: [fig/results, width=600 frac=0.8]

@@ -21,7 +21,7 @@ doconce format pdflatex doc --latex_code_style=lst-yellow2
 pdflatex doc
 cp doc.pdf doc_lst_yellow2.pdf
 
-doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt]"
+doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]"
 pdflatex doc
 cp doc.pdf doc_lst_yellow2_linenos.pdf
 

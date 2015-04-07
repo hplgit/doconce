@@ -198,35 +198,36 @@ def latex_code_lstlisting():
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
+  escapeinside={||},
 }
 
 % Various styles for lstlisting
 \lstdefinestyle{simple}{
-  inputencoding=utf8x,
-  extendedchars=\true,
-  aboveskip=\smallskipamount,
-  belowskip=\smallskipamount,
-  breaklines=false,
-  breakatwhitespace=true,
-  breakindent=30,
-  showstringspaces=false,
-  columns=fullflexible,  % tighter character kerning, like verb
+inputencoding=utf8x,
+extendedchars=\true,
+aboveskip=\smallskipamount,
+belowskip=\smallskipamount,
+breaklines=false,
+breakatwhitespace=true,
+breakindent=30,
+showstringspaces=false,
+columns=fullflexible,  % tighter character kerning, like verb
 }
 
 \lstdefinestyle{redblue}{
-  inputencoding=utf8x,
-  extendedchars=\true,
-  aboveskip=\smallskipamount,
-  belowskip=\smallskipamount,
-  breaklines=false,
-  breakatwhitespace=true,
-  breakindent=30,
-  showstringspaces=false,
-  keywordstyle=\color{blue}\bfseries,
-  commentstyle=\color{myteal},
-  stringstyle=\color{darkgreen},
-  identifierstyle=\color{darkorange},
-  columns=fullflexible,  % tighter character kerning, like verb
+inputencoding=utf8x,
+extendedchars=\true,
+aboveskip=\smallskipamount,
+belowskip=\smallskipamount,
+breaklines=false,
+breakatwhitespace=true,
+breakindent=30,
+showstringspaces=false,
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkorange},
+columns=fullflexible,  % tighter character kerning, like verb
 }
 
 % Use this one without additional background color
@@ -274,7 +275,7 @@ stringstyle=\color{string_red},
 identifierstyle=\color{darkorange},
 columns=fullflexible,  % tighter character kerning, like verb
 }
-
+% end of custom lstdefinestyles
 """
     filename = option('latex_code_lststyles=', None)
     if filename is not None:
@@ -719,6 +720,15 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
+
+    # Support for |\pause| in slides to allow for parts of code blocks
+    # to pop up
+    if r'|\pause|' in filestr:
+        if format in ('latex', 'pdflatex'):
+            if '\\begin{minted}' in filestr:
+                filestr = re.sub(r'^\\begin\{minted\}\[',
+                                 r'\\begin{minted}[escapeinside=||,',
+                                 filestr, flags=re.MULTILINE)
 
     # Translate to .tex or .p.tex format
 
@@ -2640,10 +2650,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
     # fancybox must be loaded prior to fancyvrb and minted
     # (which appears instead of or in addition to ptex2tex)
+    # fancybox is just used for Sbox in latex_box (!bbox)
     if '!bbox' in filestr:
         INTRO['latex'] += r"""
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
-%\setlength{\fboxsep}{8pt}
+%\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 """
     xelatex = option('xelatex')
 
@@ -2748,28 +2759,60 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
-
+"""
+            # Is a cod/pro background requested?
+            # See also tcolorbox as an alternative for background
+            # colors: http://tex.stackexchange.com/questions/173850/problem-in-adding-a-background-color-in-a-minted-environment
+            pattern = '-(yellow|red|blue|gray)'
+            if re.search(pattern, latex_code_style):
+                INTRO['latex'] += r"""
 % Background for code blocks (parameter is color name)
-%\setlength{\fboxsep}{-1.5mm}  % makes cod/pro background box smaller
-\newenvironment{cod}[1]{%
-   \def\FrameCommand{\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
- {\unskip\medskip\endMakeFramed}
+"""
+                if not '!bbox' in filestr:
+                    if 'numbers' in str(latex_code_style) or \
+                       'linenos' in str(latex_code_style):
+                        fboxsep = '2mm'
+                    else:
+                        fboxsep = '-1.5mm'
+                    # No use of !bbox and hence no use of fboxsep
+                    # for those boxes, and we can redefine fboxsep here
+                    INTRO['latex'] += r"""\setlength{\fboxsep}{%s}  %% adjust cod/pro background box
+\newenvironment{cod}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
 
-% Alternative (\vskip with positive skip adds colored space)
-%\newenvironment{cod}[1]{%
-%   \def\FrameCommand{\colorbox{#1}}%
-%   \MakeFramed{\FrameRestore}\vskip 0mm}%
-% {\vskip 0mm\endMakeFramed}
+%% Background for complete program blocks (parameter 1 is color name
+%% for background, parameter 2 is color for left bar)
+\newenvironment{pro}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+""" % fboxsep
+                else:
+                    INTRO['latex'] += r"""%\setlength{\fboxsep}{-1.5mm}  % do not change since !bbox needs it positive!
+\newenvironment{cod}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}
+ {\unskip\medskip\endMakeFramed}
 
 % Background for complete program blocks (parameter 1 is color name
 % for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{%
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}%
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}%
+\newenvironment{pro}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \MakeFramed{\advance\hsize-\width \FrameRestore}}
  {\unskip\medskip\endMakeFramed}
-
 """
+                # \unskip removes the skip, \medskip adds some, such that
+                # the skip below is smaller than the one above
+                # Use .ptex2tex.cfg to get the background box very tight
+#                INTRO['latex'] += r"""
+#% Alternative (\vskip with positive skip adds colored space)
+#%\newenvironment{cod}[1]{%
+#%   \def\FrameCommand{\colorbox{#1}}%
+#%   \MakeFramed{\FrameRestore}\vskip 0mm}%
+#% {\vskip 0mm\endMakeFramed}
+#"""
             if 'lst' in latex_code_style:
                 INTRO['latex'] += r'\usepackage{listingsutf8}' + '\n'
                 INTRO['latex'] += latex_code_lstlisting()

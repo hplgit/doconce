@@ -3,7 +3,7 @@
 <!-- TITLE: Scientific Writing and Publishing for the Future: How Can We Handle the eLearning Revolution? -->
 % Scientific Writing and Publishing for the Future
 % **Hans Petter Langtangen**
-% Nov 23, 2014
+% Apr 7, 2015
 
 <!-- <img src="fig/doconce1b.png" width=400> -->
 ![](fig/doconce1b.png)
@@ -731,7 +731,7 @@ start and end regular expressions:
 
 <!-- !split -->
 ### Demonstrating code execution; Online Python Tutor
-<a name="slide:opt"/>
+<div id="slide:opt"></div>
 
 With `!bc pyoptpro` or a file `*.pyopt`, the code applies the
 [Online Python Tutor](http://pythontutor.com) for displaying
@@ -757,7 +757,7 @@ print u
 
 <!-- !split -->
 ### Demonstrating code execution; Sage Cell Server
-<a name="slide:sage:cell"/>
+<div id="slide:sage:cell"></div>
 
 With `!bc pyscpro` or a file `*.pysc`, the code is typeset in
 a sage cell:
@@ -785,7 +785,7 @@ Works only in Sphinx documents (but HTML support is possible).
 
 <!-- !split -->
 ### Demonstrating code execution; IPython notebook
-<a name="slide:ipynb"/>
+<div id="slide:ipynb"></div>
 
 Can take a [DocOnce source](http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html) and transform to an [IPython notebook](http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb) with [source](http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html)
 
@@ -1030,7 +1030,7 @@ Very effective way to generate slides from running text:
  * Focus on key equations, figures, movies, key code snippets
  * Insert `!split` wherever you want a new slide to begin
  * Insert `!bpop` and `!epop` around elements to pop up
-   in sequence
+   in sequence (or insert `|\pause|` inside code blocks)
  * Use 7 `=` or 5 `=` in headings (H2 or H3)
  * Supported slide types: Beamer, HTML,
    HTML5 (reveal.js, deck.js, csss, dzslides)
@@ -1236,24 +1236,11 @@ and paste the code into the text area.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-doconce format pdflatex doconcefile
-
-# Result: doconcefile.p.tex (ptex2tex file)
-# Run either
-ptex2tex doconcefile
-# or
-doconce ptex2tex doconcefile -DHELVETICA envir=minted
+doconce format pdflatex doconcefile --latex_code_style=lst
 
 pdflatex doconcefile
 bibtex doconcefile
 pdflatex doconcefile
-
-# More control of how code is typeset
-doconce format pdflatex doconcefile --minted_latex_style=trac
-doconce ptex2tex doconcefile envir=minted
-
-doconce format pdflatex doconcefile
-doconce ptex2tex doconcefile envir=ans:nt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- !split -->
@@ -1310,14 +1297,13 @@ doconce format plain  doconcefile  # plain, untagged text for email
 <!-- !split -->
 ### Installation
 
- * Ubuntu: `sudo apt-get install python-doconce` (old!)
  * Source at [GitHub](https://github.com/hplgit/doconce) (recommended!)
-   * `hg clone` + `sudo python setyp.py install`
+   * `git clone` + `sudo python setyp.py install`
 
  * Many [dependencies...](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies)
    * Must have `preprocess` and `mako`
    * Need `latex`, `sphinx`, `pandoc`, etc. (see the [Installation](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#installation-of-doconce-and-its-dependencies) description)
-   * Easy for slides: only `preprocess` is needed :-)
+   * Easy for slides: only `preprocess` and `mako` are needed :-)
 
 
 <!-- !split -->

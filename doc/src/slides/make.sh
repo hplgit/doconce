@@ -189,8 +189,8 @@ cp demo.html demo_remark_dark.html
 # LaTeX Beamer slides
 themes="blue_plain blue_shadow red_plain red_shadow dark_gradient vintage cbc simula"
 for theme in $themes; do
-system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
-system doconce ptex2tex demo envir=minted
+system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_code_style=pyg
+#system doconce ptex2tex demo envir=minted
 system doconce slides_beamer demo --beamer_slide_theme=$theme
 cp demo.tex demo_${theme}.tex
 system pdflatex -shell-escape demo_${theme}
@@ -199,8 +199,8 @@ done
 
 # Simple boxes around admons and blocks
 theme=red_plain
-system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer
-system doconce ptex2tex demo envir=minted
+system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer "--latex_code_style=default:lst[style=yellow2_fb]"
+#system doconce ptex2tex demo envir=minted
 system doconce slides_beamer demo --beamer_slide_theme=$theme --beamer_block_style=mdbox
 # Change the title background in mdframed boxes
 doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!20,' demo.tex
@@ -210,8 +210,8 @@ system pdflatex -shell-escape demo_${theme}_mdbox
 
 # Beamer handouts
 theme=red_plain
-system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period
-system doconce ptex2tex demo envir=minted
+system doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="$theme" --latex_title_layout=beamer --latex_admon_title_no_period --latex_code_style=pyg
+#system doconce ptex2tex demo envir=minted
 system doconce slides_beamer demo --beamer_slide_theme=$theme --handout  # note --handout!
 system pdflatex -shell-escape demo
 system pdflatex -shell-escape demo
@@ -221,8 +221,10 @@ cp demo.pdf demo_${theme}_handouts2x3.pdf
 
 # Ordinary plain LaTeX document (no slides)
 rm -f demo.aux  # important after beamer
-system system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino
-system system doconce ptex2tex demo envir=minted
+system system doconce format pdflatex demo SLIDE_TYPE="latex document" SLIDE_THEME="no theme" --latex_font=palatino --latex_code_style=pyg
+#system system doconce ptex2tex demo envir=minted
+# Must remove |\pause|! for ordinary latex document
+doconce subst '\|\\pause\|\n' '' demo.tex
 system pdflatex -shell-escape demo
 system pdflatex -shell-escape demo
 
@@ -233,5 +235,5 @@ pygmentize -l json -o demo.ipynb.html demo.ipynb
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb demo.ipynb.html $dest/demo/
 
 # index.html toc file
-system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window $rawgit
+system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window $rawgit --html_code_style=inherit
 cp index.html $dest/demo/index.html

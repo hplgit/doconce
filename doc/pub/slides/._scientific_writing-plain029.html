@@ -62,6 +62,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -244,7 +259,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>Section headings  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Section headings </h2>
 
 <p>
 Headings are surrounded by <code>=</code> signs:
@@ -264,13 +279,13 @@ __This is a paragraph heading.__
 <p>
 Result:
 
-<h1>This is an H1/chapter heading  <a name="___sec29"></a></h1>
+<h1 id="___sec29">This is an H1/chapter heading </h1>
 
-<h2>This is an H2/section heading  <a name="___sec30"></a></h2>
+<h2 id="___sec30">This is an H2/section heading </h2>
 
-<h2>This is an H3/subsection heading  <a name="___sec31"></a></h2>
+<h2 id="___sec31">This is an H3/subsection heading </h2>
 
-<h3>This is an H4/paragraph heading  <a name="___sec32"></a></h3>
+<h3 id="___sec32">This is an H4/paragraph heading </h3>
 
 <p>
 <b>This is a paragraph heading.</b>

@@ -2928,7 +2928,7 @@ This is a bug or wrong quiz syntax.
 The raw code of this quiz at this stage of processing reads
 
 %s
-""" % (data[-1]['question'], data[-1]['choices'], i, quiz)
+""" % (data[-1]['question'], data[-1]['choices'], quiz)
                 _abort()
 
     return data, quizzes, filestr

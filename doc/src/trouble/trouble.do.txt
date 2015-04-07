@@ -756,6 +756,17 @@ or projects. This is a kind of bug in DocOnce that is challenging to fix.
 It is usually only a problem when writing documents mainly containing
 exercises, problems, or projects.
 
+===== I get compilation error due to `|\pause|` commands =====
+
+The `|\pause|` commands are intended for popping up code segments
+in slides. If you compile the document without having run `doconce slides_beamer` first, standard LaTeX have a problem with `|\pause|`. The remedy is
+to just remove these commands by
+
+!bc sys
+Terminal> doconce subst '\|\\pause\|\n' '' mydoc.tex
+!ec
+before running `pdflatex mydoc`.
+
 ===== Can I have LaTeX figures with shadows? =====
 
 This is easy by including the `fancybox` and `graphicx` packages

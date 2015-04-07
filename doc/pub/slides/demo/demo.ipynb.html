@@ -10,7 +10,7 @@
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;# On Schemes for Exponential Decay\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;**Nov 23, 2014**\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**Apr 7, 2015**\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;p&gt;&lt;/p&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;&lt;img src=\&quot;https://raw.githubusercontent.com/hplgit/doconce/master/doc/pub/slides/demo/fig/CN_logo.png\&quot; width=300&gt;\n&quot;</span><span class="p">,</span>
@@ -52,7 +52,7 @@
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;ode\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;ode\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation}\n&quot;</span><span class="p">,</span>
@@ -67,7 +67,7 @@
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
      <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
       <span class="s2">&quot;&lt;!-- Equation labels as ordinary links --&gt;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;&lt;a name=\&quot;initial:value\&quot;/&gt;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;&lt;div id=\&quot;initial:value\&quot;&gt;&lt;/div&gt;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;$$\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\\begin{equation} \n&quot;</span><span class="p">,</span>
@@ -89,7 +89,7 @@
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot; * $u(t)$ is the unknown function\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
-      <span class="s2">&quot; * The ODE [(1)](#initial:value) has the initial condition [(2)](#initial:value)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot; * The ODE [(1)](#ode) has the initial condition [(2)](#initial:value)\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
@@ -176,6 +176,42 @@
       <span class="s2">&quot;    for n in range(0, N):    # n=0,1,...,N-1\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]\n&quot;</span><span class="p">,</span>
       <span class="s2">&quot;    return u, t\n&quot;</span>
+     <span class="p">],</span>
+     <span class="nt">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[],</span>
+     <span class="nt">&quot;prompt_number&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>
+     <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;### How to use the solver function\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;**A complete main program.**&quot;</span>
+     <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+     <span class="nt">&quot;cell_type&quot;</span><span class="p">:</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span>
+     <span class="nt">&quot;collapsed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+     <span class="nt">&quot;input&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;%matplotlib inline\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;# Set problem parameters\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;I = 1.2\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;a = 0.2\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;T = 8\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;dt = 0.25\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;theta = 0.5\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;from solver import solver, exact_solution\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;u, t = solver(I, a, T, dt, theta)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;import matplotlib.pyplot as plt\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;plt.plot(t, u, t, exact_solution)\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;plt.legend([&#39;numerical&#39;, &#39;exact&#39;])\n&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;plt.show()\n&quot;</span>
      <span class="p">],</span>
      <span class="nt">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
      <span class="nt">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{},</span>

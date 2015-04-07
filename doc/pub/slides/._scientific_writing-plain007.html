@@ -62,6 +62,21 @@ div { text-align: justify; text-justify: inter-word; }
 </style>
 
 
+<script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+<script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
+<link rel="stylesheet" type="text/css" href="https://sagecell.sagemath.org/static/sagecell_embed.css">
+<script>
+$(function () {
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Evaluate'});
+});
+</script>
+
 </head>
 
 <!-- tocinfo
@@ -244,7 +259,7 @@ MathJax.Hub.Config({
 <p>
 <!-- !split -->
 
-<h2>My headache: How to write scientific material that can be easily published through old and new media?  <a name="___sec6"></a></h2>
+<h2 id="___sec6">My headache: How to write scientific material that can be easily published through old and new media? </h2>
 
 <p>
 <center><p><img src="fig/headache4.jpg" align="bottom" width=300></p></center>

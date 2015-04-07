@@ -177,7 +177,34 @@ schemes.
 <span style="color: #8B008B; font-weight: bold">!eblock</span>
 
 <span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== How to use the solver function =====</span>
 
+<span style="color: #228B22">## Demonstrate how to use the |\pause| command to pop up</span>
+<span style="color: #228B22">## parts of the code in beamer (ignored in all other formats)</span>
+<span style="color: #228B22">## (minted or lstlisting package must be used with beamer)</span>
+
+<span style="color: #8B008B; font-weight: bold">!bblock</span> A complete main program
+<span style="color: #8B008B; font-weight: bold">!bc</span> pypro
+<span style="color: #228B22"># Set problem parameters</span>
+I = 1.2
+a = 0.2
+T = 8
+dt = 0.25
+theta = 0.5
+<span style="color: #CD5555">|\pause|</span>
+
+from solver import solver, exact_solution
+u, t = solver(I, a, T, dt, theta)
+<span style="color: #CD5555">|\pause|</span>
+
+import matplotlib.pyplot as plt
+plt.plot(t, u, t, exact_solution)
+plt.legend([&#39;numerical&#39;, &#39;exact&#39;])
+plt.show()
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!eblock</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
 <span style="color: #000080; font-weight: bold">======= Results =======</span>
 
 <span style="color: #658b00">FIGURE: [fig/results, width=600 frac=0.8]</span>
