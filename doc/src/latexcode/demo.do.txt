@@ -310,6 +310,9 @@ for `pypro` enviroments (indicating complete programs) as
 `ptex2tex` offers through the `BlueBar` environment. Instead, there is a
 "darker-colored frame":
 "doc_lst_styleprimer.pdf" around `pypro` code specifications.
+The vertical bar is enabled by a `pypro:vrb-blue1` specification, but then
+with a colored background that is significantly larger than the computer code
+block.
 
 ===== General syntax for `--latex_code_style=` =====
 label{latexcode:syntax}
