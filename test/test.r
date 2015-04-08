@@ -2237,6 +2237,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -4487,6 +4488,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -6862,6 +6864,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -8861,7 +8864,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
-\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
 
 % New ansi colors
@@ -8912,83 +8915,41 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
-  escapeinside={||},
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Various styles for lstlisting
-\lstdefinestyle{simple}{
-inputencoding=utf8x,
-extendedchars=\true,
-aboveskip=\smallskipamount,
-belowskip=\smallskipamount,
-breaklines=false,
-breakatwhitespace=true,
-breakindent=30,
-showstringspaces=false,
-columns=fullflexible,  % tighter character kerning, like verb
-}
+% Styles for lstlisting
 
 \lstdefinestyle{redblue}{
-inputencoding=utf8x,
-extendedchars=\true,
-aboveskip=\smallskipamount,
-belowskip=\smallskipamount,
-breaklines=false,
-breakatwhitespace=true,
-breakindent=30,
-showstringspaces=false,
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
 identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
 }
 
-% Use this one without additional background color
-\lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
-tabsize=4,                           % tab means 4 spaces
-basicstyle=\ttfamily\footnotesize,   % fonts used for the code
-breaklines=true,                     % break lines
-breakatwhitespace=true,              % let linebreaks happen at whitespace
-showspaces=false,                    % true: show spaces with a particular underscore
-aboveskip=1ex,
-frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
-%framerule=0.4pt                     % thickness of frame
-rulecolor=\color{black},             % frame color
-backgroundcolor=\color{yellow!10},
-xleftmargin=5pt,
-xrightmargin=5pt,
-%numbers=left,                       % put line numbers on the left
-%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
-keywordstyle=\color{blue}\bfseries,
-commentstyle=\color{comment_green}\slshape,
-stringstyle=\color{string_red},
-identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
+\lstdefinestyle{simple}{
+commentstyle={},
 }
 
-\lstdefinestyle{gray}{
-tab=,
-tabsize=2,                           % tab means 2 spaces
-basicstyle=\ttfamily\footnotesize,   % fonts used for the code
-breaklines=true,                     % break lines
-breakatwhitespace=true,              % let linebreaks happen at whitespace
-showspaces=false,                    % true: show spaces with a particular underscore
-aboveskip=1ex,
-frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
-%framerule=0.4pt                     % thickness of frame
-rulecolor=\color{black!40},          % frame color
-backgroundcolor=\color{gray},
-xleftmargin=5pt,
-xrightmargin=5pt,
-%numbers=left,                       % put line numbers on the left
-%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
-keywordstyle=\color{keyword_pink}\bfseries,
-commentstyle=\color{comment_green}\slshape,
-stringstyle=\color{string_red},
-identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
-}
 % end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
@@ -9232,6 +9193,7 @@ columns=fullflexible,  % tighter character kerning, like verb
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -29964,6 +29926,7 @@ open=right               % start new chapters on odd-numbered pages
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -30573,6 +30536,7 @@ Inline math, a=b, is the only math in this document.
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -30712,6 +30676,7 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -38466,6 +38431,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -42267,6 +42233,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -46966,6 +46933,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -47567,6 +47535,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -48172,6 +48141,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -48820,6 +48790,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -49361,6 +49332,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -49994,6 +49966,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -50502,6 +50475,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -51124,6 +51098,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -51772,6 +51747,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -61412,6 +61388,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -61675,7 +61652,7 @@ title (Warning) since no title is specified.
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
-\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
 
 % New ansi colors
@@ -61712,83 +61689,45 @@ title (Warning) since no title is specified.
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
-  escapeinside={||},
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Various styles for lstlisting
-\lstdefinestyle{simple}{
-inputencoding=utf8x,
-extendedchars=\true,
-aboveskip=\smallskipamount,
-belowskip=\smallskipamount,
-breaklines=false,
-breakatwhitespace=true,
-breakindent=30,
-showstringspaces=false,
-columns=fullflexible,  % tighter character kerning, like verb
-}
-
-\lstdefinestyle{redblue}{
-inputencoding=utf8x,
-extendedchars=\true,
-aboveskip=\smallskipamount,
-belowskip=\smallskipamount,
-breaklines=false,
-breakatwhitespace=true,
-breakindent=30,
-showstringspaces=false,
-keywordstyle=\color{blue}\bfseries,
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
-identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
-}
+% Styles for lstlisting
 
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
-tabsize=4,                           % tab means 4 spaces
-basicstyle=\ttfamily\footnotesize,   % fonts used for the code
-breaklines=true,                     % break lines
-breakatwhitespace=true,              % let linebreaks happen at whitespace
-showspaces=false,                    % true: show spaces with a particular underscore
-aboveskip=1ex,
-frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
-%framerule=0.4pt                     % thickness of frame
+frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
 rulecolor=\color{black},             % frame color
 backgroundcolor=\color{yellow!10},
-xleftmargin=5pt,
-xrightmargin=5pt,
-%numbers=left,                       % put line numbers on the left
-%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},
 identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
 }
 
-\lstdefinestyle{gray}{
-tab=,
-tabsize=2,                           % tab means 2 spaces
-basicstyle=\ttfamily\footnotesize,   % fonts used for the code
-breaklines=true,                     % break lines
-breakatwhitespace=true,              % let linebreaks happen at whitespace
-showspaces=false,                    % true: show spaces with a particular underscore
-aboveskip=1ex,
-frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
-%framerule=0.4pt                     % thickness of frame
-rulecolor=\color{black!40},          % frame color
-backgroundcolor=\color{gray},
-xleftmargin=5pt,
-xrightmargin=5pt,
-%numbers=left,                       % put line numbers on the left
-%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
-keywordstyle=\color{keyword_pink}\bfseries,
-commentstyle=\color{comment_green}\slshape,
-stringstyle=\color{string_red},
-identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
+\lstdefinestyle{simple}{
+commentstyle={},
 }
+
 % end of custom lstdefinestyles
 
 \usepackage{amsmath,amssymb,bm}
@@ -61860,6 +61799,7 @@ columns=fullflexible,  % tighter character kerning, like verb
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -62180,6 +62120,7 @@ title (Warning) since no title is specified.
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -64551,6 +64492,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -65364,6 +65306,7 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -67168,6 +67111,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -67476,6 +67420,7 @@ qualitatively correct results.
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -69416,6 +69361,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_bfmath}
@@ -69824,6 +69770,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -70230,6 +70177,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -72491,7 +72439,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f0d0ca58398>
+verbatim is to be replaced using <function html_verbatim at 0x7f5915def398>
 
 
 First occurence: " `mako`."
@@ -73700,6 +73648,7 @@ BIBFILE: papers.pub
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 \input{newcommands_keep}
@@ -74650,6 +74599,7 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 
 \input{newcommands_keep}
 
@@ -76460,7 +76410,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Apr  7 13:14:31 2015.
+# sphinx-quickstart on Wed Apr  8 11:22:08 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80343,7 +80293,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
-\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
 
 % New ansi colors
@@ -80602,6 +80552,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \begin{document}
 
+% endif for #ifdef PREAMBLE
 % #endif
 
 
@@ -93879,7 +93830,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -93899,7 +93850,7 @@ t line 1276.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -93920,7 +93871,7 @@ t line 1285.
 
 
 
-t line 1289.
+t line 1290.
 
 
 
@@ -94742,7 +94693,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -94762,7 +94713,7 @@ t line 1276.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -94783,7 +94734,7 @@ t line 1285.
 
 
 
-t line 1289.
+t line 1290.
 
 
 
@@ -95509,7 +95460,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1276.
+t line 1277.
 
 
 
@@ -95529,7 +95480,7 @@ t line 1276.
 
 
 
-t line 1285.
+t line 1286.
 
 
 
@@ -95550,7 +95501,7 @@ t line 1285.
 
 
 
-t line 1289.
+t line 1290.
 
 
 
@@ -96960,7 +96911,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1227.
+t line 1228.
 
 
 
@@ -96980,7 +96931,7 @@ t line 1227.
 
 
 
-t line 1236.
+t line 1237.
 
 
 
@@ -97000,7 +96951,7 @@ t line 1236.
 
 
 
-t line 1240.
+t line 1241.
 
 
 
@@ -99027,11 +98978,67 @@ onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
 (./slides1.vrb 
  [15] (./slides1.vrb) [16] (./slides1.vrb) [17] (./slides1.vrb) [18]
 (./slides1.vrb) [19] (./slides1.vrb) [20] (./slides1.vrb) [21] (./slides1.aux) 
-) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl/
-.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst0900.600pk> </home/hpl/.texmf-var/fo
+) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk>
+kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecst1000
+mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecst1000
+This is METAFONT, Version 2.7182818 (TeX Live 2014/Debian) (preloaded base=mf)
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecst1000.mf
+
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecst.mf
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
+ Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
+ Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
+ Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
+[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
+[216] [217] [218] [219] [220] [221] [222] [223])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
+ Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
+[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
+[248] [249] [250] [251] [252] [253] [254] [255])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
+ Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
+[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
+[152] [153] [154] [155] [156] [157])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
+ Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
+[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
+[183] [184] [185] [186] [187] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
+ Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
+[95] [127] [32])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
+ Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
+[59] [61] [96] [189] [17] [45] [16] [21] [22])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
+ Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
+ Ok [24] [34] [35] [36] [37] [64] [191] [159])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
+ Ok [25] [26] [28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
+ Ok [38] [63] [190])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
+ Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
+[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
+ Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
+ Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exmligtb.mf
+ Ok) ) ) )
+Font metrics written on ecst1000.tfm.
+Output written on ecst1000.600gf (256 characters, ).
+Transcript written on ecst1000.log.
+mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1000.600pk: successfully generated.
+ </home/hpl/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1000.600pk> </home/hpl/.texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
 /jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600p
+ectt1000.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600p
 k> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hpl
 /.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/f
 onts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
@@ -103202,7 +103209,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 167 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103212,7 +103219,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 194 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103821,7 +103828,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 167 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103831,7 +103838,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 194 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104433,7 +104440,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 166 has zero height.
+* Media annotation on line 167 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104443,7 +104450,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 193 has zero height.
+* Media annotation on line 194 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or

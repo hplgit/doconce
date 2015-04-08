@@ -192,89 +192,140 @@ def interpret_latex_code_style():
     return d
 
 
-def latex_code_lstlisting():
+def latex_code_lstlisting(latex_code_style):
     s = ''  # Resulting latex code
     s += r"""
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
-  escapeinside={||},
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Various styles for lstlisting
+% Styles for lstlisting
+"""
+    styles = dict(
+       simple=r"""
 \lstdefinestyle{simple}{
-inputencoding=utf8x,
-extendedchars=\true,
-aboveskip=\smallskipamount,
-belowskip=\smallskipamount,
-breaklines=false,
-breakatwhitespace=true,
-breakindent=30,
-showstringspaces=false,
-columns=fullflexible,  % tighter character kerning, like verb
+commentstyle={},
 }
-
+""",
+       redblue=r"""
 \lstdefinestyle{redblue}{
-inputencoding=utf8x,
-extendedchars=\true,
-aboveskip=\smallskipamount,
-belowskip=\smallskipamount,
-breaklines=false,
-breakatwhitespace=true,
-breakindent=30,
-showstringspaces=false,
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
 identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
 }
-
+""",
+       yellow2_fb=r"""
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
-tabsize=4,                           % tab means 4 spaces
-basicstyle=\ttfamily\footnotesize,   % fonts used for the code
-breaklines=true,                     % break lines
-breakatwhitespace=true,              % let linebreaks happen at whitespace
-showspaces=false,                    % true: show spaces with a particular underscore
-aboveskip=1ex,
-frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
-%framerule=0.4pt                     % thickness of frame
+frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
 rulecolor=\color{black},             % frame color
 backgroundcolor=\color{yellow!10},
-xleftmargin=5pt,
-xrightmargin=5pt,
-%numbers=left,                       % put line numbers on the left
-%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},
 identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
 }
-
+""",
+       blue1=r"""
+% Use this one without additional background color
+\lstdefinestyle{blue1}{              % blue1 background for code snippets
+backgroundcolor=\color{cbg_blue1},
+%keywordstyle=\color{blue}\bfseries,
+%commentstyle=\color{comment_green}\slshape,
+%stringstyle=\color{string_red},
+%identifierstyle=\color{darkorange},
+%columns=fullflexible,  % tighter character kerning, like verb
+}
+""",
+        blue1bar="""
+% Use this one without additional background color
+% (same as blue1, but with bar_blue1 frame)
+\lstdefinestyle{blue1bar}{           % blue1 background for complete programs
+backgroundcolor=\color{cbg_blue1},
+frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
+rulecolor=\color{bar_blue1},         % frame color
+%keywordstyle=\color{blue}\bfseries,
+%commentstyle=\color{comment_green}\slshape,
+%stringstyle=\color{string_red},
+%identifierstyle=\color{darkorange},
+%columns=fullflexible,  % tighter character kerning, like verb
+}
+""",
+       gray=r"""
+% Use this one without additional background color
 \lstdefinestyle{gray}{
-tab=,
-tabsize=2,                           % tab means 2 spaces
-basicstyle=\ttfamily\footnotesize,   % fonts used for the code
-breaklines=true,                     % break lines
-breakatwhitespace=true,              % let linebreaks happen at whitespace
-showspaces=false,                    % true: show spaces with a particular underscore
-aboveskip=1ex,
-frame=trbl,                          % top+right+bottom+left (TB draws double lines at top + bottom)
-%framerule=0.4pt                     % thickness of frame
-rulecolor=\color{black!40},          % frame color
-backgroundcolor=\color{gray},
-xleftmargin=5pt,
-xrightmargin=5pt,
-%numbers=left,                       % put line numbers on the left
-%stepnumber=2,                       % stepnumber=1 numbers each line, =n every n lines
+backgroundcolor=\color{cbg_gray},
+%frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+%framerule=0.4pt                      % thickness of frame
+rulecolor=\color{black!40},           % frame color
+}
+""",
+        graybar="""
+% Use this one without additional background color
+\lstdefinestyle{graybar}{
+backgroundcolor=\color{cbg_gray},
+frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+rulecolor=\color{bar_gray1},          % frame color
+%framerule=0.4pt                      % thickness of frame
+}
+""",
+        graycolor=r"""
+% Use this one without additional background color
+\lstdefinestyle{graycolor}{
+backgroundcolor=\color{cbg_gray},
+%frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+%framerule=0.4pt                      % thickness of frame
 keywordstyle=\color{keyword_pink}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},
 identifierstyle=\color{darkorange},
-columns=fullflexible,  % tighter character kerning, like verb
 }
+""",
+        garycolorbar="""
+% Use this one without additional background color
+\lstdefinestyle{graycolorbar}{
+backgroundcolor=\color{cbg_gray},
+frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+rulecolor=\color{bar_gray1},          % frame color
+%framerule=0.4pt                      % thickness of frame
+keywordstyle=\color{keyword_pink}\bfseries,
+commentstyle=\color{comment_green}\slshape,
+stringstyle=\color{string_red},
+identifierstyle=\color{darkorange},
+}
+""",
+        )
+
+    # Just write styles for the ones that are requested
+    requested_styles = re.findall(r'style=([A-Za-z0-9:_]+)[,\]]',
+                                  latex_code_style)
+    if 'simple' not in requested_styles:
+        requested_styles.append('simple')
+    for style in requested_styles:
+        s += styles[style]
+    s += """
 % end of custom lstdefinestyles
 """
     filename = option('latex_code_lststyles=', None)
@@ -2727,7 +2778,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
-\colorlet{keyword_pink}{magenta!90!black}
+\colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
 
 % New ansi colors
@@ -2815,7 +2866,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 #"""
             if 'lst' in latex_code_style:
                 INTRO['latex'] += r'\usepackage{listingsutf8}' + '\n'
-                INTRO['latex'] += latex_code_lstlisting()
+                INTRO['latex'] += latex_code_lstlisting(latex_code_style)
             if 'pyg' in latex_code_style:
                 INTRO['latex'] += r'\usepackage{minted}' + '\n'
                 pygm_style = option('minted_latex_style=', default='default')

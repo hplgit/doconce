@@ -129,11 +129,11 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 7, 2015</h4></center> <!-- date -->
+<center><h4>Apr 8, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
-(almost) replaces the need for both the stand-alone program <code>ptex2tex</code> and
+replaces the need for both the stand-alone program <code>ptex2tex</code> and
 the simplified <code>doconce ptex2tex</code> utility. In fact, the
 new capabilities are more flexible than <code>ptex2tex</code> and results in
 much cleaner LaTeX code (especially for verbatim blocks with
@@ -160,20 +160,26 @@ was not dependent on the comprehensive <code>ptex2tex</code> set up.
 
 <p>
 In 2015, a new implementation in DocOnce replaced <code>ptex2tex</code> and
-<code>doconce ptex2tex</code> <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="The ptex2tex program is not made redundant by the new implemention. In fact, for colored backgrounds (e.g., the Blue environment in the ptex2tex configuration file), the size of the box is in the new implementation clearly larger than what is required for the code. The corresponding Blue environment in ptex2tex applies some hacks to reduce and fine tune the size. One can reduce the size with the new tool too, but not to the same extent, and it requires that there are no !bbox environments in the document."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>, and can in fact generate LaTeX code directly.
-Rather than offering a range of packages for typesetting computer code,
-as the <code>ptex2tex</code> tool does, the implementation made use of only three
-choices: <code>fancyvrb</code>, <code>minted</code>, or <code>listing</code>.
+<code>doconce ptex2tex</code>, and can in fact generate LaTeX code directly.
+Rather than offering a range of packages for typesetting computer
+code, as the <code>ptex2tex</code> tool does, the implementation made use of only
+three choices: <code>fancyvrb</code>, <code>minted</code>, or <code>listing</code>, but these choices
+with all their parameters actually span a much richer way typesetting
+code than what <code>ptex2tex</code> offers, though not all <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="The ptex2tex program is not yet made completely redundant by the new implemention. In fact, there is no exact support for colored backgrounds with a thin vertical bar on the left, to indicate a complete program, and as specified by, e.g., the BlueBar environment in the ptex2tex configuration file.  Two styles in the new implementation come close: 1) the blue1 style for lst gives a darker-color rectangular frame, and 2) the vrb-blue1 (or pyg-blue1 or lst-blue1) style has a darker-color vertical bar, but the colored background is then significantly larger than the code. If !bbox is not used in the document, the size of the background is reduced, but it is not as tight as when a colored lst background (or BlueBar in .ptex2tex.cfg) is specified."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> popular
+<code>ptex2tex</code> environments are supported in the new implementation.
 
-<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The <code>ptex2tex</code> program is not made redundant by the new
-implemention. In fact, for colored backgrounds (e.g., the <code>Blue</code>
-environment in the <code>ptex2tex</code> configuration file), the size of
-the box is in the new implementation clearly larger than what is
-required for the code. The corresponding <code>Blue</code> environment in <code>ptex2tex</code>
-applies some hacks to reduce and fine tune the size.
-One can reduce the size with the new tool too, but not to the same
-extent, and it requires that there are no <code>!bbox</code> environments in
-the document.</p>
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The <code>ptex2tex</code> program is not yet made completely
+redundant by the new implemention. In fact, there is no exact support for
+colored backgrounds with a <em>thin vertical bar</em> on the left, to
+indicate a complete program, and as specified by, e.g., the <code>BlueBar</code>
+environment in the <code>ptex2tex</code> configuration file.  Two styles in the
+new implementation come close: 1) the <code>blue1</code> style for <code>lst</code> gives
+a darker-color rectangular <em>frame</em>, and 2) the <code>vrb-blue1</code> (or
+<code>pyg-blue1</code> or <code>lst-blue1</code>) style has a darker-color vertical bar,
+but the colored background is then significantly larger than the code.
+If <code>!bbox</code> is not used in the document, the size of the background is
+reduced, but it is not as tight as when a colored <code>lst</code> background
+(or <code>BlueBar</code> in <code>.ptex2tex.cfg</code>) is specified.</p>
 
 <h2 id="latexcode:overview">Quick overview of the functionality</h2>
 
@@ -400,7 +406,7 @@ other LaTeX environments:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]&quot;
 </pre></div>
 <p>
-These parameters specifies <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
+These parameters specify <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
 <em>Note that any backslash in LaTeX command must be a
 double backslash</em> on the command line!
 
@@ -449,18 +455,22 @@ DocOnce comes with some predefined styles for the <code>lstlisting</code> LaTeX
 environment:
 
 <ul>
- <li> <code>simple</code> for no coloring of code (but comments are typeset
-   with italic font)</li>
+ <li> <code>simple</code> for no coloring of code (plain verbatim style)</li>
  <li> <code>redblue</code> for coloring of code dominated by red and blue</li>
- <li> <code>yellow2_fb</code> for a coloring (from the FEniCS book)
-   that matches the previously
-   shown <code>yellow2</code> background</li>
- <li> <code>gray</code> for a gray background (green comments, pink keywords, red strings)</li>
+ <li> <code>gray</code> for a framed gray background and no code coloring</li>
+ <li> <code>graycolor</code> for a framed gray background and green comments, pink keywords,
+   red strings, and orange variables</li>
+ <li> <code>blue1</code> for a light blue/cyan background with no code coloring</li>
+ <li> <code>yellow2_fb</code> for a framed yellow (<code>yellow2</code>) background and
+   green comments, blue keywords, red strings, and orange variables
+   (the style from the FEniCS book)
+   of code <em>and</em> a background color equal to <code>yellow2</code></li>
 </ul>
 
-The styles with a colored background (<code>yellow2_fb</code> and <code>gray</code>)
+The styles with a colored background (<code>yellow2_fb</code>, <code>gray</code>, <code>graycolor</code>,
+<code>blue1</code>)
 should of course not be combined with another colored background
-(skip background specification or set it to <code>white</code>).
+(skip <code>backgroundcolor</code> specification or set it to <code>white</code>).
 
 <p>
 The user can also define any number of additional styles and put them
@@ -470,7 +480,8 @@ Just include <code>\lstdefinestyle{name}{...}</code> commands in the file.
 
 <p>
 Here is an example of specifying the <code>yellow2_fb</code> style with yellow
-background, coloring of code, and a frame around all code blocks:
+background, coloring of code, and a frame around all code blocks
+(as made famous in the <a href="http://goo.gl/myz5yp" target="_self">FEniCS book</a>):
 
 <p>
 
@@ -480,6 +491,22 @@ background, coloring of code, and a frame around all code blocks:
 </pre></div>
 <p>
 You may check out the <a href="doc_lst_stylefb.pdf" target="_self">corresponding result</a>.
+
+<p>
+Blue background and plain verbatim non-colored code (as made
+famous in the <a href="http://goo.gl/OKDAzs" target="_self">Python Primer on Scientific Programming book</a>) results from
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+&quot;--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+<p>
+Note that this style does not offer the thin vertical darker-colored bar
+for <code>pypro</code> enviroments (indicating complete programs) as
+<code>ptex2tex</code> offers through the <code>BlueBar</code> environment. Instead, there is a
+<a href="doc_lst_styleprimer.pdf" target="_self">darker-colored frame</a> around <code>pypro</code> code specifications.
 
 <h2 id="latexcode:syntax">General syntax for <code>--latex_code_style=</code></h2>
 
@@ -512,6 +539,28 @@ increased readability - it must be one line as a terminal command!):
 </pre></div>
 <p>
 Here is the <a href="doc_lots.pdf" target="_self">result</a> of this detailed specification.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Size of colored background.</b>
+The default colored background, as specified by (e.g.) <code>vrb-blue</code>,
+is significantly larger than the
+verbatim text. The surrounding space can be reduced by setting
+<code>\fboxsep</code> to a negative value,
+see the line right before the definition of the <code>cod</code>
+environment in the <code>.tex</code> file. However, if a <code>!bbox</code> is used in
+the document, <code>\fboxsep</code> cannot be set to a negative value without
+destroying those boxes. If one really wants the colored background
+to be about as large as the text, there is at present two options:
+
+<ol>
+<li> use <code>lst</code> with a style (<code>gray</code>, <code>yellow2_fb</code>, <code>blue1</code>)</li>
+<li> use <code>ptex2tex</code> with the <code>Blue</code> and similar environments in the
+   <code>.ptex2tex.cfg</code> file.</li>
+</ol>
+
+The results are very similar so there is no demand for <code>ptex2tex</code>.
+</div>
+
 
 <!-- ------------------- end of main content --------------- -->
 

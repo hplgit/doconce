@@ -4,20 +4,20 @@
 
 <span style="color: #000080; font-weight: bold">======= Data file =======</span>
 
-Suppose we have some data in a file:
+Suppose we have some data in a file typeset with `!bc dat`:
 
 <span style="color: #800080; font-weight: bold">@@@CODE mydat.txt envir=dat</span>
 
-<span style="color: #000080; font-weight: bold">======= Program =======</span>
+<span style="color: #000080; font-weight: bold">======= Complete program and terminal output =======</span>
 
 The following program
 <span style="color: #228B22"># #if FORMAT in (&#39;latex&#39;, &#39;pdflatex&#39;)</span>
 (which breaks a page)
 <span style="color: #228B22"># #endif</span>
-reads the data in the file and performs analysis:
+reads the data in the file and performs analysis (typeset with `!bc pypro`):
 
 <span style="color: #800080; font-weight: bold">@@@CODE fileread.py</span>
-The output becomes
+The output becomes (typeset with `!bc sys`):
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> sys
 Terminal&gt; python fileread.py
@@ -32,9 +32,9 @@ correlation matrix:
  [ 0.1574504   0.7611538  -0.42263817 -0.38286589  1.        ]]
 <span style="color: #8B008B; font-weight: bold">!ec</span>
 
-<span style="color: #000080; font-weight: bold">======= Fortran example =======</span>
+<span style="color: #000080; font-weight: bold">======= Code snippet =======</span>
 
-Here is an example of a Fortran 77 snippet:
+Fortran 77 is also sometimes handy (typeset with `!bc fcod`):
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> fcod
        subroutine process(a, n, c, r)

@@ -5,7 +5,7 @@ DATE: today
 __Summary.__
 This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
-(almost) replaces the need for both the stand-alone program `ptex2tex` and
+replaces the need for both the stand-alone program `ptex2tex` and
 the simplified `doconce ptex2tex` utility. In fact, the
 new capabilities are more flexible than `ptex2tex` and results in
 much cleaner LaTeX code (especially for verbatim blocks with
@@ -25,20 +25,27 @@ alternative, `doconce ptex2tex` was developed later such that DocOnce
 was not dependent on the comprehensive `ptex2tex` set up.
 
 In 2015, a new implementation in DocOnce replaced `ptex2tex` and
-`doconce ptex2tex`[^ptex2tex], and can in fact generate LaTeX code directly.
-Rather than offering a range of packages for typesetting computer code,
-as the `ptex2tex` tool does, the implementation made use of only three
-choices: `fancyvrb`, `minted`, or `listing`.
+`doconce ptex2tex`, and can in fact generate LaTeX code directly.
+Rather than offering a range of packages for typesetting computer
+code, as the `ptex2tex` tool does, the implementation made use of only
+three choices: `fancyvrb`, `minted`, or `listing`, but these choices
+with all their parameters actually span a much richer way typesetting
+code than what `ptex2tex` offers, though not all[^ptex2tex] popular
+`ptex2tex` environments are supported in the new implementation.
 
-[^ptex2tex]: The `ptex2tex` program is not made redundant by the new
-implemention. In fact, for colored backgrounds (e.g., the `Blue`
-environment in the `ptex2tex` configuration file), the size of
-the box is in the new implementation clearly larger than what is
-required for the code. The corresponding `Blue` environment in `ptex2tex`
-applies some hacks to reduce and fine tune the size.
-One can reduce the size with the new tool too, but not to the same
-extent, and it requires that there are no `!bbox` environments in
-the document.
+[^ptex2tex]: The `ptex2tex` program is not yet made completely
+redundant by the new implemention. In fact, there is no exact support for
+colored backgrounds with a *thin vertical bar* on the left, to
+indicate a complete program, and as specified by, e.g., the `BlueBar`
+environment in the `ptex2tex` configuration file.  Two styles in the
+new implementation come close: 1) the `blue1` style for `lst` gives
+a darker-color rectangular *frame*, and 2) the `vrb-blue1` (or
+`pyg-blue1` or `lst-blue1`) style has a darker-color vertical bar,
+but the colored background is then significantly larger than the code.
+If `!bbox` is not used in the document, the size of the background is
+reduced, but it is not as tight as when a colored `lst` background
+(or `BlueBar` in `.ptex2tex.cfg`) is specified.
+
 
 ===== Quick overview of the functionality =====
 label{latexcode:overview}
@@ -259,18 +266,21 @@ label{latexcode:lst:style}
 DocOnce comes with some predefined styles for the `lstlisting` LaTeX
 environment:
 
- * `simple` for no coloring of code (but comments are typeset
-   with italic font)
+ * `simple` for no coloring of code (plain verbatim style)
  * `redblue` for coloring of code dominated by red and blue
- * `yellow2_fb` for a coloring (from the FEniCS book)
-   that matches the previously
-   shown `yellow2` background
- * `gray` for a gray background (green comments, pink keywords, red strings)
+ * `gray` for a framed gray background and no code coloring
+ * `graycolor` for a framed gray background and green comments, pink keywords,
+   red strings, and orange variables
+ * `blue1` for a light blue/cyan background with no code coloring
+ * `yellow2_fb` for a framed yellow (`yellow2`) background and
+   green comments, blue keywords, red strings, and orange variables
+   (the style from the FEniCS book)
+   of code *and* a background color equal to `yellow2`
 
-The styles with a colored background (`yellow2_fb` and `gray`)
+The styles with a colored background (`yellow2_fb`, `gray`, `graycolor`,
+`blue1`)
 should of course not be combined with another colored background
-(skip background specification or set it to `white`).
-
+(skip `backgroundcolor` specification or set it to `white`).
 
 The user can also define any number of additional styles and put them
 in a file, say `.mylststyles`, and give them to `doconce format` through
@@ -278,13 +288,28 @@ the command-line option `--latex_code_lststyles=.mylststyles`.
 Just include `\lstdefinestyle{name}{...}` commands in the file.
 
 Here is an example of specifying the `yellow2_fb` style with yellow
-background, coloring of code, and a frame around all code blocks:
+background, coloring of code, and a frame around all code blocks
+(as made famous in the "FEniCS book": "http://goo.gl/myz5yp"):
 
 !bc sys
 Terminal> doconce format pdflatex doc \
   "--latex_code_style=default:lst[style=yellow2_fb]"
 !ec
 You may check out the "corresponding result": "doc_lst_stylefb.pdf".
+
+Blue background and plain verbatim non-colored code (as made
+famous in the "Python Primer on Scientific Programming book":
+"http://goo.gl/OKDAzs") results from
+
+!bc sys
+Terminal> doconce format pdflatex doc \
+"--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+!ec
+Note that this style does not offer the thin vertical darker-colored bar
+for `pypro` enviroments (indicating complete programs) as
+`ptex2tex` offers through the `BlueBar` environment. Instead, there is a
+"darker-colored frame":
+"doc_lst_styleprimer.pdf" around `pypro` code specifications.
 
 ===== General syntax for `--latex_code_style=` =====
 label{latexcode:syntax}
@@ -315,14 +340,19 @@ increased readability - it must be one line as a terminal command!):
 Here is the "result": "doc_lots.pdf" of this detailed specification.
 
 !bnotice Size of colored background
-The default colored background is significantly larger than the
+The default colored background, as specified by (e.g.) `vrb-blue`,
+is significantly larger than the
 verbatim text. The surrounding space can be reduced by setting
 `\fboxsep` to a negative value,
 see the line right before the definition of the `cod`
 environment in the `.tex` file. However, if a `!bbox` is used in
 the document, `\fboxsep` cannot be set to a negative value without
 destroying those boxes. If one really wants the colored background
-to be about as large as the text, there is at present no other
-option than using `ptex2tex` with the `Blue` and similar environments in the
-`.ptex2tex.cfg` file.
+to be about as large as the text, there is at present two options:
+
+ o use `lst` with a style (`gray`, `yellow2_fb`, `blue1`)
+ o use `ptex2tex` with the `Blue` and similar environments in the
+   `.ptex2tex.cfg` file.
+
+The results are very similar so there is no demand for `ptex2tex`.
 !enotice

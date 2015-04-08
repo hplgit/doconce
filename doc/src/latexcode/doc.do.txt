@@ -4,20 +4,20 @@ DATE: today
 
 ======= Data file =======
 
-Suppose we have some data in a file:
+Suppose we have some data in a file typeset with `!bc dat`:
 
 @@@CODE mydat.txt envir=dat
 
-======= Program =======
+======= Complete program and terminal output =======
 
 The following program
 # #if FORMAT in ('latex', 'pdflatex')
 (which breaks a page)
 # #endif
-reads the data in the file and performs analysis:
+reads the data in the file and performs analysis (typeset with `!bc pypro`):
 
 @@@CODE fileread.py
-The output becomes
+The output becomes (typeset with `!bc sys`):
 
 !bc sys
 Terminal> python fileread.py
@@ -32,9 +32,9 @@ correlation matrix:
  [ 0.1574504   0.7611538  -0.42263817 -0.38286589  1.        ]]
 !ec
 
-======= Fortran example =======
+======= Code snippet =======
 
-Here is an example of a Fortran 77 snippet:
+Fortran 77 is also sometimes handy (typeset with `!bc fcod`):
 
 !bc fcod
        subroutine process(a, n, c, r)
