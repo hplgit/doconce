@@ -295,7 +295,7 @@ background, coloring of code, and a frame around all code blocks
 Terminal> doconce format pdflatex doc \
   "--latex_code_style=default:lst[style=yellow2_fb]"
 !ec
-You may check out the "corresponding result": "doc_lst_stylefb.pdf".
+You may check out the "corresponding result": "doc_lst_style_facebook.pdf".
 
 Blue background and plain verbatim non-colored code (as made
 famous in the "Python Primer on Scientific Programming book":
