@@ -1848,7 +1848,6 @@ MathJax.Hub.Config({
 <b>J. Doe</b>  (<tt>j_doe at cyberspace.com</tt>)
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -29607,7 +29606,6 @@ MathJax.Hub.Config({
 <b>John Doe</b>  (<tt>doe at cyberspace.net</tt>)
 </center>
 
-
 <p>
 <!-- institution -->
 
@@ -31019,7 +31017,6 @@ MathJax.Hub.Config({
 <b>J. Doe</b>  (<tt>j_doe at cyberspace.com</tt>)
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -32035,7 +32032,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 Or with align with label and numbers:
 
@@ -32435,7 +32431,6 @@ We have
 
 $$ 1 + 1 = 2 $$
 
-
 <p>
 <div style="width: 60%; padding: 10px; border: 1px solid #000;
  border-radius: 4px; box-shadow: 8px 8px 5px #888888;
@@ -32771,7 +32766,6 @@ $$
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 $$
-
 
 <p>
 And here is a system of equations with labels in an align environment:
@@ -33120,7 +33114,6 @@ Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
-
 <p>
 <!-- --- begin hint in exercise --- -->
 
@@ -33171,7 +33164,6 @@ Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
 $$ \exp{(0)} = 1 $$
-
 
 <p>
 And a test that the code <code>lambda x: x+2</code> is correctly placed here:
@@ -33998,7 +33990,7 @@ $(function () {
 
 
 
-<center><h1>A Document for Testing DocOnce</h1></center>  
+<center><h1>A Document for Testing DocOnce</h1></center>
 
 <p>
 
@@ -34022,7 +34014,6 @@ $(function () {
 <center>
 <b>J. Doe</b>  (<tt>j_doe at cyberspace.com</tt>)
 </center>
-
 
 <p>
 
@@ -34635,8 +34626,6 @@ $latex
 \frac{1}{2}\pmb{x} = \pmb{n}
  $
 
-
-
 <p>
 Or with align with label and numbers:
 
@@ -34670,13 +34659,11 @@ Should look nice in most formats!
 <b>Theorem 5.</b>
 Let $latex a=1$ and $latex b=2$. Then $latex c=3$.
 
-
 <p>
 
 <b>Proof.</b>
 Since $latex c=a+b$, the result follows from straightforward addition.
 $latex latex \Diamond$
-
 
 <p>
 As we see, the proof of Theorem 5 is a modest
@@ -34899,7 +34886,6 @@ We can test Hennes &amp; Mauritz, often abbreviated H&amp;M, but written
 as <code>Hennes & Mauritz</code> and <code>H & M</code>.
 A sole <code>&</code> must also work.
 
-
 <p>
 
 
@@ -35013,8 +34999,6 @@ We have
 
 $latex  1 + 1 = 2  $
 
-
-
 <p>
 <div style="width: 60%; padding: 10px; border: 1px solid #000;
  border-radius: 4px; box-shadow: 8px 8px 5px #888888;
@@ -35097,8 +35081,6 @@ $latex
 b = \nabla^2 u + \nabla^4 v
  $
 
-
-
 <p>
 And here is a system of equations with labels in an align environment:
 
@@ -35125,7 +35107,6 @@ between there we have <a href="#exer:some:formula">Exercise 10: Make references 
 <h1 id="___sec32">Exercises </h1>
 
 <h2 id="demo:ex:1">Problem 2: Flip a Coin</h2>
-
 
 <p>
 <b>a)</b>
@@ -35229,8 +35210,6 @@ in previous DocOnce versions:
 <li> item1</li>
 <li> item2</li>
 </ol>
-
-
 
 <p>
 <b>Hint.</b>
@@ -35391,8 +35370,6 @@ Some math $latex \cos^2 x + \sin^2 x = 1$ written one a single line:
 
 $latex  \cos^2 x + \sin^2 x = 1 \thinspace . $
 
-
-
 <p>
 <b>Hint.</b>
 A hint for this subexercise.
@@ -35437,8 +35414,6 @@ to test that math block insertion is correct:
 
 $latex  \exp{(0)} = 1  $
 
-
-
 <p>
 And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 
@@ -35461,22 +35436,17 @@ $latex  \frac{dy}{dx} = -y(x),\quad y(0)=1  $
 
 What is the solution of this equation?
 
-
-
 <p>
 
 $latex y=e^{-y}$
-
 
 <p>
 
 $latex y=e^{y}$
 
-
 <p>
 
 Almost, but the sign is wrong (note the minus!).
-
 
 <p>
 
@@ -35496,13 +35466,9 @@ in mathematical notation:
 
 $latex  y(x) = e^{-y}. $
 
-
-
-
 <p>
 
 The solution cannot be found because there is a derivative in the equation.
-
 
 <p>
 
@@ -35510,12 +35476,10 @@ Equations with derivatives can be solved;
 they are termed <em>differential
 equations</em>.
 
-
 <p>
 
 The equation is meaningless: an equation must be an equation
 for $latex x$ or $latex y$, not a function $latex y(x)$.
-
 
 <p>
 
@@ -35718,31 +35682,25 @@ What about inserting a quiz?
 
 [Fundamental test:] What is the capital of Norway?
 
-
 <p>
 
 [Answer 1:] Stockholm
-
 
 <p>
 
 Stockholm is the capital of Sweden.
 
-
 <p>
 
 [Answer 2:] London
-
 
 <p>
 
 [Answer 3:] Oslo
 
-
 <p>
 
 Bergen
-
 
 <p>
 
@@ -36155,7 +36113,6 @@ MathJax.Hub.Config({
 <center>
 <b>J. Doe</b>  (<tt>j_doe at cyberspace.com</tt>)
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -36797,7 +36754,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 Or with align with label and numbers:
 
@@ -37184,7 +37140,6 @@ We have
 
 $$ 1 + 1 = 2 $$
 
-
 <p>
 <div style="width: 60%; padding: 10px; border: 1px solid #000;
  border-radius: 4px; box-shadow: 8px 8px 5px #888888;
@@ -37272,7 +37227,6 @@ $$
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 $$
-
 
 <p>
 And here is a system of equations with labels in an align environment:
@@ -37600,7 +37554,6 @@ Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
-
 <p>
 <!-- --- begin hint in exercise --- -->
 
@@ -37653,7 +37606,6 @@ Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
 $$ \exp{(0)} = 1 $$
-
 
 <p>
 And a test that the code <code>lambda x: x+2</code> is correctly placed here:
@@ -41802,7 +41754,6 @@ $$
 <b>HPL</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
 <p>
@@ -41820,7 +41771,6 @@ Here is a sentence contains the equation \( u(t)=e^{-at} \).
 Here it is
 
 $$ u(t)=e^{-at} $$
-
 
 <p>
 <b>Test 3: A single equation with label.</b>
@@ -41889,7 +41839,6 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 $$
 
-
 <p>
 <b>Test 5: Multiple, aligned equations with label.</b>
 We use align with
@@ -41943,7 +41892,6 @@ u(t)&=& e^{-at}\\
 v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 $$
-
 
 <p>
 <b>Test 7: Multiple, eqnarrayed equations with label.</b>
@@ -42898,7 +42846,6 @@ MathJax.Hub.Config({
 <b>J. Doe</b>  (<tt>j_doe at cyberspace.com</tt>)
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -43246,7 +43193,6 @@ MathJax.Hub.Config({
 <center>
 <b>J. Doe</b>  (<tt>j_doe at cyberspace.com</tt>)
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -44133,7 +44079,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 Or with align with label and numbers:
 
@@ -44550,7 +44495,6 @@ We have
 
 $$ 1 + 1 = 2 $$
 
-
 <p>
 <div style="width: 60%; padding: 10px; border: 1px solid #000;
  border-radius: 4px; box-shadow: 8px 8px 5px #888888;
@@ -44886,7 +44830,6 @@ $$
 b &= \nabla^2 u + \nabla^4 v
 \end{align*}
 $$
-
 
 <p>
 And here is a system of equations with labels in an align environment:
@@ -45265,7 +45208,6 @@ Some math \( \cos^2 x + \sin^2 x = 1 \) written one a single line:
 
 $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 
-
 <p>
 <!-- --- begin hint in exercise --- -->
 
@@ -45322,7 +45264,6 @@ Just some text. And some math saying that \( e^0=1 \) on a single line,
 to test that math block insertion is correct:
 
 $$ \exp{(0)} = 1 $$
-
 
 <p>
 And a test that the code <code>lambda x: x+2</code> is correctly placed here:
@@ -52264,7 +52205,6 @@ MathJax.Hub.Config({
 <b>hpl</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
 <p>
@@ -52561,7 +52501,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
@@ -52771,7 +52710,6 @@ MathJax.Hub.Config({
 <center>
 <b>hpl</b> 
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -53093,7 +53031,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
@@ -53302,7 +53239,6 @@ MathJax.Hub.Config({
 <center>
 <b>hpl</b> 
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -53623,7 +53559,6 @@ $$
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 $$
-
 
 <p>
 The implementation of such complicated equations in computer
@@ -54234,7 +54169,6 @@ MathJax.Hub.Config({
 <b>hpl</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
 <p>
@@ -54620,7 +54554,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
@@ -54816,7 +54749,6 @@ MathJax.Hub.Config({
 <center>
 <b>hpl</b> 
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -55150,7 +55082,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
@@ -55367,7 +55298,6 @@ MathJax.Hub.Config({
 <center>
 <b>hpl</b> 
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -55685,7 +55615,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
@@ -55909,7 +55838,6 @@ MathJax.Hub.Config({
 <center>
 <b>hpl</b> 
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -56208,7 +56136,6 @@ $$
 \end{align*}
 $$
 
-
 <p>
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
@@ -56416,7 +56343,6 @@ MathJax.Hub.Config({
 <b>hpl</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
 <p>
@@ -56552,7 +56478,6 @@ MathJax.Hub.Config({
 <center>
 <b>hpl</b> 
 </center>
-
 
 <p>
 <!-- institution(s) -->
@@ -56905,7 +56830,6 @@ $$
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 $$
-
 
 <p>
 The implementation of such complicated equations in computer
@@ -57401,7 +57325,6 @@ $$
 \frac{1}{2}\pmb{x} &= \pmb{n}
 \end{align*}
 $$
-
 
 <p>
 The implementation of such complicated equations in computer
@@ -58932,7 +58855,6 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
@@ -59007,7 +58929,6 @@ MathJax.Hub.Config({
 <!-- begin inline comment -->
 <font color="red">(<b>hpl 1</b>: Comments are typeset as usual in DocOnce.)</font>
 <!-- end inline comment -->
-
 
 <p>
 
@@ -59817,7 +59738,6 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -59873,7 +59793,6 @@ MathJax.Hub.Config({
 <!-- begin inline comment -->
 <font color="red">(<b>hpl 1</b>: Comments are typeset as usual in DocOnce.)</font>
 <!-- end inline comment -->
-
 
 <p>
 <!-- !bpop highlight-red -->
@@ -60251,7 +60170,6 @@ MathJax.Hub.Config({
 <b style="font-weight: bold">Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -60326,7 +60244,6 @@ MathJax.Hub.Config({
 <!-- begin inline comment -->
 <font color="red">(<b style="font-weight: bold">hpl 1</b>: Comments are typeset as usual in DocOnce.)</font>
 <!-- end inline comment -->
-
 
 <p>
 
@@ -63078,7 +62995,6 @@ MathJax.Hub.Config({
 <b>Core Dump</b> 
 </center>
 
-
 <p>
 <!-- institution -->
 
@@ -63647,7 +63563,6 @@ and rendered as
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/P8VcZzgdfSc" frameborder="0" allowfullscreen></iframe>
 
-
 <p>
 
 </section>
@@ -63697,7 +63612,6 @@ $$
 \end{align}
 $$
 <p>&nbsp;<br>
-
 
 <p>
 
@@ -63956,7 +63870,6 @@ Key equation:
 <p>&nbsp;<br>
 $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 <p>&nbsp;<br>
-
 
 <p>
 And maybe a final comment?
@@ -66303,7 +66216,6 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>&nbsp;<br>
 <!-- institution(s) -->
 
@@ -66458,7 +66370,6 @@ $$
 <p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
-
 
 <p>
 
@@ -67832,7 +67743,6 @@ end of tocinfo -->
 <b>HPL</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
 <p>
@@ -67857,7 +67767,6 @@ code use exactly the specified movie file.
 </div>
 <p><em>1D wave in WebM.</em></p>
 
-
 <p>
 Here is the same movie in Ogg format:
 
@@ -67871,7 +67780,6 @@ Here is the same movie in Ogg format:
 </video>
 </div>
 <p><em>1D wave in Ogg.</em></p>
-
 
 <p>
 Here is the same movie in MP4 format:
@@ -67887,7 +67795,6 @@ Here is the same movie in MP4 format:
 </div>
 <p><em>1D wave in MP4.</em></p>
 
-
 <p>
 Here is the same movie in Flash format:
 
@@ -67895,7 +67802,6 @@ Here is the same movie in Flash format:
 
 <embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>1D wave in Flash.</em></p>
-
 
 <p>
 And here is a collection of images shown as an animation
@@ -68164,8 +68070,6 @@ function faster____doc_src_manual_mov_wave_frames_frame_0080()
 <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name____doc_src_manual_mov_wave_frames_frame_0080" border=2/>
 
 <br><em>Animated collection of images.</em><br>
-
-
 
 <p>
 Here is the same collection, but with images in cyberspace, given as URLs:
@@ -68439,8 +68343,6 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 
 <br><em>Taking images to animate from cyberspace.</em><br>
 
-
-
 <p>
 The movie above in MPEG format, typeset in a box:
 
@@ -68463,7 +68365,6 @@ Here is the same movie in AVI format:
 <embed src="../doc/src/manual/mov/wave.avi" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>1D wave in AVI.</em></p>
 
-
 <p>
 Here is the same movie, but with a URL to GitHub:
 
@@ -68478,7 +68379,6 @@ Here is the same movie, but with a URL to GitHub:
 </div>
 <p><em></em></p>
 
-
 <p>
 Here is a YouTube video:
 
@@ -68488,8 +68388,6 @@ Here is a YouTube video:
 
 <p><em>YouTube movie.</em></p>
 
-
-
 <p>
 And a vimeo video:
 
@@ -68498,8 +68396,6 @@ And a vimeo video:
 <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
 
 <em>Vimeo movie.</em>
-
-
 
 <p>
 Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</a>.
@@ -68575,7 +68471,6 @@ end of tocinfo -->
 <b>HPL</b> 
 </center>
 
-
 <p>
 <!-- institution(s) -->
 <p>
@@ -68600,7 +68495,6 @@ code use exactly the specified movie file.
 </div>
 <p><em>1D wave in WebM.</em></p>
 
-
 <p>
 Here is the same movie in Ogg format:
 
@@ -68614,7 +68508,6 @@ Here is the same movie in Ogg format:
 </video>
 </div>
 <p><em>1D wave in Ogg.</em></p>
-
 
 <p>
 Here is the same movie in MP4 format:
@@ -68630,7 +68523,6 @@ Here is the same movie in MP4 format:
 </div>
 <p><em>1D wave in MP4.</em></p>
 
-
 <p>
 Here is the same movie in Flash format:
 
@@ -68638,7 +68530,6 @@ Here is the same movie in Flash format:
 
 <embed src="../doc/src/manual/mov/wave.flv" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>1D wave in Flash.</em></p>
-
 
 <p>
 And here is a collection of images shown as an animation
@@ -68907,8 +68798,6 @@ function faster____doc_src_manual_mov_wave_frames_frame_0080()
 <img src="../doc/src/manual/mov/wave_frames/frame_0080.png" name="name____doc_src_manual_mov_wave_frames_frame_0080" border=2/>
 
 <br><em>Animated collection of images.</em><br>
-
-
 
 <p>
 Here is the same collection, but with images in cyberspace, given as URLs:
@@ -69182,8 +69071,6 @@ function faster_http___hplgit_github_io_animate_doc_pub_mov_animate_frames_frame
 
 <br><em>Taking images to animate from cyberspace.</em><br>
 
-
-
 <p>
 The movie above in MPEG format, typeset in a box:
 
@@ -69206,7 +69093,6 @@ Here is the same movie in AVI format:
 <embed src="../doc/src/manual/mov/wave.avi" width=700 height=400 autoplay="false" loop="true"></embed>
 <p><em>1D wave in AVI.</em></p>
 
-
 <p>
 Here is the same movie, but with a URL to GitHub:
 
@@ -69221,7 +69107,6 @@ Here is the same movie, but with a URL to GitHub:
 </div>
 <p><em></em></p>
 
-
 <p>
 Here is a YouTube video:
 
@@ -69231,8 +69116,6 @@ Here is a YouTube video:
 
 <p><em>YouTube movie.</em></p>
 
-
-
 <p>
 And a vimeo video:
 
@@ -69241,8 +69124,6 @@ And a vimeo video:
 <iframe width="500" height="278" src="http://player.vimeo.com/video/55562330" frameborder="0" allowfullscreen></iframe>
 
 <em>Vimeo movie.</em>
-
-
 
 <p>
 Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</a>.
@@ -72439,7 +72320,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f5915def398>
+verbatim is to be replaced using <function html_verbatim at 0x7f78fd4a81b8>
 
 
 First occurence: " `mako`."
@@ -76298,7 +76179,7 @@ we can run the program:
 0
 </pre></div>
 <p>
-  </div> <!-- column col-sm-4 -->
+</div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
 <h2 id="___sec5">Variation of the previous grid structure using panels </h2>
@@ -76410,7 +76291,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed Apr  8 11:22:08 2015.
+# sphinx-quickstart on Sat Apr 11 03:57:33 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78838,7 +78719,6 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
@@ -78887,8 +78767,6 @@ notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
 <p>
-
-
 </div> <!-- end jumbotron -->
 
 <h2 id="___sec0">Supported Formats </h2>
@@ -79538,7 +79416,6 @@ Here is a single equation:
 which results in
 
 $$ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.$$
-
 
 <p>
 Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pandoc</code>,
@@ -98978,63 +98855,7 @@ onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
 (./slides1.vrb 
  [15] (./slides1.vrb) [16] (./slides1.vrb) [17] (./slides1.vrb) [18]
 (./slides1.vrb) [19] (./slides1.vrb) [20] (./slides1.vrb) [21] (./slides1.aux) 
-) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk>
-kpathsea: Running mktexpk --mfmode / --bdpi 600 --mag 1+0/600 --dpi 600 ecst1000
-mktexpk: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1+0/600; nonstopmode; input ecst1000
-This is METAFONT, Version 2.7182818 (TeX Live 2014/Debian) (preloaded base=mf)
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecst1000.mf
-
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecst.mf
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exroman.mf
- Ok (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccess.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expseudo.mf
- Ok) (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exruwest.mf
- Ok [192] [193] [194] [195] [196] [197] [198] [199] [200] [201] [202] [203]
-[204] [205] [206] [207] [208] [209] [210] [211] [212] [213] [214] [215]
-[216] [217] [218] [219] [220] [221] [222] [223])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlwest.mf
- Ok [224] [225] [226] [227] [228] [229] [230] [231] [232] [233] [234] [235]
-[236] [237] [238] [239] [240] [241] [242] [243] [244] [245] [246] [247]
-[248] [249] [250] [251] [252] [253] [254] [255])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrueast.mf
- Ok [128] [129] [130] [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156] [157])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrleast.mf
- Ok [158] [160] [161] [162] [163] [164] [165] [166] [167] [168] [169] [170]
-[171] [172] [173] [174] [175] [176] [177] [178] [179] [180] [181] [182]
-[183] [184] [185] [186] [187] [188])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exbraces.mf
- Ok [94] [126] [23] [40] [41] [60] [124] [62] [91] [93] [92] [123] [125]
-[95] [127] [32])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/expunct.mf
- Ok [14] [15] [19] [20] [13] [18] [33] [39] [42] [43] [44] [46] [47] [58]
-[59] [61] [96] [189] [17] [45] [16] [21] [22])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exaccent.mf
- Ok [0] [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exsign.mf
- Ok [24] [34] [35] [36] [37] [64] [191] [159])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrlig.mf
- Ok [25] [26] [28] [27] [29] [30] [31])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exromp.mf
- Ok [38] [63] [190])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf
- Ok [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78]
-[79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf
- Ok [97] [98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108]
-[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
-[121] [122])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrdigit.mf
- Ok [48] [49] [50] [51] [52] [53] [54] [55] [56] [57])
-(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exmligtb.mf
- Ok) ) ) )
-Font metrics written on ecst1000.tfm.
-Output written on ecst1000.600gf (256 characters, ).
-Transcript written on ecst1000.log.
-mktexpk: /home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1000.600pk: successfully generated.
- </home/hpl/
+) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl/
 .texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1000.600pk> </home/hpl/.texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
 /jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/
