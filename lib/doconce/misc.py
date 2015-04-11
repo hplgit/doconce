@@ -2578,6 +2578,9 @@ def slides_html():
     else:
         print 'unknown slide type "%s"' % slide_type
 
+    from html import html_remove_whitespace
+    filestr = html_remove_whitespace(filestr)
+
     if filestr is not None:
         f = open(filename, 'w')
         f.write(filestr)

@@ -1161,6 +1161,11 @@ def html_code(filestr, code_blocks, code_block_types,
         pattern = r'(<h3>(Exercise|Project|Problem) \d+:.+</h3>)'
         filestr = re.sub(pattern, '\g<1>\n\n<img src="%s" width=%s align="right">\n' % (icon_path, icon_width), filestr)
 
+    filestr = html_remove_whitespace(filestr)
+
+    return filestr
+
+def html_remove_whitespace(filestr):
     # Reduce redunant newlines and <p> (easy with lookahead pattern)
     # Eliminate any <p> that goes with blanks up to <p> or a section
     # heading
@@ -1180,7 +1185,6 @@ def html_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'(\s+<p>){2,}', r'\g<1>', filestr)
     # Remove <p> + space up to </endtag>
     filestr = re.sub(r'<p>\s+(?=</)', r'<p>\n', filestr)
-
     return filestr
 
 def process_grid_areas(filestr):
