@@ -1,0 +1,152 @@
+A minimal test that DocOnce works
+=================================
+
+Hans Petter Langtangen
+
+Date: Apr 11, 2015
+
+*Summary.* This is a small document for testing the installation of DocOnce.
+
+# !split
+
+Table of contents:
+
+ Test of plain text 
+   Test standard text with lists and inline tagging 
+   Test of figures and movies 
+ Test of math, code, admons, quiz 
+   Math 
+   Code 
+   Admonitions 
+
+# !split
+Test of plain text
+==================
+
+Test standard text with lists and inline tagging
+------------------------------------------------
+
+Here are some DocOnce features:
+
+  * DocOnce addresses small and large documents containing
+    *text with much computer source code and
+    LaTeX mathematics*, where the output is desired in different formats
+    such as LaTeX, pdfLaTeX, Sphinx, HTML,
+    MediaWiki, blogger.com, and wordpress.com.
+    A piece of DocOnce text can enter (e.g.) a classical
+    science book, an ebook, a web document, and a blog post.
+
+  * DocOnce offers a range of HTML designs, including many
+    Bootstrap and Sphinx styles and solarized color schemes (http://ethanschoonover.com/solarized).
+    A special feature is the many styles for _admonitions_ (boxes for
+    warning, notice, question, etc.) in HTML and LaTeX.
+
+  * DocOnce targets in particular large book projects where many different
+    pieces of text and software can be assembled in different ways
+    and published in different formats for different devices
+    (see example (http://hplgit.github.io/setup4book-doconce/doc/web/index.html)).
+
+  * DocOnce enables authors who write for many times of media
+    (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
+    source language such that lots of different pieces can easily be
+    brought together later to form a coherent (big) document.
+
+  * DocOnce has good support for copying computer code
+    directly from the source code files via regular expressions
+    for the start and end lines.
+
+  * DocOnce first runs two preprocessors (Preprocess and Mako), which
+    allow programming constructs (includes, if-tests, function calls)
+    as part of the text. This feature makes it easy to write *one text*
+    with different flavors: long vs short text, Python vs Matlab code
+    examples, experimental vs mature content.
+
+  * DocOnce can be converted to plain *untagged* text,
+    often desirable for email and computer code documentation.
+
+  * DocOnce markup does include tags, so the format is more tagged than
+    Markdown, but less than reST, and very much less than
+    LaTeX and HTML.
+
+  * Compared to the related tools Sphinx and Markdown, DocOnce
+    allows more types of equations (especially systems of
+    equations with references), has more flexible
+    inclusion of source code, integrates preprocessors, has
+    special support for exercises, and produces
+    cleaner LaTeX and HTML output.
+
+Test of figures and movies
+--------------------------
+
+Inline figure:
+
+FIGURE: [../doc/src/manual/fig/wave1D, width=300 frac=0.7]
+
+Figure ref{fig1} has a caption.
+
+FIGURE: [../doc/src/manual/fig/wave1D, width=300 frac=0.7] Figure with caption. {fig1}
+
+Here is a YouTube movie:
+
+ http://www.youtube.com/embed/P8VcZzgdfSc: load movie_player1.html (movie_player1.html) into a browser
+
+Movie on the hard disk: 1D wave motion. ../doc/src/manual/mov/wave.webm: load movie_player2.html (movie_player2.html) into a browser
+
+# !split
+Test of math, code, admons, quiz
+================================
+
+Math
+----
+
+We have::
+
+        \begin{equation}
+        F = \int_a^b f(x)dx.
+        \end{equation}
+
+Code
+----
+
+We can do the integral by::
+
+        >>> from sympy import *
+        >>> x = 'symbols('x')
+        >>> f = x*sin(x)*exp(-x)
+        >>> integrate(f, x(0, 4))
+        -2*exp(-4)*sin(4) - 5*exp(-4)*cos(4)/2 + 1/2
+
+Or we can do it numerically via the Trapezoidal rule::
+
+        import numpy
+        
+        def trapezoidal(f, a, b, n=100):
+            """Integrate f from a to b with 100 intervals."""
+            x = numpy.linspace(a, b, n+1)
+            F = (b-a)/float(n)*(numpy.sum(f(x)) - 0.5*(f(a) + f(b)))
+            return F
+        
+        def f(x):
+            return x*numpy.sin(x)*numpy.exp(-x)
+        
+        print trapezoidal(f, 0, 4)
+
+Admonitions
+-----------
+
+
+Question -------------------------------------------------------------|
+|                                                                     |
+| How do adminitions look like? That depends on the output format and |
+| what type of admon design in the format one has chosen.             |
+|---------------------------------------------------------------------|
+
+
+
+White space is important! -------------------------------------------------|
+|                                                                          |
+| Many DocOnce errors arise from wrong use of white space. The white space |
+| is not as critical as in reStructuredText, but is not ignored either,    |
+| as in LaTeX and HTML.                                                    |
+|--------------------------------------------------------------------------|
+

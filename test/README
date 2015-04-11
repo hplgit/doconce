@@ -1,13 +1,29 @@
 This directory contains the primary doconce tests.
-All tests are classical regression tests where text is
+
+There are two types of tests:
+
+ * unit tests in test_mintest.py
+ * test.verify regression suite
+
+The latter are classical regression tests where text is
 generated in many files, these are concatenated, and then
-compared with the big reference file test.r.
-The tests are run by
+compared with the big reference file with name test.r.
+
+The plain unit tests are in test_mintest.py (very minimalistic tests,
+mainly to check that the installation of DocOnce itself is okay). Run
+by
+
+  py.test test_mintest.py
+
+-----------------------------------------------------------------------
+
+The very comprehensive suite in test.veryify is run by
 
   python test.verify
 
 A diff test.v test.r show differences of generated text
-(test.v) and reference data (test.r).
+(test.v) and reference data (test.r). Don't run this unless you have
+a complete installation with all the DocOnce dependencies.
 
 Note that standard unit tests with nose/pytest are less suitable for a
 text transformation program such as doconce. The reason is that some

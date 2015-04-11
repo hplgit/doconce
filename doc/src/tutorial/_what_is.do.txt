@@ -38,7 +38,7 @@ Here are some DocOnce features:
     directly from the source code files via regular expressions
     for the start and end lines.
   * DocOnce first runs two preprocessors (Preprocess and Mako), which
-    allow programming constructs (includes, if-tests, function calls)
+    allow programming constructs (includes, if-tests, function calls, variables)
     as part of the text. This feature makes it easy to write *one text*
     with different flavors: long vs short text, Python vs Matlab code
     examples, experimental vs mature content.
