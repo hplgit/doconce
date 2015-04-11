@@ -2580,6 +2580,10 @@ def slides_html():
 
     from html import html_remove_whitespace
     filestr = html_remove_whitespace(filestr)
+    # More fixes for html5 slides
+    filestr = re.sub(r'<section>\s+(?=<h[12])', r'<section>\n', filestr)
+    filestr = re.sub(r'<p>\n</section>', '</section>', filestr)
+    filestr = re.sub(r'\s+</section>', '\n</section>', filestr)
 
     if filestr is not None:
         f = open(filename, 'w')
