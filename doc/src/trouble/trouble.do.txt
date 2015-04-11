@@ -767,6 +767,19 @@ Terminal> doconce subst '\|\\pause\|\n' '' mydoc.tex
 !ec
 before running `pdflatex mydoc`.
 
+===== The cell structure in slides does not work for me ... =====
+
+Common errors:
+
+ * Empty cells? No cell can be empty. Just insert a comment `# Empty cell`
+   to make it non-empty.
+ * Wrong numbering of the cells. They go 00, 01, 02, 10, 11, etc.
+
+Also, text outside the slidecell boxes *are not shown* in the slide.
+Everything you want to see must be inside the cells. Use `<linebreak>`
+repeatedly to insert vertical spacings inside cells.
+
+
 ===== Can I have LaTeX figures with shadows? =====
 
 This is easy by including the `fancybox` and `graphicx` packages

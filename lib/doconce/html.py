@@ -1174,6 +1174,12 @@ def html_code(filestr, code_blocks, code_block_types,
     # Eliminate <p> after </h1>, </h2>, etc.
     #filestr = re.sub(r'(</[hH]\d[^>]*>)\s+<p>', '\g<1>\n', filestr)
     #bad side effect in deck.js slides
+    # Remove remaining too much space before <p>
+    filestr = re.sub(r'\s{3,}<p>', r'\n\n<p>', filestr)
+    # Remove repeated <p>'s
+    filestr = re.sub(r'(\s+<p>){2,}', r'\g<1>', filestr)
+    # Remove <p> + space up to </endtag>
+    filestr = re.sub(r'<p>\s+(?=</)', r'<p>\n', filestr)
 
     return filestr
 

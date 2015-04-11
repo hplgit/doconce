@@ -76,13 +76,18 @@ document is embedded. (Often preferred to run with --no_title)"""),
      """off, inherit, or transparent: enable normal inline verbatim font
 where foreground and background color is inherited from the
 surroundnings (e.g., to avoid the red Boostrap color).
-Default: on (use the css-specified typesetting of <pre> tags)."""),
+Default: on (use the css-specified typesetting of <pre> tags).
+NOTE: the naming "html_code_style" is not optimal: it has nothing
+to do with code block style, but the <code> tag for inline verbatim text
+in the context of bootstrap css styles.
+"""),
     ('--html_pre_style=',
      """off, inherit, or transparent: let code blocks inside <pre> tags have
 foreground and background color inherited from the surroundnings.
 Default: on (use the css-specified typesetting of <pre> tags).
 This option is most relevant for Bootstrap styles to
-avoid white background in code blocks inside colorful admons."""),
+avoid white background in code blocks inside colorful admons.
+"""),
     ('--html_toc_depth=',
      """No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections)."""),
     ('--html_toc_indent=',
