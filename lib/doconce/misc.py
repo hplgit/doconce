@@ -2575,15 +2575,15 @@ def slides_html():
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
+
+        from html import html_remove_whitespace
+        filestr = html_remove_whitespace(filestr)
+        # More fixes for html5 slides
+        filestr = re.sub(r'<section>\s+(?=<h[12])', r'<section>\n', filestr)
+        filestr = re.sub(r'<p>\n</section>', '</section>', filestr)
+        filestr = re.sub(r'\s+</section>', '\n</section>', filestr)
     else:
         print 'unknown slide type "%s"' % slide_type
-
-    from html import html_remove_whitespace
-    filestr = html_remove_whitespace(filestr)
-    # More fixes for html5 slides
-    filestr = re.sub(r'<section>\s+(?=<h[12])', r'<section>\n', filestr)
-    filestr = re.sub(r'<p>\n</section>', '</section>', filestr)
-    filestr = re.sub(r'\s+</section>', '\n</section>', filestr)
 
     if filestr is not None:
         f = open(filename, 'w')
@@ -3180,6 +3180,9 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                         '<!-- end bottom navigation -->\n</p>\n',
                         '<!-- end bottom navigation -->\n</p>%s\n' % ackn1)
 
+        # Remove notes
+        part_text = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', ''
+                           part_text, flags=re.MULTILINE|re.DOTALL)
         # Write part to ._*.html file
         f = open(part_filename, 'w')
         f.write(part_text)
