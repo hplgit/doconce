@@ -3181,7 +3181,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                         '<!-- end bottom navigation -->\n</p>%s\n' % ackn1)
 
         # Remove notes
-        part_text = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', ''
+        part_text = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
                            part_text, flags=re.MULTILINE|re.DOTALL)
         # Write part to ._*.html file
         f = open(part_filename, 'w')
