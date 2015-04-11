@@ -3184,7 +3184,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         part_text = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
                            part_text, flags=re.MULTILINE|re.DOTALL)
         # Fix font size for solarized slides
-        if re.search(r'<link href="http://.+?solarized.*?.css', part_text):
+        if re.search(r'<link href=["']http.+?solarized.*?\.css', part_text):
             part_text = part_text.replace(r'<style type="text/css">',
                                           """<style type="text/css">
 body {font-size: 140%;}
