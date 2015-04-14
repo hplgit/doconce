@@ -928,6 +928,8 @@ Here are some common problems:
 
 ===== How can I change the layout of the HTML page? =====
 
+=== Autoedits of the `.html` file ===
+
 The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 DocOnce document to HTML. The edits should therefore be automated
@@ -943,10 +945,59 @@ doconce replace 'border:1px' 'border:11px' mydoc.html
 doconce replace 'width: 75%;' 'width: 35%' mydoc.html
 !ec
 
+=== Specify a `.css` file ===
+
 Another way to control the layout is to copy the style in the HTML
 file into a `.css` file, edit that file as you like, and provide the
 file as part of the compilation using the `--css=mystyle.css`
-flag.
+flag. For example, say you want to transform the headings to something
+attractive for young girls (white text on pink background). A `.css`
+file can be written from scratch, but one can also generate one from
+one of the built-in DocOnce HTML styles by running
+
+!bc sys
+Terminal> doconce format html mydoc --css=pink.css \
+          --html_style=blueish
+!ec
+The result is a new file `pink.css` containing the specification
+of the `blueish` style. One can now change this `pink.css` file
+to `h1` headings with pink background and white text, `h2` and `h3`
+headings with pink text, and pink color for visited or hovered hyperlinks:
+
+!bc htmlcod
+h1 {
+    font-family:"comic sans ms";
+    width: 900px;
+    font-size: 48px;
+    text-align: center;
+    background: #EA00FF; /* pink */
+    border-style: solid;
+    border-width: 5px;
+    border-color: #FFFFFF;
+    padding: 20px;
+    margin: 20px;
+    margin-left: 10px;
+    color: white
+}
+h2, h3 {
+    font-family:"comic sans ms";
+    font-size: 18px;
+    color: #EA00FF;
+}
+h3 { font-size: 24px; }
+a { color: #1e36ce; text-decoration:none; }
+a:hover, a:visited { color: #EA00FF; /* pink */ }
+...
+!ec
+The rest of the file can remain unaltered. Running
+
+!bc sys
+Terminal> doconce format html mydoc --css=pink.css \
+          --html_style=blueish
+!ec
+will now render `mydoc.html` with pink headings and visited links.
+
+=== Specify a template ===
 
 The standard of way of completely controlling the HTML format is to
 use an HTML template. The DocOnce source is then the body of text
