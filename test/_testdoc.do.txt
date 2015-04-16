@@ -747,7 +747,8 @@ and all the work of
 cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work cite{Langtangen_1988d} and cite{Langtangen_1989e}, and the
 talk cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book cite{Langtangen:91} and the
 cite{Langtangen:94b} OONSKI '94 paper.

@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 5, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 16, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -119,12 +119,12 @@ Terminal&gt; git push origin gh-pages
 </div>
 <div class="section" id="github-gh-pages-will-not-display-files">
 <h3>GitHub gh-pages will not display files<a class="headerlink" href="#github-gh-pages-will-not-display-files" title="Permalink to this headline">¶</a></h3>
-<p>A common error is to link to addresses starting with <tt class="docutils literal"><span class="pre">https//github.com</span></tt>
+<p>A common error is to link to addresses starting with <tt class="docutils literal"><span class="pre">https://github.com</span></tt>
 rather than the required <tt class="docutils literal"><span class="pre">http://username.github.io/</span></tt>.</p>
 </div>
 <div class="section" id="a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">
 <h3>A newline in equations (double backslash) becomes single backslash and eats up spaces<a class="headerlink" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces" title="Permalink to this headline">¶</a></h3>
-<p>This is a problem with the Mako preprocessor and files that have beed
+<p>This is a problem with the Mako preprocessor and files that have been
 edited on Windows.  The remedy is to change the newline character on
 Windows to that in Unix:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce subst &#39;\r\n&#39; &#39;\n&#39; mydoc.do.txt
@@ -198,6 +198,12 @@ work, and <em>thinking constantly about it</em>.</p>
 </div>
 <p>The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is a newline in LaTeX if it has preceding text,
 otherwise it is a <tt class="docutils literal"><span class="pre">\vspace{3mm}</span></tt>. In HTML, <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is <tt class="docutils literal"><span class="pre">&lt;br&gt;</span></tt>.</p>
+<p>More vertical space is obtained by repeated use of <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt>:</p>
+<div class="highlight-text"><div class="highlight"><pre>&lt;linebreak&gt;
+&lt;linebreak&gt;
+&lt;linebreak&gt;
+</pre></div>
+</div>
 </div>
 <div class="section" id="spellcheck-reports-mistakes-that-i-cannot-find">
 <h3>Spellcheck reports mistakes that I cannot find<a class="headerlink" href="#spellcheck-reports-mistakes-that-i-cannot-find" title="Permalink to this headline">¶</a></h3>
@@ -214,6 +220,16 @@ run through the spellchecker (<tt class="docutils literal"><span class="pre">isp
 try to find it in the doconce source code. Very often, strange misspellings
 come from a syntax typo that has led to a strange word in the stripped
 version.</p>
+<p>Wrong typesetting of mathematics can lead to strange errors, e.g.,
+misspellings such as <tt class="docutils literal"><span class="pre">iu</span></tt> because of some math <tt class="docutils literal"><span class="pre">f_iu_i</span></tt> that is
+not properly typeset between dollar signs. Here are some useful grep
+commands to search for such errors:</p>
+<div class="highlight-text"><div class="highlight"><pre>grep --color=auto -E &#39;\biu\b&#39; tmp_stripped_mydoc.do.txt
+grep --color=auto -E &#39; iu&#39; tmp_stripped_mydoc.do.txt
+grep --color=auto -E &#39;iu &#39; tmp_stripped_mydoc.do.txt
+grep --color=auto -E &#39;iu&#39; tmp_stripped_mydoc.do.txt
+</pre></div>
+</div>
 </div>
 <div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
 <h3>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h3>
@@ -386,7 +402,7 @@ and double single quotes to typeset quotes, so the right form is</p>
 <div class="highlight-text"><div class="highlight"><pre>&quot;This is a ``link text&#39;&#39; to google&quot;: &quot;http://google.com&quot;.
 </pre></div>
 </div>
-<p>It appears as</p>
+<p>It appears as (typset in a <tt class="docutils literal"><span class="pre">quote</span></tt> admon):</p>
 <blockquote>
 <div>&#8220;This is a &#8220;link text` to google &lt;<a class="reference external" href="http://google.com">http://google.com</a>&gt;`__.</div></blockquote>
 </div>
@@ -680,6 +696,22 @@ previous paragraph. Make sure the <tt class="docutils literal"><span class="pre"
 and that the rest of the non-LaTeX surrounding text is correctly indented.
 Using paragraphs instead of list items is a good idea also here.</p>
 </div>
+<div class="section" id="latex-code-appears-prior-to-paragraph-headings">
+<h3>LaTeX code appears prior to paragraph headings<a class="headerlink" href="#latex-code-appears-prior-to-paragraph-headings" title="Permalink to this headline">¶</a></h3>
+<p>If you have a paragraph heading and then code right after,</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gu">__Heading.__</span>
+
+<span class="k">!bc</span> pycod
+def f(x):
+    return 42
+<span class="k">!ec</span>
+</pre></div>
+</div>
+<p>the generated LaTeX code is correct, but it is translated to PDF in
+a wrong way such that the heading appears <em>after</em> the code.
+A remedy is to insert some text after the paragraph heading.
+See also the section <a class="reference internal" href="#trouble-bsol-code"><em>Solution heading in exercise solutions appear after the solution content</em></a> - it is the same problem.</p>
+</div>
 </div>
 <div class="section" id="problems-with-rest-sphinx-output">
 <h2>Problems with reST/Sphinx Output<a class="headerlink" href="#problems-with-rest-sphinx-output" title="Permalink to this headline">¶</a></h2>
@@ -813,6 +845,30 @@ or projects. This is a kind of bug in DocOnce that is challenging to fix.
 It is usually only a problem when writing documents mainly containing
 exercises, problems, or projects.</p>
 </div>
+<div class="section" id="i-get-compilation-error-due-to-pause-commands">
+<h3>I get compilation error due to pause commands<a class="headerlink" href="#i-get-compilation-error-due-to-pause-commands" title="Permalink to this headline">¶</a></h3>
+<p>The <tt class="docutils literal"><span class="pre">|\pause|</span></tt> commands are intended for popping up code segments
+in slides. If you compile the document without having run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">slides_beamer</span></tt> first, standard LaTeX have a problem with <tt class="docutils literal"><span class="pre">|\pause|</span></tt>. The remedy is
+to just remove these commands by</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce subst &#39;\|\\pause\|\n&#39; &#39;&#39; mydoc.tex
+</pre></div>
+</div>
+<p>before running <tt class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">mydoc</span></tt>.</p>
+</div>
+<div class="section" id="the-cell-structure-in-slides-does-not-work-for-me">
+<h3>The cell structure in slides does not work for me ...<a class="headerlink" href="#the-cell-structure-in-slides-does-not-work-for-me" title="Permalink to this headline">¶</a></h3>
+<p>Common errors:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Empty cells? No cell can be empty. Just insert a comment <tt class="docutils literal"><span class="pre">#</span> <span class="pre">Empty</span> <span class="pre">cell</span></tt>
+to make it non-empty.</li>
+<li>Wrong numbering of the cells. They go 00, 01, 02, 10, 11, etc.</li>
+</ul>
+</div></blockquote>
+<p>Also, text outside the slidecell boxes <em>are not shown</em> in the slide.
+Everything you want to see must be inside the cells. Use <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt>
+repeatedly to insert vertical spacings inside cells.</p>
+</div>
 <div class="section" id="can-i-have-latex-figures-with-shadows">
 <h3>Can I have LaTeX figures with shadows?<a class="headerlink" href="#can-i-have-latex-figures-with-shadows" title="Permalink to this headline">¶</a></h3>
 <p>This is easy by including the <tt class="docutils literal"><span class="pre">fancybox</span></tt> and <tt class="docutils literal"><span class="pre">graphicx</span></tt> packages
@@ -895,7 +951,7 @@ There are comment lines with <tt class="docutils literal"><span class="pre">---<
 used to replace the whole preamble by something more suitable.</p>
 </div>
 <div class="section" id="solution-heading-in-exercise-solutions-appear-after-the-solution-content">
-<h3>Solution heading in exercise solutions appear after the solution content<a class="headerlink" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content" title="Permalink to this headline">¶</a></h3>
+<span id="trouble-bsol-code"></span><h3>Solution heading in exercise solutions appear after the solution content<a class="headerlink" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes a solution environment with code</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bsol</span>
 <span class="k">!bc</span> cod
@@ -905,7 +961,7 @@ def f(x):
 <span class="k">!esol</span>
 </pre></div>
 </div>
-<p>leads to strange behavior (with the <tt class="docutils literal"><span class="pre">shadedquoteBlue</span></tt> verbatim LaTeX
+<p>leads to strange behavior with verbatim LaTeX
 environment: the <strong>Solution</strong> heading appears after the code
 in the solution. This appears to be a LaTeX problem since the
 generated LaTeX code has the heading and solution content in the right
@@ -953,6 +1009,8 @@ from copying and pasting equations)</li>
 </div>
 <div class="section" id="how-can-i-change-the-layout-of-the-html-page">
 <h3>How can I change the layout of the HTML page?<a class="headerlink" href="#how-can-i-change-the-layout-of-the-html-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="autoedits-of-the-html-file">
+<h4>Autoedits of the <tt class="docutils literal"><span class="pre">.html</span></tt> file<a class="headerlink" href="#autoedits-of-the-html-file" title="Permalink to this headline">¶</a></h4>
 <p>The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 DocOnce document to HTML. The edits should therefore be automated
@@ -966,10 +1024,58 @@ specification:</p>
 doconce replace <span class="s1">&#39;width: 75%;&#39;</span> <span class="s1">&#39;width: 35%&#39;</span> mydoc.html
 </pre></div>
 </div>
+</div>
+<div class="section" id="specify-a-css-file">
+<h4>Specify a <tt class="docutils literal"><span class="pre">.css</span></tt> file<a class="headerlink" href="#specify-a-css-file" title="Permalink to this headline">¶</a></h4>
 <p>Another way to control the layout is to copy the style in the HTML
 file into a <tt class="docutils literal"><span class="pre">.css</span></tt> file, edit that file as you like, and provide the
 file as part of the compilation using the <tt class="docutils literal"><span class="pre">--css=mystyle.css</span></tt>
-flag.</p>
+flag. For example, say you want to transform the headings to something
+attractive for young girls (white text on pink background). A <tt class="docutils literal"><span class="pre">.css</span></tt>
+file can be written from scratch, but one can also generate one from
+one of the built-in DocOnce HTML styles by running</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --css=pink.css \
+          --html_style=blueish
+</pre></div>
+</div>
+<p>The result is a new file <tt class="docutils literal"><span class="pre">pink.css</span></tt> containing the specification
+of the <tt class="docutils literal"><span class="pre">blueish</span></tt> style. One can now change this <tt class="docutils literal"><span class="pre">pink.css</span></tt> file
+to <tt class="docutils literal"><span class="pre">h1</span></tt> headings with pink background and white text, <tt class="docutils literal"><span class="pre">h2</span></tt> and <tt class="docutils literal"><span class="pre">h3</span></tt>
+headings with pink text, and pink color for visited or hovered hyperlinks:</p>
+<div class="highlight-html"><div class="highlight"><pre>h1 {
+    font-family:&quot;comic sans ms&quot;;
+    width: 900px;
+    font-size: 48px;
+    text-align: center;
+    background: #EA00FF; /* pink */
+    border-style: solid;
+    border-width: 5px;
+    border-color: #FFFFFF;
+    padding: 20px;
+    margin: 20px;
+    margin-left: 10px;
+    color: white
+}
+h2, h3 {
+    font-family:&quot;comic sans ms&quot;;
+    font-size: 18px;
+    color: #EA00FF;
+}
+h3 { font-size: 24px; }
+a { color: #1e36ce; text-decoration:none; }
+a:hover, a:visited { color: #EA00FF; /* pink */ }
+...
+</pre></div>
+</div>
+<p>The rest of the file can remain unaltered. Running</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --css=pink.css \
+          --html_style=blueish
+</pre></div>
+</div>
+<p>will now render <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> with pink headings and visited links.</p>
+</div>
+<div class="section" id="specify-a-template">
+<h4>Specify a template<a class="headerlink" href="#specify-a-template" title="Permalink to this headline">¶</a></h4>
 <p>The standard of way of completely controlling the HTML format is to
 use an HTML template. The DocOnce source is then the body of text
 (leave out <tt class="docutils literal"><span class="pre">TITLE:</span></tt> to get HTML without a header and footer). The
@@ -982,6 +1088,7 @@ is used (if installed) and can be turned off by <tt class="docutils literal"><sp
 (leaving code in gray boxes).</p>
 <p>The easiest way is to get fancy layouts in HTML is to
 use the <tt class="docutils literal"><span class="pre">sphinx</span></tt> format and one its many themes.</p>
+</div>
 </div>
 <div class="section" id="why-do-figures-look-ugly-when-using-html-templates">
 <h3>Why do figures look ugly when using HTML templates?<a class="headerlink" href="#why-do-figures-look-ugly-when-using-html-templates" title="Permalink to this headline">¶</a></h3>
@@ -1095,6 +1202,7 @@ clickable.</p>
 <li><a class="reference internal" href="#code-tex-block-is-not-shown-in-rest-format">Code/TeX block is not shown in reST format</a></li>
 <li><a class="reference internal" href="#verbatim-code-blocks-inside-lists-look-ugly">Verbatim code blocks inside lists look ugly</a></li>
 <li><a class="reference internal" href="#latex-code-blocks-inside-lists-look-ugly">LaTeX code blocks inside lists look ugly</a></li>
+<li><a class="reference internal" href="#latex-code-appears-prior-to-paragraph-headings">LaTeX code appears prior to paragraph headings</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
@@ -1114,6 +1222,8 @@ clickable.</p>
 <li><a class="reference internal" href="#error-when-running-latex-you-must-have-pygmentize-installed">Error when running latex: You must have &#8216;pygmentize&#8217; installed</a></li>
 <li><a class="reference internal" href="#why-are-the-latex-section-headings-smaller-than-normal">Why are the LaTeX section headings smaller than normal?</a></li>
 <li><a class="reference internal" href="#i-get-latex-compilation-errors-about-shadedquoteblue-in-code-blocks-in-exercises">I get LaTeX compilation errors about &#8220;shadedquoteBlue&#8221; in code blocks in exercises</a></li>
+<li><a class="reference internal" href="#i-get-compilation-error-due-to-pause-commands">I get compilation error due to pause commands</a></li>
+<li><a class="reference internal" href="#the-cell-structure-in-slides-does-not-work-for-me">The cell structure in slides does not work for me ...</a></li>
 <li><a class="reference internal" href="#can-i-have-latex-figures-with-shadows">Can I have LaTeX figures with shadows?</a></li>
 <li><a class="reference internal" href="#how-can-i-use-my-fancy-latex-environments">How can I use my fancy LaTeX environments?</a></li>
 <li><a class="reference internal" href="#the-latex-file-does-not-compile">The LaTeX file does not compile</a></li>
@@ -1132,7 +1242,12 @@ clickable.</p>
 </li>
 <li><a class="reference internal" href="#problems-with-html-output">Problems with HTML Output</a><ul>
 <li><a class="reference internal" href="#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
-<li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a></li>
+<li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a><ul>
+<li><a class="reference internal" href="#autoedits-of-the-html-file">Autoedits of the <tt class="docutils literal"><span class="pre">.html</span></tt> file</a></li>
+<li><a class="reference internal" href="#specify-a-css-file">Specify a <tt class="docutils literal"><span class="pre">.css</span></tt> file</a></li>
+<li><a class="reference internal" href="#specify-a-template">Specify a template</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#why-do-figures-look-ugly-when-using-html-templates">Why do figures look ugly when using HTML templates?</a></li>
 </ul>
 </li>

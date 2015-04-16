@@ -1410,7 +1410,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         f.close()
         #print 'solutions to exercises in', dofile_basename
 
-        pattern = '^={5,7} (References|Bibliography) ={5,7}'
+        pattern = '(^={5,7} (References|Bibliography) ={5,7})'
         sol_sec = '======= Solutions =======\nlabel{sec:solutions}\n\n' + \
                   solutions
         if re.search(pattern, filestr, flags=re.MULTILINE):

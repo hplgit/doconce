@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Apr 5, 2015
+:Date: Apr 16, 2015
 
 
 .. admonition:: Disclaimer
@@ -52,13 +52,13 @@ A typical fix is
 GitHub gh-pages will not display files
 --------------------------------------
 
-A common error is to link to addresses starting with ``https//github.com``
+A common error is to link to addresses starting with ``https://github.com``
 rather than the required ``http://username.github.io/``.
 
 A newline in equations (double backslash) becomes single backslash and eats up spaces
 -------------------------------------------------------------------------------------
 
-This is a problem with the Mako preprocessor and files that have beed
+This is a problem with the Mako preprocessor and files that have been
 edited on Windows.  The remedy is to change the newline character on
 Windows to that in Unix:
 
@@ -151,6 +151,14 @@ Without ``<linebreak>`` the rendering becomes
 The ``<linebreak>`` is a newline in LaTeX if it has preceding text,
 otherwise it is a ``\vspace{3mm}``. In HTML, ``<linebreak>`` is ``<br>``.
 
+More vertical space is obtained by repeated use of ``<linebreak>``:
+
+.. code-block:: text
+
+        <linebreak>
+        <linebreak>
+        <linebreak>
+
 Spellcheck reports mistakes that I cannot find
 ----------------------------------------------
 
@@ -169,6 +177,18 @@ run through the spellchecker (``ispell``). Search for the misspelled word there 
 try to find it in the doconce source code. Very often, strange misspellings
 come from a syntax typo that has led to a strange word in the stripped
 version.
+
+Wrong typesetting of mathematics can lead to strange errors, e.g.,
+misspellings such as ``iu`` because of some math ``f_iu_i`` that is
+not properly typeset between dollar signs. Here are some useful grep
+commands to search for such errors:
+
+.. code-block:: text
+
+        grep --color=auto -E '\biu\b' tmp_stripped_mydoc.do.txt
+        grep --color=auto -E ' iu' tmp_stripped_mydoc.do.txt
+        grep --color=auto -E 'iu ' tmp_stripped_mydoc.do.txt
+        grep --color=auto -E 'iu' tmp_stripped_mydoc.do.txt
 
 Spellcheck reports a lot of mistakes related to LaTeX math
 ----------------------------------------------------------
@@ -376,7 +396,7 @@ and double single quotes to typeset quotes, so the right form is
 
         "This is a ``link text'' to google": "http://google.com".
 
-It appears as
+It appears as (typset in a ``quote`` admon):
 
 
 ..
@@ -716,6 +736,25 @@ previous paragraph. Make sure the ``!bt`` and ``!et`` tags are in column 1
 and that the rest of the non-LaTeX surrounding text is correctly indented.
 Using paragraphs instead of list items is a good idea also here.
 
+LaTeX code appears prior to paragraph headings
+----------------------------------------------
+
+If you have a paragraph heading and then code right after,
+
+.. code-block:: doconce
+
+        __Heading.__
+        
+        !bc pycod
+        def f(x):
+            return 42
+        !ec
+
+the generated LaTeX code is correct, but it is translated to PDF in
+a wrong way such that the heading appears *after* the code.
+A remedy is to insert some text after the paragraph heading.
+See also the section :ref:`trouble:bsol:code` - it is the same problem.
+
 .. !split
 
 Problems with reST/Sphinx Output
@@ -879,6 +918,33 @@ or projects. This is a kind of bug in DocOnce that is challenging to fix.
 It is usually only a problem when writing documents mainly containing
 exercises, problems, or projects.
 
+I get compilation error due to pause commands
+---------------------------------------------
+
+The ``|\pause|`` commands are intended for popping up code segments
+in slides. If you compile the document without having run ``doconce slides_beamer`` first, standard LaTeX have a problem with ``|\pause|``. The remedy is
+to just remove these commands by
+
+.. code-block:: text
+
+        Terminal> doconce subst '\|\\pause\|\n' '' mydoc.tex
+
+before running ``pdflatex mydoc``.
+
+The cell structure in slides does not work for me ...
+-----------------------------------------------------
+
+Common errors:
+
+ * Empty cells? No cell can be empty. Just insert a comment ``# Empty cell``
+   to make it non-empty.
+
+ * Wrong numbering of the cells. They go 00, 01, 02, 10, 11, etc.
+
+Also, text outside the slidecell boxes *are not shown* in the slide.
+Everything you want to see must be inside the cells. Use ``<linebreak>``
+repeatedly to insert vertical spacings inside cells.
+
 Can I have LaTeX figures with shadows?
 --------------------------------------
 
@@ -981,6 +1047,8 @@ There are comment lines with ``--- begin preamble ---`` and
 ``--- end preamble ---`` in the generate ``.p.tex`` file that can be
 used to replace the whole preamble by something more suitable.
 
+.. _trouble:bsol:code:
+
 Solution heading in exercise solutions appear after the solution content
 ------------------------------------------------------------------------
 
@@ -995,7 +1063,7 @@ Sometimes a solution environment with code
         !ec
         !esol
 
-leads to strange behavior (with the ``shadedquoteBlue`` verbatim LaTeX
+leads to strange behavior with verbatim LaTeX
 environment: the **Solution** heading appears after the code
 in the solution. This appears to be a LaTeX problem since the
 generated LaTeX code has the heading and solution content in the right
@@ -1050,6 +1118,9 @@ Here are some common problems:
 How can I change the layout of the HTML page?
 ---------------------------------------------
 
+Autoedits of the ``.html`` file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 DocOnce document to HTML. The edits should therefore be automated
@@ -1065,10 +1136,64 @@ specification:
         doconce replace 'border:1px' 'border:11px' mydoc.html
         doconce replace 'width: 75%;' 'width: 35%' mydoc.html
 
+Specify a ``.css`` file
+~~~~~~~~~~~~~~~~~~~~~~~
+
 Another way to control the layout is to copy the style in the HTML
 file into a ``.css`` file, edit that file as you like, and provide the
 file as part of the compilation using the ``--css=mystyle.css``
-flag.
+flag. For example, say you want to transform the headings to something
+attractive for young girls (white text on pink background). A ``.css``
+file can be written from scratch, but one can also generate one from
+one of the built-in DocOnce HTML styles by running
+
+.. code-block:: text
+
+        Terminal> doconce format html mydoc --css=pink.css \
+                  --html_style=blueish
+
+The result is a new file ``pink.css`` containing the specification
+of the ``blueish`` style. One can now change this ``pink.css`` file
+to ``h1`` headings with pink background and white text, ``h2`` and ``h3``
+headings with pink text, and pink color for visited or hovered hyperlinks:
+
+.. code-block:: html
+
+        h1 {
+            font-family:"comic sans ms";
+            width: 900px;
+            font-size: 48px;
+            text-align: center;
+            background: #EA00FF; /* pink */
+            border-style: solid;
+            border-width: 5px;
+            border-color: #FFFFFF;
+            padding: 20px;
+            margin: 20px;
+            margin-left: 10px;
+            color: white
+        }
+        h2, h3 {
+            font-family:"comic sans ms";
+            font-size: 18px;
+            color: #EA00FF;
+        }
+        h3 { font-size: 24px; }
+        a { color: #1e36ce; text-decoration:none; }
+        a:hover, a:visited { color: #EA00FF; /* pink */ }
+        ...
+
+The rest of the file can remain unaltered. Running
+
+.. code-block:: text
+
+        Terminal> doconce format html mydoc --css=pink.css \
+                  --html_style=blueish
+
+will now render ``mydoc.html`` with pink headings and visited links.
+
+Specify a template
+~~~~~~~~~~~~~~~~~~
 
 The standard of way of completely controlling the HTML format is to
 use an HTML template. The DocOnce source is then the body of text
