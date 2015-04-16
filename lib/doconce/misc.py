@@ -2433,6 +2433,18 @@ def split_html():
         print ', '.join(files)
 
     if method != 'split':
+        # Remove notes
+        filestr = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
+                         filestr, flags=re.MULTILINE|re.DOTALL)
+        # Fix font size for solarized slides
+        if re.search(r'''<link href=["']http.+?solarized.*?\.css''', filestr):
+            filestr = filestr.replace(r'<style type="text/css">',
+                                      """<style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+""")
+
         f = open(filename, 'w')
         f.write(filestr)
         f.close()
@@ -2581,6 +2593,17 @@ def slides_html():
     elif slide_type in ('reveal', 'csss', 'dzslides', 'deck', 'html5slides'):
         filestr = generate_html5_slides(header, parts, footer,
                                         basename, filename, slide_type)
+    else:
+        print 'unknown slide type "%s"' % slide_type
+
+    if filestr is not None:
+        # Make whitespace nicer (clean up code)
+        from html import html_remove_whitespace
+        filestr = html_remove_whitespace(filestr)
+        # More fixes for html5 slides
+        filestr = re.sub(r'<section>\s+(?=<h[12])', r'<section>\n', filestr)
+        filestr = re.sub(r'<p>\n</section>', '</section>', filestr)
+        filestr = re.sub(r'\s+</section>', '\n</section>', filestr)
 
         from html import html_remove_whitespace
         filestr = html_remove_whitespace(filestr)
@@ -2588,10 +2611,7 @@ def slides_html():
         filestr = re.sub(r'<section>\s+(?=<h[12])', r'<section>\n', filestr)
         filestr = re.sub(r'<p>\n</section>', '</section>', filestr)
         filestr = re.sub(r'\s+</section>', '\n</section>', filestr)
-    else:
-        print 'unknown slide type "%s"' % slide_type
 
-    if filestr is not None:
         f = open(filename, 'w')
         f.write(filestr)
         f.close()
@@ -3193,10 +3213,11 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         if re.search(r'''<link href=["']http.+?solarized.*?\.css''', part_text):
             part_text = part_text.replace(r'<style type="text/css">',
                                           """<style type="text/css">
-body {font-size: 140%;}
+body, td {font-size: 140%;}
 h1 {font-size: 200%;}
 h2 {font-size: 180%;}
 """)
+
         # Write part to ._*.html file
         f = open(part_filename, 'w')
         f.write(part_text)
@@ -4960,6 +4981,9 @@ code {
     #                 '.center[<img src="\g<2>" width=80%/>]',
     #                 filestr, flags=re.MULTILINE)
 
+    # Remove notes
+    filestr = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
+                     filestr, flags=re.MULTILINE|re.DOTALL)
     lines = filestr.splitlines()
     # Find title, author and date
     title = ''

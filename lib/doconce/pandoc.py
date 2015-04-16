@@ -398,6 +398,13 @@ def pandoc_quiz(quiz):
         text += '%s %s\n\n' % (choice_prefix, choice[1])
     return text
 
+def pandoc_linebreak(m):
+    # orig: r'\g<text>\\n',
+    text = m.group('text')
+    if option('github_md'):
+        return text + '<br />'
+    else:
+        return text + r'\\n'
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -448,7 +455,7 @@ def define(FILENAME_EXTENSION,
         'paragraph':     r'*\g<subst>*\g<space>',
         'abstract':      r'*\g<type>.* \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',
-        'linebreak':     r'\g<text>\\n',
+        'linebreak':     pandoc_linebreak,
         'non-breaking-space': '\\ ',
         'ampersand2':    r' \g<1>&\g<2>',
         }

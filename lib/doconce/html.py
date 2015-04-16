@@ -2401,7 +2401,7 @@ div { text-align: justify; text-justify: inter-word; }
                     f.write(css)
                     f.close()
                 style += '<link rel="stylesheet" href="%s">\n' % css_filename
-                add_to_file_collection(filename)
+                add_to_file_collection(css_filename)
 
 
     if html_style.startswith('boots'):
