@@ -290,22 +290,22 @@ doconce split_html demo --method=space8
 "HTML solarized": "demo_html_solarized.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 1)
 
 !bc sys
-doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized
-doconce slides_html demo doconce --method=split --nav_button=text
+doconce format html demo --html_style=solarized SLIDE_TYPE=html SLIDE_THEME=solarized
+doconce slides_html demo doconce --method=split --nav_button=gray2,bottom --font_size=slides
 !ec
 
 "HTML solarized2": "demo_html_solarized2.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 2)
 
 !bc sys
 doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized2
-doconce slides_html demo doconce --method=split --nav_button=text
+doconce slides_html demo doconce --method=split --nav_button=gray2,bottom --font_size=slides
 !ec
 
 "HTML solarized3": "demo_html_solarized3.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 3)
 
 !bc sys
 doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized3
-doconce slides_html demo doconce --nav_button=text
+doconce slides_html demo doconce  --nav_button=gray2,bottom --font_size=slides
 !ec
 
 "HTML solarized3 dark": "demo_html_solarized3_dark.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 3)

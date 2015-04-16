@@ -1607,6 +1607,10 @@ Automatically generated HTML file from DocOnce source
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+
 /* solarized style */
 body {
   margin:5;
@@ -24648,9 +24652,9 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 The following attempt to exemplify colored text does not work in
 format pandoc.
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
-green color containing a linebreak\n
-code.</font> Some formats will only display \n
-this correctly when `html` \n
+green color containing a linebreak\\n
+code.</font> Some formats will only display \\n
+this correctly when `html` \\n
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -30776,6 +30780,10 @@ Automatically generated HTML file from DocOnce source
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+
 /* solarized style */
 body {
   margin:5;
@@ -31120,6 +31128,10 @@ Automatically generated HTML file from DocOnce source
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+
 /* solarized style */
 body {
   margin:5;
@@ -32529,6 +32541,10 @@ Automatically generated HTML file from DocOnce source
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+
 /* solarized style */
 body {
   margin:5;
@@ -33483,6 +33499,10 @@ Automatically generated HTML file from DocOnce source
 <script>hljs.initHighlightingOnLoad();</script>
 
 <style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+
 /* solarized style */
 body {
   margin:5;
@@ -40834,7 +40854,7 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html --nav_button=gray2,bottom
+system doconce split_html testdoc.html --nav_button=gray2,bottom --font_size=slides
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
@@ -40975,7 +40995,7 @@ system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
 system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3 $rawgit
-system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
+system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue,bottom --font_size=slides
 
 rm -f *.aux
 theme=red3
@@ -58862,23 +58882,16 @@ MathJax.Hub.Config({
 <center>[2] <b>University of Oslo</b></center>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
-<p>
-
 </section>
 
 
 <section>
-
 <h1 id="___sec0">This is the first section </h1>
 <!-- Short title: First -->
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec1">Figure and bullet list </h2>
 
 <p>
@@ -58889,12 +58902,13 @@ MathJax.Hub.Config({
 
 <div class="fragment alert alert-block alert-block alert-text-small">
 <b>Title with comma, and brackets: \( [a,b] \).</b>
-<p>
-
 <ul>
-  <p><li class="fragment"> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
-  <p><li class="fragment"> It moves with velocity \( c \)</li>
-  <p><li class="fragment"> But here it is just a figure</li>
+
+<p><li class="fragment"> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
+
+<p><li class="fragment"> It moves with velocity \( c \)</li>
+
+<p><li class="fragment"> But here it is just a figure</li>
 </ul>
 </div>
 
@@ -58910,18 +58924,10 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec2">Slide with pop-ups in red and notes </h2>
 
 <p>
@@ -58943,7 +58949,6 @@ And a line more
 
 </p>
 
-
 <p>
 <aside class="notes">
 <!-- click "s" to activate -->
@@ -58952,18 +58957,11 @@ One can also have ordinary notes.
 Over multiple lines.
 
 </aside>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec3">A LaTeX document </h2>
-
-<p>
 
 <p>
 
@@ -58980,18 +58978,11 @@ Jane Doe<span style="color: #8B008B; font-weight: bold">\footnote</span><span st
 </pre></div>
 <p>
 
-
-<p>
-
 <div class="fragment alert alert-block alert-notice alert-text-normal">
 <b>Notice.</b>
 <p>
 LaTeX has a lot of backslashes.
 </div>
-
-
-
-<p>
 
 <p>
 
@@ -59000,16 +58991,10 @@ LaTeX has a lot of backslashes.
 bla-bla
 <span style="color: #8B008B; font-weight: bold">\end</span><span style="color: #658b00">{</span>document<span style="color: #658b00">}</span>
 </pre></div>
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec4">An HTML document </h2>
 
 <p>
@@ -59021,13 +59006,10 @@ bla-bla
 <span style="color: #8B008B; font-weight: bold">&lt;/body&gt;</span>
 <span style="color: #8B008B; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h1 id="___sec5">Second section </h1>
 
 <p>
@@ -59036,26 +59018,19 @@ bla-bla
 <p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=600></p></center>
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec6">Some math and computer code </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>A simple, mathematical formula where \( t\in [0,\pi] \):</b>
-<p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 <p>&nbsp;<br>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -59075,15 +59050,10 @@ style):
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec7">Pop ups inside code blocks (for Beamer slides only) </h2>
 
 <p>
@@ -59097,13 +59067,10 @@ style):
 
 <span style="color: #8B008B; font-weight: bold">print</span> g(<span style="color: #B452CD">13</span>)
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec8">Various admon blocks </h2>
 
 <p>
@@ -59113,13 +59080,10 @@ Can use admons to simulate blocks:
 
 <div class="fragment alert alert-block alert-notice alert-text-large">
 <b>Key PDE (with large title and math font):</b>
-<p>
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
 </div>
-
-
 
 <p>
 
@@ -59129,8 +59093,6 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
-
-
 
 <p>
 
@@ -59142,10 +59104,6 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
-
-
-
-
 </section>
 
 
@@ -59597,22 +59555,22 @@ doconce slides_html slides1 html5slides --html_slide_theme=template-default
 cp slides1.html slides1_html5slides_template-default.html
 
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3 --html_style=solarized3 --html_output=slides1_html_solarized3
-doconce slides_html slides1_html_solarized3 doconce --nav_button=text
+doconce slides_html slides1_html_solarized3 doconce --nav_button=gray2,bottom --font_size=slides
 
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized2 --html_style=solarized2 --html_output=slides1_html_solarized2
-doconce slides_html slides1_html_solarized2 doconce --nav_button=text
+doconce slides_html slides1_html_solarized2 doconce --nav_button=gray2,bottom --font_size=slides
 
 doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish --html_output=slides1_html_bloodish
 doconce split_html slides1_html_bloodish --method=space8  # one long file
 
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized --html_output=slides1_html_solarized
-doconce slides_html slides1_html_solarized doconce --nav_button=text
+doconce slides_html slides1_html_solarized doconce --nav_button=gray2,bottom --font_size=slides
 
 doconce format html slides1 --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish --html_output=slides1_html_blueish
 doconce split_html slides1_html_blueish --method=colorline  # one long file
 
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3_dark --html_style=solarized3_dark --html_output=slides1_html_solarized3_dark
-doconce slides_html slides1_html_solarized3_dark doconce --nav_button=text
+doconce slides_html slides1_html_solarized3_dark doconce --nav_button=gray2,bottom --font_size=slides
 
 doconce format html slides1 --pygments_html_style=autumn --keep_pygments_html_bg SLIDE_TYPE=dzslides SLIDE_THEME=dzslides_default
 doconce slides_html slides1 dzslides --html_slide_theme=dzslides_default
@@ -60159,8 +60117,6 @@ MathJax.Hub.Config({
 <section class="slide">
 <!-- ------------------- main content ---------------------- -->
 
-
-
 <h2 style="text-align: center;">Document for Testing Some Basic and Some Challenging Constructs in DocOnce Slides</h2>  <!-- document title -->
 
 <p>
@@ -60177,8 +60133,6 @@ MathJax.Hub.Config({
 <center>[2] <b style="font-weight: bold">University of Oslo</b></center>
 <p>
 <center><b style="font-weight: bold">Jan 32, 2100</b></center> <!-- date -->
-<p>
-
 </section>
 
 
@@ -60186,9 +60140,6 @@ MathJax.Hub.Config({
 
 <h1 id="___sec0">This is the first section </h1>
 <!-- Short title: First -->
-
-<p>
-
 </section>
 
 
@@ -60204,12 +60155,13 @@ MathJax.Hub.Config({
 
 <div class="slide alert alert-block alert-block alert-text-small">
 <b style="font-weight: bold">Title with comma, and brackets: \( [a,b] \).</b>
-<p>
-
 <ul>
-  <p><li class="slide"> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
-  <p><li class="slide"> It moves with velocity \( c \)</li>
-  <p><li class="slide"> But here it is just a figure</li>
+
+<p><li class="slide"> Here is a <em>wave signal</em> \( f(x-ct) \)</li>
+
+<p><li class="slide"> It moves with velocity \( c \)</li>
+
+<p><li class="slide"> But here it is just a figure</li>
 </ul>
 </div>
 
@@ -60225,13 +60177,6 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
@@ -60254,7 +60199,6 @@ And a line more
 
 </p>
 
-
 <p>
 <div class="notes">
 <!-- press "n" to activate -->
@@ -60263,18 +60207,12 @@ One can also have ordinary notes.
 Over multiple lines.
 
 </div>
-
-
-<p>
-
 </section>
 
 
 <section class="slide">
 
 <h2 id="___sec3">A LaTeX document </h2>
-
-<p>
 
 <p>
 
@@ -60291,18 +60229,11 @@ Jane Doe<span style="color: #AA22FF; font-weight: bold">\footnote</span><span st
 </pre></div>
 <p>
 
-
-<p>
-
 <div class="slide alert alert-block alert-notice alert-text-normal">
 <b style="font-weight: bold">Notice.</b>
 <p>
 LaTeX has a lot of backslashes.
 </div>
-
-
-
-<p>
 
 <p>
 
@@ -60311,11 +60242,6 @@ LaTeX has a lot of backslashes.
 bla-bla
 <span style="color: #AA22FF; font-weight: bold">\end</span><span style="color: #AA22FF">{</span>document<span style="color: #AA22FF">}</span>
 </pre></div>
-<p>
-
-
-<p>
-
 </section>
 
 
@@ -60332,8 +60258,6 @@ bla-bla
 <span style="color: #008000; font-weight: bold">&lt;/body&gt;</span>
 <span style="color: #008000; font-weight: bold">&lt;/html&gt;</span>
 </pre></div>
-<p>
-
 </section>
 
 
@@ -60347,10 +60271,6 @@ bla-bla
 <p>
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=600></p></center>
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -60361,12 +60281,10 @@ bla-bla
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b style="font-weight: bold">A simple, mathematical formula where \( t\in [0,\pi] \):</b>
-<p>
 <p>&nbsp;<br>
 $$ f(x,y,t) = e^{-xt}\sin\pi y $$
 <p>&nbsp;<br>
 </div>
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -60386,10 +60304,6 @@ style):
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -60408,8 +60322,6 @@ style):
 
 <span style="color: #AA22FF; font-weight: bold">print</span> g(<span style="color: #666666">13</span>)
 </pre></div>
-<p>
-
 </section>
 
 
@@ -60424,13 +60336,10 @@ Can use admons to simulate blocks:
 
 <div class="slide alert alert-block alert-notice alert-text-large">
 <b style="font-weight: bold">Key PDE (with large title and math font):</b>
-<p>
 <p>&nbsp;<br>
 $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 <p>&nbsp;<br>
 </div>
-
-
 
 <p>
 
@@ -60440,8 +60349,6 @@ $$ \frac{\partial u}{\partial t} = \nabla^2 u $$
 Just some block with text and a conclusion that something is important.
 This one pops up after the rest of the slide.
 </div>
-
-
 
 <p>
 
@@ -60453,10 +60360,6 @@ inside preprocess/mako if statements to turn notes on and off.
 This one is typeset in a small font and with the default
 title (Warning) since no title is specified.
 </div>
-
-
-
-
 </section>
 
 
@@ -60916,13 +60819,8 @@ class: center, middle
 [hpl 1: Comments are typeset as usual in DocOnce.]
 
 <!-- !bpop highlight-red -->
-Here we have a paragraph to pop up in red.\n
+Here we have a paragraph to pop up in red.<br />
 And a line more
-<!-- !bnotes -->
-One can also have ordinary notes.
-Over multiple lines.
-<!-- !enotes -->
-
 ---
 
 ## A LaTeX document
@@ -63003,14 +62901,10 @@ MathJax.Hub.Config({
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
 <center><p><img src="../doc/src/slides/fig/doconce1b.png" align="bottom" width=400></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2>Table of contents</h2>
 
 <p>
@@ -63046,13 +62940,10 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec30"> DocOnce: example on slide code </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec31"> Headline </a><br>
 </p>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec0">Scientific writing for the future needs to address many new media </h2>
 
 <p>
@@ -63075,30 +62966,18 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec1">The book will probably survive </h2>
 
 <p>
 <center><p><img src="../doc/src/slides/fig/oldbooks.jpg" align="bottom" width=800></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec2">The classical report will survive </h2>
 
 <p>
@@ -63113,39 +62992,29 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec3">Scope </h2>
 
 <p>
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
 
-<p>
-
-
 <ul>
-  <p><li class="fragment"> Scope: documents with <font color="red">much</font> <em>math</em> and <em>computer code</em></li>
-  <p><li class="fragment"> Key question: What tools should I use for writing?</li>
-  <p><li class="fragment"> Default answer: LaTeX</li>
-  <p><li class="fragment"> Alternative: MS Word w/math</li>
-  <p><li class="fragment"> Recent popular alternative tools: HTML w/MathJax,
+
+<p><li class="fragment"> Scope: documents with <font color="red">much</font> <em>math</em> and <em>computer code</em></li>
+
+<p><li class="fragment"> Key question: What tools should I use for writing?</li>
+
+<p><li class="fragment"> Default answer: LaTeX</li>
+
+<p><li class="fragment"> Alternative: MS Word w/math</li>
+
+<p><li class="fragment"> Recent popular alternative tools: HTML w/MathJax,
     Sphinx, Markdown, MediaWiki, IPython notebook</li>
 </ul>
-<p>
-
-
-
 <p>
 
 <table border="0">
@@ -63172,30 +63041,10 @@ MathJax.Hub.Config({
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
-
-<p>
-
-
-<p>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec4">Scientific writing for the future needs to address many new media </h2>
 
 <p>
@@ -63209,33 +63058,30 @@ MathJax.Hub.Config({
 Old days (1985-2005): LaTeX for BW paper output, but now
 
 <ol>
-  <p><li> BW books</li>
-  <p><li> Colorful PDF books (printed and screen)</li>
-  <p><li> Designed web pages</li>
-  <p><li> Wikis</li>
-  <p><li> Blog posts</li>
-  <p><li> Next new fancy format (iBook w/LaTeX?)</li>
+
+<p><li> BW books</li>
+
+<p><li> Colorful PDF books (printed and screen)</li>
+
+<p><li> Designed web pages</li>
+
+<p><li> Wikis</li>
+
+<p><li> Blog posts</li>
+
+<p><li> Next new fancy format (iBook w/LaTeX?)</li>
 </ol>
 <p>
-
 </td>
 <td class="padding">
 <center><p><img src="../doc/src/slides/fig/jungle_with_mess.jpg" align="bottom" width=500></p></center>
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec5">Fundamental question </h2>
 
 <p>
@@ -63264,15 +63110,10 @@ Probably not, but I have a solution :-)
 </span>
 
 </p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec6">LaTeX is very rich; other tools support only some elements </h2>
 
 <ul>
@@ -63280,28 +63121,25 @@ Probably not, but I have a solution :-)
  <p><li> LaTeX equation math:</li>
 
 <ul>
-    <p><li> <b>LaTeX</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code> +
+
+<p><li> <b>LaTeX</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code> +
       <code>eqnarray</code>, <code>split</code>, <code>alignat</code>, ... (numerous!)</li>
-    <p><li> <b>MathJax</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code></li>
-    <p><li> <b>MediaWiki</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code></li>
-    <p><li> <b>Sphinx</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code></li>
-    <p><li> <b>Markdown</b>: <code>equation*</code>, <code>equation</code>, <code>eqnarray*</code>, <code>align*</code> (but no labels)</li>
+
+<p><li> <b>MathJax</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code></li>
+
+<p><li> <b>MediaWiki</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code>, <code>align</code></li>
+
+<p><li> <b>Sphinx</b>: <code>equation*</code>, <code>equation</code>, <code>align*</code></li>
+
+<p><li> <b>Markdown</b>: <code>equation*</code>, <code>equation</code>, <code>eqnarray*</code>, <code>align*</code> (but no labels)</li>
 </ul>
 <p>
-
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec7">LaTeX is very rich; other tools support only some elements </h2>
-
-<p>
-
 
 <ul>
  <p><li class="fragment"> Figures: all</li>
@@ -63319,25 +63157,16 @@ Probably not, but I have a solution :-)
 </ul>
 <p>
 
-
-
-<p>
-
 <p class="fragment">
 
 Conclusion: Highly non-trivial to translate a LaTeX document into something
 based on HTML and vice versa.
 
 </p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec8">DocOnce demo </h2>
 
 <p>
@@ -63351,23 +63180,15 @@ based on HTML and vice versa.
  <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" target="_self">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
  <p><li> DocOnce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_self">source code</a> and <a href="http://hplgit.github.io/doconce/doc/src/pub/manual/html/manual.html" target="_self">manual</a></li>
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h1 id="___sec9">A tour of DocOnce </h1>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec10">DocOnce: title, authors, date, toc </h2>
 
 <p>
@@ -63387,15 +63208,10 @@ TOC: on
 <p>
 Title and authors must have all information <em>on a single line</em>!
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec11">DocOnce: abstract </h2>
 
 <p>
@@ -63412,13 +63228,10 @@ Or:
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">__Summary.__
 Here goes the summary...
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec12">DocOnce: section headings </h2>
 
 <p>
@@ -63449,14 +63262,10 @@ Result:
 
 <p>
 <b>This is a paragraph heading.</b>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec17">DocOnce: markup and lists </h2>
 
 <p>
@@ -63483,20 +63292,17 @@ This gets rendered as
  <p><li> <code>inline verbatim code</code> is featured</li>
 
 <ol>
-  <p><li> and sublists with enumerated items starting with <code>o</code></li>
-  <p><li> items are just indented as you would do in email</li>
+
+<p><li> and sublists with enumerated items starting with <code>o</code></li>
+
+<p><li> items are just indented as you would do in email</li>
 </ol>
 <p>
-
 </ul>
-<p>
-
-
 </section>
 
 
 <section>
-
 <h2 id="___sec18">DocOnce: labels, references, index items </h2>
 
 <p>
@@ -63523,13 +63329,10 @@ See \eqref{eq1}-\eqref{myeq}.
 <span style="color: #008800; font-style: italic"># Hyperlink with complete URL as link text</span>
 URL: &quot;https://github.com/hplgit/doconce&quot;
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec19">DocOnce: figures and movies </h2>
 
 <p>
@@ -63538,7 +63341,6 @@ URL: &quot;https://github.com/hplgit/doconce&quot;
 <p>
 Figure with HTML and LaTeX info, and caption, <em>all on one line</em>:
 </div>
-
 
 <p>
 
@@ -63562,14 +63364,10 @@ and rendered as
 <p>
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/P8VcZzgdfSc" frameborder="0" allowfullscreen></iframe>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec20">DocOnce: math </h2>
 
 <p>
@@ -63612,14 +63410,10 @@ $$
 \end{align}
 $$
 <p>&nbsp;<br>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec21">DocOnce: displaying code </h2>
 
 <p>
@@ -63671,15 +63465,10 @@ language: <code>pycod</code> for Python code snippet, <code>pypro</code> for com
 program, <code>fcod</code> for Fortran snippet, <code>fpro</code> for Fortran program, and so
 forth (<code>c</code> for C, <code>cpp</code> for C++, <code>sh</code> for Unix shells, <code>m</code> for Matlab).
 </div>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="slide:pot">DocOnce: displaying interactive demo code</h2>
 
 <p>
@@ -63692,13 +63481,10 @@ program flow and state of variables:
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=def+solver%28I%2C+a%2C+T%2C+dt%2C+theta%29%3A%0A++++dt+%3D+float%28dt%29%0A++++N+%3D+int%28round%28T%2Fdt%29%29%0A++++T+%3D+N%2Adt%0A++++u+%3D+%5B0.0%5D%2A%28N%2B1%29%0A++++t+%3D+%5Bi%2Adt+for+i+in+range%28N%2B1%29%5D%0A%0A++++u%5B0%5D+%3D+I%0A++++for+n+in+range%280%2C+N%29%3A%0A++++++++u%5Bn%2B1%5D+%3D+%281+-+%281-theta%29%2Aa%2Adt%29%2F%281+%2B+theta%2Adt%2Aa%29%2Au%5Bn%5D%0A++++return+u%2C+t%0A%0Au%2C+t+%3D+solver%28I%3D1%2C+a%3D1%2C+T%3D3%2C+dt%3D1.%2C+theta%3D0.5%29%0Aprint+u&curInstr=0&py=2&cumulative=false">
 </iframe>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec23">DocOnce: exercises </h2>
 
 <p>
@@ -63742,14 +63528,10 @@ of getting at least three heads out of 5 throws.
 </pre></div>
 <p>
 Solutions/answers can easily be left out of the document.
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec24">DocOnce: exercises </h2>
 
 <p>
@@ -63806,14 +63588,10 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec26">DocOnce: example on slide code </h2>
 
 <p>
@@ -63842,13 +63620,10 @@ And maybe a final comment?
 !split
 ===== Next slide... =====
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec27">DocOnce: example on slide code </h2>
 
 <p>
@@ -63873,14 +63648,10 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <p>
 And maybe a final comment?
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec29">DocOnce: example on slide code with cells </h2>
 
 <p>
@@ -63921,13 +63692,10 @@ FIGURE: [../doc/src/slides/fig/broken_pen_and_paper, width=400, frac=0.8]
 !split
 ===== Next slide... =====
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec30">DocOnce: example on slide code </h2>
 
 <p>
@@ -63952,10 +63720,6 @@ Last page gets rendered to
 </ul>
 <p>
 
-
-
-<p>
-
 <p class="fragment">
 
 &nbsp;<br>&nbsp;<br>
@@ -63965,7 +63729,6 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 </p>
 
-
 <p>
 </td>
 <td class="padding">
@@ -63973,12 +63736,6 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-
 </section>
 
 
@@ -66225,14 +65982,10 @@ MathJax.Hub.Config({
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
 <p>
 <center><p><img src="../doc/src/slides/fig/CN_logo.png" align="bottom" width=300></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec0">Goal </h2>
 
 <p>
@@ -66246,7 +65999,6 @@ This version
 utilizes reveal slides with the theme beigesmall.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-notice alert-text-normal">
 <b>Notice.</b>
@@ -66254,7 +66006,6 @@ utilizes reveal slides with the theme beigesmall.
 Speaker notes show up by
 pressing "s".
 </div>
-
 
 <p>
 <aside class="notes">
@@ -66266,24 +66017,15 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
 </aside>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h1 id="___sec1">Methods </h1>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec2">Mathematical problem </h2>
 
 <p>
@@ -66309,39 +66051,23 @@ $$
  <p><li> \( u(t) \) is the unknown function</li>
 </ul>
 <p>
-
 </td>
 <td class="padding">
 <center><p><img src="../doc/src/slides/fig/teacher2.jpg" align="bottom" width=250></p></center>
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec3">Numerical solution method </h2>
-
-<p>
-
 
 <ul>
  <p><li class="fragment"> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
  <p><li class="fragment"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <p><li class="fragment"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
-<p>
-
-
-
 <p>
 
 <p class="fragment">
@@ -66356,28 +66082,19 @@ $$
 
 
 </p>
-
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec4">Forward Euler explained </h2>
 
 <p>
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec5">Implementation </h2>
 
 <p>
@@ -66399,35 +66116,24 @@ The numerical method is implemented in a Python function:
         u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
     <span style="color: #AA22FF; font-weight: bold">return</span> u, t
 </pre></div>
-<p>
-
 </section>
 
 
 <section>
-
 <h1 id="___sec6">Selected results </h1>
 <!-- Short title: Results -->
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec7">The Crank-Nicolson method </h2>
 
 <p>
 <center><p><img src="../doc/src/slides/fig/CN.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
 <section>
-
 <h2 id="___sec8">The artifacts can be explained by some theory </h2>
 
 <p>
@@ -66444,9 +66150,6 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 </p>
 
 
-<p>
-
-
 <ul>
  <p><li class="fragment"> Stability: \( |A| < 1 \)</li>
  <p><li class="fragment"> No oscillations: \( A>0 \)</li>
@@ -66456,20 +66159,12 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 </ul>
 <p>
 
-
-
-<p>
-
 <div class="fragment alert alert-block alert-summary alert-text-normal">
 <b>Concluding remarks:</b>
 <p>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
-
-
-
-
 </section>
 
 
@@ -66638,6 +66333,10 @@ Automatically generated HTML file from DocOnce source
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
 <style type="text/css">
+body, td {font-size: 140%;}
+h1 {font-size: 200%;}
+h2 {font-size: 180%;}
+
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
@@ -66740,12 +66439,7 @@ Speaker notes show up by
 
 
 <p>
-<!-- !bnotes -->
-The talk investigates the accuracy of three finite difference
-schemes for the ordinary differential equation \( u'=-au \) with the
-aid of numerical experiments. Numerical artifacts are in particular
-demonstrated.
-<!-- !enotes -->
+
 
 <p>
 <p>
@@ -72320,7 +72014,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f78fd4a81b8>
+verbatim is to be replaced using <function html_verbatim at 0x7f6d48c3a1b8>
 
 
 First occurence: " `mako`."
@@ -76291,7 +75985,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Apr 11 03:57:33 2015.
+# sphinx-quickstart on Thu Apr 16 02:00:18 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -93016,8 +92710,8 @@ no answers/solutions to exercises found in testdoc.html
 + system doconce html_colorbullets testdoc.html
 + doconce html_colorbullets testdoc.html
 + '[' 0 -ne 0 ']'
-+ system doconce split_html testdoc.html --nav_button=gray2,bottom
-+ doconce split_html testdoc.html --nav_button=gray2,bottom
++ system doconce split_html testdoc.html --nav_button=gray2,bottom --font_size=slides
++ doconce split_html testdoc.html --nav_button=gray2,bottom --font_size=slides
 testdoc.html now links to the generated files
 ._testdoc000.html, ._testdoc001.html, ._testdoc002.html, ._testdoc003.html
 + '[' 0 -ne 0 ']'
@@ -99010,8 +98704,8 @@ figure file ../doc/src/slides/fig/teacher2:
     0= t_0< t_1 \cdots < t_N=T  ->  0= t_0 < t_1 \cdots < t_N=T
 output in slides3-solarized3.html
 + '[' 0 -ne 0 ']'
-+ system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
-+ doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
++ system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue,bottom --font_size=slides
++ doconce slides_html slides3-solarized3 doconce --nav_button=bigblue,bottom --font_size=slides
 + '[' 0 -ne 0 ']'
 + rm -f '*.aux'
 + theme=red3

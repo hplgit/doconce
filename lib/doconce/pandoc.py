@@ -404,7 +404,7 @@ def pandoc_linebreak(m):
     if option('github_md'):
         return text + '<br />'
     else:
-        return text + r'\\n'
+        return text + r'\n'
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,

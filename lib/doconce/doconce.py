@@ -2492,7 +2492,7 @@ def handle_index_and_bib(filestr, format):
                 if format in ('latex', 'pdflatex'):
                     cite_formatting = 'latex'
                 elif format in ('pandoc', 'ipynb'):
-                    if option('ipynb_cite=', 'latex'):
+                    if option('ipynb_cite=', 'plain') == 'latex':
                         cite_formatting = 'standard'
                     else:
                         cite_formatting = 'pandoc'

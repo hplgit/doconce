@@ -57,7 +57,7 @@ editfix $html.html
 html=${name}-solarized
 system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $rawgit
 editfix $html.html
-system doconce split_html $html.html --nav_button=text
+system doconce split_html $html.html --nav_button=gray2,bottom --font_size=slides
 
 html=${name}-plain
 system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html $rawgit

@@ -3,7 +3,7 @@ A minimal test that DocOnce works
 
 Hans Petter Langtangen
 
-Date: Apr 11, 2015
+Date: Jan 1, 2031
 
 *Summary.* This is a small document for testing the installation of DocOnce.
 

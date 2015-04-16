@@ -2353,7 +2353,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --acknowledgment="..."'
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --acknowledgment="..." --font_size=slides'
 --method=split|space8|hrule|colorline specifies physical pagebreak
 split (split) or just N blank lines (spaceN) or a horizontal
 rule (hrule) with blank lines above and below, or a colored rule
@@ -2372,6 +2372,10 @@ bottom (default) or top+bottom.
 
 --pagination means that one can click on pages at the button
 if a bootstrap theme is used in the document.
+
+--font_size= is used to increase the font size for slides.
+--font_size=slides gives 140% font size in the body text.
+--font_size=180 gives 180% font size in the body text.
 
 --reference=... is used to insert a reference for acknowledging where
 the source of the text is published, typically the reference of a
@@ -2436,14 +2440,18 @@ def split_html():
         # Remove notes
         filestr = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
                          filestr, flags=re.MULTILINE|re.DOTALL)
-        # Fix font size for solarized slides
-        if re.search(r'''<link href=["']http.+?solarized.*?\.css''', filestr):
+        '''
+        # Fix font size for solarized *slides* - won't do this so it affects
+        # all kind of documents. And if method != 'split', we have one
+        # file and can crank up the font in the browser once and for all.
+        if re.search(r"""<link href=["']http.+?solarized.*?\.css""", filestr):
             filestr = filestr.replace(r'<style type="text/css">',
                                       """<style type="text/css">
 body, td {font-size: 140%;}
 h1 {font-size: 200%;}
 h2 {font-size: 180%;}
 """)
+        '''
 
         f = open(filename, 'w')
         f.write(filestr)
@@ -2457,7 +2465,7 @@ h2 {font-size: 180%;}
 
 def _usage_slides_html():
     print """
-Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name
+Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name --font_size=slides
 
 slide_type: reveal deck csss dzslides
 note: reveal and deck slide styles are doconce variants, different from the
@@ -2493,6 +2501,10 @@ gray2,bottom gives buttons only at the bottom.
 If the "doconce format html" command used bootstrap styles (with
 --html_style=bootstrap*|bootswatch*), set just --nav_button=top or
 bottom (default) or top+bottom.
+
+--font_size= is used to increase the font size for slides.
+--font_size=slides gives 140% font size in the body text.
+--font_size=180 gives 180% font size in the body text.
 
 --pagination means that one can click on page numbers if a bootstrap
 theme is used in the document.
@@ -2570,7 +2582,7 @@ def slides_html():
                  pygm_style = r[sl_tp][style][0]
                  if sl_tp == 'html':
                      if style.startswith('solarized'):
-                         f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce slides_html %s_html_%s doconce --nav_button=text\n\n' % (filestem, sl_tp, style, style, filestem, style, filestem, style))
+                         f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce slides_html %s_html_%s doconce --nav_button=gray2,bottom --font_size=slides\n\n' % (filestem, sl_tp, style, style, filestem, style, filestem, style))
                      else:
                          method = 'colorline' if style == 'blueish' else 'space8'
                          f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce split_html %s_html_%s --method=%s  # one long file\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, style, filestem, style, method))
@@ -3209,14 +3221,19 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         # Remove notes
         part_text = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
                            part_text, flags=re.MULTILINE|re.DOTALL)
-        # Fix font size for solarized slides
-        if re.search(r'''<link href=["']http.+?solarized.*?\.css''', part_text):
+        # Fix font size for *slides*
+        font_size = misc_option('font_size=', 'standard')
+        if font_size == 'slides' or font_size.isdigit():
+            if font_size.isdigit():
+                font_size = int(font_size)
+            else:
+                font_size = 140
             part_text = part_text.replace(r'<style type="text/css">',
                                           """<style type="text/css">
-body, td {font-size: 140%;}
-h1 {font-size: 200%;}
-h2 {font-size: 180%;}
-""")
+body, td {font-size: %d%%;}
+h1 {font-size: 200%%;}
+h2 {font-size: 180%%;}
+""" % (font_size))
 
         # Write part to ._*.html file
         f = open(part_filename, 'w')

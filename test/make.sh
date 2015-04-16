@@ -64,7 +64,7 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce remove_exercise_answers testdoc.html
 system doconce html_colorbullets testdoc.html
-system doconce split_html testdoc.html --nav_button=gray2,bottom
+system doconce split_html testdoc.html --nav_button=gray2,bottom --font_size=slides
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
@@ -205,7 +205,7 @@ system doconce slides_html slides3 reveal --html_slide_type=beigesmall
 cp slides3.html slides3_reveal.html
 
 system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SLIDE_THEME=solarized3 --html_output=slides3-solarized3 $rawgit
-system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue
+system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue,bottom --font_size=slides
 
 rm -f *.aux
 theme=red3
