@@ -2431,7 +2431,7 @@ def split_html():
         filestr = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
                          filestr, flags=re.MULTILINE|re.DOTALL)
         # Fix font size for solarized slides
-        if re.search(r'''<link href=["']http.+?solarized.*?\.css''', filestr):
+        if re.search(r'''<link href=[""]http.+?solarized.*?\.css''', filestr):
             filestr = filestr.replace(r'<style type="text/css">',
                                       """<style type="text/css">
 body, td {font-size: 140%;}
