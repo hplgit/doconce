@@ -54,9 +54,12 @@ if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 # --- Python-based packages and tools ---
 apt_install python-pip
 apt_install idle
-apt_install ipython
 apt_install python-dev
 apt_install python-pdftools
+pip_install ipython --upgrade
+pip_install tornado --upgrade
+pip_install pyzmq --upgrade
+pip_install jsonschema
 
 # Preprocessors
 pip_install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess

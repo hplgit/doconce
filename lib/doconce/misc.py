@@ -351,11 +351,17 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--latex_elsevier_journal=',
      """Sets the journal name for the --latex_style=elsevier style.
 Default: none (no journal name)."""),
+    ('--ipynb_cite=', """Typesetting of bibliography.
+plain: simple native typesetting (same as pandoc) (default)
+latex: ipynb support for latex-style bibliographies."""),
     ('--ipynb_admon=',
      """\
-Typesetting of admonitions and quotes.
+Typesetting of admonitions (hint, remarks, box, notice, summary,
+warning, question, block - quotes are typeset as quotes).
 quote: as Markdown quote (default) with gray line on the left.
-paragraph: just the content with the title as paragraph heading."""),
+paragraph: just the content with the title as paragraph heading.
+hrule: title with horizontal rule above and below, then text and
+horozontal rule."""),
     ('--ipynb_figure=', """\
 How to typeset figures in ipynb:
 md (plain Markdown syntax),
@@ -3184,7 +3190,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         part_text = re.sub(r'^<!-- !bnotes.+?^<!-- !enotes -->', '',
                            part_text, flags=re.MULTILINE|re.DOTALL)
         # Fix font size for solarized slides
-        if re.search(r'<link href=["']http.+?solarized.*?\.css', part_text):
+        if re.search(r'''<link href=["']http.+?solarized.*?\.css''', part_text):
             part_text = part_text.replace(r'<style type="text/css">',
                                           """<style type="text/css">
 body {font-size: 140%;}

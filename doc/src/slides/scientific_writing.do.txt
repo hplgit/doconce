@@ -134,12 +134,15 @@ writing styles and technology platforms.
 What tools should I use for scientific writing?
 !eblock
 
+# #ifdef OUT
+# Goes without saying with the images...
 !bblock
 The default answer was LaTeX, but there are many
 recent popular alternative tools: HTML w/MathJax,
 Sphinx, Markdown, MediaWiki, IPython notebook, ...
 Apple's iBooks, ...
 !eblock
+# #endif
 
 ## Cannot have bpop/epop here because figures won't pop up
 
@@ -191,7 +194,7 @@ FIGURE: [fig/jungle_with_mess.jpg, width=500]
 !split
 ===== Can I assemble lots of different writings to a new future document (book)? =====
 
-Suppose I write various types ofscientific material,
+Suppose I write various types of scientific material,
 
  * LaTeX document,
  * blog posts (HTML),

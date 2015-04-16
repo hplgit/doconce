@@ -1,7 +1,7 @@
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
-     cite_with_multiple_args2multiple_cites, is_file_or_url, \
+     is_file_or_url, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url
 from misc import option, _abort
 
@@ -1714,6 +1714,7 @@ def html_ref_and_label(section_label2title, format, filestr):
 
 def html_index_bib(filestr, index, citations, pubfile, pubdata):
     if citations:
+        from common import cite_with_multiple_args2multiple_cites
         filestr = cite_with_multiple_args2multiple_cites(filestr)
     for label in citations:
         filestr = filestr.replace('cite{%s}' % label,

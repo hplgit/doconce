@@ -23,9 +23,13 @@ $ if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 
 # --- Python-based packages and tools ---
 python-pip
-idle ipython
+idle
 python-dev
 python-pdftools
+pip install ipython --upgrade  # ensure latest version if already installed
+pip install tornado --upgrade
+pip install pyzmq --upgrade
+pip install jsonschema
 
 # Preprocessors
 pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess

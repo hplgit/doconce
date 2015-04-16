@@ -63,9 +63,12 @@ if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 system(cmd)
 system('sudo apt-get -y install python-pip')
 system('sudo apt-get -y install idle')
-system('sudo apt-get -y install ipython')
 system('sudo apt-get -y install python-dev')
 system('sudo apt-get -y install python-pdftools')
+system('sudo pip install ipython --upgrade')
+system('sudo pip install tornado --upgrade')
+system('sudo pip install pyzmq --upgrade')
+system('sudo pip install jsonschema')
 
 # Preprocessors
 system('sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess')

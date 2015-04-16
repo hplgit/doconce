@@ -1815,8 +1815,6 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
-        cpattern = re.compile(r'^BIBFILE:.+$', re.MULTILINE)
-        filestr = cpattern.sub(bibtext, filestr)
     return filestr
 
 

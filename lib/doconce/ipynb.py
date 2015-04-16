@@ -211,7 +211,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     envirs = doconce_envirs()[8:-1]
     for envir in envirs:
         pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
-        if envir_format in ('quote', 'paragraph'):
+        if envir_format in ('quote', 'paragraph', 'hrule'):
             def subst(m):
                 title = m.group(1).strip()
                 # Text size specified in parenthesis?
@@ -228,11 +228,13 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                     # Make sure the title ends with puncuation
                     title += '.'
                 # Recall that this formatting is called very late
-                # so native format must be used
+                # so native format must be used!
                 if title:
                     title = '**' + title + '**\n'
                     # Could also consider subsubsection formatting
                 block = m.group(2)
+
+                # Always use quote typesetting for quotes
                 if envir_format == 'quote' or envir == 'quote':
                     # Make Markdown quote of the block: lines start with >
                     lines = []
@@ -256,7 +258,14 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                     if title:
                         title += '\n'
 
-                text = title + block + '\n\n'
+                if envir_format == 'hrule':
+                    # Native ------ does not work, use <hr/>
+                    #text = '\n\n----------\n' + title + '----------\n' + \
+                    #       block + '\n----------\n\n'
+                    text = '\n\n<hr/>\n' + title + \
+                           block + '\n<hr/>\n\n'
+                else:
+                    text = title + block + '\n\n'
                 return text
         else:
             print '*** error: --ipynb_admon=%s is not supported'  % envir_format
@@ -565,6 +574,48 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     '''
     return filestr
 
+def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
+    # ipynb has support for latex-style bibliography.
+    # Quite some code here is copy from latex_index_bib
+    # http://nbviewer.ipython.org/github/ipython/nbconvert-examples/blob/master/citations/Tutorial.ipynb
+    if citations:
+        from common import cite_with_multiple_args2multiple_cites
+        filestr = cite_with_multiple_args2multiple_cites(filestr)
+    for label in citations:
+        filestr = filestr.replace('cite{%s}' % label,
+                                  '<cite data-cite="%s">[%d]</cite>' %
+                                  (label, citations[label]))
+
+    if pubfile is not None:
+        # Always produce a new bibtex file
+        bibtexfile = pubfile[:-3] + 'bib'
+        print '\nexporting publish database %s to %s:' % (pubfile, bibtexfile)
+        publish_cmd = 'publish export %s' % os.path.basename(bibtexfile)
+        # Note: we have to run publish in the directory where pubfile resides
+        this_dir = os.getcwd()
+        pubfile_dir = os.path.dirname(pubfile)
+        if not pubfile_dir:
+            pubfile_dir = os.curdir
+        os.chdir(pubfile_dir)
+        os.system(publish_cmd)
+        os.chdir(this_dir)
+
+        bibstyle = option('latex_bibstyle=', 'plain')
+        from latex import fix_latex_command_regex
+        bibtext = fix_latex_command_regex(r"""
+((*- extends 'latex_article.tplx' -*))
+
+((* block bibliography *))
+\bibliographystyle{%s}
+\bibliography{%s}
+((* endblock bibliography *))
+""" % (bibstyle, bibtexfile[:-4]), application='replacement')
+        filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
+                         flags=re.MULTILINE)
+
+    filestr = re.sub(r'idx\{.+?\}' + '\n?', '', filestr)
+    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
+    return filestr
 
 def define(FILENAME_EXTENSION,
            BLANKLINE,
@@ -641,7 +692,11 @@ def define(FILENAME_EXTENSION,
     CROSS_REFS['ipynb'] = pandoc_ref_and_label
 
     TABLE['ipynb'] = ipynb_table
-    INDEX_BIB['ipynb'] = pandoc_index_bib
+    cite = option('ipynb_cite=', 'plain')
+    if cite == 'latex':
+        INDEX_BIB['ipynb'] = ipynb_index_bib
+    else:
+        INDEX_BIB['ipynb'] = pandoc_index_bib
     EXERCISE['ipynb'] = plain_exercise
     TOC['ipynb'] = lambda s: ''
     FIGURE_EXT['ipynb'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')

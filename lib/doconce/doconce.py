@@ -2488,14 +2488,21 @@ def handle_index_and_bib(filestr, format):
                         citations[label] = cite_counter
                 # Replace cite{label1,label2,...} by individual cite{label1}
                 # cite{label2}, etc. if not latex or pandoc format
-                if format != 'latex' and format != 'pdflatex' and \
-                       format not in ('pandoc', 'ipynb'):
+                cite_formatting = 'standard'
+                if format in ('latex', 'pdflatex'):
+                    cite_formatting = 'latex'
+                elif format in ('pandoc', 'ipynb'):
+                    if option('ipynb_cite=', 'latex'):
+                        cite_formatting = 'standard'
+                    else:
+                        cite_formatting = 'pandoc'
+                if cite_formatting == 'standard':
                     for arg in cite_args:
                         replacement = ' '.join(['cite{%s}' % label.strip() \
                                                  for label in arg.split(',')])
                         filestr = filestr.replace('cite{%s}' % arg,
                                                   replacement)
-                elif format in ('pandoc', 'ipynb'):
+                elif cite_formatting == 'pandoc':
                     # prefix labels with @ and substitute , by ;
                     for arg in cite_args:
                         replacement = '[' + ';'.join(

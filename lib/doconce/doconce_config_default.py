@@ -92,6 +92,7 @@ latex_admon_title_no_period = False
 xelatex = False
 latex_double_hyphen = False
 #latex_elsevier_journal = 
+#ipynb_cite = 
 #ipynb_admon = 
 #ipynb_figure = 
 #ipynb_movie = 
