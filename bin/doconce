@@ -52,6 +52,7 @@ from doconce.misc import (
     diff,
     gitdiff,
     csv2table,
+    extract_exercises,
     linkchecker,
     grep,
     help_format
@@ -947,6 +948,7 @@ diff
 gitdiff
 fix_bibtex4publish
 csv2table
+extract_exercises
 """.split()
 
 # -----------------------------------------------------------------------
@@ -1019,6 +1021,9 @@ doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
+
+# extract all exercises (projects and problems too)
+doconce extract_exercises tmp_mako__mydoc
 
 # grab selected text from a file
 doconce grab   --from[-] from-text [--to[-] to-text] somefile > result

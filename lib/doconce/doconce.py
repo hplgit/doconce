@@ -1199,18 +1199,18 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
     # Regex: no need for re.MULTILINE since we treat one line at a time
     if option('examples_as_exercises'):
-        exer_heading_pattern = r'^\s*(=====)\s*\{?(Exercise|Problem|Project|Example)\}?:\s*(?P<title>[^ =-].+?)\s*====='
+        exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project|Example)\}?: *(?P<title>[^ =-].+?) *====='
     else:
-        exer_heading_pattern = r'^\s*(=====)\s*\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?)\s*====='
+        exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?) *====='
     if not re.search(exer_heading_pattern, filestr, flags=re.MULTILINE):
         return filestr
 
     label_pattern = re.compile(r'^\s*label\{(.+?)\}')
     # We accept file and solution to be comment lines
-    #file_pattern = re.compile(r'^#?\s*file\s*=\s*([^\s]+)')
-    file_pattern = re.compile(r'^#?\s*files?\s*=\s*([A-Za-z0-9\-._, *]+)')
-    solution_pattern = re.compile(r'^#?\s*solutions?\s*=\s*([A-Za-z0-9\-._, ]+)')
-    keywords_pattern = re.compile(r'^#?\s*(keywords|kw)\s*=\s*([A-Za-z0-9\-._;, ]+)')
+    #file_pattern = re.compile(r'^#? *file *= *([^\s]+)')
+    file_pattern = re.compile(r'^#? *files? *= *([A-Za-z0-9\-._, *]+)')
+    solution_pattern = re.compile(r'^#? *solutions? *= *([A-Za-z0-9\-._, ]+)')
+    keywords_pattern = re.compile(r'^#? *(keywords|kw) *= *([A-Za-z0-9\-._;, ]+)')
 
     hint_pattern_begin = '!bhint'
     hint_pattern_end = '!ehint'

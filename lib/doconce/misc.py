@@ -6011,7 +6011,8 @@ _replacements = [
     (r'"ftp://.*?"', ""),
     (r"\b[A-Za-z_0-9/.:]+\.(com|org|net|edu|)\b", ""),  # net name
     (r'\[[A-Za-z]+:\s+[^\]]*?\]', ''),  # inline comment
-    (r'''^\s*files?=[${}()"'A-Za-z_0-9.,*= ]+\s*$''', '', re.MULTILINE),
+    (r'''^\s*files? *= *[${}()"'A-Za-z_0-9.,*= ]+\s*$''', '', re.MULTILINE),
+    (r'^\s*(kw|keywords) *= *([A-Za-z0-9\-._;, ]+)', '', re.MULTILINE),
     (r"^@@@CODE.*$", "", re.MULTILINE),
     (r"^@@@OSCMD.*$", "", re.MULTILINE),
     (r"^\s*(FIGURE|MOVIE):\s*\[.+?\]",    "", re.MULTILINE),
@@ -7439,6 +7440,13 @@ def _latex2doconce(filestr):
     if os.path.isfile(fixfile):
         # fixfile must contain subst and replace, to be
         # applied _after_ the general subst and replace below
+        """
+        subst = [
+        (r'^\be\s+', '!bt\n\\begin{equation}\n', re.MULTILINE),
+        (from_, to_, flags),
+        ]
+        replace = []
+        """
         f = open(fixfile)
         exec(f.read())
         f.close()
@@ -9364,14 +9372,14 @@ def diff_files(files1, files2, program='diff'):
             print program, 'not supported'
             _abort()
 
-def _usage_diffgit():
+def _usage_gitdiff():
     #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
     print 'Usage: doconce gitdiff file1 file2 file3'
 
 def gitdiff():
     """Make diff of newest and previous version of files (under Git)."""
     if len(sys.argv) < 2:
-        _usage_diffgit()
+        _usage_gitdiff()
         sys.exit(0)
 
     #diffprog = sys.argv[1]
@@ -9391,3 +9399,95 @@ def gitdiff():
             old_files.append(old_filename)
             print 'doconce diff', old_filename, filename
             #pydiff(filenames, old_files)
+
+def _usage_extract_exercises():
+    #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
+    print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt'
+
+def extract_exercises():
+    if len(sys.argv) < 2:
+        _usage_extract_exercises()
+        sys.exit(0)
+
+    filename = sys.argv[1]
+    if filename.endswith('.do.txt'):
+        basename = filename[:-7]
+    else:
+        basename = filename
+        filename += '.do.txt'
+
+    f = open(filename, 'r')
+    lines = f.readlines()
+    f.close()
+
+    keywords = []
+    try:
+        if sys.argv[2].startswith('--filter='):
+            dummy, keywords = sys.argv[2].split('=')
+            keywords = re.split(r';\s*', keywords)
+    except IndexError:
+        pass
+
+    exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project)\}?: *(?P<title>[^ =-].+?)\s*====='
+    keywords_pattern = r'^#?\s*(keywords|kw) *= *([A-Za-z0-9\-._;, ]+)'
+    exer = []
+    exer_tp = []
+    inside_exer = False
+    for i, line in enumerate(lines):
+        #print i, inside_exer, line
+        if line.startswith('TITLE:'):
+            line = line.replace('TITLE: ', 'TITLE: Exercises from ')
+            exer.append(line)
+        elif line.startswith('AUTHOR:'):
+            exer.append(line)
+        elif line.startswith('DATE:'):
+            exer.append(line)
+        elif line.startswith('========= '):
+            exer.append(line)
+        if re.search(exer_heading_pattern, line):
+            #print 'found exercise!'
+            inside_exer = True
+            exer.append([])
+            exer_tp.append(None)
+        if inside_exer:
+            # Filter afterwards
+            if not isinstance(exer[-1], list):
+                print 'inside exercise, but exer[-1] is not a list', exer[-1]
+            exer[-1].append(line)
+
+            m = re.search(keywords_pattern, line)
+            if m:
+                exer_tp[-1] = [name.strip() for name in m.group(2).split(';')]
+
+        if inside_exer and i < len(lines)-1 and lines[i+1].startswith('====='):
+            inside_exer = False
+    # Strip off blank lines at the end of each exercise
+    for line in exer:
+        if isinstance(line, list):
+            for i in range(len(line)-1, -1, -1):
+                if line[i] == '\n':
+                    line[i] = ''
+                else:
+                    break
+    filename = basename[10:] + '_exer.do.txt'
+    f = open(filename, 'w')
+    i = 0
+    for line in exer:
+        if isinstance(line, list):
+            print_this_exer = not keywords
+            if keywords and exer_tp[i] is not None:
+                print_this_exer = False
+                # Any of this exercise's keywords among those in the filter:
+                for keyword in exer_tp[i]:
+                    if keyword in keywords:
+                        print_this_exer = True
+            if print_this_exer:
+                f.write('\n\n# --- begin exercise ---\n\n')
+                for exer_line in line:
+                    f.write(exer_line)
+                f.write('\n# --- end exercise ---\n\n')
+            i += 1
+        elif isinstance(line, str):
+            f.write(line)
+    f.close()
+    print 'exercises extracted to', filename

@@ -1004,7 +1004,7 @@ between there we have Exercise ref{exer:some:formula}.
 label{demo:ex:1}
 files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
-keywords = random numbers; Monte Carlo simulation
+keywords = random numbers; Monte Carlo simulation; ipynb
 
 # Torture tests
 file=myfile_should_be_a_part_of_the_text
@@ -1112,6 +1112,7 @@ in previous DocOnce versions:
 
 label{proj:circle1}
 file=circles.pdf
+kw=ipynb
 
 The formula for a circle is given by
 
@@ -1291,7 +1292,6 @@ lambda x: x+2
 
 ===== Exercise: Solution of differential equation =====
 label{sec:this:exer:de}
-
 
 !bquiz
 H: SOlution of differential equation
