@@ -762,7 +762,8 @@ and all the work of
 cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work cite{Langtangen_1988d} and cite{Langtangen_1989e}, and the
 talk cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book cite{Langtangen:91} and the
 cite{Langtangen:94b} OONSKI '94 paper.
@@ -1018,7 +1019,7 @@ between there we have Exercise ref{exer:some:formula}.
 label{demo:ex:1}
 files = flip_coin.py, flip_coin.pdf
 solutions = mysol.txt, mysol_flip_coin.py
-keywords = random numbers; Monte Carlo simulation
+keywords = random numbers; Monte Carlo simulation; ipynb
 
 # Torture tests
 file=myfile_should_be_a_part_of_the_text
@@ -1126,6 +1127,7 @@ in previous DocOnce versions:
 
 label{proj:circle1}
 file=circles.pdf
+kw=ipynb
 
 The formula for a circle is given by
 
@@ -1305,7 +1307,6 @@ lambda x: x+2
 
 ===== Exercise: Solution of differential equation =====
 label{sec:this:exer:de}
-
 
 !bquiz
 H: SOlution of differential equation
@@ -3124,7 +3125,8 @@ and all the work of
 \cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work \cite{Langtangen_1988d} and \cite{Langtangen_1989e}, and the
 talk \cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book \cite{Langtangen:91} and the
 \cite{Langtangen:94b} OONSKI '94 paper.
@@ -3370,7 +3372,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
 
 \label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
+% keywords = random numbers; Monte Carlo simulation; ipynb
 
 % Torture tests
 
@@ -3536,6 +3538,7 @@ compute the probability as $M/N$.
 \subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
 
 \label{proj:circle1}
+% keywords = ipynb
 
 The formula for a circle is given by
 
@@ -5455,7 +5458,8 @@ and all the work of
 \cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work \cite{Langtangen_1988d} and \cite{Langtangen_1989e}, and the
 talk \cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book \cite{Langtangen:91} and the
 \cite{Langtangen:94b} OONSKI '94 paper.
@@ -5702,7 +5706,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
 
 \label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
+% keywords = random numbers; Monte Carlo simulation; ipynb
 
 % Torture tests
 
@@ -5872,6 +5876,7 @@ compute the probability as $M/N$.
 \addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
 
 \label{proj:circle1}
+% keywords = ipynb
 
 The formula for a circle is given by
 
@@ -7782,7 +7787,8 @@ and all the work of
 \cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work \cite{Langtangen_1988d} and \cite{Langtangen_1989e}, and the
 talk \cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book \cite{Langtangen:91} and the
 \cite{Langtangen:94b} OONSKI '94 paper.
@@ -8028,7 +8034,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Flip a Coin}
 
 \label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
+% keywords = random numbers; Monte Carlo simulation; ipynb
 
 % Torture tests
 
@@ -8197,6 +8203,7 @@ compute the probability as $M/N$.
 \addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
 
 \label{proj:circle1}
+% keywords = ipynb
 
 The formula for a circle is given by
 
@@ -10145,7 +10152,8 @@ and all the work of
 \cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work \cite{Langtangen_1988d} and \cite{Langtangen_1989e}, and the
 talk \cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book \cite{Langtangen:91} and the
 \cite{Langtangen:94b} OONSKI '94 paper.
@@ -10388,7 +10396,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
 
 \label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
+% keywords = random numbers; Monte Carlo simulation; ipynb
 
 % Torture tests
 
@@ -10555,6 +10563,7 @@ compute the probability as $M/N$.
 \subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
 
 \label{proj:circle1}
+% keywords = ipynb
 
 The formula for a circle is given by
 
@@ -11964,7 +11973,8 @@ and all the work of
 [Ref14]_ [Ref04]_ [Ref15]_ as well as
 old work [Ref05]_ and [Ref16]_, and the
 talk [Ref17]_.
-Langtangen also had two thesis [Ref18]_ [Ref16]_.
+Langtangen also had two thesis [Ref18]_ [Ref16]_
+back in the days.
 More retro citations are
 the old ME-IN323 book [Ref19]_ and the
 [Ref20]_ OONSKI '94 paper.
@@ -12148,7 +12158,7 @@ Exercises
 Problem 2: Flip a Coin
 ----------------------
 
-.. keywords = random numbers; Monte Carlo simulation
+.. keywords = random numbers; Monte Carlo simulation; ipynb
 
 .. Torture tests
 
@@ -12293,6 +12303,8 @@ compute the probability as \\( M/N \\).
 
 Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
+
+.. keywords = ipynb
 
 The formula for a circle is given by
 
@@ -13795,7 +13807,8 @@ and all the work of
 [Ref14]_ [Ref04]_ [Ref15]_ as well as
 old work [Ref05]_ and [Ref16]_, and the
 talk [Ref17]_.
-Langtangen also had two thesis [Ref18]_ [Ref16]_.
+Langtangen also had two thesis [Ref18]_ [Ref16]_
+back in the days.
 More retro citations are
 the old ME-IN323 book [Ref19]_ and the
 [Ref20]_ OONSKI '94 paper.
@@ -13995,7 +14008,7 @@ Exercises
 Problem 2: Flip a Coin
 ----------------------
 
-.. keywords = random numbers; Monte Carlo simulation
+.. keywords = random numbers; Monte Carlo simulation; ipynb
 
 .. Torture tests
 
@@ -14142,6 +14155,8 @@ compute the probability as :math:`M/N`.
 
 Project 5: Explore Distributions of Random Circles
 --------------------------------------------------
+
+.. keywords = ipynb
 
 The formula for a circle is given by
 
@@ -15614,7 +15629,8 @@ and all the work of
 [14] [4] [15] as well as
 old work [5] and [16], and the
 talk [17].
-Langtangen also had two thesis [18] [16].
+Langtangen also had two thesis [18] [16]
+back in the days.
 More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
@@ -15790,7 +15806,7 @@ between there we have [#Exercise_10:_Make_references_to_projects_and_problems].
 
 ==== Problem 2: Flip a Coin ====
 
-<wiki:comment> keywords = random numbers; Monte Carlo simulation </wiki:comment>
+<wiki:comment> keywords = random numbers; Monte Carlo simulation; ipynb </wiki:comment>
 
 <wiki:comment> Torture tests </wiki:comment>
 
@@ -15937,6 +15953,8 @@ compute the probability as `M/N`.
 <wiki:comment> --- begin exercise --- </wiki:comment>
 
 ==== Project 5: Explore Distributions of Random Circles ====
+
+<wiki:comment> keywords = ipynb </wiki:comment>
 
 The formula for a circle is given by
 
@@ -17263,7 +17281,8 @@ and all the work of
 [14] [4] [15] as well as
 old work [5] and [16], and the
 talk [17].
-Langtangen also had two thesis [18] [16].
+Langtangen also had two thesis [18] [16]
+back in the days.
 More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
@@ -17440,7 +17459,7 @@ between there we have [#Exercise_10:_Make_references_to_projects_and_problems].
 
 ==== Problem 2: Flip a Coin ====
 
-<!-- keywords = random numbers; Monte Carlo simulation -->
+<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->
 
 <!-- Torture tests -->
 
@@ -17591,6 +17610,8 @@ compute the probability as <math>M/N</math>.
 <!-- --- begin exercise --- -->
 
 ==== Project 5: Explore Distributions of Random Circles ====
+
+<!-- keywords = ipynb -->
 
 The formula for a circle is given by
 
@@ -18975,7 +18996,8 @@ and all the work of
 [14] [4] [15] as well as
 old work [5] and [16], and the
 talk [17].
-Langtangen also had two thesis [18] [16].
+Langtangen also had two thesis [18] [16]
+back in the days.
 More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
@@ -19157,7 +19179,7 @@ between there we have [#Exercise_10:_Make_references_to_projects_and_problems].
 
 == Problem 2: Flip a Coin ==
 
-<wiki:comment> keywords = random numbers; Monte Carlo simulation </wiki:comment>
+<wiki:comment> keywords = random numbers; Monte Carlo simulation; ipynb </wiki:comment>
 
 <wiki:comment> Torture tests </wiki:comment>
 
@@ -19307,6 +19329,7 @@ compute the probability as {{{M/N}}}.
 
 == Project 5: Explore Distributions of Random Circles ==
 
+<wiki:comment> keywords = ipynb </wiki:comment>
 
 The formula for a circle is given by
 
@@ -20449,7 +20472,8 @@ and all the work of
 [14] [4] [15] as well as
 old work [5] and [16], and the
 talk [17].
-Langtangen also had two thesis [18] [16].
+Langtangen also had two thesis [18] [16]
+back in the days.
 More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
@@ -21842,7 +21866,8 @@ and all the work of
 [14] [4] [15] as well as
 old work [5] and [16], and the
 talk [17].
-Langtangen also had two thesis [18] [16].
+Langtangen also had two thesis [18] [16]
+back in the days.
 More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
@@ -23400,7 +23425,8 @@ and all the work of
 [14] [4] [15] as well as
 old work [5] and [16], and the
 talk [17].
-Langtangen also had two thesis [18] [16].
+Langtangen also had two thesis [18] [16]
+back in the days.
 More retro citations are
 the old ME-IN323 book [19] and the
 [20] OONSKI '94 paper.
@@ -24652,9 +24678,9 @@ Also test backslashes and braces like `\begin`, `\begin{enumerate}`,
 The following attempt to exemplify colored text does not work in
 format pandoc.
 Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
-green color containing a linebreak\\n
-code.</font> Some formats will only display \\n
-this correctly when `html` \\n
+green color containing a linebreak\n
+code.</font> Some formats will only display \n
+this correctly when `html` \n
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -25061,7 +25087,8 @@ and all the work of
 [@Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004] as well as
 old work [@Langtangen_1988d] and [@Langtangen_1989e], and the
 talk [@Langtangen_talk_2007a].
-Langtangen also had two thesis [@Langtangen:85;@Langtangen_1989e].
+Langtangen also had two thesis [@Langtangen:85;@Langtangen_1989e]
+back in the days.
 More retro citations are
 the old ME-IN323 book [@Langtangen:91] and the
 [@Langtangen:94b] OONSKI '94 paper.
@@ -25261,7 +25288,7 @@ between there we have  [Exercise 10: Make references to projects and problems](#
 
 ### Problem 2: Flip a Coin
 <div id="demo:ex:1"></div>
-<!-- keywords = random numbers; Monte Carlo simulation -->
+<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->
 
 <!-- Torture tests -->
 
@@ -25410,6 +25437,7 @@ compute the probability as $M/N$.
 
 ### Project 5: Explore Distributions of Random Circles
 <div id="proj:circle1"></div>
+<!-- keywords = ipynb -->
 
 The formula for a circle is given by
 
@@ -27157,7 +27185,8 @@ is at the end with only one newline.
       "[[Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004]](#Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004) as well as\n",
       "old work [[Langtangen_1988d]](#Langtangen_1988d) and [[Langtangen_1989e]](#Langtangen_1989e), and the\n",
       "talk [[Langtangen_talk_2007a]](#Langtangen_talk_2007a).\n",
-      "Langtangen also had two thesis [[Langtangen:85;@Langtangen_1989e]](#Langtangen:85;@Langtangen_1989e).\n",
+      "Langtangen also had two thesis [[Langtangen:85;@Langtangen_1989e]](#Langtangen:85;@Langtangen_1989e)\n",
+      "back in the days.\n",
       "More retro citations are\n",
       "the old ME-IN323 book [[Langtangen:91]](#Langtangen:91) and the\n",
       "[[Langtangen:94b]](#Langtangen:94b) OONSKI '94 paper.\n",
@@ -27404,7 +27433,7 @@ is at the end with only one newline.
       "\n",
       "### Problem 2: Flip a Coin\n",
       "<div id=\"demo:ex:1\"></div>\n",
-      "<!-- keywords = random numbers; Monte Carlo simulation -->\n",
+      "<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->\n",
       "\n",
       "<!-- Torture tests -->\n",
       "\n",
@@ -27567,6 +27596,7 @@ is at the end with only one newline.
       "\n",
       "### Project 5: Explore Distributions of Random Circles\n",
       "<div id=\"proj:circle1\"></div>\n",
+      "<!-- keywords = ipynb -->\n",
       "\n",
       "The formula for a circle is given by"
      ]
@@ -28421,7 +28451,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'file': ['flip_coin.py', 'flip_coin.pdf'],
   'heading': '=====',
   'hints': [],
-  'keywords': ['random numbers', 'Monte Carlo simulation'],
+  'keywords': ['random numbers', 'Monte Carlo simulation', 'ipynb'],
   'label': 'demo:ex:1',
   'no': 2,
   'solution': '',
@@ -28483,7 +28513,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'file': ['circles.pdf'],
   'heading': '=====',
   'hints': [],
-  'keywords': None,
+  'keywords': ['ipynb'],
   'label': 'proj:circle1',
   'no': 5,
   'solution': '',
@@ -32360,7 +32390,8 @@ and all the work of
 <a href="._testdoc002.html#Langtangen_2012">[14]</a> <a href="._testdoc002.html#Mardal_et_al_2003a">[4]</a> <a href="._testdoc002.html#Jeberg_et_al_2004">[15]</a> as well as
 old work <a href="._testdoc002.html#Langtangen_1988d">[5]</a> and <a href="._testdoc002.html#Langtangen_1989e">[16]</a>, and the
 talk <a href="._testdoc002.html#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="._testdoc002.html#Langtangen:85">[18]</a> <a href="._testdoc002.html#Langtangen_1989e">[16]</a>.
+Langtangen also had two thesis <a href="._testdoc002.html#Langtangen:85">[18]</a> <a href="._testdoc002.html#Langtangen_1989e">[16]</a>
+back in the days.
 More retro citations are
 the old ME-IN323 book <a href="._testdoc002.html#Langtangen:91">[19]</a> and the
 <a href="._testdoc002.html#Langtangen:94b">[20]</a> OONSKI '94 paper.
@@ -32810,7 +32841,7 @@ between there we have <a href="#exer:some:formula">Exercise 10: Make references 
 <!-- --- begin exercise --- -->
 
 <h2 id="demo:ex:1">Problem 2: Flip a Coin</h2>
-<!-- keywords = random numbers; Monte Carlo simulation -->
+<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->
 
 <p>
 <!-- Torture tests -->
@@ -32963,6 +32994,7 @@ compute the probability as \( M/N \).
 <!-- --- begin exercise --- -->
 
 <h2 id="proj:circle1">Project 5: Explore Distributions of Random Circles</h2>
+<!-- keywords = ipynb -->
 
 <p>
 The formula for a circle is given by
@@ -34946,7 +34978,8 @@ and all the work of
 <a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
 old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
 talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>.
+Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>
+back in the days.
 More retro citations are
 the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 <a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
@@ -37083,7 +37116,8 @@ and all the work of
 <a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
 old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
 talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>.
+Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>
+back in the days.
 More retro citations are
 the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
 <a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
@@ -37275,7 +37309,7 @@ between there we have <a href="#exer:some:formula">Exercise 10: Make references 
 <!-- --- begin exercise --- -->
 
 <h2 id="demo:ex:1">Problem 2: Flip a Coin</h2>
-<!-- keywords = random numbers; Monte Carlo simulation -->
+<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->
 
 <p>
 <!-- Torture tests -->
@@ -37421,6 +37455,7 @@ compute the probability as \( M/N \).
 <!-- --- begin exercise --- -->
 
 <h2 id="proj:circle1">Project 5: Explore Distributions of Random Circles</h2>
+<!-- keywords = ipynb -->
 
 <p>
 The formula for a circle is given by
@@ -39315,7 +39350,8 @@ and all the work of
 \cite{Langtangen_2012,Mardal_et_al_2003a,Jeberg_et_al_2004} as well as
 old work \cite{Langtangen_1988d} and \cite{Langtangen_1989e}, and the
 talk \cite{Langtangen_talk_2007a}.
-Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}.
+Langtangen also had two thesis \cite{Langtangen:85,Langtangen_1989e}
+back in the days.
 More retro citations are
 the old ME-IN323 book \cite{Langtangen:91} and the
 \cite{Langtangen:94b} OONSKI '94 paper.
@@ -39557,7 +39593,7 @@ between there we have Exercise~\ref{exer:some:formula}.
 \subsection*{Problem \thedoconceexercisecounter: Flip a Coin}
 
 \label{demo:ex:1}
-% keywords = random numbers; Monte Carlo simulation
+% keywords = random numbers; Monte Carlo simulation; ipynb
 
 % Torture tests
 
@@ -39703,6 +39739,7 @@ compute the probability as $M/N$.
 \subsection*{Project \thedoconceexercisecounter: Explore Distributions of Random Circles}
 
 \label{proj:circle1}
+% keywords = ipynb
 
 The formula for a circle is given by
 
@@ -40839,6 +40876,9 @@ cp testdoc.html testdoc_wordpress.html
 system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default $rawgit
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
+
+system doconce format html testdoc $ex  # just produce the mako file
+doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
 
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 cp testdoc.p.tex testdoc_no_solutions.p.tex
@@ -44438,7 +44478,8 @@ and all the work of
 <a href="._testdoc_vagrant002.html#Langtangen_2012">[14]</a> <a href="._testdoc_vagrant002.html#Mardal_et_al_2003a">[4]</a> <a href="._testdoc_vagrant002.html#Jeberg_et_al_2004">[15]</a> as well as
 old work <a href="._testdoc_vagrant002.html#Langtangen_1988d">[5]</a> and <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>, and the
 talk <a href="._testdoc_vagrant002.html#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="._testdoc_vagrant002.html#Langtangen:85">[18]</a> <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>.
+Langtangen also had two thesis <a href="._testdoc_vagrant002.html#Langtangen:85">[18]</a> <a href="._testdoc_vagrant002.html#Langtangen_1989e">[16]</a>
+back in the days.
 More retro citations are
 the old ME-IN323 book <a href="._testdoc_vagrant002.html#Langtangen:91">[19]</a> and the
 <a href="._testdoc_vagrant002.html#Langtangen:94b">[20]</a> OONSKI '94 paper.
@@ -44878,7 +44919,7 @@ between there we have <a href="#exer:some:formula">Exercise 10: Make references 
 <!-- --- begin exercise --- -->
 
 <h2 id="demo:ex:1">Problem 2: Flip a Coin</h2>
-<!-- keywords = random numbers; Monte Carlo simulation -->
+<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->
 
 <p>
 <!-- Torture tests -->
@@ -45047,6 +45088,7 @@ compute the probability as \( M/N \).
 <!-- --- begin exercise --- -->
 
 <h2 id="proj:circle1">Project 5: Explore Distributions of Random Circles</h2>
+<!-- keywords = ipynb -->
 
 <p>
 The formula for a circle is given by
@@ -46490,7 +46532,8 @@ and all the work of
 [Ref14]_ [Ref04]_ [Ref15]_ as well as
 old work [Ref05]_ and [Ref16]_, and the
 talk [Ref17]_.
-Langtangen also had two thesis [Ref18]_ [Ref16]_.
+Langtangen also had two thesis [Ref18]_ [Ref16]_
+back in the days.
 More retro citations are
 the old ME-IN323 book [Ref19]_ and the
 [Ref20]_ OONSKI '94 paper.
@@ -72014,7 +72057,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f6d48c3a1b8>
+verbatim is to be replaced using <function html_verbatim at 0x7f7addd40320>
 
 
 First occurence: " `mako`."
@@ -75985,7 +76028,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Apr 16 02:00:18 2015.
+# sphinx-quickstart on Sat Apr 18 11:39:57 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76702,6 +76745,172 @@ Test inline tagging too: &quot;&#216;deg&#229;rd&quot;, <em>&#216;deg&#229;rd</e
 comments are not accepted.]
 
 <!-- ------------------- end of main content --------------- -->
+
+
+************** File: testdoc_exer.do.txt *****************
+TITLE: Exercises from A Document for Testing DocOnce
+AUTHOR: Hans Petter Langtangen Email: hpl@simula.no at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Kaare Dump at Segfault, Cyberspace
+AUTHOR: A. Dummy Author
+AUTHOR: I. S. Overworked and Outburned at Inst1 & Inst2, Somewhere & Third Inst, Elsewhere & Fourth Inst
+AUTHOR: J. Doe mail: j_doe@cyberspace.com
+DATE: today
+
+
+# --- begin exercise ---
+
+===== Problem: Flip a Coin =====
+label{demo:ex:1}
+files = flip_coin.py, flip_coin.pdf
+solutions = mysol.txt, mysol_flip_coin.py
+keywords = random numbers; Monte Carlo simulation; ipynb
+
+# Torture tests
+file=myfile_should_be_a_part_of_the_text
+solutions = mysol.txt, mysol_flip_coin.py, yet_another.file
+
+!bsubex
+Make a program that simulates flipping a coin $N$ times.
+Print out ``tail'' or ``head'' for each flip and
+let the program count the number of heads.
+
+!bhint
+Use `r = random.random()` and define head as `r <= 0.5`.
+!ehint
+
+!bhint
+Draw an integer among $\{1,2\}$ with
+`r = random.randint(1,2)` and define head when `r` is 1.
+!ehint
+
+!bans
+If the `random.random()` function returns a number $<1/2$, let it be
+head, otherwise tail. Repeat this $N$ number of times.
+!eans
+
+!bsol
+!bc pycod
+import sys, random
+N = int(sys.argv[1])
+heads = 0
+for i in range(N):
+    r = random.random()
+    if r <= 0.5:
+        heads += 1
+print 'Flipping a coin %d times gave %d heads' % (N, heads)
+!ec
+!esol
+!esubex
+
+!bsubex
+Vectorize the code in a) using boolean indexing.
+!esubex
+
+Vectorized code can be written in many ways.
+Sometimes the code is less intuitive, sometimes not.
+
+!bsubex
+Vectorize the code in a) using `numpy.sum`.
+
+
+!bans
+`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.
+!eans
+!esubex
+
+In this latter subexercise, we have an
+example where the code is easy to read.
+
+!bremarks
+These are the exercise remarks, appearing at the very end.
+!eremarks
+
+=== My remarks ===
+
+Remarks with such a subsubsection is treated as more text
+after the last subexercise. Test a list too:
+
+ o Mark 1.
+ o Mark 2.
+
+# --- end exercise ---
+
+
+
+# --- begin exercise ---
+
+===== Project: Explore Distributions of Random Circles =====
+
+label{proj:circle1}
+file=circles.pdf
+kw=ipynb
+
+The formula for a circle is given by
+
+!bt
+\begin{align}
+x &= x_0 + R\cos 2\pi t,\\ 
+y &= y_0 + R\sin 2\pi t,
+\end{align}
+!et
+where $R$ is the radius of the circle, $(x_0,y_0)$ is the
+center point, and $t$ is a parameter in the unit interval $[0,1]$.
+For any $t$, $(x,y)$ is a point on the circle.
+The formula can be used to generate `n` points on a circle:
+
+!bc pypro
+import numpy as np
+
+def circle(R, x0, y0, n=501):
+    t = np.linspace(0, 1, n)
+    x = x0 + R*np.cos(2*np.pi*t)
+    y = y0 + R*np.sin(2*np.pi*t)
+    return x, y
+
+x, y = circle(2.0, 0, 0)
+!ec
+
+# Often in an exercise we have some comments about the solution
+# which we normally want to keep where they are.
+
+The goal of this project is to draw $N$ circles with random
+center and radius. Plot each circle using the `circle` function
+above.
+
+!bsubex
+Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
+
+!bans
+Here goes the short answer to part a).
+!eans
+
+!bsol
+Here goes a full solution to part a).
+!esol
+
+!bhint
+Use the `numpy.random` module to draw the
+$x_0$, $y_0$, and $R$ quantities.
+!ehint
+
+!esubex
+
+!bsubex
+Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
+
+file=norm.py  # test local filename for subexercise
+!esubex
+
+!bsubex
+Let $R$ and $(x_0,y_0)$ be normally distributed.
+!esubex
+
+!bremarks
+At the very end of the exercise it may be appropriate to summarize
+and give some perspectives.
+!eremarks
+
+# --- end exercise ---
 
 
 ************** File: tmp_DocOnce.do.txt *****************
@@ -79441,7 +79650,7 @@ list of capabilities:
 <!-- begin verbatim block  shpro-->
 <pre><code>DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -79509,6 +79718,9 @@ doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
+
+# extract all exercises (projects and problems too)
+doconce extract_exercises tmp_mako__mydoc
 
 # grab selected text from a file
 doconce grab   --from[-] from-text [--to[-] to-text] somefile &gt; result
@@ -81081,7 +81293,7 @@ list of capabilities:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -81149,6 +81361,9 @@ doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
+
+# extract all exercises (projects and problems too)
+doconce extract_exercises tmp_mako__mydoc
 
 # grab selected text from a file
 doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -82320,7 +82535,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -82388,6 +82603,9 @@ list of capabilities::
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
+        
+        # extract all exercises (projects and problems too)
+        doconce extract_exercises tmp_mako__mydoc
         
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -83647,7 +83865,7 @@ list of capabilities:
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -83715,6 +83933,9 @@ list of capabilities:
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
+        
+        # extract all exercises (projects and problems too)
+        doconce extract_exercises tmp_mako__mydoc
         
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -84826,7 +85047,7 @@ list of capabilities:
 {{{
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -84894,6 +85115,9 @@ doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
+
+# extract all exercises (projects and problems too)
+doconce extract_exercises tmp_mako__mydoc
 
 # grab selected text from a file
 doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -86043,7 +86267,7 @@ list of capabilities:
 <syntaxhighlight lang="bash">
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -86111,6 +86335,9 @@ doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
+
+# extract all exercises (projects and problems too)
+doconce extract_exercises tmp_mako__mydoc
 
 # grab selected text from a file
 doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -87203,7 +87430,7 @@ list of capabilities:
 {{{
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -87271,6 +87498,9 @@ doconce slides_markdown complete_file.md remark --slide_style=light
 
 # replace bullets in lists by colored bullets
 doconce html_colorbullets file1.html file2.html ...
+
+# extract all exercises (projects and problems too)
+doconce extract_exercises tmp_mako__mydoc
 
 # grab selected text from a file
 doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -88314,7 +88544,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -88382,6 +88612,9 @@ list of capabilities::
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
+        
+        # extract all exercises (projects and problems too)
+        doconce extract_exercises tmp_mako__mydoc
         
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -89428,7 +89661,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -89496,6 +89729,9 @@ list of capabilities::
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
+        
+        # extract all exercises (projects and problems too)
+        doconce extract_exercises tmp_mako__mydoc
         
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -90600,7 +90836,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -90668,6 +90904,9 @@ list of capabilities::
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
+        
+        # extract all exercises (projects and problems too)
+        doconce extract_exercises tmp_mako__mydoc
         
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -91783,7 +92022,7 @@ list of capabilities:
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -91851,6 +92090,9 @@ list of capabilities:
         
         # replace bullets in lists by colored bullets
         doconce html_colorbullets file1.html file2.html ...
+        
+        # extract all exercises (projects and problems too)
+        doconce extract_exercises tmp_mako__mydoc
         
         # grab selected text from a file
         doconce grab   --from[-] from-text [--to[-] to-text] somefile > result
@@ -92520,6 +92762,59 @@ output in testdoc.html
 + doconce split_html testdoc.html --method=space10
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_no_solutions.html
++ system doconce format html testdoc --examples_as_exercises
++ doconce format html testdoc --examples_as_exercises
+running preprocess -DFORMAT=html -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
+running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
+translating doconce text in tmp_mako__testdoc.do.txt to html
+
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
+
+ A long
+caption spanning
+several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
+as well as math with subscript as in $t_{i+1}$. label{myfig}
+
+    fix: collected this text to one single line (right?)
+
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
+
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
+copying from regex "subroutine" until end of file
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
+copying after regex "a comment" until "^C\s+END1"
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+found info about 11 exercises
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format html
+... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
+    found!
+*** warning: inline math in HTML must have space around <:
+    <1/2  ->  < 1/2
+*** warning: quiz explanation contains block (fig/code/math)
+    and is therefore skipped
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+$$ y(x) = e^{-y}.$$ 
+
+output in testdoc.html
++ '[' 0 -ne 0 ']'
++ doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
+exercises extracted to testdoc_exer.do.txt
 + system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 + doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 
@@ -97317,7 +97612,7 @@ reading sources... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:403: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:417: ERROR: Unexpected indentation.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:419: ERROR: Unexpected indentation.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc010.rst:7: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
@@ -107275,8 +107570,9 @@ Overfull \hbox (0.31688pt too wide)
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
+[20]
 No file quickref.ind.
-[20] [21] (./quickref.aux)
+[21] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -108250,7 +108546,7 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [13]
-Overfull \hbox (3647.00006pt too wide) 
+Overfull \hbox (3755.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
@@ -108259,7 +108555,7 @@ it_html slides_html slides_beamer slides_markdown latin2html grep latex_header
 latex_footer latex_problems ref_external html_colorbullets list_fig_src_files l
 ist_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_f
 ormat linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile
- diff gitdiff fix_bibtex4publish csv2table  
+ diff gitdiff fix_bibtex4publish csv2table extract_exercises  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -108333,6 +108629,9 @@ light
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 # extract all exercises (projects and problems too)  
+
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
 > result  
@@ -108401,11 +108700,11 @@ Overfull \hbox (83.00006pt too wide)
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
-
+[16]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-[16]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
@@ -108420,11 +108719,11 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-
+[17]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
-[17]
+
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
@@ -108765,7 +109064,7 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [14]
-Overfull \hbox (3647.00006pt too wide) 
+Overfull \hbox (3755.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
 _images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
@@ -108774,7 +109073,7 @@ it_html slides_html slides_beamer slides_markdown latin2html grep latex_header
 latex_footer latex_problems ref_external html_colorbullets list_fig_src_files l
 ist_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_f
 ormat linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile
- diff gitdiff fix_bibtex4publish csv2table  
+ diff gitdiff fix_bibtex4publish csv2table extract_exercises  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -108848,6 +109147,9 @@ light
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
+Overfull \hbox (11.00006pt too wide) 
+[]\T1/pcr/m/n/10 # extract all exercises (projects and problems too)  
+
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
 > result  
@@ -108861,14 +109163,14 @@ Overfull \hbox (53.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
-
+[16]
 Overfull \hbox (107.00006pt too wide) 
 []        \T1/pcr/m/n/10 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{q
 uote}  
 
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # make HTML file via pandoc from Markdown (.md) file  
-[16]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # make LaTeX file via pandoc from Markdown (.md) file  
 
@@ -108920,10 +109222,10 @@ use, ...)
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-
+[17]
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
-[17]
+
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace latex-1 (non-ascii) characters by html codes  
 
@@ -108939,14 +109241,14 @@ Overfull \hbox (53.00006pt too wide)
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
-
+[18]
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 the area under a curve that defines half of the allipse.  
-[18]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
 
