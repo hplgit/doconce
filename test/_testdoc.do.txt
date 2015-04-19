@@ -1564,7 +1564,7 @@ We also test mdash---used as alternative to hyphen without spaces around,
 or in quotes:
 
 !bquote
-*Fun is fun.*--- Unknown.
+Fun is fun.--- Unknown.
 !equote
 
 And finally, what about admons, quotes, and boxes? They are tested
