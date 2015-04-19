@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Apr 5, 2015
+:Date: Apr 19, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -70,7 +70,7 @@ Here are some DocOnce features:
     for the start and end lines.
 
   * DocOnce first runs two preprocessors (Preprocess and Mako), which
-    allow programming constructs (includes, if-tests, function calls)
+    allow programming constructs (includes, if-tests, function calls, variables)
     as part of the text. This feature makes it easy to write *one text*
     with different flavors: long vs short text, Python vs Matlab code
     examples, experimental vs mature content.
@@ -2253,6 +2253,9 @@ DocOnce dump each table to CSV format in a file ``table_X.csv``, where
 tables from DocOnce documents into spreadsheet programs for further
 analysis.
 
+.. index::
+   single: doconce commands; cvs2table
+
 Data in CSV format can be transformed to DocOnce table format
 by the ``doconce csv2table`` utility:
 
@@ -2929,6 +2932,9 @@ Such inline comments with edits are only given special typesetting in
 the output formats ``latex``, ``pdflatex``, ``html``, and ``sphinx``.
 Otherwise, just the DocOnce syntax is shown (but that is also quite
 readable as edit instructions.)
+
+.. index::
+   single: doconce commands; apply_edit_comments
 
 The editing implied by the edit comments can be implemented in the DocOnce
 file by the command
@@ -3708,12 +3714,13 @@ if ``mydoc.do.txt`` is the name of the DocOnce file.  The file contains
 a list of dictionaries, where keys in the dictionary corresponds to
 elements in the exercise: filename, solution file, answer, label, list
 of hints, list of subexercises, closing remarks, and the main body of
-text. From this data structure it is easy to generate stand-alone
-documents with exercises, problems, and projects with or without
-short answers and full solutions.
+text.
+
+Typesetting of Exercises
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Tailored formatting of exercises in special output formats can make
-use of the elements in an exercise.  For example, one can image web
+use of the elements in an exercise.  For example, one can imagine web
 formats where the hints are displayed one by one when needed and where
 the result file can be uploaded. One can also think of mechanisms for
 downloading the solution file if the result file meets certain
@@ -3735,7 +3742,9 @@ or *Project:* word, so that references like
 
 works well in all formats (i.e., no double ``Problem Problem`` appears).
 
-**Remark.**
+Remark on Typesettng of Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Examples are *not* typeset similarly to exercises unless one adds
 the command-line option ``--examples_as_exercises``. That is, without
 this option, any heading and starting with ``Example:`` makes DocOnce
@@ -3766,6 +3775,282 @@ There is a special LaTeX environment for the exercises that one can
 use to further tailor the appearance of exercises (given that one
 edits the ``.tex`` file, preferably by a script after each ``doconce format``
 command).
+
+.. index::
+   single: doconce commands; extract_exercises
+
+Extracting Exercises in a Separate Document
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The command
+
+.. code-block:: text
+
+        Terminal> doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
+
+extracts all exercises in ``mydoc.do.txt`` with keywords ``key1`` or ``key2``
+in a separate document ``mydoc_exer.do.txt``. For example, this feature can
+be used to extract all exercises suitable for being published as
+IPython/Jupyter notebooks (and perhaps automatically graded by "`nbgrader`" "https://github.com/jupyter/nbgrader"). Just attach the keyword ``ipynb`` to all
+exercises suitable for the IPython/Jupyter notebook and run the command
+with ``--filter=ipynb``. Without ``--filter=``, the ``extract_exercises`` utility
+extracts all exercises such that one can publish this document separately,
+with or without solutions and/or short answers.
+By "exercise" we here mean all exerices, problems,
+and projects.
+
+Example on an Exercise
+----------------------
+
+The next section show the typesetting of the following exercise.
+For output in HTML with various Bootstrap styles, hints and answers
+appear as unfolded sections - one must click to open the text.
+
+.. code-block:: doconce
+
+        ===== Exercise: Compute integrals =====
+        label{doconce:manual:exercise:ex}
+        file=integrals.py
+        keywords=integrals
+        
+        Use the most appropriate tools to answer the various subexercises.
+        
+        !bsubex
+        What is 1+1?
+        
+        !bhint
+        Your brain is a perfectly appropriate tool for this task.
+        !ehint
+        !esubex
+        
+        !bans
+        2
+        !eans
+        
+        !bsubex
+        What is the integral of $e^{-at}\sin(wx)$?
+        
+        !bhint
+        Assume $a$ and $w$ real.
+        !ehint
+        
+        !bsol
+        This is an easy task for SymPy:
+        
+        !bc pyshell
+        >>> import sympy as sp
+        >>> x = sp.symbols('x')
+        >>> a, w = sp.symbols('a w', real=True,positive=True)
+        >>> F = sp.integrate(sp.exp(-a*x)*sp.sin(w*x), x)
+        >>> F
+        -a*sin(w*x)/(a**2*exp(a*x) + w**2*exp(a*x)) -
+        w*cos(w*x)/(a**2*exp(a*x) + w**2*exp(a*x))
+        >>> sp.simplify(F)
+        -(a*sin(w*x) + w*cos(w*x))*exp(-a*x)/(a**2 + w**2)
+        !ec
+        That is, $-\frac{e^{- a x}}{a^{2} + w^{2}}
+        \left(a \sin{\left (w x \right )}
+        + w \cos{\left (w x \right )}\right)$.
+        !esol
+        !esubex
+        
+        !bsubex
+        Compute $\int_{-\infty}^1 e^{-x^4}dx$.
+        
+        !bsol
+        Continuing the last session,
+        
+        !bc pyshell
+        >>> F = sp.integrate(sp.exp(-x**4), (x, -sp.oo, 0))
+        >>> F
+        gamma(1/4)/4
+        >>> F.evalf()
+        0.906402477055477
+        !ec
+        !esol
+        !esubex
+        
+        !bsubex
+        !bquiz
+        Q: What is correct about the integral $\int e^{-t^2}dt$?
+        
+        Cw: The integral is the error function.
+        E: Almost correct, but the error function has a slightly different
+        definition:
+        
+        !bt
+        \[ \hbox{erf}(x) = \frac{2}{\sqrt{2}}\int_{0}^x e^{-t^2}dt.\]
+        !et
+        
+        Cw: It cannot be computed.
+        E: That would be correct if computed means ``calculated as
+        a closed-form formula by hand'', but the integral
+        $\int_a^b e^{-t^2}dt$? can be easily computed numerical
+        methods.
+        
+        Cr: It equals
+        
+        !bt
+        \[ \frac{\Gamma{\left(\frac{1}{4} \right)}
+        \gamma\left(\frac{1}{4}, x^{4}\right)}{16
+        \Gamma{\left(\frac{5}{4} \right)}},\]
+        !et
+        where $\Gamma(x)$ is the (upper) incomplete gamma function
+        and $\gamma(x)$ is the lower incomplete gamma function
+        (see "Wikipedia":
+        "http://en.wikipedia.org/wiki/Incomplete_gamma_function"
+        for definition).
+        E: This is correct, as proved by SymPy:
+        
+        !bc pyshell
+        >>> F = sp.integrate(sp.exp(-x**4), x)
+        >>> F
+        gamma(1/4)*lowergamma(1/4, x**4)/(16*gamma(5/4))
+        !ec
+        
+        Cw: It equals the cumulative normal density function.
+        E: The cumulative normal density function, with mean $\mu$ and
+        standard deviation $\sigma$, is defined as
+        
+        !bt
+        \[ \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}\sigma}
+        e^{-\frac{(t-\mu)^2}{2\sigma}}dt.\]
+        !et
+        !equiz
+        !esubex
+        
+        !bremarks
+        This exercise demonstrate subexercise, hint, solution, short answer,
+        multiple-choice question (quiz), and final remark - combined with
+        mathematics and computer code.
+        !eremarks
+
+.. --- begin exercise ---
+
+.. _doconce:manual:exercise:ex:
+
+Exercise 1: Compute integrals
+-----------------------------
+
+.. keywords = integrals
+
+Use the most appropriate tools to answer the various subexercises.
+
+**a)**
+What is 1+1?
+
+.. --- begin hint in exercise ---
+
+**Hint.**
+Your brain is a perfectly appropriate tool for this task.
+
+.. --- end hint in exercise ---
+
+.. --- begin answer of exercise ---
+
+**Answer.**
+2
+
+.. --- end answer of exercise ---
+
+**b)**
+What is the integral of :math:`e^{-at}\sin(wx)`?
+
+.. --- begin hint in exercise ---
+
+**Hint.**
+Assume :math:`a` and :math:`w` real.
+
+.. --- end hint in exercise ---
+
+.. --- begin solution of exercise ---
+
+**Solution.**
+This is an easy task for SymPy:
+
+.. code-block:: python
+
+        >>> import sympy as sp
+        >>> x = sp.symbols('x')
+        >>> a, w = sp.symbols('a w', real=True,positive=True)
+        >>> F = sp.integrate(sp.exp(-a*x)*sp.sin(w*x), x)
+        >>> F
+        -a*sin(w*x)/(a**2*exp(a*x) + w**2*exp(a*x)) -
+        w*cos(w*x)/(a**2*exp(a*x) + w**2*exp(a*x))
+        >>> sp.simplify(F)
+        -(a*sin(w*x) + w*cos(w*x))*exp(-a*x)/(a**2 + w**2)
+
+That is, :math:`-\frac{e^{- a x}}{a^{2} + w^{2}}
+\left(a \sin{\left (w x \right )}
++ w \cos{\left (w x \right )}\right)`.
+
+.. --- end solution of exercise ---
+
+**c)**
+Compute :math:`\int_{-\infty}^1 e^{-x^4}dx`.
+
+.. --- begin solution of exercise ---
+
+**Solution.**
+Continuing the last session,
+
+.. code-block:: python
+
+        >>> F = sp.integrate(sp.exp(-x**4), (x, -sp.oo, 0))
+        >>> F
+        gamma(1/4)/4
+        >>> F.evalf()
+        0.906402477055477
+
+.. --- end solution of exercise ---
+
+**d)**
+
+.. --- previous heading type: exercise
+
+
+
+.. begin quiz
+
+
+
+**Question:** What is correct about the integral :math:`\int e^{-t^2}dt`?
+
+
+**Choice A:** The integral is the error function. :abbr:`? (Wrong!)`
+
+**Choice B:** It cannot be computed. :abbr:`? (Wrong!)` :abbr:`# (That would be correct if computed means "calculated as a closed-form formula by hand", but the integral \int_a^b e^{-t^2}dt? can be easily computed numerical methods.)`
+
+**Choice C:** It equals
+
+.. math::
+         \frac{\Gamma{\left(\frac{1}{4} \right)}
+        \gamma\left(\frac{1}{4}, x^{4}\right)}{16
+        \Gamma{\left(\frac{5}{4} \right)}},
+
+where :math:`\Gamma(x)` is the (upper) incomplete gamma function
+and :math:`\gamma(x)` is the lower incomplete gamma function
+(see `Wikipedia <http://en.wikipedia.org/wiki/Incomplete_gamma_function>`__
+for definition). :abbr:`? (Right!)`
+
+**Choice D:** It equals the cumulative normal density function. :abbr:`? (Wrong!)`
+
+.. end quiz
+
+
+
+Filename: ``integrals.py``.
+
+.. Closing remarks for this Exercise
+
+Remarks
+~~~~~~~
+
+This exercise demonstrate subexercise, hint, solution, short answer,
+multiple-choice question (quiz), and final remark - combined with
+mathematics and computer code.
+
+.. --- end exercise ---
 
 .. _sec:verbatim:blocks:
 
@@ -5244,6 +5529,9 @@ when writing slides with DocOnce. The ``doconce format`` command does not
 recognize ``!split`` instructions: one needs to run ``doconce split_*``
 as a postprocess, where the ``*`` means ``html``, ``rst``, or ``beamer``.
 
+.. index::
+   single: doconce commands; split_html
+
 **HTML.**
 Splitting an HTML document is done by
 
@@ -5289,16 +5577,24 @@ However, if ``--html_theme=`` is set any theme starting
 with ``bootstrap`` or ``bootswatch``, the navigation buttons are ignored,
 and Bootstrap-style buttons are used.
 
+.. index::
+   single: doconce commands; split_rst
+
+.. index::
+   single: doconce commands; sphinx_dir
+
+.. index:: automake_sphinx.py
+
 **reStructuredText and Sphinx.**
 Here is a typical split of a large Sphinx document ``mydoc.rst``
 into smaller pieces:
 
 .. code-block:: text
 
-        Terminal> doconce sphinx_dir author="Some Author" \
-                  title="Short title" theme=fenics dirname=mydir mydoc
         Terminal> doconce format sphinx mydoc
         Terminal> doconce split_rst mydoc
+        Terminal> doconce sphinx_dir author="Some Author" \
+                  title="Short title" theme=fenics dirname=mydir mydoc
         Terminal> python automake_sphinx.py
 
 The ``doconce format sphinx mydoc`` command is needed to produce ``mydoc.rst``,
@@ -5589,6 +5885,9 @@ Here is another example on math and code:
 HTML5 Slides
 ------------
 
+.. index::
+   single: doconce commands; slides_html
+
 .. doconce-adjusted styles: easy to switch between styles since
 
 .. font sizes are compatible
@@ -5692,6 +5991,10 @@ Emacs DocOnce Formatter
 .. index:: Emacs doconce support
 
 .. index:: doconce syntax highlighting
+
+.. index:: syntax highlighting for doconce
+
+.. index:: doconce editing (Emacs)
 
 The file `.doconce-mode.el <https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el>`__ in the DocOnce source distribution
 gives a "DocOnce Editing Mode" in Emacs.
@@ -6439,7 +6742,8 @@ format, and you need to know these steps to make use of the logfile.
 From DocOnce to Other Formats
 =============================
 
-.. index:: doconce format command
+.. index::
+   single: doconce commands; format
 
 Transformation of a DocOnce document ``mydoc.do.txt`` to various other
 formats is done with the script ``doconce format``:
@@ -8022,6 +8326,13 @@ and reuse it the next time ``doconce sphinx_dir`` is run
         doconce sphinx_dir theme=scipy_lectures \
                            conf.py=../some/path/conf.py mydoc
 
+**RunestoneInteractive books.**
+The ``doconce format sphinx`` command accepts an option ``--runestone``
+for generating `RunestoneInteractive <http://runestoneinteractive.org>`__
+books (which build on Sphinx).
+You must run the generated ``automake_sphinx.py`` also with a ``--runestone``
+option to generate these type of documents.
+
 .. index:: Sphinx directory
 
 The manual Sphinx procedure
@@ -8427,6 +8738,10 @@ here for convenience.
         where foreground and background color is inherited from the
         surroundnings (e.g., to avoid the red Boostrap color).
         Default: on (use the css-specified typesetting of <pre> tags).
+        NOTE: the naming "html_code_style" is not optimal: it has nothing
+        to do with code block style, but the <code> tag for inline verbatim text
+        in the context of bootstrap css styles.
+        
         
         
         --html_pre_style=...
@@ -8436,6 +8751,7 @@ here for convenience.
         Default: on (use the css-specified typesetting of <pre> tags).
         This option is most relevant for Bootstrap styles to
         avoid white background in code blocks inside colorful admons.
+        
         
         
         --html_toc_depth=...
@@ -8888,11 +9204,21 @@ here for convenience.
         Default: none (no journal name).
         
         
+        --ipynb_cite=...
+        
+        Typesetting of bibliography.
+        plain: simple native typesetting (same as pandoc) (default)
+        latex: ipynb support for latex-style bibliographies.
+        
+        
         --ipynb_admon=...
         
-        Typesetting of admonitions and quotes.
+        Typesetting of admonitions (hint, remarks, box, notice, summary,
+        warning, question, block - quotes are typeset as quotes).
         quote: as Markdown quote (default) with gray line on the left.
         paragraph: just the content with the title as paragraph heading.
+        hrule: title with horizontal rule above and below, then text and
+        horozontal rule.
         
         
         --ipynb_figure=...
@@ -9686,4 +10012,3 @@ References
    **H. P. Langtangen**. The FEMDEQS Program System,
    *Department of Mathematics, University of Oslo*,
    1989.
-

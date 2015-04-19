@@ -2055,6 +2055,249 @@ with or without solutions and/or short answers.
 By ``exercise'' we here mean all exerices, problems,
 and projects.
 
+===== Example on an Exercise =====
+
+The next section show the typesetting of the following exercise.
+For output in HTML with various Bootstrap styles, hints and answers
+appear as unfolded sections - one must click to open the text.
+
+!bc do
+===== Exercise: Compute integrals =====
+label{doconce:manual:exercise:ex}
+file=integrals.py
+keywords=integrals
+
+Use the most appropriate tools to answer the various subexercises.
+
+|bsubex
+What is 1+1?
+
+|bhint
+Your brain is a perfectly appropriate tool for this task.
+|ehint
+|esubex
+
+|bans
+2
+|eans
+
+|bsubex
+What is the integral of $e^{-at}\sin(wx)$?
+
+|bhint
+Assume $a$ and $w$ real.
+|ehint
+
+|bsol
+This is an easy task for SymPy:
+
+|bc pyshell
+>>> import sympy as sp
+>>> x = sp.symbols('x')
+>>> a, w = sp.symbols('a w', real=True,positive=True)
+>>> F = sp.integrate(sp.exp(-a*x)*sp.sin(w*x), x)
+>>> F
+-a*sin(w*x)/(a**2*exp(a*x) + w**2*exp(a*x)) -
+w*cos(w*x)/(a**2*exp(a*x) + w**2*exp(a*x))
+>>> sp.simplify(F)
+-(a*sin(w*x) + w*cos(w*x))*exp(-a*x)/(a**2 + w**2)
+|ec
+That is, $-\frac{e^{- a x}}{a^{2} + w^{2}}
+\left(a \sin{\left (w x \right )}
++ w \cos{\left (w x \right )}\right)$.
+|esol
+|esubex
+
+|bsubex
+Compute $\int_{-\infty}^1 e^{-x^4}dx$.
+
+|bsol
+Continuing the last session,
+
+|bc pyshell
+>>> F = sp.integrate(sp.exp(-x**4), (x, -sp.oo, 0))
+>>> F
+gamma(1/4)/4
+>>> F.evalf()
+0.906402477055477
+|ec
+|esol
+|esubex
+
+|bsubex
+|bquiz
+Q: What is correct about the integral $\int e^{-t^2}dt$?
+
+Cw: The integral is the error function.
+E: Almost correct, but the error function has a slightly different
+definition:
+
+|bt
+\[ \hbox{erf}(x) = \frac{2}{\sqrt{2}}\int_{0}^x e^{-t^2}dt.\]
+|et
+
+Cw: It cannot be computed.
+E: That would be correct if computed means ``calculated as
+a closed-form formula by hand'', but the integral
+$\int_a^b e^{-t^2}dt$? can be easily computed numerical
+methods.
+
+Cr: It equals
+
+|bt
+\[ \frac{\Gamma{\left(\frac{1}{4} \right)}
+\gamma\left(\frac{1}{4}, x^{4}\right)}{16
+\Gamma{\left(\frac{5}{4} \right)}},\]
+|et
+where $\Gamma(x)$ is the (upper) incomplete gamma function
+and $\gamma(x)$ is the lower incomplete gamma function
+(see "Wikipedia":
+"http://en.wikipedia.org/wiki/Incomplete_gamma_function"
+for definition).
+E: This is correct, as proved by SymPy:
+
+|bc pyshell
+>>> F = sp.integrate(sp.exp(-x**4), x)
+>>> F
+gamma(1/4)*lowergamma(1/4, x**4)/(16*gamma(5/4))
+|ec
+
+Cw: It equals the cumulative normal density function.
+E: The cumulative normal density function, with mean $\mu$ and
+standard deviation $\sigma$, is defined as
+
+|bt
+\[ \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}\sigma}
+e^{-\frac{(t-\mu)^2}{2\sigma}}dt.\]
+|et
+|equiz
+|esubex
+
+|bremarks
+This exercise demonstrates subexercise, hint, solution, short answer,
+multiple-choice question (quiz), and final remark - combined with
+mathematics and computer code.
+|eremarks
+!ec
+
+
+===== Exercise: Compute integrals =====
+label{doconce:manual:exercise:ex}
+file=integrals.py
+keywords=integrals
+
+Use the most appropriate tools to answer the various subexercises.
+
+!bsubex
+What is 1+1?
+
+!bhint
+Your brain is a perfectly appropriate tool for this task.
+!ehint
+
+!bans
+2
+!eans
+!esubex
+
+!bsubex
+What is the integral of $e^{-at}\sin(wx)$?
+
+!bhint
+Assume $a$ and $w$ real.
+!ehint
+
+!bsol
+This is an easy task for SymPy:
+
+!bc pyshell
+>>> import sympy as sp
+>>> x = sp.symbols('x')
+>>> a, w = sp.symbols('a w', real=True,positive=True)
+>>> F = sp.integrate(sp.exp(-a*x)*sp.sin(w*x), x)
+>>> F
+-a*sin(w*x)/(a**2*exp(a*x) + w**2*exp(a*x)) -
+w*cos(w*x)/(a**2*exp(a*x) + w**2*exp(a*x))
+>>> sp.simplify(F)
+-(a*sin(w*x) + w*cos(w*x))*exp(-a*x)/(a**2 + w**2)
+!ec
+That is, $-\frac{e^{- a x}}{a^{2} + w^{2}}
+\left(a \sin{\left (w x \right )}
++ w \cos{\left (w x \right )}\right)$.
+!esol
+!esubex
+
+!bsubex
+Compute $\int_{-\infty}^1 e^{-x^4}dx$.
+
+!bsol
+Continuing the last session,
+
+!bc pyshell
+>>> F = sp.integrate(sp.exp(-x**4), (x, -sp.oo, 0))
+>>> F
+gamma(1/4)/4
+>>> F.evalf()
+0.906402477055477
+!ec
+!esol
+!esubex
+
+!bsubex
+!bquiz
+Q: What is correct about the integral $\int e^{-t^2}dt$?
+
+Cw: The integral is the error function.
+E: Almost correct, but the error function has a slightly different
+definition:
+
+!bt
+\[ \hbox{erf}(x) = \frac{2}{\sqrt{2}}\int_{0}^x e^{-t^2}dt.\]
+!et
+
+Cw: It cannot be computed.
+E: That would be correct if computed means ``calculated as
+a closed-form formula by hand'', but the integral
+$\int_a^b e^{-t^2}dt$? can be easily computed numerical
+methods.
+
+Cr: It equals
+
+!bt
+\[ \frac{\Gamma{\left(\frac{1}{4} \right)}
+\gamma\left(\frac{1}{4}, x^{4}\right)}{16
+\Gamma{\left(\frac{5}{4} \right)}},\]
+!et
+where $\Gamma(x)$ is the (upper) incomplete gamma function
+and $\gamma(x)$ is the lower incomplete gamma function
+(see "Wikipedia":
+"http://en.wikipedia.org/wiki/Incomplete_gamma_function"
+for definition).
+E: This is correct, as proved by SymPy:
+
+!bc pyshell
+>>> F = sp.integrate(sp.exp(-x**4), x)
+>>> F
+gamma(1/4)*lowergamma(1/4, x**4)/(16*gamma(5/4))
+!ec
+
+Cw: It equals the cumulative normal density function.
+E: The cumulative normal density function, with mean $\mu$ and
+standard deviation $\sigma$, is defined as
+
+!bt
+\[ \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}\sigma}
+e^{-\frac{(t-\mu)^2}{2\sigma}}dt.\]
+!et
+!equiz
+!esubex
+
+!bremarks
+This exercise demonstrates subexercise, hint, solution, short answer,
+multiple-choice question (quiz), and final remark - combined with
+mathematics and computer code.
+!eremarks
+
 !split
 ===== Blocks of Verbatim Computer Code =====
 label{sec:verbatim:blocks}
