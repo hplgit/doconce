@@ -8,6 +8,8 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting web pages
 
 Here are some of the most recent features in DocOnce:
 
+ * `doconce extract_exercises`
+   extracts all exercises from a document (can be used, e.g., to publish exercises separately or to extract only those exercises suitable to being published as IPython notebooks)
  * "User-defined environments": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments" with begin-end tags, doing
    exactly what you want (you may (e.g.) use your favorite *native* example
    LaTeX environment when writing LaTeX)

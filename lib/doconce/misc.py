@@ -7441,10 +7441,12 @@ def _latex2doconce(filestr):
         # fixfile must contain subst and replace, to be
         # applied _after_ the general subst and replace below
         """
+        # re.sub substitutions
         subst = [
         (r'^\be\s+', '!bt\n\\begin{equation}\n', re.MULTILINE),
         (from_, to_, flags),
         ]
+        # str.replace replacements
         replace = []
         """
         f = open(fixfile)

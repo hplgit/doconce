@@ -1,7 +1,7 @@
 import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
-     is_file_or_url, \
+     is_file_or_url, envir_delimiter_lines, doconce_exercise_output, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url
 from misc import option, _abort
 
@@ -1712,6 +1712,44 @@ def html_ref_and_label(section_label2title, format, filestr):
     return filestr
 
 
+def html_exercise(exer):
+    exerstr, solstr = doconce_exercise_output(
+        exer,
+        solution_header='__Solution.__',
+        answer_header='__Answer.__',
+        hint_header='__Hint.__')
+
+    bootstrap = option('html_style=', '').startswith('boots')
+    if not bootstrap:
+        return exerstr, solstr
+    # Bootstrap typesetting where hints and solutions can be folded
+    envir2heading = dict(hint=r'(?P<heading>__Hint(?P<hintno> \d+)?\.__)',
+                         ans=r'(?P<heading>__Answer\.__)',
+                         sol=r'(?P<heading>__Solution\.__)')
+
+    global _id_counter # need this trick to update this var in subst func
+    _id_counter = 0
+    for envir in 'hint', 'ans', 'sol':
+
+        def subst(m):
+            global _id_counter
+            _id_counter += 1
+            heading = m.group('heading')
+            body = m.group('body')
+            id = 'exer_%d_%d' % (exer['no'], _id_counter)
+            visible_text = heading
+            unfold = bootstrap_collapse(
+                visible_text=heading, collapsed_text=body,
+                id=id, button_text='', icon='hand-right')
+            replacement = '\n# ' + envir_delimiter_lines[envir][0] + '\n' + unfold + '\n# ' + envir_delimiter_lines[envir][1] + '\n'
+            return replacement
+
+        pattern = '\n# ' + envir_delimiter_lines[envir][0] + '\s+' + envir2heading[envir] + '(?P<body>.+?)' + '\n# ' + envir_delimiter_lines[envir][1] + '\n'
+        exerstr = re.sub(pattern, subst, exerstr, flags=re.DOTALL)
+        solstr = re.sub(pattern, subst, solstr, flags=re.DOTALL)
+
+    return exerstr, solstr
+
 def html_index_bib(filestr, index, citations, pubfile, pubdata):
     if citations:
         from common import cite_with_multiple_args2multiple_cites
@@ -1783,6 +1821,8 @@ def html_toc(sections):
 def bootstrap_collapse(visible_text, collapsed_text,
                        id, button_text='', icon='pencil'):
     """Generate HTML Bootstrap code for a collapsing/unfolding text."""
+    # icon types:
+    # http://www.w3schools.com/bootstrap/bootstrap_ref_comp_glyphs.asp
     text = """
 <p>
 <a class="glyphicon glyphicon-%(icon)s showdetails" data-toggle="collapse"
@@ -1895,37 +1935,6 @@ def html_quiz(quiz):
                 else:
                     expl = 'Wrong!'
             # Use collapse functionality, see http://jsfiddle.net/8cYFj/
-            '''
-            text += """
-<p><b>%s</b>
-%s
-<div class="collapse-group">
-<p><div class="collapse" id="%s">
-<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%s.gif">
-%s
-</div></p>
-<a class="btn btn-default btn-xs showdetails" data-toggle="collapse"
- data-target="#%s" style="font-size: 80%%;">%s</a>
-</div>
-</p>
-""" % (choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl, id, button_text)
-            '''
-            '''
-            text += """
-<p>
-<a class="glyphicon glyphicon-pencil showdetails" data-toggle="collapse"
- data-target="#%s" style="font-size: 80%%;">%s</a>
-&nbsp;<b>%s</b>
-%s
-<div class="collapse-group">
-<p><div class="collapse" id="%s">
-<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%s.gif">
-%s
-</div></p>
-</div>
-</p>
-""" % (id, button_text, choice_prefix, choice[1], id, 'correct' if choice[0] == 'right' else 'incorrect', expl)
-            '''
             visible_text = '&nbsp;<b>%s</b>\n%s' % (choice_prefix, choice[1])
             collapsed_text = '<img src="RAW_GITHUB_URL/hplgit/doconce/master/bundled/html_images/%s.gif">\n%s' % ('correct' if choice[0] == 'right' else 'incorrect', expl)
             text += bootstrap_collapse(
@@ -2209,7 +2218,7 @@ def define(FILENAME_EXTENSION,
     CROSS_REFS['html'] = html_ref_and_label
     TABLE['html'] = html_table
     INDEX_BIB['html'] = html_index_bib
-    EXERCISE['html'] = plain_exercise
+    EXERCISE['html'] = html_exercise
     TOC['html'] = html_toc
     QUIZ['html'] = html_quiz
 

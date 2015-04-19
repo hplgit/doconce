@@ -2,7 +2,7 @@
 ======= From DocOnce to Other Formats =======
 label{doconce2formats}
 
-idx{`doconce format` command}
+idx{`doconce` commands!`format`}
 
 Transformation of a DocOnce document `mydoc.do.txt` to various other
 formats is done with the script `doconce format`:
@@ -1567,7 +1567,7 @@ constitute comprehensive examples on how such scripts can be made.
 
 ===== `doconce format` command-line options =====
 
-idx{doconce format options}
+idx{`doconce format` options}
 idx{command-line options!doconce format}
 
 The transformation of a DocOnce source to various format is done with

@@ -44934,8 +44934,19 @@ let the program count the number of heads.
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_1" style="font-size: 80%;"></a>
 <b>Hint 1.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_1">
+
+<p>
 Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -44944,25 +44955,56 @@ Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_2" style="font-size: 80%;"></a>
 <b>Hint 2.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_2">
+
+<p>
 Draw an integer among \( \{1,2\} \) with
 <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end hint in exercise --- -->
 
 <p>
 <!-- --- begin answer of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_3" style="font-size: 80%;"></a>
 <b>Answer.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_3">
+
+<p>
 If the <code>random.random()</code> function returns a number \( < 1/2 \), let it be
 head, otherwise tail. Repeat this \( N \) number of times.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end answer of exercise --- -->
 
 <p>
 <!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_7" style="font-size: 80%;"></a>
 <b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_7">
+
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -44975,6 +45017,11 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
         heads <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
 <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Flipping a coin </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> times gave </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> heads&#39;</span> <span style="color: #666666">%</span> (N, heads)
 </pre></div>
+<p>
+</div></p>
+</div>
+</p>
+
 <p>
 <!-- --- end solution of exercise --- -->
 
@@ -44992,8 +45039,21 @@ Vectorize the code in a) using <code>numpy.sum</code>.
 
 <p>
 <!-- --- begin answer of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_2_4" style="font-size: 80%;"></a>
 <b>Answer.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_2_4">
+
+<p>
 <code>np.sum(np.where(r &lt;= 0.5, 1, 0))</code> or <code>np.sum(r &lt;= 0.5)</code>.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end answer of exercise --- -->
@@ -45072,11 +45132,22 @@ in previous DocOnce versions:
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_4_1" style="font-size: 80%;"></a>
 <b>Hint.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_4_1">
+
+<p>
 To answer this question empirically, let a program
 draw \( N \) such random numbers using Python's standard <code>random</code> module,
 count how many of them, \( M \), that fall in the interval \( (0.5,0.6) \), and
 compute the probability as \( M/N \).
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -45135,25 +45206,62 @@ Let \( R \) be normally distributed and \( (x_0,y_0) \) uniformly distributed.
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_1" style="font-size: 80%;"></a>
 <b>Hint.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_1">
+
+<p>
 Use the <code>numpy.random</code> module to draw the
 \( x_0 \), \( y_0 \), and \( R \) quantities.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end hint in exercise --- -->
 
 <p>
 <!-- --- begin answer of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_2" style="font-size: 80%;"></a>
 <b>Answer.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_2">
+
+<p>
 Here goes the short answer to part a).
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end answer of exercise --- -->
 
 <p>
 <!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_5_4" style="font-size: 80%;"></a>
 <b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_5_4">
+
+<p>
 Here goes a full solution to part a).
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end solution of exercise --- -->
@@ -45192,7 +45300,15 @@ Intro to this exercise. Questions are in subexercises below.
 
 <p>
 <!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_6" style="font-size: 80%;"></a>
 <b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_6">
+
+<p>
 Here goes a full solution of the whole exercise.
 With some math \( a=b \) in this solution:
 $$ \hbox{math in solution: } a = b $$
@@ -45207,6 +45323,11 @@ And code <code>a=b</code> in this solution:
 End of solution is here.
 
 <p>
+</div></p>
+</div>
+</p>
+
+<p>
 <!-- --- end solution of exercise --- -->
 
 <p>
@@ -45217,7 +45338,13 @@ Subexercises are numbered a), b), etc.
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_1" style="font-size: 80%;"></a>
 <b>Hint 1.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_1">
+
+<p>
 First hint to subexercise a).
 With math \( a=b \) in hint:
 
@@ -45232,13 +45359,24 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
     return x + 1  # with code in hint
 </pre></div>
 <p>
+</div></p>
+</div>
+</p>
+
+<p>
 <!-- --- end hint in exercise --- -->
 
 <p>
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_2" style="font-size: 80%;"></a>
 <b>Hint 2.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_2">
+
+<p>
 Second hint to subexercise a).
 
 <p>
@@ -45249,14 +45387,32 @@ Test list in hint:
 <li> item2</li>
 </ol>
 
+</div></p>
+</div>
+</p>
+
+<p>
 <!-- --- end hint in exercise --- -->
 Filename: <code>subexer_a.pdf</code>.
 
 <p>
 <!-- --- begin answer of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_4" style="font-size: 80%;"></a>
 <b>Answer.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_4">
+
+<p>
 Short answer to subexercise a).
 With math in answer: \( a=b \).
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end answer of exercise --- -->
@@ -45274,8 +45430,19 @@ $$ \cos^2 x + \sin^2 x = 1 \thinspace .$$
 <!-- --- begin hint in exercise --- -->
 
 <p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_3" style="font-size: 80%;"></a>
 <b>Hint.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_3">
+
+<p>
 A hint for this subexercise.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end hint in exercise --- -->
@@ -45283,8 +45450,21 @@ Filename: <code>subexer_b.pdf</code>.
 
 <p>
 <!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_7" style="font-size: 80%;"></a>
 <b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_7">
+
+<p>
 Here goes the solution of this subexercise.
+
+<p>
+</div></p>
+</div>
+</p>
 
 <p>
 <!-- --- end solution of exercise --- -->
@@ -72057,7 +72237,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f7addd40320>
+verbatim is to be replaced using <function html_verbatim at 0x7f34404842a8>
 
 
 First occurence: " `mako`."
@@ -76028,7 +76208,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Apr 18 11:39:57 2015.
+# sphinx-quickstart on Sat Apr 18 21:16:26 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

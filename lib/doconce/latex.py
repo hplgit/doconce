@@ -1819,6 +1819,9 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 
 
 def latex_exercise(exer):
+    # Note: tailored latex code needed for exercises (counters,
+    # list of exercises, etc.) is constructed in latex_code as
+    # final fixes of the document.
     return doconce_exercise_output(
            exer,
            include_numbering=include_numbering_of_exercises,

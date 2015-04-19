@@ -696,6 +696,8 @@ DocOnce dump each table to CSV format in a file `table_X.csv`, where
 tables from DocOnce documents into spreadsheet programs for further
 analysis.
 
+idx{`doconce` commands!`cvs2table`}
+
 Data in CSV format can be transformed to DocOnce table format
 by the `doconce csv2table` utility:
 
@@ -1290,6 +1292,8 @@ Such inline comments with edits are only given special typesetting in
 the output formats `latex`, `pdflatex`, `html`, and `sphinx`.
 Otherwise, just the DocOnce syntax is shown (but that is also quite
 readable as edit instructions.)
+
+idx{`doconce` commands!`apply_edit_comments`}
 
 The editing implied by the edit comments can be implemented in the DocOnce
 file by the command
@@ -1974,12 +1978,12 @@ if `mydoc.do.txt` is the name of the DocOnce file.  The file contains
 a list of dictionaries, where keys in the dictionary corresponds to
 elements in the exercise: filename, solution file, answer, label, list
 of hints, list of subexercises, closing remarks, and the main body of
-text. From this data structure it is easy to generate stand-alone
-documents with exercises, problems, and projects with or without
-short answers and full solutions.
+text.
+
+=== Typesetting of Exercises ===
 
 Tailored formatting of exercises in special output formats can make
-use of the elements in an exercise.  For example, one can image web
+use of the elements in an exercise.  For example, one can imagine web
 formats where the hints are displayed one by one when needed and where
 the result file can be uploaded. One can also think of mechanisms for
 downloading the solution file if the result file meets certain
@@ -2000,7 +2004,8 @@ see Problem ref{...}
 !ec
 works well in all formats (i.e., no double `Problem Problem` appears).
 
-__Remark.__
+=== Remark on Typesettng of Examples ===
+
 Examples are *not* typeset similarly to exercises unless one adds
 the command-line option `--examples_as_exercises`. That is, without
 this option, any heading and starting with `Example:` makes DocOnce
@@ -2029,6 +2034,26 @@ There is a special LaTeX environment for the exercises that one can
 use to further tailor the appearance of exercises (given that one
 edits the `.tex` file, preferably by a script after each `doconce format`
 command).
+
+idx{`doconce` commands!`extract_exercises`}
+
+=== Extracting Exercises in a Separate Document ===
+
+The command
+
+!bc sys
+Terminal> doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
+!ec
+extracts all exercises in `mydoc.do.txt` with keywords `key1` or `key2`
+in a separate document `mydoc_exer.do.txt`. For example, this feature can
+be used to extract all exercises suitable for being published as
+IPython/Jupyter notebooks (and perhaps automatically graded by "`nbgrader`" "https://github.com/jupyter/nbgrader"). Just attach the keyword `ipynb` to all
+exercises suitable for the IPython/Jupyter notebook and run the command
+with `--filter=ipynb`. Without `--filter=`, the `extract_exercises` utility
+extracts all exercises such that one can publish this document separately,
+with or without solutions and/or short answers.
+By ``exercise'' we here mean all exerices, problems,
+and projects.
 
 !split
 ===== Blocks of Verbatim Computer Code =====
@@ -3367,6 +3392,8 @@ when writing slides with DocOnce. The `doconce format` command does not
 recognize `!split` instructions: one needs to run `doconce split_*`
 as a postprocess, where the `*` means `html`, `rst`, or `beamer`.
 
+idx{`doconce` commands!`split_html`}
+
 __HTML.__
 Splitting an HTML document is done by
 
@@ -3409,15 +3436,19 @@ However, if `--html_theme=` is set any theme starting
 with `bootstrap` or `bootswatch`, the navigation buttons are ignored,
 and Bootstrap-style buttons are used.
 
+idx{`doconce` commands!`split_rst`}
+idx{`doconce` commands!`sphinx_dir`}
+idx{`automake_sphinx.py`}
+
 __reStructuredText and Sphinx.__
 Here is a typical split of a large Sphinx document `mydoc.rst`
 into smaller pieces:
 
 !bc sys
-Terminal> doconce sphinx_dir author="Some Author" \
-          title="Short title" theme=fenics dirname=mydir mydoc
 Terminal> doconce format sphinx mydoc
 Terminal> doconce split_rst mydoc
+Terminal> doconce sphinx_dir author="Some Author" \
+          title="Short title" theme=fenics dirname=mydir mydoc
 Terminal> python automake_sphinx.py
 !ec
 The `doconce format sphinx mydoc` command is needed to produce `mydoc.rst`,
@@ -3678,6 +3709,8 @@ print x
 
 ===== HTML5 Slides =====
 
+idx{`doconce` commands!`slides_html`}
+
 # doconce-adjusted styles: easy to switch between styles since
 # font sizes are compatible
 
@@ -3761,6 +3794,8 @@ label{emacs:doconce}
 
 idx{Emacs doconce support}
 idx{doconce syntax highlighting}
+idx{syntax highlighting for doconce}
+idx{doconce editing (Emacs)}
 
 ## Note: check http://www.latex-community.org/viewtopic.php?f=28&t=208
 ## for highly configurable latex editors that perhaps can be adapted
