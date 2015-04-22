@@ -971,7 +971,7 @@ def insert_code_from_file(filestr, format):
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
                 # Adjustments to some names
-                if filetype in ('f', 'c', 'cpp', 'py', 'pyopt', 'cy', 'm', 'sh', 'html', 'txt', 'dat'):
+                if filetype in ('f', 'c', 'java', 'cpp', 'py', 'pyopt', 'cy', 'm', 'sh', 'html', 'txt', 'dat'):
                     pass # standard filetypes
                 elif filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':
@@ -1012,9 +1012,20 @@ def insert_code_from_file(filestr, format):
                 print 'copy complete file %s' % filename,
                 complete_file = True
                 code = codefile.read().rstrip()
+
+                # Skip header?
+                skipline = option('code_skip_until=', None)
+                if skipline is not None and skipline in code:
+                    codelines = code.splitlines()
+                    for i in range(len(codelines)):
+                        if skipline in codelines[i]:
+                            code = '\n'.join(codelines[i+1:])
+                            break
+
                 debugpr('copy the whole file "%s" into a verbatim block\n' % filename)
 
             else:
+                # use regex to read a part of the code file
                 complete_file = False
                 if index >= 0:
                     patterns = line[index+len(fromto):].strip()

@@ -479,6 +479,21 @@ part of the file (here from `name=` until the end of the file).
 Copying a part will by default lead to `!bc shcod`, which indicates a
 code snippet that normally needs more code to run properly.
 
+The `--code_prefix=text` option adds a path `text` to the filename specified
+in the `@@@CODE` command. For example
+
+!bc
+ @@@CODE src/myfile.py
+!ec
+and `--code_prefix=http://some.place.net`, the file
+
+!bc
+http://some.place.net/src/myfile.py
+!ec
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option `'--code_skip_until=# ---'.
+The lines up to and including (the first) `# ---` will then be excluded.
+
 Important warnings:
 
  * A code block must come after some plain sentence (at least for successful

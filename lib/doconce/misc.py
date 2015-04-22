@@ -404,6 +404,7 @@ to subsections, etc."""),
      """Terminal prompt in output from running OS commands (the
 @@@OSCMD instruction). None or empty: no prompt, just the command;
 nocmd: no command, just the output. Default is "Terminal>"."""),
+    ('--code_skip_until=', '@@@CODE import: skip lines in files up to (and incuding) specified line.'),
     ('--code_prefix=',
      'Prefix all @@@CODE imports with some path.'),
     ('--figure_prefix=',

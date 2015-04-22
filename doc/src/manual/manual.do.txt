@@ -2547,6 +2547,21 @@ to edits of the source code file than the line numbers.
 Moreover, copy of code from file works in Dococe across formats
 (HTML, Sphinx, Markdown, etc.).
 
+The `--code_prefix=text` option adds a path `text` to the filename specified
+in the `@@@CODE` command. For example
+
+!bc
+ @@@CODE src/myfile.py
+!ec
+and `--code_prefix=http://some.place.net`, the file
+
+!bc
+http://some.place.net/src/myfile.py
+!ec
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option `'--code_skip_until=# ***'.
+The lines up to and including (the first) `# ***` will then be excluded.
+
 !split
 ===== LaTeX Blocks of Mathematical Text =====
 label{mathtext}
