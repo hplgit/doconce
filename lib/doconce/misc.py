@@ -6039,6 +6039,12 @@ _replacements = [
     (r'![be]remarks', ''),
     (r'![be]quiz', ''),
     (r'![be]u-[^ ]+', ''),  # user-def envirs
+    (r'^Cw: *', '', re.MULTILINE),
+    (r'^Cr: *', '', re.MULTILINE),
+    (r'^E: *', '', re.MULTILINE),
+    (r'^Q: *', '', re.MULTILINE),
+    (r'^K: *', '', re.MULTILINE),
+    (r'^L: *', '', re.MULTILINE),
     # Preprocess
     (r"^#.*ifn?def.*$", "", re.MULTILINE),
     (r"^#.*else.*$", "", re.MULTILINE),
@@ -9406,6 +9412,9 @@ def gitdiff():
 def _usage_extract_exercises():
     #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
     print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt'
+    print "\nMust use tmp_mako__*.do.txt to have includes in place."
+    print "Note: extracting exercises may create a need for"
+    print "generalized references to the original document (ref[][][])."
 
 def extract_exercises():
     if len(sys.argv) < 2:
@@ -9476,8 +9485,10 @@ def extract_exercises():
     f = open(filename, 'w')
     i = 0
     for line in exer:
+        # Is line an ordinary line (chapter heading) or an exercise section?
         if isinstance(line, list):
-            print_this_exer = not keywords
+            # exercise section: line is list of lines
+            print_this_exer = not keywords  # default: print if no filtering
             if keywords and exer_tp[i] is not None:
                 print_this_exer = False
                 # Any of this exercise's keywords among those in the filter:
@@ -9494,3 +9505,13 @@ def extract_exercises():
             f.write(line)
     f.close()
     print 'exercises extracted to', filename
+    # Check if we have references to the original document
+    f = open(filename, 'r')
+    filestr = f.read()
+    f.close()
+    labels = re.findall(r'label\{(.+?)\}', filestr)
+    refs = re.findall(r'ref\{(.+?)\}', filestr)
+    for ref in refs:
+        if not ref in labels:
+            print '\n*** warning: reference ref{%s} - no label in document' % ref
+            print '    need generalized reference ref[][][] in the original document'

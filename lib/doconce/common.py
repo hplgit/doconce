@@ -49,14 +49,15 @@ envir_delimiter_lines = {
 
 _counter_for_html_movie_player = 0
 
-def internet_access():
+def internet_access(timeout=1):
     """Return True if internet is on, else False."""
     import urllib2, socket
     try:
         # Check google.com with numerical IP-address (which avoids
         # DNS loopup) and set timeout to 1 sec so this does not
         # take much time (google.com should respond quickly)
-       response = urllib2.urlopen('http://74.125.228.100', timeout=1)
+       #response = urllib2.urlopen('http://8.8.8.8', timeout=timeout)
+       response = urllib2.urlopen('http://vg.no', timeout=timeout)
        return True
     except (urllib2.URLError, socket.timeout) as err:
         pass
@@ -670,7 +671,9 @@ def doconce_exercise_output(exer,
             newlines = []
             comments = []
             for i, line in enumerate(reversed(lines)):
-                if line.startswith('#') or line.isspace() or line == '':
+                if (line.startswith('#') or line.isspace() or line == '') \
+                and not line.startswith('# ---'):
+                    # (do not touch # --- begin/end type of comments!)
                     comments.append(line)
                 else:
                     break
@@ -693,38 +696,6 @@ def doconce_exercise_output(exer,
             s += '\n' + hint_header_ + '\n' + hint + '\n'
             if exer['type'] != 'Example':
                 s += '\n# ' + envir_delimiter_lines['hint'][1] + '\n'
-
-    if exer['answer']:
-        s += '\n'
-        # Leave out begin-end answer comments if example since we want to
-        # avoid marking such sections for deletion (--without_answers)
-        if exer['type'] != 'Example':
-            s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
-            sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
-        s += answer_header + '\n' + exer['answer'] + '\n'
-        ssol += answer_header + '\n' + exer['answer'] + '\n'
-
-        if exer['type'] != 'Example':
-            s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
-            sol += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
-
-    if exer['solution']:
-        s += '\n'
-        # Leave out begin-end solution comments if example since we want to
-        # avoid marking such sections for deletion (--without_solutions)
-        if exer['type'] != 'Example':
-            s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
-        s += solution_header + '\n'
-        # Make sure we have a sentence after the heading if real heading
-        if solution_header.endswith('===') and \
-           re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
-            print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
-            s += 'Code:\n'
-            sol += '\nCode:\n'
-        s += exer['solution'] + '\n'
-        sol += '\n'+ exer['solution'] + '\n'
-        if exer['type'] != 'Example':
-            s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
     if exer['subex']:
         s += '\n'
@@ -790,6 +761,38 @@ def doconce_exercise_output(exer,
 
             if 'aftertext' in subex:
                 s += subex['aftertext']
+
+    if exer['answer']:
+        s += '\n'
+        # Leave out begin-end answer comments if example since we want to
+        # avoid marking such sections for deletion (--without_answers)
+        if exer['type'] != 'Example':
+            s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
+            sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
+        s += answer_header + '\n' + exer['answer'] + '\n'
+        ssol += answer_header + '\n' + exer['answer'] + '\n'
+
+        if exer['type'] != 'Example':
+            s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
+            sol += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
+
+    if exer['solution']:
+        s += '\n'
+        # Leave out begin-end solution comments if example since we want to
+        # avoid marking such sections for deletion (--without_solutions)
+        if exer['type'] != 'Example':
+            s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
+        s += solution_header + '\n'
+        # Make sure we have a sentence after the heading if real heading
+        if solution_header.endswith('===') and \
+           re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
+            print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
+            s += 'Code:\n'
+            sol += '\nCode:\n'
+        s += exer['solution'] + '\n'
+        sol += '\n'+ exer['solution'] + '\n'
+        if exer['type'] != 'Example':
+            s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
     if exer['file']:
         if exer['subex']:

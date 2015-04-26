@@ -31,7 +31,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 # Cannot demonstrate chapter headings since abstract and chapter
-# is mutually exclusive in LaTeX
+# are mutually exclusive in LaTeX
 
 ======= Section 1 =======
 label{sec1}
@@ -1049,6 +1049,10 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+## Need a ref from this exer to the rest of the document
+## when we run doconce extract_exercises and get this exercises
+## out in its own document.
+At least there is not much to find in Section ref{sec1}.
 
 !bsubex
 Vectorize the code in a) using `numpy.sum`.
@@ -1118,13 +1122,16 @@ The formula for a circle is given by
 
 !bt
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,
+label{circle:x}\\
 y &= y_0 + R\sin 2\pi t,
+label{circle:y}
 \end{align}
 !et
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (ref{circle:x})-(ref{circle:y})
+is a point on the circle.
 The formula can be used to generate `n` points on a circle:
 
 !bc pypro

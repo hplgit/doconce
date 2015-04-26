@@ -114,7 +114,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 18, 2015</h4></center> <!-- date -->
+<center><h4>Apr 25, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -731,6 +731,26 @@ that it indicates a complete shell program (<code>shpro</code>) even if we copy 
 part of the file (here from <code>name=</code> until the end of the file).
 Copying a part will by default lead to <code>!bc shcod</code>, which indicates a
 code snippet that normally needs more code to run properly.
+
+<p>
+The <code>--code_prefix=text</code> option adds a path <code>text</code> to the filename specified
+in the <code>@@@CODE</code> command. For example
+
+<p>
+<!-- begin verbatim block -->
+<pre><code> @@@CODE src/myfile.py
+</code></pre>
+<!-- end verbatim block -->
+and <code>--code_prefix=http://some.place.net</code>, the file
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>http://some.place.net/src/myfile.py
+</code></pre>
+<!-- end verbatim block -->
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option <code>'--code_skip_until=# ---</code>.
+The lines up to and including (the first) <code># ---</code> will then be excluded.
 
 <p>
 Important warnings:

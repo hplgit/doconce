@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 18, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 25, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -589,6 +589,18 @@ that it indicates a complete shell program (<tt class="docutils literal"><span c
 part of the file (here from <tt class="docutils literal"><span class="pre">name=</span></tt> until the end of the file).
 Copying a part will by default lead to <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></tt>, which indicates a
 code snippet that normally needs more code to run properly.</p>
+<p>The <tt class="docutils literal"><span class="pre">--code_prefix=text</span></tt> option adds a path <tt class="docutils literal"><span class="pre">text</span></tt> to the filename specified
+in the <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> command. For example</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@CODE src/myfile.py
+</pre></div>
+</div>
+<p>and <tt class="docutils literal"><span class="pre">--code_prefix=http://some.place.net</span></tt>, the file</p>
+<div class="highlight-text"><div class="highlight"><pre>http://some.place.net/src/myfile.py
+</pre></div>
+</div>
+<p>will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option <tt class="docutils literal"><span class="pre">'--code_skip_until=#</span> <span class="pre">---</span></tt>.
+The lines up to and including (the first) <tt class="docutils literal"><span class="pre">#</span> <span class="pre">---</span></tt> will then be excluded.</p>
 <p>Important warnings:</p>
 <blockquote>
 <div><ul class="simple">

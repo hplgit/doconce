@@ -107,6 +107,7 @@ tables2csv = False
 sections_up = False
 sections_down = False
 #os_prompt = 
+#code_skip_until = 
 #code_prefix = 
 #figure_prefix = 
 #movie_prefix = 

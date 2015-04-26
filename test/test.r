@@ -46,7 +46,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 # Cannot demonstrate chapter headings since abstract and chapter
-# is mutually exclusive in LaTeX
+# are mutually exclusive in LaTeX
 
 ======= Section 1 =======
 label{sec1}
@@ -1064,6 +1064,10 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+## Need a ref from this exer to the rest of the document
+## when we run doconce extract_exercises and get this exercises
+## out in its own document.
+At least there is not much to find in Section ref{sec1}.
 
 !bsubex
 Vectorize the code in a) using `numpy.sum`.
@@ -1133,13 +1137,16 @@ The formula for a circle is given by
 
 !bt
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\
+x &= x_0 + R\cos 2\pi t,
+label{circle:x}\\
 y &= y_0 + R\sin 2\pi t,
+label{circle:y}
 \end{align}
 !et
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (ref{circle:x})-(ref{circle:y})
+is a point on the circle.
 The formula can be used to generate `n` points on a circle:
 
 !bc pypro
@@ -1579,7 +1586,7 @@ We also test mdash---used as alternative to hyphen without spaces around,
 or in quotes:
 
 !bquote
-*Fun is fun.*--- Unknown.
+Fun is fun.--- Unknown.
 !equote
 
 And finally, what about admons, quotes, and boxes? They are tested
@@ -2294,7 +2301,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
-% is mutually exclusive in {\LaTeX}
+% are mutually exclusive in {\LaTeX}
 \end{abstract}
 
 \section{Section 1}
@@ -3426,6 +3433,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \Verb!numpy.sum!.
@@ -3543,12 +3551,15 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
+is a point on the circle.
 The formula can be used to generate \Verb!n! points on a circle:
 
 \bpypro
@@ -3630,20 +3641,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-Here goes a full solution of the whole exercise.
-With some math $a=b$ in this solution:
-\[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
-\bccq
-a = b  # code in solution
-\eccq
-End of solution is here.
-
-% --- end solution of exercise ---
-
-
 \subex{a)}
 Subexercises are numbered a), b), etc.
 
@@ -3723,10 +3720,24 @@ Test list in exercise:
 \item item1
 
 \item item2
-% Closing remarks for this Exercise
 \end{enumerate}
 
 \noindent
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+\[ \hbox{math in solution: } a = b \]
+And code \Verb!a=b! in this solution:
+\bccq
+a = b  # code in solution
+\eccq
+End of solution is here.
+
+% --- end solution of exercise ---
+
+% Closing remarks for this Exercise
+
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -3834,7 +3845,9 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong. 
+\textbf{E}: Wrong. Equations where the unknown is a function, as $y(x)$
+here, are called \emph{differential equations}, and are solved by
+special techniques.
 
 
 % --- end solution of exercise ---
@@ -3845,7 +3858,7 @@ equations}.
 \end{doconcequiz}
 
 
-% --- end explanation of choice 5 ---
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -4144,7 +4157,7 @@ or in quotes:
 
 
 \begin{quote}
-\emph{Fun is fun.}--- Unknown.
+Fun is fun.--- Unknown.
 \end{quote}
 
 
@@ -4581,7 +4594,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
-% is mutually exclusive in {\LaTeX}
+% are mutually exclusive in {\LaTeX}
 \end{abstract}
 
 \section{Section 1}
@@ -5761,6 +5774,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \Verb!numpy.sum!.
@@ -5881,12 +5895,15 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
+is a point on the circle.
 The formula can be used to generate \Verb!n! points on a circle:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
@@ -5970,22 +5987,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-Here goes a full solution of the whole exercise.
-With some math $a=b$ in this solution:
-\[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
-\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
-fontfamily=tt,xleftmargin=7mm]
-a = b  # code in solution
-\end{Verbatim}
-\noindent
-End of solution is here.
-
-% --- end solution of exercise ---
-
-
 \subex{a)}
 Subexercises are numbered a), b), etc.
 
@@ -6067,10 +6068,26 @@ Test list in exercise:
 \item item1
 
 \item item2
-% Closing remarks for this Exercise
 \end{enumerate}
 
 \noindent
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+\[ \hbox{math in solution: } a = b \]
+And code \Verb!a=b! in this solution:
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
+fontfamily=tt,xleftmargin=7mm]
+a = b  # code in solution
+\end{Verbatim}
+\noindent
+End of solution is here.
+
+% --- end solution of exercise ---
+
+% Closing remarks for this Exercise
+
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -6184,7 +6201,9 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong. 
+\textbf{E}: Wrong. Equations where the unknown is a function, as $y(x)$
+here, are called \emph{differential equations}, and are solved by
+special techniques.
 
 
 % --- end solution of exercise ---
@@ -6195,7 +6214,7 @@ equations}.
 \end{doconcequiz}
 
 
-% --- end explanation of choice 5 ---
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -6497,7 +6516,7 @@ or in quotes:
 
 
 \begin{quote}
-\emph{Fun is fun.}--- Unknown.
+Fun is fun.--- Unknown.
 \end{quote}
 
 
@@ -6959,7 +6978,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
-% is mutually exclusive in {\LaTeX}
+% are mutually exclusive in {\LaTeX}
 \end{abstract}
 
 \section{Section 1}
@@ -8088,6 +8107,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \Verb!numpy.sum!.
@@ -8208,12 +8228,15 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
+is a point on the circle.
 The formula can be used to generate \Verb!n! points on a circle:
 
 \begin{python:nt}
@@ -8296,20 +8319,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-Here goes a full solution of the whole exercise.
-With some math $a=b$ in this solution:
-\[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
-a = b  # code in solution
-\end{Verbatim}
-End of solution is here.
-
-% --- end solution of exercise ---
-
-
 \subex{a)}
 Subexercises are numbered a), b), etc.
 
@@ -8389,10 +8398,24 @@ Test list in exercise:
 \item item1
 
 \item item2
-% Closing remarks for this Exercise
 \end{enumerate}
 
 \noindent
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+\[ \hbox{math in solution: } a = b \]
+And code \Verb!a=b! in this solution:
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+a = b  # code in solution
+\end{Verbatim}
+End of solution is here.
+
+% --- end solution of exercise ---
+
+% Closing remarks for this Exercise
+
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -8503,7 +8526,9 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong. 
+\textbf{E}: Wrong. Equations where the unknown is a function, as $y(x)$
+here, are called \emph{differential equations}, and are solved by
+special techniques.
 
 
 % --- end solution of exercise ---
@@ -8514,7 +8539,7 @@ equations}.
 \end{doconcequiz}
 
 
-% --- end explanation of choice 5 ---
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -8816,7 +8841,7 @@ or in quotes:
 
 
 \begin{quote}
-\emph{Fun is fun.}--- Unknown.
+Fun is fun.--- Unknown.
 \end{quote}
 
 
@@ -9297,7 +9322,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
-% is mutually exclusive in {\LaTeX}
+% are mutually exclusive in {\LaTeX}
 \end{abstract}
 
 \section{Section 1}
@@ -10451,6 +10476,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \Verb!numpy.sum!.
@@ -10568,12 +10594,15 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
+is a point on the circle.
 The formula can be used to generate \Verb!n! points on a circle:
 
 \begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
@@ -10656,21 +10685,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-% --- begin solution of exercise ---
-\paragraph{Solution.}
-Here goes a full solution of the whole exercise.
-With some math $a=b$ in this solution:
-\[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
-a = b  # code in solution
-\end{lstlisting}\end{cod}
-\noindent
-End of solution is here.
-
-% --- end solution of exercise ---
-
-
 \subex{a)}
 Subexercises are numbered a), b), etc.
 
@@ -10751,10 +10765,25 @@ Test list in exercise:
 \item item1
 
 \item item2
-% Closing remarks for this Exercise
 \end{enumerate}
 
 \noindent
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+\[ \hbox{math in solution: } a = b \]
+And code \Verb!a=b! in this solution:
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+a = b  # code in solution
+\end{lstlisting}\end{cod}
+\noindent
+End of solution is here.
+
+% --- end solution of exercise ---
+
+% Closing remarks for this Exercise
+
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -10864,7 +10893,9 @@ in mathematical notation:
 they are termed \emph{differential
 equations}.
 
-\textbf{E}: Wrong. 
+\textbf{E}: Wrong. Equations where the unknown is a function, as $y(x)$
+here, are called \emph{differential equations}, and are solved by
+special techniques.
 
 
 % --- end solution of exercise ---
@@ -10875,7 +10906,7 @@ equations}.
 \end{doconcequiz}
 
 
-% --- end explanation of choice 5 ---
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -11174,7 +11205,7 @@ or in quotes:
 
 
 \begin{quote}
-\emph{Fun is fun.}--- Unknown.
+Fun is fun.--- Unknown.
 \end{quote}
 
 
@@ -11240,7 +11271,7 @@ is part of the abstract.
 
 .. Cannot demonstrate chapter headings since abstract and chapter
 
-.. is mutually exclusive in LaTeX
+.. are mutually exclusive in LaTeX
 
 .. _sec1:
 
@@ -12210,6 +12241,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section `Section 1`_.
 
 **c)**
 Vectorize the code in a) using ``numpy.sum``.
@@ -12312,14 +12344,17 @@ The formula for a circle is given by
 
         $$
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\ 
+        x &= x_0 + R\cos 2\pi t,
+        \label{circle:x}\\ 
         y &= y_0 + R\sin 2\pi t,
+        \label{circle:y}
         \end{align}
         $$
 
 where \\( R \\) is the radius of the circle, \\( (x_0,y_0) \\) is the
 center point, and \\( t \\) is a parameter in the unit interval \\( [0,1] \\).
-For any \\( t \\), \\( (x,y) \\) is a point on the circle.
+For any \\( t \\), \\( (x,y) \\) computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate ``n`` points on a circle::
 
         import numpy as np
@@ -12392,24 +12427,6 @@ Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-.. --- begin solution of exercise ---
-
-**Solution.**
-Here goes a full solution of the whole exercise.
-With some math \\( a=b \\) in this solution
-
-.. raw:: html
-
-        $$ \hbox{math in solution: } a = b $$
-
-And code ``a=b`` in this solution::
-
-        a = b  # code in solution
-
-End of solution is here.
-
-.. --- end solution of exercise ---
 
 **a)**
 Subexercises are numbered a), b), etc.
@@ -12490,6 +12507,24 @@ Test list in exercise:
 
 2. item2
 
+.. --- begin solution of exercise ---
+
+**Solution.**
+Here goes a full solution of the whole exercise.
+With some math \\( a=b \\) in this solution
+
+.. raw:: html
+
+        $$ \hbox{math in solution: } a = b $$
+
+And code ``a=b`` in this solution::
+
+        a = b  # code in solution
+
+End of solution is here.
+
+.. --- end solution of exercise ---
+
 .. Closing remarks for this Exercise
 
 Remarks  (3)
@@ -12558,13 +12593,12 @@ What is the solution of this equation?
 **Choice D:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
 
 **Choice E:** The equation is meaningless: an equation must be an equation
-for \\( x \\) or \\( y \\), not a function \\( y(x) \\). :abbr:`? (Wrong!)`
+for \\( x \\) or \\( y \\), not a function \\( y(x) \\). :abbr:`? (Wrong!)` :abbr:`# (Equations where the unknown is a function, as \\( y(x) \\) here, are called *differential equations*, and are solved by special techniques.)`
 
 .. end quiz
 
 
 
-.. --- end explanation of choice 5 ---
 .. --- end exercise ---
 
 .. --- begin exercise ---
@@ -12958,7 +12992,7 @@ or in quotes:
 
 ..
 
-    *Fun is fun.*--- Unknown.
+    Fun is fun.--- Unknown.
 
 
 
@@ -12994,7 +13028,7 @@ is part of the abstract.
 
 .. Cannot demonstrate chapter headings since abstract and chapter
 
-.. is mutually exclusive in LaTeX
+.. are mutually exclusive in LaTeX
 
 .. _sec1:
 
@@ -14062,6 +14096,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section :ref:`sec1`.
 
 **c)**
 Vectorize the code in a) using ``numpy.sum``.
@@ -14161,18 +14196,23 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by
 
 .. math::
+   :label: circle:x
         
         x = x_0 + R\cos 2\pi t,
         
+        
 
 .. math::
+   :label: circle:y
           
         y = y_0 + R\sin 2\pi t,
+        
         
 
 where :math:`R` is the radius of the circle, :math:`(x_0,y_0)` is the
 center point, and :math:`t` is a parameter in the unit interval :math:`[0,1]`.
-For any :math:`t`, :math:`(x,y)` is a point on the circle.
+For any :math:`t`, :math:`(x,y)` computed from :eq:`circle:x`-:eq:`circle:y`
+is a point on the circle.
 The formula can be used to generate ``n`` points on a circle:
 
 .. code-block:: python
@@ -14247,25 +14287,6 @@ Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-.. --- begin solution of exercise ---
-
-**Solution.**
-Here goes a full solution of the whole exercise.
-With some math :math:`a=b` in this solution:
-
-.. math::
-         \hbox{math in solution: } a = b 
-
-And code ``a=b`` in this solution:
-
-.. code-block:: text
-
-        a = b  # code in solution
-
-End of solution is here.
-
-.. --- end solution of exercise ---
 
 **a)**
 Subexercises are numbered a), b), etc.
@@ -14346,6 +14367,25 @@ Test list in exercise:
 
 2. item2
 
+.. --- begin solution of exercise ---
+
+**Solution.**
+Here goes a full solution of the whole exercise.
+With some math :math:`a=b` in this solution:
+
+.. math::
+         \hbox{math in solution: } a = b 
+
+And code ``a=b`` in this solution:
+
+.. code-block:: text
+
+        a = b  # code in solution
+
+End of solution is here.
+
+.. --- end solution of exercise ---
+
 .. Closing remarks for this Exercise
 
 Remarks  (3)
@@ -14414,13 +14454,12 @@ What is the solution of this equation?
 **Choice D:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
 
 **Choice E:** The equation is meaningless: an equation must be an equation
-for :math:`x` or :math:`y`, not a function :math:`y(x)`. :abbr:`? (Wrong!)`
+for :math:`x` or :math:`y`, not a function :math:`y(x)`. :abbr:`? (Wrong!)` :abbr:`# (Equations where the unknown is a function, as y(x) here, are called *differential equations*, and are solved by special techniques.)`
 
 .. end quiz
 
 
 
-.. --- end explanation of choice 5 ---
 .. --- end exercise ---
 
 .. --- begin exercise ---
@@ -14818,7 +14857,7 @@ or in quotes:
 
 ..
 
-    *Fun is fun.*--- Unknown.
+    Fun is fun.--- Unknown.
 
 
 
@@ -14854,7 +14893,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 <wiki:comment> Cannot demonstrate chapter headings since abstract and chapter </wiki:comment>
-<wiki:comment> is mutually exclusive in LaTeX </wiki:comment>
+<wiki:comment> are mutually exclusive in LaTeX </wiki:comment>
 
 == Section 1 ==
 
@@ -15860,6 +15899,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section [#Section_1].
 
 *c)*
 Vectorize the code in a) using `numpy.sum`.
@@ -15960,13 +16000,16 @@ The formula for a circle is given by
 
 {{{
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+label{circle:y}
 \end{align}
 }}}
 where `R` is the radius of the circle, `(x_0,y_0)` is the
 center point, and `t` is a parameter in the unit interval `[0,1]`.
-For any `t`, `(x,y)` is a point on the circle.
+For any `t`, `(x,y)` computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate `n` points on a circle:
 
 {{{
@@ -16042,22 +16085,6 @@ and give some perspectives.
 ==== Exercise 6: Determine some Distance ====
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-<wiki:comment> --- begin solution of exercise --- </wiki:comment>
-*Solution.*
-Here goes a full solution of the whole exercise.
-With some math `a=b` in this solution:
-{{{
-\[ \hbox{math in solution: } a = b \]
-}}}
-And code `a=b` in this solution:
-{{{
-a = b  # code in solution
-}}}
-End of solution is here.
-
-<wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 
 *a)*
@@ -16138,8 +16165,24 @@ Test list in exercise:
 
 
 # item1
-# item2<wiki:comment> Closing remarks for this Exercise </wiki:comment>
+# item2
 
+<wiki:comment> --- begin solution of exercise --- </wiki:comment>
+*Solution.*
+Here goes a full solution of the whole exercise.
+With some math `a=b` in this solution:
+{{{
+\[ \hbox{math in solution: } a = b \]
+}}}
+And code `a=b` in this solution:
+{{{
+a = b  # code in solution
+}}}
+End of solution is here.
+
+<wiki:comment> --- end solution of exercise --- </wiki:comment>
+
+<wiki:comment> Closing remarks for this Exercise </wiki:comment>
 
 ==== Remarks ====
 
@@ -16210,7 +16253,7 @@ Choice E: The equation is meaningless: an equation must be an equation
 for `x` or `y`, not a function `y(x)`.
 
 
-<wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
+
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -16498,7 +16541,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
-<!-- is mutually exclusive in LaTeX -->
+<!-- are mutually exclusive in LaTeX -->
 
 == Section 1 ==
 
@@ -17513,6 +17556,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section [#Section_1].
 
 ''c)''
 Vectorize the code in a) using <code>numpy.sum</code>.
@@ -17617,13 +17661,15 @@ The formula for a circle is given by
 
 :<math>
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\\ 
 y &= y_0 + R\sin 2\pi t,
 \end{align}
 </math>
 where <math>R</math> is the radius of the circle, <math>(x_0,y_0)</math> is the
 center point, and <math>t</math> is a parameter in the unit interval <math>[0,1]</math>.
-For any <math>t</math>, <math>(x,y)</math> is a point on the circle.
+For any <math>t</math>, <math>(x,y)</math> computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate <code>n</code> points on a circle:
 
 <syntaxhighlight lang="python">
@@ -17699,22 +17745,6 @@ and give some perspectives.
 ==== Exercise 6: Determine some Distance ====
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-<!-- --- begin solution of exercise --- -->
-''Solution.''
-Here goes a full solution of the whole exercise.
-With some math <math>a=b</math> in this solution:
-:<math>
- \hbox{math in solution: } a = b 
-</math>
-And code <code>a=b</code> in this solution:
-<syntaxhighlight lang="text">
-a = b  # code in solution
-</syntaxhighlight>
-End of solution is here.
-
-<!-- --- end solution of exercise --- -->
 
 
 ''a)''
@@ -17799,8 +17829,24 @@ Test list in exercise:
 <ol>
 <li> item1
 <li> item2
-<!-- Closing remarks for this Exercise -->
 </ol>
+
+<!-- --- begin solution of exercise --- -->
+''Solution.''
+Here goes a full solution of the whole exercise.
+With some math <math>a=b</math> in this solution:
+:<math>
+ \hbox{math in solution: } a = b 
+</math>
+And code <code>a=b</code> in this solution:
+<syntaxhighlight lang="text">
+a = b  # code in solution
+</syntaxhighlight>
+End of solution is here.
+
+<!-- --- end solution of exercise --- -->
+
+<!-- Closing remarks for this Exercise -->
 
 ==== Remarks ====
 
@@ -17870,7 +17916,7 @@ Choice E: The equation is meaningless: an equation must be an equation
 for <math>x</math> or <math>y</math>, not a function <math>y(x)</math>.
 
 
-<!-- --- end explanation of choice 5 --- -->
+
 <!-- --- end exercise --- -->
 
 
@@ -18234,7 +18280,7 @@ or in quotes:
 
 
 {{quote box
-| quote = ''Fun is fun.''--- Unknown.
+| quote = Fun is fun.--- Unknown.
 | textstyle = font-size: 90%;
 }}
 
@@ -18273,7 +18319,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 <wiki:comment> Cannot demonstrate chapter headings since abstract and chapter </wiki:comment>
-<wiki:comment> is mutually exclusive in LaTeX </wiki:comment>
+<wiki:comment> are mutually exclusive in LaTeX </wiki:comment>
 
 = Section 1 =
 
@@ -19233,6 +19279,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section [#Section_1].
 
 //c)//
 Vectorize the code in a) using {{{numpy.sum}}}.
@@ -19335,13 +19382,16 @@ The formula for a circle is given by
 
 {{{
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+label{circle:y}
 \end{align}
 }}}
 where {{{R}}} is the radius of the circle, {{{(x_0,y_0)}}} is the
 center point, and {{{t}}} is a parameter in the unit interval {{{[0,1]}}}.
-For any {{{t}}}, {{{(x,y)}}} is a point on the circle.
+For any {{{t}}}, {{{(x,y)}}} computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate {{{n}}} points on a circle:
 
 {{{
@@ -19418,22 +19468,6 @@ and give some perspectives.
 
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-<wiki:comment> --- begin solution of exercise --- </wiki:comment>
-//Solution.//
-Here goes a full solution of the whole exercise.
-With some math {{{a=b}}} in this solution:
-{{{
-\[ \hbox{math in solution: } a = b \]
-}}}
-And code {{{a=b}}} in this solution:
-{{{
-a = b  # code in solution
-}}}
-End of solution is here.
-
-<wiki:comment> --- end solution of exercise --- </wiki:comment>
 
 
 //a)//
@@ -19514,8 +19548,24 @@ Test list in exercise:
 
 
 # item1
-# item2<wiki:comment> Closing remarks for this Exercise </wiki:comment>
+# item2
 
+<wiki:comment> --- begin solution of exercise --- </wiki:comment>
+//Solution.//
+Here goes a full solution of the whole exercise.
+With some math {{{a=b}}} in this solution:
+{{{
+\[ \hbox{math in solution: } a = b \]
+}}}
+And code {{{a=b}}} in this solution:
+{{{
+a = b  # code in solution
+}}}
+End of solution is here.
+
+<wiki:comment> --- end solution of exercise --- </wiki:comment>
+
+<wiki:comment> Closing remarks for this Exercise </wiki:comment>
 
 === Remarks ===
 
@@ -19589,7 +19639,7 @@ Choice E: The equation is meaningless: an equation must be an equation
 for {{{x}}} or {{{y}}}, not a function {{{y(x)}}}.
 
 
-<wiki:comment> --- end explanation of choice 5 --- </wiki:comment>
+
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -20658,6 +20708,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section "Section 1".
 
 *c)*
 Vectorize the code in a) using 'numpy.sum'.
@@ -20734,13 +20785,16 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by::
 
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\ 
+        x &= x_0 + R\cos 2\pi t,
+        label{circle:x}\\ 
         y &= y_0 + R\sin 2\pi t,
+        label{circle:y}
         \end{align}
 
 where R is the radius of the circle, (x_0,y_0) is the
 center point, and t is a parameter in the unit interval [0,1].
-For any t, (x,y) is a point on the circle.
+For any t, (x,y) computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate 'n' points on a circle::
 
         import numpy as np
@@ -20801,21 +20855,6 @@ and give some perspectives.
 Exercise 6: Determine some Distance
 
 Intro to this exercise. Questions are in subexercises below.
-
-# --- begin solution of exercise ---
-*Solution.*
-Here goes a full solution of the whole exercise.
-With some math a=b in this solution::
-
-        \[ \hbox{math in solution: } a = b \]
-
-And code 'a=b' in this solution::
-
-        a = b  # code in solution
-
-End of solution is here.
-
-# --- end solution of exercise ---
 
 *a)*
 Subexercises are numbered a), b), etc.
@@ -20884,6 +20923,21 @@ Test list in exercise:
 1. item1
 2. item2
 
+# --- begin solution of exercise ---
+*Solution.*
+Here goes a full solution of the whole exercise.
+With some math a=b in this solution::
+
+        \[ \hbox{math in solution: } a = b \]
+
+And code 'a=b' in this solution::
+
+        a = b  # code in solution
+
+End of solution is here.
+
+# --- end solution of exercise ---
+
 Remarks
 
 Some final closing remarks, e.g., summarizing the main findings
@@ -20937,7 +20991,7 @@ Choice E: The equation is meaningless: an equation must be an equation
 for x or y, not a function y(x).
 
 
-# --- end explanation of choice 5 ---
+
 # --- end exercise ---
 
 # --- begin exercise ---
@@ -22057,6 +22111,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section "Section 1".
 
 I{c)}
 Vectorize the code in a) using C{numpy.sum}.
@@ -22139,13 +22194,16 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by::
 
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\ 
+        x &= x_0 + R\cos 2\pi t,
+        label{circle:x}\\ 
         y &= y_0 + R\sin 2\pi t,
+        label{circle:y}
         \end{align}
 
 where M{R} is the radius of the circle, M{(x_0,y_0)} is the
 center point, and M{t} is a parameter in the unit interval M{[0,1]}.
-For any M{t}, M{(x,y)} is a point on the circle.
+For any M{t}, M{(x,y)} computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate C{n} points on a circle::
 
         import numpy as np
@@ -22208,21 +22266,6 @@ Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-# --- begin solution of exercise ---
-I{Solution.}
-Here goes a full solution of the whole exercise.
-With some math M{a=b} in this solution::
-
-        \[ \hbox{math in solution: } a = b \]
-
-And code C{a=b} in this solution::
-
-        a = b  # code in solution
-
-End of solution is here.
-
-# --- end solution of exercise ---
 
 I{a)}
 Subexercises are numbered a), b), etc.
@@ -22291,6 +22334,21 @@ Test list in exercise:
 1. item1
 2. item2
 
+# --- begin solution of exercise ---
+I{Solution.}
+Here goes a full solution of the whole exercise.
+With some math M{a=b} in this solution::
+
+        \[ \hbox{math in solution: } a = b \]
+
+And code C{a=b} in this solution::
+
+        a = b  # code in solution
+
+End of solution is here.
+
+# --- end solution of exercise ---
+
 Remarks
 ~~~~~~~
 
@@ -22347,7 +22405,7 @@ Choice E: The equation is meaningless: an equation must be an equation
 for M{x} or M{y}, not a function M{y(x)}.
 
 
-# --- end explanation of choice 5 ---
+
 # --- end exercise ---
 
 # --- begin exercise ---
@@ -23621,6 +23679,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section "Section 1".
 
 *c)*
 Vectorize the code in a) using numpy.sum.
@@ -23705,13 +23764,16 @@ Project 5: Explore Distributions of Random Circles
 The formula for a circle is given by::
 
         \begin{align}
-        x &= x_0 + R\cos 2\pi t,\\ 
+        x &= x_0 + R\cos 2\pi t,
+        label{circle:x}\\ 
         y &= y_0 + R\sin 2\pi t,
+        label{circle:y}
         \end{align}
 
 where R is the radius of the circle, (x_0,y_0) is the
 center point, and t is a parameter in the unit interval [0,1].
-For any t, (x,y) is a point on the circle.
+For any t, (x,y) computed from Equations (circle:x)-(circle:y)
+is a point on the circle.
 The formula can be used to generate n points on a circle::
 
         import numpy as np
@@ -23774,21 +23836,6 @@ Exercise 6: Determine some Distance
 -----------------------------------
 
 Intro to this exercise. Questions are in subexercises below.
-
-# --- begin solution of exercise ---
-*Solution.*
-Here goes a full solution of the whole exercise.
-With some math a=b in this solution::
-
-        \[ \hbox{math in solution: } a = b \]
-
-And code a=b in this solution::
-
-        a = b  # code in solution
-
-End of solution is here.
-
-# --- end solution of exercise ---
 
 *a)*
 Subexercises are numbered a), b), etc.
@@ -23859,6 +23906,21 @@ Test list in exercise:
 
 2. item2
 
+# --- begin solution of exercise ---
+*Solution.*
+Here goes a full solution of the whole exercise.
+With some math a=b in this solution::
+
+        \[ \hbox{math in solution: } a = b \]
+
+And code a=b in this solution::
+
+        a = b  # code in solution
+
+End of solution is here.
+
+# --- end solution of exercise ---
+
 Remarks
 ~~~~~~~
 
@@ -23915,7 +23977,7 @@ Choice E: The equation is meaningless: an equation must be an equation
 for x or y, not a function y(x).
 
 
-# --- end explanation of choice 5 ---
+
 # --- end exercise ---
 
 # --- begin exercise ---
@@ -24272,7 +24334,7 @@ case in LaTeX.
 We also test mdash---used as alternative to hyphen without spaces around,
 or in quotes:
 
-        *Fun is fun.*--- Unknown.
+        Fun is fun.--- Unknown.
 
 
 And finally, what about admons, quotes, and boxes? They are tested
@@ -24305,7 +24367,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
-<!-- is mutually exclusive in LaTeX -->
+<!-- are mutually exclusive in LaTeX -->
 
 
 
@@ -25343,6 +25405,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section [Section 1](#sec1).
 
 *c)*
 Vectorize the code in a) using `numpy.sum`.
@@ -25444,17 +25507,20 @@ The formula for a circle is given by
 $$
 \begin{equation}
 x = x_0 + R\cos 2\pi t,
+\label{circle:x}
 \end{equation}
 $$
 
 $$
 \begin{equation}  
 y = y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{equation}
 $$
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from \eqref{circle:x}-\eqref{circle:y}
+is a point on the circle.
 The formula can be used to generate `n` points on a circle:
 
 
@@ -25532,24 +25598,6 @@ and give some perspectives.
 <div id="exer:dist"></div>
 
 Intro to this exercise. Questions are in subexercises below.
-
-
-<!-- --- begin solution of exercise --- -->
-*Solution.*
-Here goes a full solution of the whole exercise.
-With some math $a=b$ in this solution:
-$$
- \hbox{math in solution: } a = b 
-$$
-And code `a=b` in this solution:
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-a = b  # code in solution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-End of solution is here.
-
-<!-- --- end solution of exercise --- -->
 
 
 *a)*
@@ -25630,6 +25678,24 @@ Test list in exercise:
 
 1. item1
 2. item2
+
+<!-- --- begin solution of exercise --- -->
+*Solution.*
+Here goes a full solution of the whole exercise.
+With some math $a=b$ in this solution:
+$$
+ \hbox{math in solution: } a = b 
+$$
+And code `a=b` in this solution:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+a = b  # code in solution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+End of solution is here.
+
+<!-- --- end solution of exercise --- -->
+
 <!-- Closing remarks for this Exercise -->
 
 #### Remarks
@@ -25707,7 +25773,7 @@ def f(x):
 for $x$ or $y$, not a function $y(x)$.
 
 
-<!-- --- end explanation of choice 5 --- -->
+
 <!-- --- end exercise --- -->
 
 
@@ -26063,7 +26129,7 @@ case in LaTeX.
 We also test mdash---used as alternative to hyphen without spaces around,
 or in quotes:
 
-> *Fun is fun.*--- Unknown.
+> Fun is fun.--- Unknown.
 
 
 
@@ -26103,7 +26169,7 @@ is at the end with only one newline.
       "is part of the abstract.\n",
       "\n",
       "<!-- Cannot demonstrate chapter headings since abstract and chapter -->\n",
-      "<!-- is mutually exclusive in LaTeX -->\n",
+      "<!-- are mutually exclusive in LaTeX -->\n",
       "\n",
       "\n",
       "\n",
@@ -27500,6 +27566,7 @@ is at the end with only one newline.
       "\n",
       "Vectorized code can be written in many ways.\n",
       "Sometimes the code is less intuitive, sometimes not.\n",
+      "At least there is not much to find in the section [Section 1](#sec1).\n",
       "\n",
       "**c)**\n",
       "Vectorize the code in a) using `numpy.sum`.\n",
@@ -27605,9 +27672,13 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- Equation labels as ordinary links -->\n",
+      "<div id=\"circle:x\"></div>\n",
+      "\n",
       "$$\n",
       "\\begin{equation}\n",
       "x = x_0 + R\\cos 2\\pi t,\n",
+      "\\label{circle:x} \\tag{4}\n",
       "\\end{equation}\n",
       "$$"
      ]
@@ -27616,9 +27687,13 @@ is at the end with only one newline.
      "cell_type": "markdown",
      "metadata": {},
      "source": [
+      "<!-- Equation labels as ordinary links -->\n",
+      "<div id=\"circle:y\"></div>\n",
+      "\n",
       "$$\n",
       "\\begin{equation}  \n",
       "y = y_0 + R\\sin 2\\pi t,\n",
+      "\\label{circle:y} \\tag{5}\n",
       "\\end{equation}\n",
       "$$"
      ]
@@ -27629,7 +27704,8 @@ is at the end with only one newline.
      "source": [
       "where $R$ is the radius of the circle, $(x_0,y_0)$ is the\n",
       "center point, and $t$ is a parameter in the unit interval $[0,1]$.\n",
-      "For any $t$, $(x,y)$ is a point on the circle.\n",
+      "For any $t$, $(x,y)$ computed from [(4)](#circle:x)-[(5)](#circle:y)\n",
+      "is a point on the circle.\n",
       "The formula can be used to generate `n` points on a circle:"
      ]
     },
@@ -27718,44 +27794,6 @@ is at the end with only one newline.
       "<div id=\"exer:dist\"></div>\n",
       "\n",
       "Intro to this exercise. Questions are in subexercises below.\n",
-      "\n",
-      "\n",
-      "<!-- --- begin solution of exercise --- -->\n",
-      "**Solution.**\n",
-      "Here goes a full solution of the whole exercise.\n",
-      "With some math $a=b$ in this solution:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\hbox{math in solution: } a = b\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "And code `a=b` in this solution:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        a = b  # code in solution\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "End of solution is here.\n",
-      "\n",
-      "<!-- --- end solution of exercise --- -->\n",
       "\n",
       "\n",
       "**a)**\n",
@@ -27866,6 +27904,44 @@ is at the end with only one newline.
       "1. item1\n",
       "\n",
       "2. item2\n",
+      "\n",
+      "<!-- --- begin solution of exercise --- -->\n",
+      "**Solution.**\n",
+      "Here goes a full solution of the whole exercise.\n",
+      "With some math $a=b$ in this solution:"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "$$\n",
+      "\\hbox{math in solution: } a = b\n",
+      "$$"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "And code `a=b` in this solution:"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "        a = b  # code in solution\n"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "End of solution is here.\n",
+      "\n",
+      "<!-- --- end solution of exercise --- -->\n",
+      "\n",
       "<!-- Closing remarks for this Exercise -->\n",
       "\n",
       "#### Remarks\n",
@@ -27980,7 +28056,7 @@ is at the end with only one newline.
       "for $x$ or $y$, not a function $y(x)$.\n",
       "\n",
       "\n",
-      "<!-- --- end explanation of choice 5 --- -->\n",
+      "\n",
       "<!-- --- end exercise --- -->\n",
       "\n",
       "\n",
@@ -28358,7 +28434,7 @@ is at the end with only one newline.
       "We also test mdash---used as alternative to hyphen without spaces around,\n",
       "or in quotes:\n",
       "\n",
-      "> *Fun is fun.*--- Unknown.\n",
+      "> Fun is fun.--- Unknown.\n",
       "\n",
       "\n",
       "\n",
@@ -28462,7 +28538,7 @@ Could not find match for from regex "\*\s+\$.+normally"
                        'Draw an integer among $\\{1,2\\}$ with\n`r = random.randint(1,2)` and define head when `r` is 1.'],
              'solution': "!bc pycod\nimport sys, random\nN = int(sys.argv[1])\nheads = 0\nfor i in range(N):\n    r = random.random()\n    if r <= 0.5:\n        heads += 1\nprint 'Flipping a coin %d times gave %d heads' % (N, heads)\n\n!ec",
              'text': "Make a program that simulates flipping a coin $N$ times.\nPrint out ``tail'' or ``head'' for each flip and\nlet the program count the number of heads."},
-            {'aftertext': '\nVectorized code can be written in many ways.\nSometimes the code is less intuitive, sometimes not.\n',
+            {'aftertext': '\nVectorized code can be written in many ways.\nSometimes the code is less intuitive, sometimes not.\nAt least there is not much to find in Section ref{sec1}.\n',
              'answer': '',
              'file': None,
              'hints': [],
@@ -28534,7 +28610,7 @@ Could not find match for from regex "\*\s+\$.+normally"
              'hints': [],
              'solution': '',
              'text': 'Let $R$ and $(x_0,y_0)$ be normally distributed.'}],
-  'text': 'The formula for a circle is given by\n\n!bt\n\\begin{equation}\nx = x_0 + R\\cos 2\\pi t,\n\\end{equation}\n\n!et\n\n!bt\n\\begin{equation}  \ny = y_0 + R\\sin 2\\pi t,\n\\end{equation}\n\n!et\nwhere $R$ is the radius of the circle, $(x_0,y_0)$ is the\ncenter point, and $t$ is a parameter in the unit interval $[0,1]$.\nFor any $t$, $(x,y)$ is a point on the circle.\nThe formula can be used to generate `n` points on a circle:\n\n!bc pypro\nimport numpy as np\n\ndef circle(R, x0, y0, n=501):\n    t = np.linspace(0, 1, n)\n    x = x0 + R*np.cos(2*np.pi*t)\n    y = y0 + R*np.sin(2*np.pi*t)\n    return x, y\n\nx, y = circle(2.0, 0, 0)\n\n!ec\n\n# Often in an exercise we have some comments about the solution\n# which we normally want to keep where they are.\n\nThe goal of this project is to draw $N$ circles with random\ncenter and radius. Plot each circle using the `circle` function\nabove.',
+  'text': 'The formula for a circle is given by\n\n!bt\n\\begin{equation}\nx = x_0 + R\\cos 2\\pi t,\nlabel{circle:x}\n\\end{equation}\n\n!et\n\n!bt\n\\begin{equation}  \ny = y_0 + R\\sin 2\\pi t,\nlabel{circle:y}\n\\end{equation}\n\n!et\nwhere $R$ is the radius of the circle, $(x_0,y_0)$ is the\ncenter point, and $t$ is a parameter in the unit interval $[0,1]$.\nFor any $t$, $(x,y)$ computed from (ref{circle:x})-(ref{circle:y})\nis a point on the circle.\nThe formula can be used to generate `n` points on a circle:\n\n!bc pypro\nimport numpy as np\n\ndef circle(R, x0, y0, n=501):\n    t = np.linspace(0, 1, n)\n    x = x0 + R*np.cos(2*np.pi*t)\n    y = y0 + R*np.sin(2*np.pi*t)\n    return x, y\n\nx, y = circle(2.0, 0, 0)\n\n!ec\n\n# Often in an exercise we have some comments about the solution\n# which we normally want to keep where they are.\n\nThe goal of this project is to draw $N$ circles with random\ncenter and radius. Plot each circle using the `circle` function\nabove.',
   'title': 'Explore Distributions of Random Circles',
   'type': 'Project',
   'type_visible': True},
@@ -28590,7 +28666,7 @@ Could not find match for from regex "\*\s+\$.+normally"
   'solution': '',
   'solution_file': None,
   'subex': [],
-  'text': "# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n# --- keywords: ['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n# --- label: quiz:diff:eq1\n\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.",
+  'text': "# --- begin quiz ---\n# --- quiz heading: SOlution of differential equation\n# --- previous heading type: exercise\n# --- keywords: ['derivatives', 'exponential function', 'equation, differential', 'differential equation']\n\n# --- begin quiz question ---\nGiven\n\n!bt\n\\[ \\frac{dy}{dx} = -y(x),\\quad y(0)=1 \\]\n\n!et\nWhat is the solution of this equation?\n# --- end quiz question ---\n# --- label: quiz:diff:eq1\n\n\n# --- begin quiz choice 1 (right) ---\n$y=e^{-y}$\n# --- end quiz choice 1 (right) ---\n\n# --- begin quiz choice 2 (wrong) ---\n$y=e^{y}$\n# --- end quiz choice 2 (wrong) ---\n\n# --- begin explanation of choice 2 ---\nAlmost, but the sign is wrong (note the minus!).\n# --- end explanation of choice 2 ---\n\n# --- begin quiz choice 3 (wrong) ---\n!bc pycod\nfrom math import exp\ndef f(x):\n    return exp(x)\n\n!ec\n# --- end quiz choice 3 (wrong) ---\n\n# --- begin explanation of choice 3 ---\nOoops, forgot a minus: `exp(-x)`, otherwise this Python code\nmust be considered as a good answer. It is more natural,\nthough, to write the solution to the problem\nin mathematical notation:\n\n!bt\n\\[ y(x) = e^{-y}.\\]\n\n!et\n# --- end explanation of choice 3 ---\n\n# --- begin quiz choice 4 (wrong) ---\nThe solution cannot be found because there is a derivative in the equation.\n# --- end quiz choice 4 (wrong) ---\n\n# --- begin explanation of choice 4 ---\nEquations with derivatives can be solved;\nthey are termed *differential\nequations*.\n# --- end explanation of choice 4 ---\n\n# --- begin quiz choice 5 (wrong) ---\nThe equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.\n# --- end quiz choice 5 (wrong) ---\n\n# --- begin explanation of choice 5 ---\nEquations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.\n# --- end explanation of choice 5 ---\n# --- end quiz ---",
   'title': 'Solution of differential equation',
   'type': 'Exercise',
   'type_visible': True},
@@ -31391,7 +31467,7 @@ is part of the abstract.
 
 <p>
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
-<!-- is mutually exclusive in LaTeX -->
+<!-- are mutually exclusive in LaTeX -->
 
 <h1 id="sec1">Section 1</h1>
 
@@ -32891,6 +32967,7 @@ Vectorize the code in a) using boolean indexing.
 <p>
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section <a href="._testdoc001.html#sec1">Section 1</a>.
 
 <p>
 <b>c)</b>
@@ -33001,14 +33078,17 @@ The formula for a circle is given by
 
 $$
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\tag{6}\\ 
 y &= y_0 + R\sin 2\pi t,
+\tag{7}
 \end{align}
 $$
 
 where \( R \) is the radius of the circle, \( (x_0,y_0) \) is the
 center point, and \( t \) is a parameter in the unit interval \( [0,1] \).
-For any \( t \), \( (x,y) \) is a point on the circle.
+For any \( t \), \( (x,y) \) computed from <a href="#mjx-eqn-6">(6)</a>-<a href="#mjx-eqn-7">(7)</a>
+is a point on the circle.
 The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
@@ -33099,8 +33179,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
-
-<p>
 <b>a)</b>
 Subexercises are numbered a), b), etc.
 
@@ -33185,9 +33263,12 @@ Test list in exercise:
 
 <ol>
 </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item1</li>
-</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2
-<!-- Closing remarks for this Exercise --></li>
+</tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> item2</li>
 </ol>
+
+
+<p>
+<!-- Closing remarks for this Exercise -->
 
 <h3 id="___sec42">Remarks </h3>
 
@@ -33266,14 +33347,15 @@ What is the solution of this equation?</p>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong! "><b>Choice E:</b>
+<p><div title="Wrong! Equations where the unknown is a function, as \( y(x) \) here, are called  differential equations , and are solved by special techniques."><b>Choice E:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
 <hr>
 <!-- end quiz -->
 
-<!-- --- end explanation of choice 5 --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -33920,7 +34002,7 @@ or in quotes:
 
 <p>
 <blockquote>
-    *Fun is fun.*&mdash; Unknown.
+    Fun is fun.&mdash; Unknown.
 </blockquote>
 
 
@@ -35204,6 +35286,7 @@ Vectorize the code in a) using boolean indexing.
 <p>
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section <a href="#sec1">Section 1</a>.
 
 <p>
 <b>c)</b>
@@ -35279,16 +35362,19 @@ The formula for a circle is given by
 <p>
 
 $latex 
-x = x_0 + R\cos 2\pi t, $
+x = x_0 + R\cos 2\pi t,
+ $
 
 $latex  
 y = y_0 + R\sin 2\pi t,
+
  $
 
 
 where $latex R$ is the radius of the circle, $latex (x_0,y_0)$ is the
 center point, and $latex t$ is a parameter in the unit interval $latex [0,1]$.
-For any $latex t$, $latex (x,y)$ is a point on the circle.
+For any $latex t$, $latex (x,y)$ computed from <b>(REF to equation circle:x not supported)</b>-<b>(REF to equation circle:y not supported)</b>
+is a point on the circle.
 The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
@@ -35350,24 +35436,6 @@ and give some perspectives.
 
 <p>
 Intro to this exercise. Questions are in subexercises below.
-
-<p>
-
-<b>Solution.</b>
-Here goes a full solution of the whole exercise.
-With some math $latex a=b$ in this solution:
-
-$latex  \hbox{math in solution: } a = b  $
-
-
-And code <code>a=b</code> in this solution:
-<p>
-
-
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = b  # code in solution
-</pre></div>
-<p>
-End of solution is here.
 
 <p>
 <b>a)</b>
@@ -35446,9 +35514,25 @@ Test list in exercise:
 
 <ol>
 <li> item1</li>
-<li> item2
-</li>
+<li> item2</li>
 </ol>
+
+
+<b>Solution.</b>
+Here goes a full solution of the whole exercise.
+With some math $latex a=b$ in this solution:
+
+$latex  \hbox{math in solution: } a = b  $
+
+
+And code <code>a=b</code> in this solution:
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = b  # code in solution
+</pre></div>
+<p>
+End of solution is here.
 
 <h3 id="___sec42">Remarks </h3>
 
@@ -35896,7 +35980,7 @@ or in quotes:
 
 <p>
 <blockquote>
-    *Fun is fun.*&mdash; Unknown.
+    Fun is fun.&mdash; Unknown.
 </blockquote>
 
 
@@ -37356,6 +37440,7 @@ Vectorize the code in a) using boolean indexing.
 <p>
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section <a href="#sec1">Section 1</a>.
 
 <p>
 <b>c)</b>
@@ -37462,14 +37547,17 @@ The formula for a circle is given by
 
 $$
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{align}
 $$
 
 where \( R \) is the radius of the circle, \( (x_0,y_0) \) is the
 center point, and \( t \) is a parameter in the unit interval \( [0,1] \).
-For any \( t \), \( (x,y) \) is a point on the circle.
+For any \( t \), \( (x,y) \) computed from \eqref{circle:x}-\eqref{circle:y}
+is a point on the circle.
 The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
@@ -37549,10 +37637,6 @@ and give some perspectives.
 <p>
 Intro to this exercise. Questions are in subexercises below.
 
-<p>
-<!-- removed !bsol ... !esol environment
- --><!-- (because of the command-line option --without_solutions)
- -->
 <p>
 <b>a)</b>
 Subexercises are numbered a), b), etc.
@@ -37634,9 +37718,14 @@ Test list in exercise:
 
 <ol>
 <li> item1</li>
-<li> item2
-<!-- Closing remarks for this Exercise --></li>
+<li> item2</li>
 </ol>
+
+<!-- removed !bsol ... !esol environment
+ --><!-- (because of the command-line option --without_solutions)
+ -->
+<p>
+<!-- Closing remarks for this Exercise -->
 
 <h3 id="___sec42">Remarks </h3>
 
@@ -37713,14 +37802,15 @@ What is the solution of this equation?</p>
 The solution cannot be found because there is a derivative in the equation.
 </div></p>
 
-<p><div title="Wrong! "><b>Choice E:</b>
+<p><div title="Wrong! Equations where the unknown is a function, as \( y(x) \) here, are called  differential equations , and are solved by special techniques."><b>Choice E:</b>
 The equation is meaningless: an equation must be an equation
 for \( x \) or \( y \), not a function \( y(x) \).
 </div></p>
 <hr>
 <!-- end quiz -->
 
-<!-- --- end explanation of choice 5 --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -38115,7 +38205,7 @@ or in quotes:
 
 <p>
 <blockquote>
-    *Fun is fun.*&mdash; Unknown.
+    Fun is fun.&mdash; Unknown.
 </blockquote>
 
 
@@ -39631,6 +39721,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \Verb!numpy.sum!.
@@ -39744,12 +39835,15 @@ compute the probability as $M/N$.
 The formula for a circle is given by
 
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+\label{circle:y}
 \end{align}
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
+is a point on the circle.
 The formula can be used to generate \Verb!n! points on a circle:
 
 \bpypro
@@ -39825,10 +39919,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 
-% removed !bsol ... !esol environment
-% (because of the command-line option --without_solutions)
-
-
 \subex{a)}
 Subexercises are numbered a), b), etc.
 
@@ -39901,10 +39991,14 @@ Test list in exercise:
 \item item1
 
 \item item2
-% Closing remarks for this Exercise
 \end{enumerate}
 
 \noindent
+% removed !bsol ... !esol environment
+% (because of the command-line option --without_solutions)
+
+% Closing remarks for this Exercise
+
 \paragraph{Remarks.}
 Some final closing remarks, e.g., summarizing the main findings
 and their implications in other problems can be made. These
@@ -39995,7 +40089,7 @@ for $x$ or $y$, not a function $y(x)$.
 \end{doconcequiz}
 
 
-% --- end explanation of choice 5 ---
+
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -40266,7 +40360,7 @@ or in quotes:
 
 
 \begin{quote}
-\emph{Fun is fun.}--- Unknown.
+Fun is fun.--- Unknown.
 \end{quote}
 
 
@@ -45032,6 +45126,7 @@ Vectorize the code in a) using boolean indexing.
 <p>
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in the section <a href="._testdoc_vagrant001.html#sec1">Section 1</a>.
 
 <p>
 <b>c)</b>
@@ -45166,14 +45261,17 @@ The formula for a circle is given by
 
 $$
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+\tag{6}\\ 
 y &= y_0 + R\sin 2\pi t,
+\tag{7}
 \end{align}
 $$
 
 where \( R \) is the radius of the circle, \( (x_0,y_0) \) is the
 center point, and \( t \) is a parameter in the unit interval \( [0,1] \).
-For any \( t \), \( (x,y) \) is a point on the circle.
+For any \( t \), \( (x,y) \) computed from <a href="#mjx-eqn-6">(6)</a>-<a href="#mjx-eqn-7">(7)</a>
+is a point on the circle.
 The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
@@ -45299,38 +45397,6 @@ and give some perspectives.
 Intro to this exercise. Questions are in subexercises below.
 
 <p>
-<!-- --- begin solution of exercise --- -->
-
-<p>
-<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_6_6" style="font-size: 80%;"></a>
-<b>Solution.</b>
-<div class="collapse-group">
-<p><div class="collapse" id="exer_6_6">
-
-<p>
-Here goes a full solution of the whole exercise.
-With some math \( a=b \) in this solution:
-$$ \hbox{math in solution: } a = b $$
-
-And code <code>a=b</code> in this solution:
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = b  # code in solution
-</pre></div>
-<p>
-End of solution is here.
-
-<p>
-</div></p>
-</div>
-</p>
-
-<p>
-<!-- --- end solution of exercise --- -->
-
-<p>
 <b>a)</b>
 Subexercises are numbered a), b), etc.
 
@@ -45453,10 +45519,10 @@ Filename: <code>subexer_b.pdf</code>.
 
 <p>
 <a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
- data-target="#exer_6_7" style="font-size: 80%;"></a>
+ data-target="#exer_6_6" style="font-size: 80%;"></a>
 <b>Solution.</b>
 <div class="collapse-group">
-<p><div class="collapse" id="exer_6_7">
+<p><div class="collapse" id="exer_6_6">
 
 <p>
 Here goes the solution of this subexercise.
@@ -45479,9 +45545,42 @@ Test list in exercise:
 
 <ol>
 <li> item1</li>
-<li> item2
-<!-- Closing remarks for this Exercise --></li>
+<li> item2</li>
 </ol>
+
+<!-- --- begin solution of exercise --- -->
+
+<p>
+<a class="glyphicon glyphicon-hand-right showdetails" data-toggle="collapse"
+ data-target="#exer_6_7" style="font-size: 80%;"></a>
+<b>Solution.</b>
+<div class="collapse-group">
+<p><div class="collapse" id="exer_6_7">
+
+<p>
+Here goes a full solution of the whole exercise.
+With some math \( a=b \) in this solution:
+$$ \hbox{math in solution: } a = b $$
+
+And code <code>a=b</code> in this solution:
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = b  # code in solution
+</pre></div>
+<p>
+End of solution is here.
+
+<p>
+</div></p>
+</div>
+</p>
+
+<p>
+<!-- --- end solution of exercise --- -->
+
+<p>
+<!-- Closing remarks for this Exercise -->
 
 <h3 id="___sec42">Remarks </h3>
 
@@ -45610,13 +45709,16 @@ for \( x \) or \( y \), not a function \( y(x) \).
 <div class="collapse-group">
 <p><div class="collapse" id="quiz_id_1_E">
 <img src="https://raw.github.com/hplgit/doconce/master/bundled/html_images/incorrect.gif">
-Wrong!
+Equations where the unknown is a function, as \( y(x) \)
+here, are called <em>differential equations</em>, and are solved by
+special techniques.
 </div></p>
 </div>
 </p>
 <!-- end quiz -->
 
-<!-- --- end explanation of choice 5 --- -->
+
+<p>
 <!-- --- end exercise --- -->
 
 <p>
@@ -45888,7 +45990,7 @@ is part of the abstract.
 
 .. Cannot demonstrate chapter headings since abstract and chapter
 
-.. is mutually exclusive in LaTeX
+.. are mutually exclusive in LaTeX
 
 .. _sec1:
 
@@ -72237,7 +72339,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f34404842a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f31cf9082a8>
 
 
 First occurence: " `mako`."
@@ -76208,7 +76310,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Apr 18 21:16:26 2015.
+# sphinx-quickstart on Sat Apr 25 21:29:49 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76877,7 +76979,8 @@ n\in\mathbb N$ is via the Euler integral
                'The solution cannot be found because there is a derivative in the equation.',
                'Equations with derivatives can be solved;\nthey are termed *differential\nequations*.'],
               ['wrong',
-               'The equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.']],
+               'The equation is meaningless: an equation must be an equation\nfor $x$ or $y$, not a function $y(x)$.',
+               'Equations where the unknown is a function, as $y(x)$\nhere, are called *differential equations*, and are solved by\nspecial techniques.']],
   'embedding': 'exercise',
   'heading': 'SOlution of differential equation',
   'keywords': ['derivatives',
@@ -76988,6 +77091,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
+At least there is not much to find in Section ref{sec1}.
 
 !bsubex
 Vectorize the code in a) using `numpy.sum`.
@@ -77029,13 +77133,16 @@ The formula for a circle is given by
 
 !bt
 \begin{align}
-x &= x_0 + R\cos 2\pi t,\\ 
+x &= x_0 + R\cos 2\pi t,
+label{circle:x}\\ 
 y &= y_0 + R\sin 2\pi t,
+label{circle:y}
 \end{align}
 !et
 where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
-For any $t$, $(x,y)$ is a point on the circle.
+For any $t$, $(x,y)$ computed from (ref{circle:x})-(ref{circle:y})
+is a point on the circle.
 The formula can be used to generate `n` points on a circle:
 
 !bc pypro
@@ -78163,6 +78270,21 @@ that it indicates a complete shell program (`shpro`) even if we copy a
 part of the file (here from `name=` until the end of the file).
 Copying a part will by default lead to `!bc shcod`, which indicates a
 code snippet that normally needs more code to run properly.
+
+The `--code_prefix=text` option adds a path `text` to the filename specified
+in the `@@@CODE` command. For example
+
+!bc
+ @@@CODE src/myfile.py
+!ec
+and `--code_prefix=http://some.place.net`, the file
+
+!bc
+http://some.place.net/src/myfile.py
+!ec
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option `'--code_skip_until=# ---`.
+The lines up to and including (the first) `# ---` will then be excluded.
 
 Important warnings:
 
@@ -79425,6 +79547,26 @@ that it indicates a complete shell program (<code>shpro</code>) even if we copy 
 part of the file (here from <code>name=</code> until the end of the file).
 Copying a part will by default lead to <code>!bc shcod</code>, which indicates a
 code snippet that normally needs more code to run properly.
+
+<p>
+The <code>--code_prefix=text</code> option adds a path <code>text</code> to the filename specified
+in the <code>@@@CODE</code> command. For example
+
+<p>
+<!-- begin verbatim block -->
+<pre><code> @@@CODE src/myfile.py
+</code></pre>
+<!-- end verbatim block -->
+and <code>--code_prefix=http://some.place.net</code>, the file
+
+<p>
+<!-- begin verbatim block -->
+<pre><code>http://some.place.net/src/myfile.py
+</code></pre>
+<!-- end verbatim block -->
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option <code>'--code_skip_until=# ---</code>.
+The lines up to and including (the first) <code># ---</code> will then be excluded.
 
 <p>
 Important warnings:
@@ -81096,6 +81238,21 @@ part of the file (here from \Verb!name=! until the end of the file).
 Copying a part will by default lead to \Verb?!bc shcod?, which indicates a
 code snippet that normally needs more code to run properly.
 
+The \Verb!--code_prefix=text! option adds a path \Verb!text! to the filename specified
+in the \Verb!@@@CODE! command. For example
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+ @@@CODE src/myfile.py
+\end{Verbatim}
+and \Verb!--code_prefix=http://some.place.net!, the file
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+http://some.place.net/src/myfile.py
+\end{Verbatim}
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option \Verb!'--code_skip_until=# ---!.
+The lines up to and including (the first) \Verb!# ---! will then be excluded.
+
 Important warnings:
 
 \begin{itemize}
@@ -82358,6 +82515,19 @@ that it indicates a complete shell program (``shpro``) even if we copy a
 part of the file (here from ``name=`` until the end of the file).
 Copying a part will by default lead to ``!bc shcod``, which indicates a
 code snippet that normally needs more code to run properly.
+
+The ``--code_prefix=text`` option adds a path ``text`` to the filename specified
+in the ``@@@CODE`` command. For example::
+
+         @@@CODE src/myfile.py
+
+and ``--code_prefix=http://some.place.net``, the file::
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option ``'--code_skip_until=# ---``.
+The lines up to and including (the first) ``# ---`` will then be excluded.
 
 Important warnings:
 
@@ -83635,6 +83805,23 @@ part of the file (here from ``name=`` until the end of the file).
 Copying a part will by default lead to ``!bc shcod``, which indicates a
 code snippet that normally needs more code to run properly.
 
+The ``--code_prefix=text`` option adds a path ``text`` to the filename specified
+in the ``@@@CODE`` command. For example
+
+.. code-block:: text
+
+         @@@CODE src/myfile.py
+
+and ``--code_prefix=http://some.place.net``, the file
+
+.. code-block:: text
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option ``'--code_skip_until=# ---``.
+The lines up to and including (the first) ``# ---`` will then be excluded.
+
 Important warnings:
 
  * A code block must come after some plain sentence (at least for successful
@@ -84895,6 +85082,21 @@ part of the file (here from `name=` until the end of the file).
 Copying a part will by default lead to `!bc shcod`, which indicates a
 code snippet that normally needs more code to run properly.
 
+The `--code_prefix=text` option adds a path `text` to the filename specified
+in the `@@@CODE` command. For example
+
+{{{
+ @@@CODE src/myfile.py
+}}}
+and `--code_prefix=http://some.place.net`, the file
+
+{{{
+http://some.place.net/src/myfile.py
+}}}
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option `'--code_skip_until=# ---`.
+The lines up to and including (the first) `# ---` will then be excluded.
+
 Important warnings:
 
 
@@ -86084,6 +86286,21 @@ that it indicates a complete shell program (<code>shpro</code>) even if we copy 
 part of the file (here from <code>name=</code> until the end of the file).
 Copying a part will by default lead to <code>!bc shcod</code>, which indicates a
 code snippet that normally needs more code to run properly.
+
+The <code>--code_prefix=text</code> option adds a path <code>text</code> to the filename specified
+in the <code>@@@CODE</code> command. For example
+
+<syntaxhighlight lang="text">
+ @@@CODE src/myfile.py
+</syntaxhighlight>
+and <code>--code_prefix=http://some.place.net</code>, the file
+
+<syntaxhighlight lang="text">
+http://some.place.net/src/myfile.py
+</syntaxhighlight>
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option <code>'--code_skip_until=# ---</code>.
+The lines up to and including (the first) <code># ---</code> will then be excluded.
 
 Important warnings:
 
@@ -87278,6 +87495,21 @@ part of the file (here from {{{name=}}} until the end of the file).
 Copying a part will by default lead to {{{!bc shcod}}}, which indicates a
 code snippet that normally needs more code to run properly.
 
+The {{{--code_prefix=text}}} option adds a path {{{text}}} to the filename specified
+in the {{{@@@CODE}}} command. For example
+
+{{{
+ @@@CODE src/myfile.py
+}}}
+and {{{--code_prefix=http://some.place.net}}}, the file
+
+{{{
+http://some.place.net/src/myfile.py
+}}}
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option {{{'--code_skip_until=# ---}}}.
+The lines up to and including (the first) {{{# ---}}} will then be excluded.
+
 Important warnings:
 
 
@@ -88396,6 +88628,19 @@ part of the file (here from 'name=' until the end of the file).
 Copying a part will by default lead to '!bc shcod', which indicates a
 code snippet that normally needs more code to run properly.
 
+The '--code_prefix=text' option adds a path 'text' to the filename specified
+in the '@@@CODE' command. For example::
+
+         @@@CODE src/myfile.py
+
+and '--code_prefix=http://some.place.net', the file::
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option ''--code_skip_until=# ---'.
+The lines up to and including (the first) '# ---' will then be excluded.
+
 Important warnings:
 
  - A code block must come after some plain sentence (at least for successful
@@ -89508,6 +89753,19 @@ that it indicates a complete shell program (C{shpro}) even if we copy a
 part of the file (here from C{name=} until the end of the file).
 Copying a part will by default lead to C{!bc shcod}, which indicates a
 code snippet that normally needs more code to run properly.
+
+The C{--code_prefix=text} option adds a path C{text} to the filename specified
+in the C{@@@CODE} command. For example::
+
+         @@@CODE src/myfile.py
+
+and C{--code_prefix=http://some.place.net}, the file::
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option C{'--code_skip_until=# ---}.
+The lines up to and including (the first) C{# ---} will then be excluded.
 
 Important warnings:
 
@@ -90664,6 +90922,19 @@ that it indicates a complete shell program (shpro) even if we copy a
 part of the file (here from name= until the end of the file).
 Copying a part will by default lead to !bc shcod, which indicates a
 code snippet that normally needs more code to run properly.
+
+The --code_prefix=text option adds a path text to the filename specified
+in the @@@CODE command. For example::
+
+         @@@CODE src/myfile.py
+
+and --code_prefix=http://some.place.net, the file::
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option '--code_skip_until=# ---.
+The lines up to and including (the first) # --- will then be excluded.
 
 Important warnings:
 
@@ -91855,6 +92126,21 @@ part of the file (here from `name=` until the end of the file).
 Copying a part will by default lead to `!bc shcod`, which indicates a
 code snippet that normally needs more code to run properly.
 
+The `--code_prefix=text` option adds a path `text` to the filename specified
+in the `@@@CODE` command. For example
+
+
+         @@@CODE src/myfile.py
+
+and `--code_prefix=http://some.place.net`, the file
+
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option `'--code_skip_until=# ---`.
+The lines up to and including (the first) `# ---` will then be excluded.
+
 Important warnings:
 
  * A code block must come after some plain sentence (at least for successful
@@ -92995,6 +93281,9 @@ output in testdoc.html
 + '[' 0 -ne 0 ']'
 + doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
 exercises extracted to testdoc_exer.do.txt
+
+*** warning: reference ref{sec1} - no label in document
+    need generalized reference ref[][][] in the original document
 + system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 + doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
 
@@ -94078,7 +94367,18 @@ Package amsmath Warning: Foreign command \over;
 
 [19]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [20]
+2768.pygtex)
+
+
+
+[20]
+
+
+
+
+
+
+
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [21] [22]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
@@ -97159,7 +97459,18 @@ Package amsmath Warning: Foreign command \over;
 
 [19]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [20] [21] [22]
+2768.pygtex)
+
+
+
+[20]
+
+
+
+
+
+
+[21] [22]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
 2768.pygtex [23])
 Underfull \hbox (badness 10000) 
@@ -97792,7 +98103,7 @@ reading sources... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:403: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:419: ERROR: Unexpected indentation.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:429: ERROR: Unexpected indentation.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc010.rst:7: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
@@ -97814,6 +98125,7 @@ writing output... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app2 (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:70: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc002' that doesn't have a title: no link will be generated
 writing additional files... (0 module code pages) genindex search
 copying images... [100%] wave1D.png
@@ -97822,7 +98134,7 @@ copying static files... done
 copying extra files... done
 dumping search index... done
 dumping object inventory... done
-build succeeded, 11 warnings.
+build succeeded, 12 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -98002,6 +98314,8 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: footnotes are not supported for format mwiki
     footnotes will be left in the doconce syntax
 *** warning: reference to label "my:eq1" in an equation does not work in MediaWiki
+*** warning: reference to label "circle:x" in an equation does not work in MediaWiki
+*** warning: reference to label "circle:y" in an equation does not work in MediaWiki
 output in testdoc.mwiki
 + '[' 0 -ne 0 ']'
 + system doconce format cwiki testdoc.do.txt --examples_as_exercises
@@ -107717,10 +108031,6 @@ Overfull \hbox (32.16707pt too wide)
 
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-
-
-...rest of part of LaTeX line number...
-
 [10]
 
 
@@ -107743,14 +108053,13 @@ Overfull \hbox (20.06982pt too wide)
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[15] [16] [17] [18] [19]
+[15] [16] [17] [18] [19] [20]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
-[20]
 No file quickref.ind.
 [21] (./quickref.aux)
 
@@ -108131,27 +108440,33 @@ Overfull \hbox (32.16707pt too wide)
 
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[11] [12] [13]
+[11]
+
+
+...rest of part of LaTeX line number...
+
+[12] [13]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-
+[14]
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[14]
+[15]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[15] [16] [17] [18] [19] [20]
+[16] [17] [18] [19] [20]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
+[21]
 No file quickref.ind.
-[21] (./quickref.aux)
+[22] (./quickref.aux)
 
  *File List*
  article.cls    2007/10/19 v1.4h Standard LaTeX document class
@@ -108284,6 +108599,9 @@ RS)
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
@@ -108301,7 +108619,7 @@ are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
 lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
 8a.pfb>
-Output written on quickref.pdf (21 pages, ).
+Output written on quickref.pdf (22 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx quickref --no_preprocess
@@ -108412,7 +108730,7 @@ preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] quickref
 
-/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:788: WARNING: undefined label: quick:sections (if the link has no caption the label must precede a section header)
+/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:805: WARNING: undefined label: quick:sections (if the link has no caption the label must precede a section header)
 writing additional files... (0 module code pages) genindex search
 copying static files... done
 copying extra files... done
@@ -108622,7 +108940,7 @@ Overfull \hbox (29.00006pt too wide)
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-
+[9]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -108630,14 +108948,14 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-[9]
+
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-
+[10]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
-[10]
+
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
 
@@ -108657,7 +108975,7 @@ aption which must be on a single line. label{some:fig:label}
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
-
+[11]
 Overfull \hbox (233.00006pt too wide) 
 \T1/pcr/m/n/10 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 he
 ight=315] YouTube movie.  
@@ -108669,7 +108987,7 @@ Overfull \hbox (119.00006pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[11]
+
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -108721,11 +109039,11 @@ IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
-
+[13]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[13]
+
 Overfull \hbox (3755.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -108758,7 +109076,7 @@ back again)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # doconce replace using from and to phrases from file  
-
+[14]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...  
 
@@ -108783,7 +109101,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-[14]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -108801,7 +109119,7 @@ Overfull \hbox (65.00006pt too wide)
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
-
+[15]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
 light  
@@ -108819,7 +109137,7 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-[15]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
@@ -108856,7 +109174,7 @@ Overfull \hbox (47.00006pt too wide)
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
-
+[16]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -108880,7 +109198,7 @@ Overfull \hbox (83.00006pt too wide)
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
-[16]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
@@ -108920,11 +109238,11 @@ Overfull \hbox (113.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
-
+[18]
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[18]
+
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -108935,25 +109253,25 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-
+[19]
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (47.10902pt too wide) 
 []
-[19]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[20]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[20] (./quickref.rst.aux)
+[21] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -108967,7 +109285,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (20 pages, ).
+Output written on quickref.rst.dvi (21 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
@@ -109152,14 +109470,14 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-
+[10]
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-[10]
+
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
-
+[11]
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
 
@@ -109168,7 +109486,7 @@ Overfull \hbox (47.00006pt too wide)
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 "`myfile.py`": "http://some.net/some/place/myfile.py".  
-[11]
+
 Overfull \hbox (503.00006pt too wide) 
 \T1/pcr/m/n/10 FIGURE: [relative/path/to/figurefile, width=500 frac=0.8] Here g
 oes the caption which must be on a single line. label{some:fig:label}  
@@ -109187,7 +109505,7 @@ ight=315] YouTube movie.
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
-
+[12]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -109219,7 +109537,7 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 | paragraph               | `__Heading.__`               (2 `_
 `)  |  
-[12]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
@@ -109301,10 +109619,10 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[15]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
-[15]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # remove all files that the doconce format can regenerate  
 
@@ -109337,13 +109655,13 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-
+[16]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce ptex2tex mydoc -DMINTED pycod=minted sys=Verbatim \  
-[16]
+
 Overfull \hbox (107.00006pt too wide) 
 []        \T1/pcr/m/n/10 dat=\begin{quote}\begin{verbatim};\end{verbatim}\end{q
 uote}  
@@ -109398,11 +109716,11 @@ Overfull \hbox (83.00006pt too wide)
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
-
+[17]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # find differences between the last two Git versions of severa
 l files  
-[17]
+
 Overfull \hbox (17.00006pt too wide) 
 []\T1/pcr/m/n/10 # edit URLs to local files and place them in _static  
 
@@ -109417,11 +109735,11 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-
+[18]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
-[18]
+
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   

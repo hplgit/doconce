@@ -15,10 +15,10 @@ import commands, os, sys, re, doconce.common, time
 # recommendation: remove installation and reinstall (to test setup.py)
 
 # Check that we have Internet
-if not doconce.common.internet_access():
+if not doconce.common.internet_access(2):
     print 'No Internet connection. This verification will be very slow!'
     print 'And it will be wrong...'
-    time.sleep(2)
+    time.sleep(3)
 
 
 thisdir = os.getcwd()

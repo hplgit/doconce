@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Apr 18, 2015
+:Date: Apr 25, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -563,6 +563,23 @@ that it indicates a complete shell program (``shpro``) even if we copy a
 part of the file (here from ``name=`` until the end of the file).
 Copying a part will by default lead to ``!bc shcod``, which indicates a
 code snippet that normally needs more code to run properly.
+
+The ``--code_prefix=text`` option adds a path ``text`` to the filename specified
+in the ``@@@CODE`` command. For example
+
+.. code-block:: text
+
+         @@@CODE src/myfile.py
+
+and ``--code_prefix=http://some.place.net``, the file
+
+.. code-block:: text
+
+        http://some.place.net/src/myfile.py
+
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option ``'--code_skip_until=# ---``.
+The lines up to and including (the first) ``# ---`` will then be excluded.
 
 Important warnings:
 
