@@ -1,3 +1,6 @@
+#!/bin/bash
+# Build doconce for conda
+
 packages="
 pbr
 sphinxjp.themecore
@@ -19,9 +22,12 @@ doconce
 "
 
 for p in $packages; do
+echo $p
 conda build $p
 if [ $? -ne 0 ]; then
   echo "conda failed: $p"
+  exit 1
+fi
 done
 
 # Upload to binstar?
