@@ -170,3 +170,7 @@ index entries, figures, tables, and admonitions).
 ===== License =====
 
 DocOnce is licensed under the BSD license, see the included LICENSE file.
+
+===== Author =====
+
+DocOnce is written by Hans Petter Langtangen ("hpl@simula.no": "mailto:hpl@simula.no") 2006-2015. A lot of people have contributed to testing the software and suggesting improvements.

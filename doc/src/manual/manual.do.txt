@@ -221,16 +221,6 @@ say `.eps` when requesting an HTML format, DocOnce tries to find another
 file, and if not, the given file is converted to a proper format
 (using ImageMagick's `convert` utility).
 
-The height, width, and frac keywords can be included
-if desired and may have effect for some formats: the height and width
-are used for output in the formats `html`, `rst`, `sphinx`, while
-the frac specification is used for `latex` and `pdflatex` to specify
-the width of the image as a fraction of the text width.
-
-The figure caption is optional. If omitted, the figure appears ``inline''
-in the text without any figure environment in LaTeX formats or HTML.
-The caption may contain a label for referencing the figure.
-
 !bwarning
 Note the comma
 between the filename and the figure size specifications and
@@ -243,6 +233,23 @@ newlines in a long caption will destroy the formatting (only the
 part of the caption appearing on the same line as `FIGURE:` will be
 included in the formatted caption).
 !ewarning
+
+The height, width, and frac keywords can be included
+if desired and may have effect for some formats: the height and width
+are used for output in the formats `html`, `rst`, `sphinx`, while
+the frac specification is used for `latex` and `pdflatex` to specify
+the width of the image as a fraction of the text width.
+
+The figure caption is optional. If omitted, the figure appears ``inline''
+in the text without any figure environment in LaTeX formats or HTML.
+The caption may contain a label for referencing the figure.
+
+!bnotice Tip: use linebreak to insert space around inline figures
+Sometimes inline figures (`FIGURE` line without caption) get squeezed
+into the text. You can add vertical space in LaTeX and HTML by
+inserting seeral lines with `<linebreak>`.
+!enotice
+
 
 FIGURE:[fig/wave1D, width=400] A wave. label{fig:viz}
 
