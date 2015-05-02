@@ -465,9 +465,9 @@ employs a simple rule: `text` lasts up to the first end-tag
 character (`*`, `_`, and `}` above), but code and math blocks
 do not count.
 
-===== How can I make a pressbooks.com books from DocOnce? =====
+===== How can I make pressbooks.com books from DocOnce? =====
 
-pressbooks.com supports HTML input with WordPress LaTeX mathematics,
+URL: "http://pressbooks.com" supports HTML input with WordPress LaTeX mathematics,
 so the easiest way is to compile DocOnce to HTML with the `--wordpress`
 option, put the file on the web somewhere, click *Utilities - Import*
 in pressbooks.com, then choose HTML input, write the URL, and upload.
