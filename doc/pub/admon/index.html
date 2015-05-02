@@ -88,7 +88,10 @@ The documents below are generated from a common <a href="admon.do.txt.html" targ
 <h1 id="___sec0">LaTeX </h1>
 
 <p>
---latex_admon=<a href="admon_mdfbox_blue.pdf" target="_blank">mdfbox</a> with blue color style
+--latex_admon=<a href="admon_mdfbox_blue.pdf" target="_blank">mdfbox</a> with blue sections and matching admon colors
+
+<p>
+--latex_admon=<a href="admon_mdfbox_bluestyle.pdf" target="_blank">mdfbox</a> with light blue background in mdfbox titles
 
 <p>
 
@@ -104,12 +107,12 @@ The documents below are generated from a common <a href="admon.do.txt.html" targ
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex admon --latex_code_style=lst --latex_admon=mdfbox
 </pre></div>
 <p>
---latex_admon=<a href="admon_traybox2.pdf" target="_blank">traybox2</a>
+--latex_admon=<a href="admon_graybox2.pdf" target="_blank">graybox2</a>
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex admon --latex_code_style=lst --latex_admon=traybox2
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex admon --latex_code_style=lst --latex_admon=graybox2
 </pre></div>
 <p>
 --latex_admon=<a href="admon_grayicon.pdf" target="_blank">grayicon</a>
@@ -222,7 +225,7 @@ The documents below are generated from a common <a href="admon.do.txt.html" targ
 <h1 id="___sec2">IPython notebook </h1>
 
 <p>
---html_admon=<a href="http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_quote.ipynb" target="_blank">quote</a>
+--ipynb_admon=<a href="http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_quote.ipynb" target="_blank">quote</a>
 
 <p>
 
@@ -230,7 +233,7 @@ The documents below are generated from a common <a href="admon.do.txt.html" targ
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format ipynb admon --ipynb_admon=quote
 </pre></div>
 <p>
---html_admon=<a href="http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_paragraph.ipynb" target="_blank">paragraph</a>
+--ipynb_admon=<a href="http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_paragraph.ipynb" target="_blank">paragraph</a>
 
 <p>
 
@@ -238,7 +241,7 @@ The documents below are generated from a common <a href="admon.do.txt.html" targ
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format ipynb admon --ipynb_admon=paragraph
 </pre></div>
 <p>
---html_admon=<a href="http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_hrule.ipynb" target="_blank">hrule</a>
+--ipynb_admon=<a href="http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_hrule.ipynb" target="_blank">hrule</a>
 
 <p>
 
@@ -250,12 +253,21 @@ The documents below are generated from a common <a href="admon.do.txt.html" targ
 
 <p>
 The admon layout depends on the Sphinx theme:
-<a href="sphinxdefault/admon.html" target="_blank">default</a>
-<a href="sphinxagni/admon.html" target="_blank">agni</a>
-<a href="sphinxbasicstrap/admon.html" target="_blank">basicstrap</a>
-<a href="sphinxclassy/admon.html" target="_blank">classy</a>
-<a href="sphinxfenics-minimal2/admon.html" target="_blank">fenics-minimal2</a>
-<a href="sphinxscrolls/admon.html" target="_blank">scrolls</a>
+<a href="sphinx-default/admon.html" target="_blank">default</a>
+<a href="sphinx-agni/admon.html" target="_blank">agni</a>
+<a href="sphinx-basicstrap/admon.html" target="_blank">basicstrap</a>
+<a href="sphinx-classy/admon.html" target="_blank">classy</a>
+<a href="sphinx-fenics-minimal2/admon.html" target="_blank">fenics-minimal2</a>
+<a href="sphinx-scrolls/admon.html" target="_blank">scrolls</a>
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format sphin admon
+Terminal&gt; doconce sphinx_dir theme=scrolls admon
+Terminal&gt; python automake_sphinx.py
+</pre></div>
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 

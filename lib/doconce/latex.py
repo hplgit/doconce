@@ -3392,8 +3392,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         if section_headings in ("blue", "strongblue") and latex_admon_color is None:
             # Let admon title background and border reflect the blue sections
             # unless a color is specified
-            INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=\color{seccolor}')
-            INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=\color{seccolor},', INTRO['latex'])
+            INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=seccolor')
+            INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=seccolor!20,', INTRO['latex'])
         if latex_admon_color == 'bluestyle':
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=darkblue')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=blue!5,', INTRO['latex'])

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-latex_admon="mdfbox traybox2 grayicon yellowicon colors1 colors2 paragraph"
+latex_admon="mdfbox graybox2 grayicon yellowicon colors1 colors2 paragraph"
 latex_admon_color=bluestyle
 #latex_admon_envir_map=
 html_admon1="gray yellow apricot lyx colors paragraph"
@@ -9,9 +9,14 @@ html_admon2="bootstrap_panel bootstrap_alert"
 #html_admon_bg_color
 #html_admon_bd_color
 ipynb_admon="quote paragraph hrule"
-sphinx_styles="default agni basicstrap classy fenics-minimal2 scrolls"
+sphinx_styles="default agni basicstrap classy fenics_minimal2 scrolls"
 
-doconce format pdflatex admon --latex_code_style=lst --latex_admon=mdfbox --latex_admon_color=bluestyle --latex_section_headings=blue "OPTIONS=--latex_admon=mdfbox --latex_admon_color=bluestyle --latex_section_headings=blue"
+
+doconce format pdflatex admon --latex_code_style=lst --latex_admon=mdfbox --latex_admon_color=bluestyle "OPTIONS=--latex_admon=mdfbox --latex_admon_color=bluestyle"
+pdflatex admon
+cp admon.pdf admon_mdfbox_bluestyle.pdf
+
+doconce format pdflatex admon --latex_code_style=lst --latex_admon=mdfbox --latex_section_headings=blue "OPTIONS=--latex_admon=mdfbox --latex_section_headings=blue"
 pdflatex admon
 cp admon.pdf admon_mdfbox_blue.pdf
 
@@ -23,11 +28,15 @@ cp admon.pdf admon_${admon_style}.pdf
 done
 
 for admon_style in $html_admon2; do
-doconce format html admon --html_style=bootswatch_readable --html_admon=$admon_style --html_output=admon_${admon_style}  --html_box_shadow "OPTIONS=--html_style=bootswatch_readable --html_admon$admon_style --html_box_shadow"
+doconce format html admon --html_style=bootswatch_readable --html_admon=$admon_style --html_output=admon_${admon_style} "OPTIONS=--html_style=bootswatch_readable --html_admon=$admon_style"
 done
 
 for admon_style in $html_admon1; do
-doconce format html admon --html_style=blueish --html_admon=$admon_style --html_output=admon_${admon_style} "OPTIONS=--html_style=bootswatch_readable --html_admon$admon_style"
+if [ $admon_style = "apricot" ]; then
+doconce format html admon --html_style=solarized3 --html_admon=$admon_style --html_output=admon_${admon_style} --html_box_shadow "OPTIONS=--html_style=solarized3 --html_admon=$admon_style --html_box_shadow"
+else
+doconce format html admon --html_style=blueish --html_admon=$admon_style --html_output=admon_${admon_style} --html_box_shadow "OPTIONS=--html_style=blueish --html_admon=$admon_style --html_box_shadow"
+fi
 done
 
 for admon_style in $ipynb_admon; do

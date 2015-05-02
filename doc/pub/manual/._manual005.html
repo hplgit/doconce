@@ -406,18 +406,6 @@ file, and if not, the given file is converted to a proper format
 (using ImageMagick's <code>convert</code> utility).
 
 <p>
-The height, width, and frac keywords can be included
-if desired and may have effect for some formats: the height and width
-are used for output in the formats <code>html</code>, <code>rst</code>, <code>sphinx</code>, while
-the frac specification is used for <code>latex</code> and <code>pdflatex</code> to specify
-the width of the image as a fraction of the text width.
-
-<p>
-The figure caption is optional. If omitted, the figure appears &quot;inline&quot;
-in the text without any figure environment in LaTeX formats or HTML.
-The caption may contain a label for referencing the figure.
-
-<p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Warning.</b>
 Note the comma
 between the filename and the figure size specifications and
@@ -430,6 +418,26 @@ related to a figure line <em>must be written on the same line</em>. Introducing
 newlines in a long caption will destroy the formatting (only the
 part of the caption appearing on the same line as <code>FIGURE:</code> will be
 included in the formatted caption).
+</div>
+
+
+<p>
+The height, width, and frac keywords can be included
+if desired and may have effect for some formats: the height and width
+are used for output in the formats <code>html</code>, <code>rst</code>, <code>sphinx</code>, while
+the frac specification is used for <code>latex</code> and <code>pdflatex</code> to specify
+the width of the image as a fraction of the text width.
+
+<p>
+The figure caption is optional. If omitted, the figure appears &quot;inline&quot;
+in the text without any figure environment in LaTeX formats or HTML.
+The caption may contain a label for referencing the figure.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: use linebreak to insert space around inline figures.</b>
+Sometimes inline figures (<code>FIGURE</code> line without caption) get squeezed
+into the text. You can add vertical space in LaTeX and HTML by
+inserting seeral lines with <code>&lt;linebreak&gt;</code>.
 </div>
 
 

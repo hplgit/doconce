@@ -470,19 +470,21 @@ Blog posts at Google can also be published "automatically through email":
 A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  `smtplib` and `email`.
 
-WordPress (`wordpress.com`) allows raw HTML code in blogs,
-but has very limited
-LaTeX support, basically only formulas. The `--wordpress` option to
-`doconce` modifies the HTML code such that all equations are typeset
-in a way that is acceptable to WordPress.
-Look at a "simple doconce example": "http://doconce.wordpress.com"
-and a "scientific report": "http://doconcereportdemo.wordpress.com/"
-to see blog posts with mathematics and code on WordPress.
+WordPress (`wordpress.com`) allows raw HTML code in blogs, but has
+very limited LaTeX support, basically only formulas. The `--wordpress`
+option to `doconce` modifies the HTML code such that all equations are
+typeset in a way that is acceptable to WordPress.  Look at a "simple
+doconce example": "http://doconce.wordpress.com" and a "scientific
+report": "http://doconcereportdemo.wordpress.com/" to see blog posts
+with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project URL:
 "http://pressbooks.com" can take raw HTML code (from DocOnce, for
-instance) and produce very nice-looking books.  There is no support
-for mathematics in the text, though.
+instance, but use the `--wordpress` option)
+and produce very nice-looking books.  There is support for LaTeX
+mathematics as in WordPress blog posts, meaning that one cannot refer
+to equations.
+
 
 ===== Pandoc and Markdown =====
 label{do2any:pandoc}

@@ -24,7 +24,7 @@ Here are some of the most recent features in DocOnce:
  * Embedded "quizzes or multiple-choice questions": "http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html", which can be automatically uploaded to
    "Kahoot online games": "https://getkahoot.com"
  * "Admonitions": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions", i.e., boxes for notifications, tips, warnings, etc., with
-   great flexibility in the typesetting (at least in HTML and LaTeX)
+   great "flexibility in the typesetting": "http://hplgit.github.io/doconce/doc/pub/admon/index.html" (at least in HTML and LaTeX)
 
 ===== Installation =====
 
@@ -103,7 +103,7 @@ various formats (HTML5 reveal.js, deck.js, etc., as well as LaTeX
 Beamer).
 
 DocOnce has support for *responsive* HTML documents with design and
-functionality based on Bootstrap styles.  A "demo":
+functionality based on Bootstrap styles.  A "Bootstrap demo":
 "http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html"
 illustrates the many possibilities for colors and layouts.
 

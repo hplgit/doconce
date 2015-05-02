@@ -2566,8 +2566,8 @@ and `--code_prefix=http://some.place.net`, the file
 http://some.place.net/src/myfile.py
 !ec
 will be included. If source files have a header with author, email, etc.,
-one can remove this header by the option `'--code_skip_until=# ***'.
-The lines up to and including (the first) `# ***` will then be excluded.
+one can remove this header by the option `'--code_skip_until=# ---'`.
+The lines up to and including (the first) `# ---` will then be excluded.
 
 !split
 ===== LaTeX Blocks of Mathematical Text =====
@@ -2962,7 +2962,7 @@ idx{HTML admonitions}
 === Layout of admonitions in HTML ===
 
 The command-line argument `--html_admon` sets the admonition style
-for the `html` format:
+for the `html` format (see "demo": "http://hplgit.github.io/doconce/doc/pub/admon/index.html"):
 
  * `--html_admon=gray` for
    icons with gray background and small font,
@@ -3001,7 +3001,7 @@ idx{LaTeX admonitions}
 
 In `latex` and `pdflatex`, the type of admonition style is set by
 the command-line option `--latex_admon=`.
-Several values are available:
+Several values are available (see "demo": "http://hplgit.github.io/doconce/doc/pub/admon/index.html"):
 
  * `paragraph` is the simplest type of admonition and typeset
    as plain text with an optional paragraph heading.

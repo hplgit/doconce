@@ -72,7 +72,7 @@ Summary admon:
 Notice admon:
 
 
-.. admonition:: Tip: following well-established conventions for variable names
+.. admonition:: Tip: follow well-established conventions for variable names
 
    For example, in Python, variable and function names use
    lower case letters separated by underscore, as in

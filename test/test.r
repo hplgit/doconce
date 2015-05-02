@@ -4297,9 +4297,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_notice_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -4325,9 +4325,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_summary_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -4353,9 +4353,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_warning_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -4381,9 +4381,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_question_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -4409,9 +4409,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_block_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -6681,9 +6681,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_notice_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -6709,9 +6709,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_summary_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -6737,9 +6737,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_warning_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -6765,9 +6765,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_question_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -6793,9 +6793,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   skipbelow=15pt,
   outerlinewidth=0,
   backgroundcolor=mdfbox_block_background,
-  linecolor=black,
+  linecolor=seccolor,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlebackgroundcolor=seccolor!20,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -29973,6 +29973,8 @@ open=right               % start new chapters on odd-numbered pages
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
@@ -30602,6 +30604,8 @@ Inline math, a=b, is the only math in this document.
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -30741,6 +30745,8 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -36339,7 +36345,7 @@ is part of the abstract.
 
 <p>
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
-<!-- is mutually exclusive in LaTeX -->
+<!-- are mutually exclusive in LaTeX -->
 
 <h1 id="sec1">Section 1</h1>
 
@@ -38624,7 +38630,7 @@ And exactly for test purposes we have an extra line here, which
 is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
-% is mutually exclusive in {\LaTeX}
+% are mutually exclusive in {\LaTeX}
 \end{abstract}
 
 \subsection{Section 1}
@@ -42286,6 +42292,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
@@ -43683,7 +43691,7 @@ is part of the abstract.
 
 <p>
 <!-- Cannot demonstrate chapter headings since abstract and chapter -->
-<!-- is mutually exclusive in LaTeX -->
+<!-- are mutually exclusive in LaTeX -->
 
 <h1 id="sec1">Section 1</h1>
 
@@ -69201,6 +69209,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
@@ -69209,7 +69219,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconce:movie:counter}
 
 \usepackage{animate}
-\usepackage{graphicx}
 
 
 \usepackage{ptex2tex}
@@ -69614,6 +69623,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
@@ -69622,7 +69633,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconce:movie:counter}
 
 \usepackage{animate}
-\usepackage{graphicx}
 
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
@@ -70020,6 +70030,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
@@ -70029,7 +70041,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{media9}
 \usepackage{movie15}
 \usepackage{animate}
-\usepackage{graphicx}
 
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
@@ -72339,7 +72350,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f31cf9082a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f3fba9b42a8>
 
 
 First occurence: " `mako`."
@@ -73353,6 +73364,8 @@ BIBFILE: papers.pub
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
+\usepackage{graphicx}
+
 \usepackage{ptex2tex}
 % #ifdef MINTED
 \usepackage{minted}
@@ -74307,6 +74320,8 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 \usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
+
+\usepackage{graphicx}
 
 \usepackage{ptex2tex}
 \usepackage{fancyvrb}
@@ -76310,7 +76325,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Apr 25 21:29:49 2015.
+# sphinx-quickstart on Sat May  2 06:02:15 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78752,9 +78767,11 @@ the environments:
  * `subex`: sub-exercise
  * `ans`: short answer to exercise or sub-exercise
  * `sol`: full solution to exercise or sub-exercise
+ * `hint`: multiple help items in an exercise or sub-exercise
  * `quote`: indented text
- * `notice`, `summary`, `warning`, `question`, `hint`: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ * `notice`, `summary`, `warning`, `question`: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+ * `block`, `box`: simpler boxes (`block` may have title but never any icon)
  * `pop`: text to gradually pop up in slide presentations
  * `slidecell`: indication of cells in a grid layout for elements on a
    slide
@@ -80262,9 +80279,11 @@ the environments:
  <li> <code>subex</code>: sub-exercise</li>
  <li> <code>ans</code>: short answer to exercise or sub-exercise</li>
  <li> <code>sol</code>: full solution to exercise or sub-exercise</li>
+ <li> <code>hint</code>: multiple help items in an exercise or sub-exercise</li>
  <li> <code>quote</code>: indented text</li>
- <li> <code>notice</code>, <code>summary</code>, <code>warning</code>, <code>question</code>, <code>hint</code>: admonition boxes with
-    custom title, special icon, and (frequently) background color</li>
+ <li> <code>notice</code>, <code>summary</code>, <code>warning</code>, <code>question</code>: admonition boxes with
+    custom title, special icon, and (sometimes) background color</li>
+ <li> <code>block</code>, <code>box</code>: simpler boxes (<code>block</code> may have title but never any icon)</li>
  <li> <code>pop</code>: text to gradually pop up in slide presentations</li>
  <li> <code>slidecell</code>: indication of cells in a grid layout for elements on a
    slide</li>
@@ -81926,10 +81945,14 @@ the environments:
 
  \item \Verb!sol!: full solution to exercise or sub-exercise
 
+ \item \Verb!hint!: multiple help items in an exercise or sub-exercise
+
  \item \Verb!quote!: indented text
 
- \item \Verb!notice!, \Verb!summary!, \Verb!warning!, \Verb!question!, \Verb!hint!: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ \item \Verb!notice!, \Verb!summary!, \Verb!warning!, \Verb!question!: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+
+ \item \Verb!block!, \Verb!box!: simpler boxes (\Verb!block! may have title but never any icon)
 
  \item \Verb!pop!: text to gradually pop up in slide presentations
 
@@ -83175,10 +83198,14 @@ the environments:
 
  * ``sol``: full solution to exercise or sub-exercise
 
+ * ``hint``: multiple help items in an exercise or sub-exercise
+
  * ``quote``: indented text
 
- * ``notice``, ``summary``, ``warning``, ``question``, ``hint``: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ * ``notice``, ``summary``, ``warning``, ``question``: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+
+ * ``block``, ``box``: simpler boxes (``block`` may have title but never any icon)
 
  * ``pop``: text to gradually pop up in slide presentations
 
@@ -84532,10 +84559,14 @@ the environments:
 
  * ``sol``: full solution to exercise or sub-exercise
 
+ * ``hint``: multiple help items in an exercise or sub-exercise
+
  * ``quote``: indented text
 
- * ``notice``, ``summary``, ``warning``, ``question``, ``hint``: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ * ``notice``, ``summary``, ``warning``, ``question``: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+
+ * ``block``, ``box``: simpler boxes (``block`` may have title but never any icon)
 
  * ``pop``: text to gradually pop up in slide presentations
 
@@ -85706,8 +85737,10 @@ the environments:
  * `subex`: sub-exercise
  * `ans`: short answer to exercise or sub-exercise
  * `sol`: full solution to exercise or sub-exercise
+ * `hint`: multiple help items in an exercise or sub-exercise
  * `quote`: indented text
- * `notice`, `summary`, `warning`, `question`, `hint`: admonition boxes with    custom title, special icon, and (frequently) background color
+ * `notice`, `summary`, `warning`, `question`: admonition boxes with    custom title, special icon, and (sometimes) background color
+ * `block`, `box`: simpler boxes (`block` may have title but never any icon)
  * `pop`: text to gradually pop up in slide presentations
  * `slidecell`: indication of cells in a grid layout for elements on a   slide
 
@@ -86948,9 +86981,11 @@ the environments:
  <li> <code>subex</code>: sub-exercise
  <li> <code>ans</code>: short answer to exercise or sub-exercise
  <li> <code>sol</code>: full solution to exercise or sub-exercise
+ <li> <code>hint</code>: multiple help items in an exercise or sub-exercise
  <li> <code>quote</code>: indented text
- <li> <code>notice</code>, <code>summary</code>, <code>warning</code>, <code>question</code>, <code>hint</code>: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ <li> <code>notice</code>, <code>summary</code>, <code>warning</code>, <code>question</code>: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+ <li> <code>block</code>, <code>box</code>: simpler boxes (<code>block</code> may have title but never any icon)
  <li> <code>pop</code>: text to gradually pop up in slide presentations
  <li> <code>slidecell</code>: indication of cells in a grid layout for elements on a
    slide
@@ -88119,8 +88154,10 @@ the environments:
  * {{{subex}}}: sub-exercise
  * {{{ans}}}: short answer to exercise or sub-exercise
  * {{{sol}}}: full solution to exercise or sub-exercise
+ * {{{hint}}}: multiple help items in an exercise or sub-exercise
  * {{{quote}}}: indented text
- * {{{notice}}}, {{{summary}}}, {{{warning}}}, {{{question}}}, {{{hint}}}: admonition boxes with    custom title, special icon, and (frequently) background color
+ * {{{notice}}}, {{{summary}}}, {{{warning}}}, {{{question}}}: admonition boxes with    custom title, special icon, and (sometimes) background color
+ * {{{block}}}, {{{box}}}: simpler boxes ({{{block}}} may have title but never any icon)
  * {{{pop}}}: text to gradually pop up in slide presentations
  * {{{slidecell}}}: indication of cells in a grid layout for elements on a   slide
 
@@ -89244,9 +89281,11 @@ the environments:
  - 'subex': sub-exercise
  - 'ans': short answer to exercise or sub-exercise
  - 'sol': full solution to exercise or sub-exercise
+ - 'hint': multiple help items in an exercise or sub-exercise
  - 'quote': indented text
- - 'notice', 'summary', 'warning', 'question', 'hint': admonition boxes with
-    custom title, special icon, and (frequently) background color
+ - 'notice', 'summary', 'warning', 'question': admonition boxes with
+    custom title, special icon, and (sometimes) background color
+ - 'block', 'box': simpler boxes ('block' may have title but never any icon)
  - 'pop': text to gradually pop up in slide presentations
  - 'slidecell': indication of cells in a grid layout for elements on a
    slide
@@ -90376,9 +90415,11 @@ the environments:
  - C{subex}: sub-exercise
  - C{ans}: short answer to exercise or sub-exercise
  - C{sol}: full solution to exercise or sub-exercise
+ - C{hint}: multiple help items in an exercise or sub-exercise
  - C{quote}: indented text
- - C{notice}, C{summary}, C{warning}, C{question}, C{hint}: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ - C{notice}, C{summary}, C{warning}, C{question}: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+ - C{block}, C{box}: simpler boxes (C{block} may have title but never any icon)
  - C{pop}: text to gradually pop up in slide presentations
  - C{slidecell}: indication of cells in a grid layout for elements on a
    slide
@@ -91577,10 +91618,14 @@ the environments:
 
  * sol: full solution to exercise or sub-exercise
 
+ * hint: multiple help items in an exercise or sub-exercise
+
  * quote: indented text
 
- * notice, summary, warning, question, hint: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ * notice, summary, warning, question: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+
+ * block, box: simpler boxes (block may have title but never any icon)
 
  * pop: text to gradually pop up in slide presentations
 
@@ -92766,9 +92811,11 @@ the environments:
  * `subex`: sub-exercise
  * `ans`: short answer to exercise or sub-exercise
  * `sol`: full solution to exercise or sub-exercise
+ * `hint`: multiple help items in an exercise or sub-exercise
  * `quote`: indented text
- * `notice`, `summary`, `warning`, `question`, `hint`: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ * `notice`, `summary`, `warning`, `question`: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+ * `block`, `box`: simpler boxes (`block` may have title but never any icon)
  * `pop`: text to gradually pop up in slide presentations
  * `slidecell`: indication of cells in a grid layout for elements on a
    slide
@@ -99723,6 +99770,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
@@ -99752,6 +99803,9 @@ No file math_test.aux.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 ) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -99811,6 +99865,10 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
@@ -99854,6 +99912,9 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -103331,6 +103392,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
@@ -103368,10 +103433,6 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -103493,10 +103554,10 @@ Writing index file movies.idx
 No file movies.aux.
 
 
-ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+ABD: EveryShipout initializing macros
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -103513,7 +103574,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 167 has zero height.
+* Media annotation on line 168 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103523,7 +103584,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 194 has zero height.
+* Media annotation on line 195 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -103735,6 +103796,10 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
@@ -103769,10 +103834,6 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
  pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
   pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
 pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
@@ -103951,6 +104012,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
@@ -103988,10 +104053,6 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -104112,10 +104173,10 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 Writing index file movies.idx
 (./movies.aux) 
 
-ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+ABD: EveryShipout initializing macros
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -104132,7 +104193,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 167 has zero height.
+* Media annotation on line 168 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104142,7 +104203,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 194 has zero height.
+* Media annotation on line 195 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104339,6 +104400,10 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
@@ -104373,10 +104438,6 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
  pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
   pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
 pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
@@ -104563,6 +104624,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
@@ -104600,10 +104665,6 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
@@ -104724,10 +104785,10 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 Writing index file movies.idx
 (./movies.aux) 
 
-ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
+ABD: EveryShipout initializing macros
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -104744,7 +104805,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 167 has zero height.
+* Media annotation on line 168 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104754,7 +104815,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 194 has zero height.
+* Media annotation on line 195 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -104945,6 +105006,10 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
   media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
    expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
@@ -104979,10 +105044,6 @@ atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
 everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
   pgfrcs.code.tex
  pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
   pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
   pgfsys.code.tex
 pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
@@ -105170,6 +105231,10 @@ For additional information on amsmath, use the `?' option.
 
 
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
 (/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/animate/animate.sty
@@ -105192,11 +105257,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-)) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
 <2008/02/07> (tvz)) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
@@ -105431,6 +105492,10 @@ microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
  animate.sty    2014/07/02 PDF animations from files and inline graphics
   ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
@@ -105451,10 +105516,6 @@ zref-lastpage.sty    2012/04/04 v2.24 Module lastpage for zref (HO)
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancyvrb.sty    2008/02/07
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
@@ -109258,7 +109319,7 @@ Overfull \hbox (4.60825pt too wide)
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
-Overfull \hbox (47.10902pt too wide) 
+Overfull \hbox (18.10902pt too wide) 
 []
 
 Overfull \hbox (263.00006pt too wide) 
@@ -109776,7 +109837,7 @@ Overfull \hbox (4.60825pt too wide)
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
-Overfull \hbox (47.10902pt too wide) 
+Overfull \hbox (18.10902pt too wide) 
 []
 [20]
 Overfull \hbox (263.00006pt too wide) 

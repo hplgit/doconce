@@ -699,6 +699,28 @@ Moreover, copy of code from file works in Dococe across formats
 (HTML, Sphinx, Markdown, etc.).
 
 <p>
+The <code>--code_prefix=text</code> option adds a path <code>text</code> to the filename specified
+in the <code>@@@CODE</code> command. For example
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"> @@@CODE src/myfile.py
+</pre></div>
+<p>
+and <code>--code_prefix=http://some.place.net</code>, the file
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">http://some.place.net/src/myfile.py
+</pre></div>
+<p>
+will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option <code>'--code_skip_until=# ---'</code>.
+The lines up to and including (the first) <code># ---</code> will then be excluded.
+
+<p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pager">

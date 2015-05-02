@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 19, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 2, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -327,14 +327,6 @@ appropriate file with the right extension. If the extension is wrong,
 say <tt class="docutils literal"><span class="pre">.eps</span></tt> when requesting an HTML format, DocOnce tries to find another
 file, and if not, the given file is converted to a proper format
 (using ImageMagick&#8217;s <tt class="docutils literal"><span class="pre">convert</span></tt> utility).</p>
-<p>The height, width, and frac keywords can be included
-if desired and may have effect for some formats: the height and width
-are used for output in the formats <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, while
-the frac specification is used for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> to specify
-the width of the image as a fraction of the text width.</p>
-<p>The figure caption is optional. If omitted, the figure appears &#8220;inline&#8221;
-in the text without any figure environment in LaTeX formats or HTML.
-The caption may contain a label for referencing the figure.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>Note the comma
@@ -346,6 +338,20 @@ related to a figure line <em>must be written on the same line</em>. Introducing
 newlines in a long caption will destroy the formatting (only the
 part of the caption appearing on the same line as <tt class="docutils literal"><span class="pre">FIGURE:</span></tt> will be
 included in the formatted caption).</p>
+</div>
+<p>The height, width, and frac keywords can be included
+if desired and may have effect for some formats: the height and width
+are used for output in the formats <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, while
+the frac specification is used for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> to specify
+the width of the image as a fraction of the text width.</p>
+<p>The figure caption is optional. If omitted, the figure appears &#8220;inline&#8221;
+in the text without any figure environment in LaTeX formats or HTML.
+The caption may contain a label for referencing the figure.</p>
+<div class="admonition-tip-use-linebreak-to-insert-space-around-inline-figures admonition">
+<p class="first admonition-title">Tip: use linebreak to insert space around inline figures</p>
+<p class="last">Sometimes inline figures (<tt class="docutils literal"><span class="pre">FIGURE</span></tt> line without caption) get squeezed
+into the text. You can add vertical space in LaTeX and HTML by
+inserting seeral lines with <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt>.</p>
 </div>
 <div class="figure" id="fig-viz">
 <a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
@@ -3377,7 +3383,7 @@ e^{-\frac{(t-\mu)^2}{2\sigma}}dt.\]
 <span class="k">!esubex</span>
 
 <span class="k">!bremarks</span>
-This exercise demonstrate subexercise, hint, solution, short answer,
+This exercise demonstrates subexercise, hint, solution, short answer,
 multiple-choice question (quiz), and final remark - combined with
 mathematics and computer code.
 <span class="k">!eremarks</span>
@@ -3441,7 +3447,7 @@ for definition). <abbr title="Right!">?</abbr></p>
 <p>Filename: <tt class="docutils literal"><span class="pre">integrals.py</span></tt>.</p>
 <div class="section" id="remarks">
 <h4>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">¶</a></h4>
-<p>This exercise demonstrate subexercise, hint, solution, short answer,
+<p>This exercise demonstrates subexercise, hint, solution, short answer,
 multiple-choice question (quiz), and final remark - combined with
 mathematics and computer code.</p>
 </div>
@@ -3678,6 +3684,18 @@ above works with regular expressions which are much less sensitive
 to edits of the source code file than the line numbers.
 Moreover, copy of code from file works in Dococe across formats
 (HTML, Sphinx, Markdown, etc.).</p>
+<p>The <tt class="docutils literal"><span class="pre">--code_prefix=text</span></tt> option adds a path <tt class="docutils literal"><span class="pre">text</span></tt> to the filename specified
+in the <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> command. For example</p>
+<div class="highlight-text"><div class="highlight"><pre>@@@CODE src/myfile.py
+</pre></div>
+</div>
+<p>and <tt class="docutils literal"><span class="pre">--code_prefix=http://some.place.net</span></tt>, the file</p>
+<div class="highlight-text"><div class="highlight"><pre>http://some.place.net/src/myfile.py
+</pre></div>
+</div>
+<p>will be included. If source files have a header with author, email, etc.,
+one can remove this header by the option <tt class="docutils literal"><span class="pre">'--code_skip_until=#</span> <span class="pre">---'</span></tt>.
+The lines up to and including (the first) <tt class="docutils literal"><span class="pre">#</span> <span class="pre">---</span></tt> will then be excluded.</p>
 </div>
 </div>
 <div class="section" id="latex-blocks-of-mathematical-text">
@@ -3910,7 +3928,8 @@ as warning boxes, notification boxes, question boxes,
 and summary boxes. The boxes normally have an icon, a heading,
 and may also have a background color. A special box, the block,
 has never any icon and can be used when an icon would be disturbing
-or misleading.</p>
+or misleading. The variety of admonitions and their many typesetting
+styles are available through a <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/admon/index.html">demo</a>.</p>
 <div class="section" id="examples-on-admonition-types">
 <h4>Examples on Admonition Types<a class="headerlink" href="#examples-on-admonition-types" title="Permalink to this headline">¶</a></h4>
 <p>The following admonition environments are available:
@@ -7607,8 +7626,8 @@ Then it is natural to use a different verbatim code style inside
 admons.
 If specifying a number, say 2, as in --latex_admon_envir_map=2,
 an envir like pycod gets the number appended: pycod2. One can
-then in doconce ptex2tex (or ptex2tex) specify the typesetting
-of pycod2 environments.
+then in --latex_code_style= or in doconce ptex2tex or ptex2tex
+specify the typesetting of pycod2 environments.
 Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
@@ -7741,6 +7760,11 @@ to subsections, etc.
 Terminal prompt in output from running OS commands (the
 @@@OSCMD instruction). None or empty: no prompt, just the command;
 nocmd: no command, just the output. Default is &quot;Terminal&gt;&quot;.
+
+
+--code_skip_until=...
+
+@@@CODE import: skip lines in files up to (and incuding) specified line.
 
 
 --code_prefix=...

@@ -2720,8 +2720,8 @@ Then it is natural to use a different verbatim code style inside
 admons.
 If specifying a number, say 2, as in --latex_admon_envir_map=2,
 an envir like pycod gets the number appended: pycod2. One can
-then in doconce ptex2tex (or ptex2tex) specify the typesetting
-of pycod2 environments.
+then in --latex_code_style= or in doconce ptex2tex or ptex2tex
+specify the typesetting of pycod2 environments.
 Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
@@ -2854,6 +2854,11 @@ to subsections, etc.
 Terminal prompt in output from running OS commands (the
 @@@OSCMD instruction). None or empty: no prompt, just the command;
 nocmd: no command, just the output. Default is &quot;Terminal&gt;&quot;.
+
+
+--code_skip_until=...
+
+@@@CODE import: skip lines in files up to (and incuding) specified line.
 
 
 --code_prefix=...
