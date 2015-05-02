@@ -1,0 +1,265 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Demo of admonition styles in DocOnce">
+
+<title>Demo of admonition styles in DocOnce</title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.alert-text-small   { font-size: 80%%;  }
+.alert-text-large   { font-size: 130%%; }
+.alert-text-normal  { font-size: 90%%;  }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' The four main types of admonitions ', 1, None, '___sec0'),
+              (' The block, quote and plain box environment ',
+               1,
+               None,
+               '___sec1')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1>Demo of admonition styles in DocOnce</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): H. P. Langtangen -->
+
+<center>
+<b>H. P. Langtangen</b> 
+</center>
+
+<p>
+<!-- institution(s) -->
+<p>
+<center><h4>May 2, 2015</h4></center> <!-- date -->
+<p>
+<b>Summary.</b> This note demonstrates how admonitions look like in the output format
+<b>html</b>.
+
+<h1 id="___sec0">The four main types of admonitions </h1>
+
+<p>
+Key options when compiling this document were
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">--html_style=bootswatch_readable --html_admonlyx
+</pre></div>
+<p>
+Here is the warning admon:
+
+<p>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/lyx_warning.png" hspace="5" alt="warning"></td>
+<th align="left" valign="middle"><b>Division by zero is illegal!</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">Most math systems will give fatal errors if you divide by zero.
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print 4/0&#39;
+Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+ZeroDivisionError: integer division or modulo by zero
+</pre></div>
+<p></div>
+</p></td></tr>
+</table>
+
+
+<p>
+Question admon (without title).
+
+<p>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/lyx_question.png" hspace="5" alt="question"></td>
+<th align="left" valign="middle"><b>Question.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">What are the admon options for <code>doconce format html</code>?
+
+<p>
+<!-- Answer: <code>--html_admon=</code>, <code>--html_admon_shadow</code>, <code>--html_admon_bg_color=</code>, -->
+<!-- <code>--html_admon_bd_color</code>. There is also <code>--html_box_shadow</code> for boxes. --></div>
+</p></td></tr>
+</table>
+
+
+<p>
+Summary admon:
+
+<p>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/lyx_summary.png" hspace="5" alt="summary"></td>
+<th align="left" valign="middle"><b>Summary.</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">The most popular methods for solving algebraic equations
+
+$$ f(x) = 0 $$
+
+are
+
+<ul>
+ <li> Newton's method</li>
+ <li> The Bisection method</li>
+ <li> The Secant method</li>
+ <li> The Fixed-Point method (\( f(x) = x - g(x) \))</li>
+</ul></div>
+</p></td></tr>
+</table>
+
+
+<p>
+Notice admon:
+
+<p>
+
+<table width="95%" border="0">
+<tr>
+<td width="25" align="center" valign="top">
+<img src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/lyx_notice.png" hspace="5" alt="notice"></td>
+<th align="left" valign="middle"><b>Tip: following well-established conventions for variable names!</b></th>
+</tr>
+<tr><td>&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">For example, in Python, variable and function names use
+lower case letters separated by underscore, as in
+<code>vibration_with_damping</code> (while Java typically would
+have <code>vibrationWithDamping</code>). Class names apply cap words,
+as in <code>ProblemClass</code>.</div>
+</p></td></tr>
+</table>
+
+
+<h1 id="___sec1">The block, quote and plain box environment </h1>
+
+<p>
+DocOnce features a <code>block</code> environment with or without title.
+
+<p>
+
+<table width="95%" border="0">
+<tr><th align="left" valign="middle"><b></b></th>
+</tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">Blocks are often used in slides to frame a collection of things.</div>
+</p></td></tr>
+</table>
+
+
+<p>
+
+<table width="95%" border="0">
+<tr><th align="left" valign="middle"><b>Block with title.</b></th>
+</tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td> <td align="left" valign="top"><p>
+<div class="alert-text-normal">Blocks can contain text, math, code, figures, movies.</div>
+</p></td></tr>
+</table>
+
+
+<p>
+Here is a quote environment (<code>quote</code>):
+
+<p>
+<blockquote>
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." <br />
+    By way of corollary, it adds: <br />
+    "That is why academic politics are so bitter." <br />
+    <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
+</blockquote>
+
+
+<p>
+Boxes are very simple frames (without any icons, background color,
+or stash, except for a shadow)
+used for important results like
+
+<p>
+
+<!-- begin box -->
+<div style="width: 95%; padding: 10px; border: 1px solid #000; border-radius: 4px;">
+The world most famous equation:
+
+$$ E = mc^2 $$
+</div>
+<!-- end box -->
+
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

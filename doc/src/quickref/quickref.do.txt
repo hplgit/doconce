@@ -960,9 +960,11 @@ the environments:
  * `subex`: sub-exercise
  * `ans`: short answer to exercise or sub-exercise
  * `sol`: full solution to exercise or sub-exercise
+ * `hint`: multiple help items in an exercise or sub-exercise
  * `quote`: indented text
- * `notice`, `summary`, `warning`, `question`, `hint`: admonition boxes with
-    custom title, special icon, and (frequently) background color
+ * `notice`, `summary`, `warning`, `question`: admonition boxes with
+    custom title, special icon, and (sometimes) background color
+ * `block`, `box`: simpler boxes (`block` may have title but never any icon)
  * `pop`: text to gradually pop up in slide presentations
  * `slidecell`: indication of cells in a grid layout for elements on a
    slide

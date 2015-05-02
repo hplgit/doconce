@@ -1,0 +1,65 @@
+/*  Bootstrap
+    ------------------------------------------------------- */
+
+/*  apply font awesome
+    ------------------------------------------------------- */
+
+div.danger p.admonition-title:before,
+div.error p.admonition-title:before,
+div.warning p.admonition-title:before,
+div.caution p.admonition-title:before,
+div.attention p.admonition-title:before,
+div.important p.admonition-title:before,
+div.note p.admonition-title:before,
+div.hint p.admonition-title:before,
+div.tip p.admonition-title:before
+{
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  margin-right: 5px;
+}
+
+div.danger p.admonition-title:before,
+div.error p.admonition-title:before {
+  content: "\f06a";
+}
+div.warning p.admonition-title:before,
+div.caution p.admonition-title:before,
+div.attention p.admonition-title:before {
+  content: "\f071";
+}
+div.important p.admonition-title:before,
+div.note p.admonition-title:before {
+  content: "\f05a";
+}
+div.hint p.admonition-title:before,
+div.tip p.admonition-title:before {
+  content: "\f0eb";
+}
+
+/* for mobile */
+@media (max-width: 480px) {
+  a.brand {
+    width: 80%;
+  }
+  searchbox .search-query {
+    width: 60%;
+  }
+}
+
+/* for desktop */
+@media (min-width: 768px) {
+  
+  .navbar-inner div.container {
+    width: 900px;
+  }
+  
+  
+  div.container {
+    width: 900px;
+  }
+  
+}

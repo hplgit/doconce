@@ -3797,7 +3797,9 @@ def preprocess(filename, format, preprocessor_options=[]):
     for opt in preprocessor_options:
         if opt[0] != '-' and '=' in opt:
             try:
-                var, value = opt.split('=')
+                words = opt.split('=')
+                var = words[0]
+                value = '='.join(words[1:])
             except ValueError:
                 print '*** error: illegal command-line argument:'
                 print opt
@@ -3820,7 +3822,9 @@ def preprocess(filename, format, preprocessor_options=[]):
             # Treat value as string except if it is True or False
             # or consists solely of digits
             try:
-                key, value = opt.split('=')
+                words = opt.split('=')
+                key = words[0]
+                value = '='.join(words[1:])
                 if value in ('True', 'False'):
                     value = eval(value)  # make it bool
                 elif value.isdigit():

@@ -2685,8 +2685,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{bm}
 """
 
-    if 'FIGURE' in filestr:
-        INTRO['latex'] += r"""
+    #if 'FIGURE' in filestr: # let us always have this, neeeded in admons too
+    INTRO['latex'] += r"""
 \usepackage{graphicx}
 """
 
@@ -3112,7 +3112,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon',
         admon_color = {style: {} for style in admon_styles}
 
-        if latex_admon_color is None:
+        # Set default admon colors.
+        # (Can have special bluestyle, yellowstyle, etc. for mdfbox,
+        # these are implemented as special hacks after the mdfbox is defined.
+        # See if latex_admon_color == ...)
+        if latex_admon_color is None or latex_admon_color.endswith('style'):
             # default colors
             # colors1, colors2 color
             light_blue = (0.87843, 0.95686, 1.0)
@@ -3385,6 +3389,18 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \end{%(admon)s_%(latex_admon)smdframed}
 }
 """ % vars()
+        if section_headings in ("blue", "strongblue") and latex_admon_color is None:
+            # Let admon title background and border reflect the blue sections
+            # unless a color is specified
+            INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=\color{seccolor}')
+            INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=\color{seccolor},', INTRO['latex'])
+        if latex_admon_color == 'bluestyle':
+            INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=darkblue')
+            INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=blue!5,', INTRO['latex'])
+        elif latex_admon_color == 'yellowstyle':
+            INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=yellow!20')
+            INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=yellow!5,', INTRO['latex'])
+
         INTRO['latex'] += r"""
 % --- end of definitions of admonition environments ---
 """

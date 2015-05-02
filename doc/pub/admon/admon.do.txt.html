@@ -1,0 +1,124 @@
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Demo of admonition styles in DocOnce</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> H. P. Langtangen
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #800080; font-weight: bold">__Summary.__</span>
+This note demonstrates how admonitions look like in the output format
+_${FORMAT}_.
+
+<span style="color: #000080; font-weight: bold">======= The four main types of admonitions =======</span>
+
+% if OPTIONS != &quot;None&quot;:
+Key options when compiling this document were
+
+<span style="color: #008000; font-weight: bold">!bc</span>
+${OPTIONS}
+<span style="color: #008000; font-weight: bold">!ec</span>
+% endif
+
+% if &#39;mdfbox&#39; in OPTIONS:
+When using the default `mdfbox` style, there are some additional
+customization that can be played around with. It is possible to
+set the background color in the title and the color and thickness of
+the frame. Typically, one can autoedit the output `.tex` file:
+
+<span style="color: #008000; font-weight: bold">!bc</span>
+doconce replace &#39;linecolor=black,&#39; &#39;linecolor=darkblue,&#39; mydoc.tex
+doconce subst &#39;frametitlebackgroundcolor=.*?,&#39; \
+        &#39;frametitlebackgroundcolor=blue!5,&#39; mydoc.tex
+<span style="color: #008000; font-weight: bold">!ec</span>
+Actually, this specific edit is automatically done by DocOnce by choosing
+the option `--latex_admon_color=bluestyle`.
+% endif
+
+Here is the warning admon:
+
+<span style="color: #008000; font-weight: bold">!bwarning</span> Division by zero is illegal!
+Most math systems will give fatal errors if you divide by zero.
+
+<span style="color: #008000; font-weight: bold">!bc</span> sys
+Terminal&gt; python -c &#39;print 4/0&#39;
+Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+ZeroDivisionError: integer division or modulo by zero
+<span style="color: #008000; font-weight: bold">!ec</span>
+<span style="color: #008000; font-weight: bold">!ewarning</span>
+
+Question admon (without title).
+
+<span style="color: #008000; font-weight: bold">!bquestion</span>
+What are the admon options for `doconce format html`?
+
+<span style="color: #408080; font-style: italic">#Answer: `--html_admon=`, `--html_admon_shadow`, `--html_admon_bg_color=`,</span>
+<span style="color: #408080; font-style: italic"># `--html_admon_bd_color`. There is also `--html_box_shadow` for boxes.</span>
+<span style="color: #008000; font-weight: bold">!equestion</span>
+
+Summary admon:
+
+<span style="color: #008000; font-weight: bold">!bsummary</span>
+The most popular methods for solving algebraic equations
+
+<span style="color: #008000; font-weight: bold">!bt</span>
+\[ f(x) = 0 \]
+<span style="color: #008000; font-weight: bold">!et</span>
+are
+
+ * Newton&#39;s method
+ * The Bisection method
+ * The Secant method
+ * The Fixed-Point method ($f(x) = x - g(x)$)
+<span style="color: #008000; font-weight: bold">!esummary</span>
+
+% if &#39;graybox2&#39; in OPTIONS:
+The `graybox2` style has a special summary box that is embedded in the
+text (aimed at proposals or popular articles to summarize main points).
+% endif
+
+Notice admon:
+
+<span style="color: #008000; font-weight: bold">!bnotice</span> Tip: following well-established conventions for variable names!
+For example, in Python, variable and function names use
+lower case letters separated by underscore, as in
+<span style="color: #BA2121">`vibration_with_damping`</span> (while Java typically would
+have `vibrationWithDamping`). Class names apply cap words,
+as in `ProblemClass`.
+<span style="color: #008000; font-weight: bold">!enotice</span>
+
+<span style="color: #000080; font-weight: bold">======= The block, quote and plain box environment =======</span>
+
+DocOnce features a `block` environment with or without title.
+
+<span style="color: #008000; font-weight: bold">!bblock</span>
+Blocks are often used in slides to frame a collection of things.
+<span style="color: #008000; font-weight: bold">!eblock</span>
+
+<span style="color: #008000; font-weight: bold">!bblock</span> Block with title
+Blocks can contain text, math, code, figures, movies.
+<span style="color: #008000; font-weight: bold">!eblock</span>
+
+Here is a quote environment (`quote`):
+
+<span style="color: #008000; font-weight: bold">!bquote</span>
+Sayre&#39;s law states that
+&quot;in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.&quot; &lt;linebreak&gt;
+By way of corollary, it adds: &lt;linebreak&gt;
+<span style="color: #BA2121">&quot;That is why academic politics are so bitter.&quot;</span> &lt;linebreak&gt;
+*Source*: &quot;wikipedia&quot;: &quot;http://en.wikipedia.org/wiki/Sayre&#39;s_law&quot;
+<span style="color: #008000; font-weight: bold">!equote</span>
+
+Boxes are very simple frames (without any icons, background color,
+or stash, except for a shadow)
+used for important results like
+% if FORMAT == &quot;sphinx&quot;:
+(note: box frame is not available in format _${FORMAT}_)
+% endif
+
+<span style="color: #008000; font-weight: bold">!bbox</span>
+The world most famous equation:
+
+<span style="color: #008000; font-weight: bold">!bt</span>
+\[ E = mc^2 \]
+<span style="color: #008000; font-weight: bold">!et</span>
+<span style="color: #008000; font-weight: bold">!ebox</span>
+</pre></div>

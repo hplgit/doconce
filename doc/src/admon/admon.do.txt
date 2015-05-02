@@ -1,0 +1,123 @@
+TITLE: Demo of admonition styles in DocOnce
+AUTHOR: H. P. Langtangen
+DATE: today
+
+__Summary.__
+This note demonstrates how admonitions look like in the output format
+_${FORMAT}_.
+
+======= The four main types of admonitions =======
+
+% if OPTIONS != "None":
+Key options when compiling this document were
+
+!bc
+${OPTIONS}
+!ec
+% endif
+
+% if 'mdfbox' in OPTIONS:
+When using the default `mdfbox` style, there are some additional
+customization that can be played around with. It is possible to
+set the background color in the title and the color and thickness of
+the frame. Typically, one can autoedit the output `.tex` file:
+
+!bc
+doconce replace 'linecolor=black,' 'linecolor=darkblue,' mydoc.tex
+doconce subst 'frametitlebackgroundcolor=.*?,' \
+        'frametitlebackgroundcolor=blue!5,' mydoc.tex
+!ec
+Actually, this specific edit is automatically done by DocOnce by choosing
+the option `--latex_admon_color=bluestyle`.
+% endif
+
+Here is the warning admon:
+
+!bwarning Division by zero is illegal!
+Most math systems will give fatal errors if you divide by zero.
+
+!bc sys
+Terminal> python -c 'print 4/0'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ZeroDivisionError: integer division or modulo by zero
+!ec
+!ewarning
+
+Question admon (without title).
+
+!bquestion
+What are the admon options for `doconce format html`?
+
+#Answer: `--html_admon=`, `--html_admon_shadow`, `--html_admon_bg_color=`,
+# `--html_admon_bd_color`. There is also `--html_box_shadow` for boxes.
+!equestion
+
+Summary admon:
+
+!bsummary
+The most popular methods for solving algebraic equations
+
+!bt
+\[ f(x) = 0 \]
+!et
+are
+
+ * Newton's method
+ * The Bisection method
+ * The Secant method
+ * The Fixed-Point method ($f(x) = x - g(x)$)
+!esummary
+
+% if 'graybox2' in OPTIONS:
+The `graybox2` style has a special summary box that is embedded in the
+text (aimed at proposals or popular articles to summarize main points).
+% endif
+
+Notice admon:
+
+!bnotice Tip: following well-established conventions for variable names!
+For example, in Python, variable and function names use
+lower case letters separated by underscore, as in
+`vibration_with_damping` (while Java typically would
+have `vibrationWithDamping`). Class names apply cap words,
+as in `ProblemClass`.
+!enotice
+
+======= The block, quote and plain box environment =======
+
+DocOnce features a `block` environment with or without title.
+
+!bblock
+Blocks are often used in slides to frame a collection of things.
+!eblock
+
+!bblock Block with title
+Blocks can contain text, math, code, figures, movies.
+!eblock
+
+Here is a quote environment (`quote`):
+
+!bquote
+Sayre's law states that
+"in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake." <linebreak>
+By way of corollary, it adds: <linebreak>
+"That is why academic politics are so bitter." <linebreak>
+*Source*: "wikipedia": "http://en.wikipedia.org/wiki/Sayre's_law"
+!equote
+
+Boxes are very simple frames (without any icons, background color,
+or stash, except for a shadow)
+used for important results like
+% if FORMAT == "sphinx":
+(note: box frame is not available in format _${FORMAT}_)
+% endif
+
+!bbox
+The world most famous equation:
+
+!bt
+\[ E = mc^2 \]
+!et
+!ebox

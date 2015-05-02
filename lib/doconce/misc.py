@@ -309,7 +309,7 @@ Note: the colors in mdfbox and other boxes can customized.
      """The color to be used as background in admonitions.
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
- '--latex_admon_color=yellow!5'
+  '--latex_admon_color=yellow!5'
 Note the quotes, needed for bash, in the latter example.
 
 If --latex_admon=mdfbox, the background of the title and
@@ -319,6 +319,11 @@ blue title background is obtained by editing the .tex file as
 
 doconce replace 'linecolor=black,' 'linecolor=darkblue,' mydoc.tex
 doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' mydoc.tex
+
+Actually, this particular (and common) edit is automatically done by the option
+  --latex_admon_color=bluestyle
+  --latex_admon_color=yellowstyle
+(the latter has color yellow!5 instead and yellow!20 for the border)
 """),
     ('--latex_admon_title_no_period',
      """By default, a period is added to title admons that do not have a period, question mark, or similar. This option prevents adding a period such that the title acts like a heading."""),
@@ -331,8 +336,8 @@ Then it is natural to use a different verbatim code style inside
 admons.
 If specifying a number, say 2, as in --latex_admon_envir_map=2,
 an envir like pycod gets the number appended: pycod2. One can
-then in doconce ptex2tex (or ptex2tex) specify the typesetting
-of pycod2 environments.
+then in --latex_code_style= or in doconce ptex2tex or ptex2tex
+specify the typesetting of pycod2 environments.
 Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2

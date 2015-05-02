@@ -1,0 +1,136 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. Document title:
+
+Demo of admonition styles in DocOnce
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: H. P. Langtangen
+:Date: May 2, 2015
+
+*Summary.* This note demonstrates how admonitions look like in the output format
+**sphinx**.
+
+The four main types of admonitions
+==================================
+
+Here is the warning admon:
+
+
+.. admonition:: Division by zero is illegal
+
+   Most math systems will give fatal errors if you divide by zero.
+   
+   .. code-block:: text
+   
+           Terminal> python -c 'print 4/0'
+           Traceback (most recent call last):
+             File "<string>", line 1, in <module>
+           ZeroDivisionError: integer division or modulo by zero
+
+
+
+
+Question admon (without title).
+
+
+.. admonition:: Question
+
+   What are the admon options for ``doconce format html``?
+   
+   .. Answer: ``--html_admon=``, ``--html_admon_shadow``, ``--html_admon_bg_color=``,
+   
+   .. ``--html_admon_bd_color``. There is also ``--html_box_shadow`` for boxes.
+
+
+
+
+Summary admon:
+
+
+.. admonition:: Summary
+
+   The most popular methods for solving algebraic equations
+   
+   .. math::
+            f(x) = 0 
+   
+   are
+   
+    * Newton's method
+   
+    * The Bisection method
+   
+    * The Secant method
+   
+    * The Fixed-Point method (:math:`f(x) = x - g(x)`)
+
+
+
+
+Notice admon:
+
+
+.. admonition:: Tip: following well-established conventions for variable names
+
+   For example, in Python, variable and function names use
+   lower case letters separated by underscore, as in
+   ``vibration_with_damping`` (while Java typically would
+   have ``vibrationWithDamping``). Class names apply cap words,
+   as in ``ProblemClass``.
+
+
+
+
+The block, quote and plain box environment
+==========================================
+
+DocOnce features a ``block`` environment with or without title.
+
+
+.. admonition:: Notice
+
+   Blocks are often used in slides to frame a collection of things.
+
+
+
+
+
+.. admonition:: Block with title
+
+   Blocks can contain text, math, code, figures, movies.
+
+
+
+
+Here is a quote environment (``quote``):
+
+
+..
+
+    Sayre's law states that
+    "in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake." 
+    
+    | By way of corollary, it adds: 
+    | "That is why academic politics are so bitter." 
+    | *Source*: `wikipedia <http://en.wikipedia.org/wiki/Sayre's_law>`__
+
+
+
+Boxes are very simple frames (without any icons, background color,
+or stash, except for a shadow)
+used for important results like
+(note: box frame is not available in format **sphinx**)
+
+
+.. The below box could be typeset as .. admonition: Attention
+   but we have decided not to do so since the admon needs a title
+   (the box formatting is therefore just ignored)
+
+The world most famous equation:
+
+.. math::
+         E = mc^2
+

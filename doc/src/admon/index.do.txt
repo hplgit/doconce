@@ -1,0 +1,56 @@
+TITLE: Demonstration of admonition styles in DocOnce
+AUTHOR: H. P. Langtangen
+DATE: today
+
+The documents below are generated from a common "DocOnce source": "admon.do.txt.html".
+
+======= LaTeX =======
+
+--latex_admon="mdfbox": "admon_mdfbox_blue.pdf" with blue color style
+
+!bc sys
+Terminal> doconce format pdflatex admon --latex_code_style=lst --latex_admon=mdfbox --latex_admon_color=bluestyle --latex_section_headings=blue
+!ec
+
+% for style in "mdfbox traybox2 grayicon yellowicon colors1 colors2 paragraph".split():
+--latex_admon="${style}": "admon_${style}.pdf"
+
+!bc sys
+Terminal> doconce format pdflatex admon --latex_code_style=lst --latex_admon=${style}
+!ec
+% endfor
+
+======= HTML =======
+
+% for style in "colors gray yellow apricot lyx paragraph".split():
+--html_admon="${style}": "admon_${style}.html"
+
+!bc sys
+Terminal> doconce format html admon --html_style=blueish --html_admon=${style} --html_box_shadow
+!ec
+% endfor
+
+% for style in "bootstrap_panel bootstrap_alert".split():
+--html_admon="${style}": "admon_${style}.html"
+
+!bc sys
+Terminal> doconce format html admon --html_style=bootswatch_readable --html_admon=${style}
+!ec
+% endfor
+
+======= IPython notebook =======
+
+% for style in "quote paragraph hrule".split():
+--html_admon="${style}": "http://nbviewer.ipython.org/url/hplgit.github.io/doconce/doc/pub/admon/admon_${style}.ipynb"
+
+!bc sys
+Terminal> doconce format ipynb admon --ipynb_admon=${style}
+!ec
+% endfor
+
+======= Sphinx =======
+
+The admon layout depends on the Sphinx theme:
+% for theme in "default agni basicstrap classy fenics-minimal2 scrolls".split():
+"${theme}": "sphinx${theme}/admon.html"
+% endfor
