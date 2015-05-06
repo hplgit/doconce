@@ -81,7 +81,7 @@ moving constructions with braces (`label`, `cite`) out of the
 text to be colored.
 !ec
 
-===== How can I get a native LaTeX example or other environments? =====
+===== How can I make use of a native LaTeX environments (example environemt for instance)? =====
 label{trouble:latex:envir:native}
 
 LaTeX writers often lack their favorite environments, but DocOnce
@@ -90,6 +90,15 @@ also for HTML and all other output formats. See the
 section *User-Defined Environments* in the DocOnce manual. It contains
 all the details for using a standard example or theorem environment
 in LaTeX output.
+
+===== How can I create a more tailored code environment in LaTeX than what DocOnce offers? =====
+
+It is easy with *user-defined environments*, see
+such an example at the end of the document
+"Demonstration of DocOnce support for LaTeX code block environments":
+"http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html".
+Description of user-defined environments are found in
+the "DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments".
 
 ===== How can I control the vertical spacing in slides? =====
 

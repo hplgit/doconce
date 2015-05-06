@@ -4495,10 +4495,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end of standard preamble for documents ---
 
 
-
-
-\usepackage{theorem}
+\usepackage{amsthm,tcolorbox}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
 \newtheorem{theorem}{Theorem}[section]
+
+
+
+% insert custom LaTeX commands...
 
 \raggedbottom
 \makeindex
@@ -5527,11 +5531,10 @@ That is, a special test function for a function \Verb!add! appears in
 Example~\ref{ex:test:1p1}.
 
 
-
-\subsection*{Example \thedoconceexercisecounter: A test function}
-\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: A test function}
-
+\begin{example}
 \label{ex:test:1p1}
+
+\noindent\emph{A test function}.
 
 Suppose we want to write a test function for checking the
 implementation of a Python function for addition.
@@ -5547,30 +5550,33 @@ def test_add():
     assert expected == computed
 \end{minted}
 \noindent
+\end{example}
 
 
 
-
-
-\subsection*{Example \thedoconceexercisecounter: Addition}
-\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Addition}
-
+\begin{example}
 \label{ex:math:1p1}
+
+\noindent\emph{Addition}.
 
 We have
 
 \[ 1 + 1 = 2 \]
+\end{example}
 
 
 
-
-\begin{notice_mdfboxadmon}[Highlight box!]
+\begin{tcolorbox}[%skin=widget,
+boxrule=1mm,
+coltitle=black,
+colframe=blue!45!white,
+colback=blue!15!white,
+width=(.9\linewidth),before=\hfill,after=\hfill,
+adjusted title={Highlight box!}]
 This environment is used to highlight something:
 
 \[ E = mc^2 \]
-\end{notice_mdfboxadmon}
-
-
+\end{tcolorbox}
 
 
 
@@ -6879,10 +6885,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % --- end of standard preamble for documents ---
 
 
-
-
-\usepackage{theorem}
+\usepackage{amsthm,tcolorbox}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
 \newtheorem{theorem}{Theorem}[section]
+
+
+
+% insert custom LaTeX commands...
 
 \raggedbottom
 \makeindex
@@ -7862,11 +7872,10 @@ That is, a special test function for a function \Verb!add! appears in
 Example~\ref{ex:test:1p1}.
 
 
-
-\subsection*{Example \thedoconceexercisecounter: A test function}
-\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: A test function}
-
+\begin{example}
 \label{ex:test:1p1}
+
+\noindent\emph{A test function}.
 
 Suppose we want to write a test function for checking the
 implementation of a Python function for addition.
@@ -7881,30 +7890,33 @@ def test_add():
     computed = add(a, b)
     assert expected == computed
 \end{minted}
+\end{example}
 
 
 
-
-
-\subsection*{Example \thedoconceexercisecounter: Addition}
-\addcontentsline{loe}{doconceexercise}{Example \thedoconceexercisecounter: Addition}
-
+\begin{example}
 \label{ex:math:1p1}
+
+\noindent\emph{Addition}.
 
 We have
 
 \[ 1 + 1 = 2 \]
+\end{example}
 
 
 
-
-\begin{notice_mdfboxadmon}[Highlight box!]
+\begin{tcolorbox}[%skin=widget,
+boxrule=1mm,
+coltitle=black,
+colframe=blue!45!white,
+colback=blue!15!white,
+width=(.9\linewidth),before=\hfill,after=\hfill,
+adjusted title={Highlight box!}]
 This environment is used to highlight something:
 
 \[ E = mc^2 \]
-\end{notice_mdfboxadmon}
-
-
+\end{tcolorbox}
 
 
 
@@ -9217,6 +9229,10 @@ commentstyle={},
 % --- end of standard preamble for documents ---
 
 
+\usepackage{amsthm,tcolorbox}
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
 
 
 % insert custom LaTeX commands...
@@ -10232,10 +10248,10 @@ That is, a special test function for a function \Verb!add! appears in
 Example~\ref{ex:test:1p1}.
 
 
-
-\subsection*{Example \thedoconceexercisecounter: A test function}
-
+\begin{example}
 \label{ex:test:1p1}
+
+\noindent\emph{A test function}.
 
 Suppose we want to write a test function for checking the
 implementation of a Python function for addition.
@@ -10251,29 +10267,33 @@ def test_add():
     assert expected == computed
 \end{lstlisting}\end{cod}
 \noindent
+\end{example}
 
 
 
-
-
-\subsection*{Example \thedoconceexercisecounter: Addition}
-
+\begin{example}
 \label{ex:math:1p1}
+
+\noindent\emph{Addition}.
 
 We have
 
 \[ 1 + 1 = 2 \]
+\end{example}
 
 
 
-
-\begin{notice_mdfboxadmon}[Highlight box!]
+\begin{tcolorbox}[%skin=widget,
+boxrule=1mm,
+coltitle=black,
+colframe=blue!45!white,
+colback=blue!15!white,
+width=(.9\linewidth),before=\hfill,after=\hfill,
+adjusted title={Highlight box!}]
 This environment is used to highlight something:
 
 \[ E = mc^2 \]
-\end{notice_mdfboxadmon}
-
-
+\end{tcolorbox}
 
 
 
@@ -41012,8 +41032,8 @@ system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_
 
 # doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
-thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
-doconce subst '% insert custom LaTeX commands\.\.\.' $thpack testdoc.p.tex
+# can drop usepackage{theorem} since we have user-defined envir with amsthm
+doconce subst '(newtheorem{example}.*)' '\g<1>\n\\newtheorem{theorem}{Theorem}[section]' testdoc.p.tex
 
 doconce subst '\\paragraph\{Theorem \d+\.\}' '' testdoc.p.tex
 doconce replace '% begin theorem' '\begin{theorem}' testdoc.p.tex
@@ -72350,7 +72370,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f3fba9b42a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f3037876410>
 
 
 First occurence: " `mako`."
@@ -76325,7 +76345,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat May  2 06:02:15 2015.
+# sphinx-quickstart on Wed May  6 00:20:12 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -93774,9 +93794,8 @@ output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
 + doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
 replacing vspace{1cm} % after toc by clearpage % after toc in testdoc.p.tex
-+ thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
-+ doconce subst '% insert custom LaTeX commands\.\.\.' '\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]' testdoc.p.tex
-% insert custom LaTeX commands\.\.\. replaced by \\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section] in testdoc.p.tex
++ doconce subst '(newtheorem{example}.*)' '\g<1>\n\\newtheorem{theorem}{Theorem}[section]' testdoc.p.tex
+(newtheorem{example}.*) replaced by \g<1>\n\\newtheorem{theorem}{Theorem}[section] in testdoc.p.tex
 + doconce subst '\\paragraph\{Theorem \d+\.\}' '' testdoc.p.tex
 \\paragraph\{Theorem \d+\.\} replaced by  in testdoc.p.tex
 + doconce replace '% begin theorem' '\begin{theorem}' testdoc.p.tex
@@ -93795,14 +93814,14 @@ done testdoc.p.tex -> testdoc.tex
 + rm -f '*.aux'
 + system pdflatex -shell-escape testdoc
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
@@ -94004,13 +94023,16 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
 (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 
 Writing index file testdoc.idx
 No file testdoc.aux.
@@ -94212,7 +94234,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1277.
+t line 1281.
 
 
 
@@ -94232,7 +94254,7 @@ t line 1277.
 
 
 
-t line 1286.
+t line 1290.
 
 
 
@@ -94253,7 +94275,7 @@ t line 1286.
 
 
 
-t line 1290.
+t line 1294.
 
 
 
@@ -94334,11 +94356,6 @@ t line 1290.
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [16]
-
-
-...rest of part of LaTeX line number...
-
-
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -94480,15 +94497,15 @@ No file testdoc.ind.
 [28] (./testdoc.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -94504,8 +94521,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
@@ -94517,22 +94534,22 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
   minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
 kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
@@ -94600,18 +94617,21 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
- theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
-     thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+  amsthm.sty    2009/07/02 v2.20.1
+tcolorbox.sty    2014/10/10 version 3.21 text color boxes
+ environ.sty    2014/05/04 v0.3 A new way to define environments
+trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -94720,14 +94740,14 @@ Output written on testdoc.pdf (28 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
@@ -94929,13 +94949,16 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
 (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 
 Writing index file testdoc.idx
 (./testdoc.aux) 
@@ -94982,16 +95005,16 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [6]
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=313, 64.24pt x 64.24pt>
+515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
 CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=339, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=337, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9] [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=371, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=372, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95031,17 +95054,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=397, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=395, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=396, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=397, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95086,7 +95109,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1277.
+t line 1281.
 
 
 
@@ -95106,7 +95129,7 @@ t line 1277.
 
 
 
-t line 1286.
+t line 1290.
 
 
 
@@ -95127,7 +95150,7 @@ t line 1286.
 
 
 
-t line 1290.
+t line 1294.
 
 
 
@@ -95232,15 +95255,15 @@ No file testdoc.ind.
 [29] (./testdoc.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -95256,8 +95279,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
@@ -95269,22 +95292,22 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
   minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
 kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
@@ -95352,18 +95375,21 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
- theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
-     thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+  amsthm.sty    2009/07/02 v2.20.1
+tcolorbox.sty    2014/10/10 version 3.21 text color boxes
+ environ.sty    2014/05/04 v0.3 A new way to define environments
+trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -95469,14 +95495,14 @@ s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (29 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
-This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2015/dev] (kpathsea + Thai support).
 Scanning input file testdoc.idx....done (7 entries accepted, 0 rejected).
 Sorting entries....done (23 comparisons).
 Generating output file testdoc.ind....done (26 lines written, 0 warnings).
 Output written in testdoc.ind.
 Transcript written in testdoc.ilg.
 + bibtex testdoc
-This is BibTeX, Version 0.99d (TeX Live 2014/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/dev/Debian)
 The top-level auxiliary file: testdoc.aux
 The style file: plain.bst
 Database file #1: papers.bib
@@ -95487,14 +95513,14 @@ Warning--entry type for "Langtangen:85" isn't style-file defined
 Warning--can't use both author and editor fields in Langtangen:95
 (There were 3 warnings)
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
@@ -95696,13 +95722,16 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
 (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 
 Writing index file testdoc.idx
 (./testdoc.aux) 
@@ -95749,16 +95778,16 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [6]
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=313, 64.24pt x 64.24pt>
+515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
 CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=339, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=337, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9] [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=371, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=372, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95798,17 +95827,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=397, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=395, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=396, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=397, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -95853,7 +95882,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1277.
+t line 1281.
 
 
 
@@ -95873,7 +95902,7 @@ t line 1277.
 
 
 
-t line 1286.
+t line 1290.
 
 
 
@@ -95894,7 +95923,7 @@ t line 1286.
 
 
 
-t line 1290.
+t line 1294.
 
 
 
@@ -96000,15 +96029,15 @@ e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
 [31]) (./testdoc.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -96024,8 +96053,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
@@ -96037,22 +96066,22 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
   minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
 kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
@@ -96120,18 +96149,21 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
- theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
-     thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+  amsthm.sty    2009/07/02 v2.20.1
+tcolorbox.sty    2014/10/10 version 3.21 text color boxes
+ environ.sty    2014/05/04 v0.3 A new way to define environments
+trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -96239,14 +96271,14 @@ s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
@@ -96448,13 +96480,16 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
 (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 
 Writing index file testdoc.idx
 (./testdoc.aux) 
@@ -96501,16 +96536,16 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [6]
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=313, 64.24pt x 64.24pt>
+515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
 CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=339, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=337, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9] [10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=371, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=372, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -96550,17 +96585,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=397, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=395, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=396, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=397, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -96639,15 +96674,15 @@ e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
 [31]) (./testdoc.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -96663,8 +96698,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
@@ -96676,22 +96711,22 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
   minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
 kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
@@ -96759,18 +96794,21 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
- theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
-     thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+  amsthm.sty    2009/07/02 v2.20.1
+tcolorbox.sty    2014/10/10 version 3.21 text color boxes
+ environ.sty    2014/05/04 v0.3 A new way to define environments
+trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -96880,14 +96918,14 @@ Transcript written on testdoc.log.
 + rm -f testdoc.aux
 + system pdflatex -shell-escape testdoc
 + pdflatex -shell-escape testdoc
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 
@@ -97083,13 +97121,17 @@ with amsmath equation tags
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 
 
 (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/theorem.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 
 Writing index file testdoc.idx
 No file testdoc.aux.
@@ -97304,27 +97346,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1228.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1237.
+t line 1232.
 
 
 
@@ -97345,6 +97367,26 @@ t line 1237.
 
 
 t line 1241.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1245.
 
 
 
@@ -97426,11 +97468,6 @@ t line 1241.
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [16]
-
-
-...rest of part of LaTeX line number...
-
-
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -97571,15 +97608,15 @@ e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
 [30]) (./testdoc.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
 geometry.sty    2010/09/12 v5.6 Page Geometry
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -97595,8 +97632,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
@@ -97607,9 +97644,9 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 fancyvrb.sty    2008/02/07
   minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
 kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
@@ -97617,8 +97654,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
 catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
@@ -97686,18 +97723,22 @@ todonotes.sty    2012/07/25
 showlabels.sty    2013/12/06 v1.6.6
 fancyhdr.sty    
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
 titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
  ttlkeys.def    2011/12/15
- theorem.sty    1995/11/23 v2.2c Theorem extension package (FMi)
-     thp.sty    1995/11/23 v2.2c Theorem extension package (FMi)
+  amsthm.sty    2009/07/02 v2.20.1
+tcolorbox.sty    2014/10/10 version 3.21 text color boxes
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+ environ.sty    2014/05/04 v0.3 A new way to define environments
+trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -97732,7 +97773,7 @@ _minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
 8.pygtex
-lstlang1.sty    2014/03/04 1.5c listings language file
+lstlang1.sty    2014/09/06 1.5e listings language file
 _minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
 9.pygtex
 _minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
@@ -98718,12 +98759,12 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile slides1.pd
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape slides1
 + pdflatex -shell-escape slides1
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./slides1.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 
 Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
@@ -99071,12 +99112,12 @@ slides written to slides1.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape slides1
 + pdflatex -shell-escape slides1
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./slides1.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 
 Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
@@ -99737,14 +99778,14 @@ output in math_test.p.tex
 
 output in math_test.tex
 + pdflatex math_test
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./math_test.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -99840,10 +99881,10 @@ No file math_test.ind.
 [3] (./math_test.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -99859,8 +99900,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -100140,14 +100181,14 @@ output in admon.tex
 + cp admon.tex admon_colors1.tex
 + system pdflatex -shell-escape admon_colors1
 + pdflatex -shell-escape admon_colors1
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_colors1.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -100312,10 +100353,10 @@ No file admon_colors1.ind.
 [7] (./admon_colors1.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -100331,8 +100372,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -100349,8 +100390,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -100523,14 +100564,14 @@ output in admon.tex
 + cp admon.tex admon_mdfbox.tex
 + system pdflatex -shell-escape admon_mdfbox
 + pdflatex -shell-escape admon_mdfbox
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_mdfbox.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -100608,6 +100649,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -100825,10 +100867,10 @@ No file admon_mdfbox.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_mdfbox.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -100844,8 +100886,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -100862,8 +100904,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -100908,10 +100950,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -101041,14 +101084,14 @@ output in admon.tex
 + cp admon.tex admon_paragraph.tex
 + system pdflatex -shell-escape admon_paragraph
 + pdflatex -shell-escape admon_paragraph
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_paragraph.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -101126,6 +101169,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -101272,10 +101316,10 @@ No file admon_paragraph.ind.
 [5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -101291,8 +101335,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -101309,8 +101353,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -101355,10 +101399,11 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -101484,14 +101529,14 @@ output in admon.tex
 + cp admon.tex admon_graybox2.tex
 + system pdflatex -shell-escape admon_graybox2
 + pdflatex -shell-escape admon_graybox2
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_graybox2.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -101570,6 +101615,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/home/hpl/texmf/tex/latex/misc/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
@@ -101783,10 +101829,10 @@ No file admon_graybox2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox2.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -101802,8 +101848,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -101820,8 +101866,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -101867,10 +101913,11 @@ rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -101996,14 +102043,14 @@ output in admon.tex
 + cp admon.tex admon_yellowicon.tex
 + system pdflatex -shell-escape admon_yellowicon
 + pdflatex -shell-escape admon_yellowicon
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_yellowicon.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -102140,10 +102187,10 @@ No file admon_yellowicon.ind.
 (./admon_yellowicon.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -102159,8 +102206,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -102177,8 +102224,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -102337,14 +102384,14 @@ output in admon.tex
 + cp admon.tex admon_grayicon.tex
 + system pdflatex -shell-escape admon_grayicon
 + pdflatex -shell-escape admon_grayicon
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_grayicon.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -102480,10 +102527,10 @@ No file admon_grayicon.ind.
 (./admon_grayicon.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -102499,8 +102546,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -102517,8 +102564,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -102677,14 +102724,14 @@ output in admon.tex
 + cp admon.tex admon_colors2.tex
 + system pdflatex -shell-escape admon_colors2
 + pdflatex -shell-escape admon_colors2
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./admon_colors2.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -102814,10 +102861,10 @@ No file admon_colors2.ind.
 (./admon_colors2.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -102833,8 +102880,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -102851,8 +102898,8 @@ kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -103359,14 +103406,14 @@ output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
 + pdflatex movies
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -103401,6 +103448,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
@@ -103594,151 +103642,151 @@ ABD: EveryShipout initializing macros
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=42, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=49, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=53, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=55, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=58, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=61, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=63, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=67, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=68, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=73, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=73, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=78, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=85, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=91, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
 ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=88, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=97, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
 ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=93, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=98, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
-ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=103, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=103, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=109, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=115, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=108, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=121, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=113, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=127, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=133, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=123, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=128, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=145, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=133, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=151, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=138, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=157, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=148, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=169, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=175, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=187, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=168, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=193, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=173, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=199, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=178, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=183, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=211, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=217, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=193, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=198, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=229, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=203, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=235, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=208, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=241, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=213, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=218, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=253, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=259, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=228, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=265, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=233, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=271, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=238, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=243, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=283, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=248, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=253, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=295, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=263, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=268, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=314, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=326, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=283, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=332, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=288, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49>
 
@@ -103771,10 +103819,10 @@ Package atenddvi Warning: Rerun LaTeX, last page not yet found.
 )
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -103790,8 +103838,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -103801,20 +103849,21 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
-  media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  media9.sty    2014/10/20 v0.48 acrobat-9/X compatible media
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
- l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
-l3tl-build.sty    2014/05/06 v4745 L3 Experimental token list construction
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+ l3regex.sty    2014/09/15 v5423 L3 Experimental regular expressions
+l3tl-build.sty    2014/08/25 v5378 L3 Experimental token list construction
 l3tl-analysis.sty    2014/05/06 v4745 L3 Experimental token lists analysis
-   l3str.sty    2014/05/26 v4889 L3 Experimental strings
-  l3flag.sty    2014/05/06 v4745 L3 Experimental flags
+   l3str.sty    2014/09/15 v5423 L3 Experimental strings
+  l3flag.sty    2014/09/15 v5423 L3 Experimental flags
 l3str-convert.sty    2014/06/03 v5028 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2014/06/10 v5105 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+l3keys2e.sty    2014/09/15 v5423 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
@@ -103849,10 +103898,10 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
  movie15.sty    2009/07/07
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
- animate.sty    2014/07/02 PDF animations from files and inline graphics
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+ animate.sty    2014/10/16 PDF animations from files and inline graphics
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
 fancyvrb.sty    2008/02/07
@@ -103979,14 +104028,14 @@ Output written on movies.pdf (5 pages, ).
 Transcript written on movies.log.
 + '[' 0 -ne 0 ']'
 + pdflatex movies
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -104021,6 +104070,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
@@ -104213,151 +104263,151 @@ ABD: EveryShipout initializing macros
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=42, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=49, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=53, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=55, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=58, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=61, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=63, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=67, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=68, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=73, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=73, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=78, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=85, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=91, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
 ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=88, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=97, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
 ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=93, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=98, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
-ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=103, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=103, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=109, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=115, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=108, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=121, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=113, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=127, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=133, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=123, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=128, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=145, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=133, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=151, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=138, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=157, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=148, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=169, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=175, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=187, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=168, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=193, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=173, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=199, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=178, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=183, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=211, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=217, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=193, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=198, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=229, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=203, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=235, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=208, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=241, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=213, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=218, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=253, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=259, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=228, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=265, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=233, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=271, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=238, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=243, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=283, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=248, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=253, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=295, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=263, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=268, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=314, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=326, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=283, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=332, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=288, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -104375,10 +104425,10 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (./movies.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -104394,8 +104444,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -104405,20 +104455,21 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
-  media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  media9.sty    2014/10/20 v0.48 acrobat-9/X compatible media
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
- l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
-l3tl-build.sty    2014/05/06 v4745 L3 Experimental token list construction
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+ l3regex.sty    2014/09/15 v5423 L3 Experimental regular expressions
+l3tl-build.sty    2014/08/25 v5378 L3 Experimental token list construction
 l3tl-analysis.sty    2014/05/06 v4745 L3 Experimental token lists analysis
-   l3str.sty    2014/05/26 v4889 L3 Experimental strings
-  l3flag.sty    2014/05/06 v4745 L3 Experimental flags
+   l3str.sty    2014/09/15 v5423 L3 Experimental strings
+  l3flag.sty    2014/09/15 v5423 L3 Experimental flags
 l3str-convert.sty    2014/06/03 v5028 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2014/06/10 v5105 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+l3keys2e.sty    2014/09/15 v5423 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
@@ -104453,10 +104504,10 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
  movie15.sty    2009/07/07
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
- animate.sty    2014/07/02 PDF animations from files and inline graphics
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+ animate.sty    2014/10/16 PDF animations from files and inline graphics
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
 fancyvrb.sty    2008/02/07
@@ -104591,14 +104642,14 @@ output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
 + pdflatex movies
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -104633,6 +104684,7 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/media9/media9.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3experimental/l3str/l3regex.sty
@@ -104825,151 +104877,151 @@ ABD: EveryShipout initializing macros
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=42, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=48, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=49, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=53, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=55, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=58, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=61, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=63, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=67, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=68, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=73, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=73, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=79, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=78, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=85, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=83, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=91, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
 ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=88, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=97, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
 ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=93, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
-ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=98, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
-ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=103, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=103, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/
+mov/wave_frames/frame_0090.png> <a0,fr10>
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=109, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/
+mov/wave_frames/frame_0091.png> <a0,fr11>
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=115, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/
 mov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=108, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=121, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/
 mov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=113, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=127, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
 mov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=118, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=133, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
 mov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=123, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=139, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=128, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=145, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=133, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=151, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=138, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=157, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=143, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=163, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=148, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=169, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=153, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=175, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=181, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=187, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=168, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=193, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=173, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=199, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=178, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=205, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=183, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=211, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=188, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=217, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=193, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=223, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=198, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=229, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=203, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=235, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=208, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=241, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=213, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=247, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=218, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=253, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=223, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=259, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=228, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=265, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=233, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=271, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=238, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=277, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=243, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=283, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=248, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=289, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=253, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=295, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=258, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=263, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=268, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=314, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=273, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=320, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=278, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=326, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=283, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=332, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=288, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49> [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
@@ -104981,10 +105033,10 @@ No file movies.ind.
 [5] (./movies.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -105000,8 +105052,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -105011,20 +105063,21 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
-  media9.sty    2014/06/25 v0.45 acrobat-9/X compatible media
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  media9.sty    2014/10/20 v0.48 acrobat-9/X compatible media
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
- l3regex.sty    2014/06/06 v5067 L3 Experimental regular expressions
-l3tl-build.sty    2014/05/06 v4745 L3 Experimental token list construction
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+ l3regex.sty    2014/09/15 v5423 L3 Experimental regular expressions
+l3tl-build.sty    2014/08/25 v5378 L3 Experimental token list construction
 l3tl-analysis.sty    2014/05/06 v4745 L3 Experimental token lists analysis
-   l3str.sty    2014/05/26 v4889 L3 Experimental strings
-  l3flag.sty    2014/05/06 v4745 L3 Experimental flags
+   l3str.sty    2014/09/15 v5423 L3 Experimental strings
+  l3flag.sty    2014/09/15 v5423 L3 Experimental flags
 l3str-convert.sty    2014/06/03 v5028 L3 Experimental string encoding conversio
 ns
-l3keys2e.sty    2014/06/10 v5105 LaTeX2e option processing using LaTeX3 keys
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
+l3keys2e.sty    2014/09/15 v5423 LaTeX2e option processing using LaTeX3 keys
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
 atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
@@ -105059,10 +105112,10 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
  movie15.sty    2009/07/07
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
- animate.sty    2014/07/02 PDF animations from files and inline graphics
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+ animate.sty    2014/10/16 PDF animations from files and inline graphics
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
 supp-pdf.mkii
 fancyvrb.sty    2008/02/07
@@ -105198,14 +105251,14 @@ output in movies.tex
 + '[' 0 -ne 0 ']'
 + system pdflatex movies
 + pdflatex movies
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -105243,11 +105296,11 @@ Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 
 
 
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/atenddvi.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-base.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-
 
 
 
@@ -105302,151 +105355,151 @@ No file movies.aux.
 <../doc/src/manual/mov/wave_frames/frame_0080.png, id=19, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/m
 ov/wave_frames/frame_0080.png> <a0,fr0>
-<../doc/src/manual/mov/wave_frames/frame_0081.png, id=25, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0081.png, id=26, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0081.png> <../doc/src/manual/m
 ov/wave_frames/frame_0081.png> <a0,fr1>
-<../doc/src/manual/mov/wave_frames/frame_0082.png, id=30, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0082.png, id=32, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0082.png> <../doc/src/manual/m
 ov/wave_frames/frame_0082.png> <a0,fr2>
-<../doc/src/manual/mov/wave_frames/frame_0083.png, id=35, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0083.png, id=38, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0083.png> <../doc/src/manual/m
 ov/wave_frames/frame_0083.png> <a0,fr3>
-<../doc/src/manual/mov/wave_frames/frame_0084.png, id=40, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0084.png, id=44, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0084.png> <../doc/src/manual/m
 ov/wave_frames/frame_0084.png> <a0,fr4>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=45, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=50, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png> <../doc/src/manual/m
 ov/wave_frames/frame_0085.png> <a0,fr5>
-<../doc/src/manual/mov/wave_frames/frame_0086.png, id=50, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0086.png, id=56, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0086.png> <../doc/src/manual/m
 ov/wave_frames/frame_0086.png> <a0,fr6>
-<../doc/src/manual/mov/wave_frames/frame_0087.png, id=55, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0087.png, id=62, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0087.png> <../doc/src/manual/m
 ov/wave_frames/frame_0087.png> <a0,fr7>
-<../doc/src/manual/mov/wave_frames/frame_0088.png, id=60, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0088.png, id=68, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0088.png> <../doc/src/manual/m
 ov/wave_frames/frame_0088.png> <a0,fr8>
-<../doc/src/manual/mov/wave_frames/frame_0089.png, id=65, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0089.png, id=74, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0089.png> <../doc/src/manual/m
 ov/wave_frames/frame_0089.png> <a0,fr9>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=70, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=80, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png> <../doc/src/manual/m
 ov/wave_frames/frame_0090.png> <a0,fr10>
-<../doc/src/manual/mov/wave_frames/frame_0091.png, id=75, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0091.png, id=86, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0091.png> <../doc/src/manual/m
 ov/wave_frames/frame_0091.png> <a0,fr11>
-<../doc/src/manual/mov/wave_frames/frame_0092.png, id=80, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0092.png, id=92, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0092.png> <../doc/src/manual/m
 ov/wave_frames/frame_0092.png> <a0,fr12>
-<../doc/src/manual/mov/wave_frames/frame_0093.png, id=85, 586.8324pt x 442.2924
+<../doc/src/manual/mov/wave_frames/frame_0093.png, id=98, 586.8324pt x 442.2924
 pt> <use ../doc/src/manual/mov/wave_frames/frame_0093.png> <../doc/src/manual/m
 ov/wave_frames/frame_0093.png> <a0,fr13>
-<../doc/src/manual/mov/wave_frames/frame_0094.png, id=90, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/m
-ov/wave_frames/frame_0094.png> <a0,fr14>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=95, 586.8324pt x 442.2924
-pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/m
-ov/wave_frames/frame_0095.png> <a0,fr15>
-<../doc/src/manual/mov/wave_frames/frame_0096.png, id=100, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0094.png, id=104, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0094.png> <../doc/src/manual/
+mov/wave_frames/frame_0094.png> <a0,fr14>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=110, 586.8324pt x 442.292
+4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/
+mov/wave_frames/frame_0095.png> <a0,fr15>
+<../doc/src/manual/mov/wave_frames/frame_0096.png, id=116, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0096.png> <../doc/src/manual/
 mov/wave_frames/frame_0096.png> <a0,fr16>
-<../doc/src/manual/mov/wave_frames/frame_0097.png, id=105, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0097.png, id=122, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0097.png> <../doc/src/manual/
 mov/wave_frames/frame_0097.png> <a0,fr17>
-<../doc/src/manual/mov/wave_frames/frame_0098.png, id=110, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0098.png, id=128, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0098.png> <../doc/src/manual/
 mov/wave_frames/frame_0098.png> <a0,fr18>
-<../doc/src/manual/mov/wave_frames/frame_0099.png, id=115, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0099.png, id=134, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0099.png> <../doc/src/manual/
 mov/wave_frames/frame_0099.png> <a0,fr19>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=120, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=140, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png> <../doc/src/manual/
 mov/wave_frames/frame_0100.png> <a0,fr20>
-<../doc/src/manual/mov/wave_frames/frame_0101.png, id=125, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0101.png, id=146, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0101.png> <../doc/src/manual/
 mov/wave_frames/frame_0101.png> <a0,fr21>
-<../doc/src/manual/mov/wave_frames/frame_0102.png, id=130, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0102.png, id=152, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0102.png> <../doc/src/manual/
 mov/wave_frames/frame_0102.png> <a0,fr22>
-<../doc/src/manual/mov/wave_frames/frame_0103.png, id=135, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0103.png, id=158, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0103.png> <../doc/src/manual/
 mov/wave_frames/frame_0103.png> <a0,fr23>
-<../doc/src/manual/mov/wave_frames/frame_0104.png, id=140, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0104.png, id=164, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0104.png> <../doc/src/manual/
 mov/wave_frames/frame_0104.png> <a0,fr24>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=145, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png> <../doc/src/manual/
 mov/wave_frames/frame_0105.png> <a0,fr25>
-<../doc/src/manual/mov/wave_frames/frame_0106.png, id=150, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0106.png, id=176, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0106.png> <../doc/src/manual/
 mov/wave_frames/frame_0106.png> <a0,fr26>
-<../doc/src/manual/mov/wave_frames/frame_0107.png, id=155, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0107.png, id=182, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0107.png> <../doc/src/manual/
 mov/wave_frames/frame_0107.png> <a0,fr27>
-<../doc/src/manual/mov/wave_frames/frame_0108.png, id=160, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0108.png, id=188, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0108.png> <../doc/src/manual/
 mov/wave_frames/frame_0108.png> <a0,fr28>
-<../doc/src/manual/mov/wave_frames/frame_0109.png, id=165, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0109.png, id=194, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0109.png> <../doc/src/manual/
 mov/wave_frames/frame_0109.png> <a0,fr29>
-<../doc/src/manual/mov/wave_frames/frame_0110.png, id=170, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0110.png, id=200, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0110.png> <../doc/src/manual/
 mov/wave_frames/frame_0110.png> <a0,fr30>
-<../doc/src/manual/mov/wave_frames/frame_0111.png, id=175, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0111.png, id=206, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0111.png> <../doc/src/manual/
 mov/wave_frames/frame_0111.png> <a0,fr31>
-<../doc/src/manual/mov/wave_frames/frame_0112.png, id=180, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0112.png, id=212, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0112.png> <../doc/src/manual/
 mov/wave_frames/frame_0112.png> <a0,fr32>
-<../doc/src/manual/mov/wave_frames/frame_0113.png, id=185, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0113.png, id=218, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0113.png> <../doc/src/manual/
 mov/wave_frames/frame_0113.png> <a0,fr33>
-<../doc/src/manual/mov/wave_frames/frame_0114.png, id=190, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0114.png, id=224, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0114.png> <../doc/src/manual/
 mov/wave_frames/frame_0114.png> <a0,fr34>
-<../doc/src/manual/mov/wave_frames/frame_0115.png, id=195, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0115.png, id=230, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0115.png> <../doc/src/manual/
 mov/wave_frames/frame_0115.png> <a0,fr35>
-<../doc/src/manual/mov/wave_frames/frame_0116.png, id=200, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0116.png, id=236, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0116.png> <../doc/src/manual/
 mov/wave_frames/frame_0116.png> <a0,fr36>
-<../doc/src/manual/mov/wave_frames/frame_0117.png, id=205, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0117.png, id=242, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0117.png> <../doc/src/manual/
 mov/wave_frames/frame_0117.png> <a0,fr37>
-<../doc/src/manual/mov/wave_frames/frame_0118.png, id=210, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0118.png, id=248, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0118.png> <../doc/src/manual/
 mov/wave_frames/frame_0118.png> <a0,fr38>
-<../doc/src/manual/mov/wave_frames/frame_0119.png, id=215, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0119.png, id=254, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0119.png> <../doc/src/manual/
 mov/wave_frames/frame_0119.png> <a0,fr39>
-<../doc/src/manual/mov/wave_frames/frame_0120.png, id=220, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0120.png, id=260, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0120.png> <../doc/src/manual/
 mov/wave_frames/frame_0120.png> <a0,fr40>
-<../doc/src/manual/mov/wave_frames/frame_0121.png, id=225, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0121.png, id=266, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0121.png> <../doc/src/manual/
 mov/wave_frames/frame_0121.png> <a0,fr41>
-<../doc/src/manual/mov/wave_frames/frame_0122.png, id=230, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0122.png, id=272, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0122.png> <../doc/src/manual/
 mov/wave_frames/frame_0122.png> <a0,fr42>
-<../doc/src/manual/mov/wave_frames/frame_0123.png, id=235, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0123.png, id=278, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0123.png> <../doc/src/manual/
 mov/wave_frames/frame_0123.png> <a0,fr43>
-<../doc/src/manual/mov/wave_frames/frame_0124.png, id=240, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0124.png, id=284, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0124.png> <../doc/src/manual/
 mov/wave_frames/frame_0124.png> <a0,fr44>
-<../doc/src/manual/mov/wave_frames/frame_0125.png, id=245, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0125.png, id=290, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0125.png> <../doc/src/manual/
 mov/wave_frames/frame_0125.png> <a0,fr45>
-<../doc/src/manual/mov/wave_frames/frame_0126.png, id=250, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0126.png, id=296, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0126.png> <../doc/src/manual/
 mov/wave_frames/frame_0126.png> <a0,fr46>
-<../doc/src/manual/mov/wave_frames/frame_0127.png, id=255, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0127.png, id=302, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0127.png> <../doc/src/manual/
 mov/wave_frames/frame_0127.png> <a0,fr47>
-<../doc/src/manual/mov/wave_frames/frame_0128.png, id=260, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0128.png, id=308, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0128.png> <../doc/src/manual/
 mov/wave_frames/frame_0128.png> <a0,fr48>
-<../doc/src/manual/mov/wave_frames/frame_0129.png, id=265, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0129.png, id=314, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0129.png> <../doc/src/manual/
 mov/wave_frames/frame_0129.png> <a0,fr49>
 
@@ -105467,10 +105520,10 @@ Package atenddvi Warning: Rerun LaTeX, last page not yet found.
 )
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -105486,8 +105539,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -105497,12 +105550,13 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
     trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
- animate.sty    2014/07/02 PDF animations from files and inline graphics
-  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+ animate.sty    2014/10/16 PDF animations from files and inline graphics
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
  ifdraft.sty    2008/08/11 v1.3 Detect class options draft and final (HO)
-    calc.sty    2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 atenddvi.sty    2007/04/17 v1.1 At end DVI hook (HO)
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -105511,7 +105565,6 @@ etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
-atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
 zref-lastpage.sty    2012/04/04 v2.24 Module lastpage for zref (HO)
 atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
   animfp.sty    2009/07/23 fixed point addition for animate.sty
@@ -105728,12 +105781,12 @@ done Springer_T2_book.p.tex -> Springer_T2_book.tex
 + rm -rf Springer_T2_book.aux Springer_T2_book.ind Springer_T2_book.idx Springer_T2_book.bbl Springer_T2_book.toc Springer_T2_book.loe
 + system pdflatex Springer_T2_book
 + pdflatex Springer_T2_book
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -105752,7 +105805,7 @@ Class Springer-SVMono Warning: Specified option or subpackage "open=right"
 (Springer-SVMono)              - on .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
@@ -105839,6 +105892,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -106098,8 +106152,8 @@ No file Springer_T2_book.ind.
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -106121,9 +106175,9 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    2014/05/13 v2.10 `tabularx' package (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
+tabularx.sty    2014/10/28 v2.10 `tabularx' package (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+multicol.sty    2014/10/28 v1.8i multicolumn formatting (FMi)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
@@ -106131,25 +106185,25 @@ textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
 setspace.sty    2011/12/19 v6.7a set line spacing
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -106189,11 +106243,12 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -106284,14 +106339,14 @@ Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system bibtex Springer_T2_book
 + bibtex Springer_T2_book
-This is BibTeX, Version 0.99d (TeX Live 2014/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/dev/Debian)
 The top-level auxiliary file: Springer_T2_book.aux
 The style file: plain.bst
 Database file #1: papers.bib
 + '[' 0 -ne 0 ']'
 + system makeindex Springer_T2_book
 + makeindex Springer_T2_book
-This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+This is makeindex, version 2.15 [TeX Live 2015/dev] (kpathsea + Thai support).
 Scanning input file Springer_T2_book.idx....done (22 entries accepted, 0 rejected).
 Sorting entries....done (100 comparisons).
 Generating output file Springer_T2_book.ind....done (46 lines written, 0 warnings).
@@ -106300,12 +106355,12 @@ Transcript written in Springer_T2_book.ilg.
 + '[' 0 -ne 0 ']'
 + system pdflatex Springer_T2_book
 + pdflatex Springer_T2_book
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -106324,7 +106379,7 @@ Class Springer-SVMono Warning: Specified option or subpackage "open=right"
 (Springer-SVMono)              - on .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
@@ -106411,6 +106466,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -106660,8 +106716,8 @@ Overfull \hbox (120.12047pt too wide)
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -106683,9 +106739,9 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    2014/05/13 v2.10 `tabularx' package (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
+tabularx.sty    2014/10/28 v2.10 `tabularx' package (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+multicol.sty    2014/10/28 v1.8i multicolumn formatting (FMi)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
@@ -106693,25 +106749,25 @@ textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
 setspace.sty    2011/12/19 v6.7a set line spacing
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -106751,11 +106807,12 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -106850,12 +106907,12 @@ Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex Springer_T2_book
 + pdflatex Springer_T2_book
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 
 LaTeX Warning: You have requested document class `svmonodo',
@@ -106874,7 +106931,7 @@ Class Springer-SVMono Warning: Specified option or subpackage "open=right"
 (Springer-SVMono)              - on .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 
@@ -106961,6 +107018,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -107189,8 +107247,8 @@ Overfull \hbox (120.12047pt too wide)
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -107212,9 +107270,9 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
-tabularx.sty    2014/05/13 v2.10 `tabularx' package (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-multicol.sty    2014/04/23 v1.8e multicolumn formatting (FMi)
+tabularx.sty    2014/10/28 v2.10 `tabularx' package (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+multicol.sty    2014/10/28 v1.8i multicolumn formatting (FMi)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
 marvosym.sty    2011/07/20 v2.2 Martin Vogel's Symbols font definitions
@@ -107222,25 +107280,25 @@ textcomp.sty    2005/09/27 v1.99g Standard LaTeX package
   ts1enc.def    2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 footmisc.sty    2011/06/06 v5.5b a miscellany of footnote facilities
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
 setspace.sty    2011/12/19 v6.7a set line spacing
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
   epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
-listings.sty    2014/03/04 1.5c (Carsten Heinz)
- lstmisc.sty    2014/03/04 1.5c (Carsten Heinz)
-listings.cfg    2014/03/04 1.5c listings configuration
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -107280,11 +107338,12 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 mdframed.sty    2013/08/18 1.9d: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -107866,14 +107925,14 @@ output in quickref.tex
 ([^`])Texas A & M([^`]) replaced by \g<2>Texas A {\&} M\g<2> in quickref.tex
 + system pdflatex -shell-escape quickref
 + pdflatex -shell-escape quickref
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -107936,6 +107995,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -108125,10 +108185,10 @@ No file quickref.ind.
 [21] (./quickref.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -108144,8 +108204,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -108158,7 +108218,7 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancyvrb.sty    2008/02/07
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -108200,11 +108260,12 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2014/05/30 2.0: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -108283,14 +108344,14 @@ Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape quickref
 + pdflatex -shell-escape quickref
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=pdflatex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
  \write18 enabled.
 entering extended mode
 (./quickref.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
@@ -108353,6 +108414,7 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -108530,10 +108592,10 @@ No file quickref.ind.
 [22] (./quickref.aux)
 
  *File List*
- article.cls    2007/10/19 v1.4h Standard LaTeX document class
-  size10.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
  relsize.sty    2013/03/29 ver 4.1
- makeidx.sty    2000/03/29 v1.0m Standard LaTeX package
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
    color.sty    1999/02/16
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
   pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -108549,8 +108611,8 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
   xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
    color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
 colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
-   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
-      bm.sty    2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
   keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -108563,7 +108625,7 @@ graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancyvrb.sty    2008/02/07
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
-verbatim.sty    2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -108605,11 +108667,12 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
 mdframed.sty    2014/05/30 2.0: mdframed
-  xparse.sty    2014/06/10 v5105 L3 Experimental document command parser
-   expl3.sty    2014/06/10 v5105 L3 programming layer (loader) 
-expl3-code.tex    2014/06/10 v5105 L3 programming layer 
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
-l3pdfmode.def    2014/05/06 v4748 L3 Experimental driver: PDF mode
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
 etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
@@ -108822,14 +108885,14 @@ output in quickref.rst
 + rst2latex.py quickref.rst
 + system latex quickref.rst.tex
 + latex quickref.rst.tex
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=latex)
  restricted \write18 enabled.
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
@@ -109350,14 +109413,14 @@ Output written on quickref.rst.dvi (21 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Debian) (preloaded format=latex)
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=latex)
  restricted \write18 enabled.
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty

@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 16, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 5, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -158,14 +158,22 @@ text to be colored.
 </pre></div>
 </div>
 </div>
-<div class="section" id="how-can-i-get-a-native-latex-example-or-other-environments">
-<h3>How can I get a native LaTeX example or other environments?<a class="headerlink" href="#how-can-i-get-a-native-latex-example-or-other-environments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-can-i-make-use-of-a-native-latex-environments-example-environemt-for-instance">
+<span id="trouble-latex-envir-native"></span><h3>How can I make use of a native LaTeX environments (example environemt for instance)?<a class="headerlink" href="#how-can-i-make-use-of-a-native-latex-environments-example-environemt-for-instance" title="Permalink to this headline">¶</a></h3>
 <p>LaTeX writers often lack their favorite environments, but DocOnce
 has a way to define such environments, with corresponding typesetting
 also for HTML and all other output formats. See the
 section <em>User-Defined Environments</em> in the DocOnce manual. It contains
 all the details for using a standard example or theorem environment
 in LaTeX output.</p>
+</div>
+<div class="section" id="how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers">
+<h3>How can I create a more tailored code environment in LaTeX than what DocOnce offers?<a class="headerlink" href="#how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers" title="Permalink to this headline">¶</a></h3>
+<p>It is easy with <em>user-defined environments</em>, see
+such an example at the end of the document
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>.
+Description of user-defined environments are found in
+the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments">DocOnce manual</a>.</p>
 </div>
 <div class="section" id="how-can-i-control-the-vertical-spacing-in-slides">
 <h3>How can I control the vertical spacing in slides?<a class="headerlink" href="#how-can-i-control-the-vertical-spacing-in-slides" title="Permalink to this headline">¶</a></h3>
@@ -519,6 +527,15 @@ employs a simple rule: <tt class="docutils literal"><span class="pre">text</span
 character (<tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">_</span></tt>, and <tt class="docutils literal"><span class="pre">}</span></tt> above), but code and math blocks
 do not count.</p>
 </div>
+</div>
+<div class="section" id="how-can-i-make-pressbooks-com-books-from-doconce">
+<h3>How can I make pressbooks.com books from DocOnce?<a class="headerlink" href="#how-can-i-make-pressbooks-com-books-from-doconce" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://pressbooks.com">http://pressbooks.com</a> supports HTML input with WordPress LaTeX mathematics,
+so the easiest way is to compile DocOnce to HTML with the <tt class="docutils literal"><span class="pre">--wordpress</span></tt>
+option, put the file on the web somewhere, click <em>Utilities - Import</em>
+in pressbooks.com, then choose HTML input, write the URL, and upload.</p>
+<p>Note that WordPress LaTeX cannot refer to equations using labels!
+This is a major problem with pressbooks.com.</p>
 </div>
 </div>
 <div class="section" id="preprocess-mako-problems">
@@ -886,7 +903,7 @@ Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \
 <p>See the section <em>Example: Defining a Theorem Environment</em> in
 the DocOnce manual for how to make a custom
 theorem environment also in DocOnce, without using implementations
-restricted to LaTeX.</p>
+restricted to LaTeX. See also the section <a class="reference internal" href="#trouble-latex-envir-native"><em>How can I make use of a native LaTeX environments (example environemt for instance)?</em></a>.</p>
 </div>
 <div class="section" id="the-latex-file-does-not-compile">
 <h3>The LaTeX file does not compile<a class="headerlink" href="#the-latex-file-does-not-compile" title="Permalink to this headline">¶</a></h3>
@@ -925,17 +942,9 @@ but DocOnce will automatically replace verbatim text in back-ticks by
 a proper <tt class="docutils literal"><span class="pre">texttt</span></tt> command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)</p>
 </div>
-<div class="section" id="chapters-are-ignored">
-<h3>Chapters are ignored<a class="headerlink" href="#chapters-are-ignored" title="Permalink to this headline">¶</a></h3>
-<p>The default LaTeX style is &#8220;article&#8221;. If you chapters in the DocOnce file,
-you need to run <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> with the option <tt class="docutils literal"><span class="pre">-DBOOK</span></tt> to set the LaTeX
-documentstyle to &#8220;book&#8221;.</p>
-</div>
 <div class="section" id="i-want-to-tune-the-top-preamble-of-the-latex-file">
 <h3>I want to tune the top (preamble) of the LaTeX file<a class="headerlink" href="#i-want-to-tune-the-top-preamble-of-the-latex-file" title="Permalink to this headline">¶</a></h3>
-<p>The default preamble generated by DocOnce has several <tt class="docutils literal"><span class="pre">preprocess</span></tt>
-options to set the font, type of titlepage, etc., when running
-<tt class="docutils literal"><span class="pre">ptex2tex</span></tt> or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>. However, it is easy to provide
+<p>It is easy to provide
 a customized preamble text:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex
 </pre></div>
@@ -944,11 +953,19 @@ a customized preamble text:</p>
 file becomes the complete preamble in <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>, otherwise
 <tt class="docutils literal"><span class="pre">mytop.tex</span></tt> is added at the end of the preamble generated by
 DocOnce.</p>
+<p>If you already have some preamble that defines styles etc., I recommend
+to generate a <tt class="docutils literal"><span class="pre">.tex</span></tt> file from DocOnce and merge the preamble you have
+with the one generated by DocOnce. When the <tt class="docutils literal"><span class="pre">.tex</span></tt> file compiles with
+the desired preamble, store it in a separate file and
+use it with the <tt class="docutils literal"><span class="pre">--latex_preamble=</span></tt> option. (This approach will for
+fix the preamble for the future so updates of the DocOnce-generated
+preamble will not be available for this document.)</p>
 <p>Note also that <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> can be used
-after <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">formt</span></tt> to tune the LaTeX code in the preamble.
-There are comment lines with <tt class="docutils literal"><span class="pre">---</span> <span class="pre">begin</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> and
+after <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">formt</span></tt> to tune the LaTeX code in the preamble (and
+elsewhere). Such automatic edits are useful if they are few.</p>
+<p>There are comment lines with <tt class="docutils literal"><span class="pre">---</span> <span class="pre">begin</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> and
 <tt class="docutils literal"><span class="pre">---</span> <span class="pre">end</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> in the generate <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file that can be
-used to replace the whole preamble by something more suitable.</p>
+used to replace the whole preamble by another text.</p>
 </div>
 <div class="section" id="solution-heading-in-exercise-solutions-appear-after-the-solution-content">
 <span id="trouble-bsol-code"></span><h3>Solution heading in exercise solutions appear after the solution content<a class="headerlink" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content" title="Permalink to this headline">¶</a></h3>
@@ -1153,7 +1170,8 @@ clickable.</p>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
 <li><a class="reference internal" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
-<li><a class="reference internal" href="#how-can-i-get-a-native-latex-example-or-other-environments">How can I get a native LaTeX example or other environments?</a></li>
+<li><a class="reference internal" href="#how-can-i-make-use-of-a-native-latex-environments-example-environemt-for-instance">How can I make use of a native LaTeX environments (example environemt for instance)?</a></li>
+<li><a class="reference internal" href="#how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers">How can I create a more tailored code environment in LaTeX than what DocOnce offers?</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-mistakes-that-i-cannot-find">Spellcheck reports mistakes that I cannot find</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
@@ -1182,6 +1200,7 @@ clickable.</p>
 <li><a class="reference internal" href="#mix-of-bold-italic-and-math">Mix of bold/italic and math</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#how-can-i-make-pressbooks-com-books-from-doconce">How can I make pressbooks.com books from DocOnce?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako-problems">Preprocess/Mako problems</a><ul>
@@ -1230,7 +1249,6 @@ clickable.</p>
 <li><a class="reference internal" href="#the-latex-beamer-file-does-not-compile">The LaTeX Beamer file does not compile</a></li>
 <li><a class="reference internal" href="#inline-verbatim-gives-error">Inline verbatim gives error</a></li>
 <li><a class="reference internal" href="#errors-in-figure-captions">Errors in figure captions</a></li>
-<li><a class="reference internal" href="#chapters-are-ignored">Chapters are ignored</a></li>
 <li><a class="reference internal" href="#i-want-to-tune-the-top-preamble-of-the-latex-file">I want to tune the top (preamble) of the LaTeX file</a></li>
 <li><a class="reference internal" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content">Solution heading in exercise solutions appear after the solution content</a></li>
 </ul>

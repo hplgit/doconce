@@ -3314,6 +3314,10 @@ A common error is to have the `envir2format` dictionary defined
 before the functions it refers to.
 !ewarning
 
+A complete example showing how one can create tailored environments
+for computer code appears at the end of the document
+"Demonstration of DocOnce support for LaTeX code block environments":
+"http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html"
 
 ======= Bibliography (References) =======
 

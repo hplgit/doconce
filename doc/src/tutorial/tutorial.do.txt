@@ -4,7 +4,7 @@ TITLE: DocOnce: Document Once, Include Anywhere
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
-
+# #ifdef EXTRA
  * When writing a note, report, manual, etc., do you find it difficult
    to choose the typesetting format? That is, to choose between plain
    (email-like) text, wiki, Word/OpenOffice, LaTeX, HTML,
@@ -23,14 +23,13 @@ DATE: today
    include it anywhere?
 
 If any of these questions are of interest, you should keep on reading.
-
+# #endif
 
 ======= Some DocOnce Features =======
 
  * Strong support for texts with much math and code.
 
- * Same source can produce a variety of output formats.
-   The following support LaTeX math and (pygmentized) code:
+ * Same source can produce a variety of output formats:
 
    * "traditional LaTeX B/W documents for printing": "http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf"
    * "color LaTeX PDF documents": "http://hplgit.github.com/teamods/writing_reports/_static/report.pdf"

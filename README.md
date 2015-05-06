@@ -1,4 +1,7 @@
-> DocOnce is a modestly tagged (Markdown-like) markup language targeting web pages, scientific reports, software documentation, books, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats.
+> DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats. This means that you get the most up-to-date publishing technologies for paper, tablets, and
+> phones.
+
+
 
 
 
@@ -6,6 +9,7 @@
 
 Here are some of the most recent features in DocOnce:
 
+ * DocOnce and all its dependencies are now trivial to install with Anaconda Python: `sudo conda install --channel johannr doconce` (thanks to Johannes Ring)
  * Bootstrap HTML styles features hints, answers, and solutions in
    exercises as *unfolded text*
  * `doconce extract_exercises`
@@ -22,7 +26,7 @@ Here are some of the most recent features in DocOnce:
  * Embedded [quizzes or multiple-choice questions](http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html), which can be automatically uploaded to
    [Kahoot online games](https://getkahoot.com)
  * [Admonitions](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions), i.e., boxes for notifications, tips, warnings, etc., with
-   great flexibility in the typesetting (at least in HTML and LaTeX)
+   great [flexibility in the typesetting](http://hplgit.github.io/doconce/doc/pub/admon/index.html) (at least in HTML and LaTeX)
 
 ### Installation
 
@@ -37,6 +41,14 @@ However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
 used in the text.
 
+With Anaconda Python it is trivial to install DocOnce and all
+dependencies by
+
+
+```
+Terminal> sudo conda install --channel johannr doconce
+```
+
 On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. Basically, you can run a [Bash script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh) or an equivalent [Python script](https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py). Such a script installs
 a very comprehensive bundle of software. You can read the
@@ -45,27 +57,24 @@ detailed description of what is needed of software for various purposes.
 For HTML output, for example, you can usually get away with just installing
 the pure DocOnce source (and perhaps the preprocessors if you use them).
 
-*Install from GitHub repo, not from binary packages.* 
-If you rely on the Debian package on Linux systems (`sudo apt-get install python-doconce`), note that this version of DocOnce is old and out of sync with the documentation.
+*Install from GitHub repo, not from Debian.* 
+Although DocOnce is in Debian, do not run `sudo apt-get install python-doconce`
+as this gives a very old version of DocOnce that is out of sync with the
+documentation. Instead, clone the DocOnce GitHub repo as shown above
+and run `setup.py` or use `conda install`.
 
 
 
 
-
-### Document once, include anywhere
-
- * When writing a note, report, manual, etc., do you find it difficult to choose the typesetting format? That is, to choose between plain (email-like) text, wiki, MS Word or OpenOffice, LaTeX, HTML, reStructuredText, Sphinx, XML, Markdown, etc.? Would it be convenient to start with some very simple text-like format that easily converts to the formats listed above?
- * Do you find it problematic that you have the same information scattered around in different filess in different typesetting formats? Would it be a good idea to write things once, in one place, and include anywhere?
- * Would you like to write books, theses, or papers both in a traditional, printed LaTeX PDF format *and* in HTML for the web with a lot of modern fancy styles such as Bootstrap and Sphinx?
-
-You should take a look at DocOnce if any of these questions are of interest.
 
 
 ### Highlights
 
- * DocOnce is a modestly tagged markup language (see [example](http://hplgit.github.io/teamods/writing_reports/index.html)), quite like Markdown, but with many more features, targeting web pages, scientific reports, software documentation, books, and slides involving *much math and code in the text*.
- * A single source for the text can be used for addressing different media, such as traditional paper-based books, ebooks in PDF, PDF documents for phones, documents in HTML with various layouts (including many Bootstrap and Sphinx styles), and blog posts.
- * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output has many fancy layouts typesetting of computer code.
+
+ * DocOnce is a modestly tagged markup language (see [example](http://hplgit.github.io/teamods/writing_reports/index.html)), quite like Markdown, but with many more features, aimed at documents with
+   *much math and code in the text*.
+ * There is extensive support for book projects. In addition to classical LaTeX-based paper books one gets for free fully responsive, modern-looking, HTML-based ebooks for tablets and phones. Parts of books can, e.g., appear in blog posts for discussion and as IPython notebooks for experimentation and annotation.
+ * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. The LaTeX output has many fancy layouts for typesetting of computer code.
  * DocOnce can also output other formats (though without support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and other formats.
  * The document source is first preprocessed by Preprocess and Mako, which gives you full programming capabilities in the document's text. For example, with Mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you can determine the language at compile time of the document. New user-specific features of DocOnce can also be implemented via Mako.
  * DocOnce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations. DocOnce also adjusts Sphinx and HTML code such that it is possible to refer to equations outside the current web page.
@@ -100,7 +109,7 @@ various formats (HTML5 reveal.js, deck.js, etc., as well as LaTeX
 Beamer).
 
 DocOnce has support for *responsive* HTML documents with design and
-functionality based on Bootstrap styles.  A [demo](http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html)
+functionality based on Bootstrap styles.  A [Bootstrap demo](http://hplgit.github.io/doconce/doc/pub/bootstrap/index.html)
 illustrates the many possibilities for colors and layouts.
 
 DocOnce also has support for exercises in [quiz format](http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html). Pure quiz

@@ -85,8 +85,8 @@ system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_
 
 # doconce replace does not work well with system bash func above without quotes
 doconce replace 'vspace{1cm} % after toc' 'clearpage % after toc' testdoc.p.tex
-thpack='\\usepackage{theorem}\n\\newtheorem{theorem}{Theorem}[section]'
-doconce subst '% insert custom LaTeX commands\.\.\.' $thpack testdoc.p.tex
+# can drop usepackage{theorem} since we have user-defined envir with amsthm
+doconce subst '(newtheorem{example}.*)' '\g<1>\n\\newtheorem{theorem}{Theorem}[section]' testdoc.p.tex
 
 doconce subst '\\paragraph\{Theorem \d+\.\}' '' testdoc.p.tex
 doconce replace '% begin theorem' '\begin{theorem}' testdoc.p.tex

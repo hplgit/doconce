@@ -30,7 +30,7 @@ Here are some DocOnce features:
     pieces of text and software can be assembled in different ways
     and published in different formats for different devices
     (see "example": "http://hplgit.github.io/setup4book-doconce/doc/web/index.html").
-  * DocOnce enables authors who write for many times of media
+  * DocOnce enables authors who write for many types of media
     (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
     source language such that lots of different pieces can easily be
     brought together later to form a coherent (big) document.

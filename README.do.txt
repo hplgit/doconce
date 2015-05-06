@@ -1,8 +1,14 @@
 !bquote
-DocOnce is a modestly tagged (Markdown-like) markup language targeting web pages, scientific reports, software documentation, books, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats.
-## DocOnce has in particular been used for creating books where different
-## pieces can exist on their own in various versions for various purposes.
+DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats. This means that you get the most up-to-date publishing technologies for paper, tablets, and
+phones.
 !equote
+
+##DocOnce is aimed at LaTeX writers who want to target
+##different media: paper, phones, tablets, and different publising
+##formats: books, papers, manuals, wikis, blog posts.
+##DocOnce provides up-to-date publishing technologies for such media
+##and formts using *one single text source*.
+
 
 ===== News =====
 
@@ -62,20 +68,15 @@ and run `setup.py` or use `conda install`.
 
 
 
-===== Document once, include anywhere =====
-
- * When writing a note, report, manual, etc., do you find it difficult to choose the typesetting format? That is, to choose between plain (email-like) text, wiki, MS Word or OpenOffice, LaTeX, HTML, reStructuredText, Sphinx, XML, Markdown, etc.? Would it be convenient to start with some very simple text-like format that easily converts to the formats listed above?
- * Do you find it problematic that you have the same information scattered around in different filess in different typesetting formats? Would it be a good idea to write things once, in one place, and include anywhere?
- * Would you like to write books, theses, or papers both in a traditional, printed LaTeX PDF format *and* in HTML for the web with a lot of modern fancy styles such as Bootstrap and Sphinx?
-
-You should take a look at DocOnce if any of these questions are of interest.
-
 
 ===== Highlights =====
 
- * DocOnce is a modestly tagged markup language (see "example": "http://hplgit.github.io/teamods/writing_reports/index.html"), quite like Markdown, but with many more features, targeting web pages, scientific reports, software documentation, books, and slides involving *much math and code in the text*.
- * A single source for the text can be used for addressing different media, such as traditional paper-based books, ebooks in PDF, PDF documents for phones, documents in HTML with various layouts (including many Bootstrap and Sphinx styles), and blog posts.
- * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. LaTeX output has many fancy layouts typesetting of computer code.
+## scientific reports, software documentation, books, blog posts, web pages, and slides
+
+ * DocOnce is a modestly tagged markup language (see "example": "http://hplgit.github.io/teamods/writing_reports/index.html"), quite like Markdown, but with many more features, aimed at documents with
+   *much math and code in the text*.
+ * There is extensive support for book projects. In addition to classical LaTeX-based paper books one gets for free fully responsive, modern-looking, HTML-based ebooks for tablets and phones. Parts of books can, e.g., appear in blog posts for discussion and as IPython notebooks for experimentation and annotation.
+ * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. The LaTeX output has many fancy layouts for typesetting of computer code.
  * DocOnce can also output other formats (though without support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and other formats.
  * The document source is first preprocessed by Preprocess and Mako, which gives you full programming capabilities in the document's text. For example, with Mako it is easy to write a book with all computer code examples in two alternative languages (say Matlab and Python), and you can determine the language at compile time of the document. New user-specific features of DocOnce can also be implemented via Mako.
  * DocOnce extends Sphinx, Markdown, and MediaWiki output such that LaTeX align environments with labels work for systems of equations. DocOnce also adjusts Sphinx and HTML code such that it is possible to refer to equations outside the current web page.
