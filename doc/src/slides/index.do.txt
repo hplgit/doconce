@@ -273,17 +273,23 @@ doconce slides_html demo csss --html_slide_theme=csss_default
 
 ===== Plain HTML slides =====
 
-"HTML blueish": "demo_html_blueish.html" (plain HTML, blue color, one long file, blank lines and a color line separate slides)
+Note that with plain HTML slides one can either have web one page per slide or have all slides in one page. The latter has the advantage of quickly cranking up and down the font for enhanced viewing and for quick browsing back and forth
+(see the demos marked with *one long file* below).
+
+<linebreak>
+<linebreak>
+
+"HTML blueish": "demo_html_blueish.html" (plain HTML, blue color, *one long file*, blank lines and a color line separate slides)
 
 !bc sys
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish --html_style=blueish
+doconce format html demo --html_style=blueish --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=blueish
 doconce split_html demo --method=colorline
 !ec
 
-"HTML bloodish": "demo_html_bloodish.html" (plain HTML, red color, one long file, 8 blank lines separate slides)
+"HTML bloodish": "demo_html_bloodish.html" (plain HTML, red color, *one long file*, 8 blank lines separate slides)
 
 !bc sys
-doconce format html demo --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish --html_style=bloodish
+doconce format html demo --html_style=bloodish --pygments_html_style=default --keep_pygments_html_bg SLIDE_TYPE=html SLIDE_THEME=bloodish
 doconce split_html demo --method=space8
 !ec
 
@@ -297,23 +303,31 @@ doconce slides_html demo doconce --method=split --nav_button=gray2,bottom --font
 "HTML solarized2": "demo_html_solarized2.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 2)
 
 !bc sys
-doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized2
+doconce format html demo --html_style=solarized2 SLIDE_TYPE=html SLIDE_THEME=solarized
 doconce slides_html demo doconce --method=split --nav_button=gray2,bottom --font_size=slides
 !ec
 
 "HTML solarized3": "demo_html_solarized3.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 3)
 
 !bc sys
-doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized3
+doconce format html demo --html_style=solarized3 SLIDE_TYPE=html SLIDE_THEME=solarized
 doconce slides_html demo doconce  --nav_button=gray2,bottom --font_size=slides
 !ec
 
 "HTML solarized3 dark": "demo_html_solarized3_dark.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 3)
 
 !bc sys
-doconce format html demo SLIDE_TYPE=html SLIDE_THEME=solarized --html_style=solarized3_dark
+doconce format html demo --html_style=solarized3_dark SLIDE_TYPE=html SLIDE_THEME=solarized
 doconce slides_html demo doconce --nav_button=text
 !ec
+
+"HTML solarized3": "demo_html_solarized3_space.html" ("solarized color scheme": "http://ethanschoonover.com/solarized", version 3, *one long file*, 10 blank lines separate slides)
+
+!bc sys
+doconce format html demo --html_style=solarized3 SLIDE_TYPE=html SLIDE_THEME=solarized
+doconce split_html demo --method=space8
+!ec
+
 
 ===== Markdown "Remark": "http://remarkjs.com/" =====
 
@@ -344,7 +358,7 @@ the corresponding pure HTML code)...
 % endfor
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow" --latex_title_layout=beamer --latex_admon_title_no_period --latex_code_style=pyg
+doconce format pdflatex demo --latex_title_layout=beamer --latex_admon_title_no_period --latex_code_style=pyg SLIDE_TYPE="beamer" SLIDE_THEME="red_shadow"
 doconce slides_beamer demo --beamer_slide_theme=red_shadow
 pdflatex -shell-escape demo
 !ec
@@ -355,7 +369,7 @@ use `--latex_admon_title_no_period`.)
 "Beamer blocks converted to mdframed boxes": "demo_red_plain_mdbox.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer --latex_admon_title_no_period "--latex_code_style=default:lst[style=yellow2_fb]"
+doconce format pdflatex demo --latex_title_layout=beamer --latex_admon_title_no_period "--latex_code_style=default:lst[style=yellow2_fb]" SLIDE_TYPE="beamer" SLIDE_THEME="red_plain"
 doconce slides_beamer demo --beamer_slide_theme=red_plain --beamer_block_style=mdbox
 # Change the title background in mdframed boxes
 doconce subst 'frametitlebackgroundcolor=.+,' 'frametitlebackgroundcolor=red!5,' demo.tex
@@ -365,7 +379,7 @@ pdflatex -shell-escape demo
 "Traditional handouts (2x3) in PDF": "demo_red_plain_handouts2x3.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="beamer" SLIDE_THEME="red_plain" --latex_title_layout=beamer --latex_code_style=pyg
+doconce format pdflatex demo --latex_title_layout=beamer --latex_code_style=pyg SLIDE_TYPE="beamer" SLIDE_THEME="red_plain"
 
 # --handout prevents pop ups from generating multiple pages
 doconce slides_beamer demo --beamer_slide_theme=red_plain --handout  # note --handout!
@@ -377,7 +391,7 @@ pdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile demo.pdf d
 "Handouts in PDF (plain LaTeX, not Beamer slides)": "demo.pdf"
 
 !bc sys
-doconce format pdflatex demo SLIDE_TYPE="latex" SLIDE_THEME="std. latex" --latex_code_style=pyg
+doconce format pdflatex demo --latex_code_style=pyg SLIDE_TYPE="latex" SLIDE_THEME="std. latex"
 pdflatex -shell-escape demo
 !ec
 

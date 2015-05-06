@@ -2589,6 +2589,8 @@ def slides_html():
                  if sl_tp == 'html':
                      if style.startswith('solarized'):
                          f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce slides_html %s_html_%s doconce --nav_button=gray2,bottom --font_size=slides\n\n' % (filestem, sl_tp, style, style, filestem, style, filestem, style))
+                         if style == 'solarized3':
+                             f.write('doconce format html %s SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s_space\ndoconce split_html %s_html_solarized3_space --method=space10\n\n' % (filestem, sl_tp, style, style, filestem, style, filestem))
                      else:
                          method = 'colorline' if style == 'blueish' else 'space8'
                          f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s --html_style=%s --html_output=%s_html_%s\ndoconce split_html %s_html_%s --method=%s  # one long file\n\n' % (filestem, pygm_style, sl_tp, style, style, filestem, style, filestem, style, method))
@@ -5339,7 +5341,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         # slides) on this split - if so, it is a forgotten !split
         subsections = re.findall(r'\\subsection\{', code_free_part)
         if len(subsections) > 1:
-            print '*** error: more than one subsection in a slide:'
+            print '*** error: more than one subsection in a slide (insert missing !split):'
             print part
             _abort()
 

@@ -11,37 +11,32 @@ Automatically generated HTML file from DocOnce source
 <title>On Schemes for Exponential Decay</title>
 
 
-<style type="text/css">
-/* bloodish style */
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
-body {
-  font-family: Helvetica, Verdana, Arial, Sans-serif;
-  color: #404040;
-  background: #ffffff;
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+h1 {color: #b58900;}  /* yellow */
+/* h1 {color: #cb4b16;}  orange */
+/* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
 }
-h1 { font-size: 1.8em;  color: #8A0808; }
-h2 { font-size: 1.6em;  color: #8A0808; }
-h3 { font-size: 1.4em;  color: #8A0808; }
-h4 { color: #8A0808; }
-a { color: #8A0808; text-decoration:none; }
-tt { font-family: "Courier New", Courier; }
-/* pre style removed because it will interfer with pygments */
-p { text-indent: 0px; }
-hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-p.caption { width: 80%; font-style: normal; text-align: left; }
-hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
 .alert {
   padding:8px 35px 8px 14px; margin-bottom:18px;
   text-shadow:0 1px 0 rgba(255,255,255,0.5);
-  border:1px solid #bababa;
+  border:1px solid #93a1a1;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   color: #555;
-  background-color: #f8f8f8;
+  background-color: #eee8d5;
   background-position: 10px 5px;
   background-repeat: no-repeat;
   background-size: 38px;
@@ -52,10 +47,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -138,7 +133,7 @@ MathJax.Hub.Config({
 <!-- table of contents) -->
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec0">Goal </h2>
 
@@ -150,7 +145,7 @@ and get them rendered in numerous HTML formats.
 <b>Layout.</b>
 <p>
 This version
-utilizes html slides with the theme <code>bloodish</code>.
+utilizes html slides with the theme <code>solarized3</code>.
 </div>
 
 
@@ -166,7 +161,7 @@ Speaker notes show up by
 
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h1 id="___sec1">Problem setting and methods </h1>
 <!-- Short title: Problem -->
@@ -175,7 +170,7 @@ Speaker notes show up by
 <center><p><img src="fig/method.png" align="bottom" width=600></p></center>
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec2">We aim to solve the (almost) simplest possible differential equation problem </h2>
 
@@ -209,7 +204,7 @@ Here,
 <!-- !eslidecell -->
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec3">The ODE problem is solved by a finite difference scheme </h2>
 
@@ -240,7 +235,7 @@ schemes.
 <!-- !epop -->
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec4">The Forward Euler scheme explained </h2>
 
@@ -254,7 +249,7 @@ schemes.
 
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec5">Implementation </h2>
 
@@ -264,27 +259,28 @@ schemes.
 <p>
 
 <p>
+<!-- begin verbatim block  pycod-->
+<pre><code>def solver(I, a, T, dt, theta):
+    &quot;&quot;&quot;Solve u'=-a*u, u(0)=I, for t in (0,T]; step: dt.&quot;&quot;&quot;
+    dt = float(dt)           # avoid integer division
+    N = int(round(T/dt))     # no of time intervals
+    T = N*dt                 # adjust T to fit time step dt
+    u = zeros(N+1)           # array of u[n] values
+    t = linspace(0, T, N+1)  # time mesh
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solver</span>(I, a, T, dt, theta):
-    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve u&#39;=-a*u, u(0)=I, for t in (0,T]; step: dt.&quot;&quot;&quot;</span>
-    dt <span style="color: #666666">=</span> <span style="color: #008000">float</span>(dt)           <span style="color: #408080; font-style: italic"># avoid integer division</span>
-    N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">round</span>(T<span style="color: #666666">/</span>dt))     <span style="color: #408080; font-style: italic"># no of time intervals</span>
-    T <span style="color: #666666">=</span> N<span style="color: #666666">*</span>dt                 <span style="color: #408080; font-style: italic"># adjust T to fit time step dt</span>
-    u <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)           <span style="color: #408080; font-style: italic"># array of u[n] values</span>
-    t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, T, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># time mesh</span>
+    u[0] = I                 # assign initial condition
+    for n in range(0, N):    # n=0,1,...,N-1
+        u[n+1] = (1 - (1-theta)*a*dt)/(1 + theta*dt*a)*u[n]
+    return u, t
+</code></pre>
+<!-- end verbatim block -->
 
-    u[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> I                 <span style="color: #408080; font-style: italic"># assign initial condition</span>
-    <span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, N):    <span style="color: #408080; font-style: italic"># n=0,1,...,N-1</span>
-        u[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> (<span style="color: #666666">1</span> <span style="color: #666666">-</span> (<span style="color: #666666">1-</span>theta)<span style="color: #666666">*</span>a<span style="color: #666666">*</span>dt)<span style="color: #666666">/</span>(<span style="color: #666666">1</span> <span style="color: #666666">+</span> theta<span style="color: #666666">*</span>dt<span style="color: #666666">*</span>a)<span style="color: #666666">*</span>u[n]
-    <span style="color: #008000; font-weight: bold">return</span> u, t
-</pre></div>
 
 </div>
 
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec6">How to use the solver function </h2>
 
@@ -292,30 +288,28 @@ schemes.
 <div class="alert alert-block alert-block alert-text-normal">
 <b>A complete main program.</b>
 <p>
-<p>
+<!-- begin verbatim block  pypro-->
+<pre><code># Set problem parameters
+I = 1.2
+a = 0.2
+T = 8
+dt = 0.25
+theta = 0.5
 
-<!-- code=python (!bc pypro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Set problem parameters</span>
-I <span style="color: #666666">=</span> <span style="color: #666666">1.2</span>
-a <span style="color: #666666">=</span> <span style="color: #666666">0.2</span>
-T <span style="color: #666666">=</span> <span style="color: #666666">8</span>
-dt <span style="color: #666666">=</span> <span style="color: #666666">0.25</span>
-theta <span style="color: #666666">=</span> <span style="color: #666666">0.5</span>
+from solver import solver, exact_solution
+u, t = solver(I, a, T, dt, theta)
 
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">solver</span> <span style="color: #008000; font-weight: bold">import</span> solver, exact_solution
-u, t <span style="color: #666666">=</span> solver(I, a, T, dt, theta)
-
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-plt<span style="color: #666666">.</span>plot(t, u, t, exact_solution)
-plt<span style="color: #666666">.</span>legend([<span style="color: #BA2121">&#39;numerical&#39;</span>, <span style="color: #BA2121">&#39;exact&#39;</span>])
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-
+import matplotlib.pyplot as plt
+plt.plot(t, u, t, exact_solution)
+plt.legend(['numerical', 'exact'])
+plt.show()
+</code></pre>
+<!-- end verbatim block -->
 </div>
 
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h1 id="___sec7">Results </h1>
 
@@ -323,7 +317,7 @@ plt<span style="color: #666666">.</span>show()
 <center><p><img src="fig/results.jpg" align="bottom" width=600></p></center>
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec8">The Crank-Nicolson method shows oscillatory behavior for not sufficiently small time steps, while the solution should be monotone </h2>
 
@@ -331,7 +325,7 @@ plt<span style="color: #666666">.</span>show()
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
 
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
 <h2 id="___sec9">The artifacts can be explained by some theory </h2>
 

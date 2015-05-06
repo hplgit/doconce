@@ -5,7 +5,7 @@
 #summary Scientific Writing and Publishing for the Future
 
 By *Hans Petter Langtangen*
-==== Apr 7, 2015 ====
+==== May 6, 2015 ====
 
 ---------------------------------------------------------------
 
@@ -280,12 +280,6 @@ What tools should I use for scientific writing?
 
 
 
-The default answer was LaTeX, but there are many
-recent popular alternative tools: HTML w/MathJax,
-Sphinx, Markdown, MediaWiki, IPython notebook, ...
-Apple's iBooks, ...
-
-
 
 
 <wiki:comment> !bslidecell 00 0.25 </wiki:comment>
@@ -436,7 +430,7 @@ googlecode repository) and substitute the line above with the URL.
 <wiki:comment> !split </wiki:comment>
 ==== Can I assemble lots of different writings to a new future document (book)? ====
 
-Suppose I write various types ofscientific material,
+Suppose I write various types of scientific material,
 
 
  * LaTeX document,

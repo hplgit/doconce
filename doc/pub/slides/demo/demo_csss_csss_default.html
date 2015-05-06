@@ -71,14 +71,13 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2] (<tt>hpl at simula.no</tt>)
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 7, 2015</h4></center> <!-- date -->
+<center><h4>May 6, 2015</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -87,9 +86,6 @@ MathJax.Hub.Config({
 <!-- (i.e., DocOnce subsections are used to specify slide titles, -->
 <!-- sections are used for parts/sections of the talk to appear in a -->
 <!-- table of contents) -->
-
-<p>
-
 </section>
 
 
@@ -108,7 +104,6 @@ This version
 utilizes csss slides with the theme <code>csss_default</code>.
 </div>
 
-
 <p>
 <div class="alert alert-block alert-notice alert-text-normal">
 <b>Notice.</b>
@@ -116,7 +111,6 @@ utilizes csss slides with the theme <code>csss_default</code>.
 Speaker notes show up by
 pressing "Ctrl-P".
 </div>
-
 
 <p>
 <p class="presenter-notes">
@@ -128,10 +122,6 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
 </p>
-
-
-<p>
-
 </section>
 
 
@@ -142,9 +132,6 @@ demonstrated.
 
 <p>
 <center><p><img src="fig/method.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
@@ -166,7 +153,6 @@ u(0)  &= I
 \end{align}
 $$
 
-
 <p>
 Here,
 
@@ -177,20 +163,12 @@ Here,
  <p><li> The ODE <a href="#mjx-eqn-1">(1)</a> has the initial condition <a href="#mjx-eqn-2">(2)</a></li>
 </ul>
 <p>
-
 </td>
 <td class="padding">
 <center><p><img src="fig/teacher2.jpg" align="bottom" width=250></p></center>
 </td>
 </tr>
 </table>
-
-
-<p>
-
-
-<p>
-
 </section>
 
 
@@ -198,18 +176,11 @@ Here,
 
 <h2 id="___sec3">The ODE problem is solved by a finite difference scheme </h2>
 
-<p>
-
-
 <ul>
  <p><li class="delayed"> Mesh in time: \( 0= t_0 < t_1 \cdots < t_N=T \)</li>
  <p><li class="delayed"> Assume constant \( \Delta t = t_{n}-t_{n-1} \)</li>
  <p><li class="delayed"> \( u^n \): numerical approx to the exact solution at \( t_n \)</li>
 </ul>
-<p>
-
-
-
 <p>
 
 <p class="delayed">
@@ -227,10 +198,6 @@ and the <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Cra
 schemes.
 
 </p>
-
-
-<p>
-
 </section>
 
 
@@ -245,10 +212,6 @@ schemes.
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -259,8 +222,6 @@ schemes.
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Implementation in a Python function:</b>
-<p>
-
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "monokai" -->
@@ -279,10 +240,6 @@ schemes.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -293,7 +250,6 @@ schemes.
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>A complete main program.</b>
-<p>
 <p>
 
 <!-- code=python (!bc pypro) typeset with pygments style "monokai" -->
@@ -314,10 +270,6 @@ schemes.
 </pre></div>
 
 </div>
-
-
-<p>
-
 </section>
 
 
@@ -327,9 +279,6 @@ schemes.
 
 <p>
 <center><p><img src="fig/results.jpg" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
@@ -339,9 +288,6 @@ schemes.
 
 <p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
-
-<p>
-
 </section>
 
 
@@ -360,12 +306,8 @@ $$ u^n = A^n,\quad A = \frac{1 - (1-\theta) a\Delta t}{1 + \theta a\Delta t}\thi
 
 </p>
 
-
 <p>
 Key results:
-
-<p>
-
 
 <ul>
  <p><li class="delayed"> Stability: \( |A| < 1 \)</li>
@@ -375,20 +317,12 @@ Key results:
 </ul>
 <p>
 
-
-
-<p>
-
 <div class="delayed alert alert-block alert-summary alert-text-normal">
 <b>Concluding remarks:</b>
 <p>
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
-
-
-
-
 </section>
 
 

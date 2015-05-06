@@ -235,5 +235,5 @@ pygmentize -l json -o demo.ipynb.html demo.ipynb
 cp -r demo*.pdf demo_*.html ._demo*.html reveal.js deck.js csss fig demo.do.txt.html demo.ipynb demo.ipynb.html $dest/demo/
 
 # index.html toc file
-system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window $rawgit --html_code_style=inherit
+system doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window --html_code_style=inherit $rawgit
 cp index.html $dest/demo/index.html
