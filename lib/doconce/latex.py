@@ -2865,6 +2865,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 #%   \MakeFramed{\FrameRestore}\vskip 0mm}%
 #% {\vskip 0mm\endMakeFramed}
 #"""
+            INTRO['latex'] += '\n'
             if 'lst' in latex_code_style:
                 INTRO['latex'] += r'\usepackage{listingsutf8}' + '\n'
                 INTRO['latex'] += latex_code_lstlisting(latex_code_style)
@@ -3076,22 +3077,25 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
-\fancyhf{}"""
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{1pt}"""
         if chapters:
             INTRO['latex'] += r"""
 % section name to the left (L) and page number to the right (R)
 % on even (E) pages,
 % chapter name to the right (R) and page number to the right (L)
 % on odd (O) pages
-\fancyhead[LE]{\rightmark} %section
+% (switch twoside to onside in documentclass to just have odd pages)
+\fancyhead[LE]{\rightmark} % section
 \fancyhead[RE]{\thepage}
-\fancyhead[RO]{\leftmark} % chapter
+\fancyhead[RO]{\leftmark}  % chapter
 \fancyhead[LO]{\thepage}"""
         else:
             INTRO['latex'] += r"""
 % section name to the left (L) and page number to the right (R)
 % on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
+% (switch twoside to onside in documentclass to just have odd pages)
+\fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}"""
         INTRO['latex'] += r"""
 \pagestyle{fancy}
