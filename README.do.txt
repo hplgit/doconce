@@ -8,6 +8,7 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting web pages
 
 Here are some of the most recent features in DocOnce:
 
+ * DocOnce and all its dependencies are now trivial to install with Anaconda Python: `sudo conda install --channel johannr doconce` (thanks to Johannes Ring)
  * Bootstrap HTML styles features hints, answers, and solutions in
    exercises as *unfolded text*
  * `doconce extract_exercises`
@@ -37,6 +38,13 @@ However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
 used in the text.
 
+With Anaconda Python it is trivial to install DocOnce and all
+dependencies by
+
+!bc sys
+Terminal> sudo conda install --channel johannr doconce
+!ec
+
 On Debian/Ubuntu it is fairly straightforward
 to get the packages you need. Basically, you can run a "Bash script": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" or an equivalent "Python script": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py". Such a script installs
 a very comprehensive bundle of software. You can read the
@@ -45,8 +53,11 @@ detailed description of what is needed of software for various purposes.
 For HTML output, for example, you can usually get away with just installing
 the pure DocOnce source (and perhaps the preprocessors if you use them).
 
-!bwarning Install from GitHub repo, not from binary packages
-If you rely on the Debian package on Linux systems (`sudo apt-get install python-doconce`), note that this version of DocOnce is old and out of sync with the documentation.
+!bwarning Install from GitHub repo, not from Debian
+Although DocOnce is in Debian, do not run `sudo apt-get install python-doconce`
+as this gives a very old version of DocOnce that is out of sync with the
+documentation. Instead, clone the DocOnce GitHub repo as shown above
+and run `setup.py` or use `conda install`.
 !ewarning
 
 

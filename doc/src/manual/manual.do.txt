@@ -3190,6 +3190,16 @@ def example(text, titleline, counter, format):
 
 %s
 \end{example}
+
+def get_label(titleline):
+    label = ''
+    if 'label=' in titleline:
+        pattern = r'label=([^\s]+)'
+        m = re.search(pattern, titleline)
+        if m:
+            label = m.group(1)
+            titleline = re.sub(pattern, '', titleline).strip()
+    return label, titleline
 """ % (titleline, text)
     return s
 !ec
