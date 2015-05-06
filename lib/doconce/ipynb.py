@@ -208,7 +208,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                      flags=re.DOTALL|re.MULTILINE)
     filestr = re.sub('^<!-- !split -->\n', '', filestr, flags=re.MULTILINE)
     from doconce import doconce_envirs
-    envirs = doconce_envirs()[8:-1]
+    envirs = doconce_envirs()[8:-2]
     for envir in envirs:
         pattern = r'^!b%s(.*?)\n(.+?)\s*^!e%s' % (envir, envir)
         if envir_format in ('quote', 'paragraph', 'hrule'):
@@ -324,6 +324,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 lines.remove('')
             code_blocks[i] = '\n'.join(lines)
             ipynb_code_tp[i] = 'cell'
+
+        elif tp.startswith('dpyshell') or tp.startswith('dipy'):
+            # Standard Markdown code display of interactive session
+            code_blocks[i] = '\n'.join(lines)
+            code_blocks[i] = indent_lines(code_blocks[i], format)
+            ipynb_code_tp[i] = 'markdown'
         elif tp.startswith('sys'):
             # Do we find execution of python file? If so, copy the file
             # to separate subdir and make a run file command in a cell.

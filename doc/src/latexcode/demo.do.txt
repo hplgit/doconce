@@ -359,3 +359,97 @@ to be about as large as the text, there is at present two options:
 
 The results are very similar so there is no demand for `ptex2tex`.
 !enotice
+
+===== Wrapping code environments with user-customized environments =====
+label{latexcode:userdef}
+
+Suppose you want to typeset your code with an environment that is not
+supported by DocOnce. For example, we want in LaTeX to have headline
+before each code snippet with a section-based counter, the filename
+and some title for the code. Then we want double lines before and
+after the code snippet:
+
+<linebreak>
+<linebreak>
+
+FIGURE: [fig/userdef_code_envir, width=500 frac=0.7]
+
+<linebreak>
+<linebreak>
+
+This is fairly easy: we define a *user-defined environment* in
+DocOnce, here called `code` and provide a Python module that translates
+this environment into proper format-specific code.
+Details are provided in the DocOnce manual, see the section
+"User-Defined Environments": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments". In the present case,
+the syntax in a DocOnce file is to wrap every `@@@CODE` line or
+`!bc` environment in a `!bu-code` and `!eu-code` environment. The
+code in the figure above is produced by
+
+!bc do
+|bu-code file=process.f Return `a` multiplied by `c`
+|bc fcod
+       subroutine process(a, n, c, r)
+C      Return array r = c*a
+       integer n
+       real*8 a(n), c, r(n)
+       integer i
+       do i = 1,n
+          r(i) = c*a(i)
+       end do
+       return
+       end
+|ec
+|eu-code
+!ec
+
+The LaTX code we want is
+
+!bc latexcod
+\begin{pycode}
+
+\Verb!process.f!:
+Return a multiplied by \Verb!c!
+
+\hrule
+\vspace{1mm}
+\hrule
+
+\begin{lstlisting}[language=Fortran,style=simple,xleftmargin=2mm]
+       subroutine process(a, n, c, r)
+C      Return array r = c*a
+       integer n
+       real*8 a(n), c, r(n)
+       integer i
+       do i = 1,n
+          r(i) = c*a(i)
+       end do
+       return
+       end
+\end{lstlisting}
+
+\hrule
+\vspace{1mm}
+\hrule
+\end{pycode}
+!ec
+We have created a special LaTeX environment
+(``theorem'') called
+`pycode` that LaTeX will give a section-based
+number (just like theorems, examples, etc).
+
+To this end, we must write a file `userdef_environments.py`
+where we define the `code` environment for LaTeX and
+other formats (usually some tailored LaTeX code and just some reasonable
+common DocOnce code for other formats). The `userdef_environments.py`
+file looks like this in the current example:
+
+@@@CODE userdef_environments.py
+We grab information on
+the `!bu-code` line for a potential filename, label, and header for
+the code snippet.
+
+When compiling to `pdflatex`, we simply use `--latex_code_style=lst`,
+but we could use more fancy styles if desired.
+You can inspect the "PDF file": "doc_udef.pdf" for this example with
+a tailored, user-defined code environment.

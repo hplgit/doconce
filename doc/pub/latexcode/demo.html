@@ -23,6 +23,8 @@ code { color: inherit; background-color: transparent; }
 </style>
 
 
+<!-- USER-DEFINED ENVIRONMENTS -->
+
 </head>
 
 <!-- tocinfo
@@ -64,7 +66,11 @@ code { color: inherit; background-color: transparent; }
               (' General syntax for `--latex_code_style=` ',
                2,
                'latexcode:syntax',
-               'latexcode:syntax')]}
+               'latexcode:syntax'),
+              (' Wrapping code environments with user-customized environments ',
+               2,
+               'latexcode:userdef',
+               'latexcode:userdef')]}
 end of tocinfo -->
 
 <body>
@@ -96,6 +102,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#latexcode:nonuniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:lst:style" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying the <code>lst</code> style</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:syntax" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;General syntax for <code>--latex_code_style=</code></a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:userdef" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wrapping code environments with user-customized environments</a></li>
 
         </ul>
       </li>
@@ -122,14 +129,13 @@ end of tocinfo -->
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Apr 8, 2015</h4></center> <!-- date -->
+<center><h4>May 5, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
@@ -140,9 +146,6 @@ much cleaner LaTeX code (especially for verbatim blocks with
 background color).
 
 <p>
-
-
-
 </div> <!-- end jumbotron -->
 
 <h1 id="___sec0">Blocks of computer code in LaTeX </h1>
@@ -564,6 +567,137 @@ to be about as large as the text, there is at present two options:
 The results are very similar so there is no demand for <code>ptex2tex</code>.
 </div>
 
+
+<h2 id="latexcode:userdef">Wrapping code environments with user-customized environments</h2>
+
+<p>
+Suppose you want to typeset your code with an environment that is not
+supported by DocOnce. For example, we want in LaTeX to have headline
+before each code snippet with a section-based counter, the filename
+and some title for the code. Then we want double lines before and
+after the code snippet:
+
+<p>
+<br />
+<br />
+
+<p>
+<center><p><img src="fig/userdef_code_envir.png" align="bottom" width=500></p></center>
+
+<p>
+<br />
+<br />
+
+<p>
+This is fairly easy: we define a <em>user-defined environment</em> in
+DocOnce, here called <code>code</code> and provide a Python module that translates
+this environment into proper format-specific code.
+Details are provided in the DocOnce manual, see the section
+<a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments" target="_self">User-Defined Environments</a>. In the present case,
+the syntax in a DocOnce file is to wrap every <code>@@@CODE</code> line or
+<code>!bc</code> environment in a <code>!bu-code</code> and <code>!eu-code</code> environment:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">|bu-code file=myprog.py label=my:prog Program for computations
+!bc pycod
+def f(x):
+    return 42
+
+print f(1)
+!ec
+|eu-code
+</pre></div>
+<p>
+In addition, must define this <code>code</code> environment for LaTeX and
+other formats, usually some tailored LaTeX code and just some reasonable
+common DocOnce code for other formats. The <code>userdef_environments.py</code>
+file looks like
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">re</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">latex_code</span>(text, titleline, counter, format):
+    <span style="color: #408080; font-style: italic"># file=myprog.py label=my:label Some title...</span>
+    label, titleline <span style="color: #666666">=</span> get_label(titleline, <span style="color: #BA2121">&#39;label&#39;</span>)
+    filename, titleline <span style="color: #666666">=</span> get_label(titleline, <span style="color: #BA2121">&#39;file&#39;</span>)
+    <span style="color: #408080; font-style: italic"># Must be able to handle empty label and/or filename</span>
+    <span style="color: #408080; font-style: italic"># (recognized by &#39;&#39;)</span>
+    <span style="color: #008000; font-weight: bold">if</span> label:
+        label <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;label{</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">}&#39;</span> <span style="color: #666666">%</span> label
+    <span style="color: #008000; font-weight: bold">if</span> filename:
+        filename <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;`</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">`: &#39;</span> <span style="color: #666666">%</span> filename
+    s <span style="color: #666666">=</span> <span style="color: #BA2121">r&quot;&quot;&quot;</span>
+
+<span style="color: #BA2121">\begin{pycode}</span>
+<span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+<span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+<span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+
+<span style="color: #BA2121">\hrule</span>
+<span style="color: #BA2121">\vspace{1mm}</span>
+<span style="color: #BA2121">\hrule</span>
+
+<span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+
+<span style="color: #BA2121">\hrule</span>
+<span style="color: #BA2121">\vspace{1mm}</span>
+<span style="color: #BA2121">\hrule</span>
+<span style="color: #BA2121">\end{pycode}</span>
+<span style="color: #BA2121">&quot;&quot;&quot;</span> <span style="color: #666666">%</span> (label, filename, titleline, text)
+    <span style="color: #008000; font-weight: bold">return</span> s
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">do_code</span>(text, titleline, counter, format):
+    <span style="color: #408080; font-style: italic"># file=myprog.py label=my:label Some title...</span>
+    label, titleline <span style="color: #666666">=</span> get_label(titleline, <span style="color: #BA2121">&#39;label&#39;</span>)
+    filename, titleline <span style="color: #666666">=</span> get_label(titleline, <span style="color: #BA2121">&#39;file&#39;</span>)
+    s <span style="color: #666666">=</span> <span style="color: #BA2121">r&quot;&quot;&quot;</span>
+
+<span style="color: #BA2121">_Python code </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">_: `</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">`. </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+
+<span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
+<span style="color: #BA2121">&quot;&quot;&quot;</span> <span style="color: #666666">%</span> (counter, filename, titleline, text)
+    <span style="color: #008000; font-weight: bold">return</span> s
+
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_label</span>(titleline, label_text<span style="color: #666666">=</span><span style="color: #BA2121">&#39;label&#39;</span>):
+    label <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;&#39;</span>
+    <span style="color: #008000; font-weight: bold">if</span> label_text <span style="color: #AA22FF; font-weight: bold">in</span> titleline:
+        pattern <span style="color: #666666">=</span> <span style="color: #BA2121">r&#39;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">=([^\s]+)&#39;</span> <span style="color: #666666">%</span> label_text
+        m <span style="color: #666666">=</span> re<span style="color: #666666">.</span>search(pattern, titleline)
+        <span style="color: #008000; font-weight: bold">if</span> m:
+            label <span style="color: #666666">=</span> m<span style="color: #666666">.</span>group(<span style="color: #666666">1</span>)
+            titleline <span style="color: #666666">=</span> re<span style="color: #666666">.</span>sub(pattern, <span style="color: #BA2121">&#39;&#39;</span>, titleline)<span style="color: #666666">.</span>strip()
+    <span style="color: #008000; font-weight: bold">return</span> label, titleline
+
+envir2format <span style="color: #666666">=</span> {
+    <span style="color: #BA2121">&#39;intro&#39;</span>: {
+        <span style="color: #BA2121">&#39;latex&#39;</span>: <span style="color: #BA2121">r&quot;&quot;&quot;</span>
+<span style="color: #BA2121">\usepackage{amsthm}</span>
+<span style="color: #BA2121">\theoremstyle{definition}</span>
+<span style="color: #BA2121">\newtheorem{pycode}{Python code}[section]</span>
+<span style="color: #BA2121">&quot;&quot;&quot;</span>,},
+    <span style="color: #BA2121">&#39;code&#39;</span>: {
+        <span style="color: #BA2121">&#39;latex&#39;</span>: latex_code,
+        <span style="color: #BA2121">&#39;do&#39;</span>: do_code,
+        },
+}
+</pre></div>
+<p>
+We see that for LaTeX we have a special environment (&quot;theorem&quot;) called
+<code>pycode</code> that LaTeX will give a section-based
+number just like theorems, examples, etc. We grab information on
+the <code>!bu-code</code> line for a potential filename, label, and header for
+the code snippet.
+
+<p>
+When compiling to <code>pdflatex</code>, we simply use <code>--latex_code_style=lst</code>,
+but we could use more fancy styles if desired.
+You can inspect the <a href="doc_udef.pdf" target="_self">PDF file</a> for this example with
+a tailored, user-defined code environment.
 
 <!-- ------------------- end of main content --------------- -->
 

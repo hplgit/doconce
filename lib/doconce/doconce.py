@@ -40,7 +40,7 @@ def doconce_envirs():                     # begin-end environments
             'hint', 'remarks',            # exercises
             'quote', 'box',
             'notice', 'summary', 'warning', 'question', 'block', # admon
-            'quiz', # must be last
+            'quiz', 'u-',
             ]
 
 admons = 'notice', 'summary', 'warning', 'question', 'block'
@@ -1797,10 +1797,15 @@ def typeset_userdef_envirs(filestr, format):
         print '*** error: envir2format not defined in', userfile
         _abort()
 
-    pattern = r'^(!bu-([^ ]+)(.*?)\n(.+?)\s*^!eu-([^\s]+))'
+    pattern = r'^(!bu-([^\s]+)(.*?)\n(.+?)\s*^!eu-([^\s]+))'
     userdef_envirs = re.findall(pattern, filestr, flags=re.MULTILINE|re.DOTALL)
     if 'intro' in ue.envir2format:
-        intro = ue.envir2format['intro'].get(format, '')
+        if format == 'pdflatex' and 'latex' in ue.envir2format['intro']:
+            intro = ue.envir2format['intro']['latex']
+        elif format == 'latex' and 'pdflatex' in ue.envir2format['intro']:
+            intro = ue.envir2format['intro']['pdflatex']
+        else:
+            intro = ue.envir2format['intro'].get(format, '')
     else:
         intro = ''
     # html and latex can have intros
@@ -1823,6 +1828,10 @@ def typeset_userdef_envirs(filestr, format):
         instructions = ''
         if format in ue.envir2format[user_envir]:
             instructions = ue.envir2format[user_envir][format]
+        elif format == 'pdflatex' and 'latex' in ue.envir2format[user_envir]:
+            instructions = ue.envir2format[user_envir]['latex']
+        elif format == 'latex' and 'pdflatex' in ue.envir2format[user_envir]:
+            instructions = ue.envir2format[user_envir]['pdflatex']
         elif 'do' in ue.envir2format[user_envir]:
             instructions = ue.envir2format[user_envir]['do']
         if instructions == '':
@@ -1841,7 +1850,7 @@ def typeset_envirs(filestr, format):
     # Note: exercises are done (and translated to doconce syntax)
     # before this function is called. bt/bc are taken elsewhere.
     # quiz is taken later.
-    envirs = doconce_envirs()[8:-1]
+    envirs = doconce_envirs()[8:-2]
 
     for envir in envirs:
         if not '!b' + envir in filestr:

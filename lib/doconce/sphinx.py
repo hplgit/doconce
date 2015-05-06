@@ -206,13 +206,14 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         css='css', csspro='css', csscod='css',
         dat='text', csv='text', txt='text',
         cc='text', ccq='text',  # not possible with extra indent for ccq
-        ipy='ipy',
+        ipy='ipy', dipy='ipy',
         xmlcod='xml', xmlpro='xml', xml='xml',
         htmlcod='html', htmlpro='html', html='html',
         texcod='latex', texpro='latex', tex='latex',
         latexcod='latex', latexpro='latex', latex='latex',
         do='doconce',
-        pyshell='python', pyoptpro='python', pyscpro='python',
+        pyshell='python', dpyshell='python',
+        pyoptpro='python', pyscpro='python',
         )
 
     # grab line with: # Sphinx code-blocks: cod=python cpp=c++ etc
@@ -326,13 +327,13 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     # Remove all !bc ipy and !bc pyshell since interactive sessions
     # are automatically handled by sphinx without indentation
     # (just a blank line before and after)
-    filestr = re.sub(r'^!bc +ipy *\n(.*?)^!ec *\n',
+    filestr = re.sub(r'^!bc +d?ipy *\n(.*?)^!ec *\n',
                      '\n\g<1>\n', filestr, re.DOTALL|re.MULTILINE)
-    filestr = re.sub(r'^!bc +pyshell *\n(.*?)^!ec *\n',
+    filestr = re.sub(r'^!bc +d?pyshell *\n(.*?)^!ec *\n',
                      '\n\g<1>\n', filestr, re.DOTALL|re.MULTILINE)
 
     # Check if we have custom pygments lexers
-    if 'ipy' in code_block_types:
+    if 'ipy' in code_block_types or 'dipy' in code_block_types:
         if not has_custom_pygments_lexer('ipy'):
             envir2pygments['ipy'] = 'python'
     if 'do' in code_block_types:

@@ -328,7 +328,7 @@ def xml_ref_and_label(section_label2title, format, filestr):
     # Replace all admon and many other envirs here (then xml_quote etc
     # will not be called later by doconce.py)
     from doconce import doconce_envirs
-    for envir in doconce_envirs()[5:-1]:
+    for envir in doconce_envirs()[5:-2]:
         filestr = re.sub(r'^!b%s +(.+)' % envir, r'<%s heading="\g<1>">' % envir,
                          filestr, flags=re.MULTILINE)
         filestr = re.sub(r'^!b%s *' % envir, r'<%s>' % envir,

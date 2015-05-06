@@ -41,6 +41,9 @@ doconce format pdflatex doc "--latex_code_style=default:lst-blue1[style=redblue,
 pdflatex doc
 cp doc.pdf doc_lots.pdf
 
+doconce format pdflatex doc_udef --latex_code_style=lst
+pdflatex doc_udef
+
 doconce format html demo --html_style=bootstrap_bloodish --html_code_style=inherit
 
 dest=../../pub/latexcode

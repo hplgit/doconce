@@ -1607,7 +1607,7 @@ def ptex2tex():
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy dipy pyshell dpyshell rpy plin ver warn rule summ ccq cc ccl txt'.split()
     envirs += ['htmlcod', 'htmlpro', 'html',
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
@@ -1647,7 +1647,7 @@ def ptex2tex():
                 # they need the language explicitly
                 if value == 'minted':
                     envir2pygments = dict(
-                        pyshell='python',
+                        pyshell='python', dpyshell='python',
                         py='python', cy='cython', f='fortran',
                         c='c', cpp='c++', sh='bash', rst='rst',
                         m ='matlab', pl='perl', swig='c++',
@@ -1655,7 +1655,7 @@ def ptex2tex():
                         java='java',
                         xml='xml', rb='ruby', sys='console',
                         dat='text', txt='text', csv='text',
-                        ipy='ipy', do='doconce',
+                        ipy='ipy', dipy='ipy', do='doconce',
                         # pyopt and pysc are treated in latex.py
                         )
                     # Find substitutes for ipy and doconce if these lexers
@@ -1708,12 +1708,12 @@ def ptex2tex():
                 elif value.startswith('ans'):
                     # Mapping from code envirs to valid anslistings names
                     envir2listings = dict(
-                        pyshell='python',
+                        pyshell='python', dpyshell='python',
                         py='python', cy='python', f='fortran',
                         cpp='c++', sh='bash', swig='swigcode',
                         ufl='uflcode', m='matlab', c='c++',
                         latex='latexcode', xml='xml',
-                        pyopt='python', ipy='python')
+                        pyopt='python', ipy='python', dipy='python')
                     if envir == 'envir':
                         for lang in envir2listings:
                             language = envir2listings[lang]
@@ -5969,6 +5969,7 @@ _latex_environments = [
     ("\\bpypro",            "\\epypro"),
     ("\\brpy",              "\\erpy"),
     ("\\bipy",              "\\eipy"),
+    ("\\bdipy",             "\\edipy"),
     ("\\bfcod",             "\\efcod"),
     ("\\bfpro",             "\\efpro"),
     ("\\bccod",             "\\epcod"),
@@ -5990,6 +5991,7 @@ _latex_environments = [
     ("\\bsni",              "\\esni"),
     ("\\bdsni",             "\\edsni"),
     ("\\bpyshell",          "\\epyshell"),
+    ("\\bdpyshell",         "\\edpyshell"),
     ("\\bpy",               "\\epy"),
     ]
 
@@ -7659,8 +7661,9 @@ def _latex2doconce(filestr):
 
     # ptex2tex code environments:
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
-                   'dsni', 'sni', 'slin', 'ipy', 'rpy',
-                   'pyshell', 'plin', 'ver', 'warn', 'rule', 'summ',
+                   'dsni', 'sni', 'slin', 'ipy', 'dipy', 'rpy',
+                   'pyshell', 'dpyshell', 'plin', 'ver',
+                   'warn', 'rule', 'summ',
                    'dat', 'txt'] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':
         for tp in 'cod', 'pro':
