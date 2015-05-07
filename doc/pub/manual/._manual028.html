@@ -891,19 +891,20 @@ A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  <code>smtplib</code> and <code>email</code>.
 
 <p>
-WordPress (<code>wordpress.com</code>) allows raw HTML code in blogs,
-but has very limited
-LaTeX support, basically only formulas. The <code>--wordpress</code> option to
-<code>doconce</code> modifies the HTML code such that all equations are typeset
-in a way that is acceptable to WordPress.
-Look at a <a href="http://doconce.wordpress.com" target="_self">simple doconce example</a>
-and a <a href="http://doconcereportdemo.wordpress.com/" target="_self">scientific report</a>
-to see blog posts with mathematics and code on WordPress.
+WordPress (<code>wordpress.com</code>) allows raw HTML code in blogs, but has
+very limited LaTeX support, basically only formulas. The <code>--wordpress</code>
+option to <code>doconce</code> modifies the HTML code such that all equations are
+typeset in a way that is acceptable to WordPress.  Look at a <a href="http://doconce.wordpress.com" target="_self">simple
+doconce example</a> and a <a href="http://doconcereportdemo.wordpress.com/" target="_self">scientific
+report</a> to see blog posts
+with mathematics and code on WordPress.
 
 <p>
 Speaking of WordPress, the related project <a href="http://pressbooks.com" target="_self"><tt>http://pressbooks.com</tt></a> can take raw HTML code (from DocOnce, for
-instance) and produce very nice-looking books.  There is no support
-for mathematics in the text, though.
+instance, but use the <code>--wordpress</code> option)
+and produce very nice-looking books.  There is support for LaTeX
+mathematics as in WordPress blog posts, meaning that one cannot refer
+to equations.
 
 <h2 id="do2any:pandoc">Pandoc and Markdown</h2>
 
@@ -2692,7 +2693,7 @@ Note: the colors in mdfbox and other boxes can customized.
 The color to be used as background in admonitions.
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
- &#39;--latex_admon_color=yellow!5&#39;
+  &#39;--latex_admon_color=yellow!5&#39;
 Note the quotes, needed for bash, in the latter example.
 
 If --latex_admon=mdfbox, the background of the title and
@@ -2702,6 +2703,11 @@ blue title background is obtained by editing the .tex file as
 
 doconce replace &#39;linecolor=black,&#39; &#39;linecolor=darkblue,&#39; mydoc.tex
 doconce subst &#39;frametitlebackgroundcolor=.*?,&#39; &#39;frametitlebackgroundcolor=blue!5,&#39; mydoc.tex
+
+Actually, this particular (and common) edit is automatically done by the option
+  --latex_admon_color=bluestyle
+  --latex_admon_color=yellowstyle
+(the latter has color yellow!5 instead and yellow!20 for the border)
 
 
 

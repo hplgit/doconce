@@ -14,17 +14,21 @@ function system {
 }
 
 # html (need no_abort because of equation ref demo)
-system doconce format html tutorial  --html_style=bootswatch_readable --no_abort
+system doconce format html tutorial  --html_style=bootswatch_readable --html_code_style=inherit --no_abort
+# references in blocks of doconce code are not treated right
+doconce replace XXX1 '(ref{myeq1})' tutorial.html
 
 # latex
-system doconce format latex tutorial --latex_font=helvetica
-ptex2tex -DMINTED tutorial
+system doconce format latex tutorial --latex_font=helvetica --latex_code_style=pyg
+doconce replace XXX1 '(ref{myeq1})' tutorial.p.tex
 latex -shell-escape tutorial.tex
+exit
 latex -shell-escape tutorial.tex
 dvipdf tutorial.dvi
 
 # Sphinx
 system doconce format sphinx tutorial
+doconce replace XXX1 '(ref{myeq1})' tutorial.rst
 rm -rf sphinx-rootdir
 system doconce sphinx_dir tutorial
 cp tutorial.rst tutorial.sphinx.rst
@@ -42,6 +46,7 @@ cd ../../..
 
 # reStructuredText:
 system doconce format rst tutorial
+doconce replace XXX1 '(ref{myeq1})' tutorial.rst
 rst2xml.py tutorial.rst > tutorial.xml
 rst2odt.py tutorial.rst > tutorial.odt
 rst2html.py tutorial.rst > tutorial.rst.html
@@ -51,12 +56,19 @@ dvipdf tutorial.rst.dvi
 
 # Other formats:
 system doconce format plain tutorial.do.txt
+doconce replace XXX1 '(ref{myeq1})' tutorial.txt
 system doconce format gwiki tutorial.do.txt
+doconce replace XXX1 '(ref{myeq1})' tutorial.gwiki
 system doconce format cwiki tutorial.do.txt
+doconce replace XXX1 '(ref{myeq1})' tutorial.cwiki
 system doconce format mwiki tutorial.do.txt
+doconce replace XXX1 '(ref{myeq1})' tutorial.mwiki
 system doconce format st tutorial.do.txt
+doconce replace XXX1 '(ref{myeq1})' tutorial.st
 system doconce format epytext tutorial.do.txt
+doconce replace XXX1 '(ref{myeq1})' tutorial.epytext
 system doconce format pandoc tutorial.do.txt --strict_markdown_output --github_md
+doconce replace XXX1 '(ref{myeq1})' tutorial.md
 
 # Make PDF of most of the above:
 #a2ps_plain='a2ps --left_title='\'''\'' --right_title='\'''\'' --left_footer='\'''\'' --right_footer='\'''\'' --footer='\'''\'''

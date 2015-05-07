@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 2, 2015
+:Date: May 6, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -60,7 +60,7 @@ Here are some DocOnce features:
     and published in different formats for different devices
     (see `example <http://hplgit.github.io/setup4book-doconce/doc/web/index.html>`__).
 
-  * DocOnce enables authors who write for many times of media
+  * DocOnce enables authors who write for many types of media
     (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
     source language such that lots of different pieces can easily be
     brought together later to form a coherent (big) document.
@@ -4794,7 +4794,7 @@ Layout of admonitions in HTML
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The command-line argument ``--html_admon`` sets the admonition style
-for the ``html`` format:
+for the ``html`` format (see `demo <http://hplgit.github.io/doconce/doc/pub/admon/index.html>`__):
 
  * ``--html_admon=gray`` for
    icons with gray background and small font,
@@ -4842,7 +4842,7 @@ Layout of admonitions in LaTeX
 
 In ``latex`` and ``pdflatex``, the type of admonition style is set by
 the command-line option ``--latex_admon=``.
-Several values are available:
+Several values are available (see `demo <http://hplgit.github.io/doconce/doc/pub/admon/index.html>`__):
 
  * ``paragraph`` is the simplest type of admonition and typeset
    as plain text with an optional paragraph heading.
@@ -4981,7 +4981,7 @@ environment in DocOnce and write the environment like this:
 
 .. code-block:: doconce
 
-        |bu-example Addition label=ex:math:1p1
+        !bu-example Addition label=ex:math:1p1
         We have
         
         !bt
@@ -5053,6 +5053,16 @@ the other keys. The LaTeX output is here defined by the function
         
         %s
         \end{example}
+        
+        def get_label(titleline):
+            label = ''
+            if 'label=' in titleline:
+                pattern = r'label=([^\s]+)'
+                m = re.search(pattern, titleline)
+                if m:
+                    label = m.group(1)
+                    titleline = re.sub(pattern, '', titleline).strip()
+            return label, titleline
         """ % (titleline, text)
             return s
 
@@ -5141,13 +5151,13 @@ written like
 
 .. code-block:: doconce
 
-        |bu-highlight Highlight box!
+        !bu-highlight Highlight box!
         This environment is used to highlight something:
         
         !bt
         \[ E = mc^2 \]
         !et
-        |eu-highlight
+        !eu-highlight
 
 and typeset (in ``${FORMAT}``) as
 
@@ -5177,6 +5187,21 @@ and typeset (in ``${FORMAT}``) as
 
 
 
+
+A complete example showing how one can create tailored environments
+for computer code, in particular the following one (with a caption),
+
+| 
+| 
+
+.. figure:: userdef_code_envir.png
+   :width: 400
+
+| 
+| 
+
+appears at the end of the document
+`Demonstration of DocOnce support for LaTeX code block environments <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__.
 
 .. !split
 
@@ -7318,18 +7343,19 @@ Blog posts at Google can also be published `automatically through email <http://
 A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  ``smtplib`` and ``email``.
 
-WordPress (``wordpress.com``) allows raw HTML code in blogs,
-but has very limited
-LaTeX support, basically only formulas. The ``--wordpress`` option to
-``doconce`` modifies the HTML code such that all equations are typeset
-in a way that is acceptable to WordPress.
-Look at a `simple doconce example <http://doconce.wordpress.com>`__
-and a `scientific report <http://doconcereportdemo.wordpress.com/>`__
-to see blog posts with mathematics and code on WordPress.
+WordPress (``wordpress.com``) allows raw HTML code in blogs, but has
+very limited LaTeX support, basically only formulas. The ``--wordpress``
+option to ``doconce`` modifies the HTML code such that all equations are
+typeset in a way that is acceptable to WordPress.  Look at a `simple
+doconce example <http://doconce.wordpress.com>`__ and a `scientific
+report <http://doconcereportdemo.wordpress.com/>`__ to see blog posts
+with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project `<http://pressbooks.com>`_ can take raw HTML code (from DocOnce, for
-instance) and produce very nice-looking books.  There is no support
-for mathematics in the text, though.
+instance, but use the ``--wordpress`` option)
+and produce very nice-looking books.  There is support for LaTeX
+mathematics as in WordPress blog posts, meaning that one cannot refer
+to equations.
 
 .. _do2any:pandoc:
 
@@ -9166,7 +9192,7 @@ here for convenience.
         The color to be used as background in admonitions.
         Either rgb tuple or saturated color a la yellow!5:
           --latex_admon_color=0.1,0.1,0.4
-         '--latex_admon_color=yellow!5'
+          '--latex_admon_color=yellow!5'
         Note the quotes, needed for bash, in the latter example.
         
         If --latex_admon=mdfbox, the background of the title and
@@ -9176,6 +9202,11 @@ here for convenience.
         
         doconce replace 'linecolor=black,' 'linecolor=darkblue,' mydoc.tex
         doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' mydoc.tex
+        
+        Actually, this particular (and common) edit is automatically done by the option
+          --latex_admon_color=bluestyle
+          --latex_admon_color=yellowstyle
+        (the latter has color yellow!5 instead and yellow!20 for the border)
         
         
         

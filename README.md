@@ -71,8 +71,8 @@ and run `setup.py` or use `conda install`.
 ### Highlights
 
 
- * DocOnce is a modestly tagged markup language (see [example](http://hplgit.github.io/teamods/writing_reports/index.html)), quite like Markdown, but with many more features, aimed at documents with
-   *much math and code in the text*.
+ * DocOnce is a modestly tagged markup language (see [syntax example](http://hplgit.github.io/teamods/writing_reports/_static/report/do.txt.html)), quite like Markdown, but with many more features, aimed at documents with
+   *much math and code in the text* (see [demo](http://hplgit.github.io/teamods/writing_reports/index.html)).
  * There is extensive support for book projects. In addition to classical LaTeX-based paper books one gets for free fully responsive, modern-looking, HTML-based ebooks for tablets and phones. Parts of books can, e.g., appear in blog posts for discussion and as IPython notebooks for experimentation and annotation.
  * For documents with math and code, you can generate *clean* plain LaTeX (PDF), HTML (with MathJax and Pygments - embedded in your own templates), Sphinx for attractive web design, Markdown, IPython notebooks, HTML for Google or Wordpress blog posts, and MediaWiki. The LaTeX output has many fancy layouts for typesetting of computer code.
  * DocOnce can also output other formats (though without support for nicely typeset math and code): plain untagged text, Google wiki, Creole wiki, and reStructuredText. From Markdown or reStructuredText you can go to XML, DocBook, epub, OpenOffice/LibreOffice, MS Word, and other formats.

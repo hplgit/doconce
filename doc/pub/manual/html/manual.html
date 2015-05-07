@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 2, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 6, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +120,7 @@ warning, notice, question, etc.) in HTML and LaTeX.</li>
 pieces of text and software can be assembled in different ways
 and published in different formats for different devices
 (see <a class="reference external" href="http://hplgit.github.io/setup4book-doconce/doc/web/index.html">example</a>).</li>
-<li>DocOnce enables authors who write for many times of media
+<li>DocOnce enables authors who write for many types of media
 (blog posts, wikis, LaTeX manuscripts, Sphinx, HTML) to use a common
 source language such that lots of different pieces can easily be
 brought together later to form a coherent (big) document.</li>
@@ -4014,7 +4014,7 @@ admonitions.</p>
 <div class="section" id="layout-of-admonitions-in-html">
 <span id="index-95"></span><h4>Layout of admonitions in HTML<a class="headerlink" href="#layout-of-admonitions-in-html" title="Permalink to this headline">¶</a></h4>
 <p>The command-line argument <tt class="docutils literal"><span class="pre">--html_admon</span></tt> sets the admonition style
-for the <tt class="docutils literal"><span class="pre">html</span></tt> format:</p>
+for the <tt class="docutils literal"><span class="pre">html</span></tt> format (see <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/admon/index.html">demo</a>):</p>
 <blockquote>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">--html_admon=gray</span></tt> for
@@ -4055,7 +4055,7 @@ for the <tt class="docutils literal"><span class="pre">apricot</span></tt>, <tt 
 <span id="index-96"></span><h4>Layout of admonitions in LaTeX<a class="headerlink" href="#layout-of-admonitions-in-latex" title="Permalink to this headline">¶</a></h4>
 <p>In <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, the type of admonition style is set by
 the command-line option <tt class="docutils literal"><span class="pre">--latex_admon=</span></tt>.
-Several values are available:</p>
+Several values are available (see <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/admon/index.html">demo</a>):</p>
 <blockquote>
 <div><ul class="simple">
 <li><tt class="docutils literal"><span class="pre">paragraph</span></tt> is the simplest type of admonition and typeset
@@ -4161,7 +4161,7 @@ a native <em>example</em> environment in LaTeX, while other formats can
 simply typeset examples as subsections. You can
 then introduce your own example
 environment in DocOnce and write the environment like this:</p>
-<div class="highlight-doconce"><div class="highlight"><pre>|bu-example Addition label=ex:math:1p1
+<div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bu</span>-example Addition label=ex:math:1p1
 We have
 
 <span class="k">!bt</span>
@@ -4224,6 +4224,16 @@ the other keys. The LaTeX output is here defined by the function
 
 <span class="si">%s</span><span class="s"></span>
 <span class="s">\end{example}</span>
+
+<span class="s">def get_label(titleline):</span>
+<span class="s">    label = &#39;&#39;</span>
+<span class="s">    if &#39;label=&#39; in titleline:</span>
+<span class="s">        pattern = r&#39;label=([^\s]+)&#39;</span>
+<span class="s">        m = re.search(pattern, titleline)</span>
+<span class="s">        if m:</span>
+<span class="s">            label = m.group(1)</span>
+<span class="s">            titleline = re.sub(pattern, &#39;&#39;, titleline).strip()</span>
+<span class="s">    return label, titleline</span>
 <span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">titleline</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">s</span>
 </pre></div>
@@ -4298,13 +4308,13 @@ file to see this example environment and another <em>highligh</em> environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
 notice admon for all other formats. The highlight environment is
 written like</p>
-<div class="highlight-doconce"><div class="highlight"><pre>|bu-highlight Highlight box!
+<div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bu</span>-highlight Highlight box!
 This environment is used to highlight something:
 
 <span class="k">!bt</span>
 \[ E = mc^2 \]
 <span class="k">!et</span>
-|eu-highlight
+<span class="k">!eu</span>-highlight
 </pre></div>
 </div>
 <p>and typeset (in <tt class="docutils literal"><span class="pre">${FORMAT}</span></tt>) as</p>
@@ -4324,6 +4334,21 @@ that all syntax is correct:</p>
 <p class="last">A common error is to have the <tt class="docutils literal"><span class="pre">envir2format</span></tt> dictionary defined
 before the functions it refers to.</p>
 </div>
+<p>A complete example showing how one can create tailored environments
+for computer code, in particular the following one (with a caption),</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/userdef_code_envir.png"><img alt="_images/userdef_code_envir.png" src="_images/userdef_code_envir.png" style="width: 400px;" /></a>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<p>appears at the end of the document
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>.</p>
 </div>
 </div>
 <div class="section" id="bibliography-references">
@@ -6099,17 +6124,18 @@ doconce format html mydoc2
 <p>Blog posts at Google can also be published <a class="reference external" href="http://support.google.com/blogger/bin/answer.py?hl=en&amp;answer=41452">automatically through email</a>.
 A Python program can send the contents of the HTML file
 to the blog site&#8217;s email address using the packages  <tt class="docutils literal"><span class="pre">smtplib</span></tt> and <tt class="docutils literal"><span class="pre">email</span></tt>.</p>
-<p>WordPress (<tt class="docutils literal"><span class="pre">wordpress.com</span></tt>) allows raw HTML code in blogs,
-but has very limited
-LaTeX support, basically only formulas. The <tt class="docutils literal"><span class="pre">--wordpress</span></tt> option to
-<tt class="docutils literal"><span class="pre">doconce</span></tt> modifies the HTML code such that all equations are typeset
-in a way that is acceptable to WordPress.
-Look at a <a class="reference external" href="http://doconce.wordpress.com">simple doconce example</a>
-and a <a class="reference external" href="http://doconcereportdemo.wordpress.com/">scientific report</a>
-to see blog posts with mathematics and code on WordPress.</p>
+<p>WordPress (<tt class="docutils literal"><span class="pre">wordpress.com</span></tt>) allows raw HTML code in blogs, but has
+very limited LaTeX support, basically only formulas. The <tt class="docutils literal"><span class="pre">--wordpress</span></tt>
+option to <tt class="docutils literal"><span class="pre">doconce</span></tt> modifies the HTML code such that all equations are
+typeset in a way that is acceptable to WordPress.  Look at a <a class="reference external" href="http://doconce.wordpress.com">simple
+doconce example</a> and a <a class="reference external" href="http://doconcereportdemo.wordpress.com/">scientific
+report</a> to see blog posts
+with mathematics and code on WordPress.</p>
 <p>Speaking of WordPress, the related project <a class="reference external" href="http://pressbooks.com">http://pressbooks.com</a> can take raw HTML code (from DocOnce, for
-instance) and produce very nice-looking books.  There is no support
-for mathematics in the text, though.</p>
+instance, but use the <tt class="docutils literal"><span class="pre">--wordpress</span></tt> option)
+and produce very nice-looking books.  There is support for LaTeX
+mathematics as in WordPress blog posts, meaning that one cannot refer
+to equations.</p>
 </div>
 <div class="section" id="pandoc-and-markdown">
 <span id="do2any-pandoc"></span><h3>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h3>
@@ -7598,7 +7624,7 @@ Note: the colors in mdfbox and other boxes can customized.
 The color to be used as background in admonitions.
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
- &#39;--latex_admon_color=yellow!5&#39;
+  &#39;--latex_admon_color=yellow!5&#39;
 Note the quotes, needed for bash, in the latter example.
 
 If --latex_admon=mdfbox, the background of the title and
@@ -7608,6 +7634,11 @@ blue title background is obtained by editing the .tex file as
 
 doconce replace &#39;linecolor=black,&#39; &#39;linecolor=darkblue,&#39; mydoc.tex
 doconce subst &#39;frametitlebackgroundcolor=.*?,&#39; &#39;frametitlebackgroundcolor=blue!5,&#39; mydoc.tex
+
+Actually, this particular (and common) edit is automatically done by the option
+  --latex_admon_color=bluestyle
+  --latex_admon_color=yellowstyle
+(the latter has color yellow!5 instead and yellow!20 for the border)
 
 
 

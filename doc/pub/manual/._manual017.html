@@ -504,7 +504,7 @@ admonitions.
 
 <p>
 The command-line argument <code>--html_admon</code> sets the admonition style
-for the <code>html</code> format:
+for the <code>html</code> format (see <a href="http://hplgit.github.io/doconce/doc/pub/admon/index.html" target="_self">demo</a>):
 
 <ul>
  <li> <code>--html_admon=gray</code> for
@@ -547,7 +547,7 @@ Some recommended combinations for admonitions in HTML are
 <p>
 In <code>latex</code> and <code>pdflatex</code>, the type of admonition style is set by
 the command-line option <code>--latex_admon=</code>.
-Several values are available:
+Several values are available (see <a href="http://hplgit.github.io/doconce/doc/pub/admon/index.html" target="_self">demo</a>):
 
 <ul>
  <li> <code>paragraph</code> is the simplest type of admonition and typeset
@@ -686,7 +686,7 @@ environment in DocOnce and write the environment like this:
 <p>
 
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">|bu-example Addition label=ex:math:1p1
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bu-example Addition label=ex:math:1p1
 We have
 
 !bt
@@ -760,6 +760,16 @@ the other keys. The LaTeX output is here defined by the function
 
 <span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
 <span style="color: #BA2121">\end{example}</span>
+
+<span style="color: #BA2121">def get_label(titleline):</span>
+<span style="color: #BA2121">    label = &#39;&#39;</span>
+<span style="color: #BA2121">    if &#39;label=&#39; in titleline:</span>
+<span style="color: #BA2121">        pattern = r&#39;label=([^\s]+)&#39;</span>
+<span style="color: #BA2121">        m = re.search(pattern, titleline)</span>
+<span style="color: #BA2121">        if m:</span>
+<span style="color: #BA2121">            label = m.group(1)</span>
+<span style="color: #BA2121">            titleline = re.sub(pattern, &#39;&#39;, titleline).strip()</span>
+<span style="color: #BA2121">    return label, titleline</span>
 <span style="color: #BA2121">&quot;&quot;&quot;</span> <span style="color: #666666">%</span> (titleline, text)
     <span style="color: #008000; font-weight: bold">return</span> s
 </pre></div>
@@ -862,13 +872,13 @@ written like
 <p>
 
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">|bu-highlight Highlight box!
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bu-highlight Highlight box!
 This environment is used to highlight something:
 
 !bt
 \[ E = mc^2 \]
 !et
-|eu-highlight
+!eu-highlight
 </pre></div>
 <p>
 and typeset (in <code>${FORMAT}</code>) as
@@ -899,6 +909,25 @@ A common error is to have the <code>envir2format</code> dictionary defined
 before the functions it refers to.
 </div>
 
+
+<p>
+A complete example showing how one can create tailored environments
+for computer code, in particular the following one (with a caption),
+
+<p>
+<br />
+<br />
+
+<p>
+<center><p><img src="../latexcode/fig/userdef_code_envir.png" align="bottom" width=400></p></center>
+
+<p>
+<br />
+<br />
+
+<p>
+appears at the end of the document
+<a href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" target="_self">Demonstration of DocOnce support for LaTeX code block environments</a>.
 
 <h1 id="___sec72">Bibliography (References) </h1>
 
