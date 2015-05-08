@@ -2793,13 +2793,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
 \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
-"""
-            # Is a cod/pro background requested?
-            # See also tcolorbox as an alternative for background
-            # colors: http://tex.stackexchange.com/questions/173850/problem-in-adding-a-background-color-in-a-minted-environment
-            pattern = '-(yellow|red|blue|gray)'
-            if re.search(pattern, latex_code_style):
-                INTRO['latex'] += r"""
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
 \definecolor{bar_gray}{rgb}{.92, .92, .92}
@@ -2818,9 +2811,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
-
-% Background for code blocks (parameter is color name)
 """
+            # Is a cod/pro background requested?
+            # See also tcolorbox as an alternative for background
+            # colors: http://tex.stackexchange.com/questions/173850/problem-in-adding-a-background-color-in-a-minted-environment
+            pattern = '-(yellow|red|blue|gray)'
+            if re.search(pattern, latex_code_style):
                 if not '!bbox' in filestr:
                     if 'numbers' in str(latex_code_style) or \
                        'linenos' in str(latex_code_style):
@@ -2829,7 +2825,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                         fboxsep = '-1.5mm'
                     # No use of !bbox and hence no use of fboxsep
                     # for those boxes, and we can redefine fboxsep here
-                    INTRO['latex'] += r"""\setlength{\fboxsep}{%s}  %% adjust cod/pro background box
+                    INTRO['latex'] += r"""
+% Background for code blocks (parameter is color name)
+\setlength{\fboxsep}{%s}  %% adjust cod/pro background box
 \newenvironment{cod}[1]{
    \def\FrameCommand{\colorbox{#1}}
    \MakeFramed{\FrameRestore}}

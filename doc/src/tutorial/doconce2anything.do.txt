@@ -771,17 +771,17 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_list_of_exercises=loe,toc,none` (LaTeX list of exercises, integrated into the table of contents, or no list)
  * `--latex_fancy_header` (chapter/section headings at top of pages, style depends on value of `--latex_section_headings`)
  * `--latex_section_headings=std,blue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
- * `--latex_colored_table_rows=blue,gray,no` (color of every two lines in tables)
+ * `--latex_colored_table_rows=blue, gray, no` (color of every two lines in tables)
  * `--latex_todonotes` (inline comments typeset as ``bubbles'')
- * `--latex_double_spacing`
- * `--latex_line_numbers`
+ * `--latex_double_spacing` (to ease hand-writing between the lines)
+ * `--latex_line_numbers` (to ease references to sentences)
  * `--latex_labels_in_margin` (name of section, equation, citation labels in the margin)
  * `--latex_preamble=filename` (user-specific preamble)
- * `--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2`
- * `--latex_admon_color=0.34,0.02,0.8`
- * `--latex_admon_envir_map=2`
- * `--latex_exercise_numbering=absolute,chapter`
- * `--latex_movie=media9,href,multimedia,movie15`
+ * `--latex_admon=mdfbox, graybox2, grayicon, yellowicon, paragraph, colors1, colors2`
+ * `--latex_admon_color=0.34,0.02,0.8` (background color in admons)
+ * `--latex_admon_envir_map=2` (code environment names in admons)
+ * `--latex_exercise_numbering=absolute, chapter`
+ * `--latex_movie=media9, href, multimedia, movie15` (control typesetting of movies)
  * `--latex_movie_controls=on`
  * `--latex_external_movie_viewer` (for `movie15` package)
  * `--xelatex` (prepare for XeLaTeX)

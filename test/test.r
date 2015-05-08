@@ -4277,10 +4277,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
-\fancyhf{}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{1pt}
 % section name to the left (L) and page number to the right (R)
 % on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
+% (switch twoside to onside in documentclass to just have odd pages)
+\fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}
 \pagestyle{fancy}
 
@@ -6667,10 +6669,12 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
-\fancyhf{}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{1pt}
 % section name to the left (L) and page number to the right (R)
 % on even (E) pages, the other way around on odd pages
-\fancyhead[LE,RO]{\rightmark} %section
+% (switch twoside to onside in documentclass to just have odd pages)
+\fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}
 \pagestyle{fancy}
 
@@ -8957,6 +8961,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
    \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
    \MakeFramed{\FrameRestore}}
    {\endMakeFramed}
+
 \usepackage{listingsutf8}
 
 % Common lstlisting parameters
@@ -59910,6 +59915,9 @@ cp slides1.html slides1_html5slides_template-default.html
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3 --html_style=solarized3 --html_output=slides1_html_solarized3
 doconce slides_html slides1_html_solarized3 doconce --nav_button=gray2,bottom --font_size=slides
 
+doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized3 --html_style=solarized3 --html_output=slides1_html_solarized3_space
+doconce split_html slides1_html_solarized3_space --method=space10
+
 doconce format html slides1 SLIDE_TYPE=html SLIDE_THEME=solarized2 --html_style=solarized2 --html_output=slides1_html_solarized2
 doconce slides_html slides1_html_solarized2 doconce --nav_button=gray2,bottom --font_size=slides
 
@@ -61852,6 +61860,9 @@ title (Warning) since no title is specified.
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+% Background for code blocks (parameter is color name)
+
 \usepackage{listingsutf8}
 
 % Common lstlisting parameters
@@ -72370,7 +72381,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f3037876410>
+verbatim is to be replaced using <function html_verbatim at 0x7f864f765398>
 
 
 First occurence: " `mako`."
@@ -76345,7 +76356,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Wed May  6 00:20:12 2015.
+# sphinx-quickstart on Fri May  8 01:36:18 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80025,8 +80036,7 @@ doconce replace from-text to-text file1 file2 ...
 (exact text substutition)
 
 # doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
+doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -80469,6 +80479,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+% Background for code blocks (parameter is color name)
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -81685,8 +81698,7 @@ doconce replace from-text to-text file1 file2 ...
 (exact text substutition)
 
 # doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
+doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -82944,8 +82956,7 @@ list of capabilities::
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -84295,8 +84306,7 @@ list of capabilities:
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -85496,8 +85506,7 @@ doconce replace from-text to-text file1 file2 ...
 (exact text substutition)
 
 # doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
+doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -86733,8 +86742,7 @@ doconce replace from-text to-text file1 file2 ...
 (exact text substutition)
 
 # doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
+doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -87913,8 +87921,7 @@ doconce replace from-text to-text file1 file2 ...
 (exact text substutition)
 
 # doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
+doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -89042,8 +89049,7 @@ list of capabilities::
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -90174,8 +90180,7 @@ list of capabilities::
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -91364,8 +91369,7 @@ list of capabilities::
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -92569,8 +92573,7 @@ list of capabilities:
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
@@ -94234,7 +94237,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -94254,7 +94257,7 @@ t line 1281.
 
 
 
-t line 1290.
+t line 1292.
 
 
 
@@ -94275,7 +94278,7 @@ t line 1290.
 
 
 
-t line 1294.
+t line 1296.
 
 
 
@@ -95109,7 +95112,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -95129,7 +95132,7 @@ t line 1281.
 
 
 
-t line 1290.
+t line 1292.
 
 
 
@@ -95150,7 +95153,7 @@ t line 1290.
 
 
 
-t line 1294.
+t line 1296.
 
 
 
@@ -95882,7 +95885,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1281.
+t line 1283.
 
 
 
@@ -95902,7 +95905,7 @@ t line 1281.
 
 
 
-t line 1290.
+t line 1292.
 
 
 
@@ -95923,7 +95926,7 @@ t line 1290.
 
 
 
-t line 1294.
+t line 1296.
 
 
 
@@ -97346,7 +97349,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1232.
+t line 1234.
 
 
 
@@ -97366,7 +97369,7 @@ t line 1232.
 
 
 
-t line 1241.
+t line 1243.
 
 
 
@@ -97386,7 +97389,7 @@ t line 1241.
 
 
 
-t line 1245.
+t line 1247.
 
 
 
@@ -109201,11 +109204,9 @@ back again)
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # doconce replace using from and to phrases from file  
 [14]
-Overfull \hbox (59.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...  
-
-Overfull \hbox (47.00006pt too wide) 
-[]\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
+Overfull \hbox (137.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to-replacements file1
+ file2 ...  
 
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
@@ -109243,11 +109244,11 @@ Overfull \hbox (65.00006pt too wide)
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
-[15]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
 light  
-
+[15]
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
@@ -109362,11 +109363,11 @@ Overfull \hbox (113.00006pt too wide)
 
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
-[18]
+
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-
+[18]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -109377,11 +109378,11 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[19]
+
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
-
+[19]
 Overfull \hbox (18.10902pt too wide) 
 []
 
@@ -109719,11 +109720,9 @@ back again)
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # doconce replace using from and to phrases from file  
 
-Overfull \hbox (59.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to file1 file2 ...  
-
-Overfull \hbox (47.00006pt too wide) 
-[]\T1/pcr/m/n/10 (exact text substitution, but a set of from-to relations)  
+Overfull \hbox (137.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to-replacements file1
+ file2 ...  
 
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 # replace all mako function calls by the results of the calls 
@@ -109859,11 +109858,11 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[18]
+
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
-
+[18]
 Overfull \hbox (77.00006pt too wide) 
 []\T1/pcr/m/n/10 Derive an expression for the area of an ellipse by integrating
   

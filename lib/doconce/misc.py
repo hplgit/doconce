@@ -964,6 +964,12 @@ def replace():
 
 def _usage_replace_from_file():
     print 'Usage: doconce replace_from_file file-with-from-to file1 file2 ...'
+    print '\nThe file must contain two columns with the from and to parts'
+    print 'for each substitution. Comment lines starting with # are allowed.'
+    print 'The output from doconce list_labels has a form suitable for'
+    print 'being extended with a second column with new labels and run'
+    print 'with this command to clean up label names.'
+
 
 def replace_from_file():
     """
@@ -5650,7 +5656,7 @@ def doconce_rst_split(parts, basename, filename):
     return generated_files
 
 def _usage_list_labels():
-    print 'Usage: doconce list_labels doconcefile.do.txt | latexfile.tex'
+    print 'Usage: doconce list_labels doconcefile.do.txt'
 
 def list_labels():
     """
@@ -5668,37 +5674,38 @@ def list_labels():
     if len(sys.argv) <= 1:
         _usage_list_labels()
         sys.exit(0)
-    filename = sys.argv[1]
+    filenames = sys.argv[1:]
 
-    # doconce or latex file
-    dofile = True if filename.endswith('.do.txt') else False
-    lines = open(filename, 'r').readlines()
-    labels = []  # not yet used, but nice to collect all labels
-    for line in lines:
-        # Identify heading and print out
-        heading = ''
-        if dofile:
-            m = re.search(r'={3,7}\s*(.+?)\s*={3,7}', line)
-            if m:
-                heading = m.group(1).strip()
-        else:
-            m = re.search(r'section\{(.+)\}', line) # make .+ greedy
-            if m:
-                heading = m.group(1).strip()
-        if heading:
-            print '#', heading
-
-        # Identify label
-        if 'label{' in line:
-            m = re.search(r'label\{(.+?)\}', line)
-            if m:
-                label = m.group(1).strip()
+    for filename in filenames:
+        # Seach in doconce or latex file
+        dofile = True if filename.endswith('.do.txt') else False
+        lines = open(filename, 'r').readlines()
+        labels = []  # not yet used, but nice to collect all labels
+        for line in lines:
+            # Identify heading and print out
+            heading = ''
+            if dofile:
+                m = re.search(r'={5,9}\s*(.+?)\s*={5,9}', line)
+                if m:
+                    heading = m.group(1).strip()
             else:
-                print 'Syntax error in line'
-                print line
-                _abort()
-            print label
-            labels.append(label)
+                m = re.search(r'section\*?\{(.+)\}', line) # make .+ greedy
+                if m:
+                    heading = m.group(1).strip()
+            if heading:
+                print '# section:', heading
+
+            # Identify label
+            if 'label{' in line:
+                m = re.search(r'label\{(.+?)\}', line)
+                if m:
+                    label = m.group(1).strip()
+                else:
+                    print 'Syntax error in line'
+                    print line
+                    _abort()
+                print label
+                labels.append(label)
 
 
 def _usage_teamod():

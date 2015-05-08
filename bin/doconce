@@ -537,10 +537,16 @@ create RunestoneInteractive directory
     import conf as source_dir_conf  # read data from conf.py
 
     if not os.path.isdir('RunestoneTools'):
-        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
-    os.chdir('RunestoneTools')
+        system('git clone https://github.com/RunestoneInteractive/RunestoneComponents.git')
+    os.chdir('RunestoneComponents')
 
     # Edit conf.py
+    # This one does not work anymore: run runestone init instead,
+    print 'RunestoneInteractive has recently changed its setup - must abort'
+    sys.exit(1)
+    # it's the file runestone/__main__.py and function init()
+    # Need to build a bash script that runs the command and feeds the answers
+    # See also https://github.com/RunestoneInteractive/RunestoneComponents
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME HERE>', source_dir_conf.project)
@@ -969,8 +975,7 @@ doconce replace from-text to-text file1 file2 ...
 (exact text substutition)
 
 # doconce replace using from and to phrases from file
-doconce replace_from_file file-with-from-to file1 file2 ...
-(exact text substitution, but a set of from-to relations)
+doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...

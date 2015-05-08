@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: May 6, 2015
+:Date: May 8, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -1007,8 +1007,7 @@ list of capabilities:
         (exact text substutition)
         
         # doconce replace using from and to phrases from file
-        doconce replace_from_file file-with-from-to file1 file2 ...
-        (exact text substitution, but a set of from-to relations)
+        doconce replace_from_file file-with-from-to-replacements file1 file2 ...
         
         # replace all mako function calls by the results of the calls
         doconce expand_mako mako_code_file funcname file1 file2 ...
