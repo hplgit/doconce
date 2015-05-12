@@ -527,23 +527,19 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         from IPython.nbformat.v3 import (
             new_code_cell, new_text_cell, new_worksheet,
             new_notebook, new_metadata, new_author)
-        import IPython.nbformat.v3.nbjson as nbjson
         nb = new_worksheet()
     elif ipy_version == 4:
         from IPython.nbformat.v4 import (
-            new_code_cell, new_markdown_cell, new_notebook,
-            new_metadata, new_author)
-        import IPython.nbformat.v4.nbjson as nbjson
-        nb = new_notebook()
+            new_code_cell, new_markdown_cell, new_notebook)
+        cells = []
 
-
-    prompt_number = 1  # not used for v4 notebook!
+    prompt_number = 1
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
             if ipy_version == 3:
                 nb.cells.append(new_text_cell(u'markdown', source=block))
             elif ipy_version == 4:
-                nb.cells.append(new_markdown_cell(u'markdown', source=block))
+                cells.append(new_markdown_cell(u'markdown', source=block))
         elif block_tp == 'cell' and block != '' and block != []:
             if isinstance(block, list):
                 for block_ in block:
@@ -554,9 +550,9 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                                 prompt_number=prompt_number,
                                 collapsed=False))
                         elif ipy_version == 4:
-                            nb.cells.append(new_code_cell(
+                            cells.append(new_code_cell(
                                 source=block_,
-                                prompt_number=prompt_number,
+                                execution_count=prompt_number,
                                 collapsed=False))
                         prompt_number += 1
             else:
@@ -567,9 +563,9 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                             prompt_number=prompt_number,
                             collapsed=False))
                     elif ipy_version == 4:
-                        nb.cells.append(new_code_cell(
+                        cells.append(new_code_cell(
                             source=block,
-                            prompt_number=prompt_number,
+                            execution_count=prompt_number,
                             collapsed=False))
                     prompt_number += 1
         elif block_tp == 'cell_hidden' and block != '':
@@ -577,27 +573,33 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 nb.cells.append(new_code_cell(
                     input=block, prompt_number=prompt_number, collapsed=True))
             elif ipy_version == 4:
-                nb.cells.append(new_code_cell(
-                    source=block, prompt_number=prompt_number, collapsed=True))
+                cells.append(new_code_cell(
+                    source=block, execution_count=prompt_number, collapsed=True))
             prompt_number += 1
 
-    # Catch the title as the first heading
-    m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
-    title = m.group(1).strip() if m else ''
-    if authors:
-        authors = eval(authors)
-        md = new_metadata(name=title, authors=authors)
-    else:
-        md = new_metadata(name=title)
     if ipy_version == 3:
+        # Catch the title as the first heading
+        m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
+        title = m.group(1).strip() if m else ''
+        if authors:
+            authors = eval(authors)
+            md = new_metadata(name=title, authors=authors)
+        else:
+            md = new_metadata(name=title)
         nb = new_notebook(worksheets=[nb], metadata=new_metadata())
         # Let us make v4 notebook here by upgrading
         from IPython.nbformat.v4 import upgrade
         nb = upgrade(nb)
         import IPython.nbformat.v4.nbjson as nbjson
 
-    # Convert nb to json format
-    filestr = nbjson.writes(nb)
+        # Convert nb to json format
+        filestr = nbjson.writes(nb)
+    elif ipy_version == 4:
+        nb = new_notebook(cells=cells)
+        from IPython.nbformat import writes
+        filestr = writes(nb, version=4)
+
+
 
     # Check that there are no empty cells:
     if '"input": []' in filestr:
