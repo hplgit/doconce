@@ -242,9 +242,14 @@ line
 output
 !ec
 
-Here is the interactive session again, but with `dpyshell`:
+Here is the interactive session again, but with `pyshell-t`.
+% if FORMAT == 'ipynb':
+This makes a significant difference in the Jupyter Notebook, but
+not in other formats: code is not typset in cells, but printed
+verbatim in plain text (`-t` for text).
+% endif
 
-!bc dpyshell
+!bc pyshell-t
 >>> from numpy import linspace, sin
 >>> # Some comment
 >>> x = linspace(0, 2, 11)
@@ -2575,9 +2580,9 @@ line
 output
 \eipy
 
-Here is the interactive session again, but with \Verb!dpyshell!:
+Here is the interactive session again, but with \Verb!pyshell-t!.
 
-\bdpyshell
+\bpyshell
 >>> from numpy import linspace, sin
 >>> # Some comment
 >>> x = linspace(0, 2, 11)
@@ -2586,7 +2591,7 @@ Here is the interactive session again, but with \Verb!dpyshell!:
 0
 >>> import matplotlib.pyplot as plt
 >>> plt.plot(x, y)
-\edpyshell
+\epyshell
 
 % This one tests a + sign before a code environment
 C++:
@@ -4910,7 +4915,7 @@ output
 \end{Verbatim}
 \noindent
 
-Here is the interactive session again, but with \Verb!dpyshell!:
+Here is the interactive session again, but with \Verb!pyshell-t!.
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 >>> from numpy import linspace, sin
@@ -6631,8 +6636,6 @@ in a separate document: \Verb!admon.do.txt!.
 
 \bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
-\bdpyshell (!bc dpyshell) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
 \bpyshell (!bc pyshell) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
 \bhtmlcod (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
@@ -7316,7 +7319,7 @@ line
 output
 \end{minted}
 
-Here is the interactive session again, but with \Verb!dpyshell!:
+Here is the interactive session again, but with \Verb!pyshell-t!.
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 >>> from numpy import linspace, sin
@@ -9709,7 +9712,7 @@ output
 \end{lstlisting}\end{cod}
 \noindent
 
-Here is the interactive session again, but with \Verb!dpyshell!:
+Here is the interactive session again, but with \Verb!pyshell-t!.
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 >>> from numpy import linspace, sin
@@ -11631,7 +11634,7 @@ Similar IPython sessions::
         line
         output
 
-Here is the interactive session again, but with ``dpyshell``::
+Here is the interactive session again, but with ``pyshell-t``::
 
         >>> from numpy import linspace, sin
         >>> # Some comment
@@ -13443,7 +13446,7 @@ Similar IPython sessions:
         line
         output
 
-Here is the interactive session again, but with ``dpyshell``:
+Here is the interactive session again, but with ``pyshell-t``.
 
 .. code-block:: python
 
@@ -15318,7 +15321,7 @@ line
 output
 }}}
 
-Here is the interactive session again, but with `dpyshell`:
+Here is the interactive session again, but with `pyshell-t`.
 
 {{{
 >>> from numpy import linspace, sin
@@ -17007,7 +17010,7 @@ line
 output
 </syntaxhighlight>
 
-Here is the interactive session again, but with <code>dpyshell</code>:
+Here is the interactive session again, but with <code>pyshell-t</code>.
 
 <syntaxhighlight lang="python">
 >>> from numpy import linspace, sin
@@ -18796,7 +18799,7 @@ line
 output
 }}}
 
-Here is the interactive session again, but with {{{dpyshell}}}:
+Here is the interactive session again, but with {{{pyshell-t}}}.
 
 {{{
 >>> from numpy import linspace, sin
@@ -20378,7 +20381,7 @@ Similar IPython sessions::
         line
         output
 
-Here is the interactive session again, but with 'dpyshell'::
+Here is the interactive session again, but with 'pyshell-t'::
 
         >>> from numpy import linspace, sin
         >>> # Some comment
@@ -21803,7 +21806,7 @@ Similar IPython sessions::
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
 
-Here is the interactive session again, but with C{dpyshell}::
+Here is the interactive session again, but with C{pyshell-t}::
 
         >>> from numpy import linspace, sin
         >>> # Some comment
@@ -23345,7 +23348,7 @@ Similar IPython sessions::
         line
         output
 
-Here is the interactive session again, but with dpyshell::
+Here is the interactive session again, but with pyshell-t::
 
         >>> from numpy import linspace, sin
         >>> # Some comment
@@ -24942,7 +24945,7 @@ line
 output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here is the interactive session again, but with `dpyshell`:
+Here is the interactive session again, but with `pyshell-t`.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
@@ -26506,2366 +26509,2367 @@ is at the end with only one newline.
 
 ************** File: testdoc.ipynb *****************
 {
- "metadata": {},
- "nbformat": 3,
- "nbformat_minor": 0,
- "worksheets": [
+ "cells": [
   {
-   "cells": [
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "# A Document for Testing DocOnce\n",
-      "**Jan 32, 2100**\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "The format of this document is\n",
-      "ipynb\n",
-      "\n",
-      "**Abstract.** This is a document with many test constructions for doconce syntax.\n",
-      "It was used heavily for the development and kept for testing\n",
-      "numerous constructions, also special and less common cases.\n",
-      "\n",
-      "And exactly for test purposes we have an extra line here, which\n",
-      "is part of the abstract.\n",
-      "\n",
-      "<!-- Cannot demonstrate chapter headings since abstract and chapter -->\n",
-      "<!-- are mutually exclusive in LaTeX -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "## Section 1\n",
-      "<div id=\"sec1\"></div>\n",
-      "\n",
-      "Here is a nested list:\n",
-      "\n",
-      "  * item1\n",
-      "\n",
-      "  * item2\n",
-      "\n",
-      "  * item3 which continues\n",
-      "    on the next line to test that feature\n",
-      "\n",
-      "  * and a sublist\n",
-      "\n",
-      "    * with indented subitem1\n",
-      "\n",
-      "    * and a subitem2\n",
-      "\n",
-      "\n",
-      "  * and perhaps an ordered sublist\n",
-      "\n",
-      "   1. first item\n",
-      "\n",
-      "   2. second item,\n",
-      "      continuing on a new line\n",
-      "\n",
-      "\n",
-      "**Here is a list with paragraph heading.**\n",
-      "\n",
-      "  * item1\n",
-      "\n",
-      "  * item2\n",
-      "\n",
-      "#### Here is a list with subsubsection heading\n",
-      "\n",
-      "  * item1\n",
-      "\n",
-      "  * item2\n",
-      "\n",
-      "> Here are two lines that make up\n",
-      "> a block quote for testing *emphasized words* and **boldface words**,\n",
-      "> also with hypens:\n",
-      "> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "Here are two references. Equation [(3)](#my:eq1) is fine. Eq. [(3)](#my:eq1) too.\n",
-      "Even Equation [(3)](#my:eq1) without the tilde.\n",
-      "\n",
-      "\n",
-      "### Subsection 1\n",
-      "<div id=\"subsec1\"></div>\n",
-      "\n",
-      "\n",
-      "<!-- Refer to section/appendix etc. at the beginning of the line -->\n",
-      "<!-- and other special fix situations for HTML. -->\n",
-      "\n",
-      "More text, with a reference back to\n",
-      "the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the\n",
-      "the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which\n",
-      "encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 10: Make references to projects and problems](#exer:some:formula).\n",
-      "Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.\n",
-      "\n",
-      "#### Test Section reference at beginning of line and after a sentence\n",
-      "\n",
-      "The section [Subsection 1](#subsec1) is fine.\n",
-      "The section [URLs](#subsubsec:ex) too.\n",
-      "\n",
-      "\n",
-      "<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->\n",
-      "\n",
-      "#### Computer code\n",
-      "\n",
-      "Let's do some copying from files too. First from subroutine up to the very end,"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "              subroutine test()\n",
-      "              integer i\n",
-      "              real*8 r\n",
-      "              r = 0\n",
-      "              do i = 1, i\n",
-      "                 r = r + i\n",
-      "              end do\n",
-      "              return\n",
-      "        C     END1\n",
-      "        \n",
-      "              program testme\n",
-      "              call test()\n",
-      "              return\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "and then just the subroutine,"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        \n",
-      "              subroutine test()\n",
-      "              integer i\n",
-      "              real*8 r\n",
-      "              r = 0\n",
-      "              do i = 1, i\n",
-      "                 r = r + i\n",
-      "              end do\n",
-      "              return\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "and finally the complete file with a plain text verbatim environment\n",
-      "(`envir=ccq`):"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        C     a comment\n",
-      "        \n",
-      "              subroutine test()\n",
-      "              integer i\n",
-      "              real*8 r\n",
-      "              r = 0\n",
-      "              do i = 1, i\n",
-      "                 r = r + i\n",
-      "              end do\n",
-      "              return\n",
-      "        C     END1\n",
-      "        \n",
-      "              program testme\n",
-      "              call test()\n",
-      "              return\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Testing other code environments. First Python:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        !bc pycod\n",
-      "        def f(x):\n",
-      "            return x+1\n",
-      "        !ec\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "which gets rendered as"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```Python\n",
-      "        def f(x):\n",
-      "            return x+1\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Test paragraph and subsubsection headings before\n",
-      "before code.\n",
-      "\n",
-      "**Paragraph heading before code.**"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```Python\n",
-      "        import sys\n",
-      "        sys.path.insert(0, os.pardir)\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "#### Subsubsection heading before code"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```Python\n",
-      "        def h(z):\n",
-      "            return z+1\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Here is a program that is supposed to be interactive via\n",
-      "Python Online Tutorial, but that service is not accessible\n",
-      "for the present format."
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "class Line:\n",
-      "    def __init__(self, a, b):\n",
-      "        self.a, self.b = a, b\n",
-      "\n",
-      "    def __call__(self, x):\n",
-      "        a, b = self.a, self.b\n",
-      "        return a*x + b\n",
-      "\n",
-      "line = Line(2, 1)\n",
-      "y = line(x=3)\n",
-      "print y\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 1
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Some more Python code (actually specified as a sage cell, but\n",
-      "such cells are not supported by this format)."
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "%matplotlib inline\n",
-      "\n",
-      "a = 2\n",
-      "b = 3\n",
-      "print 'a+b:', a + b\n",
-      "\n",
-      "# In a sage cell we can also plot\n",
-      "from matplotlib.pyplot import *\n",
-      "from numpy import *\n",
-      "x = linspace(0, 4*pi, 101)\n",
-      "y = exp(-0.1*x)*cos(x)\n",
-      "plot(x, y)\n",
-      "xlabel('x'); ylabel('y')\n",
-      "show()\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 2
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Then Cython:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```Python\n",
-      "        cpdef f(double x):\n",
-      "            return x + 1\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Standard Python shell sessions:"
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "from numpy import linspace, sin\n",
-      "# Some comment\n",
-      "x = linspace(0, 2, 11)\n",
-      "y = sin(x)\n",
-      "y[0]\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 3
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Similar IPython sessions:"
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "from numpy import linspace, sin\n",
-      "# Some comment\n",
-      "x = linspace(0, 2, 11)\n",
-      "y = sin(x)\n",
-      "y[0]\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 4
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "import matplotlib.pyplot as plt\n",
-      "plt.plot(x, y)\n",
-      "a='multiple-\\nline\\noutput'\n",
-      "a\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 5
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "print a\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 6
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Here is the interactive session again, but with `dpyshell`:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        >>> from numpy import linspace, sin\n",
-      "        >>> # Some comment\n",
-      "        >>> x = linspace(0, 2, 11)\n",
-      "        >>> y = sin(x)\n",
-      "        >>> y[0]\n",
-      "        0\n",
-      "        >>> import matplotlib.pyplot as plt\n",
-      "        >>> plt.plot(x, y)\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- This one tests a + sign before a code environment -->\n",
-      "C++:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```Cpp\n",
-      "        #include <iostream>\n",
-      "        \n",
-      "        int main()\n",
-      "        {\n",
-      "           std::cout << \"Sample output\" << std::endl;\n",
-      "           return 0\n",
-      "        }\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- The next should get correctly typset in sphinx (cod is fcod) -->\n",
-      "<!-- It also tests emoji before code -->\n",
-      "And a little bit of Fortran: :dizzy_face:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        !bc cod\n",
-      "              subroutine midpt(x, length, a, b)\n",
-      "              real*8 a, b, x\n",
-      "              x = (a + b)/2\n",
-      "              length = b - a\n",
-      "              return\n",
-      "              end\n",
-      "        !ec\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "which then is typeset as"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```Python\n",
-      "              subroutine midpt(x, length, a, b)\n",
-      "              real*8 a, b, x\n",
-      "              x = (a + b)/2\n",
-      "              length = b - a\n",
-      "              return\n",
-      "              end\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "HTML:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        <table>\n",
-      "        <tr><td>Column 1</td><td>Column 2</td></tr>\n",
-      "        <tr><td>0.67526 </td><td>0.92871 </td></tr>\n",
-      "        <!-- comment -->\n",
-      "        </table>\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "But inline HTML code is also important, like text that starts with\n",
-      "`<a href=\"` (which can destroy the following text if not properly\n",
-      "quoted).\n",
-      "\n",
-      "And here is a system call:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "```\n",
-      "        Terminal> mkdir test\n",
-      "        Terminal> cd test\n",
-      "        Terminal> myprog -f\n",
-      "        output1\n",
-      "        output2\n",
-      "\n",
-      "```"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Any valid pygments lexer/language name can appear to, e.g.,"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        !bc restructuredtext\n",
-      "        =======\n",
-      "        Heading\n",
-      "        =======\n",
-      "        \n",
-      "        Some text.\n",
-      "        !ec\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "results in"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        =======\n",
-      "        Heading\n",
-      "        =======\n",
-      "        \n",
-      "        Some text.\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Here goes hidden code. -->\n",
-      "<!-- Python can be treated by some formats, Fortran is always out. -->"
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": true,
-     "input": [
-      "def f(x):\n",
-      "    \"\"\"Secret, hidden function to be defined.\"\"\"\n",
-      "    return 42\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 7
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Finally, `!bc do` supports highlighting of DocOnce source:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        ======= DocOnce test file =======\n",
-      "        \n",
-      "        ===== Computer code =====\n",
-      "        \n",
-      "        Inline verbatim code, as in `import numpy as np`, is allowed, as well as\n",
-      "        code blocks:\n",
-      "        \n",
-      "        !bc pycod\n",
-      "        from math import sin\n",
-      "        \n",
-      "        def f(x):\n",
-      "            \"\"\"Example on a function.\"\"\"\n",
-      "            return sin(x) + 1\n",
-      "        \n",
-      "        print f(0)\n",
-      "        !ec\n",
-      "        \n",
-      "        \n",
-      "        ===== Mathematics =====\n",
-      "        \n",
-      "        Formulas can be inline, as in $\\nabla\\cdot\\boldsymbol{u} = 0$, or typeset\n",
-      "        as equations:\n",
-      "        \n",
-      "        !bt\n",
-      "        \\begin{align*}\n",
-      "        \\nabla\\cdot\\boldsymbol{u} &= 0,\\\\\n",
-      "        \\boldsymbol{u} &= \\nabla\\phi .\n",
-      "        \\end{align*}\n",
-      "        !et\n",
-      "        \n",
-      "        === Subsubsection heading ===\n",
-      "        \n",
-      "        DocOnce files can have chapters, sections, subsections, and subsubsections.\n",
-      "        \n",
-      "        __Paragraph heading.__ Paragraphs may have headings.\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "It is time to test `verbatim inline font` especially with `a newline\n",
-      "inside the text` and an exclamation mark at the end: `BEGIN`! For\n",
-      "spellcheck, test `a verbatim expression` in `another` in a `third`.\n",
-      "Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.\n",
-      "Also test backslashes and braces like `\\begin`, `\\begin{enumerate}`,\n",
-      "`\\end{this}\\end{that}`, and `{something \\inside braces}`.\n",
-      "\n",
-      "The following attempt to exemplify colored text does not work in\n",
-      "format ipynb.\n",
-      "Here is some <font color=\"red\">red color</font> and an attempt to write <font color=\"green\">with\n",
-      "green color containing a linebreak\n",
-      "code.</font> Some formats will only display \n",
-      "this correctly when `html` \n",
-      "is the output format.\n",
-      "But here some more running text is added which is not part of\n",
-      "the previous blocks with line breaks.\n",
-      "\n",
-      "#### Running OS commands"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        Terminal> python -c 'print \"Testing\\noutput\\nfrom\\nPython.\"'\n",
-      "        Testing\n",
-      "        output\n",
-      "        from\n",
-      "        Python.\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "#### Footnotes\n",
-      "\n",
-      "Here is a test of footnotes [^footnote], which are handy in text.\n",
-      "They are used in different flavors, now in\n",
-      "\n",
-      " * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)\n",
-      "\n",
-      " * even with math $\\nabla^2u$[^math1]\n",
-      "\n",
-      " * and code `h[i] += 1`[^code]\n",
-      "   (*must* have space between inline code and footnote!)\n",
-      "\n",
-      " * and [links](http://google.com)[^google-search]\n",
-      "\n",
-      "which gives flexibility in writing.\n",
-      "This is the third[^example-of-the-third-footnote] example.\n",
-      "\n",
-      "  [^footnote]: Typesetting of the footnote depends on the format.\n",
-      "Plain text does nothing, LaTeX removes the\n",
-      "definition and inserts the footnote as part of the LaTeX text.\n",
-      "reStructuredText and Sphinx employ a similar type of typesetting\n",
-      "as Extended Markdown and DocOnce, and in HTML we keep the same\n",
-      "syntax, just displayed properly in HTML.\n",
-      "[^math1]: Math footnotes can be dangerous since it\n",
-      "interferes with an exponent.\n",
-      "[^code]: One-line footnote.\n",
-      "\n",
-      "[^google-search]: <google.com> is perhaps the most famous\n",
-      "web site today.\n",
-      "\n",
-      "Here is some more text before a new definition of a footnote that was\n",
-      "used above.\n",
-      "\n",
-      "**Non-breaking space character.**\n",
-      "\n",
-      "This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical\n",
-      "example where this is needed is in physical units: 7.4 km is traveled\n",
-      "in $7.4/5.5\\approx 1.345$ s.  Also check that a~[link](http://google.com) is\n",
-      "not broken across lines (drag the browser window to test this).\n",
-      "(On the other hand, the tilde is used in\n",
-      "computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should\n",
-      "of course remain a tilde in those contexts.)\n",
-      "\n",
-      "\n",
-      "\n",
-      "### Subsection 2: Testing figures\n",
-      "<div id=\"subsec:ex\"></div>\n",
-      "\n",
-      "Test of figures. In particular we refer to [Figure](#fig:impact) in which\n",
-      "there is a flow.\n",
-      "\n",
-      "<div id=\"fig:impact\"></div>\n",
-      "\n",
-      "<p>Visualization of a wave.</p>\n",
-      "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
-      "\n",
-      "\n",
-      "\n",
-      "Figures without captions are allowed and will be inlined.\n",
-      "\n",
-      "\n",
-      "<p></p>\n",
-      "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- Test multi-line caption in figure -->\n",
-      "\n",
-      "Here is [figure](#myfig) with a long multi-line caption\n",
-      "and an extra space before the FIGURE keyword.\n",
-      "\n",
-      "<div id=\"myfig\"></div>\n",
-      "\n",
-      "<p>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$.</p>\n",
-      "<img src=\"../doc/src/manual/fig/wave1D.png\" width=500>\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->\n",
-      "\n",
-      "Test URL as figure name:\n",
-      "\n",
-      "\n",
-      "<p></p>\n",
-      "<img src=\"https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png\" width=500,>\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
-      "\n",
-      "\n",
-      "**Remark.**\n",
-      "Movies are tested in separate file `movies.do.txt`.\n",
-      "\n",
-      "\n",
-      "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
-      "\n",
-      "### The $\\theta$ parameter (not $\\nabla$?)\n",
-      "<div id=\"decay:sec:theta\"></div>\n",
-      "\n",
-      "Functions do not always need to be advanced, here is one\n",
-      "involving $\\theta$:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        def f(theta):\n",
-      "            return theta**2\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "**More on $\\theta$.** Here is more text following headline with math.\n",
-      "\n",
-      "Newcommands must also be tested in this test report:\n",
-      "$\\frac{1}{2}$, ${1/2}$, $\\pmb{x}$, $\\frac{Du}{dt}$,\n",
-      "both inline and in block:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\frac{Du}{dt} = 0\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\frac{1}{2} = {1/2}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\frac{1}{2}\\pmb{x} = \\pmb{n}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Or with align with label and numbers:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Equation labels as ordinary links -->\n",
-      "<div id=\"aligneq1\"></div>\n",
-      "\n",
-      "$$\n",
-      "\\begin{equation}\n",
-      "\\frac{Du}{dt} = 0\n",
-      "\\label{aligneq1} \\tag{1}\n",
-      "\\end{equation}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\begin{equation}  \n",
-      "\\frac{1}{2} = {1/2}\n",
-      "\\end{equation}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Equation labels as ordinary links -->\n",
-      "<div id=\"aligneq2\"></div>\n",
-      "\n",
-      "$$\n",
-      "\\begin{equation}  \n",
-      "\\frac{1}{2}\\pmb{x} = \\pmb{n}\n",
-      "\\label{aligneq2} \\tag{2}\n",
-      "\\end{equation}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "### Custom Environments\n",
-      "\n",
-      "Here is an attempt to create a theorem environment via Mako\n",
-      "(for counting theorems) and comment lines to help replacing lines in\n",
-      "the `.tex` by proper begin-end LaTeX environments for theorems.\n",
-      "Should look nice in most formats!\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- begin theorem -->\n",
-      "<div id=\"theorem:fundamental1\"></div>\n",
-      "\n",
-      "\n",
-      "**Theorem 5.**\n",
-      "Let $a=1$ and $b=2$. Then $c=3$.\n",
-      "<!-- end theorem -->\n",
-      "\n",
-      "<!-- begin proof -->\n",
-      "**Proof.**\n",
-      "Since $c=a+b$, the result follows from straightforward addition.\n",
-      "$\\Diamond$\n",
-      "<!-- end proof -->\n",
-      "\n",
-      "As we see, the proof of Theorem 5 is a modest\n",
-      "achievement.\n",
-      "\n",
-      "\n",
-      "### Tables\n",
-      "<div id=\"subsec:table\"></div>\n",
-      "\n",
-      "\n",
-      "<!-- index with comma could fool sphinx -->\n",
-      "\n",
-      "Let us take this table from the manual:\n",
-      "\n",
-      "\n",
-      "<table border=\"1\">\n",
-      "<thead>\n",
-      "<tr><th align=\"center\">time</th> <th align=\"center\">velocity</th> <th align=\"center\">acceleration</th> </tr>\n",
-      "</thead>\n",
-      "<tbody>\n",
-      "<tr><td align=\"left\">   0.0     </td> <td align=\"right\">   1.4186      </td> <td align=\"right\">   -5.01           </td> </tr>\n",
-      "<tr><td align=\"left\">   2.0     </td> <td align=\"right\">   1.376512    </td> <td align=\"right\">   11.919          </td> </tr>\n",
-      "<tr><td align=\"left\">   4.0     </td> <td align=\"right\">   1.1E+1      </td> <td align=\"right\">   14.717624       </td> </tr>\n",
-      "</tbody>\n",
-      "</table>\n",
-      "\n",
-      "The DocOnce source code reads"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        \n",
-      "          |--------------------------------|\n",
-      "          |time  | velocity | acceleration |\n",
-      "          |--l--------r-----------r--------|\n",
-      "          | 0.0  | 1.4186   | -5.01        |\n",
-      "          | 2.0  | 1.376512 | 11.919       |\n",
-      "          | 4.0  | 1.1E+1   | 14.717624    |\n",
-      "          |--------------------------------|\n",
-      "        \n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "Here is yet another table to test that we can handle more than\n",
-      "one table:\n",
-      "\n",
-      "<table border=\"1\">\n",
-      "<thead>\n",
-      "<tr><th align=\"left\">time</th> <th align=\"left\">velocity</th> <th align=\"left\">acceleration</th> </tr>\n",
-      "</thead>\n",
-      "<tbody>\n",
-      "<tr><td align=\"left\">   0.0     </td> <td align=\"left\">   1.4186      </td> <td align=\"left\">   -5.01           </td> </tr>\n",
-      "<tr><td align=\"left\">   1.0     </td> <td align=\"left\">   1.376512    </td> <td align=\"left\">   11.919          </td> </tr>\n",
-      "<tr><td align=\"left\">   3.0     </td> <td align=\"left\">   1.1E+1      </td> <td align=\"left\">   14.717624       </td> </tr>\n",
-      "</tbody>\n",
-      "</table>\n",
-      "And one with math headings (that are expanded and must be treated\n",
-      "accordingly), verbatim heading and entry, and no space around the pipe\n",
-      "symbol:\n",
-      "\n",
-      "<table border=\"1\">\n",
-      "<thead>\n",
-      "<tr><th align=\"center\">$i$</th> <th align=\"center\">$h_i$ </th> <th align=\"center\">$\\bar T_i$</th> <th align=\"center\"> <code>L_i</code> </th> </tr>\n",
-      "</thead>\n",
-      "<tbody>\n",
-      "<tr><td align=\"left\">   0      </td> <td align=\"right\">   0         </td> <td align=\"right\">   288           </td> <td align=\"right\">   -0.0065    </td> </tr>\n",
-      "<tr><td align=\"left\">   1      </td> <td align=\"right\">   11,000    </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.0        </td> </tr>\n",
-      "<tr><td align=\"left\">   2      </td> <td align=\"right\">   20,000    </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.001      </td> </tr>\n",
-      "<tr><td align=\"left\">   3      </td> <td align=\"right\">   32,000    </td> <td align=\"right\">   228           </td> <td align=\"right\">   0.0028     </td> </tr>\n",
-      "<tr><td align=\"left\">   4      </td> <td align=\"right\">   47,000    </td> <td align=\"right\">   270           </td> <td align=\"right\">   0.0        </td> </tr>\n",
-      "<tr><td align=\"left\">   5      </td> <td align=\"right\">   51,000    </td> <td align=\"right\">   270           </td> <td align=\"right\">   -0.0028    </td> </tr>\n",
-      "<tr><td align=\"left\">   6      </td> <td align=\"right\">   71,000    </td> <td align=\"right\">   214           </td> <td align=\"right\">   <code>NaN</code>      </td> </tr>\n",
-      "</tbody>\n",
-      "</table>\n",
-      "And add one with verbatim headings (with underscores),\n",
-      "and rows starting with `|-` because of a negative number,\n",
-      "and `|` right before and after verbatim word (with no space):\n",
-      "\n",
-      "<table border=\"1\">\n",
-      "<thead>\n",
-      "<tr><th align=\"center\">exact</th> <th align=\"center\"><code>v_1</code> </th> <th align=\"center\">$a_i$ + <code>v_2</code></th> <th align=\"center\"><code>verb_3_</code></th> </tr>\n",
-      "</thead>\n",
-      "<tbody>\n",
-      "<tr><td align=\"right\">   9        </td> <td align=\"right\">   9.62      </td> <td align=\"right\">   5.57             </td> <td align=\"right\">   8.98         </td> </tr>\n",
-      "<tr><td align=\"right\">   -20      </td> <td align=\"right\">   -23.39    </td> <td align=\"right\">   -7.65            </td> <td align=\"right\">   -19.93       </td> </tr>\n",
-      "<tr><td align=\"right\">   10       </td> <td align=\"right\">   17.74     </td> <td align=\"right\">   -4.50            </td> <td align=\"right\">   9.96         </td> </tr>\n",
-      "<tr><td align=\"right\">   0        </td> <td align=\"right\">   -9.19     </td> <td align=\"right\">   4.13             </td> <td align=\"right\">   -0.26        </td> </tr>\n",
-      "</tbody>\n",
-      "</table>\n",
-      "Pipe symbols in verbatim and math text in tables used to pose difficulties,\n",
-      "but not anymore:\n",
-      "\n",
-      "<table border=\"1\">\n",
-      "<thead>\n",
-      "<tr><th align=\"center\">    $S$    </th> <th align=\"center\">   command   </th> </tr>\n",
-      "</thead>\n",
-      "<tbody>\n",
-      "<tr><td align=\"left\">   $ ||a_0|| $    </td> <td align=\"right\">   <code>norm|length</code>    </td> </tr>\n",
-      "<tr><td align=\"left\">   $x\\cap y$      </td> <td align=\"right\">   <code>x|y</code>            </td> </tr>\n",
-      "</tbody>\n",
-      "</table>\n",
-      "Finally, a table with math\n",
-      "and URLs.\n",
-      "\n",
-      "<!-- Mako code to expand URLs in the table -->\n",
-      "<!-- (These types of tables did not work before Jan 2014) -->\n",
-      "\n",
-      "\n",
-      "<table border=\"1\">\n",
-      "<tr></tr>\n",
-      "<tbody>\n",
-      "<tr><td align=\"center\">   $\\mathcal{L}=0$                    </td> <td align=\"center\">   [<code>080</code>](../doc/src/manual/mov/wave_frames/frame_0080.png)    </td> <td align=\"center\">   [<code>085</code>](../doc/src/manual/mov/wave_frames/frame_0085.png)    </td> </tr>\n",
-      "<tr><td align=\"center\">   $a=b$                              </td> <td align=\"center\">   [<code>090</code>](../doc/src/manual/mov/wave_frames/frame_0090.png)    </td> <td align=\"center\">   [<code>095</code>](../doc/src/manual/mov/wave_frames/frame_0095.png)    </td> </tr>\n",
-      "<tr><td align=\"center\">   $\\nabla\\cdot\\boldsymbol{u} =0 $    </td> <td align=\"center\">   [<code>100</code>](../doc/src/manual/mov/wave_frames/frame_0100.png)    </td> <td align=\"center\">   [<code>105</code>](../doc/src/manual/mov/wave_frames/frame_0105.png)    </td> </tr>\n",
-      "</tbody>\n",
-      "</table>\n",
-      "\n",
-      "### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`\n",
-      "\n",
-      "**Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.** Here is more `__verbatim__` code and\n",
-      "some plain text on a new line.\n",
-      "\n",
-      "<!-- Test various types of headlines -->\n",
-      "### **Just bold**\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### *Just emphasize*\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### `Just verbatim`\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### **Bold** beginning\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### *Emphasize* beginning\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### `Verbatim` beginning\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### Maybe **bold end**\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### Maybe *emphasize end*\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### Maybe `verbatim end`\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### The middle has **bold** word\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### The middle has *emphasize* word\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "### The middle has `verbatim` word\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "\n",
-      "***Just emphasize*.** Some text.\n",
-      "\n",
-      "\n",
-      "**`Just verbatim`.** Some text.\n",
-      "\n",
-      "\n",
-      "***Emphasize* beginning.** Some text.\n",
-      "\n",
-      "\n",
-      "**`Verbatim beginning`.** Some text.\n",
-      "\n",
-      "\n",
-      "**Maybe *emphasize end*.** Some text.\n",
-      "\n",
-      "\n",
-      "**Maybe `verbatim end`.** Some text.\n",
-      "\n",
-      "\n",
-      "**The middle has *emphasize* word.** Some text.\n",
-      "\n",
-      "\n",
-      "**The middle has `verbatim` word.** Some text.\n",
-      "\n",
-      "\n",
-      "**Ampersand.**\n",
-      "We can test Hennes & Mauritz, often abbreviated H&M, but written\n",
-      "as `Hennes & Mauritz` and `H & M`.\n",
-      "A sole `&` must also work.\n",
-      "<!-- Note: substitutions must not occur inside verbatim, just in ordinary text. -->"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        # Just to check that ampersand works in code blocks:\n",
-      "        c = a & b\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "**Quotes.**\n",
-      "Let us also add a test of quotes such as \"double quotes, with numbers\n",
-      "like 3.14 and newline/comma and hyphen (as in double-quote)\"; written\n",
-      "in the standard LaTeX-style that gives correct LaTeX formatting and\n",
-      "ordinary double quotes for all non-LaTeX formats.  Here is another\n",
-      "sentence that \"caused\" a bug in the past because double backtick\n",
-      "quotes could imply verbatim text up to a verbatim word starting with\n",
-      "period, like `.txt`.\n",
-      "\n",
-      "\n",
-      "### Bibliography test\n",
-      "\n",
-      "Here is an example: [[Langtangen_Pedersen_2002]](#Langtangen_Pedersen_2002) discussed propagation of\n",
-      "large destructive water waves, [[Langtangen_et_al_2002]](#Langtangen_et_al_2002) gave\n",
-      "an overview of numerical methods for solving the Navier-Stokes equations,\n",
-      "while the use of Backward Kolmogorov equations for analyzing\n",
-      "random vibrations was investigated in [[Langtangen_1994a]](#Langtangen_1994a).\n",
-      "The book chapter [[Mardal_et_al_2003a]](#Mardal_et_al_2003a) contains information on\n",
-      "C++ software tools for programming multigrid methods. A real retro\n",
-      "reference is [[Langtangen_1988d]](#Langtangen_1988d) about a big FORTRAN package.\n",
-      "Multiple references are also possible, e.g., see\n",
-      "[[Langtangen_Pedersen_2002;@Mardal_et_al_2003a]](#Langtangen_Pedersen_2002;@Mardal_et_al_2003a).\n",
-      "\n",
-      "We need to cite more than 10 papers to reproduce an old formatting\n",
-      "problem with blanks in the keys in reST format:\n",
-      "[[Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002]](#Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002)\n",
-      "and\n",
-      "[[Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95]](#Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95)\n",
-      "and all the work of\n",
-      "[[Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004]](#Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004) as well as\n",
-      "old work [[Langtangen_1988d]](#Langtangen_1988d) and [[Langtangen_1989e]](#Langtangen_1989e), and the\n",
-      "talk [[Langtangen_talk_2007a]](#Langtangen_talk_2007a).\n",
-      "Langtangen also had two thesis [[Langtangen:85;@Langtangen_1989e]](#Langtangen:85;@Langtangen_1989e)\n",
-      "back in the days.\n",
-      "More retro citations are\n",
-      "the old ME-IN323 book [[Langtangen:91]](#Langtangen:91) and the\n",
-      "[[Langtangen:94b]](#Langtangen:94b) OONSKI '94 paper.\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Example 1: Examples can be typeset as exercises\n",
-      "<div id=\"Example\"></div>\n",
-      "\n",
-      "Examples can start with a subsection heading starting with `Example:`\n",
-      "and then, with the command-line option `--examples_as_exercises` be\n",
-      "typeset as exercises. This is useful if one has solution\n",
-      "environments as part of the example.\n",
-      "\n",
-      "\n",
-      "**a)**\n",
-      "State some problem.\n",
-      "\n",
-      "**Solution.**\n",
-      "The answer to this subproblem can be written here.\n",
-      "\n",
-      "**b)**\n",
-      "State some other problem.\n",
-      "\n",
-      "**Hint 1.**\n",
-      "A hint can be given.\n",
-      "\n",
-      "**Hint 2.**\n",
-      "Maybe even another hint?\n",
-      "\n",
-      "**Solution.**\n",
-      "The answer to this other subproblem goes here,\n",
-      "maybe over multiple doconce input lines.\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "### User-defined environments\n",
-      "\n",
-      "\n",
-      "\n",
-      "The example in the section [Example 1: A test function](#ex:test:1p1) demonstrates how to write a test function.\n",
-      "That is, a special test function for a function `add` appears in\n",
-      "the example in the section [Example 1: A test function](#ex:test:1p1).\n",
-      "\n",
-      "\n",
-      "\n",
-      "### Example 1: A test function\n",
-      "<div id=\"ex:test:1p1\"></div>\n",
-      "\n",
-      "Suppose we want to write a test function for checking the\n",
-      "implementation of a Python function for addition."
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "def add(a, b):\n",
-      "    return a + b\n",
-      "\n",
-      "def test_add():\n",
-      "    a = 1; b = 1\n",
-      "    expected = a + b\n",
-      "    computed = add(a, b)\n",
-      "    assert expected == computed\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 8
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "### Example 2: Addition\n",
-      "<div id=\"ex:math:1p1\"></div>\n",
-      "\n",
-      "We have"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "1 + 1 = 2\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "**Highlight box!**\n",
-      "\n",
-      "This environment is used to highlight something:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "E = mc^2\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "### URLs\n",
-      "<div id=\"subsubsec:ex\"></div>\n",
-      "\n",
-      "Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or\n",
-      "the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a\n",
-      "plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or\n",
-      "<testdoc.do.txt> or <testdoc.do.txt> or [a link with\n",
-      "newline](testdoc.do.txt). Can test spaces with the link with word\n",
-      "too: [hpl](http://folk.uio.no/hpl) or [hpl](http://folk.uio.no/hpl). Also `file:///` works: [link to a\n",
-      "file](file:///home/hpl/vc/doconce/doc/demos/manual/manual.html) is\n",
-      "fine to have. Moreover, \"loose\" URLs work, i.e., no quotes, just\n",
-      "the plain URL as in <http://folk.uio.no/hpl>, if followed by space, comma,\n",
-      "colon, semi-colon, question mark, exclamation mark, but not a period\n",
-      "(which gets confused with the periods inside the URL).\n",
-      "\n",
-      "Mail addresses can also be used: [`hpl@simula.no`](mailto:hpl@simula.no), or just a [mail link](mailto:hpl@simula.no), or a raw <mailto:hpl@simula.no>.\n",
-      "\n",
-      "Here are some tough tests of URLs, especially for the `latex` format:\n",
-      "[Newton-Cotes](http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas) formulas\n",
-      "and a [good book](http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1). Need to test\n",
-      "Newton-Cotes with percentage in URL too:\n",
-      "<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>\n",
-      "and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.\n",
-      "\n",
-      "For the `--device=paper` option it is important to test that URLs with\n",
-      "monospace font link text get a footnote\n",
-      "(unless the `--latex_no_program_footnotelink`\n",
-      "is used), as in this reference to\n",
-      "[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),\n",
-      "and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).\n",
-      "\n",
-      "\n",
-      "<!-- Comments should be inserted outside paragraphs (because in the rst -->\n",
-      "<!-- format extra blanks make a paragraph break). -->\n",
-      "\n",
-      "<!-- Note that when there is no http: or file:, it can be a file link -->\n",
-      "<!-- if the link name is URL, url, \"URL\", or \"url\". Such files should, -->\n",
-      "<!-- if rst output is desired, but placed in a `_static*` folder. -->\n",
-      "\n",
-      "More tough tests: repeated URLs whose footnotes when using the\n",
-      "`--device=paper` option must be correct. We have\n",
-      "[google](http://google.com), [google](http://google.com), and\n",
-      "[google](http://google.com), which should result in exactly three\n",
-      "footnotes.\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- !split and check if these extra words are included properly in the comment -->\n",
-      "\n",
-      "## LaTeX Mathematics\n",
-      "\n",
-      "Here is an equation without label using backslash-bracket environment:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "a = b + c\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "or with number and label, as in [(3)](#my:eq1), using the equation environment:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Equation labels as ordinary links -->\n",
-      "<div id=\"my:eq1\"></div>\n",
-      "\n",
-      "$$\n",
-      "\\begin{equation}\n",
-      "{\\partial u\\over\\partial t} = \\nabla^2 u \\label{my:eq1} \\tag{3}\n",
-      "\\end{equation}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "We can refer to this equation by [(3)](#my:eq1).\n",
-      "\n",
-      "Here is a system without equation numbers, using the align-asterisk environment:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\pmb{a} = \\pmb{q}\\times\\pmb{n}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "b = \\nabla^2 u + \\nabla^4 v\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "More mathematical typesetting is demonstrated in the coming exercises.\n",
-      "\n",
-      "Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 4: Compute a Probability](#demo:ex:2),\n",
-      "as well as  [Project 5: Explore Distributions of Random Circles](#proj:circle1) and [Project 11: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you), and in\n",
-      "between there we have  [Exercise 10: Make references to projects and problems](#exer:some:formula).\n",
-      "\n",
-      "\n",
-      "## Exercises\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Problem 2: Flip a Coin\n",
-      "<div id=\"demo:ex:1\"></div>\n",
-      "<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->\n",
-      "\n",
-      "<!-- Torture tests -->\n",
-      "\n",
-      "\n",
-      "**a)**\n",
-      "Make a program that simulates flipping a coin $N$ times.\n",
-      "Print out \"tail\" or \"head\" for each flip and\n",
-      "let the program count the number of heads.\n",
-      "\n",
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint 1.**\n",
-      "Use `r = random.random()` and define head as `r <= 0.5`.\n",
-      "\n",
-      "<!-- --- end hint in exercise --- -->\n",
-      "\n",
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint 2.**\n",
-      "Draw an integer among $\\{1,2\\}$ with\n",
-      "`r = random.randint(1,2)` and define head when `r` is 1.\n",
-      "\n",
-      "<!-- --- end hint in exercise --- -->\n",
-      "\n",
-      "\n",
-      "<!-- --- begin answer of exercise --- -->\n",
-      "**Answer.**\n",
-      "If the `random.random()` function returns a number $<1/2$, let it be\n",
-      "head, otherwise tail. Repeat this $N$ number of times.\n",
-      "\n",
-      "<!-- --- end answer of exercise --- -->\n",
-      "\n",
-      "\n",
-      "<!-- --- begin solution of exercise --- -->\n",
-      "**Solution.**"
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "import sys, random\n",
-      "N = int(sys.argv[1])\n",
-      "heads = 0\n",
-      "for i in range(N):\n",
-      "    r = random.random()\n",
-      "    if r <= 0.5:\n",
-      "        heads += 1\n",
-      "print 'Flipping a coin %d times gave %d heads' % (N, heads)\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 9
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- --- end solution of exercise --- -->\n",
-      "\n",
-      "**b)**\n",
-      "Vectorize the code in a) using boolean indexing.\n",
-      "\n",
-      "Vectorized code can be written in many ways.\n",
-      "Sometimes the code is less intuitive, sometimes not.\n",
-      "At least there is not much to find in the section [Section 1](#sec1).\n",
-      "\n",
-      "**c)**\n",
-      "Vectorize the code in a) using `numpy.sum`.\n",
-      "\n",
-      "\n",
-      "<!-- --- begin answer of exercise --- -->\n",
-      "**Answer.**\n",
-      "`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.\n",
-      "\n",
-      "<!-- --- end answer of exercise --- -->\n",
-      "\n",
-      "In this latter subexercise, we have an\n",
-      "example where the code is easy to read.\n",
-      "\n",
-      "\n",
-      "#### My remarks\n",
-      "\n",
-      "Remarks with such a subsubsection is treated as more text\n",
-      "after the last subexercise. Test a list too:\n",
-      "\n",
-      "1. Mark 1.\n",
-      "\n",
-      "2. Mark 2.\n",
-      "\n",
-      "Filenames: `flip_coin.py`, `flip_coin.pdf`.\n",
-      "\n",
-      "<!-- Closing remarks for this Problem -->\n",
-      "\n",
-      "#### Remarks\n",
-      "\n",
-      "These are the exercise remarks, appearing at the very end.\n",
-      "\n",
-      "<!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "### Not an exercise\n",
-      "\n",
-      "Should be possible to stick a normal section in the middle of many\n",
-      "exercises.\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Exercise 3: Test of plain text exercise\n",
-      "<div id=\"my:exer1\"></div>\n",
-      "\n",
-      "Very short exercise. What is the capital\n",
-      "of Norway?\n",
-      "Filename: `myexer1.py`.\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Project 4: Compute a Probability\n",
-      "<div id=\"demo:ex:2\"></div>\n",
-      "\n",
-      "<!-- Minimalistic exercise -->\n",
-      "\n",
-      "\n",
-      "What is the probability of getting a number between 0.5 and 0.6 when\n",
-      "drawing uniformly distributed random numbers from the interval $[0,1)$?\n",
-      "\n",
-      "\n",
-      "At the end we have a list because that caused problems in LaTeX\n",
-      "in previous DocOnce versions:\n",
-      "\n",
-      "1. item1\n",
-      "\n",
-      "2. item2\n",
-      "\n",
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint.**\n",
-      "To answer this question empirically, let a program\n",
-      "draw $N$ such random numbers using Python's standard `random` module,\n",
-      "count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and\n",
-      "compute the probability as $M/N$.\n",
-      "\n",
-      "<!-- --- end hint in exercise --- -->\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Project 5: Explore Distributions of Random Circles\n",
-      "<div id=\"proj:circle1\"></div>\n",
-      "<!-- keywords = ipynb -->\n",
-      "\n",
-      "The formula for a circle is given by"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Equation labels as ordinary links -->\n",
-      "<div id=\"circle:x\"></div>\n",
-      "\n",
-      "$$\n",
-      "\\begin{equation}\n",
-      "x = x_0 + R\\cos 2\\pi t,\n",
-      "\\label{circle:x} \\tag{4}\n",
-      "\\end{equation}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Equation labels as ordinary links -->\n",
-      "<div id=\"circle:y\"></div>\n",
-      "\n",
-      "$$\n",
-      "\\begin{equation}  \n",
-      "y = y_0 + R\\sin 2\\pi t,\n",
-      "\\label{circle:y} \\tag{5}\n",
-      "\\end{equation}\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "where $R$ is the radius of the circle, $(x_0,y_0)$ is the\n",
-      "center point, and $t$ is a parameter in the unit interval $[0,1]$.\n",
-      "For any $t$, $(x,y)$ computed from [(4)](#circle:x)-[(5)](#circle:y)\n",
-      "is a point on the circle.\n",
-      "The formula can be used to generate `n` points on a circle:"
-     ]
-    },
-    {
-     "cell_type": "code",
-     "collapsed": false,
-     "input": [
-      "import numpy as np\n",
-      "\n",
-      "def circle(R, x0, y0, n=501):\n",
-      "    t = np.linspace(0, 1, n)\n",
-      "    x = x0 + R*np.cos(2*np.pi*t)\n",
-      "    y = y0 + R*np.sin(2*np.pi*t)\n",
-      "    return x, y\n",
-      "\n",
-      "x, y = circle(2.0, 0, 0)\n"
-     ],
-     "language": "python",
-     "metadata": {},
-     "outputs": [],
-     "prompt_number": 10
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- Often in an exercise we have some comments about the solution -->\n",
-      "<!-- which we normally want to keep where they are. -->\n",
-      "\n",
-      "The goal of this project is to draw $N$ circles with random\n",
-      "center and radius. Plot each circle using the `circle` function\n",
-      "above.\n",
-      "\n",
-      "\n",
-      "**a)**\n",
-      "Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.\n",
-      "\n",
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint.**\n",
-      "Use the `numpy.random` module to draw the\n",
-      "$x_0$, $y_0$, and $R$ quantities.\n",
-      "\n",
-      "<!-- --- end hint in exercise --- -->\n",
-      "\n",
-      "\n",
-      "<!-- --- begin answer of exercise --- -->\n",
-      "**Answer.**\n",
-      "Here goes the short answer to part a).\n",
-      "\n",
-      "<!-- --- end answer of exercise --- -->\n",
-      "\n",
-      "\n",
-      "<!-- --- begin solution of exercise --- -->\n",
-      "**Solution.**\n",
-      "Here goes a full solution to part a).\n",
-      "\n",
-      "<!-- --- end solution of exercise --- -->\n",
-      "\n",
-      "**b)**\n",
-      "Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
-      "Filename: `norm.py`.\n",
-      "\n",
-      "**c)**\n",
-      "Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
-      "\n",
-      "\n",
-      "Filename: `circles.pdf`.\n",
-      "\n",
-      "<!-- Closing remarks for this Project -->\n",
-      "\n",
-      "#### Remarks\n",
-      "\n",
-      "At the very end of the exercise it may be appropriate to summarize\n",
-      "and give some perspectives.\n",
-      "\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Exercise 6: Determine some Distance\n",
-      "<div id=\"exer:dist\"></div>\n",
-      "\n",
-      "Intro to this exercise. Questions are in subexercises below.\n",
-      "\n",
-      "\n",
-      "**a)**\n",
-      "Subexercises are numbered a), b), etc.\n",
-      "\n",
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint 1.**\n",
-      "First hint to subexercise a).\n",
-      "With math $a=b$ in hint:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "a=b.\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "And with code (in plain verbatim) returning $x+1$ in hint:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        def func(x):\n",
-      "            return x + 1  # with code in hint\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- --- end hint in exercise --- -->\n",
-      "\n",
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint 2.**\n",
-      "Second hint to subexercise a).\n",
-      "\n",
-      "Test list in hint:\n",
-      "\n",
-      "1. item1\n",
-      "\n",
-      "2. item2\n",
-      "\n",
-      "<!-- --- end hint in exercise --- -->\n",
-      "Filename: `subexer_a.pdf`.\n",
-      "\n",
-      "\n",
-      "<!-- --- begin answer of exercise --- -->\n",
-      "**Answer.**\n",
-      "Short answer to subexercise a).\n",
-      "With math in answer: $a=b$.\n",
-      "\n",
-      "<!-- --- end answer of exercise --- -->\n",
-      "\n",
-      "**b)**\n",
-      "Here goes the text for subexercise b).\n",
-      "\n",
-      "\n",
-      "Some math $\\cos^2 x + \\sin^2 x = 1$ written one a single line:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\cos^2 x + \\sin^2 x = 1 \\thinspace .\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- --- begin hint in exercise --- -->\n",
-      "\n",
-      "**Hint.**\n",
-      "A hint for this subexercise.\n",
-      "\n",
-      "<!-- --- end hint in exercise --- -->\n",
-      "Filename: `subexer_b.pdf`.\n",
-      "\n",
-      "\n",
-      "<!-- --- begin solution of exercise --- -->\n",
-      "**Solution.**\n",
-      "Here goes the solution of this subexercise.\n",
-      "\n",
-      "<!-- --- end solution of exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- No meaning in this weired test example: -->\n",
-      "The text here belongs to the main (intro) part of the exercise. Need\n",
-      "closing remarks to have text after subexercises.\n",
-      "\n",
-      "Test list in exercise:\n",
-      "\n",
-      "1. item1\n",
-      "\n",
-      "2. item2\n",
-      "\n",
-      "<!-- --- begin solution of exercise --- -->\n",
-      "**Solution.**\n",
-      "Here goes a full solution of the whole exercise.\n",
-      "With some math $a=b$ in this solution:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\hbox{math in solution: } a = b\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "And code `a=b` in this solution:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        a = b  # code in solution\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "End of solution is here.\n",
-      "\n",
-      "<!-- --- end solution of exercise --- -->\n",
-      "\n",
-      "<!-- Closing remarks for this Exercise -->\n",
-      "\n",
-      "#### Remarks\n",
-      "\n",
-      "Some final closing remarks, e.g., summarizing the main findings\n",
-      "and their implications in other problems can be made. These\n",
-      "remarks will appear at the end of the typeset exercise.\n",
-      "\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Some exercise without the \"Exercise:\" prefix\n",
-      "\n",
-      "<!-- Another minimalistic exercise -->\n",
-      "\n",
-      "Just some text. And some math saying that $e^0=1$ on a single line,\n",
-      "to test that math block insertion is correct:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\exp{(0)} = 1\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "And a test that the code `lambda x: x+2` is correctly placed here:"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "        lambda x: x+2\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "<!-- the Filename: ... is written correctly. -->\n",
-      "<!-- Have some comments at the end of the exercise to see that -->\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Exercise 8: Solution of differential equation\n",
-      "<div id=\"sec:this:exer:de\"></div>\n",
-      "\n",
-      "\n",
-      "\n",
-      "Given"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "$$\n",
-      "\\frac{dy}{dx} = -y(x),\\quad y(0)=1\n",
-      "$$"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "What is the solution of this equation?\n",
-      "\n",
-      "**Choice A:**\n",
-      " $y=e^{-y}$\n",
-      "\n",
-      "**Choice B:**\n",
-      " $y=e^{y}$\n",
-      "\n",
-      "**Choice C:**"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "from math import exp\n",
-      "def f(x):\n",
-      "    return exp(x)\n"
-     ]
-    },
-    {
-     "cell_type": "markdown",
-     "metadata": {},
-     "source": [
-      "**Choice D:**\n",
-      " The solution cannot be found because there is a derivative in the equation.\n",
-      "\n",
-      "**Choice E:**\n",
-      " The equation is meaningless: an equation must be an equation\n",
-      "for $x$ or $y$, not a function $y(x)$.\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Example 9: Just an example\n",
-      "\n",
-      "<!-- This example needs the --examples_as_exercises option, otherwise -->\n",
-      "<!-- it is just typeset as it is written. -->\n",
-      "\n",
-      "\n",
-      "**a)**\n",
-      "What is the capital of Norway?\n",
-      "\n",
-      "**Answer.**\n",
-      "Oslo.\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "## Here goes another section\n",
-      "\n",
-      "With some text, before we continue with exercises.\n",
-      "\n",
-      "## More Exercises\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Exercise 10: Make references to projects and problems\n",
-      "<div id=\"exer:some:formula\"></div>\n",
-      "\n",
-      "<!-- Test comments not at the end only -->\n",
-      "Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)\n",
-      "and verify it.\n",
-      "\n",
-      "Test list at the end of an exercise without other elements (like subexercise,\n",
-      "hint, etc.):\n",
-      "\n",
-      "1. item1\n",
-      "\n",
-      "2. item2\n",
-      "\n",
-      "Filename: `verify_formula.py`.\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "<!-- --- begin exercise --- -->\n",
-      "\n",
-      "### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for ipynb\n",
-      "<div id=\"exer:you\"></div>\n",
-      "\n",
-      "Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),\n",
-      "the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),\n",
-      "and this one as  [Project 11: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you).\n",
-      "Filename: `selc_composed.pdf`.\n",
-      "\n",
-      "<!-- --- end exercise --- -->\n",
-      "\n",
-      "\n",
-      "## References\n",
-      "\n",
-      " 1. <div id=\"Langtangen_Pedersen_2002\"></div> **H. P. Langtangen and G. Pedersen**. \n",
-      "    Propagation of Large Destructive Waves,\n",
-      "    *International Journal of Applied Mechanics and Engineering*,\n",
-      "    7(1),\n",
-      "    pp. 187-204,\n",
-      "    2002.\n",
-      "\n",
-      " 2. <div id=\"Langtangen_et_al_2002\"></div> **H. P. Langtangen, K.-A. Mardal and R. Winther**. \n",
-      "    Numerical Methods for Incompressible Viscous Flow,\n",
-      "    *Advances in Water Resources*,\n",
-      "    25,\n",
-      "    pp. 1125-1146,\n",
-      "    2002.\n",
-      "\n",
-      " 3. <div id=\"Langtangen_1994a\"></div> **H. P. Langtangen**. \n",
-      "    Numerical Solution of First Passage Problems in Random Vibrations,\n",
-      "    *SIAM Journal of Scientific and Statistical Computing*,\n",
-      "    15,\n",
-      "    pp. 997-996,\n",
-      "    1994.\n",
-      "\n",
-      " 4. <div id=\"Mardal_et_al_2003a\"></div> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. \n",
-      "    Software Tools for Multigrid Methods,\n",
-      "    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,\n",
-      "    edited by **H. P. Langtangen and A. Tveito**,\n",
-      "    Springer,\n",
-      "    2003,\n",
-      "    Edited book.\n",
-      "\n",
-      " 5. <div id=\"Langtangen_1988d\"></div> **H. P. Langtangen**. \n",
-      "    The FEMDEQS Program System,\n",
-      "    *Department of Mathematics, University of Oslo*,\n",
-      "    <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>,\n",
-      "    1989.\n",
-      "\n",
-      " 6. <div id=\"Langtangen_1992c\"></div> **H. P. Langtangen**. \n",
-      "    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,\n",
-      "    *SIAM Journal on Scientific Computing*,\n",
-      "    13,\n",
-      "    pp. 1394-1417,\n",
-      "    1992.\n",
-      "\n",
-      " 7. <div id=\"Mortensen_et_al_2011\"></div> **M. Mortensen, H. P. Langtangen and G. N. Wells**. \n",
-      "    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,\n",
-      "    *Advances in Water Resources*,\n",
-      "    34(9),\n",
-      "    [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),\n",
-      "    2011.\n",
-      "\n",
-      " 8. <div id=\"Glimsdal_et_al_20006\"></div> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt**. \n",
-      "    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,\n",
-      "    *International Journal of Fluid Mechanics Research*,\n",
-      "    33(1),\n",
-      "    pp. 15-43,\n",
-      "    2006.\n",
-      "\n",
-      " 9. <div id=\"Rahman_et_al_2006b\"></div> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. \n",
-      "    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,\n",
-      "    *Physical Review B: Condensed Matter and Materials Physics*,\n",
-      "    74,\n",
-      "    2006.\n",
-      "\n",
-      "10. <div id=\"Haga_et_al_2011a\"></div> **J. B. Haga, H. Osnes and H. P. Langtangen**. \n",
-      "    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,\n",
-      "    *International Journal of Analytical and Numerical Methods in Geomechanics*,\n",
-      "    [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),\n",
-      "    2011,\n",
-      "    <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.\n",
-      "\n",
-      "11. <div id=\"Langtangen_2003a\"></div> **H. P. Langtangen**. \n",
-      "    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,\n",
-      "    second edition,\n",
-      "    *Texts in Computational Science and Engineering*,\n",
-      "    Springer,\n",
-      "    2003.\n",
-      "\n",
-      "12. <div id=\"Langtangen_2008a\"></div> **H. P. Langtangen**. \n",
-      "    *Python Scripting for Computational Science*,\n",
-      "    third edition,\n",
-      "    *Texts in Computational Science and Engineering*,\n",
-      "    Springer,\n",
-      "    2008.\n",
-      "\n",
-      "13. <div id=\"Langtangen:95\"></div> **H. P. Langtangen and G. Pedersen**. \n",
-      "    Finite Elements for the Boussinesq Wave Equations,\n",
-      "    Waves and Non-linear Processes in Hydrodynamics,\n",
-      "    edited by **J. Grue, B. Gjevik and J. E. Weber**,\n",
-      "    Kluwer Academic Publishers,\n",
-      "    pp. pp. 117-126,\n",
-      "    1995,\n",
-      "    <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.\n",
-      "\n",
-      "14. <div id=\"Langtangen_2012\"></div> **H. P. Langtangen**. \n",
-      "    *A Primer on Scientific Programming With Python*,\n",
-      "    third edition,\n",
-      "    *Texts in Computational Science and Engineering*,\n",
-      "    Springer,\n",
-      "    2012.\n",
-      "\n",
-      "15. <div id=\"Jeberg_et_al_2004\"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. \n",
-      "    Optimization With Diffpack: Practical Example From Welding,\n",
-      "    *Simula Research Laboratory*,\n",
-      "    Internal report,\n",
-      "    2004.\n",
-      "\n",
-      "16. <div id=\"Langtangen_1989e\"></div> **H. P. Langtangen**. \n",
-      "    Computational Methods for Two-Phase Flow in Oil Reservoirs,\n",
-      "    Ph.D. Thesis,\n",
-      "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
-      "    1989.\n",
-      "\n",
-      "17. <div id=\"Langtangen_talk_2007a\"></div> **H. P. Langtangen**. \n",
-      "    Computational Modeling of Huge Tsunamis From Asteroid Impacts,\n",
-      "    Invited keynote lecture at the \\emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,\n",
-      "    2007.\n",
-      "\n",
-      "18. <div id=\"Langtangen:85\"></div> **H. P. Langtangen**. \n",
-      "    Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,\n",
-      "    M.Sc. Thesis,\n",
-      "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
-      "    1985.\n",
-      "\n",
-      "19. <div id=\"Langtangen:91\"></div> **H. P. Langtangen and A. Tveito**. \n",
-      "    Numerical Methods in Continuum Mechanics,\n",
-      "    *Center for Industrial Research*,\n",
-      "    1991.\n",
-      "\n",
-      "20. <div id=\"Langtangen:94b\"></div> **H. P. Langtangen**. \n",
-      "    Diffpack: Software for Partial Differential Equations,\n",
-      "    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,\n",
-      "    edited by **A. Vermeulen**,\n",
-      "    1994.\n",
-      "\n",
-      "## Appendix: Just for testing; part I\n",
-      "<div id=\"app1\"></div>\n",
-      "\n",
-      "This is the first appendix.\n",
-      "\n",
-      "### A subsection within an appendix\n",
-      "\n",
-      "Some text.\n",
-      "\n",
-      "## Appendix: Just for testing; part II\n",
-      "<div id=\"app2\"></div>\n",
-      "\n",
-      "This is more stuff for an appendix.\n",
-      "\n",
-      "### Appendix: Testing identical titles\n",
-      "\n",
-      "Without label.\n",
-      "\n",
-      "\n",
-      "### Appendix: Testing identical titles\n",
-      "<div id=\"test:title:id1\"></div>\n",
-      "\n",
-      "With label.\n",
-      "\n",
-      "### Appendix: Testing identical titles\n",
-      "<div id=\"test:title:id2\"></div>\n",
-      "\n",
-      "What about inserting a quiz?\n",
-      "\n",
-      "\n",
-      "\n",
-      "## Test of quizzes\n",
-      "\n",
-      "\n",
-      "**Fundamental test:** What is the capital of Norway?\n",
-      "\n",
-      "**Answer 1:**\n",
-      " Stockholm\n",
-      "\n",
-      "**Answer 2:**\n",
-      " London\n",
-      "\n",
-      "**Answer 3:**\n",
-      " Oslo\n",
-      "\n",
-      "**Choice D:**\n",
-      " Bergen\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "### Appendix: Testing identical titles\n",
-      "\n",
-      "Without label.\n",
-      "\n",
-      "**Tip.**\n",
-      "\n",
-      "Here is a tip or hint box, typeset as a notice box.\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "Need a lot of text to surround the summary box.\n",
-      "Version control systems allow you to record the history of files\n",
-      "and share files among several computers and collaborators in a\n",
-      "professional way. File changes on one computer are updated or\n",
-      "merged with changes on another computer. Especially when working\n",
-      "with programs or technical reports it is essential\n",
-      "to have changes documented and to\n",
-      "ensure that every computer and person involved in the project\n",
-      "have the latest updates of the files.\n",
-      "Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly\n",
-      "from using version control systems.\n",
-      "\n",
-      "**Summary.**\n",
-      "\n",
-      "**Bold remark:** Make some text with this summary.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "Much testing in this document, otherwise stupid content.\n",
-      "\n",
-      "\n",
-      "\n",
-      "Projects that you want to share among several computers or project\n",
-      "workers are today most conveniently stored at some web site \"in the\n",
-      "cloud\" and updated through communication with that site. I strongly\n",
-      "recommend you to use such sites for all serious programming and\n",
-      "scientific writing work - and all other important files.\n",
-      "\n",
-      "The simplest services for hosting project files are [Dropbox](http://dropbox.com) and [Google Drive](http://drive.google.com).\n",
-      "It is very easy to get started with these systems, and they allow you\n",
-      "to share files among laptops and mobile units with as many users as\n",
-      "you want. The systems offer a kind of version control in that the\n",
-      "files are stored frequently (several times per minute), and you can go\n",
-      "back to previous versions for the last 30 days. However, it is\n",
-      "challenging  to find the right version from the past when there are\n",
-      "so many of them.\n",
-      "\n",
-      "More seriously, when several people may edit files simultaneously, it\n",
-      "can be difficult detect who did what when, roll back to previous\n",
-      "versions, and to manually merge the edits when these are\n",
-      "incompatible. Then one needs more sophisticated tools than Dropbox or\n",
-      "Google Drive: project hosting services with true version control\n",
-      "systems.  The following text aims at providing you with the minimum\n",
-      "information to started with such systems. Numerous other tutorials\n",
-      "contain more comprehensive material and in-depth explanations of the\n",
-      "concepts and tools.\n",
-      "\n",
-      "The idea with project hosting services is that you have the files\n",
-      "associated with a project in the cloud. Many people may share these\n",
-      "files.  Every time you want to work on the project you explicitly\n",
-      "update your version of the files, edit the files as you like, and\n",
-      "synchronize the files with the \"master version\" at the site where the\n",
-      "project is hosted.  If you at some point need to go back to a\n",
-      "version of the files at some particular point in the past,\n",
-      "this is an easy operation. You can also use tools to see\n",
-      "what various people have done with the files in the various versions.\n",
-      "\n",
-      "All these services are very similar. Below we describe how you get\n",
-      "started with Bitbucket, GitHub, and Googlecode. Launchpad works very\n",
-      "similarly to the latter three. All the project hosting services have\n",
-      "excellent introductions available at their web sites, but the recipes\n",
-      "below are much shorter and aim at getting you started as quickly as\n",
-      "possible by concentrating on the most important need-to-know steps.\n",
-      "The Git tutorials we refer to later in this document contain more\n",
-      "detailed information and constitute of course very valuable readings\n",
-      "when you use version control systems every day. The point now is\n",
-      "to get started.\n",
-      "\n",
-      "\n",
-      "### Appendix: Testing inline comments\n",
-      "\n",
-      "<!-- Names can be [ A-Za-z0-9_'+-]+ -->\n",
-      "\n",
-      "Projects that you want to share among several computers or project\n",
-      "workers are today most conveniently stored at some web site \"in the\n",
-      "cloud\" and updated through communication with that\n",
-      "site. [hpl's semi opinion 1: not sure if in the cloud is\n",
-      "understood by\n",
-      "all.] I strongly recommend you to use such sites for all serious\n",
-      "programming and scientific writing work - and all other important\n",
-      "files.\n",
-      "\n",
-      "The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <http://dropbox.com> and watch the video. It explains\n",
-      "how files, like `myfile.py`, perhaps containing much math, like\n",
-      "$\\partial u/\\partial t$, are easily communicated between machines.] It\n",
-      "is very easy to get started with Dropbox, and it allows you to share\n",
-      "files among [hpl 3: laptops and mobile units -> computers, tablets,\n",
-      "and phones].\n",
-      "\n",
-      "<!-- Test horizontal rule -->\n",
-      "\n",
-      "------\n",
-      "\n",
-      "<!-- Coments for editing -->\n",
-      "\n",
-      "First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]\n",
-      "$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities\n",
-      "are] [del 8: just] negative. [add 9: This comes as no surprise.]\n",
-      "\n",
-      "### Appendix: Testing headings ending with `verbatim inline`\n",
-      "\n",
-      "The point here is to test 1) `verbatim` code in headings, and 2)\n",
-      "ending a heading with verbatim code as this triggers a special\n",
-      "case in LaTeX.\n",
-      "\n",
-      "We also test mdash---used as alternative to hyphen without spaces around,\n",
-      "or in quotes:\n",
-      "\n",
-      "> Fun is fun.--- Unknown.\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "\n",
-      "And finally, what about admons, quotes, and boxes? They are tested\n",
-      "in a separate document: `admon.do.txt`.\n",
-      "\n",
-      "[^example-of-the-third-footnote]: Not much to add here, but the footnote\n",
-      "is at the end with only one newline."
-     ]
-    }
-   ],
-   "metadata": {}
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# A Document for Testing DocOnce\n",
+    "**Jan 32, 2100**\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "The format of this document is\n",
+    "ipynb\n",
+    "\n",
+    "**Abstract.** This is a document with many test constructions for doconce syntax.\n",
+    "It was used heavily for the development and kept for testing\n",
+    "numerous constructions, also special and less common cases.\n",
+    "\n",
+    "And exactly for test purposes we have an extra line here, which\n",
+    "is part of the abstract.\n",
+    "\n",
+    "<!-- Cannot demonstrate chapter headings since abstract and chapter -->\n",
+    "<!-- are mutually exclusive in LaTeX -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "## Section 1\n",
+    "<div id=\"sec1\"></div>\n",
+    "\n",
+    "Here is a nested list:\n",
+    "\n",
+    "  * item1\n",
+    "\n",
+    "  * item2\n",
+    "\n",
+    "  * item3 which continues\n",
+    "    on the next line to test that feature\n",
+    "\n",
+    "  * and a sublist\n",
+    "\n",
+    "    * with indented subitem1\n",
+    "\n",
+    "    * and a subitem2\n",
+    "\n",
+    "\n",
+    "  * and perhaps an ordered sublist\n",
+    "\n",
+    "   1. first item\n",
+    "\n",
+    "   2. second item,\n",
+    "      continuing on a new line\n",
+    "\n",
+    "\n",
+    "**Here is a list with paragraph heading.**\n",
+    "\n",
+    "  * item1\n",
+    "\n",
+    "  * item2\n",
+    "\n",
+    "#### Here is a list with subsubsection heading\n",
+    "\n",
+    "  * item1\n",
+    "\n",
+    "  * item2\n",
+    "\n",
+    "> Here are two lines that make up\n",
+    "> a block quote for testing *emphasized words* and **boldface words**,\n",
+    "> also with hypens:\n",
+    "> *pre*-fix, post-*fix*, **pre**-fix, post-**fix**.\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "Here are two references. Equation [(3)](#my:eq1) is fine. Eq. [(3)](#my:eq1) too.\n",
+    "Even Equation [(3)](#my:eq1) without the tilde.\n",
+    "\n",
+    "\n",
+    "### Subsection 1\n",
+    "<div id=\"subsec1\"></div>\n",
+    "\n",
+    "\n",
+    "<!-- Refer to section/appendix etc. at the beginning of the line -->\n",
+    "<!-- and other special fix situations for HTML. -->\n",
+    "\n",
+    "More text, with a reference back to\n",
+    "the section [Section 1](#sec1) and [Subsection 1](#subsec1), and further to the\n",
+    "the sections [Subsection 1](#subsec1) and [URLs](#subsubsec:ex), which\n",
+    "encourages you to do the tasks in  [Problem 2: Flip a Coin](#demo:ex:1) and [Exercise 10: Make references to projects and problems](#exer:some:formula).\n",
+    "Appendices     [Appendix: Just for testing; part I](#app1) and [Appendix: Just for testing; part II](#app2) are also nice elements.\n",
+    "\n",
+    "#### Test Section reference at beginning of line and after a sentence\n",
+    "\n",
+    "The section [Subsection 1](#subsec1) is fine.\n",
+    "The section [URLs](#subsubsec:ex) too.\n",
+    "\n",
+    "\n",
+    "<!-- sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console -->\n",
+    "\n",
+    "#### Computer code\n",
+    "\n",
+    "Let's do some copying from files too. First from subroutine up to the very end,"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "              subroutine test()\n",
+    "              integer i\n",
+    "              real*8 r\n",
+    "              r = 0\n",
+    "              do i = 1, i\n",
+    "                 r = r + i\n",
+    "              end do\n",
+    "              return\n",
+    "        C     END1\n",
+    "        \n",
+    "              program testme\n",
+    "              call test()\n",
+    "              return\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "and then just the subroutine,"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        \n",
+    "              subroutine test()\n",
+    "              integer i\n",
+    "              real*8 r\n",
+    "              r = 0\n",
+    "              do i = 1, i\n",
+    "                 r = r + i\n",
+    "              end do\n",
+    "              return\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "and finally the complete file with a plain text verbatim environment\n",
+    "(`envir=ccq`):"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        C     a comment\n",
+    "        \n",
+    "              subroutine test()\n",
+    "              integer i\n",
+    "              real*8 r\n",
+    "              r = 0\n",
+    "              do i = 1, i\n",
+    "                 r = r + i\n",
+    "              end do\n",
+    "              return\n",
+    "        C     END1\n",
+    "        \n",
+    "              program testme\n",
+    "              call test()\n",
+    "              return\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Testing other code environments. First Python:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        !bc pycod\n",
+    "        def f(x):\n",
+    "            return x+1\n",
+    "        !ec\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "which gets rendered as"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Python\n",
+    "        def f(x):\n",
+    "            return x+1\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Test paragraph and subsubsection headings before\n",
+    "before code.\n",
+    "\n",
+    "**Paragraph heading before code.**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Python\n",
+    "        import sys\n",
+    "        sys.path.insert(0, os.pardir)\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Subsubsection heading before code"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Python\n",
+    "        def h(z):\n",
+    "            return z+1\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here is a program that is supposed to be interactive via\n",
+    "Python Online Tutorial, but that service is not accessible\n",
+    "for the present format."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "class Line:\n",
+    "    def __init__(self, a, b):\n",
+    "        self.a, self.b = a, b\n",
+    "\n",
+    "    def __call__(self, x):\n",
+    "        a, b = self.a, self.b\n",
+    "        return a*x + b\n",
+    "\n",
+    "line = Line(2, 1)\n",
+    "y = line(x=3)\n",
+    "print y\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Some more Python code (actually specified as a sage cell, but\n",
+    "such cells are not supported by this format)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "%matplotlib inline\n",
+    "\n",
+    "a = 2\n",
+    "b = 3\n",
+    "print 'a+b:', a + b\n",
+    "\n",
+    "# In a sage cell we can also plot\n",
+    "from matplotlib.pyplot import *\n",
+    "from numpy import *\n",
+    "x = linspace(0, 4*pi, 101)\n",
+    "y = exp(-0.1*x)*cos(x)\n",
+    "plot(x, y)\n",
+    "xlabel('x'); ylabel('y')\n",
+    "show()\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Then Cython:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Python\n",
+    "        cpdef f(double x):\n",
+    "            return x + 1\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Standard Python shell sessions:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "from numpy import linspace, sin\n",
+    "# Some comment\n",
+    "x = linspace(0, 2, 11)\n",
+    "y = sin(x)\n",
+    "y[0]\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Similar IPython sessions:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "from numpy import linspace, sin\n",
+    "# Some comment\n",
+    "x = linspace(0, 2, 11)\n",
+    "y = sin(x)\n",
+    "y[0]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "plt.plot(x, y)\n",
+    "a='multiple-\\nline\\noutput'\n",
+    "a\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "print a\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here is the interactive session again, but with `pyshell-t`.\n",
+    "This makes a significant difference in the Jupyter Notebook, but\n",
+    "not in other formats: code is not typset in cells, but printed\n",
+    "verbatim in plain text (`-t` for text)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Python\n",
+    "        >>> from numpy import linspace, sin\n",
+    "        >>> # Some comment\n",
+    "        >>> x = linspace(0, 2, 11)\n",
+    "        >>> y = sin(x)\n",
+    "        >>> y[0]\n",
+    "        0\n",
+    "        >>> import matplotlib.pyplot as plt\n",
+    "        >>> plt.plot(x, y)\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- This one tests a + sign before a code environment -->\n",
+    "C++:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Cpp\n",
+    "        #include <iostream>\n",
+    "        \n",
+    "        int main()\n",
+    "        {\n",
+    "           std::cout << \"Sample output\" << std::endl;\n",
+    "           return 0\n",
+    "        }\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- The next should get correctly typset in sphinx (cod is fcod) -->\n",
+    "<!-- It also tests emoji before code -->\n",
+    "And a little bit of Fortran: :dizzy_face:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        !bc cod\n",
+    "              subroutine midpt(x, length, a, b)\n",
+    "              real*8 a, b, x\n",
+    "              x = (a + b)/2\n",
+    "              length = b - a\n",
+    "              return\n",
+    "              end\n",
+    "        !ec\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "which then is typeset as"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```Python\n",
+    "              subroutine midpt(x, length, a, b)\n",
+    "              real*8 a, b, x\n",
+    "              x = (a + b)/2\n",
+    "              length = b - a\n",
+    "              return\n",
+    "              end\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "HTML:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        <table>\n",
+    "        <tr><td>Column 1</td><td>Column 2</td></tr>\n",
+    "        <tr><td>0.67526 </td><td>0.92871 </td></tr>\n",
+    "        <!-- comment -->\n",
+    "        </table>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "But inline HTML code is also important, like text that starts with\n",
+    "`<a href=\"` (which can destroy the following text if not properly\n",
+    "quoted).\n",
+    "\n",
+    "And here is a system call:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "        Terminal> mkdir test\n",
+    "        Terminal> cd test\n",
+    "        Terminal> myprog -f\n",
+    "        output1\n",
+    "        output2\n",
+    "\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Any valid pygments lexer/language name can appear to, e.g.,"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        !bc restructuredtext\n",
+    "        =======\n",
+    "        Heading\n",
+    "        =======\n",
+    "        \n",
+    "        Some text.\n",
+    "        !ec\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "results in"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        =======\n",
+    "        Heading\n",
+    "        =======\n",
+    "        \n",
+    "        Some text.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Here goes hidden code. -->\n",
+    "<!-- Python can be treated by some formats, Fortran is always out. -->"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "def f(x):\n",
+    "    \"\"\"Secret, hidden function to be defined.\"\"\"\n",
+    "    return 42\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finally, `!bc do` supports highlighting of DocOnce source:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        ======= DocOnce test file =======\n",
+    "        \n",
+    "        ===== Computer code =====\n",
+    "        \n",
+    "        Inline verbatim code, as in `import numpy as np`, is allowed, as well as\n",
+    "        code blocks:\n",
+    "        \n",
+    "        !bc pycod\n",
+    "        from math import sin\n",
+    "        \n",
+    "        def f(x):\n",
+    "            \"\"\"Example on a function.\"\"\"\n",
+    "            return sin(x) + 1\n",
+    "        \n",
+    "        print f(0)\n",
+    "        !ec\n",
+    "        \n",
+    "        \n",
+    "        ===== Mathematics =====\n",
+    "        \n",
+    "        Formulas can be inline, as in $\\nabla\\cdot\\boldsymbol{u} = 0$, or typeset\n",
+    "        as equations:\n",
+    "        \n",
+    "        !bt\n",
+    "        \\begin{align*}\n",
+    "        \\nabla\\cdot\\boldsymbol{u} &= 0,\\\\\n",
+    "        \\boldsymbol{u} &= \\nabla\\phi .\n",
+    "        \\end{align*}\n",
+    "        !et\n",
+    "        \n",
+    "        === Subsubsection heading ===\n",
+    "        \n",
+    "        DocOnce files can have chapters, sections, subsections, and subsubsections.\n",
+    "        \n",
+    "        __Paragraph heading.__ Paragraphs may have headings.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It is time to test `verbatim inline font` especially with `a newline\n",
+    "inside the text` and an exclamation mark at the end: `BEGIN`! For\n",
+    "spellcheck, test `a verbatim expression` in `another` in a `third`.\n",
+    "Also test exclamation mark as in `!bc` and `!ec` as well as `a != b`.\n",
+    "Also test backslashes and braces like `\\begin`, `\\begin{enumerate}`,\n",
+    "`\\end{this}\\end{that}`, and `{something \\inside braces}`.\n",
+    "\n",
+    "The following attempt to exemplify colored text does not work in\n",
+    "format ipynb.\n",
+    "Here is some <font color=\"red\">red color</font> and an attempt to write <font color=\"green\">with\n",
+    "green color containing a linebreak\n",
+    "code.</font> Some formats will only display \n",
+    "this correctly when `html` \n",
+    "is the output format.\n",
+    "But here some more running text is added which is not part of\n",
+    "the previous blocks with line breaks.\n",
+    "\n",
+    "#### Running OS commands"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        Terminal> python -c 'print \"Testing\\noutput\\nfrom\\nPython.\"'\n",
+    "        Testing\n",
+    "        output\n",
+    "        from\n",
+    "        Python.\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "#### Footnotes\n",
+    "\n",
+    "Here is a test of footnotes [^footnote], which are handy in text.\n",
+    "They are used in different flavors, now in\n",
+    "\n",
+    " * list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)\n",
+    "\n",
+    " * even with math $\\nabla^2u$[^math1]\n",
+    "\n",
+    " * and code `h[i] += 1`[^code]\n",
+    "   (*must* have space between inline code and footnote!)\n",
+    "\n",
+    " * and [links](http://google.com)[^google-search]\n",
+    "\n",
+    "which gives flexibility in writing.\n",
+    "This is the third[^example-of-the-third-footnote] example.\n",
+    "\n",
+    "  [^footnote]: Typesetting of the footnote depends on the format.\n",
+    "Plain text does nothing, LaTeX removes the\n",
+    "definition and inserts the footnote as part of the LaTeX text.\n",
+    "reStructuredText and Sphinx employ a similar type of typesetting\n",
+    "as Extended Markdown and DocOnce, and in HTML we keep the same\n",
+    "syntax, just displayed properly in HTML.\n",
+    "[^math1]: Math footnotes can be dangerous since it\n",
+    "interferes with an exponent.\n",
+    "[^code]: One-line footnote.\n",
+    "\n",
+    "[^google-search]: <google.com> is perhaps the most famous\n",
+    "web site today.\n",
+    "\n",
+    "Here is some more text before a new definition of a footnote that was\n",
+    "used above.\n",
+    "\n",
+    "**Non-breaking space character.**\n",
+    "\n",
+    "This paragraph aims to test [non-breaking space character](http://en.wikipedia.org/wiki/Non-breaking_space), and a typical\n",
+    "example where this is needed is in physical units: 7.4 km is traveled\n",
+    "in $7.4/5.5\\approx 1.345$ s.  Also check that a~[link](http://google.com) is\n",
+    "not broken across lines (drag the browser window to test this).\n",
+    "(On the other hand, the tilde is used in\n",
+    "computer code, e.g., as in `[~x for x in y]` or in `y=~x`, and should\n",
+    "of course remain a tilde in those contexts.)\n",
+    "\n",
+    "\n",
+    "\n",
+    "### Subsection 2: Testing figures\n",
+    "<div id=\"subsec:ex\"></div>\n",
+    "\n",
+    "Test of figures. In particular we refer to [Figure](#fig:impact) in which\n",
+    "there is a flow.\n",
+    "\n",
+    "<div id=\"fig:impact\"></div>\n",
+    "\n",
+    "<p>Visualization of a wave.</p>\n",
+    "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
+    "\n",
+    "\n",
+    "\n",
+    "Figures without captions are allowed and will be inlined.\n",
+    "\n",
+    "\n",
+    "<p></p>\n",
+    "<img src=\"../doc/src/manual/fig/wave1D.png\" width=200>\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- Test multi-line caption in figure -->\n",
+    "\n",
+    "Here is [figure](#myfig) with a long multi-line caption\n",
+    "and an extra space before the FIGURE keyword.\n",
+    "\n",
+    "<div id=\"myfig\"></div>\n",
+    "\n",
+    "<p>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$.</p>\n",
+    "<img src=\"../doc/src/manual/fig/wave1D.png\" width=500>\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->\n",
+    "\n",
+    "Test URL as figure name:\n",
+    "\n",
+    "\n",
+    "<p></p>\n",
+    "<img src=\"https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png\" width=500,>\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- Test wikimedia type of files that otherwise reside in subdirs -->\n",
+    "\n",
+    "\n",
+    "**Remark.**\n",
+    "Movies are tested in separate file `movies.do.txt`.\n",
+    "\n",
+    "\n",
+    "<!-- Somewhat challenging heading with latex math, \\t, \\n, ? and parenthesis -->\n",
+    "\n",
+    "### The $\\theta$ parameter (not $\\nabla$?)\n",
+    "<div id=\"decay:sec:theta\"></div>\n",
+    "\n",
+    "Functions do not always need to be advanced, here is one\n",
+    "involving $\\theta$:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        def f(theta):\n",
+    "            return theta**2\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**More on $\\theta$.** Here is more text following headline with math.\n",
+    "\n",
+    "Newcommands must also be tested in this test report:\n",
+    "$\\frac{1}{2}$, ${1/2}$, $\\pmb{x}$, $\\frac{Du}{dt}$,\n",
+    "both inline and in block:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\frac{Du}{dt} = 0\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\frac{1}{2} = {1/2}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\frac{1}{2}\\pmb{x} = \\pmb{n}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Or with align with label and numbers:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Equation labels as ordinary links -->\n",
+    "<div id=\"aligneq1\"></div>\n",
+    "\n",
+    "$$\n",
+    "\\begin{equation}\n",
+    "\\frac{Du}{dt} = 0\n",
+    "\\label{aligneq1} \\tag{1}\n",
+    "\\end{equation}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\begin{equation}  \n",
+    "\\frac{1}{2} = {1/2}\n",
+    "\\end{equation}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Equation labels as ordinary links -->\n",
+    "<div id=\"aligneq2\"></div>\n",
+    "\n",
+    "$$\n",
+    "\\begin{equation}  \n",
+    "\\frac{1}{2}\\pmb{x} = \\pmb{n}\n",
+    "\\label{aligneq2} \\tag{2}\n",
+    "\\end{equation}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Custom Environments\n",
+    "\n",
+    "Here is an attempt to create a theorem environment via Mako\n",
+    "(for counting theorems) and comment lines to help replacing lines in\n",
+    "the `.tex` by proper begin-end LaTeX environments for theorems.\n",
+    "Should look nice in most formats!\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- begin theorem -->\n",
+    "<div id=\"theorem:fundamental1\"></div>\n",
+    "\n",
+    "\n",
+    "**Theorem 5.**\n",
+    "Let $a=1$ and $b=2$. Then $c=3$.\n",
+    "<!-- end theorem -->\n",
+    "\n",
+    "<!-- begin proof -->\n",
+    "**Proof.**\n",
+    "Since $c=a+b$, the result follows from straightforward addition.\n",
+    "$\\Diamond$\n",
+    "<!-- end proof -->\n",
+    "\n",
+    "As we see, the proof of Theorem 5 is a modest\n",
+    "achievement.\n",
+    "\n",
+    "\n",
+    "### Tables\n",
+    "<div id=\"subsec:table\"></div>\n",
+    "\n",
+    "\n",
+    "<!-- index with comma could fool sphinx -->\n",
+    "\n",
+    "Let us take this table from the manual:\n",
+    "\n",
+    "\n",
+    "<table border=\"1\">\n",
+    "<thead>\n",
+    "<tr><th align=\"center\">time</th> <th align=\"center\">velocity</th> <th align=\"center\">acceleration</th> </tr>\n",
+    "</thead>\n",
+    "<tbody>\n",
+    "<tr><td align=\"left\">   0.0     </td> <td align=\"right\">   1.4186      </td> <td align=\"right\">   -5.01           </td> </tr>\n",
+    "<tr><td align=\"left\">   2.0     </td> <td align=\"right\">   1.376512    </td> <td align=\"right\">   11.919          </td> </tr>\n",
+    "<tr><td align=\"left\">   4.0     </td> <td align=\"right\">   1.1E+1      </td> <td align=\"right\">   14.717624       </td> </tr>\n",
+    "</tbody>\n",
+    "</table>\n",
+    "\n",
+    "The DocOnce source code reads"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        \n",
+    "          |--------------------------------|\n",
+    "          |time  | velocity | acceleration |\n",
+    "          |--l--------r-----------r--------|\n",
+    "          | 0.0  | 1.4186   | -5.01        |\n",
+    "          | 2.0  | 1.376512 | 11.919       |\n",
+    "          | 4.0  | 1.1E+1   | 14.717624    |\n",
+    "          |--------------------------------|\n",
+    "        \n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here is yet another table to test that we can handle more than\n",
+    "one table:\n",
+    "\n",
+    "<table border=\"1\">\n",
+    "<thead>\n",
+    "<tr><th align=\"left\">time</th> <th align=\"left\">velocity</th> <th align=\"left\">acceleration</th> </tr>\n",
+    "</thead>\n",
+    "<tbody>\n",
+    "<tr><td align=\"left\">   0.0     </td> <td align=\"left\">   1.4186      </td> <td align=\"left\">   -5.01           </td> </tr>\n",
+    "<tr><td align=\"left\">   1.0     </td> <td align=\"left\">   1.376512    </td> <td align=\"left\">   11.919          </td> </tr>\n",
+    "<tr><td align=\"left\">   3.0     </td> <td align=\"left\">   1.1E+1      </td> <td align=\"left\">   14.717624       </td> </tr>\n",
+    "</tbody>\n",
+    "</table>\n",
+    "And one with math headings (that are expanded and must be treated\n",
+    "accordingly), verbatim heading and entry, and no space around the pipe\n",
+    "symbol:\n",
+    "\n",
+    "<table border=\"1\">\n",
+    "<thead>\n",
+    "<tr><th align=\"center\">$i$</th> <th align=\"center\">$h_i$ </th> <th align=\"center\">$\\bar T_i$</th> <th align=\"center\"> <code>L_i</code> </th> </tr>\n",
+    "</thead>\n",
+    "<tbody>\n",
+    "<tr><td align=\"left\">   0      </td> <td align=\"right\">   0         </td> <td align=\"right\">   288           </td> <td align=\"right\">   -0.0065    </td> </tr>\n",
+    "<tr><td align=\"left\">   1      </td> <td align=\"right\">   11,000    </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.0        </td> </tr>\n",
+    "<tr><td align=\"left\">   2      </td> <td align=\"right\">   20,000    </td> <td align=\"right\">   216           </td> <td align=\"right\">   0.001      </td> </tr>\n",
+    "<tr><td align=\"left\">   3      </td> <td align=\"right\">   32,000    </td> <td align=\"right\">   228           </td> <td align=\"right\">   0.0028     </td> </tr>\n",
+    "<tr><td align=\"left\">   4      </td> <td align=\"right\">   47,000    </td> <td align=\"right\">   270           </td> <td align=\"right\">   0.0        </td> </tr>\n",
+    "<tr><td align=\"left\">   5      </td> <td align=\"right\">   51,000    </td> <td align=\"right\">   270           </td> <td align=\"right\">   -0.0028    </td> </tr>\n",
+    "<tr><td align=\"left\">   6      </td> <td align=\"right\">   71,000    </td> <td align=\"right\">   214           </td> <td align=\"right\">   <code>NaN</code>      </td> </tr>\n",
+    "</tbody>\n",
+    "</table>\n",
+    "And add one with verbatim headings (with underscores),\n",
+    "and rows starting with `|-` because of a negative number,\n",
+    "and `|` right before and after verbatim word (with no space):\n",
+    "\n",
+    "<table border=\"1\">\n",
+    "<thead>\n",
+    "<tr><th align=\"center\">exact</th> <th align=\"center\"><code>v_1</code> </th> <th align=\"center\">$a_i$ + <code>v_2</code></th> <th align=\"center\"><code>verb_3_</code></th> </tr>\n",
+    "</thead>\n",
+    "<tbody>\n",
+    "<tr><td align=\"right\">   9        </td> <td align=\"right\">   9.62      </td> <td align=\"right\">   5.57             </td> <td align=\"right\">   8.98         </td> </tr>\n",
+    "<tr><td align=\"right\">   -20      </td> <td align=\"right\">   -23.39    </td> <td align=\"right\">   -7.65            </td> <td align=\"right\">   -19.93       </td> </tr>\n",
+    "<tr><td align=\"right\">   10       </td> <td align=\"right\">   17.74     </td> <td align=\"right\">   -4.50            </td> <td align=\"right\">   9.96         </td> </tr>\n",
+    "<tr><td align=\"right\">   0        </td> <td align=\"right\">   -9.19     </td> <td align=\"right\">   4.13             </td> <td align=\"right\">   -0.26        </td> </tr>\n",
+    "</tbody>\n",
+    "</table>\n",
+    "Pipe symbols in verbatim and math text in tables used to pose difficulties,\n",
+    "but not anymore:\n",
+    "\n",
+    "<table border=\"1\">\n",
+    "<thead>\n",
+    "<tr><th align=\"center\">    $S$    </th> <th align=\"center\">   command   </th> </tr>\n",
+    "</thead>\n",
+    "<tbody>\n",
+    "<tr><td align=\"left\">   $ ||a_0|| $    </td> <td align=\"right\">   <code>norm|length</code>    </td> </tr>\n",
+    "<tr><td align=\"left\">   $x\\cap y$      </td> <td align=\"right\">   <code>x|y</code>            </td> </tr>\n",
+    "</tbody>\n",
+    "</table>\n",
+    "Finally, a table with math\n",
+    "and URLs.\n",
+    "\n",
+    "<!-- Mako code to expand URLs in the table -->\n",
+    "<!-- (These types of tables did not work before Jan 2014) -->\n",
+    "\n",
+    "\n",
+    "<table border=\"1\">\n",
+    "<tr></tr>\n",
+    "<tbody>\n",
+    "<tr><td align=\"center\">   $\\mathcal{L}=0$                    </td> <td align=\"center\">   [<code>080</code>](../doc/src/manual/mov/wave_frames/frame_0080.png)    </td> <td align=\"center\">   [<code>085</code>](../doc/src/manual/mov/wave_frames/frame_0085.png)    </td> </tr>\n",
+    "<tr><td align=\"center\">   $a=b$                              </td> <td align=\"center\">   [<code>090</code>](../doc/src/manual/mov/wave_frames/frame_0090.png)    </td> <td align=\"center\">   [<code>095</code>](../doc/src/manual/mov/wave_frames/frame_0095.png)    </td> </tr>\n",
+    "<tr><td align=\"center\">   $\\nabla\\cdot\\boldsymbol{u} =0 $    </td> <td align=\"center\">   [<code>100</code>](../doc/src/manual/mov/wave_frames/frame_0100.png)    </td> <td align=\"center\">   [<code>105</code>](../doc/src/manual/mov/wave_frames/frame_0105.png)    </td> </tr>\n",
+    "</tbody>\n",
+    "</table>\n",
+    "\n",
+    "### A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`\n",
+    "\n",
+    "**Paragraph with verbatim and math: `my_file_v1.py` and `my_file_v2.py` define some math $a_{i-1}$.** Here is more `__verbatim__` code and\n",
+    "some plain text on a new line.\n",
+    "\n",
+    "<!-- Test various types of headlines -->\n",
+    "### **Just bold**\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### *Just emphasize*\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### `Just verbatim`\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### **Bold** beginning\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### *Emphasize* beginning\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### `Verbatim` beginning\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### Maybe **bold end**\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### Maybe *emphasize end*\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### Maybe `verbatim end`\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### The middle has **bold** word\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### The middle has *emphasize* word\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "### The middle has `verbatim` word\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "\n",
+    "***Just emphasize*.** Some text.\n",
+    "\n",
+    "\n",
+    "**`Just verbatim`.** Some text.\n",
+    "\n",
+    "\n",
+    "***Emphasize* beginning.** Some text.\n",
+    "\n",
+    "\n",
+    "**`Verbatim beginning`.** Some text.\n",
+    "\n",
+    "\n",
+    "**Maybe *emphasize end*.** Some text.\n",
+    "\n",
+    "\n",
+    "**Maybe `verbatim end`.** Some text.\n",
+    "\n",
+    "\n",
+    "**The middle has *emphasize* word.** Some text.\n",
+    "\n",
+    "\n",
+    "**The middle has `verbatim` word.** Some text.\n",
+    "\n",
+    "\n",
+    "**Ampersand.**\n",
+    "We can test Hennes & Mauritz, often abbreviated H&M, but written\n",
+    "as `Hennes & Mauritz` and `H & M`.\n",
+    "A sole `&` must also work.\n",
+    "<!-- Note: substitutions must not occur inside verbatim, just in ordinary text. -->"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        # Just to check that ampersand works in code blocks:\n",
+    "        c = a & b\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Quotes.**\n",
+    "Let us also add a test of quotes such as \"double quotes, with numbers\n",
+    "like 3.14 and newline/comma and hyphen (as in double-quote)\"; written\n",
+    "in the standard LaTeX-style that gives correct LaTeX formatting and\n",
+    "ordinary double quotes for all non-LaTeX formats.  Here is another\n",
+    "sentence that \"caused\" a bug in the past because double backtick\n",
+    "quotes could imply verbatim text up to a verbatim word starting with\n",
+    "period, like `.txt`.\n",
+    "\n",
+    "\n",
+    "### Bibliography test\n",
+    "\n",
+    "Here is an example: [[Langtangen_Pedersen_2002]](#Langtangen_Pedersen_2002) discussed propagation of\n",
+    "large destructive water waves, [[Langtangen_et_al_2002]](#Langtangen_et_al_2002) gave\n",
+    "an overview of numerical methods for solving the Navier-Stokes equations,\n",
+    "while the use of Backward Kolmogorov equations for analyzing\n",
+    "random vibrations was investigated in [[Langtangen_1994a]](#Langtangen_1994a).\n",
+    "The book chapter [[Mardal_et_al_2003a]](#Mardal_et_al_2003a) contains information on\n",
+    "C++ software tools for programming multigrid methods. A real retro\n",
+    "reference is [[Langtangen_1988d]](#Langtangen_1988d) about a big FORTRAN package.\n",
+    "Multiple references are also possible, e.g., see\n",
+    "[[Langtangen_Pedersen_2002;@Mardal_et_al_2003a]](#Langtangen_Pedersen_2002;@Mardal_et_al_2003a).\n",
+    "\n",
+    "We need to cite more than 10 papers to reproduce an old formatting\n",
+    "problem with blanks in the keys in reST format:\n",
+    "[[Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002]](#Langtangen_1992c;@Langtangen_1994a;@Mortensen_et_al_2011;@Langtangen_Pedersen_2002)\n",
+    "and\n",
+    "[[Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95]](#Langtangen_et_al_2002;@Glimsdal_et_al_20006;@Rahman_et_al_2006b;@Haga_et_al_2011a;@Langtangen_2003a;@Langtangen_2008a;@Langtangen:95)\n",
+    "and all the work of\n",
+    "[[Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004]](#Langtangen_2012;@Mardal_et_al_2003a;@Jeberg_et_al_2004) as well as\n",
+    "old work [[Langtangen_1988d]](#Langtangen_1988d) and [[Langtangen_1989e]](#Langtangen_1989e), and the\n",
+    "talk [[Langtangen_talk_2007a]](#Langtangen_talk_2007a).\n",
+    "Langtangen also had two thesis [[Langtangen:85;@Langtangen_1989e]](#Langtangen:85;@Langtangen_1989e)\n",
+    "back in the days.\n",
+    "More retro citations are\n",
+    "the old ME-IN323 book [[Langtangen:91]](#Langtangen:91) and the\n",
+    "[[Langtangen:94b]](#Langtangen:94b) OONSKI '94 paper.\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Example 1: Examples can be typeset as exercises\n",
+    "<div id=\"Example\"></div>\n",
+    "\n",
+    "Examples can start with a subsection heading starting with `Example:`\n",
+    "and then, with the command-line option `--examples_as_exercises` be\n",
+    "typeset as exercises. This is useful if one has solution\n",
+    "environments as part of the example.\n",
+    "\n",
+    "\n",
+    "**a)**\n",
+    "State some problem.\n",
+    "\n",
+    "**Solution.**\n",
+    "The answer to this subproblem can be written here.\n",
+    "\n",
+    "**b)**\n",
+    "State some other problem.\n",
+    "\n",
+    "**Hint 1.**\n",
+    "A hint can be given.\n",
+    "\n",
+    "**Hint 2.**\n",
+    "Maybe even another hint?\n",
+    "\n",
+    "**Solution.**\n",
+    "The answer to this other subproblem goes here,\n",
+    "maybe over multiple doconce input lines.\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "### User-defined environments\n",
+    "\n",
+    "\n",
+    "\n",
+    "The example in the section [Example 1: A test function](#ex:test:1p1) demonstrates how to write a test function.\n",
+    "That is, a special test function for a function `add` appears in\n",
+    "the example in the section [Example 1: A test function](#ex:test:1p1).\n",
+    "\n",
+    "\n",
+    "\n",
+    "### Example 1: A test function\n",
+    "<div id=\"ex:test:1p1\"></div>\n",
+    "\n",
+    "Suppose we want to write a test function for checking the\n",
+    "implementation of a Python function for addition."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "def add(a, b):\n",
+    "    return a + b\n",
+    "\n",
+    "def test_add():\n",
+    "    a = 1; b = 1\n",
+    "    expected = a + b\n",
+    "    computed = add(a, b)\n",
+    "    assert expected == computed\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Example 2: Addition\n",
+    "<div id=\"ex:math:1p1\"></div>\n",
+    "\n",
+    "We have"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "1 + 1 = 2\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Highlight box!**\n",
+    "\n",
+    "This environment is used to highlight something:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "E = mc^2\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### URLs\n",
+    "<div id=\"subsubsec:ex\"></div>\n",
+    "\n",
+    "Testing of URLs: hpl's home page [hpl](http://folk.uio.no/hpl), or\n",
+    "the entire URL if desired, <http://folk.uio.no/hpl>.  Here is a\n",
+    "plain file link <testdoc.do.txt>, or <testdoc.do.txt>, or\n",
+    "<testdoc.do.txt> or <testdoc.do.txt> or [a link with\n",
+    "newline](testdoc.do.txt). Can test spaces with the link with word\n",
+    "too: [hpl](http://folk.uio.no/hpl) or [hpl](http://folk.uio.no/hpl). Also `file:///` works: [link to a\n",
+    "file](file:///home/hpl/vc/doconce/doc/demos/manual/manual.html) is\n",
+    "fine to have. Moreover, \"loose\" URLs work, i.e., no quotes, just\n",
+    "the plain URL as in <http://folk.uio.no/hpl>, if followed by space, comma,\n",
+    "colon, semi-colon, question mark, exclamation mark, but not a period\n",
+    "(which gets confused with the periods inside the URL).\n",
+    "\n",
+    "Mail addresses can also be used: [`hpl@simula.no`](mailto:hpl@simula.no), or just a [mail link](mailto:hpl@simula.no), or a raw <mailto:hpl@simula.no>.\n",
+    "\n",
+    "Here are some tough tests of URLs, especially for the `latex` format:\n",
+    "[Newton-Cotes](http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas) formulas\n",
+    "and a [good book](http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1). Need to test\n",
+    "Newton-Cotes with percentage in URL too:\n",
+    "<http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas>\n",
+    "and <http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae> which has a shebang.\n",
+    "\n",
+    "For the `--device=paper` option it is important to test that URLs with\n",
+    "monospace font link text get a footnote\n",
+    "(unless the `--latex_no_program_footnotelink`\n",
+    "is used), as in this reference to\n",
+    "[`decay_mod`](https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py), [`ball1.py`](http://tinyurl.com/pwyasaa/formulas.ball1.py),\n",
+    "and [`ball2.py`](http://tinyurl.com/pwyasaa/formulas.ball2.py).\n",
+    "\n",
+    "\n",
+    "<!-- Comments should be inserted outside paragraphs (because in the rst -->\n",
+    "<!-- format extra blanks make a paragraph break). -->\n",
+    "\n",
+    "<!-- Note that when there is no http: or file:, it can be a file link -->\n",
+    "<!-- if the link name is URL, url, \"URL\", or \"url\". Such files should, -->\n",
+    "<!-- if rst output is desired, but placed in a `_static*` folder. -->\n",
+    "\n",
+    "More tough tests: repeated URLs whose footnotes when using the\n",
+    "`--device=paper` option must be correct. We have\n",
+    "[google](http://google.com), [google](http://google.com), and\n",
+    "[google](http://google.com), which should result in exactly three\n",
+    "footnotes.\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- !split and check if these extra words are included properly in the comment -->\n",
+    "\n",
+    "## LaTeX Mathematics\n",
+    "\n",
+    "Here is an equation without label using backslash-bracket environment:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "a = b + c\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "or with number and label, as in [(3)](#my:eq1), using the equation environment:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Equation labels as ordinary links -->\n",
+    "<div id=\"my:eq1\"></div>\n",
+    "\n",
+    "$$\n",
+    "\\begin{equation}\n",
+    "{\\partial u\\over\\partial t} = \\nabla^2 u \\label{my:eq1} \\tag{3}\n",
+    "\\end{equation}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can refer to this equation by [(3)](#my:eq1).\n",
+    "\n",
+    "Here is a system without equation numbers, using the align-asterisk environment:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\pmb{a} = \\pmb{q}\\times\\pmb{n}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "b = \\nabla^2 u + \\nabla^4 v\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "More mathematical typesetting is demonstrated in the coming exercises.\n",
+    "\n",
+    "Below, we have  [Problem 2: Flip a Coin](#demo:ex:1) and  [Project 4: Compute a Probability](#demo:ex:2),\n",
+    "as well as  [Project 5: Explore Distributions of Random Circles](#proj:circle1) and [Project 11: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you), and in\n",
+    "between there we have  [Exercise 10: Make references to projects and problems](#exer:some:formula).\n",
+    "\n",
+    "\n",
+    "## Exercises\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Problem 2: Flip a Coin\n",
+    "<div id=\"demo:ex:1\"></div>\n",
+    "<!-- keywords = random numbers; Monte Carlo simulation; ipynb -->\n",
+    "\n",
+    "<!-- Torture tests -->\n",
+    "\n",
+    "\n",
+    "**a)**\n",
+    "Make a program that simulates flipping a coin $N$ times.\n",
+    "Print out \"tail\" or \"head\" for each flip and\n",
+    "let the program count the number of heads.\n",
+    "\n",
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint 1.**\n",
+    "Use `r = random.random()` and define head as `r <= 0.5`.\n",
+    "\n",
+    "<!-- --- end hint in exercise --- -->\n",
+    "\n",
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint 2.**\n",
+    "Draw an integer among $\\{1,2\\}$ with\n",
+    "`r = random.randint(1,2)` and define head when `r` is 1.\n",
+    "\n",
+    "<!-- --- end hint in exercise --- -->\n",
+    "\n",
+    "\n",
+    "<!-- --- begin answer of exercise --- -->\n",
+    "**Answer.**\n",
+    "If the `random.random()` function returns a number $<1/2$, let it be\n",
+    "head, otherwise tail. Repeat this $N$ number of times.\n",
+    "\n",
+    "<!-- --- end answer of exercise --- -->\n",
+    "\n",
+    "\n",
+    "<!-- --- begin solution of exercise --- -->\n",
+    "**Solution.**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "import sys, random\n",
+    "N = int(sys.argv[1])\n",
+    "heads = 0\n",
+    "for i in range(N):\n",
+    "    r = random.random()\n",
+    "    if r <= 0.5:\n",
+    "        heads += 1\n",
+    "print 'Flipping a coin %d times gave %d heads' % (N, heads)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- --- end solution of exercise --- -->\n",
+    "\n",
+    "**b)**\n",
+    "Vectorize the code in a) using boolean indexing.\n",
+    "\n",
+    "Vectorized code can be written in many ways.\n",
+    "Sometimes the code is less intuitive, sometimes not.\n",
+    "At least there is not much to find in the section [Section 1](#sec1).\n",
+    "\n",
+    "**c)**\n",
+    "Vectorize the code in a) using `numpy.sum`.\n",
+    "\n",
+    "\n",
+    "<!-- --- begin answer of exercise --- -->\n",
+    "**Answer.**\n",
+    "`np.sum(np.where(r <= 0.5, 1, 0))` or `np.sum(r <= 0.5)`.\n",
+    "\n",
+    "<!-- --- end answer of exercise --- -->\n",
+    "\n",
+    "In this latter subexercise, we have an\n",
+    "example where the code is easy to read.\n",
+    "\n",
+    "\n",
+    "#### My remarks\n",
+    "\n",
+    "Remarks with such a subsubsection is treated as more text\n",
+    "after the last subexercise. Test a list too:\n",
+    "\n",
+    "1. Mark 1.\n",
+    "\n",
+    "2. Mark 2.\n",
+    "\n",
+    "Filenames: `flip_coin.py`, `flip_coin.pdf`.\n",
+    "\n",
+    "<!-- Closing remarks for this Problem -->\n",
+    "\n",
+    "#### Remarks\n",
+    "\n",
+    "These are the exercise remarks, appearing at the very end.\n",
+    "\n",
+    "<!-- solution files: mysol.txt, mysol_flip_coin.py, yet_another.file -->\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "### Not an exercise\n",
+    "\n",
+    "Should be possible to stick a normal section in the middle of many\n",
+    "exercises.\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Exercise 3: Test of plain text exercise\n",
+    "<div id=\"my:exer1\"></div>\n",
+    "\n",
+    "Very short exercise. What is the capital\n",
+    "of Norway?\n",
+    "Filename: `myexer1.py`.\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Project 4: Compute a Probability\n",
+    "<div id=\"demo:ex:2\"></div>\n",
+    "\n",
+    "<!-- Minimalistic exercise -->\n",
+    "\n",
+    "\n",
+    "What is the probability of getting a number between 0.5 and 0.6 when\n",
+    "drawing uniformly distributed random numbers from the interval $[0,1)$?\n",
+    "\n",
+    "\n",
+    "At the end we have a list because that caused problems in LaTeX\n",
+    "in previous DocOnce versions:\n",
+    "\n",
+    "1. item1\n",
+    "\n",
+    "2. item2\n",
+    "\n",
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint.**\n",
+    "To answer this question empirically, let a program\n",
+    "draw $N$ such random numbers using Python's standard `random` module,\n",
+    "count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and\n",
+    "compute the probability as $M/N$.\n",
+    "\n",
+    "<!-- --- end hint in exercise --- -->\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Project 5: Explore Distributions of Random Circles\n",
+    "<div id=\"proj:circle1\"></div>\n",
+    "<!-- keywords = ipynb -->\n",
+    "\n",
+    "The formula for a circle is given by"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Equation labels as ordinary links -->\n",
+    "<div id=\"circle:x\"></div>\n",
+    "\n",
+    "$$\n",
+    "\\begin{equation}\n",
+    "x = x_0 + R\\cos 2\\pi t,\n",
+    "\\label{circle:x} \\tag{4}\n",
+    "\\end{equation}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Equation labels as ordinary links -->\n",
+    "<div id=\"circle:y\"></div>\n",
+    "\n",
+    "$$\n",
+    "\\begin{equation}  \n",
+    "y = y_0 + R\\sin 2\\pi t,\n",
+    "\\label{circle:y} \\tag{5}\n",
+    "\\end{equation}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "where $R$ is the radius of the circle, $(x_0,y_0)$ is the\n",
+    "center point, and $t$ is a parameter in the unit interval $[0,1]$.\n",
+    "For any $t$, $(x,y)$ computed from [(4)](#circle:x)-[(5)](#circle:y)\n",
+    "is a point on the circle.\n",
+    "The formula can be used to generate `n` points on a circle:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "def circle(R, x0, y0, n=501):\n",
+    "    t = np.linspace(0, 1, n)\n",
+    "    x = x0 + R*np.cos(2*np.pi*t)\n",
+    "    y = y0 + R*np.sin(2*np.pi*t)\n",
+    "    return x, y\n",
+    "\n",
+    "x, y = circle(2.0, 0, 0)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- Often in an exercise we have some comments about the solution -->\n",
+    "<!-- which we normally want to keep where they are. -->\n",
+    "\n",
+    "The goal of this project is to draw $N$ circles with random\n",
+    "center and radius. Plot each circle using the `circle` function\n",
+    "above.\n",
+    "\n",
+    "\n",
+    "**a)**\n",
+    "Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.\n",
+    "\n",
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint.**\n",
+    "Use the `numpy.random` module to draw the\n",
+    "$x_0$, $y_0$, and $R$ quantities.\n",
+    "\n",
+    "<!-- --- end hint in exercise --- -->\n",
+    "\n",
+    "\n",
+    "<!-- --- begin answer of exercise --- -->\n",
+    "**Answer.**\n",
+    "Here goes the short answer to part a).\n",
+    "\n",
+    "<!-- --- end answer of exercise --- -->\n",
+    "\n",
+    "\n",
+    "<!-- --- begin solution of exercise --- -->\n",
+    "**Solution.**\n",
+    "Here goes a full solution to part a).\n",
+    "\n",
+    "<!-- --- end solution of exercise --- -->\n",
+    "\n",
+    "**b)**\n",
+    "Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
+    "Filename: `norm.py`.\n",
+    "\n",
+    "**c)**\n",
+    "Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
+    "\n",
+    "\n",
+    "Filename: `circles.pdf`.\n",
+    "\n",
+    "<!-- Closing remarks for this Project -->\n",
+    "\n",
+    "#### Remarks\n",
+    "\n",
+    "At the very end of the exercise it may be appropriate to summarize\n",
+    "and give some perspectives.\n",
+    "\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Exercise 6: Determine some Distance\n",
+    "<div id=\"exer:dist\"></div>\n",
+    "\n",
+    "Intro to this exercise. Questions are in subexercises below.\n",
+    "\n",
+    "\n",
+    "**a)**\n",
+    "Subexercises are numbered a), b), etc.\n",
+    "\n",
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint 1.**\n",
+    "First hint to subexercise a).\n",
+    "With math $a=b$ in hint:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "a=b.\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "And with code (in plain verbatim) returning $x+1$ in hint:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        def func(x):\n",
+    "            return x + 1  # with code in hint\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- --- end hint in exercise --- -->\n",
+    "\n",
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint 2.**\n",
+    "Second hint to subexercise a).\n",
+    "\n",
+    "Test list in hint:\n",
+    "\n",
+    "1. item1\n",
+    "\n",
+    "2. item2\n",
+    "\n",
+    "<!-- --- end hint in exercise --- -->\n",
+    "Filename: `subexer_a.pdf`.\n",
+    "\n",
+    "\n",
+    "<!-- --- begin answer of exercise --- -->\n",
+    "**Answer.**\n",
+    "Short answer to subexercise a).\n",
+    "With math in answer: $a=b$.\n",
+    "\n",
+    "<!-- --- end answer of exercise --- -->\n",
+    "\n",
+    "**b)**\n",
+    "Here goes the text for subexercise b).\n",
+    "\n",
+    "\n",
+    "Some math $\\cos^2 x + \\sin^2 x = 1$ written one a single line:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\cos^2 x + \\sin^2 x = 1 \\thinspace .\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- --- begin hint in exercise --- -->\n",
+    "\n",
+    "**Hint.**\n",
+    "A hint for this subexercise.\n",
+    "\n",
+    "<!-- --- end hint in exercise --- -->\n",
+    "Filename: `subexer_b.pdf`.\n",
+    "\n",
+    "\n",
+    "<!-- --- begin solution of exercise --- -->\n",
+    "**Solution.**\n",
+    "Here goes the solution of this subexercise.\n",
+    "\n",
+    "<!-- --- end solution of exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- No meaning in this weired test example: -->\n",
+    "The text here belongs to the main (intro) part of the exercise. Need\n",
+    "closing remarks to have text after subexercises.\n",
+    "\n",
+    "Test list in exercise:\n",
+    "\n",
+    "1. item1\n",
+    "\n",
+    "2. item2\n",
+    "\n",
+    "<!-- --- begin solution of exercise --- -->\n",
+    "**Solution.**\n",
+    "Here goes a full solution of the whole exercise.\n",
+    "With some math $a=b$ in this solution:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\hbox{math in solution: } a = b\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "And code `a=b` in this solution:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        a = b  # code in solution\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "End of solution is here.\n",
+    "\n",
+    "<!-- --- end solution of exercise --- -->\n",
+    "\n",
+    "<!-- Closing remarks for this Exercise -->\n",
+    "\n",
+    "#### Remarks\n",
+    "\n",
+    "Some final closing remarks, e.g., summarizing the main findings\n",
+    "and their implications in other problems can be made. These\n",
+    "remarks will appear at the end of the typeset exercise.\n",
+    "\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Some exercise without the \"Exercise:\" prefix\n",
+    "\n",
+    "<!-- Another minimalistic exercise -->\n",
+    "\n",
+    "Just some text. And some math saying that $e^0=1$ on a single line,\n",
+    "to test that math block insertion is correct:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\exp{(0)} = 1\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "And a test that the code `lambda x: x+2` is correctly placed here:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "        lambda x: x+2\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<!-- the Filename: ... is written correctly. -->\n",
+    "<!-- Have some comments at the end of the exercise to see that -->\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Exercise 8: Solution of differential equation\n",
+    "<div id=\"sec:this:exer:de\"></div>\n",
+    "\n",
+    "\n",
+    "\n",
+    "Given"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "$$\n",
+    "\\frac{dy}{dx} = -y(x),\\quad y(0)=1\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "What is the solution of this equation?\n",
+    "\n",
+    "**Choice A:**\n",
+    " $y=e^{-y}$\n",
+    "\n",
+    "**Choice B:**\n",
+    " $y=e^{y}$\n",
+    "\n",
+    "**Choice C:**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "from math import exp\n",
+    "def f(x):\n",
+    "    return exp(x)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "**Choice D:**\n",
+    " The solution cannot be found because there is a derivative in the equation.\n",
+    "\n",
+    "**Choice E:**\n",
+    " The equation is meaningless: an equation must be an equation\n",
+    "for $x$ or $y$, not a function $y(x)$.\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Example 9: Just an example\n",
+    "\n",
+    "<!-- This example needs the --examples_as_exercises option, otherwise -->\n",
+    "<!-- it is just typeset as it is written. -->\n",
+    "\n",
+    "\n",
+    "**a)**\n",
+    "What is the capital of Norway?\n",
+    "\n",
+    "**Answer.**\n",
+    "Oslo.\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "## Here goes another section\n",
+    "\n",
+    "With some text, before we continue with exercises.\n",
+    "\n",
+    "## More Exercises\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Exercise 10: Make references to projects and problems\n",
+    "<div id=\"exer:some:formula\"></div>\n",
+    "\n",
+    "<!-- Test comments not at the end only -->\n",
+    "Pick a statement from  [Project 5: Explore Distributions of Random Circles](#proj:circle1) or  [Problem 2: Flip a Coin](#demo:ex:1)\n",
+    "and verify it.\n",
+    "\n",
+    "Test list at the end of an exercise without other elements (like subexercise,\n",
+    "hint, etc.):\n",
+    "\n",
+    "1. item1\n",
+    "\n",
+    "2. item2\n",
+    "\n",
+    "Filename: `verify_formula.py`.\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "<!-- --- begin exercise --- -->\n",
+    "\n",
+    "### Project 11: References to  [Project 4: Compute a Probability](#demo:ex:2) in a heading works for ipynb\n",
+    "<div id=\"exer:you\"></div>\n",
+    "\n",
+    "Refer to the previous exercise as  [Exercise 10: Make references to projects and problems](#exer:some:formula),\n",
+    "the two before that as  [Project 4: Compute a Probability](#demo:ex:2) and [Project 5: Explore Distributions of Random Circles](#proj:circle1),\n",
+    "and this one as  [Project 11: References to Project ref{demo:ex:2} in a heading works for ipynb](#exer:you).\n",
+    "Filename: `selc_composed.pdf`.\n",
+    "\n",
+    "<!-- --- end exercise --- -->\n",
+    "\n",
+    "\n",
+    "## References\n",
+    "\n",
+    " 1. <div id=\"Langtangen_Pedersen_2002\"></div> **H. P. Langtangen and G. Pedersen**. \n",
+    "    Propagation of Large Destructive Waves,\n",
+    "    *International Journal of Applied Mechanics and Engineering*,\n",
+    "    7(1),\n",
+    "    pp. 187-204,\n",
+    "    2002.\n",
+    "\n",
+    " 2. <div id=\"Langtangen_et_al_2002\"></div> **H. P. Langtangen, K.-A. Mardal and R. Winther**. \n",
+    "    Numerical Methods for Incompressible Viscous Flow,\n",
+    "    *Advances in Water Resources*,\n",
+    "    25,\n",
+    "    pp. 1125-1146,\n",
+    "    2002.\n",
+    "\n",
+    " 3. <div id=\"Langtangen_1994a\"></div> **H. P. Langtangen**. \n",
+    "    Numerical Solution of First Passage Problems in Random Vibrations,\n",
+    "    *SIAM Journal of Scientific and Statistical Computing*,\n",
+    "    15,\n",
+    "    pp. 997-996,\n",
+    "    1994.\n",
+    "\n",
+    " 4. <div id=\"Mardal_et_al_2003a\"></div> **K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen**. \n",
+    "    Software Tools for Multigrid Methods,\n",
+    "    *Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming*,\n",
+    "    edited by **H. P. Langtangen and A. Tveito**,\n",
+    "    Springer,\n",
+    "    2003,\n",
+    "    Edited book.\n",
+    "\n",
+    " 5. <div id=\"Langtangen_1988d\"></div> **H. P. Langtangen**. \n",
+    "    The FEMDEQS Program System,\n",
+    "    *Department of Mathematics, University of Oslo*,\n",
+    "    <http://www.math.uio.no/old/days/hpl/femdeqs.pdf>,\n",
+    "    1989.\n",
+    "\n",
+    " 6. <div id=\"Langtangen_1992c\"></div> **H. P. Langtangen**. \n",
+    "    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,\n",
+    "    *SIAM Journal on Scientific Computing*,\n",
+    "    13,\n",
+    "    pp. 1394-1417,\n",
+    "    1992.\n",
+    "\n",
+    " 7. <div id=\"Mortensen_et_al_2011\"></div> **M. Mortensen, H. P. Langtangen and G. N. Wells**. \n",
+    "    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,\n",
+    "    *Advances in Water Resources*,\n",
+    "    34(9),\n",
+    "    [doi: 10.1016/j.advwatres.2011.02.013](http://dx.doi.org/10.1016/j.advwatres.2011.02.013),\n",
+    "    2011.\n",
+    "\n",
+    " 8. <div id=\"Glimsdal_et_al_20006\"></div> **S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\\ovholt**. \n",
+    "    Propagation of the Dec. 26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,\n",
+    "    *International Journal of Fluid Mechanics Research*,\n",
+    "    33(1),\n",
+    "    pp. 15-43,\n",
+    "    2006.\n",
+    "\n",
+    " 9. <div id=\"Rahman_et_al_2006b\"></div> **S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen**. \n",
+    "    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,\n",
+    "    *Physical Review B: Condensed Matter and Materials Physics*,\n",
+    "    74,\n",
+    "    2006.\n",
+    "\n",
+    "10. <div id=\"Haga_et_al_2011a\"></div> **J. B. Haga, H. Osnes and H. P. Langtangen**. \n",
+    "    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,\n",
+    "    *International Journal of Analytical and Numerical Methods in Geomechanics*,\n",
+    "    [doi: 10.1002/nag.1062](http://dx.doi.org/10.1002/nag.1062),\n",
+    "    2011,\n",
+    "    <http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract>.\n",
+    "\n",
+    "11. <div id=\"Langtangen_2003a\"></div> **H. P. Langtangen**. \n",
+    "    *Computational Partial Differential Equations - Numerical Methods and Diffpack Programming*,\n",
+    "    second edition,\n",
+    "    *Texts in Computational Science and Engineering*,\n",
+    "    Springer,\n",
+    "    2003.\n",
+    "\n",
+    "12. <div id=\"Langtangen_2008a\"></div> **H. P. Langtangen**. \n",
+    "    *Python Scripting for Computational Science*,\n",
+    "    third edition,\n",
+    "    *Texts in Computational Science and Engineering*,\n",
+    "    Springer,\n",
+    "    2008.\n",
+    "\n",
+    "13. <div id=\"Langtangen:95\"></div> **H. P. Langtangen and G. Pedersen**. \n",
+    "    Finite Elements for the Boussinesq Wave Equations,\n",
+    "    Waves and Non-linear Processes in Hydrodynamics,\n",
+    "    edited by **J. Grue, B. Gjevik and J. E. Weber**,\n",
+    "    Kluwer Academic Publishers,\n",
+    "    pp. pp. 117-126,\n",
+    "    1995,\n",
+    "    <http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310>.\n",
+    "\n",
+    "14. <div id=\"Langtangen_2012\"></div> **H. P. Langtangen**. \n",
+    "    *A Primer on Scientific Programming With Python*,\n",
+    "    third edition,\n",
+    "    *Texts in Computational Science and Engineering*,\n",
+    "    Springer,\n",
+    "    2012.\n",
+    "\n",
+    "15. <div id=\"Jeberg_et_al_2004\"></div> **P. V. Jeberg, H. P. Langtangen and C. B. Terp**. \n",
+    "    Optimization With Diffpack: Practical Example From Welding,\n",
+    "    *Simula Research Laboratory*,\n",
+    "    Internal report,\n",
+    "    2004.\n",
+    "\n",
+    "16. <div id=\"Langtangen_1989e\"></div> **H. P. Langtangen**. \n",
+    "    Computational Methods for Two-Phase Flow in Oil Reservoirs,\n",
+    "    Ph.D. Thesis,\n",
+    "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
+    "    1989.\n",
+    "\n",
+    "17. <div id=\"Langtangen_talk_2007a\"></div> **H. P. Langtangen**. \n",
+    "    Computational Modeling of Huge Tsunamis From Asteroid Impacts,\n",
+    "    Invited keynote lecture at the \\emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,\n",
+    "    2007.\n",
+    "\n",
+    "18. <div id=\"Langtangen:85\"></div> **H. P. Langtangen**. \n",
+    "    Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,\n",
+    "    M.Sc. Thesis,\n",
+    "    Mechanics Division, Department of Mathematics, University of Oslo,\n",
+    "    1985.\n",
+    "\n",
+    "19. <div id=\"Langtangen:91\"></div> **H. P. Langtangen and A. Tveito**. \n",
+    "    Numerical Methods in Continuum Mechanics,\n",
+    "    *Center for Industrial Research*,\n",
+    "    1991.\n",
+    "\n",
+    "20. <div id=\"Langtangen:94b\"></div> **H. P. Langtangen**. \n",
+    "    Diffpack: Software for Partial Differential Equations,\n",
+    "    *Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA*,\n",
+    "    edited by **A. Vermeulen**,\n",
+    "    1994.\n",
+    "\n",
+    "## Appendix: Just for testing; part I\n",
+    "<div id=\"app1\"></div>\n",
+    "\n",
+    "This is the first appendix.\n",
+    "\n",
+    "### A subsection within an appendix\n",
+    "\n",
+    "Some text.\n",
+    "\n",
+    "## Appendix: Just for testing; part II\n",
+    "<div id=\"app2\"></div>\n",
+    "\n",
+    "This is more stuff for an appendix.\n",
+    "\n",
+    "### Appendix: Testing identical titles\n",
+    "\n",
+    "Without label.\n",
+    "\n",
+    "\n",
+    "### Appendix: Testing identical titles\n",
+    "<div id=\"test:title:id1\"></div>\n",
+    "\n",
+    "With label.\n",
+    "\n",
+    "### Appendix: Testing identical titles\n",
+    "<div id=\"test:title:id2\"></div>\n",
+    "\n",
+    "What about inserting a quiz?\n",
+    "\n",
+    "\n",
+    "\n",
+    "## Test of quizzes\n",
+    "\n",
+    "\n",
+    "**Fundamental test:** What is the capital of Norway?\n",
+    "\n",
+    "**Answer 1:**\n",
+    " Stockholm\n",
+    "\n",
+    "**Answer 2:**\n",
+    " London\n",
+    "\n",
+    "**Answer 3:**\n",
+    " Oslo\n",
+    "\n",
+    "**Choice D:**\n",
+    " Bergen\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "### Appendix: Testing identical titles\n",
+    "\n",
+    "Without label.\n",
+    "\n",
+    "**Tip.**\n",
+    "\n",
+    "Here is a tip or hint box, typeset as a notice box.\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "Need a lot of text to surround the summary box.\n",
+    "Version control systems allow you to record the history of files\n",
+    "and share files among several computers and collaborators in a\n",
+    "professional way. File changes on one computer are updated or\n",
+    "merged with changes on another computer. Especially when working\n",
+    "with programs or technical reports it is essential\n",
+    "to have changes documented and to\n",
+    "ensure that every computer and person involved in the project\n",
+    "have the latest updates of the files.\n",
+    "Greg Wilson' excellent [Script for Introduction to Version Control](http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/) provides a more detailed motivation why you will benefit greatly\n",
+    "from using version control systems.\n",
+    "\n",
+    "**Summary.**\n",
+    "\n",
+    "**Bold remark:** Make some text with this summary.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "Much testing in this document, otherwise stupid content.\n",
+    "\n",
+    "\n",
+    "\n",
+    "Projects that you want to share among several computers or project\n",
+    "workers are today most conveniently stored at some web site \"in the\n",
+    "cloud\" and updated through communication with that site. I strongly\n",
+    "recommend you to use such sites for all serious programming and\n",
+    "scientific writing work - and all other important files.\n",
+    "\n",
+    "The simplest services for hosting project files are [Dropbox](http://dropbox.com) and [Google Drive](http://drive.google.com).\n",
+    "It is very easy to get started with these systems, and they allow you\n",
+    "to share files among laptops and mobile units with as many users as\n",
+    "you want. The systems offer a kind of version control in that the\n",
+    "files are stored frequently (several times per minute), and you can go\n",
+    "back to previous versions for the last 30 days. However, it is\n",
+    "challenging  to find the right version from the past when there are\n",
+    "so many of them.\n",
+    "\n",
+    "More seriously, when several people may edit files simultaneously, it\n",
+    "can be difficult detect who did what when, roll back to previous\n",
+    "versions, and to manually merge the edits when these are\n",
+    "incompatible. Then one needs more sophisticated tools than Dropbox or\n",
+    "Google Drive: project hosting services with true version control\n",
+    "systems.  The following text aims at providing you with the minimum\n",
+    "information to started with such systems. Numerous other tutorials\n",
+    "contain more comprehensive material and in-depth explanations of the\n",
+    "concepts and tools.\n",
+    "\n",
+    "The idea with project hosting services is that you have the files\n",
+    "associated with a project in the cloud. Many people may share these\n",
+    "files.  Every time you want to work on the project you explicitly\n",
+    "update your version of the files, edit the files as you like, and\n",
+    "synchronize the files with the \"master version\" at the site where the\n",
+    "project is hosted.  If you at some point need to go back to a\n",
+    "version of the files at some particular point in the past,\n",
+    "this is an easy operation. You can also use tools to see\n",
+    "what various people have done with the files in the various versions.\n",
+    "\n",
+    "All these services are very similar. Below we describe how you get\n",
+    "started with Bitbucket, GitHub, and Googlecode. Launchpad works very\n",
+    "similarly to the latter three. All the project hosting services have\n",
+    "excellent introductions available at their web sites, but the recipes\n",
+    "below are much shorter and aim at getting you started as quickly as\n",
+    "possible by concentrating on the most important need-to-know steps.\n",
+    "The Git tutorials we refer to later in this document contain more\n",
+    "detailed information and constitute of course very valuable readings\n",
+    "when you use version control systems every day. The point now is\n",
+    "to get started.\n",
+    "\n",
+    "\n",
+    "### Appendix: Testing inline comments\n",
+    "\n",
+    "<!-- Names can be [ A-Za-z0-9_'+-]+ -->\n",
+    "\n",
+    "Projects that you want to share among several computers or project\n",
+    "workers are today most conveniently stored at some web site \"in the\n",
+    "cloud\" and updated through communication with that\n",
+    "site. [hpl's semi opinion 1: not sure if in the cloud is\n",
+    "understood by\n",
+    "all.] I strongly recommend you to use such sites for all serious\n",
+    "programming and scientific writing work - and all other important\n",
+    "files.\n",
+    "\n",
+    "The simplest services for hosting project files is Dropbox. [mp 2: Simply go to <http://dropbox.com> and watch the video. It explains\n",
+    "how files, like `myfile.py`, perhaps containing much math, like\n",
+    "$\\partial u/\\partial t$, are easily communicated between machines.] It\n",
+    "is very easy to get started with Dropbox, and it allows you to share\n",
+    "files among [hpl 3: laptops and mobile units -> computers, tablets,\n",
+    "and phones].\n",
+    "\n",
+    "<!-- Test horizontal rule -->\n",
+    "\n",
+    "------\n",
+    "\n",
+    "<!-- Coments for editing -->\n",
+    "\n",
+    "First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]\n",
+    "$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities\n",
+    "are] [del 8: just] negative. [add 9: This comes as no surprise.]\n",
+    "\n",
+    "### Appendix: Testing headings ending with `verbatim inline`\n",
+    "\n",
+    "The point here is to test 1) `verbatim` code in headings, and 2)\n",
+    "ending a heading with verbatim code as this triggers a special\n",
+    "case in LaTeX.\n",
+    "\n",
+    "We also test mdash---used as alternative to hyphen without spaces around,\n",
+    "or in quotes:\n",
+    "\n",
+    "> Fun is fun.--- Unknown.\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "And finally, what about admons, quotes, and boxes? They are tested\n",
+    "in a separate document: `admon.do.txt`.\n",
+    "\n",
+    "[^example-of-the-third-footnote]: Not much to add here, but the footnote\n",
+    "is at the end with only one newline."
+   ]
   }
- ]
+ ],
+ "metadata": {},
+ "nbformat": 4,
+ "nbformat_minor": 0
 }
 
 ************** File: testdoc.tmp *****************
@@ -32211,11 +32215,11 @@ Similar IPython sessions:
 <span style="color: #888888">output</span>
 </pre></div>
 </td></tr></table><p>
-Here is the interactive session again, but with <code>dpyshell</code>:
+Here is the interactive session again, but with <code>pyshell-t</code>.
 
 <p>
 
-<!-- code=python (!bc dpyshell) typeset with pygments style "perldoc" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
@@ -34944,7 +34948,7 @@ Similar IPython sessions:
 <span style="color: #888888">output</span>
 </pre></div>
 <p>
-Here is the interactive session again, but with <code>dpyshell</code>:
+Here is the interactive session again, but with <code>pyshell-t</code>.
 
 <p>
 
@@ -37091,11 +37095,11 @@ Similar IPython sessions:
 <span style="color: #888888">output</span>
 </pre></div>
 <p>
-Here is the interactive session again, but with <code>dpyshell</code>:
+Here is the interactive session again, but with <code>pyshell-t</code>.
 
 <p>
 
-<!-- code=python (!bc dpyshell) typeset with pygments style "default" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
@@ -39398,9 +39402,9 @@ line
 output
 \eipy
 
-Here is the interactive session again, but with \Verb!dpyshell!:
+Here is the interactive session again, but with \Verb!pyshell-t!.
 
-\bdpyshell
+\bpyshell
 >>> from numpy import linspace, sin
 >>> # Some comment
 >>> x = linspace(0, 2, 11)
@@ -39409,7 +39413,7 @@ Here is the interactive session again, but with \Verb!dpyshell!:
 0
 >>> import matplotlib.pyplot as plt
 >>> plt.plot(x, y)
-\edpyshell
+\epyshell
 
 % This one tests a + sign before a code environment
 C++:
@@ -44503,11 +44507,11 @@ Similar IPython sessions:
 <span style="color: #888888">output</span>
 </pre></div>
 <p>
-Here is the interactive session again, but with <code>dpyshell</code>:
+Here is the interactive session again, but with <code>pyshell-t</code>.
 
 <p>
 
-<!-- code=python (!bc dpyshell) typeset with pygments style "default" -->
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
@@ -46827,7 +46831,7 @@ Similar IPython sessions:
         line
         output
 
-Here is the interactive session again, but with ``dpyshell``:
+Here is the interactive session again, but with ``pyshell-t``.
 
 .. code-block:: python
 
@@ -72967,7 +72971,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f8cbb231848>
+verbatim is to be replaced using <function html_verbatim at 0x7f39ca5bc848>
 
 
 First occurence: " `mako`."
@@ -76942,7 +76946,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue May 12 03:29:16 2015.
+# sphinx-quickstart on Tue May 12 06:22:46 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -99229,8 +99233,6 @@ output in testdoc.p.tex
 \bpyshell (!bc pyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pyshell" is unsupported so we use Verbatim)
 
 \bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ipy" is unsupported so we use Verbatim)
-
-\bdpyshell (!bc dpyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("dpyshell" is unsupported so we use Verbatim)
 
 \bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cpppro" is unsupported so we use Verbatim)
 

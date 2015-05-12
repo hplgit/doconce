@@ -275,11 +275,22 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                2,
                'do2any:MS:ooffice',
                'do2any:MS:ooffice'),
-              (' IPython Notebooks ', 2, 'do2any:ipynb', 'do2any:ipynb'),
+              (' Jupyter (IPython) Notebooks ',
+               2,
+               'do2any:ipynb',
+               'do2any:ipynb'),
+              (' Hidden code blocks ', 3, None, '___sec145'),
+              (' Displaying code as plain text instead of executable cells ',
+               3,
+               None,
+               '___sec146'),
+              (' Figures ', 3, None, '___sec147'),
+              (' Movies ', 3, None, '___sec148'),
+              (' Admonitions ', 3, None, '___sec149'),
               (' Plain ASCII Text ', 2, 'do2any:ascii', 'do2any:ascii'),
               (' reStructuredText ', 2, 'do2any:rst', 'do2any:rst'),
               (' Sphinx ', 2, 'do2any:sphinx', 'do2any:sphinx'),
-              (' The manual Sphinx procedure ', 3, None, '___sec148'),
+              (' The manual Sphinx procedure ', 3, None, '___sec153'),
               (' Wiki Formats ', 2, 'do2any:wiki', 'do2any:wiki'),
               (' Google Docs ',
                2,
@@ -289,35 +300,35 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                2,
                'do2any:tweaking',
                'do2any:tweaking'),
-              (' Options for the `doconce` commands ', 1, None, '___sec152'),
+              (' Options for the `doconce` commands ', 1, None, '___sec157'),
               (' `doconce format` command-line options ',
                2,
                None,
-               '___sec153'),
+               '___sec158'),
               (' Installation of DocOnce and its Dependencies ',
                1,
                'install:doconce',
                'install:doconce'),
-              (' DocOnce ', 2, None, '___sec155'),
-              (' Dependencies ', 2, None, '___sec156'),
-              (' Python v2.7 ', 3, None, '___sec157'),
-              (' Preprocessors ', 3, None, '___sec158'),
-              (' Bibliography ', 3, None, '___sec159'),
-              (' Image file handling ', 3, None, '___sec160'),
-              (' Spellcheck ', 3, None, '___sec161'),
-              (' Ptex2tex for LaTeX Output ', 3, None, '___sec162'),
-              (' Pygments and the Minted Code Style ', 3, None, '___sec163'),
-              (' LaTeX packages ', 3, None, '___sec164'),
-              (' Sphinx or reStructuredText Output ', 3, None, '___sec165'),
-              (' Markdown and Pandoc Output ', 3, None, '___sec166'),
-              (' Epydoc Output ', 3, None, '___sec167'),
-              (' Analyzing file differences ', 3, None, '___sec168'),
-              (' Basic Parsing Ideas ', 1, None, '___sec169'),
+              (' DocOnce ', 2, None, '___sec160'),
+              (' Dependencies ', 2, None, '___sec161'),
+              (' Python v2.7 ', 3, None, '___sec162'),
+              (' Preprocessors ', 3, None, '___sec163'),
+              (' Bibliography ', 3, None, '___sec164'),
+              (' Image file handling ', 3, None, '___sec165'),
+              (' Spellcheck ', 3, None, '___sec166'),
+              (' Ptex2tex for LaTeX Output ', 3, None, '___sec167'),
+              (' Pygments and the Minted Code Style ', 3, None, '___sec168'),
+              (' LaTeX packages ', 3, None, '___sec169'),
+              (' Sphinx or reStructuredText Output ', 3, None, '___sec170'),
+              (' Markdown and Pandoc Output ', 3, None, '___sec171'),
+              (' Epydoc Output ', 3, None, '___sec172'),
+              (' Analyzing file differences ', 3, None, '___sec173'),
+              (' Basic Parsing Ideas ', 1, None, '___sec174'),
               (' Typesetting of Function Arguments, Return Values, and Variables ',
                2,
                None,
-               '___sec170'),
-              (' References ', 1, None, '___sec171')]}
+               '___sec175'),
+              (' References ', 1, None, '___sec176')]}
 end of tocinfo -->
 
 <body>
@@ -364,10 +375,10 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._manual022.html#___sec98" style="font-size: 80%;">Misc</a></li>
      <!-- navigation toc: --> <li><a href="._manual023.html#manual:mako" style="font-size: 80%;">Mako Programming</a></li>
      <!-- navigation toc: --> <li><a href="#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec152" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec157" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
      <!-- navigation toc: --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec169" style="font-size: 80%;">Basic Parsing Ideas</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec171" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec174" style="font-size: 80%;">Basic Parsing Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec176" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -1227,17 +1238,17 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_list_of_exercises=loe,toc,none</code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
  <li> <code>--latex_fancy_header</code> (chapter/section headings at top of pages, style depends on value of <code>--latex_section_headings</code>)</li>
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
- <li> <code>--latex_colored_table_rows=blue,gray,no</code> (color of every two lines in tables)</li>
+ <li> <code>--latex_colored_table_rows=blue, gray, no</code> (color of every two lines in tables)</li>
  <li> <code>--latex_todonotes</code> (inline comments typeset as &quot;bubbles&quot;)</li>
- <li> <code>--latex_double_spacing</code></li>
- <li> <code>--latex_line_numbers</code></li>
+ <li> <code>--latex_double_spacing</code> (to ease hand-writing between the lines)</li>
+ <li> <code>--latex_line_numbers</code> (to ease references to sentences)</li>
  <li> <code>--latex_labels_in_margin</code> (name of section, equation, citation labels in the margin)</li>
  <li> <code>--latex_preamble=filename</code> (user-specific preamble)</li>
- <li> <code>--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2</code></li>
- <li> <code>--latex_admon_color=0.34,0.02,0.8</code></li>
- <li> <code>--latex_admon_envir_map=2</code></li>
- <li> <code>--latex_exercise_numbering=absolute,chapter</code></li>
- <li> <code>--latex_movie=media9,href,multimedia,movie15</code></li>
+ <li> <code>--latex_admon=mdfbox, graybox2, grayicon, yellowicon, paragraph, colors1, colors2</code></li>
+ <li> <code>--latex_admon_color=0.34,0.02,0.8</code> (background color in admons)</li>
+ <li> <code>--latex_admon_envir_map=2</code> (code environment names in admons)</li>
+ <li> <code>--latex_exercise_numbering=absolute, chapter</code></li>
+ <li> <code>--latex_movie=media9, href, multimedia, movie15</code> (control typesetting of movies)</li>
  <li> <code>--latex_movie_controls=on</code></li>
  <li> <code>--latex_external_movie_viewer</code> (for <code>movie15</code> package)</li>
  <li> <code>--xelatex</code> (prepare for XeLaTeX)</li>
@@ -1560,16 +1571,19 @@ Terminal&gt; pandoc -t docx -o mydoc.docx mydoc.md
 The transformation works well for simple text files, but LaTeX mathematics
 does not work.
 
-<h2 id="do2any:ipynb">IPython Notebooks</h2>
+<h2 id="do2any:ipynb">Jupyter (IPython) Notebooks</h2>
 
 <p>
-DocOnce can generate json files for IPython notebook (Jupyter):
+DocOnce can generate json files for the Jupyter Notebook:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format ipynb mydoc  # results in mydoc.ipynb
 </pre></div>
+
+<h3 id="___sec145">Hidden code blocks </h3>
+
 <p>
 It is no guarantee that the notebook can be executed. For example,
 having the code
@@ -1612,6 +1626,9 @@ for the import statement to work:
 sys.path.append(&#39;src-test&#39;)
 !ec
 </pre></div>
+
+<h3 id="___sec146">Displaying code as plain text instead of executable cells </h3>
+
 <p>
 Some code blocks may just be there for explanation and are not
 meant to be executed. These can be marked by <code>!bc pycod-t</code> (or
@@ -1631,8 +1648,68 @@ an executable cell, and there is no need to worry about a missing
 definition of <code>myvar</code> (which would cause problems in an executable cell).
 
 <p>
+Interactive sessions with the <code>pyshell</code> or <code>ipy</code> environment will
+by default be broken up into many cells such that each output command
+ends a cell. By executing the cells, the input <em>and</em> output from the
+session is recovered. This is usually the behavior that is wanted, but
+there is an option <code>--ipynb_split_pyshell=off</code> that can be used to
+typeset the entire session with all input but no output in one cell
+(<code>print</code> statements will lead to output, but plain dumping of
+a variable will not lead to output like it does in a Python shell).
+
+<p>
+To have an interactive session typeset with input and output in plain
+text, use the <code>-t</code> extension to the environment: <code>pyshell-t</code> and <code>ipy-t</code>.
+
+<h3 id="___sec147">Figures </h3>
+
+<p>
 As with HTML files, you need to ensure that the notebook has access to
 figures and source code as requested.
+
+<p>
+Figures in notebooks can be typeset in various ways, specified by
+the <code>--ipynb_figure=</code> option, with the following values:
+
+<ul>
+ <li> <code>md</code>: plain Markdown syntax for a figure, with no possibility to adjust
+   the size (default)</li>
+ <li> <code>imgtag</code>: <code>&lt;img ...&gt;</code> tag in HTML taking the specified width into account</li>
+ <li> <code>Image</code>: Python notebook cell with <code>Image</code> object</li>
+</ul>
+
+<h3 id="___sec148">Movies </h3>
+
+<p>
+Typesetting of movies is specified by <code>--ipynb_movie=</code>, and valid options
+are
+
+<ul>
+ <li> <code>md</code>: raw HTML code with <code>iframe</code> tag - not relevant for the notebook</li>
+ <li> <code>HTML</code>: raw HTML code with <code>iframe</code> tag
+    embedded in the <code>HTML</code> object from the notebook (default)</li>
+ <li> <code>HTML-YouTube</code>: as <code>HTML</code> but use an <code>IPython.display.YouTubeVideo</code>
+   object to display YouTube videos</li>
+ <li> <code>ipynb</code>: use <code>IPython.display.YouTubeVideo</code> object for YouTube videos,
+   and use an <code>HTML</code> object with <code>video</code> tag for local movies</li>
+</ul>
+
+<h3 id="___sec149">Admonitions </h3>
+
+<p>
+Typesetting of admonition is rather primitive in notebooks.
+We offer these different choices, set by the
+option <code>--ipynb_admon=</code>:
+
+<ul>
+ <li> <code>quote</code>: typeset admon as Markdown quote (special font and gray vertical bar on
+   the left)</li>
+ <li> <code>paragraph</code>: typeset admon as a plain paragraph with a heading if any (default)</li>
+ <li> <code>hrule</code>: use a horozontal rule to surround the heading and the text</li>
+</ul>
+
+Note that quotes in <code>!bc quote</code> environments
+are always typeset as Markdown quotes.
 
 <h2 id="do2any:ascii">Plain ASCII Text</h2>
 
@@ -1913,7 +1990,7 @@ books (which build on Sphinx).
 You must run the generated <code>automake_sphinx.py</code> also with a <code>--runestone</code>
 option to generate these type of documents.
 
-<h3 id="___sec148">The manual Sphinx procedure </h3>
+<h3 id="___sec153">The manual Sphinx procedure </h3>
 
 <p>
 If it is not desirable to use the autogenerated scripts explained
@@ -2123,9 +2200,9 @@ from a script to automate all steps in going from DocOnce to the final
 format(s). The <code>make.sh</code> files in <code>docs/manual</code> and <code>docs/tutorial</code>
 constitute comprehensive examples on how such scripts can be made.
 
-<h1 id="___sec152">Options for the <code>doconce</code> commands </h1>
+<h1 id="___sec157">Options for the <code>doconce</code> commands </h1>
 
-<h2 id="___sec153"><code>doconce format</code> command-line options </h2>
+<h2 id="___sec158"><code>doconce format</code> command-line options </h2>
 
 <p>
 The transformation of a DocOnce source to various format is done with
@@ -2764,11 +2841,28 @@ Sets the journal name for the --latex_style=elsevier style.
 Default: none (no journal name).
 
 
+--ipynb_version=...
+
+ipynb version 3 (default) or 4.
+
+
+--ipynb_split_pyshell=...
+
+Split interactive sessions into multiple cells after each output.
+Applies to pyshell and ipy code environments.
+on, True, yes: split (default).
+off, False, no: do not split.
+Note that pyshell-t and ipy-t environments just displays the session,
+while default pyshell and ipy removes all output (all output from print
+statements will come after the entire session).
+
+
+
 --ipynb_cite=...
 
 Typesetting of bibliography.
 plain: simple native typesetting (same as pandoc) (default)
-latex: ipynb support for latex-style bibliographies.
+latex: ipynb support for latex-style bibliographies (not mature).
 
 
 --ipynb_admon=...
@@ -2793,11 +2887,11 @@ Image (python cell with Image object).
 
 How to typeset movies in ipynb:
 md (plain Markdown syntax, default)
-HTML (python cell with HTML object containing the code that is used
-in the HTML format)
-HTML-YouTubeVideo: If YouTube video, use YouTubeVideo object, otherwise
-use the HTML object with appropriat HTML code.
-local: local video files with encoding.
+HTML: python cell with notebook `HTML` object containing the raw HTML code
+that is used in the DocOnce HTML format
+ipynb: python cell with notebook `HTML` object with simple/standard
+ipynb HTML code for showing a YouTube or local video with a &lt;video&gt;
+tag.
 
 
 --verbose

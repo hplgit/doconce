@@ -1058,18 +1058,20 @@ Terminal> pandoc -t docx -o mydoc.docx mydoc.md
 The transformation works well for simple text files, but LaTeX mathematics
 does not work.
 
-===== IPython Notebooks =====
+===== Jupyter (IPython) Notebooks =====
 label{do2any:ipynb}
 
 idx{output format!notebook}
 idx{IPython notebook}
 idx{notebook}
 
-DocOnce can generate json files for IPython notebook (Jupyter):
+DocOnce can generate json files for the Jupyter Notebook:
 
 !bc sys
 Terminal> doconce format ipynb mydoc  # results in mydoc.ipynb
 !ec
+
+=== Hidden code blocks ===
 
 It is no guarantee that the notebook can be executed. For example,
 having the code
@@ -1104,6 +1106,8 @@ sys.path.append('src-test')
 |ec
 !ec
 
+=== Displaying code as plain text instead of executable cells ===
+
 Some code blocks may just be there for explanation and are not
 meant to be executed. These can be marked by `!bc pycod-t` (or
 `!bc Xcod-t` for any supported programming language `X`):
@@ -1118,8 +1122,57 @@ The code segment above will then be typeset as verbatim text and not
 an executable cell, and there is no need to worry about a missing
 definition of `myvar` (which would cause problems in an executable cell).
 
+Interactive sessions with the `pyshell` or `ipy` environment will
+by default be broken up into many cells such that each output command
+ends a cell. By executing the cells, the input *and* output from the
+session is recovered. This is usually the behavior that is wanted, but
+there is an option `--ipynb_split_pyshell=off` that can be used to
+typeset the entire session with all input but no output in one cell
+(`print` statements will lead to output, but plain dumping of
+a variable will not lead to output like it does in a Python shell).
+
+To have an interactive session typeset with input and output in plain
+text, use the `-t` extension to the environment: `pyshell-t` and `ipy-t`.
+
+=== Figures ===
+
 As with HTML files, you need to ensure that the notebook has access to
 figures and source code as requested.
+
+Figures in notebooks can be typeset in various ways, specified by
+the `--ipynb_figure=` option, with the following values:
+
+ * `md`: plain Markdown syntax for a figure, with no possibility to adjust
+   the size (default)
+ * `imgtag`: `<img ...>` tag in HTML taking the specified width into account
+ * `Image`: Python notebook cell with `Image` object
+
+=== Movies ===
+
+Typesetting of movies is specified by `--ipynb_movie=`, and valid options
+are
+
+ * `md`: raw HTML code with `iframe` tag - not relevant for the notebook
+ * `HTML`: raw HTML code with `iframe` tag
+    embedded in the `HTML` object from the notebook (default)
+ * `HTML-YouTube`: as `HTML` but use an `IPython.display.YouTubeVideo`
+   object to display YouTube videos
+ * `ipynb`: use `IPython.display.YouTubeVideo` object for YouTube videos,
+   and use an `HTML` object with `video` tag for local movies
+
+=== Admonitions ===
+
+Typesetting of admonition is rather primitive in notebooks.
+We offer these different choices, set by the
+option `--ipynb_admon=`:
+
+ * `quote`: typeset admon as Markdown quote (special font and gray vertical bar on
+   the left)
+ * `paragraph`: typeset admon as a plain paragraph with a heading if any (default)
+ * `hrule`: use a horozontal rule to surround the heading and the text
+
+Note that quotes in `!bc quote` environments
+are always typeset as Markdown quotes.
 
 ===== Plain ASCII Text =====
 label{do2any:ascii}

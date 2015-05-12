@@ -1,8 +1,8 @@
 #!/bin/sh
 doconce format ipynb example
 
-ipynb_figure=imgtag
-ipynb_movie=HTML
+ipynb_figure=md
+ipynb_movie=ipynb
 ipynb_admon=hrule
 
 doconce format ipynb info --no_preprocess --ipynb_figure=${ipynb_figure} ipynb_figure=${ipynb_figure} --ipynb_movie=${ipynb_movie} ipynb_movie=${ipynb_movie} --ipynb_admon=${ipynb_admon} ipynb_admon=${ipynb_admon} --ipynb_version=3 --encoding=utf-8

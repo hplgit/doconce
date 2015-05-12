@@ -227,9 +227,14 @@ line
 output
 !ec
 
-Here is the interactive session again, but with `dpyshell`:
+Here is the interactive session again, but with `pyshell-t`.
+% if FORMAT == 'ipynb':
+This makes a significant difference in the Jupyter Notebook, but
+not in other formats: code is not typset in cells, but printed
+verbatim in plain text (`-t` for text).
+% endif
 
-!bc dpyshell
+!bc pyshell-t
 >>> from numpy import linspace, sin
 >>> # Some comment
 >>> x = linspace(0, 2, 11)

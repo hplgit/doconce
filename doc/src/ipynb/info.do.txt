@@ -169,12 +169,12 @@ A*a*(b**2 - k**2)*exp(-b*x)
 
 Sometimes one wants to show an interactive session exactly as it looks like,
 with the input and the output.
-This can be done in the notebook by using the `dpyshell`
-or `dipy` environments (`d` for *display* Python shell or IPython
-shell). With this DocOnce input,
+This can be done in the notebook by using the `pyshell-t`
+or `ipy-t` environments (`-t` for *plain text* display).
+With this DocOnce input,
 
 !bc do
-|bc dpyshell
+|bc pyshell-t
 >>> a = 1
 >>> b = 2
 >>> a + b
@@ -183,12 +183,22 @@ shell). With this DocOnce input,
 !ec
 we get the plain text
 
-!bc dpyshell
+!bc pyshell-t
 >>> a = 1
 >>> b = 2
 >>> a + b
 3
 !ec
+
+The `-t` postfix can be used for any code that you want to display as
+text rather than as an executable cell. For example, with `!bc pycod-t`
+we create verbatim text and not a cell:
+
+!bc pycod-t
+import MySpecialModule as m
+print m.main()
+!ec
+
 
 ======= Ordinary code blocks =======
 
@@ -255,7 +265,7 @@ plt.plot(x, y)
 % if FORMAT != 'ipynb':
 The result of this code segment appears in Figure ref{myfig}.
 
-FIGURE: [fig/myfig, width=500 frac=0.8] Plot. label{myfig}
+FIGURE: [fig/myfig, width=300 frac=0.5] Plot. label{myfig}
 % else:
 Note that `%matplotlib inline` is automatically inserted before the
 first import of `matplotlib` in a DocOnce-generated notebook such
@@ -280,16 +290,18 @@ the former we have the values
 
 Here is an example with `--ipynb_figure=${ipynb_figure}`:
 
-FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png, width=640 height=480]
+FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png, width=400]
 
 
 For the movies we have the values
 
- * `md`: raw HTML code (default)
- * `HTML`: raw HTML code (as used by the DocOnce HTML output format for
-   movies) embedded in the `HTML` object from the notebook (default)
- * `ipynb`: use simple/standard notebook code and `HTML` object for
-   showing a local or YouTube movie
+ * `md`: raw HTML code with `iframe` tag - not relevant for the notebook
+ * `HTML`: raw HTML code with `iframe` tag
+    embedded in the `HTML` object from the notebook (default)
+ * `HTML-YouTube`: as `HTML` but use an `IPython.display.YouTubeVideo`
+   object to display YouTube videos
+ * `ipynb`: use `IPython.display.YouTubeVideo` object for YouTube videos,
+   and use an `HTML` object with `video` tag for local movies
 
 Below is an example (`--ipynb_movie=${ipynb_movie}`).
 % if ipynb_movie == 'HTML' and FORMAT == 'ipynb':

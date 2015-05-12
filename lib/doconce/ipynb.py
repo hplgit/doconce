@@ -113,7 +113,14 @@ def ipynb_movie(m):
 
     def YouTubeVideo(filename):
         # Use YouTubeVideo object
-        name = filename.split('watch?v=')[1]
+        if 'watch?v=' in filename:
+            name = filename.split('watch?v=')[1]
+        elif 'youtu.be/' in filename:
+            name = filename.split('youtu.be/')[1]
+        else:
+            print '*** error: youtube movie name "%s" could not be interpreted' % filename
+            _abort()
+
         text = ''
         global movie_encountered
         if not movie_encountered:
@@ -355,10 +362,6 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 code_blocks[i] = '\n'.join(lines)
                 ipynb_code_tp[i] = 'cell'
 
-        elif tp.startswith('dpyshell') or tp.startswith('dipy'):
-            # Standard Markdown code display of interactive session
-            code_blocks[i] = indent_lines(code_blocks[i], format)
-            ipynb_code_tp[i] = 'markdown'
         elif tp.startswith('sys'):
             # Do we find execution of python file? If so, copy the file
             # to separate subdir and make a run file command in a cell.
@@ -522,42 +525,60 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     ipy_version = int(option('ipynb_version=', '3'))
     if ipy_version == 3:
         from IPython.nbformat.v3 import (
-            NotebookNode,
             new_code_cell, new_text_cell, new_worksheet,
-            new_notebook, new_output, new_metadata, new_author)
+            new_notebook, new_metadata, new_author)
         import IPython.nbformat.v3.nbjson as nbjson
+        nb = new_worksheet()
     elif ipy_version == 4:
         from IPython.nbformat.v4 import (
-            new_code_cell, new_text_cell, new_worksheet,
-            new_notebook, new_output, new_metadata, new_author)
+            new_code_cell, new_markdown_cell, new_notebook,
+            new_metadata, new_author)
         import IPython.nbformat.v4.nbjson as nbjson
+        nb = new_notebook()
 
-    ws = new_worksheet()
 
-    prompt_number = 1
+    prompt_number = 1  # not used for v4 notebook!
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
-            ws.cells.append(new_text_cell(u'markdown', source=block))
+            if ipy_version == 3:
+                nb.cells.append(new_text_cell(u'markdown', source=block))
+            elif ipy_version == 4:
+                nb.cells.append(new_markdown_cell(u'markdown', source=block))
         elif block_tp == 'cell' and block != '' and block != []:
             if isinstance(block, list):
                 for block_ in block:
                     if block_ != '':
-                        ws.cells.append(new_code_cell(
-                            input=block_,
-                            prompt_number=prompt_number,
-                            collapsed=False))
+                        if ipy_version == 3:
+                            nb.cells.append(new_code_cell(
+                                input=block_,
+                                prompt_number=prompt_number,
+                                collapsed=False))
+                        elif ipy_version == 4:
+                            nb.cells.append(new_code_cell(
+                                source=block_,
+                                prompt_number=prompt_number,
+                                collapsed=False))
                         prompt_number += 1
             else:
                 if block != '':
-                    ws.cells.append(new_code_cell(
-                        input=block,
-                        prompt_number=prompt_number,
-                        collapsed=False))
+                    if ipy_version == 3:
+                        nb.cells.append(new_code_cell(
+                            input=block,
+                            prompt_number=prompt_number,
+                            collapsed=False))
+                    elif ipy_version == 4:
+                        nb.cells.append(new_code_cell(
+                            source=block,
+                            prompt_number=prompt_number,
+                            collapsed=False))
                     prompt_number += 1
         elif block_tp == 'cell_hidden' and block != '':
-            ws.cells.append(new_code_cell(input=block,
-                                          prompt_number=prompt_number,
-                                          collapsed=True))
+            if ipy_version == 3:
+                nb.cells.append(new_code_cell(
+                    input=block, prompt_number=prompt_number, collapsed=True))
+            elif ipy_version == 4:
+                nb.cells.append(new_code_cell(
+                    source=block, prompt_number=prompt_number, collapsed=True))
             prompt_number += 1
 
     # Catch the title as the first heading
@@ -568,7 +589,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         md = new_metadata(name=title, authors=authors)
     else:
         md = new_metadata(name=title)
-    nb = new_notebook(worksheets=[ws], metadata=new_metadata())
+    if ipy_version == 3:
+        nb = new_notebook(worksheets=[nb], metadata=new_metadata())
+        # Let us make v4 notebook here by upgrading
+        from IPython.nbformat.v4 import upgrade
+        nb = upgrade(nb)
+        import IPython.nbformat.v4.nbjson as nbjson
 
     # Convert nb to json format
     filestr = nbjson.writes(nb)

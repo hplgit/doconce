@@ -31,8 +31,7 @@ language2pandoc = dict(
     # just use a plain text block
     #sys='Bash',
     pyoptpro='Python', pyscpro='Python',
-    ipy='Python', pyshell='Python',
-    dipy='Python', dpyshell='Python')
+    ipy='Python', pyshell='Python')
     # (the "Python" typesetting is neutral if the text
     # does not parse as python)
 

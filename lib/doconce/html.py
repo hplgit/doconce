@@ -671,7 +671,6 @@ def html_code(filestr, code_blocks, code_block_types,
         dat='text', txt='text', csv='text',
         cc='text', ccq='text',
         pyshell='python', ipy='ipy',
-        dpyshell='python', dipy='ipy',
         pyopt='python', pysc='python',
         do='doconce')
     try:

@@ -361,7 +361,7 @@ Default: none (no journal name)."""),
 Applies to pyshell and ipy code environments.
 on, True, yes: split (default).
 off, False, no: do not split.
-Note that dpyshell and dipy environments just displays the session,
+Note that pyshell-t and ipy-t environments just displays the session,
 while default pyshell and ipy removes all output (all output from print
 statements will come after the entire session).
 """),
@@ -1624,7 +1624,7 @@ def ptex2tex():
     # All envirs in the .ptex2tex.cfg file as of June 2012.
     # (Recall that the longest names must come first so that they
     # are substituted first, e.g., \bcc after \bccod)
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy dipy pyshell dpyshell rpy plin ver warn rule summ ccq cc ccl txt'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt'.split()
     envirs += ['htmlcod', 'htmlpro', 'html',
                'rbpro', 'rbcod', 'rb',
                'xmlpro', 'xmlcod', 'xml',
@@ -1664,7 +1664,7 @@ def ptex2tex():
                 # they need the language explicitly
                 if value == 'minted':
                     envir2pygments = dict(
-                        pyshell='python', dpyshell='python',
+                        pyshell='python',
                         py='python', cy='cython', f='fortran',
                         c='c', cpp='c++', sh='bash', rst='rst',
                         m ='matlab', pl='perl', swig='c++',
@@ -1672,7 +1672,7 @@ def ptex2tex():
                         java='java',
                         xml='xml', rb='ruby', sys='console',
                         dat='text', txt='text', csv='text',
-                        ipy='ipy', dipy='ipy', do='doconce',
+                        ipy='ipy', do='doconce',
                         # pyopt and pysc are treated in latex.py
                         )
                     # Find substitutes for ipy and doconce if these lexers
@@ -1725,12 +1725,12 @@ def ptex2tex():
                 elif value.startswith('ans'):
                     # Mapping from code envirs to valid anslistings names
                     envir2listings = dict(
-                        pyshell='python', dpyshell='python',
+                        pyshell='python',
                         py='python', cy='python', f='fortran',
                         cpp='c++', sh='bash', swig='swigcode',
                         ufl='uflcode', m='matlab', c='c++',
                         latex='latexcode', xml='xml',
-                        pyopt='python', ipy='python', dipy='python')
+                        pyopt='python', ipy='python')
                     if envir == 'envir':
                         for lang in envir2listings:
                             language = envir2listings[lang]
@@ -5989,7 +5989,6 @@ _latex_environments = [
     ("\\bpypro",            "\\epypro"),
     ("\\brpy",              "\\erpy"),
     ("\\bipy",              "\\eipy"),
-    ("\\bdipy",             "\\edipy"),
     ("\\bfcod",             "\\efcod"),
     ("\\bfpro",             "\\efpro"),
     ("\\bccod",             "\\epcod"),
@@ -6011,7 +6010,6 @@ _latex_environments = [
     ("\\bsni",              "\\esni"),
     ("\\bdsni",             "\\edsni"),
     ("\\bpyshell",          "\\epyshell"),
-    ("\\bdpyshell",         "\\edpyshell"),
     ("\\bpy",               "\\epy"),
     ]
 
@@ -7681,8 +7679,8 @@ def _latex2doconce(filestr):
 
     # ptex2tex code environments:
     code_envirs = ['ccq', 'cod', 'pro', 'ccl', 'cc', 'sys',
-                   'dsni', 'sni', 'slin', 'ipy', 'dipy', 'rpy',
-                   'pyshell', 'dpyshell', 'plin', 'ver',
+                   'dsni', 'sni', 'slin', 'ipy', 'rpy',
+                   'pyshell', 'plin', 'ver',
                    'warn', 'rule', 'summ',
                    'dat', 'txt'] # sequence important for replace!
     for language in 'py', 'f', 'c', 'cpp', 'sh', 'pl', 'm':

@@ -35,7 +35,7 @@ def get_bib_index_pages():
 
 # Mappings from DocOnce code environments to Pygments and lstlisting names
 envir2pyg = dict(
-    pyshell='python', dpyshell='python',
+    pyshell='python',
     py='python', cy='cython', f='fortran',
     c='c', cpp='c++', sh='bash', rst='rst',
     m ='matlab', pl='perl', swig='c++',
@@ -43,11 +43,11 @@ envir2pyg = dict(
     java='java',
     xml='xml', rb='ruby', sys='console',
     dat='text', txt='text', csv='text',
-    ipy='ipy', dipy='ipy', do='doconce',
+    ipy='ipy', do='doconce',
     # pyopt and pysc are treated explicitly
     )
 envir2lst = dict(
-    pyshell='Python', dpyshell='Python',
+    pyshell='Python',
     py='Python', cy='Python', f='Fortran',
     c='C', cpp='C++', sh='bash', rst='text',
     m ='Matlab', pl='Perl', swig='C++',
@@ -55,7 +55,7 @@ envir2lst = dict(
     java='Java',
     xml='XML', rb='Ruby', sys='bash',
     dat='text', txt='text', csv='text',
-    ipy='Python', dipy='Python', do='text',
+    ipy='Python', do='text',
     # pyopt and pysc are treated explicitly
     )
 
@@ -168,7 +168,7 @@ def interpret_latex_code_style():
             envir, pkg = pkg.split(':')
         return pkg, bg, style
 
-    legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy dipy pyshell dpyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
+    legal_envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod rst cppans pyans fans bashans swigans uflans sni dat dsni sys slin ipy pyshell rpy plin ver warn rule summ ccq cc ccl txt htmlcod htmlpro html rbpro rbcod rb xmlpro xmlcod xml latexpro latexcod latex default'.split()
     d = {}
     if '@' not in latex_code_style:
         # Common definition for all languages
@@ -425,7 +425,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'!et\n', '', filestr)
 
     # Check for misspellings
-    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy dipy rpy plin ver warn rule summ ccq cc ccl pyshell dpyshell pyoptpro pyscpro ipy do'.split()
+    envirs = 'pro pypro cypro cpppro cpro fpro plpro shpro mpro cod pycod cycod cppcod ccod fcod plcod shcod mcod htmlcod htmlpro latexcod latexpro rstcod rstpro xmlcod xmlpro cppans pyans fans bashans swigans uflans sni dat dsni csv txt sys slin ipy rpy plin ver warn rule summ ccq cc ccl pyshell pyoptpro pyscpro ipy do'.split()
     from common import has_custom_pygments_lexer, get_legal_pygments_lexers
     if 'ipy' in code_block_types:
         has_custom_pygments_lexer('ipy')

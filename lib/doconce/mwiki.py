@@ -108,7 +108,6 @@ def mwiki_code(filestr, code_blocks, code_block_types,
                       sys='bash', dat='text', csv='text', txt='text',
                       pyoptpro='python', pyscpro='python',
                       ipy='python', pyshell='python',
-                      dipy='python', dpyshell='python',
                       )
 
     for key in envir2lang:
