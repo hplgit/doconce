@@ -99,7 +99,10 @@ In [8]: print sol
 Out[8]: y(t) == C1*exp(t)
 |ec
 !ec
-This last `ipy` environment results in
+This last `ipy` environment results in exactly the same interactive session
+in all formats except `ipynb` where the output is removed and the
+input is split over two cells. In format _${FORMAT}_ the above
+block is rendered as
 
 !bc ipy
 In [1]: from sympy import *
@@ -258,7 +261,8 @@ FIGURE: [fig/myfig, width=500 frac=0.8] Plot. label{myfig}
 !ec
 
 Now we can write the complete code segment with a preceding hidden
-block for import and the if test:
+block for import and the if test. Below is the rendering of
+this in the format _${FORMAT}_.
 
 # Note: since Preprocess is used in verbatim block above, we must compile
 # this document with --no_preprocess and therefore use Mako if test
@@ -300,7 +304,12 @@ the former we have the values
  * `imgtag`: `<img ...>` tag in HTML taking the specified width into account
  * `Image`: Python notebook cell with `Image` object
 
-Here is an example with `--ipynb_figure=${ipynb_figure}`:
+Below is an example
+% if FORMAT != 'ipynb':
+rendered in format _${FORMAT}_.
+% else:
+with `--ipynb_figure=${ipynb_figure}`.
+% endif
 
 FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png, width=400]
 
@@ -315,9 +324,12 @@ For the movies we have the values
  * `ipynb`: use `IPython.display.YouTubeVideo` object for YouTube videos,
    and use an `HTML` object with `video` tag for local movies
 
-Below is an example (`--ipynb_movie=${ipynb_movie}`).
-% if ipynb_movie == 'HTML' and FORMAT == 'ipynb':
+Below is an example
+% if FORMAT == 'ipynb':
+with `--ipynb_movie=${ipynb_movie}`.
 Execute the cell to create the YouTube video object.
+% else:
+rendered in format _${FORMAT}_.
 % endif
 
 MOVIE: [http://youtu.be/PtJrPEIHNJw, width=640 height=480]
@@ -338,7 +350,12 @@ command-line option.
 Note that quotes in `!bc quote` environments
 are always typeset as Markdown quotes.
 
-Here are two examples typeset with `--ipynb_admon=${ipynb_admon}`.
+Here are two examples
+% if FORMAT == 'ipynb':
+typeset with `--ipynb_admon=${ipynb_admon}`.
+% else:
+rendered in format _${FORMAT}_ using the default admon typesetting.
+% endif
 
 !bwarning Notebooks has limited support for typesetting admons
 Admon environments must be simulated using Markdown quote environment,
@@ -353,7 +370,8 @@ means that long documents *must* be long notebooks.
 
 ======= Equation references =======
 
-Markdown does not support references to equations.
+Markdown (and thereby the Jupyter Notebook)
+does not support references to equations.
 
 !bt
 \begin{align}

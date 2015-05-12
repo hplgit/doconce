@@ -13,9 +13,9 @@ doconce subst '" +%matplotlib inline\\n",\n +" +\\n",\n +' '' info.ipynb
 doconce subst '"import numpy as np\\n"', '"%matplotlib inline\\n",\n      "import numpy as np\\n",' info.ipynb
 doconce subst 'Plot\. \\\\label' 'Plot. label' info.ipynb
 
-#doconce format html
+doconce format html info --html_style=bootstrap_bluegray --html_code_style=inherit --no_preprocess --encoding=utf-8 # need these if one error in mako... ipynb_figure=dummy ipynb_movie=dummy ipynb_admon=dummy EXTRA=
 
 # Publish
 dest=../../pub/ipynb
-cp info.ipynb example.ipynb $dest
+cp info.ipynb example.ipynb info.html $dest
 # All figs and movies are external on the web

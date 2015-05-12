@@ -1,0 +1,519 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Special features for Jupyter notebooks">
+
+<title>Special features for Jupyter notebooks</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(u' Interactive sessions ', 1, None, '___sec0'),
+              (u" Solving the world's simplest differential equation ",
+               2,
+               u'ipynb:de:simplest',
+               u'ipynb:de:simplest'),
+              (u' Showing an interactive session as pure text ',
+               2,
+               None,
+               '___sec2'),
+              (u' Ordinary code blocks ', 1, None, '___sec3'),
+              (u' Other special options for notebooks ', 1, None, '___sec4'),
+              (u' Figures and movies ', 2, None, '___sec5'),
+              (u' Admonitions ', 2, None, '___sec6'),
+              (u' Equation references ', 1, None, '___sec7')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="info.html">Special features for Jupyter notebooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Interactive sessions</b></a></li>
+     <!-- navigation toc: --> <li><a href="#ipynb:de:simplest" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Solving the world's simplest differential equation</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Showing an interactive session as pure text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Ordinary code blocks</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>Other special options for notebooks</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and movies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Equation references</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>Special features for Jupyter notebooks</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula</b></center>
+<center>[2] <b>UiO</b></center>
+<p>
+<center><h4>May 12, 2015</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<p>
+<a href="#___sec0"> Interactive sessions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#ipynb:de:simplest"> Solving the world's simplest differential equation </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Showing an interactive session as pure text </a><br>
+<a href="#___sec3"> Ordinary code blocks </a><br>
+<a href="#___sec4"> Other special options for notebooks </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Figures and movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec6"> Admonitions </a><br>
+<a href="#___sec7"> Equation references </a><br>
+</p>
+<p>
+DocOnce enables turing book chapters, manuals, research papers, and in fact
+any type of document into Jupyter Notebooks (formerly knowns as IPython
+Notebooks). This note outlines some special features that one should
+be aware and that can be used to tune the notebook typesetting.
+
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0">Interactive sessions </h1>
+
+<p>
+By default, interactive Python sessions in <code>!bc pyshell</code> and <code>!bc ipy</code>
+environments are split such that the output is removed and each
+input part is a separate cell. This means that when executing
+all the cells, one recreates the entire interactive session
+with all the output. Below is an example.
+
+<h2 id="ipynb:de:simplest">Solving the world's simplest differential equation</h2>
+
+<p>
+Let us explore SymPy to solve
+
+$$ y' = y,\quad y(0)=y_0 = 2\thinspace . $$
+
+<p>
+<!-- This does not work in notebook: -->
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> sys<span style="color: #666666">.</span>displayhook <span style="color: #666666">=</span> pprint
+</pre></div>
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;t&#39;</span>, real<span style="color: #666666">=</span><span style="color: #008000">True</span>, positive<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;y&#39;</span>, cls<span style="color: #666666">=</span>Function)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Solve differential equation using dsolve</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> eq <span style="color: #666666">=</span> diff(y(t), t) <span style="color: #666666">-</span> y(t)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> eq
+<span style="color: #666666">-</span>y(t) <span style="color: #666666">+</span> Derivative(y(t), t)
+<span style="color: #666666">&gt;&gt;&gt;</span> sol <span style="color: #666666">=</span> dsolve(eq)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> sol
+y(t) <span style="color: #666666">==</span> C1<span style="color: #666666">*</span>exp(t)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sol<span style="color: #666666">.</span>rhs          <span style="color: #408080; font-style: italic"># grab right-hand side of equation</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Determine integration constant C1 from initial condition</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> C1 <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;C1&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> eq <span style="color: #666666">=</span> y<span style="color: #666666">.</span>subs(t, <span style="color: #666666">0</span>) <span style="color: #666666">-</span> y0  <span style="color: #408080; font-style: italic"># equation for initial condition</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> eq
+C1 <span style="color: #666666">-</span> <span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> sol <span style="color: #666666">=</span> solve(eq, C1)     <span style="color: #408080; font-style: italic"># solve wrt C1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> sol
+[<span style="color: #666666">2</span>]
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> y<span style="color: #666666">.</span>subs(C1, sol[<span style="color: #666666">0</span>])  <span style="color: #408080; font-style: italic"># insert C1=2 in solution</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> y
+<span style="color: #666666">2*</span>exp(t)
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> latex(y)
+<span style="color: #666666">2</span>e<span style="color: #666666">^</span>{t}
+</pre></div>
+<p>
+The DocOnce input syntax of the first part of the above session looks like
+this
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pyshell
+&gt;&gt;&gt; from sympy import *
+&gt;&gt;&gt; t = symbols(&#39;t&#39;, real=True, positive=True)
+&gt;&gt;&gt; y = symbols(&#39;y&#39;, cls=Function)
+&gt;&gt;&gt; # Solve differential equation using dsolve
+&gt;&gt;&gt; eq = diff(y(t), t) - y(t)
+&gt;&gt;&gt; print eq
+-y(t) + Derivative(y(t), t)
+&gt;&gt;&gt; sol = dsolve(eq)
+&gt;&gt;&gt; print sol
+y(t) == C1*exp(t)
+...
+...
+!ec
+</pre></div>
+<p>
+That is, the interactive session looks exactly as it does in the terminal
+window with the primitive Python shell.
+
+<p>
+We can, alternatively, use IPython syntax:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc ipy
+In [1]: from sympy import *
+In [2]: t = symbols(&#39;t&#39;, real=True, positive=True)
+In [3]: y = symbols(&#39;y&#39;, cls=Function)
+In [4]: # Solve differential equation using dsolve
+In [5]: eq = diff(y(t), t) - y(t)
+In [6]: print eq
+Out[6]: -y(t) + Derivative(y(t), t)
+In [7]: sol = dsolve(eq)
+In [8]: print sol
+Out[8]: y(t) == C1*exp(t)
+!ec
+</pre></div>
+<p>
+This last <code>ipy</code> environment results in exactly the same interactive session
+in all formats except <code>ipynb</code> where the output is removed and the
+input is split over two cells. In format <b>html</b> the above
+block is rendered as
+
+<p>
+
+<!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #000080; font-weight: bold">In [2]: </span>t <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;t&#39;</span>, real<span style="color: #666666">=</span><span style="color: #008000">True</span>, positive<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+<span style="color: #000080; font-weight: bold">In [3]: </span>y <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;y&#39;</span>, cls<span style="color: #666666">=</span>Function)
+<span style="color: #000080; font-weight: bold">In [4]: </span><span style="color: #408080; font-style: italic"># Solve differential equation using dsolve</span>
+<span style="color: #000080; font-weight: bold">In [5]: </span>eq <span style="color: #666666">=</span> diff(y(t), t) <span style="color: #666666">-</span> y(t)
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #008000; font-weight: bold">print</span> eq
+<span style="color: #000080; font-weight: bold">Out[6]: </span><span style="color: #888888">-y(t) + Derivative(y(t), t)</span>
+<span style="color: #000080; font-weight: bold">In [7]: </span>sol <span style="color: #666666">=</span> dsolve(eq)
+<span style="color: #000080; font-weight: bold">In [8]: </span><span style="color: #008000; font-weight: bold">print</span> sol
+<span style="color: #000080; font-weight: bold">Out[8]: </span><span style="color: #888888">y(t) == C1*exp(t)</span>
+</pre></div>
+<p>
+There is an option <code>--ipynb_split_pyshell=off</code> that can be given to
+<code>doconce format ipynb</code> when compiling documents and that turns off
+the behaviour that interactive sessions are split into multiple
+cells. The result is then one single cell, and if we have
+&quot;printing&quot; as in <code>&gt;&gt;&gt; eq</code>, there will be no output, except from
+the last one, in the output field in the notebook. This is usually
+not the behavior you want.
+
+<h2 id="___sec2">Showing an interactive session as pure text </h2>
+
+<p>
+Sometimes one wants to show an interactive session exactly as it looks like,
+with the input and the output.
+This can be done in the notebook by using the <code>pyshell-t</code>
+or <code>ipy-t</code> environments (<code>-t</code> for <em>plain text</em> display).
+With this DocOnce input,
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pyshell-t
+&gt;&gt;&gt; a = 1
+&gt;&gt;&gt; b = 2
+&gt;&gt;&gt; a + b
+3
+!ec
+</pre></div>
+<p>
+we get the plain text
+
+<p>
+
+<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> b <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> a <span style="color: #666666">+</span> b
+<span style="color: #666666">3</span>
+</pre></div>
+<p>
+The <code>-t</code> postfix can be used for any code that you want to display as
+text rather than as an executable cell. For example, with <code>!bc pycod-t</code>
+we create verbatim text and not a cell:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">MySpecialModule</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">m</span>
+<span style="color: #008000; font-weight: bold">print</span> m<span style="color: #666666">.</span>main()
+</pre></div>
+
+<h1 id="___sec3">Ordinary code blocks </h1>
+
+<p>
+For ordinary book and manual writing, interactive sessions are used
+when the results of statements are important. Otherwise one applies
+standard code blocks. A standard code block can for example be
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pycod
+x = np.linspace(0, 4*np.pi, 501)
+y = np.exp(-0.5*x)*np.sin(np.pi*x)
+plt.plot(x, y)
+!ec
+The result of this code segment appears in Figure ref{myfig}.
+
+<span style="color: #008000">FIGURE: [fig/myfig, width=500 frac=0.8] Plot. label{myfig}</span>
+</pre></div>
+<p>
+This snippet turns out fine in all formats, except the notebook.
+The problem with notebooks is two-fold:
+
+<ol>
+<li> The snippet does not run without import of <code>numpy</code> and <code>matplotlib</code>.</li>
+<li> The snippet results in a plot automatically, and with the figure
+   in addittion, we get two plots.</li>
+</ol>
+
+The remedy for problem 1 is to use <em>hidden code blocks</em>, notified as
+<code>!bc pyhid</code> for Python code and <code>!bc Xhid</code> in general for language <code>X</code>:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc pyhid
+import numpy as np
+import matplotlib.pyplot as plt
+!ec
+</pre></div>
+<p>
+Such code blocks are invisible in all formats except for <code>ipynb</code>.
+Books, manuals, and research papers will very often contain code
+snippets that do not run without (extensive) extra code. This exatra
+code must be provided in hidden code blocks for successful conversion
+to notebooks. If these cells take too much attention (that is probably
+why they were left out of the text...), one can insert some comments
+to explain that fact.
+
+<p>
+Problem 2 is solved using one of the preprocessors and an if test on
+the format, e.g., with Preprocess:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># #if FORMAT != &#39;ipynb&#39;</span>
+The result of this code segment appears in Figure ref{myfig}.
+
+<span style="color: #008000">FIGURE: [fig/myfig, width=500 frac=0.8] Plot. label{myfig}</span>
+<span style="color: #408080; font-style: italic"># #endif</span>
+</pre></div>
+<p>
+Now we can write the complete code segment with a preceding hidden
+block for import and the if test. Below is the rendering of
+this in the format <b>html</b>.
+
+<p>
+<!-- Note: since Preprocess is used in verbatim block above, we must compile -->
+<!-- this document with --no_preprocess and therefore use Mako if test -->
+<!-- to test on the format -->
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">0</span>, <span style="color: #666666">4*</span>np<span style="color: #666666">.</span>pi, <span style="color: #666666">501</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-0.5*</span>x)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sin(np<span style="color: #666666">.</span>pi<span style="color: #666666">*</span>x)
+plt<span style="color: #666666">.</span>plot(x, y)
+</pre></div>
+<p>
+The result of this code segment appears in Figure <a href="#myfig">1</a>.
+
+<p>
+<center> <!-- figure -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Plot. <div id="myfig"></div> </p></center>
+<p><img src="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/ipynb/.sinplot.png" align="bottom" width=400></p>
+</center>
+
+<p>
+(Hidden code blocks are also relevant for RunestoneInteractive
+books, which are made from Sphinx output.)
+
+<h1 id="___sec4">Other special options for notebooks </h1>
+
+<h2 id="___sec5">Figures and movies </h2>
+
+<p>
+Figures and movies can be implemented in several ways in notebooks, depending
+on the value of the options <code>--ipynb_figure=</code> and <code>ipynb_movie=</code>. For
+the former we have the values
+
+<ul>
+ <li> <code>md</code>: plain Markdown syntax for a figure, with no possibility to adjust
+   the size (default)</li>
+ <li> <code>imgtag</code>: <code>&lt;img ...&gt;</code> tag in HTML taking the specified width into account</li>
+ <li> <code>Image</code>: Python notebook cell with <code>Image</code> object</li>
+</ul>
+
+Below is an example
+rendered in format <b>html</b>.
+
+<p>
+<center><p><img src="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png" align="bottom" width=400></p></center>
+
+<p>
+For the movies we have the values
+
+<ul>
+ <li> <code>md</code>: raw HTML code with <code>iframe</code> tag - not relevant for the notebook</li>
+ <li> <code>HTML</code>: raw HTML code with <code>iframe</code> tag
+    embedded in the <code>HTML</code> object from the notebook (default)</li>
+ <li> <code>HTML-YouTube</code>: as <code>HTML</code> but use an <code>IPython.display.YouTubeVideo</code>
+   object to display YouTube videos</li>
+ <li> <code>ipynb</code>: use <code>IPython.display.YouTubeVideo</code> object for YouTube videos,
+   and use an <code>HTML</code> object with <code>video</code> tag for local movies</li>
+</ul>
+
+Below is an example
+rendered in format <b>html</b>.
+
+<p>
+
+<iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
+
+<h2 id="___sec6">Admonitions </h2>
+
+<p>
+Markdown has no support for admonitions while DocOnce has extensive
+support. Some methods for simulating admonitions in notebooks have
+therefore been implemented. These are specified by the <code>--ipynb_admon=</code>
+command-line option.
+
+<ul>
+ <li> <code>quote</code>: typeset admon as Markdown quote (special font and gray vertical bar on
+   the left)</li>
+ <li> <code>paragraph</code>: typeset admon as a plain paragraph with a heading if any (default)</li>
+ <li> <code>hrule</code>: use a horozontal rule to surround the heading and the text</li>
+</ul>
+
+Note that quotes in <code>!bc quote</code> environments
+are always typeset as Markdown quotes.
+
+<p>
+Here are two examples
+rendered in format <b>html</b> using the default admon typesetting.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Notebooks has limited support for typesetting admons.</b>
+Admon environments must be simulated using Markdown quote environment,
+a plain paragraph, or decorations with HTML <code>&lt;hr&gt;</code> hrules.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Splitting documents.</b>
+Formats like <code>html</code> and <code>sphinx</code> support splitting documents into multiple
+web pages. The <code>!split</code> specification has no support in notebooks. This
+means that long documents <em>must</em> be long notebooks.
+</div>
+
+
+<h1 id="___sec7">Equation references </h1>
+
+<p>
+Markdown (and thereby the Jupyter Notebook)
+does not support references to equations.
+
+$$
+\begin{align}
+a &= 1,
+\label{eq1}\\ 
+b & =2
+\label{eq2}
+\end{align}
+$$
+
+Can we refer to \eqref{eq1} and \eqref{eq2} in format <code>ipynb</code>?
+Yes, in DocOnce-extended <code>ipynb</code> format, but not when writing
+notebooks interactively in the browser and using Markdown with LaTeX.
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+
