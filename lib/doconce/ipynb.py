@@ -15,6 +15,7 @@ html_encountered = False
 
 def ipynb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
+    # Old code
     authors = []
     for author, i, e in authors_and_institutions:
         author_str = "new_author(name=u'%s'" % author
@@ -25,6 +26,16 @@ def ipynb_author(authors_and_institutions, auth2index,
         author_str += ')'
         authors.append(author_str)
     s ='authors = [%s]' % (', '.join(authors))
+    # -----------------------------------------------------
+    # New code: typeset as lines
+    s = '\n'
+    for author, i, e in authors_and_institutions:
+        s+= '_%s_' % (author)
+        if e is not None:
+            s += ' (email: `%s`)' % e
+        if i is not None:
+            s += ', ' + ' and '.join(i)
+        s += '\n\n'
     return s
 
 def ipynb_table(table):
@@ -419,7 +430,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     notebook_blocks = [[]]
     authors = ''
     for line in filestr.splitlines():
-        if line.startswith('authors = [new_author(name='):
+        if line.startswith('authors = [new_author(name='):  # old author method
             authors = line[10:]
         elif _CODE_BLOCK in line:
             code_block_tp = line.split()[-1]
@@ -536,6 +547,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     prompt_number = 1
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
+            # Pure comments between math/code and math/code come
+            # out as empty blocks, should detect that situation
+            # (challenging - can have multiple lines of comments,
+            # or begin and end comment lines with important things between)
             if ipy_version == 3:
                 nb.cells.append(new_text_cell(u'markdown', source=block))
             elif ipy_version == 4:
@@ -579,6 +594,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         # Catch the title as the first heading
         m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
         title = m.group(1).strip() if m else ''
+        # md below is not used for anything
         if authors:
             authors = eval(authors)
             md = new_metadata(name=title, authors=authors)
@@ -745,7 +761,7 @@ def define(FILENAME_EXTENSION,
         'colortext': r'<font color="\g<color>">\g<text></font>',
         'title':     r'# \g<subst>',
         'author':    ipynb_author,
-        'date':      '_\g<subst>_\n',
+        'date':      '\n_\g<subst>_\n',
         'chapter':       lambda m: '# '    + m.group('subst'),
         'section':       lambda m: '## '   + m.group('subst'),
         'subsection':    lambda m: '### '  + m.group('subst'),

@@ -13,6 +13,8 @@ doconce subst '" +%matplotlib inline\\n",\n +" +\\n",\n +' '' info.ipynb
 doconce subst '"import numpy as np\\n"', '"%matplotlib inline\\n",\n      "import numpy as np\\n",' info.ipynb
 doconce subst 'Plot\. \\\\label' 'Plot. label' info.ipynb
 
+#doconce format html
+
 # Publish
 dest=../../pub/ipynb
 cp info.ipynb example.ipynb $dest

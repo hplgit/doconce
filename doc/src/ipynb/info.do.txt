@@ -1,18 +1,24 @@
 TITLE: Special features for Jupyter notebooks
-AUTHOR: HPL
+AUTHOR: Hans Petter Langtangen at Simula & UiO
 DATE: today
 
 TOC: on
 
+DocOnce enables turing book chapters, manuals, research papers, and in fact
+any type of document into Jupyter Notebooks (formerly knowns as IPython
+Notebooks). This note outlines some special features that one should
+be aware and that can be used to tune the notebook typesetting.
+
 ======= Interactive sessions =======
 
-By default, interactive sessions in `!bc pyshell` and `!bc ipy`
+By default, interactive Python sessions in `!bc pyshell` and `!bc ipy`
 environments are split such that the output is removed and each
 input part is a separate cell. This means that when executing
 all the cells, one recreates the entire interactive session
 with all the output. Below is an example.
 
 ===== Solving the world's simplest differential equation =====
+label{ipynb:de:simplest}
 
 Let us explore SymPy to solve
 
@@ -208,8 +214,8 @@ standard code blocks. A standard code block can for example be
 
 !bc do
 |bc pycod
-x = np.linspace(0,1 4*np.pi, 501)
-y = np.exp(-0.5*x)*sin(np.pi*x)
+x = np.linspace(0, 4*np.pi, 501)
+y = np.exp(-0.5*x)*np.sin(np.pi*x)
 plt.plot(x, y)
 |ec
 The result of this code segment appears in Figure ref{myfig}.
@@ -229,7 +235,7 @@ The remedy for problem 1 is to use *hidden code blocks*, notified as
 !bc do
 |bc pyhid
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 |ec
 !ec
 Such code blocks are invisible in all formats except for `ipynb`.
@@ -260,18 +266,18 @@ block for import and the if test:
 
 !bc pyhid
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 !ec
 
 !bc pycod
-x = np.linspace(0,1 4*np.pi, 501)
-y = np.exp(-0.5*x)*sin(np.pi*x)
+x = np.linspace(0, 4*np.pi, 501)
+y = np.exp(-0.5*x)*np.sin(np.pi*x)
 plt.plot(x, y)
 !ec
 % if FORMAT != 'ipynb':
 The result of this code segment appears in Figure ref{myfig}.
 
-FIGURE: [fig/myfig, width=300 frac=0.5] Plot. label{myfig}
+FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/ipynb/.sinplot, width=400 frac=0.6] Plot. label{myfig}
 % else:
 Note that `%matplotlib inline` is automatically inserted before the
 first import of `matplotlib` in a DocOnce-generated notebook such
