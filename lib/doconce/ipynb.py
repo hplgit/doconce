@@ -539,7 +539,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             if ipy_version == 3:
                 nb.cells.append(new_text_cell(u'markdown', source=block))
             elif ipy_version == 4:
-                cells.append(new_markdown_cell(u'markdown', source=block))
+                cells.append(new_markdown_cell(source=block))
         elif block_tp == 'cell' and block != '' and block != []:
             if isinstance(block, list):
                 for block_ in block:
