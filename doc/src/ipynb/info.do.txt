@@ -1,18 +1,19 @@
-TITLE: Special features for Jupyter notebooks
+TITLE: Special DocOnce features for Jupyter notebooks
 AUTHOR: Hans Petter Langtangen at Simula & UiO
 DATE: today
 
 TOC: on
 
-DocOnce enables turing book chapters, manuals, research papers, and in fact
+DocOnce enables turning book chapters, manuals, research papers, and in fact
 any type of document into Jupyter Notebooks (formerly knowns as IPython
 Notebooks). This note outlines some special features that one should
-be aware and that can be used to tune the notebook typesetting.
+be aware of and that can be used to tune the notebook typesetting.
 
 ======= Interactive sessions =======
 
 By default, interactive Python sessions in `!bc pyshell` and `!bc ipy`
-environments are split such that the output is removed and each
+environments are (for the `ipynb` format)
+split such that the output is removed and each
 input part is a separate cell. This means that when executing
 all the cells, one recreates the entire interactive session
 with all the output. Below is an example.
@@ -101,7 +102,7 @@ Out[8]: y(t) == C1*exp(t)
 !ec
 This last `ipy` environment results in exactly the same interactive session
 in all formats except `ipynb` where the output is removed and the
-input is split over two cells. In format _${FORMAT}_ the above
+input is split over *two* cells. In format _${FORMAT}_ the above
 block is rendered as
 
 !bc ipy

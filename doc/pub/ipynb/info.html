@@ -6,9 +6,9 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
-<meta name="description" content="Special features for Jupyter notebooks">
+<meta name="description" content="Special DocOnce features for Jupyter notebooks">
 
-<title>Special features for Jupyter notebooks</title>
+<title>Special DocOnce features for Jupyter notebooks</title>
 
 <!-- Bootstrap style: bootstrap_bluegray -->
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="info.html">Special features for Jupyter notebooks</a>
+    <a class="navbar-brand" href="info.html">Special DocOnce features for Jupyter notebooks</a>
   </div>
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -102,7 +102,7 @@ MathJax.Hub.Config({
 
 
 <div class="jumbotron">
-<center><h1>Special features for Jupyter notebooks</h1></center>  <!-- document title -->
+<center><h1>Special DocOnce features for Jupyter notebooks</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Hans Petter Langtangen -->
@@ -132,10 +132,10 @@ MathJax.Hub.Config({
 <a href="#___sec7"> Equation references </a><br>
 </p>
 <p>
-DocOnce enables turing book chapters, manuals, research papers, and in fact
+DocOnce enables turning book chapters, manuals, research papers, and in fact
 any type of document into Jupyter Notebooks (formerly knowns as IPython
 Notebooks). This note outlines some special features that one should
-be aware and that can be used to tune the notebook typesetting.
+be aware of and that can be used to tune the notebook typesetting.
 
 <p>
 </div> <!-- end jumbotron -->
@@ -144,7 +144,8 @@ be aware and that can be used to tune the notebook typesetting.
 
 <p>
 By default, interactive Python sessions in <code>!bc pyshell</code> and <code>!bc ipy</code>
-environments are split such that the output is removed and each
+environments are (for the <code>ipynb</code> format)
+split such that the output is removed and each
 input part is a separate cell. This means that when executing
 all the cells, one recreates the entire interactive session
 with all the output. Below is an example.
@@ -240,7 +241,7 @@ Out[8]: y(t) == C1*exp(t)
 <p>
 This last <code>ipy</code> environment results in exactly the same interactive session
 in all formats except <code>ipynb</code> where the output is removed and the
-input is split over two cells. In format <b>html</b> the above
+input is split over <em>two</em> cells. In format <b>html</b> the above
 block is rendered as
 
 <p>
