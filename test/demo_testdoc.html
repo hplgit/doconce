@@ -268,7 +268,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>May 8, 2015</h4></center> <!-- date -->
+<center><h4>May 12, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -607,28 +607,76 @@ Standard Python shell sessions:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
 &gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
-&gt;&gt;&gt; x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
-Value: <span style="color: #B452CD">0.932039085967</span>
+&gt;&gt;&gt; x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
+&gt;&gt;&gt; y = sin(x)
+&gt;&gt;&gt; y[<span style="color: #B452CD">0</span>]
+<span style="color: #B452CD">0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+&gt;&gt;&gt; plt.plot(x, y)
 </pre></div>
 </td></tr></table><p>
-IPython sessions:
+Similar IPython sessions:
 
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
+<span style="color: #555555">In [3]: </span>x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
+<span style="color: #555555">In [4]: </span>y = sin(x)
+<span style="color: #555555">In [5]: </span>y[<span style="color: #B452CD">0</span>]
+<span style="color: #000080; font-weight: bold">Out[5]: </span><span style="color: #888888">0</span>
+<span style="color: #555555">In [6]: </span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #555555">In [7]: </span>plt.plot(x, y)
+<span style="color: #555555">In [8]: </span>a=<span style="color: #CD5555">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #555555">In [9]: </span>a
+<span style="color: #000080; font-weight: bold">Out[9]: </span><span style="color: #888888">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #555555">In [10]: </span><span style="color: #8B008B; font-weight: bold">print</span> a
+<span style="color: #888888">multiple-</span>
+<span style="color: #888888">line</span>
+<span style="color: #888888">output</span>
+</pre></div>
+</td></tr></table><p>
+Here is the interactive session again, but with <code>dpyshell</code>:
+
+<p>
+
+<!-- code=python (!bc dpyshell) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
-
-<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
-
-<span style="color: #555555">In [3]: </span>x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+6
+7
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+&gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
+&gt;&gt;&gt; x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
+&gt;&gt;&gt; y = sin(x)
+&gt;&gt;&gt; y[<span style="color: #B452CD">0</span>]
+<span style="color: #B452CD">0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+&gt;&gt;&gt; plt.plot(x, y)
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->

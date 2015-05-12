@@ -197,23 +197,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 !bc pyshell
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 !ec
 
-IPython sessions:
+Similar IPython sessions:
 
 !bc ipy
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 !ec
 
+Here is the interactive session again, but with `dpyshell`:
+
+!bc dpyshell
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+!ec
 
 # This one tests a + sign before a code environment
 C++:

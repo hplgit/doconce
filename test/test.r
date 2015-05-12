@@ -212,23 +212,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 !bc pyshell
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 !ec
 
-IPython sessions:
+Similar IPython sessions:
 
 !bc ipy
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 !ec
 
+Here is the interactive session again, but with `dpyshell`:
+
+!bc dpyshell
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+!ec
 
 # This one tests a + sign before a code environment
 C++:
@@ -2520,23 +2545,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 \bpyshell
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 \epyshell
 
-IPython sessions:
+Similar IPython sessions:
 
 \bipy
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 \eipy
 
+Here is the interactive session again, but with \Verb!dpyshell!:
+
+\bdpyshell
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+\edpyshell
 
 % This one tests a + sign before a code environment
 C++:
@@ -4828,25 +4878,51 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 \end{minted}
 \noindent
 
-IPython sessions:
+Similar IPython sessions:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 \end{Verbatim}
 \noindent
 
+Here is the interactive session again, but with \Verb!dpyshell!:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+\end{minted}
+\noindent
 
 % This one tests a + sign before a code environment
 C++:
@@ -6555,6 +6631,8 @@ in a separate document: \Verb!admon.do.txt!.
 
 \bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
+\bdpyshell (!bc dpyshell) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+
 \bpyshell (!bc pyshell) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 
 \bhtmlcod (!bc html) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{html}
@@ -7208,23 +7286,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 \end{minted}
 
-IPython sessions:
+Similar IPython sessions:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{ipy}
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 \end{minted}
 
+Here is the interactive session again, but with \Verb!dpyshell!:
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+\end{minted}
 
 % This one tests a + sign before a code environment
 C++:
@@ -9574,25 +9677,51 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 \end{lstlisting}\end{cod}
 \noindent
 
-IPython sessions:
+Similar IPython sessions:
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 \end{lstlisting}\end{cod}
 \noindent
 
+Here is the interactive session again, but with \Verb!dpyshell!:
+
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+\end{lstlisting}\end{cod}
+\noindent
 
 % This one tests a + sign before a code environment
 C++:
@@ -11475,19 +11604,43 @@ Then Cython::
 
 Standard Python shell sessions::
 
-        >>> from numpy import sin
+        >>> from numpy import linspace, sin
         >>> # Some comment
-        >>> x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
-IPython sessions::
+Similar IPython sessions::
 
-        In [1]: from numpy import sin
-        
+        In [1]: from numpy import linspace, sin
         In [2]: # Some comment
-        
-        In [3]: x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        In [3]: x = linspace(0, 2, 11)
+        In [4]: y = sin(x)
+        In [5]: y[0]
+        Out[5]: 0
+        In [6]: import matplotlib.pyplot as plt
+        In [7]: plt.plot(x, y)
+        In [8]: a='multiple-\nline\noutput'
+        In [9]: a
+        Out[9]: 'multiple-\nline\noutput'
+        In [10]: print a
+        multiple-
+        line
+        output
+
+Here is the interactive session again, but with ``dpyshell``::
+
+        >>> from numpy import linspace, sin
+        >>> # Some comment
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
 .. This one tests a + sign before a code environment
 
@@ -13261,21 +13414,47 @@ Standard Python shell sessions:
 
 .. code-block:: python
 
-        >>> from numpy import sin
+        >>> from numpy import linspace, sin
         >>> # Some comment
-        >>> x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
-IPython sessions:
+Similar IPython sessions:
 
 .. code-block:: ipy
 
-        In [1]: from numpy import sin
-        
+        In [1]: from numpy import linspace, sin
         In [2]: # Some comment
-        
-        In [3]: x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        In [3]: x = linspace(0, 2, 11)
+        In [4]: y = sin(x)
+        In [5]: y[0]
+        Out[5]: 0
+        In [6]: import matplotlib.pyplot as plt
+        In [7]: plt.plot(x, y)
+        In [8]: a='multiple-\nline\noutput'
+        In [9]: a
+        Out[9]: 'multiple-\nline\noutput'
+        In [10]: print a
+        multiple-
+        line
+        output
+
+Here is the interactive session again, but with ``dpyshell``:
+
+.. code-block:: python
+
+        >>> from numpy import linspace, sin
+        >>> # Some comment
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
 .. This one tests a + sign before a code environment
 
@@ -15109,23 +15288,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 {{{
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 }}}
 
-IPython sessions:
+Similar IPython sessions:
 
 {{{
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 }}}
 
+Here is the interactive session again, but with `dpyshell`:
+
+{{{
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+}}}
 
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
@@ -16773,23 +16977,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 <syntaxhighlight lang="python">
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 </syntaxhighlight>
 
-IPython sessions:
+Similar IPython sessions:
 
 <syntaxhighlight lang="python">
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 </syntaxhighlight>
 
+Here is the interactive session again, but with <code>dpyshell</code>:
+
+<syntaxhighlight lang="python">
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+</syntaxhighlight>
 
 <!-- This one tests a + sign before a code environment -->
 C++:
@@ -18537,23 +18766,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 {{{
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 }}}
 
-IPython sessions:
+Similar IPython sessions:
 
 {{{
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 }}}
 
+Here is the interactive session again, but with {{{dpyshell}}}:
+
+{{{
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+}}}
 
 <wiki:comment> This one tests a + sign before a code environment </wiki:comment>
 C++:
@@ -20097,19 +20351,43 @@ Then Cython::
 
 Standard Python shell sessions::
 
-        >>> from numpy import sin
+        >>> from numpy import linspace, sin
         >>> # Some comment
-        >>> x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
-IPython sessions::
+Similar IPython sessions::
 
-        In [1]: from numpy import sin
-        
+        In [1]: from numpy import linspace, sin
         In [2]: # Some comment
-        
-        In [3]: x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        In [3]: x = linspace(0, 2, 11)
+        In [4]: y = sin(x)
+        In [5]: y[0]
+        Out[5]: 0
+        In [6]: import matplotlib.pyplot as plt
+        In [7]: plt.plot(x, y)
+        In [8]: a='multiple-\nline\noutput'
+        In [9]: a
+        Out[9]: 'multiple-\nline\noutput'
+        In [10]: print a
+        multiple-
+        line
+        output
+
+Here is the interactive session again, but with 'dpyshell'::
+
+        >>> from numpy import linspace, sin
+        >>> # Some comment
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
 C++::
 
@@ -21511,19 +21789,30 @@ Then Cython::
 
 Standard Python shell sessions::
 
-        >>> from numpy import sin
+        >>> from numpy import linspace, sin
         >>> # Some comment
-        >>> x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
-IPython sessions::
+Similar IPython sessions::
 
-        In [1]: from numpy import sin
-        
-        In [2]: # Some comment
-        
-        In [3]: x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+            NOTE: A verbatim block has been removed because
+                  it causes problems for Epytext.
+
+Here is the interactive session again, but with C{dpyshell}::
+
+        >>> from numpy import linspace, sin
+        >>> # Some comment
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
 C++::
 
@@ -23029,19 +23318,43 @@ Then Cython::
 
 Standard Python shell sessions::
 
-        >>> from numpy import sin
+        >>> from numpy import linspace, sin
         >>> # Some comment
-        >>> x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
-IPython sessions::
+Similar IPython sessions::
 
-        In [1]: from numpy import sin
-        
+        In [1]: from numpy import linspace, sin
         In [2]: # Some comment
-        
-        In [3]: x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        In [3]: x = linspace(0, 2, 11)
+        In [4]: y = sin(x)
+        In [5]: y[0]
+        Out[5]: 0
+        In [6]: import matplotlib.pyplot as plt
+        In [7]: plt.plot(x, y)
+        In [8]: a='multiple-\nline\noutput'
+        In [9]: a
+        Out[9]: 'multiple-\nline\noutput'
+        In [10]: print a
+        multiple-
+        line
+        output
+
+Here is the interactive session again, but with dpyshell::
+
+        >>> from numpy import linspace, sin
+        >>> # Some comment
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
 C++::
 
@@ -24598,22 +24911,49 @@ Standard Python shell sessions:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-IPython sessions:
+Similar IPython sessions:
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+Here is the interactive session again, but with `dpyshell`:
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.Python}
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <!-- This one tests a + sign before a code environment -->
@@ -26480,7 +26820,7 @@ is at the end with only one newline.
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 2
     },
     {
      "cell_type": "markdown",
@@ -26511,34 +26851,84 @@ is at the end with only one newline.
      "cell_type": "code",
      "collapsed": false,
      "input": [
-      "from numpy import sin\n",
+      "from numpy import linspace, sin\n",
       "# Some comment\n",
-      "x = sin(1.2); print 'Value:', x"
+      "x = linspace(0, 2, 11)\n",
+      "y = sin(x)\n",
+      "y[0]\n"
      ],
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 3
     },
     {
      "cell_type": "markdown",
      "metadata": {},
      "source": [
-      "IPython sessions:"
+      "Similar IPython sessions:"
      ]
     },
     {
      "cell_type": "code",
      "collapsed": false,
      "input": [
-      "from numpy import sin\n",
+      "from numpy import linspace, sin\n",
       "# Some comment\n",
-      "x = sin(1.2); print 'Value:', x"
+      "x = linspace(0, 2, 11)\n",
+      "y = sin(x)\n",
+      "y[0]\n"
      ],
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 4
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "import matplotlib.pyplot as plt\n",
+      "plt.plot(x, y)\n",
+      "a='multiple-\\nline\\noutput'\n",
+      "a\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 5
+    },
+    {
+     "cell_type": "code",
+     "collapsed": false,
+     "input": [
+      "print a\n"
+     ],
+     "language": "python",
+     "metadata": {},
+     "outputs": [],
+     "prompt_number": 6
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "Here is the interactive session again, but with `dpyshell`:"
+     ]
+    },
+    {
+     "cell_type": "markdown",
+     "metadata": {},
+     "source": [
+      "        >>> from numpy import linspace, sin\n",
+      "        >>> # Some comment\n",
+      "        >>> x = linspace(0, 2, 11)\n",
+      "        >>> y = sin(x)\n",
+      "        >>> y[0]\n",
+      "        0\n",
+      "        >>> import matplotlib.pyplot as plt\n",
+      "        >>> plt.plot(x, y)\n"
+     ]
     },
     {
      "cell_type": "markdown",
@@ -26709,7 +27099,7 @@ is at the end with only one newline.
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 7
     },
     {
      "cell_type": "markdown",
@@ -27351,7 +27741,7 @@ is at the end with only one newline.
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 8
     },
     {
      "cell_type": "markdown",
@@ -27578,7 +27968,7 @@ is at the end with only one newline.
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 9
     },
     {
      "cell_type": "markdown",
@@ -27751,7 +28141,7 @@ is at the end with only one newline.
      "language": "python",
      "metadata": {},
      "outputs": [],
-     "prompt_number": 1
+     "prompt_number": 10
     },
     {
      "cell_type": "markdown",
@@ -31771,28 +32161,76 @@ Standard Python shell sessions:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
 &gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
-&gt;&gt;&gt; x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
-Value: <span style="color: #B452CD">0.932039085967</span>
+&gt;&gt;&gt; x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
+&gt;&gt;&gt; y = sin(x)
+&gt;&gt;&gt; y[<span style="color: #B452CD">0</span>]
+<span style="color: #B452CD">0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+&gt;&gt;&gt; plt.plot(x, y)
 </pre></div>
 </td></tr></table><p>
-IPython sessions:
+Similar IPython sessions:
 
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
+<span style="color: #555555">In [3]: </span>x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
+<span style="color: #555555">In [4]: </span>y = sin(x)
+<span style="color: #555555">In [5]: </span>y[<span style="color: #B452CD">0</span>]
+<span style="color: #000080; font-weight: bold">Out[5]: </span><span style="color: #888888">0</span>
+<span style="color: #555555">In [6]: </span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #555555">In [7]: </span>plt.plot(x, y)
+<span style="color: #555555">In [8]: </span>a=<span style="color: #CD5555">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #555555">In [9]: </span>a
+<span style="color: #000080; font-weight: bold">Out[9]: </span><span style="color: #888888">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #555555">In [10]: </span><span style="color: #8B008B; font-weight: bold">print</span> a
+<span style="color: #888888">multiple-</span>
+<span style="color: #888888">line</span>
+<span style="color: #888888">output</span>
+</pre></div>
+</td></tr></table><p>
+Here is the interactive session again, but with <code>dpyshell</code>:
+
+<p>
+
+<!-- code=python (!bc dpyshell) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> sin
-
-<span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
-
-<span style="color: #555555">In [3]: </span>x = sin(<span style="color: #B452CD">1.2</span>); <span style="color: #8B008B; font-weight: bold">print</span> <span style="color: #CD5555">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+6
+7
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+&gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
+&gt;&gt;&gt; x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
+&gt;&gt;&gt; y = sin(x)
+&gt;&gt;&gt; y[<span style="color: #B452CD">0</span>]
+<span style="color: #B452CD">0</span>
+&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+&gt;&gt;&gt; plt.plot(x, y)
 </pre></div>
 </td></tr></table><p>
 <!-- This one tests a + sign before a code environment -->
@@ -34474,23 +34912,51 @@ Standard Python shell sessions:
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sin(x)
+<span style="color: #666666">&gt;&gt;&gt;</span> y[<span style="color: #666666">0</span>]
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> plt<span style="color: #666666">.</span>plot(x, y)
 </pre></div>
 <p>
-IPython sessions:
+Similar IPython sessions:
 
 <p>
 
 
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
-
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> sin(x)
+<span style="color: #000080; font-weight: bold">In [5]: </span>y[<span style="color: #666666">0</span>]
+<span style="color: #000080; font-weight: bold">Out[5]: </span><span style="color: #888888">0</span>
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #000080; font-weight: bold">In [7]: </span>plt<span style="color: #666666">.</span>plot(x, y)
+<span style="color: #000080; font-weight: bold">In [8]: </span>a<span style="color: #666666">=</span><span style="color: #BA2121">&#39;multiple-</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">line</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">output&#39;</span>
+<span style="color: #000080; font-weight: bold">In [9]: </span>a
+<span style="color: #000080; font-weight: bold">Out[9]: </span><span style="color: #888888">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #000080; font-weight: bold">In [10]: </span><span style="color: #008000; font-weight: bold">print</span> a
+<span style="color: #888888">multiple-</span>
+<span style="color: #888888">line</span>
+<span style="color: #888888">output</span>
+</pre></div>
+<p>
+Here is the interactive session again, but with <code>dpyshell</code>:
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+<p>
+
+
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sin(x)
+<span style="color: #666666">&gt;&gt;&gt;</span> y[<span style="color: #666666">0</span>]
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> plt<span style="color: #666666">.</span>plot(x, y)
 </pre></div>
 <p>
 
@@ -36593,23 +37059,51 @@ Standard Python shell sessions:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sin(x)
+<span style="color: #666666">&gt;&gt;&gt;</span> y[<span style="color: #666666">0</span>]
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> plt<span style="color: #666666">.</span>plot(x, y)
 </pre></div>
 <p>
-IPython sessions:
+Similar IPython sessions:
 
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
-
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> sin(x)
+<span style="color: #000080; font-weight: bold">In [5]: </span>y[<span style="color: #666666">0</span>]
+<span style="color: #000080; font-weight: bold">Out[5]: </span><span style="color: #888888">0</span>
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #000080; font-weight: bold">In [7]: </span>plt<span style="color: #666666">.</span>plot(x, y)
+<span style="color: #000080; font-weight: bold">In [8]: </span>a<span style="color: #666666">=</span><span style="color: #BA2121">&#39;multiple-</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">line</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">output&#39;</span>
+<span style="color: #000080; font-weight: bold">In [9]: </span>a
+<span style="color: #000080; font-weight: bold">Out[9]: </span><span style="color: #888888">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #000080; font-weight: bold">In [10]: </span><span style="color: #008000; font-weight: bold">print</span> a
+<span style="color: #888888">multiple-</span>
+<span style="color: #888888">line</span>
+<span style="color: #888888">output</span>
+</pre></div>
+<p>
+Here is the interactive session again, but with <code>dpyshell</code>:
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+<p>
+
+<!-- code=python (!bc dpyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sin(x)
+<span style="color: #666666">&gt;&gt;&gt;</span> y[<span style="color: #666666">0</span>]
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> plt<span style="color: #666666">.</span>plot(x, y)
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -38874,23 +39368,48 @@ cpdef f(double x):
 Standard Python shell sessions:
 
 \bpyshell
->>> from numpy import sin
+>>> from numpy import linspace, sin
 >>> # Some comment
->>> x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
 \epyshell
 
-IPython sessions:
+Similar IPython sessions:
 
 \bipy
-In [1]: from numpy import sin
-
+In [1]: from numpy import linspace, sin
 In [2]: # Some comment
-
-In [3]: x = sin(1.2); print 'Value:', x
-Value: 0.932039085967
+In [3]: x = linspace(0, 2, 11)
+In [4]: y = sin(x)
+In [5]: y[0]
+Out[5]: 0
+In [6]: import matplotlib.pyplot as plt
+In [7]: plt.plot(x, y)
+In [8]: a='multiple-\nline\noutput'
+In [9]: a
+Out[9]: 'multiple-\nline\noutput'
+In [10]: print a
+multiple-
+line
+output
 \eipy
 
+Here is the interactive session again, but with \Verb!dpyshell!:
+
+\bdpyshell
+>>> from numpy import linspace, sin
+>>> # Some comment
+>>> x = linspace(0, 2, 11)
+>>> y = sin(x)
+>>> y[0]
+0
+>>> import matplotlib.pyplot as plt
+>>> plt.plot(x, y)
+\edpyshell
 
 % This one tests a + sign before a code environment
 C++:
@@ -40721,10 +41240,16 @@ create RunestoneInteractive directory
     import conf as source_dir_conf  # read data from conf.py
 
     if not os.path.isdir('RunestoneTools'):
-        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
-    os.chdir('RunestoneTools')
+        system('git clone https://github.com/RunestoneInteractive/RunestoneComponents.git')
+    os.chdir('RunestoneComponents')
 
     # Edit conf.py
+    # This one does not work anymore: run runestone init instead,
+    print 'RunestoneInteractive has recently changed its setup - must abort'
+    sys.exit(1)
+    # it's the file runestone/__main__.py and function init()
+    # Need to build a bash script that runs the command and feeds the answers
+    # See also https://github.com/RunestoneInteractive/RunestoneComponents
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME HERE>', source_dir_conf.project)
@@ -40905,10 +41430,16 @@ create RunestoneInteractive directory
     import conf as source_dir_conf  # read data from conf.py
 
     if not os.path.isdir('RunestoneTools'):
-        system('git clone https://github.com/RunestoneInteractive/RunestoneTools.git')
-    os.chdir('RunestoneTools')
+        system('git clone https://github.com/RunestoneInteractive/RunestoneComponents.git')
+    os.chdir('RunestoneComponents')
 
     # Edit conf.py
+    # This one does not work anymore: run runestone init instead,
+    print 'RunestoneInteractive has recently changed its setup - must abort'
+    sys.exit(1)
+    # it's the file runestone/__main__.py and function init()
+    # Need to build a bash script that runs the command and feeds the answers
+    # See also https://github.com/RunestoneInteractive/RunestoneComponents
     f = open('conf.py.prototype', 'r');  text = f.read();  f.close()
     text = text.replace('<ENTER YOUR PROJECT NAME HERE>', source_dir_conf.project)
     text = text.replace('<INSERT YOUR PROJECT NAME HERE>', source_dir_conf.project)
@@ -42146,6 +42677,7 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="HPL" />
+  <meta name="date" content="2015-05-12" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -43939,23 +44471,51 @@ Standard Python shell sessions:
 <p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-Value: <span style="color: #666666">0.932039085967</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sin(x)
+<span style="color: #666666">&gt;&gt;&gt;</span> y[<span style="color: #666666">0</span>]
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> plt<span style="color: #666666">.</span>plot(x, y)
 </pre></div>
 <p>
-IPython sessions:
+Similar IPython sessions:
 
 <p>
 
 <!-- code=ipy (!bc ipy) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> sin
-
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">In [1]: </span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
 <span style="color: #000080; font-weight: bold">In [2]: </span><span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #000080; font-weight: bold">In [4]: </span>y <span style="color: #666666">=</span> sin(x)
+<span style="color: #000080; font-weight: bold">In [5]: </span>y[<span style="color: #666666">0</span>]
+<span style="color: #000080; font-weight: bold">Out[5]: </span><span style="color: #888888">0</span>
+<span style="color: #000080; font-weight: bold">In [6]: </span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #000080; font-weight: bold">In [7]: </span>plt<span style="color: #666666">.</span>plot(x, y)
+<span style="color: #000080; font-weight: bold">In [8]: </span>a<span style="color: #666666">=</span><span style="color: #BA2121">&#39;multiple-</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">line</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">output&#39;</span>
+<span style="color: #000080; font-weight: bold">In [9]: </span>a
+<span style="color: #000080; font-weight: bold">Out[9]: </span><span style="color: #888888">&#39;multiple-\nline\noutput&#39;</span>
+<span style="color: #000080; font-weight: bold">In [10]: </span><span style="color: #008000; font-weight: bold">print</span> a
+<span style="color: #888888">multiple-</span>
+<span style="color: #888888">line</span>
+<span style="color: #888888">output</span>
+</pre></div>
+<p>
+Here is the interactive session again, but with <code>dpyshell</code>:
 
-<span style="color: #000080; font-weight: bold">In [3]: </span>x <span style="color: #666666">=</span> sin(<span style="color: #666666">1.2</span>); <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Value:&#39;</span>, x
-<span style="color: #888888">Value: 0.932039085967</span>
+<p>
+
+<!-- code=python (!bc dpyshell) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> linspace, sin
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Some comment</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> x <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, <span style="color: #666666">2</span>, <span style="color: #666666">11</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sin(x)
+<span style="color: #666666">&gt;&gt;&gt;</span> y[<span style="color: #666666">0</span>]
+<span style="color: #666666">0</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> plt<span style="color: #666666">.</span>plot(x, y)
 </pre></div>
 <p>
 <!-- This one tests a + sign before a code environment -->
@@ -46238,21 +46798,47 @@ Standard Python shell sessions:
 
 .. code-block:: python
 
-        >>> from numpy import sin
+        >>> from numpy import linspace, sin
         >>> # Some comment
-        >>> x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
-IPython sessions:
+Similar IPython sessions:
 
 .. code-block:: ipy
 
-        In [1]: from numpy import sin
-        
+        In [1]: from numpy import linspace, sin
         In [2]: # Some comment
-        
-        In [3]: x = sin(1.2); print 'Value:', x
-        Value: 0.932039085967
+        In [3]: x = linspace(0, 2, 11)
+        In [4]: y = sin(x)
+        In [5]: y[0]
+        Out[5]: 0
+        In [6]: import matplotlib.pyplot as plt
+        In [7]: plt.plot(x, y)
+        In [8]: a='multiple-\nline\noutput'
+        In [9]: a
+        Out[9]: 'multiple-\nline\noutput'
+        In [10]: print a
+        multiple-
+        line
+        output
+
+Here is the interactive session again, but with ``dpyshell``:
+
+.. code-block:: python
+
+        >>> from numpy import linspace, sin
+        >>> # Some comment
+        >>> x = linspace(0, 2, 11)
+        >>> y = sin(x)
+        >>> y[0]
+        0
+        >>> import matplotlib.pyplot as plt
+        >>> plt.plot(x, y)
 
 .. This one tests a + sign before a code environment
 
@@ -54038,7 +54624,6 @@ exercises (and problems and projects too).
 
 ************** File: admon_sphinx/admon.html *****************
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -54049,7 +54634,7 @@ exercises (and problems and projects too).
     
     <title>Testing admons</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -54064,7 +54649,7 @@ exercises (and problems and projects too).
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -54084,7 +54669,11 @@ exercises (and problems and projects too).
     
     <link rel="top" title="Testing admons" href="index.html" />
     <link rel="prev" title="Testing admons" href="index.html" />
- 
+
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
   
        <style type="text/css">
          div.admonition {
@@ -54129,7 +54718,7 @@ exercises (and problems and projects too).
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>First some ordinary text to compare font sizes in admonitions
 and the surrounding text.</p>
-<p>Note that <tt class="docutils literal"><span class="pre">automake_sphinx.py</span></tt> fixes the HTML file generated by Sphinx
+<p>Note that <code class="docutils literal"><span class="pre">automake_sphinx.py</span></code> fixes the HTML file generated by Sphinx
 so that all styles for admonitions have a colored background.</p>
 <div class="section" id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
@@ -54245,7 +54834,7 @@ about fun facts that are not strictly necessary for the main flow
 of understanding.</p>
 </div>
 <p>Admonitions must have a title in Sphinx, otherwise they are not
-shown. Here, for the following <em>block admon</em> (<tt class="docutils literal"><span class="pre">!bblock</span></tt>)
+shown. Here, for the following <em>block admon</em> (<code class="docutils literal"><span class="pre">!bblock</span></code>)
 we have not specified any title, and DocOnce then
 applies the generic title &#8220;Notice:&#8221; for the Sphinx format:</p>
 <div class="admonition-notice admonition">
@@ -54386,7 +54975,7 @@ a different typesetting, and they may have a symbol.
 Titles should be optional.</p>
 </div>
 <p><strong>Remark.</strong>
-The <tt class="docutils literal"><span class="pre">remarks</span></tt> and <tt class="docutils literal"><span class="pre">hint</span></tt> environments are not allowed outside
+The <code class="docutils literal"><span class="pre">remarks</span></code> and <code class="docutils literal"><span class="pre">hint</span></code> environments are not allowed outside
 exercises (and problems and projects too).</p>
 </div>
 </div>
@@ -54438,22 +55027,21 @@ exercises (and problems and projects too).</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Testing admons"
-             >previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li> 
-      </ul>
-    </div>
     <div class="footer">
-        &copy; Copyright 2015, hpl.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+      &copy;2015, hpl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/admon.txt"
+          rel="nofollow">Page source</a></li>
     </div>
+
+    
+
+    
   </body>
 </html>
 ************** File: admon_lyx.html *****************
@@ -61860,8 +62448,6 @@ title (Warning) since no title is specified.
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
-
-% Background for code blocks (parameter is color name)
 
 \usepackage{listingsutf8}
 
@@ -72381,7 +72967,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f864f765398>
+verbatim is to be replaced using <function html_verbatim at 0x7f8cbb231848>
 
 
 First occurence: " `mako`."
@@ -76356,7 +76942,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri May  8 01:36:18 2015.
+# sphinx-quickstart on Tue May 12 03:29:16 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -76369,6 +76955,7 @@ we can run the program:
 
 import sys
 import os
+import shlex
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -76463,7 +77050,9 @@ except ImportError:
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# The suffix of source filenames.
+# The suffix(es) of source filenames.
+# You can specify multiple suffix as a list of string:
+# source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
 
 # The encoding of source files.
@@ -76475,6 +77064,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Just a test'
 copyright = u'2015, HPL'
+author = u'HPL'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -76487,7 +77077,10 @@ release = '0.1'
 
 # The language for content autogenerated by Sphinx. Refer to documentation
 # for a list of supported languages.
-#language = None
+#
+# This is also used if you do content translation via gettext catalogs.
+# Usually you set "language" from the command line for these cases.
+language = '1.0'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -76523,61 +77116,15 @@ pygments_style = 'sphinx'
 # If true, keep warnings as "system message" paragraphs in the built documents.
 #keep_warnings = False
 
+# If true, `todo` and `todoList` produce output, else they produce nothing.
+todo_include_todos = False
+
 
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'agni'
-#html_theme = 'ADCtheme'
-#html_theme = 'agni'
-#html_theme = 'agogo'
-#html_theme = 'basic'
-#html_theme = 'basicstrap'
-#html_theme = 'bloodish'
-#html_theme = 'bootstrap'
-#html_theme = 'cbc'
-#html_theme = 'classy'
-#html_theme = 'cloud'
-#html_theme = 'default'
-#html_theme = 'epub'
-#html_theme = 'fenics'
-#html_theme = 'fenics_minimal1'
-#html_theme = 'fenics_minimal2'
-#html_theme = 'flask'
-#html_theme = 'haiku'
-#html_theme = 'impressjs'
-#html_theme = 'jal'
-#html_theme = 'nature'
-#html_theme = 'pylons'
-#html_theme = 'pyramid'
-#html_theme = 'read_the_docs'
-#html_theme = 'redcloud'
-#html_theme = 'scipy_lectures'
-#html_theme = 'scrolls'
-#html_theme = 'slim-agogo'
-#html_theme = 'solarized'
-#html_theme = 'sphinxdoc'
-#html_theme = 'traditional'
-#html_theme = 'uio'
-#html_theme = 'vlinux-theme'
-#html_theme = 'default'
-
-check_additional_themes = [
-   'solarized', 'cloud', 'redcloud',
-   'bootstrap', 'impressjs']
-
-for theme in check_additional_themes:
-    if html_theme == theme:
-        if not theme in additional_themes_installed:
-            raise ImportError(
-                'html_theme = "%s", but this theme is not '\
-                'installed.\n%s' % (theme, additional_themes_url[theme]))
-
-if html_theme == 'solarized':
-    pygments_style = 'solarized'
-
-
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -76779,9 +77326,22 @@ if html_theme == 'impressjs':
 # This is the file name suffix for HTML files (e.g. ".xhtml").
 #html_file_suffix = None
 
+# Language to be used for generating the HTML full-text search index.
+# Sphinx supports the following languages:
+#   'da', 'de', 'en', 'es', 'fi', 'fr', 'hu', 'it', 'ja'
+#   'nl', 'no', 'pt', 'ro', 'ru', 'sv', 'tr'
+#html_search_language = 'en'
+
+# A dictionary with options for the search language support, empty by default.
+# Now only 'ja' uses this config value
+#html_search_options = {'type': 'default'}
+
+# The name of a javascript file (relative to the configuration directory) that
+# implements a search results scorer. If empty, the default will be used.
+#html_search_scorer = 'scorer.js'
+
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Justatestdoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -76794,13 +77354,16 @@ latex_elements = {
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
+
+# Latex figure (float) alignment
+#'figure_align': 'htbp',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'Justatest.tex', u'Just a test Documentation',
+  (master_doc, 'Justatest.tex', u'Just a test Documentation',
    u'HPL', 'manual'),
 ]
 
@@ -76830,8 +77393,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'justatest', u'Just a test Documentation',
-     [u'HPL'], 1)
+    (master_doc, 'justatest', u'Just a test Documentation',
+     [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -76844,8 +77407,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Justatest', u'Just a test Documentation',
-   u'HPL', 'Justatest', 'One line description of project.',
+  (master_doc, 'Justatest', u'Just a test Documentation',
+   author, 'Justatest', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -80479,8 +81042,6 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
-
-% Background for code blocks (parameter is color name)
 
 
 \usepackage[T1]{fontenc}
@@ -93800,7 +94361,7 @@ replacing vspace{1cm} % after toc by clearpage % after toc in testdoc.p.tex
 + doconce subst '(newtheorem{example}.*)' '\g<1>\n\\newtheorem{theorem}{Theorem}[section]' testdoc.p.tex
 (newtheorem{example}.*) replaced by \g<1>\n\\newtheorem{theorem}{Theorem}[section] in testdoc.p.tex
 + doconce subst '\\paragraph\{Theorem \d+\.\}' '' testdoc.p.tex
-\\paragraph\{Theorem \d+\.\} replaced by  in testdoc.p.tex
+\\paragraph\{Theorem \d+\.\} replaced by <empty string> in testdoc.p.tex
 + doconce replace '% begin theorem' '\begin{theorem}' testdoc.p.tex
 replacing % begin theorem by \begin{theorem} in testdoc.p.tex
 + doconce replace '% end theorem' '\end{theorem}' testdoc.p.tex
@@ -94120,13 +94681,15 @@ dmap/pdftex.map}] [2]
 2768.pygtex)
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
-(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [5]
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
 515A.pygtex) <latex_figs/dizzy_face.png, id=74, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>] [7]
+CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>] [7] [8]
 
 
 ...rest of part of LaTeX line number...
@@ -94134,16 +94697,17 @@ CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>] [7]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=99, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=112, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[8] [9 <../doc/src/manual/fig/wave1D.pdf>]
+[9 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
 <../doc/src/manual/fig/wave1D.png, id=131, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=132, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
+<use downloaded_figures/f_plot.png> [10] [11 <../doc/src/manual/fig/wave1D.png>
+ <./downloaded_figures/f_plot.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -94168,7 +94732,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <../doc/src/manual/fig/wave1D.png>]
+
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -94181,18 +94745,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=160, 586.8324pt x 442.292
+[12] [13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=165, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=161, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=166, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=162, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=167, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=168, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=164, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=169, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=165, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=170, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -94214,7 +94778,15 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\new@ifnextchar' on .
+
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
@@ -94226,46 +94798,33 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[14]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-
-t line 1283.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1292.
-
-
-
-...rest of part of LaTeX line number...
-
 [15]
 
 
+t line 1309.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1318.
+
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -94278,7 +94837,11 @@ t line 1292.
 
 
 
-t line 1296.
+...rest of part of LaTeX line number...
+
+
+
+t line 1322.
 
 
 
@@ -94356,13 +94919,12 @@ t line 1296.
 
 
 
-
+[16]
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [16]
+2768.pygtex) [17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[17]
 
 
 .
@@ -94389,13 +94951,13 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
 [18]
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -94415,6 +94977,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[19]
 
 
 
@@ -94432,7 +94995,7 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[19]
+
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 
@@ -94447,9 +95010,9 @@ Package amsmath Warning: Foreign command \over;
 
 
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [21] [22]
+2768.pygtex) [21] [22] [23]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [23])
+2768.pygtex)
 Underfull \hbox (badness 10000) 
 
 
@@ -94478,10 +95041,9 @@ Underfull \hbox (badness 10000)
 
 
 No file testdoc.bbl.
-
+[25]
 Underfull \hbox (badness 10000) 
 
-[25]
 
 
 ...rest of part of LaTeX line number...
@@ -94673,7 +95235,9 @@ _minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
 9.pygtex
-_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
 A.pygtex
@@ -95005,16 +95569,18 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 2768.pygtex)
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
-(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [6]
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
 515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=337, 586.83241pt x 442.29242pt>
+CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=349, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+[10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
@@ -95112,7 +95678,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1283.
+t line 1309.
 
 
 
@@ -95132,7 +95698,7 @@ t line 1283.
 
 
 
-t line 1292.
+t line 1318.
 
 
 
@@ -95153,7 +95719,7 @@ t line 1292.
 
 
 
-t line 1296.
+t line 1322.
 
 
 
@@ -95433,7 +95999,9 @@ _minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
 9.pygtex
-_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
 A.pygtex
@@ -95778,16 +96346,18 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 2768.pygtex)
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
-(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [6]
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
 515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=337, 586.83241pt x 442.29242pt>
+CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=349, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+[10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
@@ -95885,7 +96455,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 
 
-t line 1283.
+t line 1309.
 
 
 
@@ -95905,7 +96475,7 @@ t line 1283.
 
 
 
-t line 1292.
+t line 1318.
 
 
 
@@ -95926,7 +96496,7 @@ t line 1292.
 
 
 
-t line 1296.
+t line 1322.
 
 
 
@@ -96207,7 +96777,9 @@ _minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
 9.pygtex
-_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
 A.pygtex
@@ -96536,16 +97108,18 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 2768.pygtex)
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
-(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [6]
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
 515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8]
-<../doc/src/manual/fig/wave1D.pdf, id=337, 586.83241pt x 442.29242pt>
+CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=349, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9] [10 <../doc/src/manual/fig/wave1D.pdf>]
+[10 <../doc/src/manual/fig/wave1D.pdf>]
 <../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 <downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
@@ -96852,7 +97426,9 @@ _minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
 9.pygtex
-_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
+8.pygtex
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
 8.pygtex
 _minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
 A.pygtex
@@ -97226,19 +97802,21 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 2768.pygtex) 
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
-(./_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex [5])
-(./_minted-testdoc/65AADE4BB2997117C9A24F71CFD3E9C07C5D04F18B5ECF473885AEE833B1
+(./_minted-testdoc/324517A075AC58FEC87C01DD81BE7B927C5D04F18B5ECF473885AEE833B1
 4F29.pygtex)
+(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
+2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
 515A.pygtex) <latex_figs/dizzy_face.png, id=250, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png>
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>]
+CDA7.pygtex [6 <./latex_figs/dizzy_face.png>])
 (./_minted-testdoc/31694FBE2107EB6C5A701C5DEB889172170388258ECB494ED08D68BAB3CD
 E68F.pygtex)
 (./_minted-testdoc/751AAEDF86B68C96684E0B2E1DAD79345B805DEF588DFB75F5378543B444
-240C.pygtex) [7] [8]
+240C.pygtex [7]) [8]
 
 
 ...rest of part of LaTeX line number...
@@ -97246,16 +97824,18 @@ E68F.pygtex)
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=290, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=282, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9 <../doc/src/manual/fig/wave1D.pdf>]
+[9]
+
+[10 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=307, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=311, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
-<downloaded_figures/f_plot.png, id=308, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=312, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -97280,7 +97860,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <../doc/src/manual/fig/wave1D.png>]
+[12 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -97293,18 +97873,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=333, 586.8324pt x 442.292
+[13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=334, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=339, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=335, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=340, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=336, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=341, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=337, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=342, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=338, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=343, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -97326,7 +97906,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
@@ -97342,14 +97922,14 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14]
+[15]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
 
 
-t line 1234.
+t line 1259.
 
 
 
@@ -97369,7 +97949,7 @@ t line 1234.
 
 
 
-t line 1243.
+t line 1268.
 
 
 
@@ -97389,35 +97969,7 @@ t line 1243.
 
 
 
-t line 1247.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
+t line 1272.
 
 
 
@@ -97453,13 +98005,41 @@ t line 1247.
 
 
 
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
 .
 
 
 
 ...rest of part of LaTeX line number...
 
-[15]
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+[16]
 
 
 
@@ -97470,11 +98050,11 @@ t line 1247.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [16]
+2768.pygtex) [17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[17]
+[18]
 
 
 .
@@ -97507,7 +98087,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[18]
+[19]
 
 
 ...rest of part of LaTeX line number...
@@ -97544,22 +98124,22 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[19]
+[20]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 
 
 
-[20]
+[21]
 
 
 
 
 
 
-[21] [22]
+[22] [23]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [23])
+2768.pygtex [24])
 Underfull \hbox (badness 10000) 
 
 
@@ -97569,7 +98149,7 @@ Underfull \hbox (badness 10000)
 
 
 
-[24]
+[25]
 
 
 
@@ -97587,28 +98167,28 @@ Underfull \hbox (badness 10000)
 
 
 
-(./testdoc.bbl [25]) [26]
+(./testdoc.bbl [26]) [27]
 Underfull \hbox (badness 10000) 
 
-
-
-...rest of part of LaTeX line number...
-
-[27]
 
 
 ...rest of part of LaTeX line number...
 
 [28]
 
+
+...rest of part of LaTeX line number...
+
+[29]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-(./testdoc.ind [29]
+(./testdoc.ind [30]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[30]) (./testdoc.aux)
+[31]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -97779,10 +98359,12 @@ _minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
 lstlang1.sty    2014/09/06 1.5e listings language file
 _minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
 9.pygtex
-_minted-testdoc/A97DD0B80D376A182F203E7F8E7ECC73685D8F29C84F15AD58A5250F9E77276
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
 8.pygtex
-_minted-testdoc/65AADE4BB2997117C9A24F71CFD3E9C07C5D04F18B5ECF473885AEE833B14F2
+_minted-testdoc/324517A075AC58FEC87C01DD81BE7B927C5D04F18B5ECF473885AEE833B14F2
 9.pygtex
+_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
+8.pygtex
 _minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
 A.pygtex
 latex_figs/dizzy_face.png
@@ -97847,7 +98429,7 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 /share/texmf/fonts/type1/public/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (30 pages, ).
+Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + system doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
@@ -98102,7 +98684,7 @@ testdoc split into
 + system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc
-Welcome to the Sphinx 1.2.3 quickstart utility.
+Welcome to the Sphinx 1.3.1 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -98125,9 +98707,15 @@ Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
 > Project version: > Project release [0.1]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
-> Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
 > Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
@@ -98171,9 +98759,11 @@ or just run it by
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Making output directory...
-Running Sphinx v1.2.3
+Running Sphinx v1.3.1
+making output directory...
+loading translations [1.0]... not available for built-in messages
 loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 12 source files that are out of date
 updating environment: 12 added, 0 changed, 0 removed
 reading sources... [  8%] ._testdoc000
@@ -98189,9 +98779,9 @@ reading sources... [ 83%] ._testdoc009
 reading sources... [ 91%] ._testdoc010
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:365: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:403: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:403: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:391: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:429: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:429: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:429: ERROR: Unexpected indentation.
@@ -98218,12 +98808,13 @@ writing output... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app2 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:70: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc002' that doesn't have a title: no link will be generated
-writing additional files... (0 module code pages) genindex search
+generating indices... genindex
+writing additional pages... search
 copying images... [100%] wave1D.png
 
 copying static files... done
 copying extra files... done
-dumping search index... done
+dumping search index in English (code: en) ... done
 dumping object inventory... done
 build succeeded, 12 warnings.
 
@@ -98638,6 +99229,8 @@ output in testdoc.p.tex
 \bpyshell (!bc pyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("pyshell" is unsupported so we use Verbatim)
 
 \bipy (!bc ipy) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ipy" is unsupported so we use Verbatim)
+
+\bdpyshell (!bc dpyshell) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("dpyshell" is unsupported so we use Verbatim)
 
 \bcpppro (!bc cpppro) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("cpppro" is unsupported so we use Verbatim)
 
@@ -100028,7 +100621,7 @@ Not recommended for sphinx output: math environment {eqnarray*}
 output in math_test.rst
 + doconce sphinx_dir dirname=sphinx-rootdir-math math_test
 Making sphinx-rootdir-math
-Welcome to the Sphinx 1.2.3 quickstart utility.
+Welcome to the Sphinx 1.3.1 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -100051,9 +100644,15 @@ Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
 > Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
-> Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
 > Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
@@ -100099,9 +100698,11 @@ or just run it by
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Making output directory...
-Running Sphinx v1.2.3
+Running Sphinx v1.3.1
+making output directory...
+loading translations [1.0]... not available for built-in messages
 loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
@@ -100114,10 +100715,11 @@ preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] math_test
 
-writing additional files... (0 module code pages) genindex search
+generating indices... genindex
+writing additional pages... search
 copying static files... done
 copying extra files... done
-dumping search index... done
+dumping search index in English (code: en) ... done
 dumping object inventory... done
 build succeeded.
 
@@ -103185,7 +103787,7 @@ output in admon.html
 + system doconce sphinx_dir dirname=tmp_admon admon
 + doconce sphinx_dir dirname=tmp_admon admon
 Making tmp_admon
-Welcome to the Sphinx 1.2.3 quickstart utility.
+Welcome to the Sphinx 1.3.1 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -103208,9 +103810,15 @@ Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
 > Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
-> Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
 > Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
@@ -103270,9 +103878,11 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.rst
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Making output directory...
-Running Sphinx v1.2.3
+Running Sphinx v1.3.1
+making output directory...
+loading translations [1.0]... not available for built-in messages
 loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] admon
@@ -103285,12 +103895,13 @@ preparing documents... done
 writing output... [ 50%] admon
 writing output... [100%] index
 
-writing additional files... (0 module code pages) genindex search
+generating indices... genindex
+writing additional pages... search
 copying images... [100%] wave1D.png
 
 copying static files... done
 copying extra files... done
-dumping search index... done
+dumping search index in English (code: en) ... done
 dumping object inventory... done
 build succeeded.
 
@@ -107802,7 +108413,7 @@ Normal text.
 <h2 id="_
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce subst -s -m '^!bsol.+?!esol' '' tmp2.do.txt
-^!bsol.+?!esol replaced by  in tmp2.do.txt
+^!bsol.+?!esol replaced by <empty string> in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
@@ -107832,7 +108443,7 @@ mybook
     found!
 output in tmp2.rst
 + doconce subst -s -m '^!bhint.+?!ehint' '' tmp2.do.txt
-^!bhint.+?!ehint replaced by  in tmp2.do.txt
+^!bhint.+?!ehint replaced by <empty string> in tmp2.do.txt
 + doconce format sphinx tmp2
 translating doconce text in tmp2.do.txt to sphinx
 figure file ../doc/src/manual/fig/wave1D:
@@ -108770,7 +109381,7 @@ output in quickref.rst
 + system doconce sphinx_dir author=HPL quickref
 + doconce sphinx_dir author=HPL quickref
 Making sphinx-rootdir
-Welcome to the Sphinx 1.2.3 quickstart utility.
+Welcome to the Sphinx 1.3.1 quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -108793,9 +109404,15 @@ Python the version is something like 2.5 or 3.0, while the release is
 something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
 just set both to the same value.
 > Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
 The file name suffix for source files. Commonly, this is either ".txt"
 or ".rst".  Only files with this suffix are considered documents.
-> Source file suffix [.rst]: * Please enter a file suffix, e.g. '.rst' or '.txt'.
 > Source file suffix [.rst]: 
 One document is special in that it is considered the top node of the
 "contents tree", that is, it is the root of the hierarchical structure
@@ -108842,9 +109459,11 @@ replacing doconce format sphinx %s by doconce format sphinx %s --no-preprocess i
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Making output directory...
-Running Sphinx v1.2.3
+Running Sphinx v1.3.1
+making output directory...
+loading translations [1.0]... not available for built-in messages
 loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
 reading sources... [ 50%] index
@@ -108858,10 +109477,11 @@ writing output... [ 50%] index
 writing output... [100%] quickref
 
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:805: WARNING: undefined label: quick:sections (if the link has no caption the label must precede a section header)
-writing additional files... (0 module code pages) genindex search
+generating indices... genindex
+writing additional pages... search
 copying static files... done
 copying extra files... done
-dumping search index... done
+dumping search index in English (code: en) ... done
 dumping object inventory... done
 build succeeded, 1 warning.
 

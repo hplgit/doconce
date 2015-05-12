@@ -2826,7 +2826,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                     # No use of !bbox and hence no use of fboxsep
                     # for those boxes, and we can redefine fboxsep here
                     INTRO['latex'] += r"""
-% Background for code blocks (parameter is color name)
+%% Background for code blocks (parameter is color name)
 \setlength{\fboxsep}{%s}  %% adjust cod/pro background box
 \newenvironment{cod}[1]{
    \def\FrameCommand{\colorbox{#1}}

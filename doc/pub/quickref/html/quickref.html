@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,7 +9,7 @@
     
     <title>DocOnce Quick Reference</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -45,7 +44,11 @@
     
     <link rel="top" title="DocOnce Quick Reference" href="index.html" />
     <link rel="prev" title="DocOnce Quick Reference" href="index.html" />
- 
+
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
   
        <style type="text/css">
          div.admonition {
@@ -82,7 +85,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 8, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -92,7 +95,7 @@ Enable writing documentation with much mathematics and
 computer code <em>once, in one place</em> and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
-include Google&#8217;s <tt class="docutils literal"><span class="pre">blogger.com</span></tt>, Wikipedia/Wikibooks, IPython
+include Google&#8217;s <code class="docutils literal"><span class="pre">blogger.com</span></code>, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.</p>
 <div class="section" id="supported-formats">
@@ -100,23 +103,23 @@ mathematics and code.</p>
 <p>DocOnce currently translates files to the following formats:</p>
 <blockquote>
 <div><ul class="simple">
-<li>LaTeX (format <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>)</li>
-<li>HTML (format <tt class="docutils literal"><span class="pre">html</span></tt>)</li>
-<li>reStructuredText (format <tt class="docutils literal"><span class="pre">rst</span></tt>)</li>
-<li>plain (untagged) ASCII (format <tt class="docutils literal"><span class="pre">plain</span></tt>)</li>
-<li>Sphinx (format <tt class="docutils literal"><span class="pre">sphinx</span></tt>)</li>
-<li>IPython notebook (format <tt class="docutils literal"><span class="pre">ipynb</span></tt>)</li>
-<li>MediaWiki (format <tt class="docutils literal"><span class="pre">mwiki</span></tt>)</li>
-<li>(Pandoc extended) Markdown (format <tt class="docutils literal"><span class="pre">pandoc</span></tt>)</li>
-<li>Googlecode wiki (format <tt class="docutils literal"><span class="pre">gwiki</span></tt>)</li>
-<li>Creoloe wiki (format <tt class="docutils literal"><span class="pre">cwiki</span></tt>)</li>
-<li>Epydoc (format <tt class="docutils literal"><span class="pre">epydoc</span></tt>)</li>
-<li>StructuredText (format <tt class="docutils literal"><span class="pre">st</span></tt>)</li>
+<li>LaTeX (format <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code>)</li>
+<li>HTML (format <code class="docutils literal"><span class="pre">html</span></code>)</li>
+<li>reStructuredText (format <code class="docutils literal"><span class="pre">rst</span></code>)</li>
+<li>plain (untagged) ASCII (format <code class="docutils literal"><span class="pre">plain</span></code>)</li>
+<li>Sphinx (format <code class="docutils literal"><span class="pre">sphinx</span></code>)</li>
+<li>IPython notebook (format <code class="docutils literal"><span class="pre">ipynb</span></code>)</li>
+<li>MediaWiki (format <code class="docutils literal"><span class="pre">mwiki</span></code>)</li>
+<li>(Pandoc extended) Markdown (format <code class="docutils literal"><span class="pre">pandoc</span></code>)</li>
+<li>Googlecode wiki (format <code class="docutils literal"><span class="pre">gwiki</span></code>)</li>
+<li>Creoloe wiki (format <code class="docutils literal"><span class="pre">cwiki</span></code>)</li>
+<li>Epydoc (format <code class="docutils literal"><span class="pre">epydoc</span></code>)</li>
+<li>StructuredText (format <code class="docutils literal"><span class="pre">st</span></code>)</li>
 </ul>
 </div></blockquote>
 <p>For documents with much code and mathematics, the best (and most supported)
-formats are <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, and <tt class="docutils literal"><span class="pre">html</span></tt>; and to a slightly
-less extent <tt class="docutils literal"><span class="pre">mwiki</span></tt> and <tt class="docutils literal"><span class="pre">pandoc</span></tt>. The HTML format supports blog posts on
+formats are <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, and <code class="docutils literal"><span class="pre">html</span></code>; and to a slightly
+less extent <code class="docutils literal"><span class="pre">mwiki</span></code> and <code class="docutils literal"><span class="pre">pandoc</span></code>. The HTML format supports blog posts on
 Google and Wordpress.</p>
 </div>
 <div class="section" id="emacs-syntax-support">
@@ -124,7 +127,7 @@ Google and Wordpress.</p>
 <p>The file <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el">.doconce-mode.el</a>
 in the DocOnce source distribution gives a &#8220;DocOnce Editing Mode&#8221; in
 Emacs. Store the raw version of the file in the home directory and add
-<tt class="docutils literal"><span class="pre">(load-file</span> <span class="pre">&quot;~/.doconce-mode.el&quot;)</span></tt> to the <tt class="docutils literal"><span class="pre">.emacs</span></tt> file.</p>
+<code class="docutils literal"><span class="pre">(load-file</span> <span class="pre">&quot;~/.doconce-mode.el&quot;)</span></code> to the <code class="docutils literal"><span class="pre">.emacs</span></code> file.</p>
 <p>Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:</p>
 <table border="1" class="docutils">
@@ -157,16 +160,16 @@ provides a lot of shortcuts for setting up many elements in a document:</p>
 <td>heading for paragraph</td>
 </tr>
 <tr class="row-even"><td>Ctrl+c me</td>
-<td>math environment: <tt class="docutils literal"><span class="pre">!bt</span></tt> equation <tt class="docutils literal"><span class="pre">!et</span></tt></td>
+<td>math environment: <code class="docutils literal"><span class="pre">!bt</span></code> equation <code class="docutils literal"><span class="pre">!et</span></code></td>
 </tr>
 <tr class="row-odd"><td>Ctrl+c ma</td>
-<td>math environment: <tt class="docutils literal"><span class="pre">!bt</span></tt> align <tt class="docutils literal"><span class="pre">!et</span></tt></td>
+<td>math environment: <code class="docutils literal"><span class="pre">!bt</span></code> align <code class="docutils literal"><span class="pre">!et</span></code></td>
 </tr>
 <tr class="row-even"><td>Ctrl+c ce</td>
-<td>code environment: <tt class="docutils literal"><span class="pre">!bc</span></tt> code <tt class="docutils literal"><span class="pre">!ec</span></tt></td>
+<td>code environment: <code class="docutils literal"><span class="pre">!bc</span></code> code <code class="docutils literal"><span class="pre">!ec</span></code></td>
 </tr>
 <tr class="row-odd"><td>Ctrl+c cf</td>
-<td>code from file: <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt></td>
+<td>code from file: <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code></td>
 </tr>
 <tr class="row-even"><td>Ctrl+c table2</td>
 <td>table with 2 columns</td>
@@ -208,16 +211,16 @@ The author syntax is</p>
 </pre></div>
 </div>
 <p>where the email is optional, the &#8220;at&#8221; keyword is required if one or
-more institutions are to be specified, and the <tt class="docutils literal"><span class="pre">&amp;</span></tt> keyword
-separates the institutions (the keyword <tt class="docutils literal"><span class="pre">and</span></tt> works too).
+more institutions are to be specified, and the <code class="docutils literal"><span class="pre">&amp;</span></code> keyword
+separates the institutions (the keyword <code class="docutils literal"><span class="pre">and</span></code> works too).
 Each author specification must appear
 on a single line.
 When more than one author belong to the
 same institution, make sure that the institution is specified in an identical
 way for each author.</p>
-<p>The date can be set as any text different from <tt class="docutils literal"><span class="pre">today</span></tt> if not the
-current date is wanted, e.g., <tt class="docutils literal"><span class="pre">Feb</span> <span class="pre">22,</span> <span class="pre">2016</span></tt>.</p>
-<p>The table of contents is removed by writing <tt class="docutils literal"><span class="pre">TOC:</span> <span class="pre">off</span></tt>.</p>
+<p>The date can be set as any text different from <code class="docutils literal"><span class="pre">today</span></code> if not the
+current date is wanted, e.g., <code class="docutils literal"><span class="pre">Feb</span> <span class="pre">22,</span> <span class="pre">2016</span></code>.</p>
+<p>The table of contents is removed by writing <code class="docutils literal"><span class="pre">TOC:</span> <span class="pre">off</span></code>.</p>
 <span class="target" id="quick-sections"></span></div>
 <div class="section" id="section-types">
 <h2>Section Types<a class="headerlink" href="#section-types" title="Permalink to this headline">¶</a></h2>
@@ -233,50 +236,50 @@ current date is wanted, e.g., <tt class="docutils literal"><span class="pre">Feb
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>chapter</td>
-<td><tt class="docutils literal"><span class="pre">=========</span> <span class="pre">Heading</span> <span class="pre">========</span></tt> (9 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=========</span> <span class="pre">Heading</span> <span class="pre">========</span></code> (9 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-odd"><td>section</td>
-<td><tt class="docutils literal"><span class="pre">=======</span> <span class="pre">Heading</span> <span class="pre">=======</span></tt>    (7 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=======</span> <span class="pre">Heading</span> <span class="pre">=======</span></code>    (7 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-even"><td>subsection</td>
-<td><tt class="docutils literal"><span class="pre">=====</span> <span class="pre">Heading</span> <span class="pre">=====</span></tt>        (5 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=====</span> <span class="pre">Heading</span> <span class="pre">=====</span></code>        (5 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-odd"><td>subsubsection</td>
-<td><tt class="docutils literal"><span class="pre">===</span> <span class="pre">Heading</span> <span class="pre">===</span></tt>            (3 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">===</span> <span class="pre">Heading</span> <span class="pre">===</span></code>            (3 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-even"><td>paragraph</td>
-<td><tt class="docutils literal"><span class="pre">__Heading.__</span></tt>               (2 <tt class="docutils literal"><span class="pre">_</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">__Heading.__</span></code>               (2 <code class="docutils literal"><span class="pre">_</span></code>)</td>
 </tr>
 <tr class="row-odd"><td>abstract</td>
-<td><tt class="docutils literal"><span class="pre">__Abstract.__</span></tt> Running text...</td>
+<td><code class="docutils literal"><span class="pre">__Abstract.__</span></code> Running text...</td>
 </tr>
 <tr class="row-even"><td>appendix</td>
-<td><tt class="docutils literal"><span class="pre">=======</span> <span class="pre">Appendix:</span> <span class="pre">heading</span> <span class="pre">=======</span></tt> (7 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=======</span> <span class="pre">Appendix:</span> <span class="pre">heading</span> <span class="pre">=======</span></code> (7 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-odd"><td>appendix</td>
-<td><tt class="docutils literal"><span class="pre">=====</span> <span class="pre">Appendix:</span> <span class="pre">heading</span> <span class="pre">=====</span></tt> (5 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=====</span> <span class="pre">Appendix:</span> <span class="pre">heading</span> <span class="pre">=====</span></code> (5 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-even"><td>exercise</td>
-<td><tt class="docutils literal"><span class="pre">=======</span> <span class="pre">Exercise:</span> <span class="pre">heading</span> <span class="pre">=======</span></tt> (7 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=======</span> <span class="pre">Exercise:</span> <span class="pre">heading</span> <span class="pre">=======</span></code> (7 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 <tr class="row-odd"><td>exercise</td>
-<td><tt class="docutils literal"><span class="pre">=====</span> <span class="pre">Exercise:</span> <span class="pre">heading</span> <span class="pre">=====</span></tt> (5 <tt class="docutils literal"><span class="pre">=</span></tt>)</td>
+<td><code class="docutils literal"><span class="pre">=====</span> <span class="pre">Exercise:</span> <span class="pre">heading</span> <span class="pre">=====</span></code> (5 <code class="docutils literal"><span class="pre">=</span></code>)</td>
 </tr>
 </tbody>
 </table>
-<p>Note that abstracts are recognized by starting with <tt class="docutils literal"><span class="pre">__Abstract.__</span></tt> or
-<tt class="docutils literal"><span class="pre">__Summary.__</span></tt> at the beginning of a line and ending with three or
-more <tt class="docutils literal"><span class="pre">=</span></tt> signs of the next heading.</p>
-<p>The <tt class="docutils literal"><span class="pre">Exercise:</span></tt> keyword kan be substituted by <tt class="docutils literal"><span class="pre">Problem:</span></tt> or <tt class="docutils literal"><span class="pre">Project:</span></tt>.
+<p>Note that abstracts are recognized by starting with <code class="docutils literal"><span class="pre">__Abstract.__</span></code> or
+<code class="docutils literal"><span class="pre">__Summary.__</span></code> at the beginning of a line and ending with three or
+more <code class="docutils literal"><span class="pre">=</span></code> signs of the next heading.</p>
+<p>The <code class="docutils literal"><span class="pre">Exercise:</span></code> keyword kan be substituted by <code class="docutils literal"><span class="pre">Problem:</span></code> or <code class="docutils literal"><span class="pre">Project:</span></code>.
 A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.</p>
 </div>
 <div class="section" id="inline-formatting">
 <h2>Inline Formatting<a class="headerlink" href="#inline-formatting" title="Permalink to this headline">¶</a></h2>
-<p>Words surrounded by <tt class="docutils literal"><span class="pre">*</span></tt> are emphasized: <tt class="docutils literal"><span class="pre">*emphasized</span> <span class="pre">words*</span></tt> becomes
+<p>Words surrounded by <code class="docutils literal"><span class="pre">*</span></code> are emphasized: <code class="docutils literal"><span class="pre">*emphasized</span> <span class="pre">words*</span></code> becomes
 <em>emphasized words</em>. Similarly, an underscore surrounds words that
-appear in boldface: <tt class="docutils literal"><span class="pre">_boldface_</span></tt> becomes <strong>boldface</strong>. Colored words
+appear in boldface: <code class="docutils literal"><span class="pre">_boldface_</span></code> becomes <strong>boldface</strong>. Colored words
 are also possible: the text</p>
 <div class="highlight-text"><div class="highlight"><pre>`color{red}{two red words}`
 </pre></div>
@@ -287,7 +290,7 @@ are also possible: the text</p>
 <div class="highlight-text"><div class="highlight"><pre>This is a sentence with ``words to be quoted&#39;&#39;.
 </pre></div>
 </div>
-<p>A forced linebreak is specified by <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> at the point where the
+<p>A forced linebreak is specified by <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> at the point where the
 linebreak in the output is wanted.</p>
 <p>Footnotes use a label in the text with the footnote text separate,
 preferably after the paragraph where the footnote appears:</p>
@@ -310,8 +313,8 @@ Here comes a new paragraph...
 <div class="highlight-text"><div class="highlight"><pre>---------
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, and <tt class="docutils literal"><span class="pre">html</span></tt> formats support em-dash,
-indicated by three hyphens: <tt class="docutils literal"><span class="pre">---</span></tt>. Here is an example:</p>
+<p>The <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, and <code class="docutils literal"><span class="pre">html</span></code> formats support em-dash,
+indicated by three hyphens: <code class="docutils literal"><span class="pre">---</span></code>. Here is an example:</p>
 <div class="highlight-text"><div class="highlight"><pre>The em-dash is used - without spaces - as alternative to hyphen with
 space around in sentences---this way, or in quotes:
 *Premature optimization is the root of all evil.*--- Donald Knuth.
@@ -322,25 +325,25 @@ space around in sentences---this way, or in quotes:
 space around in sentences&#8212;this way, or in quotes:
 <em>Premature optimization is the root of all evil.</em>&#8212; Donald Knuth.</p>
 <p>An ampersand, as in Guns &amp; Roses or Texas A&amp;M, is written as a
-plain <tt class="docutils literal"><span class="pre">&amp;</span></tt> <em>with space(s) on both sides</em>. Single upper case letters on each
-side of <tt class="docutils literal"><span class="pre">&amp;</span></tt>, as in <tt class="docutils literal"><span class="pre">Texas</span> <span class="pre">A</span> <span class="pre">&amp;</span> <span class="pre">M</span></tt>, remove the spaces and result in
-Texas A&amp;M, while words on both sides of <tt class="docutils literal"><span class="pre">&amp;</span></tt>, as in <tt class="docutils literal"><span class="pre">Guns</span> <span class="pre">&amp;</span> <span class="pre">Roses</span></tt>,
+plain <code class="docutils literal"><span class="pre">&amp;</span></code> <em>with space(s) on both sides</em>. Single upper case letters on each
+side of <code class="docutils literal"><span class="pre">&amp;</span></code>, as in <code class="docutils literal"><span class="pre">Texas</span> <span class="pre">A</span> <span class="pre">&amp;</span> <span class="pre">M</span></code>, remove the spaces and result in
+Texas A&amp;M, while words on both sides of <code class="docutils literal"><span class="pre">&amp;</span></code>, as in <code class="docutils literal"><span class="pre">Guns</span> <span class="pre">&amp;</span> <span class="pre">Roses</span></code>,
 preserve the spaces: Guns &amp; Roses. Failing to have spaces before and
-after <tt class="docutils literal"><span class="pre">&amp;</span></tt> will result in wrong typesetting of the ampersand in the <tt class="docutils literal"><span class="pre">html</span></tt>,
-<tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> formats.</p>
+after <code class="docutils literal"><span class="pre">&amp;</span></code> will result in wrong typesetting of the ampersand in the <code class="docutils literal"><span class="pre">html</span></code>,
+<code class="docutils literal"><span class="pre">latex</span></code>, and <code class="docutils literal"><span class="pre">pdflatex</span></code> formats.</p>
 <p>Emojis, as defined in <a class="reference external" href="http://www.emoji-cheat-sheet.com">http://www.emoji-cheat-sheet.com</a>, can be
-inserted in the text, as (e.g.) <tt class="docutils literal"><span class="pre">:dizzy_face:</span></tt> with blank or newline
-before or after. Only the <tt class="docutils literal"><span class="pre">pdflatex</span></tt> and <tt class="docutils literal"><span class="pre">html</span></tt> output formats translate
+inserted in the text, as (e.g.) <code class="docutils literal"><span class="pre">:dizzy_face:</span></code> with blank or newline
+before or after. Only the <code class="docutils literal"><span class="pre">pdflatex</span></code> and <code class="docutils literal"><span class="pre">html</span></code> output formats translate
 emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
-<tt class="docutils literal"><span class="pre">--no_emoji</span></tt> removes all emojis from the output document.</p>
+<code class="docutils literal"><span class="pre">--no_emoji</span></code> removes all emojis from the output document.</p>
 </div>
 <div class="section" id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
 <p>There are three types of lists: <em>bullet lists</em>, where each item starts
-with <tt class="docutils literal"><span class="pre">*</span></tt>, <em>enumeration lists</em>, where each item starts with <tt class="docutils literal"><span class="pre">o</span></tt> and gets
+with <code class="docutils literal"><span class="pre">*</span></code>, <em>enumeration lists</em>, where each item starts with <code class="docutils literal"><span class="pre">o</span></code> and gets
 consecutive numbers,
-and <em>description</em> lists, where each item starts with <tt class="docutils literal"><span class="pre">-</span></tt> followed
+and <em>description</em> lists, where each item starts with <code class="docutils literal"><span class="pre">-</span></code> followed
 by a keyword and a colon.</p>
 <div class="highlight-text"><div class="highlight"><pre>Here is a bullet list:
 
@@ -435,17 +438,17 @@ Indented lines may give strange output in some formats.</p>
 </div>
 <div class="section" id="comment-lines">
 <h2>Comment lines<a class="headerlink" href="#comment-lines" title="Permalink to this headline">¶</a></h2>
-<p>Lines starting with <tt class="docutils literal"><span class="pre">#</span></tt> are treated as comments in the document and
+<p>Lines starting with <code class="docutils literal"><span class="pre">#</span></code> are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before LaTeX math
-blocks, verbatim code blocks, or lists if the formats <tt class="docutils literal"><span class="pre">rst</span></tt> and
-<tt class="docutils literal"><span class="pre">sphinx</span></tt> are desired.</p>
-<p>Comment lines starting with <tt class="docutils literal"><span class="pre">##</span></tt> are not propagated to the output
+blocks, verbatim code blocks, or lists if the formats <code class="docutils literal"><span class="pre">rst</span></code> and
+<code class="docutils literal"><span class="pre">sphinx</span></code> are desired.</p>
+<p>Comment lines starting with <code class="docutils literal"><span class="pre">##</span></code> are not propagated to the output
 document and can be used for comments that are only of interest in
 the DocOnce file.</p>
 <p>Large portions of text can be left out using Preprocess. Just place
-<tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">EXTRA</span></tt> and <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></tt> around the text. The command line
-option <tt class="docutils literal"><span class="pre">-DEXTRA</span></tt> will bring the text alive again.</p>
+<code class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">EXTRA</span></code> and <code class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></code> around the text. The command line
+option <code class="docutils literal"><span class="pre">-DEXTRA</span></code> will bring the text alive again.</p>
 <p>When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.</p>
@@ -458,9 +461,9 @@ are enabled by the syntax</p>
 <div class="highlight-text"><div class="highlight"><pre>[name: running text]
 </pre></div>
 </div>
-<p>where <tt class="docutils literal"><span class="pre">name</span></tt> is the name or ID of an author or reader making the comment,
-and <tt class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></tt> is the comment. The name can contain upper and lower
-case characters, digits, single quote, <tt class="docutils literal"><span class="pre">+</span></tt> and <tt class="docutils literal"><span class="pre">-</span></tt>, as well
+<p>where <code class="docutils literal"><span class="pre">name</span></code> is the name or ID of an author or reader making the comment,
+and <code class="docutils literal"><span class="pre">running</span> <span class="pre">text</span></code> is the comment. The name can contain upper and lower
+case characters, digits, single quote, <code class="docutils literal"><span class="pre">+</span></code> and <code class="docutils literal"><span class="pre">-</span></code>, as well
 as space. Here goes an example.</p>
 <div class="highlight-text"><div class="highlight"><pre>Some running text. [hpl: There must be a space after the colon,
 but the running text can occupy multiple lines.]
@@ -471,9 +474,9 @@ but the running text can occupy multiple lines.]
 <div>Some running text. [<strong>hpl 1</strong>: There must be a space after the colon, but the running text can occupy multiple lines.]</div></blockquote>
 <p>The inline comments have simple typesetting in most formats, typically
 boldface name, a comment number, with everything surrounded by
-parenthesis.  However, with LaTeX output and the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt>
-option to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>, colorful margin or inline boxes (using the
-<tt class="docutils literal"><span class="pre">todonotes</span></tt> package) make it very easy to spot the comments.</p>
+parenthesis.  However, with LaTeX output and the <code class="docutils literal"><span class="pre">--latex_todonotes</span></code>
+option to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>, colorful margin or inline boxes (using the
+<code class="docutils literal"><span class="pre">todonotes</span></code> package) make it very easy to spot the comments.</p>
 <p>Running</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce format html mydoc.do.txt --skip_inline_comments
 </pre></div>
@@ -531,28 +534,28 @@ important for the following discussion. (<strong>end add</strong>)</div></blockq
 <div class="highlight-text"><div class="highlight"><pre>Some sentence with `words in verbatim style`.
 </pre></div>
 </div>
-<p>resulting in Some sentence with <tt class="docutils literal"><span class="pre">words</span> <span class="pre">in</span> <span class="pre">verbatim</span> <span class="pre">style</span></tt>.</p>
+<p>resulting in Some sentence with <code class="docutils literal"><span class="pre">words</span> <span class="pre">in</span> <span class="pre">verbatim</span> <span class="pre">style</span></code>.</p>
 <p>Multi-line blocks of verbatim text, typically computer code, is typeset
-in between <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">xxx</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> directives, which must appear on the
-beginning of the line. A specification <tt class="docutils literal"><span class="pre">xxx</span></tt> indicates what verbatim
-formatting style that is to be used. Typical values for <tt class="docutils literal"><span class="pre">xxx</span></tt> are
-nothing, <tt class="docutils literal"><span class="pre">cod</span></tt> for a code snippet, <tt class="docutils literal"><span class="pre">pro</span></tt> for a complete program,
-<tt class="docutils literal"><span class="pre">sys</span></tt> for a terminal session, <tt class="docutils literal"><span class="pre">dat</span></tt> for a data file (or output from a
+in between <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">xxx</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code> directives, which must appear on the
+beginning of the line. A specification <code class="docutils literal"><span class="pre">xxx</span></code> indicates what verbatim
+formatting style that is to be used. Typical values for <code class="docutils literal"><span class="pre">xxx</span></code> are
+nothing, <code class="docutils literal"><span class="pre">cod</span></code> for a code snippet, <code class="docutils literal"><span class="pre">pro</span></code> for a complete program,
+<code class="docutils literal"><span class="pre">sys</span></code> for a terminal session, <code class="docutils literal"><span class="pre">dat</span></code> for a data file (or output from a
 program),
-<tt class="docutils literal"><span class="pre">Xpro</span></tt> or <tt class="docutils literal"><span class="pre">Xcod</span></tt> for a program or code snipped, respectively,
-in programming <tt class="docutils literal"><span class="pre">X</span></tt>, where <tt class="docutils literal"><span class="pre">X</span></tt> may be <tt class="docutils literal"><span class="pre">py</span></tt> for Python,
-<tt class="docutils literal"><span class="pre">cy</span></tt> for Cython, <tt class="docutils literal"><span class="pre">sh</span></tt> for Bash or other Unix shells,
-<tt class="docutils literal"><span class="pre">f</span></tt> for Fortran, <tt class="docutils literal"><span class="pre">c</span></tt> for C, <tt class="docutils literal"><span class="pre">cpp</span></tt> for C++, <tt class="docutils literal"><span class="pre">m</span></tt> for MATLAB,
-<tt class="docutils literal"><span class="pre">pl</span></tt> for Perl. For output in <tt class="docutils literal"><span class="pre">latex</span></tt> one can let <tt class="docutils literal"><span class="pre">xxx</span></tt> reflect any
-defined verbatim environment in the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> configuration file
-(<tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt>). For <tt class="docutils literal"><span class="pre">sphinx</span></tt> output one can insert a comment</p>
+<code class="docutils literal"><span class="pre">Xpro</span></code> or <code class="docutils literal"><span class="pre">Xcod</span></code> for a program or code snipped, respectively,
+in programming <code class="docutils literal"><span class="pre">X</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> may be <code class="docutils literal"><span class="pre">py</span></code> for Python,
+<code class="docutils literal"><span class="pre">cy</span></code> for Cython, <code class="docutils literal"><span class="pre">sh</span></code> for Bash or other Unix shells,
+<code class="docutils literal"><span class="pre">f</span></code> for Fortran, <code class="docutils literal"><span class="pre">c</span></code> for C, <code class="docutils literal"><span class="pre">cpp</span></code> for C++, <code class="docutils literal"><span class="pre">m</span></code> for MATLAB,
+<code class="docutils literal"><span class="pre">pl</span></code> for Perl. For output in <code class="docutils literal"><span class="pre">latex</span></code> one can let <code class="docutils literal"><span class="pre">xxx</span></code> reflect any
+defined verbatim environment in the <code class="docutils literal"><span class="pre">ptex2tex</span></code> configuration file
+(<code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code>). For <code class="docutils literal"><span class="pre">sphinx</span></code> output one can insert a comment</p>
 <div class="highlight-text"><div class="highlight"><pre># sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 </pre></div>
 </div>
-<p>that maps environments (<tt class="docutils literal"><span class="pre">xxx</span></tt>) onto valid language types for
-Pygments (which is what <tt class="docutils literal"><span class="pre">sphinx</span></tt> applies to typeset computer code).</p>
-<p>The <tt class="docutils literal"><span class="pre">xxx</span></tt> specifier has only effect for <tt class="docutils literal"><span class="pre">latex</span></tt> and
-<tt class="docutils literal"><span class="pre">sphinx</span></tt> output. All other formats use a fixed monospace font for all
+<p>that maps environments (<code class="docutils literal"><span class="pre">xxx</span></code>) onto valid language types for
+Pygments (which is what <code class="docutils literal"><span class="pre">sphinx</span></code> applies to typeset computer code).</p>
+<p>The <code class="docutils literal"><span class="pre">xxx</span></code> specifier has only effect for <code class="docutils literal"><span class="pre">latex</span></code> and
+<code class="docutils literal"><span class="pre">sphinx</span></code> output. All other formats use a fixed monospace font for all
 kinds of verbatim output.</p>
 <p>Here is an example of computer code (see the source of this document
 for exact syntax):</p>
@@ -569,38 +572,38 @@ for exact syntax):</p>
 @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> identifier must appear at the very beginning of the line.
-The first line copies the complete file <tt class="docutils literal"><span class="pre">doconce_program.sh</span></tt>.
+<p>The <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> identifier must appear at the very beginning of the line.
+The first line copies the complete file <code class="docutils literal"><span class="pre">doconce_program.sh</span></code>.
 The second line copies from the first line matching the <em>regular
-expression</em> <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></tt> up to, but not including, the line
-matching the <em>regular expression</em> <tt class="docutils literal"><span class="pre">^doconce</span> <span class="pre">split_rst</span></tt>.
+expression</em> <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></code> up to, but not including, the line
+matching the <em>regular expression</em> <code class="docutils literal"><span class="pre">^doconce</span> <span class="pre">split_rst</span></code>.
 The third line behaves as the second, but the line matching
 the first regular expression is not copied (this construction often
 used for copying text between begin-end comment pair in the file).</p>
-<p>The copied lines from file are in this example put inside <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shpro</span></tt>
-and <tt class="docutils literal"><span class="pre">!ec</span></tt> directives, if a complete file is copied, while the
-directives become <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> when a code snippet is copied
-from file. In general, for a filename extension <tt class="docutils literal"><span class="pre">.X</span></tt>, the environment
-becomes <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">Xpro</span></tt> or <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">Xcod</span></tt> for a complete program or snippet,
-respectively. The enivorments (<tt class="docutils literal"><span class="pre">Xcod</span></tt> and <tt class="docutils literal"><span class="pre">Xpro</span></tt>) are only active for
-<tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, html`, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> outout.  The fourth line
-above specifies the code environment explicitly (<tt class="docutils literal"><span class="pre">envir=shpro</span></tt>) such
-that it indicates a complete shell program (<tt class="docutils literal"><span class="pre">shpro</span></tt>) even if we copy a
-part of the file (here from <tt class="docutils literal"><span class="pre">name=</span></tt> until the end of the file).
-Copying a part will by default lead to <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></tt>, which indicates a
+<p>The copied lines from file are in this example put inside <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">shpro</span></code>
+and <code class="docutils literal"><span class="pre">!ec</span></code> directives, if a complete file is copied, while the
+directives become <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code> when a code snippet is copied
+from file. In general, for a filename extension <code class="docutils literal"><span class="pre">.X</span></code>, the environment
+becomes <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">Xpro</span></code> or <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">Xcod</span></code> for a complete program or snippet,
+respectively. The enivorments (<code class="docutils literal"><span class="pre">Xcod</span></code> and <code class="docutils literal"><span class="pre">Xpro</span></code>) are only active for
+<code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, html`, and <code class="docutils literal"><span class="pre">sphinx</span></code> outout.  The fourth line
+above specifies the code environment explicitly (<code class="docutils literal"><span class="pre">envir=shpro</span></code>) such
+that it indicates a complete shell program (<code class="docutils literal"><span class="pre">shpro</span></code>) even if we copy a
+part of the file (here from <code class="docutils literal"><span class="pre">name=</span></code> until the end of the file).
+Copying a part will by default lead to <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></code>, which indicates a
 code snippet that normally needs more code to run properly.</p>
-<p>The <tt class="docutils literal"><span class="pre">--code_prefix=text</span></tt> option adds a path <tt class="docutils literal"><span class="pre">text</span></tt> to the filename specified
-in the <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> command. For example</p>
+<p>The <code class="docutils literal"><span class="pre">--code_prefix=text</span></code> option adds a path <code class="docutils literal"><span class="pre">text</span></code> to the filename specified
+in the <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> command. For example</p>
 <div class="highlight-text"><div class="highlight"><pre>@@@CODE src/myfile.py
 </pre></div>
 </div>
-<p>and <tt class="docutils literal"><span class="pre">--code_prefix=http://some.place.net</span></tt>, the file</p>
+<p>and <code class="docutils literal"><span class="pre">--code_prefix=http://some.place.net</span></code>, the file</p>
 <div class="highlight-text"><div class="highlight"><pre>http://some.place.net/src/myfile.py
 </pre></div>
 </div>
 <p>will be included. If source files have a header with author, email, etc.,
-one can remove this header by the option <tt class="docutils literal"><span class="pre">'--code_skip_until=#</span> <span class="pre">---</span></tt>.
-The lines up to and including (the first) <tt class="docutils literal"><span class="pre">#</span> <span class="pre">---</span></tt> will then be excluded.</p>
+one can remove this header by the option <code class="docutils literal"><span class="pre">'--code_skip_until=#</span> <span class="pre">---</span></code>.
+The lines up to and including (the first) <code class="docutils literal"><span class="pre">#</span> <span class="pre">---</span></code> will then be excluded.</p>
 <p>Important warnings:</p>
 <blockquote>
 <div><ul class="simple">
@@ -616,13 +619,13 @@ paragraphs with headings.</li>
 <div class="section" id="latex-mathematics">
 <h2>LaTeX Mathematics<a class="headerlink" href="#latex-mathematics" title="Permalink to this headline">¶</a></h2>
 <p>DocOnce supports inline mathematics and blocks of mathematics, using
-standard LaTeX syntax. The output formats <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">latex</span></tt>,
-pdflatex`, <tt class="docutils literal"><span class="pre">pandoc</span></tt>, and <tt class="docutils literal"><span class="pre">mwiki</span></tt> work with this syntax while all other
+standard LaTeX syntax. The output formats <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">latex</span></code>,
+pdflatex`, <code class="docutils literal"><span class="pre">pandoc</span></code>, and <code class="docutils literal"><span class="pre">mwiki</span></code> work with this syntax while all other
 formats will just display the raw LaTeX code.</p>
 <p>Inline expressions are written in the standard
 LaTeX way with the mathematics surrounded by dollar signs, as in
-<span class="math">\(Ax=b\)</span>. To help increase readability in other formats than <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
-<tt class="docutils literal"><span class="pre">latex</span></tt>, and <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, inline mathematics may have a more human
+<span class="math">\(Ax=b\)</span>. To help increase readability in other formats than <code class="docutils literal"><span class="pre">sphinx</span></code>,
+<code class="docutils literal"><span class="pre">latex</span></code>, and <code class="docutils literal"><span class="pre">pdflatex</span></code>, inline mathematics may have a more human
 readable companion expression. The syntax is like</p>
 <div class="highlight-text"><div class="highlight"><pre>$\sin(\norm{\bf u})$|$sin(||u||)$
 </pre></div>
@@ -631,9 +634,9 @@ readable companion expression. The syntax is like</p>
 symbol) and the more readable expression appears to the right. Both
 expressions are surrounded by dollar signs.</p>
 <p>Blocks of LaTeX mathematics are written within
-<tt class="docutils literal"><span class="pre">!bt</span></tt>
+<code class="docutils literal"><span class="pre">!bt</span></code>
 and
-<tt class="docutils literal"><span class="pre">!et</span></tt> (begin/end TeX) directives starting on the beginning of a line:</p>
+<code class="docutils literal"><span class="pre">!et</span></code> (begin/end TeX) directives starting on the beginning of a line:</p>
 <div class="highlight-text"><div class="highlight"><pre>!bt
 \begin{align*}
 \nabla\cdot \pmb{u} &amp;= 0,\\
@@ -655,56 +658,56 @@ and
 <p>which results in</p>
 <div class="math">
 \[\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]</div>
-<p>Any LaTeX syntax is accepted, but if output in the <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
-<tt class="docutils literal"><span class="pre">mwiki</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, or <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats
+<p>Any LaTeX syntax is accepted, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>,
+<code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or <code class="docutils literal"><span class="pre">ipynb</span></code> formats
 is also important, one should follow these rules:</p>
 <blockquote>
 <div><ul class="simple">
-<li>AMS LaTeX mathematics is supported, also for the <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
-and <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats.</li>
-<li>Only five equation environments can be used: <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></tt>,
-<tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, and <tt class="docutils literal"><span class="pre">align</span></tt>.</li>
+<li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
+and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
+<li>Only five equation environments can be used: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
+<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.</li>
 <li>Newcommands in mathematical formulas are allowed, but not in
 the running text. Newcommands must be defined in files with names
-<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>.</li>
-<li>MediaWiki (<tt class="docutils literal"><span class="pre">mwiki</span></tt>) does not support references to equations.</li>
+<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>.</li>
+<li>MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
 </ul>
 </div></blockquote>
-<p>(DocOnce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt> and other formats such that
-labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)</p>
+<p>(DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code> and other formats such that
+labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (<tt class="docutils literal"><span class="pre">subfigure</span></tt> package), margin notes, multi-page
+plots in the same figure (<code class="docutils literal"><span class="pre">subfigure</span></code> package), margin notes, multi-page
 tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as <tt class="docutils literal"><span class="pre">sphinx</span></tt> and <tt class="docutils literal"><span class="pre">html</span></tt>, make it necessary for DocOnce
+Other output formats, such as <code class="docutils literal"><span class="pre">sphinx</span></code> and <code class="docutils literal"><span class="pre">html</span></code>, make it necessary for DocOnce
 to only utilze very standard LaTeX. Correspondingly, the writer
 must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>),
+one plot per figure (combine them into one using <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code>),
 example environments (use subsection or subsubsection instead),
 algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
 manual), newcommands outside mathematics (use Mako variables or functions
 instead), code listings in figures (use just inline blocks), to mention
 some.</p>
 <p class="last">However, one can use preprocessor if-tests on
-the format (typically <tt class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></tt>) to
-include special code for <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> output and more
+the format (typically <code class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></code>) to
+include special code for <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> output and more
 straightforward typesetting for other formats. In this way, one can
 also allow advanced LaTeX features and fine tuning of the resulting
 PDF document. More tuning can be done by automatic editing of the
-<tt class="docutils literal"><span class="pre">.tex</span></tt> produced by DocOnce.</p>
+<code class="docutils literal"><span class="pre">.tex</span></code> produced by DocOnce.</p>
 </div>
 <p><strong>LaTeX Newcommands.</strong>
-The author can define <tt class="docutils literal"><span class="pre">newcommand</span></tt> statements in files with names
-<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>. Such commands should only be used for mathematics
+The author can define <code class="docutils literal"><span class="pre">newcommand</span></code> statements in files with names
+<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Such commands should only be used for mathematics
 (other LaTeX constructions are only understood by LaTeX itself).
-The convention is that <tt class="docutils literal"><span class="pre">newcommands_keep.tex</span></tt>
+The convention is that <code class="docutils literal"><span class="pre">newcommands_keep.tex</span></code>
 contains the newcommands that are kept in the document, while
-those in <tt class="docutils literal"><span class="pre">newcommands_replace.tex</span></tt> will be replaced by their full
+those in <code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> will be replaced by their full
 LaTeX code. This conventions helps make readable documents in formats
-without LaTeX support. For <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
-<tt class="docutils literal"><span class="pre">mwiki</span></tt>, <tt class="docutils literal"><span class="pre">ipynb</span></tt>, and <tt class="docutils literal"><span class="pre">pandoc</span></tt>, the mathematics in newcommands is
-rendered nicely anyway. If you desire <tt class="docutils literal"><span class="pre">newcommand</span></tt> outside LaTeX
+without LaTeX support. For <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>,
+<code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and <code class="docutils literal"><span class="pre">pandoc</span></code>, the mathematics in newcommands is
+rendered nicely anyway. If you desire <code class="docutils literal"><span class="pre">newcommand</span></code> outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).</p>
 </div>
@@ -736,8 +739,8 @@ MOVIE: [relative/path/to/moviefile, width=500] Here goes the caption which must 
 <blockquote>
 <div><ol class="arabic simple">
 <li>A mandatory comma after the figure/movie filename,</li>
-<li>no comments between <tt class="docutils literal"><span class="pre">width</span></tt>, <tt class="docutils literal"><span class="pre">height</span></tt>, and <tt class="docutils literal"><span class="pre">frac</span></tt> and no spaces
-around the <tt class="docutils literal"><span class="pre">=</span></tt> characters,</li>
+<li>no comments between <code class="docutils literal"><span class="pre">width</span></code>, <code class="docutils literal"><span class="pre">height</span></code>, and <code class="docutils literal"><span class="pre">frac</span></code> and no spaces
+around the <code class="docutils literal"><span class="pre">=</span></code> characters,</li>
 <li>all of the command must appear on a single line,</li>
 <li>there must be a blank line after the command.</li>
 </ol>
@@ -747,10 +750,10 @@ the version of the file with the most appropriate extension for the chosen
 output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.</p>
 <p>The caption is optional. If omitted, the figure will be inlined (meaning
-no use of any figure environment in HTML or LaTeX formats). The <tt class="docutils literal"><span class="pre">width</span></tt>
-and <tt class="docutils literal"><span class="pre">height</span></tt> parameters affect HTML formats (<tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>),
-while <tt class="docutils literal"><span class="pre">frac</span></tt> is the width of the image as a fraction of the total text
-width in the <tt class="docutils literal"><span class="pre">latex</span></tt> and <tt class="docutils literal"><span class="pre">pdflatex</span></tt> formats.</p>
+no use of any figure environment in HTML or LaTeX formats). The <code class="docutils literal"><span class="pre">width</span></code>
+and <code class="docutils literal"><span class="pre">height</span></code> parameters affect HTML formats (<code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>),
+while <code class="docutils literal"><span class="pre">frac</span></code> is the width of the image as a fraction of the total text
+width in the <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> formats.</p>
 <p>Movie files can either be a video or a wildcard expression for a
 series of frames. In the latter case, a simple device in an HTML page
 will display the individual frame files as a movie.</p>
@@ -758,9 +761,9 @@ will display the individual frame files as a movie.</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce combine_images image1 image2 ... output_image
 </pre></div>
 </div>
-<p>This command applies <tt class="docutils literal"><span class="pre">montage</span></tt> or PDF-based tools to combine the images
+<p>This command applies <code class="docutils literal"><span class="pre">montage</span></code> or PDF-based tools to combine the images
 to get the highest quality.</p>
-<p>YouTube and Vimeo movies will be embedded in <tt class="docutils literal"><span class="pre">html</span></tt> and <tt class="docutils literal"><span class="pre">sphinx</span></tt> documents
+<p>YouTube and Vimeo movies will be embedded in <code class="docutils literal"><span class="pre">html</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code> documents
 and otherwise be represented by a link. The syntax is</p>
 <div class="highlight-text"><div class="highlight"><pre>MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 height=315] YouTube movie.
 
@@ -773,7 +776,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 <em>Vimeo movie.</em></div>
 <div class="section" id="tables">
 <h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
-<p>The table in the section <em class="xref std std-ref">quick:sections</em> was written with this
+<p>The table in the section <span class="xref std std-ref">quick:sections</span> was written with this
 syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>|----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
@@ -806,16 +809,16 @@ a bar indicates a vertical bar between columns in LaTeX.</li>
 have no effect.</li>
 </ul>
 </div></blockquote>
-<p>The command-line option <tt class="docutils literal"><span class="pre">--tables2csv</span></tt> (to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>)
-makes DocOnce dump each table to CSV format in a file <tt class="docutils literal"><span class="pre">table_X.csv</span></tt>,
-where <tt class="docutils literal"><span class="pre">X</span></tt> is the table number. This feature makes it easy to
+<p>The command-line option <code class="docutils literal"><span class="pre">--tables2csv</span></code> (to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>)
+makes DocOnce dump each table to CSV format in a file <code class="docutils literal"><span class="pre">table_X.csv</span></code>,
+where <code class="docutils literal"><span class="pre">X</span></code> is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.</p>
 <p>DocOnce tables can be efficiently made directly from data in CSV files.</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce csv2table mydata.csv &gt; mydata_table.do.txt
 </pre></div>
 </div>
-<p>Now we can do <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;mydata_table.do.txt&quot;</span></tt> in the DocOnce
-source file or simply copy the table in <tt class="docutils literal"><span class="pre">mydata_table.do.txt</span></tt>
+<p>Now we can do <code class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;mydata_table.do.txt&quot;</span></code> in the DocOnce
+source file or simply copy the table in <code class="docutils literal"><span class="pre">mydata_table.do.txt</span></code>
 into the DocOnce file.</p>
 </div>
 <div class="section" id="labels-and-references">
@@ -828,14 +831,14 @@ inserted anywhere, using the syntax</p>
 </pre></div>
 </div>
 <p>with no backslash
-preceding the label keyword. It is common practice to choose <tt class="docutils literal"><span class="pre">name</span></tt>
-as some hierarchical name, using a delimiter like <tt class="docutils literal"><span class="pre">:</span></tt> or <tt class="docutils literal"><span class="pre">_</span></tt> between
+preceding the label keyword. It is common practice to choose <code class="docutils literal"><span class="pre">name</span></code>
+as some hierarchical name, using a delimiter like <code class="docutils literal"><span class="pre">:</span></code> or <code class="docutils literal"><span class="pre">_</span></code> between
 (e.g.) section, subsection, and topic.</p>
-<p>A reference to the label <tt class="docutils literal"><span class="pre">name</span></tt> is written as</p>
+<p>A reference to the label <code class="docutils literal"><span class="pre">name</span></code> is written as</p>
 <div class="highlight-text"><div class="highlight"><pre>ref{name}
 </pre></div>
 </div>
-<p>again with no backslash before <tt class="docutils literal"><span class="pre">ref</span></tt>.</p>
+<p>again with no backslash before <code class="docutils literal"><span class="pre">ref</span></code>.</p>
 <p>Use labels for sections and equations only, and preceed the reference
 by &#8220;Section&#8221; or &#8220;Chapter&#8221;, or in case of an equation, surround the
 reference by parenthesis.</p>
@@ -846,27 +849,27 @@ reference by parenthesis.</p>
 <div class="highlight-text"><div class="highlight"><pre>cite{name}
 </pre></div>
 </div>
-<p>where <tt class="docutils literal"><span class="pre">name</span></tt> is a logical name
+<p>where <code class="docutils literal"><span class="pre">name</span></code> is a logical name
 of the reference (again, LaTeX writers must not insert a backslash).
-Bibliography citations often have <tt class="docutils literal"><span class="pre">name</span></tt> on the form
-<tt class="docutils literal"><span class="pre">Author1_Author2_YYYY</span></tt>, <tt class="docutils literal"><span class="pre">Author_YYYY</span></tt>, or <tt class="docutils literal"><span class="pre">Author1_etal_YYYY</span></tt>, where
-<tt class="docutils literal"><span class="pre">YYYY</span></tt> is the year of the publication.
+Bibliography citations often have <code class="docutils literal"><span class="pre">name</span></code> on the form
+<code class="docutils literal"><span class="pre">Author1_Author2_YYYY</span></code>, <code class="docutils literal"><span class="pre">Author_YYYY</span></code>, or <code class="docutils literal"><span class="pre">Author1_etal_YYYY</span></code>, where
+<code class="docutils literal"><span class="pre">YYYY</span></code> is the year of the publication.
 Multiple citations at once is possible by separating the logical names
 by comma:</p>
 <div class="highlight-text"><div class="highlight"><pre>cite{name1,name2,name3}
 </pre></div>
 </div>
-<p>The bibliography is specified by a line <tt class="docutils literal"><span class="pre">BIBFILE:</span> <span class="pre">papers.pub</span></tt>,
-where <tt class="docutils literal"><span class="pre">papers.pub</span></tt> is a publication database in the
+<p>The bibliography is specified by a line <code class="docutils literal"><span class="pre">BIBFILE:</span> <span class="pre">papers.pub</span></code>,
+where <code class="docutils literal"><span class="pre">papers.pub</span></code> is a publication database in the
 <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> format.
-BibTeX <tt class="docutils literal"><span class="pre">.bib</span></tt> files can easily be combined to a Publish database
+BibTeX <code class="docutils literal"><span class="pre">.bib</span></code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).</p>
 </div>
 <div class="section" id="generalized-references">
 <h2>Generalized References<a class="headerlink" href="#generalized-references" title="Permalink to this headline">¶</a></h2>
 <p>There is a <em>generalized referencing</em> feature in DocOnce that allows
-a reference with <tt class="docutils literal"><span class="pre">ref</span></tt> to have one formulation if the label is
+a reference with <code class="docutils literal"><span class="pre">ref</span></code> to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
@@ -883,18 +886,18 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a &quot;section&quot;:
 DocOnce documents may include movies.
 </pre></div>
 </div>
-<p>The output from a generalized reference is the text <tt class="docutils literal"><span class="pre">internal</span></tt> if all
-references with <tt class="docutils literal"><span class="pre">ref</span></tt> in the text <tt class="docutils literal"><span class="pre">internal</span></tt> are references to labels
+<p>The output from a generalized reference is the text <code class="docutils literal"><span class="pre">internal</span></code> if all
+references with <code class="docutils literal"><span class="pre">ref</span></code> in the text <code class="docutils literal"><span class="pre">internal</span></code> are references to labels
 defined in the
-present document. Otherwise, if <tt class="docutils literal"><span class="pre">cite</span></tt> is non-empty and the format is
-<tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, one assumes that the references in <tt class="docutils literal"><span class="pre">internal</span></tt>
+present document. Otherwise, if <code class="docutils literal"><span class="pre">cite</span></code> is non-empty and the format is
+<code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code>, one assumes that the references in <code class="docutils literal"><span class="pre">internal</span></code>
 are to external documents declared by a comment line
-<tt class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span> <span class="pre">testdoc,</span> <span class="pre">mydoc</span></tt> (usually after the title, authors,
-and date). In this case the output text is <tt class="docutils literal"><span class="pre">internal</span></tt> followed by <tt class="docutils literal"><span class="pre">cite</span></tt>,
+<code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span> <span class="pre">testdoc,</span> <span class="pre">mydoc</span></code> (usually after the title, authors,
+and date). In this case the output text is <code class="docutils literal"><span class="pre">internal</span></code> followed by <code class="docutils literal"><span class="pre">cite</span></code>,
 and the
-LaTeX package <tt class="docutils literal"><span class="pre">xr</span></tt> is used to handle the labels in the external
+LaTeX package <code class="docutils literal"><span class="pre">xr</span></code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
-<tt class="docutils literal"><span class="pre">external</span></tt> text will be the output.</p>
+<code class="docutils literal"><span class="pre">external</span></code> text will be the output.</p>
 </div>
 <div class="section" id="index-of-keywords">
 <h2>Index of Keywords<a class="headerlink" href="#index-of-keywords" title="Permalink to this headline">¶</a></h2>
@@ -908,13 +911,13 @@ backslash!)</p>
 running text, i.e., after (sub)section titles and in the space between
 paragraphs. Index specifications placed right before paragraphs also
 gives the doconce source code an indication of the content in the
-forthcoming text. The index is only produced for the <tt class="docutils literal"><span class="pre">latex</span></tt>,
-<tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and <tt class="docutils literal"><span class="pre">sphinx</span></tt> formats.</p>
+forthcoming text. The index is only produced for the <code class="docutils literal"><span class="pre">latex</span></code>,
+<code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, and <code class="docutils literal"><span class="pre">sphinx</span></code> formats.</p>
 </div>
 <div class="section" id="capabilities-of-the-program-doconce">
-<h2>Capabilities of The Program <tt class="docutils literal"><span class="pre">doconce</span></tt><a class="headerlink" href="#capabilities-of-the-program-doconce" title="Permalink to this headline">¶</a></h2>
-<p>The <tt class="docutils literal"><span class="pre">doconce</span></tt> program can be used for a number of purposes besides
-transforming a <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file to some format. Here is the
+<h2>Capabilities of The Program <code class="docutils literal"><span class="pre">doconce</span></code><a class="headerlink" href="#capabilities-of-the-program-doconce" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">doconce</span></code> program can be used for a number of purposes besides
+transforming a <code class="docutils literal"><span class="pre">.do.txt</span></code> file to some format. Here is the
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>DocOnce version 1.0.3
 Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
@@ -1179,42 +1182,42 @@ Here goes a full solution of the whole exercise.
 </pre></div>
 </div>
 <p>By default, answers, solutions, and hints are typeset as paragraphs.
-The command-line arguments <tt class="docutils literal"><span class="pre">--without_answers</span></tt> and <tt class="docutils literal"><span class="pre">--without_solutions</span></tt>
+The command-line arguments <code class="docutils literal"><span class="pre">--without_answers</span></code> and <code class="docutils literal"><span class="pre">--without_solutions</span></code>
 turn off output of answers and solutions, respectively, except for
 examples.</p>
 </div>
 <div class="section" id="environments">
 <h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
-<p>DocOnce environments start with <tt class="docutils literal"><span class="pre">!benvirname</span></tt> and end with <tt class="docutils literal"><span class="pre">!eenvirname</span></tt>,
-where <tt class="docutils literal"><span class="pre">envirname</span></tt> is the name of the environment. Here is a listing of
+<p>DocOnce environments start with <code class="docutils literal"><span class="pre">!benvirname</span></code> and end with <code class="docutils literal"><span class="pre">!eenvirname</span></code>,
+where <code class="docutils literal"><span class="pre">envirname</span></code> is the name of the environment. Here is a listing of
 the environments:</p>
 <blockquote>
 <div><ul>
-<li><p class="first"><tt class="docutils literal"><span class="pre">c</span></tt>: computer code (or verbatim text)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">c</span></code>: computer code (or verbatim text)</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">t</span></tt>: math blocks with LaTeX syntax</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">t</span></code>: math blocks with LaTeX syntax</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">subex</span></tt>: sub-exercise</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">subex</span></code>: sub-exercise</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">ans</span></tt>: short answer to exercise or sub-exercise</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">ans</span></code>: short answer to exercise or sub-exercise</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">sol</span></tt>: full solution to exercise or sub-exercise</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">sol</span></code>: full solution to exercise or sub-exercise</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">hint</span></tt>: multiple help items in an exercise or sub-exercise</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">hint</span></code>: multiple help items in an exercise or sub-exercise</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">quote</span></tt>: indented text</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">quote</span></code>: indented text</p>
 </li>
 <li><dl class="first docutils">
-<dt><tt class="docutils literal"><span class="pre">notice</span></tt>, <tt class="docutils literal"><span class="pre">summary</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">question</span></tt>: admonition boxes with</dt>
+<dt><code class="docutils literal"><span class="pre">notice</span></code>, <code class="docutils literal"><span class="pre">summary</span></code>, <code class="docutils literal"><span class="pre">warning</span></code>, <code class="docutils literal"><span class="pre">question</span></code>: admonition boxes with</dt>
 <dd><p class="first last">custom title, special icon, and (sometimes) background color</p>
 </dd>
 </dl>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">block</span></tt>, <tt class="docutils literal"><span class="pre">box</span></tt>: simpler boxes (<tt class="docutils literal"><span class="pre">block</span></tt> may have title but never any icon)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">block</span></code>, <code class="docutils literal"><span class="pre">box</span></code>: simpler boxes (<code class="docutils literal"><span class="pre">block</span></code> may have title but never any icon)</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">pop</span></tt>: text to gradually pop up in slide presentations</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">pop</span></code>: text to gradually pop up in slide presentations</p>
 </li>
-<li><p class="first"><tt class="docutils literal"><span class="pre">slidecell</span></tt>: indication of cells in a grid layout for elements on a
+<li><p class="first"><code class="docutils literal"><span class="pre">slidecell</span></code>: indication of cells in a grid layout for elements on a
 slide</p>
 </li>
 </ul>
@@ -1222,13 +1225,13 @@ slide</p>
 </div>
 <div class="section" id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
-<p>DocOnce documents may utilize a preprocessor, either <tt class="docutils literal"><span class="pre">preprocess</span></tt> and/or
-<tt class="docutils literal"><span class="pre">mako</span></tt>. The former is a C-style preprocessor that allows if-tests
+<p>DocOnce documents may utilize a preprocessor, either <code class="docutils literal"><span class="pre">preprocess</span></code> and/or
+<code class="docutils literal"><span class="pre">mako</span></code>. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
-The <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor is much more advanced - it is actually a full
+The <code class="docutils literal"><span class="pre">mako</span></code> preprocessor is much more advanced - it is actually a full
 programming language, very similar to Python.</p>
-<p>The command <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> first runs <tt class="docutils literal"><span class="pre">preprocess</span></tt> and then <tt class="docutils literal"><span class="pre">mako</span></tt>.
-Here is a typical example on utilizing <tt class="docutils literal"><span class="pre">preprocess</span></tt> to include another
+<p>The command <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> first runs <code class="docutils literal"><span class="pre">preprocess</span></code> and then <code class="docutils literal"><span class="pre">mako</span></code>.
+Here is a typical example on utilizing <code class="docutils literal"><span class="pre">preprocess</span></code> to include another
 document, &#8220;comment out&#8221; a large portion of text, and to write format-specific
 constructions:</p>
 <div class="highlight-text"><div class="highlight"><pre># #include &quot;myotherdoc.do.txt&quot;
@@ -1261,10 +1264,10 @@ constructions:</p>
 # #endif
 </pre></div>
 </div>
-<p>With the <tt class="docutils literal"><span class="pre">mako</span></tt> preprocessor the if-else tests have slightly different syntax.
+<p>With the <code class="docutils literal"><span class="pre">mako</span></code> preprocessor the if-else tests have slightly different syntax.
 An <a class="reference external" href="http://hplgit.github.com/bioinf-py/">example document</a> contains
-some illustrations on how to utilize <tt class="docutils literal"><span class="pre">mako</span></tt> (clone the GitHub project and
-examine the DocOnce source and the <tt class="docutils literal"><span class="pre">doc/src/make.sh</span></tt> script).</p>
+some illustrations on how to utilize <code class="docutils literal"><span class="pre">mako</span></code> (clone the GitHub project and
+examine the DocOnce source and the <code class="docutils literal"><span class="pre">doc/src/make.sh</span></code> script).</p>
 </div>
 <div class="section" id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
@@ -1302,7 +1305,7 @@ examine the DocOnce source and the <tt class="docutils literal"><span class="pre
 <li><a class="reference internal" href="#citations-and-bibliography">Citations and Bibliography</a></li>
 <li><a class="reference internal" href="#generalized-references">Generalized References</a></li>
 <li><a class="reference internal" href="#index-of-keywords">Index of Keywords</a></li>
-<li><a class="reference internal" href="#capabilities-of-the-program-doconce">Capabilities of The Program <tt class="docutils literal"><span class="pre">doconce</span></tt></a></li>
+<li><a class="reference internal" href="#capabilities-of-the-program-doconce">Capabilities of The Program <code class="docutils literal"><span class="pre">doconce</span></code></a></li>
 <li><a class="reference internal" href="#exercises">Exercises</a></li>
 <li><a class="reference internal" href="#environments">Environments</a></li>
 <li><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
@@ -1336,21 +1339,20 @@ examine the DocOnce source and the <tt class="docutils literal"><span class="pre
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="DocOnce Quick Reference"
-             >previous</a> |</li>
-        <li><a href="index.html">DocOnce Quick Reference</a> &raquo;</li> 
-      </ul>
-    </div>
     <div class="footer">
-        &copy; Copyright 2015, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+      &copy;2015, HPL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/quickref.txt"
+          rel="nofollow">Page source</a></li>
     </div>
+
+    
+
+    
   </body>
 </html>

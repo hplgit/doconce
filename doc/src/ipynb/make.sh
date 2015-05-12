@@ -10,3 +10,8 @@ doconce format ipynb info --no_preprocess --ipynb_figure=${ipynb_figure} ipynb_f
 # some of the code segments we demonstrate
 doconce subst '" +%matplotlib inline\\n",\n +" +\\n",\n +' '' info.ipynb
 doconce subst '"import numpy as np\\n"', '"%matplotlib inline\\n",\n      "import numpy as np\\n",' info.ipynb
+
+# Publish
+dest=../../pub/ipynb
+cp info.ipynb example.ipynb $dest
+# All figs and movies are external on the web
