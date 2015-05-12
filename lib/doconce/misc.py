@@ -356,9 +356,18 @@ Somewhat intelligent, but may give unwanted edits. Use with great care!"""),
     ('--latex_elsevier_journal=',
      """Sets the journal name for the --latex_style=elsevier style.
 Default: none (no journal name)."""),
+    ('--ipynb_version=', 'ipynb version 3 (default) or 4.'),
+    ('--ipynb_split_pyshell=', """Split interactive sessions into multiple cells after each output.
+Applies to pyshell and ipy code environments.
+on, True, yes: split (default).
+off, False, no: do not split.
+Note that dpyshell and dipy environments just displays the session,
+while default pyshell and ipy removes all output (all output from print
+statements will come after the entire session).
+"""),
     ('--ipynb_cite=', """Typesetting of bibliography.
 plain: simple native typesetting (same as pandoc) (default)
-latex: ipynb support for latex-style bibliographies."""),
+latex: ipynb support for latex-style bibliographies (not mature)."""),
     ('--ipynb_admon=',
      """\
 Typesetting of admonitions (hint, remarks, box, notice, summary,
@@ -375,11 +384,11 @@ Image (python cell with Image object)."""),
     ('--ipynb_movie=', """\
 How to typeset movies in ipynb:
 md (plain Markdown syntax, default)
-HTML (python cell with HTML object containing the code that is used
-in the HTML format)
-HTML-YouTubeVideo: If YouTube video, use YouTubeVideo object, otherwise
-use the HTML object with appropriat HTML code.
-local: local video files with encoding."""),
+HTML: python cell with notebook `HTML` object containing the raw HTML code
+that is used in the DocOnce HTML format
+ipynb: python cell with notebook `HTML` object with simple/standard
+ipynb HTML code for showing a YouTube or local video with a <video>
+tag."""),
     ('--verbose',
      'Write out all OS commands run by doconce.'),
     ('--examples_as_exercises',
@@ -874,6 +883,8 @@ def _scitools_subst(patterns, replacements, filenames,
     for pattern in sorted(modified_files):
         if modified_files[pattern]:
             replacement = replacements[patterns.index(pattern)]
+            if replacement == '':
+                replacement = '<empty string>'
             messages.append('%s replaced by %s in %s' % \
                                 (pattern, replacement,
                                  ', '.join(modified_files[pattern])))

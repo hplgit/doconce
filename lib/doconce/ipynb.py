@@ -95,6 +95,9 @@ def ipynb_figure(m):
             keyword = 'filename'
         text += 'Image(%s="%s")\n' % (keyword, filename)
         text += '!ec\n'
+    else:
+        print '*** error: --ipynb_figure=%s is illegal, must be md, imgtag or Image' % display_method
+        _abort()
     return text
 
 def ipynb_movie(m):
@@ -139,7 +142,7 @@ def ipynb_movie(m):
                 movie_files.append(filename)
         text += '!ec\n'
         return text
-    if display_method == 'local':
+    if display_method == 'ipynb':
         text = '!bc pycod\n'
         if youtube:
             text += YouTubeVideo(filename)
@@ -273,7 +276,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                          flags=re.DOTALL | re.MULTILINE)
 
     # Fix pyshell and ipy interactive sessions: remove prompt and output.
-    # Fix sys and use run prog.py.
+    # or split in multiple cells such that output comes out at the end of a cell
+    # Fix sys environments and use run prog.py so programs can be run in cell
     # Insert %matplotlib inline in the first block using matplotlib
     # Only typeset Python code as blocks, otherwise !bc environmens
     # become plain indented Markdown.
@@ -282,6 +286,14 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     ipynb_tarfile = 'ipynb-%s-src.tar.gz' % dofile_basename
     src_paths = Set()
     mpl_inline = False
+
+    split_pyshell = option('ipynb_split_pyshell=', 'on')
+    if split_pyshell is None:
+        split_pyshell = False
+    elif split_pyshell in ('no', 'False', 'off'):
+        split_pyshell = False
+    else:
+        split_pyshell = True
 
     ipynb_code_tp = [None]*len(code_blocks)
     for i in range(len(code_blocks)):
@@ -309,25 +321,42 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                              "\n```"
             ipynb_code_tp[i] = 'markdown'
         elif tp.startswith('pyshell') or tp.startswith('ipy'):
-            # Remove prompt and output lines; leave code executable in cell
             lines = code_blocks[i].splitlines()
-            for j in range(len(lines)):
-                if lines[j].startswith('>>> ') or lines[j].startswith('... '):
-                    lines[j] = lines[j][4:]
-                elif lines[j].startswith('In ['):
-                    lines[j] = ':'.join(lines[j].split(':')[1:]).strip()
-                else:
-                    # output
-                    lines[j] = ''
+            last_cell_end = -1
+            if split_pyshell:
+                new_code_blocks = []
+                # Split for each output an put in separate cell
+                for j in range(len(lines)):
+                    if lines[j].startswith('>>>') or lines[j].startswith('... '):
+                        lines[j] = lines[j][4:]
+                    elif lines[j].startswith('In ['):
+                        lines[j] = ':'.join(lines[j].split(':')[1:]).strip()
+                    else:
+                        # output (no prefix or Out)
+                        lines[j] = ''
+                        new_code_blocks.append(
+                            '\n'.join(lines[last_cell_end+1:j+1]))
+                        last_cell_end = j
+                code_blocks[i] = new_code_blocks
+                ipynb_code_tp[i] = 'cell'
+            else:
+                # Remove prompt and output lines; leave code executable in cell
+                for j in range(len(lines)):
+                    if lines[j].startswith('>>> ') or lines[j].startswith('... '):
+                        lines[j] = lines[j][4:]
+                    elif lines[j].startswith('In ['):
+                        lines[j] = ':'.join(lines[j].split(':')[1:]).strip()
+                    else:
+                        # output
+                        lines[j] = ''
 
-            for j in range(lines.count('')):
-                lines.remove('')
-            code_blocks[i] = '\n'.join(lines)
-            ipynb_code_tp[i] = 'cell'
+                for j in range(lines.count('')):
+                    lines.remove('')
+                code_blocks[i] = '\n'.join(lines)
+                ipynb_code_tp[i] = 'cell'
 
         elif tp.startswith('dpyshell') or tp.startswith('dipy'):
             # Standard Markdown code display of interactive session
-            code_blocks[i] = '\n'.join(lines)
             code_blocks[i] = indent_lines(code_blocks[i], format)
             ipynb_code_tp[i] = 'markdown'
         elif tp.startswith('sys'):
@@ -484,29 +513,53 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             # start of notebook_blocks[i]: number block-indicator code-type
             n = int(words[0])
             if _CODE_BLOCK in notebook_blocks[i][1]:
-                notebook_blocks[i][1] = code_blocks[n]
+                notebook_blocks[i][1] = code_blocks[n]  # can be list!
             if _MATH_BLOCK in notebook_blocks[i][1]:
                 notebook_blocks[i][1] = tex_blocks[n]
 
     # Make IPython structures
-    from IPython.nbformat.v3 import (
-         NotebookNode,
-         new_code_cell, new_text_cell, new_worksheet, new_notebook, new_output,
-         new_metadata, new_author)
-    import IPython.nbformat.v3.nbjson
+
+    ipy_version = int(option('ipynb_version=', '3'))
+    if ipy_version == 3:
+        from IPython.nbformat.v3 import (
+            NotebookNode,
+            new_code_cell, new_text_cell, new_worksheet,
+            new_notebook, new_output, new_metadata, new_author)
+        import IPython.nbformat.v3.nbjson as nbjson
+    elif ipy_version == 4:
+        from IPython.nbformat.v4 import (
+            new_code_cell, new_text_cell, new_worksheet,
+            new_notebook, new_output, new_metadata, new_author)
+        import IPython.nbformat.v4.nbjson as nbjson
+
     ws = new_worksheet()
+
     prompt_number = 1
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
             ws.cells.append(new_text_cell(u'markdown', source=block))
-        elif block_tp == 'cell' and block != '':
-            ws.cells.append(new_code_cell(input=block,
-                                          prompt_number=prompt_number,
-                                          collapsed=False))
+        elif block_tp == 'cell' and block != '' and block != []:
+            if isinstance(block, list):
+                for block_ in block:
+                    if block_ != '':
+                        ws.cells.append(new_code_cell(
+                            input=block_,
+                            prompt_number=prompt_number,
+                            collapsed=False))
+                        prompt_number += 1
+            else:
+                if block != '':
+                    ws.cells.append(new_code_cell(
+                        input=block,
+                        prompt_number=prompt_number,
+                        collapsed=False))
+                    prompt_number += 1
         elif block_tp == 'cell_hidden' and block != '':
             ws.cells.append(new_code_cell(input=block,
                                           prompt_number=prompt_number,
                                           collapsed=True))
+            prompt_number += 1
+
     # Catch the title as the first heading
     m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
     title = m.group(1).strip() if m else ''
@@ -518,8 +571,12 @@ def ipynb_code(filestr, code_blocks, code_block_types,
     nb = new_notebook(worksheets=[ws], metadata=new_metadata())
 
     # Convert nb to json format
-    filestr = IPython.nbformat.v3.nbjson.writes(nb)
+    filestr = nbjson.writes(nb)
 
+    # Check that there are no empty cells:
+    if '"input": []' in filestr:
+        print '*** error: empty cells in notebook - report bug in DocOnce'
+        _abort()
     # must do the replacements here at the very end when json is written out
     # \eqref and labels will not work, but labels (only in math) do no harm
     filestr = re.sub(r'([^\\])label\{', r'\g<1>\\\\label{', filestr,
