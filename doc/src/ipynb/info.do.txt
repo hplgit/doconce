@@ -357,7 +357,7 @@ typeset with `--ipynb_admon=${ipynb_admon}`.
 rendered in format _${FORMAT}_ using the default admon typesetting.
 % endif
 
-!bwarning Notebooks has limited support for typesetting admons
+!bwarning Notebooks have limited support for typesetting admons
 Admon environments must be simulated using Markdown quote environment,
 a plain paragraph, or decorations with HTML `<hr>` hrules.
 !ewarning
