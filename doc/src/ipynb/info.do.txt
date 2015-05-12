@@ -204,7 +204,7 @@ print m.main()
 
 For ordinary book and manual writing, interactive sessions are used
 when the results of statements are important. Otherwise one applies
-standard code blocks. For example,
+standard code blocks. A standard code block can for example be
 
 !bc do
 |bc pycod
@@ -233,6 +233,12 @@ import matplotlib as plt
 |ec
 !ec
 Such code blocks are invisible in all formats except for `ipynb`.
+Books, manuals, and research papers will very often contain code
+snippets that do not run without (extensive) extra code. This exatra
+code must be provided in hidden code blocks for successful conversion
+to notebooks. If these cells take too much attention (that is probably
+why they were left out of the text...), one can insert some comments
+to explain that fact.
 
 Problem 2 is solved using one of the preprocessors and an if test on
 the format, e.g., with Preprocess:
