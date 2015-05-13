@@ -56,6 +56,12 @@ If you work on Windows, you probably have to avoid using the Mako preprocessor
 (it is not used unless you use Mako functions, variables, or control
 statements).
 
+===== Preprocess error: unexpected EOF while parsing =====
+
+This error may arise from a syntax error with a colon at the end
+of if tests, e.g. `# #if FORMAT == 'html':`. Colon is not used
+with Preprocess.
+
 ===== When I set a large portion of text in color, only a part of it becomes colored =====
 
 Although DocOnce features a color inline tag (`color`),

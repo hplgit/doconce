@@ -1,5 +1,5 @@
 TITLE: Special DocOnce features for Jupyter notebooks
-AUTHOR: Hans Petter Langtangen at Simula & UiO
+AUTHOR: Hans Petter Langtangen at Simula & University of Oslo
 DATE: today
 
 TOC: on
@@ -27,16 +27,10 @@ Let us explore SymPy to solve
 \[ y' = y,\quad y(0)=y_0 = 2\thinspace . \]
 !et
 
-# This does not work in notebook:
-% if FORMAT != 'ipynb':
-!bc pyshell
->>> import sys
->>> sys.displayhook = pprint
-!ec
-% endif
 
 !bc pyshell
 >>> from sympy import *
+>>> init_printing(use_latex=True)  # find the best method to print
 >>> t = symbols('t', real=True, positive=True)
 >>> y = symbols('y', cls=Function)
 >>> # Solve differential equation using dsolve
@@ -49,6 +43,7 @@ y(t) == C1*exp(t)
 >>> y = sol.rhs          # grab right-hand side of equation
 >>> # Determine integration constant C1 from initial condition
 >>> C1 = symbols('C1')
+>>> y0 = 2
 >>> eq = y.subs(t, 0) - y0  # equation for initial condition
 >>> print eq
 C1 - 2

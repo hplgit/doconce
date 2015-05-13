@@ -117,7 +117,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula</b></center>
 <center>[2] <b>UiO</b></center>
 <p>
-<center><h4>May 12, 2015</h4></center> <!-- date -->
+<center><h4>May 13, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -158,17 +158,10 @@ Let us explore SymPy to solve
 $$ y' = y,\quad y(0)=y_0 = 2\thinspace . $$
 
 <p>
-<!-- This does not work in notebook: -->
-<p>
-
-<!-- code=python (!bc pyshell) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span>
-<span style="color: #666666">&gt;&gt;&gt;</span> sys<span style="color: #666666">.</span>displayhook <span style="color: #666666">=</span> pprint
-</pre></div>
-<p>
 
 <!-- code=python (!bc pyshell) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #666666">&gt;&gt;&gt;</span> init_printing(use_latex<span style="color: #666666">=</span><span style="color: #008000">True</span>)  <span style="color: #408080; font-style: italic"># find the best method to print</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> t <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;t&#39;</span>, real<span style="color: #666666">=</span><span style="color: #008000">True</span>, positive<span style="color: #666666">=</span><span style="color: #008000">True</span>)
 <span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;y&#39;</span>, cls<span style="color: #666666">=</span>Function)
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Solve differential equation using dsolve</span>
@@ -181,6 +174,7 @@ y(t) <span style="color: #666666">==</span> C1<span style="color: #666666">*</sp
 <span style="color: #666666">&gt;&gt;&gt;</span> y <span style="color: #666666">=</span> sol<span style="color: #666666">.</span>rhs          <span style="color: #408080; font-style: italic"># grab right-hand side of equation</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #408080; font-style: italic"># Determine integration constant C1 from initial condition</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> C1 <span style="color: #666666">=</span> symbols(<span style="color: #BA2121">&#39;C1&#39;</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> y0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> eq <span style="color: #666666">=</span> y<span style="color: #666666">.</span>subs(t, <span style="color: #666666">0</span>) <span style="color: #666666">-</span> y0  <span style="color: #408080; font-style: italic"># equation for initial condition</span>
 <span style="color: #666666">&gt;&gt;&gt;</span> <span style="color: #008000; font-weight: bold">print</span> eq
 C1 <span style="color: #666666">-</span> <span style="color: #666666">2</span>
