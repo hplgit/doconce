@@ -533,13 +533,13 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # Make IPython structures
 
-    ipy_version = int(option('ipynb_version=', '3'))
-    if ipy_version == 3:
+    nb_version = int(option('ipynb_version=', '3'))
+    if nb_version == 3:
         from IPython.nbformat.v3 import (
             new_code_cell, new_text_cell, new_worksheet,
             new_notebook, new_metadata, new_author)
         nb = new_worksheet()
-    elif ipy_version == 4:
+    elif nb_version == 4:
         from IPython.nbformat.v4 import (
             new_code_cell, new_markdown_cell, new_notebook)
         cells = []
@@ -552,21 +552,21 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             # out as empty blocks, should detect that situation
             # (challenging - can have multiple lines of comments,
             # or begin and end comment lines with important things between)
-            if ipy_version == 3:
+            if nb_version == 3:
                 nb.cells.append(new_text_cell(u'markdown', source=block))
-            elif ipy_version == 4:
+            elif nb_version == 4:
                 cells.append(new_markdown_cell(source=block))
             mdstr.append(('markdown', block))
         elif block_tp == 'cell' and block != '' and block != []:
             if isinstance(block, list):
                 for block_ in block:
                     if block_ != '':
-                        if ipy_version == 3:
+                        if nb_version == 3:
                             nb.cells.append(new_code_cell(
                                 input=block_,
                                 prompt_number=prompt_number,
                                 collapsed=False))
-                        elif ipy_version == 4:
+                        elif nb_version == 4:
                             cells.append(new_code_cell(
                                 source=block_,
                                 execution_count=prompt_number))
@@ -574,22 +574,22 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                         mdstr.append(('codecell', block_))
             else:
                 if block != '':
-                    if ipy_version == 3:
+                    if nb_version == 3:
                         nb.cells.append(new_code_cell(
                             input=block,
                             prompt_number=prompt_number,
                             collapsed=False))
-                    elif ipy_version == 4:
+                    elif nb_version == 4:
                         cells.append(new_code_cell(
                             source=block,
                             execution_count=prompt_number))
                     prompt_number += 1
                     mdstr.append(('codecell', block))
         elif block_tp == 'cell_hidden' and block != '':
-            if ipy_version == 3:
+            if nb_version == 3:
                 nb.cells.append(new_code_cell(
                     input=block, prompt_number=prompt_number, collapsed=True))
-            elif ipy_version == 4:
+            elif nb_version == 4:
                 cells.append(new_code_cell(
                     source=block, execution_count=prompt_number))
             prompt_number += 1
@@ -604,7 +604,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         f.write(block)
     f.close()
 
-    if ipy_version == 3:
+    if nb_version == 3:
         # Catch the title as the first heading
         m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
         title = m.group(1).strip() if m else ''
@@ -622,12 +622,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
         # Convert nb to json format
         filestr = nbjson.writes(nb)
-    elif ipy_version == 4:
+    elif nb_version == 4:
         nb = new_notebook(cells=cells)
         from IPython.nbformat import writes
         filestr = writes(nb, version=4)
-
-
 
     # Check that there are no empty cells:
     if '"input": []' in filestr:

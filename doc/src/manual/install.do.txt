@@ -7,12 +7,21 @@ idx{installation}
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install everything what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the Bash script
+The impatient way to install everything that is needed is to use
+Anaconda Python and the `conda` program:
+
+!bc sys
+Terminal> conda install --channel johannr doconce
+!ec
+The `conda` package is available for Mac and Linux only.
+
+If you do not want to use Anaconda and are
+on a Debian-based Linux
+computer (running, e.g., Ubuntu), you can instead run the Bash script
 "`install_doconce.sh`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" or the equivalent Python script
 "`install_doconce.py`": "https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py".
 These scripts gives a comprehensive installation. Some users will prefer to
-install what is needed, and this is explained below.
+install just what is needed for them, and this is explained below.
 
 !bwarning Version control systems are needed!
 The coming installation instructions require that the version control systems
@@ -26,6 +35,10 @@ Since most packages are Python-based and can be installed via `pip install`
 no problems should arise on Mac and Windows. However, some of the
 image processing tools and spell checking apply Unix-specific software.
 !enotice
+
+You can omit reading the next sections if you rely on `conda` or
+`apt-get install` commands in the Bash script for installing DocOnce.
+
 
 ===== DocOnce =====
 

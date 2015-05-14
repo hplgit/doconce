@@ -2449,6 +2449,9 @@ div { text-align: justify; text-justify: inter-word; }
     --html_code_style=inherit         # use <code> style in surroundings (no red)
     --html_pre_style=inherit          # use <pre> style in surroundings
     """ % boots_style
+        else:
+            print '*** wrong --html_style=%s' % html_style
+            _abort()
 
         style = """
 <!-- Bootstrap style: %s -->
