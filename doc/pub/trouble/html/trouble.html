@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -10,7 +9,7 @@
     
     <title>DocOnce Troubleshooting</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -45,7 +44,11 @@
     
     <link rel="top" title="DocOnce Troubleshooting" href="index.html" />
     <link rel="prev" title="DocOnce Troubleshooting" href="index.html" />
- 
+
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
   
        <style type="text/css">
          div.admonition {
@@ -82,20 +85,20 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 5, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 14, 2015</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition-disclaimer admonition">
 <p class="first admonition-title">Disclaimer</p>
 <p class="last">DocOnce has some support for syntax checking.  If you encounter Python
-errors while running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>, the reason for the error is
+errors while running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>, the reason for the error is
 most likely a syntax problem in your DocOnce source file. You have to
 track down this syntax problem yourself. However, DocOnce applies
 regular expressions to a large extent for transforming text, and
 regular expressions may sometimes lead to undesired results.
 Therefore, there is a chance that legal DocOnce syntax is not
-treated properly. The section <a class="reference internal" href="#trouble-pitfalls"><em>Examples on seemingly legal syntax that fails</em></a> gives some examples of what
+treated properly. The section <a class="reference internal" href="#trouble-pitfalls"><span>Examples on seemingly legal syntax that fails</span></a> gives some examples of what
 can go wrong.</p>
 </div>
 <div class="section" id="general-problems">
@@ -104,10 +107,10 @@ can go wrong.</p>
 <h3>GitHub gh-pages will not display files starting with a dot or underscore<a class="headerlink" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore" title="Permalink to this headline">¶</a></h3>
 <p>This is a typical problem related to publishing either splitted HTML documents
 or Sphinx versions of documents on GitHub, using a gh-pages branch.
-Filenames starting with a dot (as in <tt class="docutils literal"><span class="pre">._mydoc001.html</span></tt>) or located in
-a directory whose name starts with an underscore (as in <tt class="docutils literal"><span class="pre">spninx/_static</span></tt>)
+Filenames starting with a dot (as in <code class="docutils literal"><span class="pre">._mydoc001.html</span></code>) or located in
+a directory whose name starts with an underscore (as in <code class="docutils literal"><span class="pre">spninx/_static</span></code>)
 will not be properly shown in HTML if not the root directory of the
-gh-pages branch contains a file <tt class="docutils literal"><span class="pre">.nojekyll</span></tt>. This file can be empty.
+gh-pages branch contains a file <code class="docutils literal"><span class="pre">.nojekyll</span></code>. This file can be empty.
 A typical fix is</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; git checkout gh-pages
 Terminal&gt; touch .nojekyll
@@ -119,8 +122,8 @@ Terminal&gt; git push origin gh-pages
 </div>
 <div class="section" id="github-gh-pages-will-not-display-files">
 <h3>GitHub gh-pages will not display files<a class="headerlink" href="#github-gh-pages-will-not-display-files" title="Permalink to this headline">¶</a></h3>
-<p>A common error is to link to addresses starting with <tt class="docutils literal"><span class="pre">https://github.com</span></tt>
-rather than the required <tt class="docutils literal"><span class="pre">http://username.github.io/</span></tt>.</p>
+<p>A common error is to link to addresses starting with <code class="docutils literal"><span class="pre">https://github.com</span></code>
+rather than the required <code class="docutils literal"><span class="pre">http://username.github.io/</span></code>.</p>
 </div>
 <div class="section" id="a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">
 <h3>A newline in equations (double backslash) becomes single backslash and eats up spaces<a class="headerlink" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces" title="Permalink to this headline">¶</a></h3>
@@ -134,14 +137,20 @@ Windows to that in Unix:</p>
 (it is not used unless you use Mako functions, variables, or control
 statements).</p>
 </div>
+<div class="section" id="preprocess-error-unexpected-eof-while-parsing">
+<h3>Preprocess error: unexpected EOF while parsing<a class="headerlink" href="#preprocess-error-unexpected-eof-while-parsing" title="Permalink to this headline">¶</a></h3>
+<p>This error may arise from a syntax error with a colon at the end
+of if tests, e.g. <code class="docutils literal"><span class="pre">#</span> <span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">==</span> <span class="pre">'html':</span></code>. Colon is not used
+with Preprocess.</p>
+</div>
 <div class="section" id="when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">
 <h3>When I set a large portion of text in color, only a part of it becomes colored<a class="headerlink" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored" title="Permalink to this headline">¶</a></h3>
-<p>Although DocOnce features a color inline tag (<tt class="docutils literal"><span class="pre">color</span></tt>),
+<p>Although DocOnce features a color inline tag (<code class="docutils literal"><span class="pre">color</span></code>),
 this tag will most likely fail for large portions
 of text. The reason is that this tag, like most other DocOnce
 constructions, relies on a regular expression for being detected.
 The regular expression searches for opening and closing braces after
-the <tt class="docutils literal"><span class="pre">color{red}</span></tt> specification. The closing brace is the first brace
+the <code class="docutils literal"><span class="pre">color{red}</span></code> specification. The closing brace is the first brace
 encountered. Therefore, if you have any text containing a right brace
 inside the text to be colored, the first right brace will define the
 end of the coloring. Here is an example:</p>
@@ -178,7 +187,7 @@ the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/
 <div class="section" id="how-can-i-control-the-vertical-spacing-in-slides">
 <h3>How can I control the vertical spacing in slides?<a class="headerlink" href="#how-can-i-control-the-vertical-spacing-in-slides" title="Permalink to this headline">¶</a></h3>
 <p>HTML5 and LaTeX slides control the spacings for you. However, sometimes
-you really want to add some space. The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is effective for
+you really want to add some space. The <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> is effective for
 this purpose. For example,</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bblock</span> (large) So - how to be excellent?
 &lt;linebreak&gt;
@@ -197,25 +206,45 @@ work, and *thinking constantly about it*.
 <p class="last">deep passion, very much hard (and exciting!)
 work, and <em>thinking constantly about it</em>.</p>
 </div>
-<p>Without <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> the rendering becomes</p>
+<p>Without <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> the rendering becomes</p>
 <div class="admonition-so-how-to-be-excellent admonition">
 <p class="first admonition-title">So - how to be excellent</p>
 <p class="last">Excellence is not a planned goal - it is the corollary of
 deep passion, very much hard (and exciting!)
 work, and <em>thinking constantly about it</em>.</p>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is a newline in LaTeX if it has preceding text,
-otherwise it is a <tt class="docutils literal"><span class="pre">\vspace{3mm}</span></tt>. In HTML, <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt> is <tt class="docutils literal"><span class="pre">&lt;br&gt;</span></tt>.</p>
-<p>More vertical space is obtained by repeated use of <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt>:</p>
+<p>The <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> is a newline in LaTeX if it has preceding text,
+otherwise it is a <code class="docutils literal"><span class="pre">\vspace{3mm}</span></code>. In HTML, <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> is <code class="docutils literal"><span class="pre">&lt;br&gt;</span></code>.</p>
+<p>More vertical space is obtained by repeated use of <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>&lt;linebreak&gt;
 &lt;linebreak&gt;
 &lt;linebreak&gt;
 </pre></div>
 </div>
 </div>
+<div class="section" id="how-do-i-get-figure-written-in-another-language">
+<h3>How do I get &#8220;Figure&#8221; written in another language?<a class="headerlink" href="#how-do-i-get-figure-written-in-another-language" title="Permalink to this headline">¶</a></h3>
+<p>DocOnce documents can be written in any language, but figure captions
+typically contain the English word &#8220;Figure&#8221;. This must be fixed
+by auto-editing the output file after translation by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.</p>
+<p>In LaTeX you can use your native language package, e.g.,</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce replace &#39;% insert custom LaTeX commands...&#39; &#39;\\usepackage[norsk]{babel}
+</pre></div>
+</div>
+<p>to get the Norwegian language.
+In other formats you have do more manual substitutions:</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce replace Figure Figur mydoc.html
+doconce replace figure figur mydoc.html
+</pre></div>
+</div>
+<p>or both in one command using regular expressions:</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce stubst &#39;([Ff]igur)e&#39; &#39;\g&lt;1&gt;&#39; mydoc.html
+</pre></div>
+</div>
+</div>
 <div class="section" id="spellcheck-reports-mistakes-that-i-cannot-find">
 <h3>Spellcheck reports mistakes that I cannot find<a class="headerlink" href="#spellcheck-reports-mistakes-that-i-cannot-find" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> command strips off a lot of text
+<p>The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> command strips off a lot of text
 (math, code, syntax tags) before it starts spellchecking. The
 spellchecked text is therefore different from the doconce source!
 Fortunately, the file that is actually spellchecked can be examined.
@@ -223,13 +252,13 @@ If the spellcheck command is</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce spellcheck mydoc
 </pre></div>
 </div>
-<p>the file <tt class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></tt> contains the text that is actually
-run through the spellchecker (<tt class="docutils literal"><span class="pre">ispell</span></tt>). Search for the misspelled word there and
+<p>the file <code class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></code> contains the text that is actually
+run through the spellchecker (<code class="docutils literal"><span class="pre">ispell</span></code>). Search for the misspelled word there and
 try to find it in the doconce source code. Very often, strange misspellings
 come from a syntax typo that has led to a strange word in the stripped
 version.</p>
 <p>Wrong typesetting of mathematics can lead to strange errors, e.g.,
-misspellings such as <tt class="docutils literal"><span class="pre">iu</span></tt> because of some math <tt class="docutils literal"><span class="pre">f_iu_i</span></tt> that is
+misspellings such as <code class="docutils literal"><span class="pre">iu</span></code> because of some math <code class="docutils literal"><span class="pre">f_iu_i</span></code> that is
 not properly typeset between dollar signs. Here are some useful grep
 commands to search for such errors:</p>
 <div class="highlight-text"><div class="highlight"><pre>grep --color=auto -E &#39;\biu\b&#39; tmp_stripped_mydoc.do.txt
@@ -241,12 +270,12 @@ grep --color=auto -E &#39;iu&#39; tmp_stripped_mydoc.do.txt
 </div>
 <div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
 <h3>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> command should ignore LaTeX math, but if
+<p>The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
-relevant <tt class="docutils literal"><span class="pre">tmp_missing_*</span></tt> file and find the first math-style expression that
+relevant <code class="docutils literal"><span class="pre">tmp_missing_*</span></code> file and find the first math-style expression that
 is reported as misspelling. Open the corresponding stripped file,
-<tt class="docutils literal"><span class="pre">tmp_stripped_*</span></tt>, which is supposed to have all the math stripped
+<code class="docutils literal"><span class="pre">tmp_stripped_*</span></code>, which is supposed to have all the math stripped
 away, and search for the misspelling. When you find it, you will see
 that there are math expressions in the stripped file that should not
 be there. (Because of wrong begin and end signs around math expressions
@@ -254,11 +283,11 @@ ordinary text has instead been stripped away. This way, a missing dollar
 sign can lead to hundreds of misspellings.)
 Find the problem in the corresponding DocOnce file and correct it.
 A similar error can be caused by wrong matching
-of equation environments between <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt>.</p>
+of equation environments between <code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!et</span></code>.</p>
 </div>
 <div class="section" id="text-between-subexercises-are-moved">
 <h3>Text between subexercises are moved<a class="headerlink" href="#text-between-subexercises-are-moved" title="Permalink to this headline">¶</a></h3>
-<p>If you insert text between a <tt class="docutils literal"><span class="pre">!esubex</span></tt> and the next <tt class="docutils literal"><span class="pre">!bsubex</span></tt>, this
+<p>If you insert text between a <code class="docutils literal"><span class="pre">!esubex</span></code> and the next <code class="docutils literal"><span class="pre">!bsubex</span></code>, this
 text is moved before all the subexercises. This is a feature, not a
 bug (exercises have certain elements: main text, subexercises, hints,
 etc. that are typeset in a specific order, which may be different from
@@ -272,8 +301,8 @@ previous subexercise.</p>
 execution if errors are found. However, it may happen,
 especially in verbatim blocks, that DocOnce reports syntax errors
 that are not errors. To continue execution, simply add the
-<tt class="docutils literal"><span class="pre">--no_abort</span></tt> option on the command line. You may send an email
-to the DocOnce author at <tt class="docutils literal"><span class="pre">hpl&#64;simula.no</span></tt> and report the problem.</p>
+<code class="docutils literal"><span class="pre">--no_abort</span></code> option on the command line. You may send an email
+to the DocOnce author at <code class="docutils literal"><span class="pre">hpl&#64;simula.no</span></code> and report the problem.</p>
 </div>
 <div class="section" id="figure-captions-are-incomplete">
 <h3>Figure captions are incomplete<a class="headerlink" href="#figure-captions-are-incomplete" title="Permalink to this headline">¶</a></h3>
@@ -297,11 +326,11 @@ correctly. Merge them into one common expression.</p>
 <div class="highlight-text"><div class="highlight"><pre>see the &quot;examples directory&quot;: &quot;src/examples/index.html&quot;
 </pre></div>
 </div>
-<p>We recommend to put all files you link to in a <tt class="docutils literal"><span class="pre">_static</span></tt> directory
-if you intend to use the <tt class="docutils literal"><span class="pre">sphinx</span></tt> output. This guarantees that all
+<p>We recommend to put all files you link to in a <code class="docutils literal"><span class="pre">_static</span></code> directory
+if you intend to use the <code class="docutils literal"><span class="pre">sphinx</span></code> output. This guarantees that all
 your files are collected in the Sphinx directory tree bundle.
-With plain <tt class="docutils literal"><span class="pre">html</span></tt> output only, you can link to whatever, but remember
-to move all files you link to if you move the primary <tt class="docutils literal"><span class="pre">.html</span></tt> file.</p>
+With plain <code class="docutils literal"><span class="pre">html</span></code> output only, you can link to whatever, but remember
+to move all files you link to if you move the primary <code class="docutils literal"><span class="pre">.html</span></code> file.</p>
 </div>
 <div class="section" id="links-are-not-typeset-correctly">
 <h3>Links are not typeset correctly<a class="headerlink" href="#links-are-not-typeset-correctly" title="Permalink to this headline">¶</a></h3>
@@ -341,7 +370,7 @@ would be the standard.
 <p>The former reason for this problem is that DocOnce could only work with latin1
 (ISO-8859) encoding and not UTF-8. After May 2013, DocOnce applies
 UTF-8 both for HTML and LaTeX.</p>
-<p>Check the encoding of the <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file with the Unix <tt class="docutils literal"><span class="pre">file</span></tt> command
+<p>Check the encoding of the <code class="docutils literal"><span class="pre">.do.txt</span></code> file with the Unix <code class="docutils literal"><span class="pre">file</span></code> command
 or with</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce guess_encoding myfile.do.txt
 </pre></div>
@@ -358,7 +387,7 @@ Terminal&gt; iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 <p>When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
 the section &#8220;Strange non-English characters&#8221; above for how to
-run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">change_encoding</span></tt> to change the encoding of the DocOnce file.</p>
+run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">change_encoding</span></code> to change the encoding of the DocOnce file.</p>
 </div>
 <div class="section" id="too-short-underlining-of-rest-headlines">
 <h3>Too short underlining of reST headlines<a class="headerlink" href="#too-short-underlining-of-rest-headlines" title="Permalink to this headline">¶</a></h3>
@@ -366,26 +395,26 @@ run <tt class="docutils literal"><span class="pre">doconce</span> <span class="p
 proceeding text before some section heading.</p>
 </div>
 <div class="section" id="found-bt-but-no-tex-blocks-extracted-bug">
-<h3>Found <tt class="docutils literal"><span class="pre">!bt</span></tt> but no tex blocks extracted (BUG)<a class="headerlink" href="#found-bt-but-no-tex-blocks-extracted-bug" title="Permalink to this headline">¶</a></h3>
+<h3>Found <code class="docutils literal"><span class="pre">!bt</span></code> but no tex blocks extracted (BUG)<a class="headerlink" href="#found-bt-but-no-tex-blocks-extracted-bug" title="Permalink to this headline">¶</a></h3>
 <p>This message points to a bug, but has been resolved by removing blank lines
-between the text and the first <tt class="docutils literal"><span class="pre">!bt</span></tt> (inserting the blanks again did not
+between the text and the first <code class="docutils literal"><span class="pre">!bt</span></code> (inserting the blanks again did not
 trigger the error message again...).</p>
 </div>
 <div class="section" id="examples-are-typset-with-environment-delimiters-visible">
 <h3>Examples are typset with environment delimiters visible<a class="headerlink" href="#examples-are-typset-with-environment-delimiters-visible" title="Permalink to this headline">¶</a></h3>
-<p>If you see an Example section containing <tt class="docutils literal"><span class="pre">!bsubex</span></tt>, <tt class="docutils literal"><span class="pre">!bsol</span></tt>, or other
+<p>If you see an Example section containing <code class="docutils literal"><span class="pre">!bsubex</span></code>, <code class="docutils literal"><span class="pre">!bsol</span></code>, or other
 begin and end tags for environments, it means that you have intended
 to typeset examples as exercises, but forgotten the command-line
-option <tt class="docutils literal"><span class="pre">--examples_as_exercises</span></tt>. The text in the example is typeset
+option <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>. The text in the example is typeset
 as is unless this option is included.</p>
 </div>
 <div class="section" id="emacs-editing-does-not-work-properly-because-of-regexp-overflow">
 <h3>Emacs editing does not work properly because of &#8220;regexp overflow&#8221;<a class="headerlink" href="#emacs-editing-does-not-work-properly-because-of-regexp-overflow" title="Permalink to this headline">¶</a></h3>
-<p>Sometimes the Doonce editing mode (see the section <em class="xref std std-ref">emacs:doconce</em>) in Emacs
+<p>Sometimes the Doonce editing mode (see the section <span class="xref std std-ref">emacs:doconce</span>) in Emacs
 leads to an error message ending with &#8220;overflow in regexp matcher&#8221;.
 This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
-the pieces using the <tt class="docutils literal"><span class="pre">preprocess</span></tt> directive <tt class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;piece.do.txt&quot;</span></tt>.
+the pieces using the <code class="docutils literal"><span class="pre">preprocess</span></code> directive <code class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;piece.do.txt&quot;</span></code>.
 The error message comes with the DocOnce file contains too much text
 for Emacs to handle.</p>
 </div>
@@ -398,10 +427,10 @@ The remedy is to split the document into smaller pieces by inserting</p>
 <div class="highlight-text"><div class="highlight"><pre>!split
 </pre></div>
 </div>
-<p>for every new page. After <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></tt>, run
-<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span> <span class="pre">mydoc.html</span></tt> to get the document split into
-a main document <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> and pieces <tt class="docutils literal"><span class="pre">._mydocXXX.html</span></tt>, where
-<tt class="docutils literal"><span class="pre">XXX</span></tt> stands for three digits (<tt class="docutils literal"><span class="pre">000</span></tt>, <tt class="docutils literal"><span class="pre">001</span></tt>, <tt class="docutils literal"><span class="pre">002</span></tt>, and so forth).</p>
+<p>for every new page. After <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></code>, run
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span> <span class="pre">mydoc.html</span></code> to get the document split into
+a main document <code class="docutils literal"><span class="pre">mydoc.html</span></code> and pieces <code class="docutils literal"><span class="pre">._mydocXXX.html</span></code>, where
+<code class="docutils literal"><span class="pre">XXX</span></code> stands for three digits (<code class="docutils literal"><span class="pre">000</span></code>, <code class="docutils literal"><span class="pre">001</span></code>, <code class="docutils literal"><span class="pre">002</span></code>, and so forth).</p>
 </div>
 <div class="section" id="how-can-i-use-quotes-in-a-link">
 <h3>How can I use quotes in a link?<a class="headerlink" href="#how-can-i-use-quotes-in-a-link" title="Permalink to this headline">¶</a></h3>
@@ -410,7 +439,7 @@ and double single quotes to typeset quotes, so the right form is</p>
 <div class="highlight-text"><div class="highlight"><pre>&quot;This is a ``link text&#39;&#39; to google&quot;: &quot;http://google.com&quot;.
 </pre></div>
 </div>
-<p>It appears as (typset in a <tt class="docutils literal"><span class="pre">quote</span></tt> admon):</p>
+<p>It appears as (typset in a <code class="docutils literal"><span class="pre">quote</span></code> admon):</p>
 <blockquote>
 <div>&#8220;This is a &#8220;link text` to google &lt;<a class="reference external" href="http://google.com">http://google.com</a>&gt;`__.</div></blockquote>
 </div>
@@ -433,7 +462,7 @@ and appears verbatim.</li>
 <blockquote>
 <div><ul class="simple">
 <li>Save as HTML file and use Pandoc to convert to Markdown.
-Use the <tt class="docutils literal"><span class="pre">--markdown</span></tt> and <tt class="docutils literal"><span class="pre">--md2do_output=</span></tt> options to
+Use the <code class="docutils literal"><span class="pre">--markdown</span></code> and <code class="docutils literal"><span class="pre">--md2do_output=</span></code> options to
 <a href="#id1"><span class="problematic" id="id2">`</span></a>doconce format to convert to DocOnce.</li>
 <li>Lists in Markdown must be intended.</li>
 <li>Notes in Google Docs become (potentially many) footnotes.
@@ -486,24 +515,24 @@ emphasized font fails:</p>
 <p>The reason is that boldface or emphasize text cannot contain the
 special characters dollar sign and backtick. However, if these
 were allowed, the above examples would fail because the underscore
-in <tt class="docutils literal"><span class="pre">$u_1=2$</span></tt> would mark the end of the boldface text. Similarly,
-the <tt class="docutils literal"><span class="pre">*</span></tt> in <tt class="docutils literal"><span class="pre">a*b</span></tt> would mark the end of the emphasized text.
+in <code class="docutils literal"><span class="pre">$u_1=2$</span></code> would mark the end of the boldface text. Similarly,
+the <code class="docutils literal"><span class="pre">*</span></code> in <code class="docutils literal"><span class="pre">a*b</span></code> would mark the end of the emphasized text.
 Such problems are avoided by <em>only using plain text inside
 emphasize or boldface tags</em>:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>_It is important that_ $u_1=2$!
 *It is important that* `a*b=b*a` *in any computer language*.
 </pre></div>
 </div>
-<p>Another similar example is the mix of <tt class="docutils literal"><span class="pre">**text**</span></tt> syntax
+<p>Another similar example is the mix of <code class="docutils literal"><span class="pre">**text**</span></code> syntax
 with braces inside the text. For example,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>color{blue}{However, here a blue color specification
 fails: $\frac{1}{2}\omega^2$.}
 </pre></div>
 </div>
-<p>The text part is interpreted as string with <tt class="docutils literal"><span class="pre">However</span></tt> and lasting up
-to the first right brace, which is in <tt class="docutils literal"><span class="pre">\frac{1}</span></tt>. A remedy is, as above,
+<p>The text part is interpreted as string with <code class="docutils literal"><span class="pre">However</span></code> and lasting up
+to the first right brace, which is in <code class="docutils literal"><span class="pre">\frac{1}</span></code>. A remedy is, as above,
 to only use plain text inside the text part of the color specification
-and use a <tt class="docutils literal"><span class="pre">\textcolor</span></tt> command inside the mathematics:</p>
+and use a <code class="docutils literal"><span class="pre">\textcolor</span></code> command inside the mathematics:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>color{blue}{However, here a blue color specification
 fails:} $\textcolor{red}{\frac{1}{2}\omega^2}$.}
 </pre></div>
@@ -522,16 +551,16 @@ a = b
 is meant to be in red and it works.}
 </pre></div>
 </div>
-<p>The rules are that <tt class="docutils literal"><span class="pre">*text*</span></tt>, <tt class="docutils literal"><span class="pre">_text_</span></tt>, and <tt class="docutils literal"><span class="pre">**text**</span></tt>
-employs a simple rule: <tt class="docutils literal"><span class="pre">text</span></tt> lasts up to the first end-tag
-character (<tt class="docutils literal"><span class="pre">*</span></tt>, <tt class="docutils literal"><span class="pre">_</span></tt>, and <tt class="docutils literal"><span class="pre">}</span></tt> above), but code and math blocks
+<p>The rules are that <code class="docutils literal"><span class="pre">*text*</span></code>, <code class="docutils literal"><span class="pre">_text_</span></code>, and <code class="docutils literal"><span class="pre">**text**</span></code>
+employs a simple rule: <code class="docutils literal"><span class="pre">text</span></code> lasts up to the first end-tag
+character (<code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">_</span></code>, and <code class="docutils literal"><span class="pre">}</span></code> above), but code and math blocks
 do not count.</p>
 </div>
 </div>
 <div class="section" id="how-can-i-make-pressbooks-com-books-from-doconce">
 <h3>How can I make pressbooks.com books from DocOnce?<a class="headerlink" href="#how-can-i-make-pressbooks-com-books-from-doconce" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://pressbooks.com">http://pressbooks.com</a> supports HTML input with WordPress LaTeX mathematics,
-so the easiest way is to compile DocOnce to HTML with the <tt class="docutils literal"><span class="pre">--wordpress</span></tt>
+so the easiest way is to compile DocOnce to HTML with the <code class="docutils literal"><span class="pre">--wordpress</span></code>
 option, put the file on the web somewhere, click <em>Utilities - Import</em>
 in pressbooks.com, then choose HTML input, write the URL, and upload.</p>
 <p>Note that WordPress LaTeX cannot refer to equations using labels!
@@ -545,21 +574,21 @@ This is a major problem with pressbooks.com.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Keep Python code more than a few lines <em>outside</em> of the DocOnce
-file, and use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span></tt> to include the code. See
+file, and use <code class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span></code> to include the code. See
 the <em>Debugging Python code in Mako</em> section in the manual for
 how to do it.</li>
 <li>Do not use continuation character (backslash) in Python code.</li>
 <li>When a Mako error refers to a line in the text, invoke the
-file that Mako sees: <tt class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></tt> if
-the DocOnce file has name <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>.</li>
-<li>Use double <tt class="docutils literal"><span class="pre">##</span></tt> (Mako comment) to comment out Mako calls
-of the form <tt class="docutils literal"><span class="pre">${name...}</span></tt>.</li>
+file that Mako sees: <code class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></code> if
+the DocOnce file has name <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>.</li>
+<li>Use double <code class="docutils literal"><span class="pre">##</span></code> (Mako comment) to comment out Mako calls
+to functions or Mako variables.</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="the-mako-preprocessor-is-seemingly-not-run">
 <h3>The Mako preprocessor is seemingly not run<a class="headerlink" href="#the-mako-preprocessor-is-seemingly-not-run" title="Permalink to this headline">¶</a></h3>
-<p>If you have lines starting with <tt class="docutils literal"><span class="pre">%</span></tt> inside code segments (for example,
+<p>If you have lines starting with <code class="docutils literal"><span class="pre">%</span></code> inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
 because it thinks these lines are Mako statements. DocOnce detects
 this problem and avoids running Mako.  Examine the output from
@@ -579,23 +608,23 @@ quite unpredictable. Especially, if you forget curly braces around
 variables or function calls, the forthcoming text is processed as
 part of the Mako command. Pay attention to the line number reported
 by Mako: this is the line number after Preprocess has processed
-the DocOnce document, so you need to load <tt class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></tt>
+the DocOnce document, so you need to load <code class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></code>
 and go to the right line in that file to see the Mako problem
-(here the DocOnce document is named <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>).</p>
+(here the DocOnce document is named <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>).</p>
 <p>Look through the specific Mako problems
 reported below, and if they do not bring you to a solution of
 the problem, search for all occurences of dollar, left curly brace
 and check the syntax carefully. Likewise, check the syntax of
 Mako if-tests.</p>
 <p>Another widely used technique is to copy out small parts of
-the complete document to a separate file and run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>.
+the complete document to a separate file and run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.
 In this way you can easier see which parts of the document that
 work and where the error suddenly appears.</p>
 <div class="admonition-tip-compile-your-doconce-document-frequently admonition">
 <p class="first admonition-title">Tip: Compile your DocOnce document frequently</p>
-<p class="last">The best means against Mako problems is to run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
+<p class="last">The best means against Mako problems is to run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 often. Combined Git, you can take
-a <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt> to see what you have recently changed and get an idea
+a <code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code> to see what you have recently changed and get an idea
 what can be wrong.</p>
 </div>
 </div>
@@ -604,8 +633,8 @@ what can be wrong.</p>
 <p>Here are possible problems for Mako:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Strings with <tt class="docutils literal"><span class="pre">'T&lt;%.1f'</span></tt> look as openings of Mako blocks (<tt class="docutils literal"><span class="pre">&lt;%</span></tt>); change
-to <tt class="docutils literal"><span class="pre">'T</span> <span class="pre">&lt;</span> <span class="pre">%.1f'</span></tt> to avoid this confusion.</li>
+<li>Strings with <code class="docutils literal"><span class="pre">'T&lt;%.1f'</span></code> look as openings of Mako blocks (<code class="docutils literal"><span class="pre">&lt;%</span></code>); change
+to <code class="docutils literal"><span class="pre">'T</span> <span class="pre">&lt;</span> <span class="pre">%.1f'</span></code> to avoid this confusion.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -613,25 +642,29 @@ to <tt class="docutils literal"><span class="pre">'T</span> <span class="pre">&l
 <h3>The Mako preprocessor claims a variable is undefined<a class="headerlink" href="#the-mako-preprocessor-claims-a-variable-is-undefined" title="Permalink to this headline">¶</a></h3>
 <p>Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
-For example, <span class="math">\({\cal O}(\Delta x^2)\)</span> is valid LaTeX, but
+For example,</p>
+<div class="highlight-doconce"><div class="highlight"><pre>${\cal O}(\Delta x^2)$
+</pre></div>
+</div>
+<p>is valid LaTeX, but
 the dollar sign and curly braces confuse Mako. Rewrite such
-mathematics. It is wise to not use <tt class="docutils literal"><span class="pre">${</span></tt> anywhere in LaTeX mathematics.
+mathematics. It is wise to not use <code class="docutils literal"><span class="pre">${</span></code> anywhere in LaTeX mathematics.
 Create a newcommand if there are no other possible rewritings.
-A known common problem is <tt class="docutils literal"><span class="pre">${}^+$</span></tt> type of indication of superscripts.
-A suggested rewrite is <tt class="docutils literal"><span class="pre">$\,{}^+$</span></tt>.</p>
-<p>The error message will ask you to rerun <tt class="docutils literal"><span class="pre">doconce</span></tt> with
-<tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>, which will display the variable that is
+A known common problem is <code class="docutils literal"><span class="pre">${}^+$</span></code> type of indication of superscripts.
+A suggested rewrite is <code class="docutils literal"><span class="pre">$\,{}^+$</span></code>.</p>
+<p>The error message will ask you to rerun <code class="docutils literal"><span class="pre">doconce</span></code> with
+<code class="docutils literal"><span class="pre">--mako_strict_undefined</span></code>, which will display the variable that is
 confusing Mako. Sometimes the variable is printed, sometimes a totally
 different name is said to be undefined. This is confusing, because
 then you have to use the bisection method below to narrow down the
 problem yourself.</p>
-<p>Do not continue to use <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> while you are
+<p>Do not continue to use <code class="docutils literal"><span class="pre">--mako_strict_undefined</span></code> while you are
 debugging because this variable or a new variable will then always be
-undefined in that mode.  Rerun without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt> to
+undefined in that mode.  Rerun without <code class="docutils literal"><span class="pre">--mako_strict_undefined</span></code> to
 see if the problem is gone. If not, try the option again, and if no
-progress, use <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></tt> directives to comment out large portions of
+progress, use <code class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span></code> directives to comment out large portions of
 the text and apply a bisection procedure to locate where the Mako
-problem is (without <tt class="docutils literal"><span class="pre">--mako_strict_undefined</span></tt>).  A bisection procedure
+problem is (without <code class="docutils literal"><span class="pre">--mako_strict_undefined</span></code>).  A bisection procedure
 means that you comment out the last half, find in which half the
 problem is, comment out half of that half, find in which half the
 problem is, and so on. The procedure converges pretty quickly, even
@@ -639,8 +672,8 @@ for large books.</p>
 </div>
 <div class="section" id="something-goes-wrong-in-the-preprocessing-step">
 <h3>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h3>
-<p>You can examine <tt class="docutils literal"><span class="pre">tmp_preprocess__filename</span></tt> and <tt class="docutils literal"><span class="pre">tmp_mako__filename</span></tt>,
-where <tt class="docutils literal"><span class="pre">filename</span></tt> is the complete name of the DocOnce file, to see
+<p>You can examine <code class="docutils literal"><span class="pre">tmp_preprocess__filename</span></code> and <code class="docutils literal"><span class="pre">tmp_mako__filename</span></code>,
+where <code class="docutils literal"><span class="pre">filename</span></code> is the complete name of the DocOnce file, to see
 what the preprocessors actually to and if something is wrong in these
 files before DocOnce starts translating the text.
 One or both of those files may be missing, but examine the beginning
@@ -665,19 +698,19 @@ movie, because the code or math block is indented and then become
 parts of such constructions. Either the block becomes invisible or
 error messages are issued.</p>
 <p>Sometimes reST reports an &#8220;Unexpected indentation&#8221; at the beginning of
-a code block. If you see a <tt class="docutils literal"><span class="pre">!bc</span></tt>, which should have been removed when
-running <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">sphinx</span></tt>, it is usually an error in the DocOnce
+a code block. If you see a <code class="docutils literal"><span class="pre">!bc</span></code>, which should have been removed when
+running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">sphinx</span></code>, it is usually an error in the DocOnce
 source, or a problem with the rst/sphinx translator.  Check if the
 line before the code block ends in one colon (not two!), a question
 mark, an exclamation mark, a comma, a period, or just a newline/space
 after text. If not, make sure that the ending is among the
-mentioned. Then <tt class="docutils literal"><span class="pre">!bc</span></tt> will most likely be replaced and a double colon
+mentioned. Then <code class="docutils literal"><span class="pre">!bc</span></code> will most likely be replaced and a double colon
 at the preceding line will appear (which is the right way in reST to
 indicate a verbatim block of text).</p>
 </div>
 <div class="section" id="strange-errors-around-code-or-tex-blocks-in-rest">
 <h3>Strange errors around code or TeX blocks in reST<a class="headerlink" href="#strange-errors-around-code-or-tex-blocks-in-rest" title="Permalink to this headline">¶</a></h3>
-<p>If <tt class="docutils literal"><span class="pre">idx</span></tt> commands for defining indices are placed inside paragraphs,
+<p>If <code class="docutils literal"><span class="pre">idx</span></code> commands for defining indices are placed inside paragraphs,
 and especially right before a code block, the reST translator
 (rst and sphinx formats) may get confused and produce strange
 code blocks that cause errors when the reST text is transformed to
@@ -694,13 +727,13 @@ the block (this is important for reST and similar
 <h3>Code/TeX block is not shown in reST format<a class="headerlink" href="#code-tex-block-is-not-shown-in-rest-format" title="Permalink to this headline">¶</a></h3>
 <p>A comment right before a code or tex block will treat the whole
 block also as a comment. It is important that there is normal
-running text right before <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!bc</span></tt> environments.</p>
+running text right before <code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!bc</span></code> environments.</p>
 </div>
 <div class="section" id="verbatim-code-blocks-inside-lists-look-ugly">
 <h3>Verbatim code blocks inside lists look ugly<a class="headerlink" href="#verbatim-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h3>
 <p>Read the Section <em>Blocks of Verbatim Computer Code</em> in
 the DocOnce manual.  Start the
-<tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> tags in column 1 of the file, and be careful with
+<code class="docutils literal"><span class="pre">!bc</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code> tags in column 1 of the file, and be careful with
 indenting the surrounding plain text of the list item correctly. If
 you cannot resolve the problem this way, get rid of the list and use
 paragraph headings instead. In fact, that is what is recommended:
@@ -709,7 +742,7 @@ avoid verbatim code blocks inside lists (it makes life easier).</p>
 <div class="section" id="latex-code-blocks-inside-lists-look-ugly">
 <h3>LaTeX code blocks inside lists look ugly<a class="headerlink" href="#latex-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h3>
 <p>Same solution as for computer code blocks as described in the
-previous paragraph. Make sure the <tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt> tags are in column 1
+previous paragraph. Make sure the <code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!et</span></code> tags are in column 1
 and that the rest of the non-LaTeX surrounding text is correctly indented.
 Using paragraphs instead of list items is a good idea also here.</p>
 </div>
@@ -727,7 +760,7 @@ def f(x):
 <p>the generated LaTeX code is correct, but it is translated to PDF in
 a wrong way such that the heading appears <em>after</em> the code.
 A remedy is to insert some text after the paragraph heading.
-See also the section <a class="reference internal" href="#trouble-bsol-code"><em>Solution heading in exercise solutions appear after the solution content</em></a> - it is the same problem.</p>
+See also the section <a class="reference internal" href="#trouble-bsol-code"><span>Solution heading in exercise solutions appear after the solution content</span></a> - it is the same problem.</p>
 </div>
 </div>
 <div class="section" id="problems-with-rest-sphinx-output">
@@ -735,8 +768,8 @@ See also the section <a class="reference internal" href="#trouble-bsol-code"><em
 <div class="section" id="title-level-inconsistent">
 <h3>Title level inconsistent<a class="headerlink" href="#title-level-inconsistent" title="Permalink to this headline">¶</a></h3>
 <p>reST does not like jumps in the levels of headings. For example, you cannot
-have a <tt class="docutils literal"><span class="pre">===</span></tt> (paragraph) heading after a <tt class="docutils literal"><span class="pre">=======</span></tt> (section) heading without
-a <tt class="docutils literal"><span class="pre">====</span></tt> (subsection) heading in between.</p>
+have a <code class="docutils literal"><span class="pre">===</span></code> (paragraph) heading after a <code class="docutils literal"><span class="pre">=======</span></code> (section) heading without
+a <code class="docutils literal"><span class="pre">====</span></code> (subsection) heading in between.</p>
 </div>
 <div class="section" id="subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents">
 <h3>Subsection headings appear at the level of sections in the table of contents<a class="headerlink" href="#subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents" title="Permalink to this headline">¶</a></h3>
@@ -744,13 +777,13 @@ a <tt class="docutils literal"><span class="pre">====</span></tt> (subsection) h
 subsection level. Then the subsection is the highest level in that part,
 and it will then move up to the section level in the table of contents
 (this is done by Sphinx, and DocOnce has no influence on the process).</p>
-<p>After Oct 2014, DocOnce ignores by default the <tt class="docutils literal"><span class="pre">!split</span></tt> commands that the
+<p>After Oct 2014, DocOnce ignores by default the <code class="docutils literal"><span class="pre">!split</span></code> commands that the
 user has inserted and performs a split at the highest section level,
 which means that chapters constitute the parts of the
 document, if chapters are present, otherwise the sections represent the
-different parts. If this behavior is not desired and the user&#8217;s <tt class="docutils literal"><span class="pre">!split</span></tt>
+different parts. If this behavior is not desired and the user&#8217;s <code class="docutils literal"><span class="pre">!split</span></code>
 commands are to be respected, provide the command-line argument
-<tt class="docutils literal"><span class="pre">--sphinx_keep_splits</span></tt> in the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command.</p>
+<code class="docutils literal"><span class="pre">--sphinx_keep_splits</span></code> in the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command.</p>
 </div>
 <div class="section" id="lists-do-not-appear-in-rst-files">
 <h3>Lists do not appear in .rst files<a class="headerlink" href="#lists-do-not-appear-in-rst-files" title="Permalink to this headline">¶</a></h3>
@@ -771,18 +804,18 @@ therefore be ignorned.</p>
 </div>
 <div class="section" id="inconsistent-headings-in-rest">
 <h3>Inconsistent headings in reST<a class="headerlink" href="#inconsistent-headings-in-rest" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">rst2*.py</span></tt> and Sphinx converters abort if the headers of sections
+<p>The <code class="docutils literal"><span class="pre">rst2*.py</span></code> and Sphinx converters abort if the headers of sections
 are not consistent, i.e., a subsection must come under a section,
 and a subsubsection must come under a subsection (you cannot have
-a subsubsection directly under a section). Search for <tt class="docutils literal"><span class="pre">===</span></tt>,
+a subsubsection directly under a section). Search for <code class="docutils literal"><span class="pre">===</span></code>,
 count the number of equality signs (or underscores if you use that)
 and make sure they decrease by two every time a lower level is encountered.</p>
 </div>
 <div class="section" id="no-code-environment-appears-before-bc-ipy-blocks">
 <h3>No code environment appears before &#8220;bc ipy&#8221; blocks<a class="headerlink" href="#no-code-environment-appears-before-bc-ipy-blocks" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">ipy</span></tt> directive behaves this way for <tt class="docutils literal"><span class="pre">sphinx</span></tt> output because
+<p>The <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">ipy</span></code> directive behaves this way for <code class="docutils literal"><span class="pre">sphinx</span></code> output because
 interactive sessions are automatically handled. If this is not
-appropriate, shift to <tt class="docutils literal"><span class="pre">!bc</span> <span class="pre">cod</span></tt> or another specification of the
+appropriate, shift to <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">cod</span></code> or another specification of the
 verbatim environment.</p>
 </div>
 </div>
@@ -790,7 +823,7 @@ verbatim environment.</p>
 <h2>Problems with LaTeX Output<a class="headerlink" href="#problems-with-latex-output" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sphinx-and-html-show-pygmetized-code-but-not-latex">
 <h3>Sphinx and HTML show pygmetized code, but not LaTeX<a class="headerlink" href="#sphinx-and-html-show-pygmetized-code-but-not-latex" title="Permalink to this headline">¶</a></h3>
-<p>You have to explicitly select the <tt class="docutils literal"><span class="pre">minted</span></tt> environment when running <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
+<p>You have to explicitly select the <code class="docutils literal"><span class="pre">minted</span></code> environment when running <code class="docutils literal"><span class="pre">ptex2tex</span></code>
 to get pygmentized computer code in LaTeX:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce ptex2tex mydoc envir=minted
 Terminal&gt; pdflatex -shell-escape mydoc
@@ -817,7 +850,7 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 </div>
 <div class="section" id="how-can-i-have-unnumbered-sections">
 <h3>How can I have unnumbered sections?<a class="headerlink" href="#how-can-i-have-unnumbered-sections" title="Permalink to this headline">¶</a></h3>
-<p>Use the <tt class="docutils literal"><span class="pre">--section_numbering=off</span></tt> option:</p>
+<p>Use the <code class="docutils literal"><span class="pre">--section_numbering=off</span></code> option:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --section_numbering=off
 </pre></div>
 </div>
@@ -825,17 +858,17 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 <div class="section" id="error-when-running-latex-you-must-have-pygmentize-installed">
 <h3>Error when running latex: You must have &#8216;pygmentize&#8217; installed<a class="headerlink" href="#error-when-running-latex-you-must-have-pygmentize-installed" title="Permalink to this headline">¶</a></h3>
 <p>This message points to the use of the minted style for typesetting verbatim
-code. You need to include the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> command-line argument when
-running <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt>:</p>
+code. You need to include the <code class="docutils literal"><span class="pre">-shell-escape</span></code> command-line argument when
+running <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex -shell-escape file mydoc.tex
 Terminal&gt; pdflatex -shell-escape file mydoc.tex
 </pre></div>
 </div>
-<p>Using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> will turn on the minted style if specified as
-environment on the command line, while using <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> requires the
-preprocessor option <tt class="docutils literal"><span class="pre">-DMINTED</span></tt> to turn on the minted package.
-When this package is included, <tt class="docutils literal"><span class="pre">latex</span></tt> or <tt class="docutils literal"><span class="pre">pdflatex</span></tt> runs the
-<tt class="docutils literal"><span class="pre">pygmentize</span></tt> program and the <tt class="docutils literal"><span class="pre">shell-escape</span></tt> option is required.</p>
+<p>Using <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> will turn on the minted style if specified as
+environment on the command line, while using <code class="docutils literal"><span class="pre">ptex2tex</span></code> requires the
+preprocessor option <code class="docutils literal"><span class="pre">-DMINTED</span></code> to turn on the minted package.
+When this package is included, <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code> runs the
+<code class="docutils literal"><span class="pre">pygmentize</span></code> program and the <code class="docutils literal"><span class="pre">shell-escape</span></code> option is required.</p>
 </div>
 <div class="section" id="why-are-the-latex-section-headings-smaller-than-normal">
 <h3>Why are the LaTeX section headings smaller than normal?<a class="headerlink" href="#why-are-the-latex-section-headings-smaller-than-normal" title="Permalink to this headline">¶</a></h3>
@@ -851,8 +884,8 @@ Terminal&gt; doconce subst &#39;\\usepack.+\{titlesec\} &#39;&#39; mydoc.p.tex
 </pre></div>
 </div>
 <p>You can easily make the headings even smaller than the normal font
-by replacing <tt class="docutils literal"><span class="pre">[compact]</span></tt> by <tt class="docutils literal"><span class="pre">[compact,small]</span></tt> as parameter specification
-for <tt class="docutils literal"><span class="pre">titlesec</span></tt>.</p>
+by replacing <code class="docutils literal"><span class="pre">[compact]</span></code> by <code class="docutils literal"><span class="pre">[compact,small]</span></code> as parameter specification
+for <code class="docutils literal"><span class="pre">titlesec</span></code>.</p>
 </div>
 <div class="section" id="i-get-latex-compilation-errors-about-shadedquoteblue-in-code-blocks-in-exercises">
 <h3>I get LaTeX compilation errors about &#8220;shadedquoteBlue&#8221; in code blocks in exercises<a class="headerlink" href="#i-get-latex-compilation-errors-about-shadedquoteblue-in-code-blocks-in-exercises" title="Permalink to this headline">¶</a></h3>
@@ -864,32 +897,32 @@ exercises, problems, or projects.</p>
 </div>
 <div class="section" id="i-get-compilation-error-due-to-pause-commands">
 <h3>I get compilation error due to pause commands<a class="headerlink" href="#i-get-compilation-error-due-to-pause-commands" title="Permalink to this headline">¶</a></h3>
-<p>The <tt class="docutils literal"><span class="pre">|\pause|</span></tt> commands are intended for popping up code segments
-in slides. If you compile the document without having run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">slides_beamer</span></tt> first, standard LaTeX have a problem with <tt class="docutils literal"><span class="pre">|\pause|</span></tt>. The remedy is
+<p>The <code class="docutils literal"><span class="pre">|\pause|</span></code> commands are intended for popping up code segments
+in slides. If you compile the document without having run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">slides_beamer</span></code> first, standard LaTeX have a problem with <code class="docutils literal"><span class="pre">|\pause|</span></code>. The remedy is
 to just remove these commands by</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce subst &#39;\|\\pause\|\n&#39; &#39;&#39; mydoc.tex
 </pre></div>
 </div>
-<p>before running <tt class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">mydoc</span></tt>.</p>
+<p>before running <code class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">mydoc</span></code>.</p>
 </div>
 <div class="section" id="the-cell-structure-in-slides-does-not-work-for-me">
 <h3>The cell structure in slides does not work for me ...<a class="headerlink" href="#the-cell-structure-in-slides-does-not-work-for-me" title="Permalink to this headline">¶</a></h3>
 <p>Common errors:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Empty cells? No cell can be empty. Just insert a comment <tt class="docutils literal"><span class="pre">#</span> <span class="pre">Empty</span> <span class="pre">cell</span></tt>
+<li>Empty cells? No cell can be empty. Just insert a comment <code class="docutils literal"><span class="pre">#</span> <span class="pre">Empty</span> <span class="pre">cell</span></code>
 to make it non-empty.</li>
 <li>Wrong numbering of the cells. They go 00, 01, 02, 10, 11, etc.</li>
 </ul>
 </div></blockquote>
 <p>Also, text outside the slidecell boxes <em>are not shown</em> in the slide.
-Everything you want to see must be inside the cells. Use <tt class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></tt>
+Everything you want to see must be inside the cells. Use <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code>
 repeatedly to insert vertical spacings inside cells.</p>
 </div>
 <div class="section" id="can-i-have-latex-figures-with-shadows">
 <h3>Can I have LaTeX figures with shadows?<a class="headerlink" href="#can-i-have-latex-figures-with-shadows" title="Permalink to this headline">¶</a></h3>
-<p>This is easy by including the <tt class="docutils literal"><span class="pre">fancybox</span></tt> and <tt class="docutils literal"><span class="pre">graphicx</span></tt> packages
-and wrapping all <tt class="docutils literal"><span class="pre">\includegraphics</span></tt> in a shadow box:</p>
+<p>This is easy by including the <code class="docutils literal"><span class="pre">fancybox</span></code> and <code class="docutils literal"><span class="pre">graphicx</span></code> packages
+and wrapping all <code class="docutils literal"><span class="pre">\includegraphics</span></code> in a shadow box:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc
 Terminal&gt; doconce replace \
           &#39;microtype}&#39;, &#39;microtype,fancybox,graphicx}&#39; mydoc.p.tex
@@ -903,7 +936,7 @@ Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \
 <p>See the section <em>Example: Defining a Theorem Environment</em> in
 the DocOnce manual for how to make a custom
 theorem environment also in DocOnce, without using implementations
-restricted to LaTeX. See also the section <a class="reference internal" href="#trouble-latex-envir-native"><em>How can I make use of a native LaTeX environments (example environemt for instance)?</em></a>.</p>
+restricted to LaTeX. See also the section <a class="reference internal" href="#trouble-latex-envir-native"><span>How can I make use of a native LaTeX environments (example environemt for instance)?</span></a>.</p>
 </div>
 <div class="section" id="the-latex-file-does-not-compile">
 <h3>The LaTeX file does not compile<a class="headerlink" href="#the-latex-file-does-not-compile" title="Permalink to this headline">¶</a></h3>
@@ -917,7 +950,7 @@ that all inline verbatim text appears on the same line.</p>
 </div>
 <div class="section" id="the-latex-beamer-file-does-not-compile">
 <h3>The LaTeX Beamer file does not compile<a class="headerlink" href="#the-latex-beamer-file-does-not-compile" title="Permalink to this headline">¶</a></h3>
-<p>Make sure you have a <tt class="docutils literal"><span class="pre">!split</span></tt> before every slide heading.</p>
+<p>Make sure you have a <code class="docutils literal"><span class="pre">!split</span></code> before every slide heading.</p>
 </div>
 <div class="section" id="inline-verbatim-gives-error">
 <h3>Inline verbatim gives error<a class="headerlink" href="#inline-verbatim-gives-error" title="Permalink to this headline">¶</a></h3>
@@ -939,7 +972,7 @@ blocks - that is safe.</p>
 around math, and similar LaTeX syntax errors.</p>
 <p>(Note that verbatim font is likely to cause trouble inside figure captions,
 but DocOnce will automatically replace verbatim text in back-ticks by
-a proper <tt class="docutils literal"><span class="pre">texttt</span></tt> command (since verbatim font constructions does not work
+a proper <code class="docutils literal"><span class="pre">texttt</span></code> command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)</p>
 </div>
 <div class="section" id="i-want-to-tune-the-top-preamble-of-the-latex-file">
@@ -949,22 +982,22 @@ a customized preamble text:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex
 </pre></div>
 </div>
-<p>If <tt class="docutils literal"><span class="pre">mytop.tex</span></tt> starts with a <tt class="docutils literal"><span class="pre">documentclass</span></tt> specification, the whole
-file becomes the complete preamble in <tt class="docutils literal"><span class="pre">mydoc.p.tex</span></tt>, otherwise
-<tt class="docutils literal"><span class="pre">mytop.tex</span></tt> is added at the end of the preamble generated by
+<p>If <code class="docutils literal"><span class="pre">mytop.tex</span></code> starts with a <code class="docutils literal"><span class="pre">documentclass</span></code> specification, the whole
+file becomes the complete preamble in <code class="docutils literal"><span class="pre">mydoc.p.tex</span></code>, otherwise
+<code class="docutils literal"><span class="pre">mytop.tex</span></code> is added at the end of the preamble generated by
 DocOnce.</p>
 <p>If you already have some preamble that defines styles etc., I recommend
-to generate a <tt class="docutils literal"><span class="pre">.tex</span></tt> file from DocOnce and merge the preamble you have
-with the one generated by DocOnce. When the <tt class="docutils literal"><span class="pre">.tex</span></tt> file compiles with
+to generate a <code class="docutils literal"><span class="pre">.tex</span></code> file from DocOnce and merge the preamble you have
+with the one generated by DocOnce. When the <code class="docutils literal"><span class="pre">.tex</span></code> file compiles with
 the desired preamble, store it in a separate file and
-use it with the <tt class="docutils literal"><span class="pre">--latex_preamble=</span></tt> option. (This approach will for
+use it with the <code class="docutils literal"><span class="pre">--latex_preamble=</span></code> option. (This approach will for
 fix the preamble for the future so updates of the DocOnce-generated
 preamble will not be available for this document.)</p>
-<p>Note also that <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt> and <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> can be used
-after <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">formt</span></tt> to tune the LaTeX code in the preamble (and
+<p>Note also that <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> and <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> can be used
+after <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">formt</span></code> to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.</p>
-<p>There are comment lines with <tt class="docutils literal"><span class="pre">---</span> <span class="pre">begin</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> and
-<tt class="docutils literal"><span class="pre">---</span> <span class="pre">end</span> <span class="pre">preamble</span> <span class="pre">---</span></tt> in the generate <tt class="docutils literal"><span class="pre">.p.tex</span></tt> file that can be
+<p>There are comment lines with <code class="docutils literal"><span class="pre">---</span> <span class="pre">begin</span> <span class="pre">preamble</span> <span class="pre">---</span></code> and
+<code class="docutils literal"><span class="pre">---</span> <span class="pre">end</span> <span class="pre">preamble</span> <span class="pre">---</span></code> in the generate <code class="docutils literal"><span class="pre">.p.tex</span></code> file that can be
 used to replace the whole preamble by another text.</p>
 </div>
 <div class="section" id="solution-heading-in-exercise-solutions-appear-after-the-solution-content">
@@ -999,7 +1032,7 @@ def f(x):
 <div class="section" id="strange-nested-lists-in-gwiki">
 <h3>Strange nested lists in gwiki<a class="headerlink" href="#strange-nested-lists-in-gwiki" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce cannot handle nested lists correctly in the gwiki format.
-Use nonnested lists or edit the <tt class="docutils literal"><span class="pre">.gwiki</span></tt> file directly.</p>
+Use nonnested lists or edit the <code class="docutils literal"><span class="pre">.gwiki</span></code> file directly.</p>
 </div>
 <div class="section" id="lists-in-gwiki-look-ugly-in-the-gwiki-source">
 <h3>Lists in gwiki look ugly in the gwiki source<a class="headerlink" href="#lists-in-gwiki-look-ugly-in-the-gwiki-source" title="Permalink to this headline">¶</a></h3>
@@ -1020,22 +1053,22 @@ further.</p>
 <div><ul class="simple">
 <li>Two equations cannot have identical label (this error often arises
 from copying and pasting equations)</li>
-<li><tt class="docutils literal"><span class="pre">[</span></tt> and <tt class="docutils literal"><span class="pre">]</span></tt> brackets must sometimes be replaced by <tt class="docutils literal"><span class="pre">\lbrack</span></tt> and <tt class="docutils literal"><span class="pre">\rbrack</span></tt></li>
+<li><code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code> brackets must sometimes be replaced by <code class="docutils literal"><span class="pre">\lbrack</span></code> and <code class="docutils literal"><span class="pre">\rbrack</span></code></li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="how-can-i-change-the-layout-of-the-html-page">
 <h3>How can I change the layout of the HTML page?<a class="headerlink" href="#how-can-i-change-the-layout-of-the-html-page" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="autoedits-of-the-html-file">
-<h4>Autoedits of the <tt class="docutils literal"><span class="pre">.html</span></tt> file<a class="headerlink" href="#autoedits-of-the-html-file" title="Permalink to this headline">¶</a></h4>
+<h4>Autoedits of the <code class="docutils literal"><span class="pre">.html</span></code> file<a class="headerlink" href="#autoedits-of-the-html-file" title="Permalink to this headline">¶</a></h4>
 <p>The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 DocOnce document to HTML. The edits should therefore be automated
-using <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></tt> (for regular expression editing) or <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></tt>
+using <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> (for regular expression editing) or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code>
 (for plain text substitution editing) commands in the file where
-you run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></tt>. For example, say you want narrower
-gray admonition boxes with a much thicker boundary. The <tt class="docutils literal"><span class="pre">.alert</span></tt>
-style must then be changed, more precisely the <tt class="docutils literal"><span class="pre">border</span></tt> and the <tt class="docutils literal"><span class="pre">width</span></tt>
+you run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></code>. For example, say you want narrower
+gray admonition boxes with a much thicker boundary. The <code class="docutils literal"><span class="pre">.alert</span></code>
+style must then be changed, more precisely the <code class="docutils literal"><span class="pre">border</span></code> and the <code class="docutils literal"><span class="pre">width</span></code>
 specification:</p>
 <div class="highlight-bash"><div class="highlight"><pre>doconce replace <span class="s1">&#39;border:1px&#39;</span> <span class="s1">&#39;border:11px&#39;</span> mydoc.html
 doconce replace <span class="s1">&#39;width: 75%;&#39;</span> <span class="s1">&#39;width: 35%&#39;</span> mydoc.html
@@ -1043,21 +1076,21 @@ doconce replace <span class="s1">&#39;width: 75%;&#39;</span> <span class="s1">&
 </div>
 </div>
 <div class="section" id="specify-a-css-file">
-<h4>Specify a <tt class="docutils literal"><span class="pre">.css</span></tt> file<a class="headerlink" href="#specify-a-css-file" title="Permalink to this headline">¶</a></h4>
+<h4>Specify a <code class="docutils literal"><span class="pre">.css</span></code> file<a class="headerlink" href="#specify-a-css-file" title="Permalink to this headline">¶</a></h4>
 <p>Another way to control the layout is to copy the style in the HTML
-file into a <tt class="docutils literal"><span class="pre">.css</span></tt> file, edit that file as you like, and provide the
-file as part of the compilation using the <tt class="docutils literal"><span class="pre">--css=mystyle.css</span></tt>
+file into a <code class="docutils literal"><span class="pre">.css</span></code> file, edit that file as you like, and provide the
+file as part of the compilation using the <code class="docutils literal"><span class="pre">--css=mystyle.css</span></code>
 flag. For example, say you want to transform the headings to something
-attractive for young girls (white text on pink background). A <tt class="docutils literal"><span class="pre">.css</span></tt>
+attractive for young girls (white text on pink background). A <code class="docutils literal"><span class="pre">.css</span></code>
 file can be written from scratch, but one can also generate one from
 one of the built-in DocOnce HTML styles by running</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --css=pink.css \
           --html_style=blueish
 </pre></div>
 </div>
-<p>The result is a new file <tt class="docutils literal"><span class="pre">pink.css</span></tt> containing the specification
-of the <tt class="docutils literal"><span class="pre">blueish</span></tt> style. One can now change this <tt class="docutils literal"><span class="pre">pink.css</span></tt> file
-to <tt class="docutils literal"><span class="pre">h1</span></tt> headings with pink background and white text, <tt class="docutils literal"><span class="pre">h2</span></tt> and <tt class="docutils literal"><span class="pre">h3</span></tt>
+<p>The result is a new file <code class="docutils literal"><span class="pre">pink.css</span></code> containing the specification
+of the <code class="docutils literal"><span class="pre">blueish</span></code> style. One can now change this <code class="docutils literal"><span class="pre">pink.css</span></code> file
+to <code class="docutils literal"><span class="pre">h1</span></code> headings with pink background and white text, <code class="docutils literal"><span class="pre">h2</span></code> and <code class="docutils literal"><span class="pre">h3</span></code>
 headings with pink text, and pink color for visited or hovered hyperlinks:</p>
 <div class="highlight-html"><div class="highlight"><pre>h1 {
     font-family:&quot;comic sans ms&quot;;
@@ -1089,22 +1122,22 @@ a:hover, a:visited { color: #EA00FF; /* pink */ }
           --html_style=blueish
 </pre></div>
 </div>
-<p>will now render <tt class="docutils literal"><span class="pre">mydoc.html</span></tt> with pink headings and visited links.</p>
+<p>will now render <code class="docutils literal"><span class="pre">mydoc.html</span></code> with pink headings and visited links.</p>
 </div>
 <div class="section" id="specify-a-template">
 <h4>Specify a template<a class="headerlink" href="#specify-a-template" title="Permalink to this headline">¶</a></h4>
 <p>The standard of way of completely controlling the HTML format is to
 use an HTML template. The DocOnce source is then the body of text
-(leave out <tt class="docutils literal"><span class="pre">TITLE:</span></tt> to get HTML without a header and footer). The
-<tt class="docutils literal"><span class="pre">--html_template=filename</span></tt> command-line option will then embed the
+(leave out <code class="docutils literal"><span class="pre">TITLE:</span></code> to get HTML without a header and footer). The
+<code class="docutils literal"><span class="pre">--html_template=filename</span></code> command-line option will then embed the
 DocOnce text in the specified template file, where you can use style
 sheets and desired constructs in the header and footer.  The template
-can have &#8220;slots&#8221; for a title (<tt class="docutils literal"><span class="pre">%(title)s</span></tt>), a date (<tt class="docutils literal"><span class="pre">%(date)s</span></tt>), and
-the main body of text (<tt class="docutils literal"><span class="pre">%(main)s</span></tt>).  For typesetting code, <tt class="docutils literal"><span class="pre">pygments</span></tt>
-is used (if installed) and can be turned off by <tt class="docutils literal"><span class="pre">--no_pygments_html</span></tt>
+can have &#8220;slots&#8221; for a title (<code class="docutils literal"><span class="pre">%(title)s</span></code>), a date (<code class="docutils literal"><span class="pre">%(date)s</span></code>), and
+the main body of text (<code class="docutils literal"><span class="pre">%(main)s</span></code>).  For typesetting code, <code class="docutils literal"><span class="pre">pygments</span></code>
+is used (if installed) and can be turned off by <code class="docutils literal"><span class="pre">--no_pygments_html</span></code>
 (leaving code in gray boxes).</p>
 <p>The easiest way is to get fancy layouts in HTML is to
-use the <tt class="docutils literal"><span class="pre">sphinx</span></tt> format and one its many themes.</p>
+use the <code class="docutils literal"><span class="pre">sphinx</span></code> format and one its many themes.</p>
 </div>
 </div>
 <div class="section" id="why-do-figures-look-ugly-when-using-html-templates">
@@ -1118,7 +1151,7 @@ simply by automatic editing of the HTML code in a little shell script:</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce replace &#39;&lt;p class=&quot;caption&quot;&gt;&#39; \
  &#39;&lt;p style=&quot;width: 50%; font-style: italic; color: blue&quot;&gt;&#39; mydoc.html
 doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
- &#39;&lt;hr style=&quot;width: 50%&quot;&gt;&#39; mydoc.html
+ &#39;&lt;hr style=&quot;width:60%, font-style: normal&quot;&gt;&#39; mydoc.html
 </pre></div>
 </div>
 </div>
@@ -1132,8 +1165,8 @@ with reveal HTML5, but it works in plain HTML).</p>
 </div>
 <div class="section" id="reveal-slides-are-stacked-on-top-of-each-other">
 <h3>Reveal slides are stacked on top of each other<a class="headerlink" href="#reveal-slides-are-stacked-on-top-of-each-other" title="Permalink to this headline">¶</a></h3>
-<p>This problem can be caused by having a <tt class="docutils literal"><span class="pre">!bblock</span></tt> environment crossing two
-slides because of a forgotten <tt class="docutils literal"><span class="pre">!eblock</span></tt> on the first slide.
+<p>This problem can be caused by having a <code class="docutils literal"><span class="pre">!bblock</span></code> environment crossing two
+slides because of a forgotten <code class="docutils literal"><span class="pre">!eblock</span></code> on the first slide.
 To locate the problematic slides, copy chunks of slides to a new file,
 compile, and inspect. This will reveal the problematic chunk.</p>
 </div>
@@ -1169,10 +1202,12 @@ clickable.</p>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
 <li><a class="reference internal" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
+<li><a class="reference internal" href="#preprocess-error-unexpected-eof-while-parsing">Preprocess error: unexpected EOF while parsing</a></li>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
 <li><a class="reference internal" href="#how-can-i-make-use-of-a-native-latex-environments-example-environemt-for-instance">How can I make use of a native LaTeX environments (example environemt for instance)?</a></li>
 <li><a class="reference internal" href="#how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers">How can I create a more tailored code environment in LaTeX than what DocOnce offers?</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
+<li><a class="reference internal" href="#how-do-i-get-figure-written-in-another-language">How do I get &#8220;Figure&#8221; written in another language?</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-mistakes-that-i-cannot-find">Spellcheck reports mistakes that I cannot find</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
 <li><a class="reference internal" href="#text-between-subexercises-are-moved">Text between subexercises are moved</a></li>
@@ -1187,7 +1222,7 @@ clickable.</p>
 <li><a class="reference internal" href="#strange-non-english-characters">Strange non-English characters</a></li>
 <li><a class="reference internal" href="#wrong-norwegian-charcters">Wrong Norwegian charcters</a></li>
 <li><a class="reference internal" href="#too-short-underlining-of-rest-headlines">Too short underlining of reST headlines</a></li>
-<li><a class="reference internal" href="#found-bt-but-no-tex-blocks-extracted-bug">Found <tt class="docutils literal"><span class="pre">!bt</span></tt> but no tex blocks extracted (BUG)</a></li>
+<li><a class="reference internal" href="#found-bt-but-no-tex-blocks-extracted-bug">Found <code class="docutils literal"><span class="pre">!bt</span></code> but no tex blocks extracted (BUG)</a></li>
 <li><a class="reference internal" href="#examples-are-typset-with-environment-delimiters-visible">Examples are typset with environment delimiters visible</a></li>
 <li><a class="reference internal" href="#emacs-editing-does-not-work-properly-because-of-regexp-overflow">Emacs editing does not work properly because of &#8220;regexp overflow&#8221;</a></li>
 <li><a class="reference internal" href="#my-machine-hangs-if-i-have-many-movies">My machine hangs if I have many movies</a></li>
@@ -1261,8 +1296,8 @@ clickable.</p>
 <li><a class="reference internal" href="#problems-with-html-output">Problems with HTML Output</a><ul>
 <li><a class="reference internal" href="#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
 <li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a><ul>
-<li><a class="reference internal" href="#autoedits-of-the-html-file">Autoedits of the <tt class="docutils literal"><span class="pre">.html</span></tt> file</a></li>
-<li><a class="reference internal" href="#specify-a-css-file">Specify a <tt class="docutils literal"><span class="pre">.css</span></tt> file</a></li>
+<li><a class="reference internal" href="#autoedits-of-the-html-file">Autoedits of the <code class="docutils literal"><span class="pre">.html</span></code> file</a></li>
+<li><a class="reference internal" href="#specify-a-css-file">Specify a <code class="docutils literal"><span class="pre">.css</span></code> file</a></li>
 <li><a class="reference internal" href="#specify-a-template">Specify a template</a></li>
 </ul>
 </li>
@@ -1306,21 +1341,20 @@ clickable.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="DocOnce Troubleshooting"
-             >previous</a> |</li>
-        <li><a href="index.html">DocOnce Troubleshooting</a> &raquo;</li> 
-      </ul>
-    </div>
     <div class="footer">
-        &copy; Copyright 2015, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+      &copy;2015, HPL.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
+      
+      |
+      <a href="_sources/trouble.txt"
+          rel="nofollow">Page source</a></li>
     </div>
+
+    
+
+    
   </body>
 </html>

@@ -148,6 +148,31 @@ More vertical space is obtained by repeated use of `<linebreak>`:
 <linebreak>
 !ec
 
+===== How do I get ``Figure'' written in another language? =====
+
+DocOnce documents can be written in any language, but figure captions
+typically contain the English word ``Figure''. This must be fixed
+by auto-editing the output file after translation by `doconce format`.
+
+In LaTeX you can use your native language package, e.g.,
+
+!bc sys
+doconce replace '% insert custom LaTeX commands...' '\\usepackage[norsk]{babel}
+!ec
+to get the Norwegian language.
+In other formats you have do more manual substitutions:
+
+!bc
+doconce replace Figure Figur mydoc.html
+doconce replace figure figur mydoc.html
+!ec
+or both in one command using regular expressions:
+
+!bc
+doconce stubst '([Ff]igur)e' '\g<1>' mydoc.html
+!ec
+
+
 ===== Spellcheck reports mistakes that I cannot find =====
 
 The `doconce spellcheck` command strips off a lot of text
@@ -503,7 +528,7 @@ This is a major problem with pressbooks.com.
    file that Mako sees: `tmp_preprocess__mydoc.do.txt` if
    the DocOnce file has name `mydoc.do.txt`.
  * Use double `##` (Mako comment) to comment out Mako calls
-   of the form `${name...}`.
+   to functions or Mako variables.
 
 ===== The Mako preprocessor is seemingly not run =====
 
@@ -559,9 +584,14 @@ Here are possible problems for Mako:
 
 ===== The Mako preprocessor claims a variable is undefined =====
 
+## Must read mako syntax from file to avoid disturbing mako...
+
 Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
-For example, ${\cal O}(\Delta x^2)$ is valid LaTeX, but
+For example,
+
+@@@CODE .mako_problem1.do.txt
+is valid LaTeX, but
 the dollar sign and curly braces confuse Mako. Rewrite such
 mathematics. It is wise to not use `${` anywhere in LaTeX mathematics.
 Create a newcommand if there are no other possible rewritings.
@@ -1070,7 +1100,7 @@ use an HTML template. The DocOnce source is then the body of text
 `--html_template=filename` command-line option will then embed the
 DocOnce text in the specified template file, where you can use style
 sheets and desired constructs in the header and footer.  The template
-can have "slots" for a title (`%(title)s`), a date (`%(date)s`), and
+can have ``slots'' for a title (`%(title)s`), a date (`%(date)s`), and
 the main body of text (`%(main)s`).  For typesetting code, `pygments`
 is used (if installed) and can be turned off by `--no_pygments_html`
 (leaving code in gray boxes).
@@ -1093,9 +1123,10 @@ simply by automatic editing of the HTML code in a little shell script:
 doconce replace '<p class="caption">' \
  '<p style="width: 50%; font-style: italic; color: blue">' mydoc.html
 doconce replace '<hr class="figure">' \
- '<hr style="width: 50%">' mydoc.html
+ '<hr style="width:60%, font-style: normal">' mydoc.html
 !ec
 
+### end
 
 ======= Problems with reveal/deck HTML5 slides =======
 
