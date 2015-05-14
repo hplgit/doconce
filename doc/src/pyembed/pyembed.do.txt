@@ -1,6 +1,12 @@
 TITLE: Demo of embedded symbolic math
-AUTHOR: HPL
+AUTHOR: Hans Petter Langtangen at Simula & University of Oslo
 DATE: today
+
+!bbox
+The following text was generated from a "DocOnce file": "https://github.com/hplgit/doconce/blob/master/doc/src/pyembed/pyembed.do.txt"
+where all mathematical computations are done in the background
+by SymPy.
+!ebox
 
 ## Mako in a nutshell:
 ## <% ... %> contains arbitrary Python code.
@@ -10,6 +16,8 @@ DATE: today
 ## with the ${...}$ syntax.
 
 # #ifdef INTERNAL
+## Here the Python code is embedded directly in Mako <% %> tags.
+## This is not recommended because debugging is quickly a nightmare.
 <%
 import sympy as sm
 x, y, a = sm.symbols('x y a')
@@ -19,10 +27,16 @@ step2 = sm.Integral(sm.Integralf, x).doit(), y)
 step3 = step2.doit()
 %>
 # #else
+## Here Python code is copied from a file. This is recommended
+## since the file can be debugged the normal way.
 <%
 # #include "src/ex1.py"
 %>
 # #endif
+
+## Note how we use variables from SymPy directly
+## in the text (here equations) with the ${sm.latex(var)}$
+## syntax.
 
 !bt
 \begin{align*}
@@ -31,6 +45,7 @@ ${sm.latex(step1)} &= ${sm.latex(step2)}\\
 \end{align*}
 !et
 
+## Let's solve a quadratic equation
 <%
 import sympy as sm
 x, y, a = sm.symbols('x y a')
@@ -44,5 +59,3 @@ The solution of $${sm.latex(sm.Eq(eq))}$ is
 !bt
 \[ x = ${sm.latex(s)} \]
 !et
-
-
