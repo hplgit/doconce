@@ -544,6 +544,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             new_code_cell, new_markdown_cell, new_notebook)
         cells = []
 
+    mdstr = []  # plain md format of the notebook
     prompt_number = 1
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
@@ -555,6 +556,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 nb.cells.append(new_text_cell(u'markdown', source=block))
             elif ipy_version == 4:
                 cells.append(new_markdown_cell(source=block))
+            mdstr.append(('markdown', block))
         elif block_tp == 'cell' and block != '' and block != []:
             if isinstance(block, list):
                 for block_ in block:
@@ -569,6 +571,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                                 source=block_,
                                 execution_count=prompt_number))
                         prompt_number += 1
+                        mdstr.append(('codecell', block_))
             else:
                 if block != '':
                     if ipy_version == 3:
@@ -581,6 +584,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                             source=block,
                             execution_count=prompt_number))
                     prompt_number += 1
+                    mdstr.append(('codecell', block))
         elif block_tp == 'cell_hidden' and block != '':
             if ipy_version == 3:
                 nb.cells.append(new_code_cell(
@@ -589,6 +593,16 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 cells.append(new_code_cell(
                     source=block, execution_count=prompt_number))
             prompt_number += 1
+            mdstr.append(('codecell', block))
+
+    f = open(dofile_basename + '.md-ipynb', 'w')
+    for cell_tp, block in mdstr:
+        if cell_tp == 'markdown':
+            f.write('\n-----\n\n')
+        elif cell_tp == 'codecell':
+            f.write('\n-----py\n\n')
+        f.write(block)
+    f.close()
 
     if ipy_version == 3:
         # Catch the title as the first heading

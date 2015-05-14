@@ -1,0 +1,716 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How to automatically generate Jupyter Notebooks">
+
+<title>How to automatically generate Jupyter Notebooks</title>
+
+<!-- Bootstrap style: bootstrap_bluegray -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_bootstrap/css/bootstrap_bluegray.css" rel="stylesheet">
+<!-- not necessary
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1,
+ 'sections': [(' Sample problem ', 1, None, '___sec0'),
+              (' The ascii notebook format ', 1, None, '___sec1'),
+              (' Cell delimiter lines ', 2, None, '___sec2'),
+              (' Include lines ', 2, None, '___sec3'),
+              (' Mako processing ', 2, None, '___sec4'),
+              (' Example on syntax ', 2, None, '___sec5'),
+              (' The compiled file ', 1, None, '___sec6'),
+              (' The generator code ', 1, None, '___sec7')]}
+end of tocinfo -->
+
+<body>
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="ipynb_generator.html">How to automatically generate Jupyter Notebooks</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Sample problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>The ascii notebook format</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Cell delimiter lines</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Include lines</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mako processing</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example on syntax</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;"><b>The compiled file</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>The generator code</b></a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<div class="jumbotron">
+<center><h1>How to automatically generate Jupyter Notebooks</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula</b></center>
+<center>[2] <b>University of Oslo</b></center>
+<p>
+<center><h4>May 14, 2015</h4></center> <!-- date -->
+
+<h2>Table of contents</h2>
+
+<p>
+<a href="#___sec0"> Sample problem </a><br>
+<a href="#___sec1"> The ascii notebook format </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Cell delimiter lines </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Include lines </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Mako processing </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> Example on syntax </a><br>
+<a href="#___sec6"> The compiled file </a><br>
+<a href="#___sec7"> The generator code </a><br>
+</p>
+<p>
+<b>Summary.</b> This note explains how to write your own notebook
+generator in Python such that you can write your notebook in
+plain ascii in your favorite editor and also use handy tools
+such as preprocessors to introduce variables into the text.
+
+<p>
+Ascii input is particularly useful if you have LaTeX code
+that you want to make use of in notebooks. Then you must
+translate the LaTeX code to the syntax described here and
+run the compiler to be described.
+
+<p>
+</div> <!-- end jumbotron -->
+
+<h1 id="___sec0">Sample problem </h1>
+
+<p>
+The notebook generator will be demonstrated through a specific example.
+The examples regards writing a report where we present a differential
+equation, solve it by SymPy, and show Python code for the solution and
+some computations. We introduce several variables: one
+for the initial condition, one for the author, one for the affiliation,
+as well as several variables computed in the SymPy code. These
+variables can be used in the running text by aid of Mako. The next
+section explains how this is done and presents the sample input text.
+
+<h1 id="___sec1">The ascii notebook format </h1>
+
+<h2 id="___sec2">Cell delimiter lines </h2>
+
+<p>
+We go for a very simple format: <code>-----</code> is delimiter lines between cells.
+Deliminter lines with an extension text <code>x</code>, as in <code>-----x</code>,
+indicates code cell in language <code>x</code>, where <code>x</code> is a short name for
+the language, typically the file extension: <code>py</code> for Python,
+<code>f</code> for Fortran, <code>c</code> for C, <code>cpp</code> for C++, <code>js</code> for JavaScript,
+<code>sh</code> for Bash or another Unix shell, <code>sys</code> for the console (terminal
+window),
+<code>java</code> for Java, <code>tex</code> for LaTeX or TeX, <code>html</code> for HTML, etc.
+If <code>x</code> is proceeded by <code>-t</code> it means that the cell is <em>not a code cell</em>,
+but a standard static Markdown code cell typeset within triple backticks
+as usual in Markdown. (Sometimes one wants to show code, but it is not
+intended to be executable.)
+
+<h2 id="___sec3">Include lines </h2>
+
+<p>
+It is handy to include other files in a document so we invent the
+syntax <code>#include &quot;filename&quot;</code> at the beginning of a line to include a file
+with name <code>filename</code>.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: the include syntax can be extended.</b>
+Since we are in charge of parsing the ascii input file, we can
+invent more sophisticated syntax for including files. For example,
+we may specify a start and an end line, either by numbers or
+preferably by regular expressions (which tend to be more robust in that
+they changes less often than line numbers).
+The syntax could be like
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">#include &quot;myprog.py&quot; fromto: from_regex@to_regex
+</pre></div>
+<p>
+However, this extension is not incorporated in the first version of
+the notebook generator. The example here merely indicates possible
+extensions of the generator.
+</div>
+
+
+<h2 id="___sec4">Mako processing </h2>
+
+<p>
+It is also very handy to run the text through a preprocessor that is
+a full-fledged template programming language of the type that is
+popular in the web world. Here we have chosen
+<a href="http://www.makotemplates.org" target="_self">Mako</a>. Running the text through Mako
+enables the use of variables, if-tests, and loops, to menition the
+most usual constructs. Pure Python function can be defined inside
+<code>&lt;%</code> and <code>%&gt;</code> and called
+in the code. Mako applies the syntax <code>${var}</code> for variables and
+<code>${myfunc(arg1, arg2=None)}</code> for function calls.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: put Python code in a separate file for testing!</b>
+Having lots of Python code inside <code>&lt;%</code> and <code>%&gt;</code> Mako tags is not
+recommended as debugging can be a nightmare. Instead, put the code
+in a file, say <code>myprog.py</code>, and include it:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">&lt;%
+#include &quot;myprog.py&quot;
+%&gt;
+</pre></div>
+<p>
+Then you can debug <code>myprog.py</code> as standard Python code, but call up
+its functions and use its global variables in the document's text (!).
+</div>
+
+
+<h2 id="___sec5">Example on syntax </h2>
+
+<p>
+Let us show a very simple document with some code, some math, and
+use of include and Mako. The task is to solve a differential equation
+by SymPy on the fly in the code and use SymPy output directly
+in the text. For this goal, we write the SymPy code in a separate
+file where a <code>dump</code> function can be used for heavily printing
+of intermediate results, but a global variable <code>allow_printing</code>
+determines whether printing is turned on and off: we want it on
+while debugging, but off when compiling our document.
+
+<p>
+The document starts with an author, his address, and the date, where
+author and address are Mako variables we can specify on the command line
+while compiling the document:
+
+<p>
+
+<!-- code=text (!bc txt) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">-----
+## Test of Jupyter Notebook generator
+
+**${NAME}**, ${ADDRESS}
+
+**May 14, 2015**
+</pre></div>
+<p>
+Note that a double <code>##</code> is a Mako comment line and it will not be a
+part of the final output from Mako. <code>IC</code> is another variable that must
+be specified on the command line (and fed to Mako) for the initial
+condition of the differential equation.
+
+<p>
+Next follows the math part where we have an included SymPy code
+to solve the math problem. The SymPy is in the file <code>.solve_dyeqy.py</code>:
+
+<p>
+
+<!-- code=python (!bc pypro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Solve y&#39;=y, y(0)=2 by sympy</span>
+<span style="color: #408080; font-style: italic"># This file is intended for being included via mako</span>
+<span style="color: #408080; font-style: italic"># in a document, but it is much easier to debug the</span>
+<span style="color: #408080; font-style: italic"># python code in a separate standard .py file.</span>
+<span style="color: #408080; font-style: italic"># Then we just include this file in the document inside</span>
+<span style="color: #408080; font-style: italic"># &lt;% ... %&gt; mako directives and set allow_printing=False.</span>
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">dump</span>(var):
+    <span style="color: #008000; font-weight: bold">if</span> allow_printing:
+        <span style="color: #008000; font-weight: bold">print</span> var
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>():
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sym</span>
+    t <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;t&#39;</span>, real<span style="color: #666666">=</span><span style="color: #008000">True</span>, positive<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    y <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;y&#39;</span>, cls<span style="color: #666666">=</span>sym<span style="color: #666666">.</span>Function)
+    <span style="color: #408080; font-style: italic"># Solve differential equation using dsolve</span>
+    eq <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>diff(y(t), t) <span style="color: #666666">-</span> y(t)
+    dump(eq)
+    sol <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>dsolve(eq)
+    dump(sol)
+    y <span style="color: #666666">=</span> sol<span style="color: #666666">.</span>rhs          <span style="color: #408080; font-style: italic"># grab right-hand side of equation</span>
+    <span style="color: #408080; font-style: italic"># Determine integration constant C1 from initial condition</span>
+    C1 <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;C1&#39;</span>)
+    y0 <span style="color: #666666">=</span> <span style="color: #666666">2</span>
+    eq <span style="color: #666666">=</span> y<span style="color: #666666">.</span>subs(t, <span style="color: #666666">0</span>) <span style="color: #666666">-</span> y0  <span style="color: #408080; font-style: italic"># equation for initial condition</span>
+    dump(eq)
+    sol <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>solve(eq, C1)     <span style="color: #408080; font-style: italic"># solve wrt C1</span>
+    dump(sol)
+    y <span style="color: #666666">=</span> y<span style="color: #666666">.</span>subs(C1, sol[<span style="color: #666666">0</span>])  <span style="color: #408080; font-style: italic"># insert C1=2 in solution</span>
+    dump(y)
+    y_func <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>lambdify([t], y, modules<span style="color: #666666">=</span><span style="color: #BA2121">&#39;numpy&#39;</span>)
+    <span style="color: #008000; font-weight: bold">return</span> sym<span style="color: #666666">.</span>latex(y), sym<span style="color: #666666">.</span>latex(sol[<span style="color: #666666">0</span>]), y_func
+
+<span style="color: #008000; font-weight: bold">if</span> __name__ <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;__main__&#39;</span>:
+    allow_printing <span style="color: #666666">=</span> <span style="color: #008000">True</span>
+    solve()
+</pre></div>
+<p>
+This is just standard Python code. The <code>__name__</code> variable equals
+<code>__builtin__</code> when we run this code inside Mako so then the test block
+is inactive. Instead, we can define <code>allow_printing = False</code>,
+call `solve(), and store its output in variables that we can access
+in the running text. Here is the syntax:
+
+<p>
+
+<!-- code=text (!bc txt) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">## Math
+
+This is a test notebook where we solve the following math
+problem:
+
+$$
+y&#39; = y,\quad y(0)=${IC}
+$$
+
+## Solve the problem by SymPy
+&lt;%
+## Make sure to test the Python file first!
+#include &quot;.solve_dyeqy.py&quot;
+allow_printing = False
+y_expr, C_expr, y_func = solve()
+%&gt;
+
+The equation is separable, and we find by standard methods
+that
+
+$$
+y(t) = ${y_expr}.
+$$
+The integration constant is found from the initial condition
+$y(0)=${IC}$ and equals in this case $${C_expr}$.
+</pre></div>
+<p>
+Note how we in the middle of math expressions use Mako variables taken
+from both the command line, such as <code>${IC}</code>, and from the
+Python code, such as <code>${y_expr}</code>!
+
+<p>
+We can now define some code cells for our solution. We want to
+create a Python code for the solution, using the SymPy variable
+<code>y_expr</code> and SymPy's ability to write the expression as it can
+work in a numerical Python function, here called <code>y(t)</code>.
+
+<p>
+
+<!-- code=text (!bc txt) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">## Code
+
+We implement the evaulation of $y(t)$ in Python:
+
+&lt;%
+## We use sympy to convert y_expr to a string to
+## be returned as Python code
+import sympy
+## Note that we have y_func which is a real Python
+## function, but here we make a similar one: y(t)
+## so the user can see it.
+%&gt;
+
+-----py
+from numpy import exp
+
+def y(t):
+    return ${sympy.printing.lambdarepr.lambdarpr(${y_expr})}
+
+## Try values
+y(0)
+-----py
+y(1), 2*exp(1)
+-----py
+y(2), 2*exp(2)
+</pre></div>
+<p>
+Finally, we show how to compile the ascii file into a Jupyter Notebook:
+
+<p>
+
+<!-- code=text (!bc txt) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">## Compilation
+-----
+This is how we run the notebook generator on files with
+extension `.aipynb`:
+
+## bash cell, but typeset as pure code
+-----sys-t
+Terminal&gt; ipynb_generator.py myfile.aipynb
+</pre></div>
+
+<h1 id="___sec6">The compiled file </h1>
+
+<p>
+The notebook after compiling the above input file with <code>ipynb_generator.py</code>
+looks as follows:
+
+<p>
+
+<!-- code=text (!bc txt) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">{
+ &quot;cells&quot;: [
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Test of Jupyter Notebook generator\n&quot;,
+    &quot;\n&quot;,
+    &quot;**Core Dump**, Seg. Fault Ltd and Univ. of C. Space\n&quot;,
+    &quot;\n&quot;,
+    &quot;**May 14, 2015**\n&quot;,
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;This is a test notebook where we solve the following math\n&quot;,
+    &quot;problem:\n&quot;,
+    &quot;\n&quot;,
+    &quot;$$\n&quot;,
+    &quot;y&#39; = y,\\quad y(0)=2\n&quot;,
+    &quot;$$\n&quot;,
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;The equation is separable, and we find by standard methods\n&quot;,
+    &quot;that\n&quot;,
+    &quot;\n&quot;,
+    &quot;$$\n&quot;,
+    &quot;y(t) = 2 e^{t}.\n&quot;,
+    &quot;$$\n&quot;,
+    &quot;The integration constant is found from the initial condition\n&quot;,
+    &quot;$y(0)=2$ and equals in this case $2$.\n&quot;,
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;We implement the evaulation of $y(t)$ in Python:\n&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {
+    &quot;collapsed&quot;: false
+   },
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;from numpy import exp\n&quot;,
+    &quot;\n&quot;,
+    &quot;def y(t):\n&quot;,
+    &quot;    return 2*exp(t)\n&quot;,
+    &quot;\n&quot;,
+    &quot;# Try values\n&quot;,
+    &quot;y(0)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {
+    &quot;collapsed&quot;: false
+   },
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;y(1), 2*exp(1)&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;code&quot;,
+   &quot;execution_count&quot;: null,
+   &quot;metadata&quot;: {
+    &quot;collapsed&quot;: false
+   },
+   &quot;outputs&quot;: [],
+   &quot;source&quot;: [
+    &quot;y(2), 2*exp(2)\n&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;This is how we run the notebook generator on files with\n&quot;,
+    &quot;extension `.aipynb`:\n&quot;
+   ]
+  },
+  {
+   &quot;cell_type&quot;: &quot;markdown&quot;,
+   &quot;metadata&quot;: {},
+   &quot;source&quot;: [
+    &quot;\n&quot;,
+    &quot;\n&quot;,
+    &quot;```Python\n&quot;,
+    &quot;\n&quot;,
+    &quot;Terminal&gt; ipynb_generator.py myfile.aipynb\n&quot;,
+    &quot;```\n&quot;
+   ]
+  }
+ ],
+ &quot;metadata&quot;: {},
+ &quot;nbformat&quot;: 4,
+ &quot;nbformat_minor&quot;: 0
+}
+</pre></div>
+<p>
+This notebook resides in GitHub and can be automatically
+"rendered there": "".
+
+<h1 id="___sec7">The generator code </h1>
+
+<p>
+We shall now list the code that translates the ascii input, with the
+special syntax explained, into a notebook. The algorithmic steps are
+
+<ol>
+<li> Read the file.</li>
+<li> Find all include lines and include text.</li>
+<li> Run Mako.</li>
+<li> Make a <code>cells</code> list of all cells., i.e., detect
+   the beginning of a new cell by the delimiter line <code>-----</code>.
+   The <code>cells</code> list consists of elements of 3-lists, where each
+   3-list has the cell type, a description, and all the lines of
+   the cell, as its three elements.</li>
+<li> When making a new element in <code>cells</code>, see if the delimiter
+   line has a language specification and therefore is a code cell,
+   or if it is a plain Markdown cell.</li>
+<li> Go through <code>cells</code> and join separate lines in each cell into a string.</li>
+<li> Import functions from <code>IPython.nbformat.v4</code> for translating
+   the information in the <code>cells</code> list into a cell list <code>nb_cells</code> suitable
+   for the nootebook.</li>
+<li> Write the <code>nb_cells</code> list to JSON format.</li>
+</ol>
+
+The <code>read</code> function looks as follows.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">read</span>(text, argv<span style="color: #666666">=</span>sys<span style="color: #666666">.</span>argv[<span style="color: #666666">2</span>:]):
+    lines <span style="color: #666666">=</span> text<span style="color: #666666">.</span>splitlines()
+    <span style="color: #408080; font-style: italic"># First read all include statements</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(lines)):
+        <span style="color: #008000; font-weight: bold">if</span> lines[i]<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;#include &quot;&#39;</span>):
+            filename <span style="color: #666666">=</span> lines[i]<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;&quot;&#39;</span>)[<span style="color: #666666">1</span>]
+            <span style="color: #008000; font-weight: bold">with</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;r&#39;</span>) <span style="color: #008000; font-weight: bold">as</span> f:
+                include_text <span style="color: #666666">=</span> f<span style="color: #666666">.</span>read()
+            lines[i] <span style="color: #666666">=</span> include_text
+    text <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">.</span>join(lines)
+
+    <span style="color: #408080; font-style: italic"># Run Mako</span>
+    mako_kwargs <span style="color: #666666">=</span> {}
+    <span style="color: #008000; font-weight: bold">for</span> arg <span style="color: #AA22FF; font-weight: bold">in</span> argv:
+        key, value <span style="color: #666666">=</span> arg<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;=&#39;</span>)
+        mako_kwargs[key] <span style="color: #666666">=</span> value
+
+    encoding <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;utf-8&#39;</span>
+    <span style="color: #008000; font-weight: bold">try</span>:
+        <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">mako</span>
+        has_mako <span style="color: #666666">=</span> <span style="color: #008000">True</span>
+    <span style="color: #008000; font-weight: bold">except</span> <span style="color: #D2413A; font-weight: bold">ImportError</span>:
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Cannot import mako - mako is not run&#39;</span>
+        has_mako <span style="color: #666666">=</span> <span style="color: #008000">False</span>
+
+    <span style="color: #008000; font-weight: bold">if</span> has_mako:
+        <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mako.template</span> <span style="color: #008000; font-weight: bold">import</span> Template
+        <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mako.lookup</span> <span style="color: #008000; font-weight: bold">import</span> TemplateLookup
+        lookup <span style="color: #666666">=</span> TemplateLookup(directories<span style="color: #666666">=</span>[os<span style="color: #666666">.</span>curdir])
+
+        text <span style="color: #666666">=</span> <span style="color: #008000">unicode</span>(text, encoding)
+        temp <span style="color: #666666">=</span> Template(text<span style="color: #666666">=</span>text, lookup<span style="color: #666666">=</span>lookup,
+                        strict_undefined<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+        text <span style="color: #666666">=</span> temp<span style="color: #666666">.</span>render(<span style="color: #666666">**</span>mako_kwargs)
+
+    <span style="color: #408080; font-style: italic"># Parse the cells</span>
+    lines <span style="color: #666666">=</span> text<span style="color: #666666">.</span>splitlines()
+    cells <span style="color: #666666">=</span> []
+    inside <span style="color: #666666">=</span> <span style="color: #008000">None</span>    <span style="color: #408080; font-style: italic"># indicates which type of cell we are inside</span>
+    fullname <span style="color: #666666">=</span> <span style="color: #008000">None</span>  <span style="color: #408080; font-style: italic"># full language name in code cells</span>
+    <span style="color: #008000; font-weight: bold">for</span> line <span style="color: #AA22FF; font-weight: bold">in</span> lines:
+        <span style="color: #008000; font-weight: bold">if</span> line<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;-----&#39;</span>):
+            <span style="color: #408080; font-style: italic"># New cell, what type?</span>
+            m <span style="color: #666666">=</span> re<span style="color: #666666">.</span>search(<span style="color: #BA2121">r&#39;-----([a-z0-9-]+)?&#39;</span>, line)
+            <span style="color: #008000; font-weight: bold">if</span> m:
+                shortname <span style="color: #666666">=</span> m<span style="color: #666666">.</span>group(<span style="color: #666666">1</span>)
+                <span style="color: #008000; font-weight: bold">if</span> shortname:
+                    <span style="color: #408080; font-style: italic"># Check if code is to be typeset as static</span>
+                    <span style="color: #408080; font-style: italic"># Markdown code (e.g., shortname=py-t)</span>
+                    astext <span style="color: #666666">=</span> shortname[<span style="color: #666666">-2</span>:] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;-t&#39;</span>
+                    <span style="color: #008000; font-weight: bold">if</span> astext:
+                        <span style="color: #408080; font-style: italic"># Markdown</span>
+                        shortname <span style="color: #666666">=</span> shortname[:<span style="color: #666666">-2</span>]
+                        inside <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;markdown&#39;</span>
+                        cells<span style="color: #666666">.</span>append([<span style="color: #BA2121">&#39;markdown&#39;</span>, <span style="color: #BA2121">&#39;code&#39;</span>, [<span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>]])
+                        cells[<span style="color: #666666">-1</span>][<span style="color: #666666">2</span>]<span style="color: #666666">.</span>append(<span style="color: #BA2121">&#39;```</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> fullname)
+                    <span style="color: #008000; font-weight: bold">else</span>:
+                        <span style="color: #408080; font-style: italic"># Code cell</span>
+                        <span style="color: #008000; font-weight: bold">if</span> shortname <span style="color: #AA22FF; font-weight: bold">in</span> shortname2language:
+                            fullname <span style="color: #666666">=</span> shortname2language[shortname]
+                        inside <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;codecell&#39;</span>
+                        cells<span style="color: #666666">.</span>append([<span style="color: #BA2121">&#39;codecell&#39;</span>, fullname, []])
+                <span style="color: #008000; font-weight: bold">else</span>:
+                    <span style="color: #408080; font-style: italic"># Markdown cell</span>
+                    inside <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;markdown&#39;</span>
+                    cells<span style="color: #666666">.</span>append([<span style="color: #BA2121">&#39;markdown&#39;</span>, <span style="color: #BA2121">&#39;text&#39;</span>, [<span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>]])
+            <span style="color: #008000; font-weight: bold">else</span>:
+                <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">SyntaxError</span>(
+                    <span style="color: #BA2121">&#39;Wrong syntax of cell delimiter:</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">&#39;</span>
+                    <span style="color: #666666">%</span> <span style="color: #008000">repr</span>(line))
+        <span style="color: #008000; font-weight: bold">else</span>:
+            <span style="color: #408080; font-style: italic"># Ordinary line in a cell</span>
+            <span style="color: #008000; font-weight: bold">if</span> inside <span style="color: #AA22FF; font-weight: bold">in</span> (<span style="color: #BA2121">&#39;markdown&#39;</span>, <span style="color: #BA2121">&#39;codecell&#39;</span>):
+                cells[<span style="color: #666666">-1</span>][<span style="color: #666666">2</span>]<span style="color: #666666">.</span>append(line)
+            <span style="color: #008000; font-weight: bold">else</span>:
+                <span style="color: #008000; font-weight: bold">raise</span> <span style="color: #D2413A; font-weight: bold">SyntaxError</span>(
+                    <span style="color: #BA2121">&#39;line</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">  </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">has not beginning cell delimiter&#39;</span>
+                    <span style="color: #666666">%</span> line)
+    <span style="color: #408080; font-style: italic"># Merge the lines in each cell to a string</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(cells)):
+        <span style="color: #008000; font-weight: bold">if</span> cells[i][<span style="color: #666666">0</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;markdown&#39;</span> <span style="color: #AA22FF; font-weight: bold">and</span> cells[i][<span style="color: #666666">1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;code&#39;</span>:
+            <span style="color: #408080; font-style: italic"># Add an ending ``` of code</span>
+            cells[i][<span style="color: #666666">2</span>]<span style="color: #666666">.</span>append(<span style="color: #BA2121">&#39;```</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span>)
+        cells[i][<span style="color: #666666">2</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&#39;</span><span style="color: #666666">.</span>join(cells[i][<span style="color: #666666">2</span>])
+    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pprint</span>
+    <span style="color: #008000; font-weight: bold">return</span> cells
+</pre></div>
+<p>
+The line <code>fullname = shortname2language[shortname]</code> is not easy
+to understand unless we have the definition of the dictionary
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic"># Mapping of shortnames like py to full language</span>
+<span style="color: #408080; font-style: italic"># name like python used by markdown/pandoc</span>
+shortname2language <span style="color: #666666">=</span> <span style="color: #008000">dict</span>(
+    py<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Python&#39;</span>, ipy<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Python&#39;</span>, pyshell<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Python&#39;</span>, cy<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Python&#39;</span>,
+    c<span style="color: #666666">=</span><span style="color: #BA2121">&#39;C&#39;</span>, cpp<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Cpp&#39;</span>, f<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Fortran&#39;</span>, f95<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Fortran95&#39;</span>,
+    rb<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Ruby&#39;</span>, pl<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Perl&#39;</span>, sh<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Shell&#39;</span>, js<span style="color: #666666">=</span><span style="color: #BA2121">&#39;JavaScript&#39;</span>, html<span style="color: #666666">=</span><span style="color: #BA2121">&#39;HTML&#39;</span>,
+    tex<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Tex&#39;</span>, sys<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Bash&#39;</span>,
+    )
+</pre></div>
+<p>
+The translation from a <code>cells</code> list to the similar list needed
+by the IPython notebook writing function is taken care of
+in the following function:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">write</span>(cells):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Turn cells list into valid IPython notebook code.&quot;&quot;&quot;</span>
+    <span style="color: #408080; font-style: italic"># Use IPython.nbformat functionality for writing the notebook</span>
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.nbformat.v4</span> <span style="color: #008000; font-weight: bold">import</span> (
+        new_code_cell, new_markdown_cell, new_notebook)
+    nb_cells <span style="color: #666666">=</span> []
+
+    <span style="color: #008000; font-weight: bold">for</span> cell_tp, language, block <span style="color: #AA22FF; font-weight: bold">in</span> cells:
+        <span style="color: #008000; font-weight: bold">if</span> cell_tp <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;markdown&#39;</span>:
+            nb_cells<span style="color: #666666">.</span>append(new_markdown_cell(source<span style="color: #666666">=</span>block))
+        <span style="color: #008000; font-weight: bold">elif</span> cell_tp <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;codecell&#39;</span>:
+            nb_cells<span style="color: #666666">.</span>append(new_code_cell(source<span style="color: #666666">=</span>block))
+
+    nb <span style="color: #666666">=</span> new_notebook(cells<span style="color: #666666">=</span>nb_cells)
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.nbformat</span> <span style="color: #008000; font-weight: bold">import</span> writes
+    filestr <span style="color: #666666">=</span> writes(nb, version<span style="color: #666666">=4</span>)
+    <span style="color: #008000; font-weight: bold">return</span> filestr
+</pre></div>
+<p>
+A driver or main program is needed:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">driver</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Compile a document and its variables.&quot;&quot;&quot;</span>
+    <span style="color: #008000; font-weight: bold">try</span>:
+        filename <span style="color: #666666">=</span> sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>]
+        <span style="color: #008000; font-weight: bold">with</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;r&#39;</span>) <span style="color: #008000; font-weight: bold">as</span> f:
+            text <span style="color: #666666">=</span> f<span style="color: #666666">.</span>read()
+    <span style="color: #008000; font-weight: bold">except</span> (<span style="color: #D2413A; font-weight: bold">IndexError</span>, <span style="color: #D2413A; font-weight: bold">IOError</span>) <span style="color: #008000; font-weight: bold">as</span> e:
+        <span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Usage: </span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"> filename&#39;</span> <span style="color: #666666">%</span> (sys<span style="color: #666666">.</span>argv[<span style="color: #666666">0</span>])
+        <span style="color: #008000; font-weight: bold">print</span> e
+        sys<span style="color: #666666">.</span>exit(<span style="color: #666666">1</span>)
+    cells <span style="color: #666666">=</span> read(text, argv<span style="color: #666666">=</span>sys<span style="color: #666666">.</span>argv[<span style="color: #666666">2</span>:])
+    filestr <span style="color: #666666">=</span> write(cells, <span style="color: #666666">3</span>)
+    filename <span style="color: #666666">=</span> filename[<span style="color: #666666">-5</span>:] <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;.ipynb&#39;</span>
+    <span style="color: #008000; font-weight: bold">with</span> <span style="color: #008000">open</span>(filename, <span style="color: #BA2121">&#39;w&#39;</span>) <span style="color: #008000; font-weight: bold">as</span> f:
+        f<span style="color: #666666">.</span>write(filestr)
+</pre></div>
+<p>
+The "true": "" file has support for notebook format version 3 and 4
+and contains also a lot of <code>logging</code> statements to help
+debugging.
+
+<p>
+<div class="alert alert-block alert-warning alert-text-normal"><b>Summary.</b>
+Hopefully, this example has shown
+
+<ol>
+<li> How to generate your input format to Jupyter notebooks.[[[</li>
+</ol>
+</div>
+
+
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+</body>
+</html>
+    
+

@@ -715,10 +715,10 @@ def syntax_check(filestr, format):
             sys.exit(1)
     """
 
-    pattern = r'__[A-Z][A-Za-z0-9,:` ]+__\.'
+    pattern = r'__[A-Z][A-Za-z0-9,:` ]+__[.?]'
     matches = re.findall(pattern, filestr)
     if matches:
-        print '\n*** error: wrong paragraphs'
+        print '\n*** error: wrong paragraph heading syntax: period outside __'
         print '\n'.join(matches)
         _abort()
 
@@ -4078,7 +4078,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 print '*** mako error: ${func(...)} calls undefined function "func",\ncheck all ${...} calls in the file(s) for possible typos and lack of includes!\n%s' % calls
                 _abort()
             else:
-                    # Just dump everything mako has
+                # Just dump everything mako has
                 print '*** mako error:'
                 filestr = temp.render(**mako_kwargs)
 
