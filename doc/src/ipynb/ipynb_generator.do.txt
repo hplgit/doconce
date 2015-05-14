@@ -5,31 +5,40 @@ DATE: today
 TOC: on
 
 __Summary.__ This note explains how to write your own notebook
-generator in Python such that you can write your notebook in
-plain ascii in your favorite editor and also use handy tools
-such as preprocessors to introduce variables into the text.
+generator in Python such that you can write a notebook in
+plain ascii in your favorite editor. Futhermore, we add
+functionality in this new notebook format such that you can
+introduce variables and other
+programming constructs into the text as well as run computations
+in the background while generating the notebook.
 
 Ascii input is particularly useful if you have LaTeX code
 that you want to make use of in notebooks. Then you must
 translate the LaTeX code to the syntax described here and
-run the compiler to be described.
+run the "compiler": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/ipynb_generator.py" to be described.
 
 ======= Sample problem =======
 
 The notebook generator will be demonstrated through a specific example.
-The examples regards writing a report where we present a differential
-equation, solve it by SymPy, and show Python code for the solution and
+on writing a little report where we 1) present a differential
+equation, 2) solve it by SymPy, and 3) show Python code for the solution and
 some computations. We show how the SymPy calculations can be
-done on the fly compiling the document: results in Python variables
+done on the fly while compiling the document: results in Python variables
+from the SymPy calculations
 are magically propagated into the text. (This functionality is quite
 similar to "PythonTeX": "https://github.com/gpoore/pythontex", but
-just based on a standard template language, Mako.)
+just based on a standard template language, Mako, instead of quite
+comprehensive LaTeX code.)
 
 ======= The ascii notebook format =======
 
 ===== Cell delimiter lines =====
 
 We go for a very simple format: `-----` is delimiter lines between cells.
+Cells are written in either plain Markdown or as a set of statements in
+a programming language, depending on whether the cell is a text or
+code cell.
+
 Deliminter lines with an extension text `x`, as in `-----x`,
 indicates code cell in language `x`, where `x` is a short name for
 the language, typically the file extension: `py` for Python,
@@ -37,6 +46,7 @@ the language, typically the file extension: `py` for Python,
 `sh` for Bash or another Unix shell, `sys` for the console (terminal
 window),
 `java` for Java, `tex` for LaTeX or TeX, `html` for HTML, etc.
+
 If `x` is proceeded by `-t` it means that the cell is *not a code cell*,
 but a standard static Markdown code cell typeset within triple backticks
 as usual in Markdown. (Sometimes one wants to show code, but it is not
@@ -134,20 +144,52 @@ delimiter for a Python code cell is `-----py`.
 
 @@@CODE .test1.aipynb fromto: ## Code@## Compilation
 
+!bwarning Remark
+The way we use Mako here hides the computations by SymPy.
+Sometimes this is the desired behavior in a text. In other
+occasions, however, you may want to show all the SymPy steps
+and then you can do that explicitly in notebook cells.
+If you want to show just some selected steps, you can
+show the code as Markdown code using the delimiter `-----py-t`
+instead of `-----py`.
+!ewarning
+
 Finally, we show how to compile the ascii file into a Jupyter Notebook,
 using a console cell that is to be shown as plain Markdown Bash code.
 
 @@@CODE .test1.aipynb fromto: ## Compilation@
 
+What we have not shown here, is the ability to call Python functions
+in the text. We could, if it was sensible, call the `solve` function
+in the text, e.g., as in
+`...and the solution becomes ${solve()[0]}`. In addition, you can
+define lists and dictionaries in Python and walk through them in
+the text with the Mako constructs `% for e in mylist:` and
+`% for key in mydict:`. Indentation does not count, so the for loop
+must be ended with `% endfor`. Similarly, there is branching using
+the syntax `% if condition:`, `% elif condition:`, `% else:`, and
+finally `% endif`.
+
 ======= The compiled file =======
 
-The notebook after compiling the above input file with `ipynb_generator.py`
-looks as follows:
+We compile "our example file": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/.test1.aipynb" by the following command:
+
+!bc sys
+Terminal> python ipynb_generator.py .test1.aipynb NAME="Core Dump" \
+          ADDRESS="ADDRESS=Seg. Fault Ltd and Univ. of C. Space" \
+	  IC=2
+!ec
+Note that some Mako variables are supposed to be given on the command line,
+here three, while others are defined in Python code within `<%` and `%>`
+tags in the document.
+
+The output of the `ipynb_generator.py` command above
+is a notebook file `.test1.ipynb`. The file looks like this:
 
 @@@CODE .test1.ipynb
 
-This notebook resides in GitHub and can be automatically
-"rendered there": "".
+The notebook file resides in GitHub and can be automatically
+"rendered there": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/.test1.ipynb".
 
 ======= The generator code =======
 
@@ -155,16 +197,16 @@ We shall now list the code that translates the ascii input, with the
 special syntax explained, into a notebook. The algorithmic steps are
 
  o Read the file.
- o Find all include lines and include text.
- o Run Mako.
+ o Find all include lines and include the corresponding text.
+ o Run Mako on the file.
  o Make a `cells` list of all cells., i.e., detect
    the beginning of a new cell by the delimiter line `-----`.
    The `cells` list consists of elements of 3-lists, where each
    3-list has the cell type, a description, and all the lines of
-   the cell, as its three elements.
+   the cell as its three elements.
  o When making a new element in `cells`, see if the delimiter
    line has a language specification and therefore is a code cell,
-   or if it is a plain Markdown cell.
+   or if it is a plain Markdown code cell.
  o Go through `cells` and join separate lines in each cell into a string.
  o Import functions from `IPython.nbformat.v4` for translating
    the information in the `cells` list into a cell list `nb_cells` suitable
@@ -180,7 +222,7 @@ to understand unless we have the definition of the dictionary
 @@@CODE ipynb_generator_v4.py fromto: # Mapping of @def read
 
 The translation from a `cells` list to the similar list needed
-by the IPython notebook writing function is taken care of
+by the IPython notebook writing functions is taken care of
 in the following function:
 
 @@@CODE ipynb_generator_v4.py fromto: def write@def driver
@@ -189,12 +231,14 @@ A driver or main program is needed:
 
 @@@CODE ipynb_generator_v4.py fromto: def driver@def test_
 
-The "true": "" file has support for notebook format version 3 and 4
-and contains also a lot of `logging` statements to help
+The "true generator file": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/ipynb_generator.py" has support for notebook format version 3 and 4
+and contains also a lot of `logging` statements to aid
 debugging.
 
 !bsummary
 Hopefully, this example has shown
 
- o How to generate your input format to Jupyter notebooks.[[[
+ o how to generate your input own format for writing Jupyter notebooks,
+ o how you can extend such a format with a preprocessor like Mako,
+ o how the `IPython.nbformat` functions can be used for writing notebooks.
 !esummary

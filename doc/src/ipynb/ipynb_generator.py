@@ -1,3 +1,65 @@
+"""
+Translator from simple ascii syntax to IPython/Jupyter Notebook.
+
+The input syntax looks like this::
+
+        -----
+        ## Test of Jupyter Notebook generator
+
+        **${NAME}**, ${ADDRESS}
+
+        **May 14, 2015**
+
+        ## Math
+
+        This is a test notebook where we solve the following math
+        problem:
+
+        $$
+        y' = y,\quad y(0)=${IC}
+        $$
+
+        ## Code
+
+        Here is code for the solution:
+
+        -----py
+        from numpy import exp
+
+        def y(t):
+            return 2*exp(t)
+
+        ## Try values
+        y(0)
+        -----py
+        y(1), 2*exp(1)
+        -----py
+        y(2), 2*exp(2)
+
+        ## Compilation
+        -----
+        This is how we run the notebook generator on files with
+        extension `.aipynb`:
+
+        ## console cell, but typeset as pure code (-t extension)
+        -----sys-t
+        Terminal> ipynb_generator.py myfile.aipynb MYVAR=4 GRADE='excellent'
+
+The syntax is explained in the document "How to automatically generate
+Jupyter notebooks" found at
+http://hplgit.github.io/doconce/doc/pub/ipynb/ipynb_generator.html.
+
+Use of this code::
+
+        ipynb_generator.py myfile.aipynb MAKOVAR1=... MAKOVAR2=...
+
+Results in the notebook myfile.ipynb.
+
+All you need is this file - no dependencies except Python version 2.7
+and the numpy and sympy modules for running the example.
+"""
+__author__ = 'Hans Petter Langtangen <hpl@simula.no>'
+
 import sys, os, re, logging
 
 # Mapping of shortnames like py to full language

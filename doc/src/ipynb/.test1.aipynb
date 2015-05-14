@@ -64,4 +64,4 @@ extension `.aipynb`:
 
 ## console cell, but typeset as pure code (-t extension)
 -----sys-t
-Terminal> ipynb_generator.py myfile.aipynb
+Terminal> ipynb_generator.py myfile.aipynb  MYVAR=4 GRADE='excellent'

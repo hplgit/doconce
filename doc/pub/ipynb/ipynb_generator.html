@@ -111,15 +111,16 @@ end of tocinfo -->
 </p>
 <p>
 <b>Summary.</b> This note explains how to write your own notebook
-generator in Python such that you can write your notebook in
+generator in Python such that you can write a notebook in
 plain ascii in your favorite editor and also use handy tools
-such as preprocessors to introduce variables into the text.
+such as preprocessors to introduce variables and other
+programming constructs into the text as well as to run computations.
 
 <p>
 Ascii input is particularly useful if you have LaTeX code
 that you want to make use of in notebooks. Then you must
 translate the LaTeX code to the syntax described here and
-run the compiler to be described.
+run the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/ipynb_generator.py" target="_self">compiler</a> to be described.
 
 <p>
 </div> <!-- end jumbotron -->
@@ -128,13 +129,15 @@ run the compiler to be described.
 
 <p>
 The notebook generator will be demonstrated through a specific example.
-The examples regards writing a report where we present a differential
-equation, solve it by SymPy, and show Python code for the solution and
-some computations. We introduce several variables: one
-for the initial condition, one for the author, one for the affiliation,
-as well as several variables computed in the SymPy code. These
-variables can be used in the running text by aid of Mako. The next
-section explains how this is done and presents the sample input text.
+on writing a little report where we 1) present a differential
+equation, 2) solve it by SymPy, and 3) show Python code for the solution and
+some computations. We show how the SymPy calculations can be
+done on the fly while compiling the document: results in Python variables
+from the SymPy calculations
+are magically propagated into the text. (This functionality is quite
+similar to <a href="https://github.com/gpoore/pythontex" target="_self">PythonTeX</a>, but
+just based on a standard template language, Mako, instead of quite
+comprehensive LaTeX code.)
 
 <h1 id="___sec1">The ascii notebook format </h1>
 
@@ -142,6 +145,11 @@ section explains how this is done and presents the sample input text.
 
 <p>
 We go for a very simple format: <code>-----</code> is delimiter lines between cells.
+Cells are written in either plain Markdown or as a set of statements in
+a programming language, depending on whether the cell is a text or
+code cell.
+
+<p>
 Deliminter lines with an extension text <code>x</code>, as in <code>-----x</code>,
 indicates code cell in language <code>x</code>, where <code>x</code> is a short name for
 the language, typically the file extension: <code>py</code> for Python,
@@ -149,6 +157,8 @@ the language, typically the file extension: <code>py</code> for Python,
 <code>sh</code> for Bash or another Unix shell, <code>sys</code> for the console (terminal
 window),
 <code>java</code> for Java, <code>tex</code> for LaTeX or TeX, <code>html</code> for HTML, etc.
+
+<p>
 If <code>x</code> is proceeded by <code>-t</code> it means that the cell is <em>not a code cell</em>,
 but a standard static Markdown code cell typeset within triple backticks
 as usual in Markdown. (Sometimes one wants to show code, but it is not
@@ -177,8 +187,7 @@ The syntax could be like
 </pre></div>
 <p>
 However, this extension is not incorporated in the first version of
-the notebook generator. The example here merely indicates possible
-extensions of the generator.
+the notebook generator. We just mention the possibility.
 </div>
 
 
@@ -190,7 +199,7 @@ a full-fledged template programming language of the type that is
 popular in the web world. Here we have chosen
 <a href="http://www.makotemplates.org" target="_self">Mako</a>. Running the text through Mako
 enables the use of variables, if-tests, and loops, to menition the
-most usual constructs. Pure Python function can be defined inside
+most usual constructs. Pure Python functions can be defined inside
 <code>&lt;%</code> and <code>%&gt;</code> and called
 in the code. Mako applies the syntax <code>${var}</code> for variables and
 <code>${myfunc(arg1, arg2=None)}</code> for function calls.
@@ -199,7 +208,7 @@ in the code. Mako applies the syntax <code>${var}</code> for variables and
 <div class="alert alert-block alert-success alert-text-normal"><b>Tip: put Python code in a separate file for testing!</b>
 Having lots of Python code inside <code>&lt;%</code> and <code>%&gt;</code> Mako tags is not
 recommended as debugging can be a nightmare. Instead, put the code
-in a file, say <code>myprog.py</code>, and include it:
+in a file, say <code>myprog.py</code>, and just include it:
 
 <p>
 
@@ -224,12 +233,13 @@ in the text. For this goal, we write the SymPy code in a separate
 file where a <code>dump</code> function can be used for heavily printing
 of intermediate results, but a global variable <code>allow_printing</code>
 determines whether printing is turned on and off: we want it on
-while debugging, but off when compiling our document.
+when debugging, but off when compiling our document.
 
 <p>
 The document starts with an author, his address, and the date, where
 author and address are Mako variables we can specify on the command line
-while compiling the document:
+when compiling the document. This text is a Markdown cell and therefore
+starts with <code>-----</code>:
 
 <p>
 
@@ -266,6 +276,7 @@ to solve the math problem. The SymPy is in the file <code>.solve_dyeqy.py</code>
         <span style="color: #008000; font-weight: bold">print</span> var
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">solve</span>():
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;Solve y&#39;=y, y(0)=2.&quot;&quot;&quot;</span>
     <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sympy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sym</span>
     t <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;t&#39;</span>, real<span style="color: #666666">=</span><span style="color: #008000">True</span>, positive<span style="color: #666666">=</span><span style="color: #008000">True</span>)
     y <span style="color: #666666">=</span> sym<span style="color: #666666">.</span>symbols(<span style="color: #BA2121">&#39;y&#39;</span>, cls<span style="color: #666666">=</span>sym<span style="color: #666666">.</span>Function)
@@ -295,8 +306,8 @@ to solve the math problem. The SymPy is in the file <code>.solve_dyeqy.py</code>
 This is just standard Python code. The <code>__name__</code> variable equals
 <code>__builtin__</code> when we run this code inside Mako so then the test block
 is inactive. Instead, we can define <code>allow_printing = False</code>,
-call `solve(), and store its output in variables that we can access
-in the running text. Here is the syntax:
+call `solve(), and store its output in variables such that we can access
+them in the running text. Here is the syntax:
 
 <p>
 
@@ -330,13 +341,14 @@ $y(0)=${IC}$ and equals in this case $${C_expr}$.
 <p>
 Note how we in the middle of math expressions use Mako variables taken
 from both the command line, such as <code>${IC}</code>, and from the
-Python code, such as <code>${y_expr}</code>!
+Python code, such as <code>${y_expr}</code> and <code>${C_expr}</code>!
 
 <p>
-We can now define some code cells for our solution. We want to
+We can now define some code cells for execution. We want to
 create a Python code for the solution, using the SymPy variable
-<code>y_expr</code> and SymPy's ability to write the expression as it can
-work in a numerical Python function, here called <code>y(t)</code>.
+<code>y_expr</code> and SymPy's ability to write the expression for
+a numerical Python function, here called <code>y(t)</code>. Note that the
+delimiter for a Python code cell is <code>-----py</code>.
 
 <p>
 
@@ -368,7 +380,20 @@ y(1), 2*exp(1)
 y(2), 2*exp(2)
 </pre></div>
 <p>
-Finally, we show how to compile the ascii file into a Jupyter Notebook:
+<div class="alert alert-block alert-danger alert-text-normal"><b>Remark.</b>
+The way we use Mako here hides the computations by SymPy.
+Sometimes this is the desired behavior in a text. In other
+occasions, however, you may want to show all the SymPy steps
+and then you can do that explicitly in notebook cells.
+If you want to show just some selected steps, you can
+show the code as Markdown code using the delimiter <code>-----py-t</code>
+instead of <code>-----py</code>.
+</div>
+
+
+<p>
+Finally, we show how to compile the ascii file into a Jupyter Notebook,
+using a console cell that is to be shown as plain Markdown Bash code.
 
 <p>
 
@@ -378,16 +403,36 @@ Finally, we show how to compile the ascii file into a Jupyter Notebook:
 This is how we run the notebook generator on files with
 extension `.aipynb`:
 
-## bash cell, but typeset as pure code
+## console cell, but typeset as pure code (-t extension)
 -----sys-t
-Terminal&gt; ipynb_generator.py myfile.aipynb
+Terminal&gt; ipynb_generator.py myfile.aipynb  MYVAR=4 GRADE=&#39;excellent&#39;
 </pre></div>
+<p>
+What we have not shown here, is the ability to call Python function
+in the text. We could, if it was sensible, call the <code>solve</code> function
+in the text, e.g., as in
+<code>...and the solution becomes ${solve()[0]}</code>.
 
 <h1 id="___sec6">The compiled file </h1>
 
 <p>
-The notebook after compiling the above input file with <code>ipynb_generator.py</code>
-looks as follows:
+We compile <a href="https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/.test1.aipynb" target="_self">our example file</a> by the following command:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; python ipynb_generator.py .test1.aipynb NAME=&quot;Core Dump&quot; \
+          ADDRESS=&quot;ADDRESS=Seg. Fault Ltd and Univ. of C. Space&quot; \
+	  IC=2
+</pre></div>
+<p>
+Note that some Mako variables are supposed to be given on the command line,
+here three, while others are defined in Python code within <code>&lt;%</code> and <code>%&gt;</code>
+tags in the document.
+
+<p>
+The output of the <code>ipynb_generator.py</code> command above
+is a notebook file <code>.test1.ipynb</code>. The file looks like this:
 
 <p>
 
@@ -497,8 +542,8 @@ looks as follows:
 }
 </pre></div>
 <p>
-This notebook resides in GitHub and can be automatically
-"rendered there": "".
+The notebook file resides in GitHub and can be automatically
+<a href="https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/.test1.ipynb" target="_self">rendered there</a>.
 
 <h1 id="___sec7">The generator code </h1>
 
@@ -508,16 +553,16 @@ special syntax explained, into a notebook. The algorithmic steps are
 
 <ol>
 <li> Read the file.</li>
-<li> Find all include lines and include text.</li>
-<li> Run Mako.</li>
+<li> Find all include lines and include the corresponding text.</li>
+<li> Run Mako on the file.</li>
 <li> Make a <code>cells</code> list of all cells., i.e., detect
    the beginning of a new cell by the delimiter line <code>-----</code>.
    The <code>cells</code> list consists of elements of 3-lists, where each
    3-list has the cell type, a description, and all the lines of
-   the cell, as its three elements.</li>
+   the cell as its three elements.</li>
 <li> When making a new element in <code>cells</code>, see if the delimiter
    line has a language specification and therefore is a code cell,
-   or if it is a plain Markdown cell.</li>
+   or if it is a plain Markdown code cell.</li>
 <li> Go through <code>cells</code> and join separate lines in each cell into a string.</li>
 <li> Import functions from <code>IPython.nbformat.v4</code> for translating
    the information in the <code>cells</code> list into a cell list <code>nb_cells</code> suitable
@@ -635,7 +680,7 @@ shortname2language <span style="color: #666666">=</span> <span style="color: #00
 </pre></div>
 <p>
 The translation from a <code>cells</code> list to the similar list needed
-by the IPython notebook writing function is taken care of
+by the IPython notebook writing functions is taken care of
 in the following function:
 
 <p>
@@ -682,8 +727,8 @@ A driver or main program is needed:
         f<span style="color: #666666">.</span>write(filestr)
 </pre></div>
 <p>
-The "true": "" file has support for notebook format version 3 and 4
-and contains also a lot of <code>logging</code> statements to help
+The <a href="https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/ipynb_generator.py" target="_self">true file</a> has support for notebook format version 3 and 4
+and contains also a lot of <code>logging</code> statements to aid
 debugging.
 
 <p>
@@ -691,7 +736,9 @@ debugging.
 Hopefully, this example has shown
 
 <ol>
-<li> How to generate your input format to Jupyter notebooks.[[[</li>
+<li> how to generate your input own format for writing Jupyter notebooks,</li>
+<li> how you can extend such a format with a preprocessor like Mako,</li>
+<li> how the <code>IPython.nbformat</code> functions can be used for writing notebooks.</li>
 </ol>
 </div>
 
