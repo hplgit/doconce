@@ -16,7 +16,7 @@ _MATH_BLOCK = '<<<!!MATH_BLOCK'
 # Chapter regex
 chapter_pattern = r'^=========\s*[A-Za-z0-9].+?========='
 
-emoji_url = 'https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/'
+emoji_url = 'https://raw.githubusercontent.com/hplgit/doconce/master/bundled/emoji/png/'
 
 # Functions for creating and reading comment tags
 def begin_end_comment_tags(tag):

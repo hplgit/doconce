@@ -14,6 +14,11 @@ def pdflatex_emoji(m):
         url = emoji_url + name + '.png'
         import urllib
         urllib.urlretrieve(url, filename=emojifile)
+        # Check that this was successful
+        with open(emojifile, 'r') as f:
+            if 'Not Found' in f.read():
+                print '*** error: emoji "name" is probably misspelled - cannot find any emoji with that name'
+                _abort()
     s = space1 + r'\raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{%s}}' % emojifile + space2
     return s
 

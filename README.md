@@ -30,7 +30,7 @@ Here are some of the most recent features in DocOnce:
 
 ### Installation
 
-DocOnce is a pure Python package and installed by
+DocOnce is a pure Python v2.7 package and installed by
 
 
 ```
@@ -41,7 +41,7 @@ However, DocOnce has *a lot* of dependencies, depending on what type of
 formats you want to work with and how advanced constructions that are
 used in the text.
 
-With Anaconda Python it is trivial to install DocOnce and all
+With Anaconda Python v2.7 it is trivial to install DocOnce and all
 dependencies by
 
 
