@@ -712,6 +712,16 @@ See also Section ref{trouble:bsol:code} - it is the same problem.
 
 ======= Problems with reST/Sphinx Output =======
 
+===== Sphinx directory generation aborts with ``label empty or too long'' =====
+
+This is a strange error that might arise from a too long title of the document.
+The solution is to specify a shorter title when running `doconce sphinx_dir` (i.e., to avoid getting the title from the original `.do.txt` document):
+
+!bc sys
+Terminal> doconce sphinx_dir title="Short Title" \
+          authors="A. B. Crunch" theme=pyramid mydoc
+!ec
+
 ===== Title level inconsistent =====
 
 reST does not like jumps in the levels of headings. For example, you cannot

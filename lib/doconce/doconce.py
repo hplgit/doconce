@@ -935,8 +935,9 @@ def insert_code_from_file(filestr, format):
             try:
                 filename = words[1]
             except IndexError:
-                raise SyntaxError, \
-                      'Syntax error: missing filename in line\n  %s' % line
+                print '\n'.join(lines[i-3:i+4])
+                print '*** error: missing filename in line\n  %s' % line
+                _abort()
             orig_filename = filename # keep a copy in case we have a prefix
             if path_prefix:
                 filename = os.path.join(path_prefix, filename)

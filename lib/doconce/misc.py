@@ -6294,6 +6294,9 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     text = re.sub(r'^!bt *\n(.*?)^!et', '', text,
                   flags=re.DOTALL|re.MULTILINE)
 
+    # Remove all comments
+    text = re.sub(r'^#.+$', '', text, flags=re.MULTILINE)
+
     # Check for double words (before removing verbatim)
 
     pattern = r"\b([\w'\-]+)(\s+\1)+\b"
