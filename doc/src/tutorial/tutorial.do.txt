@@ -149,7 +149,7 @@ Here is an example of some simple text written in the DocOnce format:
 You can also have paragraphs with a paragraph heading surrounded
 by double underscores are the beginning of a line.
 
-__This is a paragraph heading.___
+__This is a paragraph heading.__
 And here comes the text.
 
 ===== A Subsection with Sample Text =====
