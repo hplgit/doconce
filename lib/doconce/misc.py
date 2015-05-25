@@ -8235,6 +8235,59 @@ and other formats.""" % envir
                 print message
                 print line + '\n'
 
+def _usage_ipynb2doconce():
+    print 'doconce ipynb2doconce notebook.ipynb [--cell_delimiter]'
+    print 'translate IPython/Jupyter notebooks to doconce'
+
+def ipynb2doconce():
+    if len(sys.argv) < 2:
+        _usage_ipynb()
+        sys.exit(0)
+
+    cell_delimiter = '--cell_delimiter' in sys.argv
+    filename = sys.argv[1]
+    if not os.path.isfile(filename):
+        print '*** error: no file "%s" found' % filename
+        sys.exit(1)
+    f = open(filename, 'r')
+    jsonstring = f.read()
+    f.close()
+    # Turn json string into a NotebookNode object
+    from IPython.nbformat.reader import reads
+    nb = reads(jsonstring)
+    # nb is dict-like with keys nbformat_minor, cells, nbformat, metadata
+    dostr = ''
+    from doconce import markdown2doconce
+    cell_type_prev = None
+    for cell in nb['cells']:
+        #print 'XXX', cell['cell_type'], 'prev:', cell_type_prev, '\n', cell['source']
+        if cell_delimiter and cell['cell_type'] != cell_type_prev:
+            dostr += '# ---------- %s cell\n' % cell['cell_type']
+        if cell['cell_type'] == 'markdown':
+            s = markdown2doconce(cell['source'], ipynb_mode=True)
+            if cell_type_prev == 'markdown':
+                s += '\n'
+            else:
+                s += '\n\n'
+        elif cell['cell_type'] == 'code':
+            collapsed = cell['metadata'].get('collapsed', False) \
+                        if cell['metadata'] else False
+            source = cell['source']
+            # Remove % (matplotlib) directives from source
+            source = re.sub('^%.+\n', '', source, flags=re.MULTILINE).strip()
+            s = '\n!bc py' + ('hid' if collapsed else 'cod') + '\n' + source + '\n!ec\n'
+        dostr += s
+        cell_type_prev = cell['cell_type']
+    # Fix common problems
+    # Missing blank line before heading
+    dostr = re.sub('^!e([ct])\n===', r'!e\g<1>\n\n===', dostr, flags=re.MULTILINE)
+    # Too many blanks before !bt and !bc
+    dostr = re.sub(r'\n\n\n+!b([ct])', r'\n\n!b\g<1>', dostr)
+    filename = filename.replace('.ipynb', '.do.txt')
+    f = open(filename, 'w')
+    f.write(dostr)
+    f.close()
+    print 'output in', filename
 
 # ---- Attempt to make a pygments syntax highlighter for DocOnce ----
 try:

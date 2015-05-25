@@ -195,6 +195,16 @@ def indent_lines(text, format, indentation=' '*8, trailing_newline=True):
         text += '\n'
     return text
 
+def unindent_lines(text, format=None, indentation=' '*8, trailing_newline=True):
+    """
+    Unindent each line in the string text.
+    Return new version of text.
+    """
+    text = '\n'.join([line[len(indentation):] for line in text.splitlines()])
+    if trailing_newline:
+        text += '\n'
+    return text
+
 def cite_with_multiple_args2multiple_cites(filestr):
     """Fix cite{key1,key2,key3} to cite{key1}cite[key2]cite[key3]."""
     cite_args = re.findall(r'cite\{(.+?)\}', filestr)

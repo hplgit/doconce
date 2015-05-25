@@ -48,6 +48,7 @@ from doconce.misc import (
     latex2doconce,
     latex_dislikes,
     html2doconce,
+    ipynb2doconce,
     fix_bibtex4publish,
     diff,
     gitdiff,
@@ -954,6 +955,7 @@ linkchecker
 latex2doconce
 latex_dislikes
 html2doconce
+ipynb2doconce
 pygmentize
 makefile
 diff
@@ -1085,6 +1087,9 @@ doconce latex2doconce latexfile
 
 # check if there are problems with translating latex to doconce
 doconce latex_dislikes latexfile
+
+# translate an IPython/Jupyter notebook to doconce
+doconce ipynb2doconce notebookfile
 
 # typeset a doconce document with pygments (for pretty print of doconce itself)
 doconce pygmentize myfile [pygments-style]

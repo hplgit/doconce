@@ -77,7 +77,7 @@ def encode_error_message(exception, text, print_length=40):
         print '    remedies: fix character or try --encoding=utf-8'
         _abort()
 
-def markdown2doconce(filestr, format):
+def markdown2doconce(filestr, format=None, ipynb_mode=False):
     """
     Look for Markdown (and Extended Markdown) syntax in the file (filestr)
     and transform the text to valid DocOnce format.
@@ -85,64 +85,8 @@ def markdown2doconce(filestr, format):
     #md2doconce "preprocessor" --markdown --write_doconce_from_markdown=myfile.do.txt (for debugging the translation from markdown-inspired doconce)
     #check https://stackedit.io/
 
-    # Still missing: figures and videos
-
-    quote_envir = 'notice'
-    quote_title = ' None'
-    quote_title = ''
-    quote_envir = 'quote'
-    quote_envir = 'block'
-    from common import inline_tag_begin, inline_tag_end
-    extended_markdown_language2dolang = dict(
-        Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
-        Perl='pl', Bash='sh', HTML='html')
-
-    regex = [
-        # Computer code with language specification
-        (r"\n+```([A-Za-z]+)(.+?)\n```\n", lambda m: "\n\n!bc %scod\n%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], m.group(2)), re.DOTALL), # language given
-        # Computer code without (or the same) language specification
-        (r"\n+```\n(.+?)\n```\n", "\n\n!bc\n\g<1>\n!ec\n", re.DOTALL),
-        # Paragraph heading written in boldface
-        (r"\n\n\*\*(?P<subst>[^*]+?)([.?!:])\*\* ", r"\n\n__\g<subst>\g<2>__ "),
-        # Boldface **word** to _word_
-        (r"%(inline_tag_begin)s\*\*(?P<subst>[^*]+?)\*\*%(inline_tag_end)s" % vars(),
-         r"\g<begin>_\g<subst>_\g<end>"),
-        # Link with link text
-        (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
-        # Equation
-        (r"\n\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
-        # TOC
-        (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
-        # Smart StackEdit comments (must appear before normal comments)
-        # First treat DocOnce-inspired syntax with [name: comment]
-        (r"<!--- ([A-Za-z]+?): (.+?)-->", r'[\g<1>: \g<2>]', re.DOTALL),
-        # Second treat any such comment as inline DocOnce comment
-        (r"<!---(.+?)-->", r'[comment: \g<1>]', re.DOTALL),
-        # Plain comments starting on the beginning of a line, avoid blank
-        # to not confuse with headings
-        (r"^<!--(.+?)-->", lambda m: '#' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
-        # Plain comments inside the text must be inline comments in DocOnce
-        # or dropped...
-        (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
-        #(r"<!--(.+)-->", r'', re.DOTALL)
-        # Quoted paragraph
-        #(r"\n\n> +(.+?)\n\n", r"\n\n!bquote\n\g<1>\n!equote\n\n", re.DOTALL),
-        (r"\n\n> +(.+?)\n\n", r"\n\n!b%(quote_envir)s%(quote_title)s\n\g<1>\n!e%(quote_envir)s\n\n" % vars(), re.DOTALL),
-        # lists with - should be bullets
-        (r"^( +)-( +)", r"\g<1>*\g<2>", re.MULTILINE),
-        # enumerated lists should be o
-        (r"^( +)\d+\.( +)", r"\g<1>o\g<2>", re.MULTILINE),
-        (r"<br>", r" <linebreak>"), # before next line which inserts <br>
-    ]
-    for r in regex:
-        if len(r) == 2:
-            filestr = re.sub(r[0], r[1], filestr)
-        elif len(r) == 3:
-            filestr = re.sub(r[0], r[1], filestr, flags=r[2])
-
     # Not treated:
     """
-    * Title, author, date - as of now no css and no fancy block/quote styles...
     * Tables without opening and closing | (simplest tables)
     * Definition lists
     * SmartyPants
@@ -154,6 +98,7 @@ def markdown2doconce(filestr, format):
     # and after
     inside_code = False
     for i in range(len(lines)):
+        lines[i] = lines[i].rstrip()
         if lines[i].startswith('```') and inside_code:
             inside_code = False
             continue
@@ -164,11 +109,10 @@ def markdown2doconce(filestr, format):
             if re.search(r'^#{1,3} ', lines[i]):
                 # Potential heading
                 heading = False
-                if i > 0 and lines[i-1].strip() == '' and \
-                   i < len(lines)-1  and lines[i+1].strip() == '':
-                    # Blank line before and after
+                if i > 0 and lines[i-1].strip() == '':
+                    # Blank line before (after might be a label)
                     heading = True
-                elif i == 0 and i < len(lines)-1  and lines[i+1].strip() == '':
+                elif i == 0:
                     heading = True
                 if heading:
                     # H1: can be confused with comments,
@@ -210,6 +154,83 @@ def markdown2doconce(filestr, format):
             lines[i] += header
     filestr = '\n'.join(lines)
 
+    # Still missing: figures and videos
+
+    quote_envir = 'notice'
+    quote_title = ' None'
+    quote_title = ''
+    quote_envir = 'quote'
+    quote_envir = 'block'
+
+    from common import inline_tag_begin, inline_tag_end
+    extended_markdown_language2dolang = dict(
+        Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
+        Perl='pl', Bash='sh', HTML='html')
+
+    bc_postfix = '-t' if ipynb_mode else ''
+    from common import unindent_lines
+    regex = [
+        # Computer code with language specification
+        (r"\n?```([A-Za-z]+)(.*?)\n```", lambda m: "\n\n!bc %scod%s%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], bc_postfix, unindent_lines(m.group(2).rstrip(), trailing_newline=False)), re.DOTALL), # language given
+        # Computer code without (or the same) language specification
+        (r"\n?```\n(.+?)\n```", lambda m: "\n\n!bc\n%s\n!ec\n" % unindent_lines(m.group(1).rstrip(), trailing_newline=False), re.DOTALL),
+        # Paragraph heading written in boldface
+        (r"\n\n\*\*(?P<subst>[^*]+?)([.?!:])\*\* ", r"\n\n__\g<subst>\g<2>__ "),
+        # Boldface **word** to _word_
+        (r"%(inline_tag_begin)s\*\*(?P<subst>[^*]+?)\*\*%(inline_tag_end)s" % vars(),
+         r"\g<begin>_\g<subst>_\g<end>"),
+        # Figure/movie references [Figure](#label)
+        (r'\[Figure\]\(#(.+?)\)', 'Figure ref{\g<1>}'),
+        # equation references from doconce-translatex ipynb files (do this before links! - same syntax...)
+        (r'\[\(\d+?\)\]\(#(.+?)\)', r'(ref{\g<1>})'),
+        # Link with link text
+        (r"\[(?P<text>[^\]]+?)\]\((?P<url>.+?)\)", r'"\g<text>": "(\g<url>)"'),
+        # Equation
+        (r"\n?\$\$\n *(\\begin\{.+?\}.+?\\end\{.+?\})\s+\$\$", r"\n!bt\n\g<1>\n!et", re.DOTALL),
+        (r"\n?\$\$\n(.+?)\n\$\$", r"\n!bt\n\\[ \g<1> \]\n!et", re.DOTALL),
+        # Figure/movie (the figure/movie syntax is in a dom: comment)
+        (r'<!-- begin figure -->.+?<!-- end figure -->\n', '', re.DOTALL),
+        (r'<!-- begin movie -->.+?<!-- end movie -->\n', '', re.DOTALL),
+        (r'!\[(.+?)\]\((.+?)\)', 'FIGURE: [\g<2>, width=600 frac=0.8] \g<1>\n'),
+        # TOC
+        (r"^\[TOC\]", r"TOC: on", re.MULTILINE),
+        # doconce metadata comments in .ipynb files
+        (r'<!-- dom:TITLE: (.+?) -->\n# .+', r'TITLE: \g<1>'),
+        (r'<!-- dom:(.+?) --><div id=".+?"></div>', r'\g<1>'), # label
+        (r'<!-- dom:(.+?) -->', r'\g<1>'), # idx, AUTHOR typically
+        (r'Date: _(.+?)_', r'DATE: \g<1>'),
+        (r'<!-- Author: --> .+\s+', ''),  # author lines
+        (r'<!-- Equation labels as ordinary links -->\n<div id=".+?"></div>\n', ''),
+        (r' \\tag\{\d+\}', ''),
+        # Smart StackEdit comments (must appear before normal comments)
+        # First treat DocOnce-inspired syntax with [name: comment]
+        (r"<!--- ([A-Za-z]+?): (.+?)-->", r'[\g<1>: \g<2>]', re.DOTALL),
+        # Second treat any such comment as inline DocOnce comment
+        (r"<!---(.+?)-->", r'[comment: \g<1>]', re.DOTALL),
+        # Plain comments starting on the beginning of a line, avoid blank
+        # to not confuse with headings
+        (r"^<!--(.+?)-->", lambda m: '#' + '\n# '.join(m.group(1).splitlines()), re.DOTALL|re.MULTILINE),
+        # Plain comments inside the text must be inline comments in DocOnce
+        # or dropped...
+        (r"<!--(.+)-->", r'[comment: \g<1>]', re.DOTALL),
+        #(r"<!--(.+)-->", r'', re.DOTALL)
+        # Quoted paragraph
+        #(r"\n\n> +(.+?)\n\n", r"\n\n!bquote\n\g<1>\n!equote\n\n", re.DOTALL),
+        (r"\n\n> +(.+?)\n\n", r"\n\n!b%(quote_envir)s%(quote_title)s\n\g<1>\n!e%(quote_envir)s\n\n" % vars(), re.DOTALL),
+        # lists with - should be bullets
+        (r"^( +)-( +)", r"\g<1>*\g<2>", re.MULTILINE),
+        # enumerated lists should be o
+        (r"^( +)\d+\.( +)", r"\g<1>o\g<2>", re.MULTILINE),
+        (r"<br>", r" <linebreak>"), # before next line which inserts <br>
+        # doconce-translated ipynb files, treat remaining div tags as labels
+        (r'<div id="(.+)?"></div>\n', r'label{\g<1>}\n'),
+    ]
+    for r in regex:
+        if len(r) == 2:
+            filestr = re.sub(r[0], r[1], filestr)
+        elif len(r) == 3:
+            filestr = re.sub(r[0], r[1], filestr, flags=r[2])
+
     # links that are written in Markdown as footnotes:
     links = {}
     lines = filestr.splitlines()
@@ -221,7 +242,7 @@ def markdown2doconce(filestr, format):
             links[m.group(1).strip()] = m.group(2).strip()
         else:
             # Skip all lines that contain link definitions and save the rest
-            newlines.append(line)
+            newlines.append(line.rstrip())
     filestr = '\n'.join(newlines)
     for link in links:
         filestr = re.sub(r'\[(.+?)\]\[%s\]' % link, '"\g<1>": "%s"' % links[link], filestr)
@@ -251,7 +272,11 @@ def markdown2doconce(filestr, format):
         from_ = '!b%(quote_envir)s%(quote_title)s%%s!e%(quote_envir)s' % vars() % ('\n'+ quote)
         to_ = '!b%(quote_envir)s%(quote_title)s%%s!e%(quote_envir)s' % vars() % ('\n' + new_quote + '\n')
         filestr = filestr.replace(from_, to_)
-
+    # Fixes
+    # Remove extensions in figure filenames
+    filestr = re.sub(r'^FIGURE: +\[(.+?)\.(pdf|png|jpe?g|e?ps|gif)',
+                     'FIGURE: [\g<1>', filestr, flags=re.MULTILINE)
+    filestr = filestr.replace('\\label{', 'label{')
     return filestr
 
 def fix(filestr, format, verbose=0):

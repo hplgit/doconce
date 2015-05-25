@@ -2,31 +2,40 @@ TITLE: Example on interactive live documents versus traditional static documents
 AUTHOR: hpl
 DATE: today
 
-===== Mathematics =====
+===== Physics =====
+label{ipynbex:physics}
 
-A differential equation for linear vibrations,
+We consider a vibrating mechanical system as shown in Figure ref{ipynbex:physics:fig}.
+
+FIGURE: [fig/oscillator_general, width=600 frac=0.8] Oscillating system with spring and damper. label{ipynbex:physics:fig}
+
+===== Mathematics =====
+label{ipynbex:math}
+
+A differential equation for the system in Figure ref{ipynbex:physics:fig} reads
 
 !bt
-\[ mu'' + bu' + s(u) = F(t),\quad u(0)=I,\ u'(0)=V,\]
+\[ mu'' + f(u') + s(u) = F(t),\quad u(0)=I,\ u'(0)=V\thinspace .\]
 !et
-can be solved numerically by a scheme
+In the linear damping case, where $f(u')=bu'$ for some constant
+$b\geq 0$, we can solve the problem numerically by a scheme
 
 !bt
 \begin{equation}
 u^{n+1} = \left(2mu^n + (\frac{b}{2}\Delta t - m)u^{n-1} +
 \Delta t^2(F^n - s(u^n))
 \right)(m + \frac{b}{2}\Delta t)^{-1},
-label{bumpy:u:scheme:lin}
+label{ipynbex:u:scheme:lin}
 \end{equation}
 !et
-for $n=0,1,\ldots$, but with a special formula for $n=0$:
+for $n=0,1,\ldots$. A special formula is required for $n=0$:
 
 !bt
 \begin{equation}
 u^1 = u^0 + \Delta t\, V
 + \frac{\Delta t^2}{2m}(-bV - s(u^0) + F^0)
 \thinspace .
-label{bumpy:u:scheme0:lin}
+label{ipynbex:u:scheme0:lin}
 \end{equation}
 !et
 
@@ -35,7 +44,7 @@ label{bumpy:u:scheme0:lin}
 # Note: Plain Markdown cannot refer to equations with numbers.
 # This is a DocOnce extension.
 
-The formulas (ref{bumpy:u:scheme:lin}) and (ref{bumpy:u:scheme0:lin})
+The formulas (ref{ipynbex:u:scheme:lin}) and (ref{ipynbex:u:scheme0:lin})
 can be implemented as follows in a Python function:
 
 # Next code (hidden code):

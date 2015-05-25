@@ -128,7 +128,7 @@ to solve the math problem. The SymPy is in the file `.solve_dyeqy.py`:
 This is just standard Python code. The `__name__` variable equals
 `__builtin__` when we run this code inside Mako so then the test block
 is inactive. Instead, we can define `allow_printing = False`,
-call `solve(), and store its output in variables such that we can access
+call `solve()`, and store its output in variables such that we can access
 them in the running text. Here is the syntax:
 
 @@@CODE .test1.aipynb fromto: # Math@## Code

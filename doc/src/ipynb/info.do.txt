@@ -380,3 +380,17 @@ label{eq2}
 Can we refer to (ref{eq1}) and (ref{eq2}) in format `ipynb`?
 Yes, in DocOnce-extended `ipynb` format, but not when writing
 notebooks interactively in the browser and using Markdown with LaTeX.
+
+======= Translating notebooks to DocOnce =======
+
+===== The `ipynb2doconce` tool =====
+
+There is a program `doconce ipynb2doconce` for translating a notebook
+file to DocOnce format:
+
+!bc sys
+Terminal> doconce ipynb2doconce notebook.ipynb
+!ec
+The output file `notebook.do.txt` should be an ordinary DocOnce file.
+With an optional argument `--cell_delimiter`, comment lines a la `# ---------- code cell` act in the as delimiter between the different cells in the
+`.do.txt` file.
