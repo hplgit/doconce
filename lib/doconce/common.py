@@ -195,12 +195,21 @@ def indent_lines(text, format, indentation=' '*8, trailing_newline=True):
         text += '\n'
     return text
 
-def unindent_lines(text, format=None, indentation=' '*8, trailing_newline=True):
+def unindent_lines(text, format=None, trailing_newline=True):
     """
     Unindent each line in the string text.
     Return new version of text.
     """
-    text = '\n'.join([line[len(indentation):] for line in text.splitlines()])
+    # Find the indent
+    lines = text.splitlines()
+    indents = []
+    for line in lines:
+        if line == '':
+            continue
+        m = re.search('^( +)', line)
+        indents.append(len(m.group(1)) if m else 0)
+    indent = min(indents)
+    text = '\n'.join([line[indent:] for line in lines])
     if trailing_newline:
         text += '\n'
     return text

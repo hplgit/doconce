@@ -244,6 +244,12 @@ system doconce format pdflatex author2 --latex_style=elsevier
 system doconce ptex2tex author2
 cp author2.tex author2_elsevier.tex
 
+# Test notebook conversions
+cp ../doc/src/ipynb/example.do.txt nbdemo.do.txt
+doconce replace 'fig/oscillator_general' '../doc/src/ipynb/fig/oscillator_general'
+doconce format ipynb nbdemo
+doconce ipynb2doconce nbdemo.ipynb
+
 # Test math
 rm -f *.aux
 name=math_test

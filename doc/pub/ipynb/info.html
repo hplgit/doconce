@@ -7,6 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Special DocOnce features for Jupyter notebooks">
+<meta name="keywords" content="headigs,section">
 
 <title>Special DocOnce features for Jupyter notebooks</title>
 
@@ -40,7 +41,13 @@ code { color: inherit; background-color: transparent; }
               (u' Other special options for notebooks ', 1, None, '___sec4'),
               (u' Figures and movies ', 2, None, '___sec5'),
               (u' Admonitions ', 2, None, '___sec6'),
-              (u' Equation references ', 1, None, '___sec7')]}
+              (u' Equation references ', 1, None, '___sec7'),
+              (u' Translating notebooks to DocOnce ', 1, None, '___sec8'),
+              (u' The `ipynb2doconce` tool ', 2, None, '___sec9'),
+              (u' Special comment annotations in the `.ipynb` file ',
+               2,
+               None,
+               '___sec10')]}
 end of tocinfo -->
 
 <body>
@@ -85,6 +92,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figures and movies</a></li>
      <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Admonitions</a></li>
      <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Equation references</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>Translating notebooks to DocOnce</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The <code>ipynb2doconce</code> tool</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Special comment annotations in the <code>.ipynb</code> file</a></li>
 
         </ul>
       </li>
@@ -117,7 +127,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Simula</b></center>
 <center>[2] <b>University of Oslo</b></center>
 <p>
-<center><h4>May 14, 2015</h4></center> <!-- date -->
+<center><h4>May 25, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -130,6 +140,9 @@ MathJax.Hub.Config({
 &nbsp; &nbsp; &nbsp; <a href="#___sec5"> Figures and movies </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec6"> Admonitions </a><br>
 <a href="#___sec7"> Equation references </a><br>
+<a href="#___sec8"> Translating notebooks to DocOnce </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec9"> The <code>ipynb2doconce</code> tool </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec10"> Special comment annotations in the <code>.ipynb</code> file </a><br>
 </p>
 <p>
 DocOnce enables turning book chapters, manuals, research papers, and in fact
@@ -493,6 +506,105 @@ $$
 Can we refer to \eqref{eq1} and \eqref{eq2} in format <code>ipynb</code>?
 Yes, in DocOnce-extended <code>ipynb</code> format, but not when writing
 notebooks interactively in the browser and using Markdown with LaTeX.
+
+<h1 id="___sec8">Translating notebooks to DocOnce </h1>
+
+<h2 id="___sec9">The <code>ipynb2doconce</code> tool </h2>
+
+<p>
+There is a program <code>doconce ipynb2doconce</code> for translating a notebook
+file to DocOnce format:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce ipynb2doconce notebook.ipynb
+</pre></div>
+<p>
+The output file <code>notebook.do.txt</code> should be an ordinary DocOnce file.
+With an optional argument <code>--cell_delimiter</code>, comment lines a la <code># ---------- code cell</code> act in the as delimiter between the <em>markdown</em> and <em>code</em> cells in the
+<code>.do.txt</code> file.
+
+<h2 id="___sec10">Special comment annotations in the <code>.ipynb</code> file </h2>
+
+<p>
+In order to translate a DocOnce document to the Jupyter Notebook format
+and back again, some information needs to be coded as comments
+in the notebook and such that it can be brought back to DocOnce syntax.
+For example, index workds (<code>idx</code>) and labels are coded in comments, so
+are the original DocOnce figure and movie commands (which contain more
+information than what the notebook normally can make use of).
+Comments in the <code>.ipynb</code> file starting with <code>dom:</code> (DocOnce Metadata)
+contain coded information that can be translated back to DocOnce (see
+below for examples).
+
+<p>
+It is possible to write ordinary DocOnce documents with index words, labels,
+cross references, etc.; translate the document to a notebook; edit
+and expand the notebook interactively; and convert the notebook to
+a DocOnce document again - with preservation of index words, labels, etc.,
+despite the fact that the notebook does not know about such syntax
+and construction. If you want to insert title, authors, date,
+index words, labels,
+figures, or movies in the notebook, use these types of constructions
+while writing a markdown cell in the notebook:
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&lt;!-- dom:TITLE: Here goes the title --&gt;
+# Here goes the title
+&lt;!-- dom:AUTHOR: HPL Email:hpl@simula.no at Simula &amp; UiO --&gt;
+&lt;!-- Author: --&gt; **HPL** (email: `hpl@simula.no`), Simula and UiO
+
+&lt;!-- dom:AUTHOR: Kaare Dump at Segfault, Cyberspace --&gt;
+&lt;!-- Author: --&gt; **Kaare Dump**, Segfault, Cyberspace
+
+Date: **May 25, 2015**
+
+# Section heading
+&lt;!-- dom:label{mysubsec} --&gt;
+&lt;!-- dom:idx{headigs} --&gt;
+&lt;!-- dom:idx{section} --&gt;
+
+Some text...
+
+&lt;!-- dom:FIGURE: [fig/myfig, width=500 frac=0.6] This is a caption. --&gt;
+&lt;!-- begin figure --&gt;
+&lt;p&gt;This is a caption.&lt;/p&gt;
+&lt;img src=&quot;fig/myfig.png&quot; width=500&gt;
+&lt;!-- end figure --&gt;
+</pre></div>
+<p>
+It is important to respect whitespace exactly as shown in this example.
+The <code>dom:</code> syntax must be the valid DocOnce syntax used when translating
+the document back to DocOnce format, while the Markdown lines coming
+after are the ones that can been seen in the present version of
+the notebook (these are removed forever when converting the notebook to
+DocOnce format).
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Mako code is lost!</b>
+Any Preprocess or Mako code one has in a DocOnce document is lost forever when
+converting to a Jupyter Notebook.
+</div>
+
+
+<p>
+As a specific example on generating a notebook and converting it back,
+consider the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/example.do.txt" target="_self"><tt>example.do.txt</tt></a> file:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; cp example.do.txt tmp1.do.txt
+Terminal&gt; doconce format ipynb tmp1
+Terminal&gt; cp tmp1.ipynb tmp2.ipynb
+Terminal&gt; doconce ipynb2doconce tmp2.ipynb
+Terminal&gt; doconce diff tmp1.do.txt tmp2.do.txt
+Termonal&gt; google-chrome tmp_diff_tmp2.do.txt.html
+</pre></div>
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 

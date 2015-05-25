@@ -276,7 +276,10 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
     # Remove extensions in figure filenames
     filestr = re.sub(r'^FIGURE: +\[(.+?)\.(pdf|png|jpe?g|e?ps|gif)',
                      'FIGURE: [\g<1>', filestr, flags=re.MULTILINE)
+    # No \ in labels
     filestr = filestr.replace('\\label{', 'label{')
+    # Too many blanks before !bt and !bc
+    filestr = re.sub(r'\n\n\n+!b([ct])', r'\n\n!b\g<1>', filestr)
     return filestr
 
 def fix(filestr, format, verbose=0):
