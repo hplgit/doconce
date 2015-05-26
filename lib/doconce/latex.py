@@ -658,6 +658,11 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
                      r'\g<1>*{\g<2>}' + markboth, filestr)
 
+    # Add pgf package if we have pgf files
+    if re.search(r'input\{.+\.pgf\}', filestr):
+        filestr = filestr.replace('usepackage{graphicx',
+                                  'usepackage{graphicx,pgf')
+
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
     def subst(m):  # m is match object
@@ -834,8 +839,10 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     return filestr
 
-def latex_figure(m, includegraphics=True):
+def latex_figure(m):
+    figure_method = 'includegraphics'  # alt: 'psfig'
     filename = m.group('filename')
+    filename_stem, filename_ext = os.path.splitext(filename)
     basename  = os.path.basename(filename)
     stem, ext = os.path.splitext(basename)
 
@@ -879,12 +886,15 @@ def latex_figure(m, includegraphics=True):
             if opt == 'sidecap':
                 sidecaption = 1
 
-    if includegraphics:
-        if sidecaption == 1:
-            includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+    if figure_method == 'includegraphics':
+        if filename_ext == '.pgf':
+            includeline = r'\input{%s}' % filename
         else:
-            includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
-    else:
+            if sidecaption == 1:
+                includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+            else:
+                includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+    elif figure_method == 'psfig':
         includeline = r'\centerline{\psfig{figure=%s,width=%s\linewidth}}' % (filename, frac)
 
     caption = m.group('caption').strip()
@@ -2689,7 +2699,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 \usepackage{graphicx}
 """
-
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
        re.search(r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<correction>.*? -> .*?)\]''', filestr, flags=re.DOTALL|re.MULTILINE):

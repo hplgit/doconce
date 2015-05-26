@@ -276,6 +276,20 @@ Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
 Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
 !ec
 
+=== Plot Files in LaTeX ===
+
+Users who applies Matplotlib to make figures get plots with fonts that
+differ from the rest of a LaTeX document.
+A "blog post": "http://bkanuka.com/articles/native-latex-plots/" describes
+techniques for overcoming this problem. The plotfile is then a `.pgf`
+file and one must use the `pgf` LaTeX package. DocOnce supports `.pgf`
+plots and will make use of such files if they exist. These
+are included by a simple `\input{file.pgf}`. If no `.pgf` file is found,
+the `pdflatex` output format will apply `.pdf`, `.png`, or `.jpg` file,
+in that order of preferance,
+while the `latex` output format will always require a `.eps` or `.ps` file.
+
+
 !split
 ===== Movies =====
 
