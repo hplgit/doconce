@@ -246,7 +246,7 @@ cp author2.tex author2_elsevier.tex
 
 # Test notebook conversions
 cp ../doc/src/ipynb/example.do.txt nbdemo.do.txt
-doconce replace 'fig/oscillator_general' '../doc/src/ipynb/fig/oscillator_general'
+doconce replace 'fig/oscillator_general' '../doc/src/ipynb/fig/oscillator_general' nbdemo.do.txt
 doconce format ipynb nbdemo
 doconce ipynb2doconce nbdemo.ipynb
 

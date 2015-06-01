@@ -63,7 +63,8 @@ def ipynb_figure(m):
     if opts:
         info = [s.split('=') for s in opts.split()]
         opts = ' ' .join(['%s=%s' % (opt, value)
-                          for opt, value in info if opt not in ['frac']])
+                          for opt, value in info
+                          if opt not in ['frac', 'sidecap']])
 
     global figure_files
     if not filename.startswith('http'):

@@ -268,7 +268,7 @@ MathJax.Hub.Config({
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
 <p>
-<center><h4>May 25, 2015</h4></center> <!-- date -->
+<center><h4>May 28, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -995,17 +995,19 @@ Figures without captions are allowed and will be inlined.
 <center><p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p></center>
 
 <p>
-<!-- Test multi-line caption in figure -->
+<!-- Test multi-line caption in figure with sidecap=True -->
 
 <p>
-Here is figure <a href="#myfig">2</a> with a long multi-line caption
-and an extra space before the FIGURE keyword.
+Here is figure <a href="#myfig">2</a> with a long (illegal) multi-line caption
+containing inline verbatim text:
 
 <p>
 <center> <!-- figure -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <div id="myfig"></div> </p></center>
-<p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></p>
+<table><tr>
+<td><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></td>
+<td><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <div id="myfig"></div> </p></td>
+</tr></table>
 </center>
 
 <p>
@@ -1015,7 +1017,7 @@ and an extra space before the FIGURE keyword.
 Test URL as figure name:
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500,></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png" align="bottom" width=500></p></center>
 
 <p>
 Test SVG figure:

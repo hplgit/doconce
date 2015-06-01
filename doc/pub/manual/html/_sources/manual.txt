@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 12, 2015
+:Date: May 28, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -430,6 +430,33 @@ remove surrounding whitespace):
         Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
         Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
         Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
+
+Sidecaption in LaTeX and HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The figure caption can be placed on the (right) side of figures by
+using the ``sidecap`` feature as figure option, e.g.,
+``FIGURE: [myfig, width=500 frac=0.5 sidecap=True]``. The generated
+``latex`` and ``pdflatex`` output then uses the ``sidecap`` package and
+the ``SCfigure`` environment to typeset the figure. Remember to
+use a quite low ``frac`` value for figures with sidecaption (0.5
+for instance). A table is used for typsetting a figure with
+sidecaption in HTML, and a low ``width`` value is recommended.
+The ``sidecap=True`` figure option has no impact on other formats.
+
+Plot Files in LaTeX
+~~~~~~~~~~~~~~~~~~~
+
+Users who applies Matplotlib to make figures get plots with fonts that
+differ from the rest of a LaTeX document.
+A `blog post <http://bkanuka.com/articles/native-latex-plots/>`__ describes
+techniques for overcoming this problem. The plotfile is then a ``.pgf``
+file and one must use the ``pgf`` LaTeX package. DocOnce supports ``.pgf``
+plot files for the ``pdflatex`` output format
+and will make use of such files if they exist. These
+are included by a simple ``\input{file.pgf}``. If no ``.pgf`` file is found,
+the ``pdflatex`` output format will apply ``.pdf``, ``.png``, or ``.jpg`` file,
+in that order of preferance.
 
 Movies  (1)
 -----------
@@ -9606,12 +9633,22 @@ Installation of DocOnce and its Dependencies
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install everything what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the Bash script
+The impatient way to install everything that is needed is to use
+Anaconda Python and the ``conda`` program:
+
+.. code-block:: text
+
+        Terminal> conda install --channel johannr doconce
+
+The ``conda`` package is available for Mac and Linux only.
+
+If you do not want to use Anaconda and are
+on a Debian-based Linux
+computer (running, e.g., Ubuntu), you can instead run the Bash script
 `install_doconce.sh <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh>`__ or the equivalent Python script
 `install_doconce.py <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py>`__.
 These scripts gives a comprehensive installation. Some users will prefer to
-install what is needed, and this is explained below.
+install just what is needed for them, and this is explained below.
 
 
 .. admonition:: Version control systems are needed
@@ -9633,6 +9670,9 @@ install what is needed, and this is explained below.
 
 
 
+
+You can omit reading the next sections if you rely on ``conda`` or
+``apt-get install`` commands in the Bash script for installing DocOnce.
 
 DocOnce
 -------

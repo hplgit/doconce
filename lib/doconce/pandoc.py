@@ -255,7 +255,8 @@ def pandoc_figure(m):
     if opts:
         info = [s.split('=') for s in opts.split()]
         opts = ' '.join(['%s=%s' % (opt, value)
-                         for opt, value in info if opt not in ['frac']])
+                         for opt, value in info
+                         if opt not in ['frac', 'sidecap']])
 
     # Save raw html with width etc in a comment so we have that info
     if caption:

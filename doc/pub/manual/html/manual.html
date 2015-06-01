@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,7 +10,7 @@
     
     <title>DocOnce Description</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -25,6 +26,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -44,11 +46,7 @@
     
     <link rel="top" title="Doconce Manual" href="index.html" />
     <link rel="prev" title="Doconce Manual" href="index.html" />
-
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+ 
   
        <style type="text/css">
          div.admonition {
@@ -85,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 28, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -377,6 +375,31 @@ remove surrounding whitespace):</p>
 Terminal&gt; pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
 Terminal&gt; pdfcrop tmp-nup.pdf result.png  # output in FE1.png
 </pre></div>
+</div>
+<div class="section" id="sidecaption-in-latex-and-html">
+<h4>Sidecaption in LaTeX and HTML<a class="headerlink" href="#sidecaption-in-latex-and-html" title="Permalink to this headline">¶</a></h4>
+<p>The figure caption can be placed on the (right) side of figures by
+using the <code class="docutils literal"><span class="pre">sidecap</span></code> feature as figure option, e.g.,
+<code class="docutils literal"><span class="pre">FIGURE:</span> <span class="pre">[myfig,</span> <span class="pre">width=500</span> <span class="pre">frac=0.5</span> <span class="pre">sidecap=True]</span></code>. The generated
+<code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> output then uses the <code class="docutils literal"><span class="pre">sidecap</span></code> package and
+the <code class="docutils literal"><span class="pre">SCfigure</span></code> environment to typeset the figure. Remember to
+use a quite low <code class="docutils literal"><span class="pre">frac</span></code> value for figures with sidecaption (0.5
+for instance). A table is used for typsetting a figure with
+sidecaption in HTML, and a low <code class="docutils literal"><span class="pre">width</span></code> value is recommended.
+The <code class="docutils literal"><span class="pre">sidecap=True</span></code> figure option has no impact on other formats.</p>
+</div>
+<div class="section" id="plot-files-in-latex">
+<h4>Plot Files in LaTeX<a class="headerlink" href="#plot-files-in-latex" title="Permalink to this headline">¶</a></h4>
+<p>Users who applies Matplotlib to make figures get plots with fonts that
+differ from the rest of a LaTeX document.
+A <a class="reference external" href="http://bkanuka.com/articles/native-latex-plots/">blog post</a> describes
+techniques for overcoming this problem. The plotfile is then a <code class="docutils literal"><span class="pre">.pgf</span></code>
+file and one must use the <code class="docutils literal"><span class="pre">pgf</span></code> LaTeX package. DocOnce supports <code class="docutils literal"><span class="pre">.pgf</span></code>
+plot files for the <code class="docutils literal"><span class="pre">pdflatex</span></code> output format
+and will make use of such files if they exist. These
+are included by a simple <code class="docutils literal"><span class="pre">\input{file.pgf}</span></code>. If no <code class="docutils literal"><span class="pre">.pgf</span></code> file is found,
+the <code class="docutils literal"><span class="pre">pdflatex</span></code> output format will apply <code class="docutils literal"><span class="pre">.pdf</span></code>, <code class="docutils literal"><span class="pre">.png</span></code>, or <code class="docutils literal"><span class="pre">.jpg</span></code> file,
+in that order of preferance.</p>
 </div>
 </div>
 <div class="section" id="movies-1">
@@ -8038,12 +8061,19 @@ Combine paragraphs to one line (does not work well).
 <h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
 <p id="index-196">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install everything what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the Bash script
+The impatient way to install everything that is needed is to use
+Anaconda Python and the <code class="docutils literal"><span class="pre">conda</span></code> program:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; conda install --channel johannr doconce
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">conda</span></code> package is available for Mac and Linux only.</p>
+<p>If you do not want to use Anaconda and are
+on a Debian-based Linux
+computer (running, e.g., Ubuntu), you can instead run the Bash script
 <a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh">install_doconce.sh</a> or the equivalent Python script
 <a class="reference external" href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py">install_doconce.py</a>.
 These scripts gives a comprehensive installation. Some users will prefer to
-install what is needed, and this is explained below.</p>
+install just what is needed for them, and this is explained below.</p>
 <div class="admonition-version-control-systems-are-needed admonition">
 <p class="first admonition-title">Version control systems are needed</p>
 <p class="last">The coming installation instructions require that the version control systems
@@ -8057,6 +8087,8 @@ Since most packages are Python-based and can be installed via <code class="docut
 no problems should arise on Mac and Windows. However, some of the
 image processing tools and spell checking apply Unix-specific software.</p>
 </div>
+<p>You can omit reading the next sections if you rely on <code class="docutils literal"><span class="pre">conda</span></code> or
+<code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span></code> commands in the Bash script for installing DocOnce.</p>
 <div class="section" id="doconce">
 <h3>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.
@@ -8546,6 +8578,11 @@ Springer,
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Description</a><ul>
@@ -8557,7 +8594,11 @@ Springer,
 <li><a class="reference internal" href="#heading-with-title-and-author-s">Heading with title and author(s)</a></li>
 <li><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
 <li><a class="reference internal" href="#section-headings">Section headings</a></li>
-<li><a class="reference internal" href="#figures-1">Figures  (1)</a></li>
+<li><a class="reference internal" href="#figures-1">Figures  (1)</a><ul>
+<li><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
+<li><a class="reference internal" href="#plot-files-in-latex">Plot Files in LaTeX</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#movies-1">Movies  (1)</a><ul>
 <li><a class="reference internal" href="#the-basic-command">The Basic Command</a></li>
 <li><a class="reference internal" href="#mp4-webm-and-ogg-movies-in-html">MP4, WebM, and Ogg Movies in HTML</a></li>
@@ -8817,20 +8858,23 @@ Springer,
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015, HPL.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
-      
-      |
-      <a href="_sources/manual.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Doconce Manual"
+             >previous</a> |</li>
+        <li><a href="index.html">Doconce Manual</a> &raquo;</li> 
+      </ul>
     </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+  </div>
+</div>
 
-    
-
-    
   </body>
 </html>

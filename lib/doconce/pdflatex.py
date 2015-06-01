@@ -75,6 +75,8 @@ def define(FILENAME_EXTENSION,
     TABLE['pdflatex'] = TABLE['latex']
     EXERCISE['pdflatex'] = EXERCISE['latex']
     INTRO['pdflatex'] = INTRO['latex'].replace('.eps', '.pdf').replace('epsfig,', '')
+    INTRO['pdflatex'] = INTRO['pdflatex'].replace(
+        'usepackage{graphicx}', 'usepackage[pdftex]{graphicx}')
     OUTRO['pdflatex'] = OUTRO['latex']
     ARGLIST['pdflatex'] = ARGLIST['latex']
     TOC['pdflatex'] = TOC['latex']

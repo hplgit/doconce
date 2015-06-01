@@ -61,7 +61,8 @@ def sphinx_figure(m):
         # opts: width=600, frac=0.5, align=center
         info = [s.split('=') for s in opts.split()]
         fig_info = ['   :%s: %s' % (option, value.replace(',', ''))
-                    for option, value in info if option not in ['frac']]
+                    for option, value in info
+                    if option not in ['frac', 'sidecap']]
         result += '\n'.join(fig_info)
     if caption:
         result += '\n\n   ' + caption + '\n'

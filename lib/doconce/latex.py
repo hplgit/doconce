@@ -660,8 +660,8 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Add pgf package if we have pgf files
     if re.search(r'input\{.+\.pgf\}', filestr):
-        filestr = filestr.replace('usepackage{graphicx',
-                                  'usepackage{graphicx,pgf')
+        filestr = filestr.replace('usepackage{graphicx}',
+                                  'usepackage{graphicx}\n\\usepackage{pgf}')
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -880,6 +880,10 @@ def latex_figure(m):
     if opts:
         info = [s.split('=') for s in opts.split()]
         for opt, value in info:
+            if ',' in value:
+                print '*** error: no comma between figure options!'
+                print '    %s' % opts
+                _abort()
             if opt == 'frac':
                 frac = float(value)
         for opt, value in info:
@@ -942,9 +946,9 @@ def latex_figure(m):
         verbatim_text_new.append(new_words)
     for from_, to_ in zip(verbatim_text, verbatim_text_new):
         caption = caption.replace(from_, to_)
-    if sidecaption == 1:
-        includeline='\sidecaption[t] ' + includeline
-    if caption:
+    #if sidecaption == 1:
+    #    includeline='\sidecaption[t] ' + includeline
+    if caption and sidecaption == 0:
         result = r"""
 \begin{figure}[t]
   %s
@@ -954,6 +958,18 @@ def latex_figure(m):
 \end{figure}
 %%\clearpage %% flush figures %s
 """ % (includeline, caption, label)
+    elif caption and sidecaption == 1:
+        # Requires \usepackage{sidecap}
+        result = r"""
+\begin{SCfigure}
+  \centering
+  %s
+  \caption{
+  %s
+  }
+\end{SCfigure}
+%%\clearpage %% flush figures %s
+""" % (includeline, caption, label)
     else:
         # drop caption and place figure inline
         result = r"""
@@ -961,6 +977,7 @@ def latex_figure(m):
   %s
 \end{center}
 """ % (includeline)
+        # Use this instead (without centering):
         result = r"""
 
 %% inline figure
@@ -2699,6 +2716,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 \usepackage{graphicx}
 """
+    # sidecap figures?
+    if 'sidecap=' in filestr:
+        INTRO['latex'] += '\\usepackage{sidecap}\n'
+
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
        re.search(r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<correction>.*? -> .*?)\]''', filestr, flags=re.DOTALL|re.MULTILINE):

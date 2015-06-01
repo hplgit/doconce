@@ -6024,8 +6024,9 @@ _replacements = [
     (r"(idx|label|ref|cite)\{.*?\}", ""),
     (r"cite\[.+?\]\{.+?\}", ""),
     (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
-    (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),
-    (r' +\| +', ' '),
+    (r"^(file|solution)=.+$", '', re.MULTILINE),  # file= in exercises
+    (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),  # table line
+    (r' +\| +', ' '),  # table line
     ('<linebreak>', ''),
     (r"={3,}",  ""),  # section
     (r"^__(.+?)__", r"\g<1>\n", re.MULTILINE),  # paragraph
