@@ -324,19 +324,28 @@ identifierstyle=\color{darkorange},
     if 'simple' not in requested_styles:
         requested_styles.append('simple')
     for style in requested_styles:
-        s += styles[style]
+        if style in styles:  # must test: can have user-defined styles too
+            s += styles[style]
     s += """
 % end of custom lstdefinestyles
 """
     filename = option('latex_code_lststyles=', None)
+    user_styles = []
     if filename is not None:
         # User has specified additional lst styles
         if os.path.isfile(filename):
             text = open(filename, 'r').read()
             s += text
+            user_styles = re.findall(r'\\lstdefinestyle\{(.+)\}', text)
         else:
             print '*** error: file "%s" does not exist' % filename
             _abort()
+    # Check that styles are defined
+    all_styles = list(styles.keys()) + user_styles
+    for style in requested_styles:
+        if style not in all_styles:
+            print '*** error: lst style=%s is not defined' % style
+            print '    not among', ', '.join(all_styles)
 
     return s
 
