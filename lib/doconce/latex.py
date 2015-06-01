@@ -220,7 +220,7 @@ def latex_code_lstlisting(latex_code_style):
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 """
     styles = dict(
        simple=r"""
@@ -326,20 +326,19 @@ identifierstyle=\color{darkorange},
     for style in requested_styles:
         if style in styles:  # must test: can have user-defined styles too
             s += styles[style]
-    s += """
-% end of custom lstdefinestyles
-"""
+
     filename = option('latex_code_lststyles=', None)
     user_styles = []
     if filename is not None:
         # User has specified additional lst styles
         if os.path.isfile(filename):
             text = open(filename, 'r').read()
-            s += text
+            s += '\n%% user-defined lst styles in file "%s":\n' % filename + text
             user_styles = re.findall(r'\\lstdefinestyle\{(.+)\}', text)
         else:
             print '*** error: file "%s" does not exist' % filename
             _abort()
+    s += '\n% end of custom lstdefinestyles\n'
     # Check that styles are defined
     all_styles = list(styles.keys()) + user_styles
     for style in requested_styles:

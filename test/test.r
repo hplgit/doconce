@@ -9103,7 +9103,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{redblue}{
 keywordstyle=\color{blue}\bfseries,
@@ -9116,7 +9116,17 @@ identifierstyle=\color{darkorange},
 commentstyle={},
 }
 
+
+% user-defined lst styles in file "mylststyles":
+\lstdefinestyle{myspeciallststyle}{
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkorange},
+}
+
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -9584,7 +9594,7 @@ and then just the subroutine,
 \noindent
 and finally the complete file with a plain text verbatim environment
 (\Verb!envir=ccq!):
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 C     a comment
 
       subroutine test()
@@ -9605,7 +9615,7 @@ C     END1
 
 Testing other code environments. First Python:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 !bc pycod
 def f(x):
     return x+1
@@ -9614,7 +9624,7 @@ def f(x):
 \noindent
 which gets rendered as
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def f(x):
     return x+1
 \end{lstlisting}\end{cod}
@@ -9625,14 +9635,14 @@ before code.
 
 \paragraph{Paragraph heading before code.}
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 import sys
 sys.path.insert(0, os.pardir)
 \end{lstlisting}\end{cod}
 \noindent
 
 \paragraph{Subsubsection heading before code.}
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def h(z):
     return z+1
 \end{lstlisting}\end{cod}
@@ -9640,7 +9650,7 @@ def h(z):
 
 Now a complete program to be shown via Python Online Tutorial:
 
-\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 class Line:
     def __init__(self, a, b):
         self.a, self.b = a, b
@@ -9661,7 +9671,7 @@ print y
 Some more Python code (actually specified as a sage cell, but
 such cells are not supported by this format).
 
-\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 a = 2
 b = 3
 print 'a+b:', a + b
@@ -9679,7 +9689,7 @@ show()
 
 
 Then Cython:
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 cpdef f(double x):
     return x + 1
 \end{lstlisting}\end{cod}
@@ -9687,7 +9697,7 @@ cpdef f(double x):
 
 Standard Python shell sessions:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 >>> from numpy import linspace, sin
 >>> # Some comment
 >>> x = linspace(0, 2, 11)
@@ -9701,7 +9711,7 @@ Standard Python shell sessions:
 
 Similar IPython sessions:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 In [1]: from numpy import linspace, sin
 In [2]: # Some comment
 In [3]: x = linspace(0, 2, 11)
@@ -9722,7 +9732,7 @@ output
 
 Here is the interactive session again, but with \Verb!pyshell-t!.
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 >>> from numpy import linspace, sin
 >>> # Some comment
 >>> x = linspace(0, 2, 11)
@@ -9736,7 +9746,7 @@ Here is the interactive session again, but with \Verb!pyshell-t!.
 
 % This one tests a + sign before a code environment
 C++:
-\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=C++,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=C++,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 #include <iostream>
 
 int main()
@@ -9750,7 +9760,7 @@ int main()
 % It also tests emoji before code
 And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{latex_figs/dizzy_face.png}}
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 !bc cod
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
@@ -9763,7 +9773,7 @@ And a little bit of Fortran: \raisebox{-\height+\ht\strutbox}{\includegraphics[h
 \noindent
 which then is typeset as
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -9775,7 +9785,7 @@ which then is typeset as
 
 HTML:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=HTML,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=HTML,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 <table>
 <tr><td>Column 1</td><td>Column 2</td></tr>
 <tr><td>0.67526 </td><td>0.92871 </td></tr>
@@ -9790,7 +9800,7 @@ quoted).
 
 And here is a system call:
 
-\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]
 Terminal> mkdir test
 Terminal> cd test
 Terminal> myprog -f
@@ -9800,7 +9810,7 @@ output2
 
 Any valid pygments lexer/language name can appear to, e.g.,
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 !bc restructuredtext
 =======
 Heading
@@ -9812,7 +9822,7 @@ Some text.
 \noindent
 results in
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 =======
 Heading
 =======
@@ -9830,7 +9840,7 @@ Some text.
 
 Finally, \Verb?!bc do? supports highlighting of DocOnce source:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 ======= DocOnce test file =======
 
 ===== Computer code =====
@@ -9884,7 +9894,7 @@ But here some more running text is added which is not part of
 the previous blocks with line breaks.
 
 \paragraph{Running OS commands.}
-\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]
+\begin{Verbatim}[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]
 Terminal> python -c 'print "Testing\noutput\nfrom\nPython."'
 Testing
 output
@@ -10003,7 +10013,7 @@ Movies are tested in separate file \Verb!movies.do.txt!.
 
 Functions do not always need to be advanced, here is one
 involving $\theta$:
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def f(theta):
     return theta**2
 \end{lstlisting}\end{cod}
@@ -10098,7 +10108,7 @@ with the preprocessor.
 \end{table}
 
 The DocOnce source code reads
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 
   |--------------------------------|
   |time  | velocity | acceleration |
@@ -10301,7 +10311,7 @@ as \Verb!Hennes & Mauritz! and \Verb!H & M!.
 A sole \Verb!&! must also work.
 % Note: substitutions must not occur inside verbatim, just in ordinary text.
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 # Just to check that ampersand works in code blocks:
 c = a & b
 \end{lstlisting}\end{cod}
@@ -10402,7 +10412,7 @@ Example~\ref{ex:test:1p1}.
 Suppose we want to write a test function for checking the
 implementation of a Python function for addition.
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def add(a, b):
     return a + b
 
@@ -10623,7 +10633,7 @@ head, otherwise tail. Repeat this $N$ number of times.
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 import sys, random
 N = int(sys.argv[1])
 heads = 0
@@ -10771,7 +10781,7 @@ For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
 is a point on the circle.
 The formula can be used to generate \Verb!n! points on a circle:
 
-\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 import numpy as np
 
 def circle(R, x0, y0, n=501):
@@ -10863,7 +10873,7 @@ With math $a=b$ in hint:
 \[ a=b. \]
 And with code (in plain verbatim) returning $x+1$ in hint:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 def func(x):
     return x + 1  # with code in hint
 \end{lstlisting}\end{cod}
@@ -10940,7 +10950,7 @@ Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
 And code \Verb!a=b! in this solution:
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 a = b  # code in solution
 \end{lstlisting}\end{cod}
 \noindent
@@ -10976,7 +10986,7 @@ to test that math block insertion is correct:
 
 And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 lambda x: x+2
 \end{lstlisting}\end{cod}
 \noindent
@@ -11021,7 +11031,7 @@ $y=e^{-y}$
 $y=e^{y}$
 
 \textbf{C}. 
-\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
+\begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 from math import exp
 def f(x):
     return exp(x)
@@ -41597,7 +41607,8 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
 
-system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+# Test lst with external and internal styles
+system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles
 cp testdoc.tex testdoc.tex_direct
 
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -48406,13 +48417,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -49087,13 +49099,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -49775,13 +49788,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -50506,13 +50520,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -51153,13 +51168,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -51846,13 +51862,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -52449,13 +52466,14 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 \lstdefinestyle{simple}{
 commentstyle={},
 }
 
 % end of custom lstdefinestyles
+
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -63096,7 +63114,7 @@ title (Warning) since no title is specified.
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
@@ -73587,7 +73605,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f3f90e41aa0>
+verbatim is to be replaced using <function html_verbatim at 0x7f7e3de8caa0>
 
 
 First occurence: " `mako`."
@@ -77562,7 +77580,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jun  1 04:51:28 2015.
+# sphinx-quickstart on Mon Jun  1 11:56:37 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -95417,8 +95435,8 @@ figure file ../doc/src/manual/fig/wave1D:
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]'
-+ doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]'
++ system doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]' --latex_code_lststyles=mylststyles
++ doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]' --latex_code_lststyles=mylststyles
 
 Summary of papers
 -----------------
