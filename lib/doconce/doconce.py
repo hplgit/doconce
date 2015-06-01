@@ -2483,6 +2483,9 @@ def handle_index_and_bib(filestr, format):
         line_counter += 1
         line = line.strip()
         if line.startswith('BIBFILE:'):
+            if pubfile is not None:
+                print '*** error: more than one BIBFILE specification is illegal'
+                _abort()
             pubfile = line.split()
             if len(pubfile) == 1:
                 print line
