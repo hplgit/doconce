@@ -19,6 +19,14 @@ can go wrong.
 
 ======= General Problems =======
 
+===== How do I debug a DocOnce file that results in a strange error message? =====
+
+Isolate the problem by a ``bisection'' method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the next so you understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.
+
 ===== GitHub gh-pages will not display files starting with a dot or underscore =====
 
 This is a typical problem related to publishing either splitted HTML documents
@@ -60,7 +68,7 @@ statements).
 
 This error may arise from a syntax error with a colon at the end
 of if tests, e.g. `# #if FORMAT == 'html':`. Colon is not used
-with Preprocess.
+with Preprocess (but required by Mako: `if FORMAT == 'html':`).
 
 ===== When I set a large portion of text in color, only a part of it becomes colored =====
 
@@ -87,15 +95,16 @@ moving constructions with braces (`label`, `cite`) out of the
 text to be colored.
 !ec
 
-===== How can I make use of a native LaTeX environments (example environemt for instance)? =====
+===== How can I make use of a native LaTeX environments (example environment for instance)? =====
 label{trouble:latex:envir:native}
 
-LaTeX writers often lack their favorite environments, but DocOnce
-has a way to define such environments, with corresponding typesetting
-also for HTML and all other output formats. See the
-section *User-Defined Environments* in the DocOnce manual. It contains
-all the details for using a standard example or theorem environment
-in LaTeX output.
+LaTeX writers often lack their favorite environments, but DocOnce has
+a way to define such environments, with corresponding typesetting also
+for HTML and all other output formats. See the section "User-Defined
+Environments":
+"http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments"
+in the DocOnce manual. It contains all the details for using a
+standard example or theorem environment in LaTeX output.
 
 ===== How can I create a more tailored code environment in LaTeX than what DocOnce offers? =====
 
@@ -124,14 +133,6 @@ is rendered as
 
 !bblock (large) So - how to be excellent?
 <linebreak>
-Excellence is not a planned goal - it is the corollary of
-deep passion, very much hard (and exciting!)
-work, and *thinking constantly about it*.
-!eblock
-
-Without `<linebreak>` the rendering becomes
-
-!bblock (large) So - how to be excellent?
 Excellence is not a planned goal - it is the corollary of
 deep passion, very much hard (and exciting!)
 work, and *thinking constantly about it*.
@@ -321,7 +322,7 @@ Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 !ec
 
 
-===== Wrong Norwegian charcters =====
+===== Wrong Norwegian characters =====
 
 When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
@@ -350,8 +351,9 @@ as is unless this option is included.
 
 ===== Emacs editing does not work properly because of "regexp overflow" =====
 
-Sometimes the Doonce editing mode (see Section ref{emacs:doconce}) in Emacs
-leads to an error message ending with "overflow in regexp matcher".
+Sometimes the Doonce editing mode (see the
+*Emacs DocOnce Formatter* section in the manual) in Emacs
+leads to an error message ending with ``overflow in regexp matcher''.
 This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
 the pieces using the `preprocess` directive `#include "piece.do.txt"`.
