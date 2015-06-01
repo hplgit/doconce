@@ -307,10 +307,23 @@ Note: the colors in mdfbox and other boxes can customized.
 """),
     ('--latex_admon_color=',
      """The color to be used as background in admonitions.
+A single value applies to all admons:
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
   '--latex_admon_color=yellow!5'
 Note the quotes, needed for bash, in the latter example.
+
+Multiple values can be assigned, one for each admon (all admons must
+be specified):
+  '--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white'
+
+If --latex_admon=mdfbox, the specification above with color1!X!color2
+will automatically trigger 2*X as the background color of the frametitle.
+
+There are predefined multiple values, e.g.,
+  --latex_admon_color=colors1
+gives red warnings, blue notice, orange questions, green summaries and
+yellow blocks, automatically adjusted with darker frametitles for
 
 If --latex_admon=mdfbox, the background of the title and
 the color of the border of box can also be customized by

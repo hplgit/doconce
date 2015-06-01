@@ -3154,37 +3154,59 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         # grayicon color
         gray3 = (0.91, 0.91, 0.91)   # lighter gray
         red1 = 'red!10!white'
-        green1 = 'darkgreen!10!white'
-        blue1 = 'darkblue2!10!white'
-        orange1 = 'tucorange!10!white'
+        green1 = 'darkgreen!20!white'
+        blue1 = 'darkblue2!20!white'
+        orange1 = 'tucorange!20!white'
 
         latex_admon = option('latex_admon=', 'mdfbox')
         latex_admon_color = option('latex_admon_color=', None)
         # Multiple admon colors specified?
         multiple_colors = False
-        for a in admons:
-            if a+':' in latex_admon_color:
-                multiple_colors = True
-                break
-        # Named admon color?
+        if latex_admon_color is not None:
+            for a in admons:
+                if a+':' in latex_admon_color:
+                    multiple_colors = True
+                    break
+        # Named admon color? Set corresponding values
         if latex_admon_color == 'colors1':
            multiple_colors = True
            latex_admon_color = 'warning:red1;notice:blue1;question:orange1;summary:green1;block:yellow1'
         if multiple_colors:
             # Syntax: --latex_admon_color=warning:(r,g,b);question:blue1
-            print 'XXX latex_admon_color:', latex_admon_color, latex_admon_color.split(';'),
             latex_admon_colors = [c.split(':') for c in
                                   latex_admon_color.split(';')]
+            # Check
+            for element in latex_admon_colors:
+                if len(element) != 2:
+                    print '*** error in --latex_admon_color syntax:'
+                    print '   ', latex_admon_color
+                    print '    split wrt ; and :', latex_admon_colors
+                    _abort()
+            admons_found = {a: False for a in admons}
             for a, c in latex_admon_colors:
-                print 'XXX2', a, c
                 if a not in admons:
                     print '*** error: wrong syntax in --latex_admon_color=%s' % latex_admon_color
                     print '    %s is not an admonition name' % a
                     _abort()
+                admons_found[a] = True
+            for a in admons_found:
+                if not a:
+                    print '*** error in --latex_admon_color syntax: all admon types must be specified!'
+                    print '   ', ', '.join(admons)
+                    print '    missing', a
+                    _abort()
+            try:
+                latex_admon_colors = [[a, eval(c)] for a, c in latex_admon_colors]
+            except SyntaxError:
+                # eval(c) did not work, treat c as valid color
+                pass
         elif latex_admon_color is not None and \
              not latex_admon_color.endswith('style'):
-            latex_admon_colors = [[a, latex_admon_color] for a in admons]
-
+            try:
+                latex_admon_colors = [[a, eval(latex_admon_color)] for a in admons]
+            except SyntaxError:
+                # eval(latex_admon_color) did not work, treat it as valid color
+                latex_admon_colors = [[a, latex_admon_color] for a in admons]
         admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon',
         admon_color = {style: {} for style in admon_styles}
 
@@ -3213,7 +3235,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 # use latex_admon_color for everything
                 try:
                     # RGB input?
-                    rgb = tuple(eval(latex_admon_color))
+                    rgb = tuple(latex_admon_color)
                     # Potential problem: 'red' becomes ('r', 'e', 'd') here
                     if len(rgb) != 3:
                         raise SyntaxError('not rgb tuple')
@@ -3231,7 +3253,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 for style in admon_styles:
                     admon_color[style][admon] = latex_admon_color
 
-        print 'XXX admon_color', admon_color
         if latex_admon in ('colors1',):
             packages = r'\usepackage{framed}'
         elif latex_admon in ('colors2', 'grayicon', 'yellowicon'):
@@ -3474,6 +3495,22 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=yellow!20')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=yellow!5,', INTRO['latex'])
 
+        # Make darker headings for mdfbox admons:
+        # darkblue2!20!white -> darkblue2!30!white in headings
+        # no effect on rgb values...
+        colors = re.findall(r'colorlet\{mdfbox_(.+?)_background\}\{(.+?)\}',
+                            INTRO['latex'])
+        for admon, color in colors:
+            m = re.search(r'([A-Za-z0-9_]+)!([A-Za-z0-9_]+)!([A-Za-z0-9_]+)',
+                          color)
+            if m:
+                color1 = m.group(1)
+                intensity = int(m.group(2))
+                color2 = m.group(3)
+                intensity = min(int(intensity*2), 90)
+                INTRO['latex'] = INTRO['latex'].replace(
+                    'frametitlebackgroundcolor=mdfbox_%s_background,' % admon,
+                    'frametitlebackgroundcolor=%s!%s!%s,' % (color1, intensity, color2))
         INTRO['latex'] += r"""
 % --- end of definitions of admonition environments ---
 """

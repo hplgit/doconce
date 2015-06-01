@@ -277,17 +277,16 @@ for admon_tp in $admon_tps; do
 color=
 opts=
 if [ $admon_tp = 'mdfbox' ]; then
-   color="--latex_admon_color=gray!6"
+   color="--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white"
    opts=--no_abort
 elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
 elif [ $admon_tp = 'graybox2' ]; then
    opts=--no_abort
 fi
-system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts
-doconce ptex2tex admon envir=minted
+system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts --latex_code_style=lst
 cp admon.tex admon_${admon_tp}.tex
-system pdflatex -shell-escape admon_${admon_tp}
+system pdflatex admon_${admon_tp}
 echo "admon=$admon_tp"
 if [ -d latex_figs ]; then
     echo "latex_figs:"

@@ -35,10 +35,10 @@ Here is a plain quote environment.
 
 !bquote
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." <linebreak>
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' <linebreak>
 By way of corollary, it adds: <linebreak>
-"That is why academic politics are so bitter." <linebreak>
+``That is why academic politics are so bitter.'' <linebreak>
 *Source*: "wikipedia": "http://en.wikipedia.org/wiki/Sayre's_law"
 !equote
 

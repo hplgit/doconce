@@ -2246,7 +2246,7 @@ def handle_figures(filestr, format):
                 ext = ''
             if ext:
                 if is_file_or_url(figfile) != 'url':
-                    print '*** error: figure URL "%s" could not reached' % figfile
+                    print '*** error: figure URL "%s" could not be reached' % figfile
                     _abort()
             else:
                 # no extension, run through the allowed extensions

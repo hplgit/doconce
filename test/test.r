@@ -4254,7 +4254,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
 
 % Tools for marking corrections
@@ -6674,7 +6674,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
 
 % Tools for marking corrections
@@ -9006,7 +9006,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
 
 % Tools for marking corrections
@@ -9019,28 +9019,29 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
 \definecolor{darkorange}{rgb}{.71,0.21,0.01}
 \definecolor{darkgreen}{rgb}{.12,.54,.11}
 \definecolor{myteal}{rgb}{.26, .44, .56}
 \definecolor{gray}{gray}{0.45}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
 \colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
-
-% New ansi colors
-\definecolor{brown}{rgb}{0.54,0.27,0.07}
-\definecolor{purple}{rgb}{0.5,0.0,0.5}
-\definecolor{darkgray}{gray}{0.25}
-\definecolor{darkblue}{rgb}{0,0.08,0.45}
-\definecolor{lightred}{rgb}{1.0,0.39,0.28}
-\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
-\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
-\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
-\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
@@ -11876,7 +11877,6 @@ containing inline verbatim text:
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 500
-   :sidecap: True
 
    *A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in $t_{i+1}$*  (myfig)
 
@@ -13713,7 +13713,6 @@ containing inline verbatim text:
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 500
-   :sidecap: True
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
 
@@ -25198,7 +25197,7 @@ Figures without captions are allowed and will be inlined.
 Here is [figure](#myfig) with a long (illegal) multi-line caption
 containing inline verbatim text:
 
-<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500 sidecap=True><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <div id="myfig"></div></em></p> -->
+<!-- <img src="../doc/src/manual/fig/wave1D.png" width=500><p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <div id="myfig"></div></em></p> -->
 ![<p><em>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$. <div id="myfig"></div></em></p>](../doc/src/manual/fig/wave1D.png)
 
 <!-- Must be a blank line after MOVIE or FIGURE to detect this problem -->
@@ -27294,7 +27293,7 @@ is at the end with only one newline.
     "<div id=\"myfig\"></div>\n",
     "\n",
     "<p>A long caption spanning several lines and containing verbatim words like `my_file_v1` and `my_file_v2` as well as math with subscript as in $t_{i+1}$.</p>\n",
-    "<img src=\"../doc/src/manual/fig/wave1D.png\" width=500 sidecap=True>\n",
+    "<img src=\"../doc/src/manual/fig/wave1D.png\" width=500>\n",
     "\n",
     "<!-- end figure -->\n",
     "\n",
@@ -31053,7 +31052,7 @@ Inline math, a=b, is the only math in this document.
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -31195,7 +31194,7 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -41802,17 +41801,16 @@ for admon_tp in $admon_tps; do
 color=
 opts=
 if [ $admon_tp = 'mdfbox' ]; then
-   color="--latex_admon_color=gray!6"
+   color="--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white"
    opts=--no_abort
 elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
 elif [ $admon_tp = 'graybox2' ]; then
    opts=--no_abort
 fi
-system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts
-doconce ptex2tex admon envir=minted
+system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts --latex_code_style=lst
 cp admon.tex admon_${admon_tp}.tex
-system pdflatex -shell-escape admon_${admon_tp}
+system pdflatex admon_${admon_tp}
 echo "admon=$admon_tp"
 if [ -d latex_figs ]; then
     echo "latex_figs:"
@@ -42725,7 +42723,6 @@ to <code>\boldsymbol</code>.
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="HPL" />
-  <meta name="date" content="2015-05-28" />
   <title>How various formats can deal with LaTeX math</title>
   <style type="text/css">code{white-space: pre;}</style>
   
@@ -42897,7 +42894,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -47135,7 +47132,6 @@ containing inline verbatim text:
 
 .. figure:: ../doc/src/manual/fig/wave1D.png
    :width: 500
-   :sidecap: True
 
    A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
 
@@ -47675,7 +47671,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
@@ -47959,10 +47955,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -48313,9 +48309,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -48329,15 +48326,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -48492,6 +48567,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -48541,17 +48617,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -48560,10 +48636,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -48621,10 +48697,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -48668,15 +48744,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 \end{warning_colors1admon}
 
@@ -48774,12 +48850,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 \end{warning_colors1admon}
 
 
@@ -48818,18 +48894,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -48868,7 +48944,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -48902,9 +48978,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_colors2.tex *****************
@@ -48912,9 +48990,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -48928,15 +49007,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -49098,6 +49255,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -49147,17 +49305,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -49166,10 +49324,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -49227,10 +49385,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -49274,15 +49432,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 \end{warning_colors2admon}
 
@@ -49380,12 +49538,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 \end{warning_colors2admon}
 
 
@@ -49424,18 +49582,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -49474,7 +49632,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -49508,9 +49666,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_mdfbox.tex *****************
@@ -49518,9 +49678,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -49534,15 +49695,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -49590,7 +49829,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Admonition style "mdfbox" is an oval colored box based on mdframed
 % "notice" admon
-\colorlet{mdfbox_notice_background}{gray!6}
+\colorlet{mdfbox_notice_background}{darkgray!20!white}
 \newmdenv[
   skipabove=15pt,
   skipbelow=15pt,
@@ -49598,7 +49837,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   backgroundcolor=mdfbox_notice_background,
   linecolor=black,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_notice_background,
+  frametitlebackgroundcolor=darkgray!40!white,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -49618,7 +49857,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Admonition style "mdfbox" is an oval colored box based on mdframed
 % "summary" admon
-\colorlet{mdfbox_summary_background}{gray!6}
+\colorlet{mdfbox_summary_background}{tucorange!20!white}
 \newmdenv[
   skipabove=15pt,
   skipbelow=15pt,
@@ -49626,7 +49865,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   backgroundcolor=mdfbox_summary_background,
   linecolor=black,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_summary_background,
+  frametitlebackgroundcolor=tucorange!40!white,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -49646,7 +49885,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Admonition style "mdfbox" is an oval colored box based on mdframed
 % "warning" admon
-\colorlet{mdfbox_warning_background}{gray!6}
+\colorlet{mdfbox_warning_background}{darkgreen!40!white}
 \newmdenv[
   skipabove=15pt,
   skipbelow=15pt,
@@ -49654,7 +49893,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   backgroundcolor=mdfbox_warning_background,
   linecolor=black,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_warning_background,
+  frametitlebackgroundcolor=darkgreen!80!white,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -49674,7 +49913,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Admonition style "mdfbox" is an oval colored box based on mdframed
 % "question" admon
-\colorlet{mdfbox_question_background}{gray!6}
+\colorlet{mdfbox_question_background}{red!50!white}
 \newmdenv[
   skipabove=15pt,
   skipbelow=15pt,
@@ -49682,7 +49921,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   backgroundcolor=mdfbox_question_background,
   linecolor=black,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_question_background,
+  frametitlebackgroundcolor=red!90!white,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -49702,7 +49941,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Admonition style "mdfbox" is an oval colored box based on mdframed
 % "block" admon
-\colorlet{mdfbox_block_background}{gray!6}
+\colorlet{mdfbox_block_background}{darkgreen!40!white}
 \newmdenv[
   skipabove=15pt,
   skipbelow=15pt,
@@ -49710,7 +49949,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   backgroundcolor=mdfbox_block_background,
   linecolor=black,
   linewidth=2pt,       % frame thickness
-  frametitlebackgroundcolor=mdfbox_block_background,
+  frametitlebackgroundcolor=darkgreen!80!white,
   frametitlerule=true,
   frametitlefont=\normalfont\bfseries,
   shadow=false,        % frame shadow?
@@ -49747,6 +49986,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -49796,17 +50036,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -49815,10 +50055,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -49876,10 +50116,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -49923,15 +50163,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 \end{warning_mdfboxadmon}
 
@@ -50029,12 +50269,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 \end{warning_mdfboxadmon}
 
 
@@ -50073,18 +50313,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -50123,7 +50363,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -50157,9 +50397,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_graybox2.tex *****************
@@ -50167,9 +50409,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -50183,15 +50426,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -50289,6 +50610,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -50338,17 +50660,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -50357,10 +50679,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -50418,10 +50740,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -50468,15 +50790,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 \end{graybox2admon}
 
@@ -50590,12 +50912,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 \end{graybox2admon}
 
 
@@ -50638,18 +50960,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -50688,7 +51010,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -50722,9 +51044,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_grayicon.tex *****************
@@ -50732,9 +51056,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -50748,15 +51073,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -50923,6 +51326,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -50972,17 +51376,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -50991,10 +51395,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -51052,10 +51456,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -51099,15 +51503,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 \end{warning_grayiconadmon}
 
@@ -51205,12 +51609,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 \end{warning_grayiconadmon}
 
 
@@ -51249,18 +51653,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -51299,7 +51703,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -51333,9 +51737,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_paragraph.tex *****************
@@ -51343,9 +51749,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -51359,15 +51766,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -51432,6 +51917,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -51481,17 +51967,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -51500,10 +51986,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -51561,10 +52047,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -51610,15 +52096,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 % --- end paragraph admon ---
 
@@ -51723,12 +52209,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 % --- end paragraph admon ---
 
 
@@ -51769,18 +52255,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -51819,7 +52305,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -51854,9 +52340,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_yellowicon.tex *****************
@@ -51864,9 +52352,10 @@ exercises (and problems and projects too).
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
 %%
-%%
 
+% #define PREAMBLE
 
+% #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
@@ -51880,15 +52369,93 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 
-\usepackage{fancyvrb} % packages needed for verbatim environments
-\usepackage{minted}
-\usemintedstyle{default}
-\usepackage{fancyvrb}
+% Packages for typesetting blocks of computer code
+\usepackage{fancyvrb,framed,moreverb}
+
+% Define colors
+\definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
+\definecolor{darkorange}{rgb}{.71,0.21,0.01}
+\definecolor{darkgreen}{rgb}{.12,.54,.11}
+\definecolor{myteal}{rgb}{.26, .44, .56}
+\definecolor{gray}{gray}{0.45}
+\definecolor{mediumgray}{gray}{.8}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+\colorlet{comment_green}{green!50!black}
+\colorlet{string_red}{red!60!black}
+\colorlet{keyword_pink}{magenta!70!black}
+\colorlet{indendifier_green}{green!70!white}
+
+% Backgrounds for code
+\definecolor{cbg_gray}{rgb}{.95, .95, .95}
+\definecolor{bar_gray}{rgb}{.92, .92, .92}
+
+\definecolor{cbg_yellowgray}{rgb}{.95, .95, .85}
+\definecolor{bar_yellowgray}{rgb}{.95, .95, .65}
+
+\colorlet{cbg_yellow2}{yellow!10}
+\colorlet{bar_yellow2}{yellow!20}
+
+\definecolor{cbg_yellow1}{rgb}{.98, .98, 0.8}
+\definecolor{bar_yellow1}{rgb}{.98, .98, 0.4}
+
+\definecolor{cbg_red1}{rgb}{1, 0.85, 0.85}
+\definecolor{bar_red1}{rgb}{1, 0.75, 0.85}
+
+\definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
+\definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
+
+\usepackage{listingsutf8}
+
+% Common lstlisting parameters
+\lstset{
+  basicstyle=\small \ttfamily,
+  breaklines=false,          % break/wrap lines
+  breakatwhitespace=true,    % let linebreaks happen at whitespace
+  breakindent=40pt,
+  tab=,
+  tabsize=4,                 % tab means 4 spaces
+  %belowskip=\smallskipamount,  % space between code and text below
+  xleftmargin=5pt,           % indentation of code frame
+  xrightmargin=5pt,
+  framexleftmargin=5pt,      % add frame space to the left of code
+  %numbers=left,             % put line numbers on the left
+  %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
+  %framerule=0.4pt           % thickness of frame
+  aboveskip=1ex,
+  showstringspaces=false,    % show spaces in strings with a particular underscore
+  showspaces=false,          % show spaces with a particular underscore
+  showtabs=false,
+  keepspaces=true,
+  columns=fullflexible,      % tighter character kerning, like verb
+  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
+}
+
+% Styles for lstlisting
+
+\lstdefinestyle{simple}{
+commentstyle={},
+}
+
+% end of custom lstdefinestyles
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -52055,6 +52622,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \begin{document}
 
 % endif for #ifdef PREAMBLE
+% #endif
 
 \input{newcommands_bfmath}
 \input{newcommands_replace}
@@ -52104,17 +52672,17 @@ and the surrounding text.
 
 Need some code outside admons for color and font comparisons:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 
 And some plain text verbatim:
 
-\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
-\end{Verbatim}
+\end{lstlisting}
 
 \subsection{Quotes and boxes}
 
@@ -52123,10 +52691,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -52184,10 +52752,10 @@ Let's begin a new paragraph and show a box with code only:
 \begin{center}
 \begin{Sbox}
 \begin{minipage}{0.85\linewidth}
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def some_code(x):
     return sin(x)*exp(1-x)
-\end{minted}
+\end{lstlisting}
 \end{minipage}
 \end{Sbox}
 \fbox{\TheSbox}
@@ -52231,15 +52799,15 @@ Test warning with title:
 
 Also some code:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def f(x):
     return x
-\end{minted}
+\end{lstlisting}
 And a complete program
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 print "Hello, World!"
-\end{minted}
+\end{lstlisting}
 \par}
 \end{warning_yellowiconadmon}
 
@@ -52337,12 +52905,12 @@ It is of outmost important to
 \noindent
 Because here the thing is to do
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 import urllib
 
 def grab(url, filename):
     urllib.urlretrieve(url, filename=filename)
-\end{minted}
+\end{lstlisting}
 \end{warning_yellowiconadmon}
 
 
@@ -52381,18 +52949,18 @@ Let us start with some equations:
 The implementation of such complicated equations in computer
 code is task that this "Going deeper" environment targets.
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 def Dudt(u):
     r = diff(u, t) + u*grad(u)
     return r
 
 half = 0.5
 x = 2*n
-\end{minted}
+\end{lstlisting}
 And some more text that can help going into the next page.
 Longer computer code requires vertical space:
 
-\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+\begin{lstlisting}[language=Python,style=simple,xleftmargin=2mm]
 class Diff:
     def __init__(self, f, h=1E-5):
         self.f = f
@@ -52431,7 +52999,7 @@ class Forward3(Diff):
         f, h = self.f, self.h
         return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
                 (1./3)*f(x-h))/h
-\end{minted}
+\end{lstlisting}
 And then we add a figure too.
 
 
@@ -52465,9 +53033,11 @@ exercises (and problems and projects too).
 % ------------------- end of main content ---------------
 
 
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
+% #endif
 
 
 ************** File: admon_double_envirs.tex *****************
@@ -52491,7 +53061,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
@@ -52772,10 +53342,10 @@ Here is a plain quote environment.
 
 \begin{quote}
 Sayre's law states that
-"in any dispute the intensity of feeling is inversely
-proportional to the value of the issues at stake." \\
+``in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.'' \\
 By way of corollary, it adds: \\
-"That is why academic politics are so bitter." \\
+``That is why academic politics are so bitter.'' \\
 \emph{Source}: \href{{http://en.wikipedia.org/wiki/Sayre's_law}}{wikipedia}
 \end{quote}
 
@@ -53260,10 +53830,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -53766,10 +54336,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -54295,10 +54865,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -55224,10 +55794,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -55805,10 +56375,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -56355,10 +56925,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -56895,10 +57465,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -57537,10 +58107,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -58085,10 +58655,10 @@ Here is a plain quote environment.
 <p>
 <blockquote>
     Sayre's law states that
-    "in any dispute the intensity of feeling is inversely
-    proportional to the value of the issues at stake." <br />
+    &quot;in any dispute the intensity of feeling is inversely
+    proportional to the value of the issues at stake.&quot; <br />
     By way of corollary, it adds: <br />
-    "That is why academic politics are so bitter." <br />
+    &quot;That is why academic politics are so bitter.&quot; <br />
     <em>Source</em>: <a href="http://en.wikipedia.org/wiki/Sayre's_law" target="_self">wikipedia</a>
 </blockquote>
 
@@ -61986,7 +62556,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -62456,28 +63026,29 @@ title (Warning) since no title is specified.
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
 \definecolor{darkorange}{rgb}{.71,0.21,0.01}
 \definecolor{darkgreen}{rgb}{.12,.54,.11}
 \definecolor{myteal}{rgb}{.26, .44, .56}
 \definecolor{gray}{gray}{0.45}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
 \colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
-
-% New ansi colors
-\definecolor{brown}{rgb}{0.54,0.27,0.07}
-\definecolor{purple}{rgb}{0.5,0.0,0.5}
-\definecolor{darkgray}{gray}{0.25}
-\definecolor{darkblue}{rgb}{0,0.08,0.45}
-\definecolor{lightred}{rgb}{1.0,0.39,0.28}
-\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
-\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
-\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
-\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
@@ -64929,7 +65500,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 % Movies are handled by the href package
 \newenvironment{doconce:movie}{}{}
@@ -67505,7 +68076,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -69875,7 +70446,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
@@ -70289,7 +70860,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
@@ -70696,7 +71267,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
@@ -73016,7 +73587,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f530ed16aa0>
+verbatim is to be replaced using <function html_verbatim at 0x7f3f90e41aa0>
 
 
 First occurence: " `mako`."
@@ -76991,7 +77562,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu May 28 02:29:59 2015.
+# sphinx-quickstart on Mon Jun  1 04:51:28 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -81572,7 +82143,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 % Tools for marking corrections
 \usepackage{soul}
@@ -81589,28 +82160,29 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
 \definecolor{darkorange}{rgb}{.71,0.21,0.01}
 \definecolor{darkgreen}{rgb}{.12,.54,.11}
 \definecolor{myteal}{rgb}{.26, .44, .56}
 \definecolor{gray}{gray}{0.45}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
 \colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
-
-% New ansi colors
-\definecolor{brown}{rgb}{0.54,0.27,0.07}
-\definecolor{purple}{rgb}{0.5,0.0,0.5}
-\definecolor{darkgray}{gray}{0.25}
-\definecolor{darkblue}{rgb}{0,0.08,0.45}
-\definecolor{lightred}{rgb}{1.0,0.39,0.28}
-\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
-\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
-\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
-\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
@@ -99758,14 +100330,6 @@ reading sources... [ 91%] ._testdoc010
 reading sources... [100%] index
 
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:391: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:495: ERROR: Error in "figure" directive:
-unknown option: "sidecap".
-
-.. figure:: wave1D.png
-   :width: 500
-   :sidecap: True
-
-   A long caption spanning several lines and containing verbatim words like ``my_file_v1`` and ``my_file_v2`` as well as math with subscript as in :math:`t_{i+1}`
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:429: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:429: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
@@ -99792,7 +100356,6 @@ writing output... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app2 (if the link has no caption the label must precede a section header)
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:490: WARNING: undefined label: myfig (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:70: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc002' that doesn't have a title: no link will be generated
 generating indices... genindex
@@ -99803,7 +100366,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 14 warnings.
+build succeeded, 12 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -101763,29 +102326,21 @@ output in math_test.tex
 + '[' colors1 = mdfbox ']'
 + '[' colors1 = grayicon ']'
 + '[' colors1 = graybox2 ']'
-+ system doconce format pdflatex admon --latex_admon=colors1
-+ doconce format pdflatex admon --latex_admon=colors1
++ system doconce format pdflatex admon --latex_admon=colors1 --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=colors1 --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_colors1.tex
-+ system pdflatex -shell-escape admon_colors1
-+ pdflatex -shell-escape admon_colors1
++ system pdflatex admon_colors1
++ pdflatex admon_colors1
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_colors1.tex
 LaTeX2e <2014/05/01>
@@ -101825,26 +102380,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_colors1.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_colors1/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -101861,10 +102408,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
 
 
 Writing index file admon_colors1.idx
@@ -101888,23 +102435,17 @@ No file admon_colors1.aux.
 
 
 
-(./_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD04
-8D22074625.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
-(./_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD04
-8D22074625.pygtex) <latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
+dmap/pdftex.map}] <latex_figs/warning.pdf, id=26, 89.33376pt x 89.33376pt>
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-
-(./_minted-admon_colors1/5D3C69AAEC9B2D5839B63A50A912F1C9F0EE26821BCBD074DCFD04
-8D22074625.pygtex)
-(./_minted-admon_colors1/7D5BCA49BDCAEFC7C2C56FB99A18615CF0EE26821BCBD074DCFD04
-8D22074625.pygtex) [2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
+[2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 
@@ -101913,14 +102454,14 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 
-<latex_figs/notice.pdf, id=39, 89.33376pt x 89.33376pt>
+<latex_figs/notice.pdf, id=46, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
 [3 <./latex_figs/notice.pdf>] <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-<latex_figs/question.pdf, id=52, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=66, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf>
 Underfull \hbox (badness 10000) 
 
@@ -101930,30 +102471,20 @@ Underfull \hbox (badness 10000)
 <use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
-
-(./_minted-admon_colors1/5AD40B0702261AEEF99883B3C88DC895F0EE26821BCBD074DCFD04
-8D22074625.pygtex) <use latex_figs/warning.pdf>
+<use latex_figs/warning.pdf>
 Underfull \hbox (badness 10000) 
 
 [4 <./latex_figs/question.pdf>] <use latex_figs/notice.pdf>
 Underfull \hbox (badness 10000) 
 
-
-(./_minted-admon_colors1/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1F0EE26821BCBD074DCFD04
-8D22074625.pygtex)
-(./_minted-admon_colors1/F107D7B836712BD3FF9DDE90E09765E8F0EE26821BCBD074DCFD04
-8D22074625.pygtex)
-<../doc/src/manual/fig/wave1D.pdf, id=64, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [5]
-<latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
+<../doc/src/manual/fig/wave1D.pdf, id=83, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [5] [6 <../doc/src/manual/fig/wave1D.pdf
+>] <latex_figs/summary.pdf, id=147, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 Underfull \hbox (badness 10000) 
 
-
-
-[6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
 No file admon_colors1.ind.
-[7] (./admon_colors1.aux)
+[7 <./latex_figs/summary.pdf>] (./admon_colors1.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -101987,24 +102518,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_colors1.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_colors1/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -102018,8 +102543,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -102032,13 +102558,13 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -102059,32 +102585,19 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD048D2
-2074625.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_colors1/5D3031E749FAA92C630D576553FD8950F0EE26821BCBD074DCFD048D2
-2074625.pygtex
 latex_figs/warning.pdf
 latex_figs/warning.pdf
-_minted-admon_colors1/5D3C69AAEC9B2D5839B63A50A912F1C9F0EE26821BCBD074DCFD048D2
-2074625.pygtex
-_minted-admon_colors1/7D5BCA49BDCAEFC7C2C56FB99A18615CF0EE26821BCBD074DCFD048D2
-2074625.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
 latex_figs/question.pdf
 latex_figs/question.pdf
 latex_figs/warning.pdf
-_minted-admon_colors1/5AD40B0702261AEEF99883B3C88DC895F0EE26821BCBD074DCFD048D2
-2074625.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
-_minted-admon_colors1/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1F0EE26821BCBD074DCFD048D2
-2074625.pygtex
-_minted-admon_colors1/F107D7B836712BD3FF9DDE90E09765E8F0EE26821BCBD074DCFD048D2
-2074625.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/summary.pdf
  ***********
@@ -102131,10 +102644,10 @@ warning.pdf
 + color=
 + opts=
 + '[' mdfbox = mdfbox ']'
-+ color='--latex_admon_color=gray!6'
++ color='--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white'
 + opts=--no_abort
-+ system doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=gray!6' --no_abort
-+ doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=gray!6' --no_abort
++ system doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white' --no_abort --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=mdfbox '--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white' --no_abort --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -102154,21 +102667,13 @@ avoided abortion because of --no-abort
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
 avoided abortion because of --no-abort
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_mdfbox.tex
-+ system pdflatex -shell-escape admon_mdfbox
-+ pdflatex -shell-escape admon_mdfbox
++ system pdflatex admon_mdfbox
++ pdflatex admon_mdfbox
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_mdfbox.tex
 LaTeX2e <2014/05/01>
@@ -102208,26 +102713,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_mdfbox.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_mdfbox/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -102244,14 +102741,17 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -102377,30 +102877,19 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F4
-04D526A9C.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-(./_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F4
-04D526A9C.pygtex)
 
 
 ...rest of part of LaTeX line number...
 
-
-(./_minted-admon_mdfbox/5D3C69AAEC9B2D5839B63A50A912F1C9194ADA0704F83C10D8892F4
-04D526A9C.pygtex)
-(./_minted-admon_mdfbox/7D5BCA49BDCAEFC7C2C56FB99A18615C194ADA0704F83C10D8892F4
-04D526A9C.pygtex)
 
 
 ...rest of part of LaTeX line number...
 
 [2]
-
-
-...rest of part of LaTeX line number...
-
 
 
 ...rest of part of LaTeX line number...
@@ -102431,9 +102920,6 @@ dmap/pdftex.map}]
 ...rest of part of LaTeX line number...
 
 
-(./_minted-admon_mdfbox/5AD40B0702261AEEF99883B3C88DC895194ADA0704F83C10D8892F4
-04D526A9C.pygtex)
-
 
 ...rest of part of LaTeX line number...
 
@@ -102442,17 +102928,11 @@ dmap/pdftex.map}]
 ...rest of part of LaTeX line number...
 
 
-(./_minted-admon_mdfbox/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1194ADA0704F83C10D8892F4
-04D526A9C.pygtex)
-(./_minted-admon_mdfbox/F107D7B836712BD3FF9DDE90E09765E8194ADA0704F83C10D8892F4
-04D526A9C.pygtex)
-<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
-
 
 ...rest of part of LaTeX line number...
 
-[4]
+<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [4]
 
 
 ...rest of part of LaTeX line number...
@@ -102466,8 +102946,13 @@ dmap/pdftex.map}]
 
 ...rest of part of LaTeX line number...
 
+[6 <../doc/src/manual/fig/wave1D.pdf>]
+
+
+...rest of part of LaTeX line number...
+
 No file admon_mdfbox.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_mdfbox.aux)
+[7] (./admon_mdfbox.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -102501,24 +102986,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_mdfbox.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_mdfbox/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -102532,8 +103011,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -102546,18 +103026,21 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/08/18 1.9d: mdframed
+mdframed.sty    2014/05/30 2.0: mdframed
   xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
    expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
 expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
 l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -102581,7 +103064,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -102602,22 +103085,9 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F404D
-526A9C.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_mdfbox/5D3031E749FAA92C630D576553FD8950194ADA0704F83C10D8892F404D
-526A9C.pygtex
-_minted-admon_mdfbox/5D3C69AAEC9B2D5839B63A50A912F1C9194ADA0704F83C10D8892F404D
-526A9C.pygtex
-_minted-admon_mdfbox/7D5BCA49BDCAEFC7C2C56FB99A18615C194ADA0704F83C10D8892F404D
-526A9C.pygtex
-_minted-admon_mdfbox/5AD40B0702261AEEF99883B3C88DC895194ADA0704F83C10D8892F404D
-526A9C.pygtex
-_minted-admon_mdfbox/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1194ADA0704F83C10D8892F404D
-526A9C.pygtex
-_minted-admon_mdfbox/F107D7B836712BD3FF9DDE90E09765E8194ADA0704F83C10D8892F404D
-526A9C.pygtex
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -102646,7 +103116,7 @@ mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_mdfbox.pdf (6 pages, ).
+Output written on admon_mdfbox.pdf (7 pages, ).
 Transcript written on admon_mdfbox.log.
 + '[' 0 -ne 0 ']'
 + echo admon=mdfbox
@@ -102666,29 +103136,21 @@ warning.pdf
 + '[' paragraph = mdfbox ']'
 + '[' paragraph = grayicon ']'
 + '[' paragraph = graybox2 ']'
-+ system doconce format pdflatex admon --latex_admon=paragraph
-+ doconce format pdflatex admon --latex_admon=paragraph
++ system doconce format pdflatex admon --latex_admon=paragraph --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=paragraph --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.pdf for format pdflatex
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_paragraph.tex
-+ system pdflatex -shell-escape admon_paragraph
-+ pdflatex -shell-escape admon_paragraph
++ system pdflatex admon_paragraph
++ pdflatex admon_paragraph
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_paragraph.tex
 LaTeX2e <2014/05/01>
@@ -102728,26 +103190,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_paragraph.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_paragraph/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -102764,14 +103218,17 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -102897,26 +103354,14 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
-(./_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex)
-(./_minted-admon_paragraph/5D3C69AAEC9B2D5839B63A50A912F1C97B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex)
-(./_minted-admon_paragraph/7D5BCA49BDCAEFC7C2C56FB99A18615C7B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex) [2]
-(./_minted-admon_paragraph/5AD40B0702261AEEF99883B3C88DC8957B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex) [3]
-(./_minted-admon_paragraph/0C0793CD9D0F3C4F2D0D5D6F8F9C81B17B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex)
-(./_minted-admon_paragraph/F107D7B836712BD3FF9DDE90E09765E87B9EA5448A27AA2AA739
-DBBD1C5533E1.pygtex [4])
-<../doc/src/manual/fig/wave1D.pdf, id=65, 586.83241pt x 442.29242pt>
+dmap/pdftex.map}] [2] [3] [4]
+<../doc/src/manual/fig/wave1D.pdf, id=110, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 No file admon_paragraph.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf>] (./admon_paragraph.aux)
+[5 <../doc/src/manual/fig/wave1D.pdf>] [6] (./admon_paragraph.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -102950,24 +103395,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_paragraph.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_paragraph/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -102981,8 +103420,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -102995,18 +103435,21 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-mdframed.sty    2013/08/18 1.9d: mdframed
+mdframed.sty    2014/05/30 2.0: mdframed
   xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
    expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
 expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
 l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -103030,7 +103473,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -103051,22 +103494,9 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_paragraph/5D3031E749FAA92C630D576553FD89507B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
-_minted-admon_paragraph/5D3C69AAEC9B2D5839B63A50A912F1C97B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
-_minted-admon_paragraph/7D5BCA49BDCAEFC7C2C56FB99A18615C7B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
-_minted-admon_paragraph/5AD40B0702261AEEF99883B3C88DC8957B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
-_minted-admon_paragraph/0C0793CD9D0F3C4F2D0D5D6F8F9C81B17B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
-_minted-admon_paragraph/F107D7B836712BD3FF9DDE90E09765E87B9EA5448A27AA2AA739DBB
-D1C5533E1.pygtex
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -103089,7 +103519,7 @@ mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_paragraph.pdf (5 pages, ).
+Output written on admon_paragraph.pdf (6 pages, ).
 Transcript written on admon_paragraph.log.
 + '[' 0 -ne 0 ']'
 + echo admon=paragraph
@@ -103105,8 +103535,8 @@ no latex_figs directory for this admon type
 + '[' graybox2 = grayicon ']'
 + '[' graybox2 = graybox2 ']'
 + opts=--no_abort
-+ system doconce format pdflatex admon --latex_admon=graybox2 --no_abort
-+ doconce format pdflatex admon --latex_admon=graybox2 --no_abort
++ system doconce format pdflatex admon --latex_admon=graybox2 --no_abort --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=graybox2 --no_abort --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -103119,21 +103549,13 @@ figure file ../doc/src/manual/fig/wave1D:
     see if you can replace , by "and" or a dash...
     (the character will simply be removed if you override the abortion)
 avoided abortion because of --no-abort
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_graybox2.tex
-+ system pdflatex -shell-escape admon_graybox2
-+ pdflatex -shell-escape admon_graybox2
++ system pdflatex admon_graybox2
++ pdflatex admon_graybox2
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_graybox2.tex
 LaTeX2e <2014/05/01>
@@ -103173,26 +103595,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_graybox2.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_graybox2/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -103209,15 +103623,19 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 
 
 
-(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+
+(/home/hpl/texmf/tex/latex/mdframed/mdframed.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+
 
 
 
@@ -103343,21 +103761,14 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-(./_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEA
-EA147F6FAD8.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-(./_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEA
-EA147F6FAD8.pygtex)
 
 
 ...rest of part of LaTeX line number...
 
-
-(./_minted-admon_graybox2/5D3C69AAEC9B2D5839B63A50A912F1C9E684B96910E559538BDEA
-EA147F6FAD8.pygtex)
-(./_minted-admon_graybox2/7D5BCA49BDCAEFC7C2C56FB99A18615CE684B96910E559538BDEA
-EA147F6FAD8.pygtex)
 
 
 ...rest of part of LaTeX line number...
@@ -103397,9 +103808,6 @@ EA147F6FAD8.pygtex)
 ...rest of part of LaTeX line number...
 
 
-(./_minted-admon_graybox2/5AD40B0702261AEEF99883B3C88DC895E684B96910E559538BDEA
-EA147F6FAD8.pygtex)
-
 
 ...rest of part of LaTeX line number...
 
@@ -103407,12 +103815,7 @@ EA147F6FAD8.pygtex)
 
 ...rest of part of LaTeX line number...
 
-
-(./_minted-admon_graybox2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1E684B96910E559538BDEA
-EA147F6FAD8.pygtex)
-(./_minted-admon_graybox2/F107D7B836712BD3FF9DDE90E09765E8E684B96910E559538BDEA
-EA147F6FAD8.pygtex)
-<../doc/src/manual/fig/wave1D.pdf, id=45, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
 
@@ -103463,24 +103866,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_graybox2.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_graybox2/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -103494,8 +103891,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -103508,6 +103906,7 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -103515,12 +103914,15 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
  wrapfig.sty    2003/01/31  v 3.6
-mdframed.sty    2013/08/18 1.9d: mdframed
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+mdframed.sty    2014/05/30 2.0: mdframed
   xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
    expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
 expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
 l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
 l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
 zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
 zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
 needspace.sty    2010/09/12 v1.3d reserve vertical space
@@ -103544,7 +103946,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
  pgfmath.code.tex
   pgffor.code.tex
     tikz.code.tex
-md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+md-frame-1.mdf    2014/05/30\ 2.0: md-frame-1
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
@@ -103565,22 +103967,9 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEAEA1
-47F6FAD8.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_graybox2/5D3031E749FAA92C630D576553FD8950E684B96910E559538BDEAEA1
-47F6FAD8.pygtex
-_minted-admon_graybox2/5D3C69AAEC9B2D5839B63A50A912F1C9E684B96910E559538BDEAEA1
-47F6FAD8.pygtex
-_minted-admon_graybox2/7D5BCA49BDCAEFC7C2C56FB99A18615CE684B96910E559538BDEAEA1
-47F6FAD8.pygtex
-_minted-admon_graybox2/5AD40B0702261AEEF99883B3C88DC895E684B96910E559538BDEAEA1
-47F6FAD8.pygtex
-_minted-admon_graybox2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1E684B96910E559538BDEAEA1
-47F6FAD8.pygtex
-_minted-admon_graybox2/F107D7B836712BD3FF9DDE90E09765E8E684B96910E559538BDEAEA1
-47F6FAD8.pygtex
 ../doc/src/manual/fig/wave1D.pdf
  ***********
 
@@ -103624,8 +104013,8 @@ no latex_figs directory for this admon type
 + '[' yellowicon = mdfbox ']'
 + '[' yellowicon = grayicon ']'
 + '[' yellowicon = graybox2 ']'
-+ system doconce format pdflatex admon --latex_admon=yellowicon
-+ doconce format pdflatex admon --latex_admon=yellowicon
++ system doconce format pdflatex admon --latex_admon=yellowicon --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=yellowicon --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -103633,21 +104022,13 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** made directory latex_figs for admon figures
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_yellowicon.tex
-+ system pdflatex -shell-escape admon_yellowicon
-+ pdflatex -shell-escape admon_yellowicon
++ system pdflatex admon_yellowicon
++ pdflatex admon_yellowicon
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_yellowicon.tex
 LaTeX2e <2014/05/01>
@@ -103687,26 +104068,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_yellowicon.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_yellowicon/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -103723,10 +104096,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
 
 
 
@@ -103751,39 +104124,28 @@ No file admon_yellowicon.aux.
 
 
 
-(./_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-(./_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex)
-<latex_figs/small_yellow_warning.pdf, id=20, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_warning.pdf, id=26, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_warning.pdf>
-<use latex_figs/small_yellow_warning.pdf>
-(./_minted-admon_yellowicon/5D3C69AAEC9B2D5839B63A50A912F1C9573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex)
-(./_minted-admon_yellowicon/7D5BCA49BDCAEFC7C2C56FB99A18615C573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex) [2 <./latex_figs/small_yellow_warning.pdf>]
-<use latex_figs/small_yellow_warning.pdf>
-<latex_figs/small_yellow_notice.pdf, id=42, 32.12pt x 32.12pt>
+<use latex_figs/small_yellow_warning.pdf> [2 <./latex_figs/small_yellow_warning
+.pdf>] <use latex_figs/small_yellow_warning.pdf>
+<latex_figs/small_yellow_notice.pdf, id=51, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_notice.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-<latex_figs/small_yellow_question.pdf, id=43, 32.12pt x 32.12pt>
+<latex_figs/small_yellow_question.pdf, id=52, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_question.pdf> [3 <./latex_figs/small_yellow_notice
 .pdf> <./latex_figs/small_yellow_question.pdf>]
 <use latex_figs/small_yellow_question.pdf>
 <use latex_figs/small_yellow_warning.pdf>
-(./_minted-admon_yellowicon/5AD40B0702261AEEF99883B3C88DC895573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex) <use latex_figs/small_yellow_warning.pdf>
+<use latex_figs/small_yellow_warning.pdf>
 <use latex_figs/small_yellow_notice.pdf>
-(./_minted-admon_yellowicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex)
-(./_minted-admon_yellowicon/F107D7B836712BD3FF9DDE90E09765E8573B8D7B85BCA73BCD9
-5CBE40A285E54.pygtex)
-<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
-[4] [5] <latex_figs/small_yellow_summary.pdf, id=76, 32.12pt x 32.12pt>
+[4] [5] <latex_figs/small_yellow_summary.pdf, id=132, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -103821,24 +104183,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_yellowicon.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_yellowicon/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -103852,8 +104208,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -103866,13 +104223,13 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
@@ -103894,32 +104251,19 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_yellowicon/5D3031E749FAA92C630D576553FD8950573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_warning.pdf
-_minted-admon_yellowicon/5D3C69AAEC9B2D5839B63A50A912F1C9573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
-_minted-admon_yellowicon/7D5BCA49BDCAEFC7C2C56FB99A18615C573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_notice.pdf
 latex_figs/small_yellow_question.pdf
 latex_figs/small_yellow_question.pdf
 latex_figs/small_yellow_warning.pdf
-_minted-admon_yellowicon/5AD40B0702261AEEF99883B3C88DC895573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
 latex_figs/small_yellow_warning.pdf
 latex_figs/small_yellow_notice.pdf
-_minted-admon_yellowicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
-_minted-admon_yellowicon/F107D7B836712BD3FF9DDE90E09765E8573B8D7B85BCA73BCD95CB
-E40A285E54.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/small_yellow_summary.pdf
  ***********
@@ -103965,8 +104309,8 @@ small_yellow_warning.pdf
 + '[' grayicon = mdfbox ']'
 + '[' grayicon = grayicon ']'
 + color='--latex_admon_color=gray!20'
-+ system doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20'
-+ doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20'
++ system doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20' --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=grayicon '--latex_admon_color=gray!20' --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -103974,21 +104318,13 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** made directory latex_figs for admon figures
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_grayicon.tex
-+ system pdflatex -shell-escape admon_grayicon
-+ pdflatex -shell-escape admon_grayicon
++ system pdflatex admon_grayicon
++ pdflatex admon_grayicon
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_grayicon.tex
 LaTeX2e <2014/05/01>
@@ -104028,26 +104364,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_grayicon.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_grayicon/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -104064,10 +104392,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
 
 
 
@@ -104092,38 +104420,26 @@ No file admon_grayicon.aux.
 
 
 
-(./_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2E
-CC4CADE157E.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}]
-(./_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2E
-CC4CADE157E.pygtex)
-<latex_figs/small_gray_warning.pdf, id=20, 48.18pt x 48.18pt>
+<latex_figs/small_gray_warning.pdf, id=26, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_warning.pdf>
-<use latex_figs/small_gray_warning.pdf>
-(./_minted-admon_grayicon/5D3C69AAEC9B2D5839B63A50A912F1C953DEBD49688AD92B75F2E
-CC4CADE157E.pygtex)
-(./_minted-admon_grayicon/7D5BCA49BDCAEFC7C2C56FB99A18615C53DEBD49688AD92B75F2E
-CC4CADE157E.pygtex) [2 <./latex_figs/small_gray_warning.pdf>]
-<use latex_figs/small_gray_warning.pdf>
-<latex_figs/small_gray_notice.pdf, id=42, 64.24pt x 64.24pt>
+<use latex_figs/small_gray_warning.pdf> [2 <./latex_figs/small_gray_warning.pdf
+>] <use latex_figs/small_gray_warning.pdf>
+<latex_figs/small_gray_notice.pdf, id=51, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_notice.pdf> <use latex_figs/small_gray_notice.pdf>
-<latex_figs/small_gray_question2.pdf, id=43, 64.24pt x 64.24pt>
+<latex_figs/small_gray_question2.pdf, id=52, 64.24pt x 64.24pt>
 <use latex_figs/small_gray_question2.pdf> [3 <./latex_figs/small_gray_notice.pd
 f> <./latex_figs/small_gray_question2.pdf>]
 <use latex_figs/small_gray_question2.pdf>
 <use latex_figs/small_gray_warning.pdf>
-(./_minted-admon_grayicon/5AD40B0702261AEEF99883B3C88DC89553DEBD49688AD92B75F2E
-CC4CADE157E.pygtex) <use latex_figs/small_gray_warning.pdf>
-<use latex_figs/small_gray_notice.pdf>
-(./_minted-admon_grayicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B153DEBD49688AD92B75F2E
-CC4CADE157E.pygtex)
-(./_minted-admon_grayicon/F107D7B836712BD3FF9DDE90E09765E853DEBD49688AD92B75F2E
-CC4CADE157E.pygtex)
-<../doc/src/manual/fig/wave1D.pdf, id=63, 586.83241pt x 442.29242pt>
+<use latex_figs/small_gray_warning.pdf> <use latex_figs/small_gray_notice.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
-[4] [5] <latex_figs/small_gray_summary.pdf, id=76, 48.18pt x 48.18pt>
+[4] [5] <latex_figs/small_gray_summary.pdf, id=132, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_grayicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -104161,24 +104477,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_grayicon.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_grayicon/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -104192,8 +104502,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -104206,13 +104517,13 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
@@ -104234,32 +104545,19 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_grayicon/5D3031E749FAA92C630D576553FD895053DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_warning.pdf
-_minted-admon_grayicon/5D3C69AAEC9B2D5839B63A50A912F1C953DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
-_minted-admon_grayicon/7D5BCA49BDCAEFC7C2C56FB99A18615C53DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_notice.pdf
 latex_figs/small_gray_question2.pdf
 latex_figs/small_gray_question2.pdf
 latex_figs/small_gray_warning.pdf
-_minted-admon_grayicon/5AD40B0702261AEEF99883B3C88DC89553DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
 latex_figs/small_gray_warning.pdf
 latex_figs/small_gray_notice.pdf
-_minted-admon_grayicon/0C0793CD9D0F3C4F2D0D5D6F8F9C81B153DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
-_minted-admon_grayicon/F107D7B836712BD3FF9DDE90E09765E853DEBD49688AD92B75F2ECC4
-CADE157E.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/small_gray_summary.pdf
  ***********
@@ -104305,8 +104603,8 @@ small_gray_warning.pdf
 + '[' colors2 = mdfbox ']'
 + '[' colors2 = grayicon ']'
 + '[' colors2 = graybox2 ']'
-+ system doconce format pdflatex admon --latex_admon=colors2
-+ doconce format pdflatex admon --latex_admon=colors2
++ system doconce format pdflatex admon --latex_admon=colors2 --latex_code_style=lst
++ doconce format pdflatex admon --latex_admon=colors2 --latex_code_style=lst
 running preprocess -DFORMAT=pdflatex -DDEVICE=screen  admon.do.txt > tmp_preprocess__admon.do.txt
 translating doconce text in tmp_preprocess__admon.do.txt to pdflatex
 figure file ../doc/src/manual/fig/wave1D:
@@ -104314,21 +104612,13 @@ figure file ../doc/src/manual/fig/wave1D:
 *** warning: wrong text size "illegal-size" specified in notice environment!
     must be "large" or "small" - will be set to normal
 *** made directory latex_figs for admon figures
-output in admon.p.tex
-+ '[' 0 -ne 0 ']'
-+ doconce ptex2tex admon envir=minted
-\bpycod (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bpypro (!bc py) -> \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
-
-\bccq (!bc ccq) -> \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95] ("ccq" is unsupported so we use Verbatim)
-
 output in admon.tex
++ '[' 0 -ne 0 ']'
 + cp admon.tex admon_colors2.tex
-+ system pdflatex -shell-escape admon_colors2
-+ pdflatex -shell-escape admon_colors2
++ system pdflatex admon_colors2
++ pdflatex admon_colors2
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
- \write18 enabled.
+ restricted \write18 enabled.
 entering extended mode
 (./admon_colors2.tex
 LaTeX2e <2014/05/01>
@@ -104368,26 +104658,18 @@ For additional information on amsmath, use the `?' option.
 Style option: `fancybox' v1.4 <2010/05/15> (tvz)
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)) (/home/hpl/texmf/tex/latex/misc/minted.sty
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+<2008/02/07> (tvz)) 
+ (/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/listingsutf8.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 
 
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 
 
-(./admon_colors2.w18))
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
 
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-
-/usr/local/bin/pygmentize
-
-(./_minted-admon_colors2/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -104404,10 +104686,10 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 
 
+
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-
 
 
 
@@ -104432,32 +104714,22 @@ No file admon_colors2.aux.
 
 
 
-(./_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2C
-C88367214C.pygtex 
+
+
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
-(./_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2C
-C88367214C.pygtex) <latex_figs/warning.pdf, id=20, 89.33376pt x 89.33376pt>
-<use latex_figs/warning.pdf> <use latex_figs/warning.pdf>
-(./_minted-admon_colors2/5D3C69AAEC9B2D5839B63A50A912F1C9114153FEE734A61F8B1F2C
-C88367214C.pygtex)
-(./_minted-admon_colors2/7D5BCA49BDCAEFC7C2C56FB99A18615C114153FEE734A61F8B1F2C
-C88367214C.pygtex) [2 <./latex_figs/warning.pdf>] <use latex_figs/warning.pdf>
-<latex_figs/notice.pdf, id=40, 89.33376pt x 89.33376pt>
+dmap/pdftex.map}] <latex_figs/warning.pdf, id=26, 89.33376pt x 89.33376pt>
+<use latex_figs/warning.pdf> <use latex_figs/warning.pdf> [2 <./latex_figs/warn
+ing.pdf>] <use latex_figs/warning.pdf>
+<latex_figs/notice.pdf, id=49, 89.33376pt x 89.33376pt>
 <use latex_figs/notice.pdf> <use latex_figs/notice.pdf>
-<latex_figs/question.pdf, id=41, 89.33376pt x 89.33376pt>
+<latex_figs/question.pdf, id=50, 89.33376pt x 89.33376pt>
 <use latex_figs/question.pdf> [3 <./latex_figs/notice.pdf> <./latex_figs/questi
 on.pdf>] <use latex_figs/question.pdf> <use latex_figs/warning.pdf>
-(./_minted-admon_colors2/5AD40B0702261AEEF99883B3C88DC895114153FEE734A61F8B1F2C
-C88367214C.pygtex) <use latex_figs/warning.pdf> <use latex_figs/notice.pdf>
-(./_minted-admon_colors2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1114153FEE734A61F8B1F2C
-C88367214C.pygtex)
-(./_minted-admon_colors2/F107D7B836712BD3FF9DDE90E09765E8114153FEE734A61F8B1F2C
-C88367214C.pygtex)
-<../doc/src/manual/fig/wave1D.pdf, id=57, 586.83241pt x 442.29242pt>
+<use latex_figs/warning.pdf> <use latex_figs/notice.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=71, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
-[4] [5] <latex_figs/summary.pdf, id=70, 89.33376pt x 89.33376pt>
+[4] [5] <latex_figs/summary.pdf, id=126, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]
@@ -104495,24 +104767,18 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 fancybox.sty    2010/05/15 1.4
 fancyvrb.sty    2008/02/07
-  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
-kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
-kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
-etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
-   float.sty    2001/11/08 v1.3d Float enhancements (AL)
-  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+listingsutf8.sty    2011/11/10 v1.2 Allow UTF-8 in listings input (HO)
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
 pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
    ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
-catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
-admon_colors2.w18
-etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
-    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
- xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
-  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-admon_colors2/default.pygstyle
+stringenc.sty    2011/12/02 v1.10 Convert strings between diff. encodings (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -104526,8 +104792,9 @@ hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
   hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
   ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
  intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
 kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
-pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
 bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
   bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
 uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
@@ -104540,13 +104807,13 @@ refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
  hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
  ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
  auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
   pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 placeins.sty    2005/04/18  v 2.2
-  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
  wrapfig.sty    2003/01/31  v 3.6
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
@@ -104568,32 +104835,19 @@ newcommands_replace.tex
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2CC88
-367214C.pygtex
+lstlang1.sty    2014/09/06 1.5e listings language file
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-admon_colors2/5D3031E749FAA92C630D576553FD8950114153FEE734A61F8B1F2CC88
-367214C.pygtex
 latex_figs/warning.pdf
 latex_figs/warning.pdf
-_minted-admon_colors2/5D3C69AAEC9B2D5839B63A50A912F1C9114153FEE734A61F8B1F2CC88
-367214C.pygtex
-_minted-admon_colors2/7D5BCA49BDCAEFC7C2C56FB99A18615C114153FEE734A61F8B1F2CC88
-367214C.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
 latex_figs/notice.pdf
 latex_figs/question.pdf
 latex_figs/question.pdf
 latex_figs/warning.pdf
-_minted-admon_colors2/5AD40B0702261AEEF99883B3C88DC895114153FEE734A61F8B1F2CC88
-367214C.pygtex
 latex_figs/warning.pdf
 latex_figs/notice.pdf
-_minted-admon_colors2/0C0793CD9D0F3C4F2D0D5D6F8F9C81B1114153FEE734A61F8B1F2CC88
-367214C.pygtex
-_minted-admon_colors2/F107D7B836712BD3FF9DDE90E09765E8114153FEE734A61F8B1F2CC88
-367214C.pygtex
 ../doc/src/manual/fig/wave1D.pdf
 latex_figs/summary.pdf
  ***********
