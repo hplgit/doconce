@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,7 +10,7 @@
     
     <title>DocOnce Troubleshooting</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -44,11 +45,7 @@
     
     <link rel="top" title="DocOnce Troubleshooting" href="#" />
     <link rel="next" title="DocOnce Troubleshooting" href="trouble.html" />
-
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+ 
   
        <style type="text/css">
          div.admonition {
@@ -84,12 +81,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="trouble.html">DocOnce Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#general-problems">General Problems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trouble.html#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">A newline in equations (double backslash) becomes single backslash and eats up spaces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#preprocess-error-unexpected-eof-while-parsing">Preprocess error: unexpected EOF while parsing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trouble.html#how-can-i-make-use-of-a-native-latex-environments-example-environemt-for-instance">How can I make use of a native LaTeX environments (example environemt for instance)?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trouble.html#how-can-i-make-use-of-a-native-latex-environments-example-environment-for-instance">How can I make use of a native LaTeX environments (example environment for instance)?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers">How can I create a more tailored code environment in LaTeX than what DocOnce offers?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#how-do-i-get-figure-written-in-another-language">How do I get &#8220;Figure&#8221; written in another language?</a></li>
@@ -105,7 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#inline-verbatim-code-is-not-detected">Inline verbatim code is not detected</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#inline-verbatim-text-is-not-formatted-correctly">Inline verbatim text is not formatted correctly</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#strange-non-english-characters">Strange non-English characters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trouble.html#wrong-norwegian-charcters">Wrong Norwegian charcters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trouble.html#wrong-norwegian-characters">Wrong Norwegian characters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#too-short-underlining-of-rest-headlines">Too short underlining of reST headlines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#found-bt-but-no-tex-blocks-extracted-bug">Found <code class="docutils literal"><span class="pre">!bt</span></code> but no tex blocks extracted (BUG)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#examples-are-typset-with-environment-delimiters-visible">Examples are typset with environment delimiters visible</a></li>
@@ -141,6 +139,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="trouble.html#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="trouble.html#sphinx-directory-generation-aborts-with-label-empty-or-too-long">Sphinx directory generation aborts with &#8220;label empty or too long&#8221;</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#title-level-inconsistent">Title level inconsistent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents">Subsection headings appear at the level of sections in the table of contents</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trouble.html#lists-do-not-appear-in-rst-files">Lists do not appear in .rst files</a></li>
@@ -239,20 +238,21 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015, HPL.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
-      
-      |
-      <a href="_sources/index.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="trouble.html" title="DocOnce Troubleshooting"
+             >next</a> |</li>
+        <li><a href="#">DocOnce Troubleshooting</a> &raquo;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer">
+        &copy; Copyright 2015, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+    </div>
   </body>
 </html>

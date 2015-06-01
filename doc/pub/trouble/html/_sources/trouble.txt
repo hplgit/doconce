@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 14, 2015
+:Date: Jun 1, 2015
 
 
 .. admonition:: Disclaimer
@@ -29,6 +29,15 @@ DocOnce Troubleshooting
 
 General Problems
 ================
+
+How do I debug a DocOnce file that results in a strange error message?
+----------------------------------------------------------------------
+
+Isolate the problem by a "bisection" method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the next so you understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.
 
 GitHub gh-pages will not display files starting with a dot or underscore
 ------------------------------------------------------------------------
@@ -75,7 +84,7 @@ Preprocess error: unexpected EOF while parsing
 
 This error may arise from a syntax error with a colon at the end
 of if tests, e.g. ``# #if FORMAT == 'html':``. Colon is not used
-with Preprocess.
+with Preprocess (but required by Mako: ``if FORMAT == 'html':``).
 
 When I set a large portion of text in color, only a part of it becomes colored
 ------------------------------------------------------------------------------
@@ -105,15 +114,15 @@ end of the coloring. Here is an example:
 
 .. _trouble:latex:envir:native:
 
-How can I make use of a native LaTeX environments (example environemt for instance)?
-------------------------------------------------------------------------------------
+How can I make use of a native LaTeX environments (example environment for instance)?
+-------------------------------------------------------------------------------------
 
-LaTeX writers often lack their favorite environments, but DocOnce
-has a way to define such environments, with corresponding typesetting
-also for HTML and all other output formats. See the
-section *User-Defined Environments* in the DocOnce manual. It contains
-all the details for using a standard example or theorem environment
-in LaTeX output.
+LaTeX writers often lack their favorite environments, but DocOnce has
+a way to define such environments, with corresponding typesetting also
+for HTML and all other output formats. See the section `User-Defined
+Environments <http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments>`__
+in the DocOnce manual. It contains all the details for using a
+standard example or theorem environment in LaTeX output.
 
 How can I create a more tailored code environment in LaTeX than what DocOnce offers?
 ------------------------------------------------------------------------------------
@@ -148,18 +157,6 @@ is rendered as
    
    | Excellence is not a planned goal - it is the corollary of
    
-   deep passion, very much hard (and exciting!)
-   work, and *thinking constantly about it*.
-
-
-
-
-Without ``<linebreak>`` the rendering becomes
-
-
-.. admonition:: So - how to be excellent
-
-   Excellence is not a planned goal - it is the corollary of
    deep passion, very much hard (and exciting!)
    work, and *thinking constantly about it*.
 
@@ -373,8 +370,8 @@ the Unix commands
         Terminal> doconce change_encoding utf-8 latin1 myfile.do.txt
         Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 
-Wrong Norwegian charcters
--------------------------
+Wrong Norwegian characters
+--------------------------
 
 When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
@@ -406,7 +403,8 @@ as is unless this option is included.
 Emacs editing does not work properly because of "regexp overflow"
 -----------------------------------------------------------------
 
-Sometimes the Doonce editing mode (see the section :ref:`emacs:doconce`) in Emacs
+Sometimes the Doonce editing mode (see the
+*Emacs DocOnce Formatter* section in the manual) in Emacs
 leads to an error message ending with "overflow in regexp matcher".
 This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
@@ -821,6 +819,17 @@ See also the section :ref:`trouble:bsol:code` - it is the same problem.
 
 Problems with reST/Sphinx Output
 ================================
+
+Sphinx directory generation aborts with "label empty or too long"
+-----------------------------------------------------------------
+
+This is a strange error that might arise from a too long title of the document.
+The solution is to specify a shorter title when running ``doconce sphinx_dir`` (i.e., to avoid getting the title from the original ``.do.txt`` document):
+
+.. code-block:: text
+
+        Terminal> doconce sphinx_dir title="Short Title" \
+                  authors="A. B. Crunch" theme=pyramid mydoc
 
 Title level inconsistent
 ------------------------
