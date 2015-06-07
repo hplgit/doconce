@@ -1237,11 +1237,11 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     exer_end = False
     exer_counter = dict(Exercise=0, Problem=0, Project=0, Example=0)
 
-    # Regex: no need for re.MULTILINE since we treat one line at a time
+    # Regexes: no need for re.MULTILINE since we treat one line at a time
     if option('examples_as_exercises'):
-        exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project|Example)\}?: *(?P<title>[^ =-].+?) *====='
+        exer_heading_pattern = r'^(=====) *\{?(Exercise|Problem|Project|Example)\}?: *(?P<title>[^ =-].+?) *====='
     else:
-        exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?) *====='
+        exer_heading_pattern = r'^(=====) *\{?(Exercise|Problem|Project)\}?:\s*(?P<title>[^ =-].+?) *====='
     if not re.search(exer_heading_pattern, filestr, flags=re.MULTILINE):
         return filestr
 
@@ -1251,6 +1251,13 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     file_pattern = re.compile(r'^#? *files? *= *([A-Za-z0-9\-._, *]+)')
     solution_pattern = re.compile(r'^#? *solutions? *= *([A-Za-z0-9\-._, ]+)')
     keywords_pattern = re.compile(r'^#? *(keywords|kw) *= *([A-Za-z0-9\-._;, ]+)')
+
+    # Keep track of chapters
+    chapter_pattern = re.compile(r'^ *========= *(Appendix:)?(.+?) *=========')
+    chapter_counter = 0
+    chapter_info = (None, None, None)  # (prefix Ch/App, no/char, title)
+    chapter = True  # False means appendix
+    chapter_exer_no = None
 
     hint_pattern_begin = '!bhint'
     hint_pattern_end = '!ehint'
@@ -1264,14 +1271,34 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     closing_remarks_pattern_end = '!eremarks'
 
     lines = filestr.splitlines()
-    newlines = []  # lines in resulting file
-    solutions = []  # lines in an optional solution part
+    newlines = []     # lines in resulting file
+    solutions = []    # lines in an optional solution part
+    standalones = []  # lines in standalone document for an exercise
+
     # m_* variables: various match objects from regex searches
 
     for line_no in range(len(lines)):
         line = lines[line_no].lstrip()
         #print 'LINE %d:' % line_no, line
         #pprint.pprint(exer)
+
+        m_chapter = re.search(chapter_pattern, line)
+        if m_chapter:
+            if m_chapter.group(1):
+                # Appendix
+                if chapter:
+                    chapter = False  # Start of appendices
+                    chapter_counter = 65  # ord('A')
+                else:
+                    chapter_counter += 1
+                title = m_chapter.group(2)
+                chapter_info = ('Appendix', chr(chapter_counter), title)
+            else:
+                # Ordinary chapter
+                chapter_counter += 1
+                title = m_chapter.group(2)
+                chapter_info = ('Chapter', chapter_counter, title)
+            chapter_exer_no = 0
 
         m_heading = re.search(exer_heading_pattern, line)
         if m_heading:
@@ -1294,6 +1321,13 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # to be confusing...)
             exer_counter['Exercise'] += 1
             exer['no'] = exer_counter['Exercise']
+            if chapter_exer_no is not None:  # do we have chapters?
+                chapter_exer_no += 1
+
+            exer['chapter_type'] = chapter_info[0]
+            exer['chapter_no'] = chapter_info[1]
+            exer['chapter_title'] = chapter_info[2]
+            exer['chapter_exercise'] = chapter_exer_no
 
             exer['label'] = None
             exer['solution_file'] = None
@@ -1433,7 +1467,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     pprint.pformat(exer))
             formatted_exercise, formatted_solution = EXERCISE[format](exer)
             newlines.append(formatted_exercise)
-            solutions.append(formatted_solution)
             all_exer.append(exer)
             inside_exer = False
             exer_end = False
@@ -1461,6 +1494,10 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             # Just add solutions at the end
             filestr += '\n\n\n' + sol_sec
 
+    if option('exercises_in_zip'):
+        extract_individual_standalone_exercises(
+            filestr, format, all_exer, code_blocks, tex_blocks)
+
     if all_exer:
         # Replace code and math blocks by actual code.
         # This must be done in the all_exer data structure,
@@ -1474,6 +1511,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             if not isinstance(text, basestring):
                 return text
 
+            # Why not use insert_code_and_tex here? Should be safer
             pattern = r"(\d+) %s( +)([a-z]+)" % _CODE_BLOCK
             code = re.findall(pattern, text, flags=re.MULTILINE)
             for n, space, tp in code:
@@ -1522,7 +1560,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
         # (recall that we write to pprint-formatted string!)
 
-        # Dump this data structure to file
+        # Dump this all_exer data structure to file
         exer_filename = filename.replace('.do.txt', '')
         exer_filename = '.%s.exerinfo' % exer_filename
         f = open(exer_filename, 'w')
@@ -1555,6 +1593,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             print '*** error: %s-%s block is not legal outside an exercise' % \
                   (begin, end)
             print '    (or problem/project/example) section:'
+            if not option('examples_as_exercises'):
+                print '    If the block is inside an Example, use --examples_as_exercises'
             for block in blocks:
                 print block
             _abort()
@@ -1567,6 +1607,183 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                 _abort()
 
     return filestr
+
+
+def process_envir(filestr, envir, format, action='remove', reason=''):
+    """
+    Find or replace an environment (envir) in filestr.
+    action='remove' means replace with a comment
+    'removed !b... ... !e... environment + reason. Return filestr.
+    action='grep' means return all matching environments between
+    the comment lines.
+    """
+    comment_pattern = INLINE_TAGS_SUBST[format].get('comment', '# %s')
+    if callable(comment_pattern):
+        pattern = comment_pattern(envir_delimiter_lines[envir][0]) + \
+             '\n(.+?)' + comment_pattern(envir_delimiter_lines[envir][1])\
+             + '\n'
+    else:
+        pattern = comment_pattern % envir_delimiter_lines[envir][0] + \
+                  '\n(.+?)' + comment_pattern % \
+                  envir_delimiter_lines[envir][1] + '\n'
+    if action == 'remove':
+        if callable(comment_pattern):
+            replacement = comment_pattern('removed !b%s ... !e%s environment ' % (envir, envir) + reason)
+        else:
+            replacement = comment_pattern % ('removed !b%s ... !e%s environment %s' % (envir, envir, reason))
+        filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
+        return filestr
+    elif action == 'grep':
+        return re.findall(pattern, filestr, flags=re.DOTALL)
+    else:
+        raise ValueError(action)
+
+def extract_individual_standalone_exercises(
+    filestr, format, all_exer, code_blocks, tex_blocks):
+
+    text = filestr
+
+    # Grab all exercises
+    exers = process_envir(text, 'exercise', 'plain', action='grep')
+    if len(exers) != len(all_exer):
+        print '*** error: doconce bug, no of exercises in all_exer',
+        print 'differs from no of grabbed exercises'
+        _abort()
+
+    import zipfile
+    filename = dofile_basename + '_exercises.zip'
+    archive = zipfile.ZipFile(filename, mode='w')
+    exer_filename = option('exercises_in_zip_filename=', 'logical')
+
+    # Text for index file with list of exercise files
+    index_text = """TITLE: List of stand-alone files with exercises
+
+# Edit FILE_EXTENSIONS to the type of documents that will
+# be listed in the this index
+<%
+FILE_EXTENSIONS = ['.tex', '.ipynb']
+#FILE_EXTENSIONS = ['.tex', '.ipynb', '.do.txt', '.html']
+%>
+
+"""
+    chapter_prev = None
+
+    for i, sa in enumerate(exers):
+        labels = re.findall(r'label\{(.+?)\}', sa)
+        refs = re.findall(r'ref\{(.+?)\}', sa)
+        external_references = False
+        for ref in refs:
+            if ref not in labels:
+                external_references = True
+                break
+
+        pattern = r'^Filenames?: `(.+?)`.*$'
+        m = re.search(pattern, sa, flags=re.MULTILINE)
+        if m:
+            logical_name = os.path.splitext(m.group(1).strip())[0]
+        else:
+            logical_name = None
+        sa = re.sub(pattern + '.*', '', sa, flags=re.MULTILINE)
+
+        # Replace section by title, author, date, filename comment
+        replacement = r'TITLE: \g<1>\g<2>\nAUTHOR: Jane Doe Email:jane.doe@cyberspace.net\nDATE: Due Jan 32, 2150\n'
+        if logical_name is not None:
+            replacement += '\n# Logical name of exercise: %s\n' % logical_name
+        if external_references:
+            replacement += """
+# This document contains references to a parent document (../%s).
+# These references will work for latex (using the xr package and
+# a compiled parent document (with ../%s.aux file), but other formats
+# will have missing references.
+# Externaldocuments: ../%s
+""" % (dofile_basename, dofile_basename, dofile_basename)
+
+        # At this stage {Exercise}: has the {} removed
+        sa = re.sub(
+            r'===== (Exercise|Problem|Project|Example):(.+?) =====',
+            replacement, sa)
+        # If we have {Exercise}, the exercise has just one subsec heading,
+        # apply the previous subst for this
+        sa = re.sub(r'===== (.+?) =====', replacement.replace(r'\g<2>', ''), sa)
+        # Remove main label of exercise
+        sa = sa.replace('label{%s}' % all_exer[i]['label'], '')
+
+        sa = sa.strip() + '\n'
+
+        sa = insert_code_and_tex(sa, code_blocks, tex_blocks, format,
+                                 complete_doc=False)
+
+        # Remove solutions after inserting all code/tex blocks
+        sa = process_envir(sa, 'sol', 'plain', action='remove')
+        sa = process_envir(sa, 'ans', 'plain', action='remove')
+        # Note: ans and sol will not be removed from Examples, but that
+        # is the correct behavior
+        sa = re.sub('^# removed .+environment.*$', '', sa, flags=re.MULTILINE)
+        # Remove comments around various constructions
+        sa = re.sub('^# --- .+?\n', '', sa, flags=re.MULTILINE)
+
+        # Use all_exer to find data
+        if option('exercise_numbering=', 'absolute') == 'chapter' and \
+               all_exer[i]['chapter_type'] is not None:
+            no = '%s_%s.%s' % \
+                 (all_exer[i]['chapter_type'],
+                  all_exer[i]['chapter_no'],
+                  all_exer[i]['chapter_exercise'])
+
+        else: # 'absolute'
+             no = 'exercise_' + str(all_exer[i]['no'])
+
+        if exer_filename == 'logical' and logical_name is not None:
+            name = logical_name + '.do.txt'
+            path = os.path.join('standalone_exercises', name)
+            archive.writestr(path, sa)
+        else: # 'number':
+            name = no + '.do.txt'
+            path = os.path.join('standalone_exercises', name)
+            archive.writestr(path, sa)
+
+        if all_exer[i]['chapter_type'] is not None and \
+           all_exer[i]['chapter_title'] != chapter_prev:
+            index_text += '========= Chapter: %s =========\n\n' % all_exer[i]['chapter_title']
+            chapter_prev = all_exer[i]['chapter_title']
+
+        name = name.replace('.do.txt', '')
+        index_text += """%% for EXT in FILE_EXTENSIONS:
+"`%s${EXT}`": "%s${EXT}"
+%% endfor
+ <linebreak>
+
+""" % (name, name)
+
+    name = 'index.do.txt'
+    path = os.path.join('standalone_exercises', name)
+    archive.writestr(path, index_text)
+
+    make_text = """
+#!/usr/bin/env python
+# Compile all stand-alone exercises to latex and ipynb
+# (Must first unzip archive)
+
+import glob, os
+
+dofiles = glob.glob('*.do.txt')
+dofiles.remove('index.do.txt')   # compile to html only
+
+for dofile in dofiles:
+    cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
+    os.system(cmd)
+    cmd = 'doconce format ipynb %s --figure_prefix=../  --movie_prefix=../' % dofile
+    os.system(cmd)
+
+# Edit FILE_EXTENSIONS to adjust what kind of files that is listed in index.html
+cmd = 'doconce format html index --html_style=bootstrap'
+os.system(cmd)
+"""
+    name = 'make.py'
+    path = os.path.join('standalone_exercises', name)
+    archive.writestr(path, make_text)
+    archive.close()
+    print 'standalone exercises in', filename
 
 
 def parse_keyword(keyword, format):
@@ -3771,22 +3988,12 @@ def doconce2format(filestr, format):
     # and those present after solutions, answers, etc. are removed)
     envir2option = dict(sol='solutions', ans='answers', hint='hints')
     # Recall that the comment syntax is now dependent on the format
-    comment_pattern = INLINE_TAGS_SUBST[format].get('comment', '# %s')
     for envir in 'sol', 'ans', 'hint':
         option_name = 'without_' + envir2option[envir]
         if option(option_name):
-            if callable(comment_pattern):
-                pattern = comment_pattern(envir_delimiter_lines[envir][0]) + \
-                     '\n.+?' + comment_pattern(envir_delimiter_lines[envir][1])\
-                     + '\n'
-                replacement = comment_pattern('removed !b%s ... !e%s environment' % (envir, envir) + ' (because of the command-line option --%s)\n' % option_name)
-            else:
-                pattern = comment_pattern % envir_delimiter_lines[envir][0] + \
-                          '\n.+?' + comment_pattern % \
-                          envir_delimiter_lines[envir][1] + '\n'
-                replacement = comment_pattern % ('removed !b%s ... !e%s environment\n' % (envir, envir)) + comment_pattern % ('(because of the command-line option --%s)\n' % option_name)
-            filestr = re.sub(pattern, replacement, filestr, flags=re.DOTALL)
-
+            filestr = process_envir(
+                filestr, envir, format, action='remove',
+                reason='(because of the command-line option --%s)\n' % option_name)
 
     debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
 

@@ -21,6 +21,16 @@ of intermediate results"""),
 (may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
+    ('--exercise_numbering=',
+     """absolute: exercises numbered as 1, 2, ... (default)
+chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
+         with a chapter or appendix prefix."""),
+    ('--exercises_in_zip',
+     'Place each exercises as an individual DocOnce file in a zip archive.'),
+    ('--exercises_in_zip_filename=',
+     """Filenames of individual exercises in zip archive.
+logical: use the (first) logical filename specified by file=...
+number:  use either absolute exercise number or chapter.localnumber."""),
     ('--encoding=',
      'Specify encoding (e.g., latin1 or utf-8).'),
     ('--no_ampersand_quote', 'Turn off special treatment of ampersand (&). Needed, e.g., when native latex code for tables are inserted in the document.'),
@@ -355,10 +365,6 @@ Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax)."""),
-    ('--latex_exercise_numbering=',
-     """absolute: exercises numbered as 1, 2, ...
-chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-         with a chapter prefix."""),
     ('--latex_subex_header_postfix=',
      """Default: ).
 Gives headers a), b), etc. Can be set to period, colon, etc."""),
@@ -2168,15 +2174,16 @@ def remove_exercise_answers():
 
 def clean():
     """
-    Remove all DocOnce generated files and trash files.
-    Place removed files in generated subdir Trash.
+    Remove all DocOnce-generated files and the Trash dir if it exists.
+    Place new removed files in Trash.
 
     For example, if ``d1.do.txt`` and ``d2.do.txt`` are found,
     all files ``d1.*`` and ``d1.*`` are deleted, except when ``*``
-    is ``.do.txt`` or ``.sh``. The subdirectories ``sphinx-rootdir``
-    and ``html_images`` are also removed, as well as all ``*~`` and
-    ``tmp*`` files and all files made from splitting (split_html,
-    split_rst).
+    is ``.do.txt`` or ``.sh``. The subdirectories ``sphinx-*``,
+    ``sphinx_*``, ``html_images``, ``latex_figs``, and
+    ``standalone_exercises`` are also removed,
+    as well as all ``*~`` and ``tmp*`` files and all files made from
+    splitting (split_html, split_rst).
     """
     if os.path.isdir('Trash'):
         print
@@ -2207,7 +2214,8 @@ def clean():
                    glob.glob('.*.exerinfo') +
                    glob.glob('.*.quiz*') +
                    glob.glob('.*_html_file_collection'))
-    directories = ['html_images', 'latex_figs'] + glob.glob('sphinx-*') + \
+    directories = ['html_images', 'latex_figs', 'standalone_exercises'] \
+                  + glob.glob('sphinx-*') + \
                   glob.glob('sphinx_*')
     for d in directories:
         if os.path.isdir(d):

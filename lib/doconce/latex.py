@@ -1593,7 +1593,7 @@ def latex_author(authors_and_institutions, auth2index,
 {\bf %s${}^{%s}$%s} \\ [0mm]
 \end{center}
 
-    """ % (author, str(auth2index[author])[1:-1], email_text)
+""" % (author, str(auth2index[author])[1:-1], email_text)
 
         # Institutions
         if latex_style == 'elsevier':
@@ -1883,6 +1883,7 @@ def latex_exercise_old(exer):
         s += '\n' + exer['comments']
     if 'solution' in exer:
         pass
+    # Old: need to return three values now...
     return s
 
 def latex_box(block, format, text_size='normal'):
@@ -2980,7 +2981,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconcequiz}{}{}
 \newcounter{doconcequizcounter}
 """
-        quiz_numbering = option('latex_exercise_numbering=', 'absolute')
+        quiz_numbering = option('exercise_numbering=', 'absolute')
         if chapters and quiz_numbering == 'chapter':
             INTRO['latex'] += r"""
 % Let quizzes be numbered per chapter:
@@ -3650,7 +3651,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 """
-            exercise_numbering = option('latex_exercise_numbering=', 'absolute')
+            exercise_numbering = option('exercise_numbering=', 'absolute')
             if chapters and exercise_numbering == 'chapter':
                 INTRO['latex'] += r"""
 % Let exercises, problems, and projects be numbered per chapter:

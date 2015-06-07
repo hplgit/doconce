@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 28, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 7, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -3102,10 +3102,8 @@ formats will just print the raw emoji name (like <code class="docutils literal">
 The command-line option <code class="docutils literal"><span class="pre">--no_emoji</span></code> removes all emojis from the output.</p>
 </div>
 </div>
-<div class="section" id="environments">
-<h2>Environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="exercises-problems-projects-and-examples">
-<h3>Exercises, Problems, Projects, and Examples<a class="headerlink" href="#exercises-problems-projects-and-examples" title="Permalink to this headline">¶</a></h3>
+<h2>Exercises, Problems, Projects, and Examples<a class="headerlink" href="#exercises-problems-projects-and-examples" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-70"></span><span class="target" id="index-71"></span><span class="target" id="index-72"></span><p id="index-73">DocOnce has special support for four types of &#8220;exercises&#8221;, named
 <em>exercise</em>, <em>problem</em>, <em>project</em>, or <em>example</em>.
 These are all typeset as special kind of
@@ -3113,8 +3111,10 @@ subsections. Such subsections start with a subsection
 headline surrounded 5 <code class="docutils literal"><span class="pre">=</span></code> characters, and last up to the
 next headline or the end of the file. The headline itself must
 consists of the word <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, or <em>Example</em>, followed
-by a colon and a title of the exercise, problem, or project.
-The next line(s) may contain a label and specification of the
+by a colon and a title of the exercise, problem, or project.</p>
+<div class="section" id="examples-on-exercise-syntax">
+<h3>Examples on Exercise Syntax<a class="headerlink" href="#examples-on-exercise-syntax" title="Permalink to this headline">¶</a></h3>
+<p>The next line(s) may contain a label and specification of the
 name of the result file (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">===== Project: Determine the Distance to the Moon =====</span>
@@ -3218,8 +3218,9 @@ a list of dictionaries, where keys in the dictionary corresponds to
 elements in the exercise: filename, solution file, answer, label, list
 of hints, list of subexercises, closing remarks, and the main body of
 text.</p>
+</div>
 <div class="section" id="typesetting-of-exercises">
-<h4>Typesetting of Exercises<a class="headerlink" href="#typesetting-of-exercises" title="Permalink to this headline">¶</a></h4>
+<h3>Typesetting of Exercises<a class="headerlink" href="#typesetting-of-exercises" title="Permalink to this headline">¶</a></h3>
 <p>Tailored formatting of exercises in special output formats can make
 use of the elements in an exercise.  For example, one can imagine web
 formats where the hints are displayed one by one when needed and where
@@ -3239,7 +3240,6 @@ or <em>Project:</em> word, so that references like</p>
 </pre></div>
 </div>
 <p>works well in all formats (i.e., no double <code class="docutils literal"><span class="pre">Problem</span> <span class="pre">Problem</span></code> appears).</p>
-</div>
 <div class="section" id="remark-on-typesettng-of-examples">
 <h4>Remark on Typesettng of Examples<a class="headerlink" href="#remark-on-typesettng-of-examples" title="Permalink to this headline">¶</a></h4>
 <p>Examples are <em>not</em> typeset similarly to exercises unless one adds
@@ -3252,8 +3252,9 @@ one can use the <code class="docutils literal"><span class="pre">!bsubex</span><
 commands to indicate a subproblem and a solution. In this way, the
 typesetting of the example looks like an exercise equipped with a solution.</p>
 </div>
+</div>
 <div class="section" id="list-of-exercises-problems-and-projects">
-<h4>List of Exercises, Problems, and Projects<a class="headerlink" href="#list-of-exercises-problems-and-projects" title="Permalink to this headline">¶</a></h4>
+<h3>List of Exercises, Problems, and Projects<a class="headerlink" href="#list-of-exercises-problems-and-projects" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
 By default, no such listing is enabled. When running
@@ -3273,8 +3274,8 @@ use to further tailor the appearance of exercises (given that one
 edits the <code class="docutils literal"><span class="pre">.tex</span></code> file, preferably by a script after each <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 command).</p>
 </div>
-<div class="section" id="extracting-exercises-in-a-separate-document">
-<span id="index-74"></span><h4>Extracting Exercises in a Separate Document<a class="headerlink" href="#extracting-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="extracting-all-exercises-in-a-separate-document">
+<span id="index-74"></span><h3>Extracting All Exercises in a Separate Document<a class="headerlink" href="#extracting-all-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
 <p>The command</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
 </pre></div>
@@ -3290,6 +3291,52 @@ with or without solutions and/or short answers.
 By &#8220;exercise&#8221; we here mean all exerices, problems,
 and projects.</p>
 </div>
+<div class="section" id="extracting-all-exercises-as-stand-alone-documents">
+<span id="exercises-standalone"></span><h3>Extracting All Exercises as Stand-Alone Documents<a class="headerlink" href="#extracting-all-exercises-as-stand-alone-documents" title="Permalink to this headline">¶</a></h3>
+<p>It is sometimes convenient to publish exercises from a larger document
+as individual files. With the <code class="docutils literal"><span class="pre">--exercises_in_zip</span></code> option, DocOnce will
+generate a zip file <code class="docutils literal"><span class="pre">mydoc_exercises.zip</span></code> (for <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>) with
+each exercise (problem, project, or example) in a separate <code class="docutils literal"><span class="pre">.do.txt</span></code> file.
+The zip archive also contains a script <code class="docutils literal"><span class="pre">make.py</span></code> for translating the
+<code class="docutils literal"><span class="pre">.do.txt</span></code> files to various formats. In university courses it may be
+attractive to give the students <code class="docutils literal"><span class="pre">.tex</span></code> with the exercise text such that
+the students can fill in the answers and extend the text to a report.
+Or one may distribute the exercises as IPython/Jupyter Notebook files
+and let the students fill in answers in the notebooks. The zip archive
+also contains a file <code class="docutils literal"><span class="pre">index.do.txt</span></code> with a list of all the exercise
+files that can be published on the Internet and used for download of
+the exercises. The <code class="docutils literal"><span class="pre">index.do.txt</span></code> file contains a variable
+<code class="docutils literal"><span class="pre">FILE_EXTENSIONS</span></code> for the type of formats the exercises are available
+in. The user must edit <code class="docutils literal"><span class="pre">make.py</span></code> accordingly so the right set of formats
+are compiled as desired.</p>
+<p><strong>Note:</strong>
+Unzipping the archive packs out the files in a subdirectory
+<code class="docutils literal"><span class="pre">standalone_exercises</span></code>. For figure and movie references to work one
+needs the <code class="docutils literal"><span class="pre">--figure_prefix=../</span></code> and <code class="docutils literal"><span class="pre">--movie_prefix=../</span></code> options.
+If the exercise files are distributed to students, make sure figure
+files are also available (check the compiled exercises).</p>
+<div class="admonition-references-in-stand-alone-exercises-may-not-work admonition">
+<p class="first admonition-title">References in stand-alone exercises may not work</p>
+<p class="last">Exercises with references to sections in the running text of the
+original document cause trouble when the exercises are compiled as
+stand-alone documents. For LaTeX this may work if the original document
+is compiled in the parent directory of <code class="docutils literal"><span class="pre">standalone_exercises</span></code> and
+the corresponding <code class="docutils literal"><span class="pre">.aux</span></code> file is available (the exercise will in such
+cases make use of the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command in the file and
+use the <code class="docutils literal"><span class="pre">xr</span></code> package for cross-referencing between documents).
+All other formats will face problems with references to the original
+parent document. If missing references are encountered, a comment about
+the issue is inserted in the exercise file.</p>
+</div>
+<p><strong>Naming of Exercise Files.</strong>
+The option <code class="docutils literal"><span class="pre">--exercises_in_zip_filename=X</span></code> can be used to determine the
+name of the exercise files. With <code class="docutils literal"><span class="pre">X=logical</span></code>, the logical name specified by
+the <code class="docutils literal"><span class="pre">file=</span></code> command in the exercise is used. With <code class="docutils literal"><span class="pre">X=number</span></code>, the
+filename contains the exercise number, either an absolute number (integer)
+like <code class="docutils literal"><span class="pre">132</span></code>
+or a <code class="docutils literal"><span class="pre">chapter.local_number</span></code> like <code class="docutils literal"><span class="pre">5.2</span></code> or <code class="docutils literal"><span class="pre">B.4</span></code> (in case of an appendix),
+depending on the option
+<code class="docutils literal"><span class="pre">--exercise_numbering=X</span></code>, with <code class="docutils literal"><span class="pre">X=absolute</span></code> or <code class="docutils literal"><span class="pre">X=chapter</span></code>, respectively.</p>
 </div>
 <div class="section" id="example-on-an-exercise">
 <h3>Example on an Exercise<a class="headerlink" href="#example-on-an-exercise" title="Permalink to this headline">¶</a></h3>
@@ -3477,6 +3524,9 @@ multiple-choice question (quiz), and final remark - combined with
 mathematics and computer code.</p>
 </div>
 </div>
+</div>
+<div class="section" id="other-environments">
+<h2>Other Environments<a class="headerlink" href="#other-environments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="blocks-of-verbatim-computer-code">
 <span id="sec-verbatim-blocks"></span><h3>Blocks of Verbatim Computer Code<a class="headerlink" href="#blocks-of-verbatim-computer-code" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-75"></span><span class="target" id="index-76"></span><span class="target" id="index-77"></span><p id="index-78">Blocks of computer code, to be typeset verbatim, must appear inside a
@@ -6087,6 +6137,7 @@ directory in the DocOnce repo. With <code class="docutils literal"><span class="
 choice is made, based on the current style.</li>
 <li><code class="docutils literal"><span class="pre">--html_exercise_icon_width=X</span></code>: set the width of the exercise icon
 image to <code class="docutils literal"><span class="pre">X</span></code> pixels.</li>
+<li><code class="docutils literal"><span class="pre">--exercise_numbering=absolute,</span> <span class="pre">chapter</span></code></li>
 <li><code class="docutils literal"><span class="pre">--html_DOCTYPE</span></code>: insert <code class="docutils literal"><span class="pre">&lt;!DOCTYPE</span> <span class="pre">HTML&gt;</span></code> at the top of the HTML
 output file. This is normally recommended, but malformed CSS files
 will then not be loaded (so by default, the doctype is not specified).
@@ -6411,7 +6462,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_admon=mdfbox,</span> <span class="pre">graybox2,</span> <span class="pre">grayicon,</span> <span class="pre">yellowicon,</span> <span class="pre">paragraph,</span> <span class="pre">colors1,</span> <span class="pre">colors2</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_admon_color=0.34,0.02,0.8</span></code> (background color in admons)</li>
 <li><code class="docutils literal"><span class="pre">--latex_admon_envir_map=2</span></code> (code environment names in admons)</li>
-<li><code class="docutils literal"><span class="pre">--latex_exercise_numbering=absolute,</span> <span class="pre">chapter</span></code></li>
+<li><code class="docutils literal"><span class="pre">--exercise_numbering=absolute,</span> <span class="pre">chapter</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_movie=media9,</span> <span class="pre">href,</span> <span class="pre">multimedia,</span> <span class="pre">movie15</span></code> (control typesetting of movies)</li>
 <li><code class="docutils literal"><span class="pre">--latex_movie_controls=on</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_external_movie_viewer</span></code> (for <code class="docutils literal"><span class="pre">movie15</span></code> package)</li>
@@ -7204,6 +7255,25 @@ Values: on/off. Turns on/off fix of illegal constructions and the syntax check
 Remove all inline comments of the form [ID: comment].
 
 
+--exercise_numbering=...
+
+absolute: exercises numbered as 1, 2, ... (default)
+chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
+         with a chapter or appendix prefix.
+
+
+--exercises_in_zip
+
+Place each exercises as an individual DocOnce file in a zip archive.
+
+
+--exercises_in_zip_filename=...
+
+Filenames of individual exercises in zip archive.
+logical: use the (first) logical filename specified by file=...
+number:  use either absolute exercise number or chapter.localnumber.
+
+
 --encoding=...
 
 Specify encoding (e.g., latin1 or utf-8).
@@ -7715,10 +7785,23 @@ Note: the colors in mdfbox and other boxes can customized.
 --latex_admon_color=...
 
 The color to be used as background in admonitions.
+A single value applies to all admons:
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
   &#39;--latex_admon_color=yellow!5&#39;
 Note the quotes, needed for bash, in the latter example.
+
+Multiple values can be assigned, one for each admon (all admons must
+be specified):
+  &#39;--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white&#39;
+
+If --latex_admon=mdfbox, the specification above with color1!X!color2
+will automatically trigger 2*X as the background color of the frametitle.
+
+There are predefined multiple values, e.g.,
+  --latex_admon_color=colors1
+gives red warnings, blue notice, orange questions, green summaries and
+yellow blocks, automatically adjusted with darker frametitles for
 
 If --latex_admon=mdfbox, the background of the title and
 the color of the border of box can also be customized by
@@ -7756,13 +7839,6 @@ Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax).
-
-
---latex_exercise_numbering=...
-
-absolute: exercises numbered as 1, 2, ...
-chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-         with a chapter prefix.
 
 
 --latex_subex_header_postfix=...
@@ -8646,19 +8722,23 @@ Springer,
 <li><a class="reference internal" href="#emojis">Emojis</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#environments">Environments</a><ul>
 <li><a class="reference internal" href="#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
-<li><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a></li>
+<li><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a><ul>
 <li><a class="reference internal" href="#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
-<li><a class="reference internal" href="#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
-<li><a class="reference internal" href="#extracting-exercises-in-a-separate-document">Extracting Exercises in a Separate Document</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
+<li><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
+<li><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
 <li><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
 <li><a class="reference internal" href="#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
 <li><a class="reference internal" href="#remarks">Remarks</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-environments">Other Environments</a><ul>
 <li><a class="reference internal" href="#blocks-of-verbatim-computer-code">Blocks of Verbatim Computer Code</a><ul>
 <li><a class="reference internal" href="#typesetting-styles">Typesetting Styles</a></li>
 <li><a class="reference internal" href="#copying-code-from-source-files">Copying Code from Source Files</a></li>

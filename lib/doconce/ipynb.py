@@ -368,8 +368,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 for j in range(len(lines)):
                     if lines[j].startswith('>>>') or lines[j].startswith('... '):
                         lines[j] = lines[j][4:]
-                    elif lines[j].startswith('In ['):
+                    elif lines[j].startswith('In ['):  # IPython
                         lines[j] = ':'.join(lines[j].split(':')[1:]).strip()
+                    elif lines[j].startswith('   ...: '): # IPython
+                        lines[j] = lines[j][8:]
                     else:
                         # output (no prefix or Out)
                         lines[j] = ''

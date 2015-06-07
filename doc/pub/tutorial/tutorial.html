@@ -223,7 +223,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 12, 2015</h4></center> <!-- date -->
+<center><h4>Jun 7, 2015</h4></center> <!-- date -->
 <p>
 </div> <!-- end jumbotron -->
 
@@ -341,7 +341,7 @@ Here is an example of some simple text written in the DocOnce format:
 You can also have paragraphs with a paragraph heading surrounded
 by double underscores are the beginning of a line.
 
-__This is a paragraph heading.___
+__This is a paragraph heading.__
 And here comes the text.
 
 ===== A Subsection with Sample Text =====
@@ -1162,6 +1162,7 @@ Other options:
    choice is made, based on the current style.</li>
  <li> <code>--html_exercise_icon_width=X</code>: set the width of the exercise icon
    image to <code>X</code> pixels.</li>
+ <li> <code>--exercise_numbering=absolute, chapter</code></li>
  <li> <code>--html_DOCTYPE</code>: insert <code>&lt;!DOCTYPE HTML&gt;</code> at the top of the HTML
    output file. This is normally recommended, but malformed CSS files
    will then not be loaded (so by default, the doctype is not specified).
@@ -1588,7 +1589,7 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_admon=mdfbox, graybox2, grayicon, yellowicon, paragraph, colors1, colors2</code></li>
  <li> <code>--latex_admon_color=0.34,0.02,0.8</code> (background color in admons)</li>
  <li> <code>--latex_admon_envir_map=2</code> (code environment names in admons)</li>
- <li> <code>--latex_exercise_numbering=absolute, chapter</code></li>
+ <li> <code>--exercise_numbering=absolute, chapter</code></li>
  <li> <code>--latex_movie=media9, href, multimedia, movie15</code> (control typesetting of movies)</li>
  <li> <code>--latex_movie_controls=on</code></li>
  <li> <code>--latex_external_movie_viewer</code> (for <code>movie15</code> package)</li>
@@ -2598,6 +2599,25 @@ Values: on/off. Turns on/off fix of illegal constructions and the syntax check
 Remove all inline comments of the form [ID: comment].
 
 
+--exercise_numbering=...
+
+absolute: exercises numbered as 1, 2, ... (default)
+chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
+         with a chapter or appendix prefix.
+
+
+--exercises_in_zip
+
+Place each exercises as an individual DocOnce file in a zip archive.
+
+
+--exercises_in_zip_filename=...
+
+Filenames of individual exercises in zip archive.
+logical: use the (first) logical filename specified by file=...
+number:  use either absolute exercise number or chapter.localnumber.
+
+
 --encoding=...
 
 Specify encoding (e.g., latin1 or utf-8).
@@ -3109,10 +3129,23 @@ Note: the colors in mdfbox and other boxes can customized.
 --latex_admon_color=...
 
 The color to be used as background in admonitions.
+A single value applies to all admons:
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
   &#39;--latex_admon_color=yellow!5&#39;
 Note the quotes, needed for bash, in the latter example.
+
+Multiple values can be assigned, one for each admon (all admons must
+be specified):
+  &#39;--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white&#39;
+
+If --latex_admon=mdfbox, the specification above with color1!X!color2
+will automatically trigger 2*X as the background color of the frametitle.
+
+There are predefined multiple values, e.g.,
+  --latex_admon_color=colors1
+gives red warnings, blue notice, orange questions, green summaries and
+yellow blocks, automatically adjusted with darker frametitles for
 
 If --latex_admon=mdfbox, the background of the title and
 the color of the border of box can also be customized by
@@ -3150,13 +3183,6 @@ Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax).
-
-
---latex_exercise_numbering=...
-
-absolute: exercises numbered as 1, 2, ...
-chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-         with a chapter prefix.
 
 
 --latex_subex_header_postfix=...
@@ -3476,12 +3502,25 @@ various formats. The <code>make.sh</code> script runs a set of translations.
 <p>
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install everything what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the Bash script
+The impatient way to install everything that is needed is to use
+Anaconda Python and the <code>conda</code> program:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; conda install --channel johannr doconce
+</pre></div>
+<p>
+The <code>conda</code> package is available for Mac and Linux only.
+
+<p>
+If you do not want to use Anaconda and are
+on a Debian-based Linux
+computer (running, e.g., Ubuntu), you can instead run the Bash script
 <a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh" target="_self"><tt>install_doconce.sh</tt></a> or the equivalent Python script
 <a href="https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py" target="_self"><tt>install_doconce.py</tt></a>.
 These scripts gives a comprehensive installation. Some users will prefer to
-install what is needed, and this is explained below.
+install just what is needed for them, and this is explained below.
 
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Version control systems are needed!</b>
@@ -3499,6 +3538,10 @@ no problems should arise on Mac and Windows. However, some of the
 image processing tools and spell checking apply Unix-specific software.
 </div>
 
+
+<p>
+You can omit reading the next sections if you rely on <code>conda</code> or
+<code>apt-get install</code> commands in the Bash script for installing DocOnce.
 
 <h2 id="___sec59">DocOnce </h2>
 

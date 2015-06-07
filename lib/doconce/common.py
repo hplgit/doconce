@@ -533,13 +533,15 @@ def remove_code_and_tex(filestr, format):
     return filestr, code_blocks, code_block_types, tex_blocks
 
 
-def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
-    # Consistency check: find no of distinct code and math blocks
+def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
+                        complete_doc=True):
+    # Consistency check (only for complete documents):
+    # find no of distinct code and math blocks
     # (can be duplicates when solutions are copied at the end)
     import sets
     pattern = r'^\d+ ' + _CODE_BLOCK
     n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
-    if len(code_blocks) != n:
+    if complete_doc and len(code_blocks) != n:
         print '*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks))
         print """    Possible causes:
            - mismatch of !bt and !et within one file, such that a !bt
@@ -551,7 +553,7 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
         _abort()
     pattern = r'^\d+ ' + _MATH_BLOCK
     n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
-    if len(tex_blocks) != n:
+    if complete_doc and len(tex_blocks) != n:
         print '*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks))
         print """    Possible causes:
            - mismatch of !bc and !ec within one file, such that a !bc
@@ -616,12 +618,14 @@ def remove_hidden_code_blocks(filestr, format):
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE|re.DOTALL)
     return filestr
 
-def doconce_exercise_output(exer,
-                            solution_header = '__Solution.__',
-                            answer_header = '__Answer.__',
-                            hint_header = '__Hint.__',
-                            include_numbering=True,
-                            include_type=True):
+def doconce_exercise_output(
+    exer,
+    solution_header = '__Solution.__',
+    answer_header = '__Answer.__',
+    hint_header = '__Hint.__',
+    include_numbering=True,
+    include_type=True,
+    ):
     """
     Write exercise in DocOnce format. This output can be
     reused in most formats.
@@ -643,7 +647,8 @@ def doconce_exercise_output(exer,
         if subex['answer']:
             has_solutions = True
 
-    sol = ''
+    sol = ''  # Solutions
+    # s holds the formatted exercise in doconce format
     s = '\n\n# ' + envir_delimiter_lines['exercise'][0] + '\n\n'
     s += exer['heading']  # result string
     if has_solutions:
@@ -661,7 +666,12 @@ def doconce_exercise_output(exer,
         if sol:
             sol += ' Solution to ' + exer['type']
         if include_numbering:
-            s += ' ' + str(exer['no'])
+            exer_numbering = option('exercise_numbering=', 'absolute')
+            if exer_numbering == 'chapter' and exer['chapter_type'] is not None:
+                s += ' %s.%s' % (exer['chapter_no'], exer['chapter_exercise'])
+            else:
+                s += ' ' + str(exer['no'])
+
             if sol:
                 sol += ' ' + str(exer['no'])
         s += ':'
@@ -696,7 +706,7 @@ def doconce_exercise_output(exer,
                     comments.append(line)
                 else:
                     break
-            comments = '\n'.join(comments)
+            comments = '\n'.join(reversed(comments))
             if i == 0:
                 exer['text'] = '\n'.join(lines)
             elif i > 0:
@@ -789,7 +799,7 @@ def doconce_exercise_output(exer,
             s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
             sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
         s += answer_header + '\n' + exer['answer'] + '\n'
-        ssol += answer_header + '\n' + exer['answer'] + '\n'
+        sol += answer_header + '\n' + exer['answer'] + '\n'
 
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
@@ -950,7 +960,7 @@ inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 # the begin-end works, so don't touch (must be tested in a safe branch....)
 
-_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.flv|[^"]+?\.webm|[^"]+?\.ogg|[^"]+?\.mp4|[^"]+?\.mpe?g|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
+_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.tex|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.flv|[^"]+?\.webm|[^"]+?\.ogg|[^"]+?\.mp4|[^"]+?\.mpe?g|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
 #_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
 INLINE_TAGS = {

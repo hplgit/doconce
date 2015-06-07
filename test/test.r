@@ -1130,7 +1130,7 @@ exercises.
 
 ===== Exercise: Test of plain text exercise =====
 label{my:exer1}
-file=myexer1.py
+file=myexer1
 
 Very short exercise. What is the capital
 of Norway?
@@ -1160,7 +1160,7 @@ in previous DocOnce versions:
 ===== Project: Explore Distributions of Random Circles =====
 
 label{proj:circle1}
-file=circles.pdf
+file=circles
 kw=ipynb
 
 The formula for a circle is given by
@@ -1219,7 +1219,7 @@ $x_0$, $y_0$, and $R$ quantities.
 !bsubex
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 
-file=norm.py  # test local filename for subexercise
+file=norm  # test local filename for subexercise
 !esubex
 
 !bsubex
@@ -3547,7 +3547,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1.py!.
+\noindent Filename: \Verb!myexer1!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -3666,13 +3666,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm.py!.
+\noindent Filename: \Verb!norm!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles.pdf!.
+\noindent Filename: \Verb!circles!.
 
 % Closing remarks for this Project
 
@@ -3825,9 +3825,9 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 lambda x: x+2
 \eccq
 
-% the Filename: ... is written correctly.
-% Have some comments at the end of the exercise to see that
 
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -5925,7 +5925,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1.py!.
+\noindent Filename: \Verb!myexer1!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -6047,13 +6047,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm.py!.
+\noindent Filename: \Verb!norm!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles.pdf!.
+\noindent Filename: \Verb!circles!.
 
 % Closing remarks for this Project
 
@@ -6215,9 +6215,9 @@ lambda x: x+2
 \end{Verbatim}
 \noindent
 
-% the Filename: ... is written correctly.
-% Have some comments at the end of the exercise to see that
 
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -8293,7 +8293,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1.py!.
+\noindent Filename: \Verb!myexer1!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -8414,13 +8414,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm.py!.
+\noindent Filename: \Verb!norm!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles.pdf!.
+\noindent Filename: \Verb!circles!.
 
 % Closing remarks for this Project
 
@@ -8576,9 +8576,9 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 lambda x: x+2
 \end{Verbatim}
 
-% the Filename: ... is written correctly.
-% Have some comments at the end of the exercise to see that
 
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -9116,7 +9116,6 @@ identifierstyle=\color{darkorange},
 commentstyle={},
 }
 
-
 % user-defined lst styles in file "mylststyles":
 \lstdefinestyle{myspeciallststyle}{
 keywordstyle=\color{blue}\bfseries,
@@ -9126,7 +9125,6 @@ identifierstyle=\color{darkorange},
 }
 
 % end of custom lstdefinestyles
-
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -9401,27 +9399,27 @@ A Document for Testing DocOnce
 {\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf Kaare Dump${}^{3}$} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf A. Dummy Author${}^{}$} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
@@ -10709,7 +10707,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1.py!.
+\noindent Filename: \Verb!myexer1!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -10829,13 +10827,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm.py!.
+\noindent Filename: \Verb!norm!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles.pdf!.
+\noindent Filename: \Verb!circles!.
 
 % Closing remarks for this Project
 
@@ -10991,9 +10989,9 @@ lambda x: x+2
 \end{lstlisting}\end{cod}
 \noindent
 
-% the Filename: ... is written correctly.
-% Have some comments at the end of the exercise to see that
 
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -12494,7 +12492,7 @@ Exercise 3: Test of plain text exercise
 
 Very short exercise. What is the capital
 of Norway?
-Filename: ``myexer1.py``.
+Filename: ``myexer1``.
 
 .. --- end exercise ---
 
@@ -12602,12 +12600,12 @@ Here goes a full solution to part a).
 
 **b)**
 Let \\( R \\) be uniformly distributed and \\( (x_0,y_0) \\) normally distributed.
-Filename: ``norm.py``.
+Filename: ``norm``.
 
 **c)**
 Let \\( R \\) and \\( (x_0,y_0) \\) be normally distributed.
 
-Filename: ``circles.pdf``.
+Filename: ``circles``.
 
 .. Closing remarks for this Project
 
@@ -12754,9 +12752,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here::
 
         lambda x: x+2
 
-.. the Filename: ... is written correctly.
-
 .. Have some comments at the end of the exercise to see that
+
+.. the Filename: ... is written correctly.
 
 .. --- end exercise ---
 
@@ -14375,7 +14373,7 @@ Exercise 3: Test of plain text exercise
 
 Very short exercise. What is the capital
 of Norway?
-Filename: ``myexer1.py``.
+Filename: ``myexer1``.
 
 .. --- end exercise ---
 
@@ -14488,12 +14486,12 @@ Here goes a full solution to part a).
 
 **b)**
 Let :math:`R` be uniformly distributed and :math:`(x_0,y_0)` normally distributed.
-Filename: ``norm.py``.
+Filename: ``norm``.
 
 **c)**
 Let :math:`R` and :math:`(x_0,y_0)` be normally distributed.
 
-Filename: ``circles.pdf``.
+Filename: ``circles``.
 
 .. Closing remarks for this Project
 
@@ -14642,9 +14640,9 @@ And a test that the code ``lambda x: x+2`` is correctly placed here:
 
         lambda x: x+2
 
-.. the Filename: ... is written correctly.
-
 .. Have some comments at the end of the exercise to see that
+
+.. the Filename: ... is written correctly.
 
 .. --- end exercise ---
 
@@ -16201,7 +16199,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-Filename: `myexer1.py`.
+Filename: `myexer1`.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -16310,13 +16308,13 @@ Here goes a full solution to part a).
 
 *b)*
 Let `R` be uniformly distributed and `(x_0,y_0)` normally distributed.
-Filename: `norm.py`.
+Filename: `norm`.
 
 *c)*
 Let `R` and `(x_0,y_0)` be normally distributed.
 
 
-Filename: `circles.pdf`.
+Filename: `circles`.
 
 <wiki:comment> Closing remarks for this Project </wiki:comment>
 
@@ -16466,9 +16464,9 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 lambda x: x+2
 }}}
 
-<wiki:comment> the Filename: ... is written correctly. </wiki:comment>
-<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
 
+<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
+<wiki:comment> the Filename: ... is written correctly. </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -17885,7 +17883,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-Filename: <code>myexer1.py</code>.
+Filename: <code>myexer1</code>.
 
 <!-- --- end exercise --- -->
 
@@ -17995,13 +17993,13 @@ Here goes a full solution to part a).
 
 ''b)''
 Let <math>R</math> be uniformly distributed and <math>(x_0,y_0)</math> normally distributed.
-Filename: <code>norm.py</code>.
+Filename: <code>norm</code>.
 
 ''c)''
 Let <math>R</math> and <math>(x_0,y_0)</math> be normally distributed.
 
 
-Filename: <code>circles.pdf</code>.
+Filename: <code>circles</code>.
 
 <!-- Closing remarks for this Project -->
 
@@ -18155,9 +18153,9 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 lambda x: x+2
 </syntaxhighlight>
 
-<!-- the Filename: ... is written correctly. -->
-<!-- Have some comments at the end of the exercise to see that -->
 
+<!-- Have some comments at the end of the exercise to see that -->
+<!-- the Filename: ... is written correctly. -->
 <!-- --- end exercise --- -->
 
 
@@ -19632,7 +19630,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-Filename: {{{myexer1.py}}}.
+Filename: {{{myexer1}}}.
 
 <wiki:comment> --- end exercise --- </wiki:comment>
 
@@ -19742,13 +19740,13 @@ Here goes a full solution to part a).
 
 //b)//
 Let {{{R}}} be uniformly distributed and {{{(x_0,y_0)}}} normally distributed.
-Filename: {{{norm.py}}}.
+Filename: {{{norm}}}.
 
 //c)//
 Let {{{R}}} and {{{(x_0,y_0)}}} be normally distributed.
 
 
-Filename: {{{circles.pdf}}}.
+Filename: {{{circles}}}.
 
 <wiki:comment> Closing remarks for this Project </wiki:comment>
 
@@ -19899,9 +19897,9 @@ And a test that the code {{{lambda x: x+2}}} is correctly placed here:
 lambda x: x+2
 }}}
 
-<wiki:comment> the Filename: ... is written correctly. </wiki:comment>
-<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
 
+<wiki:comment> Have some comments at the end of the exercise to see that </wiki:comment>
+<wiki:comment> the Filename: ... is written correctly. </wiki:comment>
 <wiki:comment> --- end exercise --- </wiki:comment>
 
 
@@ -21074,7 +21072,7 @@ Exercise 3: Test of plain text exercise
 
 Very short exercise. What is the capital
 of Norway?
-Filename: 'myexer1.py'.
+Filename: 'myexer1'.
 
 # --- end exercise ---
 
@@ -21161,12 +21159,12 @@ Here goes a full solution to part a).
 
 *b)*
 Let R be uniformly distributed and (x_0,y_0) normally distributed.
-Filename: 'norm.py'.
+Filename: 'norm'.
 
 *c)*
 Let R and (x_0,y_0) be normally distributed.
 
-Filename: 'circles.pdf'.
+Filename: 'circles'.
 
 Remarks
 
@@ -22492,7 +22490,7 @@ Exercise 3: Test of plain text exercise
 
 Very short exercise. What is the capital
 of Norway?
-Filename: C{myexer1.py}.
+Filename: C{myexer1}.
 
 # --- end exercise ---
 
@@ -22581,12 +22579,12 @@ Here goes a full solution to part a).
 
 I{b)}
 Let M{R} be uniformly distributed and M{(x_0,y_0)} normally distributed.
-Filename: C{norm.py}.
+Filename: C{norm}.
 
 I{c)}
 Let M{R} and M{(x_0,y_0)} be normally distributed.
 
-Filename: C{circles.pdf}.
+Filename: C{circles}.
 
 Remarks
 ~~~~~~~
@@ -24085,7 +24083,7 @@ Exercise 3: Test of plain text exercise
 
 Very short exercise. What is the capital
 of Norway?
-Filename: myexer1.py.
+Filename: myexer1.
 
 # --- end exercise ---
 
@@ -24175,12 +24173,12 @@ Here goes a full solution to part a).
 
 *b)*
 Let R be uniformly distributed and (x_0,y_0) normally distributed.
-Filename: norm.py.
+Filename: norm.
 
 *c)*
 Let R and (x_0,y_0) be normally distributed.
 
-Filename: circles.pdf.
+Filename: circles.
 
 Remarks
 ~~~~~~~
@@ -25843,7 +25841,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-Filename: `myexer1.py`.
+Filename: `myexer1`.
 
 <!-- --- end exercise --- -->
 
@@ -25958,13 +25956,13 @@ Here goes a full solution to part a).
 
 *b)*
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-Filename: `norm.py`.
+Filename: `norm`.
 
 *c)*
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-Filename: `circles.pdf`.
+Filename: `circles`.
 
 <!-- Closing remarks for this Project -->
 
@@ -26117,9 +26115,8 @@ And a test that the code `lambda x: x+2` is correctly placed here:
 lambda x: x+2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<!-- the Filename: ... is written correctly. -->
 <!-- Have some comments at the end of the exercise to see that -->
-
+<!-- the Filename: ... is written correctly. -->
 <!-- --- end exercise --- -->
 
 
@@ -28076,7 +28073,7 @@ is at the end with only one newline.
     "\n",
     "Very short exercise. What is the capital\n",
     "of Norway?\n",
-    "Filename: `myexer1.py`.\n",
+    "Filename: `myexer1`.\n",
     "\n",
     "<!-- --- end exercise --- -->\n",
     "\n",
@@ -28225,13 +28222,13 @@ is at the end with only one newline.
     "\n",
     "**b)**\n",
     "Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.\n",
-    "Filename: `norm.py`.\n",
+    "Filename: `norm`.\n",
     "\n",
     "**c)**\n",
     "Let $R$ and $(x_0,y_0)$ be normally distributed.\n",
     "\n",
     "\n",
-    "Filename: `circles.pdf`.\n",
+    "Filename: `circles`.\n",
     "\n",
     "<!-- Closing remarks for this Project -->\n",
     "\n",
@@ -28451,9 +28448,8 @@ is at the end with only one newline.
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<!-- the Filename: ... is written correctly. -->\n",
     "<!-- Have some comments at the end of the exercise to see that -->\n",
-    "\n",
+    "<!-- the Filename: ... is written correctly. -->\n",
     "<!-- --- end exercise --- -->\n",
     "\n",
     "\n",
@@ -28957,6 +28953,10 @@ Could not find match for from regex "\*\s+\$.+normally"
 # exer = eval(f.read())
 #
 [{'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': None,
   'heading': '=====',
@@ -28981,6 +28981,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Example',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': 'These are the exercise remarks, appearing at the very end.',
   'file': ['flip_coin.py', 'flip_coin.pdf'],
   'heading': '=====',
@@ -29013,8 +29017,12 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Problem',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
-  'file': ['myexer1.py'],
+  'file': ['myexer1'],
   'heading': '=====',
   'hints': [],
   'keywords': None,
@@ -29028,6 +29036,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Exercise',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': None,
   'heading': '=====',
@@ -29043,8 +29055,12 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Project',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': 'At the very end of the exercise it may be appropriate to summarize\nand give some perspectives.',
-  'file': ['circles.pdf'],
+  'file': ['circles'],
   'heading': '=====',
   'hints': [],
   'keywords': ['ipynb'],
@@ -29058,7 +29074,7 @@ Could not find match for from regex "\*\s+\$.+normally"
              'solution': 'Here goes a full solution to part a).',
              'text': 'Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.'},
             {'answer': '',
-             'file': ['norm.py'],
+             'file': ['norm'],
              'hints': [],
              'solution': '',
              'text': 'Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.'},
@@ -29073,6 +29089,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Project',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': 'Some final closing remarks, e.g., summarizing the main findings\nand their implications in other problems can be made. These\nremarks will appear at the end of the typeset exercise.',
   'file': None,
   'heading': '=====',
@@ -29099,6 +29119,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Exercise',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': None,
   'heading': '=====',
@@ -29114,6 +29138,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Exercise',
   'type_visible': False},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': None,
   'heading': '=====',
@@ -29129,6 +29157,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Exercise',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': None,
   'heading': '=====',
@@ -29148,6 +29180,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Example',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': ['verify_formula.py'],
   'heading': '=====',
@@ -29163,6 +29199,10 @@ Could not find match for from regex "\*\s+\$.+normally"
   'type': 'Exercise',
   'type_visible': True},
  {'answer': '',
+  'chapter_exercise': None,
+  'chapter_no': None,
+  'chapter_title': None,
+  'chapter_type': None,
   'closing_remarks': '',
   'file': ['selc_composed.pdf'],
   'heading': '=====',
@@ -33540,7 +33580,7 @@ exercises.
 <p>
 Very short exercise. What is the capital
 of Norway?
-Filename: <code>myexer1.py</code>.
+Filename: <code>myexer1</code>.
 
 <p>
 <!-- --- end exercise --- -->
@@ -33663,14 +33703,14 @@ Here goes the short answer to part a).
 <p>
 <b>b)</b>
 Let \( R \) be uniformly distributed and \( (x_0,y_0) \) normally distributed.
-Filename: <code>norm.py</code>.
+Filename: <code>norm</code>.
 
 <p>
 <b>c)</b>
 Let \( R \) and \( (x_0,y_0) \) be normally distributed.
 
 <p>
-Filename: <code>circles.pdf</code>.
+Filename: <code>circles</code>.
 
 <p>
 <!-- Closing remarks for this Project -->
@@ -33817,10 +33857,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 </td></tr></table><p>
-<!-- the Filename: ... is written correctly. -->
 <!-- Have some comments at the end of the exercise to see that -->
-
-<p>
+<!-- the Filename: ... is written correctly. -->
 <!-- --- end exercise --- -->
 
 <p>
@@ -35874,7 +35912,7 @@ exercises.
 <p>
 Very short exercise. What is the capital
 of Norway?
-Filename: <code>myexer1.py</code>.
+Filename: <code>myexer1</code>.
 
 <h2 id="demo:ex:2">Project 4: Compute a Probability</h2>
 
@@ -35961,14 +35999,14 @@ Here goes a full solution to part a).
 <p>
 <b>b)</b>
 Let $latex R$ be uniformly distributed and $latex (x_0,y_0)$ normally distributed.
-Filename: <code>norm.py</code>.
+Filename: <code>norm</code>.
 
 <p>
 <b>c)</b>
 Let $latex R$ and $latex (x_0,y_0)$ be normally distributed.
 
 <p>
-Filename: <code>circles.pdf</code>.
+Filename: <code>circles</code>.
 
 <h3 id="___sec40">Remarks </h3>
 
@@ -38000,12 +38038,10 @@ Draw an integer among \( \{1,2\} \) with
 <!-- --- end hint in exercise --- -->
 
 <p>
-<!-- removed !bans ... !eans environment
- --><!-- (because of the command-line option --without_answers)
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
  -->
 <p>
-<!-- removed !bsol ... !esol environment
- --><!-- (because of the command-line option --without_solutions)
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
  -->
 <p>
 <b>b)</b>
@@ -38021,8 +38057,7 @@ At least there is not much to find in the section <a href="#sec1">Section 1</a>.
 Vectorize the code in a) using <code>numpy.sum</code>.
 
 <p>
-<!-- removed !bans ... !eans environment
- --><!-- (because of the command-line option --without_answers)
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
  -->
 <p>
 In this latter subexercise, we have an
@@ -38069,7 +38104,7 @@ exercises.
 <p>
 Very short exercise. What is the capital
 of Norway?
-Filename: <code>myexer1.py</code>.
+Filename: <code>myexer1</code>.
 
 <p>
 <!-- --- end exercise --- -->
@@ -38172,24 +38207,22 @@ Use the <code>numpy.random</code> module to draw the
 <!-- --- end hint in exercise --- -->
 
 <p>
-<!-- removed !bans ... !eans environment
- --><!-- (because of the command-line option --without_answers)
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
  -->
 <p>
-<!-- removed !bsol ... !esol environment
- --><!-- (because of the command-line option --without_solutions)
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
  -->
 <p>
 <b>b)</b>
 Let \( R \) be uniformly distributed and \( (x_0,y_0) \) normally distributed.
-Filename: <code>norm.py</code>.
+Filename: <code>norm</code>.
 
 <p>
 <b>c)</b>
 Let \( R \) and \( (x_0,y_0) \) be normally distributed.
 
 <p>
-Filename: <code>circles.pdf</code>.
+Filename: <code>circles</code>.
 
 <p>
 <!-- Closing remarks for this Project -->
@@ -38255,8 +38288,7 @@ Test list in hint:
 Filename: <code>subexer_a.pdf</code>.
 
 <p>
-<!-- removed !bans ... !eans environment
- --><!-- (because of the command-line option --without_answers)
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
  -->
 <p>
 <b>b)</b>
@@ -38279,8 +38311,7 @@ A hint for this subexercise.
 Filename: <code>subexer_b.pdf</code>.
 
 <p>
-<!-- removed !bsol ... !esol environment
- --><!-- (because of the command-line option --without_solutions)
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
  -->
 <p>
 <!-- No meaning in this weired test example: -->
@@ -38295,8 +38326,7 @@ Test list in exercise:
 <li> item2</li>
 </ol>
 
-<!-- removed !bsol ... !esol environment
- --><!-- (because of the command-line option --without_solutions)
+<!-- removed !bsol ... !esol environment (because of the command-line option --without_solutions)
  -->
 <p>
 <!-- Closing remarks for this Exercise -->
@@ -38334,10 +38364,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 <p>
-<!-- the Filename: ... is written correctly. -->
 <!-- Have some comments at the end of the exercise to see that -->
-
-<p>
+<!-- the Filename: ... is written correctly. -->
 <!-- --- end exercise --- -->
 
 <p>
@@ -39131,27 +39159,27 @@ A Document for Testing DocOnce
 {\bf Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf Kaare Dump${}^{3}$} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf A. Dummy Author${}^{}$} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf I. S. Overworked and Outburned${}^{4, 5, 6, 7}$} \\ [0mm]
 \end{center}
 
-    
+
 \begin{center}
 {\bf J. Doe${}^{}$ (\texttt{j\_doe@cyberspace.com})} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
@@ -40310,12 +40338,10 @@ Draw an integer among $\{1,2\}$ with
 % --- end hint in exercise ---
 
 
-% removed !bans ... !eans environment
-% (because of the command-line option --without_answers)
+% removed !bans ... !eans environment (because of the command-line option --without_answers)
 
 
-% removed !bsol ... !esol environment
-% (because of the command-line option --without_solutions)
+% removed !bsol ... !esol environment (because of the command-line option --without_solutions)
 
 \subex{b)}
 Vectorize the code in a) using boolean indexing.
@@ -40328,8 +40354,7 @@ At least there is not much to find in Section~\ref{sec1}.
 Vectorize the code in a) using \Verb!numpy.sum!.
 
 
-% removed !bans ... !eans environment
-% (because of the command-line option --without_answers)
+% removed !bans ... !eans environment (because of the command-line option --without_answers)
 
 In this latter subexercise, we have an
 example where the code is easy to read.
@@ -40375,7 +40400,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1.py!.
+\noindent Filename: \Verb!myexer1!.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -40479,22 +40504,20 @@ $x_0$, $y_0$, and $R$ quantities.
 % --- end hint in exercise ---
 
 
-% removed !bans ... !eans environment
-% (because of the command-line option --without_answers)
+% removed !bans ... !eans environment (because of the command-line option --without_answers)
 
 
-% removed !bsol ... !esol environment
-% (because of the command-line option --without_solutions)
+% removed !bsol ... !esol environment (because of the command-line option --without_solutions)
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm.py!.
+\noindent Filename: \Verb!norm!.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles.pdf!.
+\noindent Filename: \Verb!circles!.
 
 % Closing remarks for this Project
 
@@ -40557,8 +40580,7 @@ Test list in hint:
 \noindent Filename: \Verb!subexer_a.pdf!.
 
 
-% removed !bans ... !eans environment
-% (because of the command-line option --without_answers)
+% removed !bans ... !eans environment (because of the command-line option --without_answers)
 
 \subex{b)}
 Here goes the text for subexercise b).
@@ -40577,8 +40599,7 @@ A hint for this subexercise.
 \noindent Filename: \Verb!subexer_b.pdf!.
 
 
-% removed !bsol ... !esol environment
-% (because of the command-line option --without_solutions)
+% removed !bsol ... !esol environment (because of the command-line option --without_solutions)
 
 
 
@@ -40595,8 +40616,7 @@ Test list in exercise:
 \end{enumerate}
 
 \noindent
-% removed !bsol ... !esol environment
-% (because of the command-line option --without_solutions)
+% removed !bsol ... !esol environment (because of the command-line option --without_solutions)
 
 % Closing remarks for this Exercise
 
@@ -40630,9 +40650,9 @@ And a test that the code \Verb!lambda x: x+2! is correctly placed here:
 lambda x: x+2
 \eccq
 
-% the Filename: ... is written correctly.
-% Have some comments at the end of the exercise to see that
 
+% Have some comments at the end of the exercise to see that
+% the Filename: ... is written correctly.
 \end{doconceexercise}
 % --- end exercise ---
 
@@ -41650,6 +41670,11 @@ cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
 # Test that latex can treat this file
 rm -f *.aux
 system pdflatex -shell-escape testdoc
+
+# Test stand-alone exercises
+system doconce format plain testdoc --exercises_in_zip $ex
+rm -rf standalone_exercises
+unzip testdoc_exercises.zip
 
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
@@ -42984,7 +43009,7 @@ How various formats can deal with {\LaTeX} math
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -45849,7 +45874,7 @@ exercises.
 <p>
 Very short exercise. What is the capital
 of Norway?
-Filename: <code>myexer1.py</code>.
+Filename: <code>myexer1</code>.
 
 <p>
 <!-- --- end exercise --- -->
@@ -46018,14 +46043,14 @@ Here goes a full solution to part a).
 <p>
 <b>b)</b>
 Let \( R \) be uniformly distributed and \( (x_0,y_0) \) normally distributed.
-Filename: <code>norm.py</code>.
+Filename: <code>norm</code>.
 
 <p>
 <b>c)</b>
 Let \( R \) and \( (x_0,y_0) \) be normally distributed.
 
 <p>
-Filename: <code>circles.pdf</code>.
+Filename: <code>circles</code>.
 
 <p>
 <!-- Closing remarks for this Project -->
@@ -46266,10 +46291,8 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">lambda x: x+2
 </pre></div>
 <p>
-<!-- the Filename: ... is written correctly. -->
 <!-- Have some comments at the end of the exercise to see that -->
-
-<p>
+<!-- the Filename: ... is written correctly. -->
 <!-- --- end exercise --- -->
 
 <p>
@@ -47924,7 +47947,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -48425,7 +48448,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -48606,7 +48628,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -49107,7 +49129,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -49295,7 +49316,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -49796,7 +49817,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -50027,7 +50047,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -50528,7 +50548,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -50652,7 +50671,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -51176,7 +51195,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -51369,7 +51387,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -51870,7 +51888,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -51961,7 +51978,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -52474,7 +52491,6 @@ commentstyle={},
 
 % end of custom lstdefinestyles
 
-
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
@@ -52667,7 +52683,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -53318,7 +53334,7 @@ Testing admons
 {\bf hpl${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -70553,7 +70569,7 @@ This is a demo of movies in DocOnce
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -70962,7 +70978,7 @@ This is a demo of movies in DocOnce
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -71370,7 +71386,7 @@ This is a demo of movies in DocOnce
 {\bf HPL${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \end{center}
     
@@ -73605,7 +73621,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f7e3de8caa0>
+verbatim is to be replaced using <function html_verbatim at 0x7f08cb756b90>
 
 
 First occurence: " `mako`."
@@ -74555,6 +74571,59 @@ Matplotlib cite{Matplotlib:paper}, and more books cite{Mertz,PythonQt}
 as well as Python itself cite{Python}, and of course NumPy
 cite{NumPy}.
 
+======= Exercises =======
+
+===== Problem: Add numbers =====
+label{exer:add}
+file=add
+
+Compute
+
+!bt
+\[ 1 + 1 \]
+!et
+
+!bans
+2
+!eans
+
+!bsol
+Python shell as calculator:
+
+!bc pyshell
+>>> 1 + 1
+2
+!ec
+!esol
+
+===== Problem: Multiply numbers =====
+label{exer:mul}
+file=multiply
+
+!bsubex
+Compute $1\cdot 3$.
+
+!bans
+...rest of part of LaTeX line number...
+!eans
+!esubex
+
+!bsubex
+Compute $2\cdot 3$.
+
+!bhint
+Use a Python shell.
+!ehint
+
+!bsol
+!bc pyshell
+>>> 2*3
+6
+!ec
+!esol
+!esubex
+
+
 
 ========= Appendix: Styles for Springer T2 =========
 
@@ -74568,7 +74637,6 @@ slightly modified `svmono.cls` and `t2.sty` files:
 ========= References =========
 
 BIBFILE: papers.pub
-
 
 ************** File: Springer_T2/Springer_T2_book.p.tex *****************
 %%
@@ -74803,6 +74871,15 @@ BIBFILE: papers.pub
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% Let exercises, problems, and projects be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconceexercisecounter}{chapter}
+
+% \subex{} is defined in t2do.sty
 
 % --- end of standard preamble for documents ---
 
@@ -75513,6 +75590,92 @@ Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
 as well as Python itself \cite{Python}, and of course NumPy
 \cite{NumPy}.
 
+\section{Exercises}
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection{Problem 3.1: Add numbers}
+\label{exer:add}
+
+Compute
+
+\[ 1 + 1 \]
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+2
+
+% --- end answer of exercise ---
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Python shell as calculator:
+
+\bpyshell
+>>> 1 + 1
+2
+\epyshell
+
+% --- end solution of exercise ---
+\noindent Filename: \Verb!add!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection{Problem 3.2: Multiply numbers}
+\label{exer:mul}
+
+
+\subex{a)}
+Compute $1\cdot 3$.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+...rest of part of LaTeX line number...
+
+% --- end answer of exercise ---
+
+\subex{b)}
+Compute $2\cdot 3$.
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint.}
+Use a Python shell.
+
+% --- end hint in exercise ---
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+\bpyshell
+>>> 2*3
+6
+\epyshell
+
+% --- end solution of exercise ---
+
+
+
+\noindent Filename: \Verb!multiply!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
 
 
 
@@ -75536,8 +75699,6 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \bibliographystyle{plain}
 \bibliography{papers}
-
-
 
 % ------------------- end of main content ---------------
 
@@ -75756,6 +75917,15 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 % prevent orhpans and widows
 \clubpenalty = 10000
 \widowpenalty = 10000
+
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+
+% Let exercises, problems, and projects be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconceexercisecounter}{chapter}
+
+% \subex{} is defined in t2do.sty
 
 % --- end of standard preamble for documents ---
 
@@ -76587,6 +76757,94 @@ Matplotlib \cite{Matplotlib:paper}, and more books \cite{Mertz,PythonQt}
 as well as Python itself \cite{Python}, and of course NumPy
 \cite{NumPy}.
 
+\section{Exercises}
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection{Problem 3.1: Add numbers}
+\label{exer:add}
+
+Compute
+
+\[ 1 + 1 \]
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+2
+
+% --- end answer of exercise ---
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+Python shell as calculator:
+
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+>>> 1 + 1
+2
+\end{Verbatim}
+\noindent
+
+% --- end solution of exercise ---
+\noindent Filename: \Verb!add!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
+
+
+
+% --- begin exercise ---
+\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+
+\subsection{Problem 3.2: Multiply numbers}
+\label{exer:mul}
+
+
+\subex{a)}
+Compute $1\cdot 3$.
+
+
+% --- begin answer of exercise ---
+\paragraph{Answer.}
+...rest of part of LaTeX line number...
+
+% --- end answer of exercise ---
+
+\subex{b)}
+Compute $2\cdot 3$.
+
+% --- begin hint in exercise ---
+
+\paragraph{Hint.}
+Use a Python shell.
+
+% --- end hint in exercise ---
+
+
+% --- begin solution of exercise ---
+\paragraph{Solution.}
+\begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85]
+>>> 2*3
+6
+\end{Verbatim}
+\noindent
+
+% --- end solution of exercise ---
+
+
+
+\noindent Filename: \Verb!multiply!.
+
+\end{doconceexercise}
+% --- end exercise ---
+
 
 
 
@@ -76610,8 +76868,6 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \bibliographystyle{plain}
 \bibliography{papers}
-
-
 
 % ------------------- end of main content ---------------
 
@@ -77580,7 +77836,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jun  1 11:56:37 2015.
+# sphinx-quickstart on Sun Jun  7 02:41:44 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78500,7 +78756,7 @@ after the last subexercise. Test a list too:
 ===== Project: Explore Distributions of Random Circles =====
 
 label{proj:circle1}
-file=circles.pdf
+file=circles
 kw=ipynb
 
 The formula for a circle is given by
@@ -78559,7 +78815,7 @@ $x_0$, $y_0$, and $R$ quantities.
 !bsubex
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 
-file=norm.py  # test local filename for subexercise
+file=norm  # test local filename for subexercise
 !esubex
 
 !bsubex
@@ -78982,6 +79238,554 @@ from matplotlib.pyplot import *
 plot(t, u)
 show()
 !ec
+
+************** File: standalone_exercises/exercise_1.do.txt *****************
+TITLE: Example 1: Examples can be typeset as exercises
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+
+
+Examples can start with a subsection heading starting with `Example:`
+and then, with the command-line option `--examples_as_exercises` be
+typeset as exercises. This is useful if one has solution
+environments as part of the example.
+
+
+__a)__
+State some problem.
+
+__Solution.__
+The answer to this subproblem can be written here.
+
+__b)__
+State some other problem.
+
+__Hint 1.__
+A hint can be given.
+
+__Hint 2.__
+Maybe even another hint?
+
+__Solution.__
+The answer to this other subproblem goes here,
+maybe over multiple doconce input lines.
+
+************** File: standalone_exercises/selc_composed.do.txt *****************
+TITLE: Project 11: References to Project ref{demo:ex:2} in a heading works for plain
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: selc_composed
+
+# This document contains references to a parent document (../testdoc).
+# These references will work for latex (using the xr package and
+# a compiled parent document (with ../testdoc.aux file), but other formats
+# will have missing references.
+# Externaldocuments: ../testdoc
+
+
+
+Refer to the previous exercise as Exercise ref{exer:some:formula},
+the two before that as Projects ref{demo:ex:2} and ref{proj:circle1},
+and this one as Project ref{exer:you}.
+
+************** File: standalone_exercises/subexer_a.do.txt *****************
+TITLE: Exercise 6: Determine some Distance
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: subexer_a
+
+
+
+Intro to this exercise. Questions are in subexercises below.
+
+
+__a)__
+Subexercises are numbered a), b), etc.
+
+
+__Hint 1.__
+First hint to subexercise a).
+With math $a=b$ in hint:
+
+!bt
+\[ a=b. \]
+!et
+And with code (in plain verbatim) returning $x+1$ in hint:
+
+!bc
+def func(x):
+    return x + 1  # with code in hint
+!ec
+
+
+
+__Hint 2.__
+Second hint to subexercise a).
+
+Test list in hint:
+
+ o item1
+ o item2
+
+
+
+
+
+__b)__
+Here goes the text for subexercise b).
+
+
+Some math $\cos^2 x + \sin^2 x = 1$ written one a single line:
+
+!bt
+\[ \cos^2 x + \sin^2 x = 1 \thinspace .\]
+!et
+
+
+__Hint.__
+A hint for this subexercise.
+
+
+
+
+
+
+
+#  No meaning in this weired test example:
+The text here belongs to the main (intro) part of the exercise. Need
+closing remarks to have text after subexercises.
+
+Test list in exercise:
+
+ o item1
+ o item2
+
+
+
+
+# Closing remarks for this Exercise
+
+=== Remarks ===
+
+Some final closing remarks, e.g., summarizing the main findings
+and their implications in other problems can be made. These
+remarks will appear at the end of the typeset exercise.
+
+************** File: standalone_exercises/exercise_4.do.txt *****************
+TITLE: Project 4: Compute a Probability
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+
+
+# Minimalistic exercise
+
+
+What is the probability of getting a number between 0.5 and 0.6 when
+drawing uniformly distributed random numbers from the interval $[0,1)$?
+
+
+At the end we have a list because that caused problems in LaTeX
+in previous DocOnce versions:
+
+ o item1
+ o item2
+
+
+__Hint.__
+To answer this question empirically, let a program
+draw $N$ such random numbers using Python's standard `random` module,
+count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
+compute the probability as $M/N$.
+
+
+************** File: standalone_exercises/verify_formula.do.txt *****************
+TITLE: Exercise 10: Make references to projects and problems
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: verify_formula
+
+# This document contains references to a parent document (../testdoc).
+# These references will work for latex (using the xr package and
+# a compiled parent document (with ../testdoc.aux file), but other formats
+# will have missing references.
+# Externaldocuments: ../testdoc
+
+
+
+# Test comments not at the end only
+Pick a statement from Project ref{proj:circle1} or Problem ref{demo:ex:1}
+and verify it.
+
+Test list at the end of an exercise without other elements (like subexercise,
+hint, etc.):
+
+ o item1
+ o item2
+
+************** File: standalone_exercises/exercise_7.do.txt *****************
+TITLE: Some exercise without the "Exercise:" prefix
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+
+# Another minimalistic exercise
+
+Just some text. And some math saying that $e^0=1$ on a single line,
+to test that math block insertion is correct:
+
+!bt
+\[ \exp{(0)} = 1 \]
+!et
+
+And a test that the code `lambda x: x+2` is correctly placed here:
+
+!bc
+lambda x: x+2
+!ec
+
+
+# Have some comments at the end of the exercise to see that
+# the Filename: ... is written correctly.
+
+************** File: standalone_exercises/myexer1.do.txt *****************
+TITLE: Exercise 3: Test of plain text exercise
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: myexer1
+
+
+
+Very short exercise. What is the capital
+of Norway?
+
+************** File: standalone_exercises/exercise_8.do.txt *****************
+TITLE: Exercise 8: Solution of differential equation
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+
+
+
+Given
+
+!bt
+\[ \frac{dy}{dx} = -y(x),\quad y(0)=1 \]
+!et
+What is the solution of this equation?
+
+
+$y=e^{-y}$
+
+$y=e^{y}$
+
+Almost, but the sign is wrong (note the minus!).
+
+!bc pycod
+from math import exp
+def f(x):
+    return exp(x)
+!ec
+
+Ooops, forgot a minus: `exp(-x)`, otherwise this Python code
+must be considered as a good answer. It is more natural,
+though, to write the solution to the problem
+in mathematical notation:
+
+!bt
+\[ y(x) = e^{-y}.\]
+!et
+
+The solution cannot be found because there is a derivative in the equation.
+
+Equations with derivatives can be solved;
+they are termed *differential
+equations*.
+
+The equation is meaningless: an equation must be an equation
+for $x$ or $y$, not a function $y(x)$.
+
+Equations where the unknown is a function, as $y(x)$
+here, are called *differential equations*, and are solved by
+special techniques.
+
+************** File: standalone_exercises/exercise_9.do.txt *****************
+TITLE: Example 9: Just an example
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+
+# This example needs the --examples_as_exercises option, otherwise
+# it is just typeset as it is written.
+
+
+__a)__
+What is the capital of Norway?
+
+__Answer.__
+Oslo.
+
+************** File: standalone_exercises/norm.do.txt *****************
+TITLE: Project 5: Explore Distributions of Random Circles
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: norm
+
+# This document contains references to a parent document (../testdoc).
+# These references will work for latex (using the xr package and
+# a compiled parent document (with ../testdoc.aux file), but other formats
+# will have missing references.
+# Externaldocuments: ../testdoc
+
+
+# keywords = ipynb
+
+The formula for a circle is given by
+
+!bt
+\begin{align}
+x &= x_0 + R\cos 2\pi t,
+label{circle:x}\\ 
+y &= y_0 + R\sin 2\pi t,
+label{circle:y}
+\end{align}
+!et
+where $R$ is the radius of the circle, $(x_0,y_0)$ is the
+center point, and $t$ is a parameter in the unit interval $[0,1]$.
+For any $t$, $(x,y)$ computed from (ref{circle:x})-(ref{circle:y})
+is a point on the circle.
+The formula can be used to generate `n` points on a circle:
+
+!bc pypro
+import numpy as np
+
+def circle(R, x0, y0, n=501):
+    t = np.linspace(0, 1, n)
+    x = x0 + R*np.cos(2*np.pi*t)
+    y = y0 + R*np.sin(2*np.pi*t)
+    return x, y
+
+x, y = circle(2.0, 0, 0)
+!ec
+
+# Often in an exercise we have some comments about the solution
+# which we normally want to keep where they are.
+
+The goal of this project is to draw $N$ circles with random
+center and radius. Plot each circle using the `circle` function
+above.
+
+
+__a)__
+Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
+
+
+__Hint.__
+Use the `numpy.random` module to draw the
+$x_0$, $y_0$, and $R$ quantities.
+
+
+
+
+
+
+__b)__
+Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
+
+
+__c)__
+Let $R$ and $(x_0,y_0)$ be normally distributed.
+
+
+
+
+# Closing remarks for this Project
+
+=== Remarks ===
+
+At the very end of the exercise it may be appropriate to summarize
+and give some perspectives.
+
+************** File: standalone_exercises/index.do.txt *****************
+TITLE: List of stand-alone files with exercises
+
+# Edit FILE_EXTENSIONS to the type of documents that will
+# be listed in the this index
+<%
+FILE_EXTENSIONS = ['.tex', '.ipynb']
+#FILE_EXTENSIONS = ['.tex', '.ipynb', '.do.txt', '.html']
+%>
+
+% for EXT in FILE_EXTENSIONS:
+"`exercise_1${EXT}`": "exercise_1${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`flip_coin${EXT}`": "flip_coin${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`myexer1${EXT}`": "myexer1${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`exercise_4${EXT}`": "exercise_4${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`norm${EXT}`": "norm${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`subexer_a${EXT}`": "subexer_a${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`exercise_7${EXT}`": "exercise_7${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`exercise_8${EXT}`": "exercise_8${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`exercise_9${EXT}`": "exercise_9${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`verify_formula${EXT}`": "verify_formula${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`selc_composed${EXT}`": "selc_composed${EXT}"
+% endfor
+ <linebreak>
+
+
+************** File: standalone_exercises/make.py *****************
+
+#!/usr/bin/env python
+# Compile all stand-alone exercises to latex and ipynb
+# (Must first unzip archive)
+
+import glob, os
+
+dofiles = glob.glob('*.do.txt')
+dofiles.remove('index.do.txt')   # compile to html only
+
+for dofile in dofiles:
+    cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
+    os.system(cmd)
+    cmd = 'doconce format ipynb %s --figure_prefix=../  --movie_prefix=../' % dofile
+    os.system(cmd)
+
+# Edit FILE_EXTENSIONS to adjust what kind of files that is listed in index.html
+cmd = 'doconce format html index --html_style=bootstrap'
+os.system(cmd)
+
+************** File: Springer_T2/standalone_exercises/Chapter_3.1.do.txt *****************
+TITLE: Problem 3.1: Add numbers
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: add
+
+
+
+Compute
+
+!bt
+\[ 1 + 1 \]
+!et
+
+
+
+
+
+************** File: Springer_T2/standalone_exercises/Chapter_3.2.do.txt *****************
+TITLE: Problem 3.2: Multiply numbers
+AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
+DATE: Due Jan 32, 2100
+
+# Logical name of exercise: multiply
+
+
+
+
+__a)__
+Compute $1\cdot 3$.
+
+
+
+__b)__
+Compute $2\cdot 3$.
+
+
+__Hint.__
+Use a Python shell.
+
+
+
+
+************** File: Springer_T2/standalone_exercises/index.do.txt *****************
+TITLE: List of stand-alone files with exercises
+
+# Edit FILE_EXTENSIONS to the type of documents that will
+# be listed in the this index
+<%
+FILE_EXTENSIONS = ['.tex', '.ipynb']
+#FILE_EXTENSIONS = ['.tex', '.ipynb', '.do.txt', '.html']
+%>
+
+========= Chapter: Storing results in data files =========
+
+% for EXT in FILE_EXTENSIONS:
+"`Chapter_3.1${EXT}`": "Chapter_3.1${EXT}"
+% endfor
+ <linebreak>
+
+% for EXT in FILE_EXTENSIONS:
+"`Chapter_3.2${EXT}`": "Chapter_3.2${EXT}"
+% endfor
+ <linebreak>
+
+
+************** File: Springer_T2/standalone_exercises/make.py *****************
+
+#!/usr/bin/env python
+# Compile all stand-alone exercises to latex and ipynb
+# (Must first unzip archive)
+
+import glob, os
+
+dofiles = glob.glob('*.do.txt')
+dofiles.remove('index.do.txt')   # compile to html only
+
+for dofile in dofiles:
+    cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
+    os.system(cmd)
+    cmd = 'doconce format ipynb %s --figure_prefix=../  --movie_prefix=../' % dofile
+    os.system(cmd)
+
+# Edit FILE_EXTENSIONS to adjust what kind of files that is listed in index.html
+cmd = 'doconce format html index --html_style=bootstrap'
+os.system(cmd)
 
 ************** File: tmp_DocOnce.do.txt *****************
 
@@ -82474,7 +83278,7 @@ DocOnce Quick Reference
 {\bf Hans Petter Langtangen${}^{1, 2}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
 \centerline{{\small ${}^1$Center for Biomedical Computing, Simula Research Laboratory}}
 \centerline{{\small ${}^2$Department of Informatics, University of Oslo}}
@@ -100001,6 +100805,61 @@ nts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
++ system doconce format plain testdoc --exercises_in_zip --examples_as_exercises
++ doconce format plain testdoc --exercises_in_zip --examples_as_exercises
+running preprocess -DFORMAT=plain -DDEVICE=screen  testdoc.do.txt > tmp_preprocess__testdoc.do.txt
+running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
+translating doconce text in tmp_mako__testdoc.do.txt to plain
+
+*** warning: found multi-line caption for ../doc/src/manual/fig/wave1D.png
+
+ A long
+caption spanning
+several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
+as well as math with subscript as in $t_{i+1}$. label{myfig}
+
+    fix: collected this text to one single line (right?)
+
+*** warning: the total of 1 fixes above should be manually edited in the file!
+    (also note: some of these automatic fixes may not be what you want)
+
+*** running OS command python -c 'print "Testing\noutput\nfrom\nPython."'
+-------- terminal output ----------
+Testing
+output
+from
+Python.
+-----------------------------------
+copying from regex "subroutine" until end of file
+     file: ../doc/src/manual/__testcode.f,  lines 3-16  (format: fcod)
+copying after regex "a comment" until "^C\s+END1"
+     file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
+copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+standalone exercises in testdoc_exercises.zip
+found info about 11 exercises
+*** warning: table headline with entries
+    | S | command |
+   has 2 columns while further down there are 3 columns
+   the list of columns in the headline reads
+['S', 'command']
+output in testdoc.txt
++ '[' 0 -ne 0 ']'
++ rm -rf standalone_exercises
++ unzip testdoc_exercises.zip
+Archive:  testdoc_exercises.zip
+ extracting: standalone_exercises/exercise_1.do.txt  
+ extracting: standalone_exercises/flip_coin.do.txt  
+ extracting: standalone_exercises/myexer1.do.txt  
+ extracting: standalone_exercises/exercise_4.do.txt  
+ extracting: standalone_exercises/norm.do.txt  
+ extracting: standalone_exercises/subexer_a.do.txt  
+ extracting: standalone_exercises/exercise_7.do.txt  
+ extracting: standalone_exercises/exercise_8.do.txt  
+ extracting: standalone_exercises/exercise_9.do.txt  
+ extracting: standalone_exercises/verify_formula.do.txt  
+ extracting: standalone_exercises/selc_composed.do.txt  
+ extracting: standalone_exercises/index.do.txt  
+ extracting: standalone_exercises/make.py  
 + system doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
 + doconce format plain testdoc.do.txt --examples_as_exercises -DSOMEVAR=1 --tables2csv
 running preprocess -DFORMAT=plain -DDEVICE=screen -DSOMEVAR=1 testdoc.do.txt > tmp_preprocess__testdoc.do.txt
@@ -107622,8 +108481,8 @@ output in movies.txt
 + bash -x make.sh
 + name=Springer_T2_book
 + rm -f 'tmp_*'
-+ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period
-+ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --latex_exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period --exercises_in_zip --exercises_in_zip_filename=chapter
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period --exercises_in_zip --exercises_in_zip_filename=chapter
 
 Summary of papers
 -----------------
@@ -107651,6 +108510,8 @@ running mako on tmp_preprocess__Springer_T2_book.do.txt to make tmp_mako__Spring
 mako variables: {'CHAPTER': 'chapter', 'PRIMER_BOOK': True, 'FORMAT': 'pdflatex', 'ALG': 'code', 'APPENDIX': 'appendix', 'DEVICE': 'paper', 'BOOK': 'book'}
 translating doconce text in tmp_mako__Springer_T2_book.do.txt to pdflatex
 open file with encoding utf-8
+standalone exercises in Springer_T2_book_exercises.zip
+found info about 2 exercises
 
 exporting publish database papers.pub to papers.bib:
 *** made directory latex_figs for admon figures
@@ -107880,7 +108741,7 @@ tex)))
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
-)
+) 
 Writing index file Springer_T2_book.idx
 
 LaTeX Warning: Unused global option(s):
@@ -108158,6 +109019,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+chngcntr.sty    2009/09/02 v1.0a change counter resetting
   ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
@@ -108454,7 +109316,7 @@ tex)))
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
-)
+) 
 Writing index file Springer_T2_book.idx
 
 LaTeX Warning: Unused global option(s):
@@ -108722,6 +109584,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+chngcntr.sty    2009/09/02 v1.0a change counter resetting
   ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
@@ -109006,7 +109869,7 @@ tex)))
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf)
-)
+) 
 Writing index file Springer_T2_book.idx
 
 LaTeX Warning: Unused global option(s):
@@ -109253,6 +110116,7 @@ pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
   pgffor.code.tex
     tikz.code.tex
 md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+chngcntr.sty    2009/09/02 v1.0a change counter resetting
   ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
@@ -109312,6 +110176,13 @@ lmtt9.pfb>
 Output written on Springer_T2_book.pdf (21 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
++ rm -rf standalone_exercises
++ unzip Springer_T2_book_exercises.zip
+Archive:  Springer_T2_book_exercises.zip
+ extracting: standalone_exercises/Chapter_3.1.do.txt  
+ extracting: standalone_exercises/Chapter_3.2.do.txt  
+ extracting: standalone_exercises/index.do.txt  
+ extracting: standalone_exercises/make.py  
 + cd ..
 + doconce format html encoding1 --no_header_footer --html_raw_github_url=raw.github
 translating doconce text in encoding1.do.txt to html

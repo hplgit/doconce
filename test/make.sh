@@ -117,6 +117,11 @@ cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
 rm -f *.aux
 system pdflatex -shell-escape testdoc
 
+# Test stand-alone exercises
+system doconce format plain testdoc --exercises_in_zip $ex
+rm -rf standalone_exercises
+unzip testdoc_exercises.zip
+
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
 system doconce format sphinx testdoc.do.txt $ex

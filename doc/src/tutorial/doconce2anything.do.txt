@@ -398,6 +398,7 @@ Other options:
    choice is made, based on the current style.
  * `--html_exercise_icon_width=X`: set the width of the exercise icon
    image to `X` pixels.
+ * `--exercise_numbering=absolute, chapter`
  * `--html_DOCTYPE`: insert `<!DOCTYPE HTML>` at the top of the HTML
    output file. This is normally recommended, but malformed CSS files
    will then not be loaded (so by default, the doctype is not specified).
@@ -407,6 +408,7 @@ Other options:
  * `--html_figure_hrule=X`: control the use of horizontal rules in
    figures. `X` is `top` by default; other values are `none` (no rules),
    `bottom` and `top+bottom`.
+
 
 ===== Blog Posts =====
 label{do2any:blog}
@@ -780,7 +782,7 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_admon=mdfbox, graybox2, grayicon, yellowicon, paragraph, colors1, colors2`
  * `--latex_admon_color=0.34,0.02,0.8` (background color in admons)
  * `--latex_admon_envir_map=2` (code environment names in admons)
- * `--latex_exercise_numbering=absolute, chapter`
+ * `--exercise_numbering=absolute, chapter`
  * `--latex_movie=media9, href, multimedia, movie15` (control typesetting of movies)
  * `--latex_movie_controls=on`
  * `--latex_external_movie_viewer` (for `movie15` package)
