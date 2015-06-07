@@ -9,6 +9,9 @@
 
 Here are some of the most recent features in DocOnce:
 
+ * Exercises can now be extracted as individual files (e.g., for distribution
+   to students). The files are in DocOnce format and can be compiled to, e.g.,
+   LaTeX or IPython notebooks, see [a quick description](http://hplgit.github.io/doconce/doc/pub/manual/._manual013.html#exercises:standalone).
  * DocOnce and all its dependencies are now trivial to install with Anaconda Python: `sudo conda install --channel johannr doconce` (thanks to Johannes Ring)
  * Bootstrap HTML styles features hints, answers, and solutions in
    exercises as *unfolded text*

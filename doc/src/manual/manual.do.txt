@@ -2124,7 +2124,7 @@ the corresponding `.aux` file is available (the exercise will in such
 cases make use of the `# Externaldocuments:` command in the file and
 use the `xr` package for cross-referencing between documents).
 All other formats will face problems with references to the original
-parent document. If missing references are encountered, a comment about
+parent document. When missing references are encountered, a comment about
 the issue is inserted in the exercise file.
 !ewarning
 

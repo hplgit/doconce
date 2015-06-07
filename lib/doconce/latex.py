@@ -2581,7 +2581,7 @@ def define(FILENAME_EXTENSION,
 
     from misc import copy_latex_packages
 
-    side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
+    side_tp = 'twoside' if option('device=') == 'paper' else 'oneside'
     m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
     # (use A-Z etc to avoid sphinx table headings to indicate chapters...
     if m:  # We have chapters, use book style

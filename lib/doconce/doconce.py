@@ -750,10 +750,10 @@ def syntax_check(filestr, format):
         print '\n'.join(matches)
         _abort()
 
-    pattern = re.compile(r'^__[^_]+?[^.:?]__', re.MULTILINE)
+    pattern = re.compile(r'^__[^_]+?[^.:?)]__', re.MULTILINE)
     matches = pattern.findall(filestr)
     if matches:
-        print '*** warning: missing ., : or ? after paragraph heading:'
+        print '*** warning: missing . , : ) or ? after paragraph heading:'
         print '\n'.join(matches)
 
     pattern = r'idx\{[^}]*?\\_[^}]*?\}'
@@ -1772,6 +1772,11 @@ dofiles.remove('index.do.txt')   # compile to html only
 for dofile in dofiles:
     cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
     os.system(cmd)
+    # Edit .tex file and remove doconce-specific things
+    cmd = 'doconce subst "% #.+" "" %s.tex' % dofile[:-7]  # preprocess
+    os.system(cmd)
+    cmd = 'doconce subst "%%.*" "" %s.tex' % dofile[:-7]
+
     cmd = 'doconce format ipynb %s --figure_prefix=../  --movie_prefix=../' % dofile
     os.system(cmd)
 
