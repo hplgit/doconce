@@ -2535,7 +2535,7 @@ def handle_figures(filestr, format):
                     # anything:
                     if ext:
                         print 'figure', figfile, 'must have extension(s)', \
-                              extensions
+                              ', '.join(extensions)
                         # use ps2pdf and pdf2ps for vector graphics
                         # and only convert if to/from png/jpg/gif
                         if ext.endswith('ps') and e == '.pdf':
@@ -2547,7 +2547,15 @@ def handle_figures(filestr, format):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
                         else:
-                            cmd = 'convert %s %s' % (figfile, converted_file)
+                            # Never convert to .pgf (use .pdf then)
+                            if converted_file.endswith('.pgf'):
+                                converted_file = converted_file.replace(
+                                    '.pgf', '.pdf')
+                            if not os.path.isfile(converted_file):
+                                cmd = 'convert %s %s' % (figfile, converted_file)
+                            else:
+                                cmd = 'echo'  # do nothing, file exists
+
                             if e in ('.ps', '.eps', '.pdf') and \
                                ext in ('.png', '.jpg', '.jpeg', '.gif'):
                                 print """\
@@ -2557,7 +2565,8 @@ be loss of quality. Generate a proper %s file (if possible).""" % \
                                 (figfile, converted_file, converted_file)
                         failure = os.system(cmd)
                         if not failure:
-                            print '....image conversion:', cmd
+                            if not cmd == 'echo':
+                                print '....image conversion:', cmd
                             # dangerous: filestr = filestr.replace(figfile, converted_file)
                             filestr = re.sub(r'%s([,\]])' % figfile,
                                          '%s\g<1>' % converted_file, filestr)

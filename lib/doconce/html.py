@@ -1826,7 +1826,7 @@ def html_toc(sections):
         indent = '&nbsp; '*(3*(level - level_min))
         if level <= toc_depth:
             s += indent + '<a href="#%s">%s</a>' % (href, title ) + '<br>\n'
-        extended_sections.append((title, level, label, href))
+        extended_sections.append((title.strip(), level, label, href))
     s += '</p>%s\n<p>\n' % hr
 
     # Store for later use in navgation panels etc.
