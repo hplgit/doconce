@@ -401,7 +401,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         for name in m.group(1).split(','):
             name2 = name.strip() + '.aux'
             if not os.path.isfile(name2):
-                print '\n*** warning: need external file %s,' % name2
+                print '\n*** warning: need external file %s for external references,' % name2
                 print '    but it does not exist (compile latex/pdflatex!)'
                 name2 = name + '.do.txt'
                 if not os.path.isfile(name2):

@@ -1773,7 +1773,7 @@ for dofile in dofiles:
     cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
     os.system(cmd)
     # Edit .tex file and remove doconce-specific things
-    cmd = 'doconce subst "% #.+" "" %s.tex' % dofile[:-7]  # preprocess
+    cmd = 'doconce subst "%% #.+" "" %s.tex' % dofile[:-7]  # preprocess
     os.system(cmd)
     cmd = 'doconce subst "%%.*" "" %s.tex' % dofile[:-7]
 
