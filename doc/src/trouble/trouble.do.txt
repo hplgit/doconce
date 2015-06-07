@@ -1006,7 +1006,12 @@ Place the lines above in a file `mypreamble.tex` and ask DocOnce to add
 this file to the preamble: `--latex_preamble=mypreamble.tex`.
 
 __Edit the .tex file.__
-There is a special line `insert custom LaTeX commands` that can be used
+There is a special line in the `.tex` file,
+
+!bc
+% insert custom LaTeX commands...
+!ec
+which can be used
 to insert desired commands, in this case by
 
 !bc sys

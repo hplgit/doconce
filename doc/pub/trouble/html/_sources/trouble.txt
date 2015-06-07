@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 1, 2015
+:Date: Jun 7, 2015
 
 
 .. admonition:: Disclaimer
@@ -174,6 +174,8 @@ More vertical space is obtained by repeated use of ``<linebreak>``:
         <linebreak>
         <linebreak>
 
+.. _latex:custom:fig:name:
+
 How do I get "Figure" written in another language?
 --------------------------------------------------
 
@@ -185,9 +187,10 @@ In LaTeX you can use your native language package, e.g.,
 
 .. code-block:: text
 
-        doconce replace '% insert custom LaTeX commands...' '\\usepackage[norsk]{babel}
+        doconce replace '% insert custom LaTeX commands...' '\\usepackage[norsk]{babel} mydoc.tex
 
 to get the Norwegian language.
+
 In other formats you have do more manual substitutions:
 
 .. code-block:: text
@@ -1088,6 +1091,8 @@ but DocOnce will automatically replace verbatim text in back-ticks by
 a proper ``texttt`` command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
+.. _latex:custom:preamble:
+
 I want to tune the top (preamble) of the LaTeX file
 ---------------------------------------------------
 
@@ -1112,12 +1117,74 @@ fix the preamble for the future so updates of the DocOnce-generated
 preamble will not be available for this document.)
 
 Note also that ``doconce replace`` and ``doconce subst`` can be used
-after ``doconce formt`` to tune the LaTeX code in the preamble (and
+after ``doconce format`` to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.
 
 There are comment lines with ``--- begin preamble ---`` and
-``--- end preamble ---`` in the generate ``.p.tex`` file that can be
-used to replace the whole preamble by another text.
+``--- end preamble ---`` in the generated ``.tex`` file that can be
+used to replace the whole preamble by another text via a script.
+
+How can I control the placement of figures?
+-------------------------------------------
+
+In general, LaTeX will control the placement, and DocOnce applies
+(for now) the ``[t]`` option to recommend figures to be placed at the top
+of a page. This can be changed in different ways, using
+techniques from the sections :ref:`latex:custom:fig:name` and
+:ref:`latex:custom:preamble`. The ``float`` package and the ``[H]`` ("here")
+option for figures makes figures appear closer to their original
+location:
+
+.. code-block:: latex
+
+        \usepackage{float}
+        \floatplacement{figure}{H}
+
+The ``[t]`` option in figures must be removed:
+
+.. code-block:: text
+
+        doconce replace '{figure}[t]' '{figure}' mydoc.tex
+
+**Custom preamble file.**
+Place the lines above in a file ``mypreamble.tex`` and ask DocOnce to add
+this file to the preamble: ``--latex_preamble=mypreamble.tex``.
+
+**Edit the .tex file.**
+There is a special line in the ``.tex`` file,
+
+.. code-block:: text
+
+        % insert custom LaTeX commands...
+
+which can be used
+to insert desired commands, in this case by
+
+.. code-block:: text
+
+        doconce subst '% insert custom LaTeX.+' '\\usepackage{float}\n\floatplacement{figure}{H}' mydoc.tex
+
+Note that you in both cases
+need to run the ``doconce replace`` above command to remove the ``[t]``
+option.
+
+How can I get a two-column text?
+--------------------------------
+
+Simply add ``twocolum`` to the ``\documentclass`` command. If the ``mydoc.tex``
+file looks like
+
+.. code-block:: latex
+
+        \documentclass[%
+        twoside,
+        ...
+
+you can do a simple substitution edit
+
+.. code-block:: text
+
+        Terminal> doconce subst 'twoside,' 'twocolumn,\ntwoside,' mydoc.tex
 
 .. _trouble:bsol:code:
 

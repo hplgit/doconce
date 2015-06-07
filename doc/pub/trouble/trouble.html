@@ -60,8 +60,8 @@ Automatically generated HTML file from DocOnce source
                '___sec9'),
               (" How do I get ``Figure'' written in another language? ",
                2,
-               None,
-               '___sec10'),
+               'latex:custom:fig:name',
+               'latex:custom:fig:name'),
               (' Spellcheck reports mistakes that I cannot find ',
                2,
                None,
@@ -260,52 +260,57 @@ Automatically generated HTML file from DocOnce source
               (' Errors in figure captions ', 2, None, '___sec77'),
               (' I want to tune the top (preamble) of the LaTeX file ',
                2,
+               'latex:custom:preamble',
+               'latex:custom:preamble'),
+              (' How can I control the placement of figures? ',
+               2,
                None,
-               '___sec78'),
+               '___sec79'),
+              (' How can I get a two-column text? ', 2, None, '___sec80'),
               (' Solution heading in exercise solutions appear after the solution content ',
                2,
                'trouble:bsol:code',
                'trouble:bsol:code'),
-              (' Problems with gwiki Output ', 1, None, '___sec80'),
-              (' Strange nested lists in gwiki ', 2, None, '___sec81'),
+              (' Problems with gwiki Output ', 1, None, '___sec82'),
+              (' Strange nested lists in gwiki ', 2, None, '___sec83'),
               (' Lists in gwiki look ugly in the gwiki source ',
                2,
                None,
-               '___sec82'),
-              (' Problems with HTML Output ', 1, None, '___sec83'),
+               '___sec84'),
+              (' Problems with HTML Output ', 1, None, '___sec85'),
               (' MathJax formulas are not properly rendered ',
                2,
                None,
-               '___sec84'),
+               '___sec86'),
               (' How can I change the layout of the HTML page? ',
                2,
                None,
-               '___sec85'),
-              (' Autoedits of the `.html` file ', 3, None, '___sec86'),
-              (' Specify a `.css` file ', 3, None, '___sec87'),
-              (' Specify a template ', 3, None, '___sec88'),
+               '___sec87'),
+              (' Autoedits of the `.html` file ', 3, None, '___sec88'),
+              (' Specify a `.css` file ', 3, None, '___sec89'),
+              (' Specify a template ', 3, None, '___sec90'),
               (' Why do figures look ugly when using HTML templates? ',
                2,
                None,
-               '___sec89'),
+               '___sec91'),
               (' Problems with reveal/deck HTML5 slides ',
                1,
                None,
-               '___sec90'),
+               '___sec92'),
               (' Python Online Tutor code does not work in reveal ',
                2,
                None,
-               '___sec91'),
+               '___sec93'),
               (' Reveal slides are stacked on top of each other ',
                2,
                None,
-               '___sec92'),
+               '___sec94'),
               (' Reveal slides are moving steadily to the left ',
                2,
                None,
-               '___sec93'),
-              (' YouTube movies do not work ', 2, None, '___sec94'),
-              (' Online Python Tutor does not work ', 2, None, '___sec95')]}
+               '___sec95'),
+              (' YouTube movies do not work ', 2, None, '___sec96'),
+              (' Online Python Tutor does not work ', 2, None, '___sec97')]}
 end of tocinfo -->
 
 <body>
@@ -331,9 +336,9 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec46" style="font-size: 80%;">Problems with code or Tex Blocks</a></li>
      <!-- navigation toc: --> <li><a href="#___sec54" style="font-size: 80%;">Problems with reST/Sphinx Output</a></li>
      <!-- navigation toc: --> <li><a href="#___sec63" style="font-size: 80%;">Problems with LaTeX Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec80" style="font-size: 80%;">Problems with gwiki Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec83" style="font-size: 80%;">Problems with HTML Output</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec90" style="font-size: 80%;">Problems with reveal/deck HTML5 slides</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec82" style="font-size: 80%;">Problems with gwiki Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec85" style="font-size: 80%;">Problems with HTML Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec92" style="font-size: 80%;">Problems with reveal/deck HTML5 slides</a></li>
 
         </ul>
       </li>
@@ -366,7 +371,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Jun 1, 2015</h4></center> <!-- date -->
+<center><h4>Jun 7, 2015</h4></center> <!-- date -->
 
 <h2>Table of contents</h2>
 
@@ -381,7 +386,7 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="#trouble:latex:envir:native"> How can I make use of a native LaTeX environments (example environment for instance)? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec8"> How can I create a more tailored code environment in LaTeX than what DocOnce offers? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> How can I control the vertical spacing in slides? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec10"> How do I get &quot;Figure&quot; written in another language? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#latex:custom:fig:name"> How do I get &quot;Figure&quot; written in another language? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec11"> Spellcheck reports mistakes that I cannot find </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec12"> Spellcheck reports a lot of mistakes related to LaTeX math </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec13"> Text between subexercises are moved </a><br>
@@ -447,21 +452,23 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="#___sec75"> The LaTeX Beamer file does not compile </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec76"> Inline verbatim gives error  </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec77"> Errors in figure captions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec78"> I want to tune the top (preamble) of the LaTeX file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#latex:custom:preamble"> I want to tune the top (preamble) of the LaTeX file </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec79"> How can I control the placement of figures? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec80"> How can I get a two-column text? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#trouble:bsol:code"> Solution heading in exercise solutions appear after the solution content </a><br>
-<a href="#___sec80"> Problems with gwiki Output </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec81"> Strange nested lists in gwiki </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec82"> Lists in gwiki look ugly in the gwiki source </a><br>
-<a href="#___sec83"> Problems with HTML Output </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec84"> MathJax formulas are not properly rendered </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec85"> How can I change the layout of the HTML page? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec89"> Why do figures look ugly when using HTML templates? </a><br>
-<a href="#___sec90"> Problems with reveal/deck HTML5 slides </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec91"> Python Online Tutor code does not work in reveal </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec92"> Reveal slides are stacked on top of each other </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec93"> Reveal slides are moving steadily to the left </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec94"> YouTube movies do not work </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec95"> Online Python Tutor does not work </a><br>
+<a href="#___sec82"> Problems with gwiki Output </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec83"> Strange nested lists in gwiki </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec84"> Lists in gwiki look ugly in the gwiki source </a><br>
+<a href="#___sec85"> Problems with HTML Output </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec86"> MathJax formulas are not properly rendered </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec87"> How can I change the layout of the HTML page? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec91"> Why do figures look ugly when using HTML templates? </a><br>
+<a href="#___sec92"> Problems with reveal/deck HTML5 slides </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec93"> Python Online Tutor code does not work in reveal </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec94"> Reveal slides are stacked on top of each other </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec95"> Reveal slides are moving steadily to the left </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec96"> YouTube movies do not work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec97"> Online Python Tutor does not work </a><br>
 </p>
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Disclaimer.</b>
@@ -633,7 +640,7 @@ More vertical space is obtained by repeated use of <code>&lt;linebreak&gt;</code
 &lt;linebreak&gt;
 </pre></div>
 
-<h2 id="___sec10">How do I get &quot;Figure&quot; written in another language? </h2>
+<h2 id="latex:custom:fig:name">How do I get &quot;Figure&quot; written in another language?</h2>
 
 <p>
 DocOnce documents can be written in any language, but figure captions
@@ -646,10 +653,12 @@ In LaTeX you can use your native language package, e.g.,
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace &#39;% insert custom LaTeX commands...&#39; &#39;\\usepackage[norsk]{babel}
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace &#39;% insert custom LaTeX commands...&#39; &#39;\\usepackage[norsk]{babel} mydoc.tex
 </pre></div>
 <p>
 to get the Norwegian language.
+
+<p>
 In other formats you have do more manual substitutions:
 
 <p>
@@ -1598,7 +1607,7 @@ but DocOnce will automatically replace verbatim text in back-ticks by
 a proper <code>texttt</code> command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
-<h2 id="___sec78">I want to tune the top (preamble) of the LaTeX file </h2>
+<h2 id="latex:custom:preamble">I want to tune the top (preamble) of the LaTeX file</h2>
 
 <p>
 It is easy to provide
@@ -1626,13 +1635,88 @@ preamble will not be available for this document.)
 
 <p>
 Note also that <code>doconce replace</code> and <code>doconce subst</code> can be used
-after <code>doconce formt</code> to tune the LaTeX code in the preamble (and
+after <code>doconce format</code> to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.
 
 <p>
 There are comment lines with <code>--- begin preamble ---</code> and
-<code>--- end preamble ---</code> in the generate <code>.p.tex</code> file that can be
-used to replace the whole preamble by another text.
+<code>--- end preamble ---</code> in the generated <code>.tex</code> file that can be
+used to replace the whole preamble by another text via a script.
+
+<h2 id="___sec79">How can I control the placement of figures? </h2>
+
+<p>
+In general, LaTeX will control the placement, and DocOnce applies
+(for now) the <code>[t]</code> option to recommend figures to be placed at the top
+of a page. This can be changed in different ways, using
+techniques from the sections <a href="#latex:custom:fig:name">How do I get &quot;Figure&quot; written in another language?</a> and
+<a href="#latex:custom:preamble">I want to tune the top (preamble) of the LaTeX file</a>. The <code>float</code> package and the <code>[H]</code> (&quot;here&quot;)
+option for figures makes figures appear closer to their original
+location:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\usepackage</span><span style="color: #008000">{</span>float<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\floatplacement</span><span style="color: #008000">{</span>figure<span style="color: #008000">}{</span>H<span style="color: #008000">}</span>
+</pre></div>
+<p>
+The <code>[t]</code> option in figures must be removed:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce replace &#39;{figure}[t]&#39; &#39;{figure}&#39; mydoc.tex
+</pre></div>
+<p>
+<b>Custom preamble file.</b>
+Place the lines above in a file <code>mypreamble.tex</code> and ask DocOnce to add
+this file to the preamble: <code>--latex_preamble=mypreamble.tex</code>.
+
+<p>
+<b>Edit the .tex file.</b>
+There is a special line in the <code>.tex</code> file,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">% insert custom LaTeX commands...
+</pre></div>
+<p>
+which can be used
+to insert desired commands, in this case by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce subst &#39;% insert custom LaTeX.+&#39; &#39;\\usepackage{float}\n\floatplacement{figure}{H}&#39; mydoc.tex
+</pre></div>
+<p>
+Note that you in both cases
+need to run the <code>doconce replace</code> above command to remove the <code>[t]</code>
+option.
+
+<h2 id="___sec80">How can I get a two-column text? </h2>
+
+<p>
+Simply add <code>twocolum</code> to the <code>\documentclass</code> command. If the <code>mydoc.tex</code>
+file looks like
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\documentclass</span>[<span style="color: #408080; font-style: italic">%</span>
+twoside,
+...
+</pre></div>
+<p>
+you can do a simple substitution edit
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce subst &#39;twoside,&#39; &#39;twocolumn,\ntwoside,&#39; mydoc.tex
+</pre></div>
 
 <h2 id="trouble:bsol:code">Solution heading in exercise solutions appear after the solution content</h2>
 
@@ -1668,15 +1752,15 @@ def f(x):
 !esol
 </pre></div>
 
-<h1 id="___sec80">Problems with gwiki Output </h1>
+<h1 id="___sec82">Problems with gwiki Output </h1>
 
-<h2 id="___sec81">Strange nested lists in gwiki </h2>
+<h2 id="___sec83">Strange nested lists in gwiki </h2>
 
 <p>
 DocOnce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the <code>.gwiki</code> file directly.
 
-<h2 id="___sec82">Lists in gwiki look ugly in the gwiki source </h2>
+<h2 id="___sec84">Lists in gwiki look ugly in the gwiki source </h2>
 
 <p>
 Because the Google Code wiki format requires all text of a list item to
@@ -1686,9 +1770,9 @@ output looks somewhat ugly. The good thing is that this gwiki source
 is seldom to be looked at - it is the DocOnce source that one edits
 further.
 
-<h1 id="___sec83">Problems with HTML Output </h1>
+<h1 id="___sec85">Problems with HTML Output </h1>
 
-<h2 id="___sec84">MathJax formulas are not properly rendered </h2>
+<h2 id="___sec86">MathJax formulas are not properly rendered </h2>
 
 <p>
 Here are some common problems:
@@ -1699,9 +1783,9 @@ Here are some common problems:
  <li> <code>[</code> and <code>]</code> brackets must sometimes be replaced by <code>\lbrack</code> and <code>\rbrack</code></li>
 </ul>
 
-<h2 id="___sec85">How can I change the layout of the HTML page? </h2>
+<h2 id="___sec87">How can I change the layout of the HTML page? </h2>
 
-<h3 id="___sec86">Autoedits of the <code>.html</code> file </h3>
+<h3 id="___sec88">Autoedits of the <code>.html</code> file </h3>
 
 <p>
 The easiest way is to edit the HTML style or the HTML code directly.
@@ -1721,7 +1805,7 @@ specification:
 doconce replace <span style="color: #BA2121">&#39;width: 75%;&#39;</span> <span style="color: #BA2121">&#39;width: 35%&#39;</span> mydoc.html
 </pre></div>
 
-<h3 id="___sec87">Specify a <code>.css</code> file </h3>
+<h3 id="___sec89">Specify a <code>.css</code> file </h3>
 
 <p>
 Another way to control the layout is to copy the style in the HTML
@@ -1783,7 +1867,7 @@ The rest of the file can remain unaltered. Running
 <p>
 will now render <code>mydoc.html</code> with pink headings and visited links.
 
-<h3 id="___sec88">Specify a template </h3>
+<h3 id="___sec90">Specify a template </h3>
 
 <p>
 The standard of way of completely controlling the HTML format is to
@@ -1801,7 +1885,7 @@ is used (if installed) and can be turned off by <code>--no_pygments_html</code>
 The easiest way is to get fancy layouts in HTML is to
 use the <code>sphinx</code> format and one its many themes.
 
-<h2 id="___sec89">Why do figures look ugly when using HTML templates? </h2>
+<h2 id="___sec91">Why do figures look ugly when using HTML templates? </h2>
 
 <p>
 The HTML header that DocOnce generates contain special styles for
@@ -1820,15 +1904,15 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
  &#39;&lt;hr style=&quot;width:60%, font-style: normal&quot;&gt;&#39; mydoc.html
 </pre></div>
 
-<h1 id="___sec90">Problems with reveal/deck HTML5 slides </h1>
+<h1 id="___sec92">Problems with reveal/deck HTML5 slides </h1>
 
-<h2 id="___sec91">Python Online Tutor code does not work in reveal </h2>
+<h2 id="___sec93">Python Online Tutor code does not work in reveal </h2>
 
 <p>
 Use the Chrome browser (the code does not work in Firefox in combination
 with reveal HTML5, but it works in plain HTML).
 
-<h2 id="___sec92">Reveal slides are stacked on top of each other </h2>
+<h2 id="___sec94">Reveal slides are stacked on top of each other </h2>
 
 <p>
 This problem can be caused by having a <code>!bblock</code> environment crossing two
@@ -1836,20 +1920,20 @@ slides because of a forgotten <code>!eblock</code> on the first slide.
 To locate the problematic slides, copy chunks of slides to a new file,
 compile, and inspect. This will reveal the problematic chunk.
 
-<h2 id="___sec93">Reveal slides are moving steadily to the left </h2>
+<h2 id="___sec95">Reveal slides are moving steadily to the left </h2>
 
 <p>
 This seems to be a problem when one has used the mouse to scroll down
 on a slide and continue to use the right arrow for moving to the
 next slide. Click on the arrow in the slide instead of using the arrow key.
 
-<h2 id="___sec94">YouTube movies do not work </h2>
+<h2 id="___sec96">YouTube movies do not work </h2>
 
 <p>
 They do not work in reveal or deck unless the Chrome browser is used.
 Usually the HTML5 slides work best in Firefox.
 
-<h2 id="___sec95">Online Python Tutor does not work </h2>
+<h2 id="___sec97">Online Python Tutor does not work </h2>
 
 <p>
 Seems to be a problem with reveal slides. The <em>Forward</em> button is not

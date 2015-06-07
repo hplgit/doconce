@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 1, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 7, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -221,16 +221,16 @@ otherwise it is a <code class="docutils literal"><span class="pre">\vspace{3mm}<
 </div>
 </div>
 <div class="section" id="how-do-i-get-figure-written-in-another-language">
-<h3>How do I get &#8220;Figure&#8221; written in another language?<a class="headerlink" href="#how-do-i-get-figure-written-in-another-language" title="Permalink to this headline">¶</a></h3>
+<span id="latex-custom-fig-name"></span><h3>How do I get &#8220;Figure&#8221; written in another language?<a class="headerlink" href="#how-do-i-get-figure-written-in-another-language" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce documents can be written in any language, but figure captions
 typically contain the English word &#8220;Figure&#8221;. This must be fixed
 by auto-editing the output file after translation by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.</p>
 <p>In LaTeX you can use your native language package, e.g.,</p>
-<div class="highlight-text"><div class="highlight"><pre>doconce replace &#39;% insert custom LaTeX commands...&#39; &#39;\\usepackage[norsk]{babel}
+<div class="highlight-text"><div class="highlight"><pre>doconce replace &#39;% insert custom LaTeX commands...&#39; &#39;\\usepackage[norsk]{babel} mydoc.tex
 </pre></div>
 </div>
-<p>to get the Norwegian language.
-In other formats you have do more manual substitutions:</p>
+<p>to get the Norwegian language.</p>
+<p>In other formats you have do more manual substitutions:</p>
 <div class="highlight-text"><div class="highlight"><pre>doconce replace Figure Figur mydoc.html
 doconce replace figure figur mydoc.html
 </pre></div>
@@ -984,7 +984,7 @@ a proper <code class="docutils literal"><span class="pre">texttt</span></code> c
 inside figure captions) and precede underscores by backslash.)</p>
 </div>
 <div class="section" id="i-want-to-tune-the-top-preamble-of-the-latex-file">
-<h3>I want to tune the top (preamble) of the LaTeX file<a class="headerlink" href="#i-want-to-tune-the-top-preamble-of-the-latex-file" title="Permalink to this headline">¶</a></h3>
+<span id="latex-custom-preamble"></span><h3>I want to tune the top (preamble) of the LaTeX file<a class="headerlink" href="#i-want-to-tune-the-top-preamble-of-the-latex-file" title="Permalink to this headline">¶</a></h3>
 <p>It is easy to provide
 a customized preamble text:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --latex_preamble=mytop.tex
@@ -1002,11 +1002,59 @@ use it with the <code class="docutils literal"><span class="pre">--latex_preambl
 fix the preamble for the future so updates of the DocOnce-generated
 preamble will not be available for this document.)</p>
 <p>Note also that <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> and <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> can be used
-after <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">formt</span></code> to tune the LaTeX code in the preamble (and
+after <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.</p>
 <p>There are comment lines with <code class="docutils literal"><span class="pre">---</span> <span class="pre">begin</span> <span class="pre">preamble</span> <span class="pre">---</span></code> and
-<code class="docutils literal"><span class="pre">---</span> <span class="pre">end</span> <span class="pre">preamble</span> <span class="pre">---</span></code> in the generate <code class="docutils literal"><span class="pre">.p.tex</span></code> file that can be
-used to replace the whole preamble by another text.</p>
+<code class="docutils literal"><span class="pre">---</span> <span class="pre">end</span> <span class="pre">preamble</span> <span class="pre">---</span></code> in the generated <code class="docutils literal"><span class="pre">.tex</span></code> file that can be
+used to replace the whole preamble by another text via a script.</p>
+</div>
+<div class="section" id="how-can-i-control-the-placement-of-figures">
+<h3>How can I control the placement of figures?<a class="headerlink" href="#how-can-i-control-the-placement-of-figures" title="Permalink to this headline">¶</a></h3>
+<p>In general, LaTeX will control the placement, and DocOnce applies
+(for now) the <code class="docutils literal"><span class="pre">[t]</span></code> option to recommend figures to be placed at the top
+of a page. This can be changed in different ways, using
+techniques from the sections <a class="reference internal" href="#latex-custom-fig-name"><span>How do I get &#8220;Figure&#8221; written in another language?</span></a> and
+<a class="reference internal" href="#latex-custom-preamble"><span>I want to tune the top (preamble) of the LaTeX file</span></a>. The <code class="docutils literal"><span class="pre">float</span></code> package and the <code class="docutils literal"><span class="pre">[H]</span></code> (&#8220;here&#8221;)
+option for figures makes figures appear closer to their original
+location:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\usepackage</span><span class="nb">{</span>float<span class="nb">}</span>
+<span class="k">\floatplacement</span><span class="nb">{</span>figure<span class="nb">}{</span>H<span class="nb">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">[t]</span></code> option in figures must be removed:</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce replace &#39;{figure}[t]&#39; &#39;{figure}&#39; mydoc.tex
+</pre></div>
+</div>
+<p><strong>Custom preamble file.</strong>
+Place the lines above in a file <code class="docutils literal"><span class="pre">mypreamble.tex</span></code> and ask DocOnce to add
+this file to the preamble: <code class="docutils literal"><span class="pre">--latex_preamble=mypreamble.tex</span></code>.</p>
+<p><strong>Edit the .tex file.</strong>
+There is a special line in the <code class="docutils literal"><span class="pre">.tex</span></code> file,</p>
+<div class="highlight-text"><div class="highlight"><pre>% insert custom LaTeX commands...
+</pre></div>
+</div>
+<p>which can be used
+to insert desired commands, in this case by</p>
+<div class="highlight-text"><div class="highlight"><pre>doconce subst &#39;% insert custom LaTeX.+&#39; &#39;\\usepackage{float}\n\floatplacement{figure}{H}&#39; mydoc.tex
+</pre></div>
+</div>
+<p>Note that you in both cases
+need to run the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> above command to remove the <code class="docutils literal"><span class="pre">[t]</span></code>
+option.</p>
+</div>
+<div class="section" id="how-can-i-get-a-two-column-text">
+<h3>How can I get a two-column text?<a class="headerlink" href="#how-can-i-get-a-two-column-text" title="Permalink to this headline">¶</a></h3>
+<p>Simply add <code class="docutils literal"><span class="pre">twocolum</span></code> to the <code class="docutils literal"><span class="pre">\documentclass</span></code> command. If the <code class="docutils literal"><span class="pre">mydoc.tex</span></code>
+file looks like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\documentclass</span>[<span class="c">%</span>
+twoside,
+...
+</pre></div>
+</div>
+<p>you can do a simple substitution edit</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce subst &#39;twoside,&#39; &#39;twocolumn,\ntwoside,&#39; mydoc.tex
+</pre></div>
+</div>
 </div>
 <div class="section" id="solution-heading-in-exercise-solutions-appear-after-the-solution-content">
 <span id="trouble-bsol-code"></span><h3>Solution heading in exercise solutions appear after the solution content<a class="headerlink" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content" title="Permalink to this headline">¶</a></h3>
@@ -1295,6 +1343,8 @@ clickable.</p>
 <li><a class="reference internal" href="#inline-verbatim-gives-error">Inline verbatim gives error</a></li>
 <li><a class="reference internal" href="#errors-in-figure-captions">Errors in figure captions</a></li>
 <li><a class="reference internal" href="#i-want-to-tune-the-top-preamble-of-the-latex-file">I want to tune the top (preamble) of the LaTeX file</a></li>
+<li><a class="reference internal" href="#how-can-i-control-the-placement-of-figures">How can I control the placement of figures?</a></li>
+<li><a class="reference internal" href="#how-can-i-get-a-two-column-text">How can I get a two-column text?</a></li>
 <li><a class="reference internal" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content">Solution heading in exercise solutions appear after the solution content</a></li>
 </ul>
 </li>
