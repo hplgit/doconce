@@ -3902,7 +3902,13 @@ def doconce2format(filestr, format):
     if not option('no_header_footer') and \
            option('html_template=', default='') == '':
         if format in INTRO:
-            filestr = INTRO[format] + filestr
+            try:
+                filestr = INTRO[format] + filestr
+            except UnicodeDecodeError:
+                # Title etc may contain non-ascii characters
+                if not option('encoding=', '').lower() == 'utf-8':
+                    print '*** error: found non-ascii character(s). Try --encoding=utf-8'
+                    _abort()
         if format in OUTRO:
             filestr = filestr + OUTRO[format]
 
