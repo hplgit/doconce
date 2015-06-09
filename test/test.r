@@ -1725,117 +1725,111 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -2009,7 +2003,7 @@ MathJax.Hub.Config({
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -8996,7 +8990,7 @@ in a separate document: \Verb!admon.do.txt!.
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -29319,9 +29313,9 @@ MathJax.Hub.Config({
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' This is a test of HTML templates ', 2, None, '___sec0'),
-              (' This is a 7 heading ', 1, None, '___sec1'),
-              (' This is a 5 heading ', 2, None, '___sec2')]}
+ 'sections': [('This is a test of HTML templates', 2, None, '___sec0'),
+              ('This is a 7 heading', 1, None, '___sec1'),
+              ('This is a 5 heading', 2, None, '___sec2')]}
 end of tocinfo -->
 
 
@@ -29563,9 +29557,9 @@ where <em>main</em> will become the DocOnce file (the main body of text),
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' This is a test of HTML templates ', 2, None, '___sec0'),
-              (' This is a 7 heading ', 1, None, '___sec1'),
-              (' This is a 5 heading ', 2, None, '___sec2')]}
+ 'sections': [('This is a test of HTML templates', 2, None, '___sec0'),
+              ('This is a 7 heading', 1, None, '___sec1'),
+              ('This is a 5 heading', 2, None, '___sec2')]}
 end of tocinfo -->
 
 
@@ -30178,8 +30172,8 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' Generalized References ', 0, 'genrefs', 'genrefs'),
-              (' Test of math ', 0, None, '___sec1')]}
+ 'sections': [('Generalized References', 0, 'genrefs', 'genrefs'),
+              ('Test of math', 0, None, '___sec1')]}
 end of tocinfo -->
 
 <body>
@@ -30459,7 +30453,7 @@ Inline math, \( a=b \), is the only math in this document.
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 chapterprefix=true,      % "Chapter" word at beginning of each chapter
 open=right               % start new chapters on odd-numbered pages
@@ -31470,117 +31464,111 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -31818,117 +31806,111 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -33282,117 +33264,111 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -34245,117 +34221,111 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -36669,117 +36639,111 @@ $(function () {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -38861,7 +38825,7 @@ is at the end with only one newline.</p>
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -42920,7 +42884,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -43481,117 +43445,111 @@ h1, h2, h3, h4, h5, h6 {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -43829,117 +43787,111 @@ h1, h2, h3, h4, h5, h6 {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -44177,117 +44129,111 @@ h1, h2, h3, h4, h5, h6 {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -45501,117 +45447,111 @@ h1, h2, h3, h4, h5, h6 {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Section 1 ', 1, 'sec1', 'sec1'),
-              (' Here is a list with subsubsection heading ',
+ 'sections': [('Section 1', 1, 'sec1', 'sec1'),
+              ('Here is a list with subsubsection heading',
                3,
                None,
                '___sec1'),
-              (' Subsection 1 ', 2, 'subsec1', 'subsec1'),
-              (' Test Section reference at beginning of line and after a sentence ',
+              ('Subsection 1', 2, 'subsec1', 'subsec1'),
+              ('Test Section reference at beginning of line and after a sentence',
                3,
                None,
                '___sec3'),
-              (' Computer code ', 3, None, '___sec4'),
-              (' Subsubsection heading before code ', 3, None, '___sec5'),
-              (' Running OS commands ', 3, None, '___sec6'),
-              (' Footnotes ', 3, None, '___sec7'),
-              (' Subsection 2: Testing figures ',
-               2,
-               'subsec:ex',
-               'subsec:ex'),
-              (' The $\\theta$ parameter (not $\\nabla$?) ',
+              ('Computer code', 3, None, '___sec4'),
+              ('Subsubsection heading before code', 3, None, '___sec5'),
+              ('Running OS commands', 3, None, '___sec6'),
+              ('Footnotes', 3, None, '___sec7'),
+              ('Subsection 2: Testing figures', 2, 'subsec:ex', 'subsec:ex'),
+              ('The $\\theta$ parameter (not $\\nabla$?)',
                2,
                'decay:sec:theta',
                'decay:sec:theta'),
-              (' Custom Environments ', 2, None, '___sec10'),
-              (' Tables ', 2, 'subsec:table', 'subsec:table'),
-              (' A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2` ',
+              ('Custom Environments', 2, None, '___sec10'),
+              ('Tables', 2, 'subsec:table', 'subsec:table'),
+              ('A test of verbatim words in heading with subscript $a_i$: `my_file_v1` and `my_file_v2`',
                2,
                None,
                '___sec12'),
-              (' _Just bold_ ', 2, None, '___sec13'),
-              (' *Just emphasize* ', 2, None, '___sec14'),
-              (' `Just verbatim` ', 2, None, '___sec15'),
-              (' _Bold_ beginning ', 2, None, '___sec16'),
-              (' *Emphasize* beginning ', 2, None, '___sec17'),
-              (' `Verbatim` beginning ', 2, None, '___sec18'),
-              (' Maybe _bold end_ ', 2, None, '___sec19'),
-              (' Maybe *emphasize end* ', 2, None, '___sec20'),
-              (' Maybe `verbatim end` ', 2, None, '___sec21'),
-              (' The middle has _bold_ word ', 2, None, '___sec22'),
-              (' The middle has *emphasize* word ', 2, None, '___sec23'),
-              (' The middle has `verbatim` word ', 2, None, '___sec24'),
-              (' Bibliography test ', 2, None, '___sec25'),
-              (' Example 1: Examples can be typeset as exercises ',
+              ('_Just bold_', 2, None, '___sec13'),
+              ('*Just emphasize*', 2, None, '___sec14'),
+              ('`Just verbatim`', 2, None, '___sec15'),
+              ('_Bold_ beginning', 2, None, '___sec16'),
+              ('*Emphasize* beginning', 2, None, '___sec17'),
+              ('`Verbatim` beginning', 2, None, '___sec18'),
+              ('Maybe _bold end_', 2, None, '___sec19'),
+              ('Maybe *emphasize end*', 2, None, '___sec20'),
+              ('Maybe `verbatim end`', 2, None, '___sec21'),
+              ('The middle has _bold_ word', 2, None, '___sec22'),
+              ('The middle has *emphasize* word', 2, None, '___sec23'),
+              ('The middle has `verbatim` word', 2, None, '___sec24'),
+              ('Bibliography test', 2, None, '___sec25'),
+              ('Example 1: Examples can be typeset as exercises',
                2,
                'Example',
                'Example'),
-              (' User-defined environments ', 2, None, '___sec27'),
-              (' Example 1: A test function ',
-               2,
-               'ex:test:1p1',
-               'ex:test:1p1'),
-              (' Example 2: Addition ', 2, 'ex:math:1p1', 'ex:math:1p1'),
-              (' URLs ', 2, 'subsubsec:ex', 'subsubsec:ex'),
-              (' LaTeX Mathematics ', 1, None, '___sec31'),
-              (' Exercises ', 1, None, '___sec32'),
-              (' Problem 2: Flip a Coin ', 2, 'demo:ex:1', 'demo:ex:1'),
-              (' My remarks ', 3, None, '___sec34'),
-              (' Remarks ', 3, None, '___sec35'),
-              (' Not an exercise ', 2, None, '___sec36'),
-              (' Exercise 3: Test of plain text exercise ',
+              ('User-defined environments', 2, None, '___sec27'),
+              ('Example 1: A test function', 2, 'ex:test:1p1', 'ex:test:1p1'),
+              ('Example 2: Addition', 2, 'ex:math:1p1', 'ex:math:1p1'),
+              ('URLs', 2, 'subsubsec:ex', 'subsubsec:ex'),
+              ('LaTeX Mathematics', 1, None, '___sec31'),
+              ('Exercises', 1, None, '___sec32'),
+              ('Problem 2: Flip a Coin', 2, 'demo:ex:1', 'demo:ex:1'),
+              ('My remarks', 3, None, '___sec34'),
+              ('Remarks', 3, None, '___sec35'),
+              ('Not an exercise', 2, None, '___sec36'),
+              ('Exercise 3: Test of plain text exercise',
                2,
                'my:exer1',
                'my:exer1'),
-              (' Project 4: Compute a Probability ',
+              ('Project 4: Compute a Probability',
                2,
                'demo:ex:2',
                'demo:ex:2'),
-              (' Project 5: Explore Distributions of Random Circles ',
+              ('Project 5: Explore Distributions of Random Circles',
                2,
                'proj:circle1',
                'proj:circle1'),
-              (' Remarks ', 3, None, '___sec40'),
-              (' Exercise 6: Determine some Distance ',
+              ('Remarks', 3, None, '___sec40'),
+              ('Exercise 6: Determine some Distance',
                2,
                'exer:dist',
                'exer:dist'),
-              (' Remarks ', 3, None, '___sec42'),
-              (' Some exercise without the "Exercise:" prefix ',
+              ('Remarks', 3, None, '___sec42'),
+              ('Some exercise without the "Exercise:" prefix',
                2,
                None,
                '___sec43'),
-              (' Exercise 8: Solution of differential equation ',
+              ('Exercise 8: Solution of differential equation',
                2,
                'sec:this:exer:de',
                'sec:this:exer:de'),
-              (' Example 9: Just an example ', 2, None, '___sec45'),
-              (' Here goes another section ', 1, None, '___sec46'),
-              (' More Exercises ', 1, None, '___sec47'),
-              (' Exercise 10: Make references to projects and problems ',
+              ('Example 9: Just an example', 2, None, '___sec45'),
+              ('Here goes another section', 1, None, '___sec46'),
+              ('More Exercises', 1, None, '___sec47'),
+              ('Exercise 10: Make references to projects and problems',
                2,
                'exer:some:formula',
                'exer:some:formula'),
-              (' Project 11: References in a headings do not work well in html ',
+              ('Project 11: References in a headings do not work well in html',
                2,
                'exer:you',
                'exer:you'),
-              (' References ', 1, None, '___sec50'),
-              (' Appendix: Just for testing; part I ', 1, 'app1', 'app1'),
-              (' A subsection within an appendix ', 2, None, '___sec52'),
-              (' Appendix: Just for testing; part II ', 1, 'app2', 'app2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec54'),
-              (' Appendix: Testing identical titles ',
+              ('References', 1, None, '___sec50'),
+              ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
+              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
+              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
                'test:title:id1'),
-              (' Appendix: Testing identical titles ',
+              ('Appendix: Testing identical titles',
                2,
                'test:title:id2',
                'test:title:id2'),
-              (' Appendix: Testing identical titles ', 2, None, '___sec57'),
-              (' Appendix: Testing inline comments ', 2, None, '___sec58'),
-              (' Appendix: Testing headings ending with `verbatim inline` ',
+              ('Appendix: Testing identical titles', 2, None, '___sec57'),
+              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
                '___sec59')]}
@@ -47695,7 +47635,7 @@ footnotes.
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -48350,7 +48290,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -49031,7 +48971,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -49719,7 +49659,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -50450,7 +50390,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -51097,7 +51037,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -51790,7 +51730,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -52393,7 +52333,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -53085,7 +53025,7 @@ exercises (and problems and projects too).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -53784,12 +53724,12 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -54290,12 +54230,12 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -54819,12 +54759,12 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -55748,12 +55688,12 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -56329,12 +56269,12 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -56878,12 +56818,12 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -57418,12 +57358,12 @@ h1, h2, h3, h4, h5, h6 {
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 
@@ -57881,12 +57821,12 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -58024,12 +57964,12 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -58587,12 +58527,12 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Introduction ', 1, None, '___sec0'),
-              (' Code ', 2, None, '___sec1'),
-              (' Quotes and boxes ', 2, None, '___sec2'),
-              (' Admonitions ', 2, None, '___sec3'),
-              (' Going deeper environments ', 2, None, '___sec4'),
-              (' The end ', 2, None, '___sec5')]}
+ 'sections': [('Introduction', 1, None, '___sec0'),
+              ('Code', 2, None, '___sec1'),
+              ('Quotes and boxes', 2, None, '___sec2'),
+              ('Admonitions', 2, None, '___sec3'),
+              ('Going deeper environments', 2, None, '___sec4'),
+              ('The end', 2, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -61252,18 +61192,18 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' This is the first section ', 1, None, '___sec0'),
-              (' Figure and bullet list ', 2, None, '___sec1'),
-              (' Slide with pop-ups in red and notes ', 2, None, '___sec2'),
-              (' A LaTeX document ', 2, None, '___sec3'),
-              (' An HTML document ', 2, None, '___sec4'),
-              (' Second section ', 1, None, '___sec5'),
-              (' Some math and computer code ', 2, None, '___sec6'),
-              (' Pop ups inside code blocks (for Beamer slides only) ',
+ 'sections': [('This is the first section', 1, None, '___sec0'),
+              ('Figure and bullet list', 2, None, '___sec1'),
+              ('Slide with pop-ups in red and notes', 2, None, '___sec2'),
+              ('A LaTeX document', 2, None, '___sec3'),
+              ('An HTML document', 2, None, '___sec4'),
+              ('Second section', 1, None, '___sec5'),
+              ('Some math and computer code', 2, None, '___sec6'),
+              ('Pop ups inside code blocks (for Beamer slides only)',
                2,
                None,
                '___sec7'),
-              (' Various admon blocks ', 2, None, '___sec8')]}
+              ('Various admon blocks', 2, None, '___sec8')]}
 end of tocinfo -->
 
 <body>
@@ -62580,7 +62520,7 @@ title (Warning) since no title is specified.
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -65524,7 +65464,7 @@ Reveal.initialize({
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -67984,15 +67924,15 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Goal ', 2, None, '___sec0'),
-              (' Methods ', 1, None, '___sec1'),
-              (' Mathematical problem ', 2, None, '___sec2'),
-              (' Numerical solution method ', 2, None, '___sec3'),
-              (' Forward Euler explained ', 2, None, '___sec4'),
-              (' Implementation ', 2, None, '___sec5'),
-              (' Selected results ', 1, None, '___sec6'),
-              (' The Crank-Nicolson method ', 2, None, '___sec7'),
-              (' The artifacts can be explained by some theory ',
+ 'sections': [('Goal', 2, None, '___sec0'),
+              ('Methods', 1, None, '___sec1'),
+              ('Mathematical problem', 2, None, '___sec2'),
+              ('Numerical solution method', 2, None, '___sec3'),
+              ('Forward Euler explained', 2, None, '___sec4'),
+              ('Implementation', 2, None, '___sec5'),
+              ('Selected results', 1, None, '___sec6'),
+              ('The Crank-Nicolson method', 2, None, '___sec7'),
+              ('The artifacts can be explained by some theory',
                2,
                None,
                '___sec8')]}
@@ -68100,7 +68040,7 @@ Speaker notes show up by
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -70470,7 +70410,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -70884,7 +70824,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -71291,7 +71231,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -73621,7 +73561,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f08cb756b90>
+verbatim is to be replaced using <function html_verbatim at 0x7f8093634b90>
 
 
 First occurence: " `mako`."
@@ -77146,18 +77086,18 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
+ 'sections': [('More details on writing DocOnce documents with Bootstrap layout',
                0,
                None,
                '___sec0'),
-              (' Demonstrations of admons ', 1, None, '___sec1'),
-              (' Horizontal alignment of document elements ',
+              ('Demonstrations of admons', 1, None, '___sec1'),
+              ('Horizontal alignment of document elements',
                1,
                'sec:examples',
                'sec:examples'),
-              (' Principles of grid structures ', 2, None, '___sec3'),
-              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
-              (' Variation of the previous grid structure using panels ',
+              ('Principles of grid structures', 2, None, '___sec3'),
+              ('Example on a 1x3 grid structure', 2, None, '___sec4'),
+              ('Variation of the previous grid structure using panels',
                2,
                None,
                '___sec5')]}
@@ -77301,18 +77241,18 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
+ 'sections': [('More details on writing DocOnce documents with Bootstrap layout',
                0,
                None,
                '___sec0'),
-              (' Demonstrations of admons ', 1, None, '___sec1'),
-              (' Horizontal alignment of document elements ',
+              ('Demonstrations of admons', 1, None, '___sec1'),
+              ('Horizontal alignment of document elements',
                1,
                'sec:examples',
                'sec:examples'),
-              (' Principles of grid structures ', 2, None, '___sec3'),
-              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
-              (' Variation of the previous grid structure using panels ',
+              ('Principles of grid structures', 2, None, '___sec3'),
+              ('Example on a 1x3 grid structure', 2, None, '___sec4'),
+              ('Variation of the previous grid structure using panels',
                2,
                None,
                '___sec5')]}
@@ -77571,18 +77511,18 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
+ 'sections': [('More details on writing DocOnce documents with Bootstrap layout',
                0,
                None,
                '___sec0'),
-              (' Demonstrations of admons ', 1, None, '___sec1'),
-              (' Horizontal alignment of document elements ',
+              ('Demonstrations of admons', 1, None, '___sec1'),
+              ('Horizontal alignment of document elements',
                1,
                'sec:examples',
                'sec:examples'),
-              (' Principles of grid structures ', 2, None, '___sec3'),
-              (' Example on a 1x3 grid structure ', 2, None, '___sec4'),
-              (' Variation of the previous grid structure using panels ',
+              ('Principles of grid structures', 2, None, '___sec3'),
+              ('Example on a 1x3 grid structure', 2, None, '___sec4'),
+              ('Variation of the previous grid structure using panels',
                2,
                None,
                '___sec5')]}
@@ -77836,7 +77776,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jun  7 02:41:44 2015.
+# sphinx-quickstart on Tue Jun  9 01:59:46 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78638,7 +78578,7 @@ n\in\mathbb N$ is via the Euler integral
 
 <!-- tocinfo
 {'highest level': 3,
- 'sections': [(' Test of \xc3\xa6, \xc3\xb8, \xc3\xa5 in headline ',
+ 'sections': [('Test of \xc3\xa6, \xc3\xb8, \xc3\xa5 in headline',
                3,
                None,
                '___sec0')]}
@@ -79692,6 +79632,11 @@ dofiles.remove('index.do.txt')   # compile to html only
 for dofile in dofiles:
     cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
     os.system(cmd)
+    # Edit .tex file and remove doconce-specific things
+    cmd = 'doconce subst "%% #.+" "" %s.tex' % dofile[:-7]  # preprocess
+    os.system(cmd)
+    cmd = 'doconce subst "%%.*" "" %s.tex' % dofile[:-7]
+
     cmd = 'doconce format ipynb %s --figure_prefix=../  --movie_prefix=../' % dofile
     os.system(cmd)
 
@@ -79780,6 +79725,11 @@ dofiles.remove('index.do.txt')   # compile to html only
 for dofile in dofiles:
     cmd = 'doconce format pdflatex %s --latex_code_style=vrb --figure_prefix=../ --movie_prefix=../' % dofile
     os.system(cmd)
+    # Edit .tex file and remove doconce-specific things
+    cmd = 'doconce subst "%% #.+" "" %s.tex' % dofile[:-7]  # preprocess
+    os.system(cmd)
+    cmd = 'doconce subst "%%.*" "" %s.tex' % dofile[:-7]
+
     cmd = 'doconce format ipynb %s --figure_prefix=../  --movie_prefix=../' % dofile
     os.system(cmd)
 
@@ -81426,31 +81376,28 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [(' Supported Formats ', 2, None, '___sec0'),
-              (' Emacs syntax support ', 2, None, '___sec1'),
-              (' Title, Authors, and Date ', 2, None, '___sec2'),
-              (' Section Types ', 2, 'quick:sections', 'quick:sections'),
-              (' Inline Formatting ', 2, None, '___sec4'),
-              (' Lists ', 2, None, '___sec5'),
-              (' Comment lines ', 2, None, '___sec6'),
-              (' Inline comments ', 2, None, '___sec7'),
-              (' Verbatim/Computer Code ', 2, None, '___sec8'),
-              (' LaTeX Mathematics ', 2, None, '___sec9'),
-              (' Hyperlinks ', 2, None, '___sec10'),
-              (' Figures and Movies ', 2, None, '___sec11'),
-              (' Tables ', 2, None, '___sec12'),
-              (' Labels and References ', 2, None, '___sec13'),
-              (' Citations and Bibliography ', 2, None, '___sec14'),
-              (' Generalized References ', 2, None, '___sec15'),
-              (' Index of Keywords ', 2, None, '___sec16'),
-              (' Capabilities of The Program `doconce` ',
-               2,
-               None,
-               '___sec17'),
-              (' Exercises ', 2, None, '___sec18'),
-              (' Environments ', 2, None, '___sec19'),
-              (' Preprocessing ', 2, None, '___sec20'),
-              (' Resources ', 2, None, '___sec21')]}
+ 'sections': [('Supported Formats', 2, None, '___sec0'),
+              ('Emacs syntax support', 2, None, '___sec1'),
+              ('Title, Authors, and Date', 2, None, '___sec2'),
+              ('Section Types', 2, 'quick:sections', 'quick:sections'),
+              ('Inline Formatting', 2, None, '___sec4'),
+              ('Lists', 2, None, '___sec5'),
+              ('Comment lines', 2, None, '___sec6'),
+              ('Inline comments', 2, None, '___sec7'),
+              ('Verbatim/Computer Code', 2, None, '___sec8'),
+              ('LaTeX Mathematics', 2, None, '___sec9'),
+              ('Hyperlinks', 2, None, '___sec10'),
+              ('Figures and Movies', 2, None, '___sec11'),
+              ('Tables', 2, None, '___sec12'),
+              ('Labels and References', 2, None, '___sec13'),
+              ('Citations and Bibliography', 2, None, '___sec14'),
+              ('Generalized References', 2, None, '___sec15'),
+              ('Index of Keywords', 2, None, '___sec16'),
+              ('Capabilities of The Program `doconce`', 2, None, '___sec17'),
+              ('Exercises', 2, None, '___sec18'),
+              ('Environments', 2, None, '___sec19'),
+              ('Preprocessing', 2, None, '___sec20'),
+              ('Resources', 2, None, '___sec21')]}
 end of tocinfo -->
 
 <body>
@@ -82955,7 +82902,7 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 %-------------------- begin preamble ----------------------
 
 \documentclass[%
-twoside,                 % oneside: electronic viewing, twoside: printing
+oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % or draft (marks overfull hboxes, figures with paths)
 10pt]{article}
 
@@ -95812,6 +95759,12 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+
+...doconce translation: figures 20.5 s (accumulated time: 20.7)
+
+
+...doconce format used 22.2 s to translate the document (1998 lines)
+
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -102698,7 +102651,7 @@ translating doconce text in tmp_mako__author1.do.txt to latex
 
 exporting publish database papers.pub to papers.bib:
 
-*** warning: need external file testdoc.aux,
+*** warning: need external file testdoc.aux for external references,
     but it does not exist (compile latex/pdflatex!)
 output in author1.p.tex
 + '[' 0 -ne 0 ']'
@@ -103757,77 +103710,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-[2]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-[3]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
+dmap/pdftex.map}] [2] [3]
 <../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> [4]
-
-
-...rest of part of LaTeX line number...
-
-[5]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-[6 <../doc/src/manual/fig/wave1D.pdf>]
-
-
-...rest of part of LaTeX line number...
-
+<use ../doc/src/manual/fig/wave1D.pdf> [4] [5] [6 <../doc/src/manual/fig/wave1D
+.pdf>]
 No file admon_mdfbox.ind.
 [7] (./admon_mdfbox.aux)
 
@@ -103972,12 +103858,6 @@ lstlang1.sty    2014/09/06 1.5e listings language file
 Package rerunfilecheck Warning: File `admon_mdfbox.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
@@ -104641,75 +104521,11 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-[2]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-[3]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
+dmap/pdftex.map}] [2] [3]
 <../doc/src/manual/fig/wave1D.pdf, id=59, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
-
-
-...rest of part of LaTeX line number...
-
-[4]
-
-
-...rest of part of LaTeX line number...
-
-[5]
-
-
-...rest of part of LaTeX line number...
-
+<use ../doc/src/manual/fig/wave1D.pdf> [4] [5]
 No file admon_graybox2.ind.
-[6 <../doc/src/manual/fig/wave1D.pdf>] (./admon_graybox2.aux)
+[6 <../doc/src/manual/fig/wave1D.pdf>] [7] (./admon_graybox2.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -104855,12 +104671,6 @@ Package rerunfilecheck Warning: File `admon_graybox2.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ){/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/ty
@@ -104875,7 +104685,7 @@ mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb
 ></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on admon_graybox2.pdf (6 pages, ).
+Output written on admon_graybox2.pdf (7 pages, ).
 Transcript written on admon_graybox2.log.
 + '[' 0 -ne 0 ']'
 + echo admon=graybox2
@@ -110893,11 +110703,6 @@ Overfull \hbox (3.86172pt too wide)
 []\T1/phv/m/n/10 Emojis, as de-fined in [][]$\T1/lmtt/m/n/10 http : / / www . e
 moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 [4] [5]
-
-
-...rest of part of LaTeX line number...
-
-
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
@@ -110911,12 +110716,7 @@ Overfull \hbox (32.16707pt too wide)
 
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[10]
-
-
-...rest of part of LaTeX line number...
-
-[11]
+[10] [11]
 
 
 ...rest of part of LaTeX line number...
@@ -111322,12 +111122,7 @@ Overfull \hbox (32.16707pt too wide)
 
 Overfull \hbox (8.97565pt too wide) 
 []\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[11]
-
-
-...rest of part of LaTeX line number...
-
-[12] [13]
+[11] [12] [13]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
@@ -111479,9 +111274,6 @@ RS)
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omsphv.fd    
  ***********
-
-
-LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.

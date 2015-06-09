@@ -2089,11 +2089,16 @@ with or without solutions and/or short answers.
 By ``exercise'' we here mean all exerices, problems,
 and projects.
 
+__Note:__ Instead of having all filtered exercises in one document, yoy
+may (especially for notebooks) want stand-alone documents for each
+exercise, see the next section.
+
 ===== Extracting All Exercises as Stand-Alone Documents =====
 label{exercises:standalone}
 
 It is sometimes convenient to publish exercises from a larger document
-as individual files. With the `--exercises_in_zip` option, DocOnce will
+as *individual documents*.
+With the `--exercises_in_zip` option, DocOnce will
 generate a zip file `mydoc_exercises.zip` (for `mydoc.do.txt`) with
 each exercise (problem, project, or example) in a separate `.do.txt` file.
 The zip archive also contains a script `make.py` for translating the
@@ -2101,13 +2106,16 @@ The zip archive also contains a script `make.py` for translating the
 attractive to give the students `.tex` with the exercise text such that
 the students can fill in the answers and extend the text to a report.
 Or one may distribute the exercises as IPython/Jupyter Notebook files
-and let the students fill in answers in the notebooks. The zip archive
-also contains a file `index.do.txt` with a list of all the exercise
-files that can be published on the Internet and used for download of
-the exercises. The `index.do.txt` file contains a variable
+and let the students fill in answers in the notebooks. This approach
+can be combined with "`nbgrader`" "https://github.com/jupyter/nbgrader"
+for automatic grading.
+
+The zip archive also contains a file `index.do.txt` with a list of all
+the exercise files that can be published on the Internet and used for
+download of the exercises. The `index.do.txt` file contains a variable
 `FILE_EXTENSIONS` for the type of formats the exercises are available
-in. The user must edit `make.py` accordingly so the right set of formats
-are compiled as desired.
+in. The user must edit `make.py` accordingly so the right set of
+formats are compiled as desired.
 
 __Note:__ Unzipping the archive packs out the files in a subdirectory
 `standalone_exercises`. For figure and movie references to work one

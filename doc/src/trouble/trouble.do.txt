@@ -792,6 +792,23 @@ Terminal> doconce ptex2tex mydoc envir=minted
 Terminal> pdflatex -shell-escape mydoc
 !ec
 
+===== LaTeX error because of underscores =====
+
+LaTeX requires prefixing underscores by a backslash. Either typeset
+words with underscores in inline verbatim text (so you do not need
+the backslash) or use the preprocessor
+to insert LaTeX-specific text with a backslash, e.g.,
+
+!bc do
+Here is a word underscore:
+% if FORMAT in ('latex', 'pdflatex'):
+my\_word
+% else
+my_word
+% endif
+!ec
+Usually, inline verbatim text is way to go with underscores anyway.
+
 ===== LaTeX does not like underscores in URLs =====
 
 Suppose you have a URL reference like

@@ -2010,7 +2010,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         elif latex_admon == "colors1":
             # Add reduced initial vertical space
             text_block = r'\vspace{-3.5mm}\par\noindent' + '\n' + text_block
-        elif latex_admon in ("mdfbox", "graybox2"):
+        elif latex_admon in ("mdfbox", "graybox2", "tcb"):
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
         text_block = r'{\large ' + text_block + '\n\\par}'
@@ -2071,7 +2071,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 ''' %% (title_mdframed, text_block_graybox2)
 
-    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon'):
+    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon', 'tcb'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
 %%(text_block)s
@@ -2105,7 +2105,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     else:
         print '*** error: illegal --latex_admon=%%s' %% latex_admon
         print '    valid styles are colors1, colors2, mdfbox, graybox2,'
-        print '    grayicon, yellowicon, and paragraph.'
+        print '    grayicon, yellowicon, tcb, and paragraph.'
         _abort()
 
     return text
@@ -3162,6 +3162,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         gray2 = (0.94, 0.94, 0.94)
         # grayicon color
         gray3 = (0.91, 0.91, 0.91)   # lighter gray
+        gray4 = 'black!25!white!25'
         red1 = 'red!10!white'
         green1 = 'darkgreen!20!white'
         blue1 = 'darkblue2!20!white'
@@ -3216,7 +3217,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             except SyntaxError:
                 # eval(latex_admon_color) did not work, treat it as valid color
                 latex_admon_colors = [[a, latex_admon_color] for a in admons]
-        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon',
+        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon', 'tcb'
         admon_color = {style: {} for style in admon_styles}
 
         # Set default admon colors.
@@ -3239,6 +3240,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 admon_color['graybox2'][admon] = gray2
                 admon_color['grayicon'][admon] = gray3
                 admon_color['yellowicon'][admon] = yellow1
+                admon_color['tcb'][admon] = gray4
         else:
             for admon, latex_admon_color in latex_admon_colors:
                 # use latex_admon_color for everything
@@ -3269,6 +3271,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         elif latex_admon in ('graybox2',):
             packages = r"""\usepackage{wrapfig,calc}
 \usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
+        elif latex_admon in ('tcb',):
+            packages = r"""\usepackage[most]{tcolorbox}
+
+"""
         else: # mdfbox
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
@@ -3461,6 +3467,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
 
 
+            elif latex_admon == 'tcb':
+                INTRO['latex'] += r"""
+%% Admonition style "tcb" is an oval colored box based on tcolorbox
+%% "%(admon)s" admon
+%(define_bgcolor)s
+
+\newtcolorbox{%(admon)s_%(latex_admon)sadmon}[2][]{
+  colback=%(latex_admon)s_%(admon)s_background,
+  colframe=%(latex_admon)s_%(admon)s_background,
+  fonttitle=\bfseries,
+  colbacktitle=%(latex_admon)s_%(admon)s_background,
+  arc=1mm,
+  title=#2,
+  #1}
+""" % vars()
             elif latex_admon == 'mdfbox':
                 # mdfbox, the most flexible/custom admon construction
                 INTRO['latex'] += r"""
@@ -3497,12 +3518,18 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             # unless a color is specified
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=seccolor')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=seccolor!20,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colframe=.*', 'colframe=seccolor,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colbacktitle=.*', 'colbacktitle=seccolor!20,', INTRO['latex'])
         if latex_admon_color == 'bluestyle':
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=darkblue')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=blue!5,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colframe=.*', 'colframe=darkblue,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colbacktitle=.*', 'colbacktitle=blue!5,', INTRO['latex'])
         elif latex_admon_color == 'yellowstyle':
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=yellow!20')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=yellow!5,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colframe=.*', 'colframe=yellow!20,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colbacktitle=.*', 'colbacktitle=yellow!5,', INTRO['latex'])
 
         # Make darker headings for mdfbox admons:
         # darkblue2!20!white -> darkblue2!30!white in headings
