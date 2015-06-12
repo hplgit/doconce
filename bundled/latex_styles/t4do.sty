@@ -1,0 +1,565 @@
+% This is the Springer T4 style, based on the T2 style, but
+% different page/text size.
+
+% Modifications by Hans Petter Langtangen for Doconce-generated LaTeX books:
+%
+% * redefinition of section, figure, table counters
+% * utf8 is loaded instead of latin1
+% * no itshape, but larger font in subsection
+% * paragraph has sf bold font (originally, t2 relies on svmono paragrah,
+%      but a significantly modified svmono paragraph is used here in this t2)
+% * definition of \subex for headings in Doconce subexercises
+% * no makefntext as that construction interferes with
+%   mdframed frames, but using the footmisc package instead
+% (search for hpl to see the modifications compared to standard t2.sty)
+%
+% This version was used for the 4th ed. of the Springer book TCSE6.
+
+\usepackage{graphicx}
+%\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+%\usepackage{slogo}
+\usepackage{caption}
+%\usepackage{mathptmx}
+%\usepackagep{mathfsb}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage[T1]{fontenc}
+
+\newcolumntype{P}{>{\rightskip0pt plus12mm\hangindent12pt\hangafter1}X}
+
+
+\paperwidth178mm
+\paperheight254mm
+\topmargin13mm
+\evensidemargin18.5mm
+\oddsidemargin18.5mm
+\textwidth117mm
+\textheight190mm
+\columnwidth76mm
+\columnsep4mm
+\headheight3.5mm
+\headsep3.5mm
+
+\hoffset-1in
+\voffset-1in
+
+\parskip0pt
+\parindent12pt
+
+\normalbaselineskip12.5pt
+\baselineskip12.5pt
+\def\normalsize{\fontsize{11pt}{13.5pt}\selectfont}
+\def\small{\fontsize{8.5pt}{10pt}\selectfont}
+\def\qut#1{{``}#1{''}}
+\def\squt#1{{`}#1{'}}
+
+\def\fullcolor{\color[gray]{0.85}}
+%\def\shadedcolor{\color[cmyk]{0.19,0.1,0,0}}
+
+\newcommand\mymainmatter{%
+  \mainmatter
+  \evensidemargin52.5mm
+  \oddsidemargin14.5mm
+  \textwidth156mm
+  \pagestyle{headings}
+  \def\l@section{\vskip6pt\@dottedtocline{1}{0pt}{\tocsecnum}}%
+  \def\l@subsection{\@dottedtocline{2}{\tocsecnum}{\tocsubsecnum}}%
+}
+
+\newdimen\@headskip
+\def\@makechapterhead#1{%
+  \vbox to15\baselineskip{%
+    \setbox0\vbox{%
+      \begin{minipage}[t]{110.6mm}
+        \hyphenpenalty \@M
+        \interlinepenalty\@M
+        \raggedright
+        \color{black}%
+        \fontsize{16pt}{18pt}\sffamily\bfseries\selectfont#1
+        \expandafter\ifx\csname ch@psubtitle\endcsname\relax
+        \else
+          \vskip14pt
+          \fontsize{14pt}{16pt}\sffamily\mdseries\selectfont\ch@psubtitle
+        \fi
+        \vskip22pt
+        \expandafter\ifx\csname ch@pauthor\endcsname\relax
+          \fontsize{12pt}{14pt}\sffamily\mdseries\selectfont\strut\par
+        \else
+          \fontsize{12pt}{14pt}\sffamily\mdseries\selectfont\ch@pauthor
+        \fi
+      \end{minipage}}%
+    \@headskip38mm
+    \advance\@headskip-\ht0
+    \advance\@headskip-\dp0
+    \advance\@headskip-24pt%
+    \advance\@headskip22pt%
+    \ifdim\@headskip<22pt
+      \@headskip22pt
+    \fi
+    \setbox0\vbox{%
+        \begin{minipage}[t]{110.6mm}
+          \hyphenpenalty \@M
+          \interlinepenalty\@M
+          \raggedright
+          \color{black}%
+          \fontsize{16pt}{18pt}\sffamily\bfseries\selectfont#1\par
+          \expandafter\ifx\csname ch@psubtitle\endcsname\relax
+          \else
+            \vskip14pt
+            \fontsize{14pt}{16pt}\sffamily\mdseries\selectfont\ch@psubtitle\par
+          \fi
+          \vskip\@headskip
+          \vskip22pt%
+          \expandafter\ifx\csname ch@pauthor\endcsname\relax
+            \fontsize{12pt}{14pt}\sffamily\mdseries\selectfont\strut\par
+          \else
+            \fontsize{12pt}{14pt}\sffamily\mdseries\selectfont\ch@pauthor\par
+          \fi
+        \end{minipage}%
+%      \hskip4.2mm%
+      \begin{minipage}[t]{14mm}
+        \color{black}%
+        \hbox to 14mm{\hfill\fontsize{36pt}{36pt}\sffamily\bfseries\selectfont \thechapter}
+      \end{minipage}
+}%
+    \fullcolor
+    \rlap{\hbox{\vrule width179mm height2pt depth0pt}}%
+    \vskip2pt
+    \noindent\strut\kern38mm%
+    \hbox{%
+      \dimen0=\ht0%
+      \dimen2=\dp0
+      \advance\dimen0 12pt%
+      \advance\dimen2 12pt%
+      \rlap{\hbox{\vrule width141mm height\dimen0 depth\dimen2}}%
+      \kern12pt\box0}%
+    \global\let\ch@psubtitle=\undefined
+    \global\let\ch@pauthor=\undefined
+    \vfill
+}}
+
+\def\@makeschapterhead#1{%
+  \if@mainmatter\else\moveleft38mm\fi
+  \vbox to15\baselineskip{%
+    \setbox0\vbox{%
+        \begin{minipage}[t]{110.6mm}
+          \hyphenpenalty \@M
+          \interlinepenalty\@M
+          \raggedright
+          \color{black}%
+          \fontsize{16pt}{18pt}\sffamily\bfseries\selectfont#1\par
+%          \expandafter\ifx\csname ch@pauthor\endcsname\relax
+%            \fontsize{12pt}{14pt}\sffamily\mdseries\selectfont\strut\par
+%          \else
+%            \fontsize{12pt}{14pt}\sffamily\mdseries\selectfont\ch@pauthor\par
+%          \fi
+        \end{minipage}}%
+    \fullcolor
+    \rlap{\hbox{\vrule width179mm height2pt depth0pt}}%
+    \vskip2pt
+    \noindent\strut\kern38mm%
+    \hbox{%
+      \dimen0=\ht0%
+      \dimen2=\dp0
+      \advance\dimen0 12pt%
+      \advance\dimen2 12pt%
+      \rlap{\hbox{\vrule width141mm height\dimen0 depth\dimen2}}%
+      \kern12pt\box0}%
+    \global\let\ch@psubtitle=\undefined
+    \global\let\ch@pauthor=\undefined
+    \vfill
+}}
+
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                       {-30\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {16\p@ \@plus 4\p@ \@minus 4\p@}%
+                       {\sffamily\fontsize{12pt}{14.5pt}\selectfont\bfseries
+                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+% hpl redefinition, larger font:
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                       {-30\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {16\p@ \@plus 4\p@ \@minus 4\p@}%
+                       {\sffamily\fontsize{13pt}{15.5pt}\selectfont\bfseries
+                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+% original
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                       {-30\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {8\p@ \@plus 2\p@ \@minus 2\p@}%
+                       {\sffamily\fontsize{10pt}{12pt}\selectfont\bfseries\itshape
+                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+% hpl redefinition, no itshape, larger font:
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                       {-30\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {8\p@ \@plus 2\p@ \@minus 2\p@}%
+                       {\sffamily\fontsize{12pt}{14pt}\selectfont\bfseries
+                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+
+% hpl redefinition, no itshape, almost original font:
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                       {-24\p@ \@plus -3\p@ \@minus -3\p@}%
+                       {11.5\p@ \@plus 3\p@ \@minus 3\p@}%
+                       {\sffamily\fontsize{10pt}{12.5pt}\selectfont\bfseries
+                        \rightskip=\z@ \@plus 8em\pretolerance=10000 }}
+% hpl redefinition, with boldface and smaller spacing (for TCSE6, 4th ed.):
+% (taken from svmondo.cls, but sffamily font replaces bfseries for t2)
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                       {-6\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {-0.5em \@plus -0.22em \@minus -0.1em}%
+                       {\sffamily\normalsize\bfseries}}
+% hpl: special definition of Doconce subexercise heading
+\newcommand\subex{\@startsection{paragraph}{4}{\z@}%
+                 {-6\p@ \@plus -4\p@ \@minus -4\p@}%
+                 {-0.5em \@plus -0.22em \@minus -0.1em}%
+                 {\sffamily\normalsize\bfseries}}
+
+% original lines, leading to arabic numbering also in appendices:
+%\def\thesection{\arabic{chapter}.\arabic{section}}
+%\def\thefigure{\arabic{chapter}.\arabic{figure}}
+%\def\thetable{\arabic{chapter}.\arabic{table}}
+% hpl corrected lines (from Thomas in le-tex):
+\def\thesection{\thechapter.\arabic{section}}
+\def\thefigure{\thechapter.\arabic{figure}}
+\def\thetable{\thechapter.\arabic{table}}
+
+\leftmargini14pt
+\def\enumerate{%
+  \ifnum \@enumdepth >\thr@@\@toodeep\else
+    \advance\@enumdepth\@ne
+    \edef\@enumctr{enum\romannumeral\the\@enumdepth}%
+      \expandafter
+      \list
+        \csname label\@enumctr\endcsname
+        {\labelwidth\leftmargini\labelsep0pt\topsep4pt\partopsep4pt\itemsep0pt\usecounter\@enumctr\def\makelabel##1{\rlap{##1}\hss}}%
+  \fi}
+
+\def\itemize{%
+  \ifnum \@itemdepth >\thr@@\@toodeep\else
+    \advance\@itemdepth\@ne
+    \edef\@itemitem{labelitem\romannumeral\the\@itemdepth}%
+    \expandafter
+    \list
+      \csname\@itemitem\endcsname
+      {\topsep4pt\partopsep4pt\def\makelabel##1{\hss\llap{##1}}}%
+  \fi}
+
+\def\floatlegendstyle{\sffamily\bfseries\small\selectfont}%\fullcolor}
+
+\long\def\@makecaption#1#2{%
+ \captionstyle\hsize118mm
+ \ifx\@captype\fig@type
+    \vskip0pt
+ \fi
+ \setbox\@tempboxa\hbox{{\floatlegendstyle #1\floatcounterend}%
+ #2}%
+ \ifdim \wd\@tempboxa >\hsize
+   {\floatlegendstyle #1\floatcounterend} #2\par
+ \else
+   \hbox to\hsize{\leftlegendglue\unhbox\@tempboxa\hfil}%
+ \fi
+ \ifx\@captype\fig@type\else
+   \vskip\tabcapgap
+ \fi}
+
+\long\def\@makesplitcaption#1#2{%
+ \captionstyle
+% \ifx\@captype\fig@type
+%   \vskip0pt
+% \fi
+ \setbox\@tempboxa\hbox{{\floatlegendstyle #1\floatcounterend}#2}%
+ \ifdim \wd\@tempboxa >\hsize
+   \setbox\@tempboxa\vbox{\hsize\columnwidth{\floatlegendstyle #1\floatcounterend} #2\par}%
+   \ifdim\ht\@tempboxa>33pt%
+     \vspace*{-2mm}%
+     \begin{multicols}{2}
+       {\floatlegendstyle #1\floatcounterend} #2%
+     \end{multicols}%
+   \else
+     {\floatlegendstyle #1\floatcounterend} #2\par
+   \fi
+ \else
+   \hbox to\hsize{\leftlegendglue\unhbox\@tempboxa\hfil}%
+ \fi
+ \ifx\@captype\fig@type\else
+   \vskip\tabcapgap
+ \fi}
+
+\setlength\textfloatsep{25pt plus10pt}
+\setlength\dbltextfloatsep{25pt}
+
+\def\endhline{%
+  \noalign{\ifnum0=`}\fi\vskip3pt{\fullcolor\hrule \@height 1pt} \futurelet
+   \reserved@a\@xhline}
+
+\def\hline{%
+  \noalign{\ifnum0=`}\fi\vskip3pt{\fullcolor\hrule \@height 1pt} \vskip3pt\futurelet
+   \reserved@a\@xhline}
+
+\def\svhline{%
+  \noalign{\ifnum0=`}\fi\vskip3pt{\fullcolor\hrule \@height 1.5pt} \vskip3pt\futurelet
+   \reserved@a\@xhline}
+
+\flushbottom
+
+\def\@chapter[#1]#2{\if@chapnum  % war mal \ifnum \c@secnumdepth >\m@ne
+                       \refstepcounter{chapter}%
+                       \if@mainmatter
+                         \typeout{\@chapapp\space\thechapter.}%
+                         \addcontentsline{toc}{chapter}{\protect
+                                  \numberline{\thechapter\thechapterend}#1}%
+                       \else
+                         \addcontentsline{toc}{chapter}{#1}%
+                       \fi
+                    \else
+                      \addcontentsline{toc}{chapter}{#1}%
+                    \fi
+                    \chaptermark{#1}%
+                    \addtocontents{lof}{\protect\addvspace{10\p@}}%
+                    \addtocontents{lot}{\protect\addvspace{10\p@}}%
+                    \if@twocolumn
+                      \@topnewpage[\@makechapterhead{#2}]\@afterheading%
+                    \else
+                      \@makechapterhead{#2}%
+                      \@afterheading
+                    \fi}
+
+
+\def\markleft#1{%
+  \begingroup
+    \let\label\relax \let\index\relax \let\glossary\relax
+    \expandafter\@markleft\@themark {#1}%
+    \@temptokena \expandafter{\@themark}%
+    \mark{\the\@temptokena}%
+  \endgroup
+  \if@nobreak\ifvmode\nobreak\fi\fi}
+\def\@markleft#1#2#3{\@temptokena {#1}%
+  \unrestored@protected@xdef\@themark{{#3}{\the\@temptokena}}}
+
+\def\ps@headings{\let\@mkboth\markboth
+   \def\@evenhead{\hspace*{-38mm}\vbox to\headheight{\hsize156mm\hbox
+to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
+                  \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}\hss}
+   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+                  \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
+   \def\chaptermark##1{\markboth{{\if@chapnum %\ifnum\c@secnumdepth>\m@ne
+      \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\if@chapnum %\ifnum\c@secnumdepth>\m@ne
+      \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}}%!!!
+   \def\sectionmark##1{\markright{{\ifnum\c@secnumdepth>\z@
+      \thesection\seccounterend\hskip\betweenumberspace\fi ##1}}}}
+
+\def\ps@myheadings{\let\@mkboth\@gobbletwo
+   \let\@oddfoot\@empty\let\@evenfoot\@empty
+   \def\@evenhead{\runheadsize\runheadstyle\rlap{\thepage}\hfil
+                  \leftmark}
+   \def\@oddhead{\runheadsize\runheadstyle\rightmark\hfil
+                  \llap{\thepage}}
+   \let\chaptermark\@gobble
+   \let\sectionmark\@gobble
+   \let\subsectionmark\@gobble}
+
+
+\long\def\split@caption#1[#2]#3{\par\addcontentsline{\csname
+  ext@#1\endcsname}{#1}{\protect\numberline{\csname
+  the#1\endcsname}{\ignorespaces #2}}\begingroup
+    \@parboxrestore\if@minipage\@setminipage\fi
+    \@makesplitcaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+  \endgroup}
+
+\newif\if@splitcap
+\def\sidec@ption[#1]#2\caption{%
+\setbox\bildb@x=\hbox{\ignorespaces#2\unskip}%
+\if@twocolumn
+ \ifdim\hsize<\textwidth
+ \else
+   \ifdim\wd\bildb@x<\columnwidth
+      \typeout{Double column float fits into single column -
+            ^^Jyou'd better switch the environment. }%
+   \fi
+ \fi
+\fi
+\if@twocolumn
+  \ifdim\hsize=\textwidth
+    \ifdim\wd\bildb@x>120mm
+      \@splitcaptrue
+    \else
+      \@splitcapfalse
+    \fi
+  \fi
+\fi
+  \instindent=\ht\bildb@x
+  \advance\instindent by\dp\bildb@x
+  \if t#1
+  \else
+    \instindent=-\instindent
+  \fi
+  \@tempdimb=\hsize
+  \advance\@tempdimb by-\figgap
+  \advance\@tempdimb by-\wd\bildb@x
+  \ifdim\@tempdimb<3.6cm
+    \ClassWarning{SVMult}{\string\sidecaption: No sufficient room for the legend;
+             ^^Jusing normal \string\caption}%
+    \unhbox\bildb@x
+    \if@splitcap
+      \let\@capcommand=\split@caption
+    \else
+      \let\@capcommand=\@caption
+    \fi
+  \else
+    \toks@\expandafter{\captionstyle\sloppy
+                         \rightskip=\z@\@plus6mm\relax}%
+    \def\captionstyle{\the\toks@}%
+   \let\@capcommand=\@sidecaption
+  \fi
+  \refstepcounter\@captype
+  \@dblarg{\@capcommand\@captype}}
+  \long\def\@sidecaption#1[#2]#3{\addcontentsline{\csname
+    ext@#1\endcsname}{#1}{\protect\numberline{\csname
+    the#1\endcsname}{\ignorespaces #2}}\begingroup
+      \@parboxrestore
+      \@makesidecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}%
+      \hfill
+      \unhbox\bildb@x
+      \par
+  \endgroup
+}
+
+\newdimen\mydimen
+\newdimen\m@dimen
+\def\set@to@baselines#1{%
+   \m@dimen12.5pt
+   \divide#1 by\m@dimen
+   \@tempcnta#1
+   #1=\m@dimen
+   \multiply#1\@tempcnta}
+
+\long\def\fitToLineGrid#1{%
+  \boxmaxdepth0pt%
+  \setbox0\vbox{#1\par}%
+  \mydimen\ht0
+  \advance\mydimen\dp0
+  \set@to@baselines\mydimen
+  \advance\mydimen12.5pt
+  \advance\mydimen-\ht0
+  \setbox0\vbox{\unvbox0\vskip\mydimen}%
+  \box0
+}
+
+\emergencystretch2em
+
+%\def\c@minitocdepth{\relax}
+%\let\c@minitocdepth\relax
+%\usepackage{minitoc}
+%\mtcsetdepth{minitoc}{2}
+%\nomtcrule
+%\def\beforeminitoc{}
+%\def\mtifont{\sffamily\fontsize{12pt}{14pt}\selectfont\bfseries\fullcolor}
+%\mtcsetfont{minitoc}{section}{\small}
+%\mtcsetfont{minitoc}{subsection}{\small}
+%\mtcindent0pt
+
+
+\renewcommand\frontmatter{\startnewpage
+  \oddsidemargin56.5mm
+  \textwidth118mm
+  \linewidth118mm
+  \hsize118mm
+            \@mainmatterfalse\pagenumbering{roman}
+	\pagestyle{fheadings}
+            }
+
+
+\def\locentry#1#2{%
+  \noindent\textbf{#1}\kern6pt#2\vskip6.25pt}
+
+
+
+\usepackage{marvosym}
+
+\@addtoreset{section}{chapter}
+\@addtoreset{figure}{chapter}
+\@addtoreset{table}{chapter}
+\@addtoreset{equation}{chapter}
+\@addtoreset{footnote}{chapter}
+
+\tolerance=1000
+\tabcolsep5pt
+
+
+\RequirePackage{textcomp}
+	\def\umu{\ensuremath{{\text{\textmu}}}}
+
+
+\let\texteuro\EURtm
+
+
+\setlength\footnotesep{7.7pt}
+\renewcommand\footnoterule{%
+  \kern-3\p@
+  \hrule\@width 50\p@
+  \kern2.6\p@}
+%\newdimen\foot@parindent
+%\foot@parindent 10.83\p@
+%\long\def\@makefntext#1{\@setpar{\@@par\@tempdima 118mm%\hsize
+%         \advance\@tempdima-\foot@parindent\parshape\@ne\foot@parindent
+%         \@tempdima}\par
+%         \parindent \foot@parindent\noindent \hbox to \z@{%
+%         \hss\hss$^{\mathrm{\@thefnmark}}$ }#1}
+% hpl modification: removed makefntext and used footmisc package
+% instead since it works with the mdframed package.
+% The result is approx the same spacing as that produced by makefntext above.
+\usepackage[hang]{footmisc}
+\renewcommand{\footnotemargin}{5pt}
+\renewcommand{\footnotelayout}{\hspace{1pt}}
+% NOTE: If there are footnotes with verbatim content, the combination of
+% footmisc and \VerbatimFootnotes leads to strange typesetting (the
+% text in the footnote appears *under* the number). One remedy is to
+% comment out the use of footmisc or to comment out \VerbatimFootnotes
+% in the .tex file (but then we need to ensure that all verbatim text
+% in footnotes can be handled by \texttt.
+
+
+
+\xdef\@pnumwidth{8mm}
+
+
+\def\tableofcontents{\chapter*{\contentsname}%
+ \markboth{{\contentsname}}{{\contentsname}}%
+ \def\authcount##1{\setcounter{auco}{##1}\setcounter{@auth}{1}}
+ \def\lastand{\ifnum\value{auco}=2\relax
+                 \unskip{} \andname\
+              \else
+                 \unskip \lastandname\
+              \fi}%
+ \def\and{\stepcounter{@auth}\relax
+          \ifnum\value{@auth}=\value{auco}%
+             \lastand
+          \else
+             \unskip,
+          \fi}%
+ \@starttoc{toc}\if@restonecol\twocolumn\fi}
+
+\def\ps@vheadings{\let\@mkboth\markboth
+   \let\@oddfoot\@empty\let\@evenfoot\@empty
+   \def\@evenhead{\vbox to\headheight{\hsize156mm\hbox
+to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
+                  \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
+   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+                  \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
+   \def\chaptermark##1{\markboth{{\ifnum\c@secnumdepth>\m@ne
+      \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\ifnum %!!!
+      \c@secnumdepth>\m@ne \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}}%!!!
+   \def\authormark##1{\markleft{##1}}%
+   \def\sectionmark##1{}}
+
+\def\ps@fheadings{\let\@mkboth\markboth
+%   \let\@oddfoot\@empty\let\@evenfoot\@empty
+   \def\@evenhead{\vbox to\headheight{\hsize156mm\hbox
+to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
+                  \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
+   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+                  \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
+   \def\chaptermark##1{\markboth{{\ifnum\c@secnumdepth>\m@ne
+      \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\ifnum %!!!
+      \c@secnumdepth>\m@ne \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}}%!!!
+   \def\authormark##1{\markleft{##1}}%
+   \def\sectionmark##1{\markleft{\thesection\hskip\betweenumberspace##1}}}

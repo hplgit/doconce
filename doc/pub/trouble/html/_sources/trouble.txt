@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 7, 2015
+:Date: Jun 11, 2015
 
 
 .. admonition:: Disclaimer
@@ -910,6 +910,25 @@ to get pygmentized computer code in LaTeX:
 
         Terminal> doconce ptex2tex mydoc envir=minted
         Terminal> pdflatex -shell-escape mydoc
+
+LaTeX error because of underscores
+----------------------------------
+
+LaTeX requires prefixing underscores by a backslash. Either typeset
+words with underscores in inline verbatim text (so you do not need
+the backslash) or use the preprocessor
+to insert LaTeX-specific text with a backslash, e.g.,
+
+.. code-block:: doconce
+
+        Here is a word underscore:
+        % if FORMAT in ('latex', 'pdflatex'):
+        my\_word
+        % else
+        my_word
+        % endif
+
+Usually, inline verbatim text is way to go with underscores anyway.
 
 LaTeX does not like underscores in URLs
 ---------------------------------------

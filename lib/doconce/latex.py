@@ -1286,7 +1286,7 @@ def latex_table(table):
         _abort()
 
     s = '\n' + table_align[0] + '\n'
-    if latex_style == "Springer_T2":
+    if latex_style in ("Springer_T2", "Springer_T4"):
         s += '{\\small   % Springer T2 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
     s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
@@ -1331,7 +1331,7 @@ def latex_table(table):
             s += ' & '.join(row) + ' \\\\\n'
 
     s += r'\end{tabular}' + '\n'
-    if latex_style == "Springer_T2":
+    if latex_style in ("Springer_T2", "Springer_T4"):
         s += '\n\\vspace{4mm}\n\n}\n'
     s += table_align[1] + '\n\n' + r'\noindent' + '\n'
     return s
@@ -1354,7 +1354,8 @@ def latex_title(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     section_headings = option('latex_section_headings=', 'std')
 
-    if latex_style in ("Springer_T2", "Springer_lncse", "Springer_lnup"):
+    if latex_style in ("Springer_T2", "Springer_T4",
+                       "Springer_lncse", "Springer_lnup"):
         text += r"""
 \frontmatter
 \setcounter{page}{3}
@@ -2465,7 +2466,8 @@ def define(FILENAME_EXTENSION,
     latex_style = option('latex_style=', 'std')
     title_layout = option('latex_title_layout=', 'doconce_heading')
 
-    if latex_style not in ('std', 'Springer_T2', 'siamltex', 'siamltexmm',
+    if latex_style not in ('std', 'Springer_T2', 'Springer_T4',
+                           'siamltex', 'siamltexmm',
                            'elsevier','Springer_lnup'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
@@ -2490,8 +2492,8 @@ def define(FILENAME_EXTENSION,
 
 \vspace{1cm} % after toc
 """
-    if latex_style == 'Springer_T2':
-        # Use special mainmatter from t2do.sty
+    if latex_style in ("Springer_T2", "Springer_T4"):
+        # Use special mainmatter from t2do.sty or t4do.sty
         toc_part += r"""
 \mymainmatter
 """
@@ -2640,12 +2642,23 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         copy_latex_packages(['svmonodo.cls', 't2do.sty'])
         INTRO['latex'] += r"""
 % Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
+% Use svmono.cls with doconce modifications for bibliography (svmonodo)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
 
-% Use t2.sty with doconce modifications
+% Use t2.sty with doconce modifications (t2do.sty)
 \usepackage{t2do}
 \special{papersize=193mm,260mm}
+"""
+    elif latex_style == 'Springer_T4':
+        copy_latex_packages(['svmonodo.cls', 't4do.sty'])
+        INTRO['latex'] += r"""
+% Style: T4 (Springer)
+% Use svmono.cls with doconce modifications for bibliography (svmonodo)
+\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+
+% Use t4.sty with doconce modifications (t4do.sty)
+\usepackage{t4do}
+\special{papersize=178mm,254mm}
 """
     elif latex_style == 'Springer_llncs':
         INTRO['latex'] += r"""
@@ -3685,7 +3698,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{chngcntr}
 \counterwithin{doconceexercisecounter}{chapter}
 """
-            if latex_style != 'Springer_T2':
+            if latex_style not in in ("Springer_T2", "Springer_T4"):
                 INTRO['latex'] += r"""
 
 % ------ header in subexercises ------
@@ -3707,7 +3720,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             break
 
-    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_lnup"):
+    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
         # (Koma has its own solution to the problem, svmono.cls has the command)

@@ -2175,7 +2175,7 @@ Your brain is a perfectly appropriate tool for this task.
 |eans
 
 |bsubex
-What is the integral of $e^{-at}\sin(wx)$?
+What is the integral of $e^{-ax}\sin(wx)$?
 
 |bhint
 Assume $a$ and $w$ real.
@@ -2294,7 +2294,7 @@ Your brain is a perfectly appropriate tool for this task.
 !esubex
 
 !bsubex
-What is the integral of $e^{-at}\sin(wx)$?
+What is the integral of $e^{-ax}\sin(wx)$?
 
 !bhint
 Assume $a$ and $w$ real.
