@@ -362,7 +362,11 @@ LaTeX writers who adopt DocOnce need to pay attention to the following:
  * MediaWiki (`mwiki`) does not support references to equations.
    DocOnce has extended Markdown, Sphinx, and HTML to better support
    equation referencing (across web pages for example).
-
+ * Only figures are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) are *inline* without numbers or labels
+   for reference. The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
 
 !bwarning Remark
 Although DocOnce allows user-defined styles in the preamble of LaTeX output,

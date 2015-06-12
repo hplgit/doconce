@@ -299,7 +299,7 @@ plot files for the `pdflatex` output format
 and will make use of such files if they exist. These
 are included by a simple `\input{file.pgf}`. If no `.pgf` file is found,
 the `pdflatex` output format will apply `.pdf`, `.png`, or `.jpg` file,
-in that order of preferance.
+in that order of preference.
 
 
 !split
@@ -358,7 +358,7 @@ the directories be just `fig` and `mov`).
 
 === MP4, WebM, and Ogg Movies in HTML ===
 
-If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
+If a movie is in Ogg, MP4, or WebM format, and the output format is `html`,
 DocOnce will check if the movie file is also in the other formats among
 Ogg, MP4, and WebM, and include these as well such that the movie has
 backup formats in case the browser does not support a particular format.
@@ -628,7 +628,8 @@ comments to be in the source code of the output document.
 
 To comment out or remove large sections, consider using the Preprocess
 preprocessor and an if-else block with a variable that is undefined
-(typically something like a test `# #ifdef EXTRA` in Preprocess).
+(typically something like a test `# #ifdef EXTRA` in Preprocess, or
+the Mako equivalent `% if EXTRA:`).
 
 
 !split
@@ -669,7 +670,8 @@ is built up of pipe symbols and dashes:
    alignment of the columns (centered, right, or left, respectively).
  * Similar character can be inserted in the line above the header to
    align the headings.
- * There must be a blank line before and after the table
+ * There must be a blank line before and after the table.
+ * Tables are *inlined* in the text, without numbers or labels for reference.
 
 Here is an example with centered headings (which is default anyway),
 and the numbers are
@@ -2849,6 +2851,7 @@ in the current format.
 # #endif
 
 ===== Guidelines for LaTeX Writers =====
+label{manual:latex:guide}
 
 Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
 `mwiki`, `html`, or `ipynb` formats
@@ -2862,9 +2865,14 @@ is also important, one should follow these rules:
    the running text. Newcommands must be defined in files with names
    `newcommands*.tex`.
  * MediaWiki (`mwiki`) does not support references to equations.
+ * Only figures are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) are *inline* without numbers or labels
+   for reference. The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
 
-(DocOnce performs extensions to `sphinx` and other formats such that
-labels in `align` environments work well.)
+DocOnce performs extensions to `sphinx` and other formats such that
+labels in `align` environments work well.
 
 !bnotice
 LaTeX supports lots of fancy formatting, for example, multiple
@@ -2891,9 +2899,11 @@ PDF document. More tuning can be done by automatic editing of the
 `.tex` produced by DocOnce.
 
 One can also use the Mako preprocessor to extend DocOnce functionality
-and implement, e.g., theorem or example environments (see Section
+and implement, e.g., theorem environments (see Section
 ref{manual:theorem:envir}) or tables with figures (see Section
-ref{manual:tables:wfigs}). Many other extensions are also possible.
+ref{manual:tables:wfigs}). Thereare also *user-defined enironments*
+that can be used to implement specialized LaTeX environments and their
+counterparts in HTML, see Section ref{manual:userdef:envir}.
 !enotice
 
 
@@ -3190,6 +3200,7 @@ in the running text: an equation, a hypothesis, a theorem, a
 rule, or a conclusion.
 
 ===== User-Defined Environments =====
+label{manual:userdef:envir}
 
 LaTeX writers are often fond of their favorite environments and think
 that formats like DocOnce, Markdown, and HTML are primitive without
