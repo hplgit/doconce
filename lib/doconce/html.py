@@ -1225,10 +1225,16 @@ def html_figure(m):
     filename = m.group('filename').strip()
     opts = m.group('options').strip()
 
+    sidecaption = 0
     if opts:
         info = [s.split('=') for s in opts.split()]
         opts = ' '.join(['%s=%s' % (opt, value)
-                         for opt, value in info if opt not in ['frac']])
+                         for opt, value in info
+                         if opt not in ['frac', 'sidecap']])
+        for opt, value in info:
+            if opt == 'sidecap':
+                sidecaption = 1
+                break
 
     if not filename.startswith('http'):
         add_to_file_collection(filename)
@@ -1242,15 +1248,26 @@ def html_figure(m):
        if 'bottom' in hrules:
            bottom_hr = '\n<hr class="figure">'
 
-       s = """
+       if sidecaption == 0:
+           s = """
 <center> <!-- figure -->%s
 <center><p class="caption"> %s </p></center>
 <p><img src="%s" align="bottom" %s></p>%s
 </center>
 """ % (top_hr, caption, filename, opts, bottom_hr)
+       else:
+           # sidecaption is implemented as table
+           s = """
+<center> <!-- figure -->%s
+<table><tr>
+<td><img src="%s" align="bottom" %s></td>
+<td><p class="caption"> %s </p></td>
+</tr></table>%s
+</center>
+""" % (top_hr, filename, opts, caption, bottom_hr)
        return s
     else:
-       # Just insert image file
+       # Just insert image file when no caption
        return '<center><p><img src="%s" align="bottom" %s></p></center>' % \
               (filename, opts)
 
@@ -1809,7 +1826,7 @@ def html_toc(sections):
         indent = '&nbsp; '*(3*(level - level_min))
         if level <= toc_depth:
             s += indent + '<a href="#%s">%s</a>' % (href, title ) + '<br>\n'
-        extended_sections.append((title, level, label, href))
+        extended_sections.append((title.strip(), level, label, href))
     s += '</p>%s\n<p>\n' % hr
 
     # Store for later use in navgation panels etc.
@@ -2449,6 +2466,9 @@ div { text-align: justify; text-justify: inter-word; }
     --html_code_style=inherit         # use <code> style in surroundings (no red)
     --html_pre_style=inherit          # use <pre> style in surroundings
     """ % boots_style
+        else:
+            print '*** wrong --html_style=%s' % html_style
+            _abort()
 
         style = """
 <!-- Bootstrap style: %s -->

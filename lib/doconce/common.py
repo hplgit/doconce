@@ -16,7 +16,7 @@ _MATH_BLOCK = '<<<!!MATH_BLOCK'
 # Chapter regex
 chapter_pattern = r'^=========\s*[A-Za-z0-9].+?========='
 
-emoji_url = 'https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/'
+emoji_url = 'https://raw.githubusercontent.com/hplgit/doconce/master/bundled/emoji/png/'
 
 # Functions for creating and reading comment tags
 def begin_end_comment_tags(tag):
@@ -191,6 +191,25 @@ def indent_lines(text, format, indentation=' '*8, trailing_newline=True):
 
     # indent X chars (choose X=6 for sufficient indent in lists)
     text = '\n'.join([indentation + line for line in text.splitlines()])
+    if trailing_newline:
+        text += '\n'
+    return text
+
+def unindent_lines(text, format=None, trailing_newline=True):
+    """
+    Unindent each line in the string text.
+    Return new version of text.
+    """
+    # Find the indent
+    lines = text.splitlines()
+    indents = []
+    for line in lines:
+        if line == '':
+            continue
+        m = re.search('^( +)', line)
+        indents.append(len(m.group(1)) if m else 0)
+    indent = min(indents)
+    text = '\n'.join([line[indent:] for line in lines])
     if trailing_newline:
         text += '\n'
     return text
@@ -514,13 +533,15 @@ def remove_code_and_tex(filestr, format):
     return filestr, code_blocks, code_block_types, tex_blocks
 
 
-def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
-    # Consistency check: find no of distinct code and math blocks
+def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
+                        complete_doc=True):
+    # Consistency check (only for complete documents):
+    # find no of distinct code and math blocks
     # (can be duplicates when solutions are copied at the end)
     import sets
     pattern = r'^\d+ ' + _CODE_BLOCK
     n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
-    if len(code_blocks) != n:
+    if complete_doc and len(code_blocks) != n:
         print '*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks))
         print """    Possible causes:
            - mismatch of !bt and !et within one file, such that a !bt
@@ -532,7 +553,7 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format):
         _abort()
     pattern = r'^\d+ ' + _MATH_BLOCK
     n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
-    if len(tex_blocks) != n:
+    if complete_doc and len(tex_blocks) != n:
         print '*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks))
         print """    Possible causes:
            - mismatch of !bc and !ec within one file, such that a !bc
@@ -597,12 +618,14 @@ def remove_hidden_code_blocks(filestr, format):
     filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE|re.DOTALL)
     return filestr
 
-def doconce_exercise_output(exer,
-                            solution_header = '__Solution.__',
-                            answer_header = '__Answer.__',
-                            hint_header = '__Hint.__',
-                            include_numbering=True,
-                            include_type=True):
+def doconce_exercise_output(
+    exer,
+    solution_header = '__Solution.__',
+    answer_header = '__Answer.__',
+    hint_header = '__Hint.__',
+    include_numbering=True,
+    include_type=True,
+    ):
     """
     Write exercise in DocOnce format. This output can be
     reused in most formats.
@@ -624,7 +647,8 @@ def doconce_exercise_output(exer,
         if subex['answer']:
             has_solutions = True
 
-    sol = ''
+    sol = ''  # Solutions
+    # s holds the formatted exercise in doconce format
     s = '\n\n# ' + envir_delimiter_lines['exercise'][0] + '\n\n'
     s += exer['heading']  # result string
     if has_solutions:
@@ -642,7 +666,12 @@ def doconce_exercise_output(exer,
         if sol:
             sol += ' Solution to ' + exer['type']
         if include_numbering:
-            s += ' ' + str(exer['no'])
+            exer_numbering = option('exercise_numbering=', 'absolute')
+            if exer_numbering == 'chapter' and exer['chapter_type'] is not None:
+                s += ' %s.%s' % (exer['chapter_no'], exer['chapter_exercise'])
+            else:
+                s += ' ' + str(exer['no'])
+
             if sol:
                 sol += ' ' + str(exer['no'])
         s += ':'
@@ -677,7 +706,7 @@ def doconce_exercise_output(exer,
                     comments.append(line)
                 else:
                     break
-            comments = '\n'.join(comments)
+            comments = '\n'.join(reversed(comments))
             if i == 0:
                 exer['text'] = '\n'.join(lines)
             elif i > 0:
@@ -770,7 +799,7 @@ def doconce_exercise_output(exer,
             s += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
             sol += '\n# ' + envir_delimiter_lines['ans'][0] + '\n'
         s += answer_header + '\n' + exer['answer'] + '\n'
-        ssol += answer_header + '\n' + exer['answer'] + '\n'
+        sol += answer_header + '\n' + exer['answer'] + '\n'
 
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['ans'][1] + '\n'
@@ -931,7 +960,7 @@ inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""
 # the begin-end works, so don't touch (must be tested in a safe branch....)
 
-_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.flv|[^"]+?\.webm|[^"]+?\.ogg|[^"]+?\.mp4|[^"]+?\.mpe?g|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
+_linked_files = '''\s*"(?P<url>([^"]+?\.html?|[^"]+?\.html?\#[^"]+?|[^"]+?\.txt|[^"]+?\.tex|[^"]+?\.pdf|[^"]+?\.f|[^"]+?\.c|[^"]+?\.cpp|[^"]+?\.cxx|[^"]+?\.py|[^"]+?\.ipynb|[^"]+?\.java|[^"]+?\.pl|[^"]+?\.sh|[^"]+?\.csh|[^"]+?\.zsh|[^"]+?\.ksh|[^"]+?\.tar\.gz|[^"]+?\.tar|[^"]+?\.zip|[^"]+?\.f77|[^"]+?\.f90|[^"]+?\.f95|[^"]+?\.png|[^"]+?\.jpe?g|[^"]+?\.gif|[^"]+?\.pdf|[^"]+?\.flv|[^"]+?\.webm|[^"]+?\.ogg|[^"]+?\.mp4|[^"]+?\.mpe?g|[^"]+?\.e?ps|_static-?[^/]*/[^"]+?))"'''
 #_linked_files = '''\s*"(?P<url>([^"]+?))"'''  # any file is accepted
 
 INLINE_TAGS = {

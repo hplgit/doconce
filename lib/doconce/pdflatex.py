@@ -14,6 +14,11 @@ def pdflatex_emoji(m):
         url = emoji_url + name + '.png'
         import urllib
         urllib.urlretrieve(url, filename=emojifile)
+        # Check that this was successful
+        with open(emojifile, 'r') as f:
+            if 'Not Found' in f.read():
+                print '*** error: emoji "name" is probably misspelled - cannot find any emoji with that name'
+                _abort()
     s = space1 + r'\raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{%s}}' % emojifile + space2
     return s
 
@@ -57,7 +62,7 @@ def define(FILENAME_EXTENSION,
                      filestr)
 
     # The big difference between pdflatex and latex is the image formats
-    FIGURE_EXT['pdflatex'] = ('.pdf', '.png', '.jpg', '.jpeg')
+    FIGURE_EXT['pdflatex'] = ('.pgf', '.pdf', '.png', '.jpg', '.jpeg')
 
     # The rest is copy
     ENVIRS['pdflatex'] = ENVIRS['latex']
@@ -70,6 +75,10 @@ def define(FILENAME_EXTENSION,
     TABLE['pdflatex'] = TABLE['latex']
     EXERCISE['pdflatex'] = EXERCISE['latex']
     INTRO['pdflatex'] = INTRO['latex'].replace('.eps', '.pdf').replace('epsfig,', '')
+    latex_style = option('latex_style=', 'std')
+    if latex_style not in ('Springer_T2',):
+        INTRO['pdflatex'] = INTRO['pdflatex'].replace(
+            'usepackage{graphicx}', 'usepackage[pdftex]{graphicx}')
     OUTRO['pdflatex'] = OUTRO['latex']
     ARGLIST['pdflatex'] = ARGLIST['latex']
     TOC['pdflatex'] = TOC['latex']

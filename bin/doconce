@@ -48,6 +48,7 @@ from doconce.misc import (
     latex2doconce,
     latex_dislikes,
     html2doconce,
+    ipynb2doconce,
     fix_bibtex4publish,
     diff,
     gitdiff,
@@ -259,17 +260,17 @@ _
 %(author)s
 %(version)s
 %(version)s
-1.0
+en
 .rst
 index
-n
+y
 y
 n
 n
 n
 n
-y
 n
+y
 n
 y
 y
@@ -597,15 +598,15 @@ for theme in check_additional_themes:
     if html_theme == theme:
         if not theme in additional_themes_installed:
             raise ImportError(
-                'html_theme = "%s", but this theme is not '\
-                'installed.\n%s' % (theme, additional_themes_url[theme]))
+                'html_theme = "%s", but this theme is not installed. %s' % (theme, additional_themes_url[theme]))
 
 if html_theme == 'solarized':
     pygments_style = 'solarized'
 
 """
-    text = text.replace("html_theme = 'default'",
-                        '\n'.join(themes_list) + themes_code)
+    text = re.sub(r"^html_theme = '.+?' *$",
+                  '\n'.join(themes_list) + themes_code,
+                  text, flags=re.MULTILINE)
     # Include bootstrap path if we have that module
     try:
         import sphinx_bootstrap_theme
@@ -689,6 +690,12 @@ try:
     extensions += ['icsecontrib.sagecellserver']
 except ImportError:
     pass
+
+try:
+    import sphinx_rtd_theme
+    additional_themes_installed.append('sphinx_rtd_theme')
+except ImportError:
+    additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
 
 """
     # Intersphinx mapping: the look up of URLs can take quite
@@ -948,6 +955,7 @@ linkchecker
 latex2doconce
 latex_dislikes
 html2doconce
+ipynb2doconce
 pygmentize
 makefile
 diff
@@ -1079,6 +1087,9 @@ doconce latex2doconce latexfile
 
 # check if there are problems with translating latex to doconce
 doconce latex_dislikes latexfile
+
+# translate an IPython/Jupyter notebook to doconce
+doconce ipynb2doconce notebookfile
 
 # typeset a doconce document with pygments (for pretty print of doconce itself)
 doconce pygmentize myfile [pygments-style]

@@ -1,0 +1,2 @@
+Seems better to use mdframed with backgroundcolor!
+(Rather than the special styles defined here.)

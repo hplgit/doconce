@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,12 +10,12 @@
     
     <title>Doconce Manual</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
+        URL_ROOT:    '',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -24,31 +25,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
-        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
-
-        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
-
-        <style type="text/css">
-                .sagecell .CodeMirror-scroll {
-                        overflow-y: hidden;
-                        overflow-x: auto;
-                }
-                .sagecell .CodeMirror {
-                        height: auto;
-                }
-        </style>
-
-    
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
     <link rel="top" title="Doconce Manual" href="#" />
-    <link rel="next" title="DocOnce Description" href="manual.html" />
-
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+    <link rel="next" title="DocOnce Description" href="manual.html" /> 
   
        <style type="text/css">
          div.admonition {
@@ -122,10 +102,17 @@
 <li class="toctree-l3"><a class="reference internal" href="manual.html#emojis">Emojis</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#environments">Environments</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manual.html#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#typesetting-of-exercises">Typesetting of Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#example-on-an-exercise">Example on an Exercise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#exercise-1-compute-integrals">Exercise 1: Compute integrals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#other-environments">Other Environments</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#blocks-of-verbatim-computer-code">Blocks of Verbatim Computer Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#macros-newcommands">Macros (Newcommands)</a></li>
@@ -179,7 +166,7 @@
 <li class="toctree-l3"><a class="reference internal" href="manual.html#removal-of-inline-comments">Removal of inline comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#notes">Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#demo-of-different-formats">Demo of different formats</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manual.html#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#useful-options-for-doconce-format">Useful Options for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt></a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#html">HTML</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#blog-posts">Blog Posts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#pandoc-and-markdown">Pandoc and Markdown</a></li>
@@ -197,8 +184,8 @@
 <li class="toctree-l3"><a class="reference internal" href="manual.html#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manual.html#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#options-for-the-doconce-commands">Options for the <tt class="docutils literal"><span class="pre">doconce</span></tt> commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#doconce-format-command-line-options"><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command-line options</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
@@ -219,9 +206,9 @@
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
 </ul>
 </div>
 
@@ -231,9 +218,16 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Doconce Manual</a></li>
+<li><a class="reference internal" href="#">Doconce Manual</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
@@ -262,20 +256,23 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015, HPL.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
-      
-      |
-      <a href="_sources/index.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="manual.html" title="DocOnce Description"
+             >next</a> |</li>
+        <li><a href="#">Doconce Manual</a> &raquo;</li> 
+      </ul>
     </div>
+<div class="wrapper">
+  <div class="footer">
+  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+  </div>
+</div>
 
-    
-
-    
   </body>
 </html>

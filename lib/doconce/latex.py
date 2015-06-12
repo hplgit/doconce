@@ -220,7 +220,7 @@ def latex_code_lstlisting(latex_code_style):
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
-% Styles for lstlisting
+% Internally defined styles for lstlisting
 """
     styles = dict(
        simple=r"""
@@ -324,19 +324,27 @@ identifierstyle=\color{darkorange},
     if 'simple' not in requested_styles:
         requested_styles.append('simple')
     for style in requested_styles:
-        s += styles[style]
-    s += """
-% end of custom lstdefinestyles
-"""
+        if style in styles:  # must test: can have user-defined styles too
+            s += styles[style]
+
     filename = option('latex_code_lststyles=', None)
+    user_styles = []
     if filename is not None:
         # User has specified additional lst styles
         if os.path.isfile(filename):
             text = open(filename, 'r').read()
-            s += text
+            s += '\n%% user-defined lst styles in file "%s":\n' % filename + text
+            user_styles = re.findall(r'\\lstdefinestyle\{(.+)\}', text)
         else:
             print '*** error: file "%s" does not exist' % filename
             _abort()
+    s += '\n% end of custom lstdefinestyles\n'
+    # Check that styles are defined
+    all_styles = list(styles.keys()) + user_styles
+    for style in requested_styles:
+        if style not in all_styles:
+            print '*** error: lst style=%s is not defined' % style
+            print '    not among', ', '.join(all_styles)
 
     return s
 
@@ -393,7 +401,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         for name in m.group(1).split(','):
             name2 = name.strip() + '.aux'
             if not os.path.isfile(name2):
-                print '\n*** warning: need external file %s,' % name2
+                print '\n*** warning: need external file %s for external references,' % name2
                 print '    but it does not exist (compile latex/pdflatex!)'
                 name2 = name + '.do.txt'
                 if not os.path.isfile(name2):
@@ -658,6 +666,11 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
                      r'\g<1>*{\g<2>}' + markboth, filestr)
 
+    # Add pgf package if we have pgf files
+    if re.search(r'input\{.+\.pgf\}', filestr):
+        filestr = filestr.replace('usepackage{graphicx}',
+                                  'usepackage{graphicx}\n\\usepackage{pgf}')
+
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
     def subst(m):  # m is match object
@@ -834,8 +847,10 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     return filestr
 
-def latex_figure(m, includegraphics=True):
+def latex_figure(m):
+    figure_method = 'includegraphics'  # alt: 'psfig'
     filename = m.group('filename')
+    filename_stem, filename_ext = os.path.splitext(filename)
     basename  = os.path.basename(filename)
     stem, ext = os.path.splitext(basename)
 
@@ -873,18 +888,25 @@ def latex_figure(m, includegraphics=True):
     if opts:
         info = [s.split('=') for s in opts.split()]
         for opt, value in info:
+            if ',' in value:
+                print '*** error: no comma between figure options!'
+                print '    %s' % opts
+                _abort()
             if opt == 'frac':
                 frac = float(value)
         for opt, value in info:
             if opt == 'sidecap':
                 sidecaption = 1
 
-    if includegraphics:
-        if sidecaption == 1:
-            includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+    if figure_method == 'includegraphics':
+        if filename_ext == '.pgf':
+            includeline = r'\input{%s}' % filename
         else:
-            includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
-    else:
+            if sidecaption == 1:
+                includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+            else:
+                includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+    elif figure_method == 'psfig':
         includeline = r'\centerline{\psfig{figure=%s,width=%s\linewidth}}' % (filename, frac)
 
     caption = m.group('caption').strip()
@@ -932,9 +954,9 @@ def latex_figure(m, includegraphics=True):
         verbatim_text_new.append(new_words)
     for from_, to_ in zip(verbatim_text, verbatim_text_new):
         caption = caption.replace(from_, to_)
-    if sidecaption == 1:
-        includeline='\sidecaption[t] ' + includeline
-    if caption:
+    #if sidecaption == 1:
+    #    includeline='\sidecaption[t] ' + includeline
+    if caption and sidecaption == 0:
         result = r"""
 \begin{figure}[t]
   %s
@@ -944,6 +966,18 @@ def latex_figure(m, includegraphics=True):
 \end{figure}
 %%\clearpage %% flush figures %s
 """ % (includeline, caption, label)
+    elif caption and sidecaption == 1:
+        # Requires \usepackage{sidecap}
+        result = r"""
+\begin{SCfigure}
+  \centering
+  %s
+  \caption{
+  %s
+  }
+\end{SCfigure}
+%%\clearpage %% flush figures %s
+""" % (includeline, caption, label)
     else:
         # drop caption and place figure inline
         result = r"""
@@ -951,6 +985,7 @@ def latex_figure(m, includegraphics=True):
   %s
 \end{center}
 """ % (includeline)
+        # Use this instead (without centering):
         result = r"""
 
 %% inline figure
@@ -1559,7 +1594,7 @@ def latex_author(authors_and_institutions, auth2index,
 {\bf %s${}^{%s}$%s} \\ [0mm]
 \end{center}
 
-    """ % (author, str(auth2index[author])[1:-1], email_text)
+""" % (author, str(auth2index[author])[1:-1], email_text)
 
         # Institutions
         if latex_style == 'elsevier':
@@ -1849,6 +1884,7 @@ def latex_exercise_old(exer):
         s += '\n' + exer['comments']
     if 'solution' in exer:
         pass
+    # Old: need to return three values now...
     return s
 
 def latex_box(block, format, text_size='normal'):
@@ -1975,7 +2011,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         elif latex_admon == "colors1":
             # Add reduced initial vertical space
             text_block = r'\vspace{-3.5mm}\par\noindent' + '\n' + text_block
-        elif latex_admon in ("mdfbox", "graybox2"):
+        elif latex_admon in ("mdfbox", "graybox2", "tcb"):
             text_block = r'\vspace{0.5mm}\par\noindent' + '\n' + text_block
     elif text_size == 'large':
         text_block = r'{\large ' + text_block + '\n\\par}'
@@ -2036,7 +2072,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 
 ''' %% (title_mdframed, text_block_graybox2)
 
-    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon'):
+    if latex_admon in ('colors1', 'colors2', 'mdfbox', 'grayicon', 'yellowicon', 'tcb'):
         text = r'''
 \begin{%(_admon)s_%%(latex_admon)sadmon}[%%(title)s]
 %%(text_block)s
@@ -2070,7 +2106,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     else:
         print '*** error: illegal --latex_admon=%%s' %% latex_admon
         print '    valid styles are colors1, colors2, mdfbox, graybox2,'
-        print '    grayicon, yellowicon, and paragraph.'
+        print '    grayicon, yellowicon, tcb, and paragraph.'
         _abort()
 
     return text
@@ -2547,7 +2583,7 @@ def define(FILENAME_EXTENSION,
 
     from misc import copy_latex_packages
 
-    side_tp = 'oneside' if option('device=') == 'paper' else 'twoside'
+    side_tp = 'twoside' if option('device=') == 'paper' else 'oneside'
     m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
     # (use A-Z etc to avoid sphinx table headings to indicate chapters...
     if m:  # We have chapters, use book style
@@ -2702,6 +2738,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 \usepackage{graphicx}
 """
+    # sidecap figures?
+    if 'sidecap=' in filestr:
+        INTRO['latex'] += '\\usepackage{sidecap}\n'
 
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
@@ -2783,28 +2822,29 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+\definecolor{tucorange}{rgb}{1.0,0.64,0}
 \definecolor{darkorange}{rgb}{.71,0.21,0.01}
 \definecolor{darkgreen}{rgb}{.12,.54,.11}
 \definecolor{myteal}{rgb}{.26, .44, .56}
 \definecolor{gray}{gray}{0.45}
 \definecolor{mediumgray}{gray}{.8}
 \definecolor{lightgray}{gray}{.95}
+\definecolor{brown}{rgb}{0.54,0.27,0.07}
+\definecolor{purple}{rgb}{0.5,0.0,0.5}
+\definecolor{darkgray}{gray}{0.25}
+\definecolor{darkblue}{rgb}{0,0.08,0.45}
+\definecolor{darkblue2}{rgb}{0,0,0.8}
+\definecolor{lightred}{rgb}{1.0,0.39,0.28}
+\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+\definecolor{lightblue2}{rgb}{0.3,0.3,1.0}
+\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 \colorlet{comment_green}{green!50!black}
 \colorlet{string_red}{red!60!black}
 \colorlet{keyword_pink}{magenta!70!black}
 \colorlet{indendifier_green}{green!70!white}
-
-% New ansi colors
-\definecolor{brown}{rgb}{0.54,0.27,0.07}
-\definecolor{purple}{rgb}{0.5,0.0,0.5}
-\definecolor{darkgray}{gray}{0.25}
-\definecolor{darkblue}{rgb}{0,0.08,0.45}
-\definecolor{lightred}{rgb}{1.0,0.39,0.28}
-\definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
-\definecolor{lightblue}{rgb}{0.53,0.81,0.92}
-\definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
-\definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
 
 % Backgrounds for code
 \definecolor{cbg_gray}{rgb}{.95, .95, .95}
@@ -2954,7 +2994,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconcequiz}{}{}
 \newcounter{doconcequizcounter}
 """
-        quiz_numbering = option('latex_exercise_numbering=', 'absolute')
+        quiz_numbering = option('exercise_numbering=', 'absolute')
         if chapters and quiz_numbering == 'chapter':
             INTRO['latex'] += r"""
 % Let quizzes be numbered per chapter:
@@ -3122,10 +3162,75 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     # Admonitions
     if re.search(r'^!b(%s)' % '|'.join(admons), filestr, flags=re.MULTILINE):
         # Found one !b... command for an admonition
+
+        # default colors
+        # colors1, colors2 color
+        light_blue = (0.87843, 0.95686, 1.0)
+        pink = (1.0, 0.8235294, 0.8235294)
+        # colors1, colors2, yellowicon color
+        yellow1 = (0.988235, 0.964706, 0.862745)
+        # mdfbox color
+        gray1 = "gray!5"
+        # graybox2 color
+        gray2 = (0.94, 0.94, 0.94)
+        # grayicon color
+        gray3 = (0.91, 0.91, 0.91)   # lighter gray
+        gray4 = 'black!25!white!25'
+        red1 = 'red!10!white'
+        green1 = 'darkgreen!20!white'
+        blue1 = 'darkblue2!20!white'
+        orange1 = 'tucorange!20!white'
+
         latex_admon = option('latex_admon=', 'mdfbox')
         latex_admon_color = option('latex_admon_color=', None)
-
-        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon',
+        # Multiple admon colors specified?
+        multiple_colors = False
+        if latex_admon_color is not None:
+            for a in admons:
+                if a+':' in latex_admon_color:
+                    multiple_colors = True
+                    break
+        # Named admon color? Set corresponding values
+        if latex_admon_color == 'colors1':
+           multiple_colors = True
+           latex_admon_color = 'warning:red1;notice:blue1;question:orange1;summary:green1;block:yellow1'
+        if multiple_colors:
+            # Syntax: --latex_admon_color=warning:(r,g,b);question:blue1
+            latex_admon_colors = [c.split(':') for c in
+                                  latex_admon_color.split(';')]
+            # Check
+            for element in latex_admon_colors:
+                if len(element) != 2:
+                    print '*** error in --latex_admon_color syntax:'
+                    print '   ', latex_admon_color
+                    print '    split wrt ; and :', latex_admon_colors
+                    _abort()
+            admons_found = {a: False for a in admons}
+            for a, c in latex_admon_colors:
+                if a not in admons:
+                    print '*** error: wrong syntax in --latex_admon_color=%s' % latex_admon_color
+                    print '    %s is not an admonition name' % a
+                    _abort()
+                admons_found[a] = True
+            for a in admons_found:
+                if not a:
+                    print '*** error in --latex_admon_color syntax: all admon types must be specified!'
+                    print '   ', ', '.join(admons)
+                    print '    missing', a
+                    _abort()
+            try:
+                latex_admon_colors = [[a, eval(c)] for a, c in latex_admon_colors]
+            except SyntaxError:
+                # eval(c) did not work, treat c as valid color
+                pass
+        elif latex_admon_color is not None and \
+             not latex_admon_color.endswith('style'):
+            try:
+                latex_admon_colors = [[a, eval(latex_admon_color)] for a in admons]
+            except SyntaxError:
+                # eval(latex_admon_color) did not work, treat it as valid color
+                latex_admon_colors = [[a, latex_admon_color] for a in admons]
+        admon_styles = 'colors1', 'colors2', 'mdfbox', 'graybox2', 'grayicon', 'yellowicon', 'tcb'
         admon_color = {style: {} for style in admon_styles}
 
         # Set default admon colors.
@@ -3133,21 +3238,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         # these are implemented as special hacks after the mdfbox is defined.
         # See if latex_admon_color == ...)
         if latex_admon_color is None or latex_admon_color.endswith('style'):
-            # default colors
-            # colors1, colors2 color
-            light_blue = (0.87843, 0.95686, 1.0)
-            pink = (1.0, 0.8235294, 0.8235294)
-            # colors1, colors2, yellowicon color
-            yellow1 = (0.988235, 0.964706, 0.862745)
-            yellow1b = (0.97, 0.88, 0.62)  # alt, not used
-            # mdfbox color
-            gray1 = "gray!5"
-            # graybox2 color
-            gray2 = (0.94, 0.94, 0.94)
-            # grayicon color
-            gray3 = (0.91, 0.91, 0.91)   # lighter gray
-            gray3l = (0.97, 0.97, 0.97)  # even lighter gray, not used
-
+            # Default choices
             for admon_style in ('colors1', 'colors2'):
                 admon_color[admon_style] = dict(
                     warning=pink,
@@ -3162,17 +3253,28 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 admon_color['graybox2'][admon] = gray2
                 admon_color['grayicon'][admon] = gray3
                 admon_color['yellowicon'][admon] = yellow1
+                admon_color['tcb'][admon] = gray4
         else:
-            # use latex_admon_color for everything
-            try:
-                # RGB input?
-                latex_admon_color = tuple(eval(latex_admon_color))
-            except (NameError, SyntaxError) as e:
-                # Color name input
-                pass
+            for admon, latex_admon_color in latex_admon_colors:
+                # use latex_admon_color for everything
+                try:
+                    # RGB input?
+                    rgb = tuple(latex_admon_color)
+                    # Potential problem: 'red' becomes ('r', 'e', 'd') here
+                    if len(rgb) != 3:
+                        raise SyntaxError('not rgb tuple')
+                    else:
+                        for c in rgb:
+                            try:
+                                float(c)  # Can raise ValueError
+                            except:
+                                pass
+                    latex_admon_color = rgb
+                except (NameError, SyntaxError, ValueError) as e:
+                    # Color name input
+                    pass
 
-            for style in admon_styles:
-                for admon in admons:
+                for style in admon_styles:
                     admon_color[style][admon] = latex_admon_color
 
         if latex_admon in ('colors1',):
@@ -3182,6 +3284,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         elif latex_admon in ('graybox2',):
             packages = r"""\usepackage{wrapfig,calc}
 \usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
+        elif latex_admon in ('tcb',):
+            packages = r"""\usepackage[most]{tcolorbox}
+
+"""
         else: # mdfbox
             packages = r'\usepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
@@ -3374,6 +3480,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """ % vars()
 
 
+            elif latex_admon == 'tcb':
+                INTRO['latex'] += r"""
+%% Admonition style "tcb" is an oval colored box based on tcolorbox
+%% "%(admon)s" admon
+%(define_bgcolor)s
+
+\newtcolorbox{%(admon)s_%(latex_admon)sadmon}[2][]{
+  colback=%(latex_admon)s_%(admon)s_background,
+  colframe=%(latex_admon)s_%(admon)s_background,
+  fonttitle=\bfseries,
+  colbacktitle=%(latex_admon)s_%(admon)s_background,
+  arc=1mm,
+  title=#2,
+  #1}
+""" % vars()
             elif latex_admon == 'mdfbox':
                 # mdfbox, the most flexible/custom admon construction
                 INTRO['latex'] += r"""
@@ -3410,13 +3531,35 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             # unless a color is specified
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=seccolor')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=seccolor!20,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colframe=.*', 'colframe=seccolor,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colbacktitle=.*', 'colbacktitle=seccolor!20,', INTRO['latex'])
         if latex_admon_color == 'bluestyle':
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=darkblue')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=blue!5,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colframe=.*', 'colframe=darkblue,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colbacktitle=.*', 'colbacktitle=blue!5,', INTRO['latex'])
         elif latex_admon_color == 'yellowstyle':
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=yellow!20')
             INTRO['latex'] = re.sub(r'frametitlebackgroundcolor=.*', r'frametitlebackgroundcolor=yellow!5,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colframe=.*', 'colframe=yellow!20,', INTRO['latex'])
+            INTRO['latex'] = re.sub('colbacktitle=.*', 'colbacktitle=yellow!5,', INTRO['latex'])
 
+        # Make darker headings for mdfbox admons:
+        # darkblue2!20!white -> darkblue2!30!white in headings
+        # no effect on rgb values...
+        colors = re.findall(r'colorlet\{mdfbox_(.+?)_background\}\{(.+?)\}',
+                            INTRO['latex'])
+        for admon, color in colors:
+            m = re.search(r'([A-Za-z0-9_]+)!([A-Za-z0-9_]+)!([A-Za-z0-9_]+)',
+                          color)
+            if m:
+                color1 = m.group(1)
+                intensity = int(m.group(2))
+                color2 = m.group(3)
+                intensity = min(int(intensity*2), 90)
+                INTRO['latex'] = INTRO['latex'].replace(
+                    'frametitlebackgroundcolor=mdfbox_%s_background,' % admon,
+                    'frametitlebackgroundcolor=%s!%s!%s,' % (color1, intensity, color2))
         INTRO['latex'] += r"""
 % --- end of definitions of admonition environments ---
 """
@@ -3548,7 +3691,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
 """
-            exercise_numbering = option('latex_exercise_numbering=', 'absolute')
+            exercise_numbering = option('exercise_numbering=', 'absolute')
             if chapters and exercise_numbering == 'chapter':
                 INTRO['latex'] += r"""
 % Let exercises, problems, and projects be numbered per chapter:

@@ -7,7 +7,7 @@ DocOnce Troubleshooting
 %%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 5, 2015
+:Date: Jun 11, 2015
 
 
 .. admonition:: Disclaimer
@@ -29,6 +29,15 @@ DocOnce Troubleshooting
 
 General Problems
 ================
+
+How do I debug a DocOnce file that results in a strange error message?
+----------------------------------------------------------------------
+
+Isolate the problem by a "bisection" method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the next so you understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.
 
 GitHub gh-pages will not display files starting with a dot or underscore
 ------------------------------------------------------------------------
@@ -70,6 +79,13 @@ If you work on Windows, you probably have to avoid using the Mako preprocessor
 (it is not used unless you use Mako functions, variables, or control
 statements).
 
+Preprocess error: unexpected EOF while parsing
+----------------------------------------------
+
+This error may arise from a syntax error with a colon at the end
+of if tests, e.g. ``# #if FORMAT == 'html':``. Colon is not used
+with Preprocess (but required by Mako: ``if FORMAT == 'html':``).
+
 When I set a large portion of text in color, only a part of it becomes colored
 ------------------------------------------------------------------------------
 
@@ -98,15 +114,15 @@ end of the coloring. Here is an example:
 
 .. _trouble:latex:envir:native:
 
-How can I make use of a native LaTeX environments (example environemt for instance)?
-------------------------------------------------------------------------------------
+How can I make use of a native LaTeX environments (example environment for instance)?
+-------------------------------------------------------------------------------------
 
-LaTeX writers often lack their favorite environments, but DocOnce
-has a way to define such environments, with corresponding typesetting
-also for HTML and all other output formats. See the
-section *User-Defined Environments* in the DocOnce manual. It contains
-all the details for using a standard example or theorem environment
-in LaTeX output.
+LaTeX writers often lack their favorite environments, but DocOnce has
+a way to define such environments, with corresponding typesetting also
+for HTML and all other output formats. See the section `User-Defined
+Environments <http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments>`__
+in the DocOnce manual. It contains all the details for using a
+standard example or theorem environment in LaTeX output.
 
 How can I create a more tailored code environment in LaTeX than what DocOnce offers?
 ------------------------------------------------------------------------------------
@@ -147,18 +163,6 @@ is rendered as
 
 
 
-Without ``<linebreak>`` the rendering becomes
-
-
-.. admonition:: So - how to be excellent
-
-   Excellence is not a planned goal - it is the corollary of
-   deep passion, very much hard (and exciting!)
-   work, and *thinking constantly about it*.
-
-
-
-
 The ``<linebreak>`` is a newline in LaTeX if it has preceding text,
 otherwise it is a ``\vspace{3mm}``. In HTML, ``<linebreak>`` is ``<br>``.
 
@@ -169,6 +173,36 @@ More vertical space is obtained by repeated use of ``<linebreak>``:
         <linebreak>
         <linebreak>
         <linebreak>
+
+.. _latex:custom:fig:name:
+
+How do I get "Figure" written in another language?
+--------------------------------------------------
+
+DocOnce documents can be written in any language, but figure captions
+typically contain the English word "Figure". This must be fixed
+by auto-editing the output file after translation by ``doconce format``.
+
+In LaTeX you can use your native language package, e.g.,
+
+.. code-block:: text
+
+        doconce replace '% insert custom LaTeX commands...' '\\usepackage[norsk]{babel} mydoc.tex
+
+to get the Norwegian language.
+
+In other formats you have do more manual substitutions:
+
+.. code-block:: text
+
+        doconce replace Figure Figur mydoc.html
+        doconce replace figure figur mydoc.html
+
+or both in one command using regular expressions:
+
+.. code-block:: text
+
+        doconce stubst '([Ff]igur)e' '\g<1>' mydoc.html
 
 Spellcheck reports mistakes that I cannot find
 ----------------------------------------------
@@ -339,8 +373,8 @@ the Unix commands
         Terminal> doconce change_encoding utf-8 latin1 myfile.do.txt
         Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 
-Wrong Norwegian charcters
--------------------------
+Wrong Norwegian characters
+--------------------------
 
 When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
@@ -372,7 +406,8 @@ as is unless this option is included.
 Emacs editing does not work properly because of "regexp overflow"
 -----------------------------------------------------------------
 
-Sometimes the Doonce editing mode (see the section :ref:`emacs:doconce`) in Emacs
+Sometimes the Doonce editing mode (see the
+*Emacs DocOnce Formatter* section in the manual) in Emacs
 leads to an error message ending with "overflow in regexp matcher".
 This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
@@ -579,7 +614,7 @@ List important things to remember when programming Mako
    the DocOnce file has name ``mydoc.do.txt``.
 
  * Use double ``##`` (Mako comment) to comment out Mako calls
-   of the form ``${name...}``.
+   to functions or Mako variables.
 
 The Mako preprocessor is seemingly not run
 ------------------------------------------
@@ -645,7 +680,13 @@ The Mako preprocessor claims a variable is undefined
 
 Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
-For example, :math:`{\cal O}(\Delta x^2)` is valid LaTeX, but
+For example,
+
+.. code-block:: doconce
+
+        ${\cal O}(\Delta x^2)$
+
+is valid LaTeX, but
 the dollar sign and curly braces confuse Mako. Rewrite such
 mathematics. It is wise to not use ``${`` anywhere in LaTeX mathematics.
 Create a newcommand if there are no other possible rewritings.
@@ -782,6 +823,17 @@ See also the section :ref:`trouble:bsol:code` - it is the same problem.
 Problems with reST/Sphinx Output
 ================================
 
+Sphinx directory generation aborts with "label empty or too long"
+-----------------------------------------------------------------
+
+This is a strange error that might arise from a too long title of the document.
+The solution is to specify a shorter title when running ``doconce sphinx_dir`` (i.e., to avoid getting the title from the original ``.do.txt`` document):
+
+.. code-block:: text
+
+        Terminal> doconce sphinx_dir title="Short Title" \
+                  authors="A. B. Crunch" theme=pyramid mydoc
+
 Title level inconsistent
 ------------------------
 
@@ -858,6 +910,25 @@ to get pygmentized computer code in LaTeX:
 
         Terminal> doconce ptex2tex mydoc envir=minted
         Terminal> pdflatex -shell-escape mydoc
+
+LaTeX error because of underscores
+----------------------------------
+
+LaTeX requires prefixing underscores by a backslash. Either typeset
+words with underscores in inline verbatim text (so you do not need
+the backslash) or use the preprocessor
+to insert LaTeX-specific text with a backslash, e.g.,
+
+.. code-block:: doconce
+
+        Here is a word underscore:
+        % if FORMAT in ('latex', 'pdflatex'):
+        my\_word
+        % else
+        my_word
+        % endif
+
+Usually, inline verbatim text is way to go with underscores anyway.
 
 LaTeX does not like underscores in URLs
 ---------------------------------------
@@ -1039,6 +1110,8 @@ but DocOnce will automatically replace verbatim text in back-ticks by
 a proper ``texttt`` command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
+.. _latex:custom:preamble:
+
 I want to tune the top (preamble) of the LaTeX file
 ---------------------------------------------------
 
@@ -1063,12 +1136,74 @@ fix the preamble for the future so updates of the DocOnce-generated
 preamble will not be available for this document.)
 
 Note also that ``doconce replace`` and ``doconce subst`` can be used
-after ``doconce formt`` to tune the LaTeX code in the preamble (and
+after ``doconce format`` to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.
 
 There are comment lines with ``--- begin preamble ---`` and
-``--- end preamble ---`` in the generate ``.p.tex`` file that can be
-used to replace the whole preamble by another text.
+``--- end preamble ---`` in the generated ``.tex`` file that can be
+used to replace the whole preamble by another text via a script.
+
+How can I control the placement of figures?
+-------------------------------------------
+
+In general, LaTeX will control the placement, and DocOnce applies
+(for now) the ``[t]`` option to recommend figures to be placed at the top
+of a page. This can be changed in different ways, using
+techniques from the sections :ref:`latex:custom:fig:name` and
+:ref:`latex:custom:preamble`. The ``float`` package and the ``[H]`` ("here")
+option for figures makes figures appear closer to their original
+location:
+
+.. code-block:: latex
+
+        \usepackage{float}
+        \floatplacement{figure}{H}
+
+The ``[t]`` option in figures must be removed:
+
+.. code-block:: text
+
+        doconce replace '{figure}[t]' '{figure}' mydoc.tex
+
+**Custom preamble file.**
+Place the lines above in a file ``mypreamble.tex`` and ask DocOnce to add
+this file to the preamble: ``--latex_preamble=mypreamble.tex``.
+
+**Edit the .tex file.**
+There is a special line in the ``.tex`` file,
+
+.. code-block:: text
+
+        % insert custom LaTeX commands...
+
+which can be used
+to insert desired commands, in this case by
+
+.. code-block:: text
+
+        doconce subst '% insert custom LaTeX.+' '\\usepackage{float}\n\floatplacement{figure}{H}' mydoc.tex
+
+Note that you in both cases
+need to run the ``doconce replace`` above command to remove the ``[t]``
+option.
+
+How can I get a two-column text?
+--------------------------------
+
+Simply add ``twocolum`` to the ``\documentclass`` command. If the ``mydoc.tex``
+file looks like
+
+.. code-block:: latex
+
+        \documentclass[%
+        twoside,
+        ...
+
+you can do a simple substitution edit
+
+.. code-block:: text
+
+        Terminal> doconce subst 'twoside,' 'twocolumn,\ntwoside,' mydoc.tex
 
 .. _trouble:bsol:code:
 
@@ -1247,7 +1382,7 @@ simply by automatic editing of the HTML code in a little shell script:
         doconce replace '<p class="caption">' \
          '<p style="width: 50%; font-style: italic; color: blue">' mydoc.html
         doconce replace '<hr class="figure">' \
-         '<hr style="width: 50%">' mydoc.html
+         '<hr style="width:60%, font-style: normal">' mydoc.html
 
 .. !split
 

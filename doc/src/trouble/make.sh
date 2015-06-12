@@ -3,23 +3,25 @@ set -x
 doconce clean
 rm -f automake_*
 
+# Suddenly some mako problem arose...
+opt="--no_mako"
+
 name=trouble
 
-doconce format html ${name} --pygments_html_style=default --no_preprocess --html_style=bootswatch_journal
+doconce format html ${name} --pygments_html_style=default --no_preprocess --html_style=bootswatch_journal $opt
 
-doconce format pdflatex ${name} --latex_font=helvetica
-doconce ptex2tex ${name} envir=minted
+doconce format pdflatex ${name} --latex_font=helvetica $opt --latex_code_style=pyg
 pdflatex -shell-escape ${name}.tex
 # index??
 pdflatex -shell-escape ${name}.tex
 
 # Sphinx
-doconce format sphinx ${name}
+doconce format sphinx ${name}  $opt
 rm -rf sphinx-rootdir
 doconce sphinx_dir author='HPL' version=0.2 ${name}
 python automake_sphinx.py
 
-doconce format rst ${name}
+doconce format rst ${name}  $opt
 
 dest=../../pub/${name}
 cp -r ${name}.pdf ${name}.html $dest

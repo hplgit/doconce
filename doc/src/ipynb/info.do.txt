@@ -1,5 +1,5 @@
 TITLE: Special DocOnce features for Jupyter notebooks
-AUTHOR: Hans Petter Langtangen at Simula & UiO
+AUTHOR: Hans Petter Langtangen at Simula & University of Oslo
 DATE: today
 
 TOC: on
@@ -27,16 +27,10 @@ Let us explore SymPy to solve
 \[ y' = y,\quad y(0)=y_0 = 2\thinspace . \]
 !et
 
-# This does not work in notebook:
-% if FORMAT != 'ipynb':
-!bc pyshell
->>> import sys
->>> sys.displayhook = pprint
-!ec
-% endif
 
 !bc pyshell
 >>> from sympy import *
+>>> init_printing(use_latex=True)  # find the best method to print
 >>> t = symbols('t', real=True, positive=True)
 >>> y = symbols('y', cls=Function)
 >>> # Solve differential equation using dsolve
@@ -49,6 +43,7 @@ y(t) == C1*exp(t)
 >>> y = sol.rhs          # grab right-hand side of equation
 >>> # Determine integration constant C1 from initial condition
 >>> C1 = symbols('C1')
+>>> y0 = 2
 >>> eq = y.subs(t, 0) - y0  # equation for initial condition
 >>> print eq
 C1 - 2
@@ -282,7 +277,7 @@ plt.plot(x, y)
 % if FORMAT != 'ipynb':
 The result of this code segment appears in Figure ref{myfig}.
 
-FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/ipynb/.sinplot, width=400 frac=0.6] Plot. label{myfig}
+FIGURE: [https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/ipynb/fig/sinplot, width=400 frac=0.6] Plot. label{myfig}
 % else:
 Note that `%matplotlib inline` is automatically inserted before the
 first import of `matplotlib` in a DocOnce-generated notebook such
@@ -385,3 +380,87 @@ label{eq2}
 Can we refer to (ref{eq1}) and (ref{eq2}) in format `ipynb`?
 Yes, in DocOnce-extended `ipynb` format, but not when writing
 notebooks interactively in the browser and using Markdown with LaTeX.
+
+======= Translating notebooks to DocOnce =======
+
+===== The `ipynb2doconce` tool =====
+
+There is a program `doconce ipynb2doconce` for translating a notebook
+file to DocOnce format:
+
+!bc sys
+Terminal> doconce ipynb2doconce notebook.ipynb
+!ec
+The output file `notebook.do.txt` should be an ordinary DocOnce file.
+With an optional argument `--cell_delimiter`, comment lines a la `# ---------- code cell` act in the as delimiter between the *markdown* and *code* cells in the
+`.do.txt` file.
+
+===== Special comment annotations in the `.ipynb` file =====
+
+In order to translate a DocOnce document to the Jupyter Notebook format
+and back again, some information needs to be coded as comments
+in the notebook and such that it can be brought back to DocOnce syntax.
+For example, index workds (`idx`) and labels are coded in comments, so
+are the original DocOnce figure and movie commands (which contain more
+information than what the notebook normally can make use of).
+Comments in the `.ipynb` file starting with `dom:` (DocOnce Metadata)
+contain coded information that can be translated back to DocOnce (see
+below for examples).
+
+It is possible to write ordinary DocOnce documents with index words, labels,
+cross references, etc.; translate the document to a notebook; edit
+and expand the notebook interactively; and convert the notebook to
+a DocOnce document again - with preservation of index words, labels, etc.,
+despite the fact that the notebook does not know about such syntax
+and construction. If you want to insert title, authors, date,
+index words, labels,
+figures, or movies in the notebook, use these types of constructions
+while writing a markdown cell in the notebook:
+
+!bc
+<!-- dom:TITLE: Here goes the title -->
+# Here goes the title
+<!-- dom:AUTHOR: HPL Email:hpl@simula.no at Simula & UiO -->
+<!-- Author: --> **HPL** (email: `hpl@simula.no`), Simula and UiO
+
+<!-- dom:AUTHOR: Kaare Dump at Segfault, Cyberspace -->
+<!-- Author: --> **Kaare Dump**, Segfault, Cyberspace
+
+Date: **May 25, 2015**
+
+# Section heading
+<!-- dom:label{mysubsec} -->
+<!-- dom:idx{headigs} -->
+<!-- dom:idx{section} -->
+
+Some text...
+
+<!-- dom:FIGURE: [fig/myfig, width=500 frac=0.6] This is a caption. -->
+<!-- begin figure -->
+<p>This is a caption.</p>
+<img src="fig/myfig.png" width=500>
+<!-- end figure -->
+!ec
+It is important to respect whitespace exactly as shown in this example.
+The `dom:` syntax must be the valid DocOnce syntax used when translating
+the document back to DocOnce format, while the Markdown lines coming
+after are the ones that can been seen in the present version of
+the notebook (these are removed forever when converting the notebook to
+DocOnce format).
+
+!bwarning Mako code is lost!
+Any Preprocess or Mako code one has in a DocOnce document is lost forever when
+converting to a Jupyter Notebook.
+!ewarning
+
+As a specific example on generating a notebook and converting it back,
+consider the "`example.do.txt`": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/example.do.txt" file:
+
+!bc sys
+Terminal> cp example.do.txt tmp1.do.txt
+Terminal> doconce format ipynb tmp1
+Terminal> cp tmp1.ipynb tmp2.ipynb
+Terminal> doconce ipynb2doconce tmp2.ipynb
+Terminal> doconce diff tmp1.do.txt tmp2.do.txt
+Termonal> google-chrome tmp_diff_tmp2.do.txt.html
+!ec

@@ -1,0 +1,244 @@
+TITLE: How to automatically generate Jupyter Notebooks
+AUTHOR: Hans Petter Langtangen at Simula & University of Oslo
+DATE: today
+
+TOC: on
+
+__Summary.__ This note explains how to write your own notebook
+generator in Python such that you can write a notebook in
+plain ascii in your favorite editor. Futhermore, we add
+functionality in this new notebook format such that you can
+introduce variables and other
+programming constructs into the text as well as run computations
+in the background while generating the notebook.
+
+Ascii input is particularly useful if you have LaTeX code
+that you want to make use of in notebooks. Then you must
+translate the LaTeX code to the syntax described here and
+run the "compiler": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/ipynb_generator.py" to be described.
+
+======= Sample problem =======
+
+The notebook generator will be demonstrated through a specific example.
+on writing a little report where we 1) present a differential
+equation, 2) solve it by SymPy, and 3) show Python code for the solution and
+some computations. We show how the SymPy calculations can be
+done on the fly while compiling the document: results in Python variables
+from the SymPy calculations
+are magically propagated into the text. (This functionality is quite
+similar to "PythonTeX": "https://github.com/gpoore/pythontex", but
+just based on a standard template language, Mako, instead of quite
+comprehensive LaTeX code.)
+
+======= The ascii notebook format =======
+
+===== Cell delimiter lines =====
+
+We go for a very simple format: `-----` is delimiter lines between cells.
+Cells are written in either plain Markdown or as a set of statements in
+a programming language, depending on whether the cell is a text or
+code cell.
+
+Deliminter lines with an extension text `x`, as in `-----x`,
+indicates code cell in language `x`, where `x` is a short name for
+the language, typically the file extension: `py` for Python,
+`f` for Fortran, `c` for C, `cpp` for C++, `js` for JavaScript,
+`sh` for Bash or another Unix shell, `sys` for the console (terminal
+window),
+`java` for Java, `tex` for LaTeX or TeX, `html` for HTML, etc.
+
+If `x` is proceeded by `-t` it means that the cell is *not a code cell*,
+but a standard static Markdown code cell typeset within triple backticks
+as usual in Markdown. (Sometimes one wants to show code, but it is not
+intended to be executable.)
+
+===== Include lines =====
+
+It is handy to include other files in a document so we invent the
+syntax `#include "filename"` at the beginning of a line to include a file
+with name `filename`.
+
+!bnotice Tip: the include syntax can be extended.
+Since we are in charge of parsing the ascii input file, we can
+invent more sophisticated syntax for including files. For example,
+we may specify a start and an end line, either by numbers or
+preferably by regular expressions (which tend to be more robust in that
+they changes less often than line numbers).
+The syntax could be like
+
+!bc
+#include "myprog.py" fromto: from_regex@to_regex
+!ec
+However, this extension is not incorporated in the first version of
+the notebook generator. We just mention the possibility.
+!enotice
+
+===== Mako processing =====
+
+It is also very handy to run the text through a preprocessor that is
+a full-fledged template programming language of the type that is
+popular in the web world. Here we have chosen
+"Mako": "http://www.makotemplates.org". Running the text through Mako
+enables the use of variables, if-tests, and loops, to menition the
+most usual constructs. Pure Python functions can be defined inside
+`<%` and `%>` and called
+in the code. Mako applies the syntax `${var}` for variables and
+`${myfunc(arg1, arg2=None)}` for function calls.
+
+!bnotice Tip: put Python code in a separate file for testing!
+Having lots of Python code inside `<%` and `%>` Mako tags is not
+recommended as debugging can be a nightmare. Instead, put the code
+in a file, say `myprog.py`, and just include it:
+
+!bc
+<%
+#include "myprog.py"
+%>
+!ec
+Then you can debug `myprog.py` as standard Python code, but call up
+its functions and use its global variables in the document's text (!).
+!enotice
+
+===== Example on syntax =====
+
+Let us show a very simple document with some code, some math, and
+use of include and Mako. The task is to solve a differential equation
+by SymPy on the fly in the code and use SymPy output directly
+in the text. For this goal, we write the SymPy code in a separate
+file where a `dump` function can be used for heavily printing
+of intermediate results, but a global variable `allow_printing`
+determines whether printing is turned on and off: we want it on
+when debugging, but off when compiling our document.
+
+The document starts with an author, his address, and the date, where
+author and address are Mako variables we can specify on the command line
+when compiling the document. This text is a Markdown cell and therefore
+starts with `-----`:
+
+@@@CODE .test1.aipynb fromto: -----@## Math
+Note that a double `##` is a Mako comment line and it will not be a
+part of the final output from Mako. `IC` is another variable that must
+be specified on the command line (and fed to Mako) for the initial
+condition of the differential equation.
+
+Next follows the math part where we have an included SymPy code
+to solve the math problem. The SymPy is in the file `.solve_dyeqy.py`:
+
+@@@CODE .solve_dyeqy.py
+This is just standard Python code. The `__name__` variable equals
+`__builtin__` when we run this code inside Mako so then the test block
+is inactive. Instead, we can define `allow_printing = False`,
+call `solve()`, and store its output in variables such that we can access
+them in the running text. Here is the syntax:
+
+@@@CODE .test1.aipynb fromto: # Math@## Code
+Note how we in the middle of math expressions use Mako variables taken
+from both the command line, such as `${IC}`, and from the
+Python code, such as `${y_expr}` and `${C_expr}`!
+
+We can now define some code cells for execution. We want to
+create a Python code for the solution, using the SymPy variable
+`y_expr` and SymPy's ability to write the expression for
+a numerical Python function, here called `y(t)`. Note that the
+delimiter for a Python code cell is `-----py`.
+
+@@@CODE .test1.aipynb fromto: ## Code@## Compilation
+
+!bwarning Remark
+The way we use Mako here hides the computations by SymPy.
+Sometimes this is the desired behavior in a text. In other
+occasions, however, you may want to show all the SymPy steps
+and then you can do that explicitly in notebook cells.
+If you want to show just some selected steps, you can
+show the code as Markdown code using the delimiter `-----py-t`
+instead of `-----py`.
+!ewarning
+
+Finally, we show how to compile the ascii file into a Jupyter Notebook,
+using a console cell that is to be shown as plain Markdown Bash code.
+
+@@@CODE .test1.aipynb fromto: ## Compilation@
+
+What we have not shown here, is the ability to call Python functions
+in the text. We could, if it was sensible, call the `solve` function
+in the text, e.g., as in
+`...and the solution becomes ${solve()[0]}`. In addition, you can
+define lists and dictionaries in Python and walk through them in
+the text with the Mako constructs `% for e in mylist:` and
+`% for key in mydict:`. Indentation does not count, so the for loop
+must be ended with `% endfor`. Similarly, there is branching using
+the syntax `% if condition:`, `% elif condition:`, `% else:`, and
+finally `% endif`.
+
+======= The compiled file =======
+
+We compile "our example file": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/.test1.aipynb" by the following command:
+
+!bc sys
+Terminal> python ipynb_generator.py .test1.aipynb NAME="Core Dump" \
+          ADDRESS="ADDRESS=Seg. Fault Ltd and Univ. of C. Space" \
+	  IC=2
+!ec
+Note that some Mako variables are supposed to be given on the command line,
+here three, while others are defined in Python code within `<%` and `%>`
+tags in the document.
+
+The output of the `ipynb_generator.py` command above
+is a notebook file `.test1.ipynb`. The file looks like this:
+
+@@@CODE .test1.ipynb
+
+The notebook file resides in GitHub and can be automatically
+"rendered there": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/.test1.ipynb".
+
+======= The generator code =======
+
+We shall now list the code that translates the ascii input, with the
+special syntax explained, into a notebook. The algorithmic steps are
+
+ o Read the file.
+ o Find all include lines and include the corresponding text.
+ o Run Mako on the file.
+ o Make a `cells` list of all cells., i.e., detect
+   the beginning of a new cell by the delimiter line `-----`.
+   The `cells` list consists of elements of 3-lists, where each
+   3-list has the cell type, a description, and all the lines of
+   the cell as its three elements.
+ o When making a new element in `cells`, see if the delimiter
+   line has a language specification and therefore is a code cell,
+   or if it is a plain Markdown code cell.
+ o Go through `cells` and join separate lines in each cell into a string.
+ o Import functions from `IPython.nbformat.v4` for translating
+   the information in the `cells` list into a cell list `nb_cells` suitable
+   for the nootebook.
+ o Write the `nb_cells` list to JSON format.
+
+The `read` function looks as follows.
+
+@@@CODE ipynb_generator_v4.py fromto: def read@def write
+The line `fullname = shortname2language[shortname]` is not easy
+to understand unless we have the definition of the dictionary
+
+@@@CODE ipynb_generator_v4.py fromto: # Mapping of @def read
+
+The translation from a `cells` list to the similar list needed
+by the IPython notebook writing functions is taken care of
+in the following function:
+
+@@@CODE ipynb_generator_v4.py fromto: def write@def driver
+
+A driver or main program is needed:
+
+@@@CODE ipynb_generator_v4.py fromto: def driver@def test_
+
+The "true generator file": "https://github.com/hplgit/doconce/blob/master/doc/src/ipynb/ipynb_generator.py" has support for notebook format version 3 and 4
+and contains also a lot of `logging` statements to aid
+debugging.
+
+!bsummary
+Hopefully, this example has shown
+
+ o how to generate your input own format for writing Jupyter notebooks,
+ o how you can extend such a format with a preprocessor like Mako,
+ o how the `IPython.nbformat` functions can be used for writing notebooks.
+!esummary

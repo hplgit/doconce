@@ -467,12 +467,12 @@ FIGURE:[../doc/src/manual/fig/wave1D, width=200]
 idx{movies}
 
 
-# Test multi-line caption in figure
+# Test multi-line caption in figure with sidecap=True
 
-Here is figure ref{myfig} with a long multi-line caption
-and an extra space before the FIGURE keyword.
+Here is figure ref{myfig} with a long (illegal) multi-line caption
+containing inline verbatim text:
 
-FIGURE: [../doc/src/manual/fig/wave1D.png, width=500] A long
+FIGURE: [../doc/src/manual/fig/wave1D.png, width=500 sidecap=True] A long
 caption spanning
 several lines and containing verbatim words like `my_file_v1` and `my_file_v2`
 as well as math with subscript as in $t_{i+1}$. label{myfig}
@@ -481,7 +481,7 @@ as well as math with subscript as in $t_{i+1}$. label{myfig}
 
 Test URL as figure name:
 
-FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500, frac=0.8]
+FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8]
 
 # #if FORMAT in ("html", "sphinx")
 Test SVG figure:
@@ -1115,7 +1115,7 @@ exercises.
 
 ===== Exercise: Test of plain text exercise =====
 label{my:exer1}
-file=myexer1.py
+file=myexer1
 
 Very short exercise. What is the capital
 of Norway?
@@ -1145,7 +1145,7 @@ in previous DocOnce versions:
 ===== Project: Explore Distributions of Random Circles =====
 
 label{proj:circle1}
-file=circles.pdf
+file=circles
 kw=ipynb
 
 The formula for a circle is given by
@@ -1204,7 +1204,7 @@ $x_0$, $y_0$, and $R$ quantities.
 !bsubex
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
 
-file=norm.py  # test local filename for subexercise
+file=norm  # test local filename for subexercise
 !esubex
 
 !bsubex

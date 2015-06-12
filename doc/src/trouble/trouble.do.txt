@@ -19,6 +19,14 @@ can go wrong.
 
 ======= General Problems =======
 
+===== How do I debug a DocOnce file that results in a strange error message? =====
+
+Isolate the problem by a ``bisection'' method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the next so you understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.
+
 ===== GitHub gh-pages will not display files starting with a dot or underscore =====
 
 This is a typical problem related to publishing either splitted HTML documents
@@ -56,6 +64,12 @@ If you work on Windows, you probably have to avoid using the Mako preprocessor
 (it is not used unless you use Mako functions, variables, or control
 statements).
 
+===== Preprocess error: unexpected EOF while parsing =====
+
+This error may arise from a syntax error with a colon at the end
+of if tests, e.g. `# #if FORMAT == 'html':`. Colon is not used
+with Preprocess (but required by Mako: `if FORMAT == 'html':`).
+
 ===== When I set a large portion of text in color, only a part of it becomes colored =====
 
 Although DocOnce features a color inline tag (`color`),
@@ -81,15 +95,16 @@ moving constructions with braces (`label`, `cite`) out of the
 text to be colored.
 !ec
 
-===== How can I make use of a native LaTeX environments (example environemt for instance)? =====
+===== How can I make use of a native LaTeX environments (example environment for instance)? =====
 label{trouble:latex:envir:native}
 
-LaTeX writers often lack their favorite environments, but DocOnce
-has a way to define such environments, with corresponding typesetting
-also for HTML and all other output formats. See the
-section *User-Defined Environments* in the DocOnce manual. It contains
-all the details for using a standard example or theorem environment
-in LaTeX output.
+LaTeX writers often lack their favorite environments, but DocOnce has
+a way to define such environments, with corresponding typesetting also
+for HTML and all other output formats. See the section "User-Defined
+Environments":
+"http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments"
+in the DocOnce manual. It contains all the details for using a
+standard example or theorem environment in LaTeX output.
 
 ===== How can I create a more tailored code environment in LaTeX than what DocOnce offers? =====
 
@@ -123,14 +138,6 @@ deep passion, very much hard (and exciting!)
 work, and *thinking constantly about it*.
 !eblock
 
-Without `<linebreak>` the rendering becomes
-
-!bblock (large) So - how to be excellent?
-Excellence is not a planned goal - it is the corollary of
-deep passion, very much hard (and exciting!)
-work, and *thinking constantly about it*.
-!eblock
-
 The `<linebreak>` is a newline in LaTeX if it has preceding text,
 otherwise it is a `\vspace{3mm}`. In HTML, `<linebreak>` is `<br>`.
 
@@ -141,6 +148,33 @@ More vertical space is obtained by repeated use of `<linebreak>`:
 <linebreak>
 <linebreak>
 !ec
+
+===== How do I get ``Figure'' written in another language? =====
+label{latex:custom:fig:name}
+
+DocOnce documents can be written in any language, but figure captions
+typically contain the English word ``Figure''. This must be fixed
+by auto-editing the output file after translation by `doconce format`.
+
+In LaTeX you can use your native language package, e.g.,
+
+!bc sys
+doconce replace '% insert custom LaTeX commands...' '\\usepackage[norsk]{babel} mydoc.tex
+!ec
+to get the Norwegian language.
+
+In other formats you have do more manual substitutions:
+
+!bc
+doconce replace Figure Figur mydoc.html
+doconce replace figure figur mydoc.html
+!ec
+or both in one command using regular expressions:
+
+!bc
+doconce stubst '([Ff]igur)e' '\g<1>' mydoc.html
+!ec
+
 
 ===== Spellcheck reports mistakes that I cannot find =====
 
@@ -290,7 +324,7 @@ Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 !ec
 
 
-===== Wrong Norwegian charcters =====
+===== Wrong Norwegian characters =====
 
 When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be LATIN1 and not UTF-8. See
@@ -319,8 +353,9 @@ as is unless this option is included.
 
 ===== Emacs editing does not work properly because of "regexp overflow" =====
 
-Sometimes the Doonce editing mode (see Section ref{emacs:doconce}) in Emacs
-leads to an error message ending with "overflow in regexp matcher".
+Sometimes the Doonce editing mode (see the
+*Emacs DocOnce Formatter* section in the manual) in Emacs
+leads to an error message ending with ``overflow in regexp matcher''.
 This error is due to some regular expression used in the DocOnce editing
 mode. The remedy is to split the file into smaller pieces and include
 the pieces using the `preprocess` directive `#include "piece.do.txt"`.
@@ -497,7 +532,7 @@ This is a major problem with pressbooks.com.
    file that Mako sees: `tmp_preprocess__mydoc.do.txt` if
    the DocOnce file has name `mydoc.do.txt`.
  * Use double `##` (Mako comment) to comment out Mako calls
-   of the form `${name...}`.
+   to functions or Mako variables.
 
 ===== The Mako preprocessor is seemingly not run =====
 
@@ -553,9 +588,14 @@ Here are possible problems for Mako:
 
 ===== The Mako preprocessor claims a variable is undefined =====
 
+## Must read mako syntax from file to avoid disturbing mako...
+
 Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
-For example, ${\cal O}(\Delta x^2)$ is valid LaTeX, but
+For example,
+
+@@@CODE .mako_problem1.do.txt
+is valid LaTeX, but
 the dollar sign and curly braces confuse Mako. Rewrite such
 mathematics. It is wise to not use `${` anywhere in LaTeX mathematics.
 Create a newcommand if there are no other possible rewritings.
@@ -676,6 +716,16 @@ See also Section ref{trouble:bsol:code} - it is the same problem.
 
 ======= Problems with reST/Sphinx Output =======
 
+===== Sphinx directory generation aborts with ``label empty or too long'' =====
+
+This is a strange error that might arise from a too long title of the document.
+The solution is to specify a shorter title when running `doconce sphinx_dir` (i.e., to avoid getting the title from the original `.do.txt` document):
+
+!bc sys
+Terminal> doconce sphinx_dir title="Short Title" \
+          authors="A. B. Crunch" theme=pyramid mydoc
+!ec
+
 ===== Title level inconsistent =====
 
 reST does not like jumps in the levels of headings. For example, you cannot
@@ -741,6 +791,23 @@ to get pygmentized computer code in LaTeX:
 Terminal> doconce ptex2tex mydoc envir=minted
 Terminal> pdflatex -shell-escape mydoc
 !ec
+
+===== LaTeX error because of underscores =====
+
+LaTeX requires prefixing underscores by a backslash. Either typeset
+words with underscores in inline verbatim text (so you do not need
+the backslash) or use the preprocessor
+to insert LaTeX-specific text with a backslash, e.g.,
+
+!bc do
+Here is a word underscore:
+% if FORMAT in ('latex', 'pdflatex'):
+my\_word
+% else
+my_word
+% endif
+!ec
+Usually, inline verbatim text is way to go with underscores anyway.
 
 ===== LaTeX does not like underscores in URLs =====
 
@@ -902,6 +969,7 @@ a proper `texttt` command (since verbatim font constructions does not work
 inside figure captions) and precede underscores by backslash.)
 
 ===== I want to tune the top (preamble) of the LaTeX file =====
+label{latex:custom:preamble}
 
 It is easy to provide
 a customized preamble text:
@@ -923,12 +991,69 @@ fix the preamble for the future so updates of the DocOnce-generated
 preamble will not be available for this document.)
 
 Note also that `doconce replace` and `doconce subst` can be used
-after `doconce formt` to tune the LaTeX code in the preamble (and
+after `doconce format` to tune the LaTeX code in the preamble (and
 elsewhere). Such automatic edits are useful if they are few.
 
 There are comment lines with `--- begin preamble ---` and
-`--- end preamble ---` in the generate `.p.tex` file that can be
-used to replace the whole preamble by another text.
+`--- end preamble ---` in the generated `.tex` file that can be
+used to replace the whole preamble by another text via a script.
+
+===== How can I control the placement of figures? =====
+
+In general, LaTeX will control the placement, and DocOnce applies
+(for now) the `[t]` option to recommend figures to be placed at the top
+of a page. This can be changed in different ways, using
+techniques from Sections ref{latex:custom:fig:name} and
+ref{latex:custom:preamble}. The `float` package and the `[H]` (``here'')
+option for figures makes figures appear closer to their original
+location:
+
+!bc latexcod
+\usepackage{float}
+\floatplacement{figure}{H}
+!ec
+The `[t]` option in figures must be removed:
+
+!bc sys
+doconce replace '{figure}[t]' '{figure}' mydoc.tex
+!ec
+
+__Custom preamble file.__
+Place the lines above in a file `mypreamble.tex` and ask DocOnce to add
+this file to the preamble: `--latex_preamble=mypreamble.tex`.
+
+__Edit the .tex file.__
+There is a special line in the `.tex` file,
+
+!bc
+% insert custom LaTeX commands...
+!ec
+which can be used
+to insert desired commands, in this case by
+
+!bc sys
+doconce subst '% insert custom LaTeX.+' '\\usepackage{float}\n\floatplacement{figure}{H}' mydoc.tex
+!ec
+
+Note that you in both cases
+need to run the `doconce replace` above command to remove the `[t]`
+option.
+
+===== How can I get a two-column text? =====
+
+Simply add `twocolum` to the `\documentclass` command. If the `mydoc.tex`
+file looks like
+
+!bc latexcod
+\documentclass[%
+twoside,
+...
+!ec
+you can do a simple substitution edit
+
+!bc sys
+Terminal> doconce subst 'twoside,' 'twocolumn,\ntwoside,' mydoc.tex
+!ec
 
 ===== Solution heading in exercise solutions appear after the solution content =====
 label{trouble:bsol:code}
@@ -1064,7 +1189,7 @@ use an HTML template. The DocOnce source is then the body of text
 `--html_template=filename` command-line option will then embed the
 DocOnce text in the specified template file, where you can use style
 sheets and desired constructs in the header and footer.  The template
-can have "slots" for a title (`%(title)s`), a date (`%(date)s`), and
+can have ``slots'' for a title (`%(title)s`), a date (`%(date)s`), and
 the main body of text (`%(main)s`).  For typesetting code, `pygments`
 is used (if installed) and can be turned off by `--no_pygments_html`
 (leaving code in gray boxes).
@@ -1087,9 +1212,10 @@ simply by automatic editing of the HTML code in a little shell script:
 doconce replace '<p class="caption">' \
  '<p style="width: 50%; font-style: italic; color: blue">' mydoc.html
 doconce replace '<hr class="figure">' \
- '<hr style="width: 50%">' mydoc.html
+ '<hr style="width:60%, font-style: normal">' mydoc.html
 !ec
 
+### end
 
 ======= Problems with reveal/deck HTML5 slides =======
 

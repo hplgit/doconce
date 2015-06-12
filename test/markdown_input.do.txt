@@ -47,14 +47,15 @@ fi
 # This is Bash - what happens to this comment?
 ```
 
-The same snippet typeset explicitly as Bash:
+The same snippet typeset explicitly as Bash, but with a common
+indentation to be removed:
 
 ```Bash
-file=$1
-if [ -f $file ]; then
-  cp $file $file.cop
-fi
-# This is Bash - what happens to this comment?
+     file=$1
+     if [ -f $file ]; then
+       cp $file $file.cop
+     fi
+     # This is Bash - what happens to this comment?
 ```
 
 And here is Python:

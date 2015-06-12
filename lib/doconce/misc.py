@@ -21,6 +21,16 @@ of intermediate results"""),
 (may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
+    ('--exercise_numbering=',
+     """absolute: exercises numbered as 1, 2, ... (default)
+chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
+         with a chapter or appendix prefix."""),
+    ('--exercises_in_zip',
+     'Place each exercises as an individual DocOnce file in a zip archive.'),
+    ('--exercises_in_zip_filename=',
+     """Filenames of individual exercises in zip archive.
+logical: use the (first) logical filename specified by file=...
+number:  use either absolute exercise number or chapter.localnumber."""),
     ('--encoding=',
      'Specify encoding (e.g., latin1 or utf-8).'),
     ('--no_ampersand_quote', 'Turn off special treatment of ampersand (&). Needed, e.g., when native latex code for tables are inserted in the document.'),
@@ -307,10 +317,23 @@ Note: the colors in mdfbox and other boxes can customized.
 """),
     ('--latex_admon_color=',
      """The color to be used as background in admonitions.
+A single value applies to all admons:
 Either rgb tuple or saturated color a la yellow!5:
   --latex_admon_color=0.1,0.1,0.4
   '--latex_admon_color=yellow!5'
 Note the quotes, needed for bash, in the latter example.
+
+Multiple values can be assigned, one for each admon (all admons must
+be specified):
+  '--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white'
+
+If --latex_admon=mdfbox, the specification above with color1!X!color2
+will automatically trigger 2*X as the background color of the frametitle.
+
+There are predefined multiple values, e.g.,
+  --latex_admon_color=colors1
+gives red warnings, blue notice, orange questions, green summaries and
+yellow blocks, automatically adjusted with darker frametitles for
 
 If --latex_admon=mdfbox, the background of the title and
 the color of the border of box can also be customized by
@@ -342,10 +365,6 @@ Otherwise the specification must be a mapping for each envir
 that should be changed inside the admons:
 --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
 (from-to,from-to,... syntax)."""),
-    ('--latex_exercise_numbering=',
-     """absolute: exercises numbered as 1, 2, ...
-chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-         with a chapter prefix."""),
     ('--latex_subex_header_postfix=',
      """Default: ).
 Gives headers a), b), etc. Can be set to period, colon, etc."""),
@@ -2155,15 +2174,16 @@ def remove_exercise_answers():
 
 def clean():
     """
-    Remove all DocOnce generated files and trash files.
-    Place removed files in generated subdir Trash.
+    Remove all DocOnce-generated files and the Trash dir if it exists.
+    Place new removed files in Trash.
 
     For example, if ``d1.do.txt`` and ``d2.do.txt`` are found,
     all files ``d1.*`` and ``d1.*`` are deleted, except when ``*``
-    is ``.do.txt`` or ``.sh``. The subdirectories ``sphinx-rootdir``
-    and ``html_images`` are also removed, as well as all ``*~`` and
-    ``tmp*`` files and all files made from splitting (split_html,
-    split_rst).
+    is ``.do.txt`` or ``.sh``. The subdirectories ``sphinx-*``,
+    ``sphinx_*``, ``html_images``, ``latex_figs``, and
+    ``standalone_exercises`` are also removed,
+    as well as all ``*~`` and ``tmp*`` files and all files made from
+    splitting (split_html, split_rst).
     """
     if os.path.isdir('Trash'):
         print
@@ -2194,7 +2214,8 @@ def clean():
                    glob.glob('.*.exerinfo') +
                    glob.glob('.*.quiz*') +
                    glob.glob('.*_html_file_collection'))
-    directories = ['html_images', 'latex_figs'] + glob.glob('sphinx-*') + \
+    directories = ['html_images', 'latex_figs', 'standalone_exercises'] \
+                  + glob.glob('sphinx-*') + \
                   glob.glob('sphinx_*')
     for d in directories:
         if os.path.isdir(d):
@@ -6024,8 +6045,9 @@ _replacements = [
     (r"(idx|label|ref|cite)\{.*?\}", ""),
     (r"cite\[.+?\]\{.+?\}", ""),
     (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
-    (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),
-    (r' +\| +', ' '),
+    (r"^(file|solution)=.+$", '', re.MULTILINE),  # file= in exercises
+    (r'^ *\|[\-rlc]+?\|', '', re.MULTILINE),  # table line
+    (r' +\| +', ' '),  # table line
     ('<linebreak>', ''),
     (r"={3,}",  ""),  # section
     (r"^__(.+?)__", r"\g<1>\n", re.MULTILINE),  # paragraph
@@ -6293,6 +6315,9 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
                   text, flags=re.DOTALL|re.MULTILINE)
     text = re.sub(r'^!bt *\n(.*?)^!et', '', text,
                   flags=re.DOTALL|re.MULTILINE)
+
+    # Remove all comments
+    text = re.sub(r'^#.+$', '', text, flags=re.MULTILINE)
 
     # Check for double words (before removing verbatim)
 
@@ -8232,6 +8257,59 @@ and other formats.""" % envir
                 print message
                 print line + '\n'
 
+def _usage_ipynb2doconce():
+    print 'doconce ipynb2doconce notebook.ipynb [--cell_delimiter]'
+    print 'translate IPython/Jupyter notebooks to doconce'
+
+def ipynb2doconce():
+    if len(sys.argv) < 2:
+        _usage_ipynb()
+        sys.exit(0)
+
+    cell_delimiter = '--cell_delimiter' in sys.argv
+    filename = sys.argv[1]
+    if not os.path.isfile(filename):
+        print '*** error: no file "%s" found' % filename
+        sys.exit(1)
+    f = open(filename, 'r')
+    jsonstring = f.read()
+    f.close()
+    # Turn json string into a NotebookNode object
+    from IPython.nbformat.reader import reads
+    nb = reads(jsonstring)
+    # nb is dict-like with keys nbformat_minor, cells, nbformat, metadata
+    dostr = ''
+    from doconce import markdown2doconce
+    cell_type_prev = None
+    for cell in nb['cells']:
+        #print 'XXX', cell['cell_type'], 'prev:', cell_type_prev, '\n', cell['source']
+        if cell_delimiter and cell['cell_type'] != cell_type_prev:
+            dostr += '# ---------- %s cell\n' % cell['cell_type']
+        if cell['cell_type'] == 'markdown':
+            s = markdown2doconce(cell['source'], ipynb_mode=True)
+            if cell_type_prev == 'markdown':
+                s += '\n'
+            else:
+                s += '\n\n'
+        elif cell['cell_type'] == 'code':
+            collapsed = cell['metadata'].get('collapsed', False) \
+                        if cell['metadata'] else False
+            source = cell['source']
+            # Remove % (matplotlib) directives from source
+            source = re.sub('^%.+\n', '', source, flags=re.MULTILINE).strip()
+            s = '\n!bc py' + ('hid' if collapsed else 'cod') + '\n' + source + '\n!ec\n'
+        dostr += s
+        cell_type_prev = cell['cell_type']
+    # Fix common problems
+    # Missing blank line before heading
+    dostr = re.sub('^!e([ct])\n===', r'!e\g<1>\n\n===', dostr, flags=re.MULTILINE)
+    # Too many blanks before !bt and !bc
+    dostr = re.sub(r'\n\n\n+!b([ct])', r'\n\n!b\g<1>', dostr)
+    filename = filename.replace('.ipynb', '.do.txt')
+    f = open(filename, 'w')
+    f.write(dostr)
+    f.close()
+    print 'output in', filename
 
 # ---- Attempt to make a pygments syntax highlighter for DocOnce ----
 try:

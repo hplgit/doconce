@@ -27,10 +27,17 @@ def ipynb_author(authors_and_institutions, auth2index,
         authors.append(author_str)
     s ='authors = [%s]' % (', '.join(authors))
     # -----------------------------------------------------
-    # New code: typeset as lines
+    # New code: typeset as lines, but insert a comment so we
+    # can convert back <!-- dom:AUTHOR: ... ->
     s = '\n'
     for author, i, e in authors_and_institutions:
-        s+= '_%s_' % (author)
+        s+= '<!-- dom:AUTHOR: ' + author
+        if e is not None:
+            s += ' Email:' + e
+        if i is not None:
+            s += ' at ' + ' & '.join(i)
+        s += ' -->\n'
+        s+= '<!-- Author: --> _%s_' % (author)
         if e is not None:
             s += ' (email: `%s`)' % e
         if i is not None:
@@ -47,13 +54,17 @@ def ipynb_table(table):
     return text
 
 def ipynb_figure(m):
+    # m.group() must be called before m.group('name')
+    text = '<!-- dom:%s -->\n<!-- begin figure -->\n' % m.group()
+
     filename = m.group('filename')
     caption = m.group('caption').strip()
     opts = m.group('options').strip()
     if opts:
         info = [s.split('=') for s in opts.split()]
         opts = ' ' .join(['%s=%s' % (opt, value)
-                          for opt, value in info if opt not in ['frac']])
+                          for opt, value in info
+                          if opt not in ['frac', 'sidecap']])
 
     global figure_files
     if not filename.startswith('http'):
@@ -71,14 +82,12 @@ def ipynb_figure(m):
     if display_method == 'md':
         # Markdown image syntax for embedded image in text
         # (no control of size, then one must use HTML syntax)
-        text = ''
         if label is not None:
             #text += '<a name="%s"></a>\n' % label
             text += '<div id="%s"></div>\n' % label
         text += '![%s](%s)' % (caption, filename)
     elif display_method == 'imgtag':
         # Plain <img tag, allows specifying the image size
-        text = ''
         if label is not None:
             #text += '<a name="%s"></a>' % label
             text += '<div id="%s"></div>\n' % label
@@ -94,12 +103,18 @@ def ipynb_figure(m):
         # numbered. doconce.py makes a test prior to removal of blocks and
         # runs the handle_figures and movie substitution if ipynb format
         # and Image or movie object display.
-        text = '\n!bc pycod\n'
+        text += '\n'
+        if label is not None:
+            text += '<div id="%s"></div>' % label
+        text += '<!-- options: %s -->\n' % opts
+        text = '!bc pycod\n'
         global figure_encountered
         if not figure_encountered:
             # First time we have a figure, we must import Image
             text += 'from IPython.display import Image\n'
             figure_encountered = True
+        if caption:
+            text += '# ' + caption
         if filename.startswith('http'):
             keyword = 'url'
         else:
@@ -109,18 +124,23 @@ def ipynb_figure(m):
     else:
         print '*** error: --ipynb_figure=%s is illegal, must be md, imgtag or Image' % display_method
         _abort()
+    text += '<!-- end figure -->\n'
     return text
 
 def ipynb_movie(m):
+    # m.group() must be called before m.group('name')
+    text = '<!-- dom:%s -->' % m.group()
+
     global html_encountered, movie_encountered, movie_files
     filename = m.group('filename')
     caption = m.group('caption').strip()
     youtube = False
+
     if 'youtu.be' in filename or 'youtube.com' in filename:
         youtube = True
     if '*' in filename or '->' in filename:
         print '*** warning: * or -> in movie filenames is not supported in ipynb'
-        return '<!-- %s -->' % m.group()
+        return text
 
     def YouTubeVideo(filename):
         # Use YouTubeVideo object
@@ -140,11 +160,12 @@ def ipynb_movie(m):
         text += 'YouTubeVideo("%s")\n' % name
         return text
 
+    text += '\n<!-- begin movie -->\n'
     display_method = option('ipynb_movie=', 'HTML')
     if display_method == 'md':
-        return html_movie(m)
-    if display_method.startswith('HTML'):
-        text = '\n!bc pycod\n'
+        text += html_movie(m)
+    elif display_method.startswith('HTML'):
+        text += '\n!bc pycod\n'
         if youtube and 'YouTube' in display_method:
             text += YouTubeVideo(filename)
             if caption:
@@ -159,9 +180,8 @@ def ipynb_movie(m):
             if not filename.startswith('http'):
                 movie_files.append(filename)
         text += '!ec\n'
-        return text
-    if display_method == 'ipynb':
-        text = '!bc pycod\n'
+    elif display_method == 'ipynb':
+        text += '!bc pycod\n'
         if youtube:
             text += YouTubeVideo(filename)
             if caption:
@@ -197,10 +217,11 @@ video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:vide
             if caption:
                 text += '\nprint "%s"' % caption
         text += '!ec\n'
-        return text
-    print '*** error: --ipynb_movie=%s is not supported' % display_method
-    _abort()
-
+    else:
+        print '*** error: --ipynb_movie=%s is not supported' % display_method
+        _abort()
+    text += '<!-- end movie -->\n'
+    return text
 
 def ipynb_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -335,8 +356,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             language_spec = language2pandoc.get(language, '')
             #code_blocks[i] = '\n' + indent_lines(code_blocks[i], format) + '\n'
             code_blocks[i] = "```%s\n" % language_spec + \
-                             indent_lines(code_blocks[i], format) + \
-                             "\n```"
+                             indent_lines(code_blocks[i].strip(), format) + \
+                             "```"
             ipynb_code_tp[i] = 'markdown'
         elif tp.startswith('pyshell') or tp.startswith('ipy'):
             lines = code_blocks[i].splitlines()
@@ -347,8 +368,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 for j in range(len(lines)):
                     if lines[j].startswith('>>>') or lines[j].startswith('... '):
                         lines[j] = lines[j][4:]
-                    elif lines[j].startswith('In ['):
+                    elif lines[j].startswith('In ['):  # IPython
                         lines[j] = ':'.join(lines[j].split(':')[1:]).strip()
+                    elif lines[j].startswith('   ...: '): # IPython
+                        lines[j] = lines[j][8:]
                     else:
                         # output (no prefix or Out)
                         lines[j] = ''
@@ -533,17 +556,18 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # Make IPython structures
 
-    ipy_version = int(option('ipynb_version=', '3'))
-    if ipy_version == 3:
+    nb_version = int(option('ipynb_version=', '3'))
+    if nb_version == 3:
         from IPython.nbformat.v3 import (
             new_code_cell, new_text_cell, new_worksheet,
             new_notebook, new_metadata, new_author)
         nb = new_worksheet()
-    elif ipy_version == 4:
+    elif nb_version == 4:
         from IPython.nbformat.v4 import (
             new_code_cell, new_markdown_cell, new_notebook)
         cells = []
 
+    mdstr = []  # plain md format of the notebook
     prompt_number = 1
     for block_tp, block in notebook_blocks:
         if (block_tp == 'text' or block_tp == 'math') and block != '':
@@ -551,46 +575,66 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             # out as empty blocks, should detect that situation
             # (challenging - can have multiple lines of comments,
             # or begin and end comment lines with important things between)
-            if ipy_version == 3:
+            if nb_version == 3:
                 nb.cells.append(new_text_cell(u'markdown', source=block))
-            elif ipy_version == 4:
+            elif nb_version == 4:
                 cells.append(new_markdown_cell(source=block))
+            mdstr.append(('markdown', block))
         elif block_tp == 'cell' and block != '' and block != []:
             if isinstance(block, list):
                 for block_ in block:
+                    block_ = block_.rstrip()
                     if block_ != '':
-                        if ipy_version == 3:
+                        if nb_version == 3:
                             nb.cells.append(new_code_cell(
                                 input=block_,
                                 prompt_number=prompt_number,
                                 collapsed=False))
-                        elif ipy_version == 4:
+                        elif nb_version == 4:
                             cells.append(new_code_cell(
                                 source=block_,
                                 execution_count=prompt_number))
                         prompt_number += 1
+                        mdstr.append(('codecell', block_))
             else:
+                block = block.rstrip()
                 if block != '':
-                    if ipy_version == 3:
+                    if nb_version == 3:
                         nb.cells.append(new_code_cell(
                             input=block,
                             prompt_number=prompt_number,
                             collapsed=False))
-                    elif ipy_version == 4:
+                    elif nb_version == 4:
                         cells.append(new_code_cell(
                             source=block,
                             execution_count=prompt_number))
                     prompt_number += 1
+                    mdstr.append(('codecell', block))
         elif block_tp == 'cell_hidden' and block != '':
-            if ipy_version == 3:
+            block = block.rstrip()
+            if nb_version == 3:
                 nb.cells.append(new_code_cell(
                     input=block, prompt_number=prompt_number, collapsed=True))
-            elif ipy_version == 4:
+            elif nb_version == 4:
                 cells.append(new_code_cell(
                     source=block, execution_count=prompt_number))
             prompt_number += 1
+            mdstr.append(('codecell', block))
 
-    if ipy_version == 3:
+    """
+    # Dump the notebook cells in a simple ASCII format
+    # (doc/src/ipynb/ipynb_generator.py can translate it back to .ipynb file)
+    f = open(dofile_basename + '.md-ipynb', 'w')
+    for cell_tp, block in mdstr:
+        if cell_tp == 'markdown':
+            f.write('\n-----\n\n')
+        elif cell_tp == 'codecell':
+            f.write('\n-----py\n\n')
+        f.write(block)
+    f.close()
+    """
+
+    if nb_version == 3:
         # Catch the title as the first heading
         m = re.search(r'^#+\s*(.+)$', filestr, flags=re.MULTILINE)
         title = m.group(1).strip() if m else ''
@@ -608,12 +652,10 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
         # Convert nb to json format
         filestr = nbjson.writes(nb)
-    elif ipy_version == 4:
+    elif nb_version == 4:
         nb = new_notebook(cells=cells)
         from IPython.nbformat import writes
         filestr = writes(nb, version=4)
-
-
 
     # Check that there are no empty cells:
     if '"input": []' in filestr:
@@ -718,8 +760,13 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
                          flags=re.MULTILINE)
 
-    filestr = re.sub(r'idx\{.+?\}' + '\n?', '', filestr)
-    filestr = re.sub(r'label\{(.+?)\}', '<div id="\g<1>"></div>', filestr)
+    # Save idx{} and label{} as metadata, also have labels as div tags
+    filestr = re.sub(r'((idx\{.+?\})', r'<!-- dom:\g<1> -->', filestr)
+    filestr = re.sub(r'(label\{(.+?)\})', r'<!-- dom:\g<1> --><div id="\g<2>"></div>', filestr)
+    # Also treat special cell delimiter comments that might appear from
+    # doconce ipynb2doconce conversions
+    filestr = re.sub(r'^# ---------- (markdown|code) cell$', '',
+                     filestr, flags=re.MULTILINE)
     return filestr
 
 def define(FILENAME_EXTENSION,
@@ -759,13 +806,13 @@ def define(FILENAME_EXTENSION,
         'linkURL3v': r'[`\g<link>`](\g<url>)',
         'plainURL':  r'<\g<url>>',
         'colortext': r'<font color="\g<color>">\g<text></font>',
-        'title':     r'# \g<subst>',
+        'title':     r'<!-- dom:TITLE: \g<subst> -->\n# \g<subst>',
         'author':    ipynb_author,
-        'date':      '\n_\g<subst>_\n',
-        'chapter':       lambda m: '# '    + m.group('subst'),
-        'section':       lambda m: '## '   + m.group('subst'),
-        'subsection':    lambda m: '### '  + m.group('subst'),
-        'subsubsection': lambda m: '#### ' + m.group('subst') + '\n',
+        'date':      '\nDate: _\g<subst>_\n',
+        'chapter':       lambda m: '# '   + m.group('subst'),  # seldom used in notebooks
+        'section':       lambda m: '# '   + m.group('subst'),
+        'subsection':    lambda m: '## '  + m.group('subst'),
+        'subsubsection': lambda m: '### ' + m.group('subst') + '\n',
         'paragraph':     r'**\g<subst>**\g<space>',
         'abstract':      r'\n**\g<type>.** \g<text>\n\n\g<rest>',
         'comment':       '<!-- %s -->',

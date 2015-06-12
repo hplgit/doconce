@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,7 +10,7 @@
     
     <title>DocOnce Quick Reference</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -44,11 +45,7 @@
     
     <link rel="top" title="DocOnce Quick Reference" href="index.html" />
     <link rel="prev" title="DocOnce Quick Reference" href="index.html" />
-
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+ 
   
        <style type="text/css">
          div.admonition {
@@ -85,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 9, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -921,7 +918,7 @@ transforming a <code class="docutils literal"><span class="pre">.do.txt</span></
 list of capabilities:</p>
 <div class="highlight-bash"><div class="highlight"><pre>DocOnce version 1.0.3
 Usage: doconce <span class="nb">command</span> <span class="o">[</span>optional arguments<span class="o">]</span>
-commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format <span class="nb">help </span>sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 <span class="c"># transform doconce file to another format</span>
@@ -1041,6 +1038,9 @@ doconce latex2doconce latexfile
 
 <span class="c"># check if there are problems with translating latex to doconce</span>
 doconce latex_dislikes latexfile
+
+<span class="c"># translate an IPython/Jupyter notebook to doconce</span>
+doconce ipynb2doconce notebookfile
 
 <span class="c"># typeset a doconce document with pygments (for pretty print of doconce itself)</span>
 doconce pygmentize myfile <span class="o">[</span>pygments-style<span class="o">]</span>
@@ -1339,20 +1339,21 @@ examine the DocOnce source and the <code class="docutils literal"><span class="p
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015, HPL.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.4</a>
-      
-      |
-      <a href="_sources/quickref.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="DocOnce Quick Reference"
+             >previous</a> |</li>
+        <li><a href="index.html">DocOnce Quick Reference</a> &raquo;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer">
+        &copy; Copyright 2015, HPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+    </div>
   </body>
 </html>

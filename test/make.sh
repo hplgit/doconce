@@ -73,7 +73,8 @@ system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=s
 
 system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
 
-system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+# Test lst with external and internal styles
+system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles
 cp testdoc.tex testdoc.tex_direct
 
 system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
@@ -115,6 +116,11 @@ cat testdoc.tex >> testdoc.tex_doconce_ptex2tex
 # Test that latex can treat this file
 rm -f *.aux
 system pdflatex -shell-escape testdoc
+
+# Test stand-alone exercises
+system doconce format plain testdoc --exercises_in_zip $ex
+rm -rf standalone_exercises
+unzip testdoc_exercises.zip
 
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
@@ -244,6 +250,12 @@ system doconce format pdflatex author2 --latex_style=elsevier
 system doconce ptex2tex author2
 cp author2.tex author2_elsevier.tex
 
+# Test notebook conversions
+cp ../doc/src/ipynb/example.do.txt nbdemo.do.txt
+doconce replace 'fig/oscillator_general' '../doc/src/ipynb/fig/oscillator_general' nbdemo.do.txt
+doconce format ipynb nbdemo
+doconce ipynb2doconce nbdemo.ipynb
+
 # Test math
 rm -f *.aux
 name=math_test
@@ -271,17 +283,16 @@ for admon_tp in $admon_tps; do
 color=
 opts=
 if [ $admon_tp = 'mdfbox' ]; then
-   color="--latex_admon_color=gray!6"
+   color="--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white"
    opts=--no_abort
 elif [ $admon_tp = 'grayicon' ]; then
    color="--latex_admon_color=gray!20"
 elif [ $admon_tp = 'graybox2' ]; then
    opts=--no_abort
 fi
-system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts
-doconce ptex2tex admon envir=minted
+system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts --latex_code_style=lst
 cp admon.tex admon_${admon_tp}.tex
-system pdflatex -shell-escape admon_${admon_tp}
+system pdflatex admon_${admon_tp}
 echo "admon=$admon_tp"
 if [ -d latex_figs ]; then
     echo "latex_figs:"

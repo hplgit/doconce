@@ -1,0 +1,67 @@
+-----
+## Test of Jupyter Notebook generator
+
+**${NAME}**, ${ADDRESS}
+
+**May 14, 2015**
+
+## Math
+
+This is a test notebook where we solve the following math
+problem:
+
+$$
+y' = y,\quad y(0)=${IC}
+$$
+
+## Solve the problem by SymPy
+<%
+## Make sure to test the Python file first!
+#include ".solve_dyeqy.py"
+allow_printing = False
+y_expr, C_expr, y_func = solve()
+%>
+
+The equation is separable, and we find by standard methods
+that
+
+$$
+y(t) = ${y_expr}.
+$$
+The integration constant is found from the initial condition
+$y(0)=${IC}$ and equals in this case $${C_expr}$.
+
+## Code
+
+We implement the evaulation of $y(t)$ in Python:
+
+<%
+## We use sympy to convert y_expr to a string to
+## be returned as Python code
+import sympy
+## Note that we have y_func which is a real Python
+## function, but here we make a similar one: y(t)
+## so the user can see it.
+%>
+
+-----py
+from numpy import exp
+
+def y(t):
+    return ${sympy.printing.lambdarepr.lambdarpr(${y_expr})}
+
+## Try values
+y(0)
+-----py
+y(1), 2*exp(1)
+-----py
+y(2), 2*exp(2)
+
+## Compilation
+-----
+This is how we run the notebook generator on files with
+extension `.aipynb`:
+
+## console cell, but typeset as pure code (-t extension)
+-----sys-t
+Terminal> ipynb_generator.py myfile.aipynb  MYVAR=4 GRADE='excellent'

@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: May 12, 2015
+:Date: Jun 11, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -430,6 +430,33 @@ remove surrounding whitespace):
         Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
         Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
         Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
+
+Sidecaption in LaTeX and HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The figure caption can be placed on the (right) side of figures by
+using the ``sidecap`` feature as figure option, e.g.,
+``FIGURE: [myfig, width=500 frac=0.5 sidecap=True]``. The generated
+``latex`` and ``pdflatex`` output then uses the ``sidecap`` package and
+the ``SCfigure`` environment to typeset the figure. Remember to
+use a quite low ``frac`` value for figures with sidecaption (0.5
+for instance). A table is used for typsetting a figure with
+sidecaption in HTML, and a low ``width`` value is recommended.
+The ``sidecap=True`` figure option has no impact on other formats.
+
+Plot Files in LaTeX
+~~~~~~~~~~~~~~~~~~~
+
+Users who applies Matplotlib to make figures get plots with fonts that
+differ from the rest of a LaTeX document.
+A `blog post <http://bkanuka.com/articles/native-latex-plots/>`__ describes
+techniques for overcoming this problem. The plotfile is then a ``.pgf``
+file and one must use the ``pgf`` LaTeX package. DocOnce supports ``.pgf``
+plot files for the ``pdflatex`` output format
+and will make use of such files if they exist. These
+are included by a simple ``\input{file.pgf}``. If no ``.pgf`` file is found,
+the ``pdflatex`` output format will apply ``.pdf``, ``.png``, or ``.jpg`` file,
+in that order of preferance.
 
 Movies  (1)
 -----------
@@ -3587,11 +3614,8 @@ The command-line option ``--no_emoji`` removes all emojis from the output.
 
 .. !split
 
-Environments
-============
-
 Exercises, Problems, Projects, and Examples
--------------------------------------------
+===========================================
 
 .. index:: exercise environment
 
@@ -3609,6 +3633,10 @@ headline surrounded 5 ``=`` characters, and last up to the
 next headline or the end of the file. The headline itself must
 consists of the word *Exercise*, *Problem*, *Project*, or *Example*, followed
 by a colon and a title of the exercise, problem, or project.
+
+Examples on Exercise Syntax
+---------------------------
+
 The next line(s) may contain a label and specification of the
 name of the result file (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:
@@ -3727,7 +3755,7 @@ of hints, list of subexercises, closing remarks, and the main body of
 text.
 
 Typesetting of Exercises
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Tailored formatting of exercises in special output formats can make
 use of the elements in an exercise.  For example, one can imagine web
@@ -3766,7 +3794,7 @@ commands to indicate a subproblem and a solution. In this way, the
 typesetting of the example looks like an exercise equipped with a solution.
 
 List of Exercises, Problems, and Projects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------
 
 DocOnce also supports listing all exercises, problems, and projects
 with corresponding page numbers.
@@ -3789,8 +3817,8 @@ command).
 .. index::
    single: doconce commands; extract_exercises
 
-Extracting Exercises in a Separate Document
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Extracting All Exercises in a Separate Document
+-----------------------------------------------
 
 The command
 
@@ -3808,6 +3836,71 @@ extracts all exercises such that one can publish this document separately,
 with or without solutions and/or short answers.
 By "exercise" we here mean all exerices, problems,
 and projects.
+
+**Note:**
+Instead of having all filtered exercises in one document, yoy
+may (especially for notebooks) want stand-alone documents for each
+exercise, see the next section.
+
+.. _exercises:standalone:
+
+Extracting All Exercises as Stand-Alone Documents
+-------------------------------------------------
+
+It is sometimes convenient to publish exercises from a larger document
+as *individual documents*.
+With the ``--exercises_in_zip`` option, DocOnce will
+generate a zip file ``mydoc_exercises.zip`` (for ``mydoc.do.txt``) with
+each exercise (problem, project, or example) in a separate ``.do.txt`` file.
+The zip archive also contains a script ``make.py`` for translating the
+``.do.txt`` files to various formats. In university courses it may be
+attractive to give the students ``.tex`` with the exercise text such that
+the students can fill in the answers and extend the text to a report.
+Or one may distribute the exercises as IPython/Jupyter Notebook files
+and let the students fill in answers in the notebooks. This approach
+can be combined with "`nbgrader`" "https://github.com/jupyter/nbgrader"
+for automatic grading.
+
+The zip archive also contains a file ``index.do.txt`` with a list of all
+the exercise files that can be published on the Internet and used for
+download of the exercises. The ``index.do.txt`` file contains a variable
+``FILE_EXTENSIONS`` for the type of formats the exercises are available
+in. The user must edit ``make.py`` accordingly so the right set of
+formats are compiled as desired.
+
+**Note:**
+Unzipping the archive packs out the files in a subdirectory
+``standalone_exercises``. For figure and movie references to work one
+needs the ``--figure_prefix=../`` and ``--movie_prefix=../`` options.
+If the exercise files are distributed to students, make sure figure
+files are also available (check the compiled exercises).
+
+
+.. admonition:: References in stand-alone exercises may not work
+
+   Exercises with references to sections in the running text of the
+   original document cause trouble when the exercises are compiled as
+   stand-alone documents. For LaTeX this may work if the original document
+   is compiled in the parent directory of ``standalone_exercises`` and
+   the corresponding ``.aux`` file is available (the exercise will in such
+   cases make use of the ``# Externaldocuments:`` command in the file and
+   use the ``xr`` package for cross-referencing between documents).
+   All other formats will face problems with references to the original
+   parent document. When missing references are encountered, a comment about
+   the issue is inserted in the exercise file.
+
+
+
+
+**Naming of Exercise Files.**
+The option ``--exercises_in_zip_filename=X`` can be used to determine the
+name of the exercise files. With ``X=logical``, the logical name specified by
+the ``file=`` command in the exercise is used. With ``X=number``, the
+filename contains the exercise number, either an absolute number (integer)
+like ``132``
+or a ``chapter.local_number`` like ``5.2`` or ``B.4`` (in case of an appendix),
+depending on the option
+``--exercise_numbering=X``, with ``X=absolute`` or ``X=chapter``, respectively.
 
 Example on an Exercise
 ----------------------
@@ -3838,7 +3931,7 @@ appear as unfolded sections - one must click to open the text.
         !eans
         
         !bsubex
-        What is the integral of $e^{-at}\sin(wx)$?
+        What is the integral of $e^{-ax}\sin(wx)$?
         
         !bhint
         Assume $a$ and $w$ real.
@@ -3964,7 +4057,7 @@ Your brain is a perfectly appropriate tool for this task.
 .. --- end answer of exercise ---
 
 **b)**
-What is the integral of :math:`e^{-at}\sin(wx)`?
+What is the integral of :math:`e^{-ax}\sin(wx)`?
 
 .. --- begin hint in exercise ---
 
@@ -4061,6 +4154,11 @@ multiple-choice question (quiz), and final remark - combined with
 mathematics and computer code.
 
 .. --- end exercise ---
+
+.. !split
+
+Other Environments
+==================
 
 .. _sec:verbatim:blocks:
 
@@ -7257,6 +7355,8 @@ Other options:
  * ``--html_exercise_icon_width=X``: set the width of the exercise icon
    image to ``X`` pixels.
 
+ * ``--exercise_numbering=absolute, chapter``
+
  * ``--html_DOCTYPE``: insert ``<!DOCTYPE HTML>`` at the top of the HTML
    output file. This is normally recommended, but malformed CSS files
    will then not be loaded (so by default, the doctype is not specified).
@@ -7711,7 +7811,7 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_admon_envir_map=2`` (code environment names in admons)
 
- * ``--latex_exercise_numbering=absolute, chapter``
+ * ``--exercise_numbering=absolute, chapter``
 
  * ``--latex_movie=media9, href, multimedia, movie15`` (control typesetting of movies)
 
@@ -8744,6 +8844,25 @@ here for convenience.
         Remove all inline comments of the form [ID: comment].
         
         
+        --exercise_numbering=...
+        
+        absolute: exercises numbered as 1, 2, ... (default)
+        chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
+                 with a chapter or appendix prefix.
+        
+        
+        --exercises_in_zip
+        
+        Place each exercises as an individual DocOnce file in a zip archive.
+        
+        
+        --exercises_in_zip_filename=...
+        
+        Filenames of individual exercises in zip archive.
+        logical: use the (first) logical filename specified by file=...
+        number:  use either absolute exercise number or chapter.localnumber.
+        
+        
         --encoding=...
         
         Specify encoding (e.g., latin1 or utf-8).
@@ -9255,10 +9374,23 @@ here for convenience.
         --latex_admon_color=...
         
         The color to be used as background in admonitions.
+        A single value applies to all admons:
         Either rgb tuple or saturated color a la yellow!5:
           --latex_admon_color=0.1,0.1,0.4
           '--latex_admon_color=yellow!5'
         Note the quotes, needed for bash, in the latter example.
+        
+        Multiple values can be assigned, one for each admon (all admons must
+        be specified):
+          '--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white'
+        
+        If --latex_admon=mdfbox, the specification above with color1!X!color2
+        will automatically trigger 2*X as the background color of the frametitle.
+        
+        There are predefined multiple values, e.g.,
+          --latex_admon_color=colors1
+        gives red warnings, blue notice, orange questions, green summaries and
+        yellow blocks, automatically adjusted with darker frametitles for
         
         If --latex_admon=mdfbox, the background of the title and
         the color of the border of box can also be customized by
@@ -9296,13 +9428,6 @@ here for convenience.
         that should be changed inside the admons:
         --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
         (from-to,from-to,... syntax).
-        
-        
-        --latex_exercise_numbering=...
-        
-        absolute: exercises numbered as 1, 2, ...
-        chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-                 with a chapter prefix.
         
         
         --latex_subex_header_postfix=...
@@ -9606,12 +9731,22 @@ Installation of DocOnce and its Dependencies
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install everything what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the Bash script
+The impatient way to install everything that is needed is to use
+Anaconda Python and the ``conda`` program:
+
+.. code-block:: text
+
+        Terminal> conda install --channel johannr doconce
+
+The ``conda`` package is available for Mac and Linux only.
+
+If you do not want to use Anaconda and are
+on a Debian-based Linux
+computer (running, e.g., Ubuntu), you can instead run the Bash script
 `install_doconce.sh <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh>`__ or the equivalent Python script
 `install_doconce.py <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py>`__.
 These scripts gives a comprehensive installation. Some users will prefer to
-install what is needed, and this is explained below.
+install just what is needed for them, and this is explained below.
 
 
 .. admonition:: Version control systems are needed
@@ -9633,6 +9768,9 @@ install what is needed, and this is explained below.
 
 
 
+
+You can omit reading the next sections if you rely on ``conda`` or
+``apt-get install`` commands in the Bash script for installing DocOnce.
 
 DocOnce
 -------

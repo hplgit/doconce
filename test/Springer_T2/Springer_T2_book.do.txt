@@ -622,6 +622,59 @@ Matplotlib cite{Matplotlib:paper}, and more books cite{Mertz,PythonQt}
 as well as Python itself cite{Python}, and of course NumPy
 cite{NumPy}.
 
+======= Exercises =======
+
+===== Problem: Add numbers =====
+label{exer:add}
+file=add
+
+Compute
+
+!bt
+\[ 1 + 1 \]
+!et
+
+!bans
+2
+!eans
+
+!bsol
+Python shell as calculator:
+
+!bc pyshell
+>>> 1 + 1
+2
+!ec
+!esol
+
+===== Problem: Multiply numbers =====
+label{exer:mul}
+file=multiply
+
+!bsubex
+Compute $1\cdot 3$.
+
+!bans
+3.
+!eans
+!esubex
+
+!bsubex
+Compute $2\cdot 3$.
+
+!bhint
+Use a Python shell.
+!ehint
+
+!bsol
+!bc pyshell
+>>> 2*3
+6
+!ec
+!esol
+!esubex
+
+
 
 ========= Appendix: Styles for Springer T2 =========
 
@@ -635,4 +688,3 @@ slightly modified `svmono.cls` and `t2.sty` files:
 ========= References =========
 
 BIBFILE: papers.pub
-
