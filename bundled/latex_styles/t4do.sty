@@ -62,8 +62,12 @@
 
 \newcommand\mymainmatter{%
   \mainmatter
-  \evensidemargin48.3mm
-  \oddsidemargin13.3mm
+  % These are appropriate for printed book
+  %\evensidemargin48.3mm
+  %\oddsidemargin13.3mm
+  % These look better in PDF and on paper
+  \evensidemargin34mm
+  \oddsidemargin23.3mm
   \textwidth117mm
   \pagestyle{headings}
   \def\l@section{\vskip6pt\@dottedtocline{1}{0pt}{\tocsecnum}}%
