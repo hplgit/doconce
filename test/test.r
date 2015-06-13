@@ -73561,7 +73561,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f8093634b90>
+verbatim is to be replaced using <function html_verbatim at 0x7fb35704eb90>
 
 
 First occurence: " `mako`."
@@ -73890,7 +73890,7 @@ files="genref2.do.txt"  # files to which substitutions apply
 # Note on the Springer T2 style: used the modifications in t2do.sty
 # and svmonodo.cls (come bundled with DocOnce).
 
-TITLE:  A Test of DocOnce a Book with Springer's T2 Style
+TITLE:  Test of DocOnce-Based Book with Springer's T2/T4 Styles
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -73943,11 +73943,6 @@ exercises hands on.  The book is therefore full of exercises of
 various types: modifications of existing examples, completely new
 problems, or debugging of given programs.
 
-There is a web page associated with this book, URL:
-"http://hplgit.github.com/scipro-primer", which lists the software you
-need and explains briefly how to install it.  This page also contains
-all the files associated with the program examples in this book.
-
 === Python version 2 or 3? ===
 
 A common problem among Python programmers is to choose between version
@@ -73989,7 +73984,7 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 \vspace{1cm}
 
 \noindent
-*Oslo, April 2012*  \hfill  *Hans Petter Langtangen*
+*Oslo, May 2015*  \hfill  *Hans Petter Langtangen*
 # #endif
 
 
@@ -74168,8 +74163,7 @@ A similar function,
 a = np.zeros_like(c)
 !ec
 generates an array of zeros where the length is that of the array `c`
-and the element type is the same as those in `c`.  Arrays with more
-than one index are treated in Section ref{sec:plot:2Darrays}.
+and the element type is the same as those in `c`.
 
 idx{`linspace` (from `numpy`)}idx{`np.linspace` function}
 
@@ -74203,7 +74197,7 @@ a = np.linspace(p, q, n)
 | `b = a.copy()`            | copy an array                                             |
 |---------------------------------------------------------------------------------------|
 
-========= Storing results in data files =========
+========= Storing results in data files and adding more words here to get a very log chapter heading =========
 
 We need to test spaces around footnotes for 2-digit footnotes, which
 means we need a lot of URLs, e.g., to files:
@@ -74355,7 +74349,7 @@ idx{`sys.stdin`}idx{`sys.stdout`}
 
 Reading user input from the keyboard applies the function
 # #ifdef PRIMER_BOOK
-`raw_input` as explained in Section ref{sec:input:rawinput}.
+`raw_input` as explained in another section.
 # #else
 `raw_input`.
 # #endif
@@ -74424,7 +74418,7 @@ def x2f(infile, outfile, f):
         outfile.write('%g\n' % y)
 !ec
 This function works with all types of files, including
-web pages as `infile` (see Section ref{sec:files:webtxt}).
+web pages as `infile`.
 With `sys.stdin` as `infile` and/or `sys.stdout`
 as `outfile`, the `x2f` function also works with standard input
 and/or standard output. Without `sys.stdin` and `sys.stdout`,
@@ -74565,13 +74559,13 @@ Use a Python shell.
 
 
 
-========= Appendix: Styles for Springer T2 =========
+========= Appendix: Styles for Springer T2/T4 =========
 
-The T2 style for DocOnce-generated LaTeX should make use of
+The T2/T4 style for DocOnce-generated LaTeX should make use of
 slightly modified `svmono.cls` and `t2.sty` files:
 
  * `svmonodo.cls`
- * `t2do.sty`
+ * `t2do.sty` or `t4do.sty`
 
 
 ========= References =========
@@ -74613,13 +74607,13 @@ BIBFILE: papers.pub
 % #ifdef PREAMBLE
 %-------------------- begin preamble ----------------------
 
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
+% Style: T4 (Springer)
+% Use svmono.cls with doconce modifications for bibliography (svmonodo)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
 
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
+% Use t4.sty with doconce modifications (t4do.sty)
+\usepackage{t4do}
+\special{papersize=178mm,254mm}
 
 \listfiles               % print all files needed to compile this document
 
@@ -74627,7 +74621,7 @@ BIBFILE: papers.pub
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{ptex2tex}
 % #ifdef MINTED
@@ -74858,7 +74852,7 @@ BIBFILE: papers.pub
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 {\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Test of DocOnce a Book with Springer's T2 Style}
+{Test of DocOnce-Based Book with Springer's T2/T4 Styles}
 \\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
 }}}
@@ -74883,6 +74877,8 @@ BIBFILE: papers.pub
 % --- end date ---
 \vfill
 \clearpage
+
+\mymainmatter
 
 \chapter*{Preface}
 \markboth{Preface}{Preface}
@@ -74929,10 +74925,6 @@ exercises hands on.  The book is therefore full of exercises of
 various types: modifications of existing examples, completely new
 problems, or debugging of given programs.
 
-There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
-need and explains briefly how to install it.  This page also contains
-all the files associated with the program examples in this book.
-
 \paragraph{Python version 2 or 3?}
 A common problem among Python programmers is to choose between version
 2 or 3, which at the time of this writing means choosing
@@ -74971,7 +74963,7 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 \vspace{1cm}
 
 \noindent
-\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
+\emph{Oslo, May 2015}  \hfill  \emph{Hans Petter Langtangen}
 
 
 
@@ -74980,8 +74972,6 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 
 
 \vspace{1cm} % after toc
-
-\mymainmatter
 
 
 
@@ -75178,8 +75168,7 @@ A similar function,
 a = np.zeros_like(c)
 \epycod
 generates an array of zeros where the length is that of the array \Verb!c!
-and the element type is the same as those in \Verb!c!.  Arrays with more
-than one index are treated in Section~\ref{sec:plot:2Darrays}.
+and the element type is the same as those in \Verb!c!.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
@@ -75227,7 +75216,7 @@ a = np.linspace(p, q, n)
 \end{center}
 
 \noindent
-\chapter{Storing results in data files}
+\chapter{Storing results in data files and adding more words here to get a very log chapter heading}
 
 We need to test spaces around footnotes for 2-digit footnotes, which
 means we need a lot of URLs, e.g., to files:
@@ -75380,7 +75369,7 @@ are
 \index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
 
 Reading user input from the keyboard applies the function
-\Verb!raw_input! as explained in Section~\ref{sec:input:rawinput}.
+\Verb!raw_input! as explained in another section.
 The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
@@ -75446,7 +75435,7 @@ def x2f(infile, outfile, f):
         outfile.write('%g\n' % y)
 \epycod
 This function works with all types of files, including
-web pages as \Verb!infile! (see Section~\ref{sec:files:webtxt}).
+web pages as \Verb!infile!.
 With \Verb!sys.stdin! as \Verb!infile! and/or \Verb!sys.stdout!
 as \Verb!outfile!, the \Verb!x2f! function also works with standard input
 and/or standard output. Without \Verb!sys.stdin! and \Verb!sys.stdout!,
@@ -75621,15 +75610,15 @@ Use a Python shell.
 
 \appendix
 
-\chapter{Styles for Springer T2}
+\chapter{Styles for Springer T2/T4}
 
-The T2 style for DocOnce-generated {\LaTeX} should make use of
+The T2/T4 style for DocOnce-generated {\LaTeX} should make use of
 slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \begin{itemize}
  \item \Verb!svmonodo.cls!
 
- \item \Verb!t2do.sty!
+ \item \Verb!t2do.sty! or \Verb!t4do.sty!
 \end{itemize}
 
 \noindent
@@ -75663,13 +75652,13 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 %-------------------- begin preamble ----------------------
 
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography
+% Style: T4 (Springer)
+% Use svmono.cls with doconce modifications for bibliography (svmonodo)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
 
-% Use t2.sty with doconce modifications
-\usepackage{t2do}
-\special{papersize=193mm,260mm}
+% Use t4.sty with doconce modifications (t4do.sty)
+\usepackage{t4do}
+\special{papersize=178mm,254mm}
 
 \listfiles               % print all files needed to compile this document
 
@@ -75677,7 +75666,7 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 
-\usepackage{graphicx}
+\usepackage[pdftex]{graphicx}
 
 \usepackage{ptex2tex}
 \usepackage{fancyvrb}
@@ -75903,7 +75892,7 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 {\huge{\bfseries{
 \begin{spacing}{1.25}
 {\rule{\linewidth}{0.5mm}} \\[0.4cm]
-{A Test of DocOnce a Book with Springer's T2 Style}
+{Test of DocOnce-Based Book with Springer's T2/T4 Styles}
 \\[0.4cm] {\rule{\linewidth}{0.5mm}} \\[1.5cm]
 \end{spacing}
 }}}
@@ -75928,6 +75917,8 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 % --- end date ---
 \vfill
 \clearpage
+
+\mymainmatter
 
 \chapter*{Preface}
 \markboth{Preface}{Preface}
@@ -75974,10 +75965,6 @@ exercises hands on.  The book is therefore full of exercises of
 various types: modifications of existing examples, completely new
 problems, or debugging of given programs.
 
-There is a web page associated with this book, \href{{http://hplgit.github.com/scipro-primer}}{\nolinkurl{http://hplgit.github.com/scipro-primer}}, which lists the software you
-need and explains briefly how to install it.  This page also contains
-all the files associated with the program examples in this book.
-
 \paragraph{Python version 2 or 3?}
 A common problem among Python programmers is to choose between version
 2 or 3, which at the time of this writing means choosing
@@ -76016,7 +76003,7 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 \vspace{1cm}
 
 \noindent
-\emph{Oslo, April 2012}  \hfill  \emph{Hans Petter Langtangen}
+\emph{Oslo, May 2015}  \hfill  \emph{Hans Petter Langtangen}
 
 
 
@@ -76025,8 +76012,6 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 
 
 \vspace{1cm} % after toc
-
-\mymainmatter
 
 
 
@@ -76281,8 +76266,7 @@ a = np.zeros_like(c)
 \end{shadedquoteBlue}
 \noindent
 generates an array of zeros where the length is that of the array \Verb!c!
-and the element type is the same as those in \Verb!c!.  Arrays with more
-than one index are treated in Section~\ref{sec:plot:2Darrays}.
+and the element type is the same as those in \Verb!c!.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
@@ -76334,7 +76318,7 @@ a = np.linspace(p, q, n)
 \end{center}
 
 \noindent
-\chapter{Storing results in data files}
+\chapter{Storing results in data files and adding more words here to get a very log chapter heading}
 
 We need to test spaces around footnotes for 2-digit footnotes, which
 means we need a lot of URLs, e.g., to files:
@@ -76510,7 +76494,7 @@ are
 \index{sys.stdin@{\rm\texttt{sys.stdin}}}\index{sys.stdout@{\rm\texttt{sys.stdout}}}
 
 Reading user input from the keyboard applies the function
-\Verb!raw_input! as explained in Section~\ref{sec:input:rawinput}.
+\Verb!raw_input! as explained in another section.
 The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
@@ -76604,7 +76588,7 @@ def x2f(infile, outfile, f):
 \end{shadedquoteBlue}
 \noindent
 This function works with all types of files, including
-web pages as \Verb!infile! (see Section~\ref{sec:files:webtxt}).
+web pages as \Verb!infile!.
 With \Verb!sys.stdin! as \Verb!infile! and/or \Verb!sys.stdout!
 as \Verb!outfile!, the \Verb!x2f! function also works with standard input
 and/or standard output. Without \Verb!sys.stdin! and \Verb!sys.stdout!,
@@ -76790,15 +76774,15 @@ Use a Python shell.
 
 \appendix
 
-\chapter{Styles for Springer T2}
+\chapter{Styles for Springer T2/T4}
 
-The T2 style for DocOnce-generated {\LaTeX} should make use of
+The T2/T4 style for DocOnce-generated {\LaTeX} should make use of
 slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \begin{itemize}
  \item \Verb!svmonodo.cls!
 
- \item \Verb!t2do.sty!
+ \item \Verb!t2do.sty! or \Verb!t4do.sty!
 \end{itemize}
 
 \noindent
@@ -77776,7 +77760,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Jun  9 01:59:46 2015.
+# sphinx-quickstart on Sat Jun 13 04:47:06 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -79698,7 +79682,7 @@ FILE_EXTENSIONS = ['.tex', '.ipynb']
 #FILE_EXTENSIONS = ['.tex', '.ipynb', '.do.txt', '.html']
 %>
 
-========= Chapter: Storing results in data files =========
+========= Chapter: Storing results in data files and adding more words here to get a very log chapter heading =========
 
 % for EXT in FILE_EXTENSIONS:
 "`Chapter_3.1${EXT}`": "Chapter_3.1${EXT}"
@@ -95759,12 +95743,6 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
-
-...doconce translation: figures 20.5 s (accumulated time: 20.7)
-
-
-...doconce format used 22.2 s to translate the document (1998 lines)
-
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -108290,9 +108268,10 @@ output in movies.txt
 + cd Springer_T2
 + bash -x make.sh
 + name=Springer_T2_book
++ style=T4
 + rm -f 'tmp_*'
-+ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period --exercises_in_zip --exercises_in_zip_filename=chapter
-+ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T2 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period --exercises_in_zip --exercises_in_zip_filename=chapter
++ system doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T4 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period --exercises_in_zip --exercises_in_zip_filename=chapter
++ doconce format pdflatex Springer_T2_book CHAPTER=chapter BOOK=book APPENDIX=appendix -DPRIMER_BOOK ALG=code --encoding=utf-8 --device=paper --exercise_numbering=chapter --latex_admon_color=1,1,1 --latex_admon=mdfbox --latex_style=Springer_T4 --latex_title_layout=titlepage --latex_list_of_exercises=loe --latex_table_format=center --latex_admon_title_no_period --exercises_in_zip --exercises_in_zip_filename=chapter
 
 Summary of papers
 -----------------
@@ -108368,12 +108347,7 @@ Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
-(/home/hpl/texmf/tex/latex/misc/t2do.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
+(/home/hpl/texmf/tex/latex/misc/t4do.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -108386,6 +108360,7 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 ) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 
 
 Package caption Warning: Unsupported document class (or package) detected,
@@ -108409,6 +108384,10 @@ See the caption package documentation for explanation.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -108562,8 +108541,8 @@ No file Springer_T2_book.aux.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 
@@ -108581,9 +108560,17 @@ ABD: EveryShipout initializing macros (./newcommands_keep.tex)
  [3
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [4]
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[5] 
+[1] 
+ [2]
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+[3] [4]
+Chapter 1.
+
+Overfull \hbox (111.58464pt too wide) 
+|[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
 (Font)              size <5> substituted on .
@@ -108596,17 +108583,6 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
- [6]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[7] [8]
-Chapter 1.
-
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
 (Font)              size <8> substituted on .
@@ -108631,23 +108607,11 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[1]
+[5]
 
 
 
- [2]
-
-
-...rest of part of LaTeX line number...
-
-
-Underfull \hbox (badness 5862) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-
-
-...rest of part of LaTeX line number...
-
-[3]
+[6] 
 
 
 ...rest of part of LaTeX line number...
@@ -108656,25 +108620,29 @@ Underfull \hbox (badness 5862)
 
 ...rest of part of LaTeX line number...
 
-[4]
-Chapter 2.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-[5] [6]
-
-
-...rest of part of LaTeX line number...
-
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
 [7]
 
 
 ...rest of part of LaTeX line number...
 
 [8]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[9] [10]
+Chapter 2.
+
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+[11] [12]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[13] [14]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[15]
 
 
 ...rest of part of LaTeX line number...
@@ -108691,15 +108659,15 @@ Overfull \hbox (120.12047pt too wide)
 
 
 
-[9] [10]
+[16]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[17] [18]
 Appendix A.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[11] [12]
+[19] [20]
 No file Springer_T2_book.bbl.
 No file Springer_T2_book.ind.
 (./Springer_T2_book.aux)
@@ -108715,12 +108683,7 @@ Springer Verlag global LaTeX document class for monographs
 infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty    
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+    t4do.sty    
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -108730,6 +108693,7 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 tabularx.sty    2014/10/28 v2.10 `tabularx' package (DPC)
    array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
 multicol.sty    2014/10/28 v1.8i multicolumn formatting (FMi)
@@ -108749,6 +108713,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -108833,11 +108801,11 @@ chngcntr.sty    2009/09/02 v1.0a change counter resetting
   ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -108890,7 +108858,7 @@ r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
 lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (18 pages, ).
+Output written on Springer_T2_book.pdf (22 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system bibtex Springer_T2_book
@@ -108943,12 +108911,7 @@ Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
-(/home/hpl/texmf/tex/latex/misc/t2do.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
+(/home/hpl/texmf/tex/latex/misc/t4do.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -108961,6 +108924,7 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 ) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 
 
 Package caption Warning: Unsupported document class (or package) detected,
@@ -108984,6 +108948,10 @@ See the caption package documentation for explanation.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -109136,8 +109104,8 @@ LaTeX Warning: Unused global option(s):
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 
@@ -109156,9 +109124,13 @@ ABD: EveryShipout initializing macros (./newcommands_keep.tex)
  [3
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [4]
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[5] 
+[1] 
+ [2]
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+(./Springer_T2_book.toc
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
 (Font)              size <5> substituted on .
@@ -109171,16 +109143,10 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
- [6]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-(./Springer_T2_book.toc) [7] [8]
+) [3] [4]
 Chapter 1.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
@@ -109206,40 +109172,32 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[1]
+[5]
 
 
 
- [2]
-Underfull \hbox (badness 5862) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-[3]
-
-
-...rest of part of LaTeX line number...
-
-[4]
+[6] 
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[7] [8]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[9] [10]
 Chapter 2.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[5] [6]
+[11] [12]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[13] [14]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[15]
 
 
 ...rest of part of LaTeX line number...
 
-[7]
-
-
-...rest of part of LaTeX line number...
-
-[8]
-
-
-...rest of part of LaTeX line number...
 
 
 
@@ -109252,22 +109210,21 @@ Overfull \hbox (120.12047pt too wide)
 
 
 
-
-[9] [10]
+[16]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[17] [18]
 Appendix A.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[11] [12] (./Springer_T2_book.bbl
-Overfull \hbox (120.12047pt too wide) 
+[19] [20] (./Springer_T2_book.bbl
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-) [13] [14] (./Springer_T2_book.ind
-Overfull \hbox (120.12047pt too wide) 
+) [21] [22] (./Springer_T2_book.ind
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[15]) (./Springer_T2_book.aux)
+[23]) (./Springer_T2_book.aux)
 
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
@@ -109280,12 +109237,7 @@ Springer Verlag global LaTeX document class for monographs
 infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty    
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+    t4do.sty    
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -109295,6 +109247,7 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 tabularx.sty    2014/10/28 v2.10 `tabularx' package (DPC)
    array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
 multicol.sty    2014/10/28 v1.8i multicolumn formatting (FMi)
@@ -109314,6 +109267,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -109398,11 +109355,11 @@ chngcntr.sty    2009/09/02 v1.0a change counter resetting
   ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -109459,7 +109416,7 @@ r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
 lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (21 pages, ).
+Output written on Springer_T2_book.pdf (25 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex Springer_T2_book
@@ -109496,12 +109453,7 @@ Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
 
 
-(/home/hpl/texmf/tex/latex/misc/t2do.sty
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-
-
+(/home/hpl/texmf/tex/latex/misc/t4do.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -109514,6 +109466,7 @@ Package amsmath Warning: Unable to redefine math accent \vec.
 ) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 
 
 Package caption Warning: Unsupported document class (or package) detected,
@@ -109537,6 +109490,10 @@ See the caption package documentation for explanation.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -109689,8 +109646,8 @@ LaTeX Warning: Unused global option(s):
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 
@@ -109709,9 +109666,13 @@ ABD: EveryShipout initializing macros (./newcommands_keep.tex)
  [3
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 [4]
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[5] 
+[1] 
+ [2]
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+(./Springer_T2_book.toc
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.5> not available
 (Font)              size <5> substituted on .
@@ -109724,16 +109685,10 @@ LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
- [6]
-Overfull \hbox (120.12047pt too wide) 
-|[] 
-(./Springer_T2_book.toc) [7] [8]
+) [3] [4]
 Chapter 1.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.5> not available
@@ -109759,47 +109714,38 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[1]  [2]
-Underfull \hbox (badness 5862) 
-\T1/lmr/m/n/11 (+20) or one may take the less rec-om-mended lazy ap-proach
-[3]
-
-
-...rest of part of LaTeX line number...
-
-[4]
+[5] [6] 
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[7] [8]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[9] [10]
 Chapter 2.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[5] [6]
-
-
-...rest of part of LaTeX line number...
-
-[7]
-
-
-...rest of part of LaTeX line number...
-
-[8] [9] [10]
+[11] [12]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[13] [14]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[15] [16]
+Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+[][][]
+[17] [18]
 Appendix A.
 
-Overfull \hbox (30.77882pt too wide) 
-[][][] 
-
-Overfull \hbox (120.12047pt too wide) 
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[11] [12] (./Springer_T2_book.bbl
-Overfull \hbox (120.12047pt too wide) 
+[19] [20] (./Springer_T2_book.bbl
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-) [13] [14] (./Springer_T2_book.ind
-Overfull \hbox (120.12047pt too wide) 
+) [21] [22] (./Springer_T2_book.ind
+Overfull \hbox (111.58464pt too wide) 
 |[] 
-[15]) (./Springer_T2_book.aux)
+[23]) (./Springer_T2_book.aux)
 
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
@@ -109812,12 +109758,7 @@ Springer Verlag global LaTeX document class for monographs
 infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
  ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
   framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
-    t2do.sty    
-graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
-graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
-graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+    t4do.sty    
  amsmath.sty    2013/01/14 v2.14 AMS math features
  amstext.sty    2000/06/29 v2.01
   amsgen.sty    1999/11/30 v2.0
@@ -109827,6 +109768,7 @@ amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
  amssymb.sty    2013/01/14 v3.01 AMS font symbols
  caption.sty    2013/05/02 v3.3-89 Customizing captions (AR)
 caption3.sty    2013/05/02 v1.6-88 caption3 kernel (AR)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
 tabularx.sty    2014/10/28 v2.10 `tabularx' package (DPC)
    array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
 multicol.sty    2014/10/28 v1.8i multicolumn formatting (FMi)
@@ -109846,6 +109788,10 @@ colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
 microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
 microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
 microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
 moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
@@ -109930,11 +109876,11 @@ chngcntr.sty    2009/09/02 v1.0a change counter resetting
   ts1cmr.fd    1999/05/25 v2.5h Standard LaTeX font definitions
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
@@ -109961,9 +109907,6 @@ Springer_T2_book.ind
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.75pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  )
 (see the transcript file for additional information){/usr/share/texmf/fonts/enc
 /dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
@@ -109983,7 +109926,7 @@ r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt9.pfb>
-Output written on Springer_T2_book.pdf (21 pages, ).
+Output written on Springer_T2_book.pdf (25 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + rm -rf standalone_exercises

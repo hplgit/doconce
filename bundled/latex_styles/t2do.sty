@@ -14,7 +14,7 @@
 %
 % This version was used for the 4th ed. of the Springer book TCSE6.
 
-\usepackage{graphicx}
+%\usepackage{graphicx} % define this in .tex file
 %\usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
 %\usepackage{slogo}
@@ -31,9 +31,10 @@
 \paperwidth193mm
 \paperheight260mm
 \topmargin13mm
-\evensidemargin18.5mm
-\oddsidemargin18.5mm
-%\textwidth156mm
+% NOTE: \evensidemargin and \oddsidemargin have no effect here if
+% \mymainmatter is used!
+\evensidemargin52.5mm
+\oddsidemargin14.5mm
 \textwidth112mm
 \textheight214.390485mm
 \columnwidth76mm
@@ -459,7 +460,8 @@ to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
 
 
 \renewcommand\frontmatter{\startnewpage
-  \oddsidemargin56.5mm
+  %\oddsidemargin56.5mm
+  \oddsidemargin20mm
   \textwidth118mm
   \linewidth118mm
   \hsize118mm

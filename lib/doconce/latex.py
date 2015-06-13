@@ -1662,6 +1662,12 @@ def latex_date(m):
 \vspace{1cm}
 
 """ % vars()
+
+    if option('latex_style=', 'std') in ("Springer_T2", "Springer_T4"):
+        # Use special mainmatter from t2do.sty or t4do.sty
+        text += r"""
+\mymainmatter
+"""
     return text
 
 def latex_abstract(m):
@@ -2492,12 +2498,6 @@ def define(FILENAME_EXTENSION,
 
 \vspace{1cm} % after toc
 """
-    if latex_style in ("Springer_T2", "Springer_T4"):
-        # Use special mainmatter from t2do.sty or t4do.sty
-        toc_part += r"""
-\mymainmatter
-"""
-
     if latex_style == 'Springer_lnup':
         toc_part += r"""
 \mainmatter
@@ -3698,7 +3698,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage{chngcntr}
 \counterwithin{doconceexercisecounter}{chapter}
 """
-            if latex_style not in in ("Springer_T2", "Springer_T4"):
+            if latex_style not in ("Springer_T2", "Springer_T4"):
                 INTRO['latex'] += r"""
 
 % ------ header in subexercises ------

@@ -1,5 +1,6 @@
 % This is the Springer T4 style, based on the T2 style, but
-% different page/text size.
+% different page/text size. All length measures are multiplied by
+% 0.92 compared to t2do.sty.
 
 % Modifications by Hans Petter Langtangen for Doconce-generated LaTeX books:
 %
@@ -15,7 +16,7 @@
 %
 % This version was used for the 4th ed. of the Springer book TCSE6.
 
-\usepackage{graphicx}
+%\usepackage{graphicx} % define this in .tex file
 %\usepackage[latin1]{inputenc}
 \usepackage{amsmath,amsfonts,amssymb}
 %\usepackage{slogo}
@@ -31,9 +32,11 @@
 
 \paperwidth178mm
 \paperheight254mm
-\topmargin13mm
-\evensidemargin18.5mm
-\oddsidemargin18.5mm
+\topmargin7mm
+% NOTE: \evensidemargin and \oddsidemargin have no effect here if
+% \mymainmatter is used!
+\evensidemargin48.3mm
+\oddsidemargin13.3mm
 \textwidth117mm
 \textheight190mm
 \columnwidth76mm
@@ -59,9 +62,9 @@
 
 \newcommand\mymainmatter{%
   \mainmatter
-  \evensidemargin52.5mm
-  \oddsidemargin14.5mm
-  \textwidth156mm
+  \evensidemargin48.3mm
+  \oddsidemargin13.3mm
+  \textwidth117mm
   \pagestyle{headings}
   \def\l@section{\vskip6pt\@dottedtocline{1}{0pt}{\tocsecnum}}%
   \def\l@subsection{\@dottedtocline{2}{\tocsecnum}{\tocsubsecnum}}%
@@ -98,7 +101,7 @@
       \@headskip22pt
     \fi
     \setbox0\vbox{%
-        \begin{minipage}[t]{110.6mm}
+        \begin{minipage}[t]{101mm}
           \hyphenpenalty \@M
           \interlinepenalty\@M
           \raggedright
@@ -118,21 +121,21 @@
           \fi
         \end{minipage}%
 %      \hskip4.2mm%
-      \begin{minipage}[t]{14mm}
+      \begin{minipage}[t]{12.5mm}
         \color{black}%
-        \hbox to 14mm{\hfill\fontsize{36pt}{36pt}\sffamily\bfseries\selectfont \thechapter}
+        \hbox to 12.5mm{\hfill\fontsize{36pt}{36pt}\sffamily\bfseries\selectfont \thechapter}
       \end{minipage}
 }%
     \fullcolor
-    \rlap{\hbox{\vrule width179mm height2pt depth0pt}}%
+    \rlap{\hbox{\vrule width165mm height2pt depth0pt}}%
     \vskip2pt
-    \noindent\strut\kern38mm%
+    \noindent\strut\kern35mm%
     \hbox{%
       \dimen0=\ht0%
       \dimen2=\dp0
       \advance\dimen0 12pt%
       \advance\dimen2 12pt%
-      \rlap{\hbox{\vrule width141mm height\dimen0 depth\dimen2}}%
+      \rlap{\hbox{\vrule width130mm height\dimen0 depth\dimen2}}%
       \kern12pt\box0}%
     \global\let\ch@psubtitle=\undefined
     \global\let\ch@pauthor=\undefined
@@ -143,7 +146,7 @@
   \if@mainmatter\else\moveleft38mm\fi
   \vbox to15\baselineskip{%
     \setbox0\vbox{%
-        \begin{minipage}[t]{110.6mm}
+        \begin{minipage}[t]{101mm}
           \hyphenpenalty \@M
           \interlinepenalty\@M
           \raggedright
@@ -156,15 +159,15 @@
 %          \fi
         \end{minipage}}%
     \fullcolor
-    \rlap{\hbox{\vrule width179mm height2pt depth0pt}}%
+    \rlap{\hbox{\vrule width165mm height2pt depth0pt}}%
     \vskip2pt
-    \noindent\strut\kern38mm%
+    \noindent\strut\kern35mm%
     \hbox{%
       \dimen0=\ht0%
       \dimen2=\dp0
       \advance\dimen0 12pt%
       \advance\dimen2 12pt%
-      \rlap{\hbox{\vrule width141mm height\dimen0 depth\dimen2}}%
+      \rlap{\hbox{\vrule width130mm height\dimen0 depth\dimen2}}%
       \kern12pt\box0}%
     \global\let\ch@psubtitle=\undefined
     \global\let\ch@pauthor=\undefined
@@ -459,9 +462,10 @@ to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
 
 
 \renewcommand\frontmatter{\startnewpage
-  \oddsidemargin56.5mm
-  \textwidth118mm
-  \linewidth118mm
+  %\oddsidemargin52mm
+  \oddsidemargin27mm
+  \textwidth109mm
+  \linewidth109mm
   \hsize118mm
             \@mainmatterfalse\pagenumbering{roman}
 	\pagestyle{fheadings}
@@ -540,10 +544,10 @@ to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
 
 \def\ps@vheadings{\let\@mkboth\markboth
    \let\@oddfoot\@empty\let\@evenfoot\@empty
-   \def\@evenhead{\vbox to\headheight{\hsize156mm\hbox
+   \def\@evenhead{\vbox to\headheight{\hsize144mm\hbox
 to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
                   \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
-   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+   \def\@oddhead{\if@mainmatter\else\kern-35mm\fi\vbox to\headheight{\hsize144mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
                   \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
    \def\chaptermark##1{\markboth{{\ifnum\c@secnumdepth>\m@ne
       \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\ifnum %!!!
@@ -556,7 +560,7 @@ to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
    \def\@evenhead{\vbox to\headheight{\hsize156mm\hbox
 to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
                   \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
-   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+   \def\@oddhead{\if@mainmatter\else\kern-35mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
                   \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
    \def\chaptermark##1{\markboth{{\ifnum\c@secnumdepth>\m@ne
       \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\ifnum %!!!
