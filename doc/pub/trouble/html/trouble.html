@@ -567,9 +567,10 @@ This is a major problem with pressbooks.com.</p>
 </div>
 <div class="section" id="how-can-i-produce-epub-books-from-doconce">
 <span id="trouble-epub"></span><h3>How can I produce ePub books from DocOnce?<a class="headerlink" href="#how-can-i-produce-epub-books-from-doconce" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce has no direct translation to ePub, but one can a script
+<p>DocOnce has no direct translation to ePub, but one can apply a script
 <a class="reference external" href="https://github.com/hplgit/ebookmaker">ebookmaker.py</a> to translate
-a set of split HTML files to ePub.
+a set of split HTML files to ePub. Bootstrap styles with mathematics
+and code come out very nice in ePub this way.
 The script needs a JSON file. If <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code> is the DocOnce file
 and <code class="docutils literal"><span class="pre">._mydoc*.html</span></code> the set of split HTML files after translation
 to HTML, the JSON file may look like this:</p>
@@ -613,7 +614,9 @@ to HTML, the JSON file may look like this:</p>
 </pre></div>
 </div>
 <p>Just edit this file to your needs, save it as <code class="docutils literal"><span class="pre">mydoc.json</span></code> and run
-<code class="docutils literal"><span class="pre">epubmaker.py</span> <span class="pre">mydoc.json</span></code> to produce <code class="docutils literal"><span class="pre">mydoc.epub</span></code>.</p>
+<code class="docutils literal"><span class="pre">epubmaker.py</span> <span class="pre">mydoc.json</span></code> to produce <code class="docutils literal"><span class="pre">mydoc.epub</span></code>.
+Read in <a class="reference external" href="http://calibre-ebook.com/">Calibre</a>
+on computers or use ebook readers on phones and tablets.</p>
 </div>
 </div>
 <div class="section" id="preprocess-mako-problems">

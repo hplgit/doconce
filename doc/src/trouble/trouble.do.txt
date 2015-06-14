@@ -522,7 +522,7 @@ This is a major problem with pressbooks.com.
 ===== How can I produce ePub books from DocOnce? =====
 label{trouble:epub}
 
-DocOnce has no direct translation to ePub, but one can a script
+DocOnce has no direct translation to ePub, but one can apply a script
 "`ebookmaker.py`": "https://github.com/hplgit/ebookmaker" to translate
 a set of split HTML files to ePub. Bootstrap styles with mathematics
 and code come out very nice in ePub this way.
@@ -571,6 +571,8 @@ to HTML, the JSON file may look like this:
 !ec
 Just edit this file to your needs, save it as `mydoc.json` and run
 `epubmaker.py mydoc.json` to produce `mydoc.epub`.
+Read in "Calibre": "http://calibre-ebook.com/"
+on computers or use ebook readers on phones and tablets.
 
 
 

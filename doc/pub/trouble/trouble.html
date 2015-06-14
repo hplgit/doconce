@@ -1077,9 +1077,10 @@ This is a major problem with pressbooks.com.
 <h2 id="trouble:epub">How can I produce ePub books from DocOnce?</h2>
 
 <p>
-DocOnce has no direct translation to ePub, but one can a script
+DocOnce has no direct translation to ePub, but one can apply a script
 <a href="https://github.com/hplgit/ebookmaker" target="_self"><tt>ebookmaker.py</tt></a> to translate
-a set of split HTML files to ePub.
+a set of split HTML files to ePub. Bootstrap styles with mathematics
+and code come out very nice in ePub this way.
 The script needs a JSON file. If <code>mydoc.do.txt</code> is the DocOnce file
 and <code>._mydoc*.html</code> the set of split HTML files after translation
 to HTML, the JSON file may look like this:
@@ -1128,6 +1129,8 @@ to HTML, the JSON file may look like this:
 <p>
 Just edit this file to your needs, save it as <code>mydoc.json</code> and run
 <code>epubmaker.py mydoc.json</code> to produce <code>mydoc.epub</code>.
+Read in <a href="http://calibre-ebook.com/" target="_self">Calibre</a>
+on computers or use ebook readers on phones and tablets.
 
 <h1 id="___sec38">Preprocess/Mako problems </h1>
 
