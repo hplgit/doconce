@@ -2720,8 +2720,17 @@ Going from DocOnce to MS Word is most easily done by outputting in the
 to MS Word. Note that only a subset of LaTeX will be translated
 correctly, and mathematics is notoriously difficult and unpredicatble.
 
+idx{epub}
+idx{`epubmaker.py`}
+idx{Calibre}
+
+=== ePub ===
+
 Conversion to ePub format can go via HTML and the "Calibre":
-"http://calibre-ebook.com/" tools. Also Pandoc can generate ePub.  The
+"http://calibre-ebook.com/" tools. However, simple PDF and HTML with
+mathematics has not been well converted to ePub by Calibre (PDF
+looks strange, MathJax is not used to render formulas in HTML).
+Pandoc is another program that can generate ePub (not tested).  The
 ePub3 format supports mathematics via MathML.  Some dicussions of this
 topic appear in URL:
 "http://tex.stackexchange.com/questions/1551/use-latex-to-produce-epub". The
@@ -2730,11 +2739,69 @@ to XML and XHTML and can be a good starting point for further
 conversion to ePub, but the plain `latexml` fails miserably on LaTeX
 documents generated from DocOnce (the present manual to be precise).
 
-A converter to iBooks would be nice, but it is not feasible before
-iBooks documents get better support for LaTeX mathematics.
-The `.iba` files of iBooks documents can be renamed to `.zip`,
-the file can be unzipped, and the XML code of iBooks documents
-are then available (see some "ideas": "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html").
+What has been successfully used to convert DocOnce documents with
+mathematics and code to ePub is
+the `ebookmaker.py` script (use this "fork": "https://github.com/hplgit/ebookmaker" by the author for a version of this script that actually works).
+HTML, in particular with Bootstrap styles, translates well to ePub by
+this script. The script requires a JSON file describing the content of
+the book. A typical file for a DocOnce document `mydoc.do.txt` that
+is translated to HTML and split into a series of files `._mydoc*.html`
+goes as follows:
+
+!bc
+{
+    "filename" : "mydoc",
+    "title" : "Title of the document",
+    "authors" : [
+        {
+            "name" : "Hans Petter Langtangen",
+            "sort" : "Langtangen, Hans Petter"
+        }
+    ],
+    "rights" : "Public Domain",
+    "language" : "en",
+    "publisher": "hpl",
+    "subjects" : [ "Science" ],
+    "contributors" : [
+        {
+            "name" : "Hans Petter Langtangen",
+            "role" : "author"
+        }
+    ],
+    "identifier" : {
+        "scheme" : "URL",
+        "value" : "http://somewhere.net"
+    },
+    "contents" : [
+        {
+            "type" : "text",
+            "source" : "._mydoc*.html"
+        }
+    ],
+    "toc" : {
+        "depth" : 2,
+        "parse" : [ "text" ],
+        "generate" : {
+            "title" : "Index"
+        }
+    }
+}
+!ec
+Just edit this file, save it as `mydoc.json` and run
+`epubmaker.py mydoc.json` to produce `mydoc.epub`.
+
+=== Apple iBook Format ===
+
+A converter to iBooks would be nice. In theory, ePub documents can be
+imported and converted to iBooks in the iBooks Author application, but
+ePub files created by `ebookmaker.py` do not translate well.
+The `.iba` files of iBooks documents can be unzipped and the
+XML code for the book is available in `index.xml`. However, the XML
+is undocumented and must be manipulated and filled with the contents
+of a DocOnce document, e.g., by first translating DocOnce to HTML,
+and then using BeautifulSoup to get an XHTML version of the HTML
+that can act as a starting point for filling the XML file for an
+iBook. See also other "ideas" "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html".
 
 === Dealing with Mathematics in Formats without LaTeX Math Support ===
 
