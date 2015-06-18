@@ -75,6 +75,8 @@ pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sph
 pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
 pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+pip_install sphinx_rtd_theme --upgrade
+
 # Runestone sphinx books
 pip_install sphinxcontrib-paverutils
 pip_install paver
@@ -84,6 +86,9 @@ pip_install cogapp
 pip_install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
 pip_install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce
 
+# XHTML
+pip_install beautifulsoup4
+pip_install html5lib
 
 cd srclib
 svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex

@@ -67,6 +67,7 @@ highlight.js: use highlight.js syntax highlighting, not pygments."""),
 (In LaTeX line numbers can be added via doconce subst or
 doconce replace such that the verbatim environments get
 the linenos=true parameter.)"""),
+    ('--xhtml', 'Use BeautifulSoap to try to produce XHTML output. It inserts end tags (e.g. </p>) and guesses where to do it.'),
     ('--html_output=',
      'Alternative basename of files associated with the HTML format.'),
     ('--html_style=', """Name of theme for HTML style:

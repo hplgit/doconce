@@ -84,6 +84,8 @@ system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-
 system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized')
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
+system('sudo pip install sphinx_rtd_theme --upgrade')
+
 # Runestone sphinx books
 system('sudo pip install sphinxcontrib-paverutils')
 system('sudo pip install paver')
@@ -93,6 +95,9 @@ system('sudo pip install cogapp')
 system('sudo pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console')
 system('sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce')
 
+# XHTML
+system('sudo pip install beautifulsoup4')
+system('sudo pip install html5lib')
 
 
 cmd = """

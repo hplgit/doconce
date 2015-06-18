@@ -56,6 +56,9 @@ pip install cogapp
 pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
 pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce
 
+# XHTML
+pip install beautifulsoup4
+pip install html5lib
 
 $ cd srclib
 $ svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
