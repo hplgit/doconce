@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 13, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 21, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -218,9 +218,9 @@ way for each author.</p>
 <p>The date can be set as any text different from <code class="docutils literal"><span class="pre">today</span></code> if not the
 current date is wanted, e.g., <code class="docutils literal"><span class="pre">Feb</span> <span class="pre">22,</span> <span class="pre">2016</span></code>.</p>
 <p>The table of contents is removed by writing <code class="docutils literal"><span class="pre">TOC:</span> <span class="pre">off</span></code>.</p>
-<span class="target" id="quick-sections"></span></div>
+</div>
 <div class="section" id="section-types">
-<h2>Section Types<a class="headerlink" href="#section-types" title="Permalink to this headline">¶</a></h2>
+<span id="quick-sections"></span><h2>Section Types<a class="headerlink" href="#section-types" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
@@ -655,45 +655,6 @@ and
 <p>which results in</p>
 <div class="math">
 \[\frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]</div>
-<p>Any LaTeX syntax is accepted, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>,
-<code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or <code class="docutils literal"><span class="pre">ipynb</span></code> formats
-is also important, one should follow these rules:</p>
-<blockquote>
-<div><ul class="simple">
-<li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
-and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
-<li>Only five equation environments can be used: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
-<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.</li>
-<li>Newcommands in mathematical formulas are allowed, but not in
-the running text. Newcommands must be defined in files with names
-<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>.</li>
-<li>MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
-</ul>
-</div></blockquote>
-<p>(DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code> and other formats such that
-labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (<code class="docutils literal"><span class="pre">subfigure</span></code> package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as <code class="docutils literal"><span class="pre">sphinx</span></code> and <code class="docutils literal"><span class="pre">html</span></code>, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code>),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.</p>
-<p class="last">However, one can use preprocessor if-tests on
-the format (typically <code class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></code>) to
-include special code for <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-<code class="docutils literal"><span class="pre">.tex</span></code> produced by DocOnce.</p>
-</div>
 <p><strong>LaTeX Newcommands.</strong>
 The author can define <code class="docutils literal"><span class="pre">newcommand</span></code> statements in files with names
 <code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Such commands should only be used for mathematics
@@ -707,6 +668,104 @@ without LaTeX support. For <code class="docutils literal"><span class="pre">html
 rendered nicely anyway. If you desire <code class="docutils literal"><span class="pre">newcommand</span></code> outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).</p>
+</div>
+<div class="section" id="writing-guidelines-especially-for-latex-users">
+<span id="manual-latex-guide"></span><h2>Writing Guidelines (Especially for LaTeX Users!)<a class="headerlink" href="#writing-guidelines-especially-for-latex-users" title="Permalink to this headline">¶</a></h2>
+<p>LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>, <code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or
+<code class="docutils literal"><span class="pre">ipynb</span></code> formats is also important, one should follow the rules below.</p>
+<blockquote>
+<div><ul class="simple">
+<li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
+and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
+<li>Only five equation environments can be used: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
+<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.
+(DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>,
+and other formats such that
+labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)</li>
+<li>Newcommands in mathematical formulas are allowed, but not in
+the running text. Newcommands must be defined in files with names
+<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Use <code class="docutils literal"><span class="pre">\newcommands</span></code> and not <code class="docutils literal"><span class="pre">\def</span></code>.
+Each newcommand must be defined on a single line.
+Use Mako functions if you need macros in the running text.</li>
+<li>Use labels and refer to them
+for sections, figures, movies, and equations only.
+MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
+<li>Only figures and movies are floating elements in DocOnce, all other elements
+(code, tables, algorithms) must appear <em>inline</em> without numbers or labels
+for reference <a class="footnote-reference" href="#exception" id="id1">[1]</a> (refer to inline elements by a section label).
+The reason is that floating elements are in general
+not used in web documents, but we made an exception with figures
+and movies.</li>
+<li>Keep figure captions shorts as they are used as references in the
+Sphinx format. Avoid inline mathematics since Sphinx will strip it
+away in the figure reference.
+(Many writing styles encourage rich captions that
+explains everything about the figure, but this will work well
+only in the HTML and LaTeX formats.)</li>
+<li>You cannot use <code class="docutils literal"><span class="pre">subfigure</span></code> to combine several image files in one
+figure, but you can combine the files to one file using
+the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code> tool.</li>
+<li>Use plain <code class="docutils literal"><span class="pre">cite</span></code> for references (e.g., <code class="docutils literal"><span class="pre">\citeauthor</span></code> has no counterpart
+in DocOnce). The bibliography must be prepared in the Publish format,
+but import from (clean) BibTeX is possible.</li>
+<li>Use <code class="docutils literal"><span class="pre">idx</span></code> for index entries, but put the definitions between paragraphs,
+not inside them (required by Sphinx).</li>
+<li>If you depend on various LaTeX environments for your writings, you have
+to give up these, or implement <em>user-defined environments</em> in DocOnce.
+For instance, examples are normally typeset as subsections in DocOnce.
+Learn about the exercise support in DocOnce to typeset exercises, problems,
+and projects.</li>
+<li>Learn about the preprocessors Preprocess and Mako - these are smart
+tools for, e.g., commenting out/in large portions of text and creating
+macros.</li>
+<li>Use <em>generalized referenes</em> with for referring to companion documents
+that may later be put together in a book.</li>
+<li>Follow <a class="reference external" href="https://github.com/hplgit/setup4book-doconce">recommendations for DocOnce books</a> if you plan to write a book.</li>
+</ul>
+</div></blockquote>
+<table class="docutils footnote" frame="void" id="exception" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>There is an exception: by using <em>user-defined environments</em>
+within <code class="docutils literal"><span class="pre">!bu-name</span></code> and <code class="docutils literal"><span class="pre">!eu-name</span></code> directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.</td></tr>
+</tbody>
+</table>
+<div class="admonition-use-the-preprocessor-to-tailor-output admonition">
+<p class="first admonition-title">Use the preprocessor to tailor output</p>
+<p class="last">If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically <code class="docutils literal"><span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">(&quot;latex&quot;,</span> <span class="pre">&quot;pdflatex&quot;)</span></code>) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., <code class="docutils literal"><span class="pre">.tex</span></code> or <code class="docutils literal"><span class="pre">.html</span></code>) produced by DocOnce using
+your own scripts or the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> and <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> commands.</p>
+</div>
+<div class="admonition-autotranslation-of-latex-to-doconce admonition">
+<p class="first admonition-title">Autotranslation of LaTeX to DocOnce</p>
+<p class="last">The tool <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, <code class="docutils literal"><span class="pre">subfigure</span></code> in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce <code class="docutils literal"><span class="pre">FIGURE:</span></code> syntax.</p>
+</div>
 </div>
 <div class="section" id="hyperlinks">
 <h2>Hyperlinks<a class="headerlink" href="#hyperlinks" title="Permalink to this headline">¶</a></h2>
@@ -773,7 +832,7 @@ MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo movie.
 <em>Vimeo movie.</em></div>
 <div class="section" id="tables">
 <h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
-<p>The table in the section <span class="xref std std-ref">quick:sections</span> was written with this
+<p>The table in the section <a class="reference internal" href="#quick-sections"><span>Section Types</span></a> was written with this
 syntax:</p>
 <div class="highlight-text"><div class="highlight"><pre>|----------------c--------|------------------c--------------------|
 |      Section type       |        Syntax                         |
@@ -1298,6 +1357,7 @@ examine the DocOnce source and the <code class="docutils literal"><span class="p
 <li><a class="reference internal" href="#inline-comments">Inline comments</a></li>
 <li><a class="reference internal" href="#verbatim-computer-code">Verbatim/Computer Code</a></li>
 <li><a class="reference internal" href="#latex-mathematics">LaTeX Mathematics</a></li>
+<li><a class="reference internal" href="#writing-guidelines-especially-for-latex-users">Writing Guidelines (Especially for LaTeX Users!)</a></li>
 <li><a class="reference internal" href="#hyperlinks">Hyperlinks</a></li>
 <li><a class="reference internal" href="#figures-and-movies">Figures and Movies</a></li>
 <li><a class="reference internal" href="#tables">Tables</a></li>
