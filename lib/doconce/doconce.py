@@ -989,7 +989,7 @@ def insert_code_from_file(filestr, format):
 
             # Check if the code environment is explicitly specified
             if 'envir=' in line:
-                m = re.search(r'envir=([a-z0-9_]+)', line)
+                m = re.search(r'envir=([a-zN0-9_]+)', line)
                 if m:
                     code_envir = m.group(1).strip()
                     line = line.replace('envir=%s' % code_envir, '').strip()
@@ -1140,7 +1140,10 @@ def insert_code_from_file(filestr, format):
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
             # Insert a cod or pro directive for ptex2tex and sphinx.
-            if code_envir is not None:
+            if code_envir in ('None', 'off', 'none'):
+                # no need to embed code in anything
+                print ' (no format, just include)'
+            elif code_envir is not None:
                 code = "!bc %s\n%s\n!ec" % (code_envir, code)
                 print ' (format: %s)' % code_envir
             else:
@@ -1876,7 +1879,6 @@ def typeset_tables(filestr, format):
     The list is easily translated to various output formats
     by other modules.
     """
-
     from StringIO import StringIO
     result = StringIO()
 
@@ -1930,6 +1932,12 @@ def typeset_tables(filestr, format):
                     table['columns_align'] = align
             continue  # continue with next line
         if lin.startswith('|') and not horizontal_rule:
+            if lin.startswith('|b') or lin.startswith('|e'):
+                print '*** syntax error: ordinary line (outside code environments)'
+                print '    starts with |b... or |e..., should be ! instead of |'
+                print lin
+                _abort()
+
             # row in table:
             if not inside_table:
                 inside_table = True

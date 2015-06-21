@@ -1,0 +1,52 @@
+<%
+# Nomenclature functionality
+
+def insert_nomenclature():
+    # Make new file
+    with open('.nomenclature.do.txt', 'w') as f:
+        f.write("""
+|---------------------------------|
+| symbol | definition             |
+|---l---------l-------------------|
+""")
+    # Use envir=None to make plain include (no !bc envir)
+    return '@@@CODE .nomenclature.do.txt envir=None'
+
+def nomenclature(symbol, definition):
+    with open('.nomenclature.do.txt', 'a') as f:
+        f.write('| ' + symbol + ' | ' + definition + ' |\n')
+    return ''
+
+def end_nomenclature():
+    with open('.nomenclature.do.txt', 'a') as f:
+        f.write('|---------------------------------|\n')
+    return ''
+%>
+
+TITLE: Test
+AUTHOR: HPL
+DATE: today
+
+!split
+TOC: on
+
+!split
+${insert_nomenclature()}
+
+# Here comes a lot of text...
+
+The equation become
+
+!bt
+\[ \nabla\cdot\sigma = \varrho f,\]
+!et
+where $\sigma$ is the stress tensor, $\varrho$ is the density,
+and $f$ is a body force.
+${nomenclature(r'$\sigma$', 'stress tensor')}
+${nomenclature(r'$\varrho$', 'density')}
+${nomenclature(r'$f$', 'body force')}
+
+# More text....
+
+# At the end:
+${end_nomenclature()}

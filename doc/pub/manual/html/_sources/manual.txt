@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 11, 2015
+:Date: Jun 21, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -456,7 +456,7 @@ plot files for the ``pdflatex`` output format
 and will make use of such files if they exist. These
 are included by a simple ``\input{file.pgf}``. If no ``.pgf`` file is found,
 the ``pdflatex`` output format will apply ``.pdf``, ``.png``, or ``.jpg`` file,
-in that order of preferance.
+in that order of preference.
 
 Movies  (1)
 -----------
@@ -542,7 +542,7 @@ A URL works too as movie address:
 MP4, WebM, and Ogg Movies in HTML
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If a movie is in Ogg, MP4, or WebM format, and the output format is HTML,
+If a movie is in Ogg, MP4, or WebM format, and the output format is ``html``,
 DocOnce will check if the movie file is also in the other formats among
 Ogg, MP4, and WebM, and include these as well such that the movie has
 backup formats in case the browser does not support a particular format.
@@ -2184,7 +2184,8 @@ comments to be in the source code of the output document.
 
 To comment out or remove large sections, consider using the Preprocess
 preprocessor and an if-else block with a variable that is undefined
-(typically something like a test ``# #ifdef EXTRA`` in Preprocess).
+(typically something like a test ``# #ifdef EXTRA`` in Preprocess, or
+the Mako equivalent ``% if EXTRA:``).
 
 Tables
 ------
@@ -2227,7 +2228,9 @@ is built up of pipe symbols and dashes:
  * Similar character can be inserted in the line above the header to
    align the headings.
 
- * There must be a blank line before and after the table
+ * There must be a blank line before and after the table.
+
+ * Tables are *inlined* in the text, without numbers or labels for reference.
 
 Here is an example with centered headings (which is default anyway),
 and the numbers are
@@ -4374,6 +4377,11 @@ By default, copying a part of a ``.py`` file will lead to
 ``!bc pycod``, which indicates a code snippet that normally needs
 additional code to be run.
 
+Using ``envir=None`` results in a pure include of the file, without any
+surrounding code environment (i.e., no ``!bc`` or ``!ec`` directives around
+the contents of the file). The section :ref:`manual:mako:nomenclature` shows
+an example.
+
 Let us demonstrate the result of copying a whole file, as
 specified in the first line above:
 
@@ -4538,7 +4546,19 @@ Going from DocOnce to MS Word is most easily done by outputting in the
 to MS Word. Note that only a subset of LaTeX will be translated
 correctly, and mathematics is notoriously difficult and unpredicatble.
 
-Conversion to ePub format can go via HTML and the `Calibre <http://calibre-ebook.com/>`__ tools. Also Pandoc can generate ePub.  The
+.. index:: epub
+
+.. index:: epubmaker.py
+
+.. index:: Calibre
+
+ePub
+~~~~
+
+Conversion to ePub format can go via HTML and the `Calibre <http://calibre-ebook.com/>`__ tools. However, simple PDF and HTML with
+mathematics has not been well converted to ePub by Calibre (PDF
+looks strange, MathJax is not used to render formulas in HTML).
+Pandoc is another program that can generate ePub (not tested).  The
 ePub3 format supports mathematics via MathML.  Some dicussions of this
 topic appear in `<http://tex.stackexchange.com/questions/1551/use-latex-to-produce-epub>`_. The
 `LaTeXML <http://dlmf.nist.gov/LaTeXML/>`__ program can convert LaTeX
@@ -4546,11 +4566,71 @@ to XML and XHTML and can be a good starting point for further
 conversion to ePub, but the plain ``latexml`` fails miserably on LaTeX
 documents generated from DocOnce (the present manual to be precise).
 
-A converter to iBooks would be nice, but it is not feasible before
-iBooks documents get better support for LaTeX mathematics.
-The ``.iba`` files of iBooks documents can be renamed to ``.zip``,
-the file can be unzipped, and the XML code of iBooks documents
-are then available (see some `ideas <http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html>`__).
+What has been successfully used to convert DocOnce documents with
+mathematics and code to ePub is
+the ``ebookmaker.py`` script (use this `fork <https://github.com/hplgit/ebookmaker>`__ by the author for a version of this script that actually works).
+HTML, in particular with Bootstrap styles, translates well to ePub by
+this script. The script requires a JSON file describing the content of
+the book. A typical file for a DocOnce document ``mydoc.do.txt`` that
+is translated to HTML and split into a series of files ``._mydoc*.html``
+goes as follows:
+
+.. code-block:: text
+
+        {
+            "filename" : "mydoc",
+            "title" : "Title of the document",
+            "authors" : [
+                {
+                    "name" : "Hans Petter Langtangen",
+                    "sort" : "Langtangen, Hans Petter"
+                }
+            ],
+            "rights" : "Public Domain",
+            "language" : "en",
+            "publisher": "hpl",
+            "subjects" : [ "Science" ],
+            "contributors" : [
+                {
+                    "name" : "Hans Petter Langtangen",
+                    "role" : "author"
+                }
+            ],
+            "identifier" : {
+                "scheme" : "URL",
+                "value" : "http://somewhere.net"
+            },
+            "contents" : [
+                {
+                    "type" : "text",
+                    "source" : "._mydoc*.html"
+                }
+            ],
+            "toc" : {
+                "depth" : 2,
+                "parse" : [ "text" ],
+                "generate" : {
+                    "title" : "Index"
+                }
+            }
+        }
+
+Just edit this file, save it as ``mydoc.json`` and run
+``epubmaker.py mydoc.json`` to produce ``mydoc.epub``.
+
+Apple iBook Format
+~~~~~~~~~~~~~~~~~~
+
+A converter to iBooks would be nice. In theory, ePub documents can be
+imported and converted to iBooks in the iBooks Author application, but
+ePub files created by ``ebookmaker.py`` do not translate well.
+The ``.iba`` files of iBooks documents can be unzipped and the
+XML code for the book is available in ``index.xml``. However, the XML
+is undocumented and must be manipulated and filled with the contents
+of a DocOnce document, e.g., by first translating DocOnce to HTML,
+and then using BeautifulSoup to get an XHTML version of the HTML
+that can act as a starting point for filling the XML file for an
+iBook. See also other "ideas" "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html".
 
 Dealing with Mathematics in Formats without LaTeX Math Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4621,25 +4701,16 @@ Macros (Newcommands)
 
 DocOnce supports a type of macros via a LaTeX-style *newcommand*
 construction, but only inside mathematical expressions (inline
-LaTeX math or LaTeX math blocks, otherwise use Mako functions).
+LaTeX math or LaTeX math blocks). Newcommands are not allowed
+in the running text. Here is an example:
 
-The newcommands must be defined in a file with name
-``newcommand_replace.tex`` are expanded when DocOnce is filtered to
-other formats, except for LaTeX (since LaTeX performs the expansion
-itself).  Newcommands in files with names ``newcommands.tex`` and
-``newcommands_keep.tex`` are kept unaltered when DocOnce text is
-filtered to other formats, except for the Sphinx format. Since Sphinx
-understands LaTeX math, but not newcommands if the Sphinx output is
-HTML, it makes most sense to expand all newcommands.  Normally, a user
-will put all newcommands that appear in math blocks surrounded by
-``!bt`` and ``!et`` in ``newcommands_keep.tex`` to keep them unchanged, at
-least if they contribute to make the raw LaTeX math text easier to
-read in the formats that cannot render LaTeX.  Newcommands used
-elsewhere throughout the text will usually be placed in
-``newcommands_replace.tex`` and expanded by DocOnce.  The definitions of
-newcommands in the ``newcommands*.tex`` files *must* appear on a single
-line (multi-line newcommands are too hard to parse with regular
-expressions).
+.. code-block:: latex
+
+        \newcommand{\beqa}{\begin{eqnarray}}
+        \newcommand{\eeqa}{\end{eqnarray}}
+        \newcommand{\ep}{\thinspace . }
+        \newcommand{\uvec}{\vec u}
+        \newcommand{\Q}{\pmb{Q}}
 
 
 .. note::
@@ -4650,68 +4721,137 @@ expressions).
 
 
 
-Guidelines for LaTeX Writers
-----------------------------
+The newcommands must be defined by the standard LaTeX command
+``newcommand{name}{definition}`` in a separate file with name
+``newcommands*.tex``. Use of ``\def`` is ignored. Each newcommand
+definition *must* appear on a single line.
 
-Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
-``mwiki``, ``html``, or ``ipynb`` formats
-is also important, one should follow these rules:
+Newcommands in a file with name
+``newcommand_replace.tex`` are expanded when DocOnce is translated to
+other formats, except for LaTeX (since LaTeX performs the expansion
+itself).  Newcommands in files with names ``newcommands.tex`` and
+``newcommands_keep.tex`` are kept unaltered when DocOnce text is
+translated to other formats, except for the Sphinx format. (Since Sphinx
+understands LaTeX math, but not newcommands if the Sphinx output is
+HTML, it makes most sense to expand all newcommands.)  Normally, a user
+will put all newcommands that appear in math blocks surrounded by
+``!bt`` and ``!et`` in ``newcommands_keep.tex`` to keep them unchanged, at
+least if they contribute to make the raw LaTeX math text easier to
+read in the formats that cannot render LaTeX.
+
+.. _manual:latex:guide:
+
+Writing Guidelines (Especially for LaTeX Users!)
+------------------------------------------------
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
+``ipynb`` formats is also important, one should follow the rules below.
 
  * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
    and ``ipynb`` formats.
 
  * Only five equation environments can be used: ``\[ ... \]``,
    ``equation*``, ``equation``, ``align*``, and ``align``.
+   (DocOnce performs extensions to ``sphinx``, ``ipynb``,
+   and other formats such that
+   labels in ``align`` environments work well.)
 
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
-   ``newcommands*.tex``.
+   ``newcommands*.tex``. Use ``\newcommands`` and not ``\def``.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
 
- * MediaWiki (``mwiki``) does not support references to equations.
+ * Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (``mwiki``) does not support references to equations.
 
-(DocOnce performs extensions to ``sphinx`` and other formats such that
-labels in ``align`` environments work well.)
+ * Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear *inline* without numbers or labels
+   for reference [#exception]_ (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+
+ * Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+
+ * You cannot use ``subfigure`` to combine several image files in one
+   figure, but you can combine the files to one file using
+   the ``doconce combine_images`` tool.
+
+ * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+
+ * Use ``idx`` for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+
+ * If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement *user-defined environments* in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+
+ * Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+
+ * Use *generalized referenes* with for referring to companion documents
+   that may later be put together in a book.
+
+ * Follow `recommendations for DocOnce books <https://github.com/hplgit/setup4book-doconce>`__ if you plan to write a book.
+
+.. [#exception] There is an exception: by using *user-defined environments*
+   within ``!bu-name`` and ``!eu-name`` directives, it is possible to
+   label any type of text and refer to it. For example, one can have
+   environments for examples, tables, code snippets, theorems, lemmas, etc.
+   One can also use Mako functions to implement enviroments.
 
 
-.. note::
-   LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, example and algorithm environments, code listings in figures, etc.
-   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
-   to only utilze very standard LaTeX-style writing. Correspondingly, the writer
-   must stick to simple constructs and avoid, for instance,
-   
-    * newcommands outside inline math or LaTeX blocks [#Mako-func]_
-   
-    * more than
-      one plot per figure (combine them into one using ``doconce combine_images``),
-   
-    * floating tables with captions (tables are inlined and explained in the text),
-   
-    * example environments (use subsection or subsubsection instead),
-   
-    * algorithms environments (see *Typesetting of Algorithms* in this manual),
-   
-    * code listings in figures (use just inline blocks).
-   
-   However, one can use preprocessor if-tests on
+.. admonition:: Use the preprocessor to tailor output
+
+   If you really need special LaTeX constructs in the LaTeX output
+   from DocOnce, you may use use preprocessor if-tests on
    the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
-   include special code for ``latex`` and ``pdflatex`` output and more
-   straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of the resulting
-   PDF document. More tuning can be done by automatic editing of the
-   ``.tex`` produced by DocOnce.
-   
-   One can also use the Mako preprocessor to extend DocOnce functionality
-   and implement, e.g., theorem or example environments (see the section :ref:`manual:theorem:envir`) or tables with figures (see the section :ref:`manual:tables:wfigs`). Many other extensions are also possible.
+   include such special LaTeX code. With an else clause you can easily
+   create corresponding constructions for other formats. This way
+   of using Preprocess or Mako
+   allows advanced LaTeX features, or HTML features for the HTML formats,
+   and thereby fine tuning of the resulting
+   document. More tuning can be done by automatic editing of the
+   output file (e.g., ``.tex`` or ``.html``) produced by DocOnce using
+   your own scripts or the ``doconce replace`` and ``doconce subst`` commands.
 
 
 
 
-.. [#Mako-func] Mako functions written in plain Python or simple Mako
-   variables constitute a much more flexible tool than the LaTeX
-   newcommand construction. Such functions can be used both for the
-   running text and math environments.
+
+.. admonition:: Autotranslation of LaTeX to DocOnce
+
+   The tool ``doconce latex2doconce`` may help you translating LaTeX files
+   to DocOnce syntax. However, if you use computer code in floating
+   list environments, special packages for typesetting algorithms,
+   example environments, ``subfigure`` in figures,
+   or a lot of newcommands in the running text, there will be need for
+   a lot of manual edits and adjustments. For examples, figure environments
+   can be translated by ``doconce latex2doconce`` only if the label is inside
+   the caption. If the LaTeX is consistent with respect to placement of
+   the label, a simple script can autoedit the label inside the caption,
+   but many LaTeX writers put the label at different places in different
+   figures, and then it becomes more difficult to autoedit figures and
+   translate them to the DocOnce ``FIGURE:`` syntax.
+
+
+
 
 Typesetting of Algorithms
 -------------------------
@@ -5058,6 +5198,8 @@ a summary, while a box is often used to highlight a key finding
 in the running text: an equation, a hypothesis, a theorem, a
 rule, or a conclusion.
 
+.. _manual:userdef:envir:
+
 User-Defined Environments
 -------------------------
 
@@ -5358,8 +5500,24 @@ institutions or journals. Publish already have a database of journals
 and institutions/departments, but when you add new, you also get
 a file ``venues.list`` (in the current working directory) which will be used
 for future imports in this directory. Make sure you store ``publish.pub``
-and ``venues.list`` along with your DocOnce document files (e.g., add them to
+and ``venues.list`` along with your DocOnce document files (they do not
+need to reside in the same directory, but make sure you add them to
 your version control system).
+
+
+.. admonition:: Importing big BibTeX databases may imply a lot of work
+
+   If your BibTeX database does not confirm to the strict BibTeX syntax
+   required by Publish (entry names must be in lower case, their values
+   must be surrounded by curly braces), you will get error messages.
+   Publish will also check the names of all journals and detect duplicate
+   entries. For databases automatically created by some of the modern
+   web tools for references, the BibTeX file may need a lot of
+   edits before it can be accepted by Publish. Consider using a script
+   to automate many of the edits.
+
+
+
 
 Requirements to input data
 --------------------------
@@ -6363,7 +6521,98 @@ very effective.
 
 
 
-One can use Mako to extend the DocOnce syntax. Three examples are given next.
+One can use Mako to extend the DocOnce syntax. Four examples are given next.
+
+.. _manual:mako:nomenclature:
+
+Example: Nomenclature functionality
+-----------------------------------
+
+LaTeX has a package for nomenclatures (see `documentation <http://cs.brown.edu/about/system/managed/latex/doc/nomencl.pdf>`__) that allows a user
+to issue a simple command
+
+.. code-block:: latex
+
+        \nomenclature{symbol}{definition}
+
+to add a symbol and its definition to a nomenclature. The
+command ``\printglossary`` inserts the nomenclature table in the document.
+
+We can easily create someting similar in DocOnce with the aid of Mako.
+Here are the basic ideas:
+
+ * Collect the nomenclature definitions in a table in a file ``.nomenclature.do.txt``.
+
+ * Introduce a command ``${insert_nomenclature()}`` to make a fresh
+   ``.nomenclature.do.txt`` file and return a ``@@@CODE`` command
+   for inserting the nomenclature table.
+
+ * Introduce a command ``${nomenclature(symbol, definition)}``
+   for adding a new line in the nomenclature table in the file.
+
+ * Introduce a command ``${end_nomenclature()}`` to finish the nomenclature
+   table, i.e., insert the last table line.
+
+The Mako functions are defined by
+
+.. code-block:: doconce
+
+        <%
+        # Nomenclature functionality
+        
+        def insert_nomenclature():
+            # Make new file
+            with open('.nomenclature.do.txt', 'w') as f:
+                f.write("""\
+        |---------------------------------|
+        | symbol | definition             |
+        |---l---------l-------------------|
+        """)
+            # Use envir=None to make plain include
+            return '@@@CODE .nomenclature.do.txt envir=None'
+        
+        def nomenclature(symbol, definition):
+            with open('.nomenclature.do.txt', 'a') as f:
+                f.write('| ' + symbol + ' | ' + definition + ' |\n')
+            return ''
+        
+        def end_nomenclature():
+            with open('.nomenclature.do.txt', 'a') as f:
+                f.write('|---------------------------------|\n')
+            return ''
+        %>
+
+The typical application in a DocOnce document is
+
+.. code-block:: doconce
+
+        TITLE: ...
+        AUTHOR: ...
+        DATE: today
+        
+        !split
+        TOC: on
+        
+        !split
+        ${insert_nomenclature()}
+        
+        # Here comes a lot of text...
+        
+        The equation become
+        
+        !bt
+        \[ \nabla\cdot\sigma = \varrho f,\]
+        !et
+        where $\sigma$ is the stress tensor, $\varrho is the density,
+        and $f$ is a body force.
+        ${nomenclature(r'$\sigma$', 'stress tensor')}
+        ${nomenclature(r'$\varrho$', 'density')}
+        ${nomenclature(r'$f$', 'body force')}
+        
+        # More text....
+        
+        # At the end:
+        ${end_nomenclature()}
 
 Example: Executing Python and using SymPy Objects in LaTeX
 ----------------------------------------------------------
@@ -8938,6 +9187,11 @@ here for convenience.
         (In LaTeX line numbers can be added via doconce subst or
         doconce replace such that the verbatim environments get
         the linenos=true parameter.)
+        
+        
+        --xhtml
+        
+        Use BeautifulSoap to try to produce XHTML output. It inserts end tags (e.g. </p>) and guesses where to do it.
         
         
         --html_output=...
