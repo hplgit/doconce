@@ -510,22 +510,11 @@ found in line:
     return filestr
 
 def sphinx_ref_and_label(section_label2title, format, filestr):
-    filestr = ref_and_label_commoncode(section_label2title, format, filestr)
-
-    # replace all references to sections:
-    for label in section_label2title:
-        filestr = filestr.replace('ref{%s}' % label, ':ref:`%s`' % label)
-
-    # Not of interest after sphinx got equation references:
-    #from common import ref2equations
-    #filestr = ref2equations(filestr)
-
-    # Replace remaining ref{x} as :ref:`x`
-    filestr = re.sub(r'ref\{(.+?)\}', ':ref:`\g<1>`', filestr)
-
     # Special fix early in the process:
     # Deal with !split - by default we place splits before
     # the topmost sections
+    # (This must be done before labels are put above section
+    # headings)
     if not option('sphinx_keep_splits'):
         print '*** warning: new !split inserted (override all existing !split)'
         # Note: the title is at this stage translated to a chapter heading!
@@ -563,6 +552,19 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
 
             filestr = '\n'.join(lines)
         filestr = filestr.replace(title_replacement, title)
+
+    filestr = ref_and_label_commoncode(section_label2title, format, filestr)
+
+    # replace all references to sections:
+    for label in section_label2title:
+        filestr = filestr.replace('ref{%s}' % label, ':ref:`%s`' % label)
+
+    # Not of interest after sphinx got equation references:
+    #from common import ref2equations
+    #filestr = ref2equations(filestr)
+
+    # Replace remaining ref{x} as :ref:`x`
+    filestr = re.sub(r'ref\{(.+?)\}', ':ref:`\g<1>`', filestr)
 
     return filestr
 
