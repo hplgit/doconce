@@ -4000,6 +4000,16 @@ def doconce2format(filestr, format):
         filestr = filestr.replace('RAW_GITHUB_URL', raw_github_url)
         if option('html_DOCTYPE'):
             filestr = '<!DOCTYPE HTML>\n' + filestr
+        if option('xhtml'):
+            try:
+                from bs4 import BeautifulSoap as BS
+            except ImportError:
+                print '*** error: for --xhtml the bs4 BeautifulSoap package must be installed'
+                print '    pip install beautifulsoup4'
+                _abort()
+            soup = BS(filestr)
+            # soup can be used to rewrite the entire doc
+            filestr = soup.prettify()
 
 
     # Next step: remove exercise solution/answers, notes, etc

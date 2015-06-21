@@ -1,4 +1,4 @@
-TITLE: DocOnce Troubleshooting
+TITLE: DocOnce Troubleshooting and FAQ
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -518,6 +518,63 @@ in pressbooks.com, then choose HTML input, write the URL, and upload.
 
 Note that WordPress LaTeX cannot refer to equations using labels!
 This is a major problem with pressbooks.com.
+
+===== How can I produce ePub books from DocOnce? =====
+label{trouble:epub}
+
+DocOnce has no direct translation to ePub, but one can apply a script
+"`ebookmaker.py`": "https://github.com/hplgit/ebookmaker" to translate
+a set of split HTML files to ePub. Bootstrap styles with mathematics
+and code come out very nice in ePub this way.
+The script needs a JSON file. If `mydoc.do.txt` is the DocOnce file
+and `._mydoc*.html` the set of split HTML files after translation
+to HTML, the JSON file may look like this:
+
+!bc
+{
+    "filename" : "mydoc",
+    "title" : "Title of the document",
+    "authors" : [
+        {
+            "name" : "Hans Petter Langtangen",
+            "sort" : "Langtangen, Hans Petter"
+        }
+    ],
+    "rights" : "Public Domain",
+    "language" : "en",
+    "publisher": "hpl",
+    "subjects" : [ "Science" ],
+    "contributors" : [
+        {
+            "name" : "Hans Petter Langtangen",
+            "role" : "author"
+        }
+    ],
+    "identifier" : {
+        "scheme" : "URL",
+        "value" : "http://somewhere.net"
+    },
+    "contents" : [
+        {
+            "type" : "text",
+            "source" : "._mydoc*.html"
+        }
+    ],
+    "toc" : {
+        "depth" : 2,
+        "parse" : [ "text" ],
+        "generate" : {
+            "title" : "Index"
+        }
+    }
+}
+!ec
+Just edit this file to your needs, save it as `mydoc.json` and run
+`epubmaker.py mydoc.json` to produce `mydoc.epub`.
+Read in "Calibre": "http://calibre-ebook.com/"
+on computers or use ebook readers on phones and tablets.
+
+
 
 ======= Preprocess/Mako problems =======
 

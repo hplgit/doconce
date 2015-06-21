@@ -3,11 +3,11 @@
 
 .. Document title:
 
-DocOnce Troubleshooting
-%%%%%%%%%%%%%%%%%%%%%%%
+DocOnce Troubleshooting and FAQ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 11, 2015
+:Date: Jun 14, 2015
 
 
 .. admonition:: Disclaimer
@@ -593,6 +593,64 @@ in pressbooks.com, then choose HTML input, write the URL, and upload.
 
 Note that WordPress LaTeX cannot refer to equations using labels!
 This is a major problem with pressbooks.com.
+
+.. _trouble:epub:
+
+How can I produce ePub books from DocOnce?
+------------------------------------------
+
+DocOnce has no direct translation to ePub, but one can apply a script
+`ebookmaker.py <https://github.com/hplgit/ebookmaker>`__ to translate
+a set of split HTML files to ePub. Bootstrap styles with mathematics
+and code come out very nice in ePub this way.
+The script needs a JSON file. If ``mydoc.do.txt`` is the DocOnce file
+and ``._mydoc*.html`` the set of split HTML files after translation
+to HTML, the JSON file may look like this:
+
+.. code-block:: text
+
+        {
+            "filename" : "mydoc",
+            "title" : "Title of the document",
+            "authors" : [
+                {
+                    "name" : "Hans Petter Langtangen",
+                    "sort" : "Langtangen, Hans Petter"
+                }
+            ],
+            "rights" : "Public Domain",
+            "language" : "en",
+            "publisher": "hpl",
+            "subjects" : [ "Science" ],
+            "contributors" : [
+                {
+                    "name" : "Hans Petter Langtangen",
+                    "role" : "author"
+                }
+            ],
+            "identifier" : {
+                "scheme" : "URL",
+                "value" : "http://somewhere.net"
+            },
+            "contents" : [
+                {
+                    "type" : "text",
+                    "source" : "._mydoc*.html"
+                }
+            ],
+            "toc" : {
+                "depth" : 2,
+                "parse" : [ "text" ],
+                "generate" : {
+                    "title" : "Index"
+                }
+            }
+        }
+
+Just edit this file to your needs, save it as ``mydoc.json`` and run
+``epubmaker.py mydoc.json`` to produce ``mydoc.epub``.
+Read in `Calibre <http://calibre-ebook.com/>`__
+on computers or use ebook readers on phones and tablets.
 
 .. !split
 

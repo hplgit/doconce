@@ -1,7 +1,7 @@
 # Note on the Springer T2 style: used the modifications in t2do.sty
 # and svmonodo.cls (come bundled with DocOnce).
 
-TITLE:  A Test of DocOnce a Book with Springer's T2 Style
+TITLE:  Test of DocOnce-Based Book with Springer's T2/T4 Styles
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
@@ -54,11 +54,6 @@ exercises hands on.  The book is therefore full of exercises of
 various types: modifications of existing examples, completely new
 problems, or debugging of given programs.
 
-There is a web page associated with this book, URL:
-"http://hplgit.github.com/scipro-primer", which lists the software you
-need and explains briefly how to install it.  This page also contains
-all the files associated with the program examples in this book.
-
 === Python version 2 or 3? ===
 
 A common problem among Python programmers is to choose between version
@@ -100,7 +95,7 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 \vspace{1cm}
 
 \noindent
-*Oslo, April 2012*  \hfill  *Hans Petter Langtangen*
+*Oslo, May 2015*  \hfill  *Hans Petter Langtangen*
 # #endif
 
 
@@ -279,8 +274,7 @@ A similar function,
 a = np.zeros_like(c)
 !ec
 generates an array of zeros where the length is that of the array `c`
-and the element type is the same as those in `c`.  Arrays with more
-than one index are treated in Section ref{sec:plot:2Darrays}.
+and the element type is the same as those in `c`.
 
 idx{`linspace` (from `numpy`)}idx{`np.linspace` function}
 
@@ -314,7 +308,7 @@ a = np.linspace(p, q, n)
 | `b = a.copy()`            | copy an array                                             |
 |---------------------------------------------------------------------------------------|
 
-========= Storing results in data files =========
+========= Storing results in data files and adding more words here to get a very log chapter heading =========
 
 We need to test spaces around footnotes for 2-digit footnotes, which
 means we need a lot of URLs, e.g., to files:
@@ -466,7 +460,7 @@ idx{`sys.stdin`}idx{`sys.stdout`}
 
 Reading user input from the keyboard applies the function
 # #ifdef PRIMER_BOOK
-`raw_input` as explained in Section ref{sec:input:rawinput}.
+`raw_input` as explained in another section.
 # #else
 `raw_input`.
 # #endif
@@ -535,7 +529,7 @@ def x2f(infile, outfile, f):
         outfile.write('%g\n' % y)
 !ec
 This function works with all types of files, including
-web pages as `infile` (see Section ref{sec:files:webtxt}).
+web pages as `infile`.
 With `sys.stdin` as `infile` and/or `sys.stdout`
 as `outfile`, the `x2f` function also works with standard input
 and/or standard output. Without `sys.stdin` and `sys.stdout`,
@@ -676,13 +670,13 @@ Use a Python shell.
 
 
 
-========= Appendix: Styles for Springer T2 =========
+========= Appendix: Styles for Springer T2/T4 =========
 
-The T2 style for DocOnce-generated LaTeX should make use of
+The T2/T4 style for DocOnce-generated LaTeX should make use of
 slightly modified `svmono.cls` and `t2.sty` files:
 
  * `svmonodo.cls`
- * `t2do.sty`
+ * `t2do.sty` or `t4do.sty`
 
 
 ========= References =========
