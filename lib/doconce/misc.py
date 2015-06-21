@@ -7665,17 +7665,18 @@ def _latex2doconce(filestr):
             print 'PROBLEM:', problem, '\n', p
     """
 
-    math_envirs = 'equation', 'eqnarray', 'eqnarray*', 'align', 'align*', 'equation*'
-    math_starters = [r'\begin{%s}' % envir for envir in math_envirs]
-    math_starters.append(r'\[')
-    math_enders = [r'\end{%s}' % envir for envir in math_envirs]
-    math_enders.append(r'\]')
+    math_envirs = 'equation', 'eqnarray', 'eqnarray*', 'align', r'align\*', r'equation\*'
+    # Avoid picking up equations in comment lines
+    math_starters = [r'^([^%%\n]*)(\\begin\{%s\})' % envir for envir in math_envirs]
+    math_starters.append(r'^([^%%\n]*)(\\\[)')
+    math_enders = [r'^([^%%\n]*)(\\end\{%s\})' % envir for envir in math_envirs]
+    math_enders.append(r'^([^%%\n]*)(\\\])')
 
     # add !bt before and !et after math environments:
     for e in math_starters:
-        filestr = filestr.replace(e, '\n!bt\n' + e)
+        filestr = re.sub(e, r'\g<1>\n!bt\n\g<2>', filestr, flags=re.MULTILINE)
     for e in math_enders:
-        filestr = filestr.replace(e, e + '\n!et')
+        filestr = re.sub(e, r'\g<1>\g<2>\n!et',  filestr, flags=re.MULTILINE)
 
     # Make sure there is a line after heading (and label)
     filestr = re.sub(r'(===[A-Za-z0-9 ]+?={3,9})\s+(\\label\{.+?\})\s+([A-Za-z ])', r'\g<1>\n\g<2>\n\n\g<3>', filestr)
