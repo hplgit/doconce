@@ -10,15 +10,15 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 21, 2015
+:Date: Jun 22, 2015
 
 .. lines beginning with # are doconce comment lines
 
 .. (documents can also have mako comment lines)
 
-.. _what:is:doconce:
-
 .. !split
+
+.. _what:is:doconce:
 
 What Is DocOnce?
 ================
@@ -2461,9 +2461,9 @@ The result becomes
 
 
 
-.. _inline:tagging:
-
 .. !split
+
+.. _inline:tagging:
 
 Inline Tagging
 ==============
@@ -4759,6 +4759,11 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    (DocOnce performs extensions to ``sphinx``, ``ipynb``,
    and other formats such that
    labels in ``align`` environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
+   ``align`` and use a number for each equation, or use ``\nonumber\\``
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
 
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -4786,7 +4791,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * You cannot use ``subfigure`` to combine several image files in one
    figure, but you can combine the files to one file using
-   the ``doconce combine_images`` tool.
+   the ``doconce combine_images`` tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -4794,6 +4801,12 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Use ``idx`` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+
+ * Use the ``bm`` package and the ``\bm`` command for boldface in mathematics.
+
+ * Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The ``\begin{}`` and ``\end{}`` directives should start
+   in column 1.
 
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
@@ -4842,13 +4855,54 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    list environments, special packages for typesetting algorithms,
    example environments, ``subfigure`` in figures,
    or a lot of newcommands in the running text, there will be need for
-   a lot of manual edits and adjustments. For examples, figure environments
+   a lot of manual edits and adjustments.
+   
+   For examples, figure environments
    can be translated by ``doconce latex2doconce`` only if the label is inside
-   the caption. If the LaTeX is consistent with respect to placement of
+   the caption and the figure is typeset like
+   
+   .. code-block:: latex
+   
+           \begin{figure}
+             \centering
+             \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+             \caption{This is a figure. \labe{myfig}}
+           \end{figure}
+   
+   If the LaTeX is consistent with respect to placement of
    the label, a simple script can autoedit the label inside the caption,
    but many LaTeX writers put the label at different places in different
    figures, and then it becomes more difficult to autoedit figures and
    translate them to the DocOnce ``FIGURE:`` syntax.
+   
+   Tables are hard to interpret and translate, because the headings and
+   caption can be typeset in many different ways. The type of table
+   that is recognized looks like
+   
+   .. code-block:: latex
+   
+           \begin{table}
+           \caption{Here goes the caption.}
+           \begin{tabular}{lr}
+           \hline
+           \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\
+           \hline
+           1.2 & 4.2\\
+           1.1 & 4.0\\
+           0.9 & 3.7
+           \hline
+           \end{tabular}
+           \end{table}
+   
+   Recall that table captions do not make sense in DocOnce since tables
+   must be inlined and explained in the surrounding text.
+   
+   Footnotes are also problematic for ``doconce latex2doconce`` since DocOnce
+   footnotes must have the explanation outside the paragraph where the
+   footnote is used. This calls for manual work. The translator from
+   LaTeX to DocOnce will insert ``_PROBLEM_`` and mark footnotes. One
+   solution is to avoid footnotes in the LaTeX document if fully automatic
+   translation is desired.
 
 
 
@@ -5248,7 +5302,8 @@ We have
 
 The definition of the example environment must be done in a Python
 module ``userdef_environments``, located in the same directory as the
-DocOnce source code. In this file (``userdef_environments.py``),
+DocOnce source code or the parent directory.
+In this file (``userdef_environments.py``),
 we must provide a dictionary ``envir2format`` for translating an
 environment into the right code for a specific format:
 
@@ -5293,6 +5348,8 @@ the other keys. The LaTeX output is here defined by the function
         
         %s
         \end{example}
+        """ % (titleline, text)
+            return s
         
         def get_label(titleline):
             label = ''
@@ -5303,8 +5360,6 @@ the other keys. The LaTeX output is here defined by the function
                     label = m.group(1)
                     titleline = re.sub(pattern, '', titleline).strip()
             return label, titleline
-        """ % (titleline, text)
-            return s
 
 The arguments are ``text`` for the body of the environment, ``titleline``
 for the title (everything that comes after ``!bc-example`` on the line),
@@ -5383,7 +5438,7 @@ To summarize, the *example* environment together with the ``refex`` Mako
 function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.
 
-You may take a look at a complete `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py>`__
+You may take a look at a complete `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py>`__
 file to see this example environment and another *highligh* environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
 notice admon for all other formats. The highlight environment is
@@ -6345,9 +6400,9 @@ Typing ``Ctrl+c help`` prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!
 
-.. _manual:mako:
-
 .. !split
+
+.. _manual:mako:
 
 Mako Programming
 ================
@@ -6603,7 +6658,7 @@ The typical application in a DocOnce document is
         !bt
         \[ \nabla\cdot\sigma = \varrho f,\]
         !et
-        where $\sigma$ is the stress tensor, $\varrho is the density,
+        where $\sigma$ is the stress tensor, $\varrho$ is the density,
         and $f$ is a body force.
         ${nomenclature(r'$\sigma$', 'stress tensor')}
         ${nomenclature(r'$\varrho$', 'density')}
@@ -6613,6 +6668,11 @@ The typical application in a DocOnce document is
         
         # At the end:
         ${end_nomenclature()}
+
+Make it a habit to use raw strings ``r"..."``
+for the symbol in ``${nomenclature(r"...", ....``
+(sometimes backslashes enter the definition too and raw strings are
+required).
 
 Example: Executing Python and using SymPy Objects in LaTeX
 ----------------------------------------------------------
@@ -7135,9 +7195,9 @@ format, and you need to know these steps to make use of the logfile.
 
 .. Example on including another DocOnce file:
 
-.. _doconce2formats:
-
 .. !split
+
+.. _doconce2formats:
 
 From DocOnce to Other Formats
 =============================
@@ -9974,9 +10034,9 @@ here for convenience.
         Combine paragraphs to one line (does not work well).
         
 
-.. _install:doconce:
-
 .. !split
+
+.. _install:doconce:
 
 Installation of DocOnce and its Dependencies
 ============================================

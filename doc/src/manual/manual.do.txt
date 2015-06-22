@@ -3261,7 +3261,8 @@ We have
 
 The definition of the example environment must be done in a Python
 module `userdef_environments`, located in the same directory as the
-DocOnce source code. In this file (`userdef_environments.py`),
+DocOnce source code or the parent directory.
+In this file (`userdef_environments.py`),
 we must provide a dictionary `envir2format` for translating an
 environment into the right code for a specific format:
 
@@ -3304,6 +3305,8 @@ def example(text, titleline, counter, format):
 
 %s
 \end{example}
+""" % (titleline, text)
+    return s
 
 def get_label(titleline):
     label = ''
@@ -3314,8 +3317,6 @@ def get_label(titleline):
             label = m.group(1)
             titleline = re.sub(pattern, '', titleline).strip()
     return label, titleline
-""" % (titleline, text)
-    return s
 !ec
 The arguments are `text` for the body of the environment, `titleline`
 for the title (everything that comes after `!bc-example` on the line),
@@ -3391,7 +3392,7 @@ function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.
 
 You may take a look at a complete "`userdef_environments.py`":
-"https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py"
+"https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py"
 file to see this example environment and another *highligh* environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
 notice admon for all other formats. The highlight environment is
@@ -4479,6 +4480,10 @@ ${nomenclature(r'$f$', 'body force')}
 # At the end:
 ${end_nomenclature()}
 !ec
+Make it a habit to use raw strings `r"..."`
+for the symbol in `${nomenclature(r"...", ....`
+(sometimes backslashes enter the definition too and raw strings are
+required).
 
 ===== Example: Executing Python and using SymPy Objects in LaTeX =====
 
