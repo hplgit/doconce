@@ -726,7 +726,8 @@ $$ 1 + 1 = 2 $$
 <p>
 The definition of the example environment must be done in a Python
 module <code>userdef_environments</code>, located in the same directory as the
-DocOnce source code. In this file (<code>userdef_environments.py</code>),
+DocOnce source code or the parent directory.
+In this file (<code>userdef_environments.py</code>),
 we must provide a dictionary <code>envir2format</code> for translating an
 environment into the right code for a specific format:
 
@@ -774,18 +775,18 @@ the other keys. The LaTeX output is here defined by the function
 
 <span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121"></span>
 <span style="color: #BA2121">\end{example}</span>
-
-<span style="color: #BA2121">def get_label(titleline):</span>
-<span style="color: #BA2121">    label = &#39;&#39;</span>
-<span style="color: #BA2121">    if &#39;label=&#39; in titleline:</span>
-<span style="color: #BA2121">        pattern = r&#39;label=([^\s]+)&#39;</span>
-<span style="color: #BA2121">        m = re.search(pattern, titleline)</span>
-<span style="color: #BA2121">        if m:</span>
-<span style="color: #BA2121">            label = m.group(1)</span>
-<span style="color: #BA2121">            titleline = re.sub(pattern, &#39;&#39;, titleline).strip()</span>
-<span style="color: #BA2121">    return label, titleline</span>
 <span style="color: #BA2121">&quot;&quot;&quot;</span> <span style="color: #666666">%</span> (titleline, text)
     <span style="color: #008000; font-weight: bold">return</span> s
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_label</span>(titleline):
+    label <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;&#39;</span>
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;label=&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> titleline:
+        pattern <span style="color: #666666">=</span> <span style="color: #BA2121">r&#39;label=([^\s]+)&#39;</span>
+        m <span style="color: #666666">=</span> re<span style="color: #666666">.</span>search(pattern, titleline)
+        <span style="color: #008000; font-weight: bold">if</span> m:
+            label <span style="color: #666666">=</span> m<span style="color: #666666">.</span>group(<span style="color: #666666">1</span>)
+            titleline <span style="color: #666666">=</span> re<span style="color: #666666">.</span>sub(pattern, <span style="color: #BA2121">&#39;&#39;</span>, titleline)<span style="color: #666666">.</span>strip()
+    <span style="color: #008000; font-weight: bold">return</span> label, titleline
 </pre></div>
 <p>
 The arguments are <code>text</code> for the body of the environment, <code>titleline</code>
@@ -877,7 +878,7 @@ function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.
 
 <p>
-You may take a look at a complete <a href="https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py" target="_self"><tt>userdef_environments.py</tt></a>
+You may take a look at a complete <a href="https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py" target="_self"><tt>userdef_environments.py</tt></a>
 file to see this example environment and another <em>highligh</em> environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
 notice admon for all other formats. The highlight environment is

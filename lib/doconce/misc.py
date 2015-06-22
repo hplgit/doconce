@@ -2399,16 +2399,19 @@ def html_colorbullets():
 def _usage_split_html():
     print """\
 Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --acknowledgment="..." --font_size=slides'
---method=split|space8|hrule|colorline specifies physical pagebreak
-split (split) or just N blank lines (spaceN) or a horizontal
-rule (hrule) with blank lines above and below, or a colored rule
-instead of <hr> rule. Default is split.
+
+--method=split|space8|hrule|colorline specifies pagebreak
+physical split with a new page (--method=split) or
+just N blank lines (--method=spaceN) or a horizontal
+rule (--method=hrule) with blank lines above and below, or
+a colored line (--method=colorline).
+Default is --method=split.
 
 --nav_button=name sets the type of navigation button (next, previous):
 text, gray1 (default), gray2, bigblue, blue, green.
 See (https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/nav_buttons.png
 for examples on these types (from left to right).
-A value like gray2,top gives buttons only at the top of the page,
+A value like -nav_button=gray2,top gives buttons only at the top of the page,
 gray2,top+bottom gives buttons at the top and bottom (default), while
 gray2,bottom gives buttons only at the bottom.
 If the "doconce format html" command used bootstrap styles (with

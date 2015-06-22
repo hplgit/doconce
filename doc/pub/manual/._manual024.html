@@ -480,7 +480,7 @@ The equation become
 !bt
 \[ \nabla\cdot\sigma = \varrho f,\]
 !et
-where $\sigma$ is the stress tensor, $\varrho is the density,
+where $\sigma$ is the stress tensor, $\varrho$ is the density,
 and $f$ is a body force.
 ${nomenclature(r&#39;$\sigma$&#39;, &#39;stress tensor&#39;)}
 ${nomenclature(r&#39;$\varrho$&#39;, &#39;density&#39;)}
@@ -491,6 +491,11 @@ ${nomenclature(r&#39;$f$&#39;, &#39;body force&#39;)}
 <span style="color: #408080; font-style: italic"># At the end:</span>
 ${end_nomenclature()}
 </pre></div>
+<p>
+Make it a habit to use raw strings <code>r&quot;...&quot;</code>
+for the symbol in <code>${nomenclature(r&quot;...&quot;, ....</code>
+(sometimes backslashes enter the definition too and raw strings are
+required).
 
 <h2 id="___sec111">Example: Executing Python and using SymPy Objects in LaTeX </h2>
 

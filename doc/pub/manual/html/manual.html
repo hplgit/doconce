@@ -65,12 +65,12 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 21, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 22, 2015</td>
 </tr>
 </tbody>
 </table>
-<span class="target" id="what-is-doconce"></span><div class="section" id="id1">
-<h2>What Is DocOnce?<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-doconce">
+<span id="id1"></span><h2>What Is DocOnce?<a class="headerlink" href="#what-is-doconce" title="Permalink to this headline">¶</a></h2>
 <p id="index-0">DocOnce is a very simple and minimally tagged markup language that
 looks like ordinary ASCII text, much like what you would use in an
 email, but the text can be transformed to numerous other formats,
@@ -163,7 +163,7 @@ directory</p>
 formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <tt class="docutils literal"><span class="pre">demo</span></tt>.
 To successfully run this script and compile all the different versions,
 you must have quite a lot of software installed, see
-the the section <em class="xref std std-ref">install:doconce</em> for detailed information.
+the the section <a class="reference internal" href="#install-doconce"><em>Installation of DocOnce and its Dependencies</em></a> for detailed information.
 However,
 the most commonly used formats of this manual are
 fortunately also accessible through the web:
@@ -1994,7 +1994,7 @@ set the (terminal) prompt that prefixes the command:</p>
 <h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
 <p id="index-16">Comments intended to be (sometimes) visible in the output document and
 read by readers are known as <em>inline comments</em> in DocOnce and
-described in the section <em class="xref std std-ref">inline:tagging</em>.</p>
+described in the section <a class="reference internal" href="#inline-tagging"><em>Inline Tagging</em></a>.</p>
 <p>Here we address comments in the DocOnce source file that are not
 intended to be visible in the output document. Basic comment
 lines start with the hash <tt class="docutils literal"><span class="pre">#</span></tt>:</p>
@@ -2264,10 +2264,10 @@ Indented lines may give strange output in some formats.
 Also note that extra whitespace after <tt class="docutils literal"><span class="pre">item&quot;</span> <span class="pre">indicators</span> <span class="pre">(``*</span></tt>, <tt class="docutils literal"><span class="pre">o</span></tt>, or <tt class="docutils literal"><span class="pre">-</span></tt>)
 in lists may give strange behavior.</p>
 </div>
-<span class="target" id="inline-tagging"></span></div>
 </div>
-<div class="section" id="id6">
-<h2>Inline Tagging<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="inline-tagging">
+<span id="id6"></span><h2>Inline Tagging<a class="headerlink" href="#inline-tagging" title="Permalink to this headline">¶</a></h2>
 <p>DocOnce supports tags for <em>emphasized phrases</em>, <strong>boldface phrases</strong>,
 and <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">text</span></tt> (also called type writer text, for inline code),
 plus LaTeX/TeX inline mathematics, such as <span class="math">\(\nu = \sin(x)\)</span>.
@@ -2564,11 +2564,11 @@ as space. Next is an example.
 [<strong>hpl&#8217;s comment 1</strong>: Inline comments can span several lines, if desired.]</p>
 <p>The name and comment are visible in the output unless <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>
 is run with a command-line argument <tt class="docutils literal"><span class="pre">--skip_inline_comments</span></tt>
-(see the section <em class="xref std std-ref">doconce2formats</em> for an example). Inline comments
+(see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an example). Inline comments
 are helpful during development of a document since different authors
 and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the <tt class="docutils literal"><span class="pre">.do.txt</span></tt> file
-by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">remove_inline_comments</span></tt> (see the section <em class="xref std std-ref">doconce2formats</em>).</p>
+by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">remove_inline_comments</span></tt> (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a>).</p>
 <p>Inline comments are typeset in a simple way: boldface name, a
 numbering of the comment, and then the comment, all in red and in
 parenthesis. However, with the <tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> option, LaTeX will
@@ -2730,7 +2730,7 @@ say (<em class="xref std std-ref">myeq1</em>)-(<em class="xref std std-ref">myeq
 the source of this document illustrates how labels and references
 are handled by the format in question.</p>
 <p>Hyperlinks to files or web addresses are handled as explained
-in the section <em class="xref std std-ref">inline:tagging</em>.</p>
+in the section <a class="reference internal" href="#inline-tagging"><em>Inline Tagging</em></a>.</p>
 </div>
 <div class="section" id="generalized-cross-referencing">
 <span id="manual-genrefs"></span><h3>Generalized Cross-Referencing<a class="headerlink" href="#generalized-cross-referencing" title="Permalink to this headline">¶</a></h3>
@@ -3955,7 +3955,7 @@ in the running text. Here is an example:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">If you desire a newcommand for the running text, using a Mako function
 (written in plain Python) is much more flexible. See
-the section <em class="xref std std-ref">manual:mako</em>.</p>
+the section <a class="reference internal" href="#manual-mako"><em>Mako Programming</em></a>.</p>
 </div>
 <p>The newcommands must be defined by the standard LaTeX command
 <tt class="docutils literal"><span class="pre">newcommand{name}{definition}</span></tt> in a separate file with name
@@ -3990,7 +3990,12 @@ and <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats.</l
 <tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, and <tt class="docutils literal"><span class="pre">align</span></tt>.
 (DocOnce performs extensions to <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">ipynb</span></tt>,
 and other formats such that
-labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)</li>
+labels in <tt class="docutils literal"><span class="pre">align</span></tt> environments work well.)
+This may feel restrictive to LaTeX writers who are used to
+<tt class="docutils literal"><span class="pre">split</span></tt>, <tt class="docutils literal"><span class="pre">aligned</span></tt>, <tt class="docutils literal"><span class="pre">alignat</span></tt>, and other environments (rewrite to
+<tt class="docutils literal"><span class="pre">align</span></tt> and use a number for each equation, or use <tt class="docutils literal"><span class="pre">\nonumber\\</span></tt>
+to end intermediate calculations on multiple lines and use a label
+in the last, final result).</li>
 <li>Newcommands in mathematical formulas are allowed, but not in
 the running text. Newcommands must be defined in files with names
 <tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>. Use <tt class="docutils literal"><span class="pre">\newcommands</span></tt> and not <tt class="docutils literal"><span class="pre">\def</span></tt>.
@@ -4013,12 +4018,18 @@ explains everything about the figure, but this will work well
 only in the HTML and LaTeX formats.)</li>
 <li>You cannot use <tt class="docutils literal"><span class="pre">subfigure</span></tt> to combine several image files in one
 figure, but you can combine the files to one file using
-the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt> tool.</li>
+the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt> tool. Refer to individual image files
+in the caption or text by (e.g.) &#8220;left&#8221; and &#8220;right&#8221;, or
+&#8220;upper left&#8221;, &#8220;lower right&#8221;, etc.</li>
 <li>Use plain <tt class="docutils literal"><span class="pre">cite</span></tt> for references (e.g., <tt class="docutils literal"><span class="pre">\citeauthor</span></tt> has no counterpart
 in DocOnce). The bibliography must be prepared in the Publish format,
 but import from (clean) BibTeX is possible.</li>
 <li>Use <tt class="docutils literal"><span class="pre">idx</span></tt> for index entries, but put the definitions between paragraphs,
 not inside them (required by Sphinx).</li>
+<li>Use the <tt class="docutils literal"><span class="pre">bm</span></tt> package and the <tt class="docutils literal"><span class="pre">\bm</span></tt> command for boldface in mathematics.</li>
+<li>Make sure all ordinary text starts in column 1 on each line. Equations
+can be indented. The <tt class="docutils literal"><span class="pre">\begin{}</span></tt> and <tt class="docutils literal"><span class="pre">\end{}</span></tt> directives should start
+in column 1.</li>
 <li>If you depend on various LaTeX environments for your writings, you have
 to give up these, or implement <em>user-defined environments</em> in DocOnce.
 For instance, examples are normally typeset as subsections in DocOnce.
@@ -4058,18 +4069,52 @@ your own scripts or the <tt class="docutils literal"><span class="pre">doconce</
 </div>
 <div class="admonition-autotranslation-of-latex-to-doconce admonition">
 <p class="first admonition-title">Autotranslation of LaTeX to DocOnce</p>
-<p class="last">The tool <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></tt> may help you translating LaTeX files
+<p>The tool <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></tt> may help you translating LaTeX files
 to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, <tt class="docutils literal"><span class="pre">subfigure</span></tt> in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.</p>
+<p>For examples, figure environments
 can be translated by <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></tt> only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>
+  <span class="k">\centering</span>
+  <span class="k">\includegraphics</span><span class="na">[width=0.55\linewidth]</span><span class="nb">{</span>figs/myfig.pdf<span class="nb">}</span>
+  <span class="k">\caption</span><span class="nb">{</span>This is a figure. <span class="k">\labe</span><span class="nb">{</span>myfig<span class="nb">}}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</pre></div>
+</div>
+<p>If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce <tt class="docutils literal"><span class="pre">FIGURE:</span></tt> syntax.</p>
+<p>Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span>Here goes the caption.<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>lr<span class="nb">}</span>
+<span class="k">\hline</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span><span class="s">$</span><span class="nb">v_</span><span class="m">0</span><span class="s">$</span><span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span><span class="s">$</span><span class="nb">f_R</span><span class="o">(</span><span class="nb">v_</span><span class="m">0</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span><span class="k">\\</span>
+<span class="k">\hline</span>
+1.2 <span class="nb">&amp;</span> 4.2<span class="k">\\</span>
+1.1 <span class="nb">&amp;</span> 4.0<span class="k">\\</span>
+0.9 <span class="nb">&amp;</span> 3.7
+<span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</pre></div>
+</div>
+<p>Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.</p>
+<p class="last">Footnotes are also problematic for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></tt> since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert <tt class="docutils literal"><span class="pre">_PROBLEM_</span></tt> and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.</p>
 </div>
 </div>
 <div class="section" id="typesetting-of-algorithms">
@@ -4364,7 +4409,8 @@ typeset like this:</p>
 \[1 + 1 = 2\]</div>
 <p>The definition of the example environment must be done in a Python
 module <tt class="docutils literal"><span class="pre">userdef_environments</span></tt>, located in the same directory as the
-DocOnce source code. In this file (<tt class="docutils literal"><span class="pre">userdef_environments.py</span></tt>),
+DocOnce source code or the parent directory.
+In this file (<tt class="docutils literal"><span class="pre">userdef_environments.py</span></tt>),
 we must provide a dictionary <tt class="docutils literal"><span class="pre">envir2format</span></tt> for translating an
 environment into the right code for a specific format:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">envir2format</span> <span class="o">=</span> <span class="p">{</span>
@@ -4404,18 +4450,18 @@ the other keys. The LaTeX output is here defined by the function
 
 <span class="si">%s</span><span class="s"></span>
 <span class="s">\end{example}</span>
-
-<span class="s">def get_label(titleline):</span>
-<span class="s">    label = &#39;&#39;</span>
-<span class="s">    if &#39;label=&#39; in titleline:</span>
-<span class="s">        pattern = r&#39;label=([^\s]+)&#39;</span>
-<span class="s">        m = re.search(pattern, titleline)</span>
-<span class="s">        if m:</span>
-<span class="s">            label = m.group(1)</span>
-<span class="s">            titleline = re.sub(pattern, &#39;&#39;, titleline).strip()</span>
-<span class="s">    return label, titleline</span>
 <span class="s">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">titleline</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="n">titleline</span><span class="p">):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="k">if</span> <span class="s">&#39;label=&#39;</span> <span class="ow">in</span> <span class="n">titleline</span><span class="p">:</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="s">r&#39;label=([^\s]+)&#39;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">titleline</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">titleline</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">titleline</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">label</span><span class="p">,</span> <span class="n">titleline</span>
 </pre></div>
 </div>
 <p>The arguments are <tt class="docutils literal"><span class="pre">text</span></tt> for the body of the environment, <tt class="docutils literal"><span class="pre">titleline</span></tt>
@@ -4483,7 +4529,7 @@ That is, the calculation 1+1 appears in Example~\ref{ex:test:1p1}.
 <p>To summarize, the <em>example</em> environment together with the <tt class="docutils literal"><span class="pre">refex</span></tt> Mako
 function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.</p>
-<p>You may take a look at a complete <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/test/userdef_environments.py">userdef_environments.py</a>
+<p>You may take a look at a complete <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py">userdef_environments.py</a>
 file to see this example environment and another <em>highligh</em> environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
 notice admon for all other formats. The highlight environment is
@@ -4751,7 +4797,7 @@ but the command-line argument <tt class="docutils literal"><span class="pre">--d
 makes it possible to test if the output is on paper media, a sreen,
 or a particular device.</p>
 <p>Other user-defined variables for the preprocessor can be set at
-the command line as explained in the section <em class="xref std std-ref">doconce2formats</em>.</p>
+the command line as explained in the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a>.</p>
 <p>More advanced use of mako can include Python code that may automate
 the writing of parts of the document.</p>
 <div class="admonition-on-the-type-of-a-mako-variable-from-the-command-line admonition">
@@ -5293,10 +5339,10 @@ many keyboard shortcuts are defined:</p>
 <p>Typing <tt class="docutils literal"><span class="pre">Ctrl+c</span> <span class="pre">help</span></tt> prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
 DocOnce and saving much typing!</p>
-<span class="target" id="manual-mako"></span></div>
+</div>
 </div>
 <div class="section" id="mako-programming">
-<h2>Mako Programming<a class="headerlink" href="#mako-programming" title="Permalink to this headline">¶</a></h2>
+<span id="manual-mako"></span><h2>Mako Programming<a class="headerlink" href="#mako-programming" title="Permalink to this headline">¶</a></h2>
 <p id="index-130">The <a class="reference external" href="http://docs.makotemplates.org/">Mako</a> templating engine is used
 as preprocessor for DocOnce documents, but the <a class="reference external" href="http://code.google.com/p/preprocess">Preprocess</a> is run prior to Mako and is recommended for
 including other files via <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;filename&quot;</span></tt>. Preprocess is also
@@ -5511,7 +5557,7 @@ The equation become
 <span class="k">!bt</span>
 \[ \nabla\cdot\sigma = \varrho f,\]
 <span class="k">!et</span>
-where $\sigma$ is the stress tensor, $\varrho is the density,
+where $\sigma$ is the stress tensor, $\varrho$ is the density,
 and $f$ is a body force.
 ${nomenclature(r&#39;$\sigma$&#39;, &#39;stress tensor&#39;)}
 ${nomenclature(r&#39;$\varrho$&#39;, &#39;density&#39;)}
@@ -5523,6 +5569,10 @@ ${nomenclature(r&#39;$f$&#39;, &#39;body force&#39;)}
 ${end_nomenclature()}
 </pre></div>
 </div>
+<p>Make it a habit to use raw strings <tt class="docutils literal"><span class="pre">r&quot;...&quot;</span></tt>
+for the symbol in <tt class="docutils literal"><span class="pre">${nomenclature(r&quot;...&quot;,</span> <span class="pre">....</span></tt>
+(sometimes backslashes enter the definition too and raw strings are
+required).</p>
 </div>
 <div class="section" id="example-executing-python-and-using-sympy-objects-in-latex">
 <h3>Example: Executing Python and using SymPy Objects in LaTeX<a class="headerlink" href="#example-executing-python-and-using-sympy-objects-in-latex" title="Permalink to this headline">¶</a></h3>
@@ -5966,10 +6016,10 @@ is <tt class="docutils literal"><span class="pre">debug</span></tt>. The logfile
 may still give some idea of what is wrong.  The section &#8220;Basic Parsing
 Ideas&#8221; explains how the DocOnce text is transformed into a specific
 format, and you need to know these steps to make use of the logfile.</p>
-<span class="target" id="doconce2formats"></span></div>
+</div>
 </div>
 <div class="section" id="from-doconce-to-other-formats">
-<h2>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
+<span id="doconce2formats"></span><h2>From DocOnce to Other Formats<a class="headerlink" href="#from-doconce-to-other-formats" title="Permalink to this headline">¶</a></h2>
 <p id="index-131">Transformation of a DocOnce document <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt> to various other
 formats is done with the script <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format formatname mydoc.do.txt
@@ -8332,10 +8382,10 @@ the document into multiple parts.
 Combine paragraphs to one line (does not work well).
 </pre></div>
 </div>
-<span class="target" id="install-doconce"></span></div>
+</div>
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
-<h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
+<span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
 <p id="index-199">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
@@ -8863,7 +8913,7 @@ Springer,
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Description</a><ul>
-<li><a class="reference internal" href="#id1">What Is DocOnce?</a><ul>
+<li><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
 <li><a class="reference internal" href="#demos">Demos</a></li>
 </ul>
 </li>
@@ -8895,7 +8945,7 @@ Springer,
 <li><a class="reference internal" href="#lists">Lists</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">Inline Tagging</a><ul>
+<li><a class="reference internal" href="#inline-tagging">Inline Tagging</a><ul>
 <li><a class="reference internal" href="#emphasized-words">Emphasized Words</a></li>
 <li><a class="reference internal" href="#inline-verbatim-text">Inline Verbatim Text</a></li>
 <li><a class="reference internal" href="#links-to-web-addresses">Links to Web Addresses</a></li>
