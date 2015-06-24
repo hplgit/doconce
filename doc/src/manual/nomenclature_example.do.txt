@@ -35,7 +35,7 @@ ${insert_nomenclature()}
 
 # Here comes a lot of text...
 
-The equation become
+The equation becomes
 
 !bt
 \[ \nabla\cdot\sigma = \varrho f,\]
@@ -46,7 +46,7 @@ ${nomenclature(r'$\sigma$', 'stress tensor')}
 ${nomenclature(r'$\varrho$', 'density')}
 ${nomenclature(r'$f$', 'body force')}
 
-# More text....
+## More text....
 
-# At the end:
+## At the end:
 ${end_nomenclature()}

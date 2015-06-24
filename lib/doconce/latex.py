@@ -1704,6 +1704,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
     filestr = re.sub(r'\s+ref\{', r'~\\ref{', filestr)
+    # non-breaking space
+    filestr = re.sub(r'~ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
 
     # equations are ok in the doconce markup
@@ -2653,7 +2655,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         copy_latex_packages(['svmonodo.cls', 't4do.sty'])
         INTRO['latex'] += r"""
 % Style: T4 (Springer)
-% Use svmono.cls with doconce modifications for bibliography (svmonodo)
+% Use svmono.cls with doconce modifications for bibliography (svmonodo.cls)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
 
 % Use t4.sty with doconce modifications (t4do.sty)
@@ -3055,9 +3057,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                 has_footnotes_with_verbatim = True
                 break
         if has_footnotes_with_verbatim:
-            if 'usepackage{t2do}' in INTRO['latex']:
-                print '*** warning: footnotes with verbatim has strange typesetting with svmonodo/t2do styles'
-                INTRO['latex'] += '\n% Must use \\VerbatimFootnotes since there are footnotes with inline\n% verbatim text, but \\VerbatimFootnotes interfers\n%with svmonodo/t2do styles so that the footmisc package settings\n% do not work and the typesetting looks strange...'
+            if 'usepackage{t2do}' in INTRO['latex'] or 'usepackage{t4do}' in INTRO['latex']:
+                print '*** warning: footnotes with verbatim has strange typesetting with svmonodo/t2do/t4do styles'
+                INTRO['latex'] += '\n% Must use \\VerbatimFootnotes since there are footnotes with inline\n% verbatim text, but \\VerbatimFootnotes interfers\n%with svmonodo/t2do/t4do styles so that the footmisc package settings\n% do not work and the typesetting looks strange...'
             INTRO['latex'] += '\n%\\VerbatimFootnotes must come after hyperref and footmisc packages\n\\VerbatimFootnotes\n'
 
     if 'FIGURE:' in filestr:
@@ -3715,7 +3717,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
             else:
                 INTRO['latex'] += r"""
-% \subex{} is defined in t2do.sty
+% \subex{} is defined in t2do.sty or t4do.sty
 """
 
             break

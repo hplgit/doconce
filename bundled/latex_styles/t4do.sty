@@ -343,10 +343,10 @@
   \unrestored@protected@xdef\@themark{{#3}{\the\@temptokena}}}
 
 \def\ps@headings{\let\@mkboth\markboth
-   \def\@evenhead{\hspace*{-38mm}\vbox to\headheight{\hsize156mm\hbox
+   \def\@evenhead{\hspace*{-0.5mm}\vbox to\headheight{\hsize117mm\hbox
 to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
                   \leftmark}\vss\fullcolor\hrule\@height 1pt\normalcolor}\hss}
-   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize156mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
+   \def\@oddhead{\if@mainmatter\else\kern-38mm\fi\vbox to\headheight{\hsize118.5mm\hbox to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rightmark\hfil
                   \llap{\thepage}}\vss\fullcolor\hrule\@height 1pt\normalcolor}}
    \def\chaptermark##1{\markboth{{\if@chapnum %\ifnum\c@secnumdepth>\m@ne
       \thechapter\thechapterend\hskip\betweenumberspace\fi ##1}}{{\if@chapnum %\ifnum\c@secnumdepth>\m@ne
@@ -515,8 +515,8 @@ to\hsize{\sffamily\fontsize{8.5pt}{8.5pt}\selectfont\rlap{\thepage}\hfil
 % hpl modification: removed makefntext and used footmisc package
 % instead since it works with the mdframed package.
 % The result is approx the same spacing as that produced by makefntext above.
-\usepackage[hang]{footmisc}
-\renewcommand{\footnotemargin}{5pt}
+\usepackage[ragged]{footmisc}
+\renewcommand{\footnotemargin}{8pt}
 \renewcommand{\footnotelayout}{\hspace{1pt}}
 % NOTE: If there are footnotes with verbatim content, the combination of
 % footmisc and \VerbatimFootnotes leads to strange typesetting (the

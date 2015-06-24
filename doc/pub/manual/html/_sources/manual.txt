@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 22, 2015
+:Date: Jun 24, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -6653,7 +6653,7 @@ The typical application in a DocOnce document is
         
         # Here comes a lot of text...
         
-        The equation become
+        The equation becomes
         
         !bt
         \[ \nabla\cdot\sigma = \varrho f,\]
@@ -6664,15 +6664,54 @@ The typical application in a DocOnce document is
         ${nomenclature(r'$\varrho$', 'density')}
         ${nomenclature(r'$f$', 'body force')}
         
-        # More text....
+        ## More text....
         
-        # At the end:
+        ## At the end:
         ${end_nomenclature()}
 
 Make it a habit to use raw strings ``r"..."``
 for the symbol in ``${nomenclature(r"...", ....``
 (sometimes backslashes enter the definition too and raw strings are
 required).
+
+Here is
+the resulting DocOnce after mako is run (found in ``tmp_mako__mydoc.do.txt`` if
+``mydoc.do.txt`` is the file above):
+
+.. code-block:: doconce
+
+        TITLE: Test
+        AUTHOR: HPL
+        DATE: today
+        
+        !split
+        TOC: on
+        
+        !split
+        @@@CODE .nomenclature.do.txt envir=None
+        
+        # Here comes a lot of text...
+        
+        The equation becomes
+        
+        !bt
+        \[ \nabla\cdot\sigma = \varrho f,\]
+        !et
+        where $\sigma$ is the stress tensor, $\varrho$ is the density,
+        and $f$ is a body force.
+
+The file ``.nomenclature.do.txt`` reads
+
+.. code-block:: doconce
+
+        |---------------------------------|
+        | symbol | definition             |
+        |---l---------l-------------------|
+        | $\sigma$ | stress tensor |
+        | $\varrho$ | density |
+        | $f$ | body force |
+        |---------------------------------|
+        
 
 Example: Executing Python and using SymPy Objects in LaTeX
 ----------------------------------------------------------

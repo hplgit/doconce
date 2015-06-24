@@ -632,20 +632,20 @@ specified in the first line above:
 <p>
 
 <!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">C     a comment
 
-      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+C     END1
 
-      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
-      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">program </span>testme
+      <span style="color: #008000; font-weight: bold">call </span>test()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -655,12 +655,12 @@ directive above:
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
