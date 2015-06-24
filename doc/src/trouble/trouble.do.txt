@@ -1141,6 +1141,22 @@ def f(x):
 |esol
 !ec
 
+===== `\subex{a)}` gives error message =====
+
+If the message is `Missing number, treated as zero`, check if you have
+done a `doconce subst` of `section` to `section*`. Such a substitution
+will alter the newcommand `\subex` defined in the `.tex` file and insert
+an erroneous `\@startsection*`, which should not contain the `*`.
+Be more specific with the substitution in the `.tex` file
+
+!bc bashcod
+doconce subst '\\section\{' '\\section*{' mydoc.tex
+doconce subst '\\subsection\{' '\\subsection*{' mydoc.tex
+# or
+doconce replace '\section{' '\section*{' mydoc.tex
+doconce replace '\subsection{' '\subsection*{' mydoc.tex
+!ec
+
 ======= Problems with gwiki Output =======
 
 ===== Strange nested lists in gwiki =====
