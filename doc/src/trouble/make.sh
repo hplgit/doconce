@@ -4,7 +4,7 @@ doconce clean
 rm -f automake_*
 
 # Suddenly some mako problem arose...
-opt="--no_mako"
+opt="--no_mako"  # because of `<%` in the text which starts comment block...
 
 name=trouble
 

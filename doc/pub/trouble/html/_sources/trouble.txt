@@ -7,7 +7,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 14, 2015
+:Date: Jun 24, 2015
 
 
 .. admonition:: Disclaimer
@@ -980,11 +980,11 @@ to insert LaTeX-specific text with a backslash, e.g.,
 .. code-block:: doconce
 
         Here is a word underscore:
-        % if FORMAT in ('latex', 'pdflatex'):
+        %% if FORMAT in ('latex', 'pdflatex'):
         my\_word
-        % else
+        %% else
         my_word
-        % endif
+        %% endif
 
 Usually, inline verbatim text is way to go with underscores anyway.
 
@@ -1232,7 +1232,7 @@ There is a special line in the ``.tex`` file,
 
 .. code-block:: text
 
-        % insert custom LaTeX commands...
+        %% insert custom LaTeX commands...
 
 which can be used
 to insert desired commands, in this case by
@@ -1294,6 +1294,23 @@ order. A working remedy is to insert a text before the code:
             return x + 2
         !ec
         !esol
+
+Subexercises (``subex{a)}``) triggers "Missing number, treated as zero"
+-----------------------------------------------------------------------
+
+Check if you have
+done a ``doconce subst`` of ``section`` to ``section*``. Such a substitution
+will alter the newcommand ``\subex`` defined in the ``.tex`` file and insert
+an erroneous ``\@startsection*``, which should not contain the ``*``.
+Be more specific with the substitution of ``section`` in the ``.tex`` file:
+
+.. code-block:: bash
+
+        doconce subst '\\section\{' '\\section*{' mydoc.tex
+        doconce subst '\\subsection\{' '\\subsection*{' mydoc.tex
+        # or
+        doconce replace '\section{' '\section*{' mydoc.tex
+        doconce replace '\subsection{' '\subsection*{' mydoc.tex
 
 .. !split
 

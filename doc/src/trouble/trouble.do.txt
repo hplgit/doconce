@@ -858,11 +858,11 @@ to insert LaTeX-specific text with a backslash, e.g.,
 
 !bc do
 Here is a word underscore:
-% if FORMAT in ('latex', 'pdflatex'):
+%% if FORMAT in ('latex', 'pdflatex'):
 my\_word
-% else
+%% else
 my_word
-% endif
+%% endif
 !ec
 Usually, inline verbatim text is way to go with underscores anyway.
 
@@ -1083,7 +1083,7 @@ __Edit the .tex file.__
 There is a special line in the `.tex` file,
 
 !bc
-% insert custom LaTeX commands...
+%% insert custom LaTeX commands...
 !ec
 which can be used
 to insert desired commands, in this case by
@@ -1141,15 +1141,15 @@ def f(x):
 |esol
 !ec
 
-===== `\subex{a)}` gives error message =====
+===== Subexercises (`subex{a)}`) triggers ``Missing number, treated as zero'' =====
 
-If the message is `Missing number, treated as zero`, check if you have
+Check if you have
 done a `doconce subst` of `section` to `section*`. Such a substitution
 will alter the newcommand `\subex` defined in the `.tex` file and insert
 an erroneous `\@startsection*`, which should not contain the `*`.
-Be more specific with the substitution in the `.tex` file
+Be more specific with the substitution of `section` in the `.tex` file:
 
-!bc bashcod
+!bc shcod
 doconce subst '\\section\{' '\\section*{' mydoc.tex
 doconce subst '\\subsection\{' '\\subsection*{' mydoc.tex
 # or
@@ -1287,8 +1287,6 @@ doconce replace '<p class="caption">' \
 doconce replace '<hr class="figure">' \
  '<hr style="width:60%, font-style: normal">' mydoc.html
 !ec
-
-### end
 
 ======= Problems with reveal/deck HTML5 slides =======
 

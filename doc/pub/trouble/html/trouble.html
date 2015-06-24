@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 14, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -898,11 +898,11 @@ words with underscores in inline verbatim text (so you do not need
 the backslash) or use the preprocessor
 to insert LaTeX-specific text with a backslash, e.g.,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>Here is a word underscore:
-% if FORMAT in (&#39;latex&#39;, &#39;pdflatex&#39;):
+%% if FORMAT in (&#39;latex&#39;, &#39;pdflatex&#39;):
 my\_word
-% else
+%% else
 my_word
-% endif
+%% endif
 </pre></div>
 </div>
 <p>Usually, inline verbatim text is way to go with underscores anyway.</p>
@@ -1099,7 +1099,7 @@ Place the lines above in a file <code class="docutils literal"><span class="pre"
 this file to the preamble: <code class="docutils literal"><span class="pre">--latex_preamble=mypreamble.tex</span></code>.</p>
 <p><strong>Edit the .tex file.</strong>
 There is a special line in the <code class="docutils literal"><span class="pre">.tex</span></code> file,</p>
-<div class="highlight-text"><div class="highlight"><pre>% insert custom LaTeX commands...
+<div class="highlight-text"><div class="highlight"><pre>%% insert custom LaTeX commands...
 </pre></div>
 </div>
 <p>which can be used
@@ -1148,6 +1148,21 @@ def f(x):
     return x + 2
 <span class="k">!ec</span>
 <span class="k">!esol</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subexercises-subex-a-triggers-missing-number-treated-as-zero">
+<h3>Subexercises (<code class="docutils literal"><span class="pre">subex{a)}</span></code>) triggers &#8220;Missing number, treated as zero&#8221;<a class="headerlink" href="#subexercises-subex-a-triggers-missing-number-treated-as-zero" title="Permalink to this headline">¶</a></h3>
+<p>Check if you have
+done a <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> of <code class="docutils literal"><span class="pre">section</span></code> to <code class="docutils literal"><span class="pre">section*</span></code>. Such a substitution
+will alter the newcommand <code class="docutils literal"><span class="pre">\subex</span></code> defined in the <code class="docutils literal"><span class="pre">.tex</span></code> file and insert
+an erroneous <code class="docutils literal"><span class="pre">\&#64;startsection*</span></code>, which should not contain the <code class="docutils literal"><span class="pre">*</span></code>.
+Be more specific with the substitution of <code class="docutils literal"><span class="pre">section</span></code> in the <code class="docutils literal"><span class="pre">.tex</span></code> file:</p>
+<div class="highlight-bash"><div class="highlight"><pre>doconce subst <span class="s1">&#39;\\section\{&#39;</span> <span class="s1">&#39;\\section*{&#39;</span> mydoc.tex
+doconce subst <span class="s1">&#39;\\subsection\{&#39;</span> <span class="s1">&#39;\\subsection*{&#39;</span> mydoc.tex
+<span class="c"># or</span>
+doconce replace <span class="s1">&#39;\section{&#39;</span> <span class="s1">&#39;\section*{&#39;</span> mydoc.tex
+doconce replace <span class="s1">&#39;\subsection{&#39;</span> <span class="s1">&#39;\subsection*{&#39;</span> mydoc.tex
 </pre></div>
 </div>
 </div>
@@ -1417,6 +1432,7 @@ clickable.</p>
 <li><a class="reference internal" href="#how-can-i-control-the-placement-of-figures">How can I control the placement of figures?</a></li>
 <li><a class="reference internal" href="#how-can-i-get-a-two-column-text">How can I get a two-column text?</a></li>
 <li><a class="reference internal" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content">Solution heading in exercise solutions appear after the solution content</a></li>
+<li><a class="reference internal" href="#subexercises-subex-a-triggers-missing-number-treated-as-zero">Subexercises (<code class="docutils literal"><span class="pre">subex{a)}</span></code>) triggers &#8220;Missing number, treated as zero&#8221;</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-gwiki-output">Problems with gwiki Output</a><ul>
