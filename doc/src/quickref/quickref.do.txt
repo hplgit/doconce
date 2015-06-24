@@ -575,7 +575,9 @@ rendered nicely anyway. If you desire `newcommand` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
-# #include "../manual/guidelines.do.txt"
+# include with mako must be in this root tree, so we need a link, see make.sh
+
+<%include file="guidelines.do.txt" />
 
 ===== Hyperlinks =====
 

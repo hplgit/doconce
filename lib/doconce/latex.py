@@ -1704,6 +1704,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
     filestr = re.sub(r'\s+ref\{', r'~\\ref{', filestr)
+    # non-breaking space
+    filestr = re.sub(r'~ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
 
     # equations are ok in the doconce markup

@@ -13222,9 +13222,9 @@ is part of the abstract.
 
 .. are mutually exclusive in LaTeX
 
-.. _sec1:
-
 .. !split
+
+.. _sec1:
 
 Section 1
 =========
@@ -14884,9 +14884,9 @@ References
    edited by **A. Vermeulen**,
    1994.
 
-.. _app1:
-
 .. !split
+
+.. _app1:
 
 Appendix: Just for testing; part I
 ==================================
@@ -14898,9 +14898,9 @@ A subsection within an appendix
 
 Some text.
 
-.. _app2:
-
 .. !split
+
+.. _app2:
 
 Appendix: Just for testing; part II
 ===================================
@@ -30752,9 +30752,9 @@ Test of one author at one institution
 
 .. Externaldocument: testdoc
 
-.. _genrefs:
-
 .. !split
+
+.. _genrefs:
 
 Generalized References
 %%%%%%%%%%%%%%%%%%%%%%
@@ -46606,8 +46606,6 @@ is part of the abstract.
 
 .. are mutually exclusive in LaTeX
 
-.. _sec1:
-
 
 ************** File: ._testdoc001.rst *****************
 
@@ -46616,6 +46614,8 @@ is part of the abstract.
    :trim:
 
 .. !split
+
+.. _sec1:
 
 Section 1
 =========
@@ -73561,7 +73561,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fb35704eb90>
+verbatim is to be replaced using <function html_verbatim at 0x7f3a9c65eb90>
 
 
 First occurence: " `mako`."
@@ -77760,7 +77760,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Jun 13 04:47:06 2015.
+# sphinx-quickstart on Sun Jun 21 05:26:02 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80207,6 +80207,11 @@ function system {
 set -x
 sh ./clean.sh
 
+# Mako include cannot accept ../manual/quidelines.do.txt so we need a local link
+if [ ! -l guidelines.do.txt ]; then
+    ln -s ../manual/guidelines.do.txt guidelines.do.txt
+fi
+
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
@@ -80873,44 +80878,6 @@ which results in
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 !et
 
-Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
-`mwiki`, `html`, or `ipynb` formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
-   and `ipynb` formats.
- * Only five equation environments can be used: `\[ ... \]`,
-   `equation*`, `equation`, `align*`, and `align`.
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   `newcommands*.tex`.
- * MediaWiki (`mwiki`) does not support references to equations.
-
-(DocOnce performs extensions to `sphinx` and other formats such that
-labels in `align` environments work well.)
-
-!bnotice
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using `doconce combine_images`),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
-include special code for `latex` and `pdflatex` output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-`.tex` produced by DocOnce.
-!enotice
 
 __LaTeX Newcommands.__
 The author can define `newcommand` statements in files with names
@@ -80926,6 +80893,9 @@ rendered nicely anyway. If you desire `newcommand` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
+# include with mako must be in this root tree, so we need a link, see make.sh
+
+<%include file="guidelines.do.txt" />
 
 ===== Hyperlinks =====
 
@@ -81356,6 +81326,8 @@ Automatically generated HTML file from DocOnce source
 -->
 
 
+<!-- USER-DEFINED ENVIRONMENTS -->
+
 </head>
 
 <!-- tocinfo
@@ -81370,18 +81342,22 @@ Automatically generated HTML file from DocOnce source
               ('Inline comments', 2, None, '___sec7'),
               ('Verbatim/Computer Code', 2, None, '___sec8'),
               ('LaTeX Mathematics', 2, None, '___sec9'),
-              ('Hyperlinks', 2, None, '___sec10'),
-              ('Figures and Movies', 2, None, '___sec11'),
-              ('Tables', 2, None, '___sec12'),
-              ('Labels and References', 2, None, '___sec13'),
-              ('Citations and Bibliography', 2, None, '___sec14'),
-              ('Generalized References', 2, None, '___sec15'),
-              ('Index of Keywords', 2, None, '___sec16'),
-              ('Capabilities of The Program `doconce`', 2, None, '___sec17'),
-              ('Exercises', 2, None, '___sec18'),
-              ('Environments', 2, None, '___sec19'),
-              ('Preprocessing', 2, None, '___sec20'),
-              ('Resources', 2, None, '___sec21')]}
+              ('Writing Guidelines (Especially for LaTeX Users!)',
+               2,
+               'manual:latex:guide',
+               'manual:latex:guide'),
+              ('Hyperlinks', 2, None, '___sec11'),
+              ('Figures and Movies', 2, None, '___sec12'),
+              ('Tables', 2, None, '___sec13'),
+              ('Labels and References', 2, None, '___sec14'),
+              ('Citations and Bibliography', 2, None, '___sec15'),
+              ('Generalized References', 2, None, '___sec16'),
+              ('Index of Keywords', 2, None, '___sec17'),
+              ('Capabilities of The Program `doconce`', 2, None, '___sec18'),
+              ('Exercises', 2, None, '___sec19'),
+              ('Environments', 2, None, '___sec20'),
+              ('Preprocessing', 2, None, '___sec21'),
+              ('Resources', 2, None, '___sec22')]}
 end of tocinfo -->
 
 <body>
@@ -81465,18 +81441,19 @@ MathJax.Hub.Config({
 <a href="#___sec7"> Inline comments </a><br>
 <a href="#___sec8"> Verbatim/Computer Code </a><br>
 <a href="#___sec9"> LaTeX Mathematics </a><br>
-<a href="#___sec10"> Hyperlinks </a><br>
-<a href="#___sec11"> Figures and Movies </a><br>
-<a href="#___sec12"> Tables </a><br>
-<a href="#___sec13"> Labels and References </a><br>
-<a href="#___sec14"> Citations and Bibliography </a><br>
-<a href="#___sec15"> Generalized References </a><br>
-<a href="#___sec16"> Index of Keywords </a><br>
-<a href="#___sec17"> Capabilities of The Program <code>doconce</code> </a><br>
-<a href="#___sec18"> Exercises </a><br>
-<a href="#___sec19"> Environments </a><br>
-<a href="#___sec20"> Preprocessing </a><br>
-<a href="#___sec21"> Resources </a><br>
+<a href="#manual:latex:guide"> Writing Guidelines (Especially for LaTeX Users!) </a><br>
+<a href="#___sec11"> Hyperlinks </a><br>
+<a href="#___sec12"> Figures and Movies </a><br>
+<a href="#___sec13"> Tables </a><br>
+<a href="#___sec14"> Labels and References </a><br>
+<a href="#___sec15"> Citations and Bibliography </a><br>
+<a href="#___sec16"> Generalized References </a><br>
+<a href="#___sec17"> Index of Keywords </a><br>
+<a href="#___sec18"> Capabilities of The Program <code>doconce</code> </a><br>
+<a href="#___sec19"> Exercises </a><br>
+<a href="#___sec20"> Environments </a><br>
+<a href="#___sec21"> Preprocessing </a><br>
+<a href="#___sec22"> Resources </a><br>
 </p>
 <p>
 <b>WARNING: This quick reference is very incomplete!</b>
@@ -82163,51 +82140,6 @@ which results in
 $$ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.$$
 
 <p>
-Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pandoc</code>,
-<code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats
-is also important, one should follow these rules:
-
-<ul>
- <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
-   and <code>ipynb</code> formats.</li>
- <li> Only five equation environments can be used: <code>\[ ... \]</code>,
-   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.</li>
- <li> Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   <code>newcommands*.tex</code>.</li>
- <li> MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
-</ul>
-
-(DocOnce performs extensions to <code>sphinx</code> and other formats such that
-labels in <code>align</code> environments work well.)
-
-<p>
-<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as <code>sphinx</code> and <code>html</code>, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using <code>doconce combine_images</code>),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see <em>Typesetting of Algorithms</em> in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-<p>
-However, one can use preprocessor if-tests on
-the format (typically <code>#if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</code>) to
-include special code for <code>latex</code> and <code>pdflatex</code> output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-<code>.tex</code> produced by DocOnce.
-</div>
-
-
-<p>
 <b>LaTeX Newcommands.</b>
 The author can define <code>newcommand</code> statements in files with names
 <code>newcommands*.tex</code>. Such commands should only be used for mathematics
@@ -82222,7 +82154,108 @@ rendered nicely anyway. If you desire <code>newcommand</code> outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
-<h2 id="___sec10">Hyperlinks </h2>
+<p>
+<!-- include with mako must be in this root tree, so we need a link, see make.sh -->
+
+<h2 id="manual:latex:guide">Writing Guidelines (Especially for LaTeX Users!)</h2>
+
+<p>
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwiki</code>, <code>html</code>, or
+<code>ipynb</code> formats is also important, one should follow the rules below.
+
+<ul>
+ <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
+   and <code>ipynb</code> formats.</li>
+ <li> Only five equation environments can be used: <code>\[ ... \]</code>,
+   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
+   (DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
+   and other formats such that
+   labels in <code>align</code> environments work well.)</li>
+ <li> Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   <code>newcommands*.tex</code>. Use <code>\newcommands</code> and not <code>\def</code>.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.</li>
+ <li> Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
+ <li> Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
+   for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.</li>
+ <li> Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)</li>
+ <li> You cannot use <code>subfigure</code> to combine several image files in one
+   figure, but you can combine the files to one file using
+   the <code>doconce combine_images</code> tool.</li>
+ <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.</li>
+ <li> Use <code>idx</code> for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).</li>
+ <li> If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement <em>user-defined environments</em> in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.</li>
+ <li> Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.</li>
+ <li> Use <em>generalized referenes</em> with for referring to companion documents
+   that may later be put together in a book.</li>
+ <li> Follow <a href="https://github.com/hplgit/setup4book-doconce" target="_self">recommendations for DocOnce books</a> if you plan to write a book.</li>
+</ul>
+
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> There is an exception: by using <em>user-defined environments</em>
+within <code>!bu-name</code> and <code>!eu-name</code> directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.</p>
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Use the preprocessor to tailor output.</b>
+If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically <code>#if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</code>) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., <code>.tex</code> or <code>.html</code>) produced by DocOnce using
+your own scripts or the <code>doconce replace</code> and <code>doconce subst</code> commands.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Autotranslation of LaTeX to DocOnce?</b>
+The tool <code>doconce latex2doconce</code> may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, <code>subfigure</code> in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by <code>doconce latex2doconce</code> only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce <code>FIGURE:</code> syntax.
+</div>
+
+
+<h2 id="___sec11">Hyperlinks </h2>
 
 <p>
 Links use either a link text or the raw URL:
@@ -82242,7 +82275,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec11">Figures and Movies </h2>
+<h2 id="___sec12">Figures and Movies </h2>
 
 <p>
 Figures and movies have almost equal syntax:
@@ -82309,7 +82342,7 @@ The latter results in
 
 <em>Vimeo movie.</em>
 
-<h2 id="___sec12">Tables </h2>
+<h2 id="___sec13">Tables </h2>
 
 <p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
@@ -82367,7 +82400,7 @@ Now we can do <code># #include &quot;mydata_table.do.txt&quot;</code> in the Doc
 source file or simply copy the table in <code>mydata_table.do.txt</code>
 into the DocOnce file.
 
-<h2 id="___sec13">Labels and References </h2>
+<h2 id="___sec14">Labels and References </h2>
 
 <p>
 The notion of labels and references (as well as bibliography and index)
@@ -82396,7 +82429,7 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-<h2 id="___sec14">Citations and Bibliography </h2>
+<h2 id="___sec15">Citations and Bibliography </h2>
 
 <p>
 Single citations are written as
@@ -82424,7 +82457,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-<h2 id="___sec15">Generalized References </h2>
+<h2 id="___sec16">Generalized References </h2>
 
 <p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
@@ -82464,7 +82497,7 @@ LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.
 
-<h2 id="___sec16">Index of Keywords </h2>
+<h2 id="___sec17">Index of Keywords </h2>
 
 <p>
 DocOnce supports creating an index of keywords. A certain keyword
@@ -82481,7 +82514,7 @@ gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the <code>latex</code>,
 <code>pdflatex</code>, <code>rst</code>, and <code>sphinx</code> formats.
 
-<h2 id="___sec17">Capabilities of The Program <code>doconce</code> </h2>
+<h2 id="___sec18">Capabilities of The Program <code>doconce</code> </h2>
 
 <p>
 The <code>doconce</code> program can be used for a number of purposes besides
@@ -82655,7 +82688,7 @@ doconce latex_exercise_toc myfile
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec18">Exercises </h2>
+<h2 id="___sec19">Exercises </h2>
 
 <p>
 DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
@@ -82771,7 +82804,7 @@ The command-line arguments <code>--without_answers</code> and <code>--without_so
 turn off output of answers and solutions, respectively, except for
 examples.
 
-<h2 id="___sec19">Environments </h2>
+<h2 id="___sec20">Environments </h2>
 
 <p>
 DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
@@ -82794,7 +82827,7 @@ the environments:
    slide</li>
 </ul>
 
-<h2 id="___sec20">Preprocessing </h2>
+<h2 id="___sec21">Preprocessing </h2>
 
 <p>
 DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
@@ -82848,7 +82881,7 @@ An <a href="http://hplgit.github.com/bioinf-py/" target="_self">example document
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
 examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
-<h2 id="___sec21">Resources </h2>
+<h2 id="___sec22">Resources </h2>
 
 <ul>
  <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"</li>
@@ -83172,6 +83205,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 
 % --- end of standard preamble for documents ---
+
+%%% USER-DEFINED ENVIRONMENTS
 
 
 % insert custom LaTeX commands...
@@ -83842,53 +83877,6 @@ which results in
 
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 
-Any {\LaTeX} syntax is accepted, but if output in the \Verb!sphinx!, \Verb!pandoc!,
-\Verb!mwiki!, \Verb!html!, or \Verb!ipynb! formats
-is also important, one should follow these rules:
-
-\begin{itemize}
- \item AMS {\LaTeX} mathematics is supported, also for the \Verb!html!, \Verb!sphinx!,
-   and \Verb!ipynb! formats.
-
- \item Only five equation environments can be used: \Verb!\[ ... \]!,
-   \Verb!equation*!, \Verb!equation!, \Verb!align*!, and \Verb!align!.
-
- \item Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   \Verb!newcommands*.tex!.
-
- \item MediaWiki (\Verb!mwiki!) does not support references to equations.
-\end{itemize}
-
-\noindent
-(DocOnce performs extensions to \Verb!sphinx! and other formats such that
-labels in \Verb!align! environments work well.)
-
-
-\begin{notice_mdfboxadmon}[Notice.]
-{\LaTeX} supports lots of fancy formatting, for example, multiple
-plots in the same figure (\Verb!subfigure! package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as \Verb!sphinx! and \Verb!html!, make it necessary for DocOnce
-to only utilze very standard {\LaTeX}. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using \Verb!doconce combine_images!),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see \emph{Typesetting of Algorithms} in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically \Verb!#if FORMAT in ("latex", "pdflatex")!) to
-include special code for \Verb!latex! and \Verb!pdflatex! output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced {\LaTeX} features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-\Verb!.tex! produced by DocOnce.
-\end{notice_mdfboxadmon}
-
-
 
 \paragraph{LaTeX Newcommands.}
 The author can define \Verb!newcommand! statements in files with names
@@ -83903,6 +83891,117 @@ without {\LaTeX} support. For \Verb!html!, \Verb!sphinx!, \Verb!latex!, \Verb!pd
 rendered nicely anyway. If you desire \Verb!newcommand! outside {\LaTeX}
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+% include with mako must be in this root tree, so we need a link, see make.sh
+
+\subsection{Writing Guidelines (Especially for {\LaTeX} Users!)}
+\label{manual:latex:guide}
+
+{\LaTeX} writers often have their own writing habits with use of their
+own favorite {\LaTeX} packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain {\LaTeX}.
+Any {\LaTeX} syntax is accepted when DocOnce translates the text to
+{\LaTeX}, but if output in the \Verb!sphinx!, \Verb!pandoc!, \Verb!mwiki!, \Verb!html!, or
+\Verb!ipynb! formats is also important, one should follow the rules below.
+
+\begin{itemize}
+ \item AMS {\LaTeX} mathematics is supported, also for the \Verb!html!, \Verb!sphinx!,
+   and \Verb!ipynb! formats.
+
+ \item Only five equation environments can be used: \Verb!\[ ... \]!,
+   \Verb!equation*!, \Verb!equation!, \Verb!align*!, and \Verb!align!.
+   (DocOnce performs extensions to \Verb!sphinx!, \Verb!ipynb!,
+   and other formats such that
+   labels in \Verb!align! environments work well.)
+
+ \item Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   \Verb!newcommands*.tex!. Use \Verb!\newcommands! and not \Verb!\def!.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+
+ \item Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (\Verb!mwiki!) does not support references to equations.
+
+ \item Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear \emph{inline} without numbers or labels
+   for reference\footnote{There is an exception: by using \emph{user-defined environments} within \Verb?!bu-name? and \Verb?!eu-name? directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments.} (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+
+ \item Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and {\LaTeX} formats.)
+
+ \item You cannot use \Verb!subfigure! to combine several image files in one
+   figure, but you can combine the files to one file using
+   the \Verb!doconce combine_images! tool.
+
+ \item Use plain \Verb!cite! for references (e.g., \Verb!\citeauthor! has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) \textsc{Bib}\negthinspace{\TeX} is possible.
+
+ \item Use \Verb!idx! for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+
+ \item If you depend on various {\LaTeX} environments for your writings, you have
+   to give up these, or implement \emph{user-defined environments} in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+
+ \item Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+
+ \item Use \emph{generalized referenes} with for referring to companion documents
+   that may later be put together in a book.
+
+ \item Follow \href{{https://github.com/hplgit/setup4book-doconce}}{recommendations for DocOnce books} if you plan to write a book.
+\end{itemize}
+
+\noindent
+
+\begin{notice_mdfboxadmon}[Use the preprocessor to tailor output.]
+If you really need special {\LaTeX} constructs in the {\LaTeX} output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically \Verb!#if FORMAT in ("latex", "pdflatex")!) to
+include such special {\LaTeX} code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced {\LaTeX} features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., \Verb!.tex! or \Verb!.html!) produced by DocOnce using
+your own scripts or the \Verb!doconce replace! and \Verb!doconce subst! commands.
+\end{notice_mdfboxadmon}
+
+
+
+
+\begin{notice_mdfboxadmon}[Autotranslation of {\LaTeX} to DocOnce?]
+The tool \Verb!doconce latex2doconce! may help you translating {\LaTeX} files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, \Verb!subfigure! in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by \Verb!doconce latex2doconce! only if the label is inside
+the caption. If the {\LaTeX} is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many {\LaTeX} writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce \Verb!FIGURE:! syntax.
+\end{notice_mdfboxadmon}
+
+
+
+
 
 
 \subsection{Hyperlinks}
@@ -85120,51 +85219,6 @@ which results in::
 
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 
-Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
-``mwiki``, ``html``, or ``ipynb`` formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
-   and ``ipynb`` formats.
-
- * Only five equation environments can be used: ``\[ ... \]``,
-   ``equation*``, ``equation``, ``align*``, and ``align``.
-
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   ``newcommands*.tex``.
-
- * MediaWiki (``mwiki``) does not support references to equations.
-
-(DocOnce performs extensions to ``sphinx`` and other formats such that
-labels in ``align`` environments work well.)
-
-
-.. note::
-   LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, example and algorithm environments, code listings in figures, etc.
-   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
-   to only utilze very standard LaTeX. Correspondingly, the writer
-   must stick to simple constructs and avoid, for instance, more than
-   one plot per figure (combine them into one using ``doconce combine_images``),
-   example environments (use subsection or subsubsection instead),
-   algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-   manual), newcommands outside mathematics (use Mako variables or functions
-   instead), code listings in figures (use just inline blocks), to mention
-   some.
-   
-   However, one can use preprocessor if-tests on
-   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
-   include special code for ``latex`` and ``pdflatex`` output and more
-   straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of the resulting
-   PDF document. More tuning can be done by automatic editing of the
-   ``.tex`` produced by DocOnce.
-
-
-
-
 **LaTeX Newcommands.**
 The author can define ``newcommand`` statements in files with names
 ``newcommands*.tex``. Such commands should only be used for mathematics
@@ -85178,6 +85232,122 @@ without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+.. include with mako must be in this root tree, so we need a link, see make.sh
+
+.. _manual:latex:guide:
+
+Writing Guidelines (Especially for LaTeX Users!)
+------------------------------------------------
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
+``ipynb`` formats is also important, one should follow the rules below.
+
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
+
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+   (DocOnce performs extensions to ``sphinx``, ``ipynb``,
+   and other formats such that
+   labels in ``align`` environments work well.)
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``. Use ``\newcommands`` and not ``\def``.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+
+ * Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (``mwiki``) does not support references to equations.
+
+ * Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear *inline* without numbers or labels
+   for reference [#exception]_ (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+
+ * Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+
+ * You cannot use ``subfigure`` to combine several image files in one
+   figure, but you can combine the files to one file using
+   the ``doconce combine_images`` tool.
+
+ * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+
+ * Use ``idx`` for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+
+ * If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement *user-defined environments* in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+
+ * Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+
+ * Use *generalized referenes* with for referring to companion documents
+   that may later be put together in a book.
+
+ * Follow `recommendations for DocOnce books <https://github.com/hplgit/setup4book-doconce>`__ if you plan to write a book.
+
+.. [#exception] There is an exception: by using *user-defined environments*
+   within ``!bu-name`` and ``!eu-name`` directives, it is possible to
+   label any type of text and refer to it. For example, one can have
+   environments for examples, tables, code snippets, theorems, lemmas, etc.
+   One can also use Mako functions to implement enviroments.
+
+
+.. admonition:: Use the preprocessor to tailor output
+
+   If you really need special LaTeX constructs in the LaTeX output
+   from DocOnce, you may use use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
+   include such special LaTeX code. With an else clause you can easily
+   create corresponding constructions for other formats. This way
+   of using Preprocess or Mako
+   allows advanced LaTeX features, or HTML features for the HTML formats,
+   and thereby fine tuning of the resulting
+   document. More tuning can be done by automatic editing of the
+   output file (e.g., ``.tex`` or ``.html``) produced by DocOnce using
+   your own scripts or the ``doconce replace`` and ``doconce subst`` commands.
+
+
+
+
+
+.. admonition:: Autotranslation of LaTeX to DocOnce
+
+   The tool ``doconce latex2doconce`` may help you translating LaTeX files
+   to DocOnce syntax. However, if you use computer code in floating
+   list environments, special packages for typesetting algorithms,
+   example environments, ``subfigure`` in figures,
+   or a lot of newcommands in the running text, there will be need for
+   a lot of manual edits and adjustments. For examples, figure environments
+   can be translated by ``doconce latex2doconce`` only if the label is inside
+   the caption. If the LaTeX is consistent with respect to placement of
+   the label, a simple script can autoedit the label inside the caption,
+   but many LaTeX writers put the label at different places in different
+   figures, and then it becomes more difficult to autoedit figures and
+   translate them to the DocOnce ``FIGURE:`` syntax.
+
+
+
 
 Hyperlinks
 ----------
@@ -85911,9 +86081,9 @@ current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
 
-.. _quick:sections:
-
 .. !split
+
+.. _quick:sections:
 
 Section Types
 -------------
@@ -86429,51 +86599,6 @@ which results in
 .. math::
          \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
 
-Any LaTeX syntax is accepted, but if output in the ``sphinx``, ``pandoc``,
-``mwiki``, ``html``, or ``ipynb`` formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
-   and ``ipynb`` formats.
-
- * Only five equation environments can be used: ``\[ ... \]``,
-   ``equation*``, ``equation``, ``align*``, and ``align``.
-
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   ``newcommands*.tex``.
-
- * MediaWiki (``mwiki``) does not support references to equations.
-
-(DocOnce performs extensions to ``sphinx`` and other formats such that
-labels in ``align`` environments work well.)
-
-
-.. note::
-   LaTeX supports lots of fancy formatting, for example, multiple
-   plots in the same figure (``subfigure`` package), margin notes, multi-page
-   tables, example and algorithm environments, code listings in figures, etc.
-   Other output formats, such as ``sphinx`` and ``html``, make it necessary for DocOnce
-   to only utilze very standard LaTeX. Correspondingly, the writer
-   must stick to simple constructs and avoid, for instance, more than
-   one plot per figure (combine them into one using ``doconce combine_images``),
-   example environments (use subsection or subsubsection instead),
-   algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-   manual), newcommands outside mathematics (use Mako variables or functions
-   instead), code listings in figures (use just inline blocks), to mention
-   some.
-   
-   However, one can use preprocessor if-tests on
-   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
-   include special code for ``latex`` and ``pdflatex`` output and more
-   straightforward typesetting for other formats. In this way, one can
-   also allow advanced LaTeX features and fine tuning of the resulting
-   PDF document. More tuning can be done by automatic editing of the
-   ``.tex`` produced by DocOnce.
-
-
-
-
 **LaTeX Newcommands.**
 The author can define ``newcommand`` statements in files with names
 ``newcommands*.tex``. Such commands should only be used for mathematics
@@ -86487,6 +86612,124 @@ without LaTeX support. For ``html``, ``sphinx``, ``latex``, ``pdflatex``,
 rendered nicely anyway. If you desire ``newcommand`` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+.. include with mako must be in this root tree, so we need a link, see make.sh
+
+.. !split
+
+.. _manual:latex:guide:
+
+Writing Guidelines (Especially for LaTeX Users!)
+------------------------------------------------
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
+``ipynb`` formats is also important, one should follow the rules below.
+
+ * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
+   and ``ipynb`` formats.
+
+ * Only five equation environments can be used: ``\[ ... \]``,
+   ``equation*``, ``equation``, ``align*``, and ``align``.
+   (DocOnce performs extensions to ``sphinx``, ``ipynb``,
+   and other formats such that
+   labels in ``align`` environments work well.)
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   ``newcommands*.tex``. Use ``\newcommands`` and not ``\def``.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+
+ * Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (``mwiki``) does not support references to equations.
+
+ * Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear *inline* without numbers or labels
+   for reference [#exception]_ (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+
+ * Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+
+ * You cannot use ``subfigure`` to combine several image files in one
+   figure, but you can combine the files to one file using
+   the ``doconce combine_images`` tool.
+
+ * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+
+ * Use ``idx`` for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+
+ * If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement *user-defined environments* in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+
+ * Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+
+ * Use *generalized referenes* with for referring to companion documents
+   that may later be put together in a book.
+
+ * Follow `recommendations for DocOnce books <https://github.com/hplgit/setup4book-doconce>`__ if you plan to write a book.
+
+.. [#exception] There is an exception: by using *user-defined environments*
+   within ``!bu-name`` and ``!eu-name`` directives, it is possible to
+   label any type of text and refer to it. For example, one can have
+   environments for examples, tables, code snippets, theorems, lemmas, etc.
+   One can also use Mako functions to implement enviroments.
+
+
+.. admonition:: Use the preprocessor to tailor output
+
+   If you really need special LaTeX constructs in the LaTeX output
+   from DocOnce, you may use use preprocessor if-tests on
+   the format (typically ``#if FORMAT in ("latex", "pdflatex")``) to
+   include such special LaTeX code. With an else clause you can easily
+   create corresponding constructions for other formats. This way
+   of using Preprocess or Mako
+   allows advanced LaTeX features, or HTML features for the HTML formats,
+   and thereby fine tuning of the resulting
+   document. More tuning can be done by automatic editing of the
+   output file (e.g., ``.tex`` or ``.html``) produced by DocOnce using
+   your own scripts or the ``doconce replace`` and ``doconce subst`` commands.
+
+
+
+
+
+.. admonition:: Autotranslation of LaTeX to DocOnce
+
+   The tool ``doconce latex2doconce`` may help you translating LaTeX files
+   to DocOnce syntax. However, if you use computer code in floating
+   list environments, special packages for typesetting algorithms,
+   example environments, ``subfigure`` in figures,
+   or a lot of newcommands in the running text, there will be need for
+   a lot of manual edits and adjustments. For examples, figure environments
+   can be translated by ``doconce latex2doconce`` only if the label is inside
+   the caption. If the LaTeX is consistent with respect to placement of
+   the label, a simple script can autoedit the label inside the caption,
+   but many LaTeX writers put the label at different places in different
+   figures, and then it becomes more difficult to autoedit figures and
+   translate them to the DocOnce ``FIGURE:`` syntax.
+
+
+
 
 .. !split
 
@@ -87701,42 +87944,6 @@ which results in
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 }}}
 
-Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
-`mwiki`, `html`, or `ipynb` formats
-is also important, one should follow these rules:
-
-
- * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,   and `ipynb` formats.
- * Only five equation environments can be used: `\[ ... \]`,   `equation*`, `equation`, `align*`, and `align`.
- * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   `newcommands*.tex`.
- * MediaWiki (`mwiki`) does not support references to equations.
-
-(DocOnce performs extensions to `sphinx` and other formats such that
-labels in `align` environments work well.)
-
-*Notice.* 
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using `doconce combine_images`),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
-include special code for `latex` and `pdflatex` output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-`.tex` produced by DocOnce.
-
-
 
 *LaTeX Newcommands.*
 The author can define `newcommand` statements in files with names
@@ -87751,6 +87958,71 @@ without LaTeX support. For `html`, `sphinx`, `latex`, `pdflatex`,
 rendered nicely anyway. If you desire `newcommand` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+<wiki:comment> include with mako must be in this root tree, so we need a link, see make.sh </wiki:comment>
+
+==== Writing Guidelines (Especially for LaTeX Users!) ====
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
+`ipynb` formats is also important, one should follow the rules below.
+
+
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,   `equation*`, `equation`, `align*`, and `align`.   (DocOnce performs extensions to `sphinx`, `ipynb`,   and other formats such that   labels in `align` environments work well.)
+ * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   `newcommands*.tex`. Use `\newcommands` and not `\def`.   Each newcommand must be defined on a single line.   Use Mako functions if you need macros in the running text.
+ * Use labels and refer to them   for sections, figures, movies, and equations only.   MediaWiki (`mwiki`) does not support references to equations.
+ * Only figures and movies are floating elements in DocOnce, all other elements   (code, tables, algorithms) must appear *inline* without numbers or labels   for reference[^exception] (refer to inline elements by a section label).   The reason is that floating elements are in general   not used in web documents, but we made an exception with figures   and movies.
+ * Keep figure captions shorts as they are used as references in the   Sphinx format. Avoid inline mathematics since Sphinx will strip it   away in the figure reference.   (Many writing styles encourage rich captions that   explains everything about the figure, but this will work well   only in the HTML and LaTeX formats.)
+ * You cannot use `subfigure` to combine several image files in one   figure, but you can combine the files to one file using   the `doconce combine_images` tool.
+ * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart   in DocOnce). The bibliography must be prepared in the Publish format,   but import from (clean) BibTeX is possible.
+ * Use `idx` for index entries, but put the definitions between paragraphs,   not inside them (required by Sphinx).
+ * If you depend on various LaTeX environments for your writings, you have   to give up these, or implement *user-defined environments* in DocOnce.   For instance, examples are normally typeset as subsections in DocOnce.   Learn about the exercise support in DocOnce to typeset exercises, problems,   and projects.
+ * Learn about the preprocessors Preprocess and Mako - these are smart   tools for, e.g., commenting out/in large portions of text and creating   macros.
+ * Use *generalized referenes* with for referring to companion documents   that may later be put together in a book.
+ * Follow [https://github.com/hplgit/setup4book-doconce recommendations for DocOnce books] if you plan to write a book.
+
+[^exception]: There is an exception: by using *user-defined environments*
+within `!bu-name` and `!eu-name` directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+*Use the preprocessor to tailor output.* 
+If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., `.tex` or `.html`) produced by DocOnce using
+your own scripts or the `doconce replace` and `doconce subst` commands.
+
+
+
+*Autotranslation of LaTeX to DocOnce?* 
+The tool `doconce latex2doconce` may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, `subfigure` in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by `doconce latex2doconce` only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce `FIGURE:` syntax.
+
+
+
+
 
 
 ==== Hyperlinks ====
@@ -88916,52 +89188,6 @@ which results in
  \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
 </math>
 
-Any LaTeX syntax is accepted, but if output in the <code>sphinx</code>, <code>pandoc</code>,
-<code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats
-is also important, one should follow these rules:
-
-
-<ul>
- <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
-   and <code>ipynb</code> formats.
- <li> Only five equation environments can be used: <code>\[ ... \]</code>,
-   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
- <li> Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   <code>newcommands*.tex</code>.
- <li> MediaWiki (<code>mwiki</code>) does not support references to equations.
-</ul>
-
-(DocOnce performs extensions to <code>sphinx</code> and other formats such that
-labels in <code>align</code> environments work well.)
-
-
-{{mbox
-| type = notice
-| textstyle = font-size: 90%;
-| text = '''Notice.''' LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (<code>subfigure</code> package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as <code>sphinx</code> and <code>html</code>, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using <code>doconce combine_images</code>),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see ''Typesetting of Algorithms'' in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
-include special code for <code>latex</code> and <code>pdflatex</code> output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-<code>.tex</code> produced by DocOnce.
-}}
-
-
 
 ''LaTeX Newcommands.''
 The author can define <code>newcommand</code> statements in files with names
@@ -88976,6 +89202,114 @@ without LaTeX support. For <code>html</code>, <code>sphinx</code>, <code>latex</
 rendered nicely anyway. If you desire <code>newcommand</code> outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+<!-- include with mako must be in this root tree, so we need a link, see make.sh -->
+
+==== Writing Guidelines (Especially for LaTeX Users!) ====
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwiki</code>, <code>html</code>, or
+<code>ipynb</code> formats is also important, one should follow the rules below.
+
+
+<ul>
+ <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
+   and <code>ipynb</code> formats.
+ <li> Only five equation environments can be used: <code>\[ ... \]</code>,
+   <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
+   (DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
+   and other formats such that
+   labels in <code>align</code> environments work well.)
+ <li> Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   <code>newcommands*.tex</code>. Use <code>\newcommands</code> and not <code>\def</code>.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+ <li> Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (<code>mwiki</code>) does not support references to equations.
+ <li> Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear ''inline'' without numbers or labels
+   for reference[^exception] (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+ <li> Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+ <li> You cannot use <code>subfigure</code> to combine several image files in one
+   figure, but you can combine the files to one file using
+   the <code>doconce combine_images</code> tool.
+ <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+ <li> Use <code>idx</code> for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+ <li> If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement ''user-defined environments'' in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+ <li> Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+ <li> Use ''generalized referenes'' with for referring to companion documents
+   that may later be put together in a book.
+ <li> Follow [https://github.com/hplgit/setup4book-doconce recommendations for DocOnce books] if you plan to write a book.
+</ul>
+
+[^exception]: There is an exception: by using ''user-defined environments''
+within <code>!bu-name</code> and <code>!eu-name</code> directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+
+{{mbox
+| type = notice
+| textstyle = font-size: 90%;
+| text = '''Use the preprocessor to tailor output.''' If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically <code>#if FORMAT in ("latex", "pdflatex")</code>) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., <code>.tex</code> or <code>.html</code>) produced by DocOnce using
+your own scripts or the <code>doconce replace</code> and <code>doconce subst</code> commands.
+}}
+
+
+
+
+{{mbox
+| type = notice
+| textstyle = font-size: 90%;
+| text = '''Autotranslation of LaTeX to DocOnce?''' The tool <code>doconce latex2doconce</code> may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, <code>subfigure</code> in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by <code>doconce latex2doconce</code> only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce <code>FIGURE:</code> syntax.
+}}
+
+
+
+
 
 
 ==== Hyperlinks ====
@@ -90122,42 +90456,6 @@ which results in
 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 }}}
 
-Any LaTeX syntax is accepted, but if output in the {{{sphinx}}}, {{{pandoc}}},
-{{{mwiki}}}, {{{html}}}, or {{{ipynb}}} formats
-is also important, one should follow these rules:
-
-
- * AMS LaTeX mathematics is supported, also for the {{{html}}}, {{{sphinx}}},   and {{{ipynb}}} formats.
- * Only five equation environments can be used: {{{\[ ... \]}}},   {{{equation*}}}, {{{equation}}}, {{{align*}}}, and {{{align}}}.
- * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   {{{newcommands*.tex}}}.
- * MediaWiki ({{{mwiki}}}) does not support references to equations.
-
-(DocOnce performs extensions to {{{sphinx}}} and other formats such that
-labels in {{{align}}} environments work well.)
-
-//Notice.// 
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure ({{{subfigure}}} package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as {{{sphinx}}} and {{{html}}}, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using {{{doconce combine_images}}}),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see //Typesetting of Algorithms// in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically {{{#if FORMAT in ("latex", "pdflatex")}}}) to
-include special code for {{{latex}}} and {{{pdflatex}}} output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-{{{.tex}}} produced by DocOnce.
-
-
 
 //LaTeX Newcommands.//
 The author can define {{{newcommand}}} statements in files with names
@@ -90172,6 +90470,72 @@ without LaTeX support. For {{{html}}}, {{{sphinx}}}, {{{latex}}}, {{{pdflatex}}}
 rendered nicely anyway. If you desire {{{newcommand}}} outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+<wiki:comment> include with mako must be in this root tree, so we need a link, see make.sh </wiki:comment>
+
+== Writing Guidelines (Especially for LaTeX Users!) ==
+
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the {{{sphinx}}}, {{{pandoc}}}, {{{mwiki}}}, {{{html}}}, or
+{{{ipynb}}} formats is also important, one should follow the rules below.
+
+
+ * AMS LaTeX mathematics is supported, also for the {{{html}}}, {{{sphinx}}},   and {{{ipynb}}} formats.
+ * Only five equation environments can be used: {{{\[ ... \]}}},   {{{equation*}}}, {{{equation}}}, {{{align*}}}, and {{{align}}}.   (DocOnce performs extensions to {{{sphinx}}}, {{{ipynb}}},   and other formats such that   labels in {{{align}}} environments work well.)
+ * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   {{{newcommands*.tex}}}. Use {{{\newcommands}}} and not {{{\def}}}.   Each newcommand must be defined on a single line.   Use Mako functions if you need macros in the running text.
+ * Use labels and refer to them   for sections, figures, movies, and equations only.   MediaWiki ({{{mwiki}}}) does not support references to equations.
+ * Only figures and movies are floating elements in DocOnce, all other elements   (code, tables, algorithms) must appear //inline// without numbers or labels   for reference[^exception] (refer to inline elements by a section label).   The reason is that floating elements are in general   not used in web documents, but we made an exception with figures   and movies.
+ * Keep figure captions shorts as they are used as references in the   Sphinx format. Avoid inline mathematics since Sphinx will strip it   away in the figure reference.   (Many writing styles encourage rich captions that   explains everything about the figure, but this will work well   only in the HTML and LaTeX formats.)
+ * You cannot use {{{subfigure}}} to combine several image files in one   figure, but you can combine the files to one file using   the {{{doconce combine_images}}} tool.
+ * Use plain {{{cite}}} for references (e.g., {{{\citeauthor}}} has no counterpart   in DocOnce). The bibliography must be prepared in the Publish format,   but import from (clean) BibTeX is possible.
+ * Use {{{idx}}} for index entries, but put the definitions between paragraphs,   not inside them (required by Sphinx).
+ * If you depend on various LaTeX environments for your writings, you have   to give up these, or implement //user-defined environments// in DocOnce.   For instance, examples are normally typeset as subsections in DocOnce.   Learn about the exercise support in DocOnce to typeset exercises, problems,   and projects.
+ * Learn about the preprocessors Preprocess and Mako - these are smart   tools for, e.g., commenting out/in large portions of text and creating   macros.
+ * Use //generalized referenes// with for referring to companion documents   that may later be put together in a book.
+ * Follow [[https://github.com/hplgit/setup4book-doconce|recommendations for DocOnce books]] if you plan to write a book.
+
+[^exception]: There is an exception: by using //user-defined environments//
+within {{{!bu-name}}} and {{{!eu-name}}} directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+//Use the preprocessor to tailor output.// 
+If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically {{{#if FORMAT in ("latex", "pdflatex")}}}) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., {{{.tex}}} or {{{.html}}}) produced by DocOnce using
+your own scripts or the {{{doconce replace}}} and {{{doconce subst}}} commands.
+
+
+
+//Autotranslation of LaTeX to DocOnce?// 
+The tool {{{doconce latex2doconce}}} may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, {{{subfigure}}} in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by {{{doconce latex2doconce}}} only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce {{{FIGURE:}}} syntax.
+
+
+
+
 
 
 == Hyperlinks ==
@@ -91254,46 +91618,6 @@ which results in::
 
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 
-Any LaTeX syntax is accepted, but if output in the 'sphinx', 'pandoc',
-'mwiki', 'html', or 'ipynb' formats
-is also important, one should follow these rules:
-
- - AMS LaTeX mathematics is supported, also for the 'html', 'sphinx',
-   and 'ipynb' formats.
- - Only five equation environments can be used: '\[ ... \]',
-   'equation*', 'equation', 'align*', and 'align'.
- - Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   'newcommands*.tex'.
- - MediaWiki ('mwiki') does not support references to equations.
-
-(DocOnce performs extensions to 'sphinx' and other formats such that
-labels in 'align' environments work well.)
-
-*Notice.* 
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure ('subfigure' package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as 'sphinx' and 'html', make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using 'doconce combine_images'),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically '#if FORMAT in ("latex", "pdflatex")') to
-include special code for 'latex' and 'pdflatex' output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-'.tex' produced by DocOnce.
-
-
-
 *LaTeX Newcommands.*
 The author can define 'newcommand' statements in files with names
 'newcommands*.tex'. Such commands should only be used for mathematics
@@ -91307,6 +91631,99 @@ without LaTeX support. For 'html', 'sphinx', 'latex', 'pdflatex',
 rendered nicely anyway. If you desire 'newcommand' outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+Writing Guidelines (Especially for LaTeX Users!)
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the 'sphinx', 'pandoc', 'mwiki', 'html', or
+'ipynb' formats is also important, one should follow the rules below.
+
+ - AMS LaTeX mathematics is supported, also for the 'html', 'sphinx',
+   and 'ipynb' formats.
+ - Only five equation environments can be used: '\[ ... \]',
+   'equation*', 'equation', 'align*', and 'align'.
+   (DocOnce performs extensions to 'sphinx', 'ipynb',
+   and other formats such that
+   labels in 'align' environments work well.)
+ - Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   'newcommands*.tex'. Use '\newcommands' and not '\def'.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+ - Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki ('mwiki') does not support references to equations.
+ - Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear *inline* without numbers or labels
+   for reference[^exception] (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+ - Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+ - You cannot use 'subfigure' to combine several image files in one
+   figure, but you can combine the files to one file using
+   the 'doconce combine_images' tool.
+ - Use plain 'cite' for references (e.g., '\citeauthor' has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+ - Use 'idx' for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+ - If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement *user-defined environments* in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+ - Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+ - Use *generalized referenes* with for referring to companion documents
+   that may later be put together in a book.
+ - Follow "https://github.com/hplgit/setup4book-doconce":recommendations for DocOnce books if you plan to write a book.
+
+[^exception]: There is an exception: by using *user-defined environments*
+within '!bu-name' and '!eu-name' directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+*Use the preprocessor to tailor output.* 
+If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically '#if FORMAT in ("latex", "pdflatex")') to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., '.tex' or '.html') produced by DocOnce using
+your own scripts or the 'doconce replace' and 'doconce subst' commands.
+
+
+
+*Autotranslation of LaTeX to DocOnce?* 
+The tool 'doconce latex2doconce' may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, 'subfigure' in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by 'doconce latex2doconce' only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce 'FIGURE:' syntax.
+
+
 
 Hyperlinks
 
@@ -92380,46 +92797,6 @@ which results in::
             NOTE: A verbatim block has been removed because
                   it causes problems for Epytext.
 
-Any LaTeX syntax is accepted, but if output in the C{sphinx}, C{pandoc},
-C{mwiki}, C{html}, or C{ipynb} formats
-is also important, one should follow these rules:
-
- - AMS LaTeX mathematics is supported, also for the C{html}, C{sphinx},
-   and C{ipynb} formats.
- - Only five equation environments can be used: C{\[ ... \]},
-   C{equation*}, C{equation}, C{align*}, and C{align}.
- - Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   C{newcommands*.tex}.
- - MediaWiki (C{mwiki}) does not support references to equations.
-
-(DocOnce performs extensions to C{sphinx} and other formats such that
-labels in C{align} environments work well.)
-
-I{Notice.} 
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (C{subfigure} package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as C{sphinx} and C{html}, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using C{doconce combine_images}),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see I{Typesetting of Algorithms} in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically C{#if FORMAT in ("latex", "pdflatex")}) to
-include special code for C{latex} and C{pdflatex} output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-C{.tex} produced by DocOnce.
-
-
-
 I{LaTeX Newcommands.}
 The author can define C{newcommand} statements in files with names
 C{newcommands*.tex}. Such commands should only be used for mathematics
@@ -92433,6 +92810,100 @@ C{mwiki}, C{ipynb}, and C{pandoc}, the mathematics in newcommands is
 rendered nicely anyway. If you desire C{newcommand} outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+Writing Guidelines (Especially for LaTeX Users!)
+------------------------------------------------
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the C{sphinx}, C{pandoc}, C{mwiki}, C{html}, or
+C{ipynb} formats is also important, one should follow the rules below.
+
+ - AMS LaTeX mathematics is supported, also for the C{html}, C{sphinx},
+   and C{ipynb} formats.
+ - Only five equation environments can be used: C{\[ ... \]},
+   C{equation*}, C{equation}, C{align*}, and C{align}.
+   (DocOnce performs extensions to C{sphinx}, C{ipynb},
+   and other formats such that
+   labels in C{align} environments work well.)
+ - Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   C{newcommands*.tex}. Use C{\newcommands} and not C{\def}.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+ - Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (C{mwiki}) does not support references to equations.
+ - Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear I{inline} without numbers or labels
+   for reference[^exception] (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+ - Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+ - You cannot use C{subfigure} to combine several image files in one
+   figure, but you can combine the files to one file using
+   the C{doconce combine_images} tool.
+ - Use plain C{cite} for references (e.g., C{\citeauthor} has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+ - Use C{idx} for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+ - If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement I{user-defined environments} in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+ - Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+ - Use I{generalized referenes} with for referring to companion documents
+   that may later be put together in a book.
+ - Follow U{recommendations for DocOnce books<https://github.com/hplgit/setup4book-doconce>} if you plan to write a book.
+
+[^exception]: There is an exception: by using I{user-defined environments}
+within C{!bu-name} and C{!eu-name} directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+I{Use the preprocessor to tailor output.} 
+If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically C{#if FORMAT in ("latex", "pdflatex")}) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., C{.tex} or C{.html}) produced by DocOnce using
+your own scripts or the C{doconce replace} and C{doconce subst} commands.
+
+
+
+I{Autotranslation of LaTeX to DocOnce?} 
+The tool C{doconce latex2doconce} may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, C{subfigure} in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by C{doconce latex2doconce} only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce C{FIGURE:} syntax.
+
+
 
 Hyperlinks
 ----------
@@ -92997,6 +93468,7 @@ Table of contents:
  Inline comments 
  Verbatim/Computer Code 
  LaTeX Mathematics 
+ Writing Guidelines (Especially for LaTeX Users!) 
  Hyperlinks 
  Figures and Movies 
  Tables 
@@ -93559,51 +94031,6 @@ which results in::
 
         \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.\]
 
-Any LaTeX syntax is accepted, but if output in the sphinx, pandoc,
-mwiki, html, or ipynb formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the html, sphinx,
-   and ipynb formats.
-
- * Only five equation environments can be used: \[ ... \],
-   equation*, equation, align*, and align.
-
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   newcommands*.tex.
-
- * MediaWiki (mwiki) does not support references to equations.
-
-(DocOnce performs extensions to sphinx and other formats such that
-labels in align environments work well.)
-
-
-Notice ------------------------------------------------------------------------|
-|                                                                              |
-| LaTeX supports lots of fancy formatting, for example, multiple               |
-| plots in the same figure (subfigure package), margin notes, multi-page       |
-| tables, example and algorithm environments, code listings in figures, etc.   |
-| Other output formats, such as sphinx and html, make it necessary for DocOnce |
-| to only utilze very standard LaTeX. Correspondingly, the writer              |
-| must stick to simple constructs and avoid, for instance, more than           |
-| one plot per figure (combine them into one using doconce combine_images),    |
-| example environments (use subsection or subsubsection instead),              |
-| algorithms environments (see *Typesetting of Algorithms* in the DocOnce      |
-| manual), newcommands outside mathematics (use Mako variables or functions    |
-| instead), code listings in figures (use just inline blocks), to mention      |
-| some.                                                                        |
-|                                                                              |
-| However, one can use preprocessor if-tests on                                |
-| the format (typically #if FORMAT in ("latex", "pdflatex")) to                |
-| include special code for latex and pdflatex output and more                  |
-| straightforward typesetting for other formats. In this way, one can          |
-| also allow advanced LaTeX features and fine tuning of the resulting          |
-| PDF document. More tuning can be done by automatic editing of the            |
-| .tex produced by DocOnce.                                                    |
-|------------------------------------------------------------------------------|
-
-
 *LaTeX Newcommands.*
 The author can define newcommand statements in files with names
 newcommands*.tex. Such commands should only be used for mathematics
@@ -93617,6 +94044,116 @@ mwiki, ipynb, and pandoc, the mathematics in newcommands is
 rendered nicely anyway. If you desire newcommand outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+Writing Guidelines (Especially for LaTeX Users!)
+------------------------------------------------
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the sphinx, pandoc, mwiki, html, or
+ipynb formats is also important, one should follow the rules below.
+
+ * AMS LaTeX mathematics is supported, also for the html, sphinx,
+   and ipynb formats.
+
+ * Only five equation environments can be used: \[ ... \],
+   equation*, equation, align*, and align.
+   (DocOnce performs extensions to sphinx, ipynb,
+   and other formats such that
+   labels in align environments work well.)
+
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   newcommands*.tex. Use \newcommands and not \def.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+
+ * Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (mwiki) does not support references to equations.
+
+ * Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear *inline* without numbers or labels
+   for reference[^exception] (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+
+ * Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+
+ * You cannot use subfigure to combine several image files in one
+   figure, but you can combine the files to one file using
+   the doconce combine_images tool.
+
+ * Use plain cite for references (e.g., \citeauthor has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+
+ * Use idx for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+
+ * If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement *user-defined environments* in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+
+ * Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+
+ * Use *generalized referenes* with for referring to companion documents
+   that may later be put together in a book.
+
+ * Follow recommendations for DocOnce books (https://github.com/hplgit/setup4book-doconce) if you plan to write a book.
+
+[^exception]: There is an exception: by using *user-defined environments*
+within !bu-name and !eu-name directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+
+Use the preprocessor to tailor output -----------------------------------|
+|                                                                        |
+| If you really need special LaTeX constructs in the LaTeX output        |
+| from DocOnce, you may use use preprocessor if-tests on                 |
+| the format (typically #if FORMAT in ("latex", "pdflatex")) to          |
+| include such special LaTeX code. With an else clause you can easily    |
+| create corresponding constructions for other formats. This way         |
+| of using Preprocess or Mako                                            |
+| allows advanced LaTeX features, or HTML features for the HTML formats, |
+| and thereby fine tuning of the resulting                               |
+| document. More tuning can be done by automatic editing of the          |
+| output file (e.g., .tex or .html) produced by DocOnce using            |
+| your own scripts or the doconce replace and doconce subst commands.    |
+|------------------------------------------------------------------------|
+
+
+
+Autotranslation of LaTeX to DocOnce? --------------------------------------|
+|                                                                          |
+| The tool doconce latex2doconce may help you translating LaTeX files      |
+| to DocOnce syntax. However, if you use computer code in floating         |
+| list environments, special packages for typesetting algorithms,          |
+| example environments, subfigure in figures,                              |
+| or a lot of newcommands in the running text, there will be need for      |
+| a lot of manual edits and adjustments. For examples, figure environments |
+| can be translated by doconce latex2doconce only if the label is inside   |
+| the caption. If the LaTeX is consistent with respect to placement of     |
+| the label, a simple script can autoedit the label inside the caption,    |
+| but many LaTeX writers put the label at different places in different    |
+| figures, and then it becomes more difficult to autoedit figures and      |
+| translate them to the DocOnce FIGURE: syntax.                            |
+|--------------------------------------------------------------------------|
+
 
 Hyperlinks
 ----------
@@ -94773,45 +95310,6 @@ $$
  \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb{u} = 0.
 $$
 
-Any LaTeX syntax is accepted, but if output in the `sphinx`, `pandoc`,
-`mwiki`, `html`, or `ipynb` formats
-is also important, one should follow these rules:
-
- * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
-   and `ipynb` formats.
- * Only five equation environments can be used: `\[ ... \]`,
-   `equation*`, `equation`, `align*`, and `align`.
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
-   `newcommands*.tex`.
- * MediaWiki (`mwiki`) does not support references to equations.
-
-(DocOnce performs extensions to `sphinx` and other formats such that
-labels in `align` environments work well.)
-
-*Notice.* 
-LaTeX supports lots of fancy formatting, for example, multiple
-plots in the same figure (`subfigure` package), margin notes, multi-page
-tables, example and algorithm environments, code listings in figures, etc.
-Other output formats, such as `sphinx` and `html`, make it necessary for DocOnce
-to only utilze very standard LaTeX. Correspondingly, the writer
-must stick to simple constructs and avoid, for instance, more than
-one plot per figure (combine them into one using `doconce combine_images`),
-example environments (use subsection or subsubsection instead),
-algorithms environments (see *Typesetting of Algorithms* in the DocOnce
-manual), newcommands outside mathematics (use Mako variables or functions
-instead), code listings in figures (use just inline blocks), to mention
-some.
-
-However, one can use preprocessor if-tests on
-the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
-include special code for `latex` and `pdflatex` output and more
-straightforward typesetting for other formats. In this way, one can
-also allow advanced LaTeX features and fine tuning of the resulting
-PDF document. More tuning can be done by automatic editing of the
-`.tex` produced by DocOnce.
-
-
 
 *LaTeX Newcommands.*
 The author can define `newcommand` statements in files with names
@@ -94826,6 +95324,104 @@ without LaTeX support. For `html`, `sphinx`, `latex`, `pdflatex`,
 rendered nicely anyway. If you desire `newcommand` outside LaTeX
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
+
+<!-- include with mako must be in this root tree, so we need a link, see make.sh -->
+
+### Writing Guidelines (Especially for LaTeX Users!)
+<div id="manual:latex:guide"></div>
+
+LaTeX writers often have their own writing habits with use of their
+own favorite LaTeX packages. DocOnce is a much simpler format and
+corresponds to writing in quite plain LaTeX.
+Any LaTeX syntax is accepted when DocOnce translates the text to
+LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
+`ipynb` formats is also important, one should follow the rules below.
+
+ * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
+   and `ipynb` formats.
+ * Only five equation environments can be used: `\[ ... \]`,
+   `equation*`, `equation`, `align*`, and `align`.
+   (DocOnce performs extensions to `sphinx`, `ipynb`,
+   and other formats such that
+   labels in `align` environments work well.)
+ * Newcommands in mathematical formulas are allowed, but not in
+   the running text. Newcommands must be defined in files with names
+   `newcommands*.tex`. Use `\newcommands` and not `\def`.
+   Each newcommand must be defined on a single line.
+   Use Mako functions if you need macros in the running text.
+ * Use labels and refer to them
+   for sections, figures, movies, and equations only.
+   MediaWiki (`mwiki`) does not support references to equations.
+ * Only figures and movies are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) must appear *inline* without numbers or labels
+   for reference[^exception] (refer to inline elements by a section label).
+   The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
+ * Keep figure captions shorts as they are used as references in the
+   Sphinx format. Avoid inline mathematics since Sphinx will strip it
+   away in the figure reference.
+   (Many writing styles encourage rich captions that
+   explains everything about the figure, but this will work well
+   only in the HTML and LaTeX formats.)
+ * You cannot use `subfigure` to combine several image files in one
+   figure, but you can combine the files to one file using
+   the `doconce combine_images` tool.
+ * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart
+   in DocOnce). The bibliography must be prepared in the Publish format,
+   but import from (clean) BibTeX is possible.
+ * Use `idx` for index entries, but put the definitions between paragraphs,
+   not inside them (required by Sphinx).
+ * If you depend on various LaTeX environments for your writings, you have
+   to give up these, or implement *user-defined environments* in DocOnce.
+   For instance, examples are normally typeset as subsections in DocOnce.
+   Learn about the exercise support in DocOnce to typeset exercises, problems,
+   and projects.
+ * Learn about the preprocessors Preprocess and Mako - these are smart
+   tools for, e.g., commenting out/in large portions of text and creating
+   macros.
+ * Use *generalized referenes* with for referring to companion documents
+   that may later be put together in a book.
+ * Follow [recommendations for DocOnce books](https://github.com/hplgit/setup4book-doconce) if you plan to write a book.
+
+[^exception]: There is an exception: by using *user-defined environments*
+within `!bu-name` and `!eu-name` directives, it is possible to
+label any type of text and refer to it. For example, one can have
+environments for examples, tables, code snippets, theorems, lemmas, etc.
+One can also use Mako functions to implement enviroments.
+
+*Use the preprocessor to tailor output.* 
+If you really need special LaTeX constructs in the LaTeX output
+from DocOnce, you may use use preprocessor if-tests on
+the format (typically `#if FORMAT in ("latex", "pdflatex")`) to
+include such special LaTeX code. With an else clause you can easily
+create corresponding constructions for other formats. This way
+of using Preprocess or Mako
+allows advanced LaTeX features, or HTML features for the HTML formats,
+and thereby fine tuning of the resulting
+document. More tuning can be done by automatic editing of the
+output file (e.g., `.tex` or `.html`) produced by DocOnce using
+your own scripts or the `doconce replace` and `doconce subst` commands.
+
+
+
+*Autotranslation of LaTeX to DocOnce?* 
+The tool `doconce latex2doconce` may help you translating LaTeX files
+to DocOnce syntax. However, if you use computer code in floating
+list environments, special packages for typesetting algorithms,
+example environments, `subfigure` in figures,
+or a lot of newcommands in the running text, there will be need for
+a lot of manual edits and adjustments. For examples, figure environments
+can be translated by `doconce latex2doconce` only if the label is inside
+the caption. If the LaTeX is consistent with respect to placement of
+the label, a simple script can autoedit the label inside the caption,
+but many LaTeX writers put the label at different places in different
+figures, and then it becomes more difficult to autoedit figures and
+translate them to the DocOnce `FIGURE:` syntax.
+
+
+
+
 
 
 ### Hyperlinks
@@ -101137,9 +101733,9 @@ reading sources... [ 83%] ._testdoc009
 reading sources... [ 91%] ._testdoc010
 reading sources... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:391: WARNING: Inline strong start-string without end-string.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:429: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:429: ERROR: Unknown target name: "example-of-the-third-footnote".
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:393: WARNING: Inline strong start-string without end-string.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:431: ERROR: Too many autonumbered footnote references: only 0 corresponding footnotes available.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:431: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:429: ERROR: Unexpected indentation.
@@ -101161,10 +101757,6 @@ writing output... [ 83%] ._testdoc009
 writing output... [ 91%] ._testdoc010
 writing output... [100%] index
 
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app1 (if the link has no caption the label must precede a section header)
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:71: WARNING: undefined label: app2 (if the link has no caption the label must precede a section header)
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:70: WARNING: undefined label: sec1 (if the link has no caption the label must precede a section header)
 /home/hpl/vc/doconce/test/sphinx-testdoc/index.rst:9: WARNING: toctree contains reference to document u'._testdoc002' that doesn't have a title: no link will be generated
 generating indices... genindex
 writing additional pages... search
@@ -101174,7 +101766,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 12 warnings.
+build succeeded, 8 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -110418,11 +111010,22 @@ it is clearly a successful run of all tests!
 + set -x
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/src/quickref:
++ '[' '!' -l guidelines.do.txt ']'
+make.sh: line 17: [: -l: unary operator expected
 + doconce
 + doconce format html quickref --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to html
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: found emphasis tag *...* in footnote, which was removed
+    in tooltip (since it does not work with bootstrap tooltips)
+    but not in the footnote itself.
+There is an exception: by using *user-defined environments* within `!bu-name` and `!eu-name` directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments. 
+
+*** warning: found inline code tag `...` in footnote, which was removed
+    in tooltip (since it does not work with bootstrap tooltips):
+There is an exception: by using user-defined environments within `!bu-name` and `!eu-name` directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments. 
+
 output in quickref.html
 + system doconce format pdflatex quickref --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
 + doconce format pdflatex quickref --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
@@ -110652,31 +111255,35 @@ ust place []
 [6]
 Overfull \hbox (12.68103pt too wide) 
 \T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[7] [8] [9]
+[7] [8] [9] [10]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
-. 
+.
 
-Overfull \hbox (8.97565pt too wide) 
-[]\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[10] [11]
+Overfull \hbox (9.62752pt too wide) 
+\T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
+[11]
+Overfull \hbox (4.64987pt too wide) 
+\T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
+ cre-at-ing macros. 
+[12] [13]
 
 
 ...rest of part of LaTeX line number...
 
-[12] [13]
+[14]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[14]
+[15]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[15] [16] [17] [18] [19] [20]
+[16] [17] [18] [19] [20] [21]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -110684,7 +111291,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[21] (./quickref.aux)
+[22] (./quickref.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -110837,11 +111444,11 @@ i7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
-lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
-8a.pfb>
-Output written on quickref.pdf (21 pages, ).
+are/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on quickref.pdf (22 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape quickref
@@ -111061,23 +111668,27 @@ Overfull \hbox (12.68103pt too wide)
 [7] [8] [9] [10]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
-. 
+.
+[11]
+Overfull \hbox (9.62752pt too wide) 
+\T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
 
-Overfull \hbox (8.97565pt too wide) 
-[]\T1/phv/m/n/10 ) to in-clude spe-cial code for []
-[11] [12] [13]
+Overfull \hbox (4.64987pt too wide) 
+\T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
+ cre-at-ing macros. 
+[12] [13] [14] [15]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
-[14]
+
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[15]
+[16]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[16] [17] [18] [19] [20] [21]
+[17] [18] [19] [20] [21] [22]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -111085,7 +111696,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[22] (./quickref.aux)
+[23] (./quickref.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -111232,11 +111843,11 @@ i7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></u
 sr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/p
 ublic/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/he
-lvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro
-8a.pfb>
-Output written on quickref.pdf (22 pages, ).
+are/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on quickref.pdf (23 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx quickref --no_preprocess
@@ -111355,14 +111966,13 @@ preparing documents... done
 writing output... [ 50%] index
 writing output... [100%] quickref
 
-/home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir/quickref.rst:805: WARNING: undefined label: quick:sections (if the link has no caption the label must precede a section header)
 generating indices... genindex
 writing additional pages... search
 copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 2 warnings.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
@@ -111578,7 +112188,18 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
+
+Overfull \hbox (0.15965pt too wide) 
+\T1/pcr/m/n/10 newcommands*.tex\T1/ptm/m/n/10 . Use \T1/pcr/m/n/10 \newcommands
+ \T1/ptm/m/n/10 and not \T1/pcr/m/n/10 \def\T1/ptm/m/n/10 . Each
 [10]
+Overfull \hbox (0.59726pt too wide) 
+[]\T1/ptm/m/n/10 Use \T1/ptm/m/it/10 gen-er-al-ized refer-enes \T1/ptm/m/n/10 w
+ith for re-fer-ring to com-pan-ion doc-u-ments
+
+Package hyperref Warning: Ignoring empty anchor on .
+
+[11]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
@@ -111598,10 +112219,10 @@ oes the caption which must be on a single line. label{some:fig:label}
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
-
+[12]
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
-[11]
+
 Overfull \hbox (233.00006pt too wide) 
 \T1/pcr/m/n/10 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 he
 ight=315] YouTube movie.  
@@ -111649,10 +112270,10 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-
+[13]
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
-[12]
+
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -111661,11 +112282,11 @@ Overfull \hbox (54.34767pt too wide)
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-
+[14]
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
-[13]
+
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
@@ -111687,7 +112308,7 @@ i|cwiki|pandoc|st|epytext dofile
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
-
+[15]
 Overfull \hbox (197.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce subst [-s -m -x --restore] regex-pattern regex-replace
 ment file1 file2 ...  
@@ -111702,7 +112323,7 @@ back again)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 # doconce replace using from and to phrases from file  
-[14]
+
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce replace_from_file file-with-from-to-replacements file1
  file2 ...  
@@ -111739,7 +112360,7 @@ splitting points
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
-
+[16]
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
@@ -111747,7 +112368,7 @@ ile
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce slides_markdown complete_file.md remark --slide_style=
 light  
-[15]
+
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce html_colorbullets file1.html file2.html ...  
 
@@ -111791,14 +112412,14 @@ eded
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-
+[17]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # change headings from "This is a Heading" to "This is a headi
 ng"  
-[16]
+
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate a latex document to doconce (requires usually manu
 al fixing)  
@@ -111841,10 +112462,10 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-
+[18]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[17]
+
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -111858,14 +112479,14 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
-
+[19]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
 
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Exercise: Determine the Distance to the Moon =====  
-[18]
+
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
@@ -111880,7 +112501,7 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[19]
+[20]
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
@@ -111891,14 +112512,14 @@ Overfull \hbox (18.10902pt too wide)
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[20]
+[21]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[21] (./quickref.rst.aux)
+[22] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -111912,7 +112533,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (21 pages, ).
+Output written on quickref.rst.dvi (22 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
@@ -112102,9 +112723,20 @@ Overfull \hbox (29.72876pt too wide)
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
 
+Overfull \hbox (0.15965pt too wide) 
+\T1/pcr/m/n/10 newcommands*.tex\T1/ptm/m/n/10 . Use \T1/pcr/m/n/10 \newcommands
+ \T1/ptm/m/n/10 and not \T1/pcr/m/n/10 \def\T1/ptm/m/n/10 . Each
+[11]
+Overfull \hbox (0.59726pt too wide) 
+[]\T1/ptm/m/n/10 Use \T1/ptm/m/it/10 gen-er-al-ized refer-enes \T1/ptm/m/n/10 w
+ith for re-fer-ring to com-pan-ion doc-u-ments
+
+Package hyperref Warning: Ignoring empty anchor on .
+
+[12]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
-[11]
+
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
 
@@ -112128,11 +112760,11 @@ Overfull \hbox (23.00006pt too wide)
 Overfull \hbox (233.00006pt too wide) 
 \T1/pcr/m/n/10 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 he
 ight=315] YouTube movie.  
-
+[13]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
-[12]
+
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -112171,7 +112803,7 @@ Overfull \hbox (107.00006pt too wide)
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
-[13]
+[14]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -112188,7 +112820,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[14]
+[15]
 Overfull \hbox (3839.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -112232,7 +112864,7 @@ Overfull \hbox (71.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
-
+[16]
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
@@ -112244,7 +112876,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-[15]
+
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -112272,7 +112904,7 @@ Overfull \hbox (11.00006pt too wide)
 
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # extract all exercises (projects and problems too)  
-
+[17]
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
 > result  
@@ -112280,7 +112912,7 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-[16]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
@@ -112328,7 +112960,7 @@ e
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate an IPython/Jupyter notebook to doconce  
-
+[18]
 Overfull \hbox (179.00006pt too wide) 
 []\T1/pcr/m/n/10 # typeset a doconce document with pygments (for pretty print o
 f doconce itself)  
@@ -112340,7 +112972,7 @@ various formats
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-[17]
+
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -112363,7 +112995,7 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[18]
+[19]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -112388,7 +113020,7 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[19]
+[20]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -112403,27 +113035,27 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
-
+[21]
 Overfull \hbox (18.10902pt too wide) 
 []
-[20]
+
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-
+[22]
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[21] [22] (./quickref.rst.aux)
+[23] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (22 pages, ).
+Output written on quickref.rst.dvi (23 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
 + system doconce format plain quickref --no_preprocess
@@ -112441,6 +113073,8 @@ output in quickref.txt
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to gwiki
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: footnotes are not supported for format gwiki
+    footnotes will be left in the doconce syntax
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://vimeo.com/55562330
@@ -112451,6 +113085,8 @@ output in quickref.gwiki
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to mwiki
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: footnotes are not supported for format mwiki
+    footnotes will be left in the doconce syntax
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://vimeo.com/55562330
@@ -112461,6 +113097,8 @@ output in quickref.mwiki
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to cwiki
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: footnotes are not supported for format cwiki
+    footnotes will be left in the doconce syntax
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://vimeo.com/55562330
@@ -112471,6 +113109,8 @@ output in quickref.cwiki
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to st
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: footnotes are not supported for format st
+    footnotes will be left in the doconce syntax
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://vimeo.com/55562330
@@ -112481,6 +113121,8 @@ output in quickref.st
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to epytext
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: footnotes are not supported for format epytext
+    footnotes will be left in the doconce syntax
 *** made link to new HTML file movie_player1.html
     with code to display the movie 
     http://vimeo.com/55562330
@@ -112491,6 +113133,8 @@ output in quickref.epytext
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to pandoc
 copy complete file doconce_program.sh  (format: shpro)
+*** warning: footnotes are not supported for format pandoc
+    footnotes will be left in the doconce syntax
 output in quickref.md
 + '[' 0 -ne 0 ']'
 + rm -rf demo
