@@ -4464,7 +4464,7 @@ ${insert_nomenclature()}
 
 # Here comes a lot of text...
 
-The equation become
+The equation becomes
 
 |bt
 \[ \nabla\cdot\sigma = \varrho f,\]
@@ -4475,15 +4475,55 @@ ${nomenclature(r'$\sigma$', 'stress tensor')}
 ${nomenclature(r'$\varrho$', 'density')}
 ${nomenclature(r'$f$', 'body force')}
 
-# More text....
+## More text....
 
-# At the end:
+## At the end:
 ${end_nomenclature()}
 !ec
 Make it a habit to use raw strings `r"..."`
 for the symbol in `${nomenclature(r"...", ....`
 (sometimes backslashes enter the definition too and raw strings are
 required).
+
+Here is
+the resulting DocOnce after mako is run (found in `tmp_mako__mydoc.do.txt` if
+`mydoc.do.txt` is the file above):
+
+!bc do
+TITLE: Test
+AUTHOR: HPL
+DATE: today
+
+!split
+TOC: on
+
+!split
+@@@CODE .nomenclature.do.txt envir=None
+
+# Here comes a lot of text...
+
+The equation becomes
+
+|bt
+\[ \nabla\cdot\sigma = \varrho f,\]
+|et
+where $\sigma$ is the stress tensor, $\varrho$ is the density,
+and $f$ is a body force.
+!ec
+
+The file `.nomenclature.do.txt` reads
+
+!bc do
+
+|---------------------------------|
+| symbol | definition             |
+|---l---------l-------------------|
+| $\sigma$ | stress tensor |
+| $\varrho$ | density |
+| $f$ | body force |
+|---------------------------------|
+
+!ec
 
 ===== Example: Executing Python and using SymPy Objects in LaTeX =====
 

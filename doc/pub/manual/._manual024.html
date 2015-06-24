@@ -475,7 +475,7 @@ ${insert_nomenclature()}
 
 <span style="color: #408080; font-style: italic"># Here comes a lot of text...</span>
 
-The equation become
+The equation becomes
 
 !bt
 \[ \nabla\cdot\sigma = \varrho f,\]
@@ -486,9 +486,9 @@ ${nomenclature(r&#39;$\sigma$&#39;, &#39;stress tensor&#39;)}
 ${nomenclature(r&#39;$\varrho$&#39;, &#39;density&#39;)}
 ${nomenclature(r&#39;$f$&#39;, &#39;body force&#39;)}
 
-<span style="color: #408080; font-style: italic"># More text....</span>
+<span style="color: #408080; font-style: italic">## More text....</span>
 
-<span style="color: #408080; font-style: italic"># At the end:</span>
+<span style="color: #408080; font-style: italic">## At the end:</span>
 ${end_nomenclature()}
 </pre></div>
 <p>
@@ -496,6 +496,49 @@ Make it a habit to use raw strings <code>r&quot;...&quot;</code>
 for the symbol in <code>${nomenclature(r&quot;...&quot;, ....</code>
 (sometimes backslashes enter the definition too and raw strings are
 required).
+
+<p>
+Here is
+the resulting DocOnce after mako is run (found in <code>tmp_mako__mydoc.do.txt</code> if
+<code>mydoc.do.txt</code> is the file above):
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">TITLE: Test</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> HPL
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+<span style="color: #008000; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #008000; font-weight: bold">!split</span>
+<span style="color: #800080; font-weight: bold">@@@CODE .nomenclature.do.txt envir=None</span>
+
+<span style="color: #408080; font-style: italic"># Here comes a lot of text...</span>
+
+The equation becomes
+
+!bt
+\[ \nabla\cdot\sigma = \varrho f,\]
+!et
+where $\sigma$ is the stress tensor, $\varrho$ is the density,
+and $f$ is a body force.
+</pre></div>
+<p>
+The file <code>.nomenclature.do.txt</code> reads
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BA2121">|---------------------------------|</span>
+<span style="color: #BA2121">| symbol | definition             |</span>
+<span style="color: #BA2121">|---l---------l-------------------|</span>
+<span style="color: #BA2121">| $\sigma$ | stress tensor |</span>
+<span style="color: #BA2121">| $\varrho$ | density |</span>
+<span style="color: #BA2121">| $f$ | body force |</span>
+<span style="color: #BA2121">|---------------------------------|</span>
+</pre></div>
 
 <h2 id="___sec111">Example: Executing Python and using SymPy Objects in LaTeX </h2>
 
