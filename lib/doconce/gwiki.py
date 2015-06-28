@@ -3,12 +3,14 @@ Google Code Wiki translator.
 Syntax defined by http://code.google.com/p/support/wiki/WikiSyntax
 Here called gwiki to make the dialect clear (g for google).
 """
+from __future__ import print_function
+from __future__ import absolute_import
 
 
 import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex
-from plaintext import plain_quiz
-from misc import _abort
+from .common import default_movie, plain_exercise, insert_code_and_tex
+from .plaintext import plain_quiz
+from .misc import _abort
 
 def gwiki_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -38,20 +40,20 @@ def gwiki_figure(m):
             cmd = 'convert %s png:%s' % (filename, root+'.png')
             failure, output = commands.getstatusoutput(cmd)
             if failure:
-                print '\n**** Warning: could not run', cmd
-                print 'Convert %s to PNG format manually' % filename
+                print('\n**** Warning: could not run', cmd)
+                print('Convert %s to PNG format manually' % filename)
                 _abort()
             filename = root + '.png'
     caption = m.group('caption')
     # keep label if it's there:
     caption = re.sub(r'label\{(.+?)\}', '(\g<1>)', caption)
 
-    print """
+    print("""
 NOTE: Place %s at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
-""" % filename
+""" % filename)
 
     result = r"""
 
@@ -70,7 +72,7 @@ googlecode repository) and substitute the line above with the URL.
 """ % (caption, filename, filename)
     return result
 
-from common import table_analysis
+from .common import table_analysis
 
 def gwiki_table(table):
     """Native gwiki table."""
@@ -169,7 +171,7 @@ def wiki_ref_and_label_common(section_label2title, format, filestr):
         filestr = filestr.replace('ref{%s}' % label,
                                   '[#%s]' % title.replace(' ', '_'))
 
-    from common import ref2equations
+    from .common import ref2equations
     filestr = ref2equations(filestr)
 
     # replace remaining ref{x} as x
@@ -240,7 +242,7 @@ def define(FILENAME_EXTENSION,
         }
 
     CODE['gwiki'] = gwiki_code
-    from html import html_table
+    from .html import html_table
     #TABLE['gwiki'] = html_table
     TABLE['gwiki'] = gwiki_table
 
@@ -268,7 +270,7 @@ def define(FILENAME_EXTENSION,
 
     FIGURE_EXT['gwiki'] = ('.png', '.gif', '.jpg', '.jpeg')
     CROSS_REFS['gwiki'] = gwiki_ref_and_label
-    from plaintext import plain_index_bib
+    from .plaintext import plain_index_bib
     EXERCISE['gwiki'] = plain_exercise
     INDEX_BIB['gwiki'] = plain_index_bib
     TOC['gwiki'] = lambda s: '<wiki: toc max_depth="2" />'

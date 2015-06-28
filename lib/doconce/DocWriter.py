@@ -9,6 +9,7 @@ write to) various formats.
 
 This module works, but is unifinished and needs documentation!
 """
+from __future__ import print_function
 
 from StringIO import StringIO
 import re, os, glob, commands
@@ -58,9 +59,8 @@ class _BaseWriter:
         pass
 
     def not_impl(self, method):
-        raise NotImplementedError, \
-              'method "%s" in class "%s" is not implemented' % \
-              (method, self.__class__.__name__)
+        raise NotImplementedError('method "%s" in class "%s" is not implemented' % \
+              (method, self.__class__.__name__))
 
     def title(self, title, authors_and_institutions=[], date='today'):
         """
@@ -174,9 +174,9 @@ class _BaseWriter:
         """
         # check for common error (a trailing comma...):
         if isinstance(items, tuple) and len(items) == 1:
-            raise ValueError, 'list is a 1-tuple, error? If there is '\
+            raise ValueError('list is a 1-tuple, error? If there is '\
                   'only one item in the list, make a real Python list '\
-                  'object instead - current list is\n(%s,)' % items
+                  'object instead - current list is\n(%s,)' % items)
         item_handler('_begin', listtype, level)
         for i, item in enumerate(items):
             if isinstance(item, (list,tuple)):
@@ -191,7 +191,7 @@ class _BaseWriter:
                 else:
                     item_handler(item, listtype, level)
             else:
-                raise TypeError, 'wrong %s for item' % type(item)
+                raise TypeError('wrong %s for item' % type(item))
         item_handler('_end', listtype, level)
 
     def item_handler(self, item, listtype, level, keyword=None):
@@ -248,18 +248,18 @@ class _BaseWriter:
             stem, ext = os.path.splitext(file)
             if ext == '.ps' or ext == '.eps':
                 cmd = 'convert %s %s' % (file, final)
-                print cmd
+                print(cmd)
                 failure = os.system(cmd)
                 if failure:
-                    print 'Could not convert;\n  %s' % cmd
+                    print('Could not convert;\n  %s' % cmd)
                 return final
         # try to convert from the first file to the disired format:
         file = files[0]
         cmd = 'convert %s %s' % (file, final)
-        print cmd
+        print(cmd)
         failure, outtext = commands.getstatusoutput(cmd)
         if failure:
-            print 'Could not convert;\n  %s' % cmd
+            print('Could not convert;\n  %s' % cmd)
         return final
 
     def figure(self, filename, caption, width=None, height=None, label=None):
@@ -631,8 +631,7 @@ class HTML(_BaseWriter):
 
 class LaTeX(_BaseWriter):
     def __init__(self):
-        raise NotImplementedError, \
-              'Use DocOnce class instead and filter to LaTeX'
+        raise NotImplementedError('Use DocOnce class instead and filter to LaTeX')
 
 # Efficient way of generating class DocWriter.
 # A better way (for pydoc and other API references) is to
@@ -991,8 +990,8 @@ width="%(width)s" height="%(height)s" autoplay="false">
 
 def _test(d):
     # d is formatclass() or DocWriter(HTML, LaTeX, ...)
-    print '\n\n', '*'*70, \
-          '\n*** Testing class "%s"\n' % d.__class__.__name__, '*'*70
+    print('\n\n', '*'*70, \
+          '\n*** Testing class "%s"\n' % d.__class__.__name__, '*'*70)
 
     d.title('My Test of Class %s' % d.__class__.__name__,
             [('Hans Petter Langtangen',
@@ -1061,7 +1060,7 @@ b.item = 0  # create a new attribute
     d.paragraph_separator()
     d.text('And here is a table:')
     d.table([['a', 'b'], ['c', 'd'], ['e', 'and a longer text']])
-    print d
+    print(d)
     d.write_to_file('tmp_%s' % d.__class__.__name__)
 
 if __name__ == '__main__':

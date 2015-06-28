@@ -29,7 +29,7 @@ def doconce_format_articles(paper):
     # Volume
     if "volume" in paper:
         vol = paper["volume"]
-        if paper.has_key("number") :
+        if "number" in paper :
             vol += "(%s)" % paper["number"]
         values.append(vol)
 
@@ -261,7 +261,7 @@ def _doconce_get_authors_string(authors):
 
 def _doconce_mark_author(author, text) :
   "Mark the text with bold face if author is in the list of marked authors"
-  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
+  if "mark_author" in config and author.strip() in config.get("mark_author") :
     return "_%s_" % text
   else:
     return text
@@ -338,7 +338,7 @@ def rst_format_articles(paper):
     # Volume
     if "volume" in paper:
         vol = paper["volume"]
-        if paper.has_key("number") :
+        if "number" in paper :
             vol += "(%s)" % paper["number"]
         values.append(vol)
 
@@ -559,7 +559,7 @@ def _rst_get_authors_string(authors):
 
 def _rst_mark_author(author, text) :
   "Mark the text with bold face if author is in the list of marked authors"
-  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
+  if "mark_author" in config and author.strip() in config.get("mark_author") :
     return "_%s_" % text
   else:
     return text
@@ -819,7 +819,7 @@ def _xml_get_authors_string(authors):
 
 def _xml_mark_author(author, text):
   "Mark the text with bold face if author is in the list of marked authors"
-  if config.has_key("mark_author") and author.strip() in config.get("mark_author") :
+  if "mark_author" in config and author.strip() in config.get("mark_author") :
     return '<author marked="True">%s</author>' % text
   else:
     return '<author marked="False">%s</author>' % text

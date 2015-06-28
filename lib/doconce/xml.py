@@ -24,12 +24,14 @@ are wrapped in tags.
 Drop begin-end of paragraphs, just mark newlines (<newline/>) and
 let paragraphs be running text inside the parent element.
 """
+from __future__ import print_function
+from __future__ import absolute_import
 
 import re, os, glob, sys, glob
-from common import table_analysis, plain_exercise, insert_code_and_tex, \
+from .common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
      cite_with_multiple_args2multiple_cites, is_file_or_url
-from misc import option, _abort
+from .misc import option, _abort
 
 
 def xml_code(filestr, code_blocks, code_block_types,
@@ -235,7 +237,7 @@ def xml_author(authors_and_institutions, auth2index,
 
 def xml_find_paragraphs(filestr):
     lines = filestr.splitlines()
-    print 'XML: need to locate end of paragraphs'
+    print('XML: need to locate end of paragraphs')
     #print filestr
     # Note: figures are already handled
     # Or can we just wait until all tags are written and then
@@ -327,7 +329,7 @@ def xml_ref_and_label(section_label2title, format, filestr):
 
     # Replace all admon and many other envirs here (then xml_quote etc
     # will not be called later by doconce.py)
-    from doconce import doconce_envirs
+    from .doconce import doconce_envirs
     for envir in doconce_envirs()[5:-2]:
         filestr = re.sub(r'^!b%s +(.+)' % envir, r'<%s heading="\g<1>">' % envir,
                          filestr, flags=re.MULTILINE)
@@ -393,7 +395,7 @@ def xml_footnotes(filestr, format, pattern_def, pattern_footnote):
         if name in name2index:
             i = name2index[m.group('name')]
         else:
-            print '*** error: found footnote with name "%s", but this one is not defined' % name
+            print('*** error: found footnote with name "%s", but this one is not defined' % name)
             _abort()
         xml = r'<footnote id="%s">%s<footnote>' % (i, name)
         return xml

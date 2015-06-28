@@ -2,6 +2,8 @@
 See http://johnmacfarlane.net/pandoc/README.html
 for syntax.
 """
+from __future__ import print_function
+from __future__ import absolute_import
 # Remaining key issue: github_md dialect hardcodes all the newlines so
 # lines in paragraphs should be joined if the resulting Markdown text
 # is published as an issue on github.com. (Difficult to solve. Current
@@ -9,10 +11,10 @@ for syntax.
 # documents and issues.)
 
 import re, sys
-from common import default_movie, plain_exercise, table_analysis, \
+from .common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, bibliography, indent_lines
-from html import html_movie, html_table
-from misc import option
+from .html import html_movie, html_table
+from .misc import option
 
 # Mapping of envirs to correct Pandoc verbatim environment
 language2pandoc = dict(
@@ -116,9 +118,9 @@ def pandoc_code(filestr, code_blocks, code_block_types,
             envir = m.group(1)
             if envir not in ('equation', 'equation*', 'align*', 'align',
                              'array'):
-                print """\
+                print("""\
 *** warning: latex envir \\begin{%s} does not work well.
-""" % envir
+""" % envir)
         # Add $$ on each side of the equation
         tex_blocks[i] = '$$\n' + tex_blocks[i] + '$$\n'
     # Note: HTML output from pandoc requires $$ while latex cannot have
@@ -466,7 +468,7 @@ def define(FILENAME_EXTENSION,
         'quote':        pandoc_quote,
         }
 
-    from common import DEFAULT_ARGLIST
+    from .common import DEFAULT_ARGLIST
     ARGLIST['pandoc'] = DEFAULT_ARGLIST
     LIST['pandoc'] = {
         'itemize':

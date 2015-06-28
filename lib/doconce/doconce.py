@@ -1,7 +1,10 @@
 #!/usr/bin/env python
+from __future__ import print_function
+from __future__ import absolute_import
 global dofile_basename
 
-import re, os, sys, shutil, commands, pprint, time, glob, codecs
+import re, os, sys, shutil, pprint, time, glob, codecs
+import commands
 try:
     from collections import OrderedDict   # v2.7 and v3.1
 except ImportError:
@@ -26,9 +29,9 @@ def debugpr(heading='', text=''):
         _log.close()
 
 
-from common import *
-from misc import option, which, _abort
-import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml
+from .common import *
+from .misc import option, which, _abort
+from . import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml
 
 def supported_format_names():
     return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'xml'
@@ -62,19 +65,19 @@ def encode_error_message(exception, text, print_length=40):
     m = str(exception)
     if "codec can't encode character" in m:
         pos = m.split('position')[1].split(':')[0]
-        print '*** error: problem with character when writing to file:'
-        print str(exception)
+        print('*** error: problem with character when writing to file:')
+        print(str(exception))
         try:
             pos = int(pos)
         except:
             if '-' in pos:
                 pos = pos.split('-')[0]
                 pos = int(pos)
-        print 'ordinal of this character is', ord(text[pos])
-        print repr(text[pos-print_length:pos+print_length])
-        print ' '*(print_length+2) + '^'
+        print('ordinal of this character is', ord(text[pos]))
+        print(repr(text[pos-print_length:pos+print_length]))
+        print(' '*(print_length+2) + '^')
         #print repr(text[pos-print_length:pos]), '<strange char>', repr(text[pos:+1:pos+print_length])
-        print '    remedies: fix character or try --encoding=utf-8'
+        print('    remedies: fix character or try --encoding=utf-8')
         _abort()
 
 def markdown2doconce(filestr, format=None, ipynb_mode=False):
@@ -162,13 +165,13 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
     quote_envir = 'quote'
     quote_envir = 'block'
 
-    from common import inline_tag_begin, inline_tag_end
+    from .common import inline_tag_begin, inline_tag_end
     extended_markdown_language2dolang = dict(
         Python='py', Ruby='rb', Fortran='f', Cpp='cpp', C='c',
         Perl='pl', Bash='sh', HTML='html')
 
     bc_postfix = '-t' if ipynb_mode else ''
-    from common import unindent_lines
+    from .common import unindent_lines
     regex = [
         # Computer code with language specification
         (r"\n?```([A-Za-z]+)(.*?)\n```", lambda m: "\n\n!bc %scod%s%s\n!ec\n" % (extended_markdown_language2dolang[m.group(1)], bc_postfix, unindent_lines(m.group(2).rstrip(), trailing_newline=False)), re.DOTALL), # language given
@@ -264,7 +267,7 @@ def markdown2doconce(filestr, format=None, ipynb_mode=False):
                         lines[i] = '  *' + lines[i][1:]
                     elif re.search(r'^\d+\. ', lines[i]):
                         lines[i] = re.sub(r'^\d+\. ', '  o ', lines[i])
-                except Exception, e:
+                except Exception as e:
                     raise e
         new_quote = '\n'.join(lines)
         # Cannot use re.sub since there are many strange chars (for regex)
@@ -308,7 +311,7 @@ def fix(filestr, format, verbose=0):
         if '\n' in caption.strip():   # multiline caption?
             # Do not allow figures and movies without a nice blank line after
             if 'FIGURE:' in caption or 'MOVIE:' in caption:
-                print '*** error: missing blank line between multiple figures/movies\n    %s: [%s, ...' % (fig[1], fig[2])
+                print('*** error: missing blank line between multiple figures/movies\n    %s: [%s, ...' % (fig[1], fig[2]))
                 _abort()
             # Allow environments to the figure
             if not '!e' in caption:
@@ -318,14 +321,14 @@ def fix(filestr, format, verbose=0):
                 filestr = filestr.replace(caption, caption1)
                 num_fixes += 1
                 if verbose > 0:
-                    print '\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
+                    print('\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption))
 
     # edit markup: add space after add: and del: for .,;?
     pattern = r'\[(add|del):([.,;])\]'
     filestr, n = re.subn(pattern, r'[\g<1>: \g<2>]', filestr)
     num_fixes += n
     if n > 0:
-        print '*** warning: found %d [add:...] or [del:...] edits without space after colon' % n
+        print('*** warning: found %d [add:...] or [del:...] edits without space after colon' % n)
 
     """
     Drop this and report error instead:
@@ -347,7 +350,7 @@ def fix(filestr, format, verbose=0):
     """
 
     if verbose and num_fixes:
-        print '\n*** warning: the total of %d fixes above should be manually edited in the file!\n    (also note: some of these automatic fixes may not be what you want)\n' % num_fixes
+        print('\n*** warning: the total of %d fixes above should be manually edited in the file!\n    (also note: some of these automatic fixes may not be what you want)\n' % num_fixes)
     return filestr
 
 
@@ -358,8 +361,8 @@ def syntax_check(filestr, format):
     # URLs with just one /
     m = re.findall(r'https?:/[A-Za-z].+', filestr)
     if m:
-        print '*** error: missing double // in URLs'
-        print '   ', '\n'.join(m)
+        print('*** error: missing double // in URLs')
+        print('   ', '\n'.join(m))
         _abort()
 
     # Initial spaces in verbatim, bold, emphasize cannot be tested
@@ -372,14 +375,14 @@ def syntax_check(filestr, format):
         pattern = re.compile(r'^([^#\n].+?[^`(\n]| +)(![eb]%s)' % envir, re.MULTILINE)
         m = pattern.search(filestr)
         if m:
-            print '\n*** error: %s is not at the beginning of a line' % \
-                  (m.group(2))
-            print '    surrounding text:'
-            print filestr[m.start()-100:m.end()+100], '\n'
+            print('\n*** error: %s is not at the beginning of a line' % \
+                  (m.group(2)))
+            print('    surrounding text:')
+            print(filestr[m.start()-100:m.end()+100], '\n')
             if m.group(1).strip() == '':
-                print 'set %s at the beginning of the line' % m.group(2)
+                print('set %s at the beginning of the line' % m.group(2))
             else:
-                print 'did you mean to write `%s` in some sentence?' % m.group(2)
+                print('did you mean to write `%s` in some sentence?' % m.group(2))
             _abort()
 
         # Check that envirs have b and e before their name
@@ -387,35 +390,35 @@ def syntax_check(filestr, format):
         pattern = '^!' + envir + r'\s'
         m = re.search(pattern, filestr, flags=re.MULTILINE)
         if m:
-            print '\n*** error: found !%s at the beginning of a line' % envir
-            print '    must be !b%s or !e%s' % (envir, envir)
-            print '    surrounding text:'
-            print filestr[m.start()-100:m.start()+len(m.group())+100]
+            print('\n*** error: found !%s at the beginning of a line' % envir)
+            print('    must be !b%s or !e%s' % (envir, envir))
+            print('    surrounding text:')
+            print(filestr[m.start()-100:m.start()+len(m.group())+100])
             _abort()
 
     # Generalized references with whitespace between ] and [
     pattern = r'(ref(ch)?\[[^\]]*?\]\s+\[[^\]]*?\]\s+\[[^\]]*?\])'
     refgens = [refgen for refgen, dummy in re.findall(pattern, filestr)]
     if refgens:
-        print '*** error: found generalized references ref[][][] with whitespaces'
-        print '    between closing (]) and opening ([) brackets, and that'
-        print '    is not legal syntax.\n'
-        print '\n\n'.join(refgens)
+        print('*** error: found generalized references ref[][][] with whitespaces')
+        print('    between closing (]) and opening ([) brackets, and that')
+        print('    is not legal syntax.\n')
+        print('\n\n'.join(refgens))
         _abort()
     # Linebreaks must have space before them if verbatim
     pattern = r'`<linebreak>[^`]'
     m = re.search(pattern, filestr)
     if m:
-        print '*** error: need space between inline verbatim code and <linebreak>'
-        print filestr[m.start()-50:m.end()]
+        print('*** error: need space between inline verbatim code and <linebreak>')
+        print(filestr[m.start()-50:m.end()])
         _abort()
 
     # Footnotes cannot be at the beginning of the line
     pattern = r'^\[\^[A-Za-z].+?\][^:]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
-        print '*** error: footnote cannot appear at the beginning of a line:'
-        print filestr[m.start()-50:m.start()+60]
+        print('*** error: footnote cannot appear at the beginning of a line:')
+        print(filestr[m.start()-50:m.start()+60])
         _abort()
 
     # edit markup
@@ -426,32 +429,32 @@ def syntax_check(filestr, format):
         for pattern in edit_patterns:
             m = re.search(pattern, heading)
             if m:
-                print '*** error: cannot use edit markup %s in section heading' % m.group()
-                print '   ', heading
-                print '    use inline comment below the heading instead where you explain the problem'
+                print('*** error: cannot use edit markup %s in section heading' % m.group())
+                print('   ', heading)
+                print('    use inline comment below the heading instead where you explain the problem')
                 _abort()
 
     pattern = r'^[A-Za-z0_9`"].+\n *- +.+\n^[A-Za-z0_9`"]'
     m = re.search(pattern, filestr, flags=re.MULTILINE)
     if m:
-        print '*** error: hyphen in front of text at a line'
-        print '    indicates description list, but this is not'
-        print '    indended here: (move the hypen to previous line)'
-        print filestr[m.start()-50:m.start()+150]
+        print('*** error: hyphen in front of text at a line')
+        print('    indicates description list, but this is not')
+        print('    indended here: (move the hypen to previous line)')
+        print(filestr[m.start()-50:m.start()+150])
         _abort()
 
     # Need extra blank lines around tables
     pattern = r'!b.+?\n\|----'
     m = re.search(pattern, filestr)
     if m:
-        print '*** syntax error: need blank line before table'
-        print filestr[m.start()-100:m.start()+100]
+        print('*** syntax error: need blank line before table')
+        print(filestr[m.start()-100:m.start()+100])
         _abort()
     pattern = r'----\|\n!e.+'
     m = re.search(pattern, filestr)
     if m:
-        print '*** syntax error: need blank line after table'
-        print filestr[m.start()-100:m.start()+100]
+        print('*** syntax error: need blank line after table')
+        print(filestr[m.start()-100:m.start()+100])
         _abort()
     # Verbatim words must be the whole link, otherwise issue
     # warnings for the formats where this may look strange
@@ -462,18 +465,18 @@ def syntax_check(filestr, format):
             if '``' in link[1:-1]:
                 pass # quotes are ok
             elif '`' in link[1:-1]:
-                print '\n*** error: verbatim code in part of link is not allowed in format', format
-                print '   ', '"%s": "%s"' % (link, url1)
-                print '    use either link as verbatim code only, %s,' % '"`%s`"' % link.replace('`', '')
-                print '    or no verbatim: "%s"' % link.replace('`', '')
-                print '    or use only the verbatim part as link'
+                print('\n*** error: verbatim code in part of link is not allowed in format', format)
+                print('   ', '"%s": "%s"' % (link, url1))
+                print('    use either link as verbatim code only, %s,' % '"`%s`"' % link.replace('`', ''))
+                print('    or no verbatim: "%s"' % link.replace('`', ''))
+                print('    or use only the verbatim part as link')
                 _abort()
 
     pattern = re.compile(r'[^\n:.?!,]^(!b[ct]|@@@CODE)', re.MULTILINE)
     m = pattern.search(filestr)
     if m:
-        print '\n*** error: line before !bc/!bt/@@@CODE block\nends with wrong character (must be among [\\n:.?!, ]):'
-        print repr(filestr[m.start():m.start()+80])
+        print('\n*** error: line before !bc/!bt/@@@CODE block\nends with wrong character (must be among [\\n:.?!, ]):')
+        print(repr(filestr[m.start():m.start()+80]))
         _abort()
 
     # Code blocks cannot come directly after tables or headings.
@@ -490,9 +493,9 @@ def syntax_check(filestr, format):
                              re.MULTILINE)
         m = pattern.search(filestr2)
         if m and format in ('rst', 'plain', 'epytext', 'st'):
-            print '\n*** error: must in format "%s" have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:\n\n---------------------------------' % format
-            print filestr2[m.start()-40:m.start()+80]
-            print '---------------------------------'
+            print('\n*** error: must in format "%s" have a plain sentence before\na code block like !bc/!bt/@@@CODE, not a section/paragraph heading,\ntable, or comment:\n\n---------------------------------' % format)
+            print(filestr2[m.start()-40:m.start()+80])
+            print('---------------------------------')
             _abort()
 
     # If latex format and native latex code for tables are inserted,
@@ -500,9 +503,9 @@ def syntax_check(filestr, format):
     if format in ('latex', 'pdflatex'):
         if 'begin{tabular}' in filestr:
             if not option('no_ampersand_quote'):
-                print """*** error: the document has a native latex table
+                print("""*** error: the document has a native latex table
     (search for begin{tabular}) with ampersands (&). To prevent these
-    from being quoted, add the --no_ampersand_quote option."""
+    from being quoted, add the --no_ampersand_quote option.""")
                 _abort()
 
     # Syntax error `try`-`except`, should be `try-except`,
@@ -510,18 +513,18 @@ def syntax_check(filestr, format):
     pattern = r'(([`A-Za-z0-9._]+)`(-|/| +)`([`A-Za-z0-9._]+))'
     m = re.search(pattern, filestr)
     if m:
-        print '*** error: %s is syntax error' % (m.group(1))
-        print '    rewrite to e.g. %s%s%s' % (m.group(2), m.group(3), m.group(4))
-        print '    surrounding text:'
-        print filestr[m.start()-100:m.start()+100]
+        print('*** error: %s is syntax error' % (m.group(1)))
+        print('    rewrite to e.g. %s%s%s' % (m.group(2), m.group(3), m.group(4)))
+        print('    surrounding text:')
+        print(filestr[m.start()-100:m.start()+100])
         _abort()
     # Backticks for inline verbatim without space (in the middle of text)
     pattern = r'[A-Za-z-]`[A-Za-z]'
     m = re.search(pattern, filestr)
     if m:
-        print '*** error: backtick ` in the middle of text is probably syntax error'
-        print '    surrounding text:'
-        print filestr[m.start()-50:m.start()+50]
+        print('*** error: backtick ` in the middle of text is probably syntax error')
+        print('    surrounding text:')
+        print(filestr[m.start()-50:m.start()+50])
         _abort()
 
     begin_end_consistency_checks(filestr, doconce_envirs())
@@ -594,8 +597,8 @@ def syntax_check(filestr, format):
         for command in commands:
             if '\\' + command in lines[i] and not inside_bt:
                 if '`' not in lines[i] and not inside_bc:  # not verbatim
-                    print '\n*** error in math equation: command\n%s\nis not inside !bt - !et environment' % command
-                    print '\n'.join(lines[i-3:i+3])
+                    print('\n*** error in math equation: command\n%s\nis not inside !bt - !et environment' % command)
+                    print('\n'.join(lines[i-3:i+3]))
                     _abort()
 
     """
@@ -618,10 +621,10 @@ def syntax_check(filestr, format):
         for command in not_for_sphinx:
             if command in filestr:
                 if not warning_given:
-                    print '\n*** warning:'
-                print 'Not recommended for sphinx output: math environment %s' % command
+                    print('\n*** warning:')
+                print('Not recommended for sphinx output: math environment %s' % command)
                 if not warning_given:
-                    print '(use equation, equation*, \[ \], or align/align*)'
+                    print('(use equation, equation*, \[ \], or align/align*)')
                     warning_given = True
     """
     """
@@ -634,9 +637,9 @@ def syntax_check(filestr, format):
         if line.strip().startswith('==='):
             w = line.split()
             if w[0] != w[-1]:
-                print '\n*** error: inconsistent no of = in heading:\n', line
-                print '      lengths: %d and %d, must be equal and odd' % \
-                      (len(w[0]), len(w[-1]))
+                print('\n*** error: inconsistent no of = in heading:\n', line)
+                print('      lengths: %d and %d, must be equal and odd' % \
+                      (len(w[0]), len(w[-1])))
                 _abort()
 
     # Check that ref{} and label{} have closing }
@@ -644,8 +647,8 @@ def syntax_check(filestr, format):
     refs_labels = re.findall(pattern, filestr)
     for tp, label in refs_labels:
         if ' ' in label:
-            print '*** error: space in label is not allowed!'
-            print '    %s{%s}\n' % (tp, label)
+            print('*** error: space in label is not allowed!')
+            print('    %s{%s}\n' % (tp, label))
             _abort()
 
 
@@ -668,8 +671,8 @@ def syntax_check(filestr, format):
         if prefix[-1] == 's':
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
-            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix),
-            print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
+            print('*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix), end=' ')
+            print('    (reference to equation, but missing parenthesis in (%s)?)' % (ref))
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
     # right before them in rst/sphinx
@@ -684,39 +687,39 @@ def syntax_check(filestr, format):
                              re.MULTILINE)
         m = pattern.search(filestr)
         if m and format in ('rst', 'sphinx'):
-            print '\n*** error: line before list, !bc, !bt or @@@CODE block is a %s line\nwhich will "swallow" the block in reST format.\n    Insert some extra line (text) to separate the two elements.' % construction
-            print filestr[m.start():m.start()+80]
+            print('\n*** error: line before list, !bc, !bt or @@@CODE block is a %s line\nwhich will "swallow" the block in reST format.\n    Insert some extra line (text) to separate the two elements.' % construction)
+            print(filestr[m.start():m.start()+80])
             _abort()
 
     matches = re.findall(r'\\cite\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\cite{...} with backslash'
-        print '    (cite{...} has no backslash in DocOnce syntax)'
-        print '\n'.join(matches)
+        print('\n*** warning: found \\cite{...} with backslash')
+        print('    (cite{...} has no backslash in DocOnce syntax)')
+        print('\n'.join(matches))
 
     matches = re.findall(r'\\idx\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\idx{...} (idx{...} has no backslash)'
-        print '\n'.join(matches)
+        print('\n*** warning: found \\idx{...} (idx{...} has no backslash)')
+        print('\n'.join(matches))
         _abort()
 
     matches = re.findall(r'\\index\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\index{...} (index is written idx{...})'
-        print '\n'.join(matches)
+        print('\n*** warning: found \\index{...} (index is written idx{...})')
+        print('\n'.join(matches))
 
     # There should only be ref and label *without* the latex-ish backslash
     matches = re.findall(r'\\label\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\label{...} with backslash'
-        print '    (label{...} has no backslash in DocOnce syntax)'
-        print '\n'.join(matches)
+        print('\n*** warning: found \\label{...} with backslash')
+        print('    (label{...} has no backslash in DocOnce syntax)')
+        print('\n'.join(matches))
 
     matches = re.findall(r'\\ref\{.+?\}', filestr)
     if matches:
-        print '\n*** warning: found \\ref{...} with backslash'
-        print '    (ref{...} has no backslash in DocOnce syntax)'
-        print '\n'.join(matches)
+        print('\n*** warning: found \\ref{...} with backslash')
+        print('    (ref{...} has no backslash in DocOnce syntax)')
+        print('\n'.join(matches))
 
     # consistency check between label{} and ref{}:
     # (does not work well without labels from the !bt environments)
@@ -746,29 +749,29 @@ def syntax_check(filestr, format):
     pattern = r'__[A-Z][A-Za-z0-9,:` ]+__[.?]'
     matches = re.findall(pattern, filestr)
     if matches:
-        print '\n*** error: wrong paragraph heading syntax: period outside __'
-        print '\n'.join(matches)
+        print('\n*** error: wrong paragraph heading syntax: period outside __')
+        print('\n'.join(matches))
         _abort()
 
     pattern = re.compile(r'^__[^_]+?[^.:?)]__', re.MULTILINE)
     matches = pattern.findall(filestr)
     if matches:
-        print '*** warning: missing . , : ) or ? after paragraph heading:'
-        print '\n'.join(matches)
+        print('*** warning: missing . , : ) or ? after paragraph heading:')
+        print('\n'.join(matches))
 
     pattern = r'idx\{[^}]*?\\_[^}]*?\}'
     matches = re.findall(pattern, filestr)
     if matches:
-        print '*** warning: Backslash before underscore(s) in idx (remove backslash)'
-        print matches
+        print('*** warning: Backslash before underscore(s) in idx (remove backslash)')
+        print(matches)
 
     # Figure without comma between filename and options? Or initial spaces?
     pattern = r'^FIGURE:\s*\[[^,\]]+ +[^\]]*\]'
     cpattern = re.compile(pattern, re.MULTILINE)
     matches = cpattern.findall(filestr)
     if matches:
-        print '*** error: missing comma after filename, before options in FIGURE'
-        print '\n'.join(matches)
+        print('*** error: missing comma after filename, before options in FIGURE')
+        print('\n'.join(matches))
         _abort()
 
     # Movie without comma between filename and options? Or initial spaces?
@@ -776,16 +779,16 @@ def syntax_check(filestr, format):
     cpattern = re.compile(pattern, re.MULTILINE)
     matches = cpattern.findall(filestr)
     if matches:
-        print '\n*** error: missing comma after filename, before options in MOVIE'
-        print '\n'.join(matches)
+        print('\n*** error: missing comma after filename, before options in MOVIE')
+        print('\n'.join(matches))
         _abort()
 
     # Movie or figure with initial space in filename:
     pattern = r'^((MOVIE|FIGURE): *\[ +[A-Za-z_0-9/.]+)'
     matches = re.findall(pattern, filestr, flags=re.MULTILINE)
     if matches:
-        print '\n*** error: wrong initial space in filename'
-        print '\n'.join([match for match, tp in matches])
+        print('\n*** error: wrong initial space in filename')
+        print('\n'.join([match for match, tp in matches]))
         _abort()
 
     # Keywords at the beginning of the lines:
@@ -795,8 +798,8 @@ def syntax_check(filestr, format):
         cpattern = re.compile(pattern, re.MULTILINE)
         matches = cpattern.findall(filestr)
         if matches:
-            print '\n*** error: %s specification must be at the beginning of a line' % kw
-            print '\n'.join(matches)
+            print('\n*** error: %s specification must be at the beginning of a line' % kw)
+            print('\n'.join(matches))
             _abort()
 
     # Keywords without colon:
@@ -805,8 +808,8 @@ def syntax_check(filestr, format):
         cpattern = re.compile(pattern, re.MULTILINE)
         matches = [keyword + rest for keyword, rest in cpattern.findall(filestr)]
         if matches:
-            print '\n*** error: missing colon after %s specification' % kw
-            print '\n'.join(matches)
+            print('\n*** error: missing colon after %s specification' % kw)
+            print('\n'.join(matches))
             _abort()
 
     if format in ('latex', 'pdflatex'):
@@ -822,15 +825,15 @@ def syntax_check(filestr, format):
         ma = cauthor.search(filestr)
         if md or mt or ma:
             if not (md and mt and ma):
-                print """
+                print("""
 *** error: latex format requires TITLE, AUTHOR and DATE to be
-    specified if one of them is present."""
+    specified if one of them is present.""")
                 if not md:
-                    print '    DATE is missing'
+                    print('    DATE is missing')
                 if not mt:
-                    print '    TITLE is missing'
+                    print('    TITLE is missing')
                 if not ma:
-                    print '    AUTHOR is missing '
+                    print('    AUTHOR is missing ')
                 _abort()
 
     if format == "sphinx":
@@ -851,12 +854,12 @@ def syntax_check(filestr, format):
             if link.startswith('mov') and os.path.isdir(os.path.dirname(link)):
                 pass  # automake_sphinx.py will move mov* dirs to static
             else:
-                print '*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, link)
+                print('*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, link))
                 ok = False
         if not ok:
-            print '    move linked file to _static and change URLs unless'
-            print '    you really know that the links will be correct when the'
-            print '    sphinx build directory is moved to its final destination'
+            print('    move linked file to _static and change URLs unless')
+            print('    you really know that the links will be correct when the')
+            print('    sphinx build directory is moved to its final destination')
             #_abort()  # no abort since some documentation has local URLs for illustration
 
     return None
@@ -869,9 +872,9 @@ def urlcheck(filestr):
         if is_file_or_url(url) != 'url':
             problematic.append(url)
     if problematic:
-        print '*** warning: found non-existing URLs'
+        print('*** warning: found non-existing URLs')
         for problem in problematic:
-            print '    ', problem
+            print('    ', problem)
 
     """
     pieces = url.split('/')
@@ -894,8 +897,8 @@ def urlcheck(filestr):
 def make_one_line_paragraphs(filestr, format):
     # THIS FUNCTION DOES NOT WORK WELL - it's difficult to make
     # one-line paragraphs...
-    print 'make_one_line_paragraphs: this function does not work well'
-    print 'drop --oneline_paragraphs option on the command line...'
+    print('make_one_line_paragraphs: this function does not work well')
+    print('drop --oneline_paragraphs option on the command line...')
     # make double linebreaks to triple
     filestr = re.sub('\n *\n', '[[[[[DOUBLE_NEWLINE]]]]]', filestr)
     # save some single linebreaks
@@ -923,7 +926,7 @@ def make_one_line_paragraphs(filestr, format):
 def bm2boldsymbol(filestr, format):
     if format in ("html", "sphinx", "pandoc", "ipynb"):
         if r'\bm{' in filestr:
-            print r'*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)'
+            print(r'*** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)')
             filestr = filestr.replace(r'\bm{', r'\boldsymbol{')
             # See http://www.wikidot.com/doc:math
     return filestr
@@ -963,8 +966,8 @@ def insert_code_from_file(filestr, format):
             try:
                 filename = words[1]
             except IndexError:
-                print '\n'.join(lines[i-3:i+4])
-                print '*** error: missing filename in line\n  %s' % line
+                print('\n'.join(lines[i-3:i+4]))
+                print('*** error: missing filename in line\n  %s' % line)
                 _abort()
             orig_filename = filename # keep a copy in case we have a prefix
             if path_prefix:
@@ -972,11 +975,11 @@ def insert_code_from_file(filestr, format):
 
             try:
                 codefile = open(filename, 'r')
-            except IOError, e:
-                print '*** error: could not open the file %s used in\n%s' % (filename, line)
+            except IOError as e:
+                print('*** error: could not open the file %s used in\n%s' % (filename, line))
                 if CREATE_DUMMY_FILE and 'No such file or directory' in str(e):
-                    print '    No such file or directory!'
-                    print '    A dummy file %s is generated...' % filename
+                    print('    No such file or directory!')
+                    print('    A dummy file %s is generated...' % filename)
                     dummyfile = open(filename, 'w')
                     dummyfile.write(
                         'File %s missing - made this dummy file...\n'
@@ -984,7 +987,7 @@ def insert_code_from_file(filestr, format):
                     dummyfile.close()
                     codefile = open(filename, 'r')
                 else:
-                    print e
+                    print(e)
                     _abort()
 
             # Check if the code environment is explicitly specified
@@ -1038,7 +1041,7 @@ def insert_code_from_file(filestr, format):
             #print index, words
             if index == -1 and len(words) < 3:
                 # no from/to regex, read the whole file:
-                print 'copy complete file %s' % filename,
+                print('copy complete file %s' % filename, end=' ')
                 complete_file = True
                 code = codefile.read().rstrip()
 
@@ -1065,14 +1068,13 @@ def insert_code_from_file(filestr, format):
                 try:
                     from_, to_ = patterns.split('@')
                 except:
-                    raise SyntaxError, \
-                    'Syntax error: missing @ in regex in line\n  %s' % line
+                    raise SyntaxError('Syntax error: missing @ in regex in line\n  %s' % line)
 
-                print 'copying %s regex "%s" until %s\n     file: %s,' % \
+                print('copying %s regex "%s" until %s\n     file: %s,' % \
                       ('after' if fromto == 'from-to:' else 'from',
                        from_,
                        ('"' + to_ + '"') if to_ != '' else 'end of file',
-                       filename),
+                       filename), end=' ')
                 # Note that from_ and to_ are regular expressions
                 # and to_ might be empty
                 cfrom = re.compile(from_)
@@ -1128,38 +1130,38 @@ def insert_code_from_file(filestr, format):
                 code = code.rstrip() # remove trailing whitespace
                 if code == '' or code.isspace():
                     if not from_found:
-                        print 'error: could not find regex "%s"!' % from_,
+                        print('error: could not find regex "%s"!' % from_, end=' ')
                     if not to_found and to_ != '':
-                        print 'error: could not find regex "%s"!' % to_,
+                        print('error: could not find regex "%s"!' % to_, end=' ')
                     if from_found and to_found:
-                        print '"From" and "to" regex match at the same line - empty text.',
-                    print
+                        print('"From" and "to" regex match at the same line - empty text.', end=' ')
+                    print()
                     _abort()
-                print ' lines %d-%d' % (from_line, to_line),
+                print(' lines %d-%d' % (from_line, to_line), end=' ')
             codefile.close()
 
             #if format == 'latex' or format == 'pdflatex' or format == 'sphinx':
             # Insert a cod or pro directive for ptex2tex and sphinx.
             if code_envir in ('None', 'off', 'none'):
                 # no need to embed code in anything
-                print ' (no format, just include)'
+                print(' (no format, just include)')
             elif code_envir is not None:
                 code = "!bc %s\n%s\n!ec" % (code_envir, code)
-                print ' (format: %s)' % code_envir
+                print(' (format: %s)' % code_envir)
             else:
                 if filetype == 'unknown':
                     code = "!bc\n%s\n!ec" % (code)
-                    print ' (format: !bc)'
+                    print(' (format: !bc)')
                 elif filetype in ('txt', 'do', 'dat'):
                     # No cod or pro, just text files
                     code = "!bc %s\n%s\n!ec" % (filetype, code)
-                    print ' (format: !bc)'
+                    print(' (format: !bc)')
                 elif complete_file:
                     code = "!bc %spro\n%s\n!ec" % (filetype, code)
-                    print ' (format: %spro)' % filetype
+                    print(' (format: %spro)' % filetype)
                 else:
                     code = "!bc %scod\n%s\n!ec" % (filetype, code)
-                    print ' (format: %scod)' % filetype
+                    print(' (format: %scod)' % filetype)
             lines[i] = code
 
     filestr = '\n'.join(lines)
@@ -1179,18 +1181,18 @@ def insert_os_commands(filestr, format):
     import subprocess
     def system(cmd):
         """Run system command cmd."""
-        print '*** running OS command', cmd
+        print('*** running OS command', cmd)
         try:
             output = subprocess.check_output(cmd, shell=True,
                                              stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            print '*** error: failure of @@@OSCMD %s' % cmd
-            print e.output
-            print 'Return code:', e.returncode
+            print('*** error: failure of @@@OSCMD %s' % cmd)
+            print(e.output)
+            print('Return code:', e.returncode)
             _abort()
-        print '-------- terminal output ----------'
-        print output.rstrip()
-        print '-----------------------------------'
+        print('-------- terminal output ----------')
+        print(output.rstrip())
+        print('-----------------------------------')
         return output
 
     lines = filestr.splitlines()
@@ -1508,7 +1510,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         # computer code and derivatives lead to errors
         # if we take an eval on the output.
 
-        from common import _CODE_BLOCK, _MATH_BLOCK
+        from .common import _CODE_BLOCK, _MATH_BLOCK
 
         def replace_code_math(text):
             if not isinstance(text, basestring):
@@ -1577,7 +1579,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 """ % (filename, exer_filename))
         f.write(all_exer_str)
         f.close()
-        print 'found info about %d exercises' % (len(all_exer))
+        print('found info about %d exercises' % (len(all_exer)))
         debugpr('The file after interpreting exercises:', filestr)
     else:
         debugpr('No exercises found.')
@@ -1593,20 +1595,20 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                             flags=re.DOTALL|re.MULTILINE)
         if blocks:
             found_pairs = True
-            print '*** error: %s-%s block is not legal outside an exercise' % \
-                  (begin, end)
-            print '    (or problem/project/example) section:'
+            print('*** error: %s-%s block is not legal outside an exercise' % \
+                  (begin, end))
+            print('    (or problem/project/example) section:')
             if not option('examples_as_exercises'):
-                print '    If the block is inside an Example, use --examples_as_exercises'
+                print('    If the block is inside an Example, use --examples_as_exercises')
             for block in blocks:
-                print block
+                print(block)
             _abort()
         # Find single occurences (syntax error)
         if not found_pairs:
             m = re.search(r'^![be]%s' % envir, filestr, flags=re.MULTILINE)
             if m:
-                print '*** error: found !b%s or !e%s outside exercise section' % envir
-                print repr(filestr[m.start():m.start()+120])
+                print('*** error: found !b%s or !e%s outside exercise section' % envir)
+                print(repr(filestr[m.start():m.start()+120]))
                 _abort()
 
     return filestr
@@ -1649,8 +1651,8 @@ def extract_individual_standalone_exercises(
     # Grab all exercises
     exers = process_envir(text, 'exercise', 'plain', action='grep')
     if len(exers) != len(all_exer):
-        print '*** error: doconce bug, no of exercises in all_exer',
-        print 'differs from no of grabbed exercises'
+        print('*** error: doconce bug, no of exercises in all_exer', end=' ')
+        print('differs from no of grabbed exercises')
         _abort()
 
     import zipfile
@@ -1791,7 +1793,7 @@ os.system(cmd)
     path = os.path.join('standalone_exercises', name)
     archive.writestr(path, make_text)
     archive.close()
-    print 'standalone exercises in', filename
+    print('standalone exercises in', filename)
 
 
 def parse_keyword(keyword, format):
@@ -1916,13 +1918,13 @@ def typeset_tables(filestr, format):
                 # Non-empty string contains lrc letters for alignment
                 # (can be alignmend of heading or of columns)
                 if align == '|'*len(align):  # Just '|||'?
-                    print 'Syntax error: horizontal rule in table '\
-                          'contains | between columns - remove these.'
-                    print line
+                    print('Syntax error: horizontal rule in table '\
+                          'contains | between columns - remove these.')
+                    print(line)
                     _abort()
                 for char in align:
                     if char not in ('|', 'r', 'l', 'c'):
-                        print 'illegal alignment character in table:', char
+                        print('illegal alignment character in table:', char)
                         _abort()
                 if len(table['rows']) <= 1:
                     # first horizontal rule, align spec concern headings
@@ -1933,9 +1935,9 @@ def typeset_tables(filestr, format):
             continue  # continue with next line
         if lin.startswith('|') and not horizontal_rule:
             if lin.startswith('|b') or lin.startswith('|e'):
-                print '*** syntax error: ordinary line (outside code environments)'
-                print '    starts with |b... or |e..., should be ! instead of |'
-                print lin
+                print('*** syntax error: ordinary line (outside code environments)')
+                print('    starts with |b... or |e..., should be ! instead of |')
+                print(lin)
                 _abort()
 
             # row in table:
@@ -1996,27 +1998,27 @@ def typeset_tables(filestr, format):
                 except IndexError:
                     ok = False
                 if not ok:
-                    print '*** error: syntax error in table!'
-                    print '    missing three horizontal rules and heading'
-                    print '    in the right places'
-                    print '\n    lines surrounding the table:'
+                    print('*** error: syntax error in table!')
+                    print('    missing three horizontal rules and heading')
+                    print('    in the right places')
+                    print('\n    lines surrounding the table:')
                     for _line in lines[line_no-10:line_no+5]:
-                        print _line
-                    print '\n    here are the recorded table rows:'
+                        print(_line)
+                    print('\n    here are the recorded table rows:')
                     for row in table['rows']:
                         if row != ['horizontal rule']:
                             # Check for common syntax error: |--l--|--r--|
                             if sum([bool(re.search('[lrc-]{%d}' % len(c), c)) for c in row]) > 0:
-                                print 'NOTE: do not use pipes in horizontal rule of this type:'
-                                print '(write instead |%s|)' % '-'.join(row)
-                            print '| ' + ' | '.join(row) + ' |'
+                                print('NOTE: do not use pipes in horizontal rule of this type:')
+                                print('(write instead |%s|)' % '-'.join(row))
+                            print('| ' + ' | '.join(row) + ' |')
                         else:
-                            print '|---------------------| (horizontal rule)'
-                    print '\npossible trouble:'
-                    print '1. Not a table, just an opening pipe symbol at the beginning of the line?'
-                    print '2. Something wrong with the syntax in a preceding table?'
+                            print('|---------------------| (horizontal rule)')
+                    print('\npossible trouble:')
+                    print('1. Not a table, just an opening pipe symbol at the beginning of the line?')
+                    print('2. Something wrong with the syntax in a preceding table?')
                     if format not in ('latex', 'pdflatex', 'html', 'sphinx', 'mwiki'):
-                        print '3. In simple formats without math support, like %s, a formula like $|x|$ at the beginning of the line will have stripped off $ and hence line starts with |, which indicates a table. Move the formula so that it is not at the beginning of a line.' % format
+                        print('3. In simple formats without math support, like %s, a formula like $|x|$ at the beginning of the line will have stripped off $ and hence line starts with |, which indicates a table. Move the formula so that it is not at the beginning of a line.' % format)
                     _abort()
 
                 result.write(TABLE[format](table))   # typeset table
@@ -2043,17 +2045,17 @@ def typeset_userdef_envirs(filestr, format):
         try:
             import userdef_environments as ue
         except Exception as e:
-            print '*** error in %s:' % userfile
-            print e
+            print('*** error in %s:' % userfile)
+            print(e)
             _abort()
     else:
-        print '*** error: found user-defined environments'
+        print('*** error: found user-defined environments')
         import sets
-        print '   ', ', '.join(list(sets.Set(userdef_envirs)))
-        print '    but no file', userfile, 'for defining the environments!'
+        print('   ', ', '.join(list(sets.Set(userdef_envirs))))
+        print('    but no file', userfile, 'for defining the environments!')
         _abort()
     if not hasattr(ue, 'envir2format'):
-        print '*** error: envir2format not defined in', userfile
+        print('*** error: envir2format not defined in', userfile)
         _abort()
 
     pattern = r'^(!bu-([^\s]+)(.*?)\n(.+?)\s*^!eu-([^\s]+))'
@@ -2082,7 +2084,7 @@ def typeset_userdef_envirs(filestr, format):
             counter[user_envir] = 1
 
         if not ue.envir2format[user_envir]:
-            print '*** error: user-defined environment "%s" is not defined in' % user_envir, userfile
+            print('*** error: user-defined environment "%s" is not defined in' % user_envir, userfile)
             _abort()
         instructions = ''
         if format in ue.envir2format[user_envir]:
@@ -2100,7 +2102,7 @@ def typeset_userdef_envirs(filestr, format):
             replacement = instructions(text, titleline,
                                        counter[user_envir], format)
         else:
-            print '*** error: envir2format["%s"]["%s"] is not string or function' % (user_envir, format)
+            print('*** error: envir2format["%s"]["%s"] is not string or function' % (user_envir, format))
             _abort()
         filestr = filestr.replace(all, replacement)
     return filestr
@@ -2126,8 +2128,8 @@ def typeset_envirs(filestr, format):
                     text_size = m2.group(1).lower()
                     title = title.replace('(%s)' % text_size, '').strip()
                     if text_size not in ('small', 'large'):
-                        print '*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir)
-                        print '    must be "large" or "small" - will be set to normal'
+                        print('*** warning: wrong text size "%s" specified in %s environment!' % (text_size, envir))
+                        print('    must be "large" or "small" - will be set to normal')
                 if title == '':
                     # Rely on the format's default title
                     return ENVIRS[format][envir](m.group(2), format, text_size=text_size)
@@ -2476,7 +2478,7 @@ def handle_figures(filestr, format):
                 ext = ''
             if ext:
                 if is_file_or_url(figfile) != 'url':
-                    print '*** error: figure URL "%s" could not be reached' % figfile
+                    print('*** error: figure URL "%s" could not be reached' % figfile)
                     _abort()
             else:
                 # no extension, run through the allowed extensions
@@ -2486,13 +2488,13 @@ def handle_figures(filestr, format):
                     newname = figfile + ext
                     if is_file_or_url(newname) == 'url':
                         file_found = True
-                        print 'figure file %s:\n    can use %s for format %s' \
-                              % (figfile, newname, format)
+                        print('figure file %s:\n    can use %s for format %s' \
+                              % (figfile, newname, format))
                         filestr = re.sub(r'%s([,\]])' % figfile,
                                          '%s\g<1>' % newname, filestr)
                         break
                 if not file_found:
-                    print '*** error: figure %s:\n    could not find URL with legal extension %s' % (figfile, ', '.join(extensions))
+                    print('*** error: figure %s:\n    could not find URL with legal extension %s' % (figfile, ', '.join(extensions)))
                     _abort()
             continue
         # else: check out local figure file on the disk
@@ -2508,8 +2510,8 @@ def handle_figures(filestr, format):
                 for ext in extensions:
                     newname = figfile + ext
                     if os.path.isfile(newname):
-                        print 'figure file %s:\n    can use %s for format %s' % \
-                              (figfile, newname, format)
+                        print('figure file %s:\n    can use %s for format %s' % \
+                              (figfile, newname, format))
                         filestr = re.sub(r'%s([,\]])' % figfile,
                                          '%s\g<1>' % newname, filestr)
                         figfile = newname
@@ -2522,7 +2524,7 @@ def handle_figures(filestr, format):
                     candidate_files = glob.glob(figfile + '.*')
                     for newname in candidate_files:
                         if os.path.isfile(newname):
-                            print 'found', newname
+                            print('found', newname)
                             #dangerous: filestr = filestr.replace(figfile, newname)
                             filestr = re.sub(r'%s([,\]])' % figfile,
                                              '%s\g<1>' % newname, filestr)
@@ -2531,7 +2533,7 @@ def handle_figures(filestr, format):
                             break
         if not os.path.isfile(figfile):
             #raise ValueError('file %s does not exist' % figfile)
-            print '*** error: figure file "%s" does not exist!' % figfile
+            print('*** error: figure file "%s" does not exist!' % figfile)
             _abort()
         basepath, ext = os.path.splitext(figfile)
         if not ext in extensions:
@@ -2542,8 +2544,8 @@ def handle_figures(filestr, format):
                     # ext might be empty, in that case we cannot convert
                     # anything:
                     if ext:
-                        print 'figure', figfile, 'must have extension(s)', \
-                              ', '.join(extensions)
+                        print('figure', figfile, 'must have extension(s)', \
+                              ', '.join(extensions))
                         # use ps2pdf and pdf2ps for vector graphics
                         # and only convert if to/from png/jpg/gif
                         if ext.endswith('ps') and e == '.pdf':
@@ -2566,15 +2568,15 @@ def handle_figures(filestr, format):
 
                             if e in ('.ps', '.eps', '.pdf') and \
                                ext in ('.png', '.jpg', '.jpeg', '.gif'):
-                                print """\
+                                print("""\
 *** warning: need to convert from %s to %s
 using ImageMagick's convert program, but the result will
 be loss of quality. Generate a proper %s file (if possible).""" % \
-                                (figfile, converted_file, converted_file)
+                                (figfile, converted_file, converted_file))
                         failure = os.system(cmd)
                         if not failure:
                             if not cmd == 'echo':
-                                print '....image conversion:', cmd
+                                print('....image conversion:', cmd)
                             # dangerous: filestr = filestr.replace(figfile, converted_file)
                             filestr = re.sub(r'%s([,\]])' % figfile,
                                          '%s\g<1>' % converted_file, filestr)
@@ -2609,7 +2611,7 @@ def handle_cross_referencing(filestr, format):
     for dummy1, title, dummy2, label in m:
         section_label2title[label] = title.strip()
         if 'ref{' in title and format in ('rst', 'sphinx', 'html'):
-            print '*** warning: reference in title\n  %s\nwill come out wrong in format %s' % (title, format)
+            print('*** warning: reference in title\n  %s\nwill come out wrong in format %s' % (title, format))
     #pprint.pprint(section_label2title)
 
 
@@ -2622,8 +2624,8 @@ def handle_cross_referencing(filestr, format):
     heading2section_type = {9: 0, 7: 1, 5: 2, 3: 3}
     for heading, title, dummy2, dummy3, label in m:
         if len(heading) % 2 == 0:
-            print '*** error: headings must have 3, 5, 7, or 9 = signs,'
-            print '    not %d as in %s %s' % (len(heading), heading, title)
+            print('*** error: headings must have 3, 5, 7, or 9 = signs,')
+            print('    not %d as in %s %s' % (len(heading), heading, title))
             _abort()
         if label == '':
             label = None
@@ -2651,7 +2653,7 @@ def handle_cross_referencing(filestr, format):
     for chapref, internal, cite, external in general_refs:
         ref_text = 'ref%s[%s][%s][%s]' % (chapref, internal, cite, external)
         if not internal and not external:
-            print '*** error:', ref_text, 'has empty fields'
+            print('*** error:', ref_text, 'has empty fields')
             _abort()
         ref2labels = re.findall(r'ref\{(.+?)\}', internal)
         refs_to_this_doc = [label for label in ref2labels
@@ -2696,8 +2698,8 @@ def handle_index_and_bib(filestr, format):
             filestr = re.sub(pattern_def, INLINE_TAGS_SUBST[format]['footnote'], filestr)
     else:
         if re.search(pattern_footnote, filestr):
-            print '*** warning: footnotes are not supported for format %s' % format
-            print '    footnotes will be left in the doconce syntax'
+            print('*** warning: footnotes are not supported for format %s' % format)
+            print('    footnotes will be left in the doconce syntax')
 
     if not format in ('latex', 'pdflatex'):
         # Make cite[]{} to cite{} (...)
@@ -2705,7 +2707,7 @@ def handle_index_and_bib(filestr, format):
             detailed_ref = m.group(1)
             citekey = m.group(2)
             if not detailed_ref:
-                print '*** error: empty text inside parenthesis: %s' % m.group(0)
+                print('*** error: empty text inside parenthesis: %s' % m.group(0))
                 _abort()
             return 'cite{%s} (%s)' % (citekey, detailed_ref)
 
@@ -2723,22 +2725,22 @@ def handle_index_and_bib(filestr, format):
         line = line.strip()
         if line.startswith('BIBFILE:'):
             if pubfile is not None:
-                print '*** error: more than one BIBFILE specification is illegal'
+                print('*** error: more than one BIBFILE specification is illegal')
                 _abort()
             pubfile = line.split()
             if len(pubfile) == 1:
-                print line
-                print '*** error: missing name of publish database'
+                print(line)
+                print('*** error: missing name of publish database')
                 _abort()
             else:
                 pubfile = pubfile[1]
             if not pubfile.endswith('.pub'):
-                print line
-                print '*** error: illegal publish database', pubfile, \
-                      '(must have .pub extension)'
+                print(line)
+                print('*** error: illegal publish database', pubfile, \
+                      '(must have .pub extension)')
                 _abort()
             if not os.path.isfile(pubfile):
-                print '*** error: cannot find publish database', pubfile
+                print('*** error: cannot find publish database', pubfile)
                 _abort()
             import publish
             # Note: we have to operate publish in the directory
@@ -2803,24 +2805,24 @@ def handle_index_and_bib(filestr, format):
 
     if len(citations) > 0 and OrderedDict is dict:
         # version < 2.7 warning
-        print '*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1 or later'
+        print('*** warning: citations may appear in random order unless you upgrade to Python version 2.7 or 3.1 or later')
     if len(citations) > 0 and 'BIBFILE:' not in filestr:
-        print '*** warning: you have citations but no bibliography (BIBFILE: ...)'
-        print ', '.join(list(citations.keys()))
+        print('*** warning: you have citations but no bibliography (BIBFILE: ...)')
+        print(', '.join(list(citations.keys())))
         #_abort()
     if 'BIBFILE:' in filestr and len(citations) > 0 and \
            which('publish') is None:
-        print '*** error: you have citations and specified a BIBFILE, but'
-        print '    publish (needed to treat the BIBFILE) is not installed.'
-        print '    Download publish from https://bitbucket.org/logg/publish,'
-        print '    do cd publish; sudo python setup.py install'
+        print('*** error: you have citations and specified a BIBFILE, but')
+        print('    publish (needed to treat the BIBFILE) is not installed.')
+        print('    Download publish from https://bitbucket.org/logg/publish,')
+        print('    do cd publish; sudo python setup.py install')
         _abort()
     # Check that citations are correct
     if pubdata:
         pubdata_keys = [item['key'] for item in pubdata]
         for citation in citations:
             if not citation in pubdata_keys:
-                print '*** error: citation "%s" is not in the BIBFILE' % citation
+                print('*** error: citation "%s" is not in the BIBFILE' % citation)
                 _abort()
 
     filestr = INDEX_BIB[format](filestr, index, citations, pubfile, pubdata)
@@ -2854,7 +2856,7 @@ def interpret_authors(filestr, format):
             try:
                 a, i = line.split(' at ')
             except ValueError:
-                print 'Wrong syntax of author(s) and institution(s): too many "at":\n', line, '\nauthor at inst1, adr1 and inst2, adr2a, adr2b and inst3, adr3'
+                print('Wrong syntax of author(s) and institution(s): too many "at":\n', line, '\nauthor at inst1, adr1 and inst2, adr2a, adr2b and inst3, adr3')
                 _abort()
             a = a.strip()
             if ' & ' in i:
@@ -2871,7 +2873,7 @@ def interpret_authors(filestr, format):
             a = a.strip()
             e = e.strip()
             if not '@' in e:
-                print 'Syntax error: wrong email specification in AUTHOR line: "%s" (no @)' % e
+                print('Syntax error: wrong email specification in AUTHOR line: "%s" (no @)' % e)
         else:
             e = None
         authors_and_institutions.append((a, i, e))
@@ -2897,7 +2899,7 @@ def interpret_authors(filestr, format):
 
     # version < 2.7 warning:
     if len(auth2index) > 1 and OrderedDict is dict:
-        print '*** warning: multiple authors\n - correct order of authors requires Python version 2.7 or 3.1 (or higher)'
+        print('*** warning: multiple authors\n - correct order of authors requires Python version 2.7 or 3.1 (or higher)')
     return authors_and_institutions, auth2index, inst2index, index2inst, auth2email, filestr
 
 def typeset_authors(filestr, format):
@@ -2912,7 +2914,7 @@ def typeset_authors(filestr, format):
 def typeset_section_numbering(filestr, format):
     chapter = section = subsection = subsubsection = 0
     # Do we have chapters?
-    from common import chapter_pattern
+    from .common import chapter_pattern
     if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
         has_chapters = True
     else:
@@ -3060,8 +3062,8 @@ def interpret_quiz_text(text, insert_missing_heading= False,
         question = m.group(2).strip()
         text = text.replace(m.group(1), begin_end_tags('quiz question', question))
     else:
-        print '*** error: found quiz without question!'
-        print text
+        print('*** error: found quiz without question!')
+        print(text)
         _abort()
 
     # Keywords
@@ -3089,9 +3091,9 @@ def interpret_quiz_text(text, insert_missing_heading= False,
     if choices:
         for choice_text, choice, _lookahead in choices:
             if re.search(r'^[KL]:', choice, flags=re.MULTILINE):
-                print '*** error: keyword or label cannot appear between a'
-                print '    choice and explanation in a quiz:'
-                print choice
+                print('*** error: keyword or label cannot appear between a')
+                print('    choice and explanation in a quiz:')
+                print(choice)
                 _abort()
             right = choice_text.startswith('Cr')  # right or wrong choice?
             explanation = ''
@@ -3103,8 +3105,8 @@ def interpret_quiz_text(text, insert_missing_heading= False,
                 text = text.replace(choice_text, begin_end_tags('quiz choice %d (%s)' % (counter, 'right' if right else 'wrong'), choice.strip()))
             counter += 1
     else:
-        print '*** error: found quiz without choices!'
-        print text
+        print('*** error: found quiz without choices!')
+        print(text)
         _abort()
     text = re.sub('^!bquiz', bct('quiz'), text,
                   flags=re.MULTILINE)
@@ -3169,9 +3171,9 @@ def extract_quizzes(filestr, format):
                 data[-1]['question prefix'] = prefix
             data[-1]['question'] = question
         else:
-            print '*** error: malformed quiz, no question'
-            print quiz
-            print '\n     Examine the corresponding doconce source code for syntax errors.'
+            print('*** error: malformed quiz, no question')
+            print(quiz)
+            print('\n     Examine the corresponding doconce source code for syntax errors.')
             _abort()
 
         pattern = line_start + ct('--- keywords: (.+)', cp)
@@ -3180,9 +3182,9 @@ def extract_quizzes(filestr, format):
             try:
                 keywords = eval(m.group(1))  # should have list format
             except Exception as e:
-                print '*** keywords in quiz have wrong syntax (should be semi-colon separated list):'
-                print m.group(1)
-                print '    Quiz question:', question
+                print('*** keywords in quiz have wrong syntax (should be semi-colon separated list):')
+                print(m.group(1))
+                print('    Quiz question:', question)
                 _abort()
             data[-1]['keywords'] = keywords
 
@@ -3214,7 +3216,7 @@ def extract_quizzes(filestr, format):
             try:
                 data[-1]['choices'][i-1].append(explanation.strip())
             except IndexError:
-                print """
+                print("""
 *** error: quiz question
 "%s"
 has choices
@@ -3226,7 +3228,7 @@ This is a bug or wrong quiz syntax.
 The raw code of this quiz at this stage of processing reads
 
 %s
-""" % (data[-1]['question'], data[-1]['choices'], quiz)
+""" % (data[-1]['question'], data[-1]['choices'], quiz))
                 _abort()
 
     return data, quizzes, filestr
@@ -3270,10 +3272,10 @@ def typeset_quizzes2(filestr, format):
         questions = [q.strip() for q in
                      re.findall(pattern, filestr, flags=re.MULTILINE|re.DOTALL)]
         if questions:
-            print '*** error: quiz inside admon is not possible with rst/sphinx'
-            print '    edit these quizzes:'
+            print('*** error: quiz inside admon is not possible with rst/sphinx')
+            print('    edit these quizzes:')
             for q in questions:
-                print 'Quiz:', q
+                print('Quiz:', q)
             _abort()
     return filestr
 
@@ -3400,10 +3402,10 @@ def inline_tag_subst(filestr, format):
                 if m:
                     try:
                         replacement_str = replacement(m)
-                    except Exception, e:
-                        print 'Problem at line\n   ', lines[i], \
-                              '\nException:\n', e
-                        print 'occured while replacing inline tag "%s" (%s) with aid of function %s' % (tag, tag_pattern, replacement.__name__)
+                    except Exception as e:
+                        print('Problem at line\n   ', lines[i], \
+                              '\nException:\n', e)
+                        print('occured while replacing inline tag "%s" (%s) with aid of function %s' % (tag, tag_pattern, replacement.__name__))
                         #raise Exception(e)
                         # Raising exception is misleading since the
                         # error occured in the replacement function
@@ -3413,7 +3415,7 @@ def inline_tag_subst(filestr, format):
             filestr = '\n'.join(lines)
 
         else:
-            raise ValueError, 'replacement is of type %s' % type(replacement)
+            raise ValueError('replacement is of type %s' % type(replacement))
 
         if occurences > 0:
             debugpr('\n**** The file after %d "%s" substitutions ***\n%s\n%s\n\n' % (occurences, tag, filestr, '-'*80))
@@ -3448,16 +3450,16 @@ def file2file(in_filename, format, basename):
     This is the principal function in the module.
     """
     if in_filename.startswith('__'):
-        print 'translating preprocessed doconce text in', in_filename, \
-              'to', format
+        print('translating preprocessed doconce text in', in_filename, \
+              'to', format)
     else:
-        print 'translating doconce text in', in_filename, 'to', format
+        print('translating doconce text in', in_filename, 'to', format)
 
     if format == 'html':
         html_output = option('html_output=', '')
         if html_output:
             if '/' in html_output:
-                print '*** error: --html_output=%s cannot specify another directory\n    %s' % (html_output, os.path.dirname(html_output))
+                print('*** error: --html_output=%s cannot specify another directory\n    %s' % (html_output, os.path.dirname(html_output)))
                 _abort()
             basename = html_output
         # Initialize the doc's file collection
@@ -3473,7 +3475,7 @@ def file2file(in_filename, format, basename):
     # Unix> # convert to latin-1:
     # Unix> iconv -f utf-8 -t LATIN1 myfile.do.txt --output newfile
     if encoding:  # global variable
-        print 'open file with encoding', encoding
+        print('open file with encoding', encoding)
         f = codecs.open(in_filename, 'r', encoding)
     else:
         f = open(in_filename, 'r')
@@ -3495,7 +3497,7 @@ def file2file(in_filename, format, basename):
 
     try:
         f.write(filestr)
-    except UnicodeEncodeError, e:
+    except UnicodeEncodeError as e:
         # Provide error message and abortion, because the code
         # below that tries UTF-8 will result in strange characters
         # in the output. It is better that the user specifies
@@ -3591,7 +3593,7 @@ def doconce2format(filestr, format):
         cpu_last_task = time.time() - _t1
         _t1 = time.time()
         if cpu_last_task > report_cpu_time:
-            print '\n...doconce translation:', msg, '%.1f s' % cpu_last_task, '(accumulated time: %.1f)' % cpu_accumulated
+            print('\n...doconce translation:', msg, '%.1f s' % cpu_last_task, '(accumulated time: %.1f)' % cpu_accumulated)
             time.sleep(1)
 
     report_progress('finished preprocessors')
@@ -3650,12 +3652,12 @@ def doconce2format(filestr, format):
                 if ref not in missing_labels:
                     missing_labels.append(ref)
         if missing_labels:
-            print '*** error: ref{} has no corresponding label{}:'
-            print '\n'.join(missing_labels)
-            print '    reasons:'
-            print '1.  maybe ref{} is already inside a generalized reference ref[][][]'
-            print '2.  maybe ref{} is needed in a generalized reference ref[][][]'
-            print '3.  this compatibility test is not useful - turn off by --labelcheck=off'
+            print('*** error: ref{} has no corresponding label{}:')
+            print('\n'.join(missing_labels))
+            print('    reasons:')
+            print('1.  maybe ref{} is already inside a generalized reference ref[][][]')
+            print('2.  maybe ref{} is needed in a generalized reference ref[][][]')
+            print('3.  this compatibility test is not useful - turn off by --labelcheck=off')
             _abort()
 
     # Next step: first reformatting of quizzes
@@ -3755,7 +3757,7 @@ def doconce2format(filestr, format):
         for s in 7, 5, 3:
             header_old = '='*s
             header_new = '='*(s+2)
-            print 'transforming sections: %s to %s...' % (s2name[s], s2name[s+2])
+            print('transforming sections: %s to %s...' % (s2name[s], s2name[s+2]))
             pattern = r'^ *%s +(.+?) +%s' % (header_old, header_old)
             replacement = r'%s \g<1> %s' % (header_new, header_new)
             filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
@@ -3764,7 +3766,7 @@ def doconce2format(filestr, format):
         for s in 5, 7, 9:
             header_old = '='*s
             header_new = '='*(s-2)
-            print 'transforming sections: %s to %s...' % (s2name[s], s2name[s-2])
+            print('transforming sections: %s to %s...' % (s2name[s], s2name[s-2]))
             pattern = r'^ *%s +(.+?) +%s' % (header_old, header_old)
             replacement = r'%s \g<1> %s' % (header_new, header_new)
             filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
@@ -3871,7 +3873,7 @@ def doconce2format(filestr, format):
 
     # Next step: substitute latex-style newcommands in filestr and tex_blocks
     # (not in code_blocks)
-    from expand_newcommands import expand_newcommands
+    from .expand_newcommands import expand_newcommands
     if format not in ('latex', 'pdflatex'):
         newcommand_files = glob.glob('newcommands*_replace.tex')
         if format in ('sphinx', 'pandoc', 'ipynb'):
@@ -3915,7 +3917,7 @@ def doconce2format(filestr, format):
             except UnicodeDecodeError:
                 # Title etc may contain non-ascii characters
                 if not option('encoding=', '').lower() == 'utf-8':
-                    print '*** error: found non-ascii character(s). Try --encoding=utf-8'
+                    print('*** error: found non-ascii character(s). Try --encoding=utf-8')
                     _abort()
         if format in OUTRO:
             filestr = filestr + OUTRO[format]
@@ -3955,19 +3957,19 @@ def doconce2format(filestr, format):
             # Found, but can be inside code block (should have |[be].+ then)
             # and hence not necessarily an error
             envir = m.group(1)
-            print '*** error: could not translate environment: %s' % envir
+            print('*** error: could not translate environment: %s' % envir)
             if m.group(1)[2:] in ('sol', 'ans', 'hint', 'subex'):
-                print '    This is an environment in an exercise. Check if the'
-                print '    heading is correct so the subsection was recognized'
-                print '    as Exercise, Problem, or Project (Exercise: title).'
+                print('    This is an environment in an exercise. Check if the')
+                print('    heading is correct so the subsection was recognized')
+                print('    as Exercise, Problem, or Project (Exercise: title).')
             else:
-                print '    possible reasons:'
-                print '     * syntax error in environment name'
-                print '     * environment inside code: use | instead of !'
-                print '     * or bug in doconce'
+                print('    possible reasons:')
+                print('     * syntax error in environment name')
+                print('     * environment inside code: use | instead of !')
+                print('     * or bug in doconce')
 
-            print '    context:\n'
-            print filestr[m.start()-50:m.end()+50]
+            print('    context:\n')
+            print(filestr[m.start()-50:m.end()+50])
             _abort()
 
 
@@ -4012,8 +4014,8 @@ def doconce2format(filestr, format):
             try:
                 from bs4 import BeautifulSoap as BS
             except ImportError:
-                print '*** error: for --xhtml the bs4 BeautifulSoap package must be installed'
-                print '    pip install beautifulsoup4'
+                print('*** error: for --xhtml the bs4 BeautifulSoap package must be installed')
+                print('    pip install beautifulsoup4')
                 _abort()
             soup = BS(filestr)
             # soup can be used to rewrite the entire doc
@@ -4037,7 +4039,7 @@ def doconce2format(filestr, format):
 
     cpu = time.time() - _t0
     if cpu > 15:
-        print '\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n'))
+        print('\n\n...doconce format used %.1f s to translate the document (%d lines)\n' % (cpu, filestr.count('\n')))
         time.sleep(1)
 
     return filestr
@@ -4065,7 +4067,7 @@ def preprocess(filename, format, preprocessor_options=[]):
 
     f = open(filename, 'r'); filestr = f.read(); f.close()
     if filestr.strip() == '':
-        print '*** error: empty file', filename
+        print('*** error: empty file', filename)
         _abort()
 
     # Standardize newlines
@@ -4087,8 +4089,8 @@ def preprocess(filename, format, preprocessor_options=[]):
                 var = words[0]
                 value = '='.join(words[1:])
             except ValueError:
-                print '*** error: illegal command-line argument:'
-                print opt
+                print('*** error: illegal command-line argument:')
+                print(opt)
                 _abort()
             preprocess_options.append('-D%s="%s"' % (var, value))
 
@@ -4116,7 +4118,7 @@ def preprocess(filename, format, preprocessor_options=[]):
                 elif value.isdigit():
                     value = int(value)
             except ValueError:
-                print 'command line argument "%s" not recognized' % opt
+                print('command line argument "%s" not recognized' % opt)
                 _abort()
         else:
             key = None
@@ -4127,8 +4129,8 @@ def preprocess(filename, format, preprocessor_options=[]):
                 try:
                     mako_kwargs[key] = eval(value[5:-1])
                 except (NameError, TypeError, SyntaxError) as e:
-                    print '*** error: %s=%s imples running eval, but this failed' % (key, value)
-                    print '    ', str(e)
+                    print('*** error: %s=%s imples running eval, but this failed' % (key, value))
+                    print('    ', str(e))
                     _abort()
             else:
                 mako_kwargs[key] = value
@@ -4157,32 +4159,32 @@ def preprocess(filename, format, preprocessor_options=[]):
             cpattern = re.compile(pattern, re.MULTILINE)
             matches = cpattern.findall(filestr)
             if matches:
-                print '\nSyntax error in preprocess directives: missing # '\
-                      'before directive'
-                print pattern
+                print('\nSyntax error in preprocess directives: missing # '\
+                      'before directive')
+                print(pattern)
                 _abort()
         try:
             import preprocess
         except ImportError:
-            print """\
+            print("""\
 %s makes use of preprocess directives and therefore requires
 the preprocess program to be installed (see code.google.com/p/preprocess).
 On Debian systems, preprocess can be installed through the
 preprocess package (sudo apt-get install preprocess).
-""" % filename
+""" % filename)
             _abort()
 
         if option('no_preprocess'):
-            print 'Found preprocess-like statements, but --no_preprocess prevents running preprocess'
+            print('Found preprocess-like statements, but --no_preprocess prevents running preprocess')
             shutil.copy(filename, resultfile)  # just copy
         else:
             cmd = 'preprocess -DFORMAT=%s -DDEVICE=%s %s %s > %s' % \
                   (format, device, preprocess_options, filename, resultfile)
-            print 'running', cmd
+            print('running', cmd)
             failure, outtext = commands.getstatusoutput(cmd)
             if failure:
-                print 'Could not run preprocessor:\n%s' % cmd
-                print outtext
+                print('Could not run preprocessor:\n%s' % cmd)
+                print(outtext)
                 _abort()
             # Make filestr the result of preprocess in case mako shall be run
             f = open(resultfile, 'r'); filestr = f.read(); f.close()
@@ -4218,7 +4220,7 @@ preprocess package (sudo apt-get install preprocess).
 
     if (match_percentage or match_mako_variable) and option('no_mako'):
         # Found mako-like statements, but --no_mako is forced, give a message
-        print '*** warning: mako is not run because of the option --no-mako'
+        print('*** warning: mako is not run because of the option --no-mako')
 
     if (not option('no_mako')) and (match_percentage or match_mako_variable):
         # Found use of mako
@@ -4228,17 +4230,17 @@ preprocess package (sudo apt-get install preprocess).
         for code_block in code_blocks:
             m = re.search(mako_commands, code_block, re.MULTILINE)
             if m:
-                print '\n\n*** warning: detected problem with the code block\n---------------------------'
-                print code_block
-                print '''---------------------------
+                print('\n\n*** warning: detected problem with the code block\n---------------------------')
+                print(code_block)
+                print('''---------------------------
 The above code block contains "%s" on the beginning of a line.
 Such lines cause problems for the mako preprocessor
 since it thinks this is a mako statement.
-''' % (m.group(0))
-                print
+''' % (m.group(0)))
+                print()
                 mako_problems = True
         if mako_problems:
-            print '''\
+            print('''\
 Use %% in the code block(s) above to fix the problem with % at the
 beginning of lines, or put the code in a file that is included
 with @@@CODE filename, or drop mako instructions or variables and
@@ -4246,9 +4248,9 @@ rely on preprocess only in the preprocessing step.
 Including --no_mako on the command line avoids running mako.
 If you have % in code, see if it is possible to move the % char
 away from the beginning of the line.
-'''
-            print 'mako is not run because of lines starting with %,'
-            print 'fix the lines as described or remove all mako statements.'
+''')
+            print('mako is not run because of lines starting with %,')
+            print('fix the lines as described or remove all mako statements.')
             _abort()
             return filename if preprocessor is None else resultfile
 
@@ -4269,12 +4271,12 @@ away from the beginning of the line.
                     break
                 else:
                     suggestion = 'or make a newcommand'
-                print """\
+                print("""\
 *** error: potential problem with the math formula
            $%s$
-    since ${ can confuse Mako - rewrite %s""" % (formula, suggestion)
+    since ${ can confuse Mako - rewrite %s""" % (formula, suggestion))
                 if formula.startswith('${\cal'):
-                    print r'Here: use \mathcal{...} instead of {\cal ...}'
+                    print(r'Here: use \mathcal{...} instead of {\cal ...}')
                 _abort()
 
         if preprocessor is not None:  # already found preprocess commands?
@@ -4285,7 +4287,7 @@ away from the beginning of the line.
         try:
             import mako
         except ImportError:
-            print """\
+            print("""\
 %s makes use of mako directives and therefore requires mako
 to be installed (www.makotemplates.org).
 
@@ -4296,10 +4298,10 @@ If you have pip installed, do
 On Debian (incl. Ubuntu) systems, you can alternatively do
 
    sudo apt-get install python-mako
-""" % filename
+""" % filename)
             _abort()
 
-        print 'running mako on', filename, 'to make', resultfile2
+        print('running mako on', filename, 'to make', resultfile2)
         # add a space after \\ at the end of lines (otherwise mako
         # eats one of the backslashes in tex blocks)
         # same for a single \ before newline
@@ -4323,77 +4325,77 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 filestr = unicode(filestr, encoding)
             except UnicodeDecodeError as e:
                 if "unicode codec can't decode" in str(e):
-                    print e
+                    print(e)
                     index = int(str(e).split('in position')[1].split(':')[0])
-                    print filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50]
+                    print(filestr[index-50:index] + '  (problematic char)  ' + filestr[index+1:index+50])
                 _abort()
         try:
             temp = Template(text=filestr, lookup=lookup,
                             strict_undefined=strict_undefined)
         except Exception as e:
-            print '*** mako error:', str(type(e)).split("'")[1]
-            print '   ', e
+            print('*** mako error:', str(type(e)).split("'")[1])
+            print('   ', e)
             if "'ascii'" in str(e):
-                print '    reason: doconce file contains non-ascii characters'
-                print '    rerun with --encoding=utf-8 (or similar):'
-                print '    doconce format %s %s %s --encoding=utf-8' \
-                      % (format, orig_filename, ' '.join(sys.argv[1:]))
+                print('    reason: doconce file contains non-ascii characters')
+                print('    rerun with --encoding=utf-8 (or similar):')
+                print('    doconce format %s %s %s --encoding=utf-8' \
+                      % (format, orig_filename, ' '.join(sys.argv[1:])))
             elif "line:" in str(e):
-                print '    Note: the line number refers to the file', resultfile2
+                print('    Note: the line number refers to the file', resultfile2)
             _abort()
 
         debugpr('Keyword arguments to be sent to mako: %s' % \
                 pprint.pformat(mako_kwargs))
         if preprocessor_options:
-            print 'mako variables:', mako_kwargs
+            print('mako variables:', mako_kwargs)
 
         try:
             filestr = temp.render(**mako_kwargs)
         except TypeError as e:
             if "'Undefined' object is not callable" in str(e):
                 calls = '\n'.join(re.findall(r'(\$\{[A-Za-z0-9_ ]+?\()[^}]+?\}', filestr))
-                print '*** mako error: ${func(...)} calls undefined function "func",\ncheck all ${...} calls in the file(s) for possible typos and lack of includes!\n%s' % calls
+                print('*** mako error: ${func(...)} calls undefined function "func",\ncheck all ${...} calls in the file(s) for possible typos and lack of includes!\n%s' % calls)
                 _abort()
             else:
                 # Just dump everything mako has
-                print '*** mako error:'
+                print('*** mako error:')
                 filestr = temp.render(**mako_kwargs)
 
 
         except NameError as e:
             if "Undefined" in str(e):
-                print '*** mako error: NameError Undefined variable,'
-                print '    one or more ${var} variables are undefined.\n'
-                print '    Rerun doconce format with --mako_strict_undefined to see where the problem is.'
+                print('*** mako error: NameError Undefined variable,')
+                print('    one or more ${var} variables are undefined.\n')
+                print('    Rerun doconce format with --mako_strict_undefined to see where the problem is.')
                 _abort()
             elif "is not defined" in str(e):
-                print '*** mako error: NameError', e
+                print('*** mako error: NameError', e)
                 _abort()
             else:
                 # Just dump everything mako has
-                print '*** mako error:'
+                print('*** mako error:')
                 filestr = temp.render(**mako_kwargs)
 
         except UnicodeDecodeError as e:
             if "can't decode byte" in str(e):
-                print '*** error when running mako: UnicodeDecodeError'
-                print e
+                print('*** error when running mako: UnicodeDecodeError')
+                print(e)
                 index = int(str(e).split('position')[1].split(':')[0])
                 # index==0 is often a misleading info
                 if index > 0:
-                    print filestr[index-50:index], ' -- problematic char -- ', filestr[index+1:index+50]
-                    print 'ord(problematic char)=%d' % ord(filestr[0])
+                    print(filestr[index-50:index], ' -- problematic char -- ', filestr[index+1:index+50])
+                    print('ord(problematic char)=%d' % ord(filestr[0]))
                 _abort()
             else:
                 # Just dump everything mako has
-                print '*** mako error:'
+                print('*** mako error:')
                 filestr = temp.render(**mako_kwargs)
         except SystemExit as e:
             # Just dump everything mako has
-            print '*** mako SystemExit exception:', e
+            print('*** mako SystemExit exception:', e)
             filestr = temp.render(**mako_kwargs)
         except:
-            print '*** mako error: mako terminated with exception', sys.exc_info()[0]
+            print('*** mako error: mako terminated with exception', sys.exc_info()[0])
             # Just dump everything mako has
             filestr = temp.render(**mako_kwargs)
 
@@ -4426,30 +4428,30 @@ def format_driver():
     global _log, encoding, filename, dofile_basename
 
     if '--options' in sys.argv:
-        from misc import help_format
+        from .misc import help_format
         help_format()
         sys.exit(1)
 
-    from misc import check_command_line_options
+    from .misc import check_command_line_options
     check_command_line_options(4)
 
     try:
         format = sys.argv[1]
         filename = sys.argv[2]
         del sys.argv[1:3]
-        import common
+        from . import common
         common.format = format
     except IndexError:
-        from misc import get_legal_command_line_options
+        from .misc import get_legal_command_line_options
         options = ' '.join(get_legal_command_line_options())
-        print 'Usage: %s format filename [preprocessor options] [%s]\n' \
-              % (sys.argv[0], options)
-        print 'Run "doconce format --options" to see explanation of all options'
+        print('Usage: %s format filename [preprocessor options] [%s]\n' \
+              % (sys.argv[0], options))
+        print('Run "doconce format --options" to see explanation of all options')
         if len(sys.argv) == 1:
-            print 'Missing format specification!'
-        print 'formats:', ', '.join(supported_format_names())
-        print '\n-DFORMAT=format is always defined when running preprocess'
-        print 'Other -Dvar or -Dvar=value options can be added'
+            print('Missing format specification!')
+        print('formats:', ', '.join(supported_format_names()))
+        print('\n-DFORMAT=format is always defined when running preprocess')
+        print('Other -Dvar or -Dvar=value options can be added')
         sys.exit(1)
 
     # Treat some synonyms of format
@@ -4458,7 +4460,7 @@ def format_driver():
 
     names = supported_format_names()
     if format not in names:
-        print '%s is not among the supported formats:\n%s' % (format, names)
+        print('%s is not among the supported formats:\n%s' % (format, names))
         _abort()
 
     encoding = option('encoding=', default='')
@@ -4473,7 +4475,7 @@ def format_driver():
     this file is not produced.
 
     """)
-        print '*** debug output in', _log_filename
+        print('*** debug output in', _log_filename)
 
 
     debugpr('\n\n******* output format: %s *******\n\n' % format)
@@ -4481,7 +4483,7 @@ def format_driver():
     dirname, basename = os.path.split(filename)
     if dirname:
         os.chdir(dirname)
-        print '*** doconce format now works in directory %s' % dirname
+        print('*** doconce format now works in directory %s' % dirname)
     basename, ext = os.path.splitext(basename)
     # Can allow no extension, .do, or .do.txt
     legal_extensions = ['.do', '.do.txt']
@@ -4493,13 +4495,13 @@ def format_driver():
                 found = True
                 break
         if not found:
-            print '*** error: given doconce file "%s", but no' % basename
-            print '    files with extensions %s exist' % ' or '.join(legal_extensions)
+            print('*** error: given doconce file "%s", but no' % basename)
+            print('    files with extensions %s exist' % ' or '.join(legal_extensions))
             _abort()
     else:
         # Given extension
         if not os.path.isfile(filename):
-            print '*** error: file %s does not exist' % filename
+            print('*** error: file %s does not exist' % filename)
             _abort()
         if ext == '.txt':
             if filename.endswith('.do.txt'):
@@ -4509,8 +4511,8 @@ def format_driver():
         elif ext == '.do':
             basename = filename[:-3]
         else:
-            print '*** error: illegal file extension %s' % ext
-            print '    must be %s' % ' or '.join(legal_extensions)
+            print('*** error: illegal file extension %s' % ext)
+            print('    must be %s' % ' or '.join(legal_extensions))
             _abort()
 
     dofile_basename = basename  # global variable
@@ -4525,7 +4527,7 @@ def format_driver():
     if filename_preprocessed.startswith('__') and not option('debug'):
         os.remove(filename_preprocessed)  # clean up
     #print '----- successful run: %s filtered to %s\n' % (filename, out_filename)
-    print 'output in', os.path.join(dirname, out_filename)
+    print('output in', os.path.join(dirname, out_filename))
 
 
 class DocOnceSyntaxError(Exception):

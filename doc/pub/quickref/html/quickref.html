@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 21, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 28, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -685,7 +685,13 @@ and <code class="docutils literal"><span class="pre">ipynb</span></code> formats
 <code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.
 (DocOnce performs extensions to <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>,
 and other formats such that
-labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)</li>
+labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)
+This may feel restrictive to LaTeX writers who are used to
+<code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">aligned</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>, and other environments (rewrite to
+<code class="docutils literal"><span class="pre">align</span></code> and use a number for each equation, or use <code class="docutils literal"><span class="pre">\nonumber\\</span></code>
+to end intermediate calculations on multiple lines and use a label
+in the last, final result).</li>
+<li>Do not use comments inside equations.</li>
 <li>Newcommands in mathematical formulas are allowed, but not in
 the running text. Newcommands must be defined in files with names
 <code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Use <code class="docutils literal"><span class="pre">\newcommands</span></code> and not <code class="docutils literal"><span class="pre">\def</span></code>.
@@ -694,6 +700,7 @@ Use Mako functions if you need macros in the running text.</li>
 <li>Use labels and refer to them
 for sections, figures, movies, and equations only.
 MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
+<li>Spaces are not allowed in labels.</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements
 (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
 for reference <a class="footnote-reference" href="#exception" id="id1">[1]</a> (refer to inline elements by a section label).
@@ -708,12 +715,18 @@ explains everything about the figure, but this will work well
 only in the HTML and LaTeX formats.)</li>
 <li>You cannot use <code class="docutils literal"><span class="pre">subfigure</span></code> to combine several image files in one
 figure, but you can combine the files to one file using
-the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code> tool.</li>
+the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code> tool. Refer to individual image files
+in the caption or text by (e.g.) &#8220;left&#8221; and &#8220;right&#8221;, or
+&#8220;upper left&#8221;, &#8220;lower right&#8221;, etc.</li>
 <li>Use plain <code class="docutils literal"><span class="pre">cite</span></code> for references (e.g., <code class="docutils literal"><span class="pre">\citeauthor</span></code> has no counterpart
 in DocOnce). The bibliography must be prepared in the Publish format,
 but import from (clean) BibTeX is possible.</li>
 <li>Use <code class="docutils literal"><span class="pre">idx</span></code> for index entries, but put the definitions between paragraphs,
 not inside them (required by Sphinx).</li>
+<li>Use the <code class="docutils literal"><span class="pre">bm</span></code> package and the <code class="docutils literal"><span class="pre">\bm</span></code> command for boldface in mathematics.</li>
+<li>Make sure all ordinary text starts in column 1 on each line. Equations
+can be indented. The <code class="docutils literal"><span class="pre">\begin{}</span></code> and <code class="docutils literal"><span class="pre">\end{}</span></code> directives should start
+in column 1.</li>
 <li>If you depend on various LaTeX environments for your writings, you have
 to give up these, or implement <em>user-defined environments</em> in DocOnce.
 For instance, examples are normally typeset as subsections in DocOnce.
@@ -753,18 +766,49 @@ your own scripts or the <code class="docutils literal"><span class="pre">doconce
 </div>
 <div class="admonition-autotranslation-of-latex-to-doconce admonition">
 <p class="first admonition-title">Autotranslation of LaTeX to DocOnce</p>
-<p class="last">The tool <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> may help you translating LaTeX files
+<p>The tool <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> may help you translating LaTeX files
 to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, <code class="docutils literal"><span class="pre">subfigure</span></code> in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.</p>
+<p>For examples, figure environments
 can be translated by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>
+  <span class="k">\centering</span>
+  <span class="k">\includegraphics</span><span class="na">[width=0.55\linewidth]</span><span class="nb">{</span>figs/myfig.pdf<span class="nb">}</span>
+  <span class="k">\caption</span><span class="nb">{</span>This is a figure. <span class="k">\labe</span><span class="nb">{</span>myfig<span class="nb">}}</span>
+<span class="k">\end</span><span class="nb">{</span>figure<span class="nb">}</span>
+</pre></div>
+</div>
+<p>If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce <code class="docutils literal"><span class="pre">FIGURE:</span></code> syntax.</p>
+<p>Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\begin</span><span class="nb">{</span>table<span class="nb">}</span>
+<span class="k">\caption</span><span class="nb">{</span>Here goes the caption.<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>lr<span class="nb">}</span>
+<span class="k">\hline</span>
+<span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span><span class="s">$</span><span class="nb">v_</span><span class="m">0</span><span class="s">$</span><span class="nb">}</span> <span class="nb">&amp;</span> <span class="k">\multicolumn</span><span class="nb">{</span>1<span class="nb">}{</span>c<span class="nb">}{</span><span class="s">$</span><span class="nb">f_R</span><span class="o">(</span><span class="nb">v_</span><span class="m">0</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span><span class="k">\\</span>hline
+1.2 <span class="nb">&amp;</span> 4.2<span class="k">\1</span>.1 <span class="nb">&amp;</span> 4.0<span class="k">\0</span>.9 <span class="nb">&amp;</span> 3.7
+<span class="k">\hline</span>
+<span class="k">\end</span><span class="nb">{</span>tabular<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>table<span class="nb">}</span>
+</pre></div>
+</div>
+<p>Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.</p>
+<p class="last">Footnotes are also problematic for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert <code class="docutils literal"><span class="pre">_PROBLEM_</span></code> and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.</p>
 </div>
 </div>
 <div class="section" id="hyperlinks">

@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+from __future__ import print_function
 import os, sys
 from commands import getstatusoutput
 from doconce.misc import system, misc_option
@@ -83,10 +84,10 @@ def format():
             doconce_lib = os.path.join(thisdir, os.pardir, 'lib', 'doconce')
             sys.path.insert(0, doconce_lib)
             import doconce.doconce
-            print 'Successfull import of doconce locally'
-        except ImportError, e:
-            print e
-            print 'Could not import doconce from directory\n', os.getcwd()
+            print('Successfull import of doconce locally')
+        except ImportError as e:
+            print(e)
+            print('Could not import doconce from directory\n', os.getcwd())
             sys.exit(1)
 
     doconce.doconce.format_driver()
@@ -98,8 +99,8 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print 'Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]'
-    print """
+    print('Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]')
+    print("""
 The sphinx_dir command creates a directory for compiling a sphinx version
 of a doconce document. The option --runestone makes a directory for
 RunestoneInteractive documents (slightly different from a standard
@@ -118,7 +119,7 @@ The master file can be split into parts. Here is the typical code:
   python automake_sphinx.py
 
 Note that split_rst must be run prior to sphinx_dir!
-"""
+""")
 
 import time, shutil, glob, re  # used in sphinx_dir
 
@@ -166,45 +167,45 @@ def sphinx_dir():
             doconce_files.append(arg)
 
     if not doconce_files:
-        print 'must have (at least one) doconce file as argument'
-        print 'doconce sphinx_dir somefile.do.txt'
+        print('must have (at least one) doconce file as argument')
+        print('doconce sphinx_dir somefile.do.txt')
         sys.exit(1)
     try:
         import sphinx
     except ImportError:
-        print 'Unable to import sphinx. Install sphinx from sphinx.pocoo.org.'
-        print 'On Debian systems, install the \'python-sphinx\' package.'
+        print('Unable to import sphinx. Install sphinx from sphinx.pocoo.org.')
+        print('On Debian systems, install the \'python-sphinx\' package.')
         sys.exit(1)
     if float(sphinx.__version__[:3]) < 1.1:
-        print 'Abort: sphinx version >= 1.1 required'
+        print('Abort: sphinx version >= 1.1 required')
         sys.exit(1)
 
     if len(doconce_files) > 1:
-        print 'can only specify one main doconce file'
+        print('can only specify one main doconce file')
         sys.exit(1)
     filename = doconce_files[0]
     if filename.endswith('do.txt'):
         filename = filename[:-7]
     else:
         if not os.path.isfile(filename + '.do.txt'):
-            print '%s.do.txt does not exist' % filename
+            print('%s.do.txt does not exist' % filename)
             sys.exit(1)
 
     parts = glob.glob('._%s[0-9][0-9][0-9].rst' % filename)
     parts = [part[:-4] for part in sorted(parts)]
 
     if title is None:
-        print 'searching for TITLE in %s.do.txt' % filename
+        print('searching for TITLE in %s.do.txt' % filename)
         f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
         if 'TITLE:' in fstr:
             for line in fstr.splitlines():
                 if line.startswith('TITLE:'):
                     title = line[6:].strip()
-                    print 'Using title "%s" from' % title, filename
+                    print('Using title "%s" from' % title, filename)
                     break # use the first TITLE spec
     if title is None:
-        print '\nNo TITLE: line found in %s.do.txt' % filename
-        print 'and no title="..." given on the command line'
+        print('\nNo TITLE: line found in %s.do.txt' % filename)
+        print('and no title="..." given on the command line')
         sys.exit(1)
 
     if short_title is None:
@@ -221,27 +222,27 @@ def sphinx_dir():
         if authors_and_institutions:
             author = [a for a, i, e in authors_and_institutions]
 
-            print 'Author:', author
+            print('Author:', author)
             if len(author) == 1:
                 author = author[0]
             else:
                 author = ', '.join(author[:-1]) + ' and ' + author[-1]
-            print 'Using author(s) "%s" from' % author, filename
+            print('Using author(s) "%s" from' % author, filename)
 
     if author is None:
-        print '\nNo AUTHOR: line found in %s.do.txt' % filename
-        print 'and no author="..." given on the command line'
+        print('\nNo AUTHOR: line found in %s.do.txt' % filename)
+        print('and no author="..." given on the command line')
         sys.exit(1)
 
     if theme_dir is not None and conf_py is None:
-        print 'theme_dir is given, but then also conf_py must be specified'
-        print 'Abort!'
+        print('theme_dir is given, but then also conf_py must be specified')
+        print('Abort!')
         sys.exit(1)
 
-    print 'title:', title
-    print 'author:', author
-    print 'theme:', theme,
-    print
+    print('title:', title)
+    print('author:', author)
+    print('theme:', theme, end=' ')
+    print()
     time.sleep(1.5)
 
     #make_conf_py_runestone(themes, theme, title, short_title,
@@ -293,7 +294,7 @@ EOF
         files = sorted(glob.glob(os.path.join('_themes', '*')))
         themes = [name[8:] for name in files
                   if os.path.isdir(name)] + ['default']
-        print 'These Sphinx themes were found:', ', '.join(themes)
+        print('These Sphinx themes were found:', ', '.join(themes))
 
         if conf_py is None:
             make_conf_py(themes, theme, title, short_title,
@@ -331,7 +332,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
 
 """ % (' '.join(themes)))
     f.close()
-    os.chmod('make_themes.sh', 0755)
+    os.chmod('make_themes.sh', 0o755)
 
     f = open('index.rst', 'w')
     if parts:
@@ -574,14 +575,14 @@ google-chrome %(sphinx_rootdir)s/RunestoneTools/build/index.html
 """
 ''' % vars())
     f.close()
-    os.chmod('automake_sphinx.py', 0755)
-    print """
+    os.chmod('automake_sphinx.py', 0o755)
+    print("""
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
 or just run it by
 
   python automake_sphinx.py
-"""
+""")
 
 def make_conf_py(themes, theme, title, short_title,
                  author, logo, intersphinx):
@@ -968,7 +969,7 @@ extract_exercises
 # -----------------------------------------------------------------------
 
 def help():
-    print r"""
+    print(r"""
 
 # transform doconce file to another format
 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwiki|cwiki|pandoc|st|epytext dofile
@@ -1127,7 +1128,7 @@ doconce expand_commands file1 file2 ...
 
 # insert a table of exercises in a latex file myfile.p.tex
 doconce latex_exercise_toc myfile
-"""
+""")
 #doconce teamod name
 #doconce assemble name master.do.txt
 
@@ -1138,13 +1139,13 @@ def main():
         help_format()
         sys.exit(0)
     if len(sys.argv) == 1 or misc_option('help'):
-        print 'DocOnce version', version
-        print 'Usage: doconce command [optional arguments]'
-        print 'commands: %s' % (' '.join(commands))
+        print('DocOnce version', version)
+        print('Usage: doconce command [optional arguments]')
+        print('commands: %s' % (' '.join(commands)))
         help()
         sys.exit(0)
     if misc_option('version'):
-        print 'DocOnce version', version
+        print('DocOnce version', version)
         sys.exit(0)
 
     command = sys.argv[1]
@@ -1155,10 +1156,10 @@ def main():
         # For backward compatibility:
         if len(sys.argv) >= 2 and sys.argv[1] == 'LaTeX':
             sys.argv[1] = 'latex'
-            print '\nWarning: Previous format LaTeX now has the name latex\n'
+            print('\nWarning: Previous format LaTeX now has the name latex\n')
         if len(sys.argv) >= 2 and sys.argv[1] == 'HTML':
             sys.argv[1] = 'html'
-            print '\nWarning: Previous format HTML now has the name html\n'
+            print('\nWarning: Previous format HTML now has the name html\n')
 
     # Treat wrong command name
     found = False
@@ -1168,10 +1169,10 @@ def main():
     if not found:
         if command in ('html', 'latex', 'sphinx', 'rst', 'plain', 'gwiki', \
            'mwiki', 'epydoc', 'pandoc'):
-            print 'command', command, 'is not a legal command for doconce, did you mean'
-            print 'doconce format %s %s?' % (command, ' '.join(sys.argv[1:]))
+            print('command', command, 'is not a legal command for doconce, did you mean')
+            print('doconce format %s %s?' % (command, ' '.join(sys.argv[1:])))
         else:
-            print 'command "%s" is not legal, must be among\n' % command
-            print ', '.join(commands)
+            print('command "%s" is not legal, must be among\n' % command)
+            print(', '.join(commands))
 
 main()

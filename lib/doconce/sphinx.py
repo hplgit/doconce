@@ -1,10 +1,12 @@
+from __future__ import print_function
+from __future__ import absolute_import
 # http://sphinx.pocoo.org/ext/math.html#
 
 # can reuse most of rst module:
-from rst import *
-from common import align2equations, online_python_tutor, \
+from .rst import *
+from .common import align2equations, online_python_tutor, \
      get_legal_pygments_lexers, has_custom_pygments_lexer
-from misc import option, _abort
+from .misc import option, _abort
 
 # RunestoneInteractive book counters
 question_counter = 0
@@ -50,7 +52,7 @@ def sphinx_figure(m):
 
     # math is ignored in references to figures, test for math only
     if caption.startswith('$') and caption.endswith('$'):
-        print '*** warning: math only in sphinx figure caption\n  %s\n    FIGURE: [%s' % (caption, filename)
+        print('*** warning: math only in sphinx figure caption\n  %s\n    FIGURE: [%s' % (caption, filename))
 
     #stem = os.path.splitext(filename)[0]
     #result += '\n.. figure:: ' + stem + '.*\n'  # utilize flexibility  # does not work yet
@@ -113,16 +115,16 @@ def sphinx_quiz_runestone(quiz):
         """
         drop = False
         if 'math::' in s:
-            print '\n*** warning: quiz %s with math block not supported:' % tp
-            print s
+            print('\n*** warning: quiz %s with math block not supported:' % tp)
+            print(s)
             drop = True
         if '.. code-block::' in s:
-            print '\n*** warning: quiz %s with code block not supported:' % tp
-            print s
+            print('\n*** warning: quiz %s with code block not supported:' % tp)
+            print(s)
             drop = True
         if '.. figure::' in s:
-            print '\n*** warning: quiz %s with figure not supported:' % tp
-            print s
+            print('\n*** warning: quiz %s with figure not supported:' % tp)
+            print(s)
             drop = True
         if drop:
             return ''
@@ -143,7 +145,7 @@ def sphinx_quiz_runestone(quiz):
     correct = []
     for i, choice in enumerate(quiz['choices']):
         if i > 4:  # not supported
-            print '*** warning: quiz with %d choices gets truncated (first 5)' % len(quiz['choices'])
+            print('*** warning: quiz with %d choices gets truncated (first 5)' % len(quiz['choices']))
             break
         letter = string.ascii_lowercase[i]
         text += '   :answer_%s: ' % letter
@@ -156,8 +158,8 @@ def sphinx_quiz_runestone(quiz):
     if correct:
         text += '   :correct: ' + ', '.join(correct) + '\n'
     else:
-        print '*** error: correct choice in quiz has index > 5 (max 5 allowed for RunestoneInteractive books)'
-        print quiz['question']
+        print('*** error: correct choice in quiz has index > 5 (max 5 allowed for RunestoneInteractive books)')
+        print(quiz['question'])
         _abort()
     for i, choice in enumerate(quiz['choices']):
         if i > 4:  # not supported
@@ -181,7 +183,7 @@ def sphinx_quiz(quiz):
         return rst_quiz(quiz)
 
 
-from latex import fix_latex_command_regex as fix_latex
+from .latex import fix_latex_command_regex as fix_latex
 
 def sphinx_code(filestr, code_blocks, code_block_types,
                 tex_blocks, format):
@@ -301,7 +303,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
         if '{alignat' in tex_blocks[i]:
-            print '*** warning: the "alignat" environment will give errors in Sphinx:\n\n', tex_blocks[i], '\n'
+            print('*** warning: the "alignat" environment will give errors in Sphinx:\n\n', tex_blocks[i], '\n')
 
     # Replace all references to equations that have labels in math environments:
     for label in math_labels:
@@ -315,13 +317,13 @@ def sphinx_code(filestr, code_blocks, code_block_types,
                 multiple_math_labels_with_refs.append(label)
 
     if multiple_math_labels_with_refs:
-        print """
+        print("""
 *** warning: detected non-align math environment with multiple labels
     (Sphinx cannot handle this equation system - labels will be removed
-    and references to them will be empty):"""
+    and references to them will be empty):""")
         for label in multiple_math_labels_with_refs:
-            print '    label{%s}' % label
-        print
+            print('    label{%s}' % label)
+        print()
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'sphinx')
 
@@ -347,12 +349,12 @@ def sphinx_code(filestr, code_blocks, code_block_types,
     for key in sets.Set(code_block_types):
         if key in envir2pygments:
             if not envir2pygments[key] in legal_pygments_languages:
-                print """*** warning: %s is not a legal Pygments language (lexer)
+                print("""*** warning: %s is not a legal Pygments language (lexer)
 found in line:
   %s
 
     The 'text' lexer will be used instead.
-""" % (envir2pygments[key], defs_line)
+""" % (envir2pygments[key], defs_line))
                 envir2pygments[key] = 'text'
 
         #filestr = re.sub(r'^!bc\s+%s\s*\n' % key,
@@ -364,10 +366,10 @@ found in line:
             try:
                 import icsecontrib.sagecellserver
             except ImportError:
-                print """
+                print("""
 *** warning: pyscpro for computer code (sage cells) is requested, but'
     icsecontrib.sagecellserver from https://github.com/kriskda/sphinx-sagecell
-    is not installed. Using plain Python typesetting instead."""
+    is not installed. Using plain Python typesetting instead.""")
                 key = 'pypro'
 
         if key == 'pyoptpro':
@@ -403,7 +405,7 @@ found in line:
    "include: %s
 """ % include, filestr, flags=re.MULTILINE)
             else:
-                print '*** error: pysccod for sphinx is not supported without the --runestone flag\n    (but pyscpro is via Sage Cell Server)'
+                print('*** error: pysccod for sphinx is not supported without the --runestone flag\n    (but pyscpro is via Sage Cell Server)')
                 _abort()
 
         elif key == '':
@@ -441,9 +443,9 @@ found in line:
             elif key in legal_pygments_languages:
                 pygments_language = key
             else:
-                print '*** error: detected code environment "%s"' % key
-                print '    which is not registered in sphinx.py (sphinx_code)'
-                print '    or not a language registered in pygments'
+                print('*** error: detected code environment "%s"' % key)
+                print('    which is not registered in sphinx.py (sphinx_code)')
+                print('    or not a language registered in pygments')
                 _abort()
             filestr = re.sub(r'^!bc +%s\s*\n' % key,
                              '\n.. code-block:: %s\n\n' % \
@@ -516,7 +518,7 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
     # (This must be done before labels are put above section
     # headings)
     if not option('sphinx_keep_splits'):
-        print '*** warning: new !split inserted (override all existing !split)'
+        print('*** warning: new !split inserted (override all existing !split)')
         # Note: the title is at this stage translated to a chapter heading!
         # This title/heading must be removed for the algorithm below to work
         # (remove it, then insert afterwards)
@@ -533,11 +535,11 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
         for i in [9, 7, 5]:
             if re.search(r'^%s' % ('='*i), filestr, flags=re.MULTILINE):
                 topmost_section = i
-                print '    before every %s heading %s' % \
-                      ('='*topmost_section, '='*topmost_section)
-                print '    because this strategy gives a well-functioning'
-                print '    table of contents in Sphinx'
-                print '    (use --sphinx_keep_splits to enforce your own !split commands)'
+                print('    before every %s heading %s' % \
+                      ('='*topmost_section, '='*topmost_section))
+                print('    because this strategy gives a well-functioning')
+                print('    table of contents in Sphinx')
+                print('    (use --sphinx_keep_splits to enforce your own !split commands)')
                 break
         if topmost_section:
             # First remove all !split
@@ -608,11 +610,11 @@ def sphinx_inline_comment(m):
     global edit_markup_warning
     if (not edit_markup_warning) and \
            (name[:3] in ('add', 'del', 'edi') or '->' in comment):
-        print '*** warning: sphinx/rst is a suboptimal format for'
-        print '    typesetting edit markup such as'
-        print '   ', m.group()
-        print '    Use HTML or LaTeX output instead, implement the'
-        print '    edits (doconce apply_edit_comments) and then use sphinx.'
+        print('*** warning: sphinx/rst is a suboptimal format for')
+        print('    typesetting edit markup such as')
+        print('   ', m.group())
+        print('    Use HTML or LaTeX output instead, implement the')
+        print('    edits (doconce apply_edit_comments) and then use sphinx.')
         edit_markup_warning = True
 
     chars = {',': 'comma', ';': 'semicolon', '.': 'period'}
@@ -632,9 +634,9 @@ def sphinx_inline_comment(m):
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
-                print '*** wrong syntax in inline comment:'
-                print comment
-                print '(more than two ->)'
+                print('*** wrong syntax in inline comment:')
+                print(comment)
+                print('(more than two ->)')
                 _abort()
             orig, new = comment.split(' -> ')
             return r'(**%s: remove** %s) (**insert:**)%s (**end insert**)' % (name, orig, new)
@@ -661,7 +663,7 @@ def define(FILENAME_EXTENSION,
            filestr):
     if not 'rst' in BLANKLINE:
         # rst.define is not yet ran on these dictionaries, do it:
-        import rst
+        from . import rst
         rst.define(FILENAME_EXTENSION,
                    BLANKLINE,
                    INLINE_TAGS_SUBST,
@@ -817,7 +819,7 @@ def sphinx_code_orig(filestr, format):
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
         if '{alignat' in tex_blocks[i]:
-            print '*** warning: the "alignat" environment will give errors in Sphinx:\n', tex_blocks[i], '\n'
+            print('*** warning: the "alignat" environment will give errors in Sphinx:\n', tex_blocks[i], '\n')
 
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')
@@ -833,9 +835,9 @@ def sphinx_code_orig(filestr, format):
         #                 flags=re.MULTILINE)
         cpattern = re.compile(r'^!bc\s+%s\s*\n' % key, flags=re.MULTILINE)
         filestr, n = cpattern.subn('\n.. code-block:: %s\n\n' % defs[key], filestr)
-        print key, n
+        print(key, n)
         if n > 0:
-            print 'sphinx: %d subst %s by %s' % (n, key, defs[key])
+            print('sphinx: %d subst %s by %s' % (n, key, defs[key]))
 
     # any !bc with/without argument becomes a py (python) block:
     #filestr = re.sub(r'^!bc.+\n', '\n.. code-block:: py\n\n', filestr,

@@ -73561,7 +73561,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f3a9c65eb90>
+verbatim is to be replaced using <function html_verbatim at 0x7fc913321b90>
 
 
 First occurence: " `mako`."
@@ -77760,7 +77760,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Jun 21 05:26:02 2015.
+# sphinx-quickstart on Sun Jun 28 09:55:23 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -82174,7 +82174,13 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
    (DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
    and other formats such that
-   labels in <code>align</code> environments work well.)</li>
+   labels in <code>align</code> environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   <code>split</code>, <code>aligned</code>, <code>alignat</code>, and other environments (rewrite to
+   <code>align</code> and use a number for each equation, or use <code>\nonumber\\</code>
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).</li>
+ <li> Do not use comments inside equations.</li>
  <li> Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    <code>newcommands*.tex</code>. Use <code>\newcommands</code> and not <code>\def</code>.
@@ -82183,6 +82189,7 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
  <li> Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
+ <li> Spaces are not allowed in labels.</li>
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
    for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> (refer to inline elements by a section label).
@@ -82197,12 +82204,18 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    only in the HTML and LaTeX formats.)</li>
  <li> You cannot use <code>subfigure</code> to combine several image files in one
    figure, but you can combine the files to one file using
-   the <code>doconce combine_images</code> tool.</li>
+   the <code>doconce combine_images</code> tool. Refer to individual image files
+   in the caption or text by (e.g.) &quot;left&quot; and &quot;right&quot;, or
+   &quot;upper left&quot;, &quot;lower right&quot;, etc.</li>
  <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.</li>
  <li> Use <code>idx</code> for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).</li>
+ <li> Use the <code>bm</code> package and the <code>\bm</code> command for boldface in mathematics.</li>
+ <li> Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The <code>\begin{}</code> and <code>\end{}</code> directives should start
+   in column 1.</li>
  <li> If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement <em>user-defined environments</em> in DocOnce.
    For instance, examples are normally typeset as subsections in DocOnce.
@@ -82245,13 +82258,56 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, <code>subfigure</code> in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+<p>
+For examples, figure environments
 can be translated by <code>doconce latex2doconce</code> only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like
+
+<p>
+<!-- begin verbatim block  latexcod-->
+<pre><code>\begin{figure}
+  \centering
+  \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+  \caption{This is a figure. \labe{myfig}}
+\end{figure}
+</code></pre>
+<!-- end verbatim block -->
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce <code>FIGURE:</code> syntax.
+
+<p>
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like
+
+<p>
+<!-- begin verbatim block  latexcod-->
+<pre><code>\begin{table}
+\caption{Here goes the caption.}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{$v_0$} &amp; \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+1.2 &amp; 4.2\1.1 &amp; 4.0\0.9 &amp; 3.7
+\hline
+\end{tabular}
+\end{table}
+</code></pre>
+<!-- end verbatim block -->
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+<p>
+Footnotes are also problematic for <code>doconce latex2doconce</code> since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert <code>_PROBLEM_</code> and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 </div>
 
 
@@ -83913,6 +83969,13 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
    (DocOnce performs extensions to \Verb!sphinx!, \Verb!ipynb!,
    and other formats such that
    labels in \Verb!align! environments work well.)
+   This may feel restrictive to {\LaTeX} writers who are used to
+   \Verb!split!, \Verb!aligned!, \Verb!alignat!, and other environments (rewrite to
+   \Verb!align! and use a number for each equation, or use \Verb!\nonumber\\!
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+
+ \item Do not use comments inside equations.
 
  \item Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -83923,6 +83986,8 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
  \item Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (\Verb!mwiki!) does not support references to equations.
+
+ \item Spaces are not allowed in labels.
 
  \item Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear \emph{inline} without numbers or labels
@@ -83940,7 +84005,9 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
 
  \item You cannot use \Verb!subfigure! to combine several image files in one
    figure, but you can combine the files to one file using
-   the \Verb!doconce combine_images! tool.
+   the \Verb!doconce combine_images! tool. Refer to individual image files
+   in the caption or text by (e.g.) ``left'' and ``right'', or
+   ``upper left'', ``lower right'', etc.
 
  \item Use plain \Verb!cite! for references (e.g., \Verb!\citeauthor! has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -83948,6 +84015,12 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
 
  \item Use \Verb!idx! for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+
+ \item Use the \Verb!bm! package and the \Verb!\bm! command for boldface in mathematics.
+
+ \item Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The \Verb!\begin{}! and \Verb!\end{}! directives should start
+   in column 1.
 
  \item If you depend on various {\LaTeX} environments for your writings, you have
    to give up these, or implement \emph{user-defined environments} in DocOnce.
@@ -83990,16 +84063,50 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, \Verb!subfigure! in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by \Verb!doconce latex2doconce! only if the label is inside
-the caption. If the {\LaTeX} is consistent with respect to placement of
+the caption and the figure is typeset like
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+\begin{figure}
+  \centering
+  \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+  \caption{This is a figure. \labe{myfig}}
+\end{figure}
+\end{Verbatim}
+If the {\LaTeX} is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many {\LaTeX} writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce \Verb!FIGURE:! syntax.
+
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+\begin{table}
+\caption{Here goes the caption.}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+\hline
+\end{tabular}
+\end{table}
+\end{Verbatim}
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for \Verb!doconce latex2doconce! since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+{\LaTeX} to DocOnce will insert \Verb!_PROBLEM_! and mark footnotes. One
+solution is to avoid footnotes in the {\LaTeX} document if fully automatic
+translation is desired.
 \end{notice_mdfboxadmon}
-
-
 
 
 
@@ -85255,6 +85362,13 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    (DocOnce performs extensions to ``sphinx``, ``ipynb``,
    and other formats such that
    labels in ``align`` environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
+   ``align`` and use a number for each equation, or use ``\nonumber\\``
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+
+ * Do not use comments inside equations.
 
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -85265,6 +85379,8 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
  * Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (``mwiki``) does not support references to equations.
+
+ * Spaces are not allowed in labels.
 
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
@@ -85282,7 +85398,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * You cannot use ``subfigure`` to combine several image files in one
    figure, but you can combine the files to one file using
-   the ``doconce combine_images`` tool.
+   the ``doconce combine_images`` tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -85290,6 +85408,12 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Use ``idx`` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+
+ * Use the ``bm`` package and the ``\bm`` command for boldface in mathematics.
+
+ * Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The ``\begin{}`` and ``\end{}`` directives should start
+   in column 1.
 
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
@@ -85338,13 +85462,47 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    list environments, special packages for typesetting algorithms,
    example environments, ``subfigure`` in figures,
    or a lot of newcommands in the running text, there will be need for
-   a lot of manual edits and adjustments. For examples, figure environments
+   a lot of manual edits and adjustments.
+   
+   For examples, figure environments
    can be translated by ``doconce latex2doconce`` only if the label is inside
-   the caption. If the LaTeX is consistent with respect to placement of
+   the caption and the figure is typeset like::
+   
+           \begin{figure}
+             \centering
+             \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+             \caption{This is a figure. \labe{myfig}}
+           \end{figure}
+   
+   If the LaTeX is consistent with respect to placement of
    the label, a simple script can autoedit the label inside the caption,
    but many LaTeX writers put the label at different places in different
    figures, and then it becomes more difficult to autoedit figures and
    translate them to the DocOnce ``FIGURE:`` syntax.
+   
+   Tables are hard to interpret and translate, because the headings and
+   caption can be typeset in many different ways. The type of table
+   that is recognized looks like::
+   
+           \begin{table}
+           \caption{Here goes the caption.}
+           \begin{tabular}{lr}
+           \hline
+           \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+           1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+           \hline
+           \end{tabular}
+           \end{table}
+   
+   Recall that table captions do not make sense in DocOnce since tables
+   must be inlined and explained in the surrounding text.
+   
+   Footnotes are also problematic for ``doconce latex2doconce`` since DocOnce
+   footnotes must have the explanation outside the paragraph where the
+   footnote is used. This calls for manual work. The translator from
+   LaTeX to DocOnce will insert ``_PROBLEM_`` and mark footnotes. One
+   solution is to avoid footnotes in the LaTeX document if fully automatic
+   translation is desired.
 
 
 
@@ -86637,6 +86795,13 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    (DocOnce performs extensions to ``sphinx``, ``ipynb``,
    and other formats such that
    labels in ``align`` environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
+   ``align`` and use a number for each equation, or use ``\nonumber\\``
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+
+ * Do not use comments inside equations.
 
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -86647,6 +86812,8 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
  * Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (``mwiki``) does not support references to equations.
+
+ * Spaces are not allowed in labels.
 
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
@@ -86664,7 +86831,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * You cannot use ``subfigure`` to combine several image files in one
    figure, but you can combine the files to one file using
-   the ``doconce combine_images`` tool.
+   the ``doconce combine_images`` tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -86672,6 +86841,12 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Use ``idx`` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+
+ * Use the ``bm`` package and the ``\bm`` command for boldface in mathematics.
+
+ * Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The ``\begin{}`` and ``\end{}`` directives should start
+   in column 1.
 
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
@@ -86720,13 +86895,51 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    list environments, special packages for typesetting algorithms,
    example environments, ``subfigure`` in figures,
    or a lot of newcommands in the running text, there will be need for
-   a lot of manual edits and adjustments. For examples, figure environments
+   a lot of manual edits and adjustments.
+   
+   For examples, figure environments
    can be translated by ``doconce latex2doconce`` only if the label is inside
-   the caption. If the LaTeX is consistent with respect to placement of
+   the caption and the figure is typeset like
+   
+   .. code-block:: latex
+   
+           \begin{figure}
+             \centering
+             \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+             \caption{This is a figure. \labe{myfig}}
+           \end{figure}
+   
+   If the LaTeX is consistent with respect to placement of
    the label, a simple script can autoedit the label inside the caption,
    but many LaTeX writers put the label at different places in different
    figures, and then it becomes more difficult to autoedit figures and
    translate them to the DocOnce ``FIGURE:`` syntax.
+   
+   Tables are hard to interpret and translate, because the headings and
+   caption can be typeset in many different ways. The type of table
+   that is recognized looks like
+   
+   .. code-block:: latex
+   
+           \begin{table}
+           \caption{Here goes the caption.}
+           \begin{tabular}{lr}
+           \hline
+           \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+           1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+           \hline
+           \end{tabular}
+           \end{table}
+   
+   Recall that table captions do not make sense in DocOnce since tables
+   must be inlined and explained in the surrounding text.
+   
+   Footnotes are also problematic for ``doconce latex2doconce`` since DocOnce
+   footnotes must have the explanation outside the paragraph where the
+   footnote is used. This calls for manual work. The translator from
+   LaTeX to DocOnce will insert ``_PROBLEM_`` and mark footnotes. One
+   solution is to avoid footnotes in the LaTeX document if fully automatic
+   translation is desired.
 
 
 
@@ -87972,14 +88185,18 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
 
 
  * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,   and `ipynb` formats.
- * Only five equation environments can be used: `\[ ... \]`,   `equation*`, `equation`, `align*`, and `align`.   (DocOnce performs extensions to `sphinx`, `ipynb`,   and other formats such that   labels in `align` environments work well.)
+ * Only five equation environments can be used: `\[ ... \]`,   `equation*`, `equation`, `align*`, and `align`.   (DocOnce performs extensions to `sphinx`, `ipynb`,   and other formats such that   labels in `align` environments work well.)   This may feel restrictive to LaTeX writers who are used to   `split`, `aligned`, `alignat`, and other environments (rewrite to   `align` and use a number for each equation, or use `\nonumber\\`   to end intermediate calculations on multiple lines and use a label   in the last, final result).
+ * Do not use comments inside equations.
  * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   `newcommands*.tex`. Use `\newcommands` and not `\def`.   Each newcommand must be defined on a single line.   Use Mako functions if you need macros in the running text.
  * Use labels and refer to them   for sections, figures, movies, and equations only.   MediaWiki (`mwiki`) does not support references to equations.
+ * Spaces are not allowed in labels.
  * Only figures and movies are floating elements in DocOnce, all other elements   (code, tables, algorithms) must appear *inline* without numbers or labels   for reference[^exception] (refer to inline elements by a section label).   The reason is that floating elements are in general   not used in web documents, but we made an exception with figures   and movies.
  * Keep figure captions shorts as they are used as references in the   Sphinx format. Avoid inline mathematics since Sphinx will strip it   away in the figure reference.   (Many writing styles encourage rich captions that   explains everything about the figure, but this will work well   only in the HTML and LaTeX formats.)
- * You cannot use `subfigure` to combine several image files in one   figure, but you can combine the files to one file using   the `doconce combine_images` tool.
+ * You cannot use `subfigure` to combine several image files in one   figure, but you can combine the files to one file using   the `doconce combine_images` tool. Refer to individual image files   in the caption or text by (e.g.) "left" and "right", or   "upper left", "lower right", etc.
  * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart   in DocOnce). The bibliography must be prepared in the Publish format,   but import from (clean) BibTeX is possible.
  * Use `idx` for index entries, but put the definitions between paragraphs,   not inside them (required by Sphinx).
+ * Use the `bm` package and the `\bm` command for boldface in mathematics.
+ * Make sure all ordinary text starts in column 1 on each line. Equations   can be indented. The `\begin{}` and `\end{}` directives should start   in column 1.
  * If you depend on various LaTeX environments for your writings, you have   to give up these, or implement *user-defined environments* in DocOnce.   For instance, examples are normally typeset as subsections in DocOnce.   Learn about the exercise support in DocOnce to typeset exercises, problems,   and projects.
  * Learn about the preprocessors Preprocess and Mako - these are smart   tools for, e.g., commenting out/in large portions of text and creating   macros.
  * Use *generalized referenes* with for referring to companion documents   that may later be put together in a book.
@@ -88012,15 +88229,49 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, `subfigure` in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by `doconce latex2doconce` only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like
+
+{{{
+\begin{figure}
+  \centering
+  \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+  \caption{This is a figure. \labe{myfig}}
+\end{figure}
+}}}
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce `FIGURE:` syntax.
 
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like
 
+{{{
+\begin{table}
+\caption{Here goes the caption.}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+\hline
+\end{tabular}
+\end{table}
+}}}
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for `doconce latex2doconce` since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert `_PROBLEM_` and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 
 
 
@@ -89223,6 +89474,12 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    (DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
    and other formats such that
    labels in <code>align</code> environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   <code>split</code>, <code>aligned</code>, <code>alignat</code>, and other environments (rewrite to
+   <code>align</code> and use a number for each equation, or use <code>\nonumber\\</code>
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+ <li> Do not use comments inside equations.
  <li> Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    <code>newcommands*.tex</code>. Use <code>\newcommands</code> and not <code>\def</code>.
@@ -89231,6 +89488,7 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
  <li> Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.
+ <li> Spaces are not allowed in labels.
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear ''inline'' without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -89245,12 +89503,18 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    only in the HTML and LaTeX formats.)
  <li> You cannot use <code>subfigure</code> to combine several image files in one
    figure, but you can combine the files to one file using
-   the <code>doconce combine_images</code> tool.
+   the <code>doconce combine_images</code> tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
  <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
  <li> Use <code>idx</code> for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+ <li> Use the <code>bm</code> package and the <code>\bm</code> command for boldface in mathematics.
+ <li> Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The <code>\begin{}</code> and <code>\end{}</code> directives should start
+   in column 1.
  <li> If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement ''user-defined environments'' in DocOnce.
    For instance, examples are normally typeset as subsections in DocOnce.
@@ -89298,16 +89562,50 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, <code>subfigure</code> in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by <code>doconce latex2doconce</code> only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like
+
+<syntaxhighlight lang="text">
+\begin{figure}
+  \centering
+  \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+  \caption{This is a figure. \labe{myfig}}
+\end{figure}
+</syntaxhighlight>
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce <code>FIGURE:</code> syntax.
+
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like
+
+<syntaxhighlight lang="text">
+\begin{table}
+\caption{Here goes the caption.}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+\hline
+\end{tabular}
+\end{table}
+</syntaxhighlight>
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for <code>doconce latex2doconce</code> since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert <code>_PROBLEM_</code> and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 }}
-
-
 
 
 
@@ -90485,14 +90783,18 @@ LaTeX, but if output in the {{{sphinx}}}, {{{pandoc}}}, {{{mwiki}}}, {{{html}}},
 
 
  * AMS LaTeX mathematics is supported, also for the {{{html}}}, {{{sphinx}}},   and {{{ipynb}}} formats.
- * Only five equation environments can be used: {{{\[ ... \]}}},   {{{equation*}}}, {{{equation}}}, {{{align*}}}, and {{{align}}}.   (DocOnce performs extensions to {{{sphinx}}}, {{{ipynb}}},   and other formats such that   labels in {{{align}}} environments work well.)
+ * Only five equation environments can be used: {{{\[ ... \]}}},   {{{equation*}}}, {{{equation}}}, {{{align*}}}, and {{{align}}}.   (DocOnce performs extensions to {{{sphinx}}}, {{{ipynb}}},   and other formats such that   labels in {{{align}}} environments work well.)   This may feel restrictive to LaTeX writers who are used to   {{{split}}}, {{{aligned}}}, {{{alignat}}}, and other environments (rewrite to   {{{align}}} and use a number for each equation, or use {{{\nonumber\\}}}   to end intermediate calculations on multiple lines and use a label   in the last, final result).
+ * Do not use comments inside equations.
  * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   {{{newcommands*.tex}}}. Use {{{\newcommands}}} and not {{{\def}}}.   Each newcommand must be defined on a single line.   Use Mako functions if you need macros in the running text.
  * Use labels and refer to them   for sections, figures, movies, and equations only.   MediaWiki ({{{mwiki}}}) does not support references to equations.
+ * Spaces are not allowed in labels.
  * Only figures and movies are floating elements in DocOnce, all other elements   (code, tables, algorithms) must appear //inline// without numbers or labels   for reference[^exception] (refer to inline elements by a section label).   The reason is that floating elements are in general   not used in web documents, but we made an exception with figures   and movies.
  * Keep figure captions shorts as they are used as references in the   Sphinx format. Avoid inline mathematics since Sphinx will strip it   away in the figure reference.   (Many writing styles encourage rich captions that   explains everything about the figure, but this will work well   only in the HTML and LaTeX formats.)
- * You cannot use {{{subfigure}}} to combine several image files in one   figure, but you can combine the files to one file using   the {{{doconce combine_images}}} tool.
+ * You cannot use {{{subfigure}}} to combine several image files in one   figure, but you can combine the files to one file using   the {{{doconce combine_images}}} tool. Refer to individual image files   in the caption or text by (e.g.) "left" and "right", or   "upper left", "lower right", etc.
  * Use plain {{{cite}}} for references (e.g., {{{\citeauthor}}} has no counterpart   in DocOnce). The bibliography must be prepared in the Publish format,   but import from (clean) BibTeX is possible.
  * Use {{{idx}}} for index entries, but put the definitions between paragraphs,   not inside them (required by Sphinx).
+ * Use the {{{bm}}} package and the {{{\bm}}} command for boldface in mathematics.
+ * Make sure all ordinary text starts in column 1 on each line. Equations   can be indented. The {{{\begin{}}}} and {{{\end{}}}} directives should start   in column 1.
  * If you depend on various LaTeX environments for your writings, you have   to give up these, or implement //user-defined environments// in DocOnce.   For instance, examples are normally typeset as subsections in DocOnce.   Learn about the exercise support in DocOnce to typeset exercises, problems,   and projects.
  * Learn about the preprocessors Preprocess and Mako - these are smart   tools for, e.g., commenting out/in large portions of text and creating   macros.
  * Use //generalized referenes// with for referring to companion documents   that may later be put together in a book.
@@ -90525,15 +90827,49 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, {{{subfigure}}} in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by {{{doconce latex2doconce}}} only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like
+
+{{{
+\begin{figure}
+  \centering
+  \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+  \caption{This is a figure. \labe{myfig}}
+\end{figure}
+}}}
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce {{{FIGURE:}}} syntax.
 
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like
 
+{{{
+\begin{table}
+\caption{Here goes the caption.}
+\begin{tabular}{lr}
+\hline
+\multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+\hline
+\end{tabular}
+\end{table}
+}}}
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for {{{doconce latex2doconce}}} since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert {{{_PROBLEM_}}} and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 
 
 
@@ -91648,6 +91984,12 @@ LaTeX, but if output in the 'sphinx', 'pandoc', 'mwiki', 'html', or
    (DocOnce performs extensions to 'sphinx', 'ipynb',
    and other formats such that
    labels in 'align' environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   'split', 'aligned', 'alignat', and other environments (rewrite to
+   'align' and use a number for each equation, or use '\nonumber\\'
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+ - Do not use comments inside equations.
  - Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    'newcommands*.tex'. Use '\newcommands' and not '\def'.
@@ -91656,6 +91998,7 @@ LaTeX, but if output in the 'sphinx', 'pandoc', 'mwiki', 'html', or
  - Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki ('mwiki') does not support references to equations.
+ - Spaces are not allowed in labels.
  - Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -91670,12 +92013,18 @@ LaTeX, but if output in the 'sphinx', 'pandoc', 'mwiki', 'html', or
    only in the HTML and LaTeX formats.)
  - You cannot use 'subfigure' to combine several image files in one
    figure, but you can combine the files to one file using
-   the 'doconce combine_images' tool.
+   the 'doconce combine_images' tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
  - Use plain 'cite' for references (e.g., '\citeauthor' has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
  - Use 'idx' for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+ - Use the 'bm' package and the '\bm' command for boldface in mathematics.
+ - Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The '\begin{}' and '\end{}' directives should start
+   in column 1.
  - If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
    For instance, examples are normally typeset as subsections in DocOnce.
@@ -91715,13 +92064,47 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, 'subfigure' in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by 'doconce latex2doconce' only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like::
+
+        \begin{figure}
+          \centering
+          \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+          \caption{This is a figure. \labe{myfig}}
+        \end{figure}
+
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce 'FIGURE:' syntax.
+
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like::
+
+        \begin{table}
+        \caption{Here goes the caption.}
+        \begin{tabular}{lr}
+        \hline
+        \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+        1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+        \hline
+        \end{tabular}
+        \end{table}
+
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for 'doconce latex2doconce' since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert '_PROBLEM_' and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 
 
 
@@ -92828,6 +93211,12 @@ C{ipynb} formats is also important, one should follow the rules below.
    (DocOnce performs extensions to C{sphinx}, C{ipynb},
    and other formats such that
    labels in C{align} environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   C{split}, C{aligned}, C{alignat}, and other environments (rewrite to
+   C{align} and use a number for each equation, or use C{\nonumber\\}
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+ - Do not use comments inside equations.
  - Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    C{newcommands*.tex}. Use C{\newcommands} and not C{\def}.
@@ -92836,6 +93225,7 @@ C{ipynb} formats is also important, one should follow the rules below.
  - Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (C{mwiki}) does not support references to equations.
+ - Spaces are not allowed in labels.
  - Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear I{inline} without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -92850,12 +93240,18 @@ C{ipynb} formats is also important, one should follow the rules below.
    only in the HTML and LaTeX formats.)
  - You cannot use C{subfigure} to combine several image files in one
    figure, but you can combine the files to one file using
-   the C{doconce combine_images} tool.
+   the C{doconce combine_images} tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
  - Use plain C{cite} for references (e.g., C{\citeauthor} has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
  - Use C{idx} for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+ - Use the C{bm} package and the C{\bm} command for boldface in mathematics.
+ - Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The C{\begin{}} and C{\end{}} directives should start
+   in column 1.
  - If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement I{user-defined environments} in DocOnce.
    For instance, examples are normally typeset as subsections in DocOnce.
@@ -92895,13 +93291,47 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, C{subfigure} in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by C{doconce latex2doconce} only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like::
+
+        \begin{figure}
+          \centering
+          \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+          \caption{This is a figure. \labe{myfig}}
+        \end{figure}
+
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce C{FIGURE:} syntax.
+
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like::
+
+        \begin{table}
+        \caption{Here goes the caption.}
+        \begin{tabular}{lr}
+        \hline
+        \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+        1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+        \hline
+        \end{tabular}
+        \end{table}
+
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for C{doconce latex2doconce} since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert C{_PROBLEM_} and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 
 
 
@@ -94063,6 +94493,13 @@ ipynb formats is also important, one should follow the rules below.
    (DocOnce performs extensions to sphinx, ipynb,
    and other formats such that
    labels in align environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   split, aligned, alignat, and other environments (rewrite to
+   align and use a number for each equation, or use \nonumber\\
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+
+ * Do not use comments inside equations.
 
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -94073,6 +94510,8 @@ ipynb formats is also important, one should follow the rules below.
  * Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (mwiki) does not support references to equations.
+
+ * Spaces are not allowed in labels.
 
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
@@ -94090,7 +94529,9 @@ ipynb formats is also important, one should follow the rules below.
 
  * You cannot use subfigure to combine several image files in one
    figure, but you can combine the files to one file using
-   the doconce combine_images tool.
+   the doconce combine_images tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
 
  * Use plain cite for references (e.g., \citeauthor has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -94098,6 +94539,12 @@ ipynb formats is also important, one should follow the rules below.
 
  * Use idx for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+
+ * Use the bm package and the \bm command for boldface in mathematics.
+
+ * Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The \begin{} and \end{} directives should start
+   in column 1.
 
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
@@ -94138,21 +94585,55 @@ Use the preprocessor to tailor output -----------------------------------|
 
 
 
-Autotranslation of LaTeX to DocOnce? --------------------------------------|
-|                                                                          |
-| The tool doconce latex2doconce may help you translating LaTeX files      |
-| to DocOnce syntax. However, if you use computer code in floating         |
-| list environments, special packages for typesetting algorithms,          |
-| example environments, subfigure in figures,                              |
-| or a lot of newcommands in the running text, there will be need for      |
-| a lot of manual edits and adjustments. For examples, figure environments |
-| can be translated by doconce latex2doconce only if the label is inside   |
-| the caption. If the LaTeX is consistent with respect to placement of     |
-| the label, a simple script can autoedit the label inside the caption,    |
-| but many LaTeX writers put the label at different places in different    |
-| figures, and then it becomes more difficult to autoedit figures and      |
-| translate them to the DocOnce FIGURE: syntax.                            |
-|--------------------------------------------------------------------------|
+Autotranslation of LaTeX to DocOnce? ---------------------------------------|
+|                                                                           |
+| The tool doconce latex2doconce may help you translating LaTeX files       |
+| to DocOnce syntax. However, if you use computer code in floating          |
+| list environments, special packages for typesetting algorithms,           |
+| example environments, subfigure in figures,                               |
+| or a lot of newcommands in the running text, there will be need for       |
+| a lot of manual edits and adjustments.                                    |
+|                                                                           |
+| For examples, figure environments                                         |
+| can be translated by doconce latex2doconce only if the label is inside    |
+| the caption and the figure is typeset like::                              |
+|                                                                           |
+|         \begin{figure}                                                    |
+|           \centering                                                      |
+|           \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}          |
+|           \caption{This is a figure. \labe{myfig}}                        |
+|         \end{figure}                                                      |
+|                                                                           |
+| If the LaTeX is consistent with respect to placement of                   |
+| the label, a simple script can autoedit the label inside the caption,     |
+| but many LaTeX writers put the label at different places in different     |
+| figures, and then it becomes more difficult to autoedit figures and       |
+| translate them to the DocOnce FIGURE: syntax.                             |
+|                                                                           |
+| Tables are hard to interpret and translate, because the headings and      |
+| caption can be typeset in many different ways. The type of table          |
+| that is recognized looks like::                                           |
+|                                                                           |
+|         \begin{table}                                                     |
+|         \caption{Here goes the caption.}                                  |
+|         \begin{tabular}{lr}                                               |
+|         \hline                                                            |
+|         \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline |
+|         1.2 & 4.2\1.1 & 4.0\0.9 & 3.7                                     |
+|         \hline                                                            |
+|         \end{tabular}                                                     |
+|         \end{table}                                                       |
+|                                                                           |
+| Recall that table captions do not make sense in DocOnce since tables      |
+| must be inlined and explained in the surrounding text.                    |
+|                                                                           |
+| Footnotes are also problematic for doconce latex2doconce since DocOnce    |
+| footnotes must have the explanation outside the paragraph where the       |
+| footnote is used. This calls for manual work. The translator from         |
+| LaTeX to DocOnce will insert _PROBLEM_ and mark footnotes. One            |
+| solution is to avoid footnotes in the LaTeX document if fully automatic   |
+| translation is desired.                                                   |
+|---------------------------------------------------------------------------|
 
 
 Hyperlinks
@@ -95344,6 +95825,12 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    (DocOnce performs extensions to `sphinx`, `ipynb`,
    and other formats such that
    labels in `align` environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   `split`, `aligned`, `alignat`, and other environments (rewrite to
+   `align` and use a number for each equation, or use `\nonumber\\`
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+ * Do not use comments inside equations.
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    `newcommands*.tex`. Use `\newcommands` and not `\def`.
@@ -95352,6 +95839,7 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
  * Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (`mwiki`) does not support references to equations.
+ * Spaces are not allowed in labels.
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -95366,12 +95854,18 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    only in the HTML and LaTeX formats.)
  * You cannot use `subfigure` to combine several image files in one
    figure, but you can combine the files to one file using
-   the `doconce combine_images` tool.
+   the `doconce combine_images` tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
  * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
  * Use `idx` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+ * Use the `bm` package and the `\bm` command for boldface in mathematics.
+ * Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The `\begin{}` and `\end{}` directives should start
+   in column 1.
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
    For instance, examples are normally typeset as subsections in DocOnce.
@@ -95411,15 +95905,49 @@ to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
 example environments, `subfigure` in figures,
 or a lot of newcommands in the running text, there will be need for
-a lot of manual edits and adjustments. For examples, figure environments
+a lot of manual edits and adjustments.
+
+For examples, figure environments
 can be translated by `doconce latex2doconce` only if the label is inside
-the caption. If the LaTeX is consistent with respect to placement of
+the caption and the figure is typeset like
+
+
+        \begin{figure}
+          \centering
+          \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+          \caption{This is a figure. \labe{myfig}}
+        \end{figure}
+
+If the LaTeX is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many LaTeX writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
 translate them to the DocOnce `FIGURE:` syntax.
 
+Tables are hard to interpret and translate, because the headings and
+caption can be typeset in many different ways. The type of table
+that is recognized looks like
 
+
+        \begin{table}
+        \caption{Here goes the caption.}
+        \begin{tabular}{lr}
+        \hline
+        \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+        1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+        \hline
+        \end{tabular}
+        \end{table}
+
+Recall that table captions do not make sense in DocOnce since tables
+must be inlined and explained in the surrounding text.
+
+Footnotes are also problematic for `doconce latex2doconce` since DocOnce
+footnotes must have the explanation outside the paragraph where the
+footnote is used. This calls for manual work. The translator from
+LaTeX to DocOnce will insert `_PROBLEM_` and mark footnotes. One
+solution is to avoid footnotes in the LaTeX document if fully automatic
+translation is desired.
 
 
 
@@ -101699,7 +102227,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 title: Just a test
 author: HPL
-theme: agni
+theme: agni 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
@@ -103646,7 +104174,7 @@ Author: ['HPL']
 Using author(s) "HPL" from math_test
 title: How various formats can deal with LaTeX math
 author: HPL
-theme: default
+theme: default 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
@@ -106360,7 +106888,7 @@ Author: ['hpl']
 Using author(s) "hpl" from admon
 title: Testing admons
 author: hpl
-theme: default
+theme: default 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
@@ -109213,7 +109741,7 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 ...rest of part of LaTeX line number...
 
 
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [7]
 
@@ -109221,7 +109749,7 @@ Overfull \hbox (110.96576pt too wide) has occurred while \output is active
 ...rest of part of LaTeX line number...
 
 [8]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [9] [10]
 Chapter 2.
@@ -109229,10 +109757,10 @@ Chapter 2.
 Overfull \hbox (111.58464pt too wide) 
 |[] 
 [11] [12]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [13] [14]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [15]
 
@@ -109252,7 +109780,7 @@ Overfull \hbox (110.96576pt too wide) has occurred while \output is active
 
 
 [16]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [17] [18]
 Appendix A.
@@ -109769,10 +110297,10 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 
 [6] 
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [7] [8]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [9] [10]
 Chapter 2.
@@ -109780,10 +110308,10 @@ Chapter 2.
 Overfull \hbox (111.58464pt too wide) 
 |[] 
 [11] [12]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [13] [14]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [15]
 
@@ -109803,7 +110331,7 @@ Overfull \hbox (110.96576pt too wide) has occurred while \output is active
 
 
 [16]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [17] [18]
 Appendix A.
@@ -110307,10 +110835,10 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
 [5] [6] 
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [7] [8]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [9] [10]
 Chapter 2.
@@ -110318,13 +110846,13 @@ Chapter 2.
 Overfull \hbox (111.58464pt too wide) 
 |[] 
 [11] [12]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [13] [14]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [15] [16]
-Overfull \hbox (110.96576pt too wide) has occurred while \output is active
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [17] [18]
 Appendix A.
@@ -111266,24 +111794,28 @@ Overfull \hbox (9.62752pt too wide)
 Overfull \hbox (4.64987pt too wide) 
 \T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
  cre-at-ing macros. 
-[12] [13]
+
+Overfull \hbox (47.3995pt too wide) 
+[]\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
+[]
+[12] [13] [14]
 
 
 ...rest of part of LaTeX line number...
 
-[14]
+[15]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[15]
+[16]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[16] [17] [18] [19] [20] [21]
+[17] [18] [19] [20] [21] [22]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -111291,7 +111823,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[22] (./quickref.aux)
+[23] (./quickref.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -111448,7 +111980,7 @@ are/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/
 lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on quickref.pdf (22 pages, ).
+Output written on quickref.pdf (23 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape quickref
@@ -111672,23 +112204,27 @@ Overfull \hbox (32.16707pt too wide)
 [11]
 Overfull \hbox (9.62752pt too wide) 
 \T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
-
+[12]
 Overfull \hbox (4.64987pt too wide) 
 \T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
  cre-at-ing macros. 
-[12] [13] [14] [15]
+
+Overfull \hbox (47.3995pt too wide) 
+[]\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
+[]
+[13] [14] [15] [16]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[16]
+[17]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[17] [18] [19] [20] [21] [22]
+[18] [19] [20] [21] [22] [23]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
 
@@ -111696,7 +112232,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[23] (./quickref.aux)
+[24] (./quickref.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -111847,7 +112383,7 @@ are/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/
 lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on quickref.pdf (23 pages, ).
+Output written on quickref.pdf (24 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system doconce format sphinx quickref --no_preprocess
@@ -111933,7 +112469,7 @@ searching for TITLE in quickref.do.txt
 Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
 author: HPL
-theme: default
+theme: default 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
@@ -112200,12 +112736,23 @@ ith for re-fer-ring to com-pan-ion doc-u-ments
 Package hyperref Warning: Ignoring empty anchor on .
 
 [11]
+Underfull \hbox (badness 4819) 
+[]\T1/ptm/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
+\T1/pcr/m/n/10 doconce
+
+Overfull \hbox (75.50217pt too wide) 
+[]  \T1/pcr/m/n/10 \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}  
+
+Overfull \hbox (129.50217pt too wide) 
+[]\T1/pcr/m/n/10 \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hl
+ine  
+[12]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
-
+[13]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
@@ -112219,7 +112766,7 @@ oes the caption which must be on a single line. label{some:fig:label}
 Overfull \hbox (437.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [relative/path/to/moviefile, width=500] Here goes the c
 aption which must be on a single line. label{some:fig:label} 
-[12]
+
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce combine_images image1 image2 ... output_image 
 
@@ -112234,7 +112781,7 @@ Overfull \hbox (119.00006pt too wide)
 
 ...rest of part of LaTeX line number...
 
-
+[14]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -112270,10 +112817,10 @@ Overfull \hbox (107.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 |-------------------------------------------------------------
 ----| 
-[13]
+
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
-
+[15]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -112282,7 +112829,7 @@ Overfull \hbox (54.34767pt too wide)
 Overfull \hbox (26.41858pt too wide) 
 []\T1/ptm/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/pcr/m/n/10 B
 IBFILE: papers.pub\T1/ptm/m/n/10 , where \T1/pcr/m/n/10 papers.pub
-[14]
+
 Overfull \hbox (71.00006pt too wide) 
 []\T1/pcr/m/n/10 ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section": 
  
@@ -112290,7 +112837,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-
+[16]
 Overfull \hbox (3839.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -112308,7 +112855,7 @@ i|cwiki|pandoc|st|epytext dofile
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # substitute a phrase by another using regular expressions  
-[15]
+
 Overfull \hbox (197.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce subst [-s -m -x --restore] regex-pattern regex-replace
 ment file1 file2 ...  
@@ -112346,7 +112893,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[17]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -112360,7 +112907,7 @@ splitting points
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 # split an html file into parts according to !split commands  
 
-[16]
+
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 # create LaTeX Beamer slides from a (doconce) latex/pdflatex f
 ile  
@@ -112382,7 +112929,7 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-
+[18]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
@@ -112412,7 +112959,7 @@ eded
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 # list all labels in a document (for purposes of cleaning them
  up)  
-[17]
+
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate script for substituting generalized references  
 
@@ -112442,7 +112989,7 @@ various formats
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-
+[19]
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -112462,10 +113009,10 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce fix_bibtex4publish file1.bib file2.bib ...  
-[18]
+
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-
+[20]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -112479,7 +113026,7 @@ Overfull \hbox (41.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 []\T1/pcr/m/n/10 "Wolframalpha": "http://wolframalpha.com" can perhaps  
-[19]
+
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 ===== {Problem}: Derive the Formula for the Area of an Ellipse
  ===== 
@@ -112490,7 +113037,7 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-
+[21]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -112501,25 +113048,25 @@ d `!eremarks`
 
 Overfull \hbox (41.00006pt too wide) 
 []\T1/pcr/m/n/10 directives is always typeset at the end of the exercise.  
-[20]
+
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
 
 Overfull \hbox (18.10902pt too wide) 
 []
-
+[22]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[21]
+
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[22] (./quickref.rst.aux)
+[23] [24] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -112533,7 +113080,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (22 pages, ).
+Output written on quickref.rst.dvi (24 pages, ).
 Transcript written on quickref.rst.log.
 + '[' 0 -ne 0 ']'
 + latex quickref.rst.tex
@@ -112733,13 +113280,24 @@ ith for re-fer-ring to com-pan-ion doc-u-ments
 
 Package hyperref Warning: Ignoring empty anchor on .
 
+
+Underfull \hbox (badness 4819) 
+[]\T1/ptm/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
+\T1/pcr/m/n/10 doconce
+
+Overfull \hbox (75.50217pt too wide) 
+[]  \T1/pcr/m/n/10 \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}  
+
+Overfull \hbox (129.50217pt too wide) 
+[]\T1/pcr/m/n/10 \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hl
+ine  
 [12]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
-
+[13]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
@@ -112760,11 +113318,11 @@ Overfull \hbox (23.00006pt too wide)
 Overfull \hbox (233.00006pt too wide) 
 \T1/pcr/m/n/10 MOVIE: [http://www.youtube.com/watch?v=_O7iUiftbKU, width=420 he
 ight=315] YouTube movie.  
-[13]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
-
+[14]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -112803,7 +113361,7 @@ Overfull \hbox (107.00006pt too wide)
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
-[14]
+[15]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -112820,7 +113378,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[15]
+[16]
 Overfull \hbox (3839.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -112864,7 +113422,7 @@ Overfull \hbox (71.00006pt too wide)
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce expand_mako mako_code_file funcname file1 file2 ...  
-[16]
+
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
@@ -112876,7 +113434,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-
+[17]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -112904,7 +113462,7 @@ Overfull \hbox (11.00006pt too wide)
 
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # extract all exercises (projects and problems too)  
-[17]
+
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce grab   --from[-] from-text [--to[-] to-text] somefile 
 > result  
@@ -112912,7 +113470,7 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-
+[18]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
@@ -112960,7 +113518,7 @@ e
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 # translate an IPython/Jupyter notebook to doconce  
-[18]
+
 Overfull \hbox (179.00006pt too wide) 
 []\T1/pcr/m/n/10 # typeset a doconce document with pygments (for pretty print o
 f doconce itself)  
@@ -112972,7 +113530,7 @@ various formats
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-
+[19]
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -112995,7 +113553,7 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[19]
+[20]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -113020,7 +113578,7 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[20]
+[21]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -113035,27 +113593,27 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (4.60825pt too wide) 
 \T1/ptm/m/n/10 DocOnce en-vi-ron-ments start with \T1/pcr/m/n/10 !benvirname \T
 1/ptm/m/n/10 and end with \T1/pcr/m/n/10 !eenvirname\T1/ptm/m/n/10 , where
-[21]
+
 Overfull \hbox (18.10902pt too wide) 
 []
-
+[22]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
-[22]
+
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
 
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[23] (./quickref.rst.aux)
+[23] [24] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (23 pages, ).
+Output written on quickref.rst.dvi (24 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
 + system doconce format plain quickref --no_preprocess
