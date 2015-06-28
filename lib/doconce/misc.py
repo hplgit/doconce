@@ -1,4 +1,4 @@
-import os, sys, shutil, re, glob, sets, time, commands
+import os, sys, shutil, re, glob, time, commands
 
 _part_filename = '._%s%03d'
 _part_filename_wildcard = '._*[0-9][0-9][0-9]'
@@ -1302,8 +1302,7 @@ def latex_exercise_toc():
         heading = sys.argv[2]
     except IndexError:
         # Build default heading from types of environments found
-        import sets
-        types_of_exer = sets.Set()
+        types_of_exer = set()
         for ex in exer:
             if ex['type'] != 'Example':
                 types_of_exer.add(ex['type'])
@@ -1810,8 +1809,7 @@ def ptex2tex():
     #print 'latex2envir2package:'; pprint.pprint(latexenvir2package)
     # Run through user's specifications and grab latexenvir from
     # end = \end{latexenvir}, find corresponding package and add to set
-    import sets
-    packages = sets.Set()
+    packages = set()
     for envir, begin, end in envir_user_spec:
         m = re.search(r'\\end\{(.+?)\}', end)
         if m:
@@ -6414,7 +6412,7 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         else:
             print 'Dictionary file %s does not exist.' % dictionary
 
-    personal_dictionaries = list(sets.Set(personal_dictionaries))
+    personal_dictionaries = list(set(personal_dictionaries))
     misspellings = 'tmp_misspelled_' + filename + '~'
     cmd = 'cat %s | ispell -l -t -d american %s > %s' % \
           (scratchfile, p_opt, misspellings)
@@ -6425,7 +6423,7 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     f = open(misspellings, 'r')
     words = f.readlines()
     f.close()
-    words2 = list(sets.Set(words))  # remove multiple words
+    words2 = list(set(words))  # remove multiple words
     if len(words2) > 0:             # do we have misspellings?
         print '%d misspellings in %s' % (len(words2), filename)
         if remove_multiplicity:
@@ -6443,9 +6441,9 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
             newdict_words = f.readlines()
             f.close()
             newdict_add = words2 + newdict_words
-            newdict_add = sorted(list(sets.Set(newdict_add)))
+            newdict_add = sorted(list(set(newdict_add)))
             union = accepted_words + newdict_words
-            union = sorted(list(sets.Set(union)))
+            union = sorted(list(set(union)))
             #print '%s %d: %d misspellings (%d from personal dicts) -> %d' % (newdict, len(newdict_words), len(words2), len(personal_dictionaries), len(union))
         else:
             union = accepted_words
@@ -6714,20 +6712,19 @@ def ref_external():
         labels = re.findall(r'label\{(.+?)\}', text)
         return title, key, url, labels, text
 
-    import sets
     # Find labels and references in this doconce document
     dummy, dummy, dummy, mylabels, mytext = process_external_doc(basename)
     refs = [(prefix, ref) for dummy, prefix, ref in
             re.findall(r'(^|\(|\s+)([A-Za-z]+?)\s+ref\{(.+?)\}', mytext,
                        flags=re.MULTILINE)]
     refs = [(prefix.strip(), ref.strip()) for prefix, ref in refs]
-    refs = list(sets.Set(refs))
+    refs = list(set(refs))
     pattern = r'\(ref\{(.+?)\}\)-\(ref\{(.+?)\}\)'
-    eqrefs2 = list(sets.Set(re.findall(pattern, mytext)))
+    eqrefs2 = list(set(re.findall(pattern, mytext)))
     mytext2 = re.sub(pattern, 'XXX', mytext)
     # Now all pairs of equation references are removed, search for triplets
     pattern = r'\(ref\{(.+?)\}\),\s+\(ref\{(.+?)\}\),?\s+and\s+\(ref\{(.+?)\}\)'
-    eqrefs3 = list(sets.Set(re.findall(pattern, mytext2)))
+    eqrefs3 = list(set(re.findall(pattern, mytext2)))
     mytext3 = re.sub(pattern, 'XXX', mytext2)
     # Now all pairs and triplets are removed and we can collect the remaining
     # single equation references
@@ -6865,9 +6862,9 @@ def ref_external():
                             extdocs_info[refs2extdoc[ref1][0]]['key'])
                 else:
                     # the equations come from different external docs
-                    s = sets.Set([extdocs_info[refs2extdoc[ref1][0]]['key'],
-                                  extdocs_info[refs2extdoc[ref2][0]]['key'],
-                                  extdocs_info[refs2extdoc[ref3][0]]['key']])
+                    s = set([extdocs_info[refs2extdoc[ref1][0]]['key'],
+                             extdocs_info[refs2extdoc[ref2][0]]['key'],
+                             extdocs_info[refs2extdoc[ref3][0]]['key']])
                     f.write('[ cite{%s}]' % ','.join(list(s)))
 
                 f.write('[reference to specific _equations_ (label %s, %s, and %s) in external document "%s": "%s" cite{%s} is not recommended]' %
@@ -6998,8 +6995,7 @@ def grep():
             filenames += re.findall(pattern, filestr, re.MULTILINE)
         else:
             print '*** error: cannot grep', file_tp, '(not implemented)'
-    import sets
-    filenames = list(sets.Set(filenames))  # remove multiple filenames
+    filenames = list(set(filenames))  # remove multiple filenames
     print ' '.join(filenames)
 
 def _usage_capitalize():

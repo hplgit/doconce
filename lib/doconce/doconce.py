@@ -839,8 +839,7 @@ def syntax_check(filestr, format):
         for link_tp in 'linkURL2', 'linkURL3', 'linkURL2v', 'linkURL3v', \
                 'plainURL':
             links.extend(re.findall(INLINE_TAGS[link_tp], filestr))
-        import sets
-        links = list(sets.Set([link[1] for link in links]))
+        links = list(set([link[1] for link in links]))
         links2local = []
         for link in links:
             if not (link.startswith('http') or link.startswith('file:/') or \
@@ -2048,8 +2047,7 @@ def typeset_userdef_envirs(filestr, format):
             _abort()
     else:
         print '*** error: found user-defined environments'
-        import sets
-        print '   ', ', '.join(list(sets.Set(userdef_envirs)))
+        print '   ', ', '.join(list(set(userdef_envirs)))
         print '    but no file', userfile, 'for defining the environments!'
         _abort()
     if not hasattr(ue, 'envir2format'):
@@ -2431,8 +2429,8 @@ def handle_figures(filestr, format):
         extensions = FIGURE_EXT[format]
 
     figfiles = [filename.strip()
-             for filename, options, caption in c.findall(filestr)]
-    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
+                for filename, options, caption in c.findall(filestr)]
+    figfiles = set(figfiles)   # remove multiple occurences
 
     # Prefix figure paths if user has requested it
     figure_prefix = option('figure_prefix=')
@@ -2463,7 +2461,7 @@ def handle_figures(filestr, format):
     # Find new filenames
     figfiles = [filename.strip()
              for filename, options, caption in c.findall(filestr)]
-    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
+    figfiles = set(figfiles)   # remove multiple occurences
 
     for figfile in figfiles:
         if figfile.startswith('http'):
