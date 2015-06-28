@@ -38,3 +38,6 @@ sudo apt-get install python3-pip
 
 export PYTHONPATH=$HOME/doconce3/lib/python3.4/site-packages:$PYTHONPATH
 !ec
+
+Recall to reset `PATH` and `PYTHONPATH` when returning to the Python 2
+version! Otherwise, very strange error messages with strings appear.
