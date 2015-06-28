@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 21, 2015
+:Date: Jun 28, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -688,6 +688,13 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    (DocOnce performs extensions to ``sphinx``, ``ipynb``,
    and other formats such that
    labels in ``align`` environments work well.)
+   This may feel restrictive to LaTeX writers who are used to
+   ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
+   ``align`` and use a number for each equation, or use ``\nonumber\\``
+   to end intermediate calculations on multiple lines and use a label
+   in the last, final result).
+
+ * Do not use comments inside equations.
 
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -698,6 +705,8 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
  * Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (``mwiki``) does not support references to equations.
+
+ * Spaces are not allowed in labels.
 
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
@@ -715,7 +724,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * You cannot use ``subfigure`` to combine several image files in one
    figure, but you can combine the files to one file using
-   the ``doconce combine_images`` tool.
+   the ``doconce combine_images`` tool. Refer to individual image files
+   in the caption or text by (e.g.) "left" and "right", or
+   "upper left", "lower right", etc.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -723,6 +734,12 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Use ``idx`` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
+
+ * Use the ``bm`` package and the ``\bm`` command for boldface in mathematics.
+
+ * Make sure all ordinary text starts in column 1 on each line. Equations
+   can be indented. The ``\begin{}`` and ``\end{}`` directives should start
+   in column 1.
 
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
@@ -771,13 +788,51 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    list environments, special packages for typesetting algorithms,
    example environments, ``subfigure`` in figures,
    or a lot of newcommands in the running text, there will be need for
-   a lot of manual edits and adjustments. For examples, figure environments
+   a lot of manual edits and adjustments.
+   
+   For examples, figure environments
    can be translated by ``doconce latex2doconce`` only if the label is inside
-   the caption. If the LaTeX is consistent with respect to placement of
+   the caption and the figure is typeset like
+   
+   .. code-block:: latex
+   
+           \begin{figure}
+             \centering
+             \includegraphics[width=0.55\linewidth]{figs/myfig.pdf}
+             \caption{This is a figure. \labe{myfig}}
+           \end{figure}
+   
+   If the LaTeX is consistent with respect to placement of
    the label, a simple script can autoedit the label inside the caption,
    but many LaTeX writers put the label at different places in different
    figures, and then it becomes more difficult to autoedit figures and
    translate them to the DocOnce ``FIGURE:`` syntax.
+   
+   Tables are hard to interpret and translate, because the headings and
+   caption can be typeset in many different ways. The type of table
+   that is recognized looks like
+   
+   .. code-block:: latex
+   
+           \begin{table}
+           \caption{Here goes the caption.}
+           \begin{tabular}{lr}
+           \hline
+           \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hline
+           1.2 & 4.2\1.1 & 4.0\0.9 & 3.7
+           \hline
+           \end{tabular}
+           \end{table}
+   
+   Recall that table captions do not make sense in DocOnce since tables
+   must be inlined and explained in the surrounding text.
+   
+   Footnotes are also problematic for ``doconce latex2doconce`` since DocOnce
+   footnotes must have the explanation outside the paragraph where the
+   footnote is used. This calls for manual work. The translator from
+   LaTeX to DocOnce will insert ``_PROBLEM_`` and mark footnotes. One
+   solution is to avoid footnotes in the LaTeX document if fully automatic
+   translation is desired.
 
 
 
