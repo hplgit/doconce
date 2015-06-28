@@ -35,4 +35,6 @@ cd ..
 futurize --stage2 --all-imports -w setup.py
 
 sudo apt-get install python3-pip
+
+export PYTHONPATH=$HOME/doconce3/lib/python3.4/site-packages:$PYTHONPATH
 !ec

@@ -24,30 +24,6 @@ import os, sys, glob, gzip, tempfile
 # (need this for extracting the version below)
 sys.path.insert(0, os.path.join('lib')); import doconce
 
-man_filename = os.path.join("doc", "man", "man1", "doconce.1")
-if "install" in sys.argv:
-    # Compresses the man page
-    try:
-        man_inputfile = open(man_filename, 'r')
-        man_contents = man_inputfile.read()
-        man_inputfile.close()
-
-        # Temporary destination for the man page
-        tmp_filename = tempfile.mktemp(os.path.sep + os.path.basename(man_filename) + ".gz")
-
-        # Make dir if the path doesn't already exist
-        base_dir = os.path.dirname(tmp_filename)
-        if not os.path.exists(base_dir):
-            os.makedirs(base_dir)
-
-        man_outputfile = gzip.open(tmp_filename, 'wb')
-        man_outputfile.write(man_contents)
-        man_outputfile.close()
-
-        man_filename = tmp_filename
-    except IOError as msg:
-        print("Unable to compress man page: %s" % msg)
-
 # Make doconce_config_default.py file (based on newest set of options)
 import doconce.misc
 config_variables = []  # list of (var, value) pairs
@@ -95,11 +71,4 @@ setup(
     #py_modules = ['doconce.common', 'doconce.doconce', ...]
     package_data = {'': ['sphinx_themes.zip', 'html_images.zip', 'reveal.js.zip', 'deck.js.zip', 'csss.zip', 'latex_styles.zip']},
     scripts = [os.path.join('bin', f) for f in ['doconce']],
-    data_files=[(os.path.join("share", "man", "man1"),[man_filename,]),],
     )
-
-# Clean up the temporary compressed man page
-if man_filename.endswith(".gz") and os.path.isfile(man_filename):
-    if "-q" not in sys.argv or "--quiet" not in sys.argv:
-        print("Removing %s" % man_filename)
-    os.remove(man_filename)

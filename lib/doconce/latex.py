@@ -3013,20 +3013,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \counterwithin{doconcequizcounter}{chapter}
 """
 
-    '''
-    # Package for quiz
-    # http://ctan.uib.no/macros/latex/contrib/exam/examdoc.pdf
-    # Requires documentclass{exam} and cannot be used in combination
-    # with other documentclass
-    if '!bquiz' in filestr:
-        INTRO['latex'] += r"""
-\usepackage{exam}            % for quiz typesetting
-\newcommand{\questionlabel}{}
-\CorrectChoiceEmphasis{\itshape}
-\checkboxchar{$\Box$}\checkedchar{$\blacksquare$}
-"""
-    '''
-
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
     linkcolor = 'linkcolor'
