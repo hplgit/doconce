@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import division
+from __future__ import absolute_import
+from builtins import range
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
 import os, sys
-from commands import getstatusoutput
+from subprocess import getstatusoutput
 from doconce.misc import system, misc_option
 from doconce.misc import (
     insertdocstr,
@@ -858,7 +866,7 @@ if html_theme == 'impressjs':
                         'html_title = "%s"' % title)
     text = text.replace('#short_html_title = None',
                         'html_short_title = "%s"' % short_title)
-    if isinstance(logo, basestring):
+    if isinstance(logo, str):
         text = text.replace('#html_logo = None', 'html_logo = "%s"' % logo)
 
     f = open('conf.py', 'w');  f.write(text);  f.close()

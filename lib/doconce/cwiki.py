@@ -4,9 +4,15 @@ See http://www.wikicreole.org/wiki/Creole1.0 for syntax.
 """
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
 # Simple edit of gwiki.py
 
-import re, os, commands, sys
+import re, os, subprocess, sys
 from .common import default_movie, plain_exercise, insert_code_and_tex
 from .plaintext import plain_quiz
 from .misc import _abort
@@ -37,7 +43,7 @@ def cwiki_figure(m):
             # try to convert image file to PNG, using
             # convert from ImageMagick:
             cmd = 'convert %s png:%s' % (filename, root+'.png')
-            failure, output = commands.getstatusoutput(cmd)
+            failure, output = subprocess.getstatusoutput(cmd)
             if failure:
                 print('\n**** Warning: could not run', cmd)
                 print('Convert %s to PNG format manually' % filename)

@@ -32,9 +32,15 @@ go back.
 """
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import range
 
 
-import re, os, commands, sys
+import re, os, subprocess, sys
 from .common import default_movie, plain_exercise, insert_code_and_tex
 from .plaintext import plain_quiz
 from .misc import _abort
@@ -147,7 +153,7 @@ def mwiki_figure(m):
             # try to convert image file to PNG, using
             # convert from ImageMagick:
             cmd = 'convert %s png:%s' % (filename, root+'.png')
-            failure, output = commands.getstatusoutput(cmd)
+            failure, output = subprocess.getstatusoutput(cmd)
             if failure:
                 print('\n**** warning: could not run ', cmd)
                 print('       convert %s to PNG format manually' % filename)
@@ -191,14 +197,14 @@ def mwiki_figure(m):
 
         # Skip directories - get the basename
         filename = os.path.basename(filename)
-        import urllib
-        prms = urllib.urlencode({
+        import urllib.request, urllib.parse, urllib.error
+        prms = urllib.parse.urlencode({
             'action': 'query', 'titles': 'Image:' + filename,
             'prop': 'imageinfo', 'format': 'xml'})
         url = 'http://en.wikipedia.org/w/api.php?' + prms
         try:
             print(' ...checking if %s is stored at en.wikipedia.org/w/api.php...' % filename)
-            f = urllib.urlopen(url)
+            f = urllib.request.urlopen(url)
 
             imageinfo = f.read()
             f.close()

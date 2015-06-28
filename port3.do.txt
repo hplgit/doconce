@@ -1,0 +1,38 @@
+These are the steps taken to port DocOnce to Python 2/3.
+
+!bc
+sudo pip install future
+
+cd lib/doconce
+futurize --stage1 -w *.py
+cd ../../bin
+futurize --stage1 -w doconce
+cd ..
+futurize --stage1 -w setup.py
+
+python setup.py install --prefix=$HOME/doconce3
+!ec
+Correct errors in print statements inside text that is to be run with `exec`
+(two places in `latex.py`, one place in `html.py`).
+
+!bc
+# Test Py2
+python setup.py install --prefix=$HOME/doconce3
+
+export PATH=$HOME/doconce3/bin:$PATH
+export PYTHONPATH=$HOME/doconce3/lib/python2.7/site-packages:$PYTHONPATH
+!ec
+Run `python2 test.verify` in `test`.
+
+Then,
+
+!bc
+cd lib/doconce
+futurize --stage2 --all-imports -w *.py
+cd ../../bin
+futurize --stage2 --all-imports -w doconce
+cd ..
+futurize --stage2 --all-imports -w setup.py
+
+sudo apt-get install python3-pip
+!ec

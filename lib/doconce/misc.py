@@ -1,6 +1,16 @@
 from __future__ import print_function
 from __future__ import absolute_import
-import os, sys, shutil, re, glob, sets, time, commands
+from __future__ import division
+from __future__ import unicode_literals
+from builtins import *
+from past.builtins import execfile
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.utils import old_div
+import os, sys, shutil, re, glob, time, subprocess
 from functools import reduce
 
 _part_filename = '._%s%03d'
@@ -871,11 +881,11 @@ def _scitools_subst(patterns, replacements, filenames,
     A copy of the original file is taken, with extension `.old~~`.
     """
     # if some arguments are strings, convert them to lists:
-    if isinstance(patterns, basestring):
+    if isinstance(patterns, str):
         patterns = [patterns]
-    if isinstance(replacements, basestring):
+    if isinstance(replacements, str):
         replacements = [replacements]
-    if isinstance(filenames, basestring):
+    if isinstance(filenames, str):
         filenames = [filenames]
 
     # pre-compile patterns:
@@ -921,7 +931,7 @@ def wildcard_notation(files):
     use glob.glob inside Python. This function provides a
     uniform solution.
     """
-    if isinstance(files, basestring):
+    if isinstance(files, str):
         files = [files]  # ensure list when single filename is given
     if sys.platform[:3] == 'win':
         import glob, operator
@@ -1305,8 +1315,7 @@ def latex_exercise_toc():
         heading = sys.argv[2]
     except IndexError:
         # Build default heading from types of environments found
-        import sets
-        types_of_exer = sets.Set()
+        types_of_exer = set()
         for ex in exer:
             if ex['type'] != 'Example':
                 types_of_exer.add(ex['type'])
@@ -1452,7 +1461,7 @@ def combine_images():
                 imagefiles[i] = f.replace('.eps', '.pdf')
 
         # Combine PDF images
-        num_rows = int(round(len(imagefiles)/float(num_columns)))
+        num_rows = int(round(old_div(len(imagefiles),float(num_columns))))
         cmds.append('pdftk %s output tmp.pdf' % ' '.join(imagefiles))
         cmds.append('pdfnup --nup %dx%d --outfile tmp.pdf tmp.pdf' % (num_columns, num_rows))
         cmds.append('pdfcrop tmp.pdf %s' % output_file)
@@ -1556,12 +1565,12 @@ def copy_latex_packages(packages):
     """
     datafile = latexstyle_files  # global variable (latex_styles.zip)
     missing_files = []
-    import commands
+    import subprocess
     for style in packages:
         stem, ext = os.path.splitext(style)
         if ext == '':
             style += '.sty'
-        failure, output = commands.getstatusoutput('kpsewhich %s' % style)
+        failure, output = subprocess.getstatusoutput('kpsewhich %s' % style)
         if output == '':
             missing_files.append(style)
     if missing_files:
@@ -1813,8 +1822,7 @@ def ptex2tex():
     #print 'latex2envir2package:'; pprint.pprint(latexenvir2package)
     # Run through user's specifications and grab latexenvir from
     # end = \end{latexenvir}, find corresponding package and add to set
-    import sets
-    packages = sets.Set()
+    packages = set()
     for envir, begin, end in envir_user_spec:
         m = re.search(r'\\end\{(.+?)\}', end)
         if m:
@@ -1914,7 +1922,7 @@ download preprocess from http://code.google.com/p/preprocess""")
 
 
     if 'minted' in packages:
-        failure, output = commands.getstatusoutput('pygmentize')
+        failure, output = subprocess.getstatusoutput('pygmentize')
         if failure:
             print('You have requested the minted latex style, but this')
             print('requires the pygments package to be installed. On Debian/Ubuntu: run')
@@ -2253,7 +2261,7 @@ def _encoding_guesser(filename, verbose=False):
         try:
             if verbose:
                 print('Trying encoding', encoding, 'with unicode(text, encoding)')
-            unicode(text, encoding, "strict")
+            str(text, encoding, "strict")
         except Exception as e:
             if verbose:
                 print('failed:', e)
@@ -2751,7 +2759,7 @@ def tablify(parts, format="html"):
                                     print('%g' % width, end=' ')
                             _abort()
                 else:
-                    width = 1./len(row)
+                    width = old_div(1.,len(row))
                     for s, c in enumerate(row):
                         table[r][s][1] = width
 
@@ -2870,7 +2878,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                     text += '<li><a href="%s">&laquo;</a></li>\n' % prev_part_filename
                 max_pagination_pages = 16
                 #max_pagination_pages = 4 # for debugging
-                if len(parts) <= max_pagination_pages/2:
+                if len(parts) <= old_div(max_pagination_pages,2):
                     # Show all pages
                     for i in range(len(parts)):
                         if i == pn:
@@ -2879,12 +2887,12 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                            text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                 else:
                     # Show first, last, and pages around the current one
-                    if pn >= max_pagination_pages/2 + 2:
+                    if pn >= old_div(max_pagination_pages,2) + 2:
                         i = 0
                         text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         text += '  <li><a href="">...</a></li>\n'
-                    start = max(0, pn-(max_pagination_pages/2))
-                    stop = min(len(parts), pn+max_pagination_pages/2+2)
+                    start = max(0, pn-(old_div(max_pagination_pages,2)))
+                    stop = min(len(parts), pn+old_div(max_pagination_pages,2)+2)
                     if start == 1:
                         # Special case, add page 1
                         text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, 0) + '.html', 0+1)
@@ -2893,7 +2901,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                            text += '  <li class="active"><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
                         else:
                            text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
-                    if pn <= (len(parts) - (max_pagination_pages/2 + 3)):
+                    if pn <= (len(parts) - (old_div(max_pagination_pages,2) + 3)):
                         text += '  <li><a href="">...</a></li>\n'
                         i = len(parts)-1
                         text += '  <li><a href="%s">%d</a></li>\n' % (_part_filename % (basename, i) + '.html', i+1)
@@ -6417,7 +6425,7 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         else:
             print('Dictionary file %s does not exist.' % dictionary)
 
-    personal_dictionaries = list(sets.Set(personal_dictionaries))
+    personal_dictionaries = list(set(personal_dictionaries))
     misspellings = 'tmp_misspelled_' + filename + '~'
     cmd = 'cat %s | ispell -l -t -d american %s > %s' % \
           (scratchfile, p_opt, misspellings)
@@ -6428,7 +6436,7 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
     f = open(misspellings, 'r')
     words = f.readlines()
     f.close()
-    words2 = list(sets.Set(words))  # remove multiple words
+    words2 = list(set(words))  # remove multiple words
     if len(words2) > 0:             # do we have misspellings?
         print('%d misspellings in %s' % (len(words2), filename))
         if remove_multiplicity:
@@ -6446,9 +6454,9 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
             newdict_words = f.readlines()
             f.close()
             newdict_add = words2 + newdict_words
-            newdict_add = sorted(list(sets.Set(newdict_add)))
+            newdict_add = sorted(list(set(newdict_add)))
             union = accepted_words + newdict_words
-            union = sorted(list(sets.Set(union)))
+            union = sorted(list(set(union)))
             #print '%s %d: %d misspellings (%d from personal dicts) -> %d' % (newdict, len(newdict_words), len(words2), len(personal_dictionaries), len(union))
         else:
             union = accepted_words
@@ -6717,20 +6725,19 @@ def ref_external():
         labels = re.findall(r'label\{(.+?)\}', text)
         return title, key, url, labels, text
 
-    import sets
     # Find labels and references in this doconce document
     dummy, dummy, dummy, mylabels, mytext = process_external_doc(basename)
     refs = [(prefix, ref) for dummy, prefix, ref in
             re.findall(r'(^|\(|\s+)([A-Za-z]+?)\s+ref\{(.+?)\}', mytext,
                        flags=re.MULTILINE)]
     refs = [(prefix.strip(), ref.strip()) for prefix, ref in refs]
-    refs = list(sets.Set(refs))
+    refs = list(set(refs))
     pattern = r'\(ref\{(.+?)\}\)-\(ref\{(.+?)\}\)'
-    eqrefs2 = list(sets.Set(re.findall(pattern, mytext)))
+    eqrefs2 = list(set(re.findall(pattern, mytext)))
     mytext2 = re.sub(pattern, 'XXX', mytext)
     # Now all pairs of equation references are removed, search for triplets
     pattern = r'\(ref\{(.+?)\}\),\s+\(ref\{(.+?)\}\),?\s+and\s+\(ref\{(.+?)\}\)'
-    eqrefs3 = list(sets.Set(re.findall(pattern, mytext2)))
+    eqrefs3 = list(set(re.findall(pattern, mytext2)))
     mytext3 = re.sub(pattern, 'XXX', mytext2)
     # Now all pairs and triplets are removed and we can collect the remaining
     # single equation references
@@ -6868,9 +6875,9 @@ def ref_external():
                             extdocs_info[refs2extdoc[ref1][0]]['key'])
                 else:
                     # the equations come from different external docs
-                    s = sets.Set([extdocs_info[refs2extdoc[ref1][0]]['key'],
-                                  extdocs_info[refs2extdoc[ref2][0]]['key'],
-                                  extdocs_info[refs2extdoc[ref3][0]]['key']])
+                    s = set([extdocs_info[refs2extdoc[ref1][0]]['key'],
+                             extdocs_info[refs2extdoc[ref2][0]]['key'],
+                             extdocs_info[refs2extdoc[ref3][0]]['key']])
                     f.write('[ cite{%s}]' % ','.join(list(s)))
 
                 f.write('[reference to specific _equations_ (label %s, %s, and %s) in external document "%s": "%s" cite{%s} is not recommended]' %
@@ -7001,8 +7008,7 @@ def grep():
             filenames += re.findall(pattern, filestr, re.MULTILINE)
         else:
             print('*** error: cannot grep', file_tp, '(not implemented)')
-    import sets
-    filenames = list(sets.Set(filenames))  # remove multiple filenames
+    filenames = list(set(filenames))  # remove multiple filenames
     print(' '.join(filenames))
 
 def _usage_capitalize():
@@ -7399,7 +7405,7 @@ def _run_doconce(filename_doconce, format):
     global doconce_program # set elsewhere
     cmd = '%s format %s %s' % (doconce_program, format, filename_doconce)
     print('run', cmd)
-    failure, outtext = commands.getstatusoutput(cmd)
+    failure, outtext = subprocess.getstatusoutput(cmd)
     if failure:
         raise OSError('Could not run\n%s\nin %s\n%s\n\n\n' % \
               (cmd, os.getcwd(), outtext))
@@ -7423,7 +7429,7 @@ def _run_preprocess4includes(filename_dotp_py, options=''):
     pyfile = filename_dotp_py[:-5] + '.py'
     cmd = 'preprocess %s %s > %s' % (options, filename_dotp_py, pyfile)
     print('run', cmd)
-    failure, outtext = commands.getstatusoutput(cmd)
+    failure, outtext = subprocess.getstatusoutput(cmd)
     #os.remove(tmp_filename)
     if failure:
         raise OSError('Could not run\n%s\nin %s\n%s\n\n\n' % \
@@ -7984,13 +7990,13 @@ def _latex2doconce(filestr):
                     # (sometimes 1st column may have no header)
                     s = list(separator1)
                     for j in range(len(align_headings)):
-                        s[len(s)-1-max_column_width/2 - j*max_column_width] = align_headings[len(align_headings)-1-j]
+                        s[len(s)-1-old_div(max_column_width,2) - j*max_column_width] = align_headings[len(align_headings)-1-j]
                     separator1 = ''.join(s)
                 if align is not None:
                     # As many chars in align as there are columns
                     s = list(separator2)
                     for j in range(len(align)):
-                        s[max_column_width/2 + j*max_column_width] = align[j]
+                        s[old_div(max_column_width,2) + j*max_column_width] = align[j]
                     separator2 = ''.join(s)
                 column_format = ' %%-%ds ' % (max_column_width-2)
                 for j in range(len(table_lines)):
@@ -9282,12 +9288,12 @@ def csv2table():
 
     s = list(separator1)
     for j in range(num_columns):
-        s[max_column_width/2 + 1 + j*(max_column_width+3)] = align_headings[j]
+        s[old_div(max_column_width,2) + 1 + j*(max_column_width+3)] = align_headings[j]
     separator1 = ''.join(s)
 
     s = list(separator2)
     for j in range(num_columns):
-        s[max_column_width/2 + 1 + j*(max_column_width+3)] = align_columns[j]
+        s[old_div(max_column_width,2) + 1 + j*(max_column_width+3)] = align_columns[j]
     separator2 = ''.join(s)
 
     column_format = ' %%-%ds ' % max_column_width
@@ -9507,7 +9513,7 @@ def gitdiff():
     filenames = sys.argv[1:]
     old_files = []
     for filename in filenames:
-        failure, output = commands.getstatusoutput('git log %s' % filename)
+        failure, output = subprocess.getstatusoutput('git log %s' % filename)
         if not failure:
             commits = re.findall(r'^commit\s+(.+)$', output,
                                  flags=re.MULTILINE)

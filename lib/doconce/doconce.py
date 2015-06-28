@@ -1,10 +1,19 @@
 #!/usr/bin/env python
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import chr
+from builtins import str
+from builtins import range
 global dofile_basename
 
 import re, os, sys, shutil, pprint, time, glob, codecs
-import commands
+import subprocess
 try:
     from collections import OrderedDict   # v2.7 and v3.1
 except ImportError:
@@ -842,8 +851,7 @@ def syntax_check(filestr, format):
         for link_tp in 'linkURL2', 'linkURL3', 'linkURL2v', 'linkURL3v', \
                 'plainURL':
             links.extend(re.findall(INLINE_TAGS[link_tp], filestr))
-        import sets
-        links = list(sets.Set([link[1] for link in links]))
+        links = list(set([link[1] for link in links]))
         links2local = []
         for link in links:
             if not (link.startswith('http') or link.startswith('file:/') or \
@@ -1513,7 +1521,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         from .common import _CODE_BLOCK, _MATH_BLOCK
 
         def replace_code_math(text):
-            if not isinstance(text, basestring):
+            if not isinstance(text, str):
                 return text
 
             # Why not use insert_code_and_tex here? Should be safer
@@ -1881,7 +1889,7 @@ def typeset_tables(filestr, format):
     The list is easily translated to various output formats
     by other modules.
     """
-    from StringIO import StringIO
+    from io import StringIO
     result = StringIO()
 
     # table is a dict with keys rows, headings_align, columns_align
@@ -2050,8 +2058,7 @@ def typeset_userdef_envirs(filestr, format):
             _abort()
     else:
         print('*** error: found user-defined environments')
-        import sets
-        print('   ', ', '.join(list(sets.Set(userdef_envirs))))
+        print('   ', ', '.join(list(set(userdef_envirs))))
         print('    but no file', userfile, 'for defining the environments!')
         _abort()
     if not hasattr(ue, 'envir2format'):
@@ -2191,7 +2198,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     This function also treats comment lines and blank lines.
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
-    from StringIO import StringIO
+    from io import StringIO
     result = StringIO()
     lastindent = 0
     lists = []
@@ -2434,7 +2441,7 @@ def handle_figures(filestr, format):
 
     figfiles = [filename.strip()
              for filename, options, caption in c.findall(filestr)]
-    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
+    figfiles = set(figfiles)   # remove multiple occurences
 
     # Prefix figure paths if user has requested it
     figure_prefix = option('figure_prefix=')
@@ -2465,7 +2472,7 @@ def handle_figures(filestr, format):
     # Find new filenames
     figfiles = [filename.strip()
              for filename, options, caption in c.findall(filestr)]
-    import sets; figfiles = sets.Set(figfiles)   # remove multiple occurences
+    figfiles = set(figfiles)   # remove multiple occurences
 
     for figfile in figfiles:
         if figfile.startswith('http'):
@@ -3387,7 +3394,7 @@ def inline_tag_subst(filestr, format):
             if m:
                 debugpr('First occurence: "%s"\ngroups: %s\nnamed groups: %s' % (m.group(0), m.groups(), m.groupdict()))
 
-        if isinstance(replacement, basestring):
+        if isinstance(replacement, str):
             filestr = c.sub(replacement, filestr)
         elif callable(replacement):
             filestr = c.sub(replacement, filestr)
@@ -4181,7 +4188,7 @@ preprocess package (sudo apt-get install preprocess).
             cmd = 'preprocess -DFORMAT=%s -DDEVICE=%s %s %s > %s' % \
                   (format, device, preprocess_options, filename, resultfile)
             print('running', cmd)
-            failure, outtext = commands.getstatusoutput(cmd)
+            failure, outtext = subprocess.getstatusoutput(cmd)
             if failure:
                 print('Could not run preprocessor:\n%s' % cmd)
                 print(outtext)
@@ -4322,7 +4329,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
         #                strict_undefined=strict_undefined)
         if encoding:
             try:
-                filestr = unicode(filestr, encoding)
+                filestr = str(filestr, encoding)
             except UnicodeDecodeError as e:
                 if "unicode codec can't decode" in str(e):
                     print(e)
@@ -4554,8 +4561,8 @@ def doconce_format(format, dotext, compile=False,
     dofile.write(dotext)
     dofile.close()
     cmd = 'doconce format %(format)s %(filename_stem)s %(options_string)s' % vars()
-    import commands
-    failure, output = commands.getstatusoutput(cmd)
+    import subprocess
+    failure, output = subprocess.getstatusoutput(cmd)
 
     if failure:
         raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %

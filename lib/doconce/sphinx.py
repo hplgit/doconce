@@ -1,5 +1,11 @@
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import range
 # http://sphinx.pocoo.org/ext/math.html#
 
 # can reuse most of rst module:
@@ -345,8 +351,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
 
     # Make correct code-block:: language constructions
     legal_pygments_languages = get_legal_pygments_lexers()
-    import sets
-    for key in sets.Set(code_block_types):
+    for key in set(code_block_types):
         if key in envir2pygments:
             if not envir2pygments[key] in legal_pygments_languages:
                 print("""*** warning: %s is not a legal Pygments language (lexer)

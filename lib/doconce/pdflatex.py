@@ -1,6 +1,11 @@
 # -*- coding: iso-8859-15 -*-
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
 from .latex import *
 
 def pdflatex_emoji(m):
@@ -14,8 +19,8 @@ def pdflatex_emoji(m):
         # Download emoji image
         from .common import emoji_url
         url = emoji_url + name + '.png'
-        import urllib
-        urllib.urlretrieve(url, filename=emojifile)
+        import urllib.request, urllib.parse, urllib.error
+        urllib.request.urlretrieve(url, filename=emojifile)
         # Check that this was successful
         with open(emojifile, 'r') as f:
             if 'Not Found' in f.read():

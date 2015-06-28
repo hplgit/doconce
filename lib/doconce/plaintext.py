@@ -1,4 +1,12 @@
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import print_function
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import str
+from builtins import range
 
 import re, sys
 from .common import default_movie, plain_exercise, bibliography, \
@@ -162,7 +170,7 @@ def plain_quiz(quiz):
         answer = choice[0].capitalize() + '!'
         choice_prefix = common_choice_prefix
         if 'choice prefix' in quiz:
-            if isinstance(quiz['choice prefix'][i], basestring):
+            if isinstance(quiz['choice prefix'][i], str):
                 choice_prefix = quiz['choice prefix'][i]
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
             pass  # don't add choice number/letter

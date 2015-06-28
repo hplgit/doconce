@@ -6,7 +6,14 @@ here.
 """
 from __future__ import print_function
 from __future__ import absolute_import
-import re, sys, urllib, os
+from __future__ import unicode_literals
+from __future__ import division
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import str
+from builtins import range
+import re, sys, urllib.request, urllib.parse, urllib.error, os
 from .misc import option, _abort
 
 format = None   # latex, pdflatex, html, plain, etc
@@ -53,15 +60,15 @@ _counter_for_html_movie_player = 0
 
 def internet_access(timeout=1):
     """Return True if internet is on, else False."""
-    import urllib2, socket
+    import urllib.request, urllib.error, urllib.parse, socket
     try:
         # Check google.com with numerical IP-address (which avoids
         # DNS loopup) and set timeout to 1 sec so this does not
         # take much time (google.com should respond quickly)
        #response = urllib2.urlopen('http://8.8.8.8', timeout=timeout)
-       response = urllib2.urlopen('http://vg.no', timeout=timeout)
+       response = urllib.request.urlopen('http://vg.no', timeout=timeout)
        return True
-    except (urllib2.URLError, socket.timeout) as err:
+    except (urllib.error.URLError, socket.timeout) as err:
         pass
     return False
 
@@ -126,7 +133,7 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
                 print('...', msg, filename, '...')
-            f = urllib.urlopen(filename)
+            f = urllib.request.urlopen(filename)
             text = f.read()
             f.close()
             ext = os.path.splitext(filename)[1]
@@ -259,9 +266,9 @@ def online_python_tutor(code, return_tp='iframe'):
     (return_tp is 'iframe') for code embedded in
     on pythontutor.com.
     """
-    codestr = urllib.quote_plus(code.strip())
+    codestr = urllib.parse.quote_plus(code.strip())
     if return_tp == 'iframe':
-        urlprm = urllib.urlencode({'py': 2,
+        urlprm = urllib.parse.urlencode({'py': 2,
                                    'curInstr': 0,
                                    'cumulative': 'false'})
         iframe = """\
@@ -540,9 +547,8 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
     # Consistency check (only for complete documents):
     # find no of distinct code and math blocks
     # (can be duplicates when solutions are copied at the end)
-    import sets
     pattern = r'^\d+ ' + _CODE_BLOCK
-    n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
+    n = len(set(re.findall(pattern, filestr, flags=re.MULTILINE)))
     if complete_doc and len(code_blocks) != n:
         print('*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks)))
         print("""    Possible causes:
@@ -554,7 +560,7 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
      smaller and smaller parts of each file)""")
         _abort()
     pattern = r'^\d+ ' + _MATH_BLOCK
-    n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
+    n = len(set(re.findall(pattern, filestr, flags=re.MULTILINE)))
     if complete_doc and len(tex_blocks) != n:
         print('*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks)))
         print("""    Possible causes:

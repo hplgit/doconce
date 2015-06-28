@@ -4,6 +4,13 @@ for syntax.
 """
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import zip
+from builtins import range
 # Remaining key issue: github_md dialect hardcodes all the newlines so
 # lines in paragraphs should be joined if the resulting Markdown text
 # is published as an issue on github.com. (Difficult to solve. Current
@@ -385,7 +392,7 @@ def pandoc_quiz(quiz):
         answer = choice[0].capitalize() + '!'
         choice_prefix = common_choice_prefix
         if 'choice prefix' in quiz:
-            if isinstance(quiz['choice prefix'][i], basestring):
+            if isinstance(quiz['choice prefix'][i], str):
                 choice_prefix = quiz['choice prefix'][i]
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
             pass  # don't add choice number/letter

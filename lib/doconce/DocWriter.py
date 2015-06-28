@@ -10,11 +10,21 @@ write to) various formats.
 This module works, but is unifinished and needs documentation!
 """
 from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import division
+from __future__ import absolute_import
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import str
+from builtins import range
+from builtins import object
 
-from StringIO import StringIO
-import re, os, glob, commands
+from io import StringIO
+import re, os, glob, subprocess
 
-class _BaseWriter:
+class _BaseWriter(object):
     """
     Base class for document writing classes.
     Each subclass implements a specific format (html, latex,
@@ -181,7 +191,7 @@ class _BaseWriter:
         for i, item in enumerate(items):
             if isinstance(item, (list,tuple)):
                 self.unfold_list(item, item_handler, listtype, level+1)
-            elif isinstance(item, basestring):
+            elif isinstance(item, str):
                 if listtype == 'description':
                     # split out keyword in a description list:
                     parts = item.split(':')
@@ -257,7 +267,7 @@ class _BaseWriter:
         file = files[0]
         cmd = 'convert %s %s' % (file, final)
         print(cmd)
-        failure, outtext = commands.getstatusoutput(cmd)
+        failure, outtext = subprocess.getstatusoutput(cmd)
         if failure:
             print('Could not convert;\n  %s' % cmd)
         return final
@@ -638,7 +648,7 @@ class LaTeX(_BaseWriter):
 # explicitly list all methods and their arguments and then add
 # the body for writer in self.writers: writer.method(arg1, arg2, ...)
 
-class DocWriter:
+class DocWriter(object):
     """
     DocWriter can write documents in several formats at once.
     """
@@ -719,7 +729,7 @@ def _%s:
 func_to_method(_%s, DocWriter, '%s')
 """ % (signature_def, docstring, signature_call, method, method)
     #print 'Autogenerating\n', code
-    exec code
+    exec(code)
 
 def html_movie(plotfiles, interval_ms=300, width=800, height=600,
                casename=None):
@@ -778,7 +788,7 @@ def html_movie(plotfiles, interval_ms=300, width=800, height=600,
 
     # Start with expanding plotfiles if it is a filename generator
     if not isinstance(plotfiles, (tuple,list)):
-        if not isinstance(plotfiles, (str,unicode)):
+        if not isinstance(plotfiles, (str,str)):
             raise TypeError('plotfiles must be list or filename generator, not %s' % type(plotfiles))
 
         filename_generator = plotfiles

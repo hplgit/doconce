@@ -6,6 +6,12 @@
 
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import range
 import shutil, re, sys, os
 
 def process_newcommand(line):
@@ -115,7 +121,7 @@ def substitute(source, newcommands):
         return text
 
 def expand_newcommands(newcommands_files, source):
-    if isinstance(newcommands_files, basestring):
+    if isinstance(newcommands_files, str):
         newcommands_files = [newcommands_files]  # always list
     newcommands = []
     for filename in newcommands_files:

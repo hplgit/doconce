@@ -26,6 +26,15 @@ let paragraphs be running text inside the parent element.
 """
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import division
+from __future__ import unicode_literals
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.utils import old_div
 
 import re, os, glob, sys, glob
 from .common import table_analysis, plain_exercise, insert_code_and_tex, \
@@ -288,7 +297,7 @@ def xml_ref_and_label(section_label2title, format, filestr):
 
     # make special anchors for all the section titles with labels:
     def subst_heading(m):
-        heading_tp = (11 - len(m.group(1)))/2
+        heading_tp = old_div((11 - len(m.group(1))),2)
         s = '<section type="%s" label="%s">%s</section>' % (heading_tp, label, title.replace('\\', '\\\\'))
         return s
 
@@ -300,7 +309,7 @@ def xml_ref_and_label(section_label2title, format, filestr):
 
     # Deal with all sections without proceding labels
     def subst_heading2(m):
-        heading_tp = (11 - len(m.group(1)))/2
+        heading_tp = old_div((11 - len(m.group(1))),2)
         s = '<section type="%s" label="None">%s</section>' % \
             (heading_tp, m.group(2).strip())
         return s

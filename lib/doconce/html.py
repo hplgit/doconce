@@ -1,5 +1,13 @@
 from __future__ import print_function
 from __future__ import absolute_import
+from __future__ import unicode_literals
+from __future__ import division
+from future import standard_library
+standard_library.install_aliases()
+from builtins import *
+from builtins import zip
+from builtins import str
+from builtins import range
 import re, os, glob, sys, glob
 from .common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
@@ -43,7 +51,7 @@ def add_to_file_collection(filename, doconce_docname=None, mode='a'):
     and this name is used to set the filename of the file collection.
     Later, `doconce_docname` is not given (otherwise previous info is erased).
     """
-    if isinstance(filename, (str,unicode)):
+    if isinstance(filename, (str,str)):
         filenames = [filename]
     elif isinstance(filename, (list,tuple)):
         filenames = filename
@@ -1917,7 +1925,7 @@ def html_quiz(quiz):
         answer = choice[0].capitalize() + '!'
         choice_prefix = common_choice_prefix
         if 'choice prefix' in quiz:
-            if isinstance(quiz['choice prefix'][i], basestring):
+            if isinstance(quiz['choice prefix'][i], str):
                 choice_prefix = quiz['choice prefix'][i]
         if choice_prefix == '' or choice_prefix[-1] in ['.', ':', '?']:
             pass  # don't add choice number/letter

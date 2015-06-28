@@ -2,7 +2,16 @@
 
 from __future__ import print_function
 from __future__ import absolute_import
-import os, commands, re, sys, glob, shutil
+from __future__ import division
+from __future__ import unicode_literals
+from builtins import *
+from future import standard_library
+standard_library.install_aliases()
+from builtins import zip
+from builtins import str
+from builtins import range
+from past.utils import old_div
+import os, subprocess, re, sys, glob, shutil
 from .common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
@@ -582,8 +591,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = re.sub(exercise_pattern, replacement, filestr,
                              flags=re.MULTILINE)
             # Find suitable titles for list of exercises
-            import sets
-            types_of_exer = sets.Set()
+            types_of_exer = set()
             for exer_tp, dummy, dummy in exercise_headings:
                 types_of_exer.add(exer_tp)
             types_of_exer = list(types_of_exer)
@@ -866,8 +874,8 @@ def latex_figure(m):
         if is_file_or_url(filename) != 'url':
             print('*** error: cannot fetch latex figure %s on the net (no connection or invalid URL)' % filename)
             _abort()
-        import urllib
-        f = urllib.urlopen(filename)
+        import urllib.request, urllib.parse, urllib.error
+        f = urllib.request.urlopen(filename)
         file_content = f.read()
         f.close()
         f = open(basename, 'w')
@@ -1068,7 +1076,7 @@ modestbranding=1   %% no YouTube logo in control bar
                     DocWriter.html_movie(filename)
             # Make a good estimate of the frame rate: it takes 30 secs
             # to run the animation: rate*30 = no of frames
-            framerate = int(len(frames)/30.)
+            framerate = int(old_div(len(frames),30.))
             commands = [r'\includegraphics[width=0.9\textwidth]{%s}' %
                         f for f in frames]
             commands = ('\n\\newframe\n').join(commands)
@@ -1993,8 +2001,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     code_envir_transform = option('latex_admon_envir_map=', None)
     if code_envir_transform:
         envirs = re.findall(r'^\\b([A-Za-z0-9_]+)$', text_block, flags=re.MULTILINE)
-        import sets
-        envirs = list(sets.Set(envirs))  # remove multiple items
+        envirs = list(set(envirs))  # remove multiple items
         if code_envir_transform.isdigit():
             _envir_mapping = {}
             # Just append the digit(s)
