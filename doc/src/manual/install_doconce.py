@@ -71,10 +71,13 @@ system('sudo pip install pyzmq --upgrade')
 system('sudo pip install jsonschema')
 
 # Preprocessors
-system('sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess')
+#pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+system('sudo pip install future')
+system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess')
 system('sudo pip install mako')
 # Publish for handling bibliography
 system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish')
+system('sudo pip install python-Levenshtein')
 
 # Sphinx (with additional third/party themes)
 system('sudo pip install sphinx')

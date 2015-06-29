@@ -62,10 +62,13 @@ pip_install pyzmq --upgrade
 pip_install jsonschema
 
 # Preprocessors
-pip_install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+#pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+pip_install future
+pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess
 pip_install mako
 # Publish for handling bibliography
 pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish
+pip_install python-Levenshtein
 
 # Sphinx (with additional third/party themes)
 pip_install sphinx

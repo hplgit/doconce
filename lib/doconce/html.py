@@ -2683,7 +2683,8 @@ def latin2html(text):
     # codes and writing them out in html
     text_new = []
     try:
-        text = text.decode('utf-8')
+        if hasattr(text, 'decode'):
+            text = text.decode('utf-8')
     except UnicodeDecodeError as e:
         try:
             text = text.decode('latin-1')

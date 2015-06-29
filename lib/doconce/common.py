@@ -157,8 +157,8 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                         special_host = True
                         break
                 if special_host and (
-                    '>404' in text # <title>404 ...?
-                    or 'Not Found' in text):
+                    b'>404' in text # <title>404 ...?
+                    or b'Not Found' in text):
                     # HTML file with an error message: file not found
                     if msg or debug:
                         print('    %s not found' % filename)

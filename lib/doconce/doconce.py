@@ -1201,7 +1201,7 @@ def insert_os_commands(filestr, format):
         print('-------- terminal output ----------')
         print(output.rstrip())
         print('-----------------------------------')
-        return output
+        return output.decode('utf-8')
 
     lines = filestr.splitlines()
     inside_verbatim = False

@@ -1905,11 +1905,13 @@ download preprocess from http://code.google.com/p/preprocess""")
 
     # Make sure we include the necessary verbatim packages
     if packages:
-        filestr = filestr.replace(r'\usepackage{ptex2tex}',
-           r'\usepackage{%s} %% packages needed for verbatim environments' %
+        # Note that in py2 w/future r'\u' does not work, need '\\u',
+        # see http://matplotlib.org/devel/portable_code.html
+        filestr = filestr.replace('\\usepackage{ptex2tex}',
+           '\\usepackage{%s} %% packages needed for verbatim environments' %
                                           (','.join(packages)))
     else:
-        filestr = filestr.replace(r'\usepackage{ptex2tex}', '')
+        filestr = filestr.replace('\\usepackage{ptex2tex}', '')
 
     # Copy less well-known latex packages to the current directory
     stylefiles = [name for name in ['minted', 'anslistings', 'fancyvrb']
@@ -5226,15 +5228,15 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     # Check if we need minted or anslistings:
     if re.search('\\usepackage.+minted', header):
         slides = slides.replace(
-            r'%\usepackage{minted}', r'\usepackage{minted}')
+            r'%\usepackage{minted}', '\\usepackage{minted}')
     if re.search('\\usepackage.+listings', header):
         m = re.search(r'^% Define colors.+?^% end of custom lstdefinestyles', header, flags=re.DOTALL|re.MULTILINE)
         lststyles = m.group() if m else ''
         slides = slides.replace(
-            r'%\usepackage{listingsutf8}', r'\usepackage{listingsutf8}' + '\n\n' + lststyles)
+            r'%\usepackage{listingsutf8}', '\\usepackage{listingsutf8}' + '\n\n' + lststyles)
     if re.search('\\usepackage.+anslistings', header):
         slides = slides.replace(
-            r'%\usepackage{anslistings}', r'\usepackage{anslistings}')
+            r'%\usepackage{anslistings}', '\\usepackage{anslistings}')
 
     if block_style.startswith('mdbox'):
         # Add defnition of an appropriate mdframe
