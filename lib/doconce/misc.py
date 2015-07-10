@@ -1986,9 +1986,9 @@ def replace_code_command(filestr):
     '''
     # \Verb!...! does not cause linebreak in latex, therefore shift to \texttt{}
     # where possible since this will reduce overfull hboxes
-    filestr = re.sub(r'\{\\Verb!([^{}_$\^#%&\\]+?)!\}',
+    filestr = re.sub(r'\\protect\s*\\Verb!([^{}_$\^#%&\\]+?)!',
                      r'\\texttt{\g<1>}', filestr)
-    filestr = re.sub(r'\{\\protect\s*\\Verb!([^{}_$\^#%&\\]+?)!\}',
+    filestr = re.sub(r'\\Verb!([^{}_$\^#%&\\]+?)!',
                      r'\\texttt{\g<1>}', filestr)
     return filestr
 
@@ -6357,8 +6357,8 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         #sys.exit(1)
 
     # Remove inline quotes before inline verbatim
-    pattern = "``([A-Za-z][A-Za-z0-9\s,.;?!/:'() -]*?)''"
-    text = re.sub(pattern, r'\g<1>', text)
+    pattern = "``(.+?)''"
+    text = re.sub(pattern, r'\g<1>', text, flags=re.DOTALL)
     # Remove inline verbatim
     text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
     if verbose > 0:

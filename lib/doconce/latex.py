@@ -529,9 +529,9 @@ def latex_code(filestr, code_blocks, code_block_types,
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
         if option('examples_as_exercises'):
-            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +(\d+)\s*: +(.+\})'
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +([.\d]+)\s*: +(.+\})'
         else:
-            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +([.\d]+)\s*: +(.+\})'
         # Make table of contents or list of exercises entry
         # (might have to add \phantomsection right before because
         # of the hyperref package?)
@@ -940,6 +940,10 @@ def latex_figure(m):
     verbatim_handler = 'Verb'  # alternative: 'texttt'
     verbatim_text = re.findall(r'(`[^`]+?`)', caption)
     verbatim_text_new = []
+    # Side effect: if verbatim_text occurs more than once,
+    # we get multiple \protect or \texttt, so use a set to
+    # reduce multiples
+    verbatim_text = list(set(verbatim_text))
     for words in verbatim_text:
         new_words = words
         if '_' in new_words:

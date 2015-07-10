@@ -2448,7 +2448,7 @@ and then just the subroutine,
       return
 \efcod
 and finally the complete file with a plain text verbatim environment
-(\Verb!envir=ccq!):
+(\texttt{envir=ccq}):
 \bccq
 C     a comment
 
@@ -2575,7 +2575,7 @@ line
 output
 \eipy
 
-Here is the interactive session again, but with \Verb!pyshell-t!.
+Here is the interactive session again, but with \texttt{pyshell-t}.
 
 \bpyshell
 >>> from numpy import linspace, sin
@@ -2635,7 +2635,7 @@ HTML:
 \ehtmlcod
 
 But inline HTML code is also important, like text that starts with
-\Verb!<a href="! (which can destroy the following text if not properly
+\texttt{<a href="} (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -2716,8 +2716,8 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 __Paragraph heading.__ Paragraphs may have headings.
 \edo
 
-It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
-spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
+spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
 Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
@@ -2725,7 +2725,7 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \Verb!html! \\
+this correctly when \texttt{html} \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -2749,7 +2749,7 @@ They are used in different flavors, now in
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code \Verb!h[i] += 1!\footnote{One-line footnote.}
+ \item and code \texttt{h[i] += 1}\footnote{One-line footnote.}
    (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
@@ -2773,7 +2773,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
+computer code, e.g., as in \texttt{[~x for x in y]} or in \texttt{y=~x}, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -2840,7 +2840,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \Verb!movies.do.txt!.
+Movies are tested in separate file \texttt{movies.do.txt}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -2884,7 +2884,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \Verb!.tex! by proper begin-end {\LaTeX} environments for theorems.
+the \texttt{.tex} by proper begin-end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -2989,15 +2989,15 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \Verb!NaN! \\
+6   & 71,000 & 214        & \texttt{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right before and after verbatim word (with no space):
+and rows starting with \texttt{|-} because of a negative number,
+and \texttt{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}
@@ -3023,8 +3023,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \Verb!norm|length! \\
-$x\cap y$   & \Verb!x|y!         \\
+$ ||a_0|| $ & \texttt{norm|length} \\
+$x\cap y$   & \texttt{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -3067,7 +3067,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Just verbatim! }
+\subsection{\texttt{Just verbatim} }
 
 Some text.
 
@@ -3079,7 +3079,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Verbatim! beginning}
+\subsection{\texttt{Verbatim} beginning}
 
 Some text.
 
@@ -3091,7 +3091,7 @@ Some text.
 
 Some text.
 
-\subsection{Maybe \protect\Verb!verbatim end! }
+\subsection{Maybe \texttt{verbatim end} }
 
 Some text.
 
@@ -3103,7 +3103,7 @@ Some text.
 
 Some text.
 
-\subsection{The middle has \protect\Verb!verbatim! word}
+\subsection{The middle has \texttt{verbatim} word}
 
 Some text.
 
@@ -3112,7 +3112,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Just verbatim!.}
+\paragraph{\texttt{Just verbatim}.}
 Some text.
 
 
@@ -3120,7 +3120,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Verbatim beginning!.}
+\paragraph{\texttt{Verbatim beginning}.}
 Some text.
 
 
@@ -3128,7 +3128,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\Verb!verbatim end!.}
+\paragraph{Maybe \texttt{verbatim end}.}
 Some text.
 
 
@@ -3136,7 +3136,7 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\Verb!verbatim! word.}
+\paragraph{The middle has \texttt{verbatim} word.}
 Some text.
 
 
@@ -3158,7 +3158,7 @@ in the standard LaTeX-style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \Verb!.txt!.
+period, like \texttt{.txt}.
 
 
 \subsection{Bibliography test}
@@ -3200,7 +3200,7 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \Verb!Example:!
+Examples can start with a subsection heading starting with \texttt{Example:}
 and then, with the command-line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
@@ -3234,7 +3234,7 @@ maybe over multiple doconce input lines.
 
 
 Example~\ref{ex:test:1p1} demonstrates how to write a test function.
-That is, a special test function for a function \Verb!add! appears in
+That is, a special test function for a function \texttt{add} appears in
 Example~\ref{ex:test:1p1}.
 
 
@@ -3294,7 +3294,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -3303,14 +3303,14 @@ colon, semi-colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}}, or just a \href{{mailto:hpl@simula.no}}{mail link}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}}.
 
-Here are some tough tests of URLs, especially for the \Verb!latex! format:
+Here are some tough tests of URLs, especially for the \texttt{latex} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \Verb!--device=paper! option it is important to test that URLs with
+For the \texttt{--device=paper} option it is important to test that URLs with
 monospace font link text get a footnote
 (unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
@@ -3326,7 +3326,7 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 % if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\Verb!--device=paper! option must be correct. We have
+\texttt{--device=paper} option must be correct. We have
 \href{{http://google.com}}{google}, \href{{http://google.com}}{google}, and
 \href{{http://google.com}}{google}, which should result in exactly three
 footnotes.
@@ -3372,7 +3372,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier-Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
+the Navier-Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non-latex formats.
@@ -3443,7 +3443,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 % --- end hint in exercise ---
 
@@ -3451,14 +3451,14 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the \Verb!random.random()! function returns a number $<1/2$, let it be
+If the \texttt{random.random()} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -3487,12 +3487,12 @@ Sometimes the code is less intuitive, sometimes not.
 At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
-Vectorize the code in a) using \Verb!numpy.sum!.
+Vectorize the code in a) using \texttt{numpy.sum}.
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
+\texttt{np.sum(np.where(r <= 0.5, 1, 0))} or \texttt{np.sum(r <= 0.5)}.
 
 % --- end answer of exercise ---
 
@@ -3541,7 +3541,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1!.
+\noindent Filename: \texttt{myexer1}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -3578,7 +3578,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \Verb!random! module,
+draw $N$ such random numbers using Python's standard \texttt{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -3611,7 +3611,7 @@ where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
 is a point on the circle.
-The formula can be used to generate \Verb!n! points on a circle:
+The formula can be used to generate \texttt{n} points on a circle:
 
 \bpypro
 import numpy as np
@@ -3629,7 +3629,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \Verb!circle! function
+center and radius. Plot each circle using the \texttt{circle} function
 above.
 
 
@@ -3639,7 +3639,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \Verb!numpy.random! module to draw the
+Use the \texttt{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -3660,13 +3660,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm!.
+\noindent Filename: \texttt{norm}.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles!.
+\noindent Filename: \texttt{circles}.
 
 % Closing remarks for this Project
 
@@ -3779,7 +3779,7 @@ Test list in exercise:
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
+And code \texttt{a=b} in this solution:
 \bccq
 a = b  # code in solution
 \eccq
@@ -3813,7 +3813,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \Verb!lambda x: x+2! is correctly placed here:
+And a test that the code \texttt{lambda x: x+2} is correctly placed here:
 
 \bccq
 lambda x: x+2
@@ -3885,7 +3885,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
-\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+\textbf{C}: Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
@@ -4184,7 +4184,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -4197,9 +4197,9 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
+\subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
-The point here is to test 1) \Verb!verbatim! code in headings, and 2)
+The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -4213,7 +4213,7 @@ Fun is fun.--- Unknown.
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \Verb!admon.do.txt!.
+in a separate document: \texttt{admon.do.txt}.
 
 
 % ------------------- end of main content ---------------
@@ -4776,7 +4776,7 @@ and then just the subroutine,
 \end{minted}
 \noindent
 and finally the complete file with a plain text verbatim environment
-(\Verb!envir=ccq!):
+(\texttt{envir=ccq}):
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 C     a comment
@@ -4912,7 +4912,7 @@ output
 \end{Verbatim}
 \noindent
 
-Here is the interactive session again, but with \Verb!pyshell-t!.
+Here is the interactive session again, but with \texttt{pyshell-t}.
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 >>> from numpy import linspace, sin
@@ -4994,7 +4994,7 @@ HTML:
 \noindent
 
 But inline HTML code is also important, like text that starts with
-\Verb!<a href="! (which can destroy the following text if not properly
+\texttt{<a href="} (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -5081,8 +5081,8 @@ __Paragraph heading.__ Paragraphs may have headings.
 \end{Verbatim}
 \noindent
 
-It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
-spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
+spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
 Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
@@ -5090,7 +5090,7 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \Verb!html! \\
+this correctly when \texttt{html} \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -5116,7 +5116,7 @@ They are used in different flavors, now in
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code \Verb!h[i] += 1!\footnote{One--line footnote.}
+ \item and code \texttt{h[i] += 1}\footnote{One--line footnote.}
    (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\texttt{http://google.com}}\footnote{\href{{google.com}}{\nolinkurl{google.com}\footnote{\texttt{google.com}}} is perhaps the most famous web site today.}
@@ -5140,7 +5140,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}\footnote{\texttt{http://google.com}}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
+computer code, e.g., as in \texttt{[~x for x in y]} or in \texttt{y=~x}, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -5207,7 +5207,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \Verb!movies.do.txt!.
+Movies are tested in separate file \texttt{movies.do.txt}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -5253,7 +5253,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \Verb!.tex! by proper begin--end {\LaTeX} environments for theorems.
+the \texttt{.tex} by proper begin--end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -5360,15 +5360,15 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \Verb!NaN! \\
+6   & 71,000 & 214        & \texttt{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right before and after verbatim word (with no space):
+and rows starting with \texttt{|-} because of a negative number,
+and \texttt{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}
@@ -5394,8 +5394,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \Verb!norm|length! \\
-$x\cap y$   & \Verb!x|y!         \\
+$ ||a_0|| $ & \texttt{norm|length} \\
+$x\cap y$   & \texttt{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -5438,7 +5438,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Just verbatim! }
+\subsection{\texttt{Just verbatim} }
 
 Some text.
 
@@ -5450,7 +5450,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Verbatim! beginning}
+\subsection{\texttt{Verbatim} beginning}
 
 Some text.
 
@@ -5462,7 +5462,7 @@ Some text.
 
 Some text.
 
-\subsection{Maybe \protect\Verb!verbatim end! }
+\subsection{Maybe \texttt{verbatim end} }
 
 Some text.
 
@@ -5474,7 +5474,7 @@ Some text.
 
 Some text.
 
-\subsection{The middle has \protect\Verb!verbatim! word}
+\subsection{The middle has \texttt{verbatim} word}
 
 Some text.
 
@@ -5483,7 +5483,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Just verbatim!.}
+\paragraph{\texttt{Just verbatim}.}
 Some text.
 
 
@@ -5491,7 +5491,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Verbatim beginning!.}
+\paragraph{\texttt{Verbatim beginning}.}
 Some text.
 
 
@@ -5499,7 +5499,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\Verb!verbatim end!.}
+\paragraph{Maybe \texttt{verbatim end}.}
 Some text.
 
 
@@ -5507,7 +5507,7 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\Verb!verbatim! word.}
+\paragraph{The middle has \texttt{verbatim} word.}
 Some text.
 
 
@@ -5531,7 +5531,7 @@ in the standard LaTeX--style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non--LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \Verb!.txt!.
+period, like \texttt{.txt}.
 
 
 \subsection{Bibliography test}
@@ -5574,7 +5574,7 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \Verb!Example:!
+Examples can start with a subsection heading starting with \texttt{Example:}
 and then, with the command--line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
@@ -5608,7 +5608,7 @@ maybe over multiple doconce input lines.
 
 
 Example~\ref{ex:test:1p1} demonstrates how to write a test function.
-That is, a special test function for a function \Verb!add! appears in
+That is, a special test function for a function \texttt{add} appears in
 Example~\ref{ex:test:1p1}.
 
 
@@ -5669,7 +5669,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
 newline}\footnote{\texttt{testdoc.do.txt}}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file}\footnote{\texttt{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}} is
 fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -5678,14 +5678,14 @@ colon, semi--colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}, or just a \href{{mailto:hpl@simula.no}}{mail link}\footnote{\texttt{mailto:hpl@simula.no}}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}.
 
-Here are some tough tests of URLs, especially for the \Verb!latex! format:
+Here are some tough tests of URLs, especially for the \texttt{latex} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes}\footnote{\texttt{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes\_formulas}} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}\footnote{\texttt{http://www.springer.com/mathematics/computational+science+\%26+engineering/book/978-3-642-23098-1}}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \Verb!--device=paper! option it is important to test that URLs with
+For the \texttt{--device=paper} option it is important to test that URLs with
 monospace font link text get a footnote
 (unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
@@ -5701,7 +5701,7 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 % if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\Verb!--device=paper! option must be correct. We have
+\texttt{--device=paper} option must be correct. We have
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, and
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, which should result in exactly three
 footnotes.
@@ -5747,7 +5747,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier--Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
+the Navier--Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non--latex formats.
@@ -5819,7 +5819,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 % --- end hint in exercise ---
 
@@ -5827,14 +5827,14 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the \Verb!random.random()! function returns a number $<1/2$, let it be
+If the \texttt{random.random()} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -5864,12 +5864,12 @@ Sometimes the code is less intuitive, sometimes not.
 At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
-Vectorize the code in a) using \Verb!numpy.sum!.
+Vectorize the code in a) using \texttt{numpy.sum}.
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
+\texttt{np.sum(np.where(r <= 0.5, 1, 0))} or \texttt{np.sum(r <= 0.5)}.
 
 % --- end answer of exercise ---
 
@@ -5919,7 +5919,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1!.
+\noindent Filename: \texttt{myexer1}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -5957,7 +5957,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \Verb!random! module,
+draw $N$ such random numbers using Python's standard \texttt{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -5991,7 +5991,7 @@ where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
 is a point on the circle.
-The formula can be used to generate \Verb!n! points on a circle:
+The formula can be used to generate \texttt{n} points on a circle:
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import numpy as np
@@ -6010,7 +6010,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \Verb!circle! function
+center and radius. Plot each circle using the \texttt{circle} function
 above.
 
 
@@ -6020,7 +6020,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \Verb!numpy.random! module to draw the
+Use the \texttt{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -6041,13 +6041,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm!.
+\noindent Filename: \texttt{norm}.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles!.
+\noindent Filename: \texttt{circles}.
 
 % Closing remarks for this Project
 
@@ -6163,7 +6163,7 @@ Test list in exercise:
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
+And code \texttt{a=b} in this solution:
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
 a = b  # code in solution
@@ -6201,7 +6201,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \Verb!lambda x: x+2! is correctly placed here:
+And a test that the code \texttt{lambda x: x+2} is correctly placed here:
 
 \begin{Verbatim}[fontsize=\fontsize{9pt}{9pt},tabsize=8,baselinestretch=0.85,
 fontfamily=tt,xleftmargin=7mm]
@@ -6277,7 +6277,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
-\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+\textbf{C}: Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
@@ -6579,7 +6579,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -6592,9 +6592,9 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
+\subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
-The point here is to test 1) \Verb!verbatim! code in headings, and 2)
+The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -6608,7 +6608,7 @@ Fun is fun.--- Unknown.
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \Verb!admon.do.txt!.
+in a separate document: \texttt{admon.do.txt}.
 
 
 % ------------------- end of main content ---------------
@@ -7194,7 +7194,7 @@ and then just the subroutine,
       return
 \end{minted}
 and finally the complete file with a plain text verbatim environment
-(\Verb!envir=ccq!):
+(\texttt{envir=ccq}):
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 C     a comment
 
@@ -7318,7 +7318,7 @@ line
 output
 \end{minted}
 
-Here is the interactive session again, but with \Verb!pyshell-t!.
+Here is the interactive session again, but with \texttt{pyshell-t}.
 
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 >>> from numpy import linspace, sin
@@ -7378,7 +7378,7 @@ HTML:
 \end{minted}
 
 But inline HTML code is also important, like text that starts with
-\Verb!<a href="! (which can destroy the following text if not properly
+\texttt{<a href="} (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -7459,8 +7459,8 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 __Paragraph heading.__ Paragraphs may have headings.
 \end{minted}
 
-It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
-spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
+spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
 Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
@@ -7468,7 +7468,7 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \Verb!html! \\
+this correctly when \texttt{html} \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -7492,7 +7492,7 @@ They are used in different flavors, now in
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code \Verb!h[i] += 1!\footnote{One--line footnote.}
+ \item and code \texttt{h[i] += 1}\footnote{One--line footnote.}
    (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\texttt{http://google.com}}\footnote{\href{{google.com}}{\nolinkurl{google.com}\footnote{\texttt{google.com}}} is perhaps the most famous web site today.}
@@ -7516,7 +7516,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}\footnote{\texttt{http://google.com}}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
+computer code, e.g., as in \texttt{[~x for x in y]} or in \texttt{y=~x}, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -7583,7 +7583,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \Verb!movies.do.txt!.
+Movies are tested in separate file \texttt{movies.do.txt}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -7627,7 +7627,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \Verb!.tex! by proper begin--end {\LaTeX} environments for theorems.
+the \texttt{.tex} by proper begin--end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -7732,15 +7732,15 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \Verb!NaN! \\
+6   & 71,000 & 214        & \texttt{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right before and after verbatim word (with no space):
+and rows starting with \texttt{|-} because of a negative number,
+and \texttt{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}
@@ -7766,8 +7766,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \Verb!norm|length! \\
-$x\cap y$   & \Verb!x|y!         \\
+$ ||a_0|| $ & \texttt{norm|length} \\
+$x\cap y$   & \texttt{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -7810,7 +7810,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Just verbatim! }
+\subsection{\texttt{Just verbatim} }
 
 Some text.
 
@@ -7822,7 +7822,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Verbatim! beginning}
+\subsection{\texttt{Verbatim} beginning}
 
 Some text.
 
@@ -7834,7 +7834,7 @@ Some text.
 
 Some text.
 
-\subsection{Maybe \protect\Verb!verbatim end! }
+\subsection{Maybe \texttt{verbatim end} }
 
 Some text.
 
@@ -7846,7 +7846,7 @@ Some text.
 
 Some text.
 
-\subsection{The middle has \protect\Verb!verbatim! word}
+\subsection{The middle has \texttt{verbatim} word}
 
 Some text.
 
@@ -7855,7 +7855,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Just verbatim!.}
+\paragraph{\texttt{Just verbatim}.}
 Some text.
 
 
@@ -7863,7 +7863,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Verbatim beginning!.}
+\paragraph{\texttt{Verbatim beginning}.}
 Some text.
 
 
@@ -7871,7 +7871,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\Verb!verbatim end!.}
+\paragraph{Maybe \texttt{verbatim end}.}
 Some text.
 
 
@@ -7879,7 +7879,7 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\Verb!verbatim! word.}
+\paragraph{The middle has \texttt{verbatim} word.}
 Some text.
 
 
@@ -7901,7 +7901,7 @@ in the standard LaTeX--style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non--LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \Verb!.txt!.
+period, like \texttt{.txt}.
 
 
 \subsection{Bibliography test}
@@ -7944,7 +7944,7 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \Verb!Example:!
+Examples can start with a subsection heading starting with \texttt{Example:}
 and then, with the command--line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
@@ -7978,7 +7978,7 @@ maybe over multiple doconce input lines.
 
 
 Example~\ref{ex:test:1p1} demonstrates how to write a test function.
-That is, a special test function for a function \Verb!add! appears in
+That is, a special test function for a function \texttt{add} appears in
 Example~\ref{ex:test:1p1}.
 
 
@@ -8038,7 +8038,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}\footnote{\texttt{testdoc.do.txt}}} or \href{{testdoc.do.txt}}{a link with
 newline}\footnote{\texttt{testdoc.do.txt}}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}} or \href{{http://folk.uio.no/hpl}}{hpl}\footnote{\texttt{http://folk.uio.no/hpl}}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file}\footnote{\texttt{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}} is
 fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -8047,14 +8047,14 @@ colon, semi--colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}, or just a \href{{mailto:hpl@simula.no}}{mail link}\footnote{\texttt{mailto:hpl@simula.no}}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}\footnote{\texttt{mailto:hpl@simula.no}}}.
 
-Here are some tough tests of URLs, especially for the \Verb!latex! format:
+Here are some tough tests of URLs, especially for the \texttt{latex} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes}\footnote{\texttt{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes\_formulas}} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}\footnote{\texttt{http://www.springer.com/mathematics/computational+science+\%26+engineering/book/978-3-642-23098-1}}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \Verb!--device=paper! option it is important to test that URLs with
+For the \texttt{--device=paper} option it is important to test that URLs with
 monospace font link text get a footnote
 (unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
@@ -8070,7 +8070,7 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 % if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\Verb!--device=paper! option must be correct. We have
+\texttt{--device=paper} option must be correct. We have
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, and
 \href{{http://google.com}}{google}\footnote{\texttt{http://google.com}}, which should result in exactly three
 footnotes.
@@ -8116,7 +8116,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier--Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
+the Navier--Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non--latex formats.
@@ -8188,7 +8188,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 % --- end hint in exercise ---
 
@@ -8196,14 +8196,14 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the \Verb!random.random()! function returns a number $<1/2$, let it be
+If the \texttt{random.random()} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -8232,12 +8232,12 @@ Sometimes the code is less intuitive, sometimes not.
 At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
-Vectorize the code in a) using \Verb!numpy.sum!.
+Vectorize the code in a) using \texttt{numpy.sum}.
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
+\texttt{np.sum(np.where(r <= 0.5, 1, 0))} or \texttt{np.sum(r <= 0.5)}.
 
 % --- end answer of exercise ---
 
@@ -8287,7 +8287,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1!.
+\noindent Filename: \texttt{myexer1}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -8325,7 +8325,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \Verb!random! module,
+draw $N$ such random numbers using Python's standard \texttt{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -8359,7 +8359,7 @@ where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
 is a point on the circle.
-The formula can be used to generate \Verb!n! points on a circle:
+The formula can be used to generate \texttt{n} points on a circle:
 
 \begin{python:nt}
 import numpy as np
@@ -8377,7 +8377,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \Verb!circle! function
+center and radius. Plot each circle using the \texttt{circle} function
 above.
 
 
@@ -8387,7 +8387,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \Verb!numpy.random! module to draw the
+Use the \texttt{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -8408,13 +8408,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm!.
+\noindent Filename: \texttt{norm}.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles!.
+\noindent Filename: \texttt{circles}.
 
 % Closing remarks for this Project
 
@@ -8528,7 +8528,7 @@ Test list in exercise:
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
+And code \texttt{a=b} in this solution:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 a = b  # code in solution
 \end{Verbatim}
@@ -8564,7 +8564,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \Verb!lambda x: x+2! is correctly placed here:
+And a test that the code \texttt{lambda x: x+2} is correctly placed here:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 lambda x: x+2
@@ -8637,7 +8637,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
-\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+\textbf{C}: Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
@@ -8939,7 +8939,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -8952,9 +8952,9 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
+\subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
-The point here is to test 1) \Verb!verbatim! code in headings, and 2)
+The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -8968,7 +8968,7 @@ Fun is fun.--- Unknown.
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \Verb!admon.do.txt!.
+in a separate document: \texttt{admon.do.txt}.
 
 
 % ------------------- end of main content ---------------
@@ -9585,7 +9585,7 @@ and then just the subroutine,
 \end{cod}
 \noindent
 and finally the complete file with a plain text verbatim environment
-(\Verb!envir=ccq!):
+(\texttt{envir=ccq}):
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 C     a comment
 
@@ -9722,7 +9722,7 @@ output
 \end{lstlisting}\end{cod}
 \noindent
 
-Here is the interactive session again, but with \Verb!pyshell-t!.
+Here is the interactive session again, but with \texttt{pyshell-t}.
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 >>> from numpy import linspace, sin
@@ -9787,7 +9787,7 @@ HTML:
 \noindent
 
 But inline HTML code is also important, like text that starts with
-\Verb!<a href="! (which can destroy the following text if not properly
+\texttt{<a href="} (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -9871,8 +9871,8 @@ __Paragraph heading.__ Paragraphs may have headings.
 \end{lstlisting}\end{cod}
 \noindent
 
-It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
-spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
+spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
 Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
@@ -9880,7 +9880,7 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \Verb!html! \\
+this correctly when \texttt{html} \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -9904,7 +9904,7 @@ They are used in different flavors, now in
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code \Verb!h[i] += 1!\footnote{One-line footnote.}
+ \item and code \texttt{h[i] += 1}\footnote{One-line footnote.}
    (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
@@ -9928,7 +9928,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
+computer code, e.g., as in \texttt{[~x for x in y]} or in \texttt{y=~x}, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -9995,7 +9995,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \Verb!movies.do.txt!.
+Movies are tested in separate file \texttt{movies.do.txt}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -10040,7 +10040,7 @@ Or with align with label and numbers:
 
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \Verb!.tex! by proper begin-end {\LaTeX} environments for theorems.
+the \texttt{.tex} by proper begin-end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -10146,15 +10146,15 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \Verb!NaN! \\
+6   & 71,000 & 214        & \texttt{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right before and after verbatim word (with no space):
+and rows starting with \texttt{|-} because of a negative number,
+and \texttt{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}
@@ -10180,8 +10180,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \Verb!norm|length! \\
-$x\cap y$   & \Verb!x|y!         \\
+$ ||a_0|| $ & \texttt{norm|length} \\
+$x\cap y$   & \texttt{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -10224,7 +10224,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Just verbatim! }
+\subsection{\texttt{Just verbatim} }
 
 Some text.
 
@@ -10236,7 +10236,7 @@ Some text.
 
 Some text.
 
-\subsection{\protect\Verb!Verbatim! beginning}
+\subsection{\texttt{Verbatim} beginning}
 
 Some text.
 
@@ -10248,7 +10248,7 @@ Some text.
 
 Some text.
 
-\subsection{Maybe \protect\Verb!verbatim end! }
+\subsection{Maybe \texttt{verbatim end} }
 
 Some text.
 
@@ -10260,7 +10260,7 @@ Some text.
 
 Some text.
 
-\subsection{The middle has \protect\Verb!verbatim! word}
+\subsection{The middle has \texttt{verbatim} word}
 
 Some text.
 
@@ -10269,7 +10269,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Just verbatim!.}
+\paragraph{\texttt{Just verbatim}.}
 Some text.
 
 
@@ -10277,7 +10277,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Verbatim beginning!.}
+\paragraph{\texttt{Verbatim beginning}.}
 Some text.
 
 
@@ -10285,7 +10285,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\Verb!verbatim end!.}
+\paragraph{Maybe \texttt{verbatim end}.}
 Some text.
 
 
@@ -10293,7 +10293,7 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\Verb!verbatim! word.}
+\paragraph{The middle has \texttt{verbatim} word.}
 Some text.
 
 
@@ -10316,7 +10316,7 @@ in the standard LaTeX-style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \Verb!.txt!.
+period, like \texttt{.txt}.
 
 
 \subsection{Bibliography test}
@@ -10358,7 +10358,7 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \Verb!Example:!
+Examples can start with a subsection heading starting with \texttt{Example:}
 and then, with the command-line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
@@ -10392,7 +10392,7 @@ maybe over multiple doconce input lines.
 
 
 Example~\ref{ex:test:1p1} demonstrates how to write a test function.
-That is, a special test function for a function \Verb!add! appears in
+That is, a special test function for a function \texttt{add} appears in
 Example~\ref{ex:test:1p1}.
 
 
@@ -10453,7 +10453,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -10462,14 +10462,14 @@ colon, semi-colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}}, or just a \href{{mailto:hpl@simula.no}}{mail link}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}}.
 
-Here are some tough tests of URLs, especially for the \Verb!latex! format:
+Here are some tough tests of URLs, especially for the \texttt{latex} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \Verb!--device=paper! option it is important to test that URLs with
+For the \texttt{--device=paper} option it is important to test that URLs with
 monospace font link text get a footnote
 (unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
@@ -10485,7 +10485,7 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 % if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\Verb!--device=paper! option must be correct. We have
+\texttt{--device=paper} option must be correct. We have
 \href{{http://google.com}}{google}, \href{{http://google.com}}{google}, and
 \href{{http://google.com}}{google}, which should result in exactly three
 footnotes.
@@ -10531,7 +10531,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier-Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
+the Navier-Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non-latex formats.
@@ -10602,7 +10602,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 % --- end hint in exercise ---
 
@@ -10610,14 +10610,14 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
 
 % --- end hint in exercise ---
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-If the \Verb!random.random()! function returns a number $<1/2$, let it be
+If the \texttt{random.random()} function returns a number $<1/2$, let it be
 head, otherwise tail. Repeat this $N$ number of times.
 
 % --- end answer of exercise ---
@@ -10647,12 +10647,12 @@ Sometimes the code is less intuitive, sometimes not.
 At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
-Vectorize the code in a) using \Verb!numpy.sum!.
+Vectorize the code in a) using \texttt{numpy.sum}.
 
 
 % --- begin answer of exercise ---
 \paragraph{Answer.}
-\Verb!np.sum(np.where(r <= 0.5, 1, 0))! or \Verb!np.sum(r <= 0.5)!.
+\texttt{np.sum(np.where(r <= 0.5, 1, 0))} or \texttt{np.sum(r <= 0.5)}.
 
 % --- end answer of exercise ---
 
@@ -10701,7 +10701,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1!.
+\noindent Filename: \texttt{myexer1}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -10738,7 +10738,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \Verb!random! module,
+draw $N$ such random numbers using Python's standard \texttt{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -10771,7 +10771,7 @@ where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
 is a point on the circle.
-The formula can be used to generate \Verb!n! points on a circle:
+The formula can be used to generate \texttt{n} points on a circle:
 
 \begin{pro}{cbg_blue1}{bar_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 import numpy as np
@@ -10790,7 +10790,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \Verb!circle! function
+center and radius. Plot each circle using the \texttt{circle} function
 above.
 
 
@@ -10800,7 +10800,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \Verb!numpy.random! module to draw the
+Use the \texttt{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -10821,13 +10821,13 @@ Here goes a full solution to part a).
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm!.
+\noindent Filename: \texttt{norm}.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles!.
+\noindent Filename: \texttt{circles}.
 
 % Closing remarks for this Project
 
@@ -10941,7 +10941,7 @@ Test list in exercise:
 Here goes a full solution of the whole exercise.
 With some math $a=b$ in this solution:
 \[ \hbox{math in solution: } a = b \]
-And code \Verb!a=b! in this solution:
+And code \texttt{a=b} in this solution:
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 a = b  # code in solution
 \end{lstlisting}\end{cod}
@@ -10976,7 +10976,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \Verb!lambda x: x+2! is correctly placed here:
+And a test that the code \texttt{lambda x: x+2} is correctly placed here:
 
 \begin{cod}{cbg_blue1}\begin{lstlisting}[language=Python,style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]
 lambda x: x+2
@@ -11050,7 +11050,7 @@ for $x$ or $y$, not a function $y(x)$.
 
 \textbf{B}: Wrong. Almost, but the sign is wrong (note the minus!).
 
-\textbf{C}: Wrong. Ooops, forgot a minus: \Verb!exp(-x)!, otherwise this Python code
+\textbf{C}: Wrong. Ooops, forgot a minus: \texttt{exp(-x)}, otherwise this Python code
 must be considered as a good answer. It is more natural,
 though, to write the solution to the problem
 in mathematical notation:
@@ -11349,7 +11349,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -11362,9 +11362,9 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\subsection{Appendix: Testing headings ending with \protect\Verb!verbatim inline! }
+\subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
-The point here is to test 1) \Verb!verbatim! code in headings, and 2)
+The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -11378,7 +11378,7 @@ Fun is fun.--- Unknown.
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \Verb!admon.do.txt!.
+in a separate document: \texttt{admon.do.txt}.
 
 
 % ------------------- end of main content ---------------
@@ -30585,28 +30585,28 @@ are to exist side by side, a flexible way of referencing is needed.
 For this purpose, DocOnce offers \emph{generalized references} which allows
 a reference to have two different formulations, one for internal
 references and one for external references. Since {\LaTeX} supports
-references to labels in external documents via the \Verb!xr! package,
+references to labels in external documents via the \texttt{xr} package,
 the generalized references in DocOnce has a syntax that may utilize
-the \Verb!xr! feature in {\LaTeX}.
+the \texttt{xr} feature in {\LaTeX}.
 
 The syntax of generalized references reads
 \bccq
 ref[internal][cite][external]
 \eccq
-If all \Verb!ref{label}! references in the text \Verb!internal! are references
-to labels in the present document, the above \Verb!ref! command is replaced
-by the text \Verb!internal!. Otherwise, if cite is non-empty and the format
-is \Verb!latex! or \Verb!pdflatex! one assumes that the references in \Verb!internal!
+If all \Verb!ref{label}! references in the text \texttt{internal} are references
+to labels in the present document, the above \texttt{ref} command is replaced
+by the text \texttt{internal}. Otherwise, if cite is non-empty and the format
+is \texttt{latex} or \texttt{pdflatex} one assumes that the references in \texttt{internal}
 are to external documents declared by a comment line \Verb!# Externaldocuments: testdoc, mydoc! (usually after the title, authors,
-and date). In this case the output text is \Verb!internal cite! and the
-{\LaTeX} package \Verb!xr! is used to handle the labels in the external documents.
+and date). In this case the output text is \texttt{internal cite} and the
+{\LaTeX} package \texttt{xr} is used to handle the labels in the external documents.
 When referring to a complete chapter (not a section in it), which
 corresponds to a complete external document, it does not make sense
-to write out \Verb!internal cite! since the \Verb!internal! reference is a
-chapter number. In such cases, the \Verb!internal! syntax can be used,
-and if the label is in another {\LaTeX} document, the output is just \Verb!cite!.
+to write out \texttt{internal cite} since the \texttt{internal} reference is a
+chapter number. In such cases, the \texttt{internal} syntax can be used,
+and if the label is in another {\LaTeX} document, the output is just \texttt{cite}.
 For all
-output formats other than \Verb!latex! and \Verb!pdflatex!, the \Verb!external!
+output formats other than \texttt{latex} and \texttt{pdflatex}, the \texttt{external}
 text will be the output.
 
 Here is an example on a specific generalized reference to a section
@@ -30621,7 +30621,7 @@ the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], DocOnce documents may include tables.
 \eccq
-With \Verb!latex! or \Verb!pdflatex! as output, this translates to
+With \texttt{latex} or \texttt{pdflatex} as output, this translates to
 \bccq
 As explained in
 Section ref{subsec:ex}, DocOnce documents may include tables.
@@ -30634,7 +30634,7 @@ Section ref{subsec:ex} in "Langtangen, 2012":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex"
 cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-In a format different from \Verb!latex! and \Verb!pdflatex!, the effective DocOnce
+In a format different from \texttt{latex} and \texttt{pdflatex}, the effective DocOnce
 text becomes
 \bccq
 As explained in
@@ -30644,7 +30644,7 @@ the document "A Document for Testing DocOnce":
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-The rendered text in the current format \Verb!latex! becomes
+The rendered text in the current format \texttt{latex} becomes
 
 
 \begin{quote}
@@ -30656,7 +30656,7 @@ Section~\ref{subsec:ex}in \href{{http://hplgit.github.io/doconce/test/demo_testd
 
 A reference to an entire external document, which is usually a chapter
 if the reference is internal in the DocOnce source, applies the
-\Verb!refch! syntax:
+\texttt{refch} syntax:
 
 \bccq
 As explained in
@@ -30667,8 +30667,8 @@ cite{testdoc:12}][the document
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}], DocOnce documents may include tables.
 \eccq
-The output now if \Verb!ch:testdoc! is not a label in the document,
-becomes in the \Verb!latex! and \Verb!pdflatex! case
+The output now if \texttt{ch:testdoc} is not a label in the document,
+becomes in the \texttt{latex} and \texttt{pdflatex} case
 
 \bccq
 As explained in
@@ -30676,9 +30676,9 @@ As explained in
 "http://hplgit.github.io/doconce/test/demo_testdoc.html"
 cite{testdoc:12}, DocOnce documents may include tables.
 \eccq
-That is, the internal reference \Verb!Chapter ...! is omitted since
+That is, the internal reference \texttt{Chapter ...} is omitted since
 it is not meaningful to refer to an external document as "Chapter".
-The resulting rendered text in the current format \Verb!latex! becomes
+The resulting rendered text in the current format \texttt{latex} becomes
 
 
 \begin{quote}
@@ -30690,7 +30690,7 @@ As explained in
 
 Note that {\LaTeX} cannot
 have links to local files, so a complete URL on the form
-\Verb!http://...! must be used.
+\texttt{http://...} must be used.
 
 And here is another example with internal references only:
 
@@ -39313,7 +39313,7 @@ and then just the subroutine,
       return
 \efcod
 and finally the complete file with a plain text verbatim environment
-(\Verb!envir=ccq!):
+(\texttt{envir=ccq}):
 \bccq
 C     a comment
 
@@ -39440,7 +39440,7 @@ line
 output
 \eipy
 
-Here is the interactive session again, but with \Verb!pyshell-t!.
+Here is the interactive session again, but with \texttt{pyshell-t}.
 
 \bpyshell
 >>> from numpy import linspace, sin
@@ -39500,7 +39500,7 @@ HTML:
 \ehtmlcod
 
 But inline HTML code is also important, like text that starts with
-\Verb!<a href="! (which can destroy the following text if not properly
+\texttt{<a href="} (which can destroy the following text if not properly
 quoted).
 
 And here is a system call:
@@ -39581,8 +39581,8 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 __Paragraph heading.__ Paragraphs may have headings.
 \edo
 
-It is time to test \Verb!verbatim inline font! especially with \Verb!a newline inside the text! and an exclamation mark at the end: \Verb!BEGIN!! For
-spellcheck, test \Verb!a verbatim expression! in \Verb!another! in a \Verb!third!.
+It is time to test \texttt{verbatim inline font} especially with \texttt{a newline inside the text} and an exclamation mark at the end: \texttt{BEGIN}! For
+spellcheck, test \texttt{a verbatim expression} in \texttt{another} in a \texttt{third}.
 Also test exclamation mark as in \Verb?!bc? and \Verb?!ec? as well as \Verb?a != b?.
 Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 \Verb!\end{this}\end{that}!, and \Verb!{something \inside braces}!.
@@ -39590,7 +39590,7 @@ Also test backslashes and braces like \Verb!\begin!, \Verb!\begin{enumerate}!,
 Here is some \textcolor{red}{red color} and an attempt to write \textcolor{green}{with
 green color containing a linebreak\\
 code.} Some formats will only display \\
-this correctly when \Verb!html! \\
+this correctly when \texttt{html} \\
 is the output format.
 But here some more running text is added which is not part of
 the previous blocks with line breaks.
@@ -39614,7 +39614,7 @@ They are used in different flavors, now in
 
  \item even with math $\nabla^2u$\footnote{Math footnotes can be dangerous since it interferes with an exponent.}
 
- \item and code \Verb!h[i] += 1!\footnote{One-line footnote.}
+ \item and code \texttt{h[i] += 1}\footnote{One-line footnote.}
    (\emph{must} have space between inline code and footnote!)
 
  \item and \href{{http://google.com}}{links}\footnote{\href{{google.com}}{\nolinkurl{google.com}} is perhaps the most famous web site today.}
@@ -39638,7 +39638,7 @@ example where this is needed is in physical units: 7.4~km is traveled
 in~$7.4/5.5\approx 1.345$~s.  Also check that a~\href{{http://google.com}}{link}~is
 not broken across lines (drag the browser window to test this).
 (On the other hand, the tilde is used in
-computer code, e.g., as in \Verb![~x for x in y]! or in \Verb!y=~x!, and should
+computer code, e.g., as in \texttt{[~x for x in y]} or in \texttt{y=~x}, and should
 of course remain a tilde in those contexts.)
 \end{notice_mdfboxadmon}
 
@@ -39705,7 +39705,7 @@ Test URL as figure name:
 
 
 \paragraph{Remark.}
-Movies are tested in separate file \Verb!movies.do.txt!.
+Movies are tested in separate file \texttt{movies.do.txt}.
 
 
 % Somewhat challenging heading with latex math, \t, \n, ? and parenthesis
@@ -39748,7 +39748,7 @@ Or with align with label and numbers:
 \paragraph{Custom Environments.}
 Here is an attempt to create a theorem environment via Mako
 (for counting theorems) and comment lines to help replacing lines in
-the \Verb!.tex! by proper begin-end {\LaTeX} environments for theorems.
+the \texttt{.tex} by proper begin-end {\LaTeX} environments for theorems.
 Should look nice in most formats!
 
 
@@ -39853,15 +39853,15 @@ symbol:
 3   & 32,000 & 228        & 0.0028     \\
 4   & 47,000 & 270        & 0.0        \\
 5   & 51,000 & 270        & -0.0028    \\
-6   & 71,000 & 214        & \Verb!NaN! \\
+6   & 71,000 & 214        & \texttt{NaN} \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 And add one with verbatim headings (with underscores),
-and rows starting with \Verb!|-! because of a negative number,
-and \Verb!|! right before and after verbatim word (with no space):
+and rows starting with \texttt{|-} because of a negative number,
+and \texttt{|} right before and after verbatim word (with no space):
 
 
 \begin{quote}
@@ -39887,8 +39887,8 @@ but not anymore:
 \hline
 \multicolumn{1}{c}{ $S$ } & \multicolumn{1}{c}{ command } \\
 \hline
-$ ||a_0|| $ & \Verb!norm|length! \\
-$x\cap y$   & \Verb!x|y!         \\
+$ ||a_0|| $ & \texttt{norm|length} \\
+$x\cap y$   & \texttt{x|y}         \\
 \hline
 \end{tabular}
 \end{quote}
@@ -39928,7 +39928,7 @@ Some text.
 \paragraph{\emph{Just emphasize}.}
 Some text.
 
-\paragraph{\protect\Verb!Just verbatim!.}
+\paragraph{\texttt{Just verbatim}.}
 Some text.
 
 \paragraph{\textbf{Bold} beginning.}
@@ -39937,7 +39937,7 @@ Some text.
 \paragraph{\emph{Emphasize} beginning.}
 Some text.
 
-\paragraph{\protect\Verb!Verbatim! beginning.}
+\paragraph{\texttt{Verbatim} beginning.}
 Some text.
 
 \paragraph{Maybe \textbf{bold end}.}
@@ -39946,7 +39946,7 @@ Some text.
 \paragraph{Maybe \emph{emphasize end}.}
 Some text.
 
-\paragraph{Maybe \protect\Verb!verbatim end!.}
+\paragraph{Maybe \texttt{verbatim end}.}
 Some text.
 
 \paragraph{The middle has \textbf{bold} word.}
@@ -39955,7 +39955,7 @@ Some text.
 \paragraph{The middle has \emph{emphasize} word.}
 Some text.
 
-\paragraph{The middle has \protect\Verb!verbatim! word.}
+\paragraph{The middle has \texttt{verbatim} word.}
 Some text.
 
 
@@ -39963,7 +39963,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Just verbatim!.}
+\paragraph{\texttt{Just verbatim}.}
 Some text.
 
 
@@ -39971,7 +39971,7 @@ Some text.
 Some text.
 
 
-\paragraph{\protect\Verb!Verbatim beginning!.}
+\paragraph{\texttt{Verbatim beginning}.}
 Some text.
 
 
@@ -39979,7 +39979,7 @@ Some text.
 Some text.
 
 
-\paragraph{Maybe \protect\Verb!verbatim end!.}
+\paragraph{Maybe \texttt{verbatim end}.}
 Some text.
 
 
@@ -39987,7 +39987,7 @@ Some text.
 Some text.
 
 
-\paragraph{The middle has \protect\Verb!verbatim! word.}
+\paragraph{The middle has \texttt{verbatim} word.}
 Some text.
 
 
@@ -40009,7 +40009,7 @@ in the standard LaTeX-style that gives correct {\LaTeX} formatting and
 ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
-period, like \Verb!.txt!.
+period, like \texttt{.txt}.
 
 
 \paragraph{Bibliography test.}
@@ -40050,7 +40050,7 @@ the old ME-IN323 book \cite{Langtangen:91} and the
 
 \label{Example}
 
-Examples can start with a subsection heading starting with \Verb!Example:!
+Examples can start with a subsection heading starting with \texttt{Example:}
 and then, with the command-line option \Verb!--examples_as_exercises! be
 typeset as exercises. This is useful if one has solution
 environments as part of the example.
@@ -40081,7 +40081,7 @@ maybe over multiple doconce input lines.
 
 \paragraph{User-defined environments.}
 Example~\ref{ex:test:1p1} demonstrates how to write a test function.
-That is, a special test function for a function \Verb!add! appears in
+That is, a special test function for a function \texttt{add} appears in
 Example~\ref{ex:test:1p1}.
 
 
@@ -40141,7 +40141,7 @@ the entire URL if desired, \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://fol
 plain file link \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}}, or
 \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{\nolinkurl{testdoc.do.txt}} or \href{{testdoc.do.txt}}{a link with
 newline}. Can test spaces with the link with word
-too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \Verb!file:///! works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
+too: \href{{http://folk.uio.no/hpl}}{hpl} or \href{{http://folk.uio.no/hpl}}{hpl}. Also \texttt{file:///} works: \href{{file:///home/hpl/vc/doconce/doc/demos/manual/manual.html}}{link to a
 file} is
 fine to have. Moreover, ``loose'' URLs work, i.e., no quotes, just
 the plain URL as in \href{{http://folk.uio.no/hpl}}{\nolinkurl{http://folk.uio.no/hpl}}, if followed by space, comma,
@@ -40150,14 +40150,14 @@ colon, semi-colon, question mark, exclamation mark, but not a period
 
 Mail addresses can also be used: \href{{mailto:hpl@simula.no}}{\nolinkurl{hpl@simula.no}}, or just a \href{{mailto:hpl@simula.no}}{mail link}, or a raw \href{{mailto:hpl@simula.no}}{\nolinkurl{mailto:hpl@simula.no}}.
 
-Here are some tough tests of URLs, especially for the \Verb!latex! format:
+Here are some tough tests of URLs, especially for the \texttt{latex} format:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{Newton-Cotes} formulas
 and a \href{{http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1}}{good book}. Need to test
 Newton-Cotes with percentage in URL too:
 \href{{http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton\%E2\%80\%93Cotes_formulas}}
 and \href{{http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae}}{\nolinkurl{http://en.wikipedia.org/wiki/Newton-Cotes\#Open_Newton.E2.80.93Cotes_formulae}} which has a shebang.
 
-For the \Verb!--device=paper! option it is important to test that URLs with
+For the \texttt{--device=paper} option it is important to test that URLs with
 monospace font link text get a footnote
 (unless the \Verb!--latex_no_program_footnotelink!
 is used), as in this reference to
@@ -40173,7 +40173,7 @@ and \href{{http://tinyurl.com/pwyasaa/formulas.ball2.py}}{\nolinkurl{ball2.py}}.
 % if rst output is desired, but placed in a \Verb!_static*! folder.
 
 More tough tests: repeated URLs whose footnotes when using the
-\Verb!--device=paper! option must be correct. We have
+\texttt{--device=paper} option must be correct. We have
 \href{{http://google.com}}{google}, \href{{http://google.com}}{google}, and
 \href{{http://google.com}}{google}, which should result in exactly three
 footnotes.
@@ -40218,7 +40218,7 @@ a &= q + 4 + 5+ 6 \label{eq1} \\
 b &= \nabla^2 u + \nabla^4 x \label{eq2}
 \end{align}
 We can refer to (\ref{eq1})-(\ref{eq2}). They are a bit simpler than
-the Navier-Stokes equations. And test {\LaTeX} hyphen in \Verb!CG-2!.
+the Navier-Stokes equations. And test {\LaTeX} hyphen in \texttt{CG-2}.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 Many of the next environments will fail in non-latex formats.
@@ -40289,7 +40289,7 @@ let the program count the number of heads.
 % --- begin hint in exercise ---
 
 \paragraph{Hint 1.}
-Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
+Use \texttt{r = random.random()} and define head as \texttt{r <= 0.5}.
 
 % --- end hint in exercise ---
 
@@ -40297,7 +40297,7 @@ Use \Verb!r = random.random()! and define head as \Verb!r <= 0.5!.
 
 \paragraph{Hint 2.}
 Draw an integer among $\{1,2\}$ with
-\Verb!r = random.randint(1,2)! and define head when \Verb!r! is 1.
+\texttt{r = random.randint(1,2)} and define head when \texttt{r} is 1.
 
 % --- end hint in exercise ---
 
@@ -40315,7 +40315,7 @@ Sometimes the code is less intuitive, sometimes not.
 At least there is not much to find in Section~\ref{sec1}.
 
 \subex{c)}
-Vectorize the code in a) using \Verb!numpy.sum!.
+Vectorize the code in a) using \texttt{numpy.sum}.
 
 
 % removed !bans ... !eans environment (because of the command-line option --without_answers)
@@ -40364,7 +40364,7 @@ exercises.
 
 Very short exercise. What is the capital
 of Norway?
-\noindent Filename: \Verb!myexer1!.
+\noindent Filename: \texttt{myexer1}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -40401,7 +40401,7 @@ in previous DocOnce versions:
 
 \paragraph{Hint.}
 To answer this question empirically, let a program
-draw $N$ such random numbers using Python's standard \Verb!random! module,
+draw $N$ such random numbers using Python's standard \texttt{random} module,
 count how many of them, $M$, that fall in the interval $(0.5,0.6)$, and
 compute the probability as $M/N$.
 
@@ -40434,7 +40434,7 @@ where $R$ is the radius of the circle, $(x_0,y_0)$ is the
 center point, and $t$ is a parameter in the unit interval $[0,1]$.
 For any $t$, $(x,y)$ computed from (\ref{circle:x})-(\ref{circle:y})
 is a point on the circle.
-The formula can be used to generate \Verb!n! points on a circle:
+The formula can be used to generate \texttt{n} points on a circle:
 
 \bpypro
 import numpy as np
@@ -40452,7 +40452,7 @@ x, y = circle(2.0, 0, 0)
 % which we normally want to keep where they are.
 
 The goal of this project is to draw $N$ circles with random
-center and radius. Plot each circle using the \Verb!circle! function
+center and radius. Plot each circle using the \texttt{circle} function
 above.
 
 
@@ -40462,7 +40462,7 @@ Let $R$ be normally distributed and $(x_0,y_0)$ uniformly distributed.
 % --- begin hint in exercise ---
 
 \paragraph{Hint.}
-Use the \Verb!numpy.random! module to draw the
+Use the \texttt{numpy.random} module to draw the
 $x_0$, $y_0$, and $R$ quantities.
 
 % --- end hint in exercise ---
@@ -40475,13 +40475,13 @@ $x_0$, $y_0$, and $R$ quantities.
 
 \subex{b)}
 Let $R$ be uniformly distributed and $(x_0,y_0)$ normally distributed.
-\noindent Filename: \Verb!norm!.
+\noindent Filename: \texttt{norm}.
 
 \subex{c)}
 Let $R$ and $(x_0,y_0)$ be normally distributed.
 
 
-\noindent Filename: \Verb!circles!.
+\noindent Filename: \texttt{circles}.
 
 % Closing remarks for this Project
 
@@ -40608,7 +40608,7 @@ to test that math block insertion is correct:
 
 \[ \exp{(0)} = 1 \]
 
-And a test that the code \Verb!lambda x: x+2! is correctly placed here:
+And a test that the code \texttt{lambda x: x+2} is correctly placed here:
 
 \bccq
 lambda x: x+2
@@ -40922,7 +40922,7 @@ site. \shortinlinecomment{hpl's semi opinion 1}{ not sure if in the cloud is und
 programming and scientific writing work - and all other important
 files.
 
-The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \Verb!myfile.py!, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
+The simplest services for hosting project files is Dropbox. \longinlinecomment{mp 2}{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} and watch the video. It explains how files, like \texttt{myfile.py}, perhaps containing much math, like $\partial u/\partial t$, are easily communicated between machines. }{ Simply go to \href{{http://dropbox.com}}{\nolinkurl{http://dropbox.com}} } It
 is very easy to get started with Dropbox, and it allows you to share
 files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{computers, tablets, and phones}.
 
@@ -40935,8 +40935,8 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
-\paragraph{Appendix: Testing headings ending with \protect\Verb!verbatim inline!.}
-The point here is to test 1) \Verb!verbatim! code in headings, and 2)
+\paragraph{Appendix: Testing headings ending with \texttt{verbatim inline}.}
+The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
 case in {\LaTeX}.
 
@@ -40950,7 +40950,7 @@ Fun is fun.--- Unknown.
 
 
 And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: \Verb!admon.do.txt!.
+in a separate document: \texttt{admon.do.txt}.
 
 
 % ------------------- end of main content ---------------
@@ -48265,7 +48265,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -48946,7 +48946,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -49634,7 +49634,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -50365,7 +50365,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -51012,7 +51012,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -51705,7 +51705,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -52308,7 +52308,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -53001,7 +53001,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -53652,7 +53652,7 @@ Titles should be optional.
 
 
 \paragraph{Remark.}
-The \Verb!remarks! and \Verb!hint! environments are not allowed outside
+The \texttt{remarks} and \texttt{hint} environments are not allowed outside
 exercises (and problems and projects too).
 
 % ------------------- end of main content ---------------
@@ -65951,16 +65951,16 @@ Probably not, but I have a solution :-)
  \item {\LaTeX} equation math:
 \begin{itemize}
 
-    \item \textbf{LaTeX}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align! +
-      \Verb!eqnarray!, \Verb!split!, \Verb!alignat!, ... (numerous!)
+    \item \textbf{LaTeX}: \texttt{equation*}, \texttt{equation}, \texttt{align*}, \texttt{align} +
+      \texttt{eqnarray}, \texttt{split}, \texttt{alignat}, ... (numerous!)
 
-    \item \textbf{MathJax}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align!
+    \item \textbf{MathJax}: \texttt{equation*}, \texttt{equation}, \texttt{align*}, \texttt{align}
 
-    \item \textbf{MediaWiki}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align!
+    \item \textbf{MediaWiki}: \texttt{equation*}, \texttt{equation}, \texttt{align*}, \texttt{align}
 
-    \item \textbf{Sphinx}: \Verb!equation*!, \Verb!equation!, \Verb!align*!
+    \item \textbf{Sphinx}: \texttt{equation*}, \texttt{equation}, \texttt{align*}
 
-    \item \textbf{Markdown}: \Verb!equation*!, \Verb!equation!, \Verb!eqnarray*!, \Verb!align*! (but no labels)
+    \item \textbf{Markdown}: \texttt{equation*}, \texttt{equation}, \texttt{eqnarray*}, \texttt{align*} (but no labels)
 \end{itemize}
 
 \noindent
@@ -65974,7 +65974,7 @@ Probably not, but I have a solution :-)
 \begin{itemize}
  \item Figures: all
 
- \item Subfigures: {\LaTeX} (\Verb!subfigure!)
+ \item Subfigures: {\LaTeX} (\texttt{subfigure})
 
  \item Movies: {\LaTeX} (can run separately), just raw embedded HTML in others
 
@@ -66066,7 +66066,7 @@ Here goes the summary...
 % !split
 \subsection{DocOnce: section headings}
 
-Headings are surrounded by \Verb!=! signs:
+Headings are surrounded by \texttt{=} signs:
 \bccq
 ======= This is an H1/chapter heading =======
 
@@ -66097,7 +66097,7 @@ __This is a paragraph heading.__
 This gets rendered as
 
 \begin{itemize}
- \item Bullet lists start with \Verb!*!
+ \item Bullet lists start with \texttt{*}
    and may span several lines
 
  \item \emph{Emphasized words} are possible
@@ -66106,10 +66106,10 @@ This gets rendered as
 
  \item \textcolor{red}{colored words} too
 
- \item \Verb!inline verbatim code! is featured
+ \item \texttt{inline verbatim code} is featured
 \begin{enumerate}
 
-  \item and sublists with enumerated items starting with \Verb!o!
+  \item and sublists with enumerated items starting with \texttt{o}
 
   \item items are just indented as you would do in email
 \end{enumerate}
@@ -66248,9 +66248,9 @@ def solver(I, a, T, dt, theta):
 
 \begin{block}{Language-dependent typesetting of code: }
 The \Verb?!bc? command can be followed by a specification of the computer
-language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
-program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
-forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
+language: \texttt{pycod} for Python code snippet, \texttt{pypro} for complete Python
+program, \texttt{fcod} for Fortran snippet, \texttt{fpro} for Fortran program, and so
+forth (\texttt{c} for C, \texttt{cpp} for C++, \texttt{sh} for Unix shells, \texttt{m} for Matlab).
 \end{block}
 
 
@@ -66258,7 +66258,7 @@ forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! f
 \subsection{DocOnce: displaying interactive demo code}
 \label{slide:pot}
 
-With \Verb?!bc pyoptpro? or a file \Verb!*.pyopt!, the code applies the
+With \Verb?!bc pyoptpro? or a file \texttt{*.pyopt}, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
@@ -66742,16 +66742,16 @@ Probably not, but I have a solution :-)
  \item {\LaTeX} equation math:
 \begin{itemize}
 
-    \item \textbf{LaTeX}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align! +
-      \Verb!eqnarray!, \Verb!split!, \Verb!alignat!, ... (numerous!)
+    \item \textbf{LaTeX}: \texttt{equation*}, \texttt{equation}, \texttt{align*}, \texttt{align} +
+      \texttt{eqnarray}, \texttt{split}, \texttt{alignat}, ... (numerous!)
 
-    \item \textbf{MathJax}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align!
+    \item \textbf{MathJax}: \texttt{equation*}, \texttt{equation}, \texttt{align*}, \texttt{align}
 
-    \item \textbf{MediaWiki}: \Verb!equation*!, \Verb!equation!, \Verb!align*!, \Verb!align!
+    \item \textbf{MediaWiki}: \texttt{equation*}, \texttt{equation}, \texttt{align*}, \texttt{align}
 
-    \item \textbf{Sphinx}: \Verb!equation*!, \Verb!equation!, \Verb!align*!
+    \item \textbf{Sphinx}: \texttt{equation*}, \texttt{equation}, \texttt{align*}
 
-    \item \textbf{Markdown}: \Verb!equation*!, \Verb!equation!, \Verb!eqnarray*!, \Verb!align*! (but no labels)
+    \item \textbf{Markdown}: \texttt{equation*}, \texttt{equation}, \texttt{eqnarray*}, \texttt{align*} (but no labels)
 \end{itemize}
 
 \noindent
@@ -66768,7 +66768,7 @@ Probably not, but I have a solution :-)
  \item Figures: all
 
 \pause
- \item Subfigures: {\LaTeX} (\Verb!subfigure!)
+ \item Subfigures: {\LaTeX} (\texttt{subfigure})
 
 \pause
  \item Movies: {\LaTeX} (can run separately), just raw embedded HTML in others
@@ -66866,7 +66866,7 @@ Here goes the summary...
 \begin{frame}[plain,fragile]
 \frametitle{DocOnce: section headings}
 
-Headings are surrounded by \Verb!=! signs:
+Headings are surrounded by \texttt{=} signs:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95]
 ======= This is an H1/chapter heading =======
 
@@ -66897,7 +66897,7 @@ __This is a paragraph heading.__
 This gets rendered as
 
 \begin{itemize}
- \item Bullet lists start with \Verb!*!
+ \item Bullet lists start with \texttt{*}
    and may span several lines
 
  \item \emph{Emphasized words} are possible
@@ -66906,10 +66906,10 @@ This gets rendered as
 
  \item \textcolor{red}{colored words} too
 
- \item \Verb!inline verbatim code! is featured
+ \item \texttt{inline verbatim code} is featured
 \begin{enumerate}
 
-  \item and sublists with enumerated items starting with \Verb!o!
+  \item and sublists with enumerated items starting with \texttt{o}
 
   \item items are just indented as you would do in email
 \end{enumerate}
@@ -67051,9 +67051,9 @@ def solver(I, a, T, dt, theta):
 
 \begin{block}{Language-dependent typesetting of code: }
 The \Verb?!bc? command can be followed by a specification of the computer
-language: \Verb!pycod! for Python code snippet, \Verb!pypro! for complete Python
-program, \Verb!fcod! for Fortran snippet, \Verb!fpro! for Fortran program, and so
-forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! for Matlab).
+language: \texttt{pycod} for Python code snippet, \texttt{pypro} for complete Python
+program, \texttt{fcod} for Fortran snippet, \texttt{fpro} for Fortran program, and so
+forth (\texttt{c} for C, \texttt{cpp} for C++, \texttt{sh} for Unix shells, \texttt{m} for Matlab).
 \end{block}
 \end{frame}
 
@@ -67062,7 +67062,7 @@ forth (\Verb!c! for C, \Verb!cpp! for C++, \Verb!sh! for Unix shells, \Verb!m! f
 
 \label{slide:pot}
 
-With \Verb?!bc pyoptpro? or a file \Verb!*.pyopt!, the code applies the
+With \Verb?!bc pyoptpro? or a file \texttt{*.pyopt}, the code applies the
 \href{{http://pythontutor.com}}{Online Python Tutor} for displaying
 program flow and state of variables:
 
@@ -73196,7 +73196,7 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 Text with a name like Åsmund Ødegård works in general.
 
 This block (in format latex)
-triggers use of \Verb!mako!. For all formats, \Verb!mako! has
+triggers use of \texttt{mako}. For all formats, \texttt{mako} has
 problem with non-ASCII characters anywhere in the text. The remedy
 for all formats is to read the file with UTF-8 encoding. With --debug
 one can see the internal str/unicode representation of the text
@@ -73561,7 +73561,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7efeddf5f140>
+verbatim is to be replaced using <function html_verbatim at 0x7f6c48847140>
 
 
 First occurence: " `mako`."
@@ -74808,6 +74808,18 @@ BIBFILE: papers.pub
 
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Problems
+          \@mkboth{List of Problems}{List of Problems}}
+\markboth{List of Problems}{List of Problems}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
 
 % Let exercises, problems, and projects be numbered per chapter:
 \usepackage{chngcntr}
@@ -74946,10 +74958,10 @@ and modules that make the differences beween version 2 and 3 very small.
 This strategy is adopted in the present book. Only two
 differences between versions 2 and 3 are expected to be significant for
 the programs in the book:
-\Verb!a/b! implies float division in version 3 if \Verb!a! and \Verb!b!
+\texttt{a/b} implies float division in version 3 if \texttt{a} and \texttt{b}
 are integers,
-and \Verb!print 'Hello'! in version 2 must be turned into a function call
-\Verb!print('Hello')! in version 3. None of these differences should lead
+and \texttt{print 'Hello'} in version 2 must be turned into a function call
+\texttt{print('Hello')} in version 3. None of these differences should lead
 to any annoying problems when future readers study the book's v2.7
 examples, but program in version 3. Anyway, running 2to3 on the
 example files generates the corresponding version 3 code.
@@ -74969,6 +74981,10 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 
 
 \tableofcontents
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+
 
 
 \vspace{1cm} % after toc
@@ -75021,20 +75037,20 @@ demonstrates how to create these three types of lists:
 \epy
 Here we have used list comprehensions for achieving compact code. Make
 sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard \Verb!for! loops and
+(if not, try to write the same code using standard \texttt{for} loops and
 appending new list elements in each pass of the loops).
 
 \index{heterogeneous lists}
 
 The list elements consist of objects of the same type: any element in
-\Verb!pairs! is a list of two \Verb!float! objects, while any element in \Verb!xlist!
-or \Verb!ylist! is a \Verb!float!. Lists are more flexible than that, because an
+\texttt{pairs} is a list of two \texttt{float} objects, while any element in \texttt{xlist}
+or \texttt{ylist} is a \texttt{float}. Lists are more flexible than that, because an
 element can be an object of any type, e.g.,
 
 \bpycod
 mylist = [2, 6.0, 'tmp.ps', [0,1]]
 \epycod
-Here \Verb!mylist! holds an \Verb!int!, a \Verb!float!, a string, and a list. This
+Here \texttt{mylist} holds an \texttt{int}, a \texttt{float}, a string, and a list. This
 combination of diverse object types makes up what is known as
 \emph{heterogeneous} lists.  We can also easily remove elements from a list
 or add new elements anywhere in the list.  This flexibility of lists
@@ -75075,9 +75091,9 @@ following assumptions and features:
 
   \item The number of elements must be known when the array is created.
 
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \Verb!import! statements, is \Verb!numpy!.
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \texttt{import} statements, is \texttt{numpy}.
 
-  \item With \Verb!numpy!, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+  \item With \texttt{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
 
   \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
 \end{itemize}
@@ -75088,7 +75104,7 @@ following assumptions and features:
 
 \begin{enumerate}
 \item There is actually an
-   object type called \Verb!array! in standard Python, but this data type is
+   object type called \texttt{array} in standard Python, but this data type is
    not so efficient for mathematical computations, and we will not use it
    in this book.
 
@@ -75120,7 +75136,7 @@ The statement
 \bpycod
 import numpy as np
 \epycod
-with subsequent prefixing of all NumPy functions and variables by \Verb!np.!,
+with subsequent prefixing of all NumPy functions and variables by \texttt{np.},
 has evolved as a standard syntax in the Python scientific computing
 community. However, to make Python programs look closer to MATLAB
 and ease the transition to and from that language, one can do
@@ -75130,7 +75146,7 @@ from numpy import *
 \epycod
 to get rid of the prefix (this is evolved as the standard in
 \emph{interactive} Python shells). This author prefers mathematical
-functions from \Verb!numpy! to be written without the prefix to
+functions from \texttt{numpy} to be written without the prefix to
 make the formulas as close as possible to the mathematics.
 So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
 
@@ -75141,40 +75157,40 @@ def f(x):
     return sinh(x-1)*sin(w*t)
 \epycod
 or one may take the less recommended
-lazy approach \Verb!from numpy import *! and fill up
-the program with \emph{a lot} of functions and variables from \Verb!numpy!.
+lazy approach \texttt{from numpy import *} and fill up
+the program with \emph{a lot} of functions and variables from \texttt{numpy}.
 \end{notice_mdfboxadmon}
 
 
 
-To convert a list \Verb!r! to an array,
-we use the \Verb!array! function
-from \Verb!numpy!:
+To convert a list \texttt{r} to an array,
+we use the \texttt{array} function
+from \texttt{numpy}:
 
 \bpycod
 a = np.array(r)
 \epycod
-To create a new array of length \Verb!n!, filled with zeros, we write
+To create a new array of length \texttt{n}, filled with zeros, we write
 
 \bpycod
 a = np.zeros(n)
 \epycod
 The array elements are of a type that corresponds to Python's
-\Verb!float! type. A second argument to \Verb!np.zeros! can be used to
-specify other element types, e.g., \Verb!int!.
+\texttt{float} type. A second argument to \texttt{np.zeros} can be used to
+specify other element types, e.g., \texttt{int}.
 A similar function,
 
 \bpycod
 a = np.zeros_like(c)
 \epycod
-generates an array of zeros where the length is that of the array \Verb!c!
-and the element type is the same as those in \Verb!c!.
+generates an array of zeros where the length is that of the array \texttt{c}
+and the element type is the same as those in \texttt{c}.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
 Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The \Verb!numpy! function
-\Verb!linspace! creates such arrays:
+distributed values in an interval $[p,q]$. The \texttt{numpy} function
+\texttt{linspace} creates such arrays:
 
 \bpycod
 a = np.linspace(p, q, n)
@@ -75190,23 +75206,23 @@ a = np.linspace(p, q, n)
 \hline
 \multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
 \hline
-\Verb!array(ld)!       & copy list data \Verb!ld! to a \Verb!numpy! array                    \\
-\Verb!asarray(d)!      & make array of data \Verb!d! (no data copy if already array)         \\
-\Verb!zeros(n)!        & make a \Verb!float! vector/array of length \Verb!n!, with zeros     \\
-\Verb!zeros(n, int)!   & make an \Verb!int! vector/array of length \Verb!n! with zeros       \\
-\Verb!zeros((m,n))!    & make a two-dimensional \Verb!float! array with shape (\Verb!m!,`n`) \\
-\Verb!zeros_like(x)!   & make array of same shape and element type as \Verb!x!               \\
-\Verb!linspace(a,b,m)! & uniform sequence of \Verb!m! numbers in $[a,b]$                     \\
-\Verb!a.shape!         & tuple containing \Verb!a!'s shape                                   \\
-\Verb!a.size!          & total no of elements in \Verb!a!                                    \\
-\Verb!len(a)!          & length of a one-dim. array \Verb!a! (same as \Verb!a.shape[0]!)     \\
-\Verb!a.dtype!         & the type of elements in \Verb!a!                                    \\
-\Verb!a.reshape(3,2)!  & return \Verb!a! reshaped as $3\times 2$ array                       \\
-\Verb!a[i]!            & vector indexing                                                     \\
-\Verb!a[i,j]!          & two-dim. array indexing                                             \\
-\Verb!a[1:k]!          & slice: reference data with indices \Verb!1!,\ldots,`k-1`            \\
-\Verb!a[1:8:3]!        & slice: reference data with indices \Verb!1!, \Verb!4!,\ldots,`7`    \\
-\Verb!b = a.copy()!    & copy an array                                                       \\
+\texttt{array(ld)}       & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
+\texttt{asarray(d)}      & make array of data \texttt{d} (no data copy if already array)         \\
+\texttt{zeros(n)}        & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
+\texttt{zeros(n, int)}   & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
+\texttt{zeros((m,n))}    & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
+\Verb!zeros_like(x)!   & make array of same shape and element type as \texttt{x}               \\
+\texttt{linspace(a,b,m)} & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
+\texttt{a.shape}         & tuple containing \texttt{a}'s shape                                   \\
+\texttt{a.size}          & total no of elements in \texttt{a}                                    \\
+\texttt{len(a)}          & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
+\texttt{a.dtype}         & the type of elements in \texttt{a}                                    \\
+\texttt{a.reshape(3,2)}  & return \texttt{a} reshaped as $3\times 2$ array                       \\
+\texttt{a[i]}            & vector indexing                                                     \\
+\texttt{a[i,j]}          & two-dim. array indexing                                             \\
+\texttt{a[1:k]}          & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
+\texttt{a[1:8:3]}        & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
+\texttt{b = a.copy()}    & copy an array                                                       \\
 \hline
 \end{tabular}
 
@@ -75237,10 +75253,10 @@ means we need a lot of URLs, e.g., to files:
 \label{sec:files:writing}
 
 Writing data to file is easy.
-There is basically one function to pay attention to: \Verb!outfile.write(s)!,
-which writes a string \Verb!s! to
-a file handled by the file object \Verb!outfile!. Unlike \Verb!print!,
-\Verb!outfile.write(s)!
+There is basically one function to pay attention to: \texttt{outfile.write(s)},
+which writes a string \texttt{s} to
+a file handled by the file object \texttt{outfile}. Unlike \texttt{print},
+\texttt{outfile.write(s)}
 does not append a newline character to the written string.
 It will therefore
 often be necessary to add a newline character,
@@ -75248,14 +75264,14 @@ often be necessary to add a newline character,
 \bpycod
 outfile.write(s + '\n')
 \epycod
-if the string \Verb!s! is meant to appear on a single line in the file
-and \Verb!s! does not already contain a trailing newline character.
+if the string \texttt{s} is meant to appear on a single line in the file
+and \texttt{s} does not already contain a trailing newline character.
 File writing is then a matter of constructing strings containing the
 text we want to have in the file and for each such string call
-\Verb!outfile.write!.
+\texttt{outfile.write}.
 
 Writing to a file demands
-the file object \Verb!f!
+the file object \texttt{f}
 to be opened for writing:
 
 \bpycod
@@ -75306,7 +75322,7 @@ row  3   -0.29619813   -0.11697778    0.11697778    0.29619813
 row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
 \edat
 To obtain this end result, we need to the add some statements to
-the program \Verb!write1.py!. For the column headings we need
+the program \texttt{write1.py}. For the column headings we need
 to know the number of columns, i.e., the length of the rows,
 and loop from 1 to this length:
 
@@ -75319,8 +75335,8 @@ outfile.write('\n')
 \epycod
 Note the use of a nested printf construction: The text we want to
 insert is itself a printf string. We could also have written the
-text as \Verb!'column  ' + str(i)!, but then the length of the
-resulting string would depend on the number of digits in \Verb!i!.
+text as \texttt{'column  ' + str(i)}, but then the length of the
+resulting string would depend on the number of digits in \texttt{i}.
 It is recommended to always use printf constructions for
 a tabular output format, because this gives automatic padding of
 blanks so that the width of the output strings remain the same.
@@ -75374,17 +75390,17 @@ The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
 
-The \Verb!print! command prints text in the terminal window. This medium
+The \texttt{print} command prints text in the terminal window. This medium
 is also viewed as a file from the computer's point of view and called
 \emph{standard output}. All general-purpose programming languages
 allow reading from standard input and
 writing to standard output. This reading and writing can be done with
 two types of tools, either file-like objects or special tools like
 \Verb!raw_input!
-and \Verb!print! in Python.
+and \texttt{print} in Python.
 We will here describe the file-line objects:
-\Verb!sys.stdin! for standard input
-and \Verb!sys.stdout! for standard output. These objects
+\texttt{sys.stdin} for standard input
+and \texttt{sys.stdout} for standard output. These objects
 behave as file objects, except that they do not need to be opened or
 closed. The statement
 
@@ -75397,8 +75413,8 @@ is equivalent to
 print 'Give s: ',
 s = sys.stdin.readline()
 \epycod
-Recall that the trailing comma in the \Verb!print! statement avoids the
-newline that \Verb!print! by default adds to the output string.
+Recall that the trailing comma in the \texttt{print} statement avoids the
+newline that \texttt{print} by default adds to the output string.
 Similarly,
 
 \bpycod
@@ -75423,8 +75439,8 @@ sys.stdout.write(s + '\n')
 
 Why it is handy to have access to standard input and output
 as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object \Verb!infile!
-and writes data to a file object \Verb!outfile!.
+function that reads data from a file object \texttt{infile}
+and writes data to a file object \texttt{outfile}.
 A sample function may take the form
 
 \bpycod
@@ -75435,12 +75451,12 @@ def x2f(infile, outfile, f):
         outfile.write('%g\n' % y)
 \epycod
 This function works with all types of files, including
-web pages as \Verb!infile!.
-With \Verb!sys.stdin! as \Verb!infile! and/or \Verb!sys.stdout!
-as \Verb!outfile!, the \Verb!x2f! function also works with standard input
-and/or standard output. Without \Verb!sys.stdin! and \Verb!sys.stdout!,
+web pages as \texttt{infile}.
+With \texttt{sys.stdin} as \texttt{infile} and/or \texttt{sys.stdout}
+as \texttt{outfile}, the \texttt{x2f} function also works with standard input
+and/or standard output. Without \texttt{sys.stdin} and \texttt{sys.stdout},
 we would need different code, employing \Verb!raw_input!
-and \Verb!print!,
+and \texttt{print},
 to deal with standard input and output. Now we can write a single
 function that deals with all file media in a unified way.
 
@@ -75453,27 +75469,27 @@ programs can distinguish between writing ordinary output to standard
 output and error messages to standard error, and these output media
 can be redirected to, e.g., files such that one can separate
 error messages from ordinary output.
-In Python, standard error is the file-like object \Verb!sys.stderr!.
-A typical application of \Verb!sys.stderr! is to report errors:
+In Python, standard error is the file-like object \texttt{sys.stderr}.
+A typical application of \texttt{sys.stderr} is to report errors:
 
 \bpycod
 if x < 0:
     sys.stderr.write('Illegal value of x'); sys.exit(1)
 \epycod
-This message to \Verb!sys.stderr! is an alternative to
-\Verb!print! or raising an exception.
+This message to \texttt{sys.stderr} is an alternative to
+\texttt{print} or raising an exception.
 
 \paragraph{Redirecting standard input, output, and error.}
-Standard output from a program \Verb!prog!
+Standard output from a program \texttt{prog}
 can be redirected to a file
-\Verb!output! instead of the screen, by
+\texttt{output} instead of the screen, by
 using the greater than sign:
 
 \bsys
 Terminal> prog > output
 \esys
-Here, \Verb!prog! can be any
-program, including a Python program run as \Verb!python myprog.py!.
+Here, \texttt{prog} can be any
+program, including a Python program run as \texttt{python myprog.py}.
 Similarly, output to the medium called \emph{standard error}
 can be redirected by
 
@@ -75508,7 +75524,7 @@ Terminal> prog < input > output
 
 \paragraph{Note.}
 The redirection of standard output, input, and error
-does not work for Python programs executed with the \Verb!run!
+does not work for Python programs executed with the \texttt{run}
 command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
@@ -75527,7 +75543,9 @@ as well as Python itself \cite{Python}, and of course NumPy
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Problem 3.1: Add numbers}
+\subsection*{Problem \thedoconceexercisecounter: Add numbers}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Add numbers}
+
 \label{exer:add}
 
 Compute
@@ -75552,7 +75570,7 @@ Python shell as calculator:
 \epyshell
 
 % --- end solution of exercise ---
-\noindent Filename: \Verb!add!.
+\noindent Filename: \texttt{add}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -75564,7 +75582,9 @@ Python shell as calculator:
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Problem 3.2: Multiply numbers}
+\subsection*{Problem \thedoconceexercisecounter: Multiply numbers}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Multiply numbers}
+
 \label{exer:mul}
 
 
@@ -75600,7 +75620,7 @@ Use a Python shell.
 
 
 
-\noindent Filename: \Verb!multiply!.
+\noindent Filename: \texttt{multiply}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -75613,12 +75633,12 @@ Use a Python shell.
 \chapter{Styles for Springer T2/T4}
 
 The T2/T4 style for DocOnce-generated {\LaTeX} should make use of
-slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
+slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 \begin{itemize}
- \item \Verb!svmonodo.cls!
+ \item \texttt{svmonodo.cls}
 
- \item \Verb!t2do.sty! or \Verb!t4do.sty!
+ \item \texttt{t2do.sty} or \texttt{t4do.sty}
 \end{itemize}
 
 \noindent
@@ -75849,6 +75869,18 @@ slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
 
 \newenvironment{doconceexercise}{}{}
 \newcounter{doconceexercisecounter}
+% --- begin definition of \listofexercises command ---
+\makeatletter
+\newcommand\listofexercises{
+\chapter*{List of Problems
+          \@mkboth{List of Problems}{List of Problems}}
+\markboth{List of Problems}{List of Problems}
+\@starttoc{loe}
+}
+\newcommand*{\l@doconceexercise}{\@dottedtocline{0}{0pt}{6.5em}}
+\makeatother
+% --- end definition of \listofexercises command ---
+
 
 % Let exercises, problems, and projects be numbered per chapter:
 \usepackage{chngcntr}
@@ -75986,10 +76018,10 @@ and modules that make the differences beween version 2 and 3 very small.
 This strategy is adopted in the present book. Only two
 differences between versions 2 and 3 are expected to be significant for
 the programs in the book:
-\Verb!a/b! implies float division in version 3 if \Verb!a! and \Verb!b!
+\texttt{a/b} implies float division in version 3 if \texttt{a} and \texttt{b}
 are integers,
-and \Verb!print 'Hello'! in version 2 must be turned into a function call
-\Verb!print('Hello')! in version 3. None of these differences should lead
+and \texttt{print 'Hello'} in version 2 must be turned into a function call
+\texttt{print('Hello')} in version 3. None of these differences should lead
 to any annoying problems when future readers study the book's v2.7
 examples, but program in version 3. Anyway, running 2to3 on the
 example files generates the corresponding version 3 code.
@@ -76009,6 +76041,10 @@ Tobias Vidarssønn Langhoff, and Håkon Møller.
 
 
 \tableofcontents
+\clearemptydoublepage
+\listofexercises
+\clearemptydoublepage
+
 
 
 \vspace{1cm} % after toc
@@ -76078,14 +76114,14 @@ demonstrates how to create these three types of lists:
 \noindent
 Here we have used list comprehensions for achieving compact code. Make
 sure that you understand what is going on in these list comprehensions
-(if not, try to write the same code using standard \Verb!for! loops and
+(if not, try to write the same code using standard \texttt{for} loops and
 appending new list elements in each pass of the loops).
 
 \index{heterogeneous lists}
 
 The list elements consist of objects of the same type: any element in
-\Verb!pairs! is a list of two \Verb!float! objects, while any element in \Verb!xlist!
-or \Verb!ylist! is a \Verb!float!. Lists are more flexible than that, because an
+\texttt{pairs} is a list of two \texttt{float} objects, while any element in \texttt{xlist}
+or \texttt{ylist} is a \texttt{float}. Lists are more flexible than that, because an
 element can be an object of any type, e.g.,
 
 \providecommand{\shadedskip}{}
@@ -76108,7 +76144,7 @@ mylist = [2, 6.0, 'tmp.ps', [0,1]]
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-Here \Verb!mylist! holds an \Verb!int!, a \Verb!float!, a string, and a list. This
+Here \texttt{mylist} holds an \texttt{int}, a \texttt{float}, a string, and a list. This
 combination of diverse object types makes up what is known as
 \emph{heterogeneous} lists.  We can also easily remove elements from a list
 or add new elements anywhere in the list.  This flexibility of lists
@@ -76149,9 +76185,9 @@ following assumptions and features:
 
   \item The number of elements must be known when the array is created.
 
-  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \Verb!import! statements, is \Verb!numpy!.
+  \item Arrays are not part of standard Python - one needs an additional package called \emph{Numerical Python}, often abbreviated as NumPy. The Python name of the package, to be used in \texttt{import} statements, is \texttt{numpy}.
 
-  \item With \Verb!numpy!, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
+  \item With \texttt{numpy}, a wide range of mathematical operations can be done directly on complete arrays, thereby removing the need for loops over array elements. This is commonly called \emph{vectorization} %or \emph{array computing} and may cause a dramatic speed-up of Python programs. Vectorization makes use of the vector computing concepts from Section~\ref{sec:plot:arraycomp}.
 
   \item Arrays with one index are often called vectors. Arrays with two indices are used as an efficient data structure for tables, instead of lists of lists. Arrays can also have three or more indices.
 \end{itemize}
@@ -76162,7 +76198,7 @@ following assumptions and features:
 
 \begin{enumerate}
 \item There is actually an
-   object type called \Verb!array! in standard Python, but this data type is
+   object type called \texttt{array} in standard Python, but this data type is
    not so efficient for mathematical computations, and we will not use it
    in this book.
 
@@ -76198,7 +76234,7 @@ import numpy as np
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-with subsequent prefixing of all NumPy functions and variables by \Verb!np.!,
+with subsequent prefixing of all NumPy functions and variables by \texttt{np.},
 has evolved as a standard syntax in the Python scientific computing
 community. However, to make Python programs look closer to MATLAB
 and ease the transition to and from that language, one can do
@@ -76212,7 +76248,7 @@ from numpy import *
 \noindent
 to get rid of the prefix (this is evolved as the standard in
 \emph{interactive} Python shells). This author prefers mathematical
-functions from \Verb!numpy! to be written without the prefix to
+functions from \texttt{numpy} to be written without the prefix to
 make the formulas as close as possible to the mathematics.
 So, $f(x)=\sinh(x-1)\sin(w t)$ would be coded as
 
@@ -76227,15 +76263,15 @@ def f(x):
 \end{shadedquoteBlue}
 \noindent
 or one may take the less recommended
-lazy approach \Verb!from numpy import *! and fill up
-the program with \emph{a lot} of functions and variables from \Verb!numpy!.
+lazy approach \texttt{from numpy import *} and fill up
+the program with \emph{a lot} of functions and variables from \texttt{numpy}.
 \end{notice_mdfboxadmon}
 
 
 
-To convert a list \Verb!r! to an array,
-we use the \Verb!array! function
-from \Verb!numpy!:
+To convert a list \texttt{r} to an array,
+we use the \texttt{array} function
+from \texttt{numpy}:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -76244,7 +76280,7 @@ a = np.array(r)
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-To create a new array of length \Verb!n!, filled with zeros, we write
+To create a new array of length \texttt{n}, filled with zeros, we write
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -76254,8 +76290,8 @@ a = np.zeros(n)
 \end{shadedquoteBlue}
 \noindent
 The array elements are of a type that corresponds to Python's
-\Verb!float! type. A second argument to \Verb!np.zeros! can be used to
-specify other element types, e.g., \Verb!int!.
+\texttt{float} type. A second argument to \texttt{np.zeros} can be used to
+specify other element types, e.g., \texttt{int}.
 A similar function,
 
 \begin{shadedquoteBlue}
@@ -76265,14 +76301,14 @@ a = np.zeros_like(c)
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-generates an array of zeros where the length is that of the array \Verb!c!
-and the element type is the same as those in \Verb!c!.
+generates an array of zeros where the length is that of the array \texttt{c}
+and the element type is the same as those in \texttt{c}.
 
 \index{linspace@{\rm\texttt{linspace}} (from {\rm\texttt{numpy}})}\index{np.linspace@{\rm\texttt{np.linspace}} function}
 
 Often one wants an array to have $n$ elements with uniformly
-distributed values in an interval $[p,q]$. The \Verb!numpy! function
-\Verb!linspace! creates such arrays:
+distributed values in an interval $[p,q]$. The \texttt{numpy} function
+\texttt{linspace} creates such arrays:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -76292,23 +76328,23 @@ a = np.linspace(p, q, n)
 \hline
 \multicolumn{1}{c}{ Construction } & \multicolumn{1}{c}{ Meaning } \\
 \hline
-\Verb!array(ld)!       & copy list data \Verb!ld! to a \Verb!numpy! array                    \\
-\Verb!asarray(d)!      & make array of data \Verb!d! (no data copy if already array)         \\
-\Verb!zeros(n)!        & make a \Verb!float! vector/array of length \Verb!n!, with zeros     \\
-\Verb!zeros(n, int)!   & make an \Verb!int! vector/array of length \Verb!n! with zeros       \\
-\Verb!zeros((m,n))!    & make a two-dimensional \Verb!float! array with shape (\Verb!m!,`n`) \\
-\Verb!zeros_like(x)!   & make array of same shape and element type as \Verb!x!               \\
-\Verb!linspace(a,b,m)! & uniform sequence of \Verb!m! numbers in $[a,b]$                     \\
-\Verb!a.shape!         & tuple containing \Verb!a!'s shape                                   \\
-\Verb!a.size!          & total no of elements in \Verb!a!                                    \\
-\Verb!len(a)!          & length of a one-dim. array \Verb!a! (same as \Verb!a.shape[0]!)     \\
-\Verb!a.dtype!         & the type of elements in \Verb!a!                                    \\
-\Verb!a.reshape(3,2)!  & return \Verb!a! reshaped as $3\times 2$ array                       \\
-\Verb!a[i]!            & vector indexing                                                     \\
-\Verb!a[i,j]!          & two-dim. array indexing                                             \\
-\Verb!a[1:k]!          & slice: reference data with indices \Verb!1!,\ldots,`k-1`            \\
-\Verb!a[1:8:3]!        & slice: reference data with indices \Verb!1!, \Verb!4!,\ldots,`7`    \\
-\Verb!b = a.copy()!    & copy an array                                                       \\
+\texttt{array(ld)}       & copy list data \texttt{ld} to a \texttt{numpy} array                    \\
+\texttt{asarray(d)}      & make array of data \texttt{d} (no data copy if already array)         \\
+\texttt{zeros(n)}        & make a \texttt{float} vector/array of length \texttt{n}, with zeros     \\
+\texttt{zeros(n, int)}   & make an \texttt{int} vector/array of length \texttt{n} with zeros       \\
+\texttt{zeros((m,n))}    & make a two-dimensional \texttt{float} array with shape (\texttt{m},`n`) \\
+\Verb!zeros_like(x)!   & make array of same shape and element type as \texttt{x}               \\
+\texttt{linspace(a,b,m)} & uniform sequence of \texttt{m} numbers in $[a,b]$                     \\
+\texttt{a.shape}         & tuple containing \texttt{a}'s shape                                   \\
+\texttt{a.size}          & total no of elements in \texttt{a}                                    \\
+\texttt{len(a)}          & length of a one-dim. array \texttt{a} (same as \texttt{a.shape[0]})     \\
+\texttt{a.dtype}         & the type of elements in \texttt{a}                                    \\
+\texttt{a.reshape(3,2)}  & return \texttt{a} reshaped as $3\times 2$ array                       \\
+\texttt{a[i]}            & vector indexing                                                     \\
+\texttt{a[i,j]}          & two-dim. array indexing                                             \\
+\texttt{a[1:k]}          & slice: reference data with indices \texttt{1},\ldots,`k-1`            \\
+\texttt{a[1:8:3]}        & slice: reference data with indices \texttt{1}, \texttt{4},\ldots,`7`    \\
+\texttt{b = a.copy()}    & copy an array                                                       \\
 \hline
 \end{tabular}
 
@@ -76339,10 +76375,10 @@ means we need a lot of URLs, e.g., to files:
 \label{sec:files:writing}
 
 Writing data to file is easy.
-There is basically one function to pay attention to: \Verb!outfile.write(s)!,
-which writes a string \Verb!s! to
-a file handled by the file object \Verb!outfile!. Unlike \Verb!print!,
-\Verb!outfile.write(s)!
+There is basically one function to pay attention to: \texttt{outfile.write(s)},
+which writes a string \texttt{s} to
+a file handled by the file object \texttt{outfile}. Unlike \texttt{print},
+\texttt{outfile.write(s)}
 does not append a newline character to the written string.
 It will therefore
 often be necessary to add a newline character,
@@ -76354,14 +76390,14 @@ outfile.write(s + '\n')
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-if the string \Verb!s! is meant to appear on a single line in the file
-and \Verb!s! does not already contain a trailing newline character.
+if the string \texttt{s} is meant to appear on a single line in the file
+and \texttt{s} does not already contain a trailing newline character.
 File writing is then a matter of constructing strings containing the
 text we want to have in the file and for each such string call
-\Verb!outfile.write!.
+\texttt{outfile.write}.
 
 Writing to a file demands
-the file object \Verb!f!
+the file object \texttt{f}
 to be opened for writing:
 
 \begin{shadedquoteBlue}
@@ -76419,7 +76455,7 @@ row  4   -0.75000000   -0.29619813    0.29619813    0.75000000
 \end{Verbatim}
 \noindent
 To obtain this end result, we need to the add some statements to
-the program \Verb!write1.py!. For the column headings we need
+the program \texttt{write1.py}. For the column headings we need
 to know the number of columns, i.e., the length of the rows,
 and loop from 1 to this length:
 
@@ -76436,8 +76472,8 @@ outfile.write('\n')
 \noindent
 Note the use of a nested printf construction: The text we want to
 insert is itself a printf string. We could also have written the
-text as \Verb!'column  ' + str(i)!, but then the length of the
-resulting string would depend on the number of digits in \Verb!i!.
+text as \texttt{'column  ' + str(i)}, but then the length of the
+resulting string would depend on the number of digits in \texttt{i}.
 It is recommended to always use printf constructions for
 a tabular output format, because this gives automatic padding of
 blanks so that the width of the output strings remain the same.
@@ -76499,17 +76535,17 @@ The keyboard is a medium that the computer in fact
 treats as a file, referred to
 as \emph{standard input}.
 
-The \Verb!print! command prints text in the terminal window. This medium
+The \texttt{print} command prints text in the terminal window. This medium
 is also viewed as a file from the computer's point of view and called
 \emph{standard output}. All general-purpose programming languages
 allow reading from standard input and
 writing to standard output. This reading and writing can be done with
 two types of tools, either file-like objects or special tools like
 \Verb!raw_input!
-and \Verb!print! in Python.
+and \texttt{print} in Python.
 We will here describe the file-line objects:
-\Verb!sys.stdin! for standard input
-and \Verb!sys.stdout! for standard output. These objects
+\texttt{sys.stdin} for standard input
+and \texttt{sys.stdout} for standard output. These objects
 behave as file objects, except that they do not need to be opened or
 closed. The statement
 
@@ -76530,8 +76566,8 @@ s = sys.stdin.readline()
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-Recall that the trailing comma in the \Verb!print! statement avoids the
-newline that \Verb!print! by default adds to the output string.
+Recall that the trailing comma in the \texttt{print} statement avoids the
+newline that \texttt{print} by default adds to the output string.
 Similarly,
 
 \begin{shadedquoteBlue}
@@ -76572,8 +76608,8 @@ sys.stdout.write(s + '\n')
 
 Why it is handy to have access to standard input and output
 as file objects can be illustrated by an example. Suppose you have a
-function that reads data from a file object \Verb!infile!
-and writes data to a file object \Verb!outfile!.
+function that reads data from a file object \texttt{infile}
+and writes data to a file object \texttt{outfile}.
 A sample function may take the form
 
 \begin{shadedquoteBlue}
@@ -76588,12 +76624,12 @@ def x2f(infile, outfile, f):
 \end{shadedquoteBlue}
 \noindent
 This function works with all types of files, including
-web pages as \Verb!infile!.
-With \Verb!sys.stdin! as \Verb!infile! and/or \Verb!sys.stdout!
-as \Verb!outfile!, the \Verb!x2f! function also works with standard input
-and/or standard output. Without \Verb!sys.stdin! and \Verb!sys.stdout!,
+web pages as \texttt{infile}.
+With \texttt{sys.stdin} as \texttt{infile} and/or \texttt{sys.stdout}
+as \texttt{outfile}, the \texttt{x2f} function also works with standard input
+and/or standard output. Without \texttt{sys.stdin} and \texttt{sys.stdout},
 we would need different code, employing \Verb!raw_input!
-and \Verb!print!,
+and \texttt{print},
 to deal with standard input and output. Now we can write a single
 function that deals with all file media in a unified way.
 
@@ -76606,8 +76642,8 @@ programs can distinguish between writing ordinary output to standard
 output and error messages to standard error, and these output media
 can be redirected to, e.g., files such that one can separate
 error messages from ordinary output.
-In Python, standard error is the file-like object \Verb!sys.stderr!.
-A typical application of \Verb!sys.stderr! is to report errors:
+In Python, standard error is the file-like object \texttt{sys.stderr}.
+A typical application of \texttt{sys.stderr} is to report errors:
 
 \begin{shadedquoteBlue}
 \fontsize{9pt}{9pt}
@@ -76617,21 +76653,21 @@ if x < 0:
 \end{Verbatim}
 \end{shadedquoteBlue}
 \noindent
-This message to \Verb!sys.stderr! is an alternative to
-\Verb!print! or raising an exception.
+This message to \texttt{sys.stderr} is an alternative to
+\texttt{print} or raising an exception.
 
 \paragraph{Redirecting standard input, output, and error.}
-Standard output from a program \Verb!prog!
+Standard output from a program \texttt{prog}
 can be redirected to a file
-\Verb!output! instead of the screen, by
+\texttt{output} instead of the screen, by
 using the greater than sign:
 
 \vspace{4pt}
 \begin{Verbatim}[numbers=none,frame=lines,label=\fbox{{\tiny Terminal}},fontsize=\fontsize{9pt}{9pt},labelposition=topline,framesep=2.5mm,framerule=0.7pt]
 Terminal> prog > output
 \end{Verbatim}
-Here, \Verb!prog! can be any
-program, including a Python program run as \Verb!python myprog.py!.
+Here, \texttt{prog} can be any
+program, including a Python program run as \texttt{python myprog.py}.
 Similarly, output to the medium called \emph{standard error}
 can be redirected by
 
@@ -76670,7 +76706,7 @@ Terminal> prog < input > output
 
 \paragraph{Note.}
 The redirection of standard output, input, and error
-does not work for Python programs executed with the \Verb!run!
+does not work for Python programs executed with the \texttt{run}
 command inside IPython, only when executed directly
 in the operating system in a terminal window, or with the same
 command prefixed with an exclamation mark in IPython.
@@ -76689,7 +76725,9 @@ as well as Python itself \cite{Python}, and of course NumPy
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Problem 3.1: Add numbers}
+\subsection*{Problem \thedoconceexercisecounter: Add numbers}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Add numbers}
+
 \label{exer:add}
 
 Compute
@@ -76715,7 +76753,7 @@ Python shell as calculator:
 \noindent
 
 % --- end solution of exercise ---
-\noindent Filename: \Verb!add!.
+\noindent Filename: \texttt{add}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -76727,7 +76765,9 @@ Python shell as calculator:
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection{Problem 3.2: Multiply numbers}
+\subsection*{Problem \thedoconceexercisecounter: Multiply numbers}
+\addcontentsline{loe}{doconceexercise}{Problem \thedoconceexercisecounter: Multiply numbers}
+
 \label{exer:mul}
 
 
@@ -76764,7 +76804,7 @@ Use a Python shell.
 
 
 
-\noindent Filename: \Verb!multiply!.
+\noindent Filename: \texttt{multiply}.
 
 \end{doconceexercise}
 % --- end exercise ---
@@ -76777,12 +76817,12 @@ Use a Python shell.
 \chapter{Styles for Springer T2/T4}
 
 The T2/T4 style for DocOnce-generated {\LaTeX} should make use of
-slightly modified \Verb!svmono.cls! and \Verb!t2.sty! files:
+slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 \begin{itemize}
- \item \Verb!svmonodo.cls!
+ \item \texttt{svmonodo.cls}
 
- \item \Verb!t2do.sty! or \Verb!t4do.sty!
+ \item \texttt{t2do.sty} or \texttt{t4do.sty}
 \end{itemize}
 
 \noindent
@@ -77760,7 +77800,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Jun 29 05:41:44 2015.
+# sphinx-quickstart on Fri Jul 10 03:53:47 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -83330,7 +83370,7 @@ Enable writing documentation with much mathematics and
 computer code \emph{once, in one place} and include it in traditional {\LaTeX}
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
-include Google's \Verb!blogger.com!, Wikipedia/Wikibooks, IPython
+include Google's \texttt{blogger.com}, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
@@ -83339,35 +83379,35 @@ mathematics and code.
 DocOnce currently translates files to the following formats:
 
 \begin{itemize}
- \item {\LaTeX} (format \Verb!latex! and \Verb!pdflatex!)
+ \item {\LaTeX} (format \texttt{latex} and \texttt{pdflatex})
 
- \item HTML (format \Verb!html!)
+ \item HTML (format \texttt{html})
 
- \item reStructuredText (format \Verb!rst!)
+ \item reStructuredText (format \texttt{rst})
 
- \item plain (untagged) ASCII (format \Verb!plain!)
+ \item plain (untagged) ASCII (format \texttt{plain})
 
- \item Sphinx (format \Verb!sphinx!)
+ \item Sphinx (format \texttt{sphinx})
 
- \item IPython notebook (format \Verb!ipynb!)
+ \item IPython notebook (format \texttt{ipynb})
 
- \item MediaWiki (format \Verb!mwiki!)
+ \item MediaWiki (format \texttt{mwiki})
 
- \item (Pandoc extended) Markdown (format \Verb!pandoc!)
+ \item (Pandoc extended) Markdown (format \texttt{pandoc})
 
- \item Googlecode wiki (format \Verb!gwiki!)
+ \item Googlecode wiki (format \texttt{gwiki})
 
- \item Creoloe wiki (format \Verb!cwiki!)
+ \item Creoloe wiki (format \texttt{cwiki})
 
- \item Epydoc (format \Verb!epydoc!)
+ \item Epydoc (format \texttt{epydoc})
 
- \item StructuredText (format \Verb!st!)
+ \item StructuredText (format \texttt{st})
 \end{itemize}
 
 \noindent
 For documents with much code and mathematics, the best (and most supported)
-formats are \Verb!latex!, \Verb!pdflatex!, \Verb!sphinx!, and \Verb!html!; and to a slightly
-less extent \Verb!mwiki! and \Verb!pandoc!. The HTML format supports blog posts on
+formats are \texttt{latex}, \texttt{pdflatex}, \texttt{sphinx}, and \texttt{html}; and to a slightly
+less extent \texttt{mwiki} and \texttt{pandoc}. The HTML format supports blog posts on
 Google and Wordpress.
 
 
@@ -83376,7 +83416,7 @@ Google and Wordpress.
 The file \href{{https://github.com/hplgit/doconce/blob/master/misc/.doconce-mode.el}}{.doconce-mode.el}
 in the DocOnce source distribution gives a "DocOnce Editing Mode" in
 Emacs. Store the raw version of the file in the home directory and add
-\Verb!(load-file "~/.doconce-mode.el")! to the \Verb!.emacs! file.
+\texttt{(load-file "~/.doconce-mode.el")} to the \texttt{.emacs} file.
 
 Besides syntax highlighting of DocOnce documents, this Emacs mode
 provides a lot of shortcuts for setting up many elements in a document:
@@ -83396,7 +83436,7 @@ Ctrl+c hp     & heading for paragraph                            \\
 Ctrl+c me     & math environment: \Verb?!bt? equation \Verb?!et? \\
 Ctrl+c ma     & math environment: \Verb?!bt? align \Verb?!et?    \\
 Ctrl+c ce     & code environment: \Verb?!bc? code \Verb?!ec?     \\
-Ctrl+c cf     & code from file: \Verb!@@@CODE!                   \\
+Ctrl+c cf     & code from file: \texttt{@@@CODE}                   \\
 Ctrl+c table2 & table with 2 columns                             \\
 Ctrl+c table3 & table with 3 columns                             \\
 Ctrl+c table4 & table with 4 columns                             \\
@@ -83429,17 +83469,17 @@ name Email: somename@adr.net at institution1 & institution2
 \end{Verbatim}
 where the email is optional, the "at" keyword is required if one or
 more institutions are to be specified, and the \Verb!&! keyword
-separates the institutions (the keyword \Verb!and! works too).
+separates the institutions (the keyword \texttt{and} works too).
 Each author specification must appear
 on a single line.
 When more than one author belong to the
 same institution, make sure that the institution is specified in an identical
 way for each author.
 
-The date can be set as any text different from \Verb!today! if not the
-current date is wanted, e.g., \Verb!Jan 32, 2100!.
+The date can be set as any text different from \texttt{today} if not the
+current date is wanted, e.g., \texttt{Jan 32, 2100}.
 
-The table of contents is removed by writing \Verb!TOC: off!.
+The table of contents is removed by writing \texttt{TOC: off}.
 
 
 \subsection{Section Types}
@@ -83451,16 +83491,16 @@ The table of contents is removed by writing \Verb!TOC: off!.
 \hline
 \multicolumn{1}{c}{ Section type } & \multicolumn{1}{c}{ Syntax } \\
 \hline
-chapter       & \Verb!========= Heading ========! (9 \Verb!=!)        \\
-section       & \Verb!======= Heading =======!    (7 \Verb!=!)        \\
-subsection    & \Verb!===== Heading =====!        (5 \Verb!=!)        \\
-subsubsection & \Verb!=== Heading ===!            (3 \Verb!=!)        \\
+chapter       & \texttt{========= Heading ========} (9 \texttt{=})        \\
+section       & \texttt{======= Heading =======}    (7 \texttt{=})        \\
+subsection    & \texttt{===== Heading =====}        (5 \texttt{=})        \\
+subsubsection & \texttt{=== Heading ===}            (3 \texttt{=})        \\
 paragraph     & \Verb!__Heading.__!               (2 \Verb!_!)        \\
 abstract      & \Verb!__Abstract.__! Running text...                  \\
-appendix      & \Verb!======= Appendix: heading =======! (7 \Verb!=!) \\
-appendix      & \Verb!===== Appendix: heading =====! (5 \Verb!=!)     \\
-exercise      & \Verb!======= Exercise: heading =======! (7 \Verb!=!) \\
-exercise      & \Verb!===== Exercise: heading =====! (5 \Verb!=!)     \\
+appendix      & \texttt{======= Appendix: heading =======} (7 \texttt{=}) \\
+appendix      & \texttt{===== Appendix: heading =====} (5 \texttt{=})     \\
+exercise      & \texttt{======= Exercise: heading =======} (7 \texttt{=}) \\
+exercise      & \texttt{===== Exercise: heading =====} (5 \texttt{=})     \\
 \hline
 \end{tabular}
 \end{quote}
@@ -83468,16 +83508,16 @@ exercise      & \Verb!===== Exercise: heading =====! (5 \Verb!=!)     \\
 \noindent
 Note that abstracts are recognized by starting with \Verb!__Abstract.__! or
 \Verb!__Summary.__! at the beginning of a line and ending with three or
-more \Verb!=! signs of the next heading.
+more \texttt{=} signs of the next heading.
 
-The \Verb!Exercise:! keyword kan be substituted by \Verb!Problem:! or \Verb!Project:!.
+The \texttt{Exercise:} keyword kan be substituted by \texttt{Problem:} or \texttt{Project:}.
 A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
 
 \subsection{Inline Formatting}
 
-Words surrounded by \Verb!*! are emphasized: \Verb!*emphasized words*! becomes
+Words surrounded by \texttt{*} are emphasized: \texttt{*emphasized words*} becomes
 \emph{emphasized words}. Similarly, an underscore surrounds words that
 appear in boldface: \Verb!_boldface_! becomes \textbf{boldface}. Colored words
 are also possible: the text
@@ -83493,7 +83533,7 @@ Quotations appear inside double backticks and double single quotes:
 This is a sentence with ``words to be quoted''.
 \end{Verbatim}
 
-A forced linebreak is specified by \Verb!<linebreak>! at the point where the
+A forced linebreak is specified by \texttt{<linebreak>} at the point where the
 linebreak in the output is wanted.
 
 Footnotes use a label in the text with the footnote text separate,
@@ -83525,8 +83565,8 @@ is typeset as four or more hyphens on a single line:
 ---------
 \end{Verbatim}
 
-The \Verb!latex!, \Verb!pdflatex!, \Verb!sphinx!, and \Verb!html! formats support em-dash,
-indicated by three hyphens: \Verb!---!. Here is an example:
+The \texttt{latex}, \texttt{pdflatex}, \texttt{sphinx}, and \texttt{html} formats support em-dash,
+indicated by three hyphens: \texttt{---}. Here is an example:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 The em-dash is used - without spaces - as alternative to hyphen with
@@ -83543,12 +83583,12 @@ An ampersand, as in Guns {\&} Roses or,Texas A {\&} M, is written as a
 plain \Verb!&! \emph{with space(s) on both sides}. Single upper case letters on each
 side of \Verb!&!, as in \Verb!Texas A {\&} M!, remove the spaces and result in,Texas A {\&} M, while words on both sides of \Verb!&!, as in \Verb!Guns {\&} Roses!,
 preserve the spaces: Guns {\&} Roses. Failing to have spaces before and
-after \Verb!&! will result in wrong typesetting of the ampersand in the \Verb!html!,
-\Verb!latex!, and \Verb!pdflatex! formats.
+after \Verb!&! will result in wrong typesetting of the ampersand in the \texttt{html},
+\texttt{latex}, and \texttt{pdflatex} formats.
 
 Emojis, as defined in \href{{http://www.emoji-cheat-sheet.com}}{\nolinkurl{http://www.emoji-cheat-sheet.com}}, can be
 inserted in the text, as (e.g.) \Verb!:dizzy_face:! with blank or newline
-before or after. Only the \Verb!pdflatex! and \Verb!html! output formats translate
+before or after. Only the \texttt{pdflatex} and \texttt{html} output formats translate
 emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 \Verb!--no_emoji! removes all emojis from the output document.
@@ -83556,9 +83596,9 @@ textual specification in the document. The command-line option
 \subsection{Lists}
 
 There are three types of lists: \emph{bullet lists}, where each item starts
-with \Verb!*!, \emph{enumeration lists}, where each item starts with \Verb!o! and gets
+with \texttt{*}, \emph{enumeration lists}, where each item starts with \texttt{o} and gets
 consecutive numbers,
-and \emph{description} lists, where each item starts with \Verb!-! followed
+and \emph{description} lists, where each item starts with \texttt{-} followed
 by a keyword and a colon.
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Here is a bullet list:
@@ -83672,8 +83712,8 @@ Indented lines may give strange output in some formats.
 Lines starting with \Verb!#! are treated as comments in the document and
 translated to the proper syntax for comments in the output
 document. Such comment lines should not appear before {\LaTeX} math
-blocks, verbatim code blocks, or lists if the formats \Verb!rst! and
-\Verb!sphinx! are desired.
+blocks, verbatim code blocks, or lists if the formats \texttt{rst} and
+\texttt{sphinx} are desired.
 
 Comment lines starting with \Verb!##! are not propagated to the output
 document and can be used for comments that are only of interest in
@@ -83681,7 +83721,7 @@ the DocOnce file.
 
 Large portions of text can be left out using Preprocess. Just place
 \Verb!# #ifdef EXTRA! and \Verb!# #endif! around the text. The command line
-option \Verb!-DEXTRA! will bring the text alive again.
+option \texttt{-DEXTRA} will bring the text alive again.
 
 When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
@@ -83696,9 +83736,9 @@ are enabled by the syntax
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 [name: running text]
 \end{Verbatim}
-where \Verb!name! is the name or ID of an author or reader making the comment,
-and \Verb!running text! is the comment. The name can contain upper and lower
-case characters, digits, single quote, \Verb!+! and \Verb!-!, as well
+where \texttt{name} is the name or ID of an author or reader making the comment,
+and \texttt{running text} is the comment. The name can contain upper and lower
+case characters, digits, single quote, \texttt{+} and \texttt{-}, as well
 as space. Here goes an example.
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
@@ -83716,8 +83756,8 @@ Some running text. \shortinlinecomment{hpl 1}{ There must be a space after the c
 The inline comments have simple typesetting in most formats, typically
 boldface name, a comment number, with everything surrounded by
 parenthesis.  However, with {\LaTeX} output and the \Verb!--latex_todonotes!
-option to \Verb!doconce format!, colorful margin or inline boxes (using the
-\Verb!todonotes! package) make it very easy to spot the comments.
+option to \texttt{doconce format}, colorful margin or inline boxes (using the
+\texttt{todonotes} package) make it very easy to spot the comments.
 
 Running
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
@@ -83788,30 +83828,30 @@ Inline verbatim code is typeset within back-ticks, as in
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 Some sentence with `words in verbatim style`.
 \end{Verbatim}
-resulting in Some sentence with \Verb!words in verbatim style!.
+resulting in Some sentence with \texttt{words in verbatim style}.
 
 Multi-line blocks of verbatim text, typically computer code, is typeset
 in between \Verb?!bc xxx? and \Verb?!ec? directives, which must appear on the
-beginning of the line. A specification \Verb!xxx! indicates what verbatim
-formatting style that is to be used. Typical values for \Verb!xxx! are
-nothing, \Verb!cod! for a code snippet, \Verb!pro! for a complete program,
-\Verb!sys! for a terminal session, \Verb!dat! for a data file (or output from a
+beginning of the line. A specification \texttt{xxx} indicates what verbatim
+formatting style that is to be used. Typical values for \texttt{xxx} are
+nothing, \texttt{cod} for a code snippet, \texttt{pro} for a complete program,
+\texttt{sys} for a terminal session, \texttt{dat} for a data file (or output from a
 program),
-\Verb!Xpro! or \Verb!Xcod! for a program or code snipped, respectively,
-in programming \Verb!X!, where \Verb!X! may be \Verb!py! for Python,
-\Verb!cy! for Cython, \Verb!sh! for Bash or other Unix shells,
-\Verb!f! for Fortran, \Verb!c! for C, \Verb!cpp! for C++, \Verb!m! for MATLAB,
-\Verb!pl! for Perl. For output in \Verb!latex! one can let \Verb!xxx! reflect any
-defined verbatim environment in the \Verb!ptex2tex! configuration file
-(\Verb!.ptex2tex.cfg!). For \Verb!sphinx! output one can insert a comment
+\texttt{Xpro} or \texttt{Xcod} for a program or code snipped, respectively,
+in programming \texttt{X}, where \texttt{X} may be \texttt{py} for Python,
+\texttt{cy} for Cython, \texttt{sh} for Bash or other Unix shells,
+\texttt{f} for Fortran, \texttt{c} for C, \texttt{cpp} for C++, \texttt{m} for MATLAB,
+\texttt{pl} for Perl. For output in \texttt{latex} one can let \texttt{xxx} reflect any
+defined verbatim environment in the \texttt{ptex2tex} configuration file
+(\texttt{.ptex2tex.cfg}). For \texttt{sphinx} output one can insert a comment
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 \end{Verbatim}
-that maps environments (\Verb!xxx!) onto valid language types for
-Pygments (which is what \Verb!sphinx! applies to typeset computer code).
+that maps environments (\texttt{xxx}) onto valid language types for
+Pygments (which is what \texttt{sphinx} applies to typeset computer code).
 
-The \Verb!xxx! specifier has only effect for \Verb!latex! and
-\Verb!sphinx! output. All other formats use a fixed monospace font for all
+The \texttt{xxx} specifier has only effect for \texttt{latex} and
+\texttt{sphinx} output. All other formats use a fixed monospace font for all
 kinds of verbatim output.
 
 Here is an example of computer code (see the source of this document
@@ -83833,10 +83873,10 @@ Computer code can also be copied from a file:
  @@@CODE doconce_program.sh  from-to: doconce clean@^doconce split_rst
  @@@CODE doconce_program.sh  envir=shpro fromto: name=@
 \end{Verbatim}
-The \Verb!@@@CODE! identifier must appear at the very beginning of the line.
+The \texttt{@@@CODE} identifier must appear at the very beginning of the line.
 The first line copies the complete file \Verb!doconce_program.sh!.
 The second line copies from the first line matching the \emph{regular
-expression} \Verb!doconce clean! up to, but not including, the line
+expression} \texttt{doconce clean} up to, but not including, the line
 matching the \emph{regular expression} \Verb!^doconce split_rst!.
 The third line behaves as the second, but the line matching
 the first regular expression is not copied (this construction often
@@ -83845,18 +83885,18 @@ used for copying text between begin-end comment pair in the file).
 The copied lines from file are in this example put inside \Verb?!bc shpro?
 and \Verb?!ec? directives, if a complete file is copied, while the
 directives become \Verb?!bc shcod? and \Verb?!ec? when a code snippet is copied
-from file. In general, for a filename extension \Verb!.X!, the environment
+from file. In general, for a filename extension \texttt{.X}, the environment
 becomes \Verb?!bc Xpro? or \Verb?!bc Xcod? for a complete program or snippet,
-respectively. The enivorments (\Verb!Xcod! and \Verb!Xpro!) are only active for
-\Verb!latex!, \Verb!pdflatex!, html`, and \Verb!sphinx! outout.  The fourth line
-above specifies the code environment explicitly (\Verb!envir=shpro!) such
-that it indicates a complete shell program (\Verb!shpro!) even if we copy a
-part of the file (here from \Verb!name=! until the end of the file).
+respectively. The enivorments (\texttt{Xcod} and \texttt{Xpro}) are only active for
+\texttt{latex}, \texttt{pdflatex}, html`, and \texttt{sphinx} outout.  The fourth line
+above specifies the code environment explicitly (\texttt{envir=shpro}) such
+that it indicates a complete shell program (\texttt{shpro}) even if we copy a
+part of the file (here from \texttt{name=} until the end of the file).
 Copying a part will by default lead to \Verb?!bc shcod?, which indicates a
 code snippet that normally needs more code to run properly.
 
-The \Verb!--code_prefix=text! option adds a path \Verb!text! to the filename specified
-in the \Verb!@@@CODE! command. For example
+The \Verb!--code_prefix=text! option adds a path \texttt{text} to the filename specified
+in the \texttt{@@@CODE} command. For example
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
  @@@CODE src/myfile.py
@@ -83886,14 +83926,14 @@ Important warnings:
 \subsection{{\LaTeX} Mathematics}
 
 DocOnce supports inline mathematics and blocks of mathematics, using
-standard {\LaTeX} syntax. The output formats \Verb!html!, \Verb!sphinx!, \Verb!latex!,
-pdflatex`, \Verb!pandoc!, and \Verb!mwiki! work with this syntax while all other
+standard {\LaTeX} syntax. The output formats \texttt{html}, \texttt{sphinx}, \texttt{latex},
+pdflatex`, \texttt{pandoc}, and \texttt{mwiki} work with this syntax while all other
 formats will just display the raw {\LaTeX} code.
 
 Inline expressions are written in the standard
 {\LaTeX} way with the mathematics surrounded by dollar signs, as in
-$Ax=b$. To help increase readability in other formats than \Verb!sphinx!,
-\Verb!latex!, and \Verb!pdflatex!, inline mathematics may have a more human
+$Ax=b$. To help increase readability in other formats than \texttt{sphinx},
+\texttt{latex}, and \texttt{pdflatex}, inline mathematics may have a more human
 readable companion expression. The syntax is like
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 $\sin(\norm{\bf u})$|$sin(||u||)$
@@ -83935,16 +83975,16 @@ which results in
 
 
 \paragraph{LaTeX Newcommands.}
-The author can define \Verb!newcommand! statements in files with names
-\Verb!newcommands*.tex!. Such commands should only be used for mathematics
+The author can define \texttt{newcommand} statements in files with names
+\texttt{newcommands*.tex}. Such commands should only be used for mathematics
 (other {\LaTeX} constructions are only understood by {\LaTeX} itself).
 The convention is that \Verb!newcommands_keep.tex!
 contains the newcommands that are kept in the document, while
 those in \Verb!newcommands_replace.tex! will be replaced by their full
 {\LaTeX} code. This conventions helps make readable documents in formats
-without {\LaTeX} support. For \Verb!html!, \Verb!sphinx!, \Verb!latex!, \Verb!pdflatex!,
-\Verb!mwiki!, \Verb!ipynb!, and \Verb!pandoc!, the mathematics in newcommands is
-rendered nicely anyway. If you desire \Verb!newcommand! outside {\LaTeX}
+without {\LaTeX} support. For \texttt{html}, \texttt{sphinx}, \texttt{latex}, \texttt{pdflatex},
+\texttt{mwiki}, \texttt{ipynb}, and \texttt{pandoc}, the mathematics in newcommands is
+rendered nicely anyway. If you desire \texttt{newcommand} outside {\LaTeX}
 mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
@@ -83957,21 +83997,21 @@ will be much more flexible and powerful).
 own favorite {\LaTeX} packages. DocOnce is a much simpler format and
 corresponds to writing in quite plain {\LaTeX}.
 Any {\LaTeX} syntax is accepted when DocOnce translates the text to
-{\LaTeX}, but if output in the \Verb!sphinx!, \Verb!pandoc!, \Verb!mwiki!, \Verb!html!, or
-\Verb!ipynb! formats is also important, one should follow the rules below.
+{\LaTeX}, but if output in the \texttt{sphinx}, \texttt{pandoc}, \texttt{mwiki}, \texttt{html}, or
+\texttt{ipynb} formats is also important, one should follow the rules below.
 
 \begin{itemize}
- \item AMS {\LaTeX} mathematics is supported, also for the \Verb!html!, \Verb!sphinx!,
-   and \Verb!ipynb! formats.
+ \item AMS {\LaTeX} mathematics is supported, also for the \texttt{html}, \texttt{sphinx},
+   and \texttt{ipynb} formats.
 
  \item Only five equation environments can be used: \Verb!\[ ... \]!,
-   \Verb!equation*!, \Verb!equation!, \Verb!align*!, and \Verb!align!.
-   (DocOnce performs extensions to \Verb!sphinx!, \Verb!ipynb!,
+   \texttt{equation*}, \texttt{equation}, \texttt{align*}, and \texttt{align}.
+   (DocOnce performs extensions to \texttt{sphinx}, \texttt{ipynb},
    and other formats such that
-   labels in \Verb!align! environments work well.)
+   labels in \texttt{align} environments work well.)
    This may feel restrictive to {\LaTeX} writers who are used to
-   \Verb!split!, \Verb!aligned!, \Verb!alignat!, and other environments (rewrite to
-   \Verb!align! and use a number for each equation, or use \Verb!\nonumber\\!
+   \texttt{split}, \texttt{aligned}, \texttt{alignat}, and other environments (rewrite to
+   \texttt{align} and use a number for each equation, or use \Verb!\nonumber\\!
    to end intermediate calculations on multiple lines and use a label
    in the last, final result).
 
@@ -83979,13 +84019,13 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
 
  \item Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
-   \Verb!newcommands*.tex!. Use \Verb!\newcommands! and not \Verb!\def!.
+   \texttt{newcommands*.tex}. Use \Verb!\newcommands! and not \Verb!\def!.
    Each newcommand must be defined on a single line.
    Use Mako functions if you need macros in the running text.
 
  \item Use labels and refer to them
    for sections, figures, movies, and equations only.
-   MediaWiki (\Verb!mwiki!) does not support references to equations.
+   MediaWiki (\texttt{mwiki}) does not support references to equations.
 
  \item Spaces are not allowed in labels.
 
@@ -84003,20 +84043,20 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
    explains everything about the figure, but this will work well
    only in the HTML and {\LaTeX} formats.)
 
- \item You cannot use \Verb!subfigure! to combine several image files in one
+ \item You cannot use \texttt{subfigure} to combine several image files in one
    figure, but you can combine the files to one file using
    the \Verb!doconce combine_images! tool. Refer to individual image files
    in the caption or text by (e.g.) ``left'' and ``right'', or
    ``upper left'', ``lower right'', etc.
 
- \item Use plain \Verb!cite! for references (e.g., \Verb!\citeauthor! has no counterpart
+ \item Use plain \texttt{cite} for references (e.g., \Verb!\citeauthor! has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) \textsc{Bib}\negthinspace{\TeX} is possible.
 
- \item Use \Verb!idx! for index entries, but put the definitions between paragraphs,
+ \item Use \texttt{idx} for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
 
- \item Use the \Verb!bm! package and the \Verb!\bm! command for boldface in mathematics.
+ \item Use the \texttt{bm} package and the \Verb!\bm! command for boldface in mathematics.
 
  \item Make sure all ordinary text starts in column 1 on each line. Equations
    can be indented. The \Verb!\begin{}! and \Verb!\end{}! directives should start
@@ -84050,23 +84090,23 @@ of using Preprocess or Mako
 allows advanced {\LaTeX} features, or HTML features for the HTML formats,
 and thereby fine tuning of the resulting
 document. More tuning can be done by automatic editing of the
-output file (e.g., \Verb!.tex! or \Verb!.html!) produced by DocOnce using
-your own scripts or the \Verb!doconce replace! and \Verb!doconce subst! commands.
+output file (e.g., \texttt{.tex} or \texttt{.html}) produced by DocOnce using
+your own scripts or the \texttt{doconce replace} and \texttt{doconce subst} commands.
 \end{notice_mdfboxadmon}
 
 
 
 
 \begin{notice_mdfboxadmon}[Autotranslation of {\LaTeX} to DocOnce?]
-The tool \Verb!doconce latex2doconce! may help you translating {\LaTeX} files
+The tool \texttt{doconce latex2doconce} may help you translating {\LaTeX} files
 to DocOnce syntax. However, if you use computer code in floating
 list environments, special packages for typesetting algorithms,
-example environments, \Verb!subfigure! in figures,
+example environments, \texttt{subfigure} in figures,
 or a lot of newcommands in the running text, there will be need for
 a lot of manual edits and adjustments.
 
 For examples, figure environments
-can be translated by \Verb!doconce latex2doconce! only if the label is inside
+can be translated by \texttt{doconce latex2doconce} only if the label is inside
 the caption and the figure is typeset like
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
@@ -84080,7 +84120,7 @@ If the {\LaTeX} is consistent with respect to placement of
 the label, a simple script can autoedit the label inside the caption,
 but many {\LaTeX} writers put the label at different places in different
 figures, and then it becomes more difficult to autoedit figures and
-translate them to the DocOnce \Verb!FIGURE:! syntax.
+translate them to the DocOnce \texttt{FIGURE:} syntax.
 
 Tables are hard to interpret and translate, because the headings and
 caption can be typeset in many different ways. The type of table
@@ -84100,7 +84140,7 @@ that is recognized looks like
 Recall that table captions do not make sense in DocOnce since tables
 must be inlined and explained in the surrounding text.
 
-Footnotes are also problematic for \Verb!doconce latex2doconce! since DocOnce
+Footnotes are also problematic for \texttt{doconce latex2doconce} since DocOnce
 footnotes must have the explanation outside the paragraph where the
 footnote is used. This calls for manual work. The translator from
 {\LaTeX} to DocOnce will insert \Verb!_PROBLEM_! and mark footnotes. One
@@ -84142,8 +84182,8 @@ Note three important syntax details:
 \begin{enumerate}
  \item A mandatory comma after the figure/movie filename,
 
- \item no comments between \Verb!width!, \Verb!height!, and \Verb!frac! and no spaces
-    around the \Verb!=! characters,
+ \item no comments between \texttt{width}, \texttt{height}, and \texttt{frac} and no spaces
+    around the \texttt{=} characters,
 
  \item all of the command must appear on a single line,
 
@@ -84157,10 +84197,10 @@ output format. If not suitable version is found, DocOnce will convert
 another format to the needed one.
 
 The caption is optional. If omitted, the figure will be inlined (meaning
-no use of any figure environment in HTML or {\LaTeX} formats). The \Verb!width!
-and \Verb!height! parameters affect HTML formats (\Verb!html!, \Verb!rst!, \Verb!sphinx!),
-while \Verb!frac! is the width of the image as a fraction of the total text
-width in the \Verb!latex! and \Verb!pdflatex! formats.
+no use of any figure environment in HTML or {\LaTeX} formats). The \texttt{width}
+and \texttt{height} parameters affect HTML formats (\texttt{html}, \texttt{rst}, \texttt{sphinx}),
+while \texttt{frac} is the width of the image as a fraction of the total text
+width in the \texttt{latex} and \texttt{pdflatex} formats.
 
 Movie files can either be a video or a wildcard expression for a
 series of frames. In the latter case, a simple device in an HTML page
@@ -84170,10 +84210,10 @@ Combining several image files into one can be done by the
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 doconce combine_images image1 image2 ... output_image
 \end{Verbatim}
-This command applies \Verb!montage! or PDF-based tools to combine the images
+This command applies \texttt{montage} or PDF-based tools to combine the images
 to get the highest quality.
 
-YouTube and Vimeo movies will be embedded in \Verb!html! and \Verb!sphinx! documents
+YouTube and Vimeo movies will be embedded in \texttt{html} and \texttt{sphinx} documents
 and otherwise be represented by a link. The syntax is
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
@@ -84240,9 +84280,9 @@ Note that
 \end{itemize}
 
 \noindent
-The command-line option \Verb!--tables2csv! (to \Verb!doconce format!)
+The command-line option \texttt{--tables2csv} (to \texttt{doconce format})
 makes DocOnce dump each table to CSV format in a file \Verb!table_X.csv!,
-where \Verb!X! is the table number. This feature makes it easy to
+where \texttt{X} is the table number. This feature makes it easy to
 load tables into spreadsheet programs for further analysis.
 
 DocOnce tables can be efficiently made directly from data in CSV files.
@@ -84264,15 +84304,15 @@ inserted anywhere, using the syntax
 label{name}
 \end{Verbatim}
 with no backslash
-preceding the label keyword. It is common practice to choose \Verb!name!
-as some hierarchical name, using a delimiter like \Verb!:! or \Verb!_! between
+preceding the label keyword. It is common practice to choose \texttt{name}
+as some hierarchical name, using a delimiter like \texttt{:} or \Verb!_! between
 (e.g.) section, subsection, and topic.
 
-A reference to the label \Verb!name! is written as
+A reference to the label \texttt{name} is written as
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 ref{name}
 \end{Verbatim}
-again with no backslash before \Verb!ref!.
+again with no backslash before \texttt{ref}.
 
 Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
@@ -84285,28 +84325,28 @@ Single citations are written as
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 cite{name}
 \end{Verbatim}
-where \Verb!name! is a logical name
+where \texttt{name} is a logical name
 of the reference (again, {\LaTeX} writers must not insert a backslash).
-Bibliography citations often have \Verb!name! on the form
+Bibliography citations often have \texttt{name} on the form
 \Verb!Author1_Author2_YYYY!, \Verb!Author_YYYY!, or \Verb!Author1_etal_YYYY!, where
-\Verb!YYYY! is the year of the publication.
+\texttt{YYYY} is the year of the publication.
 Multiple citations at once is possible by separating the logical names
 by comma:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 cite{name1,name2,name3}
 \end{Verbatim}
 
-The bibliography is specified by a line \Verb!BIBFILE: papers.pub!,
-where \Verb!papers.pub! is a publication database in the
+The bibliography is specified by a line \texttt{BIBFILE: papers.pub},
+where \texttt{papers.pub} is a publication database in the
 \href{{https://bitbucket.org/logg/publish}}{Publish} format.
-\textsc{Bib}\negthinspace{\TeX} \Verb!.bib! files can easily be combined to a Publish database
+\textsc{Bib}\negthinspace{\TeX} \texttt{.bib} files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than {\LaTeX}).
 
 \subsection{Generalized References}
 
 There is a \emph{generalized referencing} feature in DocOnce that allows
-a reference with \Verb!ref! to have one formulation if the label is
+a reference with \texttt{ref} to have one formulation if the label is
 in the same document and another formulation if the reference is
 to an item in an external document. This construction makes it easy
 to work with many small, independent documents in parallel with
@@ -84325,18 +84365,18 @@ ref[Section ref{subsec:ex}][in cite{testdoc:12}][a "section":
 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:12}],
 DocOnce documents may include movies.
 \end{Verbatim}
-The output from a generalized reference is the text \Verb!internal! if all
-references with \Verb!ref! in the text \Verb!internal! are references to labels
+The output from a generalized reference is the text \texttt{internal} if all
+references with \texttt{ref} in the text \texttt{internal} are references to labels
 defined in the
-present document. Otherwise, if \Verb!cite! is non-empty and the format is
-\Verb!latex! or \Verb!pdflatex!, one assumes that the references in \Verb!internal!
+present document. Otherwise, if \texttt{cite} is non-empty and the format is
+\texttt{latex} or \texttt{pdflatex}, one assumes that the references in \texttt{internal}
 are to external documents declared by a comment line
 \Verb!# Externaldocuments: testdoc, mydoc! (usually after the title, authors,
-and date). In this case the output text is \Verb!internal! followed by \Verb!cite!,
+and date). In this case the output text is \texttt{internal} followed by \texttt{cite},
 and the
-{\LaTeX} package \Verb!xr! is used to handle the labels in the external
+{\LaTeX} package \texttt{xr} is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
-\Verb!external! text will be the output.
+\texttt{external} text will be the output.
 
 \subsection{Index of Keywords}
 
@@ -84350,13 +84390,13 @@ It is recommended to place any index of this type outside
 running text, i.e., after (sub)section titles and in the space between
 paragraphs. Index specifications placed right before paragraphs also
 gives the doconce source code an indication of the content in the
-forthcoming text. The index is only produced for the \Verb!latex!,
-\Verb!pdflatex!, \Verb!rst!, and \Verb!sphinx! formats.
+forthcoming text. The index is only produced for the \texttt{latex},
+\texttt{pdflatex}, \texttt{rst}, and \texttt{sphinx} formats.
 
-\subsection{Capabilities of The Program \protect\Verb!doconce! }
+\subsection{Capabilities of The Program \texttt{doconce} }
 
-The \Verb!doconce! program can be used for a number of purposes besides
-transforming a \Verb!.do.txt! file to some format. Here is the
+The \texttt{doconce} program can be used for a number of purposes besides
+transforming a \texttt{.do.txt} file to some format. Here is the
 list of capabilities:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
@@ -84646,46 +84686,46 @@ examples.
 \subsection{Environments}
 
 DocOnce environments start with \Verb?!benvirname? and end with \Verb?!eenvirname?,
-where \Verb!envirname! is the name of the environment. Here is a listing of
+where \texttt{envirname} is the name of the environment. Here is a listing of
 the environments:
 
 \begin{itemize}
- \item \Verb!c!: computer code (or verbatim text)
+ \item \texttt{c}: computer code (or verbatim text)
 
- \item \Verb!t!: math blocks with {\LaTeX} syntax
+ \item \texttt{t}: math blocks with {\LaTeX} syntax
 
- \item \Verb!subex!: sub-exercise
+ \item \texttt{subex}: sub-exercise
 
- \item \Verb!ans!: short answer to exercise or sub-exercise
+ \item \texttt{ans}: short answer to exercise or sub-exercise
 
- \item \Verb!sol!: full solution to exercise or sub-exercise
+ \item \texttt{sol}: full solution to exercise or sub-exercise
 
- \item \Verb!hint!: multiple help items in an exercise or sub-exercise
+ \item \texttt{hint}: multiple help items in an exercise or sub-exercise
 
- \item \Verb!quote!: indented text
+ \item \texttt{quote}: indented text
 
- \item \Verb!notice!, \Verb!summary!, \Verb!warning!, \Verb!question!: admonition boxes with
+ \item \texttt{notice}, \texttt{summary}, \texttt{warning}, \texttt{question}: admonition boxes with
     custom title, special icon, and (sometimes) background color
 
- \item \Verb!block!, \Verb!box!: simpler boxes (\Verb!block! may have title but never any icon)
+ \item \texttt{block}, \texttt{box}: simpler boxes (\texttt{block} may have title but never any icon)
 
- \item \Verb!pop!: text to gradually pop up in slide presentations
+ \item \texttt{pop}: text to gradually pop up in slide presentations
 
- \item \Verb!slidecell!: indication of cells in a grid layout for elements on a
+ \item \texttt{slidecell}: indication of cells in a grid layout for elements on a
    slide
 \end{itemize}
 
 \noindent
 \subsection{Preprocessing}
 
-DocOnce documents may utilize a preprocessor, either \Verb!preprocess! and/or
-\Verb!mako!. The former is a C-style preprocessor that allows if-tests
+DocOnce documents may utilize a preprocessor, either \texttt{preprocess} and/or
+\texttt{mako}. The former is a C-style preprocessor that allows if-tests
 and including other files (but not macros with arguments).
-The \Verb!mako! preprocessor is much more advanced - it is actually a full
+The \texttt{mako} preprocessor is much more advanced - it is actually a full
 programming language, very similar to Python.
 
-The command \Verb!doconce format! first runs \Verb!preprocess! and then \Verb!mako!.
-Here is a typical example on utilizing \Verb!preprocess! to include another
+The command \texttt{doconce format} first runs \texttt{preprocess} and then \texttt{mako}.
+Here is a typical example on utilizing \texttt{preprocess} to include another
 document, ``comment out'' a large portion of text, and to write format-specific
 constructions:
 
@@ -84720,10 +84760,10 @@ constructions:
 # #endif
 \end{Verbatim}
 
-With the \Verb!mako! preprocessor the if-else tests have slightly different syntax.
+With the \texttt{mako} preprocessor the if-else tests have slightly different syntax.
 An \href{{http://hplgit.github.com/bioinf-py/}}{example document} contains
-some illustrations on how to utilize \Verb!mako! (clone the GitHub project and
-examine the DocOnce source and the \Verb!doc/src/make.sh! script).
+some illustrations on how to utilize \texttt{mako} (clone the GitHub project and
+examine the DocOnce source and the \texttt{doc/src/make.sh} script).
 
 \subsection{Resources}
 
@@ -97917,23 +97957,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 [14]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 
 
 t line 1311.
@@ -98191,10 +98215,6 @@ Underfull \hbox (badness 10000)
 ...rest of part of LaTeX line number...
 
 [27]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 No file testdoc.ind.
 [28] (./testdoc.aux)
 
@@ -98868,23 +98888,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 [15]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 
 
 t line 1311.
@@ -99025,10 +99029,6 @@ No file testdoc.bbl.
 Underfull \hbox (badness 10000) 
 
 [26] [27] [28]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 No file testdoc.ind.
 [29] (./testdoc.aux)
 
@@ -99717,23 +99717,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 [15]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 
 
 t line 1311.
@@ -99871,12 +99855,7 @@ Underfull \hbox (badness 10000)
 [25] (./testdoc.bbl [26]) [27]
 Underfull \hbox (badness 10000) 
 
-[28] [29]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-(./testdoc.ind [30]
+[28] [29] (./testdoc.ind [30]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -100551,24 +100530,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[15]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[16]
+[15] [16]
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [17]
 Overfull \hbox (5.03835pt too wide) 
@@ -100592,12 +100554,7 @@ Underfull \hbox (badness 10000)
 [25] (./testdoc.bbl [26]) [27]
 Underfull \hbox (badness 10000) 
 
-[28] [29]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-(./testdoc.ind [30]
+[28] [29] (./testdoc.ind [30]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -101335,23 +101292,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 [15]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
 
 
 t line 1261.
@@ -101604,12 +101545,7 @@ Underfull \hbox (badness 10000)
 
 ...rest of part of LaTeX line number...
 
-[29]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-(./testdoc.ind [30]
+[29] (./testdoc.ind [30]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
@@ -109687,6 +109623,9 @@ Overfull \hbox (111.58464pt too wide)
 Overfull \hbox (111.58464pt too wide) 
 |[] 
 [3] [4]
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+[5] [6]
 Chapter 1.
 
 Overfull \hbox (111.58464pt too wide) 
@@ -109727,42 +109666,42 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[5]
-
-
-
-[6] 
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
 [7]
 
 
+
+[8] 
+
+
 ...rest of part of LaTeX line number...
 
-[8]
+
+
+...rest of part of LaTeX line number...
+
+
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
-[9] [10]
+[9]
+
+
+...rest of part of LaTeX line number...
+
+[10]
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
+[][][]
+[11] [12]
 Chapter 2.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[11] [12]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
 [13] [14]
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
-[15]
+[15] [16]
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
+[][][]
+[17]
 
 
 ...rest of part of LaTeX line number...
@@ -109779,15 +109718,15 @@ Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 
 
 
-[16]
+[18]
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
-[17] [18]
+[19] [20]
 Appendix A.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[19] [20]
+[21] [22]
 No file Springer_T2_book.bbl.
 No file Springer_T2_book.ind.
 (./Springer_T2_book.aux)
@@ -109978,7 +109917,7 @@ r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
 lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (22 pages, ).
+Output written on Springer_T2_book.pdf (24 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system bibtex Springer_T2_book
@@ -110264,6 +110203,9 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
 ) [3] [4]
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+(./Springer_T2_book.loe) [5] [6]
 Chapter 1.
 
 Overfull \hbox (111.58464pt too wide) 
@@ -110292,28 +110234,28 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[5]
+[7]
 
 
 
-[6] 
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[7] [8]
+[8] 
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [9] [10]
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
+[][][]
+[11] [12]
 Chapter 2.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[11] [12]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
 [13] [14]
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
-[15]
+[15] [16]
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
+[][][]
+[17]
 
 
 ...rest of part of LaTeX line number...
@@ -110330,21 +110272,21 @@ Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 
 
 
-[16]
+[18]
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
-[17] [18]
+[19] [20]
 Appendix A.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[19] [20] (./Springer_T2_book.bbl
+[21] [22] (./Springer_T2_book.bbl
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-) [21] [22] (./Springer_T2_book.ind
+) [23] [24] (./Springer_T2_book.ind
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[23]) (./Springer_T2_book.aux)
+[25]) (./Springer_T2_book.aux)
 
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
@@ -110536,7 +110478,7 @@ r8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts
 lic/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy9.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on Springer_T2_book.pdf (25 pages, ).
+Output written on Springer_T2_book.pdf (27 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex Springer_T2_book
@@ -110806,6 +110748,9 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.5> not available
 (Font)              size <5> substituted on .
 
 ) [3] [4]
+Overfull \hbox (111.58464pt too wide) 
+|[] 
+(./Springer_T2_book.loe) [5] [6]
 Chapter 1.
 
 Overfull \hbox (111.58464pt too wide) 
@@ -110834,20 +110779,17 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[5] [6] 
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[7] [8]
+[7] [8] 
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [9] [10]
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
+[][][]
+[11] [12]
 Chapter 2.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[11] [12]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
 [13] [14]
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
@@ -110855,17 +110797,20 @@ Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 [][][]
 [17] [18]
+Overfull \hbox (4.26791pt too wide) has occurred while \output is active
+[][][]
+[19] [20]
 Appendix A.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[19] [20] (./Springer_T2_book.bbl
+[21] [22] (./Springer_T2_book.bbl
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-) [21] [22] (./Springer_T2_book.ind
+) [23] [24] (./Springer_T2_book.ind
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[23]) (./Springer_T2_book.aux)
+[25]) (./Springer_T2_book.aux)
 
  *File List*
 svmonodo.cls    2007/06/25 v5.4 
@@ -111046,7 +110991,7 @@ r/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmsy9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share
 /texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmtt9.pfb>
-Output written on Springer_T2_book.pdf (25 pages, ).
+Output written on Springer_T2_book.pdf (27 pages, ).
 Transcript written on Springer_T2_book.log.
 + '[' 0 -ne 0 ']'
 + rm -rf standalone_exercises
@@ -111780,13 +111725,10 @@ moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[6]
-Overfull \hbox (12.68103pt too wide) 
-\T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
-[7] [8] [9] [10]
+[6] [7] [8] [9] [10]
 Overfull \hbox (32.16707pt too wide) 
-\T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
-.
+\T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names \T
+1/lmtt/m/n/10 newcommands*.tex\T1/phv/m/n/10 .
 
 Overfull \hbox (9.62752pt too wide) 
 \T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
@@ -111797,7 +111739,7 @@ Overfull \hbox (4.64987pt too wide)
 
 Overfull \hbox (47.3995pt too wide) 
 []\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
-[]
+\T1/lmtt/m/n/10 doconce latex2doconce
 [12] [13] [14]
 
 
@@ -111805,19 +111747,16 @@ Overfull \hbox (47.3995pt too wide)
 
 [15]
 Overfull \hbox (59.24634pt too wide) 
-\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
-on the form [],
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
+/lmtt/m/n/10 name \T1/phv/m/n/10 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
-[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[16]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[17] [18] [19] [20] [21] [22]
+[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/lmtt/m/n/10 
+BIBFILE: papers.pub\T1/phv/m/n/10 , where \T1/lmtt/m/n/10 papers.pub
+[16] [17] [18] [19] [20] [21] [22]
 Overfull \hbox (0.31688pt too wide) 
-\T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
+\T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the \T1
+/lmtt/m/n/10 doc/src/make.sh
 
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
@@ -112194,13 +112133,10 @@ moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-
-Overfull \hbox (12.68103pt too wide) 
-\T1/phv/m/n/10 How-ever, with L[]T[]X out-put and the [] op-tion to [],
 [7] [8] [9] [10]
 Overfull \hbox (32.16707pt too wide) 
-\T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names []
-.
+\T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names \T
+1/lmtt/m/n/10 newcommands*.tex\T1/phv/m/n/10 .
 [11]
 Overfull \hbox (9.62752pt too wide) 
 \T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
@@ -112211,22 +112147,19 @@ Overfull \hbox (4.64987pt too wide)
 
 Overfull \hbox (47.3995pt too wide) 
 []\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
-[]
+\T1/lmtt/m/n/10 doconce latex2doconce
 [13] [14] [15] [16]
 Overfull \hbox (59.24634pt too wide) 
-\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have [] 
-on the form [],
+\T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
+/lmtt/m/n/10 name \T1/phv/m/n/10 on the form [],
 
 Overfull \hbox (20.06982pt too wide) 
-[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line [], where []
-[17]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[18] [19] [20] [21] [22] [23]
+[]\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/lmtt/m/n/10 
+BIBFILE: papers.pub\T1/phv/m/n/10 , where \T1/lmtt/m/n/10 papers.pub
+[17] [18] [19] [20] [21] [22] [23]
 Overfull \hbox (0.31688pt too wide) 
-\T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the []
+\T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the \T1
+/lmtt/m/n/10 doc/src/make.sh
 
 Overfull \hbox (88.36455pt too wide) 
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
