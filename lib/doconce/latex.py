@@ -529,9 +529,9 @@ def latex_code(filestr, code_blocks, code_block_types,
     if include_numbering_of_exercises:
         # Remove section numbers of exercise sections
         if option('examples_as_exercises'):
-            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +(\d+)\s*: +(.+\})'
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +([.\d]+)\s*: +(.+\})'
         else:
-            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +(\d+)\s*: +(.+\})'
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +([.\d]+)\s*: +(.+\})'
         # Make table of contents or list of exercises entry
         # (might have to add \phantomsection right before because
         # of the hyperref package?)
@@ -580,8 +580,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             filestr = re.sub(exercise_pattern, replacement, filestr,
                              flags=re.MULTILINE)
             # Find suitable titles for list of exercises
-            import sets
-            types_of_exer = sets.Set()
+            types_of_exer = set()
             for exer_tp, dummy, dummy in exercise_headings:
                 types_of_exer.add(exer_tp)
             types_of_exer = list(types_of_exer)
@@ -941,6 +940,10 @@ def latex_figure(m):
     verbatim_handler = 'Verb'  # alternative: 'texttt'
     verbatim_text = re.findall(r'(`[^`]+?`)', caption)
     verbatim_text_new = []
+    # Side effect: if verbatim_text occurs more than once,
+    # we get multiple \protect or \texttt, so use a set to
+    # reduce multiples
+    verbatim_text = list(set(verbatim_text))
     for words in verbatim_text:
         new_words = words
         if '_' in new_words:
@@ -1991,8 +1994,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
     code_envir_transform = option('latex_admon_envir_map=', None)
     if code_envir_transform:
         envirs = re.findall(r'^\\b([A-Za-z0-9_]+)$', text_block, flags=re.MULTILINE)
-        import sets
-        envirs = list(sets.Set(envirs))  # remove multiple items
+        envirs = list(set(envirs))  # remove multiple items
         if code_envir_transform.isdigit():
             _envir_mapping = {}
             # Just append the digit(s)

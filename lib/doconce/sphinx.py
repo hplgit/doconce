@@ -343,8 +343,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
 
     # Make correct code-block:: language constructions
     legal_pygments_languages = get_legal_pygments_lexers()
-    import sets
-    for key in sets.Set(code_block_types):
+    for key in set(code_block_types):
         if key in envir2pygments:
             if not envir2pygments[key] in legal_pygments_languages:
                 print """*** warning: %s is not a legal Pygments language (lexer)

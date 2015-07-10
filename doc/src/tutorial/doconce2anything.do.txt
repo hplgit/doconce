@@ -773,6 +773,7 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_list_of_exercises=loe,toc,none` (LaTeX list of exercises, integrated into the table of contents, or no list)
  * `--latex_fancy_header` (chapter/section headings at top of pages, style depends on value of `--latex_section_headings`)
  * `--latex_section_headings=std,blue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
+ * `--latex_table_format=quote, center, footnotesize, tiny` (environment around tables)
  * `--latex_colored_table_rows=blue, gray, no` (color of every two lines in tables)
  * `--latex_todonotes` (inline comments typeset as ``bubbles'')
  * `--latex_double_spacing` (to ease hand-writing between the lines)

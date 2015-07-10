@@ -1433,20 +1433,23 @@ References and labels are supported. The syntax is simple:
 label{section:verbatim}   # defines a label
 For more information we refer to Section ref{section:verbatim}.
 !ec
-This syntax is close that that of labels and cross-references in
-LaTeX. When the label is placed after a section or subsection heading,
-the plain text, Epytext, and StructuredText formats will simply
+The DocOnce label syntax is close that that of labels and cross-references in
+LaTeX, but note that *labels cannot contain whitespace and cannot have a backslash*.
+
+When the label is placed after a section or subsection heading,
+the `plain` text, `epytext`, and `st` formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 `rst` and `sphinx` formats, the end effect is the same, but
 the ``label'' and ``ref'' commands are first translated to the proper
-reST commands by `doconce format`. In the HTML and wiki formats,
+reST commands by `doconce format`. In the `html`, `ipynb`, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX ``label'' and ``ref'' are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
-It is, in general, recommended to use labels and references for
-(sub)sections, equations, and figures only.
+Labels and references should only be used for
+(sub)sections, equations, figures, and movies (since DocOnce does not
+support references to tables and algorithms, for instance).
 By the way, here is an example on referencing Figure ref{fig:viz}
 (the label appears in the figure caption in the source code of this document).
 Additional references to Sections ref{mathtext} and ref{newcommands} are
