@@ -754,6 +754,10 @@ sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like `.txt`.
 
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
+
 
 ===== Bibliography test =====
 

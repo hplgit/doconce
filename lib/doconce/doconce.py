@@ -629,6 +629,18 @@ def syntax_check(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
+    # Quotes or inline verbatim is not allowed inside emphasize and bold:
+    # (force non-blank in the beginning and end to avoid interfering with lists)
+    from common import inline_tag_begin, inline_tag_end
+    pattern = r'%s\*(?P<subst>[^ ][^*]+?[^ ])\*%s' % (inline_tag_begin, inline_tag_end)
+    for dummy1, dummy2, phrase, dummy3, dummy4 in \
+            re.findall(pattern, filestr, flags=re.MULTILINE):
+        if '`' in phrase:
+            print '*** error: found ` (backtick) inside emphasize:'
+            print '   ', '*%s*' % phrase
+            print '    This is illegal syntax!'
+            _abort()
+
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
         if line.strip().startswith('==='):

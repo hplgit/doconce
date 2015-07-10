@@ -6357,8 +6357,8 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         #sys.exit(1)
 
     # Remove inline quotes before inline verbatim
-    pattern = "``(.+?)''"
-    text = re.sub(pattern, r'\g<1>', text, flags=re.DOTALL)
+    pattern = "``(.+?)''([\n ,.?:)*_-])"
+    text = re.sub(pattern, r'\g<1>\g<2>', text, flags=re.DOTALL)
     # Remove inline verbatim
     text = re.sub(r'`[^ ][^`]*?`', '', text)  # remove inline verbatim
     if verbose > 0:

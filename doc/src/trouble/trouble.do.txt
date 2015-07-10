@@ -839,6 +839,18 @@ verbatim environment.
 
 ======= Problems with LaTeX Output =======
 
+===== Lines are too long =====
+
+Too long lines are often handled with a forced newline like `\\` in
+LaTeX, but this double backslash does not look good in other formats
+when you use DocOnce. Try to rewrite the text such that LaTeX
+naturally avoids too long lines. Inline verbatim can easily force
+LaTeX to extend the line width, but see if you can use other words to
+move the inline verbatim to the left or to the next line.
+
+A last resort is to use the preprocessor and test on ``FORMAT == 'pdflatex'`
+and then use the double backslash.
+
 ===== Sphinx and HTML show pygmetized code, but not LaTeX =====
 
 You have to explicitly select the `minted` environment when running `ptex2tex`
