@@ -636,10 +636,9 @@ def syntax_check(filestr, format):
     for dummy1, dummy2, phrase, dummy3, dummy4 in \
             re.findall(pattern, filestr, flags=re.MULTILINE):
         if '`' in phrase:
-            print '*** error: found ` (backtick) inside emphasize:'
+            print '*** warning: found ` (backtick) inside something that looks like emphasize:'
             print '   ', '*%s*' % phrase
-            print '    This is illegal syntax!'
-            _abort()
+            print '    (backtick inside *...* emphasize is not allowed)'
 
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
