@@ -105,7 +105,8 @@
       \@headskip22pt
     \fi
     \setbox0\vbox{%
-        \begin{minipage}[t]{101mm}
+        %hpl: Reduce 90mm if chapter no is placed too far to the right
+        \begin{minipage}[t]{90mm}
           \hyphenpenalty \@M
           \interlinepenalty\@M
           \raggedright

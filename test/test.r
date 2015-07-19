@@ -769,6 +769,10 @@ sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like `.txt`.
 
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
+
 
 ===== Bibliography test =====
 
@@ -3160,6 +3164,10 @@ sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \texttt{.txt}.
 
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
+
 
 \subsection{Bibliography test}
 
@@ -5533,6 +5541,10 @@ sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \texttt{.txt}.
 
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
+
 
 \subsection{Bibliography test}
 
@@ -7902,6 +7914,10 @@ ordinary double quotes for all non--LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \texttt{.txt}.
+
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
 
 
 \subsection{Bibliography test}
@@ -10318,6 +10334,10 @@ sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \texttt{.txt}.
 
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
+
 
 \subsection{Bibliography test}
 
@@ -12172,6 +12192,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like ``.txt``.
+
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
 
 Bibliography test
 -----------------
@@ -14036,6 +14060,10 @@ sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like ``.txt``.
 
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
+
 Bibliography test
 -----------------
 
@@ -15888,6 +15916,10 @@ sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like `.txt`.
 
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
+
 
 ==== Bibliography test ====
 
@@ -17568,6 +17600,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
+
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
 
 
 ==== Bibliography test ====
@@ -19312,6 +19348,10 @@ sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like {{{.txt}}}.
 
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
+
 
 == Bibliography test ==
 
@@ -20817,6 +20857,10 @@ sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like '.txt'.
 
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
+
 Bibliography test
 
 Here is an example: [1] discussed propagation of
@@ -22224,6 +22268,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like C{.txt}.
+
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
 
 Bibliography test
 -----------------
@@ -23811,6 +23859,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like .txt.
+
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
 
 Bibliography test
 -----------------
@@ -25504,6 +25556,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like `.txt`.
+
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
 
 
 ### Bibliography test
@@ -27676,6 +27732,10 @@ is at the end with only one newline.
     "sentence that \"caused\" a bug in the past because double backtick\n",
     "quotes could imply verbatim text up to a verbatim word starting with\n",
     "period, like `.txt`.\n",
+    "\n",
+    "More quotes to be tested for spellcheck:\n",
+    "(\"with parenthesis\"), \"with newline\"\n",
+    "and \"with comma\", \"hyphen\"-wise, and \"period\".\n",
     "\n",
     "\n",
     "## Bibliography test\n",
@@ -32978,6 +33038,11 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
+<p>
+More quotes to be tested for spellcheck:
+(&quot;with parenthesis&quot;), &quot;with newline&quot;
+and &quot;with comma&quot;, &quot;hyphen&quot;-wise, and &quot;period&quot;.
+
 <h2 id="___sec25">Bibliography test </h2>
 
 <p>
@@ -35588,6 +35653,11 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
+<p>
+More quotes to be tested for spellcheck:
+(&quot;with parenthesis&quot;), &quot;with newline&quot;
+and &quot;with comma&quot;, &quot;hyphen&quot;-wise, and &quot;period&quot;.
+
 <h2 id="___sec25">Bibliography test </h2>
 
 <p>
@@ -37751,6 +37821,11 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
+
+<p>
+More quotes to be tested for spellcheck:
+(&quot;with parenthesis&quot;), &quot;with newline&quot;
+and &quot;with comma&quot;, &quot;hyphen&quot;-wise, and &quot;period&quot;.
 
 <h2 id="___sec25">Bibliography test </h2>
 
@@ -40010,6 +40085,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that ``caused'' a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like \texttt{.txt}.
+
+More quotes to be tested for spellcheck:
+(``with parenthesis''), ``with newline''
+and ``with comma'', ``hyphen''-wise, and ``period''.
 
 
 \paragraph{Bibliography test.}
@@ -45170,6 +45249,11 @@ sentence that &quot;caused&quot; a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like <code>.txt</code>.
 
+<p>
+More quotes to be tested for spellcheck:
+(&quot;with parenthesis&quot;), &quot;with newline&quot;
+and &quot;with comma&quot;, &quot;hyphen&quot;-wise, and &quot;period&quot;.
+
 <h2 id="___sec25">Bibliography test </h2>
 
 <p>
@@ -47430,6 +47514,10 @@ ordinary double quotes for all non-LaTeX formats.  Here is another
 sentence that "caused" a bug in the past because double backtick
 quotes could imply verbatim text up to a verbatim word starting with
 period, like ``.txt``.
+
+More quotes to be tested for spellcheck:
+("with parenthesis"), "with newline"
+and "with comma", "hyphen"-wise, and "period".
 
 Bibliography test
 -----------------
@@ -73561,7 +73649,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f6c48847140>
+verbatim is to be replaced using <function html_verbatim at 0x7fe287149140>
 
 
 First occurence: " `mako`."
@@ -77800,7 +77888,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Jul 10 03:53:47 2015.
+# sphinx-quickstart on Fri Jul 10 06:13:24 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -97960,7 +98048,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1311.
+t line 1315.
 
 
 
@@ -97980,7 +98068,7 @@ t line 1311.
 
 
 
-t line 1320.
+t line 1324.
 
 
 
@@ -98001,7 +98089,7 @@ t line 1320.
 
 
 
-t line 1324.
+t line 1328.
 
 
 
@@ -98081,7 +98169,7 @@ t line 1324.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [16]
+2768.pygtex [16])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -98112,13 +98200,13 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
 [18]
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -98170,9 +98258,9 @@ Package amsmath Warning: Foreign command \over;
 
 
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [21] [22]
+2768.pygtex) [21] [22] [23]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [23])
+2768.pygtex)
 Underfull \hbox (badness 10000) 
 
 
@@ -98201,10 +98289,9 @@ Underfull \hbox (badness 10000)
 
 
 No file testdoc.bbl.
-
+[25]
 Underfull \hbox (badness 10000) 
 
-[25]
 
 
 ...rest of part of LaTeX line number...
@@ -98891,7 +98978,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1311.
+t line 1315.
 
 
 
@@ -98911,7 +98998,7 @@ t line 1311.
 
 
 
-t line 1320.
+t line 1324.
 
 
 
@@ -98932,7 +99019,7 @@ t line 1320.
 
 
 
-t line 1324.
+t line 1328.
 
 
 
@@ -99004,7 +99091,7 @@ t line 1324.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [17]
+2768.pygtex [17])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -99018,17 +99105,17 @@ Package amsmath Warning: Foreign command \over;
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [21]
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23]
+2768.pygtex) [22] [23] [24]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [24])
+2768.pygtex)
 Underfull \hbox (badness 10000) 
 
 [25]
 No file testdoc.bbl.
-
+[26]
 Underfull \hbox (badness 10000) 
 
-[26] [27] [28]
+[27] [28]
 No file testdoc.ind.
 [29] (./testdoc.aux)
 
@@ -99720,7 +99807,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1311.
+t line 1315.
 
 
 
@@ -99740,7 +99827,7 @@ t line 1311.
 
 
 
-t line 1320.
+t line 1324.
 
 
 
@@ -99761,7 +99848,7 @@ t line 1320.
 
 
 
-t line 1324.
+t line 1328.
 
 
 
@@ -99833,7 +99920,7 @@ t line 1324.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [17]
+2768.pygtex [17])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -99847,19 +99934,19 @@ Package amsmath Warning: Foreign command \over;
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [21]
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23]
+2768.pygtex) [22] [23] [24]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [24])
+2768.pygtex)
 Underfull \hbox (badness 10000) 
 
 [25] (./testdoc.bbl [26]) [27]
 Underfull \hbox (badness 10000) 
 
-[28] [29] (./testdoc.ind [30]
+[28] [29] [30] (./testdoc.ind [31]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[31]) (./testdoc.aux)
+[32]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -100106,7 +100193,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (31 pages, ).
+Output written on testdoc.pdf (32 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
@@ -100532,7 +100619,7 @@ ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15] [16]
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [17]
+2768.pygtex [17])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -100546,19 +100633,19 @@ Package amsmath Warning: Foreign command \over;
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex) [21]
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23]
+2768.pygtex) [22] [23] [24]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [24])
+2768.pygtex)
 Underfull \hbox (badness 10000) 
 
 [25] (./testdoc.bbl [26]) [27]
 Underfull \hbox (badness 10000) 
 
-[28] [29] (./testdoc.ind [30]
+[28] [29] [30] (./testdoc.ind [31]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[31]) (./testdoc.aux)
+[32]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -100799,7 +100886,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (31 pages, ).
+Output written on testdoc.pdf (32 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
@@ -101295,27 +101382,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1261.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1270.
+t line 1265.
 
 
 
@@ -101341,71 +101408,91 @@ t line 1274.
 
 ...rest of part of LaTeX line number...
 
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
 [16]
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1278.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
 
 
 
@@ -101416,7 +101503,7 @@ t line 1274.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [17]
+2768.pygtex [17])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
@@ -101447,13 +101534,13 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
 [19]
+
+
+
+
+
+
 
 
 ...rest of part of LaTeX line number...
@@ -101503,9 +101590,9 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[22] [23]
+[22] [23] [24]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex [24])
+2768.pygtex)
 Underfull \hbox (badness 10000) 
 
 

@@ -696,6 +696,17 @@ instructions. DocOnce will then only run Preprocess.
 
 ======= Problems with code or Tex Blocks =======
 
+===== Too long lines in math blocks =====
+
+A common problem in LaTeX (not directly related to DocOnce) is too long lines
+in math blocks. The trick is to use the `align` or `align*` environment
+and introduce newlines with `\nonumber\\` to break up lines (without introducing
+an equation number). Typically,
+
+ o Insert `\nonumber\\` where you see a linebreak should occur.
+ o Start next line with `&\quad` such that the continuing line starts slightly to the right of the alignment character used to align the equations. If you have only one equation, find some point where you insert `&` and just start the next line with `&` - no `\quad` displacement to the right is needed in that case.
+ o `\left(` and `\right)` (and similar constructions for automatic adjustment of the sizes of parentheses) do not work accross linebreaks. This means that you must replace `\left(` by (e.g.) `\biggl(` unless there is a corresponding `\right` on the same line. Whether to choose `\biggl`, `\bigl`, or `\Biggl` depends on the desired size of the the parenthesis.
+
 ===== Code or math block errors in reST =====
 
 First note that a code or math block must come after some plain
@@ -838,6 +849,18 @@ appropriate, shift to `!bc cod` or another specification of the
 verbatim environment.
 
 ======= Problems with LaTeX Output =======
+
+===== Lines are too long =====
+
+Too long lines are often handled with a forced newline like `\\` in
+LaTeX, but this double backslash does not look good in other formats
+when you use DocOnce. Try to rewrite the text such that LaTeX
+naturally avoids too long lines. Inline verbatim can easily force
+LaTeX to extend the line width, but see if you can use other words to
+move the inline verbatim to the left or to the next line.
+
+A last resort is to use the preprocessor and test on ``FORMAT == 'pdflatex'`
+and then use the double backslash.
 
 ===== Sphinx and HTML show pygmetized code, but not LaTeX =====
 

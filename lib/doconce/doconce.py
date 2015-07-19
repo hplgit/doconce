@@ -629,6 +629,17 @@ def syntax_check(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
+    # Quotes or inline verbatim is not allowed inside emphasize and bold:
+    # (force non-blank in the beginning and end to avoid interfering with lists)
+    from common import inline_tag_begin, inline_tag_end
+    pattern = r'%s\*(?P<subst>[^ ][^*]+?[^ ])\*%s' % (inline_tag_begin, inline_tag_end)
+    for dummy1, dummy2, phrase, dummy3, dummy4 in \
+            re.findall(pattern, filestr, flags=re.MULTILINE):
+        if '`' in phrase:
+            print '*** warning: found ` (backtick) inside something that looks like emphasize:'
+            print '   ', '*%s*' % phrase
+            print '    (backtick inside *...* emphasize is not allowed)'
+
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
         if line.strip().startswith('==='):
@@ -4336,6 +4347,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 print '    rerun with --encoding=utf-8 (or similar):'
                 print '    doconce format %s %s %s --encoding=utf-8' \
                       % (format, orig_filename, ' '.join(sys.argv[1:]))
+                print '    doconce find_nonascii_chars %s can be used to identify non-ascii characters' % orig_filename
             elif "line:" in str(e):
                 print '    Note: the line number refers to the file', resultfile2
             _abort()

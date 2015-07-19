@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 24, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 19, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -741,6 +741,18 @@ instructions. DocOnce will then only run Preprocess.</p>
 </div>
 <div class="section" id="problems-with-code-or-tex-blocks">
 <h2>Problems with code or Tex Blocks<a class="headerlink" href="#problems-with-code-or-tex-blocks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="too-long-lines-in-math-blocks">
+<h3>Too long lines in math blocks<a class="headerlink" href="#too-long-lines-in-math-blocks" title="Permalink to this headline">¶</a></h3>
+<p>A common problem in LaTeX (not directly related to DocOnce) is too long lines
+in math blocks. The trick is to use the <code class="docutils literal"><span class="pre">align</span></code> or <code class="docutils literal"><span class="pre">align*</span></code> environment
+and introduce newlines with <code class="docutils literal"><span class="pre">\nonumber\\</span></code> to break up lines (without introducing
+an equation number). Typically,</p>
+<ol class="arabic simple">
+<li>Insert <code class="docutils literal"><span class="pre">\nonumber\\</span></code> where you see a linebreak should occur.</li>
+<li>Start next line with <code class="docutils literal"><span class="pre">&amp;\quad</span></code> such that the continuing line starts slightly to the right of the alignment character used to align the equations. If you have only one equation, find some point where you insert <code class="docutils literal"><span class="pre">&amp;</span></code> and just start the next line with <code class="docutils literal"><span class="pre">&amp;</span></code> - no <code class="docutils literal"><span class="pre">\quad</span></code> displacement to the right is needed in that case.</li>
+<li><code class="docutils literal"><span class="pre">\left(</span></code> and <code class="docutils literal"><span class="pre">\right)</span></code> (and similar constructions for automatic adjustment of the sizes of parentheses) do not work accross linebreaks. This means that you must replace <code class="docutils literal"><span class="pre">\left(</span></code> by (e.g.) <code class="docutils literal"><span class="pre">\biggl(</span></code> unless there is a corresponding <code class="docutils literal"><span class="pre">\right</span></code> on the same line. Whether to choose <code class="docutils literal"><span class="pre">\biggl</span></code>, <code class="docutils literal"><span class="pre">\bigl</span></code>, or <code class="docutils literal"><span class="pre">\Biggl</span></code> depends on the desired size of the the parenthesis.</li>
+</ol>
+</div>
 <div class="section" id="code-or-math-block-errors-in-rest">
 <h3>Code or math block errors in reST<a class="headerlink" href="#code-or-math-block-errors-in-rest" title="Permalink to this headline">¶</a></h3>
 <p>First note that a code or math block must come after some plain
@@ -882,6 +894,17 @@ verbatim environment.</p>
 </div>
 <div class="section" id="problems-with-latex-output">
 <h2>Problems with LaTeX Output<a class="headerlink" href="#problems-with-latex-output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lines-are-too-long">
+<h3>Lines are too long<a class="headerlink" href="#lines-are-too-long" title="Permalink to this headline">¶</a></h3>
+<p>Too long lines are often handled with a forced newline like <code class="docutils literal"><span class="pre">\\</span></code> in
+LaTeX, but this double backslash does not look good in other formats
+when you use DocOnce. Try to rewrite the text such that LaTeX
+naturally avoids too long lines. Inline verbatim can easily force
+LaTeX to extend the line width, but see if you can use other words to
+move the inline verbatim to the left or to the next line.</p>
+<p>A last resort is to use the preprocessor and test on <a href="#id3"><span class="problematic" id="id4">``</span></a>FORMAT == &#8216;pdflatex&#8217;`
+and then use the double backslash.</p>
+</div>
 <div class="section" id="sphinx-and-html-show-pygmetized-code-but-not-latex">
 <h3>Sphinx and HTML show pygmetized code, but not LaTeX<a class="headerlink" href="#sphinx-and-html-show-pygmetized-code-but-not-latex" title="Permalink to this headline">¶</a></h3>
 <p>You have to explicitly select the <code class="docutils literal"><span class="pre">minted</span></code> environment when running <code class="docutils literal"><span class="pre">ptex2tex</span></code>
@@ -1392,6 +1415,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-code-or-tex-blocks">Problems with code or Tex Blocks</a><ul>
+<li><a class="reference internal" href="#too-long-lines-in-math-blocks">Too long lines in math blocks</a></li>
 <li><a class="reference internal" href="#code-or-math-block-errors-in-rest">Code or math block errors in reST</a></li>
 <li><a class="reference internal" href="#strange-errors-around-code-or-tex-blocks-in-rest">Strange errors around code or TeX blocks in reST</a></li>
 <li><a class="reference internal" href="#something-is-wrong-with-a-verbatim-code-block">Something is wrong with a verbatim code block</a></li>
@@ -1413,6 +1437,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#problems-with-latex-output">Problems with LaTeX Output</a><ul>
+<li><a class="reference internal" href="#lines-are-too-long">Lines are too long</a></li>
 <li><a class="reference internal" href="#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
