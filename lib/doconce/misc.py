@@ -809,6 +809,31 @@ def latin2html():
         except Exception, e:
             print e.__class__.__name__, ':', e,
 
+# replace is taken from scitools
+def _usage_find_nonascii_chars():
+    print 'Usage: doconce non_ascii_chars file1 file2 ...'
+
+def find_nonascii_chars():
+    if len(sys.argv) < 4:
+        _find_nonascii_chars()
+        sys.exit(0)
+
+    filenames = wildcard_notation(sys.argv[1:])
+    for filename in filenames:
+        if os.path.isfile(filename):
+            with open(filename, 'r') as f:
+                text = f.read()
+        else:
+            print 'File %s not found' & filename
+            sys.exit(1)
+        for i, c in enumerate(text):
+            if ord(c) > 127:
+                print 'non-ascii character', c, ' (ord=%d)' % ord(c)
+                print 'appearing in the text from %s:' % filename
+                print text[i-40:i], '--> %s <--' % c, text[i:i+40]
+
+
+
 def gwiki_figsubst():
     try:
         gwikifile = sys.argv[1]

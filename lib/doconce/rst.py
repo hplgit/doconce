@@ -578,9 +578,9 @@ def rst_quiz(quiz):
             expl = re.sub(pattern, '\g<1>', expl, flags=re.DOTALL)
             tooltip = ' '.join(expl.splitlines())
         if expl:
-            text += '**%s** %s :abbr:`? (%s)` :abbr:`# (%s)`\n\n' % (choice_prefix, choice[1], answer, tooltip)
+            text += '**%s** %s\n\n:abbr:`? (%s)` :abbr:`# (%s)`\n\n' % (choice_prefix, choice[1], answer, tooltip)
         else: # no explanation
-            text += '**%s** %s :abbr:`? (%s)`\n\n' % (choice_prefix, choice[1], answer)
+            text += '**%s** %s\n\n:abbr:`? (%s)`\n\n' % (choice_prefix, choice[1], answer)
 
     text += '.. end quiz\n\n'
     return text

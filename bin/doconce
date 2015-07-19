@@ -17,6 +17,7 @@ from doconce.misc import (
     latex_footer,
     latex_problems,
     ref_external,
+    find_nonascii_chars,
     replace_from_file,
     replace,
     subst,
@@ -924,6 +925,7 @@ expand_mako
 combine_images
 change_encoding
 capitalize
+find_nonascii_chars
 gwiki_figsubst
 md2html
 md2latex
@@ -1013,6 +1015,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file

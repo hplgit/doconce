@@ -4347,6 +4347,7 @@ On Debian (incl. Ubuntu) systems, you can alternatively do
                 print '    rerun with --encoding=utf-8 (or similar):'
                 print '    doconce format %s %s %s --encoding=utf-8' \
                       % (format, orig_filename, ' '.join(sys.argv[1:]))
+                print '    doconce find_nonascii_chars %s can be used to identify non-ascii characters' % orig_filename
             elif "line:" in str(e):
                 print '    Note: the line number refers to the file', resultfile2
             _abort()
