@@ -511,7 +511,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
 
-    if latex_style == 'Springer_lnup':
+    if latex_style in ('Springer_lnup', 'Springer_sv'):
         replacement = pattern
     else:
         replacement = pattern + r"""\begin{doconceexercise}
@@ -520,10 +520,12 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    if latex_style != 'Springer_lnup':
-        replacement = r'\end{doconceexercise}' + '\n' + pattern
-    else:
+    if latex_style == 'Springer_lnup':
         replacement = r'\end{exercise}' + '\n' + pattern
+    elif latex_style == 'Springer_sv':
+        replacement = r'\end{prob}' + '\n' + pattern
+    else:
+        replacement = r'\end{doconceexercise}' + '\n' + pattern
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
@@ -548,6 +550,10 @@ def latex_code(filestr, code_blocks, code_block_types,
                 if latex_style == 'Springer_lnup':
                     filestr = re.sub(exercise_pattern,
         r"""begin{exercise}{\g<3>
+""", filestr)
+                elif latex_style == 'Springer_sv':
+                    filestr = re.sub(exercise_pattern,
+        r"""begin{prob}{\g<3>
 """, filestr)
                 else:
                     filestr = re.sub(exercise_pattern,
@@ -643,6 +649,17 @@ def latex_code(filestr, code_blocks, code_block_types,
                     target = r'\tableofcontents'
                     filestr = filestr.replace(
                         target, target + insert_listofexercises)
+        # Fix Solutions chapter/section
+        pattern = r'\\(section|chapter)\{Solutions\}'
+        m = re.search(pattern, filestr)
+        if m and latex_style == 'Springer_sv':
+            filestr = re.sub(pattern, r'\\Extrachap{Solutions}')
+            # Remove subsections with headings for solutions
+            # (Springer_sv relies on \begin{sol} and \end{sol}
+            # which were inserted in common.doconce_exercise_output
+            pattern = r'\\subsection\{Solution to .+?: .+?\}'
+            filestr = re.sub(pattern, '')
+
     if latex_style != 'Springer_lnup':
         # Subexercise headings should utilize \subex{} and not plain \paragraph{}
         subex_header_postfix = option('latex_subex_header_postfix=', ')')
@@ -1290,11 +1307,19 @@ def latex_table(table):
 
     s = '\n' + table_align[0] + '\n'
     if latex_style in ("Springer_T2", "Springer_T4"):
-        s += '{\\small   % Springer T2 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
+        s += '{\\small   % Springer T2/T4 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
     s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
-            s += r'\hline' + '\n'
+            if latex_style == 'Springer_sv':
+                if i == 2:
+                    s += r'\noalign{\smallskip}\svhline\noalign{\smallskip}' + '\n'
+                elif i == 0:
+                    s += r'\hline\noalign{\smallskip}' + '\n'
+                else:
+                    s += r'\noalign{\smallskip}\hline\noalign{\smallskip}' + '\n'
+            else:
+                s += r'\hline' + '\n'
         else:
             # check if this is a headline between two horizontal rules:
             if i == 1 and \
@@ -1357,7 +1382,7 @@ def latex_title(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     section_headings = option('latex_section_headings=', 'std')
 
-    if latex_style in ("Springer_T2", "Springer_T4",
+    if latex_style in ("Springer_sv", "Springer_T2", "Springer_T4",
                        "Springer_lncse", "Springer_lnup"):
         text += r"""
 \frontmatter
@@ -1375,7 +1400,7 @@ def latex_title(m):
 % ----------------- title -------------------------
 """
     if title_layout == "std" or \
-           latex_style in ('siamltex', 'siamltexmm', 'elsevier','Springer_lnup'):
+           latex_style in ('siamltex', 'siamltexmm', 'elsevier', 'Springer_sv', 'Springer_lnup'):
         if section_headings in ("blue", "strongblue"):
             text += r"""
 \title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
@@ -1476,7 +1501,7 @@ def latex_author(authors_and_institutions, auth2index,
     title_layout = option('latex_title_layout=', 'doconce_heading')
     latex_style = option('latex_style=', 'std')
 
-    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm','Springer_lnup'):
+    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm', 'Springer_sv', 'Springer_lnup'):
         # Traditional latex heading
         text += r"""
 \author{"""
@@ -2478,7 +2503,7 @@ def define(FILENAME_EXTENSION,
 
     if latex_style not in ('std', 'Springer_T2', 'Springer_T4',
                            'siamltex', 'siamltexmm',
-                           'elsevier','Springer_lnup'):
+                           'elsevier', 'Springer_sv', 'Springer_lnup'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
 
@@ -2502,7 +2527,7 @@ def define(FILENAME_EXTENSION,
 
 \vspace{1cm} % after toc
 """
-    if latex_style == 'Springer_lnup':
+    if latex_style in ('Springer_sv', 'Springer_lnup'):
         toc_part += r"""
 \mainmatter
 """
@@ -2625,10 +2650,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \documentclass[envcountsect,open=right]{lncse}
 \pagestyle{headings}
 """
-    elif latex_style == 'Springer_lnup':
-        copy_latex_packages(['svmonodo.cls', 't2do.sty'])
+    elif latex_style == 'Springer_sv':
+        copy_latex_packages(['svmonodo.cls'])
         INTRO['latex'] += r"""
-% Style: Lecture Notes in Undergraduate Physics 2 (Springer)
+% Style: Standard Springer svmono (book)
 \documentclass[graybox,envcountchap,sectrefs]{svmonodo}
 %\pagestyle{headings}
 \usepackage{mathptmx}
@@ -2725,7 +2750,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
   ]{geometry}
 """
 
-    if latex_style != 'Springer_lnup':
+    if latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -2954,7 +2979,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 """
-    elif latex_style == 'Springer_lnup':
+    elif latex_style in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -2988,7 +3013,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
-    if latex_style != 'Springer_lnup':
+    if latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
@@ -3065,7 +3090,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             INTRO['latex'] += '\n%\\VerbatimFootnotes must come after hyperref and footmisc packages\n\\VerbatimFootnotes\n'
 
     if 'FIGURE:' in filestr:
-        if latex_style != 'Springer_lnup':
+        if latex_style not in ('Springer_sv', 'Springer_lnup'):
             INTRO['latex'] += r"""
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -3724,7 +3749,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             break
 
-    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup"):
+    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup", "Springer_sv"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
         # (Koma has its own solution to the problem, svmono.cls has the command)
@@ -3787,10 +3812,16 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             #print '... did not find', filename
             pass
 
+    OUTRO['latex'] = ''
+
+    if latex_style == 'Springer_sv':
+        OUTRO['latex'] += r"""
+\backmatter
+"""
     if chapters:
         # Let a document with chapters have Index on a new
         # page and in the toc
-        OUTRO['latex'] = r"""
+        OUTRO['latex'] += r"""
 
 % #ifdef PREAMBLE
 \clearemptydoublepage

@@ -635,6 +635,8 @@ def doconce_exercise_output(
     # there will be fewer blocks in the end that what was extracted
     # at the beginning of the translation process.
 
+    latex_style = option('latex_style=', 'std')
+
     # Store solutions in a separate string
     has_solutions = False
     if exer['solution']:
@@ -653,7 +655,14 @@ def doconce_exercise_output(
     s += exer['heading']  # result string
     if has_solutions:
         sol += '\n\n# ' + envir_delimiter_lines['exercise'][0] + ' solution\n\n'
-        sol += exer['heading']
+        if latex_style == 'Springer_sv':
+            sol += r"""
+\begin{sol}{%s}
+\textbf{%s}\\
+
+""" % (exer['label'], exer['title'])
+        else:
+            sol += exer['heading']
 
     comments = ''  # collect comments at the end of the exercises
 
@@ -851,7 +860,10 @@ def doconce_exercise_output(
 
     s += '\n# ' + envir_delimiter_lines['exercise'][1] + '\n\n'
     if sol:
-        sol += '\n# ' + envir_delimiter_lines['exercise'][1] + ' solution\n\n'
+        if latex_style == 'Springer_sv':
+            sol += r'\end{sol}' + '\n'
+        else:
+            sol += '\n# ' + envir_delimiter_lines['exercise'][1] + ' solution\n\n'
 
     return s, sol
 

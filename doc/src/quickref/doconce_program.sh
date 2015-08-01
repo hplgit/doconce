@@ -1,6 +1,6 @@
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -46,6 +46,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file

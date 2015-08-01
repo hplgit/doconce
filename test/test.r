@@ -12796,20 +12796,30 @@ Given
 What is the solution of this equation?
 
 
-**Choice A:** \\( y=e^{-y} \\) :abbr:`? (Right!)`
+**Choice A:** \\( y=e^{-y} \\)
 
-**Choice B:** \\( y=e^{y} \\) :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
+:abbr:`? (Right!)`
+
+**Choice B:** \\( y=e^{y} \\)
+
+:abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
 
 **Choice C:** Code::
 
         from math import exp
         def f(x):
-            return exp(x) :abbr:`? (Wrong!)` :abbr:`# (Ooops, forgot a minus: exp(-x), otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation  .. raw:: html          $$ y(x) = e^{-y}.$$)`
+            return exp(x)
 
-**Choice D:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
+:abbr:`? (Wrong!)` :abbr:`# (Ooops, forgot a minus: exp(-x), otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation  .. raw:: html          $$ y(x) = e^{-y}.$$)`
+
+**Choice D:** The solution cannot be found because there is a derivative in the equation.
+
+:abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
 
 **Choice E:** The equation is meaningless: an equation must be an equation
-for \\( x \\) or \\( y \\), not a function \\( y(x) \\). :abbr:`? (Wrong!)` :abbr:`# (Equations where the unknown is a function, as \\( y(x) \\) here, are called *differential equations*, and are solved by special techniques.)`
+for \\( x \\) or \\( y \\), not a function \\( y(x) \\).
+
+:abbr:`? (Wrong!)` :abbr:`# (Equations where the unknown is a function, as \\( y(x) \\) here, are called *differential equations*, and are solved by special techniques.)`
 
 .. end quiz
 
@@ -13064,13 +13074,21 @@ Test of quizzes
 **Fundamental test:** What is the capital of Norway?
 
 
-**Answer 1:** Stockholm :abbr:`? (Wrong!)` :abbr:`# (Stockholm is the capital of Sweden.)`
+**Answer 1:** Stockholm
 
-**Answer 2:** London :abbr:`? (Wrong!)`
+:abbr:`? (Wrong!)` :abbr:`# (Stockholm is the capital of Sweden.)`
 
-**Answer 3:** Oslo :abbr:`? (Right!)`
+**Answer 2:** London
 
-**Choice D:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
+:abbr:`? (Wrong!)`
+
+**Answer 3:** Oslo
+
+:abbr:`? (Right!)`
+
+**Choice D:** Bergen
+
+:abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
 
 .. end quiz
 
@@ -14687,20 +14705,30 @@ Given
 What is the solution of this equation?
 
 
-**Choice A:** :math:`y=e^{-y}` :abbr:`? (Right!)`
+**Choice A:** :math:`y=e^{-y}`
 
-**Choice B:** :math:`y=e^{y}` :abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
+:abbr:`? (Right!)`
+
+**Choice B:** :math:`y=e^{y}`
+
+:abbr:`? (Wrong!)` :abbr:`# (Almost, but the sign is wrong (note the minus!).)`
 
 **Choice C:** .. code-block:: python
 
         from math import exp
         def f(x):
-            return exp(x) :abbr:`? (Wrong!)`
+            return exp(x)
 
-**Choice D:** The solution cannot be found because there is a derivative in the equation. :abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
+:abbr:`? (Wrong!)`
+
+**Choice D:** The solution cannot be found because there is a derivative in the equation.
+
+:abbr:`? (Wrong!)` :abbr:`# (Equations with derivatives can be solved; they are termed *differential equations*.)`
 
 **Choice E:** The equation is meaningless: an equation must be an equation
-for :math:`x` or :math:`y`, not a function :math:`y(x)`. :abbr:`? (Wrong!)` :abbr:`# (Equations where the unknown is a function, as y(x) here, are called *differential equations*, and are solved by special techniques.)`
+for :math:`x` or :math:`y`, not a function :math:`y(x)`.
+
+:abbr:`? (Wrong!)` :abbr:`# (Equations where the unknown is a function, as y(x) here, are called *differential equations*, and are solved by special techniques.)`
 
 .. end quiz
 
@@ -14965,13 +14993,21 @@ Test of quizzes
 **Fundamental test:** What is the capital of Norway?
 
 
-**Answer 1:** Stockholm :abbr:`? (Wrong!)` :abbr:`# (Stockholm is the capital of Sweden.)`
+**Answer 1:** Stockholm
 
-**Answer 2:** London :abbr:`? (Wrong!)`
+:abbr:`? (Wrong!)` :abbr:`# (Stockholm is the capital of Sweden.)`
 
-**Answer 3:** Oslo :abbr:`? (Right!)`
+**Answer 2:** London
 
-**Choice D:** Bergen :abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
+:abbr:`? (Wrong!)`
+
+**Answer 3:** Oslo
+
+:abbr:`? (Right!)`
+
+**Choice D:** Bergen
+
+:abbr:`? (Wrong!)` :abbr:`# (Those from Bergen would claim so, but nobody else.)`
 
 .. end quiz
 
@@ -36798,11 +36834,26 @@ $(function () {
                2,
                'exer:you',
                'exer:you'),
-              ('References', 1, None, '___sec50'),
+              ('Solutions', 1, 'sec:solutions', 'sec:solutions'),
+              ('Solution to Example 1: Examples can be typeset as exercises',
+               2,
+               None,
+               '___sec51'),
+              ('Solution to Problem 2: Flip a Coin', 2, None, '___sec52'),
+              ('Solution to Project 5: Explore Distributions of Random Circles',
+               2,
+               None,
+               '___sec53'),
+              ('Solution to Exercise 6: Determine some Distance',
+               2,
+               None,
+               '___sec54'),
+              ('Solution to Example 9: Just an example', 2, None, '___sec55'),
+              ('References', 1, None, '___sec56'),
               ('Appendix: Just for testing; part I', 1, 'app1', 'app1'),
-              ('A subsection within an appendix', 2, None, '___sec52'),
+              ('A subsection within an appendix', 2, None, '___sec58'),
               ('Appendix: Just for testing; part II', 1, 'app2', 'app2'),
-              ('Appendix: Testing identical titles', 2, None, '___sec54'),
+              ('Appendix: Testing identical titles', 2, None, '___sec60'),
               ('Appendix: Testing identical titles',
                2,
                'test:title:id1',
@@ -36811,12 +36862,12 @@ $(function () {
                2,
                'test:title:id2',
                'test:title:id2'),
-              ('Appendix: Testing identical titles', 2, None, '___sec57'),
-              ('Appendix: Testing inline comments', 2, None, '___sec58'),
+              ('Appendix: Testing identical titles', 2, None, '___sec63'),
+              ('Appendix: Testing inline comments', 2, None, '___sec64'),
               ('Appendix: Testing headings ending with `verbatim inline`',
                2,
                None,
-               '___sec59')]}
+               '___sec65')]}
 end of tocinfo -->
 
 <body>
@@ -36923,16 +36974,22 @@ MathJax.Hub.Config({
 <a href="#___sec47"> More Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:some:formula"> Exercise 10: Make references to projects and problems </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#exer:you"> Project 11: References in a headings do not work well in html </a><br>
-<a href="#___sec50"> References </a><br>
+<a href="#sec:solutions"> Solutions </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec51"> Solution to Example 1: Examples can be typeset as exercises </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec52"> Solution to Problem 2: Flip a Coin </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec53"> Solution to Project 5: Explore Distributions of Random Circles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Solution to Exercise 6: Determine some Distance </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec55"> Solution to Example 9: Just an example </a><br>
+<a href="#___sec56"> References </a><br>
 <a href="#app1"> Appendix: Just for testing; part I </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec52"> A subsection within an appendix </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> A subsection within an appendix </a><br>
 <a href="#app2"> Appendix: Just for testing; part II </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec54"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec60"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id1"> Appendix: Testing identical titles </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#test:title:id2"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec57"> Appendix: Testing identical titles </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec58"> Appendix: Testing inline comments </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec59"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec63"> Appendix: Testing identical titles </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec64"> Appendix: Testing inline comments </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec65"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -38519,7 +38576,123 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 <!-- --- end exercise --- -->
 
-<h1 id="___sec50">References </h1>
+<h1 id="sec:solutions">Solutions</h1>
+
+<p>
+<!-- --- begin exercise --- solution -->
+
+<h2 id="___sec51">Solution to Example 1: Examples can be typeset as exercises </h2>
+<!-- Solution to <a href="#Example">Example 1: Examples can be typeset as exercises</a> -->
+
+<p>
+<b>a)</b>
+
+<p>
+The answer to this subproblem can be written here.
+
+<p>
+<b>b)</b>
+
+<p>
+The answer to this other subproblem goes here,
+maybe over multiple doconce input lines.
+
+<p>
+<!-- --- end exercise --- solution -->
+
+<p>
+<!-- --- begin exercise --- solution -->
+
+<h2 id="___sec52">Solution to Problem 2: Flip a Coin </h2>
+<!-- Solution to <a href="#demo:ex:1">Problem 2: Flip a Coin</a> -->
+
+<p>
+<b>a)</b>
+
+<p>
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
+ -->
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sys</span><span style="color: #666666">,</span> <span style="color: #0000FF; font-weight: bold">random</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(sys<span style="color: #666666">.</span>argv[<span style="color: #666666">1</span>])
+heads <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N):
+    r <span style="color: #666666">=</span> random<span style="color: #666666">.</span>random()
+    <span style="color: #008000; font-weight: bold">if</span> r <span style="color: #666666">&lt;=</span> <span style="color: #666666">0.5</span>:
+        heads <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+<span style="color: #008000; font-weight: bold">print</span> <span style="color: #BA2121">&#39;Flipping a coin </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> times gave </span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> heads&#39;</span> <span style="color: #666666">%</span> (N, heads)
+</pre></div>
+<p>
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
+ -->
+<p>
+<!-- --- end exercise --- solution -->
+
+<p>
+<!-- --- begin exercise --- solution -->
+
+<h2 id="___sec53">Solution to Project 5: Explore Distributions of Random Circles </h2>
+<!-- Solution to <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> -->
+
+<p>
+<b>a)</b>
+
+<p>
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
+ -->
+<p>
+Here goes a full solution to part a).
+
+<p>
+<!-- --- end exercise --- solution -->
+
+<p>
+<!-- --- begin exercise --- solution -->
+
+<h2 id="___sec54">Solution to Exercise 6: Determine some Distance </h2>
+<!-- Solution to <a href="#exer:dist">Exercise 6: Determine some Distance</a> -->
+
+<p>
+<!-- removed !bans ... !eans environment (because of the command-line option --without_answers)
+ -->
+<p>
+<b>b)</b>
+
+<p>
+Here goes the solution of this subexercise.
+
+<p>
+Here goes a full solution of the whole exercise.
+With some math \( a=b \) in this solution:
+$$ \hbox{math in solution: } a = b $$
+
+And code <code>a=b</code> in this solution:
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">a = b  # code in solution
+</pre></div>
+<p>
+End of solution is here.
+
+<p>
+<!-- --- end exercise --- solution -->
+
+<p>
+<!-- --- begin exercise --- solution -->
+
+<h2 id="___sec55">Solution to Example 9: Just an example </h2>
+
+<p>
+<b>Answer.</b>
+Oslo.
+
+<p>
+<!-- --- end exercise --- solution -->
+
+<h1 id="___sec56">References </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -38647,7 +38820,7 @@ Filename: <code>selc_composed.pdf</code>.
 <p>
 This is the first appendix.
 
-<h2 id="___sec52">A subsection within an appendix </h2>
+<h2 id="___sec58">A subsection within an appendix </h2>
 
 <p>
 Some text.
@@ -38657,7 +38830,7 @@ Some text.
 <p>
 This is more stuff for an appendix.
 
-<h2 id="___sec54">Appendix: Testing identical titles </h2>
+<h2 id="___sec60">Appendix: Testing identical titles </h2>
 
 <p>
 Without label.
@@ -38700,7 +38873,7 @@ Bergen
 <!-- end quiz -->
 
 
-<h2 id="___sec57">Appendix: Testing identical titles </h2>
+<h2 id="___sec63">Appendix: Testing identical titles </h2>
 
 <p>
 Without label.
@@ -38794,7 +38967,7 @@ detailed information and constitute of course very valuable readings
 when you use version control systems every day. The point now is
 to get started.
 
-<h2 id="___sec58">Appendix: Testing inline comments </h2>
+<h2 id="___sec64">Appendix: Testing inline comments </h2>
 
 <p>
 <!-- Names can be [ A-Za-z0-9_'+-]+ -->
@@ -38833,7 +39006,7 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
-<h2 id="___sec59">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
+<h2 id="___sec65">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
 <p>
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -41643,7 +41816,7 @@ system doconce format html testdoc --wordpress  $ex --html_exercise_icon=questio
 
 cp testdoc.html testdoc_wordpress.html
 
-system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default $rawgit
+system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default --solutions_at_end $rawgit
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
@@ -72773,7 +72946,7 @@ Text with a name like &#197;smund &#216;deg&#229;rd works in general.
 
 
 ************************************************************
-unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
+unicode>>> The file after potential removal of solutions, answers, hints, etc.:
 
 
 <!-- tocinfo
@@ -73251,7 +73424,7 @@ for LaTeX. The remedy for HTML is to read the file with UTF-8 encoding.
 
 
 ************************************************************
-unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
+unicode>>> The file after potential removal of solutions, answers, hints, etc.:
 
 
 <!-- tocinfo
@@ -73649,7 +73822,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fe287149140>
+verbatim is to be replaced using <function html_verbatim at 0x7f079a4d82a8>
 
 
 First occurence: " `mako`."
@@ -73920,7 +74093,7 @@ through the various stages of the text transformation process.
 
 
 ************************************************************
-unicode>>> The file after potential removal of solutions, answers, notes, hints, etc.:
+unicode>>> The file after potential removal of solutions, answers, hints, etc.:
 
 
 <!-- tocinfo
@@ -75286,7 +75459,7 @@ a = np.linspace(p, q, n)
 
 
 \begin{center}
-{\small   % Springer T2 style: small table font and more vspace
+{\small   % Springer T2/T4 style: small table font and more vspace
 
 \vspace{4mm}
 
@@ -76408,7 +76581,7 @@ a = np.linspace(p, q, n)
 
 
 \begin{center}
-{\small   % Springer T2 style: small table font and more vspace
+{\small   % Springer T2/T4 style: small table font and more vspace
 
 \vspace{4mm}
 
@@ -77888,7 +78061,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Fri Jul 10 06:13:24 2015.
+# sphinx-quickstart on Sat Aug  1 13:52:40 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -82709,7 +82882,7 @@ list of capabilities:
 <!-- begin verbatim block  shpro-->
 <pre><code>DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -82755,6 +82928,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
@@ -84490,7 +84666,7 @@ list of capabilities:
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -84536,6 +84712,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
@@ -85873,7 +86052,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -85919,6 +86098,9 @@ list of capabilities::
         
         # guess the encoding in a text
         doconce guess_encoding filename
+        
+        # find non-ascii characters in a file
+        doconce find_nonascii_chars file1 file2 ...
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
@@ -87354,7 +87536,7 @@ list of capabilities:
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -87400,6 +87582,9 @@ list of capabilities:
         
         # guess the encoding in a text
         doconce guess_encoding filename
+        
+        # find non-ascii characters in a file
+        doconce find_nonascii_chars file1 file2 ...
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
@@ -88624,7 +88809,7 @@ list of capabilities:
 {{{
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -88670,6 +88855,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
@@ -89972,7 +90160,7 @@ list of capabilities:
 <syntaxhighlight lang="bash">
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -90018,6 +90206,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
@@ -91222,7 +91413,7 @@ list of capabilities:
 {{{
 DocOnce version 1.0.3
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
 
 # transform doconce file to another format
@@ -91268,6 +91459,9 @@ doconce change_encoding utf-8 latin1 dofile
 
 # guess the encoding in a text
 doconce guess_encoding filename
+
+# find non-ascii characters in a file
+doconce find_nonascii_chars file1 file2 ...
 
 # split a sphinx/rst file into parts
 doconce format sphinx complete_file
@@ -92453,7 +92647,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -92499,6 +92693,9 @@ list of capabilities::
         
         # guess the encoding in a text
         doconce guess_encoding filename
+        
+        # find non-ascii characters in a file
+        doconce find_nonascii_chars file1 file2 ...
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
@@ -93688,7 +93885,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -93734,6 +93931,9 @@ list of capabilities::
         
         # guess the encoding in a text
         doconce guess_encoding filename
+        
+        # find non-ascii characters in a file
+        doconce find_nonascii_chars file1 file2 ...
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
@@ -94997,7 +95197,7 @@ list of capabilities::
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -95043,6 +95243,9 @@ list of capabilities::
         
         # guess the encoding in a text
         doconce guess_encoding filename
+        
+        # find non-ascii characters in a file
+        doconce find_nonascii_chars file1 file2 ...
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
@@ -96310,7 +96513,7 @@ list of capabilities:
 
         DocOnce version 1.0.3
         Usage: doconce command [optional arguments]
-        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+        commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
         
         # transform doconce file to another format
@@ -96356,6 +96559,9 @@ list of capabilities:
         
         # guess the encoding in a text
         doconce guess_encoding filename
+        
+        # find non-ascii characters in a file
+        doconce find_nonascii_chars file1 file2 ...
         
         # split a sphinx/rst file into parts
         doconce format sphinx complete_file
@@ -96998,8 +97204,8 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
-+ system doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --html_raw_github_url=raw.github
-+ doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --html_raw_github_url=raw.github
++ system doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_raw_github_url=raw.github
++ doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen -DSOMEVAR testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'html'}
@@ -97037,6 +97243,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+*** warning: inline math in HTML must have space around <:
+    <1/2  ->  < 1/2
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
 *** warning: quiz explanation contains block (fig/code/math)
@@ -102289,7 +102497,7 @@ reading sources... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:431: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:429: ERROR: Unexpected indentation.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:433: ERROR: Unexpected indentation.
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc010.rst:7: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
@@ -111160,6 +111368,7 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
     reason: doconce file contains non-ascii characters
     rerun with --encoding=utf-8 (or similar):
     doconce format latex encoding3.do.txt -DMAKO --no_header_footer --encoding=utf-8
+    doconce find_nonascii_chars encoding3.do.txt can be used to identify non-ascii characters
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer
 running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
@@ -112858,16 +113067,17 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [16]
-Overfull \hbox (3839.00006pt too wide) 
+Overfull \hbox (3959.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
-_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
-e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
-it_html slides_html slides_beamer slides_markdown latin2html grep latex_header 
-latex_footer latex_problems ref_external html_colorbullets list_fig_src_files l
-ist_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_f
-ormat linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygme
-ntize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises  
+_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html m
+d2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_a
+nswers split_rst split_html slides_html slides_beamer slides_markdown latin2htm
+l grep latex_header latex_footer latex_problems ref_external html_colorbullets 
+list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc in
+sertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce
+ ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table ex
+tract_exercises  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -113005,11 +113215,11 @@ f doconce itself)
 Overfull \hbox (167.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to 
 various formats  
-
+[19]
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-[19]
+
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -113083,10 +113293,10 @@ ticolumn{1}{c}{acceleration} \\
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-
+[23]
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[23] [24] (./quickref.rst.aux)
+[24] (./quickref.rst.aux)
 
 Package rerunfilecheck Warning: File `quickref.rst.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
@@ -113399,16 +113609,17 @@ Overfull \hbox (107.00006pt too wide)
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
 [16]
-Overfull \hbox (3839.00006pt too wide) 
+Overfull \hbox (3959.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
-_images change_encoding capitalize gwiki_figsubst md2html md2latex remove_inlin
-e_comments apply_inline_edits grab remove remove_exercise_answers split_rst spl
-it_html slides_html slides_beamer slides_markdown latin2html grep latex_header 
-latex_footer latex_problems ref_external html_colorbullets list_fig_src_files l
-ist_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_f
-ormat linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygme
-ntize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises  
+_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html m
+d2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_a
+nswers split_rst split_html slides_html slides_beamer slides_markdown latin2htm
+l grep latex_header latex_footer latex_problems ref_external html_colorbullets 
+list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc in
+sertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce
+ ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table ex
+tract_exercises  
 
 Overfull \hbox (269.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html|latex|pdflatex|rst|sphinx|plain|gwiki|mwik
@@ -113546,11 +113757,11 @@ f doconce itself)
 Overfull \hbox (167.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to 
 various formats  
-
+[19]
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
-[19]
+
 Overfull \hbox (131.00006pt too wide) 
 []\T1/pcr/m/n/10 (diffprog can be difflib, diff, pdiff, latexdiff, kdiff3, diff
 use, ...)  
@@ -113624,10 +113835,10 @@ ticolumn{1}{c}{acceleration} \\
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-
+[23]
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[23] [24] (./quickref.rst.aux)
+[24] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
