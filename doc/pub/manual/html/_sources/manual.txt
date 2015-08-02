@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jun 24, 2015
+:Date: Aug 2, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -3102,20 +3102,23 @@ References and labels are supported. The syntax is simple:
         label{section:verbatim}   # defines a label
         For more information we refer to Section ref{section:verbatim}.
 
-This syntax is close that that of labels and cross-references in
-LaTeX. When the label is placed after a section or subsection heading,
-the plain text, Epytext, and StructuredText formats will simply
+The DocOnce label syntax is close that that of labels and cross-references in
+LaTeX, but note that *labels cannot contain whitespace and cannot have a backslash*.
+
+When the label is placed after a section or subsection heading,
+the ``plain`` text, ``epytext``, and ``st`` formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 ``rst`` and ``sphinx`` formats, the end effect is the same, but
 the "label" and "ref" commands are first translated to the proper
-reST commands by ``doconce format``. In the HTML and wiki formats,
+reST commands by ``doconce format``. In the ``html``, ``ipynb``, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX "label" and "ref" are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
-It is, in general, recommended to use labels and references for
-(sub)sections, equations, and figures only.
+Labels and references should only be used for
+(sub)sections, equations, figures, and movies (since DocOnce does not
+support references to tables and algorithms, for instance).
 By the way, here is an example on referencing Figure :ref:`fig:viz`
 (the label appears in the figure caption in the source code of this document).
 Additional references to the sections :ref:`mathtext` and :ref:`newcommands` are
@@ -4123,9 +4126,13 @@ Continuing the last session,
 **Question:** What is correct about the integral :math:`\int e^{-t^2}dt`?
 
 
-**Choice A:** The integral is the error function. :abbr:`? (Wrong!)`
+**Choice A:** The integral is the error function.
 
-**Choice B:** It cannot be computed. :abbr:`? (Wrong!)` :abbr:`# (That would be correct if computed means "calculated as a closed-form formula by hand", but the integral \int_a^b e^{-t^2}dt? can be easily computed numerical methods.)`
+:abbr:`? (Wrong!)`
+
+**Choice B:** It cannot be computed.
+
+:abbr:`? (Wrong!)` :abbr:`# (That would be correct if computed means "calculated as a closed-form formula by hand", but the integral \int_a^b e^{-t^2}dt? can be easily computed numerical methods.)`
 
 **Choice C:** It equals
 
@@ -4137,9 +4144,13 @@ Continuing the last session,
 where :math:`\Gamma(x)` is the (upper) incomplete gamma function
 and :math:`\gamma(x)` is the lower incomplete gamma function
 (see `Wikipedia <http://en.wikipedia.org/wiki/Incomplete_gamma_function>`__
-for definition). :abbr:`? (Right!)`
+for definition).
 
-**Choice D:** It equals the cumulative normal density function. :abbr:`? (Wrong!)`
+:abbr:`? (Right!)`
+
+**Choice D:** It equals the cumulative normal density function.
+
+:abbr:`? (Wrong!)`
 
 .. end quiz
 
@@ -4765,6 +4776,8 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    to end intermediate calculations on multiple lines and use a label
    in the last, final result).
 
+ * Do not use comments inside equations.
+
  * Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    ``newcommands*.tex``. Use ``\newcommands`` and not ``\def``.
@@ -4774,6 +4787,8 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
  * Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (``mwiki``) does not support references to equations.
+
+ * Spaces are not allowed in labels.
 
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
@@ -7664,6 +7679,14 @@ Options for Bootstrap styles:
 
 Other options:
 
+ * ``--html_share=http://...`` makes sharing buttons at the end of the
+   document: email, Facebook, Google+, LinkedIn, Twitter, and print by
+   default. ``--html_share=http://...,twitter,linkedin`` will make just
+   to sharing buttons for Twitter and LinkedIn. Sites are separated
+   by comma and valid names are ``email``, ``facebook``, ``google+``,
+   ``linkedin``, ``twitter``, and ``print``. The URL ``http://...`` must be
+   the URL where the document is published.
+
  * ``--html_toc_depth=X``: controls the depth of the table of contents
    in documents. Default value of ``X`` is 3, meaning chapters,
    sections, and subsections. ``X`` as 0 gives the table of contents as a
@@ -8133,13 +8156,15 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection``
 
- * ``--latex_style=std, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, siamltex, siamltexmm, elsevier``
+ * ``--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier``
 
  * ``--latex_list_of_exercises=loe,toc,none`` (LaTeX list of exercises, integrated into the table of contents, or no list)
 
  * ``--latex_fancy_header`` (chapter/section headings at top of pages, style depends on value of ``--latex_section_headings``)
 
  * ``--latex_section_headings=std,blue,strongblue,gray,gray-wide`` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
+
+ * ``--latex_table_format=quote, center, footnotesize, tiny`` (environment around tables)
 
  * ``--latex_colored_table_rows=blue, gray, no`` (color of every two lines in tables)
 
@@ -9405,6 +9430,19 @@ here for convenience.
         --html_box_shadow
         
         Add a shadow effect in HTML box environments.
+        
+        
+        --html_share=...
+        
+        Specify URL and there will be Facebook, Twitter, etc. buttons
+        at the end of the HTML document.
+        
+        --html_share=http://mysite.com/specials shares on email, Facebook, Google+,
+        LinkedIn, Twitter, and enables a print button too.
+        
+        --html_share=http://mysite.com/specials,twitter,facebook shares on
+        Twitter and Facebook only. Sites are separated by comma. The following
+        names are allowed: email, facebook, google+, linkedin, twitter, print.
         
         
         --html_exercise_icon=...

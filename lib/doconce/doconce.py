@@ -1480,6 +1480,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                     pprint.pformat(exer))
             formatted_exercise, formatted_solution = EXERCISE[format](exer)
             newlines.append(formatted_exercise)
+            solutions.append(formatted_solution)
             all_exer.append(exer)
             inside_exer = False
             exer_end = False
@@ -1489,16 +1490,28 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     solutions = '\n'.join(solutions)
 
     if option('without_solutions') and option('solutions_at_end'):
+        from common import chapter_pattern
+        if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
+            has_chapters = True
+        else:
+            has_chapters = False
+
+        # Is writing to file a good idea? <<<!!CODE_BLOCK will not be
+        # substituted. Better to grab the solution chapter/section
+        # at the end of substitutions and write this to file!
         solfilename = dofile_basename + '_exersol.do.txt'
         f = open(solfilename, 'w')
-        f.write('======= Solutions =======\nlabel{sec:solutions}\n\n')
+        if has_chapters:
+            sol_heading = '========= Solutions =========\nlabel{ch:solutions}\n\n'
+        else:
+            sol_heading = '======= Solutions =======\nlabel{sec:solutions}\n\n'
+        f.write(sol_heading)
         f.write(solutions)
         f.close()
         #print 'solutions to exercises in', dofile_basename
 
-        pattern = '(^={5,7} (References|Bibliography) ={5,7})'
-        sol_sec = '======= Solutions =======\nlabel{sec:solutions}\n\n' + \
-                  solutions
+        pattern = '(^={5,7} +(References|Bibliography) +={5,7})'
+        sol_sec = sol_heading + solutions
         if re.search(pattern, filestr, flags=re.MULTILINE):
             filestr = re.sub(pattern,
                              sol_sec + '\n\n\\g<1>',
@@ -4042,7 +4055,7 @@ def doconce2format(filestr, format):
                 filestr, envir, format, action='remove',
                 reason='(because of the command-line option --%s)\n' % option_name)
 
-    debugpr('The file after potential removal of solutions, answers, notes, hints, etc.:', filestr)
+    debugpr('The file after potential removal of solutions, answers, hints, etc.:', filestr)
 
     cpu = time.time() - _t0
     if cpu > 15:

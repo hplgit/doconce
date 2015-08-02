@@ -64,6 +64,7 @@ def latex_code_envir(
     envir_spec,
     ):
     leftmargin = option('latex_code_leftmargin=', '2')
+    bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
     envir2 = envir if envir in envir_spec else 'default'
 
@@ -129,19 +130,20 @@ def latex_code_envir(
         begin = '\\begin{Verbatim}[%s]' % vrb_style
         end = '\\end{Verbatim}'
 
+
     if background != 'white':
         if envir_tp == 'pro':
-            begin = '\\begin{pro}{cbg_%s}{bar_%s}' % (background, background) + begin
-            if package == 'vrb':
-                end = end + '\n\\end{pro}\n\\noindent'
+            begin = '\\begin{pro%s}{cbg_%s}{bar_%s}' % (bg_vpad, background, background) + begin
+            if package in ('vrb', 'pyg'):
+                end = end + '\n\\end{pro%s}\n\\noindent' % bg_vpad
             else:
-                end = end + '\\end{pro}\n\\noindent'
+                end = end + '\\end{pro%s}\n\\noindent' % bg_vpad
         else:
-            begin = '\\begin{cod}{cbg_%s}' % background + begin
-            if package == 'vrb':
-                end = end + '\n\\end{cod}\n\\noindent'
+            begin = '\\begin{cod%s}{cbg_%s}' % (bg_vpad, background) + begin
+            if package in ('vrb', 'pyg'):
+                end = end + '\n\\end{cod%s}\n\\noindent' % bg_vpad
             else:
-                end = end + '\\end{cod}\n\\noindent'
+                end = end + '\\end{cod%s}\n\\noindent' % bg_vpad
     return begin, end
 
 def interpret_latex_code_style():
@@ -210,9 +212,9 @@ def latex_code_lstlisting(latex_code_style):
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -511,7 +513,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
 
-    if latex_style == 'Springer_lnup':
+    if latex_style in ('Springer_lnup', 'Springer_sv'):
         replacement = pattern
     else:
         replacement = pattern + r"""\begin{doconceexercise}
@@ -520,10 +522,12 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    if latex_style != 'Springer_lnup':
-        replacement = r'\end{doconceexercise}' + '\n' + pattern
-    else:
+    if latex_style == 'Springer_lnup':
         replacement = r'\end{exercise}' + '\n' + pattern
+    elif latex_style == 'Springer_sv':
+        replacement = r'\end{prob}' + '\n' + pattern
+    else:
+        replacement = r'\end{doconceexercise}' + '\n' + pattern
     filestr = filestr.replace(pattern, replacement)
 
     if include_numbering_of_exercises:
@@ -548,6 +552,10 @@ def latex_code(filestr, code_blocks, code_block_types,
                 if latex_style == 'Springer_lnup':
                     filestr = re.sub(exercise_pattern,
         r"""begin{exercise}{\g<3>
+""", filestr)
+                elif latex_style == 'Springer_sv':
+                    filestr = re.sub(exercise_pattern,
+        r"""begin{prob}{\g<3>
 """, filestr)
                 else:
                     filestr = re.sub(exercise_pattern,
@@ -643,6 +651,17 @@ def latex_code(filestr, code_blocks, code_block_types,
                     target = r'\tableofcontents'
                     filestr = filestr.replace(
                         target, target + insert_listofexercises)
+        # Fix Solutions chapter/section
+        pattern = r'\\(section|chapter)\{Solutions\}'
+        m = re.search(pattern, filestr)
+        if m and latex_style == 'Springer_sv':
+            filestr = re.sub(pattern, r'\\Extrachap{Solutions}')
+            # Remove subsections with headings for solutions
+            # (Springer_sv relies on \begin{sol} and \end{sol}
+            # which were inserted in common.doconce_exercise_output
+            pattern = r'\\subsection\{Solution to .+?: .+?\}'
+            filestr = re.sub(pattern, '')
+
     if latex_style != 'Springer_lnup':
         # Subexercise headings should utilize \subex{} and not plain \paragraph{}
         subex_header_postfix = option('latex_subex_header_postfix=', ')')
@@ -1290,11 +1309,19 @@ def latex_table(table):
 
     s = '\n' + table_align[0] + '\n'
     if latex_style in ("Springer_T2", "Springer_T4"):
-        s += '{\\small   % Springer T2 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
+        s += '{\\small   % Springer T2/T4 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
     s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
-            s += r'\hline' + '\n'
+            if latex_style == 'Springer_sv':
+                if i == 2:
+                    s += r'\noalign{\smallskip}\svhline\noalign{\smallskip}' + '\n'
+                elif i == 0:
+                    s += r'\hline\noalign{\smallskip}' + '\n'
+                else:
+                    s += r'\noalign{\smallskip}\hline\noalign{\smallskip}' + '\n'
+            else:
+                s += r'\hline' + '\n'
         else:
             # check if this is a headline between two horizontal rules:
             if i == 1 and \
@@ -1357,7 +1384,7 @@ def latex_title(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     section_headings = option('latex_section_headings=', 'std')
 
-    if latex_style in ("Springer_T2", "Springer_T4",
+    if latex_style in ("Springer_sv", "Springer_T2", "Springer_T4",
                        "Springer_lncse", "Springer_lnup"):
         text += r"""
 \frontmatter
@@ -1375,7 +1402,7 @@ def latex_title(m):
 % ----------------- title -------------------------
 """
     if title_layout == "std" or \
-           latex_style in ('siamltex', 'siamltexmm', 'elsevier','Springer_lnup'):
+           latex_style in ('siamltex', 'siamltexmm', 'elsevier', 'Springer_sv', 'Springer_lnup'):
         if section_headings in ("blue", "strongblue"):
             text += r"""
 \title%(short_title_cmd)s{{\color{seccolor} %(title)s}}
@@ -1476,7 +1503,7 @@ def latex_author(authors_and_institutions, auth2index,
     title_layout = option('latex_title_layout=', 'doconce_heading')
     latex_style = option('latex_style=', 'std')
 
-    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm','Springer_lnup'):
+    if title_layout == 'std' or latex_style in ('siamltex', 'siamltexmm', 'Springer_sv', 'Springer_lnup'):
         # Traditional latex heading
         text += r"""
 \author{"""
@@ -2478,7 +2505,7 @@ def define(FILENAME_EXTENSION,
 
     if latex_style not in ('std', 'Springer_T2', 'Springer_T4',
                            'siamltex', 'siamltexmm',
-                           'elsevier','Springer_lnup'):
+                           'elsevier', 'Springer_sv', 'Springer_lnup'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
 
@@ -2502,7 +2529,7 @@ def define(FILENAME_EXTENSION,
 
 \vspace{1cm} % after toc
 """
-    if latex_style == 'Springer_lnup':
+    if latex_style in ('Springer_sv', 'Springer_lnup'):
         toc_part += r"""
 \mainmatter
 """
@@ -2625,10 +2652,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \documentclass[envcountsect,open=right]{lncse}
 \pagestyle{headings}
 """
-    elif latex_style == 'Springer_lnup':
-        copy_latex_packages(['svmonodo.cls', 't2do.sty'])
+    elif latex_style == 'Springer_sv':
+        copy_latex_packages(['svmonodo.cls'])
         INTRO['latex'] += r"""
-% Style: Lecture Notes in Undergraduate Physics 2 (Springer)
+% Style: Standard Springer svmono (book)
 \documentclass[graybox,envcountchap,sectrefs]{svmonodo}
 %\pagestyle{headings}
 \usepackage{mathptmx}
@@ -2725,7 +2752,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
   ]{geometry}
 """
 
-    if latex_style != 'Springer_lnup':
+    if latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
 \usepackage[table]{xcolor}
@@ -2874,6 +2901,57 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             # colors: http://tex.stackexchange.com/questions/173850/problem-in-adding-a-background-color-in-a-minted-environment
             pattern = '-(yellow|red|blue|gray)'
             if re.search(pattern, latex_code_style):
+                cod_pro_def = r"""
+%% Background for code blocks (parameter is color name)
+
+%% pro/cod_vpad: gives some vertical padding before and after the text
+%% (but has more simplistic code than _cod/pro_tight+cod/pro).
+%% pro/cod_vpad can be used to enclose Verbatim or lst begin/end for code.
+%% pro/cod calls _pro/cod_tight and has very little vertical padding,
+%% used to enclose Verbatim and other begin/end for code.
+%% (pro/cod is what the ptex2tex program could produce with the
+%% Blue/BlueBar definitions in .ptex2tex.cfg.)
+
+\newenvironment{cod_vpad}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+
+\newenvironment{_cod_tight}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{cod}[1]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_cod_tight}{#1}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_cod_tight}\egroup}
+
+%% Background for complete program blocks (parameter 1 is color name
+%% for background, parameter 2 is color for left bar)
+\newenvironment{pro_vpad}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+
+\newenvironment{_pro_tight}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\advance\hsize-2mm\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{pro}[2]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_pro_tight}{#1}{#2}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_pro_tight}\egroup}
+"""
                 if not '!bbox' in filestr:
                     if 'numbers' in str(latex_code_style) or \
                        'linenos' in str(latex_code_style):
@@ -2883,34 +2961,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                     # No use of !bbox and hence no use of fboxsep
                     # for those boxes, and we can redefine fboxsep here
                     INTRO['latex'] += r"""
-%% Background for code blocks (parameter is color name)
-\setlength{\fboxsep}{%s}  %% adjust cod/pro background box
-\newenvironment{cod}[1]{
-   \def\FrameCommand{\colorbox{#1}}
-   \MakeFramed{\FrameRestore}}
-   {\endMakeFramed}
-
-%% Background for complete program blocks (parameter 1 is color name
-%% for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
-   \MakeFramed{\FrameRestore}}
-   {\endMakeFramed}
-""" % fboxsep
+%%\setlength{\fboxsep}{%s}  %% adjust cod_vpad/pro_vpad background box
+""" % fboxsep + cod_pro_def
                 else:
                     INTRO['latex'] += r"""%\setlength{\fboxsep}{-1.5mm}  % do not change since !bbox needs it positive!
-\newenvironment{cod}[1]{
-   \def\FrameCommand{\colorbox{#1}}
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\unskip\medskip\endMakeFramed}
+""" + cod_pro_def
 
-% Background for complete program blocks (parameter 1 is color name
-% for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\unskip\medskip\endMakeFramed}
-"""
                 # \unskip removes the skip, \medskip adds some, such that
                 # the skip below is smaller than the one above
                 # Use .ptex2tex.cfg to get the background box very tight
@@ -2954,7 +3010,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % Examples of font types (Ubuntu): Gentium Book Basic (Palatino-like),
 % Liberation Sans (Helvetica-like), Norasi, Purisa (handwriting), UnDoum
 """
-    elif latex_style == 'Springer_lnup':
+    elif latex_style in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -2988,7 +3044,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
-    if latex_style != 'Springer_lnup':
+    if latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
@@ -3065,7 +3121,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             INTRO['latex'] += '\n%\\VerbatimFootnotes must come after hyperref and footmisc packages\n\\VerbatimFootnotes\n'
 
     if 'FIGURE:' in filestr:
-        if latex_style != 'Springer_lnup':
+        if latex_style not in ('Springer_sv', 'Springer_lnup'):
             INTRO['latex'] += r"""
 % Tricks for having figures close to where they are defined:
 % 1. define less restrictive rules for where to put figures
@@ -3724,7 +3780,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
             break
 
-    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup"):
+    if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup", "Springer_sv"):
         # Follow advice from fancyhdr: redefine \cleardoublepage
         # see http://www.tex.ac.uk/cgi-bin/texfaq2html?label=reallyblank
         # (Koma has its own solution to the problem, svmono.cls has the command)
@@ -3787,10 +3843,16 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             #print '... did not find', filename
             pass
 
+    OUTRO['latex'] = ''
+
+    if latex_style == 'Springer_sv':
+        OUTRO['latex'] += r"""
+\backmatter
+"""
     if chapters:
         # Let a document with chapters have Index on a new
         # page and in the toc
-        OUTRO['latex'] = r"""
+        OUTRO['latex'] += r"""
 
 % #ifdef PREAMBLE
 \clearemptydoublepage

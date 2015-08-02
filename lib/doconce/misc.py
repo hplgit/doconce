@@ -129,6 +129,16 @@ If the file does not exist, the default or specified style
 (--html_style=) is written to it."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
+    ('--html_share=',
+     """Specify URL and there will be Facebook, Twitter, etc. buttons
+at the end of the HTML document.
+
+--html_share=http://mysite.com/specials shares on email, Facebook, Google+,
+LinkedIn, Twitter, and enables a print button too.
+
+--html_share=http://mysite.com/specials,twitter,facebook shares on
+Twitter and Facebook only. Sites are separated by comma. The following
+names are allowed: email, facebook, google+, linkedin, twitter, print."""),
     ('--html_exercise_icon=',
      """Specify a question icon (as a filename in the bundled/html_images
 directory in the doconce repo) for being inserted to the right in exercises.
@@ -219,6 +229,7 @@ envir:package-background[style parameters]@)
 """),
     ('--latex_code_leftmargin=', 'Sets the left margin in code blocks. Default: 7 (mm).'),
     ('--latex_code_bg=', 'Background color code blocks. Default: white.'),
+    ('--latex_code_bg_vpad', 'Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not lst!).'),
     ('--latex_code_lststyles=', """Filename with LaTeX definitions of lst styles."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),

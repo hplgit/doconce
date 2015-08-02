@@ -6,5 +6,5 @@ rm -f test.v
 rm -f \#*
 cd Springer_T2
 doconce clean
-rm -rf tmp* Trash standalone_exercises
+rm -rf tmp* Trash *.zip
 cd ..

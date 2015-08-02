@@ -797,6 +797,13 @@ Options for Bootstrap styles:
 Other options:
 
 <ul>
+ <li> <code>--html_share=http://...</code> makes sharing buttons at the end of the
+   document: email, Facebook, Google+, LinkedIn, Twitter, and print by
+   default. <code>--html_share=http://...,twitter,linkedin</code> will make just
+   to sharing buttons for Twitter and LinkedIn. Sites are separated
+   by comma and valid names are <code>email</code>, <code>facebook</code>, <code>google+</code>,
+   <code>linkedin</code>, <code>twitter</code>, and <code>print</code>. The URL <code>http://...</code> must be
+   the URL where the document is published.</li>
  <li> <code>--html_toc_depth=X</code>: controls the depth of the table of contents
    in documents. Default value of <code>X</code> is 3, meaning chapters,
    sections, and subsections. <code>X</code> as 0 gives the table of contents as a
@@ -1238,10 +1245,11 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_papersize=a4,a6</code></li>
  <li> <code>--latex_bibstyle=plain</code> (name of BibTeX style)</li>
  <li> <code>--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection</code></li>
- <li> <code>--latex_style=std, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, siamltex, siamltexmm, elsevier</code></li>
+ <li> <code>--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier</code></li>
  <li> <code>--latex_list_of_exercises=loe,toc,none</code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
  <li> <code>--latex_fancy_header</code> (chapter/section headings at top of pages, style depends on value of <code>--latex_section_headings</code>)</li>
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
+ <li> <code>--latex_table_format=quote, center, footnotesize, tiny</code> (environment around tables)</li>
  <li> <code>--latex_colored_table_rows=blue, gray, no</code> (color of every two lines in tables)</li>
  <li> <code>--latex_todonotes</code> (inline comments typeset as &quot;bubbles&quot;)</li>
  <li> <code>--latex_double_spacing</code> (to ease hand-writing between the lines)</li>
@@ -2474,6 +2482,19 @@ If the file does not exist, the default or specified style
 --html_box_shadow
 
 Add a shadow effect in HTML box environments.
+
+
+--html_share=...
+
+Specify URL and there will be Facebook, Twitter, etc. buttons
+at the end of the HTML document.
+
+--html_share=http://mysite.com/specials shares on email, Facebook, Google+,
+LinkedIn, Twitter, and enables a print button too.
+
+--html_share=http://mysite.com/specials,twitter,facebook shares on
+Twitter and Facebook only. Sites are separated by comma. The following
+names are allowed: email, facebook, google+, linkedin, twitter, print.
 
 
 --html_exercise_icon=...

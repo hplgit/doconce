@@ -409,21 +409,25 @@ References and labels are supported. The syntax is simple:
 For more information we refer to Section ref{section:verbatim}.
 </pre></div>
 <p>
-This syntax is close that that of labels and cross-references in
-LaTeX. When the label is placed after a section or subsection heading,
-the plain text, Epytext, and StructuredText formats will simply
+The DocOnce label syntax is close that that of labels and cross-references in
+LaTeX, but note that <em>labels cannot contain whitespace and cannot have a backslash</em>.
+
+<p>
+When the label is placed after a section or subsection heading,
+the <code>plain</code> text, <code>epytext</code>, and <code>st</code> formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 <code>rst</code> and <code>sphinx</code> formats, the end effect is the same, but
 the &quot;label&quot; and &quot;ref&quot; commands are first translated to the proper
-reST commands by <code>doconce format</code>. In the HTML and wiki formats,
+reST commands by <code>doconce format</code>. In the <code>html</code>, <code>ipynb</code>, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX &quot;label&quot; and &quot;ref&quot; are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
 <p>
-It is, in general, recommended to use labels and references for
-(sub)sections, equations, and figures only.
+Labels and references should only be used for
+(sub)sections, equations, figures, and movies (since DocOnce does not
+support references to tables and algorithms, for instance).
 By the way, here is an example on referencing Figure <a href="._manual005.html#fig:viz">1</a>
 (the label appears in the figure caption in the source code of this document).
 Additional references to the sections <a href="._manual015.html#mathtext">LaTeX Blocks of Mathematical Text</a> and <a href="._manual016.html#newcommands">Macros (Newcommands)</a> are

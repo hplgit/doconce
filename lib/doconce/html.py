@@ -8,7 +8,6 @@ from misc import option, _abort
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
 
-
 global _file_collection_filename
 
 # From http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/colors.htm:
@@ -504,6 +503,82 @@ h3 {
     color: #777;
 }
 """
+
+def share(code_type,
+          url=None,
+          buttons=['email', 'facebook', 'google+', 'linkedin',
+                   'twitter', 'print'],
+          method='simplesharebuttons.com'):
+    namespace =  {'url': url}
+    if method == 'simplesharebuttons.com':
+        if code_type == 'css':
+            return """
+<style type="text/css">
+
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
+
+</style>
+"""
+        elif code_type == 'buttons':
+            s = """
+<!-- I got these buttons from simplesharebuttons.com -->
+<div id="share-buttons">
+"""
+            if 'email' in buttons:
+                s += """
+    <!-- Email -->
+    <a href="mailto:?Subject=Interesting link&amp;Body=I%%20saw%%20this%%20and%%20thought%%20of%%20you!%%20 %(url)s">
+        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+    </a>
+""" % namespace
+            if 'facebook' in buttons:
+                s += """
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=%(url)s" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+""" % namespace
+            if 'google+' in buttons:
+                s += """
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=%(url)s" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+    </a>
+""" % namespace
+
+            if 'linkedin' in buttons:
+                s += """
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=%(url)s" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+    </a>
+""" % namespace
+
+            if 'twitter' in buttons:
+                s += """
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=%(url)s&amp;name=Interesting link&amp;hashtags=interesting" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+""" % namespace
+
+            if 'print' in buttons:
+                s += """
+<!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+    </a>
+
+</div>
+""" % namespace
+
+    return s
 
 def toc2html(font_size=80, bootstrap=True):
     global tocinfo  # computed elsewhere
@@ -1141,6 +1216,20 @@ def html_code(filestr, code_blocks, code_block_types,
         # Remove all comments for wordpress.com html
         pattern = re.compile('<!-- .+? -->', re.DOTALL)
         filestr = re.sub(pattern, '', filestr)
+
+    # Add sharing buttons
+    url = option('html_share=', None)
+    # --html_share=http://mysite.com/specials,twitter,facebook,linkedin
+    if url is not None:
+        if ',' in url:
+            words = url.split(',')
+            url = words[0]
+            buttons = words[1:]
+            code = share(code_type='buttons', url=url, buttons=buttons)
+        else:
+            code = share(code_type='buttons', url=url)
+        filestr = re.sub(r'^</body>\n', code + '\n\n' + '</body>\n',
+                         filestr, flags=re.MULTILINE)
 
     # Add exercise logo
     html_style = option('html_style=', 'blueish')
@@ -2167,7 +2256,7 @@ def define(FILENAME_EXTENSION,
         'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
         'inlinecomment': html_inline_comment,
-        'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
+        'chapter':       r'\n<center><h1>\g<subst></h1></center> <!-- chapter heading -->',
         'section':       r'\n<h1>\g<subst></h1>',
         'subsection':    r'\n<h2>\g<subst></h2>',
         'subsubsection': r'\n<h3>\g<subst></h3>\n',
@@ -2503,6 +2592,11 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 <style type="text/css">
 %s</style>
 """ % style_changes
+
+    # Add sharing buttons
+    url = option('html_share=', None)
+    if url is not None:
+        style += share(code_type='css')
 
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

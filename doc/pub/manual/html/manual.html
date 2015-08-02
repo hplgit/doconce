@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jun 24, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 2, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -181,7 +181,7 @@ directory</p>
 formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <code class="docutils literal"><span class="pre">demo</span></code>.
 To successfully run this script and compile all the different versions,
 you must have quite a lot of software installed, see
-the the section <a class="reference internal" href="#install-doconce"><span>Installation of DocOnce and its Dependencies</span></a> for detailed information.
+the the section <a class="reference internal" href="#install-doconce"><span class="std std-ref">Installation of DocOnce and its Dependencies</span></a> for detailed information.
 However,
 the most commonly used formats of this manual are
 fortunately also accessible through the web:
@@ -1975,7 +1975,7 @@ def figmov(figfile, movfile, caption):
 <h3>Copying Computer Code from Source Files<a class="headerlink" href="#copying-computer-code-from-source-files" title="Permalink to this headline">¶</a></h3>
 <p>Another type of special lines starts with <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> and enables copying
 of computer code from a file directly into a verbatim environment, see
-the section <a class="reference internal" href="#sec-verbatim-blocks"><span>Blocks of Verbatim Computer Code</span></a> below.</p>
+the section <a class="reference internal" href="#sec-verbatim-blocks"><span class="std std-ref">Blocks of Verbatim Computer Code</span></a> below.</p>
 </div>
 <div class="section" id="inserting-the-output-from-operating-system-commands">
 <h3>Inserting the Output from Operating System Commands<a class="headerlink" href="#inserting-the-output-from-operating-system-commands" title="Permalink to this headline">¶</a></h3>
@@ -2012,7 +2012,7 @@ set the (terminal) prompt that prefixes the command:</p>
 <h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
 <p id="index-16">Comments intended to be (sometimes) visible in the output document and
 read by readers are known as <em>inline comments</em> in DocOnce and
-described in the section <a class="reference internal" href="#inline-tagging"><span>Inline Tagging</span></a>.</p>
+described in the section <a class="reference internal" href="#inline-tagging"><span class="std std-ref">Inline Tagging</span></a>.</p>
 <p>Here we address comments in the DocOnce source file that are not
 intended to be visible in the output document. Basic comment
 lines start with the hash <code class="docutils literal"><span class="pre">#</span></code>:</p>
@@ -2582,11 +2582,11 @@ as space. Next is an example.
 [<strong>hpl&#8217;s comment 1</strong>: Inline comments can span several lines, if desired.]</p>
 <p>The name and comment are visible in the output unless <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 is run with a command-line argument <code class="docutils literal"><span class="pre">--skip_inline_comments</span></code>
-(see the section <a class="reference internal" href="#doconce2formats"><span>From DocOnce to Other Formats</span></a> for an example). Inline comments
+(see the section <a class="reference internal" href="#doconce2formats"><span class="std std-ref">From DocOnce to Other Formats</span></a> for an example). Inline comments
 are helpful during development of a document since different authors
 and readers can comment on formulations, missing points, etc.
 All such comments can easily be removed from the <code class="docutils literal"><span class="pre">.do.txt</span></code> file
-by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">remove_inline_comments</span></code> (see the section <a class="reference internal" href="#doconce2formats"><span>From DocOnce to Other Formats</span></a>).</p>
+by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">remove_inline_comments</span></code> (see the section <a class="reference internal" href="#doconce2formats"><span class="std std-ref">From DocOnce to Other Formats</span></a>).</p>
 <p>Inline comments are typeset in a simple way: boldface name, a
 numbering of the comment, and then the comment, all in red and in
 parenthesis. However, with the <code class="docutils literal"><span class="pre">--latex_todonotes</span></code> option, LaTeX will
@@ -2727,28 +2727,30 @@ are vectors of length <span class="math">\(n\)</span>.&#8221;</p>
 For more information we refer to Section ref{section:verbatim}.
 </pre></div>
 </div>
-<p>This syntax is close that that of labels and cross-references in
-LaTeX. When the label is placed after a section or subsection heading,
-the plain text, Epytext, and StructuredText formats will simply
+<p>The DocOnce label syntax is close that that of labels and cross-references in
+LaTeX, but note that <em>labels cannot contain whitespace and cannot have a backslash</em>.</p>
+<p>When the label is placed after a section or subsection heading,
+the <code class="docutils literal"><span class="pre">plain</span></code> text, <code class="docutils literal"><span class="pre">epytext</span></code>, and <code class="docutils literal"><span class="pre">st</span></code> formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 <code class="docutils literal"><span class="pre">rst</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code> formats, the end effect is the same, but
 the &#8220;label&#8221; and &#8220;ref&#8221; commands are first translated to the proper
-reST commands by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>. In the HTML and wiki formats,
+reST commands by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>. In the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX &#8220;label&#8221; and &#8220;ref&#8221; are just equipped with backslashes so
 these commands work as usual in LaTeX.</p>
-<p>It is, in general, recommended to use labels and references for
-(sub)sections, equations, and figures only.
-By the way, here is an example on referencing Figure <a class="reference internal" href="#fig-viz"><span>A wave</span></a>
+<p>Labels and references should only be used for
+(sub)sections, equations, figures, and movies (since DocOnce does not
+support references to tables and algorithms, for instance).
+By the way, here is an example on referencing Figure <a class="reference internal" href="#fig-viz"><span class="std std-ref">A wave</span></a>
 (the label appears in the figure caption in the source code of this document).
-Additional references to the sections <a class="reference internal" href="#mathtext"><span>LaTeX Blocks of Mathematical Text</span></a> and <a class="reference internal" href="#newcommands"><span>Macros (Newcommands)</span></a> are
+Additional references to the sections <a class="reference internal" href="#mathtext"><span class="std std-ref">LaTeX Blocks of Mathematical Text</span></a> and <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a> are
 nice to demonstrate, as well as a reference to equations,
 say (<span class="xref std std-ref">myeq1</span>)-(<span class="xref std std-ref">myeq2</span>). A comparison of the output and
 the source of this document illustrates how labels and references
 are handled by the format in question.</p>
 <p>Hyperlinks to files or web addresses are handled as explained
-in the section <a class="reference internal" href="#inline-tagging"><span>Inline Tagging</span></a>.</p>
+in the section <a class="reference internal" href="#inline-tagging"><span class="std std-ref">Inline Tagging</span></a>.</p>
 </div>
 <div class="section" id="generalized-cross-referencing">
 <span id="manual-genrefs"></span><h3>Generalized Cross-Referencing<a class="headerlink" href="#generalized-cross-referencing" title="Permalink to this headline">¶</a></h3>
@@ -3514,8 +3516,10 @@ Continuing the last session,</p>
 </div>
 <p><strong>d)</strong></p>
 <p><strong>Question:</strong> What is correct about the integral <span class="math">\(\int e^{-t^2}dt\)</span>?</p>
-<p><strong>Choice A:</strong> The integral is the error function. <abbr title="Wrong!">?</abbr></p>
-<p><strong>Choice B:</strong> It cannot be computed. <abbr title="Wrong!">?</abbr> <abbr title="That would be correct if computed means &quot;calculated as a closed-form formula by hand&quot;, but the integral int_a^b e^{-t^2}dt? can be easily computed numerical methods.">#</abbr></p>
+<p><strong>Choice A:</strong> The integral is the error function.</p>
+<p><abbr title="Wrong!">?</abbr></p>
+<p><strong>Choice B:</strong> It cannot be computed.</p>
+<p><abbr title="Wrong!">?</abbr> <abbr title="That would be correct if computed means &quot;calculated as a closed-form formula by hand&quot;, but the integral int_a^b e^{-t^2}dt? can be easily computed numerical methods.">#</abbr></p>
 <p><strong>Choice C:</strong> It equals</p>
 <div class="math">
 \[\frac{\Gamma{\left(\frac{1}{4} \right)}
@@ -3524,8 +3528,10 @@ Continuing the last session,</p>
 <p>where <span class="math">\(\Gamma(x)\)</span> is the (upper) incomplete gamma function
 and <span class="math">\(\gamma(x)\)</span> is the lower incomplete gamma function
 (see <a class="reference external" href="http://en.wikipedia.org/wiki/Incomplete_gamma_function">Wikipedia</a>
-for definition). <abbr title="Right!">?</abbr></p>
-<p><strong>Choice D:</strong> It equals the cumulative normal density function. <abbr title="Wrong!">?</abbr></p>
+for definition).</p>
+<p><abbr title="Right!">?</abbr></p>
+<p><strong>Choice D:</strong> It equals the cumulative normal density function.</p>
+<p><abbr title="Wrong!">?</abbr></p>
 <p>Filename: <code class="docutils literal"><span class="pre">integrals.py</span></code>.</p>
 <div class="section" id="remarks">
 <h4>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">¶</a></h4>
@@ -3698,7 +3704,7 @@ By default, copying a part of a <code class="docutils literal"><span class="pre"
 additional code to be run.</p>
 <p>Using <code class="docutils literal"><span class="pre">envir=None</span></code> results in a pure include of the file, without any
 surrounding code environment (i.e., no <code class="docutils literal"><span class="pre">!bc</span></code> or <code class="docutils literal"><span class="pre">!ec</span></code> directives around
-the contents of the file). The section <a class="reference internal" href="#manual-mako-nomenclature"><span>Example: Nomenclature functionality</span></a> shows
+the contents of the file). The section <a class="reference internal" href="#manual-mako-nomenclature"><span class="std std-ref">Example: Nomenclature functionality</span></a> shows
 an example.</p>
 <p>Let us demonstrate the result of copying a whole file, as
 specified in the first line above:</p>
@@ -3973,7 +3979,7 @@ in the running text. Here is an example:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">If you desire a newcommand for the running text, using a Mako function
 (written in plain Python) is much more flexible. See
-the section <a class="reference internal" href="#manual-mako"><span>Mako Programming</span></a>.</p>
+the section <a class="reference internal" href="#manual-mako"><span class="std std-ref">Mako Programming</span></a>.</p>
 </div>
 <p>The newcommands must be defined by the standard LaTeX command
 <code class="docutils literal"><span class="pre">newcommand{name}{definition}</span></code> in a separate file with name
@@ -4014,6 +4020,7 @@ This may feel restrictive to LaTeX writers who are used to
 <code class="docutils literal"><span class="pre">align</span></code> and use a number for each equation, or use <code class="docutils literal"><span class="pre">\nonumber\\</span></code>
 to end intermediate calculations on multiple lines and use a label
 in the last, final result).</li>
+<li>Do not use comments inside equations.</li>
 <li>Newcommands in mathematical formulas are allowed, but not in
 the running text. Newcommands must be defined in files with names
 <code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Use <code class="docutils literal"><span class="pre">\newcommands</span></code> and not <code class="docutils literal"><span class="pre">\def</span></code>.
@@ -4022,6 +4029,7 @@ Use Mako functions if you need macros in the running text.</li>
 <li>Use labels and refer to them
 for sections, figures, movies, and equations only.
 MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
+<li>Spaces are not allowed in labels.</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements
 (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
 for reference <a class="footnote-reference" href="#exception" id="id14">[3]</a> (refer to inline elements by a section label).
@@ -4398,7 +4406,7 @@ these favorite environments. DocOnce, however, offers <em>user-defined</em> envi
 how to define such user-defined environments.</p>
 <p><strong>Remark.</strong>
 Special environments can always be implemented by Mako code as illustrated
-in the section <a class="reference internal" href="#manual-theorem-envir"><span>Example: Defining a Theorem Environment</span></a>, but the DocOnce user-defined
+in the section <a class="reference internal" href="#manual-theorem-envir"><span class="std std-ref">Example: Defining a Theorem Environment</span></a>, but the DocOnce user-defined
 environments are easier to use.</p>
 <p>For example, suppose you want to typeset examples using
 a native <em>example</em> environment in LaTeX, while other formats can
@@ -4816,7 +4824,7 @@ but the command-line argument <code class="docutils literal"><span class="pre">-
 makes it possible to test if the output is on paper media, a sreen,
 or a particular device.</p>
 <p>Other user-defined variables for the preprocessor can be set at
-the command line as explained in the section <a class="reference internal" href="#doconce2formats"><span>From DocOnce to Other Formats</span></a>.</p>
+the command line as explained in the section <a class="reference internal" href="#doconce2formats"><span class="std std-ref">From DocOnce to Other Formats</span></a>.</p>
 <p>More advanced use of mako can include Python code that may automate
 the writing of parts of the document.</p>
 <div class="admonition-on-the-type-of-a-mako-variable-from-the-command-line admonition">
@@ -6411,6 +6419,13 @@ Bootstrap-style quizzes. Without this option a small icon is used.</p>
 <p>Other options:</p>
 <blockquote>
 <div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">--html_share=http://...</span></code> makes sharing buttons at the end of the
+document: email, Facebook, Google+, LinkedIn, Twitter, and print by
+default. <code class="docutils literal"><span class="pre">--html_share=http://...,twitter,linkedin</span></code> will make just
+to sharing buttons for Twitter and LinkedIn. Sites are separated
+by comma and valid names are <code class="docutils literal"><span class="pre">email</span></code>, <code class="docutils literal"><span class="pre">facebook</span></code>, <code class="docutils literal"><span class="pre">google+</span></code>,
+<code class="docutils literal"><span class="pre">linkedin</span></code>, <code class="docutils literal"><span class="pre">twitter</span></code>, and <code class="docutils literal"><span class="pre">print</span></code>. The URL <code class="docutils literal"><span class="pre">http://...</span></code> must be
+the URL where the document is published.</li>
 <li><code class="docutils literal"><span class="pre">--html_toc_depth=X</span></code>: controls the depth of the table of contents
 in documents. Default value of <code class="docutils literal"><span class="pre">X</span></code> is 3, meaning chapters,
 sections, and subsections. <code class="docutils literal"><span class="pre">X</span></code> as 0 gives the table of contents as a
@@ -6730,7 +6745,7 @@ Filter the doconce text to the <code class="docutils literal"><span class="pre">
 </div>
 <p>LaTeX-specific commands (&#8220;newcommands&#8221;) in math formulas and similar
 can be placed in files <code class="docutils literal"><span class="pre">newcommands.tex</span></code>, <code class="docutils literal"><span class="pre">newcommands_keep.tex</span></code>, or
-<code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> (see the section <a class="reference internal" href="#newcommands"><span>Macros (Newcommands)</span></a>).
+<code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> (see the section <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a>).
 If these files are present, they are included in the LaTeX document
 so that your commands are defined.</p>
 <p>An option <code class="docutils literal"><span class="pre">--device=paper</span></code> makes some adjustments for documents
@@ -6750,10 +6765,11 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_papersize=a4,a6</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></code> (name of BibTeX style)</li>
 <li><code class="docutils literal"><span class="pre">--latex_title_layout=titlepage,</span> <span class="pre">std,</span> <span class="pre">beamer,</span> <span class="pre">doconce_heading,</span> <span class="pre">Springer_collection</span></code></li>
-<li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
+<li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_sv,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">Springer_T4,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
 <li><code class="docutils literal"><span class="pre">--latex_fancy_header</span></code> (chapter/section headings at top of pages, style depends on value of <code class="docutils literal"><span class="pre">--latex_section_headings</span></code>)</li>
 <li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
+<li><code class="docutils literal"><span class="pre">--latex_table_format=quote,</span> <span class="pre">center,</span> <span class="pre">footnotesize,</span> <span class="pre">tiny</span></code> (environment around tables)</li>
 <li><code class="docutils literal"><span class="pre">--latex_colored_table_rows=blue,</span> <span class="pre">gray,</span> <span class="pre">no</span></code> (color of every two lines in tables)</li>
 <li><code class="docutils literal"><span class="pre">--latex_todonotes</span></code> (inline comments typeset as &#8220;bubbles&#8221;)</li>
 <li><code class="docutils literal"><span class="pre">--latex_double_spacing</span></code> (to ease hand-writing between the lines)</li>
@@ -7769,6 +7785,19 @@ If the file does not exist, the default or specified style
 --html_box_shadow
 
 Add a shadow effect in HTML box environments.
+
+
+--html_share=...
+
+Specify URL and there will be Facebook, Twitter, etc. buttons
+at the end of the HTML document.
+
+--html_share=http://mysite.com/specials shares on email, Facebook, Google+,
+LinkedIn, Twitter, and enables a print button too.
+
+--html_share=http://mysite.com/specials,twitter,facebook shares on
+Twitter and Facebook only. Sites are separated by comma. The following
+names are allowed: email, facebook, google+, linkedin, twitter, print.
 
 
 --html_exercise_icon=...
