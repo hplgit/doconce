@@ -8,7 +8,6 @@ from misc import option, _abort
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
 
-
 global _file_collection_filename
 
 # From http://service.real.com/help/library/guides/realone/ProductionGuide/HTML/htmfiles/colors.htm:
@@ -504,6 +503,60 @@ h3 {
     color: #777;
 }
 """
+
+def share(code_type, url=None, method='simplesharebuttons.com'):
+    if method == 'simplesharebuttons.com':
+        if code_type == 'css':
+            return """
+<style type="text/css">
+
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
+
+</style>
+"""
+        elif code_type == 'buttons':
+            return """
+<!-- I got these buttons from simplesharebuttons.com -->
+<div id="share-buttons">
+
+    <!-- Email -->
+    <a href="mailto:?Subject=Interesting link&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 %(url)s">
+        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+    </a>
+
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=%(url)s" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=%(url)s" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=%(url)s" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+    </a>
+
+    <!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+    </a>
+
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=%(url)s&amp;name=Interesting link&amp;hashtags=interesting" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+
+</div>
+""" % ({'url': url})
 
 def toc2html(font_size=80, bootstrap=True):
     global tocinfo  # computed elsewhere
@@ -1141,6 +1194,13 @@ def html_code(filestr, code_blocks, code_block_types,
         # Remove all comments for wordpress.com html
         pattern = re.compile('<!-- .+? -->', re.DOTALL)
         filestr = re.sub(pattern, '', filestr)
+
+    # Add sharing buttons
+    url = option('html_share=', None)
+    if url is not None:
+        code = share(code_type='buttons', url=url)
+        filestr = re.sub(r'^</body>\n', code + '\n\n' + '</body>\n',
+                         filestr, flags=re.MULTILINE)
 
     # Add exercise logo
     html_style = option('html_style=', 'blueish')
@@ -2503,6 +2563,11 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 <style type="text/css">
 %s</style>
 """ % style_changes
+
+    # Add sharing buttons
+    url = option('html_share=', None)
+    if url is not None:
+        style += share(code_type='css')
 
     meta_tags = """\
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
