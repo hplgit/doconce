@@ -371,6 +371,13 @@ Options for Bootstrap styles:
 
 Other options:
 
+ * `--html_share=http://...` makes sharing buttons at the end of the
+   document: email, Facebook, Google+, LinkedIn, Twitter, and print by
+   default. `--html_share=http://...,twitter,linkedin` will make just
+   to sharing buttons for Twitter and LinkedIn. Sites are separated
+   by comma and valid names are `email`, `facebook`, `google+`,
+   `linkedin`, `twitter`, and `print`. The URL `http://...` must be
+   the URL where the document is published.
  * `--html_toc_depth=X`: controls the depth of the table of contents
    in documents. Default value of `X` is 3, meaning chapters,
    sections, and subsections. `X` as 0 gives the table of contents as a

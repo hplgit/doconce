@@ -30313,7 +30313,9 @@ MathJax.Hub.Config({
 <p>
 <!-- Externaldocument: testdoc -->
 
-<h1 id="genrefs">Generalized References</h1> <hr>
+<p>
+
+<center><h1 id="genrefs">Generalized References</h1></center> <hr>
 
 <p>
 Sometimes a series of individual documents may be assembled to one
@@ -30480,7 +30482,9 @@ The text is rendered to
 </blockquote>
 
 
-<h1 id="___sec1">Test of math </h1> <hr>
+<p>
+
+<center><h1 id="___sec1">Test of math </h1></center> <hr>
 
 <p>
 <!-- Here we test the chapter heading to see if latex output then has -->
@@ -36723,6 +36727,18 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+<style type="text/css">
+
+#share-buttons img {
+width: 35px;
+padding: 5px;
+border: 0;
+box-shadow: 0;
+display: inline;
+}
+
+</style>
+
 
 <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
 <script src="http://sagecell.sagemath.org/embedded_sagecell.js"></script>
@@ -39031,6 +39047,38 @@ in a separate document: <code>admon.do.txt</code>.
 is at the end with only one newline.</p>
 
 <!-- ------------------- end of main content --------------- -->
+
+
+
+<!-- I got these buttons from simplesharebuttons.com -->
+<div id="share-buttons">
+
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=http://cyber.space.com/specials" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=http://cyber.space.com/specials" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://cyber.space.com/specials" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+    </a>
+
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=http://cyber.space.com/specials&amp;name=Interesting link&amp;hashtags=interesting" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+
+<!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+    </a>
+
+</div>
 
 
 </body>
@@ -41816,7 +41864,7 @@ system doconce format html testdoc --wordpress  $ex --html_exercise_icon=questio
 
 cp testdoc.html testdoc_wordpress.html
 
-system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default --solutions_at_end $rawgit
+system doconce format html testdoc --without_answers --without_solutions $ex -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_share=http://cyber.space.com/specials,twitter,print,google+,facebook,linkedin $rawgit
 system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
@@ -55894,7 +55942,7 @@ exercises (and problems and projects too).</p>
     </div>
     <div class="footer">
         &copy; Copyright 2015, hpl.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4a0+.
     </div>
   </body>
 </html>
@@ -73822,7 +73870,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f079a4d82a8>
+verbatim is to be replaced using <function html_verbatim at 0x7f53f227e410>
 
 
 First occurence: " `mako`."
@@ -77598,7 +77646,7 @@ MathJax.Hub.Config({
 <a name="part0001"></a>
 <!-- !split -->
 
-<h1 id="___sec0">More details on writing DocOnce documents with Bootstrap layout </h1> <!-- chapter heading -->
+<center><h1 id="___sec0">More details on writing DocOnce documents with Bootstrap layout </h1></center> <!-- chapter heading -->
 
 <h1 id="___sec1">Demonstrations of admons </h1>
 
@@ -78061,7 +78109,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sat Aug  1 13:52:40 2015.
+# sphinx-quickstart on Sun Aug  2 06:23:10 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -78074,7 +78122,6 @@ we can run the program:
 
 import sys
 import os
-import shlex
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -97204,8 +97251,8 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
-+ system doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_raw_github_url=raw.github
-+ doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_raw_github_url=raw.github
++ system doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_share=http://cyber.space.com/specials,twitter,print,google+,facebook,linkedin --html_raw_github_url=raw.github
++ doconce format html testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --html_exercise_icon=default --solutions_at_end --html_share=http://cyber.space.com/specials,twitter,print,google+,facebook,linkedin --html_raw_github_url=raw.github
 running preprocess -DFORMAT=html -DDEVICE=screen -DSOMEVAR testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'html'}
@@ -102398,7 +102445,7 @@ testdoc split into
 + system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 + doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc
-Welcome to the Sphinx 1.3.1 quickstart utility.
+Welcome to the Sphinx 1.4a0+ quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -102473,8 +102520,12 @@ or just run it by
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Running Sphinx v1.3.1
+Running Sphinx v1.4a0+
 making output directory...
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 12 source files that are out of date
@@ -102525,7 +102576,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 8 warnings.
+build succeeded, 12 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -104341,7 +104392,7 @@ Not recommended for sphinx output: math environment {eqnarray*}
 output in math_test.rst
 + doconce sphinx_dir dirname=sphinx-rootdir-math math_test
 Making sphinx-rootdir-math
-Welcome to the Sphinx 1.3.1 quickstart utility.
+Welcome to the Sphinx 1.4a0+ quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -104418,10 +104469,13 @@ or just run it by
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Running Sphinx v1.3.1
+Running Sphinx v1.4a0+
 making output directory...
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
-WARNING: 'default' html theme has been renamed to 'classic'. Please change your html_theme setting either to the new 'alabaster' default theme, or to 'classic' to keep using the old default.
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -104441,7 +104495,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded, 4 warnings.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
@@ -107055,7 +107109,7 @@ output in admon.html
 + system doconce sphinx_dir dirname=tmp_admon admon
 + doconce sphinx_dir dirname=tmp_admon admon
 Making tmp_admon
-Welcome to the Sphinx 1.3.1 quickstart utility.
+Welcome to the Sphinx 1.4a0+ quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -107146,10 +107200,13 @@ figure file ../doc/src/manual/fig/wave1D:
 output in admon.rst
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Running Sphinx v1.3.1
+Running Sphinx v1.4a0+
 making output directory...
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
-WARNING: 'default' html theme has been renamed to 'classic'. Please change your html_theme setting either to the new 'alabaster' default theme, or to 'classic' to keep using the old default.
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -107171,7 +107228,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded, 4 warnings.
 
 Build finished. The HTML pages are in _build/html.
 doconce format sphinx admon 
@@ -112636,7 +112693,7 @@ output in quickref.rst
 + system doconce sphinx_dir author=HPL quickref
 + doconce sphinx_dir author=HPL quickref
 Making sphinx-rootdir
-Welcome to the Sphinx 1.3.1 quickstart utility.
+Welcome to the Sphinx 1.4a0+ quickstart utility.
 
 Please enter values for the following settings (just press Enter to
 accept a default value, if one is given in brackets).
@@ -112714,10 +112771,13 @@ replacing doconce format sphinx %s by doconce format sphinx %s --no-preprocess i
 + python automake_sphinx.py
 rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
-Running Sphinx v1.3.1
+Running Sphinx v1.4a0+
 making output directory...
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
+WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
-WARNING: 'default' html theme has been renamed to 'classic'. Please change your html_theme setting either to the new 'alabaster' default theme, or to 'classic' to keep using the old default.
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
 updating environment: 2 added, 0 changed, 0 removed
@@ -112737,7 +112797,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded, 4 warnings.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir

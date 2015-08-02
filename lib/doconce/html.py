@@ -504,7 +504,12 @@ h3 {
 }
 """
 
-def share(code_type, url=None, method='simplesharebuttons.com'):
+def share(code_type,
+          url=None,
+          buttons=['email', 'facebook', 'google+', 'linkedin',
+                   'twitter', 'print'],
+          method='simplesharebuttons.com'):
+    namespace =  {'url': url}
     if method == 'simplesharebuttons.com':
         if code_type == 'css':
             return """
@@ -521,42 +526,59 @@ display: inline;
 </style>
 """
         elif code_type == 'buttons':
-            return """
+            s = """
 <!-- I got these buttons from simplesharebuttons.com -->
 <div id="share-buttons">
-
+"""
+            if 'email' in buttons:
+                s += """
     <!-- Email -->
-    <a href="mailto:?Subject=Interesting link&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 %(url)s">
+    <a href="mailto:?Subject=Interesting link&amp;Body=I%%20saw%%20this%%20and%%20thought%%20of%%20you!%%20 %(url)s">
         <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
     </a>
-
+""" % namespace
+            if 'facebook' in buttons:
+                s += """
     <!-- Facebook -->
     <a href="http://www.facebook.com/sharer.php?u=%(url)s" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
     </a>
-
+""" % namespace
+            if 'google+' in buttons:
+                s += """
     <!-- Google+ -->
     <a href="https://plus.google.com/share?url=%(url)s" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
     </a>
+""" % namespace
 
+            if 'linkedin' in buttons:
+                s += """
     <!-- LinkedIn -->
     <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=%(url)s" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
     </a>
+""" % namespace
 
-    <!-- Print -->
-    <a href="javascript:;" onclick="window.print()">
-        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
-    </a>
-
+            if 'twitter' in buttons:
+                s += """
     <!-- Twitter -->
     <a href="https://twitter.com/share?url=%(url)s&amp;name=Interesting link&amp;hashtags=interesting" target="_blank">
         <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
     </a>
+""" % namespace
+
+            if 'print' in buttons:
+                s += """
+<!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+    </a>
 
 </div>
-""" % ({'url': url})
+""" % namespace
+
+    return s
 
 def toc2html(font_size=80, bootstrap=True):
     global tocinfo  # computed elsewhere
@@ -1197,8 +1219,15 @@ def html_code(filestr, code_blocks, code_block_types,
 
     # Add sharing buttons
     url = option('html_share=', None)
+    # --html_share=http://mysite.com/specials,twitter,facebook,linkedin
     if url is not None:
-        code = share(code_type='buttons', url=url)
+        if ',' in url:
+            words = url.split(',')
+            url = words[0]
+            buttons = words[1:]
+            code = share(code_type='buttons', url=url, buttons=buttons)
+        else:
+            code = share(code_type='buttons', url=url)
         filestr = re.sub(r'^</body>\n', code + '\n\n' + '</body>\n',
                          filestr, flags=re.MULTILINE)
 
@@ -2227,7 +2256,7 @@ def define(FILENAME_EXTENSION,
         'linkURL3v':     r'<a href="\g<url>" target="_self"><tt>\g<link></tt></a>',
         'plainURL':      r'<a href="\g<url>" target="_self"><tt>\g<url></tt></a>',
         'inlinecomment': html_inline_comment,
-        'chapter':       r'\n<h1>\g<subst></h1> <!-- chapter heading -->',
+        'chapter':       r'\n<center><h1>\g<subst></h1></center> <!-- chapter heading -->',
         'section':       r'\n<h1>\g<subst></h1>',
         'subsection':    r'\n<h2>\g<subst></h2>',
         'subsubsection': r'\n<h3>\g<subst></h3>\n',

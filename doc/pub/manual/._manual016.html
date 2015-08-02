@@ -465,6 +465,7 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    <code>align</code> and use a number for each equation, or use <code>\nonumber\\</code>
    to end intermediate calculations on multiple lines and use a label
    in the last, final result).</li>
+ <li> Do not use comments inside equations.</li>
  <li> Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
    <code>newcommands*.tex</code>. Use <code>\newcommands</code> and not <code>\def</code>.
@@ -473,6 +474,7 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
  <li> Use labels and refer to them
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
+ <li> Spaces are not allowed in labels.</li>
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
    for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button> (refer to inline elements by a section label).

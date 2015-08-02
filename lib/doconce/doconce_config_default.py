@@ -48,6 +48,7 @@ html_admon_shadow = False
 #html_admon_bd_color = 
 #css = 
 html_box_shadow = False
+#html_share = 
 #html_exercise_icon = 
 #html_exercise_icon_width = 
 #html_raw_github_url = 

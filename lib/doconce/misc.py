@@ -129,6 +129,16 @@ If the file does not exist, the default or specified style
 (--html_style=) is written to it."""),
     ('--html_box_shadow',
      'Add a shadow effect in HTML box environments.'),
+    ('--html_share=',
+     """Specify URL and there will be Facebook, Twitter, etc. buttons
+at the end of the HTML document.
+
+--html_share=http://mysite.com/specials shares on email, Facebook, Google+,
+LinkedIn, Twitter, and enables a print button too.
+
+--html_share=http://mysite.com/specials,twitter,facebook shares on
+Twitter and Facebook only. Sites are separated by comma. The following
+names are allowed: email, facebook, google+, linkedin, twitter, print."""),
     ('--html_exercise_icon=',
      """Specify a question icon (as a filename in the bundled/html_images
 directory in the doconce repo) for being inserted to the right in exercises.
