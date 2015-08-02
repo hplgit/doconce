@@ -399,10 +399,10 @@ def latex_code(filestr, code_blocks, code_block_types,
     if m:
         commands = [r'\externaldocument{%s}' % name.strip()
                     for name in m.group(1).split(',')]
-        new_text = r"""
+        new_text = br"""
 
 %% References to labels in external documents:
-\usepackage{xr}
+\XUXsepackage{xr}
 %s
 
 %% insert custom LaTeX commands...
@@ -679,7 +679,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     # Add pgf package if we have pgf files
     if re.search(r'input\{.+\.pgf\}', filestr):
         filestr = filestr.replace('usepackage{graphicx}',
-                                  'usepackage{graphicx}\n\\usepackage{pgf}')
+                                  'usepackage{graphicx}\n\\XUXsepackage{pgf}')
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -2638,16 +2638,16 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % Style: Lecture Notes in Undergraduate Physics 2 (Springer)
 \documentclass[graybox,envcountchap,sectrefs]{svmonodo}
 %\pagestyle{headings}
-\usepackage{mathptmx}
-\usepackage{helvet}
-\usepackage{courier}
-\usepackage{type1cm}
-\usepackage{framed}
-\usepackage{booktabs}
-\usepackage{subeqnarray}
-\usepackage[bottom]{footmisc}
-\usepackage{cite}
-\usepackage{multicol}
+\XUXsepackage{mathptmx}
+\XUXsepackage{helvet}
+\XUXsepackage{courier}
+\XUXsepackage{type1cm}
+\XUXsepackage{framed}
+\XUXsepackage{booktabs}
+\XUXsepackage{subeqnarray}
+\XUXsepackage[bottom]{footmisc}
+\XUXsepackage{cite}
+\XUXsepackage{multicol}
 """
     elif latex_style == 'Springer_T2':
         copy_latex_packages(['svmonodo.cls', 't2do.sty'])
@@ -2657,7 +2657,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
 
 % Use t2.sty with doconce modifications (t2do.sty)
-\usepackage{t2do}
+\XUXsepackage{t2do}
 \special{papersize=193mm,260mm}
 """
     elif latex_style == 'Springer_T4':
@@ -2668,7 +2668,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
 
 % Use t4.sty with doconce modifications (t4do.sty)
-\usepackage{t4do}
+\XUXsepackage{t4do}
 \special{papersize=178mm,254mm}
 """
     elif latex_style == 'Springer_llncs':
@@ -2718,12 +2718,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     if latex_papersize == 'a4':
         INTRO['latex'] += r"""
-\usepackage[a4paper]{geometry}
+\XUXsepackage[a4paper]{geometry}
 """
     elif latex_papersize == 'a6':
         INTRO['latex'] += r"""
 % a6paper is suitable for mobile devices
-\usepackage[%
+\XUXsepackage[%
   a6paper,
   text={90mm,130mm},
   inner={5mm},           % inner margin (two sided documents)
@@ -2734,31 +2734,31 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
     if latex_style != 'Springer_lnup':
         INTRO['latex'] += r"""
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
-\usepackage[table]{xcolor}
-\usepackage{bm,microtype}
+\XUXsepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\XUXsepackage[table]{xcolor}
+\XUXsepackage{bm,microtype}
 """
     else:
         INTRO['latex'] += r"""
-\usepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts}
-\usepackage[table]{xcolor}
-\usepackage{bm}
+\XUXsepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\XUXsepackage[table]{xcolor}
+\XUXsepackage{bm}
 """
 
     #if 'FIGURE' in filestr: # let us always have this, neeeded in admons too
     INTRO['latex'] += r"""
-\usepackage{graphicx}
+\XUXsepackage{graphicx}
 """
     # sidecap figures?
     if 'sidecap=' in filestr:
-        INTRO['latex'] += '\\usepackage{sidecap}\n'
+        INTRO['latex'] += '\\XUXsepackage{sidecap}\n'
 
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
        re.search(r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<correction>.*? -> .*?)\]''', filestr, flags=re.DOTALL|re.MULTILINE):
         INTRO['latex'] += r"""
 % Tools for marking corrections
-\usepackage{soul}
+\XUXsepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
 \newcommand{\remove}[1]{{\color{red}\st{#1}}}
 """
@@ -2768,7 +2768,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     # fancybox is just used for Sbox in latex_box (!bbox)
     if '!bbox' in filestr:
         INTRO['latex'] += r"""
-\usepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
+\XUXsepackage{fancybox}  % make sure fancybox is loaded before fancyvrb
 %\setlength{\fboxsep}{8pt}  % may clash with need in pre/cod envirs
 """
     xelatex = option('xelatex')
@@ -2779,13 +2779,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         package = ''
         if movie == 'media9':
             if xelatex:
-                package = r'\usepackage[xetex]{media9}'
+                package = r'\XUXsepackage[xetex]{media9}'
             else:
-                package = r'\usepackage{media9}'
+                package = r'\XUXsepackage{media9}'
         if movie == 'movie15':
-            package = r'\usepackage{movie15}'
+            package = r'\XUXsepackage{movie15}'
         elif movie == 'multimedia':
-            package = r'\usepackage{multimedia}'
+            package = r'\XUXsepackage{multimedia}'
         INTRO['latex'] += r"""
 %% Movies are handled by the %(movie)s package
 \newenvironment{doconce:movie}{}{}
@@ -2803,14 +2803,14 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             else:
                 non_flv_mp4_files = True
         if non_flv_mp4_files and movie == 'media9':
-            INTRO['latex'] += r'\usepackage{movie15}' + '\n'
+            INTRO['latex'] += r'\XUXsepackage{movie15}' + '\n'
         if animated_files:
             if xelatex:
-                INTRO['latex'] += r'\usepackage[xetex]{animate}'
+                INTRO['latex'] += r'\XUXsepackage[xetex]{animate}'
             else:
-                INTRO['latex'] += r'\usepackage{animate}'
+                INTRO['latex'] += r'\XUXsepackage{animate}'
             if 'graphicx' not in INTRO['latex']:
-                INTRO['latex'] += '\n' + r'\usepackage{graphicx}'
+                INTRO['latex'] += '\n' + r'\XUXsepackage{graphicx}'
 
             INTRO['latex'] += '\n\n'
 
@@ -2819,17 +2819,17 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         if latex_code_style is None:
             # Rely on ptex2tex step
             INTRO['latex'] += r"""
-\usepackage{ptex2tex}
+\XUXsepackage{ptex2tex}
 % #ifdef MINTED
-\usepackage{minted}
-\usemintedstyle{default}
+\XUXsepackage{minted}
+\XUXsemintedstyle{default}
 % #endif
 """
         else:
             # Rely on generating all code block environments directly
             INTRO['latex'] += r"""
 % Packages for typesetting blocks of computer code
-\usepackage{fancyvrb,framed,moreverb}
+\XUXsepackage{fancyvrb,framed,moreverb}
 
 % Define colors
 \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
@@ -2909,16 +2909,16 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \newenvironment{cod}[1]{
    \def\FrameCommand{\colorbox{#1}}
    \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\unskip\medskip\endMakeFramed}
+ {\XUXnskip\medskip\endMakeFramed}
 
 % Background for complete program blocks (parameter 1 is color name
 % for background, parameter 2 is color for left bar)
 \newenvironment{pro}[2]{
    \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
    \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\unskip\medskip\endMakeFramed}
+ {\XUXnskip\medskip\endMakeFramed}
 """
-                # \unskip removes the skip, \medskip adds some, such that
+                # \XUXnskip removes the skip, \medskip adds some, such that
                 # the skip below is smaller than the one above
                 # Use .ptex2tex.cfg to get the background box very tight
 #                INTRO['latex'] += r"""
@@ -2930,10 +2930,10 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 #"""
             INTRO['latex'] += '\n'
             if 'lst' in latex_code_style:
-                INTRO['latex'] += r'\usepackage{listingsutf8}' + '\n'
+                INTRO['latex'] += r'\XUXsepackage{listingsutf8}' + '\n'
                 INTRO['latex'] += latex_code_lstlisting(latex_code_style)
             if 'pyg' in latex_code_style:
-                INTRO['latex'] += r'\usepackage{minted}' + '\n'
+                INTRO['latex'] += r'\XUXsepackage{minted}' + '\n'
                 pygm_style = option('minted_latex_style=', default='default')
                 legal_pygm_styles = 'monokai manni rrt perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs vim pastie friendly native'.split()
                 if pygm_style not in legal_pygm_styles:
@@ -2941,20 +2941,20 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                     print('    must be among\n%s' % str(legal_pygm_styles)[1:-1])
                     _abort()
 
-                INTRO['latex'] += r'\usemintedstyle{%s}' % pygm_style + '\n'
+                INTRO['latex'] += r'\XUXsemintedstyle{%s}' % pygm_style + '\n'
 
 
     m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
     if m and 'usepackage{fancyvrb' not in INTRO['latex']:
-        INTRO['latex'] += '\\usepackage{fancyvrb}\n'
+        INTRO['latex'] += '\\XUXsepackage{fancyvrb}\n'
         # Recall to insert \VerbatimFootnotes later, after hyperref, if
         # we have footnotes with verbatim
 
     if xelatex:
         INTRO['latex'] += r"""
 % xelatex settings
-\usepackage{fontspec}
-\usepackage{xunicode}
+\XUXsepackage{fontspec}
+\XUXsepackage{xunicode}
 \defaultfontfeatures{Mapping=tex-text} % To support LaTeX quoting style
 \defaultfontfeatures{Ligatures=TeX}
 \setromanfont{Kinnari}
@@ -2963,25 +2963,25 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     elif latex_style == 'Springer_lnup':
         INTRO['latex'] += r"""
-\usepackage[T1]{fontenc}
-%\usepackage[latin1]{inputenc}
-\usepackage{ucs}
-%\usepackage[utf8x]{inputenc}
+\XUXsepackage[T1]{fontenc}
+%\XUXsepackage[latin1]{inputenc}
+\XUXsepackage{ucs}
+%\XUXsepackage[utf8x]{inputenc}
 """
     else:
         if option('latex_encoding=', 'utf8') == 'utf8':
             INTRO['latex'] += r"""
-\usepackage[T1]{fontenc}
-%\usepackage[latin1]{inputenc}
-\usepackage{ucs}
-\usepackage[utf8x]{inputenc}
+\XUXsepackage[T1]{fontenc}
+%\XUXsepackage[latin1]{inputenc}
+\XUXsepackage{ucs}
+\XUXsepackage[utf8x]{inputenc}
 """
         else:  # latin1
             INTRO['latex'] += r"""
-\usepackage[T1]{fontenc}
-\usepackage[latin1]{inputenc}
-\usepackage{ucs}
-%\usepackage[utf8x]{inputenc}
+\XUXsepackage[T1]{fontenc}
+\XUXsepackage[latin1]{inputenc}
+\XUXsepackage{ucs}
+%\XUXsepackage[utf8x]{inputenc}
 """
     if latex_font == 'helvetica':
         INTRO['latex'] += r"""
@@ -2992,12 +2992,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     elif latex_font == 'palatino':
         INTRO['latex'] += r"""
 % Set palatino as the default font family:
-\usepackage[sc]{mathpazo}    % Palatino fonts
+\XUXsepackage[sc]{mathpazo}    % Palatino fonts
 \linespread{1.05}            % Palatino needs extra line spread to look nice
 """
     if latex_style != 'Springer_lnup':
         INTRO['latex'] += r"""
-\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+\XUXsepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 """
 
     if '!bquiz' in filestr:
@@ -3009,7 +3009,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
         if chapters and quiz_numbering == 'chapter':
             INTRO['latex'] += r"""
 % Let quizzes be numbered per chapter:
-\usepackage{chngcntr}
+\XUXsepackage{chngcntr}
 \counterwithin{doconcequizcounter}{chapter}
 """
 
@@ -3023,7 +3023,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 \definecolor{linkcolor}{rgb}{0,0,0.4}
-\usepackage{hyperref}
+\XUXsepackage{hyperref}
 \hypersetup{
     breaklinks=true,
     colorlinks=true,
@@ -3070,21 +3070,21 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \renewcommand{\textfraction}{0.15}
 \renewcommand{\floatpagefraction}{0.7}
 % 2. ensure all figures are flushed before next section
-\usepackage[section]{placeins}
+\XUXsepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
-%\usepackage{float}\restylefloat{figure}
+%\XUXsepackage{float}\restylefloat{figure}
 """
     if has_inline_comments:
         if option('latex_todonotes'):
             INTRO['latex'] += r"""
 % enable inline (doconce) comments to be typeset with the todonotes package
-\usepackage{ifthen,xkeyval,tikz,calc,graphicx}"""
+\XUXsepackage{ifthen,xkeyval,tikz,calc,graphicx}"""
             if option('skip_inline_comments'):
                 INTRO['latex'] += r"""
-\usepackage[shadow,disable]{todonotes}"""
+\XUXsepackage[shadow,disable]{todonotes}"""
             else:
                 INTRO['latex'] += r"""
-\usepackage[shadow]{todonotes}"""
+\XUXsepackage[shadow]{todonotes}"""
             INTRO['latex'] += r"""
 \newcommand{\shortinlinecomment}[3]{%
 \todo[size=\normalsize,fancyline,color=orange!40,caption={#3}]{%
@@ -3107,13 +3107,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 """
     if option('latex_line_numbers'):
         INTRO['latex'] += r"""
-\usepackage[mathlines]{lineno}  % show line numbers
+\XUXsepackage[mathlines]{lineno}  % show line numbers
 \linenumbers
 """
     if option('latex_labels_in_margin'):
         INTRO['latex'] += r"""
 % Display labels for sections, equations, and citations in the margin
-\usepackage{showlabels}
+\XUXsepackage{showlabels}
 \showlabels{cite}
 """
     if option('latex_double_spacing'):
@@ -3125,7 +3125,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if option('latex_fancy_header'):
         INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
-\usepackage{fancyhdr}
+\XUXsepackage{fancyhdr}
 \fancyhf{} % sets both header and footer to nothing
 \renewcommand{\headrulewidth}{1pt}"""
         if chapters:
@@ -3275,18 +3275,18 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                     admon_color[style][admon] = latex_admon_color
 
         if latex_admon in ('colors1',):
-            packages = r'\usepackage{framed}'
+            packages = r'\XUXsepackage{framed}'
         elif latex_admon in ('colors2', 'grayicon', 'yellowicon'):
-            packages = r'\usepackage{framed,wrapfig}'
+            packages = r'\XUXsepackage{framed,wrapfig}'
         elif latex_admon in ('graybox2',):
-            packages = r"""\usepackage{wrapfig,calc}
-\usepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
+            packages = r"""\XUXsepackage{wrapfig,calc}
+\XUXsepackage[framemethod=TikZ]{mdframed}  % use latest version: https://github.com/marcodaniel/mdframed"""
         elif latex_admon in ('tcb',):
-            packages = r"""\usepackage[most]{tcolorbox}
+            packages = r"""\XUXsepackage[most]{tcolorbox}
 
 """
         else: # mdfbox
-            packages = r'\usepackage[framemethod=TikZ]{mdframed}'
+            packages = r'\XUXsepackage[framemethod=TikZ]{mdframed}'
         INTRO['latex'] += '\n' + packages + '\n\n% --- begin definitions of admonition environments ---\n'
 
         for style in admon_styles:
@@ -3572,8 +3572,8 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     if section_headings != 'std':
         INTRO['latex'] += r"""
 % http://www.ctex.org/documents/packages/layout/titlesec.pdf
-\usepackage{titlesec}  % needed for colored section headings
-%\usepackage[compact]{titlesec}  % reduce the spacing around section headings
+\XUXsepackage{titlesec}  % needed for colored section headings
+%\XUXsepackage[compact]{titlesec}  % reduce the spacing around section headings
 """
     if section_headings == 'blue':
         INTRO['latex'] += r"""
@@ -3677,7 +3677,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     # pdflatex needs calc package for emojis
     if re.search(INLINE_TAGS['emoji'], filestr):
         if not ',calc' in INTRO['latex']:
-            INTRO['latex'] += '\n\\usepackage{calc}\n'
+            INTRO['latex'] += '\n\\XUXsepackage{calc}\n'
 
     # Make exercise, problem and project counters
     exer_envirs = ['Exercise', 'Problem', 'Project']
@@ -3692,7 +3692,7 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             if chapters and exercise_numbering == 'chapter':
                 INTRO['latex'] += r"""
 % Let exercises, problems, and projects be numbered per chapter:
-\usepackage{chngcntr}
+\XUXsepackage{chngcntr}
 \counterwithin{doconceexercisecounter}{chapter}
 """
             if latex_style not in ("Springer_T2", "Springer_T4"):

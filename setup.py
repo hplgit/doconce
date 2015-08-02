@@ -6,7 +6,7 @@ python setup.py install [, --prefix=$PREFIX]
 
 """
 from __future__ import print_function
-from __future__ import unicode_literals
+#from __future__ import unicode_literals
 from __future__ import division
 from __future__ import absolute_import
 from future import standard_library
@@ -36,7 +36,7 @@ for opt in doconce.misc._legal_command_line_options:
         value = 'False'
     config_variables.append((var.replace('-', '_'), value))
 config = open(os.path.join('lib', 'doconce', 'doconce_config_default.py'), 'w')
-config.write('''\
+config.write(u'''\
 """
 Configuration of Doconce parameters that can also be set
 on the command line.
@@ -52,7 +52,7 @@ for var, value in config_variables:
     line = '%s = %s' % (var, value)
     if value == '':
         line = '#' + line
-    config.write(line + '\n')
+    config.write(line + u'\n')
 config.close()
 
 setup(
