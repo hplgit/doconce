@@ -29,45 +29,49 @@ code { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(' Blocks of computer code in LaTeX ', 1, None, '___sec0'),
-              (' History ', 2, 'latexcode:history', 'latexcode:history'),
-              (' Quick overview of the functionality ',
+ 'sections': [('Blocks of computer code in LaTeX', 1, None, '___sec0'),
+              ('History', 2, 'latexcode:history', 'latexcode:history'),
+              ('Quick overview of the functionality',
                2,
                'latexcode:overview',
                'latexcode:overview'),
-              (' The simplest choice: a single LaTeX environment for all blocks ',
+              ('The simplest choice: a single LaTeX environment for all blocks',
                2,
                'latexcode:uniform',
                'latexcode:uniform'),
-              (' Using the `minted` (Pygments) tool ',
+              ('Using the `minted` (Pygments) tool',
                2,
                'latexcode:pyg',
                'latexcode:pyg'),
-              (' Using the `lstlisting` tool ',
+              ('Using the `lstlisting` tool',
                2,
                'latexcode:lst',
                'latexcode:lst'),
-              (' Adding a colored background ',
+              ('Adding a colored background',
                2,
                'latexcode:background',
                'latexcode:background'),
-              (' Setting LaTeX environment parameters ',
+              ('Blue backgrounds with a darker bar for complete programs',
+               3,
+               None,
+               '___sec7'),
+              ('Setting LaTeX environment parameters',
                2,
                'latexcode:latex:prms',
                'latexcode:latex:prms'),
-              (' Specifying individual code environments ',
+              ('Specifying individual code environments',
                2,
                'latexcode:nonuniform',
                'latexcode:nonuniform'),
-              (' Specifying the `lst` style ',
+              ('Specifying the `lst` style',
                2,
                'latexcode:lst:style',
                'latexcode:lst:style'),
-              (' General syntax for `--latex_code_style=` ',
+              ('General syntax for `--latex_code_style=`',
                2,
                'latexcode:syntax',
                'latexcode:syntax'),
-              (' Wrapping code environments with user-customized environments ',
+              ('Wrapping code environments with user-customized environments',
                2,
                'latexcode:userdef',
                'latexcode:userdef')]}
@@ -98,6 +102,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#latexcode:pyg" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>minted</code> (Pygments) tool</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:lst" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>lstlisting</code> tool</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:background" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Adding a colored background</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blue backgrounds with a darker bar for complete programs</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:latex:prms" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Setting LaTeX environment parameters</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:nonuniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:lst:style" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying the <code>lst</code> style</a></li>
@@ -135,7 +140,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>May 5, 2015</h4></center> <!-- date -->
+<center><h4>Aug 2, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
@@ -270,10 +275,10 @@ Replacing <code>vrb</code> by <code>pyg</code> switches the LaTeX environments t
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=pyg
 </pre></div>
 <p>
-Now, <a href="doc_vrb.pdf" target="_self">the resulting PDF file</a>
+Now, <a href="doc_pyg.pdf" target="_self">the resulting PDF file</a>
 has typesetting of computer code that depends
 on the programming language. For example, the Python program leads to
 
@@ -396,6 +401,47 @@ or just replace the exact text:
           &#39;cbg_yellow1}{rgb}{.98, .98, 0.8}&#39; \
           &#39;cbg_yellow1}{rgb}{.95, .95, 0.8}&#39; mydoc.tex
 </pre></div>
+
+<h3 id="___sec7">Blue backgrounds with a darker bar for complete programs </h3>
+
+<p>
+Typical blueish code environments mimicing those in the author's latest
+books (e.g., <em>A Primer on Scientific Programming with Python</em>) can
+be produced by 1) blue background combined with plain verbatim text
+(see <a href="doc_vrb_style_primer.pdf" target="_self">PDF</a>),
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+<p>
+or 2) blue background combined with the listings package,
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+<p>
+For the <code>vrb/pyg/list-backgroundcolor</code> styles,
+more vertical space before and after the code can be added to the
+background with the <code>--latex_code_bg_vpad</code> option, as
+in this <a href="doc_vrb_style_primer_vpad.pdf" target="_self">vrb-blue1 demo</a>
+or this <a href="doc_pyg_style_primer_vpad.pdf" target="_self">pyg-blue1 demo</a>. The latter
+used
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+</pre></div>
+<p>
+Notice that the complete program, which can be run as is, applies
+a darker blue bar to the left (<code>vrb</code>, <code>pyg</code>) while <code>lst</code> has a
+darker frame. This graphical element is used to help readers distinguish
+between a complete program (<code>!bc pypro</code>) and a program snippet
+(<code>!bc pycod</code>).
 
 <h2 id="latexcode:latex:prms">Setting LaTeX environment parameters</h2>
 
@@ -595,25 +641,72 @@ this environment into proper format-specific code.
 Details are provided in the DocOnce manual, see the section
 <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments" target="_self">User-Defined Environments</a>. In the present case,
 the syntax in a DocOnce file is to wrap every <code>@@@CODE</code> line or
-<code>!bc</code> environment in a <code>!bu-code</code> and <code>!eu-code</code> environment:
+<code>!bc</code> environment in a <code>!bu-code</code> and <code>!eu-code</code> environment. The
+code in the figure above is produced by
 
 <p>
 
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">|bu-code file=myprog.py label=my:prog Program for computations
-!bc pycod
-def f(x):
-    return 42
-
-print f(1)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bu-code file=process.f Return `a` multiplied by `c`
+!bc fcod
+       subroutine process(a, n, c, r)
+C      Return array r = c*a
+       integer n
+       real*8 a(n), c, r(n)
+       integer i
+       do i = 1,n
+          r(i) = c*a(i)
+       end do
+       return
+       end
 !ec
-|eu-code
+!eu-code
 </pre></div>
 <p>
-In addition, must define this <code>code</code> environment for LaTeX and
-other formats, usually some tailored LaTeX code and just some reasonable
-common DocOnce code for other formats. The <code>userdef_environments.py</code>
-file looks like
+The LaTX code we want is
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>pycode<span style="color: #008000">}</span>
+
+<span style="color: #008000; font-weight: bold">\Verb</span>!process.f!:
+Return a multiplied by <span style="color: #008000; font-weight: bold">\Verb</span>!c!
+
+<span style="color: #008000; font-weight: bold">\hrule</span>
+<span style="color: #008000; font-weight: bold">\vspace</span><span style="color: #008000">{</span>1mm<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\hrule</span>
+
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>lstlisting<span style="color: #008000">}</span>[language=Fortran,style=simple,xleftmargin=2mm]
+       subroutine process(a, n, c, r)
+C      Return array r = c*a
+       integer n
+       real*8 a(n), c, r(n)
+       integer i
+       do i = 1,n
+          r(i) = c*a(i)
+       end do
+       return
+       end
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>lstlisting<span style="color: #008000">}</span>
+
+<span style="color: #008000; font-weight: bold">\hrule</span>
+<span style="color: #008000; font-weight: bold">\vspace</span><span style="color: #008000">{</span>1mm<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\hrule</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>pycode<span style="color: #008000">}</span>
+</pre></div>
+<p>
+We have created a special LaTeX environment
+(&quot;theorem&quot;) called
+<code>pycode</code> that LaTeX will give a section-based
+number (just like theorems, examples, etc).
+
+<p>
+To this end, we must write a file <code>userdef_environments.py</code>
+where we define the <code>code</code> environment for LaTeX and
+other formats (usually some tailored LaTeX code and just some reasonable
+common DocOnce code for other formats). The <code>userdef_environments.py</code>
+file looks like this in the current example:
 
 <p>
 
@@ -687,9 +780,7 @@ envir2format <span style="color: #666666">=</span> {
 }
 </pre></div>
 <p>
-We see that for LaTeX we have a special environment (&quot;theorem&quot;) called
-<code>pycode</code> that LaTeX will give a section-based
-number just like theorems, examples, etc. We grab information on
+We grab information on
 the <code>!bu-code</code> line for a potential filename, label, and header for
 the code snippet.
 

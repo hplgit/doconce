@@ -9072,19 +9072,57 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \definecolor{cbg_blue1}{rgb}{0.87843, 0.95686, 1.0}
 \definecolor{bar_blue1}{rgb}{0.7,     0.95686, 1}
 
-% Background for code blocks (parameter is color name)
-\setlength{\fboxsep}{2mm}  % adjust cod/pro background box
-\newenvironment{cod}[1]{
+%\setlength{\fboxsep}{2mm}  % adjust cod_vpad/pro_vpad background box
+
+%% Background for code blocks (parameter is color name)
+
+%% pro/cod_vpad: gives some vertical padding before and after the text
+%% (but has more simplistic code than _cod/pro_tight+cod/pro).
+%% pro/cod_vpad can be used to enclose Verbatim or lst begin/end for code.
+%% pro/cod calls _pro/cod_tight and has very little vertical padding,
+%% used to enclose Verbatim and other begin/end for code.
+%% (pro/cod is what the ptex2tex program could produce with the
+%% Blue/BlueBar definitions in .ptex2tex.cfg.)
+
+\newenvironment{cod_vpad}[1]{
    \def\FrameCommand{\colorbox{#1}}
    \MakeFramed{\FrameRestore}}
    {\endMakeFramed}
 
-% Background for complete program blocks (parameter 1 is color name
-% for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{
+\newenvironment{_cod_tight}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{cod}[1]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_cod_tight}{#1}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_cod_tight}\egroup}
+
+%% Background for complete program blocks (parameter 1 is color name
+%% for background, parameter 2 is color for left bar)
+\newenvironment{pro_vpad}[2]{
    \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
    \MakeFramed{\FrameRestore}}
    {\endMakeFramed}
+
+\newenvironment{_pro_tight}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\advance\hsize-2mm\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{pro}[2]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_pro_tight}{#1}{#2}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_pro_tight}\egroup}
 
 \usepackage{listingsutf8}
 
@@ -9103,9 +9141,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -48679,9 +48717,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -49360,9 +49398,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -50048,9 +50086,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -50779,9 +50817,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -51426,9 +51464,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -52119,9 +52157,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -52722,9 +52760,9 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -63369,9 +63407,9 @@ title (Warning) since no title is specified.
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -73870,7 +73908,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f53f227e410>
+verbatim is to be replaced using <function html_verbatim at 0x7f50d9fea410>
 
 
 First occurence: " `mako`."
@@ -78109,7 +78147,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug  2 06:23:10 2015.
+# sphinx-quickstart on Sun Aug  2 16:15:11 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -105498,10 +105536,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] [2] [3] [4]
-<../doc/src/manual/fig/wave1D.pdf, id=110, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=107, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf> [5 <../doc/src/manual/fig/wave1D.pdf>]
 No file admon_paragraph.ind.
-[5 <../doc/src/manual/fig/wave1D.pdf>] [6] (./admon_paragraph.aux)
+[6] (./admon_paragraph.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -106215,7 +106253,7 @@ dmap/pdftex.map}]
 <../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
-[4] [5] <latex_figs/small_yellow_summary.pdf, id=132, 32.12pt x 32.12pt>
+[4] [5] <latex_figs/small_yellow_summary.pdf, id=131, 32.12pt x 32.12pt>
 <use latex_figs/small_yellow_summary.pdf>
 No file admon_yellowicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_yellow_summary.pdf>]
@@ -106509,7 +106547,7 @@ f> <./latex_figs/small_gray_question2.pdf>]
 <../doc/src/manual/fig/wave1D.pdf, id=77, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
-[4] [5] <latex_figs/small_gray_summary.pdf, id=132, 48.18pt x 48.18pt>
+[4] [5] <latex_figs/small_gray_summary.pdf, id=131, 48.18pt x 48.18pt>
 <use latex_figs/small_gray_summary.pdf>
 No file admon_grayicon.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/small_gray_summary.pdf>]
@@ -106799,7 +106837,7 @@ on.pdf>] <use latex_figs/question.pdf> <use latex_figs/warning.pdf>
 <../doc/src/manual/fig/wave1D.pdf, id=71, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf>
 
-[4] [5] <latex_figs/summary.pdf, id=126, 89.33376pt x 89.33376pt>
+[4] [5] <latex_figs/summary.pdf, id=125, 89.33376pt x 89.33376pt>
 <use latex_figs/summary.pdf>
 No file admon_colors2.ind.
 [6 <../doc/src/manual/fig/wave1D.pdf> <./latex_figs/summary.pdf>]

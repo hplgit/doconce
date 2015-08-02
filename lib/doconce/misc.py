@@ -229,6 +229,7 @@ envir:package-background[style parameters]@)
 """),
     ('--latex_code_leftmargin=', 'Sets the left margin in code blocks. Default: 7 (mm).'),
     ('--latex_code_bg=', 'Background color code blocks. Default: white.'),
+    ('--latex_code_bg_vpad', 'Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not lst!).'),
     ('--latex_code_lststyles=', """Filename with LaTeX definitions of lst styles."""),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),

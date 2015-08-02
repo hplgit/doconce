@@ -119,9 +119,9 @@ label{latexcode:pyg}
 Replacing `vrb` by `pyg` switches the LaTeX environments to `minted`:
 
 !bc sys
-Terminal> doconce format pdflatex mydoc --latex_code_style=vrb
+Terminal> doconce format pdflatex mydoc --latex_code_style=pyg
 !ec
-Now, "the resulting PDF file": "doc_vrb.pdf"
+Now, "the resulting PDF file": "doc_pyg.pdf"
 has typesetting of computer code that depends
 on the programming language. For example, the Python program leads to
 
@@ -217,6 +217,41 @@ Terminal> doconce replace \
           'cbg_yellow1}{rgb}{.98, .98, 0.8}' \
           'cbg_yellow1}{rgb}{.95, .95, 0.8}' mydoc.tex
 !ec
+
+=== Blue backgrounds with a darker bar for complete programs ===
+
+Typical blueish code environments mimicing those in the author's latest
+books (e.g., *A Primer on Scientific Programming with Python*) can
+be produced by 1) blue background combined with plain verbatim text
+(see "PDF": "doc_vrb_style_primer.pdf"),
+
+!bc
+"--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+!ec
+or 2) blue background combined with the listings package,
+
+!bc
+"--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+!ec
+
+For the `vrb/pyg/list-backgroundcolor` styles,
+more vertical space before and after the code can be added to the
+background with the `--latex_code_bg_vpad` option, as
+in this "vrb-blue1 demo": "doc_vrb_style_primer_vpad.pdf"
+or this "pyg-blue1 demo": "doc_pyg_style_primer_vpad.pdf". The latter
+used
+
+!bc
+"--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+!ec
+
+Notice that the complete program, which can be run as is, applies
+a darker blue bar to the left (`vrb`, `pyg`) while `lst` has a
+darker frame. This graphical element is used to help readers distinguish
+between a complete program (`!bc pypro`) and a program snippet
+(`!bc pycod`).
+
+
 
 ===== Setting LaTeX environment parameters =====
 label{latexcode:latex:prms}

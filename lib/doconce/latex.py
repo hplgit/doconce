@@ -64,6 +64,7 @@ def latex_code_envir(
     envir_spec,
     ):
     leftmargin = option('latex_code_leftmargin=', '2')
+    bg_vpad = '_vpad' if option('latex_code_bg_vpad') else ''
 
     envir2 = envir if envir in envir_spec else 'default'
 
@@ -129,19 +130,20 @@ def latex_code_envir(
         begin = '\\begin{Verbatim}[%s]' % vrb_style
         end = '\\end{Verbatim}'
 
+
     if background != 'white':
         if envir_tp == 'pro':
-            begin = '\\begin{pro}{cbg_%s}{bar_%s}' % (background, background) + begin
-            if package == 'vrb':
-                end = end + '\n\\end{pro}\n\\noindent'
+            begin = '\\begin{pro%s}{cbg_%s}{bar_%s}' % (bg_vpad, background, background) + begin
+            if package in ('vrb', 'pyg'):
+                end = end + '\n\\end{pro%s}\n\\noindent' % bg_vpad
             else:
-                end = end + '\\end{pro}\n\\noindent'
+                end = end + '\\end{pro%s}\n\\noindent' % bg_vpad
         else:
-            begin = '\\begin{cod}{cbg_%s}' % background + begin
-            if package == 'vrb':
-                end = end + '\n\\end{cod}\n\\noindent'
+            begin = '\\begin{cod%s}{cbg_%s}' % (bg_vpad, background) + begin
+            if package in ('vrb', 'pyg'):
+                end = end + '\n\\end{cod%s}\n\\noindent' % bg_vpad
             else:
-                end = end + '\\end{cod}\n\\noindent'
+                end = end + '\\end{cod%s}\n\\noindent' % bg_vpad
     return begin, end
 
 def interpret_latex_code_style():
@@ -210,9 +212,9 @@ def latex_code_lstlisting(latex_code_style):
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
   %framerule=0.4pt           % thickness of frame
-  aboveskip=1ex,
-  showstringspaces=false,    % show spaces in strings with a particular underscore
-  showspaces=false,          % show spaces with a particular underscore
+  aboveskip=2ex,             % vertical space above code frame
+  showstringspaces=false,    % show spaces in strings with an underscore
+  showspaces=false,          % show spaces with an underscore
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
@@ -2899,6 +2901,57 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
             # colors: http://tex.stackexchange.com/questions/173850/problem-in-adding-a-background-color-in-a-minted-environment
             pattern = '-(yellow|red|blue|gray)'
             if re.search(pattern, latex_code_style):
+                cod_pro_def = r"""
+%% Background for code blocks (parameter is color name)
+
+%% pro/cod_vpad: gives some vertical padding before and after the text
+%% (but has more simplistic code than _cod/pro_tight+cod/pro).
+%% pro/cod_vpad can be used to enclose Verbatim or lst begin/end for code.
+%% pro/cod calls _pro/cod_tight and has very little vertical padding,
+%% used to enclose Verbatim and other begin/end for code.
+%% (pro/cod is what the ptex2tex program could produce with the
+%% Blue/BlueBar definitions in .ptex2tex.cfg.)
+
+\newenvironment{cod_vpad}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+
+\newenvironment{_cod_tight}[1]{
+   \def\FrameCommand{\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{cod}[1]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_cod_tight}{#1}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_cod_tight}\egroup}
+
+%% Background for complete program blocks (parameter 1 is color name
+%% for background, parameter 2 is color for left bar)
+\newenvironment{pro_vpad}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \MakeFramed{\FrameRestore}}
+   {\endMakeFramed}
+
+\newenvironment{_pro_tight}[2]{
+   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
+   \FrameRule0.6pt\MakeFramed {\advance\hsize-2mm\FrameRestore}\vskip3mm}
+   {\vskip0mm\endMakeFramed}
+
+\newenvironment{pro}[2]{
+\bgroup\rmfamily
+\fboxsep=0mm\relax
+\begin{_pro_tight}{#1}{#2}
+\list{}{\parsep=-2mm\parskip=0mm\topsep=0pt\leftmargin=2mm
+\rightmargin=2\leftmargin\leftmargin=4pt\relax}
+\item\relax}
+{\endlist\end{_pro_tight}\egroup}
+"""
                 if not '!bbox' in filestr:
                     if 'numbers' in str(latex_code_style) or \
                        'linenos' in str(latex_code_style):
@@ -2908,34 +2961,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
                     # No use of !bbox and hence no use of fboxsep
                     # for those boxes, and we can redefine fboxsep here
                     INTRO['latex'] += r"""
-%% Background for code blocks (parameter is color name)
-\setlength{\fboxsep}{%s}  %% adjust cod/pro background box
-\newenvironment{cod}[1]{
-   \def\FrameCommand{\colorbox{#1}}
-   \MakeFramed{\FrameRestore}}
-   {\endMakeFramed}
-
-%% Background for complete program blocks (parameter 1 is color name
-%% for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
-   \MakeFramed{\FrameRestore}}
-   {\endMakeFramed}
-""" % fboxsep
+%%\setlength{\fboxsep}{%s}  %% adjust cod_vpad/pro_vpad background box
+""" % fboxsep + cod_pro_def
                 else:
                     INTRO['latex'] += r"""%\setlength{\fboxsep}{-1.5mm}  % do not change since !bbox needs it positive!
-\newenvironment{cod}[1]{
-   \def\FrameCommand{\colorbox{#1}}
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\unskip\medskip\endMakeFramed}
+""" + cod_pro_def
 
-% Background for complete program blocks (parameter 1 is color name
-% for background, parameter 2 is color for left bar)
-\newenvironment{pro}[2]{
-   \def\FrameCommand{\color{#2}\vrule width 1mm\normalcolor\colorbox{#1}}
-   \MakeFramed{\advance\hsize-\width \FrameRestore}}
- {\unskip\medskip\endMakeFramed}
-"""
                 # \unskip removes the skip, \medskip adds some, such that
                 # the skip below is smaller than the one above
                 # Use .ptex2tex.cfg to get the background box very tight
