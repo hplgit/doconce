@@ -1843,7 +1843,7 @@ def ptex2tex():
         if 'minted' in packages:
             preprocess_options += ['-DMINTED']
     if '-DMINTED' in preprocess_options and 'minted' in packages:
-        packages.remove('minted')  # nicer with just one \usepackage{minted}
+        packages.remove('minted')  # nicer with just one \\usepackage{minted}
 
 
     output_filename = filename + '.tex'
@@ -1905,7 +1905,7 @@ download preprocess from http://code.google.com/p/preprocess""")
 
     # Make sure we include the necessary verbatim packages
     if packages:
-        # Note that in py2 w/future r'\u' does not work, need '\\u',
+        # Note that in py2 w/future r'\\u' does not work, need '\\u',
         # see http://matplotlib.org/devel/portable_code.html
         filestr = filestr.replace('\\usepackage{ptex2tex}',
            '\\usepackage{%s} %% packages needed for verbatim environments' %
@@ -5136,49 +5136,49 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
 \documentclass%(handout)s{beamer}
 
-\usetheme{%(theme)s}
-\usecolortheme{default}
+\\usetheme{%(theme)s}
+\\usecolortheme{default}
 
 %% turn off the almost invisible, yet disturbing, navigation symbols:
 \setbeamertemplate{navigation symbols}{}
 
 %% Examples on customization:
-%%\usecolortheme[named=RawSienna]{structure}
-%%\usetheme[height=7mm]{Rochester}
+%%\\usecolortheme[named=RawSienna]{structure}
+%%\\usetheme[height=7mm]{Rochester}
 %%\setbeamerfont{frametitle}{family=\rmfamily,shape=\itshape}
 %%\setbeamertemplate{items}[ball]
 %%\setbeamertemplate{blocks}[rounded][shadow=true]
-%%\useoutertheme{infolines}
+%%\\useoutertheme{infolines}
 %%
-%%\usefonttheme{}
-%%\useinntertheme{}
+%%\\usefonttheme{}
+%%\\useinntertheme{}
 %%
 %%\setbeameroption{show notes}
 %%\setbeameroption{show notes on second screen=right}
 
 %% fine for B/W printing:
-%%\usecolortheme{seahorse}
+%%\\usecolortheme{seahorse}
 
-\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
-\usepackage{graphicx}
-\usepackage{epsfig}
-\usepackage{relsize}
+\\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\\usepackage{graphicx}
+\\usepackage{epsfig}
+\\usepackage{relsize}
 
-\usepackage{fancybox}  %% make sure fancybox is loaded before fancyvrb
+\\usepackage{fancybox}  %% make sure fancybox is loaded before fancyvrb
 
-\usepackage{fancyvrb}
-%%\usepackage{minted} %% requires pygments and latex -shell-escape filename
-%%\usepackage{anslistings}
-%%\usepackage{listingsutf8}
+\\usepackage{fancyvrb}
+%%\\usepackage{minted} %% requires pygments and latex -shell-escape filename
+%%\\usepackage{anslistings}
+%%\\usepackage{listingsutf8}
 
-\usepackage{amsmath,amssymb,bm}
-%%\usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{colortbl}
-\usepackage[english]{babel}
-\usepackage{tikz}
-\usepackage{framed}
+\\usepackage{amsmath,amssymb,bm}
+%%\\usepackage[latin1]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage[utf8]{inputenc}
+\\usepackage{colortbl}
+\\usepackage[english]{babel}
+\\usepackage{tikz}
+\\usepackage{framed}
 %% Use some nice templates
 \beamertemplatetransparentcovereddynamic
 
@@ -5228,23 +5228,23 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     # Check if we need minted or anslistings:
     if re.search('\\usepackage.+minted', header):
         slides = slides.replace(
-            r'%\usepackage{minted}', '\\usepackage{minted}')
+            r'%\\usepackage{minted}', '\\usepackage{minted}')
     if re.search('\\usepackage.+listings', header):
         m = re.search(r'^% Define colors.+?^% end of custom lstdefinestyles', header, flags=re.DOTALL|re.MULTILINE)
         lststyles = m.group() if m else ''
         slides = slides.replace(
-            r'%\usepackage{listingsutf8}', '\\usepackage{listingsutf8}' + '\n\n' + lststyles)
+            r'%\\usepackage{listingsutf8}', '\\usepackage{listingsutf8}' + '\n\n' + lststyles)
     if re.search('\\usepackage.+anslistings', header):
         slides = slides.replace(
-            r'%\usepackage{anslistings}', '\\usepackage{anslistings}')
+            r'%\\usepackage{anslistings}', '\\usepackage{anslistings}')
 
     if block_style.startswith('mdbox'):
         # Add defnition of an appropriate mdframe
         slides += r"""
-\usepackage[framemethod=TikZ]{mdframed}
+\\usepackage[framemethod=TikZ]{mdframed}
 \newcommand{\frametitlecolor}{gray!65!black}
-%\usetikzlibrary{shadows}
-%\usetikzlibrary{shadows.blur}
+%\\usetikzlibrary{shadows}
+%\\usetikzlibrary{shadows.blur}
 % block with title
 \newenvironment{mdboxt}[1]{%
     \begin{mdframed}[%

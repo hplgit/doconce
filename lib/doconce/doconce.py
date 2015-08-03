@@ -3523,6 +3523,8 @@ def file2file(in_filename, format, basename):
         """
 
     f.close()
+    # Python 2 trick for \u handling in raw strings
+    os.system('doconce replace "\\XUX" "\\u" ' + out_filename)
     return out_filename
 
 

@@ -18,7 +18,20 @@ __acknowledgemets__ = 'Johannes H. Ring',
 
 from distutils.core import setup
 
-import os, sys, glob, gzip, tempfile
+import os, sys, glob, gzip, tempfile, re
+
+# # Python 2 trick for \u handling in raw strings
+print('Performing Python 2 trick')
+if sys.version[0] == '2':
+    backslash_u_problem_files = ['latex.py', 'misc.py']
+    for filename in backslash_u_problem_files:
+        filename = os.path.join('lib', 'doconce', filename)
+        with open(filename, 'rb') as f:
+            filestr = f.read()
+            filestr = re.sub(r'(^|[^\\])\\u', r'\g<1>\XUX', filestr,
+                             flags=re.MULTILINE)
+        with open(filename, 'wb') as f:
+            f.write(filestr)
 
 # Make sure we import from doconce in this package, not an installed one:
 # (need this for extracting the version below)
@@ -72,3 +85,11 @@ setup(
     package_data = {'': ['sphinx_themes.zip', 'html_images.zip', 'reveal.js.zip', 'deck.js.zip', 'csss.zip', 'latex_styles.zip']},
     scripts = [os.path.join('bin', f) for f in ['doconce']],
     )
+
+# # Python 2 trick for \u handling in raw strings
+if sys.version[0] == '2':
+    for filename in backslash_u_problem_files:
+        filename = os.path.join('lib', 'doconce', filename)
+        cmd = 'doconce replace "\\XUX" "\\u" ' + filename
+        print(cmd)
+        os.system(cmd)

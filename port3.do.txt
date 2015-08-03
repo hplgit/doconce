@@ -38,9 +38,15 @@ sudo apt-get install python3-pip
 
 export PYTHONPATH=$HOME/doconce3/lib/python3.4/site-packages:$PYTHONPATH
 !ec
+Modify `doconce.py` with the `\u` trick (see below) and copy `setup.py`
+from the `py3` branch.
+
+Now, the code should work with Python 2 and 3.
 
 Recall to reset `PATH` and `PYTHONPATH` when returning to the Python 2
 version! Otherwise, very strange error messages with strings appear.
+
+=== Comments ===
 
 The first attempt stalled because of Python 2 problems with `\u` in
 strings. Here is a solution:
@@ -49,3 +55,23 @@ strings. Here is a solution:
  * Let `doconce.py` make a substitution for `\XUX` to `\u`.
 
 It should work, but latex code inside doconce looks ugly...
+
+An alternative is to let `setup.py` first substitute
+
+!bc
+filestr = re.sub(r'(^|[^\\])\\u', r'\g<1>\XUX', filestr, flags=re.MULTILINE)
+# or doconce subst command
+!ec
+in `latex.py` and `misc.py`. Then run `setup`, and afterwards substitute
+`\XUX` back to `\u`.
+The `doconce.py` code must at the very end do a corresponding inverse
+substitute in the output file, probably after it is written
+(see `Python 2 \u trick`).
+
+Solution is here in `py3` branch:
+
+ * `setup.py`
+ * search for `# Python 2 trick` in `doconce.py`
+
+Keep that branch while making a new `py23`. Now `py3` is destroyed because
+of an error when substituting back in `.py` files.
