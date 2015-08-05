@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 2, 2015
+:Date: Aug 5, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -5499,7 +5499,8 @@ and typeset (in ``${FORMAT}``) as
 
 
 A complete example showing how one can create tailored environments
-for computer code, in particular the following one (with a caption),
+for computer code, using ``--latex_code_style``,
+in particular the following one (with a caption),
 
 | 
 | 
@@ -8016,8 +8017,8 @@ be advantageous to go via LaTeX.
 
 .. _do2any:latex:
 
-LaTeX
------
+LaTeX: Overview
+---------------
 
 .. index:: LaTeX output
 
@@ -8050,10 +8051,19 @@ translation, which is simpler and actually more versatile than even
 using the ``ptex2tex`` program.
 
 Direct translation is specified by the ``--latex_code_style=`` command-line
-option. A `separate document <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__ describes how this option is used and the demonstrates
-various possibilities that are available.
+option. A separate document, `Demonstration of DocOnce support for LaTeX code block environments <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__, describes how this option is used and the demonstrates
+many possibilities that are available.
+The ``--latex_code_style=`` option makes the use of ``ptex2tex`` or
+``doconce ptex2tex`` redundant.
 
-Here, we describe the old translation via a ``.p.tex`` file, i.e., first we
+The old ``ptex2tex`` step
+-------------------------
+
+Here, we describe the old translation via a ``.p.tex`` file.
+New users should jump over this information and use
+the ``--latex_code_style=`` option to specify verbatim code environments.
+
+First we
 compile the DocOnce source to the ``ptex2tex`` format, and then we compile
 the ``ptex2tex`` format to standard LaTeX.
 The `ptex2tex <http://code.google.com/p/ptex2tex>`__ format can be
@@ -8083,18 +8093,19 @@ the ``ptex2tex`` step.)
 
 Going from ``ptex2tex`` format to standard LaTeX format is enabled by
 either the ``ptex2tex`` program or DocOnce's (simplified) version of it:
-``doconce ptex2tex``. Details are given below.
+``doconce ptex2tex``.
 
 
-.. admonition:: Information on typesetting of inline verbatim
+.. admonition:: Inline verbatim tries to use ``texttt`` and not ``Verb`` if possible
 
-   The ``ptex2tex`` and the ``doconce ptex2tex`` programs take inline verbatim
-   code, typeset with backticks in DocOnce, and translate this to
+   Inline verbatim
+   code, typeset with backticks in DocOnce, is translated to
    
    .. code-block:: text
    
            \Verb!text!
    
+   or similar constructions with other delimiters if the pipe is used in ``text``.
    Thereafter, if ``text`` does not contain illegal characters for the ``\texttt``
    command, the latter is used instead since then LaTeX can insert
    linebreaks in the inline verbatim text and hence avoid overfull hboxes.
@@ -8108,23 +8119,25 @@ either the ``ptex2tex`` program or DocOnce's (simplified) version of it:
 
 .. environment, as used here.
 
+.. _do2any:latex:compile1:
+
+From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)
+--------------------------------------------------
+
 .. index:: ptex2tex program
 
 .. index:: ptex2tex doconce version
 
-**Step 1.**
-Filter the doconce text to the ``ptex2tex`` pre-LaTeX form
-``mydoc.p.tex``:
+Filter the doconce text directly to valid LaTeX using
+the ``--latex_code_style=`` option:
 
 .. code-block:: text
 
-        Terminal> doconce format latex mydoc
+        Terminal> doconce format pdflatex mydoc --latex_code_style=vrb
 
-Or filter the doconce text directly to valid LaTeX:
-
-.. code-block:: text
-
-        Terminal> doconce format latex mydoc --latex_code_style=vrb
+Without ``--latex_code_style=``, the output will be a ``mydoc.p.tex`` file
+that has to be converted to a standard ``mydoc.tex`` LaTeX file via
+the programs ``ptex2tex`` or ``doconce ptex2tex``.
 
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files ``newcommands.tex``, ``newcommands_keep.tex``, or
@@ -8217,6 +8230,8 @@ to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can
 be used to set the journal name, and the style requires
 ``elsarticle.cls`` and ``elsarticle-num.bst``).
 
+.. index:: LaTeX syntax highlighting
+
 The style of verbatim blocks of computer code is specified by
 ``--latex_code_style=X``, where ``X`` can be set in a very flexible way.
 There are three main values, corresponding to three LaTeX tools
@@ -8260,7 +8275,11 @@ window for the ``sys`` environment:
 
 .. code-block:: text
 
-        "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+        "--latex_code_style=default:vrb-blue1@
+        sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+        framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
+
+(but no linebreaks, as here, they are for formatting this document only).
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
@@ -8273,9 +8292,7 @@ inserts native latex code for tables
 inside ``% if FORMAT in ('latex', 'pdflatex'):`` (or similar ``preprocess`` syntax)
 tests.
 
-.. index:: LaTeX syntax highlighting
-
-**Step 2.**
+**Part 2 of Step 1 (outdated).**
 In case you *did not* specify the ``--latex_code_style=`` option,
 you must run ``ptex2tex`` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -8348,8 +8365,12 @@ If no environments like ``sys``, ``fpro``, or the common
 ``envir`` are defined on the command line, the plain ``\begin{Verbatim}``
 and ``\end{Verbatim}`` instructions are used.
 
-**Step 2b (optional).**
-Edit the ``mydoc.tex`` file to your needs.
+.. _do2any:latex:compile2:
+
+From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)
+-----------------------------------------------------------------
+
+You can *edit* the ``mydoc.tex`` file to your needs.
 For example, you may want to substitute ``section`` by ``section*`` to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -8378,67 +8399,31 @@ substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the ``doconce subst`` or
 ``doconce replace`` commands can be put inside the script.
 
-**Step 3.**
-Compile ``mydoc.tex``
-and create the PDF file:
+.. _do2any:latex:compile3:
+
+From DocOnce to LaTeX-PDF: Generate PDF (Step 3)
+------------------------------------------------
+
+Compile ``mydoc.tex`` and create the PDF file, using ``pdflatex``:
 
 .. code-block:: text
 
-        Terminal> latex mydoc
-        Terminal> latex mydoc
+        Terminal> pdflatex mydoc
+        Terminal> pdflatex mydoc
         Terminal> makeindex mydoc   # if index
         Terminal> bibtex mydoc      # if bibliography
-        Terminal> latex mydoc
-        Terminal> dvipdf mydoc
+        Terminal> pdflatex mydoc
 
-See the next two sections for compilation with XeLaTeX or pdfLaTeX.
+One can also compile ``mydoc`` the "old way" with ``latex`` and ``dvipdf``.
+Use ``doconce format latex`` in that case and proceed with ``latex mydoc``.
 
-If one wishes to use the minted LaTeX package for
-typesetting code blocks (``Minted_Python``, ``Minted_Cpp``, etc., in
-``ptex2tex`` specified through the ``*pro`` and ``*cod`` variables in
-``.ptex2tex.cfg`` or ``$HOME/.ptex2tex.cfg``), the minted LaTeX package is
-needed.  This package is automatically included by ``doconce ptex2tex`` if
-the minted style is used, while you have to include the
-``-DMINTED`` preprocessor option when running the ``ptex2tex`` program:
-
-.. code-block:: text
-
-        Terminal> ptex2tex -DMINTED mydoc
-
-If the minted style is used, ``latex`` (or ``pdflatex`` or ``xelatex``)
+If the minted style is used, ``latex``, ``pdflatex``, or ``xelatex``
 *must* be run with the
 ``-shell-escape`` option:
 
 .. code-block:: text
 
-        Terminal> latex -shell-escape mydoc
-        Terminal> latex -shell-escape mydoc
-        Terminal> makeindex mydoc   # if index
-        Terminal> bibtex mydoc      # if bibliography
-        Terminal> latex -shell-escape mydoc
-        Terminal> dvipdf mydoc
-
-.. _do2any:pdflatex:
-
-PDFLaTeX
---------
-
-.. index::
-   single: output format; pdfLaTeX
-
-.. index:: pdfLaTeX output
-
-Running ``pdflatex`` instead of ``latex`` follows almost the same steps,
-but the start is
-
-.. code-block:: text
-
-        Terminal> doconce format latex mydoc
-
-Then ``ptex2tex`` is run as explained above, and finally
-
-.. code-block:: text
-
+        Terminal> pdflatex -shell-escape mydoc
         Terminal> pdflatex -shell-escape mydoc
         Terminal> makeindex mydoc   # if index
         Terminal> bibtex mydoc      # if bibliography
@@ -8459,8 +8444,8 @@ same way, except for the ``--xelatex`` flag to ``doconce format``:
 
 .. code-block:: text
 
-        Terminal> doconce format pdflatex mydoc --xelatex
-        Terminal> doconce ptex2tex mydoc
+        Terminal> doconce format pdflatex mydoc --xelatex \
+                  --latex_code_style=lst
         Terminal> xelatex mydoc
 
 .. _do2any:epub:
@@ -9590,6 +9575,11 @@ here for convenience.
         --latex_code_bg=...
         
         Background color code blocks. Default: white.
+        
+        
+        --latex_code_bg_vpad
+        
+        Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not lst!).
         
         
         --latex_code_lststyles=...

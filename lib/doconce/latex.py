@@ -851,8 +851,12 @@ def latex_code(filestr, code_blocks, code_block_types,
             if current_code_envir is None:
                 # No envir set by previous !bc?
                 print '*** error: mismatch between !bc and !ec'
-                print '    check that every !bc matches !ec in the following text:'
-                print filestr
+                print '    found !ec without a preceding !bc at line'
+                print '\n'.join(lines[i-8:i-1])
+                print 'error line >>>', lines[i]
+                print '\n'.join(lines[i+1:i+8])
+                #print '    check that every !bc matches !ec in the entire text:'
+                #print filestr
                 _abort()
             if latex_code_style is None:
                 lines[i] = '\\e' + current_code_envir

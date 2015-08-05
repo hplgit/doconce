@@ -3433,7 +3433,8 @@ before the functions it refers to.
 !ewarning
 
 A complete example showing how one can create tailored environments
-for computer code, in particular the following one (with a caption),
+for computer code, using `--latex_code_style`,
+in particular the following one (with a caption),
 
 <linebreak>
 <linebreak>
