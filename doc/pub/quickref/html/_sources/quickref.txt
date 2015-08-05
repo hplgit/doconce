@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 2, 2015
+:Date: Aug 4, 2015
 
 **WARNING: This quick reference is very incomplete!**
 

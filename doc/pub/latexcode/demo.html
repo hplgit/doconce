@@ -140,7 +140,7 @@ end of tocinfo -->
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <p>
-<center><h4>Aug 2, 2015</h4></center> <!-- date -->
+<center><h4>Aug 4, 2015</h4></center> <!-- date -->
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
@@ -413,16 +413,25 @@ be produced by 1) blue background combined with plain verbatim text
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,
+label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,
+fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 <p>
+(without the linebreaks!)
 or 2) blue background combined with the listings package,
 
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst[style=blue1]@
+pypro:lst[style=blue1bar]@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
+<p>
+(without the linebreaks!).
+
 <p>
 For the <code>vrb/pyg/list-backgroundcolor</code> styles,
 more vertical space before and after the code can be added to the
@@ -434,8 +443,13 @@ used
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
+<p>
+(without the linebreaks!).
+
 <p>
 Notice that the complete program, which can be run as is, applies
 a darker blue bar to the left (<code>vrb</code>, <code>pyg</code>) while <code>lst</code> has a
@@ -452,9 +466,12 @@ other LaTeX environments:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+&quot;--latex_code_style=lst-yellow2[numbers=left,
+numberstyle=\\tiny,numbersep=15pt,breaklines=true]&quot;
 </pre></div>
 <p>
+(but no linebreaks in the <code>--latex_code_style</code> command!).
 These parameters specify <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
 <em>Note that any backslash in LaTeX command must be a
 double backslash</em> on the command line!
@@ -492,9 +509,13 @@ above and below and a title <code>Terminal</code> inside a box:
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc &quot;--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+&quot;--latex_code_style=default:lst-yellow2@
+sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,
+framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 <p>
+(with no linebreaks though!).
 <a href="doc_lst_sys.pdf" target="_self">Here is the result</a>.
 
 <h2 id="latexcode:lst:style">Specifying the <code>lst</code> style</h2>
@@ -549,9 +570,13 @@ famous in the <a href="http://goo.gl/OKDAzs" target="_self">Python Primer on Sci
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
-&quot;--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+&quot;--latex_code_style=default:lst[style=blue1]@
+pypro:lst[style=blue1bar]@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 <p>
+(but no linebreaks as here).
 Note that this style does not offer the thin vertical darker-colored bar
 for <code>pypro</code> enviroments (indicating complete programs) as
 <code>ptex2tex</code> offers through the <code>BlueBar</code> environment. Instead, there is a
@@ -584,10 +609,10 @@ increased readability - it must be one line as a terminal command!):
 
 <!-- code=text typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst-blue1[style=redblue,
-   numbers=left,numberstyle=\\tiny,stepnumber=3,
-   numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray
-   @sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
-   framesep=2.5mm,framerule=0.7pt]&quot;
+numbers=left,numberstyle=\\tiny,stepnumber=3,
+numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@
+sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 <p>
 Here is the <a href="doc_lots.pdf" target="_self">result</a> of this detailed specification.

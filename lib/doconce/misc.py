@@ -5693,7 +5693,7 @@ def doconce_rst_split(parts, basename, filename):
         part_filename = _part_filename % (basename, pn) + '.rst'
         generated_files.append(part_filename)
 
-        if nbsp and pn > 0:
+        if nbsp and pn > 0 and '|nbsp|' in text:
             text = """
 
 .. |nbsp| unicode:: 0xA0

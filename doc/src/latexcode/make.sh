@@ -25,7 +25,7 @@ doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numbers
 pdflatex doc
 cp doc.pdf doc_lst_yellow2_linenos.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+doconce format pdflatex doc "--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_lst_sys.pdf
 
@@ -33,19 +33,19 @@ doconce format pdflatex doc "--latex_code_style=default:lst[style=yellow2_fb]"
 pdflatex doc
 cp doc.pdf doc_lst_style_fenicsbook.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_lst_style_primer.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]" --latex_code_bg_vpad
+doconce format pdflatex doc "--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]" --latex_code_bg_vpad
 pdflatex -shell-escape doc
 cp doc.pdf doc_pyg_style_primer_vpad.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+doconce format pdflatex doc "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_vrb_style_primer.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]" --latex_code_bg_vpad
+doconce format pdflatex doc "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]" --latex_code_bg_vpad
 pdflatex doc
 cp doc.pdf doc_vrb_style_primer_vpad.pdf
 
@@ -54,7 +54,7 @@ ptex2tex doc
 pdflatex doc
 cp doc.pdf doc_ptex2tex_primer.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+doconce format pdflatex doc "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_lots.pdf
 
