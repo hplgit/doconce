@@ -226,13 +226,20 @@ be produced by 1) blue background combined with plain verbatim text
 (see "PDF": "doc_vrb_style_primer.pdf"),
 
 !bc
-"--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+"--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,
+label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,
+fontsize=\fontsize{9pt}{9pt}]"
 !ec
+(without the linebreaks!)
 or 2) blue background combined with the listings package,
 
 !bc
-"--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+"--latex_code_style=default:lst[style=blue1]@
+pypro:lst[style=blue1bar]@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
+(without the linebreaks!).
 
 For the `vrb/pyg/list-backgroundcolor` styles,
 more vertical space before and after the code can be added to the
@@ -242,8 +249,11 @@ or this "pyg-blue1 demo": "doc_pyg_style_primer_vpad.pdf". The latter
 used
 
 !bc
-"--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+"--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
+(without the linebreaks!).
 
 Notice that the complete program, which can be run as is, applies
 a darker blue bar to the left (`vrb`, `pyg`) while `lst` has a
@@ -260,8 +270,11 @@ It is easy to specify parameters to the `lstlisting` or the two
 other LaTeX environments:
 
 !bc sys
-Terminal> doconce format pdflatex doc "--latex_code_style=lst-yellow2[numbers=left,numberstyle=\\tiny,numbersep=15pt,breaklines=true]"
+Terminal> doconce format pdflatex doc \
+"--latex_code_style=lst-yellow2[numbers=left,
+numberstyle=\\tiny,numbersep=15pt,breaklines=true]"
 !ec
+(but no linebreaks in the `--latex_code_style` command!).
 These parameters specify "line numbers in the code blocks": "doc_lst_yellow2_linenos.pdf" as well as wrapping of too long lines (`breaklines=true`).
 *Note that any backslash in LaTeX command must be a
 double backslash* on the command line!
@@ -291,8 +304,12 @@ Here is a more fancy typesetting of `sys` environments with lines
 above and below and a title `Terminal` inside a box:
 
 !bc sys
-Terminal> doconce format pdflatex doc "--latex_code_style=default:lst-yellow2@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+Terminal> doconce format pdflatex doc \
+"--latex_code_style=default:lst-yellow2@
+sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,
+framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
+(with no linebreaks though!).
 "Here is the result": "doc_lst_sys.pdf".
 
 ===== Specifying the `lst` style =====
@@ -338,8 +355,12 @@ famous in the "Python Primer on Scientific Programming book":
 
 !bc sys
 Terminal> doconce format pdflatex doc \
-"--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+"--latex_code_style=default:lst[style=blue1]@
+pypro:lst[style=blue1bar]@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
+(but no linebreaks as here).
 Note that this style does not offer the thin vertical darker-colored bar
 for `pypro` enviroments (indicating complete programs) as
 `ptex2tex` offers through the `BlueBar` environment. Instead, there is a
@@ -370,10 +391,10 @@ increased readability - it must be one line as a terminal command!):
 
 !bc
 "--latex_code_style=default:lst-blue1[style=redblue,
-   numbers=left,numberstyle=\\tiny,stepnumber=3,
-   numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray
-   @sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
-   framesep=2.5mm,framerule=0.7pt]"
+numbers=left,numberstyle=\\tiny,stepnumber=3,
+numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@
+sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
 Here is the "result": "doc_lots.pdf" of this detailed specification.
 

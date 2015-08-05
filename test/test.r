@@ -2069,10 +2069,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -4310,10 +4311,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -6734,10 +6736,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -9211,10 +9214,11 @@ identifierstyle=\color{darkorange},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -39221,10 +39225,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -47938,11 +47943,6 @@ footnotes.
 
 
 ************** File: ._testdoc002.rst *****************
-
-
-.. |nbsp| unicode:: 0xA0
-   :trim:
-
 .. !split and check if these extra words are included properly in the comment
 
 
@@ -48035,10 +48035,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -48766,10 +48767,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -49447,10 +49449,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -50135,10 +50138,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -50866,10 +50870,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -51513,10 +51518,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -52206,10 +52212,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -52809,10 +52816,11 @@ commentstyle={},
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -53423,10 +53431,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -62917,10 +62926,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -65866,10 +65876,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -68436,10 +68447,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -73908,7 +73920,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f50d9fea410>
+verbatim is to be replaced using <function html_verbatim at 0x7f0191829410>
 
 
 First occurence: " `mako`."
@@ -78147,7 +78159,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug  2 16:15:11 2015.
+# sphinx-quickstart on Tue Aug  4 23:26:56 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -83470,10 +83482,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
@@ -98341,7 +98354,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [14]
 
 
-t line 1315.
+t line 1316.
 
 
 
@@ -98361,7 +98374,7 @@ t line 1315.
 
 
 
-t line 1324.
+t line 1325.
 
 
 
@@ -98382,7 +98395,7 @@ t line 1324.
 
 
 
-t line 1328.
+t line 1329.
 
 
 
@@ -99271,7 +99284,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1315.
+t line 1316.
 
 
 
@@ -99291,7 +99304,7 @@ t line 1315.
 
 
 
-t line 1324.
+t line 1325.
 
 
 
@@ -99312,7 +99325,7 @@ t line 1324.
 
 
 
-t line 1328.
+t line 1329.
 
 
 
@@ -100100,7 +100113,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1315.
+t line 1316.
 
 
 
@@ -100120,7 +100133,7 @@ t line 1315.
 
 
 
-t line 1324.
+t line 1325.
 
 
 
@@ -100141,7 +100154,7 @@ t line 1324.
 
 
 
-t line 1328.
+t line 1329.
 
 
 
@@ -101675,7 +101688,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1265.
+t line 1266.
 
 
 
@@ -101695,7 +101708,7 @@ t line 1265.
 
 
 
-t line 1274.
+t line 1275.
 
 
 
@@ -101716,7 +101729,7 @@ t line 1274.
 
 
 
-t line 1278.
+t line 1279.
 
 
 
@@ -102586,8 +102599,8 @@ reading sources... [100%] index
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:431: ERROR: Unknown target name: "example-of-the-third-footnote".
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
 /home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc001.rst:None: WARNING: nonlocal image URI found: http://openclipart.org/people/jpneok/junebug.svg
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:433: ERROR: Unexpected indentation.
-/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc010.rst:7: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc004.rst:428: ERROR: Unexpected indentation.
+/home/hpl/vc/doconce/test/sphinx-testdoc/._testdoc010.rst:2: WARNING: Explicit markup ends without a blank line; unexpected unindent.
 looking for now-outdated files... none found
 pickling environment... done
 checking consistency... done

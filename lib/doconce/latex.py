@@ -3128,10 +3128,11 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \setcounter{topnumber}{2}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}
-\renewcommand{\topfraction}{0.85}
-\renewcommand{\bottomfraction}{0.85}
-\renewcommand{\textfraction}{0.15}
-\renewcommand{\floatpagefraction}{0.7}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
 % 2. ensure all figures are flushed before next section
 \usepackage[section]{placeins}
 % 3. enable begin{figure}[H] (often leads to ugly pagebreaks)
