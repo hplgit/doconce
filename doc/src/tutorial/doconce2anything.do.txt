@@ -658,7 +658,7 @@ replace` and `doconce subst` edits might be needed on the `.mkd` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
-===== LaTeX =====
+===== LaTeX: Overview =====
 label{do2any:latex}
 
 idx{LaTeX output}
@@ -686,10 +686,18 @@ translation, which is simpler and actually more versatile than even
 using the `ptex2tex` program.
 
 Direct translation is specified by the `--latex_code_style=` command-line
-option. A "separate document": "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" describes how this option is used and the demonstrates
-various possibilities that are available.
+option. A separate document, "Demonstration of DocOnce support for LaTeX code block environments": "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html", describes how this option is used and the demonstrates
+many possibilities that are available.
+The `--latex_code_style=` option makes the use of `ptex2tex` or
+`doconce ptex2tex` redundant.
 
-Here, we describe the old translation via a `.p.tex` file, i.e., first we
+===== The old `ptex2tex` step =====
+
+Here, we describe the old translation via a `.p.tex` file.
+New users should jump over this information and use
+the `--latex_code_style=` option to specify verbatim code environments.
+
+First we
 compile the DocOnce source to the `ptex2tex` format, and then we compile
 the `ptex2tex` format to standard LaTeX.
 The "`ptex2tex`": "http://code.google.com/p/ptex2tex" format can be
@@ -718,15 +726,16 @@ the `ptex2tex` step.)
 
 Going from `ptex2tex` format to standard LaTeX format is enabled by
 either the `ptex2tex` program or DocOnce's (simplified) version of it:
-`doconce ptex2tex`. Details are given below.
+`doconce ptex2tex`.
 
-!bnotice Information on typesetting of inline verbatim
-The `ptex2tex` and the `doconce ptex2tex` programs take inline verbatim
-code, typeset with backticks in DocOnce, and translate this to
+!bnotice Inline verbatim tries to use `texttt` and not `Verb` if possible
+Inline verbatim
+code, typeset with backticks in DocOnce, is translated to
 
 !bc
 \Verb!text!
 !ec
+or similar constructions with other delimiters if the pipe is used in `text`.
 Thereafter, if `text` does not contain illegal characters for the `\texttt`
 command, the latter is used instead since then LaTeX can insert
 linebreaks in the inline verbatim text and hence avoid overfull hboxes.
@@ -736,20 +745,21 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.
 # formats - the text may be messed up. A better choice is a paragraph
 # environment, as used here.
 
+===== From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1) =====
+label{do2any:latex:compile1}
+
 idx{`ptex2tex` program}
 idx{`ptex2tex` doconce version}
 
-__Step 1.__ Filter the doconce text to the `ptex2tex` pre-LaTeX form
-`mydoc.p.tex`:
+Filter the doconce text directly to valid LaTeX using
+the `--latex_code_style=` option:
 
 !bc sys
-Terminal> doconce format latex mydoc
+Terminal> doconce format pdflatex mydoc --latex_code_style=vrb
 !ec
-Or filter the doconce text directly to valid LaTeX:
-
-!bc sys
-Terminal> doconce format latex mydoc --latex_code_style=vrb
-!ec
+Without `--latex_code_style=`, the output will be a `mydoc.p.tex` file
+that has to be converted to a standard `mydoc.tex` LaTeX file via
+the programs `ptex2tex` or `doconce ptex2tex`.
 
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files `newcommands.tex`, `newcommands_keep.tex`, or
@@ -819,6 +829,8 @@ to be submitted to Elsevier journals (`--latex_elsevier_journal=` can
 be used to set the journal name, and the style requires
 `elsarticle.cls` and `elsarticle-num.bst`).
 
+idx{LaTeX syntax highlighting}
+
 The style of verbatim blocks of computer code is specified by
 `--latex_code_style=X`, where `X` can be set in a very flexible way.
 There are three main values, corresponding to three LaTeX tools
@@ -856,8 +868,11 @@ blue background with plain verbatim style for code but a special terminal
 window for the `sys` environment:
 
 !bc
-"--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+"--latex_code_style=default:vrb-blue1@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
+(but no linebreaks, as here, they are for formatting this document only).
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options `--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin`. One may also (automatically) edit the
@@ -870,9 +885,8 @@ inserts native latex code for tables
 inside `% if FORMAT in ('latex', 'pdflatex'):` (or similar `preprocess` syntax)
 tests.
 
-idx{LaTeX syntax highlighting}
-
-__Step 2.__ In case you *did not* specify the `--latex_code_style=` option,
+__Part 2 of Step 1 (outdated).__
+In case you *did not* specify the `--latex_code_style=` option,
 you must run `ptex2tex` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
 
@@ -940,8 +954,10 @@ If no environments like `sys`, `fpro`, or the common
 `envir` are defined on the command line, the plain `\begin{Verbatim}`
 and `\end{Verbatim}` instructions are used.
 
+===== From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional) =====
+label{do2any:latex:compile2}
 
-__Step 2b (optional).__ Edit the `mydoc.tex` file to your needs.
+You can *edit* the `mydoc.tex` file to your needs.
 For example, you may want to substitute `section` by `section*` to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -968,59 +984,34 @@ substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the `doconce subst` or
 `doconce replace` commands can be put inside the script.
 
-__Step 3.__ Compile `mydoc.tex`
-and create the PDF file:
+===== From DocOnce to LaTeX-PDF: Generate PDF (Step 3) =====
+label{do2any:latex:compile3}
+
+Compile `mydoc.tex` and create the PDF file, using `pdflatex`:
+
 !bc sys
-Terminal> latex mydoc
-Terminal> latex mydoc
+Terminal> pdflatex mydoc
+Terminal> pdflatex mydoc
 Terminal> makeindex mydoc   # if index
 Terminal> bibtex mydoc      # if bibliography
-Terminal> latex mydoc
-Terminal> dvipdf mydoc
+Terminal> pdflatex mydoc
 !ec
-See the next two sections for compilation with XeLaTeX or pdfLaTeX.
 
-If one wishes to use the minted LaTeX package for
-typesetting code blocks (`Minted_Python`, `Minted_Cpp`, etc., in
-`ptex2tex` specified through the `*pro` and `*cod` variables in
-`.ptex2tex.cfg` or `$HOME/.ptex2tex.cfg`), the minted LaTeX package is
-needed.  This package is automatically included by `doconce ptex2tex` if
-the minted style is used, while you have to include the
-`-DMINTED` preprocessor option when running the `ptex2tex` program:
-!bc sys
-Terminal> ptex2tex -DMINTED mydoc
-!ec
-If the minted style is used, `latex` (or `pdflatex` or `xelatex`)
+One can also compile `mydoc` the ``old way'' with `latex` and `dvipdf`.
+Use `doconce format latex` in that case and proceed with `latex mydoc`.
+
+If the minted style is used, `latex`, `pdflatex`, or `xelatex`
 *must* be run with the
 `-shell-escape` option:
 
 !bc sys
-Terminal> latex -shell-escape mydoc
-Terminal> latex -shell-escape mydoc
-Terminal> makeindex mydoc   # if index
-Terminal> bibtex mydoc      # if bibliography
-Terminal> latex -shell-escape mydoc
-Terminal> dvipdf mydoc
-!ec
-
-===== PDFLaTeX =====
-label{do2any:pdflatex}
-
-idx{output format!pdfLaTeX}
-idx{pdfLaTeX output}
-
-Running `pdflatex` instead of `latex` follows almost the same steps,
-but the start is
-!bc sys
-Terminal> doconce format latex mydoc
-!ec
-Then `ptex2tex` is run as explained above, and finally
-!bc sys
+Terminal> pdflatex -shell-escape mydoc
 Terminal> pdflatex -shell-escape mydoc
 Terminal> makeindex mydoc   # if index
 Terminal> bibtex mydoc      # if bibliography
 Terminal> pdflatex -shell-escape mydoc
 !ec
+
 
 ===== XeLaTeX =====
 label{do2any:xelatex}
@@ -1032,8 +1023,8 @@ XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the `--xelatex` flag to `doconce format`:
 
 !bc
-Terminal> doconce format pdflatex mydoc --xelatex
-Terminal> doconce ptex2tex mydoc
+Terminal> doconce format pdflatex mydoc --xelatex \
+          --latex_code_style=lst
 Terminal> xelatex mydoc
 !ec
 

@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 2, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 5, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -4588,7 +4588,8 @@ that all syntax is correct:</p>
 before the functions it refers to.</p>
 </div>
 <p>A complete example showing how one can create tailored environments
-for computer code, in particular the following one (with a caption),</p>
+for computer code, using <code class="docutils literal"><span class="pre">--latex_code_style</span></code>,
+in particular the following one (with a caption),</p>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -6669,8 +6670,8 @@ to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.</p>
 </div>
 </div>
-<div class="section" id="latex">
-<span id="do2any-latex"></span><h3>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="latex-overview">
+<span id="do2any-latex"></span><h3>LaTeX: Overview<a class="headerlink" href="#latex-overview" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-158"></span><div class="admonition note" id="index-159">
 <p class="first admonition-title">Note</p>
 <p class="last">XeLaTeX and pdfLaTeX are used very much in the same way as standard
@@ -6692,9 +6693,17 @@ use of <code class="docutils literal"><span class="pre">ptex2tex</span></code> o
 translation, which is simpler and actually more versatile than even
 using the <code class="docutils literal"><span class="pre">ptex2tex</span></code> program.</p>
 <p>Direct translation is specified by the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> command-line
-option. A <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">separate document</a> describes how this option is used and the demonstrates
-various possibilities that are available.</p>
-<p>Here, we describe the old translation via a <code class="docutils literal"><span class="pre">.p.tex</span></code> file, i.e., first we
+option. A separate document, <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>, describes how this option is used and the demonstrates
+many possibilities that are available.
+The <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option makes the use of <code class="docutils literal"><span class="pre">ptex2tex</span></code> or
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> redundant.</p>
+</div>
+<div class="section" id="the-old-ptex2tex-step">
+<h3>The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step<a class="headerlink" href="#the-old-ptex2tex-step" title="Permalink to this headline">¶</a></h3>
+<p>Here, we describe the old translation via a <code class="docutils literal"><span class="pre">.p.tex</span></code> file.
+New users should jump over this information and use
+the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option to specify verbatim code environments.</p>
+<p>First we
 compile the DocOnce source to the <code class="docutils literal"><span class="pre">ptex2tex</span></code> format, and then we compile
 the <code class="docutils literal"><span class="pre">ptex2tex</span></code> format to standard LaTeX.
 The <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a> format can be
@@ -6721,28 +6730,30 @@ would not spit out alternative LaTeX constructs as is now done through
 the <code class="docutils literal"><span class="pre">ptex2tex</span></code> step.)</p>
 <p>Going from <code class="docutils literal"><span class="pre">ptex2tex</span></code> format to standard LaTeX format is enabled by
 either the <code class="docutils literal"><span class="pre">ptex2tex</span></code> program or DocOnce&#8217;s (simplified) version of it:
-<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>. Details are given below.</p>
-<div class="admonition-information-on-typesetting-of-inline-verbatim admonition">
-<p class="first admonition-title">Information on typesetting of inline verbatim</p>
-<p>The <code class="docutils literal"><span class="pre">ptex2tex</span></code> and the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> programs take inline verbatim
-code, typeset with backticks in DocOnce, and translate this to</p>
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>.</p>
+<div class="admonition-inline-verbatim-tries-to-use-texttt-and-not-verb-if-possible admonition">
+<p class="first admonition-title">Inline verbatim tries to use <code class="docutils literal"><span class="pre">texttt</span></code> and not <code class="docutils literal"><span class="pre">Verb</span></code> if possible</p>
+<p>Inline verbatim
+code, typeset with backticks in DocOnce, is translated to</p>
 <div class="highlight-text"><div class="highlight"><pre>\Verb!text!
 </pre></div>
 </div>
-<p class="last">Thereafter, if <code class="docutils literal"><span class="pre">text</span></code> does not contain illegal characters for the <code class="docutils literal"><span class="pre">\texttt</span></code>
+<p class="last">or similar constructions with other delimiters if the pipe is used in <code class="docutils literal"><span class="pre">text</span></code>.
+Thereafter, if <code class="docutils literal"><span class="pre">text</span></code> does not contain illegal characters for the <code class="docutils literal"><span class="pre">\texttt</span></code>
 command, the latter is used instead since then LaTeX can insert
 linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 </div>
-<span class="target" id="index-160"></span><p id="index-161"><strong>Step 1.</strong>
-Filter the doconce text to the <code class="docutils literal"><span class="pre">ptex2tex</span></code> pre-LaTeX form
-<code class="docutils literal"><span class="pre">mydoc.p.tex</span></code>:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
+</div>
+<div class="section" id="from-doconce-to-latex-pdf-generate-latex-step-1">
+<span id="do2any-latex-compile1"></span><h3>From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)<a class="headerlink" href="#from-doconce-to-latex-pdf-generate-latex-step-1" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-160"></span><p id="index-161">Filter the doconce text directly to valid LaTeX using
+the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
 </pre></div>
 </div>
-<p>Or filter the doconce text directly to valid LaTeX:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc --latex_code_style=vrb
-</pre></div>
-</div>
+<p>Without <code class="docutils literal"><span class="pre">--latex_code_style=</span></code>, the output will be a <code class="docutils literal"><span class="pre">mydoc.p.tex</span></code> file
+that has to be converted to a standard <code class="docutils literal"><span class="pre">mydoc.tex</span></code> LaTeX file via
+the programs <code class="docutils literal"><span class="pre">ptex2tex</span></code> or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>.</p>
 <p>LaTeX-specific commands (&#8220;newcommands&#8221;) in math formulas and similar
 can be placed in files <code class="docutils literal"><span class="pre">newcommands.tex</span></code>, <code class="docutils literal"><span class="pre">newcommands_keep.tex</span></code>, or
 <code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> (see the section <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a>).
@@ -6808,7 +6819,7 @@ journals and requires the stylefiles <code class="docutils literal"><span class=
 to be submitted to Elsevier journals (<code class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></code> can
 be used to set the journal name, and the style requires
 <code class="docutils literal"><span class="pre">elsarticle.cls</span></code> and <code class="docutils literal"><span class="pre">elsarticle-num.bst</span></code>).</p>
-<p>The style of verbatim blocks of computer code is specified by
+<p id="index-163">The style of verbatim blocks of computer code is specified by
 <code class="docutils literal"><span class="pre">--latex_code_style=X</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> can be set in a very flexible way.
 There are three main values, corresponding to three LaTeX tools
 for verbatim type setting:</p>
@@ -6840,9 +6851,12 @@ plain verbatim,</p>
 <p>It is easy to specify different styles for different code environments, say
 blue background with plain verbatim style for code but a special terminal
 window for the <code class="docutils literal"><span class="pre">sys</span></code> environment:</p>
-<div class="highlight-text"><div class="highlight"><pre>&quot;--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]&quot;
+<div class="highlight-text"><div class="highlight"><pre>&quot;--latex_code_style=default:vrb-blue1@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 </div>
+<p>(but no linebreaks, as here, they are for formatting this document only).</p>
 <p>During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <code class="docutils literal"><span class="pre">--latex_line_numbers</span> <span class="pre">--latex_double_spacing</span> <span class="pre">--latex_todonotes</span> <span class="pre">--latex_labels_in_margin</span></code>. One may also (automatically) edit the
 <code class="docutils literal"><span class="pre">final</span></code> argument in the <code class="docutils literal"><span class="pre">documentclass</span></code> heading to <code class="docutils literal"><span class="pre">draft</span></code> as this will
@@ -6852,7 +6866,7 @@ prevents ampersands from getting a backskash. This is necessary if one
 inserts native latex code for tables
 inside <code class="docutils literal"><span class="pre">%</span> <span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">('latex',</span> <span class="pre">'pdflatex'):</span></code> (or similar <code class="docutils literal"><span class="pre">preprocess</span></code> syntax)
 tests.</p>
-<p id="index-163"><strong>Step 2.</strong>
+<p><strong>Part 2 of Step 1 (outdated).</strong>
 In case you <em>did not</em> specify the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option,
 you must run <code class="docutils literal"><span class="pre">ptex2tex</span></code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,</p>
@@ -6916,8 +6930,10 @@ the <code class="docutils literal"><span class="pre">sys</span></code> environme
 <p>If no environments like <code class="docutils literal"><span class="pre">sys</span></code>, <code class="docutils literal"><span class="pre">fpro</span></code>, or the common
 <code class="docutils literal"><span class="pre">envir</span></code> are defined on the command line, the plain <code class="docutils literal"><span class="pre">\begin{Verbatim}</span></code>
 and <code class="docutils literal"><span class="pre">\end{Verbatim}</span></code> instructions are used.</p>
-<p><strong>Step 2b (optional).</strong>
-Edit the <code class="docutils literal"><span class="pre">mydoc.tex</span></code> file to your needs.
+</div>
+<div class="section" id="from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional">
+<span id="do2any-latex-compile2"></span><h3>From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)<a class="headerlink" href="#from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional" title="Permalink to this headline">¶</a></h3>
+<p>You can <em>edit</em> the <code class="docutils literal"><span class="pre">mydoc.tex</span></code> file to your needs.
 For example, you may want to substitute <code class="docutils literal"><span class="pre">section</span></code> by <code class="docutils literal"><span class="pre">section*</span></code> to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -6941,49 +6957,24 @@ an appropriate set of text replacements and regular expression
 substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> or
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> commands can be put inside the script.</p>
-<p><strong>Step 3.</strong>
-Compile <code class="docutils literal"><span class="pre">mydoc.tex</span></code>
-and create the PDF file:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex mydoc
-Terminal&gt; latex mydoc
+</div>
+<div class="section" id="from-doconce-to-latex-pdf-generate-pdf-step-3">
+<span id="do2any-latex-compile3"></span><h3>From DocOnce to LaTeX-PDF: Generate PDF (Step 3)<a class="headerlink" href="#from-doconce-to-latex-pdf-generate-pdf-step-3" title="Permalink to this headline">¶</a></h3>
+<p>Compile <code class="docutils literal"><span class="pre">mydoc.tex</span></code> and create the PDF file, using <code class="docutils literal"><span class="pre">pdflatex</span></code>:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pdflatex mydoc
+Terminal&gt; pdflatex mydoc
 Terminal&gt; makeindex mydoc   # if index
 Terminal&gt; bibtex mydoc      # if bibliography
-Terminal&gt; latex mydoc
-Terminal&gt; dvipdf mydoc
+Terminal&gt; pdflatex mydoc
 </pre></div>
 </div>
-<p>See the next two sections for compilation with XeLaTeX or pdfLaTeX.</p>
-<p>If one wishes to use the minted LaTeX package for
-typesetting code blocks (<code class="docutils literal"><span class="pre">Minted_Python</span></code>, <code class="docutils literal"><span class="pre">Minted_Cpp</span></code>, etc., in
-<code class="docutils literal"><span class="pre">ptex2tex</span></code> specified through the <code class="docutils literal"><span class="pre">*pro</span></code> and <code class="docutils literal"><span class="pre">*cod</span></code> variables in
-<code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code> or <code class="docutils literal"><span class="pre">$HOME/.ptex2tex.cfg</span></code>), the minted LaTeX package is
-needed.  This package is automatically included by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> if
-the minted style is used, while you have to include the
-<code class="docutils literal"><span class="pre">-DMINTED</span></code> preprocessor option when running the <code class="docutils literal"><span class="pre">ptex2tex</span></code> program:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex -DMINTED mydoc
-</pre></div>
-</div>
-<p>If the minted style is used, <code class="docutils literal"><span class="pre">latex</span></code> (or <code class="docutils literal"><span class="pre">pdflatex</span></code> or <code class="docutils literal"><span class="pre">xelatex</span></code>)
+<p>One can also compile <code class="docutils literal"><span class="pre">mydoc</span></code> the &#8220;old way&#8221; with <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">dvipdf</span></code>.
+Use <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">latex</span></code> in that case and proceed with <code class="docutils literal"><span class="pre">latex</span> <span class="pre">mydoc</span></code>.</p>
+<p>If the minted style is used, <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, or <code class="docutils literal"><span class="pre">xelatex</span></code>
 <em>must</em> be run with the
 <code class="docutils literal"><span class="pre">-shell-escape</span></code> option:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; latex -shell-escape mydoc
-Terminal&gt; latex -shell-escape mydoc
-Terminal&gt; makeindex mydoc   # if index
-Terminal&gt; bibtex mydoc      # if bibliography
-Terminal&gt; latex -shell-escape mydoc
-Terminal&gt; dvipdf mydoc
-</pre></div>
-</div>
-</div>
-<div class="section" id="pdflatex">
-<span id="do2any-pdflatex"></span><h3>PDFLaTeX<a class="headerlink" href="#pdflatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-164"></span><p id="index-165">Running <code class="docutils literal"><span class="pre">pdflatex</span></code> instead of <code class="docutils literal"><span class="pre">latex</span></code> follows almost the same steps,
-but the start is</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format latex mydoc
-</pre></div>
-</div>
-<p>Then <code class="docutils literal"><span class="pre">ptex2tex</span></code> is run as explained above, and finally</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; pdflatex -shell-escape mydoc
+Terminal&gt; pdflatex -shell-escape mydoc
 Terminal&gt; makeindex mydoc   # if index
 Terminal&gt; bibtex mydoc      # if bibliography
 Terminal&gt; pdflatex -shell-escape mydoc
@@ -6992,17 +6983,17 @@ Terminal&gt; pdflatex -shell-escape mydoc
 </div>
 <div class="section" id="xelatex">
 <span id="do2any-xelatex"></span><h3>XeLaTeX<a class="headerlink" href="#xelatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-166"></span><p id="index-167">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
+<span class="target" id="index-164"></span><p id="index-165">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the <code class="docutils literal"><span class="pre">--xelatex</span></code> flag to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --xelatex
-Terminal&gt; doconce ptex2tex mydoc
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --xelatex \
+          --latex_code_style=lst
 Terminal&gt; xelatex mydoc
 </pre></div>
 </div>
 </div>
 <div class="section" id="from-pdf-to-e-book-formats">
 <span id="do2any-epub"></span><h3>From PDF to e-book formats<a class="headerlink" href="#from-pdf-to-e-book-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-168"></span><p id="index-169">PDF (as generated from LaTeX above) can be read on most devices today.
+<span class="target" id="index-166"></span><p id="index-167">PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The <a class="reference external" href="http://calibre-ebook.com/">Calibre</a>
 program can produce epub, mobi, and other e-book formats from PDF,
@@ -7010,7 +7001,7 @@ see a <a class="reference external" href="http://www.dedoimedo.com/computers/lat
 </div>
 <div class="section" id="microsoft-word-or-libreoffice">
 <span id="do2any-ms-ooffice"></span><h3>Microsoft Word or LibreOffice<a class="headerlink" href="#microsoft-word-or-libreoffice" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-170"></span><span class="target" id="index-171"></span><p id="index-172">Transforming DocOnce files to Word format is best done with the aid
+<span class="target" id="index-168"></span><span class="target" id="index-169"></span><p id="index-170">Transforming DocOnce files to Word format is best done with the aid
 of <code class="docutils literal"><span class="pre">pandoc</span></code>. A standard way is to first generate the Markdown format
 (<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></code>) and then use <code class="docutils literal"><span class="pre">pandoc</span></code> to generate a <code class="docutils literal"><span class="pre">.docx</span></code>
 file:</p>
@@ -7023,7 +7014,7 @@ does not work.</p>
 </div>
 <div class="section" id="jupyter-ipython-notebooks">
 <span id="do2any-ipynb"></span><h3>Jupyter (IPython) Notebooks<a class="headerlink" href="#jupyter-ipython-notebooks" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-173"></span><span class="target" id="index-174"></span><p id="index-175">DocOnce can generate json files for the Jupyter Notebook:</p>
+<span class="target" id="index-171"></span><span class="target" id="index-172"></span><p id="index-173">DocOnce can generate json files for the Jupyter Notebook:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format ipynb mydoc  # results in mydoc.ipynb
 </pre></div>
 </div>
@@ -7140,7 +7131,7 @@ are always typeset as Markdown quotes.</p>
 </div>
 <div class="section" id="plain-ascii-text">
 <span id="do2any-ascii"></span><h3>Plain ASCII Text<a class="headerlink" href="#plain-ascii-text" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-176"></span><span class="target" id="index-177"></span><span class="target" id="index-178"></span><p id="index-179">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
+<span class="target" id="index-174"></span><span class="target" id="index-175"></span><span class="target" id="index-176"></span><p id="index-177">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
@@ -7149,7 +7140,7 @@ computer source code:</p>
 </div>
 <div class="section" id="restructuredtext">
 <span id="do2any-rst"></span><h3>reStructuredText<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-180"></span><p id="index-181">Going from DocOnce to reStructuredText gives a lot of possibilities to
+<span class="target" id="index-178"></span><p id="index-179">Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
 reStructuredText file <code class="docutils literal"><span class="pre">mydoc.rst</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format rst mydoc.do.txt
@@ -7195,7 +7186,7 @@ Some links for going from LaTeX to Word are listed below.</p>
 </div>
 <div class="section" id="sphinx">
 <span id="do2any-sphinx"></span><h3>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-182"></span><p id="index-183">Sphinx documents demand quite some steps in their creation. We have automated
+<span class="target" id="index-180"></span><p id="index-181">Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
           title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
@@ -7259,7 +7250,7 @@ to <code class="docutils literal"><span class="pre">_static/myfile.txt</span></c
 However, I recommend instead that you manually copy
 files to <code class="docutils literal"><span class="pre">_static</span></code> when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.</p>
-<p id="index-184"><strong>Themes.</strong>
+<p id="index-182"><strong>Themes.</strong>
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
@@ -7278,7 +7269,7 @@ Additional themes include
 <code class="docutils literal"><span class="pre">scipy_lectures</span></code>,
 <code class="docutils literal"><span class="pre">slim-agogo</span></code>, and
 <code class="docutils literal"><span class="pre">vlinux-theme</span></code>.</p>
-<p id="index-185">All the themes are packed out in the Sphinx directory, and the
+<p id="index-183">All the themes are packed out in the Sphinx directory, and the
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> insert lots of extra code in the <code class="docutils literal"><span class="pre">conf.py</span></code>
 file to enable easy specification and customization of themes.
 For example, modules are loaded for the additional themes that
@@ -7350,7 +7341,7 @@ books (which build on Sphinx).
 You must run the generated <code class="docutils literal"><span class="pre">automake_sphinx.py</span></code> also with a <code class="docutils literal"><span class="pre">--runestone</span></code>
 option to generate these type of documents.</p>
 <div class="section" id="the-manual-sphinx-procedure">
-<span id="index-186"></span><h4>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h4>
+<span id="index-184"></span><h4>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h4>
 <p>If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>.</p>
@@ -7439,7 +7430,7 @@ all such arguments can be customized both for Sphinx and LaTeX output.</p>
 </div>
 <div class="section" id="wiki-formats">
 <span id="do2any-wiki"></span><h3>Wiki Formats<a class="headerlink" href="#wiki-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-187"></span><span class="target" id="index-188"></span><span class="target" id="index-189"></span><span class="target" id="index-190"></span><span class="target" id="index-191"></span><span class="target" id="index-192"></span><p id="index-193">There are many different wiki formats, but DocOnce only supports three:
+<span class="target" id="index-185"></span><span class="target" id="index-186"></span><span class="target" id="index-187"></span><span class="target" id="index-188"></span><span class="target" id="index-189"></span><span class="target" id="index-190"></span><p id="index-191">There are many different wiki formats, but DocOnce only supports three:
 <a class="reference external" href="http://code.google.com/p/support/wiki/WikiSyntax">Googlecode wiki</a>,
 <a class="reference external" href="http://www.mediawiki.org/wiki/Help:Formatting">MediaWiki</a>, and
 <a class="reference external" href="http://www.wikicreole.org/wiki/Creole1.0">Creole Wiki</a>.
@@ -7477,7 +7468,7 @@ one performs this substitution automatically (see next section).</p>
 </div>
 <div class="section" id="google-docs">
 <span id="do2any-google-docs"></span><h3>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h3>
-<p id="index-194">Google Docs are normally made online in the interactive editor. However,
+<p id="index-192">Google Docs are normally made online in the interactive editor. However,
 you may upload a DocOnce document to Google Docs. This requires transforming
 the DocOnce document to one of the accepted formats for Google Docs:</p>
 <blockquote>
@@ -7507,7 +7498,7 @@ in Google Docs and the <a class="reference external" href="http://code.google.co
 </div>
 <div class="section" id="tweaking-the-doconce-output">
 <span id="do2any-tweaking"></span><h3>Tweaking the DocOnce Output<a class="headerlink" href="#tweaking-the-doconce-output" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-195"></span><p id="index-196">Occasionally, one would like to tweak the output in a certain format
+<span class="target" id="index-193"></span><p id="index-194">Occasionally, one would like to tweak the output in a certain format
 from DocOnce. One example is figure filenames when transforming
 DocOnce to reStructuredText. Since DocOnce does not know if the
 <code class="docutils literal"><span class="pre">.rst</span></code> file is going to be filtered to LaTeX or HTML, it cannot know
@@ -7524,7 +7515,7 @@ constitute comprehensive examples on how such scripts can be made.</p>
 <h2>Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands<a class="headerlink" href="#options-for-the-doconce-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="doconce-format-command-line-options">
 <h3><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options<a class="headerlink" href="#doconce-format-command-line-options" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-197"></span><p id="index-198">The transformation of a DocOnce source to various format is done with
+<span class="target" id="index-195"></span><p id="index-196">The transformation of a DocOnce source to various format is done with
 the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command, which has <em>a lot</em> of command-line options.
 These are printed out by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code>. The output is listed
 here for convenience.</p>
@@ -7945,6 +7936,11 @@ Sets the left margin in code blocks. Default: 7 (mm).
 --latex_code_bg=...
 
 Background color code blocks. Default: white.
+
+
+--latex_code_bg_vpad
+
+Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not lst!).
 
 
 --latex_code_lststyles=...
@@ -8470,7 +8466,7 @@ Combine paragraphs to one line (does not work well).
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
 <span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
-<p id="index-199">Below, we explain the manual installation of all software that may be
+<p id="index-197">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
 Anaconda Python and the <code class="docutils literal"><span class="pre">conda</span></code> program:</p>
@@ -9195,8 +9191,11 @@ Springer,
 <li><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#latex">LaTeX</a></li>
-<li><a class="reference internal" href="#pdflatex">PDFLaTeX</a></li>
+<li><a class="reference internal" href="#latex-overview">LaTeX: Overview</a></li>
+<li><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
+<li><a class="reference internal" href="#from-doconce-to-latex-pdf-generate-latex-step-1">From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)</a></li>
+<li><a class="reference internal" href="#from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional">From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
+<li><a class="reference internal" href="#from-doconce-to-latex-pdf-generate-pdf-step-3">From DocOnce to LaTeX-PDF: Generate PDF (Step 3)</a></li>
 <li><a class="reference internal" href="#xelatex">XeLaTeX</a></li>
 <li><a class="reference internal" href="#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
 <li><a class="reference internal" href="#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>

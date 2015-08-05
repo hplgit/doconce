@@ -908,6 +908,16 @@ The remedy is to format the link text with inline verbatim tags (backticks):
 !ec
 Verbatim text in links works fine with underscores.
 
+===== Inline verbatim fails in admon headings =====
+
+A known problem is to have the word
+
+!bc
+\Verb
+!ec
+in (admon) headings. Otherwise inline verbatim should work, both in
+section headings and admon headings.
+
 ===== How can I have unnumbered sections? =====
 
 Use the `--section_numbering=off` option:

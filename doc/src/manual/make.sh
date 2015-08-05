@@ -42,7 +42,7 @@ EOF
 
 # doconce html format:
 system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --no_abort
-system doconce split_html manual.html
+system doconce split_tmp.html manual.html
 
 # Sphinx
 system doconce format sphinx manual.do.txt --no_mako

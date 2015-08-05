@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jul 19, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 5, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -95,7 +95,7 @@ track down this syntax problem yourself. However, DocOnce applies
 regular expressions to a large extent for transforming text, and
 regular expressions may sometimes lead to undesired results.
 Therefore, there is a chance that legal DocOnce syntax is not
-treated properly. The section <a class="reference internal" href="#trouble-pitfalls"><span>Examples on seemingly legal syntax that fails</span></a> gives some examples of what
+treated properly. The section <a class="reference internal" href="#trouble-pitfalls"><span class="std std-ref">Examples on seemingly legal syntax that fails</span></a> gives some examples of what
 can go wrong.</p>
 </div>
 <div class="section" id="general-problems">
@@ -824,7 +824,7 @@ def f(x):
 <p>the generated LaTeX code is correct, but it is translated to PDF in
 a wrong way such that the heading appears <em>after</em> the code.
 A remedy is to insert some text after the paragraph heading.
-See also the section <a class="reference internal" href="#trouble-bsol-code"><span>Solution heading in exercise solutions appear after the solution content</span></a> - it is the same problem.</p>
+See also the section <a class="reference internal" href="#trouble-bsol-code"><span class="std std-ref">Solution heading in exercise solutions appear after the solution content</span></a> - it is the same problem.</p>
 </div>
 </div>
 <div class="section" id="problems-with-rest-sphinx-output">
@@ -948,6 +948,15 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 </div>
 <p>Verbatim text in links works fine with underscores.</p>
 </div>
+<div class="section" id="inline-verbatim-fails-in-admon-headings">
+<h3>Inline verbatim fails in admon headings<a class="headerlink" href="#inline-verbatim-fails-in-admon-headings" title="Permalink to this headline">¶</a></h3>
+<p>A known problem is to have the word</p>
+<div class="highlight-text"><div class="highlight"><pre>\Verb
+</pre></div>
+</div>
+<p>in (admon) headings. Otherwise inline verbatim should work, both in
+section headings and admon headings.</p>
+</div>
 <div class="section" id="how-can-i-have-unnumbered-sections">
 <h3>How can I have unnumbered sections?<a class="headerlink" href="#how-can-i-have-unnumbered-sections" title="Permalink to this headline">¶</a></h3>
 <p>Use the <code class="docutils literal"><span class="pre">--section_numbering=off</span></code> option:</p>
@@ -1036,7 +1045,7 @@ Terminal&gt; doconce subst &#39;(\\includegraphics\[.+\}\})&#39; \
 <p>See the section <em>Example: Defining a Theorem Environment</em> in
 the DocOnce manual for how to make a custom
 theorem environment also in DocOnce, without using implementations
-restricted to LaTeX. See also the section <a class="reference internal" href="#trouble-latex-envir-native"><span>How can I make use of a native LaTeX environments (example environment for instance)?</span></a>.</p>
+restricted to LaTeX. See also the section <a class="reference internal" href="#trouble-latex-envir-native"><span class="std std-ref">How can I make use of a native LaTeX environments (example environment for instance)?</span></a>.</p>
 </div>
 <div class="section" id="the-latex-file-does-not-compile">
 <h3>The LaTeX file does not compile<a class="headerlink" href="#the-latex-file-does-not-compile" title="Permalink to this headline">¶</a></h3>
@@ -1105,8 +1114,8 @@ used to replace the whole preamble by another text via a script.</p>
 <p>In general, LaTeX will control the placement, and DocOnce applies
 (for now) the <code class="docutils literal"><span class="pre">[t]</span></code> option to recommend figures to be placed at the top
 of a page. This can be changed in different ways, using
-techniques from the sections <a class="reference internal" href="#latex-custom-fig-name"><span>How do I get &#8220;Figure&#8221; written in another language?</span></a> and
-<a class="reference internal" href="#latex-custom-preamble"><span>I want to tune the top (preamble) of the LaTeX file</span></a>. The <code class="docutils literal"><span class="pre">float</span></code> package and the <code class="docutils literal"><span class="pre">[H]</span></code> (&#8220;here&#8221;)
+techniques from the sections <a class="reference internal" href="#latex-custom-fig-name"><span class="std std-ref">How do I get &#8220;Figure&#8221; written in another language?</span></a> and
+<a class="reference internal" href="#latex-custom-preamble"><span class="std std-ref">I want to tune the top (preamble) of the LaTeX file</span></a>. The <code class="docutils literal"><span class="pre">float</span></code> package and the <code class="docutils literal"><span class="pre">[H]</span></code> (&#8220;here&#8221;)
 option for figures makes figures appear closer to their original
 location:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span class="k">\usepackage</span><span class="nb">{</span>float<span class="nb">}</span>
@@ -1441,6 +1450,7 @@ clickable.</p>
 <li><a class="reference internal" href="#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
+<li><a class="reference internal" href="#inline-verbatim-fails-in-admon-headings">Inline verbatim fails in admon headings</a></li>
 <li><a class="reference internal" href="#how-can-i-have-unnumbered-sections">How can I have unnumbered sections?</a></li>
 <li><a class="reference internal" href="#error-when-running-latex-you-must-have-pygmentize-installed">Error when running latex: You must have &#8216;pygmentize&#8217; installed</a></li>
 <li><a class="reference internal" href="#why-are-the-latex-section-headings-smaller-than-normal">Why are the LaTeX section headings smaller than normal?</a></li>
@@ -1527,7 +1537,7 @@ clickable.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2015, HPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4a0+.
     </div>
   </body>
 </html>
