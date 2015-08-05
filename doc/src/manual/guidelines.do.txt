@@ -30,6 +30,8 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    for sections, figures, movies, and equations only.
    MediaWiki (`mwiki`) does not support references to equations.
  * Spaces are not allowed in labels.
+ * Never use `\pageref` as pages are not a concept in web documents
+   (there is only a `ref` command in DocOnce and it refers to labels).
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -47,6 +49,9 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    the `doconce combine_images` tool. Refer to individual image files
    in the caption or text by (e.g.) ``left'' and ``right'', or
    ``upper left'', ``lower right'', etc.
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
  * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
