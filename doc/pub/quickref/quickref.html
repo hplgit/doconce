@@ -116,8 +116,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>
-<center><h4>Aug 4, 2015</h4></center> <!-- date -->
+<center><h4>Aug 9, 2015</h4></center> <!-- date -->
+<br>
 
 <h2>Table of contents</h2>
 
@@ -881,6 +883,8 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
  <li> Spaces are not allowed in labels.</li>
+ <li> Never use <code>\pageref</code> as pages are not a concept in web documents
+   (there is only a <code>ref</code> command in DocOnce and it refers to labels).</li>
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
    for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> (refer to inline elements by a section label).
@@ -898,6 +902,9 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    the <code>doconce combine_images</code> tool. Refer to individual image files
    in the caption or text by (e.g.) &quot;left&quot; and &quot;right&quot;, or
    &quot;upper left&quot;, &quot;lower right&quot;, etc.</li>
+ <li> Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.</li>
  <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.</li>

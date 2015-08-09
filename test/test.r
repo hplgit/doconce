@@ -1898,8 +1898,10 @@ MathJax.Hub.Config({
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 
 <h2>Table of contents</h2>
 
@@ -4600,7 +4602,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % ----------------- author(s) -------------------------
 
-\vspace{1.3cm}
+\vspace{0.5cm}
 
 {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
 
@@ -4653,7 +4655,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 The format of this document is
 plain, homemade \textsc{pdf}{\LaTeX} (from DocOnce).
 
-\begin{abstract}
+% --- begin abstract ---
+\ \\ [13mm]
+\begin{center}
+\begin{minipage}{0.9\linewidth}
+\small
 This is a document with many test constructions for doconce syntax.
 It was used heavily for the development and kept for testing
 numerous constructions, also special and less common cases.
@@ -4663,7 +4669,9 @@ is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
 % are mutually exclusive in {\LaTeX}
-\end{abstract}
+\end{minipage}
+\end{center}
+% --- end abstract ---
 
 \section{Section 1}
 \label{sec1}
@@ -7025,7 +7033,7 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 % ----------------- author(s) -------------------------
 
-\vspace{1.3cm}
+\vspace{0.5cm}
 
 {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$ (\texttt{hpl@simula.no})}}\\ [3mm]
 
@@ -7078,7 +7086,11 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 The format of this document is
 plain, homemade \textsc{pdf}{\LaTeX} (from DocOnce).
 
-\begin{abstract}
+% --- begin abstract ---
+\ \\ [13mm]
+\begin{center}
+\begin{minipage}{0.9\linewidth}
+\small
 This is a document with many test constructions for doconce syntax.
 It was used heavily for the development and kept for testing
 numerous constructions, also special and less common cases.
@@ -7088,7 +7100,9 @@ is part of the abstract.
 
 % Cannot demonstrate chapter headings since abstract and chapter
 % are mutually exclusive in {\LaTeX}
-\end{abstract}
+\end{minipage}
+\end{center}
+% --- end abstract ---
 
 \section{Section 1}
 \label{sec1}
@@ -9484,9 +9498,11 @@ A Document for Testing DocOnce
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -29459,6 +29475,10 @@ end of tocinfo -->
 
 <!-- ------------------- main content ---------------------- -->
 
+<p>
+
+<br>
+
 <h2 id="___sec0">This is a test of HTML templates </h2>
 
 <p>
@@ -29702,6 +29722,10 @@ end of tocinfo -->
 
 
 <!-- ------------------- main content ---------------------- -->
+
+<p>
+
+<br>
 
 <h2 id="___sec0">This is a test of HTML templates </h2>
 
@@ -30350,8 +30374,10 @@ MathJax.Hub.Config({
 <!-- institution -->
 
 <center><b>Cyberspace Inc.</b></center>
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- Externaldocument: testdoc -->
 
@@ -30705,9 +30731,11 @@ Test of one author at one institution
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -31305,7 +31333,11 @@ Inline math, a=b, is the only math in this document.
 
 % ----------------- end author(s) -------------------------
 
-
+% --- begin date ---
+\begin{center}
+Jan 32, 2100
+\end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -31455,7 +31487,11 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 
 % ----------------- end author(s) -------------------------
 
-
+% --- begin date ---
+\begin{center}
+Jan 32, 2100
+\end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -31775,8 +31811,10 @@ MathJax.Hub.Config({
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 
 <h2>Table of contents</h2>
 
@@ -34828,8 +34866,10 @@ $(function () {
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
+<br>
 <p>
-<center><h4>Jan 32, 2100</h4></center>
+<center><h4>Jan 32, 2100</h4></center> 
+<br>
 
 <h2>Table of contents</h2>
 
@@ -36986,8 +37026,10 @@ MathJax.Hub.Config({
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 
 <h2>Table of contents</h2>
 
@@ -39495,9 +39537,11 @@ A Document for Testing DocOnce
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -42861,8 +42905,11 @@ $$
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 This document is translated to the format <b>html</b>. The purpose is to
 test math and doconce and various output formats.
@@ -43322,9 +43369,11 @@ How various formats can deal with {\LaTeX} math
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -43957,6 +44006,10 @@ MathJax.Hub.Config({
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
+<br>
+<p>
+
+<br>
 
 <h2>Table of contents</h2>
 
@@ -44299,6 +44352,10 @@ MathJax.Hub.Config({
 <center>[5] <b>Inst2, Somewhere</b></center>
 <center>[6] <b>Third Inst, Elsewhere</b></center>
 <center>[7] <b>Fourth Inst</b></center>
+<br>
+<p>
+
+<br>
 
 <h2>Table of contents</h2>
 
@@ -48241,9 +48298,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -48923,9 +48982,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -49612,9 +49673,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -50344,9 +50407,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -50969,9 +51034,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -51686,9 +51753,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -52278,9 +52347,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -52984,9 +53055,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -53636,9 +53709,11 @@ Testing admons
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -54122,8 +54197,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -54628,8 +54706,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -55157,8 +55238,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -56086,8 +56170,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -56667,8 +56754,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -57216,8 +57306,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -57756,6 +57849,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
+<p>
+
+<br>
 <p>
 <!-- potential-jumbotron-button -->
 </div> <!-- end jumbotron -->
@@ -58260,8 +58358,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 
 
@@ -58396,8 +58497,11 @@ MathJax.Hub.Config({
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- potential-jumbotron-button -->
 </div> <!-- end jumbotron -->
@@ -60775,8 +60879,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
+<br>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 </section>
 
 
@@ -61599,8 +61705,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo</b></center>
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <!-- !split -->
 
@@ -62029,8 +62137,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b style="font-weight: bold">Simula Research Laboratory</b></center>
 <center>[2] <b style="font-weight: bold">University of Oslo</b></center>
+<br>
 <p>
 <center><b style="font-weight: bold">Jan 32, 2100</b></center> <!-- date -->
+<br>
 </section>
 
 
@@ -64798,8 +64908,10 @@ MathJax.Hub.Config({
 <!-- institution -->
 
 <center><b>Cyber Space Ltd</b></center>
+<br>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <center><p><img src="../doc/src/slides/fig/doconce1b.png" align="bottom" width=400></p></center>
 </section>
@@ -67880,8 +67992,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>&nbsp;<br>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 <center><p><img src="../doc/src/slides/fig/CN_logo.png" align="bottom" width=300></p></center>
 </section>
@@ -69342,8 +69456,11 @@ end of tocinfo -->
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 Here is a movie in WebM format.
 Note that in HTML format a WebM movie
@@ -70070,8 +70187,11 @@ end of tocinfo -->
 
 <p>
 <!-- institution(s) -->
+
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 <p>
 Here is a movie in WebM format.
 Note that in HTML format a WebM movie
@@ -70874,9 +70994,11 @@ This is a demo of movies in DocOnce
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -71283,9 +71405,11 @@ This is a demo of movies in DocOnce
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -71691,9 +71815,11 @@ This is a demo of movies in DocOnce
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -73920,7 +74046,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f0191829410>
+verbatim is to be replaced using <function html_verbatim at 0x7f808d72f398>
 
 
 First occurence: " `mako`."
@@ -75230,7 +75356,7 @@ BIBFILE: papers.pub
 
 % ----------------- author(s) -------------------------
 
-\vspace{1.3cm}
+\vspace{0.5cm}
 
 {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
 
@@ -76290,7 +76416,7 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 % ----------------- author(s) -------------------------
 
-\vspace{1.3cm}
+\vspace{0.5cm}
 
 {\Large\textsf{Hans Petter Langtangen${}^{1, 2}$}}\\ [3mm]
 
@@ -78159,7 +78285,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Aug  4 23:26:56 2015.
+# sphinx-quickstart on Sun Aug  9 07:07:22 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -81823,8 +81949,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>
 <center><h4>Jan 32, 2100</h4></center> <!-- date -->
+<br>
 
 <h2>Table of contents</h2>
 
@@ -82588,6 +82716,8 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
  <li> Spaces are not allowed in labels.</li>
+ <li> Never use <code>\pageref</code> as pages are not a concept in web documents
+   (there is only a <code>ref</code> command in DocOnce and it refers to labels).</li>
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
    for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> (refer to inline elements by a section label).
@@ -82605,6 +82735,9 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    the <code>doconce combine_images</code> tool. Refer to individual image files
    in the caption or text by (e.g.) &quot;left&quot; and &quot;right&quot;, or
    &quot;upper left&quot;, &quot;lower right&quot;, etc.</li>
+ <li> Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.</li>
  <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.</li>
@@ -83710,9 +83843,11 @@ DocOnce Quick Reference
     
 % ----------------- end author(s) -------------------------
 
-\begin{center} % date
+% --- begin date ---
+\begin{center}
 Jan 32, 2100
 \end{center}
+% --- end date ---
 
 \vspace{1cm}
 
@@ -84391,6 +84526,9 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
 
  \item Spaces are not allowed in labels.
 
+ \item Never use \Verb!\pageref! as pages are not a concept in web documents
+   (there is only a \texttt{ref} command in DocOnce and it refers to labels).
+
  \item Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear \emph{inline} without numbers or labels
    for reference\footnote{There is an exception: by using \emph{user-defined environments} within \Verb?!bu-name? and \Verb?!eu-name? directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments.} (refer to inline elements by a section label).
@@ -84410,6 +84548,10 @@ Any {\LaTeX} syntax is accepted when DocOnce translates the text to
    the \Verb!doconce combine_images! tool. Refer to individual image files
    in the caption or text by (e.g.) ``left'' and ``right'', or
    ``upper left'', ``lower right'', etc.
+
+ \item Footnotes can be used as usual in {\LaTeX}, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
 
  \item Use plain \texttt{cite} for references (e.g., \Verb!\citeauthor! has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -85787,6 +85929,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Spaces are not allowed in labels.
 
+ * Never use ``\pageref`` as pages are not a concept in web documents
+   (there is only a ``ref`` command in DocOnce and it refers to labels).
+
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference [#exception]_ (refer to inline elements by a section label).
@@ -85806,6 +85951,10 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    the ``doconce combine_images`` tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -87223,6 +87372,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Spaces are not allowed in labels.
 
+ * Never use ``\pageref`` as pages are not a concept in web documents
+   (there is only a ``ref`` command in DocOnce and it refers to labels).
+
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference [#exception]_ (refer to inline elements by a section label).
@@ -87242,6 +87394,10 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    the ``doconce combine_images`` tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -88601,9 +88757,11 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
  * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   `newcommands*.tex`. Use `\newcommands` and not `\def`.   Each newcommand must be defined on a single line.   Use Mako functions if you need macros in the running text.
  * Use labels and refer to them   for sections, figures, movies, and equations only.   MediaWiki (`mwiki`) does not support references to equations.
  * Spaces are not allowed in labels.
+ * Never use `\pageref` as pages are not a concept in web documents   (there is only a `ref` command in DocOnce and it refers to labels).
  * Only figures and movies are floating elements in DocOnce, all other elements   (code, tables, algorithms) must appear *inline* without numbers or labels   for reference[^exception] (refer to inline elements by a section label).   The reason is that floating elements are in general   not used in web documents, but we made an exception with figures   and movies.
  * Keep figure captions shorts as they are used as references in the   Sphinx format. Avoid inline mathematics since Sphinx will strip it   away in the figure reference.   (Many writing styles encourage rich captions that   explains everything about the figure, but this will work well   only in the HTML and LaTeX formats.)
  * You cannot use `subfigure` to combine several image files in one   figure, but you can combine the files to one file using   the `doconce combine_images` tool. Refer to individual image files   in the caption or text by (e.g.) "left" and "right", or   "upper left", "lower right", etc.
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not   able to display mathematics or inline verbatim or other formatted   code (emphasis, boldface, color) in footnotes - have that in mind.
  * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart   in DocOnce). The bibliography must be prepared in the Publish format,   but import from (clean) BibTeX is possible.
  * Use `idx` for index entries, but put the definitions between paragraphs,   not inside them (required by Sphinx).
  * Use the `bm` package and the `\bm` command for boldface in mathematics.
@@ -89903,6 +90061,8 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.
  <li> Spaces are not allowed in labels.
+ <li> Never use <code>\pageref</code> as pages are not a concept in web documents
+   (there is only a <code>ref</code> command in DocOnce and it refers to labels).
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear ''inline'' without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -89920,6 +90080,9 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    the <code>doconce combine_images</code> tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+ <li> Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
  <li> Use plain <code>cite</code> for references (e.g., <code>\citeauthor</code> has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
@@ -91205,9 +91368,11 @@ LaTeX, but if output in the {{{sphinx}}}, {{{pandoc}}}, {{{mwiki}}}, {{{html}}},
  * Newcommands in mathematical formulas are allowed, but not in   the running text. Newcommands must be defined in files with names   {{{newcommands*.tex}}}. Use {{{\newcommands}}} and not {{{\def}}}.   Each newcommand must be defined on a single line.   Use Mako functions if you need macros in the running text.
  * Use labels and refer to them   for sections, figures, movies, and equations only.   MediaWiki ({{{mwiki}}}) does not support references to equations.
  * Spaces are not allowed in labels.
+ * Never use {{{\pageref}}} as pages are not a concept in web documents   (there is only a {{{ref}}} command in DocOnce and it refers to labels).
  * Only figures and movies are floating elements in DocOnce, all other elements   (code, tables, algorithms) must appear //inline// without numbers or labels   for reference[^exception] (refer to inline elements by a section label).   The reason is that floating elements are in general   not used in web documents, but we made an exception with figures   and movies.
  * Keep figure captions shorts as they are used as references in the   Sphinx format. Avoid inline mathematics since Sphinx will strip it   away in the figure reference.   (Many writing styles encourage rich captions that   explains everything about the figure, but this will work well   only in the HTML and LaTeX formats.)
  * You cannot use {{{subfigure}}} to combine several image files in one   figure, but you can combine the files to one file using   the {{{doconce combine_images}}} tool. Refer to individual image files   in the caption or text by (e.g.) "left" and "right", or   "upper left", "lower right", etc.
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not   able to display mathematics or inline verbatim or other formatted   code (emphasis, boldface, color) in footnotes - have that in mind.
  * Use plain {{{cite}}} for references (e.g., {{{\citeauthor}}} has no counterpart   in DocOnce). The bibliography must be prepared in the Publish format,   but import from (clean) BibTeX is possible.
  * Use {{{idx}}} for index entries, but put the definitions between paragraphs,   not inside them (required by Sphinx).
  * Use the {{{bm}}} package and the {{{\bm}}} command for boldface in mathematics.
@@ -92419,6 +92584,8 @@ LaTeX, but if output in the 'sphinx', 'pandoc', 'mwiki', 'html', or
    for sections, figures, movies, and equations only.
    MediaWiki ('mwiki') does not support references to equations.
  - Spaces are not allowed in labels.
+ - Never use '\pageref' as pages are not a concept in web documents
+   (there is only a 'ref' command in DocOnce and it refers to labels).
  - Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -92436,6 +92603,9 @@ LaTeX, but if output in the 'sphinx', 'pandoc', 'mwiki', 'html', or
    the 'doconce combine_images' tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+ - Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
  - Use plain 'cite' for references (e.g., '\citeauthor' has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
@@ -93649,6 +93819,8 @@ C{ipynb} formats is also important, one should follow the rules below.
    for sections, figures, movies, and equations only.
    MediaWiki (C{mwiki}) does not support references to equations.
  - Spaces are not allowed in labels.
+ - Never use C{\pageref} as pages are not a concept in web documents
+   (there is only a C{ref} command in DocOnce and it refers to labels).
  - Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear I{inline} without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -93666,6 +93838,9 @@ C{ipynb} formats is also important, one should follow the rules below.
    the C{doconce combine_images} tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+ - Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
  - Use plain C{cite} for references (e.g., C{\citeauthor} has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
@@ -94939,6 +95114,9 @@ ipynb formats is also important, one should follow the rules below.
 
  * Spaces are not allowed in labels.
 
+ * Never use \pageref as pages are not a concept in web documents
+   (there is only a ref command in DocOnce and it refers to labels).
+
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -94958,6 +95136,10 @@ ipynb formats is also important, one should follow the rules below.
    the doconce combine_images tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
 
  * Use plain cite for references (e.g., \citeauthor has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
@@ -96269,6 +96451,8 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    for sections, figures, movies, and equations only.
    MediaWiki (`mwiki`) does not support references to equations.
  * Spaces are not allowed in labels.
+ * Never use `\pageref` as pages are not a concept in web documents
+   (there is only a `ref` command in DocOnce and it refers to labels).
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference[^exception] (refer to inline elements by a section label).
@@ -96286,6 +96470,9 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    the `doconce combine_images` tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
  * Use plain `cite` for references (e.g., `\citeauthor` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
    but import from (clean) BibTeX is possible.
@@ -98127,7 +98314,10 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] [2] 
+dmap/pdftex.map}] [2]
+Underfull \hbox (badness 10000) 
+
+
 
 
 
@@ -98173,9 +98363,9 @@ dmap/pdftex.map}] [2]
 (./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
 4A09.pygtex)
 (./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex)
+4A09.pygtex) [4]
 (./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex [4])
+2768.pygtex)
 (./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
@@ -98187,14 +98377,14 @@ dmap/pdftex.map}] [2]
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [5]
+2768.pygtex [5])
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=74, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png>
+515A.pygtex) <latex_figs/dizzy_face.png, id=73, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> [6 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>] [7] [8]
+CDA7.pygtex) [7] [8]
 
 
 ...rest of part of LaTeX line number...
@@ -98202,13 +98392,15 @@ CDA7.pygtex) [6 <./latex_figs/dizzy_face.png>] [7] [8]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=112, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=104, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9 <../doc/src/manual/fig/wave1D.pdf>]
+[9]
+
+[10 <../doc/src/manual/fig/wave1D.pdf>]
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=131, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=134, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -98275,8 +98467,8 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=132, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [10 <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=135, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -98301,7 +98493,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[11 <../doc/src/manual/fig/wave1D.png>]
+[12 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -98314,18 +98506,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[12]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=160, 586.8324pt x 442.292
+[13]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=164, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=161, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=165, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=162, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=166, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=163, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=167, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=164, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=168, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=165, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=169, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -98347,42 +98539,42 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[13 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[14]
-
-
-t line 1316.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1325.
-
-
-
-...rest of part of LaTeX line number...
-
 [15]
 
 
+t line 1322.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1331.
+
+
+
+...rest of part of LaTeX line number...
+
+[16]
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -98395,7 +98587,7 @@ t line 1325.
 
 
 
-t line 1329.
+t line 1335.
 
 
 
@@ -98475,11 +98667,11 @@ t line 1329.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [16])
+2768.pygtex [17])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[17]
+[18]
 
 
 .
@@ -98506,7 +98698,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-[18]
+[19]
 
 
 
@@ -98549,13 +98741,13 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
-[19]
+[20]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 
 
 
-[20]
+[21]
 
 
 
@@ -98564,7 +98756,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [21] [22] [23]
+2768.pygtex) [22] [23] [24]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 Underfull \hbox (badness 10000) 
@@ -98576,7 +98768,7 @@ Underfull \hbox (badness 10000)
 
 
 
-[24]
+[25]
 
 
 
@@ -98595,21 +98787,21 @@ Underfull \hbox (badness 10000)
 
 
 No file testdoc.bbl.
-[25]
+[26]
 Underfull \hbox (badness 10000) 
 
 
 
 ...rest of part of LaTeX line number...
 
-[26]
+[27]
 
 
 ...rest of part of LaTeX line number...
 
-[27]
+[28]
 No file testdoc.ind.
-[28] (./testdoc.aux)
+[29] (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -98856,7 +99048,7 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (28 pages, ).
+Output written on testdoc.pdf (29 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -99109,13 +99301,15 @@ ABD: EverySelectfont initializing macros))
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
+Underfull \hbox (badness 10000) 
+
  [4]
 (./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
 4A09.pygtex)
 (./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex)
+4A09.pygtex) [5]
 (./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex [5])
+2768.pygtex)
 (./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
@@ -99127,18 +99321,20 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [6]
+2768.pygtex [6])
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png>
+515A.pygtex) <latex_figs/dizzy_face.png, id=310, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=349, 586.83241pt x 442.29242pt>
+CDA7.pygtex) [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=342, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
+[10]
+
+[11 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -99205,8 +99401,8 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -99231,7 +99427,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <../doc/src/manual/fig/wave1D.png>]
+[13 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -99244,18 +99440,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=395, 586.8324pt x 442.292
+[14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=396, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=397, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -99277,42 +99473,42 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[15]
-
-
-t line 1316.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1325.
-
-
-
-...rest of part of LaTeX line number...
-
 [16]
 
 
+t line 1322.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1331.
+
+
+
+...rest of part of LaTeX line number...
+
+[17]
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -99325,7 +99521,7 @@ t line 1325.
 
 
 
-t line 1329.
+t line 1335.
 
 
 
@@ -99397,33 +99593,33 @@ t line 1329.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [17])
+2768.pygtex [18])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[18]
+[19]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] [20]
+[20] [21]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [21]
+2768.pygtex) [22]
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23] [24]
+2768.pygtex) [23] [24] [25]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 Underfull \hbox (badness 10000) 
 
-[25]
-No file testdoc.bbl.
 [26]
+No file testdoc.bbl.
+[27]
 Underfull \hbox (badness 10000) 
 
-[27] [28]
+[28] [29]
 No file testdoc.ind.
-[29] (./testdoc.aux)
+[30] (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -99668,7 +99864,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (29 pages, ).
+Output written on testdoc.pdf (30 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2015/dev] (kpathsea + Thai support).
@@ -99938,13 +100134,15 @@ ABD: EverySelectfont initializing macros))
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
+Underfull \hbox (badness 10000) 
+
  [4]
 (./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
 4A09.pygtex)
 (./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex)
+4A09.pygtex) [5]
 (./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex [5])
+2768.pygtex)
 (./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
@@ -99956,18 +100154,20 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [6]
+2768.pygtex [6])
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png>
+515A.pygtex) <latex_figs/dizzy_face.png, id=310, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=349, 586.83241pt x 442.29242pt>
+CDA7.pygtex) [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=342, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
+[10]
+
+[11 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -100034,8 +100234,8 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -100060,7 +100260,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <../doc/src/manual/fig/wave1D.png>]
+[13 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -100073,18 +100273,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=395, 586.8324pt x 442.292
+[14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=396, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=397, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -100106,42 +100306,42 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[15]
-
-
-t line 1316.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1325.
-
-
-
-...rest of part of LaTeX line number...
-
 [16]
 
 
+t line 1322.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1331.
+
+
+
+...rest of part of LaTeX line number...
+
+[17]
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -100154,7 +100354,7 @@ t line 1325.
 
 
 
-t line 1329.
+t line 1335.
 
 
 
@@ -100226,33 +100426,33 @@ t line 1329.
 
 
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [17])
+2768.pygtex [18])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[18]
+[19]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] [20]
+[20] [21]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [21]
+2768.pygtex) [22]
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23] [24]
+2768.pygtex) [23] [24] [25]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 Underfull \hbox (badness 10000) 
 
-[25] (./testdoc.bbl [26]) [27]
+[26] (./testdoc.bbl [27]) [28]
 Underfull \hbox (badness 10000) 
 
-[28] [29] [30] (./testdoc.ind [31]
+[29] [30] [31] (./testdoc.ind [32]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[32]) (./testdoc.aux)
+[33]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -100499,7 +100699,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (32 pages, ).
+Output written on testdoc.pdf (33 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
@@ -100751,13 +100951,15 @@ ABD: EverySelectfont initializing macros))
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
 dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
+Underfull \hbox (badness 10000) 
+
  [4]
 (./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
 4A09.pygtex)
 (./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex)
+4A09.pygtex) [5]
 (./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex [5])
+2768.pygtex)
 (./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
@@ -100769,18 +100971,20 @@ dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [6]
+2768.pygtex [6])
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png>
+515A.pygtex) <latex_figs/dizzy_face.png, id=310, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7 <./latex_figs/dizzy_face.png>] [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=349, 586.83241pt x 442.29242pt>
+CDA7.pygtex) [8] [9]
+<../doc/src/manual/fig/wave1D.pdf, id=342, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[10 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=369, 586.8324pt x 442.2924pt>
+[10]
+
+[11 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -100847,8 +101051,8 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=370, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <./downloaded_figures/f_plot.png>]
+<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
@@ -100873,7 +101077,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on .
 
-[12 <../doc/src/manual/fig/wave1D.png>]
+[13 <./downloaded_figures/f_plot.png>]
 Underfull \hbox (badness 3291) 
 []\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
 \T1/lmtt/m/n/8 verbatim
@@ -100886,18 +101090,18 @@ Underfull \hbox (badness 3291)
 
 
 
-[13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=395, 586.8324pt x 442.292
+[14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=396, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=397, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -100919,39 +101123,39 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\new@ifnextchar' on .
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
+[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
 ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
 ../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
 rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[15] [16]
+[16] [17]
 (./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [17])
+2768.pygtex [18])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
 %26+engineering/book/978-3-642-23098-1| 
-[18]
+[19]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[19] [20]
+[20] [21]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [21]
+2768.pygtex) [22]
 (./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23] [24]
+2768.pygtex) [23] [24] [25]
 (./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 Underfull \hbox (badness 10000) 
 
-[25] (./testdoc.bbl [26]) [27]
+[26] (./testdoc.bbl [27]) [28]
 Underfull \hbox (badness 10000) 
 
-[28] [29] [30] (./testdoc.ind [31]
+[29] [30] [31] (./testdoc.ind [32]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[32]) (./testdoc.aux)
+[33]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -101192,7 +101396,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (32 pages, ).
+Output written on testdoc.pdf (33 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
@@ -101457,7 +101661,10 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
-[2] 
+[2]
+Underfull \hbox (badness 10000) 
+
+
 
 
 
@@ -101503,26 +101710,27 @@ Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 (./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
 4A09.pygtex)
 (./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex)
+4A09.pygtex) [4]
 (./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex [4])
+2768.pygtex)
 (./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
 2768.pygtex) 
+[5]
 (./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
 0399.pygtex)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex [5])
+2768.pygtex)
 (./_minted-testdoc/324517A075AC58FEC87C01DD81BE7B927C5D04F18B5ECF473885AEE833B1
 4F29.pygtex)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=250, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png>
+515A.pygtex) <latex_figs/dizzy_face.png, id=246, 64.24pt x 64.24pt>
+<use latex_figs/dizzy_face.png> [6 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex [6 <./latex_figs/dizzy_face.png>])
+CDA7.pygtex)
 (./_minted-testdoc/31694FBE2107EB6C5A701C5DEB889172170388258ECB494ED08D68BAB3CD
 E68F.pygtex)
 (./_minted-testdoc/751AAEDF86B68C96684E0B2E1DAD79345B805DEF588DFB75F5378543B444
@@ -101534,7 +101742,7 @@ E68F.pygtex)
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=282, 586.83241pt x 442.29242pt>
+<../doc/src/manual/fig/wave1D.pdf, id=279, 586.83241pt x 442.29242pt>
 <use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
 [9]
 
@@ -101542,7 +101750,7 @@ E68F.pygtex)
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=311, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=310, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -101609,7 +101817,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=312, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=311, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -101649,17 +101857,17 @@ Underfull \hbox (badness 3291)
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=338, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=337, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=339, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=338, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=340, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=339, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=341, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=340, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=342, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=341, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=343, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=342, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -101688,7 +101896,7 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1266.
+t line 1272.
 
 
 
@@ -101708,7 +101916,7 @@ t line 1266.
 
 
 
-t line 1275.
+t line 1281.
 
 
 
@@ -101729,7 +101937,7 @@ t line 1275.
 
 
 
-t line 1279.
+t line 1285.
 
 
 
@@ -107612,7 +107820,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 168 has zero height.
+* Media annotation on line 170 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -107622,7 +107830,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 195 has zero height.
+* Media annotation on line 197 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -108233,7 +108441,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 168 has zero height.
+* Media annotation on line 170 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -108243,7 +108451,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 195 has zero height.
+* Media annotation on line 197 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -108847,7 +109055,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 168 has zero height.
+* Media annotation on line 170 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -108857,7 +109065,7 @@ ABD: EveryShipout initializing macros
 *************************************************
 * media9 warning: "zero height"
 * 
-* Media annotation on line 195 has zero height.
+* Media annotation on line 197 has zero height.
 * 
 * Provide a poster text with non-zero height or
 * set a valid height using one of `height' or
@@ -111476,7 +111684,7 @@ running mako on tmp_preprocess__encoding3.do.txt to make tmp_mako__encoding3.do.
     reason: doconce file contains non-ascii characters
     rerun with --encoding=utf-8 (or similar):
     doconce format latex encoding3.do.txt -DMAKO --no_header_footer --encoding=utf-8
-    doconce find_nonascii_chars encoding3.do.txt can be used to identify non-ascii characters
+    doconce find_nonascii_chars can be used to identify non-ascii characters (use it on encoding3.do.txt or tmp_mako__encoding3.do.txt
 Abort! (add --no_abort on the command line to avoid this abortion)
 + doconce format latex encoding3 -DMAKO --encoding=utf-8 --no_header_footer
 running preprocess -DFORMAT=latex -DDEVICE=screen -DMAKO encoding3.do.txt > tmp_preprocess__encoding3.do.txt
@@ -112141,10 +112349,17 @@ Overfull \hbox (4.64987pt too wide)
 \T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
  cre-at-ing macros. 
 
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on .
+
+[12]
 Overfull \hbox (47.3995pt too wide) 
 []\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
 \T1/lmtt/m/n/10 doconce latex2doconce
-[12] [13] [14]
+[13] [14]
 
 
 ...rest of part of LaTeX line number...
@@ -113621,7 +113836,7 @@ ith for re-fer-ring to com-pan-ion doc-u-ments
 
 Package hyperref Warning: Ignoring empty anchor on .
 
-
+[12]
 Underfull \hbox (badness 4819) 
 []\T1/ptm/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
 \T1/pcr/m/n/10 doconce
@@ -113632,13 +113847,13 @@ Overfull \hbox (75.50217pt too wide)
 Overfull \hbox (129.50217pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{$v_0$} & \multicolumn{1}{c}{$f_R(v_0)$}\\hl
 ine  
-[12]
+[13]
 Overfull \hbox (41.00006pt too wide) 
 \T1/pcr/m/n/10 Here is some "some link text": "http://some.net/address"  
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 or just the raw address: URL: "http://google.com".  
-[13]
+[14]
 Overfull \hbox (47.00006pt too wide) 
 []\T1/pcr/m/n/10 Links to files typeset in verbatim mode applies backtics:  
 
@@ -113663,7 +113878,7 @@ ight=315] YouTube movie.
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 MOVIE: [http://vimeo.com/55562330, width=500 height=278] Vimeo
  movie. 
-[14]
+[15]
 Overfull \hbox (107.00006pt too wide) 
 \T1/pcr/m/n/10 |----------------c--------|------------------c------------------
 --|  
@@ -113702,7 +113917,7 @@ Overfull \hbox (107.00006pt too wide)
 
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce csv2table mydata.csv > mydata_table.do.txt 
-[15]
+[16]
 Overfull \hbox (54.34767pt too wide) 
 \T1/ptm/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /pcr/m/n/10 name \T1/ptm/m/n/10 on the form \T1/pcr/m/n/10 Author1_Author2_YYYY
@@ -113719,7 +113934,7 @@ Overfull \hbox (71.00006pt too wide)
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 "A Document for Testing DocOnce": "testdoc.html" cite{testdoc:
 12}],  
-[16]
+[17]
 Overfull \hbox (3959.00006pt too wide) 
 []\T1/pcr/m/n/10 commands: format help sphinx_dir subst replace replace_from_fi
 le clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine
@@ -113776,7 +113991,7 @@ Overfull \hbox (35.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
-[17]
+[18]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
 
@@ -113812,7 +114027,7 @@ Overfull \hbox (125.00006pt too wide)
 Overfull \hbox (125.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce remove --from[-] from-text [--to[-] to-text] somefile 
 > result  
-[18]
+[19]
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # transform ptex2tex files (.p.tex) to ordinary latex file  
 
@@ -113868,7 +114083,7 @@ f doconce itself)
 Overfull \hbox (167.00006pt too wide) 
 []\T1/pcr/m/n/10 # generate a make.sh script for translating a doconce file to 
 various formats  
-[19]
+[20]
 Overfull \hbox (83.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce makefile docname doconcefile [html sphinx pdflatex ...
 ]  
@@ -113895,7 +114110,7 @@ Overfull \hbox (5.00006pt too wide)
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 # insert a table of exercises in a latex file myfile.p.tex  
-[20]
+[21]
 Overfull \hbox (101.00006pt too wide) 
 \T1/pcr/m/n/10 ===== Problem: Derive the Formula for the Area of an Ellipse ===
 ==  
@@ -113920,7 +114135,7 @@ Overfull \hbox (41.00006pt too wide)
 Overfull \hbox (65.00006pt too wide) 
 []\T1/pcr/m/n/10 Intro to this exercise. Questions are in subexercises below.  
 
-[21]
+[22]
 Overfull \hbox (101.00006pt too wide) 
 []\T1/pcr/m/n/10 At the very end of the exercise it may be appropriate to summa
 rize  
@@ -113938,7 +114153,7 @@ Overfull \hbox (4.60825pt too wide)
 
 Overfull \hbox (18.10902pt too wide) 
 []
-[22]
+[23]
 Overfull \hbox (263.00006pt too wide) 
 []\T1/pcr/m/n/10 \multicolumn{1}{c}{time} & \multicolumn{1}{c}{velocity} & \mul
 ticolumn{1}{c}{acceleration} \\  
@@ -113946,16 +114161,16 @@ ticolumn{1}{c}{acceleration} \\
 Overfull \hbox (4.19656pt too wide) 
 [][][][][][] \T1/ptm/m/n/10 con-tains some il-lus-tra-tions on how to uti-lize 
 \T1/pcr/m/n/10 mako \T1/ptm/m/n/10 (clone the GitHub
-[23]
+[24]
 Overfull \hbox (113.41505pt too wide) 
 []\T1/ptm/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "[][][][][][]" 
-[24] (./quickref.rst.aux)
+[25] (./quickref.rst.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
 (see the transcript file for additional information)
-Output written on quickref.rst.dvi (24 pages, ).
+Output written on quickref.rst.dvi (25 pages, ).
 Transcript written on quickref.rst.log.
 + dvipdf quickref.rst.dvi
 + system doconce format plain quickref --no_preprocess

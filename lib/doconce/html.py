@@ -1684,7 +1684,7 @@ def html_author(authors_and_institutions, auth2index,
         for index in index2inst:
             text += '<center>[%d] <b>%s</b></center>\n' % \
                     (index, index2inst[index])
-    text += '\n\n'
+    text += '<br>\n\n'
     return text
 
 
@@ -2263,7 +2263,7 @@ def define(FILENAME_EXTENSION,
         'paragraph':     r'<b>\g<subst></b>\n',
         'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
         'title':         r'\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
-        'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->',
+        'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->\n<br>',
         'author':        html_author,
         'figure':        html_figure,
         'movie':         html_movie,

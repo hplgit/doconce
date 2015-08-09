@@ -167,23 +167,12 @@ or equal signs (=):
    * 2 *underscrores* (only! - it looks best) for paragraphs
      (paragraph heading will be inlined)
 
-Headings can be surrounded by as many blanks as desired.
-
-DocOnce also supports abstracts. This is typeset as a paragraph, but
-*must* be followed by a section heading (everything up to the first
-section heading is taken as part of the text of the abstract).
-
-
-Here are some examples:
+Headings can be surrounded by as many blanks as desired, but the
+first `=` must start in column 1 and there must one blank
+on each side of the heading, between the heading and the `=` signs.
+Here are examples on headings:
 
 !bc do
-__Abstract.__ The following text just attempts to exemplify
-various section headings.
-
-Appendix is supported too: just let the heading start with ``Appendix: ''
-(this affects only `latex` output, where the appendix formatting
-is used - all other formats just leave the heading as it is written).
-
 ======= Example on a Section Heading =======
 
 The running text goes here.
@@ -199,6 +188,62 @@ The running text goes here.
 
 __A Paragraph.__ The running text goes here.
 !ec
+
+===== Abstract =====
+idx{abstract}
+
+DocOnce also supports abstracts. The syntax is like an ordinary
+paragraph with heading *Abstract* or *Summary*,
+but the text *must* be followed by a
+
+ * section or paragraph heading
+ * table of contents (`TOC:`)
+ * date (`DATE:`)
+
+Everything up to the first
+heading, table of contents, or date is taken as the abstract.
+For articles, the abstract is placed after the date, but before the table
+of contents or the first ordinary heading. For books one may insert
+the abstract before the date to make appear on the first page.
+
+Here are examples an abstract and some section headings.
+
+!bc do
+__Abstract.__ This abstract
+lasts up to the section heading.
+
+======= Here Is the First Section Heading =======
+
+# or
+
+__Summary.__
+This is
+a summary.
+
+Even with two paragraphs. It lasts
+until the table of contents.
+
+TOC: on
+
+# In books we may place the summary before DATE
+
+TITLE: Some Title
+AUTHOR: Some Author
+
+__Summary.__ Here is the backmatter
+promotion text for this book, appearing
+on the front page...
+
+DATE: today
+!ec
+
+===== Appendix =====
+idx{appendix}
+
+Appendix is supported too: just let the heading start with ``Appendix: ''
+This affects only `latex` output, where the appendix formatting
+is used - all other formats just leave the heading as it is written.
+
 
 !split
 ===== Figures =====

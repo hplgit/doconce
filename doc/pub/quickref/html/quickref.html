@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 4, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 9, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -701,6 +701,8 @@ Use Mako functions if you need macros in the running text.</li>
 for sections, figures, movies, and equations only.
 MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
 <li>Spaces are not allowed in labels.</li>
+<li>Never use <code class="docutils literal"><span class="pre">\pageref</span></code> as pages are not a concept in web documents
+(there is only a <code class="docutils literal"><span class="pre">ref</span></code> command in DocOnce and it refers to labels).</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements
 (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
 for reference <a class="footnote-reference" href="#exception" id="id1">[1]</a> (refer to inline elements by a section label).
@@ -718,6 +720,9 @@ figure, but you can combine the files to one file using
 the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code> tool. Refer to individual image files
 in the caption or text by (e.g.) &#8220;left&#8221; and &#8220;right&#8221;, or
 &#8220;upper left&#8221;, &#8220;lower right&#8221;, etc.</li>
+<li>Footnotes can be used as usual in LaTeX, but some HTML formats are not
+able to display mathematics or inline verbatim or other formatted
+code (emphasis, boldface, color) in footnotes - have that in mind.</li>
 <li>Use plain <code class="docutils literal"><span class="pre">cite</span></code> for references (e.g., <code class="docutils literal"><span class="pre">\citeauthor</span></code> has no counterpart
 in DocOnce). The bibliography must be prepared in the Publish format,
 but import from (clean) BibTeX is possible.</li>
