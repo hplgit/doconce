@@ -822,11 +822,11 @@ def latin2html():
 
 # replace is taken from scitools
 def _usage_find_nonascii_chars():
-    print 'Usage: doconce non_ascii_chars file1 file2 ...'
+    print 'Usage: doconce find_non_ascii_chars file1 file2 ...'
 
 def find_nonascii_chars():
-    if len(sys.argv) < 4:
-        _find_nonascii_chars()
+    if len(sys.argv) <= 1:
+        usage_find_nonascii_chars()
         sys.exit(0)
 
     filenames = wildcard_notation(sys.argv[1:])
@@ -2226,7 +2226,9 @@ def clean():
         print 'Removing Trash directory'
     removed = []
 
-    trash_files = '_doconce_debugging.log', '__tmp.do.txt', 'texput.log'
+    trash_files = ['_doconce_debugging.log', '__tmp.do.txt', 'texput.log']
+    # "secret" files (.trash$hash)
+    trash_files += glob.glob('.trash[a-f]*') + glob.glob('._.trash[a-f]*')
     for trash_file in trash_files:
         if os.path.isfile(trash_file):
             removed.append(trash_file)

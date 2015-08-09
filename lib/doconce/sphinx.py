@@ -498,6 +498,10 @@ found in line:
             lines[i] = '| ' + lines[i] + '\n'
     filestr = '\n'.join(lines)
 
+    # Remove double !split (TOC with a prefix !split gives two !splits)
+    pattern = '^.. !split\s+.. !split'
+    filestr = re.sub(pattern, '.. !split', filestr, flags=re.MULTILINE)
+
     if option('html_links_in_new_window'):
         # Insert a comment to be recognized by automake_sphinx.py such that it
         # can replace the default links by proper modified target= option.

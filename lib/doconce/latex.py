@@ -1542,7 +1542,7 @@ def latex_author(authors_and_institutions, auth2index,
 
     elif title_layout == 'titlepage':
         text += r"""
-\vspace{1.3cm}
+\vspace{0.5cm}
 """
         if one_author_at_one_institution:
             author = list(auth2index.keys())[0]
@@ -1689,9 +1689,11 @@ def latex_date(m):
 """ % vars()
     else:  # doconce special heading
         text += r"""
-\begin{center} %% date
+%% --- begin date ---
+\begin{center}
 %(date)s
 \end{center}
+%% --- end date ---
 
 \vspace{1cm}
 
@@ -1714,6 +1716,18 @@ def latex_abstract(m):
 \abstract{
 %(text)s
 }
+""" % vars()
+    elif title_layout == 'titlepage':
+        abstract += r"""
+%% --- begin abstract ---
+\ \\ [13mm]
+\begin{center}
+\begin{minipage}{0.9\linewidth}
+\small
+%(text)s
+\end{minipage}
+\end{center}
+%% --- end abstract ---
 """ % vars()
     else:
         abstract += r"""

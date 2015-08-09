@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 5, 2015
+:Date: Aug 9, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -308,23 +308,13 @@ or equal signs (=):
    * 2 *underscrores* (only! - it looks best) for paragraphs
      (paragraph heading will be inlined)
 
-Headings can be surrounded by as many blanks as desired.
-
-DocOnce also supports abstracts. This is typeset as a paragraph, but
-*must* be followed by a section heading (everything up to the first
-section heading is taken as part of the text of the abstract).
-
-Here are some examples:
+Headings can be surrounded by as many blanks as desired, but the
+first ``=`` must start in column 1 and there must one blank
+on each side of the heading, between the heading and the ``=`` signs.
+Here are examples on headings:
 
 .. code-block:: doconce
 
-        __Abstract.__ The following text just attempts to exemplify
-        various section headings.
-        
-        Appendix is supported too: just let the heading start with ``Appendix: ''
-        (this affects only `latex` output, where the appendix formatting
-        is used - all other formats just leave the heading as it is written).
-        
         ======= Example on a Section Heading =======
         
         The running text goes here.
@@ -339,6 +329,67 @@ Here are some examples:
         The running text goes here.
         
         __A Paragraph.__ The running text goes here.
+
+Abstracts
+---------
+
+.. index:: abstract
+
+DocOnce also supports abstracts. The syntax is like an ordinary
+paragraph with heading *Abstract* or *Summary*,
+but the text *must* be followed by a
+
+ * section or paragraph heading
+
+ * table of contents (``TOC:``)
+
+ * date (``DATE:``)
+
+Everything up to the first
+heading, table of contents, or date is taken as the abstract.
+For articles, the abstract is placed after the date, but before the table
+of contents or the first ordinary heading. For books one may insert
+the abstract before the date to make appear on the first page.
+
+Here are examples an abstract and some section headings.
+
+.. code-block:: doconce
+
+        __Abstract.__ This abstract
+        lasts up to the section heading.
+        
+        ======= Here Is the First Section Heading =======
+        
+        # or
+        
+        __Summary.__
+        This is
+        a summary.
+        
+        Even with two paragraphs. It lasts
+        until the table of contents.
+        
+        TOC: on
+        
+        # In books we may place the summary before DATE
+        
+        TITLE: Some Title
+        AUTHOR: Some Author
+        
+        __Summary.__ Here is the backmatter
+        promotion text for this book, appearing
+        on the front page...
+        
+        DATE: today
+
+Appendix
+--------
+
+.. index:: appendix
+
+Appendix is supported too: just let the heading start with "Appendix: "
+This affects only ``latex`` output, where the appendix formatting
+is used - all other formats just leave the heading as it is written.
 
 Figures  (1)
 ------------
@@ -4790,6 +4841,9 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
  * Spaces are not allowed in labels.
 
+ * Never use ``\pageref`` as pages are not a concept in web documents
+   (there is only a ``ref`` command in DocOnce and it refers to labels).
+
  * Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear *inline* without numbers or labels
    for reference [#exception]_ (refer to inline elements by a section label).
@@ -4809,6 +4863,10 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
    the ``doconce combine_images`` tool. Refer to individual image files
    in the caption or text by (e.g.) "left" and "right", or
    "upper left", "lower right", etc.
+
+ * Footnotes can be used as usual in LaTeX, but some HTML formats are not
+   able to display mathematics or inline verbatim or other formatted
+   code (emphasis, boldface, color) in footnotes - have that in mind.
 
  * Use plain ``cite`` for references (e.g., ``\citeauthor`` has no counterpart
    in DocOnce). The bibliography must be prepared in the Publish format,
