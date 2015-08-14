@@ -193,20 +193,21 @@ __A Paragraph.__ The running text goes here.
 idx{abstract}
 
 DocOnce also supports abstracts. The syntax is like an ordinary
-paragraph with heading *Abstract* or *Summary*,
+paragraph with heading *Abstract*, *Summary*, or *Preface,
 but the text *must* be followed by a
 
  * section or paragraph heading
  * table of contents (`TOC:`)
  * date (`DATE:`)
 
-Everything up to the first
-heading, table of contents, or date is taken as the abstract.
-For articles, the abstract is placed after the date, but before the table
-of contents or the first ordinary heading. For books one may insert
-the abstract before the date to make appear on the first page.
+Everything up to the first heading, table of contents, or date is
+taken as the abstract.  For articles, the abstract is placed after the
+date, but before the table of contents or the first ordinary
+heading. For books one may insert the abstract before the date to make
+appear on the first page.
 
-Here are examples an abstract and some section headings.
+Here are examples on an abstract and some type of ending
+text (section headings, table of contents, or date).
 
 !bc do
 __Abstract.__ This abstract

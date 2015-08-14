@@ -1707,6 +1707,7 @@ def latex_date(m):
     return text
 
 def latex_abstract(m):
+    atype = m.group('type').strip().lower()
     text = m.group('text').strip()
     rest = m.group('rest')
     title_layout = option('latex_title_layout=', 'doconce_heading')
@@ -1730,7 +1731,15 @@ def latex_abstract(m):
 %% --- end abstract ---
 """ % vars()
     else:
-        abstract += r"""
+        if atype == 'preface':
+            abstract += r"""
+%% --- begin preface ---
+\section*{Preface}
+%(text)s
+%% --- end preface ---
+""" % vars()
+        else:
+            abstract += r"""
 \begin{abstract}
 %(text)s
 \end{abstract}

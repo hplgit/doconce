@@ -3041,7 +3041,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
             n = parts_name2part.get(name, None) #part where this name is defined
             if n is None and name not in ids:
                 print '*** error: <a href="#%s" has no corresponding anchor (<a name= or some id=)' % name
-                print '    This is probably a bug in DocOnce.'
+                print '    Reasons: 1) wrong reference, 2) no BIBFILE, 2) bug in DocOnce.'
                 _abort()
                 continue  # go to next if abort is turned off
             if n is not None and n != i:

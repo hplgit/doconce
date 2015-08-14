@@ -1047,7 +1047,7 @@ INLINE_TAGS = {
     # it before DATE (not recommended for papers)
     # 'abstract' is in doconce.py processed before chapter, section, etc
     'abstract':  # needs re.DOTALL | re.MULTILINE
-    r"""^\s*__(?P<type>Abstract|Summary).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|DATE:|% --- begin date|\\date\{|<!-- date|__[A-Z].+[.?:]__|^={3,9})""",
+    r"""^\s*__(?P<type>Abstract|Summary|Preface).__\s*(?P<text>.+?)(?P<rest>TOC:|\\tableofcontents|Table of [Cc]ontents|DATE:|% --- begin date|\\date\{|<!-- date|__[A-Z].+[.?:]__|^={3,9})""",
 
     'keywords':
     r'^__Keywords.__\s+(?P<subst>.+)\s*$',
