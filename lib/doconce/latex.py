@@ -16,7 +16,31 @@ def underscore_in_code(m):
     text = text.replace('_', r'\_')
     return r'\code{%s}' % text
 
+def aux_label2number():
+    """Interpret an .aux file and return dict label2number[label]=number."""
+    auxfilename = option('replace_ref_by_latex_auxno=', None)
+    if auxfilename is None:
+        return {}
+
+    if not os.path.isfile(auxfilename):
+        print '*** error: --replace_ref_by_latex_auxno=%s, but file "%s" does not exist' % (auxfilename, auxfilename)
+        _abort()
+    f = open(auxfilename, 'r')
+    aux = f.read()
+    f.close()
+
+    pattern = r'^\\newlabel\{(.+?)\}\{\{(.+?)\}'
+    label2number = {}
+    for line in aux.splitlines():
+        m = re.search(pattern, line)
+        if m:
+            label = m.group(1)
+            no = m.group(2)
+            label2number[label] = no
+    return label2number
+
 def get_bib_index_pages():
+    """Find the page number for the Index and Bibliography from .aux file."""
     bib_page = idx_page = '9999'
     from doconce import dofile_basename
     name = dofile_basename + '.aux'
@@ -1707,6 +1731,7 @@ def latex_date(m):
     return text
 
 def latex_abstract(m):
+    atype = m.group('type').strip().lower()
     text = m.group('text').strip()
     rest = m.group('rest')
     title_layout = option('latex_title_layout=', 'doconce_heading')
@@ -1730,7 +1755,15 @@ def latex_abstract(m):
 %% --- end abstract ---
 """ % vars()
     else:
-        abstract += r"""
+        if atype == 'preface':
+            abstract += r"""
+%% --- begin preface ---
+\section*{Preface}
+%(text)s
+%% --- end preface ---
+""" % vars()
+        else:
+            abstract += r"""
 \begin{abstract}
 %(text)s
 \end{abstract}

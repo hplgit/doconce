@@ -671,7 +671,12 @@ and `|` right before and after verbatim word (with no space):
 |-----------------------------------------|
 
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
-but not anymore:
+but not
+# #if FORMAT in ('plain', 'matlabnb')
+anymore (except for plain text and matlabnb):
+# #else
+anymore:
+# #endif
 
 |-----------------------------|
 | $S$         | command       |
@@ -679,11 +684,12 @@ but not anymore:
 | $||a_0||$   | `norm|length` |
 | $x\cap y$   | `x|y`         |
 |-----------------------------|
-# #if FORMAT == 'plain'
+# #if FORMAT in ('plain', 'matlabnb')
 
-NOTE: The above table is not correctly handled in the plain text format
+NOTE: The above table is not correctly handled in the plain text
+and matlab notebook formats
 because in this format inline verbatim text look like normal text,
-and the first line in the table then looks like three columns.
+and the lines in the table then look like more than two columns.
 # #endif
 
 Finally, a table with math

@@ -28,10 +28,10 @@ def debugpr(heading='', text=''):
 
 from common import *
 from misc import option, which, _abort
-import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml
+import html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml, matlabnb
 
 def supported_format_names():
-    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'xml'
+    return 'html', 'latex', 'pdflatex', 'rst', 'sphinx', 'st', 'epytext', 'plain', 'gwiki', 'mwiki', 'cwiki', 'pandoc', 'ipynb', 'xml', 'matlabnb'
 
 def doconce_envirs():                     # begin-end environments
     return ['c', 't',                     # verbatim and tex blocks
@@ -2665,7 +2665,21 @@ def handle_cross_referencing(filestr, format):
         else:
             filestr = pattern.sub('', filestr)
 
-    # 3. Handle references that can be internal or external
+    # 3. Replace ref by hardcoded numbers from a latex .aux file
+    refaux = 'refaux{' in filestr
+    from latex import aux_label2number
+    label2number = aux_label2number()
+    # If there is one refaux{...} in the document, only refaux{...}
+    # references get replaced by label2number info
+    if label2number:
+        for label in label2number:
+            no = label2number[label]
+            if refaux:
+                filestr = re.sub(r'refaux\{%s\}' % label, no, filestr)
+            else:
+                filestr = re.sub(r'ref\{%s\}' % label, no, filestr)
+
+    # 4. Handle references that can be internal or external
     #    ref[internal][cite][external-HTML]
     internal_labels = re.findall(r'label\{(.+?)\}', filestr)
     ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
@@ -3627,7 +3641,7 @@ def doconce2format(filestr, format):
            LIST, ARGLIST,TABLE, EXERCISE, FIGURE_EXT, CROSS_REFS, INDEX_BIB, \
            TOC, ENVIRS, INTRO, OUTRO
 
-    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml:
+    for module in html, latex, pdflatex, rst, sphinx, st, epytext, plaintext, gwiki, mwiki, cwiki, pandoc, ipynb, xml, matlabnb:
         #print 'calling define function in', module.__name__
         module.define(
             FILENAME_EXTENSION,
@@ -3753,9 +3767,21 @@ def doconce2format(filestr, format):
              remove_code_and_tex(filestr, format)
 
     debugpr('The file after removal of code/tex blocks:', filestr)
-    debugpr('The code blocks:', pprint.pformat(code_blocks))
-    debugpr('The code block types:', pprint.pformat(code_block_types))
-    debugpr('The tex blocks:', pprint.pformat(tex_blocks))
+    def print_blocks(blocks, delimiter=True):
+        s = ''
+        for i in range(len(blocks)):
+            s += str(i)
+            if delimiter:
+                s+= ':\n'
+            s += blocks[i]
+            if delimiter:
+                s+= '\n------------'
+            s+= '\n'
+        return s
+
+    debugpr('The code blocks:', print_blocks(code_blocks))
+    debugpr('The code block types:', print_blocks(code_block_types, False))
+    debugpr('The tex blocks:', print_blocks(tex_blocks))
 
     report_progress('removed all verbatim and latex blocks')
 
