@@ -48,6 +48,11 @@ number:  use either absolute exercise number or chapter.localnumber."""),
     ('--max_bc_linelength=',
      """Strip lines in !bc environments that are longer than specified
 (to prevent too long lines). Default: None (no length restriction)."""),
+    ('--replace_ref_by_latex_auxno=',
+     """Replace all ref{...} by hardcoded numbers from a latex .aux file.
+Makes it possible for a notebook or html page to refer to a latex textbook.
+Recommended syntax: see (ref{my:eq1}) in cite{MyBook}, or see
+Section ref{my:sec2} in cite{MyBook}."""),
     ('--keep_pygments_html_bg',
      """Do not allow change of background in code blocks in HTML."""),
     ('--minted_latex_style=',

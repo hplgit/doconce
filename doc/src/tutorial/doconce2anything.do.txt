@@ -1064,6 +1064,7 @@ label{do2any:ipynb}
 
 idx{output format!notebook}
 idx{IPython notebook}
+idx{Jupyter notebook}
 idx{notebook}
 
 DocOnce can generate json files for the Jupyter Notebook:
@@ -1174,6 +1175,50 @@ option `--ipynb_admon=`:
 
 Note that quotes in `!bc quote` environments
 are always typeset as Markdown quotes.
+
+=== References to an External Textbook ===
+
+Sometimes one wants to refer to equations and sections in an external
+LaTeX book where a `book.aux` file is available. The references in the
+notebook to the LaTeX book can then be hardcoded from the `book.aux` file
+with this construction:
+
+!bc sys
+Terminal> doconce format ipynb mydoc \
+          --replace_ref_by_latex_auxno=book.aux
+!ec
+
+===== Matlab Notebooks =====
+label{do2any:matlabnb}
+
+idx{output format!notebook}
+idx{Matlab notebook}
+idx{Matlab publish format (notebook)}
+idx{notebook}
+
+The Matlab *publish* format is aimed at notebooks, but the markup is
+quite primitive, so only a small subset of DocOnce markup can translate
+successfully to the Matlab publish format. However, if you write within
+that subset, it is easy to create notebooks in DocOnce that can translate
+both to Python and Matlab (use preprocessor directives or Mako functions
+to include Matlab or Python code, depending on the output format).
+
+The Matlab publish format is called `matlabnb`:
+
+!bc sys
+Terminal> doconce format matlabnb mydoc
+!ec
+
+The `--replace_ref_by_latex_auxno=` option for referring to equations
+and sections in a textbook, as explained at the end of the section on
+Jupyter/IPython notebooks, also works with Matlab notebooks (and for
+any other output format):
+
+!bc sys
+Terminal> doconce format matlabnb mydoc \
+          --replace_ref_by_latex_auxno=book.aux
+!ec
+
 
 ===== Plain ASCII Text =====
 label{do2any:ascii}

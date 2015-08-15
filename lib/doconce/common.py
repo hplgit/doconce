@@ -427,7 +427,7 @@ def remove_code_and_tex(filestr, format):
     # ipynb (and future interactive executable documents) needs to
     # see if a code is to be executed or just displayed as text.
     # !bc *cod-t and !bc *pro-t is used to indicate pure text.
-    if format not in ('ipynb',):
+    if format not in ('ipynb', 'matlabnb'):
         filestr = re.sub(r'^!bc +([a-z0-9]+)-t', r'!bc \g<1>',
                          filestr, flags=re.MULTILINE)
 
@@ -538,9 +538,9 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
     # Consistency check (only for complete documents):
     # find no of distinct code and math blocks
     # (can be duplicates when solutions are copied at the end)
-    import sets
     pattern = r'^\d+ ' + _CODE_BLOCK
-    n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
+    code_lines = re.findall(pattern, filestr, flags=re.MULTILINE)
+    n = len(set(code_lines))
     if complete_doc and len(code_blocks) != n:
         print '*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks))
         print """    Possible causes:
@@ -548,11 +548,22 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
              swallows code
            - mismatch of !bt and !et across files in multi-file documents
            - !bc and !ec inside code blocks - replace by |bc and |ec
-    (run doconce on each file to locate the problem, then on
+    (run doconce on each individual file to locate the problem, then on
      smaller and smaller parts of each file)"""
+        numbers = range(len(code_blocks))  # expected numbers in code blocks
+        for e in code_lines:
+            # remove number
+            number = int(e.split()[0])
+            if number not in numbers:
+                print '   Problem: found %s, but the number %d was unexpected' % (e, number)
+            else:
+                numbers.remove(number)
+        if numbers:
+            print '    Problem: did not find XX <<<!!CODE_BLOCK for XX in', numbers
+
         _abort()
     pattern = r'^\d+ ' + _MATH_BLOCK
-    n = len(sets.Set(re.findall(pattern, filestr, flags=re.MULTILINE)))
+    n = len(set(re.findall(pattern, filestr, flags=re.MULTILINE)))
     if complete_doc and len(tex_blocks) != n:
         print '*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks))
         print """    Possible causes:

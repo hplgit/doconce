@@ -140,6 +140,7 @@ system doconce format pandoc testdoc.do.txt $ex
 system doconce format mwiki testdoc.do.txt $ex
 system doconce format cwiki testdoc.do.txt $ex
 system doconce format ipynb testdoc.do.txt $ex
+system doconce format matlabnb testdoc.do.txt $ex
 
 # Test mako variables too
 system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 MYVAR2='a string' $ex

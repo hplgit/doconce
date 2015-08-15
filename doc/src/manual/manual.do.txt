@@ -1471,7 +1471,7 @@ are vectors of length $n$|$n$."
 
 !split
 ===== Cross-Referencing =====
-idx{cross referencing} idx{labels} idx{references}
+idx{cross referencing} idx{labels} idx{references} idx{`ref` (label reference)}
 
 References and labels are supported. The syntax is simple:
 
@@ -1487,10 +1487,10 @@ the `plain` text, `epytext`, and `st` formats will simply
 replace the reference by the title of the (sub)section.  All labels
 will become invisible, except those in math environments.  In the
 `rst` and `sphinx` formats, the end effect is the same, but
-the ``label'' and ``ref'' commands are first translated to the proper
+the `label` and `ref` commands are first translated to the proper
 reST commands by `doconce format`. In the `html`, `ipynb`, and wiki formats,
 labels become anchors and references become links,
-and with LaTeX ``label'' and ``ref'' are just equipped with backslashes so
+and with LaTeX `label` and `ref` are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
 Labels and references should only be used for
@@ -1507,6 +1507,23 @@ are handled by the format in question.
 Hyperlinks to files or web addresses are handled as explained
 in Section ref{inline:tagging}.
 
+idx{`refaux` (label reference)}
+
+References to equations and sections in other documents can be done
+by the *generalized cross-referencing* syntax explained in the next
+section. However, sometimes one wants in an HTML document or notebook
+to make references to equations and sections in
+a LaTeX textbook. This is not well handled by the generalized cross-referencing
+technique, but DocOnce has a special option for this feature:
+`--replace_ref_by_latex_auxno=../book.aux` will read the label and numbering
+information from `../book.aux` and replace all references (`ref`) by the
+corresponding number found in the `../book.aux` file. Sometimes one wants
+to use this feature for selected references. In that case, use `refaux`
+instead of `ref`. If there is a single `refaux` command in the DocOnce
+source, only `refaux` references will be replaced by numbers from the
+`.aux` file. Otherwise, all `ref` commands corresponding to labels in
+the `.aux` file will be replaced.
+
 ===== Generalized Cross-Referencing =====
 label{manual:genrefs}
 
@@ -1515,6 +1532,7 @@ idx{`cite`}
 idx{citations, generalized}
 idx{generalized citations}
 idx{cross-document referencing}
+idx{`ref` (generalized reference)}
 
 Sometimes a series of individual documents may be assembled to one
 large document, typically a book.
@@ -1635,6 +1653,8 @@ of the directory holding an external document will destroy the
 a file listed as `\externaldocument{}` has no `.aux` file.
 !ewarning
 
+idx{`refch` (generalized chapter reference)}
+
 === Generalized References to Chapters ===
 
 A reference to a chapter in a book becomes just
@@ -1694,6 +1714,51 @@ format is `latex` or `pdflatex`. In all other cases the result becomes
 ...as shown in
 the document "Some Equations": "http://some.net/someeqs/"].
 !ec
+
+=== Generalized References to LaTeX Documents ===
+
+It is difficult in the `[external]` part of the generalized reference to
+refer to equation numbers in an external document. If one wants to refer
+to a LaTeX document, say a textbook, from some HTML or notebook, then
+one can use the `refaux` reference and an `.aux` as explained at the
+end of the previous section. Here is one example:
+
+!bc do
+From ref[(ref{eq1})][ in cite{Langtangen_2045}][
+equation (refaux{eq1}) in cite{Langtangen_2045}], we realize that...
+!ec
+For LaTeX output, the reference to `eq1` will remain, but for other
+formats
+
+!bc
+(refaux{eq1})
+!ec
+will be replaced by (say)
+`(1.5)` if we provide the option `--replace_ref_by_latex_auxno=mybook.aux`
+and `mybook.aux` defines label `eq1` to have number `1.5`.
+Replacing `refaux` by `ref` above will lead to hardcoding of `ref{eq1}`
+as `1.5` also in LaTeX output (which is okay, the `xr` package and
+giving `Externaldocuments: mybook` results in the same).
+
+The example above is particularly relevant if one writes exercises that
+are to be filtered out as notebooks. The notebooks can then refer to
+a LaTeX book, while in the LaTeX version of the document,
+the exercises make references to the LaTeX book via the `xr` package the
+usual way.
+
+Sometimes one does not want to refer to a LaTeX document in the
+`[external]` part of a generalized reference, but to a web document.
+Then the text must be
+written in a different way if one has equation or section references.
+For example,
+
+!bc do
+From ref[(ref{eq1})][ in cite{Langtangen_2045}][
+the differential equation for $u(t)$ in the section
+"Setting up the model": "http://some.where.net/doc#model"
+in cite{Langtangen_2045}], we realize that...
+!ec
+
 
 === Tool for Generating Generalizedd References ===
 
@@ -2508,19 +2573,29 @@ sessions are automatically recognized and handled in that format).
 in the `.ptex2tex.cfg` configuration file for `ptex2tex` and in
 the `sphinx code-blocks` comments for Sphinx, see below.)
 
+=== Executable and Non-Executable Code ===
 
-Since the config file for `ptex2tex` and command-line arguments for
-the alternative `doconce ptex2tex` program can define what some environments
-map onto with respect to typesetting, a similar possibility is
-supported for Sphinx as well.  The argument after `!bc` is in case of
-Sphinx output mapped onto a valid Pygments language for typesetting of
-the verbatim block by Pygments. This mapping takes place in an
-optional comment to be inserted in the DocOnce source file, e.g.,
+The `ipynb` and `matlabnb` formats create notebooks where computer
+code can be executed. Sometimes one wants to show code that is *not*
+to be executed, but just shown as a text block. Any code environment
+with a postfix `-t` indicates that the code is not to be executed, only
+displayed. For example, `!bc pycod-t` is a Python snippet not intended
+for execution. All other formats than the notebook formats ignore the
+`-t` postfix.
+
+=== Customizing Code Environments Types for Sphinx ===
+
+The argument after `!bc` can in case of
+Sphinx output be mapped onto any valid Pygments language for typesetting of
+the verbatim block by Pygments, if you do not want to rely on
+the defaults. This mapping takes place in an
+optional comment to be inserted in the DocOnce source file. Here is an
+example on such a comment line:
 
 !bc do
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
 !ec
-Here, three arguments are defined: `!bc pycod` maps on to the
+Three arguments are defined: `!bc pycod` maps on to the
 Pygments style `python` for Python code,
 `!bc cod` maps on to the Pygments style `fortran` for Fortran
 code, `!bc cppcod`  maps on to the Pygments style `c++` for C++ code,
@@ -2536,14 +2611,7 @@ context).
 # and computer languages. In case of muliple definitions, the
 # first one is used.)
 
-!bwarning Tip
-The enclosing `!ec` tag of verbatim computer code blocks must
-be followed by a newline.  A common error in list environments is to
-forget to indent the plain text surrounding the code blocks. In
-general, we recommend to use paragraph headings instead of list items
-in combination with code blocks (it usually looks better, and some
-common errors are naturally avoided).
-!ewarning
+=== Examples ===
 
 Here is a verbatim code block with Python code (`pycod` style):
 
@@ -2567,6 +2635,15 @@ def f(x, y):
 from math import pi
 print 'Testing f:', f(pi, 0)
 !ec
+
+!bwarning Tip
+The enclosing `!ec` tag of verbatim computer code blocks must
+be followed by a newline.  A common error in list environments is to
+forget to indent the plain text surrounding the code blocks. In
+general, we recommend to use paragraph headings instead of list items
+in combination with code blocks (it usually looks better, and some
+common errors are naturally avoided).
+!ewarning
 
 And here is a C++ code snippet (`cppcod` style):
 
