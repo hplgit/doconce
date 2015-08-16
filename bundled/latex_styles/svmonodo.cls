@@ -317,16 +317,22 @@ passing it to article class \MessageBreak
 \newcommand{\partstyle}{\bfseries\boldmath}
 \newcommand{\chapnumsize}{\Large}
 \newcommand{\chapnumstyle}{\bfseries\boldmath}
-\newcommand{\chapsize}{\LArge}
+%\newcommand{\chapsize}{\LArge}
+% changed by hpl: larger font
+\newcommand{\chapsize}{\LARGE}
 \newcommand{\chapstyle}{\bfseries\boldmath}
 \newcommand{\chapauthsize}{\normalsize}
 \newcommand{\chapauthstyle}{\bfseries\boldmath}
 \newcommand{\mottosize}{\small}
 \newcommand{\mottostyle}{\itshape\unboldmath\raggedright}
-\newcommand{\secsize}{\large}
+%\newcommand{\secsize}{\large}
+% changed by hpl: larger fornt
+\newcommand{\secsize}{\Large}
 \newcommand{\secstyle}{\bfseries\boldmath}
 \newcommand{\subsecsize}{\large}
-\newcommand{\subsecstyle}{\bfseries\itshape\boldmath}
+%\newcommand{\subsecstyle}{\bfseries\itshape\boldmath}
+% changed by hpl: no itshape
+\newcommand{\subsecstyle}{\bfseries\boldmath}
 \newcommand{\subsubsecstyle}{\bfseries\boldmath}
 %
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
