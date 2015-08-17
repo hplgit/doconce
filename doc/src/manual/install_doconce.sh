@@ -46,11 +46,6 @@ apt_install mercurial
 apt_install git
 apt_install subversion
 
-# DocOnce itself
-cd srclib
-git clone https://github.com/hplgit/doconce.git
-if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
-
 # --- Python-based packages and tools ---
 apt_install python-pip
 apt_install idle
@@ -81,6 +76,15 @@ pip_install sphinx_rtd_theme --upgrade
 pip_install sphinxcontrib-paverutils
 pip_install paver
 pip_install cogapp
+
+# future package
+pip_install future
+
+# levenshtein
+pip_install python-Levenshtein
+
+# lxml
+pip_install lxml
 
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 pip_install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
@@ -149,4 +153,11 @@ apt_install diffuse
 git clone https://github.com/marcodaniel/mdframed
 if [ -d mdframed ]; then cd mdframed; make localinstall; cd ..; fi
 #$ echo "remove the mdframe directory (if successful install of mdframed.sty): rm -rf mdframed"
+
+
+# DocOnce itself
+cd srclib
+git clone https://github.com/hplgit/doconce.git
+if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
+
 echo "Everything is successfully installed!"
