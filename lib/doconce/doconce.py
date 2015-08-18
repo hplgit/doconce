@@ -2063,6 +2063,7 @@ def typeset_userdef_envirs(filestr, format):
         return filestr
     userfile = 'userdef_environments.py'
     if os.path.isfile(userfile):
+        # This should be unnecessary, should find files in the current dir
         sys_path_original = list(sys.path)
         sys.path.append(os.path.dirname(os.path.realpath(userfile)))
         try:
