@@ -255,6 +255,8 @@ is used - all other formats just leave the heading as it is written.
 
 idx{`FIGURE` keyword}
 
+=== Basic syntax ===
+
 Figures are recognized by the special line syntax
 
 !bc do
@@ -263,7 +265,7 @@ FIGURE:[filename, height=400 width=600 frac=0.8] caption
 !ec
 The filename can be without extension, and DocOnce will search for an
 appropriate file with the right extension. If the extension is wrong,
-say `.eps` when requesting an HTML format, DocOnce tries to find another
+say `.pdf` when requesting an HTML format, DocOnce tries to find another
 file, and if not, the given file is converted to a proper format
 (using ImageMagick's `convert` utility).
 
@@ -299,6 +301,10 @@ inserting seeral lines with `<linebreak>`.
 
 FIGURE:[fig/wave1D, width=400] A wave. label{fig:viz}
 
+idx{subfigures}
+
+=== Figures with Subfigures ===
+
 Combining several image files into one, in a table fashion, can be done by the
 `montage` program from the ImageMagick suite:
 
@@ -321,6 +327,30 @@ Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
 Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
 Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
 !ec
+
+Instead of using `montage`, `pdftk`, etc., one can rely on the
+convenient command `doconce combine_images`:
+
+!bc sys
+Terminal> doconce combine_images pdf -2 fig1 fig2 fig3 fig4 fig
+!ec
+This command will combine `fig1.pdf`, `fig2.pdf`, `fig3.pdf`, and
+`fig4.pdf` with two images per row (`-2` option) and place the
+result in `fig.pdf`. By just changing the `pdf` option to `png`,
+the same will happen with
+`fig1.png`, `fig2.png`, `fig3.png`, and
+`fig4.png`, resulting in `fig.png`. The tool employs the technique
+above for PNG and PDF files to produce ultimate quality of the combined
+image.
+
+One can also run `doconce combine_images` with filenames with extension,
+e.g.,
+
+!bc sys
+Terminal> doconce combine_images myfig1.png myfig2.png fig2.png
+!ec
+Here, `myfig1,png` and `myfig2.png` are placed next to each other in
+a new figure file `fig2.png`.
 
 === Sidecaption in LaTeX and HTML ===
 
@@ -347,6 +377,70 @@ are included by a simple `\input{file.pgf}`. If no `.pgf` file is found,
 the `pdflatex` output format will apply `.pdf`, `.png`, or `.jpg` file,
 in that order of preference.
 
+idx{Bokeh interactive plots}
+
+=== Interactive Bokeh Plots for HTML ===
+
+Fancy interactive plots can be made with the "Bokeh": "http://bokeh.pydata.org/en/latest/" library. Such plots
+reside in an HTML file. DocOnce will for the HTML output format
+detect such files and use the HTML code in the file to embed the
+plot in the generated output document.
+
+Below is a complete example on creating a grid of interactive plots where
+the horizontal axes are coupled to each other. Panning the graph in one
+plot automatically moves all the other graphs too. In this way, one can
+scroll through a long time series. Our demo looks as follows in a browser:
+
+FIGURE: [fig/bokeh_gridplot1, width=800 frac=1]
+
+# #if FORMAT == 'html'
+In HTML format the figure will be interactive. Grapb one graph, move
+into the future with the mouse, and watch the other graphs follow!
+
+FIGURE: [fig/bokeh_demo, width=800 frac=1]
+# #endif
+
+Such a figure is specified the normal way: if the HTML code for the figure
+is in `myfig.html`, write
+
+!bc do
+FIGURE: [myfig] caption
+!ec
+Options like `width` are ignored for Bokeh plots, unless you have
+other versions of the figure (`myfig.png`, for instance, see the box
+below) where such options may be useful for some formats.
+
+!bnotice Make alternatives to Bokeh plots
+Note that Bokeh plots have only meaning when DocOnce translates the
+document to HTML. For other formats, one needs to supply figure files
+that those formats can accept. For example, you have made a Bokeh
+plot in `myfig.html`. Either you have to embed the `FIGURE` command
+inside a preprocessor test that the `FORMAT == 'html'` or you must
+provide alternatives like `myfig.png`. A Bokeh plot will often have a
+save button that can be used to save the plot to PNG format.
+This can be used for Sphinx, wikis, and pdfLaTeX (although the latter would
+appreciate real vector graphics in a PDF plot).
+
+The plot example below is so advanced that there is no natural
+counterpart in a static PNG or PDF plot.
+!enotice
+
+!bnotice Tip: reduce the size of Bokeh HTML files
+When making Bokeh plots in Python programs, we recommend to use
+the `mode='cdn'` option in the call `output_file`. This argument leads
+to links to Bokeh tools in the resulting HTML file. Without the argument,
+Bokeh embeds long HTML code for its tools into the file.
+DocOnce issues a warning in this case and recommends the `mode` argument.
+
+Note that with `mode='cdn'` the HTML code for the plot requires Internet
+access.
+!enotice
+
+An interactive plot like the one shown
+above, stored in a file "`tmp.html`": "https://github.com/hplgit/doconce/tree/master/doc/src/manual/fig/bokeh_demo.html", can be made by the code
+below ("download file": "https://github.com/hplgit/doconce/tree/master/doc/src/manual/bokeh_demo.py"):
+
+@@@CODE bokeh_demo.py
 
 !split
 ===== Movies =====

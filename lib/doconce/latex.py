@@ -1336,8 +1336,8 @@ def latex_table(table):
         _abort()
 
     s = '\n' + table_align[0] + '\n'
-    if latex_style in ("Springer_T2", "Springer_T4"):
-        s += '{\\small   % Springer T2/T4 style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
+    if latex_style in ("Springer_T2", "Springer_T4", "Springer_sv", "Springer_lnup"):
+        s += '{\\small   % for Springer style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
     s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
@@ -1389,7 +1389,7 @@ def latex_table(table):
             s += ' & '.join(row) + ' \\\\\n'
 
     s += r'\end{tabular}' + '\n'
-    if latex_style in ("Springer_T2", "Springer_T4"):
+    if latex_style in ("Springer_T2", "Springer_T4", "Springer_sv", "Springer_lnup"):
         s += '\n\\vspace{4mm}\n\n}\n'
     s += table_align[1] + '\n\n' + r'\noindent' + '\n'
     return s
@@ -1687,6 +1687,7 @@ def latex_author(authors_and_institutions, auth2index,
 
 def latex_date(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
+    latex_style = option('latex_style=', 'std')
     date = m.group('subst')
     text = ''
     if title_layout == 'std':
@@ -1723,7 +1724,7 @@ def latex_date(m):
 
 """ % vars()
 
-    if option('latex_style=', 'std') in ("Springer_T2", "Springer_T4"):
+    if latex_style in ("Springer_T2", "Springer_T4"):
         # Use special mainmatter from t2do.sty or t4do.sty
         text += r"""
 \mymainmatter
@@ -1735,6 +1736,8 @@ def latex_abstract(m):
     text = m.group('text').strip()
     rest = m.group('rest')
     title_layout = option('latex_title_layout=', 'doconce_heading')
+    latex_style = option('latex_style=', 'std')
+
     abstract = ''
     if title_layout == 'Springer_collection':
         abstract += r"""
@@ -1756,7 +1759,10 @@ def latex_abstract(m):
 """ % vars()
     else:
         if atype == 'preface':
-            abstract += r"""
+            # book abstract
+            if latex_style not in ('Springer_sv', 'Springer_lnup'):
+                # Must probably adjust this test for various book formats...
+                abstract += r"""
 %% --- begin preface ---
 \section*{Preface}
 %(text)s
@@ -2559,6 +2565,13 @@ def define(FILENAME_EXTENSION,
                            'elsevier', 'Springer_sv', 'Springer_lnup'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
+    if latex_style == 'Springer_sv' and title_layout != 'std':
+        print '*** error: --latex_style=Springer_sv requires --latex_title_layout=std'
+        _abort()
+    if latex_style in ('Springer_sv', 'Springer_lnup') and \
+       option('latex_list_of_exercises=', 'none') != 'none':
+        print '*** error: --latex_style=%s requires --latex_list_of_exercises=none' % latex_style
+        _abort()
 
     toc_part = ''
     if title_layout != 'beamer':
@@ -2706,12 +2719,12 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     elif latex_style == 'Springer_sv':
         copy_latex_packages(['svmonodo.cls'])
         INTRO['latex'] += r"""
-% Style: Standard Springer svmono (book)
+% Style: Standard Springer svmono (book) - without courier font
 \documentclass[graybox,envcountchap,sectrefs]{svmonodo}
 %\pagestyle{headings}
 \usepackage{mathptmx}
 \usepackage{helvet}
-\usepackage{courier}
+%\usepackage{courier} % note: courier monospace font is wide
 \usepackage{type1cm}
 \usepackage{framed}
 \usepackage{booktabs}
@@ -2805,13 +2818,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
     if latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
-\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
 \usepackage{bm,microtype}
 """
     else:
         INTRO['latex'] += r"""
-\usepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts}
+\usepackage{epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
 \usepackage{bm}
 """

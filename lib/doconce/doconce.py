@@ -2063,12 +2063,18 @@ def typeset_userdef_envirs(filestr, format):
         return filestr
     userfile = 'userdef_environments.py'
     if os.path.isfile(userfile):
+        # This should be unnecessary, should find files in the current dir
+        sys_path_original = list(sys.path)
+        sys.path.append(os.path.dirname(os.path.realpath(userfile)))
         try:
             import userdef_environments as ue
         except Exception as e:
-            print '*** error in %s:' % userfile
+            print "*** error on import userdef_environments"
+            print "*** when trying to import %s " % os.path.abspath(userfile)
+            print "*** error:"
             print e
             _abort()
+        sys.path = list(sys_path_original)
     else:
         print '*** error: found user-defined environments'
         print '   ', ', '.join(list(set(userdef_envirs)))

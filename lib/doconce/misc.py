@@ -6087,7 +6087,7 @@ _replacements = [
     (r'^<%doc.+^</%doc>', '', re.MULTILINE|re.DOTALL),  # Mako comments
     (r'"([^"]*?)":\s*"[^"]+?"', r'\g<1>'),  # links ("`file.py`" -> "": "...")
     (r"^#.*$", "", re.MULTILINE),
-    (r"(idx|label|ref|cite)\{.*?\}", ""),
+    (r"(idx|label|ref|refaux|cite)\{.*?\}", ""),
     (r"cite\[.+?\]\{.+?\}", ""),
     (r"refch\[.*?\]\[.*?\]\[.*?\]", "", re.DOTALL),
     (r"^(file|solution)=.+$", '', re.MULTILINE),  # file= in exercises

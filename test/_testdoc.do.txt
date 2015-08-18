@@ -497,6 +497,11 @@ FIGURE: [testfigs/df_plot.png, width=800] This is a wikimedia figure file.
 FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #endif
 
+# #if FORMAT == 'html'
+HTML output may feature Bokeh plots:
+
+FIGURE: [bokeh_test]
+# #endif
 
 __Remark.__
 Movies are tested in separate file `movies.do.txt`.

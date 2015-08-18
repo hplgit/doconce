@@ -40,7 +40,7 @@ system('sudo apt-get update --fix-missing')
 cmd = """
 pyversion=`python -c 'import sys; print sys.version[:3]'`
 if [ $pyversion != '2.7' ]; then echo "Python v${pyversion} cannot be used with DocOnce"; exit 1; fi
-# Install downloaded source code in ~/srclib
+# Install downloaded source code in subdirectory srclib
 
 if [ ! -d srclib ]; then mkdir srclib; fi
 # Version control systems
@@ -51,16 +51,7 @@ system('sudo apt-get -y install mercurial')
 system('sudo apt-get -y install git')
 system('sudo apt-get -y install subversion')
 
-# DocOnce itself
-
-cmd = """
-cd srclib
-git clone https://github.com/hplgit/doconce.git
-if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 # --- Python-based packages and tools ---
-
-"""
-system(cmd)
 system('sudo apt-get -y install python-pip')
 system('sudo apt-get -y install idle')
 system('sudo apt-get -y install python-dev')
@@ -68,7 +59,11 @@ system('sudo apt-get -y install python-pdftools')
 system('sudo pip install ipython --upgrade')
 system('sudo pip install tornado --upgrade')
 system('sudo pip install pyzmq --upgrade')
+system('sudo pip install traitlets --upgrade')
+system('sudo pip install pickleshare --upgrade')
 system('sudo pip install jsonschema')
+# If problems with IPython.nbformat.v4: clone ipython and run setup.py
+# to get the latest version
 
 # Preprocessors
 system('sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess')
@@ -91,6 +86,10 @@ system('sudo pip install sphinxcontrib-paverutils')
 system('sudo pip install paver')
 system('sudo pip install cogapp')
 
+system('sudo pip install future')
+system('sudo pip install python-Levenshtein')
+system('sudo pip install lxml')
+
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 system('sudo pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console')
 system('sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce')
@@ -99,6 +98,7 @@ system('sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=p
 system('sudo pip install beautifulsoup4')
 system('sudo pip install html5lib')
 
+# ptex2tex is not needed if --latex_code_style= option is used
 
 cmd = """
 cd srclib
@@ -142,7 +142,7 @@ system('sudo apt-get -y install pandoc')
 system('sudo apt-get -y install libreoffice')
 system('sudo apt-get -y install unoconv')
 system('sudo apt-get -y install libreoffice-dmaths')
-#epydoc is old-fashioned
+#epydoc is an old-fashioned output format, will any doconce user use it?
 #pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
 
 system('sudo apt-get -y install curl')
@@ -159,4 +159,6 @@ system('sudo apt-get -y install diffuse')
 
 # example on installing mdframed.sty manually (it exists in texlive,
 # but sometimes needs to be in its newest version)
+
+
 print 'Everything is successfully installed!'
