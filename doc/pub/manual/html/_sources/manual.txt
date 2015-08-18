@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 15, 2015
+:Date: Aug 18, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -403,6 +403,9 @@ Figures  (1)
 
 .. index:: FIGURE keyword
 
+Basic syntax
+~~~~~~~~~~~~
+
 Figures are recognized by the special line syntax
 
 .. code-block:: doconce
@@ -412,7 +415,7 @@ Figures are recognized by the special line syntax
 
 The filename can be without extension, and DocOnce will search for an
 appropriate file with the right extension. If the extension is wrong,
-say ``.eps`` when requesting an HTML format, DocOnce tries to find another
+say ``.pdf`` when requesting an HTML format, DocOnce tries to find another
 file, and if not, the given file is converted to a proper format
 (using ImageMagick's ``convert`` utility).
 
@@ -459,6 +462,11 @@ The caption may contain a label for referencing the figure.
 
    *A wave*
 
+.. index:: subfigures
+
+Figures with Subfigures
+~~~~~~~~~~~~~~~~~~~~~~~
+
 Combining several image files into one, in a table fashion, can be done by the
 ``montage`` program from the ImageMagick suite:
 
@@ -482,6 +490,32 @@ remove surrounding whitespace):
         Terminal> pdftk file1.pdf file2.pdf ... file4.pdf output tmp.pdf
         Terminal> pdfnup --nup 2x2 tmp.pdf        # output in tmp-nup.pdf
         Terminal> pdfcrop tmp-nup.pdf result.png  # output in FE1.png
+
+Instead of using ``montage``, ``pdftk``, etc., one can rely on the
+convenient command ``doconce combine_images``:
+
+.. code-block:: text
+
+        Terminal> doconce combine_images pdf -2 fig1 fig2 fig3 fig4 fig
+
+This command will combine ``fig1.pdf``, ``fig2.pdf``, ``fig3.pdf``, and
+``fig4.pdf`` with two images per row (``-2`` option) and place the
+result in ``fig.pdf``. By just changing the ``pdf`` option to ``png``,
+the same will happen with
+``fig1.png``, ``fig2.png``, ``fig3.png``, and
+``fig4.png``, resulting in ``fig.png``. The tool employs the technique
+above for PNG and PDF files to produce ultimate quality of the combined
+image.
+
+One can also run ``doconce combine_images`` with filenames with extension,
+e.g.,
+
+.. code-block:: text
+
+        Terminal> doconce combine_images myfig1.png myfig2.png fig2.png
+
+Here, ``myfig1,png`` and ``myfig2.png`` are placed next to each other in
+a new figure file ``fig2.png``.
 
 Sidecaption in LaTeX and HTML
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -509,6 +543,149 @@ and will make use of such files if they exist. These
 are included by a simple ``\input{file.pgf}``. If no ``.pgf`` file is found,
 the ``pdflatex`` output format will apply ``.pdf``, ``.png``, or ``.jpg`` file,
 in that order of preference.
+
+.. index:: Bokeh interactive plots
+
+Interactive Bokeh Plots for HTML
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Fancy interactive plots can be made with the `Bokeh <http://bokeh.pydata.org/en/latest/>`__ library. Such plots
+reside in an HTML file. DocOnce will for the HTML output format
+detect such files and use the HTML code in the file to embed the
+plot in the generated output document.
+
+Below is a complete example on creating a grid of interactive plots where
+the horizontal axes are coupled to each other. Panning the graph in one
+plot automatically moves all the other graphs too. In this way, one can
+scroll through a long time series. Our demo looks as follows in a browser:
+
+.. figure:: bokeh_gridplot1.png
+   :width: 800
+
+
+.. admonition:: Make alternatives to Bokeh plots
+
+   Note that Bokeh plots have only meaning when DocOnce translates the
+   document to HTML. For other formats, one needs to supply figure files
+   that those formats can accept. For example, you have made a Bokeh
+   plot in ``myfig.html``. Either you have to embed the ``FIGURE`` command
+   inside a preprocessor test that the ``FORMAT == 'html'`` or you must
+   provide alternatives like ``myfig.png``. A Bokeh plot will often have a
+   save button that can be used to save the plot to PNG format.
+   This can be used for Sphinx, wikis, and pdfLaTeX (although the latter would
+   appreciate real vector graphics in a PDF plot).
+   
+   The plot example below is so advanced that there is no natural
+   counterpart in a static PNG or PDF plot.
+
+
+
+
+
+.. admonition:: Tip: reduce the size of Bokeh HTML files
+
+   When making Bokeh plots in Python programs, we recommend to use
+   the ``mode='cdn'`` option in the call ``output_file``. This argument leads
+   to links to Bokeh tools in the resulting HTML file. Without the argument,
+   Bokeh embeds long HTML code for its tools into the file.
+   DocOnce issues a warning in this case and recommends the ``mode`` argument.
+
+
+
+
+An interactive plot like the one shown
+above, stored in a file `tmp.html <https://github.com/hplgit/doconce/tree/master/doc/src/manual/fig/bokeh_demo.html>`__, can be made by the code
+below (`download file <https://github.com/hplgit/doconce/tree/master/doc/src/manual/bokeh_demo.py>`__):
+
+.. code-block:: python
+
+        def bokeh_plot(u, t, legends, u_e, t_e, I, w, t_range, filename):
+            """
+            Make plots for u vs t using the Bokeh library.
+            u and t are lists (several experiments can be compared).
+            legens contain legend strings for the various u,t pairs.
+            Each plot has u vs t and the exact solution u_e vs t_e.
+            """
+            import numpy as np
+            import bokeh.plotting as plt
+            plt.output_file(filename, mode='cdn', title='Comparison')
+            # Assume that all t arrays have the same range
+            t_fine = np.linspace(0, t[0][-1], 1001)  # fine mesh for u_e
+            tools = 'pan,wheel_zoom,box_zoom,reset,'\
+                    'save,box_select,lasso_select'
+            u_range = [-1.2*I, 1.2*I]
+            font_size = '8pt'
+            p = []
+            p_ = plt.figure(
+                width=300, plot_height=250, title=legends[0],
+                x_axis_label='t', y_axis_label='u',
+                x_range=t_range, y_range=u_range, tools=tools,
+                title_text_font_size=font_size)
+            p_.xaxis.axis_label_text_font_size=font_size
+            p_.yaxis.axis_label_text_font_size=font_size
+            p_.line(t[0], u[0], line_color='blue')
+            p_.line(t_e, u_e, line_color='red', line_dash='4 4')
+            p.append(p_)
+            for i in range(1, len(t)):
+                p_ = plt.figure(
+                    width=300, plot_height=250, title=legends[i],
+                    x_axis_label='t', y_axis_label='u',
+                    x_range=p[0].x_range, y_range=p[0].y_range, tools=tools,
+                    title_text_font_size=font_size)
+                p_.xaxis.axis_label_text_font_size=font_size
+                p_.yaxis.axis_label_text_font_size=font_size
+                p_.line(t[i], u[i], line_color='blue')
+                p_.line(t_e, u_e, line_color='red', line_dash='4 4')
+                p.append(p_)
+        
+            # Arrange in grid with 3 plots per row
+            grid = [[]]
+            for i, p_ in enumerate(p):
+                grid[-1].append(p_)
+                if (i+1) % 3 == 0:
+                    # New row
+                    grid.append([])
+            plot = plt.gridplot(grid, toolbar_location='left')
+            plt.save(plot)
+            plt.show(plot)
+        
+        def demo_bokeh():
+            """Plot numerical and exact solution of sinousoidal shape."""
+            import numpy as np
+        
+            def u_exact(t):
+                return I*np.cos(w*t)
+        
+            def u_numerical(t):
+                w_tilde = (2./dt)*np.arcsin(w*dt/2.)
+                return I*np.cos(w_tilde*t)
+        
+            I = 1               # Amplitude
+            w = 1.0             # Angular frequency
+            P = 2*np.pi/w       # Period of signal
+            num_steps_per_period = [5, 10, 20, 40, 80]
+            num_periods = 40
+            T = num_periods*P   # End time of signal
+        
+            t_e = np.linspace(0, T, 1001)  # Fine mesh for u_exact
+            u_e = u_exact(t_e)
+            u = []
+            t = []
+            legends = []
+        
+            # Make a series of numerical solutions with different time steps
+            for n in num_steps_per_period:
+                dt = P/n  # Time step length
+                t_ = np.linspace(0, T, num_periods*n+1)
+                u_ = u_numerical(t_)
+                u.append(u_)
+                t.append(t_)
+                legends.append('# time steps per period: %d' % n)
+            bokeh_plot(u, t, legends, u_e, t_e,
+                       I=1, w=w, t_range=[0, 4*P],
+                       filename='tmp.html')
+        
+        demo_bokeh()
 
 Movies  (1)
 -----------

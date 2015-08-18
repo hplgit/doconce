@@ -1217,7 +1217,7 @@ def html_code(filestr, code_blocks, code_block_types,
         pattern = re.compile('<!-- .+? -->', re.DOTALL)
         filestr = re.sub(pattern, '', filestr)
 
-    # Add sharing buttons
+    # Add social media sharing buttons
     url = option('html_share=', None)
     # --html_share=http://mysite.com/specials,twitter,facebook,linkedin
     if url is not None:
@@ -1229,6 +1229,24 @@ def html_code(filestr, code_blocks, code_block_types,
         else:
             code = share(code_type='buttons', url=url)
         filestr = re.sub(r'^</body>\n', code + '\n\n' + '</body>\n',
+                         filestr, flags=re.MULTILINE)
+
+    # Add links for Bokeh plots
+    if 'Bokeh.logger.info(' in filestr:
+        bokeh_version = '0.9.0'
+        head = """
+<!-- Tools for embedded Bokeh plots -->
+<link rel="stylesheet"
+      href="http://cdn.pydata.org/bokeh/release/bokeh-%(bokeh_version)s.min.css"
+      type="text/css" />
+<script type="text/javascript"
+	src="http://cdn.pydata.org/bokeh/release/bokeh-%(bokeh_version)s.min.js">
+</script>
+<script type="text/javascript">
+  Bokeh.set_log_level("info");
+</script>
+""" % vars()
+        filestr = re.sub(r'^</head>\n', head + '\n\n</head>\n',
                          filestr, flags=re.MULTILINE)
 
     # Add exercise logo
@@ -1309,6 +1327,55 @@ def process_grid_areas(filestr):
             filestr = filestr.replace(full_text, new_text)
     return filestr
 
+def interpret_bokeh_plot(text):
+    """Find script and div tags in a Bokeh HTML file."""
+    # Structure of the file
+    """
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Damped vibrations</title>
+
+        <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.css" type="text/css" />
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+
+        <script type="text/javascript">
+            Bokeh.$(function() {
+                var modelid = "af0bc57e-f573-4a7f-be80-504fab00b254";
+                var modeltype = "PlotContext";
+                var elementid = "4a9dd7a1-f20c-4fe5-9917-13d172ef031a";
+                Bokeh.logger.info("Realizing plot:")
+                Bokeh.logger.info(" - modeltype: PlotContext");
+                Bokeh.logger.info(" - modelid: af0bc57e-f573-4a7f-be80-504fab00b254");
+                Bokeh.logger.info(" - elementid: 4a9dd7a1-f20c-4fe5-9917-13d172ef031a");
+                var all_models = ...
+
+                Bokeh.load_models(all_models);
+                var model = Bokeh.Collections(modeltype).get(modelid);
+                var view = new model.default_view({model: model, el: '#4a9dd7a1-f20c-4fe5-9917-13d172ef031a'});
+                Bokeh.index[modelid] = view
+            });
+        </script>
+    </head>
+    <body>
+        <div class="plotdiv" id="4a9dd7a1-f20c-4fe5-9917-13d172ef031a"></div>
+    </body>
+</html>
+    """
+    # Extract the script and all div tags
+    scripts = re.findall(r'<script type="text/javascript">.+?</script>', text, flags=re.DOTALL)
+    if len(scripts) != 2:
+        print '*** warning: bokeh file contains more than two script tags,'
+        print '    will be using the last one! (use output_file(..., mode="cdn"))'
+    script = scripts[-1]
+    divs = re.findall(r'<div class="plotdiv".+?</div>', text, flags=re.DOTALL)
+    return script, divs
+
+
 def html_figure(m):
     caption = m.group('caption').strip()
     filename = m.group('filename').strip()
@@ -1325,8 +1392,26 @@ def html_figure(m):
                 sidecaption = 1
                 break
 
-    if not filename.startswith('http'):
+    # Bokeh plot?
+    bokeh_plot = False
+    if filename.endswith('.html') and not filename.startswith('http'):
+        f = open(filename, 'r')
+        text = f.read()
+        f.close()
+        if 'Bokeh.set_log_level' in text:
+            bokeh_plot = True
+            script, divs = interpret_bokeh_plot(text)
+        else:
+            print '*** error: figure file "%s" must be a Bokeh plot' % filename
+            _abort()
+
+    if not filename.startswith('http') and not bokeh_plot:
         add_to_file_collection(filename)
+
+    if bokeh_plot:
+        image = '\n<!-- Bokeh plot -->\n%s\n%s' %  (script, '\n'.join(divs))
+    else:
+        image = '<img src="%s" align="bottom" %s>' % (filename, opts)
 
     if caption:
        # Caption above figure and an optional horizontal rules:
@@ -1341,24 +1426,24 @@ def html_figure(m):
            s = """
 <center> <!-- figure -->%s
 <center><p class="caption"> %s </p></center>
-<p><img src="%s" align="bottom" %s></p>%s
+<p>%s</p>%s
 </center>
-""" % (top_hr, caption, filename, opts, bottom_hr)
+""" % (top_hr, caption, image, bottom_hr)
        else:
            # sidecaption is implemented as table
            s = """
 <center> <!-- figure -->%s
 <table><tr>
-<td><img src="%s" align="bottom" %s></td>
+<td>%s</td>
 <td><p class="caption"> %s </p></td>
 </tr></table>%s
 </center>
-""" % (top_hr, filename, opts, caption, bottom_hr)
+""" % (top_hr, image, caption, bottom_hr)
        return s
     else:
        # Just insert image file when no caption
-       return '<center><p><img src="%s" align="bottom" %s></p></center>' % \
-              (filename, opts)
+       return '<center><p>%s</p></center>' % image
+
 
 def html_footnotes(filestr, format, pattern_def, pattern_footnote):
     # Keep definitions where they are
@@ -2320,7 +2405,7 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['html'] = ('.png', '.gif', '.jpg', '.jpeg', '.svg')
+    FIGURE_EXT['html'] = ('.html', '.png', '.gif', '.jpg', '.jpeg', '.svg')
     CROSS_REFS['html'] = html_ref_and_label
     TABLE['html'] = html_table
     INDEX_BIB['html'] = html_index_bib
