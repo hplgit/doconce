@@ -467,18 +467,15 @@ Note that there must be a blank line after every `MOVIE:` command.
 The width and height parameters are not required, but leaving them out
 may lead to movie sizes you do not want.
 
-Here is a movie in the MPEG format:
-
-MOVIE: [mov/wave.mpeg, width=600 height=470]
-
-realized by the specific command
-
-!bc do
-MOVIE: [mov/wave.mpeg, width=600 height=470]
-!ec
-And here is a movie in the Ogg format:
+Here is a movie in the Ogg format:
 
 MOVIE: [mov/wave.ogg, width=600] A movie in Ogg format.
+
+realized by the command
+
+!bc do
+MOVIE: [mov/wave.igg, width=600] A movie in Ogg format.
+!ec
 
 A URL works too as movie address:
 
@@ -759,7 +756,7 @@ The Mako preprocessor supports comments that are filtered out *before*
 DocOnce starts translating the document. Such comments are very valuable
 as they will never interfere with the output format and they are only
 present in the DocOnce source. Mako has two types of comments:
-lines starting with a double hash `##` and lines enclosed by
+lines starting with a double hash `##` and multiple lines enclosed by
 the `<%doc>` (beginning) and `<%doc/>` (closing) tags.
 
 If you need a lot of comments in the DocOnce file, consider using

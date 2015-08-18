@@ -18,6 +18,8 @@ Automatically generated HTML file from DocOnce source
 -->
 
 <style type="text/css">
+/* Let inline verbatim have the same color as the surroundings */
+code { color: inherit; background-color: transparent; }
 
 /*
 in.collapse+a.btn.showdetails:before { content:'Hide details'; }
@@ -1143,6 +1145,20 @@ into the future with the mouse, and watch the other graphs follow!
 <div class="plotdiv" id="906c8a29-614b-4a03-8126-e60d6fde745c"></div></p></center>
 
 <p>
+Such a figure is specified the normal way: if the HTML code for the figure
+is in <code>myfig.html</code>, write
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">FIGURE: [myfig] caption</span>
+</pre></div>
+<p>
+Options like <code>width</code> are ignored for Bokeh plots, unless you have
+other versions of the figure (<code>myfig.png</code>, for instance, see the box
+below) where such options may be useful for some formats.
+
+<p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Make alternatives to Bokeh plots.</b>
 Note that Bokeh plots have only meaning when DocOnce translates the
 document to HTML. For other formats, one needs to supply figure files
@@ -1167,6 +1183,10 @@ the <code>mode='cdn'</code> option in the call <code>output_file</code>. This ar
 to links to Bokeh tools in the resulting HTML file. Without the argument,
 Bokeh embeds long HTML code for its tools into the file.
 DocOnce issues a warning in this case and recommends the <code>mode</code> argument.
+
+<p>
+Note that with <code>mode='cdn'</code> the HTML code for the plot requires Internet
+access.
 </div>
 
 
@@ -1296,23 +1316,7 @@ The width and height parameters are not required, but leaving them out
 may lead to movie sizes you do not want.
 
 <p>
-Here is a movie in the MPEG format:
-
-<p>
-
-<embed src="mov/wave.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
-<p><em></em></p>
-
-<p>
-realized by the specific command
-
-<p>
-
-<!-- code=doconce (!bc do) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">MOVIE: [mov/wave.mpeg, width=600 height=470]</span>
-</pre></div>
-<p>
-And here is a movie in the Ogg format:
+Here is a movie in the Ogg format:
 
 <p>
 
@@ -1325,6 +1329,14 @@ And here is a movie in the Ogg format:
 </div>
 <p><em>A movie in Ogg format.</em></p>
 
+<p>
+realized by the command
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000">MOVIE: [mov/wave.igg, width=600] A movie in Ogg format.</span>
+</pre></div>
 <p>
 A URL works too as movie address:
 

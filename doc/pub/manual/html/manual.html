@@ -486,6 +486,14 @@ scroll through a long time series. Our demo looks as follows in a browser:</p>
 <div class="figure">
 <a class="reference internal image-reference" href="_images/bokeh_gridplot1.png"><img alt="_images/bokeh_gridplot1.png" src="_images/bokeh_gridplot1.png" style="width: 800px;" /></a>
 </div>
+<p>Such a figure is specified the normal way: if the HTML code for the figure
+is in <code class="docutils literal"><span class="pre">myfig.html</span></code>, write</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="nb">FIGURE: [myfig] caption</span>
+</pre></div>
+</div>
+<p>Options like <code class="docutils literal"><span class="pre">width</span></code> are ignored for Bokeh plots, unless you have
+other versions of the figure (<code class="docutils literal"><span class="pre">myfig.png</span></code>, for instance, see the box
+below) where such options may be useful for some formats.</p>
 <div class="admonition-make-alternatives-to-bokeh-plots admonition">
 <p class="first admonition-title">Make alternatives to Bokeh plots</p>
 <p>Note that Bokeh plots have only meaning when DocOnce translates the
@@ -502,11 +510,13 @@ counterpart in a static PNG or PDF plot.</p>
 </div>
 <div class="admonition-tip-reduce-the-size-of-bokeh-html-files admonition">
 <p class="first admonition-title">Tip: reduce the size of Bokeh HTML files</p>
-<p class="last">When making Bokeh plots in Python programs, we recommend to use
+<p>When making Bokeh plots in Python programs, we recommend to use
 the <code class="docutils literal"><span class="pre">mode='cdn'</span></code> option in the call <code class="docutils literal"><span class="pre">output_file</span></code>. This argument leads
 to links to Bokeh tools in the resulting HTML file. Without the argument,
 Bokeh embeds long HTML code for its tools into the file.
 DocOnce issues a warning in this case and recommends the <code class="docutils literal"><span class="pre">mode</span></code> argument.</p>
+<p class="last">Note that with <code class="docutils literal"><span class="pre">mode='cdn'</span></code> the HTML code for the plot requires Internet
+access.</p>
 </div>
 <p>An interactive plot like the one shown
 above, stored in a file <a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/manual/fig/bokeh_demo.html">tmp.html</a>, can be made by the code
@@ -620,13 +630,7 @@ the form</p>
 <p>Note that there must be a blank line after every <code class="docutils literal"><span class="pre">MOVIE:</span></code> command.
 The width and height parameters are not required, but leaving them out
 may lead to movie sizes you do not want.</p>
-<p>Here is a movie in the MPEG format:</p>
-<embed src="_static/mov/wave.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
-<p><em></em></p><p>realized by the specific command</p>
-<div class="highlight-doconce"><div class="highlight"><pre><span class="nb">MOVIE: [mov/wave.mpeg, width=600 height=470]</span>
-</pre></div>
-</div>
-<p>And here is a movie in the Ogg format:</p>
+<p>Here is a movie in the Ogg format:</p>
 <div>
 <video  loop controls width='600' height='365' preload='none'>
     <source src="_static/mov/wave.mp4"  type='video/mp4;  codecs="avc1.42E01E, mp4a.40.2"'>
@@ -634,7 +638,11 @@ may lead to movie sizes you do not want.</p>
     <source src="_static/mov/wave.ogg"  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
-<p><em>A movie in Ogg format.</em></p><p>A URL works too as movie address:</p>
+<p><em>A movie in Ogg format.</em></p><p>realized by the command</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="nb">MOVIE: [mov/wave.igg, width=600] A movie in Ogg format.</span>
+</pre></div>
+</div>
+<p>A URL works too as movie address:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="nb">MOVIE: [http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg] Ogg movie in cyberspace.</span>
 </pre></div>
 </div>
