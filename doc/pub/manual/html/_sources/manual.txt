@@ -562,6 +562,17 @@ scroll through a long time series. Our demo looks as follows in a browser:
 .. figure:: bokeh_gridplot1.png
    :width: 800
 
+Such a figure is specified the normal way: if the HTML code for the figure
+is in ``myfig.html``, write
+
+.. code-block:: doconce
+
+        FIGURE: [myfig] caption
+
+Options like ``width`` are ignored for Bokeh plots, unless you have
+other versions of the figure (``myfig.png``, for instance, see the box
+below) where such options may be useful for some formats.
+
 
 .. admonition:: Make alternatives to Bokeh plots
 
@@ -589,6 +600,9 @@ scroll through a long time series. Our demo looks as follows in a browser:
    to links to Bokeh tools in the resulting HTML file. Without the argument,
    Bokeh embeds long HTML code for its tools into the file.
    DocOnce issues a warning in this case and recommends the ``mode`` argument.
+   
+   Note that with ``mode='cdn'`` the HTML code for the plot requires Internet
+   access.
 
 
 
@@ -713,20 +727,7 @@ Note that there must be a blank line after every ``MOVIE:`` command.
 The width and height parameters are not required, but leaving them out
 may lead to movie sizes you do not want.
 
-Here is a movie in the MPEG format:
-
-.. raw:: html
-        
-        <embed src="mov/wave.mpeg" width=600 height=470 autoplay="false" loop="true"></embed>
-        <p><em></em></p>
-
-realized by the specific command
-
-.. code-block:: doconce
-
-        MOVIE: [mov/wave.mpeg, width=600 height=470]
-
-And here is a movie in the Ogg format:
+Here is a movie in the Ogg format:
 
 .. raw:: html
         
@@ -738,6 +739,12 @@ And here is a movie in the Ogg format:
         </video>
         </div>
         <p><em>A movie in Ogg format.</em></p>
+
+realized by the command
+
+.. code-block:: doconce
+
+        MOVIE: [mov/wave.igg, width=600] A movie in Ogg format.
 
 A URL works too as movie address:
 
