@@ -400,6 +400,16 @@ into the future with the mouse, and watch the other graphs follow!
 FIGURE: [fig/bokeh_demo, width=800 frac=1]
 # #endif
 
+Such a figure is specified the normal way: if the HTML code for the figure
+is in `myfig.html`, write
+
+!bc do
+FIGURE: [myfig] caption
+!ec
+Options like `width` are ignored for Bokeh plots, unless you have
+other versions of the figure (`myfig.png`, for instance, see the box
+below) where such options may be useful for some formats.
+
 !bnotice Make alternatives to Bokeh plots
 Note that Bokeh plots have only meaning when DocOnce translates the
 document to HTML. For other formats, one needs to supply figure files
