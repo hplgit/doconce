@@ -1,8 +1,5 @@
 #!/bin/bash
-# Automatically generated script by
-# vagrantbox/doc/src/vagrant/src-vagrant/deb2sh.py
-# where vagrantbox is the directory arising from
-# git clone git@github.com:hplgit/vagrantbox.git
+# Automatically generated script by deb2sh.py.
 
 # The script is based on packages listed in debpkg_doconce.txt.
 
@@ -38,18 +35,13 @@ sudo apt-get update --fix-missing
 pyversion=`python -c 'import sys; print sys.version[:3]'`
 if [ $pyversion != '2.7' ]; then echo "Python v${pyversion} cannot be used with DocOnce"; exit 1; fi
 
-# Install downloaded source code in ~/srclib
+# Install downloaded source code in subdirectory srclib
 if [ ! -d srclib ]; then mkdir srclib; fi
 
 # Version control systems
 apt_install mercurial
 apt_install git
 apt_install subversion
-
-# DocOnce itself
-cd srclib
-git clone https://github.com/hplgit/doconce.git
-if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
 
 # --- Python-based packages and tools ---
 apt_install python-pip
@@ -59,7 +51,11 @@ apt_install python-pdftools
 pip_install ipython --upgrade
 pip_install tornado --upgrade
 pip_install pyzmq --upgrade
+pip_install traitlets --upgrade
+pip_install pickleshare --upgrade
 pip_install jsonschema
+# If problems with IPython.nbformat.v4: clone ipython and run setup.py
+# to get the latest version
 
 # Preprocessors
 pip_install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
@@ -82,6 +78,10 @@ pip_install sphinxcontrib-paverutils
 pip_install paver
 pip_install cogapp
 
+pip_install future
+pip_install python-Levenshtein
+pip_install lxml
+
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 pip_install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
 pip_install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce
@@ -90,6 +90,7 @@ pip_install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-docon
 pip_install beautifulsoup4
 pip_install html5lib
 
+# ptex2tex is not needed if --latex_code_style= option is used
 cd srclib
 svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
 cd ptex2tex
@@ -129,7 +130,7 @@ apt_install pandoc
 apt_install libreoffice
 apt_install unoconv
 apt_install libreoffice-dmaths
-#epydoc is old-fashioned
+#epydoc is an old-fashioned output format, will any doconce user use it?
 #pip install -e svn+https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc#egg=epydoc
 
 apt_install curl
@@ -149,4 +150,10 @@ apt_install diffuse
 git clone https://github.com/marcodaniel/mdframed
 if [ -d mdframed ]; then cd mdframed; make localinstall; cd ..; fi
 #$ echo "remove the mdframe directory (if successful install of mdframed.sty): rm -rf mdframed"
+
+# DocOnce itself
+cd srclib
+git clone https://github.com/hplgit/doconce.git
+if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
+
 echo "Everything is successfully installed!"
