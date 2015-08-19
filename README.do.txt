@@ -14,6 +14,10 @@ phones.
 
 Here are some of the most recent features in DocOnce:
 
+ * DocOnce supports interactive Bokeh plots for data exploration in
+   HTML documents, see "demo": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html#___sec13".
+ * DocOnce can now generate Matlab notebooks in the publish format
+   (output format `matlabnb`).
  * Exercises can now be extracted as individual files (e.g., for distribution
    to students). The files are in DocOnce format and can be compiled to, e.g.,
    LaTeX or IPython notebooks, see "a quick description": "http://hplgit.github.io/doconce/doc/pub/manual/._manual013.html#exercises:standalone".

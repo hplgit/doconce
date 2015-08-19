@@ -3,7 +3,7 @@ def bokeh_plot(u, t, legends, u_e, t_e, I, w, t_range, filename):
     """
     Make plots for u vs t using the Bokeh library.
     u and t are lists (several experiments can be compared).
-    legens contain legend strings for the various u,t pairs.
+    legends contain legend strings for the various u,t pairs.
     Each plot has u vs t and the exact solution u_e vs t_e.
     """
     import numpy as np
