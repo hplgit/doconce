@@ -1106,22 +1106,18 @@ in that order of preference.
 <h3 id="___sec13">Interactive Bokeh Plots for HTML </h3>
 
 <p>
-Fancy interactive plots can be made with the <a href="http://bokeh.pydata.org/en/latest/" target="_self">Bokeh</a> library. Such plots
-reside in an HTML file. DocOnce will for the HTML output format
-detect such files and use the HTML code in the file to embed the
-plot in the generated output document.
+Fancy interactive plots for data exploration can be made with the
+<a href="http://bokeh.pydata.org/en/latest/" target="_self">Bokeh</a> library. Such plots
+reside in an HTML file. DocOnce will for the HTML output format detect
+files of this type and use the HTML code in the file to embed the
+plot(s) in the generated output document.
 
 <p>
 Below is a complete example on creating a grid of interactive plots where
 the horizontal axes are coupled to each other. Panning the graph in one
-plot automatically moves all the other graphs too. In this way, one can
-scroll through a long time series. Our demo looks as follows in a browser:
-
-<p>
-<center><p><img src="fig/bokeh_gridplot1.png" align="bottom" width=800></p></center>
-
-<p>
-In HTML format the figure will be interactive. Grapb one graph, move
+plot automatically moves all the other graphs. In this way, one can
+scroll through a long time series simultaneously for many plots.
+Grap one graph below, move
 into the future with the mouse, and watch the other graphs follow!
 
 <p>
