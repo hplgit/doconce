@@ -1,5 +1,4 @@
-> DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats. This means that you get the most up-to-date publishing technologies for paper, tablets, and
-> phones.
+> DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats. This means that you from a single source can get the most up-to-date publishing technologies for paper, tablets, and phones.
 
 
 
@@ -11,29 +10,29 @@ Here are some of the most recent features in DocOnce:
 
  * DocOnce supports interactive Bokeh plots for data exploration in
    HTML documents, see [demo](http://hplgit.github.io/doconce/doc/pub/manual/manual.html#___sec13).
- * DocOnce can now generate Matlab notebooks in the publish format
+ * DocOnce can generate Matlab notebooks in the publish format
    (output format `matlabnb`).
  * Exercises can now be extracted as individual files (e.g., for distribution
    to students). The files are in DocOnce format and can be compiled to, e.g.,
    LaTeX or IPython notebooks, see [a quick description](http://hplgit.github.io/doconce/doc/pub/manual/._manual013.html#exercises:standalone).
- * DocOnce and all its dependencies are now trivial to install with Anaconda Python: `sudo conda install --channel johannr doconce` (thanks to Johannes Ring)
+ * DocOnce and all its dependencies are now trivial to install with Anaconda Python: `sudo conda install --channel johannr doconce` (thanks to Johannes Ring).
  * Bootstrap HTML styles features hints, answers, and solutions in
-   exercises as *unfolded text*
+   exercises as *unfolded text*.
  * `doconce extract_exercises`
-   extracts all exercises from a document (can be used, e.g., to publish exercises separately or to extract only those exercises suitable to being published as IPython notebooks)
- * [User-defined environments](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments) with begin-end tags, doing
-   exactly what you want (you may (e.g.) use your favorite *native* example
-   LaTeX environment when writing LaTeX)
- * Interactive Python code in HTML and Sphinx via the `pyscpro` code
-   environment (Sage Math Cells)
- * Support for [RunestoneInteractive books](http://runestoneinteractive.org)
-   (as a special case of the Sphinx output format)
- * New support for [verbatim code blocks in LaTeX](http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html) with a lot of flexibility for fancy typesetting via the Pygments and Listings packages (i.e., no more need for the `ptex2tex` step)
- * [New document](http://hplgit.github.io/setup4book-doconce/doc/web/index.html) explaining the effient way to use DocOnce for book writing
+   extracts all exercises from a document (can be used, e.g., to publish exercises separately or to extract only those exercises suitable to being published as IPython notebooks).
+ * DocOnce features [user-defined environments](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments) with begin-end tags, doing
+   exactly what you want: you may (e.g.) use your favorite *native* example
+   LaTeX environment when writing LaTeX.
+ * Documents can have interactive Python code in HTML and Sphinx via the `pyscpro` code
+   environment (Sage Math Cells).
+ * New support for [RunestoneInteractive books](http://runestoneinteractive.org)
+   (as a special case of the Sphinx output format).
+ * New support for [verbatim code blocks in LaTeX](http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html) with a lot of flexibility for fancy typesetting via the Pygments and Listings packages (i.e., no more need for the `ptex2tex` step).
+ * [New document](http://hplgit.github.io/setup4book-doconce/doc/web/index.html) explaining the effient way to use DocOnce for book writing.
  * Embedded [quizzes or multiple-choice questions](http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html), which can be automatically uploaded to
-   [Kahoot online games](https://getkahoot.com)
+   [Kahoot online games](https://getkahoot.com).
  * [Admonitions](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions), i.e., boxes for notifications, tips, warnings, etc., with
-   great [flexibility in the typesetting](http://hplgit.github.io/doconce/doc/pub/admon/index.html) (at least in HTML and LaTeX)
+   great [flexibility in the typesetting](http://hplgit.github.io/doconce/doc/pub/admon/index.html) (at least in HTML and LaTeX).
 
 ### Installation
 
