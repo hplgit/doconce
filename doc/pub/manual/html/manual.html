@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 18, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 19, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -498,7 +498,8 @@ below) where such options may be useful for some formats.</p>
 <p class="first admonition-title">Make alternatives to Bokeh plots</p>
 <p>Note that Bokeh plots have only meaning when DocOnce translates the
 document to HTML. For other formats, one needs to supply figure files
-that those formats can accept. For example, you have made a Bokeh
+that those formats can accept (PNG, PDF, etc.).</p>
+<p>Suppose you have made a Bokeh
 plot in <code class="docutils literal"><span class="pre">myfig.html</span></code>. Either you have to embed the <code class="docutils literal"><span class="pre">FIGURE</span></code> command
 inside a preprocessor test that the <code class="docutils literal"><span class="pre">FORMAT</span> <span class="pre">==</span> <span class="pre">'html'</span></code> or you must
 provide alternatives like <code class="docutils literal"><span class="pre">myfig.png</span></code>. A Bokeh plot will often have a
@@ -518,9 +519,9 @@ DocOnce issues a warning in this case and recommends the <code class="docutils l
 <p class="last">Note that with <code class="docutils literal"><span class="pre">mode='cdn'</span></code> the HTML code for the plot requires Internet
 access.</p>
 </div>
-<p>An interactive plot like the one shown
-above, stored in a file <a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/manual/fig/bokeh_demo.html">tmp.html</a>, can be made by the code
-below (<a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/manual/bokeh_demo.py">download file</a>):</p>
+<p>An interactive plot like the one shown above, stored in a file
+<a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/manual/fig/bokeh_demo.html">tmp.html</a>,
+can be made by the code below (<a class="reference external" href="https://github.com/hplgit/doconce/tree/master/doc/src/manual/bokeh_demo.py">download file</a>):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">bokeh_plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">legends</span><span class="p">,</span> <span class="n">u_e</span><span class="p">,</span> <span class="n">t_e</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">t_range</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Make plots for u vs t using the Bokeh library.</span>
@@ -608,6 +609,39 @@ below (<a class="reference external" href="https://github.com/hplgit/doconce/tre
                <span class="n">filename</span><span class="o">=</span><span class="s">&#39;tmp.html&#39;</span><span class="p">)</span>
 
 <span class="n">demo_bokeh</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-matplotlib-plots-to-bokeh">
+<h4>Converting Matplotlib Plots to Bokeh<a class="headerlink" href="#converting-matplotlib-plots-to-bokeh" title="Permalink to this headline">¶</a></h4>
+<p>Most Python users apply Matplotlib to create line drawings.
+Bokeh has a conversion utility from Matplotlib to Bokeh that
+works well for standard curve plots. The script below demonstrates
+how to generate a plot in Matplotlib and convert it to a Bokeh <code class="docutils literal"><span class="pre">tmp.html</span></code>
+file.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;r-&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s">&#39;b--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;x&#39;</span><span class="p">);</span>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">)</span>
+<span class="c"># legends do not work in Bokeh</span>
+<span class="c">#plt.legend([r&#39;$e^{-x}\sin 2x$&#39;, r&#39;$e^{-\frac{1}{2}x}\sin 2x$&#39;])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Damped sine functions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;tmp.pdf&#39;</span><span class="p">);</span>  <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;tmp.png&#39;</span><span class="p">)</span>
+
+<span class="c"># Convert to Bokeh</span>
+<span class="kn">import</span> <span class="nn">bokeh.mpl</span><span class="o">,</span> <span class="nn">bokeh.plotting</span> <span class="kn">as</span> <span class="nn">bpl</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">bokeh</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">to_bokeh</span><span class="p">(</span><span class="n">notebook</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">xkcd</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c">#p = bokeh.mpl.to_bokeh()</span>
+<span class="n">bpl</span><span class="o">.</span><span class="n">output_file</span><span class="p">(</span><span class="s">&#39;tmp.html&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;cdn&#39;</span><span class="p">)</span>
+<span class="n">bpl</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="c">#bpl.show(p)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2237,7 +2271,7 @@ there is not a blank line after the comment.</p>
 DocOnce starts translating the document. Such comments are very valuable
 as they will never interfere with the output format and they are only
 present in the DocOnce source. Mako has two types of comments:
-lines starting with a double hash <code class="docutils literal"><span class="pre">##</span></code> and lines enclosed by
+lines starting with a double hash <code class="docutils literal"><span class="pre">##</span></code> and multiple lines enclosed by
 the <code class="docutils literal"><span class="pre">&lt;%doc&gt;</span></code> (beginning) and <code class="docutils literal"><span class="pre">&lt;%doc/&gt;</span></code> (closing) tags.</p>
 <p>If you need a lot of comments in the DocOnce file, consider using
 Mako comments instead of the single hash, unless you want the
@@ -9330,6 +9364,7 @@ Springer,
 <li><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
 <li><a class="reference internal" href="#plot-files-in-latex">Plot Files in LaTeX</a></li>
 <li><a class="reference internal" href="#interactive-bokeh-plots-for-html">Interactive Bokeh Plots for HTML</a></li>
+<li><a class="reference internal" href="#converting-matplotlib-plots-to-bokeh">Converting Matplotlib Plots to Bokeh</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#movies-1">Movies  (1)</a><ul>
