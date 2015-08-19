@@ -3678,7 +3678,7 @@ in particular the following one (with a caption),
 <linebreak>
 <linebreak>
 
-FIGURE: [../latexcode/fig/userdef_code_envir.png, width=400 frac=0.5]
+FIGURE: [fig/userdef_code_envir.png, width=400 frac=0.5]
 
 <linebreak>
 <linebreak>
