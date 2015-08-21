@@ -2453,10 +2453,11 @@ def handle_figures(filestr, format):
     # Plan: first check if the figure files are of right type, then
     # call format-specific functions for how to format the figures.
 
-    if type(FIGURE_EXT[format]) is str:
-        extensions = [FIGURE_EXT[format]]  # wrap in list
-    else:
-        extensions = FIGURE_EXT[format]
+    if not isinstance(FIGURE_EXT[format], dict):
+        print '*** BUG: FIGURE_EXT["%s"] is %s, not dict' % (format, type(FIGURE_EXT[format]))
+        _abort()
+    search_extensions = FIGURE_EXT[format]['search']
+    convert_extensions = FIGURE_EXT[format]['convert']
 
     figfiles = [filename.strip()
                 for filename, options, caption in c.findall(filestr)]
@@ -2510,7 +2511,7 @@ def handle_figures(filestr, format):
                 # no extension, run through the allowed extensions
                 # to see if figfile + ext exists:
                 file_found = False
-                for ext in extensions:
+                for ext in search_extensions:
                     newname = figfile + ext
                     if is_file_or_url(newname) == 'url':
                         file_found = True
@@ -2520,7 +2521,7 @@ def handle_figures(filestr, format):
                                          '%s\g<1>' % newname, filestr)
                         break
                 if not file_found:
-                    print '*** error: figure %s:\n    could not find URL with legal extension %s' % (figfile, ', '.join(extensions))
+                    print '*** error: figure %s:\n    could not find URL with legal extension %s' % (figfile, ', '.join(search_extensions))
                     _abort()
             continue
         # else: check out local figure file on the disk
@@ -2533,7 +2534,7 @@ def handle_figures(filestr, format):
                 ext = ''
             if not ext:  # no extension?
                 # try to see if figfile + ext exists:
-                for ext in extensions:
+                for ext in search_extensions:
                     newname = figfile + ext
                     if os.path.isfile(newname):
                         print 'figure file %s:\n    can use %s for format %s' % \
@@ -2562,16 +2563,16 @@ def handle_figures(filestr, format):
             print '*** error: figure file "%s" does not exist!' % figfile
             _abort()
         basepath, ext = os.path.splitext(figfile)
-        if not ext in extensions:
+        if not ext in search_extensions:
             # convert to proper format
-            for e in extensions:
+            for e in convert_extensions:
                 converted_file = basepath + e
                 if not os.path.isfile(converted_file):
                     # ext might be empty, in that case we cannot convert
                     # anything:
                     if ext:
                         print 'figure', figfile, 'must have extension(s)', \
-                              ', '.join(extensions)
+                              ', '.join(search_extensions)
                         # use ps2pdf and pdf2ps for vector graphics
                         # and only convert if to/from png/jpg/gif
                         if ext.endswith('ps') and e == '.pdf':
@@ -2579,14 +2580,10 @@ def handle_figures(filestr, format):
                             #      (figfile, converted_file)
                             cmd = 'ps2pdf -dEPSCrop %s %s' % \
                                   (figfile, converted_file)
-                        elif ext == '.pdf' and ext.endswith('ps'):
+                        elif ext == '.pdf' and e.endswith('ps'):
                             cmd = 'pdf2ps %s %s' % \
                                   (figfile, converted_file)
                         else:
-                            # Never convert to .pgf (use .pdf then)
-                            if converted_file.endswith('.pgf'):
-                                converted_file = converted_file.replace(
-                                    '.pgf', '.pdf')
                             if not os.path.isfile(converted_file):
                                 cmd = 'convert %s %s' % (figfile, converted_file)
                             else:
@@ -4267,8 +4264,17 @@ preprocess package (sudo apt-get install preprocess).
         pattern = r'\b%s\b' % name    # e.g. % if name == 'a' (or Python code)
         if re.search(pattern, filestr_without_code):
             match_mako_variable = True
-            debugpr('Found use mako variable(s) in mako code in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
+            debugpr('Found use of mako variable(s) in mako code in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
             break
+    if not match_mako_variable:
+        # See if we use a mako function/variable construction
+        if re.search(r'\$\{', filestr):
+            m = re.search(r'(\$\{.+?\})', filestr, flags=re.DOTALL)
+            if m:
+                print '*** error: file has a mako construction %s' % m.group(1)
+                print '    but seemingly no definition in <%...%>'
+                print '    (it is not a command-line given mako variable either)'
+                _abort()
 
     if (match_percentage or match_mako_variable) and option('no_mako'):
         # Found mako-like statements, but --no_mako is forced, give a message

@@ -694,7 +694,9 @@ def define(FILENAME_EXTENSION,
         }
     from common import DEFAULT_ARGLIST
     ARGLIST['rst'] = DEFAULT_ARGLIST
-    FIGURE_EXT['rst'] = ('.png', '.gif', '.jpg', '.jpeg', '.pdf', '.eps', '.ps')
+    FIGURE_EXT['rst'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg', '.pdf', '.eps', '.ps'),
+        'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['rst'] = rst_ref_and_label
     INDEX_BIB['rst'] = rst_index_bib
 

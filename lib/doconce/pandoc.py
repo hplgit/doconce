@@ -488,7 +488,9 @@ def define(FILENAME_EXTENSION,
     EXERCISE['pandoc'] = plain_exercise
     TOC['pandoc'] = lambda s: '# Table of contents: Run pandoc with --toc option'
     QUIZ['pandoc'] = pandoc_quiz
-    FIGURE_EXT['pandoc'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
+    FIGURE_EXT['pandoc'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf'),
+        'convert': ('.png', '.gif', '.jpg')}
 
     # Wrap markdown output in strapdown HTML code for quick auto rendering
     # with Bootstrap themes?

@@ -2405,7 +2405,10 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['html'] = ('.html', '.png', '.gif', '.jpg', '.jpeg', '.svg')
+    FIGURE_EXT['html'] = {
+        'search': ('.html', '.png', '.gif', '.jpg', '.jpeg', '.svg'),
+        'convert': ('.png', '.gif', '.jpg')}
+
     CROSS_REFS['html'] = html_ref_and_label
     TABLE['html'] = html_table
     INDEX_BIB['html'] = html_index_bib
