@@ -332,6 +332,9 @@ def define(FILENAME_EXTENSION,
     CODE['matlabnb'] = matlabnb_code
     from common import DEFAULT_ARGLIST
     ARGLIST['matlabnb'] = DEFAULT_ARGLIST
+    FIGURE_EXT['matlabnb'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg', '.pdf'),  #.pdf?
+        'convert': ('.png', '.gif', '.jpg')}
     LIST['matlabnb'] = {
         'itemize':
         {'begin': '', 'item': '*', 'end': '\n'},

@@ -782,6 +782,13 @@ a wrong way such that the heading appears *after* the code.
 A remedy is to insert some text after the paragraph heading.
 See also Section ref{trouble:bsol:code} - it is the same problem.
 
+===== Numbered equations in exercise solutions change the equation numbers in the text... =====
+
+This is a problem if you produce versions with and without solutions,
+see the heading ``Numbering of Extra Equations in Solutions'' in the
+DocOnce manual for description of the problem and its solutions.
+
+
 ======= Problems with reST/Sphinx Output =======
 
 ===== Sphinx directory generation aborts with ``label empty or too long'' =====

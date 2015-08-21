@@ -681,7 +681,9 @@ def define(FILENAME_EXTENSION,
     BLANKLINE['sphinx'] = BLANKLINE['rst']
     CODE['sphinx'] = CODE['rst']
     LIST['sphinx'] = LIST['rst']
-    FIGURE_EXT['sphinx'] = ('.png', '.gif', '.jpg', '.jpeg')
+    FIGURE_EXT['sphinx'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg'),
+        'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['sphinx'] = sphinx_ref_and_label
     INDEX_BIB['sphinx'] = sphinx_index_bib
     TABLE['sphinx'] = TABLE['rst']

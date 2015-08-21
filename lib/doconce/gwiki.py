@@ -266,7 +266,9 @@ def define(FILENAME_EXTENSION,
         'module variable': '*module variable*',
         }
 
-    FIGURE_EXT['gwiki'] = ('.png', '.gif', '.jpg', '.jpeg')
+    FIGURE_EXT['gwiki'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg'),
+        'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['gwiki'] = gwiki_ref_and_label
     from plaintext import plain_index_bib
     EXERCISE['gwiki'] = plain_exercise

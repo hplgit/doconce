@@ -515,7 +515,7 @@ FIGURE: [testfigs/df2s8765s_plot.png, width=200, frac=0.4]
 # #if FORMAT == 'html'
 HTML output may feature Bokeh plots:
 
-FIGURE: [bokeh_test.html]
+FIGURE: [bokeh_test]
 # #endif
 
 __Remark.__
@@ -29593,11 +29593,11 @@ is at the end with only one newline.
 % Test of figures. In particular we refer to Figure ref{fig:impact} in which
 % there is a flow.
 % 
-% FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. {fig:impact}
+% <<../doc/src/manual/fig/wave1D.png>>
 % 
 % Figures without captions are allowed and will be inlined.
 % 
-% FIGURE:[../doc/src/manual/fig/wave1D, width=200]
+% <<../doc/src/manual/fig/wave1D.png>>
 % 
 % 
 % 
@@ -29606,13 +29606,13 @@ is at the end with only one newline.
 % Here is figure ref{myfig} with a long (illegal) multi-line caption
 % containing inline verbatim text:
 % 
-% FIGURE: [../doc/src/manual/fig/wave1D.png, width=500 sidecap=True] A long caption spanning several lines and containing verbatim words like |my_file_v1| and |my_file_v2| as well as math with subscript as in $t_{i+1}$. {myfig} 
+% <<../doc/src/manual/fig/wave1D.png>>
 % 
 % % Must be a blank line after MOVIE or FIGURE to detect this problem
 % 
 % Test URL as figure name:
 % 
-% FIGURE: [https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png, width=500 frac=0.8]
+% <<https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png>>
 % 
 % 
 % % Test wikimedia type of files that otherwise reside in subdirs
@@ -37330,7 +37330,7 @@ Test SVG figure:
 HTML output may feature Bokeh plots:
 
 <p>
-<center><p><img src="https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html.html" align="bottom" ></p></center>
+<center><p><img src="https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html" align="bottom" ></p></center>
 
 <p>
 <b>Remark.</b>
@@ -76026,7 +76026,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fdcf0111410>
+verbatim is to be replaced using <function html_verbatim at 0x7f67a71fb410>
 
 
 First occurence: " `mako`."
@@ -80265,7 +80265,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Aug 18 15:14:57 2015.
+# sphinx-quickstart on Thu Aug 20 11:31:09 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -99464,12 +99464,12 @@ figure file https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/
     found!
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.png ...
     found!
-... checking existence of https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html.html ...
-    found!
-figure file https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html:
-    can use https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html.html for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+... checking existence of https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html ...
+    found!
+figure file https://raw.github.com/hplgit/doconce/master/test/bokeh_test:
+    can use https://raw.github.com/hplgit/doconce/master/test/bokeh_test.html for format html
 output in testdoc.html
 + '[' 0 -ne 0 ']'
 + cp testdoc.html testdoc_wordpress.html
@@ -99512,6 +99512,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+figure file bokeh_test:
+    can use bokeh_test.html for format html
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
 *** warning: inline math in HTML must have space around <:
@@ -99569,6 +99571,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+figure file bokeh_test:
+    can use bokeh_test.html for format html
 *** warning: inline math in HTML must have space around <:
     <1/2  ->  < 1/2
 *** warning: quiz explanation contains block (fig/code/math)
@@ -99697,6 +99701,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+figure file bokeh_test:
+    can use bokeh_test.html for format html
 *** warning: found link tag "...": "..." in footnote, which was removed
     from tooltip (since it does not work with bootstrap tooltips)
 URL: "google.com" is perhaps the most famous web site today.
@@ -99755,6 +99761,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+figure file bokeh_test:
+    can use bokeh_test.html for format html
 *** warning: --pygm_style=emacs is not recommended when --html_style=solarized
     automatically changed to --html_style=perldoc
 *** warning: inline math in HTML must have space around <:
@@ -99820,6 +99828,8 @@ figure file ../doc/src/manual/fig/wave1D:
     can use ../doc/src/manual/fig/wave1D.png for format html
 ... checking existence of http://openclipart.org/people/jpneok/junebug.svg ...
     found!
+figure file bokeh_test:
+    can use bokeh_test.html for format html
 *** warning: --pygm_style=emacs is not recommended when --html_style=solarized
     automatically changed to --html_style=perldoc
 *** warning: inline math in HTML must have space around <:
@@ -105131,6 +105141,10 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 found info about 11 exercises
+... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
+    found!
+figure file ../doc/src/manual/fig/wave1D:
+    can use ../doc/src/manual/fig/wave1D.png for format matlabnb
 *** warning: table headline with entries
     | $S$ | command |
    has 2 columns while further down there are 3 columns

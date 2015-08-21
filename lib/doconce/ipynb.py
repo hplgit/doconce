@@ -851,5 +851,7 @@ def define(FILENAME_EXTENSION,
         INDEX_BIB['ipynb'] = pandoc_index_bib
     EXERCISE['ipynb'] = plain_exercise
     TOC['ipynb'] = lambda s: ''
-    FIGURE_EXT['ipynb'] = ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf')
+    FIGURE_EXT['ipynb'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg', '.tif', '.tiff', '.pdf'),
+        'convert': ('.png', '.gif', '.jpg')}
     QUIZ['ipynb'] = pandoc_quiz

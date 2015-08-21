@@ -495,7 +495,9 @@ def define(FILENAME_EXTENSION,
         'module variable': '<b>module variable</b>',
         }
 
-    FIGURE_EXT['xml'] = ('.png', '.gif', '.jpg', '.jpeg')
+    FIGURE_EXT['xml'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg'),
+        'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['xml'] = xml_ref_and_label
     TABLE['xml'] = xml_table
     INDEX_BIB['xml'] = xml_index_bib

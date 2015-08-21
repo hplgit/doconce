@@ -2116,6 +2116,7 @@ The command-line option `--no_emoji` removes all emojis from the output.
 
 !split
 ======= Exercises, Problems, Projects, and Examples =======
+label{manual:exercises}
 
 idx{exercise environment}
 idx{problem environment}
@@ -2221,7 +2222,8 @@ A recommended rule for using the different ``exercise'' types goes as follows:
   * Problems are sufficiently independent of the chapter's text
     that they make sense on their own, separated from the rest of the docoment.
   * Projects are larger problems that also make sense on their own.
-  * Examples are exercises, problems, or projects with full solutions.
+  * Examples are exercises, problems, or projects, but with full solutions
+    not typeset with `!bsol` and `!esol` but as running text
 
 The command line options `--without_answers` and `--without_solutions`
 turn off output of answers and solutions, respectively, except for
@@ -2302,6 +2304,42 @@ edits the `.tex` file, preferably by a script after each `doconce format`
 command).
 
 idx{`doconce` commands!`extract_exercises`}
+
+===== Numbering of Extra Equations in Solutions =====
+label{manual:exercises:sol:no}
+
+A potential problem arises if you produce two versions of your document,
+one with solutions and one without solutions (`--without_solutions`),
+and there are numbered equations in the solutions. Equations in the
+text of the document *after* these exercises sections might then be
+numbered differently. There are two ways out of this problem.
+
+=== Book ===
+
+In a book with chapters, collect all exercises at the end in a
+separate section ``Exercises''.
+Equations are numbered chapter-wise, and equations in solutions
+will not influence the numbering of equations before this exercise
+section. However, if some of the exercises contain numbered equations
+in the exercise text, numbered equations in solutions to previous exercises
+will influence the numbering of equations. Avoid numbered equations
+in exercise text.
+
+=== Use the tag command ===
+
+Equations can be given explicit numbers, completely governed by the writer.
+The following equation is given the number `11.5.3` and a label `myeq`:
+
+!bc
+|bt
+\[ 1 + 1 = 2 \tag{11.5.3}
+label{myeq}
+|et
+!ec
+Equations in solutions can then be given their own numbers (here, `11.5`
+could be chapter 11, section 5). One can use a Mako variable to automatically
+assign appropriate numbers in the `tag` command.
+
 
 ===== Extracting All Exercises in a Separate Document =====
 

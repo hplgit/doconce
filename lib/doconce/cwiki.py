@@ -194,7 +194,9 @@ def define(FILENAME_EXTENSION,
         'module variable': '*module variable*',
         }
 
-    FIGURE_EXT['cwiki'] = ('.png', '.gif', '.jpg', '.jpeg')
+    FIGURE_EXT['cwiki'] = {
+        'search': ('.png', '.gif', '.jpg', '.jpeg'),
+        'convert': ('.png', '.gif', '.jpg')}
     CROSS_REFS['cwiki'] = cwiki_ref_and_label
     from plaintext import plain_index_bib
     EXERCISE['cwiki'] = plain_exercise
