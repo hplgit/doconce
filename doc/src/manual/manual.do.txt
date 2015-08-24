@@ -288,9 +288,15 @@ are used for output in the formats `html`, `rst`, `sphinx`, while
 the frac specification is used for `latex` and `pdflatex` to specify
 the width of the image as a fraction of the text width.
 
+=== Inline Figures ===
+
 The figure caption is optional. If omitted, the figure appears ``inline''
 in the text without any figure environment in LaTeX formats or HTML.
-The caption may contain a label for referencing the figure.
+#The caption may contain a label for referencing the figure also in this case.
+An inline figure is handy in LaTeX since it appears exactly where the
+`FIGURE:` command appears (figures with captions are encapsulated in the
+LaTeX `figure` environment and become floating objects whose placement
+is up to LaTeX do decide).
 
 !bnotice Tip: use linebreak to insert space around inline figures
 Sometimes inline figures (`FIGURE` line without caption) get squeezed
@@ -1601,24 +1607,44 @@ LaTeX, but note that *labels cannot contain whitespace and cannot have a backsla
 When the label is placed after a section or subsection heading,
 the `plain` text, `epytext`, and `st` formats will simply
 replace the reference by the title of the (sub)section.  All labels
-will become invisible, except those in math environments.  In the
+will become invisible, except those in math environments.  (In the
 `rst` and `sphinx` formats, the end effect is the same, but
 the `label` and `ref` commands are first translated to the proper
-reST commands by `doconce format`. In the `html`, `ipynb`, and wiki formats,
+reST commands by `doconce format`.) In the `html`, `ipynb`, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX `label` and `ref` are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
+Since references to sections appear differently in different formats, we
+provide an example.
+
+!bc do
+..., we refer to Section ref{sec:theory}.
+
+======= Basic Theory =======
+label{sec:theory}
+
+A first discovery was that 1+1 is 2.
+!ec
+The reference appears as follows in various output formats:
+
+ * `latex` and `pdflatex`: ``we refer to Section 2.3'' with
+   LaTeX code `we refer to Section~\ref{sec:theory}`
+ * `html`: ``we refer to the section Basic Theory'' with the HTML code `we refer to the section <a href="#sec:theory">Basic Theory</a>`
+ * `rst`, `sphinx`: ``we refer to the section Basic Theory''
+ * `plain`: ``we refer to the section "Basic Theory"''
+ * `ipynb`: ``we refer to the section Basic Theory'' with Markdown code `we refer to the section [Basic Theory](#sec:theory)`
+ * `mwiki`: ``we refer to the section Basic Theory'' with MediaWiki code `We refer to the section [#Basic_Theory]`
+
+
 Labels and references should only be used for
 (sub)sections, equations, figures, and movies (since DocOnce does not
 support references to tables and algorithms, for instance).
-By the way, here is an example on referencing Figure ref{fig:viz}
-(the label appears in the figure caption in the source code of this document).
+By the way, here is an example on referencing Figure ref{fig:viz}.
 Additional references to Sections ref{mathtext} and ref{newcommands} are
 nice to demonstrate, as well as a reference to equations,
-say (ref{myeq1})-(ref{myeq2}). A comparison of the output and
-the source of this document illustrates how labels and references
-are handled by the format in question.
+say (ref{myeq1})-(ref{myeq2}).
+
 
 Hyperlinks to files or web addresses are handled as explained
 in Section ref{inline:tagging}.

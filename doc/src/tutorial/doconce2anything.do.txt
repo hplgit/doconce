@@ -135,7 +135,7 @@ future revisions.
 idx{demos}
 
 A simple scientific report is available in "a lot of different formats":
-"http://hplgit.github.com/teamods/writing_reports/doconce_commands.html".
+"http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html".
 How to create the different formats is explained in more depth
 in the coming sections.
 

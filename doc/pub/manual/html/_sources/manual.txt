@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 19, 2015
+:Date: Aug 23, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -441,9 +441,18 @@ are used for output in the formats ``html``, ``rst``, ``sphinx``, while
 the frac specification is used for ``latex`` and ``pdflatex`` to specify
 the width of the image as a fraction of the text width.
 
+Inline Figures
+~~~~~~~~~~~~~~
+
 The figure caption is optional. If omitted, the figure appears "inline"
 in the text without any figure environment in LaTeX formats or HTML.
-The caption may contain a label for referencing the figure.
+
+.. The caption may contain a label for referencing the figure also in this case.
+
+An inline figure is handy in LaTeX since it appears exactly where the
+``FIGURE:`` command appears (figures with captions are encapsulated in the
+LaTeX ``figure`` environment and become floating objects whose placement
+is up to LaTeX do decide).
 
 
 .. admonition:: Tip: use linebreak to insert space around inline figures
@@ -3389,24 +3398,48 @@ LaTeX, but note that *labels cannot contain whitespace and cannot have a backsla
 When the label is placed after a section or subsection heading,
 the ``plain`` text, ``epytext``, and ``st`` formats will simply
 replace the reference by the title of the (sub)section.  All labels
-will become invisible, except those in math environments.  In the
+will become invisible, except those in math environments.  (In the
 ``rst`` and ``sphinx`` formats, the end effect is the same, but
 the ``label`` and ``ref`` commands are first translated to the proper
-reST commands by ``doconce format``. In the ``html``, ``ipynb``, and wiki formats,
+reST commands by ``doconce format``.) In the ``html``, ``ipynb``, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX ``label`` and ``ref`` are just equipped with backslashes so
 these commands work as usual in LaTeX.
 
+Since references to sections appear differently in different formats, we
+provide an example.
+
+.. code-block:: doconce
+
+        ..., we refer to Section ref{sec:theory}.
+        
+        ======= Basic Theory =======
+        label{sec:theory}
+        
+        A first discovery was that 1+1 is 2.
+
+The reference appears as follows in various output formats:
+
+ * ``latex`` and ``pdflatex``: "we refer to Section 2.3" with
+   LaTeX code `we refer to Section |nbsp| \:ref:`sec:theory"
+
+ * ``html``: ``we refer to the section Basic Theory" with the HTML code ``we refer to the section <a href="#sec:theory">Basic Theory</a>``
+
+ * ``rst``, ``sphinx``: "we refer to the section Basic Theory"
+
+ * ``plain``: "we refer to the section "Basic Theory""
+
+ * ``ipynb``: "we refer to the section Basic Theory" with Markdown code ``we refer to the section [Basic Theory](#sec:theory)``
+
+ * ``mwiki``: "we refer to the section Basic Theory" with MediaWiki code ``We refer to the section [#Basic_Theory]``
+
 Labels and references should only be used for
 (sub)sections, equations, figures, and movies (since DocOnce does not
 support references to tables and algorithms, for instance).
-By the way, here is an example on referencing Figure :ref:`fig:viz`
-(the label appears in the figure caption in the source code of this document).
+By the way, here is an example on referencing Figure :ref:`fig:viz`.
 Additional references to the sections :ref:`mathtext` and :ref:`newcommands` are
 nice to demonstrate, as well as a reference to equations,
-say (:ref:`myeq1`)-(:ref:`myeq2`). A comparison of the output and
-the source of this document illustrates how labels and references
-are handled by the format in question.
+say (:ref:`myeq1`)-(:ref:`myeq2`).
 
 Hyperlinks to files or web addresses are handled as explained
 in the section :ref:`inline:tagging`.
@@ -3969,6 +4002,8 @@ The command-line option ``--no_emoji`` removes all emojis from the output.
 
 .. !split
 
+.. _manual:exercises:
+
 Exercises, Problems, Projects, and Examples
 ===========================================
 
@@ -4084,7 +4119,8 @@ A recommended rule for using the different "exercise" types goes as follows:
 
   * Projects are larger problems that also make sense on their own.
 
-  * Examples are exercises, problems, or projects with full solutions.
+  * Examples are exercises, problems, or projects, but with full solutions
+    not typeset with ``!bsol`` and ``!esol`` but as running text
 
 The command line options ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
@@ -4171,6 +4207,46 @@ command).
 
 .. index::
    single: doconce commands; extract_exercises
+
+.. _manual:exercises:sol:no:
+
+Numbering of Extra Equations in Solutions
+-----------------------------------------
+
+A potential problem arises if you produce two versions of your document,
+one with solutions and one without solutions (``--without_solutions``),
+and there are numbered equations in the solutions. Equations in the
+text of the document *after* these exercises sections might then be
+numbered differently. There are two ways out of this problem.
+
+Book
+~~~~
+
+In a book with chapters, collect all exercises at the end in a
+separate section "Exercises".
+Equations are numbered chapter-wise, and equations in solutions
+will not influence the numbering of equations before this exercise
+section. However, if some of the exercises contain numbered equations
+in the exercise text, numbered equations in solutions to previous exercises
+will influence the numbering of equations. Avoid numbered equations
+in exercise text.
+
+Use the tag command
+~~~~~~~~~~~~~~~~~~~
+
+Equations can be given explicit numbers, completely governed by the writer.
+The following equation is given the number ``11.5.3`` and a label ``myeq``:
+
+.. code-block:: text
+
+        !bt
+        \[ 1 + 1 = 2 \tag{11.5.3}
+        label{myeq}
+        !et
+
+Equations in solutions can then be given their own numbers (here, ``11.5``
+could be chapter 11, section 5). One can use a Mako variable to automatically
+assign appropriate numbers in the ``tag`` command.
 
 Extracting All Exercises in a Separate Document
 -----------------------------------------------
@@ -7779,7 +7855,7 @@ Demo of different formats
 
 .. index:: demos
 
-A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/doconce_commands.html>`__.
+A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html>`__.
 How to create the different formats is explained in more depth
 in the coming sections.
 

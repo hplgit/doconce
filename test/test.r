@@ -76026,7 +76026,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f67a71fb410>
+verbatim is to be replaced using <function html_verbatim at 0x7fa4daeb7410>
 
 
 First occurence: " `mako`."
@@ -80265,7 +80265,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Aug 20 11:31:09 2015.
+# sphinx-quickstart on Sun Aug 23 23:22:58 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
