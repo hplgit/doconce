@@ -260,7 +260,7 @@ idx{`FIGURE` keyword}
 Figures are recognized by the special line syntax
 
 !bc do
-FIGURE:[filename, height=400 width=600 frac=0.8] caption
+FIGURE:[filename, width=600 frac=0.8] caption
 
 !ec
 The filename can be without extension, and DocOnce will search for an
@@ -282,7 +282,7 @@ part of the caption appearing on the same line as `FIGURE:` will be
 included in the formatted caption).
 !ewarning
 
-The height, width, and frac keywords can be included
+The `height`, `width`, and `frac` keywords can be included
 if desired and may have effect for some formats: the height and width
 are used for output in the formats `html`, `rst`, `sphinx`, while
 the frac specification is used for `latex` and `pdflatex` to specify
@@ -290,7 +290,30 @@ the width of the image as a fraction of the text width.
 
 === Figure References ===
 
-Different formats...
+Suppose we have the DocOnce code
+
+!bc do
+The results are presented in Figure ref{myfig}.
+
+FIGURE:[myfigfile, width=400 frac=0.8] Results for $a=2$. label{myfig}
+
+!ec
+
+Different formats will display the figure reference differently.
+In LaTeX, DocOnce generates the code `... in Figure~\ref{myfig}`, which
+reads ``... in Figure 5'' (article) or ``... in Figure 5.2'' (book).
+Sphinx applies the caption as name of the figure, so the reference
+reads ``... in Figure Results for .'', and the caption/name is a link
+to the figure. Note that Sphinx strips off the mathematics from
+the caption. In HTML, figures are given numbers, so the reference
+reads ``... in Figure 3'', with the figure number as a link to the
+place in the document where the `FIGURE:` command was located.
+The IPython notebook format makes a Markdown link: `... in [Figure](#myfig)`,
+where `myfig` is an anchor such one can click on `Figure`.
+The plain text format displays the reference as ``... in Figure ref{myfig}.''.
+Wiki formats show ``... in Figure myfig.''. So to summarize, figure
+references work best in LaTeX, HTML, and Sphinx. Other formats
+should avoid figure references with labels.
 
 === Inline Figures ===
 
