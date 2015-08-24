@@ -76026,7 +76026,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f32979248c0>
+verbatim is to be replaced using <function html_verbatim at 0x7eff08f208c0>
 
 
 First occurence: " `mako`."
@@ -80265,7 +80265,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Aug 24 11:19:17 2015.
+# sphinx-quickstart on Mon Aug 24 11:23:55 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80297,7 +80297,7 @@ extensions = [
           #'sphinx.ext.jsmath',
           'sphinx.ext.mathjax',
           #'matplotlib.sphinxext.mathmpl',
-          'matplotlib.sphinxext.only_directives',
+          #'matplotlib.sphinxext.only_directives',
           'matplotlib.sphinxext.plot_directive',
           'sphinx.ext.autodoc',
           'sphinx.ext.doctest',
@@ -80476,6 +80476,7 @@ html_theme = 'agni'
 #html_theme = 'nature'
 #html_theme = 'pylons'
 #html_theme = 'pyramid'
+#html_theme = 'redcloud'
 #html_theme = 'redcloud'
 #html_theme = 'scipy_lectures'
 #html_theme = 'scrolls'
@@ -104768,7 +104769,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 title: Just a test
 author: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -104784,10 +104785,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 12 source files that are out of date
@@ -104838,7 +104835,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 12 warnings.
+build succeeded, 8 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -106767,7 +106764,7 @@ Using author(s) "HPL" from math_test
 title: How various formats can deal with LaTeX math
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -106781,10 +106778,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -106805,7 +106798,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
@@ -109498,7 +109491,7 @@ Using author(s) "hpl" from admon
 title: Testing admons
 author: hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -109526,10 +109519,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -109552,7 +109541,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 doconce format sphinx admon 
@@ -115104,10 +115093,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'html_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
-WARNING: while setting up extension ['?', 'matplotlib.sphinxext.only_directives']: node class 'latex_only' is already registered, its visitors will be overridden
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -115128,7 +115113,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 4 warnings.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir

@@ -612,14 +612,22 @@ if html_theme == 'solarized':
     text = re.sub(r"^html_theme = '.+?' *$",
                   '\n'.join(themes_list) + themes_code,
                   text, flags=re.MULTILINE)
-    # Include bootstrap path if we have that module
+    # Include bootstrap and cloud paths if we have those modules
     try:
         import sphinx_bootstrap_theme
-        bootstrap = ' + sphinx_bootstrap_theme.get_html_theme_path()'
+        bootstrap_path = ' + sphinx_bootstrap_theme.get_html_theme_path()'
     except ImportError:
-        bootstrap = ''
+        bootstrap_path = ''
+    try:
+        import cloud_sptheme as csp
+        cloud_path = '  + [csp.get_theme_dir()]'
+    except ImportError:
+        cloud_path = ''
+
     text = text.replace("#html_theme_path = []",
-                        "html_theme_path = ['_themes']%s" % bootstrap)
+                        "html_theme_path = ['_themes']%s%s" %
+                        (bootstrap_path, cloud_path))
+
     extensions = """\
 extensions = [
           #'sphinx.ext.pngmath',
@@ -662,6 +670,7 @@ except ImportError:
     url = 'https://bitbucket.org/ecollins/cloud_sptheme'
     additional_themes_url['cloud'] = url
     additional_themes_url['redcloud'] = url
+
 
 '''
 # FIXME: think we do not need to test on basicstrap, but some themes
