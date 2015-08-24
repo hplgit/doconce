@@ -4274,7 +4274,10 @@ preprocess package (sudo apt-get install preprocess).
                 print '*** error: file has a mako construction %s' % m.group(1)
                 print '    but seemingly no definition in <%...%>'
                 print '    (it is not a command-line given mako variable either)'
-                _abort()
+                print '''    (however: if this is code in a Makefile, run with --no_mako
+    - and you cannot use mako and Makefile code together!)'''
+                if not option('no_mako'):
+                    _abort()
 
     if (match_percentage or match_mako_variable) and option('no_mako'):
         # Found mako-like statements, but --no_mako is forced, give a message

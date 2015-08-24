@@ -283,6 +283,9 @@ EOF
     os.remove('tmp_sphinx_gen.sh')
     os.chdir(sphinx_rootdir)
 
+    sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()
+    sphinx_installed_themes = 'bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme'.split()
+
     if theme_dir is None:
         # Copy themes
         import doconce.common
@@ -293,7 +296,8 @@ EOF
         os.rename('sphinx_themes', '_themes')
         files = sorted(glob.glob(os.path.join('_themes', '*')))
         themes = [name[8:] for name in files
-                  if os.path.isdir(name)] + ['default']
+                  if os.path.isdir(name)] + \
+                  sphinx_basic_themes + sphinx_installed_themes
         print 'These Sphinx themes were found:', ', '.join(themes)
 
         if conf_py is None:
@@ -588,7 +592,7 @@ def make_conf_py(themes, theme, title, short_title,
                  author, logo, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     themes_list = ["html_theme = '%s'" % theme] + \
-                  ["#html_theme = '%s'" % t for t in themes]
+                  ["#html_theme = '%s'" % t for t in sorted(themes)]
     themes_code = r"""
 
 check_additional_themes = [
@@ -622,7 +626,7 @@ extensions = [
           #'sphinx.ext.jsmath',
           'sphinx.ext.mathjax',
           #'matplotlib.sphinxext.mathmpl',
-          'matplotlib.sphinxext.only_directives',
+          #'matplotlib.sphinxext.only_directives',
           'matplotlib.sphinxext.plot_directive',
           'sphinx.ext.autodoc',
           'sphinx.ext.doctest',
