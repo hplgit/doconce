@@ -57647,8 +57647,6 @@ exercises (and problems and projects too).
 
 
 ************** File: admon_sphinx/admon.html *****************
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -57659,7 +57657,7 @@ exercises (and problems and projects too).
     
     <title>Testing admons</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -57704,8 +57702,8 @@ exercises (and problems and projects too).
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -57714,14 +57712,14 @@ exercises (and problems and projects too).
         <li class="right" >
           <a href="index.html" title="Testing admons"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Testing admons</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="testing-admons">
 <h1>Testing admons<a class="headerlink" href="#testing-admons" title="Permalink to this headline">¶</a></h1>
@@ -58006,7 +58004,7 @@ exercises (and problems and projects too).</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -58026,15 +58024,17 @@ exercises (and problems and projects too).</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Testing admons</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/admon.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/admon.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -58048,7 +58048,7 @@ exercises (and problems and projects too).</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -58057,12 +58057,12 @@ exercises (and problems and projects too).</p>
         <li class="right" >
           <a href="index.html" title="Testing admons"
              >previous</a> |</li>
-        <li><a href="index.html">Testing admons</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Testing admons</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, hpl.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.4a0+.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.
     </div>
   </body>
 </html>
@@ -76026,7 +76026,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fa4daeb7410>
+verbatim is to be replaced using <function html_verbatim at 0x7f32979248c0>
 
 
 First occurence: " `mako`."
@@ -80265,7 +80265,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 23 23:22:58 2015.
+# sphinx-quickstart on Mon Aug 24 11:19:17 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80463,7 +80463,7 @@ html_theme = 'agni'
 #html_theme = 'bloodish'
 #html_theme = 'bootstrap'
 #html_theme = 'cbc'
-#html_theme = 'classy'
+#html_theme = 'classic'
 #html_theme = 'cloud'
 #html_theme = 'default'
 #html_theme = 'epub'
@@ -80486,7 +80486,6 @@ html_theme = 'agni'
 #html_theme = 'traditional'
 #html_theme = 'uio'
 #html_theme = 'vlinux-theme'
-#html_theme = 'default'
 
 check_additional_themes = [
    'solarized', 'cloud', 'redcloud',
@@ -104769,7 +104768,7 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 title: Just a test
 author: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -106768,7 +106767,7 @@ Using author(s) "HPL" from math_test
 title: How various formats can deal with LaTeX math
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -109499,7 +109498,7 @@ Using author(s) "hpl" from admon
 title: Testing admons
 author: hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -115088,7 +115087,7 @@ Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
 author: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classy, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, impressjs, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme, default
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,

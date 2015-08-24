@@ -288,6 +288,10 @@ are used for output in the formats `html`, `rst`, `sphinx`, while
 the frac specification is used for `latex` and `pdflatex` to specify
 the width of the image as a fraction of the text width.
 
+=== Figure References ===
+
+Different formats...
+
 === Inline Figures ===
 
 The figure caption is optional. If omitted, the figure appears ``inline''
