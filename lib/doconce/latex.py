@@ -1780,17 +1780,16 @@ def latex_abstract(m):
 def latex_ref_and_label(section_label2title, format, filestr):
     filestr = filestr.replace('label{', r'\label{')
     # add ~\ between chapter/section and the reference
-    pattern = r'([Ss]ection|[Cc]hapter)(s?)\s+ref\{'  # no \[A-Za-z] pattern => no fix
+    pattern = r'([Ss]ection|[Cc]hapter|[Aa]ppendix|[Aa]ppendice)(s?)\s+ref\{'  # no \[A-Za-z] pattern => no fix
     # recall \r is special character so it needs \\r
     # (could call fix_latex_command_regex for the replacement)
     replacement = r'\g<1>\g<2>~\\ref{'
-    #filestr = re.sub(pattern, replacement, filestr, flags=re.IGNORECASE)
-    cpattern = re.compile(pattern, flags=re.IGNORECASE)
-    filestr = cpattern.sub(replacement, filestr)
+    filestr = re.sub(pattern, replacement, filestr, flags=re.IGNORECASE)
+    # ref -> \ref in latex
     # range ref:
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
-    filestr = re.sub(r'\s+ref\{', r'~\\ref{', filestr)
+    filestr = re.sub(r'([A-Za-z.:])\s+ref\{', r'\g<1>~\\ref{', filestr)
     # non-breaking space
     filestr = re.sub(r'~ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)

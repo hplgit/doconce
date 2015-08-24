@@ -343,7 +343,17 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
     # Typeset TITLE so that it gets the highest+1 (but no higher) section sevel
     max_heading += 2  # one level up (2 =)
     max_heading = min(max_heading, 9)
-    filestr = re.sub(r'^TITLE:\s*(.+)$', '.. Document title:\n\n%s \g<1> %s\n' %
+    pattern = r'^TITLE:\s*(.+)$'
+    if format == 'sphinx':
+        # Title cannot be more than 63 chars...
+        m = re.search(pattern, filestr, flags=re.MULTILINE)
+        if m:
+            title = m.group(1).strip()
+            if len(title) > 63:
+                print '*** error: sphinx title cannot be longer than 63 characters'
+                print '    current title: "%s" (%d characters)' % (title, len(title))
+                _abort()
+    filestr = re.sub(pattern, '.. Document title:\n\n%s \g<1> %s\n' %
                      ('='*max_heading, '='*max_heading),
                      filestr, flags=re.MULTILINE)
     # Make new titles

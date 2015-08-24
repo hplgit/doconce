@@ -83,7 +83,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 19, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 23, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -392,16 +392,22 @@ if desired and may have effect for some formats: the height and width
 are used for output in the formats <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, while
 the frac specification is used for <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> to specify
 the width of the image as a fraction of the text width.</p>
+</div>
+<div class="section" id="inline-figures">
+<h4>Inline Figures<a class="headerlink" href="#inline-figures" title="Permalink to this headline">¶</a></h4>
 <p>The figure caption is optional. If omitted, the figure appears &#8220;inline&#8221;
-in the text without any figure environment in LaTeX formats or HTML.
-The caption may contain a label for referencing the figure.</p>
+in the text without any figure environment in LaTeX formats or HTML.</p>
+<p>An inline figure is handy in LaTeX since it appears exactly where the
+<code class="docutils literal"><span class="pre">FIGURE:</span></code> command appears (figures with captions are encapsulated in the
+LaTeX <code class="docutils literal"><span class="pre">figure</span></code> environment and become floating objects whose placement
+is up to LaTeX do decide).</p>
 <div class="admonition-tip-use-linebreak-to-insert-space-around-inline-figures admonition">
 <p class="first admonition-title">Tip: use linebreak to insert space around inline figures</p>
 <p class="last">Sometimes inline figures (<code class="docutils literal"><span class="pre">FIGURE</span></code> line without caption) get squeezed
 into the text. You can add vertical space in LaTeX and HTML by
 inserting seeral lines with <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code>.</p>
 </div>
-<div class="figure" id="id32">
+<div class="figure" id="id36">
 <span id="fig-viz"></span><a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-text"><em>A wave</em></span></p>
 </div>
@@ -2976,23 +2982,42 @@ LaTeX, but note that <em>labels cannot contain whitespace and cannot have a back
 <p>When the label is placed after a section or subsection heading,
 the <code class="docutils literal"><span class="pre">plain</span></code> text, <code class="docutils literal"><span class="pre">epytext</span></code>, and <code class="docutils literal"><span class="pre">st</span></code> formats will simply
 replace the reference by the title of the (sub)section.  All labels
-will become invisible, except those in math environments.  In the
+will become invisible, except those in math environments.  (In the
 <code class="docutils literal"><span class="pre">rst</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code> formats, the end effect is the same, but
 the <code class="docutils literal"><span class="pre">label</span></code> and <code class="docutils literal"><span class="pre">ref</span></code> commands are first translated to the proper
-reST commands by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>. In the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and wiki formats,
+reST commands by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.) In the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and wiki formats,
 labels become anchors and references become links,
 and with LaTeX <code class="docutils literal"><span class="pre">label</span></code> and <code class="docutils literal"><span class="pre">ref</span></code> are just equipped with backslashes so
 these commands work as usual in LaTeX.</p>
+<p>Since references to sections appear differently in different formats, we
+provide an example.</p>
+<div class="highlight-doconce"><div class="highlight"><pre>..., we refer to Section ref{sec:theory}.
+
+<span class="gh">======= Basic Theory =======</span>
+<span class="nb">label{sec:theory}</span>
+
+A first discovery was that 1+1 is 2.
+</pre></div>
+</div>
+<p>The reference appears as follows in various output formats:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code>: &#8220;we refer to Section 2.3&#8221; with
+LaTeX code <a href="#id11"><span class="problematic" id="id12">`</span></a>we refer to Section&nbsp;:ref:<a href="#id13"><span class="problematic" id="id14">`</span></a>sec:theory&#8221;</li>
+<li><code class="docutils literal"><span class="pre">html</span></code>: <code class="docutils literal"><span class="pre">we</span> <span class="pre">refer</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">section</span> <span class="pre">Basic</span> <span class="pre">Theory&quot;</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">HTML</span> <span class="pre">code</span> <span class="pre">``we</span> <span class="pre">refer</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">section</span> <span class="pre">&lt;a</span> <span class="pre">href=&quot;#sec:theory&quot;&gt;Basic</span> <span class="pre">Theory&lt;/a&gt;</span></code></li>
+<li><code class="docutils literal"><span class="pre">rst</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>: &#8220;we refer to the section Basic Theory&#8221;</li>
+<li><code class="docutils literal"><span class="pre">plain</span></code>: &#8220;we refer to the section &#8220;Basic Theory&#8221;&#8220;</li>
+<li><code class="docutils literal"><span class="pre">ipynb</span></code>: &#8220;we refer to the section Basic Theory&#8221; with Markdown code <code class="docutils literal"><span class="pre">we</span> <span class="pre">refer</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">section</span> <span class="pre">[Basic</span> <span class="pre">Theory](#sec:theory)</span></code></li>
+<li><code class="docutils literal"><span class="pre">mwiki</span></code>: &#8220;we refer to the section Basic Theory&#8221; with MediaWiki code <code class="docutils literal"><span class="pre">We</span> <span class="pre">refer</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">section</span> <span class="pre">[#Basic_Theory]</span></code></li>
+</ul>
+</div></blockquote>
 <p>Labels and references should only be used for
 (sub)sections, equations, figures, and movies (since DocOnce does not
 support references to tables and algorithms, for instance).
-By the way, here is an example on referencing Figure <a class="reference internal" href="#fig-viz"><span class="std std-ref">A wave</span></a>
-(the label appears in the figure caption in the source code of this document).
+By the way, here is an example on referencing Figure <a class="reference internal" href="#fig-viz"><span class="std std-ref">A wave</span></a>.
 Additional references to the sections <a class="reference internal" href="#mathtext"><span class="std std-ref">LaTeX Blocks of Mathematical Text</span></a> and <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a> are
 nice to demonstrate, as well as a reference to equations,
-say (<span class="xref std std-ref">myeq1</span>)-(<span class="xref std std-ref">myeq2</span>). A comparison of the output and
-the source of this document illustrates how labels and references
-are handled by the format in question.</p>
+say (<span class="xref std std-ref">myeq1</span>)-(<span class="xref std std-ref">myeq2</span>).</p>
 <p>Hyperlinks to files or web addresses are handled as explained
 in the section <a class="reference internal" href="#inline-tagging"><span class="std std-ref">Inline Tagging</span></a>.</p>
 <p id="index-67">References to equations and sections in other documents can be done
@@ -3248,7 +3273,7 @@ One can from cite{some_doc} derive the expression
 </div>
 <p class="last">The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ref_external</span></code> tool generates an <code class="docutils literal"><span class="pre">external</span></code> text
 in case of references to equations that says
-<a href="#id11"><span class="problematic" id="id12">``</span></a>reference to specific <strong>equations</strong> (label eqs:g1 and eqs:g4)
+<a href="#id15"><span class="problematic" id="id16">``</span></a>reference to specific <strong>equations</strong> (label eqs:g1 and eqs:g4)
 in external document &#8220;name&#8221;: &#8220;link&#8221; is not recommended&#8221;.
 One can then search for this text and make a Mako if-else rewrite
 as shown above.</p>
@@ -3314,7 +3339,7 @@ cite{DocOnce:test}, DocOnce documents may include tables.
 <div>As explained in
 a <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html#subsec:ex">section</a> in
 the document <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing DocOnce</a>
-<a class="reference internal" href="#ref2" id="id13">[Ref2]</a>, DocOnce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref2" id="id17">[Ref2]</a>, DocOnce documents may include tables.</div></blockquote>
 <p>A complete &#8220;chapter&#8221; reference may look like</p>
 <div class="highlight-doconce"><div class="highlight"><pre>As explained in
 refch[Chapter ref{ch:testdoc}][&quot;Langtangen, 2012&quot;:
@@ -3340,7 +3365,7 @@ The resulting rendered text in the current format becomes</p>
 <div>As explained in
 the document
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">A Document for Testing DocOnce</a>
-<a class="reference internal" href="#ref2" id="id14">[Ref2]</a>, DocOnce documents may include tables.</div></blockquote>
+<a class="reference internal" href="#ref2" id="id18">[Ref2]</a>, DocOnce documents may include tables.</div></blockquote>
 <p>Note that LaTeX cannot
 have links to local files, so a complete URL on the form
 <code class="docutils literal"><span class="pre">http://...</span></code> must be used.</p>
@@ -3405,7 +3430,7 @@ The command-line option <code class="docutils literal"><span class="pre">--no_em
 </div>
 </div>
 <div class="section" id="exercises-problems-projects-and-examples">
-<h2>Exercises, Problems, Projects, and Examples<a class="headerlink" href="#exercises-problems-projects-and-examples" title="Permalink to this headline">¶</a></h2>
+<span id="manual-exercises"></span><h2>Exercises, Problems, Projects, and Examples<a class="headerlink" href="#exercises-problems-projects-and-examples" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-78"></span><span class="target" id="index-79"></span><span class="target" id="index-80"></span><p id="index-81">DocOnce has special support for four types of &#8220;exercises&#8221;, named
 <em>exercise</em>, <em>problem</em>, <em>project</em>, or <em>example</em>.
 These are all typeset as special kind of
@@ -3499,7 +3524,8 @@ Here goes a full solution of the whole exercise.
 <li>Problems are sufficiently independent of the chapter&#8217;s text
 that they make sense on their own, separated from the rest of the docoment.</li>
 <li>Projects are larger problems that also make sense on their own.</li>
-<li>Examples are exercises, problems, or projects with full solutions.</li>
+<li>Examples are exercises, problems, or projects, but with full solutions
+not typeset with <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> but as running text</li>
 </ul>
 </div></blockquote>
 <p>The command line options <code class="docutils literal"><span class="pre">--without_answers</span></code> and <code class="docutils literal"><span class="pre">--without_solutions</span></code>
@@ -3576,8 +3602,41 @@ use to further tailor the appearance of exercises (given that one
 edits the <code class="docutils literal"><span class="pre">.tex</span></code> file, preferably by a script after each <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 command).</p>
 </div>
+<div class="section" id="numbering-of-extra-equations-in-solutions">
+<span id="manual-exercises-sol-no"></span><span id="index-82"></span><h3>Numbering of Extra Equations in Solutions<a class="headerlink" href="#numbering-of-extra-equations-in-solutions" title="Permalink to this headline">¶</a></h3>
+<p>A potential problem arises if you produce two versions of your document,
+one with solutions and one without solutions (<code class="docutils literal"><span class="pre">--without_solutions</span></code>),
+and there are numbered equations in the solutions. Equations in the
+text of the document <em>after</em> these exercises sections might then be
+numbered differently. There are two ways out of this problem.</p>
+<div class="section" id="book">
+<h4>Book<a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h4>
+<p>In a book with chapters, collect all exercises at the end in a
+separate section &#8220;Exercises&#8221;.
+Equations are numbered chapter-wise, and equations in solutions
+will not influence the numbering of equations before this exercise
+section. However, if some of the exercises contain numbered equations
+in the exercise text, numbered equations in solutions to previous exercises
+will influence the numbering of equations. Avoid numbered equations
+in exercise text.</p>
+</div>
+<div class="section" id="use-the-tag-command">
+<h4>Use the tag command<a class="headerlink" href="#use-the-tag-command" title="Permalink to this headline">¶</a></h4>
+<p>Equations can be given explicit numbers, completely governed by the writer.
+The following equation is given the number <code class="docutils literal"><span class="pre">11.5.3</span></code> and a label <code class="docutils literal"><span class="pre">myeq</span></code>:</p>
+<div class="highlight-text"><div class="highlight"><pre>!bt
+\[ 1 + 1 = 2 \tag{11.5.3}
+label{myeq}
+!et
+</pre></div>
+</div>
+<p>Equations in solutions can then be given their own numbers (here, <code class="docutils literal"><span class="pre">11.5</span></code>
+could be chapter 11, section 5). One can use a Mako variable to automatically
+assign appropriate numbers in the <code class="docutils literal"><span class="pre">tag</span></code> command.</p>
+</div>
+</div>
 <div class="section" id="extracting-all-exercises-in-a-separate-document">
-<span id="index-82"></span><h3>Extracting All Exercises in a Separate Document<a class="headerlink" href="#extracting-all-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
+<h3>Extracting All Exercises in a Separate Document<a class="headerlink" href="#extracting-all-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
 <p>The command</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
 </pre></div>
@@ -4346,7 +4405,7 @@ MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>)
 (there is only a <code class="docutils literal"><span class="pre">ref</span></code> command in DocOnce and it refers to labels).</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements
 (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
-for reference <a class="footnote-reference" href="#exception" id="id15">[3]</a> (refer to inline elements by a section label).
+for reference <a class="footnote-reference" href="#exception" id="id19">[3]</a> (refer to inline elements by a section label).
 The reason is that floating elements are in general
 not used in web documents, but we made an exception with figures
 and movies.</li>
@@ -4389,7 +4448,7 @@ that may later be put together in a book.</li>
 <table class="docutils footnote" frame="void" id="exception" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[3]</a></td><td>There is an exception: by using <em>user-defined environments</em>
+<tr><td class="label"><a class="fn-backref" href="#id19">[3]</a></td><td>There is an exception: by using <em>user-defined environments</em>
 within <code class="docutils literal"><span class="pre">!bu-name</span></code> and <code class="docutils literal"><span class="pre">!eu-name</span></code> directives, it is possible to
 label any type of text and refer to it. For example, one can have
 environments for examples, tables, code snippets, theorems, lemmas, etc.
@@ -4833,7 +4892,7 @@ LaTeX environment.</p>
 </pre></div>
 </div>
 <p>We quickly encounter a problem when referring to a specific example.
-In LaTeX, we want to write <a href="#id16"><span class="problematic" id="id17">`</span></a>Example :ref:<a href="#id18"><span class="problematic" id="id19">`</span></a>label&#8221;, using the label
+In LaTeX, we want to write <a href="#id20"><span class="problematic" id="id21">`</span></a>Example :ref:<a href="#id22"><span class="problematic" id="id23">`</span></a>label&#8221;, using the label
 defined in the example heading. In other formats, this label is a
 section number, or usually the section (example) heading. Different
 wording is needed for different formats. This is easiest accomplished
@@ -5023,22 +5082,22 @@ the output format is <code class="docutils literal"><span class="pre">latex</spa
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <code class="docutils literal"><span class="pre">key</span></code>.
-Here is an example: <a class="reference internal" href="#ref3" id="id20">[Ref3]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref4" id="id21">[Ref4]</a> gave
+Here is an example: <a class="reference internal" href="#ref3" id="id24">[Ref3]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref4" id="id25">[Ref4]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref5" id="id22">[Ref5]</a>.
-The book chapter <a class="reference internal" href="#ref6" id="id23">[Ref6]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref5" id="id26">[Ref5]</a>.
+The book chapter <a class="reference internal" href="#ref6" id="id27">[Ref6]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref7" id="id24">[Ref7]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref7" id="id28">[Ref7]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref3" id="id25">[Ref3]</a> <a class="reference internal" href="#ref6" id="id26">[Ref6]</a>.</p>
+<a class="reference internal" href="#ref3" id="id29">[Ref3]</a> <a class="reference internal" href="#ref6" id="id30">[Ref6]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref4" id="id27">[Ref4]</a> (Section 2)
-or <a class="reference internal" href="#ref4" id="id28">[Ref4]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref4" id="id31">[Ref4]</a> (Section 2)
+or <a class="reference internal" href="#ref4" id="id32">[Ref4]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <code class="docutils literal"><span class="pre">cite</span></code> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -5055,7 +5114,7 @@ is done one a line containing <code class="docutils literal"><span class="pre">B
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
 Before the command you will often want to have a headline with
-<a href="#id29"><span class="problematic" id="id30">``</span></a>References&#8221;, &#8220;Bibliography&#8221;, or similar.
+<a href="#id33"><span class="problematic" id="id34">``</span></a>References&#8221;, &#8220;Bibliography&#8221;, or similar.
 Here is an example:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= References =======</span>
 
@@ -6507,7 +6566,7 @@ future revisions.</p>
 </div>
 <div class="section" id="demo-of-different-formats">
 <h3>Demo of different formats<a class="headerlink" href="#demo-of-different-formats" title="Permalink to this headline">¶</a></h3>
-<p id="index-145">A simple scientific report is available in <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/doconce_commands.html">a lot of different formats</a>.
+<p id="index-145">A simple scientific report is available in <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html">a lot of different formats</a>.
 How to create the different formats is explained in more depth
 in the coming sections.</p>
 </div>
@@ -9281,14 +9340,14 @@ pp. 14-21,
 <table class="docutils citation" frame="void" id="ref2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref2]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <strong>H. P. Langtangen</strong>. A Document for Testing DocOnce,
+<tr><td class="label">[Ref2]</td><td><em>(<a class="fn-backref" href="#id17">1</a>, <a class="fn-backref" href="#id18">2</a>)</em> <strong>H. P. Langtangen</strong>. A Document for Testing DocOnce,
 <a class="reference external" href="http://hplgit.github.io/doconce/test/demo_testdoc.html">http://hplgit.github.io/doconce/test/demo_testdoc.html</a>.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id25">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id29">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
@@ -9298,7 +9357,7 @@ pp. 187-204,
 <table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id27">2</a>, <a class="fn-backref" href="#id28">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id25">1</a>, <a class="fn-backref" href="#id31">2</a>, <a class="fn-backref" href="#id32">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
@@ -9308,7 +9367,7 @@ pp. 1125-1146,
 <table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id26">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
@@ -9318,7 +9377,7 @@ pp. 997-996,
 <table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id23">1</a>, <a class="fn-backref" href="#id26">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id27">1</a>, <a class="fn-backref" href="#id30">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
@@ -9328,7 +9387,7 @@ Springer,
 <table class="docutils citation" frame="void" id="ref7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id28">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>
@@ -9362,6 +9421,7 @@ Springer,
 <li><a class="reference internal" href="#appendix">Appendix</a></li>
 <li><a class="reference internal" href="#figures-1">Figures  (1)</a><ul>
 <li><a class="reference internal" href="#basic-syntax">Basic syntax</a></li>
+<li><a class="reference internal" href="#inline-figures">Inline Figures</a></li>
 <li><a class="reference internal" href="#figures-with-subfigures">Figures with Subfigures</a></li>
 <li><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
 <li><a class="reference internal" href="#plot-files-in-latex">Plot Files in LaTeX</a></li>
@@ -9424,6 +9484,11 @@ Springer,
 </ul>
 </li>
 <li><a class="reference internal" href="#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
+<li><a class="reference internal" href="#numbering-of-extra-equations-in-solutions">Numbering of Extra Equations in Solutions</a><ul>
+<li><a class="reference internal" href="#book">Book</a></li>
+<li><a class="reference internal" href="#use-the-tag-command">Use the tag command</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
 <li><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
 <li><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
