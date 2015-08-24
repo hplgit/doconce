@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -56,8 +55,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -66,14 +65,14 @@
         <li class="right" >
           <a href="index.html" title="Doconce Manual"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Doconce Manual</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Doconce Manual</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="doconce-description">
 <h1>DocOnce Description<a class="headerlink" href="#doconce-description" title="Permalink to this headline">¶</a></h1>
@@ -83,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 23, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -367,7 +366,7 @@ is used - all other formats just leave the heading as it is written.</p>
 <div class="section" id="basic-syntax">
 <span id="index-14"></span><h4>Basic syntax<a class="headerlink" href="#basic-syntax" title="Permalink to this headline">¶</a></h4>
 <p>Figures are recognized by the special line syntax</p>
-<div class="highlight-doconce"><div class="highlight"><pre><span class="nb">FIGURE:[filename, height=400 width=600 frac=0.8] caption</span>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="nb">FIGURE:[filename, width=600 frac=0.8] caption</span>
 </pre></div>
 </div>
 <p>The filename can be without extension, and DocOnce will search for an
@@ -387,11 +386,35 @@ newlines in a long caption will destroy the formatting (only the
 part of the caption appearing on the same line as <code class="docutils literal"><span class="pre">FIGURE:</span></code> will be
 included in the formatted caption).</p>
 </div>
-<p>The height, width, and frac keywords can be included
+<p>The <code class="docutils literal"><span class="pre">height</span></code>, <code class="docutils literal"><span class="pre">width</span></code>, and <code class="docutils literal"><span class="pre">frac</span></code> keywords can be included
 if desired and may have effect for some formats: the height and width
 are used for output in the formats <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, while
 the frac specification is used for <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> to specify
 the width of the image as a fraction of the text width.</p>
+</div>
+<div class="section" id="figure-references">
+<h4>Figure References<a class="headerlink" href="#figure-references" title="Permalink to this headline">¶</a></h4>
+<p>Suppose we have the DocOnce code</p>
+<div class="highlight-doconce"><div class="highlight"><pre>The results are presented in Figure ref{myfig}.
+
+<span class="nb">FIGURE:[myfigfile, width=400 frac=0.8] Results for $a=2$. label{myfig}</span>
+</pre></div>
+</div>
+<p>Different formats will display the figure reference differently.
+In LaTeX, DocOnce generates the code <cite>... in Figure |nbsp| :ref:`myfig&#8221;, which
+reads `</cite>... in Figure 5&#8221; (article) or &#8221;... in Figure 5.2&#8221; (book).
+Sphinx applies the caption as name of the figure, so the reference
+reads &#8221;... in Figure Results for .&#8221;, and the caption/name is a link
+to the figure. Note that Sphinx strips off the mathematics from
+the caption. In HTML, figures are given numbers, so the reference
+reads &#8221;... in Figure 3&#8221;, with the figure number as a link to the
+place in the document where the <code class="docutils literal"><span class="pre">FIGURE:</span></code> command was located.
+The IPython notebook format makes a Markdown link: <code class="docutils literal"><span class="pre">...</span> <span class="pre">in</span> <span class="pre">[Figure](#myfig)</span></code>,
+where <code class="docutils literal"><span class="pre">myfig</span></code> is an anchor such one can click on <code class="docutils literal"><span class="pre">Figure</span></code>.
+The plain text format displays the reference as &#8221;... in Figure <span class="xref std std-ref">myfig</span>.&#8221;.
+Wiki formats show &#8221;... in Figure myfig.&#8221;. So to summarize, figure
+references work best in LaTeX, HTML, and Sphinx. Other formats
+should avoid figure references with labels.</p>
 </div>
 <div class="section" id="inline-figures">
 <h4>Inline Figures<a class="headerlink" href="#inline-figures" title="Permalink to this headline">¶</a></h4>
@@ -9399,7 +9422,7 @@ Springer,
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
@@ -9421,6 +9444,7 @@ Springer,
 <li><a class="reference internal" href="#appendix">Appendix</a></li>
 <li><a class="reference internal" href="#figures-1">Figures  (1)</a><ul>
 <li><a class="reference internal" href="#basic-syntax">Basic syntax</a></li>
+<li><a class="reference internal" href="#figure-references">Figure References</a></li>
 <li><a class="reference internal" href="#inline-figures">Inline Figures</a></li>
 <li><a class="reference internal" href="#figures-with-subfigures">Figures with Subfigures</a></li>
 <li><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
@@ -9687,15 +9711,17 @@ Springer,
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Doconce Manual</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/manual.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/manual.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -9709,7 +9735,7 @@ Springer,
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -9718,7 +9744,7 @@ Springer,
         <li class="right" >
           <a href="index.html" title="Doconce Manual"
              >previous</a> |</li>
-        <li><a href="index.html">Doconce Manual</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Doconce Manual</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">
