@@ -933,6 +933,66 @@ Use the `--section_numbering=off` option:
 Terminal> doconce format pdflatex mydoc --section_numbering=off
 !ec
 
+===== I want figure references with page number too =====
+label{trouble:figref:mako}
+
+A DocOnce user wanted figure references to be as follows in LaTeX:
+
+!bc latexcod
+% if current page is different from figure page:
+... Figure \ref{my:fig} on page \pageref{my:fig}.
+% if current page is the same as the figure page:
+... Figure \ref{my:fig}.
+!ec
+All other formats should emit the standard treatment of a DocOnce
+figure reference with `ref`.
+
+The above problem can be elegantly solved by some Mako programming and
+usage of the LaTeX packages `ifthen` and `refcount`.
+
+!bc do
+<%
+def figref(label):
+    text = 'Figure ref{%s}' % label
+    if FORMAT in ('latex', 'pdflatex'):
+	text += r'\ifthenelse{\equal{\thepage}{\getpagerefnumber{%s}}}{}{ on page \pageref{%s}}' % (label, label)
+    return text
+%>
+
+FIGURE: [myfigfile, width=600 frac=0.8] My figure. label{my:fig}
+
+We refer to ${figref('my:fig')}.
+
+...
+# Much later
+..., as seen in ${figref('my:fig')}.
+!ec
+The first reference is on the same page as the figure, and LaTeX should
+not write the page number, while the second reference is on another
+page so both the figure number and the page number should appear in
+the output. All other formats have a standard figure reference (translated
+to a figure number in HTML and to the caption in Sphinx).
+
+The LaTeX output is something like this:
+
+!bc latexcod
+\begin{figure}[h] % my:fig
+  \centerline{\includegraphics[width=0.8\linewidth]{myfigfile.png}}
+  \caption{
+  My figure. \label{my:fig}
+  }
+\end{figure}
+%\clearpage % flush figures sec:fig
+
+We refer to Figure~\ref{my:fig}\ifthenelse{
+\equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig}}.
+
+...
+% Much later
+..., as seen in Figure~\ref{my:fig}\ifthenelse{
+\equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig}}.
+!ec
+
 ===== Error when running latex: You must have 'pygmentize' installed =====
 
 This message points to the use of the minted style for typesetting verbatim
