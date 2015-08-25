@@ -6,13 +6,13 @@
 Eksempel på ikke-engelsk tekst
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:Authors: Åsgeir Ødegården
+:Authors: Åsgeir Ødegården (pseudonym!)
 
 .. DATE: tody will be in English, so we write it out in Norwegian
 
 :Date: 12. juli, 2015
 
-*Summary.* Dette er et kort notat på norsk for å demonstrere at DocOnce kan
+*Sammendrag.* Dette er et kort notat på norsk for å demonstrere at DocOnce kan
 håndtere andre språk enn engelsk.
 
 .. !split
@@ -23,14 +23,15 @@ Introduksjon
 ============
 
 Norsk er egentlig to språk, *bokmål* og *nynorsk*. `Bokmål <https://no.wikipedia.org/wiki/Bokmål>`__ er forfatterens språk og det de
-fleste (85-90%) snakker i Norge, men `nynorsk <https://no.wikipedia.org/wiki/Nynorsk>`__ er ikke særlig
-forskjellig. Avstanden mellom norsk og nynorsk er mindre enn mellom
+fleste (85-90%) skriver i Norge, men `nynorsk <https://no.wikipedia.org/wiki/Nynorsk>`__ er ikke særlig
+forskjellig, spesielt ikke for utlendinger.
+Avstanden mellom norsk og nynorsk er mindre enn mellom
 norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
 skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
 uttales ganske annerledes enn bokmål.
 
-Demonstrasjon av DocOnce elementer
-----------------------------------
+Demonstrasjon av populære DocOnce elementer
+-------------------------------------------
 
 Dette er et underkapittel av seksjon :ref:`sec:intro`.
 
