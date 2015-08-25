@@ -2,6 +2,15 @@
 name=Norwegian
 options="--encoding=utf-8"
 
+function system {
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
 function common_replacements {
   filename=$1
   # Replace English phrases
@@ -9,19 +18,19 @@ function common_replacements {
   doconce replace Summary Sammendrag $1
 }
 
-doconce format pdflatex $name --latex_code_style=vrb $options --latex_font=palatino
+system doconce format pdflatex $name --latex_code_style=vrb $options --latex_font=palatino
 # Tips: http://folk.uio.no/tobiasvl/latex.html
-common_replacements $name.tex
+system common_replacements $name.tex
 doconce replace '10pt]{' '10pt,norsk]{' $name.tex
 doconce subst '% insert custom LaTeX commands...' '%\usepackage[norsk]{babel}\n\n% insert custom LaTeX commands...' $name.tex
-pdflatex $name; pdflatex $name
+system pdflatex $name; pdflatex $name
 
-doconce format html $name --html_style=bootstrap $options
+system doconce format html $name --html_style=bootstrap $options
 common_replacements $name.html
 
-doconce format sphinx $name $options
-doconce sphinx_dir theme=redcloud $name
-python automake_sphinx.py
+system doconce format sphinx $name $options
+system doconce sphinx_dir theme=redcloud $name
+system python automake_sphinx.py
 rm -rf sphinx
 mv sphinx-rootdir/_build/html sphinx
 
