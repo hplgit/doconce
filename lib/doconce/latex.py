@@ -1008,14 +1008,14 @@ def latex_figure(m):
     #    includeline='\sidecaption[t] ' + includeline
     if caption and sidecaption == 0:
         result = r"""
-\begin{figure}[t]
+\begin{figure}[h]  %% %s
   %s
   \caption{
   %s
   }
 \end{figure}
 %%\clearpage %% flush figures %s
-""" % (includeline, caption, label)
+""" % (label, includeline, caption, label)
     elif caption and sidecaption == 1:
         # Requires \usepackage{sidecap}
         result = r"""
@@ -1793,6 +1793,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # non-breaking space
     filestr = re.sub(r'~ref\{', r'~\\ref{', filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
+    # finally the last ref{} with a space first
+    filestr = re.sub(r'\s+ref\{', r' \\ref{', filestr)
 
     # equations are ok in the doconce markup
 
@@ -2814,7 +2816,6 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
   headsep=4mm
   ]{geometry}
 """
-
     if latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
@@ -2835,6 +2836,14 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
     # sidecap figures?
     if 'sidecap=' in filestr:
         INTRO['latex'] += '\\usepackage{sidecap}\n'
+
+    # --latex_packages=package1,package2,package3
+    usepackages = option('latex_packages=', None)
+    if usepackages is not None:
+        INTRO['latex'] += r"""
+%% user-provided packages: --latex_packages=%s
+\usepackage{%s}
+""" % (usepackages, usepackages)
 
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \

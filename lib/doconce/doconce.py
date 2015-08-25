@@ -4274,8 +4274,8 @@ preprocess package (sudo apt-get install preprocess).
                 print '*** error: file has a mako construction %s' % m.group(1)
                 print '    but seemingly no definition in <%...%>'
                 print '    (it is not a command-line given mako variable either)'
-                print '''    (however: if this is code in a Makefile, run with --no_mako
-    - and you cannot use mako and Makefile code together!)'''
+                print '''    (however: if this is a variable in a Makefile or Bash script, run with --no_mako
+    - and you cannot use mako and Makefile or Bash variables in the same document!)'''
                 if not option('no_mako'):
                     _abort()
 

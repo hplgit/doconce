@@ -288,6 +288,43 @@ are used for output in the formats `html`, `rst`, `sphinx`, while
 the frac specification is used for `latex` and `pdflatex` to specify
 the width of the image as a fraction of the text width.
 
+=== Figure Placement ===
+
+In web formats (`html`, `sphinx`, `ipynb`, `matlabnb`, wikis), the `FIGURE:` command is replaced by
+an `img` tag exactly where the `FIGURE:` appears in the document.
+LaTeX, however, will normally place the figure at a different location.
+The generated LaTeX code applies `\begin{figure}[h] % my:fig`, i..e, we use the
+``here'' option `[h]` to recommend a placement as near the `FIGURE:`
+command as possible. One can autoedit the `.tex` file and modify the
+`figure` environment options, e.g.,
+
+!bc sys
+Terminal> doconce replace '{figure}[h]' '{figure}[t]' mydoc.tex
+!ec
+The above command will change all `[h]` options to `[t]` (top).
+A specific figure can also be edited, using the fact that the label
+is printed at the same line as `\begin{figure}`:
+
+!bc sys
+Terminal> doconce subst '{figure}[h] .+my:fig' \
+          '{figure}[b] % my:fig' mydoc.tex
+!ec
+Of greater influence than options like `[h]`, `[hb]`, etc., is the
+LaTeX code found in the preamble:
+
+!bc latexcod
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0}
+\renewcommand{\floatpagefraction}{0.75}
+% floatpagefraction must always be less than topfraction!
+\usepackage[section]{placeins}  % flush all figs before next section
+!ec
+These values can be manipulated to fine-tune how LaTeX places figures.
+
 === Figure References ===
 
 Suppose we have the DocOnce code

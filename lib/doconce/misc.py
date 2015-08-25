@@ -252,6 +252,8 @@ beamer: layout for beamer slides."""),
 typically used for acknowledging publisher/source of original
 version of the document."""),
     ('--latex_encoding=', 'Encoding for \\usepackage[encoding]{inputenc}.\nValues: utf8 (default) or latin1.'),
+    ('--latex_packages=',
+     """Comma-separated list of latex packages to be included in \\usepackage commands.."""),
     ('--latex_papersize=',
      """Geometry of page size: a6, a4, std (default)."""),
     ('--latex_list_of_exercises=',

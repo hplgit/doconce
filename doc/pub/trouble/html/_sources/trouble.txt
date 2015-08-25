@@ -1,13 +1,16 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 .. Document title:
 
 DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 5, 2015
+:Date: Aug 25, 2015
 
 
 .. admonition:: Disclaimer
@@ -890,6 +893,13 @@ a wrong way such that the heading appears *after* the code.
 A remedy is to insert some text after the paragraph heading.
 See also the section :ref:`trouble:bsol:code` - it is the same problem.
 
+Numbered equations in exercise solutions change the equation numbers in the text...
+-----------------------------------------------------------------------------------
+
+This is a problem if you produce versions with and without solutions,
+see the heading "Numbering of Extra Equations in Solutions" in the
+DocOnce manual for description of the problem and its solutions.
+
 .. !split
 
 Problems with reST/Sphinx Output
@@ -1058,6 +1068,70 @@ Use the ``--section_numbering=off`` option:
 .. code-block:: text
 
         Terminal> doconce format pdflatex mydoc --section_numbering=off
+
+.. _trouble:figref:mako:
+
+I want figure references with page number too
+---------------------------------------------
+
+A DocOnce user wanted figure references to be as follows in LaTeX:
+
+.. code-block:: latex
+
+        % if current page is different from figure page:
+        ... Figure \ref{my:fig} on page \pageref{my:fig}.
+        % if current page is the same as the figure page:
+        ... Figure \ref{my:fig}.
+
+All other formats should emit the standard treatment of a DocOnce
+figure reference with ``ref``.
+
+The above problem can be elegantly solved by some Mako programming and
+usage of the LaTeX packages ``ifthen`` and ``refcount``.
+
+.. code-block:: doconce
+
+        <%
+        def figref(label):
+            text = 'Figure ref{%s}' % label
+            if FORMAT in ('latex', 'pdflatex'):
+        	text += r'\ifthenelse{\equal{\thepage}{\getpagerefnumber{%s}}}{}{ on page \pageref{%s}}' % (label, label)
+            return text
+        %>
+        
+        FIGURE: [myfigfile, width=600 frac=0.8] My figure. label{my:fig}
+        
+        We refer to ${figref('my:fig')}.
+        
+        ...
+        # Much later
+        ..., as seen in ${figref('my:fig')}.
+
+The first reference is on the same page as the figure, and LaTeX should
+not write the page number, while the second reference is on another
+page so both the figure number and the page number should appear in
+the output. All other formats have a standard figure reference (translated
+to a figure number in HTML and to the caption in Sphinx).
+
+The LaTeX output is something like this:
+
+.. code-block:: latex
+
+        \begin{figure}[h] % my:fig
+          \centerline{\includegraphics[width=0.8\linewidth]{myfigfile.png}}
+          \caption{
+          My figure. \label{my:fig}
+          }
+        \end{figure}
+        %\clearpage % flush figures sec:fig
+        
+        We refer to Figure~\ref{my:fig}\ifthenelse{
+        \equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig}}.
+        
+        ...
+        % Much later
+        ..., as seen in Figure~\ref{my:fig}\ifthenelse{
+        \equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig}}.
 
 Error when running latex: You must have 'pygmentize' installed
 --------------------------------------------------------------

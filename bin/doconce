@@ -99,12 +99,36 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print 'Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]'
-    print """
-The sphinx_dir command creates a directory for compiling a sphinx version
-of a doconce document. The option --runestone makes a directory for
-RunestoneInteractive documents (slightly different from a standard
-sphinx directory).
+    print """Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]
+
+Additional command-line arguments: theme_dir=directoryname conf.py=filename logo=filename
+
+The sphinx_dir command creates a directory (dirname) for compiling a
+sphinx version of a doconce document. The option --runestone makes a
+directory for RunestoneInteractive documents (slightly different from
+a standard sphinx directory).
+
+The title, author, and version options go to the footer in the pages.
+If not given, the author and title are taken from the DocOnce document.
+The default dirname is "sphinx-rootdir". The intersphinx option is used
+for links to other sphinx documents.
+
+The theme option can be chosen from basic sphinx themes (agogo,
+basic, bizstyle, classic, default, epub, haiku, nature, pyramid,
+scrolls, sphinxdoc, traditional), extra themes that can be installed
+(bootstrap, cloud, redcloud, solarized, sphinx_rtd_theme), or
+themes that come with DocOnce (ADCtheme, agni, alabaster, basicstrap,
+bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons,
+scipy_lectures, slim-agogo, uio, vlinux-theme).
+See bundled/sphinx_themes/install.txt for how to install extra
+themes.
+
+A custom theme can also be specified by giving a "_themes-like"
+directory: theme_dir=dirname. Alternatively, one can use a standard
+theme, but provide one's own tailored conf.py file through the
+conf.py=filename option.
+
+---
 
 The steps for copying files to the sphinx directory and compiling the document
 is done by an automatically generated script:

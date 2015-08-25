@@ -13,6 +13,10 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 Here are some of the most recent features in DocOnce:
 
+ * LaTeX output for figures is now `\begin{figure}[h] % my:fig` if
+   `my:fig` is the figure label. Note that the previous `[t]` option
+   is now `[h]`. Also, adding the label on the line makes it easy to
+   autoedit the `[h]` option for specific figures, if desired.
  * DocOnce supports interactive Bokeh plots for data exploration in
    HTML documents, see "demo": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html#___sec13".
  * DocOnce can generate Matlab notebooks in the publish format
