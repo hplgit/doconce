@@ -75,6 +75,7 @@ latex_code_bg_vpad = False
 #latex_title_layout = 
 #latex_title_reference = 
 #latex_encoding = 
+#latex_packages = 
 #latex_papersize = 
 #latex_list_of_exercises = 
 #latex_movie = 
