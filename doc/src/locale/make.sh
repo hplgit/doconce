@@ -29,6 +29,7 @@ system doconce format html $name --html_style=bootstrap $options
 common_replacements $name.html
 
 system doconce format sphinx $name $options
+common_replacements $name.rst
 system doconce sphinx_dir theme=redcloud $name
 system python automake_sphinx.py
 rm -rf sphinx
