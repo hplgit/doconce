@@ -1069,6 +1069,15 @@ Use the ``--section_numbering=off`` option:
 
         Terminal> doconce format pdflatex mydoc --section_numbering=off
 
+LaTeX suddenly places figures differently
+-----------------------------------------
+
+Until August 25, 2015, the figure environment applied the ``[t]`` (top) option,
+but since then the ``[h]`` option is used. Of even greater influence are the
+``topfraction``, ``bottomfraction``, and ``textfraction`` parameters in the ``.tex``
+file. See the "Figures" section in the manual for more information and how
+to customize the placement of figures.
+
 .. _trouble:figref:mako:
 
 I want figure references with page number too
