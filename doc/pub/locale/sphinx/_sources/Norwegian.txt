@@ -12,7 +12,7 @@ Eksempel på ikke-engelsk tekst
 
 :Date: 12. juli, 2015
 
-*Sammendrag.* Dette er et kort notat på norsk for å demonstrere at DocOnce kan
+*Sammendrag.* Dette er et kort notat på norsk for å demonstrere at DokEngang (DocOnce) kan
 håndtere andre språk enn engelsk.
 
 .. !split
@@ -30,8 +30,8 @@ norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
 skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
 uttales ganske annerledes enn bokmål.
 
-Demonstrasjon av populære DocOnce elementer
--------------------------------------------
+Demonstrasjon av populære DokEngang elementer
+---------------------------------------------
 
 Dette er et underkapittel av seksjon :ref:`sec:intro`.
 
