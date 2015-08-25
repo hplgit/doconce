@@ -1953,14 +1953,25 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
         bibtext = bibliography(pubdata, citations, format='doconce')
         for label in citations:
             try:
-                bibtext = bibtext.replace('label{%s}' % label,
-                                          '<a name="%s"></a>' % label)
+                bibtext = bibtext.replace(
+                    'label{%s}' % label, '<a name="%s"></a>' % label)
                 # (<a name=""></a> is later replaced by a div tag)
             except UnicodeDecodeError, e:
-                print e
-                print '*** error: problems in %s' % pubfile
-                print '    with key', label
-                _abort()
+                if "can't decode byte" in str(e):
+                    try:
+                        bibtext = bibtext.decode('utf-8').replace(
+                            'label{%s}' % label, '<a name="%s"></a>' % label)
+                    except UnicodeDecodeError, e:
+                        print 'UnicodeDecodeError:', e
+                        print '*** error: problems in %s' % pubfile
+                        print '    with key', label
+                        print '    tried to do decode("utf-8"), but it did not work'
+                        _abort()
+                else:
+                    print e
+                    print '*** error: problems in %s' % pubfile
+                    print '    with key', label
+                    _abort()
 
         bibtext = """
 <!-- begin bibliography -->

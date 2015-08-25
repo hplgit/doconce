@@ -21,8 +21,9 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 1,
- 'sections': [(u'Introduksjon', 1, None, '___sec0'),
-              (u'Demonstrasjon av DocOnce elementer', 2, None, '___sec1')]}
+ 'sections': [(u'Introduksjon', 1, u'sec:intro', u'sec:intro'),
+              (u'Demonstrasjon av DocOnce elementer', 2, None, '___sec1'),
+              (u'Litteraturliste', 1, None, '___sec2')]}
 end of tocinfo -->
 
 <body>
@@ -43,8 +44,9 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduksjon</b></a></li>
+     <!-- navigation toc: --> <li><a href="#sec:intro" style="font-size: 80%;"><b>Introduksjon</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrasjon av DocOnce elementer</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Litteraturliste</b></a></li>
 
         </ul>
       </li>
@@ -87,13 +89,14 @@ håndtere andre språk enn engelsk.
 Table of contents</h2>
 
 <p>
-<a href="#___sec0"> Introduksjon </a><br>
+<a href="#sec:intro"> Introduksjon </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Demonstrasjon av DocOnce elementer </a><br>
+<a href="#___sec2"> Litteraturliste </a><br>
 </p>
 <p>
 </div> <!-- end jumbotron -->
 
-<h1 id="___sec0">Introduksjon </h1>
+<h1 id="sec:intro">Introduksjon</h1>
 
 <p>
 Norsk er egentlig to språk, <em>bokmål</em> og <em>nynorsk</em>. <a href="https://no.wikipedia.org/wiki/Bokmål" target="_self">Bokmål</a> er forfatterens språk og det de
@@ -106,6 +109,9 @@ uttales ganske annerledes enn bokmål.
 <h2 id="___sec1">Demonstrasjon av DocOnce elementer </h2>
 
 <p>
+Dette er et underkapittel av seksjon <a href="#sec:intro">Introduksjon</a>.
+
+<p>
 <!-- Admons -->
 
 <p>
@@ -113,7 +119,8 @@ uttales ganske annerledes enn bokmål.
 Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
 ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
 elementer virker med UTF-8 tegnsett. La oss refere her til
-Figure <a href="#fig1">1</a>.
+figur <a href="#fig1">1</a> slik man referer til en figur på norsk.
+Vi gjør også en referanse til litteraturen <a href="#norsk_tekst">[1]</a>.
 </div>
 
 
@@ -127,7 +134,18 @@ Figure <a href="#fig1">1</a>.
 <p><img src="../manual/fig/wave1D.png" align="bottom" width=500></p>
 </center>
 
+<h1 id="___sec2">Litteraturliste </h1>
+
 <p>
+<!-- begin bibliography -->
+
+<ol>
+ <li> <div id="norsk_tekst"></div> <b>Å. Ø. Ærlundsen and O. Æ. Sørlie</b>. 
+    Litt om ting som må skrives på norsk,
+    <a href="http://doconce.test.net" target="_self"><tt>http://doconce.test.net</tt></a>.</li>
+</ol>
+
+<!-- end bibliography -->
 
 <!-- ------------------- end of main content --------------- -->
 
