@@ -1,0 +1,20 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+Eksempel på ikke-engelsk tekst
+===============================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 3
+
+   Norwegian
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

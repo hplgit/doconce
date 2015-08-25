@@ -1,0 +1,44 @@
+TITLE: Eksempel på ikke-engelsk tekst
+AUTHOR: Åsgeir Ødegården
+# DATE: tody will be in English, so we write it out in Norwegian
+DATE: 12. juli, 2015
+
+__Summary.__
+Dette er et kort notat på norsk for å demonstrere at DocOnce kan
+håndtere andre språk enn engelsk.
+
+TOC: on
+
+======= Introduksjon =======
+label{sec:intro}
+
+Norsk er egentlig to språk, *bokmål* og *nynorsk*. "Bokmål":
+"https://no.wikipedia.org/wiki/Bokmål" er forfatterens språk og det de
+fleste (85-90%) snakker i Norge, men "nynorsk":
+"https://no.wikipedia.org/wiki/Nynorsk" er ikke særlig
+forskjellig. Avstanden mellom norsk og nynorsk er mindre enn mellom
+norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
+skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
+uttales ganske annerledes enn bokmål.
+
+===== Demonstrasjon av DocOnce elementer =====
+
+Dette er et underkapittel av seksjon ref{sec:intro}.
+
+# Admons
+
+!bnotice Formålet med dette dokumentet
+Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
+ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
+elementer virker med UTF-8 tegnsett. La oss refere her til
+figur ref{fig1} slik man referer til en figur på norsk.
+Vi gjør også en referanse til litteraturen cite{norsk_tekst}.
+!enotice
+
+# Figures
+
+FIGURE: [../manual/fig/wave1D, width=500 frac=0.7] Figurtekst på norsk går bra. label{fig1}
+
+======= Litteraturliste =======
+
+BIBFILE: papers.pub
