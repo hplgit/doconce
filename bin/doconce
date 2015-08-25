@@ -892,9 +892,9 @@ if html_theme == 'impressjs':
 """, text)
 
     text = text.replace('#html_title = None',
-                        'html_title = "%s"' % title)
+                        'html_title = u"%s"' % title)
     text = text.replace('#short_html_title = None',
-                        'html_short_title = "%s"' % short_title)
+                        'html_short_title = u"%s"' % short_title)
     if isinstance(logo, basestring):
         text = text.replace('#html_logo = None', 'html_logo = "%s"' % logo)
 
@@ -934,9 +934,9 @@ if html_theme == 'impressjs':
 def make_conf_py_runestone(themes, theme, title, short_title,
                            author, logo, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
-    text = re.sub(r"^project = u'<ENTER.+", "project = '%s'" % title,
+    text = re.sub(r"^project = u'<ENTER.+", "project = u'%s'" % title,
                   flags=re.MULTILINE)
-    text = re.sub(r"^copyright = u'<ENTER.+", "copyright = '%s'" % author,
+    text = re.sub(r"^copyright = u'<ENTER.+", "copyright = u'%s'" % author,
                   flags=re.MULTILINE)
     text = re.sub(r"'navbar_title':.+", "'navbar_title': '%s'" % title)
     f = open('conf.py', 'w');  f.write(text);  f.close()

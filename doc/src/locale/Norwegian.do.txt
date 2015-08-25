@@ -10,6 +10,7 @@ håndtere andre språk enn engelsk.
 TOC: on
 
 ======= Introduksjon =======
+label{sec:intro}
 
 Norsk er egentlig to språk, *bokmål* og *nynorsk*. "Bokmål":
 "https://no.wikipedia.org/wiki/Bokmål" er forfatterens språk og det de
@@ -22,16 +23,22 @@ uttales ganske annerledes enn bokmål.
 
 ===== Demonstrasjon av DocOnce elementer =====
 
+Dette er et underkapittel av seksjon ref{sec:intro}.
+
 # Admons
 
 !bnotice Formålet med dette dokumentet
 Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
 ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
 elementer virker med UTF-8 tegnsett. La oss refere her til
-Figure ref{fig1}.
+figur ref{fig1} slik man referer til en figur på norsk.
+Vi gjør også en referanse til litteraturen cite{norsk_tekst}.
 !enotice
 
 # Figures
 
 FIGURE: [../manual/fig/wave1D, width=500 frac=0.7] Figurtekst på norsk går bra. label{fig1}
 
+======= Litteraturliste =======
+
+BIBFILE: papers.pub

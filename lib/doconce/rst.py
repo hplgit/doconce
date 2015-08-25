@@ -444,8 +444,14 @@ def rst_bib(filestr, citations, pubfile, pubdata, numbering=True):
         bibtext = bibliography(pubdata, citations, format='rst')
         if numbering:
             for label in citations:
-                bibtext = bibtext.replace('[%s]' % label,
-                                          cite % citations[label])
+                try:
+                    bibtext = bibtext.replace(
+                        '[%s]' % label, cite % citations[label])
+                except UnicodeDecodeError as e:
+                    if "can't decode byte" in str(e):
+                        bibtext = bibtext.decode('utf-8').replace(
+                            '[%s]' % label, cite % citations[label])
+
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr, flags=re.MULTILINE)
     return filestr
 

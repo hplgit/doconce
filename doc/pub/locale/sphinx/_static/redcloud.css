@@ -1,0 +1,22 @@
+/*****************************************************
+ * redcloud.css_t
+ * ~~~~~~~~~~~
+ *
+ * stylesheet for "RedCloud" theme for Sphinx.
+ *
+ * :copyright: Copyright 2012 by Assurance Technologies
+ * :license: BSD
+ *
+ *****************************************************/
+
+@import url("cloud.css");
+
+div.highlight pre,
+div.highlight-python pre
+{
+    border-width: 0px 3px;
+
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}

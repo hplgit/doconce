@@ -1,0 +1,68 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. Document title:
+
+Eksempel på ikke-engelsk tekst
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:Authors: Åsgeir Ødegården
+
+.. DATE: tody will be in English, so we write it out in Norwegian
+
+:Date: 12. juli, 2015
+
+*Summary.* Dette er et kort notat på norsk for å demonstrere at DocOnce kan
+håndtere andre språk enn engelsk.
+
+.. !split
+
+.. _sec:intro:
+
+Introduksjon
+============
+
+Norsk er egentlig to språk, *bokmål* og *nynorsk*. `Bokmål <https://no.wikipedia.org/wiki/Bokmål>`__ er forfatterens språk og det de
+fleste (85-90%) snakker i Norge, men `nynorsk <https://no.wikipedia.org/wiki/Nynorsk>`__ er ikke særlig
+forskjellig. Avstanden mellom norsk og nynorsk er mindre enn mellom
+norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
+skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
+uttales ganske annerledes enn bokmål.
+
+Demonstrasjon av DocOnce elementer
+----------------------------------
+
+Dette er et underkapittel av seksjon :ref:`sec:intro`.
+
+.. Admons
+
+
+.. admonition:: Formålet med dette dokumentet
+
+   Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
+   ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
+   elementer virker med UTF-8 tegnsett. La oss refere her til
+   figur :ref:`fig1` slik man referer til en figur på norsk.
+   Vi gjør også en referanse til litteraturen [Ref1]_.
+
+
+
+
+.. Figures
+
+.. _fig1:
+
+.. figure:: wave1D.png
+   :width: 500
+
+   *Figurtekst på norsk går bra*
+
+.. !split
+
+Litteraturliste
+===============
+
+.. [Ref1]
+   **Å. Ø. Ærlundsen and O. Æ. Sørlie**. Litt om ting som må skrives på norsk,
+   `http://doconce.test.net <http://doconce.test.net>`_.
+
