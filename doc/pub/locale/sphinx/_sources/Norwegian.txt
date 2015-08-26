@@ -1,6 +1,9 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
+.. |nbsp| unicode:: 0xA0
+   :trim:
+
 .. Document title:
 
 Eksempel på ikke-engelsk tekst
@@ -22,13 +25,23 @@ håndtere andre språk enn engelsk.
 Introduksjon
 ============
 
+.. index:: språkformer
+
+.. index:: norsk
+
+.. index:: nynorsk
+
+.. index:: bokmål
+
 Norsk er egentlig to språk, *bokmål* og *nynorsk*. `Bokmål <https://no.wikipedia.org/wiki/Bokmål>`__ er forfatterens språk og det de
 fleste (85-90%) skriver i Norge, men `nynorsk <https://no.wikipedia.org/wiki/Nynorsk>`__ er ikke særlig
-forskjellig, spesielt ikke for utlendinger.
+forskjellig, spesielt ikke sett med utlendingers øyne.
 Avstanden mellom norsk og nynorsk er mindre enn mellom
 norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
-skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
-uttales ganske annerledes enn bokmål.
+skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
+som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
+språk |nbsp| (!). Dansk ligger veldig nære bokmål, men
+uttales ganske annerledes.
 
 Demonstrasjon av populære DokEngang elementer
 ---------------------------------------------
@@ -49,7 +62,9 @@ Dette er et underkapittel av seksjon :ref:`sec:intro`.
 
 
 
-.. Figures
+.. index:: figur
+
+.. Figurs
 
 .. _fig1:
 

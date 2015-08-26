@@ -12,7 +12,7 @@ Contents:
    Norwegian
 
 
-Indices and tables
+Indeks og tabeller
 ==================
 
 * :ref:`genindex`
