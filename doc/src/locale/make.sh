@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Compile a Norwegian document to PDF, HTML, and Sphinx.
+#
+
 name=Norwegian
 options="--encoding=utf-8"
 
@@ -16,13 +20,16 @@ function common_replacements {
   # Replace English phrases
   # __Summary.__ is needed for identifying the abstract
   doconce replace Summary Sammendrag $1
+  doconce replace "Tables of Contents" "Innholdsfortegnelse" $1
+  doconce replace "Figure" "Figur" $1
 }
 
 system doconce format pdflatex $name --latex_code_style=vrb $options --latex_font=palatino
 # Tips: http://folk.uio.no/tobiasvl/latex.html
 system common_replacements $name.tex
 doconce replace '10pt]{' '10pt,norsk]{' $name.tex
-doconce subst '% insert custom LaTeX commands...' '%\usepackage[norsk]{babel}\n\n% insert custom LaTeX commands...' $name.tex
+# package [norsk]{label} requires texlive-lang-norwegian package
+doconce subst '% insert custom LaTeX commands...' '\usepackage[norsk]{babel}\n\n% insert custom LaTeX commands...' $name.tex
 system pdflatex $name; pdflatex $name
 
 system doconce format html $name --html_style=bootstrap $options
