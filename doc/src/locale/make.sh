@@ -60,6 +60,8 @@ files="*.html"
 doconce replace "Previous page" "Forrige side" $files
 doconce replace "Next page" "Neste side" $files
 doconce replace "Page contents" "Sideinnhold" $files
+doconce replace "Index" "Register" $files
+doconce replace "Modulindex" "Modulregister" $files
 cd ..
 
 # Publish
