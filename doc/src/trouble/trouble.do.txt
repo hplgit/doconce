@@ -574,7 +574,31 @@ Just edit this file to your needs, save it as `mydoc.json` and run
 Read in "Calibre": "http://calibre-ebook.com/"
 on computers or use ebook readers on phones and tablets.
 
+===== What about non-English languages and DocOnce? =====
 
+DocOnce can handle non-English language, although most of its use has
+concerned documents in English. When writing in languages with
+non-ASCII characters, remember to use the command-line option
+`--encoding=utf-8`.
+Some other points of importance:
+
+ * The abstract requires a heading Summary or Abstract. This heading
+   must be substitued by the appropriate word after translation.
+ * LaTeX files should make use of packages and options for the language
+   in question such that LaTeX-generated headings get the right
+   language-specific wording.
+   Use `doconce replace` or `doconce search` modify the
+   `.tex` file (see the Bash script referred to below for examples).
+ * Some DocOnce-generated headings are in English: ``Table of Contents'',
+
+
+There is an example of a document in Norwegian in the DocOnce repository:
+
+ * "DocOnce source": "https://github.com/hplgit/doconce/blob/master/doc/src/locale/Norwegian.do.txt"
+ * "Bash script for compiling the DocOnce source": "https://github.com/hplgit/doconce/blob/master/doc/src/locale/make.sh"
+ * "PDF": "http://hplgit.github.io/doconce/doc/pub/locale/Norwegian.pdf"
+ * "HTML": "http://hplgit.github.io/doconce/doc/pub/locale/Norwegian.html"
+ * "Sphinx": "http://hplgit.github.io/doconce/doc/pub/locale/sphinx/index.html"
 
 ======= Preprocess/Mako problems =======
 
