@@ -1403,16 +1403,24 @@ def latex_exercise_toc():
 \clearpage % pagebreak after list of exercises
 
 """
-    ptexfile = dofile + '.p.tex'
-    f = open(ptexfile, 'r')
-    shutil.copy(ptexfile, ptexfile + '.old~~')
+    texfile = dofile + '.p.tex'
+    if os.path.isfile(texfile):
+        f = open(texfile, 'r')
+    else:
+        texfile = dofile + '.tex'
+        if os.path.isfile(texfile):
+            f = open(texfile, 'r')
+        else:
+            print '*** error: no .tex or .p.tex file for %s' % dofile
+            sys.exit(1)
+    shutil.copy(texfile, texfile + '.old~~')
     filestr = f.read()
     f.close()
     if r'\tableofcontents' in filestr:
         # Insert table of exercises on the next line
         filestr = re.sub(r'(tableofcontents.*$)', '\g<1>\n' + latex,
                          filestr, flags=re.MULTILINE)
-        f = open(ptexfile, 'w')
+        f = open(texfile, 'w')
         f.write(filestr)
         print 'table of exercises inserted in', ptexfile
         f.close()
