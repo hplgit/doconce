@@ -66,19 +66,19 @@ system('sudo pip install jsonschema')
 # to get the latest version
 
 # Preprocessors
-system('sudo pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess')
-system('sudo pip install mako')
+system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade')
+system('sudo pip install mako --upgrade')
 # Publish for handling bibliography
-system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish')
+system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade')
 
 # Sphinx (with additional third/party themes)
 system('sudo pip install sphinx')
 
-system('sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme')
-system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme')
-system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized')
-system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
-system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
+system('sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade')
+system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade')
+system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade')
+system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade')
+system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade')
 system('sudo pip install sphinx_rtd_theme --upgrade')
 
 # Runestone sphinx books
@@ -159,6 +159,5 @@ system('sudo apt-get -y install diffuse')
 
 # example on installing mdframed.sty manually (it exists in texlive,
 # but sometimes needs to be in its newest version)
-
 
 print 'Everything is successfully installed!'
