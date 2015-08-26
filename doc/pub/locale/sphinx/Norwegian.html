@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -11,13 +10,13 @@
     
     <title>Eksempel på ikke-engelsk tekst</title>
     
-    <link rel="stylesheet" href="_static/redcloud.css" type="text/css" />
+    <link rel="stylesheet" href="_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noticia+Text|Open+Sans|Droid+Sans+Mono" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -27,11 +26,30 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="_static/cloud.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="Eksempel på ikke-engelsk tekst" href="index.html" />
-    <link rel="prev" title="Eksempel på ikke-engelsk tekst" href="index.html" /> 
+    <link rel="prev" title="Eksempel på ikke-engelsk tekst" href="index.html" />
+ 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   
        <style type="text/css">
@@ -42,18 +60,18 @@
        </style>
       </head>
     
-  <body>
+  <body role="document">
     <div class="relbar-top">
         
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigering</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="genindex.html" title="Hovedindex"
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="index.html" title="Eksempel på ikke-engelsk tekst"
-             accesskey="P">previous</a> &nbsp; &nbsp;</li>
+             accesskey="P">forrige</a> &nbsp; &nbsp;</li>
     <li><a href="index.html">Eksempel på ikke-engelsk tekst</a> &raquo;</li>
  
       </ul>
@@ -64,10 +82,10 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="eksempel-pa-ikke-engelsk-tekst">
-<h1>Eksempel på ikke-engelsk tekst<a class="headerlink" href="#eksempel-pa-ikke-engelsk-tekst" title="Permalink to this headline">¶</a></h1>
+<h1>Eksempel på ikke-engelsk tekst<a class="headerlink" href="#eksempel-pa-ikke-engelsk-tekst" title="Permalink til denne oversikten">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -90,33 +108,35 @@
 <p><em>Sammendrag.</em> Dette er et kort notat på norsk for å demonstrere at DokEngang (DocOnce) kan
 håndtere andre språk enn engelsk.</p>
 <div class="section" id="introduksjon">
-<span id="sec-intro"></span><h2>Introduksjon<a class="headerlink" href="#introduksjon" title="Permalink to this headline">¶</a></h2>
+<span id="sec-intro"></span><h2>Introduksjon<a class="headerlink" href="#introduksjon" title="Permalink til denne oversikten">¶</a></h2>
 <p>Norsk er egentlig to språk, <em>bokmål</em> og <em>nynorsk</em>. <a class="reference external" href="https://no.wikipedia.org/wiki/Bokmål">Bokmål</a> er forfatterens språk og det de
 fleste (85-90%) skriver i Norge, men <a class="reference external" href="https://no.wikipedia.org/wiki/Nynorsk">nynorsk</a> er ikke særlig
-forskjellig, spesielt ikke for utlendinger.
+forskjellig, spesielt ikke sett med utlendingers øyne.
 Avstanden mellom norsk og nynorsk er mindre enn mellom
 norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
-skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
-uttales ganske annerledes enn bokmål.</p>
+skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
+som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
+språk (!). Dansk ligger veldig nære bokmål, men
+uttales ganske annerledes.</p>
 <div class="section" id="demonstrasjon-av-populaere-dokengang-elementer">
-<h3>Demonstrasjon av populære DokEngang elementer<a class="headerlink" href="#demonstrasjon-av-populaere-dokengang-elementer" title="Permalink to this headline">¶</a></h3>
-<p>Dette er et underkapittel av seksjon <a class="reference internal" href="#sec-intro"><em>Introduksjon</em></a>.</p>
+<h3>Demonstrasjon av populære DokEngang elementer<a class="headerlink" href="#demonstrasjon-av-populaere-dokengang-elementer" title="Permalink til denne oversikten">¶</a></h3>
+<p>Dette er et underkapittel av seksjon <a class="reference internal" href="#sec-intro"><span class="std std-ref">Introduksjon</span></a>.</p>
 <div class="admonition-formalet-med-dette-dokumentet admonition">
 <p class="first admonition-title">Formålet med dette dokumentet</p>
 <p class="last">Dette skrivet skal bare demonstrere norsk tekst, så vi trenger ikke tvære
 ut innholdet. Det er nok å demonstrere at figurtekster og andre spesielle
 elementer virker med UTF-8 tegnsett. La oss refere her til
-figur <a class="reference internal" href="#fig1"><em>Figurtekst på norsk går bra</em></a> slik man referer til en figur på norsk.
-Vi gjør også en referanse til litteraturen <a class="reference internal" href="#ref1">[Ref1]</a>.</p>
+figur <a class="reference internal" href="#fig1"><span class="std std-ref">Figurtekst på norsk går bra</span></a> slik man referer til en figur på norsk.
+Vi gjør også en referanse til litteraturen <a class="reference internal" href="#ref1" id="id1">[Ref1]</a>.</p>
 </div>
-<div class="figure" id="fig1">
-<img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 500px;" />
-<p class="caption"><em>Figurtekst på norsk går bra</em></p>
+<div class="figure" id="id2">
+<span id="fig1"></span><a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text"><em>Figurtekst på norsk går bra</em></span></p>
 </div>
 </div>
 </div>
 <div class="section" id="litteraturliste">
-<h2>Litteraturliste<a class="headerlink" href="#litteraturliste" title="Permalink to this headline">¶</a></h2>
+<h2>Litteraturliste<a class="headerlink" href="#litteraturliste" title="Permalink til denne oversikten">¶</a></h2>
 <table class="docutils citation" frame="void" id="ref1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -131,9 +151,9 @@ Vi gjør også en referanse til litteraturen <a class="reference internal" href=
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><div class="sphinxlocaltoc">
-    <h4><a href="index.html">Table Of Contents</a></h4>
+    <h3><a href="index.html">Page contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Eksempel på ikke-engelsk tekst</a><ul>
 <li><a class="reference internal" href="#introduksjon">Introduksjon</a><ul>
@@ -146,24 +166,28 @@ Vi gjør også en referanse til litteraturen <a class="reference internal" href=
 </ul>
 
   </div>
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Eksempel på ikke-engelsk tekst</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/Norwegian.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
+  <div class="sphinxprev">
+    <h4>Previous page</h4>
+    <p class="topless"><a href="index.html"
+                          title="Previous page">&larr; Eksempel på ikke-engelsk tekst</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>Denne siden</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Norwegian.txt"
+            rel="nofollow">Vis kildekode</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Hurtigsøk</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <input type="submit" value="Gå" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
     <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
+    Angi søkeord eller modul-, klasse- eller funksjonsnavn.
     </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
@@ -173,24 +197,24 @@ Vi gjør også en referanse til litteraturen <a class="reference internal" href=
     </div>
     <div class="relbar-bottom">
         
-    <div class="related">
-      <h3>Navigation</h3>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigering</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
+          <a href="genindex.html" title="Hovedindex"
              >index</a></li>
         <li class="right" >
           <a href="index.html" title="Eksempel på ikke-engelsk tekst"
-             >previous</a> &nbsp; &nbsp;</li>
+             >forrige</a> &nbsp; &nbsp;</li>
     <li><a href="index.html">Eksempel på ikke-engelsk tekst</a> &raquo;</li>
  
       </ul>
     </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, Åsgeir Ødegården (pseudonym!).
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Lagd med <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.
     </div>
     <!-- cloud_sptheme 1.4 -->
   </body>

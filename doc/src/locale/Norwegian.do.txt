@@ -16,11 +16,13 @@ Norsk er egentlig to språk, *bokmål* og *nynorsk*. "Bokmål":
 "https://no.wikipedia.org/wiki/Bokmål" er forfatterens språk og det de
 fleste (85-90%) skriver i Norge, men "nynorsk":
 "https://no.wikipedia.org/wiki/Nynorsk" er ikke særlig
-forskjellig, spesielt ikke for utlendinger.
+forskjellig, spesielt ikke sett med utlendingers øyne.
 Avstanden mellom norsk og nynorsk er mindre enn mellom
 norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
-skriftlig og muntil svensk. Dansk ligger veldig nære bokmål, men
-uttales ganske annerledes enn bokmål.
+skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
+som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
+språk (!). Dansk ligger veldig nære bokmål, men
+uttales ganske annerledes.
 
 ===== Demonstrasjon av populære DokEngang elementer =====
 

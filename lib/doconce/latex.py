@@ -1923,7 +1923,11 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         if not pubfile_dir:
             pubfile_dir = os.curdir
         os.chdir(pubfile_dir)
-        os.system(publish_cmd)
+        failure = os.system(publish_cmd)
+        if failure:
+            print '*** error: could not execute command'
+            print '   ', publish_cmd
+            _abort()
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading
         pattern = r'={5,9} .+? ={5,9}\s+^BIBFILE'
