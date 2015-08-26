@@ -42,10 +42,16 @@ common_replacements $name.html
 system doconce format sphinx $name $options
 common_replacements $name.rst
 system doconce sphinx_dir theme=redcloud author="H. P. Langtangen (mannen bak pseudonymet Å. Ødegården)" $name
+
 # Fix language in conf.py and heading in index.rst
 doconce replace "language = None" "language = 'nb_NO'" sphinx-rootdir/conf.py
 doconce replace "Indices and tables" "Indeks og tabeller" sphinx-rootdir/index.rst
+doconce replace "Contents:" "Innhold:" sphinx-rootdir/index.rst
+
+# Create html
 system python automake_sphinx.py
+
+# Prepare for publishing the html version
 rm -rf sphinx
 mv sphinx-rootdir/_build/html sphinx
 # Fix headings that Sphinx did not provide in Norwegian
