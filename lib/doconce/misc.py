@@ -1422,7 +1422,7 @@ def latex_exercise_toc():
                          filestr, flags=re.MULTILINE)
         f = open(texfile, 'w')
         f.write(filestr)
-        print 'table of exercises inserted in', ptexfile
+        print 'table of exercises inserted in', texfile
         f.close()
     else:
         print '*** error: cannot insert table of exercises because there is no'
