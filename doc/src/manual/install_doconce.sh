@@ -58,19 +58,19 @@ pip_install jsonschema
 # to get the latest version
 
 # Preprocessors
-pip_install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
-pip_install mako
+pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+pip_install mako --upgrade
 # Publish for handling bibliography
-pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish
+pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade
 
 # Sphinx (with additional third/party themes)
 pip_install sphinx
 
-pip_install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
-pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
-pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
-pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
-pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+pip_install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade
+pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade
+pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade
+pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade
+pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
 pip_install sphinx_rtd_theme --upgrade
 
 # Runestone sphinx books
@@ -155,5 +155,4 @@ if [ -d mdframed ]; then cd mdframed; make localinstall; cd ..; fi
 cd srclib
 git clone https://github.com/hplgit/doconce.git
 if [ -d doconce ]; then cd doconce; sudo python setup.py install; cd ../..; fi
-
 echo "Everything is successfully installed!"
