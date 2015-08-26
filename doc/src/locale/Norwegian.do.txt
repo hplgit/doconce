@@ -12,6 +12,11 @@ TOC: on
 ======= Introduksjon =======
 label{sec:intro}
 
+idx{språkformer}
+idx{norsk}
+idx{nynorsk}
+idx{bokmål}
+
 Norsk er egentlig to språk, *bokmål* og *nynorsk*. "Bokmål":
 "https://no.wikipedia.org/wiki/Bokmål" er forfatterens språk og det de
 fleste (85-90%) skriver i Norge, men "nynorsk":
@@ -21,7 +26,7 @@ Avstanden mellom norsk og nynorsk er mindre enn mellom
 norsk og svensk. Voksne nordmenn har sjelden problemer med å forstå
 skriftlig og muntlig svensk, og alle nordmenn forstår bokmål like lett
 som nynorsk. Likevel skal alle offentlige dokumenter foreligge på begge
-språk (!). Dansk ligger veldig nære bokmål, men
+språk~(!). Dansk ligger veldig nære bokmål, men
 uttales ganske annerledes.
 
 ===== Demonstrasjon av populære DokEngang elementer =====
@@ -37,6 +42,8 @@ elementer virker med UTF-8 tegnsett. La oss refere her til
 figur ref{fig1} slik man referer til en figur på norsk.
 Vi gjør også en referanse til litteraturen cite{norsk_tekst}.
 !enotice
+
+idx{figur}
 
 # Figures
 
