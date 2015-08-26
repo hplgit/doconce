@@ -4,7 +4,7 @@
 Eksempel på ikke-engelsk tekst
 ===============================
 
-Contents:
+Innhold:
 
 .. toctree::
    :maxdepth: 3
