@@ -333,7 +333,7 @@ EOF
         shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
     if conf_py is not None:
-        shutil.copy(os.path.join(os.pardir, conf_py), os.basename(conf.py))
+        shutil.copy(os.path.join(os.pardir, conf_py), os.path.basename(conf.py))
 
     f = open('make_themes.sh', 'w')
     f.write("""#!/bin/sh
