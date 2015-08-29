@@ -339,6 +339,13 @@ FIGURE:[myfigfile, width=400 frac=0.8] Results for $a=2$. label{myfig}
 Different formats will display the figure reference differently.
 In LaTeX, DocOnce generates the code `... in Figure~\ref{myfig}`, which
 reads ``... in Figure 5'' (article) or ``... in Figure 5.2'' (book).
+Requesting the `varioref` package (with `--latex_packages=varioref`)
+makes DocOnce emit `\vref` references and then the above reference
+becomes `in Figure~\vref{myfig}`, which reads
+``... in Figure 5 on page 67''. However, if Figure 5 appears on the
+present page where the reference is done, the page reference is
+left out, and one can read just ``in Figure 5''.
+
 Sphinx applies the caption as name of the figure, so the reference
 reads ``... in Figure Results for .'', and the caption/name is a link
 to the figure. Note that Sphinx strips off the mathematics from
