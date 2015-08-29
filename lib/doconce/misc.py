@@ -251,7 +251,10 @@ doconce_heading (default): authors with "footnotes" for institutions,
 beamer: layout for beamer slides."""),
     ('--latex_link_color=', """Color used in hyperlinks. Default is dark blue if --device=screen,
 or black if --device=paper (invisible in print out) or special blue
-color if --latex_section_headings=blue or strongblue."""),
+color if --latex_section_headings=blue or strongblue.
+Values are specified either as comma-separated rgb tuples or as
+color names, e.g., --latex_link_color=0.1,0.9,0.85 or
+--latex_link_color=red or --latex_link_color=gray!70"""),
     ('--latex_title_reference=', """latex code placed in a footnote for the title,
 typically used for acknowledging publisher/source of original
 version of the document."""),
