@@ -469,7 +469,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Aug 24, 2015</h4></center> <!-- date -->
+<center><h4>Aug 29, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -1066,6 +1066,14 @@ Suppose we have the DocOnce code
 Different formats will display the figure reference differently.
 In LaTeX, DocOnce generates the code <code>... in Figure&nbsp;\ref{myfig}</code>, which
 reads &quot;... in Figure 5&quot; (article) or &quot;... in Figure 5.2&quot; (book).
+Requesting the <code>varioref</code> package (with <code>--latex_packages=varioref</code>)
+makes DocOnce emit <code>\vref</code> references and then the above reference
+becomes <code>in Figure&nbsp;\vref{myfig}</code>, which reads
+&quot;... in Figure 5 on page 67&quot;. However, if Figure 5 appears on the
+present page where the reference is done, the page reference is
+left out, and one can read just &quot;in Figure 5&quot;.
+
+<p>
 Sphinx applies the caption as name of the figure, so the reference
 reads &quot;... in Figure Results for .&quot;, and the caption/name is a link
 to the figure. Note that Sphinx strips off the mathematics from
@@ -10572,6 +10580,11 @@ Do not include header and footer in (LaTeX and HTML) documents.
 Remove all emojis.
 
 
+--allow_refs_to_external_docs
+
+Do not abort translation if ref{...} to labels not defined in this document.
+
+
 --runestone
 
 Make a RunestoneInteractive version of a Sphinx document.
@@ -10933,6 +10946,13 @@ std: traditional LaTeX layout,
 titlepage: separate page,
 doconce_heading (default): authors with &quot;footnotes&quot; for institutions,
 beamer: layout for beamer slides.
+
+
+--latex_link_color=...
+
+Color used in hyperlinks. Default is dark blue if --device=screen,
+or black if --device=paper (invisible in print out) or special blue
+color if --latex_section_headings=blue or strongblue.
 
 
 --latex_title_reference=...
