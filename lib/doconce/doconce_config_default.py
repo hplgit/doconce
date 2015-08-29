@@ -74,6 +74,7 @@ latex_code_bg_vpad = False
 #section_numbering = 
 #latex_table_format = 
 #latex_title_layout = 
+#latex_link_color = 
 #latex_title_reference = 
 #latex_encoding = 
 #latex_packages = 

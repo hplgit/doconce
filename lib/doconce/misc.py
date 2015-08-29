@@ -249,6 +249,9 @@ std: traditional LaTeX layout,
 titlepage: separate page,
 doconce_heading (default): authors with "footnotes" for institutions,
 beamer: layout for beamer slides."""),
+    ('--latex_link_color=', """Color used in hyperlinks. Default is dark blue if --device=screen,
+or black if --device=paper (invisible in print out) or special blue
+color if --latex_section_headings=blue or strongblue."""),
     ('--latex_title_reference=', """latex code placed in a footnote for the title,
 typically used for acknowledging publisher/source of original
 version of the document."""),

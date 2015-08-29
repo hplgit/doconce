@@ -6,15 +6,6 @@ This is Mako comment block
 to test the use of Mako as preprocessor.
 </%doc>
 
-<%
-## Mako function
-
-def figref(label):
-    text = 'Figure ref{%s}' % label
-    if FORMAT in ('latex', 'pdflatex'):
-	text += r'\ifthenelse{\equal{\thepage}{\getpagerefnumber{%s}}}{}{ on page \pageref{%s}}' % (label, label)
-    return text
-%>
 
 The format of this document is
 % if FORMAT == 'html':
@@ -464,7 +455,7 @@ of course remain a tilde in those contexts.)
 label{subsec:ex}
 idx{figures}
 
-Test of figures. In particular we refer to ${figref('fig:impact')} in which
+Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
 FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. label{fig:impact}
@@ -1616,7 +1607,7 @@ $Q>0$, because [del: a] negative [edit: quantity is -> quantities
 are] [del: just] negative. [add: This comes as no surprise.]
 
 # Test tailored latex figure references with page number
-Let us refer to ${figref('fig:impact')} again.
+Let us refer to Figure ref{fig:impact} again.
 
 Test references in a list:
 

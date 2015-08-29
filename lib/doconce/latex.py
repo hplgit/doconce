@@ -1799,6 +1799,18 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # finally the last ref{} with a space first
     replacement = r' \\vref{' if varioref else r' \\ref{'
     filestr = re.sub(r'\s+ref\{', replacement, filestr)
+    # It is very confusing with \vref{} to undefined labels, so
+    # let's detect them and replace with ref
+    _label_pattern = r'\label\{(.+?)\}'
+    _ref_pattern = r'\v?ref\{(.+?)\}'
+    labels = re.findall(_label_pattern, filestr)
+    refs   = re.findall(_ref_pattern,   filestr)
+    external_refs = []
+    for ref in refs:
+        if ref not in labels:
+            external_refs.append(ref)
+    for label in external_refs:
+        filestr = filestr.replace(r'\vref{%s}' % label, r'\ref{%s}' % label)
 
     # equations are ok in the doconce markup
 
@@ -3168,14 +3180,31 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 
     # Make sure hyperlinks are black (as the text) for printout
     # and otherwise set to the dark blue linkcolor
-    linkcolor = 'linkcolor'
-    if option('device=') == 'paper':
-        linkcolor = 'black'
-    elif section_headings in ('blue', 'strongblue'):
-        linkcolor = 'seccolor'
+    linkcolor = option('latex_link_color=', None)
+    if linkcolor is not None:
+        # User has provided the linkcolor
+        if linkcolor.count(',') == 2:
+            # rgb format 0.9,0.8,0.1
+            linkcolor_def = r'\definecolor{linkcolor}{rgb}{%s}' % linkcolor
+        else:
+            # yellow!20 or red
+            linkcolor_def = r'\colorlet{linkcolor}{%s}' % linkcolor
+    else:
+        if option('device=') == 'paper':
+            linkcolor = 'black'
+            linkcolor_def = ''
+        elif section_headings in ('blue', 'strongblue'):
+            linkcolor = 'seccolor'
+            linkcolor_def = ''
+        else:
+            # Default link colors
+            linkcolor = 'linkcolor'
+            # Dark blue linkcolor
+            linkcolor_def = r'\definecolor{linkcolor}{rgb}{0,0,0.4}'
+
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
+%(linkcolor_def)s
 \usepackage{hyperref}
 \hypersetup{
     breaklinks=true,
