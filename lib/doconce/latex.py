@@ -1778,23 +1778,27 @@ def latex_abstract(m):
     return abstract
 
 def latex_ref_and_label(section_label2title, format, filestr):
+    varioref = 'varioref' in option('latex_packages=', '')
     filestr = filestr.replace('label{', r'\label{')
     # add ~\ between chapter/section and the reference
     pattern = r'([Ss]ection|[Cc]hapter|[Aa]ppendix|[Aa]ppendice)(s?)\s+ref\{'  # no \[A-Za-z] pattern => no fix
     # recall \r is special character so it needs \\r
     # (could call fix_latex_command_regex for the replacement)
-    replacement = r'\g<1>\g<2>~\\ref{'
+    replacement = r'\g<1>\g<2>~\\vref{' if varioref else r'\g<1>\g<2>~\\ref{'
     filestr = re.sub(pattern, replacement, filestr, flags=re.IGNORECASE)
     # ref -> \ref in latex
     # range ref:
     filestr = re.sub(r'-ref\{', r'-\\ref{', filestr)
     # the rest of the ' ref{}' (single refs should have ~ in front):
-    filestr = re.sub(r'([A-Za-z.:])\s+ref\{', r'\g<1>~\\ref{', filestr)
+    replacement = r'\g<1>~\\vref{' if varioref else r'\g<1>~\\ref{'
+    filestr = re.sub(r'([A-Za-z.:])\s+ref\{', replacement, filestr)
     # non-breaking space
-    filestr = re.sub(r'~ref\{', r'~\\ref{', filestr)
+    replacement = r'~\\vref{' if varioref else r'~\\ref{'
+    filestr = re.sub(r'~ref\{', replacement, filestr)
     filestr = re.sub(r'\(ref\{', r'(\\ref{', filestr)
     # finally the last ref{} with a space first
-    filestr = re.sub(r'\s+ref\{', r' \\ref{', filestr)
+    replacement = r' \\vref{' if varioref else r' \\ref{'
+    filestr = re.sub(r'\s+ref\{', replacement, filestr)
 
     # equations are ok in the doconce markup
 
@@ -2849,7 +2853,16 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %% user-provided packages: --latex_packages=%s
 \usepackage{%s}
 """ % (usepackages, usepackages)
-
+        if 'varioref' in usepackages:
+            # Add lines for \vref{} references with 'on page' if
+            # label is on a different page
+            INTRO['latex'] += r"""
+% 'on page ...' reference with \vref{} and varioref package
+\renewcommand\reftextfaceafter{on page~\thevpagerefnum}
+\renewcommand\reftextfacebefore{on page~\thevpagerefnum}
+\renewcommand\reftextafter{on page~\thevpagerefnum}
+\renewcommand\reftextbefore{on page~\thevpagerefnum}
+"""
     # Inline comments with corrections?
     if '[del:' in filestr or '[add:' in filestr or '[,]' in filestr or \
        re.search(r'''\[(?P<name>[ A-Za-z0-9_'+-]+?):(?P<space>\s+)(?P<correction>.*? -> .*?)\]''', filestr, flags=re.DOTALL|re.MULTILINE):

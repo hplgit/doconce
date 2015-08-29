@@ -515,10 +515,10 @@ found in line:
 def sphinx_ref_and_label(section_label2title, format, filestr):
     # Special fix early in the process:
     # Deal with !split - by default we place splits before
-    # the topmost sections
+    # the all the topmost sections
     # (This must be done before labels are put above section
     # headings)
-    if not option('sphinx_keep_splits'):
+    if '!split' in filestr and not option('sphinx_keep_splits'):
         print '*** warning: new !split inserted (override all existing !split)'
         # Note: the title is at this stage translated to a chapter heading!
         # This title/heading must be removed for the algorithm below to work

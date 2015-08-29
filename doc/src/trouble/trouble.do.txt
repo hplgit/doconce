@@ -993,7 +993,24 @@ A DocOnce user wanted figure references to be as follows in LaTeX:
 All other formats should emit the standard treatment of a DocOnce
 figure reference with `ref`.
 
-The above problem can be elegantly solved by some Mako programming and
+=== Quick solution with the `varioref` package ===
+
+DocOnce actually generates such references in LaTeX output
+if you request the `varioref`
+package: `--latex_packages=varioref` (the standard `ref` command
+is now replaced by `\vref`, except in equation references).
+
+=== Manual solution (or a good example on what Mako can do) ===
+
+Here is an implementation using if-else tests in LaTeX and
+internal variables. Unfortunately, this solution is not reliable
+because it uses the `\thepage` variable in LaTeX (for the page number
+of the current page) and this variable is unreliable. The solution
+above (using `\vref` and the `varioref` package) is much better.
+However, the manual solution is a good example on how to use Mako
+to do seemingly complicated things.
+
+The above problem can be solved by some Mako programming and
 usage of the LaTeX packages `ifthen` and `refcount`.
 
 !bc do
