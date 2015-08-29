@@ -1482,6 +1482,27 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             newlines.append(formatted_exercise)
             solutions.append(formatted_solution)
             all_exer.append(exer)
+
+            # Check if Exercise could be Problem: no refs to labels
+            # outside the Exercise
+            if exer['type'] != 'Exercise':
+                label_pattern = r'label\{(.+?)\}'
+                ref_pattern = r'ref\{(.+?)\}'
+                labels = re.findall(label_pattern, formatted_exercise)
+                refs   = re.findall(ref_pattern,   formatted_exercise)
+                external_ref = False
+                for ref in refs:
+                    if ref not in labels:
+                        external_ref = True
+                        break
+                if not external_ref:
+                    msg = '\n*** Exercise: %s' % exer['title']
+                    if 'label' in exer:
+                        msg += ', label{%s}' % label
+                    msg += '\n    could be Problem (no refs beyond the exercise itself)'
+                    print msg
+
+            # Be ready for next iteration
             inside_exer = False
             exer_end = False
             exer = {}
