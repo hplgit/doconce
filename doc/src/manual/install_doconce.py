@@ -66,9 +66,13 @@ system('sudo pip install jsonschema')
 # to get the latest version
 
 # Preprocessors
-system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade')
+system('sudo pip install future')
 system('sudo pip install mako --upgrade')
+system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade')
+
 # Publish for handling bibliography
+system('sudo pip install python-Levenshtein')
+system('sudo pip install lxml')
 system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade')
 
 # Sphinx (with additional third/party themes)
@@ -85,10 +89,6 @@ system('sudo pip install sphinx_rtd_theme --upgrade')
 system('sudo pip install sphinxcontrib-paverutils')
 system('sudo pip install paver')
 system('sudo pip install cogapp')
-
-system('sudo pip install future')
-system('sudo pip install python-Levenshtein')
-system('sudo pip install lxml')
 
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 system('sudo pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console')

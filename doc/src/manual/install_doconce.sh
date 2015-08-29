@@ -58,9 +58,13 @@ pip_install jsonschema
 # to get the latest version
 
 # Preprocessors
-pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+pip_install future
 pip_install mako --upgrade
+pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+
 # Publish for handling bibliography
+pip_install python-Levenshtein
+pip_install lxml
 pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade
 
 # Sphinx (with additional third/party themes)
@@ -77,10 +81,6 @@ pip_install sphinx_rtd_theme --upgrade
 pip_install sphinxcontrib-paverutils
 pip_install paver
 pip_install cogapp
-
-pip_install future
-pip_install python-Levenshtein
-pip_install lxml
 
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 pip_install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
