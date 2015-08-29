@@ -596,8 +596,8 @@ Some other points of importance:
    (`sphinx-rootdir` by default) are necessary (see Bash script below for
    examples on autoediting):
    * Insert right language in `conf.py`: `language = 'nb_NO'` for Norwegian
-   * Edit the heading in `index.rst`, ``Tables and indices'', to what
-     the language demands
+   * Edit headings in `index.rst`: ``Contents:'' and
+     ``Tables and indices'', to what the language demands
    * Unfortunately, ``Page contents'', ``Next page'', and
      ``Previous page'' remains in English
      in the navigation area (these can, of course, be replaced in all

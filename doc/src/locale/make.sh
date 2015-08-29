@@ -42,10 +42,22 @@ common_replacements $name.html
 system doconce format sphinx $name $options
 common_replacements $name.rst
 system doconce sphinx_dir theme=redcloud author="H. P. Langtangen (mannen bak pseudonymet Å. Ødegården)" $name
-# Fix language in conf.py and heading in index.rst
-doconce replace "language = None" "language = 'nb_NO'" sphinx-rootdir/conf.py
+
+# Fix language settings in conf.py and headings in index.rst
 doconce replace "Indices and tables" "Indeks og tabeller" sphinx-rootdir/index.rst
+doconce replace "Contents:" "Innhold:" sphinx-rootdir/index.rst
+doconce replace "language = None" "language = 'nb_NO'" sphinx-rootdir/conf.py
+doconce subst "#html_search_language =.+" "html_search_language = 'no'" sphinx-rootdir/conf.py
+# Note: the above command requires norwegian-stemmer.js and by some reason
+# it is not installed (although coming with sphinx). The following had
+# to be done (from the sphinx source root directory):
+# sudo cp -r sphinx/search/non-minified-js /usr/local/lib/python2.7/dist-packages/Sphinx-1.4a0.dev20150828-py2.7.egg/sphinx/search/
+
+
+# Create html
 system python automake_sphinx.py
+
+# Prepare for publishing the html version
 rm -rf sphinx
 mv sphinx-rootdir/_build/html sphinx
 # Fix headings that Sphinx did not provide in Norwegian
@@ -54,6 +66,8 @@ files="*.html"
 doconce replace "Previous page" "Forrige side" $files
 doconce replace "Next page" "Neste side" $files
 doconce replace "Page contents" "Sideinnhold" $files
+doconce replace "Index" "Register" $files
+doconce replace "Modulindex" "Modulregister" $files
 cd ..
 
 # Publish
