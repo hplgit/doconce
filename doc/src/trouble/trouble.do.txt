@@ -1338,6 +1338,16 @@ further.
 
 ======= Problems with HTML Output =======
 
+===== Translation aborts when labels are not defined =====
+
+By default, the DocOnce translation of HTML document aborts when references
+are found to lables not defined in the document (i.e., labels in other
+documents). This abortion can be annoying, and although it can be
+nullified by `--no_abort`, that option also ignores other error messages.
+Instead, use `--allow_refs_to_external_docs` to allow references to labels
+in other documents. These references will of course not work, but the
+option can be handy, e.g., while compiling chapters for a book individually.
+
 ===== MathJax formulas are not properly rendered =====
 
 Here are some common problems:

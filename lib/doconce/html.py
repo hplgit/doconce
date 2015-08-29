@@ -702,6 +702,7 @@ def html_code(filestr, code_blocks, code_block_types,
 
     # Do one fix before verbatim blocks are inserted
     # (where ref{} and label{} constructions are to be as is)
+    allow_refs_to_external_docs = option('allow_refs_to_external_docs')
     find_remaining_references = True
     if find_remaining_references:
         # Find remaining ref{...} that is not referring to labels in the
@@ -721,7 +722,8 @@ def html_code(filestr, code_blocks, code_block_types,
             print '1: defined in another file'
             print '2: preprocessor if-else has left it out'
             print '3: forgotten to define it'
-            _abort()
+            if not allow_refs_to_external_docs:
+                _abort()
 
     html_style = option('html_style=', '')
     pygm_style = option('pygments_html_style=', default=None)
