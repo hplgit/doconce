@@ -24,6 +24,7 @@ no_preprocess = False
 mako_strict_undefined = False
 no_header_footer = False
 no_emoji = False
+allow_refs_to_external_docs = False
 runestone = False
 #max_bc_linelength = 
 #replace_ref_by_latex_auxno = 

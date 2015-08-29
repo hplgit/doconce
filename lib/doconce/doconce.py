@@ -1485,21 +1485,26 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
             # Check if Exercise could be Problem: no refs to labels
             # outside the Exercise
-            if exer['type'] != 'Exercise':
-                label_pattern = r'label\{(.+?)\}'
-                ref_pattern = r'ref\{(.+?)\}'
-                labels = re.findall(label_pattern, formatted_exercise)
-                refs   = re.findall(ref_pattern,   formatted_exercise)
-                external_ref = False
+            if 1:
+                _label_pattern = r'label\{(.+?)\}'
+                _ref_pattern = r'ref\{(.+?)\}'
+                labels = re.findall(_label_pattern, formatted_exercise)
+                refs   = re.findall(_ref_pattern,   formatted_exercise)
+                external_ref = []
                 for ref in refs:
                     if ref not in labels:
-                        external_ref = True
-                        break
-                if not external_ref:
-                    msg = '\n*** Exercise: %s' % exer['title']
+                        external_ref.append(ref)
+                if not external_ref and exer['type'] == 'Exercise':
+                    msg = '\n*** %s: %s' % (exer['type'], exer['title'])
                     if 'label' in exer:
-                        msg += ', label{%s}' % label
+                        msg += '\n    label{%s}' % exer['label']
                     msg += '\n    could be Problem (no refs beyond the exercise itself)'
+                    print msg
+                if external_ref and exer['type'] in ('Problem', 'Project'):
+                    msg = '\n*** %s: %s' % (exer['type'], exer['title'])
+                    if 'label' in exer:
+                        msg += '\n    label{%s}' % exer['label']
+                    msg += '\n    should be Exercise since it has refs to other parts of the document:\n    ' + ', '.join(external_refs)
                     print msg
 
             # Be ready for next iteration
