@@ -70,12 +70,13 @@ pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade
 # Sphinx (with additional third/party themes)
 pip_install sphinx
 
+pip_install alabaster --upgrade
+pip_install sphinx_rtd_theme --upgrade
 pip_install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade
 pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade
 pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade
 pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade
 pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
-pip_install sphinx_rtd_theme --upgrade
 
 # Runestone sphinx books
 pip_install sphinxcontrib-paverutils

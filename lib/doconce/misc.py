@@ -2456,7 +2456,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --acknowledgment="..." --font_size=slides'
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author/copyright" --font_size=slides'
 
 --method=split|space8|hrule|colorline specifies pagebreak
 physical split with a new page (--method=split) or
@@ -2486,8 +2486,11 @@ if a bootstrap theme is used in the document.
 --reference=... is used to insert a reference for acknowledging where
 the source of the text is published, typically the reference of a
 book if the document is the HTML version of a chapter in the book.
+Can also be used to insert a copyright.
+
 Example:
 --reference="This text is taken from Appendix H.2 in the book <em>A Primer on Scientific Programming with Python</em> by H. P. Langtangen, 4th edition, Springer, 2014."
+--reference="&copy; Copyright 2000-2015, H. P. Langtangen"
 """
 
 def split_html():
@@ -3301,7 +3304,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         part_text = part_text.replace('<a href="%s#' % part_filename,
                                       '<a href="#')
 
-        # Insert reference to published version of document?
+        # Insert reference to published version of document? Or copyright
         ackn = misc_option('reference=', None)
         if ackn is not None:
             ackn1 = '<p style="font-size:80%%">%s</p>' % ackn

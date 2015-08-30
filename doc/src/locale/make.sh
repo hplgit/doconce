@@ -41,7 +41,7 @@ common_replacements $name.html
 
 system doconce format sphinx $name $options
 common_replacements $name.rst
-system doconce sphinx_dir theme=redcloud author="H. P. Langtangen (mannen bak pseudonymet Å. Ødegården)" $name
+system doconce sphinx_dir theme=redcloud copyright="H. P. Langtangen (mannen bak pseudonymet Å. Ødegården)" $name
 
 # Fix language settings in conf.py and headings in index.rst
 doconce replace "Indices and tables" "Indeks og tabeller" sphinx-rootdir/index.rst

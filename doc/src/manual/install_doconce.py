@@ -78,12 +78,13 @@ system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish --
 # Sphinx (with additional third/party themes)
 system('sudo pip install sphinx')
 
+system('sudo pip install alabaster --upgrade')
+system('sudo pip install sphinx_rtd_theme --upgrade')
 system('sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade')
 system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade')
 system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade')
 system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade')
 system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade')
-system('sudo pip install sphinx_rtd_theme --upgrade')
 
 # Runestone sphinx books
 system('sudo pip install sphinxcontrib-paverutils')

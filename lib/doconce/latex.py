@@ -3305,7 +3305,9 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %\doublespacing
 """
 
-    if option('latex_fancy_header'):
+    fancy_header = option('latex_fancy_header')
+    copyright_ = option('copyright=', None)
+    if fancy_header or copyright_:
         INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
@@ -3329,10 +3331,13 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}"""
+
         INTRO['latex'] += r"""
 \pagestyle{fancy}
 
 """
+    if option('latex_fancy_header'):
+
         # Not necessary:
         #filestr = re.sub('^(=====.+?=====\s+)', '% #ifdef FANCY_HEADER\n\\pagestyle{fancy}\n% #endif\n\n\g<1>', filestr, count=1, flags=re.MULTILINE)
         # Can insert above if section_headings == "blue" and have a

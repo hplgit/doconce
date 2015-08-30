@@ -1621,6 +1621,16 @@ First[add: ,] consider a quantity $Q$. [edit: To this end, -> We note that]
 $Q>0$, because [del: a] negative [edit: quantity is -> quantities
 are] [del: just] negative. [add: This comes as no surprise.]
 
+# Test tailored latex figure references with page number
+Let us refer to Figure ref{fig:impact} again.
+
+Test references in a list:
+
+ * ref{sec1}
+ * ref{subsec1}
+ * ref{fig:impact}
+
+
 ===== Appendix: Testing headings ending with `verbatim inline` =====
 
 The point here is to test 1) `verbatim` code in headings, and 2)
@@ -2046,6 +2056,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage{graphicx}
 \usepackage{sidecap}
 
+% user-provided packages: --latex_packages=varioref
+\usepackage{varioref}
+
+% 'on page ...' reference with \vref{} and varioref package
+\renewcommand\reftextfaceafter{on page~\thevpagerefnum}
+\renewcommand\reftextfacebefore{on page~\thevpagerefnum}
+\renewcommand\reftextafter{on page~\thevpagerefnum}
+\renewcommand\reftextbefore{on page~\thevpagerefnum}
+
 % Tools for marking corrections
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
@@ -2435,15 +2454,15 @@ Even Equation (\ref{my:eq1}) without the tilde.
 % and other special fix situations for HTML.
 
 More text, with a reference back to
-Section~\ref{sec1} and~\ref{subsec1}, and further to the
-sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+Section~\vref{sec1} and~\vref{subsec1}, and further to the
+sections~\vref{subsec1} and~\vref{subsubsec:ex}, which
 encourages you to do the tasks in the
-Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
-Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+Exercises~\vref{demo:ex:1} and~\vref{exer:some:formula}.
+Appendices~\vref{app1} and~\vref{app2} are also nice elements.
 
 \paragraph{Test Section reference at beginning of line and after a sentence.}
-Section~\ref{subsec1} is fine.
-Section~\ref{subsubsec:ex} too.
+Section~\vref{subsec1} is fine.
+Section~\vref{subsubsec:ex} too.
 
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -2814,11 +2833,11 @@ of course remain a tilde in those contexts.)
 \label{subsec:ex}
 \index{figures}
 
-Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
+Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[t]
+\begin{figure}[h]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -2841,7 +2860,7 @@ Figures without captions are allowed and will be inlined.
 
 % Test multi-line caption in figure with sidecap=True
 
-Here is figure~\ref{myfig} with a long (illegal) multi-line caption
+Here is figure~\vref{myfig} with a long (illegal) multi-line caption
 containing inline verbatim text:
 
 
@@ -3269,9 +3288,9 @@ maybe over multiple doconce input lines.
 
 
 
-Example~\ref{ex:test:1p1} demonstrates how to write a test function.
+Example~\vref{ex:test:1p1} demonstrates how to write a test function.
 That is, a special test function for a function \texttt{add} appears in
-Example~\ref{ex:test:1p1}.
+Example~\vref{ex:test:1p1}.
 
 
 \begin{example}
@@ -3375,10 +3394,10 @@ Let's check abbr.~of some common kind, e.g.~the well-known i.e.
 expression as an example, and 1 vs.~2 which is also often used.
 Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
-with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
-Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+with Ms.~Larsen. A reference like Sec.~\vref{subsubsec:ex} or
+Ch.~\vref{subsubsec:ex}, or even App.~\vref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Also, look at Fig.~4 to see how the data compares with Tab.~\vref{mytab}.
 Percentage must be fixed: 7\%,  87.65\% and
 50\% at the beginning of the line.
 
@@ -3450,9 +3469,9 @@ Testing eqnarray:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
-as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
-between there we have Exercise~\ref{exer:some:formula}.
+Below, we have Problem~\vref{demo:ex:1} and Project~\vref{demo:ex:2},
+as well as Projects~\vref{proj:circle1} and~\vref{exer:you}, and in
+between there we have Exercise~\vref{exer:some:formula}.
 
 
 \section{Exercises}
@@ -3520,7 +3539,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
-At least there is not much to find in Section~\ref{sec1}.
+At least there is not much to find in Section~\vref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \texttt{numpy.sum}.
@@ -3990,7 +4009,7 @@ With some text, before we continue with exercises.
 \label{exer:some:formula}
 
 % Test comments not at the end only
-Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
+Pick a statement from Project~\vref{proj:circle1} or Problem~\vref{demo:ex:1}
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -4015,13 +4034,13 @@ hint, etc.):
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for latex}
 
 \label{exer:you}
 
-Refer to the previous exercise as Exercise~\ref{exer:some:formula},
-the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
-and this one as Project~\ref{exer:you}.
+Refer to the previous exercise as Exercise~\vref{exer:some:formula},
+the two before that as Projects~\vref{demo:ex:2} and~\vref{proj:circle1},
+and this one as Project~\vref{exer:you}.
 \noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
@@ -4233,6 +4252,20 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
+% Test tailored latex figure references with page number
+Let us refer to Figure~\vref{fig:impact} again.
+
+Test references in a list:
+
+\begin{itemize}
+ \item \vref{sec1}
+
+ \item \vref{subsec1}
+
+ \item \vref{fig:impact}
+\end{itemize}
+
+\noindent
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
 The point here is to test 1) \texttt{verbatim} code in headings, and 2)
@@ -4287,6 +4320,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
 
+% user--provided packages: --latex_packages=varioref
+\usepackage{varioref}
+
+% 'on page ...' reference with \vref{} and varioref package
+\renewcommand\reftextfaceafter{on page~\thevpagerefnum}
+\renewcommand\reftextfacebefore{on page~\thevpagerefnum}
+\renewcommand\reftextafter{on page~\thevpagerefnum}
+\renewcommand\reftextbefore{on page~\thevpagerefnum}
+
 % Tools for marking corrections
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
@@ -4312,13 +4354,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconcequizcounter}
 
 % Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
+\colorlet{linkcolor}{yellow!10}
 \usepackage{hyperref}
 \hypersetup{
     breaklinks=true,
     colorlinks=true,
-    linkcolor=black,
-    urlcolor=black,
+    linkcolor=yellow!10,
+    urlcolor=yellow!10,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -4773,15 +4815,15 @@ Even Equation (\ref{my:eq1}) without the tilde.
 % and other special fix situations for HTML.
 
 More text, with a reference back to
-Section~\ref{sec1} and~\ref{subsec1}, and further to the
-sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+Section~\vref{sec1} and~\vref{subsec1}, and further to the
+sections~\vref{subsec1} and~\vref{subsubsec:ex}, which
 encourages you to do the tasks in the
-Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
-Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+Exercises~\vref{demo:ex:1} and~\vref{exer:some:formula}.
+Appendices~\vref{app1} and~\vref{app2} are also nice elements.
 
 \paragraph{Test Section reference at beginning of line and after a sentence.}
-Section~\ref{subsec1} is fine.
-Section~\ref{subsubsec:ex} too.
+Section~\vref{subsec1} is fine.
+Section~\vref{subsubsec:ex} too.
 
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -5193,11 +5235,11 @@ of course remain a tilde in those contexts.)
 \label{subsec:ex}
 \index{figures}\marginpar{\footnotesize figures}
 
-Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
+Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[t]
+\begin{figure}[h]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -5220,7 +5262,7 @@ Figures without captions are allowed and will be inlined.
 
 % Test multi--line caption in figure with sidecap=True
 
-Here is figure~\ref{myfig} with a long (illegal) multi--line caption
+Here is figure~\vref{myfig} with a long (illegal) multi--line caption
 containing inline verbatim text:
 
 
@@ -5655,9 +5697,9 @@ maybe over multiple doconce input lines.
 
 
 
-Example~\ref{ex:test:1p1} demonstrates how to write a test function.
+Example~\vref{ex:test:1p1} demonstrates how to write a test function.
 That is, a special test function for a function \texttt{add} appears in
-Example~\ref{ex:test:1p1}.
+Example~\vref{ex:test:1p1}.
 
 
 \begin{example}
@@ -5762,10 +5804,10 @@ Let's check abbr.~of some common kind, e.g.~the well--known i.e.
 expression as an example, and 1 vs.~2 which is also often used.
 Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
-with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
-Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+with Ms.~Larsen. A reference like Sec.~\vref{subsubsec:ex} or
+Ch.~\vref{subsubsec:ex}, or even App.~\vref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Also, look at Fig.~4 to see how the data compares with Tab.~\vref{mytab}.
 Percentage must be fixed: 7\%,  87.65\% and
 50\% at the beginning of the line.
 
@@ -5837,9 +5879,9 @@ Testing eqnarray:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
-as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
-between there we have Exercise~\ref{exer:some:formula}.
+Below, we have Problem~\vref{demo:ex:1} and Project~\vref{demo:ex:2},
+as well as Projects~\vref{proj:circle1} and~\vref{exer:you}, and in
+between there we have Exercise~\vref{exer:some:formula}.
 
 
 \section{Exercises}
@@ -5909,7 +5951,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
-At least there is not much to find in Section~\ref{sec1}.
+At least there is not much to find in Section~\vref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \texttt{numpy.sum}.
@@ -6396,7 +6438,7 @@ With some text, before we continue with exercises.
 \label{exer:some:formula}
 
 % Test comments not at the end only
-Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
+Pick a statement from Project~\vref{proj:circle1} or Problem~\vref{demo:ex:1}
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -6421,14 +6463,14 @@ hint, etc.):
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for pdflatex}
 
 \label{exer:you}
 
-Refer to the previous exercise as Exercise~\ref{exer:some:formula},
-the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
-and this one as Project~\ref{exer:you}.
+Refer to the previous exercise as Exercise~\vref{exer:some:formula},
+the two before that as Projects~\vref{demo:ex:2} and~\vref{proj:circle1},
+and this one as Project~\vref{exer:you}.
 \noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
@@ -6640,6 +6682,20 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
+% Test tailored latex figure references with page number
+Let us refer to Figure~\vref{fig:impact} again.
+
+Test references in a list:
+
+\begin{itemize}
+ \item \vref{sec1}
+
+ \item \vref{subsec1}
+
+ \item \vref{fig:impact}
+\end{itemize}
+
+\noindent
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
 The point here is to test 1) \texttt{verbatim} code in headings, and 2)
@@ -6719,6 +6775,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
 
+% user--provided packages: --latex_packages=varioref
+\usepackage{varioref}
+
+% 'on page ...' reference with \vref{} and varioref package
+\renewcommand\reftextfaceafter{on page~\thevpagerefnum}
+\renewcommand\reftextfacebefore{on page~\thevpagerefnum}
+\renewcommand\reftextafter{on page~\thevpagerefnum}
+\renewcommand\reftextbefore{on page~\thevpagerefnum}
+
 % Tools for marking corrections
 \usepackage{soul}
 \newcommand{\replace}[2]{{\color{red}\text{\st{#1} #2}}}
@@ -6744,13 +6809,13 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 \newcounter{doconcequizcounter}
 
 % Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
+\colorlet{linkcolor}{yellow!10}
 \usepackage{hyperref}
 \hypersetup{
     breaklinks=true,
     colorlinks=true,
-    linkcolor=black,
-    urlcolor=black,
+    linkcolor=yellow!10,
+    urlcolor=yellow!10,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -7205,15 +7270,15 @@ Even Equation (\ref{my:eq1}) without the tilde.
 % and other special fix situations for HTML.
 
 More text, with a reference back to
-Section~\ref{sec1} and~\ref{subsec1}, and further to the
-sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+Section~\vref{sec1} and~\vref{subsec1}, and further to the
+sections~\vref{subsec1} and~\vref{subsubsec:ex}, which
 encourages you to do the tasks in the
-Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
-Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+Exercises~\vref{demo:ex:1} and~\vref{exer:some:formula}.
+Appendices~\vref{app1} and~\vref{app2} are also nice elements.
 
 \paragraph{Test Section reference at beginning of line and after a sentence.}
-Section~\ref{subsec1} is fine.
-Section~\ref{subsubsec:ex} too.
+Section~\vref{subsec1} is fine.
+Section~\vref{subsubsec:ex} too.
 
 
 % sphinx code--blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -7581,11 +7646,11 @@ of course remain a tilde in those contexts.)
 \label{subsec:ex}
 \index{figures}\marginpar{\footnotesize figures}
 
-Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
+Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[t]
+\begin{figure}[h]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -7608,7 +7673,7 @@ Figures without captions are allowed and will be inlined.
 
 % Test multi--line caption in figure with sidecap=True
 
-Here is figure~\ref{myfig} with a long (illegal) multi--line caption
+Here is figure~\vref{myfig} with a long (illegal) multi--line caption
 containing inline verbatim text:
 
 
@@ -8037,9 +8102,9 @@ maybe over multiple doconce input lines.
 
 
 
-Example~\ref{ex:test:1p1} demonstrates how to write a test function.
+Example~\vref{ex:test:1p1} demonstrates how to write a test function.
 That is, a special test function for a function \texttt{add} appears in
-Example~\ref{ex:test:1p1}.
+Example~\vref{ex:test:1p1}.
 
 
 \begin{example}
@@ -8143,10 +8208,10 @@ Let's check abbr.~of some common kind, e.g.~the well--known i.e.
 expression as an example, and 1 vs.~2 which is also often used.
 Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
-with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
-Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+with Ms.~Larsen. A reference like Sec.~\vref{subsubsec:ex} or
+Ch.~\vref{subsubsec:ex}, or even App.~\vref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Also, look at Fig.~4 to see how the data compares with Tab.~\vref{mytab}.
 Percentage must be fixed: 7\%,  87.65\% and
 50\% at the beginning of the line.
 
@@ -8218,9 +8283,9 @@ Testing eqnarray:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
-as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
-between there we have Exercise~\ref{exer:some:formula}.
+Below, we have Problem~\vref{demo:ex:1} and Project~\vref{demo:ex:2},
+as well as Projects~\vref{proj:circle1} and~\vref{exer:you}, and in
+between there we have Exercise~\vref{exer:some:formula}.
 
 
 \section{Exercises}
@@ -8289,7 +8354,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
-At least there is not much to find in Section~\ref{sec1}.
+At least there is not much to find in Section~\vref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \texttt{numpy.sum}.
@@ -8768,7 +8833,7 @@ With some text, before we continue with exercises.
 \label{exer:some:formula}
 
 % Test comments not at the end only
-Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
+Pick a statement from Project~\vref{proj:circle1} or Problem~\vref{demo:ex:1}
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -8793,14 +8858,14 @@ hint, etc.):
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
-\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for pdflatex}
+\addcontentsline{loe}{doconceexercise}{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for pdflatex}
 
 \label{exer:you}
 
-Refer to the previous exercise as Exercise~\ref{exer:some:formula},
-the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
-and this one as Project~\ref{exer:you}.
+Refer to the previous exercise as Exercise~\vref{exer:some:formula},
+the two before that as Projects~\vref{demo:ex:2} and~\vref{proj:circle1},
+and this one as Project~\vref{exer:you}.
 \noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
@@ -9012,6 +9077,20 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
+% Test tailored latex figure references with page number
+Let us refer to Figure~\vref{fig:impact} again.
+
+Test references in a list:
+
+\begin{itemize}
+ \item \vref{sec1}
+
+ \item \vref{subsec1}
+
+ \item \vref{fig:impact}
+\end{itemize}
+
+\noindent
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
 The point here is to test 1) \texttt{verbatim} code in headings, and 2)
@@ -9062,6 +9141,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage[pdftex]{graphicx}
 \usepackage{sidecap}
+
+% user-provided packages: --latex_packages=varioref
+\usepackage{varioref}
+
+% 'on page ...' reference with \vref{} and varioref package
+\renewcommand\reftextfaceafter{on page~\thevpagerefnum}
+\renewcommand\reftextfacebefore{on page~\thevpagerefnum}
+\renewcommand\reftextafter{on page~\thevpagerefnum}
+\renewcommand\reftextbefore{on page~\thevpagerefnum}
 
 % Tools for marking corrections
 \usepackage{soul}
@@ -9638,15 +9726,15 @@ Even Equation (\ref{my:eq1}) without the tilde.
 % and other special fix situations for HTML.
 
 More text, with a reference back to
-Section~\ref{sec1} and~\ref{subsec1}, and further to the
-sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+Section~\vref{sec1} and~\vref{subsec1}, and further to the
+sections~\vref{subsec1} and~\vref{subsubsec:ex}, which
 encourages you to do the tasks in the
-Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
-Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+Exercises~\vref{demo:ex:1} and~\vref{exer:some:formula}.
+Appendices~\vref{app1} and~\vref{app2} are also nice elements.
 
 \paragraph{Test Section reference at beginning of line and after a sentence.}
-Section~\ref{subsec1} is fine.
-Section~\ref{subsubsec:ex} too.
+Section~\vref{subsec1} is fine.
+Section~\vref{subsubsec:ex} too.
 
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -10039,11 +10127,11 @@ of course remain a tilde in those contexts.)
 \label{subsec:ex}
 \index{figures}
 
-Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
+Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[t]
+\begin{figure}[h]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -10066,7 +10154,7 @@ Figures without captions are allowed and will be inlined.
 
 % Test multi-line caption in figure with sidecap=True
 
-Here is figure~\ref{myfig} with a long (illegal) multi-line caption
+Here is figure~\vref{myfig} with a long (illegal) multi-line caption
 containing inline verbatim text:
 
 
@@ -10497,9 +10585,9 @@ maybe over multiple doconce input lines.
 
 
 
-Example~\ref{ex:test:1p1} demonstrates how to write a test function.
+Example~\vref{ex:test:1p1} demonstrates how to write a test function.
 That is, a special test function for a function \texttt{add} appears in
-Example~\ref{ex:test:1p1}.
+Example~\vref{ex:test:1p1}.
 
 
 \begin{example}
@@ -10604,10 +10692,10 @@ Let's check abbr.~of some common kind, e.g.~the well-known i.e.
 expression as an example, and 1 vs.~2 which is also often used.
 Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
-with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
-Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+with Ms.~Larsen. A reference like Sec.~\vref{subsubsec:ex} or
+Ch.~\vref{subsubsec:ex}, or even App.~\vref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Also, look at Fig.~4 to see how the data compares with Tab.~\vref{mytab}.
 Percentage must be fixed: 7\%,  87.65\% and
 50\% at the beginning of the line.
 
@@ -10679,9 +10767,9 @@ Testing eqnarray:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
-as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
-between there we have Exercise~\ref{exer:some:formula}.
+Below, we have Problem~\vref{demo:ex:1} and Project~\vref{demo:ex:2},
+as well as Projects~\vref{proj:circle1} and~\vref{exer:you}, and in
+between there we have Exercise~\vref{exer:some:formula}.
 
 
 \section{Exercises}
@@ -10750,7 +10838,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
-At least there is not much to find in Section~\ref{sec1}.
+At least there is not much to find in Section~\vref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \texttt{numpy.sum}.
@@ -11225,7 +11313,7 @@ With some text, before we continue with exercises.
 \label{exer:some:formula}
 
 % Test comments not at the end only
-Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
+Pick a statement from Project~\vref{proj:circle1} or Problem~\vref{demo:ex:1}
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -11250,13 +11338,13 @@ hint, etc.):
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for pdflatex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for pdflatex}
 
 \label{exer:you}
 
-Refer to the previous exercise as Exercise~\ref{exer:some:formula},
-the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
-and this one as Project~\ref{exer:you}.
+Refer to the previous exercise as Exercise~\vref{exer:some:formula},
+the two before that as Projects~\vref{demo:ex:2} and~\vref{proj:circle1},
+and this one as Project~\vref{exer:you}.
 \noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
@@ -11468,6 +11556,20 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
+% Test tailored latex figure references with page number
+Let us refer to Figure~\vref{fig:impact} again.
+
+Test references in a list:
+
+\begin{itemize}
+ \item \vref{sec1}
+
+ \item \vref{subsec1}
+
+ \item \vref{fig:impact}
+\end{itemize}
+
+\noindent
 \subsection{Appendix: Testing headings ending with \texttt{verbatim inline} }
 
 The point here is to test 1) \texttt{verbatim} code in headings, and 2)
@@ -13299,6 +13401,18 @@ and phones**).
 Firstcolor{red}{(**add 4**: ,}) consider a quantity \\( Q \\). **(**edit 5**: To this end, -> We note that**)
 \\( Q>0 \\), because **(**del 6**: a**) negative **(**edit 7**: quantity is -> quantities
 are**) **(**del 8**: just**) negative. **(**add 9**: This comes as no surprise.**)
+
+.. Test tailored latex figure references with page number
+
+Let us refer to Figure `fig:impact`_ again.
+
+Test references in a list:
+
+ * `Section 1`_
+
+ * `Subsection 1`_
+
+ * `fig:impact`_
 
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
@@ -15214,6 +15328,18 @@ files among (**hpl 3: remove** laptops and mobile units) (**insert:**)computers,
 First, (**edit 4: add comma**) consider a quantity :math:`Q`. (**edit 5: remove** To this end,) (**insert:**)We note that (**end insert**)
 :math:`Q>0`, because (**edit 6**: **delete** a) negative (**edit 7: remove** quantity is) (**insert:**)quantities are (**end insert**) (**edit 8**: **delete** just) negative.  (**edit 9: add**) This comes as no surprise. (**end add**)
 
+.. Test tailored latex figure references with page number
+
+Let us refer to Figure :ref:`fig:impact` again.
+
+Test references in a list:
+
+ * :ref:`sec1`
+
+ * :ref:`subsec1`
+
+ * :ref:`fig:impact`
+
 Appendix: Testing headings ending with ``verbatim inline``
 ----------------------------------------------------------
 
@@ -16894,6 +17020,16 @@ files among .
 
 First consider a quantity `Q`. 
 `Q>0`, because  negative   negative. 
+
+<wiki:comment> Test tailored latex figure references with page number </wiki:comment>
+Let us refer to Figure fig:impact again.
+
+Test references in a list:
+
+
+ * [#Section_1]
+ * [#Subsection_1]
+ * fig:impact
 
 ==== Appendix: Testing headings ending with `verbatim inline` ====
 
@@ -18699,6 +18835,18 @@ First[add 4: ,] consider a quantity <math>Q</math>. [edit 5: To this end, -> We 
 <math>Q>0</math>, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
+<!-- Test tailored latex figure references with page number -->
+Let us refer to Figure fig:impact again.
+
+Test references in a list:
+
+
+<ul>
+ <li> [#Section_1]
+ <li> [#Subsection_1]
+ <li> fig:impact
+</ul>
+
 ==== Appendix: Testing headings ending with <code>verbatim inline</code> ====
 
 The point here is to test 1) <code>verbatim</code> code in headings, and 2)
@@ -20351,6 +20499,16 @@ First[add 4: ,] consider a quantity {{{Q}}}. [edit 5: To this end, -> We note th
 {{{Q>0}}}, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
 
+<wiki:comment> Test tailored latex figure references with page number </wiki:comment>
+Let us refer to Figure fig:impact again.
+
+Test references in a list:
+
+
+ * [#Section_1]
+ * [#Subsection_1]
+ * fig:impact
+
 == Appendix: Testing headings ending with {{{verbatim inline}}} ==
 
 The point here is to test 1) {{{verbatim}}} code in headings, and 2)
@@ -21788,6 +21946,14 @@ and phones].
 First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
 Q>0, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
+
+Let us refer to Figure ref{fig:impact} again.
+
+Test references in a list:
+
+ - "Section 1"
+ - "Subsection 1"
+ - ref{fig:impact}
 
 Appendix: Testing headings ending with 'verbatim inline'
 
@@ -23232,6 +23398,14 @@ and phones].
 First[add 4: ,] consider a quantity M{Q}. [edit 5: To this end, -> We note that]
 M{Q>0}, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
+
+Let us refer to Figure ref{fig:impact} again.
+
+Test references in a list:
+
+ - "Section 1"
+ - "Subsection 1"
+ - ref{fig:impact}
 
 Appendix: Testing headings ending with C{verbatim inline}
 ---------------------------------------------------------
@@ -24858,6 +25032,16 @@ and phones].
 First[add 4: ,] consider a quantity Q. [edit 5: To this end, -> We note that]
 Q>0, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
+
+Let us refer to Figure ref{fig:impact} again.
+
+Test references in a list:
+
+ * "Section 1"
+
+ * "Subsection 1"
+
+ * ref{fig:impact}
 
 Appendix: Testing headings ending with verbatim inline
 ------------------------------------------------------
@@ -26685,6 +26869,15 @@ and phones].
 First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
 $Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities
 are] [del 8: just] negative. [add 9: This comes as no surprise.]
+
+<!-- Test tailored latex figure references with page number -->
+Let us refer to [Figure](#fig:impact) again.
+
+Test references in a list:
+
+ * [Section 1](#sec1)
+ * [Subsection 1](#subsec1)
+ * ref{fig:impact}
 
 ### Appendix: Testing headings ending with `verbatim inline`
 
@@ -29066,6 +29259,17 @@ is at the end with only one newline.
     "$Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities\n",
     "are] [del 8: just] negative. [add 9: This comes as no surprise.]\n",
     "\n",
+    "<!-- Test tailored latex figure references with page number -->\n",
+    "Let us refer to [Figure](#fig:impact) again.\n",
+    "\n",
+    "Test references in a list:\n",
+    "\n",
+    " * [Section 1](#sec1)\n",
+    "\n",
+    " * [Subsection 1](#subsec1)\n",
+    "\n",
+    " * ref{fig:impact}\n",
+    "\n",
     "## Appendix: Testing headings ending with `verbatim inline`\n",
     "\n",
     "The point here is to test 1) `verbatim` code in headings, and 2)\n",
@@ -30822,6 +31026,17 @@ is at the end with only one newline.
 % First[add 4: ,] consider a quantity $Q$. [edit 5: To this end, -> We note that]
 % $Q>0$, because [del 6: a] negative [edit 7: quantity is -> quantities
 % are] [del 8: just] negative. [add 9: This comes as no surprise.]
+% 
+% % Test tailored latex figure references with page number
+% Let us refer to Figure ref{fig:impact} again.
+% 
+% Test references in a list:
+% 
+%  * "Section 1"
+% 
+%  * "Subsection 1"
+% 
+%  * ref{fig:impact}
 % 
 %% Appendix: Testing headings ending with |verbatim inline|
 % 
@@ -32709,8 +32924,6 @@ Test of one author at one institution
 
 .. Externaldocument: testdoc
 
-.. !split
-
 .. _genrefs:
 
 Generalized References
@@ -32867,8 +33080,6 @@ The text is rendered to
 
 
 
-.. !split
-
 Test of math
 %%%%%%%%%%%%
 
@@ -32885,6 +33096,7 @@ Inline math, :math:`a=b`, is the only math in this document.
    *Simula Research Laboratory*,
    `http://hplgit.github.io/doconce/test/demo_testdoc.html <http://hplgit.github.io/doconce/test/demo_testdoc.html>`_,
    2015.
+
 
 
 ************** File: author1.txt *****************
@@ -36560,6 +36772,21 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
+<p>
+<!-- Test tailored latex figure references with page number -->
+Let us refer to Figure <a href="._testdoc001.html#fig:impact">1</a> again.
+
+<p>
+Test references in a list:
+
+<p><table border="0">
+
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a href="._testdoc001.html#sec1">Section 1</a></li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a href="._testdoc001.html#subsec1">Subsection 1</a></li>
+ </tr><p><tr><td valign='top'><img src="http://hplgit.github.io/doconce/bundled/html_images/bullet_red2.png"></td><td> <a href="._testdoc001.html#fig:impact">1</a></li>
+</td></tr></table>
+
+
 <h2 id="___sec59">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
 <p>
@@ -38581,6 +38808,19 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 <p>
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity $latex Q$.  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 $latex Q>0$, because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
+
+<p>
+
+Let us refer to Figure <a href="#fig:impact">1</a> again.
+
+<p>
+Test references in a list:
+
+<ul>
+ <li> <a href="#sec1">Section 1</a></li>
+ <li> <a href="#subsec1">Subsection 1</a></li>
+ <li> <a href="#fig:impact">1</a></li>
+</ul>
 
 <h2 id="___sec59">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
@@ -41015,6 +41255,19 @@ files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile u
 First<font color="red">, (<b>edit 4</b>: add comma)</font> consider a quantity \( Q \).  <font color="red">(<b>edit 5</b>:)</font> <del> To this end, </del> <font color="red">We note that</font>
 \( Q>0 \), because  <font color="red">(<b>edit 6</b>:)</font> <del> a </del> negative  <font color="red">(<b>edit 7</b>:)</font> <del> quantity is </del> <font color="red">quantities are</font>  <font color="red">(<b>edit 8</b>:)</font> <del> just </del> negative.  <font color="red">(<b>edit 9</b>:) This comes as no surprise.</font>
 
+<p>
+<!-- Test tailored latex figure references with page number -->
+Let us refer to Figure <a href="#fig:impact">1</a> again.
+
+<p>
+Test references in a list:
+
+<ul>
+ <li> <a href="#sec1">Section 1</a></li>
+ <li> <a href="#subsec1">Subsection 1</a></li>
+ <li> <a href="#fig:impact">1</a></li>
+</ul>
+
 <h2 id="___sec65">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
 <p>
@@ -41126,6 +41379,15 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 
 \usepackage{graphicx}
 \usepackage{sidecap}
+
+% user-provided packages: --latex_packages=varioref
+\usepackage{varioref}
+
+% 'on page ...' reference with \vref{} and varioref package
+\renewcommand\reftextfaceafter{on page~\thevpagerefnum}
+\renewcommand\reftextfacebefore{on page~\thevpagerefnum}
+\renewcommand\reftextafter{on page~\thevpagerefnum}
+\renewcommand\reftextbefore{on page~\thevpagerefnum}
 
 % Tools for marking corrections
 \usepackage{soul}
@@ -41561,15 +41823,15 @@ Even Equation (\ref{my:eq1}) without the tilde.
 % and other special fix situations for HTML.
 
 More text, with a reference back to
-Section~\ref{sec1} and~\ref{subsec1}, and further to the
-sections~\ref{subsec1} and~\ref{subsubsec:ex}, which
+Section~\vref{sec1} and~\vref{subsec1}, and further to the
+sections~\vref{subsec1} and~\vref{subsubsec:ex}, which
 encourages you to do the tasks in the
-Exercises~\ref{demo:ex:1} and~\ref{exer:some:formula}.
-Appendices~\ref{app1} and~\ref{app2} are also nice elements.
+Exercises~\vref{demo:ex:1} and~\vref{exer:some:formula}.
+Appendices~\vref{app1} and~\vref{app2} are also nice elements.
 
 \paragraph{Test Section reference at beginning of line and after a sentence.}
-Section~\ref{subsec1} is fine.
-Section~\ref{subsubsec:ex} too.
+Section~\vref{subsec1} is fine.
+Section~\vref{subsubsec:ex} too.
 
 
 % sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console
@@ -41940,11 +42202,11 @@ of course remain a tilde in those contexts.)
 \label{subsec:ex}
 \index{figures}
 
-Test of figures. In particular we refer to Figure~\ref{fig:impact} in which
+Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[t]
+\begin{figure}[h]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -41967,7 +42229,7 @@ Figures without captions are allowed and will be inlined.
 
 % Test multi-line caption in figure with sidecap=True
 
-Here is figure~\ref{myfig} with a long (illegal) multi-line caption
+Here is figure~\vref{myfig} with a long (illegal) multi-line caption
 containing inline verbatim text:
 
 
@@ -42377,9 +42639,9 @@ maybe over multiple doconce input lines.
 
 
 \paragraph{User-defined environments.}
-Example~\ref{ex:test:1p1} demonstrates how to write a test function.
+Example~\vref{ex:test:1p1} demonstrates how to write a test function.
 That is, a special test function for a function \texttt{add} appears in
-Example~\ref{ex:test:1p1}.
+Example~\vref{ex:test:1p1}.
 
 
 \begin{example}
@@ -42482,10 +42744,10 @@ Let's check abbr.~of some common kind, e.g.~the well-known i.e.
 expression as an example, and 1 vs.~2 which is also often used.
 Dr.~Tang and Prof.~Monsen, or maybe also prof.~Ting,
 will go to the Dept.~of Science to test how Mr.~Hansen is doing together
-with Ms.~Larsen. A reference like Sec.~\ref{subsubsec:ex} or
-Ch.~\ref{subsubsec:ex}, or even App.~\ref{subsubsec:ex}, must also be
+with Ms.~Larsen. A reference like Sec.~\vref{subsubsec:ex} or
+Ch.~\vref{subsubsec:ex}, or even App.~\vref{subsubsec:ex}, must also be
 handled. Likewise, this is test no.~$i$ of DocOnce features.
-Also, look at Fig.~4 to see how the data compares with Tab.~\ref{mytab}.
+Also, look at Fig.~4 to see how the data compares with Tab.~\vref{mytab}.
 Percentage must be fixed: 7\%,  87.65\% and
 50\% at the beginning of the line.
 
@@ -42557,9 +42819,9 @@ Testing eqnarray:
 
 More mathematical typesetting is demonstrated in the coming exercises.
 
-Below, we have Problem~\ref{demo:ex:1} and Project~\ref{demo:ex:2},
-as well as Projects~\ref{proj:circle1} and~\ref{exer:you}, and in
-between there we have Exercise~\ref{exer:some:formula}.
+Below, we have Problem~\vref{demo:ex:1} and Project~\vref{demo:ex:2},
+as well as Projects~\vref{proj:circle1} and~\vref{exer:you}, and in
+between there we have Exercise~\vref{exer:some:formula}.
 
 
 \subsection{Exercises}
@@ -42609,7 +42871,7 @@ Vectorize the code in a) using boolean indexing.
 
 Vectorized code can be written in many ways.
 Sometimes the code is less intuitive, sometimes not.
-At least there is not much to find in Section~\ref{sec1}.
+At least there is not much to find in Section~\vref{sec1}.
 
 \subex{c)}
 Vectorize the code in a) using \texttt{numpy.sum}.
@@ -43016,7 +43278,7 @@ With some text, before we continue with exercises.
 \label{exer:some:formula}
 
 % Test comments not at the end only
-Pick a statement from Project~\ref{proj:circle1} or Problem~\ref{demo:ex:1}
+Pick a statement from Project~\vref{proj:circle1} or Problem~\vref{demo:ex:1}
 and verify it.
 
 Test list at the end of an exercise without other elements (like subexercise,
@@ -43041,13 +43303,13 @@ hint, etc.):
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
-\subsection*{Project \thedoconceexercisecounter: References to Project~\ref{demo:ex:2} in a heading works for latex}
+\subsection*{Project \thedoconceexercisecounter: References to Project~\vref{demo:ex:2} in a heading works for latex}
 
 \label{exer:you}
 
-Refer to the previous exercise as Exercise~\ref{exer:some:formula},
-the two before that as Projects~\ref{demo:ex:2} and~\ref{proj:circle1},
-and this one as Project~\ref{exer:you}.
+Refer to the previous exercise as Exercise~\vref{exer:some:formula},
+the two before that as Projects~\vref{demo:ex:2} and~\vref{proj:circle1},
+and this one as Project~\vref{exer:you}.
 \noindent Filename: \Verb!selc_composed.pdf!.
 
 \end{doconceexercise}
@@ -43232,6 +43494,20 @@ files among \textcolor{red}{(hpl 3:)} \replace{laptops and mobile units}{compute
 First\textcolor{red}{, (\textbf{edit 4}: add comma)} consider a quantity $Q$. \textcolor{red}{(edit 5:)} \replace{To this end,}{We note that}
 $Q>0$, because (\textbf{edit 6}:) \remove{a} negative \textcolor{red}{(edit 7:)} \replace{quantity is}{quantities are} (\textbf{edit 8}:) \remove{just} negative.  \textcolor{red}{ (\textbf{edit 9}:) This comes as no surprise.}
 
+% Test tailored latex figure references with page number
+Let us refer to Figure~\vref{fig:impact} again.
+
+Test references in a list:
+
+\begin{itemize}
+ \item \vref{sec1}
+
+ \item \vref{subsec1}
+
+ \item \vref{fig:impact}
+\end{itemize}
+
+\noindent
 \paragraph{Appendix: Testing headings ending with \texttt{verbatim inline}.}
 The point here is to test 1) \texttt{verbatim} code in headings, and 2)
 ending a heading with verbatim code as this triggers a special
@@ -43868,7 +44144,7 @@ cp testdoc.html testdoc_no_solutions.html
 system doconce format html testdoc $ex  # just produce the mako file
 doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations --latex_packages=varioref
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
@@ -43886,13 +44162,13 @@ system doconce split_html testdoc.html --nav_button=gray2,bottom --font_size=sli
 
 system doconce format html testdoc.do.txt --pygments_html_linenos --html_style=solarized --pygments_html_style=emacs $ex --html_output=demo_testdoc $rawgit
 
-system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments
+system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_comments --latex_packages=varioref
 
 # Test lst with external and internal styles
-system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles
+system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles --latex_packages=varioref
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref --latex_link_color=yellow!10
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -43961,7 +44237,7 @@ system doconce format matlabnb testdoc.do.txt $ex
 system doconce format gwiki testdoc.do.txt --skip_inline_comments MYVAR1=3 MYVAR2='a string' $ex
 
 # Test pandoc: from latex to markdown, from markdown to html
-system doconce format latex testdoc.do.txt $ex --latex_title_layout=std
+system doconce format latex testdoc.do.txt $ex --latex_title_layout=std --latex_packages=varioref
 system doconce ptex2tex testdoc
 
 #doconce subst -s 'And here is a system of equations with labels.+?\\section' '\\section' testdoc.tex
@@ -76026,7 +76302,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7eff08f208c0>
+verbatim is to be replaced using <function html_verbatim at 0x7efdc4644a28>
 
 
 First occurence: " `mako`."
@@ -77103,7 +77379,7 @@ BIBFILE: papers.pub
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
+
 \usepackage{hyperref}
 \hypersetup{
     breaklinks=true,
@@ -78164,7 +78440,7 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 \usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
 
 % Hyperlinks in PDF:
-\definecolor{linkcolor}{rgb}{0,0,0.4}
+
 \usepackage{hyperref}
 \hypersetup{
     breaklinks=true,
@@ -80265,7 +80541,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Mon Aug 24 11:23:55 2015.
+# sphinx-quickstart on Sun Aug 30 02:22:16 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80318,21 +80594,34 @@ def setup(app):
 additional_themes_installed = []
 additional_themes_url = {}
 
+# Add any paths that contain custom themes here, relative to this directory.
+html_theme_path = ['_themes']
+
+try:
+    import alabaster
+    extensions += ['alabaster']
+    html_theme_path += [alabaster.get_path()]
+    additional_themes_installed.append('alabaster')
+except ImportError:
+    additional_themes_url['alabaster'] = 'sudo pip install alabaster'
+
 try:
     import sphinxjp.themes.solarized
     extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
     additional_themes_installed.append('solarized')
 except ImportError:
-    additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized'
+    additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized: sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade'
 
 try:
     import cloud_sptheme as csp
+    html_theme_path += [csp.get_theme_dir()]
     additional_themes_installed.append('cloud')
     additional_themes_installed.append('redcloud')
 except ImportError:
-    url = 'https://bitbucket.org/ecollins/cloud_sptheme'
+    url = 'https://bitbucket.org/ecollins/cloud_sptheme: sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade'
     additional_themes_url['cloud'] = url
     additional_themes_url['redcloud'] = url
+
 
 '''
 # FIXME: think we do not need to test on basicstrap, but some themes
@@ -80344,7 +80633,7 @@ try:
     additional_themes_installed.append('basicstrap')
 except ImportError:
     # Use basicstrap as an example on a theme with sphinxjp.themecore (??)
-    additional_themes_url['basicstrap'] = 'https://github.com/tell-k/sphinxjp.themes.basicstrap'
+    additional_themes_url['basicstrap'] = 'https://github.com/tell-k/sphinxjp.themes.basicstrap: sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade'
 '''
 
 try:
@@ -80353,22 +80642,25 @@ try:
     if not 'sphinxjp.themecore' in extensions:
         extensions += ['sphinxjp.themecore']
 except ImportError:
-    additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs'
+    additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs: sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade'
 
 try:
     import sphinx_bootstrap_theme
+    html_theme_path += sphinx_bootstrap_theme.get_html_theme_path()
     additional_themes_installed.append('bootstrap')
 except ImportError:
-    additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme'
+    additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme: sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade'
 
 try:
     import icsecontrib.sagecellserver
     extensions += ['icsecontrib.sagecellserver']
 except ImportError:
+    # sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
     pass
 
 try:
     import sphinx_rtd_theme
+    html_theme_path += [sphinx_rtd_theme.get_html_theme_path()]
     additional_themes_installed.append('sphinx_rtd_theme')
 except ImportError:
     additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
@@ -80477,7 +80769,6 @@ html_theme = 'agni'
 #html_theme = 'pylons'
 #html_theme = 'pyramid'
 #html_theme = 'redcloud'
-#html_theme = 'redcloud'
 #html_theme = 'scipy_lectures'
 #html_theme = 'scrolls'
 #html_theme = 'slim-agogo'
@@ -80508,7 +80799,7 @@ if html_theme == 'solarized':
 # documentation.
 
 # See http://sphinx.pocoo.org/theming.html for options
-if html_theme == 'default':
+if html_theme in ('default', 'classic'):
     # pygments_style =
     html_theme_options = {
        'rightsidebar': 'false',  # 'true'
@@ -80538,12 +80829,30 @@ if html_theme == 'default':
        #'headfont':         # Font for headings.
     }
 
+elif html_theme == 'alabaster':
+    # Doc: https://pypi.python.org/pypi/alabaster
+    html_theme_sidebars = {
+      '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+      ]
+    }
+
+elif html_theme == 'sphinx_rtd_theme':
+    # Doc: https://pypi.python.org/pypi/sphinx_rtd_theme
+    pass
+
 elif html_theme == 'sphinxdoc':
+    # Doc: http://sphinx-doc.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
 
 elif html_theme == 'scrolls':
+    # Doc: http://sphinx.pocoo.org/theming.html
     pass
     #html_theme_options = {
        #'headerbordercolor':,
@@ -80554,25 +80863,45 @@ elif html_theme == 'scrolls':
     #}
 
 elif html_theme == 'agogo':
+    # Doc: http://sphinx.pocoo.org/theming.html
     pass
-    # See http://sphinx.pocoo.org/theming.html for options
 
 elif html_theme == 'nature':
+    # Doc: http://sphinx.pocoo.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
 
 elif html_theme == 'traditional':
+    # Doc: http://sphinx.pocoo.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
 
 elif html_theme == 'haiku':
-    pass
-    # See http://sphinx.pocoo.org/theming.html for options
-
+    # Doc: http://sphinx.pocoo.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'pyramid':
+    # Doc: http://sphinx.pocoo.org/theming.html
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'bizstyle':
+    # Doc: http://sphinx.pocoo.org/theming.html
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+       'rightsidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'epub':
+    # Doc: http://sphinx.pocoo.org/theming.html
+    html_theme_options = {
+       'relbar1': 'true',
+       'footer': 'true',
     }
 
 elif html_theme == 'basicstrap':
@@ -80581,6 +80910,7 @@ elif html_theme == 'basicstrap':
     }
 
 elif html_theme == 'bootstrap':
+    # Doc: https://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html#customization
     html_theme_options = {
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
@@ -80630,12 +80960,11 @@ elif html_theme == 'uio':
 
 
 
-# Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ['_themes'] + sphinx_bootstrap_theme.get_html_theme_path()
+
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "Just a test"
+html_title = u"Just a test"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -85120,7 +85449,7 @@ doconce remove_inline_comments dofile
 apply_inline_edits
 
 # create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
+doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title=&quot;Short title&quot; version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
@@ -86914,7 +87243,7 @@ doconce remove_inline_comments dofile
 apply_inline_edits
 
 # create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
+doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
@@ -88307,7 +88636,7 @@ list of capabilities::
         apply_inline_edits
         
         # create a directory for the sphinx format
-        doconce sphinx_dir author='John Doe' title='Long title' \
+        doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
@@ -88667,8 +88996,6 @@ include Google's ``blogger.com``, Wikipedia/Wikibooks, IPython
 notebooks, plus a wide variety of formats for documents without
 mathematics and code.
 
-.. !split
-
 Supported Formats
 -----------------
 
@@ -88703,8 +89030,6 @@ formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
 
-.. !split
-
 Emacs syntax support
 --------------------
 
@@ -88736,8 +89061,6 @@ Ctrl+c exer    exercise outline
 Ctrl+c slide   slide outline                               
 Ctrl+c help    print this table                            
 =============  ==========================================  
-
-.. !split
 
 Title, Authors, and Date
 ------------------------
@@ -88776,8 +89099,6 @@ current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
 
-.. !split
-
 .. _quick:sections:
 
 Section Types
@@ -88806,8 +89127,6 @@ The ``Exercise:`` keyword kan be substituted by ``Problem:`` or ``Project:``.
 A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
-
-.. !split
 
 Inline Formatting
 -----------------
@@ -88891,8 +89210,6 @@ before or after. Only the ``pdflatex`` and ``html`` output formats translate
 emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 ``--no_emoji`` removes all emojis from the output document.
-
-.. !split
 
 Lists
 -----
@@ -88994,8 +89311,6 @@ And finally a description list:
 
 
 
-.. !split
-
 Comment lines
 -------------
 
@@ -89016,8 +89331,6 @@ option ``-DEXTRA`` will bring the text alive again.
 When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.
-
-.. !split
 
 Inline comments
 ---------------
@@ -89123,8 +89436,6 @@ To implement these edits, run
 .. code-block:: text
 
         Terminal> doconce apply_edit_comments mydoc.do.txt
-
-.. !split
 
 Verbatim/Computer Code
 ----------------------
@@ -89235,8 +89546,6 @@ Important warnings:
    output formats. A more robust approach is to replace the list by
    paragraphs with headings.
 
-.. !split
-
 LaTeX Mathematics
 -----------------
 
@@ -89309,8 +89618,6 @@ mathematics, simply use a Mako variable or a Mako function (which
 will be much more flexible and powerful).
 
 .. include with mako must be in this root tree, so we need a link, see make.sh
-
-.. !split
 
 .. _manual:latex:guide:
 
@@ -89488,8 +89795,6 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
 
 
 
-.. !split
-
 Hyperlinks
 ----------
 
@@ -89507,8 +89812,6 @@ Links use either a link text or the raw URL:
         Mail addresses works too: send problems to
         "`hpl@simula.no`": "mailto:hpl@simula.no"
         or just "send mail": "mailto:hpl@simula.no".
-
-.. !split
 
 Figures and Movies
 ------------------
@@ -89576,8 +89879,6 @@ The latter results in
         <em>Vimeo movie.</em>
         
 
-.. !split
-
 Tables
 ------
 
@@ -89636,8 +89937,6 @@ Now we can do ``# #include "mydata_table.do.txt"`` in the DocOnce
 source file or simply copy the table in ``mydata_table.do.txt``
 into the DocOnce file.
 
-.. !split
-
 Labels and References
 ---------------------
 
@@ -89667,8 +89966,6 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-.. !split
-
 Citations and Bibliography
 --------------------------
 
@@ -89696,8 +89993,6 @@ where ``papers.pub`` is a publication database in the
 BibTeX ``.bib`` files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
-
-.. !split
 
 Generalized References
 ----------------------
@@ -89737,8 +90032,6 @@ LaTeX package ``xr`` is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 ``external`` text will be the output.
 
-.. !split
-
 Index of Keywords
 -----------------
 
@@ -89756,8 +90049,6 @@ paragraphs. Index specifications placed right before paragraphs also
 gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the ``latex``,
 ``pdflatex``, ``rst``, and ``sphinx`` formats.
-
-.. !split
 
 Capabilities of The Program ``doconce``
 ---------------------------------------
@@ -89798,7 +90089,7 @@ list of capabilities:
         apply_inline_edits
         
         # create a directory for the sphinx format
-        doconce sphinx_dir author='John Doe' title='Long title' \
+        doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
@@ -89934,8 +90225,6 @@ list of capabilities:
         # insert a table of exercises in a latex file myfile.p.tex
         doconce latex_exercise_toc myfile
 
-.. !split
-
 Exercises
 ---------
 
@@ -90056,8 +90345,6 @@ The command-line arguments ``--without_answers`` and ``--without_solutions``
 turn off output of answers and solutions, respectively, except for
 examples.
 
-.. !split
-
 Environments
 ------------
 
@@ -90088,8 +90375,6 @@ the environments:
 
  * ``slidecell``: indication of cells in a grid layout for elements on a
    slide
-
-.. !split
 
 Preprocessing
 -------------
@@ -90140,8 +90425,6 @@ With the ``mako`` preprocessor the if-else tests have slightly different syntax.
 An `example document <http://hplgit.github.com/bioinf-py/>`__ contains
 some illustrations on how to utilize ``mako`` (clone the GitHub project and
 examine the DocOnce source and the ``doc/src/make.sh`` script).
-
-.. !split
 
 Resources
 ---------
@@ -91073,7 +91356,7 @@ doconce remove_inline_comments dofile
 apply_inline_edits
 
 # create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
+doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
@@ -92429,7 +92712,7 @@ doconce remove_inline_comments dofile
 apply_inline_edits
 
 # create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
+doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
@@ -93684,7 +93967,7 @@ doconce remove_inline_comments dofile
 apply_inline_edits
 
 # create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
+doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]
@@ -94923,7 +95206,7 @@ list of capabilities::
         apply_inline_edits
         
         # create a directory for the sphinx format
-        doconce sphinx_dir author='John Doe' title='Long title' \
+        doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
@@ -96166,7 +96449,7 @@ list of capabilities::
         apply_inline_edits
         
         # create a directory for the sphinx format
-        doconce sphinx_dir author='John Doe' title='Long title' \
+        doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
@@ -97485,7 +97768,7 @@ list of capabilities::
         apply_inline_edits
         
         # create a directory for the sphinx format
-        doconce sphinx_dir author='John Doe' title='Long title' \
+        doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
@@ -98806,7 +99089,7 @@ list of capabilities:
         apply_inline_edits
         
         # create a directory for the sphinx format
-        doconce sphinx_dir author='John Doe' title='Long title' \
+        doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
             dirname=sphinx-rootdir theme=default logo=mylogo.png \
             do_file [do_file2 do_file3 ...]
@@ -99455,6 +99738,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in html
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.html ...
     found!
@@ -99505,6 +99819,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in html
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99564,6 +99909,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in html
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99591,8 +99967,8 @@ exercises extracted to testdoc_exer.do.txt
 
 *** warning: reference ref{sec1} - no label in document
     need generalized reference ref[][][] in the original document
-+ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
-+ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations
++ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations --latex_packages=varioref
++ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations --latex_packages=varioref
 
 Summary of papers
 -----------------
@@ -99649,6 +100025,37 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 transforming sections: subsection to subsubsection...
 transforming sections: section to subsection...
 transforming sections: chapter to section...
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for latex
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99694,6 +100101,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in html
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99754,6 +100192,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in html
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99821,6 +100290,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in html
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99845,8 +100345,8 @@ $$ y(x) = e^{-y}.$$
 
 output in demo_testdoc.html
 + '[' 0 -ne 0 ']'
-+ system doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments
-+ doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments
++ system doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments --latex_packages=varioref
++ doconce format latex testdoc.do.txt --examples_as_exercises SOMEVAR=True --skip_inline_comments --latex_packages=varioref
 
 Summary of papers
 -----------------
@@ -99898,6 +100398,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for latex
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99909,8 +100440,8 @@ figure file ../doc/src/manual/fig/wave1D:
 exporting publish database papers.pub to papers.bib:
 output in testdoc.p.tex
 + '[' 0 -ne 0 ']'
-+ system doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]' --latex_code_lststyles=mylststyles
-+ doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]' --latex_code_lststyles=mylststyles
++ system doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]' --latex_code_lststyles=mylststyles --latex_packages=varioref
++ doconce format pdflatex testdoc.do.txt --examples_as_exercises '--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]' --latex_code_lststyles=mylststyles --latex_packages=varioref
 
 Summary of papers
 -----------------
@@ -99961,6 +100492,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for pdflatex
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -99973,8 +100535,8 @@ exporting publish database papers.pub to papers.bib:
 output in testdoc.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.tex testdoc.tex_direct
-+ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
-+ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino
++ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10'
++ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10'
 
 Summary of papers
 -----------------
@@ -100025,6 +100587,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for pdflatex
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -100065,7 +100658,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -100103,6 +100696,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -100340,6 +100934,29 @@ Underfull \hbox (badness 10000)
 
 
 
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+ line 524.
+
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -100350,6 +100967,20 @@ Underfull \hbox (badness 10000)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -100386,12 +101017,22 @@ CDA7.pygtex) [7] [8]
 
 
 
+...rest of part of LaTeX line number...
+
+
+
 
 <../doc/src/manual/fig/wave1D.pdf, id=104, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
+<use ../doc/src/manual/fig/wave1D.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<use ../doc/src/manual/fig/wave1D.pdf> [9]
 
 [10 <../doc/src/manual/fig/wave1D.pdf>]
+
+
+
 
 
 
@@ -100541,27 +101182,27 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1323.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
 t line 1332.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1341.
 
 
 
@@ -100582,7 +101223,7 @@ t line 1332.
 
 
 
-t line 1336.
+t line 1345.
 
 
 
@@ -100654,7 +101295,15 @@ t line 1336.
 
 
 
+...rest of part of LaTeX line number...
 
+
+
+
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -100669,7 +101318,7 @@ Overfull \hbox (5.03835pt too wide)
 [18]
 
 
-.
+e 1510.
 
 
 
@@ -100677,7 +101326,23 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
+e 1511.
+
+
+
 .
+
+
+
+e 1511.
+
+
+
+.
+
+
+
+
 
 
 
@@ -100721,13 +101386,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
-.
+...rest of part of LaTeX line number...
 
 
 
@@ -100736,9 +101395,38 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
+
+
+
+
+
+e 1586.
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+t line 1587.
+
+
+
+...rest of part of LaTeX line number...
+
 [20]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
+
+
+
 
 
 
@@ -100758,7 +101446,15 @@ Underfull \hbox (badness 10000)
 
 
 
+e 2144.
+
+
+
 .
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -100766,6 +101462,18 @@ Underfull \hbox (badness 10000)
 [25]
 
 
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+t line 2174.
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -100776,7 +101484,15 @@ Underfull \hbox (badness 10000)
 
 
 
+e 2175.
+
+
+
 .
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -100795,8 +101511,36 @@ Underfull \hbox (badness 10000)
 ...rest of part of LaTeX line number...
 
 [28]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+[29]
 No file testdoc.ind.
-[29] (./testdoc.aux)
+[30] (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -100835,6 +101579,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  sidecap.sty    2003/06/06 v1.6f SideCap Package (RN/HjG)
   ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+varioref.sty    2014/10/28 v1.5a package for extended references (FMi)
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
@@ -101044,7 +101789,7 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (29 pages, ).
+Output written on testdoc.pdf (30 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + pdflatex -shell-escape testdoc
@@ -101053,7 +101798,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -101091,6 +101836,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -101322,16 +102068,19 @@ Underfull \hbox (badness 10000)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=310, 64.24pt x 64.24pt>
+515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
 CDA7.pygtex) [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=342, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[10]
+<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<use ../doc/src/manual/fig/wave1D.pdf> [10]
 
 [11 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=373, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -101398,7 +102147,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=374, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -101438,17 +102187,17 @@ Underfull \hbox (badness 3291)
 
 
 [14]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=403, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=404, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -101477,27 +102226,27 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [16]
 
 
-t line 1323.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
 t line 1332.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1341.
 
 
 
@@ -101518,7 +102267,7 @@ t line 1332.
 
 
 
-t line 1336.
+t line 1345.
 
 
 
@@ -101614,9 +102363,9 @@ No file testdoc.bbl.
 [27]
 Underfull \hbox (badness 10000) 
 
-[28] [29]
+[28] [29] [30]
 No file testdoc.ind.
-[30] (./testdoc.aux)
+[31] (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -101655,6 +102404,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  sidecap.sty    2003/06/06 v1.6f SideCap Package (RN/HjG)
   ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+varioref.sty    2014/10/28 v1.5a package for extended references (FMi)
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
@@ -101862,7 +102612,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (30 pages, ).
+Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + makeindex testdoc
 This is makeindex, version 2.15 [TeX Live 2015/dev] (kpathsea + Thai support).
@@ -101888,7 +102638,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -101926,6 +102676,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -102157,16 +102908,19 @@ Underfull \hbox (badness 10000)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=310, 64.24pt x 64.24pt>
+515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
 CDA7.pygtex) [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=342, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[10]
+<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<use ../doc/src/manual/fig/wave1D.pdf> [10]
 
 [11 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=373, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -102233,7 +102987,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=374, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -102273,17 +103027,17 @@ Underfull \hbox (badness 3291)
 
 
 [14]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=403, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=404, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -102312,27 +103066,27 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [16]
 
 
-t line 1323.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
 t line 1332.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1341.
 
 
 
@@ -102353,7 +103107,7 @@ t line 1332.
 
 
 
-t line 1336.
+t line 1345.
 
 
 
@@ -102447,11 +103201,11 @@ Underfull \hbox (badness 10000)
 [26] (./testdoc.bbl [27]) [28]
 Underfull \hbox (badness 10000) 
 
-[29] [30] [31] (./testdoc.ind [32]
+[29] [30] [31] [32] (./testdoc.ind [33]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[33]) (./testdoc.aux)
+[34]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -102490,6 +103244,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  sidecap.sty    2003/06/06 v1.6f SideCap Package (RN/HjG)
   ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+varioref.sty    2014/10/28 v1.5a package for extended references (FMi)
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
@@ -102699,7 +103454,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (33 pages, ).
+Output written on testdoc.pdf (34 pages, ).
 Transcript written on testdoc.log.
 + pdflatex -shell-escape testdoc
 This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
@@ -102707,7 +103462,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -102745,6 +103500,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
@@ -102976,16 +103732,19 @@ Underfull \hbox (badness 10000)
 (./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
 (./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=310, 64.24pt x 64.24pt>
+515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
 <use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
 (./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
 CDA7.pygtex) [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=342, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[10]
+<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
+<use ../doc/src/manual/fig/wave1D.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<use ../doc/src/manual/fig/wave1D.pdf> [10]
 
 [11 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=372, 586.8324pt x 442.2924pt>
+<../doc/src/manual/fig/wave1D.png, id=373, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>
 Overfull \hbox (7.06001pt too wide) 
 [][]\T1/lmr/m/n/10 (-20) :
@@ -103052,7 +103811,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 10000) 
 \T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=373, 578.16pt x 433.62pt>
+<downloaded_figures/f_plot.png, id=374, 578.16pt x 433.62pt>
 <use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -103092,17 +103851,17 @@ Underfull \hbox (badness 3291)
 
 
 [14]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=398, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=399, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=399, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=400, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=400, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=401, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=401, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=402, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=402, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=403, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=403, 586.8324pt x 442.292
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=404, 586.8324pt x 442.292
 4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -103152,11 +103911,11 @@ Underfull \hbox (badness 10000)
 [26] (./testdoc.bbl [27]) [28]
 Underfull \hbox (badness 10000) 
 
-[29] [30] [31] (./testdoc.ind [32]
+[29] [30] [31] [32] (./testdoc.ind [33]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[33]) (./testdoc.aux)
+[34]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -103195,6 +103954,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  sidecap.sty    2003/06/06 v1.6f SideCap Package (RN/HjG)
   ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+varioref.sty    2014/10/28 v1.5a package for extended references (FMi)
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 ptex2tex.sty    
 fancyvrb.sty    2008/02/07
@@ -103398,7 +104158,7 @@ m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
 hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (33 pages, ).
+Output written on testdoc.pdf (34 pages, ).
 Transcript written on testdoc.log.
 + cp testdoc.tex testdoc.tex_ptex2tex
 + system doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
@@ -103414,7 +104174,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./testdoc.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -103452,6 +104212,7 @@ For additional information on amsmath, use the `?' option.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+
 
 
 (/home/hpl/texmf/tex/latex/misc/anslistings.sty
@@ -103695,6 +104456,29 @@ Underfull \hbox (badness 10000)
 
 
 
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+ line 524.
+
+
+
 ...rest of part of LaTeX line number...
 
 
@@ -103705,6 +104489,20 @@ Underfull \hbox (badness 10000)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -103744,12 +104542,22 @@ E68F.pygtex)
 
 
 
+...rest of part of LaTeX line number...
+
+
+
 
 <../doc/src/manual/fig/wave1D.pdf, id=279, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf> <use ../doc/src/manual/fig/wave1D.pdf>
-[9]
+<use ../doc/src/manual/fig/wave1D.pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<use ../doc/src/manual/fig/wave1D.pdf> [9]
 
 [10 <../doc/src/manual/fig/wave1D.pdf>]
+
+
+
 
 
 
@@ -103899,27 +104707,27 @@ rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
 [15]
 
 
-t line 1273.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
 t line 1282.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1291.
 
 
 
@@ -103940,7 +104748,7 @@ t line 1282.
 
 
 
-t line 1286.
+t line 1295.
 
 
 
@@ -104012,7 +104820,15 @@ t line 1286.
 
 
 
+...rest of part of LaTeX line number...
 
+
+
+
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -104027,7 +104843,7 @@ Overfull \hbox (5.03835pt too wide)
 [18]
 
 
-.
+e 1459.
 
 
 
@@ -104035,7 +104851,23 @@ Overfull \hbox (5.03835pt too wide)
 
 
 
+e 1460.
+
+
+
 .
+
+
+
+e 1460.
+
+
+
+.
+
+
+
+
 
 
 
@@ -104079,13 +104911,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-
-
-
-
-.
+...rest of part of LaTeX line number...
 
 
 
@@ -104094,9 +104920,38 @@ Package amsmath Warning: Foreign command \over;
 
 ...rest of part of LaTeX line number...
 
+
+
+
+
+
+e 1535.
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+t line 1536.
+
+
+
+...rest of part of LaTeX line number...
+
 [20]
 (./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
 2768.pygtex)
+
+
+
 
 
 
@@ -104114,7 +104969,15 @@ Underfull \hbox (badness 10000)
 
 
 
+e 2084.
+
+
+
 .
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -104122,6 +104985,18 @@ Underfull \hbox (badness 10000)
 [25]
 
 
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+t line 2114.
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -104132,7 +105007,15 @@ Underfull \hbox (badness 10000)
 
 
 
+e 2115.
+
+
+
 .
+
+
+
+...rest of part of LaTeX line number...
 
 
 
@@ -104149,11 +105032,39 @@ Underfull \hbox (badness 10000)
 
 ...rest of part of LaTeX line number...
 
-[29] (./testdoc.ind [30]
+[29]
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+[30] (./testdoc.ind [31]
 Overfull \hbox (9.21497pt too wide) 
 []\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
 e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[31]) (./testdoc.aux)
+[32]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -104192,6 +105103,7 @@ graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
  sidecap.sty    2003/06/06 v1.6f SideCap Package (RN/HjG)
   ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+varioref.sty    2014/10/28 v1.5a package for extended references (FMi)
     soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
 anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
 livier@maths.lth.se>
@@ -104398,7 +105310,7 @@ s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
 /share/texmf/fonts/type1/public/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (31 pages, ).
+Output written on testdoc.pdf (32 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + system doconce format plain testdoc --exercises_in_zip --examples_as_exercises
@@ -104431,6 +105343,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for plain
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 standalone exercises in testdoc_exercises.zip
 found info about 11 exercises
 *** warning: table headline with entries
@@ -104487,6 +105430,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for plain
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 *** warning: table headline with entries
     | S | command |
@@ -104525,6 +105499,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for st
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 *** warning: footnotes are not supported for format st
     footnotes will be left in the doconce syntax
@@ -104587,6 +105592,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in sphinx
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -104670,6 +105706,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in sphinx
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -104767,9 +105834,9 @@ source files. Use the Makefile to build the docs, like so:
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 title: Just a test
-author: HPL
+copyright: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -104785,6 +105852,7 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
+WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 12 source files that are out of date
@@ -104835,7 +105903,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 8 warnings.
+build succeeded, 9 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -104877,6 +105945,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References in a headings do not work well in rst
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -104914,6 +106013,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for epytext
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 *** warning: footnotes are not supported for format epytext
     footnotes will be left in the doconce syntax
@@ -104950,6 +106080,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for pandoc
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -104989,6 +106150,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for mwiki
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105049,6 +106241,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for cwiki
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105096,6 +106319,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for ipynb
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105136,6 +106390,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for matlabnb
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105183,6 +106468,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for gwiki
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105216,8 +106532,8 @@ NOTE: Place https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png
     footnotes will be left in the doconce syntax
 output in testdoc.gwiki
 + '[' 0 -ne 0 ']'
-+ system doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std
-+ doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std
++ system doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std --latex_packages=varioref
++ doconce format latex testdoc.do.txt --examples_as_exercises --latex_title_layout=std --latex_packages=varioref
 
 Summary of papers
 -----------------
@@ -105268,6 +106584,37 @@ copying from regex "subroutine" until end of file
 copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for latex
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105348,6 +106695,37 @@ copying after regex "a comment" until "^C\s+END1"
      file: ../doc/src/manual/__testcode.f,  lines 2-11  (format: fcod)
 copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** replacing \bm{...} by \boldsymbol{...} (\bm is not supported by MathJax)
+
+*** Problem: Flip a Coin
+    label{demo:ex:1}
+    should be Exercise since it has refs to other parts of the document:
+    sec1
+
+*** Exercise: Test of plain text exercise
+    label{my:exer1}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: Explore Distributions of Random Circles
+    label{proj:circle1}
+    should be Exercise since it has refs to other parts of the document:
+    circle:x, circle:y
+
+*** Exercise: Determine some Distance
+    label{exer:dist}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Some exercise without the "Exercise:" prefix
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Exercise: Solution of differential equation
+    label{sec:this:exer:de}
+    could be Problem (no refs beyond the exercise itself)
+
+*** Project: References to Project ref{demo:ex:2} in a heading works for pandoc
+    label{exer:you}
+    should be Exercise since it has refs to other parts of the document:
+    demo:ex:2, exer:some:formula, demo:ex:2, proj:circle1
 found info about 11 exercises
 ... checking existence of https://raw.github.com/hplgit/doconce/master/doc/src/blog/f_plot.png ...
     found!
@@ -105423,7 +106801,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./slides1.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 
 Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
@@ -105776,7 +107154,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./slides1.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 
 Document Class: beamer 2013/12/02 3.33 A class for typesetting presentations (r
@@ -106344,11 +107722,6 @@ output in author1.p.tex
 + doconce format sphinx author1
 running mako on author1.do.txt to make tmp_mako__author1.do.txt
 translating doconce text in tmp_mako__author1.do.txt to sphinx
-*** warning: new !split inserted (override all existing !split)
-    before every ========= heading =========
-    because this strategy gives a well-functioning
-    table of contents in Sphinx
-    (use --sphinx_keep_splits to enforce your own !split commands)
 output in author1.rst
 + '[' 0 -ne 0 ']'
 + system doconce format plain author1
@@ -106455,7 +107828,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./math_test.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -106687,7 +108060,6 @@ translating doconce text in tmp_mako__math_test.do.txt to sphinx
 Not recommended for sphinx output: math environment {eqnarray}
 (use equation, equation*, \[ \], or align/align*)
 Not recommended for sphinx output: math environment {eqnarray*}
-*** warning: new !split inserted (override all existing !split)
 
 *** warning: detected non-align math environment with multiple labels
     (Sphinx cannot handle this equation system - labels will be removed
@@ -106759,12 +108131,12 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in math_test.do.txt
 Using title "How various formats can deal with LaTeX math" from math_test
-Author: ['HPL']
-Using author(s) "HPL" from math_test
+Copyright: ['HPL']
+Using author(s) "HPL" from math_test as copyright
 title: How various formats can deal with LaTeX math
-author: HPL
+copyright: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -106778,6 +108150,7 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
+WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -106798,7 +108171,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
@@ -106860,7 +108233,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_colors1.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -107195,7 +108568,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_mdfbox.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -107601,7 +108974,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_paragraph.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -108008,7 +109381,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_graybox2.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -108413,7 +109786,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_yellowicon.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -108711,7 +110084,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_grayicon.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -109007,7 +110380,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./admon_colors2.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -109486,12 +110859,12 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in admon.do.txt
 Using title "Testing admons" from admon
-Author: ['hpl']
-Using author(s) "hpl" from admon
+Copyright: ['hpl']
+Using author(s) "hpl" from admon as copyright
 title: Testing admons
-author: hpl
+copyright: hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -109519,6 +110892,7 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
+WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -109541,7 +110915,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 doconce format sphinx admon 
@@ -109663,7 +111037,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -110287,7 +111661,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -110903,7 +112277,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -111514,7 +112888,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./movies.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -112049,7 +113423,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 Document Class: svmonodo 2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
@@ -112612,7 +113986,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 Document Class: svmonodo 2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
@@ -113153,7 +114527,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./Springer_T2_book.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/home/hpl/texmf/tex/latex/misc/svmonodo.cls
 Document Class: svmonodo 2007/06/25 v5.4 
 Springer Verlag global LaTeX document class for monographs
@@ -114049,11 +115423,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 *** warning: math only in sphinx figure caption
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
-*** warning: new !split inserted (override all existing !split)
-    before every ===== heading =====
-    because this strategy gives a well-functioning
-    table of contents in Sphinx
-    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
@@ -114079,11 +115448,6 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 *** warning: math only in sphinx figure caption
   $a=50$
     FIGURE: [http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media.png
-*** warning: new !split inserted (override all existing !split)
-    before every ===== heading =====
-    because this strategy gives a well-functioning
-    table of contents in Sphinx
-    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
@@ -114180,7 +115544,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./quickref.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -114600,7 +115964,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./quickref.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -114997,11 +116361,6 @@ Transcript written on quickref.log.
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
 translating doconce text in tmp_mako__quickref.do.txt to sphinx
 copy complete file doconce_program.sh  (format: shpro)
-*** warning: new !split inserted (override all existing !split)
-    before every ===== heading =====
-    because this strategy gives a well-functioning
-    table of contents in Sphinx
-    (use --sphinx_keep_splits to enforce your own !split commands)
 *** warning: sphinx/rst is a suboptimal format for
     typesetting edit markup such as
     [add 2: ,]
@@ -115074,9 +116433,9 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 searching for TITLE in quickref.do.txt
 Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
-author: HPL
+copyright: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, redcloud, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -115093,6 +116452,7 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
+WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -115113,7 +116473,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded.
+build succeeded, 1 warning.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir
@@ -115143,7 +116503,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -115491,8 +116851,9 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
-Overfull \hbox (47.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce sphinx_dir copyright='John Doe' title='Long title' \  
+
 
 Overfull \hbox (35.00006pt too wide) 
 []    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
@@ -115695,7 +117056,7 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (prelo
 entering extended mode
 (./quickref.rst.tex
 LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -116033,8 +117394,9 @@ Overfull \hbox (59.00006pt too wide)
 Overfull \hbox (11.00006pt too wide) 
 []\T1/pcr/m/n/10 # apply all edits specified through inline comments  
 
-Overfull \hbox (47.00006pt too wide) 
-[]\T1/pcr/m/n/10 doconce sphinx_dir author='John Doe' title='Long title' \  
+Overfull \hbox (65.00006pt too wide) 
+[]\T1/pcr/m/n/10 doconce sphinx_dir copyright='John Doe' title='Long title' \  
+
 
 Overfull \hbox (35.00006pt too wide) 
 []    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
