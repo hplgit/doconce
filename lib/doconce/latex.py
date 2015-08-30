@@ -1688,21 +1688,41 @@ def latex_author(authors_and_institutions, auth2index,
 def latex_date(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     latex_style = option('latex_style=', 'std')
+    copyright_ = option('copyright=', '')
+    copyright_ = ''  # the footer will be on the first page anyway
+    if copyright_:
+        copyright_ = '\\\\ \\copyright\\ Copyright %s' % copyright_
     date = m.group('subst')
+
     text = ''
     if title_layout == 'std':
         text += r"""
-\date{%(date)s}
+\date{%(date)s%(copyright_)s}
 \maketitle
 """ % vars()
     elif title_layout == 'beamer':
         text += r"""
-\date{%(date)s
+\date{%(date)s%(copyright_)s
 %% <optional titlepage figure>
 }
 """ % vars()
     elif title_layout == 'titlepage':
-        text += r"""
+        if copyright_:
+            text += r"""
+%% --- begin date ---
+\ \\ [10mm]
+{\large\textsf{%(date)s}}
+
+\ \\ [4mm]
+{\textsf{%(copyright_)s}}
+
+\end{center}
+%% --- end date ---
+\vfill
+\clearpage
+""" % vars()
+        else:
+            text += r"""
 %% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{%(date)s}}
@@ -1713,7 +1733,21 @@ def latex_date(m):
 \clearpage
 """ % vars()
     else:  # doconce special heading
-        text += r"""
+        if copyright_:
+            text += r"""
+%% --- begin date ---
+\begin{center}
+%(date)s
+
+%(copyright_)s
+\end{center}
+%% --- end date ---
+
+\vspace{1cm}
+
+""" % vars()
+        else:
+            text += r"""
 %% --- begin date ---
 \begin{center}
 %(date)s
@@ -2701,6 +2735,7 @@ def define(FILENAME_EXTENSION,
     from misc import copy_latex_packages
 
     side_tp = 'twoside' if option('device=') == 'paper' else 'oneside'
+    draft = 'draft' if option('draft') else 'final'
     m = re.search(chapter_pattern, filestr, flags=re.MULTILINE)
     # (use A-Z etc to avoid sphinx table headings to indicate chapters...
     if m:  # We have chapters, use book style
@@ -2719,7 +2754,7 @@ def define(FILENAME_EXTENSION,
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-final,                   %% or draft (marks overfull hboxes, figures with paths)
+%(draft)s,                   %% draft: marks overfull hboxes, figures with paths
 chapterprefix=true,      %% "Chapter" word at beginning of each chapter
 open=right               %% start new chapters on odd-numbered pages
 10pt]{book}
@@ -2728,25 +2763,26 @@ open=right               %% start new chapters on odd-numbered pages
             INTRO['latex'] += r"""
 \documentclass[%%
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
-final,                   %% or draft (marks overfull hboxes, figures with paths)
+%(draft)s,                   %% draft: marks overfull hboxes, figures with paths
 10pt]{article}
 """ % vars()
 
     elif latex_style == 'Springer_lncse':
+        # Not official style anymore
         INTRO['latex'] += r"""
-% Style: Lecture Notes in Computational Science and Engineering (Springer)
-\documentclass[envcountsect,open=right]{lncse}
+%% Style: Lecture Notes in Computational Science and Engineering (Springer)
+\documentclass[envcountsect,open=right,%(draft)s]{lncse}
 \pagestyle{headings}
-"""
+""" % vars()
     elif latex_style == 'Springer_sv':
         copy_latex_packages(['svmonodo.cls'])
         INTRO['latex'] += r"""
-% Style: Standard Springer svmono (book) - without courier font
-\documentclass[graybox,envcountchap,sectrefs]{svmonodo}
-%\pagestyle{headings}
+%% Style: Standard Springer svmono (book) - without courier font
+\documentclass[graybox,envcountchap,sectrefs,%(draft)s]{svmonodo}
+%%\pagestyle{headings}
 \usepackage{mathptmx}
 \usepackage{helvet}
-%\usepackage{courier} % note: courier monospace font is wide
+%%\usepackage{courier} %% note: courier monospace font is wide
 \usepackage{type1cm}
 \usepackage{framed}
 \usepackage{booktabs}
@@ -2754,54 +2790,54 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \usepackage[bottom]{footmisc}
 \usepackage{cite}
 \usepackage{multicol}
-"""
+""" % vars()
     elif latex_style == 'Springer_T2':
         copy_latex_packages(['svmonodo.cls', 't2do.sty'])
         INTRO['latex'] += r"""
-% Style: T2 (Springer)
-% Use svmono.cls with doconce modifications for bibliography (svmonodo)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+%% Style: T2 (Springer)
+%% Use svmono.cls with doconce modifications for bibliography (svmonodo)
+\documentclass[graybox,sectrefs,envcountresetchap,open=right,%(draft)s]{svmonodo}
 
-% Use t2.sty with doconce modifications (t2do.sty)
+%% Use t2.sty with doconce modifications (t2do.sty)
 \usepackage{t2do}
 \special{papersize=193mm,260mm}
-"""
+""" % vars()
     elif latex_style == 'Springer_T4':
         copy_latex_packages(['svmonodo.cls', 't4do.sty'])
         INTRO['latex'] += r"""
-% Style: T4 (Springer)
-% Use svmono.cls with doconce modifications for bibliography (svmonodo.cls)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+%% Style: T4 (Springer)
+%% Use svmono.cls with doconce modifications for bibliography (svmonodo.cls)
+\documentclass[graybox,sectrefs,envcountresetchap,open=right,%(draft)s]{svmonodo}
 
-% Use t4.sty with doconce modifications (t4do.sty)
+%% Use t4.sty with doconce modifications (t4do.sty)
 \usepackage{t4do}
 \special{papersize=178mm,254mm}
-"""
+""" % vars()
     elif latex_style == 'Springer_llncs':
         INTRO['latex'] += r"""
-% Style: Lecture Notes in Computer Science (Springer)
-\documentclass[oribib]{llncs}
-"""
+%% Style: Lecture Notes in Computer Science (Springer)
+\documentclass[oribib,%(draft)s]{llncs}
+""" % vars()
     elif latex_style == 'Koma_Script':
         INTRO['latex'] += r"""
-% Style: Koma-Script
-\documentclass[10pt]{scrartcl}
-"""
+%% Style: Koma-Script
+\documentclass[10pt,%(draft)s]{scrartcl}
+""" % vars()
     elif latex_style == 'siamltex':
         INTRO['latex'] += r"""
-% Style: SIAM LaTeX2e
-\documentclass[final,leqno]{siamltex}
-"""
+%% Style: SIAM LaTeX2e
+\documentclass[leqno,%(draft)s]{siamltex}
+""" % vars()
     elif latex_style == 'siamltexmm':
         INTRO['latex'] += r"""
-% Style: SIAM LaTeX2e multimedia
-\documentclass[leqno]{siamltexmm}
-"""
+%% Style: SIAM LaTeX2e multimedia
+\documentclass[leqno,%(draft)s]{siamltexmm}
+""" % vars()
     elif latex_style == 'elsevier':
         INTRO['latex'] += r"""
-% Style: Elsvier LaTeX style
-\documentclass{elsarticle}
-"""
+%% Style: Elsvier LaTeX style
+\documentclass[%(draft)s]{elsarticle}
+""" % vars()
         journal_name = option('latex_elsevier_journal=', 'none')
         if journal_name != 'none':
             INTRO['latex'] += r"""
@@ -3305,13 +3341,15 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 %\doublespacing
 """
 
-    if option('latex_fancy_header'):
+    fancy_header = option('latex_fancy_header')
+    copyright_ = option('copyright=', None)
+    if fancy_header or copyright_:
         INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
 \fancyhf{} % sets both header and footer to nothing
 \renewcommand{\headrulewidth}{1pt}"""
-        if chapters:
+        if fancy_header and chapters:
             INTRO['latex'] += r"""
 % section name to the left (L) and page number to the right (R)
 % on even (E) pages,
@@ -3322,13 +3360,19 @@ final,                   %% or draft (marks overfull hboxes, figures with paths)
 \fancyhead[RE]{\thepage}
 \fancyhead[RO]{\leftmark}  % chapter
 \fancyhead[LO]{\thepage}"""
-        else:
+        elif fancy_header:
+            # No chapters, only sections
             INTRO['latex'] += r"""
 % section name to the left (L) and page number to the right (R)
 % on even (E) pages, the other way around on odd pages
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}"""
+        if copyright_ is not None:
+            INTRO['latex'] += r"""
+\fancyfoot[C]{\copyright\ {\footnotesize Copyright %s}}
+""" % copyright_
+
         INTRO['latex'] += r"""
 \pagestyle{fancy}
 

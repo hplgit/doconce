@@ -31,29 +31,30 @@ pip install jsonschema
 # to get the latest version
 
 # Preprocessors
-pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+pip install future
 pip install mako --upgrade
+pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+
 # Publish for handling bibliography
+pip install python-Levenshtein
+pip install lxml
 pip install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade
 
 # Sphinx (with additional third/party themes)
 pip install sphinx  # installs pygments and docutils too
 
+pip install alabaster --upgrade
+pip install sphinx_rtd_theme --upgrade
 pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade
 pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade
 pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade
 pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade
 pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
-pip install sphinx_rtd_theme --upgrade
 
 # Runestone sphinx books
 pip install sphinxcontrib-paverutils
 pip install paver
 pip install cogapp
-
-pip install future
-pip install python-Levenshtein
-pip install lxml
 
 #pip install -e git+https://bitbucket.org/sanguineturtle/pygments-ipython-console#egg=pygments-ipython-console
 pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console

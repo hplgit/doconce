@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 29, 2015
+:Date: Aug 30, 2015
 
 
 .. admonition:: Disclaimer
@@ -706,6 +706,53 @@ where we do all necessary adjustments mentioned above:
  * `HTML <http://hplgit.github.io/doconce/doc/pub/locale/Norwegian.html>`__
 
  * `Sphinx <http://hplgit.github.io/doconce/doc/pub/locale/sphinx/index.html>`__
+
+.. _trouble:copyright:
+
+How do I insert a copyright?
+----------------------------
+
+The answer depends on the output format.
+
+LaTeX
+~~~~~
+
+Use the ``--copyright=...`` option when compiling the document, e.g.,
+
+.. code-block:: text
+
+        Terminal> doconce format pdflatex mydoc --copyright='2006-2015 HPL'
+
+The copyright will appear as part of the date and as a footer on every
+page.
+
+HTML
+~~~~
+
+Use the ``--reference=...`` option when splitting an HTML document into
+pages with ``doconce split_html``, e.g.,
+
+.. code-block:: text
+
+        Terminal> doconce format html mydoc
+        Terminal> doconce split_html mydoc \
+                  --reference='&copy; Copyright 2006-2015 HPL'
+
+Sphinx
+~~~~~~
+
+Provide the ``copyright=...`` option in the ``doconce sphinx_dir`` command, e.g.
+
+.. code-block:: text
+
+        Terminal> doconce format sphinx mydoc
+        Terminal> doconce sphinx_dir theme=alabaster \
+                  copyright='2006-2015 HPL' version=0.9 mydoc
+
+Other formats
+~~~~~~~~~~~~~
+
+An error message is provided.
 
 .. !split
 

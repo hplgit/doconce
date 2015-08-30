@@ -80,7 +80,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 29, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 30, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -661,6 +661,42 @@ where we do all necessary adjustments mentioned above:</p>
 <li><a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/locale/sphinx/index.html">Sphinx</a></li>
 </ul>
 </div></blockquote>
+</div>
+<div class="section" id="how-do-i-insert-a-copyright">
+<span id="trouble-copyright"></span><h3>How do I insert a copyright?<a class="headerlink" href="#how-do-i-insert-a-copyright" title="Permalink to this headline">¶</a></h3>
+<p>The answer depends on the output format.</p>
+<div class="section" id="latex">
+<h4>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h4>
+<p>Use the <code class="docutils literal"><span class="pre">--copyright=...</span></code> option when compiling the document, e.g.,</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --copyright=&#39;2006-2015 HPL&#39;
+</pre></div>
+</div>
+<p>The copyright will appear as part of the date and as a footer on every
+page.</p>
+</div>
+<div class="section" id="html">
+<h4>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h4>
+<p>Use the <code class="docutils literal"><span class="pre">--reference=...</span></code> option when splitting an HTML document into
+pages with <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></code>, e.g.,</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc
+Terminal&gt; doconce split_html mydoc \
+          --reference=&#39;&amp;copy; Copyright 2006-2015 HPL&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="sphinx">
+<h4>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h4>
+<p>Provide the <code class="docutils literal"><span class="pre">copyright=...</span></code> option in the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command, e.g.</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format sphinx mydoc
+Terminal&gt; doconce sphinx_dir theme=alabaster \
+          copyright=&#39;2006-2015 HPL&#39; version=0.9 mydoc
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-formats">
+<h4>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">¶</a></h4>
+<p>An error message is provided.</p>
+</div>
 </div>
 </div>
 <div class="section" id="preprocess-mako-problems">
@@ -1550,6 +1586,13 @@ clickable.</p>
 <li><a class="reference internal" href="#how-can-i-make-pressbooks-com-books-from-doconce">How can I make pressbooks.com books from DocOnce?</a></li>
 <li><a class="reference internal" href="#how-can-i-produce-epub-books-from-doconce">How can I produce ePub books from DocOnce?</a></li>
 <li><a class="reference internal" href="#what-about-non-english-languages-and-doconce">What about non-English languages and DocOnce?</a></li>
+<li><a class="reference internal" href="#how-do-i-insert-a-copyright">How do I insert a copyright?</a><ul>
+<li><a class="reference internal" href="#latex">LaTeX</a></li>
+<li><a class="reference internal" href="#html">HTML</a></li>
+<li><a class="reference internal" href="#sphinx">Sphinx</a></li>
+<li><a class="reference internal" href="#other-formats">Other formats</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako-problems">Preprocess/Mako problems</a><ul>

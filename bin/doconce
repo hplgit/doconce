@@ -99,7 +99,7 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print """Usage: doconce sphinx_dir author="name(s) of author" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]
+    print """Usage: doconce sphinx_dir copyright="name(s) of author or company" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]
 
 Additional command-line arguments: theme_dir=directoryname conf.py=filename logo=filename
 
@@ -108,8 +108,9 @@ sphinx version of a doconce document. The option --runestone makes a
 directory for RunestoneInteractive documents (slightly different from
 a standard sphinx directory).
 
-The title, author, and version options go to the footer in the pages.
-If not given, the author and title are taken from the DocOnce document.
+The title, copyright, and version options go to the footer in the pages.
+If not given, the title is taken from the DocOnce document and the
+copyright becomes the author names, taken from the document.
 The default dirname is "sphinx-rootdir". The intersphinx option is used
 for links to other sphinx documents.
 
@@ -152,9 +153,9 @@ def sphinx_dir():
         _usage_sphinx_dir()
         sys.exit(1)
 
-    # Grab title, author, version from the command line
+    # Grab title, author/copyright, version from the command line
     # (set default values first)
-    title = short_title = author = None
+    title = short_title = copyright_ = None
     version = '1.0'
     theme = 'default'
     doconce_files = []
@@ -170,7 +171,9 @@ def sphinx_dir():
         elif arg.startswith('short-title='):
             short_title = arg.split('=')[1]
         elif arg.startswith('author='):
-            author = arg.split('=')[1]
+            copyright_ = arg.split('=')[1]
+        elif arg.startswith('copyright='):
+            copyright_ = arg.split('=')[1]
         elif arg.startswith('version='):
             version = arg.split('=')[1]
         elif arg.startswith('dirname='):
@@ -236,7 +239,7 @@ def sphinx_dir():
         # Default is to use title
         short_title = title
 
-    if author is None:
+    if copyright_ is None:
         import doconce.doconce
         f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
         # The following can be misleading if there are examples on
@@ -244,18 +247,18 @@ def sphinx_dir():
         authors_and_institutions, dummy1, dummy2, dummy3, dummy4, dummy5 = \
                   doconce.doconce.interpret_authors(fstr, 'sphinx')
         if authors_and_institutions:
-            author = [a for a, i, e in authors_and_institutions]
+            copyright_ = [a for a, i, e in authors_and_institutions]
 
-            print 'Author:', author
-            if len(author) == 1:
-                author = author[0]
+            print 'Copyright:', copyright_
+            if len(copyright_) == 1:
+                copyright_ = copyright_[0]
             else:
-                author = ', '.join(author[:-1]) + ' and ' + author[-1]
-            print 'Using author(s) "%s" from' % author, filename
+                copyright_ = ', '.join(copyright_[:-1]) + ' and ' + copyright_[-1]
+            print 'Using author(s) "%s" from %s as copyright' % (copyright_, filename)
 
-    if author is None:
+    if copyright_ is None:
         print '\nNo AUTHOR: line found in %s.do.txt' % filename
-        print 'and no author="..." given on the command line'
+        print 'and no copyright="authors or company" given on the command line'
         sys.exit(1)
 
     if theme_dir is not None and conf_py is None:
@@ -264,13 +267,13 @@ def sphinx_dir():
         sys.exit(1)
 
     print 'title:', title
-    print 'author:', author
+    print 'copyright:', copyright_
     print 'theme:', theme,
     print
     time.sleep(1.5)
 
     #make_conf_py_runestone(themes, theme, title, short_title,
-    #                       author, logo, intersphinx)
+    #                       copyright_, logo, intersphinx)
     f = open('tmp_sphinx_gen.sh', 'w')
     f.write("""\
 #!/bin/bash
@@ -282,7 +285,7 @@ sphinx-quickstart <<EOF
 n
 _
 %(title)s
-%(author)s
+%(copyright_)s
 %(version)s
 %(version)s
 en
@@ -326,15 +329,14 @@ EOF
 
         if conf_py is None:
             make_conf_py(themes, theme, title, short_title,
-                         author, logo, intersphinx)
+                         logo, intersphinx)
     else:
         # Copy theme_dir
         os.mkdir('_themes')
         shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
     if conf_py is not None:
-        shutil.copy(os.path.join(os.pardir, conf_py),
-                    os.path.basename(conf_py))
+        shutil.copy(os.path.join(os.pardir, conf_py), 'conf.py')
 
     f = open('make_themes.sh', 'w')
     f.write("""#!/bin/sh
@@ -613,8 +615,7 @@ or just run it by
   python automake_sphinx.py
 """
 
-def make_conf_py(themes, theme, title, short_title,
-                 author, logo, intersphinx):
+def make_conf_py(themes, theme, title, short_title, logo, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in sorted(themes)]
@@ -637,21 +638,11 @@ if html_theme == 'solarized':
     text = re.sub(r"^html_theme = '.+?' *$",
                   '\n'.join(themes_list) + themes_code,
                   text, flags=re.MULTILINE)
-    # Include bootstrap and cloud paths if we have those modules
-    try:
-        import sphinx_bootstrap_theme
-        bootstrap_path = ' + sphinx_bootstrap_theme.get_html_theme_path()'
-    except ImportError:
-        bootstrap_path = ''
-    try:
-        import cloud_sptheme as csp
-        cloud_path = '  + [csp.get_theme_dir()]'
-    except ImportError:
-        cloud_path = ''
 
-    text = text.replace("#html_theme_path = []",
-                        "html_theme_path = ['_themes']%s%s" %
-                        (bootstrap_path, cloud_path))
+    # Remove html_theme_path deep down in the conf.py file because
+    # we need it earlier and must initialize it ourselves
+    text = re.sub(r'# Add any paths that contain custom themes.+\n#html_theme_path = \[\]', "", text)
+    # Paths are added below when we try to import various themes in conf.py
 
     extensions = """\
 extensions = [
@@ -680,19 +671,31 @@ def setup(app):
 additional_themes_installed = []
 additional_themes_url = {}
 
+# Add any paths that contain custom themes here, relative to this directory.
+html_theme_path = ['_themes']
+
+try:
+    import alabaster
+    extensions += ['alabaster']
+    html_theme_path += [alabaster.get_path()]
+    additional_themes_installed.append('alabaster')
+except ImportError:
+    additional_themes_url['alabaster'] = 'sudo pip install alabaster'
+
 try:
     import sphinxjp.themes.solarized
     extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
     additional_themes_installed.append('solarized')
 except ImportError:
-    additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized'
+    additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized: sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade'
 
 try:
     import cloud_sptheme as csp
+    html_theme_path += [csp.get_theme_dir()]
     additional_themes_installed.append('cloud')
     additional_themes_installed.append('redcloud')
 except ImportError:
-    url = 'https://bitbucket.org/ecollins/cloud_sptheme'
+    url = 'https://bitbucket.org/ecollins/cloud_sptheme: sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade'
     additional_themes_url['cloud'] = url
     additional_themes_url['redcloud'] = url
 
@@ -707,7 +710,7 @@ try:
     additional_themes_installed.append('basicstrap')
 except ImportError:
     # Use basicstrap as an example on a theme with sphinxjp.themecore (??)
-    additional_themes_url['basicstrap'] = 'https://github.com/tell-k/sphinxjp.themes.basicstrap'
+    additional_themes_url['basicstrap'] = 'https://github.com/tell-k/sphinxjp.themes.basicstrap: sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade'
 '''
 
 try:
@@ -716,22 +719,25 @@ try:
     if not 'sphinxjp.themecore' in extensions:
         extensions += ['sphinxjp.themecore']
 except ImportError:
-    additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs'
+    additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs: sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade'
 
 try:
     import sphinx_bootstrap_theme
+    html_theme_path += sphinx_bootstrap_theme.get_html_theme_path()
     additional_themes_installed.append('bootstrap')
 except ImportError:
-    additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme'
+    additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme: sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade'
 
 try:
     import icsecontrib.sagecellserver
     extensions += ['icsecontrib.sagecellserver']
 except ImportError:
+    # sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
     pass
 
 try:
     import sphinx_rtd_theme
+    html_theme_path += [sphinx_rtd_theme.get_html_theme_path()]
     additional_themes_installed.append('sphinx_rtd_theme')
 except ImportError:
     additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
@@ -763,7 +769,7 @@ intersphinx_mapping = {
     text = text.replace('#html_theme_options = {}', """\
 
 # See http://sphinx.pocoo.org/theming.html for options
-if html_theme == 'default':
+if html_theme in ('default', 'classic'):
     # pygments_style =
     html_theme_options = {
        'rightsidebar': 'false',  # 'true'
@@ -793,12 +799,30 @@ if html_theme == 'default':
        #'headfont':         # Font for headings.
     }
 
+elif html_theme == 'alabaster':
+    # Doc: https://pypi.python.org/pypi/alabaster
+    html_theme_sidebars = {
+      '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+      ]
+    }
+
+elif html_theme == 'sphinx_rtd_theme':
+    # Doc: https://pypi.python.org/pypi/sphinx_rtd_theme
+    pass
+
 elif html_theme == 'sphinxdoc':
+    # Doc: http://sphinx-doc.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
 
 elif html_theme == 'scrolls':
+    # Doc: http://sphinx.pocoo.org/theming.html
     pass
     #html_theme_options = {
        #'headerbordercolor':,
@@ -809,25 +833,45 @@ elif html_theme == 'scrolls':
     #}
 
 elif html_theme == 'agogo':
+    # Doc: http://sphinx.pocoo.org/theming.html
     pass
-    # See http://sphinx.pocoo.org/theming.html for options
 
 elif html_theme == 'nature':
+    # Doc: http://sphinx.pocoo.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
 
 elif html_theme == 'traditional':
+    # Doc: http://sphinx.pocoo.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
 
 elif html_theme == 'haiku':
-    pass
-    # See http://sphinx.pocoo.org/theming.html for options
-
+    # Doc: http://sphinx.pocoo.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'pyramid':
+    # Doc: http://sphinx.pocoo.org/theming.html
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'bizstyle':
+    # Doc: http://sphinx.pocoo.org/theming.html
+    html_theme_options = {
+       'nosidebar': 'false',  # 'true'
+       'rightsidebar': 'false',  # 'true'
+    }
+
+elif html_theme == 'epub':
+    # Doc: http://sphinx.pocoo.org/theming.html
+    html_theme_options = {
+       'relbar1': 'true',
+       'footer': 'true',
     }
 
 elif html_theme == 'basicstrap':
@@ -836,6 +880,7 @@ elif html_theme == 'basicstrap':
     }
 
 elif html_theme == 'bootstrap':
+    # Doc: https://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html#customization
     html_theme_options = {
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
@@ -933,11 +978,11 @@ if html_theme == 'impressjs':
 
 
 def make_conf_py_runestone(themes, theme, title, short_title,
-                           author, logo, intersphinx):
+                           copyright_, logo, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     text = re.sub(r"^project = u'<ENTER.+", "project = u'%s'" % title,
                   flags=re.MULTILINE)
-    text = re.sub(r"^copyright = u'<ENTER.+", "copyright = u'%s'" % author,
+    text = re.sub(r"^copyright = u'<ENTER.+", "copyright = u'%s'" % copyright_,
                   flags=re.MULTILINE)
     text = re.sub(r"'navbar_title':.+", "'navbar_title': '%s'" % title)
     f = open('conf.py', 'w');  f.write(text);  f.close()
@@ -1035,7 +1080,7 @@ doconce remove_inline_comments dofile
 apply_inline_edits
 
 # create a directory for the sphinx format
-doconce sphinx_dir author='John Doe' title='Long title' \
+doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
     dirname=sphinx-rootdir theme=default logo=mylogo.png \
     do_file [do_file2 do_file3 ...]

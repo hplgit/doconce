@@ -751,6 +751,8 @@ label{do2any:latex:compile1}
 idx{`ptex2tex` program}
 idx{`ptex2tex` doconce version}
 
+=== The translation command ==
+
 Filter the doconce text directly to valid LaTeX using
 the `--latex_code_style=` option:
 
@@ -761,11 +763,15 @@ Without `--latex_code_style=`, the output will be a `mydoc.p.tex` file
 that has to be converted to a standard `mydoc.tex` LaTeX file via
 the programs `ptex2tex` or `doconce ptex2tex`.
 
-LaTeX-specific commands ("newcommands") in math formulas and similar
+=== Newcommands ===
+
+LaTeX-specific commands (``newcommands'') in math formulas and similar
 can be placed in files `newcommands.tex`, `newcommands_keep.tex`, or
 `newcommands_replace.tex` (see Section ref{newcommands}).
 If these files are present, they are included in the LaTeX document
 so that your commands are defined.
+
+=== Output for paper vs screen ===
 
 An option `--device=paper` makes some adjustments for documents
 aimed at being printed. For example, links to web resources are
@@ -778,6 +784,8 @@ on a screen where links are just clickable.
 
 idx{LaTeX style options}
 
+=== Command-line options ===
+
 There are many additional options (run `doconce format --help` and
 look for options starting with `--latex` to get a more verbose description):
 
@@ -787,7 +795,8 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_bibstyle=plain` (name of BibTeX style)
  * `--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection`
  * `--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier`
- * `--latex_packages=package1,package2,package3` (list of extra packages to be included)
+ * `--latex_packages=package1,package2,package3` (list of extra packages to be included[^varioref])
+ * `--draft` (turns on draft mode in documentclass, otherwise final mode)
  * `--latex_list_of_exercises=loe,toc,none` (LaTeX list of exercises, integrated into the table of contents, or no list)
  * `--latex_fancy_header` (chapter/section headings at top of pages, style depends on value of `--latex_section_headings`)
  * `--latex_section_headings=std,blue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
@@ -830,7 +839,14 @@ to be submitted to Elsevier journals (`--latex_elsevier_journal=` can
 be used to set the journal name, and the style requires
 `elsarticle.cls` and `elsarticle-num.bst`).
 
+[^varioref]: Listing `varioref` in `--latex_packages=...`
+automatically leads to references with page numbers, if the element referred to
+is not on the same page. This is often very helpful (e.g., ``see
+Figure 5.3 on page 67'').
+
 idx{LaTeX syntax highlighting}
+
+=== Syntax highlighting ===
 
 The style of verbatim blocks of computer code is specified by
 `--latex_code_style=X`, where `X` can be set in a very flexible way.
@@ -875,10 +891,14 @@ framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 !ec
 (but no linebreaks, as here, they are for formatting this document only).
 
+=== Drafts ===
+
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options `--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin`. One may also (automatically) edit the
 `final` argument in the `documentclass` heading to `draft` as this will
 mark overful lines (hboxes).
+
+=== Potential problems with ampersand ===
 
 Another useful option for LaTeX documents is `--no_ampersand_quote`, which
 prevents ampersands from getting a backskash. This is necessary if one
@@ -886,7 +906,8 @@ inserts native latex code for tables
 inside `% if FORMAT in ('latex', 'pdflatex'):` (or similar `preprocess` syntax)
 tests.
 
-__Part 2 of Step 1 (outdated).__
+=== Part 2 of Step 1 (outdated) ===
+
 In case you *did not* specify the `--latex_code_style=` option,
 you must run `ptex2tex` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,

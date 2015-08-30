@@ -21,6 +21,10 @@ of intermediate results"""),
 (may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
+    ('--draft', 'Indicates draft (turns on draft elements in LaTeX, otherwise no effect).'),
+    ('--copyright=', """Set copyright, mainly for LaTeX output (inserted in date and in a footer).
+For HTML, use --reference= option in the doconce split_html command.
+For Sphinx, use copyright= option in the doconce sphinx_dir command."""),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
@@ -251,7 +255,10 @@ doconce_heading (default): authors with "footnotes" for institutions,
 beamer: layout for beamer slides."""),
     ('--latex_link_color=', """Color used in hyperlinks. Default is dark blue if --device=screen,
 or black if --device=paper (invisible in print out) or special blue
-color if --latex_section_headings=blue or strongblue."""),
+color if --latex_section_headings=blue or strongblue.
+Values are specified either as comma-separated rgb tuples or as
+color names, e.g., --latex_link_color=0.1,0.9,0.85 or
+--latex_link_color=red or --latex_link_color=gray!70"""),
     ('--latex_title_reference=', """latex code placed in a footnote for the title,
 typically used for acknowledging publisher/source of original
 version of the document."""),
@@ -2453,7 +2460,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --acknowledgment="..." --font_size=slides'
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author/copyright" --font_size=slides'
 
 --method=split|space8|hrule|colorline specifies pagebreak
 physical split with a new page (--method=split) or
@@ -2483,8 +2490,11 @@ if a bootstrap theme is used in the document.
 --reference=... is used to insert a reference for acknowledging where
 the source of the text is published, typically the reference of a
 book if the document is the HTML version of a chapter in the book.
+Can also be used to insert a copyright.
+
 Example:
 --reference="This text is taken from Appendix H.2 in the book <em>A Primer on Scientific Programming with Python</em> by H. P. Langtangen, 4th edition, Springer, 2014."
+--reference="&copy; Copyright 2000-2015, H. P. Langtangen"
 """
 
 def split_html():
@@ -3298,7 +3308,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         part_text = part_text.replace('<a href="%s#' % part_filename,
                                       '<a href="#')
 
-        # Insert reference to published version of document?
+        # Insert reference to published version of document? Or copyright
         ackn = misc_option('reference=', None)
         if ackn is not None:
             ackn1 = '<p style="font-size:80%%">%s</p>' % ackn
