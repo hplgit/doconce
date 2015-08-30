@@ -1688,21 +1688,41 @@ def latex_author(authors_and_institutions, auth2index,
 def latex_date(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     latex_style = option('latex_style=', 'std')
+    copyright_ = option('copyright=', '')
+    copyright_ = ''  # the footer will be on the first page anyway
+    if copyright_:
+        copyright_ = '\\\\ \\copyright\\ Copyright %s' % copyright_
     date = m.group('subst')
+
     text = ''
     if title_layout == 'std':
         text += r"""
-\date{%(date)s}
+\date{%(date)s%(copyright_)s}
 \maketitle
 """ % vars()
     elif title_layout == 'beamer':
         text += r"""
-\date{%(date)s
+\date{%(date)s%(copyright_)s
 %% <optional titlepage figure>
 }
 """ % vars()
     elif title_layout == 'titlepage':
-        text += r"""
+        if copyright_:
+            text += r"""
+%% --- begin date ---
+\ \\ [10mm]
+{\large\textsf{%(date)s}}
+
+\ \\ [4mm]
+{\textsf{%(copyright_)s}}
+
+\end{center}
+%% --- end date ---
+\vfill
+\clearpage
+""" % vars()
+        else:
+            text += r"""
 %% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{%(date)s}}
@@ -1713,7 +1733,21 @@ def latex_date(m):
 \clearpage
 """ % vars()
     else:  # doconce special heading
-        text += r"""
+        if copyright_:
+            text += r"""
+%% --- begin date ---
+\begin{center}
+%(date)s
+
+%(copyright_)s
+\end{center}
+%% --- end date ---
+
+\vspace{1cm}
+
+""" % vars()
+        else:
+            text += r"""
 %% --- begin date ---
 \begin{center}
 %(date)s
@@ -3336,7 +3370,7 @@ open=right               %% start new chapters on odd-numbered pages
 \fancyhead[RE,LO]{\thepage}"""
         if copyright_ is not None:
             INTRO['latex'] += r"""
-\fancyfoot[C]{\copyright Copyright %s}
+\fancyfoot[C]{\copyright\ {\footnotesize Copyright %s}}
 """ % copyright_
 
         INTRO['latex'] += r"""

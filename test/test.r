@@ -2044,7 +2044,7 @@ MathJax.Hub.Config({
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -4306,7 +4306,7 @@ in a separate document: \texttt{admon.do.txt}.
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+draft,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -4415,6 +4415,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}
+\fancyfoot[C]{\copyright\ {\footnotesize Copyright 2006-2015 H. P. Langtangen}}
+
 \pagestyle{fancy}
 
 
@@ -6761,7 +6763,7 @@ output in testdoc.tex
 
 \documentclass[%
 twoside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+draft,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -6870,6 +6872,8 @@ final,                   % or draft (marks overfull hboxes, figures with paths)
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}
+\fancyfoot[C]{\copyright\ {\footnotesize Copyright 2006-2015 H. P. Langtangen}}
+
 \pagestyle{fancy}
 
 
@@ -9130,7 +9134,7 @@ in a separate document: \texttt{admon.do.txt}.
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -32624,7 +32628,7 @@ Inline math, \( a=b \), is the only math in this document.
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 chapterprefix=true,      % "Chapter" word at beginning of each chapter
 open=right               % start new chapters on odd-numbered pages
 10pt]{book}
@@ -33257,7 +33261,7 @@ Inline math, a=b, is the only math in this document.
 %-------------------- begin preamble ----------------------
 
 % Style: SIAM LaTeX2e
-\documentclass[final,leqno]{siamltex}
+\documentclass[leqno,final]{siamltex}
 
 \listfiles               % print all files needed to compile this document
 
@@ -33393,7 +33397,7 @@ a citation like \cite{Langtangen_1992c,Langtangen_1994a}.
 %-------------------- begin preamble ----------------------
 
 % Style: Elsvier LaTeX style
-\documentclass{elsarticle}
+\documentclass[final]{elsarticle}
 
 % Drop "Submitted to ..." line at the bottom of the first page
 \makeatletter
@@ -41368,7 +41372,7 @@ is at the end with only one newline.</p>
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -44168,7 +44172,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles --latex_packages=varioref
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref --latex_link_color=yellow!10
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref --latex_link_color=yellow!10 --copyright='2006-2015 H. P. Langtangen' --draft
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -45462,7 +45466,7 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -50305,7 +50309,7 @@ footnotes.
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -50963,7 +50967,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -51647,7 +51651,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -52338,7 +52342,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -53072,7 +53076,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -53722,7 +53726,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -54418,7 +54422,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -55024,7 +55028,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -55719,7 +55723,7 @@ exercises (and problems and projects too).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -65252,7 +65256,7 @@ title (Warning) since no title is specified.
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -68199,7 +68203,7 @@ Reveal.initialize({
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -70778,7 +70782,7 @@ Speaker notes show up by
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -73155,7 +73159,7 @@ Finally, let us demonstrate referencing the movie <a href="#mov:wave">mov:wave</
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -73571,7 +73575,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -73980,7 +73984,7 @@ Finally, let us demonstrate referencing the movie~\ref{mov:wave}.
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -76302,7 +76306,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7efdc4644a28>
+verbatim is to be replaced using <function html_verbatim at 0x7fac21619a28>
 
 
 First occurence: " `mako`."
@@ -77350,7 +77354,7 @@ BIBFILE: papers.pub
 
 % Style: T4 (Springer)
 % Use svmono.cls with doconce modifications for bibliography (svmonodo.cls)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+\documentclass[graybox,sectrefs,envcountresetchap,open=right,final]{svmonodo}
 
 % Use t4.sty with doconce modifications (t4do.sty)
 \usepackage{t4do}
@@ -78415,7 +78419,7 @@ slightly modified \texttt{svmono.cls} and \texttt{t2.sty} files:
 
 % Style: T4 (Springer)
 % Use svmono.cls with doconce modifications for bibliography (svmonodo.cls)
-\documentclass[graybox,sectrefs,envcountresetchap,open=right]{svmonodo}
+\documentclass[graybox,sectrefs,envcountresetchap,open=right,final]{svmonodo}
 
 % Use t4.sty with doconce modifications (t4do.sty)
 \usepackage{t4do}
@@ -80541,7 +80545,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 30 02:22:16 2015.
+# sphinx-quickstart on Sun Aug 30 03:25:11 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -85819,7 +85823,7 @@ examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
 \documentclass[%
 oneside,                 % oneside: electronic viewing, twoside: printing
-final,                   % or draft (marks overfull hboxes, figures with paths)
+final,                   % draft: marks overfull hboxes, figures with paths
 10pt]{article}
 
 \listfiles               % print all files needed to compile this document
@@ -100535,8 +100539,8 @@ exporting publish database papers.pub to papers.bib:
 output in testdoc.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.tex testdoc.tex_direct
-+ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10'
-+ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10'
++ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10' '--copyright=2006-2015 H. P. Langtangen' --draft
++ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10' '--copyright=2006-2015 H. P. Langtangen' --draft
 
 Summary of papers
 -----------------
@@ -100725,9 +100729,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 
-/usr/local/bin/pygmentize
 
-(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -100883,13 +100885,21 @@ No file testdoc.aux.
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) 
+)
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 ABD: EverySelectfont initializing macros))
+
+
+Package hyperref Warning: Draft mode on.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
@@ -100900,12 +100910,9 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
 
-
-
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] [2]
+dmap/pdftex.map}]  [2]
 Underfull \hbox (badness 10000) 
-
 
 
 
@@ -100953,7 +100960,7 @@ Underfull \hbox (badness 10000)
 
 
 
- line 524.
+ line 526.
 
 
 
@@ -100985,32 +100992,10 @@ Underfull \hbox (badness 10000)
 
 
 
-
-(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
-4A09.pygtex)
-(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex) [4]
-(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
-0399.pygtex)
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex [5])
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=73, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> [6 <./latex_figs/dizzy_face.png>]
-(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [7] [8]
+[4] [5] <latex_figs/dizzy_face.png, id=60, 64.24pt x 64.24pt> [6] [7]
+Overfull \hbox (45.85634pt too wide) 
+\T1/lmr/m/n/10 and braces like [], [], [], and []. |
+[8]
 
 
 ...rest of part of LaTeX line number...
@@ -101022,167 +101007,120 @@ CDA7.pygtex) [7] [8]
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=104, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+<../doc/src/manual/fig/wave1D.pdf, id=73, 586.83241pt x 442.29242pt>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<use ../doc/src/manual/fig/wave1D.pdf> [9]
+[9]
 
-[10 <../doc/src/manual/fig/wave1D.pdf>]
-
-
+[10]
 
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=134, 586.8324pt x 442.2924pt>
-<use ../doc/src/manual/fig/wave1D.png>
-Overfull \hbox (7.06001pt too wide) 
-[][]\T1/lmr/m/n/10 (-20) :
 
-Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) cap-
+
+<../doc/src/manual/fig/wave1D.png, id=85, 586.8324pt x 442.2924pt>
+Overfull \hbox (8.50557pt too wide) 
+[][]\T1/lmr/m/n/10 :|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) tion
+\T1/lmr/m/n/10 cap-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) span-
+\T1/lmr/m/n/10 tion
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ning
+\T1/lmr/m/n/10 span-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sev-eral
+\T1/lmr/m/n/10 ning
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) lines
+\T1/lmr/m/n/10 sev-eral
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 lines
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) con-
+\T1/lmr/m/n/10 and
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ver-
+\T1/lmr/m/n/10 con-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ba-tim
+\T1/lmr/m/n/10 tain-ing
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) words
+\T1/lmr/m/n/10 ver-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) like
-
-Overfull \hbox (21.40942pt too wide) 
-[]
+\T1/lmr/m/n/10 ba-tim
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 words
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 like
 
 Overfull \hbox (21.67192pt too wide) 
-[]
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as
+\T1/lmr/m/n/10 and
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) math
+\T1/lmr/m/n/10 as
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) with
+\T1/lmr/m/n/10 math
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sub-
+\T1/lmr/m/n/10 with
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) script
+\T1/lmr/m/n/10 sub-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=135, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+\T1/lmr/m/n/10 script
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-[12 <./downloaded_figures/f_plot.png>]
-Underfull \hbox (badness 3291) 
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
-\T1/lmtt/m/n/8 verbatim
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as in
+<downloaded_figures/f_plot.png, id=86, 578.16pt x 433.62pt> [11] [12]
+Underfull \hbox (badness 4084) 
+[]\T1/lmr/m/n/8 test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (sep-a-rate) \T1/lmtt/m/n
+/8 verbatim
 
 
 
 
 
 
+
+Underfull \hbox (badness 1424) 
+[]\T1/lmr/m/n/8 index, with comma, and one
 
 
 
 [13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=164, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=165, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=166, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=167, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=168, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=169, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=101, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=102, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=103, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=104, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=105, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=106, 586.8324pt x 442.292
+4pt> [14] [15]
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[15]
-
-
-t line 1332.
+t line 1334.
 
 
 
@@ -101202,7 +101140,7 @@ t line 1332.
 
 
 
-t line 1341.
+t line 1343.
 
 
 
@@ -101223,7 +101161,7 @@ t line 1341.
 
 
 
-t line 1345.
+t line 1347.
 
 
 
@@ -101309,16 +101247,14 @@ t line 1345.
 
 
 
-
-(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [17])
+[17]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1| 
+%26+engineering/book/978-3-642-23098-1| |
 [18]
 
 
-e 1510.
+e 1512.
 
 
 
@@ -101326,7 +101262,7 @@ e 1510.
 
 
 
-e 1511.
+e 1513.
 
 
 
@@ -101334,7 +101270,7 @@ e 1511.
 
 
 
-e 1511.
+e 1513.
 
 
 
@@ -101400,7 +101336,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-e 1586.
+e 1588.
 
 
 
@@ -101415,15 +101351,13 @@ e 1586.
 
 
 
-t line 1587.
+t line 1589.
 
 
 
 ...rest of part of LaTeX line number...
 
 [20]
-(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
 
 
 
@@ -101437,16 +101371,12 @@ t line 1587.
 
 
 
-
-(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22] [23] [24]
-(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
+[22] [23] [24]
 Underfull \hbox (badness 10000) 
 
 
 
-e 2144.
+e 2146.
 
 
 
@@ -101469,7 +101399,7 @@ e 2144.
 
 
 
-t line 2174.
+t line 2176.
 
 
 
@@ -101484,7 +101414,7 @@ t line 2174.
 
 
 
-e 2175.
+e 2177.
 
 
 
@@ -101607,7 +101537,6 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
  xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -101683,8 +101612,6 @@ tcolorbox.sty    2014/10/10 version 3.21 text color boxes
 trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -101700,60 +101627,10 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
-9.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
-A.pygtex
-latex_figs/dizzy_face.png
-_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
-7.pygtex
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.png
-downloaded_figures/f_plot.png
-../doc/src/manual/mov/wave_frames/frame_0080.png
-../doc/src/manual/mov/wave_frames/frame_0085.png
-../doc/src/manual/mov/wave_frames/frame_0090.png
-../doc/src/manual/mov/wave_frames/frame_0095.png
-../doc/src/manual/mov/wave_frames/frame_0100.png
-../doc/src/manual/mov/wave_frames/frame_0105.png
-_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
  ***********
-
-
-Package rerunfilecheck Warning: File `testdoc.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
 
 
 LaTeX Warning: There were undefined references.
@@ -101762,31 +101639,28 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
-vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lms
+y10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (30 pages, ).
@@ -101865,9 +101739,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 
-/usr/local/bin/pygmentize
 
-(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -102022,7 +101894,12 @@ Writing index file testdoc.idx
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) 
+)
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -102030,203 +101907,140 @@ Writing index file testdoc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 ABD: EverySelectfont initializing macros))
 
+
+Package hyperref Warning: Draft mode on.
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
-(./newcommands_bfmath.tex) (./newcommands_replace.tex)
-
-
-
+ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
 
 
 
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
+dmap/pdftex.map}] (./testdoc.toc
+Overfull \hbox (3.25177pt too wide) 
+ [][] []\T1/lmr/m/n/10 A test of ver-ba-tim words in head-ing with sub-script $
+\OML/lmm/m/it/10 a[]$\T1/lmr/m/n/10 : [] and [] |
+
+Underfull \hbox (badness 10000) 
+ [][]  
+
+[3]
 Underfull \hbox (badness 10000) 
 
- [4]
-(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
-4A09.pygtex)
-(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex) [5]
-(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
-0399.pygtex)
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex [6])
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
-(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+Overfull \hbox (45.85634pt too wide) 
+\T1/lmr/m/n/10 and braces like [], [], [], and []. |
+[9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<use ../doc/src/manual/fig/wave1D.pdf> [10]
+[10]
 
-[11 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=373, 586.8324pt x 442.2924pt>
-<use ../doc/src/manual/fig/wave1D.png>
-Overfull \hbox (7.06001pt too wide) 
-[][]\T1/lmr/m/n/10 (-20) :
+[11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
+Overfull \hbox (8.50557pt too wide) 
+[][]\T1/lmr/m/n/10 :|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) cap-
+\T1/lmr/m/n/10 cap-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) tion
+\T1/lmr/m/n/10 tion
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) span-
+\T1/lmr/m/n/10 span-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ning
+\T1/lmr/m/n/10 ning
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sev-eral
+\T1/lmr/m/n/10 sev-eral
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) lines
+\T1/lmr/m/n/10 lines
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 and
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) con-
+\T1/lmr/m/n/10 con-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ver-
+\T1/lmr/m/n/10 tain-ing
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ba-tim
+\T1/lmr/m/n/10 ver-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) words
+\T1/lmr/m/n/10 ba-tim
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) like
-
-Overfull \hbox (21.40942pt too wide) 
-[]
+\T1/lmr/m/n/10 words
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 like
 
 Overfull \hbox (21.67192pt too wide) 
-[]
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as
+\T1/lmr/m/n/10 and
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) math
+\T1/lmr/m/n/10 as
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) with
+\T1/lmr/m/n/10 math
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sub-
+\T1/lmr/m/n/10 with
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) script
+\T1/lmr/m/n/10 sub-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=374, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
+\T1/lmr/m/n/10 script
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-[13 <./downloaded_figures/f_plot.png>]
-Underfull \hbox (badness 3291) 
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
-\T1/lmtt/m/n/8 verbatim
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as in
+<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt> [12] [13]
+Underfull \hbox (badness 4084) 
+[]\T1/lmr/m/n/8 test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (sep-a-rate) \T1/lmtt/m/n
+/8 verbatim
 
 
 
 
 
 
+
+Underfull \hbox (badness 1424) 
+[]\T1/lmr/m/n/8 index, with comma, and one
 
 
 
 [14]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=399, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=400, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=401, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=402, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=403, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=404, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=105, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=106, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=107, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=108, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=109, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=110, 586.8324pt x 442.292
+4pt> [15] [16]
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[16]
-
-
-t line 1332.
+t line 1334.
 
 
 
@@ -102246,7 +102060,7 @@ t line 1332.
 
 
 
-t line 1341.
+t line 1343.
 
 
 
@@ -102267,7 +102081,7 @@ t line 1341.
 
 
 
-t line 1345.
+t line 1347.
 
 
 
@@ -102337,25 +102151,17 @@ t line 1345.
 
 ...rest of part of LaTeX line number...
 
-
-(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [18])
+[18]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1| 
+%26+engineering/book/978-3-642-23098-1| |
 [19]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[20] [21]
-(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22]
-(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [23] [24] [25]
-(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
+[20] [21] [22] [23] [24] [25]
 Underfull \hbox (badness 10000) 
 
 [26]
@@ -102432,7 +102238,6 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
  xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -102508,8 +102313,6 @@ tcolorbox.sty    2014/10/10 version 3.21 text color boxes
 trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -102518,8 +102321,6 @@ everysel.sty    2011/10/28 v1.2 EverySelectfont Package (MS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
- testdoc.out
- testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
   t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -102527,54 +102328,9 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
-9.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
-A.pygtex
-latex_figs/dizzy_face.png
-_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
-7.pygtex
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.png
-downloaded_figures/f_plot.png
-../doc/src/manual/mov/wave_frames/frame_0080.png
-../doc/src/manual/mov/wave_frames/frame_0085.png
-../doc/src/manual/mov/wave_frames/frame_0090.png
-../doc/src/manual/mov/wave_frames/frame_0095.png
-../doc/src/manual/mov/wave_frames/frame_0100.png
-../doc/src/manual/mov/wave_frames/frame_0105.png
-_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
  ***********
 
 
@@ -102584,32 +102340,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
-vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (31 pages, ).
@@ -102705,9 +102458,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 
-/usr/local/bin/pygmentize
 
-(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -102862,7 +102613,12 @@ Writing index file testdoc.idx
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) 
+)
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -102870,203 +102626,140 @@ Writing index file testdoc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 ABD: EverySelectfont initializing macros))
 
+
+Package hyperref Warning: Draft mode on.
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
-(./newcommands_bfmath.tex) (./newcommands_replace.tex)
-
-
-
+ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
 
 
 
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
+dmap/pdftex.map}] (./testdoc.toc
+Overfull \hbox (3.25177pt too wide) 
+ [][] []\T1/lmr/m/n/10 A test of ver-ba-tim words in head-ing with sub-script $
+\OML/lmm/m/it/10 a[]$\T1/lmr/m/n/10 : [] and [] |
+
+Underfull \hbox (badness 10000) 
+ [][]  
+
+[3]
 Underfull \hbox (badness 10000) 
 
- [4]
-(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
-4A09.pygtex)
-(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex) [5]
-(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
-0399.pygtex)
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex [6])
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
-(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+Overfull \hbox (45.85634pt too wide) 
+\T1/lmr/m/n/10 and braces like [], [], [], and []. |
+[9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<use ../doc/src/manual/fig/wave1D.pdf> [10]
+[10]
 
-[11 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=373, 586.8324pt x 442.2924pt>
-<use ../doc/src/manual/fig/wave1D.png>
-Overfull \hbox (7.06001pt too wide) 
-[][]\T1/lmr/m/n/10 (-20) :
+[11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
+Overfull \hbox (8.50557pt too wide) 
+[][]\T1/lmr/m/n/10 :|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) cap-
+\T1/lmr/m/n/10 cap-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) tion
+\T1/lmr/m/n/10 tion
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) span-
+\T1/lmr/m/n/10 span-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ning
+\T1/lmr/m/n/10 ning
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sev-eral
+\T1/lmr/m/n/10 sev-eral
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) lines
+\T1/lmr/m/n/10 lines
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 and
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) con-
+\T1/lmr/m/n/10 con-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ver-
+\T1/lmr/m/n/10 tain-ing
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ba-tim
+\T1/lmr/m/n/10 ver-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) words
+\T1/lmr/m/n/10 ba-tim
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) like
-
-Overfull \hbox (21.40942pt too wide) 
-[]
+\T1/lmr/m/n/10 words
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 like
 
 Overfull \hbox (21.67192pt too wide) 
-[]
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as
+\T1/lmr/m/n/10 and
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) math
+\T1/lmr/m/n/10 as
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) with
+\T1/lmr/m/n/10 math
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sub-
+\T1/lmr/m/n/10 with
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) script
+\T1/lmr/m/n/10 sub-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=374, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
+\T1/lmr/m/n/10 script
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-[13 <./downloaded_figures/f_plot.png>]
-Underfull \hbox (badness 3291) 
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
-\T1/lmtt/m/n/8 verbatim
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as in
+<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt> [12] [13]
+Underfull \hbox (badness 4084) 
+[]\T1/lmr/m/n/8 test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (sep-a-rate) \T1/lmtt/m/n
+/8 verbatim
 
 
 
 
 
 
+
+Underfull \hbox (badness 1424) 
+[]\T1/lmr/m/n/8 index, with comma, and one
 
 
 
 [14]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=399, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=400, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=401, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=402, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=403, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=404, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=105, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=106, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=107, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=108, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=109, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=110, 586.8324pt x 442.292
+4pt> [15] [16]
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[16]
-
-
-t line 1332.
+t line 1334.
 
 
 
@@ -103086,7 +102779,7 @@ t line 1332.
 
 
 
-t line 1341.
+t line 1343.
 
 
 
@@ -103107,7 +102800,7 @@ t line 1341.
 
 
 
-t line 1345.
+t line 1347.
 
 
 
@@ -103177,34 +102870,26 @@ t line 1345.
 
 ...rest of part of LaTeX line number...
 
-
-(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [18])
+[18]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1| 
+%26+engineering/book/978-3-642-23098-1| |
 [19]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[20] [21]
-(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22]
-(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [23] [24] [25]
-(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
+[20] [21] [22] [23] [24] [25]
 Underfull \hbox (badness 10000) 
 
 [26] (./testdoc.bbl [27]) [28]
 Underfull \hbox (badness 10000) 
 
 [29] [30] [31] [32] (./testdoc.ind [33]
-Overfull \hbox (9.21497pt too wide) 
-[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
-e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+Overfull \hbox (10.92883pt too wide) 
+[]\T1/lmr/m/n/10 test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (sep-a-rate) \T1/lmtt/
+m/n/10 verbatim expressions \T1/lmr/m/n/10 which|
 [34]) (./testdoc.aux)
 
  *File List*
@@ -103272,7 +102957,6 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
  xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -103348,8 +103032,6 @@ tcolorbox.sty    2014/10/10 version 3.21 text color boxes
 trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -103358,8 +103040,6 @@ everysel.sty    2011/10/28 v1.2 EverySelectfont Package (MS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
- testdoc.out
- testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
   t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -103367,54 +103047,9 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
-9.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
-A.pygtex
-latex_figs/dizzy_face.png
-_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
-7.pygtex
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.png
-downloaded_figures/f_plot.png
-../doc/src/manual/mov/wave_frames/frame_0080.png
-../doc/src/manual/mov/wave_frames/frame_0085.png
-../doc/src/manual/mov/wave_frames/frame_0090.png
-../doc/src/manual/mov/wave_frames/frame_0095.png
-../doc/src/manual/mov/wave_frames/frame_0100.png
-../doc/src/manual/mov/wave_frames/frame_0105.png
-_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
  testdoc.bbl
  testdoc.ind
  ***********
@@ -103426,32 +103061,29 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
-vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (34 pages, ).
@@ -103529,9 +103161,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 
-/usr/local/bin/pygmentize
 
-(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -103686,7 +103316,12 @@ Writing index file testdoc.idx
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) 
+)
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -103694,227 +103329,156 @@ Writing index file testdoc.idx
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 ABD: EverySelectfont initializing macros))
 
+
+Package hyperref Warning: Draft mode on.
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
-(./newcommands_bfmath.tex) (./newcommands_replace.tex)
-
-
-
+ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
 
 
 
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}] (./testdoc.toc [2]) (./testdoc.loe) (./testdoc.tdo) [3]
+dmap/pdftex.map}] (./testdoc.toc
+Overfull \hbox (3.25177pt too wide) 
+ [][] []\T1/lmr/m/n/10 A test of ver-ba-tim words in head-ing with sub-script $
+\OML/lmm/m/it/10 a[]$\T1/lmr/m/n/10 : [] and [] |
+
+Underfull \hbox (badness 10000) 
+ [][]  
+
+[3]
 Underfull \hbox (badness 10000) 
 
- [4]
-(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
-4A09.pygtex)
-(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex) [5]
-(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
-0399.pygtex)
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex [6])
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=311, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> [7 <./latex_figs/dizzy_face.png>]
-(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex) [8] [9]
-<../doc/src/manual/fig/wave1D.pdf, id=343, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
+[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+Overfull \hbox (45.85634pt too wide) 
+\T1/lmr/m/n/10 and braces like [], [], [], and []. |
+[9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<use ../doc/src/manual/fig/wave1D.pdf> [10]
+[10]
 
-[11 <../doc/src/manual/fig/wave1D.pdf>]
-<../doc/src/manual/fig/wave1D.png, id=373, 586.8324pt x 442.2924pt>
-<use ../doc/src/manual/fig/wave1D.png>
-Overfull \hbox (7.06001pt too wide) 
-[][]\T1/lmr/m/n/10 (-20) :
+[11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
+Overfull \hbox (8.50557pt too wide) 
+[][]\T1/lmr/m/n/10 :|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) cap-
+\T1/lmr/m/n/10 cap-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) tion
+\T1/lmr/m/n/10 tion
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) span-
+\T1/lmr/m/n/10 span-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ning
+\T1/lmr/m/n/10 ning
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sev-eral
+\T1/lmr/m/n/10 sev-eral
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) lines
+\T1/lmr/m/n/10 lines
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 and
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) con-
+\T1/lmr/m/n/10 con-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ver-
+\T1/lmr/m/n/10 tain-ing
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ba-tim
+\T1/lmr/m/n/10 ver-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) words
+\T1/lmr/m/n/10 ba-tim
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) like
-
-Overfull \hbox (21.40942pt too wide) 
-[]
+\T1/lmr/m/n/10 words
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 like
 
 Overfull \hbox (21.67192pt too wide) 
-[]
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as
+\T1/lmr/m/n/10 and
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) math
+\T1/lmr/m/n/10 as
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) with
+\T1/lmr/m/n/10 math
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sub-
+\T1/lmr/m/n/10 with
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) script
+\T1/lmr/m/n/10 sub-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=374, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [12 <../doc/src/manual/fig/wave1D.png>]
+\T1/lmr/m/n/10 script
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-[13 <./downloaded_figures/f_plot.png>]
-Underfull \hbox (badness 3291) 
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
-\T1/lmtt/m/n/8 verbatim
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as in
+<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt> [12] [13]
+Underfull \hbox (badness 4084) 
+[]\T1/lmr/m/n/8 test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (sep-a-rate) \T1/lmtt/m/n
+/8 verbatim
 
 
 
 
 
 
+
+Underfull \hbox (badness 1424) 
+[]\T1/lmr/m/n/8 index, with comma, and one
 
 
 
 [14]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=399, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=400, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=401, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=402, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=403, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=404, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
-
-[15 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
-[16] [17]
-(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [18])
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=105, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=106, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=107, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=108, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=109, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=110, 586.8324pt x 442.292
+4pt> [15] [16] [17] [18]
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1| 
+%26+engineering/book/978-3-642-23098-1| |
 [19]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on .
 
-[20] [21]
-(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [22]
-(./_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77
-2768.pygtex) [23] [24] [25]
-(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
+[20] [21] [22] [23] [24] [25]
 Underfull \hbox (badness 10000) 
 
 [26] (./testdoc.bbl [27]) [28]
 Underfull \hbox (badness 10000) 
 
 [29] [30] [31] [32] (./testdoc.ind [33]
-Overfull \hbox (9.21497pt too wide) 
-[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
-e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
+Overfull \hbox (10.92883pt too wide) 
+[]\T1/lmr/m/n/10 test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (sep-a-rate) \T1/lmtt/
+m/n/10 verbatim expressions \T1/lmr/m/n/10 which|
 [34]) (./testdoc.aux)
 
  *File List*
@@ -103982,7 +103546,6 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
  xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -104058,8 +103621,6 @@ tcolorbox.sty    2014/10/10 version 3.21 text color boxes
 trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -104068,8 +103629,6 @@ everysel.sty    2011/10/28 v1.2 EverySelectfont Package (MS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
- testdoc.out
- testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
   t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -104077,85 +103636,37 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/3F8F68F3242CED02C4F1C568D86DEC2F685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/F200DFDA7A922A65D6EA994D28BFE8EC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
-9.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
-A.pygtex
-latex_figs/dizzy_face.png
-_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
-7.pygtex
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.png
-downloaded_figures/f_plot.png
-../doc/src/manual/mov/wave_frames/frame_0080.png
-../doc/src/manual/mov/wave_frames/frame_0085.png
-../doc/src/manual/mov/wave_frames/frame_0090.png
-../doc/src/manual/mov/wave_frames/frame_0095.png
-../doc/src/manual/mov/wave_frames/frame_0100.png
-../doc/src/manual/mov/wave_frames/frame_0105.png
-_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/833D22E4B7C84723D48C3334AE42B42E685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
  testdoc.bbl
  testdoc.ind
  ***********
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
-vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm
-/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy1
-0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts
-/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmtti10.pfb></usr/share/texlive/texmf-dist/fon
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (34 pages, ).
@@ -104235,9 +103746,7 @@ Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix
 
 (/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
 
-/usr/local/bin/pygmentize
 
-(./_minted-testdoc/default.pygstyle)
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
@@ -104394,7 +103903,12 @@ No file testdoc.aux.
 *geometry* detected driver: pdftex
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-) 
+)
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 
 
@@ -104402,13 +103916,13 @@ No file testdoc.aux.
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
 ABD: EverySelectfont initializing macros))
 
+
+Package hyperref Warning: Draft mode on.
+
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 
-(./testdoc.out) (./testdoc.out) ABD: EveryShipout initializing macros
-(./newcommands_bfmath.tex) (./newcommands_replace.tex)
-
-
-
+ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
 
 
 
@@ -104425,9 +103939,8 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
-[2]
+ [2]
 Underfull \hbox (badness 10000) 
-
 
 
 
@@ -104475,7 +103988,7 @@ Underfull \hbox (badness 10000)
 
 
 
- line 524.
+ line 526.
 
 
 
@@ -104507,35 +104020,11 @@ Underfull \hbox (badness 10000)
 
 
 
-
-(./_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C0
-4A09.pygtex)
-(./_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C0
-4A09.pygtex) [4]
-(./_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77
-2768.pygtex) 
-[5]
-(./_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB
-0399.pygtex)
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/324517A075AC58FEC87C01DD81BE7B927C5D04F18B5ECF473885AEE833B1
-4F29.pygtex)
-(./_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
-(./_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52
-515A.pygtex) <latex_figs/dizzy_face.png, id=246, 64.24pt x 64.24pt>
-<use latex_figs/dizzy_face.png> [6 <./latex_figs/dizzy_face.png>]
-(./_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58
-CDA7.pygtex)
-(./_minted-testdoc/31694FBE2107EB6C5A701C5DEB889172170388258ECB494ED08D68BAB3CD
-E68F.pygtex)
-(./_minted-testdoc/751AAEDF86B68C96684E0B2E1DAD79345B805DEF588DFB75F5378543B444
-240C.pygtex [7]) [8]
+[4]  [5]
+<latex_figs/dizzy_face.png, id=60, 64.24pt x 64.24pt> [6] [7]
+Overfull \hbox (45.85634pt too wide) 
+\T1/lmr/m/n/10 and braces like [], [], [], and []. |
+[8]
 
 
 ...rest of part of LaTeX line number...
@@ -104547,117 +104036,86 @@ E68F.pygtex)
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=279, 586.83241pt x 442.29242pt>
-<use ../doc/src/manual/fig/wave1D.pdf>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<use ../doc/src/manual/fig/wave1D.pdf> [9]
-
-[10 <../doc/src/manual/fig/wave1D.pdf>]
+<../doc/src/manual/fig/wave1D.pdf, id=75, 586.83241pt x 442.29242pt> [9]
 
 
 
 
 
 
-<../doc/src/manual/fig/wave1D.png, id=310, 586.8324pt x 442.2924pt>
-<use ../doc/src/manual/fig/wave1D.png>
-Overfull \hbox (7.06001pt too wide) 
-[][]\T1/lmr/m/n/10 (-20) :
+<../doc/src/manual/fig/wave1D.png, id=82, 586.8324pt x 442.2924pt>
+Overfull \hbox (8.50557pt too wide) 
+[][]\T1/lmr/m/n/10 :|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) cap-
+\T1/lmr/m/n/10 cap-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) tion
+\T1/lmr/m/n/10 tion
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) span-
+\T1/lmr/m/n/10 span-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ning
+\T1/lmr/m/n/10 ning
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sev-eral
+\T1/lmr/m/n/10 sev-eral
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) lines
+\T1/lmr/m/n/10 lines
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 and
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) con-
+\T1/lmr/m/n/10 con-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ver-
+\T1/lmr/m/n/10 tain-ing
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) ba-tim
+\T1/lmr/m/n/10 ver-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) words
+\T1/lmr/m/n/10 ba-tim
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) like
-
-Overfull \hbox (21.40942pt too wide) 
-[]
+\T1/lmr/m/n/10 words
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) and
+\T1/lmr/m/n/10 like
 
 Overfull \hbox (21.67192pt too wide) 
-[]
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as
+\T1/lmr/m/n/10 and
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) math
+\T1/lmr/m/n/10 as
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) with
+\T1/lmr/m/n/10 math
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) sub-
+\T1/lmr/m/n/10 with
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) script
+\T1/lmr/m/n/10 sub-
 
 Underfull \hbox (badness 10000) 
-\T1/lmr/m/n/10 (+20) as in
-<downloaded_figures/f_plot.png, id=311, 578.16pt x 433.62pt>
-<use downloaded_figures/f_plot.png> [11 <../doc/src/manual/fig/wave1D.png>]
+\T1/lmr/m/n/10 script
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\theta' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nabla' on .
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
-
-[12 <./downloaded_figures/f_plot.png>]
-Underfull \hbox (badness 3291) 
-[]\T1/lmr/m/n/8 (+20) test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (+20) (sep-a-rate) 
-\T1/lmtt/m/n/8 verbatim
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as in
+<downloaded_figures/f_plot.png, id=83, 578.16pt x 433.62pt> [10] [11]
+Underfull \hbox (badness 4084) 
+[]\T1/lmr/m/n/8 test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (sep-a-rate) \T1/lmtt/m/n
+/8 verbatim
 
 
 
@@ -104665,49 +104123,68 @@ Underfull \hbox (badness 3291)
 
 
 
+Underfull \hbox (badness 1424) 
+[]\T1/lmr/m/n/8 index, with comma, and one
 
 
-[13]
-<../doc/src/manual/mov/wave_frames/frame_0080.png, id=337, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0080.png>
-<../doc/src/manual/mov/wave_frames/frame_0085.png, id=338, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0085.png>
-<../doc/src/manual/mov/wave_frames/frame_0090.png, id=339, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0090.png>
-<../doc/src/manual/mov/wave_frames/frame_0095.png, id=340, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0095.png>
-<../doc/src/manual/mov/wave_frames/frame_0100.png, id=341, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0100.png>
-<../doc/src/manual/mov/wave_frames/frame_0105.png, id=342, 586.8324pt x 442.292
-4pt> <use ../doc/src/manual/mov/wave_frames/frame_0105.png>
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
+[12]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=97, 586.8324pt x 442.2924
+pt>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=98, 586.8324pt x 442.2924
+pt>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=99, 586.8324pt x 442.2924
+pt>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=100, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=101, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=102, 586.8324pt x 442.292
+4pt> [13] [14]
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on .
+t line 1284.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on .
+
+...rest of part of LaTeX line number...
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
+
+...rest of part of LaTeX line number...
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on .
 
-[14 <../doc/src/manual/mov/wave_frames/frame_0080.png> <../doc/src/manual/mov/w
-ave_frames/frame_0085.png> <../doc/src/manual/mov/wave_frames/frame_0090.png> <
-../doc/src/manual/mov/wave_frames/frame_0095.png> <../doc/src/manual/mov/wave_f
-rames/frame_0100.png> <../doc/src/manual/mov/wave_frames/frame_0105.png>]
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1293.
+
+
+
+...rest of part of LaTeX line number...
+
 [15]
 
 
-t line 1282.
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+t line 1297.
 
 
 
@@ -104727,131 +104204,80 @@ t line 1282.
 
 
 
-t line 1291.
+...rest of part of LaTeX line number...
 
 
 
 ...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
 
 [16]
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-t line 1295.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-(./_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77
-2768.pygtex [17])
 Overfull \hbox (5.03835pt too wide) 
 [][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
-%26+engineering/book/978-3-642-23098-1| 
-[18]
+%26+engineering/book/978-3-642-23098-1| |
+[17]
 
 
-e 1459.
-
-
-
-.
-
-
-
-e 1460.
+e 1461.
 
 
 
@@ -104859,7 +104285,15 @@ e 1460.
 
 
 
-e 1460.
+e 1462.
+
+
+
+.
+
+
+
+e 1462.
 
 
 
@@ -104883,6 +104317,69 @@ Package amsmath Warning: Foreign command \over;
 
 
 
+[18]
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+e 1537.
+
+
+
+.
+
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+
+
+t line 1538.
+
+
+
+...rest of part of LaTeX line number...
+
 [19]
 
 
@@ -104890,86 +104387,19 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-e 1535.
-
-
-
-.
-
-
-
-...rest of part of LaTeX line number...
-
-
-
-
-
-
-t line 1536.
-
-
-
-...rest of part of LaTeX line number...
-
 [20]
-(./_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
 
 
 
 
 
 
-[21]
-
-
-
-
-
-
-[22] [23] [24]
-(./_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77
-2768.pygtex)
+[21] [22] [23]
 Underfull \hbox (badness 10000) 
 
 
 
-e 2084.
+e 2086.
 
 
 
@@ -104982,7 +104412,7 @@ e 2084.
 
 
 
-[25]
+[24]
 
 
 ...rest of part of LaTeX line number...
@@ -104992,7 +104422,7 @@ e 2084.
 
 
 
-t line 2114.
+t line 2116.
 
 
 
@@ -105007,7 +104437,7 @@ t line 2114.
 
 
 
-e 2115.
+e 2117.
 
 
 
@@ -105020,9 +104450,14 @@ e 2115.
 
 
 
-(./testdoc.bbl [26]) [27]
+(./testdoc.bbl [25]) [26]
 Underfull \hbox (badness 10000) 
 
+
+
+...rest of part of LaTeX line number...
+
+[27]
 
 
 ...rest of part of LaTeX line number...
@@ -105032,23 +104467,11 @@ Underfull \hbox (badness 10000)
 
 ...rest of part of LaTeX line number...
 
-[29]
-
-
-...rest of part of LaTeX line number...
 
 
 
 
 
-
-
-
-
-
-
-
-...rest of part of LaTeX line number...
 
 
 
@@ -105060,11 +104483,18 @@ Underfull \hbox (badness 10000)
 
 
 
-[30] (./testdoc.ind [31]
-Overfull \hbox (9.21497pt too wide) 
-[]\T1/lmr/m/n/10 (-20) test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (-20) (sep-a-rat
-e) \T1/lmtt/m/n/10 verbatim expressions \T1/lmr/m/n/10 (-20) which
-[32]) (./testdoc.aux)
+
+
+...rest of part of LaTeX line number...
+
+
+
+
+[29] (./testdoc.ind [30]
+Overfull \hbox (10.92883pt too wide) 
+[]\T1/lmr/m/n/10 test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (sep-a-rate) \T1/lmtt/
+m/n/10 verbatim expressions \T1/lmr/m/n/10 which|
+[31]) (./testdoc.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -105126,7 +104556,6 @@ etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
     etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
  xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
   lineno.sty    2005/11/02 line numbers on paragraphs v4.41
-_minted-testdoc/default.pygstyle
  fontenc.sty
    t1enc.def    2005/09/27 v1.99g Standard LaTeX file
      ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
@@ -105203,8 +104632,6 @@ verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
    t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
 supp-pdf.mkii
-  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
-RS)
 epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
   grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
 epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
@@ -105213,8 +104640,6 @@ everysel.sty    2011/10/28 v1.2 EverySelectfont Package (MS)
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
- testdoc.out
- testdoc.out
 newcommands_bfmath.tex
 newcommands_replace.tex
   t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
@@ -105222,55 +104647,10 @@ newcommands_replace.tex
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
  ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
-_minted-testdoc/478E10B7ED3791D56BE364C79D8C859BFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/421DD83026EF127216124332372DD2BDFB798335F2884490E5438A1A09C04A0
-9.pygtex
-_minted-testdoc/E9C32F618734680FB9D3FCFB6333BDD3685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/B3020D1FB563C18842A26EE5F700D7EB685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/67AE40E5308ECE8DB6DB5F869D19D12C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
 lstlang1.sty    2014/09/06 1.5e listings language file
-_minted-testdoc/52E6529A564CC0111C81D68C72A8287907C6FCF81ED45FE16FF5E71BC1EB039
-9.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/324517A075AC58FEC87C01DD81BE7B927C5D04F18B5ECF473885AEE833B14F2
-9.pygtex
-_minted-testdoc/AFA69484CDD5CA3BF364266436851A32685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/9A1932CFA0A245A0BF793B887DCC3AB2362A2F16D8DB20A57C57BA259A52515
-A.pygtex
-latex_figs/dizzy_face.png
-_minted-testdoc/B223720A3103294503D54303E880DB9B99BB4C226833BE1C2C897D2CCA58CDA
-7.pygtex
-_minted-testdoc/31694FBE2107EB6C5A701C5DEB889172170388258ECB494ED08D68BAB3CDE68
-F.pygtex
-_minted-testdoc/751AAEDF86B68C96684E0B2E1DAD79345B805DEF588DFB75F5378543B444240
-C.pygtex
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.pdf
-../doc/src/manual/fig/wave1D.png
-downloaded_figures/f_plot.png
-../doc/src/manual/mov/wave_frames/frame_0080.png
-../doc/src/manual/mov/wave_frames/frame_0085.png
-../doc/src/manual/mov/wave_frames/frame_0090.png
-../doc/src/manual/mov/wave_frames/frame_0095.png
-../doc/src/manual/mov/wave_frames/frame_0100.png
-../doc/src/manual/mov/wave_frames/frame_0105.png
-_minted-testdoc/1FAD752001339514B05065EFB311A65C685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/78D2CBA423CFE30F8705E6D094408DBF685D8F29C84F15AD58A5250F9E77276
-8.pygtex
-_minted-testdoc/EB76E0ADC5652C451C6FEED93A75CAEC685D8F29C84F15AD58A5250F9E77276
-8.pygtex
  testdoc.bbl
  testdoc.ind
  ***********
@@ -105282,35 +104662,31 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  )
-(see the transcript file for additional information)pdfTeX warning (dest): name
-{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvip
-s/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/sha
-re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/d
-vips/lm/lm-rm.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></us
-r/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/pu
-blic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/shar
-e/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/l
-mmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fo
-nts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
-8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmtt9.pfb></usr/share/texmf/fonts/type1/public/lm/lmtti10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmtto10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/palatino/uplr8a.pfb>
-Output written on testdoc.pdf (32 pages, ).
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi9.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmri7.pfb></usr/share/texmf/fonts/type1/public/lm/lmri8.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lms
+y10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmtk10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb>
+Output written on testdoc.pdf (31 pages, ).
 Transcript written on testdoc.log.
 + '[' 0 -ne 0 ']'
 + system doconce format plain testdoc --exercises_in_zip --examples_as_exercises
@@ -113437,6 +112813,11 @@ Class Springer-SVMono Warning: Specified option or subpackage "open=right"
 (Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
+
+Class Springer-SVMono Warning: Specified option or subpackage "final" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 
@@ -113722,29 +113103,17 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 ...rest of part of LaTeX line number...
 
-
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
 [9]
 
 
 ...rest of part of LaTeX line number...
 
-[10]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[11] [12]
+[10] [11] [12]
 Chapter 2.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[13] [14]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[15] [16]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[17]
+[13] [14] [15] [16] [17]
 
 
 ...rest of part of LaTeX line number...
@@ -113761,10 +113130,7 @@ Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 
 
 
-[18]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[19] [20]
+[18] [19] [20]
 Appendix A.
 
 Overfull \hbox (111.58464pt too wide) 
@@ -113997,6 +113363,11 @@ Class Springer-SVMono Warning: Specified option or subpackage "sectrefs"
 
 
 Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "final" 
 (Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
@@ -114277,24 +113648,12 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 
 
 
-[8] 
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[9] [10]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[11] [12]
+[8]  [9] [10] [11] [12]
 Chapter 2.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[13] [14]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[15] [16]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[17]
+[13] [14] [15] [16] [17]
 
 
 ...rest of part of LaTeX line number...
@@ -114311,10 +113670,7 @@ Overfull \hbox (4.26791pt too wide) has occurred while \output is active
 
 
 
-[18]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[19] [20]
+[18] [19] [20]
 Appendix A.
 
 Overfull \hbox (111.58464pt too wide) 
@@ -114538,6 +113894,11 @@ Class Springer-SVMono Warning: Specified option or subpackage "sectrefs"
 
 
 Class Springer-SVMono Warning: Specified option or subpackage "open=right" 
+(Springer-SVMono)              not found passing it to article class 
+(Springer-SVMono)              - on .
+
+
+Class Springer-SVMono Warning: Specified option or subpackage "final" 
 (Springer-SVMono)              not found passing it to article class 
 (Springer-SVMono)              - on .
 
@@ -114814,27 +114175,12 @@ LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.5> not available
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.25> not available
 (Font)              size <5> substituted on .
 
-[7] [8] 
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[9] [10]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[11] [12]
+[7] [8]  [9] [10] [11] [12]
 Chapter 2.
 
 Overfull \hbox (111.58464pt too wide) 
 |[] 
-[13] [14]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[15] [16]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[17] [18]
-Overfull \hbox (4.26791pt too wide) has occurred while \output is active
-[][][]
-[19] [20]
+[13] [14] [15] [16] [17] [18] [19] [20]
 Appendix A.
 
 Overfull \hbox (111.58464pt too wide) 

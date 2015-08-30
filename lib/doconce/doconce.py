@@ -355,6 +355,21 @@ def fix(filestr, format, verbose=0):
 def syntax_check(filestr, format):
     """Check for common errors in the doconce syntax."""
 
+    # Copyright works for LaTeX only
+    if option('copyright=', None) is not None:
+        if format in ('latex', 'pdflatex'):
+            pass
+        elif format == 'html':
+            print '*** error: do not use --copyright when compiling to', format
+            print "    use doconce split_html mydoc --reference='copyright text'"
+            _abort()
+        elif format == 'sphinx':
+            print '*** error: do not use --copyright when compiling to', format
+            print "    use doconce sphinx_dir copyright='copyright text' theme=alabaster mydoc"
+            _abort()
+        else:
+            print '*** warning: --copyright=... has no effect for format', format
+
     # URLs with just one /
     m = re.findall(r'https?:/[A-Za-z].+', filestr)
     if m:
