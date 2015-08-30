@@ -163,6 +163,7 @@ def sphinx_dir():
     conf_py = None
     theme_dir = None
     logo = None
+    favicon = None
     intersphinx = False
     runestone = False
     for arg in sys.argv[1:]:
@@ -186,6 +187,8 @@ def sphinx_dir():
             theme_dir = arg.split('=')[1]
         elif arg.startswith('logo='):
             logo = arg.split('=')[1]
+        elif arg.startswith('favicon='):
+            favicon = arg.split('=')[1]
         elif arg.startswith('intersphinx'):
             intersphinx = True
         elif arg == '--runestone':
@@ -273,7 +276,7 @@ def sphinx_dir():
     time.sleep(1.5)
 
     #make_conf_py_runestone(themes, theme, title, short_title,
-    #                       copyright_, logo, intersphinx)
+    #                       copyright_, logo, favicon, intersphinx)
     f = open('tmp_sphinx_gen.sh', 'w')
     f.write("""\
 #!/bin/bash
@@ -329,7 +332,7 @@ EOF
 
         if conf_py is None:
             make_conf_py(themes, theme, title, short_title,
-                         logo, intersphinx)
+                         logo, favicon, intersphinx)
     else:
         # Copy theme_dir
         os.mkdir('_themes')
@@ -615,7 +618,7 @@ or just run it by
   python automake_sphinx.py
 """
 
-def make_conf_py(themes, theme, title, short_title, logo, intersphinx):
+def make_conf_py(themes, theme, title, short_title, logo, favicon, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in sorted(themes)]
@@ -922,12 +925,6 @@ elif html_theme == 'cbc':
 elif html_theme == 'uio':
     pygments_style = "tango"
 
-
-
-
-
-
-
 """)
 
     # Examples on settings: http://pylit.berlios.de/conf.py.html
@@ -941,8 +938,19 @@ if html_theme == 'impressjs':
                         'html_title = u"%s"' % title)
     text = text.replace('#short_html_title = None',
                         'html_short_title = u"%s"' % short_title)
-    if isinstance(logo, basestring):
-        text = text.replace('#html_logo = None', 'html_logo = "%s"' % logo)
+    if logo is not None:
+        # Must copy logo file
+        logo_basename = os.path.basename(logo)
+        shutil.copy(os.path.abspath(logo), logo_basename)
+        text = text.replace('#html_logo = None', 'html_logo = "%s"'
+                            % logo_basename)
+
+    if favicon is not None:
+        # Must copy logo file
+        favicon_basename = os.path.basename(favicon)
+        shutil.copy(os.path.abspath(favicon), favicon_basename)
+        text = text.replace('#html_favicon = None', 'html_favicon = "%s"'
+                            % favicon_basename)
 
     f = open('conf.py', 'w');  f.write(text);  f.close()
 
@@ -978,7 +986,7 @@ if html_theme == 'impressjs':
 
 
 def make_conf_py_runestone(themes, theme, title, short_title,
-                           copyright_, logo, intersphinx):
+                           copyright_, logo, favicon, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
     text = re.sub(r"^project = u'<ENTER.+", "project = u'%s'" % title,
                   flags=re.MULTILINE)
@@ -1082,8 +1090,8 @@ apply_inline_edits
 # create a directory for the sphinx format
 doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
+    dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+    dofile
 (requires sphinx version >= 1.1)
 
 # walk through a directory tree and insert doconce files as

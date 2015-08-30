@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 29, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 30, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -470,7 +470,7 @@ is up to LaTeX do decide).</p>
 into the text. You can add vertical space in LaTeX and HTML by
 inserting seeral lines with <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code>.</p>
 </div>
-<div class="figure" id="id36">
+<div class="figure" id="id38">
 <span id="fig-viz"></span><a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-text"><em>A wave</em></span></p>
 </div>
@@ -7185,7 +7185,9 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 </div>
 <div class="section" id="from-doconce-to-latex-pdf-generate-latex-step-1">
 <span id="do2any-latex-compile1"></span><h3>From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)<a class="headerlink" href="#from-doconce-to-latex-pdf-generate-latex-step-1" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-168"></span><p id="index-169">Filter the doconce text directly to valid LaTeX using
+<span class="target" id="index-168"></span><div class="section" id="the-translation-command">
+<span id="index-169"></span><h4>The translation command<a class="headerlink" href="#the-translation-command" title="Permalink to this headline">¶</a></h4>
+<p>Filter the doconce text directly to valid LaTeX using
 the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
 </pre></div>
@@ -7193,11 +7195,17 @@ the <code class="docutils literal"><span class="pre">--latex_code_style=</span><
 <p>Without <code class="docutils literal"><span class="pre">--latex_code_style=</span></code>, the output will be a <code class="docutils literal"><span class="pre">mydoc.p.tex</span></code> file
 that has to be converted to a standard <code class="docutils literal"><span class="pre">mydoc.tex</span></code> LaTeX file via
 the programs <code class="docutils literal"><span class="pre">ptex2tex</span></code> or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>.</p>
+</div>
+<div class="section" id="id35">
+<h4>Newcommands<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
 <p>LaTeX-specific commands (&#8220;newcommands&#8221;) in math formulas and similar
 can be placed in files <code class="docutils literal"><span class="pre">newcommands.tex</span></code>, <code class="docutils literal"><span class="pre">newcommands_keep.tex</span></code>, or
 <code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> (see the section <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a>).
 If these files are present, they are included in the LaTeX document
 so that your commands are defined.</p>
+</div>
+<div class="section" id="output-for-paper-vs-screen">
+<h4>Output for paper vs screen<a class="headerlink" href="#output-for-paper-vs-screen" title="Permalink to this headline">¶</a></h4>
 <p>An option <code class="docutils literal"><span class="pre">--device=paper</span></code> makes some adjustments for documents
 aimed at being printed. For example, links to web resources are
 associated with a footnote listing the complete web address (URL).
@@ -7206,7 +7214,10 @@ as <a class="reference external" href="http://goo.gl/">http://goo.gl/</a>, <a cl
 <a class="reference external" href="https://bitly.com/">https://bitly.com/</a>.)
 The default, <code class="docutils literal"><span class="pre">--device=screen</span></code>, creates a PDF file for reading
 on a screen where links are just clickable.</p>
-<p id="index-170">There are many additional options (run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and
+</div>
+<div class="section" id="command-line-options">
+<span id="index-170"></span><h4>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h4>
+<p>There are many additional options (run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and
 look for options starting with <code class="docutils literal"><span class="pre">--latex</span></code> to get a more verbose description):</p>
 <blockquote>
 <div><ul class="simple">
@@ -7216,7 +7227,8 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></code> (name of BibTeX style)</li>
 <li><code class="docutils literal"><span class="pre">--latex_title_layout=titlepage,</span> <span class="pre">std,</span> <span class="pre">beamer,</span> <span class="pre">doconce_heading,</span> <span class="pre">Springer_collection</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_sv,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">Springer_T4,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
-<li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included)</li>
+<li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id36">[4]</a>)</li>
+<li><code class="docutils literal"><span class="pre">--draft</span></code> (turns on draft mode in documentclass, otherwise final mode)</li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
 <li><code class="docutils literal"><span class="pre">--latex_fancy_header</span></code> (chapter/section headings at top of pages, style depends on value of <code class="docutils literal"><span class="pre">--latex_section_headings</span></code>)</li>
 <li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -7259,7 +7271,19 @@ journals and requires the stylefiles <code class="docutils literal"><span class=
 to be submitted to Elsevier journals (<code class="docutils literal"><span class="pre">--latex_elsevier_journal=</span></code> can
 be used to set the journal name, and the style requires
 <code class="docutils literal"><span class="pre">elsarticle.cls</span></code> and <code class="docutils literal"><span class="pre">elsarticle-num.bst</span></code>).</p>
-<p id="index-171">The style of verbatim blocks of computer code is specified by
+<table class="docutils footnote" frame="void" id="varioref" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id36">[4]</a></td><td>Listing <code class="docutils literal"><span class="pre">varioref</span></code> in as package
+automatically leads to references with page numbers, if the element referred to
+is not on the same page. This is often very helpful, e.g., &#8220;see
+Figure 5.3 on page 67&#8221;.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="syntax-highlighting">
+<span id="index-171"></span><h4>Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
+<p>The style of verbatim blocks of computer code is specified by
 <code class="docutils literal"><span class="pre">--latex_code_style=X</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> can be set in a very flexible way.
 There are three main values, corresponding to three LaTeX tools
 for verbatim type setting:</p>
@@ -7297,17 +7321,25 @@ framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 </div>
 <p>(but no linebreaks, as here, they are for formatting this document only).</p>
+</div>
+<div class="section" id="drafts">
+<h4>Drafts<a class="headerlink" href="#drafts" title="Permalink to this headline">¶</a></h4>
 <p>During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <code class="docutils literal"><span class="pre">--latex_line_numbers</span> <span class="pre">--latex_double_spacing</span> <span class="pre">--latex_todonotes</span> <span class="pre">--latex_labels_in_margin</span></code>. One may also (automatically) edit the
 <code class="docutils literal"><span class="pre">final</span></code> argument in the <code class="docutils literal"><span class="pre">documentclass</span></code> heading to <code class="docutils literal"><span class="pre">draft</span></code> as this will
 mark overful lines (hboxes).</p>
+</div>
+<div class="section" id="potential-problems-with-ampersand">
+<h4>Potential problems with ampersand<a class="headerlink" href="#potential-problems-with-ampersand" title="Permalink to this headline">¶</a></h4>
 <p>Another useful option for LaTeX documents is <code class="docutils literal"><span class="pre">--no_ampersand_quote</span></code>, which
 prevents ampersands from getting a backskash. This is necessary if one
 inserts native latex code for tables
 inside <code class="docutils literal"><span class="pre">%</span> <span class="pre">if</span> <span class="pre">FORMAT</span> <span class="pre">in</span> <span class="pre">('latex',</span> <span class="pre">'pdflatex'):</span></code> (or similar <code class="docutils literal"><span class="pre">preprocess</span></code> syntax)
 tests.</p>
-<p><strong>Part 2 of Step 1 (outdated).</strong>
-In case you <em>did not</em> specify the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option,
+</div>
+<div class="section" id="part-2-of-step-1-outdated">
+<h4>Part 2 of Step 1 (outdated)<a class="headerlink" href="#part-2-of-step-1-outdated" title="Permalink to this headline">¶</a></h4>
+<p>In case you <em>did not</em> specify the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option,
 you must run <code class="docutils literal"><span class="pre">ptex2tex</span></code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ptex2tex mydoc
@@ -7370,6 +7402,7 @@ the <code class="docutils literal"><span class="pre">sys</span></code> environme
 <p>If no environments like <code class="docutils literal"><span class="pre">sys</span></code>, <code class="docutils literal"><span class="pre">fpro</span></code>, or the common
 <code class="docutils literal"><span class="pre">envir</span></code> are defined on the command line, the plain <code class="docutils literal"><span class="pre">\begin{Verbatim}</span></code>
 and <code class="docutils literal"><span class="pre">\end{Verbatim}</span></code> instructions are used.</p>
+</div>
 </div>
 <div class="section" id="from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional">
 <span id="do2any-latex-compile2"></span><h3>From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)<a class="headerlink" href="#from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional" title="Permalink to this headline">¶</a></h3>
@@ -8035,6 +8068,18 @@ Values: on/off. Turns on/off fix of illegal constructions and the syntax check
 Remove all inline comments of the form [ID: comment].
 
 
+--draft
+
+Indicates draft (turns on draft elements in LaTeX, otherwise no effect).
+
+
+--copyright=...
+
+Set copyright, mainly for LaTeX output (inserted in date and in a footer).
+For HTML, use --reference= option in the doconce split_html command.
+For Sphinx, use copyright= option in the doconce sphinx_dir command.
+
+
 --exercise_numbering=...
 
 absolute: exercises numbered as 1, 2, ... (default)
@@ -8462,6 +8507,9 @@ beamer: layout for beamer slides.
 Color used in hyperlinks. Default is dark blue if --device=screen,
 or black if --device=paper (invisible in print out) or special blue
 color if --latex_section_headings=blue or strongblue.
+Values are specified either as comma-separated rgb tuples or as
+color names, e.g., --latex_link_color=0.1,0.9,0.85 or
+--latex_link_color=red or --latex_link_color=gray!70
 
 
 --latex_title_reference=...
@@ -9708,7 +9756,17 @@ Springer,
 </li>
 <li><a class="reference internal" href="#latex-overview">LaTeX: Overview</a></li>
 <li><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
-<li><a class="reference internal" href="#from-doconce-to-latex-pdf-generate-latex-step-1">From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)</a></li>
+<li><a class="reference internal" href="#from-doconce-to-latex-pdf-generate-latex-step-1">From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
+<li><a class="reference internal" href="#the-translation-command">The translation command</a></li>
+<li><a class="reference internal" href="#id35">Newcommands</a></li>
+<li><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
+<li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
+<li><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
+<li><a class="reference internal" href="#drafts">Drafts</a></li>
+<li><a class="reference internal" href="#potential-problems-with-ampersand">Potential problems with ampersand</a></li>
+<li><a class="reference internal" href="#part-2-of-step-1-outdated">Part 2 of Step 1 (outdated)</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional">From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
 <li><a class="reference internal" href="#from-doconce-to-latex-pdf-generate-pdf-step-3">From DocOnce to LaTeX-PDF: Generate PDF (Step 3)</a></li>
 <li><a class="reference internal" href="#xelatex">XeLaTeX</a></li>

@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Aug 29, 2015
+:Date: Aug 30, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -8652,6 +8652,9 @@ From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)
 
 .. index:: ptex2tex doconce version
 
+The translation command
+~~~~~~~~~~~~~~~~~~~~~~~
+
 Filter the doconce text directly to valid LaTeX using
 the ``--latex_code_style=`` option:
 
@@ -8663,11 +8666,17 @@ Without ``--latex_code_style=``, the output will be a ``mydoc.p.tex`` file
 that has to be converted to a standard ``mydoc.tex`` LaTeX file via
 the programs ``ptex2tex`` or ``doconce ptex2tex``.
 
+Newcommands
+~~~~~~~~~~~
+
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files ``newcommands.tex``, ``newcommands_keep.tex``, or
 ``newcommands_replace.tex`` (see the section :ref:`newcommands`).
 If these files are present, they are included in the LaTeX document
 so that your commands are defined.
+
+Output for paper vs screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An option ``--device=paper`` makes some adjustments for documents
 aimed at being printed. For example, links to web resources are
@@ -8679,6 +8688,9 @@ The default, ``--device=screen``, creates a PDF file for reading
 on a screen where links are just clickable.
 
 .. index:: LaTeX style options
+
+Command-line options
+~~~~~~~~~~~~~~~~~~~~
 
 There are many additional options (run ``doconce format --help`` and
 look for options starting with ``--latex`` to get a more verbose description):
@@ -8695,7 +8707,9 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier``
 
- * ``--latex_packages=package1,package2,package3`` (list of extra packages to be included)
+ * ``--latex_packages=package1,package2,package3`` (list of extra packages to be included [#varioref]_)
+
+ * ``--draft`` (turns on draft mode in documentclass, otherwise final mode)
 
  * ``--latex_list_of_exercises=loe,toc,none`` (LaTeX list of exercises, integrated into the table of contents, or no list)
 
@@ -8756,7 +8770,15 @@ to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can
 be used to set the journal name, and the style requires
 ``elsarticle.cls`` and ``elsarticle-num.bst``).
 
+.. [#varioref] Listing ``varioref`` in as package
+   automatically leads to references with page numbers, if the element referred to
+   is not on the same page. This is often very helpful, e.g., "see
+   Figure 5.3 on page 67".
+
 .. index:: LaTeX syntax highlighting
+
+Syntax highlighting
+~~~~~~~~~~~~~~~~~~~
 
 The style of verbatim blocks of computer code is specified by
 ``--latex_code_style=X``, where ``X`` can be set in a very flexible way.
@@ -8807,10 +8829,16 @@ window for the ``sys`` environment:
 
 (but no linebreaks, as here, they are for formatting this document only).
 
+Drafts
+~~~~~~
+
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
 ``final`` argument in the ``documentclass`` heading to ``draft`` as this will
 mark overful lines (hboxes).
+
+Potential problems with ampersand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Another useful option for LaTeX documents is ``--no_ampersand_quote``, which
 prevents ampersands from getting a backskash. This is necessary if one
@@ -8818,7 +8846,9 @@ inserts native latex code for tables
 inside ``% if FORMAT in ('latex', 'pdflatex'):`` (or similar ``preprocess`` syntax)
 tests.
 
-**Part 2 of Step 1 (outdated).**
+Part 2 of Step 1 (outdated)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 In case you *did not* specify the ``--latex_code_style=`` option,
 you must run ``ptex2tex`` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -9780,6 +9810,18 @@ here for convenience.
         Remove all inline comments of the form [ID: comment].
         
         
+        --draft
+        
+        Indicates draft (turns on draft elements in LaTeX, otherwise no effect).
+        
+        
+        --copyright=...
+        
+        Set copyright, mainly for LaTeX output (inserted in date and in a footer).
+        For HTML, use --reference= option in the doconce split_html command.
+        For Sphinx, use copyright= option in the doconce sphinx_dir command.
+        
+        
         --exercise_numbering=...
         
         absolute: exercises numbered as 1, 2, ... (default)
@@ -10207,6 +10249,9 @@ here for convenience.
         Color used in hyperlinks. Default is dark blue if --device=screen,
         or black if --device=paper (invisible in print out) or special blue
         color if --latex_section_headings=blue or strongblue.
+        Values are specified either as comma-separated rgb tuples or as
+        color names, e.g., --latex_link_color=0.1,0.9,0.85 or
+        --latex_link_color=red or --latex_link_color=gray!70
         
         
         --latex_title_reference=...

@@ -18,7 +18,7 @@ pdflatex -shell-escape ${name}.tex
 # Sphinx
 doconce format sphinx ${name}  $opt
 rm -rf sphinx-rootdir
-doconce sphinx_dir author='HPL' version=0.2 ${name}
+doconce sphinx_dir copyright='HPL' version=0.2 ${name}
 python automake_sphinx.py
 
 doconce format rst ${name}  $opt
