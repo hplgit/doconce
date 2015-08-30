@@ -1,0 +1,235 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Demo of admonition styles in DocOnce &mdash; Demo of admonition styles in DocOnce</title>
+    
+    <link rel="stylesheet" href="_static/fenics_minimal.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="Demo of admonition styles in DocOnce" href="index.html" />
+    <link rel="prev" title="Demo of admonition styles in DocOnce" href="index.html" />
+
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+<link rel="stylesheet" href="_static/featured.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="_static/slides.min.jquery.js"></script>
+  <script>
+	$(function(){
+		$('#products').slides({
+			preload: true,
+			preloadImage: 'img/loading.gif',
+			effect: 'slide, fade',
+			crossfade: true,
+			slideSpeed: 350,
+			fadeSpeed: 500,
+			generateNextPrev: false,
+			generatePagination: false,
+	                play: 5000,
+                        hoverPause: false,
+                        animationStart: function(current){
+				$('.caption').animate({
+					bottom:-35
+				},100);
+				if (window.console && console.log) {
+					// example return of current slide number
+					console.log('animationStart on slide: ', current);
+				};
+			},
+			animationComplete: function(current){
+				$('.caption').animate({
+					bottom:0
+				},200);
+				if (window.console && console.log) {
+					// example return of current slide number
+					console.log('animationComplete on slide: ', current);
+				};
+			},
+			slidesLoaded: function() {
+				$('.caption').animate({
+					bottom:0
+				},200);
+			}
+		});
+	});
+  </script>
+
+
+<link rel="shortcut icon" href="_static/fenics.ico" />
+
+
+  </head>
+  <body>
+<div class="wrapper">
+  <a href="http://fenicsproject.org/"><img src="_static/fenics_icon.png" width="100" style="padding-left: 30px; padding-top: 10px;" alt="FEniCS Project Banner" /></a>
+  <div id="access">
+    <div class="menu">
+    </div><!-- .menu -->
+  </div><!-- #access -->
+</div><!-- #wrapper -->
+
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="demo-of-admonition-styles-in-doconce">
+<h1>Demo of admonition styles in DocOnce<a class="headerlink" href="#demo-of-admonition-styles-in-doconce" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body"><ol class="first upperalpha simple" start="8">
+<li><ol class="first upperalpha" start="16">
+<li>Langtangen</li>
+</ol>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">May 2, 2015</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Summary.</em> This note demonstrates how admonitions look like in the output format
+<strong>sphinx</strong>.</p>
+<div class="section" id="the-four-main-types-of-admonitions">
+<h2>The four main types of admonitions<a class="headerlink" href="#the-four-main-types-of-admonitions" title="Permalink to this headline">¶</a></h2>
+<p>Here is the warning admon:</p>
+<div class="admonition-division-by-zero-is-illegal admonition">
+<p class="first admonition-title">Division by zero is illegal</p>
+<p>Most math systems will give fatal errors if you divide by zero.</p>
+<div class="last highlight-text"><div class="highlight"><pre>Terminal&gt; python -c &#39;print 4/0&#39;
+Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+ZeroDivisionError: integer division or modulo by zero
+</pre></div>
+</div>
+</div>
+<p>Question admon (without title).</p>
+<div class="admonition-question admonition">
+<p class="first admonition-title">Question</p>
+<p class="last">What are the admon options for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span></tt>?</p>
+</div>
+<p>Summary admon:</p>
+<div class="admonition-summary admonition">
+<p class="first admonition-title">Summary</p>
+<p>The most popular methods for solving algebraic equations</p>
+<div class="math">
+\[f(x) = 0\]</div>
+<p>are</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>Newton&#8217;s method</li>
+<li>The Bisection method</li>
+<li>The Secant method</li>
+<li>The Fixed-Point method (<span class="math">\(f(x) = x - g(x)\)</span>)</li>
+</ul>
+</div></blockquote>
+</div>
+<p>Notice admon:</p>
+<div class="admonition-tip-follow-well-established-conventions-for-variable-names admonition">
+<p class="first admonition-title">Tip: follow well-established conventions for variable names</p>
+<p class="last">For example, in Python, variable and function names use
+lower case letters separated by underscore, as in
+<tt class="docutils literal"><span class="pre">vibration_with_damping</span></tt> (while Java typically would
+have <tt class="docutils literal"><span class="pre">vibrationWithDamping</span></tt>). Class names apply cap words,
+as in <tt class="docutils literal"><span class="pre">ProblemClass</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="the-block-quote-and-plain-box-environment">
+<h2>The block, quote and plain box environment<a class="headerlink" href="#the-block-quote-and-plain-box-environment" title="Permalink to this headline">¶</a></h2>
+<p>DocOnce features a <tt class="docutils literal"><span class="pre">block</span></tt> environment with or without title.</p>
+<div class="admonition-notice admonition">
+<p class="first admonition-title">Notice</p>
+<p class="last">Blocks are often used in slides to frame a collection of things.</p>
+</div>
+<div class="admonition-block-with-title admonition">
+<p class="first admonition-title">Block with title</p>
+<p class="last">Blocks can contain text, math, code, figures, movies.</p>
+</div>
+<p>Here is a quote environment (<tt class="docutils literal"><span class="pre">quote</span></tt>):</p>
+<blockquote>
+<div><p>Sayre&#8217;s law states that
+&#8220;in any dispute the intensity of feeling is inversely
+proportional to the value of the issues at stake.&#8221;</p>
+<div class="line-block">
+<div class="line">By way of corollary, it adds:</div>
+<div class="line">&#8220;That is why academic politics are so bitter.&#8221;</div>
+<div class="line"><em>Source</em>: <a class="reference external" href="http://en.wikipedia.org/wiki/Sayre's_law">wikipedia</a></div>
+</div>
+</div></blockquote>
+<p>Boxes are very simple frames (without any icons, background color,
+or stash, except for a shadow)
+used for important results like
+(note: box frame is not available in format <strong>sphinx</strong>)</p>
+<p>The world most famous equation:</p>
+<div class="math">
+\[E = mc^2\]</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Demo of admonition styles in DocOnce"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Demo of admonition styles in DocOnce</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, H. P. Langtangen.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

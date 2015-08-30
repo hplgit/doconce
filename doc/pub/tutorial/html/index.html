@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,7 +24,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -47,8 +47,8 @@
     <link rel="next" title="DocOnce: Document Once, Include Anywhere" href="tutorial.html" />
  
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -57,14 +57,14 @@
         <li class="right" >
           <a href="tutorial.html" title="DocOnce: Document Once, Include Anywhere"
              accesskey="N">next</a> |</li>
-        <li><a href="#">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="doconce-document-once-include-anywhere">
 <h1>DocOnce: Document Once, Include Anywhere<a class="headerlink" href="#doconce-document-once-include-anywhere" title="Permalink to this headline">¶</a></h1>
@@ -78,9 +78,11 @@
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#basic-syntax">Basic Syntax</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#first-a-section-heading">First a Section Heading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#first-a-section-heading-with-7-characters">First a Section Heading with 7 = Characters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#then-a-subsection-heading-with-5-characters">Then a Subsection Heading with 5 = Characters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#a-subsection-with-sample-text">A Subsection with Sample Text</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#mathematics-and-computer-code">Mathematics and Computer Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#mathematics">Mathematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#computer-code">Computer Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#macros-newcommands-cross-references-index-and-bibliography">Macros (Newcommands), Cross-References, Index, and Bibliography</a></li>
 </ul>
 </li>
@@ -90,16 +92,20 @@
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#removal-of-inline-comments">Removal of inline comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#notes">Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#demo-of-different-formats">Demo of different formats</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#useful-options-for-doconce-format">Useful Options for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#html">HTML</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#blog-posts">Blog Posts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#pandoc-and-markdown">Pandoc and Markdown</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#latex">LaTeX</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#pdflatex">PDFLaTeX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#latex-overview">LaTeX: Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#from-doconce-to-latex-pdf-generate-latex-step-1">From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#from-doconce-to-latex-pdf-edit-the-latex-file-step-2-optional">From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#from-doconce-to-latex-pdf-generate-pdf-step-3">From DocOnce to LaTeX-PDF: Generate PDF (Step 3)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#xelatex">XeLaTeX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#ipython-notebooks">IPython Notebooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#jupyter-ipython-notebooks">Jupyter (IPython) Notebooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#matlab-notebooks">Matlab Notebooks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#plain-ascii-text">Plain ASCII Text</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#restructuredtext">reStructuredText</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#sphinx">Sphinx</a></li>
@@ -108,8 +114,8 @@
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial.html#options-for-the-doconce-commands">Options for the <tt class="docutils literal"><span class="pre">doconce</span></tt> commands</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tutorial.html#doconce-format-command-line-options"><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command-line options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial.html#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html#demos">Demos</a></li>
 </ul>
 </li>
@@ -126,9 +132,9 @@
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 
@@ -136,8 +142,13 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DocOnce: Document Once, Include Anywhere</a></li>
@@ -147,15 +158,17 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorial.html"
                         title="next chapter">DocOnce: Document Once, Include Anywhere</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -169,7 +182,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -178,12 +191,17 @@
         <li class="right" >
           <a href="tutorial.html" title="DocOnce: Document Once, Include Anywhere"
              >next</a> |</li>
-        <li><a href="#">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright 2015, Hans Petter Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
-    </div>
+<div class="wrapper">
+  <div class="footer">
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;2006-2015 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo.
+  </div>
+</div>
+
   </body>
 </html>

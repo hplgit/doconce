@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os, sys
 from commands import getstatusoutput
+from doconce.latex import update_copyright_years
 from doconce.misc import system, misc_option
 from doconce.misc import (
     insertdocstr,
@@ -117,8 +118,8 @@ for links to other sphinx documents.
 The theme option can be chosen from basic sphinx themes (agogo,
 basic, bizstyle, classic, default, epub, haiku, nature, pyramid,
 scrolls, sphinxdoc, traditional), extra themes that can be installed
-(bootstrap, cloud, redcloud, solarized, sphinx_rtd_theme), or
-themes that come with DocOnce (ADCtheme, agni, alabaster, basicstrap,
+(alabaster, bootstrap, cloud, redcloud, solarized, sphinx_rtd_theme),
+or themes that come with DocOnce (ADCtheme, agni, basicstrap,
 bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons,
 scipy_lectures, slim-agogo, uio, vlinux-theme).
 See bundled/sphinx_themes/install.txt for how to install extra
@@ -221,6 +222,10 @@ def sphinx_dir():
             print '%s.do.txt does not exist' % filename
             sys.exit(1)
 
+    if copyright_:
+        # Check that the most recent year is this year
+        copyright_ = update_copyright_years(copyright_)
+
     parts = glob.glob('._%s[0-9][0-9][0-9].rst' % filename)
     parts = [part[:-4] for part in sorted(parts)]
 
@@ -242,27 +247,28 @@ def sphinx_dir():
         # Default is to use title
         short_title = title
 
-    if copyright_ is None:
-        import doconce.doconce
-        f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
-        # The following can be misleading if there are examples on
-        # various AUTHOR: in e.g. vertabim code in the .do.txt file
-        authors_and_institutions, dummy1, dummy2, dummy3, dummy4, dummy5 = \
-                  doconce.doconce.interpret_authors(fstr, 'sphinx')
-        if authors_and_institutions:
-            copyright_ = [a for a, i, e in authors_and_institutions]
+    # Extract author from .do.txt file
+    import doconce.doconce
+    f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
+    # The following can be misleading if there are examples on
+    # various AUTHOR: in e.g. vertabim code in the .do.txt file
+    authors_and_institutions, dummy1, dummy2, dummy3, dummy4, dummy5 = \
+              doconce.doconce.interpret_authors(fstr, 'sphinx')
+    if authors_and_institutions:
+        author = [a for a, i, e in authors_and_institutions]
 
-            print 'Copyright:', copyright_
-            if len(copyright_) == 1:
-                copyright_ = copyright_[0]
-            else:
-                copyright_ = ', '.join(copyright_[:-1]) + ' and ' + copyright_[-1]
-            print 'Using author(s) "%s" from %s as copyright' % (copyright_, filename)
+        print 'Author:', author
+        if len(author) == 1:
+            author = author[0]
+        else:
+            author = ', '.join(author[:-1]) + ' and ' + author[-1]
 
     if copyright_ is None:
+        copyright_ = author
+        print 'Using author(s) "%s" from %s as copyright' % (copyright_, filename)
+
+    if author is None:
         print '\nNo AUTHOR: line found in %s.do.txt' % filename
-        print 'and no copyright="authors or company" given on the command line'
-        sys.exit(1)
 
     if theme_dir is not None and conf_py is None:
         print 'theme_dir is given, but then also conf_py must be specified'
@@ -270,6 +276,7 @@ def sphinx_dir():
         sys.exit(1)
 
     print 'title:', title
+    print 'author:', author
     print 'copyright:', copyright_
     print 'theme:', theme,
     print
@@ -288,7 +295,7 @@ sphinx-quickstart <<EOF
 n
 _
 %(title)s
-%(copyright_)s
+%(author)s
 %(version)s
 %(version)s
 en
@@ -314,7 +321,7 @@ EOF
     os.chdir(sphinx_rootdir)
 
     sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()
-    sphinx_installed_themes = 'bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme'.split()
+    sphinx_installed_themes = 'alabaster bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme'.split()
 
     if theme_dir is None:
         # Copy themes
@@ -331,7 +338,7 @@ EOF
         print 'These Sphinx themes were found:', ', '.join(themes)
 
         if conf_py is None:
-            make_conf_py(themes, theme, title, short_title,
+            make_conf_py(themes, theme, title, short_title, copyright_,
                          logo, favicon, intersphinx)
     else:
         # Copy theme_dir
@@ -514,7 +521,8 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
 # Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars())
+    if os.listdir(staticdir):  # copy only if non-empty dir
+        system('cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars())
 ''' % vars())
     # (Note: must do cp -r above since shutil.copy/copytree cannot copy a la cp -r)
     f.write('''
@@ -618,15 +626,26 @@ or just run it by
   python automake_sphinx.py
 """
 
-def make_conf_py(themes, theme, title, short_title, logo, favicon, intersphinx):
+def make_conf_py(themes, theme, title, short_title, copyright_,
+                 logo, favicon, intersphinx):
     f = open('conf.py', 'r');  text = f.read();  f.close()
+
+    # sphinx-quickstart sets copyright to authors with current year,
+    # we customize this
+    if re.search(r'\d\d\d\d', copyright_):
+        # copyright_ has year
+        text = re.sub('copyright =.+', "copyright = u'%s'" % copyright_, text)
+    else:
+        # keep the generated year
+        text = re.sub(r"copyright = u'(\d\d\d\d),.+", r"copyright = u'\g<1>, %s'" % copyright_, text)
+
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in sorted(themes)]
     themes_code = r"""
 
 check_additional_themes = [
    'solarized', 'cloud', 'redcloud',
-   'bootstrap', 'impressjs']
+   'alabaster', 'bootstrap', 'impressjs']
 
 for theme in check_additional_themes:
     if html_theme == theme:
@@ -899,7 +918,22 @@ elif html_theme == 'bootstrap':
 
         # Location of link to source.
         # Options are "nav" (default), "footer" or anything else to exclude.
-        'source_link_position': "nav",
+        'source_link_position': "footer",
+
+        # Any Bootswatch theme (http://bootswatch.com/) can be used
+        #'bootswatch_theme': 'readable',
+
+
+        # A list of tuples containing pages or urls to link to.
+        # Valid tuples should be in the following forms:
+        #    (name, page)                 # a link to a page
+        #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+        #    (name, "http://example.com", True) # arbitrary absolute url
+        # Note the "1" or "True" value above as the third argument to indicate
+        # an arbitrary url.
+        #'navbar_links': [
+        #    ('PDF', '../myfile.pdf', True),
+        #    ],
 
         # TODO: Future.
         # Add page navigation to it's own navigation bar.
@@ -948,7 +982,8 @@ if html_theme == 'impressjs':
     if favicon is not None:
         # Must copy logo file
         favicon_basename = os.path.basename(favicon)
-        shutil.copy(os.path.abspath(favicon), favicon_basename)
+        shutil.copy(os.path.abspath(favicon),
+                    os.path.join('_static', favicon_basename))
         text = text.replace('#html_favicon = None', 'html_favicon = "%s"'
                             % favicon_basename)
 

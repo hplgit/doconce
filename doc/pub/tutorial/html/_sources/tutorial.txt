@@ -1,42 +1,22 @@
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
-.. !split
+.. Document title:
 
 DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Mar 28, 2015
+:Date: Aug 30, 2015
 
- * When writing a note, report, manual, etc., do you find it difficult
-   to choose the typesetting format? That is, to choose between plain
-   (email-like) text, wiki, Word/OpenOffice, LaTeX, HTML,
-   reStructuredText, Sphinx, XML, etc.  Would it be convenient to
-   start with some very simple text-like format that easily converts
-   to the formats listed above, and then at some later stage
-   eventually go with a particular format?
-
- * Do you need to write documents in varying formats but find it
-   difficult to remember all the typesetting details of various
-   formats like `LaTeX <http://refcards.com/docs/silvermanj/amslatex/LaTeXRefCard.v2.0.pdf>`__, `HTML <http://www.htmlcodetutorial.com/>`__, `reStructuredText <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html>`__, `Sphinx <http://sphinx.pocoo.org/contents.html>`__, and `wiki <http://code.google.com/p/support/wiki/WikiSyntax>`__? Would it be convenient
-   to generate the typesetting details of a particular format from a
-   very simple text-like format with minimal tagging?
-
- * Do you have the same information scattered around in different
-   documents in different typesetting formats? Would it be a good idea
-   to write things once, in one format, stored in one place, and
-   include it anywhere?
-
-If any of these questions are of interest, you should keep on reading.
+.. !split
 
 Some DocOnce Features
 =====================
 
  * Strong support for texts with much math and code.
 
- * Same source can produce a variety of output formats.
-   The following support LaTeX math and (pygmentized) code:
+ * Same source can produce a variety of output formats:
 
    * `traditional LaTeX B/W documents for printing <http://hplgit.github.com/teamods/writing_reports/_static/report_4printing.pdf>`__
 
@@ -44,7 +24,7 @@ Some DocOnce Features
 
    * `color LaTeX PDF documents for viewing on small phones <http://hplgit.github.com/teamods/writing_reports/_static/report_4phone.pdf>`__
 
-   * `Sphinx HTML documents with 20+ different designs <http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal/report.html>`__
+   * `Sphinx HTML documents with 20+ different designs <http://hplgit.github.com/teamods/writing_reports/_static/sphinx-fenics_minimal1/report.html>`__
 
    * `Plain HTML <http://hplgit.github.com/teamods/writing_reports/_static/report.html>`__, `Boostrap HTML <http://hplgit.github.com/teamods/writing_reports/_static/report_bootstrap_bluegray.html>`__, or with a `template <http://hplgit.github.com/teamods/writing_reports/_static/report_vagrant.html>`__, or with `another template <http://hplgit.github.com/teamods/writing_reports/_static/report_github_minimal.html>`__, or `solarized <http://hplgit.github.com/teamods/writing_reports/_static/report_solarized3_light.html>`__
 
@@ -76,6 +56,8 @@ Some DocOnce Features
 
  * Good support for admonitions in various LaTeX and HTML styles
    for warnings, questions, hints, remarks, summaries, etc.
+
+.. !split
 
 What Does DocOnce Look Like?
 ============================
@@ -139,21 +121,17 @@ the formating. Here are some examples.
 What Can DocOnce Be Used For?
 -----------------------------
 
-LaTeX is ideal for articles, thesis, and books, but not so suited
-for web documents. Nice environments for web documents, such as
-Sphinx, Markdown, or plain HTML, are not particularly well
-suited for thesis and books. IPython notebooks are ideal for
-documenting computational experiments, but do not (yet) meet the
-requirements of books and thesis.
-
-What about migrating a part of a book to blog posts? What about making
-an MS Word version of parts or an untagged text for inclusion in
-email?  What about efficiently generating slides in modern HTML5
-style?  DocOnce enables all this with just *one source* (the slogan is
-*document once - include anywhere*).
+LaTeX is ideal for articles, thesis, and books, but the PDF files does
+not look fresh and modern on tablets and phones or big computer
+screens. For the latter type of media you need HTML-based documents
+with strong support for nice layouts. Tools like
+Sphinx, Markdown, or plain HTML with Bootstrap are then more
+appropriate than LaTeX, but involves a very different syntax.
+DocOnce lets you write one text in one place and then generate
+the most appropriate language for the media you want to target.
 DocOnce also
-has many extra features for supporting documents with much code and
-mathematics, not found in any of the mentioned formats.
+has many extra features for supporting large documents with much code and
+mathematics, not found in any of other publishing tool.
 
 Basic Syntax
 ------------
@@ -162,11 +140,17 @@ Here is an example of some simple text written in the DocOnce format:
 
 .. code-block:: text
 
-        ======= First a Section Heading =======
+        ======= First a Section Heading with 7 = Characters =======
         
-        Section headings have 7 equality characters before and after the heading.
-        With 9 characters we have a chapter heading, 5 gives a subsection
-        heading, and 3 a subsubsection heading.
+        ===== Then a Subsection Heading with 5 = Characters =====
+        
+        === Finally a Subsubection Heading with 3 = Characters ===
+        
+        You can also have paragraphs with a paragraph heading surrounded
+        by double underscores are the beginning of a line.
+        
+        __This is a paragraph heading.__
+        And here comes the text.
         
         ===== A Subsection with Sample Text =====
         label{my:first:sec}
@@ -194,12 +178,13 @@ Here is an example of some simple text written in the DocOnce format:
         
           o item 1
           o item 2
-          o item 3
+          o item 3,
+            but be careful with the indentation of the next lines!
         
-        __Hyperlinks.__ Paragraph headings are surrounded by double underscores.
+        __Hyperlinks.__
         URLs with a link word are possible, as in "hpl": "http://folk.uio.no/hpl".
-        If the word is URL, the URL itself becomes the link name,
-        as in "URL": "tutorial.do.txt". DocOnce distinguishes between paper
+        If the word is just URL, the URL itself becomes the link name,
+        as in URL: "tutorial.do.txt". DocOnce distinguishes between paper
         and screen output. In traditional paper output, in PDF generated from LaTeX
         generated from DocOnce, the URLs of links appear as footnotes.
         With screen output, all links are clickable hyperlinks, except in
@@ -210,7 +195,12 @@ Here is an example of some simple text written in the DocOnce format:
         a space after `name:`), e.g., such as [hpl: here I will make some
         remarks to the text]. Inline comments can be removed from the output
         by a command-line argument (see Section ref{doconce2formats} for an
-        example).
+        example). Inline comments can also be used for detailed editing of
+        text, much like track changes in word, to illustrate how a text
+        is revised. (However, for seeing how others have revised the text, I
+        strongly recommend using Git for version control and running `git diff`
+        on the appropriate versions, or you can click on differences at
+        GitHub if the files are hosted there.)
         
         __Footnotes.__ Adding a footnote[^footnote] is also possible.
         
@@ -219,7 +209,7 @@ Here is an example of some simple text written in the DocOnce format:
         __Tables.__
         Tables are also written in the plain text way, e.g.,
         
-          |--------------------------------|
+          |--c--------c-----------c--------|
           |time  | velocity | acceleration |
           |---r-------r-----------r--------|
           | 0.0  | 1.4186   | -5.01        |
@@ -227,16 +217,29 @@ Here is an example of some simple text written in the DocOnce format:
           | 4.0  | 1.1E+1   | 14.717624    |
           |--------------------------------|
         
-        # lines beginning with # are comment lines
+        The characters `c`, `r`, and `l` can be inserted, as illustrated above,
+        for aligning the headings and the columns (center, right, left).
+        
+        # Lines beginning with # are comment lines.
 
 The DocOnce text above results in the following little document:
 
-First a Section Heading
-=======================
+.. !split
 
-Section headings have 7 equality characters before and after the heading.
-With 9 characters we have a chapter heading, 5 gives a subsection
-heading, and 3 a subsubsection heading.
+First a Section Heading with 7 = Characters
+===========================================
+
+Then a Subsection Heading with 5 = Characters
+---------------------------------------------
+
+Finally a Subsubection Heading with 3 = Characters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also have paragraphs with a paragraph heading surrounded
+by double underscores are the beginning of a line.
+
+**This is a paragraph heading.**
+And here comes the text.
 
 .. _my:first:sec:
 
@@ -251,10 +254,10 @@ example".
 
 Below the section title we have a *label*, which can be used to
 refer to the section :ref:`my:first:sec`.
-References to equations, such as :eq:`myeq1`, work in the same
+References to equations, such as ':eq:`myeq1`', work in the same
 LaTeX-inspired way.
 
-Lists are typeset as you would do in an email,
+Lists are typeset as you would do in email,
 
   * item 1
 
@@ -264,20 +267,18 @@ Lists are typeset as you would do in an email,
   * item 3
 
 Note the consistent use of indentation (as in Python programming!).
-
-Lists can also have numbered items instead of bullets, just use an ``o``
-(for ordered) instead of the asterisk:
+Lists can also have automatically numbered items instead of bullets,
 
  1. item 1
 
  2. item 2
 
- 3. item 3
+ 3. item 3,
+    but be careful with the indentation of the next lines!
 
 **Hyperlinks.**
-Paragraph headings are surrounded by double underscores.
 URLs with a link word are possible, as in `hpl <http://folk.uio.no/hpl>`__.
-If the word is URL, the URL itself becomes the link name,
+If the word is just URL, the URL itself becomes the link name,
 as in `<tutorial.do.txt>`_. DocOnce distinguishes between paper
 and screen output. In traditional paper output, in PDF generated from LaTeX
 generated from DocOnce, the URLs of links appear as footnotes.
@@ -285,11 +286,15 @@ With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
 
 **Inline comments.**
-DocOnce also allows inline comments such as [**hpl 1**: here I will make some remarks to the text] for allowing authors to make notes. Inline
-comments can be removed from the output by a command-line argument
-(see the section :ref:`doconce2formats` for an example). Ordinary comment
-lines start with ``#`` and are copied to comment lines in the
-output format.
+DocOnce also allows inline comments of the form [**name 1**: comment] (with
+a space after ``name:``), e.g., such as [**hpl 2**: here I will make some remarks to the text]. Inline comments can be removed from the output
+by a command-line argument (see the section :ref:`doconce2formats` for an
+example). Inline comments can also be used for detailed editing of
+text, much like track changes in word, to illustrate how a text
+is revised. (However, for seeing how others have revised the text, I
+strongly recommend using Git for version control and running ``git diff``
+on the appropriate versions, or you can click on differences at
+GitHub if the files are hosted there.)
 
 **Footnotes.**
 Adding a footnote [#footnote]_ is also possible.
@@ -307,44 +312,29 @@ time  velocity  acceleration
  4.0    1.1E+1     14.717624  
 ====  ========  ============  
 
-Mathematics and Computer Code
------------------------------
+The characters ``c``, ``r``, and ``l`` can be inserted, as illustrated above,
+for aligning the headings and the columns (center, right, left).
 
-Inline mathematics, such as :math:`\nu = \sin(x)`,
-allows the formula to be specified both as LaTeX and as plain text.
-This results in a professional LaTeX typesetting, but in formats
-not supporting LaTeX mathematics
-the text version normally looks better than raw LaTeX mathematics with
-backslashes. An inline formula like :math:`\nu = \sin(x)` is
-typeset as
+.. Lines beginning with # are comment lines.
 
-.. code-block:: text
+Mathematics
+-----------
 
-        $\nu = \sin(x)$|$v = sin(x)$
-
-The pipe symbol acts as a delimiter between LaTeX code and the plain text
-version of the formula. If you write a lot of mathematics, only the
-output formats ``latex``, ``pdflatex``, ``html``, ``sphinx``, and ``pandoc``
-are of interest
-and all these support inline LaTeX mathematics so then you will naturally
-drop the pipe symbol and write just
+Inline mathematics, such as :math:`\nu = \sin(x)` is written exactly as in LaTeX:
 
 .. code-block:: text
 
         $\nu = \sin(x)$
 
-However, if you want more textual formats, like plain text or reStructuredText,
-the text after the pipe symbol may help to make the math formula more readable
-if there are backslahes or other special LaTeX symbols in the LaTeX code.
-
 Blocks of mathematics are typeset with raw LaTeX, inside
-``!bt`` and ``!et`` (begin TeX, end TeX) instructions:
+``!bt`` and ``!et`` (begin TeX, end TeX) directives:
 
 .. code-block:: text
 
         !bt
         \begin{align}
-        {\partial u\over\partial t} &= \nabla^2 u + f, label{myeq1}\\ 
+        {\partial u\over\partial t} &= \nabla^2 u + f,
+        label{myeq1}\\ 
         {\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g
         \end{align}
         !et
@@ -377,14 +367,19 @@ LaTeX writers who adopt DocOnce need to pay attention to the following:
  * Only five equation environments can be used: ``\[ ... \]``,
    ``equation*``, ``equation``, ``align*``, and ``align``.
 
- * Newcommands in mathematical formulas are allowed, but not in
-   the running text. Newcommands must be defined in files with names
+ * Newcommands in mathematical formulas are allowed (but not in
+   the running text). Newcommands must be defined in files with names
    ``newcommands*.tex``.
 
  * MediaWiki (``mwiki``) does not support references to equations.
+   DocOnce has extended Markdown, Sphinx, and HTML to better support
+   equation referencing (across web pages for example).
 
-(DocOnce performs extensions to ``sphinx`` and other formats such that
-labels in ``align`` environments work well.)
+ * Only figures are floating elements in DocOnce, all other elements
+   (code, tables, algorithms) are *inline* without numbers or labels
+   for reference. The reason is that floating elements are in general
+   not used in web documents, but we made an exception with figures
+   and movies.
 
 
 .. admonition:: Remark
@@ -402,6 +397,9 @@ labels in ``align`` environments work well.)
 
 
 
+
+Computer Code
+-------------
 
 You can have blocks of computer code, starting and ending with
 ``!bc`` and ``!ec`` instructions, respectively.
@@ -432,12 +430,34 @@ A code block must come after some plain sentence (at least for successful
 output to ``sphinx``, ``rst``, and formats close to plain text),
 not directly after a section/paragraph heading or a table.
 
-One can also copy computer code directly from files, either the
-complete file or specified parts.  Computer code is then never
-duplicated in the documentation (important for the principle of
-avoiding copying information!).
+Blocks of computer code has *named environments*, such as *pycod*. The *py*
+stands for Python and *cod* indicates a code snippet that cannot be run
+without more code. Another example is *fpro*, *f* for Fortran and *pro* for
+a complete program that will run as it stands. There is support for
+code in C, C++, Fortran, Java, Python, Perl, Ruby, JavaScript, HTML, and LaTeX,
 
-Another document can be included by writing ``# #include "mynote.do.txt"``
+.. Note: the @@@CODE command starts in column 2 below such that we fool
+
+.. DocOnce to drop copying the file...
+
+One can also copy computer code directly from files, either the
+complete file or specified parts, e.g,
+
+.. code-block:: text
+
+         @@@CODE src/myprog.py fromto: def regression\(@import mymod
+
+The copying is based on regular expressions and not on line numbers, which
+makes the specifications much more robust during software and document
+developing. With the ``@@@CODE`` command,
+computer code is never
+duplicated in the documentation (important for the principle of
+avoiding copying information!) and once the software is updated, the
+next compilation of the document is up-to-date.
+
+**Inclusion of files.**
+Another DocOnce document or any file
+can be included by writing ``# #include "mynote.do.txt"``
 at the beginning of a line.  DocOnce documents have
 extension ``do.txt``. The ``do`` part stands for doconce, while the
 trailing ``.txt`` denotes a text document so that editors gives you
@@ -493,16 +513,23 @@ Here is an example:
         
         BIBFILE: papers.pub
 
+DocOnce applies `Publish <https://bitbucket.org/logg/publish>`__ for specifying bibliographies because
+this tool has more functionality than BibTeX, but any BibTeX database can
+be automatically converted to the simple Publish format.
+
 For further details on functionality and
 syntax we refer to the ``doc/manual/manual.do.txt`` file
 in the DocOnce source and a `Sphinx version <http://hplgit.github.io/doconce/doc/pub/manual/html/>`__ of this document.
+
+.. !split
 
 .. _doconce2formats:
 
 From DocOnce to Other Formats
 =============================
 
-.. index:: doconce format command
+.. index::
+   single: doconce commands; format
 
 Transformation of a DocOnce document ``mydoc.do.txt`` to various other
 formats is done with the script ``doconce format``:
@@ -651,7 +678,7 @@ Demo of different formats
 
 .. index:: demos
 
-A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/doconce_commands.html>`__.
+A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html>`__.
 How to create the different formats is explained in more depth
 in the coming sections.
 
@@ -924,6 +951,14 @@ Options for Bootstrap styles:
 
 Other options:
 
+ * ``--html_share=http://...`` makes sharing buttons at the end of the
+   document: email, Facebook, Google+, LinkedIn, Twitter, and print by
+   default. ``--html_share=http://...,twitter,linkedin`` will make just
+   to sharing buttons for Twitter and LinkedIn. Sites are separated
+   by comma and valid names are ``email``, ``facebook``, ``google+``,
+   ``linkedin``, ``twitter``, and ``print``. The URL ``http://...`` must be
+   the URL where the document is published.
+
  * ``--html_toc_depth=X``: controls the depth of the table of contents
    in documents. Default value of ``X`` is 3, meaning chapters,
    sections, and subsections. ``X`` as 0 gives the table of contents as a
@@ -962,6 +997,8 @@ Other options:
 
  * ``--html_exercise_icon_width=X``: set the width of the exercise icon
    image to ``X`` pixels.
+
+ * ``--exercise_numbering=absolute, chapter``
 
  * ``--html_DOCTYPE``: insert ``<!DOCTYPE HTML>`` at the top of the HTML
    output file. This is normally recommended, but malformed CSS files
@@ -1049,18 +1086,19 @@ Blog posts at Google can also be published `automatically through email <http://
 A Python program can send the contents of the HTML file
 to the blog site's email address using the packages  ``smtplib`` and ``email``.
 
-WordPress (``wordpress.com``) allows raw HTML code in blogs,
-but has very limited
-LaTeX support, basically only formulas. The ``--wordpress`` option to
-``doconce`` modifies the HTML code such that all equations are typeset
-in a way that is acceptable to WordPress.
-Look at a `simple doconce example <http://doconce.wordpress.com>`__
-and a `scientific report <http://doconcereportdemo.wordpress.com/>`__
-to see blog posts with mathematics and code on WordPress.
+WordPress (``wordpress.com``) allows raw HTML code in blogs, but has
+very limited LaTeX support, basically only formulas. The ``--wordpress``
+option to ``doconce`` modifies the HTML code such that all equations are
+typeset in a way that is acceptable to WordPress.  Look at a `simple
+doconce example <http://doconce.wordpress.com>`__ and a `scientific
+report <http://doconcereportdemo.wordpress.com/>`__ to see blog posts
+with mathematics and code on WordPress.
 
 Speaking of WordPress, the related project `<http://pressbooks.com>`_ can take raw HTML code (from DocOnce, for
-instance) and produce very nice-looking books.  There is no support
-for mathematics in the text, though.
+instance, but use the ``--wordpress`` option)
+and produce very nice-looking books.  There is support for LaTeX
+mathematics as in WordPress blog posts, meaning that one cannot refer
+to equations.
 
 .. _do2any:pandoc:
 
@@ -1250,8 +1288,8 @@ be advantageous to go via LaTeX.
 
 .. _do2any:latex:
 
-LaTeX
------
+LaTeX: Overview
+---------------
 
 .. index:: LaTeX output
 
@@ -1284,10 +1322,19 @@ translation, which is simpler and actually more versatile than even
 using the ``ptex2tex`` program.
 
 Direct translation is specified by the ``--latex_code_style=`` command-line
-option. A `separate document <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__ describes how this option is used and the demonstrates
-various possibilities that are available.
+option. A separate document, `Demonstration of DocOnce support for LaTeX code block environments <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__, describes how this option is used and the demonstrates
+many possibilities that are available.
+The ``--latex_code_style=`` option makes the use of ``ptex2tex`` or
+``doconce ptex2tex`` redundant.
 
-Here, we describe the old translation via a ``.p.tex`` file, i.e., first we
+The old ``ptex2tex`` step
+-------------------------
+
+Here, we describe the old translation via a ``.p.tex`` file.
+New users should jump over this information and use
+the ``--latex_code_style=`` option to specify verbatim code environments.
+
+First we
 compile the DocOnce source to the ``ptex2tex`` format, and then we compile
 the ``ptex2tex`` format to standard LaTeX.
 The `ptex2tex <http://code.google.com/p/ptex2tex>`__ format can be
@@ -1317,18 +1364,19 @@ the ``ptex2tex`` step.)
 
 Going from ``ptex2tex`` format to standard LaTeX format is enabled by
 either the ``ptex2tex`` program or DocOnce's (simplified) version of it:
-``doconce ptex2tex``. Details are given below.
+``doconce ptex2tex``.
 
 
-.. admonition:: Information on typesetting of inline verbatim
+.. admonition:: Inline verbatim tries to use ``texttt`` and not ``Verb`` if possible
 
-   The ``ptex2tex`` and the ``doconce ptex2tex`` programs take inline verbatim
-   code, typeset with backticks in DocOnce, and translate this to
+   Inline verbatim
+   code, typeset with backticks in DocOnce, is translated to
    
    .. code-block:: text
    
            \Verb!text!
    
+   or similar constructions with other delimiters if the pipe is used in ``text``.
    Thereafter, if ``text`` does not contain illegal characters for the ``\texttt``
    command, the latter is used instead since then LaTeX can insert
    linebreaks in the inline verbatim text and hence avoid overfull hboxes.
@@ -1342,29 +1390,40 @@ either the ``ptex2tex`` program or DocOnce's (simplified) version of it:
 
 .. environment, as used here.
 
+.. _do2any:latex:compile1:
+
+From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)
+--------------------------------------------------
+
 .. index:: ptex2tex program
 
 .. index:: ptex2tex doconce version
 
-**Step 1.**
-Filter the doconce text to the ``ptex2tex`` pre-LaTeX form
-``mydoc.p.tex``:
+The translation command
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Filter the doconce text directly to valid LaTeX using
+the ``--latex_code_style=`` option:
 
 .. code-block:: text
 
-        Terminal> doconce format latex mydoc
+        Terminal> doconce format pdflatex mydoc --latex_code_style=vrb
 
-Or filter the doconce text directly to valid LaTeX:
+Without ``--latex_code_style=``, the output will be a ``mydoc.p.tex`` file
+that has to be converted to a standard ``mydoc.tex`` LaTeX file via
+the programs ``ptex2tex`` or ``doconce ptex2tex``.
 
-.. code-block:: text
-
-        Terminal> doconce format latex mydoc --latex_code_style=vrb
+Newcommands
+~~~~~~~~~~~
 
 LaTeX-specific commands ("newcommands") in math formulas and similar
 can be placed in files ``newcommands.tex``, ``newcommands_keep.tex``, or
 ``newcommands_replace.tex`` (see the section :ref:`newcommands`).
 If these files are present, they are included in the LaTeX document
 so that your commands are defined.
+
+Output for paper vs screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An option ``--device=paper`` makes some adjustments for documents
 aimed at being printed. For example, links to web resources are
@@ -1376,6 +1435,9 @@ The default, ``--device=screen``, creates a PDF file for reading
 on a screen where links are just clickable.
 
 .. index:: LaTeX style options
+
+Command-line options
+~~~~~~~~~~~~~~~~~~~~
 
 There are many additional options (run ``doconce format --help`` and
 look for options starting with ``--latex`` to get a more verbose description):
@@ -1390,7 +1452,11 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection``
 
- * ``--latex_style=std, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, siamltex, siamltexmm, elsevier``
+ * ``--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier``
+
+ * ``--latex_packages=package1,package2,package3`` (list of extra packages to be included [#varioref]_)
+
+ * ``--draft`` (turns on draft mode in documentclass, otherwise final mode)
 
  * ``--latex_list_of_exercises=loe,toc,none`` (LaTeX list of exercises, integrated into the table of contents, or no list)
 
@@ -1398,27 +1464,29 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_section_headings=std,blue,strongblue,gray,gray-wide`` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
 
- * ``--latex_colored_table_rows=blue,gray,no`` (color of every two lines in tables)
+ * ``--latex_table_format=quote, center, footnotesize, tiny`` (environment around tables)
+
+ * ``--latex_colored_table_rows=blue, gray, no`` (color of every two lines in tables)
 
  * ``--latex_todonotes`` (inline comments typeset as "bubbles")
 
- * ``--latex_double_spacing``
+ * ``--latex_double_spacing`` (to ease hand-writing between the lines)
 
- * ``--latex_line_numbers``
+ * ``--latex_line_numbers`` (to ease references to sentences)
 
  * ``--latex_labels_in_margin`` (name of section, equation, citation labels in the margin)
 
  * ``--latex_preamble=filename`` (user-specific preamble)
 
- * ``--latex_admon=mdfbox,graybox2,grayicon,yellowicon,paragraph,colors1,colors2``
+ * ``--latex_admon=mdfbox, graybox2, grayicon, yellowicon, paragraph, colors1, colors2``
 
- * ``--latex_admon_color=0.34,0.02,0.8``
+ * ``--latex_admon_color=0.34,0.02,0.8`` (background color in admons)
 
- * ``--latex_admon_envir_map=2``
+ * ``--latex_admon_envir_map=2`` (code environment names in admons)
 
- * ``--latex_exercise_numbering=absolute,chapter``
+ * ``--exercise_numbering=absolute, chapter``
 
- * ``--latex_movie=media9,href,multimedia,movie15``
+ * ``--latex_movie=media9, href, multimedia, movie15`` (control typesetting of movies)
 
  * ``--latex_movie_controls=on``
 
@@ -1448,6 +1516,16 @@ journals and requires the stylefiles ``siamltex.cls`` and ``siam10.clo``),
 to be submitted to Elsevier journals (``--latex_elsevier_journal=`` can
 be used to set the journal name, and the style requires
 ``elsarticle.cls`` and ``elsarticle-num.bst``).
+
+.. [#varioref] Listing ``varioref`` in as package
+   automatically leads to references with page numbers, if the element referred to
+   is not on the same page. This is often very helpful, e.g., "see
+   Figure 5.3 on page 67".
+
+.. index:: LaTeX syntax highlighting
+
+Syntax highlighting
+~~~~~~~~~~~~~~~~~~~
 
 The style of verbatim blocks of computer code is specified by
 ``--latex_code_style=X``, where ``X`` can be set in a very flexible way.
@@ -1492,12 +1570,22 @@ window for the ``sys`` environment:
 
 .. code-block:: text
 
-        "--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt]"
+        "--latex_code_style=default:vrb-blue1@
+        sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+        framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
+
+(but no linebreaks, as here, they are for formatting this document only).
+
+Drafts
+~~~~~~
 
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options ``--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin``. One may also (automatically) edit the
 ``final`` argument in the ``documentclass`` heading to ``draft`` as this will
 mark overful lines (hboxes).
+
+Potential problems with ampersand
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Another useful option for LaTeX documents is ``--no_ampersand_quote``, which
 prevents ampersands from getting a backskash. This is necessary if one
@@ -1505,9 +1593,9 @@ inserts native latex code for tables
 inside ``% if FORMAT in ('latex', 'pdflatex'):`` (or similar ``preprocess`` syntax)
 tests.
 
-.. index:: LaTeX syntax highlighting
+Part 2 of Step 1 (outdated)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Step 2.**
 In case you *did not* specify the ``--latex_code_style=`` option,
 you must run ``ptex2tex`` (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -1580,8 +1668,12 @@ If no environments like ``sys``, ``fpro``, or the common
 ``envir`` are defined on the command line, the plain ``\begin{Verbatim}``
 and ``\end{Verbatim}`` instructions are used.
 
-**Step 2b (optional).**
-Edit the ``mydoc.tex`` file to your needs.
+.. _do2any:latex:compile2:
+
+From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)
+-----------------------------------------------------------------
+
+You can *edit* the ``mydoc.tex`` file to your needs.
 For example, you may want to substitute ``section`` by ``section*`` to
 avoid numbering of sections, you may want to insert linebreaks
 (and perhaps space) in the title, etc. This can be automatically
@@ -1610,67 +1702,31 @@ substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the ``doconce subst`` or
 ``doconce replace`` commands can be put inside the script.
 
-**Step 3.**
-Compile ``mydoc.tex``
-and create the PDF file:
+.. _do2any:latex:compile3:
+
+From DocOnce to LaTeX-PDF: Generate PDF (Step 3)
+------------------------------------------------
+
+Compile ``mydoc.tex`` and create the PDF file, using ``pdflatex``:
 
 .. code-block:: text
 
-        Terminal> latex mydoc
-        Terminal> latex mydoc
+        Terminal> pdflatex mydoc
+        Terminal> pdflatex mydoc
         Terminal> makeindex mydoc   # if index
         Terminal> bibtex mydoc      # if bibliography
-        Terminal> latex mydoc
-        Terminal> dvipdf mydoc
+        Terminal> pdflatex mydoc
 
-See the next two sections for compilation with XeLaTeX or pdfLaTeX.
+One can also compile ``mydoc`` the "old way" with ``latex`` and ``dvipdf``.
+Use ``doconce format latex`` in that case and proceed with ``latex mydoc``.
 
-If one wishes to use the minted LaTeX package for
-typesetting code blocks (``Minted_Python``, ``Minted_Cpp``, etc., in
-``ptex2tex`` specified through the ``*pro`` and ``*cod`` variables in
-``.ptex2tex.cfg`` or ``$HOME/.ptex2tex.cfg``), the minted LaTeX package is
-needed.  This package is automatically included by ``doconce ptex2tex`` if
-the minted style is used, while you have to include the
-``-DMINTED`` preprocessor option when running the ``ptex2tex`` program:
-
-.. code-block:: text
-
-        Terminal> ptex2tex -DMINTED mydoc
-
-If the minted style is used, ``latex`` (or ``pdflatex`` or ``xelatex``)
+If the minted style is used, ``latex``, ``pdflatex``, or ``xelatex``
 *must* be run with the
 ``-shell-escape`` option:
 
 .. code-block:: text
 
-        Terminal> latex -shell-escape mydoc
-        Terminal> latex -shell-escape mydoc
-        Terminal> makeindex mydoc   # if index
-        Terminal> bibtex mydoc      # if bibliography
-        Terminal> latex -shell-escape mydoc
-        Terminal> dvipdf mydoc
-
-.. _do2any:pdflatex:
-
-PDFLaTeX
---------
-
-.. index::
-   single: output format; pdfLaTeX
-
-.. index:: pdfLaTeX output
-
-Running ``pdflatex`` instead of ``latex`` follows almost the same steps,
-but the start is
-
-.. code-block:: text
-
-        Terminal> doconce format latex mydoc
-
-Then ``ptex2tex`` is run as explained above, and finally
-
-.. code-block:: text
-
+        Terminal> pdflatex -shell-escape mydoc
         Terminal> pdflatex -shell-escape mydoc
         Terminal> makeindex mydoc   # if index
         Terminal> bibtex mydoc      # if bibliography
@@ -1691,8 +1747,8 @@ same way, except for the ``--xelatex`` flag to ``doconce format``:
 
 .. code-block:: text
 
-        Terminal> doconce format pdflatex mydoc --xelatex
-        Terminal> doconce ptex2tex mydoc
+        Terminal> doconce format pdflatex mydoc --xelatex \ 
+                  --latex_code_style=lst
         Terminal> xelatex mydoc
 
 .. _do2any:epub:
@@ -1740,21 +1796,26 @@ does not work.
 
 .. _do2any:ipynb:
 
-IPython Notebooks
------------------
+Jupyter (IPython) Notebooks
+---------------------------
 
 .. index::
    single: output format; notebook
 
 .. index:: IPython notebook
 
+.. index:: Jupyter notebook
+
 .. index:: notebook
 
-DocOnce can generate json files for IPython notebook (Jupyter):
+DocOnce can generate json files for the Jupyter Notebook:
 
 .. code-block:: text
 
         Terminal> doconce format ipynb mydoc  # results in mydoc.ipynb
+
+Hidden code blocks
+~~~~~~~~~~~~~~~~~~
 
 It is no guarantee that the notebook can be executed. For example,
 having the code
@@ -1791,6 +1852,9 @@ for the import statement to work:
         sys.path.append('src-test')
         !ec
 
+Displaying code as plain text instead of executable cells
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Some code blocks may just be there for explanation and are not
 meant to be executed. These can be marked by ``!bc pycod-t`` (or
 ``!bc Xcod-t`` for any supported programming language ``X``):
@@ -1806,8 +1870,117 @@ The code segment above will then be typeset as verbatim text and not
 an executable cell, and there is no need to worry about a missing
 definition of ``myvar`` (which would cause problems in an executable cell).
 
+Interactive sessions with the ``pyshell`` or ``ipy`` environment will
+by default be broken up into many cells such that each output command
+ends a cell. By executing the cells, the input *and* output from the
+session is recovered. This is usually the behavior that is wanted, but
+there is an option ``--ipynb_split_pyshell=off`` that can be used to
+typeset the entire session with all input but no output in one cell
+(``print`` statements will lead to output, but plain dumping of
+a variable will not lead to output like it does in a Python shell).
+
+To have an interactive session typeset with input and output in plain
+text, use the ``-t`` extension to the environment: ``pyshell-t`` and ``ipy-t``.
+
+Figures
+~~~~~~~
+
 As with HTML files, you need to ensure that the notebook has access to
 figures and source code as requested.
+
+Figures in notebooks can be typeset in various ways, specified by
+the ``--ipynb_figure=`` option, with the following values:
+
+ * ``md``: plain Markdown syntax for a figure, with no possibility to adjust
+   the size (default)
+
+ * ``imgtag``: ``<img ...>`` tag in HTML taking the specified width into account
+
+ * ``Image``: Python notebook cell with ``Image`` object
+
+Movies
+~~~~~~
+
+Typesetting of movies is specified by ``--ipynb_movie=``, and valid options
+are
+
+ * ``md``: raw HTML code with ``iframe`` tag - not relevant for the notebook
+
+ * ``HTML``: raw HTML code with ``iframe`` tag
+    embedded in the ``HTML`` object from the notebook (default)
+
+ * ``HTML-YouTube``: as ``HTML`` but use an ``IPython.display.YouTubeVideo``
+   object to display YouTube videos
+
+ * ``ipynb``: use ``IPython.display.YouTubeVideo`` object for YouTube videos,
+   and use an ``HTML`` object with ``video`` tag for local movies
+
+Admonitions
+~~~~~~~~~~~
+
+Typesetting of admonition is rather primitive in notebooks.
+We offer these different choices, set by the
+option ``--ipynb_admon=``:
+
+ * ``quote``: typeset admon as Markdown quote (special font and gray vertical bar on
+   the left)
+
+ * ``paragraph``: typeset admon as a plain paragraph with a heading if any (default)
+
+ * ``hrule``: use a horozontal rule to surround the heading and the text
+
+Note that quotes in ``!bc quote`` environments
+are always typeset as Markdown quotes.
+
+References to an External Textbook
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes one wants to refer to equations and sections in an external
+LaTeX book where a ``book.aux`` file is available. The references in the
+notebook to the LaTeX book can then be hardcoded from the ``book.aux`` file
+with this construction:
+
+.. code-block:: text
+
+        Terminal> doconce format ipynb mydoc \ 
+                  --replace_ref_by_latex_auxno=book.aux
+
+.. _do2any:matlabnb:
+
+Matlab Notebooks
+----------------
+
+.. index::
+   single: output format; notebook
+
+.. index:: Matlab notebook
+
+.. index:: Matlab publish format (notebook)
+
+.. index:: notebook
+
+The Matlab *publish* format is aimed at notebooks, but the markup is
+quite primitive, so only a small subset of DocOnce markup can translate
+successfully to the Matlab publish format. However, if you write within
+that subset, it is easy to create notebooks in DocOnce that can translate
+both to Python and Matlab (use preprocessor directives or Mako functions
+to include Matlab or Python code, depending on the output format).
+
+The Matlab publish format is called ``matlabnb``:
+
+.. code-block:: text
+
+        Terminal> doconce format matlabnb mydoc
+
+The ``--replace_ref_by_latex_auxno=`` option for referring to equations
+and sections in a textbook, as explained at the end of the section on
+Jupyter/IPython notebooks, also works with Matlab notebooks (and for
+any other output format):
+
+.. code-block:: text
+
+        Terminal> doconce format matlabnb mydoc \ 
+                  --replace_ref_by_latex_auxno=book.aux
 
 .. _do2any:ascii:
 
@@ -2085,6 +2258,13 @@ and reuse it the next time ``doconce sphinx_dir`` is run
         doconce sphinx_dir theme=scipy_lectures \ 
                            conf.py=../some/path/conf.py mydoc
 
+**RunestoneInteractive books.**
+The ``doconce format sphinx`` command accepts an option ``--runestone``
+for generating `RunestoneInteractive <http://runestoneinteractive.org>`__
+books (which build on Sphinx).
+You must run the generated ``automake_sphinx.py`` also with a ``--runestone``
+option to generate these type of documents.
+
 .. index:: Sphinx directory
 
 The manual Sphinx procedure
@@ -2313,6 +2493,8 @@ from a script to automate all steps in going from DocOnce to the final
 format(s). The ``make.sh`` files in ``docs/manual`` and ``docs/tutorial``
 constitute comprehensive examples on how such scripts can be made.
 
+.. !split
+
 Options for the ``doconce`` commands
 ====================================
 
@@ -2375,6 +2557,37 @@ here for convenience.
         Remove all inline comments of the form [ID: comment].
         
         
+        --draft
+        
+        Indicates draft (turns on draft elements in LaTeX, otherwise no effect).
+        
+        
+        --copyright=...
+        
+        Set copyright, mainly for LaTeX output (inserted in date and in a footer).
+        For HTML, use --reference= option in the doconce split_html command.
+        For Sphinx, use copyright= option in the doconce sphinx_dir command.
+        
+        
+        --exercise_numbering=...
+        
+        absolute: exercises numbered as 1, 2, ... (default)
+        chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
+                 with a chapter or appendix prefix.
+        
+        
+        --exercises_in_zip
+        
+        Place each exercises as an individual DocOnce file in a zip archive.
+        
+        
+        --exercises_in_zip_filename=...
+        
+        Filenames of individual exercises in zip archive.
+        logical: use the (first) logical filename specified by file=...
+        number:  use either absolute exercise number or chapter.localnumber.
+        
+        
         --encoding=...
         
         Specify encoding (e.g., latin1 or utf-8).
@@ -2410,6 +2623,11 @@ here for convenience.
         Remove all emojis.
         
         
+        --allow_refs_to_external_docs
+        
+        Do not abort translation if ref{...} to labels not defined in this document.
+        
+        
         --runestone
         
         Make a RunestoneInteractive version of a Sphinx document.
@@ -2419,6 +2637,14 @@ here for convenience.
         
         Strip lines in !bc environments that are longer than specified
         (to prevent too long lines). Default: None (no length restriction).
+        
+        
+        --replace_ref_by_latex_auxno=...
+        
+        Replace all ref{...} by hardcoded numbers from a latex .aux file.
+        Makes it possible for a notebook or html page to refer to a latex textbook.
+        Recommended syntax: see (ref{my:eq1}) in cite{MyBook}, or see
+        Section ref{my:sec2} in cite{MyBook}.
         
         
         --keep_pygments_html_bg
@@ -2450,6 +2676,11 @@ here for convenience.
         (In LaTeX line numbers can be added via doconce subst or
         doconce replace such that the verbatim environments get
         the linenos=true parameter.)
+        
+        
+        --xhtml
+        
+        Use BeautifulSoap to try to produce XHTML output. It inserts end tags (e.g. </p>) and guesses where to do it.
         
         
         --html_output=...
@@ -2488,6 +2719,10 @@ here for convenience.
         where foreground and background color is inherited from the
         surroundnings (e.g., to avoid the red Boostrap color).
         Default: on (use the css-specified typesetting of <pre> tags).
+        NOTE: the naming "html_code_style" is not optimal: it has nothing
+        to do with code block style, but the <code> tag for inline verbatim text
+        in the context of bootstrap css styles.
+        
         
         
         --html_pre_style=...
@@ -2497,6 +2732,7 @@ here for convenience.
         Default: on (use the css-specified typesetting of <pre> tags).
         This option is most relevant for Bootstrap styles to
         avoid white background in code blocks inside colorful admons.
+        
         
         
         --html_toc_depth=...
@@ -2559,6 +2795,19 @@ here for convenience.
         --html_box_shadow
         
         Add a shadow effect in HTML box environments.
+        
+        
+        --html_share=...
+        
+        Specify URL and there will be Facebook, Twitter, etc. buttons
+        at the end of the HTML document.
+        
+        --html_share=http://mysite.com/specials shares on email, Facebook, Google+,
+        LinkedIn, Twitter, and enables a print button too.
+        
+        --html_share=http://mysite.com/specials,twitter,facebook shares on
+        Twitter and Facebook only. Sites are separated by comma. The following
+        names are allowed: email, facebook, google+, linkedin, twitter, print.
         
         
         --html_exercise_icon=...
@@ -2708,6 +2957,11 @@ here for convenience.
         Background color code blocks. Default: white.
         
         
+        --latex_code_bg_vpad
+        
+        Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not lst!).
+        
+        
         --latex_code_lststyles=...
         
         Filename with LaTeX definitions of lst styles.
@@ -2737,6 +2991,16 @@ here for convenience.
         beamer: layout for beamer slides.
         
         
+        --latex_link_color=...
+        
+        Color used in hyperlinks. Default is dark blue if --device=screen,
+        or black if --device=paper (invisible in print out) or special blue
+        color if --latex_section_headings=blue or strongblue.
+        Values are specified either as comma-separated rgb tuples or as
+        color names, e.g., --latex_link_color=0.1,0.9,0.85 or
+        --latex_link_color=red or --latex_link_color=gray!70
+        
+        
         --latex_title_reference=...
         
         latex code placed in a footnote for the title,
@@ -2748,6 +3012,11 @@ here for convenience.
         
         Encoding for \usepackage[encoding]{inputenc}.
         Values: utf8 (default) or latin1.
+        
+        
+        --latex_packages=...
+        
+        Comma-separated list of latex packages to be included in \usepackage commands..
         
         
         --latex_papersize=...
@@ -2881,10 +3150,23 @@ here for convenience.
         --latex_admon_color=...
         
         The color to be used as background in admonitions.
+        A single value applies to all admons:
         Either rgb tuple or saturated color a la yellow!5:
           --latex_admon_color=0.1,0.1,0.4
-         '--latex_admon_color=yellow!5'
+          '--latex_admon_color=yellow!5'
         Note the quotes, needed for bash, in the latter example.
+        
+        Multiple values can be assigned, one for each admon (all admons must
+        be specified):
+          '--latex_admon_color=warning:darkgreen!40!white;notice:darkgray!20!white;summary:tucorange!20!white;question:red!50!white;block:darkgreen!40!white'
+        
+        If --latex_admon=mdfbox, the specification above with color1!X!color2
+        will automatically trigger 2*X as the background color of the frametitle.
+        
+        There are predefined multiple values, e.g.,
+          --latex_admon_color=colors1
+        gives red warnings, blue notice, orange questions, green summaries and
+        yellow blocks, automatically adjusted with darker frametitles for
         
         If --latex_admon=mdfbox, the background of the title and
         the color of the border of box can also be customized by
@@ -2893,6 +3175,11 @@ here for convenience.
         
         doconce replace 'linecolor=black,' 'linecolor=darkblue,' mydoc.tex
         doconce subst 'frametitlebackgroundcolor=.*?,' 'frametitlebackgroundcolor=blue!5,' mydoc.tex
+        
+        Actually, this particular (and common) edit is automatically done by the option
+          --latex_admon_color=bluestyle
+          --latex_admon_color=yellowstyle
+        (the latter has color yellow!5 instead and yellow!20 for the border)
         
         
         
@@ -2911,19 +3198,12 @@ here for convenience.
         admons.
         If specifying a number, say 2, as in --latex_admon_envir_map=2,
         an envir like pycod gets the number appended: pycod2. One can
-        then in doconce ptex2tex (or ptex2tex) specify the typesetting
-        of pycod2 environments.
+        then in --latex_code_style= or in doconce ptex2tex or ptex2tex
+        specify the typesetting of pycod2 environments.
         Otherwise the specification must be a mapping for each envir
         that should be changed inside the admons:
         --latex_admon_envir_map=pycod-pycod_yellow,fpro-fpro2
         (from-to,from-to,... syntax).
-        
-        
-        --latex_exercise_numbering=...
-        
-        absolute: exercises numbered as 1, 2, ...
-        chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, etc.
-                 with a chapter prefix.
         
         
         --latex_subex_header_postfix=...
@@ -2949,11 +3229,38 @@ here for convenience.
         Default: none (no journal name).
         
         
+        --ipynb_version=...
+        
+        ipynb version 3 (default) or 4.
+        
+        
+        --ipynb_split_pyshell=...
+        
+        Split interactive sessions into multiple cells after each output.
+        Applies to pyshell and ipy code environments.
+        on, True, yes: split (default).
+        off, False, no: do not split.
+        Note that pyshell-t and ipy-t environments just displays the session,
+        while default pyshell and ipy removes all output (all output from print
+        statements will come after the entire session).
+        
+        
+        
+        --ipynb_cite=...
+        
+        Typesetting of bibliography.
+        plain: simple native typesetting (same as pandoc) (default)
+        latex: ipynb support for latex-style bibliographies (not mature).
+        
+        
         --ipynb_admon=...
         
-        Typesetting of admonitions and quotes.
+        Typesetting of admonitions (hint, remarks, box, notice, summary,
+        warning, question, block - quotes are typeset as quotes).
         quote: as Markdown quote (default) with gray line on the left.
         paragraph: just the content with the title as paragraph heading.
+        hrule: title with horizontal rule above and below, then text and
+        horozontal rule.
         
         
         --ipynb_figure=...
@@ -2968,11 +3275,11 @@ here for convenience.
         
         How to typeset movies in ipynb:
         md (plain Markdown syntax, default)
-        HTML (python cell with HTML object containing the code that is used
-        in the HTML format)
-        HTML-YouTubeVideo: If YouTube video, use YouTubeVideo object, otherwise
-        use the HTML object with appropriat HTML code.
-        local: local video files with encoding.
+        HTML: python cell with notebook `HTML` object containing the raw HTML code
+        that is used in the DocOnce HTML format
+        ipynb: python cell with notebook `HTML` object with simple/standard
+        ipynb HTML code for showing a YouTube or local video with a <video>
+        tag.
         
         
         --verbose
@@ -3035,6 +3342,11 @@ here for convenience.
         Terminal prompt in output from running OS commands (the
         @@@OSCMD instruction). None or empty: no prompt, just the command;
         nocmd: no command, just the output. Default is "Terminal>".
+        
+        
+        --code_skip_until=...
+        
+        @@@CODE import: skip lines in files up to (and incuding) specified line.
         
         
         --code_prefix=...
@@ -3154,6 +3466,13 @@ here for convenience.
         on (default): <hr> before and after quiz in HTML. off: no <hr>.
         
         
+        --quiz_explanations=...
+        
+        on/off
+        (some output formats do not support explanations with figures,
+        math and/or code, this option turns all explanations off.
+        
+        
         --rst_uio
         
         Univ. of Oslo version of rst files for their Vortex system.
@@ -3197,6 +3516,8 @@ There is another demo in the ``docs/manual`` directory which
 translates the more comprehensive documentation, ``manual.do.txt``, to
 various formats. The ``make.sh`` script runs a set of translations.
 
+.. !split
+
 .. _install:doconce:
 
 Installation of DocOnce and its Dependencies
@@ -3206,12 +3527,22 @@ Installation of DocOnce and its Dependencies
 
 Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
-The impatient way to install everything what is needed on a Debian-based Linux
-computer (running, e.g., Ubuntu) is to run the Bash script
+The impatient way to install everything that is needed is to use
+Anaconda Python and the ``conda`` program:
+
+.. code-block:: text
+
+        Terminal> conda install --channel johannr doconce
+
+The ``conda`` package is available for Mac and Linux only.
+
+If you do not want to use Anaconda and are
+on a Debian-based Linux
+computer (running, e.g., Ubuntu), you can instead run the Bash script
 `install_doconce.sh <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.sh>`__ or the equivalent Python script
 `install_doconce.py <https://raw.githubusercontent.com/hplgit/doconce/master/doc/src/manual/install_doconce.py>`__.
 These scripts gives a comprehensive installation. Some users will prefer to
-install what is needed, and this is explained below.
+install just what is needed for them, and this is explained below.
 
 
 .. admonition:: Version control systems are needed
@@ -3233,6 +3564,9 @@ install what is needed, and this is explained below.
 
 
 
+
+You can omit reading the next sections if you rely on ``conda`` or
+``apt-get install`` commands in the Bash script for installing DocOnce.
 
 DocOnce
 -------

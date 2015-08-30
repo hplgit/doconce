@@ -108,8 +108,8 @@ pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
 
-cp testdoc.tex testdoc.tex_ptex2tex
-# testdoc.tex_ptex2tex corresponds to testdoc.pdf
+cp testdoc.tex testdoc_bigex.tex
+cp testdoc.pdf testdoc_bigex.pdf
 
 system doconce ptex2tex testdoc "sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}" pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex

@@ -94,6 +94,14 @@ code { color: inherit; background-color: transparent; }
                2,
                'do2any:latex:compile1',
                'do2any:latex:compile1'),
+              ('The translation command', 3, None, '___sec40'),
+              ('Newcommands', 3, None, '___sec41'),
+              ('Output for paper vs screen', 3, None, '___sec42'),
+              ('Command-line options', 3, None, '___sec43'),
+              ('Syntax highlighting', 3, None, '___sec44'),
+              ('Drafts', 3, None, '___sec45'),
+              ('Potential problems with ampersand', 3, None, '___sec46'),
+              ('Part 2 of Step 1 (outdated)', 3, None, '___sec47'),
               ('From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)',
                2,
                'do2any:latex:compile2',
@@ -112,47 +120,47 @@ code { color: inherit; background-color: transparent; }
                2,
                'do2any:ipynb',
                'do2any:ipynb'),
-              ('Hidden code blocks', 3, None, '___sec46'),
+              ('Hidden code blocks', 3, None, '___sec54'),
               ('Displaying code as plain text instead of executable cells',
                3,
                None,
-               '___sec47'),
-              ('Figures', 3, None, '___sec48'),
-              ('Movies', 3, None, '___sec49'),
-              ('Admonitions', 3, None, '___sec50'),
-              ('References to an External Textbook', 3, None, '___sec51'),
+               '___sec55'),
+              ('Figures', 3, None, '___sec56'),
+              ('Movies', 3, None, '___sec57'),
+              ('Admonitions', 3, None, '___sec58'),
+              ('References to an External Textbook', 3, None, '___sec59'),
               ('Matlab Notebooks', 2, 'do2any:matlabnb', 'do2any:matlabnb'),
               ('Plain ASCII Text', 2, 'do2any:ascii', 'do2any:ascii'),
               ('reStructuredText', 2, 'do2any:rst', 'do2any:rst'),
               ('Sphinx', 2, 'do2any:sphinx', 'do2any:sphinx'),
-              ('The manual Sphinx procedure', 3, None, '___sec56'),
+              ('The manual Sphinx procedure', 3, None, '___sec64'),
               ('Wiki Formats', 2, 'do2any:wiki', 'do2any:wiki'),
               ('Google Docs', 2, 'do2any:google:docs', 'do2any:google:docs'),
               ('Tweaking the DocOnce Output',
                2,
                'do2any:tweaking',
                'do2any:tweaking'),
-              ('Options for the `doconce` commands', 1, None, '___sec60'),
-              ('`doconce format` command-line options', 2, None, '___sec61'),
-              ('Demos', 2, None, '___sec62'),
+              ('Options for the `doconce` commands', 1, None, '___sec68'),
+              ('`doconce format` command-line options', 2, None, '___sec69'),
+              ('Demos', 2, None, '___sec70'),
               ('Installation of DocOnce and its Dependencies',
                1,
                'install:doconce',
                'install:doconce'),
-              ('DocOnce', 2, None, '___sec64'),
-              ('Dependencies', 2, None, '___sec65'),
-              ('Python v2.7', 3, None, '___sec66'),
-              ('Preprocessors', 3, None, '___sec67'),
-              ('Bibliography', 3, None, '___sec68'),
-              ('Image file handling', 3, None, '___sec69'),
-              ('Spellcheck', 3, None, '___sec70'),
-              ('Ptex2tex for LaTeX Output', 3, None, '___sec71'),
-              ('Pygments and the Minted Code Style', 3, None, '___sec72'),
-              ('LaTeX packages', 3, None, '___sec73'),
-              ('Sphinx or reStructuredText Output', 3, None, '___sec74'),
-              ('Markdown and Pandoc Output', 3, None, '___sec75'),
-              ('Epydoc Output', 3, None, '___sec76'),
-              ('Analyzing file differences', 3, None, '___sec77')]}
+              ('DocOnce', 2, None, '___sec72'),
+              ('Dependencies', 2, None, '___sec73'),
+              ('Python v2.7', 3, None, '___sec74'),
+              ('Preprocessors', 3, None, '___sec75'),
+              ('Bibliography', 3, None, '___sec76'),
+              ('Image file handling', 3, None, '___sec77'),
+              ('Spellcheck', 3, None, '___sec78'),
+              ('Ptex2tex for LaTeX Output', 3, None, '___sec79'),
+              ('Pygments and the Minted Code Style', 3, None, '___sec80'),
+              ('LaTeX packages', 3, None, '___sec81'),
+              ('Sphinx or reStructuredText Output', 3, None, '___sec82'),
+              ('Markdown and Pandoc Output', 3, None, '___sec83'),
+              ('Epydoc Output', 3, None, '___sec84'),
+              ('Analyzing file differences', 3, None, '___sec85')]}
 end of tocinfo -->
 
 <body>
@@ -193,7 +201,7 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">What Does DocOnce Look Like?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">First a Section Heading with 7 = Characters</a></li>
      <!-- navigation toc: --> <li><a href="#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec60" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec68" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
      <!-- navigation toc: --> <li><a href="#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
 
         </ul>
@@ -229,7 +237,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Aug 23, 2015</h4></center> <!-- date -->
+<center><h4>Aug 30, 2015</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -1562,6 +1570,8 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.
 
 <h2 id="do2any:latex:compile1">From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)</h2>
 
+<h3 id="___sec40">The translation command </h3>
+
 <p>
 Filter the doconce text directly to valid LaTeX using
 the <code>--latex_code_style=</code> option:
@@ -1576,12 +1586,16 @@ Without <code>--latex_code_style=</code>, the output will be a <code>mydoc.p.tex
 that has to be converted to a standard <code>mydoc.tex</code> LaTeX file via
 the programs <code>ptex2tex</code> or <code>doconce ptex2tex</code>.
 
+<h3 id="___sec41">Newcommands </h3>
+
 <p>
-LaTeX-specific commands ("newcommands") in math formulas and similar
+LaTeX-specific commands (&quot;newcommands&quot;) in math formulas and similar
 can be placed in files <code>newcommands.tex</code>, <code>newcommands_keep.tex</code>, or
 <code>newcommands_replace.tex</code> (see the section <a href="#newcommands">Macros (Newcommands), Cross-References, Index, and Bibliography</a>).
 If these files are present, they are included in the LaTeX document
 so that your commands are defined.
+
+<h3 id="___sec42">Output for paper vs screen </h3>
 
 <p>
 An option <code>--device=paper</code> makes some adjustments for documents
@@ -1592,6 +1606,8 @@ as <a href="http://goo.gl/" target="_self"><tt>http://goo.gl/</tt></a>, <a href=
 <a href="https://bitly.com/" target="_self"><tt>https://bitly.com/</tt></a>.)
 The default, <code>--device=screen</code>, creates a PDF file for reading
 on a screen where links are just clickable.
+
+<h3 id="___sec43">Command-line options </h3>
 
 <p>
 There are many additional options (run <code>doconce format --help</code> and
@@ -1604,6 +1620,8 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_bibstyle=plain</code> (name of BibTeX style)</li>
  <li> <code>--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection</code></li>
  <li> <code>--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier</code></li>
+ <li> <code>--latex_packages=package1,package2,package3</code> (list of extra packages to be included <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Listing varioref in as package automatically leads to references with page numbers, if the element referred to is not on the same page. This is often very helpful, e.g., &quot;see Figure 5.3 on page 67&quot;."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>)</li>
+ <li> <code>--draft</code> (turns on draft mode in documentclass, otherwise final mode)</li>
  <li> <code>--latex_list_of_exercises=loe,toc,none</code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
  <li> <code>--latex_fancy_header</code> (chapter/section headings at top of pages, style depends on value of <code>--latex_section_headings</code>)</li>
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -1646,6 +1664,13 @@ journals and requires the stylefiles <code>siamltex.cls</code> and <code>siam10.
 to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can
 be used to set the journal name, and the style requires
 <code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
+
+<p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> Listing <code>varioref</code> in as package
+automatically leads to references with page numbers, if the element referred to
+is not on the same page. This is often very helpful, e.g., &quot;see
+Figure 5.3 on page 67&quot;.</p>
+
+<h3 id="___sec44">Syntax highlighting </h3>
 
 <p>
 The style of verbatim blocks of computer code is specified by
@@ -1707,11 +1732,15 @@ framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 <p>
 (but no linebreaks, as here, they are for formatting this document only).
 
+<h3 id="___sec45">Drafts </h3>
+
 <p>
 During development of a manuscript, may prefer line numbers, double line spacing, frequent use of inline comments, and label names printed in the margin.
 This is enabled by the options <code>--latex_line_numbers --latex_double_spacing --latex_todonotes --latex_labels_in_margin</code>. One may also (automatically) edit the
 <code>final</code> argument in the <code>documentclass</code> heading to <code>draft</code> as this will
 mark overful lines (hboxes).
+
+<h3 id="___sec46">Potential problems with ampersand </h3>
 
 <p>
 Another useful option for LaTeX documents is <code>--no_ampersand_quote</code>, which
@@ -1720,8 +1749,9 @@ inserts native latex code for tables
 inside <code>% if FORMAT in ('latex', 'pdflatex'):</code> (or similar <code>preprocess</code> syntax)
 tests.
 
+<h3 id="___sec47">Part 2 of Step 1 (outdated) </h3>
+
 <p>
-<b>Part 2 of Step 1 (outdated).</b>
 In case you <em>did not</em> specify the <code>--latex_code_style=</code> option,
 you must run <code>ptex2tex</code> (if you have installed the
 Python ptex2tex package) to make a standard LaTeX file,
@@ -1924,7 +1954,7 @@ DocOnce can generate json files for the Jupyter Notebook:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format ipynb mydoc  # results in mydoc.ipynb
 </pre></div>
 
-<h3 id="___sec46">Hidden code blocks </h3>
+<h3 id="___sec54">Hidden code blocks </h3>
 
 <p>
 It is no guarantee that the notebook can be executed. For example,
@@ -1969,7 +1999,7 @@ sys.path.append(&#39;src-test&#39;)
 !ec
 </pre></div>
 
-<h3 id="___sec47">Displaying code as plain text instead of executable cells </h3>
+<h3 id="___sec55">Displaying code as plain text instead of executable cells </h3>
 
 <p>
 Some code blocks may just be there for explanation and are not
@@ -2003,7 +2033,7 @@ a variable will not lead to output like it does in a Python shell).
 To have an interactive session typeset with input and output in plain
 text, use the <code>-t</code> extension to the environment: <code>pyshell-t</code> and <code>ipy-t</code>.
 
-<h3 id="___sec48">Figures </h3>
+<h3 id="___sec56">Figures </h3>
 
 <p>
 As with HTML files, you need to ensure that the notebook has access to
@@ -2020,7 +2050,7 @@ the <code>--ipynb_figure=</code> option, with the following values:
  <li> <code>Image</code>: Python notebook cell with <code>Image</code> object</li>
 </ul>
 
-<h3 id="___sec49">Movies </h3>
+<h3 id="___sec57">Movies </h3>
 
 <p>
 Typesetting of movies is specified by <code>--ipynb_movie=</code>, and valid options
@@ -2036,7 +2066,7 @@ are
    and use an <code>HTML</code> object with <code>video</code> tag for local movies</li>
 </ul>
 
-<h3 id="___sec50">Admonitions </h3>
+<h3 id="___sec58">Admonitions </h3>
 
 <p>
 Typesetting of admonition is rather primitive in notebooks.
@@ -2053,7 +2083,7 @@ option <code>--ipynb_admon=</code>:
 Note that quotes in <code>!bc quote</code> environments
 are always typeset as Markdown quotes.
 
-<h3 id="___sec51">References to an External Textbook </h3>
+<h3 id="___sec59">References to an External Textbook </h3>
 
 <p>
 Sometimes one wants to refer to equations and sections in an external
@@ -2378,7 +2408,7 @@ books (which build on Sphinx).
 You must run the generated <code>automake_sphinx.py</code> also with a <code>--runestone</code>
 option to generate these type of documents.
 
-<h3 id="___sec56">The manual Sphinx procedure </h3>
+<h3 id="___sec64">The manual Sphinx procedure </h3>
 
 <p>
 If it is not desirable to use the autogenerated scripts explained
@@ -2588,9 +2618,9 @@ from a script to automate all steps in going from DocOnce to the final
 format(s). The <code>make.sh</code> files in <code>docs/manual</code> and <code>docs/tutorial</code>
 constitute comprehensive examples on how such scripts can be made.
 
-<h1 id="___sec60">Options for the <code>doconce</code> commands </h1>
+<h1 id="___sec68">Options for the <code>doconce</code> commands </h1>
 
-<h2 id="___sec61"><code>doconce format</code> command-line options </h2>
+<h2 id="___sec69"><code>doconce format</code> command-line options </h2>
 
 <p>
 The transformation of a DocOnce source to various format is done with
@@ -2645,6 +2675,18 @@ Values: on/off. Turns on/off fix of illegal constructions and the syntax check
 Remove all inline comments of the form [ID: comment].
 
 
+--draft
+
+Indicates draft (turns on draft elements in LaTeX, otherwise no effect).
+
+
+--copyright=...
+
+Set copyright, mainly for LaTeX output (inserted in date and in a footer).
+For HTML, use --reference= option in the doconce split_html command.
+For Sphinx, use copyright= option in the doconce sphinx_dir command.
+
+
 --exercise_numbering=...
 
 absolute: exercises numbered as 1, 2, ... (default)
@@ -2697,6 +2739,11 @@ Do not include header and footer in (LaTeX and HTML) documents.
 --no_emoji
 
 Remove all emojis.
+
+
+--allow_refs_to_external_docs
+
+Do not abort translation if ref{...} to labels not defined in this document.
 
 
 --runestone
@@ -3062,6 +3109,16 @@ doconce_heading (default): authors with &quot;footnotes&quot; for institutions,
 beamer: layout for beamer slides.
 
 
+--latex_link_color=...
+
+Color used in hyperlinks. Default is dark blue if --device=screen,
+or black if --device=paper (invisible in print out) or special blue
+color if --latex_section_headings=blue or strongblue.
+Values are specified either as comma-separated rgb tuples or as
+color names, e.g., --latex_link_color=0.1,0.9,0.85 or
+--latex_link_color=red or --latex_link_color=gray!70
+
+
 --latex_title_reference=...
 
 latex code placed in a footnote for the title,
@@ -3073,6 +3130,11 @@ version of the document.
 
 Encoding for \usepackage[encoding]{inputenc}.
 Values: utf8 (default) or latin1.
+
+
+--latex_packages=...
+
+Comma-separated list of latex packages to be included in \usepackage commands..
 
 
 --latex_papersize=...
@@ -3552,7 +3614,7 @@ the document into multiple parts.
 Combine paragraphs to one line (does not work well).
 </pre></div>
 
-<h2 id="___sec62">Demos </h2>
+<h2 id="___sec70">Demos </h2>
 
 <p>
 The current text is generated from a DocOnce format stored in the file
@@ -3620,7 +3682,7 @@ image processing tools and spell checking apply Unix-specific software.
 You can omit reading the next sections if you rely on <code>conda</code> or
 <code>apt-get install</code> commands in the Bash script for installing DocOnce.
 
-<h2 id="___sec64">DocOnce </h2>
+<h2 id="___sec72">DocOnce </h2>
 
 <p>
 DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.
@@ -3657,7 +3719,7 @@ git pull origin master
 sudo python setup.py install
 </pre></div>
 
-<h2 id="___sec65">Dependencies </h2>
+<h2 id="___sec73">Dependencies </h2>
 
 <p>
 Producing HTML documents, plain text, pandoc-extended Markdown,
@@ -3667,7 +3729,7 @@ software. However, if you want other formats as output
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, a lot of extra software must be installed.
 
-<h3 id="___sec66">Python v2.7 </h3>
+<h3 id="___sec74">Python v2.7 </h3>
 
 <p>
 First you need Python version 2.7 and the <code>pip</code> installation program.
@@ -3679,7 +3741,7 @@ You do not need more software if you avoid using preprocessors, there
 is no bibliography, and you stick to the output formats LaTeX and HTML
 (you need of course LaTeX installed to process <code>.tex</code> files).
 
-<h3 id="___sec67">Preprocessors </h3>
+<h3 id="___sec75">Preprocessors </h3>
 
 <p>
 If you make use of the <a href="http://code.google.com/p/preprocess" target="_self">Preprocess</a>
@@ -3704,7 +3766,7 @@ Note that neither Preprocess nor Mako is run if you do not have
 preprocessor directives in your DocOnce source. That is, you only need
 this extra software if you make active use of preprocessors.
 
-<h3 id="___sec68">Bibliography </h3>
+<h3 id="___sec76">Bibliography </h3>
 
 <p>
 The Python package <a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> is needed if you use a bibliography
@@ -3717,7 +3779,7 @@ The installation is done by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 </pre></div>
 
-<h3 id="___sec69">Image file handling </h3>
+<h3 id="___sec77">Image file handling </h3>
 
 <p>
 Different output formats require different formats of image files.
@@ -3755,7 +3817,7 @@ can be installed by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive-font-utils
 </pre></div>
 
-<h3 id="___sec70">Spellcheck </h3>
+<h3 id="___sec78">Spellcheck </h3>
 
 <p>
 The utility <code>doconce spellcheck</code> applies the <code>ispell</code> program for
@@ -3767,7 +3829,7 @@ spellcheck. On Debian (including Ubuntu) it is installed by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install ispell
 </pre></div>
 
-<h3 id="___sec71">Ptex2tex for LaTeX Output </h3>
+<h3 id="___sec79">Ptex2tex for LaTeX Output </h3>
 
 <p>
 Originally, DocOnce relied on the <a href="http://code.google.com/p/ptex2tex" target="_self">ptex2tex</a> program for very flexible choice of typesetting of
@@ -3818,7 +3880,7 @@ Note that the <code>doconce ptex2tex</code> command, which needs no installation
 beyond DocOnce itself, can be used as a simpler alternative to the <code>ptex2tex</code>
 program.
 
-<h3 id="___sec72">Pygments and the Minted Code Style </h3>
+<h3 id="___sec80">Pygments and the Minted Code Style </h3>
 
 <p>
 The <em>minted</em> LaTeX style is
@@ -3843,7 +3905,7 @@ several other packages: <code>xcolor</code>, <code>ifthen</code>, <code>xkeyval<
 <code>graphicx</code>, and <code>setspace</code>. The relevant Debian packages for
 installing all this are listed below.
 
-<h3 id="___sec73">LaTeX packages </h3>
+<h3 id="___sec81">LaTeX packages </h3>
 
 <p>
 Many LaTeX packages are potentially needed, depending on various
@@ -3887,7 +3949,7 @@ the <a href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
 </pre></div>
 
-<h3 id="___sec74">Sphinx or reStructuredText Output </h3>
+<h3 id="___sec82">Sphinx or reStructuredText Output </h3>
 
 <p>
 Output to <code>sphinx</code> or <code>rst</code> requires the
@@ -3946,7 +4008,7 @@ will need more software, typically the following on a Debian system:
 <!-- or clone the svn repository, go to the <code>rst2pdf</code> directory and -->
 <!-- run the usual <code>sudo python setup.py install</code>. -->
 
-<h3 id="___sec75">Markdown and Pandoc Output </h3>
+<h3 id="___sec83">Markdown and Pandoc Output </h3>
 
 <p>
 The DocOnce format <code>pandoc</code> outputs the document in various Markdown
@@ -3964,7 +4026,7 @@ easily done by
 <p>
 on Debian (Ubuntu) systems.
 
-<h3 id="___sec76">Epydoc Output </h3>
+<h3 id="___sec84">Epydoc Output </h3>
 
 <p>
 When the output format is <code>epydoc</code> one needs that program too, installed
@@ -3988,7 +4050,7 @@ run <code>svn update</code>, and then <code>sudo python setup.py install</code>.
 Mercurial (<code>hg</code>) directories, go to the directory, run
 <code>hg pull; hg update</code>, and then <code>sudo python setup.py install</code>.
 
-<h3 id="___sec77">Analyzing file differences </h3>
+<h3 id="___sec85">Analyzing file differences </h3>
 
 <p>
 The <code>doconce diff file1 file prog</code> command for illustrating differences between
