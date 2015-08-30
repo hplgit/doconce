@@ -16,14 +16,14 @@
 body {
     font-family: sans-serif;
     font-size: 100%;
-    background-color: #11303d;
+    background-color: #ffffff;
     color: #000;
     margin: 0;
     padding: 0;
 }
 
 div.document {
-    background-color: #1c4e63;
+    background-color: #ffffff;
 }
 
 div.documentwrapper {
@@ -40,9 +40,12 @@ div.body {
     color: #000000;
     padding: 0 20px 30px 20px;
 }
+div.bodywrapper {
+    margin: 0 230px 0 0;
+}
 
 div.footer {
-    color: #ffffff;
+    color: #8A0808;
     width: 100%;
     padding: 9px 0 9px 0;
     text-align: center;
@@ -50,12 +53,12 @@ div.footer {
 }
 
 div.footer a {
-    color: #ffffff;
+    color: #8A0808;
     text-decoration: underline;
 }
 
 div.related {
-    background-color: #133f52;
+    background-color: #666666;
     line-height: 30px;
     color: #ffffff;
 }
@@ -65,11 +68,12 @@ div.related a {
 }
 
 div.sphinxsidebar {
+    float: right;
 }
 
 div.sphinxsidebar h3 {
     font-family: 'Trebuchet MS', sans-serif;
-    color: #ffffff;
+    color: #8A0808;
     font-size: 1.4em;
     font-weight: normal;
     margin: 0;
@@ -77,12 +81,12 @@ div.sphinxsidebar h3 {
 }
 
 div.sphinxsidebar h3 a {
-    color: #ffffff;
+    color: #8A0808;
 }
 
 div.sphinxsidebar h4 {
     font-family: 'Trebuchet MS', sans-serif;
-    color: #ffffff;
+    color: #8A0808;
     font-size: 1.3em;
     font-weight: normal;
     margin: 5px 0 0 0;
@@ -90,7 +94,7 @@ div.sphinxsidebar h4 {
 }
 
 div.sphinxsidebar p {
-    color: #ffffff;
+    color: #8A0808;
 }
 
 div.sphinxsidebar p.topless {
@@ -100,30 +104,35 @@ div.sphinxsidebar p.topless {
 div.sphinxsidebar ul {
     margin: 10px;
     padding: 0;
-    color: #ffffff;
+    color: #8A0808;
 }
 
 div.sphinxsidebar a {
-    color: #98dbcc;
+    color: #8A0808;
 }
 
 div.sphinxsidebar input {
-    border: 1px solid #98dbcc;
+    border: 1px solid #8A0808;
     font-family: sans-serif;
     font-size: 1em;
 }
 
 
+/* for collapsible sidebar */
+div#sidebarbutton {
+    background-color: #f2f2f2;
+}
+
 
 /* -- hyperlink styles ------------------------------------------------------ */
 
 a {
-    color: #355f7c;
+    color: #8A0808;
     text-decoration: none;
 }
 
 a:visited {
-    color: #355f7c;
+    color: #8A0808;
     text-decoration: none;
 }
 
@@ -144,7 +153,7 @@ div.body h6 {
     font-family: 'Trebuchet MS', sans-serif;
     background-color: #f2f2f2;
     font-weight: normal;
-    color: #20435c;
+    color: #8A0808;
     border-bottom: 1px solid #ccc;
     margin: 20px -20px 10px -20px;
     padding: 3px 0 3px 10px;
@@ -158,14 +167,14 @@ div.body h5 { font-size: 110%; }
 div.body h6 { font-size: 100%; }
 
 a.headerlink {
-    color: #c60f0f;
+    color: #8A0808;
     font-size: 0.8em;
     padding: 0 4px 0 4px;
     text-decoration: none;
 }
 
 a.headerlink:hover {
-    background-color: #c60f0f;
+    background-color: #8A0808;
     color: white;
 }
 
@@ -219,7 +228,7 @@ p.admonition-title:after {
 
 pre {
     padding: 5px;
-    background-color: #eeffcc;
+    background-color: #f2f2f2;
     color: #333333;
     line-height: 120%;
     border: 1px solid #ac9;

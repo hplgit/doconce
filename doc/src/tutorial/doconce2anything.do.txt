@@ -751,7 +751,7 @@ label{do2any:latex:compile1}
 idx{`ptex2tex` program}
 idx{`ptex2tex` doconce version}
 
-=== The translation command ==
+=== The translation command ===
 
 Filter the doconce text directly to valid LaTeX using
 the `--latex_code_style=` option:
@@ -839,10 +839,10 @@ to be submitted to Elsevier journals (`--latex_elsevier_journal=` can
 be used to set the journal name, and the style requires
 `elsarticle.cls` and `elsarticle-num.bst`).
 
-[^varioref]: Listing `varioref` in `--latex_packages=...`
+[^varioref]: Listing `varioref` in as package
 automatically leads to references with page numbers, if the element referred to
-is not on the same page. This is often very helpful (e.g., ``see
-Figure 5.3 on page 67'').
+is not on the same page. This is often very helpful, e.g., ``see
+Figure 5.3 on page 67''.
 
 idx{LaTeX syntax highlighting}
 

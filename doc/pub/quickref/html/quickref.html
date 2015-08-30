@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +9,7 @@
     
     <title>DocOnce Quick Reference</title>
     
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -24,6 +25,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -1054,8 +1056,8 @@ apply_inline_edits
 <span class="c"># create a directory for the sphinx format</span>
 doconce sphinx_dir <span class="nv">copyright</span><span class="o">=</span><span class="s1">&#39;John Doe&#39;</span> <span class="nv">title</span><span class="o">=</span><span class="s1">&#39;Long title&#39;</span> <span class="se">\</span>
     <span class="nv">short_title</span><span class="o">=</span><span class="s2">&quot;Short title&quot;</span> <span class="nv">version</span><span class="o">=</span>0.1 intersphinx <span class="se">\</span>
-    <span class="nv">dirname</span><span class="o">=</span>sphinx-rootdir <span class="nv">theme</span><span class="o">=</span>default <span class="nv">logo</span><span class="o">=</span>mylogo.png <span class="se">\</span>
-    do_file <span class="o">[</span>do_file2 do_file3 ...<span class="o">]</span>
+    <span class="nv">dirname</span><span class="o">=</span>sphinx-rootdir <span class="nv">theme</span><span class="o">=</span>default <span class="nv">logo</span><span class="o">=</span>/path/to/mylogo.png <span class="se">\</span>
+    dofile
 <span class="o">(</span>requires sphinx version &gt;<span class="o">=</span> 1.1<span class="o">)</span>
 
 <span class="c"># walk through a directory tree and insert doconce files as</span>
@@ -1394,6 +1396,11 @@ examine the DocOnce source and the <code class="docutils literal"><span class="p
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Quick Reference</a><ul>
@@ -1463,9 +1470,14 @@ examine the DocOnce source and the <code class="docutils literal"><span class="p
         <li class="nav-item nav-item-0"><a href="index.html">DocOnce Quick Reference</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2015, HPL.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.
-    </div>
+<div class="wrapper">
+  <div class="footer">
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;2006-2015 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo.
+  </div>
+</div>
+
   </body>
 </html>

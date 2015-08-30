@@ -28,8 +28,7 @@ dvipdf tutorial.dvi
 # Sphinx
 system doconce format sphinx tutorial
 doconce replace XXX1 '(ref{myeq1})' tutorial.rst
-rm -rf sphinx-rootdir
-system doconce sphinx_dir tutorial
+system doconce sphinx_dir copyright='2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc tutorial
 cp tutorial.rst tutorial.sphinx.rst
 mv tutorial.rst sphinx-rootdir
 cd sphinx-rootdir
@@ -72,7 +71,8 @@ doconce replace XXX1 '(ref{myeq1})' tutorial.md
 rm -f *.ps
 
 dest=../../pub/tutorial
-cp -r sphinx-rootdir/_build/html $dest/html
+rm -rf $dest/html
+cp -r sphinx-rootdir/_build/html $dest
 cp tutorial.pdf tutorial.html $dest
 dest=../../../../doconce.wiki
 cp tutorial.rst $dest/tutorial_rst.rst

@@ -108,8 +108,8 @@ pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
 
-cp testdoc.tex testdoc.tex_ptex2tex
-# testdoc.tex_ptex2tex corresponds to testdoc.pdf
+cp testdoc.tex testdoc_bigex.tex
+cp testdoc.pdf testdoc_bigex.pdf
 
 system doconce ptex2tex testdoc "sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}" pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex
@@ -130,7 +130,7 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 system doconce format sphinx testdoc $ex
 system doconce split_rst testdoc
-system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
+system doconce sphinx_dir copyright=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 

@@ -55,8 +55,10 @@
 {% block footer %}
 <div class="wrapper">
   <div class="footer">
-  <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      {% if show_copyright %}&copy;{{ copyright }}.{% endif %}
   </div>
 </div>
 {% endblock %}
-

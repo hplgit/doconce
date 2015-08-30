@@ -21,6 +21,6 @@ doconce format mwiki demo
 # (recall that new shout wikis require files to be uploaded)
 # and test in http://en.wikibooks.org/wiki/Sandbox
 
-doconce sphinx_dir author=hpl title=demo demo
+doconce sphinx_dir copyright=hpl title=demo demo
 python automake_sphinx.py
 # check out sphinx-rootdir/_build/html/demo.html

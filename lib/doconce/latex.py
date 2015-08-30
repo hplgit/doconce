@@ -2480,6 +2480,21 @@ def latex_quiz(quiz):
     # but that won't work in other formats
     return text
 
+def update_copyright_years(copyright_):
+    # Update year in year span XXXX-YYYY so that YYYY is the current year
+    import time
+    w = time.asctime().split()
+    this_year = w[4]
+    pattern = '\d\d\d\d-(\d\d\d\d)'
+    m = re.search(pattern, copyright_)
+    if m:
+        year_span = m.group()
+        end_year = m.group(1)
+        if end_year != this_year:
+            copyright_ = copyright_.replace('-' + end_year, '-' + this_year)
+            print '*** warning: the copyright contained the years %s, changed to %s' % (year_span, year_span.replace(end_year, this_year))
+    return copyright_
+
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -3369,6 +3384,7 @@ open=right               %% start new chapters on odd-numbered pages
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}"""
         if copyright_ is not None:
+            copyright_ = update_copyright_years(copyright_)
             INTRO['latex'] += r"""
 \fancyfoot[C]{\copyright\ {\footnotesize Copyright %s}}
 """ % copyright_

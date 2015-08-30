@@ -4294,7 +4294,7 @@ in a separate document: \texttt{admon.do.txt}.
 \end{document}
 % #endif
 
-************** File: testdoc.tex_ptex2tex *****************
+************** File: testdoc_bigex.tex *****************
 %%
 %% Automatically generated file from DocOnce source
 %% (https://github.com/hplgit/doconce/)
@@ -44201,9 +44201,10 @@ makeindex testdoc
 bibtex testdoc
 pdflatex -shell-escape testdoc
 pdflatex -shell-escape testdoc
+pdflatex -shell-escape testdoc
 
-cp testdoc.tex testdoc.tex_ptex2tex
-# testdoc.tex_ptex2tex corresponds to testdoc.pdf
+cp testdoc.tex testdoc_bigex.tex
+cp testdoc.pdf testdoc_bigex.pdf
 
 system doconce ptex2tex testdoc "sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}" pypro=ans:nt envir=minted > testdoc.tex_doconce_ptex2tex
 echo "----------- end of doconce ptex2tex output ----------------" >> testdoc.tex_doconce_ptex2tex
@@ -44224,7 +44225,7 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 system doconce format sphinx testdoc $ex
 system doconce split_rst testdoc
-system doconce sphinx_dir author=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
+system doconce sphinx_dir copyright=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 
@@ -76306,7 +76307,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fac21619a28>
+verbatim is to be replaced using <function html_verbatim at 0x7f1d861d2a28>
 
 
 First occurence: " `mako`."
@@ -80545,7 +80546,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 30 03:25:11 2015.
+# sphinx-quickstart on Sun Aug 30 04:41:54 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -83066,7 +83067,7 @@ system pdflatex -shell-escape $name
 # Sphinx
 system doconce format sphinx $name --no_preprocess
 rm -rf sphinx-rootdir
-system doconce sphinx_dir author='HPL' $name
+system doconce sphinx_dir copyright='HPL' $name
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 system python automake_sphinx.py
 cp $name.rst $name.sphinx.rst  # save
@@ -103671,7 +103672,591 @@ ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb>
 Output written on testdoc.pdf (34 pages, ).
 Transcript written on testdoc.log.
-+ cp testdoc.tex testdoc.tex_ptex2tex
++ pdflatex -shell-escape testdoc
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ \write18 enabled.
+entering extended mode
+(./testdoc.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/sidecap/sidecap.sty
+
+
+
+(/home/hpl/texmf/tex/latex/misc/ptex2tex.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz))
+(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+
+
+
+(/home/hpl/texmf/tex/latex/misc/anslistings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+
+
+(/home/hpl/texmf/tex/latex/misc/minted.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+
+
+(./testdoc.w18)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex)) 
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
+.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
+.sty)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarytopaths.code.tex))) (/home/hpl/texmf/tex/latex/misc/todonotes.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryshadows.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfadings.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code
+.tex)))) (/usr/share/texlive/texmf-dist/tex/latex/showlabels/showlabels.sty
+Package: `showlabels' v1.6.6 <2013/12/06>
+with amsmath equation tags
+) 
+(/home/hpl/texmf/tex/latex/misc/mdframed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
+
+
+(/home/hpl/texmf/tex/latex/mdframed/md-frame-1.mdf))
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
+
+Writing index file testdoc.idx
+(./testdoc.aux) 
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+
+Package microtype Warning: `draft' option active.
+(microtype)                Disabling all micro-typographic extensions.
+(microtype)                This might lead to different line and page breaks.
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty
+ABD: EverySelectfont initializing macros))
+
+
+Package hyperref Warning: Draft mode on.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./testdoc.toc
+Overfull \hbox (3.25177pt too wide) 
+ [][] []\T1/lmr/m/n/10 A test of ver-ba-tim words in head-ing with sub-script $
+\OML/lmm/m/it/10 a[]$\T1/lmr/m/n/10 : [] and [] |
+
+Underfull \hbox (badness 10000) 
+ [][]  
+
+[3]
+Underfull \hbox (badness 10000) 
+
+[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+Overfull \hbox (45.85634pt too wide) 
+\T1/lmr/m/n/10 and braces like [], [], [], and []. |
+[9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10]
+
+[11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
+Overfull \hbox (8.50557pt too wide) 
+[][]\T1/lmr/m/n/10 :|
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 cap-
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 tion
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 span-
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 ning
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 sev-eral
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 lines
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 and
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 con-
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 tain-ing
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 ver-
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 ba-tim
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 words
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 like
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 and
+
+Overfull \hbox (21.67192pt too wide) 
+[]|
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 math
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 with
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 sub-
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 script
+
+Underfull \hbox (badness 10000) 
+\T1/lmr/m/n/10 as in
+<downloaded_figures/f_plot.png, id=91, 578.16pt x 433.62pt> [12] [13]
+Underfull \hbox (badness 4084) 
+[]\T1/lmr/m/n/8 test \T1/lmtt/m/n/8 two \T1/lmr/m/n/8 (sep-a-rate) \T1/lmtt/m/n
+/8 verbatim
+
+
+
+
+
+
+
+Underfull \hbox (badness 1424) 
+[]\T1/lmr/m/n/8 index, with comma, and one
+
+
+
+[14]
+<../doc/src/manual/mov/wave_frames/frame_0080.png, id=105, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0085.png, id=106, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0090.png, id=107, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0095.png, id=108, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0100.png, id=109, 586.8324pt x 442.292
+4pt>
+<../doc/src/manual/mov/wave_frames/frame_0105.png, id=110, 586.8324pt x 442.292
+4pt> [15] [16] [17] [18]
+Overfull \hbox (5.03835pt too wide) 
+[][][]\T1/lmtt/m/n/8 http://www.springer.com/mathematics/computational+science+
+%26+engineering/book/978-3-642-23098-1| |
+[19]
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on .
+
+[20] [21] [22] [23] [24] [25]
+Underfull \hbox (badness 10000) 
+
+[26] (./testdoc.bbl [27]) [28]
+Underfull \hbox (badness 10000) 
+
+[29] [30] [31] [32] (./testdoc.ind [33]
+Overfull \hbox (10.92883pt too wide) 
+[]\T1/lmr/m/n/10 test \T1/lmtt/m/n/10 two \T1/lmr/m/n/10 (sep-a-rate) \T1/lmtt/
+m/n/10 verbatim expressions \T1/lmr/m/n/10 which|
+[34]) (./testdoc.aux)
+
+ *File List*
+ article.cls    2014/09/29 v1.4h Standard LaTeX document class
+  size10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+geometry.sty    2010/09/12 v5.6 Page Geometry
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ sidecap.sty    2003/06/06 v1.6f SideCap Package (RN/HjG)
+  ifthen.sty    2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+varioref.sty    2014/10/28 v1.5a package for extended references (FMi)
+    soul.sty    2003/11/17 v2.4 letterspacing/underlining (mf)
+ptex2tex.sty    
+fancyvrb.sty    2008/02/07
+moreverb.sty    2008/06/03 v2.3a `more' verbatim facilities
+verbatim.sty    2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+  epsfig.sty    1999/02/16 v1.7a (e)psfig emulation (SPQR)
+  framed.sty    2011/10/22 v 0.96: framed or shaded text with page breaks
+anslistings.sty    2009/03/28 code highlighting; provided by Olivier Verdier <o
+livier@maths.lth.se>
+listings.sty    2014/09/06 1.5e (Carsten Heinz)
+ lstmisc.sty    2014/09/06 1.5e (Carsten Heinz)
+listings.cfg    2014/09/06 1.5e listings configuration
+  minted.sty    2015/01/31 v2.0 Yet another Pygments shim for LaTeX
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+   float.sty    2001/11/08 v1.3d Float enhancements (AL)
+    calc.sty    2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+ifplatform.sty    2010/10/22 v0.4 Testing for the operating system
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+catchfile.sty    2011/03/01 v1.6 Catch the contents of a file (HO)
+ testdoc.w18
+etoolbox.sty    2011/01/03 v2.1 e-TeX tools for LaTeX
+    etex.sty    1998/03/26 v2.0 eTeX basic definition package (PEB)
+ xstring.sty    2013/10/13  v1.7c  String manipulations (C Tellechea)
+  lineno.sty    2005/11/02 line numbers on paragraphs v4.41
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+mathpazo.sty    2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+placeins.sty    2005/04/18  v 2.2
+ xkeyval.sty    2014/05/25 v2.7 package option processing (HA)
+ xkeyval.tex    2014/05/25 v2.7 key=value parser (HA)
+    tikz.sty    2013/12/13 v3.0.0 (rcs-revision 1.142)
+     pgf.sty    2013/12/18 v3.0.0 (rcs-revision 1.14)
+  pgfrcs.sty    2013/12/20 v3.0.0 (rcs-revision 1.28)
+everyshi.sty    2001/05/15 v3.00 EveryShipout Package (MS)
+  pgfrcs.code.tex
+ pgfcore.sty    2010/04/11 v3.0.0 (rcs-revision 1.7)
+  pgfsys.sty    2013/11/30 v3.0.0 (rcs-revision 1.47)
+  pgfsys.code.tex
+pgfsyssoftpath.code.tex    2013/09/09  (rcs-revision 1.9)
+pgfsysprotocol.code.tex    2006/10/16  (rcs-revision 1.4)
+ pgfcore.code.tex
+pgfcomp-version-0-65.sty    2007/07/03 v3.0.0 (rcs-revision 1.7)
+pgfcomp-version-1-18.sty    2007/07/23 v3.0.0 (rcs-revision 1.1)
+  pgffor.sty    2013/12/13 v3.0.0 (rcs-revision 1.25)
+ pgfkeys.sty    
+ pgfkeys.code.tex
+ pgfmath.sty    
+ pgfmath.code.tex
+  pgffor.code.tex
+    tikz.code.tex
+todonotes.sty    2012/07/25
+showlabels.sty    2013/12/06 v1.6.6
+fancyhdr.sty    
+mdframed.sty    2013/08/18 1.9d: mdframed
+  xparse.sty    2014/09/15 v5423 L3 Experimental document command parser
+   expl3.sty    2014/09/15 v5423 L3 programming layer (loader) 
+expl3-code.tex    2014/09/15 v5423 L3 programming layer 
+l3unicode-data.def    2014/08/12 v5276 L3 Unicode data
+l3pdfmode.def    2014/08/24 v5366 L3 Experimental driver: PDF mode
+zref-abspage.sty    2012/04/04 v2.24 Module abspage for zref (HO)
+zref-base.sty    2012/04/04 v2.24 Module base for zref (HO)
+needspace.sty    2010/09/12 v1.3d reserve vertical space
+md-frame-1.mdf    2013/08/18\ 1.9d: md-frame-1
+titlesec.sty    2011/12/15 v2.10.0 Sectioning titles
+ ttlkeys.def    2011/12/15
+  amsthm.sty    2009/07/02 v2.20.1
+tcolorbox.sty    2014/10/10 version 3.21 text color boxes
+ environ.sty    2014/05/04 v0.3 A new way to define environments
+trimspaces.sty    2009/09/17 v1.1 Trim spaces around a token list
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ragged2e.sty    2009/05/21 v2.1 ragged2e Package (MS)
+everysel.sty    2011/10/28 v1.2 EverySelectfont Package (MS)
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+newcommands_bfmath.tex
+newcommands_replace.tex
+  t1lmss.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ot1zplm.fd    2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ testdoc.bbl
+ testdoc.ind
+ ***********
+
+ )
+(see the transcript file for additional information){/usr/share/texmf/fonts/enc
+/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texlive/texmf-dist/fonts
+/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}</usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmbx9.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/l
+mmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi9.p
+fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri7.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmri8.pfb></usr/share/texmf/fonts/type1/public/lm/lmss
+12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmtt12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/urw/palatino/uplr8a.pfb>
+Output written on testdoc.pdf (34 pages, ).
+Transcript written on testdoc.log.
++ cp testdoc.tex testdoc_bigex.tex
++ cp testdoc.pdf testdoc_bigex.pdf
 + system doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
 + doconce ptex2tex testdoc 'sys=\begin{Verbatim}[frame=lines]@\end{Verbatim}' pypro=ans:nt envir=minted
 + '[' 0 -ne 0 ']'
@@ -105148,8 +105733,8 @@ output in testdoc.rst
 testdoc split into
 ._testdoc000.rst ._testdoc001.rst ._testdoc002.rst ._testdoc003.rst ._testdoc004.rst ._testdoc005.rst ._testdoc006.rst ._testdoc007.rst ._testdoc008.rst ._testdoc009.rst ._testdoc010.rst
 + '[' 0 -ne 0 ']'
-+ system doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
-+ doconce sphinx_dir author=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
++ system doconce sphinx_dir copyright=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
++ doconce sphinx_dir copyright=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc
 Welcome to the Sphinx 1.4a0+ quickstart utility.
 
@@ -115715,8 +116300,8 @@ copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
-+ system doconce sphinx_dir author=HPL quickref
-+ doconce sphinx_dir author=HPL quickref
++ system doconce sphinx_dir copyright=HPL quickref
++ doconce sphinx_dir copyright=HPL quickref
 Making sphinx-rootdir
 Welcome to the Sphinx 1.4a0+ quickstart utility.
 
