@@ -796,6 +796,7 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection`
  * `--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier`
  * `--latex_packages=package1,package2,package3` (list of extra packages to be included[^varioref])
+ * `--draft` (turns on draft mode in documentclass, otherwise final mode)
  * `--latex_list_of_exercises=loe,toc,none` (LaTeX list of exercises, integrated into the table of contents, or no list)
  * `--latex_fancy_header` (chapter/section headings at top of pages, style depends on value of `--latex_section_headings`)
  * `--latex_section_headings=std,blue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)

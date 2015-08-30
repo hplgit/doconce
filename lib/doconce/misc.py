@@ -21,6 +21,10 @@ of intermediate results"""),
 (may be time consuming for large books)."""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
+    ('--draft', 'Indicates draft (turns on draft elements in LaTeX, otherwise no effect).'),
+    ('--copyright=', """Set copyright, mainly for LaTeX output (inserted in date and in a footer).
+For HTML, use --reference= option in the doconce split_html command.
+For Sphinx, use copyright= option in the doconce sphinx_dir command."""),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.

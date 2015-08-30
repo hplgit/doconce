@@ -4280,11 +4280,11 @@ preprocess package (sudo apt-get install preprocess).
     if match_percentage:
         debugpr('Found use of %% sign(s) for mako code in %s:\n%s' % (resultfile, ', '.join(re.findall(mako_commands, filestr_without_code))))
 
-    match_mako_variable = False
+    match_mako_variable = False  # See if we use a mako variable
     for name in mako_kwargs:
         pattern = r'\$\{%s\}' % name  # ${name}
         if re.search(pattern, filestr_without_code):
-            match_mako_variable = True
+            match_mako_variable = True  # command-line variable is used
             debugpr('Found use of mako variable(s) in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
             break
         pattern = r'\b%s\b' % name    # e.g. % if name == 'a' (or Python code)
@@ -4292,16 +4292,18 @@ preprocess package (sudo apt-get install preprocess).
             match_mako_variable = True
             debugpr('Found use of mako variable(s) in mako code in %s: %s' % (resultfile, ', '.join(re.findall(pattern, filestr_without_code))))
             break
-    if not match_mako_variable:
+    if not match_mako_variable and not match_percentage:
         # See if we use a mako function/variable construction
+        # when there is no <%...%> block
         if re.search(r'\$\{', filestr):
             m = re.search(r'(\$\{.+?\})', filestr, flags=re.DOTALL)
             if m:
                 print '*** error: file has a mako construction %s' % m.group(1)
                 print '    but seemingly no definition in <%...%>'
                 print '    (it is not a command-line given mako variable either)'
-                print '''    (however: if this is a variable in a Makefile or Bash script, run with --no_mako
-    - and you cannot use mako and Makefile or Bash variables in the same document!)'''
+                print '''    (however: if this is a variable in a Makefile or Bash script,
+    run with --no_mako - and you cannot use mako and Makefile or Bash variables
+    in the same document!)'''
                 if not option('no_mako'):
                     _abort()
 
