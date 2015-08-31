@@ -43795,7 +43795,8 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
 # Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
+    if os.listdir(staticdir):  # copy only if non-empty dir
+        system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
 
 os.chdir(sphinx_rootdir)
 if '--runestone' not in sys.argv:
@@ -43985,7 +43986,8 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
 # Copy linked local files, placed in _static*, to source_dir/_static
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
-    system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
+    if os.listdir(staticdir):  # copy only if non-empty dir
+        system('cp -r %(staticdir)s/* %(source_dir)s/_static/' % vars())
 
 os.chdir(sphinx_rootdir)
 if '--runestone' not in sys.argv:
@@ -76307,7 +76309,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f1d861d2a28>
+verbatim is to be replaced using <function html_verbatim at 0x7fd4d8465a28>
 
 
 First occurence: " `mako`."
@@ -80546,7 +80548,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 30 04:41:54 2015.
+# sphinx-quickstart on Sun Aug 30 07:36:26 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80689,7 +80691,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Just a test'
 copyright = u'2015, HPL'
-author = u'HPL'
+author = u'Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -80768,7 +80770,6 @@ html_theme = 'agni'
 #html_theme = 'fenics_minimal1'
 #html_theme = 'fenics_minimal2'
 #html_theme = 'haiku'
-#html_theme = 'impressjs'
 #html_theme = 'jal'
 #html_theme = 'nature'
 #html_theme = 'pylons'
@@ -80786,7 +80787,7 @@ html_theme = 'agni'
 
 check_additional_themes = [
    'solarized', 'cloud', 'redcloud',
-   'bootstrap', 'impressjs']
+   'alabaster', 'bootstrap', 'impressjs']
 
 for theme in check_additional_themes:
     if html_theme == theme:
@@ -80931,7 +80932,19 @@ elif html_theme == 'bootstrap':
 
         # Location of link to source.
         # Options are "nav" (default), "footer" or anything else to exclude.
-        'source_link_position': "nav",
+        'source_link_position': "footer",
+
+        # Any Bootswatch theme (http://bootswatch.com/) can be used
+        #'bootswatch_theme': 'readable',
+
+        # A list of tuples containing pages or urls to link to.
+        # Valid tuples should be in the following forms:
+        #    (name, page)                 # a link to a page
+        #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+        #    (name, "http://example.com", True) # arbitrary absolute url
+        # Note the "1" or "True" value above as the third argument to indicate
+        # an arbitrary url.
+        #'navbar_links': [('PDF', '../mydoc.pdf', True), ('HTML', '../mydoc.html', True)],
 
         # TODO: Future.
         # Add page navigation to it's own navigation bar.
@@ -80956,12 +80969,6 @@ elif html_theme == 'cbc':
     pygments_style = "friendly"
 elif html_theme == 'uio':
     pygments_style = "tango"
-
-
-
-
-
-
 
 
 
@@ -81075,7 +81082,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   (master_doc, 'Justatest.tex', u'Just a test Documentation',
-   u'HPL', 'manual'),
+   u'Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -83067,7 +83074,7 @@ system pdflatex -shell-escape $name
 # Sphinx
 system doconce format sphinx $name --no_preprocess
 rm -rf sphinx-rootdir
-system doconce sphinx_dir copyright='HPL' $name
+system doconce sphinx_dir copyright='2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc $name
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 system python automake_sphinx.py
 cp $name.rst $name.sphinx.rst  # save
@@ -85456,8 +85463,8 @@ apply_inline_edits
 # create a directory for the sphinx format
 doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title=&quot;Short title&quot; version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
+    dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+    dofile
 (requires sphinx version &gt;= 1.1)
 
 # walk through a directory tree and insert doconce files as
@@ -87250,8 +87257,8 @@ apply_inline_edits
 # create a directory for the sphinx format
 doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
+    dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+    dofile
 (requires sphinx version >= 1.1)
 
 # walk through a directory tree and insert doconce files as
@@ -88643,8 +88650,8 @@ list of capabilities::
         # create a directory for the sphinx format
         doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
-            dirname=sphinx-rootdir theme=default logo=mylogo.png \
-            do_file [do_file2 do_file3 ...]
+            dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+            dofile
         (requires sphinx version >= 1.1)
         
         # walk through a directory tree and insert doconce files as
@@ -90096,8 +90103,8 @@ list of capabilities:
         # create a directory for the sphinx format
         doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
-            dirname=sphinx-rootdir theme=default logo=mylogo.png \
-            do_file [do_file2 do_file3 ...]
+            dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+            dofile
         (requires sphinx version >= 1.1)
         
         # walk through a directory tree and insert doconce files as
@@ -91363,8 +91370,8 @@ apply_inline_edits
 # create a directory for the sphinx format
 doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
+    dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+    dofile
 (requires sphinx version >= 1.1)
 
 # walk through a directory tree and insert doconce files as
@@ -92719,8 +92726,8 @@ apply_inline_edits
 # create a directory for the sphinx format
 doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
+    dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+    dofile
 (requires sphinx version >= 1.1)
 
 # walk through a directory tree and insert doconce files as
@@ -93974,8 +93981,8 @@ apply_inline_edits
 # create a directory for the sphinx format
 doconce sphinx_dir copyright='John Doe' title='Long title' \
     short_title="Short title" version=0.1 intersphinx \
-    dirname=sphinx-rootdir theme=default logo=mylogo.png \
-    do_file [do_file2 do_file3 ...]
+    dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+    dofile
 (requires sphinx version >= 1.1)
 
 # walk through a directory tree and insert doconce files as
@@ -95213,8 +95220,8 @@ list of capabilities::
         # create a directory for the sphinx format
         doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
-            dirname=sphinx-rootdir theme=default logo=mylogo.png \
-            do_file [do_file2 do_file3 ...]
+            dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+            dofile
         (requires sphinx version >= 1.1)
         
         # walk through a directory tree and insert doconce files as
@@ -96456,8 +96463,8 @@ list of capabilities::
         # create a directory for the sphinx format
         doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
-            dirname=sphinx-rootdir theme=default logo=mylogo.png \
-            do_file [do_file2 do_file3 ...]
+            dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+            dofile
         (requires sphinx version >= 1.1)
         
         # walk through a directory tree and insert doconce files as
@@ -97775,8 +97782,8 @@ list of capabilities::
         # create a directory for the sphinx format
         doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
-            dirname=sphinx-rootdir theme=default logo=mylogo.png \
-            do_file [do_file2 do_file3 ...]
+            dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+            dofile
         (requires sphinx version >= 1.1)
         
         # walk through a directory tree and insert doconce files as
@@ -99096,8 +99103,8 @@ list of capabilities:
         # create a directory for the sphinx format
         doconce sphinx_dir copyright='John Doe' title='Long title' \
             short_title="Short title" version=0.1 intersphinx \
-            dirname=sphinx-rootdir theme=default logo=mylogo.png \
-            do_file [do_file2 do_file3 ...]
+            dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.png \
+            dofile
         (requires sphinx version >= 1.1)
         
         # walk through a directory tree and insert doconce files as
@@ -105795,9 +105802,10 @@ source files. Use the Makefile to build the docs, like so:
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 title: Just a test
+author: Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe
 copyright: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -108092,12 +108100,12 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in math_test.do.txt
 Using title "How various formats can deal with LaTeX math" from math_test
-Copyright: ['HPL']
 Using author(s) "HPL" from math_test as copyright
 title: How various formats can deal with LaTeX math
+author: HPL
 copyright: HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -110820,12 +110828,12 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in admon.do.txt
 Using title "Testing admons" from admon
-Copyright: ['hpl']
 Using author(s) "hpl" from admon as copyright
 title: Testing admons
+author: hpl
 copyright: hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -116300,8 +116308,8 @@ copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
-+ system doconce sphinx_dir copyright=HPL quickref
-+ doconce sphinx_dir copyright=HPL quickref
++ system doconce sphinx_dir 'copyright=2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc quickref
++ doconce sphinx_dir 'copyright=2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc quickref
 Making sphinx-rootdir
 Welcome to the Sphinx 1.4a0+ quickstart utility.
 
@@ -116361,12 +116369,14 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
+*** warning: the copyright contained the years 2006-2014, changed to 2006-2015
 searching for TITLE in quickref.do.txt
 Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
-copyright: HPL
-theme: default
-These Sphinx themes were found: ADCtheme, agni, alabaster, basicstrap, bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons, scipy_lectures, slim-agogo, uio, vlinux-theme, agogo, basic, bizstyle, classic, default, epub, haiku, nature, pyramid, scrolls, sphinxdoc, traditional, bootstrap, cloud, redcloud, solarized, impressjs, sphinx_rtd_theme
+author: Hans Petter Langtangen, H. P. Langtangen, Kaare Dump and A. Dummy Author
+copyright: 2006-2015 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo
+theme: cbc
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -116789,8 +116799,9 @@ Overfull \hbox (65.00006pt too wide)
 Overfull \hbox (35.00006pt too wide) 
 []    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
 
-Overfull \hbox (53.00006pt too wide) 
-[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
+Overfull \hbox (107.00006pt too wide) 
+[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.
+png \  
 [17]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  
@@ -117332,8 +117343,9 @@ Overfull \hbox (65.00006pt too wide)
 Overfull \hbox (35.00006pt too wide) 
 []    \T1/pcr/m/n/10 short_title="Short title" version=0.1 intersphinx \  
 
-Overfull \hbox (53.00006pt too wide) 
-[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=mylogo.png \  
+Overfull \hbox (107.00006pt too wide) 
+[]    \T1/pcr/m/n/10 dirname=sphinx-rootdir theme=default logo=/path/to/mylogo.
+png \  
 [18]
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 # walk through a directory tree and insert doconce files as  

@@ -257,7 +257,6 @@ def sphinx_dir():
     if authors_and_institutions:
         author = [a for a, i, e in authors_and_institutions]
 
-        print 'Author:', author
         if len(author) == 1:
             author = author[0]
         else:
@@ -321,7 +320,40 @@ EOF
     os.chdir(sphinx_rootdir)
 
     sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()
-    sphinx_installed_themes = 'alabaster bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme'.split()
+    # See what is installed of other themes
+    sphinx_potentially_installed_themes = 'alabaster bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme'.split()
+    sphinx_installed_themes = []
+    try:
+        import alabaster
+        sphinx_installed_themes.append('alabaster')
+    except ImportError:
+        pass
+    try:
+        import sphinx_bootstrap_theme
+        sphinx_installed_themes.append('bootstrap')
+    except ImportError:
+        pass
+    try:
+        import cloud_sptheme
+        sphinx_installed_themes.append('cloud')
+        sphinx_installed_themes.append('redcloud')
+    except ImportError:
+        pass
+    try:
+        import sphinxjp.themes.impressj
+        sphinx_installed_themes.append('impressjs')
+    except ImportError:
+        pass
+    try:
+        import sphinxjp.themes.solarized
+        sphinx_installed_themes.append('solarized')
+    except ImportError:
+        pass
+    try:
+        import sphinx_rtd_theme
+        sphinx_installed_themes.append('sphinx_rtd_theme')
+    except ImportError:
+        pass
 
     if theme_dir is None:
         # Copy themes
@@ -335,14 +367,15 @@ EOF
         themes = [name[8:] for name in files
                   if os.path.isdir(name)] + \
                   sphinx_basic_themes + sphinx_installed_themes
-        print 'These Sphinx themes were found:', ', '.join(themes)
+        print 'These Sphinx themes were found:', ', '.join(sorted(themes))
 
         if conf_py is None:
             make_conf_py(themes, theme, title, short_title, copyright_,
                          logo, favicon, intersphinx)
     else:
         # Copy theme_dir
-        os.mkdir('_themes')
+        if not os.path.isdir('_themes'):
+            os.mkdir('_themes')
         shutil.copy(theme_dir, os.path.join('_themes', theme_dir))
 
     if conf_py is not None:
@@ -923,7 +956,6 @@ elif html_theme == 'bootstrap':
         # Any Bootswatch theme (http://bootswatch.com/) can be used
         #'bootswatch_theme': 'readable',
 
-
         # A list of tuples containing pages or urls to link to.
         # Valid tuples should be in the following forms:
         #    (name, page)                 # a link to a page
@@ -931,9 +963,7 @@ elif html_theme == 'bootstrap':
         #    (name, "http://example.com", True) # arbitrary absolute url
         # Note the "1" or "True" value above as the third argument to indicate
         # an arbitrary url.
-        #'navbar_links': [
-        #    ('PDF', '../myfile.pdf', True),
-        #    ],
+        #'navbar_links': [('PDF', '../mydoc.pdf', True), ('HTML', '../mydoc.html', True)],
 
         # TODO: Future.
         # Add page navigation to it's own navigation bar.
