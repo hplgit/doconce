@@ -3237,9 +3237,11 @@ open=right               %% start new chapters on odd-numbered pages
         if linkcolor.count(',') == 2:
             # rgb format 0.9,0.8,0.1
             linkcolor_def = r'\definecolor{linkcolor}{rgb}{%s}' % linkcolor
+            linkcolor = 'linkcolor'
         else:
             # yellow!20 or red
             linkcolor_def = r'\colorlet{linkcolor}{%s}' % linkcolor
+            linkcolor = 'linkcolor'
     else:
         if option('device=') == 'paper':
             linkcolor = 'black'
