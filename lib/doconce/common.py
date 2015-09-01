@@ -168,6 +168,37 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
         return ('file' if os.path.isfile(filename) else None)
 
 
+def has_copyright(filestr):
+    authors = re.findall(r'^AUTHOR:(.+)', filestr, flags=re.MULTILINE)
+    copyright_ = False
+    for author in authors:
+        if '{copyright' in author:
+            copyright_ = True
+            break
+    return copyright_
+
+def get_copyfile_info(filestr=None, copyright_filename=None):
+    """Return copyright tuple in .filename.copyright."""
+    # Copyright info
+    cr_text = None
+    if copyright_filename is None:
+        from doconce import dofile_basename
+        cr_filename = '.' + dofile_basename + '.copyright'
+    else:
+        cr_filename = copyright_filename
+    if os.path.isfile(cr_filename):
+        with open(cr_filename, 'r') as f:
+            cr_info = eval(f.read())
+    else:
+        return cr_text # no copyright file
+
+    # We have copyright file and info
+    cr_text = cr_info['year'] + ', ' + ', '.join(cr_info['holder'])
+    if cr_info['license'] is not None:
+        cr_text += '. ' + cr_info['license']
+    return cr_text
+
+
 def indent_lines(text, format, indentation=' '*8, trailing_newline=True):
     """
     Indent each line in the string text, provided in a format for

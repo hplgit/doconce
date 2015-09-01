@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import os, sys
 from commands import getstatusoutput
-from doconce.latex import update_copyright_years
 from doconce.misc import system, misc_option
 from doconce.misc import (
     insertdocstr,
@@ -110,15 +109,18 @@ directory for RunestoneInteractive documents (slightly different from
 a standard sphinx directory).
 
 The title, copyright, and version options go to the footer in the pages.
-If not given, the title is taken from the DocOnce document and the
-copyright becomes the author names, taken from the document.
+If not given, the title is taken from the DocOnce document. If
+copyright is not given, it is taken from the document's copyright
+info ('{copyright, year}' in AUTHOR specifications), and if no such
+info exists, copyright becomes the author names (taken from the document).
 The default dirname is "sphinx-rootdir". The intersphinx option is used
 for links to other sphinx documents.
 
 The theme option can be chosen from basic sphinx themes (agogo,
 basic, bizstyle, classic, default, epub, haiku, nature, pyramid,
 scrolls, sphinxdoc, traditional), extra themes that can be installed
-(alabaster, bootstrap, cloud, redcloud, solarized, sphinx_rtd_theme),
+(alabaster, bootstrap, cloud, redcloud, solarized, sphinx_rtd_theme,
+'draft', 'flat', 'modern5', 'minimal5', 'responsive'),
 or themes that come with DocOnce (ADCtheme, agni, basicstrap,
 bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons,
 scipy_lectures, slim-agogo, uio, vlinux-theme).
@@ -222,10 +224,6 @@ def sphinx_dir():
             print '%s.do.txt does not exist' % filename
             sys.exit(1)
 
-    if copyright_:
-        # Check that the most recent year is this year
-        copyright_ = update_copyright_years(copyright_)
-
     parts = glob.glob('._%s[0-9][0-9][0-9].rst' % filename)
     parts = [part[:-4] for part in sorted(parts)]
 
@@ -253,7 +251,7 @@ def sphinx_dir():
     # The following can be misleading if there are examples on
     # various AUTHOR: in e.g. vertabim code in the .do.txt file
     authors_and_institutions, dummy1, dummy2, dummy3, dummy4, dummy5 = \
-              doconce.doconce.interpret_authors(fstr, 'sphinx')
+         doconce.doconce.interpret_authors(fstr, 'sphinx')
     if authors_and_institutions:
         author = [a for a, i, e in authors_and_institutions]
 
@@ -263,8 +261,14 @@ def sphinx_dir():
             author = ', '.join(author[:-1]) + ' and ' + author[-1]
 
     if copyright_ is None:
-        copyright_ = author
-        print 'Using author(s) "%s" from %s as copyright' % (copyright_, filename)
+        from doconce.common import get_copyfile_info
+        copyright_filename = '.' + filename + '.copyright'
+        copyright_ = get_copyfile_info(copyright_filename=copyright_filename)
+        if copyright_ is None:
+            # use this year, author
+            this_year = time.asctime().split()[4]
+            copyright_ = this_year + ', ' + author
+    #else: copyright was specified on the command line
 
     if author is None:
         print '\nNo AUTHOR: line found in %s.do.txt' % filename
@@ -277,7 +281,7 @@ def sphinx_dir():
     print 'title:', title
     print 'author:', author
     print 'copyright:', copyright_
-    print 'theme:', theme,
+    print 'theme:', theme
     print
     time.sleep(1.5)
 
@@ -321,7 +325,7 @@ EOF
 
     sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()
     # See what is installed of other themes
-    sphinx_potentially_installed_themes = 'alabaster bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme'.split()
+    sphinx_potentially_installed_themes = 'alabaster bootstrap cloud redcloud solarized impressjs sphinx_rtd_theme dark flat modern5 minimal5 responsive'.split()
     sphinx_installed_themes = []
     try:
         import alabaster
@@ -352,6 +356,12 @@ EOF
     try:
         import sphinx_rtd_theme
         sphinx_installed_themes.append('sphinx_rtd_theme')
+    except ImportError:
+        pass
+    try:
+        import tinkerer
+        import tinkerer.paths
+        sphinx_installed_themes += ['boilerplate', 'dark', 'flat', 'modern5', 'minimal5', 'responsive']
     except ImportError:
         pass
 
@@ -665,12 +675,8 @@ def make_conf_py(themes, theme, title, short_title, copyright_,
 
     # sphinx-quickstart sets copyright to authors with current year,
     # we customize this
-    if re.search(r'\d\d\d\d', copyright_):
-        # copyright_ has year
-        text = re.sub('copyright =.+', "copyright = u'%s'" % copyright_, text)
-    else:
-        # keep the generated year
-        text = re.sub(r"copyright = u'(\d\d\d\d),.+", r"copyright = u'\g<1>, %s'" % copyright_, text)
+    text = re.sub(r"copyright = u'(\d\d\d\d),.+",
+                  r"copyright = u'%s'" % copyright_, text)
 
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in sorted(themes)]
@@ -694,9 +700,10 @@ if html_theme == 'solarized':
                   '\n'.join(themes_list) + themes_code,
                   text, flags=re.MULTILINE)
 
-    # Remove html_theme_path deep down in the conf.py file because
-    # we need it earlier and must initialize it ourselves
+    # Remove html_theme_path and html_static_path deep down in the conf.py
+    # file because we need them earlier and must initialize them ourselves
     text = re.sub(r'# Add any paths that contain custom themes.+\n#html_theme_path = \[\]', "", text)
+    text = re.sub(r"# Add any paths that contain custom static.+?\n#html_static_path = \['_static'\]", "", text)
     # Paths are added below when we try to import various themes in conf.py
 
     extensions = """\
@@ -728,25 +735,25 @@ additional_themes_url = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['_themes']
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
 
 try:
     import alabaster
-    extensions += ['alabaster']
-    html_theme_path += [alabaster.get_path()]
     additional_themes_installed.append('alabaster')
 except ImportError:
     additional_themes_url['alabaster'] = 'sudo pip install alabaster'
 
 try:
     import sphinxjp.themes.solarized
-    extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
     additional_themes_installed.append('solarized')
 except ImportError:
     additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized: sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade'
 
 try:
     import cloud_sptheme as csp
-    html_theme_path += [csp.get_theme_dir()]
     additional_themes_installed.append('cloud')
     additional_themes_installed.append('redcloud')
 except ImportError:
@@ -771,14 +778,11 @@ except ImportError:
 try:
     import sphinxjp.themes.impressjs
     additional_themes_installed.append('impressjs')
-    if not 'sphinxjp.themecore' in extensions:
-        extensions += ['sphinxjp.themecore']
 except ImportError:
     additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs: sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade'
 
 try:
     import sphinx_bootstrap_theme
-    html_theme_path += sphinx_bootstrap_theme.get_html_theme_path()
     additional_themes_installed.append('bootstrap')
 except ImportError:
     additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme: sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade'
@@ -790,12 +794,26 @@ except ImportError:
     # sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
     pass
 
+# Is the document built on readthedocs.org? If so, don't import
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    try:
+        import sphinx_rtd_theme
+        additional_themes_installed.append('sphinx_rtd_theme')
+    except ImportError:
+        additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
+
+tinker_themes = [
+  'dark', 'flat', 'modern5', 'minimal5', 'responsive']
+# http://tinkerer.me/index.html
+# See Preview Another Theme in the sidebar of the above URL
 try:
-    import sphinx_rtd_theme
-    html_theme_path += [sphinx_rtd_theme.get_html_theme_path()]
-    additional_themes_installed.append('sphinx_rtd_theme')
+    import tinkerer
+    import tinkerer.paths
+    additional_themes_installed += tinker_themes
 except ImportError:
-    additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
+    for theme in thinker_themes:
+        additional_themes_url[theme] = 'sudo pip install tinkerer --upgrade'
 
 """
     # Intersphinx mapping: the look up of URLs can take quite
@@ -856,6 +874,8 @@ if html_theme in ('default', 'classic'):
 
 elif html_theme == 'alabaster':
     # Doc: https://pypi.python.org/pypi/alabaster
+    extensions += ['alabaster']
+    html_theme_path += [alabaster.get_path()]
     html_theme_sidebars = {
       '**': [
         'about.html',
@@ -868,13 +888,25 @@ elif html_theme == 'alabaster':
 
 elif html_theme == 'sphinx_rtd_theme':
     # Doc: https://pypi.python.org/pypi/sphinx_rtd_theme
-    pass
+    if not on_rtd:
+        html_theme_path += [sphinx_rtd_theme.get_html_theme_path()]
 
 elif html_theme == 'sphinxdoc':
     # Doc: http://sphinx-doc.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
+
+elif html_theme == 'solarized':
+    extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
+
+elif html_theme in ('cloud', 'redcloud'):
+    html_theme_path += [csp.get_theme_dir()]
+
+elif html_theme == 'impressjs':
+    html_theme_path += [csp.get_theme_dir()]
+    if not 'sphinxjp.themecore' in extensions:
+        extensions += ['sphinxjp.themecore']
 
 elif html_theme == 'scrolls':
     # Doc: http://sphinx.pocoo.org/theming.html
@@ -969,6 +1001,7 @@ elif html_theme == 'bootstrap':
         # Add page navigation to it's own navigation bar.
         #'navbar_page_separate': True,
     }
+    html_theme_path += sphinx_bootstrap_theme.get_html_theme_path()
 
 elif html_theme == 'scipy_lectures':
     # inherits the default theme and has all those options
@@ -988,6 +1021,12 @@ elif html_theme == 'cbc':
     pygments_style = "friendly"
 elif html_theme == 'uio':
     pygments_style = "tango"
+elif html_theme in tinker_themes:
+    html_theme_options = {}
+    extensions += ['tinkerer.ext.blog', 'tinkerer.ext.disqus']
+    html_static_path += [tinkerer.paths.static]
+    html_theme_path += [tinkerer.paths.themes]
+
 
 """)
 
@@ -1016,6 +1055,14 @@ if html_theme == 'impressjs':
                     os.path.join('_static', favicon_basename))
         text = text.replace('#html_favicon = None', 'html_favicon = "%s"'
                             % favicon_basename)
+
+    # For tinker themes we need to copy index.rst to master.rst
+    if theme in ['dark', 'flat', 'modern5', 'minimal5', 'responsive']:
+        shutil.copy('index.rst', 'master.rst')
+        text = text.replace("master_doc = 'index'", "master_doc = 'master'")
+        text = re.sub(r'(html_title =.+)', r'''\g<1>
+tagline = ""  # subtitle
+html_add_permalinks = None''', text)
 
     f = open('conf.py', 'w');  f.write(text);  f.close()
 

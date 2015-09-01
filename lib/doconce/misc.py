@@ -22,9 +22,15 @@ of intermediate results"""),
     ('--skip_inline_comments',
      'Remove all inline comments of the form [ID: comment].'),
     ('--draft', 'Indicates draft (turns on draft elements in LaTeX, otherwise no effect).'),
-    ('--copyright=', """Set copyright, mainly for LaTeX output (inserted in date and in a footer).
-For HTML, use --reference= option in the doconce split_html command.
-For Sphinx, use copyright= option in the doconce sphinx_dir command."""),
+    ('--CC_license=', """Template wording for Creative Commons licenses.
+Default: "Released under CC %s 4.0 license."
+Example: "This worsk is released under the Creative Commons %s 4.0 license"
+CC license is specified as a part of the copyright syntax, e.g.,
+AUTHOR: Kaare Dump {copyright|CC BY} at BSU & Some Company Ltd.
+AUTHOR: Kaare Dump at BSU & Some Company Ltd. {copyright,2005-present|CC BY-NC}
+The --CC_license= option has no effect if the license does not start with CC, e.g.,
+AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
+"""),
     ('--exercise_numbering=',
      """absolute: exercises numbered as 1, 2, ... (default)
 chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
@@ -2276,7 +2282,9 @@ def clean():
                    glob.glob(_part_filename_wildcard + '.rst') +
                    glob.glob('.*.exerinfo') +
                    glob.glob('.*.quiz*') +
-                   glob.glob('.*_html_file_collection'))
+                   glob.glob('.*_html_file_collection') +
+                   glob.glob('.*.copyright')
+                   )
     directories = ['html_images', 'latex_figs', 'standalone_exercises'] \
                   + glob.glob('sphinx-*') + \
                   glob.glob('sphinx_*')
@@ -2490,11 +2498,10 @@ if a bootstrap theme is used in the document.
 --reference=... is used to insert a reference for acknowledging where
 the source of the text is published, typically the reference of a
 book if the document is the HTML version of a chapter in the book.
-Can also be used to insert a copyright.
+The reference appears at the top of every page in small font.
 
 Example:
 --reference="This text is taken from Appendix H.2 in the book <em>A Primer on Scientific Programming with Python</em> by H. P. Langtangen, 4th edition, Springer, 2014."
---reference="&copy; Copyright 2000-2015, H. P. Langtangen"
 """
 
 def split_html():

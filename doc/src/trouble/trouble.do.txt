@@ -617,38 +617,7 @@ where we do all necessary adjustments mentioned above:
 ===== How do I insert a copyright? =====
 label{trouble:copyright}
 
-The answer depends on the output format.
-
-=== LaTeX ===
-
-Use the `--copyright=...` option when compiling the document, e.g.,
-
-!bc sys
-Terminal> doconce format pdflatex mydoc --copyright='2006-2015 HPL'
-!ec
-The copyright will appear as part of the date and as a footer on every
-page.
-
-=== HTML ===
-
-Use the `--reference=...` option when splitting an HTML document into
-pages with `doconce split_html`, e.g.,
-
-!bc sys
-Terminal> doconce format html mydoc
-Terminal> doconce split_html mydoc \
-          --reference='&copy; Copyright 2006-2015 HPL'
-!ec
-
-=== Sphinx ===
-
-Provide the `copyright=...` option in the `doconce sphinx_dir` command, e.g.
-
-!bc sys
-Terminal> doconce format sphinx mydoc
-Terminal> doconce sphinx_dir theme=alabaster \
-          copyright='2006-2015 HPL' version=0.9 mydoc
-!ec
+See the "Copyright section of the DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright"
 
 === Other formats ===
 

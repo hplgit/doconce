@@ -1009,6 +1009,13 @@ def html_code(filestr, code_blocks, code_block_types,
             # Add MathJax stuff to the beginning
             filestr = latex + filestr
 
+    # Copyright
+    from common import get_copyfile_info
+    cr_text = get_copyfile_info(filestr)
+    if cr_text is not None:
+        filestr = filestr.replace('Copyright COPYRIGHT_HOLDERS',
+                                  cr_text)
+
     # Add </li> in lists
     cpattern = re.compile('<li>(.+?)(\s+)<li>', re.DOTALL)
     def find_list_items(match):
@@ -2832,6 +2839,14 @@ Automatically generated HTML file from DocOnce source
 <a href="http://..."><img width="250" align=right src="http://..."></a>
 </footer>
 -->
+"""
+    from common import has_copyright
+    if has_copyright(filestr):
+        OUTRO['html'] += """
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; Copyright COPYRIGHT_HOLDERS
+</center>
 """
     OUTRO['html'] += """
 

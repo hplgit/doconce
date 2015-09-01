@@ -355,21 +355,6 @@ def fix(filestr, format, verbose=0):
 def syntax_check(filestr, format):
     """Check for common errors in the doconce syntax."""
 
-    # Copyright works for LaTeX only
-    if option('copyright=', None) is not None:
-        if format in ('latex', 'pdflatex'):
-            pass
-        elif format == 'html':
-            print '*** error: do not use --copyright when compiling to', format
-            print "    use doconce split_html mydoc --reference='copyright text'"
-            _abort()
-        elif format == 'sphinx':
-            print '*** error: do not use --copyright when compiling to', format
-            print "    use doconce sphinx_dir copyright='copyright text' theme=alabaster mydoc"
-            _abort()
-        else:
-            print '*** warning: --copyright=... has no effect for format', format
-
     # URLs with just one /
     m = re.findall(r'https?:/[A-Za-z].+', filestr)
     if m:
@@ -1259,6 +1244,8 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     # __Hint 1.__ some paragraph...,
     # __Hint 2.__ ...
 
+    from common import _CODE_BLOCK, _MATH_BLOCK
+
     all_exer = []   # collection of all exercises
     exer = {}       # data for one exercise, to be appended to all_exer
     inside_exer = False
@@ -1503,8 +1490,13 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             if 1:
                 _label_pattern = r'label\{(.+?)\}'
                 _ref_pattern = r'ref\{(.+?)\}'
+                _texblock_pattern = r'(\d+) ' + _MATH_BLOCK
                 labels = re.findall(_label_pattern, formatted_exercise)
-                refs   = re.findall(_ref_pattern,   formatted_exercise)
+                refs   = re.findall(_ref_pattern, formatted_exercise)
+                texblocks_no = re.findall(_texblock_pattern, formatted_exercise)
+                for texblock in texblocks_no:
+                    texblock = int(texblock)
+                    labels += re.findall(_label_pattern, tex_blocks[texblock])
                 external_refs = []
                 for ref in refs:
                     if ref not in labels:
@@ -1571,8 +1563,6 @@ def exercises(filestr, format, code_blocks, tex_blocks):
         # if a pprint.pformat'ed string is used, quotes in
         # computer code and derivatives lead to errors
         # if we take an eval on the output.
-
-        from common import _CODE_BLOCK, _MATH_BLOCK
 
         def replace_code_math(text):
             if not isinstance(text, basestring):
@@ -2919,12 +2909,13 @@ def interpret_authors(filestr, format):
     debugpr('\n*** Dealing with authors and institutions ***')
     # first deal with AUTHOR as there can be several such lines
     author_lines = re.findall(r'^AUTHOR:\s*(?P<author>.+)\s*$', filestr,
-                              re.MULTILINE)
-    #filestr = re.sub(r'^AUTHOR:.+$', 'XXXAUTHOR', filestr, flags=re.MULTILINE)
-    cpattern = re.compile(r'^AUTHOR:.+$', re.MULTILINE)
-    filestr = cpattern.sub('XXXAUTHOR', filestr)  # v2.6 way of doing it
+                              flags=re.MULTILINE)
+    filestr = re.sub(r'^AUTHOR:.+$', 'XXXAUTHOR', filestr, flags=re.MULTILINE)
     # contract multiple AUTHOR lines to one single:
     filestr = re.sub('(XXXAUTHOR\n)+', 'XXXAUTHOR', filestr)
+
+    from collections import OrderedDict
+    copyright_ = OrderedDict()
 
     # (author, (inst1, inst2, ...) or (author, None)
     authors_and_institutions = []
@@ -2942,10 +2933,86 @@ def interpret_authors(filestr, format):
             #elif ' and ' in i:
             #    i = [w.strip() for w in i.split(' and ')]
             else:
-                i = (i.strip(),)
+                i = [i.strip(),]
         else:  # just author's name
             a = line.strip()
             i = None
+
+        # Copyright: {copyright} {copyright,2006} {copyright,2006-2015}
+
+        def interpret_copyright(s):
+            """
+            Interpret copyright syntax in the string s and
+            remove the copyright.
+            {copyright} {copyright,2005} {copyright,2005-2010}
+            {copyright,2005-present} {copyright,present|CC BY}
+            """
+            license_ = None
+            cc_license_wording = option('CC_license=',
+                                        'Released under CC %s 4.0 license')
+            cr_pattern = r'\{ *(copyright[^}]*)\}'
+            m = re.search(cr_pattern, s)
+            if m:
+                cr = m.group(1)
+                s = re.sub(cr_pattern, '', s).strip()  # remove {copyright...}
+                if '|' in cr:
+                    cr, license_ = cr.split('|')
+                    if license_.startswith('CC'):
+                        license_ = license_.split()[1]
+                        # https://creativecommons.org/licenses/
+                        # CC BY-ND
+                        cctps = {
+                            'BY': 'Attribution',
+                            'ND': 'NoDerivs',
+                            'NC': 'NonCommercial',
+                            'SA': 'ShareAlike',
+                            }
+                        license_ = [cctps[cctp] for cctp in license_.split('-')]
+                        license_ = cc_license_wording % '-'.join(license_)
+                if ',' in cr:  # year?
+                    year = cr.split(',')[1].strip()
+                    this_year = time.asctime().split()[4] # current year
+                    if year == 'present':
+                        year = this_year
+                    elif year == 'date':
+                        year = None
+                        pattern = r'^DATE:(.+)'
+                        m1 = re.search(pattern, filestr, flags=re.MULTILINE)
+                        if m1:
+                            pattern = r'\d\d\d\d'
+                            date = m1.group(1)
+                            m2 = research(pattern, date)
+                            if m2:
+                                year = m2.group()
+                        if year is None:
+                            year = this_year
+                    elif '-' in year:
+                        year = [y.strip() for y in year.split('-')]
+                        if year[1] == 'present':
+                            year[1] = this_year
+                        if int(year[1]) > int(this_year):
+                            print '*** warning: copyright year %s-%s is adjusted to %s-present (%s)' % (year[0], year[1], year[0], this_year)
+                            year[1] = this_year
+                        # Concatenate as interval
+                        year = year[0] + '-' + year[1]
+                else:
+                    year = time.asctime().split()[4] # current year
+                return s, year, license_
+            else:
+                return s, None, license_
+
+        # Remove {copyright...} info from a and i
+        a, year, license_ = interpret_copyright(a)
+        if year is not None:
+            # Remove email from a
+            a_ = re.sub(r'[Ee]mail:.+', '', a).strip()
+            copyright_[a_] = (year, license_)
+        if i is not None:
+            for k in range(len(i)):
+                i[k], year, license_ = interpret_copyright(i[k])
+                if year is not None:
+                    copyright_[i[k]] = (year, license_)
+
         if 'mail:' in a:  # email?
             a, e = re.split(r'[Ee]?mail:\s*', a)
             a = a.strip()
@@ -2954,7 +3021,38 @@ def interpret_authors(filestr, format):
                 print 'Syntax error: wrong email specification in AUTHOR line: "%s" (no @)' % e
         else:
             e = None
+
         authors_and_institutions.append((a, i, e))
+
+    if copyright_:
+        # Avoid multiple versions of the same institution in copyright_
+        keys = list(set(list(copyright_.keys())))
+        copy_copyright_ = copyright_.copy()
+        copyright_ = {}
+        for key in keys:
+            copyright_[key] = copy_copyright_[key]
+        year0 = copyright_[keys[0]][0]
+        license0 = copyright_[keys[0]][1]
+        # Test that year and license are the same
+        for key in keys[1:]:
+            if copyright_[key][0] != year0:
+                print '*** error: copyright year for %s is %s, different from %s for %s' % (key, copyright_[key], copyright_[keys[0]], keys[0])
+                print '    make sure all copyrights have the same info!'
+                _abort()
+            if copyright_[key][1] != license0:
+                print '*** error: copyright license for %s is "%s", different from "%s" for %s' % (key, copyright_[key], copyright_[keys[0]], keys[0])
+                print '    make sure all copyrights have the same info!'
+                _abort()
+        copyright_ = {'holder': keys, 'year': year0, 'license': license0}
+        # Store in file for use elsewhere (will only work for doconce format)
+        try:
+            # Will only work
+            with open('.' + dofile_basename + '.copyright', 'w') as f:
+                f.write(repr(copyright_))
+        except NameError:
+            pass # file is already written
+    else:
+        copyright_ = None
 
     inst2index = OrderedDict()
     index2inst = {}
@@ -3371,6 +3469,12 @@ def inline_tag_subst(filestr, format):
         origstr = m.group(1)
         w = time.asctime().split()
         date = w[1] + ' ' + w[2] + ', ' + w[4]
+        # Add copyright right under the date if present
+        if format not in ('html', 'latex', 'pdflatex', 'sphinx'):
+            from common import get_copyfile_info
+            cr_text = get_copyfile_info(filestr)
+            if cr_text is not None:
+                date += '\n\nCopyright ' + cr_text + '\n\n'
         filestr = filestr.replace(origstr, 'DATE: ' + date)
 
     # Hack for not typesetting ampersands inside inline verbatim text

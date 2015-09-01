@@ -2837,7 +2837,7 @@ Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[h]  % fig:impact
+\begin{figure}[!ht]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -4415,8 +4415,6 @@ draft,                   % draft: marks overfull hboxes, figures with paths
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}
-\fancyfoot[C]{\copyright\ {\footnotesize Copyright 2006-2015 H. P. Langtangen}}
-
 \pagestyle{fancy}
 
 
@@ -5241,7 +5239,7 @@ Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[h]  % fig:impact
+\begin{figure}[!ht]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -6872,8 +6870,6 @@ draft,                   % draft: marks overfull hboxes, figures with paths
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}
-\fancyfoot[C]{\copyright\ {\footnotesize Copyright 2006-2015 H. P. Langtangen}}
-
 \pagestyle{fancy}
 
 
@@ -7654,7 +7650,7 @@ Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[h]  % fig:impact
+\begin{figure}[!ht]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -10135,7 +10131,7 @@ Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[h]  % fig:impact
+\begin{figure}[!ht]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.pdf}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -32630,7 +32626,7 @@ Inline math, \( a=b \), is the only math in this document.
 oneside,                 % oneside: electronic viewing, twoside: printing
 final,                   % draft: marks overfull hboxes, figures with paths
 chapterprefix=true,      % "Chapter" word at beginning of each chapter
-open=right               % start new chapters on odd-numbered pages
+open=right,              % start new chapters on odd-numbered pages
 10pt]{book}
 
 \listfiles               % print all files needed to compile this document
@@ -42210,7 +42206,7 @@ Test of figures. In particular we refer to Figure~\vref{fig:impact} in which
 there is a flow.
 
 
-\begin{figure}[h]  % fig:impact
+\begin{figure}[!ht]  % fig:impact
   \centerline{\includegraphics[width=0.9\linewidth]{../doc/src/manual/fig/wave1D.eps}}
   \caption{
   Visualization of a wave. \label{fig:impact}
@@ -44174,7 +44170,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles --latex_packages=varioref
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref --latex_link_color=yellow!10 --copyright='2006-2015 H. P. Langtangen' --draft
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref --latex_link_color=yellow!10 --draft
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -76309,7 +76305,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fd4d8465a28>
+verbatim is to be replaced using <function html_verbatim at 0x7f3cd296ade8>
 
 
 First occurence: " `mako`."
@@ -80548,7 +80544,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Sun Aug 30 07:36:26 2015.
+# sphinx-quickstart on Tue Sep  1 10:29:14 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80603,25 +80599,25 @@ additional_themes_url = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['_themes']
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
 
 try:
     import alabaster
-    extensions += ['alabaster']
-    html_theme_path += [alabaster.get_path()]
     additional_themes_installed.append('alabaster')
 except ImportError:
     additional_themes_url['alabaster'] = 'sudo pip install alabaster'
 
 try:
     import sphinxjp.themes.solarized
-    extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
     additional_themes_installed.append('solarized')
 except ImportError:
     additional_themes_url['solarized'] = 'https://bitbucket.org/miiton/sphinxjp.themes.solarized: sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade'
 
 try:
     import cloud_sptheme as csp
-    html_theme_path += [csp.get_theme_dir()]
     additional_themes_installed.append('cloud')
     additional_themes_installed.append('redcloud')
 except ImportError:
@@ -80646,14 +80642,11 @@ except ImportError:
 try:
     import sphinxjp.themes.impressjs
     additional_themes_installed.append('impressjs')
-    if not 'sphinxjp.themecore' in extensions:
-        extensions += ['sphinxjp.themecore']
 except ImportError:
     additional_themes_url['impressjs'] = 'https://github.com/shkumagai/sphinxjp.themes.impressjs: sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade'
 
 try:
     import sphinx_bootstrap_theme
-    html_theme_path += sphinx_bootstrap_theme.get_html_theme_path()
     additional_themes_installed.append('bootstrap')
 except ImportError:
     additional_themes_url['bootstrap'] = 'https://github.com/ryan-roemer/sphinx-bootstrap-theme: sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade'
@@ -80665,12 +80658,26 @@ except ImportError:
     # sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
     pass
 
+# Is the document built on readthedocs.org? If so, don't import
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    try:
+        import sphinx_rtd_theme
+        additional_themes_installed.append('sphinx_rtd_theme')
+    except ImportError:
+        additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
+
+tinker_themes = [
+  'draft', 'flat', 'modern5', 'minimal5', 'responsive']
+# http://tinkerer.me/index.html
+# See Preview Another Theme in the sidebar of the above URL
 try:
-    import sphinx_rtd_theme
-    html_theme_path += [sphinx_rtd_theme.get_html_theme_path()]
-    additional_themes_installed.append('sphinx_rtd_theme')
+    import tinkerer
+    import tinkerer.paths
+    additional_themes_installed += tinker_themes
 except ImportError:
-    additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
+    for theme in thinker_themes:
+        additional_themes_url[theme] = 'sudo pip install tinkerer --upgrade'
 
 
 
@@ -80690,7 +80697,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Just a test'
-copyright = u'2015, HPL'
+copyright = u'HPL'
 author = u'Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -80760,21 +80767,27 @@ html_theme = 'agni'
 #html_theme = 'basicstrap'
 #html_theme = 'bizstyle'
 #html_theme = 'bloodish'
+#html_theme = 'boilerplate'
 #html_theme = 'bootstrap'
 #html_theme = 'cbc'
 #html_theme = 'classic'
 #html_theme = 'cloud'
 #html_theme = 'default'
+#html_theme = 'draft'
 #html_theme = 'epub'
 #html_theme = 'fenics'
 #html_theme = 'fenics_minimal1'
 #html_theme = 'fenics_minimal2'
+#html_theme = 'flat'
 #html_theme = 'haiku'
 #html_theme = 'jal'
+#html_theme = 'minimal5'
+#html_theme = 'modern5'
 #html_theme = 'nature'
 #html_theme = 'pylons'
 #html_theme = 'pyramid'
 #html_theme = 'redcloud'
+#html_theme = 'responsive'
 #html_theme = 'scipy_lectures'
 #html_theme = 'scrolls'
 #html_theme = 'slim-agogo'
@@ -80837,6 +80850,8 @@ if html_theme in ('default', 'classic'):
 
 elif html_theme == 'alabaster':
     # Doc: https://pypi.python.org/pypi/alabaster
+    extensions += ['alabaster']
+    html_theme_path += [alabaster.get_path()]
     html_theme_sidebars = {
       '**': [
         'about.html',
@@ -80849,13 +80864,25 @@ elif html_theme == 'alabaster':
 
 elif html_theme == 'sphinx_rtd_theme':
     # Doc: https://pypi.python.org/pypi/sphinx_rtd_theme
-    pass
+    if not on_rtd:
+        html_theme_path += [sphinx_rtd_theme.get_html_theme_path()]
 
 elif html_theme == 'sphinxdoc':
     # Doc: http://sphinx-doc.org/theming.html
     html_theme_options = {
        'nosidebar': 'false',  # 'true'
     }
+
+elif html_theme == 'solarized':
+    extensions += ['sphinxjp.themecore', 'sphinxjp.themes.solarized']
+
+elif html_theme in ('cloud', 'redcloud'):
+    html_theme_path += [csp.get_theme_dir()]
+
+elif html_theme == 'impressjs':
+    html_theme_path += [csp.get_theme_dir()]
+    if not 'sphinxjp.themecore' in extensions:
+        extensions += ['sphinxjp.themecore']
 
 elif html_theme == 'scrolls':
     # Doc: http://sphinx.pocoo.org/theming.html
@@ -80950,6 +80977,7 @@ elif html_theme == 'bootstrap':
         # Add page navigation to it's own navigation bar.
         #'navbar_page_separate': True,
     }
+    html_theme_path += sphinx_bootstrap_theme.get_html_theme_path()
 
 elif html_theme == 'scipy_lectures':
     # inherits the default theme and has all those options
@@ -80969,6 +80997,12 @@ elif html_theme == 'cbc':
     pygments_style = "friendly"
 elif html_theme == 'uio':
     pygments_style = "tango"
+elif html_theme in tinker_themes:
+    html_theme_options = {}
+    extensions += ['tinkerer.ext.blog', 'tinkerer.ext.disqus']
+    html_static_path += [tinkerer.paths.static]
+    html_theme_path += [tinkerer.paths.themes]
+
 
 
 
@@ -99760,11 +99794,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -99840,11 +99869,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -99930,11 +99954,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -100047,11 +100066,6 @@ transforming sections: chapter to section...
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -100122,11 +100136,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -100213,11 +100222,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -100311,11 +100315,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -100420,11 +100419,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -100514,11 +100508,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -100547,8 +100536,8 @@ exporting publish database papers.pub to papers.bib:
 output in testdoc.tex
 + '[' 0 -ne 0 ']'
 + cp testdoc.tex testdoc.tex_direct
-+ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10' '--copyright=2006-2015 H. P. Langtangen' --draft
-+ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10' '--copyright=2006-2015 H. P. Langtangen' --draft
++ system doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10' --draft
++ doconce format pdflatex testdoc.do.txt --device=paper --examples_as_exercises --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=yellow!10' --draft
 
 Summary of papers
 -----------------
@@ -100608,11 +100597,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -100919,8 +100903,9 @@ ABD: EveryShipout initializing macros (./newcommands_bfmath.tex)
 
 
  [1{/var/lib/texmf/fonts/map/pdftex/up
-dmap/pdftex.map}]  [2]
+dmap/pdftex.map}] [2]
 Underfull \hbox (badness 10000) 
+
 
 
 
@@ -100968,7 +100953,7 @@ Underfull \hbox (badness 10000)
 
 
 
- line 526.
+ line 524.
 
 
 
@@ -101015,11 +101000,7 @@ Overfull \hbox (45.85634pt too wide)
 
 
 
-<../doc/src/manual/fig/wave1D.pdf, id=73, 586.83241pt x 442.29242pt>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[9]
+<../doc/src/manual/fig/wave1D.pdf, id=73, 586.83241pt x 442.29242pt> [9]
 
 [10]
 
@@ -101128,7 +101109,7 @@ Underfull \hbox (badness 1424)
 4pt> [14] [15]
 
 
-t line 1334.
+t line 1332.
 
 
 
@@ -101148,7 +101129,7 @@ t line 1334.
 
 
 
-t line 1343.
+t line 1341.
 
 
 
@@ -101169,7 +101150,7 @@ t line 1343.
 
 
 
-t line 1347.
+t line 1345.
 
 
 
@@ -101262,7 +101243,7 @@ Overfull \hbox (5.03835pt too wide)
 [18]
 
 
-e 1512.
+e 1510.
 
 
 
@@ -101270,7 +101251,7 @@ e 1512.
 
 
 
-e 1513.
+e 1511.
 
 
 
@@ -101278,7 +101259,7 @@ e 1513.
 
 
 
-e 1513.
+e 1511.
 
 
 
@@ -101344,7 +101325,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-e 1588.
+e 1586.
 
 
 
@@ -101359,7 +101340,7 @@ e 1588.
 
 
 
-t line 1589.
+t line 1587.
 
 
 
@@ -101384,7 +101365,7 @@ Underfull \hbox (badness 10000)
 
 
 
-e 2146.
+e 2144.
 
 
 
@@ -101407,7 +101388,7 @@ e 2146.
 
 
 
-t line 2176.
+t line 2174.
 
 
 
@@ -101422,7 +101403,7 @@ t line 2176.
 
 
 
-e 2177.
+e 2175.
 
 
 
@@ -101935,17 +101916,14 @@ Overfull \hbox (3.25177pt too wide)
 
 Underfull \hbox (badness 10000) 
  [][]  
-
-[3]
+[2]) (./testdoc.loe) (./testdoc.tdo) [3]
 Underfull \hbox (badness 10000) 
 
-[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+ [4] [5] [6]
+<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
 Overfull \hbox (45.85634pt too wide) 
 \T1/lmr/m/n/10 and braces like [], [], [], and []. |
 [9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [10]
 
 [11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
@@ -102048,7 +102026,7 @@ Underfull \hbox (badness 1424)
 4pt> [15] [16]
 
 
-t line 1334.
+t line 1332.
 
 
 
@@ -102068,7 +102046,7 @@ t line 1334.
 
 
 
-t line 1343.
+t line 1341.
 
 
 
@@ -102089,7 +102067,7 @@ t line 1343.
 
 
 
-t line 1347.
+t line 1345.
 
 
 
@@ -102654,17 +102632,14 @@ Overfull \hbox (3.25177pt too wide)
 
 Underfull \hbox (badness 10000) 
  [][]  
-
-[3]
+[2]) (./testdoc.loe) (./testdoc.tdo) [3]
 Underfull \hbox (badness 10000) 
 
-[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+ [4] [5] [6]
+<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
 Overfull \hbox (45.85634pt too wide) 
 \T1/lmr/m/n/10 and braces like [], [], [], and []. |
 [9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [10]
 
 [11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
@@ -102767,7 +102742,7 @@ Underfull \hbox (badness 1424)
 4pt> [15] [16]
 
 
-t line 1334.
+t line 1332.
 
 
 
@@ -102787,7 +102762,7 @@ t line 1334.
 
 
 
-t line 1343.
+t line 1341.
 
 
 
@@ -102808,7 +102783,7 @@ t line 1343.
 
 
 
-t line 1347.
+t line 1345.
 
 
 
@@ -103357,17 +103332,14 @@ Overfull \hbox (3.25177pt too wide)
 
 Underfull \hbox (badness 10000) 
  [][]  
-
-[3]
+[2]) (./testdoc.loe) (./testdoc.tdo) [3]
 Underfull \hbox (badness 10000) 
 
-[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+ [4] [5] [6]
+<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
 Overfull \hbox (45.85634pt too wide) 
 \T1/lmr/m/n/10 and braces like [], [], [], and []. |
 [9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [10]
 
 [11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
@@ -103940,17 +103912,14 @@ Overfull \hbox (3.25177pt too wide)
 
 Underfull \hbox (badness 10000) 
  [][]  
-
-[3]
+[2]) (./testdoc.loe) (./testdoc.tdo) [3]
 Underfull \hbox (badness 10000) 
 
-[4] [5] [6] <latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
+ [4] [5] [6]
+<latex_figs/dizzy_face.png, id=66, 64.24pt x 64.24pt> [7] [8]
 Overfull \hbox (45.85634pt too wide) 
 \T1/lmr/m/n/10 and braces like [], [], [], and []. |
 [9] <../doc/src/manual/fig/wave1D.pdf, id=79, 586.83241pt x 442.29242pt>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [10]
 
 [11] <../doc/src/manual/fig/wave1D.png, id=90, 586.8324pt x 442.2924pt>
@@ -104531,8 +104500,9 @@ Package hyperref Warning: old loe file detected, not used; run LaTeX again.
 
 Package hyperref Warning: old tdo file detected, not used; run LaTeX again.
 
- [2]
+[2]
 Underfull \hbox (badness 10000) 
+
 
 
 
@@ -104580,7 +104550,7 @@ Underfull \hbox (badness 10000)
 
 
 
- line 526.
+ line 524.
 
 
 
@@ -104735,7 +104705,7 @@ pt>
 4pt> [13] [14]
 
 
-t line 1284.
+t line 1282.
 
 
 
@@ -104755,7 +104725,7 @@ t line 1284.
 
 
 
-t line 1293.
+t line 1291.
 
 
 
@@ -104776,7 +104746,7 @@ t line 1293.
 
 
 
-t line 1297.
+t line 1295.
 
 
 
@@ -104869,7 +104839,7 @@ Overfull \hbox (5.03835pt too wide)
 [17]
 
 
-e 1461.
+e 1459.
 
 
 
@@ -104877,7 +104847,7 @@ e 1461.
 
 
 
-e 1462.
+e 1460.
 
 
 
@@ -104885,7 +104855,7 @@ e 1462.
 
 
 
-e 1462.
+e 1460.
 
 
 
@@ -104951,7 +104921,7 @@ Package amsmath Warning: Foreign command \over;
 
 
 
-e 1537.
+e 1535.
 
 
 
@@ -104966,7 +104936,7 @@ e 1537.
 
 
 
-t line 1538.
+t line 1536.
 
 
 
@@ -104991,7 +104961,7 @@ Underfull \hbox (badness 10000)
 
 
 
-e 2086.
+e 2084.
 
 
 
@@ -105014,7 +104984,7 @@ e 2086.
 
 
 
-t line 2116.
+t line 2114.
 
 
 
@@ -105029,7 +104999,7 @@ t line 2116.
 
 
 
-e 2117.
+e 2115.
 
 
 
@@ -105321,11 +105291,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -105408,11 +105373,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -105476,11 +105436,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -105569,11 +105524,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -105683,11 +105633,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -105805,7 +105750,8 @@ title: Just a test
 author: Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe
 copyright: HPL
 theme: agni
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -105821,7 +105767,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 12 source files that are out of date
@@ -105872,7 +105817,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 9 warnings.
+build succeeded, 8 warnings.
 
 Build finished. The HTML pages are in _build/html.
 copying ../doc/src/manual/fig/wave1D.png to sphinx-testdoc
@@ -105923,11 +105868,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -105992,11 +105932,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -106058,11 +105993,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -106128,11 +106058,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -106220,11 +106145,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -106298,11 +106218,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -106368,11 +106283,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -106446,11 +106356,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -106563,11 +106468,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
 
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
-
 *** Exercise: Determine some Distance
     label{exer:dist}
     could be Problem (no refs beyond the exercise itself)
@@ -106673,11 +106573,6 @@ copy complete file ../doc/src/manual/__testcode.f  (format: ccq)
 *** Exercise: Test of plain text exercise
     label{my:exer1}
     could be Problem (no refs beyond the exercise itself)
-
-*** Project: Explore Distributions of Random Circles
-    label{proj:circle1}
-    should be Exercise since it has refs to other parts of the document:
-    circle:x, circle:y
 
 *** Exercise: Determine some Distance
     label{exer:dist}
@@ -106889,6 +106784,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 
+(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.sty
+
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator.sty
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator-language-
@@ -107058,8 +106955,9 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on .
 
 (./slides1.vrb 
- [1{/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}]
+
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 No file slides1.toc.
 (./slides1.vrb
 <../doc/src/manual/fig/wave1D.png, id=45, 586.8324pt x 442.2924pt>
@@ -107082,26 +106980,27 @@ Package rerunfilecheck Warning: File `slides1.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
-/ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600
-pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hp
-l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/
-fonts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfo
-ur/jknappen/ec/ecss0600.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecss0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.60
-0pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy9.pfb>
+ ) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecit0900.600pk> </home/hpl
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecss1000.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecsi0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600
+pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0600.600pk> </home/hp
+l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/hpl/.texmf-var/
+fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecss1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy9.pfb>
 Output written on slides1.pdf (9 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
@@ -107241,6 +107140,8 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.sty
 
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/translator/translator.sty
@@ -107405,8 +107306,10 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 (hyperref)                setting the option has no effect on .
 
 (./slides1.vrb 
- [1{/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
+
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2]
+(./slides1.vrb
 <../doc/src/manual/fig/wave1D.png, id=72, 586.8324pt x 442.2924pt>
 <use ../doc/src/manual/fig/wave1D.png>) [3 <../doc/src/manual/fig/wave1D.png>]
 (./slides1.vrb <use ../doc/src/manual/fig/wave1D.png>) [4] (./slides1.vrb)
@@ -107432,26 +107335,28 @@ onts/map/pdftex/updmap/pdftex.map}] (./slides1.toc) [2] (./slides1.vrb
 (./slides1.vrb 
  [15] (./slides1.vrb) [16] (./slides1.vrb) [17] (./slides1.vrb) [18]
 (./slides1.vrb) [19] (./slides1.vrb) [20] (./slides1.vrb) [21] (./slides1.aux) 
-) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi1200.600pk> </home/hpl/
-.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1000.600pk> </home/hpl/.texmf-var/fo
-nts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
-/jknappen/ec/ecsi0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/
-ectt1000.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1000.600p
-k> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0900.600pk> </home/hpl
-/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600pk> </home/hpl/.texmf-var/f
-onts/pk/ljfour/jknappen/ec/ecsi1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecsx0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
-/ecss0600.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.600
-pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1095.600pk> </home/hp
-l/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss1440.600pk></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+) </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1000.600pk> </home/hpl/
+.texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/hpl/.texmf-var/fo
+nts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour
+/jknappen/ec/ecss1000.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+ecsi0900.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0900.600p
+k> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx0800.600pk> </home/hpl
+/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0600.600pk> </home/hpl/.texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecss0800.600pk> </home/hpl/.texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecss1095.600pk> </home/hpl/.texmf-var/fonts/pk/ljfour/jknappen/ec
+/ecss1440.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy9.pfb>
 Output written on slides1.pdf (21 pages, ).
 Transcript written on slides1.log.
 + '[' 0 -ne 0 ']'
@@ -108100,12 +108005,12 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in math_test.do.txt
 Using title "How various formats can deal with LaTeX math" from math_test
-Using author(s) "HPL" from math_test as copyright
 title: How various formats can deal with LaTeX math
 author: HPL
-copyright: HPL
+copyright: 2015, HPL
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -108119,7 +108024,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -108140,7 +108044,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/test/sphinx-rootdir-math
@@ -110828,12 +110732,12 @@ where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
 searching for TITLE in admon.do.txt
 Using title "Testing admons" from admon
-Using author(s) "hpl" from admon as copyright
 title: Testing admons
 author: hpl
-copyright: hpl
+copyright: 2015, hpl
 theme: default
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -110861,7 +110765,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -110884,7 +110787,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 doconce format sphinx admon 
@@ -116369,14 +116272,14 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-*** warning: the copyright contained the years 2006-2014, changed to 2006-2015
 searching for TITLE in quickref.do.txt
 Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
 author: Hans Petter Langtangen, H. P. Langtangen, Kaare Dump and A. Dummy Author
-copyright: 2006-2015 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo
+copyright: 2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo
 theme: cbc
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, bootstrap, cbc, classic, cloud, default, epub, fenics, fenics_minimal1, fenics_minimal2, haiku, jal, nature, pylons, pyramid, redcloud, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -116393,7 +116296,6 @@ rm -rf _build/*
 sphinx-build -b html -d _build/doctrees   . _build/html
 Running Sphinx v1.4a0+
 making output directory...
-WARNING: extension 'sphinxjp.themes.solarized' has no setup() function; is it really a Sphinx extension module?
 loading pickled environment... not yet created
 building [mo]: targets for 0 po files that are out of date
 building [html]: targets for 2 source files that are out of date
@@ -116414,7 +116316,7 @@ copying static files... done
 copying extra files... done
 dumping search index in English (code: en) ... done
 dumping object inventory... done
-build succeeded, 1 warning.
+build succeeded.
 
 Build finished. The HTML pages are in _build/html.
 /home/hpl/vc/doconce/doc/src/quickref/sphinx-rootdir

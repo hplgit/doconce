@@ -7,7 +7,8 @@ are available as part of Sphinx and hence compatible with the software.
 Most of the other themes build on basic themes. For example, `jquery.js`
 is only contained in the `basic` and `bootstrap` themes (`basic` is
 part of Sphinx, while `bootstrap` must be updated via
-`pip install`. Other themes that rely on a `pip install` include `alabaster`, `cloud`, `redcloud`, `impressjs`, `solarized`, `sphinx_rtd_theme`.
+`pip install`. Other themes that rely on a `pip install` include `alabaster`, `cloud`, `redcloud`, `impressjs`, `solarized`, `sphinx_rtd_theme`, and
+the Tinker themes `flat`, `dark`, `modern5`, `minimal5`, and `responsive`.
 
 !bc sys
 sudo pip install alabaster --upgrade
@@ -17,4 +18,5 @@ sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#eg
 sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade
 sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade
 sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
+pip install tinkerer -- upgrade
 !ec

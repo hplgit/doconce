@@ -531,6 +531,13 @@ def latex_code(filestr, code_blocks, code_block_types,
     pattern = r'(begin\{block\}|paragraph)\{.*?\\code\{.*?%.*?\}'
     filestr = re.sub(pattern, lambda m: m.group().replace('%', '\\%'), filestr)
 
+    from common import get_copyfile_info
+    cr_text = get_copyfile_info(filestr)
+    if cr_text is not None:
+        filestr = filestr.replace('Copyright COPYRIGHT_HOLDERS',
+                                  cr_text)
+                                  #'Copyright ' + cr_text)
+
     # Make sure exercises are surrounded by \begin{doconceexercise} and
     # \end{doconceexercise} with some exercise counter
     #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
@@ -893,6 +900,7 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     return filestr
 
+
 def latex_figure(m):
     figure_method = 'includegraphics'  # alt: 'psfig'
     filename = m.group('filename')
@@ -1008,7 +1016,7 @@ def latex_figure(m):
     #    includeline='\sidecaption[t] ' + includeline
     if caption and sidecaption == 0:
         result = r"""
-\begin{figure}[h]  %% %s
+\begin{figure}[!ht]  %% %s
   %s
   \caption{
   %s
@@ -1688,41 +1696,22 @@ def latex_author(authors_and_institutions, auth2index,
 def latex_date(m):
     title_layout = option('latex_title_layout=', 'doconce_heading')
     latex_style = option('latex_style=', 'std')
-    copyright_ = option('copyright=', '')
-    copyright_ = ''  # the footer will be on the first page anyway
-    if copyright_:
-        copyright_ = '\\\\ \\copyright\\ Copyright %s' % copyright_
     date = m.group('subst')
 
     text = ''
     if title_layout == 'std':
         text += r"""
-\date{%(date)s%(copyright_)s}
+\date{%(date)s}
 \maketitle
 """ % vars()
     elif title_layout == 'beamer':
         text += r"""
-\date{%(date)s%(copyright_)s
+\date{%(date)s
 %% <optional titlepage figure>
 }
 """ % vars()
     elif title_layout == 'titlepage':
-        if copyright_:
-            text += r"""
-%% --- begin date ---
-\ \\ [10mm]
-{\large\textsf{%(date)s}}
-
-\ \\ [4mm]
-{\textsf{%(copyright_)s}}
-
-\end{center}
-%% --- end date ---
-\vfill
-\clearpage
-""" % vars()
-        else:
-            text += r"""
+        text += r"""
 %% --- begin date ---
 \ \\ [10mm]
 {\large\textsf{%(date)s}}
@@ -1733,21 +1722,7 @@ def latex_date(m):
 \clearpage
 """ % vars()
     else:  # doconce special heading
-        if copyright_:
-            text += r"""
-%% --- begin date ---
-\begin{center}
-%(date)s
-
-%(copyright_)s
-\end{center}
-%% --- end date ---
-
-\vspace{1cm}
-
-""" % vars()
-        else:
-            text += r"""
+        text += r"""
 %% --- begin date ---
 \begin{center}
 %(date)s
@@ -2480,21 +2455,6 @@ def latex_quiz(quiz):
     # but that won't work in other formats
     return text
 
-def update_copyright_years(copyright_):
-    # Update year in year span XXXX-YYYY so that YYYY is the current year
-    import time
-    w = time.asctime().split()
-    this_year = w[4]
-    pattern = '\d\d\d\d-(\d\d\d\d)'
-    m = re.search(pattern, copyright_)
-    if m:
-        year_span = m.group()
-        end_year = m.group(1)
-        if end_year != this_year:
-            copyright_ = copyright_.replace('-' + end_year, '-' + this_year)
-            print '*** warning: the copyright contained the years %s, changed to %s' % (year_span, year_span.replace(end_year, this_year))
-    return copyright_
-
 def define(FILENAME_EXTENSION,
            BLANKLINE,
            INLINE_TAGS_SUBST,
@@ -2771,7 +2731,7 @@ def define(FILENAME_EXTENSION,
 %(side_tp)s,                 %% oneside: electronic viewing, twoside: printing
 %(draft)s,                   %% draft: marks overfull hboxes, figures with paths
 chapterprefix=true,      %% "Chapter" word at beginning of each chapter
-open=right               %% start new chapters on odd-numbered pages
+open=right,              %% start new chapters on odd-numbered pages
 10pt]{book}
 """ % vars()
         else:  # Only sections, use article style
@@ -3356,13 +3316,16 @@ open=right               %% start new chapters on odd-numbered pages
 %\doublespacing
 """
 
+    from common import has_copyright
+    copyright_ = has_copyright(filestr)
     fancy_header = option('latex_fancy_header')
-    copyright_ = option('copyright=', None)
     if fancy_header or copyright_:
         INTRO['latex'] += r"""
 % --- fancyhdr package for fancy headers ---
 \usepackage{fancyhdr}
-\fancyhf{} % sets both header and footer to nothing
+\fancyhf{} % sets both header and footer to nothing"""
+        if fancy_header:
+            INTRO['latex'] += r"""
 \renewcommand{\headrulewidth}{1pt}"""
         if fancy_header and chapters:
             INTRO['latex'] += r"""
@@ -3383,11 +3346,27 @@ open=right               %% start new chapters on odd-numbered pages
 % (switch twoside to onside in documentclass to just have odd pages)
 \fancyhead[LE,RO]{\rightmark} % section
 \fancyhead[RE,LO]{\thepage}"""
-        if copyright_ is not None:
-            copyright_ = update_copyright_years(copyright_)
+        if copyright_:
+            if not fancy_header:
+                INTRO['latex'] += r"""
+\renewcommand{\headrulewidth}{0pt}"""
             INTRO['latex'] += r"""
-\fancyfoot[C]{\copyright\ {\footnotesize Copyright %s}}
-""" % copyright_
+\fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
+% Ensure copyright on titlepage (article) and chapter pages (article)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
+%  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+% Ensure copyright on titlepages with \thispagestyle{empty}
+\fancypagestyle{empty}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
+  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+"""
 
         INTRO['latex'] += r"""
 \pagestyle{fancy}

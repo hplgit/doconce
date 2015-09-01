@@ -91,13 +91,16 @@ idx{`TITLE` keyword} idx{`AUTHOR` keyword} idx{`DATE` keyword}
 idx{author!email}
 idx{author!institution}
 
+# Note: AUTHOR: must here be indented one space to avoid
+# interpretation as author
+
 Lines starting with `TITLE:`, `AUTHOR:`, and `DATE:` are optional and used
 to identify a title of the document, the authors, and the date. The
 title is treated as the rest of the line, so is the date, but the
 author text consists of the name and associated institution(s) with
 the syntax
 !bc
-name at institution1 and institution2 and institution3
+ AUTHOR: name at institution1 and institution2 and institution3
 !ec
 The `at` with surrounding spaces
 is essential for adding information about institution(s)
@@ -105,17 +108,18 @@ to the author name, and the `and` with surrounding spaces is
 essential as delimiter between different institutions.
 An email address can optionally be included, using the syntax
 !bc
-name Email: somename@site.net at institution1 and institution2
+ AUTHOR: name Email: somename@site.net at institution1 and institution2
 !ec
 Multiple authors require multiple `AUTHOR:` lines. All information
 associated with `TITLE:` and `AUTHOR:` keywords must appear on a single
 line.  Here is an example:
+
 !bc do
-TITLE: On an Ultimate Markup Language
-AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
-AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
-AUTHOR: A. Dummy Author
-DATE: November 9, 2016
+ TITLE: On an Ultimate Markup Language
+ AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
+ AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
+ AUTHOR: A. Dummy Author
+ DATE: November 9, 2016
 !ec
 Note how one can specify a single institution, multiple institutions
 (with `&` as separator between institutions),
@@ -136,10 +140,87 @@ Similar typesetting is done for LaTeX and HTML formats.
 
 The current date can be specified as `today`.
 
-idx{`TOC` keyword}
+===== Copyright =====
+label{copyright}
+
+idx{copyright syntax}
+
+A copyright notice can be given as part of the `AUTHOR:` command.
+The syntax is
+
+!bc
+{copyright,year1-year2|license}
+!ec
+where `year1-year2` represents the year(s) and `license` represents
+the type of license (e.g., Creative Commons license) if that apply.
+The year and license parts can be left out. In that case, the current
+year is used, and no license appears.
+Note that *the year and the license must be identical in all copyright
+specifications*! (Otherwise, an error message is issued.)
+The `{copyright...}` specification can appear after the author's name
+and/or after an organization's name (see examples below).
+
+The syntax of the `year1-year` goes as follows:
+
+ * A single year: `2012`.
+ * A range: `2006-2010`. Up to the current year is specified by `2005-present`. Any attempt to use an upper limit into the future will be replaced by `present`, e.g., `2001-2100` becomes `2001-present`.
+ * A single year: `date`, which fetches the year from the `DATE:` field in the DocOnce document.
+
+The syntax of the `license` part is flexible:
+
+ * Any formulation can be given.
+ * Standardized short forms for Creative Commons (CC) licenses are available.
+   For example,`CC BY`, which means a CC Attribution license. `BY` can be replaced by `BY-NC` (Attribution-NonCommercial) and other abbreviations from URL: "https://creativecommons.org/licenses/". The command-line option `--CC_license=` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads `Released under a CC %s 4.0 license.`, where `%s` is to be replaced by the license name.
+
+How the copyright is typeset depends on the format:
+
+ * LaTeX: The copyright appears as a footer on all pages (typeset with
+   the `\fancyfoot[C]` command from the `fancyhdr` package).
+ * Sphinx: The copyright is provided as the `copyright` variable in `conf.py`
+   and appears in the footer according to the chosen theme.
+ * HTML: The copyright appears at the bottom of all pages (right before the `</body> tag`.
+ * Other formats: A copyright line is inserted after the date.
+
+Here are some examples on specifying copyright.
+
+!bc
+ AUTHOR: Joe Doe Email:joe.doe@somemail.com {copyright}
+ AUTHOR: Jane Doe {copyright}
+!ec
+Output becomes ``Copyright 2015, Joe Doe, Jane Doe'' (if the present year
+is 2015).
+
+!bc
+ AUTHOR: Joe Doe {copyright,2001-present}
+!ec
+Output becomes ``Copyright 2001-2015, Joe Doe'' (if the present year
+is 2015).
+
+!bc
+ AUTHOR: Joe Doe {copyright,2001-2010|CC BY}
+ AUTHOR: Jane Doe Email:jd@kk.org {copyright,2001-2010|CC BY}
+!ec
+Output becomes ``Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license''. One can provide the option `--CC_license="This work is released under the Creative Commons %s 4.0 license."`, and the output
+becomes ``Copyright 2001-2010, Joe Doe, Jane Doe. This work is released under the Creative Commons Attribution 4.0 license.''
+
+!bc
+ AUTHOR: Joe Doe {copyright} at Digital Company {copyright}
+ AUTHOR: Jane Doe
+!ec
+In this case, an author and an institution (but not the second author) hold
+the copyright. The output is typically ``Copyright 2015, Joe Doe, Digital Company''. Below, two institutions but no authors hold the copyright:
+
+!bc
+ AUTHOR: Joe Doe at Digital Company {copyright,2015|CC BY}
+ AUTHOR: Jane Doe at Analog Company {copyright,2015|CC BY}
+!ec
+The output becomes ``Copyright 2015, Diginal Company, Analog Company. Released under CC Attribution 4.0 license''.
+
+
 
 ===== Table of contents =====
 
+idx{`TOC` keyword}
 idx{table of contents}
 
 A table of contents can be generated by the line
@@ -293,23 +374,28 @@ the width of the image as a fraction of the text width.
 In web formats (`html`, `sphinx`, `ipynb`, `matlabnb`, wikis), the `FIGURE:` command is replaced by
 an `img` tag exactly where the `FIGURE:` appears in the document.
 LaTeX, however, will normally place the figure at a different location.
-The generated LaTeX code applies `\begin{figure}[h] % my:fig`, i..e, we use the
-``here'' option `[h]` to recommend a placement as near the `FIGURE:`
+The generated LaTeX code applies
+
+!bc latexcod
+\begin{figure}[!ht] % my:fig
+!ec
+i..e, we use the
+``here'' option `[!ht]` to recommend a placement as near the `FIGURE:`
 command as possible. One can autoedit the `.tex` file and modify the
 `figure` environment options, e.g.,
 
 !bc sys
-Terminal> doconce replace '{figure}[h]' '{figure}[t]' mydoc.tex
+Terminal> doconce replace '{figure}[!ht]' '{figure}[t]' mydoc.tex
 !ec
-The above command will change all `[h]` options to `[t]` (top).
+The above command will change all `[!ht]` options to `[t]` (top).
 A specific figure can also be edited, using the fact that the label
 is printed at the same line as `\begin{figure}`:
 
 !bc sys
-Terminal> doconce subst '{figure}[h] .+my:fig' \
-          '{figure}[b] % my:fig' mydoc.tex
+Terminal> doconce subst '{figure}[!ht] .+my:fig' \
+          '{figure}[!h] % my:fig' mydoc.tex
 !ec
-Of greater influence than options like `[h]`, `[hb]`, etc., is the
+Of greater influence than options like `[ht]`, `[h]`, etc., is the
 LaTeX code found in the preamble:
 
 !bc latexcod
