@@ -1,0 +1,40 @@
+# provide copyright"..." on the command line
+
+TITLE: Test
+AUTHOR: Hans Petter Langtangen email:hpl@simula.no ${copyright} at Simula ${copyright}
+AUTHOR: Kaare Dump email:kd@simula.no ${copyright} at UiO
+AUTHOR: Joe Doe
+DATE: Jan 32, 1999
+
+TOC: on
+!split
+========= My first chapter =========
+
+!bt
+\[ a = b \]
+!et
+
+\clearpage
+
+======= A section =======
+
+Write text.
+
+!split
+========= Basic Theory =========
+label{sec:theory}
+
+A first discovery was that 1+1 is 2.
+
+===== Exercise: My problem =====
+
+Here is an important equation:
+
+!bt
+\begin{equation}
+2+2 = 4
+label{my:prob:eq1}
+\end{equation}
+!et
+
+As shown in (ref{my:prob:eq1}), 2 and 2 is 4.

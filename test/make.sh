@@ -277,6 +277,9 @@ cp $name.html ${name}_pandoc.html
 doconce format pandoc $name
 doconce md2latex $name
 
+# Test all types of copyright syntax
+python test_copyright.py  # results in test_copyright.out
+
 # Test admonitions
 
 # LaTeX admon styles

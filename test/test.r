@@ -44146,7 +44146,7 @@ cp testdoc.html testdoc_no_solutions.html
 system doconce format html testdoc $ex  # just produce the mako file
 doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations --latex_packages=varioref
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --number_all_equations --latex_packages=varioref
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
@@ -44369,6 +44369,9 @@ doconce md2html $name.md
 cp $name.html ${name}_pandoc.html
 doconce format pandoc $name
 doconce md2latex $name
+
+# Test all types of copyright syntax
+python test_copyright.py  # results in test_copyright.out
 
 # Test admonitions
 
@@ -76305,7 +76308,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f3cd296ade8>
+verbatim is to be replaced using <function html_verbatim at 0x7f0b544f7de8>
 
 
 First occurence: " `mako`."
@@ -80544,7 +80547,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Sep  1 10:29:14 2015.
+# sphinx-quickstart on Tue Sep  1 13:58:52 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80668,7 +80671,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
         additional_themes_url['sphinx_rtd_theme'] = 'sudo pip install sphinx_rtd_theme'
 
 tinker_themes = [
-  'draft', 'flat', 'modern5', 'minimal5', 'responsive']
+  'dark', 'flat', 'modern5', 'minimal5', 'responsive']
 # http://tinkerer.me/index.html
 # See Preview Another Theme in the sidebar of the above URL
 try:
@@ -80772,8 +80775,8 @@ html_theme = 'agni'
 #html_theme = 'cbc'
 #html_theme = 'classic'
 #html_theme = 'cloud'
+#html_theme = 'dark'
 #html_theme = 'default'
-#html_theme = 'draft'
 #html_theme = 'epub'
 #html_theme = 'fenics'
 #html_theme = 'fenics_minimal1'
@@ -82042,6 +82045,95 @@ plot(t, u)
 show()
 !ec
 
+************** File: test_copyright.out *****************
+------------------- File: tmp_copyright.tex
+
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen}}
+------------------- File: tmp_copyright.tex
+
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under CC Attribution 4.0 license}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under CC Attribution 4.0 license}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under CC Attribution 4.0 license}}
+------------------- File: tmp_copyright.tex
+
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under CC Attribution-NonCommercial 4.0 license}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under CC Attribution-NonCommercial 4.0 license}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under CC Attribution-NonCommercial 4.0 license}}
+------------------- File: tmp_copyright.tex
+
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under the MIT license.}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under the MIT license.}}
+\fancyfoot[C]{{\footnotesize\copyright\ 2015, Simula, Kaare Dump, Hans Petter Langtangen. \\ Released under the MIT license.}}
+------------------- File: tmp_sphinx-rootdir1/conf.py
+
+copyright = u'2015, Simula, Kaare Dump, Hans Petter Langtangen'
+#html_show_copyright = True
+epub_copyright = copyright
+------------------- File: tmp_sphinx-rootdir2/conf.py
+
+copyright = u'2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license'
+#html_show_copyright = True
+epub_copyright = copyright
+------------------- File: tmp_sphinx-rootdir3/conf.py
+
+copyright = u'2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license'
+#html_show_copyright = True
+epub_copyright = copyright
+------------------- File: tmp_sphinx-rootdir4/conf.py
+
+copyright = u'2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.'
+#html_show_copyright = True
+epub_copyright = copyright
+------------------- File: tmp_copyright1.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen
+------------------- File: ._tmp_copyright1001.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen
+------------------- File: ._tmp_copyright1002.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen
+------------------- File: ._tmp_copyright1000.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen
+------------------- File: tmp_copyright2.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+------------------- File: ._tmp_copyright2001.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+------------------- File: ._tmp_copyright2002.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+------------------- File: ._tmp_copyright2000.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+------------------- File: tmp_copyright3.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license
+------------------- File: ._tmp_copyright3000.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license
+------------------- File: ._tmp_copyright3001.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license
+------------------- File: ._tmp_copyright3002.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license
+------------------- File: tmp_copyright4.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.
+------------------- File: ._tmp_copyright4000.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.
+------------------- File: ._tmp_copyright4002.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.
+------------------- File: ._tmp_copyright4001.html
+
+&copy; 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.
 ************** File: standalone_exercises/exercise_1.do.txt *****************
 TITLE: Example 1: Examples can be typeset as exercises
 AUTHOR: Jane Doe Email:jane.doe@cyberspace.net
@@ -99998,8 +100090,8 @@ exercises extracted to testdoc_exer.do.txt
 
 *** warning: reference ref{sec1} - no label in document
     need generalized reference ref[][][] in the original document
-+ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations --latex_packages=varioref
-+ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --latex_quiz_choice=number+circle --number_all_equations --latex_packages=varioref
++ system doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --number_all_equations --latex_packages=varioref
++ doconce format latex testdoc --without_answers --without_solutions --examples_as_exercises -DSOMEVAR --sections_down --number_all_equations --latex_packages=varioref
 
 Summary of papers
 -----------------
@@ -100022,8 +100114,6 @@ Other Publications:                 1
 Total:                              21
 
 Exported 21 paper(s) to papers.bib.
-*** warning: unrecognized command-line option
-    --latex_quiz_choice=number+circle
 running preprocess -DFORMAT=latex -DDEVICE=screen -DSOMEVAR testdoc.do.txt > tmp_preprocess__testdoc.do.txt
 running mako on tmp_preprocess__testdoc.do.txt to make tmp_mako__testdoc.do.txt
 mako variables: {'DEVICE': 'screen', 'SOMEVAR': True, 'FORMAT': 'latex'}
@@ -105751,7 +105841,7 @@ author: Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked an
 copyright: HPL
 theme: agni
 
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -108010,7 +108100,7 @@ author: HPL
 copyright: 2015, HPL
 theme: default
 
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -108081,6 +108171,2275 @@ output in math_test.md
 + doconce md2latex math_test
 pandoc -f markdown -t latex -s -o math_test.tex math_test.md
 output in math_test.tex
++ python test_copyright.py
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright}', 'FORMAT': 'pdflatex'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright.tex
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+No file tmp_copyright.aux.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./newcommands_bfmath.tex) (./newcommands_replace.tex)
+
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+
+
+
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+
+Package rerunfilecheck Warning: File `tmp_copyright.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY}', 'FORMAT': 'pdflatex'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright.tex
+replacing Released under by \\ Released under in tmp_copyright.tex
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY-NC}', 'FORMAT': 'pdflatex'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright.tex
+replacing Released under by \\ Released under in tmp_copyright.tex
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|Released under the MIT license.}', 'FORMAT': 'pdflatex'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright.tex
+replacing Released under by \\ Released under in tmp_copyright.tex
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./tmp_copyright.tex
+LaTeX2e <2014/05/01>
+Babel <3.9l> and hyphenation patterns for 27 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+
+
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+
+
+
+
+
+
+
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+
+Writing index file tmp_copyright.idx
+
+LaTeX Warning: Unused global option(s):
+    [chapterprefix=true,open=right].
+
+(./tmp_copyright.aux) 
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) 
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(./tmp_copyright.out) (./tmp_copyright.out) (./newcommands_bfmath.tex)
+(./newcommands_replace.tex) 
+
+
+
+
+
+
+
+
+ [1{/var/lib/texmf/fonts/map/pdftex/up
+dmap/pdftex.map}] (./tmp_copyright.toc) [2]
+Chapter 1.
+[3] [4]
+Chapter 2.
+[5]
+No file tmp_copyright.ind.
+(./tmp_copyright.aux)
+
+ *File List*
+    book.cls    2014/09/29 v1.4h Standard LaTeX document class
+    bk10.clo    2014/09/29 v1.4h Standard LaTeX file (size option)
+ relsize.sty    2013/03/29 ver 4.1
+ makeidx.sty    2014/09/29 v1.0m Standard LaTeX package
+   color.sty    1999/02/16
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2011/05/27 v0.06d Graphics/color for pdfTeX
+infwarerr.sty    2010/04/08 v1.3 Providing info/warning/error messages (HO)
+ ltxcmds.sty    2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+setspace.sty    2011/12/19 v6.7a set line spacing
+ amsmath.sty    2013/01/14 v2.14 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+amsfonts.sty    2013/01/14 v3.01 Basic AMSFonts support
+ amssymb.sty    2013/01/14 v3.01 AMS font symbols
+  xcolor.sty    2007/01/21 v2.11 LaTeX color extensions (UK)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+colortbl.sty    2012/02/13 v1.0a Color table columns (DPC)
+   array.sty    2014/10/28 v2.4c Tabular extension package (FMi)
+      bm.sty    2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+microtype.sty    2013/05/23 v2.5a Micro-typographical refinements (RS)
+  keyval.sty    2014/05/08 v1.15 key=value parser (DPC)
+microtype-pdftex.def    2013/05/23 v2.5a Definitions specific to pdftex (RS)
+microtype.cfg    2013/05/23 v2.5a microtype main configuration file (RS)
+graphicx.sty    2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+graphics.sty    2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+    trig.sty    1999/03/16 v1.09 sin cos tan (DPC)
+graphics.cfg    2010/04/23 v1.9 graphics configuration of TeX Live
+ fontenc.sty
+   t1enc.def    2005/09/27 v1.99g Standard LaTeX file
+     ucs.sty    2013/05/11 v2.2 UCS: Unicode input support
+uni-global.def    2013/05/13 UCS: Unicode global data
+inputenc.sty    2014/04/30 v1.2b Input encoding file
+   utf8x.def    2004/10/17 UCS: Input encoding UTF-8
+ lmodern.sty    2009/10/30 v1.6 Latin Modern Fonts
+hyperref.sty    2012/11/06 v6.83m Hypertext links for LaTeX
+hobsub-hyperref.sty    2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+hobsub-generic.sty    2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+  hobsub.sty    2012/05/28 v1.13 Construct package bundles (HO)
+ifluatex.sty    2010/03/01 v1.3 Provides the ifluatex switch (HO)
+  ifvtex.sty    2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable calculations with integers (HO)
+   ifpdf.sty    2011/01/30 v2.3 Provides the ifpdf switch (HO)
+etexcmds.sty    2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+kvsetkeys.sty    2012/04/25 v1.16 Key value parser (HO)
+kvdefinekeys.sty    2011/04/07 v1.3 Define keys (HO)
+pdftexcmds.sty    2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
+pdfescape.sty    2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+bigintcalc.sty    2012/04/08 v1.3 Expandable calculations on big integers (HO)
+  bitset.sty    2011/01/30 v1.1 Handle bit-vector datatype (HO)
+uniquecounter.sty    2011/01/30 v1.2 Provide unlimited unique counter (HO)
+letltxmacro.sty    2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+ hopatch.sty    2012/05/28 v1.2 Wrapper for package hooks (HO)
+xcolor-patch.sty    2011/01/30 xcolor patch
+atveryend.sty    2011/06/30 v1.8 Hooks at the very end of document (HO)
+atbegshi.sty    2011/10/05 v1.16 At begin shipout hook (HO)
+refcount.sty    2011/10/16 v3.4 Data extraction from label references (HO)
+ hycolor.sty    2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+ ifxetex.sty    2010/09/12 v0.6 Provides ifxetex conditional
+ auxhook.sty    2011/03/04 v1.3 Hooks for auxiliary files (HO)
+kvoptions.sty    2011/06/30 v3.11 Key value format for package options (HO)
+  pd1enc.def    2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+     url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
+ hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
+rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+fancyhdr.sty    
+   t1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+supp-pdf.mkii
+  mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
+RS)
+epstopdf-base.sty    2010/02/09 v2.5 Base part for package epstopdf
+  grfext.sty    2010/08/19 v1.1 Manage graphics extensions (HO)
+epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+ ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
+ nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
+gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
+tmp_copyright.out
+tmp_copyright.out
+newcommands_bfmath.tex
+newcommands_replace.tex
+  ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
+    umsa.fd    2013/01/14 v3.01 AMS symbols A
+  mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+    umsb.fd    2013/01/14 v3.01 AMS symbols B
+  mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ ***********
+
+ ){/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm
+/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
+Output written on tmp_copyright.pdf (5 pages, ).
+Transcript written on tmp_copyright.log.
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright}', 'FORMAT': 'sphinx'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+*** warning: new !split inserted (override all existing !split)
+    before every ========= heading =========
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
+output in tmp_copyright.rst
+tmp_copyright split into
+._tmp_copyright000.rst ._tmp_copyright001.rst ._tmp_copyright002.rst
+Making tmp_sphinx-rootdir1
+Welcome to the Sphinx 1.4a0+ quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Enter the root path for documentation.
+> Root path for the documentation [.]: 
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory "_build" within the root path, or you separate
+"source" and "build" directories within the root path.
+> Separate source and build directories (y/n) [n]: 
+Inside the root directory, two more directories will be created; "_templates"
+for custom HTML templates and "_static" for custom stylesheets and other static
+files. You can enter another prefix (such as ".") to replace the underscore.
+> Name prefix for templates and static dir [_]: 
+The project name will occur in several places in the built documentation.
+> Project name: > Author name(s): 
+Sphinx has the notion of a "version" and a "release" for the
+software. Each version can have multiple releases. For example, for
+Python the version is something like 2.5 or 3.0, while the release is
+something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
+just set both to the same value.
+> Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
+The file name suffix for source files. Commonly, this is either ".txt"
+or ".rst".  Only files with this suffix are considered documents.
+> Source file suffix [.rst]: 
+One document is special in that it is considered the top node of the
+"contents tree", that is, it is the root of the hierarchical structure
+of the documents. Normally, this is "index", but if your "index"
+document is a custom template, you can also set this to another filename.
+> Name of your master document (without suffix) [index]: 
+Sphinx can also add configuration for epub output:
+> Do you want to use the epub builder (y/n) [n]: 
+Please indicate if you want to use one of the following Sphinx extensions:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
+A Makefile and a Windows command file can be generated for you so that you
+only have to run e.g. `make html' instead of invoking sphinx-build
+directly.
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
+Creating file tmp_sphinx-rootdir1/conf.py.
+Creating file tmp_sphinx-rootdir1/index.rst.
+Creating file tmp_sphinx-rootdir1/Makefile.
+Creating file tmp_sphinx-rootdir1/make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file tmp_sphinx-rootdir1/index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
+
+searching for TITLE in tmp_copyright.do.txt
+Using title "Test" from tmp_copyright
+title: Test
+author: Hans Petter Langtangen, Kaare Dump and Joe Doe
+copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen
+theme: alabaster
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+'automake_sphinx.py' contains the steps to (re)compile the sphinx
+version. You may want to edit this file, or run the steps manually,
+or just run it by
+
+  python automake_sphinx.py
+
+rm -rf _build/*
+sphinx-build -b html -d _build/doctrees   . _build/html
+Running Sphinx v1.4a0+
+making output directory...
+loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 4 source files that are out of date
+updating environment: 4 added, 0 changed, 0 removed
+reading sources... [ 25%] ._tmp_copyright000
+reading sources... [ 50%] ._tmp_copyright001
+reading sources... [ 75%] ._tmp_copyright002
+reading sources... [100%] index
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 25%] ._tmp_copyright000
+writing output... [ 50%] ._tmp_copyright001
+writing output... [ 75%] ._tmp_copyright002
+writing output... [100%] index
+
+generating indices... genindex
+writing additional pages... search
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded.
+
+Build finished. The HTML pages are in _build/html.
+/home/hpl/vc/doconce/test/tmp_sphinx-rootdir1
+running make clean
+running make html
+Fix generated files: index.html search.html genindex.html ._tmp_copyright002.html ._tmp_copyright001.html ._tmp_copyright000.html 
+
+google-chrome tmp_sphinx-rootdir1/_build/html/index.html
+
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY}', 'FORMAT': 'sphinx'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+*** warning: new !split inserted (override all existing !split)
+    before every ========= heading =========
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
+output in tmp_copyright.rst
+tmp_copyright split into
+._tmp_copyright000.rst ._tmp_copyright001.rst ._tmp_copyright002.rst
+Making tmp_sphinx-rootdir2
+Welcome to the Sphinx 1.4a0+ quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Enter the root path for documentation.
+> Root path for the documentation [.]: 
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory "_build" within the root path, or you separate
+"source" and "build" directories within the root path.
+> Separate source and build directories (y/n) [n]: 
+Inside the root directory, two more directories will be created; "_templates"
+for custom HTML templates and "_static" for custom stylesheets and other static
+files. You can enter another prefix (such as ".") to replace the underscore.
+> Name prefix for templates and static dir [_]: 
+The project name will occur in several places in the built documentation.
+> Project name: > Author name(s): 
+Sphinx has the notion of a "version" and a "release" for the
+software. Each version can have multiple releases. For example, for
+Python the version is something like 2.5 or 3.0, while the release is
+something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
+just set both to the same value.
+> Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
+The file name suffix for source files. Commonly, this is either ".txt"
+or ".rst".  Only files with this suffix are considered documents.
+> Source file suffix [.rst]: 
+One document is special in that it is considered the top node of the
+"contents tree", that is, it is the root of the hierarchical structure
+of the documents. Normally, this is "index", but if your "index"
+document is a custom template, you can also set this to another filename.
+> Name of your master document (without suffix) [index]: 
+Sphinx can also add configuration for epub output:
+> Do you want to use the epub builder (y/n) [n]: 
+Please indicate if you want to use one of the following Sphinx extensions:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
+A Makefile and a Windows command file can be generated for you so that you
+only have to run e.g. `make html' instead of invoking sphinx-build
+directly.
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
+Creating file tmp_sphinx-rootdir2/conf.py.
+Creating file tmp_sphinx-rootdir2/index.rst.
+Creating file tmp_sphinx-rootdir2/Makefile.
+Creating file tmp_sphinx-rootdir2/make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file tmp_sphinx-rootdir2/index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
+
+searching for TITLE in tmp_copyright.do.txt
+Using title "Test" from tmp_copyright
+title: Test
+author: Hans Petter Langtangen, Kaare Dump and Joe Doe
+copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license
+theme: alabaster
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+'automake_sphinx.py' contains the steps to (re)compile the sphinx
+version. You may want to edit this file, or run the steps manually,
+or just run it by
+
+  python automake_sphinx.py
+
+rm -rf _build/*
+sphinx-build -b html -d _build/doctrees   . _build/html
+Running Sphinx v1.4a0+
+making output directory...
+loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 4 source files that are out of date
+updating environment: 4 added, 0 changed, 0 removed
+reading sources... [ 25%] ._tmp_copyright000
+reading sources... [ 50%] ._tmp_copyright001
+reading sources... [ 75%] ._tmp_copyright002
+reading sources... [100%] index
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 25%] ._tmp_copyright000
+writing output... [ 50%] ._tmp_copyright001
+writing output... [ 75%] ._tmp_copyright002
+writing output... [100%] index
+
+generating indices... genindex
+writing additional pages... search
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded.
+
+Build finished. The HTML pages are in _build/html.
+/home/hpl/vc/doconce/test/tmp_sphinx-rootdir2
+running make clean
+running make html
+Fix generated files: index.html search.html genindex.html ._tmp_copyright002.html ._tmp_copyright001.html ._tmp_copyright000.html 
+
+google-chrome tmp_sphinx-rootdir2/_build/html/index.html
+
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY-NC}', 'FORMAT': 'sphinx'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+*** warning: new !split inserted (override all existing !split)
+    before every ========= heading =========
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
+output in tmp_copyright.rst
+tmp_copyright split into
+._tmp_copyright000.rst ._tmp_copyright001.rst ._tmp_copyright002.rst
+Making tmp_sphinx-rootdir3
+Welcome to the Sphinx 1.4a0+ quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Enter the root path for documentation.
+> Root path for the documentation [.]: 
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory "_build" within the root path, or you separate
+"source" and "build" directories within the root path.
+> Separate source and build directories (y/n) [n]: 
+Inside the root directory, two more directories will be created; "_templates"
+for custom HTML templates and "_static" for custom stylesheets and other static
+files. You can enter another prefix (such as ".") to replace the underscore.
+> Name prefix for templates and static dir [_]: 
+The project name will occur in several places in the built documentation.
+> Project name: > Author name(s): 
+Sphinx has the notion of a "version" and a "release" for the
+software. Each version can have multiple releases. For example, for
+Python the version is something like 2.5 or 3.0, while the release is
+something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
+just set both to the same value.
+> Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
+The file name suffix for source files. Commonly, this is either ".txt"
+or ".rst".  Only files with this suffix are considered documents.
+> Source file suffix [.rst]: 
+One document is special in that it is considered the top node of the
+"contents tree", that is, it is the root of the hierarchical structure
+of the documents. Normally, this is "index", but if your "index"
+document is a custom template, you can also set this to another filename.
+> Name of your master document (without suffix) [index]: 
+Sphinx can also add configuration for epub output:
+> Do you want to use the epub builder (y/n) [n]: 
+Please indicate if you want to use one of the following Sphinx extensions:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
+A Makefile and a Windows command file can be generated for you so that you
+only have to run e.g. `make html' instead of invoking sphinx-build
+directly.
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
+Creating file tmp_sphinx-rootdir3/conf.py.
+Creating file tmp_sphinx-rootdir3/index.rst.
+Creating file tmp_sphinx-rootdir3/Makefile.
+Creating file tmp_sphinx-rootdir3/make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file tmp_sphinx-rootdir3/index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
+
+searching for TITLE in tmp_copyright.do.txt
+Using title "Test" from tmp_copyright
+title: Test
+author: Hans Petter Langtangen, Kaare Dump and Joe Doe
+copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license
+theme: alabaster
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+'automake_sphinx.py' contains the steps to (re)compile the sphinx
+version. You may want to edit this file, or run the steps manually,
+or just run it by
+
+  python automake_sphinx.py
+
+rm -rf _build/*
+sphinx-build -b html -d _build/doctrees   . _build/html
+Running Sphinx v1.4a0+
+making output directory...
+loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 4 source files that are out of date
+updating environment: 4 added, 0 changed, 0 removed
+reading sources... [ 25%] ._tmp_copyright000
+reading sources... [ 50%] ._tmp_copyright001
+reading sources... [ 75%] ._tmp_copyright002
+reading sources... [100%] index
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 25%] ._tmp_copyright000
+writing output... [ 50%] ._tmp_copyright001
+writing output... [ 75%] ._tmp_copyright002
+writing output... [100%] index
+
+generating indices... genindex
+writing additional pages... search
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded.
+
+Build finished. The HTML pages are in _build/html.
+/home/hpl/vc/doconce/test/tmp_sphinx-rootdir3
+running make clean
+running make html
+Fix generated files: index.html search.html genindex.html ._tmp_copyright002.html ._tmp_copyright001.html ._tmp_copyright000.html 
+
+google-chrome tmp_sphinx-rootdir3/_build/html/index.html
+
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|Released under the MIT license.}', 'FORMAT': 'sphinx'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+*** warning: new !split inserted (override all existing !split)
+    before every ========= heading =========
+    because this strategy gives a well-functioning
+    table of contents in Sphinx
+    (use --sphinx_keep_splits to enforce your own !split commands)
+output in tmp_copyright.rst
+tmp_copyright split into
+._tmp_copyright000.rst ._tmp_copyright001.rst ._tmp_copyright002.rst
+Making tmp_sphinx-rootdir4
+Welcome to the Sphinx 1.4a0+ quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Enter the root path for documentation.
+> Root path for the documentation [.]: 
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory "_build" within the root path, or you separate
+"source" and "build" directories within the root path.
+> Separate source and build directories (y/n) [n]: 
+Inside the root directory, two more directories will be created; "_templates"
+for custom HTML templates and "_static" for custom stylesheets and other static
+files. You can enter another prefix (such as ".") to replace the underscore.
+> Name prefix for templates and static dir [_]: 
+The project name will occur in several places in the built documentation.
+> Project name: > Author name(s): 
+Sphinx has the notion of a "version" and a "release" for the
+software. Each version can have multiple releases. For example, for
+Python the version is something like 2.5 or 3.0, while the release is
+something like 2.5.1 or 3.0a1.  If you don't need this dual structure,
+just set both to the same value.
+> Project version: > Project release [1.0]: 
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+http://sphinx-doc.org/config.html#confval-language.
+> Project language [en]: 
+The file name suffix for source files. Commonly, this is either ".txt"
+or ".rst".  Only files with this suffix are considered documents.
+> Source file suffix [.rst]: 
+One document is special in that it is considered the top node of the
+"contents tree", that is, it is the root of the hierarchical structure
+of the documents. Normally, this is "index", but if your "index"
+document is a custom template, you can also set this to another filename.
+> Name of your master document (without suffix) [index]: 
+Sphinx can also add configuration for epub output:
+> Do you want to use the epub builder (y/n) [n]: 
+Please indicate if you want to use one of the following Sphinx extensions:
+> autodoc: automatically insert docstrings from modules (y/n) [n]: > doctest: automatically test code snippets in doctest blocks (y/n) [n]: > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: > coverage: checks for documentation coverage (y/n) [n]: > pngmath: include math, rendered as PNG images (y/n) [n]: > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: > ifconfig: conditional inclusion of content based on config values (y/n) [n]: > viewcode: include links to the source code of documented Python objects (y/n) [n]: 
+A Makefile and a Windows command file can be generated for you so that you
+only have to run e.g. `make html' instead of invoking sphinx-build
+directly.
+> Create Makefile? (y/n) [y]: > Create Windows command file? (y/n) [y]: 
+Creating file tmp_sphinx-rootdir4/conf.py.
+Creating file tmp_sphinx-rootdir4/index.rst.
+Creating file tmp_sphinx-rootdir4/Makefile.
+Creating file tmp_sphinx-rootdir4/make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file tmp_sphinx-rootdir4/index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
+
+searching for TITLE in tmp_copyright.do.txt
+Using title "Test" from tmp_copyright
+title: Test
+author: Hans Petter Langtangen, Kaare Dump and Joe Doe
+copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.
+theme: alabaster
+
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+
+'automake_sphinx.py' contains the steps to (re)compile the sphinx
+version. You may want to edit this file, or run the steps manually,
+or just run it by
+
+  python automake_sphinx.py
+
+rm -rf _build/*
+sphinx-build -b html -d _build/doctrees   . _build/html
+Running Sphinx v1.4a0+
+making output directory...
+loading pickled environment... not yet created
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 4 source files that are out of date
+updating environment: 4 added, 0 changed, 0 removed
+reading sources... [ 25%] ._tmp_copyright000
+reading sources... [ 50%] ._tmp_copyright001
+reading sources... [ 75%] ._tmp_copyright002
+reading sources... [100%] index
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [ 25%] ._tmp_copyright000
+writing output... [ 50%] ._tmp_copyright001
+writing output... [ 75%] ._tmp_copyright002
+writing output... [100%] index
+
+generating indices... genindex
+writing additional pages... search
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded.
+
+Build finished. The HTML pages are in _build/html.
+/home/hpl/vc/doconce/test/tmp_sphinx-rootdir4
+running make clean
+running make html
+Fix generated files: index.html search.html genindex.html ._tmp_copyright002.html ._tmp_copyright001.html ._tmp_copyright000.html 
+
+google-chrome tmp_sphinx-rootdir4/_build/html/index.html
+
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright}', 'FORMAT': 'html'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to html
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright1.html
+tmp_copyright1.html now links to the generated files
+._tmp_copyright1000.html, ._tmp_copyright1001.html, ._tmp_copyright1002.html
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY}', 'FORMAT': 'html'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to html
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright2.html
+tmp_copyright2.html now links to the generated files
+._tmp_copyright2000.html, ._tmp_copyright2001.html, ._tmp_copyright2002.html
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY-NC}', 'FORMAT': 'html'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to html
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright3.html
+tmp_copyright3.html now links to the generated files
+._tmp_copyright3000.html, ._tmp_copyright3001.html, ._tmp_copyright3002.html
+running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
+mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|Released under the MIT license.}', 'FORMAT': 'html'}
+translating doconce text in tmp_mako__tmp_copyright.do.txt to html
+
+*** Exercise: My problem
+    label{None}
+    could be Problem (no refs beyond the exercise itself)
+found info about 1 exercises
+output in tmp_copyright4.html
+tmp_copyright4.html now links to the generated files
+._tmp_copyright4000.html, ._tmp_copyright4001.html, ._tmp_copyright4002.html
+doconce format pdflatex tmp_copyright copyright="{copyright}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright copyright="{copyright}" --latex_code_style=vrb
+doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
+pdflatex tmp_copyright
+pdflatex tmp_copyright
+doconce format pdflatex tmp_copyright copyright="{copyright|CC BY}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright copyright="{copyright|CC BY}" --latex_code_style=vrb
+doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
+pdflatex tmp_copyright
+pdflatex tmp_copyright
+doconce format pdflatex tmp_copyright copyright="{copyright|CC BY-NC}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright copyright="{copyright|CC BY-NC}" --latex_code_style=vrb
+doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
+pdflatex tmp_copyright
+pdflatex tmp_copyright
+doconce format pdflatex tmp_copyright copyright="{copyright|Released under the MIT license.}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright copyright="{copyright|Released under the MIT license.}" --latex_code_style=vrb
+doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
+pdflatex tmp_copyright
+pdflatex tmp_copyright
+doconce format sphinx tmp_copyright copyright="{copyright}"
+doconce format sphinx tmp_copyright copyright="{copyright}"
+doconce split_rst tmp_copyright.rst
+doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir1 tmp_copyright
+python automake_sphinx.py
+doconce format sphinx tmp_copyright copyright="{copyright|CC BY}"
+doconce format sphinx tmp_copyright copyright="{copyright|CC BY}"
+doconce split_rst tmp_copyright.rst
+doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir2 tmp_copyright
+python automake_sphinx.py
+doconce format sphinx tmp_copyright copyright="{copyright|CC BY-NC}"
+doconce format sphinx tmp_copyright copyright="{copyright|CC BY-NC}"
+doconce split_rst tmp_copyright.rst
+doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir3 tmp_copyright
+python automake_sphinx.py
+doconce format sphinx tmp_copyright copyright="{copyright|Released under the MIT license.}"
+doconce format sphinx tmp_copyright copyright="{copyright|Released under the MIT license.}"
+doconce split_rst tmp_copyright.rst
+doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir4 tmp_copyright
+python automake_sphinx.py
+doconce format html tmp_copyright copyright="{copyright}" --html_output=tmp_copyright1
+doconce format html tmp_copyright copyright="{copyright}" --html_output=tmp_copyright1
+doconce split_html tmp_copyright1.html
+doconce format html tmp_copyright copyright="{copyright|CC BY}" --html_output=tmp_copyright2
+doconce format html tmp_copyright copyright="{copyright|CC BY}" --html_output=tmp_copyright2
+doconce split_html tmp_copyright2.html
+doconce format html tmp_copyright copyright="{copyright|CC BY-NC}" --html_output=tmp_copyright3
+doconce format html tmp_copyright copyright="{copyright|CC BY-NC}" --html_output=tmp_copyright3
+doconce split_html tmp_copyright3.html
+doconce format html tmp_copyright copyright="{copyright|Released under the MIT license.}" --html_output=tmp_copyright4
+doconce format html tmp_copyright copyright="{copyright|Released under the MIT license.}" --html_output=tmp_copyright4
+doconce split_html tmp_copyright4.html
 + admon_tps='colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2'
 + for admon_tp in '$admon_tps'
 + color=
@@ -110737,7 +113096,7 @@ author: hpl
 copyright: 2015, hpl
 theme: default
 
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,
@@ -116279,7 +118638,7 @@ author: Hans Petter Langtangen, H. P. Langtangen, Kaare Dump and A. Dummy Author
 copyright: 2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo
 theme: cbc
 
-These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, default, draft, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
+These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
 'automake_sphinx.py' contains the steps to (re)compile the sphinx
 version. You may want to edit this file, or run the steps manually,

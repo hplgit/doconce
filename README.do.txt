@@ -1,3 +1,4 @@
+
 !bquote
 DocOnce is a modestly tagged (Markdown-like) markup language targeting scientific reports, software documentation, books, blog posts, and slides involving much math and code in the text. From DocOnce source you can generate LaTeX, Sphinx, HTML, IPython notebooks, Markdown, MediaWiki, and other formats. This means that you from a single source can get the most up-to-date publishing technologies for paper, tablets, and phones.
 !equote
@@ -13,10 +14,16 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 Here are some of the most recent features in DocOnce:
 
- * LaTeX output for figures is now `\begin{figure}[h] % my:fig` if
+ * DocOnce supports various types of copyright statements for
+   commercial and academic settings (thanks to Louis Criscuolo's
+   many suggestions to implement this important feature). See
+   "description": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright".
+ * LaTeX output for figures is now `\begin{figure}[!ht] % my:fig` if
    `my:fig` is the figure label. Note that the previous `[t]` option
-   is now `[h]`. Also, adding the label on the line makes it easy to
-   autoedit the `[h]` option for specific figures, if desired.
+   is now `[!ht]` (``work hard to place the figure here, but if impossible,
+   place it on top of the next page'').
+   Also, adding the label on the line makes it easy to
+   autoedit the `[!ht]` option for specific figures, if desired.
  * DocOnce supports interactive Bokeh plots for data exploration in
    HTML documents, see "demo": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html#___sec13".
  * DocOnce can generate Matlab notebooks in the publish format

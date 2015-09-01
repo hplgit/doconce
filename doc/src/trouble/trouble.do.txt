@@ -617,7 +617,7 @@ where we do all necessary adjustments mentioned above:
 ===== How do I insert a copyright? =====
 label{trouble:copyright}
 
-See the "Copyright section of the DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright"
+See the "Copyright section of the DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright".
 
 === Other formats ===
 
