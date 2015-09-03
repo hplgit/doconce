@@ -3350,8 +3350,12 @@ open=right,              %% start new chapters on odd-numbered pages
             if not fancy_header:
                 INTRO['latex'] += r"""
 \renewcommand{\headrulewidth}{0pt}"""
-            INTRO['latex'] += r"""
+            latex_copyright = option('latex_copyright=', 'everypage')
+            if latex_copyright == 'everypage':
+                INTRO['latex'] += r"""
 \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
+"""
+            INTRO['latex'] += r"""
 % Ensure copyright on titlepage (article) and chapter pages (article)
 \fancypagestyle{plain}{
   \fancyhf{}

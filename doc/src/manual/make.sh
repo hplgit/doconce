@@ -41,7 +41,7 @@ publish import refs3.bib <<EOF
 EOF
 
 # doconce html format:
-system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --no_abort --html_code_style=inherit
+system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --allow_refs_to_external_docs --html_code_style=inherit
 system doconce split_tmp.html manual.html
 
 # Sphinx

@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 1, 2015
+:Date: Sep 3, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -290,9 +290,10 @@ the type of license (e.g., Creative Commons license) if that apply.
 The year and license parts can be left out. In that case, the current
 year is used, and no license appears.
 Note that *the year and the license must be identical in all copyright
-specifications*! (Otherwise, an error message is issued.)
+specifications* for all authors who claim copyright!
+(Otherwise, an error message is issued.)
 The ``{copyright...}`` specification can appear after the author's name
-and/or after an organization's name (see examples below).
+(and email address) and/or after an organization's name (see examples below).
 
 The syntax of the ``year1-year`` goes as follows:
 
@@ -313,6 +314,9 @@ How the copyright is typeset depends on the format:
 
  * LaTeX: The copyright appears as a footer on all pages (typeset with
    the ``\fancyfoot[C]`` command from the ``fancyhdr`` package).
+   The command-line option ``--latex_copyright=titlepages`` leads to a copyright
+   statement in the footer of the titlepage and (for books) the first page
+   of each chapter.
 
  * Sphinx: The copyright is provided as the ``copyright`` variable in ``conf.py``
    and appears in the footer according to the chosen theme.
@@ -8365,6 +8369,8 @@ Other options:
    figures. ``X`` is ``top`` by default; other values are ``none`` (no rules),
    ``bottom`` and ``top+bottom``.
 
+ * ``--allow_refs_to_external_docs`` (do not abort if there are references whose labels are not found)
+
 .. _do2any:blog:
 
 Blog Posts
@@ -8810,6 +8816,8 @@ look for options starting with ``--latex`` to get a more verbose description):
  * ``--latex_packages=package1,package2,package3`` (list of extra packages to be included [#varioref]_)
 
  * ``--draft`` (turns on draft mode in documentclass, otherwise final mode)
+
+ * ``--latex_copyright=everypage,titlepages`` (copyright on every page or on titlepage and chapter pages)
 
  * ``--latex_list_of_exercises=loe,toc,none`` (LaTeX list of exercises, integrated into the table of contents, or no list)
 
@@ -10324,6 +10332,13 @@ here for convenience.
         --latex_code_lststyles=...
         
         Filename with LaTeX definitions of lst styles.
+        
+        
+        --latex_copyright=...
+        
+        Controls where to put copyright statements.
+        everypage: in the footer of every page
+        titlepages: in the footer of the titlepage and chapter pages (for books) only.
         
         
         --latex_bibstyle=...

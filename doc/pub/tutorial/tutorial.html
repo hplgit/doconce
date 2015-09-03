@@ -237,7 +237,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Aug 30, 2015</h4></center> <!-- date -->
+<center><h4>Sep 3, 2015</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -1199,6 +1199,7 @@ Other options:
  <li> <code>--html_figure_hrule=X</code>: control the use of horizontal rules in
    figures. <code>X</code> is <code>top</code> by default; other values are <code>none</code> (no rules),
    <code>bottom</code> and <code>top+bottom</code>.</li>
+ <li> <code>--allow_refs_to_external_docs</code> (do not abort if there are references whose labels are not found)</li>
 </ul>
 
 <h2 id="do2any:blog">Blog Posts</h2>
@@ -1622,6 +1623,7 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier</code></li>
  <li> <code>--latex_packages=package1,package2,package3</code> (list of extra packages to be included <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Listing varioref in as package automatically leads to references with page numbers, if the element referred to is not on the same page. This is often very helpful, e.g., &quot;see Figure 5.3 on page 67&quot;."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>)</li>
  <li> <code>--draft</code> (turns on draft mode in documentclass, otherwise final mode)</li>
+ <li> <code>--latex_copyright=everypage,titlepages</code> (copyright on every page or on titlepage and chapter pages)</li>
  <li> <code>--latex_list_of_exercises=loe,toc,none</code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
  <li> <code>--latex_fancy_header</code> (chapter/section headings at top of pages, style depends on value of <code>--latex_section_headings</code>)</li>
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -2680,11 +2682,17 @@ Remove all inline comments of the form [ID: comment].
 Indicates draft (turns on draft elements in LaTeX, otherwise no effect).
 
 
---copyright=...
+--CC_license=...
 
-Set copyright, mainly for LaTeX output (inserted in date and in a footer).
-For HTML, use --reference= option in the doconce split_html command.
-For Sphinx, use copyright= option in the doconce sphinx_dir command.
+Template wording for Creative Commons licenses.
+Default: &quot;Released under CC %s 4.0 license.&quot;
+Example: &quot;This worsk is released under the Creative Commons %s 4.0 license&quot;
+CC license is specified as a part of the copyright syntax, e.g.,
+AUTHOR: Kaare Dump {copyright|CC BY} at BSU &amp; Some Company Ltd.
+AUTHOR: Kaare Dump at BSU &amp; Some Company Ltd. {copyright,2005-present|CC BY-NC}
+The --CC_license= option has no effect if the license does not start with CC, e.g.,
+AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
+
 
 
 --exercise_numbering=...
@@ -3083,6 +3091,13 @@ Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not 
 --latex_code_lststyles=...
 
 Filename with LaTeX definitions of lst styles.
+
+
+--latex_copyright=...
+
+Controls where to put copyright statements.
+everypage: in the footer of every page
+titlepages: in the footer of the titlepage and chapter pages (for books) only.
 
 
 --latex_bibstyle=...

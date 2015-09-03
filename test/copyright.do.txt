@@ -1,14 +1,18 @@
-# provide copyright"..." on the command line
+# provide COPYRIGHT="..." and BOOK=False/True on the command line
 
 TITLE: Test
-AUTHOR: Hans Petter Langtangen email:hpl@simula.no ${copyright} at Simula ${copyright}
-AUTHOR: Kaare Dump email:kd@simula.no ${copyright} at UiO
+AUTHOR: Hans Petter Langtangen email:hpl@simula.no ${COPYRIGHT} at Simula ${COPYRIGHT}
+AUTHOR: Kaare Dump email:kd@simula.no ${COPYRIGHT} at UiO
 AUTHOR: Joe Doe
 DATE: Jan 32, 1999
 
 TOC: on
 !split
+% if BOOK:
 ========= My first chapter =========
+% else:
+======= My first section =======
+% endif
 
 !bt
 \[ a = b \]
@@ -21,7 +25,11 @@ TOC: on
 Write text.
 
 !split
+% if BOOK:
 ========= Basic Theory =========
+% else:
+======= Basic Theory =======
+% endif
 label{sec:theory}
 
 A first discovery was that 1+1 is 2.

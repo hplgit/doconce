@@ -156,9 +156,10 @@ the type of license (e.g., Creative Commons license) if that apply.
 The year and license parts can be left out. In that case, the current
 year is used, and no license appears.
 Note that *the year and the license must be identical in all copyright
-specifications*! (Otherwise, an error message is issued.)
+specifications* for all authors who claim copyright!
+(Otherwise, an error message is issued.)
 The `{copyright...}` specification can appear after the author's name
-and/or after an organization's name (see examples below).
+(and email address) and/or after an organization's name (see examples below).
 
 The syntax of the `year1-year` goes as follows:
 
@@ -176,6 +177,9 @@ How the copyright is typeset depends on the format:
 
  * LaTeX: The copyright appears as a footer on all pages (typeset with
    the `\fancyfoot[C]` command from the `fancyhdr` package).
+   The command-line option `--latex_copyright=titlepages` leads to a copyright
+   statement in the footer of the titlepage and (for books) the first page
+   of each chapter.
  * Sphinx: The copyright is provided as the `copyright` variable in `conf.py`
    and appears in the footer according to the chosen theme.
  * HTML: The copyright appears at the bottom of all pages (right before the `</body> tag`.

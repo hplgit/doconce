@@ -74,7 +74,7 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
 
-!bc
+!bc do
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
 AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -100,6 +100,24 @@ The date can be set as any text different from `today` if not the
 current date is wanted, e.g., `Feb 22, 2016`.
 
 The table of contents is removed by writing `TOC: off`.
+
+===== Copyright =====
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the `AUTHOR` command. The copyright syntax is `{copyright,year1-year2|license}` and can be placed after the author or after an institution, e.g.,
+
+!bc do
+AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+AUTHOR: name {copyright} at inst1 {copyright}
+!ec
+The first line gives `name` a copyright for 2006 up to the present year,
+while the second line gives copyright to `name` and the institution `inst1`
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons (``public domain'')
+licenses: `CC BY` for Creative Commons Attribution 4.0 license,
+`CC BY-NC` for Creative Commons Attribution-NonCommercial 4.0 license.
+For example, `{copyright|CC BY}` is a very common copyright for the present
+year with the Attribution license.
 
 
 ===== Section Types =====

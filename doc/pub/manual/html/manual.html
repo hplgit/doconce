@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 1, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 3, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -273,9 +273,10 @@ the type of license (e.g., Creative Commons license) if that apply.
 The year and license parts can be left out. In that case, the current
 year is used, and no license appears.
 Note that <em>the year and the license must be identical in all copyright
-specifications</em>! (Otherwise, an error message is issued.)
+specifications</em> for all authors who claim copyright!
+(Otherwise, an error message is issued.)
 The <code class="docutils literal"><span class="pre">{copyright...}</span></code> specification can appear after the author&#8217;s name
-and/or after an organization&#8217;s name (see examples below).</p>
+(and email address) and/or after an organization&#8217;s name (see examples below).</p>
 <p>The syntax of the <code class="docutils literal"><span class="pre">year1-year</span></code> goes as follows:</p>
 <blockquote>
 <div><ul class="simple">
@@ -296,7 +297,10 @@ For example,`CC BY`, which means a CC Attribution license. <code class="docutils
 <blockquote>
 <div><ul class="simple">
 <li>LaTeX: The copyright appears as a footer on all pages (typeset with
-the <code class="docutils literal"><span class="pre">\fancyfoot[C]</span></code> command from the <code class="docutils literal"><span class="pre">fancyhdr</span></code> package).</li>
+the <code class="docutils literal"><span class="pre">\fancyfoot[C]</span></code> command from the <code class="docutils literal"><span class="pre">fancyhdr</span></code> package).
+The command-line option <code class="docutils literal"><span class="pre">--latex_copyright=titlepages</span></code> leads to a copyright
+statement in the footer of the titlepage and (for books) the first page
+of each chapter.</li>
 <li>Sphinx: The copyright is provided as the <code class="docutils literal"><span class="pre">copyright</span></code> variable in <code class="docutils literal"><span class="pre">conf.py</span></code>
 and appears in the footer according to the chosen theme.</li>
 <li>HTML: The copyright appears at the bottom of all pages (right before the <code class="docutils literal"><span class="pre">&lt;/body&gt;</span> <span class="pre">tag</span></code>.</li>
@@ -6979,6 +6983,7 @@ in Internet Explorer.</li>
 <li><code class="docutils literal"><span class="pre">--html_figure_hrule=X</span></code>: control the use of horizontal rules in
 figures. <code class="docutils literal"><span class="pre">X</span></code> is <code class="docutils literal"><span class="pre">top</span></code> by default; other values are <code class="docutils literal"><span class="pre">none</span></code> (no rules),
 <code class="docutils literal"><span class="pre">bottom</span></code> and <code class="docutils literal"><span class="pre">top+bottom</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">--allow_refs_to_external_docs</span></code> (do not abort if there are references whose labels are not found)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -7305,6 +7310,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_sv,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">Springer_T4,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id37">[4]</a>)</li>
 <li><code class="docutils literal"><span class="pre">--draft</span></code> (turns on draft mode in documentclass, otherwise final mode)</li>
+<li><code class="docutils literal"><span class="pre">--latex_copyright=everypage,titlepages</span></code> (copyright on every page or on titlepage and chapter pages)</li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
 <li><code class="docutils literal"><span class="pre">--latex_fancy_header</span></code> (chapter/section headings at top of pages, style depends on value of <code class="docutils literal"><span class="pre">--latex_section_headings</span></code>)</li>
 <li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -8558,6 +8564,13 @@ Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not 
 --latex_code_lststyles=...
 
 Filename with LaTeX definitions of lst styles.
+
+
+--latex_copyright=...
+
+Controls where to put copyright statements.
+everypage: in the footer of every page
+titlepages: in the footer of the titlepage and chapter pages (for books) only.
 
 
 --latex_bibstyle=...

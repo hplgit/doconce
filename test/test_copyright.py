@@ -19,6 +19,7 @@ def grep(pattern, filenames):
             results.append('\n'.join(re.findall(pattern, text, flags=re.MULTILINE)))
     return '\n'.join(results)
 
+book = 'True'
 years = ['', 'present', '2000-2010', '2000-present', '2000-2100']
 licenses = ['', 'CC BY', 'CC BY-NC', 'Released under the MIT license.']
 results = []
@@ -34,7 +35,7 @@ for format in 'pdflatex', 'sphinx', 'html':
                 copyright_ += '|' + license_
             copyright_ += '}'
             counter += 1
-            cmd = 'doconce format %s %s copyright="%s"' % (format, name, copyright_)
+            cmd = 'doconce format %s %s COPYRIGHT="%s" BOOK=%s' % (format, name, copyright_, book)
             if format == 'pdflatex':
                 cmd += ' --latex_code_style=vrb'
             elif format == 'html':

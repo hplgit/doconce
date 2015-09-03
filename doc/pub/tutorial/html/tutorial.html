@@ -74,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Aug 30, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 3, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -920,6 +920,7 @@ in Internet Explorer.</li>
 <li><code class="docutils literal"><span class="pre">--html_figure_hrule=X</span></code>: control the use of horizontal rules in
 figures. <code class="docutils literal"><span class="pre">X</span></code> is <code class="docutils literal"><span class="pre">top</span></code> by default; other values are <code class="docutils literal"><span class="pre">none</span></code> (no rules),
 <code class="docutils literal"><span class="pre">bottom</span></code> and <code class="docutils literal"><span class="pre">top+bottom</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">--allow_refs_to_external_docs</span></code> (do not abort if there are references whose labels are not found)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -1246,6 +1247,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_sv,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">Springer_T4,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id4">[3]</a>)</li>
 <li><code class="docutils literal"><span class="pre">--draft</span></code> (turns on draft mode in documentclass, otherwise final mode)</li>
+<li><code class="docutils literal"><span class="pre">--latex_copyright=everypage,titlepages</span></code> (copyright on every page or on titlepage and chapter pages)</li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
 <li><code class="docutils literal"><span class="pre">--latex_fancy_header</span></code> (chapter/section headings at top of pages, style depends on value of <code class="docutils literal"><span class="pre">--latex_section_headings</span></code>)</li>
 <li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
@@ -2090,11 +2092,17 @@ Remove all inline comments of the form [ID: comment].
 Indicates draft (turns on draft elements in LaTeX, otherwise no effect).
 
 
---copyright=...
+--CC_license=...
 
-Set copyright, mainly for LaTeX output (inserted in date and in a footer).
-For HTML, use --reference= option in the doconce split_html command.
-For Sphinx, use copyright= option in the doconce sphinx_dir command.
+Template wording for Creative Commons licenses.
+Default: &quot;Released under CC %s 4.0 license.&quot;
+Example: &quot;This worsk is released under the Creative Commons %s 4.0 license&quot;
+CC license is specified as a part of the copyright syntax, e.g.,
+AUTHOR: Kaare Dump {copyright|CC BY} at BSU &amp; Some Company Ltd.
+AUTHOR: Kaare Dump at BSU &amp; Some Company Ltd. {copyright,2005-present|CC BY-NC}
+The --CC_license= option has no effect if the license does not start with CC, e.g.,
+AUTHOR: Kaare Dump at BSU {copyright|Released under the MIT license.}
+
 
 
 --exercise_numbering=...
@@ -2493,6 +2501,13 @@ Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not 
 --latex_code_lststyles=...
 
 Filename with LaTeX definitions of lst styles.
+
+
+--latex_copyright=...
+
+Controls where to put copyright statements.
+everypage: in the footer of every page
+titlepages: in the footer of the titlepage and chapter pages (for books) only.
 
 
 --latex_bibstyle=...
@@ -3558,7 +3573,7 @@ appear in the table below.</p>
     <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
     <br />
     <br />
-      &copy;2006-2015 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo.
+      &copy;2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo.
   </div>
 </div>
 

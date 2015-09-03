@@ -72,6 +72,7 @@ denumber_all_equations = False
 #latex_code_bg = 
 latex_code_bg_vpad = False
 #latex_code_lststyles = 
+#latex_copyright = 
 #latex_bibstyle = 
 #section_numbering = 
 #latex_table_format = 
