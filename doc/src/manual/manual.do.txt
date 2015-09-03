@@ -67,7 +67,7 @@ The three most common formats can be found on the web:
 and
 "PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf".
 
-!bwarning This guide is for the experience DocOnce writer
+!bwarning This guide is for the experienced DocOnce writer!
 Do not read the detailed descriptions of DocOnce syntax that follows
 (this is a manual!) before you have read the tutorial and played
 a little around with a simple document.
@@ -162,7 +162,7 @@ specifications* for all authors who claim copyright!
 The `{copyright...}` specification can appear after the author's name
 (and email address) and/or after an organization's name (see examples below).
 
-The syntax of the `year1-year` goes as follows:
+The syntax of the `year1-year` part goes as follows:
 
  * A single year: `2012`.
  * A range: `2006-2010`. Up to the current year is specified by `2005-present`. Any attempt to use an upper limit into the future will be replaced by `present`, e.g., `2001-2100` becomes `2001-present`.
@@ -170,9 +170,9 @@ The syntax of the `year1-year` goes as follows:
 
 The syntax of the `license` part is flexible:
 
- * Any formulation can be given. For example, `{copyright|This work is released under a MIT license}`.
+ * Any formulation can be given. For example, `{copyright|This work is released under an MIT license}`.
  * Standardized short forms for Creative Commons (CC) licenses are available.
-   For example, `CC BY`, which means a CC Attribution license. `BY` can be replaced by `BY-NC` (Attribution-NonCommercial) and other abbreviations from URL: "https://creativecommons.org/licenses/". The command-line option `--CC_license=` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads `Released under a CC %s 4.0 license.`, where `%s` is to be replaced by the license name. A common value is `--CC_license="This work is released under the Creative Commons %s 4.0 license"`.
+   For example, `CC BY`, which means a CC Attribution license. `BY` can be replaced by `BY-NC` (Attribution-NonCommercial) and other abbreviations from URL: "https://creativecommons.org/licenses/". The command-line option `--CC_license=` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads `Released under a CC %s 4.0 license`, where `%s` is to be replaced by the license name. A common value is `--CC_license="This work is released under the Creative Commons %s 4.0 license"`.
 
 How the copyright is typeset depends on the format:
 
