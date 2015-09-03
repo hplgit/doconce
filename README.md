@@ -8,6 +8,16 @@
 
 Here are some of the most recent features in DocOnce:
 
+ * DocOnce supports various types of copyright statements for
+   commercial and academic settings (thanks to Louis Criscuolo's
+   many suggestions to implement this important feature). See
+   [description](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright).
+ * LaTeX output for figures is now `\begin{figure}[!ht] % my:fig` if
+   `my:fig` is the figure label. Note that the previous `[t]` option
+   is now `[!ht]` ("work hard to place the figure here, but if impossible,
+   place it on top of the next page").
+   Also, adding the label on the line makes it easy to
+   autoedit the `[!ht]` option for specific figures, if desired.
  * DocOnce supports interactive Bokeh plots for data exploration in
    HTML documents, see [demo](http://hplgit.github.io/doconce/doc/pub/manual/manual.html#___sec13).
  * DocOnce can generate Matlab notebooks in the publish format
@@ -28,7 +38,7 @@ Here are some of the most recent features in DocOnce:
  * New support for [RunestoneInteractive books](http://runestoneinteractive.org)
    (as a special case of the Sphinx output format).
  * New support for [verbatim code blocks in LaTeX](http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html) with a lot of flexibility for fancy typesetting via the Pygments and Listings packages (i.e., no more need for the `ptex2tex` step).
- * [New document](http://hplgit.github.io/setup4book-doconce/doc/web/index.html) explaining the effient way to use DocOnce for book writing.
+ * [New document](http://hplgit.github.io/setup4book-doconce/doc/web/index.html) explaining the efficient way to use DocOnce for book writing.
  * Embedded [quizzes or multiple-choice questions](http://hplgit.github.io/doconce/doc/pub/quiz/quiz.html), which can be automatically uploaded to
    [Kahoot online games](https://getkahoot.com).
  * [Admonitions](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions), i.e., boxes for notifications, tips, warnings, etc., with
