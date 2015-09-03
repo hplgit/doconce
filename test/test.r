@@ -76308,7 +76308,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f0b544f7de8>
+verbatim is to be replaced using <function html_verbatim at 0x7f0b6cc46de8>
 
 
 First occurence: " `mako`."
@@ -80547,7 +80547,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # Just a test documentation build configuration file, created by
-# sphinx-quickstart on Tue Sep  1 13:58:52 2015.
+# sphinx-quickstart on Thu Sep  3 13:39:28 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -83179,7 +83179,7 @@ set -x
 sh ./clean.sh
 
 # Mako include cannot accept ../manual/quidelines.do.txt so we need a local link
-if [ ! -l guidelines.do.txt ]; then
+if [ ! -L guidelines.do.txt ]; then
     ln -s ../manual/guidelines.do.txt guidelines.do.txt
 fi
 
@@ -83363,7 +83363,7 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
 
-!bc
+!bc do
 TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
 AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -83389,6 +83389,37 @@ The date can be set as any text different from `today` if not the
 current date is wanted, e.g., `Jan 32, 2100`.
 
 The table of contents is removed by writing `TOC: off`.
+
+===== Copyright =====
+
+# Recall to ident AUTHOR commands to avoid interpretation
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the `AUTHOR` command. The copyright syntax is
+
+!bc do
+{copyright,year1-year2|license}
+!ec
+and can be placed after the author or after an institution, e.g.,
+
+!bc do
+ AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+ AUTHOR: name {copyright} at inst1 {copyright}
+!ec
+The first line gives `name` a copyright for 2006 up to the present year,
+while the second line gives copyright to `name` and the institution `inst1`
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons (``public domain'')
+licenses: `CC BY` for Creative Commons Attribution 4.0 license,
+`CC BY-NC` for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+!bc do
+ AUTHOR: name1 {copyright|CC BY} at institution1
+ AUTHOR: name2 {copyright|CC BY} at institution2
+!ec
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 
 ===== Section Types =====
@@ -84306,29 +84337,30 @@ Automatically generated HTML file from DocOnce source
  'sections': [('Supported Formats', 2, None, '___sec0'),
               ('Emacs syntax support', 2, None, '___sec1'),
               ('Title, Authors, and Date', 2, None, '___sec2'),
+              ('Copyright', 2, None, '___sec3'),
               ('Section Types', 2, 'quick:sections', 'quick:sections'),
-              ('Inline Formatting', 2, None, '___sec4'),
-              ('Lists', 2, None, '___sec5'),
-              ('Comment lines', 2, None, '___sec6'),
-              ('Inline comments', 2, None, '___sec7'),
-              ('Verbatim/Computer Code', 2, None, '___sec8'),
-              ('LaTeX Mathematics', 2, None, '___sec9'),
+              ('Inline Formatting', 2, None, '___sec5'),
+              ('Lists', 2, None, '___sec6'),
+              ('Comment lines', 2, None, '___sec7'),
+              ('Inline comments', 2, None, '___sec8'),
+              ('Verbatim/Computer Code', 2, None, '___sec9'),
+              ('LaTeX Mathematics', 2, None, '___sec10'),
               ('Writing Guidelines (Especially for LaTeX Users!)',
                2,
                'manual:latex:guide',
                'manual:latex:guide'),
-              ('Hyperlinks', 2, None, '___sec11'),
-              ('Figures and Movies', 2, None, '___sec12'),
-              ('Tables', 2, None, '___sec13'),
-              ('Labels and References', 2, None, '___sec14'),
-              ('Citations and Bibliography', 2, None, '___sec15'),
-              ('Generalized References', 2, None, '___sec16'),
-              ('Index of Keywords', 2, None, '___sec17'),
-              ('Capabilities of The Program `doconce`', 2, None, '___sec18'),
-              ('Exercises', 2, None, '___sec19'),
-              ('Environments', 2, None, '___sec20'),
-              ('Preprocessing', 2, None, '___sec21'),
-              ('Resources', 2, None, '___sec22')]}
+              ('Hyperlinks', 2, None, '___sec12'),
+              ('Figures and Movies', 2, None, '___sec13'),
+              ('Tables', 2, None, '___sec14'),
+              ('Labels and References', 2, None, '___sec15'),
+              ('Citations and Bibliography', 2, None, '___sec16'),
+              ('Generalized References', 2, None, '___sec17'),
+              ('Index of Keywords', 2, None, '___sec18'),
+              ('Capabilities of The Program `doconce`', 2, None, '___sec19'),
+              ('Exercises', 2, None, '___sec20'),
+              ('Environments', 2, None, '___sec21'),
+              ('Preprocessing', 2, None, '___sec22'),
+              ('Resources', 2, None, '___sec23')]}
 end of tocinfo -->
 
 <body>
@@ -84407,26 +84439,27 @@ MathJax.Hub.Config({
 <a href="#___sec0"> Supported Formats </a><br>
 <a href="#___sec1"> Emacs syntax support </a><br>
 <a href="#___sec2"> Title, Authors, and Date </a><br>
+<a href="#___sec3"> Copyright </a><br>
 <a href="#quick:sections"> Section Types </a><br>
-<a href="#___sec4"> Inline Formatting </a><br>
-<a href="#___sec5"> Lists </a><br>
-<a href="#___sec6"> Comment lines </a><br>
-<a href="#___sec7"> Inline comments </a><br>
-<a href="#___sec8"> Verbatim/Computer Code </a><br>
-<a href="#___sec9"> LaTeX Mathematics </a><br>
+<a href="#___sec5"> Inline Formatting </a><br>
+<a href="#___sec6"> Lists </a><br>
+<a href="#___sec7"> Comment lines </a><br>
+<a href="#___sec8"> Inline comments </a><br>
+<a href="#___sec9"> Verbatim/Computer Code </a><br>
+<a href="#___sec10"> LaTeX Mathematics </a><br>
 <a href="#manual:latex:guide"> Writing Guidelines (Especially for LaTeX Users!) </a><br>
-<a href="#___sec11"> Hyperlinks </a><br>
-<a href="#___sec12"> Figures and Movies </a><br>
-<a href="#___sec13"> Tables </a><br>
-<a href="#___sec14"> Labels and References </a><br>
-<a href="#___sec15"> Citations and Bibliography </a><br>
-<a href="#___sec16"> Generalized References </a><br>
-<a href="#___sec17"> Index of Keywords </a><br>
-<a href="#___sec18"> Capabilities of The Program <code>doconce</code> </a><br>
-<a href="#___sec19"> Exercises </a><br>
-<a href="#___sec20"> Environments </a><br>
-<a href="#___sec21"> Preprocessing </a><br>
-<a href="#___sec22"> Resources </a><br>
+<a href="#___sec12"> Hyperlinks </a><br>
+<a href="#___sec13"> Figures and Movies </a><br>
+<a href="#___sec14"> Tables </a><br>
+<a href="#___sec15"> Labels and References </a><br>
+<a href="#___sec16"> Citations and Bibliography </a><br>
+<a href="#___sec17"> Generalized References </a><br>
+<a href="#___sec18"> Index of Keywords </a><br>
+<a href="#___sec19"> Capabilities of The Program <code>doconce</code> </a><br>
+<a href="#___sec20"> Exercises </a><br>
+<a href="#___sec21"> Environments </a><br>
+<a href="#___sec22"> Preprocessing </a><br>
+<a href="#___sec23"> Resources </a><br>
 </p>
 <p>
 <b>WARNING: This quick reference is very incomplete!</b>
@@ -84519,7 +84552,7 @@ and an optional table of contents
 reads
 
 <p>
-<!-- begin verbatim block -->
+<!-- begin verbatim block  do-->
 <pre><code>TITLE: On an Ultimate Markup Language
 AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory &amp; Dept. of Informatics, Univ. of Oslo
 AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
@@ -84549,6 +84582,45 @@ current date is wanted, e.g., <code>Jan 32, 2100</code>.
 
 <p>
 The table of contents is removed by writing <code>TOC: off</code>.
+
+<h2 id="___sec3">Copyright </h2>
+
+<p>
+<!-- Recall to ident AUTHOR commands to avoid interpretation -->
+
+<p>
+Copyright for selected authors and/or institutions are easy to insert as part
+of the <code>AUTHOR</code> command. The copyright syntax is
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code>{copyright,year1-year2|license}
+</code></pre>
+<!-- end verbatim block -->
+and can be placed after the author or after an institution, e.g.,
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code> AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+ AUTHOR: name {copyright} at inst1 {copyright}
+</code></pre>
+<!-- end verbatim block -->
+The first line gives <code>name</code> a copyright for 2006 up to the present year,
+while the second line gives copyright to <code>name</code> and the institution <code>inst1</code>
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons (&quot;public domain&quot;)
+licenses: <code>CC BY</code> for Creative Commons Attribution 4.0 license,
+<code>CC BY-NC</code> for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+<p>
+<!-- begin verbatim block  do-->
+<pre><code> AUTHOR: name1 {copyright|CC BY} at institution1
+ AUTHOR: name2 {copyright|CC BY} at institution2
+</code></pre>
+<!-- end verbatim block -->
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 <h2 id="quick:sections">Section Types</h2>
 
@@ -84586,7 +84658,7 @@ A recommended convention is that an exercise is tied to the text,
 a problem can stand on its own, and a project is a comprehensive
 problem.
 
-<h2 id="___sec4">Inline Formatting </h2>
+<h2 id="___sec5">Inline Formatting </h2>
 
 <p>
 Words surrounded by <code>*</code> are emphasized: <code>*emphasized words*</code> becomes
@@ -84689,7 +84761,7 @@ emoji specifications to images, while all other formats leave the
 textual specification in the document. The command-line option
 <code>--no_emoji</code> removes all emojis from the output document.
 
-<h2 id="___sec5">Lists </h2>
+<h2 id="___sec6">Lists </h2>
 
 <p>
 There are three types of lists: <em>bullet lists</em>, where each item starts
@@ -84793,7 +84865,7 @@ Indented lines may give strange output in some formats.
 </div>
 
 
-<h2 id="___sec6">Comment lines </h2>
+<h2 id="___sec7">Comment lines </h2>
 
 <p>
 Lines starting with <code>#</code> are treated as comments in the document and
@@ -84817,7 +84889,7 @@ When using the Mako preprocessor one can also place comments in
 the DocOnce source file that will be removed by Mako before
 DocOnce starts processing the file.
 
-<h2 id="___sec7">Inline comments </h2>
+<h2 id="___sec8">Inline comments </h2>
 
 <p>
 Inline comments meant as messages or notes, to authors during development
@@ -84934,7 +85006,7 @@ To implement these edits, run
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec8">Verbatim/Computer Code </h2>
+<h2 id="___sec9">Verbatim/Computer Code </h2>
 
 <p>
 Inline verbatim code is typeset within back-ticks, as in
@@ -85050,7 +85122,7 @@ Important warnings:
    paragraphs with headings.</li>
 </ul>
 
-<h2 id="___sec9">LaTeX Mathematics </h2>
+<h2 id="___sec10">LaTeX Mathematics </h2>
 
 <p>
 DocOnce supports inline mathematics and blocks of mathematics, using
@@ -85289,7 +85361,7 @@ translation is desired.
 </div>
 
 
-<h2 id="___sec11">Hyperlinks </h2>
+<h2 id="___sec12">Hyperlinks </h2>
 
 <p>
 Links use either a link text or the raw URL:
@@ -85309,7 +85381,7 @@ or just &quot;send mail&quot;: &quot;mailto:hpl@simula.no&quot;.
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec12">Figures and Movies </h2>
+<h2 id="___sec13">Figures and Movies </h2>
 
 <p>
 Figures and movies have almost equal syntax:
@@ -85376,7 +85448,7 @@ The latter results in
 
 <em>Vimeo movie.</em>
 
-<h2 id="___sec13">Tables </h2>
+<h2 id="___sec14">Tables </h2>
 
 <p>
 The table in the section <a href="#quick:sections">Section Types</a> was written with this
@@ -85434,7 +85506,7 @@ Now we can do <code># #include &quot;mydata_table.do.txt&quot;</code> in the Doc
 source file or simply copy the table in <code>mydata_table.do.txt</code>
 into the DocOnce file.
 
-<h2 id="___sec14">Labels and References </h2>
+<h2 id="___sec15">Labels and References </h2>
 
 <p>
 The notion of labels and references (as well as bibliography and index)
@@ -85463,7 +85535,7 @@ Use labels for sections and equations only, and preceed the reference
 by "Section" or "Chapter", or in case of an equation, surround the
 reference by parenthesis.
 
-<h2 id="___sec15">Citations and Bibliography </h2>
+<h2 id="___sec16">Citations and Bibliography </h2>
 
 <p>
 Single citations are written as
@@ -85491,7 +85563,7 @@ BibTeX <code>.bib</code> files can easily be combined to a Publish database
 (which DocOnce needs to create bibliographies in other formats
 than LaTeX).
 
-<h2 id="___sec16">Generalized References </h2>
+<h2 id="___sec17">Generalized References </h2>
 
 <p>
 There is a <em>generalized referencing</em> feature in DocOnce that allows
@@ -85531,7 +85603,7 @@ LaTeX package <code>xr</code> is used to handle the labels in the external
 documents.  If none of the two situations above applies, the
 <code>external</code> text will be the output.
 
-<h2 id="___sec17">Index of Keywords </h2>
+<h2 id="___sec18">Index of Keywords </h2>
 
 <p>
 DocOnce supports creating an index of keywords. A certain keyword
@@ -85548,7 +85620,7 @@ gives the doconce source code an indication of the content in the
 forthcoming text. The index is only produced for the <code>latex</code>,
 <code>pdflatex</code>, <code>rst</code>, and <code>sphinx</code> formats.
 
-<h2 id="___sec18">Capabilities of The Program <code>doconce</code> </h2>
+<h2 id="___sec19">Capabilities of The Program <code>doconce</code> </h2>
 
 <p>
 The <code>doconce</code> program can be used for a number of purposes besides
@@ -85725,7 +85797,7 @@ doconce latex_exercise_toc myfile
 </code></pre>
 <!-- end verbatim block -->
 
-<h2 id="___sec19">Exercises </h2>
+<h2 id="___sec20">Exercises </h2>
 
 <p>
 DocOnce supports <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, and <em>Example</em>.
@@ -85841,7 +85913,7 @@ The command-line arguments <code>--without_answers</code> and <code>--without_so
 turn off output of answers and solutions, respectively, except for
 examples.
 
-<h2 id="___sec20">Environments </h2>
+<h2 id="___sec21">Environments </h2>
 
 <p>
 DocOnce environments start with <code>!benvirname</code> and end with <code>!eenvirname</code>,
@@ -85864,7 +85936,7 @@ the environments:
    slide</li>
 </ul>
 
-<h2 id="___sec21">Preprocessing </h2>
+<h2 id="___sec22">Preprocessing </h2>
 
 <p>
 DocOnce documents may utilize a preprocessor, either <code>preprocess</code> and/or
@@ -85918,7 +85990,7 @@ An <a href="http://hplgit.github.com/bioinf-py/" target="_self">example document
 some illustrations on how to utilize <code>mako</code> (clone the GitHub project and
 examine the DocOnce source and the <code>doc/src/make.sh</code> script).
 
-<h2 id="___sec22">Resources </h2>
+<h2 id="___sec23">Resources </h2>
 
 <ul>
  <li> Excellent "Sphinx Tutorial" by C. Reller: "http://people.ee.ethz.ch/~creller/web/tricks/reST.html"</li>
@@ -86424,6 +86496,37 @@ The date can be set as any text different from \texttt{today} if not the
 current date is wanted, e.g., \texttt{Jan 32, 2100}.
 
 The table of contents is removed by writing \texttt{TOC: off}.
+
+\subsection{Copyright}
+
+% Recall to ident AUTHOR commands to avoid interpretation
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the \texttt{AUTHOR} command. The copyright syntax is
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+{copyright,year1-year2|license}
+\end{Verbatim}
+and can be placed after the author or after an institution, e.g.,
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+ AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+ AUTHOR: name {copyright} at inst1 {copyright}
+\end{Verbatim}
+The first line gives \texttt{name} a copyright for 2006 up to the present year,
+while the second line gives copyright to \texttt{name} and the institution \texttt{inst1}
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons (``public domain'')
+licenses: \texttt{CC BY} for Creative Commons Attribution 4.0 license,
+\texttt{CC BY-NC} for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+\begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
+ AUTHOR: name1 {copyright|CC BY} at institution1
+ AUTHOR: name2 {copyright|CC BY} at institution2
+\end{Verbatim}
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 
 \subsection{Section Types}
@@ -87865,6 +87968,35 @@ current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
 
+Copyright
+---------
+
+.. Recall to ident AUTHOR commands to avoid interpretation
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the ``AUTHOR`` command. The copyright syntax is::
+
+        {copyright,year1-year2|license}
+
+and can be placed after the author or after an institution, e.g.::
+
+         AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+         AUTHOR: name {copyright} at inst1 {copyright}
+
+The first line gives ``name`` a copyright for 2006 up to the present year,
+while the second line gives copyright to ``name`` and the institution ``inst1``
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: ``CC BY`` for Creative Commons Attribution 4.0 license,
+``CC BY-NC`` for Creative Commons Attribution-NonCommercial 4.0 license.
+For example::
+
+         AUTHOR: name1 {copyright|CC BY} at institution1
+         AUTHOR: name2 {copyright|CC BY} at institution2
+
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
+
 .. _quick:sections:
 
 Section Types
@@ -89207,7 +89339,7 @@ A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads
 
-.. code-block:: text
+.. code-block:: doconce
 
         TITLE: On an Ultimate Markup Language
         AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Dept. of Informatics, Univ. of Oslo
@@ -89236,6 +89368,41 @@ The date can be set as any text different from ``today`` if not the
 current date is wanted, e.g., ``Jan 32, 2100``.
 
 The table of contents is removed by writing ``TOC: off``.
+
+Copyright
+---------
+
+.. Recall to ident AUTHOR commands to avoid interpretation
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the ``AUTHOR`` command. The copyright syntax is
+
+.. code-block:: doconce
+
+        {copyright,year1-year2|license}
+
+and can be placed after the author or after an institution, e.g.,
+
+.. code-block:: doconce
+
+         AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+         AUTHOR: name {copyright} at inst1 {copyright}
+
+The first line gives ``name`` a copyright for 2006 up to the present year,
+while the second line gives copyright to ``name`` and the institution ``inst1``
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: ``CC BY`` for Creative Commons Attribution 4.0 license,
+``CC BY-NC`` for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+.. code-block:: doconce
+
+         AUTHOR: name1 {copyright|CC BY} at institution1
+         AUTHOR: name2 {copyright|CC BY} at institution2
+
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 .. _quick:sections:
 
@@ -90676,6 +90843,37 @@ current date is wanted, e.g., `Jan 32, 2100`.
 
 The table of contents is removed by writing `TOC: off`.
 
+==== Copyright ====
+
+<wiki:comment> Recall to ident AUTHOR commands to avoid interpretation </wiki:comment>
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the `AUTHOR` command. The copyright syntax is
+
+{{{
+{copyright,year1-year2|license}
+}}}
+and can be placed after the author or after an institution, e.g.,
+
+{{{
+ AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+ AUTHOR: name {copyright} at inst1 {copyright}
+}}}
+The first line gives `name` a copyright for 2006 up to the present year,
+while the second line gives copyright to `name` and the institution `inst1`
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: `CC BY` for Creative Commons Attribution 4.0 license,
+`CC BY-NC` for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+{{{
+ AUTHOR: name1 {copyright|CC BY} at institution1
+ AUTHOR: name2 {copyright|CC BY} at institution2
+}}}
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
+
 
 ==== Section Types ====
 
@@ -91922,6 +92120,37 @@ The date can be set as any text different from <code>today</code> if not the
 current date is wanted, e.g., <code>Jan 32, 2100</code>.
 
 The table of contents is removed by writing <code>TOC: off</code>.
+
+==== Copyright ====
+
+<!-- Recall to ident AUTHOR commands to avoid interpretation -->
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the <code>AUTHOR</code> command. The copyright syntax is
+
+<syntaxhighlight lang="text">
+{copyright,year1-year2|license}
+</syntaxhighlight>
+and can be placed after the author or after an institution, e.g.,
+
+<syntaxhighlight lang="text">
+ AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+ AUTHOR: name {copyright} at inst1 {copyright}
+</syntaxhighlight>
+The first line gives <code>name</code> a copyright for 2006 up to the present year,
+while the second line gives copyright to <code>name</code> and the institution <code>inst1</code>
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: <code>CC BY</code> for Creative Commons Attribution 4.0 license,
+<code>CC BY-NC</code> for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+<syntaxhighlight lang="text">
+ AUTHOR: name1 {copyright|CC BY} at institution1
+ AUTHOR: name2 {copyright|CC BY} at institution2
+</syntaxhighlight>
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 
 ==== Section Types ====
@@ -93285,6 +93514,37 @@ current date is wanted, e.g., {{{Jan 32, 2100}}}.
 
 The table of contents is removed by writing {{{TOC: off}}}.
 
+== Copyright ==
+
+<wiki:comment> Recall to ident AUTHOR commands to avoid interpretation </wiki:comment>
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the {{{AUTHOR}}} command. The copyright syntax is
+
+{{{
+{copyright,year1-year2|license}
+}}}
+and can be placed after the author or after an institution, e.g.,
+
+{{{
+ AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+ AUTHOR: name {copyright} at inst1 {copyright}
+}}}
+The first line gives {{{name}}} a copyright for 2006 up to the present year,
+while the second line gives copyright to {{{name}}} and the institution {{{inst1}}}
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: {{{CC BY}}} for Creative Commons Attribution 4.0 license,
+{{{CC BY-NC}}} for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+{{{
+ AUTHOR: name1 {copyright|CC BY} at institution1
+ AUTHOR: name2 {copyright|CC BY} at institution2
+}}}
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
+
 
 == Section Types ==
 
@@ -94520,6 +94780,32 @@ The date can be set as any text different from 'today' if not the
 current date is wanted, e.g., 'Jan 32, 2100'.
 
 The table of contents is removed by writing 'TOC: off'.
+
+Copyright
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the 'AUTHOR' command. The copyright syntax is::
+
+        {copyright,year1-year2|license}
+
+and can be placed after the author or after an institution, e.g.::
+
+         AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+         AUTHOR: name {copyright} at inst1 {copyright}
+
+The first line gives 'name' a copyright for 2006 up to the present year,
+while the second line gives copyright to 'name' and the institution 'inst1'
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: 'CC BY' for Creative Commons Attribution 4.0 license,
+'CC BY-NC' for Creative Commons Attribution-NonCommercial 4.0 license.
+For example::
+
+         AUTHOR: name1 {copyright|CC BY} at institution1
+         AUTHOR: name2 {copyright|CC BY} at institution2
+
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 Section Types
 
@@ -95758,6 +96044,33 @@ current date is wanted, e.g., C{Jan 32, 2100}.
 
 The table of contents is removed by writing C{TOC: off}.
 
+Copyright
+---------
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the C{AUTHOR} command. The copyright syntax is::
+
+        {copyright,year1-year2|license}
+
+and can be placed after the author or after an institution, e.g.::
+
+         AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+         AUTHOR: name {copyright} at inst1 {copyright}
+
+The first line gives C{name} a copyright for 2006 up to the present year,
+while the second line gives copyright to C{name} and the institution C{inst1}
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: C{CC BY} for Creative Commons Attribution 4.0 license,
+C{CC BY-NC} for Creative Commons Attribution-NonCommercial 4.0 license.
+For example::
+
+         AUTHOR: name1 {copyright|CC BY} at institution1
+         AUTHOR: name2 {copyright|CC BY} at institution2
+
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
+
 Section Types
 -------------
 
@@ -96893,6 +97206,7 @@ Table of contents:
  Supported Formats 
  Emacs syntax support 
  Title, Authors, and Date 
+ Copyright 
  Section Types 
  Inline Formatting 
  Lists 
@@ -97022,6 +97336,33 @@ The date can be set as any text different from today if not the
 current date is wanted, e.g., Jan 32, 2100.
 
 The table of contents is removed by writing TOC: off.
+
+Copyright
+---------
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the AUTHOR command. The copyright syntax is::
+
+        {copyright,year1-year2|license}
+
+and can be placed after the author or after an institution, e.g.::
+
+         AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+         AUTHOR: name {copyright} at inst1 {copyright}
+
+The first line gives name a copyright for 2006 up to the present year,
+while the second line gives copyright to name and the institution inst1
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: CC BY for Creative Commons Attribution 4.0 license,
+CC BY-NC for Creative Commons Attribution-NonCommercial 4.0 license.
+For example::
+
+         AUTHOR: name1 {copyright|CC BY} at institution1
+         AUTHOR: name2 {copyright|CC BY} at institution2
+
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 Section Types
 -------------
@@ -98348,6 +98689,37 @@ The date can be set as any text different from `today` if not the
 current date is wanted, e.g., `Jan 32, 2100`.
 
 The table of contents is removed by writing `TOC: off`.
+
+### Copyright
+
+<!-- Recall to ident AUTHOR commands to avoid interpretation -->
+
+Copyright for selected authors and/or institutions are easy to insert as part
+of the `AUTHOR` command. The copyright syntax is
+
+
+        {copyright,year1-year2|license}
+
+and can be placed after the author or after an institution, e.g.,
+
+
+         AUTHOR: name Email: somename@adr.net {copyright,2006-present} at inst1
+         AUTHOR: name {copyright} at inst1 {copyright}
+
+The first line gives `name` a copyright for 2006 up to the present year,
+while the second line gives copyright to `name` and the institution `inst1`
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons ("public domain")
+licenses: `CC BY` for Creative Commons Attribution 4.0 license,
+`CC BY-NC` for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,
+
+
+         AUTHOR: name1 {copyright|CC BY} at institution1
+         AUTHOR: name2 {copyright|CC BY} at institution2
+
+is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.
 
 
 ### Section Types
@@ -108173,7 +108545,7 @@ pandoc -f markdown -t latex -s -o math_test.tex math_test.md
 output in math_test.tex
 + python test_copyright.py
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright}', 'FORMAT': 'pdflatex'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright}', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
 
 *** Exercise: My problem
@@ -108597,7 +108969,7 @@ c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
 Output written on tmp_copyright.pdf (5 pages, ).
 Transcript written on tmp_copyright.log.
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY}', 'FORMAT': 'pdflatex'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|CC BY}', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
 
 *** Exercise: My problem
@@ -109009,7 +109381,7 @@ c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
 Output written on tmp_copyright.pdf (5 pages, ).
 Transcript written on tmp_copyright.log.
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY-NC}', 'FORMAT': 'pdflatex'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|CC BY-NC}', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
 
 *** Exercise: My problem
@@ -109421,7 +109793,7 @@ c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
 Output written on tmp_copyright.pdf (5 pages, ).
 Transcript written on tmp_copyright.log.
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|Released under the MIT license.}', 'FORMAT': 'pdflatex'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|Released under the MIT license.}', 'FORMAT': 'pdflatex'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to pdflatex
 
 *** Exercise: My problem
@@ -109833,7 +110205,7 @@ c/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtk10.pfb>
 Output written on tmp_copyright.pdf (5 pages, ).
 Transcript written on tmp_copyright.log.
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright}', 'FORMAT': 'sphinx'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright}', 'FORMAT': 'sphinx'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
 
 *** Exercise: My problem
@@ -109961,7 +110333,7 @@ Fix generated files: index.html search.html genindex.html ._tmp_copyright002.htm
 google-chrome tmp_sphinx-rootdir1/_build/html/index.html
 
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY}', 'FORMAT': 'sphinx'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|CC BY}', 'FORMAT': 'sphinx'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
 
 *** Exercise: My problem
@@ -110089,7 +110461,7 @@ Fix generated files: index.html search.html genindex.html ._tmp_copyright002.htm
 google-chrome tmp_sphinx-rootdir2/_build/html/index.html
 
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY-NC}', 'FORMAT': 'sphinx'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|CC BY-NC}', 'FORMAT': 'sphinx'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
 
 *** Exercise: My problem
@@ -110217,7 +110589,7 @@ Fix generated files: index.html search.html genindex.html ._tmp_copyright002.htm
 google-chrome tmp_sphinx-rootdir3/_build/html/index.html
 
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|Released under the MIT license.}', 'FORMAT': 'sphinx'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|Released under the MIT license.}', 'FORMAT': 'sphinx'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to sphinx
 
 *** Exercise: My problem
@@ -110345,7 +110717,7 @@ Fix generated files: index.html search.html genindex.html ._tmp_copyright002.htm
 google-chrome tmp_sphinx-rootdir4/_build/html/index.html
 
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright}', 'FORMAT': 'html'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright}', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to html
 
 *** Exercise: My problem
@@ -110356,7 +110728,7 @@ output in tmp_copyright1.html
 tmp_copyright1.html now links to the generated files
 ._tmp_copyright1000.html, ._tmp_copyright1001.html, ._tmp_copyright1002.html
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY}', 'FORMAT': 'html'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|CC BY}', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to html
 
 *** Exercise: My problem
@@ -110367,7 +110739,7 @@ output in tmp_copyright2.html
 tmp_copyright2.html now links to the generated files
 ._tmp_copyright2000.html, ._tmp_copyright2001.html, ._tmp_copyright2002.html
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|CC BY-NC}', 'FORMAT': 'html'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|CC BY-NC}', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to html
 
 *** Exercise: My problem
@@ -110378,7 +110750,7 @@ output in tmp_copyright3.html
 tmp_copyright3.html now links to the generated files
 ._tmp_copyright3000.html, ._tmp_copyright3001.html, ._tmp_copyright3002.html
 running mako on tmp_copyright.do.txt to make tmp_mako__tmp_copyright.do.txt
-mako variables: {'DEVICE': 'screen', 'copyright': '{copyright|Released under the MIT license.}', 'FORMAT': 'html'}
+mako variables: {'DEVICE': 'screen', 'BOOK': True, 'COPYRIGHT': '{copyright|Released under the MIT license.}', 'FORMAT': 'html'}
 translating doconce text in tmp_mako__tmp_copyright.do.txt to html
 
 *** Exercise: My problem
@@ -110388,57 +110760,57 @@ found info about 1 exercises
 output in tmp_copyright4.html
 tmp_copyright4.html now links to the generated files
 ._tmp_copyright4000.html, ._tmp_copyright4001.html, ._tmp_copyright4002.html
-doconce format pdflatex tmp_copyright copyright="{copyright}" --latex_code_style=vrb
-doconce format pdflatex tmp_copyright copyright="{copyright}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright}" BOOK=True --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright}" BOOK=True --latex_code_style=vrb
 doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
 pdflatex tmp_copyright
 pdflatex tmp_copyright
-doconce format pdflatex tmp_copyright copyright="{copyright|CC BY}" --latex_code_style=vrb
-doconce format pdflatex tmp_copyright copyright="{copyright|CC BY}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright|CC BY}" BOOK=True --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright|CC BY}" BOOK=True --latex_code_style=vrb
 doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
 pdflatex tmp_copyright
 pdflatex tmp_copyright
-doconce format pdflatex tmp_copyright copyright="{copyright|CC BY-NC}" --latex_code_style=vrb
-doconce format pdflatex tmp_copyright copyright="{copyright|CC BY-NC}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright|CC BY-NC}" BOOK=True --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright|CC BY-NC}" BOOK=True --latex_code_style=vrb
 doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
 pdflatex tmp_copyright
 pdflatex tmp_copyright
-doconce format pdflatex tmp_copyright copyright="{copyright|Released under the MIT license.}" --latex_code_style=vrb
-doconce format pdflatex tmp_copyright copyright="{copyright|Released under the MIT license.}" --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright|Released under the MIT license.}" BOOK=True --latex_code_style=vrb
+doconce format pdflatex tmp_copyright COPYRIGHT="{copyright|Released under the MIT license.}" BOOK=True --latex_code_style=vrb
 doconce replace "Released under" "\\\\ Released under" tmp_copyright.tex
 pdflatex tmp_copyright
 pdflatex tmp_copyright
-doconce format sphinx tmp_copyright copyright="{copyright}"
-doconce format sphinx tmp_copyright copyright="{copyright}"
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright}" BOOK=True
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright}" BOOK=True
 doconce split_rst tmp_copyright.rst
 doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir1 tmp_copyright
 python automake_sphinx.py
-doconce format sphinx tmp_copyright copyright="{copyright|CC BY}"
-doconce format sphinx tmp_copyright copyright="{copyright|CC BY}"
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright|CC BY}" BOOK=True
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright|CC BY}" BOOK=True
 doconce split_rst tmp_copyright.rst
 doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir2 tmp_copyright
 python automake_sphinx.py
-doconce format sphinx tmp_copyright copyright="{copyright|CC BY-NC}"
-doconce format sphinx tmp_copyright copyright="{copyright|CC BY-NC}"
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright|CC BY-NC}" BOOK=True
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright|CC BY-NC}" BOOK=True
 doconce split_rst tmp_copyright.rst
 doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir3 tmp_copyright
 python automake_sphinx.py
-doconce format sphinx tmp_copyright copyright="{copyright|Released under the MIT license.}"
-doconce format sphinx tmp_copyright copyright="{copyright|Released under the MIT license.}"
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright|Released under the MIT license.}" BOOK=True
+doconce format sphinx tmp_copyright COPYRIGHT="{copyright|Released under the MIT license.}" BOOK=True
 doconce split_rst tmp_copyright.rst
 doconce sphinx_dir theme=alabaster dirname=tmp_sphinx-rootdir4 tmp_copyright
 python automake_sphinx.py
-doconce format html tmp_copyright copyright="{copyright}" --html_output=tmp_copyright1
-doconce format html tmp_copyright copyright="{copyright}" --html_output=tmp_copyright1
+doconce format html tmp_copyright COPYRIGHT="{copyright}" BOOK=True --html_output=tmp_copyright1
+doconce format html tmp_copyright COPYRIGHT="{copyright}" BOOK=True --html_output=tmp_copyright1
 doconce split_html tmp_copyright1.html
-doconce format html tmp_copyright copyright="{copyright|CC BY}" --html_output=tmp_copyright2
-doconce format html tmp_copyright copyright="{copyright|CC BY}" --html_output=tmp_copyright2
+doconce format html tmp_copyright COPYRIGHT="{copyright|CC BY}" BOOK=True --html_output=tmp_copyright2
+doconce format html tmp_copyright COPYRIGHT="{copyright|CC BY}" BOOK=True --html_output=tmp_copyright2
 doconce split_html tmp_copyright2.html
-doconce format html tmp_copyright copyright="{copyright|CC BY-NC}" --html_output=tmp_copyright3
-doconce format html tmp_copyright copyright="{copyright|CC BY-NC}" --html_output=tmp_copyright3
+doconce format html tmp_copyright COPYRIGHT="{copyright|CC BY-NC}" BOOK=True --html_output=tmp_copyright3
+doconce format html tmp_copyright COPYRIGHT="{copyright|CC BY-NC}" BOOK=True --html_output=tmp_copyright3
 doconce split_html tmp_copyright3.html
-doconce format html tmp_copyright copyright="{copyright|Released under the MIT license.}" --html_output=tmp_copyright4
-doconce format html tmp_copyright copyright="{copyright|Released under the MIT license.}" --html_output=tmp_copyright4
+doconce format html tmp_copyright COPYRIGHT="{copyright|Released under the MIT license.}" BOOK=True --html_output=tmp_copyright4
+doconce format html tmp_copyright COPYRIGHT="{copyright|Released under the MIT license.}" BOOK=True --html_output=tmp_copyright4
 doconce split_html tmp_copyright4.html
 + admon_tps='colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2'
 + for admon_tp in '$admon_tps'
@@ -117710,8 +118082,7 @@ it is clearly a successful run of all tests!
 + set -x
 + sh ./clean.sh
 Removing in /home/hpl/vc/doconce/doc/src/quickref:
-+ '[' '!' -l guidelines.do.txt ']'
-make.sh: line 17: [: -l: unary operator expected
++ '[' '!' -L guidelines.do.txt ']'
 + doconce
 + doconce format html quickref --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
 running mako on quickref.do.txt to make tmp_mako__quickref.do.txt
@@ -117941,37 +118312,30 @@ Package hyperref Warning: old toc file detected, not used; run LaTeX again.
 
 
  [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}] [2]
+nts/map/pdftex/updmap/pdftex.map}] [2] [3]
 Overfull \hbox (18.62192pt too wide) 
 \T1/phv/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with [] or []
 
-[3]
+[4]
 Overfull \hbox (3.86172pt too wide) 
 []\T1/phv/m/n/10 Emojis, as de-fined in [][]$\T1/lmtt/m/n/10 http : / / www . e
 moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
-[4] [5]
+[5] [6]
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[6] [7] [8] [9] [10]
+[7] [8] [9] [10]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names \T
 1/lmtt/m/n/10 newcommands*.tex\T1/phv/m/n/10 .
-
+[11]
 Overfull \hbox (9.62752pt too wide) 
 \T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
-[11]
+[12]
 Overfull \hbox (4.64987pt too wide) 
 \T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
  cre-at-ing macros. 
 
-Package mdframed Warning: You got a bad break
-(mdframed)                because the last box will be empty
-(mdframed)                you have to change it manually
-(mdframed)                by changing the text, the space
-(mdframed)                or something else on .
-
-[12]
 Overfull \hbox (47.3995pt too wide) 
 []\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
 \T1/lmtt/m/n/10 doconce latex2doconce
@@ -117980,7 +118344,7 @@ Overfull \hbox (47.3995pt too wide)
 
 ...rest of part of LaTeX line number...
 
-[15]
+[15] [16]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /lmtt/m/n/10 name \T1/phv/m/n/10 on the form [],
@@ -117988,7 +118352,7 @@ Overfull \hbox (59.24634pt too wide)
 Overfull \hbox (20.06982pt too wide) 
 []\T1/phv/m/n/10 The bib-li-og-ra-phy is spec-i-fied by a line \T1/lmtt/m/n/10 
 BIBFILE: papers.pub\T1/phv/m/n/10 , where \T1/lmtt/m/n/10 papers.pub
-[16] [17] [18] [19] [20] [21] [22]
+[17] [18] [19] [20] [21] [22] [23]
 Overfull \hbox (0.31688pt too wide) 
 \T1/phv/m/n/10 the GitHub project and ex-am-ine the Do-cOnce source and the \T1
 /lmtt/m/n/10 doc/src/make.sh
@@ -117997,7 +118361,7 @@ Overfull \hbox (88.36455pt too wide)
 []\T1/phv/m/n/10 Excellent "Sphinx Tu-to-rial" by C. Reller: "http://people.ee.
 ethz.ch/ creller/web/tricks/reST.html" 
 No file quickref.ind.
-[23] (./quickref.aux)
+[24] (./quickref.aux)
 
  *File List*
  article.cls    2014/09/29 v1.4h Standard LaTeX document class
@@ -118155,7 +118519,7 @@ are/texmf/fonts/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/
 lm/lmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on quickref.pdf (23 pages, ).
+Output written on quickref.pdf (24 pages, ).
 Transcript written on quickref.log.
 + '[' 0 -ne 0 ']'
 + system pdflatex -shell-escape quickref
@@ -118370,11 +118734,11 @@ moji-[]cheat-[]sheet . com$[][]\T1/phv/m/n/10 , can be in-serted
 Overfull \hbox (29.09389pt too wide) 
 []\T1/phv/m/n/10 Large por-tions of text can be left out us-ing Pre-pro-cess. J
 ust place []
-[7] [8] [9] [10]
+[7] [8] [9] [10] [11]
 Overfull \hbox (32.16707pt too wide) 
 \T1/phv/m/n/10 ning text. New-com-mands must be de-fined in files with names \T
 1/lmtt/m/n/10 newcommands*.tex\T1/phv/m/n/10 .
-[11]
+
 Overfull \hbox (9.62752pt too wide) 
 \T1/phv/m/n/10 but you can com-bine the files to one file us-ing the []
 [12]
@@ -118382,10 +118746,17 @@ Overfull \hbox (4.64987pt too wide)
 \T1/phv/m/n/10 tools for, e.g., com-ment-ing out/in large por-tions of text and
  cre-at-ing macros. 
 
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on .
+
+[13]
 Overfull \hbox (47.3995pt too wide) 
 []\T1/phv/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
 \T1/lmtt/m/n/10 doconce latex2doconce
-[13] [14] [15] [16]
+[14] [15] [16]
 Overfull \hbox (59.24634pt too wide) 
 \T1/phv/m/n/10 sert a back-slash). Bib-li-og-ra-phy ci-ta-tions of-ten have \T1
 /lmtt/m/n/10 name \T1/phv/m/n/10 on the form [],
@@ -118780,6 +119151,10 @@ rspace Inc.
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
 [2]
+Overfull \hbox (125.00006pt too wide) 
+\T1/pcr/m/n/10 AUTHOR: name Email: somename@adr.net {copyright,2006-present} at
+ inst1  
+
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Appendix: heading
 
@@ -118795,11 +119170,11 @@ Underfull \hbox (badness 1168)
 Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
 m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
-
+[3]
 Overfull \hbox (27.20697pt too wide) 
 \T1/ptm/m/it/10 sized words\T1/ptm/m/n/10 . Sim-i-larly, an un-der-score sur-ro
 unds words that ap-pear in bold-face: \T1/pcr/m/n/10 _boldface_
-[3]
+
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 This distance corresponds to 7.5~km, which is traveled in $7.5
 /5$~s. 
@@ -118825,14 +119200,14 @@ start
 
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
-[5]
+[5] [6]
 Overfull \hbox (83.00006pt too wide) 
 \T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
  
 
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
-[6]
+
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
 sume  
@@ -118842,7 +119217,7 @@ Overfull \hbox (59.00006pt too wide)
 
 Overfull \hbox (23.00006pt too wide) 
 \T1/pcr/m/n/10 First[add: ,] consider [edit: a quantity -> the flux]  
-
+[7]
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 we assume] $Q>0$. There are three[del: ,] fundamental[del: , b
 asic]  
@@ -118857,7 +119232,7 @@ a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-[7]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -118872,10 +119247,10 @@ it_rst
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  from-to: doconce clean@^doconce sp
 lit_rst  
-
+[8]
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
-[8]
+
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
@@ -118887,7 +119262,7 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-
+[10]
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
@@ -118895,14 +119270,14 @@ Overfull \hbox (29.72876pt too wide)
 Overfull \hbox (0.15965pt too wide) 
 \T1/pcr/m/n/10 newcommands*.tex\T1/ptm/m/n/10 . Use \T1/pcr/m/n/10 \newcommands
  \T1/ptm/m/n/10 and not \T1/pcr/m/n/10 \def\T1/ptm/m/n/10 . Each
-[10]
+[11]
 Overfull \hbox (0.59726pt too wide) 
 []\T1/ptm/m/n/10 Use \T1/ptm/m/it/10 gen-er-al-ized refer-enes \T1/ptm/m/n/10 w
 ith for re-fer-ring to com-pan-ion doc-u-ments
 
 Package hyperref Warning: Ignoring empty anchor on .
 
-[11]
+
 Underfull \hbox (badness 4819) 
 []\T1/ptm/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
 \T1/pcr/m/n/10 doconce
@@ -119327,6 +119702,10 @@ rspace Inc.
 
 Overfull \hbox (59.00006pt too wide) 
 []\T1/pcr/m/n/10 name Email: somename@adr.net at institution1 & institution2 
+[3]
+Overfull \hbox (125.00006pt too wide) 
+\T1/pcr/m/n/10 AUTHOR: name Email: somename@adr.net {copyright,2006-present} at
+ inst1  
 
 Underfull \hbox (badness 10000) 
 []|\T1/pcr/m/n/10 ======= Appendix: heading
@@ -119339,7 +119718,7 @@ Underfull \hbox (badness 10000)
 
 Underfull \hbox (badness 1168) 
 []|\T1/pcr/m/n/10 ===== Exercise: heading ===== \T1/ptm/m/n/10 (5
-[3]
+
 Overfull \hbox (15.61775pt too wide) 
 \T1/ptm/m/n/10 Note that ab-stracts are rec-og-nized by start-ing with \T1/pcr/
 m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
@@ -119347,11 +119726,11 @@ m/n/10 __Abstract.__ \T1/ptm/m/n/10 or \T1/pcr/m/n/10 __Summary.__
 Overfull \hbox (27.20697pt too wide) 
 \T1/ptm/m/it/10 sized words\T1/ptm/m/n/10 . Sim-i-larly, an un-der-score sur-ro
 unds words that ap-pear in bold-face: \T1/pcr/m/n/10 _boldface_
-
+[4]
 Overfull \hbox (113.00006pt too wide) 
 []\T1/pcr/m/n/10 This distance corresponds to 7.5~km, which is traveled in $7.5
 /5$~s. 
-[4]
+
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 The em-dash is used - without spaces - as alternative to hyphen 
 with  
@@ -119362,7 +119741,7 @@ Overfull \hbox (11.00006pt too wide)
 Overfull \hbox (95.00006pt too wide) 
 []\T1/pcr/m/n/10 Premature optimization is the root of all evil.*--- Donald Knu
 th. 
-
+[5]
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 Note that sublists are consistently indented by one or more bl
 anks as  
@@ -119370,17 +119749,17 @@ anks as
 Overfull \hbox (107.00006pt too wide) 
 []\T1/pcr/m/n/10 shown: bullets must exactly match and continuation lines must 
 start  
-[5]
+
 Overfull \hbox (17.00006pt too wide) 
 [] \T1/pcr/m/n/10 - keyword3: and its description may fit on one line 
 [6]
 Overfull \hbox (83.00006pt too wide) 
 \T1/pcr/m/n/10 Some running text. [hpl: There must be a space after the colon, 
  
-
+[7]
 Overfull \hbox (35.00006pt too wide) 
 []\T1/pcr/m/n/10 doconce format html mydoc.do.txt --skip_inline_comments 
-[7]
+
 Overfull \hbox (113.00006pt too wide) 
 \T1/pcr/m/n/10 First consider a quantity $Q$. Without loss of generality, we as
 sume  
@@ -119397,7 +119776,7 @@ asic]
 
 Overfull \hbox (53.00006pt too wide) 
 []\T1/pcr/m/n/10 [edit: property -> properties] of $Q$. [add: These are not  
-
+[8]
 Overfull \hbox (4.66663pt too wide) 
 \T1/ptm/m/n/10 three-color{red}{(\T1/ptm/b/n/10 del 5\T1/ptm/m/n/10 : ,}) fun-d
 a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
@@ -119405,7 +119784,7 @@ a-men-tal-color{red}{(\T1/ptm/b/n/10 del 6\T1/ptm/m/n/10 : , ba-sic}) \T1/ptm/b
 
 Overfull \hbox (5.00006pt too wide) 
 []\T1/pcr/m/n/10 Terminal> doconce apply_edit_comments mydoc.do.txt 
-[8]
+
 Overfull \hbox (119.00006pt too wide) 
 []\T1/pcr/m/n/10 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=
 console 
@@ -119423,11 +119802,11 @@ lit_rst
 
 Overfull \hbox (29.00006pt too wide) 
 []\T1/pcr/m/n/10 @@@CODE doconce_program.sh  envir=shpro fromto: name=@ 
-
+[9]
 Overfull \hbox (8.347pt too wide) 
 \T1/ptm/m/n/10 cess-ful out-put in re-Struc-tred-Text), not di-rectly af-ter a 
 sec-tion/paragraph
-[9]
+[10]
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\]  
@@ -119435,22 +119814,22 @@ Overfull \hbox (137.00006pt too wide)
 Overfull \hbox (137.00006pt too wide) 
 []\T1/pcr/m/n/10 \[ \frac{\partial\pmb{u}}{\partial t} + \pmb{u}\cdot\nabla\pmb
 {u} = 0.\] 
-[10]
+
 Overfull \hbox (29.72876pt too wide) 
 []\T1/ptm/m/n/10 Only five equa-tion en-vi-ron-ments can be used: \T1/pcr/m/n/1
 0 \[ ... \]\T1/ptm/m/n/10 , \T1/pcr/m/n/10 equation*\T1/ptm/m/n/10 ,
-
+[11]
 Overfull \hbox (0.15965pt too wide) 
 \T1/pcr/m/n/10 newcommands*.tex\T1/ptm/m/n/10 . Use \T1/pcr/m/n/10 \newcommands
  \T1/ptm/m/n/10 and not \T1/pcr/m/n/10 \def\T1/ptm/m/n/10 . Each
-[11]
+[12]
 Overfull \hbox (0.59726pt too wide) 
 []\T1/ptm/m/n/10 Use \T1/ptm/m/it/10 gen-er-al-ized refer-enes \T1/ptm/m/n/10 w
 ith for re-fer-ring to com-pan-ion doc-u-ments
 
 Package hyperref Warning: Ignoring empty anchor on .
 
-[12]
+
 Underfull \hbox (badness 4819) 
 []\T1/ptm/m/n/10 For ex-am-ples, fig-ure en-vi-ron-ments can be trans-lated by 
 \T1/pcr/m/n/10 doconce

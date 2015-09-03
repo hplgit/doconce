@@ -305,10 +305,10 @@ The syntax of the ``year1-year`` goes as follows:
 
 The syntax of the ``license`` part is flexible:
 
- * Any formulation can be given.
+ * Any formulation can be given. For example, ``{copyright|This work is released under a MIT license}``.
 
  * Standardized short forms for Creative Commons (CC) licenses are available.
-   For example,`CC BY`, which means a CC Attribution license. ``BY`` can be replaced by ``BY-NC`` (Attribution-NonCommercial) and other abbreviations from `<https://creativecommons.org/licenses/>`_. The command-line option ``--CC_license=`` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads ``Released under a CC %s 4.0 license.``, where ``%s`` is to be replaced by the license name.
+   For example, ``CC BY``, which means a CC Attribution license. ``BY`` can be replaced by ``BY-NC`` (Attribution-NonCommercial) and other abbreviations from `<https://creativecommons.org/licenses/>`_. The command-line option ``--CC_license=`` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads ``Released under a CC %s 4.0 license.``, where ``%s`` is to be replaced by the license name. A common value is ``--CC_license="This work is released under the Creative Commons %s 4.0 license"``.
 
 How the copyright is typeset depends on the format:
 
@@ -321,7 +321,7 @@ How the copyright is typeset depends on the format:
  * Sphinx: The copyright is provided as the ``copyright`` variable in ``conf.py``
    and appears in the footer according to the chosen theme.
 
- * HTML: The copyright appears at the bottom of all pages (right before the ``</body> tag``.
+ * HTML: The copyright appears at the bottom of all pages (right before the ``</body> tag``).
 
  * Other formats: A copyright line is inserted after the date.
 

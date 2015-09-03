@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 1, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 3, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -194,12 +194,12 @@ provides a lot of shortcuts for setting up many elements in a document:</p>
 <p>A typical example of giving a title, a set of authors, a date,
 and an optional table of contents
 reads</p>
-<div class="highlight-text"><div class="highlight"><pre>TITLE: On an Ultimate Markup Language
-AUTHOR: H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory &amp; Dept. of Informatics, Univ. of Oslo
-AUTHOR: Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
-AUTHOR: A. Dummy Author
-DATE: today
-TOC: on
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">TITLE: On an Ultimate Markup Language</span>
+<span class="gh">AUTHOR:</span> H. P. Langtangen at Center for Biomedical Computing, Simula Research Laboratory &amp; Dept. of Informatics, Univ. of Oslo
+<span class="gh">AUTHOR:</span> Kaare Dump Email: dump@cyb.space.com at Segfault, Cyberspace Inc.
+<span class="gh">AUTHOR:</span> A. Dummy Author
+<span class="gh">DATE:</span> today
+<span class="gh">TOC:</span> on
 </pre></div>
 </div>
 <p>The entire title must appear on a single line.
@@ -218,6 +218,32 @@ way for each author.</p>
 <p>The date can be set as any text different from <code class="docutils literal"><span class="pre">today</span></code> if not the
 current date is wanted, e.g., <code class="docutils literal"><span class="pre">Feb</span> <span class="pre">22,</span> <span class="pre">2016</span></code>.</p>
 <p>The table of contents is removed by writing <code class="docutils literal"><span class="pre">TOC:</span> <span class="pre">off</span></code>.</p>
+</div>
+<div class="section" id="copyright">
+<h2>Copyright<a class="headerlink" href="#copyright" title="Permalink to this headline">¶</a></h2>
+<p>Copyright for selected authors and/or institutions are easy to insert as part
+of the <code class="docutils literal"><span class="pre">AUTHOR</span></code> command. The copyright syntax is</p>
+<div class="highlight-doconce"><div class="highlight"><pre>{copyright,year1-year2|license}
+</pre></div>
+</div>
+<p>and can be placed after the author or after an institution, e.g.,</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">AUTHOR:</span> name Email: somename@adr.net {copyright,2006-present} at inst1
+<span class="gh">AUTHOR:</span> name {copyright} at inst1 {copyright}
+</pre></div>
+</div>
+<p>The first line gives <code class="docutils literal"><span class="pre">name</span></code> a copyright for 2006 up to the present year,
+while the second line gives copyright to <code class="docutils literal"><span class="pre">name</span></code> and the institution <code class="docutils literal"><span class="pre">inst1</span></code>
+for the present year. The license can be any formulation, but there are
+some convenient abbreviations for Creative Commons (&#8220;public domain&#8221;)
+licenses: <code class="docutils literal"><span class="pre">CC</span> <span class="pre">BY</span></code> for Creative Commons Attribution 4.0 license,
+<code class="docutils literal"><span class="pre">CC</span> <span class="pre">BY-NC</span></code> for Creative Commons Attribution-NonCommercial 4.0 license.
+For example,</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">AUTHOR:</span> name1 {copyright|CC BY} at institution1
+<span class="gh">AUTHOR:</span> name2 {copyright|CC BY} at institution2
+</pre></div>
+</div>
+<p>is a very common copyright for the present year with the Attribution license.
+The copyright must be identical for all authors and institutions.</p>
 </div>
 <div class="section" id="section-types">
 <span id="quick-sections"></span><h2>Section Types<a class="headerlink" href="#section-types" title="Permalink to this headline">¶</a></h2>
@@ -1407,6 +1433,7 @@ examine the DocOnce source and the <code class="docutils literal"><span class="p
 <li><a class="reference internal" href="#supported-formats">Supported Formats</a></li>
 <li><a class="reference internal" href="#emacs-syntax-support">Emacs syntax support</a></li>
 <li><a class="reference internal" href="#title-authors-and-date">Title, Authors, and Date</a></li>
+<li><a class="reference internal" href="#copyright">Copyright</a></li>
 <li><a class="reference internal" href="#section-types">Section Types</a></li>
 <li><a class="reference internal" href="#inline-formatting">Inline Formatting</a></li>
 <li><a class="reference internal" href="#lists">Lists</a></li>

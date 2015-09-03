@@ -832,6 +832,7 @@ and no institution. In some formats (including <code>rst</code> and <code>sphinx
 only the author names appear. Some formats have
 &quot;intelligence&quot; in listing authors and institutions, e.g., the plain text
 format:
+
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
@@ -883,9 +884,9 @@ The syntax of the <code>year1-year</code> goes as follows:
 The syntax of the <code>license</code> part is flexible:
 
 <ul>
- <li> Any formulation can be given.</li>
+ <li> Any formulation can be given. For example, <code>{copyright|This work is released under a MIT license}</code>.</li>
  <li> Standardized short forms for Creative Commons (CC) licenses are available.
-   For example,`CC BY`, which means a CC Attribution license. <code>BY</code> can be replaced by <code>BY-NC</code> (Attribution-NonCommercial) and other abbreviations from <a href="https://creativecommons.org/licenses/" target="_self"><tt>https://creativecommons.org/licenses/</tt></a>. The command-line option <code>--CC_license=</code> is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads <code>Released under a CC %s 4.0 license.</code>, where <code>%s</code> is to be replaced by the license name.</li>
+   For example, <code>CC BY</code>, which means a CC Attribution license. <code>BY</code> can be replaced by <code>BY-NC</code> (Attribution-NonCommercial) and other abbreviations from <a href="https://creativecommons.org/licenses/" target="_self"><tt>https://creativecommons.org/licenses/</tt></a>. The command-line option <code>--CC_license=</code> is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads <code>Released under a CC %s 4.0 license.</code>, where <code>%s</code> is to be replaced by the license name. A common value is <code>--CC_license=&quot;This work is released under the Creative Commons %s 4.0 license&quot;</code>.</li>
 </ul>
 
 How the copyright is typeset depends on the format:
@@ -898,7 +899,7 @@ How the copyright is typeset depends on the format:
    of each chapter.</li>
  <li> Sphinx: The copyright is provided as the <code>copyright</code> variable in <code>conf.py</code>
    and appears in the footer according to the chosen theme.</li>
- <li> HTML: The copyright appears at the bottom of all pages (right before the <code>&lt;/body&gt; tag</code>.</li>
+ <li> HTML: The copyright appears at the bottom of all pages (right before the <code>&lt;/body&gt; tag</code>).</li>
  <li> Other formats: A copyright line is inserted after the date.</li>
 </ul>
 

@@ -14,7 +14,7 @@ set -x
 sh ./clean.sh
 
 # Mako include cannot accept ../manual/quidelines.do.txt so we need a local link
-if [ ! -l guidelines.do.txt ]; then
+if [ ! -L guidelines.do.txt ]; then
     ln -s ../manual/guidelines.do.txt guidelines.do.txt
 fi
 

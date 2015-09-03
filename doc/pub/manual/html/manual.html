@@ -288,9 +288,9 @@ The <code class="docutils literal"><span class="pre">{copyright...}</span></code
 <p>The syntax of the <code class="docutils literal"><span class="pre">license</span></code> part is flexible:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Any formulation can be given.</li>
+<li>Any formulation can be given. For example, <code class="docutils literal"><span class="pre">{copyright|This</span> <span class="pre">work</span> <span class="pre">is</span> <span class="pre">released</span> <span class="pre">under</span> <span class="pre">a</span> <span class="pre">MIT</span> <span class="pre">license}</span></code>.</li>
 <li>Standardized short forms for Creative Commons (CC) licenses are available.
-For example,`CC BY`, which means a CC Attribution license. <code class="docutils literal"><span class="pre">BY</span></code> can be replaced by <code class="docutils literal"><span class="pre">BY-NC</span></code> (Attribution-NonCommercial) and other abbreviations from <a class="reference external" href="https://creativecommons.org/licenses/">https://creativecommons.org/licenses/</a>. The command-line option <code class="docutils literal"><span class="pre">--CC_license=</span></code> is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads <code class="docutils literal"><span class="pre">Released</span> <span class="pre">under</span> <span class="pre">a</span> <span class="pre">CC</span> <span class="pre">%s</span> <span class="pre">4.0</span> <span class="pre">license.</span></code>, where <code class="docutils literal"><span class="pre">%s</span></code> is to be replaced by the license name.</li>
+For example, <code class="docutils literal"><span class="pre">CC</span> <span class="pre">BY</span></code>, which means a CC Attribution license. <code class="docutils literal"><span class="pre">BY</span></code> can be replaced by <code class="docutils literal"><span class="pre">BY-NC</span></code> (Attribution-NonCommercial) and other abbreviations from <a class="reference external" href="https://creativecommons.org/licenses/">https://creativecommons.org/licenses/</a>. The command-line option <code class="docutils literal"><span class="pre">--CC_license=</span></code> is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads <code class="docutils literal"><span class="pre">Released</span> <span class="pre">under</span> <span class="pre">a</span> <span class="pre">CC</span> <span class="pre">%s</span> <span class="pre">4.0</span> <span class="pre">license.</span></code>, where <code class="docutils literal"><span class="pre">%s</span></code> is to be replaced by the license name. A common value is <code class="docutils literal"><span class="pre">--CC_license=&quot;This</span> <span class="pre">work</span> <span class="pre">is</span> <span class="pre">released</span> <span class="pre">under</span> <span class="pre">the</span> <span class="pre">Creative</span> <span class="pre">Commons</span> <span class="pre">%s</span> <span class="pre">4.0</span> <span class="pre">license&quot;</span></code>.</li>
 </ul>
 </div></blockquote>
 <p>How the copyright is typeset depends on the format:</p>
@@ -303,7 +303,7 @@ statement in the footer of the titlepage and (for books) the first page
 of each chapter.</li>
 <li>Sphinx: The copyright is provided as the <code class="docutils literal"><span class="pre">copyright</span></code> variable in <code class="docutils literal"><span class="pre">conf.py</span></code>
 and appears in the footer according to the chosen theme.</li>
-<li>HTML: The copyright appears at the bottom of all pages (right before the <code class="docutils literal"><span class="pre">&lt;/body&gt;</span> <span class="pre">tag</span></code>.</li>
+<li>HTML: The copyright appears at the bottom of all pages (right before the <code class="docutils literal"><span class="pre">&lt;/body&gt;</span> <span class="pre">tag</span></code>).</li>
 <li>Other formats: A copyright line is inserted after the date.</li>
 </ul>
 </div></blockquote>
