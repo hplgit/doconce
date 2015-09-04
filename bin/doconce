@@ -129,7 +129,12 @@ themes.
 A custom theme can also be specified by giving a "_themes-like"
 directory: theme_dir=dirname. Alternatively, one can use a standard
 theme, but provide one's own tailored conf.py file through the
-conf.py=filename option.
+conf.py=filename option. If the file (filename) has empty strings
+for the project and copyright, those values as well as the variables
+depending on these values will get content based on the title,
+author, and copyright from the DocOnce source file mydoc.do.txt.
+(It is recommended to leave project and copyright as empty strings,
+and latex_documents, texinfo_documents, and man_pages as empty lists.)
 
 ---
 
@@ -395,9 +400,9 @@ EOF
         themes = [name[8:] for name in files
                   if os.path.isdir(name)] + \
                   sphinx_basic_themes + sphinx_installed_themes
-        print 'These Sphinx themes were found:', ', '.join(sorted(themes))
 
         if conf_py is None:
+            print 'These Sphinx themes were found:', ', '.join(sorted(themes))
             make_conf_py(themes, theme, title, short_title, copyright_,
                          logo, favicon, intersphinx)
     else:
@@ -408,6 +413,42 @@ EOF
 
     if conf_py is not None:
         shutil.copy(os.path.join(os.pardir, conf_py), 'conf.py')
+        # Check if title, author, or copyright are given
+        with open('conf.py', 'r') as f:
+            conf_text = f.read()
+        pattern = r'latex_documents = \[.*?\]'
+        replacement = r"latex_documents = [('index', 'doc.tex', project, u'%s',  'manual'),]" % author
+        conf_text = re.sub(pattern, replacement, conf_text,
+                           flags=re.DOTALL)
+        pattern = r'man_pages = \[.*?\]'
+        replacement = r"man_pages = [('index', 'doc', project, [u'%s'], 1),]" % author
+        conf_text = re.sub(pattern, replacement, conf_text,
+                           flags=re.DOTALL)
+        pattern = r'texinfo_documents = \[.*?\]'
+        replacement = r"texinfo_documents = [('index', 'doc', project, u'%s', 'doc', 'One line description of project.', 'Miscellaneous'),]" % author
+        conf_text = re.sub(pattern, replacement, conf_text,
+                           flags=re.DOTALL)
+        pattern = r'''project *= *u?['"](.*?)['"]'''
+        m = re.search(pattern, conf_text)
+        if m:
+            if m.group(1).strip() == '':
+                # No title found, take the one from .do.txt
+                conf_text = re.sub(pattern, "project = u'%s'" % title,
+                                   conf_text)
+                conf_text = re.sub(r'html_title.+', "html_title = project", conf_text)
+                conf_text = re.sub(r'epub_title.+', "epub_title = project", conf_text)
+        pattern = r'''copyright *= *u?['"](.*?)['"]'''
+        m = re.search(pattern, conf_text)
+        if m:
+            if m.group(1).strip() == '':
+                # No copyright found, take the one from .do.txt
+                conf_text = re.sub(pattern, "copyright = u'%s'" % copyright_,
+                                   conf_text)
+                conf_text = re.sub(r'epub_copyright.+', "epub_copyright = u'%s'" % copyright_, conf_text)
+                conf_text = re.sub(r'epub_author.+', "epub_author = u'%s'" % author, conf_text)
+                conf_text = re.sub(r'epub_publisher.+', "epub_publisher = u'%s'" % author, conf_text)
+        with open('conf.py', 'w') as f:
+            f.write(conf_text)
 
     f = open('make_themes.sh', 'w')
     f.write("""#!/bin/sh

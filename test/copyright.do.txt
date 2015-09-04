@@ -18,7 +18,9 @@ TOC: on
 \[ a = b \]
 !et
 
+% if FORMAT in ('latex', 'pdflatex'):
 \clearpage
+% endif
 
 ======= A section =======
 
