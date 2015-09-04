@@ -16,7 +16,7 @@ or just drop the extension:
 Terminal> doconce format formatname mydoc
 !ec
 
-===== Generating a makefile =====
+===== Generating a Makefile =====
 label{do2any:make}
 
 Producing HTML, Sphinx, and in particular LaTeX documents from
@@ -94,7 +94,7 @@ the result of running `mako` is available in
 `tmp_mako__mydoc.do.txt`. By examining these files one can see exactly
 what the preprocessors have done.
 
-===== Removal of inline comments =====
+===== Removal of Inline Comments =====
 label{do2any:inlinecomments}
 
 idx{inline comments}
@@ -130,7 +130,7 @@ encapsulate unfinished material, extra material to be removed
 for readers but still nice to archive as part of the document for
 future revisions.
 
-===== Demo of different formats =====
+===== Demo of Different Formats =====
 
 idx{demos}
 
@@ -138,6 +138,25 @@ A simple scientific report is available in "a lot of different formats":
 "http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html".
 How to create the different formats is explained in more depth
 in the coming sections.
+
+===== Tweaking the DocOnce Output =====
+label{do2any:tweaking}
+
+idx{tweaking output}
+idx{automatic editing}
+
+Occasionally, one would like to tweak the output in a certain format
+from DocOnce. One example is figure filenames when transforming
+DocOnce to reStructuredText. Since DocOnce does not know if the
+`.rst` file is going to be filtered to LaTeX or HTML, it cannot know
+if `.eps` or `.png` is the most appropriate image filename.
+The solution is to use a text substitution command or code with, e.g., sed,
+perl, python, or scitools subst, to automatically edit the output file
+from DocOnce. It is then wise to run DocOnce and the editing commands
+from a script to automate all steps in going from DocOnce to the final
+format(s). The `make.sh` files in `docs/manual` and `docs/tutorial`
+constitute comprehensive examples on how such scripts can be made.
+
 
 ===== Useful Options for `doconce format` =====
 
@@ -170,13 +189,13 @@ Other useful options are
 Many more options, depending on the output format, are listed in the
 following sections.
 
-===== HTML =====
+======= HTML =======
 label{do2any:html}
 
 idx{HTML output}
 idx{output format!HTML}
 
-=== Basics ===
+===== Basic HTML Output =====
 
 Making an HTML version of a DocOnce file `mydoc.do.txt`
 is performed by
@@ -187,7 +206,7 @@ The resulting file `mydoc.html` can be loaded into any web browser for viewing.
 
 idx{HTML syntax highlighting}
 
-=== Typesetting of Code ===
+===== Typesetting of Code =====
 
 If the Pygments package (including the `pygmentize` program)
 is installed, code blocks are typeset with
@@ -202,7 +221,7 @@ Pygments styles.
 idx{HTML movies}
 idx{movies in HTML}
 
-=== Handling of Movies ===
+===== Handling of Movies =====
 
 MP4, WebM, and Ogg movies are typeset with the HTML5 `video` tag
 and the HTML code tries to load as many versions among MP4, WebM,
@@ -214,7 +233,7 @@ the older `embed` tag.
 
 idx{HTML layouts}
 
-=== HTML Styles ===
+===== HTML Styles =====
 
 The HTML style can be defined either in the header of the HTML file,
 using a named built-in style;
@@ -241,7 +260,7 @@ be specified: `--ccs=file1.css,file2.css,file3.css`.
 
 idx{HTML templates}
 
-=== HTML templates ===
+===== HTML templates =====
 
 Templates are HTML files with ready-made headers, footers, and style
 specifications where plain HTML text can be inserted in "slots" in the
@@ -280,7 +299,7 @@ The template in `style_vagrant` also needs an extra option
 idx{splitting documents}
 idx{multi-page documents}
 
-=== Splitting HTML documents ===
+===== Splitting HTML documents =====
 
 The `!split` instruction (on separate lines) signifies a pagebreak.
 A command `doconce split_html` is needed after `doconce format` to
@@ -328,7 +347,7 @@ Terminal> doconce format html mydoc --html_style=vagrant \
 Terminal> doconce split_html mydoc_vagrant.html
 !ec
 
-=== URL to files hosted on GitHub ===
+===== URL to files hosted on GitHub =====
 
 The generated HTML code will have URLs to files in the DocOnce repo at GitHub.
 The type of URL is set with the `--html_raw_github_url=...` option:
@@ -343,7 +362,7 @@ The type of URL is set with the `--html_raw_github_url=...` option:
    URL directly to the raw GitHub file (`https://raw.github.com/hplgit/doconce/...`) that may fail to load properly in (e.g.) Internet explorer
  * `--html_raw_github_url=githubusercontent` or `--html_raw_github_url=raw.githubusercontent`: as the one above, but using `https://raw.githubusercontent.com` instead
 
-=== Other HTML options ===
+===== Other HTML options =====
 
 Options for Bootstrap styles:
 
@@ -496,7 +515,7 @@ mathematics as in WordPress blog posts, meaning that one cannot refer
 to equations.
 
 
-===== Pandoc and Markdown =====
+======= Pandoc and Markdown =======
 label{do2any:pandoc}
 
 idx{output format!Markdown}
@@ -528,7 +547,7 @@ while the `--toc` option generates a table of contents.
 See the "Pandoc documentation": "http://johnmacfarlane.net/pandoc/README.html"
 for the many features of the `pandoc` program.
 
-=== Markdown to HTML conversion ===
+===== Markdown to HTML conversion =====
 
 The HTML output from
 `pandoc` needs adjustments to provide full support for MathJax LaTeX
@@ -542,7 +561,7 @@ The result `mydoc.html` can be viewed in a browser.
 
 idx{output format!strict Markdown}
 
-=== Strict Markdown ===
+===== Strict Markdown =====
 
 The option `--strict_markdown_output` generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
@@ -550,7 +569,7 @@ syntax.
 
 idx{output format!GitHub-flavored Markdown}
 
-=== GitHub-flavored Markdown ===
+===== GitHub-flavored Markdown =====
 
 Adding the command-line option `github-md` turns on the
 "GutHub-flavored Markdown dialect": "https://guides.github.com/features/mastering-markdown/", which is used for the issue tracker on "GitHub": "http://github.com". A special feature is the support of task lists:
@@ -608,7 +627,7 @@ the GitHub issue tracker. Turning on Preview shows the typesetting of
 the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
-=== MultiMarkdown ===
+===== MultiMarkdown =====
 
 The option `--multimarkdown_output` generates the MultiMarkdown
 version of Markdown (as opposed to Pandoc-extended Markdown (default),
@@ -616,7 +635,7 @@ strict Markdown, or GitHub-flavored Markdown).
 
 idx{output format!strapdown Markdown}
 
-=== Strapdown rendering of Markdown text ===
+===== Strapdown rendering of Markdown text =====
 
 "Strapdown": "http://strapdownjs.com" is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
@@ -633,7 +652,7 @@ The `--bootstrap_bootwatch_theme=theme` option is used to choose
 a "Bootswatch": "http://bootswatch.com/" theme whose names are
 found on the "Strapdown page": "http://strapdownjs.com".
 
-=== Using Pandoc to go from LaTeX to MS Word or HTML ===
+===== Using Pandoc to go from LaTeX to MS Word or HTML =====
 
 Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
@@ -659,7 +678,7 @@ replace` and `doconce subst` edits might be needed on the `.mkd` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
-===== LaTeX: Overview =====
+======= LaTeX =======
 label{do2any:latex}
 
 idx{LaTeX output}
@@ -670,6 +689,8 @@ XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
 of the documentation of the DocOnce to LaTeX translation.
 !enotice
+
+===== Overview =====
 
 Making a LaTeX file `mydoc.tex` from `mydoc.do.txt` can be done in two
 ways:
@@ -746,7 +767,7 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.
 # formats - the text may be messed up. A better choice is a paragraph
 # environment, as used here.
 
-===== From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1) =====
+===== LaTeX-PDF: Generate LaTeX (Step 1) =====
 label{do2any:latex:compile1}
 
 idx{`ptex2tex` program}
@@ -978,7 +999,7 @@ If no environments like `sys`, `fpro`, or the common
 `envir` are defined on the command line, the plain `\begin{Verbatim}`
 and `\end{Verbatim}` instructions are used.
 
-===== From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional) =====
+===== LaTeX-PDF: Edit the LaTeX File (Step 2, Optional) =====
 label{do2any:latex:compile2}
 
 You can *edit* the `mydoc.tex` file to your needs.
@@ -1008,7 +1029,7 @@ substitutions. You are anyway encourged to make a script for
 generating PDF from the LaTeX file so the `doconce subst` or
 `doconce replace` commands can be put inside the script.
 
-===== From DocOnce to LaTeX-PDF: Generate PDF (Step 3) =====
+===== LaTeX-PDF: Generate PDF (Step 3) =====
 label{do2any:latex:compile3}
 
 Compile `mydoc.tex` and create the PDF file, using `pdflatex`:
@@ -1083,7 +1104,7 @@ Terminal> pandoc -t docx -o mydoc.docx mydoc.md
 The transformation works well for simple text files, but LaTeX mathematics
 does not work.
 
-===== Jupyter (IPython) Notebooks =====
+======= Jupyter (IPython) Notebooks =======
 label{do2any:ipynb}
 
 idx{output format!notebook}
@@ -1097,7 +1118,7 @@ DocOnce can generate json files for the Jupyter Notebook:
 Terminal> doconce format ipynb mydoc  # results in mydoc.ipynb
 !ec
 
-=== Hidden code blocks ===
+===== Hidden code blocks =====
 
 It is no guarantee that the notebook can be executed. For example,
 having the code
@@ -1132,7 +1153,7 @@ sys.path.append('src-test')
 |ec
 !ec
 
-=== Displaying code as plain text instead of executable cells ===
+===== Displaying code as plain text instead of executable cells =====
 
 Some code blocks may just be there for explanation and are not
 meant to be executed. These can be marked by `!bc pycod-t` (or
@@ -1160,7 +1181,7 @@ a variable will not lead to output like it does in a Python shell).
 To have an interactive session typeset with input and output in plain
 text, use the `-t` extension to the environment: `pyshell-t` and `ipy-t`.
 
-=== Figures ===
+===== Figures =====
 
 As with HTML files, you need to ensure that the notebook has access to
 figures and source code as requested.
@@ -1173,7 +1194,7 @@ the `--ipynb_figure=` option, with the following values:
  * `imgtag`: `<img ...>` tag in HTML taking the specified width into account
  * `Image`: Python notebook cell with `Image` object
 
-=== Movies ===
+===== Movies =====
 
 Typesetting of movies is specified by `--ipynb_movie=`, and valid options
 are
@@ -1186,7 +1207,7 @@ are
  * `ipynb`: use `IPython.display.YouTubeVideo` object for YouTube videos,
    and use an `HTML` object with `video` tag for local movies
 
-=== Admonitions ===
+===== Admonitions =====
 
 Typesetting of admonition is rather primitive in notebooks.
 We offer these different choices, set by the
@@ -1200,7 +1221,7 @@ option `--ipynb_admon=`:
 Note that quotes in `!bc quote` environments
 are always typeset as Markdown quotes.
 
-=== References to an External Textbook ===
+===== References to an External Textbook =====
 
 Sometimes one wants to refer to equations and sections in an external
 LaTeX book where a `book.aux` file is available. The references in the
@@ -1212,7 +1233,7 @@ Terminal> doconce format ipynb mydoc \
           --replace_ref_by_latex_auxno=book.aux
 !ec
 
-===== Matlab Notebooks =====
+======= Matlab Notebooks =======
 label{do2any:matlabnb}
 
 idx{output format!notebook}
@@ -1244,7 +1265,7 @@ Terminal> doconce format matlabnb mydoc \
 !ec
 
 
-===== Plain ASCII Text =====
+======= Plain ASCII Text =======
 label{do2any:ascii}
 
 idx{output format!ASCII}
@@ -1259,7 +1280,7 @@ computer source code:
 Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
 !ec
 
-===== reStructuredText =====
+======= reStructuredText =======
 label{do2any:rst}
 
 idx{output format!reStructuredText}
@@ -1310,11 +1331,13 @@ Some links for going from LaTeX to Word are listed below.
 
 
 
-===== Sphinx =====
+======= Sphinx =======
 label{do2any:sphinx}
 
 idx{output format!Sphinx}
 idx{Sphinx output}
+
+===== The Basic Steps =====
 
 Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the `doconce sphinx_dir` command:
@@ -1371,7 +1394,8 @@ file. Maybe you want to do things differently.
 The following paragraphs describes the many possibilities for steering
 the Sphinx output.
 
-__Links.__
+===== Links =====
+
 The `automake_sphinx.py` script copies directories named `fig*`
 over to the Sphinx directory so that figures are accessible
 in the Sphinx compilation.  It also examines `MOVIE:` and `FIGURE:`
@@ -1392,7 +1416,8 @@ script which compiles the DocOnce document do it automatically.
 
 idx{Sphinx styles}
 
-__Themes.__
+===== Themes =====
+
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
@@ -1467,7 +1492,9 @@ path to the directory containing the Sphinx theme. You must also
 specify a configure file by `conf.py=path`, where `path` is the
 relative path to your `conf.py` file.
 
-__Example.__ Say you like the `scipy_lectures` theme, but you want
+=== Example ===
+
+Say you like the `scipy_lectures` theme, but you want
 a table of contents to appear *to the right*, much in the same style
 as in the `default` or `classic` themes
 (where the table of contents is to the left).
@@ -1507,7 +1534,8 @@ doconce sphinx_dir theme=scipy_lectures \
                    conf.py=../some/path/conf.py mydoc
 !ec
 
-__RunestoneInteractive books.__
+===== RunestoneInteractive books =====
+
 The `doconce format sphinx` command accepts an option `--runestone`
 for generating "RunestoneInteractive": "http://runestoneinteractive.org"
 books (which build on Sphinx).
@@ -1516,7 +1544,7 @@ option to generate these type of documents.
 
 idx{Sphinx directory}
 
-=== The manual Sphinx procedure ===
+===== The manual Sphinx procedure =====
 
 If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
@@ -1607,7 +1635,7 @@ depending the argument that follows `!bc`: `cod` gives Python
 all such arguments can be customized both for Sphinx and LaTeX output.
 
 
-===== Wiki Formats =====
+======= Wiki Formats =======
 label{do2any:wiki}
 
 idx{output format!MediaWiki}
@@ -1662,7 +1690,7 @@ the `.gwiki` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
 
-===== Google Docs =====
+======= Google Docs =======
 label{do2any:google:docs}
 
 idx{Google docs output}
@@ -1692,24 +1720,6 @@ This is not yet much tested. It remains to see how code becomes in
 Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the "googledoc2latex": "http://code.google.com/p/googledoc2latex" script can convert a Google document to LaTeX.
-
-===== Tweaking the DocOnce Output =====
-label{do2any:tweaking}
-
-idx{tweaking output}
-idx{automatic editing}
-
-Occasionally, one would like to tweak the output in a certain format
-from DocOnce. One example is figure filenames when transforming
-DocOnce to reStructuredText. Since DocOnce does not know if the
-`.rst` file is going to be filtered to LaTeX or HTML, it cannot know
-if `.eps` or `.png` is the most appropriate image filename.
-The solution is to use a text substitution command or code with, e.g., sed,
-perl, python, or scitools subst, to automatically edit the output file
-from DocOnce. It is then wise to run DocOnce and the editing commands
-from a script to automate all steps in going from DocOnce to the final
-format(s). The `make.sh` files in `docs/manual` and `docs/tutorial`
-constitute comprehensive examples on how such scripts can be made.
 
 ======= Options for the `doconce` commands =======
 

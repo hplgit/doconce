@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 3, 2015
+:Date: Sep 4, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -6670,8 +6670,8 @@ Points to consider (just sketches...):
    A comment ``# Short title: title`` after a section is interpreted
    in ``latex`` and ``pdflatex`` output as a short title for the section.
 
-Overview
---------
+Overview  (1)
+-------------
 
 Slide Types
 ~~~~~~~~~~~
@@ -6923,8 +6923,8 @@ Potential Problems
 LaTeX Beamer Slides
 -------------------
 
-Themes
-~~~~~~
+Themes  (1)
+~~~~~~~~~~~
 
 Four themes come with DocOnce: ``X_Y``, where ``X`` is ``blue`` or ``red``
 (the main color of the slides) and ``Y`` is `plain <http://hplgit.github.io/teamods/doconce/demo/demo_red_plain.pdf>`__
@@ -7903,7 +7903,7 @@ or just drop the extension:
 
 .. _do2any:make:
 
-Generating a makefile
+Generating a Makefile
 ---------------------
 
 Producing HTML, Sphinx, and in particular LaTeX documents from
@@ -7988,7 +7988,7 @@ what the preprocessors have done.
 
 .. _do2any:inlinecomments:
 
-Removal of inline comments
+Removal of Inline Comments
 --------------------------
 
 .. index:: inline comments
@@ -8030,7 +8030,7 @@ encapsulate unfinished material, extra material to be removed
 for readers but still nice to archive as part of the document for
 future revisions.
 
-Demo of different formats
+Demo of Different Formats
 -------------------------
 
 .. index:: demos
@@ -8038,6 +8038,27 @@ Demo of different formats
 A simple scientific report is available in `a lot of different formats <http://hplgit.github.com/teamods/writing_reports/index_with_doconce_commands.html>`__.
 How to create the different formats is explained in more depth
 in the coming sections.
+
+.. _do2any:tweaking:
+
+Tweaking the DocOnce Output
+---------------------------
+
+.. index:: tweaking output
+
+.. index:: automatic editing
+
+Occasionally, one would like to tweak the output in a certain format
+from DocOnce. One example is figure filenames when transforming
+DocOnce to reStructuredText. Since DocOnce does not know if the
+``.rst`` file is going to be filtered to LaTeX or HTML, it cannot know
+if ``.eps`` or ``.png`` is the most appropriate image filename.
+The solution is to use a text substitution command or code with, e.g., sed,
+perl, python, or scitools subst, to automatically edit the output file
+from DocOnce. It is then wise to run DocOnce and the editing commands
+from a script to automate all steps in going from DocOnce to the final
+format(s). The ``make.sh`` files in ``docs/manual`` and ``docs/tutorial``
+constitute comprehensive examples on how such scripts can be made.
 
 Useful Options for ``doconce format``
 -------------------------------------
@@ -8077,18 +8098,20 @@ Other useful options are
 Many more options, depending on the output format, are listed in the
 following sections.
 
+.. !split
+
 .. _do2any:html:
 
 HTML
-----
+====
 
 .. index:: HTML output
 
 .. index::
    single: output format; HTML
 
-Basics
-~~~~~~
+Basic HTML Output
+-----------------
 
 Making an HTML version of a DocOnce file ``mydoc.do.txt``
 is performed by
@@ -8102,7 +8125,7 @@ The resulting file ``mydoc.html`` can be loaded into any web browser for viewing
 .. index:: HTML syntax highlighting
 
 Typesetting of Code
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 If the Pygments package (including the ``pygmentize`` program)
 is installed, code blocks are typeset with
@@ -8119,7 +8142,7 @@ Pygments styles.
 .. index:: movies in HTML
 
 Handling of Movies
-~~~~~~~~~~~~~~~~~~
+------------------
 
 MP4, WebM, and Ogg movies are typeset with the HTML5 ``video`` tag
 and the HTML code tries to load as many versions among MP4, WebM,
@@ -8132,7 +8155,7 @@ the older ``embed`` tag.
 .. index:: HTML layouts
 
 HTML Styles
-~~~~~~~~~~~
+-----------
 
 The HTML style can be defined either in the header of the HTML file,
 using a named built-in style;
@@ -8164,7 +8187,7 @@ be specified: ``--ccs=file1.css,file2.css,file3.css``.
 .. index:: HTML templates
 
 HTML templates
-~~~~~~~~~~~~~~
+--------------
 
 Templates are HTML files with ready-made headers, footers, and style
 specifications where plain HTML text can be inserted in "slots" in the
@@ -8206,7 +8229,7 @@ The template in ``style_vagrant`` also needs an extra option
 .. index:: multi-page documents
 
 Splitting HTML documents
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 The ``!split`` instruction (on separate lines) signifies a pagebreak.
 A command ``doconce split_html`` is needed after ``doconce format`` to
@@ -8257,7 +8280,7 @@ the HTML document: ``mydoc_bloodish.html``, ``mydoc_solarized``, and
         Terminal> doconce split_html mydoc_vagrant.html
 
 URL to files hosted on GitHub
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 The generated HTML code will have URLs to files in the DocOnce repo at GitHub.
 The type of URL is set with the ``--html_raw_github_url=...`` option:
@@ -8276,7 +8299,7 @@ The type of URL is set with the ``--html_raw_github_url=...`` option:
  * ``--html_raw_github_url=githubusercontent`` or ``--html_raw_github_url=raw.githubusercontent``: as the one above, but using ``https://raw.githubusercontent.com`` instead
 
 Other HTML options
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Options for Bootstrap styles:
 
@@ -8459,10 +8482,12 @@ and produce very nice-looking books.  There is support for LaTeX
 mathematics as in WordPress blog posts, meaning that one cannot refer
 to equations.
 
+.. !split
+
 .. _do2any:pandoc:
 
 Pandoc and Markdown
--------------------
+===================
 
 .. index::
    single: output format; Markdown
@@ -8501,7 +8526,7 @@ See the `Pandoc documentation <http://johnmacfarlane.net/pandoc/README.html>`__
 for the many features of the ``pandoc`` program.
 
 Markdown to HTML conversion
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 The HTML output from
 ``pandoc`` needs adjustments to provide full support for MathJax LaTeX
@@ -8518,7 +8543,7 @@ The result ``mydoc.html`` can be viewed in a browser.
    single: output format; strict Markdown
 
 Strict Markdown
-~~~~~~~~~~~~~~~
+---------------
 
 The option ``--strict_markdown_output`` generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
@@ -8528,7 +8553,7 @@ syntax.
    single: output format; GitHub-flavored Markdown
 
 GitHub-flavored Markdown
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Adding the command-line option ``github-md`` turns on the
 `GutHub-flavored Markdown dialect <https://guides.github.com/features/mastering-markdown/>`__, which is used for the issue tracker on `GitHub <http://github.com>`__. A special feature is the support of task lists:
@@ -8589,7 +8614,7 @@ the quote, compute code, inline verbatim, headings, the task list, and
 the table.
 
 MultiMarkdown
-~~~~~~~~~~~~~
+-------------
 
 The option ``--multimarkdown_output`` generates the MultiMarkdown
 version of Markdown (as opposed to Pandoc-extended Markdown (default),
@@ -8599,7 +8624,7 @@ strict Markdown, or GitHub-flavored Markdown).
    single: output format; strapdown Markdown
 
 Strapdown rendering of Markdown text
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
 `Strapdown <http://strapdownjs.com>`__ is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
@@ -8618,7 +8643,7 @@ a `Bootswatch <http://bootswatch.com/>`__ theme whose names are
 found on the `Strapdown page <http://strapdownjs.com>`__.
 
 Using Pandoc to go from LaTeX to MS Word or HTML
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------
 
 Pandoc is useful to go from LaTeX mathematics to, e.g., HTML or MS
 Word.  There are two ways (experiment to find the best one for your
@@ -8645,10 +8670,12 @@ replace`` and ``doconce subst`` edits might be needed on the ``.mkd`` or
 to MS Word.  Also when going to reStructuredText using Pandoc, it can
 be advantageous to go via LaTeX.
 
+.. !split
+
 .. _do2any:latex:
 
-LaTeX: Overview
----------------
+LaTeX
+=====
 
 .. index:: LaTeX output
 
@@ -8663,6 +8690,9 @@ LaTeX: Overview
 
 
 
+
+Overview  (2)
+-------------
 
 Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` can be done in two
 ways:
@@ -8751,8 +8781,8 @@ either the ``ptex2tex`` program or DocOnce's (simplified) version of it:
 
 .. _do2any:latex:compile1:
 
-From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)
---------------------------------------------------
+LaTeX-PDF: Generate LaTeX (Step 1)
+----------------------------------
 
 .. index:: ptex2tex program
 
@@ -9031,8 +9061,8 @@ and ``\end{Verbatim}`` instructions are used.
 
 .. _do2any:latex:compile2:
 
-From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)
------------------------------------------------------------------
+LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)
+-------------------------------------------------
 
 You can *edit* the ``mydoc.tex`` file to your needs.
 For example, you may want to substitute ``section`` by ``section*`` to
@@ -9065,8 +9095,8 @@ generating PDF from the LaTeX file so the ``doconce subst`` or
 
 .. _do2any:latex:compile3:
 
-From DocOnce to LaTeX-PDF: Generate PDF (Step 3)
-------------------------------------------------
+LaTeX-PDF: Generate PDF (Step 3)
+--------------------------------
 
 Compile ``mydoc.tex`` and create the PDF file, using ``pdflatex``:
 
@@ -9155,10 +9185,12 @@ file:
 The transformation works well for simple text files, but LaTeX mathematics
 does not work.
 
+.. !split
+
 .. _do2any:ipynb:
 
 Jupyter (IPython) Notebooks
----------------------------
+===========================
 
 .. index::
    single: output format; notebook
@@ -9176,7 +9208,7 @@ DocOnce can generate json files for the Jupyter Notebook:
         Terminal> doconce format ipynb mydoc  # results in mydoc.ipynb
 
 Hidden code blocks
-~~~~~~~~~~~~~~~~~~
+------------------
 
 It is no guarantee that the notebook can be executed. For example,
 having the code
@@ -9214,7 +9246,7 @@ for the import statement to work:
         !ec
 
 Displaying code as plain text instead of executable cells
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------------------------
 
 Some code blocks may just be there for explanation and are not
 meant to be executed. These can be marked by ``!bc pycod-t`` (or
@@ -9244,7 +9276,7 @@ To have an interactive session typeset with input and output in plain
 text, use the ``-t`` extension to the environment: ``pyshell-t`` and ``ipy-t``.
 
 Figures  (2)
-~~~~~~~~~~~~
+------------
 
 As with HTML files, you need to ensure that the notebook has access to
 figures and source code as requested.
@@ -9260,7 +9292,7 @@ the ``--ipynb_figure=`` option, with the following values:
  * ``Image``: Python notebook cell with ``Image`` object
 
 Movies  (2)
-~~~~~~~~~~~
+-----------
 
 Typesetting of movies is specified by ``--ipynb_movie=``, and valid options
 are
@@ -9277,7 +9309,7 @@ are
    and use an ``HTML`` object with ``video`` tag for local movies
 
 Admonitions  (2)
-~~~~~~~~~~~~~~~~
+----------------
 
 Typesetting of admonition is rather primitive in notebooks.
 We offer these different choices, set by the
@@ -9294,7 +9326,7 @@ Note that quotes in ``!bc quote`` environments
 are always typeset as Markdown quotes.
 
 References to an External Textbook
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------
 
 Sometimes one wants to refer to equations and sections in an external
 LaTeX book where a ``book.aux`` file is available. The references in the
@@ -9306,10 +9338,12 @@ with this construction:
         Terminal> doconce format ipynb mydoc \
                   --replace_ref_by_latex_auxno=book.aux
 
+.. !split
+
 .. _do2any:matlabnb:
 
 Matlab Notebooks
-----------------
+================
 
 .. index::
    single: output format; notebook
@@ -9343,10 +9377,12 @@ any other output format):
         Terminal> doconce format matlabnb mydoc \
                   --replace_ref_by_latex_auxno=book.aux
 
+.. !split
+
 .. _do2any:ascii:
 
 Plain ASCII Text
-----------------
+================
 
 .. index::
    single: output format; ASCII
@@ -9366,10 +9402,12 @@ computer source code:
 
         Terminal> doconce format plain mydoc.do.txt  # results in mydoc.txt
 
+.. !split
+
 .. _do2any:rst:
 
 reStructuredText
-----------------
+================
 
 .. index::
    single: output format; reStructuredText
@@ -9427,15 +9465,20 @@ Some links for going from LaTeX to Word are listed below.
 
  * `<http://nileshbansal.blogspot.com/2007/12/latex-to-openofficeword.html>`_
 
+.. !split
+
 .. _do2any:sphinx:
 
 Sphinx
-------
+======
 
 .. index::
    single: output format; Sphinx
 
 .. index:: Sphinx output
+
+The Basic Steps
+---------------
 
 Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the ``doconce sphinx_dir`` command:
@@ -9501,7 +9544,9 @@ In each edit-and-watch cycle do
 The following paragraphs describes the many possibilities for steering
 the Sphinx output.
 
-**Links.**
+Links
+-----
+
 The ``automake_sphinx.py`` script copies directories named ``fig*``
 over to the Sphinx directory so that figures are accessible
 in the Sphinx compilation.  It also examines ``MOVIE:`` and ``FIGURE:``
@@ -9522,7 +9567,9 @@ script which compiles the DocOnce document do it automatically.
 
 .. index:: Sphinx styles
 
-**Themes.**
+Themes  (2)
+-----------
+
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
@@ -9559,11 +9606,21 @@ file to enable easy specification of information and,
 in particular,customization of themes.
 For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
-the look and feel of themes, etc. The ``conf.py`` file is a
-good starting point for fine-tuning your favorite theme, and your
-own ``myconf.py`` file can later be supplied and used when running
-``doconce sphinx_dir``: simply add the command-line option
-``conf.py=myconf.py``.
+the look and feel of themes, etc.
+
+The ``conf.py`` file is a good starting point for fine-tuning your
+favorite theme, and your own ``myconf.py`` file can later be supplied
+and used when running ``doconce sphinx_dir``: simply add the
+command-line option ``conf.py=myconf.py``. If you leave the ``project``
+and ``copyright`` variables as empty strings in your own ``myconf.py``
+file, DocOnce will automatically edit a copy (``conf.py``) of
+``myconf.py`` in the sphinx root directory so that ``project`` becomes the
+title of the DocOnce source file, and ``copyright`` is based on the
+author or copyright information in the source file. Other variables in
+``myconf.py`` depending on title, author, and copyright information will
+also be edited. In this way, you can have your tailored ``conf.py``
+file, but be sure that it is always compatible with title, author, and
+copyright information in the underlying DocOnce source.
 
 A script
 ``make-themes.sh`` can make HTML documents with one or more themes.
@@ -9587,7 +9644,9 @@ path to the directory containing the Sphinx theme. You must also
 specify a configure file by ``conf.py=path``, where ``path`` is the
 relative path to your ``conf.py`` file.
 
-**Example.**
+Example
+~~~~~~~
+
 Say you like the ``scipy_lectures`` theme, but you want
 a table of contents to appear *to the right*, much in the same style
 as in the ``default`` or ``classic`` themes
@@ -9629,7 +9688,9 @@ and reuse it the next time ``doconce sphinx_dir`` is run
         doconce sphinx_dir theme=scipy_lectures \
                            conf.py=../some/path/conf.py mydoc
 
-**RunestoneInteractive books.**
+RunestoneInteractive books
+--------------------------
+
 The ``doconce format sphinx`` command accepts an option ``--runestone``
 for generating `RunestoneInteractive <http://runestoneinteractive.org>`__
 books (which build on Sphinx).
@@ -9639,7 +9700,7 @@ option to generate these type of documents.
 .. index:: Sphinx directory
 
 The manual Sphinx procedure
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
@@ -9743,10 +9804,12 @@ depending the argument that follows ``!bc``: ``cod`` gives Python
 (``code-block:: python`` in Sphinx syntax) and ``cppcod`` gives C++, but
 all such arguments can be customized both for Sphinx and LaTeX output.
 
+.. !split
+
 .. _do2any:wiki:
 
 Wiki Formats
-------------
+============
 
 .. index::
    single: output format; MediaWiki
@@ -9806,10 +9869,12 @@ the ``.gwiki`` file be replaced by a URL where the figure is
 available. There are instructions in the file for doing this. Usually,
 one performs this substitution automatically (see next section).
 
+.. !split
+
 .. _do2any:google:docs:
 
 Google Docs
------------
+===========
 
 .. index:: Google docs output
 
@@ -9842,27 +9907,6 @@ This is not yet much tested. It remains to see how code becomes in
 Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the `googledoc2latex <http://code.google.com/p/googledoc2latex>`__ script can convert a Google document to LaTeX.
-
-.. _do2any:tweaking:
-
-Tweaking the DocOnce Output
----------------------------
-
-.. index:: tweaking output
-
-.. index:: automatic editing
-
-Occasionally, one would like to tweak the output in a certain format
-from DocOnce. One example is figure filenames when transforming
-DocOnce to reStructuredText. Since DocOnce does not know if the
-``.rst`` file is going to be filtered to LaTeX or HTML, it cannot know
-if ``.eps`` or ``.png`` is the most appropriate image filename.
-The solution is to use a text substitution command or code with, e.g., sed,
-perl, python, or scitools subst, to automatically edit the output file
-from DocOnce. It is then wise to run DocOnce and the editing commands
-from a script to automate all steps in going from DocOnce to the final
-format(s). The ``make.sh`` files in ``docs/manual`` and ``docs/tutorial``
-constitute comprehensive examples on how such scripts can be made.
 
 .. !split
 
