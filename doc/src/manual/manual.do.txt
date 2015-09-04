@@ -1,5 +1,5 @@
 TITLE: DocOnce Description
-AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Hans Petter Langtangen {copyright} at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 

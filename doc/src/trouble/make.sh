@@ -18,7 +18,7 @@ pdflatex -shell-escape ${name}.tex
 # Sphinx
 doconce format sphinx ${name}  $opt
 rm -rf sphinx-rootdir
-doconce sphinx_dir copyright='2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' version=0.4 theme=cbc ${name}
+doconce sphinx_dir version=0.4 theme=cbc ${name}
 python automake_sphinx.py
 
 doconce format rst ${name}  $opt

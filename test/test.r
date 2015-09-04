@@ -4359,8 +4359,8 @@ draft,                   % draft: marks overfull hboxes, figures with paths
 \hypersetup{
     breaklinks=true,
     colorlinks=true,
-    linkcolor=yellow!10,
-    urlcolor=yellow!10,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -6814,8 +6814,8 @@ draft,                   % draft: marks overfull hboxes, figures with paths
 \hypersetup{
     breaklinks=true,
     colorlinks=true,
-    linkcolor=yellow!10,
-    urlcolor=yellow!10,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
     citecolor=black,
     filecolor=black,
     %filecolor=blue,
@@ -44223,7 +44223,7 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 system doconce format sphinx testdoc $ex
 system doconce split_rst testdoc
-system doconce sphinx_dir copyright=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
+system doconce sphinx_dir dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 
@@ -76308,7 +76308,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f0b6cc46de8>
+verbatim is to be replaced using <function html_verbatim at 0x7f6cb9653de8>
 
 
 First occurence: " `mako`."
@@ -80546,8 +80546,8 @@ we can run the program:
 ************** File: sphinx-testdoc/conf.py *****************
 # -*- coding: utf-8 -*-
 #
-# Just a test documentation build configuration file, created by
-# sphinx-quickstart on Thu Sep  3 13:39:28 2015.
+# A Document for Testing DocOnce documentation build configuration file, created by
+# sphinx-quickstart on Fri Sep  4 01:09:18 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -80699,8 +80699,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Just a test'
-copyright = u'HPL'
+project = u'A Document for Testing DocOnce'
+copyright = u'2015, Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe'
 author = u'Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -81013,7 +81013,7 @@ elif html_theme in tinker_themes:
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = u"Just a test"
+html_title = u"A Document for Testing DocOnce"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -81096,7 +81096,7 @@ if html_theme == 'impressjs':
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Justatestdoc'
+htmlhelp_basename = 'ADocumentforTestingDocOncedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -81118,7 +81118,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'Justatest.tex', u'Just a test Documentation',
+  (master_doc, 'ADocumentforTestingDocOnce.tex', u'A Document for Testing DocOnce Documentation',
    u'Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe', 'manual'),
 ]
 
@@ -81148,7 +81148,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'justatest', u'Just a test Documentation',
+    (master_doc, 'adocumentfortestingdoconce', u'A Document for Testing DocOnce Documentation',
      [author], 1)
 ]
 
@@ -81162,8 +81162,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'Justatest', u'Just a test Documentation',
-   author, 'Justatest', 'One line description of project.',
+  (master_doc, 'ADocumentforTestingDocOnce', u'A Document for Testing DocOnce Documentation',
+   author, 'ADocumentforTestingDocOnce', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -83200,7 +83200,7 @@ system pdflatex -shell-escape $name
 # Sphinx
 system doconce format sphinx $name --no_preprocess
 rm -rf sphinx-rootdir
-system doconce sphinx_dir copyright='2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc $name
+system doconce sphinx_dir theme=cbc $name
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 system python automake_sphinx.py
 cp $name.rst $name.sphinx.rst  # save
@@ -85629,7 +85629,7 @@ list of capabilities:
 
 <p>
 <!-- begin verbatim block  shpro-->
-<pre><code>DocOnce version 1.0.3
+<pre><code>DocOnce version 1.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
@@ -87454,7 +87454,7 @@ transforming a \texttt{.do.txt} file to some format. Here is the
 list of capabilities:
 
 \begin{Verbatim}[numbers=none,fontsize=\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=2mm]
-DocOnce version 1.0.3
+DocOnce version 1.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
@@ -88876,7 +88876,7 @@ The ``doconce`` program can be used for a number of purposes besides
 transforming a ``.do.txt`` file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.3
+        DocOnce version 1.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
@@ -90364,7 +90364,7 @@ list of capabilities:
 
 .. code-block:: bash
 
-        DocOnce version 1.0.3
+        DocOnce version 1.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
@@ -91662,7 +91662,7 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 {{{
-DocOnce version 1.0.3
+DocOnce version 1.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
@@ -93049,7 +93049,7 @@ transforming a <code>.do.txt</code> file to some format. Here is the
 list of capabilities:
 
 <syntaxhighlight lang="bash">
-DocOnce version 1.0.3
+DocOnce version 1.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
@@ -94335,7 +94335,7 @@ transforming a {{{.do.txt}}} file to some format. Here is the
 list of capabilities:
 
 {{{
-DocOnce version 1.0.3
+DocOnce version 1.2
 Usage: doconce command [optional arguments]
 commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
 
@@ -95600,7 +95600,7 @@ The 'doconce' program can be used for a number of purposes besides
 transforming a '.do.txt' file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.3
+        DocOnce version 1.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
@@ -96870,7 +96870,7 @@ The C{doconce} program can be used for a number of purposes besides
 transforming a C{.do.txt} file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.3
+        DocOnce version 1.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
@@ -98217,7 +98217,7 @@ The doconce program can be used for a number of purposes besides
 transforming a .do.txt file to some format. Here is the
 list of capabilities::
 
-        DocOnce version 1.0.3
+        DocOnce version 1.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
@@ -99569,7 +99569,7 @@ transforming a `.do.txt` file to some format. Here is the
 list of capabilities:
 
 
-        DocOnce version 1.0.3
+        DocOnce version 1.2
         Usage: doconce command [optional arguments]
         commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
         
@@ -106147,8 +106147,8 @@ output in testdoc.rst
 testdoc split into
 ._testdoc000.rst ._testdoc001.rst ._testdoc002.rst ._testdoc003.rst ._testdoc004.rst ._testdoc005.rst ._testdoc006.rst ._testdoc007.rst ._testdoc008.rst ._testdoc009.rst ._testdoc010.rst
 + '[' 0 -ne 0 ']'
-+ system doconce sphinx_dir copyright=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
-+ doconce sphinx_dir copyright=HPL 'title=Just a test' dirname=sphinx-testdoc version=0.1 theme=agni testdoc
++ system doconce sphinx_dir dirname=sphinx-testdoc version=0.1 theme=agni testdoc
++ doconce sphinx_dir dirname=sphinx-testdoc version=0.1 theme=agni testdoc
 Making sphinx-testdoc
 Welcome to the Sphinx 1.4a0+ quickstart utility.
 
@@ -106208,9 +106208,9 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-title: Just a test
+title: A Document for Testing DocOnce
 author: Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe
-copyright: HPL
+copyright: 2015, Hans Petter Langtangen, Kaare Dump, A. Dummy Author, I. S. Overworked and Outburned and J. Doe
 theme: agni
 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
@@ -108465,12 +108465,10 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in math_test.do.txt
-Using title "How various formats can deal with LaTeX math" from math_test
 title: How various formats can deal with LaTeX math
 author: HPL
 copyright: 2015, HPL
-theme: default
+theme: classic
 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
@@ -110279,8 +110277,6 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in tmp_copyright.do.txt
-Using title "Test" from tmp_copyright
 title: Test
 author: Hans Petter Langtangen, Kaare Dump and Joe Doe
 copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen
@@ -110407,8 +110403,6 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in tmp_copyright.do.txt
-Using title "Test" from tmp_copyright
 title: Test
 author: Hans Petter Langtangen, Kaare Dump and Joe Doe
 copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution 4.0 license
@@ -110535,8 +110529,6 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in tmp_copyright.do.txt
-Using title "Test" from tmp_copyright
 title: Test
 author: Hans Petter Langtangen, Kaare Dump and Joe Doe
 copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under CC Attribution-NonCommercial 4.0 license
@@ -110663,8 +110655,6 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in tmp_copyright.do.txt
-Using title "Test" from tmp_copyright
 title: Test
 author: Hans Petter Langtangen, Kaare Dump and Joe Doe
 copyright: 2015, Simula, Kaare Dump, Hans Petter Langtangen. Released under the MIT license.
@@ -113461,12 +113451,10 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in admon.do.txt
-Using title "Testing admons" from admon
 title: Testing admons
 author: hpl
 copyright: 2015, hpl
-theme: default
+theme: classic
 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme
 
@@ -118941,8 +118929,8 @@ copy complete file doconce_program.sh  (format: shpro)
 output in quickref.rst
 + '[' 0 -ne 0 ']'
 + rm -rf sphinx-rootdir
-+ system doconce sphinx_dir 'copyright=2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc quickref
-+ doconce sphinx_dir 'copyright=2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc quickref
++ system doconce sphinx_dir theme=cbc quickref
++ doconce sphinx_dir theme=cbc quickref
 Making sphinx-rootdir
 Welcome to the Sphinx 1.4a0+ quickstart utility.
 
@@ -119002,11 +118990,9 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
-searching for TITLE in quickref.do.txt
-Using title "DocOnce Quick Reference" from quickref
 title: DocOnce Quick Reference
 author: Hans Petter Langtangen, H. P. Langtangen, Kaare Dump and A. Dummy Author
-copyright: 2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo
+copyright: 2015, Hans Petter Langtangen, H. P. Langtangen, Kaare Dump and A. Dummy Author
 theme: cbc
 
 These Sphinx themes were found: ADCtheme, agni, agogo, alabaster, basic, basicstrap, bizstyle, bloodish, boilerplate, bootstrap, cbc, classic, cloud, dark, default, epub, fenics, fenics_minimal1, fenics_minimal2, flat, haiku, jal, minimal5, modern5, nature, pylons, pyramid, redcloud, responsive, scipy_lectures, scrolls, slim-agogo, solarized, sphinx_rtd_theme, sphinxdoc, traditional, uio, vlinux-theme

@@ -35,7 +35,7 @@ system pdflatex -shell-escape $name
 # Sphinx
 system doconce format sphinx $name --no_preprocess
 rm -rf sphinx-rootdir
-system doconce sphinx_dir copyright='2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' theme=cbc $name
+system doconce sphinx_dir theme=cbc $name
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
 system python automake_sphinx.py
 cp $name.rst $name.sphinx.rst  # save

@@ -99,7 +99,7 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print """Usage: doconce sphinx_dir copyright="name(s) of author or company" title="the full title of the document" short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]
+    print """Usage: doconce sphinx_dir short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]
 
 Additional command-line arguments: theme_dir=directoryname conf.py=filename logo=filename
 
@@ -108,13 +108,12 @@ sphinx version of a doconce document. The option --runestone makes a
 directory for RunestoneInteractive documents (slightly different from
 a standard sphinx directory).
 
-The title, copyright, and version options go to the footer in the pages.
-If not given, the title is taken from the DocOnce document. If
-copyright is not given, it is taken from the document's copyright
-info ('{copyright, year}' in AUTHOR specifications), and if no such
-info exists, copyright becomes the author names (taken from the document).
 The default dirname is "sphinx-rootdir". The intersphinx option is used
 for links to other sphinx documents.
+
+The copyright in the footer of Sphinx documents is based on the AUTHOR
+field(s) in doconcefile, and if no {copyright...} specification is given
+in the field(s), all authors are listed.
 
 The theme option can be chosen from basic sphinx themes (agogo,
 basic, bizstyle, classic, default, epub, haiku, nature, pyramid,
@@ -141,9 +140,9 @@ is done by an automatically generated script:
 
 The master file can be split into parts. Here is the typical code:
 
-  doconce format sphinx master.do.txt
-  doconce split_rst master
-  doconce sphinx_dir master  # or with a lot of options...
+  doconce format sphinx mydoc.do.txt
+  doconce split_rst mydoc
+  doconce sphinx_dir mydoc  # or with a lot of options...
   python automake_sphinx.py
 
 Note that split_rst must be run prior to sphinx_dir!
@@ -158,9 +157,9 @@ def sphinx_dir():
 
     # Grab title, author/copyright, version from the command line
     # (set default values first)
-    title = short_title = copyright_ = None
+    short_title = None
     version = '1.0'
-    theme = 'default'
+    theme = 'classic'
     doconce_files = []
     sphinx_rootdir = 'sphinx-rootdir'
     conf_py = None
@@ -169,15 +168,14 @@ def sphinx_dir():
     favicon = None
     intersphinx = False
     runestone = False
+    # For backward compatibility we need to detect title, copyright and author
+    # on the command line
+    title_cml = copyright_cml = author_cml = None
+
+    # Get user's info
     for arg in sys.argv[1:]:
-        if arg.startswith('title='):
-            title = arg.split('=')[1]
-        elif arg.startswith('short-title='):
+        if arg.startswith('short-title='):
             short_title = arg.split('=')[1]
-        elif arg.startswith('author='):
-            copyright_ = arg.split('=')[1]
-        elif arg.startswith('copyright='):
-            copyright_ = arg.split('=')[1]
         elif arg.startswith('version='):
             version = arg.split('=')[1]
         elif arg.startswith('dirname='):
@@ -196,6 +194,12 @@ def sphinx_dir():
             intersphinx = True
         elif arg == '--runestone':
             runestone = True
+        elif arg.startswith('author='):
+            author_cml = arg.split('=')[1]
+        elif arg.startswith('copyright='):
+            copyright_cml = arg.split('=')[1]
+        elif arg.startswith('title='):
+            title_cml = arg.split('=')[1]
         else:
             doconce_files.append(arg)
 
@@ -227,19 +231,21 @@ def sphinx_dir():
     parts = glob.glob('._%s[0-9][0-9][0-9].rst' % filename)
     parts = [part[:-4] for part in sorted(parts)]
 
-    if title is None:
-        print 'searching for TITLE in %s.do.txt' % filename
-        f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
-        if 'TITLE:' in fstr:
-            for line in fstr.splitlines():
-                if line.startswith('TITLE:'):
-                    title = line[6:].strip()
-                    print 'Using title "%s" from' % title, filename
-                    break # use the first TITLE spec
-    if title is None:
-        print '\nNo TITLE: line found in %s.do.txt' % filename
-        print 'and no title="..." given on the command line'
-        sys.exit(1)
+    f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
+    if 'TITLE:' in fstr:
+        for line in fstr.splitlines():
+            if line.startswith('TITLE:'):
+                title = line[6:].strip()
+                break # use the first TITLE spec
+        if title_cml is not None:
+            print '*** error: cannot give title= on the command line when TITLE is specified in the DocOnce file', filename
+            sys.exit(1)
+    else:
+        # No TITLE in the DocOnce file
+        if title_cml is None:
+            title = 'No title'
+        else:
+            title = title_cml
 
     if short_title is None:
         # Default is to use title
@@ -259,19 +265,31 @@ def sphinx_dir():
             author = author[0]
         else:
             author = ', '.join(author[:-1]) + ' and ' + author[-1]
+        if author_cml is not None:
+            print '*** error: cannot give author= on the command line when AUTHOR is specified in the DocOnce file', filename
+            sys.exit(1)
+    else:
+        if author_cml is None:
+            author = 'No author'
+        else:
+            author = author_cml
 
+    from doconce.common import get_copyfile_info
+    copyright_filename = '.' + filename + '.copyright'
+    copyright_ = get_copyfile_info(copyright_filename=copyright_filename)
     if copyright_ is None:
-        from doconce.common import get_copyfile_info
-        copyright_filename = '.' + filename + '.copyright'
-        copyright_ = get_copyfile_info(copyright_filename=copyright_filename)
-        if copyright_ is None:
+        # No copyright given in the file, use copyright= from command
+        # line, if it was provided, or use this year and author
+        if copyright_cml is None:
             # use this year, author
             this_year = time.asctime().split()[4]
             copyright_ = this_year + ', ' + author
-    #else: copyright was specified on the command line
-
-    if author is None:
-        print '\nNo AUTHOR: line found in %s.do.txt' % filename
+        else:
+            copyright_ = copyright_cml
+    else:
+        if copyright_cml is not None:
+            print '*** error: cannot give copyright= on the command line when {coppyright...} is specified as part of AUTHOR in the DocOnce file', filename
+            sys.exit(1)
 
     if theme_dir is not None and conf_py is None:
         print 'theme_dir is given, but then also conf_py must be specified'

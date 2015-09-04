@@ -48,7 +48,7 @@ system doconce split_tmp.html manual.html
 system doconce format sphinx manual.do.txt --no_mako
 # We have several examples on AUTHOR: so to avoid multiple
 # authors we have to specify
-system doconce sphinx_dir copyright='2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo' title='Doconce Manual' theme=cbc version=1.0 intersphinx manual.do.txt
+system doconce sphinx_dir theme=cbc version=1.0 intersphinx manual.do.txt
 cp manual.rst manual.sphinx.rst
 python automake_sphinx.py
 # automake_sphinx.py can only copy figures in FIGURE lines, not

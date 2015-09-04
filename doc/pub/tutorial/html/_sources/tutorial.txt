@@ -2085,16 +2085,15 @@ most of the steps through the ``doconce sphinx_dir`` command:
 
 .. code-block:: text
 
-        Terminal> doconce sphinx_dir author="authors' names" \ 
-                  title="some title" version=1.0 dirname=sphinxdir \ 
-                  theme=mytheme mydoc
+        Terminal> doconce sphinx_dir version=1.0 dirname=sphinxdir \ 
+                  theme=sometheme mydoc short_title="short title" mydoc
 
-The keywords ``author``, ``title``, and ``version`` are used in the headings
-of the Sphinx document. By default, ``version`` is 1.0 and the script
-will try to deduce authors and title from the doconce file ``mydoc.do.txt``
-The default value of ``dirname`` is ``sphinx-rootdir``. The ``theme``
+The author, title, and copyright information needed by Sphinx is
+taken from the DocOnce file ``mydoc.do.txt``.
+By default, ``version`` is 1.0 and
+``dirname`` is ``sphinx-rootdir``. The ``theme``
 keyword is used to set the theme for design of HTML output from
-Sphinx (the default theme is ``'default'``).
+Sphinx (the default theme is ``classic``).
 
 One often just runs the simple command
 
@@ -2171,33 +2170,43 @@ DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 ``agni``,
+``alabaster``,
+``basic``,
 ``basicstrap``,
 ``bootstrap``,
 ``cloud``,
+``epub``,
 ``fenics``,
 ``fenics_minimal``,
 ``flask``,
 ``haiku``,
-``impressjs``,
 ``jal``,
 ``pylons``,
+``pyramid``,
 ``redcloud``,
 ``scipy_lectures``,
-``slim-agogo``, and
+``scrolls``,
+``slim-agogo``,
+``sphinx_rtd_theme``,
+and
 ``vlinux-theme``.
+Some of the themes come with basic Sphinx, while others must be installed
+separately, see the ``bundled/README_sphinx_themes.do.txt`` file in
+the DocOnce source code tree for installation instructions.
 
 .. index:: conf.py (Sphinx configuration)
 
-All the themes are packed out in the Sphinx directory, and the
+The
 ``doconce sphinx_dir`` insert lots of extra code in the ``conf.py``
-file to enable easy specification and customization of themes.
+file to enable easy specification of information and,
+in particular,customization of themes.
 For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc. The ``conf.py`` file is a
-good starting point for fine-tuning your favorite team, and your
-own ``conf.py`` file can later be supplied and used when running
+good starting point for fine-tuning your favorite theme, and your
+own ``myconf.py`` file can later be supplied and used when running
 ``doconce sphinx_dir``: simply add the command-line option
-``conf.py=conf.py``.
+``conf.py=myconf.py``.
 
 A script
 ``make-themes.sh`` can make HTML documents with one or more themes.
@@ -2224,7 +2233,8 @@ relative path to your ``conf.py`` file.
 **Example.**
 Say you like the ``scipy_lectures`` theme, but you want
 a table of contents to appear *to the right*, much in the same style
-as in the ``default`` theme (where the table of contents is to the left).
+as in the ``default`` or ``classic`` themes
+(where the table of contents is to the left).
 You can then run ``doconce sphinx_dir``, invoke a text editor with the
 ``conf.py`` file, find the line ``html_theme == 'scipy_lectures'``,
 edit the following ``nosidebar`` to ``false`` and ``rightsidebar`` to ``true``.

@@ -10205,20 +10205,20 @@ Some links for going from LaTeX to Word are listed below.
 <p>
 Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <code>doconce sphinx_dir</code> command:
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
-          title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
-          theme=mytheme mydoc
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir version=1.0 dirname=sphinxdir \
+          theme=sometheme mydoc short_title=&quot;short title&quot; mydoc
 </pre></div>
 <p>
-The keywords <code>author</code>, <code>title</code>, and <code>version</code> are used in the headings
-of the Sphinx document. By default, <code>version</code> is 1.0 and the script
-will try to deduce authors and title from the doconce file <code>mydoc.do.txt</code>
-The default value of <code>dirname</code> is <code>sphinx-rootdir</code>. The <code>theme</code>
+The author, title, and copyright information needed by Sphinx is
+taken from the DocOnce file <code>mydoc.do.txt</code>.
+By default, <code>version</code> is 1.0 and
+<code>dirname</code> is <code>sphinx-rootdir</code>. The <code>theme</code>
 keyword is used to set the theme for design of HTML output from
-Sphinx (the default theme is <code>'default'</code>).
+Sphinx (the default theme is <code>classic</code>).
 
 <p>
 One often just runs the simple command
@@ -10304,38 +10304,49 @@ DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 <code>agni</code>,
+<code>alabaster</code>,
+<code>basic</code>,
 <code>basicstrap</code>,
 <code>bootstrap</code>,
 <code>cloud</code>,
+<code>epub</code>,
 <code>fenics</code>,
 <code>fenics_minimal</code>,
 <code>flask</code>,
 <code>haiku</code>,
-<code>impressjs</code>,
 <code>jal</code>,
 <code>pylons</code>,
+<code>pyramid</code>,
 <code>redcloud</code>,
 <code>scipy_lectures</code>,
-<code>slim-agogo</code>, and
+<code>scrolls</code>,
+<code>slim-agogo</code>,
+<code>sphinx_rtd_theme</code>,
+and
 <code>vlinux-theme</code>.
+Some of the themes come with basic Sphinx, while others must be installed
+separately, see the <code>bundled/README_sphinx_themes.do.txt</code> file in
+the DocOnce source code tree for installation instructions.
 
 <p>
-All the themes are packed out in the Sphinx directory, and the
+The
 <code>doconce sphinx_dir</code> insert lots of extra code in the <code>conf.py</code>
-file to enable easy specification and customization of themes.
+file to enable easy specification of information and,
+in particular,customization of themes.
 For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc. The <code>conf.py</code> file is a
-good starting point for fine-tuning your favorite team, and your
-own <code>conf.py</code> file can later be supplied and used when running
+good starting point for fine-tuning your favorite theme, and your
+own <code>myconf.py</code> file can later be supplied and used when running
 <code>doconce sphinx_dir</code>: simply add the command-line option
-<code>conf.py=conf.py</code>.
+<code>conf.py=myconf.py</code>.
 
 <p>
 A script
 <code>make-themes.sh</code> can make HTML documents with one or more themes.
 For example,
 to realize the themes <code>fenics</code>, <code>pyramid</code>, and <code>pylon</code> one writes
+
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
@@ -10360,7 +10371,8 @@ relative path to your <code>conf.py</code> file.
 <b>Example.</b>
 Say you like the <code>scipy_lectures</code> theme, but you want
 a table of contents to appear <em>to the right</em>, much in the same style
-as in the <code>default</code> theme (where the table of contents is to the left).
+as in the <code>default</code> or <code>classic</code> themes
+(where the table of contents is to the left).
 You can then run <code>doconce sphinx_dir</code>, invoke a text editor with the
 <code>conf.py</code> file, find the line <code>html_theme == 'scipy_lectures'</code>,
 edit the following <code>nosidebar</code> to <code>false</code> and <code>rightsidebar</code> to <code>true</code>.
@@ -12273,6 +12285,11 @@ syntax and not references for explaining parts of the text.
 <a href="http://..."><img width="250" align=right src="http://..."></a>
 </footer>
 -->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 
 
 </body>

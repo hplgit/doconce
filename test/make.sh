@@ -130,7 +130,7 @@ mv -f testdoc.rst testdoc.sphinx.rst
 
 system doconce format sphinx testdoc $ex
 system doconce split_rst testdoc
-system doconce sphinx_dir copyright=HPL title='Just a test' dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
+system doconce sphinx_dir dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
 

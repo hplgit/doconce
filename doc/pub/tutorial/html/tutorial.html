@@ -1712,17 +1712,16 @@ Some links for going from LaTeX to Word are listed below.</p>
 <span id="do2any-sphinx"></span><h3>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-54"></span><p id="index-55">Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command:</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir author=&quot;authors&#39; names&quot; \
-          title=&quot;some title&quot; version=1.0 dirname=sphinxdir \
-          theme=mytheme mydoc
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir version=1.0 dirname=sphinxdir \
+          theme=sometheme mydoc short_title=&quot;short title&quot; mydoc
 </pre></div>
 </div>
-<p>The keywords <code class="docutils literal"><span class="pre">author</span></code>, <code class="docutils literal"><span class="pre">title</span></code>, and <code class="docutils literal"><span class="pre">version</span></code> are used in the headings
-of the Sphinx document. By default, <code class="docutils literal"><span class="pre">version</span></code> is 1.0 and the script
-will try to deduce authors and title from the doconce file <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>
-The default value of <code class="docutils literal"><span class="pre">dirname</span></code> is <code class="docutils literal"><span class="pre">sphinx-rootdir</span></code>. The <code class="docutils literal"><span class="pre">theme</span></code>
+<p>The author, title, and copyright information needed by Sphinx is
+taken from the DocOnce file <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>.
+By default, <code class="docutils literal"><span class="pre">version</span></code> is 1.0 and
+<code class="docutils literal"><span class="pre">dirname</span></code> is <code class="docutils literal"><span class="pre">sphinx-rootdir</span></code>. The <code class="docutils literal"><span class="pre">theme</span></code>
 keyword is used to set the theme for design of HTML output from
-Sphinx (the default theme is <code class="docutils literal"><span class="pre">'default'</span></code>).</p>
+Sphinx (the default theme is <code class="docutils literal"><span class="pre">classic</span></code>).</p>
 <p>One often just runs the simple command</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir mydoc
 </pre></div>
@@ -1779,30 +1778,40 @@ DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 <code class="docutils literal"><span class="pre">agni</span></code>,
+<code class="docutils literal"><span class="pre">alabaster</span></code>,
+<code class="docutils literal"><span class="pre">basic</span></code>,
 <code class="docutils literal"><span class="pre">basicstrap</span></code>,
 <code class="docutils literal"><span class="pre">bootstrap</span></code>,
 <code class="docutils literal"><span class="pre">cloud</span></code>,
+<code class="docutils literal"><span class="pre">epub</span></code>,
 <code class="docutils literal"><span class="pre">fenics</span></code>,
 <code class="docutils literal"><span class="pre">fenics_minimal</span></code>,
 <code class="docutils literal"><span class="pre">flask</span></code>,
 <code class="docutils literal"><span class="pre">haiku</span></code>,
-<code class="docutils literal"><span class="pre">impressjs</span></code>,
 <code class="docutils literal"><span class="pre">jal</span></code>,
 <code class="docutils literal"><span class="pre">pylons</span></code>,
+<code class="docutils literal"><span class="pre">pyramid</span></code>,
 <code class="docutils literal"><span class="pre">redcloud</span></code>,
 <code class="docutils literal"><span class="pre">scipy_lectures</span></code>,
-<code class="docutils literal"><span class="pre">slim-agogo</span></code>, and
-<code class="docutils literal"><span class="pre">vlinux-theme</span></code>.</p>
-<p id="index-57">All the themes are packed out in the Sphinx directory, and the
+<code class="docutils literal"><span class="pre">scrolls</span></code>,
+<code class="docutils literal"><span class="pre">slim-agogo</span></code>,
+<code class="docutils literal"><span class="pre">sphinx_rtd_theme</span></code>,
+and
+<code class="docutils literal"><span class="pre">vlinux-theme</span></code>.
+Some of the themes come with basic Sphinx, while others must be installed
+separately, see the <code class="docutils literal"><span class="pre">bundled/README_sphinx_themes.do.txt</span></code> file in
+the DocOnce source code tree for installation instructions.</p>
+<p id="index-57">The
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> insert lots of extra code in the <code class="docutils literal"><span class="pre">conf.py</span></code>
-file to enable easy specification and customization of themes.
+file to enable easy specification of information and,
+in particular,customization of themes.
 For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc. The <code class="docutils literal"><span class="pre">conf.py</span></code> file is a
-good starting point for fine-tuning your favorite team, and your
-own <code class="docutils literal"><span class="pre">conf.py</span></code> file can later be supplied and used when running
+good starting point for fine-tuning your favorite theme, and your
+own <code class="docutils literal"><span class="pre">myconf.py</span></code> file can later be supplied and used when running
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code>: simply add the command-line option
-<code class="docutils literal"><span class="pre">conf.py=conf.py</span></code>.</p>
+<code class="docutils literal"><span class="pre">conf.py=myconf.py</span></code>.</p>
 <p>A script
 <code class="docutils literal"><span class="pre">make-themes.sh</span></code> can make HTML documents with one or more themes.
 For example,
@@ -1824,7 +1833,8 @@ relative path to your <code class="docutils literal"><span class="pre">conf.py</
 <p><strong>Example.</strong>
 Say you like the <code class="docutils literal"><span class="pre">scipy_lectures</span></code> theme, but you want
 a table of contents to appear <em>to the right</em>, much in the same style
-as in the <code class="docutils literal"><span class="pre">default</span></code> theme (where the table of contents is to the left).
+as in the <code class="docutils literal"><span class="pre">default</span></code> or <code class="docutils literal"><span class="pre">classic</span></code> themes
+(where the table of contents is to the left).
 You can then run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code>, invoke a text editor with the
 <code class="docutils literal"><span class="pre">conf.py</span></code> file, find the line <code class="docutils literal"><span class="pre">html_theme</span> <span class="pre">==</span> <span class="pre">'scipy_lectures'</span></code>,
 edit the following <code class="docutils literal"><span class="pre">nosidebar</span></code> to <code class="docutils literal"><span class="pre">false</span></code> and <code class="docutils literal"><span class="pre">rightsidebar</span></code> to <code class="docutils literal"><span class="pre">true</span></code>.
