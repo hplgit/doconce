@@ -281,7 +281,7 @@ doconce md2latex $name
 python test_copyright.py  # results in test_copyright.out
 
 # Test tailored conf.py file
-system doconce format sphinx COPYRIGHT='{copyright,date}' BOOK=False
+system doconce format sphinx copyright COPYRIGHT='{copyright,date}' BOOK=False
 system doconce split_rst copyright
 system doconce sphinx_dir conf.py=myconf.py copyright
 system python automake_sphinx.py
