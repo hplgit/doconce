@@ -1430,11 +1430,21 @@ file to enable easy specification of information and,
 in particular,customization of themes.
 For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
-the look and feel of themes, etc. The `conf.py` file is a
-good starting point for fine-tuning your favorite theme, and your
-own `myconf.py` file can later be supplied and used when running
-`doconce sphinx_dir`: simply add the command-line option
-`conf.py=myconf.py`.
+the look and feel of themes, etc.
+
+The `conf.py` file is a good starting point for fine-tuning your
+favorite theme, and your own `myconf.py` file can later be supplied
+and used when running `doconce sphinx_dir`: simply add the
+command-line option `conf.py=myconf.py`. If you leave the `project`
+and `copyright` variables as empty strings in your own `myconf.py`
+file, DocOnce will automatically edit a copy (`conf.py`) of
+`myconf.py` in the sphinx root directory so that `project` becomes the
+title of the DocOnce source file, and `copyright` is based on the
+author or copyright information in the source file. Other variables in
+`myconf.py` depending on title, author, and copyright information will
+also be edited. In this way, you can have your tailored `conf.py`
+file, but be sure that it is always compatible with title, author, and
+copyright information from the underlying DocOnce source.
 
 A script
 `make-themes.sh` can make HTML documents with one or more themes.
