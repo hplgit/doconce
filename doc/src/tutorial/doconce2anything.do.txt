@@ -1444,7 +1444,7 @@ author or copyright information in the source file. Other variables in
 `myconf.py` depending on title, author, and copyright information will
 also be edited. In this way, you can have your tailored `conf.py`
 file, but be sure that it is always compatible with title, author, and
-copyright information from the underlying DocOnce source.
+copyright information in the underlying DocOnce source.
 
 A script
 `make-themes.sh` can make HTML documents with one or more themes.
