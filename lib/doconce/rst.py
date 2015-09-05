@@ -27,7 +27,11 @@ def rst_abstract(m):
 """ % (indent_lines(text, 'rst'), rest)
         return s
     else:
-        return '\n*%(name)s.* %(text)s\n\n%(rest)s' % vars()
+        if name.lower() == 'preface':
+            # Drop heading (short abstract for books)
+            return '\n%(text)s\n\n%(rest)s' % vars()
+        else:
+            return '\n*%(name)s.* %(text)s\n\n%(rest)s' % vars()
 
 # replacement patterns for substitutions of inline tags
 def rst_figure(m):

@@ -420,10 +420,10 @@ EOF
         replacement = r"latex_documents = [('index', 'doc.tex', project, u'%s',  'manual'),]" % author
         conf_text = re.sub(pattern, replacement, conf_text,
                            flags=re.DOTALL)
-        pattern = r'man_pages = \[.*?\]'
-        replacement = r"man_pages = [('index', 'doc', project, [u'%s'], 1),]" % author
+        pattern = r'man_pages = \[.*?^# '
+        replacement = r"man_pages = [('index', 'doc', project, [u'%s'], 1),]\n\n# " % author
         conf_text = re.sub(pattern, replacement, conf_text,
-                           flags=re.DOTALL)
+                           flags=re.DOTALL|re.MULTILINE)
         pattern = r'texinfo_documents = \[.*?\]'
         replacement = r"texinfo_documents = [('index', 'doc', project, u'%s', 'doc', 'One line description of project.', 'Miscellaneous'),]" % author
         conf_text = re.sub(pattern, replacement, conf_text,

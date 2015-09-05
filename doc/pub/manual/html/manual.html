@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 4, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 5, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -7895,6 +7895,8 @@ in particular,customization of themes.
 For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc.</p>
+<div class="section" id="using-a-your-own-configuration-file">
+<h4>Using a Your Own Configuration File<a class="headerlink" href="#using-a-your-own-configuration-file" title="Permalink to this headline">¶</a></h4>
 <p>The <code class="docutils literal"><span class="pre">conf.py</span></code> file is a good starting point for fine-tuning your
 favorite theme, and your own <code class="docutils literal"><span class="pre">myconf.py</span></code> file can later be supplied
 and used when running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code>: simply add the
@@ -7908,6 +7910,24 @@ author or copyright information in the source file. Other variables in
 also be edited. In this way, you can have your tailored <code class="docutils literal"><span class="pre">conf.py</span></code>
 file, but be sure that it is always compatible with title, author, and
 copyright information in the underlying DocOnce source.</p>
+<p>It is recommended to leave the variables <code class="docutils literal"><span class="pre">latex_documents</span></code>, <code class="docutils literal"><span class="pre">man_pages</span></code>,
+and <code class="docutils literal"><span class="pre">texinfo_documents</span></code> as empty lists: <code class="docutils literal"><span class="pre">[]</span></code> in a tailored <code class="docutils literal"><span class="pre">conf.py</span></code> file.</p>
+<div class="admonition-tip-error-messages-from-conf-py admonition">
+<p class="first admonition-title">Tip: Error messages from <code class="docutils literal"><span class="pre">conf.py</span></code></p>
+<p class="last">When you have edited a <code class="docutils literal"><span class="pre">conf.py</span></code> file and supplied it as part of
+a <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command through the <code class="docutils literal"><span class="pre">conf.py=myconf.py</span></code> option, it is
+a danger that <code class="docutils literal"><span class="pre">python</span> <span class="pre">automake_sphinx.py</span></code> will abort with an error
+message because of a problem with your configuration file.
+Note that the error message refers to a line in the <code class="docutils literal"><span class="pre">conf.py</span></code> in the Sphinx
+root directory (<code class="docutils literal"><span class="pre">sphinx-rootdir</span></code> by default) and <em>not</em> the configuration
+file <code class="docutils literal"><span class="pre">myconf.py</span></code> you created yourself (so make sure you
+search in <code class="docutils literal"><span class="pre">sphinx-rootdir/conf.py</span></code> for the error). If the error comes
+from some wrong manual editing, make sure you correct the error in
+<code class="docutils literal"><span class="pre">myconf.py</span></code>.</p>
+</div>
+</div>
+<div class="section" id="compiling-multiple-themes">
+<h4>Compiling Multiple Themes<a class="headerlink" href="#compiling-multiple-themes" title="Permalink to this headline">¶</a></h4>
 <p>A script
 <code class="docutils literal"><span class="pre">make-themes.sh</span></code> can make HTML documents with one or more themes.
 For example,
@@ -7926,6 +7946,7 @@ that come with DocOnce into the Sphinx directory. Just specify
 path to the directory containing the Sphinx theme. You must also
 specify a configure file by <code class="docutils literal"><span class="pre">conf.py=path</span></code>, where <code class="docutils literal"><span class="pre">path</span></code> is the
 relative path to your <code class="docutils literal"><span class="pre">conf.py</span></code> file.</p>
+</div>
 <div class="section" id="example">
 <h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
 <p>Say you like the <code class="docutils literal"><span class="pre">scipy_lectures</span></code> theme, but you want
@@ -9925,6 +9946,8 @@ Springer,
 <li><a class="reference internal" href="#the-basic-steps">The Basic Steps</a></li>
 <li><a class="reference internal" href="#links">Links</a></li>
 <li><a class="reference internal" href="#themes-2">Themes  (2)</a><ul>
+<li><a class="reference internal" href="#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
+<li><a class="reference internal" href="#compiling-multiple-themes">Compiling Multiple Themes</a></li>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>

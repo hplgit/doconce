@@ -359,37 +359,39 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               ('The Basic Steps', 2, None, '___sec192'),
               ('Links', 2, None, '___sec193'),
               ('Themes', 2, None, '___sec194'),
-              ('Example', 3, None, '___sec195'),
-              ('RunestoneInteractive books', 2, None, '___sec196'),
-              ('The manual Sphinx procedure', 2, None, '___sec197'),
+              ('Using a Your Own Configuration File', 3, None, '___sec195'),
+              ('Compiling Multiple Themes', 3, None, '___sec196'),
+              ('Example', 3, None, '___sec197'),
+              ('RunestoneInteractive books', 2, None, '___sec198'),
+              ('The manual Sphinx procedure', 2, None, '___sec199'),
               ('Wiki Formats', 1, 'do2any:wiki', 'do2any:wiki'),
               ('Google Docs', 1, 'do2any:google:docs', 'do2any:google:docs'),
-              ('Options for the `doconce` commands', 1, None, '___sec200'),
-              ('`doconce format` command-line options', 2, None, '___sec201'),
+              ('Options for the `doconce` commands', 1, None, '___sec202'),
+              ('`doconce format` command-line options', 2, None, '___sec203'),
               ('Installation of DocOnce and its Dependencies',
                1,
                'install:doconce',
                'install:doconce'),
-              ('DocOnce', 2, None, '___sec203'),
-              ('Dependencies', 2, None, '___sec204'),
-              ('Python v2.7', 3, None, '___sec205'),
-              ('Preprocessors', 3, None, '___sec206'),
-              ('Bibliography', 3, None, '___sec207'),
-              ('Image file handling', 3, None, '___sec208'),
-              ('Spellcheck', 3, None, '___sec209'),
-              ('Ptex2tex for LaTeX Output', 3, None, '___sec210'),
-              ('Pygments and the Minted Code Style', 3, None, '___sec211'),
-              ('LaTeX packages', 3, None, '___sec212'),
-              ('Sphinx or reStructuredText Output', 3, None, '___sec213'),
-              ('Markdown and Pandoc Output', 3, None, '___sec214'),
-              ('Epydoc Output', 3, None, '___sec215'),
-              ('Analyzing file differences', 3, None, '___sec216'),
-              ('Basic Parsing Ideas', 1, None, '___sec217'),
+              ('DocOnce', 2, None, '___sec205'),
+              ('Dependencies', 2, None, '___sec206'),
+              ('Python v2.7', 3, None, '___sec207'),
+              ('Preprocessors', 3, None, '___sec208'),
+              ('Bibliography', 3, None, '___sec209'),
+              ('Image file handling', 3, None, '___sec210'),
+              ('Spellcheck', 3, None, '___sec211'),
+              ('Ptex2tex for LaTeX Output', 3, None, '___sec212'),
+              ('Pygments and the Minted Code Style', 3, None, '___sec213'),
+              ('LaTeX packages', 3, None, '___sec214'),
+              ('Sphinx or reStructuredText Output', 3, None, '___sec215'),
+              ('Markdown and Pandoc Output', 3, None, '___sec216'),
+              ('Epydoc Output', 3, None, '___sec217'),
+              ('Analyzing file differences', 3, None, '___sec218'),
+              ('Basic Parsing Ideas', 1, None, '___sec219'),
               ('Typesetting of Function Arguments, Return Values, and Variables',
                2,
                None,
-               '___sec218'),
-              ('References', 1, None, '___sec219')]}
+               '___sec220'),
+              ('References', 1, None, '___sec221')]}
 end of tocinfo -->
 
 <body>
@@ -469,7 +471,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Sep 4, 2015</h4></center> <!-- date -->
+<center><h4>Sep 5, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -704,18 +706,18 @@ editing of the generated output (e.g., via regular expressions).
 &nbsp; &nbsp; &nbsp; <a href="#___sec192"> The Basic Steps </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec193"> Links </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec194"> Themes </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec196"> RunestoneInteractive books </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec197"> The manual Sphinx procedure </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec198"> RunestoneInteractive books </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec199"> The manual Sphinx procedure </a><br>
 <a href="#do2any:wiki"> Wiki Formats </a><br>
 <a href="#do2any:google:docs"> Google Docs </a><br>
-<a href="#___sec200"> Options for the <code>doconce</code> commands </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec201"> <code>doconce format</code> command-line options </a><br>
+<a href="#___sec202"> Options for the <code>doconce</code> commands </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec203"> <code>doconce format</code> command-line options </a><br>
 <a href="#install:doconce"> Installation of DocOnce and its Dependencies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec203"> DocOnce </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec204"> Dependencies </a><br>
-<a href="#___sec217"> Basic Parsing Ideas </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec218"> Typesetting of Function Arguments, Return Values, and Variables </a><br>
-<a href="#___sec219"> References </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec205"> DocOnce </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec206"> Dependencies </a><br>
+<a href="#___sec219"> Basic Parsing Ideas </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec220"> Typesetting of Function Arguments, Return Values, and Variables </a><br>
+<a href="#___sec221"> References </a><br>
 </p>
 <p>
 <!--  -->
@@ -10375,6 +10377,8 @@ For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc.
 
+<h3 id="___sec195">Using a Your Own Configuration File </h3>
+
 <p>
 The <code>conf.py</code> file is a good starting point for fine-tuning your
 favorite theme, and your own <code>myconf.py</code> file can later be supplied
@@ -10389,6 +10393,27 @@ author or copyright information in the source file. Other variables in
 also be edited. In this way, you can have your tailored <code>conf.py</code>
 file, but be sure that it is always compatible with title, author, and
 copyright information in the underlying DocOnce source.
+
+<p>
+It is recommended to leave the variables <code>latex_documents</code>, <code>man_pages</code>,
+and <code>texinfo_documents</code> as empty lists: <code>[]</code> in a tailored <code>conf.py</code> file.
+
+<p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Tip: Error messages from <code>conf.py</code>.</b>
+When you have edited a <code>conf.py</code> file and supplied it as part of
+a <code>doconce sphinx_dir</code> command through the <code>conf.py=myconf.py</code> option, it is
+a danger that <code>python automake_sphinx.py</code> will abort with an error
+message because of a problem with your configuration file.
+Note that the error message refers to a line in the <code>conf.py</code> in the Sphinx
+root directory (<code>sphinx-rootdir</code> by default) and <em>not</em> the configuration
+file <code>myconf.py</code> you created yourself (so make sure you
+search in <code>sphinx-rootdir/conf.py</code> for the error). If the error comes
+from some wrong manual editing, make sure you correct the error in
+<code>myconf.py</code>.
+</div>
+
+
+<h3 id="___sec196">Compiling Multiple Themes </h3>
 
 <p>
 A script
@@ -10416,7 +10441,7 @@ path to the directory containing the Sphinx theme. You must also
 specify a configure file by <code>conf.py=path</code>, where <code>path</code> is the
 relative path to your <code>conf.py</code> file.
 
-<h3 id="___sec195">Example </h3>
+<h3 id="___sec197">Example </h3>
 
 <p>
 Say you like the <code>scipy_lectures</code> theme, but you want
@@ -10464,7 +10489,7 @@ and reuse it the next time <code>doconce sphinx_dir</code> is run
                    conf.py=../some/path/conf.py mydoc
 </pre></div>
 
-<h2 id="___sec196">RunestoneInteractive books </h2>
+<h2 id="___sec198">RunestoneInteractive books </h2>
 
 <p>
 The <code>doconce format sphinx</code> command accepts an option <code>--runestone</code>
@@ -10473,7 +10498,7 @@ books (which build on Sphinx).
 You must run the generated <code>automake_sphinx.py</code> also with a <code>--runestone</code>
 option to generate these type of documents.
 
-<h2 id="___sec197">The manual Sphinx procedure </h2>
+<h2 id="___sec199">The manual Sphinx procedure </h2>
 
 <p>
 If it is not desirable to use the autogenerated scripts explained
@@ -10668,9 +10693,9 @@ Google Docs. Support for mathematics is probably impossible until
 Google Docs can import LaTeX files, but LaTeX mathematics can be embedded
 in Google Docs and the <a href="http://code.google.com/p/googledoc2latex" target="_self">googledoc2latex</a> script can convert a Google document to LaTeX.
 
-<h1 id="___sec200">Options for the <code>doconce</code> commands </h1>
+<h1 id="___sec202">Options for the <code>doconce</code> commands </h1>
 
-<h2 id="___sec201"><code>doconce format</code> command-line options </h2>
+<h2 id="___sec203"><code>doconce format</code> command-line options </h2>
 
 <p>
 The transformation of a DocOnce source to various format is done with
@@ -11725,7 +11750,7 @@ image processing tools and spell checking apply Unix-specific software.
 You can omit reading the next sections if you rely on <code>conda</code> or
 <code>apt-get install</code> commands in the Bash script for installing DocOnce.
 
-<h2 id="___sec203">DocOnce </h2>
+<h2 id="___sec205">DocOnce </h2>
 
 <p>
 DocOnce itself is pure Python code hosted at <a href="https://github.com/hplgit/doconce" target="_self"><tt>https://github.com/hplgit/doconce</tt></a>.
@@ -11762,7 +11787,7 @@ git pull origin master
 sudo python setup.py install
 </pre></div>
 
-<h2 id="___sec204">Dependencies </h2>
+<h2 id="___sec206">Dependencies </h2>
 
 <p>
 Producing HTML documents, plain text, pandoc-extended Markdown,
@@ -11772,7 +11797,7 @@ software. However, if you want other formats as output
 as preprocesors, spellcheck, file differences, bibliographies,
 and so on, a lot of extra software must be installed.
 
-<h3 id="___sec205">Python v2.7 </h3>
+<h3 id="___sec207">Python v2.7 </h3>
 
 <p>
 First you need Python version 2.7 and the <code>pip</code> installation program.
@@ -11784,7 +11809,7 @@ You do not need more software if you avoid using preprocessors, there
 is no bibliography, and you stick to the output formats LaTeX and HTML
 (you need of course LaTeX installed to process <code>.tex</code> files).
 
-<h3 id="___sec206">Preprocessors </h3>
+<h3 id="___sec208">Preprocessors </h3>
 
 <p>
 If you make use of the <a href="http://code.google.com/p/preprocess" target="_self">Preprocess</a>
@@ -11809,7 +11834,7 @@ Note that neither Preprocess nor Mako is run if you do not have
 preprocessor directives in your DocOnce source. That is, you only need
 this extra software if you make active use of preprocessors.
 
-<h3 id="___sec207">Bibliography </h3>
+<h3 id="___sec209">Bibliography </h3>
 
 <p>
 The Python package <a href="https://bitbucket.org/logg/publish" target="_self">Publish</a> is needed if you use a bibliography
@@ -11822,7 +11847,7 @@ The installation is done by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 </pre></div>
 
-<h3 id="___sec208">Image file handling </h3>
+<h3 id="___sec210">Image file handling </h3>
 
 <p>
 Different output formats require different formats of image files.
@@ -11860,7 +11885,7 @@ can be installed by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install texlive-font-utils
 </pre></div>
 
-<h3 id="___sec209">Spellcheck </h3>
+<h3 id="___sec211">Spellcheck </h3>
 
 <p>
 The utility <code>doconce spellcheck</code> applies the <code>ispell</code> program for
@@ -11872,7 +11897,7 @@ spellcheck. On Debian (including Ubuntu) it is installed by
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">sudo apt-get install ispell
 </pre></div>
 
-<h3 id="___sec210">Ptex2tex for LaTeX Output </h3>
+<h3 id="___sec212">Ptex2tex for LaTeX Output </h3>
 
 <p>
 Originally, DocOnce relied on the <a href="http://code.google.com/p/ptex2tex" target="_self">ptex2tex</a> program for very flexible choice of typesetting of
@@ -11923,7 +11948,7 @@ Note that the <code>doconce ptex2tex</code> command, which needs no installation
 beyond DocOnce itself, can be used as a simpler alternative to the <code>ptex2tex</code>
 program.
 
-<h3 id="___sec211">Pygments and the Minted Code Style </h3>
+<h3 id="___sec213">Pygments and the Minted Code Style </h3>
 
 <p>
 The <em>minted</em> LaTeX style is
@@ -11948,7 +11973,7 @@ several other packages: <code>xcolor</code>, <code>ifthen</code>, <code>xkeyval<
 <code>graphicx</code>, and <code>setspace</code>. The relevant Debian packages for
 installing all this are listed below.
 
-<h3 id="___sec212">LaTeX packages </h3>
+<h3 id="___sec214">LaTeX packages </h3>
 
 <p>
 Many LaTeX packages are potentially needed, depending on various
@@ -11992,7 +12017,7 @@ the <a href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
 </pre></div>
 
-<h3 id="___sec213">Sphinx or reStructuredText Output </h3>
+<h3 id="___sec215">Sphinx or reStructuredText Output </h3>
 
 <p>
 Output to <code>sphinx</code> or <code>rst</code> requires the
@@ -12051,7 +12076,7 @@ will need more software, typically the following on a Debian system:
 <!-- or clone the svn repository, go to the <code>rst2pdf</code> directory and -->
 <!-- run the usual <code>sudo python setup.py install</code>. -->
 
-<h3 id="___sec214">Markdown and Pandoc Output </h3>
+<h3 id="___sec216">Markdown and Pandoc Output </h3>
 
 <p>
 The DocOnce format <code>pandoc</code> outputs the document in various Markdown
@@ -12069,7 +12094,7 @@ easily done by
 <p>
 on Debian (Ubuntu) systems.
 
-<h3 id="___sec215">Epydoc Output </h3>
+<h3 id="___sec217">Epydoc Output </h3>
 
 <p>
 When the output format is <code>epydoc</code> one needs that program too, installed
@@ -12093,7 +12118,7 @@ run <code>svn update</code>, and then <code>sudo python setup.py install</code>.
 Mercurial (<code>hg</code>) directories, go to the directory, run
 <code>hg pull; hg update</code>, and then <code>sudo python setup.py install</code>.
 
-<h3 id="___sec216">Analyzing file differences </h3>
+<h3 id="___sec218">Analyzing file differences </h3>
 
 <p>
 The <code>doconce diff file1 file prog</code> command for illustrating differences between
@@ -12125,7 +12150,7 @@ appear in the table below.
   </div>
 </div> <!-- col-xs-12 -->
 
-<h1 id="___sec217">Basic Parsing Ideas </h1>
+<h1 id="___sec219">Basic Parsing Ideas </h1>
 
 <p>
 <!-- avoid list here since we have code in between (never a good idea) -->
@@ -12177,7 +12202,7 @@ sufficient to getting the layout you want, it is suggested to filter
 the document to another, more complex format, say reST or
 LaTeX, and work further on the document in this format.
 
-<h2 id="___sec218">Typesetting of Function Arguments, Return Values, and Variables </h2>
+<h2 id="___sec220">Typesetting of Function Arguments, Return Values, and Variables </h2>
 
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Note.</b>
@@ -12256,7 +12281,7 @@ other formats than Sphinx can take advantage of such references
 </blockquote>
 
 
-<h1 id="___sec219">References </h1>
+<h1 id="___sec221">References </h1>
 
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Note.</b>

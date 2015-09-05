@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 4, 2015
+:Date: Sep 5, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -9608,6 +9608,9 @@ For example, modules are loaded for the additional themes that
 come with DocOnce, code is inserted to allow customization of
 the look and feel of themes, etc.
 
+Using a Your Own Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The ``conf.py`` file is a good starting point for fine-tuning your
 favorite theme, and your own ``myconf.py`` file can later be supplied
 and used when running ``doconce sphinx_dir``: simply add the
@@ -9621,6 +9624,29 @@ author or copyright information in the source file. Other variables in
 also be edited. In this way, you can have your tailored ``conf.py``
 file, but be sure that it is always compatible with title, author, and
 copyright information in the underlying DocOnce source.
+
+It is recommended to leave the variables ``latex_documents``, ``man_pages``,
+and ``texinfo_documents`` as empty lists: ``[]`` in a tailored ``conf.py`` file.
+
+
+.. admonition:: Tip: Error messages from ``conf.py``
+
+   When you have edited a ``conf.py`` file and supplied it as part of
+   a ``doconce sphinx_dir`` command through the ``conf.py=myconf.py`` option, it is
+   a danger that ``python automake_sphinx.py`` will abort with an error
+   message because of a problem with your configuration file.
+   Note that the error message refers to a line in the ``conf.py`` in the Sphinx
+   root directory (``sphinx-rootdir`` by default) and *not* the configuration
+   file ``myconf.py`` you created yourself (so make sure you
+   search in ``sphinx-rootdir/conf.py`` for the error). If the error comes
+   from some wrong manual editing, make sure you correct the error in
+   ``myconf.py``.
+
+
+
+
+Compiling Multiple Themes
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A script
 ``make-themes.sh`` can make HTML documents with one or more themes.

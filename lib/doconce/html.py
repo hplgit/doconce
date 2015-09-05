@@ -1782,6 +1782,17 @@ def html_author(authors_and_institutions, auth2index,
     return text
 
 
+def html_abstract(m):
+    r'<b>\g<type>.</b> \g<text>\n\g<rest>'
+    type = m.group('type')
+    text = m.group('text')
+    rest = m.group('rest')
+    if type.lower() == 'preface':
+        # Drop heading
+        return '%(text)s\n%(rest)s' % vars()
+    else:
+        return '<b>%(type)s.</b> %(text)s\n%(rest)s' % vars()
+
 def html_ref_and_label(section_label2title, format, filestr):
     # This is the first format-specific function to be called.
     # We therefore do some HTML-specific fixes first.
@@ -2366,7 +2377,7 @@ def define(FILENAME_EXTENSION,
         'subsection':    r'\n<h2>\g<subst></h2>',
         'subsubsection': r'\n<h3>\g<subst></h3>\n',
         'paragraph':     r'<b>\g<subst></b>\n',
-        'abstract':      r'<b>\g<type>.</b> \g<text>\n\g<rest>',
+        'abstract':      html_abstract,
         'title':         r'\n\n<center><h1>\g<subst></h1></center>  <!-- document title -->\n',
         'date':          r'<p>\n<center><h4>\g<subst></h4></center> <!-- date -->\n<br>',
         'author':        html_author,
