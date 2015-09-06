@@ -910,6 +910,11 @@ def html_code(filestr, code_blocks, code_block_types,
                 tex_blocks[i] = tex_blocks[i].replace(from_, to_)
             tex_blocks[i] = re.sub(r'label\{.+?\}', '', tex_blocks[i])
 
+        # Newlines in HTML become real newlines on wordpress.com,
+        # remove newlines between words
+        filestr = re.sub(r'([A-Za-z0-9,.:?;])\n([A-Za-z0-9])', r'\g<1> \g<2>',
+                         filestr)
+
     for i in range(len(tex_blocks)):
         """
         Not important - the problem was repeated label.
