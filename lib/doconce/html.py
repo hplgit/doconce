@@ -911,8 +911,10 @@ def html_code(filestr, code_blocks, code_block_types,
             tex_blocks[i] = re.sub(r'label\{.+?\}', '', tex_blocks[i])
 
         # Newlines in HTML become real newlines on wordpress.com,
-        # remove newlines between words
+        # remove newlines between words, word and link, etc.
         filestr = re.sub(r'([A-Za-z0-9,.:?;])\n([A-Za-z0-9])', r'\g<1> \g<2>',
+                         filestr)
+        filestr = re.sub(r'([A-Za-z0-9,.:?;])\n(<a +href=|<em>|<b>|<code>|\$latex |<font)', r'\g<1> \g<2>',
                          filestr)
 
     for i in range(len(tex_blocks)):

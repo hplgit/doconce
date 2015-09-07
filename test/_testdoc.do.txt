@@ -73,6 +73,20 @@ Even Equation (ref{my:eq1}) without the tilde.
 This equation appears in another part if this document is split.
 # #endif
 
+# #if FORMAT == 'html'
+Let us add a paragraph to
+test that HTML,
+with WordPress
+(`--wordpress` option)
+can handle linebreaks
+*correctly*,
+even when lines begin with
+_bold words_ and
+`verbatim words` in
+color{red}{red color}, and
+"links": "http://google.com" as well as math:
+$1+1=2$.
+# #endif
 
 ===== Subsection 1 =====
 label{subsec1}
