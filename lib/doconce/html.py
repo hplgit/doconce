@@ -918,8 +918,9 @@ def html_code(filestr, code_blocks, code_block_types,
         # merging with the next
         lines = filestr.splitlines()
         ignorelines = ['^![be]', '^\d+ <<<!!(MATH|CODE)',]
-        acceptlines = ['^[A-Za-z0-9]',
-                       '(<a +href=|<em>|<b>|<code>|\$latex |<font)',]
+        acceptlines_next = ['^[(A-Za-z0-9]', '^ +ref\{',
+                            '^ *(<a +href=|<em>|<b>|<code>|\$latex |<font)',]
+        acceptlines_present = ['([A-Za-z0-9.,;:?)]|</a>|</em>|</b>|</code>|\$|</font>) *$',]
         for i in range(len(lines)-1):
             #print 'Line:', i, lines[i]
             lines[i] += '\n'
@@ -938,21 +939,27 @@ def html_code(filestr, code_blocks, code_block_types,
                         ignore = True
                         #print 'Next line is an ignore line', pattern
                         break
+                # Present line must be an accept line
+                accept_present = False
+                for pattern in acceptlines_present:
+                    if re.search(pattern, lines[i]):
+                        accept_present = True
+                        #print 'Present line is an accept line', pattern
+                        break
                 # Next line must be an accept line
-                accept = False
-                for pattern in acceptlines:
+                accept_next = False
+                for pattern in acceptlines_next:
                     if re.search(pattern, lines[i+1]):
-                        accept = True
+                        accept_next = True
                         #print 'Next line is an accept line', pattern
                         break
-                if (not ignore) and accept:
-                    if re.search('[A-Za-z0-9.,;:?)]\n', lines[i]):
-                        # Line ends in correct character
-                        # Merge with next line
-                        lines[i] = lines[i].rstrip() + ' '
-                        #print 'Merge!'
+                if (not ignore) and accept_present and accept_next:
+                    # Line ends in correct character
+                    # Merge with next line
+                    lines[i] = lines[i].rstrip() + ' '
+                    #print 'Merge!'
         filestr = ''.join(lines)
-        #print 'XXX', filestr
+        # Must do the removal of \n in <li>.+?</li> later when </li> is added
 
     for i in range(len(tex_blocks)):
         """
@@ -1080,6 +1087,11 @@ def html_code(filestr, code_blocks, code_block_types,
     cpattern = re.compile('<li>(.+?)(\s+)(</?ol>|</?ul>)', re.DOTALL)
     filestr = cpattern.sub('<li>\g<1></li>\g<2>\g<3>', filestr)
     filestr = filestr.replace('<li><li>', '<li>')  # fix
+    if option('wordpress'):
+        # Remove \n from <li>...</li>
+        pattern = r'<li>.+?</li>'
+        filestr = re.sub(pattern, lambda m: m.group().replace('\n', ' '),
+                         filestr, flags=re.DOTALL)
 
     # Find all URLs to files (non http, ftp)
     import common
