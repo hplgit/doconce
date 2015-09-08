@@ -88,6 +88,20 @@ Even Equation (ref{my:eq1}) without the tilde.
 This equation appears in another part if this document is split.
 # #endif
 
+# #if FORMAT == 'html'
+Let us add a paragraph to
+test that HTML,
+with WordPress
+(`--wordpress` option)
+can handle linebreaks
+*correctly*,
+even when lines begin with
+_bold words_ and
+`verbatim words` in
+color{red}{red color}, and
+"links": "http://google.com" as well as math:
+$1+1=2$.
+# #endif
 
 ===== Subsection 1 =====
 label{subsec1}
@@ -34222,6 +34236,20 @@ Here are two references. Equation&nbsp;<a href="._testdoc002.html#mjx-eqn-3">(3)
 Even Equation <a href="._testdoc002.html#mjx-eqn-3">(3)</a> without the tilde.
 This equation appears in another part if this document is split.
 
+<p>
+Let us add a paragraph to
+test that HTML,
+with WordPress
+(<code>--wordpress</code> option)
+can handle linebreaks
+<em>correctly</em>,
+even when lines begin with
+<b>bold words</b> and
+<code>verbatim words</code> in
+<font color="red">red color</font>, and
+<a href="http://google.com" target="_self">links</a> as well as math:
+\( 1+1=2 \).
+
 <h2 id="subsec1">Subsection 1</h2>
 
 <p>
@@ -37017,17 +37045,13 @@ $(function () {
 &nbsp; &nbsp; &nbsp; <a href="#___sec59"> Appendix: Testing headings ending with <code>verbatim inline</code> </a><br>
 </p>
 <p>
-The format of this document is
-plain, homemade HTML (from DocOnce).
+The format of this document is plain, homemade HTML (from DocOnce).
 
 <p>
-<b>Abstract.</b> This is a document with many test constructions for doconce syntax.
-It was used heavily for the development and kept for testing
-numerous constructions, also special and less common cases.
+<b>Abstract.</b> This is a document with many test constructions for doconce syntax. It was used heavily for the development and kept for testing numerous constructions, also special and less common cases.
 
 <p>
-And exactly for test purposes we have an extra line here, which
-is part of the abstract.
+And exactly for test purposes we have an extra line here, which is part of the abstract.
 
 <h1 id="sec1">Section 1</h1>
 
@@ -37071,32 +37095,25 @@ Here is a nested list:
 </ul>
 
 <blockquote>
-    Here are two lines that make up
-    a block quote for testing <em>emphasized words</em> and <b>boldface words</b>,
-    also with hypens:
-    <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
+    Here are two lines that make up a block quote for testing <em>emphasized words</em> and <b>boldface words</b>, also with hypens: <em>pre</em>-fix, post-<em>fix</em>, <b>pre</b>-fix, post-<b>fix</b>.
 </blockquote>
 
 
 <p>
-Here are two references. Equation&nbsp;<b>(REF to equation my:eq1 not supported)</b> is fine. Eq.&nbsp;<b>(REF to equation my:eq1 not supported)</b> too.
-Even Equation <b>(REF to equation my:eq1 not supported)</b> without the tilde.
-This equation appears in another part if this document is split.
+Here are two references. Equation&nbsp;<b>(REF to equation my:eq1 not supported)</b> is fine. Eq.&nbsp;<b>(REF to equation my:eq1 not supported)</b> too. Even Equation <b>(REF to equation my:eq1 not supported)</b> without the tilde. This equation appears in another part if this document is split.
+
+<p>
+Let us add a paragraph to test that HTML, with WordPress (<code>--wordpress</code> option) can handle linebreaks <em>correctly</em>, even when lines begin with <b>bold words</b> and <code>verbatim words</code> in <font color="red">red color</font>, and <a href="http://google.com" target="_blank">links</a> as well as math: $latex 1+1=2$.
 
 <h2 id="subsec1">Subsection 1</h2>
 
 <p>
-More text, with a reference back to
-the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the
-the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which
-encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
- <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
+More text, with a reference back to the section <a href="#sec1">Section 1</a> and <a href="#subsec1">Subsection 1</a>, and further to the the sections <a href="#subsec1">Subsection 1</a> and <a href="#subsubsec:ex">URLs</a>, which encourages you to do the tasks in <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.  <a href="#app1">Appendix: Just for testing; part I</a> and <a href="#app2">Appendix: Just for testing; part II</a> are also nice elements.
 
 <h3 id="___sec3">Test Section reference at beginning of line and after a sentence </h3>
 
 <p>
-The section <a href="#subsec1">Subsection 1</a> is fine.
-The section <a href="#subsubsec:ex">URLs</a> too.
+The section <a href="#subsec1">Subsection 1</a> is fine. The section <a href="#subsubsec:ex">URLs</a> too.
 
 <h3 id="___sec4">Computer code </h3>
 
@@ -37135,8 +37152,7 @@ and then just the subroutine,
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
 <p>
-and finally the complete file with a plain text verbatim environment
-(<code>envir=ccq</code>):
+and finally the complete file with a plain text verbatim environment (<code>envir=ccq</code>):
 <p>
 
 
@@ -37178,8 +37194,7 @@ which gets rendered as
     <span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">+1</span>
 </pre></div>
 <p>
-Test paragraph and subsubsection headings before
-before code.
+Test paragraph and subsubsection headings before before code.
 
 <p>
 <b>Paragraph heading before code.</b>
@@ -37208,8 +37223,7 @@ Now a complete program to be shown via Python Online Tutorial:
         src="http://pythontutor.com/iframe-embed.html#code=class+Line%3A%0A++++def+__init__%28self%2C+a%2C+b%29%3A%0A++++++++self.a%2C+self.b+%3D+a%2C+b%0A%0A++++def+__call__%28self%2C+x%29%3A%0A++++++++a%2C+b+%3D+self.a%2C+self.b%0A++++++++return+a%2Ax+%2B+b%0A%0Aline+%3D+Line%282%2C+1%29%0Ay+%3D+line%28x%3D3%29%0Aprint+y&curInstr=0&py=2&cumulative=false">
 </iframe>
 <p>
-Some more Python code (actually specified as a sage cell, but
-such cells are not supported by this format).
+Some more Python code (actually specified as a sage cell, but such cells are not supported by this format).
 
 <p>
 
@@ -37346,9 +37360,7 @@ HTML:
 <span style="color: #008000; font-weight: bold">&lt;/table&gt;</span>
 </pre></div>
 <p>
-But inline HTML code is also important, like text that starts with
-<code>&lt;a href=&quot;</code> (which can destroy the following text if not properly
-quoted).
+But inline HTML code is also important, like text that starts with <code>&lt;a href=&quot;</code> (which can destroy the following text if not properly quoted).
 
 <p>
 And here is a system call:
@@ -37431,21 +37443,13 @@ DocOnce files can have chapters, sections, subsections, and subsubsections.
 <span style="color: #800080; font-weight: bold">__Paragraph heading.__</span> Paragraphs may have headings.
 </pre></div>
 <p>
-It is time to test <code>verbatim inline font</code> especially with <code>a newline
-inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For
-spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>.
-Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>.
-Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>,
-<code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
+It is time to test <code>verbatim inline font</code> especially with <code>a newline inside the text</code> and an exclamation mark at the end: <code>BEGIN</code>! For spellcheck, test <code>a verbatim expression</code> in <code>another</code> in a <code>third</code>. Also test exclamation mark as in <code>!bc</code> and <code>!ec</code> as well as <code>a != b</code>. Also test backslashes and braces like <code>\begin</code>, <code>\begin{enumerate}</code>, <code>\end{this}\end{that}</code>, and <code>{something \inside braces}</code>.
 
 <p>
-Here is some <font color="red">red color</font> and an attempt to write <font color="green">with
-green color containing a linebreak<br />
+Here is some <font color="red">red color</font> and an attempt to write <font color="green">with green color containing a linebreak<br />
 code.</font> Some formats will only display <br />
 this correctly when <code>html</code> <br />
-is the output format.
-But here some more running text is added which is not part of
-the previous blocks with line breaks.
+is the output format. But here some more running text is added which is not part of the previous blocks with line breaks.
 
 <h3 id="___sec6">Running OS commands </h3>
 
@@ -37462,58 +37466,40 @@ Python.
 <h3 id="___sec7">Footnotes </h3>
 
 <p>
-Here is a test of footnotes [<a id="link_footnote_1" href="#def_footnote_1">1</a>], which are handy in text.
-They are used in different flavors, now in
+Here is a test of footnotes [<a id="link_footnote_1" href="#def_footnote_1">1</a>], which are handy in text. They are used in different flavors, now in
 
 <ul>
- <li> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)</li>
- <li> even with math $latex \nabla^2u$ [<a id="link_footnote_2" href="#def_footnote_2">2</a>]</li>
+ <li> list items (note below that footnotes work after math, verbatim, and URLs - bin fact old and emphasize too!)</li>  <li> even with math $latex \nabla^2u$ [<a id="link_footnote_2" href="#def_footnote_2">2</a>]</li>
  <li> and code <code>h[i] += 1</code> [<a id="link_footnote_3" href="#def_footnote_3">3</a>]
-   (<em>must</em> have space between inline code and footnote!)</li>
- <li> and <a href="http://google.com" target="_blank">links</a> [<a id="link_footnote_4" href="#def_footnote_4">4</a>]</li>
+   (<em>must</em> have space between inline code and footnote!)</li>  <li> and <a href="http://google.com" target="_blank">links</a> [<a id="link_footnote_4" href="#def_footnote_4">4</a>]</li>
 </ul>
 
-which gives flexibility in writing.
-This is the third [<a id="link_footnote_5" href="#def_footnote_5">5</a>] example.
+which gives flexibility in writing. This is the third [<a id="link_footnote_5" href="#def_footnote_5">5</a>] example.
 
-<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format.
-Plain text does nothing, LaTeX removes the
-definition and inserts the footnote as part of the LaTeX text.
-reStructuredText and Sphinx employ a similar type of typesetting
-as Extended Markdown and DocOnce, and in HTML we keep the same
-syntax, just displayed properly in HTML.</p>
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> Typesetting of the footnote depends on the format. Plain text does nothing, LaTeX removes the definition and inserts the footnote as part of the LaTeX text. reStructuredText and Sphinx employ a similar type of typesetting as Extended Markdown and DocOnce, and in HTML we keep the same syntax, just displayed properly in HTML.</p>
 
-<p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it
-interferes with an exponent.</p>
+<p id="def_footnote_2"><a href="#link_footnote_2"><b>2:</b></a> Math footnotes can be dangerous since it interferes with an exponent.</p>
 
 <p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> One-line footnote.</p>
 
-<p id="def_footnote_4"><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_blank"><tt>google.com</tt></a> is perhaps the most famous
-web site today.</p>
+<p id="def_footnote_4"><a href="#link_footnote_4"><b>4:</b></a> <a href="google.com" target="_blank"><tt>google.com</tt></a> is perhaps the most famous web site today.</p>
 
 <p>
-Here is some more text before a new definition of a footnote that was
-used above.
+Here is some more text before a new definition of a footnote that was used above.
 
 <p>
 <div class="alert alert-block alert-notice alert-text-normal">
 <b>Non-breaking space character.</b>
 <p>
-This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_blank">non-breaking space character</a>, and a typical
-example where this is needed is in physical units: 7.4&nbsp;km is traveled
-in&nbsp;$latex 7.4/5.5\approx 1.345$&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_blank">link</a>&nbsp;is
-not broken across lines (drag the browser window to test this).
-(On the other hand, the tilde is used in
-computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should
-of course remain a tilde in those contexts.)
+This paragraph aims to test <a href="http://en.wikipedia.org/wiki/Non-breaking_space" target="_blank">non-breaking space character</a>, and a typical example where this is needed is in physical units: 7.4&nbsp;km is traveled in&nbsp;$latex 7.4/5.5\approx 1.345$&nbsp;s.  Also check that a&nbsp;<a href="http://google.com" target="_blank">link</a>&nbsp;is not broken across lines (drag the browser window to test this).
+(On the other hand, the tilde is used in computer code, e.g., as in <code>[~x for x in y]</code> or in <code>y=~x</code>, and should of course remain a tilde in those contexts.)
 </div>
 
 
 <h2 id="subsec:ex">Subsection 2: Testing figures</h2>
 
 <p>
-Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which
-there is a flow.
+Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in which there is a flow.
 
 <p>
 <center> 
@@ -37529,8 +37515,7 @@ Figures without captions are allowed and will be inlined.
 <center><p><img src="https://raw.github.com/hplgit/doconce/master/test/../doc/src/manual/fig/wave1D.html" align="bottom" width=200></p></center>
 
 <p>
-Here is figure <a href="#myfig">2</a> with a long (illegal) multi-line caption
-containing inline verbatim text:
+Here is figure <a href="#myfig">2</a> with a long (illegal) multi-line caption containing inline verbatim text:
 
 <p>
 <center> 
@@ -37566,8 +37551,7 @@ Movies are tested in separate file <code>movies.do.txt</code>.
 <h2 id="decay:sec:theta">The $latex \theta$ parameter (not $latex \nabla$?)</h2>
 
 <p>
-Functions do not always need to be advanced, here is one
-involving $latex \theta$:
+Functions do not always need to be advanced, here is one involving $latex \theta$:
 <p>
 
 
@@ -37579,9 +37563,7 @@ involving $latex \theta$:
 Here is more text following headline with math.
 
 <p>
-Newcommands must also be tested in this test report:
-$latex \frac{1}{2}$, $latex {1/2}$, $latex \pmb{x}$, $latex \frac{Du}{dt}$,
-both inline and in block:
+Newcommands must also be tested in this test report: $latex \frac{1}{2}$, $latex {1/2}$, $latex \pmb{x}$, $latex \frac{Du}{dt}$, both inline and in block:
 
 <p>
 
@@ -37617,9 +37599,7 @@ $latex
 
 <p>
 Here is an attempt to create a theorem environment via Mako
-(for counting theorems) and comment lines to help replacing lines in
-the <code>.tex</code> by proper begin-end LaTeX environments for theorems.
-Should look nice in most formats!
+(for counting theorems) and comment lines to help replacing lines in the <code>.tex</code> by proper begin-end LaTeX environments for theorems. Should look nice in most formats!
 
 <p>
 
@@ -37632,12 +37612,10 @@ Let $latex a=1$ and $latex b=2$. Then $latex c=3$.
 <p>
 
 <b>Proof.</b>
-Since $latex c=a+b$, the result follows from straightforward addition.
-$latex latex \Diamond$
+Since $latex c=a+b$, the result follows from straightforward addition. $latex latex \Diamond$
 
 <p>
-As we see, the proof of Theorem 5 is a modest
-achievement.
+As we see, the proof of Theorem 5 is a modest achievement.
 
 <h2 id="subsec:table">Tables</h2>
 
@@ -37670,8 +37648,7 @@ The DocOnce source code reads
   |--------------------------------|
 </pre></div>
 </blockquote><p>
-Here is yet another table to test that we can handle more than
-one table:
+Here is yet another table to test that we can handle more than one table:
 
 <p>
 <table border="1">
@@ -37685,9 +37662,7 @@ one table:
 </tbody>
 </table>
 <p>
-And one with math headings (that are expanded and must be treated
-accordingly), verbatim heading and entry, and no space around the pipe
-symbol:
+And one with math headings (that are expanded and must be treated accordingly), verbatim heading and entry, and no space around the pipe symbol:
 
 <p>
 <table border="1">
@@ -37705,9 +37680,7 @@ symbol:
 </tbody>
 </table>
 <p>
-And add one with verbatim headings (with underscores),
-and rows starting with <code>|-</code> because of a negative number,
-and <code>|</code> right before and after verbatim word (with no space):
+And add one with verbatim headings (with underscores), and rows starting with <code>|-</code> because of a negative number, and <code>|</code> right before and after verbatim word (with no space):
 
 <p>
 <table border="1">
@@ -37722,9 +37695,7 @@ and <code>|</code> right before and after verbatim word (with no space):
 </tbody>
 </table>
 <p>
-Pipe symbols in verbatim and math text in tables used to pose difficulties,
-but not
-anymore:
+Pipe symbols in verbatim and math text in tables used to pose difficulties, but not anymore:
 
 <p>
 <table border="1">
@@ -37737,10 +37708,7 @@ anymore:
 </tbody>
 </table>
 <p>
-Finally, a table with math
-(<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
-cleanly handled now)
-and URLs.
+Finally, a table with math (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but cleanly handled now) and URLs.
 
 <p>
 <table border="1">
@@ -37756,8 +37724,7 @@ and URLs.
 
 <p>
 <b>Paragraph with verbatim and math: <code>my_file_v1.py</code> and <code>my_file_v2.py</code> define some math $latex a_{i-1}$.</b>
-Here is more <code>__verbatim__</code> code and
-some plain text on a new line.
+Here is more <code>__verbatim__</code> code and some plain text on a new line.
 
 <h2 id="___sec13"><b>Just bold</b> </h2>
 
@@ -37853,9 +37820,7 @@ Some text.
 
 <p>
 <b>Ampersand.</b>
-We can test Hennes &amp; Mauritz, often abbreviated H&amp;M, but written
-as <code>Hennes & Mauritz</code> and <code>H & M</code>.
-A sole <code>&</code> must also work.
+We can test Hennes &amp; Mauritz, often abbreviated H&amp;M, but written as <code>Hennes & Mauritz</code> and <code>H & M</code>. A sole <code>&</code> must also work.
 
 <p>
 
@@ -37865,56 +37830,28 @@ c = a &amp; b
 </pre></div>
 <p>
 <b>Quotes.</b>
-Let us also add a test of quotes such as &quot;double quotes, with numbers
-like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written
-in the standard LaTeX-style that gives correct LaTeX formatting and
-ordinary double quotes for all non-LaTeX formats.  Here is another
-sentence that &quot;caused&quot; a bug in the past because double backtick
-quotes could imply verbatim text up to a verbatim word starting with
-period, like <code>.txt</code>.
+Let us also add a test of quotes such as &quot;double quotes, with numbers like 3.14 and newline/comma and hyphen (as in double-quote)&quot;; written in the standard LaTeX-style that gives correct LaTeX formatting and ordinary double quotes for all non-LaTeX formats.  Here is another sentence that &quot;caused&quot; a bug in the past because double backtick quotes could imply verbatim text up to a verbatim word starting with period, like <code>.txt</code>.
 
 <p>
 More quotes to be tested for spellcheck:
-(&quot;with parenthesis&quot;), &quot;with newline&quot;
-and &quot;with comma&quot;, &quot;hyphen&quot;-wise, and &quot;period&quot;.
+(&quot;with parenthesis&quot;), &quot;with newline&quot; and &quot;with comma&quot;, &quot;hyphen&quot;-wise, and &quot;period&quot;.
 
 <h2 id="___sec25">Bibliography test </h2>
 
 <p>
-Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of
-large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave
-an overview of numerical methods for solving the Navier-Stokes equations,
-while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>.
-The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on
-C++ software tools for programming multigrid methods. A real retro
-reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package.
-Multiple references are also possible, e.g., see
-<a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
+Here is an example: <a href="#Langtangen_Pedersen_2002">[1]</a> discussed propagation of large destructive water waves, <a href="#Langtangen_et_al_2002">[2]</a> gave an overview of numerical methods for solving the Navier-Stokes equations, while the use of Backward Kolmogorov equations for analyzing random vibrations was investigated in <a href="#Langtangen_1994a">[3]</a>. The book chapter <a href="#Mardal_et_al_2003a">[4]</a> contains information on C++ software tools for programming multigrid methods. A real retro reference is <a href="#Langtangen_1988d">[5]</a> about a big FORTRAN package. Multiple references are also possible, e.g., see <a href="#Langtangen_Pedersen_2002">[1]</a> <a href="#Mardal_et_al_2003a">[4]</a>.
 
 <p>
-We need to cite more than 10 papers to reproduce an old formatting
-problem with blanks in the keys in reST format:
-<a href="#Langtangen_1992c">[6]</a> <a href="#Langtangen_1994a">[3]</a> <a href="#Mortensen_et_al_2011">[7]</a> <a href="#Langtangen_Pedersen_2002">[1]</a>
-and
-<a href="#Langtangen_et_al_2002">[2]</a> <a href="#Glimsdal_et_al_20006">[8]</a> <a href="#Rahman_et_al_2006b">[9]</a> <a href="#Haga_et_al_2011a">[10]</a> <a href="#Langtangen_2003a">[11]</a> <a href="#Langtangen_2008a">[12]</a> <a href="#Langtangen:95">[13]</a>
-and all the work of
-<a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as
-old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the
-talk <a href="#Langtangen_talk_2007a">[17]</a>.
-Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>
-back in the days.
-More retro citations are
-the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the
-<a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
+We need to cite more than 10 papers to reproduce an old formatting problem with blanks in the keys in reST format: <a href="#Langtangen_1992c">[6]</a> <a href="#Langtangen_1994a">[3]</a> <a href="#Mortensen_et_al_2011">[7]</a> <a href="#Langtangen_Pedersen_2002">[1]</a>
+and <a href="#Langtangen_et_al_2002">[2]</a> <a href="#Glimsdal_et_al_20006">[8]</a> <a href="#Rahman_et_al_2006b">[9]</a> <a href="#Haga_et_al_2011a">[10]</a> <a href="#Langtangen_2003a">[11]</a> <a href="#Langtangen_2008a">[12]</a> <a href="#Langtangen:95">[13]</a>
+and all the work of <a href="#Langtangen_2012">[14]</a> <a href="#Mardal_et_al_2003a">[4]</a> <a href="#Jeberg_et_al_2004">[15]</a> as well as old work <a href="#Langtangen_1988d">[5]</a> and <a href="#Langtangen_1989e">[16]</a>, and the talk <a href="#Langtangen_talk_2007a">[17]</a>. Langtangen also had two thesis <a href="#Langtangen:85">[18]</a> <a href="#Langtangen_1989e">[16]</a>
+back in the days. More retro citations are the old ME-IN323 book <a href="#Langtangen:91">[19]</a> and the <a href="#Langtangen:94b">[20]</a> OONSKI '94 paper.
 
 <h2 id="Example">Example 1: Examples can be typeset as exercises</h2>
 
 <p>
 Examples can start with a subsection heading starting with <code>Example:</code>
-and then, with the command-line option <code>--examples_as_exercises</code> be
-typeset as exercises. This is useful if one has solution
-environments as part of the example.
+and then, with the command-line option <code>--examples_as_exercises</code> be typeset as exercises. This is useful if one has solution environments as part of the example.
 
 <p>
 <b>a)</b>
@@ -37938,21 +37875,17 @@ Maybe even another hint?
 
 <p>
 <b>Solution.</b>
-The answer to this other subproblem goes here,
-maybe over multiple doconce input lines.
+The answer to this other subproblem goes here, maybe over multiple doconce input lines.
 
 <h2 id="___sec27">User-defined environments </h2>
 
 <p>
-The example in the section <a href="#ex:test:1p1">Example 1: A test function</a> demonstrates how to write a test function.
-That is, a special test function for a function <code>add</code> appears in
-the example in the section <a href="#ex:test:1p1">Example 1: A test function</a>.
+The example in the section <a href="#ex:test:1p1">Example 1: A test function</a> demonstrates how to write a test function. That is, a special test function for a function <code>add</code> appears in the example in the section <a href="#ex:test:1p1">Example 1: A test function</a>.
 
 <h2 id="ex:test:1p1">Example 1: A test function</h2>
 
 <p>
-Suppose we want to write a test function for checking the
-implementation of a Python function for addition.
+Suppose we want to write a test function for checking the implementation of a Python function for addition.
 
 <p>
 
@@ -37993,43 +37926,22 @@ $latex  E = mc^2  $
 <h2 id="subsubsec:ex">URLs</h2>
 
 <p>
-Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>, or
-the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a
-plain file link <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or
-<a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_blank">a link with
-newline</a>. Can test spaces with the link with word
-too: <a href="http://folk.uio.no/hpl" target="_blank">hpl</a> or <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_blank">link to a
-file</a> is
-fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just
-the plain URL as in <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma,
-colon, semi-colon, question mark, exclamation mark, but not a period
+Testing of URLs: hpl's home page <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>, or the entire URL if desired, <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>.  Here is a plain file link <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a>, or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_blank"><tt>testdoc.do.txt</tt></a> or <a href="testdoc.do.txt" target="_blank">a link with newline</a>. Can test spaces with the link with word too: <a href="http://folk.uio.no/hpl" target="_blank">hpl</a> or <a href="http://folk.uio.no/hpl" target="_blank">hpl</a>. Also <code>file:///</code> works: <a href="file:///home/hpl/vc/doconce/doc/demos/manual/manual.html" target="_blank">link to a file</a> is fine to have. Moreover, &quot;loose&quot; URLs work, i.e., no quotes, just the plain URL as in <a href="http://folk.uio.no/hpl" target="_blank"><tt>http://folk.uio.no/hpl</tt></a>, if followed by space, comma, colon, semi-colon, question mark, exclamation mark, but not a period
 (which gets confused with the periods inside the URL).
 
 <p>
 Mail addresses can also be used: <a href="mailto:hpl@simula.no" target="_blank"><tt>hpl@simula.no</tt></a>, or just a <a href="mailto:hpl@simula.no" target="_blank">mail link</a>, or a raw <a href="mailto:hpl@simula.no" target="_blank"><tt>mailto:hpl@simula.no</tt></a>.
 
 <p>
-Here are some tough tests of URLs, especially for the <code>latex</code> format:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_blank">Newton-Cotes</a> formulas
-and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_blank">good book</a>. Need to test
-Newton-Cotes with percentage in URL too:
-<a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_blank"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
+Here are some tough tests of URLs, especially for the <code>latex</code> format: <a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_blank">Newton-Cotes</a> formulas and a <a href="http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-23098-1" target="_blank">good book</a>. Need to test Newton-Cotes with percentage in URL too: <a href="http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas" target="_blank"><tt>http://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas</tt></a>
 and <a href="http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae" target="_blank"><tt>http://en.wikipedia.org/wiki/Newton-Cotes#Open_Newton.E2.80.93Cotes_formulae</tt></a> which has a shebang.
 
 <p>
-For the <code>--device=paper</code> option it is important to test that URLs with
-monospace font link text get a footnote
-(unless the <code>--latex_no_program_footnotelink</code>
-is used), as in this reference to
-<a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_blank"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_blank"><tt>ball1.py</tt></a>,
-and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_blank"><tt>ball2.py</tt></a>.
+For the <code>--device=paper</code> option it is important to test that URLs with monospace font link text get a footnote (unless the <code>--latex_no_program_footnotelink</code>
+is used), as in this reference to <a href="https://github.com/hplgit/INF5620/tree/gh-pages/src/decay/experiments/decay_mod.py" target="_blank"><tt>decay_mod</tt></a>, <a href="http://tinyurl.com/pwyasaa/formulas.ball1.py" target="_blank"><tt>ball1.py</tt></a>, and <a href="http://tinyurl.com/pwyasaa/formulas.ball2.py" target="_blank"><tt>ball2.py</tt></a>.
 
 <p>
-More tough tests: repeated URLs whose footnotes when using the
-<code>--device=paper</code> option must be correct. We have
-<a href="http://google.com" target="_blank">google</a>, <a href="http://google.com" target="_blank">google</a>, and
-<a href="http://google.com" target="_blank">google</a>, which should result in exactly three
-footnotes.
+More tough tests: repeated URLs whose footnotes when using the <code>--device=paper</code> option must be correct. We have <a href="http://google.com" target="_blank">google</a>, <a href="http://google.com" target="_blank">google</a>, and <a href="http://google.com" target="_blank">google</a>, which should result in exactly three footnotes.
 
 <h1 id="___sec31">LaTeX Mathematics </h1>
 
@@ -38069,17 +37981,13 @@ b = \nabla^2 u + \nabla^4 x
  $
 
 
-We can refer to <b>(REF to equation eq1 not supported)</b>-<b>(REF to equation eq2 not supported)</b>. They are a bit simpler than
-the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
-Also test $latex a_{i-j}$ as well as $latex kx-wt$.
+We can refer to <b>(REF to equation eq1 not supported)</b>-<b>(REF to equation eq2 not supported)</b>. They are a bit simpler than the Navier-Stokes equations. And test LaTeX hyphen in <code>CG-2</code>. Also test $latex a_{i-j}$ as well as $latex kx-wt$.
 
 <p>
 More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
-Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 4: Compute a Probability</a>,
-as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in
-between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
+Below, we have <a href="#demo:ex:1">Problem 2: Flip a Coin</a> and <a href="#demo:ex:2">Project 4: Compute a Probability</a>, as well as <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a> and <a href="#exer:you">Project 11: References in a headings do not work well in html</a>, and in between there we have <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>.
 
 <h1 id="___sec32">Exercises </h1>
 
@@ -38087,9 +37995,7 @@ between there we have <a href="#exer:some:formula">Exercise 10: Make references 
 
 <p>
 <b>a)</b>
-Make a program that simulates flipping a coin $latex N$ times.
-Print out &quot;tail&quot; or &quot;head&quot; for each flip and
-let the program count the number of heads.
+Make a program that simulates flipping a coin $latex N$ times. Print out &quot;tail&quot; or &quot;head&quot; for each flip and let the program count the number of heads.
 
 <p>
 <b>Hint 1.</b>
@@ -38097,14 +38003,12 @@ Use <code>r = random.random()</code> and define head as <code>r &lt;= 0.5</code>
 
 <p>
 <b>Hint 2.</b>
-Draw an integer among $latex \{1,2\}$ with
-<code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
+Draw an integer among $latex \{1,2\}$ with <code>r = random.randint(1,2)</code> and define head when <code>r</code> is 1.
 
 <p>
 
 <b>Answer.</b>
-If the <code>random.random()</code> function returns a number $latex <1/2$, let it be
-head, otherwise tail. Repeat this $latex N$ number of times.
+If the <code>random.random()</code> function returns a number $latex <1/2$, let it be head, otherwise tail. Repeat this $latex N$ number of times.
 
 <p>
 
@@ -38126,9 +38030,7 @@ heads <span style="color: #666666">=</span> <span style="color: #666666">0</span
 Vectorize the code in a) using boolean indexing.
 
 <p>
-Vectorized code can be written in many ways.
-Sometimes the code is less intuitive, sometimes not.
-At least there is not much to find in the section <a href="#sec1">Section 1</a>.
+Vectorized code can be written in many ways. Sometimes the code is less intuitive, sometimes not. At least there is not much to find in the section <a href="#sec1">Section 1</a>.
 
 <p>
 <b>c)</b>
@@ -38140,14 +38042,12 @@ Vectorize the code in a) using <code>numpy.sum</code>.
 <code>np.sum(np.where(r &lt;= 0.5, 1, 0))</code> or <code>np.sum(r &lt;= 0.5)</code>.
 
 <p>
-In this latter subexercise, we have an
-example where the code is easy to read.
+In this latter subexercise, we have an example where the code is easy to read.
 
 <h3 id="___sec34">My remarks </h3>
 
 <p>
-Remarks with such a subsubsection is treated as more text
-after the last subexercise. Test a list too:
+Remarks with such a subsubsection is treated as more text after the last subexercise. Test a list too:
 
 <ol>
 <li> Mark 1.</li>
@@ -38164,25 +38064,20 @@ These are the exercise remarks, appearing at the very end.
 <h2 id="___sec36">Not an exercise </h2>
 
 <p>
-Should be possible to stick a normal section in the middle of many
-exercises.
+Should be possible to stick a normal section in the middle of many exercises.
 
 <h2 id="my:exer1">Exercise 3: Test of plain text exercise</h2>
 
 <p>
-Very short exercise. What is the capital
-of Norway?
-Filename: <code>myexer1</code>.
+Very short exercise. What is the capital of Norway? Filename: <code>myexer1</code>.
 
 <h2 id="demo:ex:2">Project 4: Compute a Probability</h2>
 
 <p>
-What is the probability of getting a number between 0.5 and 0.6 when
-drawing uniformly distributed random numbers from the interval $latex [0,1)$?
+What is the probability of getting a number between 0.5 and 0.6 when drawing uniformly distributed random numbers from the interval $latex [0,1)$?
 
 <p>
-At the end we have a list because that caused problems in LaTeX
-in previous DocOnce versions:
+At the end we have a list because that caused problems in LaTeX in previous DocOnce versions:
 
 <ol>
 <li> item1</li>
@@ -38191,10 +38086,7 @@ in previous DocOnce versions:
 
 <p>
 <b>Hint.</b>
-To answer this question empirically, let a program
-draw $latex N$ such random numbers using Python's standard <code>random</code> module,
-count how many of them, $latex M$, that fall in the interval $latex (0.5,0.6)$, and
-compute the probability as $latex M/N$.
+To answer this question empirically, let a program draw $latex N$ such random numbers using Python's standard <code>random</code> module, count how many of them, $latex M$, that fall in the interval $latex (0.5,0.6)$, and compute the probability as $latex M/N$.
 
 <h2 id="proj:circle1">Project 5: Explore Distributions of Random Circles</h2>
 
@@ -38213,11 +38105,7 @@ y = y_0 + R\sin 2\pi t,
  $
 
 
-where $latex R$ is the radius of the circle, $latex (x_0,y_0)$ is the
-center point, and $latex t$ is a parameter in the unit interval $latex [0,1]$.
-For any $latex t$, $latex (x,y)$ computed from <b>(REF to equation circle:x not supported)</b>-<b>(REF to equation circle:y not supported)</b>
-is a point on the circle.
-The formula can be used to generate <code>n</code> points on a circle:
+where $latex R$ is the radius of the circle, $latex (x_0,y_0)$ is the center point, and $latex t$ is a parameter in the unit interval $latex [0,1]$. For any $latex t$, $latex (x,y)$ computed from <b>(REF to equation circle:x not supported)</b>-<b>(REF to equation circle:y not supported)</b> is a point on the circle. The formula can be used to generate <code>n</code> points on a circle:
 
 <p>
 
@@ -38233,9 +38121,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 x, y <span style="color: #666666">=</span> circle(<span style="color: #666666">2.0</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>)
 </pre></div>
 <p>
-The goal of this project is to draw $latex N$ circles with random
-center and radius. Plot each circle using the <code>circle</code> function
-above.
+The goal of this project is to draw $latex N$ circles with random center and radius. Plot each circle using the <code>circle</code> function above.
 
 <p>
 <b>a)</b>
@@ -38243,8 +38129,7 @@ Let $latex R$ be normally distributed and $latex (x_0,y_0)$ uniformly distribute
 
 <p>
 <b>Hint.</b>
-Use the <code>numpy.random</code> module to draw the
-$latex x_0$, $latex y_0$, and $latex R$ quantities.
+Use the <code>numpy.random</code> module to draw the $latex x_0$, $latex y_0$, and $latex R$ quantities.
 
 <p>
 
@@ -38258,8 +38143,7 @@ Here goes a full solution to part a).
 
 <p>
 <b>b)</b>
-Let $latex R$ be uniformly distributed and $latex (x_0,y_0)$ normally distributed.
-Filename: <code>norm</code>.
+Let $latex R$ be uniformly distributed and $latex (x_0,y_0)$ normally distributed. Filename: <code>norm</code>.
 
 <p>
 <b>c)</b>
@@ -38271,8 +38155,7 @@ Filename: <code>circles</code>.
 <h3 id="___sec40">Remarks </h3>
 
 <p>
-At the very end of the exercise it may be appropriate to summarize
-and give some perspectives.
+At the very end of the exercise it may be appropriate to summarize and give some perspectives.
 
 <h2 id="exer:dist">Exercise 6: Determine some Distance</h2>
 
@@ -38285,8 +38168,7 @@ Subexercises are numbered a), b), etc.
 
 <p>
 <b>Hint 1.</b>
-First hint to subexercise a).
-With math $latex a=b$ in hint:
+First hint to subexercise a). With math $latex a=b$ in hint:
 
 <p>
 
@@ -38319,8 +38201,7 @@ Filename: <code>subexer_a.pdf</code>.
 <p>
 
 <b>Answer.</b>
-Short answer to subexercise a).
-With math in answer: $latex a=b$.
+Short answer to subexercise a). With math in answer: $latex a=b$.
 
 <p>
 <b>b)</b>
@@ -38348,8 +38229,7 @@ Here goes the solution of this subexercise.
 
 <p>
 
-The text here belongs to the main (intro) part of the exercise. Need
-closing remarks to have text after subexercises.
+The text here belongs to the main (intro) part of the exercise. Need closing remarks to have text after subexercises.
 
 <p>
 Test list in exercise:
@@ -38361,8 +38241,7 @@ Test list in exercise:
 
 
 <b>Solution.</b>
-Here goes a full solution of the whole exercise.
-With some math $latex a=b$ in this solution:
+Here goes a full solution of the whole exercise. With some math $latex a=b$ in this solution:
 
 $latex  \hbox{math in solution: } a = b  $
 
@@ -38379,15 +38258,12 @@ End of solution is here.
 <h3 id="___sec42">Remarks </h3>
 
 <p>
-Some final closing remarks, e.g., summarizing the main findings
-and their implications in other problems can be made. These
-remarks will appear at the end of the typeset exercise.
+Some final closing remarks, e.g., summarizing the main findings and their implications in other problems can be made. These remarks will appear at the end of the typeset exercise.
 
 <h2 id="___sec43">Some exercise without the "Exercise:" prefix </h2>
 
 <p>
-Just some text. And some math saying that $latex e^0=1$ on a single line,
-to test that math block insertion is correct:
+Just some text. And some math saying that $latex e^0=1$ on a single line, to test that math block insertion is correct:
 
 <p>
 
@@ -38436,10 +38312,7 @@ Almost, but the sign is wrong (note the minus!).
 </pre></div>
 <p>
 
-Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code
-must be considered as a good answer. It is more natural,
-though, to write the solution to the problem
-in mathematical notation:
+Ooops, forgot a minus: <code>exp(-x)</code>, otherwise this Python code must be considered as a good answer. It is more natural, though, to write the solution to the problem in mathematical notation:
 
 <p>
 
@@ -38451,20 +38324,16 @@ The solution cannot be found because there is a derivative in the equation.
 
 <p>
 
-Equations with derivatives can be solved;
-they are termed <em>differential
-equations</em>.
+Equations with derivatives can be solved; they are termed <em>differential equations</em>.
 
 <p>
 
-The equation is meaningless: an equation must be an equation
-for $latex x$ or $latex y$, not a function $latex y(x)$.
+The equation is meaningless: an equation must be an equation for $latex x$ or $latex y$, not a function $latex y(x)$.
 
 <p>
 
 Equations where the unknown is a function, as $latex y(x)$
-here, are called <em>differential equations</em>, and are solved by
-special techniques.
+here, are called <em>differential equations</em>, and are solved by special techniques.
 
 <h2 id="___sec45">Example 9: Just an example </h2>
 
@@ -38491,8 +38360,7 @@ Pick a statement from <a href="#proj:circle1">Project 5: Explore Distributions o
 and verify it.
 
 <p>
-Test list at the end of an exercise without other elements (like subexercise,
-hint, etc.):
+Test list at the end of an exercise without other elements (like subexercise, hint, etc.):
 
 <ol>
 <li> item1</li>
@@ -38504,126 +38372,80 @@ Filename: <code>verify_formula.py</code>.
 <h2 id="exer:you">Project 11: References in a headings do not work well in html</h2>
 
 <p>
-Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>,
-the two before that as <a href="#demo:ex:2">Project 4: Compute a Probability</a> and <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a>,
-and this one as <a href="#exer:you">Project 11: References in a headings do not work well in html</a>.
-Filename: <code>selc_composed.pdf</code>.
+Refer to the previous exercise as <a href="#exer:some:formula">Exercise 10: Make references to projects and problems</a>, the two before that as <a href="#demo:ex:2">Project 4: Compute a Probability</a> and <a href="#proj:circle1">Project 5: Explore Distributions of Random Circles</a>, and this one as <a href="#exer:you">Project 11: References in a headings do not work well in html</a>. Filename: <code>selc_composed.pdf</code>.
 
 <h1 id="___sec50">References </h1>
 
 <ol>
  <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
-    Propagation of Large Destructive Waves,
-    <em>International Journal of Applied Mechanics and Engineering</em>,
+    Propagation of Large Destructive Waves,     <em>International Journal of Applied Mechanics and Engineering</em>,
     7(1),
     pp. 187-204,
-    2002.</li>
- <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
-    Numerical Methods for Incompressible Viscous Flow,
-    <em>Advances in Water Resources</em>,
+    2002.</li>  <li> <div id="Langtangen_et_al_2002"></div> <b>H. P. Langtangen, K.-A. Mardal and R. Winther</b>. 
+    Numerical Methods for Incompressible Viscous Flow,     <em>Advances in Water Resources</em>,
     25,
     pp. 1125-1146,
-    2002.</li>
- <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
-    Numerical Solution of First Passage Problems in Random Vibrations,
-    <em>SIAM Journal of Scientific and Statistical Computing</em>,
+    2002.</li>  <li> <div id="Langtangen_1994a"></div> <b>H. P. Langtangen</b>. 
+    Numerical Solution of First Passage Problems in Random Vibrations,     <em>SIAM Journal of Scientific and Statistical Computing</em>,
     15,
     pp. 997-996,
-    1994.</li>
- <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
-    Software Tools for Multigrid Methods,
-    <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,
-    edited by <b>H. P. Langtangen and A. Tveito</b>,
+    1994.</li>  <li> <div id="Mardal_et_al_2003a"></div> <b>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</b>. 
+    Software Tools for Multigrid Methods,     <em>Advanced Topics in Computational Partial Differential Equations -- Numerical Methods and Diffpack Programming</em>,     edited by <b>H. P. Langtangen and A. Tveito</b>,
     Springer,
     2003,
-    Edited book.</li>
- <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
-    The FEMDEQS Program System,
-    <em>Department of Mathematics, University of Oslo</em>,
-    <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_blank"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
-    1989.</li>
- <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
-    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,
-    <em>SIAM Journal on Scientific Computing</em>,
+    Edited book.</li>  <li> <div id="Langtangen_1988d"></div> <b>H. P. Langtangen</b>. 
+    The FEMDEQS Program System,     <em>Department of Mathematics, University of Oslo</em>,     <a href="http://www.math.uio.no/old/days/hpl/femdeqs.pdf" target="_blank"><tt>http://www.math.uio.no/old/days/hpl/femdeqs.pdf</tt></a>,
+    1989.</li>  <li> <div id="Langtangen_1992c"></div> <b>H. P. Langtangen</b>. 
+    Stochastic Breakthrough Time Analysis of an Enhanced Oil Recovery Process,     <em>SIAM Journal on Scientific Computing</em>,
     13,
     pp. 1394-1417,
-    1992.</li>
- <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
-    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,
-    <em>Advances in Water Resources</em>,
-    34(9),
-    <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_blank">doi: 10.1016/j.advwatres.2011.02.013</a>,
-    2011.</li>
- <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
-    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,
-    <em>International Journal of Fluid Mechanics Research</em>,
+    1992.</li>  <li> <div id="Mortensen_et_al_2011"></div> <b>M. Mortensen, H. P. Langtangen and G. N. Wells</b>. 
+    A FEniCS-Based Programming Framework for Modeling Turbulent Flow by the Reynolds-Averaged Navier-Stokes Equations,     <em>Advances in Water Resources</em>,
+    34(9),     <a href="http://dx.doi.org/10.1016/j.advwatres.2011.02.013" target="_blank">doi: 10.1016/j.advwatres.2011.02.013</a>,
+    2011.</li>  <li> <div id="Glimsdal_et_al_20006"></div> <b>S. Glimsdal, G. Pedersen, K. Atakan, C. B. Harbitz, H. P. Langtangen and F. L\ovholt</b>. 
+    Propagation of the Dec.&nbsp;26, 2004 Indian Ocean Tsunami: Effects of Dispersion and Source Characteristics,     <em>International Journal of Fluid Mechanics Research</em>,
     33(1),
     pp. 15-43,
-    2006.</li>
- <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
-    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,
-    <em>Physical Review B: Condensed Matter and Materials Physics</em>,
+    2006.</li>  <li> <div id="Rahman_et_al_2006b"></div> <b>S. Rahman, J. Gorman, C. H. W. Barnes, D. A. Williams and H. P. Langtangen</b>. 
+    Numerical Investigation of a Piezoelectric Surface Acoustic Wave Interaction With a One-Dimensional Channel,     <em>Physical Review B: Condensed Matter and Materials Physics</em>,
     74,
-    2006.</li>
-<li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
-    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,
-    <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,
-    <a href="http://dx.doi.org/10.1002/nag.1062" target="_blank">doi: 10.1002/nag.1062</a>,
-    2011,
-    <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_blank"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li>
-<li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
+    2006.</li> <li> <div id="Haga_et_al_2011a"></div> <b>J. B. Haga, H. Osnes and H. P. Langtangen</b>. 
+    On the Causes of Pressure Oscillations in Low-Permeable and Low-Compressible Porous Media,     <em>International Journal of Analytical and Numerical Methods in Geomechanics</em>,     <a href="http://dx.doi.org/10.1002/nag.1062" target="_blank">doi: 10.1002/nag.1062</a>,
+    2011,     <a href="http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract" target="_blank"><tt>http://onlinelibrary.wiley.com/doi/10.1002/nag.1062/abstract</tt></a>.</li> <li> <div id="Langtangen_2003a"></div> <b>H. P. Langtangen</b>. 
     <em>Computational Partial Differential Equations - Numerical Methods and Diffpack Programming</em>,
-    second edition,
-    <em>Texts in Computational Science and Engineering</em>,
+    second edition,     <em>Texts in Computational Science and Engineering</em>,
     Springer,
-    2003.</li>
-<li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
+    2003.</li> <li> <div id="Langtangen_2008a"></div> <b>H. P. Langtangen</b>. 
     <em>Python Scripting for Computational Science</em>,
-    third edition,
-    <em>Texts in Computational Science and Engineering</em>,
+    third edition,     <em>Texts in Computational Science and Engineering</em>,
     Springer,
-    2008.</li>
-<li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
+    2008.</li> <li> <div id="Langtangen:95"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Finite Elements for the Boussinesq Wave Equations,
-    Waves and Non-linear Processes in Hydrodynamics,
-    edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
+    Waves and Non-linear Processes in Hydrodynamics,     edited by <b>J. Grue, B. Gjevik and J. E. Weber</b>,
     Kluwer Academic Publishers,
     pp. pp. 117-126,
-    1995,
-    <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_blank"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li>
-<li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
+    1995,     <a href="http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310" target="_blank"><tt>http://www.amazon.ca/Waves-Nonlinear-Processes-Hydrodynamics-John/dp/0792340310</tt></a>.</li> <li> <div id="Langtangen_2012"></div> <b>H. P. Langtangen</b>. 
     <em>A Primer on Scientific Programming With Python</em>,
-    third edition,
-    <em>Texts in Computational Science and Engineering</em>,
+    third edition,     <em>Texts in Computational Science and Engineering</em>,
     Springer,
-    2012.</li>
-<li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
-    Optimization With Diffpack: Practical Example From Welding,
-    <em>Simula Research Laboratory</em>,
+    2012.</li> <li> <div id="Jeberg_et_al_2004"></div> <b>P. V. Jeberg, H. P. Langtangen and C. B. Terp</b>. 
+    Optimization With Diffpack: Practical Example From Welding,     <em>Simula Research Laboratory</em>,
     Internal report,
-    2004.</li>
-<li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
+    2004.</li> <li> <div id="Langtangen_1989e"></div> <b>H. P. Langtangen</b>. 
     Computational Methods for Two-Phase Flow in Oil Reservoirs,
     Ph.D. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
-    1989.</li>
-<li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
+    1989.</li> <li> <div id="Langtangen_talk_2007a"></div> <b>H. P. Langtangen</b>. 
     Computational Modeling of Huge Tsunamis From Asteroid Impacts,
     Invited keynote lecture at the \emphInternational conference on Computational Science 2007 (ICCS'07), Beijing, China,
-    2007.</li>
-<li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
+    2007.</li> <li> <div id="Langtangen:85"></div> <b>H. P. Langtangen</b>. 
     Solution of the Navier-Stokes Equations With the Finite Element Method in Two and Three Dimensions,
     M.Sc. Thesis,
     Mechanics Division, Department of Mathematics, University of Oslo,
-    1985.</li>
-<li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
-    Numerical Methods in Continuum Mechanics,
-    <em>Center for Industrial Research</em>,
-    1991.</li>
-<li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
-    Diffpack: Software for Partial Differential Equations,
-    <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,
-    edited by <b>A. Vermeulen</b>,
+    1985.</li> <li> <div id="Langtangen:91"></div> <b>H. P. Langtangen and A. Tveito</b>. 
+    Numerical Methods in Continuum Mechanics,     <em>Center for Industrial Research</em>,
+    1991.</li> <li> <div id="Langtangen:94b"></div> <b>H. P. Langtangen</b>. 
+    Diffpack: Software for Partial Differential Equations,     <em>Proceedings of the Second Annual Object-Oriented Numerics Conference (OON-SKI'94), Sunriver, Oregon, USA</em>,     edited by <b>A. Vermeulen</b>,
     1994.</li>
 </ol>
 
@@ -38699,108 +38521,46 @@ Here is a tip or hint box, typeset as a notice box.
 
 
 <p>
-Need a lot of text to surround the summary box.
-Version control systems allow you to record the history of files
-and share files among several computers and collaborators in a
-professional way. File changes on one computer are updated or
-merged with changes on another computer. Especially when working
-with programs or technical reports it is essential
-to have changes documented and to
-ensure that every computer and person involved in the project
-have the latest updates of the files.
-Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_blank">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly
-from using version control systems.
+Need a lot of text to surround the summary box. Version control systems allow you to record the history of files and share files among several computers and collaborators in a professional way. File changes on one computer are updated or merged with changes on another computer. Especially when working with programs or technical reports it is essential to have changes documented and to ensure that every computer and person involved in the project have the latest updates of the files. Greg Wilson' excellent <a href="http://software-carpentry.org/2010/07/script-for-introduction-to-version-control/" target="_blank">Script for Introduction to Version Control</a> provides a more detailed motivation why you will benefit greatly from using version control systems.
 
 <p>
 <div class="alert alert-block alert-summary alert-text-normal">
 <b>Summary.</b>
 <p>
-<b>Bold remark:</b> Make some text with this summary.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
-Much testing in this document, otherwise stupid content.
+<b>Bold remark:</b> Make some text with this summary. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content. Much testing in this document, otherwise stupid content.
 </div>
 
 
 <p>
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that site. I strongly
-recommend you to use such sites for all serious programming and
-scientific writing work - and all other important files.
+Projects that you want to share among several computers or project workers are today most conveniently stored at some web site "in the cloud" and updated through communication with that site. I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.
 
 <p>
-The simplest services for hosting project files are <a href="http://dropbox.com" target="_blank">Dropbox</a> and <a href="http://drive.google.com" target="_blank">Google Drive</a>.
-It is very easy to get started with these systems, and they allow you
-to share files among laptops and mobile units with as many users as
-you want. The systems offer a kind of version control in that the
-files are stored frequently (several times per minute), and you can go
-back to previous versions for the last 30 days. However, it is
-challenging  to find the right version from the past when there are
-so many of them.
+The simplest services for hosting project files are <a href="http://dropbox.com" target="_blank">Dropbox</a> and <a href="http://drive.google.com" target="_blank">Google Drive</a>. It is very easy to get started with these systems, and they allow you to share files among laptops and mobile units with as many users as you want. The systems offer a kind of version control in that the files are stored frequently (several times per minute), and you can go back to previous versions for the last 30 days. However, it is challenging  to find the right version from the past when there are so many of them.
 
 <p>
-More seriously, when several people may edit files simultaneously, it
-can be difficult detect who did what when, roll back to previous
-versions, and to manually merge the edits when these are
-incompatible. Then one needs more sophisticated tools than Dropbox or
-Google Drive: project hosting services with true version control
-systems.  The following text aims at providing you with the minimum
-information to started with such systems. Numerous other tutorials
-contain more comprehensive material and in-depth explanations of the
-concepts and tools.
+More seriously, when several people may edit files simultaneously, it can be difficult detect who did what when, roll back to previous versions, and to manually merge the edits when these are incompatible. Then one needs more sophisticated tools than Dropbox or Google Drive: project hosting services with true version control systems.  The following text aims at providing you with the minimum information to started with such systems. Numerous other tutorials contain more comprehensive material and in-depth explanations of the concepts and tools.
 
 <p>
-The idea with project hosting services is that you have the files
-associated with a project in the cloud. Many people may share these
-files.  Every time you want to work on the project you explicitly
-update your version of the files, edit the files as you like, and
-synchronize the files with the "master version" at the site where the
-project is hosted.  If you at some point need to go back to a
-version of the files at some particular point in the past,
-this is an easy operation. You can also use tools to see
-what various people have done with the files in the various versions.
+The idea with project hosting services is that you have the files associated with a project in the cloud. Many people may share these files.  Every time you want to work on the project you explicitly update your version of the files, edit the files as you like, and synchronize the files with the "master version" at the site where the project is hosted.  If you at some point need to go back to a version of the files at some particular point in the past, this is an easy operation. You can also use tools to see what various people have done with the files in the various versions.
 
 <p>
-All these services are very similar. Below we describe how you get
-started with Bitbucket, GitHub, and Googlecode. Launchpad works very
-similarly to the latter three. All the project hosting services have
-excellent introductions available at their web sites, but the recipes
-below are much shorter and aim at getting you started as quickly as
-possible by concentrating on the most important need-to-know steps.
-The Git tutorials we refer to later in this document contain more
-detailed information and constitute of course very valuable readings
-when you use version control systems every day. The point now is
-to get started.
+All these services are very similar. Below we describe how you get started with Bitbucket, GitHub, and Googlecode. Launchpad works very similarly to the latter three. All the project hosting services have excellent introductions available at their web sites, but the recipes below are much shorter and aim at getting you started as quickly as possible by concentrating on the most important need-to-know steps. The Git tutorials we refer to later in this document contain more detailed information and constitute of course very valuable readings when you use version control systems every day. The point now is to get started.
 
 <h2 id="___sec58">Appendix: Testing inline comments </h2>
 
 <p>
-Projects that you want to share among several computers or project
-workers are today most conveniently stored at some web site "in the
-cloud" and updated through communication with that
-site. 
+Projects that you want to share among several computers or project workers are today most conveniently stored at some web site "in the cloud" and updated through communication with that site. 
 
 <font color="red">(<b>hpl's semi opinion 1</b>: not sure if in the cloud is understood by all.)</font>
 
- I strongly recommend you to use such sites for all serious
-programming and scientific writing work - and all other important
-files.
+ I strongly recommend you to use such sites for all serious programming and scientific writing work - and all other important files.
 
 <p>
 The simplest services for hosting project files is Dropbox. 
 
 <font color="red">(<b>mp 2</b>: Simply go to <a href="http://dropbox.com" target="_blank"><tt>http://dropbox.com</tt></a> and watch the video. It explains how files, like <code>myfile.py</code>, perhaps containing much math, like $latex \partial u/\partial t$, are easily communicated between machines.)</font>
 
- It
-is very easy to get started with Dropbox, and it allows you to share
-files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile units </del> <font color="red">computers, tablets, and phones</font>.
+ It is very easy to get started with Dropbox, and it allows you to share files among  <font color="red">(<b>hpl 3</b>:)</font> <del> laptops and mobile units </del> <font color="red">computers, tablets, and phones</font>.
 
 <p>
 <hr>
@@ -38825,13 +38585,10 @@ Test references in a list:
 <h2 id="___sec59">Appendix: Testing headings ending with <code>verbatim inline</code> </h2>
 
 <p>
-The point here is to test 1) <code>verbatim</code> code in headings, and 2)
-ending a heading with verbatim code as this triggers a special
-case in LaTeX.
+The point here is to test 1) <code>verbatim</code> code in headings, and 2) ending a heading with verbatim code as this triggers a special case in LaTeX.
 
 <p>
-We also test mdash&mdash;used as alternative to hyphen without spaces around,
-or in quotes:
+We also test mdash&mdash;used as alternative to hyphen without spaces around, or in quotes:
 
 <p>
 <blockquote>
@@ -38840,11 +38597,9 @@ or in quotes:
 
 
 <p>
-And finally, what about admons, quotes, and boxes? They are tested
-in a separate document: <code>admon.do.txt</code>.
+And finally, what about admons, quotes, and boxes? They are tested in a separate document: <code>admon.do.txt</code>.
 
-<p id="def_footnote_5"><a href="#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote
-is at the end with only one newline.</p>
+<p id="def_footnote_5"><a href="#link_footnote_5"><b>5:</b></a> Not much to add here, but the footnote is at the end with only one newline.</p>
 
 
 
@@ -39291,6 +39046,20 @@ Here is a nested list:
 Here are two references. Equation&nbsp;\eqref{my:eq1} is fine. Eq.&nbsp;\eqref{my:eq1} too.
 Even Equation \eqref{my:eq1} without the tilde.
 This equation appears in another part if this document is split.
+
+<p>
+Let us add a paragraph to
+test that HTML,
+with WordPress
+(<code>--wordpress</code> option)
+can handle linebreaks
+<em>correctly</em>,
+even when lines begin with
+<b>bold words</b> and
+<code>verbatim words</code> in
+<font color="red">red color</font>, and
+<a href="http://google.com" target="_self">links</a> as well as math:
+\( 1+1=2 \).
 
 <h2 id="subsec1">Subsection 1</h2>
 
@@ -46969,6 +46738,20 @@ Here is a nested list:
 Here are two references. Equation&nbsp;<a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> is fine. Eq.&nbsp;<a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> too.
 Even Equation <a href="._testdoc_vagrant002.html#mjx-eqn-3">(3)</a> without the tilde.
 This equation appears in another part if this document is split.
+
+<p>
+Let us add a paragraph to
+test that HTML,
+with WordPress
+(<code>--wordpress</code> option)
+can handle linebreaks
+<em>correctly</em>,
+even when lines begin with
+<b>bold words</b> and
+<code>verbatim words</code> in
+<font color="red">red color</font>, and
+<a href="http://google.com" target="_self">links</a> as well as math:
+\( 1+1=2 \).
 
 <h2 id="subsec1">Subsection 1</h2>
 
@@ -76315,7 +76098,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7f78e6be4de8>
+verbatim is to be replaced using <function html_verbatim at 0x7f1321312de8>
 
 
 First occurence: " `mako`."
@@ -80554,7 +80337,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # A Document for Testing DocOnce documentation build configuration file, created by
-# sphinx-quickstart on Fri Sep  4 13:58:35 2015.
+# sphinx-quickstart on Tue Sep  8 00:39:10 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.

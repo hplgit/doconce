@@ -911,11 +911,48 @@ def html_code(filestr, code_blocks, code_block_types,
             tex_blocks[i] = re.sub(r'label\{.+?\}', '', tex_blocks[i])
 
         # Newlines in HTML become real newlines on wordpress.com,
-        # remove newlines between words, word and link, etc.
-        filestr = re.sub(r'([A-Za-z0-9,.:?;])\n([A-Za-z0-9])', r'\g<1> \g<2>',
-                         filestr)
-        filestr = re.sub(r'([A-Za-z0-9,.:?;])\n(<a +href=|<em>|<b>|<code>|\$latex |<font)', r'\g<1> \g<2>',
-                         filestr)
+        # remove newlines between words (but don't merge with code
+        # blocks and don't merge lines starting with !),
+        # word and link, word and emphasize, etc.
+        # Technique: add \n and remove it if the line qualifies for
+        # merging with the next
+        lines = filestr.splitlines()
+        ignorelines = ['^![be]', '^\d+ <<<!!(MATH|CODE)',]
+        acceptlines = ['^[A-Za-z0-9]',
+                       '(<a +href=|<em>|<b>|<code>|\$latex |<font)',]
+        for i in range(len(lines)-1):
+            #print 'Line:', i, lines[i]
+            lines[i] += '\n'
+            # Ignore merging this line with the next?
+            ignore = False
+            for pattern in ignorelines:
+                if re.search(pattern, lines[i]):
+                    ignore = True
+                    #print 'This is an ignore line', pattern
+                    break
+            if not ignore:
+                # Next line must not be an ignore line
+                ignore = False
+                for pattern in ignorelines:
+                    if re.search(pattern, lines[i+1]):
+                        ignore = True
+                        #print 'Next line is an ignore line', pattern
+                        break
+                # Next line must be an accept line
+                accept = False
+                for pattern in acceptlines:
+                    if re.search(pattern, lines[i+1]):
+                        accept = True
+                        #print 'Next line is an accept line', pattern
+                        break
+                if (not ignore) and accept:
+                    if re.search('[A-Za-z0-9.,;:?)]\n', lines[i]):
+                        # Line ends in correct character
+                        # Merge with next line
+                        lines[i] = lines[i].rstrip() + ' '
+                        #print 'Merge!'
+        filestr = ''.join(lines)
+        #print 'XXX', filestr
 
     for i in range(len(tex_blocks)):
         """
