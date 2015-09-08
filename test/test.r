@@ -101,6 +101,13 @@ _bold words_ and
 color{red}{red color}, and
 "links": "http://google.com" as well as math:
 $1+1=2$.
+
+Test also that *emphasize*
+at the end of line, and _bold_
+works, as well as color{blue}{color}
+and "links2": "http://google.com"
+and `verbatim`
+as well.
 # #endif
 
 ===== Subsection 1 =====
@@ -34250,6 +34257,14 @@ even when lines begin with
 <a href="http://google.com" target="_self">links</a> as well as math:
 \( 1+1=2 \).
 
+<p>
+Test also that <em>emphasize</em>
+at the end of line, and <b>bold</b>
+works, as well as <font color="blue">color</font>
+and <a href="http://google.com" target="_self">links2</a>
+and <code>verbatim</code>
+as well.
+
 <h2 id="subsec1">Subsection 1</h2>
 
 <p>
@@ -37102,6 +37117,9 @@ Here are two references. Equation&nbsp;<b>(REF to equation my:eq1 not supported)
 <p>
 Let us add a paragraph to test that HTML, with WordPress (<code>--wordpress</code> option) can handle linebreaks <em>correctly</em>, even when lines begin with <b>bold words</b> and <code>verbatim words</code> in <font color="red">red color</font>, and <a href="http://google.com" target="_blank">links</a> as well as math: $latex 1+1=2$.
 
+<p>
+Test also that <em>emphasize</em> at the end of line, and <b>bold</b> works, as well as <font color="blue">color</font> and <a href="http://google.com" target="_blank">links2</a> and <code>verbatim</code> as well.
+
 <h2 id="subsec1">Subsection 1</h2>
 
 <p>
@@ -38950,6 +38968,14 @@ even when lines begin with
 <font color="red">red color</font>, and
 <a href="http://google.com" target="_self">links</a> as well as math:
 \( 1+1=2 \).
+
+<p>
+Test also that <em>emphasize</em>
+at the end of line, and <b>bold</b>
+works, as well as <font color="blue">color</font>
+and <a href="http://google.com" target="_self">links2</a>
+and <code>verbatim</code>
+as well.
 
 <h2 id="subsec1">Subsection 1</h2>
 
@@ -46642,6 +46668,14 @@ even when lines begin with
 <font color="red">red color</font>, and
 <a href="http://google.com" target="_self">links</a> as well as math:
 \( 1+1=2 \).
+
+<p>
+Test also that <em>emphasize</em>
+at the end of line, and <b>bold</b>
+works, as well as <font color="blue">color</font>
+and <a href="http://google.com" target="_self">links2</a>
+and <code>verbatim</code>
+as well.
 
 <h2 id="subsec1">Subsection 1</h2>
 
@@ -75988,7 +76022,7 @@ Found 2 occurences of "verbatim":
 findall list: [(u' ', u' ', u'mako', u'.', u'.'), (u' ', u' ', u'mako', u' ', u' ')]
 
 
-verbatim is to be replaced using <function html_verbatim at 0x7fcddeff3de8>
+verbatim is to be replaced using <function html_verbatim at 0x7f2fd1e0bde8>
 
 
 First occurence: " `mako`."
@@ -80227,7 +80261,7 @@ we can run the program:
 # -*- coding: utf-8 -*-
 #
 # A Document for Testing DocOnce documentation build configuration file, created by
-# sphinx-quickstart on Tue Sep  8 02:43:17 2015.
+# sphinx-quickstart on Tue Sep  8 02:52:03 2015.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -118073,7 +118107,7 @@ figure file http://hplgit.github.io/INF5620/doc/pub/fig-wave/pulse2_in_two_media
 *** warning: you have citations but no bibliography (BIBFILE: ...)
 mybook
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 ...
-    http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.mp4 not found
+    found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.webm ...
     found!
 ... movie: trying to find http://hplgit.github.io/INF5620/doc/pub/mov-wave/pulse2_in_two_media/movie.ogg ...

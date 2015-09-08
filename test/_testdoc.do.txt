@@ -86,6 +86,13 @@ _bold words_ and
 color{red}{red color}, and
 "links": "http://google.com" as well as math:
 $1+1=2$.
+
+Test also that *emphasize*
+at the end of line, and _bold_
+works, as well as color{blue}{color}
+and "links2": "http://google.com"
+and `verbatim`
+as well.
 # #endif
 
 ===== Subsection 1 =====
