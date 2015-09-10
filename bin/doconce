@@ -498,7 +498,23 @@ Contents:
 
    %(filenames)s
 """ % vars())
-    if 'idx{' in fstr:
+
+    # Do we have idx{} commands in the document? Cannot just check fstr,
+    # that is the top/master file. Need to check the entire file.
+    entire_after_mako = 'tmp_mako__' + filename + '.do.txt'
+    entire_after_preprocess = 'tmp_preprocess__' + filename + '.do.txt'
+    if os.path.isfile(entire_after_mako):
+        dofile = open(entire_after_mako, 'r')
+        dotext = dofile.read()
+        dofile.close()
+    elif os.path.isfile(entire_after_preprocess):
+        dofile = open(entire_after_preprocess, 'r')
+        dotext = dofile.read()
+        dofile.close()
+    else:
+        dotext = fstr # use .do.txt file, no use of preprocessors
+
+    if 'idx{' in dotext:
         f.write("""
 
 Index

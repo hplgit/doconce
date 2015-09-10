@@ -2283,11 +2283,14 @@ def _clean(light):
         for ext in extensions_to_keep:
             filename = namestem + ext
             if os.path.isfile(filename):
-                generated_files.remove(filename)
+                if filename in generated_files:
+                    generated_files.remove(filename)
         for f in generated_files:
             removed.append(f)
         if not light:
-            removed.append('ipynb-%s-src.tar.gz' % namestem)
+            ipynb_tarfile = 'ipynb-%s-src.tar.gz' % namestem
+            if os.path.isfile(ipynb_tarfile):
+                removed.append(ipynb_tarfile)
 
     removed.extend(
         glob.glob('*~') + glob.glob('.*~') + glob.glob('tmp*') +
