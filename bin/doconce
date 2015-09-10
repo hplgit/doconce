@@ -497,11 +497,15 @@ Contents:
    :maxdepth: 3
 
    %(filenames)s
-
-* :ref:`search`
 """ % vars())
     if 'idx{' in fstr:
-        f.write('* :ref:`genindex`\n')
+        f.write("""
+
+Index
+=====
+
+* :ref:`genindex`
+""")
     f.close()
     os.chdir(os.pardir)
     f = open('automake_sphinx.py', 'w')
