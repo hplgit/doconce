@@ -10,23 +10,24 @@ computer code *once, in one place* and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
 include Google's `blogger.com`, Wikipedia/Wikibooks, IPython
-notebooks, plus a wide variety of formats for documents without
+notebooks, plus a wide variety of other formats for documents without
 mathematics and code.
 
 ===== Supported Formats =====
 
 DocOnce currently translates files to the following formats:
 
- * LaTeX (format `latex` and `pdflatex`)
+ * LaTeX (format `latex` or `pdflatex`)
  * HTML (format `html`)
- * reStructuredText (format `rst`)
- * plain (untagged) ASCII (format `plain`)
  * Sphinx (format `sphinx`)
+ * Pandoc-extended or GitHub-flavored Markdown (format `pandoc`)
  * IPython notebook (format `ipynb`)
+ * Matlab notebook (format `matlabnb`)
  * MediaWiki (format `mwiki`)
- * (Pandoc extended) Markdown (format `pandoc`)
  * Googlecode wiki (format `gwiki`)
  * Creoloe wiki (format `cwiki`)
+ * reStructuredText (format `rst`)
+ * plain (untagged) ASCII (format `plain`)
  * Epydoc (format `epydoc`)
  * StructuredText (format `st`)
 
@@ -511,7 +512,7 @@ Copying a part will by default lead to `!bc shcod`, which indicates a
 code snippet that normally needs more code to run properly.
 
 The `--code_prefix=text` option adds a path `text` to the filename specified
-in the `@@@CODE` command. For example
+in the `@@@CODE` command (URLs work). For example
 
 !bc
  @@@CODE src/myfile.py
@@ -654,6 +655,12 @@ no use of any figure environment in HTML or LaTeX formats). The `width`
 and `height` parameters affect HTML formats (`html`, `rst`, `sphinx`),
 while `frac` is the width of the image as a fraction of the total text
 width in the `latex` and `pdflatex` formats.
+
+The command-line options `--fig_prefix=...` and `--mov_prefix=...` can
+be used to add a path (can be a URL) to all figure and movie files,
+respectively.  This is useful when including DocOnce documents in
+other DocOnce documents such that the text is compiled in different
+directories (with different paths to the figure directory).
 
 Movie files can either be a video or a wildcard expression for a
 series of frames. In the latter case, a simple device in an HTML page
@@ -965,6 +972,8 @@ the environments:
  * `slidecell`: indication of cells in a grid layout for elements on a
    slide
 
+In addition, the user can define new environments `!bc-name` as
+explained in the "manual": "http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir".
 
 ===== Preprocessing =====
 
@@ -979,7 +988,7 @@ Here is a typical example on utilizing `preprocess` to include another
 document, ``comment out'' a large portion of text, and to write format-specific
 constructions:
 
-!bc
+!bc do
 # #include "myotherdoc.do.txt"
 
 # #if FORMAT in ("latex", "pdflatex")

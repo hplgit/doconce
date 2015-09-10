@@ -93,23 +93,24 @@ computer code <em>once, in one place</em> and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
 include Google&#8217;s <code class="docutils literal"><span class="pre">blogger.com</span></code>, Wikipedia/Wikibooks, IPython
-notebooks, plus a wide variety of formats for documents without
+notebooks, plus a wide variety of other formats for documents without
 mathematics and code.</p>
 <div class="section" id="supported-formats">
 <h2>Supported Formats<a class="headerlink" href="#supported-formats" title="Permalink to this headline">¶</a></h2>
 <p>DocOnce currently translates files to the following formats:</p>
 <blockquote>
 <div><ul class="simple">
-<li>LaTeX (format <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code>)</li>
+<li>LaTeX (format <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code>)</li>
 <li>HTML (format <code class="docutils literal"><span class="pre">html</span></code>)</li>
-<li>reStructuredText (format <code class="docutils literal"><span class="pre">rst</span></code>)</li>
-<li>plain (untagged) ASCII (format <code class="docutils literal"><span class="pre">plain</span></code>)</li>
 <li>Sphinx (format <code class="docutils literal"><span class="pre">sphinx</span></code>)</li>
+<li>Pandoc-extended or GitHub-flavored Markdown (format <code class="docutils literal"><span class="pre">pandoc</span></code>)</li>
 <li>IPython notebook (format <code class="docutils literal"><span class="pre">ipynb</span></code>)</li>
+<li>Matlab notebook (format <code class="docutils literal"><span class="pre">matlabnb</span></code>)</li>
 <li>MediaWiki (format <code class="docutils literal"><span class="pre">mwiki</span></code>)</li>
-<li>(Pandoc extended) Markdown (format <code class="docutils literal"><span class="pre">pandoc</span></code>)</li>
 <li>Googlecode wiki (format <code class="docutils literal"><span class="pre">gwiki</span></code>)</li>
 <li>Creoloe wiki (format <code class="docutils literal"><span class="pre">cwiki</span></code>)</li>
+<li>reStructuredText (format <code class="docutils literal"><span class="pre">rst</span></code>)</li>
+<li>plain (untagged) ASCII (format <code class="docutils literal"><span class="pre">plain</span></code>)</li>
 <li>Epydoc (format <code class="docutils literal"><span class="pre">epydoc</span></code>)</li>
 <li>StructuredText (format <code class="docutils literal"><span class="pre">st</span></code>)</li>
 </ul>
@@ -616,7 +617,7 @@ part of the file (here from <code class="docutils literal"><span class="pre">nam
 Copying a part will by default lead to <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">shcod</span></code>, which indicates a
 code snippet that normally needs more code to run properly.</p>
 <p>The <code class="docutils literal"><span class="pre">--code_prefix=text</span></code> option adds a path <code class="docutils literal"><span class="pre">text</span></code> to the filename specified
-in the <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> command. For example</p>
+in the <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> command (URLs work). For example</p>
 <div class="highlight-text"><div class="highlight"><pre>@@@CODE src/myfile.py
 </pre></div>
 </div>
@@ -885,6 +886,11 @@ no use of any figure environment in HTML or LaTeX formats). The <code class="doc
 and <code class="docutils literal"><span class="pre">height</span></code> parameters affect HTML formats (<code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>),
 while <code class="docutils literal"><span class="pre">frac</span></code> is the width of the image as a fraction of the total text
 width in the <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> formats.</p>
+<p>The command-line options <code class="docutils literal"><span class="pre">--fig_prefix=...</span></code> and <code class="docutils literal"><span class="pre">--mov_prefix=...</span></code> can
+be used to add a path (can be a URL) to all figure and movie files,
+respectively.  This is useful when including DocOnce documents in
+other DocOnce documents such that the text is compiled in different
+directories (with different paths to the figure directory).</p>
 <p>Movie files can either be a video or a wildcard expression for a
 series of frames. In the latter case, a simple device in an HTML page
 will display the individual frame files as a movie.</p>
@@ -1363,6 +1369,8 @@ slide</p>
 </li>
 </ul>
 </div></blockquote>
+<p>In addition, the user can define new environments <code class="docutils literal"><span class="pre">!bc-name</span></code> as
+explained in the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir">manual</a>.</p>
 </div>
 <div class="section" id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
@@ -1375,12 +1383,12 @@ programming language, very similar to Python.</p>
 Here is a typical example on utilizing <code class="docutils literal"><span class="pre">preprocess</span></code> to include another
 document, &#8220;comment out&#8221; a large portion of text, and to write format-specific
 constructions:</p>
-<div class="highlight-text"><div class="highlight"><pre># #include &quot;myotherdoc.do.txt&quot;
+<div class="highlight-doconce"><div class="highlight"><pre><span class="c"># #include &quot;myotherdoc.do.txt&quot;</span>
 
-# #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)
-\begin{table}
+<span class="c"># #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)</span>
+<span class="nb">\begin{table}</span>
 \caption{Some words... label{mytab}}
-\begin{tabular}{lrr}
+<span class="nb">\begin{tabular}</span>{lrr}
 \hline\noalign{\smallskip}
 \multicolumn{1}{c}{time} &amp; \multicolumn{1}{c}{velocity} &amp; \multicolumn{1}{c}{acceleration} \\
 \hline
@@ -1388,9 +1396,9 @@ constructions:</p>
 2.0          &amp; 1.376512     &amp; 11.919       \\
 4.0          &amp; 1.1E+1       &amp; 14.717624    \\
 \hline
-\end{tabular}
-\end{table}
-# #else
+<span class="nb">\end{tabular}</span>
+<span class="nb">\end{table}</span>
+<span class="c"># #else</span>
   |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
@@ -1398,11 +1406,11 @@ constructions:</p>
   | 2.0  | 1.376512 | 11.919       |
   | 4.0  | 1.1E+1   | 14.717624    |
   |--------------------------------|
-# #endif
+<span class="c"># #endif</span>
 
-# #ifdef EXTRA_MATERIAL
+<span class="c"># #ifdef EXTRA_MATERIAL</span>
 ....large portions of text...
-# #endif
+<span class="c"># #endif</span>
 </pre></div>
 </div>
 <p>With the <code class="docutils literal"><span class="pre">mako</span></code> preprocessor the if-else tests have slightly different syntax.

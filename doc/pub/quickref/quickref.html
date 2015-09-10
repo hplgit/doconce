@@ -184,7 +184,7 @@ computer code <em>once, in one place</em> and include it in traditional LaTeX
 books, thesis, and reports, and without extra efforts also make
 professionally looking web versions with Sphinx or HTML. Other outlets
 include Google's <code>blogger.com</code>, Wikipedia/Wikibooks, IPython
-notebooks, plus a wide variety of formats for documents without
+notebooks, plus a wide variety of other formats for documents without
 mathematics and code.
 
 <p>
@@ -196,16 +196,17 @@ mathematics and code.
 DocOnce currently translates files to the following formats:
 
 <ul>
- <li> LaTeX (format <code>latex</code> and <code>pdflatex</code>)</li>
+ <li> LaTeX (format <code>latex</code> or <code>pdflatex</code>)</li>
  <li> HTML (format <code>html</code>)</li>
- <li> reStructuredText (format <code>rst</code>)</li>
- <li> plain (untagged) ASCII (format <code>plain</code>)</li>
  <li> Sphinx (format <code>sphinx</code>)</li>
+ <li> Pandoc-extended or GitHub-flavored Markdown (format <code>pandoc</code>)</li>
  <li> IPython notebook (format <code>ipynb</code>)</li>
+ <li> Matlab notebook (format <code>matlabnb</code>)</li>
  <li> MediaWiki (format <code>mwiki</code>)</li>
- <li> (Pandoc extended) Markdown (format <code>pandoc</code>)</li>
  <li> Googlecode wiki (format <code>gwiki</code>)</li>
  <li> Creoloe wiki (format <code>cwiki</code>)</li>
+ <li> reStructuredText (format <code>rst</code>)</li>
+ <li> plain (untagged) ASCII (format <code>plain</code>)</li>
  <li> Epydoc (format <code>epydoc</code>)</li>
  <li> StructuredText (format <code>st</code>)</li>
 </ul>
@@ -805,7 +806,7 @@ code snippet that normally needs more code to run properly.
 
 <p>
 The <code>--code_prefix=text</code> option adds a path <code>text</code> to the filename specified
-in the <code>@@@CODE</code> command. For example
+in the <code>@@@CODE</code> command (URLs work). For example
 
 <p>
 <!-- begin verbatim block -->
@@ -1126,6 +1127,13 @@ no use of any figure environment in HTML or LaTeX formats). The <code>width</cod
 and <code>height</code> parameters affect HTML formats (<code>html</code>, <code>rst</code>, <code>sphinx</code>),
 while <code>frac</code> is the width of the image as a fraction of the total text
 width in the <code>latex</code> and <code>pdflatex</code> formats.
+
+<p>
+The command-line options <code>--fig_prefix=...</code> and <code>--mov_prefix=...</code> can
+be used to add a path (can be a URL) to all figure and movie files,
+respectively.  This is useful when including DocOnce documents in
+other DocOnce documents such that the text is compiled in different
+directories (with different paths to the figure directory).
 
 <p>
 Movie files can either be a video or a wildcard expression for a
@@ -1653,6 +1661,9 @@ the environments:
    slide</li>
 </ul>
 
+In addition, the user can define new environments <code>!bc-name</code> as
+explained in the <a href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir" target="_self">manual</a>.
+
 <h2 id="___sec22">Preprocessing </h2>
 
 <p>
@@ -1669,7 +1680,7 @@ document, &quot;comment out&quot; a large portion of text, and to write format-s
 constructions:
 
 <p>
-<!-- begin verbatim block -->
+<!-- begin verbatim block  do-->
 <pre><code># #include &quot;myotherdoc.do.txt&quot;
 
 # #if FORMAT in (&quot;latex&quot;, &quot;pdflatex&quot;)
