@@ -981,7 +981,12 @@ def insert_code_from_file(filestr, format):
                 filename = os.path.join(path_prefix, filename)
 
             try:
-                codefile = open(filename, 'r')
+                if 'http' in filename:
+                    import urllib
+                    codefile = urllib.urlopen(filename)
+                    print '... fetching source code from', path_prefix
+                else:
+                    codefile = open(filename, 'r')
             except IOError, e:
                 print '*** error: could not open the file %s used in\n%s' % (filename, line)
                 if CREATE_DUMMY_FILE and 'No such file or directory' in str(e):
