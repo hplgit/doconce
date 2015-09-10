@@ -2241,6 +2241,12 @@ def remove_exercise_answers():
 
 
 def clean():
+    return _clean(light=False)
+
+def lightclean():
+    return _clean(light=True)
+
+def _clean(light):
     """
     Remove all DocOnce-generated files and the Trash dir if it exists.
     Place new removed files in Trash.
@@ -2261,7 +2267,7 @@ def clean():
 
     trash_files = ['_doconce_debugging.log', '__tmp.do.txt', 'texput.log']
     # "secret" files (.trash$hash)
-    trash_files += glob.glob('.trash[a-f]*') + glob.glob('._.trash[a-f]*')
+    trash_files += glob.glob('.trash[a-f0-9]*') + glob.glob('._.trash[a-f0-9]*')
     for trash_file in trash_files:
         if os.path.isfile(trash_file):
             removed.append(trash_file)
@@ -2270,7 +2276,9 @@ def clean():
     for dof in doconce_files:
         namestem = dof[:-7]
         generated_files = glob.glob(namestem + '.*')
-        extensions_to_keep = '.sh', '.do.txt'
+        extensions_to_keep = ['.sh', '.do.txt']
+        if light:
+            extensions_to_keep += ['.pdf', '.html', '.txt', '.gwiki', '.mwiki', '.cwiki', '.ipynb', '.m']
         #print 'generated_files:', namestem + '.*', generated_files
         for ext in extensions_to_keep:
             filename = namestem + ext
@@ -2278,20 +2286,30 @@ def clean():
                 generated_files.remove(filename)
         for f in generated_files:
             removed.append(f)
-    removed.extend(glob.glob('*~') + glob.glob('.*~') + glob.glob('tmp*') +
-                   glob.glob(_part_filename_wildcard + '.html') +
-                   glob.glob(_part_filename_wildcard + '.rst') +
-                   glob.glob('.*.exerinfo') +
-                   glob.glob('.*.quiz*') +
-                   glob.glob('.*_html_file_collection') +
-                   glob.glob('.*.copyright')
-                   )
-    directories = ['html_images', 'latex_figs', 'standalone_exercises'] \
-                  + glob.glob('sphinx-*') + \
-                  glob.glob('sphinx_*')
+        if not light:
+            removed.append('ipynb-%s-src.tar.gz' % namestem)
+
+    removed.extend(
+        glob.glob('*~') + glob.glob('.*~') + glob.glob('tmp*') +
+        glob.glob('.*.exerinfo') +
+        glob.glob('.*.quiz*') +
+        glob.glob('.*_html_file_collection') +
+        glob.glob('.*.copyright')
+        )
+    if not light:
+        removed.extend(
+            glob.glob(_part_filename_wildcard + '.html') +
+            glob.glob(_part_filename_wildcard + '.rst')
+            )
+
+    directories = ['html_images', 'latex_figs', 'standalone_exercises']
+    if not light:
+        directories += glob.glob('sphinx-*') + glob.glob('sphinx_*')
+
     for d in directories:
         if os.path.isdir(d):
             removed.append(d)
+
     if removed:
         print 'Remove:', ' '.join(removed), '(-> Trash)'
         os.mkdir('Trash')

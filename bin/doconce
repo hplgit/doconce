@@ -37,6 +37,7 @@ from doconce.misc import (
     change_encoding,
     guess_encoding,
     clean,
+    lightclean,
     remove_exercise_answers,
     remove,
     grab,
@@ -1175,6 +1176,7 @@ subst
 replace
 replace_from_file
 clean
+lightclean
 spellcheck
 ptex2tex
 guess_encoding
@@ -1197,6 +1199,8 @@ split_html
 slides_html
 slides_beamer
 slides_markdown
+csv2table
+extract_exercises
 latin2html
 grep
 latex_header
@@ -1221,8 +1225,6 @@ makefile
 diff
 gitdiff
 fix_bibtex4publish
-csv2table
-extract_exercises
 """.split()
 
 # -----------------------------------------------------------------------
@@ -1265,7 +1267,11 @@ doconce sphinx_dir copyright='John Doe' title='Long title' \
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
 
-# remove all files that the doconce format can regenerate
+# remove all redundant files (keep source .do.txt and results:
+# .pdf, .html, sphinx- dirs, .mwiki, .ipynb, etc.)
+doconce lightclean
+
+# remove all files that the doconce can regenerate
 doconce clean
 
 # change encoding
