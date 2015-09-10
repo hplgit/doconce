@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 3, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 10, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -98,8 +98,8 @@ Therefore, there is a chance that legal DocOnce syntax is not
 treated properly. The section <a class="reference internal" href="#trouble-pitfalls"><span class="std std-ref">Examples on seemingly legal syntax that fails</span></a> gives some examples of what
 can go wrong.</p>
 </div>
-<div class="section" id="general-problems">
-<h2>General Problems<a class="headerlink" href="#general-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-topics">
+<h2>General topics<a class="headerlink" href="#general-topics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">
 <h3>How do I debug a DocOnce file that results in a strange error message?<a class="headerlink" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message" title="Permalink to this headline">¶</a></h3>
 <p>Isolate the problem by a &#8220;bisection&#8221; method: split the file in two, compile
@@ -673,8 +673,8 @@ where we do all necessary adjustments mentioned above:</p>
 </div>
 </div>
 </div>
-<div class="section" id="preprocess-mako-problems">
-<h2>Preprocess/Mako problems<a class="headerlink" href="#preprocess-mako-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preprocess-mako">
+<h2>Preprocess/Mako<a class="headerlink" href="#preprocess-mako" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="list-important-things-to-remember-when-programming-mako">
 <h3>List important things to remember when programming Mako<a class="headerlink" href="#list-important-things-to-remember-when-programming-mako" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -793,8 +793,8 @@ correct syntax. Also make sure that you do not mix Preprocess and Mako
 instructions. DocOnce will then only run Preprocess.</p>
 </div>
 </div>
-<div class="section" id="problems-with-code-or-tex-blocks">
-<h2>Problems with code or Tex Blocks<a class="headerlink" href="#problems-with-code-or-tex-blocks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-or-tex-blocks">
+<h2>Code or Tex Blocks<a class="headerlink" href="#code-or-tex-blocks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="too-long-lines-in-math-blocks">
 <h3>Too long lines in math blocks<a class="headerlink" href="#too-long-lines-in-math-blocks" title="Permalink to this headline">¶</a></h3>
 <p>A common problem in LaTeX (not directly related to DocOnce) is too long lines
@@ -887,8 +887,8 @@ see the heading &#8220;Numbering of Extra Equations in Solutions&#8221; in the
 DocOnce manual for description of the problem and its solutions.</p>
 </div>
 </div>
-<div class="section" id="problems-with-rest-sphinx-output">
-<h2>Problems with reST/Sphinx Output<a class="headerlink" href="#problems-with-rest-sphinx-output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rest-sphinx">
+<h2>reST/Sphinx<a class="headerlink" href="#rest-sphinx" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="sphinx-directory-generation-aborts-with-label-empty-or-too-long">
 <h3>Sphinx directory generation aborts with &#8220;label empty or too long&#8221;<a class="headerlink" href="#sphinx-directory-generation-aborts-with-label-empty-or-too-long" title="Permalink to this headline">¶</a></h3>
 <p>This is a strange error that might arise from a too long title of the document.
@@ -950,12 +950,10 @@ and make sure they decrease by two every time a lower level is encountered.</p>
 interactive sessions are automatically handled. If this is not
 appropriate, shift to <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">cod</span></code> or another specification of the
 verbatim environment.</p>
+<p>LaTeX</p>
 </div>
-</div>
-<div class="section" id="problems-with-latex-output">
-<h2>Problems with LaTeX Output<a class="headerlink" href="#problems-with-latex-output" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="lines-are-too-long">
-<h3>Lines are too long<a class="headerlink" href="#lines-are-too-long" title="Permalink to this headline">¶</a></h3>
+<h3>=====  Lines are too long<a class="headerlink" href="#lines-are-too-long" title="Permalink to this headline">¶</a></h3>
 <p>Too long lines are often handled with a forced newline like <code class="docutils literal"><span class="pre">\\</span></code> in
 LaTeX, but this double backslash does not look good in other formats
 when you use DocOnce. Try to rewrite the text such that LaTeX
@@ -1336,12 +1334,10 @@ doconce replace <span class="s1">&#39;\section{&#39;</span> <span class="s1">&#3
 doconce replace <span class="s1">&#39;\subsection{&#39;</span> <span class="s1">&#39;\subsection*{&#39;</span> mydoc.tex
 </pre></div>
 </div>
+<p>gwiki</p>
 </div>
-</div>
-<div class="section" id="problems-with-gwiki-output">
-<h2>Problems with gwiki Output<a class="headerlink" href="#problems-with-gwiki-output" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="strange-nested-lists-in-gwiki">
-<h3>Strange nested lists in gwiki<a class="headerlink" href="#strange-nested-lists-in-gwiki" title="Permalink to this headline">¶</a></h3>
+<h3>=====  Strange nested lists in gwiki<a class="headerlink" href="#strange-nested-lists-in-gwiki" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the <code class="docutils literal"><span class="pre">.gwiki</span></code> file directly.</p>
 </div>
@@ -1355,8 +1351,8 @@ is seldom to be looked at - it is the DocOnce source that one edits
 further.</p>
 </div>
 </div>
-<div class="section" id="problems-with-html-output">
-<h2>Problems with HTML Output<a class="headerlink" href="#problems-with-html-output" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="html">
+<h2>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="translation-aborts-when-labels-are-not-defined">
 <h3>Translation aborts when labels are not defined<a class="headerlink" href="#translation-aborts-when-labels-are-not-defined" title="Permalink to this headline">¶</a></h3>
 <p>By default, the DocOnce translation of HTML document aborts when references
@@ -1477,8 +1473,8 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
 </div>
 </div>
 </div>
-<div class="section" id="problems-with-reveal-deck-html5-slides">
-<h2>Problems with reveal/deck HTML5 slides<a class="headerlink" href="#problems-with-reveal-deck-html5-slides" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reveal-deck-html5-slides">
+<h2>reveal/deck HTML5 slides<a class="headerlink" href="#reveal-deck-html5-slides" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="python-online-tutor-code-does-not-work-in-reveal">
 <h3>Python Online Tutor code does not work in reveal<a class="headerlink" href="#python-online-tutor-code-does-not-work-in-reveal" title="Permalink to this headline">¶</a></h3>
 <p>Use the Chrome browser (the code does not work in Firefox in combination
@@ -1524,7 +1520,7 @@ clickable.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting and FAQ</a><ul>
-<li><a class="reference internal" href="#general-problems">General Problems</a><ul>
+<li><a class="reference internal" href="#general-topics">General topics</a><ul>
 <li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
@@ -1571,7 +1567,7 @@ clickable.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#preprocess-mako-problems">Preprocess/Mako problems</a><ul>
+<li><a class="reference internal" href="#preprocess-mako">Preprocess/Mako</a><ul>
 <li><a class="reference internal" href="#list-important-things-to-remember-when-programming-mako">List important things to remember when programming Mako</a></li>
 <li><a class="reference internal" href="#the-mako-preprocessor-is-seemingly-not-run">The Mako preprocessor is seemingly not run</a></li>
 <li><a class="reference internal" href="#the-mako-preprocessor-gives-syntax-error-in-python-code">The Mako preprocessor gives syntax error in Python code</a></li>
@@ -1582,7 +1578,7 @@ clickable.</p>
 <li><a class="reference internal" href="#preprocessor-directives-do-not-work">Preprocessor directives do not work</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#problems-with-code-or-tex-blocks">Problems with code or Tex Blocks</a><ul>
+<li><a class="reference internal" href="#code-or-tex-blocks">Code or Tex Blocks</a><ul>
 <li><a class="reference internal" href="#too-long-lines-in-math-blocks">Too long lines in math blocks</a></li>
 <li><a class="reference internal" href="#code-or-math-block-errors-in-rest">Code or math block errors in reST</a></li>
 <li><a class="reference internal" href="#strange-errors-around-code-or-tex-blocks-in-rest">Strange errors around code or TeX blocks in reST</a></li>
@@ -1594,7 +1590,7 @@ clickable.</p>
 <li><a class="reference internal" href="#numbered-equations-in-exercise-solutions-change-the-equation-numbers-in-the-text">Numbered equations in exercise solutions change the equation numbers in the text...</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#problems-with-rest-sphinx-output">Problems with reST/Sphinx Output</a><ul>
+<li><a class="reference internal" href="#rest-sphinx">reST/Sphinx</a><ul>
 <li><a class="reference internal" href="#sphinx-directory-generation-aborts-with-label-empty-or-too-long">Sphinx directory generation aborts with &#8220;label empty or too long&#8221;</a></li>
 <li><a class="reference internal" href="#title-level-inconsistent">Title level inconsistent</a></li>
 <li><a class="reference internal" href="#subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents">Subsection headings appear at the level of sections in the table of contents</a></li>
@@ -1603,10 +1599,7 @@ clickable.</p>
 <li><a class="reference internal" href="#warning-about-duplicate-link-names">Warning about duplicate link names</a></li>
 <li><a class="reference internal" href="#inconsistent-headings-in-rest">Inconsistent headings in reST</a></li>
 <li><a class="reference internal" href="#no-code-environment-appears-before-bc-ipy-blocks">No code environment appears before &#8220;bc ipy&#8221; blocks</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#problems-with-latex-output">Problems with LaTeX Output</a><ul>
-<li><a class="reference internal" href="#lines-are-too-long">Lines are too long</a></li>
+<li><a class="reference internal" href="#lines-are-too-long">=====  Lines are too long</a></li>
 <li><a class="reference internal" href="#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
@@ -1634,14 +1627,11 @@ clickable.</p>
 <li><a class="reference internal" href="#how-can-i-get-a-two-column-text">How can I get a two-column text?</a></li>
 <li><a class="reference internal" href="#solution-heading-in-exercise-solutions-appear-after-the-solution-content">Solution heading in exercise solutions appear after the solution content</a></li>
 <li><a class="reference internal" href="#subexercises-subex-a-triggers-missing-number-treated-as-zero">Subexercises (<code class="docutils literal"><span class="pre">subex{a)}</span></code>) triggers &#8220;Missing number, treated as zero&#8221;</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#problems-with-gwiki-output">Problems with gwiki Output</a><ul>
-<li><a class="reference internal" href="#strange-nested-lists-in-gwiki">Strange nested lists in gwiki</a></li>
+<li><a class="reference internal" href="#strange-nested-lists-in-gwiki">=====  Strange nested lists in gwiki</a></li>
 <li><a class="reference internal" href="#lists-in-gwiki-look-ugly-in-the-gwiki-source">Lists in gwiki look ugly in the gwiki source</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#problems-with-html-output">Problems with HTML Output</a><ul>
+<li><a class="reference internal" href="#html">HTML</a><ul>
 <li><a class="reference internal" href="#translation-aborts-when-labels-are-not-defined">Translation aborts when labels are not defined</a></li>
 <li><a class="reference internal" href="#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
 <li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a><ul>
@@ -1653,7 +1643,7 @@ clickable.</p>
 <li><a class="reference internal" href="#why-do-figures-look-ugly-when-using-html-templates">Why do figures look ugly when using HTML templates?</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#problems-with-reveal-deck-html5-slides">Problems with reveal/deck HTML5 slides</a><ul>
+<li><a class="reference internal" href="#reveal-deck-html5-slides">reveal/deck HTML5 slides</a><ul>
 <li><a class="reference internal" href="#python-online-tutor-code-does-not-work-in-reveal">Python Online Tutor code does not work in reveal</a></li>
 <li><a class="reference internal" href="#reveal-slides-are-stacked-on-top-of-each-other">Reveal slides are stacked on top of each other</a></li>
 <li><a class="reference internal" href="#reveal-slides-are-moving-steadily-to-the-left">Reveal slides are moving steadily to the left</a></li>
@@ -1709,7 +1699,7 @@ clickable.</p>
     <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
     <br />
     <br />
-      &copy;2006-2014 Hans Petter Langtangen, Simula Research Laboratory and University of Oslo.
+      &copy;2015, Hans Petter Langtangen.
   </div>
 </div>
 

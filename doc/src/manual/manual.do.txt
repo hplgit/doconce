@@ -469,6 +469,40 @@ inserting seeral lines with `<linebreak>`.
 
 FIGURE:[fig/wave1D, width=400] A wave. label{fig:viz}
 
+idx{`--fig_prefix=`}
+idx{FIGPREFIX}
+
+=== Handling Variable Figure Paths ===
+
+Figure files are usually located in some directory. Sometimes one needs to
+compile the DocOnce source file(s) from different directories, and
+then the path to figure files changes. For example, think of a master
+DocOnce file that includes different sections whose DocOnce source files
+are located in different directories. If you want to compile a section
+as stand-alone document, you have to do that from the subdirectory for
+that section. The path to a common directory for figures may then be
+like `../fig/myfig.png`, while for the master document in the parent
+directory, the corresponding path is `fig/myfig.png`.
+
+The simplest way out of this problem is to use the `--fig_prefix=`
+command-line option to set a path prefix for the figure filename.
+When compiling a section in a subdirectory one sets
+`--fig_prefix=../fig` while in the parent directory one needs
+`--fig_prefix=fig` to compile the master document.
+In the DocOnce source file one has `FIGURE: [myfig, width=...]`.
+
+A more manual method is to introduce a Mako variable `FIGPREFIX`
+that is set on the command line as part of the `doconce format` command.
+The `FIGPREFIX` variable holds a prefix for the path to the figure.
+In our example one writes
+
+!bc do
+FIGURE: [${FIGPREFIX}/myfig, width=500 frac=0.8] caption label{my:fig}
+!ec
+and set `FIGPREFIX=../fig` after the `doconce format ...` command if
+one compiles a section, while `FIGPREFIX=fig` is the appropriate
+value of the path when compiling the master document.
+
 idx{subfigures}
 
 === Figures with Subfigures ===

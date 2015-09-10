@@ -123,6 +123,9 @@ system doconce format plain testdoc --exercises_in_zip $ex
 rm -rf standalone_exercises
 unzip testdoc_exercises.zip
 
+# Test prefix
+system doconce format html testdoc --code_prefix=https://raw.githubusercontent.com/hplgit/doconce/master/test --html_output=testdoc_code_prefix $ex
+
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
 

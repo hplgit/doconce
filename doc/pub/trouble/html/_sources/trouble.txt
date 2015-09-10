@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 3, 2015
+:Date: Sep 10, 2015
 
 
 .. admonition:: Disclaimer
@@ -30,8 +30,8 @@ DocOnce Troubleshooting and FAQ
 
 .. !split
 
-General Problems
-================
+General topics
+==============
 
 How do I debug a DocOnce file that results in a strange error message?
 ----------------------------------------------------------------------
@@ -721,8 +721,8 @@ An error message is provided.
 
 .. !split
 
-Preprocess/Mako problems
-========================
+Preprocess/Mako
+===============
 
 List important things to remember when programming Mako
 -------------------------------------------------------
@@ -857,8 +857,8 @@ instructions. DocOnce will then only run Preprocess.
 
 .. !split
 
-Problems with code or Tex Blocks
-================================
+Code or Tex Blocks
+==================
 
 Too long lines in math blocks
 -----------------------------
@@ -966,8 +966,8 @@ DocOnce manual for description of the problem and its solutions.
 
 .. !split
 
-Problems with reST/Sphinx Output
-================================
+reST/Sphinx
+===========
 
 Sphinx directory generation aborts with "label empty or too long"
 -----------------------------------------------------------------
@@ -1043,11 +1043,10 @@ verbatim environment.
 
 .. !split
 
-Problems with LaTeX Output
-==========================
+LaTeX
 
-Lines are too long
-------------------
+=====  Lines are too long
+-------------------------
 
 Too long lines are often handled with a forced newline like ``\\`` in
 LaTeX, but this double backslash does not look good in other formats
@@ -1519,11 +1518,10 @@ Be more specific with the substitution of ``section`` in the ``.tex`` file:
 
 .. !split
 
-Problems with gwiki Output
-==========================
+gwiki
 
-Strange nested lists in gwiki
------------------------------
+=====  Strange nested lists in gwiki
+------------------------------------
 
 DocOnce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the ``.gwiki`` file directly.
@@ -1540,8 +1538,8 @@ further.
 
 .. !split
 
-Problems with HTML Output
-=========================
+HTML
+====
 
 Translation aborts when labels are not defined
 ----------------------------------------------
@@ -1677,8 +1675,8 @@ simply by automatic editing of the HTML code in a little shell script:
 
 .. !split
 
-Problems with reveal/deck HTML5 slides
-======================================
+reveal/deck HTML5 slides
+========================
 
 Python Online Tutor code does not work in reveal
 ------------------------------------------------
