@@ -86,6 +86,30 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Supported Formats</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">Emacs syntax support</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Title, Authors, and Date</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">Copyright</a></li>
+     <!-- navigation toc: --> <li><a href="#quick:sections" style="font-size: 80%;">Section Types</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">Inline Formatting</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">Lists</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">Comment lines</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">Inline comments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">Verbatim/Computer Code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;">LaTeX Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="#manual:latex:guide" style="font-size: 80%;">Writing Guidelines (Especially for LaTeX Users!)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">Hyperlinks</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">Figures and Movies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">Tables</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">Labels and References</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">Citations and Bibliography</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">Generalized References</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">Index of Keywords</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">Capabilities of The Program <code>doconce</code></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">Exercises</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">Environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">Preprocessing</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">Resources</a></li>
 
         </ul>
       </li>
@@ -1320,7 +1344,7 @@ list of capabilities:
 <!-- begin verbatim block  shpro-->
 <pre><code>DocOnce version 1.2
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish csv2table extract_exercises
+commands: format help sphinx_dir subst replace replace_from_file clean lightclean spellcheck ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown csv2table extract_exercises latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish
 
 
 # transform doconce file to another format
@@ -1358,7 +1382,11 @@ doconce sphinx_dir copyright='John Doe' title='Long title' \
 # docstrings in *.p.py files
 doconce insertdocstr rootdir
 
-# remove all files that the doconce format can regenerate
+# remove all redundant files (keep source .do.txt and results:
+# .pdf, .html, sphinx- dirs, .mwiki, .ipynb, etc.)
+doconce lightclean
+
+# remove all files that the doconce can regenerate
 doconce clean
 
 # change encoding

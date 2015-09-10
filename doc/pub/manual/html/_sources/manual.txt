@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 5, 2015
+:Date: Sep 10, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -6653,6 +6653,8 @@ Points to consider (just sketches...):
  * Use ``--keep_pygments_html_bg`` to avoid big changes in background
    color for code
 
+ * ``|\pause|`` command for pop-up in Beamer slides (ignored in other formats).
+
  * Can use PowerPoint or Google Presenter to design a slide and then
    save as image (GP directly, PP via Save as Picture or
    Save As + choosing image type,
@@ -6725,6 +6727,10 @@ slide sets:
 
  * Use the ``pop`` environment to pop up list items or blocks
    one by one.
+
+ * You can use ``|\pause|`` inside code or math blocks to pop up
+   code lines or formulas in Beamer slides (the pause command is
+   simply ignored in other formats).
 
  * Use the ``slidecell`` environment (see below) to create
    a grid of slide cells (makes it easy to move figures and

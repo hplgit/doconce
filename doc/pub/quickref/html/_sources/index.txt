@@ -10,5 +10,3 @@ Contents:
    :maxdepth: 3
 
    quickref
-
-* :ref:`search`

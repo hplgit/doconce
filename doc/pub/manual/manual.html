@@ -438,6 +438,31 @@ $$
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="#what:is:doconce" style="font-size: 80%;">What Is DocOnce?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">Markup Based on Special Lines</a></li>
+     <!-- navigation toc: --> <li><a href="#inline:tagging" style="font-size: 80%;">Inline Tagging</a></li>
+     <!-- navigation toc: --> <li><a href="#manual:exercises" style="font-size: 80%;">Exercises, Problems, Projects, and Examples</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec70" style="font-size: 80%;">Other Environments</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec95" style="font-size: 80%;">Bibliography (References)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec103" style="font-size: 80%;">Preprocessing and Postprocessing</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec106" style="font-size: 80%;">Writing Slides</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec121" style="font-size: 80%;">Misc</a></li>
+     <!-- navigation toc: --> <li><a href="#manual:mako" style="font-size: 80%;">Mako Programming</a></li>
+     <!-- navigation toc: --> <li><a href="#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:html" style="font-size: 80%;">HTML</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:pandoc" style="font-size: 80%;">Pandoc and Markdown</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:latex" style="font-size: 80%;">LaTeX</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:ipynb" style="font-size: 80%;">Jupyter (IPython) Notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:matlabnb" style="font-size: 80%;">Matlab Notebooks</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:ascii" style="font-size: 80%;">Plain ASCII Text</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:rst" style="font-size: 80%;">reStructuredText</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:sphinx" style="font-size: 80%;">Sphinx</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:wiki" style="font-size: 80%;">Wiki Formats</a></li>
+     <!-- navigation toc: --> <li><a href="#do2any:google:docs" style="font-size: 80%;">Google Docs</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec202" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
+     <!-- navigation toc: --> <li><a href="#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec219" style="font-size: 80%;">Basic Parsing Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec221" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -471,7 +496,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Sep 5, 2015</h4></center> <!-- date -->
+<center><h4>Sep 10, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -5890,20 +5915,20 @@ specified in the first line above:
 <p>
 
 <!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">C     a comment
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
 
-      <span style="color: #008000; font-weight: bold">subroutine </span>test()
-      <span style="color: #B00040">integer </span>i
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
-      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
-         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
+      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
+      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
+      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
+         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-C     END1
+<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
 
-      <span style="color: #008000; font-weight: bold">program </span>testme
-      <span style="color: #008000; font-weight: bold">call </span>test()
+      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
+      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -5913,12 +5938,12 @@ directive above:
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
-      <span style="color: #B00040">integer </span>i
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
-      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
-         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
+      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
+      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
+         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
@@ -7499,6 +7524,7 @@ Points to consider (just sketches...):
  <li> Admon styles are erased in reveal</li>
  <li> Use <code>--keep_pygments_html_bg</code> to avoid big changes in background
    color for code</li>
+ <li> <code>|\pause|</code> command for pop-up in Beamer slides (ignored in other formats).</li>
  <li> Can use PowerPoint or Google Presenter to design a slide and then
    save as image (GP directly, PP via Save as Picture or
    Save As + choosing image type,
@@ -7575,6 +7601,9 @@ slide sets:
    slide).</li>
  <li> Use the <code>pop</code> environment to pop up list items or blocks
    one by one.</li>
+ <li> You can use <code>|\pause|</code> inside code or math blocks to pop up
+   code lines or formulas in Beamer slides (the pause command is
+   simply ignored in other formats).</li>
  <li> Use the <code>slidecell</code> environment (see below) to create
    a grid of slide cells (makes it easy to move figures and
    bullet lists or text around).</li>
@@ -9284,8 +9313,8 @@ to HTML format:
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">cp mydoc.do.txt mydoc2.do.txt
 <span style="color: #19177C">url</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span style="color: #19177C">dir</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;master/project/dir1/dir2&quot;</span>
-<span style="color: #008000; font-weight: bold">for</span> figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
-  doconce replace <span style="color: #BA2121">&quot;[</span><span style="color: #19177C">$figname</span><span style="color: #BA2121">,&quot;</span> <span style="color: #BA2121">&quot;[</span><span style="color: #19177C">$site</span><span style="color: #BA2121">/</span><span style="color: #19177C">$dir</span><span style="color: #BA2121">/</span><span style="color: #19177C">$figname</span><span style="color: #BA2121">.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
+<span style="color: #008000; font-weight: bold">for </span>figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
+<span style="color: #008000; font-weight: bold">  </span>doconce replace <span style="color: #BA2121">&quot;[$figname,&quot;</span> <span style="color: #BA2121">&quot;[$site/$dir/$figname.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
           mydoc2.do.txt
 <span style="color: #008000; font-weight: bold">done</span>
 doconce format html mydoc2

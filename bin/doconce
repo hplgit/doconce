@@ -872,7 +872,7 @@ try:
     import tinkerer.paths
     additional_themes_installed += tinker_themes
 except ImportError:
-    for theme in thinker_themes:
+    for theme in tinker_themes:
         additional_themes_url[theme] = 'sudo pip install tinkerer --upgrade'
 
 """

@@ -612,7 +612,10 @@ def toc2html(font_size=80, bootstrap=True):
     nested_list = indent == 0
 
     level_min = tocinfo['highest level']
-    level_max = level_min + level_depth - 1
+    if level_depth == 0:  # too many sections? avoid empty navigation...
+        level_max = level_min  # include all top levels
+    else:
+        level_max = level_min + level_depth - 1
 
     ul_class = ' class="nav"' if bootstrap else ''
     toc_html = ''
@@ -637,6 +640,9 @@ def toc2html(font_size=80, bootstrap=True):
     if nested_list:
         for j in range(uls):
             toc_html += '     </ul>\n'
+    if toc_html == '':
+        print '*** error: no table of contents generated from toc2html - BUG in doconce'
+        _abort()
     return toc_html
 
 
