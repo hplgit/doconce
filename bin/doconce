@@ -501,14 +501,16 @@ Contents:
 
     # Do we have idx{} commands in the document? Cannot just check fstr,
     # that is the top/master file. Need to check the entire file.
-    entire_after_mako = 'tmp_mako__' + filename + '.do.txt'
-    entire_after_preprocess = 'tmp_preprocess__' + filename + '.do.txt'
-    if os.path.isfile(entire_after_mako):
-        dofile = open(entire_after_mako, 'r')
+    after_mako = 'tmp_mako__' + filename + '.do.txt'
+    after_preprocess = 'tmp_preprocess__' + filename + '.do.txt'
+    after_mako = os.path.join(os.pardir, after_mako)
+    after_preprocess = os.path.join(os.pardir, after_preprocess)
+    if os.path.isfile(after_mako):
+        dofile = open(after_mako, 'r')
         dotext = dofile.read()
         dofile.close()
-    elif os.path.isfile(entire_after_preprocess):
-        dofile = open(entire_after_preprocess, 'r')
+    elif os.path.isfile(after_preprocess):
+        dofile = open(after_preprocess, 'r')
         dotext = dofile.read()
         dofile.close()
     else:
