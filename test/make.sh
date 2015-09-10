@@ -125,14 +125,16 @@ unzip testdoc_exercises.zip
 
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
-system doconce format sphinx testdoc.do.txt $ex
-mv -f testdoc.rst testdoc.sphinx.rst
 
 system doconce format sphinx testdoc $ex
+cp testdoc.rst testdoc.sphinx.rst
 system doconce split_rst testdoc
 system doconce sphinx_dir dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
 cp automake_sphinx.py automake_sphinx_testdoc.py
 system python automake_sphinx.py
+cp sphinx-testdoc/conf.py testdoc_sphinx_conf.py
+cp sphinx-testdoc/index.rst testdoc_sphinx_index.rst
+
 
 system doconce format rst testdoc.do.txt $ex --rst_mathjax
 

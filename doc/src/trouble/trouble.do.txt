@@ -17,7 +17,7 @@ can go wrong.
 !ewarning
 
 
-======= General Problems =======
+======= General topics =======
 
 ===== How do I debug a DocOnce file that results in a strange error message? =====
 
@@ -623,7 +623,7 @@ See the "Copyright section of the DocOnce manual": "http://hplgit.github.io/doco
 
 An error message is provided.
 
-======= Preprocess/Mako problems =======
+======= Preprocess/Mako =======
 
 ===== List important things to remember when programming Mako =====
 
@@ -741,7 +741,7 @@ Make sure the preprocessor instructions, in Preprocess or Mako, have
 correct syntax. Also make sure that you do not mix Preprocess and Mako
 instructions. DocOnce will then only run Preprocess.
 
-======= Problems with code or Tex Blocks =======
+======= Code or Tex Blocks =======
 
 ===== Too long lines in math blocks =====
 
@@ -836,7 +836,7 @@ see the heading ``Numbering of Extra Equations in Solutions'' in the
 DocOnce manual for description of the problem and its solutions.
 
 
-======= Problems with reST/Sphinx Output =======
+======= reST/Sphinx =======
 
 ===== Sphinx directory generation aborts with ``label empty or too long'' =====
 
@@ -902,7 +902,7 @@ interactive sessions are automatically handled. If this is not
 appropriate, shift to `!bc cod` or another specification of the
 verbatim environment.
 
-======= Problems with LaTeX Output =======
+======= LaTeX =======
 
 ===== Lines are too long =====
 
@@ -1329,7 +1329,7 @@ doconce replace '\section{' '\section*{' mydoc.tex
 doconce replace '\subsection{' '\subsection*{' mydoc.tex
 !ec
 
-======= Problems with gwiki Output =======
+======= gwiki =======
 
 ===== Strange nested lists in gwiki =====
 
@@ -1345,7 +1345,7 @@ output looks somewhat ugly. The good thing is that this gwiki source
 is seldom to be looked at - it is the DocOnce source that one edits
 further.
 
-======= Problems with HTML Output =======
+======= HTML =======
 
 ===== Translation aborts when labels are not defined =====
 
@@ -1470,7 +1470,7 @@ doconce replace '<hr class="figure">' \
  '<hr style="width:60%, font-style: normal">' mydoc.html
 !ec
 
-======= Problems with reveal/deck HTML5 slides =======
+======= reveal/deck HTML5 slides =======
 
 ===== Python Online Tutor code does not work in reveal =====
 

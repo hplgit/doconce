@@ -497,14 +497,10 @@ Contents:
 
    %(filenames)s
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 """ % vars())
+    if 'idx{' in fstr:
+        f.write('* :ref:`genindex`\n')
     f.close()
     os.chdir(os.pardir)
     f = open('automake_sphinx.py', 'w')

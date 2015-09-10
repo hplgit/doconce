@@ -7641,6 +7641,7 @@ def _latex2doconce(filestr):
         (r'\\section\*?\[.+\]\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
         (r'\\subsection\*?\[.+\]\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
         (r'\\subsubsection\*?\[.+\]\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
+        (r'\\bf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
         (r'\\emph\{(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
         (r'\{\\em\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
@@ -8058,7 +8059,12 @@ def _latex2doconce(filestr):
                     # As many chars in align as there are columns
                     s = list(separator2)
                     for j in range(len(align)):
-                        s[max_column_width/2 + j*max_column_width] = align[j]
+                        try:
+                            s[max_column_width/2 + j*max_column_width] = align[j]
+                        except IndexError:
+                            print '_ERROR:_ something went wrong when translating a table:'
+                            for line in table_lines:
+                                print line
                     separator2 = ''.join(s)
                 column_format = ' %%-%ds ' % (max_column_width-2)
                 for j in range(len(table_lines)):
