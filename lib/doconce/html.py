@@ -640,7 +640,7 @@ def toc2html(font_size=80, bootstrap=True):
     if nested_list:
         for j in range(uls):
             toc_html += '     </ul>\n'
-    if toc_html == '':
+    if toc_html == '' and tocinfo['sections']:
         print '*** error: no table of contents generated from toc2html - BUG in doconce'
         _abort()
     return toc_html
@@ -1750,6 +1750,7 @@ def html_movie(m):
     <source src='%(stem)s.ogg'  type='video/ogg;  codecs="theora, vorbis"'>""" % vars(),
                 }
             movie_exists = False
+            mp4_exists = False
             if sources3:
                 # Set up loading of three alternatives.
                 # Specify mp4 as first video because on iOS only
@@ -1759,6 +1760,7 @@ def html_movie(m):
                 if is_file_or_url(stem + '.mp4', msg) in ('file', 'url'):
                     text += ext2source_command['.mp4']
                     movie_exists = True
+                    mp4_exists = True
                 if is_file_or_url(stem + '.webm', msg) in ('file', 'url'):
                     text += ext2source_command['.webm']
                     movie_exists = True
@@ -1781,6 +1783,15 @@ def html_movie(m):
 </div>
 <p><em>%(caption)s</em></p>
 """ % vars()
+            if not mp4_exists:
+                text += """
+<!-- Issue warning if only .ogg or .webm movie in a Safari browser -->
+<script language="javascript">
+if (!!(window.safari)) {
+  document.write("\n<div style=\"width: 95%%; padding: 10px; border: 1px solid #000; border-radius: 4px;\">\n<p>The above movie will not play in Safari - use Chrome, Firefox, or Opera.</p>\n</div>")}
+</script>
+
+"""
         elif ext in ('.mp3', '.m4a',):
             # Use HTML5 audio tag
             text = """
