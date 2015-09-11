@@ -334,6 +334,13 @@ def align2equations(filestr, format):
             if inside_align and '\\\\' in lines[i]:
                 lines[i] = lines[i].replace(
                 '\\\\', '\n' + r'\end{equation%s' % postfix + '\n!et\n\n!bt\n' + r'\begin{equation%s ' % postfix)
+            if inside_align and ('begin{array}' in lines[i] or
+                                 'begin{bmatrix}' in lines[i]):
+                print '*** error: with %s output, align environments' % format
+                print '    cannot have arrays/matrices with & and \\\\'
+                print '    rewrite with single equations!'
+                print '\n'.join(lines[i-4:i+5]).replace('{equation', '{align')
+                _abort()
             if inside_align and '&' in lines[i]:
                 lines[i] = lines[i].replace('&', '')
             if r'\end{align%s' % postfix in lines[i]:

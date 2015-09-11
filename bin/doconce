@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os, sys
 from commands import getstatusoutput
-from doconce.misc import system, misc_option
+from doconce.misc import system, misc_option, load_preprocessed_doconce_file
 from doconce.misc import (
     insertdocstr,
     spellcheck,
@@ -257,9 +257,9 @@ def sphinx_dir():
         # Default is to use title
         short_title = title
 
-    # Extract author from .do.txt file
+    # Extract author from .do.txt file (try mako processed file first)
+    fstr = load_preprocessed_doconce_file(filename, dirpath=os.pardir)
     import doconce.doconce
-    f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
     # The following can be misleading if there are examples on
     # various AUTHOR: in e.g. vertabim code in the .do.txt file
     authors_and_institutions, dummy1, dummy2, dummy3, dummy4, dummy5 = \
@@ -501,21 +501,7 @@ Contents:
 
     # Do we have idx{} commands in the document? Cannot just check fstr,
     # that is the top/master file. Need to check the entire file.
-    after_mako = 'tmp_mako__' + filename + '.do.txt'
-    after_preprocess = 'tmp_preprocess__' + filename + '.do.txt'
-    after_mako = os.path.join(os.pardir, after_mako)
-    after_preprocess = os.path.join(os.pardir, after_preprocess)
-    if os.path.isfile(after_mako):
-        dofile = open(after_mako, 'r')
-        dotext = dofile.read()
-        dofile.close()
-    elif os.path.isfile(after_preprocess):
-        dofile = open(after_preprocess, 'r')
-        dotext = dofile.read()
-        dofile.close()
-    else:
-        dotext = fstr # use .do.txt file, no use of preprocessors
-
+    dotext = load_preprocessed_doconce_file(filename, dirpath=os.pardir)
     if 'idx{' in dotext:
         f.write("""
 

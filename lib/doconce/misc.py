@@ -763,6 +763,45 @@ def recommended_html_styles_and_pygments_styles():
         }
     return combinations
 
+def load_preprocessed_doconce_file(filename, dirpath=''):
+    """
+    Load as complete doconce file as possible. That is,
+    try to load the file after mako processing,
+    tmp_mako__filename.do.txt,
+    if it does not exist, try loading
+    tmp_preprocess_filename.do.txt,
+    and if it does not exist, try the original doconce file,
+    filename.do.txt
+    (it may include other files and therefore lack parts of
+    the document's text).
+    dirpath is a path prefix for filename. For example, if
+    ../mydoc.do.txt is the original doconce file,
+    filename=mydoc and dirpath=os.pardir.
+    """
+    after_mako = os.path.join(dirpath, 'tmp_mako__' + filename + '.do.txt')
+    after_preprocess = os.path.join(dirpath, 'tmp_preprocess__' + filename + '.do.txt')
+    orig_doconce = os.path.join(dirpath, filename + '.do.txt')
+    if os.path.isfile(after_mako):
+        dofile = open(after_mako, 'r')
+        dotext = dofile.read()
+        dofile.close()
+    elif os.path.isfile(after_preprocess):
+        dofile = open(after_preprocess, 'r')
+        dotext = dofile.read()
+        dofile.close()
+    elif os.path.isfile(orig_doconce):
+        dofile = open(orig_doconce, 'r')
+        dotext = dofile.read()
+        dofile.close()
+    else:
+        print '*** error: could not find any file related to %.do.txt' % filename
+        print '    search for:'
+        print '   ', after_mako
+        print '   ', after_preprocess
+        print '   ', orig_doconce
+        _abort()
+    return dotext
+
 # -------------- functions used by the doconce program -------------
 
 def remove_inline_comments():
@@ -3450,7 +3489,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;

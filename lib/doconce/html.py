@@ -1788,7 +1788,7 @@ def html_movie(m):
 <!-- Issue warning if only .ogg or .webm movie in a Safari browser -->
 <script language="javascript">
 if (!!(window.safari)) {
-  document.write("\n<div style=\"width: 95%%; padding: 10px; border: 1px solid #000; border-radius: 4px;\">\n<p>The above movie will not play in Safari - use Chrome, Firefox, or Opera.</p>\n</div>")}
+  document.write("<div style=\\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\\"><p><font color=\\"red\\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
 </script>
 
 """
