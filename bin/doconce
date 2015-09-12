@@ -258,7 +258,7 @@ def sphinx_dir():
         short_title = title
 
     # Extract author from .do.txt file (try mako processed file first)
-    fstr = load_preprocessed_doconce_file(filename, dirpath=os.pardir)
+    fstr = load_preprocessed_doconce_file(filename)
     import doconce.doconce
     # The following can be misleading if there are examples on
     # various AUTHOR: in e.g. vertabim code in the .do.txt file
