@@ -237,7 +237,8 @@ def sphinx_dir():
     parts = glob.glob('._%s[0-9][0-9][0-9].rst' % filename)
     parts = [part[:-4] for part in sorted(parts)]
 
-    f = open(filename + '.do.txt', 'r'); fstr = f.read(); f.close()
+    # Extract title, author from .do.txt file (try mako processed file first)
+    fstr = load_preprocessed_doconce_file(filename)
     if 'TITLE:' in fstr:
         for line in fstr.splitlines():
             if line.startswith('TITLE:'):
@@ -257,8 +258,6 @@ def sphinx_dir():
         # Default is to use title
         short_title = title
 
-    # Extract author from .do.txt file (try mako processed file first)
-    fstr = load_preprocessed_doconce_file(filename)
     import doconce.doconce
     # The following can be misleading if there are examples on
     # various AUTHOR: in e.g. vertabim code in the .do.txt file
