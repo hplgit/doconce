@@ -794,8 +794,8 @@ def load_preprocessed_doconce_file(filename, dirpath=''):
         dotext = dofile.read()
         dofile.close()
     else:
-        print '*** error: could not find any file related to %.do.txt' % filename
-        print '    search for:'
+        print '*** error: could not find any file related to %s.do.txt in %s' % (filename, os.getcwd())
+        print '    searched for:'
         print '   ', after_mako
         print '   ', after_preprocess
         print '   ', orig_doconce
