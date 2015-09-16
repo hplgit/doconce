@@ -16,13 +16,123 @@ or just drop the extension:
 Terminal> doconce format formatname mydoc
 !ec
 
-===== Generating a Makefile =====
-label{do2any:make}
+===== Writing a Makefile =====
+label{do2any:make_sh}
 
 Producing HTML, Sphinx, and in particular LaTeX documents from
 DocOnce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
 then be placed in a script that acts as a ``makefile''.
+
+We here show how to make a Bash script. Alternatively, scripts
+can be coded in Python or Perl, for instance. Below is
+the skeleton of a typical Bash script, called `make.sh` and run as
+`bash make.sh` in a Terminal application on Mac or any of the many
+terminal or console applications on Linux. On Windows you normally
+cannot run Bash scripts, so you should go for Python instead (maybe
+as the language in Windows Script Host).
+
+!bc bashpro
+#!/bin/bash
+set -x  # write out all commands prior to execution
+
+function system {
+# Run operating system command and if failure, report and abort
+
+  "$@"
+  if [ $? -ne 0 ]; then
+    echo "make.sh: unsuccessful command $@"
+    echo "abort!"
+    exit 1
+  fi
+}
+
+# Do a hard clean (remove all files that can be regenerated)
+doconce clean
+# Do a soft clean (keep compiled files)
+#doconce lightclean
+
+# Run spellcheck
+system doconce spellcheck -d .dict4spell.txt *.do.txt
+
+name=mydoc # name of DocOnce master document
+
+# Compile to PDF
+system doconce pdflatex $name --latex_code_style=pyg  # + more options
+system pdflatex -shell-escape $name
+system bibtex $name
+system makeindex $name
+pdflatex -shell-escape $name
+pdflatex -shell-escape $name
+
+# Compile to HTML (two different styles)
+styles="bootstrap solarized3"
+for style in $styles; do
+system doconce format html $name --html_style=$style \
+       --html_output=${name}-${style}
+system doconce split_html ${name}-${style}  # split at !split commands
+done
+
+# Compile to Sphinx
+system doconce format sphinx $name
+system doconce sphinx_dir theme=alabaster $name
+python automake_sphinx.py
+!ec
+
+In addition, you are strongly encouraged to make a clean script.
+Here is a quick Bash version, called `clean.sh`:
+
+!bc bashcod
+#!/bin/sh
+doconce clean
+rm -f *.html
+rm -rf Trash
+rm -f automake_sphinx.py
+!ec
+
+If you host your files in a Git repository, you should also have a
+`.gitignore` file in the root directory of the repository:
+
+!bc
+*~
+.*~
+tmp*
+temp*
+.#*
+\#*
+# DocOnce files
+.*_html_file_collection
+*.p.tex
+.*.exerinfo
+.*.quiz
+.*.quiz.html
+automake_sphinx.py
+Trash
+# LaTeX files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+!ec
+
+idx{`.nojekyll` file}
+
+If you host your files on GitHub and use a gh-pages branch to publish
+your documents, make sure you have an empty file called `.nojeykyll`
+in the root directory or the repository and that this file is present
+in the gh-pages branch. Without `.nojekyll`, GitHub will not display
+files starting with an underscore or dot, with the result that
+HTML and Sphinx documents are not rendered correctly.
+
+
+===== Generating a Makefile =====
+label{do2any:make}
 
 The `doconce makefile` can be used to automatically generate
 such a makefile, more precisely a Python script `make.py`, which

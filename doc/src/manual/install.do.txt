@@ -91,19 +91,20 @@ is no bibliography, and you stick to the output formats LaTeX and HTML
 
 === Preprocessors ===
 
-If you make use of the "Preprocess": "http://code.google.com/p/preprocess"
+If you make use of the "Preprocess": "https://github.com/hplgit/preprocess"
 preprocessor, this program must be installed:
 
 !bc sys
-pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+pip install -e \
+   git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade!ec
 !ec
-
 A much more advanced alternative to Preprocess is
 "Mako": "http://www.makotemplates.org". Its installation is done by
 
 !bc sys
 pip install Mako
 !ec
+It is recommended to install both Preprocess and Mako.
 
 # #ifdef EXTRA
 This command requires `pip` to be installed. On Debian Linux systems,
