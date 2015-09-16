@@ -4030,14 +4030,18 @@ open=right,              %% start new chapters on odd-numbered pages
 % #endif
 """
     else:
+        # Add Index to toc if we use idx{} commands
+        index_toc = r'\addcontentsline{toc}{section}{\indexname}' if \
+                    'idx{' in filestr else ''
         OUTRO['latex'] = r"""
 
-% #ifdef PREAMBLE
+%% #ifdef PREAMBLE
+%s
 \printindex
 
 \end{document}
-% #endif
-"""
+%% #endif
+""" % index_toc
 
 
 def fix_latex_command_regex(pattern, application='match'):
