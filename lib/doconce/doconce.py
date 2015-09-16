@@ -4279,6 +4279,11 @@ def preprocess(filename, format, preprocessor_options=[]):
     # Collect first -Dvar=value options on the command line
     preprocess_options = [opt for opt in preprocessor_options
                           if opt[:2] == '-D']
+    if option('--preprocess_subst'):
+        # Substitute -DVAR=value: VAR -> value in the text
+        # (same as doconce replace VAR value)
+        preprocess_options.append('-s')
+
     # Add -D to mako name=value options so that such variables
     # are set for preprocess too (but enclose value in quotes)
     for opt in preprocessor_options:
