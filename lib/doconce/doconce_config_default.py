@@ -12,6 +12,7 @@ help = False
 debug = False
 no_abort = False
 #verbose = 
+preprocess_subst = False
 #syntax_check = 
 skip_inline_comments = False
 draft = False

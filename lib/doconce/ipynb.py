@@ -556,12 +556,17 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # Make IPython structures
 
-    nb_version = int(option('ipynb_version=', '3'))
+    nb_version = int(option('ipynb_version=', '4'))
     if nb_version == 3:
-        from IPython.nbformat.v3 import (
-            new_code_cell, new_text_cell, new_worksheet,
-            new_notebook, new_metadata, new_author)
-        nb = new_worksheet()
+        try:
+            from IPython.nbformat.v3 import (
+                new_code_cell, new_text_cell, new_worksheet,
+                new_notebook, new_metadata, new_author)
+            nb = new_worksheet()
+        except ImportError:
+            print '*** error: could not import IPython.nbformat.v3!'
+            print '    set --ipynb_version=4 or leave out --ipynb_version=3'
+            _abort()
     elif nb_version == 4:
         from IPython.nbformat.v4 import (
             new_code_cell, new_markdown_cell, new_notebook)

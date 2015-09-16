@@ -16,7 +16,7 @@ of intermediate results"""),
 0: X=15
 1: X=5
 2: 0.5"""),
-    ("""--preprocess_subst', 'Turns on variable substitutions when running Preprocess:
+    ('--preprocess_subst', """Turns on variable substitutions when running Preprocess:
     preprocess -s -DBUILD=all
 will lead to the string "BUILD" being replaced by the value "all".
 This option may lead to strange substitutions. It is basically
