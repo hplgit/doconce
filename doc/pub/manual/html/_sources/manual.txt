@@ -8117,7 +8117,8 @@ filename with the syntax ``-DMYVAR``, ``-DMYVAR=val`` or ``MYVAR=val``.
  * The form ``-DMYVAR`` defines the variable ``MYVAR`` for ``preprocess`` (like the
    same syntax for the C preprocessor - ``MYVAR`` is defined, but has
    not specific value). When running ``mako``, ``-DMYVAR`` means that
-   ``MYVAR`` has the (Python) value ``True``.
+   ``MYVAR`` has the (Python) value ``True``. You can test for
+   ``# #ifdef MYVAR`` in Preprocess and ``% if MYVAR:`` in Mako.
 
  * The expressions ``-DMYVAR=val`` and ``MYVAR=val`` are
    equivalent. When running ``preprocess``, ``MYVAR`` is defined and has
@@ -8152,6 +8153,29 @@ is available in a file ``tmp_preprocess__mydoc.do.txt``. Similarly,
 the result of running ``mako`` is available in
 ``tmp_mako__mydoc.do.txt``. By examining these files one can see exactly
 what the preprocessors have done.
+
+Variable Substition with Preprocessors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A variable ``VAR=value`` given on the command line (or ``-DVar=value``) can
+be used in Preprocess and Mako tests. With Mako, the variable can
+also be used inside text, as ``${VAR}``, and Mako will substitute the
+variable by its value. Preprocess can also substitute a variable by
+its value, but it requires the command-line option ``--preprocess_subst``
+to turn this feature on. With Preprocess, every occurence of ``VAR`` will
+be replaced by ``value``. For example, ``VARIABLE`` will become ``valueIABLE``
+(just as if you use ``doconce replace VAR value mydoc.do.txt``).
+In particular, Preprocess will replace any ``${VAR}`` construction meant
+for Mako with ``${value}``, and Mako will then complain that ``value`` is
+not defined. The bottom line is that for variable substitution, you
+should use Mako and not Preprocess. There is only one occasion where
+you really need Preprocess variable substitution and this is in
+filenames for ``# #include`` statement. If you want a variable in
+the filename, e.g., ``# #include "parent_VAR.do.txt"``, it has to be
+a Preprocess variable since the include actions are run *before*
+Mako is run.
+(One can use an include statement in Mako, but it works only for files
+in the current directory or its subdirectories.)
 
 .. _do2any:inlinecomments:
 

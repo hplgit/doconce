@@ -6785,7 +6785,8 @@ filename with the syntax <code class="docutils literal"><span class="pre">-DMYVA
 <li>The form <code class="docutils literal"><span class="pre">-DMYVAR</span></code> defines the variable <code class="docutils literal"><span class="pre">MYVAR</span></code> for <code class="docutils literal"><span class="pre">preprocess</span></code> (like the
 same syntax for the C preprocessor - <code class="docutils literal"><span class="pre">MYVAR</span></code> is defined, but has
 not specific value). When running <code class="docutils literal"><span class="pre">mako</span></code>, <code class="docutils literal"><span class="pre">-DMYVAR</span></code> means that
-<code class="docutils literal"><span class="pre">MYVAR</span></code> has the (Python) value <code class="docutils literal"><span class="pre">True</span></code>.</li>
+<code class="docutils literal"><span class="pre">MYVAR</span></code> has the (Python) value <code class="docutils literal"><span class="pre">True</span></code>. You can test for
+<code class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">MYVAR</span></code> in Preprocess and <code class="docutils literal"><span class="pre">%</span> <span class="pre">if</span> <span class="pre">MYVAR:</span></code> in Mako.</li>
 <li>The expressions <code class="docutils literal"><span class="pre">-DMYVAR=val</span></code> and <code class="docutils literal"><span class="pre">MYVAR=val</span></code> are
 equivalent. When running <code class="docutils literal"><span class="pre">preprocess</span></code>, <code class="docutils literal"><span class="pre">MYVAR</span></code> is defined and has
 the value <code class="docutils literal"><span class="pre">val</span></code> (<code class="docutils literal"><span class="pre">#</span> <span class="pre">#ifdef</span> <span class="pre">MYVAR</span></code> and <code class="docutils literal"><span class="pre">#</span> <span class="pre">#if</span> <span class="pre">MYVAR</span> <span class="pre">==</span> <span class="pre">&quot;val&quot;</span></code> are both
@@ -6816,6 +6817,28 @@ is available in a file <code class="docutils literal"><span class="pre">tmp_prep
 the result of running <code class="docutils literal"><span class="pre">mako</span></code> is available in
 <code class="docutils literal"><span class="pre">tmp_mako__mydoc.do.txt</span></code>. By examining these files one can see exactly
 what the preprocessors have done.</p>
+<div class="section" id="variable-substition-with-preprocessors">
+<h4>Variable Substition with Preprocessors<a class="headerlink" href="#variable-substition-with-preprocessors" title="Permalink to this headline">¶</a></h4>
+<p>A variable <code class="docutils literal"><span class="pre">VAR=value</span></code> given on the command line (or <code class="docutils literal"><span class="pre">-DVar=value</span></code>) can
+be used in Preprocess and Mako tests. With Mako, the variable can
+also be used inside text, as <code class="docutils literal"><span class="pre">${VAR}</span></code>, and Mako will substitute the
+variable by its value. Preprocess can also substitute a variable by
+its value, but it requires the command-line option <code class="docutils literal"><span class="pre">--preprocess_subst</span></code>
+to turn this feature on. With Preprocess, every occurence of <code class="docutils literal"><span class="pre">VAR</span></code> will
+be replaced by <code class="docutils literal"><span class="pre">value</span></code>. For example, <code class="docutils literal"><span class="pre">VARIABLE</span></code> will become <code class="docutils literal"><span class="pre">valueIABLE</span></code>
+(just as if you use <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span> <span class="pre">VAR</span> <span class="pre">value</span> <span class="pre">mydoc.do.txt</span></code>).
+In particular, Preprocess will replace any <code class="docutils literal"><span class="pre">${VAR}</span></code> construction meant
+for Mako with <code class="docutils literal"><span class="pre">${value}</span></code>, and Mako will then complain that <code class="docutils literal"><span class="pre">value</span></code> is
+not defined. The bottom line is that for variable substitution, you
+should use Mako and not Preprocess. There is only one occasion where
+you really need Preprocess variable substitution and this is in
+filenames for <code class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span></code> statement. If you want a variable in
+the filename, e.g., <code class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;parent_VAR.do.txt&quot;</span></code>, it has to be
+a Preprocess variable since the include actions are run <em>before</em>
+Mako is run.
+(One can use an include statement in Mako, but it works only for files
+in the current directory or its subdirectories.)</p>
+</div>
 </div>
 <div class="section" id="removal-of-inline-comments">
 <span id="do2any-inlinecomments"></span><h3>Removal of Inline Comments<a class="headerlink" href="#removal-of-inline-comments" title="Permalink to this headline">¶</a></h3>
@@ -10030,7 +10053,10 @@ Springer,
 <li><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
 <li><a class="reference internal" href="#writing-a-makefile">Writing a Makefile</a></li>
 <li><a class="reference internal" href="#generating-a-makefile">Generating a Makefile</a></li>
-<li><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
+<li><a class="reference internal" href="#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#removal-of-inline-comments">Removal of Inline Comments</a></li>
 <li><a class="reference internal" href="#notes">Notes</a></li>
 <li><a class="reference internal" href="#demo-of-different-formats">Demo of Different Formats</a></li>
