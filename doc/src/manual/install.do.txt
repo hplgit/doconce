@@ -96,7 +96,7 @@ preprocessor, this program must be installed:
 
 !bc sys
 pip install -e \
-   git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade!ec
+   git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
 !ec
 A much more advanced alternative to Preprocess is
 "Mako": "http://www.makotemplates.org". Its installation is done by

@@ -32,7 +32,7 @@ terminal or console applications on Linux. On Windows you normally
 cannot run Bash scripts, so you should go for Python instead (maybe
 as the language in Windows Script Host).
 
-!bc bashpro
+!bc shpro
 #!/bin/bash
 set -x  # write out all commands prior to execution
 
@@ -82,7 +82,7 @@ python automake_sphinx.py
 In addition, you are strongly encouraged to make a clean script.
 Here is a quick Bash version, called `clean.sh`:
 
-!bc bashcod
+!bc shpro
 #!/bin/sh
 doconce clean
 rm -f *.html

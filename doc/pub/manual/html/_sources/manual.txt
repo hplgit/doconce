@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 10, 2015
+:Date: Sep 16, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -650,6 +650,43 @@ is up to LaTeX do decide).
    :width: 400
 
    *A wave*
+
+.. index:: --fig_prefix=
+
+.. index:: FIGPREFIX
+
+Handling Variable Figure Paths
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Figure files are usually located in some directory. Sometimes one needs to
+compile the DocOnce source file(s) from different directories, and
+then the path to figure files changes. For example, think of a master
+DocOnce file that includes different sections whose DocOnce source files
+are located in different directories. If you want to compile a section
+as stand-alone document, you have to do that from the subdirectory for
+that section. The path to a common directory for figures may then be
+like ``../fig/myfig.png``, while for the master document in the parent
+directory, the corresponding path is ``fig/myfig.png``.
+
+The simplest way out of this problem is to use the ``--fig_prefix=``
+command-line option to set a path prefix for the figure filename.
+When compiling a section in a subdirectory one sets
+``--fig_prefix=../fig`` while in the parent directory one needs
+``--fig_prefix=fig`` to compile the master document.
+In the DocOnce source file one has ``FIGURE: [myfig, width=...]``.
+
+A more manual method is to introduce a Mako variable ``FIGPREFIX``
+that is set on the command line as part of the ``doconce format`` command.
+The ``FIGPREFIX`` variable holds a prefix for the path to the figure.
+In our example one writes
+
+.. code-block:: doconce
+
+        FIGURE: [${FIGPREFIX}/myfig, width=500 frac=0.8] caption label{my:fig}
+
+and set ``FIGPREFIX=../fig`` after the ``doconce format ...`` command if
+one compiles a section, while ``FIGPREFIX=fig`` is the appropriate
+value of the path when compiling the master document.
 
 .. index:: subfigures
 
@@ -6355,12 +6392,25 @@ edit the ``.p.tex`` file. For example,
 Preprocessing and Postprocessing
 ================================
 
+.. index:: split command
+
+.. index::
+   single: ; split
+
 DocOnce allows preprocessor commands for, e.g., including files,
 leaving out text, or inserting special text depending on the format.
 These commands are run prior to translation of the document.
 After translation, there are ``doconce split_*`` commands available
 for splitting HTML and Sphinx documents into smaller pieces (web pages)
-as a postprocess.
+as a postprocess. Each split is performed where the document writer
+has inserted a ``!split`` command (starting in the first column of a
+line and being the only text on that line):
+
+.. code-block:: doconce
+
+        # Split document here
+        !split
+        ======= New section =======
 
 The Preprocess and Mako Preprocessors
 -------------------------------------
@@ -7907,15 +7957,126 @@ or just drop the extension:
 
         Terminal> doconce format formatname mydoc
 
-.. _do2any:make:
+.. _do2any:make_sh:
 
-Generating a Makefile
----------------------
+Writing a Makefile
+------------------
 
 Producing HTML, Sphinx, and in particular LaTeX documents from
 DocOnce sources requires a few commands. Often you want to
 produce several different formats. The relevant commands should
 then be placed in a script that acts as a "makefile".
+
+We here show how to make a Bash script. Alternatively, scripts
+can be coded in Python or Perl, for instance. Below is
+the skeleton of a typical Bash script, called ``make.sh`` and run as
+``bash make.sh`` in a Terminal application on Mac or any of the many
+terminal or console applications on Linux. On Windows you normally
+cannot run Bash scripts, so you should go for Python instead (maybe
+as the language in Windows Script Host).
+
+.. code-block:: bash
+
+        #!/bin/bash
+        set -x  # write out all commands prior to execution
+        
+        function system {
+        # Run operating system command and if failure, report and abort
+        
+          "$@"
+          if [ $? -ne 0 ]; then
+            echo "make.sh: unsuccessful command $@"
+            echo "abort!"
+            exit 1
+          fi
+        }
+        
+        # Do a hard clean (remove all files that can be regenerated)
+        doconce clean
+        # Do a soft clean (keep compiled files)
+        #doconce lightclean
+        
+        # Run spellcheck
+        system doconce spellcheck -d .dict4spell.txt *.do.txt
+        
+        name=mydoc # name of DocOnce master document
+        
+        # Compile to PDF
+        system doconce pdflatex $name --latex_code_style=pyg  # + more options
+        system pdflatex -shell-escape $name
+        system bibtex $name
+        system makeindex $name
+        pdflatex -shell-escape $name
+        pdflatex -shell-escape $name
+        
+        # Compile to HTML (two different styles)
+        styles="bootstrap solarized3"
+        for style in $styles; do
+        system doconce format html $name --html_style=$style \
+               --html_output=${name}-${style}
+        system doconce split_html ${name}-${style}  # split at !split commands
+        done
+        
+        # Compile to Sphinx
+        system doconce format sphinx $name
+        system doconce sphinx_dir theme=alabaster $name
+        python automake_sphinx.py
+
+In addition, you are strongly encouraged to make a clean script.
+Here is a quick Bash version, called ``clean.sh``:
+
+.. code-block:: bash
+
+        #!/bin/sh
+        doconce clean
+        rm -f *.html
+        rm -rf Trash
+        rm -f automake_sphinx.py
+
+If you host your files in a Git repository, you should also have a
+``.gitignore`` file in the root directory of the repository:
+
+.. code-block:: text
+
+        *~
+        .*~
+        tmp*
+        temp*
+        .#*
+        \#*
+        # DocOnce files
+        .*_html_file_collection
+        *.p.tex
+        .*.exerinfo
+        .*.quiz
+        .*.quiz.html
+        automake_sphinx.py
+        Trash
+        # LaTeX files:
+        *.log
+        *.dvi
+        *.aux
+        *.blg
+        *.idx
+        *.nav
+        *.out
+        *.toc
+        *.snm
+        *.vrb
+
+.. index:: .nojekyll file
+
+If you host your files on GitHub and use a gh-pages branch to publish
+your documents, make sure you have an empty file called ``.nojeykyll``
+in the root directory or the repository and that this file is present
+in the gh-pages branch. Without ``.nojekyll``, GitHub will not display
+files starting with an underscore or dot, with the result that
+HTML and Sphinx documents are not rendered correctly.
+
+.. _do2any:make:
+
+Generating a Makefile
+---------------------
 
 The ``doconce makefile`` can be used to automatically generate
 such a makefile, more precisely a Python script ``make.py``, which
@@ -9993,6 +10154,17 @@ here for convenience.
         2: 0.5
         
         
+        --preprocess_subst
+        
+        Turns on variable substitutions when running Preprocess:
+            preprocess -s -DBUILD=all
+        will lead to the string "BUILD" being replaced by the value "all".
+        This option may lead to strange substitutions. It is basically
+        equivalent to
+            doconce replace BUILD all mydoc.do.txt
+        
+        
+        
         --syntax_check=...
         
         Values: on/off. Turns on/off fix of illegal constructions and the syntax check
@@ -11063,12 +11235,13 @@ is no bibliography, and you stick to the output formats LaTeX and HTML
 Preprocessors
 ~~~~~~~~~~~~~
 
-If you make use of the `Preprocess <http://code.google.com/p/preprocess>`__
+If you make use of the `Preprocess <https://github.com/hplgit/preprocess>`__
 preprocessor, this program must be installed:
 
 .. code-block:: text
 
-        pip install -e svn+http://preprocess.googlecode.com/svn/trunk#egg=preprocess
+        pip install -e \
+           git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
 
 A much more advanced alternative to Preprocess is
 `Mako <http://www.makotemplates.org>`__. Its installation is done by
@@ -11076,6 +11249,8 @@ A much more advanced alternative to Preprocess is
 .. code-block:: text
 
         pip install Mako
+
+It is recommended to install both Preprocess and Mako.
 
 Note that neither Preprocess nor Mako is run if you do not have
 preprocessor directives in your DocOnce source. That is, you only need
