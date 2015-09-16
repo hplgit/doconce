@@ -598,7 +598,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                         elif nb_version == 4:
                             cells.append(new_code_cell(
                                 source=block_,
-                                execution_count=prompt_number))
+                                execution_count=prompt_number,
+                                metadata=dict(collapsed=False)))
                         prompt_number += 1
                         mdstr.append(('codecell', block_))
             else:
@@ -612,7 +613,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                     elif nb_version == 4:
                         cells.append(new_code_cell(
                             source=block,
-                            execution_count=prompt_number))
+                            execution_count=prompt_number,
+                            metadata=dict(collapsed=False)))
                     prompt_number += 1
                     mdstr.append(('codecell', block))
         elif block_tp == 'cell_hidden' and block != '':
@@ -622,7 +624,9 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                     input=block, prompt_number=prompt_number, collapsed=True))
             elif nb_version == 4:
                 cells.append(new_code_cell(
-                    source=block, execution_count=prompt_number))
+                    source=block,
+                    execution_count=prompt_number,
+                    metadata=dict(collapsed=False)))
             prompt_number += 1
             mdstr.append(('codecell', block))
 
