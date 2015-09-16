@@ -626,7 +626,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 cells.append(new_code_cell(
                     source=block,
                     execution_count=prompt_number,
-                    metadata=dict(collapsed=False)))
+                    metadata=dict(collapsed=True)))
             prompt_number += 1
             mdstr.append(('codecell', block))
 
