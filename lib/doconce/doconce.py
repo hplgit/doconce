@@ -3919,6 +3919,12 @@ def doconce2format(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
+    if format in ('html', 'sphinx', 'ipynb', 'matlabnb'):
+        tex_blocks = add_labels_to_all_numbered_equations(tex_blocks)
+        # needed for the split functionality when all labels are
+        # given tags
+
+
     debugpr('The file after removal of code/tex blocks:', filestr)
     def print_blocks(blocks, delimiter=True):
         s = ''

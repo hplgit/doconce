@@ -570,6 +570,44 @@ def remove_code_and_tex(filestr, format):
 
     return filestr, code_blocks, code_block_types, tex_blocks
 
+def add_labels_to_all_numbered_equations(tex_blocks):
+    """
+    Add a label with name _autoX, where X is an integer,
+    to all equations without a label.
+    This will force split HTML documents to have \tag{} commands
+    for each equation that standard LaTeX/MathJax would give
+    a number. Needed for compatibility between web documents
+    and LaTeX PDFs wrt equation numbering.
+    """
+    n = 0  # equation number
+    for i in range(len(tex_blocks)):
+        if 'end{equation}' in tex_blocks[i]:
+            if not 'label{' in tex_blocks[i]:
+                n += 1
+                tex_blocks[i] = tex_blocks[i].replace(
+                    r'\end{equation}', ' label{_auto%d}' % n + '\n\\end{equation}')
+        if 'begin{align}' in tex_blocks[i]:
+            # Assume that \\ is only appearing as delimiter between
+            # equations (i.e., no \begin{array} environment with \\
+            # between matrix rows...).
+            eqs = tex_blocks[i].split(r'\\')
+            for j in range(len(eqs)):
+                if not 'label{' in eqs[j] and not r'\nonumber' in eqs[j]:
+                    n += 1
+                    if 'end{align}' in eqs[j]:
+                        eqs[j] = eqs[j].replace(
+                            r'\end{align}', ' label{_auto%d}\n' % n + r'\end{align}')
+                    else:
+                        if eqs[j][-1] != '\n':
+                            eqs[j] += '\n'
+                        else:
+                            eqs[j] += ' '
+                        eqs[j] += 'label{_auto%d}' % n
+            tex_blocks[i] = r'\\'.join(eqs)
+        tex_blocks[i] = re.sub(r'^ +label{', 'label{', tex_blocks[i],
+                               flags=re.MULTILINE)
+    return tex_blocks
+
 
 def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
                         complete_doc=True):
