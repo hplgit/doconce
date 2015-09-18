@@ -4285,10 +4285,19 @@ def preprocess(filename, format, preprocessor_options=[]):
     # Collect first -Dvar=value options on the command line
     preprocess_options = [opt for opt in preprocessor_options
                           if opt[:2] == '-D']
-    if option('preprocess_subst'):
+    if option('preprocess_include_subst'):
         # Substitute -DVAR=value: VAR -> value in the text
         # (same as doconce replace VAR value)
-        preprocess_options.append('-s')
+        preprocess_options.append('-i')
+
+    # Add quotes to -DVAR=value options: -DVAR="value"
+    for i in range(len(preprocess_options)):
+        opt = preprocess_options[i]
+        if opt.startswith('-D'):
+            if not '="' in opt:  # no quotes seemingly
+                parts = opt.split('=')
+                opt = '%s="%s"' % (parts[0], parts[1])
+                preprocess_options[i] = opt
 
     # Add -D to mako name=value options so that such variables
     # are set for preprocess too (but enclose value in quotes)
@@ -4316,7 +4325,7 @@ def preprocess(filename, format, preprocessor_options=[]):
             else:
                 key = opt2;  value = True
         elif not opt.startswith('--'):
-            # This is key=value
+            # This is assumed to be key=value
             # Treat value as string except if it is True or False
             # or consists solely of digits
             try:
