@@ -795,15 +795,32 @@ A comment right before a code or tex block will treat the whole
 block also as a comment. It is important that there is normal
 running text right before `!bt` and `!bc` environments.
 
-===== Verbatim code blocks inside lists look ugly =====
+===== Verbatim code blocks, figures and admons inside lists look ugly =====
 
-Read the Section *Blocks of Verbatim Computer Code* in
-the DocOnce manual.  Start the
-`!bc` and `!ec` tags in column 1 of the file, and be careful with
-indenting the surrounding plain text of the list item correctly. If
-you cannot resolve the problem this way, get rid of the list and use
-paragraph headings instead. In fact, that is what is recommended:
-avoid verbatim code blocks inside lists (it makes life easier).
+Avoid verbatim code blocks, figures, and admons
+inside lists (it makes life easier!).
+Instead, use paragraph headings, say
+
+__Step 1.__
+Describe step. Add figure, code block, admon, etc.
+
+__Step 2.__
+Describe next step.
+
+If you miss the automatic numbering of items in enumerated lists, you
+can simulate that with a Mako variable:
+
+!bc do
+<% counter = 0 %>
+
+<% counter += 1 %>
+__Step ${counter}.__
+Describe step. Add figure, code block, admon, etc.
+
+<% counter += 1 %>
+__Step ${counter}.__
+Describe next step.
+!ec
 
 ===== LaTeX code blocks inside lists look ugly =====
 
