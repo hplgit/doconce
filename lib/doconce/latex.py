@@ -2594,7 +2594,7 @@ def define(FILENAME_EXTENSION,
 
     if latex_style not in ('std', 'Springer_T2', 'Springer_T4',
                            'siamltex', 'siamltexmm',
-                           'elsevier', 'Springer_sv', 'Springer_lnup'):
+                           'elsevier', 'Springer_sv', 'Springer_lnup', 'Koma_Script'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
     if latex_style == 'Springer_sv' and title_layout != 'std':
