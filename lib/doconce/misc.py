@@ -742,12 +742,15 @@ def recommended_html_styles_and_pygments_styles():
             'solarized': ['perldoc',],
             'serif': ['perldoc'],
             'simple': ['autumn', 'default', 'perldoc'],
+            'white': ['autumn', 'default', 'perldoc'],
             'blood': ['monokai', 'native'],
+            'black': ['monokai', 'native'],
             'sky': ['default'],
             'moon': ['fruity', 'native'],
             'night': ['fruity', 'native'],
             'moon': ['fruity', 'native'],
             'darkgray': ['native', 'monokai'],
+            'league': ['native', 'monokai'],
             'cbc': ['default', 'autumn'],
             'simula': ['autumn', 'default'],
             },
@@ -2690,7 +2693,7 @@ alternative:  doconce slides_html mydoc.html all  (generate all types of slides)
 themename is the reveal or deck theme:
 
 reveal.js: beige, beigesmall, solarized, serif, simple, blood, sky,
-moon, night, moon, darkgray, cbc, simula
+moon, night, moon, darkgray, cbc, simula, black, white, league
 
 deck.js: neon, sandstone.aurora, sandstone.dark, sandstone.mdn,
 sandstone.mightly, sandstone.firefox, sandstone.default,
@@ -3482,6 +3485,7 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/%(main_style)s.css">
 <link rel="stylesheet" href="reveal.js/css/theme/%(theme)s.css" id="theme">
@@ -3499,14 +3503,21 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -3553,7 +3564,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
