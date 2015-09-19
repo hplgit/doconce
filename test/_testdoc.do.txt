@@ -479,7 +479,7 @@ idx{figures}
 Test of figures. In particular we refer to Figure ref{fig:impact} in which
 there is a flow.
 
-FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization of a wave. label{fig:impact}
+FIGURE:[../doc/src/manual/fig/wave1D, width=200] Visualization _of_ a *wave*. label{fig:impact}
 
 Figures without captions are allowed and will be inlined.
 

@@ -21,6 +21,7 @@ from doconce.misc import (
     replace_from_file,
     replace,
     subst,
+    find,
     expand_mako,
     wildcard_notation,
     teamod,
@@ -503,9 +504,6 @@ Contents:
     dotext = load_preprocessed_doconce_file(filename, dirpath=os.pardir)
     if 'idx{' in dotext:
         f.write("""
-
-Index
-=====
 
 * :ref:`genindex`
 """)
@@ -1185,6 +1183,7 @@ replace_from_file
 clean
 lightclean
 spellcheck
+find
 ptex2tex
 guess_encoding
 expand_commands
@@ -1253,6 +1252,10 @@ doconce replace from-text to-text file1 file2 ...
 
 # doconce replace using from and to phrases from file
 doconce replace_from_file file-with-from-to-replacements file1 file2 ...
+
+# search for a (regular) expression in all .do.txt files in
+# the current directory tree (useful when removing compilation errors)
+doconce find expression
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...

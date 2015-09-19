@@ -551,6 +551,7 @@ math and/or code, this option turns all explanations off."""),
 and insert new !split before all topmost sections. This is what
 makes sense in a Sphinx Table of Contents if one wants to split
 the document into multiple parts."""),
+    ('--sphinx_figure_captions=', 'Font style in figure captions: emphasize (default) or normal. If you use boldface or emphasize in the caption, the font style will be normal for that caption.'),
     ('--oneline_paragraphs',
      'Combine paragraphs to one line (does not work well).'),
     ]
@@ -1156,8 +1157,35 @@ def replace_from_file():
             f.write(text)
             f.close()
 
+def _usage_find():
+    print 'Usage: doconce find expression'
+    print 'Searches for all .do.txt files in subdirectories and'
+    print 'writes out filename, line number and line containing expression'
+    print 'expression is interpreted as a regular expression'
+    print '(the command is similar to a Unix find & grep)'
+
+def find():
+    if len(sys.argv) < 2:
+        _usage_find()
+        sys.exit(0)
+    expression = sys.argv[1]
+    for dirpath, dirnames, filenames in os.walk(os.curdir):
+        for filename in filenames:
+            if filename.endswith('.do.txt') and not filename.startswith('tmp_'):
+                filename = os.path.join(dirpath, filename)
+                with open(filename, 'r') as f:
+                    found = False
+                    for i, line in enumerate(f.readlines()):
+                        m = re.search(expression, line)
+                        if m:
+                            if not found:
+                                print # newline between files
+                            print '%s, %4d: %s' % (filename, i+1, m.group())
+                            found = True
+
+
 def _usage_expand_mako():
-    print 'Usage: doconce expand_mnako mako_code_file.txt funcname mydoc.do.txt'
+    print 'Usage: doconce expand_mako mako_code_file.txt funcname mydoc.do.txt'
 
 # This replacement function for re.sub must be global since expand_mako,
 # where it is used, has an exec statement

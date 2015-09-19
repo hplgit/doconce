@@ -145,4 +145,5 @@ multimarkdown_output = False
 rst_uio = False
 rst_mathjax = False
 sphinx_keep_splits = False
+#sphinx_figure_captions = 
 oneline_paragraphs = False
