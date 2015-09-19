@@ -4294,7 +4294,7 @@ def preprocess(filename, format, preprocessor_options=[]):
     for i in range(len(preprocess_options)):
         opt = preprocess_options[i]
         if opt.startswith('-D'):
-            if not '="' in opt:  # no quotes seemingly
+            if '=' in opt and not '="' in opt:  # no quotes seemingly
                 parts = opt.split('=')
                 opt = '%s="%s"' % (parts[0], parts[1])
                 preprocess_options[i] = opt
