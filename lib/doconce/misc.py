@@ -2543,7 +2543,7 @@ def html_colorbullets():
             linel = line.lower()
             if '<ul>' in linel:
                 level += 1
-                line = '<p><table border="0">\n'
+                line = '<p><table border="1">\n'
             if '</ul>' in linel:
                 line = '</td></tr></table>\n'
                 level -= 1
@@ -2921,7 +2921,7 @@ def tablify(parts, format="html"):
 
             if format == 'html':
                 # typeset table in html
-                tbl = '\n<table border="0">\n'
+                tbl = '\n<table border="1">\n'
                 for row in table:
                     tbl += '<tr>\n'
                     for column, width in row:
