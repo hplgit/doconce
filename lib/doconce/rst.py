@@ -361,7 +361,7 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
                      ('='*max_heading, '='*max_heading),
                      filestr, flags=re.MULTILINE)
     # Make new titles
-    title_counter = {}   # count repeated titles
+    title_counter = {}   # count repeated titles (need to append counter to make unique links)
     sections = []
     for heading, title, dummy2, dummy3, label in all_sections:
         label = None if label == '' else label
@@ -370,7 +370,9 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
                 title_counter[title] += 1
             else:
                 title_counter[title] = 1
-            new_title = title + ' (%d) ' % title_counter[title]
+            # Add much whitespace so we can recognize the titles after
+            # formats are compiled and remove the number
+            new_title = title + '         (%d) ' % title_counter[title]
             sections.append((heading, new_title, label, title))
             if label in section_label2title:
                 section_label2title[label] = new_title
