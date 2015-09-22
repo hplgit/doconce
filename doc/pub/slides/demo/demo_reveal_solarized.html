@@ -18,6 +18,7 @@
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
@@ -35,14 +36,21 @@
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -57,7 +65,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -137,8 +145,10 @@ MathJax.Hub.Config({
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>&nbsp;<br>
-<center><h4>May 6, 2015</h4></center> <!-- date -->
+<center><h4>Sep 22, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <center><p><img src="fig/CN_logo.png" align="bottom" width=300></p></center>
 
@@ -147,6 +157,12 @@ MathJax.Hub.Config({
 <!-- (i.e., DocOnce subsections are used to specify slide titles, -->
 <!-- sections are used for parts/sections of the talk to appear in a -->
 <!-- table of contents) -->
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -183,6 +199,12 @@ aid of numerical experiments. Numerical artifacts are in particular
 demonstrated.
 
 </aside>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -192,6 +214,12 @@ demonstrated.
 
 <p>
 <center><p><img src="fig/method.png" align="bottom" width=600></p></center>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -200,7 +228,7 @@ demonstrated.
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <p>&nbsp;<br>
@@ -230,6 +258,12 @@ Here,
 </td>
 </tr>
 </table>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -260,6 +294,12 @@ and the <a href="http://en.wikipedia.org/wiki/Crank-Nicolson" target="_self">Cra
 schemes.
 
 </p>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -273,6 +313,12 @@ schemes.
 
 <iframe width="640" height="480" src="http://www.youtube.com/embed/PtJrPEIHNJw" frameborder="0" allowfullscreen></iframe>
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -300,6 +346,12 @@ schemes.
 </pre></div>
 
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -329,6 +381,12 @@ plt.show()
 </pre></div>
 
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -337,6 +395,12 @@ plt.show()
 
 <p>
 <center><p><img src="fig/results.jpg" align="bottom" width=600></p></center>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -345,6 +409,12 @@ plt.show()
 
 <p>
 <center><p><img src="fig/CN.png" align="bottom" width=600></p></center>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -381,6 +451,13 @@ Key results:
 Only the Backward Euler scheme is guaranteed to always give
 qualitatively correct results.
 </div>
+
+
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Center for Biomedical Computing, Simula Research Laboratory. Released under CC Attribution 4.0 license
+</center>
 </section>
 
 
@@ -389,7 +466,7 @@ qualitatively correct results.
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

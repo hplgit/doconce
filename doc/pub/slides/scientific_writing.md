@@ -3,7 +3,11 @@
 <!-- TITLE: Scientific Writing and Publishing for the Future: How Can We Handle the eLearning Revolution? -->
 % Scientific Writing and Publishing for the Future
 % **Hans Petter Langtangen**
-% May 6, 2015
+% Sep 22, 2015
+
+Copyright 2015, Hans Petter Langtangen
+
+
 
 <!-- <img src="fig/doconce1b.png" width=400> -->
 ![](fig/doconce1b.png)
@@ -1069,7 +1073,7 @@ Last page gets rendered to
  * Key point 1
  * Key point 2
 
-<!-- <img src="fig/teacher1.gif" width=100,> -->
+<!-- <img src="fig/teacher1.gif" width=100> -->
 ![](fig/teacher1.gif)
 
 Key equation:
@@ -1107,7 +1111,7 @@ a figure to the right (two cells: 00 and 01):
 !eslidecell
 
 !bslidecell 01
-FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [fig/broken_pen_and_paper, width=400 frac=0.8]
 !eslidecell
 
 !split

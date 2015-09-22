@@ -34,6 +34,7 @@ $(function () {
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
 <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
@@ -51,14 +52,21 @@ $(function () {
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -73,7 +81,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
              text-shadow:0 1px 0 rgba(255,255,255,0.5);
              border:5px solid #bababa;
              -webkit-border-radius: 14px; -moz-border-radius: 14px;
-             border-radius:14px
+             border-radius:14px;
              background-position: 10px 10px;
              background-repeat: no-repeat;
              background-size: 38px;
@@ -154,10 +162,19 @@ MathJax.Hub.Config({
 
 <p>&nbsp;<br>
 <!-- institution(s) -->
+
+<br>
 <p>&nbsp;<br>
-<center><h4>May 6, 2015</h4></center> <!-- date -->
+<center><h4>Sep 22, 2015</h4></center> <!-- date -->
+<br>
 <p>
 <center><p><img src="fig/doconce1b.png" align="bottom" width=400></p></center>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -166,7 +183,7 @@ MathJax.Hub.Config({
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <center><p><img src="fig/writing1.jpg" align="bottom" width=400></p></center>
@@ -179,6 +196,12 @@ MathJax.Hub.Config({
 
 <p>
 <!-- FIGURE: [fig/writing_is_hard_stone, width=500 frac=0.5] -->
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -209,6 +232,12 @@ print &#39;Hello, World!&#39;
 </pre></div>
 <p>
 <b>Big late 1990s question</b>: Will MS Word replace LaTeX? It never did!
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -217,7 +246,7 @@ print &#39;Hello, World!&#39;
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <center><p><img src="fig/ipad.png" align="bottom" width=400></p></center>
@@ -235,6 +264,12 @@ print &#39;Hello, World!&#39;
 </td>
 </tr>
 </table>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -243,6 +278,12 @@ print &#39;Hello, World!&#39;
 
 <p>
 <center><p><img src="fig/oldbooks.jpg" align="bottom" width=800></p></center>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -251,7 +292,7 @@ print &#39;Hello, World!&#39;
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <center><p><img src="fig/latex_thesis.jpg" align="bottom" width=400></p></center>
@@ -265,6 +306,12 @@ print &#39;Hello, World!&#39;
 <p>
 <!-- * Scientific writing = lecture notes, slides, reports, thesis, books,  ... -->
 <!-- * (Journal papers typeset by journals are out of scope) -->
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -281,7 +328,7 @@ print &#39;Hello, World!&#39;
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <center><p><img src="fig/digital_learning_words.jpg" align="bottom" width=400></p></center>
@@ -291,6 +338,12 @@ print &#39;Hello, World!&#39;
 </td>
 </tr>
 </table>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -307,6 +360,12 @@ print &#39;Hello, World!&#39;
 <em>LaTeX-for-paper</em> and <em>HTML-for-screen</em> are two very different
 writing styles and technology platforms.
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -322,7 +381,7 @@ What tools should I use for scientific writing?
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <center><p><img src="fig/LaTeX_logo.jpg" align="bottom" width=120></p></center>
@@ -346,6 +405,12 @@ What tools should I use for scientific writing?
 </td>
 </tr>
 </table>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -357,7 +422,7 @@ What tools should I use for scientific writing?
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 <ul>
@@ -377,6 +442,12 @@ What tools should I use for scientific writing?
 </td>
 </tr>
 </table>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -406,16 +477,28 @@ some book - is that at all feasible?
 
 <span class="fragment highlight-red">
 
-Probably not, but I have a solution <img src="https://raw.githubusercontent.com/arvida/emoji-cheat-sheet.com/master/public/graphics/emojis/smile.png" width="22px" height="22px" align="center">
+Probably not, but I have a solution <img src="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/emoji/png/smile.png" width="22px" height="22px" align="center">
 
 </span>
 
 </p>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
 <section>
 <h1 id="___sec10">Pros and cons of various tools </h1>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -443,6 +526,11 @@ Probably not, but I have a solution <img src="https://raw.githubusercontent.com/
  <p><li class="fragment"> <b>Wordpress</b>: supports full HTML with LaTeX <em>formulas</em> only</li>
  <p><li class="fragment"> <b>Google blogger</b>: supports full HTML with MathJax</li>
 </ul>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -469,6 +557,12 @@ Probably not, but I have a solution <img src="https://raw.githubusercontent.com/
 </ul>
 <p>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -486,6 +580,11 @@ Probably not, but I have a solution <img src="https://raw.githubusercontent.com/
  <p><li class="fragment"> Cross references: LaTeX (also to external doc.)</li>
  <p><li class="fragment"> Equation references: LaTeX, HTML, Sphinx</li>
 </ul>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -508,6 +607,12 @@ Probably not, but I have a solution <img src="https://raw.githubusercontent.com/
 Highly non-trivial to translate from/to LaTeX!
 
 </p>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -533,6 +638,12 @@ cross-referencing, equation referencing. All code needed for a snippet
 to run must be included. <em>It's a different writing style, but lots
 of new opportunities</em>.
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -554,6 +665,11 @@ of new opportunities</em>.
    and use paragraph (or subsubsection) headings with "Step 1.",
    "Step 2.", etc.</li>
 </ul>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -576,6 +692,12 @@ of new opportunities</em>.
 <!-- Not valid anymore: -->
 <!-- Keys for items in the bibliography are made visible by Sphinx so -->
 <!-- "bibitems" a la BibTeX must look sensible and consistent. -->
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -593,6 +715,11 @@ of new opportunities</em>.
    printing. Make sure plots makes sense in color and BW (e.g., by
    using colors <em>and</em> markers).</li>
 </ul>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -608,6 +735,12 @@ of new opportunities</em>.
    Python script</li>
  <p><li> Sphinx and Markdown has some limited math support</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -630,6 +763,12 @@ especially for scientific writing with <em>much math and code</em>.
  <p><li> Applies Mako: DocOnce text is a program (!)</li>
  <p><li> Much like Markdown, less tagged than LaTeX, HTML, Sphinx</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -638,6 +777,12 @@ especially for scientific writing with <em>much math and code</em>.
 
 <p>
 <center><p><img src="fig/doconce1b.png" align="bottom" width=600></p></center>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -655,6 +800,12 @@ especially for scientific writing with <em>much math and code</em>.
  <p><li> <a href="http://doconcedemo.shoutwiki.com/wiki/DocOnce_demo_page" target="_blank">MediaWiki</a> (Wikipedia, Wikibooks, etc)</li>
  <p><li> DocOnce <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_blank">source code</a> and <a href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html" target="_blank">tutorial</a></li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -674,6 +825,12 @@ especially for scientific writing with <em>much math and code</em>.
 At any time one can divorce from DocOnce and marry one of the output
 formats, such as LaTeX or Sphinx. The generated code is clean.
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -691,11 +848,23 @@ formats, such as LaTeX or Sphinx. The generated code is clean.
    advanced and nice constructs for layout</li>
 </ul>
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
 <section>
 <h1 id="___sec25">A tour of DocOnce </h1>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -719,6 +888,12 @@ TOC: on
 <p>
 Title and authors must have all information <em>on a single line</em>!
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -739,6 +914,11 @@ Or:
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">__Summary.__
 Here goes the summary...
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -773,6 +953,12 @@ Result:
 
 <p>
 <b>This is a paragraph heading.</b>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -810,6 +996,12 @@ This gets rendered as
 </ol>
 <p>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -840,6 +1032,11 @@ See (ref{eq1})-(ref{myeq}).
 # Hyperlink with complete URL as link text
 URL: &quot;https://github.com/hplgit/doconce&quot;
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -872,6 +1069,12 @@ and rendered as
 <p>
 
 <iframe width="420" height="315" src="http://www.youtube.com/embed/IDeGDFZSYo8" frameborder="0" allowfullscreen></iframe>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -918,6 +1121,12 @@ $$
 \end{align}
 $$
 <p>&nbsp;<br>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -954,6 +1163,12 @@ Limit math environments to
    handle equation references across web pages</li>
 </ul>
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -994,6 +1209,11 @@ This gets rendered as
         u[n+<span style="color: #B452CD">1</span>] = (<span style="color: #B452CD">1</span> - (<span style="color: #B452CD">1</span>-theta)*a*dt)/(<span style="color: #B452CD">1</span> + theta*dt*a)*u[n]
     <span style="color: #8B008B; font-weight: bold">return</span> u, t
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1020,6 +1240,11 @@ start and end regular expressions:
 <!-- code=text typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">@@@CODE src/somefile.py  fromto: def solver\(@def next\(x,\s*y,
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1037,6 +1262,12 @@ start and end regular expressions:
  <p><li> <code>ptex2tex</code>: between 40+ code styles in LaTeX</li>
  <p><li> <code>pygments</code> is used for code in HTML (ca 10 styles)</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1053,6 +1284,11 @@ program flow and state of variables:
 <iframe width="950" height="500" frameborder="0"
         src="http://pythontutor.com/iframe-embed.html#code=def+solver%28I%2C+a%2C+T%2C+dt%2C+theta%29%3A%0A++++dt+%3D+float%28dt%29%0A++++N+%3D+int%28round%28T%2Fdt%29%29%0A++++T+%3D+N%2Adt%0A++++u+%3D+%5B0.0%5D%2A%28N%2B1%29%0A++++t+%3D+%5Bi%2Adt+for+i+in+range%28N%2B1%29%5D%0A%0A++++u%5B0%5D+%3D+I%0A++++for+n+in+range%280%2C+N%29%3A%0A++++++++u%5Bn%2B1%5D+%3D+%281+-+%281-theta%29%2Aa%2Adt%29%2F%281+%2B+theta%2Adt%2Aa%29%2Au%5Bn%5D%0A++++return+u%2C+t%0A%0Au%2C+t+%3D+solver%28I%3D1%2C+a%3D1%2C+T%3D3%2C+dt%3D1.%2C+theta%3D0.5%29%0Aprint+u&curInstr=0&py=2&cumulative=false">
 </iframe>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1087,6 +1323,12 @@ show()
 <p>
 Works only in Sphinx documents (but HTML support is possible).
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1095,6 +1337,12 @@ Works only in Sphinx documents (but HTML support is possible).
 
 <p>
 Can take a <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.do.txt.html" target="_blank">DocOnce source</a> and transform to an <a href="http://nbviewer.ipython.org/url/hplgit.github.com/teamods/writing_reports/_static/report.ipynb" target="_blank">IPython notebook</a> with <a href="http://hplgit.github.com/teamods/writing_reports/_static/report.ipynb.html" target="_blank">source</a>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1126,6 +1374,11 @@ Gets rendered as
 <tr><td align="right">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
 </table>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1137,6 +1390,12 @@ Gets rendered as
  <p><li> Used directly in LaTeX</li>
  <p><li> Substitution made for many other formats</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1179,6 +1438,12 @@ BIBFILE: papers.pub
 <p>
 The <code>papers.pub</code> file must be in <a href="https://bitbucket.org/logg/publish" target="_blank">Publish</a>
 format (easy to make from BibTeX).
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1214,6 +1479,11 @@ Compute the probability of getting heads.
 !eans
 !esubex
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1258,6 +1528,12 @@ Filenames: <code>flip_coin.py</code>, <code>flip_coin.pdf</code>.
 
 <p>
 <!-- --- end exercise --- -->
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1287,6 +1563,11 @@ processing (e.g., making a book of problems).
   &#39;title&#39;: &#39;Flip a Coin&#39;,
   &#39;type&#39;: &#39;Problem&#39;}]
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1308,6 +1589,12 @@ processing (e.g., making a book of problems).
  <p><li> The mako preprocessor is really powerful - gives a
    complete programming language inside the document!</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1355,6 +1642,12 @@ Conclusion:
     can be used when no special icon is desired. Good for slides.</li>
 </ul>
 </div>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1382,6 +1675,11 @@ Conclusion:
 the document &quot;Mathematical Equations&quot;:
 <span style="color: #CD5555">&quot;http://some.net/doc/matheqs.html&quot;</span> cite{math_eqs_2020}].
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1403,6 +1701,12 @@ Very effective way to generate slides from running text:
  <p><li> Supported slide types: Beamer, HTML,
    HTML5 (reveal.js, deck.js, csss, dzslides)</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1436,6 +1740,11 @@ And maybe a final comment?
 !split
 ===== Next slide... =====
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1453,7 +1762,7 @@ Last page gets rendered to
 </ul>
 <p>
 
-<center><p><img src="fig/teacher1.gif" align="bottom" width=100,></p></center>
+<center><p><img src="fig/teacher1.gif" align="bottom" width=100></p></center>
 
 <p>
 Key equation:
@@ -1464,6 +1773,12 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 
 <p>
 And maybe a final comment?
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1496,12 +1811,17 @@ a figure to the right (two cells: 00 and 01):
 !eslidecell
 
 !bslidecell 01
-FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [fig/broken_pen_and_paper, width=400 frac=0.8]
 !eslidecell
 
 !split
 ===== Next slide... =====
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1515,7 +1835,7 @@ Last page gets rendered to
 
 <p>
 
-<table border="0">
+<table border="1">
 <tr>
 <td class="padding">
 
@@ -1543,6 +1863,12 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 </td>
 </tr>
 </table>
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1561,6 +1887,12 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 </ul>
 <p>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1608,6 +1940,11 @@ $$ -\nabla^2 u = f \quad\hbox{in }\Omega $$
 </ul>
 <p>
 </ul>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1633,6 +1970,11 @@ doconce format html doconcefile --no_pygments_html
 # Further making of slides
 doconce slides_html doconcefile reveal --html_slide_theme=darkgray
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1659,6 +2001,12 @@ For wordpress, add <code>--wordpress</code>:
 </pre></div>
 <p>
 and paste the code into the text area.
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1674,6 +2022,11 @@ pdflatex doconcefile
 bibtex doconcefile
 pdflatex doconcefile
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1695,6 +2048,12 @@ google-chrome sphinx-rootdir/_build/html/index.html
 </pre></div>
 <p>
 Much easier than running the Sphinx tools manually!
+
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1725,6 +2084,12 @@ Publishing of "official" documents:
    (can test code in the <a href="http://en.wikibooks.org/wiki/Wikibooks:Sandbox" target="_blank">sandbox</a>)</li>
  <p><li> Wikipedia</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1740,6 +2105,11 @@ doconce format cwiki  doconcefile  # Creole wiki (Bitbucket)
 doconce format rst    doconcefile  # reStructuredText
 doconce format plain  doconcefile  # plain, untagged text for email
 </pre></div>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1765,6 +2135,12 @@ doconce format plain  doconcefile  # plain, untagged text for email
 </ul>
 <p>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1790,6 +2166,12 @@ doconce format plain  doconcefile  # plain, untagged text for email
  <p><li> Avoid all fancy LaTeX constructs - more backslashes than needed in math
    and sections is a bad thing...</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1818,6 +2200,12 @@ Figures and movies:
  <p><li> Store all movies in a directory (tree) with name <code>mov</code> or <code>mov-X</code>.</li>
  <p><li> Favor the movie formats MP4, WebM, and Ogg (best suited for modern browsers).</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1836,6 +2224,12 @@ Figures and movies:
  <p><li> Use <code>doconce spellcheck *.do.txt</code> to automatically spellcheck files.</li>
  <p><li> Avoid page references and footnotes.</li>
 </ul>
+<p>
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1870,6 +2264,13 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 </ul>
 <p>
 </ul>
+<p>
+
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+</center>
 </section>
 
 
@@ -1878,7 +2279,7 @@ For output formats different from <code>latex</code>, <code>pdflatex</code>, and
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

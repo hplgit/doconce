@@ -20,7 +20,7 @@
 #TITLE: Scientific Writing Anno 2013: The DocOnce Way
 #TITLE: Scientific Writing and Publishing for the Future: How Can We Handle the eLearning Revolution?
 TITLE: Scientific Writing and Publishing for the Future
-AUTHOR: Hans Petter Langtangen
+AUTHOR: Hans Petter Langtangen {copyright}
 DATE: Today
 
 FIGURE: [fig/doconce1b, width=400 frac=0.5]
@@ -1012,7 +1012,7 @@ Last page gets rendered to
  * Key point 1
  * Key point 2
 
-FIGURE: [fig/teacher1, width=100, frac=0.4]
+FIGURE: [fig/teacher1, width=100 frac=0.4]
 
 Key equation:
 
@@ -1049,7 +1049,7 @@ a figure to the right (two cells: 00 and 01):
 |eslidecell
 
 |bslidecell 01
-FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [fig/broken_pen_and_paper, width=400 frac=0.8]
 |eslidecell
 
 !split

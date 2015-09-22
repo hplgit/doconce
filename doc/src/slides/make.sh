@@ -109,7 +109,7 @@ cp $name.tex ${name}-anslistings.tex
 # other formats demonstrate doconce writing this way
 system doconce format sphinx $name
 editfix ${name}.rst
-system doconce sphinx_dir copyright="H. P. Langtangen" theme=pyramid $name
+system doconce sphinx_dir theme=pyramid $name
 system python automake_sphinx.py
 
 system doconce format pandoc $name  # Markdown (pandoc extended)

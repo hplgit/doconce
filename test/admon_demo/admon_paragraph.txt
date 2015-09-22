@@ -1,9 +1,11 @@
 Testing admons
 ==============
 
-hpl
+H. P. Langtangen
 
-Date: Sep 18, 2015
+Date: Sep 22, 2015
+
+Copyright 2015, H. P. Langtangen
 
 # !split
 Introduction

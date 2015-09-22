@@ -3472,7 +3472,7 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 
     # Copyright in the footer?
     pattern = r'<center style="font-size:80%">\n<!-- copyright --> &copy; (.+)\n</center>'
-    m = re.search(pattern, footer)
+    m = re.search(pattern, ''.join(footer))
     if m:
         copyright_ = m.group().strip()
     else:

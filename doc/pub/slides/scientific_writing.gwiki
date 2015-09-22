@@ -5,7 +5,13 @@
 #summary Scientific Writing and Publishing for the Future
 
 By *Hans Petter Langtangen*
-==== May 6, 2015 ====
+==== Sep 22, 2015 ====
+
+Copyright 2015, Hans Petter Langtangen
+
+
+
+
 
 ---------------------------------------------------------------
 
@@ -1315,7 +1321,7 @@ a figure to the right (two cells: 00 and 01):
 !eslidecell
 
 !bslidecell 01
-FIGURE: [fig/broken_pen_and_paper, width=400, frac=0.8]
+FIGURE: [fig/broken_pen_and_paper, width=400 frac=0.8]
 !eslidecell
 
 !split
