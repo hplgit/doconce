@@ -623,6 +623,31 @@ See the "Copyright section of the DocOnce manual": "http://hplgit.github.io/doco
 
 An error message is provided.
 
+===== Lists look wrong =====
+
+It is very important to be accurate with white space in lists.
+There must be exactly *one blank* between the `o` or `*` that
+starts an item and the following text, and multiple lines in an
+item must be perfectly aligned. Here are some typical errors:
+
+!bc do
+ o a rectangular pulse
+ o  a Gaussian pulse
+ o one period of a cosine pulse
+ o half a period of
+  a cosine pulse
+!ec
+Problem: `a Gaussian pulse` is not properly aligned, `a cosine pulse` on
+the last line is not properly aligned. The correct formatting is
+
+!bc do
+ o a rectangular pulse
+ o a Gaussian pulse
+ o one period of a cosine pulse
+ o half a period of
+   a cosine pulse
+!ec
+
 ======= Preprocess/Mako =======
 
 ===== List important things to remember when programming Mako =====

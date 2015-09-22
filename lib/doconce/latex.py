@@ -3216,6 +3216,7 @@ open=right,              %% start new chapters on odd-numbered pages
             # Dark blue linkcolor
             linkcolor_def = r'\definecolor{linkcolor}{rgb}{0,0,0.4}'
 
+    toc_depth = option('toc_depth=', 2)
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 %(linkcolor_def)s
@@ -3234,7 +3235,7 @@ open=right,              %% start new chapters on odd-numbered pages
     }
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
 
-\setcounter{tocdepth}{2}  %% number chapter, section, subsection
+\setcounter{tocdepth}{%(toc_depth)s}  %% number chapter, section, subsection
 """ % vars()
 
     # Footnotes with verbatim?
