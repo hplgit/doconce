@@ -41,6 +41,8 @@ chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
      """Filenames of individual exercises in zip archive.
 logical: use the (first) logical filename specified by file=...
 number:  use either absolute exercise number or chapter.localnumber."""),
+    ('--toc_depth=',
+     """No of levels in the table of contents. Default: 2 (includes sections and subsections but not subsubsections)."""),
     ('--encoding=',
      'Specify encoding (e.g., latin1 or utf-8).'),
     ('--no_ampersand_quote', 'Turn off special treatment of ampersand (&). Needed, e.g., when native latex code for tables are inserted in the document.'),
@@ -115,8 +117,6 @@ Default: on (use the css-specified typesetting of <pre> tags).
 This option is most relevant for Bootstrap styles to
 avoid white background in code blocks inside colorful admons.
 """),
-    ('--html_toc_depth=',
-     """No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections)."""),
     ('--html_toc_indent=',
      """No of spaces for indentation of subsections in the table of
 contents in HTML output. Default: 3 (0 gives toc as nested list

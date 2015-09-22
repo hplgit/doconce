@@ -583,7 +583,7 @@ display: inline;
 def toc2html(font_size=80, bootstrap=True):
     global tocinfo  # computed elsewhere
     # level_depth: how many levels that are represented in the toc
-    level_depth = int(option('html_toc_depth=', '-1'))
+    level_depth = int(option('toc_depth=', '-1'))
     if level_depth == -1:
         # Compute suitable depth in toc
         if bootstrap:
@@ -2092,7 +2092,7 @@ def html_toc(sections):
         if level < level_min:
             level_min = level
 
-    toc_depth = int(option('html_toc_depth=', 2))
+    toc_depth = int(option('toc_depth=', 2))
 
     extended_sections = []  # extended list for toc in HTML file
     #hr = '<hr>'

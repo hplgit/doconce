@@ -100,7 +100,7 @@ def format():
 # file...
 
 def _usage_sphinx_dir():
-    print """Usage: doconce sphinx_dir short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir intersphinx  doconcefile [--runestone]
+    print """Usage: doconce sphinx_dir short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir toc_depth=2 intersphinx  doconcefile [--runestone]
 
 Additional command-line arguments: theme_dir=directoryname conf.py=filename logo=filename
 
@@ -111,6 +111,9 @@ a standard sphinx directory).
 
 The default dirname is "sphinx-rootdir". The intersphinx option is used
 for links to other sphinx documents.
+
+toc_depth governs the depth in the table of contents, default value is 2
+(sections and subsections are included).
 
 The copyright in the footer of Sphinx documents is based on the AUTHOR
 field(s) in doconcefile, and if no {copyright...} specification is given
@@ -168,6 +171,7 @@ def sphinx_dir():
     theme = 'classic'
     doconce_files = []
     sphinx_rootdir = 'sphinx-rootdir'
+    toc_depth = 2
     conf_py = None
     theme_dir = None
     logo = None
@@ -186,6 +190,8 @@ def sphinx_dir():
             version = arg.split('=')[1]
         elif arg.startswith('dirname='):
             sphinx_rootdir = arg.split('=')[1]
+        elif arg.startswith('toc_depth='):
+            toc_depth = int(arg.split('=')[1])
         elif arg.startswith('theme='):
             theme = arg.split('=')[1]
         elif arg.startswith('conf.py='):
@@ -295,6 +301,10 @@ def sphinx_dir():
         if copyright_cml is not None:
             print '*** error: cannot give copyright= on the command line when {coppyright...} is specified as part of AUTHOR in the DocOnce file', filename
             sys.exit(1)
+
+    chapters = '=========' in fstr
+    if chapters:
+        toc_depth += 1
 
     if theme_dir is not None and conf_py is None:
         print 'theme_dir is given, but then also conf_py must be specified'
@@ -484,6 +494,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
         files = [filename]
     filenames = '\n   '.join(files)
     title_underline = '='*len(title)
+    [[[
     f.write("""
 .. Master file automatically created by doconce sphinx_dir
 
@@ -493,7 +504,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
 Contents:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: %(toc_depth)s
 
    %(filenames)s
 """ % vars())
