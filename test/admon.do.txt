@@ -1,5 +1,5 @@
 TITLE: Testing admons
-AUTHOR: hpl
+AUTHOR: H. P. Langtangen {copyright}
 DATE: today
 
 

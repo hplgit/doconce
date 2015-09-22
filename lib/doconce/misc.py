@@ -2380,6 +2380,7 @@ def _clean(light):
             )
 
     directories = ['html_images', 'latex_figs', 'standalone_exercises']
+    directories += glob.glob('_minted-*')
     if not light:
         directories += glob.glob('sphinx-*') + glob.glob('sphinx_*')
 
@@ -2564,7 +2565,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author/copyright" --font_size=slides'
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides'
 
 --method=split|space8|hrule|colorline specifies pagebreak
 physical split with a new page (--method=split) or
@@ -3411,7 +3412,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         part_text = part_text.replace('<a href="%s#' % part_filename,
                                       '<a href="#')
 
-        # Insert reference to published version of document? Or copyright
+        # Insert reference to published version of document?
         ackn = misc_option('reference=', None)
         if ackn is not None:
             ackn1 = '<p style="font-size:80%%">%s</p>' % ackn
@@ -3468,6 +3469,14 @@ def generate_html5_slides(header, parts, footer, basename, filename,
                           slide_tp='reveal'):
     if slide_tp not in ['dzslides', 'html5slides']:
         copy_datafiles(eval(slide_tp + '_files'))  # copy to subdir if needed
+
+    # Copyright in the footer?
+    pattern = r'<center style="font-size:80%">\n<!-- copyright --> &copy; (.+)\n</center>'
+    m = re.search(pattern, footer)
+    if m:
+        copyright_ = m.group().strip()
+    else:
+        copyright_ = ''
 
     slide_syntax = dict(
         reveal=dict(
@@ -5000,9 +5009,11 @@ td.padding {
 %s
 %s
 %s
+%s
 
 """ % (slide_syntax[slide_tp]['slide_envir_begin'],
        part,
+       copyright_,
        slide_syntax[slide_tp]['slide_envir_end'])
     slides += """
 %s
@@ -5273,6 +5284,15 @@ code {
 def generate_beamer_slides(header, parts, footer, basename, filename):
     # Styles: red/blue_plain/shadow, dark, dark_gradient, vintage
     header = ''.join(header)
+
+    # Copyright? Use \logo{} to represent it
+    pattern = r'\\footnotesize\\copyright\\ (.+)\}\}'
+    m = re.search(pattern, header)
+    if m:
+        copyright_ = r'\logo{%s}' % m.group(1).strip()
+    else:
+        copyright_ = ''
+
     theme = misc_option('beamer_slide_theme=', default='default')
     if theme != 'default':
         beamerstyle = 'beamertheme' + theme
@@ -5441,6 +5461,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 }{\end{mdframed}}
 
 """
+    if copyright_:
+        slides += '\n' + copyright_ + '\n'
 
     slides += r"""
 %-------------------- end beamer-specific preamble ----------------------

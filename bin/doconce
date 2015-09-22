@@ -667,6 +667,16 @@ if '--runestone' not in sys.argv:
         if '.. NOTE: Open external links in new windows.' in text:
             text = text.replace('<a class="reference external"',
                                 '<a class="reference external" target="_blank"')
+
+        # Remove (1), (2), ... numberings in identical headings
+        headings_wno = re.findall(r'(?<=(\d|"))>(.+?)          \((\d+)\)<', text)
+        for dummy, heading, no in headings_wno:
+            heading = heading.strip()
+            text = re.sub(r'>%s +\(%d\)<' % (heading, int(no)),
+                          '>%s<' % heading, text)
+            text = re.sub(r'title="%s +\(%d\)"' % (heading, int(no)),
+                          r'title="%s"' % heading, text)
+
         f = open(filename, 'w'); f.write(text); f.close()
     os.chdir('../../')
     print """

@@ -20,6 +20,9 @@ mercurial git subversion
 python-pip
 idle
 python-dev
+python-setuptools
+# upgrade
+pip install setuptools --upgrade
 python-pdftools
 pip install ipython --upgrade  # ensure latest version if already installed
 pip install tornado --upgrade

@@ -2963,7 +2963,11 @@ def interpret_authors(filestr, format):
                 if '|' in cr:
                     cr, license_ = cr.split('|')
                     if license_.startswith('CC'):
-                        license_ = license_.split()[1]
+                        try:
+                            license_ = license_.split()[1]
+                        except IndexError:
+                            print '*** error: wrong syntax for license in copyright:', license_
+                            _abort()
                         # https://creativecommons.org/licenses/
                         # CC BY-ND
                         cctps = {
