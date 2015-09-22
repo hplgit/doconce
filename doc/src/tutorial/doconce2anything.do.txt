@@ -523,7 +523,7 @@ Other options:
    by comma and valid names are `email`, `facebook`, `google+`,
    `linkedin`, `twitter`, and `print`. The URL `http://...` must be
    the URL where the document is published.
- * `--html_toc_depth=X`: controls the depth of the table of contents
+ * `--toc_depth=X`: controls the depth of the table of contents
    in documents. Default value of `X` is 3, meaning chapters,
    sections, and subsections. `X` as 0 gives the table of contents as a
    nested list in Bootstrap styles.
@@ -1478,6 +1478,13 @@ By default, `version` is 1.0 and
 `dirname` is `sphinx-rootdir`. The `theme`
 keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is `classic`).
+
+There are more options for the `sphinx_dir` command: `--runestone`
+for Runestone Interactive books, `toc_depth=` for setting the depth
+of the table of contents, `intersphinx` for allowing the document to
+link automatically to other Sphinx documents, `conf.py=` for specifying
+a tailored `conf.py` file, `logo=` and `favicon=` for specifying logo
+and favicon files.
 
 One often just runs the simple command
 !bc sys

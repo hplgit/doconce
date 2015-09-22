@@ -103,7 +103,7 @@ def format():
 def _usage_sphinx_dir():
     print """Usage: doconce sphinx_dir short-title="some short title" version=0.1 theme=themename dirname=sphinx-rootdir toc_depth=2 intersphinx  doconcefile [--runestone]
 
-Additional command-line arguments: theme_dir=directoryname conf.py=filename logo=filename
+Additional command-line arguments: theme_dir=directoryname conf.py=filename logo=filename favicon=filename
 
 The sphinx_dir command creates a directory (dirname) for compiling a
 sphinx version of a doconce document. The option --runestone makes a
@@ -495,7 +495,7 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
         files = [filename]
     filenames = '\n   '.join(files)
     title_underline = '='*len(title)
-    [[[
+
     f.write("""
 .. Master file automatically created by doconce sphinx_dir
 
@@ -515,6 +515,9 @@ Contents:
     dotext = load_preprocessed_doconce_file(filename, dirpath=os.pardir)
     if 'idx{' in dotext:
         f.write("""
+
+Index
+=====
 
 * :ref:`genindex`
 """)

@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
-<meta name="keywords" content="doconce,demos,author email,author institution,copyright syntax,table of contents,headlines,section headings,headings,abstract,appendix,FIGPREFIX,subfigures,Bokeh interactive plots,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),epub,Calibre,LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,split command,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,syntax highlighting for doconce,doconce editing (Emacs),preprocessing,inline comments,notes (visible/invisible),demos,tweaking output,automatic editing,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format notebook,IPython notebook,Jupyter notebook,notebook,output format notebook,Matlab notebook,Matlab publish format (notebook),notebook,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,command-line options doconce format,installation">
+<meta name="keywords" content="doconce,demos,author email,author institution,copyright syntax,table of contents,toc depth,headlines,section headings,headings,abstract,appendix,FIGPREFIX,subfigures,Bokeh interactive plots,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),epub,Calibre,LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,split command,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,syntax highlighting for doconce,doconce editing (Emacs),preprocessing,inline comments,notes (visible/invisible),demos,tweaking output,automatic editing,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format notebook,IPython notebook,Jupyter notebook,notebook,output format notebook,Matlab notebook,Matlab publish format (notebook),notebook,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,command-line options doconce format,installation">
 
 <title>DocOnce Description</title>
 
@@ -502,7 +502,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Sep 16, 2015</h4></center> <!-- date -->
+<center><h4>Sep 22, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -1017,6 +1017,13 @@ A table of contents can be generated by the line
 <p>
 This line is usually placed after the <code>DATE:</code> line.
 The value <code>off</code> turns off the table of contents.
+
+<p>
+The depth of the table of contents is dictated by the command-line
+option <code>--toc_depth=</code>, which is 2 by default, meaning that sections and
+subsections are included, but not subsubsections.
+When making Sphinx documents, <code>toc_depth=</code> is a command-line option for
+for the <code>doconce sphinx_dir</code> command (and not <code>doconce format</code>).
 
 <p>
 <!-- !split -->
@@ -5959,20 +5966,20 @@ specified in the first line above:
 <p>
 
 <!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">C     a comment
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
 
-      <span style="color: #008000; font-weight: bold">subroutine </span>test()
-      <span style="color: #B00040">integer </span>i
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
-      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
-         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
+      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
+      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
+      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
+         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-C     END1
+<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
 
-      <span style="color: #008000; font-weight: bold">program </span>testme
-      <span style="color: #008000; font-weight: bold">call </span>test()
+      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
+      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -5982,12 +5989,12 @@ directive above:
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
-      <span style="color: #B00040">integer </span>i
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
-      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
-         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
+      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
+      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
+         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
@@ -8899,12 +8906,12 @@ as the language in Windows Script Host).
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/bash</span>
 <span style="color: #008000">set</span> -x  <span style="color: #408080; font-style: italic"># write out all commands prior to execution</span>
 
-<span style="color: #008000; font-weight: bold">function</span> system <span style="color: #666666">{</span>
+<span style="color: #008000; font-weight: bold">function </span>system <span style="color: #666666">{</span>
 <span style="color: #408080; font-style: italic"># Run operating system command and if failure, report and abort</span>
 
-  <span style="color: #BA2121">&quot;</span><span style="color: #19177C">$@</span><span style="color: #BA2121">&quot;</span>
-  <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #19177C">$?</span> -ne <span style="color: #666666">0</span> <span style="color: #666666">]</span>; <span style="color: #008000; font-weight: bold">then</span>
-    <span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;make.sh: unsuccessful command </span><span style="color: #19177C">$@</span><span style="color: #BA2121">&quot;</span>
+  <span style="color: #BA2121">&quot;$@&quot;</span>
+  <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #19177C">$?</span> -ne 0 <span style="color: #666666">]</span>; <span style="color: #008000; font-weight: bold">then</span>
+<span style="color: #008000; font-weight: bold">    </span><span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;make.sh: unsuccessful command $@&quot;</span>
     <span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;abort!&quot;</span>
     <span style="color: #008000">exit </span>1
   <span style="color: #008000; font-weight: bold">fi</span>
@@ -8930,10 +8937,10 @@ pdflatex -shell-escape <span style="color: #19177C">$name</span>
 
 <span style="color: #408080; font-style: italic"># Compile to HTML (two different styles)</span>
 <span style="color: #19177C">styles</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;bootstrap solarized3&quot;</span>
-<span style="color: #008000; font-weight: bold">for</span> style in <span style="color: #19177C">$styles</span>; <span style="color: #008000; font-weight: bold">do</span>
+<span style="color: #008000; font-weight: bold">for </span>style in <span style="color: #19177C">$styles</span>; <span style="color: #008000; font-weight: bold">do</span>
 system doconce format html <span style="color: #19177C">$name</span> --html_style<span style="color: #666666">=</span><span style="color: #19177C">$style</span> <span style="color: #BB6622; font-weight: bold">\</span>
-       --html_output<span style="color: #666666">=</span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #BB6688; font-weight: bold">}</span>-<span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #BB6688; font-weight: bold">}</span>
-system doconce split_html <span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #BB6688; font-weight: bold">}</span>-<span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #BB6688; font-weight: bold">}</span>  <span style="color: #408080; font-style: italic"># split at !split commands</span>
+       --html_output<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #008000; font-weight: bold">}</span>-<span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #008000; font-weight: bold">}</span>
+system doconce split_html <span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #008000; font-weight: bold">}</span>-<span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #008000; font-weight: bold">}</span>  <span style="color: #408080; font-style: italic"># split at !split commands</span>
 <span style="color: #008000; font-weight: bold">done</span>
 
 <span style="color: #408080; font-style: italic"># Compile to Sphinx</span>
@@ -9081,21 +9088,14 @@ A variable <code>VAR=value</code> given on the command line (or <code>-DVar=valu
 be used in Preprocess and Mako tests. With Mako, the variable can
 also be used inside text, as <code>${VAR}</code>, and Mako will substitute the
 variable by its value. Preprocess can also substitute a variable by
-its value, but it requires the command-line option <code>--preprocess_subst</code>
-to turn this feature on. With Preprocess, every occurence of <code>VAR</code> will
-be replaced by <code>value</code>. For example, <code>VARIABLE</code> will become <code>valueIABLE</code>
-(just as if you use <code>doconce replace VAR value mydoc.do.txt</code>).
-In particular, Preprocess will replace any <code>${VAR}</code> construction meant
-for Mako with <code>${value}</code>, and Mako will then complain that <code>value</code> is
-not defined. The bottom line is that for variable substitution, you
-should use Mako and not Preprocess. There is only one occasion where
-you really need Preprocess variable substitution and this is in
-filenames for <code># #include</code> statement. If you want a variable in
-the filename, e.g., <code># #include &quot;parent_VAR.do.txt&quot;</code>, it has to be
-a Preprocess variable since the include actions are run <em>before</em>
-Mako is run.
-(One can use an include statement in Mako, but it works only for files
-in the current directory or its subdirectories.)
+its value, but this is (on DocOnce's use of Preprocess) restricted
+to filenames in <code>#include</code> statements. With the command-line option
+<code>--preprocess_include_subst</code>, any <code>-DVAR=value</code> variable will lead
+to a susbtitution of <code>VAR</code> by <code>value</code> in included filenames.
+For example, <code># #include &quot;MYDIR/myfile.do.txt&quot;</code> and <code>-DMYDIR=RN2</code>
+will lead to inclusion of the file <code>RN2/myfile.do.txt</code>. Note that
+for this Preprocess substitution, the variable in the filename
+must be <code>MYDIR</code>, not <code>${MYDIR}</code> as with Mako.
 
 <h2 id="do2any:inlinecomments">Removal of Inline Comments</h2>
 
@@ -9415,7 +9415,7 @@ Other options:
    by comma and valid names are <code>email</code>, <code>facebook</code>, <code>google+</code>,
    <code>linkedin</code>, <code>twitter</code>, and <code>print</code>. The URL <code>http://...</code> must be
    the URL where the document is published.</li>
- <li> <code>--html_toc_depth=X</code>: controls the depth of the table of contents
+ <li> <code>--toc_depth=X</code>: controls the depth of the table of contents
    in documents. Default value of <code>X</code> is 3, meaning chapters,
    sections, and subsections. <code>X</code> as 0 gives the table of contents as a
    nested list in Bootstrap styles.</li>
@@ -9504,8 +9504,8 @@ to HTML format:
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">cp mydoc.do.txt mydoc2.do.txt
 <span style="color: #19177C">url</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span style="color: #19177C">dir</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;master/project/dir1/dir2&quot;</span>
-<span style="color: #008000; font-weight: bold">for</span> figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
-  doconce replace <span style="color: #BA2121">&quot;[</span><span style="color: #19177C">$figname</span><span style="color: #BA2121">,&quot;</span> <span style="color: #BA2121">&quot;[</span><span style="color: #19177C">$site</span><span style="color: #BA2121">/</span><span style="color: #19177C">$dir</span><span style="color: #BA2121">/</span><span style="color: #19177C">$figname</span><span style="color: #BA2121">.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
+<span style="color: #008000; font-weight: bold">for </span>figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
+<span style="color: #008000; font-weight: bold">  </span>doconce replace <span style="color: #BA2121">&quot;[$figname,&quot;</span> <span style="color: #BA2121">&quot;[$site/$dir/$figname.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
           mydoc2.do.txt
 <span style="color: #008000; font-weight: bold">done</span>
 doconce format html mydoc2
@@ -10479,6 +10479,14 @@ keyword is used to set the theme for design of HTML output from
 Sphinx (the default theme is <code>classic</code>).
 
 <p>
+There are more options for the <code>sphinx_dir</code> command: <code>--runestone</code>
+for Runestone Interactive books, <code>toc_depth=</code> for setting the depth
+of the table of contents, <code>intersphinx</code> for allowing the document to
+link automatically to other Sphinx documents, <code>conf.py=</code> for specifying
+a tailored <code>conf.py</code> file, <code>logo=</code> and <code>favicon=</code> for specifying logo
+and favicon files.
+
+<p>
 One often just runs the simple command
 <p>
 
@@ -10957,17 +10965,6 @@ Write progress of intermediate steps if they take longer than X seconds.
 0: X=15
 1: X=5
 2: 0.5
-
-
---preprocess_subst
-
-Turns on variable substitutions when running Preprocess:
-    preprocess -s -DBUILD=all
-will lead to the string &quot;BUILD&quot; being replaced by the value &quot;all&quot;.
-This option may lead to strange substitutions. It is basically
-equivalent to
-    doconce replace BUILD all mydoc.do.txt
-
 
 
 --syntax_check=...
