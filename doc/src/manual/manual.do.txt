@@ -4133,12 +4133,23 @@ doconce replace 'bibliographystyle{plain}' 'bibliographystyle{abbrev}' mydoc.p.t
 !split
 ======= Preprocessing and Postprocessing =======
 
+idx{split command}
+idx{`!split`}
+
 DocOnce allows preprocessor commands for, e.g., including files,
 leaving out text, or inserting special text depending on the format.
 These commands are run prior to translation of the document.
 After translation, there are `doconce split_*` commands available
 for splitting HTML and Sphinx documents into smaller pieces (web pages)
-as a postprocess.
+as a postprocess. Each split is performed where the document writer
+has inserted a `!split` command (starting in the first column of a
+line and being the only text on that line):
+
+!bc do
+# Split document here
+!split
+======= New section =======
+!ec
 
 ===== The Preprocess and Mako Preprocessors =====
 

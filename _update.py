@@ -74,12 +74,14 @@ If styles are to be tuned more, a good idea can be to pack out
 the zip file instead and tune directly those style files.
 
 If new versions are cloned (i.e., you answer "yes" below), first
-take a copy of the reveal.js and deck.js source trees and run
-a diff on the new and old trees to get an overview of what type
-of files that has changed. (Note that any diff will point of
-differences between doconce specific versions of css files and
-the original ones. doconce specific versions will be automatically
-copied into new, cloned directories before the zip file is packed.)
+take a copy of the reveal.js and deck.js source trees (e.g.,
+from doc/pub/slides/demo) and run a directory tree diff on the
+new and old trees to get an overview of what type of files that
+have changed. Note that if you diff bundled/reveal.js and an old
+reveal.js after having run _update.py all, the files in bundled
+have copies of local doconce modifications in bundled/doconce_modifications.
+You should also diff with a fresh reveal.js clone to see how new
+.css files define things and play together with new .js functions.
 
 (Detected time-consuming incompatibilities Jan, 2014, after reveal and
 deck had undergone significant developments.)

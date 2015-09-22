@@ -2594,7 +2594,7 @@ def define(FILENAME_EXTENSION,
 
     if latex_style not in ('std', 'Springer_T2', 'Springer_T4',
                            'siamltex', 'siamltexmm',
-                           'elsevier', 'Springer_sv', 'Springer_lnup'):
+                           'elsevier', 'Springer_sv', 'Springer_lnup', 'Koma_Script'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
     if latex_style == 'Springer_sv' and title_layout != 'std':
@@ -4031,14 +4031,18 @@ open=right,              %% start new chapters on odd-numbered pages
 % #endif
 """
     else:
+        # Add Index to toc if we use idx{} commands
+        index_toc = r'\addcontentsline{toc}{section}{\indexname}' if \
+                    'idx{' in filestr else ''
         OUTRO['latex'] = r"""
 
-% #ifdef PREAMBLE
+%% #ifdef PREAMBLE
+%s
 \printindex
 
 \end{document}
-% #endif
-"""
+%% #endif
+""" % index_toc
 
 
 def fix_latex_command_regex(pattern, application='match'):

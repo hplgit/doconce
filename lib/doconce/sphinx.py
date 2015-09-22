@@ -35,8 +35,14 @@ def sphinx_figure(m):
         parts[0] = parts[0].strip()
         # insert emphasize marks if not latex $ at the
         # beginning or end (math subst does not work for *$I=1$*)
-        if parts[0] and not parts[0].startswith('$') and \
-           not parts[0].endswith('$'):
+        # or if not boldface or emphasize already in the caption
+        caption_font = option('sphinx_figure_captions=', 'emphasize')
+        if parts[0] and \
+           caption_font == 'emphasize' and \
+           not parts[0].startswith('$') and \
+           not parts[0].endswith('$') and \
+           not '*' in parts[0] and \
+           not '_' in parts[0]:
             parts[0] = '*' + parts[0] + '*'
         #caption = '  label'.join(parts)
         caption = parts[0]
@@ -50,7 +56,7 @@ def sphinx_figure(m):
 
     # math is ignored in references to figures, test for math only
     if caption.startswith('$') and caption.endswith('$'):
-        print '*** warning: math only in sphinx figure caption\n  %s\n    FIGURE: [%s' % (caption, filename)
+        print '*** warning: math only in sphinx figure caption (it will be ignored by sphinx, resulting in empty caption)\n  %s\n    FIGURE: [%s' % (caption, filename)
 
     #stem = os.path.splitext(filename)[0]
     #result += '\n.. figure:: ' + stem + '.*\n'  # utilize flexibility  # does not work yet
@@ -60,9 +66,9 @@ def sphinx_figure(m):
         # opts: width=600 frac=0.5 align=center
         # opts: width=600, frac=0.5, align=center
         info = [s.split('=') for s in opts.split()]
-        fig_info = ['   :%s: %s' % (option, value.replace(',', ''))
-                    for option, value in info
-                    if option not in ['frac', 'sidecap']]
+        fig_info = ['   :%s: %s' % (opt, value.replace(',', ''))
+                    for opt, value in info
+                    if opt not in ['frac', 'sidecap']]
         result += '\n'.join(fig_info)
     if caption:
         result += '\n\n   ' + caption + '\n'

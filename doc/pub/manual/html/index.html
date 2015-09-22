@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -25,10 +24,28 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce Description" href="#" />
-    <link rel="next" title="DocOnce Description" href="manual.html" /> 
+    <link rel="next" title="DocOnce Description" href="manual.html" />
+ 
   
        <style type="text/css">
          div.admonition {
@@ -38,8 +55,8 @@
        </style>
       </head>
     
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -48,14 +65,14 @@
         <li class="right" >
           <a href="manual.html" title="DocOnce Description"
              accesskey="N">next</a> |</li>
-        <li><a href="#">DocOnce Description</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">DocOnce Description</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="doconce-description">
 <h1>DocOnce Description<a class="headerlink" href="#doconce-description" title="Permalink to this headline">¶</a></h1>
@@ -166,13 +183,14 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#writing-a-makefile">Writing a Makefile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#generating-a-makefile">Generating a Makefile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#preprocessing">Preprocessing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#removal-of-inline-comments">Removal of Inline Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#notes">Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#demo-of-different-formats">Demo of Different Formats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manual.html#useful-options-for-doconce-format">Useful Options for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#html">HTML</a><ul>
@@ -198,7 +216,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#latex">LaTeX</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#overview-2">Overview  (2)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manual.html#the-old-ptex2tex-step">The old <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-edit-the-latex-file-step-2-optional">LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-generate-pdf-step-3">LaTeX-PDF: Generate PDF (Step 3)</a></li>
@@ -229,8 +247,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#wiki-formats">Wiki Formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#google-docs">Google Docs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="manual.html#options-for-the-doconce-commands">Options for the <tt class="docutils literal"><span class="pre">doconce</span></tt> commands</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manual.html#doconce-format-command-line-options"><tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> command-line options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manual.html#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
@@ -251,7 +269,7 @@
 <div class="section" id="index">
 <h1>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 </ul>
 </div>
 
@@ -259,7 +277,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
@@ -268,21 +286,21 @@
             </center>
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">DocOnce Description</a><ul>
-</ul>
-</li>
+<li><a class="reference internal" href="#">DocOnce Description</a></li>
 <li><a class="reference internal" href="#index">Index</a></li>
 </ul>
 
   <h4>Next topic</h4>
   <p class="topless"><a href="manual.html"
                         title="next chapter">DocOnce Description</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -299,7 +317,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -308,7 +326,7 @@
         <li class="right" >
           <a href="manual.html" title="DocOnce Description"
              >next</a> |</li>
-        <li><a href="#">DocOnce Description</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">DocOnce Description</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

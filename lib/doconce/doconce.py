@@ -3919,6 +3919,12 @@ def doconce2format(filestr, format):
     filestr, code_blocks, code_block_types, tex_blocks = \
              remove_code_and_tex(filestr, format)
 
+    if format in ('html', 'sphinx', 'ipynb', 'matlabnb'):
+        tex_blocks = add_labels_to_all_numbered_equations(tex_blocks)
+        # needed for the split functionality when all labels are
+        # given tags
+
+
     debugpr('The file after removal of code/tex blocks:', filestr)
     def print_blocks(blocks, delimiter=True):
         s = ''
@@ -4279,6 +4285,20 @@ def preprocess(filename, format, preprocessor_options=[]):
     # Collect first -Dvar=value options on the command line
     preprocess_options = [opt for opt in preprocessor_options
                           if opt[:2] == '-D']
+    if option('preprocess_include_subst'):
+        # Substitute -DVAR=value: VAR -> value in the text
+        # (same as doconce replace VAR value)
+        preprocess_options.append('-i')
+
+    # Add quotes to -DVAR=value options: -DVAR="value"
+    for i in range(len(preprocess_options)):
+        opt = preprocess_options[i]
+        if opt.startswith('-D'):
+            if '=' in opt and not '="' in opt:  # no quotes seemingly
+                parts = opt.split('=')
+                opt = '%s="%s"' % (parts[0], parts[1])
+                preprocess_options[i] = opt
+
     # Add -D to mako name=value options so that such variables
     # are set for preprocess too (but enclose value in quotes)
     for opt in preprocessor_options:
@@ -4305,7 +4325,7 @@ def preprocess(filename, format, preprocessor_options=[]):
             else:
                 key = opt2;  value = True
         elif not opt.startswith('--'):
-            # This is key=value
+            # This is assumed to be key=value
             # Treat value as string except if it is True or False
             # or consists solely of digits
             try:

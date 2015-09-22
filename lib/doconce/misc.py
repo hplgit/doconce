@@ -16,6 +16,10 @@ of intermediate results"""),
 0: X=15
 1: X=5
 2: 0.5"""),
+    ('--preprocess_include_subst', """Turns on variable substitutions in # #include paths when running Preprocess:
+    preprocess -i -DMYDIR=rn1
+will lead to the string "MYDIR" being replaced by the value "rn1"
+in # #include "..." statements."""),
     ('--syntax_check=',
      """Values: on/off. Turns on/off fix of illegal constructions and the syntax check
 (may be time consuming for large books)."""),
@@ -547,6 +551,7 @@ math and/or code, this option turns all explanations off."""),
 and insert new !split before all topmost sections. This is what
 makes sense in a Sphinx Table of Contents if one wants to split
 the document into multiple parts."""),
+    ('--sphinx_figure_captions=', 'Font style in figure captions: emphasize (default) or normal. If you use boldface or emphasize in the caption, the font style will be normal for that caption.'),
     ('--oneline_paragraphs',
      'Combine paragraphs to one line (does not work well).'),
     ]
@@ -737,12 +742,15 @@ def recommended_html_styles_and_pygments_styles():
             'solarized': ['perldoc',],
             'serif': ['perldoc'],
             'simple': ['autumn', 'default', 'perldoc'],
+            'white': ['autumn', 'default', 'perldoc'],
             'blood': ['monokai', 'native'],
+            'black': ['monokai', 'native'],
             'sky': ['default'],
             'moon': ['fruity', 'native'],
             'night': ['fruity', 'native'],
             'moon': ['fruity', 'native'],
             'darkgray': ['native', 'monokai'],
+            'league': ['native', 'monokai'],
             'cbc': ['default', 'autumn'],
             'simula': ['autumn', 'default'],
             },
@@ -1152,8 +1160,35 @@ def replace_from_file():
             f.write(text)
             f.close()
 
+def _usage_find():
+    print 'Usage: doconce find expression'
+    print 'Searches for all .do.txt files in subdirectories and'
+    print 'writes out filename, line number and line containing expression'
+    print 'expression is interpreted as a regular expression'
+    print '(the command is similar to a Unix find & grep)'
+
+def find():
+    if len(sys.argv) < 2:
+        _usage_find()
+        sys.exit(0)
+    expression = sys.argv[1]
+    for dirpath, dirnames, filenames in os.walk(os.curdir):
+        for filename in filenames:
+            if filename.endswith('.do.txt') and not filename.startswith('tmp_'):
+                filename = os.path.join(dirpath, filename)
+                with open(filename, 'r') as f:
+                    found = False
+                    for i, line in enumerate(f.readlines()):
+                        m = re.search(expression, line)
+                        if m:
+                            if not found:
+                                print # newline between files
+                            print '%s, %4d: %s' % (filename, i+1, m.group())
+                            found = True
+
+
 def _usage_expand_mako():
-    print 'Usage: doconce expand_mnako mako_code_file.txt funcname mydoc.do.txt'
+    print 'Usage: doconce expand_mako mako_code_file.txt funcname mydoc.do.txt'
 
 # This replacement function for re.sub must be global since expand_mako,
 # where it is used, has an exec statement
@@ -2511,7 +2546,7 @@ def html_colorbullets():
             linel = line.lower()
             if '<ul>' in linel:
                 level += 1
-                line = '<p><table border="0">\n'
+                line = '<p><table border="1">\n'
             if '</ul>' in linel:
                 line = '</td></tr></table>\n'
                 level -= 1
@@ -2658,7 +2693,7 @@ alternative:  doconce slides_html mydoc.html all  (generate all types of slides)
 themename is the reveal or deck theme:
 
 reveal.js: beige, beigesmall, solarized, serif, simple, blood, sky,
-moon, night, moon, darkgray, cbc, simula
+moon, night, moon, darkgray, cbc, simula, black, white, league
 
 deck.js: neon, sandstone.aurora, sandstone.dark, sandstone.mdn,
 sandstone.mightly, sandstone.firefox, sandstone.default,
@@ -2889,7 +2924,7 @@ def tablify(parts, format="html"):
 
             if format == 'html':
                 # typeset table in html
-                tbl = '\n<table border="0">\n'
+                tbl = '\n<table border="1">\n'
                 for row in table:
                     tbl += '<tr>\n'
                     for column, width in row:
@@ -3450,6 +3485,7 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 <link rel="stylesheet" href="reveal.js/css/%(main_style)s.css">
 <link rel="stylesheet" href="reveal.js/css/theme/%(theme)s.css" id="theme">
@@ -3467,14 +3503,21 @@ def generate_html5_slides(header, parts, footer, basename, filename,
 <link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
 <link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
 -->
 
 <!-- For syntax highlighting -->
 <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<!-- Printing and PDF exports -->
 <script>
-document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
 </script>
 
 <style type="text/css">
@@ -3521,7 +3564,7 @@ document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.l
 </div> <!-- class="reveal" -->
 
 <script src="reveal.js/lib/js/head.min.js"></script>
-<script src="reveal.js/js/reveal.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:

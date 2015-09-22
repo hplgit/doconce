@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/bash
 set -x
 
 function system {

@@ -7,7 +7,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: hpl
-:Date: Sep 10, 2015
+:Date: Sep 18, 2015
 
 .. !split
 
@@ -102,6 +102,7 @@ box, it is not a new paragraph):
 
 
 .. math::
+   :label: _auto1
          f(x) = \sin(x)e^{1-x}
 
 
