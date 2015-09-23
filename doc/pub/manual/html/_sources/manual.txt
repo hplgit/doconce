@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 22, 2015
+:Date: Sep 23, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -498,8 +498,8 @@ Appendix is supported too: just let the heading start with "Appendix: "
 This affects only ``latex`` output, where the appendix formatting
 is used - all other formats just leave the heading as it is written.
 
-Figures  (1)
-------------
+Figures          (1)
+--------------------
 
 .. Note: need extra blank after FIGURE and MOVIE in !bc environments
 
@@ -978,8 +978,8 @@ file.
 
 .. `<https://raw.githubusercontent.com/bokeh/bokeh/master/sphinx/source/docs/quickstart.rst>`_
 
-Movies  (1)
------------
+Movies          (1)
+-------------------
 
 .. index:: MOVIE keyword
 
@@ -5630,8 +5630,8 @@ to select the typesetting. With Mako we can write
             * ...
         % endif
 
-Admonitions  (1)
-----------------
+Admonitions          (1)
+------------------------
 
 .. index:: admonitions
 
@@ -6730,8 +6730,8 @@ Points to consider (just sketches...):
    A comment ``# Short title: title`` after a section is interpreted
    in ``latex`` and ``pdflatex`` output as a short title for the section.
 
-Overview  (1)
--------------
+Overview          (1)
+---------------------
 
 Slide Types
 ~~~~~~~~~~~
@@ -6987,8 +6987,8 @@ Potential Problems
 LaTeX Beamer Slides
 -------------------
 
-Themes  (1)
-~~~~~~~~~~~
+Themes          (1)
+~~~~~~~~~~~~~~~~~~~
 
 Four themes come with DocOnce: ``X_Y``, where ``X`` is ``blue`` or ``red``
 (the main color of the slides) and ``Y`` is `plain <http://hplgit.github.io/teamods/doconce/demo/demo_red_plain.pdf>`__
@@ -8883,8 +8883,8 @@ LaTeX
 
 
 
-Overview  (2)
--------------
+Overview          (2)
+---------------------
 
 Making a LaTeX file ``mydoc.tex`` from ``mydoc.do.txt`` can be done in two
 ways:
@@ -9467,8 +9467,8 @@ a variable will not lead to output like it does in a Python shell).
 To have an interactive session typeset with input and output in plain
 text, use the ``-t`` extension to the environment: ``pyshell-t`` and ``ipy-t``.
 
-Figures  (2)
-------------
+Figures          (2)
+--------------------
 
 As with HTML files, you need to ensure that the notebook has access to
 figures and source code as requested.
@@ -9483,8 +9483,8 @@ the ``--ipynb_figure=`` option, with the following values:
 
  * ``Image``: Python notebook cell with ``Image`` object
 
-Movies  (2)
------------
+Movies          (2)
+-------------------
 
 Typesetting of movies is specified by ``--ipynb_movie=``, and valid options
 are
@@ -9500,8 +9500,8 @@ are
  * ``ipynb``: use ``IPython.display.YouTubeVideo`` object for YouTube videos,
    and use an ``HTML`` object with ``video`` tag for local movies
 
-Admonitions  (2)
-----------------
+Admonitions          (2)
+------------------------
 
 Typesetting of admonition is rather primitive in notebooks.
 We offer these different choices, set by the
@@ -9766,8 +9766,8 @@ script which compiles the DocOnce document do it automatically.
 
 .. index:: Sphinx styles
 
-Themes  (2)
------------
+Themes          (2)
+-------------------
 
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
@@ -9821,8 +9821,13 @@ title of the DocOnce source file, and ``copyright`` is based on the
 author or copyright information in the source file. Other variables in
 ``myconf.py`` depending on title, author, and copyright information will
 also be edited. In this way, you can have your tailored ``conf.py``
-file, but be sure that it is always compatible with title, author, and
+file, and be sure that it is always compatible with title, author, and
 copyright information in the underlying DocOnce source.
+
+If a short title is desired, use the ``short_title=`` option as part
+of the ``doconce sphinx_dir`` command. This will propagate the short
+title to your tailored ``conf.py`` file regardless of what the short
+title in that file is.
 
 It is recommended to leave the variables ``latex_documents``, ``man_pages``,
 and ``texinfo_documents`` as empty lists: ``[]`` in a tailored ``conf.py`` file.
@@ -10186,6 +10191,14 @@ here for convenience.
         2: 0.5
         
         
+        --preprocess_include_subst
+        
+        Turns on variable substitutions in # #include paths when running Preprocess:
+            preprocess -i -DMYDIR=rn1
+        will lead to the string "MYDIR" being replaced by the value "rn1"
+        in # #include "..." statements.
+        
+        
         --syntax_check=...
         
         Values: on/off. Turns on/off fix of illegal constructions and the syntax check
@@ -10232,6 +10245,11 @@ here for convenience.
         Filenames of individual exercises in zip archive.
         logical: use the (first) logical filename specified by file=...
         number:  use either absolute exercise number or chapter.localnumber.
+        
+        
+        --toc_depth=...
+        
+        No of levels in the table of contents. Default: 2 (includes sections and subsections but not subsubsections).
         
         
         --encoding=...
@@ -10379,11 +10397,6 @@ here for convenience.
         This option is most relevant for Bootstrap styles to
         avoid white background in code blocks inside colorful admons.
         
-        
-        
-        --html_toc_depth=...
-        
-        No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections).
         
         
         --html_toc_indent=...
@@ -11142,6 +11155,11 @@ here for convenience.
         and insert new !split before all topmost sections. This is what
         makes sense in a Sphinx Table of Contents if one wants to split
         the document into multiple parts.
+        
+        
+        --sphinx_figure_captions=...
+        
+        Font style in figure captions: emphasize (default) or normal. If you use boldface or emphasize in the caption, the font style will be normal for that caption.
         
         
         --oneline_paragraphs

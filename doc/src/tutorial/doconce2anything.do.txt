@@ -1603,8 +1603,13 @@ title of the DocOnce source file, and `copyright` is based on the
 author or copyright information in the source file. Other variables in
 `myconf.py` depending on title, author, and copyright information will
 also be edited. In this way, you can have your tailored `conf.py`
-file, but be sure that it is always compatible with title, author, and
+file, and be sure that it is always compatible with title, author, and
 copyright information in the underlying DocOnce source.
+
+If a short title is desired, use the `short_title=` option as part
+of the `doconce sphinx_dir` command. This will propagate the short
+title to your tailored `conf.py` file regardless of what the short
+title in that file is.
 
 It is recommended to leave the variables `latex_documents`, `man_pages`,
 and `texinfo_documents` as empty lists: `[]` in a tailored `conf.py` file.

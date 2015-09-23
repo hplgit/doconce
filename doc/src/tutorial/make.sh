@@ -20,7 +20,7 @@ doconce replace XXX1 '(ref{myeq1})' tutorial.html
 
 # latex
 system doconce format latex tutorial --latex_font=helvetica --latex_code_style=pyg --no_mako
-doconce replace XXX1 '(ref{myeq1})' tutorial.p.tex
+doconce replace XXX1 '(ref{myeq1})' tutorial.tex
 latex -shell-escape tutorial.tex
 latex -shell-escape tutorial.tex
 dvipdf tutorial.dvi

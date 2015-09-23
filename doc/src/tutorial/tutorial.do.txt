@@ -500,12 +500,86 @@ syntax we refer to the `doc/manual/manual.do.txt` file
 in the DocOnce source and a "Sphinx version": "http://hplgit.github.io/doconce/doc/pub/manual/html/" of this document.
 
 
-## Example on including another DocOnce file (using preprocess):
+======= From DocOnce to Other Formats =======
+label{doconce2formats}
 
-# #include "doconce2anything.do.txt"
+We refer to the manual for detailed information on how to compile a DocOnce
+document to various formats. Here we just give a glimpse of the
+possibilities.
+
+===== Example: Making an HTML File =====
+
+Suppose you have some DocOnce text in `mydoc.do.txt`. Here is how you
+compile that document to an HTML file `mydoc.html`, which can be viewed
+in a web browser:
+
+!bc sys
+Terminal> doconce format html mydoc --html_style=bootswatch_journal
+!ec
+There are lots of styles for HTML files, and `bootswatch_journal` is
+a fancy one. There are also lots of other command-line options for
+tailoring the compilation. Run `doconce format --help` to see a list
+of all options. Those that start with `--html_` are specific for the
+HTML output format.
+
+===== Preprocessors =====
+
+A DocOnce compilation has three stages:
+
+ o The preprocessor Preprocess is applied to `mydoc.do.txt`, resulting in `tmp_preprocess__mydoc.do.txt`.
+ o The preprocessor Mako is applied to `tmp_preprocess__mydoc.do.txt`, resulting in `tmp_mako__mydoc.do.txt`.
+ o The text in `tmp_mako__mydoc.do.txt` is translated to the chosen output format.
+
+The preprocessor stages are only run if you have applied preprocessor
+syntax. The Preprocess program allows you to include other files
+(usually other DocOnce files) in your document (nested includes are
+possible). You can also have if-else branching based on variables set
+on the command line. The Mako preprocessor is (much) more advanced
+and features if-else tests, loops, variables, and function calls.
+You can, e.g., write Python functions in Mako to make quite intelligent
+output (e.g., copy computer code from a certain directory based on a
+variable that tells which computer language the document is to apply).
+The preprocessors are definitely one of the strongest features of
+DocOnce.
+
+===== Output Formats =====
+
+DocOnce can be translated to many formats. For documents with much
+mathematics and/or computer code the following formats are suitable:
+
+ * `latex`, `pdflatex`
+ * `html`
+ * `sphinx`
+ * `ipynb` (IPython/Jupyter notebooks)
+ * `matlabnb` (Matlab notebooks)
+
+Other formats are
+
+ * Wikis: `gwiki` (Googlecode), `cwiki` (Creole), `mwiki` (MediaWiki)
+ * `plain` (pure ascii)
+ * `pandoc` (various Markdown formats)
+
+===== Slides =====
+
+DocOnce has strong support for writing slides, see the
+"slides demo": "http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html"
+for examples. Each slide starts with
+a subsection heading (5 `=`), preceded by `!split` to indicate a
+new slide. Section headings are used to mark parts of the presentation.
+The slides are compiled as any other DocOnce file, but there is usually
+a second step where the text is modified to become a proper slide text
+in the chosen output format. We refer to the manual for details and
+the
+
+Several popular slide formats are supported:
+
+ * LaTeX Beamer
+ * HTML5: reveal.js, deck.js, CSSS
+ * Markdown: Remark
+ * Plain HTML
 
 
-===== Demos =====
+======= Demos =======
 
 The current text is generated from a DocOnce format stored in the file
 !bc
@@ -518,8 +592,11 @@ starting point.  Running `make.sh` and studying the various generated
 files and comparing them with the original `tutorial.do.txt` file,
 gives a quick introduction to how DocOnce is used in a real case.
 
-There is another demo in the `docs/manual` directory which
-translates the more comprehensive documentation, `manual.do.txt`, to
-various formats. The `make.sh` script runs a set of translations.
+A "short scientific report":
+"http://hplgit.github.io/teamods/writing_reports/index.html" demonstrates
+the vast choice of output formats and settings that are available.
+
+There is also a demo of different "slide formats":
+"http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html".
 
 # #include "../manual/install.do.txt"
