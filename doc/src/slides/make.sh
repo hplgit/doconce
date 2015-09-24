@@ -33,36 +33,36 @@ rawgit="--html_raw_github_url=raw.github"
 
 html=${name}-reveal
 system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
-system doconce slides_html $html reveal --html_slide_theme=darkgray
+system doconce slides_html $html reveal --html_slide_theme=darkgray --copyright=titlepage
 editfix $html.html
 # Crank up the font:
 #doconce replace 'pre style="' 'pre style="font-size: 120%; ' $html.html
 
 html=${name}-reveal-beige
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
-system doconce slides_html $html reveal --html_slide_theme=beige
+system doconce slides_html $html reveal --html_slide_theme=beige --copyright=titlepage
 editfix $html.html
 
 html=${name}-reveal-white
 system doconce format html $name --pygments_html_style=default --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
-system doconce slides_html $html reveal --html_slide_theme=simple
+system doconce slides_html $html reveal --html_slide_theme=simple --copyright=titlepage
 editfix $html.html
 
 html=${name}-deck
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $rawgit
-system doconce slides_html $html deck --html_slide_theme=sandstone.default
+system doconce slides_html $html deck --html_slide_theme=sandstone.default --copyright=everypage
 editfix $html.html
 
 # Plain HTML documents
 html=${name}-solarized
 system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $rawgit
 editfix $html.html
-system doconce split_html $html.html --nav_button=gray2,bottom --font_size=slides
+system doconce split_html $html.html --nav_button=gray2,bottom --font_size=slides --copyright=titlepage
 
 html=${name}-plain
 system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html $rawgit
 editfix $html.html
-system doconce split_html $html.html --nav_button=text
+system doconce split_html $html.html --nav_button=text --copyright=everypage
 
 # One big HTML file with space between the slides
 html=${name}-1

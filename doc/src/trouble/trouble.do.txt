@@ -1,5 +1,5 @@
 TITLE: DocOnce Troubleshooting and FAQ
-AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
+AUTHOR: Hans Petter Langtangen {copyright} at Center for Biomedical Computing, Simula Research Laboratory & Department of Informatics, University of Oslo
 DATE: today
 
 TOC: on
@@ -115,6 +115,17 @@ such an example at the end of the document
 Description of user-defined environments are found in
 the "DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments".
 
+===== Movies will not play in my broswer =====
+
+Are you using Safari as browser? It will not play Ogg and WebM movies.
+A message in a box should notify you about this (right below the movie
+player).
+
+===== Reveal slides look strange in the browser =====
+
+Are you using Safari as browser? reveal.js slides work best in
+Firefox, Chrome, or Opera.
+
 ===== How can I control the vertical spacing in slides? =====
 
 HTML5 and LaTeX slides control the spacings for you. However, sometimes
@@ -148,6 +159,20 @@ More vertical space is obtained by repeated use of `<linebreak>`:
 <linebreak>
 <linebreak>
 !ec
+
+===== How can I get a copyright on every slide page? =====
+
+HTML formats:
+Use the `--copyright=everypage` option in the `doconce split_html` or
+`doconce slides_html` commands.
+
+LaTeX Beamer: The copyright is inserted as a `\logo{}` specification, but
+this construction does not work in general. Then you cannot get the
+copyright on every page. The copyright is inserted as part of the
+date command so it is visible on the front page.
+
+Recall that `{copyright...}` specification(s) must be part of the `AUTHOR:`
+command in order to get any copyright notice at all.
 
 ===== How do I get ``Figure'' written in another language? =====
 label{latex:custom:fig:name}
