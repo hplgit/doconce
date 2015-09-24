@@ -91,6 +91,11 @@ def ipynb_figure(m):
         if label is not None:
             #text += '<a name="%s"></a>' % label
             text += '<div id="%s"></div>\n' % label
+        # Fix caption markup so it becomes html
+        from doconce import INLINE_TAGS_SUBST, INLINE_TAGS
+        for tag in 'bold', 'emphasize', 'verbatim':
+            caption = re.sub(INLINE_TAGS[tag], INLINE_TAGS_SUBST['html'][tag],
+                             caption, flags=re.MULTILINE)
         text += """
 <p>%s</p>
 <img src="%s" %s>

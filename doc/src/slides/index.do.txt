@@ -5,8 +5,9 @@ DATE: Today
 
 !bnotice Note:
 These slides are normally best viewed in Chrome in full screen mode.
-Some functionality in reveal works in Chrome and not in Firefox.
+Some functionality in reveal.js works in Chrome and not in Firefox.
 (You may need to reload some pages to get the mathematics correctly rendered.)
+The Safari browser is not recommended for reveal.js slides.
 !enotice
 
 All the slides below are generated from the same

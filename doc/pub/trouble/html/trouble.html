@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 10, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -189,6 +189,17 @@ such an example at the end of the document
 Description of user-defined environments are found in
 the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments">DocOnce manual</a>.</p>
 </div>
+<div class="section" id="movies-will-not-play-in-my-broswer">
+<h3>Movies will not play in my broswer<a class="headerlink" href="#movies-will-not-play-in-my-broswer" title="Permalink to this headline">¶</a></h3>
+<p>Are you using Safari as browser? It will not play Ogg and WebM movies.
+A message in a box should notify you about this (right below the movie
+player).</p>
+</div>
+<div class="section" id="reveal-slides-look-strange-in-the-browser">
+<h3>Reveal slides look strange in the browser<a class="headerlink" href="#reveal-slides-look-strange-in-the-browser" title="Permalink to this headline">¶</a></h3>
+<p>Are you using Safari as browser? reveal.js slides work best in
+Firefox, Chrome, or Opera.</p>
+</div>
 <div class="section" id="how-can-i-control-the-vertical-spacing-in-slides">
 <h3>How can I control the vertical spacing in slides?<a class="headerlink" href="#how-can-i-control-the-vertical-spacing-in-slides" title="Permalink to this headline">¶</a></h3>
 <p>HTML5 and LaTeX slides control the spacings for you. However, sometimes
@@ -219,6 +230,18 @@ otherwise it is a <code class="docutils literal"><span class="pre">\vspace{3mm}<
 &lt;linebreak&gt;
 </pre></div>
 </div>
+</div>
+<div class="section" id="how-can-i-get-a-copyright-on-every-slide-page">
+<h3>How can I get a copyright on every slide page?<a class="headerlink" href="#how-can-i-get-a-copyright-on-every-slide-page" title="Permalink to this headline">¶</a></h3>
+<p>HTML formats:
+Use the <code class="docutils literal"><span class="pre">--copyright=everypage</span></code> option in the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></code> or
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">slides_html</span></code> commands.</p>
+<p>LaTeX Beamer: The copyright is inserted as a <code class="docutils literal"><span class="pre">\logo{}</span></code> specification, but
+this construction does not work in general. Then you cannot get the
+copyright on every page. The copyright is inserted as part of the
+date command so it is visible on the front page.</p>
+<p>Recall that <code class="docutils literal"><span class="pre">{copyright...}</span></code> specification(s) must be part of the <code class="docutils literal"><span class="pre">AUTHOR:</span></code>
+command in order to get any copyright notice at all.</p>
 </div>
 <div class="section" id="how-do-i-get-figure-written-in-another-language">
 <span id="latex-custom-fig-name"></span><h3>How do I get &#8220;Figure&#8221; written in another language?<a class="headerlink" href="#how-do-i-get-figure-written-in-another-language" title="Permalink to this headline">¶</a></h3>
@@ -672,6 +695,29 @@ where we do all necessary adjustments mentioned above:</p>
 <p>An error message is provided.</p>
 </div>
 </div>
+<div class="section" id="lists-look-wrong">
+<h3>Lists look wrong<a class="headerlink" href="#lists-look-wrong" title="Permalink to this headline">¶</a></h3>
+<p>It is very important to be accurate with white space in lists.
+There must be exactly <em>one blank</em> between the <code class="docutils literal"><span class="pre">o</span></code> or <code class="docutils literal"><span class="pre">*</span></code> that
+starts an item and the following text, and multiple lines in an
+item must be perfectly aligned. Here are some typical errors:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>o a rectangular pulse
+o  a Gaussian pulse
+o one period of a cosine pulse
+o half a period of
+ a cosine pulse
+</pre></div>
+</div>
+<p>Problem: <code class="docutils literal"><span class="pre">a</span> <span class="pre">Gaussian</span> <span class="pre">pulse</span></code> is not properly aligned, <code class="docutils literal"><span class="pre">a</span> <span class="pre">cosine</span> <span class="pre">pulse</span></code> on
+the last line is not properly aligned. The correct formatting is</p>
+<div class="highlight-doconce"><div class="highlight"><pre>o a rectangular pulse
+o a Gaussian pulse
+o one period of a cosine pulse
+o half a period of
+  a cosine pulse
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="preprocess-mako">
 <h2>Preprocess/Mako<a class="headerlink" href="#preprocess-mako" title="Permalink to this headline">¶</a></h2>
@@ -847,15 +893,28 @@ the block (this is important for reST and similar
 block also as a comment. It is important that there is normal
 running text right before <code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!bc</span></code> environments.</p>
 </div>
-<div class="section" id="verbatim-code-blocks-inside-lists-look-ugly">
-<h3>Verbatim code blocks inside lists look ugly<a class="headerlink" href="#verbatim-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h3>
-<p>Read the Section <em>Blocks of Verbatim Computer Code</em> in
-the DocOnce manual.  Start the
-<code class="docutils literal"><span class="pre">!bc</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code> tags in column 1 of the file, and be careful with
-indenting the surrounding plain text of the list item correctly. If
-you cannot resolve the problem this way, get rid of the list and use
-paragraph headings instead. In fact, that is what is recommended:
-avoid verbatim code blocks inside lists (it makes life easier).</p>
+<div class="section" id="verbatim-code-blocks-figures-and-admons-inside-lists-look-ugly">
+<h3>Verbatim code blocks, figures and admons inside lists look ugly<a class="headerlink" href="#verbatim-code-blocks-figures-and-admons-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h3>
+<p>Avoid verbatim code blocks, figures, and admons
+inside lists (it makes life easier!).
+Instead, use paragraph headings, say</p>
+<p><strong>Step 1.</strong>
+Describe step. Add figure, code block, admon, etc.</p>
+<p><strong>Step 2.</strong>
+Describe next step.</p>
+<p>If you miss the automatic numbering of items in enumerated lists, you
+can simulate that with a Mako variable:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;% counter = 0 %&gt;
+
+&lt;% counter += 1 %&gt;
+<span class="gu">__Step ${counter}.__</span>
+Describe step. Add figure, code block, admon, etc.
+
+&lt;% counter += 1 %&gt;
+<span class="gu">__Step ${counter}.__</span>
+Describe next step.
+</pre></div>
+</div>
 </div>
 <div class="section" id="latex-code-blocks-inside-lists-look-ugly">
 <h3>LaTeX code blocks inside lists look ugly<a class="headerlink" href="#latex-code-blocks-inside-lists-look-ugly" title="Permalink to this headline">¶</a></h3>
@@ -1529,7 +1588,10 @@ clickable.</p>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
 <li><a class="reference internal" href="#how-can-i-make-use-of-a-native-latex-environments-example-environment-for-instance">How can I make use of a native LaTeX environments (example environment for instance)?</a></li>
 <li><a class="reference internal" href="#how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers">How can I create a more tailored code environment in LaTeX than what DocOnce offers?</a></li>
+<li><a class="reference internal" href="#movies-will-not-play-in-my-broswer">Movies will not play in my broswer</a></li>
+<li><a class="reference internal" href="#reveal-slides-look-strange-in-the-browser">Reveal slides look strange in the browser</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
+<li><a class="reference internal" href="#how-can-i-get-a-copyright-on-every-slide-page">How can I get a copyright on every slide page?</a></li>
 <li><a class="reference internal" href="#how-do-i-get-figure-written-in-another-language">How do I get &#8220;Figure&#8221; written in another language?</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-mistakes-that-i-cannot-find">Spellcheck reports mistakes that I cannot find</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
@@ -1565,6 +1627,7 @@ clickable.</p>
 <li><a class="reference internal" href="#other-formats">Other formats</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#lists-look-wrong">Lists look wrong</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako">Preprocess/Mako</a><ul>
@@ -1584,7 +1647,7 @@ clickable.</p>
 <li><a class="reference internal" href="#strange-errors-around-code-or-tex-blocks-in-rest">Strange errors around code or TeX blocks in reST</a></li>
 <li><a class="reference internal" href="#something-is-wrong-with-a-verbatim-code-block">Something is wrong with a verbatim code block</a></li>
 <li><a class="reference internal" href="#code-tex-block-is-not-shown-in-rest-format">Code/TeX block is not shown in reST format</a></li>
-<li><a class="reference internal" href="#verbatim-code-blocks-inside-lists-look-ugly">Verbatim code blocks inside lists look ugly</a></li>
+<li><a class="reference internal" href="#verbatim-code-blocks-figures-and-admons-inside-lists-look-ugly">Verbatim code blocks, figures and admons inside lists look ugly</a></li>
 <li><a class="reference internal" href="#latex-code-blocks-inside-lists-look-ugly">LaTeX code blocks inside lists look ugly</a></li>
 <li><a class="reference internal" href="#latex-code-appears-prior-to-paragraph-headings">LaTeX code appears prior to paragraph headings</a></li>
 <li><a class="reference internal" href="#numbered-equations-in-exercise-solutions-change-the-equation-numbers-in-the-text">Numbered equations in exercise solutions change the equation numbers in the text...</a></li>

@@ -1709,6 +1709,7 @@ def latex_date(m):
         text += r"""
 \date{%(date)s
 %% <optional titlepage figure>
+%% <optional copyright>
 }
 """ % vars()
     elif title_layout == 'titlepage':

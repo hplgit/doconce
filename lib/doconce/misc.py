@@ -206,6 +206,7 @@ none, off: no rules
 top: rule at top (default)
 bottom: rule at bottom
 top+bottom: rule at top and bottom"""),
+    ('--html_copyright=', 'Controls where to put copyright statements.\neverypage: in the footer of every page\ntitlepages or titlepage: in the footer of the titlepage only.'),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--number_all_equations',
@@ -2547,7 +2548,7 @@ def html_colorbullets():
             linel = line.lower()
             if '<ul>' in linel:
                 level += 1
-                line = '<p><table border="1">\n'
+                line = '<p><table border="0">\n'
             if '</ul>' in linel:
                 line = '</td></tr></table>\n'
                 level -= 1
@@ -2565,7 +2566,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides'
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides' --copyright=everypage|titlepage
 
 --method=split|space8|hrule|colorline specifies pagebreak
 physical split with a new page (--method=split) or
@@ -2599,6 +2600,11 @@ The reference appears at the top of every page in small font.
 
 Example:
 --reference="This text is taken from Appendix H.2 in the book <em>A Primer on Scientific Programming with Python</em> by H. P. Langtangen, 4th edition, Springer, 2014."
+
+--copyright=everypage gives a copyright notice in the footer of
+every page (if {copyright...} is specified as part of AUTHOR commands).
+With --copyright=titlepage (default), the copyright only appears on
+the title page only.
 """
 
 def split_html():
@@ -2682,7 +2688,7 @@ h2 {font-size: 180%;}
 
 def _usage_slides_html():
     print """
-Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name --font_size=slides
+Usage: doconce slides_html mydoc.html slide_type --html_slide_theme=themename --html_footer_logo=name --nav_button=name --font_size=slides --copyright=everypage|titlepage
 
 slide_type: reveal deck csss dzslides
 note: reveal and deck slide styles are doconce variants, different from the
@@ -2693,12 +2699,12 @@ alternative:  doconce slides_html mydoc.html all  (generate all types of slides)
 
 themename is the reveal or deck theme:
 
-reveal.js: beige, beigesmall, solarized, serif, simple, blood, sky,
-moon, night, moon, darkgray, cbc, simula, black, white, league
+  reveal.js: beige, beigesmall, solarized, serif, simple, blood, sky,
+  moon, night, moon, darkgray, cbc, simula, black, white, league
 
-deck.js: neon, sandstone.aurora, sandstone.dark, sandstone.mdn,
-sandstone.mightly, sandstone.firefox, sandstone.default,
-sandstone.light, beamer, mnml, swiss, web-2.0, cbc
+  deck.js: neon, sandstone.aurora, sandstone.dark, sandstone.mdn,
+  sandstone.mightly, sandstone.firefox, sandstone.default,
+  sandstone.light, beamer, mnml, swiss, web-2.0, cbc
 
 (The generated HTML file contains a comment with link tags for the
 the various stylesheets for the various available themes.)
@@ -2725,6 +2731,11 @@ bottom (default) or top+bottom.
 
 --pagination means that one can click on page numbers if a bootstrap
 theme is used in the document.
+
+--copyright=everypage gives a copyright notice in the footer of
+every page (if {copyright...} is specified as part of AUTHOR commands).
+With --copyright=titlepage (default), the copyright only appears on
+the title page only.
 
 Note: if slide_tp is doconce, the doconce split_html command is
 more versatile than slides_html since it allows the --method
@@ -2925,7 +2936,7 @@ def tablify(parts, format="html"):
 
             if format == 'html':
                 # typeset table in html
-                tbl = '\n<table border="1">\n'
+                tbl = '\n<table border="0">\n'
                 for row in table:
                     tbl += '<tr>\n'
                     for column, width in row:
@@ -3018,6 +3029,10 @@ def get_header_parts_footer(filename, format='html'):
 
 def doconce_split_html(header, parts, footer, basename, filename, slides=False):
     """Native doconce style splitting of HTML file into parts."""
+    html_copyright_placement = misc_option('copyright', 'titlepage')
+    if html_copyright_placement == 'titlepages':
+        html_copyright_placement = 'titlepage'
+
     import html
     header_str = '\n'.join(header)
 
@@ -3371,6 +3386,12 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
         # Main body of text
         lines += part
 
+        if html_copyright_placement == 'titlepage' and pn > 0:
+            # Remove the copyright from the footer
+            for i in range(len(footer)):
+                if '<!-- copyright -->' in footer[i]:
+                    footer[i] = re.sub(r'<!-- copyright --> &copy;.+', '<!-- copyright only on the titlepage -->', footer[i])
+
         # Navigation in the bottom of the page
         lines.append('<p>\n')
         if bootstrap:
@@ -3477,6 +3498,9 @@ def generate_html5_slides(header, parts, footer, basename, filename,
         copyright_ = m.group().strip()
     else:
         copyright_ = ''
+    html_copyright_placement = misc_option('copyright', 'titlepage')
+    if html_copyright_placement == 'titlepages':
+        html_copyright_placement = 'titlepage'
 
     slide_syntax = dict(
         reveal=dict(
@@ -5005,6 +5029,9 @@ td.padding {
         part = re.sub(r'</ul>(?!\s*</div>)', r'</ul>\n<p>', part)
         part = re.sub(r'</ol>(?!\s*</div>)', r'</ol>\n<p>', part)
 
+        if html_copyright_placement == 'titlepage' and part_no > 0:
+            copyright_ = ''
+
         slides += """
 %s
 %s
@@ -5286,12 +5313,14 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
     header = ''.join(header)
 
     # Copyright? Use \logo{} to represent it
+    # (It does not seem to work - we must insert it in the date too)
     pattern = r'\\footnotesize\\copyright\\ (.+)\}\}'
     m = re.search(pattern, header)
     if m:
-        copyright_ = r'\logo{%s}' % m.group(1).strip()
+        copyright_text = r'{\tiny\copyright\ ' + m.group(1).strip() + '}'
+        copyright_ = r'\logo{%s}' % copyright_text
     else:
-        copyright_ = ''
+        copyright_text = copyright_ = ''
 
     theme = misc_option('beamer_slide_theme=', default='default')
     if theme != 'default':
@@ -5663,6 +5692,9 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
                 part = part.replace('% <optional titlepage figure>', r'\\ \ \\ ' + '\n' + titlepage_figure)
                 # Remove original titlepage figure
                 part = re.sub(r'% inline figure\n\\centerline.+', '', part)
+            if copyright_text:
+                part = part.replace('% <optional copyright>', r'\ \\ ' + '\n' + copyright_text)
+
             slides += r"""
 %(part)s
 

@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 10, 2015
+:Date: Sep 24, 2015
 
 
 .. admonition:: Disclaimer
@@ -136,6 +136,19 @@ such an example at the end of the document
 Description of user-defined environments are found in
 the `DocOnce manual <http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments>`__.
 
+Movies will not play in my broswer
+----------------------------------
+
+Are you using Safari as browser? It will not play Ogg and WebM movies.
+A message in a box should notify you about this (right below the movie
+player).
+
+Reveal slides look strange in the browser
+-----------------------------------------
+
+Are you using Safari as browser? reveal.js slides work best in
+Firefox, Chrome, or Opera.
+
 How can I control the vertical spacing in slides?
 -------------------------------------------------
 
@@ -176,6 +189,21 @@ More vertical space is obtained by repeated use of ``<linebreak>``:
         <linebreak>
         <linebreak>
         <linebreak>
+
+How can I get a copyright on every slide page?
+----------------------------------------------
+
+HTML formats:
+Use the ``--copyright=everypage`` option in the ``doconce split_html`` or
+``doconce slides_html`` commands.
+
+LaTeX Beamer: The copyright is inserted as a ``\logo{}`` specification, but
+this construction does not work in general. Then you cannot get the
+copyright on every page. The copyright is inserted as part of the
+date command so it is visible on the front page.
+
+Recall that ``{copyright...}`` specification(s) must be part of the ``AUTHOR:``
+command in order to get any copyright notice at all.
 
 .. _latex:custom:fig:name:
 
@@ -719,6 +747,33 @@ Other formats
 
 An error message is provided.
 
+Lists look wrong
+----------------
+
+It is very important to be accurate with white space in lists.
+There must be exactly *one blank* between the ``o`` or ``*`` that
+starts an item and the following text, and multiple lines in an
+item must be perfectly aligned. Here are some typical errors:
+
+.. code-block:: doconce
+
+         o a rectangular pulse
+         o  a Gaussian pulse
+         o one period of a cosine pulse
+         o half a period of
+          a cosine pulse
+
+Problem: ``a Gaussian pulse`` is not properly aligned, ``a cosine pulse`` on
+the last line is not properly aligned. The correct formatting is
+
+.. code-block:: doconce
+
+         o a rectangular pulse
+         o a Gaussian pulse
+         o one period of a cosine pulse
+         o half a period of
+           a cosine pulse
+
 .. !split
 
 Preprocess/Mako
@@ -919,16 +974,33 @@ A comment right before a code or tex block will treat the whole
 block also as a comment. It is important that there is normal
 running text right before ``!bt`` and ``!bc`` environments.
 
-Verbatim code blocks inside lists look ugly
--------------------------------------------
+Verbatim code blocks, figures and admons inside lists look ugly
+---------------------------------------------------------------
 
-Read the Section *Blocks of Verbatim Computer Code* in
-the DocOnce manual.  Start the
-``!bc`` and ``!ec`` tags in column 1 of the file, and be careful with
-indenting the surrounding plain text of the list item correctly. If
-you cannot resolve the problem this way, get rid of the list and use
-paragraph headings instead. In fact, that is what is recommended:
-avoid verbatim code blocks inside lists (it makes life easier).
+Avoid verbatim code blocks, figures, and admons
+inside lists (it makes life easier!).
+Instead, use paragraph headings, say
+
+**Step 1.**
+Describe step. Add figure, code block, admon, etc.
+
+**Step 2.**
+Describe next step.
+
+If you miss the automatic numbering of items in enumerated lists, you
+can simulate that with a Mako variable:
+
+.. code-block:: doconce
+
+        <% counter = 0 %>
+        
+        <% counter += 1 %>
+        __Step ${counter}.__
+        Describe step. Add figure, code block, admon, etc.
+        
+        <% counter += 1 %>
+        __Step ${counter}.__
+        Describe next step.
 
 LaTeX code blocks inside lists look ugly
 ----------------------------------------
