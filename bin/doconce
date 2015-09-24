@@ -427,18 +427,22 @@ EOF
         # Check if title, author, or copyright are given
         with open('conf.py', 'r') as f:
             conf_text = f.read()
+
         pattern = r'latex_documents = \[.*?\]'
         replacement = r"latex_documents = [('index', 'doc.tex', project, u'%s',  'manual'),]" % author
         conf_text = re.sub(pattern, replacement, conf_text,
                            flags=re.DOTALL)
+
         pattern = r'man_pages = \[.*?^# '
         replacement = r"man_pages = [('index', 'doc', project, [u'%s'], 1),]\n\n# " % author
         conf_text = re.sub(pattern, replacement, conf_text,
                            flags=re.DOTALL|re.MULTILINE)
+
         pattern = r'texinfo_documents = \[.*?\]'
         replacement = r"texinfo_documents = [('index', 'doc', project, u'%s', 'doc', 'One line description of project.', 'Miscellaneous'),]" % author
         conf_text = re.sub(pattern, replacement, conf_text,
                            flags=re.DOTALL)
+
         pattern = r'''project *= *u?['"](.*?)['"]'''
         m = re.search(pattern, conf_text)
         if m:
@@ -448,6 +452,21 @@ EOF
                                    conf_text)
                 conf_text = re.sub(r'html_title.+', "html_title = project", conf_text)
                 conf_text = re.sub(r'epub_title.+', "epub_title = project", conf_text)
+        # Propagate short_title
+        pattern1 = r'''#?html_short_title *= *u?['"](.*?)['"]'''
+        m = re.search(pattern1, conf_text)
+        if m:
+            if m.group(1).strip() == '':
+                pattern = r'#?html_short_title *=.+'
+                replacement = r"html_short_title = u'%s'" % short_title
+                conf_text = re.sub(pattern, replacement, conf_text)
+        pattern2 = r'''#?html_short_title *= *None'''
+        m = re.search(pattern2, conf_text)
+        if m:
+            pattern = r'#?html_short_title *=.+'
+            replacement = r"html_short_title = u'%s'" % short_title
+            conf_text = re.sub(pattern, replacement, conf_text)
+
         pattern = r'''copyright *= *u?['"](.*?)['"]'''
         m = re.search(pattern, conf_text)
         if m:

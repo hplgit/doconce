@@ -502,7 +502,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Sep 22, 2015</h4></center> <!-- date -->
+<center><h4>Sep 23, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -10619,8 +10619,14 @@ title of the DocOnce source file, and <code>copyright</code> is based on the
 author or copyright information in the source file. Other variables in
 <code>myconf.py</code> depending on title, author, and copyright information will
 also be edited. In this way, you can have your tailored <code>conf.py</code>
-file, but be sure that it is always compatible with title, author, and
+file, and be sure that it is always compatible with title, author, and
 copyright information in the underlying DocOnce source.
+
+<p>
+If a short title is desired, use the <code>short_title=</code> option as part
+of the <code>doconce sphinx_dir</code> command. This will propagate the short
+title to your tailored <code>conf.py</code> file regardless of what the short
+title in that file is.
 
 <p>
 It is recommended to leave the variables <code>latex_documents</code>, <code>man_pages</code>,
@@ -10967,6 +10973,14 @@ Write progress of intermediate steps if they take longer than X seconds.
 2: 0.5
 
 
+--preprocess_include_subst
+
+Turns on variable substitutions in # #include paths when running Preprocess:
+    preprocess -i -DMYDIR=rn1
+will lead to the string &quot;MYDIR&quot; being replaced by the value &quot;rn1&quot;
+in # #include &quot;...&quot; statements.
+
+
 --syntax_check=...
 
 Values: on/off. Turns on/off fix of illegal constructions and the syntax check
@@ -11013,6 +11027,11 @@ Place each exercises as an individual DocOnce file in a zip archive.
 Filenames of individual exercises in zip archive.
 logical: use the (first) logical filename specified by file=...
 number:  use either absolute exercise number or chapter.localnumber.
+
+
+--toc_depth=...
+
+No of levels in the table of contents. Default: 2 (includes sections and subsections but not subsubsections).
 
 
 --encoding=...
@@ -11160,11 +11179,6 @@ Default: on (use the css-specified typesetting of &lt;pre&gt; tags).
 This option is most relevant for Bootstrap styles to
 avoid white background in code blocks inside colorful admons.
 
-
-
---html_toc_depth=...
-
-No of levels in the table of contents in HTML output. Default: 2 (includes subsections but not subsubsections).
 
 
 --html_toc_indent=...
@@ -11923,6 +11937,11 @@ Respect user&#39;s !split commands. Default: Override user&#39;s !split
 and insert new !split before all topmost sections. This is what
 makes sense in a Sphinx Table of Contents if one wants to split
 the document into multiple parts.
+
+
+--sphinx_figure_captions=...
+
+Font style in figure captions: emphasize (default) or normal. If you use boldface or emphasize in the caption, the font style will be normal for that caption.
 
 
 --oneline_paragraphs
