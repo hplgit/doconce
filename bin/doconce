@@ -185,7 +185,7 @@ def sphinx_dir():
 
     # Get user's info
     for arg in sys.argv[1:]:
-        if arg.startswith('short-title='):
+        if arg.startswith('short_title='):
             short_title = arg.split('=')[1]
         elif arg.startswith('version='):
             version = arg.split('=')[1]
