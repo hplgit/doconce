@@ -132,12 +132,17 @@ See bundled/sphinx_themes/install.txt for how to install extra
 themes.
 
 A custom theme can also be specified by giving a "_themes-like"
-directory: theme_dir=dirname. Alternatively, one can use a standard
-theme, but provide one's own tailored conf.py file through the
-conf.py=filename option. If the file (filename) has empty strings
-for the project and copyright, those values as well as the variables
-depending on these values will get content based on the title,
-author, and copyright from the DocOnce source file mydoc.do.txt.
+directory: theme_dir=dirname, where dirname can be any path
+(DocOnce will copy this directory to the sphinx root directory).
+Note that this must be the *theme directory* with files like
+layout.html and theme.conf (not the entire Python package for
+a theme.)
+Alternatively, one can use a standard theme, but provide one's
+own tailored conf.py file through the conf.py=filename option.
+If the file (filename) has empty strings for the project and
+copyright, those values as well as the variables depending on
+these values will get content based on the title, author, and
+copyright from the DocOnce source file mydoc.do.txt.
 (It is recommended to leave project and copyright as empty strings,
 and latex_documents, texinfo_documents, and man_pages as empty lists.)
 
@@ -185,7 +190,7 @@ def sphinx_dir():
 
     # Get user's info
     for arg in sys.argv[1:]:
-        if arg.startswith('short-title='):
+        if arg.startswith('short_title='):
             short_title = arg.split('=')[1]
         elif arg.startswith('version='):
             version = arg.split('=')[1]
@@ -232,7 +237,9 @@ def sphinx_dir():
 
     if len(doconce_files) > 1:
         print 'can only specify one main doconce file'
+        print '(here you have specified %s)' % ', '.join(doconce_files)
         sys.exit(1)
+
     filename = doconce_files[0]
     if filename.endswith('do.txt'):
         filename = filename[:-7]
@@ -452,20 +459,12 @@ EOF
                                    conf_text)
                 conf_text = re.sub(r'html_title.+', "html_title = project", conf_text)
                 conf_text = re.sub(r'epub_title.+', "epub_title = project", conf_text)
-        # Propagate short_title
-        pattern1 = r'''#?html_short_title *= *u?['"](.*?)['"]'''
-        m = re.search(pattern1, conf_text)
-        if m:
-            if m.group(1).strip() == '':
-                pattern = r'#?html_short_title *=.+'
-                replacement = r"html_short_title = u'%s'" % short_title
-                conf_text = re.sub(pattern, replacement, conf_text)
-        pattern2 = r'''#?html_short_title *= *None'''
-        m = re.search(pattern2, conf_text)
-        if m:
-            pattern = r'#?html_short_title *=.+'
-            replacement = r"html_short_title = u'%s'" % short_title
-            conf_text = re.sub(pattern, replacement, conf_text)
+        pattern = '''^short_title *= *project'''
+        m = re.search(pattern, conf_text, flags=re.MULTILINE)
+        if short_title != title and m:
+            # Update short_title
+            conf_text = re.sub(pattern, "short_title = u'%s'" % short_title,
+                               conf_text, flags=re.MULTILINE)
 
         pattern = r'''copyright *= *u?['"](.*?)['"]'''
         m = re.search(pattern, conf_text)
@@ -782,6 +781,28 @@ def make_conf_py(themes, theme, title, short_title, copyright_,
     text = re.sub(r"copyright = u'(\d\d\d\d),.+",
                   r"copyright = u'%s'" % copyright_, text)
 
+    # Propagate short_title
+    pattern1 = '^short_title *='
+    m = re.search(pattern1, text, flags=re.MULTILINE)
+    if not m:
+        # No short_title found, insert short_title after project
+        pattern2 = r'(project *=.+)'
+        if short_title == title:
+            text = re.sub(pattern2, "\g<1>\nshort_title = project", text)
+        else:
+            text = re.sub(pattern2, "\g<1>\nshort_title = u'%s'" % short_title, text)
+    else:
+        if short_title != title:
+            # User has given a short_title, must update short_title =
+            text = re.sub(pattern1, "short_title = u'%s'" % short_title, text, flags=re.MULTILINE)
+
+    pattern = r'#?html_short_title *=.+'
+    text = re.sub(pattern, 'html_short_title = short_title', text)
+    # html_title defaults to "<project> v<release> documentation",
+    # let it just be the title
+    text = re.sub('#html_title =.+', 'html_title = project', text)
+
+
     themes_list = ["html_theme = '%s'" % theme] + \
                   ["#html_theme = '%s'" % t for t in sorted(themes)]
     themes_code = r"""
@@ -1073,6 +1094,8 @@ elif html_theme == 'basicstrap':
 elif html_theme == 'bootstrap':
     # Doc: https://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html#customization
     html_theme_options = {
+        'navbar_title': short_title,
+
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
         'globaltoc_depth': 2,
@@ -1141,10 +1164,6 @@ if html_theme == 'impressjs':
     html_use_index = False
 """, text)
 
-    text = text.replace('#html_title = None',
-                        'html_title = u"%s"' % title)
-    text = text.replace('#short_html_title = None',
-                        'html_short_title = u"%s"' % short_title)
     if logo is not None:
         # Must copy logo file
         logo_basename = os.path.basename(logo)
