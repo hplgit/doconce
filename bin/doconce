@@ -239,6 +239,7 @@ def sphinx_dir():
         print 'can only specify one main doconce file'
         print '(here you have specified %s)' % ', '.join(doconce_files)
         sys.exit(1)
+
     filename = doconce_files[0]
     if filename.endswith('do.txt'):
         filename = filename[:-7]
