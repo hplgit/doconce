@@ -1,26 +1,7 @@
-* Check out typesetting of horizontal-rule in wiki formats
 * Nikola for publication of multi-format doconce documents
   (say for a course), with optional blog comments.
   URL: "http://getnikola.com/handbook.html".
-  Possible to allow for MathJax and pretty code in blog parts?
-* "MultiMarkdown": "http://fletcher.github.io/MultiMarkdown-4/MMD_Users_Guide.pdf" can relatively easily be supported as part of pandoc; see also this "guide": "http://bywordapp.com/markdown/guide.html"
-* Change pandoc to markdown and make strict markdown output unless --pandoc or --multimarkdown flags are given, provide an error message for doconce format pandoc
-* Collapsing regions in HTML (e.g., solutions in exercises):
-  Use Bootstrap theme and see "example": "http://jsfiddle.net/Sherbrow/68RXP/".
-  Could also be !bexpand-!eexpand (not !bcollapse since it interferes with !bc)
-* Consistency check in doconce.py: no environment name can be part of another environment name
-for envir1 in envirs:
-    for envir2 in envirs:
-        if envir1 != envir2 and envir1.startswith(envir2):
-            print '*** BUG in doconce: envir "%s" cannot start with the text of envir "%s"' % (envir1, envir2)
-
-* `--html_style=Bootstrap`: use inline/default template.
-  also allow for !bsidebar-!esidebar, which
-  works in HTML only, otherwise typeset as paragraph with optional heading,
-  and creates something on the side.
-  Could have toc in as a pulldown navigation item in the top bar.
-  Use bootstrap as template, can have many, and if they don't need edit,
-  they can be bundled as admon figs.
+  Allow for MathJax and pretty code in blog parts?
 * Finish translation to XML
 
 ===== From Google Doc to Doconce =====
@@ -32,9 +13,7 @@ pandoc to go to latex. Then one needs adjustments:
  * Remove tildes.
  * One-liners are probably h3 headlines.
 
-Maybe pandoc for going from html to markdown is a better option - yes!
-Will also need to remove all the footnotes arising from internal notes.
-
+Maybe pandoc for going from html to markdown is a better option.
 Going from docx, rtf, odt via pandoc did not work.
 
 ===== From Doconce to Google Doc =====

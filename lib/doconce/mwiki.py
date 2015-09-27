@@ -381,6 +381,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text><br />',
         'non-breaking-space': '&nbsp;',
+        'horizontal-rule': '----',
         'ampersand2':    r' \g<1>&\g<2>',
         }
 

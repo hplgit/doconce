@@ -660,8 +660,23 @@ or (equivalent)
 Terminal> doconce format markdown mydoc
 !ec
 
-The name of the output file is `mydoc.md`.
-From this format one can go to numerous other formats:
+!bwarning Test on `FORMAT == 'pandoc'` for Markdown!
+Note that even though it works to write `doconce format markdown`,
+the `FORMAT` variable that is defined in all DocOnce documents has
+the value `pandoc` for all the Markdown formats. A test like
+`FORMAT == 'markdown'` will not work!
+!ewarning
+
+The name of the output file is `mydoc.md`. There are four supported
+dialects of Markdown (see sections below for more information):
+
+ * Pandoc-extended Markdown
+ * GitHub-flavored Markdown
+ * MultiMarkdown
+ * Strict Markdown
+
+From the Markdown format one can go to numerous other formats using
+the `pandoc` program:
 
 !bc sys
 Terminal> pandoc -R -t mediawiki -o mydoc.mwk --toc mydoc.md

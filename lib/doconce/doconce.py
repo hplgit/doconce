@@ -355,6 +355,16 @@ def fix(filestr, format, verbose=0):
 def syntax_check(filestr, format):
     """Check for common errors in the doconce syntax."""
 
+    # Consistency of implemented environments
+    user_defined_envirs = list(set(re.findall(r'^!b(u-[^ ]+)', filestr, flags=re.MULTILINE)))
+    envirs = doconce_envirs() + user_defined_envirs
+    for envir1 in envirs:
+        for envir2 in envirs:
+            if envir1 != envir2 and envir1.startswith(envir2):
+                print '*** BUG in doconce: environment ![be]%s cannot start with the text of environment ![be]%s' % (envir1, envir2)
+                _abort()
+    # Could add users !bu-X environments too
+
     # URLs with just one /
     m = re.findall(r'https?:/[A-Za-z].+', filestr)
     if m:
