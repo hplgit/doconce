@@ -321,6 +321,7 @@ def fix(filestr, format, verbose=0):
                     print '\n*** warning: found multi-line caption for %s\n\n%s\n    fix: collected this text to one single line (right?)' % (fig[1], caption)
 
     # edit markup: add space after add: and del: for .,;?
+    # (should consider using https://github.com/CriticMarkup/CriticMarkup-toolkit instead!)
     pattern = r'\[(add|del):([.,;])\]'
     filestr, n = re.subn(pattern, r'[\g<1>: \g<2>]', filestr)
     num_fixes += n

@@ -2288,6 +2288,9 @@ def latex_inline_comment(m):
     comment = m.group('comment').strip()
 
     """
+    2015: Should use CriticMarkup instead?
+    https://github.com/CriticMarkup/CriticMarkup-toolkit
+
     Can use soul package to support corrections as part of comments:
     http://texdoc.net/texmf-dist/doc/latex/soul/soul.pdf
 
