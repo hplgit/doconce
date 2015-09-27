@@ -1644,6 +1644,13 @@ color boxes.
 idx{track changes}
 idx{inline comments for editing}
 
+!bnotice
+The inline editing syntax in DocOnce was implemented before the invention
+of "CriticMarkup": "https://github.com/CriticMarkup/CriticMarkup-toolkit".
+Now it would make sense to use the CriticMarkup syntax and associated
+tools. (DocOnce needs proper rendering of CriticMarkup
+!enotice
+
 Inline comments can also be used to markup editing of the text.
 The following syntax is supported:
 
