@@ -4419,6 +4419,7 @@ preprocess package (sudo apt-get install preprocess).
             if failure:
                 print 'Could not run preprocessor:\n%s' % cmd
                 print outtext
+                print 'return code from preprocess:', failure
                 _abort()
             # Make filestr the result of preprocess in case mako shall be run
             f = open(resultfile, 'r'); filestr = f.read(); f.close()
