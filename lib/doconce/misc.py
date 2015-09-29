@@ -1,4 +1,4 @@
-import os, sys, shutil, re, glob, time, commands
+import os, sys, shutil, re, glob, time, subprocess
 
 _part_filename = '._%s%03d'
 _part_filename_wildcard = '._*[0-9][0-9][0-9]'
@@ -1701,7 +1701,13 @@ def copy_latex_packages(packages):
         stem, ext = os.path.splitext(style)
         if ext == '':
             style += '.sty'
-        failure, output = commands.getstatusoutput('kpsewhich %s' % style)
+        cmd = 'kpsewhich %s' % style
+        output = ''
+        try:
+            output = subprocess.check_output(cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            pass
         if output == '':
             missing_files.append(style)
     if missing_files:
@@ -2053,8 +2059,11 @@ download preprocess from http://code.google.com/p/preprocess""")
 
 
     if 'minted' in packages:
-        failure, output = commands.getstatusoutput('pygmentize')
-        if failure:
+        cmd = 'pygmentize'
+        try:
+            output = subprocess.check_output(cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
             print 'You have requested the minted latex style, but this'
             print 'requires the pygments package to be installed. On Debian/Ubuntu: run'
             print 'Terminal> sudo apt-get install python-pygments'
@@ -7457,9 +7466,12 @@ def md2html():
     cmd = 'pandoc -f markdown -t html --mathjax -s -o %s.html %s.md' % \
           (basename, basename)
     print cmd
-    failure = os.system(cmd)
-    if failure:
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
         print 'could not run\n', cmd
+        print e.output
         sys.exit(1)
     f = open('%s.html' % basename, 'r')
     text = f.read()
@@ -7512,9 +7524,12 @@ def md2latex():
     cmd = 'pandoc -f markdown -t latex -s -o %s.tex %s.md' % \
           (basename, basename)
     print cmd
-    failure = os.system(cmd)
-    if failure:
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
         print 'could not run\n', cmd
+        print e.output
         sys.exit(1)
     f = open('%s.tex' % basename, 'r')
     text = f.read()
@@ -7624,10 +7639,12 @@ def _run_doconce(filename_doconce, format):
     global doconce_program # set elsewhere
     cmd = '%s format %s %s' % (doconce_program, format, filename_doconce)
     print 'run', cmd
-    failure, outtext = commands.getstatusoutput(cmd)
-    if failure:
-        raise OSError, 'Could not run\n%s\nin %s\n%s\n\n\n' % \
-              (cmd, os.getcwd(), outtext)
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
+        raise OSError('Could not run\n%s\nin %s\n%s\n\n\n' %
+                      (cmd, os.getcwd(), e.output))
     out_filename = outtext.split()[-1]
     root, ext = os.path.splitext(out_filename)
     new_filename = root + '.dst.txt'
@@ -7648,11 +7665,12 @@ def _run_preprocess4includes(filename_dotp_py, options=''):
     pyfile = filename_dotp_py[:-5] + '.py'
     cmd = 'preprocess %s %s > %s' % (options, filename_dotp_py, pyfile)
     print 'run', cmd
-    failure, outtext = commands.getstatusoutput(cmd)
-    #os.remove(tmp_filename)
-    if failure:
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as e:
         raise OSError, 'Could not run\n%s\nin %s\n%s\n\n\n' % \
-              (cmd, os.getcwd(), outtext)
+              (cmd, os.getcwd(), e.output)
 
 def _walker_include(arg, dir, files):
     options = arg
@@ -9738,8 +9756,11 @@ def gitdiff():
     filenames = sys.argv[1:]
     old_files = []
     for filename in filenames:
-        failure, output = commands.getstatusoutput('git log %s' % filename)
-        if not failure:
+        cmd = 'git log %s' % filename
+        try:
+            output = subprocess.check_output(cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
             commits = re.findall(r'^commit\s+(.+)$', output,
                                  flags=re.MULTILINE)
             dates = re.findall(r'^Date:\s+(.+)\d\d:\d\d:\d\d .+$', output,

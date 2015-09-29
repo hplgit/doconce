@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 global dofile_basename
 
-import re, os, sys, shutil, commands, pprint, time, glob, codecs
+import re, os, sys, shutil, subprocess, pprint, time, glob, codecs
 try:
     from collections import OrderedDict   # v2.7 and v3.1
 except ImportError:
@@ -359,6 +359,7 @@ def syntax_check(filestr, format):
     # Consistency of implemented environments
     user_defined_envirs = list(set(re.findall(r'^!b(u-[^ ]+)', filestr, flags=re.MULTILINE)))
     envirs = doconce_envirs() + user_defined_envirs
+    envirs.remove('u-')
     for envir1 in envirs:
         for envir2 in envirs:
             if envir1 != envir2 and envir1.startswith(envir2):
@@ -1202,7 +1203,6 @@ def insert_os_commands(filestr, format):
         path_prefix = os.path.expanduser(path_prefix)
     os_prompt = option('os_prompt=', 'Terminal>')
 
-    import subprocess
     def system(cmd):
         """Run system command cmd."""
         print '*** running OS command', cmd
@@ -4415,13 +4415,12 @@ preprocess package (sudo apt-get install preprocess).
             cmd = 'preprocess -DFORMAT=%s -DDEVICE=%s %s %s > %s' % \
                   (format, device, preprocess_options, filename, resultfile)
             print 'running', cmd
-            outtext = ''
             try:
                 output = subprocess.check_output(cmd, shell=True,
                                                  stderr=subprocess.STDOUT)
             except subprocess.CalledProcessError as e:
                 print 'Could not run preprocessor:\n%s' % cmd
-                print outtext
+                print e.output
                 print 'return code from preprocess:', e.returncode
                 _abort()
             # Make filestr the result of preprocess in case mako shall be run
@@ -4430,8 +4429,6 @@ preprocess package (sudo apt-get install preprocess).
             filestr = re.sub(r'(\r\n|\r|\n)', '\n', filestr)
             filestr_without_code, code_blocks, code_block_types, tex_blocks = \
                                   remove_code_and_tex(filestr, format)
-
-
 
     mako_commands = r'^ *<?%[^%]'
     # Problem: mako_commands match Matlab comments and SWIG directives,
@@ -4807,14 +4804,13 @@ def doconce_format(format, dotext, compile=False,
     dofile.write(dotext)
     dofile.close()
     cmd = 'doconce format %(format)s %(filename_stem)s %(options_string)s' % vars()
-    output = ''
     try:
         output = subprocess.check_output(cmd, shell=True,
                                          stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError:
         print 'Execution of "%s" failed!\n' % cmd
         raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
-                                 (cmd, output))
+                                 (cmd, e.output))
     # Grab filename
     for line in output.splitlines():
         if line.startswith('output in '):
