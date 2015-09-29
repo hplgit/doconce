@@ -4415,11 +4415,14 @@ preprocess package (sudo apt-get install preprocess).
             cmd = 'preprocess -DFORMAT=%s -DDEVICE=%s %s %s > %s' % \
                   (format, device, preprocess_options, filename, resultfile)
             print 'running', cmd
-            failure, outtext = commands.getstatusoutput(cmd)
-            if failure:
+            outtext = ''
+            try:
+                output = subprocess.check_output(cmd, shell=True,
+                                                 stderr=subprocess.STDOUT)
+            except subprocess.CalledProcessError as e:
                 print 'Could not run preprocessor:\n%s' % cmd
                 print outtext
-                print 'return code from preprocess:', failure
+                print 'return code from preprocess:', e.returncode
                 _abort()
             # Make filestr the result of preprocess in case mako shall be run
             f = open(resultfile, 'r'); filestr = f.read(); f.close()
@@ -4804,10 +4807,12 @@ def doconce_format(format, dotext, compile=False,
     dofile.write(dotext)
     dofile.close()
     cmd = 'doconce format %(format)s %(filename_stem)s %(options_string)s' % vars()
-    import commands
-    failure, output = commands.getstatusoutput(cmd)
-
-    if failure:
+    output = ''
+    try:
+        output = subprocess.check_output(cmd, shell=True,
+                                         stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError:
+        print 'Execution of "%s" failed!\n' % cmd
         raise DocOnceSyntaxError('Could not run %s.\nOutput:\n%s' %
                                  (cmd, output))
     # Grab filename
