@@ -691,8 +691,8 @@ def syntax_check(filestr, format):
         if prefix[-1] == 's':
             prefix = prefix[:-1]  # skip plural
         if not prefix.lower() in prefixes:
-            print '*** warning: found reference "%s %s" with unexpected word "%s" in front' % (orig_prefix, ref, orig_prefix),
-            print '    (reference to equation, but missing parenthesis in (%s)?)' % (ref)
+            print '*** warning: found reference "%s %s" with unexpected word "%s" in front\n' % (orig_prefix, ref, orig_prefix),
+            print '    (expected Section/Chapter/Figure %s, or could it be a reference to an equation, but missing parenthesis in (%s)?)' % (ref, ref)
 
     # Code/tex blocks cannot have a comment, table, figure, etc.
     # right before them in rst/sphinx

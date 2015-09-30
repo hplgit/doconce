@@ -3,7 +3,7 @@ Testing admons
 
 H. P. Langtangen
 
-Date: Sep 29, 2015
+Date: Sep 30, 2015
 
 Copyright 2015, H. P. Langtangen
 

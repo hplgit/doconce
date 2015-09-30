@@ -224,7 +224,7 @@ system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SL
 system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue,bottom --font_size=slides
 
 rm -f *.aux
-theme=red3
+theme=red_plain
 system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --latex_title_layout=beamer
 system doconce ptex2tex slides3 envir=minted
 system doconce slides_beamer slides3 --beamer_slide_theme=$theme
