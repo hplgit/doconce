@@ -1951,10 +1951,13 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         if not pubfile_dir:
             pubfile_dir = os.curdir
         os.chdir(pubfile_dir)
-        failure = os.system(publish_cmd)
-        if failure:
-            print '*** error: could not execute command'
-            print '   ', publish_cmd
+        try:
+            output = subprocess.check_output(publish_cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print '*** error: failure of %s' % publish_cmd
+            print e.output
+            print 'Return code:', e.returncode
             _abort()
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading

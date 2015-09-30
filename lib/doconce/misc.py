@@ -6311,6 +6311,7 @@ _replacements = [
     (r"^\s*TOC:\s+(on|off)", "", re.MULTILINE),
     (r"\$[^{].*?\$", "", re.DOTALL),  # inline math
     (r"\$\{[A-Za-z_].+?\}", "", re.DOTALL),   # mako substitutions (note that ${\cal O}..$ math is not allowed)
+    (r'\{copyright.+?\}', ''),
     ('!split', ''),
     (r'![be]slidecell', ''),
     (r'![be]ans', ''),
