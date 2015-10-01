@@ -328,8 +328,49 @@ def sphinx_dir():
 
     #make_conf_py_runestone(themes, theme, title, short_title,
     #                       copyright_, logo, favicon, intersphinx)
-    f = open('tmp_sphinx_gen.sh', 'w')
-    f.write("""\
+    if sys.platform.startswith('win'):
+        f1 = open('tmp_sphinx_gen.bat', 'w')
+        f2 = open('tmp_sphinx_gen.inp', 'w')
+        f1.write("""\
+#!/bin/bash
+rm -rf %(sphinx_rootdir)s
+echo Making %(sphinx_rootdir)s
+mkdir %(sphinx_rootdir)s
+sphinx-quickstart < tmp_sphinx_gen.inp
+""" % vars())
+        f2.write("""\
+%(sphinx_rootdir)s
+n
+_
+%(title)s
+%(author)s
+%(version)s
+%(version)s
+en
+.rst
+index
+y
+y
+n
+n
+n
+n
+n
+y
+n
+y
+y
+y
+""" % vars())
+        f1.close()
+        f2.close()
+        system('tmp_sphinx_gen',
+               failure_info='to generate sphinx directory')
+        #os.remove('tmp_sphinx_gen.bat')
+        #os.remove('tmp_sphinx_gen.inp')
+    else:
+        f = open('tmp_sphinx_gen.sh', 'w')
+        f.write("""\
 #!/bin/bash
 rm -rf %(sphinx_rootdir)s
 echo Making %(sphinx_rootdir)s
@@ -359,9 +400,10 @@ y
 y
 EOF
 """ % vars())
-    f.close()
-    system('sh tmp_sphinx_gen.sh', failure_info='to generate sphinx directory')
-    os.remove('tmp_sphinx_gen.sh')
+        f.close()
+        system('sh tmp_sphinx_gen.sh',
+               failure_info='to generate sphinx directory')
+        os.remove('tmp_sphinx_gen.sh')
     os.chdir(sphinx_rootdir)
 
     sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()
@@ -1435,7 +1477,7 @@ doconce ipynb2doconce notebookfile
 # typeset a doconce document with pygments (for pretty print of doconce itself)
 doconce pygmentize myfile [pygments-style]
 
-# generate a make.sh script for translating a doconce file to various formats
+# generate a make.py script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
 # find differences between two files
