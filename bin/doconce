@@ -329,7 +329,8 @@ def sphinx_dir():
     #make_conf_py_runestone(themes, theme, title, short_title,
     #                       copyright_, logo, favicon, intersphinx)
 
-    shutil.rmtree(sphinx_rootdir)
+    if os.path.isdir(sphinx_rootdir):
+        shutil.rmtree(sphinx_rootdir)
     if sys.platform.startswith('win'):
         f1 = open('tmp_sphinx_gen.bat', 'w')
         f2 = open('tmp_sphinx_gen.inp', 'w')
