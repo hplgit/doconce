@@ -453,7 +453,8 @@ EOF
         import doconce.common
         install_dir = doconce.common.where()
         shutil.copy(os.path.join(install_dir, 'sphinx_themes.zip'), os.curdir)
-        system('unzip sphinx_themes.zip > /dev/null')
+        devnull = 'NUL' if sys.platform.startswith('win') else '/dev/null'
+        system('unzip sphinx_themes.zip > %s' % devnull)
         os.remove('sphinx_themes.zip')
         os.rename('sphinx_themes', '_themes')
         files = sorted(glob.glob(os.path.join('_themes', '*')))
