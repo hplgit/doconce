@@ -1,6 +1,6 @@
 # -*- coding: iso-8859-15 -*-
 
-import os, commands, re, sys, glob, shutil
+import os, commands, re, sys, glob, shutil, subprocess
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
@@ -708,13 +708,14 @@ def latex_code(filestr, code_blocks, code_block_types,
                      flags=re.MULTILINE)
 
     # Preface is normally an unnumbered section or chapter
-    # (add \markboth only if book style with chapters
+    # (add \addcontentsline only if book style with chapters
     if chapters:
-        markboth = r'\n\markboth{\g<2>}{\g<2>}'
+        #contentsline = r'\n\markboth{\g<2>}{\g<2>}' # works only with Springer style
+        contentsline = '\n' + r'\\addcontentsline{toc}{\g<1>}{\g<2>}'
     else:
-        markboth = ''
+        contentsline = ''
     filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
-                     r'\g<1>*{\g<2>}' + markboth, filestr)
+                     r'\g<1>*{\g<2>}' + contentsline, filestr)
 
     # Add pgf package if we have pgf files
     if re.search(r'input\{.+\.pgf\}', filestr):
@@ -1970,14 +1971,20 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 \bibliographystyle{%s}
 \bibliography{%s}
 """ % (bibstyle, bibtexfile[:-4]), application='replacement')
+        # Let a document with chapters have Bibliography on a new
+        # page and in the toc
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
-            # Let a document with chapters have Bibliography on a new
-            # page and in the toc
+            latex_style = option('latex_style=', 'std')
+            if latex_style.startswith('Springer'):
+                contentsline = r'\markboth{Bibliography}{Bibliography}'
+            else:
+                contentsline = '\n' + r'\\addcontentsline{toc}{chapter}{Bibliography}'
+
             bibtext = fix_latex_command_regex(r"""
 
 \clearemptydoublepage
-\markboth{Bibliography}{Bibliography}
-\thispagestyle{empty}""") + bibtext
+%s
+\thispagestyle{empty}""" % contentsline) + bibtext
             # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
@@ -4023,7 +4030,7 @@ open=right,              %% start new chapters on odd-numbered pages
         OUTRO['latex'] += r"""
 \backmatter
 """
-    if chapters:
+    if chapters and latex_style.startswith('Springer'):
         # Let a document with chapters have Index on a new
         # page and in the toc
         OUTRO['latex'] += r"""
@@ -4039,8 +4046,9 @@ open=right,              %% start new chapters on odd-numbered pages
 """
     else:
         # Add Index to toc if we use idx{} commands
-        index_toc = r'\addcontentsline{toc}{section}{\indexname}' if \
-                    'idx{' in filestr else ''
+        chsec = 'chapter' if chapters else 'section'
+        index_toc = r'\addcontentsline{toc}{%s}{\indexname}' % chsec \
+                    if 'idx{' in filestr else ''
         OUTRO['latex'] = r"""
 
 %% #ifdef PREAMBLE
