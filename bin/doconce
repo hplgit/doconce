@@ -332,7 +332,6 @@ def sphinx_dir():
         f1 = open('tmp_sphinx_gen.bat', 'w')
         f2 = open('tmp_sphinx_gen.inp', 'w')
         f1.write("""\
-#!/bin/bash
 rm -rf %(sphinx_rootdir)s
 echo Making %(sphinx_rootdir)s
 mkdir %(sphinx_rootdir)s
