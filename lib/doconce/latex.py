@@ -1978,14 +1978,12 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
             latex_style = option('latex_style=', 'std')
             if latex_style.startswith('Springer'):
                 contentsline = r'\markboth{Bibliography}{Bibliography}'
-            else:
-                contentsline = '\n' + r'\\addcontentsline{toc}{chapter}{Bibliography}'
-
-            bibtext = fix_latex_command_regex(r"""
-
+                bibtext = fix_latex_command_regex(r"""
 \clearemptydoublepage
 %s
 \thispagestyle{empty}""" % contentsline) + bibtext
+            else:
+                bibtext = '\\clearemptydoublepage\n' + bibtext
             # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
@@ -3995,7 +3993,7 @@ open=right,              %% start new chapters on odd-numbered pages
 \makeindex
 """
     if title_layout != 'beamer':
-        INTRO['latex'] += '\\usepackage[totoc]{idxlayout}\n'
+        INTRO['latex'] += '\\usepackage[totoc]{idxlayout}  % for index in the toc\n\\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc\n'
 
     INTRO['latex'] += r"""
 %-------------------- end preamble ----------------------
