@@ -4007,6 +4007,8 @@ open=right,              %% start new chapters on odd-numbered pages
 
 """
     if preamble_complete:
+        # Forget everything we put in INTRO['latex'] above and replace
+        # with user's complete preamble
         INTRO['latex'] = preamble + r"""
 \begin{document}
 
@@ -4091,11 +4093,11 @@ open=right,              %% start new chapters on odd-numbered pages
     # We don't need all the complicated stuff above when we use
     # the idxlayout package for the index and [totoc]
     OUTRO['latex'] += r"""
-%% #ifdef PREAMBLE
+% #ifdef PREAMBLE
 \printindex
 
 \end{document}
-%% #endif
+% #endif
 """
 
 def fix_latex_command_regex(pattern, application='match'):
