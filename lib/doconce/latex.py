@@ -3366,7 +3366,11 @@ open=right,              %% start new chapters on odd-numbered pages
 \fancyhead[RE,LO]{\thepage}"""
         if copyright_:
             if not fancy_header:
+                # Copyright forces use of fancyheadings, need page numbers
+                # at the bottom and to the right on odd pages,
+                # left on even pages
                 INTRO['latex'] += r"""
+\fancyfoot[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{0pt}"""
             latex_copyright = option('latex_copyright=', 'everypage')
             if latex_copyright == 'everypage':
@@ -4049,9 +4053,24 @@ open=right,              %% start new chapters on odd-numbered pages
         chsec = 'chapter' if chapters else 'section'
         index_toc = r'\addcontentsline{toc}{%s}{\indexname}' % chsec \
                     if 'idx{' in filestr else ''
-        OUTRO['latex'] = r"""
+        if chapters:
+            OUTRO['latex'] = r"""
 
 %% #ifdef PREAMBLE
+\clearemptydoublepage
+\phantomsection
+%s
+\printindex
+
+\end{document}
+%% #endif
+""" % index_toc
+        else:
+            OUTRO['latex'] = r"""
+
+%% #ifdef PREAMBLE
+\cleardoublepage
+\phantomsection
 %s
 \printindex
 
