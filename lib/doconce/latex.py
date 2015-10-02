@@ -3990,6 +3990,7 @@ open=right,              %% start new chapters on odd-numbered pages
 
 \raggedbottom
 \makeindex
+\usepackage[totoc]{idxlayout}
 
 %-------------------- end preamble ----------------------
 
@@ -4034,6 +4035,7 @@ open=right,              %% start new chapters on odd-numbered pages
         OUTRO['latex'] += r"""
 \backmatter
 """
+    '''
     if chapters and latex_style.startswith('Springer'):
         # Let a document with chapters have Index on a new
         # page and in the toc
@@ -4077,7 +4079,16 @@ open=right,              %% start new chapters on odd-numbered pages
 \end{document}
 %% #endif
 """ % index_toc
+    '''
+    # We don't need all the complicated stuff above when we use
+    # the idxlayout package for the index and [totoc]
+    OUTRO['latex'] += r"""
+%% #ifdef PREAMBLE
+\printindex
 
+\end{document}
+%% #endif
+"""
 
 def fix_latex_command_regex(pattern, application='match'):
     """
