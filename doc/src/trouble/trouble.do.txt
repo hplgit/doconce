@@ -1396,6 +1396,20 @@ doconce replace '\section{' '\section*{' mydoc.tex
 doconce replace '\subsection{' '\subsection*{' mydoc.tex
 !ec
 
+===== Page numbers appear in both header and footer =====
+
+If you experience page numbers in header and footer (this is a problem
+if you have `{copyright...}` notifications as part of an `AUTHOR`
+specification), you need to edit
+the `.tex` file. Removing the page number in the footer is done by
+
+!bc sys
+Terminal> doconce subst '\\fancyfoot\[LE.+' '' mydoc.tex
+!ec
+Page numbers in headers typically arise from using a special LaTeX style
+or the `doconce format` option `--latex_fancy_header` (but in the latter
+case there will never be page numbers in the footer).
+
 ======= gwiki =======
 
 ===== Strange nested lists in gwiki =====

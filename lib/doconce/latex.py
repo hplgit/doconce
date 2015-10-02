@@ -3366,12 +3366,14 @@ open=right,              %% start new chapters on odd-numbered pages
 \fancyhead[RE,LO]{\thepage}"""
         if copyright_:
             if not fancy_header:
-                # Copyright forces use of fancyheadings, need page numbers
-                # at the bottom and to the right on odd pages,
-                # left on even pages
                 INTRO['latex'] += r"""
-\fancyfoot[LE,RO]{\thepage}
 \renewcommand{\headrulewidth}{0pt}"""
+                if not latex_style.startswith('Springer'):
+                    # Copyright forces use of fancyheadings, need page numbers
+                    # at the bottom and to the right on odd pages,
+                    # left on even pages
+                    INTRO['latex'] += r"""
+\fancyfoot[LE,RO]{\thepage}"""
             latex_copyright = option('latex_copyright=', 'everypage')
             if latex_copyright == 'everypage':
                 INTRO['latex'] += r"""
