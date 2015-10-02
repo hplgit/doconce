@@ -5526,8 +5526,8 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
     if handout:
         slides_per_page = 4  # 2, 4, 8, 16
-        slides += """
-%%\pgfpagesuselayout{%d on 1}[a4paper,landscape,border shrink=5mm] % pdfnup is more flexible
+        slides += r"""
+%%\pgfpagesuselayout{%d on 1}[a4paper,landscape,border shrink=5mm]   %% pdfnup is more flexible
 """ % slides_per_page
 
     for part in parts:
