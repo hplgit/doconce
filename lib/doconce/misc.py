@@ -5128,7 +5128,7 @@ def slides_beamer():
         print 'slides written to', filename
         if misc_option('handout', False):
             print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile %s.pdf %s.pdf' % (filestem, filestem)
-            print 'or uncomment %\pgfpagesuselayout{... in %s.tex' % filestem
+            print 'or uncomment %%\pgfpagesuselayout{... in %s.tex' % filestem
 
 
 def _usage_slides_markdown():
