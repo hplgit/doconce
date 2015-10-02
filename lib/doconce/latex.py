@@ -101,9 +101,10 @@ def latex_code_envir(
     # see http://tex.stackexchange.com/questions/149710/how-to-write-math-symbols-in-a-verbatim, minted can only have math in comments within the code
     # but mathescape make problems with bash and $#
     # (can perhaps be fixed with escapechar=... but I haven't found out)
-    if envir != 'sh':
+    if not envir.startswith('sh'):
         pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
     else:
+        # Leave out mathescape for unix shell
         pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
     if envir_spec[envir2]['style'] is not None:
         # Override default style
@@ -3992,13 +3993,16 @@ open=right,              %% start new chapters on odd-numbered pages
 
 \raggedbottom
 \makeindex
-\usepackage[totoc]{idxlayout}
+"""
+    if title_layout != 'beamer':
+        INTRO['latex'] += '\\usepackage[totoc]{idxlayout}\n'
 
+    INTRO['latex'] += r"""
 %-------------------- end preamble ----------------------
 
 \begin{document}
 
-% endif for #ifdef PREAMBLE
+% matching end for #ifdef PREAMBLE
 % #endif
 
 """
@@ -4037,6 +4041,8 @@ open=right,              %% start new chapters on odd-numbered pages
         OUTRO['latex'] += r"""
 \backmatter
 """
+    # The below chunk of code for the index can be deleted
+    # since idxlayout solves all these problems
     '''
     if chapters and latex_style.startswith('Springer'):
         # Let a document with chapters have Index on a new

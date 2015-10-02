@@ -5128,6 +5128,7 @@ def slides_beamer():
         print 'slides written to', filename
         if misc_option('handout', False):
             print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile %s.pdf %s.pdf' % (filestem, filestem)
+            print 'or uncomment %\pgfpagesuselayout{... in %s.tex' % filestem
 
 
 def _usage_slides_markdown():
@@ -5380,7 +5381,7 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 %% fine for B/W printing:
 %%\usecolortheme{seahorse}
 
-\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{pgf}
 \usepackage{graphicx}
 \usepackage{epsfig}
 \usepackage{relsize}
@@ -5445,6 +5446,11 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
 \newcommand{\subex}[1]{\noindent\textbf{#1}}  %% for subexercises: a), b), etc
 """ % vars()
+
+    if handout:
+        slides += """
+\usepackage{pgfpages} % for handouts
+"""
 
     # Check if we need minted or anslistings:
     if re.search('\\usepackage.+minted', header):
@@ -5517,6 +5523,12 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
         print '    title, author, and date - add TITLE:, AUTHOR:, DATE:'
         _abort()
     slides += header.split(preamble_divider_line)[1]
+
+    if handout:
+        slides_per_page = 4  # 2, 4, 8, 16
+        slides += """
+%%\pgfpagesuselayout{%d on 1}[a4paper,landscape,border shrink=5mm] % pdfnup is more flexible
+""" % slides_per_page
 
     for part in parts:
         part = ''.join(part)

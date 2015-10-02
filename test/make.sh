@@ -195,8 +195,7 @@ cp slides1.html slides1_remark.html
 
 # The toughest test of slides1 is with minted code envir
 rm -f *.aux
-system doconce format pdflatex slides1 --latex_title_layout=beamer
-system doconce ptex2tex slides1 envir=minted
+system doconce format pdflatex slides1 --latex_title_layout=beamer --latex_code_style=pyg
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 system pdflatex -shell-escape slides1
 cp slides1.tex slides1_handout.tex
