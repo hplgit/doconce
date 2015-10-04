@@ -294,7 +294,7 @@ cp sphinx-rootdir/conf.py tailored_conf.py
 # Test admonitions
 
 # LaTeX admon styles
-admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
+admon_tps="colors1 mdfbox paragraph-footnotesize graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 color=
 opts=

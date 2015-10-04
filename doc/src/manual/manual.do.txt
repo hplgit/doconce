@@ -3587,7 +3587,7 @@ admonitions.
 idx{admonition layout}
 idx{HTML admonitions}
 
-=== Layout of admonitions in HTML ===
+=== Layout of Admonitions in HTML ===
 
 The command-line argument `--html_admon` sets the admonition style
 for the `html` format (see "demo": "http://hplgit.github.io/doconce/doc/pub/admon/index.html"):
@@ -3609,7 +3609,9 @@ for the `html` format (see "demo": "http://hplgit.github.io/doconce/doc/pub/admo
    but a colored background for the title (only effective
    if `--html_style=boots*`),
  * `--html_admon=paragraph` results in a simple paragraph with the
-   admon title as heading.
+   admon title as heading. With `--html_admon=paragraph-X`, where `X`
+   is `small` or `large` (or a number less than 100 or grater than 100,
+   resp.). The admon text is then typeset with a small or large font.
 
 The options `--html_admon_bg_color=...` and `--html_admon_bd_color=...`
 can be used to override the default background and boundary frame colors
@@ -3625,14 +3627,17 @@ Some recommended combinations for admonitions in HTML are
 
 idx{LaTeX admonitions}
 
-=== Layout of admonitions in LaTeX ===
+=== Layout of Admonitions in LaTeX ===
 
 In `latex` and `pdflatex`, the type of admonition style is set by
 the command-line option `--latex_admon=`.
 Several values are available (see "demo": "http://hplgit.github.io/doconce/doc/pub/admon/index.html"):
 
  * `paragraph` is the simplest type of admonition and typeset
-   as plain text with an optional paragraph heading.
+   as plain text with an optional paragraph heading. The variant
+   `paragraph-X` typesets the paragraph with font size `X`, where
+   `X` can be `large`, `small`, `footnotesize`, or `tiny`. With the `X`
+   specification there is also some small space above and below the admon.
  * `colors1` (inspired by the original NumPy User Guide in LaTeX/PDF)
    applies different colors for
    the different admons with an embedded icon.
@@ -3677,7 +3682,7 @@ will by default get a period at the end. For some LaTeX admonitions
 *without* any period. The command-line option `--latex_admon_title_no_period`
 avoids appending a period.
 
-=== LaTeX code environments inside admonitions ===
+=== LaTeX code Environments Inside Admonitions ===
 
 Sometimes one sets a special background color in the admonitions, and
 colored code blocks, which look fine in the running text, may then

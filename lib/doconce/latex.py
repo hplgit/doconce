@@ -2222,15 +2222,26 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             elif format == 'latex':
                 figname += '.eps'
             _get_admon_figs(figname)
-    elif latex_admon == 'paragraph':
+    elif latex_admon.startswith('paragraph'):
         if title and title[-1] not in ('.', ':', '!', '?'):
             title += '%(_title_period)s'
         if '%%' in title:
             title = title.replace('%%', '\\%%')
+        begin, end = ('\\paragraph{%%s}' %% title, '')
+        if '-' in latex_admon:
+            font_type = latex_admon.split('-')[1]
+            legal_types = ('large', 'small', 'footnotesize', 'tiny', 'quote')
+            if not font_type in legal_types:
+                print '*** error: wrong font type in --latex_admon=%%s' %% font_type
+                _abort()
+            if font_type == 'quote':
+                begin, end = '\\begin{quote}\n\\textbf{%%s} %% title', '\n\\end{quote}'
+            else:
+                begin, end = '\\vspace{3mm}{\\%%s\n\\noindent\\textbf{%%s}' %% (font_type, title), '\n\\vspace{3mm}}'
         text = r'''
 %%%% --- begin paragraph admon ---
-\paragraph{%%(title)s}
-%%(text_block)s
+%%(begin)s
+%%(text_block)s%%(end)s
 %%%% --- end paragraph admon ---
 
 ''' %% vars()
