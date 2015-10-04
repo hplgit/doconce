@@ -2387,8 +2387,18 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (title, block)
         return lyx
 
-    elif html_admon_style == 'paragraph':
+    elif html_admon_style.startswith('paragraph'):
         # Plain paragraph
+        if '-' in html_admon_style:
+            font_size = html_admon_style.split('-')[1]
+            if font_size in ('small', 'large'):
+                text_size = font_size
+            else:
+                if int(font_size) < 100:
+                    text_size = 'small'
+                else:
+                    text_size = 'large'
+
         paragraph = """
 
 <!-- admonition: %(_admon)s, typeset as paragraph -->
@@ -2400,8 +2410,8 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     else:
         print '*** error: illegal --html_admon=%%s' %% html_admon_style
         print '    legal values are colors, gray, yellow, apricot, lyx,'
-        print '    paragraph; and bootstrap_alert or bootstrap_panel for'
-        print '    --html_style=bootstrap*|bootswatch*'
+        print '    paragraph, paragraph-80, paragraph-120; and'
+        print '    bootstrap_alert or bootstrap_panel for --html_style=bootstrap*|bootswatch*'
         _abort()
 ''' % vars()
     exec(_text)
@@ -2679,12 +2689,14 @@ def define(FILENAME_EXTENSION,
         if '!b'+admon in filestr and '!e'+admon in filestr:
             if html_admon_style == 'colors':
                 css += (admon_styles1 % admon_css_vars[html_admon_style])
+                break
             elif html_admon_style in ('gray', 'yellow', 'apricot',
                                       'solarized_light', 'solarized_dark'):
                 css += (admon_styles2 % admon_css_vars[html_admon_style])
-            elif html_admon_style in ('lyx', 'paragraph'):
-                css += admon_styles_text
-            break
+                break
+            elif html_admon_style in ('lyx',) or html_admon_style.startswith('paragraph'):
+                css += admon_styles_text.replace('%%', '%')
+                break
 
     style = """
 %s

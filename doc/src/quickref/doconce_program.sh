@@ -138,7 +138,7 @@ doconce ipynb2doconce notebookfile
 # typeset a doconce document with pygments (for pretty print of doconce itself)
 doconce pygmentize myfile [pygments-style]
 
-# generate a make.sh script for translating a doconce file to various formats
+# generate a make.py script for translating a doconce file to various formats
 doconce makefile docname doconcefile [html sphinx pdflatex ...]
 
 # find differences between two files

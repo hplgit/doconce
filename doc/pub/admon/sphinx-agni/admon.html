@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -25,7 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -47,8 +46,8 @@
     <link rel="prev" title="Demo of admonition styles in DocOnce" href="index.html" />
  
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -57,10 +56,10 @@
         <li class="right" >
           <a href="index.html" title="Demo of admonition styles in DocOnce"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Demo of admonition styles in DocOnce</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Demo of admonition styles in DocOnce</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -74,15 +73,17 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Demo of admonition styles in DocOnce</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/admon.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/admon.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -98,7 +99,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="demo-of-admonition-styles-in-doconce">
 <h1>Demo of admonition styles in DocOnce<a class="headerlink" href="#demo-of-admonition-styles-in-doconce" title="Permalink to this headline">¶</a></h1>
@@ -114,7 +115,7 @@
 </ol>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">May 2, 2015</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">Oct 4, 2015</p>
 </td>
 </tr>
 </tbody>
@@ -137,7 +138,7 @@ ZeroDivisionError: integer division or modulo by zero
 <p>Question admon (without title).</p>
 <div class="admonition-question admonition">
 <p class="first admonition-title">Question</p>
-<p class="last">What are the admon options for <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span></tt>?</p>
+<p class="last">What are the admon options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span></code>?</p>
 </div>
 <p>Summary admon:</p>
 <div class="admonition-summary admonition">
@@ -160,14 +161,14 @@ ZeroDivisionError: integer division or modulo by zero
 <p class="first admonition-title">Tip: follow well-established conventions for variable names</p>
 <p class="last">For example, in Python, variable and function names use
 lower case letters separated by underscore, as in
-<tt class="docutils literal"><span class="pre">vibration_with_damping</span></tt> (while Java typically would
-have <tt class="docutils literal"><span class="pre">vibrationWithDamping</span></tt>). Class names apply cap words,
-as in <tt class="docutils literal"><span class="pre">ProblemClass</span></tt>.</p>
+<code class="docutils literal"><span class="pre">vibration_with_damping</span></code> (while Java typically would
+have <code class="docutils literal"><span class="pre">vibrationWithDamping</span></code>). Class names apply cap words,
+as in <code class="docutils literal"><span class="pre">ProblemClass</span></code>.</p>
 </div>
 </div>
 <div class="section" id="the-block-quote-and-plain-box-environment">
 <h2>The block, quote and plain box environment<a class="headerlink" href="#the-block-quote-and-plain-box-environment" title="Permalink to this headline">¶</a></h2>
-<p>DocOnce features a <tt class="docutils literal"><span class="pre">block</span></tt> environment with or without title.</p>
+<p>DocOnce features a <code class="docutils literal"><span class="pre">block</span></code> environment with or without title.</p>
 <div class="admonition-notice admonition">
 <p class="first admonition-title">Notice</p>
 <p class="last">Blocks are often used in slides to frame a collection of things.</p>
@@ -176,7 +177,7 @@ as in <tt class="docutils literal"><span class="pre">ProblemClass</span></tt>.</
 <p class="first admonition-title">Block with title</p>
 <p class="last">Blocks can contain text, math, code, figures, movies.</p>
 </div>
-<p>Here is a quote environment (<tt class="docutils literal"><span class="pre">quote</span></tt>):</p>
+<p>Here is a quote environment (<code class="docutils literal"><span class="pre">quote</span></code>):</p>
 <blockquote>
 <div><p>Sayre&#8217;s law states that
 &#8220;in any dispute the intensity of feeling is inversely
@@ -203,7 +204,7 @@ used for important results like
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -212,12 +213,12 @@ used for important results like
         <li class="right" >
           <a href="index.html" title="Demo of admonition styles in DocOnce"
              >previous</a> |</li>
-        <li><a href="index.html">Demo of admonition styles in DocOnce</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Demo of admonition styles in DocOnce</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2015, H. P. Langtangen.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.
     </div>
   </body>
 </html>

@@ -7,7 +7,7 @@ Demo of admonition styles in DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: H. P. Langtangen
-:Date: May 2, 2015
+:Date: Oct 4, 2015
 
 *Summary.* This note demonstrates how admonitions look like in the output format
 **sphinx**.

@@ -77,7 +77,7 @@ system doconce format latex testdoc.do.txt $ex SOMEVAR=True --skip_inline_commen
 system doconce format pdflatex testdoc.do.txt $ex "--latex_code_style=default:lst-blue1[style=myspeciallststyle,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@fcod:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,style=redblue]" --latex_code_lststyles=mylststyles --latex_packages=varioref
 cp testdoc.tex testdoc.tex_direct
 
-system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref --latex_link_color=yellow!10 --draft
+system doconce format pdflatex testdoc.do.txt --device=paper $ex --latex_double_hyphen --latex_index_in_margin --latex_no_program_footnotelink --latex_title_layout=titlepage --latex_papersize=a4 --latex_colored_table_rows=blue --latex_fancy_header --latex_section_headings=blue --latex_labels_in_margin --latex_double_spacing --latex_todonotes --latex_list_of_exercises=loe --latex_font=palatino --latex_packages=varioref '--latex_link_color=blue!90' --draft
 # --latex_paper=a4 triggers summary environment to be smaller paragraph
 # within the text (fine for proposals or articles).
 
@@ -195,8 +195,7 @@ cp slides1.html slides1_remark.html
 
 # The toughest test of slides1 is with minted code envir
 rm -f *.aux
-system doconce format pdflatex slides1 --latex_title_layout=beamer
-system doconce ptex2tex slides1 envir=minted
+system doconce format pdflatex slides1 --latex_title_layout=beamer --latex_code_style=pyg
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 system pdflatex -shell-escape slides1
 cp slides1.tex slides1_handout.tex
@@ -224,7 +223,7 @@ system doconce format html slides3 --html_style=solarized3 SLIDE_TYPE=doconce SL
 system doconce slides_html slides3-solarized3 doconce --nav_button=bigblue,bottom --font_size=slides
 
 rm -f *.aux
-theme=red3
+theme=red_plain
 system doconce format pdflatex slides3 SLIDE_TYPE=beamer SLIDE_THEME=$theme --latex_title_layout=beamer
 system doconce ptex2tex slides3 envir=minted
 system doconce slides_beamer slides3 --beamer_slide_theme=$theme
@@ -295,7 +294,7 @@ cp sphinx-rootdir/conf.py tailored_conf.py
 # Test admonitions
 
 # LaTeX admon styles
-admon_tps="colors1 mdfbox paragraph graybox2 yellowicon grayicon colors2"
+admon_tps="colors1 mdfbox paragraph-footnotesize graybox2 yellowicon grayicon colors2"
 for admon_tp in $admon_tps; do
 color=
 opts=

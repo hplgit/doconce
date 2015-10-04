@@ -145,8 +145,10 @@ def mwiki_figure(m):
             # try to convert image file to PNG, using
             # convert from ImageMagick:
             cmd = 'convert %s png:%s' % (filename, root+'.png')
-            failure, output = commands.getstatusoutput(cmd)
-            if failure:
+            try:
+                output = subprocess.check_output(cmd, shell=True,
+                                                 stderr=subprocess.STDOUT)
+            except subprocess.CalledProcessError as e:
                 print '\n**** warning: could not run ', cmd
                 print '       convert %s to PNG format manually' % filename
                 _abort()
@@ -381,6 +383,7 @@ def define(FILENAME_EXTENSION,
         'abstract':      r'\n*\g<type>.* \g<text>\g<rest>',
         'linebreak':     r'\g<text><br />',
         'non-breaking-space': '&nbsp;',
+        'horizontal-rule': '----',
         'ampersand2':    r' \g<1>&\g<2>',
         }
 

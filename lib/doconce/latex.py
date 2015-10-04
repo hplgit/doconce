@@ -1,6 +1,6 @@
 # -*- coding: iso-8859-15 -*-
 
-import os, commands, re, sys, glob, shutil
+import os, commands, re, sys, glob, shutil, subprocess
 from common import plain_exercise, table_analysis, \
      _CODE_BLOCK, _MATH_BLOCK, doconce_exercise_output, indent_lines, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
@@ -101,9 +101,10 @@ def latex_code_envir(
     # see http://tex.stackexchange.com/questions/149710/how-to-write-math-symbols-in-a-verbatim, minted can only have math in comments within the code
     # but mathescape make problems with bash and $#
     # (can perhaps be fixed with escapechar=... but I haven't found out)
-    if envir != 'sh':
+    if not envir.startswith('sh'):
         pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
     else:
+        # Leave out mathescape for unix shell
         pyg_style = 'fontsize=\\fontsize{9pt}{9pt},linenos=false,baselinestretch=1.0,fontfamily=tt,xleftmargin=%smm' % leftmargin
     if envir_spec[envir2]['style'] is not None:
         # Override default style
@@ -708,13 +709,14 @@ def latex_code(filestr, code_blocks, code_block_types,
                      flags=re.MULTILINE)
 
     # Preface is normally an unnumbered section or chapter
-    # (add \markboth only if book style with chapters
+    # (add \addcontentsline only if book style with chapters
     if chapters:
-        markboth = r'\n\markboth{\g<2>}{\g<2>}'
+        #contentsline = r'\n\markboth{\g<2>}{\g<2>}' # works only with Springer style
+        contentsline = '\n' + r'\\addcontentsline{toc}{\g<1>}{\g<2>}'
     else:
-        markboth = ''
+        contentsline = ''
     filestr = re.sub(r'(section|chapter)\{(Preface.*)\}',
-                     r'\g<1>*{\g<2>}' + markboth, filestr)
+                     r'\g<1>*{\g<2>}' + contentsline, filestr)
 
     # Add pgf package if we have pgf files
     if re.search(r'input\{.+\.pgf\}', filestr):
@@ -1951,10 +1953,13 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
         if not pubfile_dir:
             pubfile_dir = os.curdir
         os.chdir(pubfile_dir)
-        failure = os.system(publish_cmd)
-        if failure:
-            print '*** error: could not execute command'
-            print '   ', publish_cmd
+        try:
+            output = subprocess.check_output(publish_cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            print '*** error: failure of %s' % publish_cmd
+            print e.output
+            print 'Return code:', e.returncode
             _abort()
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading
@@ -1967,14 +1972,18 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
 \bibliographystyle{%s}
 \bibliography{%s}
 """ % (bibstyle, bibtexfile[:-4]), application='replacement')
+        # Let a document with chapters have Bibliography on a new
+        # page and in the toc
         if re.search(chapter_pattern, filestr, flags=re.MULTILINE):
-            # Let a document with chapters have Bibliography on a new
-            # page and in the toc
-            bibtext = fix_latex_command_regex(r"""
-
+            latex_style = option('latex_style=', 'std')
+            if latex_style.startswith('Springer'):
+                contentsline = r'\markboth{Bibliography}{Bibliography}'
+                bibtext = fix_latex_command_regex(r"""
 \clearemptydoublepage
-\markboth{Bibliography}{Bibliography}
-\thispagestyle{empty}""") + bibtext
+%s
+\thispagestyle{empty}""" % contentsline) + bibtext
+            else:
+                bibtext = '\\clearemptydoublepage\n' + bibtext
             # (the \cleardoublepage might not work well with Koma-script)
 
         filestr = re.sub(r'^BIBFILE:.+$', bibtext, filestr,
@@ -2213,15 +2222,26 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             elif format == 'latex':
                 figname += '.eps'
             _get_admon_figs(figname)
-    elif latex_admon == 'paragraph':
+    elif latex_admon.startswith('paragraph'):
         if title and title[-1] not in ('.', ':', '!', '?'):
             title += '%(_title_period)s'
         if '%%' in title:
             title = title.replace('%%', '\\%%')
+        begin, end = ('\\paragraph{%%s}' %% title, '')
+        if '-' in latex_admon:
+            font_type = latex_admon.split('-')[1]
+            legal_types = ('large', 'small', 'footnotesize', 'tiny', 'quote')
+            if not font_type in legal_types:
+                print '*** error: wrong font type in --latex_admon=%%s' %% font_type
+                _abort()
+            if font_type == 'quote':
+                begin, end = '\\begin{quote}\n\\textbf{%%s} %% title', '\n\\end{quote}'
+            else:
+                begin, end = '\\vspace{3mm}{\\%%s\n\\noindent\\textbf{%%s}' %% (font_type, title), '\n\\vspace{3mm}}'
         text = r'''
 %%%% --- begin paragraph admon ---
-\paragraph{%%(title)s}
-%%(text_block)s
+%%(begin)s
+%%(text_block)s%%(end)s
 %%%% --- end paragraph admon ---
 
 ''' %% vars()
@@ -2288,6 +2308,9 @@ def latex_inline_comment(m):
     comment = m.group('comment').strip()
 
     """
+    2015: Should use CriticMarkup instead?
+    https://github.com/CriticMarkup/CriticMarkup-toolkit
+
     Can use soul package to support corrections as part of comments:
     http://texdoc.net/texmf-dist/doc/latex/soul/soul.pdf
 
@@ -3355,6 +3378,12 @@ open=right,              %% start new chapters on odd-numbered pages
             if not fancy_header:
                 INTRO['latex'] += r"""
 \renewcommand{\headrulewidth}{0pt}"""
+                if not latex_style.startswith('Springer'):
+                    # Copyright forces use of fancyheadings, need page numbers
+                    # at the bottom and to the right on odd pages,
+                    # left on even pages
+                    INTRO['latex'] += r"""
+\fancyfoot[LE,RO]{\thepage}"""
             latex_copyright = option('latex_copyright=', 'everypage')
             if latex_copyright == 'everypage':
                 INTRO['latex'] += r"""
@@ -3973,16 +4002,22 @@ open=right,              %% start new chapters on odd-numbered pages
 
 \raggedbottom
 \makeindex
+"""
+    if title_layout != 'beamer':
+        INTRO['latex'] += '\\usepackage[totoc]{idxlayout}  % for index in the toc\n\\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc\n'
 
+    INTRO['latex'] += r"""
 %-------------------- end preamble ----------------------
 
 \begin{document}
 
-% endif for #ifdef PREAMBLE
+% matching end for #ifdef PREAMBLE
 % #endif
 
 """
     if preamble_complete:
+        # Forget everything we put in INTRO['latex'] above and replace
+        # with user's complete preamble
         INTRO['latex'] = preamble + r"""
 \begin{document}
 
@@ -4017,7 +4052,10 @@ open=right,              %% start new chapters on odd-numbered pages
         OUTRO['latex'] += r"""
 \backmatter
 """
-    if chapters:
+    # The below chunk of code for the index can be deleted
+    # since idxlayout solves all these problems
+    '''
+    if chapters and latex_style.startswith('Springer'):
         # Let a document with chapters have Index on a new
         # page and in the toc
         OUTRO['latex'] += r"""
@@ -4033,18 +4071,43 @@ open=right,              %% start new chapters on odd-numbered pages
 """
     else:
         # Add Index to toc if we use idx{} commands
-        index_toc = r'\addcontentsline{toc}{section}{\indexname}' if \
-                    'idx{' in filestr else ''
-        OUTRO['latex'] = r"""
+        chsec = 'chapter' if chapters else 'section'
+        index_toc = r'\addcontentsline{toc}{%s}{\indexname}' % chsec \
+                    if 'idx{' in filestr else ''
+        if chapters:
+            OUTRO['latex'] = r"""
 
 %% #ifdef PREAMBLE
+\clearemptydoublepage
+\phantomsection
 %s
 \printindex
 
 \end{document}
 %% #endif
 """ % index_toc
+        else:
+            OUTRO['latex'] = r"""
 
+%% #ifdef PREAMBLE
+\cleardoublepage
+\phantomsection
+%s
+\printindex
+
+\end{document}
+%% #endif
+""" % index_toc
+    '''
+    # We don't need all the complicated stuff above when we use
+    # the idxlayout package for the index and [totoc]
+    OUTRO['latex'] += r"""
+% #ifdef PREAMBLE
+\printindex
+
+\end{document}
+% #endif
+"""
 
 def fix_latex_command_regex(pattern, application='match'):
     """

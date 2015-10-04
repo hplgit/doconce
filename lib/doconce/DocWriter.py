@@ -11,7 +11,7 @@ This module works, but is unifinished and needs documentation!
 """
 
 from StringIO import StringIO
-import re, os, glob, commands
+import re, os, glob, subprocess
 
 class _BaseWriter:
     """
@@ -257,8 +257,10 @@ class _BaseWriter:
         file = files[0]
         cmd = 'convert %s %s' % (file, final)
         print cmd
-        failure, outtext = commands.getstatusoutput(cmd)
-        if failure:
+        try:
+            output = subprocess.check_output(cmd, shell=True,
+                                             stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
             print 'Could not convert;\n  %s' % cmd
         return final
 
