@@ -724,10 +724,14 @@ def html_code(filestr, code_blocks, code_block_types,
                 index = filestr.find(r, index)  # search since last occurence
                 print '  ', filestr[index-35:index+35], '\n---------------'
                 index += len(r)
-            print '\nCauses of missing labels:'
-            print '1: defined in another file'
-            print '2: preprocessor if-else has left it out'
-            print '3: forgotten to define it'
+            print """
+Causes of missing labels:
+1: label is inside a generalized reference ref[][][],
+   use the --allow_refs_to_external_docs option
+2: label is defined in another file
+3: preprocessor if-else has left the label out
+4: forgotten to define the label
+"""
             if not allow_refs_to_external_docs:
                 _abort()
 

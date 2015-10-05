@@ -115,7 +115,7 @@
 </ol>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">Oct 4, 2015</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">Oct 5, 2015</p>
 </td>
 </tr>
 </tbody>
@@ -128,12 +128,19 @@
 <div class="admonition-division-by-zero-is-illegal admonition">
 <p class="first admonition-title">Division by zero is illegal</p>
 <p>Most math systems will give fatal errors if you divide by zero.</p>
-<div class="last highlight-text"><div class="highlight"><pre>Terminal&gt; python -c &#39;print 4/0&#39;
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; python -c &#39;print 4/0&#39;
 Traceback (most recent call last):
   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
 ZeroDivisionError: integer division or modulo by zero
 </pre></div>
 </div>
+<p class="last">You should therefore be very careful with all expressions that may result
+in division by zero. In Python, you can use a <code class="docutils literal"><span class="pre">try-except</span></code> clause to
+test if some expression gives a <code class="docutils literal"><span class="pre">ZeroDivisionError</span></code> exception and take
+appropriate actions. One example of a numerical method where division
+by zero can cause problems is Newton&#8217;s methods of finding solutions to
+algebraic equations <span class="math">\(f(x)=0\)</span>. In that algorithm, there is a division
+by <span class="math">\(f'(x)\)</span>.</p>
 </div>
 <p>Question admon (without title).</p>
 <div class="admonition-question admonition">
@@ -147,7 +154,7 @@ ZeroDivisionError: integer division or modulo by zero
 <div class="math">
 \[f(x) = 0\]</div>
 <p>are</p>
-<blockquote class="last">
+<blockquote>
 <div><ul class="simple">
 <li>Newton&#8217;s method</li>
 <li>The Bisection method</li>
@@ -155,8 +162,12 @@ ZeroDivisionError: integer division or modulo by zero
 <li>The Fixed-Point method (<span class="math">\(f(x) = x - g(x)\)</span>)</li>
 </ul>
 </div></blockquote>
+<p class="last">Of these, Newton&#8217;s method is fastest, the Bisection method is the most
+reliable, the Secant method is a simplified Newton method, and the
+Fixed-Point method is obviously very problem dependent in its behavior
+since the user has the define the <span class="math">\(g\)</span> function.</p>
 </div>
-<p>Notice admon:</p>
+<p>Here is a <em>notice admon</em>:</p>
 <div class="admonition-tip-follow-well-established-conventions-for-variable-names admonition">
 <p class="first admonition-title">Tip: follow well-established conventions for variable names</p>
 <p class="last">For example, in Python, variable and function names use
@@ -165,6 +176,7 @@ lower case letters separated by underscore, as in
 have <code class="docutils literal"><span class="pre">vibrationWithDamping</span></code>). Class names apply cap words,
 as in <code class="docutils literal"><span class="pre">ProblemClass</span></code>.</p>
 </div>
+<p>The four main admons are warning, notice, question, and summary.</p>
 </div>
 <div class="section" id="the-block-quote-and-plain-box-environment">
 <h2>The block, quote and plain box environment<a class="headerlink" href="#the-block-quote-and-plain-box-environment" title="Permalink to this headline">¶</a></h2>

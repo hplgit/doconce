@@ -7,7 +7,7 @@ Demo of admonition styles in DocOnce
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: H. P. Langtangen
-:Date: Oct 4, 2015
+:Date: Oct 5, 2015
 
 *Summary.* This note demonstrates how admonitions look like in the output format
 **sphinx**.
@@ -28,6 +28,14 @@ Here is the warning admon:
            Traceback (most recent call last):
              File "<string>", line 1, in <module>
            ZeroDivisionError: integer division or modulo by zero
+   
+   You should therefore be very careful with all expressions that may result
+   in division by zero. In Python, you can use a ``try-except`` clause to
+   test if some expression gives a ``ZeroDivisionError`` exception and take
+   appropriate actions. One example of a numerical method where division
+   by zero can cause problems is Newton's methods of finding solutions to
+   algebraic equations :math:`f(x)=0`. In that algorithm, there is a division
+   by :math:`f'(x)`.
 
 
 
@@ -65,11 +73,16 @@ Summary admon:
     * The Secant method
    
     * The Fixed-Point method (:math:`f(x) = x - g(x)`)
+   
+   Of these, Newton's method is fastest, the Bisection method is the most
+   reliable, the Secant method is a simplified Newton method, and the
+   Fixed-Point method is obviously very problem dependent in its behavior
+   since the user has the define the :math:`g` function.
 
 
 
 
-Notice admon:
+Here is a *notice admon*:
 
 
 .. admonition:: Tip: follow well-established conventions for variable names
@@ -82,6 +95,8 @@ Notice admon:
 
 
 
+
+The four main admons are warning, notice, question, and summary.
 
 The block, quote and plain box environment
 ==========================================

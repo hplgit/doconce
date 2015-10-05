@@ -42,6 +42,13 @@ Traceback (most recent call last):
   File "<string>", line 1, in <module>
 ZeroDivisionError: integer division or modulo by zero
 !ec
+You should therefore be very careful with all expressions that may result
+in division by zero. In Python, you can use a `try-except` clause to
+test if some expression gives a `ZeroDivisionError` exception and take
+appropriate actions. One example of a numerical method where division
+by zero can cause problems is Newton's methods of finding solutions to
+algebraic equations $f(x)=0$. In that algorithm, there is a division
+by $f'(x)$.
 !ewarning
 
 Question admon (without title).
@@ -67,6 +74,11 @@ are
  * The Bisection method
  * The Secant method
  * The Fixed-Point method ($f(x) = x - g(x)$)
+
+Of these, Newton's method is fastest, the Bisection method is the most
+reliable, the Secant method is a simplified Newton method, and the
+Fixed-Point method is obviously very problem dependent in its behavior
+since the user has the define the $g$ function.
 !esummary
 
 % if 'graybox2' in OPTIONS:
@@ -75,7 +87,7 @@ text (aimed at proposals or popular articles to summarize main points;
 the summary box is small 50% if A4 format, otherwise it is 80% of the width).
 % endif
 
-Notice admon:
+Here is a *notice admon*:
 
 !bnotice Tip: follow well-established conventions for variable names!
 For example, in Python, variable and function names use
@@ -84,6 +96,9 @@ lower case letters separated by underscore, as in
 have `vibrationWithDamping`). Class names apply cap words,
 as in `ProblemClass`.
 !enotice
+
+The four main admons are warning, notice, question, and summary.
+
 
 ======= The block, quote and plain box environment =======
 

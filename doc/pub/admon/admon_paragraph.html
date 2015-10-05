@@ -89,7 +89,7 @@ MathJax.Hub.Config({
 
 <br>
 <p>
-<center><h4>Oct 4, 2015</h4></center> <!-- date -->
+<center><h4>Oct 5, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This note demonstrates how admonitions look like in the output format
@@ -124,6 +124,13 @@ Traceback (most recent call last):
 ZeroDivisionError: integer division or modulo by zero
 </pre></div>
 <p>
+You should therefore be very careful with all expressions that may result
+in division by zero. In Python, you can use a <code>try-except</code> clause to
+test if some expression gives a <code>ZeroDivisionError</code> exception and take
+appropriate actions. One example of a numerical method where division
+by zero can cause problems is Newton's methods of finding solutions to
+algebraic equations \( f(x)=0 \). In that algorithm, there is a division
+by \( f'(x) \).
 </div>
 
 
@@ -163,11 +170,16 @@ are
  <li> The Secant method</li>
  <li> The Fixed-Point method (\( f(x) = x - g(x) \))</li>
 </ul>
+
+Of these, Newton's method is fastest, the Bisection method is the most
+reliable, the Secant method is a simplified Newton method, and the
+Fixed-Point method is obviously very problem dependent in its behavior
+since the user has the define the \( g \) function.
 </div>
 
 
 <p>
-Notice admon:
+Here is a <em>notice admon</em>:
 
 <p>
 
@@ -181,6 +193,9 @@ have <code>vibrationWithDamping</code>). Class names apply cap words,
 as in <code>ProblemClass</code>.
 </div>
 
+
+<p>
+The four main admons are warning, notice, question, and summary.
 
 <h1 id="___sec1">The block, quote and plain box environment </h1>
 
