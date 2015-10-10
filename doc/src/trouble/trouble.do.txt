@@ -1410,6 +1410,13 @@ Page numbers in headers typically arise from using a special LaTeX style
 or the `doconce format` option `--latex_fancy_header` (but in the latter
 case there will never be page numbers in the footer).
 
+===== Links in the table of contents go to wrong page =====
+
+This is not an uncommon problem. We "resolved this problem":
+"http://tex.stackexchange.com/questions/23499/incorrect-bookmarks-and-page-number-in-table-of-contents"
+for the index by adding `\cleardoublepage\phantomsection` right before
+`\printindex`.  The same trick can be useful in other contexts.
+
 ======= gwiki =======
 
 ===== Strange nested lists in gwiki =====
