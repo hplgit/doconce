@@ -4004,7 +4004,7 @@ open=right,              %% start new chapters on odd-numbered pages
 \makeindex
 """
     if title_layout != 'beamer':
-        INTRO['latex'] += '\\usepackage[totoc]{idxlayout}  % for index in the toc\n\\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc\n'
+        INTRO['latex'] += '\\usepackage[totoc]{idxlayout}   % for index in the toc\n\\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc\n'
 
     INTRO['latex'] += r"""
 %-------------------- end preamble ----------------------
@@ -4103,6 +4103,7 @@ open=right,              %% start new chapters on odd-numbered pages
     # the idxlayout package for the index and [totoc]
     OUTRO['latex'] += r"""
 % #ifdef PREAMBLE
+\cleardoublepage\phantomsection  % trick to get correct link to Index
 \printindex
 
 \end{document}
