@@ -188,9 +188,9 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
               ('Typesetting of Algorithms', 2, None, '___sec87'),
               ('Admonitions', 2, None, '___sec88'),
               ('Examples on Admonition Types', 3, None, '___sec89'),
-              ('Layout of admonitions in HTML', 3, None, '___sec90'),
-              ('Layout of admonitions in LaTeX', 3, None, '___sec91'),
-              ('LaTeX code environments inside admonitions',
+              ('Layout of Admonitions in HTML', 3, None, '___sec90'),
+              ('Layout of Admonitions in LaTeX', 3, None, '___sec91'),
+              ('LaTeX code Environments Inside Admonitions',
                3,
                None,
                '___sec92'),
@@ -502,7 +502,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Sep 23, 2015</h4></center> <!-- date -->
+<center><h4>Oct 12, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -577,29 +577,35 @@ Here are some DocOnce features:
 <b>History.</b>
 The DocOnce development started in 2006 at a time when
 most popular markup languages used quite some tagging (LaTeX,
-reStructuredText, HTML).  Later, almost untagged markup languages,
-especially <a href="http://daringfireball.net/projects/markdown/" target="_self">Markdown</a>
-and its sisters <a href="http://fletcherpenney.net/multimarkdown/" target="_self">MultiMarkdown</a> and <a href="http://johnmacfarlane.net/pandoc/" target="_self">Pandoc-extended
-Markdown</a>, became popular. DocOnce
-looks much like Markdown and is in particular close to the
-functionality and nature of MultiMarkdown. The advantage of DocOnce,
-however, is a series of features for supporting both small and large
-documents (books in particular) with much mathematics and computer
-code. DocOnce can also output Sphinx (not supported by Pandoc or
+reStructuredText, HTML).  Later, almost untagged markup languages
+became popular, especially <a href="http://daringfireball.net/projects/markdown/" target="_self">Markdown</a> and its sisters
+<a href="http://fletcherpenney.net/multimarkdown/" target="_self">MultiMarkdown</a>,
+<a href="http://johnmacfarlane.net/pandoc/" target="_self">Pandoc-extended Markdown</a>, and
+<a href="https://leanpub.com/markua/" target="_self">Markua</a>..  DocOnce looks much like
+Markdown and is in particular close to the functionality and nature of
+MultiMarkdown. The advantage of DocOnce, however, is a series of
+features for supporting both small and large documents (books in
+particular) with much mathematics and computer code. While Markdown
+tools are heavily geared toward HTML, DocOnce has strong support for
+LaTeX since this is the dominating format for books and articles
+on mathematical subjects.
+DocOnce can also output Sphinx (not supported by Pandoc or
 MultiMarkdown), a format that is very attractive for presenting
-scientific material and software documentation on the web.
-(DocOnce allows basic <a href="https://guides.github.com/features/mastering-markdown/" target="_self">Markdown syntax</a> as input, extended with DocOnce
-syntax as you like.)
+scientific material and software documentation on the web.  (DocOnce
+allows basic <a href="https://guides.github.com/features/mastering-markdown/" target="_self">Markdown syntax</a> as input,
+extended with DocOnce syntax as you like.)
 
 <p>
 <b>Disclaimer.</b>
 DocOnce applies <em>text transformations</em>, mostly via
 regular expressions. This is not a fool-proof method of translation
-compared to real parsing. The possibility for tweaking the layout in
-the DocOnce document is obviously limited (at least compared to LaTeX and HTML) since the text can go to all sorts of
-markup languages. This can be compensated, however, by clever use of
-the programmable Mako preprocessor used by DocOnce and by automatic
-editing of the generated output (e.g., via regular expressions).
+compared to real parsing. Moreover, the possibility for tweaking the
+layout in the DocOnce document is obviously limited (at least compared
+to LaTeX and HTML) since the text can go to all sorts of markup
+languages. This disadvantage can be quite easily compensated, however,
+by clever use of the programmable Mako preprocessor used by DocOnce
+and by automatic editing of the generated output (e.g., via regular
+expressions).
 
 <p>
 <!-- !split -->
@@ -1493,7 +1499,7 @@ This can be used for Sphinx, wikis, and pdfLaTeX (although the latter would
 appreciate real vector graphics in a PDF plot).
 
 <p>
-The plot example below is so advanced that there is no natural
+The plot example above is so advanced that there is no natural
 counterpart in a static PNG or PDF plot.
 </div>
 
@@ -1536,7 +1542,7 @@ can be made by the code below (<a href="https://github.com/hplgit/doconce/tree/m
             <span style="color: #BA2121">&#39;save,box_select,lasso_select&#39;</span>
     u_range <span style="color: #666666">=</span> [<span style="color: #666666">-1.2*</span>I, <span style="color: #666666">1.2*</span>I]
     font_size <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;8pt&#39;</span>
-    p <span style="color: #666666">=</span> []
+    p <span style="color: #666666">=</span> []  <span style="color: #408080; font-style: italic"># list of all individual plots</span>
     p_ <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(
         width<span style="color: #666666">=300</span>, plot_height<span style="color: #666666">=250</span>, title<span style="color: #666666">=</span>legends[<span style="color: #666666">0</span>],
         x_axis_label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;t&#39;</span>, y_axis_label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;u&#39;</span>,
@@ -4155,6 +4161,15 @@ color boxes.
 <h2 id="___sec46">Inline Comments for Editing </h2>
 
 <p>
+<div class="alert alert-block alert-success alert-text-normal"><b>Notice.</b>
+The inline editing syntax in DocOnce was implemented before the invention
+of <a href="https://github.com/CriticMarkup/CriticMarkup-toolkit" target="_self">CriticMarkup</a>.
+Now it would make sense to use the CriticMarkup syntax and associated
+tools. (DocOnce needs proper rendering of CriticMarkup
+</div>
+
+
+<p>
 Inline comments can also be used to markup editing of the text.
 The following syntax is supported:
 
@@ -5966,20 +5981,20 @@ specified in the first line above:
 <p>
 
 <!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">C     a comment
 
-      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+C     END1
 
-      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
-      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">program </span>testme
+      <span style="color: #008000; font-weight: bold">call </span>test()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -5989,12 +6004,12 @@ directive above:
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>
@@ -6633,7 +6648,7 @@ gray background for all admonitions.  In <code>html</code>, <code>latex</code> a
 <code>pdflatex</code> there is quite some functionality to control the layout of
 admonitions.
 
-<h3 id="___sec90">Layout of admonitions in HTML </h3>
+<h3 id="___sec90">Layout of Admonitions in HTML </h3>
 
 <p>
 The command-line argument <code>--html_admon</code> sets the admonition style
@@ -6657,7 +6672,9 @@ for the <code>html</code> format (see <a href="http://hplgit.github.io/doconce/d
    but a colored background for the title (only effective
    if <code>--html_style=boots*</code>),</li>
  <li> <code>--html_admon=paragraph</code> results in a simple paragraph with the
-   admon title as heading.</li>
+   admon title as heading. With <code>--html_admon=paragraph-X</code>, where <code>X</code>
+   is <code>small</code> or <code>large</code> (or a number less than 100 or grater than 100,
+   resp.). The admon text is then typeset with a small or large font.</li>
 </ul>
 
 The options <code>--html_admon_bg_color=...</code> and <code>--html_admon_bd_color=...</code>
@@ -6675,7 +6692,7 @@ Some recommended combinations for admonitions in HTML are
  <li> <code>--html_style=boots*</code>, <code>--html_admon=bootstrap_alert</code> or <code>--html_admon=bootstrap_panel</code></li>
 </ul>
 
-<h3 id="___sec91">Layout of admonitions in LaTeX </h3>
+<h3 id="___sec91">Layout of Admonitions in LaTeX </h3>
 
 <p>
 In <code>latex</code> and <code>pdflatex</code>, the type of admonition style is set by
@@ -6684,7 +6701,10 @@ Several values are available (see <a href="http://hplgit.github.io/doconce/doc/p
 
 <ul>
  <li> <code>paragraph</code> is the simplest type of admonition and typeset
-   as plain text with an optional paragraph heading.</li>
+   as plain text with an optional paragraph heading. The variant
+   <code>paragraph-X</code> typesets the paragraph with font size <code>X</code>, where
+   <code>X</code> can be <code>large</code>, <code>small</code>, <code>footnotesize</code>, or <code>tiny</code>. With the <code>X</code>
+   specification there is also some small space above and below the admon.</li>
  <li> <code>colors1</code> (inspired by the original NumPy User Guide in LaTeX/PDF)
    applies different colors for
    the different admons with an embedded icon.</li>
@@ -6733,7 +6753,7 @@ will by default get a period at the end. For some LaTeX admonitions
 <em>without</em> any period. The command-line option <code>--latex_admon_title_no_period</code>
 avoids appending a period.
 
-<h3 id="___sec92">LaTeX code environments inside admonitions </h3>
+<h3 id="___sec92">LaTeX code Environments Inside Admonitions </h3>
 
 <p>
 Sometimes one sets a special background color in the admonitions, and
@@ -8906,12 +8926,12 @@ as the language in Windows Script Host).
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/bash</span>
 <span style="color: #008000">set</span> -x  <span style="color: #408080; font-style: italic"># write out all commands prior to execution</span>
 
-<span style="color: #008000; font-weight: bold">function </span>system <span style="color: #666666">{</span>
+<span style="color: #008000; font-weight: bold">function</span> system <span style="color: #666666">{</span>
 <span style="color: #408080; font-style: italic"># Run operating system command and if failure, report and abort</span>
 
-  <span style="color: #BA2121">&quot;$@&quot;</span>
-  <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #19177C">$?</span> -ne 0 <span style="color: #666666">]</span>; <span style="color: #008000; font-weight: bold">then</span>
-<span style="color: #008000; font-weight: bold">    </span><span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;make.sh: unsuccessful command $@&quot;</span>
+  <span style="color: #BA2121">&quot;</span><span style="color: #19177C">$@</span><span style="color: #BA2121">&quot;</span>
+  <span style="color: #008000; font-weight: bold">if</span> <span style="color: #666666">[</span> <span style="color: #19177C">$?</span> -ne <span style="color: #666666">0</span> <span style="color: #666666">]</span>; <span style="color: #008000; font-weight: bold">then</span>
+    <span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;make.sh: unsuccessful command </span><span style="color: #19177C">$@</span><span style="color: #BA2121">&quot;</span>
     <span style="color: #008000">echo</span> <span style="color: #BA2121">&quot;abort!&quot;</span>
     <span style="color: #008000">exit </span>1
   <span style="color: #008000; font-weight: bold">fi</span>
@@ -8937,10 +8957,10 @@ pdflatex -shell-escape <span style="color: #19177C">$name</span>
 
 <span style="color: #408080; font-style: italic"># Compile to HTML (two different styles)</span>
 <span style="color: #19177C">styles</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;bootstrap solarized3&quot;</span>
-<span style="color: #008000; font-weight: bold">for </span>style in <span style="color: #19177C">$styles</span>; <span style="color: #008000; font-weight: bold">do</span>
+<span style="color: #008000; font-weight: bold">for</span> style in <span style="color: #19177C">$styles</span>; <span style="color: #008000; font-weight: bold">do</span>
 system doconce format html <span style="color: #19177C">$name</span> --html_style<span style="color: #666666">=</span><span style="color: #19177C">$style</span> <span style="color: #BB6622; font-weight: bold">\</span>
-       --html_output<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #008000; font-weight: bold">}</span>-<span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #008000; font-weight: bold">}</span>
-system doconce split_html <span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #008000; font-weight: bold">}</span>-<span style="color: #008000; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #008000; font-weight: bold">}</span>  <span style="color: #408080; font-style: italic"># split at !split commands</span>
+       --html_output<span style="color: #666666">=</span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #BB6688; font-weight: bold">}</span>-<span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #BB6688; font-weight: bold">}</span>
+system doconce split_html <span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">name</span><span style="color: #BB6688; font-weight: bold">}</span>-<span style="color: #BB6688; font-weight: bold">${</span><span style="color: #19177C">style</span><span style="color: #BB6688; font-weight: bold">}</span>  <span style="color: #408080; font-style: italic"># split at !split commands</span>
 <span style="color: #008000; font-weight: bold">done</span>
 
 <span style="color: #408080; font-style: italic"># Compile to Sphinx</span>
@@ -9504,8 +9524,8 @@ to HTML format:
 <div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">cp mydoc.do.txt mydoc2.do.txt
 <span style="color: #19177C">url</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;https//raw.github.com/someuser/someuser.github.com&quot;</span>
 <span style="color: #19177C">dir</span><span style="color: #666666">=</span><span style="color: #BA2121">&quot;master/project/dir1/dir2&quot;</span>
-<span style="color: #008000; font-weight: bold">for </span>figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
-<span style="color: #008000; font-weight: bold">  </span>doconce replace <span style="color: #BA2121">&quot;[$figname,&quot;</span> <span style="color: #BA2121">&quot;[$site/$dir/$figname.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
+<span style="color: #008000; font-weight: bold">for</span> figname in fig1 fig2 fig3; <span style="color: #008000; font-weight: bold">do</span>
+  doconce replace <span style="color: #BA2121">&quot;[</span><span style="color: #19177C">$figname</span><span style="color: #BA2121">,&quot;</span> <span style="color: #BA2121">&quot;[</span><span style="color: #19177C">$site</span><span style="color: #BA2121">/</span><span style="color: #19177C">$dir</span><span style="color: #BA2121">/</span><span style="color: #19177C">$figname</span><span style="color: #BA2121">.png,&quot;</span> <span style="color: #BB6622; font-weight: bold">\</span>
           mydoc2.do.txt
 <span style="color: #008000; font-weight: bold">done</span>
 doconce format html mydoc2
@@ -9559,8 +9579,27 @@ or (equivalent)
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format markdown mydoc
 </pre></div>
 <p>
-The name of the output file is <code>mydoc.md</code>.
-From this format one can go to numerous other formats:
+<div class="alert alert-block alert-danger alert-text-normal"><b>Test on <code>FORMAT == 'pandoc'</code> for Markdown!</b>
+Note that even though it works to write <code>doconce format markdown</code>,
+the <code>FORMAT</code> variable that is defined in all DocOnce documents has
+the value <code>pandoc</code> for all the Markdown formats. A test like
+<code>FORMAT == 'markdown'</code> will not work!
+</div>
+
+
+<p>
+The name of the output file is <code>mydoc.md</code>. There are four supported
+dialects of Markdown (see sections below for more information):
+
+<ul>
+ <li> Pandoc-extended Markdown</li>
+ <li> GitHub-flavored Markdown</li>
+ <li> MultiMarkdown</li>
+ <li> Strict Markdown</li>
+</ul>
+
+From the Markdown format one can go to numerous other formats using
+the <code>pandoc</code> program:
 
 <p>
 
@@ -11326,6 +11365,13 @@ none, off: no rules
 top: rule at top (default)
 bottom: rule at bottom
 top+bottom: rule at top and bottom
+
+
+--html_copyright=...
+
+Controls where to put copyright statements.
+everypage: in the footer of every page
+titlepages or titlepage: in the footer of the titlepage only.
 
 
 --device=...

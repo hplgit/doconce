@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Description">
-<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),epub,Calibre,LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,syntax highlighting for doconce,doconce editing (Emacs),preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format pdfLaTeX,pdfLaTeX output,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format notebook,IPython notebook,notebook,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,command-line options doconce format,installation">
+<meta name="keywords" content="doconce,demos,author email,author institution,table of contents,headlines,section headings,headings,running programs,output from programs,comment lines,tables,lists,itemized lists,lists unordered,lists bullets,enumerated lists,ordered lists,lists ordered,lists enumerated,description lists,keyword lists,lists descriptions,lists keywords,inline tagging,emphasized words,boldface words,inline verbatim text,verbatim text, inline,links,hyperlinks,quotation syntax,quotation,non-breaking space,non-breaking space,nbsp,horizontal rule,m-dash,em-dash,ampersand,footnotes,inline comments,comments, inline,track changes,inline comments for editing,linebreak,citations,inline mathematics,formulas (math),mathematical formulas,cross referencing,labels,references,citations,citations, generalized,generalized citations,cross-document referencing,index,some index entry,main entry subentry,emojis,smileys,exercise environment,problem environment,project environment,example environment,verbatim text, code blocks,code blocks,syntax highlighting,computer code blocks,mathematical equations,equations,LaTeX blocks with math,MS Word,Word (Microsoft),epub,Calibre,LaTeX newcommands,newcommands (LaTeX),macros (LaTeX),algorithms,admonitions,warning admon,notice admon,summary admon,question admon,block admon,admonition layout,HTML admonitions,LaTeX admonitions,box environment,frame (box) environment,equation with frame,bibliography,reference list,Publish (for bibliography),BibTeX,bibliography, database,citations,LaTeX bibliographic styles,preprocessing,splitting documents,multi-page documents,slides,HTML5 slides,LaTeX slides,Markdown slides,slide syntax,Emacs doconce support,doconce syntax highlighting,syntax highlighting for doconce,doconce editing (Emacs),preprocessing,inline comments,notes (visible/invisible),demos,HTML output,output format HTML,HTML syntax highlighting,HTML movies,movies in HTML,HTML layouts,HTML templates,splitting documents,multi-page documents,HTML file collection,blog posts,Wordpress blog,Google blogger,output format Markdown,output format Pandoc,Markdown output,Pandoc output,output format strict Markdown,output format GitHub-flavored Markdown,output format strapdown Markdown,LaTeX output,output format LaTeX,LaTeX style options,LaTeX syntax highlighting,output format XeLaTeX,XeLaTeX output,ePub output,output format ePub,output format MS Word,output format LibreOffice,output format OpenOffice,output format notebook,IPython notebook,notebook,output format ASCII,output format plain untagged text,ASCII output,plain untagged text output,output format reStructuredText,reStructuredText output,output format Sphinx,Sphinx output,Sphinx styles,Sphinx directory,output format MediaWiki,output format Creole wiki,output format Google wiki,MediaWiki output,Google wiki output,Creole wiki output,wiki output,Google docs output,tweaking output,automatic editing,command-line options doconce format,installation">
 
 <title>DocOnce Description</title>
 
@@ -265,8 +265,20 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                3,
                None,
                '___sec145'),
-              ('LaTeX', 2, 'do2any:latex', 'do2any:latex'),
-              ('PDFLaTeX', 2, 'do2any:pdflatex', 'do2any:pdflatex'),
+              ('LaTeX: Overview', 2, 'do2any:latex', 'do2any:latex'),
+              ('The old `ptex2tex` step', 2, None, '___sec147'),
+              ('From DocOnce to LaTeX-PDF: Generate LaTeX (Step 1)',
+               2,
+               'do2any:latex:compile1',
+               'do2any:latex:compile1'),
+              ('From DocOnce to LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)',
+               2,
+               'do2any:latex:compile2',
+               'do2any:latex:compile2'),
+              ('From DocOnce to LaTeX-PDF: Generate PDF (Step 3)',
+               2,
+               'do2any:latex:compile3',
+               'do2any:latex:compile3'),
               ('XeLaTeX', 2, 'do2any:xelatex', 'do2any:xelatex'),
               ('From PDF to e-book formats', 2, 'do2any:epub', 'do2any:epub'),
               ('Microsoft Word or LibreOffice',
@@ -277,50 +289,50 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                2,
                'do2any:ipynb',
                'do2any:ipynb'),
-              ('Hidden code blocks', 3, None, '___sec152'),
+              ('Hidden code blocks', 3, None, '___sec155'),
               ('Displaying code as plain text instead of executable cells',
                3,
                None,
-               '___sec153'),
-              ('Figures', 3, None, '___sec154'),
-              ('Movies', 3, None, '___sec155'),
-              ('Admonitions', 3, None, '___sec156'),
+               '___sec156'),
+              ('Figures', 3, None, '___sec157'),
+              ('Movies', 3, None, '___sec158'),
+              ('Admonitions', 3, None, '___sec159'),
               ('Plain ASCII Text', 2, 'do2any:ascii', 'do2any:ascii'),
               ('reStructuredText', 2, 'do2any:rst', 'do2any:rst'),
               ('Sphinx', 2, 'do2any:sphinx', 'do2any:sphinx'),
-              ('The manual Sphinx procedure', 3, None, '___sec160'),
+              ('The manual Sphinx procedure', 3, None, '___sec163'),
               ('Wiki Formats', 2, 'do2any:wiki', 'do2any:wiki'),
               ('Google Docs', 2, 'do2any:google:docs', 'do2any:google:docs'),
               ('Tweaking the DocOnce Output',
                2,
                'do2any:tweaking',
                'do2any:tweaking'),
-              ('Options for the `doconce` commands', 1, None, '___sec164'),
-              ('`doconce format` command-line options', 2, None, '___sec165'),
+              ('Options for the `doconce` commands', 1, None, '___sec167'),
+              ('`doconce format` command-line options', 2, None, '___sec168'),
               ('Installation of DocOnce and its Dependencies',
                1,
                'install:doconce',
                'install:doconce'),
-              ('DocOnce', 2, None, '___sec167'),
-              ('Dependencies', 2, None, '___sec168'),
-              ('Python v2.7', 3, None, '___sec169'),
-              ('Preprocessors', 3, None, '___sec170'),
-              ('Bibliography', 3, None, '___sec171'),
-              ('Image file handling', 3, None, '___sec172'),
-              ('Spellcheck', 3, None, '___sec173'),
-              ('Ptex2tex for LaTeX Output', 3, None, '___sec174'),
-              ('Pygments and the Minted Code Style', 3, None, '___sec175'),
-              ('LaTeX packages', 3, None, '___sec176'),
-              ('Sphinx or reStructuredText Output', 3, None, '___sec177'),
-              ('Markdown and Pandoc Output', 3, None, '___sec178'),
-              ('Epydoc Output', 3, None, '___sec179'),
-              ('Analyzing file differences', 3, None, '___sec180'),
-              ('Basic Parsing Ideas', 1, None, '___sec181'),
+              ('DocOnce', 2, None, '___sec170'),
+              ('Dependencies', 2, None, '___sec171'),
+              ('Python v2.7', 3, None, '___sec172'),
+              ('Preprocessors', 3, None, '___sec173'),
+              ('Bibliography', 3, None, '___sec174'),
+              ('Image file handling', 3, None, '___sec175'),
+              ('Spellcheck', 3, None, '___sec176'),
+              ('Ptex2tex for LaTeX Output', 3, None, '___sec177'),
+              ('Pygments and the Minted Code Style', 3, None, '___sec178'),
+              ('LaTeX packages', 3, None, '___sec179'),
+              ('Sphinx or reStructuredText Output', 3, None, '___sec180'),
+              ('Markdown and Pandoc Output', 3, None, '___sec181'),
+              ('Epydoc Output', 3, None, '___sec182'),
+              ('Analyzing file differences', 3, None, '___sec183'),
+              ('Basic Parsing Ideas', 1, None, '___sec184'),
               ('Typesetting of Function Arguments, Return Values, and Variables',
                2,
                None,
-               '___sec182'),
-              ('References', 1, None, '___sec183')]}
+               '___sec185'),
+              ('References', 1, None, '___sec186')]}
 end of tocinfo -->
 
 <body>
@@ -378,10 +390,10 @@ $$
      <!-- navigation toc: --> <li><a href="._manual022.html#___sec104" style="font-size: 80%;">Misc</a></li>
      <!-- navigation toc: --> <li><a href="._manual023.html#manual:mako" style="font-size: 80%;">Mako Programming</a></li>
      <!-- navigation toc: --> <li><a href="._manual028.html#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
-     <!-- navigation toc: --> <li><a href="._manual028.html#___sec164" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
+     <!-- navigation toc: --> <li><a href="._manual028.html#___sec167" style="font-size: 80%;">Options for the <code>doconce</code> commands</a></li>
      <!-- navigation toc: --> <li><a href="._manual029.html#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec181" style="font-size: 80%;">Basic Parsing Ideas</a></li>
-     <!-- navigation toc: --> <li><a href="._manual029.html#___sec183" style="font-size: 80%;">References</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec184" style="font-size: 80%;">Basic Parsing Ideas</a></li>
+     <!-- navigation toc: --> <li><a href="._manual029.html#___sec186" style="font-size: 80%;">References</a></li>
 
         </ul>
       </li>
@@ -632,20 +644,20 @@ specified in the first line above:
 <p>
 
 <!-- code=fortran (!bc fpro) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #19177C">C</span>     <span style="color: #19177C">a</span> <span style="color: #19177C">comment</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">C     a comment
 
-      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
-<span style="color: #19177C">C</span>     <span style="color: #19177C">END1</span>
+C     END1
 
-      <span style="color: #008000; font-weight: bold">program </span><span style="color: #19177C">testme</span>
-      <span style="color: #008000; font-weight: bold">call </span><span style="color: #19177C">test</span>()
+      <span style="color: #008000; font-weight: bold">program </span>testme
+      <span style="color: #008000; font-weight: bold">call </span>test()
       <span style="color: #008000; font-weight: bold">return</span>
 </pre></div>
 <p>
@@ -655,12 +667,12 @@ directive above:
 <p>
 
 <!-- code=fortran (!bc fcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span><span style="color: #19177C">test</span>()
-      <span style="color: #B00040">integer </span><span style="color: #19177C">i</span>
-      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> <span style="color: #19177C">r</span>
-      <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-      <span style="color: #008000; font-weight: bold">do </span><span style="color: #19177C">i</span> <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #19177C">i</span>
-         <span style="color: #19177C">r</span> <span style="color: #666666">=</span> <span style="color: #19177C">r</span> <span style="color: #666666">+</span> <span style="color: #19177C">i</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">      <span style="color: #008000; font-weight: bold">subroutine </span>test()
+      <span style="color: #B00040">integer </span>i
+      <span style="color: #B00040">real</span><span style="color: #666666">*8</span> r
+      r <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+      <span style="color: #008000; font-weight: bold">do </span>i <span style="color: #666666">=</span> <span style="color: #666666">1</span>, i
+         r <span style="color: #666666">=</span> r <span style="color: #666666">+</span> i
       <span style="color: #008000; font-weight: bold">end do</span>
 <span style="color: #008000; font-weight: bold">      return</span>
 </pre></div>

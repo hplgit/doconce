@@ -7,7 +7,7 @@ DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 23, 2015
+:Date: Oct 12, 2015
 
 .. !split
 

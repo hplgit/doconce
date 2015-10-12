@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Sep 23, 2015
+:Date: Oct 12, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -92,28 +92,34 @@ Here are some DocOnce features:
 **History.**
 The DocOnce development started in 2006 at a time when
 most popular markup languages used quite some tagging (LaTeX,
-reStructuredText, HTML).  Later, almost untagged markup languages,
-especially `Markdown <http://daringfireball.net/projects/markdown/>`__
-and its sisters `MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`__ and `Pandoc-extended
-Markdown <http://johnmacfarlane.net/pandoc/>`__, became popular. DocOnce
-looks much like Markdown and is in particular close to the
-functionality and nature of MultiMarkdown. The advantage of DocOnce,
-however, is a series of features for supporting both small and large
-documents (books in particular) with much mathematics and computer
-code. DocOnce can also output Sphinx (not supported by Pandoc or
+reStructuredText, HTML).  Later, almost untagged markup languages
+became popular, especially `Markdown <http://daringfireball.net/projects/markdown/>`__ and its sisters
+`MultiMarkdown <http://fletcherpenney.net/multimarkdown/>`__,
+`Pandoc-extended Markdown <http://johnmacfarlane.net/pandoc/>`__, and
+`Markua <https://leanpub.com/markua/>`__..  DocOnce looks much like
+Markdown and is in particular close to the functionality and nature of
+MultiMarkdown. The advantage of DocOnce, however, is a series of
+features for supporting both small and large documents (books in
+particular) with much mathematics and computer code. While Markdown
+tools are heavily geared toward HTML, DocOnce has strong support for
+LaTeX since this is the dominating format for books and articles
+on mathematical subjects.
+DocOnce can also output Sphinx (not supported by Pandoc or
 MultiMarkdown), a format that is very attractive for presenting
-scientific material and software documentation on the web.
-(DocOnce allows basic `Markdown syntax <https://guides.github.com/features/mastering-markdown/>`__ as input, extended with DocOnce
-syntax as you like.)
+scientific material and software documentation on the web.  (DocOnce
+allows basic `Markdown syntax <https://guides.github.com/features/mastering-markdown/>`__ as input,
+extended with DocOnce syntax as you like.)
 
 **Disclaimer.**
 DocOnce applies *text transformations*, mostly via
 regular expressions. This is not a fool-proof method of translation
-compared to real parsing. The possibility for tweaking the layout in
-the DocOnce document is obviously limited (at least compared to LaTeX and HTML) since the text can go to all sorts of
-markup languages. This can be compensated, however, by clever use of
-the programmable Mako preprocessor used by DocOnce and by automatic
-editing of the generated output (e.g., via regular expressions).
+compared to real parsing. Moreover, the possibility for tweaking the
+layout in the DocOnce document is obviously limited (at least compared
+to LaTeX and HTML) since the text can go to all sorts of markup
+languages. This disadvantage can be quite easily compensated, however,
+by clever use of the programmable Mako preprocessor used by DocOnce
+and by automatic editing of the generated output (e.g., via regular
+expressions).
 
 .. Here are some comment lines that do not affect any formatting
 
@@ -824,7 +830,7 @@ below) where such options may be useful for some formats.
    This can be used for Sphinx, wikis, and pdfLaTeX (although the latter would
    appreciate real vector graphics in a PDF plot).
    
-   The plot example below is so advanced that there is no natural
+   The plot example above is so advanced that there is no natural
    counterpart in a static PNG or PDF plot.
 
 
@@ -867,7 +873,7 @@ can be made by the code below (`download file <https://github.com/hplgit/doconce
                     'save,box_select,lasso_select'
             u_range = [-1.2*I, 1.2*I]
             font_size = '8pt'
-            p = []
+            p = []  # list of all individual plots
             p_ = plt.figure(
                 width=300, plot_height=250, title=legends[0],
                 x_axis_label='t', y_axis_label='u',
@@ -3426,6 +3432,16 @@ Inline Comments for Editing
 
 .. index:: inline comments for editing
 
+
+.. note::
+   The inline editing syntax in DocOnce was implemented before the invention
+   of `CriticMarkup <https://github.com/CriticMarkup/CriticMarkup-toolkit>`__.
+   Now it would make sense to use the CriticMarkup syntax and associated
+   tools. (DocOnce needs proper rendering of CriticMarkup
+
+
+
+
 Inline comments can also be used to markup editing of the text.
 The following syntax is supported:
 
@@ -5770,7 +5786,7 @@ admonitions.
 
 .. index:: HTML admonitions
 
-Layout of admonitions in HTML
+Layout of Admonitions in HTML
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The command-line argument ``--html_admon`` sets the admonition style
@@ -5799,7 +5815,9 @@ for the ``html`` format (see `demo <http://hplgit.github.io/doconce/doc/pub/admo
    if ``--html_style=boots*``),
 
  * ``--html_admon=paragraph`` results in a simple paragraph with the
-   admon title as heading.
+   admon title as heading. With ``--html_admon=paragraph-X``, where ``X``
+   is ``small`` or ``large`` (or a number less than 100 or grater than 100,
+   resp.). The admon text is then typeset with a small or large font.
 
 The options ``--html_admon_bg_color=...`` and ``--html_admon_bd_color=...``
 can be used to override the default background and boundary frame colors
@@ -5817,7 +5835,7 @@ Some recommended combinations for admonitions in HTML are
 
 .. index:: LaTeX admonitions
 
-Layout of admonitions in LaTeX
+Layout of Admonitions in LaTeX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In ``latex`` and ``pdflatex``, the type of admonition style is set by
@@ -5825,7 +5843,10 @@ the command-line option ``--latex_admon=``.
 Several values are available (see `demo <http://hplgit.github.io/doconce/doc/pub/admon/index.html>`__):
 
  * ``paragraph`` is the simplest type of admonition and typeset
-   as plain text with an optional paragraph heading.
+   as plain text with an optional paragraph heading. The variant
+   ``paragraph-X`` typesets the paragraph with font size ``X``, where
+   ``X`` can be ``large``, ``small``, ``footnotesize``, or ``tiny``. With the ``X``
+   specification there is also some small space above and below the admon.
 
  * ``colors1`` (inspired by the original NumPy User Guide in LaTeX/PDF)
    applies different colors for
@@ -5876,7 +5897,7 @@ will by default get a period at the end. For some LaTeX admonitions
 *without* any period. The command-line option ``--latex_admon_title_no_period``
 avoids appending a period.
 
-LaTeX code environments inside admonitions
+LaTeX code Environments Inside Admonitions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Sometimes one sets a special background color in the admonitions, and
@@ -8703,8 +8724,30 @@ or (equivalent)
 
         Terminal> doconce format markdown mydoc
 
-The name of the output file is ``mydoc.md``.
-From this format one can go to numerous other formats:
+
+.. admonition:: Test on ``FORMAT == 'pandoc'`` for Markdown
+
+   Note that even though it works to write ``doconce format markdown``,
+   the ``FORMAT`` variable that is defined in all DocOnce documents has
+   the value ``pandoc`` for all the Markdown formats. A test like
+   ``FORMAT == 'markdown'`` will not work!
+
+
+
+
+The name of the output file is ``mydoc.md``. There are four supported
+dialects of Markdown (see sections below for more information):
+
+ * Pandoc-extended Markdown
+
+ * GitHub-flavored Markdown
+
+ * MultiMarkdown
+
+ * Strict Markdown
+
+From the Markdown format one can go to numerous other formats using
+the ``pandoc`` program:
 
 .. code-block:: text
 
@@ -10544,6 +10587,13 @@ here for convenience.
         top: rule at top (default)
         bottom: rule at bottom
         top+bottom: rule at top and bottom
+        
+        
+        --html_copyright=...
+        
+        Controls where to put copyright statements.
+        everypage: in the footer of every page
+        titlepages or titlepage: in the footer of the titlepage only.
         
         
         --device=...

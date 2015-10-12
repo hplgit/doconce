@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -15,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -25,13 +24,31 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
     <link rel="top" title="DocOnce: Document Once, Include Anywhere" href="index.html" />
-    <link rel="prev" title="DocOnce: Document Once, Include Anywhere" href="index.html" /> 
+    <link rel="prev" title="DocOnce: Document Once, Include Anywhere" href="index.html" />
+ 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +57,14 @@
         <li class="right" >
           <a href="index.html" title="DocOnce: Document Once, Include Anywhere"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="doconce-document-once-include-anywhere">
 <h1>DocOnce: Document Once, Include Anywhere<a class="headerlink" href="#doconce-document-once-include-anywhere" title="Permalink to this headline">¶</a></h1>
@@ -57,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Sep 23, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 12, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -111,21 +128,21 @@ are some almost invisible text constructions that allow you to control
 the formating. Here are some examples.</p>
 <blockquote>
 <div><ul class="simple">
-<li>Bullet lists automatically arise from lines starting with <tt class="docutils literal"><span class="pre">*</span></tt>,
-or <tt class="docutils literal"><span class="pre">o</span></tt> if the list is to be enumerated.</li>
-<li><em>Emphasized words</em> are surrounded by <tt class="docutils literal"><span class="pre">*</span></tt>. <strong>Words in boldface</strong>
+<li>Bullet lists automatically arise from lines starting with <code class="docutils literal"><span class="pre">*</span></code>,
+or <code class="docutils literal"><span class="pre">o</span></code> if the list is to be enumerated.</li>
+<li><em>Emphasized words</em> are surrounded by <code class="docutils literal"><span class="pre">*</span></code>. <strong>Words in boldface</strong>
 are surrounded by underscores.</li>
 <li>Words from computer code are enclosed in backticks and
-then typeset <tt class="docutils literal"><span class="pre">verbatim</span> <span class="pre">(in</span> <span class="pre">a</span> <span class="pre">monospace</span> <span class="pre">font)</span></tt>.</li>
+then typeset <code class="docutils literal"><span class="pre">verbatim</span> <span class="pre">(in</span> <span class="pre">a</span> <span class="pre">monospace</span> <span class="pre">font)</span></code>.</li>
 <li>Section and paragraph headings are recognied special
-decorating characters (<tt class="docutils literal"><span class="pre">=</span></tt> or <tt class="docutils literal"><span class="pre">_</span></tt>) before and after the heading.
+decorating characters (<code class="docutils literal"><span class="pre">=</span></code> or <code class="docutils literal"><span class="pre">_</span></code>) before and after the heading.
 The length of the decoration determines the level of the
 section.</li>
 <li>Blocks of computer code are included by surrounding the blocks with
-<tt class="docutils literal"><span class="pre">!bc</span></tt> (begin code) and <tt class="docutils literal"><span class="pre">!ec</span></tt> (end code) tags on separate lines.</li>
+<code class="docutils literal"><span class="pre">!bc</span></code> (begin code) and <code class="docutils literal"><span class="pre">!ec</span></code> (end code) tags on separate lines.</li>
 <li>Blocks of computer code can also be imported from source files.</li>
 <li>Blocks of LaTeX mathematics are included by surrounding the blocks
-with <tt class="docutils literal"><span class="pre">!bt</span></tt> (begin TeX) and <tt class="docutils literal"><span class="pre">!et</span></tt> (end TeX) tags on separate lines.</li>
+with <code class="docutils literal"><span class="pre">!bt</span></code> (begin TeX) and <code class="docutils literal"><span class="pre">!et</span></code> (end TeX) tags on separate lines.</li>
 <li>There is support for both LaTeX and text-like inline mathematics
 such that formulas make sense also when not rendered by LaTeX
 or MathJax.</li>
@@ -273,11 +290,11 @@ And here comes the text.</p>
 <span id="my-first-sec"></span><h3>A Subsection with Sample Text<a class="headerlink" href="#a-subsection-with-sample-text" title="Permalink to this headline">¶</a></h3>
 <p>Ordinary text looks like ordinary text, but must always start at the
 beginning of lines. Tags used for <strong>boldface</strong> words, <em>emphasized</em>
-words, and <tt class="docutils literal"><span class="pre">computer</span></tt> words look natural in plain text.  Quotations
+words, and <code class="docutils literal"><span class="pre">computer</span></code> words look natural in plain text.  Quotations
 appear inside double backticks and double single quotes, as in &#8220;this
 example&#8221;.</p>
 <p>Below the section title we have a <em>label</em>, which can be used to
-refer to the section <a class="reference internal" href="#my-first-sec"><em>A Subsection with Sample Text</em></a>.
+refer to the section <a class="reference internal" href="#my-first-sec"><span class="std std-ref">A Subsection with Sample Text</span></a>.
 References to equations, such as &#8216;<a href="#equation-myeq1">(1)</a>&#8216;, work in the same
 LaTeX-inspired way.</p>
 <p>Lists are typeset as you would do in email,</p>
@@ -309,12 +326,12 @@ With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.</p>
 <p><strong>Inline comments.</strong>
 DocOnce also allows inline comments of the form [<strong>name 1</strong>: comment] (with
-a space after <tt class="docutils literal"><span class="pre">name:</span></tt>), e.g., such as [<strong>hpl 2</strong>: here I will make some remarks to the text]. Inline comments can be removed from the output
-by a command-line argument (see the section <a class="reference internal" href="#doconce2formats"><em>From DocOnce to Other Formats</em></a> for an
+a space after <code class="docutils literal"><span class="pre">name:</span></code>), e.g., such as [<strong>hpl 2</strong>: here I will make some remarks to the text]. Inline comments can be removed from the output
+by a command-line argument (see the section <a class="reference internal" href="#doconce2formats"><span class="std std-ref">From DocOnce to Other Formats</span></a> for an
 example). Inline comments can also be used for detailed editing of
 text, much like track changes in word, to illustrate how a text
 is revised. (However, for seeing how others have revised the text, I
-strongly recommend using Git for version control and running <tt class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></tt>
+strongly recommend using Git for version control and running <code class="docutils literal"><span class="pre">git</span> <span class="pre">diff</span></code>
 on the appropriate versions, or you can click on differences at
 GitHub if the files are hosted there.)</p>
 <p><strong>Footnotes.</strong>
@@ -354,7 +371,7 @@ Tables are also written in the plain text way, e.g.,</p>
 </tr>
 </tbody>
 </table>
-<p>The characters <tt class="docutils literal"><span class="pre">c</span></tt>, <tt class="docutils literal"><span class="pre">r</span></tt>, and <tt class="docutils literal"><span class="pre">l</span></tt> can be inserted, as illustrated above,
+<p>The characters <code class="docutils literal"><span class="pre">c</span></code>, <code class="docutils literal"><span class="pre">r</span></code>, and <code class="docutils literal"><span class="pre">l</span></code> can be inserted, as illustrated above,
 for aligning the headings and the columns (center, right, left).</p>
 </div>
 <div class="section" id="mathematics">
@@ -364,7 +381,7 @@ for aligning the headings and the columns (center, right, left).</p>
 </pre></div>
 </div>
 <p>Blocks of mathematics are typeset with raw LaTeX, inside
-<tt class="docutils literal"><span class="pre">!bt</span></tt> and <tt class="docutils literal"><span class="pre">!et</span></tt> (begin TeX, end TeX) directives:</p>
+<code class="docutils literal"><span class="pre">!bt</span></code> and <code class="docutils literal"><span class="pre">!et</span></code> (begin TeX, end TeX) directives:</p>
 <div class="highlight-text"><div class="highlight"><pre>!bt
 \begin{align}
 {\partial u\over\partial t} &amp;= \nabla^2 u + f,
@@ -381,21 +398,21 @@ label{myeq1}\\
 <span class="eqno">(2)</span>\[     {\partial v\over\partial t} = \nabla\cdot(q(u)\nabla v) + g\]</div>
 <p>Of course, such blocks only looks nice in formats with support
 for LaTeX mathematics
-(this includes <tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt>, <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">ipynb</span></tt>, <tt class="docutils literal"><span class="pre">pandoc</span></tt>,
-and <tt class="docutils literal"><span class="pre">mwiki</span></tt>). Simpler
+(this includes <code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>,
+and <code class="docutils literal"><span class="pre">mwiki</span></code>). Simpler
 formats have to just list the raw
 LaTeX syntax.</p>
 <p>LaTeX writers who adopt DocOnce need to pay attention to the following:</p>
 <blockquote>
 <div><ul class="simple">
-<li>AMS LaTeX mathematics is supported, also for the <tt class="docutils literal"><span class="pre">html</span></tt>, <tt class="docutils literal"><span class="pre">sphinx</span></tt>,
-and <tt class="docutils literal"><span class="pre">ipynb</span></tt> formats.</li>
-<li>Only five equation environments can be used: <tt class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></tt>,
-<tt class="docutils literal"><span class="pre">equation*</span></tt>, <tt class="docutils literal"><span class="pre">equation</span></tt>, <tt class="docutils literal"><span class="pre">align*</span></tt>, and <tt class="docutils literal"><span class="pre">align</span></tt>.</li>
+<li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
+and <code class="docutils literal"><span class="pre">ipynb</span></code> formats.</li>
+<li>Only five equation environments can be used: <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...</span> <span class="pre">\]</span></code>,
+<code class="docutils literal"><span class="pre">equation*</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">align*</span></code>, and <code class="docutils literal"><span class="pre">align</span></code>.</li>
 <li>Newcommands in mathematical formulas are allowed (but not in
 the running text). Newcommands must be defined in files with names
-<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>.</li>
-<li>MediaWiki (<tt class="docutils literal"><span class="pre">mwiki</span></tt>) does not support references to equations.
+<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>.</li>
+<li>MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.
 DocOnce has extended Markdown, Sphinx, and HTML to better support
 equation referencing (across web pages for example).</li>
 <li>Only figures are floating elements in DocOnce, all other elements
@@ -416,13 +433,13 @@ write in a simpler fashion. For example, DocOnce has no special construction
 for algorithms, so these must be simulated by lists or verbatim blocks.
 Other constructions that should be avoided include margin notes, special
 tables, and
-<tt class="docutils literal"><span class="pre">subfigure</span></tt> (combine image files to one file instead, via <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>).</p>
+<code class="docutils literal"><span class="pre">subfigure</span></code> (combine image files to one file instead, via <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code>).</p>
 </div>
 </div>
 <div class="section" id="computer-code">
 <h3>Computer Code<a class="headerlink" href="#computer-code" title="Permalink to this headline">¶</a></h3>
 <p>You can have blocks of computer code, starting and ending with
-<tt class="docutils literal"><span class="pre">!bc</span></tt> and <tt class="docutils literal"><span class="pre">!ec</span></tt> instructions, respectively.</p>
+<code class="docutils literal"><span class="pre">!bc</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code> instructions, respectively.</p>
 <div class="highlight-text"><div class="highlight"><pre>!bc pycod
 from math import sin, pi
 def myfunc(x):
@@ -443,7 +460,7 @@ I = integrate.trapezoidal(myfunc, 0, pi, 100)
 </pre></div>
 </div>
 <p>A code block must come after some plain sentence (at least for successful
-output to <tt class="docutils literal"><span class="pre">sphinx</span></tt>, <tt class="docutils literal"><span class="pre">rst</span></tt>, and formats close to plain text),
+output to <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">rst</span></code>, and formats close to plain text),
 not directly after a section/paragraph heading or a table.</p>
 <p>Blocks of computer code has <em>named environments</em>, such as <em>pycod</em>. The <em>py</em>
 stands for Python and <em>cod</em> indicates a code snippet that cannot be run
@@ -457,24 +474,24 @@ complete file or specified parts, e.g,</p>
 </div>
 <p>The copying is based on regular expressions and not on line numbers, which
 makes the specifications much more robust during software and document
-developing. With the <tt class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></tt> command,
+developing. With the <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</span></code> command,
 computer code is never
 duplicated in the documentation (important for the principle of
 avoiding copying information!) and once the software is updated, the
 next compilation of the document is up-to-date.</p>
 <p><strong>Inclusion of files.</strong>
 Another DocOnce document or any file
-can be included by writing <tt class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;mynote.do.txt&quot;</span></tt>
+can be included by writing <code class="docutils literal"><span class="pre">#</span> <span class="pre">#include</span> <span class="pre">&quot;mynote.do.txt&quot;</span></code>
 at the beginning of a line.  DocOnce documents have
-extension <tt class="docutils literal"><span class="pre">do.txt</span></tt>. The <tt class="docutils literal"><span class="pre">do</span></tt> part stands for doconce, while the
-trailing <tt class="docutils literal"><span class="pre">.txt</span></tt> denotes a text document so that editors gives you
+extension <code class="docutils literal"><span class="pre">do.txt</span></code>. The <code class="docutils literal"><span class="pre">do</span></code> part stands for doconce, while the
+trailing <code class="docutils literal"><span class="pre">.txt</span></code> denotes a text document so that editors gives you
 plain text editing capabilities.</p>
 </div>
 <div class="section" id="macros-newcommands-cross-references-index-and-bibliography">
 <span id="newcommands"></span><h3>Macros (Newcommands), Cross-References, Index, and Bibliography<a class="headerlink" href="#macros-newcommands-cross-references-index-and-bibliography" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce supports a type of macros via a LaTeX-style <em>newcommand</em>
 construction.  The newcommands are defined in files with names
-<tt class="docutils literal"><span class="pre">newcommands*.tex</span></tt>, using standard LaTeX syntax. Only newcommands
+<code class="docutils literal"><span class="pre">newcommands*.tex</span></code>, using standard LaTeX syntax. Only newcommands
 for use inside math environments are supported.</p>
 <p>Labels, corss-references, citations, and support of an index and
 bibliography are much inspired by LaTeX syntax, but DocOnce features
@@ -517,7 +534,7 @@ BIBFILE: papers.pub
 this tool has more functionality than BibTeX, but any BibTeX database can
 be automatically converted to the simple Publish format.</p>
 <p>For further details on functionality and
-syntax we refer to the <tt class="docutils literal"><span class="pre">doc/manual/manual.do.txt</span></tt> file
+syntax we refer to the <code class="docutils literal"><span class="pre">doc/manual/manual.do.txt</span></code> file
 in the DocOnce source and a <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/">Sphinx version</a> of this document.</p>
 </div>
 </div>
@@ -528,25 +545,25 @@ document to various formats. Here we just give a glimpse of the
 possibilities.</p>
 <div class="section" id="example-making-an-html-file">
 <h3>Example: Making an HTML File<a class="headerlink" href="#example-making-an-html-file" title="Permalink to this headline">¶</a></h3>
-<p>Suppose you have some DocOnce text in <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>. Here is how you
-compile that document to an HTML file <tt class="docutils literal"><span class="pre">mydoc.html</span></tt>, which can be viewed
+<p>Suppose you have some DocOnce text in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>. Here is how you
+compile that document to an HTML file <code class="docutils literal"><span class="pre">mydoc.html</span></code>, which can be viewed
 in a web browser:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --html_style=bootswatch_journal
 </pre></div>
 </div>
-<p>There are lots of styles for HTML files, and <tt class="docutils literal"><span class="pre">bootswatch_journal</span></tt> is
+<p>There are lots of styles for HTML files, and <code class="docutils literal"><span class="pre">bootswatch_journal</span></code> is
 a fancy one. There are also lots of other command-line options for
-tailoring the compilation. Run <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></tt> to see a list
-of all options. Those that start with <tt class="docutils literal"><span class="pre">--html_</span></tt> are specific for the
+tailoring the compilation. Run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> to see a list
+of all options. Those that start with <code class="docutils literal"><span class="pre">--html_</span></code> are specific for the
 HTML output format.</p>
 </div>
 <div class="section" id="preprocessors-1">
 <h3>Preprocessors          (1)<a class="headerlink" href="#preprocessors-1" title="Permalink to this headline">¶</a></h3>
 <p>A DocOnce compilation has three stages:</p>
 <ol class="arabic simple">
-<li>The preprocessor Preprocess is applied to <tt class="docutils literal"><span class="pre">mydoc.do.txt</span></tt>, resulting in <tt class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></tt>.</li>
-<li>The preprocessor Mako is applied to <tt class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></tt>, resulting in <tt class="docutils literal"><span class="pre">tmp_mako__mydoc.do.txt</span></tt>.</li>
-<li>The text in <tt class="docutils literal"><span class="pre">tmp_mako__mydoc.do.txt</span></tt> is translated to the chosen output format.</li>
+<li>The preprocessor Preprocess is applied to <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>, resulting in <code class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></code>.</li>
+<li>The preprocessor Mako is applied to <code class="docutils literal"><span class="pre">tmp_preprocess__mydoc.do.txt</span></code>, resulting in <code class="docutils literal"><span class="pre">tmp_mako__mydoc.do.txt</span></code>.</li>
+<li>The text in <code class="docutils literal"><span class="pre">tmp_mako__mydoc.do.txt</span></code> is translated to the chosen output format.</li>
 </ol>
 <p>The preprocessor stages are only run if you have applied preprocessor
 syntax. The Preprocess program allows you to include other files
@@ -566,19 +583,19 @@ DocOnce.</p>
 mathematics and/or computer code the following formats are suitable:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">latex</span></tt>, <tt class="docutils literal"><span class="pre">pdflatex</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">html</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">sphinx</span></tt></li>
-<li><tt class="docutils literal"><span class="pre">ipynb</span></tt> (IPython/Jupyter notebooks)</li>
-<li><tt class="docutils literal"><span class="pre">matlabnb</span></tt> (Matlab notebooks)</li>
+<li><code class="docutils literal"><span class="pre">latex</span></code>, <code class="docutils literal"><span class="pre">pdflatex</span></code></li>
+<li><code class="docutils literal"><span class="pre">html</span></code></li>
+<li><code class="docutils literal"><span class="pre">sphinx</span></code></li>
+<li><code class="docutils literal"><span class="pre">ipynb</span></code> (IPython/Jupyter notebooks)</li>
+<li><code class="docutils literal"><span class="pre">matlabnb</span></code> (Matlab notebooks)</li>
 </ul>
 </div></blockquote>
 <p>Other formats are</p>
 <blockquote>
 <div><ul class="simple">
-<li>Wikis: <tt class="docutils literal"><span class="pre">gwiki</span></tt> (Googlecode), <tt class="docutils literal"><span class="pre">cwiki</span></tt> (Creole), <tt class="docutils literal"><span class="pre">mwiki</span></tt> (MediaWiki)</li>
-<li><tt class="docutils literal"><span class="pre">plain</span></tt> (pure ascii)</li>
-<li><tt class="docutils literal"><span class="pre">pandoc</span></tt> (various Markdown formats)</li>
+<li>Wikis: <code class="docutils literal"><span class="pre">gwiki</span></code> (Googlecode), <code class="docutils literal"><span class="pre">cwiki</span></code> (Creole), <code class="docutils literal"><span class="pre">mwiki</span></code> (MediaWiki)</li>
+<li><code class="docutils literal"><span class="pre">plain</span></code> (pure ascii)</li>
+<li><code class="docutils literal"><span class="pre">pandoc</span></code> (various Markdown formats)</li>
 </ul>
 </div></blockquote>
 </div>
@@ -587,7 +604,7 @@ mathematics and/or computer code the following formats are suitable:</p>
 <p>DocOnce has strong support for writing slides, see the
 <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html">slides demo</a>
 for examples. Each slide starts with
-a subsection heading (5 <tt class="docutils literal"><span class="pre">=</span></tt>), preceded by <tt class="docutils literal"><span class="pre">!split</span></tt> to indicate a
+a subsection heading (5 <code class="docutils literal"><span class="pre">=</span></code>), preceded by <code class="docutils literal"><span class="pre">!split</span></code> to indicate a
 new slide. Section headings are used to mark parts of the presentation.
 The slides are compiled as any other DocOnce file, but there is usually
 a second step where the text is modified to become a proper slide text
@@ -610,11 +627,11 @@ the</p>
 <div class="highlight-text"><div class="highlight"><pre>doc/tutorial/tutorial.do.txt
 </pre></div>
 </div>
-<p>The file <tt class="docutils literal"><span class="pre">make.sh</span></tt> in the <tt class="docutils literal"><span class="pre">tutorial</span></tt> directory of the
+<p>The file <code class="docutils literal"><span class="pre">make.sh</span></code> in the <code class="docutils literal"><span class="pre">tutorial</span></code> directory of the
 DocOnce source code contains a demo of how to produce a variety of
-formats.  The source of this tutorial, <tt class="docutils literal"><span class="pre">tutorial.do.txt</span></tt> is the
-starting point.  Running <tt class="docutils literal"><span class="pre">make.sh</span></tt> and studying the various generated
-files and comparing them with the original <tt class="docutils literal"><span class="pre">tutorial.do.txt</span></tt> file,
+formats.  The source of this tutorial, <code class="docutils literal"><span class="pre">tutorial.do.txt</span></code> is the
+starting point.  Running <code class="docutils literal"><span class="pre">make.sh</span></code> and studying the various generated
+files and comparing them with the original <code class="docutils literal"><span class="pre">tutorial.do.txt</span></code> file,
 gives a quick introduction to how DocOnce is used in a real case.</p>
 <p>A <a class="reference external" href="http://hplgit.github.io/teamods/writing_reports/index.html">short scientific report</a> demonstrates
 the vast choice of output formats and settings that are available.</p>
@@ -625,11 +642,11 @@ the vast choice of output formats and settings that are available.</p>
 <p id="index-0">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
-Anaconda Python and the <tt class="docutils literal"><span class="pre">conda</span></tt> program:</p>
+Anaconda Python and the <code class="docutils literal"><span class="pre">conda</span></code> program:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; conda install --channel johannr doconce
 </pre></div>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">conda</span></tt> package is available for Mac and Linux only.</p>
+<p>The <code class="docutils literal"><span class="pre">conda</span></code> package is available for Mac and Linux only.</p>
 <p>If you do not want to use Anaconda and are
 on a Debian-based Linux
 computer (running, e.g., Ubuntu), you can instead run the Bash script
@@ -646,12 +663,12 @@ Subversion, Mercurial, and Git are installed on your computer.</p>
 <p class="first admonition-title">What about Mac and Windows</p>
 <p class="last">DocOnce is primarily tested on GNU/Debian Linux systems, but also to
 a minor extent on Mac OS X. Experience with Windows is limited.
-Since most packages are Python-based and can be installed via <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></tt>
+Since most packages are Python-based and can be installed via <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code>
 no problems should arise on Mac and Windows. However, some of the
 image processing tools and spell checking apply Unix-specific software.</p>
 </div>
-<p>You can omit reading the next sections if you rely on <tt class="docutils literal"><span class="pre">conda</span></tt> or
-<tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span></tt> commands in the Bash script for installing DocOnce.</p>
+<p>You can omit reading the next sections if you rely on <code class="docutils literal"><span class="pre">conda</span></code> or
+<code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span></code> commands in the Bash script for installing DocOnce.</p>
 <div class="section" id="doconce">
 <h3>DocOnce<a class="headerlink" href="#doconce" title="Permalink to this headline">¶</a></h3>
 <p>DocOnce itself is pure Python code hosted at <a class="reference external" href="https://github.com/hplgit/doconce">https://github.com/hplgit/doconce</a>.
@@ -662,7 +679,7 @@ sudo pip install -e git+https://github.com/hplgit/doconce#egg=doconce --upgrade
 </pre></div>
 </div>
 <p>However, the recommended approach is to have a copy of the source on
-the local computer and run <tt class="docutils literal"><span class="pre">setup.py</span></tt>:</p>
+the local computer and run <code class="docutils literal"><span class="pre">setup.py</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>git clone git@github.com:hplgit/doconce.git
 cd doconce
 sudo python setup.py install
@@ -687,12 +704,12 @@ as preprocesors, spellcheck, file differences, bibliographies,
 and so on, a lot of extra software must be installed.</p>
 <div class="section" id="python-v2-7">
 <h4>Python v2.7<a class="headerlink" href="#python-v2-7" title="Permalink to this headline">¶</a></h4>
-<p>First you need Python version 2.7 and the <tt class="docutils literal"><span class="pre">pip</span></tt> installation program.
+<p>First you need Python version 2.7 and the <code class="docutils literal"><span class="pre">pip</span></code> installation program.
 Unless you already have these, we recommend to install a comprehensive
 Python bundle like <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>.</p>
 <p>You do not need more software if you avoid using preprocessors, there
 is no bibliography, and you stick to the output formats LaTeX and HTML
-(you need of course LaTeX installed to process <tt class="docutils literal"><span class="pre">.tex</span></tt> files).</p>
+(you need of course LaTeX installed to process <code class="docutils literal"><span class="pre">.tex</span></code> files).</p>
 </div>
 <div class="section" id="preprocessors-2">
 <h4>Preprocessors          (2)<a class="headerlink" href="#preprocessors-2" title="Permalink to this headline">¶</a></h4>
@@ -715,7 +732,7 @@ this extra software if you make active use of preprocessors.</p>
 <div class="section" id="bibliography">
 <h4>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h4>
 <p>The Python package <a class="reference external" href="https://bitbucket.org/logg/publish">Publish</a> is needed if you use a bibliography
-in your document (<tt class="docutils literal"><span class="pre">cite</span></tt> commands and a <tt class="docutils literal"><span class="pre">BIBFILE:</span></tt> specification).
+in your document (<code class="docutils literal"><span class="pre">cite</span></code> commands and a <code class="docutils literal"><span class="pre">BIBFILE:</span></code> specification).
 The installation is done by</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install -e hg+https://bitbucket.org/logg/publish#egg=publish
 </pre></div>
@@ -724,9 +741,9 @@ The installation is done by</p>
 <div class="section" id="image-file-handling">
 <h4>Image file handling<a class="headerlink" href="#image-file-handling" title="Permalink to this headline">¶</a></h4>
 <p>Different output formats require different formats of image files.
-For example, PDF or PNG is used for <tt class="docutils literal"><span class="pre">pdflatex</span></tt>,
+For example, PDF or PNG is used for <code class="docutils literal"><span class="pre">pdflatex</span></code>,
 PostScript for
-<tt class="docutils literal"><span class="pre">latex</span></tt>, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
+<code class="docutils literal"><span class="pre">latex</span></code>, while HTML needs JPEG, GIF, or PNG formats.  DocOnce
 calls up programs from the ImageMagick suite for converting image
 files to a proper format if needed. The <a class="reference external" href="http://www.imagemagick.org/script/index.php">ImageMagick suite</a> can be installed on all
 major platforms.  On Debian Linux (including Ubuntu) systems one can
@@ -734,14 +751,14 @@ simply write</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install imagemagick
 </pre></div>
 </div>
-<p>The convenience program <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></tt>, for combining several
-images into one, will use <tt class="docutils literal"><span class="pre">montage</span></tt> and <tt class="docutils literal"><span class="pre">convert</span></tt> from ImageMagick and
-the <tt class="docutils literal"><span class="pre">pdftk</span></tt>, <tt class="docutils literal"><span class="pre">pdfnup</span></tt>, and <tt class="docutils literal"><span class="pre">pdfcrop</span></tt> programs from the <tt class="docutils literal"><span class="pre">texlive-extra-utils</span></tt>
+<p>The convenience program <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">combine_images</span></code>, for combining several
+images into one, will use <code class="docutils literal"><span class="pre">montage</span></code> and <code class="docutils literal"><span class="pre">convert</span></code> from ImageMagick and
+the <code class="docutils literal"><span class="pre">pdftk</span></code>, <code class="docutils literal"><span class="pre">pdfnup</span></code>, and <code class="docutils literal"><span class="pre">pdfcrop</span></code> programs from the <code class="docutils literal"><span class="pre">texlive-extra-utils</span></code>
 Debian package. The latter gets installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive-extra-utils
 </pre></div>
 </div>
-<p>Automatic image conversion from EPS to PDF calls up <tt class="docutils literal"><span class="pre">epstopdf</span></tt>, which
+<p>Automatic image conversion from EPS to PDF calls up <code class="docutils literal"><span class="pre">epstopdf</span></code>, which
 can be installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive-font-utils
 </pre></div>
@@ -749,7 +766,7 @@ can be installed by</p>
 </div>
 <div class="section" id="spellcheck">
 <h4>Spellcheck<a class="headerlink" href="#spellcheck" title="Permalink to this headline">¶</a></h4>
-<p>The utility <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></tt> applies the <tt class="docutils literal"><span class="pre">ispell</span></tt> program for
+<p>The utility <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> applies the <code class="docutils literal"><span class="pre">ispell</span></code> program for
 spellcheck. On Debian (including Ubuntu) it is installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install ispell
 </pre></div>
@@ -758,35 +775,35 @@ spellcheck. On Debian (including Ubuntu) it is installed by</p>
 <div class="section" id="ptex2tex-for-latex-output">
 <h4>Ptex2tex for LaTeX Output<a class="headerlink" href="#ptex2tex-for-latex-output" title="Permalink to this headline">¶</a></h4>
 <p>Originally, DocOnce relied on the <a class="reference external" href="http://code.google.com/p/ptex2tex">ptex2tex</a> program for very flexible choice of typesetting of
-verbatim code blocks. A simplified version, <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt>, is bundled
+verbatim code blocks. A simplified version, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>, is bundled
 with DocOnce. However, even greater flexibility is now offered by the
-<tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option to <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></tt> so unless you already are
-a <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> user, it is recommended to forget about <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> and
-just use the <tt class="docutils literal"><span class="pre">--latex_code_style=</span></tt> option.</p>
-<p>The stand-alone <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> program is installed by</p>
+<code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> so unless you already are
+a <code class="docutils literal"><span class="pre">ptex2tex</span></code> user, it is recommended to forget about <code class="docutils literal"><span class="pre">ptex2tex</span></code> and
+just use the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option.</p>
+<p>The stand-alone <code class="docutils literal"><span class="pre">ptex2tex</span></code> program is installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>svn checkout http://ptex2tex.googlecode.com/svn/trunk/ ptex2tex
 cd ptex2tex
 sudo python setup.py install
 </pre></div>
 </div>
 <p>It may happen that you need additional style files, you can run
-a script, <tt class="docutils literal"><span class="pre">cp2texmf.sh</span></tt>:</p>
+a script, <code class="docutils literal"><span class="pre">cp2texmf.sh</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>cd latex
 sh cp2texmf.sh  # copy stylefiles to ~/texmf directory
 cd ../..
 </pre></div>
 </div>
 <p>This script copies some special stylefiles that
-that <tt class="docutils literal"><span class="pre">ptex2tex</span></tt> potentially makes use of. Some more standard stylefiles
+that <code class="docutils literal"><span class="pre">ptex2tex</span></code> potentially makes use of. Some more standard stylefiles
 are also needed. These are installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install texlive
 </pre></div>
 </div>
 <p>on Debian Linux (including Ubuntu) systems. TeXShop on Mac comes with
 the necessary stylefiles (if not, they can be found by googling and installed
-manually in the <tt class="docutils literal"><span class="pre">~/texmf/tex/latex/misc</span></tt> directory).</p>
-<p>Note that the <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> command, which needs no installation
-beyond DocOnce itself, can be used as a simpler alternative to the <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
+manually in the <code class="docutils literal"><span class="pre">~/texmf/tex/latex/misc</span></code> directory).</p>
+<p>Note that the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> command, which needs no installation
+beyond DocOnce itself, can be used as a simpler alternative to the <code class="docutils literal"><span class="pre">ptex2tex</span></code>
 program.</p>
 </div>
 <div class="section" id="pygments-and-the-minted-code-style">
@@ -795,16 +812,16 @@ program.</p>
 popular for typesetting code.
 This style requires the package <a class="reference external" href="http://pygments.org">Pygments</a>
 to be installed. On Debian Linux, the simplest approach is to
-install <tt class="docutils literal"><span class="pre">sphinx</span></tt>:</p>
+install <code class="docutils literal"><span class="pre">sphinx</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install sphinx
 </pre></div>
 </div>
-<p>All use of the minted style requires the <tt class="docutils literal"><span class="pre">-shell-escape</span></tt> command-line
-argument when running LaTeX, i.e., <tt class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">-shell-escape</span></tt>.</p>
-<p>Inline comments apply the <tt class="docutils literal"><span class="pre">todonotes</span></tt> LaTeX package if the option
-<tt class="docutils literal"><span class="pre">--latex_todonotes</span></tt> is given.  The <tt class="docutils literal"><span class="pre">todonotes</span></tt> package requires
-several other packages: <tt class="docutils literal"><span class="pre">xcolor</span></tt>, <tt class="docutils literal"><span class="pre">ifthen</span></tt>, <tt class="docutils literal"><span class="pre">xkeyval</span></tt>, <tt class="docutils literal"><span class="pre">tikz</span></tt>, <tt class="docutils literal"><span class="pre">calc</span></tt>,
-<tt class="docutils literal"><span class="pre">graphicx</span></tt>, and <tt class="docutils literal"><span class="pre">setspace</span></tt>. The relevant Debian packages for
+<p>All use of the minted style requires the <code class="docutils literal"><span class="pre">-shell-escape</span></code> command-line
+argument when running LaTeX, i.e., <code class="docutils literal"><span class="pre">pdflatex</span> <span class="pre">-shell-escape</span></code>.</p>
+<p>Inline comments apply the <code class="docutils literal"><span class="pre">todonotes</span></code> LaTeX package if the option
+<code class="docutils literal"><span class="pre">--latex_todonotes</span></code> is given.  The <code class="docutils literal"><span class="pre">todonotes</span></code> package requires
+several other packages: <code class="docutils literal"><span class="pre">xcolor</span></code>, <code class="docutils literal"><span class="pre">ifthen</span></code>, <code class="docutils literal"><span class="pre">xkeyval</span></code>, <code class="docutils literal"><span class="pre">tikz</span></code>, <code class="docutils literal"><span class="pre">calc</span></code>,
+<code class="docutils literal"><span class="pre">graphicx</span></code>, and <code class="docutils literal"><span class="pre">setspace</span></code>. The relevant Debian packages for
 installing all this are listed below.</p>
 </div>
 <div class="section" id="latex-packages">
@@ -812,14 +829,14 @@ installing all this are listed below.</p>
 <p>Many LaTeX packages are potentially needed, depending on various
 constructions in the text and command-line options used when compling DocOnce to
 LaTeX. The
-standard packages always required are <tt class="docutils literal"><span class="pre">relsize</span></tt>, <tt class="docutils literal"><span class="pre">makeidx</span></tt>,
-<tt class="docutils literal"><span class="pre">setspace</span></tt>, <tt class="docutils literal"><span class="pre">color</span></tt>, <tt class="docutils literal"><span class="pre">amsmath</span></tt>, <tt class="docutils literal"><span class="pre">amsfonts</span></tt>, <tt class="docutils literal"><span class="pre">xcolor</span></tt>, <tt class="docutils literal"><span class="pre">bm</span></tt>,
-<tt class="docutils literal"><span class="pre">microtype</span></tt>, <tt class="docutils literal"><span class="pre">inputenc</span></tt>, and <tt class="docutils literal"><span class="pre">hyperref</span></tt>.
-Optional packages that might be included in the <tt class="docutils literal"><span class="pre">.tex</span></tt> output are <tt class="docutils literal"><span class="pre">minted</span></tt>,
-<tt class="docutils literal"><span class="pre">listings</span></tt>, <tt class="docutils literal"><span class="pre">fancyvrb</span></tt>, <tt class="docutils literal"><span class="pre">xunicode</span></tt>, <tt class="docutils literal"><span class="pre">inputenc</span></tt>, <tt class="docutils literal"><span class="pre">helvet</span></tt>, <tt class="docutils literal"><span class="pre">mathpazo</span></tt>, <tt class="docutils literal"><span class="pre">wrapfig</span></tt>,
-<tt class="docutils literal"><span class="pre">calc</span></tt>, <tt class="docutils literal"><span class="pre">ifthen</span></tt>, <tt class="docutils literal"><span class="pre">xkeyval</span></tt>, <tt class="docutils literal"><span class="pre">tikz</span></tt>, <tt class="docutils literal"><span class="pre">graphicx</span></tt>, <tt class="docutils literal"><span class="pre">setspace</span></tt>, <tt class="docutils literal"><span class="pre">shadow</span></tt>,
-<tt class="docutils literal"><span class="pre">disable</span></tt>, <tt class="docutils literal"><span class="pre">todonotes</span></tt>, <tt class="docutils literal"><span class="pre">lineno</span></tt>, <tt class="docutils literal"><span class="pre">xr</span></tt>, <tt class="docutils literal"><span class="pre">framed</span></tt>, <tt class="docutils literal"><span class="pre">mdframe</span></tt>,
-<tt class="docutils literal"><span class="pre">movie15</span></tt>, <tt class="docutils literal"><span class="pre">a4paper</span></tt>, and <tt class="docutils literal"><span class="pre">a6paper</span></tt>.</p>
+standard packages always required are <code class="docutils literal"><span class="pre">relsize</span></code>, <code class="docutils literal"><span class="pre">makeidx</span></code>,
+<code class="docutils literal"><span class="pre">setspace</span></code>, <code class="docutils literal"><span class="pre">color</span></code>, <code class="docutils literal"><span class="pre">amsmath</span></code>, <code class="docutils literal"><span class="pre">amsfonts</span></code>, <code class="docutils literal"><span class="pre">xcolor</span></code>, <code class="docutils literal"><span class="pre">bm</span></code>,
+<code class="docutils literal"><span class="pre">microtype</span></code>, <code class="docutils literal"><span class="pre">inputenc</span></code>, and <code class="docutils literal"><span class="pre">hyperref</span></code>.
+Optional packages that might be included in the <code class="docutils literal"><span class="pre">.tex</span></code> output are <code class="docutils literal"><span class="pre">minted</span></code>,
+<code class="docutils literal"><span class="pre">listings</span></code>, <code class="docutils literal"><span class="pre">fancyvrb</span></code>, <code class="docutils literal"><span class="pre">xunicode</span></code>, <code class="docutils literal"><span class="pre">inputenc</span></code>, <code class="docutils literal"><span class="pre">helvet</span></code>, <code class="docutils literal"><span class="pre">mathpazo</span></code>, <code class="docutils literal"><span class="pre">wrapfig</span></code>,
+<code class="docutils literal"><span class="pre">calc</span></code>, <code class="docutils literal"><span class="pre">ifthen</span></code>, <code class="docutils literal"><span class="pre">xkeyval</span></code>, <code class="docutils literal"><span class="pre">tikz</span></code>, <code class="docutils literal"><span class="pre">graphicx</span></code>, <code class="docutils literal"><span class="pre">setspace</span></code>, <code class="docutils literal"><span class="pre">shadow</span></code>,
+<code class="docutils literal"><span class="pre">disable</span></code>, <code class="docutils literal"><span class="pre">todonotes</span></code>, <code class="docutils literal"><span class="pre">lineno</span></code>, <code class="docutils literal"><span class="pre">xr</span></code>, <code class="docutils literal"><span class="pre">framed</span></code>, <code class="docutils literal"><span class="pre">mdframe</span></code>,
+<code class="docutils literal"><span class="pre">movie15</span></code>, <code class="docutils literal"><span class="pre">a4paper</span></code>, and <code class="docutils literal"><span class="pre">a6paper</span></code>.</p>
 <p>Relevant Debian packages that gives you all of these LaTeX packages are</p>
 <div class="highlight-text"><div class="highlight"><pre>texlive
 texlive-extra-utils
@@ -827,12 +844,12 @@ texlive-latex-extra
 texlive-font-utils
 </pre></div>
 </div>
-<p>Alternatively, one may pull in <tt class="docutils literal"><span class="pre">texlive-full</span></tt> to get all available
+<p>Alternatively, one may pull in <code class="docutils literal"><span class="pre">texlive-full</span></code> to get all available
 style files.</p>
-<p>If you want to use the <em>anslistings</em> code environment with <tt class="docutils literal"><span class="pre">ptex2tex</span></tt>
-(<tt class="docutils literal"><span class="pre">.ptex2tex.cfg</span></tt> styles <tt class="docutils literal"><span class="pre">Python_ANS</span></tt>, <tt class="docutils literal"><span class="pre">Python_ANSt</span></tt>, <tt class="docutils literal"><span class="pre">Cpp_ANS</span></tt>, etc.) or
-<tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></tt> (<tt class="docutils literal"><span class="pre">envir=ans</span></tt> or <tt class="docutils literal"><span class="pre">envir=ans:nt</span></tt>), you need the
-<tt class="docutils literal"><span class="pre">anslistings.sty</span></tt> file. It can be obtained from
+<p>If you want to use the <em>anslistings</em> code environment with <code class="docutils literal"><span class="pre">ptex2tex</span></code>
+(<code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code> styles <code class="docutils literal"><span class="pre">Python_ANS</span></code>, <code class="docutils literal"><span class="pre">Python_ANSt</span></code>, <code class="docutils literal"><span class="pre">Cpp_ANS</span></code>, etc.) or
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> (<code class="docutils literal"><span class="pre">envir=ans</span></code> or <code class="docutils literal"><span class="pre">envir=ans:nt</span></code>), you need the
+<code class="docutils literal"><span class="pre">anslistings.sty</span></code> file. It can be obtained from
 the <a class="reference external" href="https://code.google.com/p/ptex2tex/source/browse/trunk/latex/styles/with_license/anslistings.sty">ptex2tex source</a>. The same code style is in
 &#8220;modern DocOnce&#8221; just implemented by the command-line option</p>
 <div class="highlight-text"><div class="highlight"><pre>&quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
@@ -841,7 +858,7 @@ the <a class="reference external" href="https://code.google.com/p/ptex2tex/sourc
 </div>
 <div class="section" id="sphinx-or-restructuredtext-output">
 <h4>Sphinx or reStructuredText Output<a class="headerlink" href="#sphinx-or-restructuredtext-output" title="Permalink to this headline">¶</a></h4>
-<p>Output to <tt class="docutils literal"><span class="pre">sphinx</span></tt> or <tt class="docutils literal"><span class="pre">rst</span></tt> requires the
+<p>Output to <code class="docutils literal"><span class="pre">sphinx</span></code> or <code class="docutils literal"><span class="pre">rst</span></code> requires the
 <a class="reference external" href="http://sphinx.pocoo.org">Sphinx software</a>,
 installed by</p>
 <div class="highlight-text"><div class="highlight"><pre>pip install sphinx --upgrade
@@ -870,7 +887,7 @@ pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecel
 <div class="highlight-text"><div class="highlight"><pre>pip install -e git+https://bitbucket.org/hplbit/pygments-ipython-console#egg=pygments-ipython-console
 </pre></div>
 </div>
-<p>To make OpenOffice or LibreOffice documents from <tt class="docutils literal"><span class="pre">rst</span></tt> output, you
+<p>To make OpenOffice or LibreOffice documents from <code class="docutils literal"><span class="pre">rst</span></code> output, you
 will need more software, typically the following on a Debian system:</p>
 <div class="highlight-text"><div class="highlight"><pre>sudo apt-get install unovonv libreoffice libreoffice-dmaths
 </pre></div>
@@ -878,9 +895,9 @@ will need more software, typically the following on a Debian system:</p>
 </div>
 <div class="section" id="markdown-and-pandoc-output">
 <h4>Markdown and Pandoc Output<a class="headerlink" href="#markdown-and-pandoc-output" title="Permalink to this headline">¶</a></h4>
-<p>The DocOnce format <tt class="docutils literal"><span class="pre">pandoc</span></tt> outputs the document in various Markdown
+<p>The DocOnce format <code class="docutils literal"><span class="pre">pandoc</span></code> outputs the document in various Markdown
 versions: the Pandoc
-extended Markdown format (which via the <tt class="docutils literal"><span class="pre">pandoc</span></tt> program can be
+extended Markdown format (which via the <code class="docutils literal"><span class="pre">pandoc</span></code> program can be
 translated to a range of other formats), strict Markdown, and
 GitHub-flavored Markdown. Installation of <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a>, written in Haskell, is most
 easily done by</p>
@@ -891,7 +908,7 @@ easily done by</p>
 </div>
 <div class="section" id="epydoc-output">
 <h4>Epydoc Output<a class="headerlink" href="#epydoc-output" title="Permalink to this headline">¶</a></h4>
-<p>When the output format is <tt class="docutils literal"><span class="pre">epydoc</span></tt> one needs that program too, installed
+<p>When the output format is <code class="docutils literal"><span class="pre">epydoc</span></code> one needs that program too, installed
 by</p>
 <div class="highlight-text"><div class="highlight"><pre>svn co https://epydoc.svn.sourceforge.net/svnroot/epydoc/trunk/epydoc epydoc
 cd epydoc
@@ -902,21 +919,21 @@ cd ..
 <p><strong>Remark.</strong>
 Several of the packages above installed from source code
 are also available in Debian-based system through the
-<tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span></tt> command. However, we recommend installation directly
+<code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span></code> command. However, we recommend installation directly
 from the version control system repository as there might be important
-updates and bug fixes. For <tt class="docutils literal"><span class="pre">svn</span></tt> directories, go to the directory,
-run <tt class="docutils literal"><span class="pre">svn</span> <span class="pre">update</span></tt>, and then <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>. For
-Mercurial (<tt class="docutils literal"><span class="pre">hg</span></tt>) directories, go to the directory, run
-<tt class="docutils literal"><span class="pre">hg</span> <span class="pre">pull;</span> <span class="pre">hg</span> <span class="pre">update</span></tt>, and then <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>.</p>
+updates and bug fixes. For <code class="docutils literal"><span class="pre">svn</span></code> directories, go to the directory,
+run <code class="docutils literal"><span class="pre">svn</span> <span class="pre">update</span></code>, and then <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>. For
+Mercurial (<code class="docutils literal"><span class="pre">hg</span></code>) directories, go to the directory, run
+<code class="docutils literal"><span class="pre">hg</span> <span class="pre">pull;</span> <span class="pre">hg</span> <span class="pre">update</span></code>, and then <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>.</p>
 </div>
 <div class="section" id="analyzing-file-differences">
 <h4>Analyzing file differences<a class="headerlink" href="#analyzing-file-differences" title="Permalink to this headline">¶</a></h4>
-<p>The <tt class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span> <span class="pre">file1</span> <span class="pre">file</span> <span class="pre">prog</span></tt> command for illustrating differences between
-two files <tt class="docutils literal"><span class="pre">file1</span></tt> and <tt class="docutils literal"><span class="pre">file2</span></tt> using the program <tt class="docutils literal"><span class="pre">prog</span></tt> requires <tt class="docutils literal"><span class="pre">prog</span></tt>
-to be installed. By default, <tt class="docutils literal"><span class="pre">prog</span></tt> is <tt class="docutils literal"><span class="pre">difflib</span></tt> which comes with Python
-and is always present if you have DocOnce installed. Another choice, <tt class="docutils literal"><span class="pre">diff</span></tt>,
+<p>The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">diff</span> <span class="pre">file1</span> <span class="pre">file</span> <span class="pre">prog</span></code> command for illustrating differences between
+two files <code class="docutils literal"><span class="pre">file1</span></code> and <code class="docutils literal"><span class="pre">file2</span></code> using the program <code class="docutils literal"><span class="pre">prog</span></code> requires <code class="docutils literal"><span class="pre">prog</span></code>
+to be installed. By default, <code class="docutils literal"><span class="pre">prog</span></code> is <code class="docutils literal"><span class="pre">difflib</span></code> which comes with Python
+and is always present if you have DocOnce installed. Another choice, <code class="docutils literal"><span class="pre">diff</span></code>,
 should be available on all Unix/Linux systems. Other choices, their
-URL, and their <tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span></tt> command on Debian (Ubuntu) systems
+URL, and their <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span></code> command on Debian (Ubuntu) systems
 appear in the table below.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -931,31 +948,31 @@ appear in the table below.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">pdiff</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">pdiff</span></code></td>
 <td><a class="reference external" href="http://www.gnu.org/software/a2ps/">a2ps</a> <a class="reference external" href="http://www.gnu.org/software/wdiff/">wdiff</a></td>
-<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">a2ps</span> <span class="pre">wdiff</span> <span class="pre">texlive-latex-extra</span> <span class="pre">texlive-latex-recommended</span></tt></td>
+<td><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">a2ps</span> <span class="pre">wdiff</span> <span class="pre">texlive-latex-extra</span> <span class="pre">texlive-latex-recommended</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">latexdiff</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">latexdiff</span></code></td>
 <td><a class="reference external" href="http://www.ctan.org/pkg/latexdiff">latexdiff</a></td>
-<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">latexdiff</span></tt></td>
+<td><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">latexdiff</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">kdiff3</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">kdiff3</span></code></td>
 <td><a class="reference external" href="http://kdiff3.sourceforge.net/">kdiff3</a></td>
-<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">kdiff3</span></tt></td>
+<td><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">kdiff3</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">diffuse</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">diffuse</span></code></td>
 <td><a class="reference external" href="http://diffuse.sourceforge.net/">diffuse</a></td>
-<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">diffuse</span></tt></td>
+<td><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">diffuse</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">xxdiff</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">xxdiff</span></code></td>
 <td><a class="reference external" href="http://xxdiff.sourceforge.net/local/">xxdiff</a></td>
-<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">xxdiff</span></tt></td>
+<td><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">xxdiff</span></code></td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">meld</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">meld</span></code></td>
 <td><a class="reference external" href="http://meldmerge.org/">meld</a></td>
-<td><tt class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">meld</span></tt></td>
+<td><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">meld</span></code></td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">tkdiff.tcl</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tkdiff.tcl</span></code></td>
 <td><a class="reference external" href="https://sourceforge.net/projects/tkdiff/">tkdiff</a></td>
 <td>not in Debian</td>
 </tr>
@@ -970,7 +987,7 @@ appear in the table below.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <center>
             <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
@@ -1031,12 +1048,14 @@ appear in the table below.</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">DocOnce: Document Once, Include Anywhere</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/tutorial.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tutorial.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -1053,7 +1072,7 @@ appear in the table below.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -1062,7 +1081,7 @@ appear in the table below.</p>
         <li class="right" >
           <a href="index.html" title="DocOnce: Document Once, Include Anywhere"
              >previous</a> |</li>
-        <li><a href="index.html">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">DocOnce: Document Once, Include Anywhere</a> &raquo;</li> 
       </ul>
     </div>
 <div class="wrapper">

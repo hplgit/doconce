@@ -19,14 +19,14 @@ system doconce format html tutorial  --html_style=bootswatch_readable --html_cod
 doconce replace XXX1 '(ref{myeq1})' tutorial.html
 
 # latex
-system doconce format latex tutorial --latex_font=helvetica --latex_code_style=pyg --no_mako
+system doconce format latex tutorial --latex_font=helvetica --latex_code_style=pyg --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.tex
 latex -shell-escape tutorial.tex
 latex -shell-escape tutorial.tex
 dvipdf tutorial.dvi
 
 # Sphinx
-system doconce format sphinx tutorial --no_mako
+system doconce format sphinx tutorial --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.rst
 system doconce sphinx_dir theme=cbc tutorial
 cp tutorial.rst tutorial.sphinx.rst
@@ -43,7 +43,7 @@ cd ../../..
 #firefox sphinx-rootdir/_build/html/index.html
 
 # reStructuredText:
-system doconce format rst tutorial  --no_mako
+system doconce format rst tutorial  --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.rst
 rst2xml.py tutorial.rst > tutorial.xml
 rst2odt.py tutorial.rst > tutorial.odt
@@ -53,19 +53,19 @@ latex tutorial.rst.tex
 dvipdf tutorial.rst.dvi
 
 # Other formats:
-system doconce format plain tutorial.do.txt --no_mako
+system doconce format plain tutorial.do.txt --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.txt
-system doconce format gwiki tutorial.do.txt --no_mako
+system doconce format gwiki tutorial.do.txt --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.gwiki
-system doconce format cwiki tutorial.do.txt --no_mako
+system doconce format cwiki tutorial.do.txt --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.cwiki
-system doconce format mwiki tutorial.do.txt --no_mako
+system doconce format mwiki tutorial.do.txt --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.mwiki
-system doconce format st tutorial.do.txt --no_mako
+system doconce format st tutorial.do.txt --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.st
-system doconce format epytext tutorial.do.txt --no_mako
+system doconce format epytext tutorial.do.txt --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.epytext
-system doconce format pandoc tutorial.do.txt --strict_markdown_output --github_md --no_mako
+system doconce format pandoc tutorial.do.txt --strict_markdown_output --github_md --no_mako --no_abort
 doconce replace XXX1 '(ref{myeq1})' tutorial.md
 
 rm -f *.ps
