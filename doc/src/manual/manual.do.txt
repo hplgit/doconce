@@ -633,7 +633,7 @@ save button that can be used to save the plot to PNG format.
 This can be used for Sphinx, wikis, and pdfLaTeX (although the latter would
 appreciate real vector graphics in a PDF plot).
 
-The plot example below is so advanced that there is no natural
+The plot example above is so advanced that there is no natural
 counterpart in a static PNG or PDF plot.
 !enotice
 

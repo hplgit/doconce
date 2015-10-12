@@ -5865,10 +5865,10 @@ def doconce_rst_split(parts, basename, filename):
         for label in parts_label[i]:  # assume all labels are unique
             parts_label2part[label] = i
     label2tag = {}
+    local_eq_no = 1
     for pn, part_label in enumerate(parts_label):
-        local_eq_no = 1
         for label in part_label:
-            label2tag[label] = '%d.%d' % (pn+1, local_eq_no)
+            label2tag[label] = '%d' % (local_eq_no)
             local_eq_no += 1
 
     # The definition of |nbsp| must be repeated in each part, except the first.
@@ -5920,23 +5920,25 @@ def doconce_rst_split(parts, basename, filename):
 
         for label in parts_label[pn]:
             # All math labels get an anchor above for equation refs
-            # from other parts. The anchor is Eq:label
-            text = re.sub(r'.. math::\s+:label: %s$' % label,
-                          r".. _Eq:%s:\n\n.. math::\n   :label: %s" %
-                          (label, label), text, flags=re.MULTILINE)
+            # from other parts. The anchor is Eq:label.
+            # Also remove the label when we insert a \tag{}.
+            text = re.sub(r'.. math::\s+:label: %s\s+' % label,
+                          r".. _Eq:%s:\n\n.. math::\n\n    \\tag{%s}\n    " %
+                          (label, label2tag[label]), text, flags=re.MULTILINE)
         local_eqrefs = re.findall(r':eq:`(.+?)`', text)
         for label in local_eqrefs:
             # (Ignore non-existent labels - sphinx.py removes labels
             # in non-align math environments anyway)
-            if parts_label2part.get(label, None) == pn:
-                # References to local labels in this part apply the
-                # standard syntax
-                pass
-            else:
-                text = text.replace(
-                    r':eq:`%s`' % label,
-                    ':ref:`(%s) <Eq:%s>`' %
-                    (label2tag.get(label, 'label:removed'), label))
+
+            #if parts_label2part.get(label, None) == pn:
+            # References to local labels in this part used to apply the
+            # standard syntax - not anymore since we have tags for all
+            # labels
+            #pass
+            text = text.replace(
+                r':eq:`%s`' % label,
+                ':ref:`(%s) <Eq:%s>`' %
+                (label2tag.get(label, 'label:removed'), label))
         f = open(part_filename, 'w')
         f.write(text)
         f.close()

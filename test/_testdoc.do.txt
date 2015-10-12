@@ -547,12 +547,12 @@ $\half$, $\halfi$, $\x$, $\Ddt{u}$,
 both inline and in block:
 
 !bt
-\begin{align*}
-\Ddt{u} &= 0
+\begin{align}
+\Ddt{u} &= 0\nonumber
 \\
 \half &= \halfi\\
 \half\x &= \normalvec
-\end{align*}
+\end{align}
 !et
 
 Or with align with label and numbers:

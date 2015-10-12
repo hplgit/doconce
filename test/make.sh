@@ -211,7 +211,7 @@ system doconce slides_html slides2 reveal --html_slide_theme=beigesmall
 cp slides2.html slides2_reveal.html
 
 rm -f *.aux
-system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER
+system doconce format pdflatex slides2 --latex_title_layout=beamer -DBEAMER --no_abort
 system doconce ptex2tex slides2 envir=minted
 system doconce slides_beamer slides2
 
@@ -265,20 +265,20 @@ doconce ipynb2doconce nbdemo.ipynb
 # Test math
 rm -f *.aux
 name=math_test
-doconce format pdflatex $name
+doconce format pdflatex $name --no_abort
 doconce ptex2tex $name
 pdflatex $name
-system doconce format html $name $rawgit
+system doconce format html $name $rawgit --no_abort
 cp $name.html ${name}_html.html
-doconce format sphinx $name
+doconce format sphinx $name --no_abort
 doconce sphinx_dir dirname=sphinx-rootdir-math $name
 cp automake_sphinx.py automake_sphinx_math_test.py
 python automake_sphinx.py
-doconce format pandoc $name
+doconce format pandoc $name --no_abort
 # Do not use pandoc directly because it does not support MathJax sufficiently well
-doconce md2html $name.md
+doconce md2html $name.md --no_abort
 cp $name.html ${name}_pandoc.html
-doconce format pandoc $name
+doconce format pandoc $name --no_abort
 doconce md2latex $name
 
 # Test all types of copyright syntax

@@ -24,7 +24,7 @@ doconce > doconce_program.sh
 doconce format html $name --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
 
 # pdflatex
-system doconce format pdflatex $name --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb
+system doconce format pdflatex $name --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb --no_abort
 # Since we have native latex table and --no_ampersand_quote, we need to
 # manually fix the quote examples elsewhere
 doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' $name.tex
@@ -33,7 +33,7 @@ system pdflatex -shell-escape $name
 system pdflatex -shell-escape $name
 
 # Sphinx
-system doconce format sphinx $name --no_preprocess
+system doconce format sphinx $name --no_preprocess --no_abort
 rm -rf sphinx-rootdir
 system doconce sphinx_dir theme=cbc $name
 doconce replace 'doconce format sphinx %s' 'doconce format sphinx %s --no-preprocess' automake_sphinx.py
@@ -41,7 +41,7 @@ system python automake_sphinx.py
 cp $name.rst $name.sphinx.rst  # save
 
 # reStructuredText:
-system doconce format rst $name --no_preprocess
+system doconce format rst $name --no_preprocess --no_abort
 rst2xml.py $name.rst > $name.xml
 rst2odt.py $name.rst > $name.odt
 rst2html.py $name.rst > $name.rst.html
@@ -51,13 +51,13 @@ latex $name.rst.tex
 dvipdf $name.rst.dvi
 
 # Other formats:
-system doconce format plain $name --no_preprocess
-system doconce format gwiki $name --no_preprocess
-system doconce format mwiki $name --no_preprocess
-system doconce format cwiki $name --no_preprocess
-system doconce format st $name --no_preprocess
-system doconce format epytext $name --no_preprocess
-system doconce format pandoc $name --no_preprocess --strict_markdown_output --github_md
+system doconce format plain $name --no_preprocess --no_abort
+system doconce format gwiki $name --no_preprocess --no_abort
+system doconce format mwiki $name --no_preprocess --no_abort
+system doconce format cwiki $name --no_preprocess --no_abort
+system doconce format st $name --no_preprocess --no_abort
+system doconce format epytext $name --no_preprocess --no_abort
+system doconce format pandoc $name --no_preprocess --strict_markdown_output --github_md --no_abort
 
 rm -rf demo
 mkdir demo

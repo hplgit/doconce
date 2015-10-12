@@ -15,7 +15,7 @@ def bokeh_plot(u, t, legends, u_e, t_e, I, w, t_range, filename):
             'save,box_select,lasso_select'
     u_range = [-1.2*I, 1.2*I]
     font_size = '8pt'
-    p = []
+    p = []  # list of all individual plots
     p_ = plt.figure(
         width=300, plot_height=250, title=legends[0],
         x_axis_label='t', y_axis_label='u',

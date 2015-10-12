@@ -582,10 +582,17 @@ def add_labels_to_all_numbered_equations(tex_blocks):
     n = 0  # equation number
     for i in range(len(tex_blocks)):
         if 'end{equation}' in tex_blocks[i]:
-            if not 'label{' in tex_blocks[i]:
+            if not 'label{' in tex_blocks[i] and \
+                   '\\nonumber' not in tex_blocks[i]:
                 n += 1
                 tex_blocks[i] = tex_blocks[i].replace(
                     r'\end{equation}', ' label{_auto%d}' % n + '\n\\end{equation}')
+            if '\\nonumber' in tex_blocks[i]:
+                tex_blocks[i] = tex_blocks[i].replace(
+                    'begin{equation}', 'begin{equation*}')
+                tex_blocks[i] = tex_blocks[i].replace(
+                    'end{equation}', 'end{equation*}')
+
         if 'begin{align}' in tex_blocks[i]:
             # Assume that \\ is only appearing as delimiter between
             # equations (i.e., no \begin{array} environment with \\

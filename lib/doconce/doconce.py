@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 global dofile_basename
 
@@ -356,6 +357,15 @@ def fix(filestr, format, verbose=0):
 def syntax_check(filestr, format):
     """Check for common errors in the doconce syntax."""
 
+    # Check that we don't have multiple labels
+    # (gives error if we have an example in !bc and then rendered label
+    # afterwards...)
+    labels = re.findall('label\{(.+?)\}', filestr)
+    multiple_labels = list(set([label for label in labels if labels.count(label) > 1]))
+    if multiple_labels:
+        print '*** error: found multiple lables:'
+        print '   ', ' '.join(multiple_labels)
+        _abort()
     # Consistency of implemented environments
     user_defined_envirs = list(set(re.findall(r'^!b(u-[^ ]+)', filestr, flags=re.MULTILINE)))
     envirs = doconce_envirs() + user_defined_envirs
@@ -3936,8 +3946,9 @@ def doconce2format(filestr, format):
 
     if format in ('html', 'sphinx', 'ipynb', 'matlabnb'):
         tex_blocks = add_labels_to_all_numbered_equations(tex_blocks)
-        # needed for the split functionality when all labels are
-        # given tags
+        # needed for the split functionality when all user-defined labels are
+        # given tags, then we need labels in all environments that will
+        # create equation numbers
 
 
     debugpr('The file after removal of code/tex blocks:', filestr)
@@ -3958,6 +3969,23 @@ def doconce2format(filestr, format):
     debugpr('The tex blocks:', print_blocks(tex_blocks))
 
     report_progress('removed all verbatim and latex blocks')
+
+    # Next step: substitute latex-style newcommands in filestr and tex_blocks
+    # (not in code_blocks)
+    from expand_newcommands import expand_newcommands
+    if format not in ('latex', 'pdflatex'):
+        newcommand_files = glob.glob('newcommands*_replace.tex')
+        if format in ('sphinx', 'pandoc', 'ipynb'):
+            # replace all newcommands in these formats
+            # (none of them likes a bulk of newcommands, only latex and html)
+            newcommand_files = [name for name in glob.glob('newcommands*.tex')
+                                if not name.endswith('.p.tex')]
+            # (note: could use substitutions (|newcommand|) in rst/sphinx,
+            # but they don't allow arguments so expansion of \newcommand
+            # is probably a better solution)
+        filestr = expand_newcommands(newcommand_files, filestr) # inline math
+        for i in range(len(tex_blocks)):
+            tex_blocks[i] = expand_newcommands(newcommand_files, tex_blocks[i])
 
     # Check URLs to see if they are valid
     if option('urlcheck'):
@@ -4089,24 +4117,6 @@ def doconce2format(filestr, format):
         cpattern = re.compile('^%s( *| +.*)$' % command, re.MULTILINE)
         filestr = cpattern.sub(split_comment, filestr)
     debugpr('The file after commenting out %s:' % ', '.join(commands), filestr)
-
-
-    # Next step: substitute latex-style newcommands in filestr and tex_blocks
-    # (not in code_blocks)
-    from expand_newcommands import expand_newcommands
-    if format not in ('latex', 'pdflatex'):
-        newcommand_files = glob.glob('newcommands*_replace.tex')
-        if format in ('sphinx', 'pandoc', 'ipynb'):
-            # replace all newcommands in these formats
-            # (none of them likes a bulk of newcommands, only latex and html)
-            newcommand_files = [name for name in glob.glob('newcommands*.tex')
-                                if not name.endswith('.p.tex')]
-            # (note: could use substitutions (|newcommand|) in rst/sphinx,
-            # but they don't allow arguments so expansion of \newcommand
-            # is probably a better solution)
-        filestr = expand_newcommands(newcommand_files, filestr) # inline math
-        for i in range(len(tex_blocks)):
-            tex_blocks[i] = expand_newcommands(newcommand_files, tex_blocks[i])
 
     # Next step: subst :class:`ClassName` by `ClassName` for
     # non-rst/sphinx formats:
