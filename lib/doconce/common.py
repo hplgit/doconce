@@ -561,6 +561,13 @@ def remove_code_and_tex(filestr, format):
                 print '    Place info about editing after the block.'
             print block
             _abort()
+        # Blank lines within tex block is not accepted by latex
+        # (strip first because blank line afterwards is ok)
+        m = re.search(r'^\s*$', block.strip(), flags=re.MULTILINE)
+        if m:
+            print '*** error: blank line is illegal in latex block'
+            print block
+            _abort()
 
     # Remove |\pause| in code blocks if not latex
     if format not in ('latex', 'pdflatex'):
