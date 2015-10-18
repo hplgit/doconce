@@ -19,7 +19,11 @@ temp*
 *.dvi
 *.aux
 *.blg
+*.bbl
 *.idx
+*.ilg
+*.ind
+*.loe
 *.nav
 *.out
 *.toc
@@ -37,3 +41,4 @@ _minted-*
 .*_html_file_collection
 .*.exerinfo
 .*.copyright
+sphinx-rootdir

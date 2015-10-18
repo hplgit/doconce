@@ -4741,6 +4741,59 @@ a DocOnce document to a ready docoment in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.
 
 
+===== Git `.gitignore` File =====
+label{gitignore}
+
+For DocOnce repositories using the Git version control system, the
+follwing `.gitignore` file is useful:
+
+!bc
+syntax: glob
+# compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+build
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.bbl
+*.idx
+*.ilg
+*.ind
+*.loe
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+.idea
+__pycache__
+_minted-*
+# doconce:
+.*_html_file_collection
+.*.exerinfo
+.*.copyright
+sphinx-rootdir
+!ec
+
 
 ===== Emacs DocOnce Formatter =====
 label{emacs:doconce}
