@@ -1,0 +1,39 @@
+syntax: glob
+# compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+build
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.idx
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+.idea
+__pycache__
+_minted-*
+# doconce:
+.*_html_file_collection
+.*.exerinfo
+.*.copyright
