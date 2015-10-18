@@ -3389,8 +3389,20 @@ open=right,              %% start new chapters on odd-numbered pages
                 INTRO['latex'] += r"""
 \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
 """
-            INTRO['latex'] += r"""
-% Ensure copyright on titlepage (article) and chapter pages (article)
+
+            if latex_style.startswith('Springer'):
+                INTRO['latex'] += r"""
+% Ensure copyright on chapter pages (only)
+\fancypagestyle{bchap}{
+  \fancyhf{}
+  \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
+%  \renewcommand{\footrulewidth}{0mm}
+  \renewcommand{\headrulewidth}{0mm}
+}
+"""
+            else:
+                INTRO['latex'] += r"""
+% Ensure copyright on titlepage (article style) and chapter pages (book style)
 \fancypagestyle{plain}{
   \fancyhf{}
   \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}

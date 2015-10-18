@@ -50,6 +50,16 @@ Terminal> git push origin gh-pages
 A common error is to link to addresses starting with `https://github.com`
 rather than the required `http://username.github.io/`.
 
+===== ``Blank line is illegal in latex block'', but there is no blank line =====
+
+Are you compiling for `sphinx`, `ipynb`, `pandoc`? In that case,
+`align` environments are rewritten as sequences of plain `equation`
+environments (since MathJax for these output formats does not support
+numbered equations in `align`). If a linebreak `\\` in the `align`
+environment appears on its own line, this line will be blank in the
+equation environment and cause the error message. Simply move the
+linebreak up at the end of the preceding line.
+
 ===== A newline in equations (double backslash) becomes single backslash and eats up spaces =====
 
 This is a problem with the Mako preprocessor and files that have been
