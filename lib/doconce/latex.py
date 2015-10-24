@@ -2782,7 +2782,8 @@ open=right,              %% start new chapters on odd-numbered pages
 %%\pagestyle{headings}
 \usepackage{mathptmx}
 \usepackage{helvet}
-%%\usepackage{courier} %% note: courier monospace font is wide
+%%\usepackage{courier} %% note: courier monospace font is too wide
+\usepackage{lmodern}   %% not svmono style, but gives prettier math symbols
 \usepackage{type1cm}
 \usepackage{framed}
 \usepackage{booktabs}
@@ -4114,10 +4115,13 @@ open=right,              %% start new chapters on odd-numbered pages
     # We don't need all the complicated stuff above when we use
     # the idxlayout package for the index and [totoc]
     OUTRO['latex'] += r"""
-% #ifdef PREAMBLE
+% #ifdef PREAMBLE"""
+    if 'idx{' in filestr:
+        OUTRO['latex'] += r"""
 \cleardoublepage\phantomsection  % trick to get correct link to Index
 \printindex
-
+"""
+    OUTRO['latex'] += r"""
 \end{document}
 % #endif
 """
