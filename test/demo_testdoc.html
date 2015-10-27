@@ -1270,6 +1270,19 @@ anymore:
 </tbody>
 </table>
 <p>
+Here is a table with X alignment:
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center"> Type</th> <th align="center">                                                                                                                Description                                                                                                                 </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   X        </td> <td align="left">   Alignment character that is used for specifying a potentially very long text in a column in a table. It makes use of the <code>tabularx</code> package in LaTeX, otherwise (for other formats) it means <code>l</code> (centered alignment).    </td> </tr>
+<tr><td align="center">   l,r,c    </td> <td align="left">   standard alignment characters                                                                                                                                                                                                                   </td> </tr>
+</tbody>
+</table>
+<p>
 Finally, a table with math
 (<code>bm</code> that expands to <code>boldsymbol</code>, was tricky, but
 cleanly handled now)

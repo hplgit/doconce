@@ -1025,7 +1025,7 @@ is built up of pipe symbols and dashes:
 
 |--------------------------------|
 |time  | velocity | acceleration |
-|--------------------------------|
+|--r--------r-----------r--------|
 | 0.0  | 1.4186   | -5.01        |
 | 2.0  | 1.376512 | 11.919       |
 | 4.0  | 1.1E+1   | 14.717624    |
@@ -1038,6 +1038,9 @@ is built up of pipe symbols and dashes:
  * In the line below the heading,
    one can insert the characters `c`, `r`, or `l` to specify the
    alignment of the columns (centered, right, or left, respectively).
+   One can also use `X` for potentially very wide text that must be
+   wrapped (will only affect `latex` and `pdflatex` where the
+   `tabularx` package is then used).
  * Similar character can be inserted in the line above the header to
    align the headings.
  * There must be a blank line before and after the table.

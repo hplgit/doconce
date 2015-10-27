@@ -2005,9 +2005,9 @@ def typeset_tables(filestr, format):
                         print 'illegal alignment character in table:', char
                         _abort()
                 # The X align char is for tabularx environment in latex,
-                # for other formats it must be treated as a c
+                # for other formats it must be treated as an l
                 if 'X' in align and format not in ('latex', 'pdflatex'):
-                    align = align.replace('X', 'c')
+                    align = align.replace('X', 'l')
                 if len(table['rows']) <= 1:
                     # first horizontal rule, align spec concern headings
                     table['headings_align'] = align

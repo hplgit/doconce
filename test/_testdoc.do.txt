@@ -717,6 +717,15 @@ because in this format inline verbatim text look like normal text,
 and the lines in the table then look like more than two columns.
 # #endif
 
+Here is a table with X alignment:
+
+|---------------------|
+| Type | Description  |
+|--c---------X--------|
+| X    | Alignment character that is used for specifying a potentially very long text in a column in a table. It makes use of the `tabularx` package in LaTeX, otherwise (for other formats) it means `l` (centered alignment). |
+| l,r,c | standard alignment characters |
+|---------------------|
+
 Finally, a table with math
 # #if FORMAT in ("rst", "html", "sphinx", "pandoc")
 (`bm` that expands to `boldsymbol`, was tricky, but
