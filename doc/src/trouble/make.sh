@@ -4,7 +4,9 @@ doconce clean
 rm -f automake_*
 
 # Suddenly some mako problem arose...
-opt="--no_mako"  # because of `<%` in the text which starts comment block...
+opt="--no_mako --no_abort"
+# --no_mako because of `<%` in the text which starts comment block...
+# --no_abort because of multiple lables with the same name (my:fig)
 
 name=trouble
 
