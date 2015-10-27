@@ -720,8 +720,14 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     # Add pgf package if we have pgf files
     if re.search(r'input\{.+\.pgf\}', filestr):
-        filestr = filestr.replace('usepackage{graphicx}',
-                                  'usepackage{graphicx}\n\\usepackage{pgf}')
+        filestr = re.sub(r'usepackage(.*?){graphicx}',
+                         'usepackage\g<1>{graphicx}\n\\usepackage{pgf}',
+                         filestr)
+
+    # Add tabularx package if necessary
+    if 'begin{tabularx}' in filestr:
+        filestr = filestr.replace('usepackage{bm,microtype}',
+                                  'usepackage{bm,microtype,tabularx}')
 
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
@@ -1349,7 +1355,10 @@ def latex_table(table):
     s = '\n' + table_align[0] + '\n'
     if latex_style in ("Springer_T2", "Springer_T4", "Springer_sv", "Springer_lnup"):
         s += '{\\small   % for Springer style: small table font and more vspace\n\n\\vspace{4mm}\n\n'
-    s += r'\begin{tabular}{%s}' % column_spec + '\n'
+    if 'X' in column_spec:
+        s += r'\begin{tabularx}{\linewidth}{%s}' % column_spec + '\n'
+    else:
+        s += r'\begin{tabular}{%s}' % column_spec + '\n'
     for i, row in enumerate(table['rows']):
         if row == ['horizontal rule']:
             if latex_style == 'Springer_sv':
@@ -1399,7 +1408,10 @@ def latex_table(table):
 
             s += ' & '.join(row) + ' \\\\\n'
 
-    s += r'\end{tabular}' + '\n'
+    if 'X' in column_spec:
+        s += r'\end{tabularx}' + '\n'
+    else:
+        s += r'\end{tabular}' + '\n'
     if latex_style in ("Springer_T2", "Springer_T4", "Springer_sv", "Springer_lnup"):
         s += '\n\\vspace{4mm}\n\n}\n'
     s += table_align[1] + '\n\n' + r'\noindent' + '\n'

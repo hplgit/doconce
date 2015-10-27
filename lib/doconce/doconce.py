@@ -1973,7 +1973,7 @@ def typeset_tables(filestr, format):
     # doconce csv2table, which reads a .csv file and outputs
     # a doconce formatted table
 
-    horizontal_rule_pattern = r'^\|[\-lrc]+\|'
+    horizontal_rule_pattern = r'^\|[\-lrcX]+\|'
     lines = filestr.splitlines()
     # Fix: add blank line if document ends with a table (otherwise we
     # cannot see the end of the table)
@@ -1993,7 +1993,7 @@ def typeset_tables(filestr, format):
             # See if there is c-l-r alignments:
             align = lin[1:-1].replace('-', '') # keep | in align spec.
             if align:
-                # Non-empty string contains lrc letters for alignment
+                # Non-empty string contains lrcX| letters for alignment
                 # (can be alignmend of heading or of columns)
                 if align == '|'*len(align):  # Just '|||'?
                     print 'Syntax error: horizontal rule in table '\
@@ -2001,9 +2001,13 @@ def typeset_tables(filestr, format):
                     print line
                     _abort()
                 for char in align:
-                    if char not in ('|', 'r', 'l', 'c'):
+                    if char not in ('|', 'r', 'l', 'c', 'X'):
                         print 'illegal alignment character in table:', char
                         _abort()
+                # The X align char is for tabularx environment in latex,
+                # for other formats it must be treated as a c
+                if 'X' in align and format not in ('latex', 'pdflatex'):
+                    align = align.replace('X', 'c')
                 if len(table['rows']) <= 1:
                     # first horizontal rule, align spec concern headings
                     table['headings_align'] = align
