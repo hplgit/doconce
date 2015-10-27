@@ -1202,7 +1202,10 @@ Note that
    columns. The first horizontal rule may indicate how to align
    headings (center, left, right), and the horizontal rule after the
    heading line may indicate how to align the data in the columns
-   (center, left, right).</li>
+   (center, left, right).
+   One can also use <code>X</code> for potentially very wide text that must be
+   wrapped and left-adjusted (will only affect <code>latex</code> and <code>pdflatex</code> where the
+   <code>tabularx</code> package is then used; <code>X</code> means <code>l</code> in all other formats).</li>
  <li> If the horizontal rules are without alignment information there should
    be no vertical bar (pipe symbol) between the columns. Otherwise, such
    a bar indicates a vertical bar between columns in LaTeX.</li>

@@ -938,7 +938,10 @@ contain characters &#8216;c&#8217;, &#8216;l&#8217;, or &#8216;r&#8217; for how 
 columns. The first horizontal rule may indicate how to align
 headings (center, left, right), and the horizontal rule after the
 heading line may indicate how to align the data in the columns
-(center, left, right).</li>
+(center, left, right).
+One can also use <code class="docutils literal"><span class="pre">X</span></code> for potentially very wide text that must be
+wrapped and left-adjusted (will only affect <code class="docutils literal"><span class="pre">latex</span></code> and <code class="docutils literal"><span class="pre">pdflatex</span></code> where the
+<code class="docutils literal"><span class="pre">tabularx</span></code> package is then used; <code class="docutils literal"><span class="pre">X</span></code> means <code class="docutils literal"><span class="pre">l</span></code> in all other formats).</li>
 <li>If the horizontal rules are without alignment information there should
 be no vertical bar (pipe symbol) between the columns. Otherwise, such
 a bar indicates a vertical bar between columns in LaTeX.</li>
