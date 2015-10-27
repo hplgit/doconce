@@ -10,7 +10,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 12, 2015
+:Date: Oct 27, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -2730,7 +2730,7 @@ is built up of pipe symbols and dashes:
 
         |--------------------------------|
         |time  | velocity | acceleration |
-        |--------------------------------|
+        |--r--------r-----------r--------|
         | 0.0  | 1.4186   | -5.01        |
         | 2.0  | 1.376512 | 11.919       |
         | 4.0  | 1.1E+1   | 14.717624    |
@@ -2743,6 +2743,9 @@ is built up of pipe symbols and dashes:
  * In the line below the heading,
    one can insert the characters ``c``, ``r``, or ``l`` to specify the
    alignment of the columns (centered, right, or left, respectively).
+   One can also use ``X`` for potentially very wide text that must be
+   wrapped (will only affect ``latex`` and ``pdflatex`` where the
+   ``tabularx`` package is then used).
 
  * Similar character can be inserted in the line above the header to
    align the headings.
@@ -7075,6 +7078,62 @@ alternatively script editing of the output from DocOnce. That is,
 we develop a Python or Bash script that runs the translation of
 a DocOnce document to a ready docoment in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.
+
+.. _gitignore:
+
+Git ``.gitignore`` File
+-----------------------
+
+For DocOnce repositories using the Git version control system, the
+follwing ``.gitignore`` file is useful:
+
+.. code-block:: text
+
+        syntax: glob
+        # compiled files:
+        *.o
+        *.so
+        *.a
+        # temporary files:
+        build
+        *.bak
+        *.swp
+        *~
+        .*~
+        *.old
+        tmp*
+        temp*
+        .#*
+        \#*
+        # tex files:
+        *.log
+        *.dvi
+        *.aux
+        *.blg
+        *.bbl
+        *.idx
+        *.ilg
+        *.ind
+        *.loe
+        *.nav
+        *.out
+        *.toc
+        *.snm
+        *.vrb
+        # eclipse files:
+        *.cproject
+        *.project
+        # misc:
+        .DS_Store
+        .idea
+        __pycache__
+        _minted-*
+        # doconce:
+        .*_html_file_collection
+        .*.exerinfo
+        .*.copyright
+        sphinx-rootdir
+        Trash
 
 .. _emacs:doconce:
 

@@ -717,6 +717,9 @@ Note that
    headings (center, left, right), and the horizontal rule after the
    heading line may indicate how to align the data in the columns
    (center, left, right).
+   One can also use `X` for potentially very wide text that must be
+   wrapped and left-adjusted (will only affect `latex` and `pdflatex` where the
+   `tabularx` package is then used; `X` means `l` in all other formats).
  * If the horizontal rules are without alignment information there should
    be no vertical bar (pipe symbol) between the columns. Otherwise, such
    a bar indicates a vertical bar between columns in LaTeX.

@@ -1039,8 +1039,8 @@ is built up of pipe symbols and dashes:
    one can insert the characters `c`, `r`, or `l` to specify the
    alignment of the columns (centered, right, or left, respectively).
    One can also use `X` for potentially very wide text that must be
-   wrapped (will only affect `latex` and `pdflatex` where the
-   `tabularx` package is then used).
+   wrapped and left-adjusted (will only affect `latex` and `pdflatex` where the
+   `tabularx` package is then used; `X` means `l` in all other formats).
  * Similar character can be inserted in the line above the header to
    align the headings.
  * There must be a blank line before and after the table.

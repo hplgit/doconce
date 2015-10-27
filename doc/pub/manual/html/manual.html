@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 12, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 27, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -2506,7 +2506,7 @@ the Mako equivalent <code class="docutils literal"><span class="pre">%</span> <s
 <p>is built up of pipe symbols and dashes:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>       |--------------------------------|
        |time  | velocity | acceleration |
-       |--------------------------------|
+       |--r--------r-----------r--------|
        | 0.0  | 1.4186   | -5.01        |
        | 2.0  | 1.376512 | 11.919       |
        | 4.0  | 1.1E+1   | 14.717624    |
@@ -2519,6 +2519,9 @@ the Mako equivalent <code class="docutils literal"><span class="pre">%</span> <s
 * In the line below the heading,
   one can insert the characters ``c``, ``r``, or ``l`` to specify the
   alignment of the columns (centered, right, or left, respectively).
+  One can also use ``X`` for potentially very wide text that must be
+  wrapped (will only affect ``latex`` and ``pdflatex`` where the
+  ``tabularx`` package is then used).
 
 * Similar character can be inserted in the line above the header to
   align the headings.
@@ -5871,6 +5874,58 @@ alternatively script editing of the output from DocOnce. That is,
 we develop a Python or Bash script that runs the translation of
 a DocOnce document to a ready docoment in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.</p>
+</div>
+<div class="section" id="git-gitignore-file">
+<span id="gitignore"></span><h3>Git <code class="docutils literal"><span class="pre">.gitignore</span></code> File<a class="headerlink" href="#git-gitignore-file" title="Permalink to this headline">¶</a></h3>
+<p>For DocOnce repositories using the Git version control system, the
+follwing <code class="docutils literal"><span class="pre">.gitignore</span></code> file is useful:</p>
+<div class="highlight-text"><div class="highlight"><pre>syntax: glob
+# compiled files:
+*.o
+*.so
+*.a
+# temporary files:
+build
+*.bak
+*.swp
+*~
+.*~
+*.old
+tmp*
+temp*
+.#*
+\#*
+# tex files:
+*.log
+*.dvi
+*.aux
+*.blg
+*.bbl
+*.idx
+*.ilg
+*.ind
+*.loe
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+# eclipse files:
+*.cproject
+*.project
+# misc:
+.DS_Store
+.idea
+__pycache__
+_minted-*
+# doconce:
+.*_html_file_collection
+.*.exerinfo
+.*.copyright
+sphinx-rootdir
+Trash
+</pre></div>
+</div>
 </div>
 <div class="section" id="emacs-doconce-formatter">
 <span id="emacs-doconce"></span><h3>Emacs DocOnce Formatter<a class="headerlink" href="#emacs-doconce-formatter" title="Permalink to this headline">¶</a></h3>
@@ -10082,6 +10137,7 @@ Springer,
 </li>
 <li><a class="reference internal" href="#misc">Misc</a><ul>
 <li><a class="reference internal" href="#missing-features">Missing Features</a></li>
+<li><a class="reference internal" href="#git-gitignore-file">Git <code class="docutils literal"><span class="pre">.gitignore</span></code> File</a></li>
 <li><a class="reference internal" href="#emacs-doconce-formatter">Emacs DocOnce Formatter</a></li>
 </ul>
 </li>
