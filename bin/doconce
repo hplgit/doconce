@@ -596,7 +596,12 @@ Index
 # compilation command.
 #
 
-import glob, sys, os, commands, shutil
+import glob, sys, os, commands, shutil, logging
+logging.basicConfig(
+    filename='automake_sphinx.log', filemode='w', level=logging.DEBUG,
+    format='%%(asctime)s - %%(levelname)s - %%(message)s',
+    datefmt='%%Y.%%m.%%d %%I:%%M:%%S %%p')
+
 
 command_line_options = ' '.join(['"%%s"' %% arg for arg in sys.argv[1:]])
 
@@ -612,6 +617,7 @@ def system(cmd, capture_output=False, echo=True):
         failure = os.system(cmd)
     if failure:
         print 'Could not run', cmd
+        logging.critical('Could not run %%s' %% cmd)
         sys.exit(1)
     if capture_output:
         return outtext
@@ -624,6 +630,7 @@ if not os.path.isfile(filename + '.rst'):
     # Transform doconce format to sphinx format and copy to sphinx directory
     cmd = 'doconce format sphinx %%s %%s' %% (filename, command_line_options)
     print cmd
+    logging.info('running %%s' %% cmd)
     system(cmd)
 
     # Fix: utf-8 encoding for non-English chars
@@ -631,13 +638,18 @@ if not os.path.isfile(filename + '.rst'):
     enc = system(cmd, capture_output=True)
     if enc == "iso-8859-1":
         # sphinx does not like non-English characters in iso-8859-1
-        system('doconce change_encoding iso-8859-1 utf-8 %%s.rst' %% filename)
+        cmd = 'doconce change_encoding iso-8859-1 utf-8 %%s.rst' %% filename
+        logging.info('running %%s' %% cmd)
+        system(cmd)
 
 # Copy generated sphinx file to sphinx directory
+logging.info('copying %%s.rst to %%s and reading the content' %% (filename, source_dir))
 shutil.copy('%%s.rst' %% filename, source_dir)
 with open('%%s.rst' %% filename, 'r') as rst_file:
     rst_text = rst_file.read()
 ''' % vars())
+
+
     else:
         # user has run doconce split_rst so doconce format is already
         # run and all parts must be copied
@@ -666,8 +678,10 @@ for figdir in figdirs:
         if '"'+ figdir in rst_text or '<' + figdir in rst_text:
             destdir = os.path.join(source_dir, '_static', figdir)
     if destdir is not None and os.path.isdir(figdir) and not os.path.isdir(destdir):
+        msg = 'copying %%s to %%s' %% (figdir, destdir)
+        print msg
+        logging.info(msg)
         shutil.copytree(figdir, destdir)
-        print 'copying', figdir, 'to', destdir
 
 # Copy needed figure files in current dir (not in fig* directories)
 for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.join(source_dir, '.*.rst')):
@@ -685,13 +699,16 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
             pass
         else:
             if not os.path.isfile(os.path.join(source_dir, basename)):
-                print 'copying', name, 'to', source_dir
+                msg = 'copying %%s to %%s' %% (name, source_dir)
+                print msg
+                logging.info(msg)
                 shutil.copy(name, source_dir)
             if name not in local_figfiles:
                 # name lies in another directory, make local reference to it
                 # since it is copied to source_dir
                 text = text.replace('.. figure:: %%s' %% name,
                                     '.. figure:: %%s' %% basename)
+                logging.info('edited figure path to %%s' %% basename)
     if text != text_orig:
         f = open(rstfile, 'w')
         f.write(text)
@@ -701,7 +718,9 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
 staticdirs = glob.glob('_static*')
 for staticdir in staticdirs:
     if os.listdir(staticdir):  # copy only if non-empty dir
-        system('cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars())
+        cmd = 'cp -r %%(staticdir)s/* %%(source_dir)s/_static/' %% vars()
+        logging.info('running %%s' %% cmd)
+        system(cmd)
 ''' % vars())
     # (Note: must do cp -r above since shutil.copy/copytree cannot copy a la cp -r)
     f.write('''
@@ -709,6 +728,7 @@ os.chdir(sphinx_rootdir)
 if '--runestone' not in sys.argv:
     # Compile web version of the sphinx document
     print os.getcwd()
+    logging.info('running make clean and make html')
     system('make clean')
     system('make html')
 
@@ -717,6 +737,7 @@ if '--runestone' not in sys.argv:
     for filename in glob.glob('*.html') + glob.glob('.*.html'):
         print filename,
         f = open(filename, 'r'); text = f.read(); f.close()
+        text_orig = text
         # Fix double title in <title> tags
         text = re.sub(r'<title>(.+?) &mdash;.+?</title>', r'<title>\g<1></title>', text)
         # Fix untranslated math (e.g. in figure captions and raw html)
@@ -753,6 +774,8 @@ if '--runestone' not in sys.argv:
                           r'title="%%s"' %% heading, text)
 
         f = open(filename, 'w'); f.write(text); f.close()
+        if text != text_orig:
+            logging.info('edited %%s' %% filename)
     os.chdir('../../')
     print """
 
@@ -772,6 +795,7 @@ create RunestoneInteractive directory
     if not os.path.isdir('RunestoneTools'):
         system('git clone https://github.com/RunestoneInteractive/RunestoneComponents.git')
     os.chdir('RunestoneComponents')
+    logging.info('creating RunestoneInteractive directory')
 
     # Edit conf.py
     # This one does not work anymore: run runestone init instead,
@@ -795,9 +819,11 @@ create RunestoneInteractive directory
     # Copy .rst files from sphinx dir
     rst_files = [os.path.join(os.pardir, 'index.rst')] + glob.glob(os.path.join(os.pardir, '*.rst')) + glob.glob(os.path.join(os.pardir, '._*.rst'))
     for filename in rst_files:
-        shutil.copy(filename, '_sources')
         print 'copying', filename, 'to _sources'
+        logging.info('copying %%s to _sources' %% filename)
+        shutil.copy(filename, '_sources')
     print '*** running paver build to build the RunestoneInteractive book'
+    logging.info('running paver build to create the RunestoneInteractive book')
     system('paver build')
 
     print """

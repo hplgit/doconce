@@ -424,6 +424,8 @@ cd Springer_T2
 bash -x make.sh
 cd ..
 
+doconce subst -m '^.*? (AM|PM) - ' '' automake_sphinx.log
+
 # Status movies: everything works in html and sphinx, only href works
 # in latex, media9 is unreliable
 

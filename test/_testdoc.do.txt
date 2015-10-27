@@ -548,8 +548,7 @@ both inline and in block:
 
 !bt
 \begin{align}
-\Ddt{u} &= 0\nonumber
-\\
+\Ddt{u} &= 0\nonumber\\
 \half &= \halfi\\
 \half\x &= \normalvec
 \end{align}

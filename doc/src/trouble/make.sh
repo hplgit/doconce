@@ -3,10 +3,11 @@ set -x
 doconce clean
 rm -f automake_*
 
-# Suddenly some mako problem arose...
+# Suddenly, at some point, some mako problem arose...
 opt="--no_mako --no_abort"
-# --no_mako because of `<%` in the text which starts comment block...
-# --no_abort because of multiple lables with the same name (my:fig)
+# --no_mako because of `<%` in the text which starts comment block (why?...)
+# --no_abort because of multiple lables with the same name (e.g., my:fig
+# is needed in doconce code and a rendered demo of it)
 
 name=trouble
 
