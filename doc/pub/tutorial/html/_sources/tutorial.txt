@@ -7,7 +7,7 @@ DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 12, 2015
+:Date: Oct 27, 2015
 
 .. !split
 
@@ -219,6 +219,8 @@ Here is an example of some simple text written in the DocOnce format:
         
         The characters `c`, `r`, and `l` can be inserted, as illustrated above,
         for aligning the headings and the columns (center, right, left).
+        One can also use `X` for potentially very long text in a column (will be
+        left-adjusted).
         
         # Lines beginning with # are comment lines.
 
