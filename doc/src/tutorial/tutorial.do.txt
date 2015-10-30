@@ -121,6 +121,15 @@ the formating. Here are some examples.
 writers who also write Markdown documents (or uses Markdown frequently at
 GitHub).
 
+!bwarning Write DocOnce documents in a text editor with monospace font!
+Some DocOnce constructions are sensitive to whitespace (indentation in
+lists is a primary example), so you *must* use a text editor with
+monospace font (also known as verbatim text). Never use fonts like
+Arial or Helvetica.
+Other popular markup languages such as Sphinx and Markdown are also
+sensitive to whitespace and require a monospace font.
+!ewarning
+
 ===== What Can DocOnce Be Used For? =====
 
 LaTeX is ideal for articles, thesis, and books, but the PDF files does

@@ -36,6 +36,10 @@ formats are `latex`, `pdflatex`, `sphinx`, and `html`; and to a slightly
 less extent `mwiki` and `pandoc`. The HTML format supports blog posts on
 Google and Wordpress.
 
+!bwarning Use a text editor with monospace font!
+Some DocOnce constructions are sensitive to whitespace,
+so you *must* use a text editor with monospace font.
+!ewarning
 
 ===== Emacs syntax support =====
 

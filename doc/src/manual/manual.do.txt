@@ -67,14 +67,21 @@ The three most common formats can be found on the web:
 and
 "PDF": "http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf".
 
+!bwarning Write DocOnce documents in a text editor with monospace font!
+Some DocOnce constructions are sensitive to whitespace (indentation in
+lists is a primary example), so you *must* use a text editor with
+monospace font (also known as verbatim text). Never use fonts like
+Arial or Helvetica.
+Other popular markup languages such as Sphinx and Markdown are also
+sensitive to whitespace and require a monospace font.
+!ewarning
+
 !bwarning This guide is for the experienced DocOnce writer!
 Do not read the detailed descriptions of DocOnce syntax that follows
 (this is a manual!) before you have read the tutorial and played
 a little around with a simple document.
 !ewarning
 
-#The DocOnce format introduces four constructs to markup text:
-#lists, special lines, inline tags, and environments.
 
 !split
 ======= Markup Based on Special Lines =======

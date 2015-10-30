@@ -2278,6 +2278,7 @@ def typeset_lists(filestr, format, debug_info=[]):
     This function also treats comment lines and blank lines.
     """
     debugpr('*** List typesetting phase + comments and blank lines ***')
+    import string
     from StringIO import StringIO
     result = StringIO()
     lastindent = 0
@@ -2417,7 +2418,12 @@ def typeset_lists(filestr, format, debug_info=[]):
                 db_line_tp = 'item enumerate list'
                 enumerate_counter += 1
                 if '%d' in itemformat:
-                    item = itemformat % enumerate_counter
+                    # Switch between 1,2,3 and a,b,c
+                    if len(lists) % 2 == 0:
+                        item = itemformat.replace('%d', '%s') % \
+                               string.lowercase[enumerate_counter-1]
+                    else:
+                        item = itemformat % enumerate_counter
                 # indent here counts with '3. ':
                 result.write(' '*(indent - 2 - enumerate_counter//10 - 1))
                 result.write(item + ' ')
