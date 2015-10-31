@@ -666,12 +666,14 @@ def syntax_check(filestr, format):
     if format in ('latex', 'pdflatex'):
         filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
         filestr2 = re.sub(r'`.+?`', '',  filestr2, flags=re.DOTALL) # strip verb
+        # Filer out boldface and paragraph typesetting
+        filestr2 = re.sub(INLINE_TAGS['bold'], '', filestr2,
+                          flags=re.MULTILINE)
+        filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
+                          flags=re.MULTILINE)
         underscore_words = [word.strip() for word in
                             re.findall(r'\s[A-Za-z0-9_]*_[A-Za-z0-9_]*\s',
                                        filestr2)]
-        # Filer out boldface typesetting
-        underscore_words = [word for word in underscore_words if not
-                            (word[0] == '_' and word[-1] == '_')]
         if underscore_words:
             print '*** warning: latex format will have problem with words'
             print '    containing underscores:\n'
