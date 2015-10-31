@@ -162,6 +162,15 @@ such an example at the end of the document
 Description of user-defined environments are found in
 the "DocOnce manual": "http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments".
 
+===== How can links open in new tabs/windows =====
+
+idx{open links in new windows}
+
+Use the option `--html_links_in_new_window` for the `doconce format`
+command. It works in HTML and Sphinx, but not in pandoc (or other Markdown
+formats) or wikis.
+
+
 ===== Movies will not play in my broswer =====
 
 Are you using Safari as browser? It will not play Ogg and WebM movies.

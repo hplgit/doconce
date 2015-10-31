@@ -562,6 +562,7 @@ Other options:
    `bottom` and `top+bottom`.
  * `--allow_refs_to_external_docs` (do not abort if there are references whose labels are not found)
 
+idx{open links in new window}
 
 ===== Blog Posts =====
 label{do2any:blog}
@@ -1562,9 +1563,16 @@ However, I recommend instead that you manually copy
 files to `_static` when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.
 
-idx{Sphinx styles}
+idx{open links in new window}
+
+One can get all links to open in a new window by adding the
+option `--html_links_in_new_window` to the `doconce format` command.
+
 
 ===== Themes =====
+
+idx{Sphinx styles}
+idx{Sphinx themes}
 
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.

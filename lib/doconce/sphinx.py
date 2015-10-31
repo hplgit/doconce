@@ -511,7 +511,18 @@ found in line:
     if option('html_links_in_new_window'):
         # Insert a comment to be recognized by automake_sphinx.py such that it
         # can replace the default links by proper modified target= option.
-        filestr = '\n\n.. NOTE: Open external links in new windows.\n\n' + filestr
+        #filestr = '\n\n.. NOTE: Open external links in new windows.\n\n' + filestr
+        # Use JavaScript instead
+        filestr = """.. raw:: html
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("a[href^='http']").attr('target','_blank');
+        });
+        </script>
+
+""" + filestr
+
 
     # Remove too much vertical space
     filestr = re.sub(r'\n{3,}', '\n\n', filestr)
