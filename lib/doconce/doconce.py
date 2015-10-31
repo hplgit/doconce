@@ -662,6 +662,22 @@ def syntax_check(filestr, format):
             print '   ', '*%s*' % phrase
             print '    (backtick inside *...* emphasize is not allowed)'
 
+    # Check underscores in latex
+    if format in ('latex', 'pdflatex'):
+        filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
+        filestr2 = re.sub(r'`.+?`', '',  filestr2, flags=re.DOTALL) # strip verb
+        underscore_words = [word.strip() for word in
+                            re.findall(r'\s[A-Za-z0-9_]*_[A-Za-z0-9_]*\s',
+                                       filestr2)]
+        # Filer out boldface typesetting
+        underscore_words = [word for word in underscore_words if not
+                            (word[0] == '_' and word[-1] == '_')]
+        if underscore_words:
+            print '*** warning: latex format will have problem with words'
+            print '    containing underscores:\n'
+            print '\n'.join(underscore_words)
+            print '\n    typeset with `inline verbatim` or escape with backslash'
+
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
         if line.strip().startswith('==='):
@@ -2376,7 +2392,10 @@ def typeset_lists(filestr, format, debug_info=[]):
             db_line_tp = 'new list %s' % listtype
             # begin a new list or sublist:
             lists.append({'listtype': listtype, 'indent': indent})
-            result.write(LIST[format][listtype]['begin'])
+            begin_list = LIST[format][listtype]['begin']
+            if '<ol>' in begin_list and len(lists) % 2 == 0:
+                begin_list = begin_list.replace('ol', 'ol type="a"')
+            result.write(begin_list)
             if len(lists) > 1:
                 result.write(LIST[format]['separator'])
 

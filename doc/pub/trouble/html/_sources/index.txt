@@ -10,3 +10,9 @@ Contents:
    :maxdepth: 2
 
    trouble
+
+
+Index
+=====
+
+* :ref:`genindex`

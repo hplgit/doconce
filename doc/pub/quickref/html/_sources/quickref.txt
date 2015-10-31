@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 27, 2015
+:Date: Oct 30, 2015
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -58,6 +58,15 @@ For documents with much code and mathematics, the best (and most supported)
 formats are ``latex``, ``pdflatex``, ``sphinx``, and ``html``; and to a slightly
 less extent ``mwiki`` and ``pandoc``. The HTML format supports blog posts on
 Google and Wordpress.
+
+
+.. admonition:: Use a text editor with monospace font
+
+   Some DocOnce constructions are sensitive to whitespace,
+   so you *must* use a text editor with monospace font.
+
+
+
 
 Emacs syntax support
 --------------------
@@ -345,9 +354,9 @@ Here is an enumeration list:
    may appear on
    multiple lines
 
- 1. subitem1 of item2
+ a. subitem1 of item2
 
- 2. subitem2 of item2
+ b. subitem2 of item2
 
 3. item3
 

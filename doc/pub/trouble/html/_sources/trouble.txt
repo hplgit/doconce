@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 27, 2015
+:Date: Oct 31, 2015
 
 
 .. admonition:: Disclaimer
@@ -41,6 +41,46 @@ both parts, continue with the part that gave the problem, and repeat
 the process. This will quickly narrow down the next so you understand
 the problem. If you do not understand why the identified piece of text
 gives an error message, try to rewrite.
+
+.. _sec:underscore:
+
+Why are underscores in text a potential problem?
+------------------------------------------------
+
+.. index:: underscores
+
+Underscores in plain text are not tolerated by LaTeX, but works fine in
+other formats. In LaTeX, such underscores can give different obscure
+error messages, depending on the context. The remedy is to *typeset all
+words with underscores in inline verbatim*, e.g.,
+
+.. code-block:: doconce
+
+        If you choose the `Enable_access` menu, ...
+
+The downside is that the word with underscores is typeset in monospace font.
+
+The standard remedy in LaTeX is to insert a backslash before the underscore:
+
+.. code-block:: doconce
+
+        If you choose the Enable\_access menu, ...
+
+but the backslash is not wanted in other formats. A Mako function can fix
+this:
+
+.. code-block:: doconce
+
+        <%
+        def underscorephrase(phrase):
+            if FORMAT in ('pdflatex', 'latex'):
+                return phrase.replace('_', '\\_')
+            else:
+                return phrase
+        %>
+        
+        # Some text:
+        If you choose the ${underscorephrase('Enable_access')}, ...
 
 GitHub gh-pages will not display files starting with a dot or underscore
 ------------------------------------------------------------------------

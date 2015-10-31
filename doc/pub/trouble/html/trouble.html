@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 27, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 31, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -107,6 +107,35 @@ both parts, continue with the part that gave the problem, and repeat
 the process. This will quickly narrow down the next so you understand
 the problem. If you do not understand why the identified piece of text
 gives an error message, try to rewrite.</p>
+</div>
+<div class="section" id="why-are-underscores-in-text-a-potential-problem">
+<span id="sec-underscore"></span><h3>Why are underscores in text a potential problem?<a class="headerlink" href="#why-are-underscores-in-text-a-potential-problem" title="Permalink to this headline">¶</a></h3>
+<p id="index-0">Underscores in plain text are not tolerated by LaTeX, but works fine in
+other formats. In LaTeX, such underscores can give different obscure
+error messages, depending on the context. The remedy is to <em>typeset all
+words with underscores in inline verbatim</em>, e.g.,</p>
+<div class="highlight-doconce"><div class="highlight"><pre>If you choose the `Enable_access` menu, ...
+</pre></div>
+</div>
+<p>The downside is that the word with underscores is typeset in monospace font.</p>
+<p>The standard remedy in LaTeX is to insert a backslash before the underscore:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>If you choose the Enable\_access menu, ...
+</pre></div>
+</div>
+<p>but the backslash is not wanted in other formats. A Mako function can fix
+this:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;%
+def underscorephrase(phrase):
+    if FORMAT in (&#39;pdflatex&#39;, &#39;latex&#39;):
+        return phrase.replace(&#39;_&#39;, &#39;\\_&#39;)
+    else:
+        return phrase
+%&gt;
+
+<span class="c"># Some text:</span>
+If you choose the ${underscorephrase(&#39;Enable_access&#39;)}, ...
+</pre></div>
+</div>
 </div>
 <div class="section" id="github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">
 <h3>GitHub gh-pages will not display files starting with a dot or underscore<a class="headerlink" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore" title="Permalink to this headline">¶</a></h3>
@@ -1622,6 +1651,7 @@ clickable.</p>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting and FAQ</a><ul>
 <li><a class="reference internal" href="#general-topics">General topics</a><ul>
 <li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
+<li><a class="reference internal" href="#why-are-underscores-in-text-a-potential-problem">Why are underscores in text a potential problem?</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>
 <li><a class="reference internal" href="#blank-line-is-illegal-in-latex-block-but-there-is-no-blank-line">&#8220;Blank line is illegal in latex block&#8221;, but there is no blank line</a></li>

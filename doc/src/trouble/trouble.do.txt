@@ -27,6 +27,43 @@ the process. This will quickly narrow down the next so you understand
 the problem. If you do not understand why the identified piece of text
 gives an error message, try to rewrite.
 
+===== Why are underscores in text a potential problem? =====
+label{sec:underscore}
+
+idx{underscores}
+
+Underscores in plain text are not tolerated by LaTeX, but works fine in
+other formats. In LaTeX, such underscores can give different obscure
+error messages, depending on the context. The remedy is to *typeset all
+words with underscores in inline verbatim*, e.g.,
+
+!bc do
+If you choose the `Enable_access` menu, ...
+!ec
+The downside is that the word with underscores is typeset in monospace font.
+
+The standard remedy in LaTeX is to insert a backslash before the underscore:
+
+!bc do
+If you choose the Enable\_access menu, ...
+!ec
+but the backslash is not wanted in other formats. A Mako function can fix
+this:
+
+!bc do
+<%
+def underscorephrase(phrase):
+    if FORMAT in ('pdflatex', 'latex'):
+        return phrase.replace('_', '\\_')
+    else:
+        return phrase
+%>
+
+# Some text:
+If you choose the ${underscorephrase('Enable_access')}, ...
+!ec
+
+
 ===== GitHub gh-pages will not display files starting with a dot or underscore =====
 
 This is a typical problem related to publishing either splitted HTML documents
