@@ -22,6 +22,7 @@ from doconce.misc import (
     replace,
     subst,
     find,
+    include_map,
     expand_mako,
     wildcard_notation,
     teamod,
@@ -43,6 +44,7 @@ from doconce.misc import (
     remove,
     grab,
     ptex2tex,
+    include_map,
     expand_commands,
     combine_images,
     latex_exercise_toc,
@@ -1317,6 +1319,7 @@ spellcheck
 find
 ptex2tex
 guess_encoding
+include_map
 expand_commands
 expand_mako
 combine_images
@@ -1387,6 +1390,9 @@ doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 # search for a (regular) expression in all .do.txt files in
 # the current directory tree (useful when removing compilation errors)
 doconce find expression
+
+# print an overview of how various files are included in the root doc
+doconce include_map mydoc.do.txt
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...

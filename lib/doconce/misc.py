@@ -1188,8 +1188,36 @@ def find():
                             found = True
 
 
+def _usage_include_map():
+    print 'Usage: doconce include_map mydoc.do.txt'
+    print 'List all recursive includes in mydoc.do.txt'
+
+def include_map():
+    if len(sys.argv) < 2:
+        _usage_find()
+        sys.exit(0)
+    filename = sys.argv[1]
+
+    def find_include(name, indent=''):
+        if not os.path.isfile(name):
+            print '*** error: file "%s" does not exist!' % name
+            return
+        with open(name, 'r') as f:
+            lines = f.readlines()
+        for line in lines:
+            if '#include ' in line:
+                includefile = line.split('#include')[1].strip()[1:-1]
+                print indent, '#include', includefile
+                find_include(includefile, indent + '    ')
+
+    print filename
+    find_include(filename)
+
+
+
 def _usage_expand_mako():
     print 'Usage: doconce expand_mako mako_code_file.txt funcname mydoc.do.txt'
+    print '(Replaces mako calls to functions by the function bodies)'
 
 # This replacement function for re.sub must be global since expand_mako,
 # where it is used, has an exec statement
