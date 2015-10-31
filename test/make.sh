@@ -129,7 +129,7 @@ system doconce format html testdoc --code_prefix=https://raw.githubusercontent.c
 system doconce format plain testdoc.do.txt $ex -DSOMEVAR=1 --tables2csv
 system doconce format st testdoc.do.txt $ex
 
-system doconce format sphinx testdoc $ex
+system doconce format sphinx testdoc $ex --html_links_in_new_window
 cp testdoc.rst testdoc.sphinx.rst
 system doconce split_rst testdoc
 system doconce sphinx_dir dirname='sphinx-testdoc' version=0.1 theme=agni testdoc
