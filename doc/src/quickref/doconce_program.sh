@@ -1,6 +1,6 @@
 DocOnce version 1.2
 Usage: doconce command [optional arguments]
-commands: format help sphinx_dir subst replace replace_from_file clean lightclean spellcheck find ptex2tex guess_encoding expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown csv2table extract_exercises latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish
+commands: format help sphinx_dir subst replace replace_from_file clean lightclean spellcheck find ptex2tex guess_encoding include_map expand_commands expand_mako combine_images change_encoding capitalize find_nonascii_chars gwiki_figsubst md2html md2latex remove_inline_comments apply_inline_edits grab remove remove_exercise_answers split_rst split_html slides_html slides_beamer slides_markdown csv2table extract_exercises latin2html grep latex_header latex_footer latex_problems ref_external html_colorbullets list_fig_src_files list_labels teamod sphinxfix_localURLs latex_exercise_toc insertdocstr old2new_format linkchecker latex2doconce latex_dislikes html2doconce ipynb2doconce pygmentize makefile diff gitdiff fix_bibtex4publish
 
 
 # transform doconce file to another format
@@ -21,6 +21,9 @@ doconce replace_from_file file-with-from-to-replacements file1 file2 ...
 # search for a (regular) expression in all .do.txt files in
 # the current directory tree (useful when removing compilation errors)
 doconce find expression
+
+# print an overview of how various files are included in the root doc
+doconce include_map mydoc.do.txt
 
 # replace all mako function calls by the results of the calls
 doconce expand_mako mako_code_file funcname file1 file2 ...

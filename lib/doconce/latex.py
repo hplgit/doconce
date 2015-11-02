@@ -724,11 +724,6 @@ def latex_code(filestr, code_blocks, code_block_types,
                          'usepackage\g<1>{graphicx}\n\\usepackage{pgf}',
                          filestr)
 
-    # Add tabularx package if necessary
-    if 'begin{tabularx}' in filestr:
-        filestr = filestr.replace('usepackage{bm,microtype}',
-                                  'usepackage{bm,microtype,tabularx}')
-
     # Fix % and # in link texts (-> \%, \# - % is otherwise a comment...)
     pattern = r'\\href\{\{(.+?)\}\}\{(.+?)\}'
     def subst(m):  # m is match object
@@ -2890,7 +2885,7 @@ open=right,              %% start new chapters on odd-numbered pages
         INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}
-\usepackage{bm,microtype}
+\usepackage{bm,ltablex,microtype}
 """
     else:
         INTRO['latex'] += r"""

@@ -729,6 +729,17 @@ the last line is not properly aligned. The correct formatting is
    a cosine pulse
 !ec
 
+===== How can I get an overview of all files that are included in a document? =====
+
+Suppose the root (main) document is `mydoc.do.txt`. Run
+
+!bc sys
+Terminal> doconce include_map mydoc.do.txt
+!ec
+The output lists all the recursive `#include` Preprocess statements so you
+can see how all files are included.
+
+
 ======= Preprocess/Mako =======
 
 ===== List important things to remember when programming Mako =====
@@ -1046,6 +1057,25 @@ and then use the double backslash.
 One can use the `tabularx` package. This is automatically enabled by
 specifying the alignment of the actual column as `X` (means `l` for
 all other output formats), for instance `|---c----X----|`.
+
+# #ifdef EXTRA
+# not necessary since ltablex is always added
+
+===== Tables are too long =====
+
+Tables with more rows than can fit on a page are just truncated.
+The solution to this problem is to add the `ltablex` package.
+One can add this package by (e.g.)
+
+!bc sys
+Terminal> doconce replace `,microtype` `,microtype,ltablex` mydoc.tex
+!ec
+if `mydoc.tex` is the LaTeX file.
+
+Note that if one applies the `X` column alignment for wrapping long
+text in a column, the `ltablex` package is automatically added by DocOnce.
+# #endif
+
 
 ===== Sphinx and HTML show pygmetized code, but not LaTeX =====
 
