@@ -666,11 +666,12 @@ def syntax_check(filestr, format):
     if format in ('latex', 'pdflatex'):
         filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
         filestr2 = re.sub(r'`.+?`', '',  filestr2, flags=re.DOTALL) # strip verb
-        # Filer out boldface and paragraph typesetting
+        # Filer out boldface, paragraph, and comments
         filestr2 = re.sub(INLINE_TAGS['bold'], '', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
                           flags=re.MULTILINE)
+        filestr2 = re.sub(r'^#.*\n', '', filestr2, flags=re.MULTILINE)
         underscore_words = [word.strip() for word in
                             re.findall(r'\s[A-Za-z0-9_]*_[A-Za-z0-9_]*\s',
                                        filestr2)]
@@ -678,7 +679,7 @@ def syntax_check(filestr, format):
             print '*** warning: latex format will have problem with words'
             print '    containing underscores:\n'
             print '\n'.join(underscore_words)
-            print '\n    typeset with `inline verbatim` or escape with backslash'
+            print '\n    typeset these words with `inline verbatim` or escape with backslash'
 
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():

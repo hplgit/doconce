@@ -727,7 +727,8 @@ def html_code(filestr, code_blocks, code_block_types,
             print """
 Causes of missing labels:
 1: label is inside a generalized reference ref[][][],
-   use the --allow_refs_to_external_docs option
+   use the --allow_refs_to_external_docs option to remove
+   the error message
 2: label is defined in another file
 3: preprocessor if-else has left the label out
 4: forgotten to define the label
