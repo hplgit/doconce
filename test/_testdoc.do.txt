@@ -613,6 +613,8 @@ label{subsec:table}
 idx{test index with `verbatim text` which is possible}
 idx{test `two` (separate) `verbatim expressions` which is also possible}
 idx{index with!subindex}
+idx{_boldface word_ in index}
+idx{index with _boldface word_}
 
 # index with comma could fool sphinx
 idx{index, with comma, and one more}

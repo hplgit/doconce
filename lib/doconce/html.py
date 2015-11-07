@@ -581,7 +581,7 @@ display: inline;
     return s
 
 def toc2html(font_size=80, bootstrap=True,
-             max_headings=17): # max no of headings in fixed pull down menu
+             max_headings=17): # max no of headings in pull down menu
     global tocinfo  # computed elsewhere
     # level_depth: how many levels that are represented in the toc
     level_depth = int(option('toc_depth=', '-1'))
