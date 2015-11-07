@@ -64,6 +64,7 @@ html_links_in_new_window = False
 #html_bootstrap_jumbotron = 
 #html_figure_hrule = 
 #html_copyright = 
+cite_doconce = False
 #device = 
 number_all_equations = False
 denumber_all_equations = False

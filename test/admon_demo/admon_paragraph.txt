@@ -3,9 +3,9 @@ Testing admons
 
 H. P. Langtangen
 
-Date: Nov 6, 2015
+Date: Nov 7, 2015
 
-Copyright 2015, H. P. Langtangen
+Copyright 2015, H. P. Langtangen. Made with DocOnce
 
 # !split
 Introduction

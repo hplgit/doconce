@@ -297,7 +297,8 @@ def sphinx_dir():
 
     from doconce.common import get_copyfile_info
     copyright_filename = '.' + filename + '.copyright'
-    copyright_ = get_copyfile_info(copyright_filename=copyright_filename)
+    copyright_ = get_copyfile_info(copyright_filename=copyright_filename,
+                                   format='sphinx')
     if copyright_ is None:
         # No copyright given in the file, use copyright= from command
         # line, if it was provided, or use this year and author
@@ -759,13 +760,15 @@ if '--runestone' not in sys.argv:
       </head>
     """)
 
-        if os.path.isfile(filename + '.old~~'):
-            os.remove(filename + '.old~~')
         # Check if external links should pop up in separate windows
         if '.. NOTE: Open external links in new windows.' in text:
             text = text.replace('<a class="reference external"',
                                 '<a class="reference external" target="_blank"')
 
+        # Make a link for doconce citation in copyright
+        if '. Made with DocOnce' in text:
+            text = text.replace('. Made with DocOnce', '')
+            text = text.replace('      Created using <a href="http://sphinx-doc.org/">Sphinx', '      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx')
         # Remove (1), (2), ... numberings in identical headings
         headings_wno = re.findall(r'(?<=(\d|"))>(.+?)          \((\d+)\)<', text)
         for dummy, heading, no in headings_wno:
@@ -775,6 +778,8 @@ if '--runestone' not in sys.argv:
             text = re.sub(r'title="%%s +\(%%d\)"' %% (heading, int(no)),
                           r'title="%%s"' %% heading, text)
 
+        if os.path.isfile(filename + '.old~~'):
+            os.remove(filename + '.old~~')
         f = open(filename, 'w'); f.write(text); f.close()
         if text != text_orig:
             logging.info('edit: %%s' %% filename)

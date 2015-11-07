@@ -35,7 +35,7 @@ for format in 'pdflatex', 'sphinx', 'html':
                 copyright_ += '|' + license_
             copyright_ += '}'
             counter += 1
-            cmd = 'doconce format %s %s COPYRIGHT="%s" BOOK=%s' % (format, name, copyright_, book)
+            cmd = 'doconce format %s %s COPYRIGHT="%s" BOOK=%s --cite_doconce' % (format, name, copyright_, book)
             if format == 'pdflatex':
                 cmd += ' --latex_code_style=vrb'
             elif format == 'html':

@@ -534,7 +534,7 @@ def latex_code(filestr, code_blocks, code_block_types,
     filestr = re.sub(pattern, lambda m: m.group().replace('%', '\\%'), filestr)
 
     from common import get_copyfile_info
-    cr_text = get_copyfile_info(filestr)
+    cr_text = get_copyfile_info(filestr, format=format)
     if cr_text is not None:
         filestr = filestr.replace('Copyright COPYRIGHT_HOLDERS',
                                   cr_text)

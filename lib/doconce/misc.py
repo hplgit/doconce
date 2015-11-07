@@ -207,6 +207,7 @@ top: rule at top (default)
 bottom: rule at bottom
 top+bottom: rule at top and bottom"""),
     ('--html_copyright=', 'Controls where to put copyright statements.\neverypage: in the footer of every page\ntitlepages or titlepage: in the footer of the titlepage only.'),
+    ('--cite_doconce', 'Adds a citation to the DocOnce web page if copyright statements are present.'),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
     ('--number_all_equations',

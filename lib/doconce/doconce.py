@@ -3093,6 +3093,7 @@ def interpret_authors(filestr, format):
         copyright_ = {}
         for key in keys:
             copyright_[key] = copy_copyright_[key]
+
         year0 = copyright_[keys[0]][0]
         license0 = copyright_[keys[0]][1]
         # Test that year and license are the same
@@ -3105,10 +3106,10 @@ def interpret_authors(filestr, format):
                 print '*** error: copyright license for %s is "%s", different from "%s" for %s' % (key, copyright_[key], copyright_[keys[0]], keys[0])
                 print '    make sure all copyrights have the same info!'
                 _abort()
-        copyright_ = {'holder': keys, 'year': year0, 'license': license0}
+        copyright_ = {'holder': keys, 'year': year0, 'license': license0,
+                      'cite doconce': option('cite_doconce', False)}
         # Store in file for use elsewhere (will only work for doconce format)
         try:
-            # Will only work
             with open('.' + dofile_basename + '.copyright', 'w') as f:
                 f.write(repr(copyright_))
         except NameError:
@@ -3534,7 +3535,7 @@ def inline_tag_subst(filestr, format):
         # Add copyright right under the date if present
         if format not in ('html', 'latex', 'pdflatex', 'sphinx'):
             from common import get_copyfile_info
-            cr_text = get_copyfile_info(filestr)
+            cr_text = get_copyfile_info(filestr, format=format)
             if cr_text is not None:
                 date += '\n\nCopyright ' + cr_text + '\n\n'
         filestr = filestr.replace(origstr, 'DATE: ' + date)

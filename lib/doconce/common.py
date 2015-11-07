@@ -177,7 +177,7 @@ def has_copyright(filestr):
             break
     return copyright_
 
-def get_copyfile_info(filestr=None, copyright_filename=None):
+def get_copyfile_info(filestr=None, copyright_filename=None, format=None):
     """Return copyright tuple in .filename.copyright."""
     # Copyright info
     cr_text = None
@@ -196,6 +196,18 @@ def get_copyfile_info(filestr=None, copyright_filename=None):
     cr_text = cr_info['year'] + ', ' + ', '.join(cr_info['holder'])
     if cr_info['license'] is not None:
         cr_text += '. ' + cr_info['license']
+    if cr_info['cite doconce']:
+        url = 'https://github.com/hplgit/doconce'
+        cr_text += '. Made with '
+        if format in ('latex', 'pdflatex'):
+            cr_text += r'\href{%s}{DocOnce}' % url
+        elif format == 'html':
+            cr_text += r'<a href="%s">DocOnce</a>' % url
+        elif format == 'sphinx':
+            cr_text += r'DocOnce'
+        else:
+            cr_text += r'DocOnce'
+
     return cr_text
 
 

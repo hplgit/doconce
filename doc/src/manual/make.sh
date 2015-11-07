@@ -46,11 +46,11 @@ publish import refs3.bib <<EOF
 EOF
 
 # doconce html format:
-system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --allow_refs_to_external_docs --html_code_style=inherit --no_abort
+system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --allow_refs_to_external_docs --html_code_style=inherit --cite_doconce --no_abort
 system doconce split_tmp.html manual.html
 
 # Sphinx
-system doconce format sphinx manual.do.txt --no_mako --no_abort
+system doconce format sphinx manual.do.txt --no_mako --cite_doconce --no_abort
 # We have several examples on AUTHOR: so to avoid multiple
 # authors we have to specify
 system doconce sphinx_dir theme=bootstrap version=1.0 intersphinx manual.do.txt
@@ -62,7 +62,7 @@ mkdir sphinx-rootdir/_build/html/mov
 cp -r mov/wave_frames sphinx-rootdir/_build/html/mov
 
 # rst:
-system doconce format rst manual.do.txt --no_mako --no_abort
+system doconce format rst manual.do.txt --no_mako --cite_doconce --no_abort
 system rst2html.py manual.rst > manual.rst.html
 system rst2xml.py manual.rst > manual.xml
 
@@ -79,12 +79,12 @@ latex manual.rst.tex
 latex manual.rst.tex
 dvipdf manual.rst.dvi
 
-system doconce format plain manual.do.txt --skip_inline_comments --no_mako --no_abort
-system doconce format pandoc manual.do.txt --no_mako --strict_markdown_output --github_md --no_abort
-system doconce format epytext manual.do.txt --no_mako --no_abort
+system doconce format plain manual.do.txt --skip_inline_comments --cite_doconce  --no_mako --no_abort
+system doconce format pandoc manual.do.txt --no_mako --strict_markdown_output --github_md --cite_doconce  --no_abort
+system doconce format epytext manual.do.txt --cite_doconce --no_mako --no_abort
 
 # doconce latex:
-system doconce format latex manual.do.txt --no_mako --latex_font=helvetica --no_ampersand_quote  --no_abort # produces ptex2tex: manual.p.tex
+system doconce format latex manual.do.txt --no_mako --latex_font=helvetica --no_ampersand_quote --cite_doconce  --no_abort # produces ptex2tex: manual.p.tex
 doconce ptex2tex manual envir=ans:nt
 # Since we have native latex table and --no_ampersand_quote, we need to
 # manually fix the quote examples elsewhere
@@ -100,7 +100,7 @@ dvipdf manual.dvi
 cp manual.pdf manual_latex.pdf
 
 # doconce pdflatex:
-system doconce format pdflatex manual.do.txt --no_mako --latex_font=helvetica --no_ampersand_quote --no_abort
+system doconce format pdflatex manual.do.txt --no_mako --latex_font=helvetica --no_ampersand_quote --cite_doconce --no_abort
 
 doconce ptex2tex manual envir=ans:nt
 # Since we have native latex table and --no_ampersand_quote, we need to
@@ -114,12 +114,12 @@ pdflatex -shell-escape manual
 pdflatex -shell-escape manual
 
 # Google Code wiki:
-system doconce format gwiki manual.do.txt --no_mako --no_abort
+system doconce format gwiki manual.do.txt --cite_doconce --no_mako --no_abort
 # fix figure in wiki: (can also by done by doconce gwiki_figsubst)
 doconce subst "\(the URL of the image file fig/wave1D.png must be inserted here\)" "(https://raw.github.com/hplgit/doconce/master/doc/src/manual/fig/wave1D.png" manual.gwiki
 
-system doconce format cwiki manual.do.txt --no_mako --no_abort
-system doconce format mwiki manual.do.txt --no_mako --no_abort
+system doconce format cwiki manual.do.txt --cite_doconce --no_mako --no_abort
+system doconce format mwiki manual.do.txt --cite_doconce --no_mako --no_abort
 
 rm -f *.ps
 

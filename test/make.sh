@@ -306,7 +306,7 @@ elif [ $admon_tp = 'grayicon' ]; then
 elif [ $admon_tp = 'graybox2' ]; then
    opts=--no_abort
 fi
-system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts --latex_code_style=lst
+system doconce format pdflatex admon --latex_admon=$admon_tp $color $opts --latex_code_style=lst --cite_doconce
 cp admon.tex admon_${admon_tp}.tex
 system pdflatex admon_${admon_tp}
 echo "admon=$admon_tp"
@@ -320,38 +320,38 @@ rm -rf latex_figs
 done
 
 # Test different code envirs inside admons
-doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2 --no_abort
+doconce format pdflatex admon --latex_admon=mdfbox --latex_admon_color=1,1,1 --latex_admon_envir_map=2 --cite_doconce --no_abort
 doconce ptex2tex admon pycod2=minted pypro2=minted pycod=Verbatim pypro=Verbatim
 cp admon.tex admon_double_envirs.tex
 rm -rf latex_figs
 
 # Test HTML admon styles
-system doconce format html admon --html_admon=lyx --html_style=blueish2 $rawgit
+system doconce format html admon --html_admon=lyx --html_style=blueish2 --cite_doconce $rawgit
 cp admon.html admon_lyx.html
 
-system doconce format html admon --html_admon=paragraph --html_style=blueish2 $rawgit
+system doconce format html admon --html_admon=paragraph --html_style=blueish2 --cite_doconce $rawgit
 cp admon.html admon_paragraph.html
 
-system doconce format html admon --html_admon=colors $rawgit
+system doconce format html admon --html_admon=colors --cite_doconce $rawgit
 cp admon.html admon_colors.html
 
-system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow $rawgit
+system doconce format html admon --html_admon=gray --html_style=blueish2 --html_admon_shadow --html_box_shadow --cite_doconce $rawgit
 cp admon.html admon_gray.html
 
-system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow $rawgit
+system doconce format html admon --html_admon=yellow --html_admon_shadow --html_box_shadow --cite_doconce $rawgit
 cp admon.html admon_yellow.html
 
-system doconce format html admon --html_admon=apricot --html_style=solarized $rawgit
+system doconce format html admon --html_admon=apricot --html_style=solarized --cite_doconce $rawgit
 cp admon.html admon_apricot.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html $rawgit
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html --cite_doconce $rawgit
 cp admon.html admon_vagrant.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert $rawgit
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert --cite_doconce $rawgit
 cp admon.html admon_bootstrap_alert.html
 doconce split_html admon_bootstrap_alert.html --pagination --nav_button=top+bottom
 
-system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel $rawgit
+system doconce format html admon --html_style=bootswatch --pygments_html_style=default --html_admon=bootstrap_panel --cite_doconce $rawgit
 cp admon.html admon_bootswatch_panel.html
 
 system doconce sphinx_dir dirname=tmp_admon admon
@@ -359,10 +359,10 @@ system python automake_sphinx.py
 rm -rf admon_sphinx
 cp -r tmp_admon/_build/html admon_sphinx
 
-system doconce format mwiki admon
+system doconce format mwiki admon --cite_doconce
 cp admon.mwiki admon_mwiki.mwiki
 
-system doconce format plain admon
+system doconce format plain admon --cite_doconce
 cp admon.txt admon_paragraph.txt
 
 cp -fr admon_*.html admon_*.pdf admon_*.*wiki admon_*.txt ._admon_*.html admon_sphinx admon_demo/

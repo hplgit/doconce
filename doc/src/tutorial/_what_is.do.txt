@@ -78,7 +78,7 @@ became popular, especially "Markdown":
 "http://daringfireball.net/projects/markdown/" and its sisters
 "MultiMarkdown": "http://fletcherpenney.net/multimarkdown/",
 "Pandoc-extended Markdown":"http://johnmacfarlane.net/pandoc/", and
-"Markua": "https://leanpub.com/markua/"..  DocOnce looks much like
+"Markua": "https://leanpub.com/markua/".  DocOnce looks much like
 Markdown and is in particular close to the functionality and nature of
 MultiMarkdown. The advantage of DocOnce, however, is a series of
 features for supporting both small and large documents (books in
