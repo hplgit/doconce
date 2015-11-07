@@ -198,8 +198,57 @@ index entries, figures, tables, and admonitions).
 
 ===== License =====
 
-DocOnce is licensed under the BSD license, see the included LICENSE file.
+DocOnce is licensed under the BSD license, see the included `LICENSE` file.
 
 ===== Author =====
 
 DocOnce is written by Hans Petter Langtangen ("hpl@simula.no": "mailto:hpl@simula.no") 2006-2015. A lot of people have contributed to testing the software and suggesting improvements.
+
+===== How to cite =====
+
+=== Link in the copyright ===
+
+If you add a copyright (`{copyright}` after any author or institution
+name in the
+`AUTHOR` field(s)), the command-line option `--cite_doconce` can be used
+to equip the copyright field with a link to the present page.
+Here is an example involving some document `mydoc.do.txt`:
+
+!bc do
+TITLE: Some document
+AUTHOR: Joe Doe {copyright}
+...
+!ec
+Compile to HTML with DocOnce link:
+
+!bc sys
+Terminal> doconce format html mydoc --cite_doconce
+!ec
+The footer of the first page will now contain ``Made with DocOnce''.
+
+=== Traditional citation in a bibliography ===
+
+BibTeX format:
+
+!bc
+@misc{DocOnce,
+  title = {{DocOnce} markup language},
+  author = {H. P. Langtangen},
+  url = {https://github.com/hplgit/doconce},
+  key = {DocOnce},
+  note = {\url{https://github.com/hplgit/doconce}},
+}
+!ec
+
+Publish format:
+
+!bc
+* misc
+** {DocOnce} markup language
+   key:       DocOnce
+   author:    H. P. Langtangen
+   url:       https://github.com/hplgit/doconce
+   status:    published
+   sortkey:   DocOnce
+   note:      \url{https://github.com/hplgit/doconce}
+!ec
