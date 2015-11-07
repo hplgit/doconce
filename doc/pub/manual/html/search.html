@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,8 +7,11 @@
     
     <title>Search</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -26,7 +27,10 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/searchtools.js"></script>
-    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -51,7 +55,12 @@
   </script>
   
   <script type="text/javascript" id="searchindexloader"></script>
-   
+  
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
 
   
        <style type="text/css">
@@ -63,21 +72,379 @@
       </head>
     
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">DocOnce Description</a> &raquo;</li> 
-      </ul>
-    </div>  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          DocOnce Description</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
             
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">DocOnce Description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#what-is-doconce">What Is DocOnce?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#demos">Demos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#markup-based-on-special-lines">Markup Based on Special Lines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#heading-with-title-and-author-s">Heading with title and author(s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#copyright">Copyright</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#table-of-contents">Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#section-headings">Section headings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#abstract">Abstract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#appendix">Appendix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#figures-1">Figures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#basic-syntax">Basic syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#figure-placement">Figure Placement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#figure-references">Figure References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#inline-figures">Inline Figures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#handling-variable-figure-paths">Handling Variable Figure Paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#figures-with-subfigures">Figures with Subfigures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#plot-files-in-latex">Plot Files in LaTeX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#interactive-bokeh-plots-for-html">Interactive Bokeh Plots for HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#converting-matplotlib-plots-to-bokeh">Converting Matplotlib Plots to Bokeh</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#movies-1">Movies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#the-basic-command">The Basic Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#mp4-webm-and-ogg-movies-in-html">MP4, WebM, and Ogg Movies in HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#movie-handling-in-various-formats">Movie Handling in Various Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#youtube-and-vimeo-movies">YouTube and Vimeo Movies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#animation-based-on-filename-generators">Animation Based on Filename Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#copying-computer-code-from-source-files">Copying Computer Code from Source Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#inserting-the-output-from-operating-system-commands">Inserting the Output from Operating System Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#tables">Tables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#index-25">Basic Syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#tables-to-from-csv-data-files">Tables to/from CSV Data Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#lists">Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#inline-tagging">Inline Tagging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#emphasized-words">Emphasized Words</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#inline-verbatim-text">Inline Verbatim Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#links-to-web-addresses">Links to Web Addresses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#links-to-mail-addresses">Links to Mail Addresses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#links-to-local-files">Links to Local Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#quotes">Quotes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#non-breaking-space">Non-Breaking Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#horizontal-rule">Horizontal rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#em-dash">Em-dash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#ampersand">Ampersand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#footnotes">Footnotes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#inline-comments">Inline Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#inline-comments-for-editing">Inline Comments for Editing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#forced-line-breaks">Forced Line Breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#inline-mathematics">Inline Mathematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#cross-referencing">Cross-Referencing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#generalized-cross-referencing">Generalized Cross-Referencing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#generalized-references">Generalized References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#generalized-references-to-chapters">Generalized References to Chapters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#generalized-references-to-latex-documents">Generalized References to LaTeX Documents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#a-worked-example">A Worked Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#index">Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#emojis">Emojis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#typesetting-of-exercises">Typesetting of Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#numbering-of-extra-equations-in-solutions">Numbering of Extra Equations in Solutions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#book">Book</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#use-the-tag-command">Use the tag command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#example-on-an-exercise">Example on an Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#remarks">Remarks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#other-environments">Other Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#blocks-of-verbatim-computer-code">Blocks of Verbatim Computer Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#typesetting-styles">Typesetting Styles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#executable-and-non-executable-code">Executable and Non-Executable Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#customizing-code-environments-types-for-sphinx">Customizing Code Environments Types for Sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#copying-code-from-source-files">Copying Code from Source Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#the-fromto-and-from-to-directives">The <code class="docutils literal"><span class="pre">fromto</span></code> and <code class="docutils literal"><span class="pre">from-to</span></code> directives</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#support-of-latex-math-in-various-output-formats">Support of LaTeX Math in Various Output Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#epub">ePub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#apple-ibook-format">Apple iBook Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#dealing-with-mathematics-in-formats-without-latex-math-support">Dealing with Mathematics in Formats without LaTeX Math Support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#mathematics-for-powerpoint-openoffice">Mathematics for PowerPoint/OpenOffice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#macros-newcommands">Macros (Newcommands)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#writing-guidelines-especially-for-latex-users">Writing Guidelines (Especially for LaTeX Users!)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#typesetting-of-algorithms">Typesetting of Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#admonitions-1">Admonitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#examples-on-admonition-types">Examples on Admonition Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#layout-of-admonitions-in-html">Layout of Admonitions in HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#layout-of-admonitions-in-latex">Layout of Admonitions in LaTeX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#latex-code-environments-inside-admonitions">LaTeX code Environments Inside Admonitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#the-box-environment">The Box Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#user-defined-environments">User-Defined Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#example-1-addition">Example 1: Addition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#bibliography-references">Bibliography (References)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#importing-your-data-to-the-publish-database">Importing your data to the Publish database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#requirements-to-input-data">Requirements to input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#adding-new-references-to-the-database">Adding new references to the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#exporting-the-database">Exporting the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#referring-to-publications">Referring to publications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#specifying-the-publish-database">Specifying the Publish database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#latex-bibliography-style">LaTeX Bibliography Style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#preprocessing-and-postprocessing">Preprocessing and Postprocessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#the-preprocess-and-mako-preprocessors">The Preprocess and Mako Preprocessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#splitting-documents-into-smaller-pieces">Splitting Documents into Smaller Pieces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#writing-slides">Writing Slides</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#overview-1">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#slide-types">Slide Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#syntax">Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#slide-elements">Slide Elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#title-page">Title page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#parts-page">Parts Page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#standard-bullet-list-page">Standard bullet list page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#equations-movies-figures">Equations, movies, figures</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#html5-slides">HTML5 Slides</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#potential-problems">Potential Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#latex-beamer-slides">LaTeX Beamer Slides</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#themes-1">Themes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#pop-of-list-items-and-blocks">Pop of list items and blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#compilation">Compilation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#misc">Misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#missing-features">Missing Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#git-gitignore-file">Git <code class="docutils literal"><span class="pre">.gitignore</span></code> File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#emacs-doconce-formatter">Emacs DocOnce Formatter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#mako-programming">Mako Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#the-basics-of-mako">The Basics of Mako</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#debugging-python-code-in-mako">Debugging Python code in Mako</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#example-nomenclature-functionality">Example: Nomenclature functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#example-executing-python-and-using-sympy-objects-in-latex">Example: Executing Python and using SymPy Objects in LaTeX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#solution-for-latex-and-html">Solution for LaTeX and HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#generating-the-entire-table">Generating the Entire Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#generating-the-entire-table-in-a-native-format-via-mako">Generating the Entire Table in a Native Format via Mako</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#generating-the-entire-table-in-a-native-format-as-a-post-process">Generating the Entire Table in a Native Format as a Post Process</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#tools-for-writing-doconce-documents">Tools for Writing DocOnce Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#writing-a-makefile">Writing a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#generating-a-makefile">Generating a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#preprocessing">Preprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#removal-of-inline-comments">Removal of Inline Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#demo-of-different-formats">Demo of Different Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#html">HTML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#basic-html-output">Basic HTML Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#typesetting-of-code">Typesetting of Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#handling-of-movies">Handling of Movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#html-styles">HTML Styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#html-templates">HTML templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#splitting-html-documents">Splitting HTML documents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#the-html-file-collection">The HTML File Collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#filenames">Filenames</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#url-to-files-hosted-on-github">URL to files hosted on GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#other-html-options">Other HTML options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#blog-posts">Blog Posts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#pandoc-and-markdown">Pandoc and Markdown</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#markdown-to-html-conversion">Markdown to HTML conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#strict-markdown">Strict Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#github-flavored-markdown">GitHub-flavored Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#multimarkdown">MultiMarkdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#strapdown-rendering-of-markdown-text">Strapdown rendering of Markdown text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#latex">LaTeX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#overview-2">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#the-translation-command">The translation command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#id36">Newcommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#output-for-paper-vs-screen">Output for paper vs screen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#command-line-options">Command-line options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#syntax-highlighting">Syntax highlighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#drafts">Drafts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#potential-problems-with-ampersand">Potential problems with ampersand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#part-2-of-step-1-outdated">Part 2 of Step 1 (outdated)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-edit-the-latex-file-step-2-optional">LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#latex-pdf-generate-pdf-step-3">LaTeX-PDF: Generate PDF (Step 3)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#xelatex">XeLaTeX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#jupyter-ipython-notebooks">Jupyter (IPython) Notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#hidden-code-blocks">Hidden code blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#displaying-code-as-plain-text-instead-of-executable-cells">Displaying code as plain text instead of executable cells</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#figures-2">Figures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#movies-2">Movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#admonitions-2">Admonitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#references-to-an-external-textbook">References to an External Textbook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#conversion-from-notebook-back-to-doconce">Conversion from Notebook Back to DocOnce</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#matlab-notebooks">Matlab Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#plain-ascii-text">Plain ASCII Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#restructuredtext">reStructuredText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#sphinx">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#the-basic-steps">The Basic Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#links">Links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#themes-2">Themes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#compiling-multiple-themes">Compiling Multiple Themes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#runestoneinteractive-books">RunestoneInteractive books</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#the-manual-sphinx-procedure">The manual Sphinx procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#wiki-formats">Wiki Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#google-docs">Google Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#doconce">DocOnce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#dependencies">Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#python-v2-7">Python v2.7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#preprocessors">Preprocessors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#bibliography">Bibliography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#image-file-handling">Image file handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#spellcheck">Spellcheck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#ptex2tex-for-latex-output">Ptex2tex for LaTeX Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#pygments-and-the-minted-code-style">Pygments and the Minted Code Style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#latex-packages">LaTeX packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#sphinx-or-restructuredtext-output">Sphinx or reStructuredText Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#epydoc-output">Epydoc Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manual.html#analyzing-file-differences">Analyzing file differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#basic-parsing-ideas">Basic Parsing Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manual.html#typesetting-of-function-arguments-return-values-and-variables">Typesetting of Function Arguments, Return Values, and Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manual.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
   <h1 id="search-documentation">Search</h1>
   <div id="fallback" class="admonition warning">
   <script type="text/javascript">$('#fallback').hide();</script>
@@ -92,47 +459,40 @@
     function will automatically search for all of the words. Pages
     containing fewer words won't appear in the result list.
   </p>
-  <form action="" method="get">
-    <input type="text" name="q" value="" />
-    <input type="submit" value="search" />
+
+  
+  <form class="form-inline" action="" method="get">
+    <div class="form-group">
+      <input type="text" class="form-control" name="q" value="" />
+    </div>
+    <input type="submit" class="btn btn-default" value="search" />
     <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
+  </form>  
+  
+  
   
   <div id="search-results">
   
   </div>
 
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <center>
-            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
-              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
-            </a></p>
-            </center>
-        </div>
-      </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="nav-item nav-item-0"><a href="index.html">DocOnce Description</a> &raquo;</li> 
-      </ul>
-    </div>
-<div class="wrapper">
-  <div class="footer">
-    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
-    <br />
-    <br />
-      &copy;2015, Hans Petter Langtangen.
+      
   </div>
 </div>
-
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Hans Petter Langtangen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

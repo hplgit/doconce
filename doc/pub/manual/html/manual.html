@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,8 +7,11 @@
     
     <title>DocOnce Description</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,7 +26,10 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/sidebar.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
 
         <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
         <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
@@ -45,7 +49,12 @@
     
     <link rel="top" title="DocOnce Description" href="index.html" />
     <link rel="prev" title="DocOnce Description" href="index.html" />
- 
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   
        <style type="text/css">
          div.admonition {
@@ -56,25 +65,707 @@
       </head>
     
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="index.html" title="DocOnce Description"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">DocOnce Description</a> &raquo;</li> 
-      </ul>
-    </div>  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          DocOnce Description</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.0</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
             
-  <div class="section" id="doconce-description">
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">DocOnce Description</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#demos">Demos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#markup-based-on-special-lines">Markup Based on Special Lines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#heading-with-title-and-author-s">Heading with title and author(s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copyright">Copyright</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#section-headings">Section headings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abstract">Abstract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#appendix">Appendix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#figures-1">Figures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-syntax">Basic syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#figure-placement">Figure Placement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#figure-references">Figure References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inline-figures">Inline Figures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handling-variable-figure-paths">Handling Variable Figure Paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#figures-with-subfigures">Figures with Subfigures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plot-files-in-latex">Plot Files in LaTeX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interactive-bokeh-plots-for-html">Interactive Bokeh Plots for HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#converting-matplotlib-plots-to-bokeh">Converting Matplotlib Plots to Bokeh</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#movies-1">Movies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-basic-command">The Basic Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mp4-webm-and-ogg-movies-in-html">MP4, WebM, and Ogg Movies in HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#movie-handling-in-various-formats">Movie Handling in Various Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#youtube-and-vimeo-movies">YouTube and Vimeo Movies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#animation-based-on-filename-generators">Animation Based on Filename Generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#copying-computer-code-from-source-files">Copying Computer Code from Source Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inserting-the-output-from-operating-system-commands">Inserting the Output from Operating System Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tables">Tables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#index-25">Basic Syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tables-to-from-csv-data-files">Tables to/from CSV Data Files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#lists">Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#inline-tagging">Inline Tagging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#emphasized-words">Emphasized Words</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-verbatim-text">Inline Verbatim Text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links-to-web-addresses">Links to Web Addresses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links-to-mail-addresses">Links to Mail Addresses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links-to-local-files">Links to Local Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#quotes">Quotes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#horizontal-rule">Horizontal rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#em-dash">Em-dash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ampersand">Ampersand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#footnotes">Footnotes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-comments-for-editing">Inline Comments for Editing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forced-line-breaks">Forced Line Breaks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-mathematics">Inline Mathematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-referencing">Cross-Referencing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalized-cross-referencing">Generalized Cross-Referencing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generalized-references">Generalized References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generalized-references-to-chapters">Generalized References to Chapters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generalized-references-to-latex-documents">Generalized References to LaTeX Documents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-worked-example">A Worked Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#index">Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emojis">Emojis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numbering-of-extra-equations-in-solutions">Numbering of Extra Equations in Solutions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#book">Book</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#use-the-tag-command">Use the tag command</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remarks">Remarks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-environments">Other Environments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blocks-of-verbatim-computer-code">Blocks of Verbatim Computer Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#typesetting-styles">Typesetting Styles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#executable-and-non-executable-code">Executable and Non-Executable Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-code-environments-types-for-sphinx">Customizing Code Environments Types for Sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copying-code-from-source-files">Copying Code from Source Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-fromto-and-from-to-directives">The <code class="docutils literal"><span class="pre">fromto</span></code> and <code class="docutils literal"><span class="pre">from-to</span></code> directives</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#support-of-latex-math-in-various-output-formats">Support of LaTeX Math in Various Output Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#epub">ePub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apple-ibook-format">Apple iBook Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dealing-with-mathematics-in-formats-without-latex-math-support">Dealing with Mathematics in Formats without LaTeX Math Support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mathematics-for-powerpoint-openoffice">Mathematics for PowerPoint/OpenOffice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#macros-newcommands">Macros (Newcommands)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-guidelines-especially-for-latex-users">Writing Guidelines (Especially for LaTeX Users!)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typesetting-of-algorithms">Typesetting of Algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admonitions-1">Admonitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#examples-on-admonition-types">Examples on Admonition Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layout-of-admonitions-in-html">Layout of Admonitions in HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layout-of-admonitions-in-latex">Layout of Admonitions in LaTeX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#latex-code-environments-inside-admonitions">LaTeX code Environments Inside Admonitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-box-environment">The Box Environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-defined-environments">User-Defined Environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-addition">Example 1: Addition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bibliography-references">Bibliography (References)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importing-your-data-to-the-publish-database">Importing your data to the Publish database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements-to-input-data">Requirements to input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-references-to-the-database">Adding new references to the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-the-database">Exporting the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referring-to-publications">Referring to publications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-the-publish-database">Specifying the Publish database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#latex-bibliography-style">LaTeX Bibliography Style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#preprocessing-and-postprocessing">Preprocessing and Postprocessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-preprocess-and-mako-preprocessors">The Preprocess and Mako Preprocessors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#splitting-documents-into-smaller-pieces">Splitting Documents into Smaller Pieces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-slides">Writing Slides</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-1">Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#slide-types">Slide Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#syntax">Syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#slide-elements">Slide Elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#title-page">Title page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parts-page">Parts Page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-bullet-list-page">Standard bullet list page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#equations-movies-figures">Equations, movies, figures</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#html5-slides">HTML5 Slides</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#potential-problems">Potential Problems</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#latex-beamer-slides">LaTeX Beamer Slides</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#themes-1">Themes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pop-of-list-items-and-blocks">Pop of list items and blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compilation">Compilation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#missing-features">Missing Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-gitignore-file">Git <code class="docutils literal"><span class="pre">.gitignore</span></code> File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#emacs-doconce-formatter">Emacs DocOnce Formatter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mako-programming">Mako Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-basics-of-mako">The Basics of Mako</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-python-code-in-mako">Debugging Python code in Mako</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-nomenclature-functionality">Example: Nomenclature functionality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-executing-python-and-using-sympy-objects-in-latex">Example: Executing Python and using SymPy Objects in LaTeX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#solution-for-latex-and-html">Solution for LaTeX and HTML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-entire-table">Generating the Entire Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-via-mako">Generating the Entire Table in a Native Format via Mako</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-as-a-post-process">Generating the Entire Table in a Native Format as a Post Process</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools-for-writing-doconce-documents">Tools for Writing DocOnce Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-a-makefile">Writing a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-a-makefile">Generating a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#removal-of-inline-comments">Removal of Inline Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demo-of-different-formats">Demo of Different Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#html">HTML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-html-output">Basic HTML Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typesetting-of-code">Typesetting of Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-of-movies">Handling of Movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html-styles">HTML Styles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html-templates">HTML templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#splitting-html-documents">Splitting HTML documents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-html-file-collection">The HTML File Collection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filenames">Filenames</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#url-to-files-hosted-on-github">URL to files hosted on GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-html-options">Other HTML options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blog-posts">Blog Posts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pandoc-and-markdown">Pandoc and Markdown</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#markdown-to-html-conversion">Markdown to HTML conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strict-markdown">Strict Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github-flavored-markdown">GitHub-flavored Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multimarkdown">MultiMarkdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strapdown-rendering-of-markdown-text">Strapdown rendering of Markdown text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#latex">LaTeX</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-2">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-translation-command">The translation command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">Newcommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command-line-options">Command-line options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drafts">Drafts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#potential-problems-with-ampersand">Potential problems with ampersand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#part-2-of-step-1-outdated">Part 2 of Step 1 (outdated)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#latex-pdf-edit-the-latex-file-step-2-optional">LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#latex-pdf-generate-pdf-step-3">LaTeX-PDF: Generate PDF (Step 3)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xelatex">XeLaTeX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-ipython-notebooks">Jupyter (IPython) Notebooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hidden-code-blocks">Hidden code blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#displaying-code-as-plain-text-instead-of-executable-cells">Displaying code as plain text instead of executable cells</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#figures-2">Figures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#movies-2">Movies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admonitions-2">Admonitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references-to-an-external-textbook">References to an External Textbook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conversion-from-notebook-back-to-doconce">Conversion from Notebook Back to DocOnce</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#matlab-notebooks">Matlab Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plain-ascii-text">Plain ASCII Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restructuredtext">reStructuredText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sphinx">Sphinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-basic-steps">The Basic Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#links">Links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#themes-2">Themes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-multiple-themes">Compiling Multiple Themes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#runestoneinteractive-books">RunestoneInteractive books</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-manual-sphinx-procedure">The manual Sphinx procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#wiki-formats">Wiki Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#google-docs">Google Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#doconce">DocOnce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#python-v2-7">Python v2.7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preprocessors">Preprocessors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bibliography">Bibliography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#image-file-handling">Image file handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spellcheck">Spellcheck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ptex2tex-for-latex-output">Ptex2tex for LaTeX Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pygments-and-the-minted-code-style">Pygments and the Minted Code Style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#latex-packages">LaTeX packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sphinx-or-restructuredtext-output">Sphinx or reStructuredText Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#epydoc-output">Epydoc Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyzing-file-differences">Analyzing file differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-parsing-ideas">Basic Parsing Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#typesetting-of-function-arguments-return-values-and-variables">Typesetting of Function Arguments, Return Values, and Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">DocOnce Description</a><ul>
+<li><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
+<li><a class="reference internal" href="#demos">Demos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#markup-based-on-special-lines">Markup Based on Special Lines</a><ul>
+<li><a class="reference internal" href="#heading-with-title-and-author-s">Heading with title and author(s)</a></li>
+<li><a class="reference internal" href="#copyright">Copyright</a></li>
+<li><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
+<li><a class="reference internal" href="#section-headings">Section headings</a></li>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#appendix">Appendix</a></li>
+<li><a class="reference internal" href="#figures-1">Figures</a><ul>
+<li><a class="reference internal" href="#basic-syntax">Basic syntax</a></li>
+<li><a class="reference internal" href="#figure-placement">Figure Placement</a></li>
+<li><a class="reference internal" href="#figure-references">Figure References</a></li>
+<li><a class="reference internal" href="#inline-figures">Inline Figures</a></li>
+<li><a class="reference internal" href="#handling-variable-figure-paths">Handling Variable Figure Paths</a></li>
+<li><a class="reference internal" href="#figures-with-subfigures">Figures with Subfigures</a></li>
+<li><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
+<li><a class="reference internal" href="#plot-files-in-latex">Plot Files in LaTeX</a></li>
+<li><a class="reference internal" href="#interactive-bokeh-plots-for-html">Interactive Bokeh Plots for HTML</a></li>
+<li><a class="reference internal" href="#converting-matplotlib-plots-to-bokeh">Converting Matplotlib Plots to Bokeh</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#movies-1">Movies</a><ul>
+<li><a class="reference internal" href="#the-basic-command">The Basic Command</a></li>
+<li><a class="reference internal" href="#mp4-webm-and-ogg-movies-in-html">MP4, WebM, and Ogg Movies in HTML</a></li>
+<li><a class="reference internal" href="#movie-handling-in-various-formats">Movie Handling in Various Formats</a></li>
+<li><a class="reference internal" href="#youtube-and-vimeo-movies">YouTube and Vimeo Movies</a></li>
+<li><a class="reference internal" href="#animation-based-on-filename-generators">Animation Based on Filename Generators</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#copying-computer-code-from-source-files">Copying Computer Code from Source Files</a></li>
+<li><a class="reference internal" href="#inserting-the-output-from-operating-system-commands">Inserting the Output from Operating System Commands</a></li>
+<li><a class="reference internal" href="#comments">Comments</a></li>
+<li><a class="reference internal" href="#tables">Tables</a><ul>
+<li><a class="reference internal" href="#index-25">Basic Syntax</a></li>
+<li><a class="reference internal" href="#tables-to-from-csv-data-files">Tables to/from CSV Data Files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lists">Lists</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inline-tagging">Inline Tagging</a><ul>
+<li><a class="reference internal" href="#emphasized-words">Emphasized Words</a></li>
+<li><a class="reference internal" href="#inline-verbatim-text">Inline Verbatim Text</a></li>
+<li><a class="reference internal" href="#links-to-web-addresses">Links to Web Addresses</a></li>
+<li><a class="reference internal" href="#links-to-mail-addresses">Links to Mail Addresses</a></li>
+<li><a class="reference internal" href="#links-to-local-files">Links to Local Files</a></li>
+<li><a class="reference internal" href="#quotes">Quotes</a></li>
+<li><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
+<li><a class="reference internal" href="#horizontal-rule">Horizontal rule</a></li>
+<li><a class="reference internal" href="#em-dash">Em-dash</a></li>
+<li><a class="reference internal" href="#ampersand">Ampersand</a></li>
+<li><a class="reference internal" href="#footnotes">Footnotes</a></li>
+<li><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
+<li><a class="reference internal" href="#inline-comments-for-editing">Inline Comments for Editing</a></li>
+<li><a class="reference internal" href="#forced-line-breaks">Forced Line Breaks</a></li>
+<li><a class="reference internal" href="#inline-mathematics">Inline Mathematics</a></li>
+<li><a class="reference internal" href="#cross-referencing">Cross-Referencing</a></li>
+<li><a class="reference internal" href="#generalized-cross-referencing">Generalized Cross-Referencing</a><ul>
+<li><a class="reference internal" href="#generalized-references">Generalized References</a></li>
+<li><a class="reference internal" href="#generalized-references-to-chapters">Generalized References to Chapters</a></li>
+<li><a class="reference internal" href="#generalized-references-to-latex-documents">Generalized References to LaTeX Documents</a></li>
+<li><a class="reference internal" href="#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
+<li><a class="reference internal" href="#a-worked-example">A Worked Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#index">Index</a></li>
+<li><a class="reference internal" href="#emojis">Emojis</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
+<li><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a><ul>
+<li><a class="reference internal" href="#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
+<li><a class="reference internal" href="#numbering-of-extra-equations-in-solutions">Numbering of Extra Equations in Solutions</a><ul>
+<li><a class="reference internal" href="#book">Book</a></li>
+<li><a class="reference internal" href="#use-the-tag-command">Use the tag command</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
+<li><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
+<li><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
+<li><a class="reference internal" href="#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
+<li><a class="reference internal" href="#remarks">Remarks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-environments">Other Environments</a><ul>
+<li><a class="reference internal" href="#blocks-of-verbatim-computer-code">Blocks of Verbatim Computer Code</a><ul>
+<li><a class="reference internal" href="#typesetting-styles">Typesetting Styles</a></li>
+<li><a class="reference internal" href="#executable-and-non-executable-code">Executable and Non-Executable Code</a></li>
+<li><a class="reference internal" href="#customizing-code-environments-types-for-sphinx">Customizing Code Environments Types for Sphinx</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#copying-code-from-source-files">Copying Code from Source Files</a></li>
+<li><a class="reference internal" href="#the-fromto-and-from-to-directives">The <code class="docutils literal"><span class="pre">fromto</span></code> and <code class="docutils literal"><span class="pre">from-to</span></code> directives</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a><ul>
+<li><a class="reference internal" href="#support-of-latex-math-in-various-output-formats">Support of LaTeX Math in Various Output Formats</a></li>
+<li><a class="reference internal" href="#epub">ePub</a></li>
+<li><a class="reference internal" href="#apple-ibook-format">Apple iBook Format</a></li>
+<li><a class="reference internal" href="#dealing-with-mathematics-in-formats-without-latex-math-support">Dealing with Mathematics in Formats without LaTeX Math Support</a></li>
+<li><a class="reference internal" href="#mathematics-for-powerpoint-openoffice">Mathematics for PowerPoint/OpenOffice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#macros-newcommands">Macros (Newcommands)</a></li>
+<li><a class="reference internal" href="#writing-guidelines-especially-for-latex-users">Writing Guidelines (Especially for LaTeX Users!)</a></li>
+<li><a class="reference internal" href="#typesetting-of-algorithms">Typesetting of Algorithms</a></li>
+<li><a class="reference internal" href="#admonitions-1">Admonitions</a><ul>
+<li><a class="reference internal" href="#examples-on-admonition-types">Examples on Admonition Types</a></li>
+<li><a class="reference internal" href="#layout-of-admonitions-in-html">Layout of Admonitions in HTML</a></li>
+<li><a class="reference internal" href="#layout-of-admonitions-in-latex">Layout of Admonitions in LaTeX</a></li>
+<li><a class="reference internal" href="#latex-code-environments-inside-admonitions">LaTeX code Environments Inside Admonitions</a></li>
+<li><a class="reference internal" href="#the-box-environment">The Box Environment</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#user-defined-environments">User-Defined Environments</a></li>
+<li><a class="reference internal" href="#example-1-addition">Example 1: Addition</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bibliography-references">Bibliography (References)</a><ul>
+<li><a class="reference internal" href="#importing-your-data-to-the-publish-database">Importing your data to the Publish database</a></li>
+<li><a class="reference internal" href="#requirements-to-input-data">Requirements to input data</a></li>
+<li><a class="reference internal" href="#adding-new-references-to-the-database">Adding new references to the database</a></li>
+<li><a class="reference internal" href="#exporting-the-database">Exporting the database</a></li>
+<li><a class="reference internal" href="#referring-to-publications">Referring to publications</a></li>
+<li><a class="reference internal" href="#specifying-the-publish-database">Specifying the Publish database</a></li>
+<li><a class="reference internal" href="#latex-bibliography-style">LaTeX Bibliography Style</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#preprocessing-and-postprocessing">Preprocessing and Postprocessing</a><ul>
+<li><a class="reference internal" href="#the-preprocess-and-mako-preprocessors">The Preprocess and Mako Preprocessors</a></li>
+<li><a class="reference internal" href="#splitting-documents-into-smaller-pieces">Splitting Documents into Smaller Pieces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#writing-slides">Writing Slides</a><ul>
+<li><a class="reference internal" href="#overview-1">Overview</a><ul>
+<li><a class="reference internal" href="#slide-types">Slide Types</a></li>
+<li><a class="reference internal" href="#syntax">Syntax</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#slide-elements">Slide Elements</a><ul>
+<li><a class="reference internal" href="#title-page">Title page</a></li>
+<li><a class="reference internal" href="#parts-page">Parts Page</a></li>
+<li><a class="reference internal" href="#standard-bullet-list-page">Standard bullet list page</a></li>
+<li><a class="reference internal" href="#equations-movies-figures">Equations, movies, figures</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#html5-slides">HTML5 Slides</a><ul>
+<li><a class="reference internal" href="#potential-problems">Potential Problems</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#latex-beamer-slides">LaTeX Beamer Slides</a><ul>
+<li><a class="reference internal" href="#themes-1">Themes</a></li>
+<li><a class="reference internal" href="#pop-of-list-items-and-blocks">Pop of list items and blocks</a></li>
+<li><a class="reference internal" href="#compilation">Compilation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#misc">Misc</a><ul>
+<li><a class="reference internal" href="#missing-features">Missing Features</a></li>
+<li><a class="reference internal" href="#git-gitignore-file">Git <code class="docutils literal"><span class="pre">.gitignore</span></code> File</a></li>
+<li><a class="reference internal" href="#emacs-doconce-formatter">Emacs DocOnce Formatter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mako-programming">Mako Programming</a><ul>
+<li><a class="reference internal" href="#the-basics-of-mako">The Basics of Mako</a></li>
+<li><a class="reference internal" href="#debugging-python-code-in-mako">Debugging Python code in Mako</a></li>
+<li><a class="reference internal" href="#example-nomenclature-functionality">Example: Nomenclature functionality</a></li>
+<li><a class="reference internal" href="#example-executing-python-and-using-sympy-objects-in-latex">Example: Executing Python and using SymPy Objects in LaTeX</a></li>
+<li><a class="reference internal" href="#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a><ul>
+<li><a class="reference internal" href="#solution-for-latex-and-html">Solution for LaTeX and HTML</a></li>
+<li><a class="reference internal" href="#generating-the-entire-table">Generating the Entire Table</a></li>
+<li><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-via-mako">Generating the Entire Table in a Native Format via Mako</a></li>
+<li><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-as-a-post-process">Generating the Entire Table in a Native Format as a Post Process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
+<li><a class="reference internal" href="#tools-for-writing-doconce-documents">Tools for Writing DocOnce Documents</a></li>
+<li><a class="reference internal" href="#debugging">Debugging</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
+<li><a class="reference internal" href="#writing-a-makefile">Writing a Makefile</a></li>
+<li><a class="reference internal" href="#generating-a-makefile">Generating a Makefile</a></li>
+<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
+<li><a class="reference internal" href="#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#removal-of-inline-comments">Removal of Inline Comments</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+<li><a class="reference internal" href="#demo-of-different-formats">Demo of Different Formats</a></li>
+<li><a class="reference internal" href="#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
+<li><a class="reference internal" href="#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#html">HTML</a><ul>
+<li><a class="reference internal" href="#basic-html-output">Basic HTML Output</a></li>
+<li><a class="reference internal" href="#typesetting-of-code">Typesetting of Code</a></li>
+<li><a class="reference internal" href="#handling-of-movies">Handling of Movies</a></li>
+<li><a class="reference internal" href="#html-styles">HTML Styles</a></li>
+<li><a class="reference internal" href="#html-templates">HTML templates</a></li>
+<li><a class="reference internal" href="#splitting-html-documents">Splitting HTML documents</a><ul>
+<li><a class="reference internal" href="#the-html-file-collection">The HTML File Collection</a></li>
+<li><a class="reference internal" href="#filenames">Filenames</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#url-to-files-hosted-on-github">URL to files hosted on GitHub</a></li>
+<li><a class="reference internal" href="#other-html-options">Other HTML options</a></li>
+<li><a class="reference internal" href="#blog-posts">Blog Posts</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pandoc-and-markdown">Pandoc and Markdown</a><ul>
+<li><a class="reference internal" href="#markdown-to-html-conversion">Markdown to HTML conversion</a></li>
+<li><a class="reference internal" href="#strict-markdown">Strict Markdown</a></li>
+<li><a class="reference internal" href="#github-flavored-markdown">GitHub-flavored Markdown</a></li>
+<li><a class="reference internal" href="#multimarkdown">MultiMarkdown</a></li>
+<li><a class="reference internal" href="#strapdown-rendering-of-markdown-text">Strapdown rendering of Markdown text</a></li>
+<li><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#latex">LaTeX</a><ul>
+<li><a class="reference internal" href="#overview-2">Overview</a></li>
+<li><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
+<li><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
+<li><a class="reference internal" href="#the-translation-command">The translation command</a></li>
+<li><a class="reference internal" href="#id36">Newcommands</a></li>
+<li><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
+<li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
+<li><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
+<li><a class="reference internal" href="#drafts">Drafts</a></li>
+<li><a class="reference internal" href="#potential-problems-with-ampersand">Potential problems with ampersand</a></li>
+<li><a class="reference internal" href="#part-2-of-step-1-outdated">Part 2 of Step 1 (outdated)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#latex-pdf-edit-the-latex-file-step-2-optional">LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
+<li><a class="reference internal" href="#latex-pdf-generate-pdf-step-3">LaTeX-PDF: Generate PDF (Step 3)</a></li>
+<li><a class="reference internal" href="#xelatex">XeLaTeX</a></li>
+<li><a class="reference internal" href="#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
+<li><a class="reference internal" href="#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jupyter-ipython-notebooks">Jupyter (IPython) Notebooks</a><ul>
+<li><a class="reference internal" href="#hidden-code-blocks">Hidden code blocks</a></li>
+<li><a class="reference internal" href="#displaying-code-as-plain-text-instead-of-executable-cells">Displaying code as plain text instead of executable cells</a></li>
+<li><a class="reference internal" href="#figures-2">Figures</a></li>
+<li><a class="reference internal" href="#movies-2">Movies</a></li>
+<li><a class="reference internal" href="#admonitions-2">Admonitions</a></li>
+<li><a class="reference internal" href="#references-to-an-external-textbook">References to an External Textbook</a></li>
+<li><a class="reference internal" href="#conversion-from-notebook-back-to-doconce">Conversion from Notebook Back to DocOnce</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#matlab-notebooks">Matlab Notebooks</a></li>
+<li><a class="reference internal" href="#plain-ascii-text">Plain ASCII Text</a></li>
+<li><a class="reference internal" href="#restructuredtext">reStructuredText</a></li>
+<li><a class="reference internal" href="#sphinx">Sphinx</a><ul>
+<li><a class="reference internal" href="#the-basic-steps">The Basic Steps</a></li>
+<li><a class="reference internal" href="#links">Links</a></li>
+<li><a class="reference internal" href="#themes-2">Themes</a><ul>
+<li><a class="reference internal" href="#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
+<li><a class="reference internal" href="#compiling-multiple-themes">Compiling Multiple Themes</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#runestoneinteractive-books">RunestoneInteractive books</a></li>
+<li><a class="reference internal" href="#the-manual-sphinx-procedure">The manual Sphinx procedure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#wiki-formats">Wiki Formats</a></li>
+<li><a class="reference internal" href="#google-docs">Google Docs</a></li>
+<li><a class="reference internal" href="#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
+<li><a class="reference internal" href="#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
+<li><a class="reference internal" href="#doconce">DocOnce</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a><ul>
+<li><a class="reference internal" href="#python-v2-7">Python v2.7</a></li>
+<li><a class="reference internal" href="#preprocessors">Preprocessors</a></li>
+<li><a class="reference internal" href="#bibliography">Bibliography</a></li>
+<li><a class="reference internal" href="#image-file-handling">Image file handling</a></li>
+<li><a class="reference internal" href="#spellcheck">Spellcheck</a></li>
+<li><a class="reference internal" href="#ptex2tex-for-latex-output">Ptex2tex for LaTeX Output</a></li>
+<li><a class="reference internal" href="#pygments-and-the-minted-code-style">Pygments and the Minted Code Style</a></li>
+<li><a class="reference internal" href="#latex-packages">LaTeX packages</a></li>
+<li><a class="reference internal" href="#sphinx-or-restructuredtext-output">Sphinx or reStructuredText Output</a></li>
+<li><a class="reference internal" href="#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
+<li><a class="reference internal" href="#epydoc-output">Epydoc Output</a></li>
+<li><a class="reference internal" href="#analyzing-file-differences">Analyzing file differences</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-parsing-ideas">Basic Parsing Ideas</a><ul>
+<li><a class="reference internal" href="#typesetting-of-function-arguments-return-values-and-variables">Typesetting of Function Arguments, Return Values, and Variables</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: DocOnce Description"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; DocOnce Descr...</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      
+  <style type="text/css">
+  .dropdown-menu {
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+</style><div class="section" id="doconce-description">
 <h1>DocOnce Description<a class="headerlink" href="#doconce-description" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -82,7 +773,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 27, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 6, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -207,6 +898,15 @@ The three most common formats can be found on the web:
 <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html">Sphinx</a>,
 and
 <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf">PDF</a>.</p>
+<div class="admonition-write-doconce-documents-in-a-text-editor-with-monospace-font admonition">
+<p class="first admonition-title">Write DocOnce documents in a text editor with monospace font</p>
+<p class="last">Some DocOnce constructions are sensitive to whitespace (indentation in
+lists is a primary example), so you <em>must</em> use a text editor with
+monospace font (also known as verbatim text). Never use fonts like
+Arial or Helvetica.
+Other popular markup languages such as Sphinx and Markdown are also
+sensitive to whitespace and require a monospace font.</p>
+</div>
 <div class="admonition-this-guide-is-for-the-experienced-doconce-writer admonition">
 <p class="first admonition-title">This guide is for the experienced DocOnce writer</p>
 <p class="last">Do not read the detailed descriptions of DocOnce syntax that follows
@@ -2520,8 +3220,8 @@ the Mako equivalent <code class="docutils literal"><span class="pre">%</span> <s
   one can insert the characters ``c``, ``r``, or ``l`` to specify the
   alignment of the columns (centered, right, or left, respectively).
   One can also use ``X`` for potentially very wide text that must be
-  wrapped (will only affect ``latex`` and ``pdflatex`` where the
-  ``tabularx`` package is then used).
+  wrapped and left-adjusted (will only affect ``latex`` and ``pdflatex`` where the
+  ``tabularx`` package is then used; ``X`` means ``l`` in all other formats).
 
 * Similar character can be inserted in the line above the header to
   align the headings.
@@ -7236,8 +7936,8 @@ figures. <code class="docutils literal"><span class="pre">X</span></code> is <co
 </div></blockquote>
 </div>
 <div class="section" id="blog-posts">
-<span id="do2any-blog"></span><h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-165"></span><span class="target" id="index-166"></span><p id="index-167">DocOnce can be used for writing blog posts provided the blog site accepts
+<span id="do2any-blog"></span><span id="index-165"></span><h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-166"></span><span class="target" id="index-167"></span><p id="index-168">DocOnce can be used for writing blog posts provided the blog site accepts
 raw HTML code. Google&#8217;s Blogger service (<code class="docutils literal"><span class="pre">blogger.com</span></code> or
 <code class="docutils literal"><span class="pre">blogname.blogspot.com</span></code>) is particularly well suited since it also
 allows extensive LaTeX mathematics via MathJax.</p>
@@ -7300,7 +8000,7 @@ to equations.</p>
 </div>
 <div class="section" id="pandoc-and-markdown">
 <span id="do2any-pandoc"></span><h2>Pandoc and Markdown<a class="headerlink" href="#pandoc-and-markdown" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-168"></span><span class="target" id="index-169"></span><span class="target" id="index-170"></span><p id="index-171">Output in Pandoc&#8217;s extended Markdown format results from</p>
+<span class="target" id="index-169"></span><span class="target" id="index-170"></span><span class="target" id="index-171"></span><p id="index-172">Output in Pandoc&#8217;s extended Markdown format results from</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pandoc mydoc
 </pre></div>
 </div>
@@ -7348,13 +8048,13 @@ Terminal&gt; doconce m2html mydoc
 <p>The result <code class="docutils literal"><span class="pre">mydoc.html</span></code> can be viewed in a browser.</p>
 </div>
 <div class="section" id="strict-markdown">
-<span id="index-172"></span><h3>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h3>
+<span id="index-173"></span><h3>Strict Markdown<a class="headerlink" href="#strict-markdown" title="Permalink to this headline">¶</a></h3>
 <p>The option <code class="docutils literal"><span class="pre">--strict_markdown_output</span></code> generates plain or strict
 Markdown without the many extension that Pandoc accepts in Markdown
 syntax.</p>
 </div>
 <div class="section" id="github-flavored-markdown">
-<span id="index-173"></span><h3>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h3>
+<span id="index-174"></span><h3>GitHub-flavored Markdown<a class="headerlink" href="#github-flavored-markdown" title="Permalink to this headline">¶</a></h3>
 <p>Adding the command-line option <code class="docutils literal"><span class="pre">github-md</span></code> turns on the
 <a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GutHub-flavored Markdown dialect</a>, which is used for the issue tracker on <a class="reference external" href="http://github.com">GitHub</a>. A special feature is the support of task lists:
 unnumbered lists with <code class="docutils literal"><span class="pre">[x]</span></code> (task done) or <code class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></code> (task not done).
@@ -7415,7 +8115,7 @@ version of Markdown (as opposed to Pandoc-extended Markdown (default),
 strict Markdown, or GitHub-flavored Markdown).</p>
 </div>
 <div class="section" id="strapdown-rendering-of-markdown-text">
-<span id="index-174"></span><h3>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h3>
+<span id="index-175"></span><h3>Strapdown rendering of Markdown text<a class="headerlink" href="#strapdown-rendering-of-markdown-text" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://strapdownjs.com">Strapdown</a> is a tool that can render Markdown
 text nicely in a web browser by just inserting an HTML header and
 footer in the Markdown file and load the file into a browser.
@@ -7457,7 +8157,7 @@ be advantageous to go via LaTeX.</p>
 </div>
 <div class="section" id="latex">
 <span id="do2any-latex"></span><h2>LaTeX<a class="headerlink" href="#latex" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-175"></span><div class="admonition note" id="index-176">
+<span class="target" id="index-176"></span><div class="admonition note" id="index-177">
 <p class="first admonition-title">Note</p>
 <p class="last">XeLaTeX and pdfLaTeX are used very much in the same way as standard
 LaTeX. The minor differences are described in separate sections
@@ -7533,8 +8233,8 @@ linebreaks in the inline verbatim text and hence avoid overfull hboxes.</p>
 </div>
 <div class="section" id="latex-pdf-generate-latex-step-1">
 <span id="do2any-latex-compile1"></span><h3>LaTeX-PDF: Generate LaTeX (Step 1)<a class="headerlink" href="#latex-pdf-generate-latex-step-1" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-177"></span><div class="section" id="the-translation-command">
-<span id="index-178"></span><h4>The translation command<a class="headerlink" href="#the-translation-command" title="Permalink to this headline">¶</a></h4>
+<span class="target" id="index-178"></span><div class="section" id="the-translation-command">
+<span id="index-179"></span><h4>The translation command<a class="headerlink" href="#the-translation-command" title="Permalink to this headline">¶</a></h4>
 <p>Filter the doconce text directly to valid LaTeX using
 the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
@@ -7564,7 +8264,7 @@ The default, <code class="docutils literal"><span class="pre">--device=screen</s
 on a screen where links are just clickable.</p>
 </div>
 <div class="section" id="command-line-options">
-<span id="index-179"></span><h4>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h4>
+<span id="index-180"></span><h4>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h4>
 <p>There are many additional options (run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code> and
 look for options starting with <code class="docutils literal"><span class="pre">--latex</span></code> to get a more verbose description):</p>
 <blockquote>
@@ -7631,7 +8331,7 @@ Figure 5.3 on page 67&#8221;.</td></tr>
 </table>
 </div>
 <div class="section" id="syntax-highlighting">
-<span id="index-180"></span><h4>Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
+<span id="index-181"></span><h4>Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
 <p>The style of verbatim blocks of computer code is specified by
 <code class="docutils literal"><span class="pre">--latex_code_style=X</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> can be set in a very flexible way.
 There are three main values, corresponding to three LaTeX tools
@@ -7805,7 +8505,7 @@ Terminal&gt; pdflatex -shell-escape mydoc
 </div>
 <div class="section" id="xelatex">
 <span id="do2any-xelatex"></span><h3>XeLaTeX<a class="headerlink" href="#xelatex" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-181"></span><p id="index-182">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
+<span class="target" id="index-182"></span><p id="index-183">XeLaTeX is an alternative to pdfLaTeX and is run in almost the
 same way, except for the <code class="docutils literal"><span class="pre">--xelatex</span></code> flag to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --xelatex \
           --latex_code_style=lst
@@ -7815,7 +8515,7 @@ Terminal&gt; xelatex mydoc
 </div>
 <div class="section" id="from-pdf-to-e-book-formats">
 <span id="do2any-epub"></span><h3>From PDF to e-book formats<a class="headerlink" href="#from-pdf-to-e-book-formats" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-183"></span><p id="index-184">PDF (as generated from LaTeX above) can be read on most devices today.
+<span class="target" id="index-184"></span><p id="index-185">PDF (as generated from LaTeX above) can be read on most devices today.
 However, for Kindle and other devices specialized for e-books you
 need to convert to their format. The <a class="reference external" href="http://calibre-ebook.com/">Calibre</a>
 program can produce epub, mobi, and other e-book formats from PDF,
@@ -7823,7 +8523,7 @@ see a <a class="reference external" href="http://www.dedoimedo.com/computers/lat
 </div>
 <div class="section" id="microsoft-word-or-libreoffice">
 <span id="do2any-ms-ooffice"></span><h3>Microsoft Word or LibreOffice<a class="headerlink" href="#microsoft-word-or-libreoffice" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-185"></span><span class="target" id="index-186"></span><p id="index-187">Transforming DocOnce files to Word format is best done with the aid
+<span class="target" id="index-186"></span><span class="target" id="index-187"></span><p id="index-188">Transforming DocOnce files to Word format is best done with the aid
 of <code class="docutils literal"><span class="pre">pandoc</span></code>. A standard way is to first generate the Markdown format
 (<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pandoc</span></code>) and then use <code class="docutils literal"><span class="pre">pandoc</span></code> to generate a <code class="docutils literal"><span class="pre">.docx</span></code>
 file:</p>
@@ -7837,7 +8537,7 @@ does not work.</p>
 </div>
 <div class="section" id="jupyter-ipython-notebooks">
 <span id="do2any-ipynb"></span><h2>Jupyter (IPython) Notebooks<a class="headerlink" href="#jupyter-ipython-notebooks" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-188"></span><span class="target" id="index-189"></span><span class="target" id="index-190"></span><p id="index-191">DocOnce can generate json files for the Jupyter Notebook:</p>
+<span class="target" id="index-189"></span><span class="target" id="index-190"></span><span class="target" id="index-191"></span><p id="index-192">DocOnce can generate json files for the Jupyter Notebook:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format ipynb mydoc  # results in mydoc.ipynb
 </pre></div>
 </div>
@@ -7962,10 +8662,43 @@ with this construction:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="conversion-from-notebook-back-to-doconce">
+<h3>Conversion from Notebook Back to DocOnce<a class="headerlink" href="#conversion-from-notebook-back-to-doconce" title="Permalink to this headline">¶</a></h3>
+<p>A notebook generated from DocOnce can be converted back to DocOnce format
+again, even after being annotated in a web browser. Here is a trivial
+example:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>Here is a code:
+
+<span class="k">!bc</span> pypro
+a = 1
+b = 2
+print a + b
+<span class="k">!ec</span>
+</pre></div>
+</div>
+<p>We translate this DocOnce document to a notebook:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format ipynb mydoc
+</pre></div>
+</div>
+<p>We load <code class="docutils literal"><span class="pre">mydoc.ipynb</span></code> into the notebook application and add a code cell</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+<p>before the original code cell. After executing the cells we download
+the new notebook as the file <code class="docutils literal"><span class="pre">mydoc2.ipynb</span></code>. We can then generate
+the corresponding DocOnce document <code class="docutils literal"><span class="pre">mydoc2.do.txt</span></code>:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; ipynb2doconce mydoc2.ipynb
+</pre></div>
+</div>
+<p>Title, author, and other information in DocOnce that does not have
+a corresponding syntax in the notebook are stored as special comments
+in the generated <code class="docutils literal"><span class="pre">.ipynb</span></code> file so that DocOnce can retrieve this information
+when running the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ipynb2doconce</span></code> conversion command.</p>
+</div>
 </div>
 <div class="section" id="matlab-notebooks">
 <span id="do2any-matlabnb"></span><h2>Matlab Notebooks<a class="headerlink" href="#matlab-notebooks" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-192"></span><span class="target" id="index-193"></span><span class="target" id="index-194"></span><p id="index-195">The Matlab <em>publish</em> format is aimed at notebooks, but the markup is
+<span class="target" id="index-193"></span><span class="target" id="index-194"></span><span class="target" id="index-195"></span><p id="index-196">The Matlab <em>publish</em> format is aimed at notebooks, but the markup is
 quite primitive, so only a small subset of DocOnce markup can translate
 successfully to the Matlab publish format. However, if you write within
 that subset, it is easy to create notebooks in DocOnce that can translate
@@ -7986,7 +8719,7 @@ any other output format):</p>
 </div>
 <div class="section" id="plain-ascii-text">
 <span id="do2any-ascii"></span><h2>Plain ASCII Text<a class="headerlink" href="#plain-ascii-text" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-196"></span><span class="target" id="index-197"></span><span class="target" id="index-198"></span><p id="index-199">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
+<span class="target" id="index-197"></span><span class="target" id="index-198"></span><span class="target" id="index-199"></span><p id="index-200">We can go from DocOnce &#8220;back to&#8221; plain untagged text suitable for viewing
 in terminal windows, inclusion in email text, or for insertion in
 computer source code:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format plain mydoc.do.txt  # results in mydoc.txt
@@ -7995,7 +8728,7 @@ computer source code:</p>
 </div>
 <div class="section" id="restructuredtext">
 <span id="do2any-rst"></span><h2>reStructuredText<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-200"></span><p id="index-201">Going from DocOnce to reStructuredText gives a lot of possibilities to
+<span class="target" id="index-201"></span><p id="index-202">Going from DocOnce to reStructuredText gives a lot of possibilities to
 go to other formats. First we filter the DocOnce text to a
 reStructuredText file <code class="docutils literal"><span class="pre">mydoc.rst</span></code>:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format rst mydoc.do.txt
@@ -8041,8 +8774,8 @@ Some links for going from LaTeX to Word are listed below.</p>
 </div>
 <div class="section" id="sphinx">
 <span id="do2any-sphinx"></span><h2>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-202"></span><div class="section" id="the-basic-steps">
-<span id="index-203"></span><h3>The Basic Steps<a class="headerlink" href="#the-basic-steps" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-203"></span><div class="section" id="the-basic-steps">
+<span id="index-204"></span><h3>The Basic Steps<a class="headerlink" href="#the-basic-steps" title="Permalink to this headline">¶</a></h3>
 <p>Sphinx documents demand quite some steps in their creation. We have automated
 most of the steps through the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir version=1.0 dirname=sphinxdir \
@@ -8114,10 +8847,12 @@ to <code class="docutils literal"><span class="pre">_static/myfile.txt</span></c
 However, I recommend instead that you manually copy
 files to <code class="docutils literal"><span class="pre">_static</span></code> when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.</p>
+<p id="index-205">One can get all links to open in a new window by adding the
+option <code class="docutils literal"><span class="pre">--html_links_in_new_window</span></code> to the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command.</p>
 </div>
 <div class="section" id="themes-2">
-<span id="index-204"></span><h3>Themes<a class="headerlink" href="#themes-2" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce comes with a rich collection of HTML themes for Sphinx documents,
+<h3>Themes<a class="headerlink" href="#themes-2" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-206"></span><p id="index-207">DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
 Additional themes include
 <code class="docutils literal"><span class="pre">agni</span></code>,
@@ -8144,7 +8879,7 @@ and
 Some of the themes come with basic Sphinx, while others must be installed
 separately, see the <code class="docutils literal"><span class="pre">bundled/README_sphinx_themes.do.txt</span></code> file in
 the DocOnce source code tree for installation instructions.</p>
-<p id="index-205">The
+<p id="index-208">The
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> insert lots of extra code in the <code class="docutils literal"><span class="pre">conf.py</span></code>
 file to enable easy specification of information and,
 in particular,customization of themes.
@@ -8257,7 +8992,7 @@ You must run the generated <code class="docutils literal"><span class="pre">auto
 option to generate these type of documents.</p>
 </div>
 <div class="section" id="the-manual-sphinx-procedure">
-<span id="index-206"></span><h3>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h3>
+<span id="index-209"></span><h3>The manual Sphinx procedure<a class="headerlink" href="#the-manual-sphinx-procedure" title="Permalink to this headline">¶</a></h3>
 <p>If it is not desirable to use the autogenerated scripts explained
 above, here is the complete manual procedure of generating a
 Sphinx document from a file <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>.</p>
@@ -8346,7 +9081,7 @@ all such arguments can be customized both for Sphinx and LaTeX output.</p>
 </div>
 <div class="section" id="wiki-formats">
 <span id="do2any-wiki"></span><h2>Wiki Formats<a class="headerlink" href="#wiki-formats" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="index-207"></span><span class="target" id="index-208"></span><span class="target" id="index-209"></span><span class="target" id="index-210"></span><span class="target" id="index-211"></span><span class="target" id="index-212"></span><p id="index-213">There are many different wiki formats, but DocOnce only supports three:
+<span class="target" id="index-210"></span><span class="target" id="index-211"></span><span class="target" id="index-212"></span><span class="target" id="index-213"></span><span class="target" id="index-214"></span><span class="target" id="index-215"></span><p id="index-216">There are many different wiki formats, but DocOnce only supports three:
 <a class="reference external" href="http://code.google.com/p/support/wiki/WikiSyntax">Googlecode wiki</a>,
 <a class="reference external" href="http://www.mediawiki.org/wiki/Help:Formatting">MediaWiki</a>, and
 <a class="reference external" href="http://www.wikicreole.org/wiki/Creole1.0">Creole Wiki</a>.
@@ -8384,7 +9119,7 @@ one performs this substitution automatically (see next section).</p>
 </div>
 <div class="section" id="google-docs">
 <span id="do2any-google-docs"></span><h2>Google Docs<a class="headerlink" href="#google-docs" title="Permalink to this headline">¶</a></h2>
-<p id="index-214">Google Docs are normally made online in the interactive editor. However,
+<p id="index-217">Google Docs are normally made online in the interactive editor. However,
 you may upload a DocOnce document to Google Docs. This requires transforming
 the DocOnce document to one of the accepted formats for Google Docs:</p>
 <blockquote>
@@ -8416,7 +9151,7 @@ in Google Docs and the <a class="reference external" href="http://code.google.co
 <h2>Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands<a class="headerlink" href="#options-for-the-doconce-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="doconce-format-command-line-options">
 <h3><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options<a class="headerlink" href="#doconce-format-command-line-options" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-215"></span><p id="index-216">The transformation of a DocOnce source to various format is done with
+<span class="target" id="index-218"></span><p id="index-219">The transformation of a DocOnce source to various format is done with
 the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command, which has <em>a lot</em> of command-line options.
 These are printed out by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">--help</span></code>. The output is listed
 here for convenience.</p>
@@ -9228,6 +9963,12 @@ Treat examples of the form &quot;==== Example: ...&quot;
 as in exercise environments.
 
 
+--exercises_as_subsections
+
+Forces exercises to be typeset as subsections. Used to override
+various latex environments for exercises (esp. in Springer styles).
+
+
 --solutions_at_end
 
 Place solutions to exercises at the end of the document.
@@ -9440,7 +10181,7 @@ Combine paragraphs to one line (does not work well).
 </div>
 <div class="section" id="installation-of-doconce-and-its-dependencies">
 <span id="install-doconce"></span><h2>Installation of DocOnce and its Dependencies<a class="headerlink" href="#installation-of-doconce-and-its-dependencies" title="Permalink to this headline">¶</a></h2>
-<p id="index-217">Below, we explain the manual installation of all software that may be
+<p id="index-220">Below, we explain the manual installation of all software that may be
 needed when working with DocOnce documents.
 The impatient way to install everything that is needed is to use
 Anaconda Python and the <code class="docutils literal"><span class="pre">conda</span></code> program:</p>
@@ -9956,374 +10697,28 @@ Springer,
 </div>
 
 
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-            <center>
-            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
-              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
-            </a></p>
-            </center>
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">DocOnce Description</a><ul>
-<li><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
-<li><a class="reference internal" href="#demos">Demos</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#markup-based-on-special-lines">Markup Based on Special Lines</a><ul>
-<li><a class="reference internal" href="#heading-with-title-and-author-s">Heading with title and author(s)</a></li>
-<li><a class="reference internal" href="#copyright">Copyright</a></li>
-<li><a class="reference internal" href="#table-of-contents">Table of contents</a></li>
-<li><a class="reference internal" href="#section-headings">Section headings</a></li>
-<li><a class="reference internal" href="#abstract">Abstract</a></li>
-<li><a class="reference internal" href="#appendix">Appendix</a></li>
-<li><a class="reference internal" href="#figures-1">Figures</a><ul>
-<li><a class="reference internal" href="#basic-syntax">Basic syntax</a></li>
-<li><a class="reference internal" href="#figure-placement">Figure Placement</a></li>
-<li><a class="reference internal" href="#figure-references">Figure References</a></li>
-<li><a class="reference internal" href="#inline-figures">Inline Figures</a></li>
-<li><a class="reference internal" href="#handling-variable-figure-paths">Handling Variable Figure Paths</a></li>
-<li><a class="reference internal" href="#figures-with-subfigures">Figures with Subfigures</a></li>
-<li><a class="reference internal" href="#sidecaption-in-latex-and-html">Sidecaption in LaTeX and HTML</a></li>
-<li><a class="reference internal" href="#plot-files-in-latex">Plot Files in LaTeX</a></li>
-<li><a class="reference internal" href="#interactive-bokeh-plots-for-html">Interactive Bokeh Plots for HTML</a></li>
-<li><a class="reference internal" href="#converting-matplotlib-plots-to-bokeh">Converting Matplotlib Plots to Bokeh</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#movies-1">Movies</a><ul>
-<li><a class="reference internal" href="#the-basic-command">The Basic Command</a></li>
-<li><a class="reference internal" href="#mp4-webm-and-ogg-movies-in-html">MP4, WebM, and Ogg Movies in HTML</a></li>
-<li><a class="reference internal" href="#movie-handling-in-various-formats">Movie Handling in Various Formats</a></li>
-<li><a class="reference internal" href="#youtube-and-vimeo-movies">YouTube and Vimeo Movies</a></li>
-<li><a class="reference internal" href="#animation-based-on-filename-generators">Animation Based on Filename Generators</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#copying-computer-code-from-source-files">Copying Computer Code from Source Files</a></li>
-<li><a class="reference internal" href="#inserting-the-output-from-operating-system-commands">Inserting the Output from Operating System Commands</a></li>
-<li><a class="reference internal" href="#comments">Comments</a></li>
-<li><a class="reference internal" href="#tables">Tables</a><ul>
-<li><a class="reference internal" href="#index-25">Basic Syntax</a></li>
-<li><a class="reference internal" href="#tables-to-from-csv-data-files">Tables to/from CSV Data Files</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#lists">Lists</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#inline-tagging">Inline Tagging</a><ul>
-<li><a class="reference internal" href="#emphasized-words">Emphasized Words</a></li>
-<li><a class="reference internal" href="#inline-verbatim-text">Inline Verbatim Text</a></li>
-<li><a class="reference internal" href="#links-to-web-addresses">Links to Web Addresses</a></li>
-<li><a class="reference internal" href="#links-to-mail-addresses">Links to Mail Addresses</a></li>
-<li><a class="reference internal" href="#links-to-local-files">Links to Local Files</a></li>
-<li><a class="reference internal" href="#quotes">Quotes</a></li>
-<li><a class="reference internal" href="#non-breaking-space">Non-Breaking Space</a></li>
-<li><a class="reference internal" href="#horizontal-rule">Horizontal rule</a></li>
-<li><a class="reference internal" href="#em-dash">Em-dash</a></li>
-<li><a class="reference internal" href="#ampersand">Ampersand</a></li>
-<li><a class="reference internal" href="#footnotes">Footnotes</a></li>
-<li><a class="reference internal" href="#inline-comments">Inline Comments</a></li>
-<li><a class="reference internal" href="#inline-comments-for-editing">Inline Comments for Editing</a></li>
-<li><a class="reference internal" href="#forced-line-breaks">Forced Line Breaks</a></li>
-<li><a class="reference internal" href="#inline-mathematics">Inline Mathematics</a></li>
-<li><a class="reference internal" href="#cross-referencing">Cross-Referencing</a></li>
-<li><a class="reference internal" href="#generalized-cross-referencing">Generalized Cross-Referencing</a><ul>
-<li><a class="reference internal" href="#generalized-references">Generalized References</a></li>
-<li><a class="reference internal" href="#generalized-references-to-chapters">Generalized References to Chapters</a></li>
-<li><a class="reference internal" href="#generalized-references-to-latex-documents">Generalized References to LaTeX Documents</a></li>
-<li><a class="reference internal" href="#tool-for-generating-generalizedd-references">Tool for Generating Generalizedd References</a></li>
-<li><a class="reference internal" href="#a-worked-example">A Worked Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#index">Index</a></li>
-<li><a class="reference internal" href="#emojis">Emojis</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
-<li><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
-<li><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a><ul>
-<li><a class="reference internal" href="#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#list-of-exercises-problems-and-projects">List of Exercises, Problems, and Projects</a></li>
-<li><a class="reference internal" href="#numbering-of-extra-equations-in-solutions">Numbering of Extra Equations in Solutions</a><ul>
-<li><a class="reference internal" href="#book">Book</a></li>
-<li><a class="reference internal" href="#use-the-tag-command">Use the tag command</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
-<li><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
-<li><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
-<li><a class="reference internal" href="#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
-<li><a class="reference internal" href="#remarks">Remarks</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#other-environments">Other Environments</a><ul>
-<li><a class="reference internal" href="#blocks-of-verbatim-computer-code">Blocks of Verbatim Computer Code</a><ul>
-<li><a class="reference internal" href="#typesetting-styles">Typesetting Styles</a></li>
-<li><a class="reference internal" href="#executable-and-non-executable-code">Executable and Non-Executable Code</a></li>
-<li><a class="reference internal" href="#customizing-code-environments-types-for-sphinx">Customizing Code Environments Types for Sphinx</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
-<li><a class="reference internal" href="#copying-code-from-source-files">Copying Code from Source Files</a></li>
-<li><a class="reference internal" href="#the-fromto-and-from-to-directives">The <code class="docutils literal"><span class="pre">fromto</span></code> and <code class="docutils literal"><span class="pre">from-to</span></code> directives</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a><ul>
-<li><a class="reference internal" href="#support-of-latex-math-in-various-output-formats">Support of LaTeX Math in Various Output Formats</a></li>
-<li><a class="reference internal" href="#epub">ePub</a></li>
-<li><a class="reference internal" href="#apple-ibook-format">Apple iBook Format</a></li>
-<li><a class="reference internal" href="#dealing-with-mathematics-in-formats-without-latex-math-support">Dealing with Mathematics in Formats without LaTeX Math Support</a></li>
-<li><a class="reference internal" href="#mathematics-for-powerpoint-openoffice">Mathematics for PowerPoint/OpenOffice</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#macros-newcommands">Macros (Newcommands)</a></li>
-<li><a class="reference internal" href="#writing-guidelines-especially-for-latex-users">Writing Guidelines (Especially for LaTeX Users!)</a></li>
-<li><a class="reference internal" href="#typesetting-of-algorithms">Typesetting of Algorithms</a></li>
-<li><a class="reference internal" href="#admonitions-1">Admonitions</a><ul>
-<li><a class="reference internal" href="#examples-on-admonition-types">Examples on Admonition Types</a></li>
-<li><a class="reference internal" href="#layout-of-admonitions-in-html">Layout of Admonitions in HTML</a></li>
-<li><a class="reference internal" href="#layout-of-admonitions-in-latex">Layout of Admonitions in LaTeX</a></li>
-<li><a class="reference internal" href="#latex-code-environments-inside-admonitions">LaTeX code Environments Inside Admonitions</a></li>
-<li><a class="reference internal" href="#the-box-environment">The Box Environment</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#user-defined-environments">User-Defined Environments</a></li>
-<li><a class="reference internal" href="#example-1-addition">Example 1: Addition</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#bibliography-references">Bibliography (References)</a><ul>
-<li><a class="reference internal" href="#importing-your-data-to-the-publish-database">Importing your data to the Publish database</a></li>
-<li><a class="reference internal" href="#requirements-to-input-data">Requirements to input data</a></li>
-<li><a class="reference internal" href="#adding-new-references-to-the-database">Adding new references to the database</a></li>
-<li><a class="reference internal" href="#exporting-the-database">Exporting the database</a></li>
-<li><a class="reference internal" href="#referring-to-publications">Referring to publications</a></li>
-<li><a class="reference internal" href="#specifying-the-publish-database">Specifying the Publish database</a></li>
-<li><a class="reference internal" href="#latex-bibliography-style">LaTeX Bibliography Style</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#preprocessing-and-postprocessing">Preprocessing and Postprocessing</a><ul>
-<li><a class="reference internal" href="#the-preprocess-and-mako-preprocessors">The Preprocess and Mako Preprocessors</a></li>
-<li><a class="reference internal" href="#splitting-documents-into-smaller-pieces">Splitting Documents into Smaller Pieces</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#writing-slides">Writing Slides</a><ul>
-<li><a class="reference internal" href="#overview-1">Overview</a><ul>
-<li><a class="reference internal" href="#slide-types">Slide Types</a></li>
-<li><a class="reference internal" href="#syntax">Syntax</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#slide-elements">Slide Elements</a><ul>
-<li><a class="reference internal" href="#title-page">Title page</a></li>
-<li><a class="reference internal" href="#parts-page">Parts Page</a></li>
-<li><a class="reference internal" href="#standard-bullet-list-page">Standard bullet list page</a></li>
-<li><a class="reference internal" href="#equations-movies-figures">Equations, movies, figures</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#html5-slides">HTML5 Slides</a><ul>
-<li><a class="reference internal" href="#potential-problems">Potential Problems</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#latex-beamer-slides">LaTeX Beamer Slides</a><ul>
-<li><a class="reference internal" href="#themes-1">Themes</a></li>
-<li><a class="reference internal" href="#pop-of-list-items-and-blocks">Pop of list items and blocks</a></li>
-<li><a class="reference internal" href="#compilation">Compilation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#misc">Misc</a><ul>
-<li><a class="reference internal" href="#missing-features">Missing Features</a></li>
-<li><a class="reference internal" href="#git-gitignore-file">Git <code class="docutils literal"><span class="pre">.gitignore</span></code> File</a></li>
-<li><a class="reference internal" href="#emacs-doconce-formatter">Emacs DocOnce Formatter</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#mako-programming">Mako Programming</a><ul>
-<li><a class="reference internal" href="#the-basics-of-mako">The Basics of Mako</a></li>
-<li><a class="reference internal" href="#debugging-python-code-in-mako">Debugging Python code in Mako</a></li>
-<li><a class="reference internal" href="#example-nomenclature-functionality">Example: Nomenclature functionality</a></li>
-<li><a class="reference internal" href="#example-executing-python-and-using-sympy-objects-in-latex">Example: Executing Python and using SymPy Objects in LaTeX</a></li>
-<li><a class="reference internal" href="#example-extending-tables-to-handle-figures">Example: Extending Tables to Handle Figures</a><ul>
-<li><a class="reference internal" href="#solution-for-latex-and-html">Solution for LaTeX and HTML</a></li>
-<li><a class="reference internal" href="#generating-the-entire-table">Generating the Entire Table</a></li>
-<li><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-via-mako">Generating the Entire Table in a Native Format via Mako</a></li>
-<li><a class="reference internal" href="#generating-the-entire-table-in-a-native-format-as-a-post-process">Generating the Entire Table in a Native Format as a Post Process</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#example-defining-a-theorem-environment">Example: Defining a Theorem Environment</a></li>
-<li><a class="reference internal" href="#tools-for-writing-doconce-documents">Tools for Writing DocOnce Documents</a></li>
-<li><a class="reference internal" href="#debugging">Debugging</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
-<li><a class="reference internal" href="#writing-a-makefile">Writing a Makefile</a></li>
-<li><a class="reference internal" href="#generating-a-makefile">Generating a Makefile</a></li>
-<li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
-<li><a class="reference internal" href="#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#removal-of-inline-comments">Removal of Inline Comments</a></li>
-<li><a class="reference internal" href="#notes">Notes</a></li>
-<li><a class="reference internal" href="#demo-of-different-formats">Demo of Different Formats</a></li>
-<li><a class="reference internal" href="#tweaking-the-doconce-output">Tweaking the DocOnce Output</a></li>
-<li><a class="reference internal" href="#useful-options-for-doconce-format">Useful Options for <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#html">HTML</a><ul>
-<li><a class="reference internal" href="#basic-html-output">Basic HTML Output</a></li>
-<li><a class="reference internal" href="#typesetting-of-code">Typesetting of Code</a></li>
-<li><a class="reference internal" href="#handling-of-movies">Handling of Movies</a></li>
-<li><a class="reference internal" href="#html-styles">HTML Styles</a></li>
-<li><a class="reference internal" href="#html-templates">HTML templates</a></li>
-<li><a class="reference internal" href="#splitting-html-documents">Splitting HTML documents</a><ul>
-<li><a class="reference internal" href="#the-html-file-collection">The HTML File Collection</a></li>
-<li><a class="reference internal" href="#filenames">Filenames</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#url-to-files-hosted-on-github">URL to files hosted on GitHub</a></li>
-<li><a class="reference internal" href="#other-html-options">Other HTML options</a></li>
-<li><a class="reference internal" href="#blog-posts">Blog Posts</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pandoc-and-markdown">Pandoc and Markdown</a><ul>
-<li><a class="reference internal" href="#markdown-to-html-conversion">Markdown to HTML conversion</a></li>
-<li><a class="reference internal" href="#strict-markdown">Strict Markdown</a></li>
-<li><a class="reference internal" href="#github-flavored-markdown">GitHub-flavored Markdown</a></li>
-<li><a class="reference internal" href="#multimarkdown">MultiMarkdown</a></li>
-<li><a class="reference internal" href="#strapdown-rendering-of-markdown-text">Strapdown rendering of Markdown text</a></li>
-<li><a class="reference internal" href="#using-pandoc-to-go-from-latex-to-ms-word-or-html">Using Pandoc to go from LaTeX to MS Word or HTML</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#latex">LaTeX</a><ul>
-<li><a class="reference internal" href="#overview-2">Overview</a></li>
-<li><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
-<li><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
-<li><a class="reference internal" href="#the-translation-command">The translation command</a></li>
-<li><a class="reference internal" href="#id36">Newcommands</a></li>
-<li><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
-<li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
-<li><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
-<li><a class="reference internal" href="#drafts">Drafts</a></li>
-<li><a class="reference internal" href="#potential-problems-with-ampersand">Potential problems with ampersand</a></li>
-<li><a class="reference internal" href="#part-2-of-step-1-outdated">Part 2 of Step 1 (outdated)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#latex-pdf-edit-the-latex-file-step-2-optional">LaTeX-PDF: Edit the LaTeX File (Step 2, Optional)</a></li>
-<li><a class="reference internal" href="#latex-pdf-generate-pdf-step-3">LaTeX-PDF: Generate PDF (Step 3)</a></li>
-<li><a class="reference internal" href="#xelatex">XeLaTeX</a></li>
-<li><a class="reference internal" href="#from-pdf-to-e-book-formats">From PDF to e-book formats</a></li>
-<li><a class="reference internal" href="#microsoft-word-or-libreoffice">Microsoft Word or LibreOffice</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#jupyter-ipython-notebooks">Jupyter (IPython) Notebooks</a><ul>
-<li><a class="reference internal" href="#hidden-code-blocks">Hidden code blocks</a></li>
-<li><a class="reference internal" href="#displaying-code-as-plain-text-instead-of-executable-cells">Displaying code as plain text instead of executable cells</a></li>
-<li><a class="reference internal" href="#figures-2">Figures</a></li>
-<li><a class="reference internal" href="#movies-2">Movies</a></li>
-<li><a class="reference internal" href="#admonitions-2">Admonitions</a></li>
-<li><a class="reference internal" href="#references-to-an-external-textbook">References to an External Textbook</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#matlab-notebooks">Matlab Notebooks</a></li>
-<li><a class="reference internal" href="#plain-ascii-text">Plain ASCII Text</a></li>
-<li><a class="reference internal" href="#restructuredtext">reStructuredText</a></li>
-<li><a class="reference internal" href="#sphinx">Sphinx</a><ul>
-<li><a class="reference internal" href="#the-basic-steps">The Basic Steps</a></li>
-<li><a class="reference internal" href="#links">Links</a></li>
-<li><a class="reference internal" href="#themes-2">Themes</a><ul>
-<li><a class="reference internal" href="#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
-<li><a class="reference internal" href="#compiling-multiple-themes">Compiling Multiple Themes</a></li>
-<li><a class="reference internal" href="#example">Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#runestoneinteractive-books">RunestoneInteractive books</a></li>
-<li><a class="reference internal" href="#the-manual-sphinx-procedure">The manual Sphinx procedure</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#wiki-formats">Wiki Formats</a></li>
-<li><a class="reference internal" href="#google-docs">Google Docs</a></li>
-<li><a class="reference internal" href="#options-for-the-doconce-commands">Options for the <code class="docutils literal"><span class="pre">doconce</span></code> commands</a><ul>
-<li><a class="reference internal" href="#doconce-format-command-line-options"><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code> command-line options</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#installation-of-doconce-and-its-dependencies">Installation of DocOnce and its Dependencies</a><ul>
-<li><a class="reference internal" href="#doconce">DocOnce</a></li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a><ul>
-<li><a class="reference internal" href="#python-v2-7">Python v2.7</a></li>
-<li><a class="reference internal" href="#preprocessors">Preprocessors</a></li>
-<li><a class="reference internal" href="#bibliography">Bibliography</a></li>
-<li><a class="reference internal" href="#image-file-handling">Image file handling</a></li>
-<li><a class="reference internal" href="#spellcheck">Spellcheck</a></li>
-<li><a class="reference internal" href="#ptex2tex-for-latex-output">Ptex2tex for LaTeX Output</a></li>
-<li><a class="reference internal" href="#pygments-and-the-minted-code-style">Pygments and the Minted Code Style</a></li>
-<li><a class="reference internal" href="#latex-packages">LaTeX packages</a></li>
-<li><a class="reference internal" href="#sphinx-or-restructuredtext-output">Sphinx or reStructuredText Output</a></li>
-<li><a class="reference internal" href="#markdown-and-pandoc-output">Markdown and Pandoc Output</a></li>
-<li><a class="reference internal" href="#epydoc-output">Epydoc Output</a></li>
-<li><a class="reference internal" href="#analyzing-file-differences">Analyzing file differences</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#basic-parsing-ideas">Basic Parsing Ideas</a><ul>
-<li><a class="reference internal" href="#typesetting-of-function-arguments-return-values-and-variables">Typesetting of Function Arguments, Return Values, and Variables</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">DocOnce Description</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/manual.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="DocOnce Description"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">DocOnce Description</a> &raquo;</li> 
-      </ul>
-    </div>
-<div class="wrapper">
-  <div class="footer">
-    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
-    <br />
-    <br />
-      &copy;2015, Hans Petter Langtangen.
+      
   </div>
 </div>
-
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="_sources/manual.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2015, Hans Petter Langtangen.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

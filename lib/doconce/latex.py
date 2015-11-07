@@ -546,7 +546,8 @@ def latex_code(filestr, code_blocks, code_block_types,
     comment_pattern = '%% %s'
     pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
 
-    if latex_style in ('Springer_lnup', 'Springer_sv'):
+    if latex_style in ('Springer_lnup', 'Springer_sv') and \
+        not option('exercises_as_subsections'):
         replacement = pattern
     else:
         replacement = pattern + r"""\begin{doconceexercise}
@@ -555,9 +556,11 @@ def latex_code(filestr, code_blocks, code_block_types,
 
     filestr = filestr.replace(pattern, replacement)
     pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    if latex_style == 'Springer_lnup':
+    if latex_style == 'Springer_lnup' and \
+           not option('exercises_as_subsections'):
         replacement = r'\end{exercise}' + '\n' + pattern
-    elif latex_style == 'Springer_sv':
+    elif latex_style == 'Springer_sv' and \
+             not option('exercises_as_subsections'):
         replacement = r'\end{prob}' + '\n' + pattern
     else:
         replacement = r'\end{doconceexercise}' + '\n' + pattern
@@ -582,11 +585,13 @@ def latex_code(filestr, code_blocks, code_block_types,
         exercise_headings = re.findall(exercise_pattern, filestr)
         if exercise_headings:
             if option('latex_list_of_exercises=', 'none') == 'none':
-                if latex_style == 'Springer_lnup':
+                if latex_style == 'Springer_lnup' and \
+                       not option('exercises_as_subsections'):
                     filestr = re.sub(exercise_pattern,
         r"""begin{exercise}{\g<3>
 """, filestr)
-                elif latex_style == 'Springer_sv':
+                elif latex_style == 'Springer_sv' and \
+                       not option('exercises_as_subsections'):
                     filestr = re.sub(exercise_pattern,
         r"""begin{prob}{\g<3>
 """, filestr)

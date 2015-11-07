@@ -1535,6 +1535,13 @@ further.
 
 ======= HTML =======
 
+===== How can I add a search facility to an HTML document? =====
+
+There are many services for this. "FreeFind": "http://www.freefind.com/"
+is an easy-to-use service that gives you some HTML code to include
+in the document, typically inside a `# #if FORMAT == "html"` and `# #endif`
+block.
+
 ===== Translation aborts when labels are not defined =====
 
 By default, the DocOnce translation of HTML document aborts when references

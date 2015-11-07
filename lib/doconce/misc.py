@@ -455,6 +455,9 @@ tag."""),
     ('--examples_as_exercises',
      """Treat examples of the form "==== Example: ..."
 as in exercise environments."""),
+    ('--exercises_as_subsections',
+     """Forces exercises to be typeset as subsections. Used to override
+various latex environments for exercises (esp. in Springer styles)."""),
     ('--solutions_at_end',
      'Place solutions to exercises at the end of the document.'),
     ('--without_solutions',

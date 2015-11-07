@@ -1,3 +1,14 @@
+
+.. raw:: html
+
+  <style type="text/css">
+    .dropdown-menu {
+      height: auto;
+      max-height: 400px;
+      overflow-x: hidden;
+  }
+  </style>
+
 .. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
    (https://github.com/hplgit/doconce/)
 
@@ -10,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 27, 2015
+:Date: Nov 6, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -182,6 +193,19 @@ and
 `PDF <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`__.
 
 
+.. admonition:: Write DocOnce documents in a text editor with monospace font
+
+   Some DocOnce constructions are sensitive to whitespace (indentation in
+   lists is a primary example), so you *must* use a text editor with
+   monospace font (also known as verbatim text). Never use fonts like
+   Arial or Helvetica.
+   Other popular markup languages such as Sphinx and Markdown are also
+   sensitive to whitespace and require a monospace font.
+
+
+
+
+
 .. admonition:: This guide is for the experienced DocOnce writer
 
    Do not read the detailed descriptions of DocOnce syntax that follows
@@ -190,10 +214,6 @@ and
 
 
 
-
-.. The DocOnce format introduces four constructs to markup text:
-
-.. lists, special lines, inline tags, and environments.
 
 .. !split
 
@@ -2744,8 +2764,8 @@ is built up of pipe symbols and dashes:
    one can insert the characters ``c``, ``r``, or ``l`` to specify the
    alignment of the columns (centered, right, or left, respectively).
    One can also use ``X`` for potentially very wide text that must be
-   wrapped (will only affect ``latex`` and ``pdflatex`` where the
-   ``tabularx`` package is then used).
+   wrapped and left-adjusted (will only affect ``latex`` and ``pdflatex`` where the
+   ``tabularx`` package is then used; ``X`` means ``l`` in all other formats).
 
  * Similar character can be inserted in the line above the header to
    align the headings.
@@ -8666,6 +8686,8 @@ Other options:
 
  * ``--allow_refs_to_external_docs`` (do not abort if there are references whose labels are not found)
 
+.. index:: open links in new window
+
 .. _do2any:blog:
 
 Blog Posts
@@ -9632,6 +9654,48 @@ with this construction:
         Terminal> doconce format ipynb mydoc \
                   --replace_ref_by_latex_auxno=book.aux
 
+Conversion from Notebook Back to DocOnce
+----------------------------------------
+
+A notebook generated from DocOnce can be converted back to DocOnce format
+again, even after being annotated in a web browser. Here is a trivial
+example:
+
+.. code-block:: doconce
+
+        Here is a code:
+        
+        !bc pypro
+        a = 1
+        b = 2
+        print a + b
+        !ec
+
+We translate this DocOnce document to a notebook:
+
+.. code-block:: text
+
+        Terminal> doconce format ipynb mydoc
+
+We load ``mydoc.ipynb`` into the notebook application and add a code cell
+
+.. code-block:: python
+
+        print "Hello, World!"
+
+before the original code cell. After executing the cells we download
+the new notebook as the file ``mydoc2.ipynb``. We can then generate
+the corresponding DocOnce document ``mydoc2.do.txt``:
+
+.. code-block:: text
+
+        Terminal> ipynb2doconce mydoc2.ipynb
+
+Title, author, and other information in DocOnce that does not have
+a corresponding syntax in the notebook are stored as special comments
+in the generated ``.ipynb`` file so that DocOnce can retrieve this information
+when running the ``doconce ipynb2doconce`` conversion command.
+
 .. !split
 
 .. _do2any:matlabnb:
@@ -9866,10 +9930,17 @@ However, I recommend instead that you manually copy
 files to ``_static`` when you want to link to them, or let your
 script which compiles the DocOnce document do it automatically.
 
-.. index:: Sphinx styles
+.. index:: open links in new window
+
+One can get all links to open in a new window by adding the
+option ``--html_links_in_new_window`` to the ``doconce format`` command.
 
 Themes          (2)
 -------------------
+
+.. index:: Sphinx styles
+
+.. index:: Sphinx themes
 
 DocOnce comes with a rich collection of HTML themes for Sphinx documents,
 much larger than what is found in the standard Sphinx distribution.
@@ -11066,6 +11137,12 @@ here for convenience.
         
         Treat examples of the form "==== Example: ..."
         as in exercise environments.
+        
+        
+        --exercises_as_subsections
+        
+        Forces exercises to be typeset as subsections. Used to override
+        various latex environments for exercises (esp. in Springer styles).
         
         
         --solutions_at_end

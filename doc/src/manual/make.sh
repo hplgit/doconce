@@ -1,6 +1,11 @@
 #!/bin/bash
 set -x
 
+# NOTE: There are many doconce errors arising when compiling this manual
+# because it describes doconce syntax in the text, and this syntax is
+# not in the right context for all the syntax checks in doconce.
+# For "normal" documents not explaining doconce syntax, this is not a problem.
+
 function system {
 # Run operating system command and if failure, report and abort
 
@@ -48,7 +53,7 @@ system doconce split_tmp.html manual.html
 system doconce format sphinx manual.do.txt --no_mako --no_abort
 # We have several examples on AUTHOR: so to avoid multiple
 # authors we have to specify
-system doconce sphinx_dir theme=cbc version=1.0 intersphinx manual.do.txt
+system doconce sphinx_dir theme=bootstrap version=1.0 intersphinx manual.do.txt
 cp manual.rst manual.sphinx.rst
 python automake_sphinx.py
 # automake_sphinx.py can only copy figures in FIGURE lines, not

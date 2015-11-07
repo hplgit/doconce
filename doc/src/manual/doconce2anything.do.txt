@@ -1375,6 +1375,44 @@ Terminal> doconce format ipynb mydoc \
           --replace_ref_by_latex_auxno=book.aux
 !ec
 
+===== Conversion from Notebook Back to DocOnce =====
+
+A notebook generated from DocOnce can be converted back to DocOnce format
+again, even after being annotated in a web browser. Here is a trivial
+example:
+
+!bc do
+Here is a code:
+
+|bc pypro
+a = 1
+b = 2
+print a + b
+|ec
+!ec
+We translate this DocOnce document to a notebook:
+
+!bc sys
+Terminal> doconce format ipynb mydoc
+!ec
+We load `mydoc.ipynb` into the notebook application and add a code cell
+
+!bc pycod
+print "Hello, World!"
+!ec
+before the original code cell. After executing the cells we download
+the new notebook as the file `mydoc2.ipynb`. We can then generate
+the corresponding DocOnce document `mydoc2.do.txt`:
+
+!bc sys
+Terminal> ipynb2doconce mydoc2.ipynb
+!ec
+
+Title, author, and other information in DocOnce that does not have
+a corresponding syntax in the notebook are stored as special comments
+in the generated `.ipynb` file so that DocOnce can retrieve this information
+when running the `doconce ipynb2doconce` conversion command.
+
 ======= Matlab Notebooks =======
 label{do2any:matlabnb}
 

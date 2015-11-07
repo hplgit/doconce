@@ -645,7 +645,7 @@ if not os.path.isfile(filename + '.rst'):
         system(cmd)
 
 # Copy generated sphinx file to sphinx directory
-logging.info('copying %%s.rst to %%s and reading the content' %% (filename, source_dir))
+logging.info('copy: %%s.rst to %%s and reading the content' %% (filename, source_dir))
 shutil.copy('%%s.rst' %% filename, source_dir)
 with open('%%s.rst' %% filename, 'r') as rst_file:
     rst_text = rst_file.read()
@@ -680,7 +680,7 @@ for figdir in figdirs:
         if '"'+ figdir in rst_text or '<' + figdir in rst_text:
             destdir = os.path.join(source_dir, '_static', figdir)
     if destdir is not None and os.path.isdir(figdir) and not os.path.isdir(destdir):
-        msg = 'copying %%s to %%s' %% (figdir, destdir)
+        msg = 'copy: %%s to %%s' %% (figdir, destdir)
         print msg
         logging.info(msg)
         shutil.copytree(figdir, destdir)
@@ -701,7 +701,7 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
             pass
         else:
             if not os.path.isfile(os.path.join(source_dir, basename)):
-                msg = 'copying %%s to %%s' %% (name, source_dir)
+                msg = 'copy: %%s to %%s' %% (name, source_dir)
                 print msg
                 logging.info(msg)
                 shutil.copy(name, source_dir)
@@ -710,7 +710,7 @@ for rstfile in glob.glob(os.path.join(source_dir, '*.rst')) + glob.glob(os.path.
                 # since it is copied to source_dir
                 text = text.replace('.. figure:: %%s' %% name,
                                     '.. figure:: %%s' %% basename)
-                logging.info('edited figure path to %%s' %% basename)
+                logging.info('edit: figure path to %%s' %% basename)
     if text != text_orig:
         f = open(rstfile, 'w')
         f.write(text)
@@ -777,7 +777,7 @@ if '--runestone' not in sys.argv:
 
         f = open(filename, 'w'); f.write(text); f.close()
         if text != text_orig:
-            logging.info('edited %%s' %% filename)
+            logging.info('edit: %%s' %% filename)
     os.chdir('../../')
     print """
 
@@ -822,7 +822,7 @@ create RunestoneInteractive directory
     rst_files = [os.path.join(os.pardir, 'index.rst')] + glob.glob(os.path.join(os.pardir, '*.rst')) + glob.glob(os.path.join(os.pardir, '._*.rst'))
     for filename in rst_files:
         print 'copying', filename, 'to _sources'
-        logging.info('copying %%s to _sources' %% filename)
+        logging.info('copy: %%s to _sources' %% filename)
         shutil.copy(filename, '_sources')
     print '*** running paver build to build the RunestoneInteractive book'
     logging.info('running paver build to create the RunestoneInteractive book')
@@ -842,6 +842,25 @@ or just run it by
 
   python automake_sphinx.py
 """
+    # Add scrollbars to navigation bar dropdown menu in case of bootstrap
+    if 'bootstrap' in theme:
+        with open(filename + '.rst', 'r') as f:
+            text = f.read()
+        # Trick to get scrollbar in dropdown menus
+        text = """
+.. raw:: html
+
+  <style type="text/css">
+    .dropdown-menu {
+      height: auto;
+      max-height: 400px;
+      overflow-x: hidden;
+  }
+  </style>
+
+""" + text
+        with open(filename + '.rst', 'w') as f:
+            f.write(text)
 
 def make_conf_py(themes, theme, title, short_title, copyright_,
                  logo, favicon, intersphinx):
@@ -1169,7 +1188,7 @@ elif html_theme == 'bootstrap':
 
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
-        'globaltoc_depth': 2,
+        'globaltoc_depth': -1,
 
         # HTML navbar class (Default: "navbar") to attach to <div> element.
         # For black navbar, do "navbar navbar-inverse"

@@ -580,7 +580,8 @@ display: inline;
 
     return s
 
-def toc2html(font_size=80, bootstrap=True):
+def toc2html(font_size=80, bootstrap=True,
+             max_headings=17): # max no of headings in fixed pull down menu
     global tocinfo  # computed elsewhere
     # level_depth: how many levels that are represented in the toc
     level_depth = int(option('toc_depth=', '-1'))
@@ -595,7 +596,6 @@ def toc2html(font_size=80, bootstrap=True):
                     level2no[level] += 1
                 else:
                     level2no[level] = 1
-            max_headings = 17  # max no of headings in pull down menu
             level_depth = 0
             num_headings = 0  # total no of headings in n levels
             for n in 0, 1, 2, 3:
@@ -1144,7 +1144,7 @@ Causes of missing labels:
     # Make toc for navigation
     toc_html = ''
     if html_style.startswith('boots'):
-        toc_html = toc2html(bootstrap=True)
+        toc_html = toc2html(bootstrap=True, max_headings=10000)
     elif html_style in ('solarized',):
         toc_html = toc2html(bootstrap=False)
     # toc_html lacks formatting, run some basic formatting here
@@ -2788,9 +2788,18 @@ code { color: inherit; background-color: transparent; }
 /* Let pre tags for code blocks have the same color as the surroundings */
 pre { color: inherit; background-color: transparent; }
 """
-    if html_style.startswith('boots') and '!bquiz' in filestr:
-        # Style for buttons for collapsing paragraphs
+    if html_style.startswith('boots'):
         style_changes += """
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+"""
+        if '!bquiz' in filestr:
+        # Style for buttons for collapsing paragraphs
+            style_changes += """
 /*
 in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 .collapse+a.btn.showdetails:before { content:'Show details'; }

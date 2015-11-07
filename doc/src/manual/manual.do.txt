@@ -5640,7 +5640,7 @@ format, and you need to know these steps to make use of the logfile.
 # Example on including another DocOnce file:
 
 !split
-# #include "../tutorial/doconce2anything.do.txt"
+# #include "doconce2anything.do.txt"
 
 !split
 # #include "install.do.txt"
