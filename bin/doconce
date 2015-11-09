@@ -559,10 +559,23 @@ echo "for i in sphinx-*; do google-chrome $i/index.html; done"
         files = [filename]
     filenames = '\n   '.join(files)
     title_underline = '='*len(title)
+    dropdown_scrollbar = '' if not 'bootstrap' in theme else """
 
+.. raw:: html
+
+  <style type="text/css">
+    .dropdown-menu {
+      height: auto;
+      max-height: 400px;
+      overflow-x: hidden;
+  }
+  </style>
+
+"""
     f.write("""
 .. Master file automatically created by doconce sphinx_dir
 
+%(dropdown_scrollbar)s
 %(title)s
 %(title_underline)s
 
@@ -848,6 +861,7 @@ or just run it by
   python automake_sphinx.py
 """
     # Add scrollbars to navigation bar dropdown menu in case of bootstrap
+    # (this css style is already written to index.rst)
     if 'bootstrap' in theme:
         with open(filename + '.rst', 'r') as f:
             text = f.read()
