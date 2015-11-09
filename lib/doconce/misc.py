@@ -2414,7 +2414,7 @@ def _clean(light):
         glob.glob('.*.quiz*') +
         glob.glob('.*_html_file_collection') +
         glob.glob('.*.copyright') +
-        glob.glob('automake_sphinx.log')
+        glob.glob('automake_sphinx.*')
         )
     if not light:
         removed.extend(
