@@ -62,6 +62,7 @@ html_links_in_new_window = False
 #html_quiz_button_text = 
 #html_bootstrap_navbar = 
 #html_bootstrap_jumbotron = 
+#html_bootstrap_custom_links = 
 #html_figure_hrule = 
 #html_copyright = 
 cite_doconce = False

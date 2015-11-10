@@ -1788,9 +1788,11 @@ def html_movie(m):
 </div>
 <p><em>%(caption)s</em></p>
 """ % vars()
-            if not mp4_exists:
+            #if not mp4_exists:
+            if True:
+                # Seems that there is a problem with .mp4 movies as well...
                 text += """
-<!-- Issue warning if only .ogg or .webm movie in a Safari browser -->
+<!-- Issue warning if in a Safari browser -->
 <script language="javascript">
 if (!!(window.safari)) {
   document.write("<div style=\\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\\"><p><font color=\\"red\\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
@@ -2839,6 +2841,22 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                     outfilename += '.html'
 
             if option('html_bootstrap_navbar=', 'on') != 'off':
+                custom_links = option('html_bootstrap_custom_links=', None)
+                code_custom_links = ''
+                if custom_links is not None:
+                    custom_links = custom_links.split(';')
+                    for custom_link in custom_links:
+                        link, url = custom_link.split('|')
+                        code_custom_links += """
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="%s">%s</a>
+  </div>
+""" % (url, link)
                 bootstrap_title_bar = """
 <!-- Bootstrap navigation bar -->
 <div class="navbar navbar-default navbar-fixed-top">
@@ -2850,6 +2868,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
     </button>
     <a class="navbar-brand" href="%s">%s</a>
   </div>
+%s
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -2862,7 +2881,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
   </div>
 </div>
 </div> <!-- end of navigation bar -->
-""" % (outfilename, title)
+""" % (outfilename, title, code_custom_links)
 
 
     keywords = re.findall(r'idx\{(.+?)\}', filestr)

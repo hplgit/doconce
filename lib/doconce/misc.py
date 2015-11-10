@@ -201,6 +201,11 @@ Default: Empty (just pencil glyphion)."""),
      """Turns the Bootstrap jumbotron intro on/off and governs the
 size of the document title. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron)."""),
+    ('--html_bootstrap_custom_links=', """Allows custom links in the navigation bar.
+Format: link|url;link|url;link|url
+Example:
+"--html_bootstrap_custom_links=Google|http://google.com;hpl|http://folk.uio.no/hpl"
+"""),
     ('--html_figure_hrule=', """Set horizontal rule(s) above and/or below a figure.
 none, off: no rules
 top: rule at top (default)
@@ -3291,13 +3296,32 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
     # We generate tag number for each label, in the right numbering
     # and use tags to refer to equations.
     # Info on http://stackoverflow.com/questions/16339000/how-to-refer-to-an-equation-in-a-different-page-with-mathjax
-    # Tags are numbered globally
-    labels = []  # Hold all labels in a list (not list of list as parts_label)
-    for i in parts_label:
-        labels += i
+    # Tags are numbered globally, but chapter by chapter if book
+    labels = []  # Hold all new tag labels in a list (not list of list as parts_label)
+    for part_labels in parts_label:
+        labels += part_labels
     label2tag = {}
-    for i in range(len(labels)):
-        label2tag[labels[i]] = i+1
+    i = 0  # tag counter within a chapter
+    ch = 0 # chapter number
+    has_chapters = False
+    for part in parts:
+        for line in part:
+            if '<!-- chapter heading' in line:  # encountered new chapter?
+                if not 'Preface' in line:
+                    ch += 1
+                    i = 0  # restart numbering
+                    has_chapters = True
+            if 'label{' in line:
+                m = re.search(r'\label\{(.+?)\}', line)
+                if m:
+                    label = m.group(1)
+                    if label in labels:
+                        # This is an equation label
+                        i += 1
+                        if has_chapters:
+                            label2tag[label] = '%d.%d' % (ch, i)
+                        else:
+                            label2tag[label] = '%d' % i
     # Go from AMS to non equationNumering in MathJax since we do not
     # want any equation without label to have numbers (instead we
     # control all numbers here by inserting \tag)
