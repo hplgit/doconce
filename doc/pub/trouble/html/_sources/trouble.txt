@@ -44,7 +44,7 @@ gives an error message, try to rewrite.
 
 .. _sec:cite:
 
-How to I cite and link to DocOnce?
+How do I cite and link to DocOnce?
 ----------------------------------
 
 See the "How to cite" section

@@ -28,7 +28,7 @@ the problem. If you do not understand why the identified piece of text
 gives an error message, try to rewrite.
 
 
-===== How to I cite and link to DocOnce? =====
+===== How do I cite and link to DocOnce? =====
 label{sec:cite}
 
 See the ``How to cite'' section
