@@ -7,7 +7,7 @@ DocOnce: Document Once, Include Anywhere
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Oct 27, 2015
+:Date: Nov 10, 2015
 
 .. !split
 
@@ -40,11 +40,21 @@ Some DocOnce Features
    Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
    reStructuredText, and Epytext.
 
- * Integration with Mako enables use of variables, functions, if-tests,
+ * There is an exercise environment with many advanced features
+   such as subexercises and solutions. The document can be compiled
+   with or without solutions.
+
+ * With a preprocessor, Preprocess or Mako, one can include other
+   documents (files), large portions of text can be defined in or out
+   of the text. Mako enables use of variables, functions, if-tests,
    and loops to parameterize the text and generate various versions of
    the text for different purposes.
 
  * Computer code can be copied directly from parts of source code files.
+
+ * Figures and movies with captions, simple tables,
+   URLs with links, index list, labels and references are supported.
+   YouTube and Vimeo videos are automatically embedded in web documents.
 
  * Running text can quickly be edited to slide formats (reveal.js and deck.js,
    based on HTML5+CSS3).
@@ -76,47 +86,47 @@ the formating. Here are some examples.
   * Words from computer code are enclosed in backticks and
     then typeset ``verbatim (in a monospace font)``.
 
-  * Section and paragraph headings are recognied special
-    decorating characters (``=`` or ``_``) before and after the heading.
-    The length of the decoration determines the level of the
-    section.
-
-  * Blocks of computer code are included by surrounding the blocks with
-    ``!bc`` (begin code) and ``!ec`` (end code) tags on separate lines.
-
-  * Blocks of computer code can also be imported from source files.
-
-  * Blocks of LaTeX mathematics are included by surrounding the blocks
-    with ``!bt`` (begin TeX) and ``!et`` (end TeX) tags on separate lines.
-
-  * There is support for both LaTeX and text-like inline mathematics
-    such that formulas make sense also when not rendered by LaTeX
-    or MathJax.
-
-  * Figures and movies with captions, simple tables,
-    URLs with links, index list, labels and references are supported.
-    YouTube and Vimeo videos are automatically embedded in web documents.
+  * Section headings are recognized by special
+    decorating characters ``=`` before and after the heading, e.g.,
+    ``===== Here is a subsection heading =====``.
 
   * The abstract of a document starts with *Abstract* as paragraph
     heading, and all text up to the next heading makes up the abstract,
 
-  * Special comment lines are not visible in the output.
+  * Blocks of computer code are surrounded by
+    ``!bc`` (begin code) and ``!ec`` (end code) tags on separate lines.
+    Blocks of computer code can also be imported from source files.
 
-  * Comments to authors can be inserted throughout the text and
-    made visible or invisible as desired.
+  * Blocks of LaTeX mathematics are surrounded by
+    ``!bt`` (begin TeX) and ``!et`` (end TeX) tags on separate lines.
+    Inline mathematics is surrounded by dollar signs: ``$a=b$``.
 
-  * There is an exercise environment with many advanced features.
+  * Comment lines start with ``#`` and are not visible in the output document.
 
-  * With a preprocessor, Preprocess or Mako, one can include other
-    documents (files), large portions of text can be defined in or out
-    of the text, and tailored format-specific constructs can easily be
-    included. With Mako a single text can output its program examples
-    in two or more languages.
+  * Comments to authors can be inserted throughout the text with a
+    syntax like ``[**name 1**: comment...]`` and made visible or invisible as desired.
+
+  * Title, author, date, figures, and movies are written on one line,
+    starting with a keyword: ``TITLE:``, ``AUTHOR:``, ``DATE:``, ``FIGURE:``,
+    and ``MOVIE:``.
 
 .. [#markdown-input] In fact, DocOnce allows basic
-   `GitHub/extended Markdown syntax <https://guides.github.com/features/mastering-markdown/>`__ as input. This is attractive for newcomers from Markdown or
+   `GitHub-extended Markdown syntax <https://guides.github.com/features/mastering-markdown/>`__ as input. This is attractive for newcomers from Markdown or
    writers who also write Markdown documents (or uses Markdown frequently at
    GitHub).
+
+
+.. admonition:: Write DocOnce documents in a text editor with monospace font
+
+   Some DocOnce constructions are sensitive to whitespace (indentation in
+   lists is a primary example), so you *must* use a text editor with
+   monospace font (also known as verbatim text). Never use fonts like
+   Arial or Helvetica.
+   Other popular markup languages such as Sphinx and Markdown are also
+   sensitive to whitespace and require a monospace font.
+
+
+
 
 What Can DocOnce Be Used For?
 -----------------------------
@@ -288,8 +298,8 @@ With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.
 
 **Inline comments.**
-DocOnce also allows inline comments of the form [**name 1**: comment] (with
-a space after ``name:``), e.g., such as [**hpl 2**: here I will make some remarks to the text]. Inline comments can be removed from the output
+DocOnce also allows inline comments of the form [**name 2**: comment] (with
+a space after ``name:``), e.g., such as [**hpl 3**: here I will make some remarks to the text]. Inline comments can be removed from the output
 by a command-line argument (see the section :ref:`doconce2formats` for an
 example). Inline comments can also be used for detailed editing of
 text, much like track changes in word, to illustrate how a text
@@ -536,8 +546,8 @@ We refer to the manual for detailed information on how to compile a DocOnce
 document to various formats. Here we just give a glimpse of the
 possibilities.
 
-Example: Making an HTML File
-----------------------------
+Example: Make an HTML File
+--------------------------
 
 Suppose you have some DocOnce text in ``mydoc.do.txt``. Here is how you
 compile that document to an HTML file ``mydoc.html``, which can be viewed

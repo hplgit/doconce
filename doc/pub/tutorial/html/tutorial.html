@@ -74,7 +74,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 27, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 10, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -100,11 +100,21 @@
 Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
 reStructuredText, and Epytext.</p>
 </li>
-<li><p class="first">Integration with Mako enables use of variables, functions, if-tests,
+<li><p class="first">There is an exercise environment with many advanced features
+such as subexercises and solutions. The document can be compiled
+with or without solutions.</p>
+</li>
+<li><p class="first">With a preprocessor, Preprocess or Mako, one can include other
+documents (files), large portions of text can be defined in or out
+of the text. Mako enables use of variables, functions, if-tests,
 and loops to parameterize the text and generate various versions of
 the text for different purposes.</p>
 </li>
 <li><p class="first">Computer code can be copied directly from parts of source code files.</p>
+</li>
+<li><p class="first">Figures and movies with captions, simple tables,
+URLs with links, index list, labels and references are supported.
+YouTube and Vimeo videos are automatically embedded in web documents.</p>
 </li>
 <li><p class="first">Running text can quickly be edited to slide formats (reveal.js and deck.js,
 based on HTML5+CSS3).</p>
@@ -134,43 +144,43 @@ or <code class="docutils literal"><span class="pre">o</span></code> if the list 
 are surrounded by underscores.</li>
 <li>Words from computer code are enclosed in backticks and
 then typeset <code class="docutils literal"><span class="pre">verbatim</span> <span class="pre">(in</span> <span class="pre">a</span> <span class="pre">monospace</span> <span class="pre">font)</span></code>.</li>
-<li>Section and paragraph headings are recognied special
-decorating characters (<code class="docutils literal"><span class="pre">=</span></code> or <code class="docutils literal"><span class="pre">_</span></code>) before and after the heading.
-The length of the decoration determines the level of the
-section.</li>
-<li>Blocks of computer code are included by surrounding the blocks with
-<code class="docutils literal"><span class="pre">!bc</span></code> (begin code) and <code class="docutils literal"><span class="pre">!ec</span></code> (end code) tags on separate lines.</li>
-<li>Blocks of computer code can also be imported from source files.</li>
-<li>Blocks of LaTeX mathematics are included by surrounding the blocks
-with <code class="docutils literal"><span class="pre">!bt</span></code> (begin TeX) and <code class="docutils literal"><span class="pre">!et</span></code> (end TeX) tags on separate lines.</li>
-<li>There is support for both LaTeX and text-like inline mathematics
-such that formulas make sense also when not rendered by LaTeX
-or MathJax.</li>
-<li>Figures and movies with captions, simple tables,
-URLs with links, index list, labels and references are supported.
-YouTube and Vimeo videos are automatically embedded in web documents.</li>
+<li>Section headings are recognized by special
+decorating characters <code class="docutils literal"><span class="pre">=</span></code> before and after the heading, e.g.,
+<code class="docutils literal"><span class="pre">=====</span> <span class="pre">Here</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">subsection</span> <span class="pre">heading</span> <span class="pre">=====</span></code>.</li>
 <li>The abstract of a document starts with <em>Abstract</em> as paragraph
 heading, and all text up to the next heading makes up the abstract,</li>
-<li>Special comment lines are not visible in the output.</li>
-<li>Comments to authors can be inserted throughout the text and
-made visible or invisible as desired.</li>
-<li>There is an exercise environment with many advanced features.</li>
-<li>With a preprocessor, Preprocess or Mako, one can include other
-documents (files), large portions of text can be defined in or out
-of the text, and tailored format-specific constructs can easily be
-included. With Mako a single text can output its program examples
-in two or more languages.</li>
+<li>Blocks of computer code are surrounded by
+<code class="docutils literal"><span class="pre">!bc</span></code> (begin code) and <code class="docutils literal"><span class="pre">!ec</span></code> (end code) tags on separate lines.
+Blocks of computer code can also be imported from source files.</li>
+<li>Blocks of LaTeX mathematics are surrounded by
+<code class="docutils literal"><span class="pre">!bt</span></code> (begin TeX) and <code class="docutils literal"><span class="pre">!et</span></code> (end TeX) tags on separate lines.
+Inline mathematics is surrounded by dollar signs: <code class="docutils literal"><span class="pre">$a=b$</span></code>.</li>
+<li>Comment lines start with <code class="docutils literal"><span class="pre">#</span></code> and are not visible in the output document.</li>
+<li>Comments to authors can be inserted throughout the text with a
+syntax like <code class="docutils literal"><span class="pre">[**name</span> <span class="pre">1**:</span> <span class="pre">comment...]</span></code> and made visible or invisible as desired.</li>
+<li>Title, author, date, figures, and movies are written on one line,
+starting with a keyword: <code class="docutils literal"><span class="pre">TITLE:</span></code>, <code class="docutils literal"><span class="pre">AUTHOR:</span></code>, <code class="docutils literal"><span class="pre">DATE:</span></code>, <code class="docutils literal"><span class="pre">FIGURE:</span></code>,
+and <code class="docutils literal"><span class="pre">MOVIE:</span></code>.</li>
 </ul>
 </div></blockquote>
 <table class="docutils footnote" frame="void" id="markdown-input" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>In fact, DocOnce allows basic
-<a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GitHub/extended Markdown syntax</a> as input. This is attractive for newcomers from Markdown or
+<a class="reference external" href="https://guides.github.com/features/mastering-markdown/">GitHub-extended Markdown syntax</a> as input. This is attractive for newcomers from Markdown or
 writers who also write Markdown documents (or uses Markdown frequently at
 GitHub).</td></tr>
 </tbody>
 </table>
+<div class="admonition-write-doconce-documents-in-a-text-editor-with-monospace-font admonition">
+<p class="first admonition-title">Write DocOnce documents in a text editor with monospace font</p>
+<p class="last">Some DocOnce constructions are sensitive to whitespace (indentation in
+lists is a primary example), so you <em>must</em> use a text editor with
+monospace font (also known as verbatim text). Never use fonts like
+Arial or Helvetica.
+Other popular markup languages such as Sphinx and Markdown are also
+sensitive to whitespace and require a monospace font.</p>
+</div>
 <div class="section" id="what-can-doconce-be-used-for">
 <h3>What Can DocOnce Be Used For?<a class="headerlink" href="#what-can-doconce-be-used-for" title="Permalink to this headline">¶</a></h3>
 <p>LaTeX is ideal for articles, thesis, and books, but the PDF files does
@@ -327,8 +337,8 @@ generated from DocOnce, the URLs of links appear as footnotes.
 With screen output, all links are clickable hyperlinks, except in
 the plain text format which does not support hyperlinks.</p>
 <p><strong>Inline comments.</strong>
-DocOnce also allows inline comments of the form [<strong>name 1</strong>: comment] (with
-a space after <code class="docutils literal"><span class="pre">name:</span></code>), e.g., such as [<strong>hpl 2</strong>: here I will make some remarks to the text]. Inline comments can be removed from the output
+DocOnce also allows inline comments of the form [<strong>name 2</strong>: comment] (with
+a space after <code class="docutils literal"><span class="pre">name:</span></code>), e.g., such as [<strong>hpl 3</strong>: here I will make some remarks to the text]. Inline comments can be removed from the output
 by a command-line argument (see the section <a class="reference internal" href="#doconce2formats"><span class="std std-ref">From DocOnce to Other Formats</span></a> for an
 example). Inline comments can also be used for detailed editing of
 text, much like track changes in word, to illustrate how a text
@@ -545,8 +555,8 @@ in the DocOnce source and a <a class="reference external" href="http://hplgit.gi
 <p>We refer to the manual for detailed information on how to compile a DocOnce
 document to various formats. Here we just give a glimpse of the
 possibilities.</p>
-<div class="section" id="example-making-an-html-file">
-<h3>Example: Making an HTML File<a class="headerlink" href="#example-making-an-html-file" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-make-an-html-file">
+<h3>Example: Make an HTML File<a class="headerlink" href="#example-make-an-html-file" title="Permalink to this headline">¶</a></h3>
 <p>Suppose you have some DocOnce text in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>. Here is how you
 compile that document to an HTML file <code class="docutils literal"><span class="pre">mydoc.html</span></code>, which can be viewed
 in a web browser:</p>
@@ -1017,7 +1027,7 @@ appear in the table below.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
-<li><a class="reference internal" href="#example-making-an-html-file">Example: Making an HTML File</a></li>
+<li><a class="reference internal" href="#example-make-an-html-file">Example: Make an HTML File</a></li>
 <li><a class="reference internal" href="#preprocessors-1">Preprocessors          (1)</a></li>
 <li><a class="reference internal" href="#output-formats">Output Formats</a></li>
 <li><a class="reference internal" href="#slides">Slides</a></li>

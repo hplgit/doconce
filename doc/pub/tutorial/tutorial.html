@@ -20,6 +20,13 @@ Automatically generated HTML file from DocOnce source
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
 </style>
 
 
@@ -57,7 +64,7 @@ code { color: inherit; background-color: transparent; }
                1,
                'doconce2formats',
                'doconce2formats'),
-              ('Example: Making an HTML File', 2, None, '___sec12'),
+              ('Example: Make an HTML File', 2, None, '___sec12'),
               ('Preprocessors', 2, None, '___sec13'),
               ('Output Formats', 2, None, '___sec14'),
               ('Slides', 2, None, '___sec15'),
@@ -111,17 +118,44 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="tutorial.html">DocOnce: Document Once, Include Anywhere</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">Some DocOnce Features</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">What Does DocOnce Look Like?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">First a Section Heading with 7 = Characters</a></li>
-     <!-- navigation toc: --> <li><a href="#doconce2formats" style="font-size: 80%;">From DocOnce to Other Formats</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">Demos</a></li>
-     <!-- navigation toc: --> <li><a href="#install:doconce" style="font-size: 80%;">Installation of DocOnce and its Dependencies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Some DocOnce Features</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>What Does DocOnce Look Like?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What Can DocOnce Be Used For?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Basic Syntax</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>First a Section Heading with 7 = Characters</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Then a Subsection Heading with 5 = Characters</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Finally a Subsubection Heading with 3 = Characters</a></li>
+     <!-- navigation toc: --> <li><a href="#my:first:sec" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;A Subsection with Sample Text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Mathematics</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Computer Code</a></li>
+     <!-- navigation toc: --> <li><a href="#newcommands" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Macros (Newcommands), Cross-References, Index, and Bibliography</a></li>
+     <!-- navigation toc: --> <li><a href="#doconce2formats" style="font-size: 80%;"><b>From DocOnce to Other Formats</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example: Make an HTML File</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessors</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Output Formats</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Slides</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><b>Demos</b></a></li>
+     <!-- navigation toc: --> <li><a href="#install:doconce" style="font-size: 80%;"><b>Installation of DocOnce and its Dependencies</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Dependencies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Python v2.7</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Preprocessors</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bibliography</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Image file handling</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Spellcheck</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ptex2tex for LaTeX Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pygments and the Minted Code Style</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LaTeX packages</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sphinx or reStructuredText Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Markdown and Pandoc Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Epydoc Output</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analyzing file differences</a></li>
 
         </ul>
       </li>
@@ -156,7 +190,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Oct 27, 2015</h4></center> <!-- date -->
+<center><h4>Nov 10, 2015</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -182,10 +216,18 @@ MathJax.Hub.Config({
    Other formats include plain untagged text (for email),
    Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
    reStructuredText, and Epytext.
- <li> Integration with Mako enables use of variables, functions, if-tests,
+ <li> There is an exercise environment with many advanced features
+   such as subexercises and solutions. The document can be compiled
+   with or without solutions.</li>
+ <li> With a preprocessor, Preprocess or Mako, one can include other
+   documents (files), large portions of text can be defined in or out
+   of the text. Mako enables use of variables, functions, if-tests,
    and loops to parameterize the text and generate various versions of
    the text for different purposes.</li>
  <li> Computer code can be copied directly from parts of source code files.</li>
+ <li> Figures and movies with captions, simple tables,
+   URLs with links, index list, labels and references are supported.
+   YouTube and Vimeo videos are automatically embedded in web documents.</li>
  <li> Running text can quickly be edited to slide formats (reveal.js and deck.js,
    based on HTML5+CSS3).</li>
  <li> Special exercise environments with support for hints, answers,
@@ -198,7 +240,7 @@ MathJax.Hub.Config({
 <h1 id="___sec1">What Does DocOnce Look Like? </h1>
 
 <p>
-DocOnce text looks like ordinary text (much like Markdown <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In fact, DocOnce allows basic GitHub/extended Markdown syntax as input. This is attractive for newcomers from Markdown or writers who also write Markdown documents (or uses Markdown frequently at GitHub)."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>),
+DocOnce text looks like ordinary text (much like Markdown <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="In fact, DocOnce allows basic GitHub-extended Markdown syntax as input. This is attractive for newcomers from Markdown or writers who also write Markdown documents (or uses Markdown frequently at GitHub)."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>),
 but there
 are some almost invisible text constructions that allow you to control
 the formating. Here are some examples.
@@ -210,38 +252,44 @@ the formating. Here are some examples.
     are surrounded by underscores.</li>
   <li> Words from computer code are enclosed in backticks and
     then typeset <code>verbatim (in a monospace font)</code>.</li>
-  <li> Section and paragraph headings are recognied special
-    decorating characters (<code>=</code> or <code>_</code>) before and after the heading.
-    The length of the decoration determines the level of the
-    section.</li>
-  <li> Blocks of computer code are included by surrounding the blocks with
-    <code>!bc</code> (begin code) and <code>!ec</code> (end code) tags on separate lines.</li>
-  <li> Blocks of computer code can also be imported from source files.</li>
-  <li> Blocks of LaTeX mathematics are included by surrounding the blocks
-    with <code>!bt</code> (begin TeX) and <code>!et</code> (end TeX) tags on separate lines.</li>
-  <li> There is support for both LaTeX and text-like inline mathematics
-    such that formulas make sense also when not rendered by LaTeX
-    or MathJax.</li>
-  <li> Figures and movies with captions, simple tables,
-    URLs with links, index list, labels and references are supported.
-    YouTube and Vimeo videos are automatically embedded in web documents.</li>
+  <li> Section headings are recognized by special
+    decorating characters <code>=</code> before and after the heading, e.g.,
+    <code>===== Here is a subsection heading =====</code>.</li>
   <li> The abstract of a document starts with <em>Abstract</em> as paragraph
     heading, and all text up to the next heading makes up the abstract,</li>
-  <li> Special comment lines are not visible in the output.</li>
-  <li> Comments to authors can be inserted throughout the text and
-    made visible or invisible as desired.</li>
-  <li> There is an exercise environment with many advanced features.</li>
-  <li> With a preprocessor, Preprocess or Mako, one can include other
-    documents (files), large portions of text can be defined in or out
-    of the text, and tailored format-specific constructs can easily be
-    included. With Mako a single text can output its program examples
-    in two or more languages.</li>
+  <li> Blocks of computer code are surrounded by
+    <code>!bc</code> (begin code) and <code>!ec</code> (end code) tags on separate lines.
+    Blocks of computer code can also be imported from source files.</li>
+  <li> Blocks of LaTeX mathematics are surrounded by
+    <code>!bt</code> (begin TeX) and <code>!et</code> (end TeX) tags on separate lines.
+    Inline mathematics is surrounded by dollar signs: <code>$a=b$</code>.</li>
+  <li> Comment lines start with <code>#</code> and are not visible in the output document.</li>
+  <li> Comments to authors can be inserted throughout the text with a
+    syntax like <code>
+&lt;!-- begin inline comment --&gt;
+&lt;font color=&quot;red&quot;&gt;(&lt;b&gt;name 1&lt;/b&gt;: comment...)&lt;/font&gt;
+&lt;!-- end inline comment --&gt;
+</code> and made visible or invisible as desired.</li>
+  <li> Title, author, date, figures, and movies are written on one line,
+    starting with a keyword: <code>TITLE:</code>, <code>AUTHOR:</code>, <code>DATE:</code>, <code>FIGURE:</code>,
+    and <code>MOVIE:</code>.</li>
 </ul>
 
 <p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> In fact, DocOnce allows basic
-<a href="https://guides.github.com/features/mastering-markdown/" target="_self">GitHub/extended Markdown syntax</a> as input. This is attractive for newcomers from Markdown or
+<a href="https://guides.github.com/features/mastering-markdown/" target="_self">GitHub-extended Markdown syntax</a> as input. This is attractive for newcomers from Markdown or
 writers who also write Markdown documents (or uses Markdown frequently at
 GitHub).</p>
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Write DocOnce documents in a text editor with monospace font!</b>
+Some DocOnce constructions are sensitive to whitespace (indentation in
+lists is a primary example), so you <em>must</em> use a text editor with
+monospace font (also known as verbatim text). Never use fonts like
+Arial or Helvetica.
+Other popular markup languages such as Sphinx and Markdown are also
+sensitive to whitespace and require a monospace font.
+</div>
+
 
 <h2 id="___sec2">What Can DocOnce Be Used For? </h2>
 
@@ -415,12 +463,12 @@ the plain text format which does not support hyperlinks.
 <b>Inline comments.</b>
 DocOnce also allows inline comments of the form 
 <!-- begin inline comment -->
-<font color="red">(<b>name 1</b>: comment)</font>
+<font color="red">(<b>name 2</b>: comment)</font>
 <!-- end inline comment -->
  (with
 a space after <code>name:</code>), e.g., such as 
 <!-- begin inline comment -->
-<font color="red">(<b>hpl 2</b>: here I will make some remarks to the text)</font>
+<font color="red">(<b>hpl 3</b>: here I will make some remarks to the text)</font>
 <!-- end inline comment -->
 . Inline comments can be removed from the output
 by a command-line argument (see the section <a href="#doconce2formats">From DocOnce to Other Formats</a> for an
@@ -684,7 +732,7 @@ We refer to the manual for detailed information on how to compile a DocOnce
 document to various formats. Here we just give a glimpse of the
 possibilities.
 
-<h2 id="___sec12">Example: Making an HTML File </h2>
+<h2 id="___sec12">Example: Make an HTML File </h2>
 
 <p>
 Suppose you have some DocOnce text in <code>mydoc.do.txt</code>. Here is how you

@@ -45,11 +45,21 @@ If any of these questions are of interest, you should keep on reading.
    Creole wiki (for Bitbucket wikis), Google wiki (for Googlecode),
    reStructuredText, and Epytext.
 
- * Integration with Mako enables use of variables, functions, if-tests,
+ * There is an exercise environment with many advanced features
+   such as subexercises and solutions. The document can be compiled
+   with or without solutions.
+
+ * With a preprocessor, Preprocess or Mako, one can include other
+   documents (files), large portions of text can be defined in or out
+   of the text. Mako enables use of variables, functions, if-tests,
    and loops to parameterize the text and generate various versions of
    the text for different purposes.
 
  * Computer code can be copied directly from parts of source code files.
+
+ * Figures and movies with captions, simple tables,
+   URLs with links, index list, labels and references are supported.
+   YouTube and Vimeo videos are automatically embedded in web documents.
 
  * Running text can quickly be edited to slide formats (reveal.js and deck.js,
    based on HTML5+CSS3).
@@ -79,45 +89,32 @@ the formating. Here are some examples.
   * Words from computer code are enclosed in backticks and
     then typeset `verbatim (in a monospace font)`.
 
-  * Section and paragraph headings are recognied special
-    decorating characters (`=` or `_`) before and after the heading.
-    The length of the decoration determines the level of the
-    section.
-
-  * Blocks of computer code are included by surrounding the blocks with
-    `!bc` (begin code) and `!ec` (end code) tags on separate lines.
-
-  * Blocks of computer code can also be imported from source files.
-
-  * Blocks of LaTeX mathematics are included by surrounding the blocks
-    with `!bt` (begin TeX) and `!et` (end TeX) tags on separate lines.
-
-  * There is support for both LaTeX and text-like inline mathematics
-    such that formulas make sense also when not rendered by LaTeX
-    or MathJax.
-
-  * Figures and movies with captions, simple tables,
-    URLs with links, index list, labels and references are supported.
-    YouTube and Vimeo videos are automatically embedded in web documents.
+  * Section headings are recognized by special
+    decorating characters `=` before and after the heading, e.g.,
+    `===== Here is a subsection heading =====`.
 
   * The abstract of a document starts with *Abstract* as paragraph
     heading, and all text up to the next heading makes up the abstract,
 
-  * Special comment lines are not visible in the output.
+  * Blocks of computer code are surrounded by
+    `!bc` (begin code) and `!ec` (end code) tags on separate lines.
+    Blocks of computer code can also be imported from source files.
 
-  * Comments to authors can be inserted throughout the text and
-    made visible or invisible as desired.
+  * Blocks of LaTeX mathematics are surrounded by
+    `!bt` (begin TeX) and `!et` (end TeX) tags on separate lines.
+    Inline mathematics is surrounded by dollar signs: `$a=b$`.
 
-  * There is an exercise environment with many advanced features.
+  * Comment lines start with `#` and are not visible in the output document.
 
-  * With a preprocessor, Preprocess or Mako, one can include other
-    documents (files), large portions of text can be defined in or out
-    of the text, and tailored format-specific constructs can easily be
-    included. With Mako a single text can output its program examples
-    in two or more languages.
+  * Comments to authors can be inserted throughout the text with a
+    syntax like `[name: comment...]` and made visible or invisible as desired.
+
+  * Title, author, date, figures, and movies are written on one line,
+    starting with a keyword: `TITLE:`, `AUTHOR:`, `DATE:`, `FIGURE:`,
+    and `MOVIE:`.
 
 [^markdown-input]: In fact, DocOnce allows basic
-"GitHub/extended Markdown syntax": "https://guides.github.com/features/mastering-markdown/" as input. This is attractive for newcomers from Markdown or
+"GitHub-extended Markdown syntax": "https://guides.github.com/features/mastering-markdown/" as input. This is attractive for newcomers from Markdown or
 writers who also write Markdown documents (or uses Markdown frequently at
 GitHub).
 
@@ -518,7 +515,7 @@ We refer to the manual for detailed information on how to compile a DocOnce
 document to various formats. Here we just give a glimpse of the
 possibilities.
 
-===== Example: Making an HTML File =====
+===== Example: Make an HTML File =====
 
 Suppose you have some DocOnce text in `mydoc.do.txt`. Here is how you
 compile that document to an HTML file `mydoc.html`, which can be viewed

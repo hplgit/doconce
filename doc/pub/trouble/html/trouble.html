@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Oct 31, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 10, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -100,6 +100,75 @@ can go wrong.</p>
 </div>
 <div class="section" id="general-topics">
 <h2>General topics<a class="headerlink" href="#general-topics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-i-cite-and-link-to-doconce">
+<span id="sec-cite"></span><h3>How to I cite and link to DocOnce?<a class="headerlink" href="#how-to-i-cite-and-link-to-doconce" title="Permalink to this headline">¶</a></h3>
+<p>See the &#8220;How to cite&#8221; section
+on the <a class="reference external" href="https://github.com/hplgit/doconce">project page</a>.</p>
+</div>
+<div class="section" id="how-can-i-add-links-to-some-resource-on-every-page">
+<span id="sec-custom-navlinks"></span><h3>How can I add links to some resource on every page?<a class="headerlink" href="#how-can-i-add-links-to-some-resource-on-every-page" title="Permalink to this headline">¶</a></h3>
+<p>This question is most relevant for web documents. The simplest (and
+actually the only feasible) solution is to use a style that has some
+banner where links can be inserted.</p>
+<div class="section" id="bootstrap-html-styles">
+<h4>Bootstrap HTML styles<a class="headerlink" href="#bootstrap-html-styles" title="Permalink to this headline">¶</a></h4>
+<p>All the Bootstrap styles have a navigation bar where one can insert
+custom links with the <code class="docutils literal"><span class="pre">--html_bootstrap_custom_links=</span></code> option.
+Here is an example where we insert two links:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html tmp1 --html_style=bootstrap \
+          &quot;--html_bootstrap_custom_links=\
+          Google|http://google.com;\
+          DocOnce formats|\
+          http://hplgit.github.io/teamods/writing_reports/index.html&quot;
+</pre></div>
+</div>
+<p>This command is broken over several lines but should be written on one
+line. The syntax for custom links is <code class="docutils literal"><span class="pre">link|url;link|url;link|url</span></code>.
+This example will result in a navigation bar with four links:
+a link to the document using the title as text, a link to &#8220;Google&#8221;,
+a link to &#8220;DocOnce formats&#8221;, and to the right a &#8220;Contents&#8221; pull-down
+menu.</p>
+</div>
+<div class="section" id="vagrant-html-template">
+<h4>Vagrant HTML template<a class="headerlink" href="#vagrant-html-template" title="Permalink to this headline">¶</a></h4>
+<p>DocOnce comes with the <a class="reference external" href="https://github.com/hplgit/doconce/tree/master/bundled/html_styles/style_vagrant">Vagrant HTML template</a>,
+which allows for custom links in the header (here is an <a class="reference external" href="http://hplgit.github.io/teamods/writing_reports/_static/report_vagrant.html">example on a
+document</a>). Copy
+the <code class="docutils literal"><span class="pre">template_vagrant.html</span></code> file and the <code class="docutils literal"><span class="pre">css</span></code> directory to the
+directory containing the DocOnce document. Edit the <code class="docutils literal"><span class="pre">LogoWord</span></code> and
+<code class="docutils literal"><span class="pre">withSubWord</span></code> in the <code class="docutils literal"><span class="pre">template_vagrant.html</span></code> and insert your own links
+for <code class="docutils literal"><span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">GO</span> <span class="pre">TO</span> <span class="pre">2</span></code>. Compile the document with</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html mydoc --html_template=template_vagrant.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="sphinx-bootstrap-theme">
+<h4>Sphinx bootstrap theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h4>
+<p>With the <code class="docutils literal"><span class="pre">bootstrap</span></code> theme, Sphinx can easily offer custom links.
+You have to edit the generated <code class="docutils literal"><span class="pre">conf.py</span></code> in the Sphinx directory
+(called <code class="docutils literal"><span class="pre">sphinx-rootdir</span></code> by default).
+Search for <code class="docutils literal"><span class="pre">elif</span> <span class="pre">html_theme</span> <span class="pre">==</span> <span class="pre">'bootstrap</span></code> in this file and
+edit the <code class="docutils literal"><span class="pre">navbar_links</span></code> item. Here is an example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">elif</span> <span class="n">html_theme</span> <span class="o">==</span> <span class="s">&#39;bootstrap&#39;</span><span class="p">:</span>
+    <span class="o">...</span>
+    <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;navbar_title&#39;</span><span class="p">:</span> <span class="n">short_title</span><span class="p">,</span>
+        <span class="c"># Global TOC depth for &quot;site&quot; navbar tab. (Default: 1)</span>
+        <span class="c"># Switching to -1 shows all levels.</span>
+        <span class="s">&#39;globaltoc_depth&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="o">...</span>
+        <span class="c"># A list of tuples containing pages or urls to link to.</span>
+        <span class="o">...</span>
+        <span class="s">&#39;navbar_links&#39;</span><span class="p">:</span> <span class="p">[</span>
+           <span class="p">(</span><span class="s">&#39;Google&#39;</span><span class="p">,</span> <span class="s">&#39;http://google.com&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+           <span class="p">(</span><span class="s">&#39;DocOnce formats&#39;</span><span class="p">,</span>
+            <span class="s">&#39;http://hplgit.github.io/teamods/writing_reports/index.html&#39;</span><span class="p">,</span>
+            <span class="bp">True</span><span class="p">),</span>
+           <span class="p">],</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">
 <h3>How do I debug a DocOnce file that results in a strange error message?<a class="headerlink" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message" title="Permalink to this headline">¶</a></h3>
 <p>Isolate the problem by a &#8220;bisection&#8221; method: split the file in two, compile
@@ -227,6 +296,12 @@ such an example at the end of the document
 <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>.
 Description of user-defined environments are found in
 the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments">DocOnce manual</a>.</p>
+</div>
+<div class="section" id="how-can-links-open-in-new-tabs-windows">
+<h3>How can links open in new tabs/windows<a class="headerlink" href="#how-can-links-open-in-new-tabs-windows" title="Permalink to this headline">¶</a></h3>
+<p id="index-1">Use the option <code class="docutils literal"><span class="pre">--html_links_in_new_window</span></code> for the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
+command. It works in HTML and Sphinx, but not in pandoc (or other Markdown
+formats) or wikis.</p>
 </div>
 <div class="section" id="movies-will-not-play-in-my-broswer">
 <h3>Movies will not play in my broswer<a class="headerlink" href="#movies-will-not-play-in-my-broswer" title="Permalink to this headline">¶</a></h3>
@@ -757,6 +832,15 @@ o half a period of
 </pre></div>
 </div>
 </div>
+<div class="section" id="how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document">
+<h3>How can I get an overview of all files that are included in a document?<a class="headerlink" href="#how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document" title="Permalink to this headline">¶</a></h3>
+<p>Suppose the root (main) document is <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>. Run</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce include_map mydoc.do.txt
+</pre></div>
+</div>
+<p>The output lists all the recursive <code class="docutils literal"><span class="pre">#include</span></code> Preprocess statements so you
+can see how all files are included.</p>
+</div>
 </div>
 <div class="section" id="preprocess-mako">
 <h2>Preprocess/Mako<a class="headerlink" href="#preprocess-mako" title="Permalink to this headline">¶</a></h2>
@@ -987,6 +1071,23 @@ DocOnce manual for description of the problem and its solutions.</p>
 </div>
 <div class="section" id="rest-sphinx">
 <h2>reST/Sphinx<a class="headerlink" href="#rest-sphinx" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="math-formulas-are-not-rendered-properly">
+<h3>Math formulas are not rendered properly<a class="headerlink" href="#math-formulas-are-not-rendered-properly" title="Permalink to this headline">¶</a></h3>
+<p>HTML generated by Sphinx applies MathJax for rendering LaTeX mathematics.
+Due to the way Sphinx embeds these formulas in HTML, sometimes the
+formulas are not being rendered and instead the pure LaTeX code is
+put in a box.</p>
+<p>The first thing to do is to check that the LaTeX generated PDF format
+shows the formula correctly. The next step is to compile to HTML and
+check if MathJax in pure HTML renders the formula correctly. If so,
+the formula is correctly typeset, and the problem is related to Sphinx.</p>
+<p>There are basically to remedies: either drop Sphinx and go for HTML, or
+try to rewrite the formula and try until the Sphinx-generated
+HTML code manages to render it.</p>
+<p>The typical problems encountered may include
+formulas with use of <code class="docutils literal"><span class="pre">\bar\boldsymbol{}</span></code>
+and align environments with multiple equations.</p>
+</div>
 <div class="section" id="sphinx-directory-generation-aborts-with-label-empty-or-too-long">
 <h3>Sphinx directory generation aborts with &#8220;label empty or too long&#8221;<a class="headerlink" href="#sphinx-directory-generation-aborts-with-label-empty-or-too-long" title="Permalink to this headline">¶</a></h3>
 <p>This is a strange error that might arise from a too long title of the document.
@@ -1482,6 +1583,13 @@ further.</p>
 </div>
 <div class="section" id="html">
 <h2>HTML<a class="headerlink" href="#html" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-can-i-add-a-search-facility-to-an-html-document">
+<h3>How can I add a search facility to an HTML document?<a class="headerlink" href="#how-can-i-add-a-search-facility-to-an-html-document" title="Permalink to this headline">¶</a></h3>
+<p>There are many services for this. <a class="reference external" href="http://www.freefind.com/">FreeFind</a>
+is an easy-to-use service that gives you some HTML code to include
+in the document, typically inside a <code class="docutils literal"><span class="pre">#</span> <span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">==</span> <span class="pre">&quot;html&quot;</span></code> and <code class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></code>
+block.</p>
+</div>
 <div class="section" id="translation-aborts-when-labels-are-not-defined">
 <h3>Translation aborts when labels are not defined<a class="headerlink" href="#translation-aborts-when-labels-are-not-defined" title="Permalink to this headline">¶</a></h3>
 <p>By default, the DocOnce translation of HTML document aborts when references
@@ -1650,6 +1758,13 @@ clickable.</p>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting and FAQ</a><ul>
 <li><a class="reference internal" href="#general-topics">General topics</a><ul>
+<li><a class="reference internal" href="#how-to-i-cite-and-link-to-doconce">How to I cite and link to DocOnce?</a></li>
+<li><a class="reference internal" href="#how-can-i-add-links-to-some-resource-on-every-page">How can I add links to some resource on every page?</a><ul>
+<li><a class="reference internal" href="#bootstrap-html-styles">Bootstrap HTML styles</a></li>
+<li><a class="reference internal" href="#vagrant-html-template">Vagrant HTML template</a></li>
+<li><a class="reference internal" href="#sphinx-bootstrap-theme">Sphinx bootstrap theme</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li><a class="reference internal" href="#why-are-underscores-in-text-a-potential-problem">Why are underscores in text a potential problem?</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
@@ -1660,6 +1775,7 @@ clickable.</p>
 <li><a class="reference internal" href="#when-i-set-a-large-portion-of-text-in-color-only-a-part-of-it-becomes-colored">When I set a large portion of text in color, only a part of it becomes colored</a></li>
 <li><a class="reference internal" href="#how-can-i-make-use-of-a-native-latex-environments-example-environment-for-instance">How can I make use of a native LaTeX environments (example environment for instance)?</a></li>
 <li><a class="reference internal" href="#how-can-i-create-a-more-tailored-code-environment-in-latex-than-what-doconce-offers">How can I create a more tailored code environment in LaTeX than what DocOnce offers?</a></li>
+<li><a class="reference internal" href="#how-can-links-open-in-new-tabs-windows">How can links open in new tabs/windows</a></li>
 <li><a class="reference internal" href="#movies-will-not-play-in-my-broswer">Movies will not play in my broswer</a></li>
 <li><a class="reference internal" href="#reveal-slides-look-strange-in-the-browser">Reveal slides look strange in the browser</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
@@ -1700,6 +1816,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#lists-look-wrong">Lists look wrong</a></li>
+<li><a class="reference internal" href="#how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document">How can I get an overview of all files that are included in a document?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako">Preprocess/Mako</a><ul>
@@ -1726,6 +1843,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#rest-sphinx">reST/Sphinx</a><ul>
+<li><a class="reference internal" href="#math-formulas-are-not-rendered-properly">Math formulas are not rendered properly</a></li>
 <li><a class="reference internal" href="#sphinx-directory-generation-aborts-with-label-empty-or-too-long">Sphinx directory generation aborts with &#8220;label empty or too long&#8221;</a></li>
 <li><a class="reference internal" href="#title-level-inconsistent">Title level inconsistent</a></li>
 <li><a class="reference internal" href="#subsection-headings-appear-at-the-level-of-sections-in-the-table-of-contents">Subsection headings appear at the level of sections in the table of contents</a></li>
@@ -1771,6 +1889,7 @@ clickable.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#html">HTML</a><ul>
+<li><a class="reference internal" href="#how-can-i-add-a-search-facility-to-an-html-document">How can I add a search facility to an HTML document?</a></li>
 <li><a class="reference internal" href="#translation-aborts-when-labels-are-not-defined">Translation aborts when labels are not defined</a></li>
 <li><a class="reference internal" href="#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
 <li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a><ul>

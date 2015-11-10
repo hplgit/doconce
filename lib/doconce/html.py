@@ -2847,6 +2847,8 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                     custom_links = custom_links.split(';')
                     for custom_link in custom_links:
                         link, url = custom_link.split('|')
+                        link = link.strip()
+                        url = url.strip()
                         code_custom_links += """
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">

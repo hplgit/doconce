@@ -347,7 +347,7 @@ cp admon.html admon_apricot.html
 system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_template=template_vagrant.html --cite_doconce $rawgit
 cp admon.html admon_vagrant.html
 
-system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert --cite_doconce $rawgit
+system doconce format html admon --html_style=bootstrap --pygments_html_style=default --html_admon=bootstrap_alert --cite_doconce "--html_bootstrap_custom_links=Google|http://google.com;DocOnce formats|http://hplgit.github.io/teamods/writing_reports/index.html" $rawgit
 cp admon.html admon_bootstrap_alert.html
 doconce split_html admon_bootstrap_alert.html --pagination --nav_button=top+bottom
 
