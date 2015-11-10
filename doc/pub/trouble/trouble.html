@@ -33,6 +33,10 @@ Automatically generated HTML file from DocOnce source
 <!-- tocinfo
 {'highest level': 1,
  'sections': [('General topics', 1, None, '___sec0'),
+              ('How do I debug a DocOnce file that results in a strange error message?',
+               2,
+               None,
+               '___sec1'),
               ('How to I cite and link to DocOnce?',
                2,
                'sec:cite',
@@ -41,13 +45,9 @@ Automatically generated HTML file from DocOnce source
                2,
                'sec:custom:navlinks',
                'sec:custom:navlinks'),
-              ('Bootstrap HTML styles', 3, None, '___sec3'),
-              ('Vagrant HTML template', 3, None, '___sec4'),
-              ('Sphinx bootstrap theme', 3, None, '___sec5'),
-              ('How do I debug a DocOnce file that results in a strange error message?',
-               2,
-               None,
-               '___sec6'),
+              ('Bootstrap HTML styles', 3, None, '___sec4'),
+              ('Vagrant HTML template', 3, None, '___sec5'),
+              ('Sphinx bootstrap theme', 3, None, '___sec6'),
               ('Why are underscores in text a potential problem?',
                2,
                'sec:underscore',
@@ -433,12 +433,12 @@ end of tocinfo -->
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>General topics</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How do I debug a DocOnce file that results in a strange error message?</a></li>
      <!-- navigation toc: --> <li><a href="#sec:cite" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to I cite and link to DocOnce?</a></li>
      <!-- navigation toc: --> <li><a href="#sec:custom:navlinks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I add links to some resource on every page?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bootstrap HTML styles</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vagrant HTML template</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sphinx bootstrap theme</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How do I debug a DocOnce file that results in a strange error message?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bootstrap HTML styles</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vagrant HTML template</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sphinx bootstrap theme</a></li>
      <!-- navigation toc: --> <li><a href="#sec:underscore" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why are underscores in text a potential problem?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;GitHub gh-pages will not display files starting with a dot or underscore</a></li>
      <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;GitHub gh-pages will not display files</a></li>
@@ -605,9 +605,9 @@ end of tocinfo -->
 
 <p>
 <a href="#___sec0"> General topics </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec1"> How do I debug a DocOnce file that results in a strange error message? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:cite"> How to I cite and link to DocOnce? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:custom:navlinks"> How can I add links to some resource on every page? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec6"> How do I debug a DocOnce file that results in a strange error message? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#sec:underscore"> Why are underscores in text a potential problem? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec8"> GitHub gh-pages will not display files starting with a dot or underscore </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec9"> GitHub gh-pages will not display files </a><br>
@@ -746,6 +746,15 @@ can go wrong.
 
 <h1 id="___sec0">General topics </h1>
 
+<h2 id="___sec1">How do I debug a DocOnce file that results in a strange error message? </h2>
+
+<p>
+Isolate the problem by a &quot;bisection&quot; method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the text so you ultimately understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.
+
 <h2 id="sec:cite">How to I cite and link to DocOnce?</h2>
 
 <p>
@@ -759,7 +768,7 @@ This question is most relevant for web documents. The simplest (and
 actually the only feasible) solution is to use a style that has some
 banner where links can be inserted.
 
-<h3 id="___sec3">Bootstrap HTML styles </h3>
+<h3 id="___sec4">Bootstrap HTML styles </h3>
 
 <p>
 All the Bootstrap styles have a navigation bar where one can insert
@@ -783,7 +792,7 @@ a link to the document using the title as text, a link to &quot;Google&quot;,
 a link to &quot;DocOnce formats&quot;, and to the right a &quot;Contents&quot; pull-down
 menu.
 
-<h3 id="___sec4">Vagrant HTML template </h3>
+<h3 id="___sec5">Vagrant HTML template </h3>
 
 <p>
 DocOnce comes with the <a href="https://github.com/hplgit/doconce/tree/master/bundled/html_styles/style_vagrant" target="_self">Vagrant HTML template</a>,
@@ -800,7 +809,7 @@ for <code>GO TO 1</code> and <code>GO TO 2</code>. Compile the document with
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html mydoc --html_template=template_vagrant.html
 </pre></div>
 
-<h3 id="___sec5">Sphinx bootstrap theme </h3>
+<h3 id="___sec6">Sphinx bootstrap theme </h3>
 
 <p>
 With the <code>bootstrap</code> theme, Sphinx can easily offer custom links.
@@ -829,15 +838,6 @@ edit the <code>navbar_links</code> item. Here is an example:
 	    <span style="color: #008000">True</span>),
 	   ],
 </pre></div>
-
-<h2 id="___sec6">How do I debug a DocOnce file that results in a strange error message? </h2>
-
-<p>
-Isolate the problem by a &quot;bisection&quot; method: split the file in two, compile
-both parts, continue with the part that gave the problem, and repeat
-the process. This will quickly narrow down the next so you understand
-the problem. If you do not understand why the identified piece of text
-gives an error message, try to rewrite.
 
 <h2 id="sec:underscore">Why are underscores in text a potential problem?</h2>
 

@@ -100,6 +100,14 @@ can go wrong.</p>
 </div>
 <div class="section" id="general-topics">
 <h2>General topics<a class="headerlink" href="#general-topics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">
+<h3>How do I debug a DocOnce file that results in a strange error message?<a class="headerlink" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message" title="Permalink to this headline">¶</a></h3>
+<p>Isolate the problem by a &#8220;bisection&#8221; method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the text so you ultimately understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.</p>
+</div>
 <div class="section" id="how-to-i-cite-and-link-to-doconce">
 <span id="sec-cite"></span><h3>How to I cite and link to DocOnce?<a class="headerlink" href="#how-to-i-cite-and-link-to-doconce" title="Permalink to this headline">¶</a></h3>
 <p>See the &#8220;How to cite&#8221; section
@@ -168,14 +176,6 @@ edit the <code class="docutils literal"><span class="pre">navbar_links</span></c
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">
-<h3>How do I debug a DocOnce file that results in a strange error message?<a class="headerlink" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message" title="Permalink to this headline">¶</a></h3>
-<p>Isolate the problem by a &#8220;bisection&#8221; method: split the file in two, compile
-both parts, continue with the part that gave the problem, and repeat
-the process. This will quickly narrow down the next so you understand
-the problem. If you do not understand why the identified piece of text
-gives an error message, try to rewrite.</p>
 </div>
 <div class="section" id="why-are-underscores-in-text-a-potential-problem">
 <span id="sec-underscore"></span><h3>Why are underscores in text a potential problem?<a class="headerlink" href="#why-are-underscores-in-text-a-potential-problem" title="Permalink to this headline">¶</a></h3>
@@ -1758,6 +1758,7 @@ clickable.</p>
   <ul>
 <li><a class="reference internal" href="#">DocOnce Troubleshooting and FAQ</a><ul>
 <li><a class="reference internal" href="#general-topics">General topics</a><ul>
+<li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li><a class="reference internal" href="#how-to-i-cite-and-link-to-doconce">How to I cite and link to DocOnce?</a></li>
 <li><a class="reference internal" href="#how-can-i-add-links-to-some-resource-on-every-page">How can I add links to some resource on every page?</a><ul>
 <li><a class="reference internal" href="#bootstrap-html-styles">Bootstrap HTML styles</a></li>
@@ -1765,7 +1766,6 @@ clickable.</p>
 <li><a class="reference internal" href="#sphinx-bootstrap-theme">Sphinx bootstrap theme</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li><a class="reference internal" href="#why-are-underscores-in-text-a-potential-problem">Why are underscores in text a potential problem?</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">GitHub gh-pages will not display files starting with a dot or underscore</a></li>
 <li><a class="reference internal" href="#github-gh-pages-will-not-display-files">GitHub gh-pages will not display files</a></li>

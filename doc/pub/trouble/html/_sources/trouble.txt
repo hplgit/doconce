@@ -33,6 +33,15 @@ DocOnce Troubleshooting and FAQ
 General topics
 ==============
 
+How do I debug a DocOnce file that results in a strange error message?
+----------------------------------------------------------------------
+
+Isolate the problem by a "bisection" method: split the file in two, compile
+both parts, continue with the part that gave the problem, and repeat
+the process. This will quickly narrow down the text so you ultimately understand
+the problem. If you do not understand why the identified piece of text
+gives an error message, try to rewrite.
+
 .. _sec:cite:
 
 How to I cite and link to DocOnce?
@@ -114,15 +123,6 @@ edit the ``navbar_links`` item. Here is an example:
                     'http://hplgit.github.io/teamods/writing_reports/index.html',
         	    True),
         	   ],
-
-How do I debug a DocOnce file that results in a strange error message?
-----------------------------------------------------------------------
-
-Isolate the problem by a "bisection" method: split the file in two, compile
-both parts, continue with the part that gave the problem, and repeat
-the process. This will quickly narrow down the next so you understand
-the problem. If you do not understand why the identified piece of text
-gives an error message, try to rewrite.
 
 .. _sec:underscore:
 
