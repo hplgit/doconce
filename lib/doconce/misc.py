@@ -201,10 +201,10 @@ Default: Empty (just pencil glyphion)."""),
      """Turns the Bootstrap jumbotron intro on/off and governs the
 size of the document title. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron)."""),
-    ('--html_bootstrap_custom_links=', """Allows custom links in the navigation bar.
+    ('--html_bootstrap_navbar_links=', """Allows custom links in the navigation bar.
 Format: link|url;link|url;link|url
 Example:
-"--html_bootstrap_custom_links=Google|http://google.com;hpl|http://folk.uio.no/hpl"
+"--html_bootstrap_navbar_links=Google|http://google.com;hpl|http://folk.uio.no/hpl"
 """),
     ('--html_figure_hrule=', """Set horizontal rule(s) above and/or below a figure.
 none, off: no rules

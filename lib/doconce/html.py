@@ -2841,7 +2841,7 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                     outfilename += '.html'
 
             if option('html_bootstrap_navbar=', 'on') != 'off':
-                custom_links = option('html_bootstrap_custom_links=', None)
+                custom_links = option('html_bootstrap_navbar_links=', None)
                 code_custom_links = ''
                 if custom_links is not None:
                     custom_links = custom_links.split(';')

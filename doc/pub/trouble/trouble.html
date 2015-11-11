@@ -772,14 +772,14 @@ banner where links can be inserted.
 
 <p>
 All the Bootstrap styles have a navigation bar where one can insert
-custom links with the <code>--html_bootstrap_custom_links=</code> option.
+custom links with the <code>--html_bootstrap_navbar_links=</code> option.
 Here is an example where we insert two links:
 
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format html tmp1 --html_style=bootstrap \
-          &quot;--html_bootstrap_custom_links=\
+          &quot;--html_bootstrap_navbar_links=\
           Google|http://google.com;\
           DocOnce formats|\
           http://hplgit.github.io/teamods/writing_reports/index.html&quot;
@@ -837,6 +837,34 @@ edit the <code>navbar_links</code> item. Here is an example:
             <span style="color: #BA2121">&#39;http://hplgit.github.io/teamods/writing_reports/index.html&#39;</span>,
 	    <span style="color: #008000">True</span>),
 	   ],
+</pre></div>
+<p>
+One may hand-edit the <code>conf.py</code> file and provide a custom version
+in the <code>doconce sphinx_dir</code> command:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce sphinx_dir conf.py=../customfiles/conf.py \
+          theme=alabaster toc_depth=2 mydoc
+</pre></div>
+<p>
+Alternatively, one may auto edit the generated <code>conf.py</code> file in
+a script:
+
+<p>
+
+<!-- code=bash (!bc shcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format sphinx mydoc
+doconce sphinx_dir <span style="color: #19177C">theme</span><span style="color: #666666">=</span>alabaster <span style="color: #19177C">toc_depth</span><span style="color: #666666">=2</span> mydoc
+<span style="color: #408080; font-style: italic"># Auto edit conf.py</span>
+doconce subst <span style="color: #BA2121">&quot;#&#39;navbar_links&#39;:.+&quot;</span> <span style="color: #BA2121">&quot;&#39;navbar_links&#39;: [</span>
+<span style="color: #BA2121">	   (&#39;Google&#39;, &#39;http://google.com&#39;, True),</span>
+<span style="color: #BA2121">           (&#39;DocOnce formats&#39;,</span>
+<span style="color: #BA2121">            &#39;http://hplgit.github.io/teamods/writing_reports/index.html&#39;,</span>
+<span style="color: #BA2121">	    True),</span>
+<span style="color: #BA2121">	   ],&quot;</span> mydoc.rst
+python automake_sphinx.py
 </pre></div>
 
 <h2 id="sec:underscore">Why are underscores in text a potential problem?</h2>

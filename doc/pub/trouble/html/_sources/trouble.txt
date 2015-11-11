@@ -63,13 +63,13 @@ Bootstrap HTML styles
 ~~~~~~~~~~~~~~~~~~~~~
 
 All the Bootstrap styles have a navigation bar where one can insert
-custom links with the ``--html_bootstrap_custom_links=`` option.
+custom links with the ``--html_bootstrap_navbar_links=`` option.
 Here is an example where we insert two links:
 
 .. code-block:: text
 
         Terminal> doconce format html tmp1 --html_style=bootstrap \
-                  "--html_bootstrap_custom_links=\
+                  "--html_bootstrap_navbar_links=\
                   Google|http://google.com;\
                   DocOnce formats|\
                   http://hplgit.github.io/teamods/writing_reports/index.html"
@@ -123,6 +123,30 @@ edit the ``navbar_links`` item. Here is an example:
                     'http://hplgit.github.io/teamods/writing_reports/index.html',
         	    True),
         	   ],
+
+One may hand-edit the ``conf.py`` file and provide a custom version
+in the ``doconce sphinx_dir`` command:
+
+.. code-block:: text
+
+        Terminal> doconce sphinx_dir conf.py=../customfiles/conf.py \
+                  theme=alabaster toc_depth=2 mydoc
+
+Alternatively, one may auto edit the generated ``conf.py`` file in
+a script:
+
+.. code-block:: bash
+
+        doconce format sphinx mydoc
+        doconce sphinx_dir theme=alabaster toc_depth=2 mydoc
+        # Auto edit conf.py
+        doconce subst "#'navbar_links':.+" "'navbar_links': [
+        	   ('Google', 'http://google.com', True),
+                   ('DocOnce formats',
+                    'http://hplgit.github.io/teamods/writing_reports/index.html',
+        	    True),
+        	   ]," mydoc.rst
+        python automake_sphinx.py
 
 .. _sec:underscore:
 

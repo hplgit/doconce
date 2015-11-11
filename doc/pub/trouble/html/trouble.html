@@ -121,10 +121,10 @@ banner where links can be inserted.</p>
 <div class="section" id="bootstrap-html-styles">
 <h4>Bootstrap HTML styles<a class="headerlink" href="#bootstrap-html-styles" title="Permalink to this headline">¶</a></h4>
 <p>All the Bootstrap styles have a navigation bar where one can insert
-custom links with the <code class="docutils literal"><span class="pre">--html_bootstrap_custom_links=</span></code> option.
+custom links with the <code class="docutils literal"><span class="pre">--html_bootstrap_navbar_links=</span></code> option.
 Here is an example where we insert two links:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format html tmp1 --html_style=bootstrap \
-          &quot;--html_bootstrap_custom_links=\
+          &quot;--html_bootstrap_navbar_links=\
           Google|http://google.com;\
           DocOnce formats|\
           http://hplgit.github.io/teamods/writing_reports/index.html&quot;
@@ -173,6 +173,26 @@ edit the <code class="docutils literal"><span class="pre">navbar_links</span></c
             <span class="s">&#39;http://hplgit.github.io/teamods/writing_reports/index.html&#39;</span><span class="p">,</span>
             <span class="bp">True</span><span class="p">),</span>
            <span class="p">],</span>
+</pre></div>
+</div>
+<p>One may hand-edit the <code class="docutils literal"><span class="pre">conf.py</span></code> file and provide a custom version
+in the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code> command:</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce sphinx_dir conf.py=../customfiles/conf.py \
+          theme=alabaster toc_depth=2 mydoc
+</pre></div>
+</div>
+<p>Alternatively, one may auto edit the generated <code class="docutils literal"><span class="pre">conf.py</span></code> file in
+a script:</p>
+<div class="highlight-bash"><div class="highlight"><pre>doconce format sphinx mydoc
+doconce sphinx_dir <span class="nv">theme</span><span class="o">=</span>alabaster <span class="nv">toc_depth</span><span class="o">=</span><span class="m">2</span> mydoc
+<span class="c"># Auto edit conf.py</span>
+doconce subst <span class="s2">&quot;#&#39;navbar_links&#39;:.+&quot;</span> <span class="s2">&quot;&#39;navbar_links&#39;: [</span>
+<span class="s2">           (&#39;Google&#39;, &#39;http://google.com&#39;, True),</span>
+<span class="s2">           (&#39;DocOnce formats&#39;,</span>
+<span class="s2">            &#39;http://hplgit.github.io/teamods/writing_reports/index.html&#39;,</span>
+<span class="s2">            True),</span>
+<span class="s2">           ],&quot;</span> mydoc.rst
+python automake_sphinx.py
 </pre></div>
 </div>
 </div>
