@@ -3051,6 +3051,8 @@ def interpret_authors(filestr, format):
                     this_year = time.asctime().split()[4] # current year
                     if year == 'present':
                         year = this_year
+                    elif year == 'None':
+                        year = None
                     elif year == 'date':
                         year = None
                         pattern = r'^DATE:(.+)'
@@ -3123,14 +3125,17 @@ def interpret_authors(filestr, format):
                 _abort()
         copyright_ = {'holder': keys, 'year': year0, 'license': license0,
                       'cite doconce': option('cite_doconce', False)}
+    elif option('cite_doconce', False):
+        # Include copyright footer also if there is no copyright with
+        # authors, but a --cite_doconce option
+        copyright_ = {'cite doconce': True}
+    if copyright_:
         # Store in file for use elsewhere (will only work for doconce format)
         try:
             with open('.' + dofile_basename + '.copyright', 'w') as f:
                 f.write(repr(copyright_))
         except NameError:
             pass # file is already written
-    else:
-        copyright_ = None
 
     inst2index = OrderedDict()
     index2inst = {}

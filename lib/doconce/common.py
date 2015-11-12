@@ -169,6 +169,10 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
 
 
 def has_copyright(filestr):
+    # We use the copyright field for citing doconce
+    if option('cite_doconce'):
+        return True
+    # Check each author for explicit copyright
     authors = re.findall(r'^AUTHOR:(.+)', filestr, flags=re.MULTILINE)
     copyright_ = False
     for author in authors:
@@ -193,12 +197,16 @@ def get_copyfile_info(filestr=None, copyright_filename=None, format=None):
         return cr_text # no copyright file
 
     # We have copyright file and info
-    cr_text = cr_info['year'] + ', ' + ', '.join(cr_info['holder'])
-    if cr_info['license'] is not None:
+    cr_text = ''
+    if 'year' in cr_info and 'holder' in cr_info:
+        cr_text += cr_info['year'] + ', ' + ', '.join(cr_info['holder'])
+    if cr_info.get('license', None) is not None:
         cr_text += '. ' + cr_info['license']
-    if cr_info['cite doconce']:
+    if cr_info.get('cite doconce', False):
         url = 'https://github.com/hplgit/doconce'
-        cr_text += '. Made with '
+        if cr_text:
+            cr_text += '. '
+        cr_text += 'Made with '
         if format in ('latex', 'pdflatex'):
             cr_text += r'\href{%s}{DocOnce}' % url
         elif format == 'html':
