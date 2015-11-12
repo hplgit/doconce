@@ -548,7 +548,8 @@ both inline and in block:
 
 !bt
 \begin{align}
-\Ddt{u} &= 0\nonumber\\
+\Ddt{u} &= 0\nonumber
+\\
 \half &= \halfi\\
 \half\x &= \normalvec
 \end{align}
@@ -559,9 +560,11 @@ Or with align with label and numbers:
 !bt
 \begin{align}
 \Ddt{u} &= 0
-label{aligneq1}\\
+label{aligneq1}
+\\
 \half &= \halfi\\
 \half\x &= \normalvec
+
 label{aligneq2}
 \end{align}
 !et

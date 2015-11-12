@@ -555,6 +555,15 @@ def remove_code_and_tex(filestr, format):
             print '\n    remove all these references!'
             _abort()
 
+    # Remove blank lines in tex blocks
+    for i in range(len(tex_blocks)):
+        # Blank lines within tex block is not accepted by latex
+        # (strip first because blank line afterwards is ok)
+        pattern = r'\n{2,}'
+        m = re.search(pattern, tex_blocks[i].strip())
+        if m:
+            tex_blocks[i] = re.sub(pattern, '\n', tex_blocks[i])
+
     # Give error if blocks contain !bt
     for i in range(len(tex_blocks)):
         if '!bt' in tex_blocks[i] or '!et' in tex_blocks[i]:
@@ -571,13 +580,6 @@ def remove_code_and_tex(filestr, format):
             if m.group('name') in ('del', 'add') or '->' in m.group('comment'):
                 # edit markup
                 print '    Place info about editing after the block.'
-            print block
-            _abort()
-        # Blank lines within tex block is not accepted by latex
-        # (strip first because blank line afterwards is ok)
-        m = re.search(r'^\s*$', block.strip(), flags=re.MULTILINE)
-        if m:
-            print '*** error: blank line is illegal in latex block'
             print block
             _abort()
 
