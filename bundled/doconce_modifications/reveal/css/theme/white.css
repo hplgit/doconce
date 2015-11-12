@@ -161,7 +161,7 @@ body {
   font-weight: bold; }
 
 .reveal table th, .reveal table td {
-  text-align: left;
+  /* text-align: left; */  /* hpl modification */
   padding: 0.2em 0.5em 0.2em 0.5em;
   border-bottom: 1px solid; }
 

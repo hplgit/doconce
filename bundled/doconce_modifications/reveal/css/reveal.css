@@ -357,8 +357,9 @@ body {
 
 .reveal table th,
 .reveal table td {
-	text-align: left;
-	padding-right: .3em;
+	/* text-align: left; */  /* hpl modification */
+        padding-right: .3em;
+        border: 1px solid black;
 }
 
 .reveal table th {

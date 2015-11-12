@@ -7717,7 +7717,7 @@ def _run_doconce(filename_doconce, format):
     except subprocess.CalledProcessError as e:
         raise OSError('Could not run\n%s\nin %s\n%s\n\n\n' %
                       (cmd, os.getcwd(), e.output))
-    out_filename = outtext.split()[-1]
+    out_filename = output.split()[-1]
     root, ext = os.path.splitext(out_filename)
     new_filename = root + '.dst.txt'
     os.rename(out_filename, new_filename)
