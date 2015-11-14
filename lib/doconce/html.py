@@ -2972,13 +2972,14 @@ Automatically generated HTML file from DocOnce source
 -->
 """
     from common import has_copyright
-    if has_copyright(filestr):
+    copyright_, symbol = has_copyright(filestr)
+    if copyright_:
         OUTRO['html'] += """
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; Copyright COPYRIGHT_HOLDERS
+<!-- copyright --> {} Copyright COPYRIGHT_HOLDERS
 </center>
-"""
+""".format("&copy;" if symbol else "")
     OUTRO['html'] += """
 
 </body>
