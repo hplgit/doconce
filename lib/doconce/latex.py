@@ -1870,8 +1870,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     #filestr = re.sub(r'([A-Za-z])\s*&\s*([A-Za-z])', r'\g<1>{\&}\g<2>', filestr)
 
     # handle non-English characters:
-    chars = {'\E6': r'{\ae}', '\F8': r'{\o}', '\E5': r'{\aa}',
-             '\C6': r'{\AE}', '\D8': r'{\O}', '\C5': r'{\AA}',
+    chars = {'æ': r'{\ae}', 'ø': r'{\o}', 'å': r'{\aa}',
+             'Æ': r'{\AE}', 'Ø': r'{\O}', 'Å': r'{\AA}',
              }
     # Not implemented
     #for c in chars:
