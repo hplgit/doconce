@@ -169,17 +169,20 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
 
 
 def has_copyright(filestr):
+    copyright_ = False
     # We use the copyright field for citing doconce
     if option('cite_doconce'):
-        return True
+        copyright_ = True
     # Check each author for explicit copyright
     authors = re.findall(r'^AUTHOR:(.+)', filestr, flags=re.MULTILINE)
-    copyright_ = False
+
+    symbol = False  # We do not need a (c)-symbol if we're only citing doconce
     for author in authors:
         if '{copyright' in author:
             copyright_ = True
+            symbol = True
             break
-    return copyright_
+    return copyright_, symbol
 
 def get_copyfile_info(filestr=None, copyright_filename=None, format=None):
     """Return copyright tuple in .filename.copyright."""

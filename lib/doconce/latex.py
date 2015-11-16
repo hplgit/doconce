@@ -1870,8 +1870,8 @@ def latex_ref_and_label(section_label2title, format, filestr):
     #filestr = re.sub(r'([A-Za-z])\s*&\s*([A-Za-z])', r'\g<1>{\&}\g<2>', filestr)
 
     # handle non-English characters:
-    chars = {'æ': r'{\ae}', 'ø': r'{\o}', 'å': r'{\aa}',
-             'Æ': r'{\AE}', 'Ø': r'{\O}', 'Å': r'{\AA}',
+    chars = {'Ã¦': r'{\ae}', 'Ã¸': r'{\o}', 'Ã¥': r'{\aa}',
+             'Ã†': r'{\AE}', 'Ã˜': r'{\O}', 'Ã…': r'{\AA}',
              }
     # Not implemented
     #for c in chars:
@@ -3358,7 +3358,7 @@ open=right,              %% start new chapters on odd-numbered pages
 """
 
     from common import has_copyright
-    copyright_ = has_copyright(filestr)
+    copyright_, symbol = has_copyright(filestr)
     fancy_header = option('latex_fancy_header')
     if fancy_header or copyright_:
         INTRO['latex'] += r"""

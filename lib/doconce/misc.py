@@ -3456,7 +3456,7 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
             # Remove the copyright from the footer
             for i in range(len(footer)):
                 if '<!-- copyright -->' in footer[i]:
-                    footer[i] = re.sub(r'<!-- copyright --> &copy;.+', '<!-- copyright only on the titlepage -->', footer[i])
+                    footer[i] = re.sub(r'<!-- copyright --> .+', '<!-- copyright only on the titlepage -->', footer[i])
 
         # Navigation in the bottom of the page
         lines.append('<p>\n')
@@ -3558,7 +3558,7 @@ def generate_html5_slides(header, parts, footer, basename, filename,
         copy_datafiles(eval(slide_tp + '_files'))  # copy to subdir if needed
 
     # Copyright in the footer?
-    pattern = r'<center style="font-size:80%">\n<!-- copyright --> &copy; (.+)\n</center>'
+    pattern = r'<center style="font-size:80%">\n<!-- copyright --> (.+)\n</center>'
     m = re.search(pattern, ''.join(footer))
     if m:
         copyright_ = m.group().strip()
