@@ -5345,7 +5345,7 @@ code {
             title = lines[i][1:].lstrip()
         elif percentage_counter == 2:
             # Authors
-            lines[i] = '\n\n###' + '\n\n###'.join(lines[i][1:].lstrip().split(';'))
+            lines[i] = '\n\n### ' + '\n\n### '.join(lines[i][1:].lstrip().split(';'))
         elif percentage_counter == 3:
             # Date
             lines[i] = lines[i].replace('% ', '\n\n### ')
@@ -5381,10 +5381,10 @@ def generate_beamer_slides(header, parts, footer, basename, filename):
 
     # Copyright? Use \logo{} to represent it
     # (It does not seem to work - we must insert it in the date too)
-    pattern = r'\\footnotesize\\copyright\\ (.+)\}\}'
+    pattern = r'\\fancyfoot\[C\]\{\{\\footnotesize (.+)\}\}'
     m = re.search(pattern, header)
     if m:
-        copyright_text = r'{\tiny\copyright\ ' + m.group(1).strip() + '}'
+        copyright_text = r'{\tiny ' + m.group(1).strip() + '}'
         copyright_ = r'\logo{%s}' % copyright_text
     else:
         copyright_text = copyright_ = ''

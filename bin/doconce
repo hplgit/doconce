@@ -299,6 +299,18 @@ def sphinx_dir():
     copyright_filename = '.' + filename + '.copyright'
     copyright_ = get_copyfile_info(copyright_filename=copyright_filename,
                                    format='sphinx')
+    # copyright_ is None if no copyright and no doconce citation
+    # copyright_ is 'Made with DocOnce' if just citation and no copyright,
+    # otherwise it is a text with authors/institutions and optionally citation
+    # in conf.py we *always* include a copyright with authors, so if
+    # copyright is None or just 'Made with DocOnce' we add authors and year
+    if isinstance(copyright_, str) and 'DocOnce' in copyright_:
+        cite_doconce = True
+        if copyright_ == 'Made with DocOnce':
+            copyright_ = None  # No specified authors or institutions
+    else:
+        cite_doconce = False
+
     if copyright_ is None:
         # No copyright given in the file, use copyright= from command
         # line, if it was provided, or use this year and author
@@ -306,6 +318,8 @@ def sphinx_dir():
             # use this year, author
             this_year = time.asctime().split()[4]
             copyright_ = this_year + ', ' + author
+            if cite_doconce:
+                copyright_ += '. Made with DocOnce'
         else:
             copyright_ = copyright_cml
     else:

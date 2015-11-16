@@ -62,7 +62,7 @@ for format in 'pdflatex', 'sphinx', 'html':
                 cmd = 'pdflatex %s' % name
                 system(cmd)
                 shutil.copy('%s.pdf' % name, '%s%d.pdf' % (name, counter))
-                results.append(grep(r'\\fancyfoot\[C\]\{\{\\footnotesize\\copyright.+', name + '.tex'))
+                results.append(grep(r'\\fancyfoot\[C\]\{\{\\footnotesize .+', name + '.tex'))
 results = '\n'.join(results)
 
 with open('test_copyright.out', 'w') as f:

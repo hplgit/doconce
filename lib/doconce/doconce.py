@@ -3557,7 +3557,10 @@ def inline_tag_subst(filestr, format):
             from common import get_copyfile_info
             cr_text = get_copyfile_info(filestr, format=format)
             if cr_text is not None:
-                date += '\n\nCopyright ' + cr_text + '\n\n'
+                if cr_text == 'Made with DocOnce':
+                    date += '\n\nMade with DocOnce\n\n'
+                else:
+                    date += '\n\nCopyright ' + cr_text + '\n\n'
         filestr = filestr.replace(origstr, 'DATE: ' + date)
 
     # Hack for not typesetting ampersands inside inline verbatim text

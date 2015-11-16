@@ -3359,6 +3359,7 @@ open=right,              %% start new chapters on odd-numbered pages
 
     from common import has_copyright
     copyright_, symbol = has_copyright(filestr)
+    symbol = r'\copyright\ ' if symbol else ''
     fancy_header = option('latex_fancy_header')
     if fancy_header or copyright_:
         INTRO['latex'] += r"""
@@ -3400,36 +3401,36 @@ open=right,              %% start new chapters on odd-numbered pages
             latex_copyright = option('latex_copyright=', 'everypage')
             if latex_copyright == 'everypage':
                 INTRO['latex'] += r"""
-\fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
-"""
+\fancyfoot[C]{{\footnotesize %sCopyright COPYRIGHT_HOLDERS}}
+""" % symbol
 
             if latex_style.startswith('Springer'):
                 INTRO['latex'] += r"""
-% Ensure copyright on chapter pages (only)
+%% Ensure copyright on chapter pages (only)
 \fancypagestyle{bchap}{
   \fancyhf{}
-  \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
-%  \renewcommand{\footrulewidth}{0mm}
+  \fancyfoot[C]{{\footnotesize %sCopyright COPYRIGHT_HOLDERS}}
+%%  \renewcommand{\footrulewidth}{0mm}
   \renewcommand{\headrulewidth}{0mm}
 }
-"""
+""" % symbol
             else:
                 INTRO['latex'] += r"""
-% Ensure copyright on titlepage (article style) and chapter pages (book style)
+%% Ensure copyright on titlepage (article style) and chapter pages (book style)
 \fancypagestyle{plain}{
   \fancyhf{}
-  \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
-%  \renewcommand{\footrulewidth}{0mm}
+  \fancyfoot[C]{{\footnotesize %sCopyright COPYRIGHT_HOLDERS}}
+%%  \renewcommand{\footrulewidth}{0mm}
   \renewcommand{\headrulewidth}{0mm}
 }
-% Ensure copyright on titlepages with \thispagestyle{empty}
+%% Ensure copyright on titlepages with \thispagestyle{empty}
 \fancypagestyle{empty}{
   \fancyhf{}
-  \fancyfoot[C]{{\footnotesize\copyright\ Copyright COPYRIGHT_HOLDERS}}
+  \fancyfoot[C]{{\footnotesize %sCopyright COPYRIGHT_HOLDERS}}
   \renewcommand{\footrulewidth}{0mm}
   \renewcommand{\headrulewidth}{0mm}
 }
-"""
+""" % (symbol, symbol)
 
         INTRO['latex'] += r"""
 \pagestyle{fancy}

@@ -42,7 +42,7 @@ ex="--examples_as_exercises"
 #ex=
 rawgit="--html_raw_github_url=raw.github"
 
-system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window $rawgit
+system doconce format html testdoc --wordpress  $ex --html_exercise_icon=question_blue_on_white1.png --html_exercise_icon_width=80 --figure_prefix="https://raw.github.com/hplgit/doconce/master/test/" --movie_prefix="https://raw.github.com/hplgit/doconce/master/test/" --html_links_in_new_window --cite_doconce $rawgit
 
 cp testdoc.html testdoc_wordpress.html
 
@@ -53,7 +53,7 @@ cp testdoc.html testdoc_no_solutions.html
 system doconce format html testdoc $ex  # just produce the mako file
 doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
 
-system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --number_all_equations --latex_packages=varioref
+system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --number_all_equations --latex_packages=varioref --cite_doconce
 cp testdoc.p.tex testdoc_no_solutions.p.tex
 
 cp ../bundled/html_styles/style_vagrant/template_vagrant.html .
@@ -195,7 +195,7 @@ cp slides1.html slides1_remark.html
 
 # The toughest test of slides1 is with minted code envir
 rm -f *.aux
-system doconce format pdflatex slides1 --latex_title_layout=beamer --latex_code_style=pyg
+system doconce format pdflatex slides1 --latex_title_layout=beamer --latex_code_style=pyg --cite_doconce
 system doconce slides_beamer slides1 --beamer_slide_theme=blue_shadow --handout
 system pdflatex -shell-escape slides1
 cp slides1.tex slides1_handout.tex
