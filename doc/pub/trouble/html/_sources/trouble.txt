@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Nov 10, 2015
+:Date: Nov 16, 2015
 
 
 .. admonition:: Disclaimer
@@ -1232,7 +1232,7 @@ shows the formula correctly. The next step is to compile to HTML and
 check if MathJax in pure HTML renders the formula correctly. If so,
 the formula is correctly typeset, and the problem is related to Sphinx.
 
-There are basically to remedies: either drop Sphinx and go for HTML, or
+There are basically two remedies: either drop Sphinx and go for HTML, or
 try to rewrite the formula and try until the Sphinx-generated
 HTML code manages to render it.
 
