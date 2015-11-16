@@ -182,7 +182,6 @@ def has_copyright(filestr):
             copyright_ = True
             symbol = True
             break
-    print copyright_, symbol
     return copyright_, symbol
 
 def get_copyfile_info(filestr=None, copyright_filename=None, format=None):
