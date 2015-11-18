@@ -265,6 +265,8 @@ envir:package-background[style parameters]@)
      'Turn section numbering on/off. Default: off for all formats except latex and pdflatex (on for those).'),
     ('--latex_table_format=',
      'Default: quote. Other values: left, center, footnotesize, tiny.'),
+    ('--latex_table_row_sep=',
+     'Row separation factor in tables (command \renewcommand{\arraystretch}{<factor>}. Default: 1.0'),
     ('--latex_title_layout=',
      """Layout of the title, authors, and date:
 std: traditional LaTeX layout,
@@ -514,7 +516,9 @@ Used if the just the specified movie format should be played."""),
 Markdown. Default value is None (no dump).
 Any filename can be specified: --md2do_output=myfile.do.txt"""),
     ('--github_md',
-     'Turn on github-flavored-markdown dialect of the pandoc translator'),
+     'Turn on GitHub-flavored Markdown dialect of the pandoc translator'),
+    ('--slate_md',
+     'Turn on Slate-extensions to Markdown in the pandoc translator.\nTo be used together with --github_md.'),
     ('--strapdown',
      """Wrap Markdown output in HTML header/footer such that the
 output file (renamed as .html) can automatically be rendered as
@@ -2613,7 +2617,7 @@ def html_colorbullets():
 
 def _usage_split_html():
     print """\
-Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides' --copyright=everypage|titlepage
+Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides --copyright=everypage|titlepage
 
 --method=split|space8|hrule|colorline specifies pagebreak
 physical split with a new page (--method=split) or

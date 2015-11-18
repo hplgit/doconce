@@ -1678,8 +1678,17 @@ option can be handy, e.g., while compiling chapters for a book individually.
 Here are some common problems:
 
  * Two equations cannot have identical label (this error often arises
-   from copying and pasting equations)
- * `[` and `]` brackets must sometimes be replaced by `\lbrack` and `\rbrack`
+   from copying and pasting equations).
+ * `[` and `]` brackets must sometimes be replaced by `\lbrack` and `\rbrack`.
+ * Inline mathematics cannot have a space after the first dollar sign.
+ * Equation environments must be '\[ ...\]`, `equation`, `equation*`,
+   `align`, or `align*` - avoid all other types of environments.
+ * Errors in formulas that LaTeX accepts lead to unrendered formulas in MathJax.
+
+If the corresponding PDF output has the correct formula, one must try to
+rewrite the LaTeX mathematics so MathJax accepts it. MathJax can only
+handle a subset of what is legal mathematics in LaTeX.
+
 
 ===== How can I change the layout of the HTML page? =====
 

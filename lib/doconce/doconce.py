@@ -363,7 +363,7 @@ def syntax_check(filestr, format):
     labels = re.findall('label\{(.+?)\}', filestr)
     multiple_labels = list(set([label for label in labels if labels.count(label) > 1]))
     if multiple_labels:
-        print '*** error: found multiple lables:'
+        print '*** error: found multiple labels:'
         print '   ', ' '.join(multiple_labels)
         _abort()
     # Consistency of implemented environments

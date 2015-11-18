@@ -2903,6 +2903,12 @@ open=right,              %% start new chapters on odd-numbered pages
     INTRO['latex'] += r"""
 \usepackage{graphicx}
 """
+    row_sep = option('latex_table_row_sep=', 1.0)
+    if row_sep != 1.0:
+        INTRO['latex'] += r"""
+\renewcommand{\arraystretch}{%s}  %% set row separation factor in tables
+""" % (row_sep)
+
     # sidecap figures?
     if 'sidecap=' in filestr:
         INTRO['latex'] += '\\usepackage{sidecap}\n'
