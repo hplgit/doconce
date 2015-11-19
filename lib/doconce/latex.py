@@ -2903,7 +2903,7 @@ open=right,              %% start new chapters on odd-numbered pages
     INTRO['latex'] += r"""
 \usepackage{graphicx}
 """
-    row_sep = option('latex_table_row_sep=', 1.0)
+    row_sep = float(option('latex_table_row_sep=', 1.0))
     if row_sep != 1.0:
         INTRO['latex'] += r"""
 \renewcommand{\arraystretch}{%s}  %% set row separation factor in tables
