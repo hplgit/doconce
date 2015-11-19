@@ -1210,16 +1210,21 @@ def include_map():
         _usage_find()
         sys.exit(0)
     filename = sys.argv[1]
+    # Could have preprocess variables for include at the rest of the
+    # command line
 
     def find_include(name, indent=''):
         if not os.path.isfile(name):
-            print '*** error: file "%s" does not exist!' % name
+            print '*** file "%s" was not found!' % name
+            # Could be non-existing or the filename may contain
+            # preprocess variable(s)
             return
         with open(name, 'r') as f:
             lines = f.readlines()
         for line in lines:
             if '#include ' in line:
                 includefile = line.split('#include')[1].strip()[1:-1]
+                includefile = os.path.join(os.path.dirname(name), includefile)
                 print indent, '#include', includefile
                 find_include(includefile, indent + '    ')
 
