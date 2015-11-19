@@ -1902,6 +1902,8 @@ def html_ref_and_label(section_label2title, format, filestr):
     pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?)\s+ref'
     replacement = r'\g<1>The \g<2> ref'
     filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
+    # Fix side effect: cf. The section ...
+    filestr = re.sub(r'cf\.\s+The', 'cf. the', filestr)
 
     # Remove "the" Exercise, Project, Problem in references since those words
     # are used in the title of the section too
@@ -2289,6 +2291,7 @@ for _admon in admons:
     _Admon = _admon.capitalize()  # upper first char
     # Below we could use
     # <img src="data:image/png;base64,iVBORw0KGgoAAAANSUh..."/>
+    # for embedding images in the html code rather than just including them
     _text = '''
 def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
     # No title?

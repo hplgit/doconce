@@ -8,7 +8,7 @@ for syntax.
 # solution seems to be manual editing, which is doable for small
 # documents and issues.)
 
-import re, sys
+import re, sys, functools
 from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, bibliography, indent_lines
 from html import html_movie, html_table
@@ -86,6 +86,33 @@ def pandoc_date(m):
     else:
         # pandoc-extended markdown syntax
         return '% ' + date + '\n'
+
+def slate_notice(block, format, title='Notice', text_size='normal'):
+    title = '' if title == 'Notice' else '<b>%s</b><br>\n' % title
+    text = """
+<aside class="notice">
+%s%s
+</aside>
+""" % (title, block)
+    return text
+
+def slate_warning(block, format, title='Warning', text_size='normal'):
+    title = '' if title == 'Warning' else '<b>%s</b><br>\n' % title
+    text = """
+<aside class="warning">
+%s%s
+</aside>
+""" % (title, block)
+    return text
+
+def slate_success(block, format, title='', text_size='normal'):
+    title = '' if title == '' else '<b>%s</b><br>\n' % title
+    text = """
+<aside class="success">
+%s%s
+</aside>
+""" % (title, block)
+    return text
 
 def pandoc_code(filestr, code_blocks, code_block_types,
                 tex_blocks, format):
@@ -465,6 +492,15 @@ def define(FILENAME_EXTENSION,
     ENVIRS['pandoc'] = {
         'quote':        pandoc_quote,
         }
+    if option('slate_md'):
+        ENVIRS['pandoc'] = {
+            'warning':  slate_warning,
+            'notice':   slate_notice,
+            'block':    slate_success,
+            'summary':  functools.partial(slate_success, title='Summary')
+            'question': functools.partial(slate_success, title='Question')
+            'box':      slate_success,
+            }
 
     from common import DEFAULT_ARGLIST
     ARGLIST['pandoc'] = DEFAULT_ARGLIST
