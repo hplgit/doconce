@@ -497,8 +497,8 @@ def define(FILENAME_EXTENSION,
             'warning':  slate_warning,
             'notice':   slate_notice,
             'block':    slate_success,
-            'summary':  functools.partial(slate_success, title='Summary')
-            'question': functools.partial(slate_success, title='Question')
+            'summary':  functools.partial(slate_success, title='Summary'),
+            'question': functools.partial(slate_success, title='Question'),
             'box':      slate_success,
             }
 
