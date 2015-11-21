@@ -680,8 +680,11 @@ def syntax_check(filestr, format):
     # Check underscores in latex
     if format in ('latex', 'pdflatex'):
         filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
-        filestr2 = re.sub(r'`.+?`', '',  filestr2, flags=re.DOTALL) # strip verb
-        # Filer out boldface, paragraph, and comments
+        # Filer out @@@CODE, verbatim, boldface, paragraph, and comments
+        filestr2 = re.sub(r'^@@@CODE .+', '', filestr2,
+                          flags=re.MULTILINE)
+        filestr2 = re.sub(INLINE_TAGS['verbatim'], '', filestr2,
+                          flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['bold'], '', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,

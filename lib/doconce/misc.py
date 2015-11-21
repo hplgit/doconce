@@ -8976,7 +8976,7 @@ f = open(logfile, 'w'); f.close()  # touch logfile so it can be appended
 
 unix_command_recorder = []
 
-def system(cmd):
+def os_system(cmd):
     """Run system command cmd using the simple os.system command."""
     print cmd
     failure = os.system(cmd)
@@ -9003,6 +9003,7 @@ failed""" % cmd
     print output
     f = open(logfile, 'a'); f.write(output); f.close()
     unix_command_recorder.append(cmd)  # record command for bash script
+    return output
 
 def spellcheck():
     for filename in glob.glob('*.do.txt'):
@@ -9013,15 +9014,16 @@ def spellcheck():
 def latex(name,
           latex_program='pdflatex',    # or 'latex'
           options='--latex_code_style=vrb',
-          ptex2tex='',
           version='paper',             # or 'screen', '2up', 'A4', 'A4-2up'
           postfix='',                  # or 'auto'
+          ptex2tex=None,               # only for ptex2tex step
           ):
     """
     Make latex/pdflatex (according to latex_program) PDF file from
     the doconce file name (without any .do.txt extension).
 
     version can take the following values:
+
       * paper: normal page size, --device=paper
       * 2up: normal page size, --device=paper, 2 pages per sheet
       * A4: A4 page size, --device=paper
@@ -9056,7 +9058,7 @@ def latex(name,
     system(cmd)
 
     # Transform .p.tex to .tex?
-    if ptex2tex:
+    if ptex2tex is not None:
         cmd = ptex2tex
         system(cmd)
 
