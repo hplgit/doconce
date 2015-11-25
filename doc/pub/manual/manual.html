@@ -451,6 +451,7 @@ $$
     </button>
     <a class="navbar-brand" href="manual.html">DocOnce Description</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -716,7 +717,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Nov 7, 2015</h4></center> <!-- date -->
+<center><h4>Nov 24, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -795,7 +796,7 @@ reStructuredText, HTML).  Later, almost untagged markup languages
 became popular, especially <a href="http://daringfireball.net/projects/markdown/" target="_self">Markdown</a> and its sisters
 <a href="http://fletcherpenney.net/multimarkdown/" target="_self">MultiMarkdown</a>,
 <a href="http://johnmacfarlane.net/pandoc/" target="_self">Pandoc-extended Markdown</a>, and
-<a href="https://leanpub.com/markua/" target="_self">Markua</a>..  DocOnce looks much like
+<a href="https://leanpub.com/markua/" target="_self">Markua</a>.  DocOnce looks much like
 Markdown and is in particular close to the functionality and nature of
 MultiMarkdown. The advantage of DocOnce, however, is a series of
 features for supporting both small and large documents (books in
@@ -1946,6 +1947,12 @@ Here is a movie in the Ogg format:
 </div>
 <p><em>A movie in Ogg format.</em></p>
 
+<!-- Issue warning if in a Safari browser -->
+<script language="javascript">
+if (!!(window.safari)) {
+  document.write("<div style=\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\"><p><font color=\"red\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
+</script>
+
 <p>
 realized by the command
 
@@ -1972,6 +1979,12 @@ A URL works too as movie address:
 </video>
 </div>
 <p><em>Ogg movie in cyberspace.</em></p>
+
+<!-- Issue warning if in a Safari browser -->
+<script language="javascript">
+if (!!(window.safari)) {
+  document.write("<div style=\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\"><p><font color=\"red\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
+</script>
 
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Important.</b>
@@ -3718,6 +3731,12 @@ is built up of pipe symbols and dashes:
    align the headings.</li>
  <li> There must be a blank line before and after the table.</li>
  <li> Tables are <em>inlined</em> in the text, without numbers or labels for reference.</li>
+ <li> Some CSS files used by some HTML styles may overrule the alignment
+   characters <code>c</code>, <code>r</code>, and <code>l</code> and, e.g., center all text.</li>
+ <li> For output in LaTeX one can control certain aspects of the typesetting
+   of tables: the text size (<code>--latex_table_format=</code>), the color of every
+   two rows (<code>--latex_colored_table_rows=</code>), and the space between
+   rows (<code>--latex_table_row_sep=</code>).</li>
 </ul>
 
 Here is an example with centered headings (which is default anyway),
@@ -6002,31 +6021,43 @@ which gets rendered as
 
 <p>
 There may be an argument after the <code>!bc</code> tag to specify a certain
-environment (for <code>ptex2tex</code>, <code>doconce ptex2tex</code>, or Sphinx) for
+environment (in LaTeX, HTML, or Sphinx) for
 typesetting the verbatim code. For instance, <code>!bc dat</code> corresponds to
 the data file environment and <code>!bc cod</code> is typically used for a code
 snippet. There are some predefined environments explained below. If
 there is no argument specifying the environment, one assumes some
-plain verbatim typesetting (for <code>ptex2tex</code> this means the <code>ccq</code>
-environment, which is defined in the config file <code>.ptex2tex.cfg</code>,
-while for Sphinx it defaults to the <code>python</code> environment).
+plain verbatim typesetting (usually just the most plain verbatim
+style in LaTeX or HTML, or <code>python</code> in Sphinx,
+or if <code>ptex2tex</code> is used, the environment
+corresponds to <code>ccq</code> which is defined in the config file <code>.ptex2tex.cfg</code>).
 
 <p>
-By default, <code>pro</code> is used for complete programs in Python, <code>cod</code> is
-for a code snippet in Python, while <code>Xcod</code> and <code>Xpro</code> imply computer
-language specific typesetting where <code>X</code> can be <code>f</code> for Fortran, <code>c</code>
-for C, <code>cpp</code> for C++, <code>sh</code> for Unix shells, <code>pl</code> for Perl, <code>m</code> for
-Matlab, <code>cy</code> for Cython, <code>r</code> for Ruby, <code>js</code> for JavaScript,
-<code>latex</code> for LaTeX, <code>html</code> for HTML, and <code>py</code> for Python.  The
-argument <code>sys</code> means by default <code>console</code> for Sphinx and
-<code>CodeTerminal</code> (ptex2tex environent) for LaTeX. Other specifications
-are <code>dat</code> for a data file or print out, <code>pyshell</code> for plain interactive Python
-shell sessions, and <code>ipy</code> for interactive IPython sessions (the latter
-does not introduce any environment in <code>sphinx</code> output, as interactive
-sessions are automatically recognized and handled in that format).
-(All these definitions of the arguments after <code>!bc</code> can be redefined
-in the <code>.ptex2tex.cfg</code> configuration file for <code>ptex2tex</code> and in
-the <code>sphinx code-blocks</code> comments for Sphinx, see below.)
+By default, <code>pro</code> is used for complete programs, <code>cod</code> is for a code
+snippet. The syntax <code>Xcod</code> and <code>Xpro</code> imply a program or snippet in
+computer language <code>X</code>, wehre <code>X</code> can be <code>f</code> for Fortran, <code>c</code> for C,
+<code>cpp</code> for C++, <code>sh</code> for Unix shells, <code>pl</code> for Perl, <code>m</code> for Matlab,
+<code>cy</code> for Cython, <code>r</code> for Ruby, <code>js</code> for JavaScript, <code>latex</code> for LaTeX,
+<code>html</code> for HTML, and <code>py</code> for Python.  With no <code>X</code> prefix, <code>cod</code> and
+<code>pro</code> implies Python code. The argument <code>sys</code> after <code>!bc</code> means a
+verbatim environment suitable for operating system commands (and
+output).  As mentioned, <code>dat</code> is for a data file or print out,
+<code>pyshell</code> is for plain interactive Python shell sessions, <code>ipy</code>
+for interactive IPython sessions, and <code>pysc</code> turns on interactive
+Python code in executable HTML windows (using a SageMathCell server)
+while being equivalent to <code>pycod</code> in other formats.
+
+<p>
+Notebooks and other executable code snippets in HTML may need some
+initializing code before a snippet works, and if such code is
+not intended for being shown in the text, one can use the <code>Xhid</code>
+argument to <code>!bc</code>, where <code>hid</code> indicates a hidden snippet. It becomes
+executable in live code environments but is otherwise not shown.
+
+<p>
+All these definitions of the arguments after <code>!bc</code> can be redefined
+in command-line arguments for the <code>--latex_code_style=</code> option,
+the <code>.ptex2tex.cfg</code> configuration file for <code>ptex2tex</code>, and in
+the <code>sphinx code-blocks</code> comments for Sphinx, see below.
 
 <h3 id="___sec74">Executable and Non-Executable Code </h3>
 
@@ -6042,12 +6073,11 @@ for execution. All other formats than the notebook formats ignore the
 <h3 id="___sec75">Customizing Code Environments Types for Sphinx </h3>
 
 <p>
-The argument after <code>!bc</code> can in case of
-Sphinx output be mapped onto any valid Pygments language for typesetting of
-the verbatim block by Pygments, if you do not want to rely on
-the defaults. This mapping takes place in an
-optional comment to be inserted in the DocOnce source file. Here is an
-example on such a comment line:
+The argument after <code>!bc</code> can in case of Sphinx output be mapped onto
+any valid Pygments language for typesetting of the verbatim block by
+Pygments, if you do not want to rely on the defaults. This mapping
+takes place in an optional comment to be inserted in the DocOnce
+source file. Here is an example on such a comment line:
 
 <p>
 
@@ -10205,6 +10235,7 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_section_headings=std,blue,strongblue,gray,gray-wide</code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
  <li> <code>--latex_table_format=quote, center, footnotesize, tiny</code> (environment around tables)</li>
  <li> <code>--latex_colored_table_rows=blue, gray, no</code> (color of every two lines in tables)</li>
+ <li> <code>--latex_table_row_sep=1.5</code> (increase the separation between table (and matrix) rows by a factor 1.5)</li>
  <li> <code>--latex_todonotes</code> (inline comments typeset as &quot;bubbles&quot;)</li>
  <li> <code>--latex_double_spacing</code> (to ease hand-writing between the lines)</li>
  <li> <code>--latex_line_numbers</code> (to ease references to sentences)</li>
@@ -11694,6 +11725,15 @@ size of the document title. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron).
 
 
+--html_bootstrap_navbar_links=...
+
+Allows custom links in the navigation bar.
+Format: link|url;link|url;link|url
+Example:
+&quot;--html_bootstrap_navbar_links=Google|http://google.com;hpl|http://folk.uio.no/hpl&quot;
+
+
+
 --html_figure_hrule=...
 
 Set horizontal rule(s) above and/or below a figure.
@@ -11815,6 +11855,11 @@ Turn section numbering on/off. Default: off for all formats except latex and pdf
 --latex_table_format=...
 
 Default: quote. Other values: left, center, footnotesize, tiny.
+
+
+--latex_table_row_sep=...
+
+Row separation factor in tables (command \renewcommand{\arraystretch}{&lt;factor&gt;}. Default: 1.0
 
 
 --latex_title_layout=...
@@ -12247,7 +12292,13 @@ Any filename can be specified: --md2do_output=myfile.do.txt
 
 --github_md
 
-Turn on github-flavored-markdown dialect of the pandoc translator
+Turn on GitHub-flavored Markdown dialect of the pandoc translator
+
+
+--slate_md
+
+Turn on Slate-extensions to Markdown in the pandoc translator.
+To be used together with --github_md.
 
 
 --strapdown

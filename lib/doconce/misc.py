@@ -266,7 +266,7 @@ envir:package-background[style parameters]@)
     ('--latex_table_format=',
      'Default: quote. Other values: left, center, footnotesize, tiny.'),
     ('--latex_table_row_sep=',
-     'Row separation factor in tables (command \renewcommand{\arraystretch}{<factor>}. Default: 1.0'),
+     r'Row separation factor in tables (command \renewcommand{\arraystretch}{<factor>}. Default: 1.0'),
     ('--latex_title_layout=',
      """Layout of the title, authors, and date:
 std: traditional LaTeX layout,

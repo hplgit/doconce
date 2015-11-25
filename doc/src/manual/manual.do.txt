@@ -1052,6 +1052,12 @@ is built up of pipe symbols and dashes:
    align the headings.
  * There must be a blank line before and after the table.
  * Tables are *inlined* in the text, without numbers or labels for reference.
+ * Some CSS files used by some HTML styles may overrule the alignment
+   characters `c`, `r`, and `l` and, e.g., center all text.
+ * For output in LaTeX one can control certain aspects of the typesetting
+   of tables: the text size (`--latex_table_format=`), the color of every
+   two rows (`--latex_colored_table_rows=`), and the space between
+   rows (`--latex_table_row_sep=`).
 
 Here is an example with centered headings (which is default anyway),
 and the numbers are
@@ -2947,30 +2953,40 @@ which gets rendered as
 === Typesetting Styles ===
 
 There may be an argument after the `!bc` tag to specify a certain
-environment (for `ptex2tex`, `doconce ptex2tex`, or Sphinx) for
+environment (in LaTeX, HTML, or Sphinx) for
 typesetting the verbatim code. For instance, `!bc dat` corresponds to
 the data file environment and `!bc cod` is typically used for a code
 snippet. There are some predefined environments explained below. If
 there is no argument specifying the environment, one assumes some
-plain verbatim typesetting (for `ptex2tex` this means the `ccq`
-environment, which is defined in the config file `.ptex2tex.cfg`,
-while for Sphinx it defaults to the `python` environment).
+plain verbatim typesetting (usually just the most plain verbatim
+style in LaTeX or HTML, or `python` in Sphinx,
+or if `ptex2tex` is used, the environment
+corresponds to `ccq` which is defined in the config file `.ptex2tex.cfg`).
 
-By default, `pro` is used for complete programs in Python, `cod` is
-for a code snippet in Python, while `Xcod` and `Xpro` imply computer
-language specific typesetting where `X` can be `f` for Fortran, `c`
-for C, `cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for
-Matlab, `cy` for Cython, `r` for Ruby, `js` for JavaScript,
-`latex` for LaTeX, `html` for HTML, and `py` for Python.  The
-argument `sys` means by default `console` for Sphinx and
-`CodeTerminal` (ptex2tex environent) for LaTeX. Other specifications
-are `dat` for a data file or print out, `pyshell` for plain interactive Python
-shell sessions, and `ipy` for interactive IPython sessions (the latter
-does not introduce any environment in `sphinx` output, as interactive
-sessions are automatically recognized and handled in that format).
-(All these definitions of the arguments after `!bc` can be redefined
-in the `.ptex2tex.cfg` configuration file for `ptex2tex` and in
-the `sphinx code-blocks` comments for Sphinx, see below.)
+By default, `pro` is used for complete programs, `cod` is for a code
+snippet. The syntax `Xcod` and `Xpro` imply a program or snippet in
+computer language `X`, wehre `X` can be `f` for Fortran, `c` for C,
+`cpp` for C++, `sh` for Unix shells, `pl` for Perl, `m` for Matlab,
+`cy` for Cython, `r` for Ruby, `js` for JavaScript, `latex` for LaTeX,
+`html` for HTML, and `py` for Python.  With no `X` prefix, `cod` and
+`pro` implies Python code. The argument `sys` after `!bc` means a
+verbatim environment suitable for operating system commands (and
+output).  As mentioned, `dat` is for a data file or print out,
+`pyshell` is for plain interactive Python shell sessions, `ipy`
+for interactive IPython sessions, and `pysc` turns on interactive
+Python code in executable HTML windows (using a SageMathCell server)
+while being equivalent to `pycod` in other formats.
+
+Notebooks and other executable code snippets in HTML may need some
+initializing code before a snippet works, and if such code is
+not intended for being shown in the text, one can use the `Xhid`
+argument to `!bc`, where `hid` indicates a hidden snippet. It becomes
+executable in live code environments but is otherwise not shown.
+
+All these definitions of the arguments after `!bc` can be redefined
+in command-line arguments for the `--latex_code_style=` option,
+the `.ptex2tex.cfg` configuration file for `ptex2tex`, and in
+the `sphinx code-blocks` comments for Sphinx, see below.
 
 === Executable and Non-Executable Code ===
 
@@ -2984,12 +3000,11 @@ for execution. All other formats than the notebook formats ignore the
 
 === Customizing Code Environments Types for Sphinx ===
 
-The argument after `!bc` can in case of
-Sphinx output be mapped onto any valid Pygments language for typesetting of
-the verbatim block by Pygments, if you do not want to rely on
-the defaults. This mapping takes place in an
-optional comment to be inserted in the DocOnce source file. Here is an
-example on such a comment line:
+The argument after `!bc` can in case of Sphinx output be mapped onto
+any valid Pygments language for typesetting of the verbatim block by
+Pygments, if you do not want to rely on the defaults. This mapping
+takes place in an optional comment to be inserted in the DocOnce
+source file. Here is an example on such a comment line:
 
 !bc do
 # sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console

@@ -773,7 +773,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 6, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 24, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -842,7 +842,7 @@ reStructuredText, HTML).  Later, almost untagged markup languages
 became popular, especially <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a> and its sisters
 <a class="reference external" href="http://fletcherpenney.net/multimarkdown/">MultiMarkdown</a>,
 <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc-extended Markdown</a>, and
-<a class="reference external" href="https://leanpub.com/markua/">Markua</a>..  DocOnce looks much like
+<a class="reference external" href="https://leanpub.com/markua/">Markua</a>.  DocOnce looks much like
 Markdown and is in particular close to the functionality and nature of
 MultiMarkdown. The advantage of DocOnce, however, is a series of
 features for supporting both small and large documents (books in
@@ -1562,7 +1562,13 @@ may lead to movie sizes you do not want.</p>
     <source src="_static/mov/wave.ogg"  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
-<p><em>A movie in Ogg format.</em></p><p>realized by the command</p>
+<p><em>A movie in Ogg format.</em></p>
+
+<!-- Issue warning if in a Safari browser -->
+<script language="javascript">
+if (!!(window.safari)) {
+  document.write("<div style=\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\"><p><font color=\"red\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
+</script><p>realized by the command</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="nb">MOVIE: [mov/wave.igg, width=600] A movie in Ogg format.</span>
 </pre></div>
 </div>
@@ -1577,7 +1583,13 @@ may lead to movie sizes you do not want.</p>
     <source src='http://hplgit.github.io/animate/doc/pub/mov-animate/demo.ogg'  type='video/ogg;  codecs="theora, vorbis"'>
 </video>
 </div>
-<p><em>Ogg movie in cyberspace.</em></p><div class="admonition-important admonition">
+<p><em>Ogg movie in cyberspace.</em></p>
+
+<!-- Issue warning if in a Safari browser -->
+<script language="javascript">
+if (!!(window.safari)) {
+  document.write("<div style=\"width: 95%%; padding: 10px; border: 1px solid #100; border-radius: 4px;\"><p><font color=\"red\">The above movie will not play in Safari - use Chrome, Firefox, or Opera.</font></p></div>")}
+</script><div class="admonition-important admonition">
 <p class="first admonition-title">Important</p>
 <p class="last">Movies will not work properly in <code class="docutils literal"><span class="pre">sphinx</span></code> format unless they are located
 in a directory (tree) with a name starting with <code class="docutils literal"><span class="pre">mov</span></code>. Make it a habit
@@ -3229,6 +3241,14 @@ the Mako equivalent <code class="docutils literal"><span class="pre">%</span> <s
 * There must be a blank line before and after the table.
 
 * Tables are *inlined* in the text, without numbers or labels for reference.
+
+* Some CSS files used by some HTML styles may overrule the alignment
+  characters ``c``, ``r``, and ``l`` and, e.g., center all text.
+
+* For output in LaTeX one can control certain aspects of the typesetting
+  of tables: the text size (``--latex_table_format=``), the color of every
+  two rows (``--latex_colored_table_rows=``), and the space between
+  rows (``--latex_table_row_sep=``).
 </pre></div>
 </div>
 <p>Here is an example with centered headings (which is default anyway),
@@ -4821,29 +4841,37 @@ directly after a section/paragraph heading or a table.</p>
 <div class="section" id="typesetting-styles">
 <h4>Typesetting Styles<a class="headerlink" href="#typesetting-styles" title="Permalink to this headline">¶</a></h4>
 <p>There may be an argument after the <code class="docutils literal"><span class="pre">!bc</span></code> tag to specify a certain
-environment (for <code class="docutils literal"><span class="pre">ptex2tex</span></code>, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>, or Sphinx) for
+environment (in LaTeX, HTML, or Sphinx) for
 typesetting the verbatim code. For instance, <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">dat</span></code> corresponds to
 the data file environment and <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">cod</span></code> is typically used for a code
 snippet. There are some predefined environments explained below. If
 there is no argument specifying the environment, one assumes some
-plain verbatim typesetting (for <code class="docutils literal"><span class="pre">ptex2tex</span></code> this means the <code class="docutils literal"><span class="pre">ccq</span></code>
-environment, which is defined in the config file <code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code>,
-while for Sphinx it defaults to the <code class="docutils literal"><span class="pre">python</span></code> environment).</p>
-<p>By default, <code class="docutils literal"><span class="pre">pro</span></code> is used for complete programs in Python, <code class="docutils literal"><span class="pre">cod</span></code> is
-for a code snippet in Python, while <code class="docutils literal"><span class="pre">Xcod</span></code> and <code class="docutils literal"><span class="pre">Xpro</span></code> imply computer
-language specific typesetting where <code class="docutils literal"><span class="pre">X</span></code> can be <code class="docutils literal"><span class="pre">f</span></code> for Fortran, <code class="docutils literal"><span class="pre">c</span></code>
-for C, <code class="docutils literal"><span class="pre">cpp</span></code> for C++, <code class="docutils literal"><span class="pre">sh</span></code> for Unix shells, <code class="docutils literal"><span class="pre">pl</span></code> for Perl, <code class="docutils literal"><span class="pre">m</span></code> for
-Matlab, <code class="docutils literal"><span class="pre">cy</span></code> for Cython, <code class="docutils literal"><span class="pre">r</span></code> for Ruby, <code class="docutils literal"><span class="pre">js</span></code> for JavaScript,
-<code class="docutils literal"><span class="pre">latex</span></code> for LaTeX, <code class="docutils literal"><span class="pre">html</span></code> for HTML, and <code class="docutils literal"><span class="pre">py</span></code> for Python.  The
-argument <code class="docutils literal"><span class="pre">sys</span></code> means by default <code class="docutils literal"><span class="pre">console</span></code> for Sphinx and
-<code class="docutils literal"><span class="pre">CodeTerminal</span></code> (ptex2tex environent) for LaTeX. Other specifications
-are <code class="docutils literal"><span class="pre">dat</span></code> for a data file or print out, <code class="docutils literal"><span class="pre">pyshell</span></code> for plain interactive Python
-shell sessions, and <code class="docutils literal"><span class="pre">ipy</span></code> for interactive IPython sessions (the latter
-does not introduce any environment in <code class="docutils literal"><span class="pre">sphinx</span></code> output, as interactive
-sessions are automatically recognized and handled in that format).
-(All these definitions of the arguments after <code class="docutils literal"><span class="pre">!bc</span></code> can be redefined
-in the <code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code> configuration file for <code class="docutils literal"><span class="pre">ptex2tex</span></code> and in
-the <code class="docutils literal"><span class="pre">sphinx</span> <span class="pre">code-blocks</span></code> comments for Sphinx, see below.)</p>
+plain verbatim typesetting (usually just the most plain verbatim
+style in LaTeX or HTML, or <code class="docutils literal"><span class="pre">python</span></code> in Sphinx,
+or if <code class="docutils literal"><span class="pre">ptex2tex</span></code> is used, the environment
+corresponds to <code class="docutils literal"><span class="pre">ccq</span></code> which is defined in the config file <code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code>).</p>
+<p>By default, <code class="docutils literal"><span class="pre">pro</span></code> is used for complete programs, <code class="docutils literal"><span class="pre">cod</span></code> is for a code
+snippet. The syntax <code class="docutils literal"><span class="pre">Xcod</span></code> and <code class="docutils literal"><span class="pre">Xpro</span></code> imply a program or snippet in
+computer language <code class="docutils literal"><span class="pre">X</span></code>, wehre <code class="docutils literal"><span class="pre">X</span></code> can be <code class="docutils literal"><span class="pre">f</span></code> for Fortran, <code class="docutils literal"><span class="pre">c</span></code> for C,
+<code class="docutils literal"><span class="pre">cpp</span></code> for C++, <code class="docutils literal"><span class="pre">sh</span></code> for Unix shells, <code class="docutils literal"><span class="pre">pl</span></code> for Perl, <code class="docutils literal"><span class="pre">m</span></code> for Matlab,
+<code class="docutils literal"><span class="pre">cy</span></code> for Cython, <code class="docutils literal"><span class="pre">r</span></code> for Ruby, <code class="docutils literal"><span class="pre">js</span></code> for JavaScript, <code class="docutils literal"><span class="pre">latex</span></code> for LaTeX,
+<code class="docutils literal"><span class="pre">html</span></code> for HTML, and <code class="docutils literal"><span class="pre">py</span></code> for Python.  With no <code class="docutils literal"><span class="pre">X</span></code> prefix, <code class="docutils literal"><span class="pre">cod</span></code> and
+<code class="docutils literal"><span class="pre">pro</span></code> implies Python code. The argument <code class="docutils literal"><span class="pre">sys</span></code> after <code class="docutils literal"><span class="pre">!bc</span></code> means a
+verbatim environment suitable for operating system commands (and
+output).  As mentioned, <code class="docutils literal"><span class="pre">dat</span></code> is for a data file or print out,
+<code class="docutils literal"><span class="pre">pyshell</span></code> is for plain interactive Python shell sessions, <code class="docutils literal"><span class="pre">ipy</span></code>
+for interactive IPython sessions, and <code class="docutils literal"><span class="pre">pysc</span></code> turns on interactive
+Python code in executable HTML windows (using a SageMathCell server)
+while being equivalent to <code class="docutils literal"><span class="pre">pycod</span></code> in other formats.</p>
+<p>Notebooks and other executable code snippets in HTML may need some
+initializing code before a snippet works, and if such code is
+not intended for being shown in the text, one can use the <code class="docutils literal"><span class="pre">Xhid</span></code>
+argument to <code class="docutils literal"><span class="pre">!bc</span></code>, where <code class="docutils literal"><span class="pre">hid</span></code> indicates a hidden snippet. It becomes
+executable in live code environments but is otherwise not shown.</p>
+<p>All these definitions of the arguments after <code class="docutils literal"><span class="pre">!bc</span></code> can be redefined
+in command-line arguments for the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option,
+the <code class="docutils literal"><span class="pre">.ptex2tex.cfg</span></code> configuration file for <code class="docutils literal"><span class="pre">ptex2tex</span></code>, and in
+the <code class="docutils literal"><span class="pre">sphinx</span> <span class="pre">code-blocks</span></code> comments for Sphinx, see below.</p>
 </div>
 <div class="section" id="executable-and-non-executable-code">
 <h4>Executable and Non-Executable Code<a class="headerlink" href="#executable-and-non-executable-code" title="Permalink to this headline">¶</a></h4>
@@ -4857,12 +4885,11 @@ for execution. All other formats than the notebook formats ignore the
 </div>
 <div class="section" id="customizing-code-environments-types-for-sphinx">
 <h4>Customizing Code Environments Types for Sphinx<a class="headerlink" href="#customizing-code-environments-types-for-sphinx" title="Permalink to this headline">¶</a></h4>
-<p>The argument after <code class="docutils literal"><span class="pre">!bc</span></code> can in case of
-Sphinx output be mapped onto any valid Pygments language for typesetting of
-the verbatim block by Pygments, if you do not want to rely on
-the defaults. This mapping takes place in an
-optional comment to be inserted in the DocOnce source file. Here is an
-example on such a comment line:</p>
+<p>The argument after <code class="docutils literal"><span class="pre">!bc</span></code> can in case of Sphinx output be mapped onto
+any valid Pygments language for typesetting of the verbatim block by
+Pygments, if you do not want to rely on the defaults. This mapping
+takes place in an optional comment to be inserted in the DocOnce
+source file. Here is an example on such a comment line:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="c"># sphinx code-blocks: pycod=python cod=fortran cppcod=c++ sys=console</span>
 </pre></div>
 </div>
@@ -8283,6 +8310,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
 <li><code class="docutils literal"><span class="pre">--latex_table_format=quote,</span> <span class="pre">center,</span> <span class="pre">footnotesize,</span> <span class="pre">tiny</span></code> (environment around tables)</li>
 <li><code class="docutils literal"><span class="pre">--latex_colored_table_rows=blue,</span> <span class="pre">gray,</span> <span class="pre">no</span></code> (color of every two lines in tables)</li>
+<li><code class="docutils literal"><span class="pre">--latex_table_row_sep=1.5</span></code> (increase the separation between table (and matrix) rows by a factor 1.5)</li>
 <li><code class="docutils literal"><span class="pre">--latex_todonotes</span></code> (inline comments typeset as &#8220;bubbles&#8221;)</li>
 <li><code class="docutils literal"><span class="pre">--latex_double_spacing</span></code> (to ease hand-writing between the lines)</li>
 <li><code class="docutils literal"><span class="pre">--latex_line_numbers</span></code> (to ease references to sentences)</li>
@@ -9534,6 +9562,15 @@ size of the document title. Default: on. Other values: h2, off
 (h2 gives h2 heading instead of h1, off gives no jumbotron).
 
 
+--html_bootstrap_navbar_links=...
+
+Allows custom links in the navigation bar.
+Format: link|url;link|url;link|url
+Example:
+&quot;--html_bootstrap_navbar_links=Google|http://google.com;hpl|http://folk.uio.no/hpl&quot;
+
+
+
 --html_figure_hrule=...
 
 Set horizontal rule(s) above and/or below a figure.
@@ -9548,6 +9585,11 @@ top+bottom: rule at top and bottom
 Controls where to put copyright statements.
 everypage: in the footer of every page
 titlepages or titlepage: in the footer of the titlepage only.
+
+
+--cite_doconce
+
+Adds a citation to the DocOnce web page if copyright statements are present.
 
 
 --device=...
@@ -9650,6 +9692,11 @@ Turn section numbering on/off. Default: off for all formats except latex and pdf
 --latex_table_format=...
 
 Default: quote. Other values: left, center, footnotesize, tiny.
+
+
+--latex_table_row_sep=...
+
+Row separation factor in tables (command \renewcommand{\arraystretch}{&lt;factor&gt;}. Default: 1.0
 
 
 --latex_title_layout=...
@@ -10082,7 +10129,13 @@ Any filename can be specified: --md2do_output=myfile.do.txt
 
 --github_md
 
-Turn on github-flavored-markdown dialect of the pandoc translator
+Turn on GitHub-flavored Markdown dialect of the pandoc translator
+
+
+--slate_md
+
+Turn on Slate-extensions to Markdown in the pandoc translator.
+To be used together with --github_md.
 
 
 --strapdown
@@ -10716,7 +10769,7 @@ Springer,
     </p>
     <p>
         &copy; Copyright 2015, Hans Petter Langtangen.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.<br/>
+      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.<br/>
     </p>
   </div>
 </footer>
