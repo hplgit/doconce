@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Nov 16, 2015
+:Date: Nov 29, 2015
 
 
 .. admonition:: Disclaimer
@@ -960,6 +960,11 @@ Preprocess/Mako
 List important things to remember when programming Mako
 -------------------------------------------------------
 
+.. index:: Mako tips/problems
+
+ * Always remember a colon after Mako control statements like ``% if VAR:``
+   and ``% else:``.
+
  * Keep Python code more than a few lines *outside* of the DocOnce
    file, and use ``# #include`` to include the code. See
    the *Debugging Python code in Mako* section in the manual for
@@ -974,14 +979,39 @@ List important things to remember when programming Mako
  * Use double ``##`` (Mako comment) to comment out Mako calls
    to functions or Mako variables.
 
-The Mako preprocessor is seemingly not run
-------------------------------------------
+The Mako preprocessor is fooled by DocOnce text
+-----------------------------------------------
+
+Here are possible problems for Mako:
+
+ * Strings with ``'T<%.1f'`` look as openings of Mako blocks (``<%``); change
+   to ``'T < %.1f'`` to avoid this confusion.
+
+The Mako preprocessor has problems with lines starting with percent sign
+------------------------------------------------------------------------
+
+.. index:: percent sign problems
 
 If you have lines starting with ``%`` inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
 because it thinks these lines are Mako statements. DocOnce detects
-this problem and avoids running Mako.  Examine the output from
-DocOnce: warnings are issued if Mako is not run.
+this problem and emits an error message. The solution to
+this problem is to replace a single ``%`` at the *very* beginning of the line
+(column 1) inside code by a double ``%%``. Mako will replace it by a single ``%``.
+However, contrary to what is claimed in the Mako documentation,
+an indented double ``%%`` remains ``%%`` and is not converted to ``%`` (and
+using a single ``%`` gives a Mako error). The trick is to write ``${'%'}``
+as demonstrated here:
+
+.. code-block:: text
+
+        !bc mcod
+        %% Comment on the beginning of the line can be escaped by %%
+        if a > b
+          ${'%'} Indented comment needs this trick
+          c = a + b
+        end
+        !ec
 
 The Mako preprocessor gives syntax error in Python code
 -------------------------------------------------------
@@ -993,6 +1023,8 @@ section *Debugging Python code in Mako* in the DocOnce manual.
 
 The Mako preprocessor gives strange error messages
 --------------------------------------------------
+
+.. index:: debugging Mako
 
 If you to a little syntax error in Mako, the consequences can be
 quite unpredictable. Especially, if you forget curly braces around
@@ -1025,16 +1057,10 @@ work and where the error suddenly appears.
 
 
 
-The Mako preprocessor is fooled by DocOnce text
------------------------------------------------
-
-Here are possible problems for Mako:
-
- * Strings with ``'T<%.1f'`` look as openings of Mako blocks (``<%``); change
-   to ``'T < %.1f'`` to avoid this confusion.
-
 The Mako preprocessor claims a variable is undefined
 ----------------------------------------------------
+
+.. index:: undefined Mako variable
 
 Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
@@ -1486,21 +1512,21 @@ The LaTeX output is something like this:
 
 .. code-block:: latex
 
-        \begin{figure}[h] % my:fig
+        \begin{figure}[h] % my:fig1
           \centerline{\includegraphics[width=0.8\linewidth]{myfigfile.png}}
           \caption{
-          My figure. \label{my:fig}
+          My figure. \label{my:fig1}
           }
         \end{figure}
         %\clearpage % flush figures sec:fig
         
-        We refer to Figure~\ref{my:fig}\ifthenelse{
-        \equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig}}.
+        We refer to Figure~\ref{my:fig1}\ifthenelse{
+        \equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig1}}.
         
         ...
         % Much later
-        ..., as seen in Figure~\ref{my:fig}\ifthenelse{
-        \equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig}}.
+        ..., as seen in Figure~\ref{my:fig1}\ifthenelse{
+        \equal{\thepage}{\getpagerefnumber{my:fig}}}{}{ on page \pageref{my:fig1}}.
 
 Error when running latex: You must have 'pygmentize' installed
 --------------------------------------------------------------
@@ -1874,9 +1900,20 @@ MathJax formulas are not properly rendered
 Here are some common problems:
 
  * Two equations cannot have identical label (this error often arises
-   from copying and pasting equations)
+   from copying and pasting equations).
 
- * ``[`` and ``]`` brackets must sometimes be replaced by ``\lbrack`` and ``\rbrack``
+ * ``[`` and ``]`` brackets must sometimes be replaced by ``\lbrack`` and ``\rbrack``.
+
+ * Inline mathematics cannot have a space after the first dollar sign.
+
+ * Equation environments must be '\[ ...\]`, ``equation``, ``equation*``,
+   ``align``, or ``align*`` - avoid all other types of environments.
+
+ * Errors in formulas that LaTeX accepts lead to unrendered formulas in MathJax.
+
+If the corresponding PDF output has the correct formula, one must try to
+rewrite the LaTeX mathematics so MathJax accepts it. MathJax can only
+handle a subset of what is legal mathematics in LaTeX.
 
 How can I change the layout of the HTML page?
 ---------------------------------------------

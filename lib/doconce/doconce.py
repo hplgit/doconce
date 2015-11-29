@@ -681,13 +681,13 @@ def syntax_check(filestr, format):
     if format in ('latex', 'pdflatex'):
         filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
         # Filer out @@@CODE, verbatim, boldface, paragraph, and comments
+        filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
+                          flags=re.MULTILINE)
         filestr2 = re.sub(r'^@@@CODE .+', '', filestr2,
                           flags=re.MULTILINE)
-        filestr2 = re.sub(INLINE_TAGS['verbatim'], '', filestr2,
+        filestr2 = re.sub(INLINE_TAGS['verbatim'], ' ', filestr2,
                           flags=re.MULTILINE)
-        filestr2 = re.sub(INLINE_TAGS['bold'], '', filestr2,
-                          flags=re.MULTILINE)
-        filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
+        filestr2 = re.sub(INLINE_TAGS['bold'], ' ', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(r'^#.*\n', '', filestr2, flags=re.MULTILINE)
         underscore_words = [word.strip() for word in
@@ -4551,7 +4551,7 @@ preprocess package (sudo apt-get install preprocess).
                 print '\n\n*** warning: detected problem with the code block\n---------------------------'
                 print code_block
                 print '''---------------------------
-The above code block contains "%s" on the beginning of a line.
+The above code block contains "%s" on the *beginning of a line*.
 Such lines cause problems for the mako preprocessor
 since it thinks this is a mako statement.
 ''' % (m.group(0))
@@ -4560,12 +4560,13 @@ since it thinks this is a mako statement.
         if mako_problems:
             print '''\
 Use %% in the code block(s) above to fix the problem with % at the
-beginning of lines, or put the code in a file that is included
-with @@@CODE filename, or drop mako instructions or variables and
-rely on preprocess only in the preprocessing step.
+*very* beginning of lines (column 1), otherwise (in case of blanks
+first on the line) use the construction ${'%'}, or put the code in
+a file that is included with @@@CODE filename, or drop mako instructions
+or variables and rely on preprocess only in the preprocessing step.
 Including --no_mako on the command line avoids running mako.
-If you have % in code, see if it is possible to move the % char
-away from the beginning of the line.
+(If you have % in code, you can also see if it is possible to move
+the % char away from the beginning of the line.)
 '''
             print 'mako is not run because of lines starting with %,'
             print 'fix the lines as described or remove all mako statements.'

@@ -757,7 +757,9 @@ HTML format and therefore have the same capabilities.
 The LaTeX format supports different methods for embedding
 movies via the option `-latex_movie=...`. Proper values are listed below.
 
- o `href`: the `\href{run:file}{link}` is used for all movies (default).
+ o `href`: the `\href{run:file}{link}` is used for all movies (default),
+   typeset in a one-line `quote` environment with the movie caption
+   (if present) and a movie counter.
  o `media9`:
    the `media9` package is used for Flash and MP4 movies, `movie15`
    for MPEG and AVI files, and a simple `\href{run:file}{link}` command
@@ -774,6 +776,16 @@ that the `video` tag is not used, only the `embed` tag. Some wiki
 types do have support for videos, e.g., Wikipedia can work with
 Ogg files, but DocOnce has not yet implemented robust schemes for
 anything but LaTeX, HTML, and Sphinx output.
+
+!bwarning Local movie files must be stored with the PDF document!
+If the movie is a local file, not available on the Internet, the file
+must be available together with the PDF file, in a directory with the
+right path. This is seldom convenient (HTML and Sphinx documents
+are normally read directly on the Internet and can then easily make use
+of local movie and figure files since these are also on the Internet).
+The best solution for LaTeX/PDF is to use an Internet address for the movie,
+at least if you want the distribute the PDF and let it be self-contained.
+!ewarning
 
 === YouTube and Vimeo Movies ===
 
@@ -2018,6 +2030,8 @@ Note that cleaning (`doconce clean`)
 of the directory holding an external document will destroy the
 `.aux` file, and `latex` or `pdflatex` may then complain that
 a file listed as `\externaldocument{}` has no `.aux` file.
+This is just a warning - the result is question marks in the
+PDF document.
 !ewarning
 
 idx{`refch` (generalized chapter reference)}

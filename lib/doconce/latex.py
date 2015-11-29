@@ -1064,6 +1064,16 @@ def latex_figure(m):
 def latex_movie(m):
     filename = m.group('filename')
     caption = m.group('caption').strip()
+    # If filename is too long, we can make a shorter version
+    # (used in media environments, not in \href since \href appears
+    # inside a quote environment and a long URL works well over
+    # multiple lines)
+    nolinkurl_filename = filename
+    if len(filename) > 55:
+        if 'http' in filename:
+            nolinkurl_filename = '/'.join(filename.split('/')[:3]) + '/.../' + os.path.basename(filename)
+        else:
+            nolinkurl_filename = os.path.basename(filename)
 
     if 'youtu.be' in filename:
         filename = filename.replace('youtu.be', 'youtube.com')
@@ -1159,20 +1169,20 @@ modestbranding=1   %% no YouTube logo in control bar
 showcontrols,
 label=%(filename)s,
 width=0.9\linewidth,
-autostart]{\nolinkurl{%(filename)s}}{%(filename)s}
+autostart]{%(nolinkurl_filename)s}{%(filename)s}
 """ % vars()
         elif movie not in ('media9', 'movie15'):
             if filename.startswith('http'):
                 # Just plain link
                 text += r"""
 %% link to web movie
-\href{%(filename)s}{\nolinkurl{%(filename)s}}
+Movie \arabic{doconce:movie:counter}: %(caption)s \href{%(filename)s}{\nolinkurl{%(filename)s}}
 """ % vars()
             else:
                 # \href{run:localfile}{linktext}
                 text += r"""
 %% link to external viewer
-\href{run:%(filename)s}{\nolinkurl{%(filename)s}}
+Movie \arabic{doconce:movie:counter}: %(caption)s \href{run:%(filename)s}{\nolinkurl{%(filename)s}}
 """ % vars()
         elif movie == 'media9':
             if ext.lower() in ('.mp4', '.flv'):
@@ -1204,7 +1214,7 @@ source=%(filename)s
 &autoPlay=true
 },
 transparent
-]{\framebox[0.5\linewidth[c]{\nolinkurl{%(filename)s}}}{APlayer9.swf}
+]{\framebox[0.5\linewidth[c]{%(nolinkurl_filename)s}}{APlayer9.swf}
 """ % vars()
             elif ext.lower() in ('.mpg', '.mpeg', '.avi'):
                 # Use old movie15 package which will launch a separate player
@@ -1235,13 +1245,13 @@ repeat,
                     # Just plain link
                     text += r"""
 %% link to web movie
-\href{%(filename)s}{\nolinkurl{%(filename)s}}
+Movie \arabic{doconce:movie:counter}: %(caption)s \href{%(filename)s}{\nolinkurl{%(filename)s}}
 """ % vars()
                 else:
                 # \href{run:localfile}{linktext}
                     text += r"""
 %% link to external viewer
-\href{run:%(filename)s}{\nolinkurl{%(filename)s}}
+Movie \arabic{doconce:movie:counter}: %(caption)s \href{run:%(filename)s}{\nolinkurl{%(filename)s}}
 """ % vars()
 
         elif movie == 'movie15':
@@ -1268,7 +1278,11 @@ repeat,
 """ % vars()
 
     text += '\\end{center}\n'
-    if caption:
+    # Replace center by quote if we just have a reference via \href
+    if '\\href{' in text:
+        text = text.replace('{center}', '{quote}')
+    if caption and not 'movie caption' in text and not '\\href{' in text:
+        # Add caption under movie
         text += r"""
 \begin{center}  %% movie caption
 Movie \arabic{doconce:movie:counter}: %s

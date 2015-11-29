@@ -879,7 +879,8 @@ Causes of missing labels:
 
     # Inline math cannot have x<z<w as this is interpreted as tags
     # and becomes invisible
-    inline_math = re.findall(r'\\\( (.+?) \\\)', filestr, flags=re.DOTALL)
+    filestr2 = re.sub(r'<!--(.+?)-->', '', filestr)  # remove comments first
+    inline_math = re.findall(r'\\\( (.+?) \\\)', filestr2, flags=re.DOTALL)
     for m in inline_math:
         if '<' in m:
             m_new = m

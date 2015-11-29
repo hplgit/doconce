@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Troubleshooting and FAQ">
-<meta name="keywords" content="underscores,open links in new windows">
+<meta name="keywords" content="underscores,open links in new windows,Mako tips/problems,percent sign problems,debugging Mako,undefined Mako variable">
 
 <title>DocOnce Troubleshooting and FAQ</title>
 
@@ -184,19 +184,19 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec55'),
-              ('The Mako preprocessor is seemingly not run',
+              ('The Mako preprocessor is fooled by DocOnce text',
                2,
                None,
                '___sec56'),
-              ('The Mako preprocessor gives syntax error in Python code',
+              ('The Mako preprocessor has problems with lines starting with percent sign',
                2,
                None,
                '___sec57'),
-              ('The Mako preprocessor gives strange error messages',
+              ('The Mako preprocessor gives syntax error in Python code',
                2,
                None,
                '___sec58'),
-              ('The Mako preprocessor is fooled by DocOnce text',
+              ('The Mako preprocessor gives strange error messages',
                2,
                None,
                '___sec59'),
@@ -488,10 +488,10 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I get an overview of all files that are included in a document?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec54" style="font-size: 80%;"><b>Preprocess/Mako</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec55" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;List important things to remember when programming Mako</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor is seemingly not run</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor gives syntax error in Python code</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor gives strange error messages</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec59" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor is fooled by DocOnce text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec56" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor is fooled by DocOnce text</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec57" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor has problems with lines starting with percent sign</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec58" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor gives syntax error in Python code</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec59" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor gives strange error messages</a></li>
      <!-- navigation toc: --> <li><a href="#___sec60" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The Mako preprocessor claims a variable is undefined</a></li>
      <!-- navigation toc: --> <li><a href="#___sec61" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Something goes wrong in the preprocessing step</a></li>
      <!-- navigation toc: --> <li><a href="#___sec62" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Preprocessor directives do not work</a></li>
@@ -598,7 +598,7 @@ end of tocinfo -->
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Nov 16, 2015</h4></center> <!-- date -->
+<center><h4>Nov 29, 2015</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -654,10 +654,10 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="#___sec53"> How can I get an overview of all files that are included in a document? </a><br>
 <a href="#___sec54"> Preprocess/Mako </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec55"> List important things to remember when programming Mako </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec56"> The Mako preprocessor is seemingly not run </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec57"> The Mako preprocessor gives syntax error in Python code </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec58"> The Mako preprocessor gives strange error messages </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec59"> The Mako preprocessor is fooled by DocOnce text </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec56"> The Mako preprocessor is fooled by DocOnce text </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec57"> The Mako preprocessor has problems with lines starting with percent sign </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec58"> The Mako preprocessor gives syntax error in Python code </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec59"> The Mako preprocessor gives strange error messages </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec60"> The Mako preprocessor claims a variable is undefined </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec61"> Something goes wrong in the preprocessing step </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec62"> Preprocessor directives do not work </a><br>
@@ -1717,6 +1717,8 @@ can see how all files are included.
 <h2 id="___sec55">List important things to remember when programming Mako </h2>
 
 <ul>
+ <li> Always remember a colon after Mako control statements like <code>% if VAR:</code>
+   and <code>% else:</code>.</li>
  <li> Keep Python code more than a few lines <em>outside</em> of the DocOnce
    file, and use <code># #include</code> to include the code. See
    the <em>Debugging Python code in Mako</em> section in the manual for
@@ -1729,16 +1731,43 @@ can see how all files are included.
    to functions or Mako variables.</li>
 </ul>
 
-<h2 id="___sec56">The Mako preprocessor is seemingly not run </h2>
+<h2 id="___sec56">The Mako preprocessor is fooled by DocOnce text </h2>
+
+<p>
+Here are possible problems for Mako:
+
+<ul>
+ <li> Strings with <code>'T&lt;%.1f'</code> look as openings of Mako blocks (<code>&lt;%</code>); change
+   to <code>'T &lt; %.1f'</code> to avoid this confusion.</li>
+</ul>
+
+<h2 id="___sec57">The Mako preprocessor has problems with lines starting with percent sign </h2>
 
 <p>
 If you have lines starting with <code>%</code> inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
 because it thinks these lines are Mako statements. DocOnce detects
-this problem and avoids running Mako.  Examine the output from
-DocOnce: warnings are issued if Mako is not run.
+this problem and emits an error message. The solution to
+this problem is to replace a single <code>%</code> at the <em>very</em> beginning of the line
+(column 1) inside code by a double <code>%%</code>. Mako will replace it by a single <code>%</code>.
+However, contrary to what is claimed in the Mako documentation,
+an indented double <code>%%</code> remains <code>%%</code> and is not converted to <code>%</code> (and
+using a single <code>%</code> gives a Mako error). The trick is to write <code>${'%'}</code>
+as demonstrated here:
 
-<h2 id="___sec57">The Mako preprocessor gives syntax error in Python code </h2>
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bc mcod
+%% Comment on the beginning of the line can be escaped by %%
+if a &gt; b
+  ${&#39;%&#39;} Indented comment needs this trick
+  c = a + b
+end
+!ec
+</pre></div>
+
+<h2 id="___sec58">The Mako preprocessor gives syntax error in Python code </h2>
 
 <p>
 The information with respect to syntax errors in Python code is
@@ -1746,7 +1775,7 @@ sparse. It is recommended to move the Python code to separate files
 and test it with the ordinary Python interpreter. See the
 section <em>Debugging Python code in Mako</em> in the DocOnce manual.
 
-<h2 id="___sec58">The Mako preprocessor gives strange error messages </h2>
+<h2 id="___sec59">The Mako preprocessor gives strange error messages </h2>
 
 <p>
 If you to a little syntax error in Mako, the consequences can be
@@ -1779,16 +1808,6 @@ a <code>git diff</code> to see what you have recently changed and get an idea
 what can be wrong.
 </div>
 
-
-<h2 id="___sec59">The Mako preprocessor is fooled by DocOnce text </h2>
-
-<p>
-Here are possible problems for Mako:
-
-<ul>
- <li> Strings with <code>'T&lt;%.1f'</code> look as openings of Mako blocks (<code>&lt;%</code>); change
-   to <code>'T &lt; %.1f'</code> to avoid this confusion.</li>
-</ul>
 
 <h2 id="___sec60">The Mako preprocessor claims a variable is undefined </h2>
 
@@ -2294,21 +2313,21 @@ The LaTeX output is something like this:
 <p>
 
 <!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>figure<span style="color: #008000">}</span>[h] <span style="color: #408080; font-style: italic">% my:fig</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>figure<span style="color: #008000">}</span>[h] <span style="color: #408080; font-style: italic">% my:fig1</span>
   <span style="color: #008000; font-weight: bold">\centerline</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\includegraphics</span><span style="color: #7D9029">[width=0.8\linewidth]</span><span style="color: #008000">{</span>myfigfile.png<span style="color: #008000">}}</span>
   <span style="color: #008000; font-weight: bold">\caption</span><span style="color: #008000">{</span>
-  My figure. <span style="color: #008000; font-weight: bold">\label</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}</span>
+  My figure. <span style="color: #008000; font-weight: bold">\label</span><span style="color: #008000">{</span>my:fig1<span style="color: #008000">}</span>
   <span style="color: #008000">}</span>
 <span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>figure<span style="color: #008000">}</span>
 <span style="color: #408080; font-style: italic">%\clearpage % flush figures sec:fig</span>
 
-We refer to Figure~<span style="color: #008000; font-weight: bold">\ref</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\ifthenelse</span><span style="color: #008000">{</span>
-<span style="color: #008000; font-weight: bold">\equal</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\thepage</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\getpagerefnumber</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}}}{}{</span> on page <span style="color: #008000; font-weight: bold">\pageref</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}}</span>.
+We refer to Figure~<span style="color: #008000; font-weight: bold">\ref</span><span style="color: #008000">{</span>my:fig1<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\ifthenelse</span><span style="color: #008000">{</span>
+<span style="color: #008000; font-weight: bold">\equal</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\thepage</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\getpagerefnumber</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}}}{}{</span> on page <span style="color: #008000; font-weight: bold">\pageref</span><span style="color: #008000">{</span>my:fig1<span style="color: #008000">}}</span>.
 
 ...
 <span style="color: #408080; font-style: italic">% Much later</span>
-..., as seen in Figure~<span style="color: #008000; font-weight: bold">\ref</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\ifthenelse</span><span style="color: #008000">{</span>
-<span style="color: #008000; font-weight: bold">\equal</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\thepage</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\getpagerefnumber</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}}}{}{</span> on page <span style="color: #008000; font-weight: bold">\pageref</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}}</span>.
+..., as seen in Figure~<span style="color: #008000; font-weight: bold">\ref</span><span style="color: #008000">{</span>my:fig1<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\ifthenelse</span><span style="color: #008000">{</span>
+<span style="color: #008000; font-weight: bold">\equal</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\thepage</span><span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\getpagerefnumber</span><span style="color: #008000">{</span>my:fig<span style="color: #008000">}}}{}{</span> on page <span style="color: #008000; font-weight: bold">\pageref</span><span style="color: #008000">{</span>my:fig1<span style="color: #008000">}}</span>.
 </pre></div>
 
 <h2 id="___sec96">Error when running latex: You must have 'pygmentize' installed </h2>
@@ -2715,9 +2734,17 @@ Here are some common problems:
 
 <ul>
  <li> Two equations cannot have identical label (this error often arises
-   from copying and pasting equations)</li>
- <li> <code>[</code> and <code>]</code> brackets must sometimes be replaced by <code>\lbrack</code> and <code>\rbrack</code></li>
+   from copying and pasting equations).</li>
+ <li> <code>[</code> and <code>]</code> brackets must sometimes be replaced by <code>\lbrack</code> and <code>\rbrack</code>.</li>
+ <li> Inline mathematics cannot have a space after the first dollar sign.</li>
+ <li> Equation environments must be '\[ ...\]`, <code>equation</code>, <code>equation*</code>,
+   <code>align</code>, or <code>align*</code> - avoid all other types of environments.</li>
+ <li> Errors in formulas that LaTeX accepts lead to unrendered formulas in MathJax.</li>
 </ul>
+
+If the corresponding PDF output has the correct formula, one must try to
+rewrite the LaTeX mathematics so MathJax accepts it. MathJax can only
+handle a subset of what is legal mathematics in LaTeX.
 
 <h2 id="___sec122">How can I change the layout of the HTML page? </h2>
 

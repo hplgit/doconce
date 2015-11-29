@@ -316,6 +316,16 @@ But inline HTML code is also important, like text that starts with
 `<a href="` (which can destroy the following text if not properly
 quoted).
 
+Matlab with comments requires special typesetting:
+
+!bc mcod
+%% Comment on the beginning of the line can be escaped by %%
+if a > b
+  ${'%'} Indented comment needs this trick
+  c = a + b
+end
+!ec
+
 And here is a system call:
 
 !bc sys-t

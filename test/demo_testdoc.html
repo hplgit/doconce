@@ -276,7 +276,7 @@ MathJax.Hub.Config({
 <center>[7] <b>Fourth Inst</b></center>
 <br>
 <p>
-<center><h4>Nov 18, 2015</h4></center> <!-- date -->
+<center><h4>Nov 29, 2015</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -793,6 +793,22 @@ But inline HTML code is also important, like text that starts with
 quoted).
 
 <p>
+Matlab with comments requires special typesetting:
+
+<p>
+
+<!-- code=matlab (!bc mcod) typeset with pygments style "perldoc" -->
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">% Comment on the beginning of the line can be escaped by %%</span>
+<span style="color: #8B008B; font-weight: bold">if</span> a &gt; b
+  <span style="color: #228B22">% Indented comment needs this trick</span>
+  c = a + b
+<span style="color: #8B008B; font-weight: bold">end</span>
+</pre></div>
+</td></tr></table><p>
 And here is a system call:
 
 <p>
