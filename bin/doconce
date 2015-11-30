@@ -801,12 +801,14 @@ if '--runestone' not in sys.argv:
             text = text.replace('. Made with DocOnce', '')
             text = text.replace('      Created using <a href="http://sphinx-doc.org/">Sphinx', '      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx')
         # Remove (1), (2), ... numberings in identical headings
-        headings_wno = re.findall(r'(?<=(\d|"))>(.+?)          \((\d+)\)<', text)
+        headings_wno = re.findall(r'(?<=(\d|"))>([^>]+?)          \((\d+)\)<', text)
         for dummy, heading, no in headings_wno:
             heading = heading.strip()
-            text = re.sub(r'>%%s +\(%%d\)<' %% (heading, int(no)),
+            text = re.sub(r'>%%s +\(%%d\)<' %%
+                          (re.escape(heading), int(no)),
                           '>%%s<' %% heading, text)
-            text = re.sub(r'title="%%s +\(%%d\)"' %% (heading, int(no)),
+            text = re.sub(r'title="%%s +\(%%d\)"' %%
+                          (re.escape(heading), int(no)),
                           r'title="%%s"' %% heading, text)
 
         if os.path.isfile(filename + '.old~~'):
