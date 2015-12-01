@@ -1223,6 +1223,11 @@ Note that if one applies the `X` column alignment for wrapping long
 text in a column, the `ltablex` package is automatically added by DocOnce.
 # #endif
 
+===== Table inside user-defined environment does not work =====
+
+If the table appears at the end of the environment (e.g., a theorem or
+example environment), add a sentence between the table and
+the end-of-environment command.
 
 ===== Sphinx and HTML show pygmetized code, but not LaTeX =====
 
