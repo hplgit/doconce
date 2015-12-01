@@ -298,6 +298,13 @@ def fix(filestr, format, verbose=0):
 
     num_fixes = 0
 
+    # Known issue: idex{some _boldface at the end_!_boldface at the beginning}
+    pattern = r'idx\{(.+?)_!_(.+?)\}'
+    m = re.search(pattern, filestr)
+    if m:
+        filestr, n = re.subn(pattern, r'idx{\g<1>_! _\g<2>}', filestr)
+        # do not count this: num_fixes += n
+
     # Fix figure and movie captions that span several lines (the
     # replacement via re.sub works line by line so the caption *must*
     # be on one line, but this might be forgotten by many writers...)
@@ -681,6 +688,7 @@ def syntax_check(filestr, format):
     if format in ('latex', 'pdflatex'):
         filestr2 = re.sub(r'\$.+?\$', '', filestr, flags=re.DOTALL) # strip math
         # Filer out @@@CODE, verbatim, boldface, paragraph, idx, and comments
+        filestr2 = re.sub(r'idx\{(.+?)\}', '', filestr2, flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(r'^@@@CODE .+', '', filestr2,
@@ -689,7 +697,6 @@ def syntax_check(filestr, format):
                           flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['bold'], ' ', filestr2,
                           flags=re.MULTILINE)
-        filestr2 = re.sub(r'idx\{(.+?)\}', '', filestr2, flags=re.MULTILINE)
         filestr2 = re.sub(r'^#.*\n', '', filestr2, flags=re.MULTILINE)
         underscore_words = [word.strip() for word in
                             re.findall(r'\s[A-Za-z0-9_]*_[A-Za-z0-9_]*\s',

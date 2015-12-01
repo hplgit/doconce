@@ -1090,10 +1090,10 @@ QUIZ = {}
 
 # regular expressions for inline tags:
 #inline_tag_begin = r"""(?P<begin>(^|[(\s~>]|^__))"""
-# Need { and ! in begin because of idx{...!_bold face_ ...}
+# Need {} and ! in begin/end because of idx{...!_bold face_ ...}
 inline_tag_begin = r"""(?P<begin>(^|[(\s~>{!-]|^__))"""
 # ' is included as apostrophe in end tag
-inline_tag_end = r"""(?P<end>($|[.,?!;:)<}'\s~\[<-]))"""
+inline_tag_end = r"""(?P<end>($|[.,?!;:)<}!'\s~\[<-]))"""
 # alternatives using positive lookbehind and lookahead (not tested!):
 inline_tag_before = r"""(?<=(^|[(\s]))"""
 inline_tag_after = r"""(?=$|[.,?!;:)\s])"""

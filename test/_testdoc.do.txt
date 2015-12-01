@@ -628,6 +628,8 @@ idx{test `two` (separate) `verbatim expressions` which is also possible}
 idx{index with!subindex}
 idx{_boldface word_ in index}
 idx{index with _boldface word_}
+idx{index with!_boldface word_ in subentry}
+idx{double _boldface word_!_boldface word_ in subentry too}
 
 # index with comma could fool sphinx
 idx{index, with comma, and one more}
