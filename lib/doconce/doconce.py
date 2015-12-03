@@ -3134,9 +3134,13 @@ def interpret_authors(filestr, format):
 
     if copyright_:
         # Avoid multiple versions of the same institution in copyright_
-        keys = list(set(list(copyright_.keys())))
+        #keys = list(set(list(copyright_.keys()))) # does not preserve seq.
+        keys = []
+        for key in copyright_.keys():
+            if not key in keys:
+                keys.append(key)
         copy_copyright_ = copyright_.copy()
-        copyright_ = {}
+        copyright_ = OrderedDict()
         for key in keys:
             copyright_[key] = copy_copyright_[key]
 
@@ -3776,7 +3780,11 @@ def file2file(in_filename, format, basename):
         f = codecs.open(in_filename, 'r', encoding)
     else:
         f = open(in_filename, 'r')
-    filestr = f.read()
+    try:
+        filestr = f.read()
+    except UnicodeDecodeError as e:
+        print 'Cannot read file:', in_filename, str(e)
+        _abort()
     f.close()
 
     if in_filename.endswith('.py') or in_filename.endswith('.py.do.txt'):
