@@ -1655,7 +1655,7 @@ def html_table(table):
             s += '<tbody>\n'
     s += '</tbody>\n'
     if bootstrap:
-        s += '    </table>\n  </div>\n</div> <!-- col-xs-%d -->\n' % span
+        s += '    </table>\n  </div> <!-- col-xs-%d -->\n</div> <!-- cell row -->\n' % span
     else:
         s += '</table>\n'
     return s

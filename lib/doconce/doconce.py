@@ -2025,6 +2025,11 @@ def typeset_tables(filestr, format):
     from StringIO import StringIO
     result = StringIO()
 
+    # Fix: make sure there is a blank line after the table
+    # (blank line can be swallowed if a table is at the end of a
+    #  user-def envir.)
+    filestr = re.sub(r'--\|\n([^|\n ]+)', r'--|\n\n\g<1>', filestr)
+
     # table is a dict with keys rows, headings_align, columns_align
     table = {'rows': []}  # init new table
     inside_table = False

@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Nov 24, 2015
+:Date: Dec 3, 2015
 
 .. lines beginning with # are doconce comment lines
 
@@ -1121,7 +1121,9 @@ HTML format and therefore have the same capabilities.
 The LaTeX format supports different methods for embedding
 movies via the option ``-latex_movie=...``. Proper values are listed below.
 
-1. ``href``: the `\h:ref:`run:file`{link}` is used for all movies (default).
+1. ``href``: the `\h:ref:`run:file`{link}` is used for all movies (default),
+   typeset in a one-line ``quote`` environment with the movie caption
+   (if present) and a movie counter.
 
 2. ``media9``:
    the ``media9`` package is used for Flash and MP4 movies, ``movie15``
@@ -1141,6 +1143,20 @@ that the ``video`` tag is not used, only the ``embed`` tag. Some wiki
 types do have support for videos, e.g., Wikipedia can work with
 Ogg files, but DocOnce has not yet implemented robust schemes for
 anything but LaTeX, HTML, and Sphinx output.
+
+
+.. admonition:: Local movie files must be stored with the PDF document
+
+   If the movie is a local file, not available on the Internet, the file
+   must be available together with the PDF file, in a directory with the
+   right path. This is seldom convenient (HTML and Sphinx documents
+   are normally read directly on the Internet and can then easily make use
+   of local movie and figure files since these are also on the Internet).
+   The best solution for LaTeX/PDF is to use an Internet address for the movie,
+   at least if you want the distribute the PDF and let it be self-contained.
+
+
+
 
 YouTube and Vimeo Movies
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3893,6 +3909,8 @@ the ``Externaldocument`` comment after the title, author, and date.
    of the directory holding an external document will destroy the
    ``.aux`` file, and ``latex`` or ``pdflatex`` may then complain that
    a file listed as ``\externaldocument{}`` has no ``.aux`` file.
+   This is just a warning - the result is question marks in the
+   PDF document.
 
 
 
@@ -4342,9 +4360,34 @@ all must appear on the beginning of a separate line (just as
 
 The solution environment with ``!bsol`` and ``!esol`` allows inline
 solution as an alternative to the ``solution=...`` directive mentioned
-above, which requires that the solution is in a separate file. Comment
+above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired.
+
+
+.. admonition:: Avoid headings in solutions
+
+   Headings in solutions in exercises will
+   appear in table of contents, but
+   solutions are left out of the document (using the
+   ``--without_solutions`` option), the table of contents will be wrong.
+   Therefore, *never use headings in solutions*, just use paragraph
+   headings (double underscores) if you need headings at all.
+
+
+
+
+
+.. admonition:: Avoid numbered equations in solutions
+
+   Numbered equations in solutions will influence the global numbering of
+   equations in a document (unless exercises always come at the end of
+   chapters). If you compile versions of the document with and without
+   solutions, the equation numbering may differ between such version and may
+   cause confusion among readers.
+
+
+
 
 A full exercise set-up can be sketched as follows:
 
@@ -5096,7 +5139,7 @@ copied into a verbatim block, typset in a ``!bc Xpro`` environment, where
 becomes ``!bc fpro`` and will typically lead to some Fortran-style
 formatting).  The
 second line has a ``fromto:`` directive, which implies copying code
-between two lines in the code, typset within a !`bc Xcod`
+between two lines in the code, typset within a !``bc Xcod``
 environment (again, ``X`` is the filename extension, implying the
 type of file). Note that the ``pro`` and ``cod`` arguments are only used for LaTeX
 and Sphinx output, all other formats will have the code typeset within
@@ -6062,6 +6105,14 @@ We have
 
 .. math::
          1 + 1 = 2 
+
+or in tabular form:
+
+===========  =========  
+  Problem      Result   
+===========  =========  
+:math:`1+1`  :math:`2`  
+===========  =========  
 
 The definition of the example environment must be done in a Python
 module ``userdef_environments``, located in the same directory as the

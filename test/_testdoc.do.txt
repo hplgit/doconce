@@ -917,6 +917,14 @@ We have
 !bt
 \[ 1 + 1 = 2 \]
 !et
+or in tabular form:
+
+|-------------------|
+| Problem | Result  |
+|----c--------c-----|
+| $1+1$   |  $2$    |
+|-------------------|
+
 !eu-example
 
 !bu-highlight Highlight box!

@@ -773,7 +773,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 24, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 3, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -1622,7 +1622,9 @@ HTML format and therefore have the same capabilities.
 The LaTeX format supports different methods for embedding
 movies via the option <code class="docutils literal"><span class="pre">-latex_movie=...</span></code>. Proper values are listed below.</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">href</span></code>: the <cite>h:ref:`run:file`{link}</cite> is used for all movies (default).</li>
+<li><code class="docutils literal"><span class="pre">href</span></code>: the <cite>h:ref:`run:file`{link}</cite> is used for all movies (default),
+typeset in a one-line <code class="docutils literal"><span class="pre">quote</span></code> environment with the movie caption
+(if present) and a movie counter.</li>
 <li><code class="docutils literal"><span class="pre">media9</span></code>:
 the <code class="docutils literal"><span class="pre">media9</span></code> package is used for Flash and MP4 movies, <code class="docutils literal"><span class="pre">movie15</span></code>
 for MPEG and AVI files, and a simple <cite>h:ref:`run:file`{link}</cite> command
@@ -1639,6 +1641,16 @@ that the <code class="docutils literal"><span class="pre">video</span></code> ta
 types do have support for videos, e.g., Wikipedia can work with
 Ogg files, but DocOnce has not yet implemented robust schemes for
 anything but LaTeX, HTML, and Sphinx output.</p>
+<div class="admonition-local-movie-files-must-be-stored-with-the-pdf-document admonition">
+<p class="first admonition-title">Local movie files must be stored with the PDF document</p>
+<p class="last">If the movie is a local file, not available on the Internet, the file
+must be available together with the PDF file, in a directory with the
+right path. This is seldom convenient (HTML and Sphinx documents
+are normally read directly on the Internet and can then easily make use
+of local movie and figure files since these are also on the Internet).
+The best solution for LaTeX/PDF is to use an Internet address for the movie,
+at least if you want the distribute the PDF and let it be self-contained.</p>
+</div>
 </div>
 <div class="section" id="youtube-and-vimeo-movies">
 <h4>YouTube and Vimeo Movies<a class="headerlink" href="#youtube-and-vimeo-movies" title="Permalink to this headline">¶</a></h4>
@@ -4050,7 +4062,9 @@ such that their <code class="docutils literal"><span class="pre">.aux</span></co
 <p class="last">Note that cleaning (<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">clean</span></code>)
 of the directory holding an external document will destroy the
 <code class="docutils literal"><span class="pre">.aux</span></code> file, and <code class="docutils literal"><span class="pre">latex</span></code> or <code class="docutils literal"><span class="pre">pdflatex</span></code> may then complain that
-a file listed as <code class="docutils literal"><span class="pre">\externaldocument{}</span></code> has no <code class="docutils literal"><span class="pre">.aux</span></code> file.</p>
+a file listed as <code class="docutils literal"><span class="pre">\externaldocument{}</span></code> has no <code class="docutils literal"><span class="pre">.aux</span></code> file.
+This is just a warning - the result is question marks in the
+PDF document.</p>
 </div>
 </div>
 <div class="section" id="generalized-references-to-chapters">
@@ -4378,9 +4392,26 @@ all must appear on the beginning of a separate line (just as
 <code class="docutils literal"><span class="pre">!bc</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code>).</p>
 <p>The solution environment with <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> allows inline
 solution as an alternative to the <code class="docutils literal"><span class="pre">solution=...</span></code> directive mentioned
-above, which requires that the solution is in a separate file. Comment
+above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired.</p>
+<div class="admonition-avoid-headings-in-solutions admonition">
+<p class="first admonition-title">Avoid headings in solutions</p>
+<p class="last">Headings in solutions in exercises will
+appear in table of contents, but
+solutions are left out of the document (using the
+<code class="docutils literal"><span class="pre">--without_solutions</span></code> option), the table of contents will be wrong.
+Therefore, <em>never use headings in solutions</em>, just use paragraph
+headings (double underscores) if you need headings at all.</p>
+</div>
+<div class="admonition-avoid-numbered-equations-in-solutions admonition">
+<p class="first admonition-title">Avoid numbered equations in solutions</p>
+<p class="last">Numbered equations in solutions will influence the global numbering of
+equations in a document (unless exercises always come at the end of
+chapters). If you compile versions of the document with and without
+solutions, the equation numbering may differ between such version and may
+cause confusion among readers.</p>
+</div>
 <p>A full exercise set-up can be sketched as follows:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">===== Exercise: Determine the Distance to the Moon =====</span>
 <span class="nb">label{exer:moondist}</span>
@@ -4968,7 +4999,7 @@ copied into a verbatim block, typset in a <code class="docutils literal"><span c
 becomes <code class="docutils literal"><span class="pre">!bc</span> <span class="pre">fpro</span></code> and will typically lead to some Fortran-style
 formatting).  The
 second line has a <code class="docutils literal"><span class="pre">fromto:</span></code> directive, which implies copying code
-between two lines in the code, typset within a !`bc Xcod`
+between two lines in the code, typset within a !``bc Xcod``
 environment (again, <code class="docutils literal"><span class="pre">X</span></code> is the filename extension, implying the
 type of file). Note that the <code class="docutils literal"><span class="pre">pro</span></code> and <code class="docutils literal"><span class="pre">cod</span></code> arguments are only used for LaTeX
 and Sphinx output, all other formats will have the code typeset within
@@ -5734,6 +5765,23 @@ typeset like this:</p>
 <p>We have</p>
 <div class="math">
 \[1 + 1 = 2\]</div>
+<p>or in tabular form:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Problem</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(1+1\)</span></td>
+<td><span class="math">\(2\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>The definition of the example environment must be done in a Python
 module <code class="docutils literal"><span class="pre">userdef_environments</span></code>, located in the same directory as the
 DocOnce source code or the parent directory.

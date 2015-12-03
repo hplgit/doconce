@@ -717,7 +717,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Nov 24, 2015</h4></center> <!-- date -->
+<center><h4>Dec 3, 2015</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -2025,7 +2025,9 @@ The LaTeX format supports different methods for embedding
 movies via the option <code>-latex_movie=...</code>. Proper values are listed below.
 
 <ol>
-<li> <code>href</code>: the <code>\href{run:file}{link}</code> is used for all movies (default).</li>
+<li> <code>href</code>: the <code>\href{run:file}{link}</code> is used for all movies (default),
+   typeset in a one-line <code>quote</code> environment with the movie caption
+   (if present) and a movie counter.</li>
 <li> <code>media9</code>:
    the <code>media9</code> package is used for Flash and MP4 movies, <code>movie15</code>
    for MPEG and AVI files, and a simple <code>\href{run:file}{link}</code> command
@@ -2043,6 +2045,18 @@ that the <code>video</code> tag is not used, only the <code>embed</code> tag. So
 types do have support for videos, e.g., Wikipedia can work with
 Ogg files, but DocOnce has not yet implemented robust schemes for
 anything but LaTeX, HTML, and Sphinx output.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Local movie files must be stored with the PDF document!</b>
+If the movie is a local file, not available on the Internet, the file
+must be available together with the PDF file, in a directory with the
+right path. This is seldom convenient (HTML and Sphinx documents
+are normally read directly on the Internet and can then easily make use
+of local movie and figure files since these are also on the Internet).
+The best solution for LaTeX/PDF is to use an Internet address for the movie,
+at least if you want the distribute the PDF and let it be self-contained.
+</div>
+
 
 <h3 id="___sec24">YouTube and Vimeo Movies </h3>
 
@@ -4825,6 +4839,8 @@ Note that cleaning (<code>doconce clean</code>)
 of the directory holding an external document will destroy the
 <code>.aux</code> file, and <code>latex</code> or <code>pdflatex</code> may then complain that
 a file listed as <code>\externaldocument{}</code> has no <code>.aux</code> file.
+This is just a warning - the result is question marks in the
+PDF document.
 </div>
 
 
@@ -5302,9 +5318,30 @@ all must appear on the beginning of a separate line (just as
 <p>
 The solution environment with <code>!bsol</code> and <code>!esol</code> allows inline
 solution as an alternative to the <code>solution=...</code> directive mentioned
-above, which requires that the solution is in a separate file. Comment
+above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Avoid headings in solutions.</b>
+Headings in solutions in exercises will
+appear in table of contents, but
+solutions are left out of the document (using the
+<code>--without_solutions</code> option), the table of contents will be wrong.
+Therefore, <em>never use headings in solutions</em>, just use paragraph
+headings (double underscores) if you need headings at all.
+</div>
+
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>Avoid numbered equations in solutions.</b>
+Numbered equations in solutions will influence the global numbering of
+equations in a document (unless exercises always come at the end of
+chapters). If you compile versions of the document with and without
+solutions, the equation numbering may differ between such version and may
+cause confusion among readers.
+</div>
+
 
 <p>
 A full exercise set-up can be sketched as follows:
@@ -6193,7 +6230,7 @@ copied into a verbatim block, typset in a <code>!bc Xpro</code> environment, whe
 becomes <code>!bc fpro</code> and will typically lead to some Fortran-style
 formatting).  The
 second line has a <code>fromto:</code> directive, which implies copying code
-between two lines in the code, typset within a !`bc Xcod`
+between two lines in the code, typset within a !<code>bc Xcod</code>
 environment (again, <code>X</code> is the filename extension, implying the
 type of file). Note that the <code>pro</code> and <code>cod</code> arguments are only used for LaTeX
 and Sphinx output, all other formats will have the code typeset within
@@ -7118,6 +7155,22 @@ We have
 
 $$ 1 + 1 = 2 $$
 
+or in tabular form:
+
+<p>
+
+<div class="row">
+  <div class="col-xs-1">
+    <table class="table table-striped table-hover table-condensed">
+<thead>
+<tr><td align="center"><b> Problem </b></td> <td align="center"><b> Result</b></td> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   \( 1+1 \)    </td> <td align="center">   \( 2 \)    </td> </tr>
+</tbody>
+    </table>
+  </div>
+</div> <!-- col-xs-1 -->
 <p>
 The definition of the example environment must be done in a Python
 module <code>userdef_environments</code>, located in the same directory as the

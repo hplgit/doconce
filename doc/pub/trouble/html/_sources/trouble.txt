@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Nov 29, 2015
+:Date: Dec 3, 2015
 
 
 .. admonition:: Disclaimer
@@ -562,19 +562,19 @@ or with
 
         Terminal> doconce guess_encoding myfile.do.txt
 
-If the encoding is UTF-8, convert to latin1 using either of
-the Unix commands
+If the encoding is different from ASCII or UTF-8, say latin1, convert to UTF-8
+using either of the Unix commands
 
 .. code-block:: text
 
-        Terminal> doconce change_encoding utf-8 latin1 myfile.do.txt
-        Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
+        Terminal> doconce change_encoding latin1 utf-8 myfile.do.txt
+        Terminal> iconv -t utf-8 -f latin1 myfile.do.txt --output newfile
 
 Wrong Norwegian characters
 --------------------------
 
 When DocOnce documents have characters not in the standard ASCII set,
-the format of the file must be LATIN1 and not UTF-8. See
+the format of the file must be UTF-8. See
 the section "Strange non-English characters" above for how to
 run ``doconce change_encoding`` to change the encoding of the DocOnce file.
 
@@ -1361,6 +1361,13 @@ Tables get too wide - need to wrap text in the columns
 One can use the ``tabularx`` package. This is automatically enabled by
 specifying the alignment of the actual column as ``X`` (means ``l`` for
 all other output formats), for instance ``|---c----X----|``.
+
+Table inside user-defined environment does not work
+---------------------------------------------------
+
+If the table appears at the end of the environment (e.g., a theorem or
+example environment), add a sentence between the table and
+the end-of-environment command.
 
 Sphinx and HTML show pygmetized code, but not LaTeX
 ---------------------------------------------------

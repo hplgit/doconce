@@ -498,11 +498,11 @@ or with
 !bc
 Terminal> doconce guess_encoding myfile.do.txt
 !ec
-If the encoding is UTF-8, convert to latin1 using either of
-the Unix commands
+If the encoding is different from ASCII or UTF-8, say latin1, convert to UTF-8
+using either of the Unix commands
 !bc
-Terminal> doconce change_encoding utf-8 latin1 myfile.do.txt
-Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
+Terminal> doconce change_encoding latin1 utf-8 myfile.do.txt
+Terminal> iconv -t utf-8 -f latin1 myfile.do.txt --output newfile
 !ec
 
 

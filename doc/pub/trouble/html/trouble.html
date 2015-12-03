@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Nov 29, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 3, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -530,17 +530,17 @@ or with</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce guess_encoding myfile.do.txt
 </pre></div>
 </div>
-<p>If the encoding is UTF-8, convert to latin1 using either of
-the Unix commands</p>
-<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce change_encoding utf-8 latin1 myfile.do.txt
-Terminal&gt; iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
+<p>If the encoding is different from ASCII or UTF-8, say latin1, convert to UTF-8
+using either of the Unix commands</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce change_encoding latin1 utf-8 myfile.do.txt
+Terminal&gt; iconv -t utf-8 -f latin1 myfile.do.txt --output newfile
 </pre></div>
 </div>
 </div>
 <div class="section" id="wrong-norwegian-characters">
 <h3>Wrong Norwegian characters<a class="headerlink" href="#wrong-norwegian-characters" title="Permalink to this headline">¶</a></h3>
 <p>When DocOnce documents have characters not in the standard ASCII set,
-the format of the file must be LATIN1 and not UTF-8. See
+the format of the file must be UTF-8. See
 the section &#8220;Strange non-English characters&#8221; above for how to
 run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">change_encoding</span></code> to change the encoding of the DocOnce file.</p>
 </div>
@@ -1187,6 +1187,12 @@ and then use the double backslash.</p>
 <p>One can use the <code class="docutils literal"><span class="pre">tabularx</span></code> package. This is automatically enabled by
 specifying the alignment of the actual column as <code class="docutils literal"><span class="pre">X</span></code> (means <code class="docutils literal"><span class="pre">l</span></code> for
 all other output formats), for instance <code class="docutils literal"><span class="pre">|---c----X----|</span></code>.</p>
+</div>
+<div class="section" id="table-inside-user-defined-environment-does-not-work">
+<h3>Table inside user-defined environment does not work<a class="headerlink" href="#table-inside-user-defined-environment-does-not-work" title="Permalink to this headline">¶</a></h3>
+<p>If the table appears at the end of the environment (e.g., a theorem or
+example environment), add a sentence between the table and
+the end-of-environment command.</p>
 </div>
 <div class="section" id="sphinx-and-html-show-pygmetized-code-but-not-latex">
 <h3>Sphinx and HTML show pygmetized code, but not LaTeX<a class="headerlink" href="#sphinx-and-html-show-pygmetized-code-but-not-latex" title="Permalink to this headline">¶</a></h3>
@@ -1881,6 +1887,7 @@ clickable.</p>
 <li><a class="reference internal" href="#no-code-environment-appears-before-bc-ipy-blocks">No code environment appears before &#8220;bc ipy&#8221; blocks</a></li>
 <li><a class="reference internal" href="#lines-are-too-long">=====  Lines are too long</a></li>
 <li><a class="reference internal" href="#tables-get-too-wide-need-to-wrap-text-in-the-columns">Tables get too wide - need to wrap text in the columns</a></li>
+<li><a class="reference internal" href="#table-inside-user-defined-environment-does-not-work">Table inside user-defined environment does not work</a></li>
 <li><a class="reference internal" href="#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
