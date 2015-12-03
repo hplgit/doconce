@@ -2427,9 +2427,26 @@ all must appear on the beginning of a separate line (just as
 
 The solution environment with `!bsol` and `!esol` allows inline
 solution as an alternative to the `solution=...` directive mentioned
-above, which requires that the solution is in a separate file. Comment
+above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired.
+
+!bwarning Avoid headings in solutions
+Headings in solutions in exercises will
+appear in table of contents, but
+solutions are left out of the document (using the
+`--without_solutions` option), the table of contents will be wrong.
+Therefore, *never use headings in solutions*, just use paragraph
+headings (double underscores) if you need headings at all.
+!ewarning
+
+!bwarning Avoid numbered equations in solutions
+Numbered equations in solutions will influence the global numbering of
+equations in a document (unless exercises always come at the end of
+chapters). If you compile versions of the document with and without
+solutions, the equation numbering may differ between such version and may
+cause confusion among readers.
+!ewarning
 
 A full exercise set-up can be sketched as follows:
 

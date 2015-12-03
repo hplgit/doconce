@@ -1556,6 +1556,24 @@ def exercises(filestr, format, code_blocks, tex_blocks):
             solutions.append(formatted_solution)
             all_exer.append(exer)
 
+            # Check if we have headings in solution (links to these
+            # will appear in TOC) - recommend no headings
+            solutions_wheadings = []
+            if re.search(r'^===', exer['solution'], flags=re.MULTILINE):
+                solutions_wheadings.append(exer['solution'])
+            for s in exer['subex']:
+                if re.search(r'^===', s['solution'], flags=re.MULTILINE):
+                    solutions_wheadings.append(s['solution'])
+            if solutions_wheadings:
+                print '*** warning: heading in solution to exercise is not recommended!'
+                print '    (will cause problems in table of contents if solutions'
+                print '    are left out of the document). Just use paragraph headings!\n'
+                print exer['title']
+                print '\n\n'.join(solutions_wheadings)
+                if format == 'html':
+                    if not option('allow_refs_to_external_docs'):
+                        _abort()  # will cause abort for split_html anyway
+
             # Check if Exercise could be Problem: no refs to labels
             # outside the Exercise
             if 1:

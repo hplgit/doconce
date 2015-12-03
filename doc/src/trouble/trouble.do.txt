@@ -509,7 +509,7 @@ Terminal> iconv -f utf-8 -t latin1 myfile.do.txt --output newfile
 ===== Wrong Norwegian characters =====
 
 When DocOnce documents have characters not in the standard ASCII set,
-the format of the file must be LATIN1 and not UTF-8. See
+the format of the file must be UTF-8. See
 the section "Strange non-English characters" above for how to
 run `doconce change_encoding` to change the encoding of the DocOnce file.
 
