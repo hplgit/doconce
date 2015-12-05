@@ -510,9 +510,10 @@ def share(code_type,
                    'twitter', 'print'],
           method='simplesharebuttons.com'):
     namespace =  {'url': url}
+    s = ''
     if method == 'simplesharebuttons.com':
         if code_type == 'css':
-            return """
+            s += """
 <style type="text/css">
 
 #share-buttons img {
@@ -526,8 +527,9 @@ display: inline;
 </style>
 """
         elif code_type == 'buttons':
-            s = """
-<!-- I got these buttons from simplesharebuttons.com -->
+            s += """
+<!-- Got these buttons from simplesharebuttons.com -->
+<center>
 <div id="share-buttons">
 """
             if 'email' in buttons:
@@ -577,7 +579,7 @@ display: inline;
 
 </div>
 """ % namespace
-
+        s += '</center>\n'
     return s
 
 def toc2html(font_size=80, bootstrap=True,

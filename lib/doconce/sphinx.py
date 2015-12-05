@@ -488,6 +488,7 @@ found in line:
                      filestr, flags=re.MULTILINE)
     filestr = re.sub(r'(^\.\. .+)\n([^ \n]+)', r'\g<1>\n\n\g<2>',
                      filestr, flags=re.MULTILINE)
+
     # Line breaks interfer with tables and needs a final blank line too
     lines = filestr.splitlines()
     inside_block = False
@@ -590,11 +591,20 @@ def sphinx_ref_and_label(section_label2title, format, filestr):
 
 def sphinx_index_bib(filestr, index, citations, pubfile, pubdata):
     filestr = rst_bib(filestr, citations, pubfile, pubdata)
+    from common import INLINE_TAGS
 
     for word in index:
-        # Drop verbatim and math in index
+        # Drop verbatim, emphasize, bold, and math in index
         word2 = word.replace('`', '')
         word2 = word2.replace('$', '').replace('\\', '')
+        word2 = re.sub(INLINE_TAGS['bold'],
+                       r'\g<begin>\g<subst>\g<end>', word2,
+                       flags=re.MULTILINE)
+        word2 = re.sub(INLINE_TAGS['emphasize'],
+                       r'\g<begin>\g<subst>\g<end>', word2,
+                       flags=re.MULTILINE)
+
+        # Typeset idx{word} as ..index::
         if '!' not in word and ',' not in word:
             # .. index:: keyword
             filestr = filestr.replace(

@@ -49,6 +49,9 @@ def doconce_format_articles(paper):
     if "year" in paper:
         values.append(paper["year"])
 
+    if "note" in paper:
+        values.append(paper["note"])
+
     # How published/URL
     values = _doconce_url(paper, values)
 
@@ -74,6 +77,7 @@ def doconce_format_books(paper):
         values.append(paper["publisher"])
     values.append(paper["year"])
     if "doi" in paper: values.append(_doconce_format_doi(paper["doi"]))
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -86,6 +90,7 @@ def doconce_format_edited(paper):
     if "publisher" in paper:
         values.append(paper["publisher"])
     values.append(paper["year"])
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -104,6 +109,7 @@ def doconce_format_chapters(paper):
     if "pages" in paper:
         values.append("pp. %s" % _doconce_format_pages(paper["pages"]))
     values.append(paper["year"])
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
     return _doconce_join(values)
 
@@ -116,8 +122,9 @@ def doconce_format_proceedings(paper):
     values.append(_doconce_format_booktitle(paper))
     if "editor" in paper: values.append(_doconce_format_editors(paper))
     if "publisher" in paper: values.append(paper["publisher"])
-    values.append(paper["year"])
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
+    values.append(paper["year"])
     return _doconce_join(values)
 
 def doconce_format_reports(paper):
@@ -129,6 +136,8 @@ def doconce_format_reports(paper):
     if "institution" in paper: values.append(_doconce_format_institution(paper))
     if "number" in paper: values.append(paper["number"])
     values = _doconce_url(paper, values)
+    if "note" in paper: values.append(paper["note"])
+    values = _doconce_url(paper, values)
     values.append(paper["year"])
     return _doconce_join(values)
 
@@ -138,6 +147,8 @@ def doconce_format_manuals(paper):
     values.append(_doconce_get_key_string(paper))
     values.append(_doconce_get_authors_string(paper["author"]))
     values.append(_doconce_format_title(paper))
+    values = _doconce_url(paper, values)
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
     if "year" in paper: values.append(paper["year"])
     return _doconce_join(values)
@@ -151,6 +162,8 @@ def doconce_format_theses(paper):
     values.append(thesistype_strings[paper["thesistype"]])
     if "school" in paper: values.append(paper["school"])
     values = _doconce_url(paper, values)
+    if "note" in paper: values.append(paper["note"])
+    values = _doconce_url(paper, values)
     values.append(paper["year"])
     return _doconce_join(values)
 
@@ -161,6 +174,8 @@ def doconce_format_courses(paper):
     values.append(_doconce_get_authors_string(paper["author"]))
     values.append(_doconce_format_title(paper))
     if "institution" in paper: values.append(_doconce_format_institution(paper))
+    values = _doconce_url(paper, values)
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
     if "year" in paper: values.append(paper["year"])
     return _doconce_join(values)
@@ -173,6 +188,8 @@ def doconce_format_talks(paper):
     values.append(_doconce_format_title(paper))
     if "meeting" in paper: values.append(paper["meeting"])
     values = _doconce_url(paper, values)
+    if "note" in paper: values.append(paper["note"])
+    values = _doconce_url(paper, values)
     values.append(paper["year"])
     return _doconce_join(values)
 
@@ -183,8 +200,9 @@ def doconce_format_posters(paper):
     values.append(_doconce_get_authors_string(paper["author"]))
     values.append(_doconce_format_title(paper))
     if "meeting" in paper: values.append(paper["meeting"])
-    values.append(paper["year"])
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
+    values.append(paper["year"])
     return _doconce_join(values)
 
 
@@ -202,6 +220,7 @@ def doconce_format_misc(paper):
     if "chapter" in paper: values.append("Chapter %s" % paper["chapter"])
     if "volume" in paper: values.append("vol. %s" % paper["volume"])
     if "pages" in paper: values.append("pp. %s" % _doconce_format_pages(paper["pages"]))
+    if "note" in paper: values.append(paper["note"])
     values = _doconce_url(paper, values)
     if "year" in paper: values.append(paper["year"])
     return _doconce_join(values)
