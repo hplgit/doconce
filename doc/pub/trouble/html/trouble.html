@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 3, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 9, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -1246,6 +1246,63 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 <p>in (admon) headings. Otherwise inline verbatim should work, both in
 section headings and admon headings.</p>
 </div>
+<div class="section" id="how-can-i-customize-the-look-of-admonitions">
+<h3>How can I customize the look of admonitions?<a class="headerlink" href="#how-can-i-customize-the-look-of-admonitions" title="Permalink to this headline">¶</a></h3>
+<p>The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
+customization. Say we want the notice environment to have a very small
+font, no background color, no line below the title, no visible frame,
+and a smaller width. All this is a matter of editing the
+variables in the <code class="docutils literal"><span class="pre">newmdenv</span></code> command that defines the
+<code class="docutils literal"><span class="pre">notice_mdfboxmdframed</span></code> environment in the <code class="docutils literal"><span class="pre">.tex</span></code> file. The
+script below carries out the edits:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">name</span><span class="o">=</span>tmp1
+<span class="c"># Edits for mdframed environments</span>
+doconce format pdflatex <span class="nv">$name</span> --latex_code_style<span class="o">=</span>vrb
+doconce subst <span class="s1">&#39;  backgroundcolor=.+&#39;</span> <span class="se">\</span>
+        <span class="s1">&#39;  backgroundcolor=white,&#39;</span> <span class="nv">$name</span>.tex
+doconce subst <span class="s1">&#39;  frametitlebackgroundcolor=.+&#39;</span> <span class="se">\</span>
+        <span class="s1">&#39;  frametitlebackgroundcolor=white,&#39;</span> <span class="nv">$name</span>.tex
+doconce subst <span class="s1">&#39;  leftmargin=.+&#39;</span> <span class="s1">&#39;  leftmargin=3cm,&#39;</span> <span class="nv">$name</span>.tex
+doconce subst <span class="s1">&#39;  rightmargin=.+&#39;</span> <span class="se">\</span>
+        <span class="s1">&#39;  rightmargin=3cm,\n  font=\\tiny,&#39;</span> <span class="nv">$name</span>.tex
+doconce subst <span class="s1">&#39;  frametitlerule=.+&#39;</span> <span class="se">\</span>
+        <span class="s1">&#39;  frametitlerule=false,&#39;</span> <span class="nv">$name</span>.tex
+doconce subst <span class="s1">&#39;  linewidth=.+&#39;</span> <span class="s1">&#39;  linewidth=0pt,&#39;</span> <span class="nv">$name</span>.tex
+<span class="c"># Edits for fontsize in Verbatim</span>
+doconce replace <span class="s1">&#39;,fontsize=\fontsize{9pt}{9pt}&#39;</span> <span class="se">\</span>
+        <span class="s1">&#39;,fontsize=\fontsize{6pt}{6pt}&#39;</span> <span class="nv">$name</span>.tex
+</pre></div>
+</div>
+<p>Note that these edits actually apply to all types of admonitions.</p>
+<p>Here is a possible test file:</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= Heading =======</span>
+
+Bla-bla.
+
+<span class="k">!bnotice</span> Long box
+% for i in range(10):
+bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
+% endfor
+
+<span class="k">!bt</span>
+<span class="nb">\begin{align}</span>
+x &amp;= linspace(0, 1, 101)\\
+y &amp;= sin(x)
+<span class="nb">\end{align}</span>
+<span class="k">!et</span>
+
+<span class="k">!bc</span> pycod
+def myfuncf(x):
+    return sin(x)
+<span class="k">!ec</span>
+
+% for i in range(100):
+bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
+% endfor
+<span class="k">!enotice</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="how-can-i-have-unnumbered-sections">
 <h3>How can I have unnumbered sections?<a class="headerlink" href="#how-can-i-have-unnumbered-sections" title="Permalink to this headline">¶</a></h3>
 <p>Use the <code class="docutils literal"><span class="pre">--section_numbering=off</span></code> option:</p>
@@ -1892,6 +1949,7 @@ clickable.</p>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
 <li><a class="reference internal" href="#inline-verbatim-fails-in-admon-headings">Inline verbatim fails in admon headings</a></li>
+<li><a class="reference internal" href="#how-can-i-customize-the-look-of-admonitions">How can I customize the look of admonitions?</a></li>
 <li><a class="reference internal" href="#how-can-i-have-unnumbered-sections">How can I have unnumbered sections?</a></li>
 <li><a class="reference internal" href="#latex-suddenly-places-figures-differently">LaTeX suddenly places figures differently</a></li>
 <li><a class="reference internal" href="#i-want-figure-references-with-page-number-too">I want figure references with page number too</a><ul>

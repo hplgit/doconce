@@ -1,6 +1,10 @@
 import re
 
 def get_label(titleline):
+    """
+    Extract label from title line in begin environment.
+    Return label and title (without label).
+    """
     label = ''
     if 'label=' in titleline:
         pattern = r'label=([^\s]+)'

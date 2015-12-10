@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Dec 3, 2015
+:Date: Dec 9, 2015
 
 
 .. admonition:: Disclaimer
@@ -1433,6 +1433,68 @@ A known problem is to have the word
 
 in (admon) headings. Otherwise inline verbatim should work, both in
 section headings and admon headings.
+
+How can I customize the look of admonitions?
+--------------------------------------------
+
+The default environment, ``--latex_admon=mdfbox``, has many options for
+customization. Say we want the notice environment to have a very small
+font, no background color, no line below the title, no visible frame,
+and a smaller width. All this is a matter of editing the
+variables in the ``newmdenv`` command that defines the
+``notice_mdfboxmdframed`` environment in the ``.tex`` file. The
+script below carries out the edits:
+
+.. code-block:: bash
+
+        name=tmp1
+        # Edits for mdframed environments
+        doconce format pdflatex $name --latex_code_style=vrb
+        doconce subst '  backgroundcolor=.+' \
+                '  backgroundcolor=white,' $name.tex
+        doconce subst '  frametitlebackgroundcolor=.+' \
+                '  frametitlebackgroundcolor=white,' $name.tex
+        doconce subst '  leftmargin=.+' '  leftmargin=3cm,' $name.tex
+        doconce subst '  rightmargin=.+' \
+                '  rightmargin=3cm,\n  font=\\tiny,' $name.tex
+        doconce subst '  frametitlerule=.+' \
+                '  frametitlerule=false,' $name.tex
+        doconce subst '  linewidth=.+' '  linewidth=0pt,' $name.tex
+        # Edits for fontsize in Verbatim
+        doconce replace ',fontsize=\fontsize{9pt}{9pt}' \
+                ',fontsize=\fontsize{6pt}{6pt}' $name.tex
+
+Note that these edits actually apply to all types of admonitions.
+
+Here is a possible test file:
+
+.. code-block:: doconce
+
+        ======= Heading =======
+        
+        Bla-bla.
+        
+        !bnotice Long box
+        % for i in range(10):
+        bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
+        % endfor
+        
+        !bt
+        \begin{align}
+        x &= linspace(0, 1, 101)\\
+        y &= sin(x)
+        \end{align}
+        !et
+        
+        !bc pycod
+        def myfuncf(x):
+            return sin(x)
+        !ec
+        
+        % for i in range(100):
+        bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
+        % endfor
+        !enotice
 
 How can I have unnumbered sections?
 -----------------------------------
