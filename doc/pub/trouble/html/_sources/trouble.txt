@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Dec 9, 2015
+:Date: Dec 10, 2015
 
 
 .. admonition:: Disclaimer
@@ -1434,16 +1434,20 @@ A known problem is to have the word
 in (admon) headings. Otherwise inline verbatim should work, both in
 section headings and admon headings.
 
-How can I customize the look of admonitions?
---------------------------------------------
+How can I customize the look of an admonition?
+----------------------------------------------
+
+.. index:: customized admon
 
 The default environment, ``--latex_admon=mdfbox``, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
-variables in the ``newmdenv`` command that defines the
-``notice_mdfboxmdframed`` environment in the ``.tex`` file. The
-script below carries out the edits:
+variables in the ``newmdenv`` command that defines the (e.g.)
+``notice_mdfboxmdframed`` environment in the ``.tex`` file.
+
+The simplest approach is to make a script that automatically edits
+some of the variables in ``newmdenv`` environments:
 
 .. code-block:: bash
 
@@ -1481,7 +1485,7 @@ Here is a possible test file:
         
         !bt
         \begin{align}
-        x &= linspace(0, 1, 101)\\
+        x &\in [0,1]\\
         y &= sin(x)
         \end{align}
         !et
@@ -1495,6 +1499,19 @@ Here is a possible test file:
         bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
         % endfor
         !enotice
+
+.. index:: user-defined environments
+
+.. index:: userdef_environments.py
+
+.. index:: minipage environment
+
+A (much) better approach is to define a *user-defined environment*, called
+(e.g.) minipage. This environment has begin tag ``!bu-minipage`` and
+end tag ``!eu-minipage``. The environment is defined in a file
+``userdef_environments.py`` in the same directory as the DocOnce source file.
+An example is given in this `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py>`__
+file.
 
 How can I have unnumbered sections?
 -----------------------------------

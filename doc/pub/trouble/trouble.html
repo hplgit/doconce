@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Troubleshooting and FAQ">
-<meta name="keywords" content="underscores,open links in new windows,Mako tips/problems,percent sign problems,debugging Mako,undefined Mako variable">
+<meta name="keywords" content="underscores,open links in new windows,Mako tips/problems,percent sign problems,debugging Mako,undefined Mako variable,customized admon,user-defined environments,minipage environment">
 
 <title>DocOnce Troubleshooting and FAQ</title>
 
@@ -27,6 +27,8 @@ Automatically generated HTML file from DocOnce source
 }
 </style>
 
+
+<!-- USER-DEFINED ENVIRONMENTS -->
 
 </head>
 
@@ -289,7 +291,7 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec91'),
-              ('How can I customize the look of admonitions?',
+              ('How can I customize the look of an admonition?',
                2,
                None,
                '___sec92'),
@@ -532,7 +534,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec89" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX error because of underscores</a></li>
      <!-- navigation toc: --> <li><a href="#___sec90" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX does not like underscores in URLs</a></li>
      <!-- navigation toc: --> <li><a href="#___sec91" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim fails in admon headings</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec92" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I customize the look of admonitions?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec92" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I customize the look of an admonition?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec93" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I have unnumbered sections?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec94" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;LaTeX suddenly places figures differently</a></li>
      <!-- navigation toc: --> <li><a href="#trouble:figref:mako" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;I want figure references with page number too</a></li>
@@ -608,7 +610,7 @@ end of tocinfo -->
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Dec 9, 2015</h4></center> <!-- date -->
+<center><h4>Dec 10, 2015</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -700,7 +702,7 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="#___sec89"> LaTeX error because of underscores </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec90"> LaTeX does not like underscores in URLs </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec91"> Inline verbatim fails in admon headings </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec92"> How can I customize the look of admonitions? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec92"> How can I customize the look of an admonition? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec93"> How can I have unnumbered sections? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec94"> LaTeX suddenly places figures differently </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#trouble:figref:mako"> I want figure references with page number too </a><br>
@@ -2240,16 +2242,19 @@ A known problem is to have the word
 in (admon) headings. Otherwise inline verbatim should work, both in
 section headings and admon headings.
 
-<h2 id="___sec92">How can I customize the look of admonitions? </h2>
+<h2 id="___sec92">How can I customize the look of an admonition? </h2>
 
 <p>
 The default environment, <code>--latex_admon=mdfbox</code>, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
-variables in the <code>newmdenv</code> command that defines the
-<code>notice_mdfboxmdframed</code> environment in the <code>.tex</code> file. The
-script below carries out the edits:
+variables in the <code>newmdenv</code> command that defines the (e.g.)
+<code>notice_mdfboxmdframed</code> environment in the <code>.tex</code> file.
+
+<p>
+The simplest approach is to make a script that automatically edits
+some of the variables in <code>newmdenv</code> environments:
 
 <p>
 
@@ -2291,7 +2296,7 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 
 !bt
 <span style="color: #008000">\begin{align}</span>
-x &amp;= linspace(0, 1, 101)\\
+x &amp;\in [0,1]\\
 y &amp;= sin(x)
 <span style="color: #008000">\end{align}</span>
 !et
@@ -2306,6 +2311,13 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 % endfor
 <span style="color: #008000; font-weight: bold">!enotice</span>
 </pre></div>
+<p>
+A (much) better approach is to define a <em>user-defined environment</em>, called
+(e.g.) minipage. This environment has begin tag <code>!bu-minipage</code> and
+end tag <code>!eu-minipage</code>. The environment is defined in a file
+<code>userdef_environments.py</code> in the same directory as the DocOnce source file.
+An example is given in this <a href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py" target="_self"><tt>userdef_environments.py</tt></a>
+file.
 
 <h2 id="___sec93">How can I have unnumbered sections? </h2>
 

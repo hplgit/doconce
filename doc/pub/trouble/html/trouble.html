@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 9, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 10, 2015</td>
 </tr>
 </tbody>
 </table>
@@ -1246,15 +1246,16 @@ The remedy is to format the link text with inline verbatim tags (backticks):</p>
 <p>in (admon) headings. Otherwise inline verbatim should work, both in
 section headings and admon headings.</p>
 </div>
-<div class="section" id="how-can-i-customize-the-look-of-admonitions">
-<h3>How can I customize the look of admonitions?<a class="headerlink" href="#how-can-i-customize-the-look-of-admonitions" title="Permalink to this headline">¶</a></h3>
-<p>The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
+<div class="section" id="how-can-i-customize-the-look-of-an-admonition">
+<h3>How can I customize the look of an admonition?<a class="headerlink" href="#how-can-i-customize-the-look-of-an-admonition" title="Permalink to this headline">¶</a></h3>
+<p id="index-5">The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
-variables in the <code class="docutils literal"><span class="pre">newmdenv</span></code> command that defines the
-<code class="docutils literal"><span class="pre">notice_mdfboxmdframed</span></code> environment in the <code class="docutils literal"><span class="pre">.tex</span></code> file. The
-script below carries out the edits:</p>
+variables in the <code class="docutils literal"><span class="pre">newmdenv</span></code> command that defines the (e.g.)
+<code class="docutils literal"><span class="pre">notice_mdfboxmdframed</span></code> environment in the <code class="docutils literal"><span class="pre">.tex</span></code> file.</p>
+<p>The simplest approach is to make a script that automatically edits
+some of the variables in <code class="docutils literal"><span class="pre">newmdenv</span></code> environments:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">name</span><span class="o">=</span>tmp1
 <span class="c"># Edits for mdframed environments</span>
 doconce format pdflatex <span class="nv">$name</span> --latex_code_style<span class="o">=</span>vrb
@@ -1286,7 +1287,7 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 
 <span class="k">!bt</span>
 <span class="nb">\begin{align}</span>
-x &amp;= linspace(0, 1, 101)\\
+x &amp;\in [0,1]\\
 y &amp;= sin(x)
 <span class="nb">\end{align}</span>
 <span class="k">!et</span>
@@ -1302,6 +1303,12 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 <span class="k">!enotice</span>
 </pre></div>
 </div>
+<span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">A (much) better approach is to define a <em>user-defined environment</em>, called
+(e.g.) minipage. This environment has begin tag <code class="docutils literal"><span class="pre">!bu-minipage</span></code> and
+end tag <code class="docutils literal"><span class="pre">!eu-minipage</span></code>. The environment is defined in a file
+<code class="docutils literal"><span class="pre">userdef_environments.py</span></code> in the same directory as the DocOnce source file.
+An example is given in this <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py">userdef_environments.py</a>
+file.</p>
 </div>
 <div class="section" id="how-can-i-have-unnumbered-sections">
 <h3>How can I have unnumbered sections?<a class="headerlink" href="#how-can-i-have-unnumbered-sections" title="Permalink to this headline">¶</a></h3>
@@ -1949,7 +1956,7 @@ clickable.</p>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>
 <li><a class="reference internal" href="#inline-verbatim-fails-in-admon-headings">Inline verbatim fails in admon headings</a></li>
-<li><a class="reference internal" href="#how-can-i-customize-the-look-of-admonitions">How can I customize the look of admonitions?</a></li>
+<li><a class="reference internal" href="#how-can-i-customize-the-look-of-an-admonition">How can I customize the look of an admonition?</a></li>
 <li><a class="reference internal" href="#how-can-i-have-unnumbered-sections">How can I have unnumbered sections?</a></li>
 <li><a class="reference internal" href="#latex-suddenly-places-figures-differently">LaTeX suddenly places figures differently</a></li>
 <li><a class="reference internal" href="#i-want-figure-references-with-page-number-too">I want figure references with page number too</a><ul>
