@@ -1252,7 +1252,7 @@ section headings and admon headings.</p>
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
-variables in the <code class="docutils literal"><span class="pre">newmdenv</span></code> command that defines the (e.g.)
+variables in the <code class="docutils literal"><span class="pre">newmdenv</span></code> command that defines the
 <code class="docutils literal"><span class="pre">notice_mdfboxmdframed</span></code> environment in the <code class="docutils literal"><span class="pre">.tex</span></code> file.</p>
 <p>The simplest approach is to make a script that automatically edits
 some of the variables in <code class="docutils literal"><span class="pre">newmdenv</span></code> environments:</p>
@@ -1274,7 +1274,8 @@ doconce replace <span class="s1">&#39;,fontsize=\fontsize{9pt}{9pt}&#39;</span> 
         <span class="s1">&#39;,fontsize=\fontsize{6pt}{6pt}&#39;</span> <span class="nv">$name</span>.tex
 </pre></div>
 </div>
-<p>Note that these edits actually apply to all types of admonitions.</p>
+<p>Note that these edits actually apply to all types of admonitions!
+More tailored edits must include the text of the entire environment definition.</p>
 <p>Here is a possible test file:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= Heading =======</span>
 
@@ -1303,11 +1304,12 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 <span class="k">!enotice</span>
 </pre></div>
 </div>
-<span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">A (much) better approach is to define a <em>user-defined environment</em>, called
-(e.g.) minipage. This environment has begin tag <code class="docutils literal"><span class="pre">!bu-minipage</span></code> and
-end tag <code class="docutils literal"><span class="pre">!eu-minipage</span></code>. The environment is defined in a file
-<code class="docutils literal"><span class="pre">userdef_environments.py</span></code> in the same directory as the DocOnce source file.
-An example is given in this <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py">userdef_environments.py</a>
+<span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">A (much) better approach is to define a <em>user-defined environment</em>,
+called (e.g.) minipage, see the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir">manual</a>.
+This environment has begin tag <code class="docutils literal"><span class="pre">!bu-minipage</span></code> and end tag
+<code class="docutils literal"><span class="pre">!eu-minipage</span></code>. The environment is defined in a file
+<code class="docutils literal"><span class="pre">userdef_environments.py</span></code> in the same directory as the DocOnce source
+file.  An example is given in this <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py">userdef_environments.py</a>
 file.</p>
 </div>
 <div class="section" id="how-can-i-have-unnumbered-sections">

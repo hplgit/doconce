@@ -1443,7 +1443,7 @@ The default environment, ``--latex_admon=mdfbox``, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
-variables in the ``newmdenv`` command that defines the (e.g.)
+variables in the ``newmdenv`` command that defines the
 ``notice_mdfboxmdframed`` environment in the ``.tex`` file.
 
 The simplest approach is to make a script that automatically edits
@@ -1468,7 +1468,8 @@ some of the variables in ``newmdenv`` environments:
         doconce replace ',fontsize=\fontsize{9pt}{9pt}' \
                 ',fontsize=\fontsize{6pt}{6pt}' $name.tex
 
-Note that these edits actually apply to all types of admonitions.
+Note that these edits actually apply to all types of admonitions!
+More tailored edits must include the text of the entire environment definition.
 
 Here is a possible test file:
 
@@ -1506,11 +1507,12 @@ Here is a possible test file:
 
 .. index:: minipage environment
 
-A (much) better approach is to define a *user-defined environment*, called
-(e.g.) minipage. This environment has begin tag ``!bu-minipage`` and
-end tag ``!eu-minipage``. The environment is defined in a file
-``userdef_environments.py`` in the same directory as the DocOnce source file.
-An example is given in this `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py>`__
+A (much) better approach is to define a *user-defined environment*,
+called (e.g.) minipage, see the `manual <http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir>`__.
+This environment has begin tag ``!bu-minipage`` and end tag
+``!eu-minipage``. The environment is defined in a file
+``userdef_environments.py`` in the same directory as the DocOnce source
+file.  An example is given in this `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py>`__
 file.
 
 How can I have unnumbered sections?

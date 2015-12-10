@@ -2249,7 +2249,7 @@ The default environment, <code>--latex_admon=mdfbox</code>, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
-variables in the <code>newmdenv</code> command that defines the (e.g.)
+variables in the <code>newmdenv</code> command that defines the
 <code>notice_mdfboxmdframed</code> environment in the <code>.tex</code> file.
 
 <p>
@@ -2277,7 +2277,8 @@ doconce replace <span style="color: #BA2121">&#39;,fontsize=\fontsize{9pt}{9pt}&
         <span style="color: #BA2121">&#39;,fontsize=\fontsize{6pt}{6pt}&#39;</span> <span style="color: #19177C">$name</span>.tex
 </pre></div>
 <p>
-Note that these edits actually apply to all types of admonitions.
+Note that these edits actually apply to all types of admonitions!
+More tailored edits must include the text of the entire environment definition.
 
 <p>
 Here is a possible test file:
@@ -2312,11 +2313,12 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 <span style="color: #008000; font-weight: bold">!enotice</span>
 </pre></div>
 <p>
-A (much) better approach is to define a <em>user-defined environment</em>, called
-(e.g.) minipage. This environment has begin tag <code>!bu-minipage</code> and
-end tag <code>!eu-minipage</code>. The environment is defined in a file
-<code>userdef_environments.py</code> in the same directory as the DocOnce source file.
-An example is given in this <a href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py" target="_self"><tt>userdef_environments.py</tt></a>
+A (much) better approach is to define a <em>user-defined environment</em>,
+called (e.g.) minipage, see the <a href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir" target="_self">manual</a>.
+This environment has begin tag <code>!bu-minipage</code> and end tag
+<code>!eu-minipage</code>. The environment is defined in a file
+<code>userdef_environments.py</code> in the same directory as the DocOnce source
+file.  An example is given in this <a href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py" target="_self"><tt>userdef_environments.py</tt></a>
 file.
 
 <h2 id="___sec93">How can I have unnumbered sections? </h2>
