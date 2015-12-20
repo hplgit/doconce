@@ -211,7 +211,7 @@ none, off: no rules
 top: rule at top (default)
 bottom: rule at bottom
 top+bottom: rule at top and bottom"""),
-    ('--html_copyright=', 'Controls where to put copyright statements.\neverypage: in the footer of every page\ntitlepages or titlepage: in the footer of the titlepage only.'),
+    ('--html_copyright=', 'Controls where to put copyright statements.\neverypage: in the footer of every page\ntitlepages or titlepage: in the footer of the titlepage only (default).'),
     ('--cite_doconce', 'Adds a citation to the DocOnce web page if copyright statements are present.'),
     ('--device=',
      """Set device to paper, screen, or other (paper impacts LaTeX output)."""),
@@ -258,7 +258,7 @@ envir:package-background[style parameters]@)
     ('--latex_code_bg=', 'Background color code blocks. Default: white.'),
     ('--latex_code_bg_vpad', 'Vertical padding of background. Has only effect for vrb/pyg-bgcolor styles (not lst!).'),
     ('--latex_code_lststyles=', """Filename with LaTeX definitions of lst styles."""),
-    ('--latex_copyright=', 'Controls where to put copyright statements.\neverypage: in the footer of every page\ntitlepages: in the footer of the titlepage and chapter pages (for books) only.'),
+    ('--latex_copyright=', 'Controls where to put copyright statements.\neverypage: in the footer of every page\ntitlepages: in the footer of the titlepage and chapter pages (for books) only (default).'),
     ('--latex_bibstyle=',
      'LaTeX bibliography style. Default: plain.'),
     ('--section_numbering=',

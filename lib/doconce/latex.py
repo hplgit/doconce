@@ -413,16 +413,26 @@ def latex_code(filestr, code_blocks, code_block_types,
     m = re.search(pattern, filestr, re.MULTILINE)
     #filestr = re.sub(pattern, '', filestr, flags=re.MULTILINE)
     if m:
-        commands = [r'\externaldocument{%s}' % name.strip()
-                    for name in m.group(1).split(',')]
+        filepaths = m.group(1).split(',')
+        extdocs  = [r'\externaldocument{%s}' % name.strip()
+                    for name in filepaths]
+        auxfiles = [r'\@addtofilelist{%s.aux}' % name.strip()
+                    for name in filepaths]
         new_text = r"""
 
 %% References to labels in external documents:
 \usepackage{xr}
+
 %s
 
+%% Add external .aux files to \listfiles list:
+\makeatletter
+%s
+\makeatother
+
+
 %% insert custom LaTeX commands...
-""" % ('\n'.join(commands))
+""" % ('\n'.join(extdocs), '\n'.join(auxfiles))
         filestr = filestr.replace('% insert custom LaTeX commands...', new_text)
         # Check that the files exist
         for name in m.group(1).split(','):
@@ -3418,7 +3428,7 @@ open=right,              %% start new chapters on odd-numbered pages
                     # left on even pages
                     INTRO['latex'] += r"""
 \fancyfoot[LE,RO]{\thepage}"""
-            latex_copyright = option('latex_copyright=', 'everypage')
+            latex_copyright = option('latex_copyright=', 'titlepages')
             if latex_copyright == 'everypage':
                 INTRO['latex'] += r"""
 \fancyfoot[C]{{\footnotesize %sCopyright COPYRIGHT_HOLDERS}}

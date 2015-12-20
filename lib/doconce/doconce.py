@@ -4434,7 +4434,13 @@ def preprocess(filename, format, preprocessor_options=[]):
                 print '*** error: illegal command-line argument:'
                 print opt
                 _abort()
-            preprocess_options.append('-D%s="%s"' % (var, value))
+            if value == 'False':
+                pass # do not add any -Uvar since -U is not used by preprocess
+                #preprocess_options.append('-U%s' % var)
+            elif value == "True":
+                preprocess_options.append('-D%s' % var)
+            else:  # add explicit value
+                preprocess_options.append('-D%s="%s"' % (var, value))
 
     # Look for mako variables
     mako_kwargs = {'FORMAT': format, 'DEVICE': device}
