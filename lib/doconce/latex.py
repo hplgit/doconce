@@ -95,6 +95,7 @@ def latex_code_envir(
     package = envir_spec[envir2]['package']
     background = envir_spec[envir2]['background']
     # Default styles
+    any_style = ''
     lst_style = 'style=simple,xleftmargin=%smm' % leftmargin
     vrb_style = 'numbers=none,fontsize=\\fontsize{9pt}{9pt},baselinestretch=0.95,xleftmargin=%smm' % leftmargin
     # mathescape can be used with minted and lstlisting
@@ -110,10 +111,12 @@ def latex_code_envir(
         # Override default style
         if package == 'lst':
             lst_style = envir_spec[envir2]['style']
-        if package == 'vrb':
+        elif package == 'vrb':
             vrb_style = envir_spec[envir2]['style']
-        if package == 'pyg':
+        elif package == 'pyg':
             pyg_style = envir_spec[envir2]['style']
+        else:
+            any_style = envir_spec[envir2]['style']
 
     envir_tp = ''
     if envir.endswith('pro'):
@@ -151,9 +154,15 @@ def latex_code_envir(
         else:
             begin = '\\begin{lstlisting}[language=%s,%s]' % (envir2lst.get(envir, 'text'), lst_style)
         end = '\\end{lstlisting}'
-    else:
+    elif package == 'vrb':
         begin = '\\begin{Verbatim}[%s]' % vrb_style
         end = '\\end{Verbatim}'
+    else:  # \begin{package}
+        if any_style:
+            begin = '\\begin{%s}[%s]' % (package, any_style)
+        else:
+            begin = '\\begin{%s}' % package
+        end = '\\end{%s}' % package
 
 
     if background != 'white':
@@ -205,7 +214,7 @@ def interpret_latex_code_style():
         parts = latex_code_style.split('@')
         for part in parts:
             if not ':' in part:
-                print '*** error: wrong syntax in --latex_code_style= specification'
+                print '*** error: wrong syntax in --latex_code_style=%s (no ":")' % latex_code_style
                 _abort()
             envir, spec = part.split(':')
             if envir not in legal_envirs:
@@ -485,7 +494,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # option --latex_admon_envir_map=X is used
                 envir = envir[:-1]
             if envir not in envirs:
-                print 'Warning: found "!bc %s", but %s is not a standard predefined ptex2tex environment' % (envir, envir)
+                print 'Warning: found "!bc %s", but %s is not a standard predefined code environment' % (envir, envir)
 
     # --- Final fixes for latex format ---
 

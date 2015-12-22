@@ -223,7 +223,7 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         pyoptpro='python', pyscpro='python',
         )
 
-    # grab line with: # Sphinx code-blocks: cod=python cpp=c++ etc
+    # grab line with: # sphinx code-blocks: cod=python cpp=c++ etc
     # (do this before code is inserted in case verbatim blocks contain
     # such specifications for illustration)
     m = re.search(r'.. *[Ss]phinx +code-blocks?:(.+)', filestr)
