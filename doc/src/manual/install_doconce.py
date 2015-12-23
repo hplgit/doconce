@@ -55,36 +55,40 @@ system('sudo apt-get -y install subversion')
 system('sudo apt-get -y install python-pip')
 system('sudo apt-get -y install idle')
 system('sudo apt-get -y install python-dev')
+system('sudo apt-get -y install python-setuptools')
+# upgrade
+system('sudo pip install setuptools')
 system('sudo apt-get -y install python-pdftools')
-system('sudo pip install ipython --upgrade')
-system('sudo pip install tornado --upgrade')
-system('sudo pip install pyzmq --upgrade')
-system('sudo pip install traitlets --upgrade')
-system('sudo pip install pickleshare --upgrade')
+system('sudo pip install ipython')
+system('sudo pip install tornado')
+system('sudo pip install pyzmq')
+system('sudo pip install traitlets')
+system('sudo pip install pickleshare')
 system('sudo pip install jsonschema')
 # If problems with IPython.nbformat.v4: clone ipython and run setup.py
 # to get the latest version
 
 # Preprocessors
 system('sudo pip install future')
-system('sudo pip install mako --upgrade')
-system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade')
+system('sudo pip install mako')
+system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preprocess')
 
 # Publish for handling bibliography
 system('sudo pip install python-Levenshtein')
 system('sudo pip install lxml')
-system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade')
+system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish')
 
 # Sphinx (with additional third/party themes)
 system('sudo pip install sphinx')
 
-system('sudo pip install alabaster --upgrade')
-system('sudo pip install sphinx_rtd_theme --upgrade')
-system('sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade')
-system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade')
-system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade')
-system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade')
-system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade')
+system('sudo pip install alabaster')
+system('sudo pip install sphinx_rtd_theme')
+system('sudo pip install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme')
+system('sudo pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme')
+system('sudo pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized')
+system('sudo pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs')
+system('sudo pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell')
+system('sudo pip install tinkerer')
 
 # Runestone sphinx books
 system('sudo pip install sphinxcontrib-paverutils')

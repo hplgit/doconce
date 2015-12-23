@@ -20,6 +20,7 @@ def pdflatex_emoji(m):
                 print '*** error: emoji "name" is probably misspelled - cannot find any emoji with that name'
                 _abort()
     s = space1 + r'\raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{%s}}' % emojifile + space2
+    # NOTE: \ht needs the calc package!
     return s
 
 def define(FILENAME_EXTENSION,

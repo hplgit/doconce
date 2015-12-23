@@ -2602,6 +2602,8 @@ def define(FILENAME_EXTENSION,
         'ampersand1':    r'\g<1> {\&} \g<2>',
         'ampersand2':    r' \g<1>{\&}\g<2>',
         # Use \Verb instead of \textbf since emoji name can contain underscore
+        # (note that pdflatex.py defines a figure for emojis, plain latex
+        # has just verbatim name of the emoji)
         'emoji':         r'\g<1>(\Verb!\g<2>!)\g<3>',
         }
 
@@ -4000,6 +4002,8 @@ open=right,              %% start new chapters on odd-numbered pages
     # of the preamble for beamer slides in misc.slides_beamer
 
     # pdflatex needs calc package for emojis
+    if filestr[-1] != '\n':
+        filestr += '\n' # Add newline
     if re.search(INLINE_TAGS['emoji'], filestr):
         if not ',calc' in INTRO['latex']:
             INTRO['latex'] += '\n\\usepackage{calc}\n'

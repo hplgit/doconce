@@ -47,36 +47,40 @@ apt_install subversion
 apt_install python-pip
 apt_install idle
 apt_install python-dev
+apt_install python-setuptools
+# upgrade
+pip_install setuptools
 apt_install python-pdftools
-pip_install ipython --upgrade
-pip_install tornado --upgrade
-pip_install pyzmq --upgrade
-pip_install traitlets --upgrade
-pip_install pickleshare --upgrade
+pip_install ipython
+pip_install tornado
+pip_install pyzmq
+pip_install traitlets
+pip_install pickleshare
 pip_install jsonschema
 # If problems with IPython.nbformat.v4: clone ipython and run setup.py
 # to get the latest version
 
 # Preprocessors
 pip_install future
-pip_install mako --upgrade
-pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess --upgrade
+pip_install mako
+pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess
 
 # Publish for handling bibliography
 pip_install python-Levenshtein
 pip_install lxml
-pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish --upgrade
+pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish
 
 # Sphinx (with additional third/party themes)
 pip_install sphinx
 
-pip_install alabaster --upgrade
-pip_install sphinx_rtd_theme --upgrade
-pip_install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme --upgrade
-pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme --upgrade
-pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized --upgrade
-pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs --upgrade
-pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell --upgrade
+pip_install alabaster
+pip_install sphinx_rtd_theme
+pip_install -e hg+https://bitbucket.org/ecollins/cloud_sptheme#egg=cloud_sptheme
+pip_install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sphinx-bootstrap-theme
+pip_install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
+pip_install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
+pip_install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
+pip_install tinkerer
 
 # Runestone sphinx books
 pip_install sphinxcontrib-paverutils
