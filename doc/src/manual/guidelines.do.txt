@@ -3,10 +3,13 @@ label{manual:latex:guide}
 
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX.
-Any LaTeX syntax is accepted when DocOnce translates the text to
-LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
-`ipynb` formats is also important, one should follow the rules below.
+corresponds to writing in quite plain LaTeX and making the ascii
+text look nice (pay much attention to white spaec!).
+
+Any LaTeX syntax in mathematical formulas is accepted when DocOnce
+translates the text to LaTeX, but if output in the `sphinx`, `pandoc`,
+`mwiki`, `html`, or `ipynb` formats is also important, one should
+follow the rules below.
 
  * AMS LaTeX mathematics is supported, also for the `html`, `sphinx`,
    and `ipynb` formats.
@@ -57,7 +60,8 @@ LaTeX, but if output in the `sphinx`, `pandoc`, `mwiki`, `html`, or
    but import from (clean) BibTeX is possible.
  * Use `idx` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
- * Use the `bm` package and the `\bm` command for boldface in mathematics.
+ * Use the `\bm` command (from the `bm` package, always included by DocOnce)
+   for boldface in mathematics.
  * Make sure all ordinary text starts in column 1 on each line. Equations
    can be indented. The `\begin{}` and `\end{}` directives should start
    in column 1.

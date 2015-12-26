@@ -124,7 +124,8 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
                 print '...', msg, filename, '...'
-            f = urllib.urlopen(filename)
+            import urllib2
+            f = urllib2.urlopen(filename, timeout=10)
             text = f.read()
             f.close()
             ext = os.path.splitext(filename)[1]
