@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Dec 3, 2015
+:Date: Jan 5, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -5536,10 +5536,13 @@ Writing Guidelines (Especially for LaTeX Users!)
 
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX.
-Any LaTeX syntax is accepted when DocOnce translates the text to
-LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
-``ipynb`` formats is also important, one should follow the rules below.
+corresponds to writing in quite plain LaTeX and making the ascii
+text look nice (pay much attention to white spaec!).
+
+Any LaTeX syntax in mathematical formulas is accepted when DocOnce
+translates the text to LaTeX, but if output in the ``sphinx``, ``pandoc``,
+``mwiki``, ``html``, or ``ipynb`` formats is also important, one should
+follow the rules below.
 
  * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
    and ``ipynb`` formats.
@@ -5603,7 +5606,8 @@ LaTeX, but if output in the ``sphinx``, ``pandoc``, ``mwiki``, ``html``, or
  * Use ``idx`` for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).
 
- * Use the ``bm`` package and the ``\bm`` command for boldface in mathematics.
+ * Use the ``\bm`` command (from the ``bm`` package, always included by DocOnce)
+   for boldface in mathematics.
 
  * Make sure all ordinary text starts in column 1 on each line. Equations
    can be indented. The ``\begin{}`` and ``\end{}`` directives should start
@@ -6093,7 +6097,7 @@ The convention for this type of examples is to have a title,
 and the title line
 may feature ``label=xxx``, where we can use ``xxx`` as a label for the
 example.
-The example environment above is in the ``${FORMAT}`` output format
+The example environment above is in the present output format
 typeset like this:
 
 .. _ex:math:1p1:
@@ -6166,6 +6170,10 @@ the other keys. The LaTeX output is here defined by the function
             return s
         
         def get_label(titleline):
+            """
+            Extract label from title line in begin environment.
+            Return label and title (without label).
+            """
             label = ''
             if 'label=' in titleline:
                 pattern = r'label=([^\s]+)'
@@ -6268,7 +6276,7 @@ written like
         !et
         !eu-highlight
 
-and typeset (in ``${FORMAT}``) as
+and typeset as
 
 
 .. admonition:: Highlight box
@@ -6312,6 +6320,8 @@ in particular the following one (with a caption),
 
 appears at the end of the document
 `Demonstration of DocOnce support for LaTeX code block environments <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__.
+
+Other examples are available in the `DocOnce repository <https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs>`__.
 
 .. !split
 
@@ -10816,7 +10826,7 @@ here for convenience.
         
         Controls where to put copyright statements.
         everypage: in the footer of every page
-        titlepages or titlepage: in the footer of the titlepage only.
+        titlepages or titlepage: in the footer of the titlepage only (default).
         
         
         --cite_doconce
@@ -10908,7 +10918,7 @@ here for convenience.
         
         Controls where to put copyright statements.
         everypage: in the footer of every page
-        titlepages: in the footer of the titlepage and chapter pages (for books) only.
+        titlepages: in the footer of the titlepage and chapter pages (for books) only (default).
         
         
         --latex_bibstyle=...

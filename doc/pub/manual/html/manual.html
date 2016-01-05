@@ -773,7 +773,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 3, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 5, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -5323,10 +5323,12 @@ read in the formats that cannot render LaTeX.</p>
 <span id="manual-latex-guide"></span><h3>Writing Guidelines (Especially for LaTeX Users!)<a class="headerlink" href="#writing-guidelines-especially-for-latex-users" title="Permalink to this headline">¶</a></h3>
 <p>LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX.
-Any LaTeX syntax is accepted when DocOnce translates the text to
-LaTeX, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>, <code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or
-<code class="docutils literal"><span class="pre">ipynb</span></code> formats is also important, one should follow the rules below.</p>
+corresponds to writing in quite plain LaTeX and making the ascii
+text look nice (pay much attention to white spaec!).</p>
+<p>Any LaTeX syntax in mathematical formulas is accepted when DocOnce
+translates the text to LaTeX, but if output in the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">pandoc</span></code>,
+<code class="docutils literal"><span class="pre">mwiki</span></code>, <code class="docutils literal"><span class="pre">html</span></code>, or <code class="docutils literal"><span class="pre">ipynb</span></code> formats is also important, one should
+follow the rules below.</p>
 <blockquote>
 <div><ul class="simple">
 <li>AMS LaTeX mathematics is supported, also for the <code class="docutils literal"><span class="pre">html</span></code>, <code class="docutils literal"><span class="pre">sphinx</span></code>,
@@ -5378,7 +5380,8 @@ in DocOnce). The bibliography must be prepared in the Publish format,
 but import from (clean) BibTeX is possible.</li>
 <li>Use <code class="docutils literal"><span class="pre">idx</span></code> for index entries, but put the definitions between paragraphs,
 not inside them (required by Sphinx).</li>
-<li>Use the <code class="docutils literal"><span class="pre">bm</span></code> package and the <code class="docutils literal"><span class="pre">\bm</span></code> command for boldface in mathematics.</li>
+<li>Use the <code class="docutils literal"><span class="pre">\bm</span></code> command (from the <code class="docutils literal"><span class="pre">bm</span></code> package, always included by DocOnce)
+for boldface in mathematics.</li>
 <li>Make sure all ordinary text starts in column 1 on each line. Equations
 can be indented. The <code class="docutils literal"><span class="pre">\begin{}</span></code> and <code class="docutils literal"><span class="pre">\end{}</span></code> directives should start
 in column 1.</li>
@@ -5757,7 +5760,7 @@ We have
 and the title line
 may feature <code class="docutils literal"><span class="pre">label=xxx</span></code>, where we can use <code class="docutils literal"><span class="pre">xxx</span></code> as a label for the
 example.
-The example environment above is in the <code class="docutils literal"><span class="pre">${FORMAT}</span></code> output format
+The example environment above is in the present output format
 typeset like this:</p>
 </div>
 <div class="section" id="example-1-addition">
@@ -5829,6 +5832,10 @@ the other keys. The LaTeX output is here defined by the function
     <span class="k">return</span> <span class="n">s</span>
 
 <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="n">titleline</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract label from title line in begin environment.</span>
+<span class="sd">    Return label and title (without label).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">label</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
     <span class="k">if</span> <span class="s">&#39;label=&#39;</span> <span class="ow">in</span> <span class="n">titleline</span><span class="p">:</span>
         <span class="n">pattern</span> <span class="o">=</span> <span class="s">r&#39;label=([^\s]+)&#39;</span>
@@ -5918,7 +5925,7 @@ This environment is used to highlight something:
 <span class="k">!eu</span>-highlight
 </pre></div>
 </div>
-<p>and typeset (in <code class="docutils literal"><span class="pre">${FORMAT}</span></code>) as</p>
+<p>and typeset as</p>
 <div class="admonition-highlight-box admonition">
 <p class="first admonition-title">Highlight box</p>
 <p>This environment is used to highlight something:</p>
@@ -5951,6 +5958,7 @@ in particular the following one (with a caption),</p>
 </div>
 <p>appears at the end of the document
 <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>.</p>
+<p>Other examples are available in the <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs">DocOnce repository</a>.</p>
 </div>
 </div>
 <div class="section" id="bibliography-references">
@@ -9632,7 +9640,7 @@ top+bottom: rule at top and bottom
 
 Controls where to put copyright statements.
 everypage: in the footer of every page
-titlepages or titlepage: in the footer of the titlepage only.
+titlepages or titlepage: in the footer of the titlepage only (default).
 
 
 --cite_doconce
@@ -9724,7 +9732,7 @@ Filename with LaTeX definitions of lst styles.
 
 Controls where to put copyright statements.
 everypage: in the footer of every page
-titlepages: in the footer of the titlepage and chapter pages (for books) only.
+titlepages: in the footer of the titlepage and chapter pages (for books) only (default).
 
 
 --latex_bibstyle=...
@@ -10816,7 +10824,7 @@ Springer,
       
     </p>
     <p>
-        &copy; Copyright 2015, Hans Petter Langtangen.<br/>
+        &copy; Copyright 2016, Hans Petter Langtangen.<br/>
       Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.<br/>
     </p>
   </div>

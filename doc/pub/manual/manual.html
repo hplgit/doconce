@@ -717,7 +717,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Dec 3, 2015</h4></center> <!-- date -->
+<center><h4>Jan 5, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -3716,8 +3716,8 @@ A table like
 <tr><td align="right">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
     </table>
-  </div>
-</div> <!-- col-xs-2 -->
+  </div> <!-- col-xs-2 -->
+</div> <!-- cell row -->
 <p>
 is built up of pipe symbols and dashes:
 
@@ -3785,8 +3785,8 @@ Typeset result:
 <tr><td align="left">   4.0     </td> <td align="right">   1.1E+1      </td> <td align="right">   14.717624       </td> </tr>
 </tbody>
     </table>
-  </div>
-</div> <!-- col-xs-2 -->
+  </div> <!-- col-xs-2 -->
+</div> <!-- cell row -->
 <p>
 Pipes <code>|</code> can also be inserted to indicate
 vertical rules in LaTeX tables (they are ignored for other formats):
@@ -6627,10 +6627,14 @@ read in the formats that cannot render LaTeX.
 <p>
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX.
-Any LaTeX syntax is accepted when DocOnce translates the text to
-LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwiki</code>, <code>html</code>, or
-<code>ipynb</code> formats is also important, one should follow the rules below.
+corresponds to writing in quite plain LaTeX and making the ascii
+text look nice (pay much attention to white spaec!).
+
+<p>
+Any LaTeX syntax in mathematical formulas is accepted when DocOnce
+translates the text to LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>,
+<code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats is also important, one should
+follow the rules below.
 
 <ul>
  <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
@@ -6682,7 +6686,8 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    but import from (clean) BibTeX is possible.</li>
  <li> Use <code>idx</code> for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).</li>
- <li> Use the <code>bm</code> package and the <code>\bm</code> command for boldface in mathematics.</li>
+ <li> Use the <code>\bm</code> command (from the <code>bm</code> package, always included by DocOnce)
+   for boldface in mathematics.</li>
  <li> Make sure all ordinary text starts in column 1 on each line. Equations
    can be indented. The <code>\begin{}</code> and <code>\end{}</code> directives should start
    in column 1.</li>
@@ -7145,7 +7150,7 @@ The convention for this type of examples is to have a title,
 and the title line
 may feature <code>label=xxx</code>, where we can use <code>xxx</code> as a label for the
 example.
-The example environment above is in the <code>${FORMAT}</code> output format
+The example environment above is in the present output format
 typeset like this:
 
 <h2 id="ex:math:1p1">Example 1: Addition</h2>
@@ -7169,8 +7174,8 @@ or in tabular form:
 <tr><td align="center">   \( 1+1 \)    </td> <td align="center">   \( 2 \)    </td> </tr>
 </tbody>
     </table>
-  </div>
-</div> <!-- col-xs-1 -->
+  </div> <!-- col-xs-1 -->
+</div> <!-- cell row -->
 <p>
 The definition of the example environment must be done in a Python
 module <code>userdef_environments</code>, located in the same directory as the
@@ -7227,6 +7232,10 @@ the other keys. The LaTeX output is here defined by the function
     <span style="color: #008000; font-weight: bold">return</span> s
 
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_label</span>(titleline):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    Extract label from title line in begin environment.</span>
+<span style="color: #BA2121; font-style: italic">    Return label and title (without label).</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
     label <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;&#39;</span>
     <span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;label=&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> titleline:
         pattern <span style="color: #666666">=</span> <span style="color: #BA2121">r&#39;label=([^\s]+)&#39;</span>
@@ -7344,7 +7353,7 @@ This environment is used to highlight something:
 !eu-highlight
 </pre></div>
 <p>
-and typeset (in <code>${FORMAT}</code>) as
+and typeset as
 
 <p>
 <div style="width: 60%; padding: 10px; border: 1px solid #000;
@@ -7392,6 +7401,9 @@ in particular the following one (with a caption),
 <p>
 appears at the end of the document
 <a href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" target="_self">Demonstration of DocOnce support for LaTeX code block environments</a>.
+
+<p>
+Other examples are available in the <a href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs" target="_self">DocOnce repository</a>.
 
 <h1 id="___sec96">Bibliography (References) </h1>
 
@@ -8378,8 +8390,8 @@ many keyboard shortcuts are defined:
 <tr><td align="left">   Ctrl+c help      </td> <td align="left">   print this table                                                </td> </tr>
 </tbody>
     </table>
-  </div>
-</div> <!-- col-xs-8 -->
+  </div> <!-- col-xs-8 -->
+</div> <!-- cell row -->
 <p>
 Typing <code>Ctrl+c help</code> prints the above table in Emacs. Try out
 the different shortcuts and see how handy they are in learning
@@ -11800,7 +11812,7 @@ top+bottom: rule at top and bottom
 
 Controls where to put copyright statements.
 everypage: in the footer of every page
-titlepages or titlepage: in the footer of the titlepage only.
+titlepages or titlepage: in the footer of the titlepage only (default).
 
 
 --cite_doconce
@@ -11892,7 +11904,7 @@ Filename with LaTeX definitions of lst styles.
 
 Controls where to put copyright statements.
 everypage: in the footer of every page
-titlepages: in the footer of the titlepage and chapter pages (for books) only.
+titlepages: in the footer of the titlepage and chapter pages (for books) only (default).
 
 
 --latex_bibstyle=...
@@ -12895,8 +12907,8 @@ appear in the table below.
 <tr><td align="left">   <code>tkdiff.tcl</code>    </td> <td align="left">   <a href="https://sourceforge.net/projects/tkdiff/" target="_self">tkdiff</a>                                                                 </td> <td align="left">   not in Debian                                                                                 </td> </tr>
 </tbody>
     </table>
-  </div>
-</div> <!-- col-xs-12 -->
+  </div> <!-- col-xs-12 -->
+</div> <!-- cell row -->
 
 <h1 id="___sec224">Basic Parsing Ideas </h1>
 
@@ -13050,6 +13062,7 @@ syntax and not references for explaining parts of the text.
     1985.</li>
  <li> <div id="DocOnce:test"></div> <b>H. P. Langtangen</b>. 
     A Document for Testing DocOnce,
+    \urlhttp://hplgit.github.io/doconce/test/demo_testdoc.html,
     <a href="http://hplgit.github.io/doconce/test/demo_testdoc.html" target="_self"><tt>http://hplgit.github.io/doconce/test/demo_testdoc.html</tt></a>.</li>
  <li> <div id="Langtangen_Pedersen_2002"></div> <b>H. P. Langtangen and G. Pedersen</b>. 
     Propagation of Large Destructive Waves,
@@ -13098,7 +13111,7 @@ syntax and not references for explaining parts of the text.
 
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 2015, Hans Petter Langtangen. Made with <a href="https://github.com/hplgit/doconce">DocOnce</a>
+<!-- copyright --> &copy; 2016, Hans Petter Langtangen. Made with <a href="https://github.com/hplgit/doconce">DocOnce</a>
 </center>
 
 

@@ -1344,6 +1344,7 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     chapter_info = (None, None, None)  # (prefix Ch/App, no/char, title)
     chapter = True  # False means appendix
     chapter_exer_no = None
+    preface = False
 
     hint_pattern_begin = '!bhint'
     hint_pattern_end = '!ehint'
@@ -1381,8 +1382,12 @@ def exercises(filestr, format, code_blocks, tex_blocks):
                 chapter_info = ('Appendix', chr(chapter_counter), title)
             else:
                 # Ordinary chapter
-                chapter_counter += 1
                 title = m_chapter.group(2)
+                if 'Preface' in title:
+                    preface = True
+                else:
+                    # Add chapter counter only outside Preface
+                    chapter_counter += 1
                 chapter_info = ('Chapter', chapter_counter, title)
             chapter_exer_no = 0
 
@@ -2204,13 +2209,13 @@ def typeset_userdef_envirs(filestr, format):
             print e
             _abort()
         sys.path = list(sys_path_original)
+        if not hasattr(ue, 'envir2format'):
+            print '*** error: envir2format not defined in', userfile
+            _abort()
     else:
         print '*** error: found user-defined environments'
         print '   ', ', '.join(list(set(userdef_envirs)))
         print '    but no file', userfile, 'for defining the environments!'
-        _abort()
-    if not hasattr(ue, 'envir2format'):
-        print '*** error: envir2format not defined in', userfile
         _abort()
 
     pattern = r'^(!bu-([^\s]+)(.*?)\n(.+?)\s*^!eu-([^\s]+))'
@@ -3791,6 +3796,11 @@ def file2file(in_filename, format, basename):
         print 'Cannot read file:', in_filename, str(e)
         _abort()
     f.close()
+
+    if not filestr:
+        print '*** error: empty file', in_filename
+        print '    something went wrong with Preprocess/Mako'
+        _abort()
 
     if in_filename.endswith('.py') or in_filename.endswith('.py.do.txt'):
         filestr = doconce2format4docstrings(filestr, format)

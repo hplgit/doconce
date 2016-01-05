@@ -3824,7 +3824,7 @@ The convention for this type of examples is to have a title,
 and the title line
 may feature `label=xxx`, where we can use `xxx` as a label for the
 example.
-The example environment above is in the `${FORMAT}` output format
+The example environment above is in the present output format
 typeset like this:
 
 !bu-example Addition label=ex:math:1p1
@@ -3995,7 +3995,7 @@ This environment is used to highlight something:
 |et
 |eu-highlight
 !ec
-and typeset (in `${FORMAT}`) as
+and typeset as
 
 !bu-highlight Highlight box!
 This environment is used to highlight something:
@@ -4032,6 +4032,9 @@ FIGURE: [fig/userdef_code_envir.png, width=400 frac=0.5]
 appears at the end of the document
 "Demonstration of DocOnce support for LaTeX code block environments":
 "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html".
+
+Other examples are available in the "DocOnce repository":
+"https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs".
 
 ======= Bibliography (References) =======
 
