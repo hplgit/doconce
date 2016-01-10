@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Dec 10, 2015</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 9, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -102,7 +102,7 @@ can go wrong.</p>
 <h2>General topics<a class="headerlink" href="#general-topics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">
 <h3>How do I debug a DocOnce file that results in a strange error message?<a class="headerlink" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message" title="Permalink to this headline">¶</a></h3>
-<p>Isolate the problem by a &#8220;bisection&#8221; method: split the file in two, compile
+<span class="target" id="index-0"></span><p id="index-1">Isolate the problem by a &#8220;bisection&#8221; method: split the file in two, compile
 both parts, continue with the part that gave the problem, and repeat
 the process. This will quickly narrow down the text so you ultimately understand
 the problem. If you do not understand why the identified piece of text
@@ -110,7 +110,7 @@ gives an error message, try to rewrite.</p>
 </div>
 <div class="section" id="how-do-i-cite-and-link-to-doconce">
 <span id="sec-cite"></span><h3>How do I cite and link to DocOnce?<a class="headerlink" href="#how-do-i-cite-and-link-to-doconce" title="Permalink to this headline">¶</a></h3>
-<p>See the &#8220;How to cite&#8221; section
+<span class="target" id="index-2"></span><p id="index-3">See the &#8220;How to cite&#8221; section
 on the <a class="reference external" href="https://github.com/hplgit/doconce">project page</a>.</p>
 </div>
 <div class="section" id="how-can-i-add-links-to-some-resource-on-every-page">
@@ -199,7 +199,7 @@ python automake_sphinx.py
 </div>
 <div class="section" id="why-are-underscores-in-text-a-potential-problem">
 <span id="sec-underscore"></span><h3>Why are underscores in text a potential problem?<a class="headerlink" href="#why-are-underscores-in-text-a-potential-problem" title="Permalink to this headline">¶</a></h3>
-<p id="index-0">Underscores in plain text are not tolerated by LaTeX, but works fine in
+<p id="index-4">Underscores in plain text are not tolerated by LaTeX, but works fine in
 other formats. In LaTeX, such underscores can give different obscure
 error messages, depending on the context. The remedy is to <em>typeset all
 words with underscores in inline verbatim</em>, e.g.,</p>
@@ -228,7 +228,7 @@ If you choose the ${underscorephrase(&#39;Enable_access&#39;)}, ...
 </div>
 <div class="section" id="github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore">
 <h3>GitHub gh-pages will not display files starting with a dot or underscore<a class="headerlink" href="#github-gh-pages-will-not-display-files-starting-with-a-dot-or-underscore" title="Permalink to this headline">¶</a></h3>
-<p>This is a typical problem related to publishing either splitted HTML documents
+<span class="target" id="index-5"></span><p id="index-6">This is a typical problem related to publishing either splitted HTML documents
 or Sphinx versions of documents on GitHub, using a gh-pages branch.
 Filenames starting with a dot (as in <code class="docutils literal"><span class="pre">._mydoc001.html</span></code>) or located in
 a directory whose name starts with an underscore (as in <code class="docutils literal"><span class="pre">spninx/_static</span></code>)
@@ -245,7 +245,7 @@ Terminal&gt; git push origin gh-pages
 </div>
 <div class="section" id="github-gh-pages-will-not-display-files">
 <h3>GitHub gh-pages will not display files<a class="headerlink" href="#github-gh-pages-will-not-display-files" title="Permalink to this headline">¶</a></h3>
-<p>A common error is to link to addresses starting with <code class="docutils literal"><span class="pre">https://github.com</span></code>
+<span class="target" id="index-7"></span><p id="index-8">A common error is to link to addresses starting with <code class="docutils literal"><span class="pre">https://github.com</span></code>
 rather than the required <code class="docutils literal"><span class="pre">http://username.github.io/</span></code>.</p>
 </div>
 <div class="section" id="blank-line-is-illegal-in-latex-block-but-there-is-no-blank-line">
@@ -257,6 +257,9 @@ numbered equations in <code class="docutils literal"><span class="pre">align</sp
 environment appears on its own line, this line will be blank in the
 equation environment and cause the error message. Simply move the
 linebreak up at the end of the preceding line.</p>
+<p><strong>Note:</strong>
+This kind of errors are now automatically removed (since
+Dec, 2015).</p>
 </div>
 <div class="section" id="a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces">
 <h3>A newline in equations (double backslash) becomes single backslash and eats up spaces<a class="headerlink" href="#a-newline-in-equations-double-backslash-becomes-single-backslash-and-eats-up-spaces" title="Permalink to this headline">¶</a></h3>
@@ -302,7 +305,7 @@ text to be colored.
 </div>
 <div class="section" id="how-can-i-make-use-of-a-native-latex-environments-example-environment-for-instance">
 <span id="trouble-latex-envir-native"></span><h3>How can I make use of a native LaTeX environments (example environment for instance)?<a class="headerlink" href="#how-can-i-make-use-of-a-native-latex-environments-example-environment-for-instance" title="Permalink to this headline">¶</a></h3>
-<p>LaTeX writers often lack their favorite environments, but DocOnce has
+<span class="target" id="index-9"></span><span class="target" id="index-10"></span><p id="index-11">LaTeX writers often lack their favorite environments, but DocOnce has
 a way to define such environments, with corresponding typesetting also
 for HTML and all other output formats. See the section <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments">User-Defined
 Environments</a>
@@ -319,24 +322,24 @@ the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/
 </div>
 <div class="section" id="how-can-links-open-in-new-tabs-windows">
 <h3>How can links open in new tabs/windows<a class="headerlink" href="#how-can-links-open-in-new-tabs-windows" title="Permalink to this headline">¶</a></h3>
-<p id="index-1">Use the option <code class="docutils literal"><span class="pre">--html_links_in_new_window</span></code> for the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
+<p id="index-12">Use the option <code class="docutils literal"><span class="pre">--html_links_in_new_window</span></code> for the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>
 command. It works in HTML and Sphinx, but not in pandoc (or other Markdown
 formats) or wikis.</p>
 </div>
 <div class="section" id="movies-will-not-play-in-my-broswer">
 <h3>Movies will not play in my broswer<a class="headerlink" href="#movies-will-not-play-in-my-broswer" title="Permalink to this headline">¶</a></h3>
-<p>Are you using Safari as browser? It will not play Ogg and WebM movies.
+<p id="index-13">Are you using Safari as browser? It will not play Ogg and WebM movies.
 A message in a box should notify you about this (right below the movie
 player).</p>
 </div>
 <div class="section" id="reveal-slides-look-strange-in-the-browser">
 <h3>Reveal slides look strange in the browser<a class="headerlink" href="#reveal-slides-look-strange-in-the-browser" title="Permalink to this headline">¶</a></h3>
-<p>Are you using Safari as browser? reveal.js slides work best in
+<p id="index-14">Are you using Safari as browser? reveal.js slides work best in
 Firefox, Chrome, or Opera.</p>
 </div>
 <div class="section" id="how-can-i-control-the-vertical-spacing-in-slides">
 <h3>How can I control the vertical spacing in slides?<a class="headerlink" href="#how-can-i-control-the-vertical-spacing-in-slides" title="Permalink to this headline">¶</a></h3>
-<p>HTML5 and LaTeX slides control the spacings for you. However, sometimes
+<p id="index-15">HTML5 and LaTeX slides control the spacings for you. However, sometimes
 you really want to add some space. The <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> is effective for
 this purpose. For example,</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="k">!bblock</span> (large) So - how to be excellent?
@@ -365,9 +368,17 @@ otherwise it is a <code class="docutils literal"><span class="pre">\vspace{3mm}<
 </pre></div>
 </div>
 </div>
+<div class="section" id="how-do-i-insert-a-copyright">
+<span id="trouble-copyright"></span><h3>How do I insert a copyright?<a class="headerlink" href="#how-do-i-insert-a-copyright" title="Permalink to this headline">¶</a></h3>
+<p id="index-16">See the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright">Copyright section of the DocOnce manual</a>.</p>
+<div class="section" id="other-formats">
+<h4>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">¶</a></h4>
+<p>An error message is provided.</p>
+</div>
+</div>
 <div class="section" id="how-can-i-get-a-copyright-on-every-slide-page">
 <h3>How can I get a copyright on every slide page?<a class="headerlink" href="#how-can-i-get-a-copyright-on-every-slide-page" title="Permalink to this headline">¶</a></h3>
-<p>HTML formats:
+<p id="index-17">HTML formats:
 Use the <code class="docutils literal"><span class="pre">--copyright=everypage</span></code> option in the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_html</span></code> or
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">slides_html</span></code> commands.</p>
 <p>LaTeX Beamer: The copyright is inserted as a <code class="docutils literal"><span class="pre">\logo{}</span></code> specification, but
@@ -379,7 +390,7 @@ command in order to get any copyright notice at all.</p>
 </div>
 <div class="section" id="how-do-i-get-figure-written-in-another-language">
 <span id="latex-custom-fig-name"></span><h3>How do I get &#8220;Figure&#8221; written in another language?<a class="headerlink" href="#how-do-i-get-figure-written-in-another-language" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce documents can be written in any language, but figure captions
+<span class="target" id="index-18"></span><span class="target" id="index-19"></span><p id="index-20">DocOnce documents can be written in any language, but figure captions
 typically contain the English word &#8220;Figure&#8221;. This must be fixed
 by auto-editing the output file after translation by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>.</p>
 <p>In LaTeX you can use your native language package, e.g.,</p>
@@ -399,7 +410,7 @@ doconce replace figure figur mydoc.html
 </div>
 <div class="section" id="spellcheck-reports-mistakes-that-i-cannot-find">
 <h3>Spellcheck reports mistakes that I cannot find<a class="headerlink" href="#spellcheck-reports-mistakes-that-i-cannot-find" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> command strips off a lot of text
+<p id="index-21">The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> command strips off a lot of text
 (math, code, syntax tags) before it starts spellchecking. The
 spellchecked text is therefore different from the doconce source!
 Fortunately, the file that is actually spellchecked can be examined.
@@ -425,7 +436,7 @@ grep --color=auto -E &#39;iu&#39; tmp_stripped_mydoc.do.txt
 </div>
 <div class="section" id="spellcheck-reports-a-lot-of-mistakes-related-to-latex-math">
 <h3>Spellcheck reports a lot of mistakes related to LaTeX math<a class="headerlink" href="#spellcheck-reports-a-lot-of-mistakes-related-to-latex-math" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> command should ignore LaTeX math, but if
+<p id="index-22">The <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
 relevant <code class="docutils literal"><span class="pre">tmp_missing_*</span></code> file and find the first math-style expression that
@@ -442,7 +453,7 @@ of equation environments between <code class="docutils literal"><span class="pre
 </div>
 <div class="section" id="text-between-subexercises-are-moved">
 <h3>Text between subexercises are moved<a class="headerlink" href="#text-between-subexercises-are-moved" title="Permalink to this headline">¶</a></h3>
-<p>If you insert text between a <code class="docutils literal"><span class="pre">!esubex</span></code> and the next <code class="docutils literal"><span class="pre">!bsubex</span></code>, this
+<p id="index-23">If you insert text between a <code class="docutils literal"><span class="pre">!esubex</span></code> and the next <code class="docutils literal"><span class="pre">!bsubex</span></code>, this
 text is moved before all the subexercises. This is a feature, not a
 bug (exercises have certain elements: main text, subexercises, hints,
 etc. that are typeset in a specific order, which may be different from
@@ -452,7 +463,7 @@ previous subexercise.</p>
 </div>
 <div class="section" id="doconce-aborts-because-of-a-syntax-error-that-is-not-an-error">
 <h3>DocOnce aborts because of a syntax error that is not an error<a class="headerlink" href="#doconce-aborts-because-of-a-syntax-error-that-is-not-an-error" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce searches for typical syntax errors and usually aborts the
+<span class="target" id="index-24"></span><p id="index-25">DocOnce searches for typical syntax errors and usually aborts the
 execution if errors are found. However, it may happen,
 especially in verbatim blocks, that DocOnce reports syntax errors
 that are not errors. To continue execution, simply add the
@@ -461,7 +472,7 @@ to the DocOnce author at <code class="docutils literal"><span class="pre">hpl&#6
 </div>
 <div class="section" id="figure-captions-are-incomplete">
 <h3>Figure captions are incomplete<a class="headerlink" href="#figure-captions-are-incomplete" title="Permalink to this headline">¶</a></h3>
-<p>If only the first part of a figure caption in the DocOnce file is seen
+<p id="index-26">If only the first part of a figure caption in the DocOnce file is seen
 in the target output format, the reason is usually that the caption
 occupies multiple lines in the DocOnce file. The figure caption must
 be written as <em>one line</em>, at the same line as the FIGURE keyword.</p>
@@ -473,7 +484,7 @@ correctly. Merge them into one common expression.</p>
 </div>
 <div class="section" id="links-to-local-directories-do-not-work">
 <h3>Links to local directories do not work<a class="headerlink" href="#links-to-local-directories-do-not-work" title="Permalink to this headline">¶</a></h3>
-<p>Links of the type</p>
+<p id="index-27">Links of the type</p>
 <div class="highlight-text"><div class="highlight"><pre>see the &quot;examples directory&quot;: &quot;src/examples&quot;
 </pre></div>
 </div>
@@ -489,7 +500,7 @@ to move all files you link to if you move the primary <code class="docutils lite
 </div>
 <div class="section" id="links-are-not-typeset-correctly">
 <h3>Links are not typeset correctly<a class="headerlink" href="#links-are-not-typeset-correctly" title="Permalink to this headline">¶</a></h3>
-<p>Not all formats will allow formatting of the links. Verbatim words
+<p id="index-28">Not all formats will allow formatting of the links. Verbatim words
 in links are allowed if the whole link is typeset in verbatim:</p>
 <div class="highlight-text"><div class="highlight"><pre>see the directory &quot;`examples`&quot;: &quot;src/examples/index.html&quot;.
 </pre></div>
@@ -503,7 +514,7 @@ in the line above it.</p>
 </div>
 <div class="section" id="inline-verbatim-code-or-boldface-is-not-detected-when-used-with-a-footnote">
 <h3>Inline verbatim code or boldface is not detected when used with a footnote<a class="headerlink" href="#inline-verbatim-code-or-boldface-is-not-detected-when-used-with-a-footnote" title="Permalink to this headline">¶</a></h3>
-<p>There must be a space between the verbatim code (or boldface words)
+<p id="index-29">There must be a space between the verbatim code (or boldface words)
 and the footnote bracket:</p>
 <div class="highlight-doconce"><div class="highlight"><pre>The construction `def f(x,y):`[^whitespace] is standard.
 
@@ -514,15 +525,15 @@ would be the standard.
 </div>
 <div class="section" id="inline-verbatim-code-is-not-detected">
 <h3>Inline verbatim code is not detected<a class="headerlink" href="#inline-verbatim-code-is-not-detected" title="Permalink to this headline">¶</a></h3>
-<p>Make sure there is a space before the first back-tick.</p>
+<p id="index-30">Make sure there is a space before the first back-tick.</p>
 </div>
 <div class="section" id="inline-verbatim-text-is-not-formatted-correctly">
 <h3>Inline verbatim text is not formatted correctly<a class="headerlink" href="#inline-verbatim-text-is-not-formatted-correctly" title="Permalink to this headline">¶</a></h3>
-<p>Make sure there is whitespace surrounding the text in back-ticks.</p>
+<p id="index-31">Make sure there is whitespace surrounding the text in back-ticks.</p>
 </div>
 <div class="section" id="strange-non-english-characters">
 <h3>Strange non-English characters<a class="headerlink" href="#strange-non-english-characters" title="Permalink to this headline">¶</a></h3>
-<p>The former reason for this problem is that DocOnce could only work with latin1
+<p id="index-32">The former reason for this problem is that DocOnce could only work with latin1
 (ISO-8859) encoding and not UTF-8. After May 2013, DocOnce applies
 UTF-8 both for HTML and LaTeX.</p>
 <p>Check the encoding of the <code class="docutils literal"><span class="pre">.do.txt</span></code> file with the Unix <code class="docutils literal"><span class="pre">file</span></code> command
@@ -539,7 +550,7 @@ Terminal&gt; iconv -t utf-8 -f latin1 myfile.do.txt --output newfile
 </div>
 <div class="section" id="wrong-norwegian-characters">
 <h3>Wrong Norwegian characters<a class="headerlink" href="#wrong-norwegian-characters" title="Permalink to this headline">¶</a></h3>
-<p>When DocOnce documents have characters not in the standard ASCII set,
+<p id="index-33">When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be UTF-8. See
 the section &#8220;Strange non-English characters&#8221; above for how to
 run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">change_encoding</span></code> to change the encoding of the DocOnce file.</p>
@@ -576,7 +587,7 @@ for Emacs to handle.</p>
 </div>
 <div class="section" id="my-machine-hangs-if-i-have-many-movies">
 <h3>My machine hangs if I have many movies<a class="headerlink" href="#my-machine-hangs-if-i-have-many-movies" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce has no limits on the amount of movies. When the output is
+<p id="index-34">DocOnce has no limits on the amount of movies. When the output is
 in HTML, one big HTML file may contain too many movies (local movie
 files or embedded YouTube movies) for the browser to handle.
 The remedy is to split the document into smaller pieces by inserting</p>
@@ -590,7 +601,7 @@ a main document <code class="docutils literal"><span class="pre">mydoc.html</spa
 </div>
 <div class="section" id="how-can-i-use-quotes-in-a-link">
 <h3>How can I use quotes in a link?<a class="headerlink" href="#how-can-i-use-quotes-in-a-link" title="Permalink to this headline">¶</a></h3>
-<p>Links are typeset inside double quotes, but DocOnce applies double backticks
+<p id="index-35">Links are typeset inside double quotes, but DocOnce applies double backticks
 and double single quotes to typeset quotes, so the right form is</p>
 <div class="highlight-text"><div class="highlight"><pre>&quot;This is a ``link text&#39;&#39; to google&quot;: &quot;http://google.com&quot;.
 </pre></div>
@@ -601,30 +612,9 @@ and double single quotes to typeset quotes, so the right form is</p>
 </div>
 <div class="section" id="conversion-from-doconce-to-google-docs">
 <h3>Conversion from DocOnce to Google Docs<a class="headerlink" href="#conversion-from-doconce-to-google-docs" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li>Transform the DocOnce document to HTML, upload to Google Drive,
-right-click the file and open as Google Docs.</li>
-<li>It might be necessary to adjust formatting, e.g., insert an extra
-line between paragraphs.</li>
-<li>MathJax code is not converted to the Google Docs LaTeX counterpart
-and appears verbatim.</li>
-<li>Pygmentized computer code and admons look fine.</li>
-</ul>
-</div></blockquote>
 </div>
 <div class="section" id="convesion-from-google-docs-to-doconce">
 <h3>Convesion from Google Docs to DocOnce<a class="headerlink" href="#convesion-from-google-docs-to-doconce" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li>Save as HTML file and use Pandoc to convert to Markdown.
-Use the <code class="docutils literal"><span class="pre">--markdown</span></code> and <code class="docutils literal"><span class="pre">--md2do_output=</span></code> options to
-<a href="#id1"><span class="problematic" id="id2">`</span></a>doconce format to convert to DocOnce.</li>
-<li>Lists in Markdown must be intended.</li>
-<li>Notes in Google Docs become (potentially many) footnotes.
-Some tailored editing is necessary.</li>
-</ul>
-</div></blockquote>
 <p>This solution is not much explored and more text transformations from
 Pandoc-generated Markdown is certainly needed.</p>
 </div>
@@ -724,7 +714,7 @@ This is a major problem with pressbooks.com.</p>
 </div>
 <div class="section" id="how-can-i-produce-epub-books-from-doconce">
 <span id="trouble-epub"></span><h3>How can I produce ePub books from DocOnce?<a class="headerlink" href="#how-can-i-produce-epub-books-from-doconce" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce has no direct translation to ePub, but one can apply a script
+<p id="index-36">DocOnce has no direct translation to ePub, but one can apply a script
 <a class="reference external" href="https://github.com/hplgit/ebookmaker">ebookmaker.py</a> to translate
 a set of split HTML files to ePub. Bootstrap styles with mathematics
 and code come out very nice in ePub this way.
@@ -777,7 +767,7 @@ on computers or use ebook readers on phones and tablets.</p>
 </div>
 <div class="section" id="what-about-non-english-languages-and-doconce">
 <span id="trouble-non-english"></span><h3>What about non-English languages and DocOnce?<a class="headerlink" href="#what-about-non-english-languages-and-doconce" title="Permalink to this headline">¶</a></h3>
-<p>DocOnce can handle non-English language, although most of its use has
+<p id="index-37">DocOnce can handle non-English language, although most of its use has
 concerned documents in English. When writing in languages with
 non-ASCII characters, remember to use the command-line option
 <code class="docutils literal"><span class="pre">--encoding=utf-8</span></code>.
@@ -821,17 +811,9 @@ where we do all necessary adjustments mentioned above:</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="how-do-i-insert-a-copyright">
-<span id="trouble-copyright"></span><h3>How do I insert a copyright?<a class="headerlink" href="#how-do-i-insert-a-copyright" title="Permalink to this headline">¶</a></h3>
-<p>See the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright">Copyright section of the DocOnce manual</a>.</p>
-<div class="section" id="other-formats">
-<h4>Other formats<a class="headerlink" href="#other-formats" title="Permalink to this headline">¶</a></h4>
-<p>An error message is provided.</p>
-</div>
-</div>
 <div class="section" id="lists-look-wrong">
 <h3>Lists look wrong<a class="headerlink" href="#lists-look-wrong" title="Permalink to this headline">¶</a></h3>
-<p>It is very important to be accurate with white space in lists.
+<p id="index-38">It is very important to be accurate with white space in lists.
 There must be exactly <em>one blank</em> between the <code class="docutils literal"><span class="pre">o</span></code> or <code class="docutils literal"><span class="pre">*</span></code> that
 starts an item and the following text, and multiple lines in an
 item must be perfectly aligned. Here are some typical errors:</p>
@@ -879,7 +861,7 @@ to <code class="docutils literal"><span class="pre">'T</span> <span class="pre">
 </div>
 <div class="section" id="the-mako-preprocessor-has-problems-with-lines-starting-with-percent-sign">
 <h3>The Mako preprocessor has problems with lines starting with percent sign<a class="headerlink" href="#the-mako-preprocessor-has-problems-with-lines-starting-with-percent-sign" title="Permalink to this headline">¶</a></h3>
-<p id="index-2">If you have lines starting with <code class="docutils literal"><span class="pre">%</span></code> inside code segments (for example,
+<p id="index-39">If you have lines starting with <code class="docutils literal"><span class="pre">%</span></code> inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
 because it thinks these lines are Mako statements. DocOnce detects
 this problem and emits an error message. The solution to
@@ -901,14 +883,14 @@ end
 </div>
 <div class="section" id="the-mako-preprocessor-gives-syntax-error-in-python-code">
 <h3>The Mako preprocessor gives syntax error in Python code<a class="headerlink" href="#the-mako-preprocessor-gives-syntax-error-in-python-code" title="Permalink to this headline">¶</a></h3>
-<p>The information with respect to syntax errors in Python code is
+<p id="index-40">The information with respect to syntax errors in Python code is
 sparse. It is recommended to move the Python code to separate files
 and test it with the ordinary Python interpreter. See the
 section <em>Debugging Python code in Mako</em> in the DocOnce manual.</p>
 </div>
 <div class="section" id="the-mako-preprocessor-gives-strange-error-messages">
 <h3>The Mako preprocessor gives strange error messages<a class="headerlink" href="#the-mako-preprocessor-gives-strange-error-messages" title="Permalink to this headline">¶</a></h3>
-<p id="index-3">If you to a little syntax error in Mako, the consequences can be
+<p id="index-41">If you to a little syntax error in Mako, the consequences can be
 quite unpredictable. Especially, if you forget curly braces around
 variables or function calls, the forthcoming text is processed as
 part of the Mako command. Pay attention to the line number reported
@@ -935,7 +917,7 @@ what can be wrong.</p>
 </div>
 <div class="section" id="the-mako-preprocessor-claims-a-variable-is-undefined">
 <h3>The Mako preprocessor claims a variable is undefined<a class="headerlink" href="#the-mako-preprocessor-claims-a-variable-is-undefined" title="Permalink to this headline">¶</a></h3>
-<p id="index-4">Very often such errors are related to typos when using Mako
+<p id="index-42">Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
 For example,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>${\cal O}(\Delta x^2)$
@@ -967,7 +949,7 @@ for large books.</p>
 </div>
 <div class="section" id="something-goes-wrong-in-the-preprocessing-step">
 <h3>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h3>
-<p>You can examine <code class="docutils literal"><span class="pre">tmp_preprocess__filename</span></code> and <code class="docutils literal"><span class="pre">tmp_mako__filename</span></code>,
+<p id="index-43">You can examine <code class="docutils literal"><span class="pre">tmp_preprocess__filename</span></code> and <code class="docutils literal"><span class="pre">tmp_mako__filename</span></code>,
 where <code class="docutils literal"><span class="pre">filename</span></code> is the complete name of the DocOnce file, to see
 what the preprocessors actually to and if something is wrong in these
 files before DocOnce starts translating the text.
@@ -1179,7 +1161,7 @@ when you use DocOnce. Try to rewrite the text such that LaTeX
 naturally avoids too long lines. Inline verbatim can easily force
 LaTeX to extend the line width, but see if you can use other words to
 move the inline verbatim to the left or to the next line.</p>
-<p>A last resort is to use the preprocessor and test on <a href="#id3"><span class="problematic" id="id4">``</span></a>FORMAT == &#8216;pdflatex&#8217;`
+<p>A last resort is to use the preprocessor and test on <a href="#id1"><span class="problematic" id="id2">``</span></a>FORMAT == &#8216;pdflatex&#8217;`
 and then use the double backslash.</p>
 </div>
 <div class="section" id="tables-get-too-wide-need-to-wrap-text-in-the-columns">
@@ -1248,7 +1230,7 @@ section headings and admon headings.</p>
 </div>
 <div class="section" id="how-can-i-customize-the-look-of-an-admonition">
 <h3>How can I customize the look of an admonition?<a class="headerlink" href="#how-can-i-customize-the-look-of-an-admonition" title="Permalink to this headline">¶</a></h3>
-<p id="index-5">The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
+<p id="index-44">The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
@@ -1304,7 +1286,7 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 <span class="k">!enotice</span>
 </pre></div>
 </div>
-<span class="target" id="index-6"></span><span class="target" id="index-7"></span><p id="index-8">A (much) better approach is to define a <em>user-defined environment</em>,
+<span class="target" id="index-45"></span><span class="target" id="index-46"></span><p id="index-47">A (much) better approach is to define a <em>user-defined environment</em>,
 called (e.g.) minipage, see the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir">manual</a>.
 This environment has begin tag <code class="docutils literal"><span class="pre">!bu-minipage</span></code> and end tag
 <code class="docutils literal"><span class="pre">!eu-minipage</span></code>. The environment is defined in a file
@@ -1656,6 +1638,61 @@ for the index by adding <code class="docutils literal"><span class="pre">\cleard
 <p>The <code class="docutils literal"><span class="pre">Springer_sv</span></code> style demands exercises to appear within the <code class="docutils literal"><span class="pre">prob</span></code>
 environment, and the <code class="docutils literal"><span class="pre">svmono.cls</span></code> package typesets <code class="docutils literal"><span class="pre">prob</span></code> with small
 headlines.</p>
+</div>
+<div class="section" id="how-to-typeset-papers-with-specified-style-files">
+<span id="trouble-latex-styles"></span><h3>How to typeset papers with specified style files?<a class="headerlink" href="#how-to-typeset-papers-with-specified-style-files" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="index-48"></span><p id="index-49">DocOnce has the <code class="docutils literal"><span class="pre">--latex_style=</span></code> option for specifying a few LaTeX
+styles for papers and books. This option mostly support book styles,
+since traditionally, paper styles in various journals often have
+special commands for authors, institutions, summary, and so on that are
+cumbersome to support through DocOnce. It was often easier to develop the
+paper in DocOnce and at submission time, manually edit the LaTeX output
+to fit a particular journal style. (SIAM and Elsevier journal have had
+direct support in DocOnce, though.)</p>
+<p>With open access publishing it makes more sense to maintain a paper
+in DocOnce and publish derived and future versions in various electronic
+formats. How to then, at some stage in the process, make a special
+LaTeX version according to a journal&#8217;s style?</p>
+<p>The simplest approach is probably to develop a compilation script that
+performs a set of edits through <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> and <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code>
+commands that turn standard DocOnce LaTeX output into the text required
+for a special journal style. Usually, such edits are about adding
+packages, maybe some special commands, and replacing perhaps title,
+author, date, and summary commands. Below is a sketch how that can be
+done for <a class="reference external" href="https://www.plos.org/">PLOS journals</a>. These journals
+offer a <a class="reference external" href="http://journals.plos.org/plosone/s/latex">LaTeX template</a>
+demonstrating appropriate commands. Some text is needed in the preamble,
+and we can insert that text at the place marked for user-specific
+extensions (&#8220;insert custom LaTeX commands...&#8221;).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<span class="nv">name</span><span class="o">=</span>mydoc
+
+<span class="c"># Compile mydoc.do.txt to latex output mydoc.tex</span>
+doconce format pdflatex <span class="nv">$name</span> --latex_bibstyle<span class="o">=</span>plos2015 --latex_code_style<span class="o">=</span>vrb
+
+<span class="c"># Edit mydoc.tex file</span>
+doconce subst <span class="s1">&#39;% insert custom LaTeX commands...&#39;</span> <span class="s1">&#39;</span>
+<span class="s1">\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}</span>
+<span class="s1">% Text layout</span>
+<span class="s1">\raggedright</span>
+<span class="s1">\setlength{\parindent}{0.5cm}</span>
+<span class="s1">\textwidth 5.25in</span>
+<span class="s1">\textheight 8.75in</span>
+<span class="s1">% Remove brackets from numbering in List of References</span>
+<span class="s1">\makeatletter</span>
+<span class="s1">\renewcommand{\@biblabel}[1]{\quad#1.}</span>
+<span class="s1">\makeatother</span>
+<span class="s1">\usepackage[right]{lineno}</span>
+<span class="s1">\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}&#39;</span> <span class="nv">$name</span>.tex
+
+<span class="c"># Compile the usual way</span>
+pdflatex <span class="nv">$name</span>
+</pre></div>
+</div>
+<p>This example hopefully gives some ideas how to create specialized
+LaTeX output from DocOnce documents. If the journal style employs
+special LaTeX environments, see the section <a class="reference internal" href="#trouble-latex-envir-native"><span class="std std-ref">How can I make use of a native LaTeX environments (example environment for instance)?</span></a>
+how to utilize these from DocOnce.</p>
 <p>gwiki</p>
 </div>
 <div class="section" id="strange-nested-lists-in-gwiki">
@@ -1878,6 +1915,10 @@ clickable.</p>
 <li><a class="reference internal" href="#movies-will-not-play-in-my-broswer">Movies will not play in my broswer</a></li>
 <li><a class="reference internal" href="#reveal-slides-look-strange-in-the-browser">Reveal slides look strange in the browser</a></li>
 <li><a class="reference internal" href="#how-can-i-control-the-vertical-spacing-in-slides">How can I control the vertical spacing in slides?</a></li>
+<li><a class="reference internal" href="#how-do-i-insert-a-copyright">How do I insert a copyright?</a><ul>
+<li><a class="reference internal" href="#other-formats">Other formats</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#how-can-i-get-a-copyright-on-every-slide-page">How can I get a copyright on every slide page?</a></li>
 <li><a class="reference internal" href="#how-do-i-get-figure-written-in-another-language">How do I get &#8220;Figure&#8221; written in another language?</a></li>
 <li><a class="reference internal" href="#spellcheck-reports-mistakes-that-i-cannot-find">Spellcheck reports mistakes that I cannot find</a></li>
@@ -1910,10 +1951,6 @@ clickable.</p>
 <li><a class="reference internal" href="#how-can-i-make-pressbooks-com-books-from-doconce">How can I make pressbooks.com books from DocOnce?</a></li>
 <li><a class="reference internal" href="#how-can-i-produce-epub-books-from-doconce">How can I produce ePub books from DocOnce?</a></li>
 <li><a class="reference internal" href="#what-about-non-english-languages-and-doconce">What about non-English languages and DocOnce?</a></li>
-<li><a class="reference internal" href="#how-do-i-insert-a-copyright">How do I insert a copyright?</a><ul>
-<li><a class="reference internal" href="#other-formats">Other formats</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#lists-look-wrong">Lists look wrong</a></li>
 <li><a class="reference internal" href="#how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document">How can I get an overview of all files that are included in a document?</a></li>
 </ul>
@@ -1985,6 +2022,7 @@ clickable.</p>
 <li><a class="reference internal" href="#page-numbers-appear-in-both-header-and-footer">Page numbers appear in both header and footer</a></li>
 <li><a class="reference internal" href="#links-in-the-table-of-contents-go-to-wrong-page">Links in the table of contents go to wrong page</a></li>
 <li><a class="reference internal" href="#exercises-in-the-springer-sv-style-looks-strange">Exercises in the <code class="docutils literal"><span class="pre">Springer_sv</span></code> style looks strange</a></li>
+<li><a class="reference internal" href="#how-to-typeset-papers-with-specified-style-files">How to typeset papers with specified style files?</a></li>
 <li><a class="reference internal" href="#strange-nested-lists-in-gwiki">=====  Strange nested lists in gwiki</a></li>
 <li><a class="reference internal" href="#lists-in-gwiki-look-ugly-in-the-gwiki-source">Lists in gwiki look ugly in the gwiki source</a></li>
 </ul>
@@ -2058,7 +2096,7 @@ clickable.</p>
     <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
     <br />
     <br />
-      &copy;2015, Hans Petter Langtangen.
+      &copy;2016, Hans Petter Langtangen.
   </div>
 </div>
 

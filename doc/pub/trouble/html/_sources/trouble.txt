@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Dec 10, 2015
+:Date: Jan 9, 2016
 
 
 .. admonition:: Disclaimer
@@ -36,6 +36,10 @@ General topics
 How do I debug a DocOnce file that results in a strange error message?
 ----------------------------------------------------------------------
 
+.. index:: how to debug DocOnce
+
+.. index:: debugging DocOnce
+
 Isolate the problem by a "bisection" method: split the file in two, compile
 both parts, continue with the part that gave the problem, and repeat
 the process. This will quickly narrow down the text so you ultimately understand
@@ -46,6 +50,10 @@ gives an error message, try to rewrite.
 
 How do I cite and link to DocOnce?
 ----------------------------------
+
+.. index:: cite
+
+.. index:: acknowledge the DocOnce software
 
 See the "How to cite" section
 on the `project page <https://github.com/hplgit/doconce>`__.
@@ -191,6 +199,11 @@ this:
 GitHub gh-pages will not display files starting with a dot or underscore
 ------------------------------------------------------------------------
 
+.. index:: missing files
+
+.. index::
+   single: GitHub gh-pages; missing files
+
 This is a typical problem related to publishing either splitted HTML documents
 or Sphinx versions of documents on GitHub, using a gh-pages branch.
 Filenames starting with a dot (as in ``._mydoc001.html``) or located in
@@ -210,6 +223,11 @@ A typical fix is
 GitHub gh-pages will not display files
 --------------------------------------
 
+.. index:: missing files
+
+.. index::
+   single: GitHub gh-pages; missing files
+
 A common error is to link to addresses starting with ``https://github.com``
 rather than the required ``http://username.github.io/``.
 
@@ -223,6 +241,10 @@ numbered equations in ``align``). If a linebreak ``\\`` in the ``align``
 environment appears on its own line, this line will be blank in the
 equation environment and cause the error message. Simply move the
 linebreak up at the end of the preceding line.
+
+**Note:**
+This kind of errors are now automatically removed (since
+Dec, 2015).
 
 A newline in equations (double backslash) becomes single backslash and eats up spaces
 -------------------------------------------------------------------------------------
@@ -277,6 +299,12 @@ end of the coloring. Here is an example:
 How can I make use of a native LaTeX environments (example environment for instance)?
 -------------------------------------------------------------------------------------
 
+.. index:: LaTeX environments
+
+.. index:: LaTeX styles
+
+.. index:: tailor LaTeX output
+
 LaTeX writers often lack their favorite environments, but DocOnce has
 a way to define such environments, with corresponding typesetting also
 for HTML and all other output formats. See the section `User-Defined
@@ -305,6 +333,8 @@ formats) or wikis.
 Movies will not play in my broswer
 ----------------------------------
 
+.. index:: movie problems
+
 Are you using Safari as browser? It will not play Ogg and WebM movies.
 A message in a box should notify you about this (right below the movie
 player).
@@ -312,11 +342,15 @@ player).
 Reveal slides look strange in the browser
 -----------------------------------------
 
+.. index:: slides problems
+
 Are you using Safari as browser? reveal.js slides work best in
 Firefox, Chrome, or Opera.
 
 How can I control the vertical spacing in slides?
 -------------------------------------------------
+
+.. index:: slides problems
 
 HTML5 and LaTeX slides control the spacings for you. However, sometimes
 you really want to add some space. The ``<linebreak>`` is effective for
@@ -356,8 +390,24 @@ More vertical space is obtained by repeated use of ``<linebreak>``:
         <linebreak>
         <linebreak>
 
+.. _trouble:copyright:
+
+How do I insert a copyright?
+----------------------------
+
+.. index:: copyright
+
+See the `Copyright section of the DocOnce manual <http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright>`__.
+
+Other formats
+~~~~~~~~~~~~~
+
+An error message is provided.
+
 How can I get a copyright on every slide page?
 ----------------------------------------------
+
+.. index:: copyright
 
 HTML formats:
 Use the ``--copyright=everypage`` option in the ``doconce split_html`` or
@@ -375,6 +425,12 @@ command in order to get any copyright notice at all.
 
 How do I get "Figure" written in another language?
 --------------------------------------------------
+
+.. index:: locale
+
+.. index:: multi-language support
+
+.. index:: non-English language support
 
 DocOnce documents can be written in any language, but figure captions
 typically contain the English word "Figure". This must be fixed
@@ -403,6 +459,8 @@ or both in one command using regular expressions:
 
 Spellcheck reports mistakes that I cannot find
 ----------------------------------------------
+
+.. index:: spellcheck problems
 
 The ``doconce spellcheck`` command strips off a lot of text
 (math, code, syntax tags) before it starts spellchecking. The
@@ -435,6 +493,8 @@ commands to search for such errors:
 Spellcheck reports a lot of mistakes related to LaTeX math
 ----------------------------------------------------------
 
+.. index:: spellcheck problems
+
 The ``doconce spellcheck`` command should ignore LaTeX math, but if
 the dollar signs for inline math are not correct (one missing, for instance),
 a lot of math enters the text to be spellchecked. Invoke the
@@ -453,6 +513,8 @@ of equation environments between ``!bt`` and ``!et``.
 Text between subexercises are moved
 -----------------------------------
 
+.. index:: exercise problems
+
 If you insert text between a ``!esubex`` and the next ``!bsubex``, this
 text is moved before all the subexercises. This is a feature, not a
 bug (exercises have certain elements: main text, subexercises, hints,
@@ -464,6 +526,12 @@ previous subexercise.
 DocOnce aborts because of a syntax error that is not an error
 -------------------------------------------------------------
 
+.. index::
+   single: abortion, undesired/wrong
+
+.. index::
+   single: termination, undesired/wrong
+
 DocOnce searches for typical syntax errors and usually aborts the
 execution if errors are found. However, it may happen,
 especially in verbatim blocks, that DocOnce reports syntax errors
@@ -473,6 +541,8 @@ to the DocOnce author at ``hpl@simula.no`` and report the problem.
 
 Figure captions are incomplete
 ------------------------------
+
+.. index:: figure caption problems
 
 If only the first part of a figure caption in the DocOnce file is seen
 in the target output format, the reason is usually that the caption
@@ -487,6 +557,8 @@ correctly. Merge them into one common expression.
 
 Links to local directories do not work
 --------------------------------------
+
+.. index:: link problems
 
 Links of the type
 
@@ -509,6 +581,8 @@ to move all files you link to if you move the primary ``.html`` file.
 Links are not typeset correctly
 -------------------------------
 
+.. index:: link problems
+
 Not all formats will allow formatting of the links. Verbatim words
 in links are allowed if the whole link is typeset in verbatim:
 
@@ -528,6 +602,8 @@ in the line above it.
 Inline verbatim code or boldface is not detected when used with a footnote
 --------------------------------------------------------------------------
 
+.. index:: verbatim inline code problems
+
 There must be a space between the verbatim code (or boldface words)
 and the footnote bracket:
 
@@ -541,15 +617,21 @@ and the footnote bracket:
 Inline verbatim code is not detected
 ------------------------------------
 
+.. index:: verbatim inline code problems
+
 Make sure there is a space before the first back-tick.
 
 Inline verbatim text is not formatted correctly
 -----------------------------------------------
 
+.. index:: verbatim inline code problems
+
 Make sure there is whitespace surrounding the text in back-ticks.
 
 Strange non-English characters
 ------------------------------
+
+.. index:: non-English language support
 
 The former reason for this problem is that DocOnce could only work with latin1
 (ISO-8859) encoding and not UTF-8. After May 2013, DocOnce applies
@@ -572,6 +654,8 @@ using either of the Unix commands
 
 Wrong Norwegian characters
 --------------------------
+
+.. index:: non-English language support
 
 When DocOnce documents have characters not in the standard ASCII set,
 the format of the file must be UTF-8. See
@@ -615,6 +699,8 @@ for Emacs to handle.
 My machine hangs if I have many movies
 --------------------------------------
 
+.. index:: movie problems
+
 DocOnce has no limits on the amount of movies. When the output is
 in HTML, one big HTML file may contain too many movies (local movie
 files or embedded YouTube movies) for the browser to handle.
@@ -631,6 +717,8 @@ a main document ``mydoc.html`` and pieces ``._mydocXXX.html``, where
 
 How can I use quotes in a link?
 -------------------------------
+
+.. index:: link problems
 
 Links are typeset inside double quotes, but DocOnce applies double backticks
 and double single quotes to typeset quotes, so the right form is
@@ -651,6 +739,8 @@ It appears as (typset in a ``quote`` admon):
 Conversion from DocOnce to Google Docs
 --------------------------------------
 
+.. index:: Google docs support
+
  * Transform the DocOnce document to HTML, upload to Google Drive,
    right-click the file and open as Google Docs.
 
@@ -664,6 +754,8 @@ Conversion from DocOnce to Google Docs
 
 Convesion from Google Docs to DocOnce
 -------------------------------------
+
+.. index:: Google docs support
 
  * Save as HTML file and use Pandoc to convert to Markdown.
    Use the ``--markdown`` and ``--md2do_output=`` options to
@@ -796,6 +888,8 @@ This is a major problem with pressbooks.com.
 How can I produce ePub books from DocOnce?
 ------------------------------------------
 
+.. index:: epub format
+
 DocOnce has no direct translation to ePub, but one can apply a script
 `ebookmaker.py <https://github.com/hplgit/ebookmaker>`__ to translate
 a set of split HTML files to ePub. Bootstrap styles with mathematics
@@ -854,6 +948,8 @@ on computers or use ebook readers on phones and tablets.
 What about non-English languages and DocOnce?
 ---------------------------------------------
 
+.. index:: non-English language support
+
 DocOnce can handle non-English language, although most of its use has
 concerned documents in English. When writing in languages with
 non-ASCII characters, remember to use the command-line option
@@ -901,20 +997,10 @@ where we do all necessary adjustments mentioned above:
 
  * `Sphinx <http://hplgit.github.io/doconce/doc/pub/locale/sphinx/index.html>`__
 
-.. _trouble:copyright:
-
-How do I insert a copyright?
-----------------------------
-
-See the `Copyright section of the DocOnce manual <http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright>`__.
-
-Other formats
-~~~~~~~~~~~~~
-
-An error message is provided.
-
 Lists look wrong
 ----------------
+
+.. index:: list problems
 
 It is very important to be accurate with white space in lists.
 There must be exactly *one blank* between the ``o`` or ``*`` that
@@ -1016,6 +1102,8 @@ as demonstrated here:
 The Mako preprocessor gives syntax error in Python code
 -------------------------------------------------------
 
+.. index:: debugging Mako code
+
 The information with respect to syntax errors in Python code is
 sparse. It is recommended to move the Python code to separate files
 and test it with the ordinary Python interpreter. See the
@@ -1024,7 +1112,7 @@ section *Debugging Python code in Mako* in the DocOnce manual.
 The Mako preprocessor gives strange error messages
 --------------------------------------------------
 
-.. index:: debugging Mako
+.. index:: debugging Mako code
 
 If you to a little syntax error in Mako, the consequences can be
 quite unpredictable. Especially, if you forget curly braces around
@@ -1098,6 +1186,8 @@ for large books.
 
 Something goes wrong in the preprocessing step
 ----------------------------------------------
+
+.. index:: preprocessed files
 
 You can examine ``tmp_preprocess__filename`` and ``tmp_mako__filename``,
 where ``filename`` is the complete name of the DocOnce file, to see
@@ -1937,6 +2027,72 @@ Exercises in the ``Springer_sv`` style looks strange
 The ``Springer_sv`` style demands exercises to appear within the ``prob``
 environment, and the ``svmono.cls`` package typesets ``prob`` with small
 headlines.
+
+.. _trouble:latex:styles:
+
+How to typeset papers with specified style files?
+-------------------------------------------------
+
+.. index:: tailor LaTeX output
+
+.. index:: LaTeX styles
+
+DocOnce has the ``--latex_style=`` option for specifying a few LaTeX
+styles for papers and books. This option mostly support book styles,
+since traditionally, paper styles in various journals often have
+special commands for authors, institutions, summary, and so on that are
+cumbersome to support through DocOnce. It was often easier to develop the
+paper in DocOnce and at submission time, manually edit the LaTeX output
+to fit a particular journal style. (SIAM and Elsevier journal have had
+direct support in DocOnce, though.)
+
+With open access publishing it makes more sense to maintain a paper
+in DocOnce and publish derived and future versions in various electronic
+formats. How to then, at some stage in the process, make a special
+LaTeX version according to a journal's style?
+
+The simplest approach is probably to develop a compilation script that
+performs a set of edits through ``doconce replace`` and ``doconce subst``
+commands that turn standard DocOnce LaTeX output into the text required
+for a special journal style. Usually, such edits are about adding
+packages, maybe some special commands, and replacing perhaps title,
+author, date, and summary commands. Below is a sketch how that can be
+done for `PLOS journals <https://www.plos.org/>`__. These journals
+offer a `LaTeX template <http://journals.plos.org/plosone/s/latex>`__
+demonstrating appropriate commands. Some text is needed in the preamble,
+and we can insert that text at the place marked for user-specific
+extensions ("insert custom LaTeX commands...").
+
+.. code-block:: bash
+
+        #!/bin/bash
+        name=mydoc
+        
+        # Compile mydoc.do.txt to latex output mydoc.tex
+        doconce format pdflatex $name --latex_bibstyle=plos2015 --latex_code_style=vrb
+        
+        # Edit mydoc.tex file
+        doconce subst '% insert custom LaTeX commands...' '
+        \usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+        % Text layout
+        \raggedright
+        \setlength{\parindent}{0.5cm}
+        \textwidth 5.25in
+        \textheight 8.75in
+        % Remove brackets from numbering in List of References
+        \makeatletter
+        \renewcommand{\@biblabel}[1]{\quad#1.}
+        \makeatother
+        \usepackage[right]{lineno}
+        \usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}' $name.tex
+        
+        # Compile the usual way
+        pdflatex $name
+
+This example hopefully gives some ideas how to create specialized
+LaTeX output from DocOnce documents. If the journal style employs
+special LaTeX environments, see the section :ref:`trouble:latex:envir:native`
+how to utilize these from DocOnce.
 
 .. !split
 

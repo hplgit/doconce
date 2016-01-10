@@ -697,7 +697,7 @@ mathematics, and for this purpose one should use `doconce md2html`:
 
 !bc sys
 Terminal> doconce format pandoc mydoc
-Terminal> doconce m2html mydoc
+Terminal> doconce md2html mydoc
 !ec
 The result `mydoc.html` can be viewed in a browser.
 
@@ -1483,7 +1483,7 @@ Terminal> rst2odt.py   mydoc.rst > mydoc.odt  # OpenOffice
 
 The OpenOffice file `mydoc.odt` can be loaded into OpenOffice and
 saved in, among other things, the RTF format or the Microsoft Word format.
-However, it is more convenient to use the program `unovonv`
+However, it is more convenient to use the program `unoconv`
 to convert between the many formats OpenOffice supports *on the command line*.
 Run
 !bc sys

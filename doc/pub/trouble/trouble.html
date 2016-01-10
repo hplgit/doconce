@@ -7,7 +7,7 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="DocOnce Troubleshooting and FAQ">
-<meta name="keywords" content="underscores,open links in new windows,Mako tips/problems,percent sign problems,debugging Mako,undefined Mako variable,customized admon,user-defined environments,minipage environment">
+<meta name="keywords" content="how to debug DocOnce,debugging DocOnce,cite,acknowledge the DocOnce software,underscores,missing files,GitHub gh-pages missing files,missing files,GitHub gh-pages missing files,LaTeX environments,LaTeX styles,tailor LaTeX output,open links in new windows,movie problems,slides problems,slides problems,copyright,copyright,locale,multi-language support,non-English language support,spellcheck problems,spellcheck problems,exercise problems,abortion, undesired/wrong,termination, undesired/wrong,figure caption problems,link problems,link problems,verbatim inline code problems,verbatim inline code problems,verbatim inline code problems,non-English language support,non-English language support,movie problems,link problems,Google docs support,Google docs support,epub format,non-English language support,list problems,Mako tips/problems,percent sign problems,debugging Mako code,debugging Mako code,undefined Mako variable,preprocessed files,customized admon,user-defined environments,minipage environment,tailor LaTeX output,LaTeX styles">
 
 <title>DocOnce Troubleshooting and FAQ</title>
 
@@ -93,10 +93,15 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec19'),
+              ('How do I insert a copyright?',
+               2,
+               'trouble:copyright',
+               'trouble:copyright'),
+              ('Other formats', 3, None, '___sec21'),
               ('How can I get a copyright on every slide page?',
                2,
                None,
-               '___sec20'),
+               '___sec22'),
               ("How do I get ``Figure'' written in another language?",
                2,
                'latex:custom:fig:name',
@@ -104,65 +109,65 @@ Automatically generated HTML file from DocOnce source
               ('Spellcheck reports mistakes that I cannot find',
                2,
                None,
-               '___sec22'),
+               '___sec24'),
               ('Spellcheck reports a lot of mistakes related to LaTeX math',
                2,
                None,
-               '___sec23'),
-              ('Text between subexercises are moved', 2, None, '___sec24'),
+               '___sec25'),
+              ('Text between subexercises are moved', 2, None, '___sec26'),
               ('DocOnce aborts because of a syntax error that is not an error',
                2,
                None,
-               '___sec25'),
-              ('Figure captions are incomplete', 2, None, '___sec26'),
-              ('Problems with boldface and emphasize', 2, None, '___sec27'),
-              ('Links to local directories do not work', 2, None, '___sec28'),
-              ('Links are not typeset correctly', 2, None, '___sec29'),
+               '___sec27'),
+              ('Figure captions are incomplete', 2, None, '___sec28'),
+              ('Problems with boldface and emphasize', 2, None, '___sec29'),
+              ('Links to local directories do not work', 2, None, '___sec30'),
+              ('Links are not typeset correctly', 2, None, '___sec31'),
               ('Inline verbatim code or boldface is not detected when used with a footnote',
                2,
                None,
-               '___sec30'),
-              ('Inline verbatim code is not detected', 2, None, '___sec31'),
+               '___sec32'),
+              ('Inline verbatim code is not detected', 2, None, '___sec33'),
               ('Inline verbatim text is not formatted correctly',
                2,
                None,
-               '___sec32'),
-              ('Strange non-English characters', 2, None, '___sec33'),
-              ('Wrong Norwegian characters', 2, None, '___sec34'),
+               '___sec34'),
+              ('Strange non-English characters', 2, None, '___sec35'),
+              ('Wrong Norwegian characters', 2, None, '___sec36'),
               ('Too short underlining of reST headlines',
                2,
                None,
-               '___sec35'),
+               '___sec37'),
               ('Found `!bt` but no tex blocks extracted (BUG)',
                2,
                None,
-               '___sec36'),
+               '___sec38'),
               ('Examples are typset with environment delimiters visible',
                2,
                None,
-               '___sec37'),
+               '___sec39'),
               ('Emacs editing does not work properly because of "regexp overflow"',
                2,
                None,
-               '___sec38'),
-              ('My machine hangs if I have many movies', 2, None, '___sec39'),
-              ('How can I use quotes in a link?', 2, None, '___sec40'),
-              ('Conversion from DocOnce to Google Docs', 2, None, '___sec41'),
-              ('Convesion from Google Docs to DocOnce', 2, None, '___sec42'),
+               '___sec40'),
+              ('My machine hangs if I have many movies', 2, None, '___sec41'),
+              ('How can I use quotes in a link?', 2, None, '___sec42'),
+              ('Conversion from DocOnce to Google Docs', 2, None, '___sec43'),
+              ('Convesion from Google Docs to DocOnce', 2, None, '___sec44'),
               ('Are there any tools for shared online writing of DocOnce documents?',
                2,
                None,
-               '___sec43'),
+               '___sec45'),
               ('Examples on seemingly legal syntax that fails',
                2,
                'trouble:pitfalls',
                'trouble:pitfalls'),
-              ('Double bold/italic', 3, None, '___sec45'),
-              ('Mix of bold/italic and math', 3, None, '___sec46'),
+              ('Double bold/italic', 3, None, '___sec47'),
+              ('Mix of bold/italic and math', 3, None, '___sec48'),
               ('How can I make pressbooks.com books from DocOnce?',
                2,
                None,
-               '___sec47'),
+               '___sec49'),
               ('How can I produce ePub books from DocOnce?',
                2,
                'trouble:epub',
@@ -171,11 +176,6 @@ Automatically generated HTML file from DocOnce source
                2,
                'trouble:non_English',
                'trouble:non_English'),
-              ('How do I insert a copyright?',
-               2,
-               'trouble:copyright',
-               'trouble:copyright'),
-              ('Other formats', 3, None, '___sec51'),
               ('Lists look wrong', 2, None, '___sec52'),
               ('How can I get an overview of all files that are included in a document?',
                2,
@@ -376,51 +376,55 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec116'),
-              ('gwiki', 1, None, '___sec117'),
-              ('Strange nested lists in gwiki', 2, None, '___sec118'),
+              ('How to typeset papers with specified style files?',
+               2,
+               'trouble:latex:styles',
+               'trouble:latex:styles'),
+              ('gwiki', 1, None, '___sec118'),
+              ('Strange nested lists in gwiki', 2, None, '___sec119'),
               ('Lists in gwiki look ugly in the gwiki source',
                2,
                None,
-               '___sec119'),
-              ('HTML', 1, None, '___sec120'),
+               '___sec120'),
+              ('HTML', 1, None, '___sec121'),
               ('How can I add a search facility to an HTML document?',
                2,
                None,
-               '___sec121'),
+               '___sec122'),
               ('Translation aborts when labels are not defined',
                2,
                None,
-               '___sec122'),
+               '___sec123'),
               ('MathJax formulas are not properly rendered',
                2,
                None,
-               '___sec123'),
+               '___sec124'),
               ('How can I change the layout of the HTML page?',
                2,
                None,
-               '___sec124'),
-              ('Autoedits of the `.html` file', 3, None, '___sec125'),
-              ('Specify a `.css` file', 3, None, '___sec126'),
-              ('Specify a template', 3, None, '___sec127'),
+               '___sec125'),
+              ('Autoedits of the `.html` file', 3, None, '___sec126'),
+              ('Specify a `.css` file', 3, None, '___sec127'),
+              ('Specify a template', 3, None, '___sec128'),
               ('Why do figures look ugly when using HTML templates?',
                2,
                None,
-               '___sec128'),
-              ('reveal/deck HTML5 slides', 1, None, '___sec129'),
+               '___sec129'),
+              ('reveal/deck HTML5 slides', 1, None, '___sec130'),
               ('Python Online Tutor code does not work in reveal',
                2,
                None,
-               '___sec130'),
+               '___sec131'),
               ('Reveal slides are stacked on top of each other',
                2,
                None,
-               '___sec131'),
+               '___sec132'),
               ('Reveal slides are moving steadily to the left',
                2,
                None,
-               '___sec132'),
-              ('YouTube movies do not work', 2, None, '___sec133'),
-              ('Online Python Tutor does not work', 2, None, '___sec134')]}
+               '___sec133'),
+              ('YouTube movies do not work', 2, None, '___sec134'),
+              ('Online Python Tutor does not work', 2, None, '___sec135')]}
 end of tocinfo -->
 
 <body>
@@ -462,38 +466,38 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Movies will not play in my broswer</a></li>
      <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Reveal slides look strange in the browser</a></li>
      <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I control the vertical spacing in slides?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I get a copyright on every slide page?</a></li>
+     <!-- navigation toc: --> <li><a href="#trouble:copyright" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How do I insert a copyright?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other formats</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I get a copyright on every slide page?</a></li>
      <!-- navigation toc: --> <li><a href="#latex:custom:fig:name" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How do I get ``Figure'' written in another language?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Spellcheck reports mistakes that I cannot find</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Text between subexercises are moved</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce aborts because of a syntax error that is not an error</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figure captions are incomplete</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problems with boldface and emphasize</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Links to local directories do not work</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Links are not typeset correctly</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim code or boldface is not detected when used with a footnote</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim code is not detected</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim text is not formatted correctly</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Strange non-English characters</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wrong Norwegian characters</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec35" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Too short underlining of reST headlines</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Found <code>!bt</code> but no tex blocks extracted (BUG)</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Examples are typset with environment delimiters visible</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Emacs editing does not work properly because of "regexp overflow"</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;My machine hangs if I have many movies</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I use quotes in a link?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conversion from DocOnce to Google Docs</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec42" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Convesion from Google Docs to DocOnce</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec43" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Are there any tools for shared online writing of DocOnce documents?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Spellcheck reports mistakes that I cannot find</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Spellcheck reports a lot of mistakes related to LaTeX math</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Text between subexercises are moved</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;DocOnce aborts because of a syntax error that is not an error</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Figure captions are incomplete</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Problems with boldface and emphasize</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Links to local directories do not work</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Links are not typeset correctly</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec32" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim code or boldface is not detected when used with a footnote</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec33" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim code is not detected</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec34" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Inline verbatim text is not formatted correctly</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec35" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Strange non-English characters</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec36" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Wrong Norwegian characters</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Too short underlining of reST headlines</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec38" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Found <code>!bt</code> but no tex blocks extracted (BUG)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec39" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Examples are typset with environment delimiters visible</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Emacs editing does not work properly because of "regexp overflow"</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;My machine hangs if I have many movies</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec42" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I use quotes in a link?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec43" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Conversion from DocOnce to Google Docs</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Convesion from Google Docs to DocOnce</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec45" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Are there any tools for shared online writing of DocOnce documents?</a></li>
      <!-- navigation toc: --> <li><a href="#trouble:pitfalls" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Examples on seemingly legal syntax that fails</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec45" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double bold/italic</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec46" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mix of bold/italic and math</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec47" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I make pressbooks.com books from DocOnce?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec47" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double bold/italic</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mix of bold/italic and math</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec49" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I make pressbooks.com books from DocOnce?</a></li>
      <!-- navigation toc: --> <li><a href="#trouble:epub" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I produce ePub books from DocOnce?</a></li>
      <!-- navigation toc: --> <li><a href="#trouble:non_English" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;What about non-English languages and DocOnce?</a></li>
-     <!-- navigation toc: --> <li><a href="#trouble:copyright" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How do I insert a copyright?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec51" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other formats</a></li>
      <!-- navigation toc: --> <li><a href="#___sec52" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists look wrong</a></li>
      <!-- navigation toc: --> <li><a href="#___sec53" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I get an overview of all files that are included in a document?</a></li>
      <!-- navigation toc: --> <li><a href="#___sec54" style="font-size: 80%;"><b>Preprocess/Mako</b></a></li>
@@ -559,24 +563,25 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec114" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Page numbers appear in both header and footer</a></li>
      <!-- navigation toc: --> <li><a href="#___sec115" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Links in the table of contents go to wrong page</a></li>
      <!-- navigation toc: --> <li><a href="#___sec116" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercises in the <code>Springer_sv</code> style looks strange</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec117" style="font-size: 80%;"><b>gwiki</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec118" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Strange nested lists in gwiki</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec119" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists in gwiki look ugly in the gwiki source</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec120" style="font-size: 80%;"><b>HTML</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec121" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I add a search facility to an HTML document?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec122" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Translation aborts when labels are not defined</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec123" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;MathJax formulas are not properly rendered</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec124" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I change the layout of the HTML page?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec125" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Autoedits of the <code>.html</code> file</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec126" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify a <code>.css</code> file</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec127" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify a template</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec128" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why do figures look ugly when using HTML templates?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec129" style="font-size: 80%;"><b>reveal/deck HTML5 slides</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec130" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Python Online Tutor code does not work in reveal</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec131" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Reveal slides are stacked on top of each other</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec132" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Reveal slides are moving steadily to the left</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec133" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;YouTube movies do not work</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec134" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Online Python Tutor does not work</a></li>
+     <!-- navigation toc: --> <li><a href="#trouble:latex:styles" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How to typeset papers with specified style files?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec118" style="font-size: 80%;"><b>gwiki</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec119" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Strange nested lists in gwiki</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec120" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Lists in gwiki look ugly in the gwiki source</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec121" style="font-size: 80%;"><b>HTML</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec122" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I add a search facility to an HTML document?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec123" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Translation aborts when labels are not defined</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec124" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;MathJax formulas are not properly rendered</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec125" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;How can I change the layout of the HTML page?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec126" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Autoedits of the <code>.html</code> file</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec127" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify a <code>.css</code> file</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec128" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify a template</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec129" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Why do figures look ugly when using HTML templates?</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec130" style="font-size: 80%;"><b>reveal/deck HTML5 slides</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec131" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Python Online Tutor code does not work in reveal</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec132" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Reveal slides are stacked on top of each other</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec133" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Reveal slides are moving steadily to the left</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec134" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;YouTube movies do not work</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec135" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Online Python Tutor does not work</a></li>
 
         </ul>
       </li>
@@ -610,7 +615,7 @@ end of tocinfo -->
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Dec 10, 2015</h4></center> <!-- date -->
+<center><h4>Jan 9, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -633,35 +638,35 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="#___sec17"> Movies will not play in my broswer </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec18"> Reveal slides look strange in the browser </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec19"> How can I control the vertical spacing in slides? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec20"> How can I get a copyright on every slide page? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#trouble:copyright"> How do I insert a copyright? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec22"> How can I get a copyright on every slide page? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#latex:custom:fig:name"> How do I get &quot;Figure&quot; written in another language? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec22"> Spellcheck reports mistakes that I cannot find </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec23"> Spellcheck reports a lot of mistakes related to LaTeX math </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Text between subexercises are moved </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec25"> DocOnce aborts because of a syntax error that is not an error </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Figure captions are incomplete </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec27"> Problems with boldface and emphasize </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Links to local directories do not work </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Links are not typeset correctly </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Inline verbatim code or boldface is not detected when used with a footnote </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Inline verbatim code is not detected </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Inline verbatim text is not formatted correctly </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Strange non-English characters </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Wrong Norwegian characters </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Too short underlining of reST headlines </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Found <code>!bt</code> but no tex blocks extracted (BUG) </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Examples are typset with environment delimiters visible </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Emacs editing does not work properly because of "regexp overflow" </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec39"> My machine hangs if I have many movies </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec40"> How can I use quotes in a link? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec41"> Conversion from DocOnce to Google Docs </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec42"> Convesion from Google Docs to DocOnce </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Are there any tools for shared online writing of DocOnce documents? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec24"> Spellcheck reports mistakes that I cannot find </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec25"> Spellcheck reports a lot of mistakes related to LaTeX math </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec26"> Text between subexercises are moved </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec27"> DocOnce aborts because of a syntax error that is not an error </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec28"> Figure captions are incomplete </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec29"> Problems with boldface and emphasize </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec30"> Links to local directories do not work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec31"> Links are not typeset correctly </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec32"> Inline verbatim code or boldface is not detected when used with a footnote </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec33"> Inline verbatim code is not detected </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec34"> Inline verbatim text is not formatted correctly </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec35"> Strange non-English characters </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec36"> Wrong Norwegian characters </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec37"> Too short underlining of reST headlines </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec38"> Found <code>!bt</code> but no tex blocks extracted (BUG) </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec39"> Examples are typset with environment delimiters visible </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec40"> Emacs editing does not work properly because of "regexp overflow" </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec41"> My machine hangs if I have many movies </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec42"> How can I use quotes in a link? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec43"> Conversion from DocOnce to Google Docs </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec44"> Convesion from Google Docs to DocOnce </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec45"> Are there any tools for shared online writing of DocOnce documents? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#trouble:pitfalls"> Examples on seemingly legal syntax that fails </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec47"> How can I make pressbooks.com books from DocOnce? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec49"> How can I make pressbooks.com books from DocOnce? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#trouble:epub"> How can I produce ePub books from DocOnce? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#trouble:non_English"> What about non-English languages and DocOnce? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#trouble:copyright"> How do I insert a copyright? </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec52"> Lists look wrong </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec53"> How can I get an overview of all files that are included in a document? </a><br>
 <a href="#___sec54"> Preprocess/Mako </a><br>
@@ -725,21 +730,22 @@ end of tocinfo -->
 &nbsp; &nbsp; &nbsp; <a href="#___sec114"> Page numbers appear in both header and footer </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec115"> Links in the table of contents go to wrong page </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec116"> Exercises in the <code>Springer_sv</code> style looks strange </a><br>
-<a href="#___sec117"> gwiki </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec118"> Strange nested lists in gwiki </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec119"> Lists in gwiki look ugly in the gwiki source </a><br>
-<a href="#___sec120"> HTML </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec121"> How can I add a search facility to an HTML document? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec122"> Translation aborts when labels are not defined </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec123"> MathJax formulas are not properly rendered </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec124"> How can I change the layout of the HTML page? </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec128"> Why do figures look ugly when using HTML templates? </a><br>
-<a href="#___sec129"> reveal/deck HTML5 slides </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec130"> Python Online Tutor code does not work in reveal </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec131"> Reveal slides are stacked on top of each other </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec132"> Reveal slides are moving steadily to the left </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec133"> YouTube movies do not work </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec134"> Online Python Tutor does not work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#trouble:latex:styles"> How to typeset papers with specified style files? </a><br>
+<a href="#___sec118"> gwiki </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec119"> Strange nested lists in gwiki </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec120"> Lists in gwiki look ugly in the gwiki source </a><br>
+<a href="#___sec121"> HTML </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec122"> How can I add a search facility to an HTML document? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec123"> Translation aborts when labels are not defined </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec124"> MathJax formulas are not properly rendered </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec125"> How can I change the layout of the HTML page? </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec129"> Why do figures look ugly when using HTML templates? </a><br>
+<a href="#___sec130"> reveal/deck HTML5 slides </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec131"> Python Online Tutor code does not work in reveal </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec132"> Reveal slides are stacked on top of each other </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec133"> Reveal slides are moving steadily to the left </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec134"> YouTube movies do not work </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec135"> Online Python Tutor does not work </a><br>
 </p>
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Disclaimer.</b>
@@ -962,6 +968,11 @@ environment appears on its own line, this line will be blank in the
 equation environment and cause the error message. Simply move the
 linebreak up at the end of the preceding line.
 
+<p>
+<b>Note:</b>
+This kind of errors are now automatically removed (since
+Dec, 2015).
+
 <h2 id="___sec11">A newline in equations (double backslash) becomes single backslash and eats up spaces </h2>
 
 <p>
@@ -1097,7 +1108,17 @@ More vertical space is obtained by repeated use of <code>&lt;linebreak&gt;</code
 &lt;linebreak&gt;
 </pre></div>
 
-<h2 id="___sec20">How can I get a copyright on every slide page? </h2>
+<h2 id="trouble:copyright">How do I insert a copyright?</h2>
+
+<p>
+See the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright" target="_self">Copyright section of the DocOnce manual</a>.
+
+<h3 id="___sec21">Other formats </h3>
+
+<p>
+An error message is provided.
+
+<h2 id="___sec22">How can I get a copyright on every slide page? </h2>
 
 <p>
 HTML formats:
@@ -1150,7 +1171,7 @@ or both in one command using regular expressions:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce stubst &#39;([Ff]igur)e&#39; &#39;\g&lt;1&gt;&#39; mydoc.html
 </pre></div>
 
-<h2 id="___sec22">Spellcheck reports mistakes that I cannot find </h2>
+<h2 id="___sec24">Spellcheck reports mistakes that I cannot find </h2>
 
 <p>
 The <code>doconce spellcheck</code> command strips off a lot of text
@@ -1186,7 +1207,7 @@ grep --color=auto -E &#39;iu &#39; tmp_stripped_mydoc.do.txt
 grep --color=auto -E &#39;iu&#39; tmp_stripped_mydoc.do.txt
 </pre></div>
 
-<h2 id="___sec23">Spellcheck reports a lot of mistakes related to LaTeX math </h2>
+<h2 id="___sec25">Spellcheck reports a lot of mistakes related to LaTeX math </h2>
 
 <p>
 The <code>doconce spellcheck</code> command should ignore LaTeX math, but if
@@ -1204,7 +1225,7 @@ Find the problem in the corresponding DocOnce file and correct it.
 A similar error can be caused by wrong matching
 of equation environments between <code>!bt</code> and <code>!et</code>.
 
-<h2 id="___sec24">Text between subexercises are moved </h2>
+<h2 id="___sec26">Text between subexercises are moved </h2>
 
 <p>
 If you insert text between a <code>!esubex</code> and the next <code>!bsubex</code>, this
@@ -1215,7 +1236,7 @@ what appears in the DocOnce source file). If you need a comment
 between two subexercises, just place the comment at the end of the
 previous subexercise.
 
-<h2 id="___sec25">DocOnce aborts because of a syntax error that is not an error </h2>
+<h2 id="___sec27">DocOnce aborts because of a syntax error that is not an error </h2>
 
 <p>
 DocOnce searches for typical syntax errors and usually aborts the
@@ -1225,7 +1246,7 @@ that are not errors. To continue execution, simply add the
 <code>--no_abort</code> option on the command line. You may send an email
 to the DocOnce author at <code>hpl@simula.no</code> and report the problem.
 
-<h2 id="___sec26">Figure captions are incomplete </h2>
+<h2 id="___sec28">Figure captions are incomplete </h2>
 
 <p>
 If only the first part of a figure caption in the DocOnce file is seen
@@ -1233,13 +1254,13 @@ in the target output format, the reason is usually that the caption
 occupies multiple lines in the DocOnce file. The figure caption must
 be written as <em>one line</em>, at the same line as the FIGURE keyword.
 
-<h2 id="___sec27">Problems with boldface and emphasize </h2>
+<h2 id="___sec29">Problems with boldface and emphasize </h2>
 
 <p>
 Two boldface or emphasize expressions after each other are not rendered
 correctly. Merge them into one common expression.
 
-<h2 id="___sec28">Links to local directories do not work </h2>
+<h2 id="___sec30">Links to local directories do not work </h2>
 
 <p>
 Links of the type
@@ -1262,7 +1283,7 @@ your files are collected in the Sphinx directory tree bundle.
 With plain <code>html</code> output only, you can link to whatever, but remember
 to move all files you link to if you move the primary <code>.html</code> file.
 
-<h2 id="___sec29">Links are not typeset correctly </h2>
+<h2 id="___sec31">Links are not typeset correctly </h2>
 
 <p>
 Not all formats will allow formatting of the links. Verbatim words
@@ -1283,7 +1304,7 @@ However, the following will not be typeset correctly:
 The back-ticks must be removed, or the text can be reformulated as
 in the line above it.
 
-<h2 id="___sec30">Inline verbatim code or boldface is not detected when used with a footnote </h2>
+<h2 id="___sec32">Inline verbatim code or boldface is not detected when used with a footnote </h2>
 
 <p>
 There must be a space between the verbatim code (or boldface words)
@@ -1298,17 +1319,17 @@ and the footnote bracket:
 would be the standard.
 </pre></div>
 
-<h2 id="___sec31">Inline verbatim code is not detected </h2>
+<h2 id="___sec33">Inline verbatim code is not detected </h2>
 
 <p>
 Make sure there is a space before the first back-tick.
 
-<h2 id="___sec32">Inline verbatim text is not formatted correctly </h2>
+<h2 id="___sec34">Inline verbatim text is not formatted correctly </h2>
 
 <p>
 Make sure there is whitespace surrounding the text in back-ticks.
 
-<h2 id="___sec33">Strange non-English characters </h2>
+<h2 id="___sec35">Strange non-English characters </h2>
 
 <p>
 The former reason for this problem is that DocOnce could only work with latin1
@@ -1333,7 +1354,7 @@ using either of the Unix commands
 Terminal&gt; iconv -t utf-8 -f latin1 myfile.do.txt --output newfile
 </pre></div>
 
-<h2 id="___sec34">Wrong Norwegian characters </h2>
+<h2 id="___sec36">Wrong Norwegian characters </h2>
 
 <p>
 When DocOnce documents have characters not in the standard ASCII set,
@@ -1341,20 +1362,20 @@ the format of the file must be UTF-8. See
 the section "Strange non-English characters" above for how to
 run <code>doconce change_encoding</code> to change the encoding of the DocOnce file.
 
-<h2 id="___sec35">Too short underlining of reST headlines </h2>
+<h2 id="___sec37">Too short underlining of reST headlines </h2>
 
 <p>
 This may happen if there is a paragraph heading without
 proceeding text before some section heading.
 
-<h2 id="___sec36">Found <code>!bt</code> but no tex blocks extracted (BUG) </h2>
+<h2 id="___sec38">Found <code>!bt</code> but no tex blocks extracted (BUG) </h2>
 
 <p>
 This message points to a bug, but has been resolved by removing blank lines
 between the text and the first <code>!bt</code> (inserting the blanks again did not
 trigger the error message again...).
 
-<h2 id="___sec37">Examples are typset with environment delimiters visible </h2>
+<h2 id="___sec39">Examples are typset with environment delimiters visible </h2>
 
 <p>
 If you see an Example section containing <code>!bsubex</code>, <code>!bsol</code>, or other
@@ -1363,7 +1384,7 @@ to typeset examples as exercises, but forgotten the command-line
 option <code>--examples_as_exercises</code>. The text in the example is typeset
 as is unless this option is included.
 
-<h2 id="___sec38">Emacs editing does not work properly because of "regexp overflow" </h2>
+<h2 id="___sec40">Emacs editing does not work properly because of "regexp overflow" </h2>
 
 <p>
 Sometimes the Doonce editing mode (see the
@@ -1375,7 +1396,7 @@ the pieces using the <code>preprocess</code> directive <code>#include &quot;piec
 The error message comes with the DocOnce file contains too much text
 for Emacs to handle.
 
-<h2 id="___sec39">My machine hangs if I have many movies </h2>
+<h2 id="___sec41">My machine hangs if I have many movies </h2>
 
 <p>
 DocOnce has no limits on the amount of movies. When the output is
@@ -1394,7 +1415,7 @@ for every new page. After <code>doconce format html mydoc</code>, run
 a main document <code>mydoc.html</code> and pieces <code>._mydocXXX.html</code>, where
 <code>XXX</code> stands for three digits (<code>000</code>, <code>001</code>, <code>002</code>, and so forth).
 
-<h2 id="___sec40">How can I use quotes in a link? </h2>
+<h2 id="___sec42">How can I use quotes in a link? </h2>
 
 <p>
 Links are typeset inside double quotes, but DocOnce applies double backticks
@@ -1414,7 +1435,7 @@ It appears as (typset in a <code>quote</code> admon):
 </blockquote>
 
 
-<h2 id="___sec41">Conversion from DocOnce to Google Docs </h2>
+<h2 id="___sec43">Conversion from DocOnce to Google Docs </h2>
 
 <ul>
  <li> Transform the DocOnce document to HTML, upload to Google Drive,
@@ -1426,7 +1447,7 @@ It appears as (typset in a <code>quote</code> admon):
  <li> Pygmentized computer code and admons look fine.</li>
 </ul>
 
-<h2 id="___sec42">Convesion from Google Docs to DocOnce </h2>
+<h2 id="___sec44">Convesion from Google Docs to DocOnce </h2>
 
 <ul>
  <li> Save as HTML file and use Pandoc to convert to Markdown.
@@ -1440,7 +1461,7 @@ It appears as (typset in a <code>quote</code> admon):
 This solution is not much explored and more text transformations from
 Pandoc-generated Markdown is certainly needed.
 
-<h2 id="___sec43">Are there any tools for shared online writing of DocOnce documents? </h2>
+<h2 id="___sec45">Are there any tools for shared online writing of DocOnce documents? </h2>
 
 <p>
 In theory, <a href="http://draftin.com" target="_self"><tt>http://draftin.com</tt></a> and <a href="https://stackedit.io" target="_self"><tt>https://stackedit.io</tt></a>
@@ -1459,7 +1480,7 @@ Since DocOnce applies regular expressions to a large extent to translate
 the input source to the output format, limitations of regular expressions
 may lead to unexpected results. Here are some examples on what can go wrong.
 
-<h3 id="___sec45">Double bold/italic </h3>
+<h3 id="___sec47">Double bold/italic </h3>
 
 <p>
 Two strings with bold or emphasize after each other will not work:
@@ -1480,7 +1501,7 @@ but must write *two emphasized words*.
 The wrong syntax implies that one of the texts inside
 bold/italic tags will appear with DocOnce syntax in the output.
 
-<h3 id="___sec46">Mix of bold/italic and math </h3>
+<h3 id="___sec48">Mix of bold/italic and math </h3>
 
 <p>
 Trying to typeset a mixture of text and mathematics or code in boldface or
@@ -1553,7 +1574,7 @@ employs a simple rule: <code>text</code> lasts up to the first end-tag
 character (<code>*</code>, <code>_</code>, and <code>}</code> above), but code and math blocks
 do not count.
 
-<h2 id="___sec47">How can I make pressbooks.com books from DocOnce? </h2>
+<h2 id="___sec49">How can I make pressbooks.com books from DocOnce? </h2>
 
 <p>
 <a href="http://pressbooks.com" target="_self"><tt>http://pressbooks.com</tt></a> supports HTML input with WordPress LaTeX mathematics,
@@ -1670,16 +1691,6 @@ where we do all necessary adjustments mentioned above:
  <li> <a href="http://hplgit.github.io/doconce/doc/pub/locale/Norwegian.html" target="_self">HTML</a></li>
  <li> <a href="http://hplgit.github.io/doconce/doc/pub/locale/sphinx/index.html" target="_self">Sphinx</a></li>
 </ul>
-
-<h2 id="trouble:copyright">How do I insert a copyright?</h2>
-
-<p>
-See the <a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#copyright" target="_self">Copyright section of the DocOnce manual</a>.
-
-<h3 id="___sec51">Other formats </h3>
-
-<p>
-An error message is provided.
 
 <h2 id="___sec52">Lists look wrong </h2>
 
@@ -2788,15 +2799,79 @@ The <code>Springer_sv</code> style demands exercises to appear within the <code>
 environment, and the <code>svmono.cls</code> package typesets <code>prob</code> with small
 headlines.
 
-<h1 id="___sec117">gwiki </h1>
+<h2 id="trouble:latex:styles">How to typeset papers with specified style files?</h2>
 
-<h2 id="___sec118">Strange nested lists in gwiki </h2>
+<p>
+DocOnce has the <code>--latex_style=</code> option for specifying a few LaTeX
+styles for papers and books. This option mostly support book styles,
+since traditionally, paper styles in various journals often have
+special commands for authors, institutions, summary, and so on that are
+cumbersome to support through DocOnce. It was often easier to develop the
+paper in DocOnce and at submission time, manually edit the LaTeX output
+to fit a particular journal style. (SIAM and Elsevier journal have had
+direct support in DocOnce, though.)
+
+<p>
+With open access publishing it makes more sense to maintain a paper
+in DocOnce and publish derived and future versions in various electronic
+formats. How to then, at some stage in the process, make a special
+LaTeX version according to a journal's style?
+
+<p>
+The simplest approach is probably to develop a compilation script that
+performs a set of edits through <code>doconce replace</code> and <code>doconce subst</code>
+commands that turn standard DocOnce LaTeX output into the text required
+for a special journal style. Usually, such edits are about adding
+packages, maybe some special commands, and replacing perhaps title,
+author, date, and summary commands. Below is a sketch how that can be
+done for <a href="https://www.plos.org/" target="_self">PLOS journals</a>. These journals
+offer a <a href="http://journals.plos.org/plosone/s/latex" target="_self">LaTeX template</a>
+demonstrating appropriate commands. Some text is needed in the preamble,
+and we can insert that text at the place marked for user-specific
+extensions (&quot;insert custom LaTeX commands...&quot;).
+
+<p>
+
+<!-- code=bash (!bc shpro) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">#!/bin/bash</span>
+<span style="color: #19177C">name</span><span style="color: #666666">=</span>mydoc
+
+<span style="color: #408080; font-style: italic"># Compile mydoc.do.txt to latex output mydoc.tex</span>
+doconce format pdflatex <span style="color: #19177C">$name</span> --latex_bibstyle<span style="color: #666666">=</span>plos2015 --latex_code_style<span style="color: #666666">=</span>vrb
+
+<span style="color: #408080; font-style: italic"># Edit mydoc.tex file</span>
+doconce subst <span style="color: #BA2121">&#39;% insert custom LaTeX commands...&#39;</span> <span style="color: #BA2121">&#39;</span>
+<span style="color: #BA2121">\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}</span>
+<span style="color: #BA2121">% Text layout</span>
+<span style="color: #BA2121">\raggedright</span>
+<span style="color: #BA2121">\setlength{\parindent}{0.5cm}</span>
+<span style="color: #BA2121">\textwidth 5.25in</span>
+<span style="color: #BA2121">\textheight 8.75in</span>
+<span style="color: #BA2121">% Remove brackets from numbering in List of References</span>
+<span style="color: #BA2121">\makeatletter</span>
+<span style="color: #BA2121">\renewcommand{\@biblabel}[1]{\quad#1.}</span>
+<span style="color: #BA2121">\makeatother</span>
+<span style="color: #BA2121">\usepackage[right]{lineno}</span>
+<span style="color: #BA2121">\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}&#39;</span> <span style="color: #19177C">$name</span>.tex
+
+<span style="color: #408080; font-style: italic"># Compile the usual way</span>
+pdflatex <span style="color: #19177C">$name</span>
+</pre></div>
+<p>
+This example hopefully gives some ideas how to create specialized
+LaTeX output from DocOnce documents. If the journal style employs
+special LaTeX environments, see the section <a href="#trouble:latex:envir:native">How can I make use of a native LaTeX environments (example environment for instance)?</a>
+how to utilize these from DocOnce.
+
+<h1 id="___sec118">gwiki </h1>
+
+<h2 id="___sec119">Strange nested lists in gwiki </h2>
 
 <p>
 DocOnce cannot handle nested lists correctly in the gwiki format.
 Use nonnested lists or edit the <code>.gwiki</code> file directly.
 
-<h2 id="___sec119">Lists in gwiki look ugly in the gwiki source </h2>
+<h2 id="___sec120">Lists in gwiki look ugly in the gwiki source </h2>
 
 <p>
 Because the Google Code wiki format requires all text of a list item to
@@ -2806,9 +2881,9 @@ output looks somewhat ugly. The good thing is that this gwiki source
 is seldom to be looked at - it is the DocOnce source that one edits
 further.
 
-<h1 id="___sec120">HTML </h1>
+<h1 id="___sec121">HTML </h1>
 
-<h2 id="___sec121">How can I add a search facility to an HTML document? </h2>
+<h2 id="___sec122">How can I add a search facility to an HTML document? </h2>
 
 <p>
 There are many services for this. <a href="http://www.freefind.com/" target="_self">FreeFind</a>
@@ -2816,7 +2891,7 @@ is an easy-to-use service that gives you some HTML code to include
 in the document, typically inside a <code># #if FORMAT == &quot;html&quot;</code> and <code># #endif</code>
 block.
 
-<h2 id="___sec122">Translation aborts when labels are not defined </h2>
+<h2 id="___sec123">Translation aborts when labels are not defined </h2>
 
 <p>
 By default, the DocOnce translation of HTML document aborts when references
@@ -2827,7 +2902,7 @@ Instead, use <code>--allow_refs_to_external_docs</code> to allow references to l
 in other documents. These references will of course not work, but the
 option can be handy, e.g., while compiling chapters for a book individually.
 
-<h2 id="___sec123">MathJax formulas are not properly rendered </h2>
+<h2 id="___sec124">MathJax formulas are not properly rendered </h2>
 
 <p>
 Here are some common problems:
@@ -2846,9 +2921,9 @@ If the corresponding PDF output has the correct formula, one must try to
 rewrite the LaTeX mathematics so MathJax accepts it. MathJax can only
 handle a subset of what is legal mathematics in LaTeX.
 
-<h2 id="___sec124">How can I change the layout of the HTML page? </h2>
+<h2 id="___sec125">How can I change the layout of the HTML page? </h2>
 
-<h3 id="___sec125">Autoedits of the <code>.html</code> file </h3>
+<h3 id="___sec126">Autoedits of the <code>.html</code> file </h3>
 
 <p>
 The easiest way is to edit the HTML style or the HTML code directly.
@@ -2868,7 +2943,7 @@ specification:
 doconce replace <span style="color: #BA2121">&#39;width: 75%;&#39;</span> <span style="color: #BA2121">&#39;width: 35%&#39;</span> mydoc.html
 </pre></div>
 
-<h3 id="___sec126">Specify a <code>.css</code> file </h3>
+<h3 id="___sec127">Specify a <code>.css</code> file </h3>
 
 <p>
 Another way to control the layout is to copy the style in the HTML
@@ -2930,7 +3005,7 @@ The rest of the file can remain unaltered. Running
 <p>
 will now render <code>mydoc.html</code> with pink headings and visited links.
 
-<h3 id="___sec127">Specify a template </h3>
+<h3 id="___sec128">Specify a template </h3>
 
 <p>
 The standard of way of completely controlling the HTML format is to
@@ -2948,7 +3023,7 @@ is used (if installed) and can be turned off by <code>--no_pygments_html</code>
 The easiest way is to get fancy layouts in HTML is to
 use the <code>sphinx</code> format and one its many themes.
 
-<h2 id="___sec128">Why do figures look ugly when using HTML templates? </h2>
+<h2 id="___sec129">Why do figures look ugly when using HTML templates? </h2>
 
 <p>
 The HTML header that DocOnce generates contain special styles for
@@ -2967,15 +3042,15 @@ doconce replace &#39;&lt;hr class=&quot;figure&quot;&gt;&#39; \
  &#39;&lt;hr style=&quot;width:60%, font-style: normal&quot;&gt;&#39; mydoc.html
 </pre></div>
 
-<h1 id="___sec129">reveal/deck HTML5 slides </h1>
+<h1 id="___sec130">reveal/deck HTML5 slides </h1>
 
-<h2 id="___sec130">Python Online Tutor code does not work in reveal </h2>
+<h2 id="___sec131">Python Online Tutor code does not work in reveal </h2>
 
 <p>
 Use the Chrome browser (the code does not work in Firefox in combination
 with reveal HTML5, but it works in plain HTML).
 
-<h2 id="___sec131">Reveal slides are stacked on top of each other </h2>
+<h2 id="___sec132">Reveal slides are stacked on top of each other </h2>
 
 <p>
 This problem can be caused by having a <code>!bblock</code> environment crossing two
@@ -2983,20 +3058,20 @@ slides because of a forgotten <code>!eblock</code> on the first slide.
 To locate the problematic slides, copy chunks of slides to a new file,
 compile, and inspect. This will reveal the problematic chunk.
 
-<h2 id="___sec132">Reveal slides are moving steadily to the left </h2>
+<h2 id="___sec133">Reveal slides are moving steadily to the left </h2>
 
 <p>
 This seems to be a problem when one has used the mouse to scroll down
 on a slide and continue to use the right arrow for moving to the
 next slide. Click on the arrow in the slide instead of using the arrow key.
 
-<h2 id="___sec133">YouTube movies do not work </h2>
+<h2 id="___sec134">YouTube movies do not work </h2>
 
 <p>
 They do not work in reveal or deck unless the Chrome browser is used.
 Usually the HTML5 slides work best in Firefox.
 
-<h2 id="___sec134">Online Python Tutor does not work </h2>
+<h2 id="___sec135">Online Python Tutor does not work </h2>
 
 <p>
 Seems to be a problem with reveal slides. The <em>Forward</em> button is not
@@ -3017,7 +3092,7 @@ clickable.
 
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 2015, Hans Petter Langtangen
+<!-- copyright --> &copy; 2016, Hans Petter Langtangen
 </center>
 
 
