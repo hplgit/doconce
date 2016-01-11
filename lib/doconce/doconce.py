@@ -4355,7 +4355,7 @@ def doconce2format(filestr, format):
                 print '*** error: for --xhtml the bs4 BeautifulSoup package must be installed'
                 print '    pip install beautifulsoup4'
                 _abort()
-            soup = BS(filestr)
+            soup = BS(filestr, 'lxml')
             # soup can be used to rewrite the entire doc
             filestr = soup.prettify()
 
