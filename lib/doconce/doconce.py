@@ -4350,9 +4350,9 @@ def doconce2format(filestr, format):
             filestr = '<!DOCTYPE HTML>\n' + filestr
         if option('xhtml'):
             try:
-                from bs4 import BeautifulSoap as BS
+                from bs4 import BeautifulSoup as BS
             except ImportError:
-                print '*** error: for --xhtml the bs4 BeautifulSoap package must be installed'
+                print '*** error: for --xhtml the bs4 BeautifulSoup package must be installed'
                 print '    pip install beautifulsoup4'
                 _abort()
             soup = BS(filestr)
