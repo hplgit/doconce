@@ -3212,8 +3212,8 @@ def typeset_authors(filestr, format):
          index2inst, auth2email).rstrip() + '\n'  # ensure one newline
     if filestr.count('XXXAUTHOR') > 1:
         print "*** warning: authors are listed in more than one location"
-        filestr = filestr.replace('XXXAUTHOR', author_block, 1)
-        filestr = filestr.replace('XXXAUTHOR', '')
+        filestr = filestr.replace('XXXAUTHOR', author_block, 1) # insert author block in the first location
+        filestr = filestr.replace('XXXAUTHOR', '')              # ignore the rest
     else:
         filestr = filestr.replace('XXXAUTHOR', author_block)
     return filestr
