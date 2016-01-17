@@ -545,7 +545,8 @@ def syntax_check(filestr, format):
         print filestr[m.start()-100:m.start()+100]
         _abort()
     # Backticks for inline verbatim without space (in the middle of text)
-    pattern = r'[A-Za-z-]`[A-Za-z]'
+    #pattern = r'[A-Za-z-]`[A-Za-z]'  # orig test with - (why?)
+    pattern = r'[A-Za-z]`[A-Za-z]'
     m = re.search(pattern, filestr)
     if m:
         print '*** error: backtick ` in the middle of text is probably syntax error'
