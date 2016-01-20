@@ -1882,6 +1882,21 @@ Additional references to Sections ref{mathtext} and ref{newcommands} are
 nice to demonstrate, as well as a reference to equations,
 say (ref{myeq1})-(ref{myeq2}).
 
+!bwarning References to equations have to be enclosed into parentheses.
+
+The correct syntax for eqrefs is the following (remove spaces between parentheses and `ref{...}`):
+## It seems that it is impossible to get `(ref{eq:ref})` rendered properly
+## So we do this 'remove spaces' trick
+!bc do
+...see equation ( ref{eq:yourref} )...
+!ec
+
+If you forget parentheses, you'll get error message: `error: references to labels
+not defined in this document`.
+!ewarning
+
+Note also that you *should not* prepend `ref{...}` with non-breakable space: it will be
+added in LaTeX mode automatically. 
 
 Hyperlinks to files or web addresses are handled as explained
 in Section ref{inline:tagging}.
