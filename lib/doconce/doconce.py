@@ -666,13 +666,16 @@ def syntax_check(filestr, format):
         if 'label{' in tex_block:
             eq_labels += re.findall(pattern, tex_block)
     pattern = r'[^(]ref\{%s\}[^)]'
+    found_problem = False
     for eq_label in eq_labels:
         m = re.search(pattern % eq_label, filestr)
         if m:
             print '*** error: reference to equation label "%s" is without parentheses' % eq_label
-            print '    (equation references should be type set as (ref{label})!)'
-            print '...', filestr[m.start()-10:m.start()], filestr[m.start():m.end()+10], '...'
-            _abort()
+            print '    the equation reference should be type set as (ref{%s})' % eq_label
+            print '...', filestr[m.start()-10:m.start()], filestr[m.start():m.end()+20], '...'
+            found_problem = True
+    if found_problem:
+        _abort()
 
     # Quotes or inline verbatim is not allowed inside emphasize and bold:
     # (force non-blank in the beginning and end to avoid interfering with lists)
