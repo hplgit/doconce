@@ -76,6 +76,7 @@ def encode_error_message(exception, text, print_length=40):
         print ' '*(print_length+2) + '^'
         #print repr(text[pos-print_length:pos]), '<strange char>', repr(text[pos:+1:pos+print_length])
         print '    remedies: fix character or try --encoding=utf-8'
+        raise Exception
         _abort()
 
 def markdown2doconce(filestr, format=None, ipynb_mode=False):
@@ -3557,14 +3558,20 @@ def typeset_quizzes2(filestr, format):
     # That is why we use the method above of exact replacement.
     #filestr = re.sub(r'^%d ' % i , text, filestr,
     #                 flags=re.MULTILINE)
-    f = open('.%s.quiz' % dofile_basename, 'w')
+    if encoding:
+        f = codecs.open('.%s.quiz' % dofile_basename, 'w', encoding)
+    else:
+        f = open('.%s.quiz' % dofile_basename, 'w')
     try:
         text = pprint.pformat([dict(quiz) for quiz in quizzes])
         f.write(text)
     except UnicodeEncodeError as e:
         encode_error_message(e, text)
     f.close()
-    f = open('.%s.quiz.html' % dofile_basename, 'w')
+    if encoding:
+        f = codecs.open('.%s.quiz.html' % dofile_basename, 'w', encoding)
+    else:
+        f = open('.%s.quiz.html' % dofile_basename, 'w')
     for quiz in html_quizzes:
         try:
             f.write(quiz + '\n\n')
