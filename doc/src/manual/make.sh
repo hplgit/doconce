@@ -47,6 +47,8 @@ EOF
 
 # doconce html format:
 system doconce format html manual.do.txt --no_mako --html_style=bootswatch_readable --allow_refs_to_external_docs --html_code_style=inherit --cite_doconce --no_abort
+# Must fix one \eqref{} to (ref{})
+doconce replace '\eqref{my:special:eq}' '(ref{my:special:eq})' manual.html
 system doconce split_tmp.html manual.html
 
 # Sphinx
@@ -90,6 +92,8 @@ doconce ptex2tex manual envir=ans:nt
 # manually fix the quote examples elsewhere
 doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' manual.tex
 doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' manual.tex
+# Must fix one \eqref{} to (ref{})
+doconce replace '\eqref{my:special:eq}' '(ref{my:special:eq})' manual.tex
 latex -shell-escape manual
 latex -shell-escape manual
 bibtex manual
@@ -107,6 +111,8 @@ doconce ptex2tex manual envir=ans:nt
 # manually fix the quote examples elsewhere
 doconce subst '([^`])Guns & Roses([^`])' '\g<1>Guns {\&} Roses\g<2>' manual.tex
 doconce subst '([^`])Texas A & M([^`])' '\g<2>Texas A {\&} M\g<2>' manual.tex
+# Must fix one \eqref{} to (ref{})
+doconce replace '\eqref{my:special:eq}' '(ref{my:special:eq})' manual.tex
 pdflatex -shell-escape manual
 bibtex manual
 makeindex manual

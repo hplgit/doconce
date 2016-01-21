@@ -717,7 +717,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Jan 9, 2016</h4></center> <!-- date -->
+<center><h4>Jan 21, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -1165,9 +1165,11 @@ The syntax of the <code>year1-year</code> part goes as follows:
 The syntax of the <code>license</code> part is flexible:
 
 <ul>
- <li> Any formulation can be given. For example, <code>{copyright|This work is released under an MIT license}</code>.</li>
+ <li> Any formulation can be given. For example, <br />
+   <code>{copyright|This work is released under an MIT license}</code>.</li>
  <li> Standardized short forms for Creative Commons (CC) licenses are available.
-   For example, <code>CC BY</code>, which means a CC Attribution license. <code>BY</code> can be replaced by <code>BY-NC</code> (Attribution-NonCommercial) and other abbreviations from <a href="https://creativecommons.org/licenses/" target="_self"><tt>https://creativecommons.org/licenses/</tt></a>. The command-line option <code>--CC_license=</code> is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads <code>Released under a CC %s 4.0 license</code>, where <code>%s</code> is to be replaced by the license name. A common value is <code>--CC_license=&quot;This work is released under the Creative Commons %s 4.0 license&quot;</code>.</li>
+   For example, <code>CC BY</code>, which means a CC Attribution license. <code>BY</code> can be replaced by <code>BY-NC</code> (Attribution-NonCommercial) and other abbreviations from <a href="https://creativecommons.org/licenses/" target="_self"><tt>https://creativecommons.org/licenses/</tt></a>. The command-line option <code>--CC_license=</code> is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads <code>Released under a CC %s 4.0 license</code>, where <code>%s</code> is to be replaced by the license name. A common value is <br />
+   <code>--CC_license=&quot;This work is released under the Creative Commons %s 4.0 license&quot;</code>.</li>
 </ul>
 
 How the copyright is typeset depends on the format:
@@ -1212,7 +1214,8 @@ is 2015).
  AUTHOR: Jane Doe Email:jd@kk.org {copyright,2001-2010|CC BY}
 </pre></div>
 <p>
-Output becomes &quot;Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license&quot;. One can provide the option <code>--CC_license=&quot;This work is released under the Creative Commons %s 4.0 license.&quot;</code>, and the output
+Output becomes &quot;Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license&quot;. One can provide the option <code>&lt;linebreak&gt;
+--CC_license=&quot;This work is released under the Creative Commons %s 4.0 license.&quot;</code>, and the output
 becomes &quot;Copyright 2001-2010, Joe Doe, Jane Doe. This work is released under the Creative Commons Attribution 4.0 license.&quot;
 
 <p>
@@ -4651,12 +4654,16 @@ The reference appears as follows in various output formats:
 
 <ul>
  <li> <code>latex</code> and <code>pdflatex</code>: &quot;we refer to Section 2.3&quot; with
-   LaTeX code <code>we refer to Section&nbsp;\ref{sec:theory}</code></li>
- <li> <code>html</code>: &quot;we refer to the section Basic Theory&quot; with the HTML code <code>we refer to the section &lt;a href=&quot;#sec:theory&quot;&gt;Basic Theory&lt;/a&gt;</code></li>
+   LaTeX code <br />
+   <code>we refer to Section&nbsp;\ref{sec:theory}</code></li>
+ <li> <code>html</code>: &quot;we refer to the section Basic Theory&quot; with the HTML code <br />
+   <code>we refer to the section &lt;a href=&quot;#sec:theory&quot;&gt;Basic Theory&lt;/a&gt;</code></li>
  <li> <code>rst</code>, <code>sphinx</code>: &quot;we refer to the section Basic Theory&quot;</li>
  <li> <code>plain</code>: &quot;we refer to the section "Basic Theory"&quot;</li>
- <li> <code>ipynb</code>: &quot;we refer to the section Basic Theory&quot; with Markdown code <code>we refer to the section [Basic Theory](#sec:theory)</code></li>
- <li> <code>mwiki</code>: &quot;we refer to the section Basic Theory&quot; with MediaWiki code <code>We refer to the section [#Basic_Theory]</code></li>
+ <li> <code>ipynb</code>: &quot;we refer to the section Basic Theory&quot; with Markdown code <br />
+   <code>we refer to the section [Basic Theory](#sec:theory)</code></li>
+ <li> <code>mwiki</code>: &quot;we refer to the section Basic Theory&quot; with MediaWiki code <br />
+   <code>We refer to the section [#Basic_Theory]</code></li>
 </ul>
 
 Labels and references should only be used for
@@ -4666,6 +4673,25 @@ By the way, here is an example on referencing Figure <a href="#fig:viz">1</a>.
 Additional references to the sections <a href="#mathtext">LaTeX Blocks of Mathematical Text</a> and <a href="#newcommands">Macros (Newcommands)</a> are
 nice to demonstrate, as well as a reference to equations,
 say \eqref{myeq1}-\eqref{myeq2}.
+
+<p>
+<div class="alert alert-block alert-danger alert-text-normal"><b>References to equations must be in parentheses!</b>
+LaTeX writers who are used to <code>\eqref{}</code> should observe that
+there is only one type of reference syntax in DocOnce, <code>ref</code>, without
+backslash, and that references to an equation with label <code>my:special:eq</code>
+look like
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">..., see (ref{my:special:eq}).
+</pre></div>
+<p>
+<!-- Since any (ref{}) will be translated to \eqref{}, also inside -->
+<!-- verbatim blocks, we need a hack to write \eqref{my:eq} above: -->
+<!-- the make.sh script must translate \eqref{} back to (ref{}) -->
+</div>
+
 
 <p>
 Hyperlinks to files or web addresses are handled as explained
@@ -6400,11 +6426,24 @@ line and followed by a newline.
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">!bt
 <span style="color: #008000">\begin{align}</span>
-{\partial u\over\partial t} &amp;= \nabla^2 u + f, label{myeq1}\\
-{\partial v\over\partial t} &amp;= \nabla\cdot(q(u)\nabla v) + g. label{myeq2}
+{\partial u\over\partial t} &amp;= \nabla^2 u + f,
+<span style="color: #008000">label{myeq1}</span>\\
+{\partial v\over\partial t} &amp;= \nabla\cdot(q(u)\nabla v) + g.
+<span style="color: #008000">label{myeq2}</span>
 <span style="color: #008000">\end{align}</span>
 !et
 </pre></div>
+<p>
+Here is the result:
+
+$$
+\begin{align}
+{\partial u\over\partial t} &= \nabla^2 u + f,
+\label{myeq1}\\
+{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g.
+\label{myeq2}
+\end{align}
+$$
 
 <h3 id="___sec80">Support of LaTeX Math in Various Output Formats </h3>
 
@@ -11797,6 +11836,13 @@ Format: link|url;link|url;link|url
 Example:
 &quot;--html_bootstrap_navbar_links=Google|http://google.com;hpl|http://folk.uio.no/hpl&quot;
 
+
+
+--html_figure_caption=...
+
+Placement of figure caption: top (default) or bottom.
+(sidecap=True is another option, this can be set for individual figures, while
+--html_figure_caption controls the general caption placement of all figures.
 
 
 --html_figure_hrule=...

@@ -177,9 +177,11 @@ The syntax of the `year1-year` part goes as follows:
 
 The syntax of the `license` part is flexible:
 
- * Any formulation can be given. For example, `{copyright|This work is released under an MIT license}`.
+ * Any formulation can be given. For example, <linebreak>
+   `{copyright|This work is released under an MIT license}`.
  * Standardized short forms for Creative Commons (CC) licenses are available.
-   For example, `CC BY`, which means a CC Attribution license. `BY` can be replaced by `BY-NC` (Attribution-NonCommercial) and other abbreviations from URL: "https://creativecommons.org/licenses/". The command-line option `--CC_license=` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads `Released under a CC %s 4.0 license`, where `%s` is to be replaced by the license name. A common value is `--CC_license="This work is released under the Creative Commons %s 4.0 license"`.
+   For example, `CC BY`, which means a CC Attribution license. `BY` can be replaced by `BY-NC` (Attribution-NonCommercial) and other abbreviations from URL: "https://creativecommons.org/licenses/". The command-line option `--CC_license=` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads `Released under a CC %s 4.0 license`, where `%s` is to be replaced by the license name. A common value is <linebreak>
+   `--CC_license="This work is released under the Creative Commons %s 4.0 license"`.
 
 How the copyright is typeset depends on the format:
 
@@ -212,7 +214,8 @@ is 2015).
  AUTHOR: Joe Doe {copyright,2001-2010|CC BY}
  AUTHOR: Jane Doe Email:jd@kk.org {copyright,2001-2010|CC BY}
 !ec
-Output becomes ``Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license''. One can provide the option `--CC_license="This work is released under the Creative Commons %s 4.0 license."`, and the output
+Output becomes ``Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license''. One can provide the option `<linebreak>
+--CC_license="This work is released under the Creative Commons %s 4.0 license."`, and the output
 becomes ``Copyright 2001-2010, Joe Doe, Jane Doe. This work is released under the Creative Commons Attribution 4.0 license.''
 
 !bc
@@ -1866,12 +1869,16 @@ A first discovery was that 1+1 is 2.
 The reference appears as follows in various output formats:
 
  * `latex` and `pdflatex`: ``we refer to Section 2.3'' with
-   LaTeX code `we refer to Section~\ref{sec:theory}`
- * `html`: ``we refer to the section Basic Theory'' with the HTML code `we refer to the section <a href="#sec:theory">Basic Theory</a>`
+   LaTeX code <linebreak>
+   `we refer to Section~\ref{sec:theory}`
+ * `html`: ``we refer to the section Basic Theory'' with the HTML code <linebreak>
+   `we refer to the section <a href="#sec:theory">Basic Theory</a>`
  * `rst`, `sphinx`: ``we refer to the section Basic Theory''
  * `plain`: ``we refer to the section "Basic Theory"''
- * `ipynb`: ``we refer to the section Basic Theory'' with Markdown code `we refer to the section [Basic Theory](#sec:theory)`
- * `mwiki`: ``we refer to the section Basic Theory'' with MediaWiki code `We refer to the section [#Basic_Theory]`
+ * `ipynb`: ``we refer to the section Basic Theory'' with Markdown code <linebreak>
+   `we refer to the section [Basic Theory](#sec:theory)`
+ * `mwiki`: ``we refer to the section Basic Theory'' with MediaWiki code <linebreak>
+   `We refer to the section [#Basic_Theory]`
 
 
 Labels and references should only be used for
@@ -1881,6 +1888,20 @@ By the way, here is an example on referencing Figure ref{fig:viz}.
 Additional references to Sections ref{mathtext} and ref{newcommands} are
 nice to demonstrate, as well as a reference to equations,
 say (ref{myeq1})-(ref{myeq2}).
+
+!bwarning References to equations must be in parentheses!
+LaTeX writers who are used to `\eqref{}` should observe that
+there is only one type of reference syntax in DocOnce, `ref`, without
+backslash, and that references to an equation with label `my:special:eq`
+look like
+
+!bc
+..., see (ref{my:special:eq}).
+!ec
+# Since any (ref{}) will be translated to \eqref{}, also inside
+# verbatim blocks, we need a hack to write (ref{my:eq}) above:
+# the make.sh script must translate \eqref{} back to (ref{})
+!ewarning
 
 
 Hyperlinks to files or web addresses are handled as explained
@@ -3249,21 +3270,24 @@ line and followed by a newline.
 !bc do
 |bt
 \begin{align}
-{\partial u\over\partial t} &= \nabla^2 u + f, label{myeq1}\\
-{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g. label{myeq2}
+{\partial u\over\partial t} &= \nabla^2 u + f,
+label{myeq1}\\
+{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g.
+label{myeq2}
 \end{align}
 |et
 !ec
-# #ifdef EXTRA
 Here is the result:
 
 !bt
 \begin{align}
-{\partial u\over\partial t} &= \nabla^2 u + f, label{myeq1}\\
-{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g. label{myeq2}
+{\partial u\over\partial t} &= \nabla^2 u + f,
+label{myeq1}\\
+{\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g.
+label{myeq2}
 \end{align}
 !et
-# #endif
+
 
 === Support of LaTeX Math in Various Output Formats ===
 
