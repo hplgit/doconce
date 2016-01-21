@@ -33,6 +33,9 @@ follow the rules below.
    for sections, figures, movies, and equations only.
    MediaWiki (`mwiki`) does not support references to equations.
  * Spaces are not allowed in labels.
+ * There is just one `ref` command (no `\eqref`for equations) and references to
+   equations must use parentheses. Never use the tilde `~` (non-breaking
+   space) character with references.
  * Never use `\pageref` as pages are not a concept in web documents
    (there is only a `ref` command in DocOnce and it refers to labels).
  * Only figures and movies are floating elements in DocOnce, all other elements
@@ -106,7 +109,8 @@ or a lot of newcommands in the running text, there will be need for
 a lot of manual edits and adjustments.
 
 For examples, figure environments
-can be translated by `doconce latex2doconce` only if the label is inside
+can be translated by the program
+`doconce latex2doconce` only if the label is inside
 the caption and the figure is typeset like
 
 !bc latexcod

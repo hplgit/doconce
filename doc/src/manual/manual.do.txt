@@ -1901,7 +1901,12 @@ look like
 # Since any (ref{}) will be translated to \eqref{}, also inside
 # verbatim blocks, we need a hack to write (ref{my:eq}) above:
 # the make.sh script must translate \eqref{} back to (ref{})
+
+LaTeX writers should also notice that the tilde `~` (for
+avoiding linebreaks) must not be used for references (DocOnce
+will automatically insert such characters).
 !ewarning
+
 
 
 Hyperlinks to files or web addresses are handled as explained
@@ -3401,7 +3406,7 @@ is undocumented and must be manipulated and filled with the contents
 of a DocOnce document, e.g., by first translating DocOnce to HTML,
 and then using BeautifulSoup to get an XHTML version of the HTML
 that can act as a starting point for filling the XML file for an
-iBook. See also other "ideas" "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html".
+iBook. See also other "ideas": "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html".
 
 === Dealing with Mathematics in Formats without LaTeX Math Support ===
 
@@ -3475,7 +3480,11 @@ Section ref{manual:mako}.
 !enotice
 
 The newcommands must be defined by the standard LaTeX command
-`newcommand{name}{definition}` in a separate file with name
+
+!bc latexcod
+\newcommand{name}{definition}
+!ec
+in a separate file with name
 `newcommands*.tex`. Use of `\def` is ignored. Each newcommand
 definition *must* appear on a single line.
 
@@ -4053,6 +4062,9 @@ FIGURE: [fig/userdef_code_envir.png, width=400 frac=0.5]
 <linebreak>
 <linebreak>
 
+# #if FORMAT in ("latex", "pdflatex")
+\noindent
+# #endif
 appears at the end of the document
 "Demonstration of DocOnce support for LaTeX code block environments":
 "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html".
