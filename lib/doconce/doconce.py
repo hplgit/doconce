@@ -76,7 +76,7 @@ def encode_error_message(exception, text, print_length=40):
         print ' '*(print_length+2) + '^'
         #print repr(text[pos-print_length:pos]), '<strange char>', repr(text[pos:+1:pos+print_length])
         print '    remedies: fix character or try --encoding=utf-8'
-        raise Exception
+        #raise Exception
         _abort()
 
 def markdown2doconce(filestr, format=None, ipynb_mode=False):
