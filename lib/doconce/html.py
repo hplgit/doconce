@@ -1501,13 +1501,22 @@ def html_figure(m):
        if 'bottom' in hrules:
            bottom_hr = '\n<hr class="figure">'
 
+       placement = option('html_figure_caption=', 'top')
        if sidecaption == 0:
-           s = """
+           if placement == 'top':
+               s = """
 <center> <!-- figure -->%s
 <center><p class="caption"> %s </p></center>
 <p>%s</p>%s
 </center>
 """ % (top_hr, caption, image, bottom_hr)
+           else:
+               s = """
+<center> <!-- figure -->%s
+<p>%s</p>
+<center><p class="caption"> %s </p></center>%s
+</center>
+""" % (top_hr, image, caption, bottom_hr)
        else:
            # sidecaption is implemented as table
            s = """
