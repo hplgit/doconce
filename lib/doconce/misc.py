@@ -206,6 +206,9 @@ Format: link|url;link|url;link|url
 Example:
 "--html_bootstrap_navbar_links=Google|http://google.com;hpl|http://folk.uio.no/hpl"
 """),
+    ('--html_figure_caption=', """Placement of figure caption: top (default) or bottom.
+(sidecap=True is another option, this can be set for individual figures, while
+--html_figure_caption controls the general caption placement of all figures."""),
     ('--html_figure_hrule=', """Set horizontal rule(s) above and/or below a figure.
 none, off: no rules
 top: rule at top (default)

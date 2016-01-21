@@ -76,11 +76,7 @@ def encode_error_message(exception, text, print_length=40):
         print ' '*(print_length+2) + '^'
         #print repr(text[pos-print_length:pos]), '<strange char>', repr(text[pos:+1:pos+print_length])
         print '    remedies: fix character or try --encoding=utf-8'
-       
-        # raise
-        # Used `raise` here to find the reason of the reason because backtrace were
-        # more useful than custom error message 
-        
+        #raise Exception
         _abort()
 
 def markdown2doconce(filestr, format=None, ipynb_mode=False):
@@ -671,13 +667,16 @@ def syntax_check(filestr, format):
         if 'label{' in tex_block:
             eq_labels += re.findall(pattern, tex_block)
     pattern = r'[^(]ref\{%s\}[^)]'
+    found_problem = False
     for eq_label in eq_labels:
         m = re.search(pattern % eq_label, filestr)
         if m:
             print '*** error: reference to equation label "%s" is without parentheses' % eq_label
-            print '    (equation references should be type set as (ref{label})!)'
-            print '...', filestr[m.start()-10:m.start()], filestr[m.start():m.end()+10], '...'
-            _abort()
+            print '    the equation reference should be type set as (ref{%s})' % eq_label
+            print '...', filestr[m.start()-10:m.start()], filestr[m.start():m.end()+20], '...'
+            found_problem = True
+    if found_problem:
+        _abort()
 
     # Quotes or inline verbatim is not allowed inside emphasize and bold:
     # (force non-blank in the beginning and end to avoid interfering with lists)
