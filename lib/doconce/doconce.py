@@ -385,6 +385,13 @@ def syntax_check(filestr, format):
                 _abort()
     # Could add users !bu-X environments too
 
+    # Check that we don't have ~ref
+    m = re.findall(r'~ref\{', filestr) + re.findall(r'~(ref\{', filestr)
+    if m:
+        print '*** syntax error: ~ref (%d problems)' % len(m)
+        print '    (non-breaking space character not needed/allowed before reference)'
+        _abort()
+
     # URLs with just one /
     m = re.findall(r'https?:/[A-Za-z].+', filestr)
     if m:
@@ -4277,6 +4284,11 @@ def doconce2format(filestr, format):
         filestr = typeset_quizzes2(filestr, format)
         debugpr('The file after second reformatting of quizzes:', filestr)
         report_progress('handled second reformatting of quizzes')
+
+    # Fix for amounts in dollars: latex requires \$, but the backslash
+    # must be removed for all other formats
+    if format not in ('latex', 'pdflatex'):
+        filestr = re.sub(r'\\\$([\d.,]+\s)', r'$\g<1>', filestr)
 
     # Next step: insert verbatim and math code blocks again and
     # substitute code and tex environments:
