@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 9, 2016
+:Date: Jan 21, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -331,10 +331,14 @@ The syntax of the ``year1-year`` part goes as follows:
 
 The syntax of the ``license`` part is flexible:
 
- * Any formulation can be given. For example, ``{copyright|This work is released under an MIT license}``.
+ * Any formulation can be given. For example, 
+
+|    ``{copyright|This work is released under an MIT license}``.
 
  * Standardized short forms for Creative Commons (CC) licenses are available.
-   For example, ``CC BY``, which means a CC Attribution license. ``BY`` can be replaced by ``BY-NC`` (Attribution-NonCommercial) and other abbreviations from `<https://creativecommons.org/licenses/>`_. The command-line option ``--CC_license=`` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads ``Released under a CC %s 4.0 license``, where ``%s`` is to be replaced by the license name. A common value is ``--CC_license="This work is released under the Creative Commons %s 4.0 license"``.
+   For example, ``CC BY``, which means a CC Attribution license. ``BY`` can be replaced by ``BY-NC`` (Attribution-NonCommercial) and other abbreviations from `<https://creativecommons.org/licenses/>`_. The command-line option ``--CC_license=`` is used to provide a template for embedding the spelled out name of the abbreviated CC license. By default this template reads ``Released under a CC %s 4.0 license``, where ``%s`` is to be replaced by the license name. A common value is 
+
+|    ``--CC_license="This work is released under the Creative Commons %s 4.0 license"``.
 
 How the copyright is typeset depends on the format:
 
@@ -373,7 +377,10 @@ is 2015).
          AUTHOR: Joe Doe {copyright,2001-2010|CC BY}
          AUTHOR: Jane Doe Email:jd@kk.org {copyright,2001-2010|CC BY}
 
-Output becomes "Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license". One can provide the option ``--CC_license="This work is released under the Creative Commons %s 4.0 license."``, and the output
+Output becomes "Copyright 2001-2010, Joe Doe, Jane Doe. Released under CC Attribution 4.0 license". One can provide the option ``
+
+| --CC_license="This work is released under the Creative Commons %s 4.0 license."``, and the output
+
 becomes "Copyright 2001-2010, Joe Doe, Jane Doe. This work is released under the Creative Commons Attribution 4.0 license."
 
 .. code-block:: text
@@ -3723,17 +3730,25 @@ provide an example.
 The reference appears as follows in various output formats:
 
  * ``latex`` and ``pdflatex``: "we refer to Section 2.3" with
-   LaTeX code `we refer to Section |nbsp| \:ref:`sec:theory"
+   LaTeX code 
 
- * ``html``: ``we refer to the section Basic Theory" with the HTML code ``we refer to the section <a href="#sec:theory">Basic Theory</a>``
+|    `we refer to Section |nbsp| \:ref:`sec:theory"
+
+ * ``html``: ``we refer to the section Basic Theory" with the HTML code 
+
+|    ``we refer to the section <a href="#sec:theory">Basic Theory</a>``
 
  * ``rst``, ``sphinx``: "we refer to the section Basic Theory"
 
  * ``plain``: "we refer to the section "Basic Theory""
 
- * ``ipynb``: "we refer to the section Basic Theory" with Markdown code ``we refer to the section [Basic Theory](#sec:theory)``
+ * ``ipynb``: "we refer to the section Basic Theory" with Markdown code 
 
- * ``mwiki``: "we refer to the section Basic Theory" with MediaWiki code ``We refer to the section [#Basic_Theory]``
+|    ``we refer to the section [Basic Theory](#sec:theory)``
+
+ * ``mwiki``: "we refer to the section Basic Theory" with MediaWiki code 
+
+|    ``We refer to the section [#Basic_Theory]``
 
 Labels and references should only be used for
 (sub)sections, equations, figures, and movies (since DocOnce does not
@@ -3741,7 +3756,28 @@ support references to tables and algorithms, for instance).
 By the way, here is an example on referencing Figure :ref:`fig:viz`.
 Additional references to the sections :ref:`mathtext` and :ref:`newcommands` are
 nice to demonstrate, as well as a reference to equations,
-say (:ref:`myeq1`)-(:ref:`myeq2`).
+say :eq:`myeq1`-:eq:`myeq2`.
+
+
+.. admonition:: References to equations must be in parentheses
+
+   LaTeX writers who are used to ``\eqref{}`` should observe that
+   there is only one type of reference syntax in DocOnce, ``ref``, without
+   backslash, and that references to an equation with label ``my:special:eq``
+   look like
+   
+   .. code-block:: text
+   
+           ..., see (ref{my:special:eq}).
+   
+   .. Since any (:ref:`}) will be translated to \eqref{`, also inside
+   
+   .. verbatim blocks, we need a hack to write (:ref:`my:eq`) above:
+   
+   .. the make.sh script must translate \eq:ref:`} back to (ref{`)
+
+
+
 
 Hyperlinks to files or web addresses are handled as explained
 in the section :ref:`inline:tagging`.
@@ -5293,10 +5329,28 @@ line and followed by a newline.
 
         !bt
         \begin{align}
-        {\partial u\over\partial t} &= \nabla^2 u + f, label{myeq1}\\
-        {\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g. label{myeq2}
+        {\partial u\over\partial t} &= \nabla^2 u + f,
+        label{myeq1}\\
+        {\partial v\over\partial t} &= \nabla\cdot(q(u)\nabla v) + g.
+        label{myeq2}
         \end{align}
         !et
+
+Here is the result:
+
+.. math::
+   :label: myeq1
+        
+        {\partial u\over\partial t} = \nabla^2 u + f,
+        
+        
+
+.. math::
+   :label: myeq2
+         
+        {\partial v\over\partial t} = \nabla\cdot(q(u)\nabla v) + g.
+        
+        
 
 Support of LaTeX Math in Various Output Formats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -10811,6 +10865,13 @@ here for convenience.
         Example:
         "--html_bootstrap_navbar_links=Google|http://google.com;hpl|http://folk.uio.no/hpl"
         
+        
+        
+        --html_figure_caption=...
+        
+        Placement of figure caption: top (default) or bottom.
+        (sidecap=True is another option, this can be set for individual figures, while
+        --html_figure_caption controls the general caption placement of all figures.
         
         
         --html_figure_hrule=...
