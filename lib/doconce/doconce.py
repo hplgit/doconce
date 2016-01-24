@@ -3595,7 +3595,10 @@ def typeset_quizzes2(filestr, format):
             print '*** error: quiz inside admon is not possible with rst/sphinx'
             print '    edit these quizzes:'
             for q in questions:
-                print 'Quiz:', q
+                if encoding:
+                    print 'Quiz:', q.encode(encoding)
+                else:
+                    print 'Quiz:', q
             _abort()
     return filestr
 
