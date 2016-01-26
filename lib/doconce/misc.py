@@ -8616,16 +8616,25 @@ def ipynb2doconce():
     jsonstring = f.read()
     f.close()
     # Turn json string into a NotebookNode object
-    from IPython.nbformat.reader import reads
+    from nbformat.reader import reads
     nb = reads(jsonstring)
     # nb is dict-like with keys nbformat_minor, cells, nbformat, metadata
-    dostr = ''
+
+    # checking if we have modern enough ipynb format
+    if nb['nbformat'] < 4:
+        print """*** error: ipynb file format is too old (at least v4 needed). 
+Please, upgrade format of your ipynb-file using Jupyter (just open and save 
+the file) and then try again.
+"""
+        _abort()
+
+    dostr_list = []
     from doconce import markdown2doconce
     cell_type_prev = None
     for cell in nb['cells']:
         #print 'XXX', cell['cell_type'], 'prev:', cell_type_prev, '\n', cell['source']
         if cell_delimiter and cell['cell_type'] != cell_type_prev:
-            dostr += '# ---------- %s cell\n' % cell['cell_type']
+            dostr_list.append('# ---------- %s cell\n' % cell['cell_type'])
         if cell['cell_type'] == 'markdown':
             s = markdown2doconce(cell['source'], ipynb_mode=True)
             if cell_type_prev == 'markdown':
@@ -8639,15 +8648,21 @@ def ipynb2doconce():
             # Remove % (matplotlib) directives from source
             source = re.sub('^%.+\n', '', source, flags=re.MULTILINE).strip()
             s = '\n!bc py' + ('hid' if collapsed else 'cod') + '\n' + source + '\n!ec\n'
-        dostr += s
+        dostr_list.append(s)
         cell_type_prev = cell['cell_type']
     # Fix common problems
     # Missing blank line before heading
+    dostr = "".join(dostr_list)
     dostr = re.sub('^!e([ct])\n===', r'!e\g<1>\n\n===', dostr, flags=re.MULTILINE)
     # Too many blanks before !bt and !bc
     dostr = re.sub(r'\n\n\n+!b([ct])', r'\n\n!b\g<1>', dostr)
     filename = filename.replace('.ipynb', '.do.txt')
-    f = open(filename, 'w')
+    encoding = option("encoding=", default='')
+    if encoding:
+        import codecs
+        f = codecs.open(filename, 'w', encoding)
+    else:
+        f = open(filename, 'w')
     f.write(dostr)
     f.close()
     print 'output in', filename
