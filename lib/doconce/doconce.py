@@ -685,6 +685,27 @@ def syntax_check(filestr, format):
     if found_problem:
         _abort()
 
+    # Check that all references have corresponding labels, except in
+    # generalized references (ref[][][])
+    ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
+    filestr2 = re.sub(ref_pattern, '', filestr)
+    labels = re.findall(r'label\{(.+?)\}', filestr2) + eq_labels
+    refs = re.findall(r'ref\{(.+?)\}', filestr2)
+    found_problem = False
+    for ref in refs:
+        if ref not in labels:
+            print '*** error: reference ref{%s} to non-defined label' % ref
+            found_problem = True
+    if found_problem and not option('allow_refs_to_external_docs'):
+        print """
+Causes of missing labels:
+1: label is defined in another document. Use generalized references
+   ref[][][], or use --allow_refs_to_external_docs (to ignore this error)
+2: preprocessor if-else has left the label out
+3: forgotten to define the label
+"""
+        _abort()
+
     # Quotes or inline verbatim is not allowed inside emphasize and bold:
     # (force non-blank in the beginning and end to avoid interfering with lists)
     from common import inline_tag_begin, inline_tag_end
@@ -2838,7 +2859,7 @@ def handle_cross_referencing(filestr, format):
                 filestr = re.sub(r'ref\{%s\}' % label, no, filestr)
 
     # 4. Handle references that can be internal or external
-    #    ref[internal][cite][external-HTML]
+    #    (generalized references) ref[internal][cite][external-HTML]
     internal_labels = re.findall(r'label\{(.+?)\}', filestr)
     ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     general_refs = re.findall(ref_pattern, filestr)

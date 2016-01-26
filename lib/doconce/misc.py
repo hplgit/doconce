@@ -9268,7 +9268,7 @@ def main():
     common_html_options = ''
 
     # HTML Bootstrap
-    bootstrap_options = ' --html_style=bootswatch_readable --html_code_style=inherit --html_pre_style=inherit --html_toc_depth=2 --pygments_html_style=default'
+    bootstrap_options = ' --html_style=bootswatch_readable --html_code_style=inherit --html_pre_style=inherit --toc_depth=2 --pygments_html_style=default'
 
     html(
       dofile,

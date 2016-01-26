@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 9, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 21, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -842,6 +842,16 @@ o half a period of
 </div>
 <p>The output lists all the recursive <code class="docutils literal"><span class="pre">#include</span></code> Preprocess statements so you
 can see how all files are included.</p>
+</div>
+<div class="section" id="how-to-write-the-dollar-sign-for-an-amount-in-dollars">
+<h3>How to write the dollar sign for an amount in dollars?<a class="headerlink" href="#how-to-write-the-dollar-sign-for-an-amount-in-dollars" title="Permalink to this headline">¶</a></h3>
+<p>If you want to write <code class="docutils literal"><span class="pre">$1,000</span></code>, this is not trivial, because the dollar
+sign is used for inline math formulas, and everything from this dollar sign
+up to the next is interpreted as a math formula.</p>
+<p>The solution in DocOnce is to prefix the dollar sign by a backslash.
+This ensures correct output in all output formats.</p>
+<p>Another solution is to pre- or postfix the amount by USD instead of the
+dollar sign.</p>
 </div>
 </div>
 <div class="section" id="preprocess-mako">
@@ -1953,6 +1963,7 @@ clickable.</p>
 <li><a class="reference internal" href="#what-about-non-english-languages-and-doconce">What about non-English languages and DocOnce?</a></li>
 <li><a class="reference internal" href="#lists-look-wrong">Lists look wrong</a></li>
 <li><a class="reference internal" href="#how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document">How can I get an overview of all files that are included in a document?</a></li>
+<li><a class="reference internal" href="#how-to-write-the-dollar-sign-for-an-amount-in-dollars">How to write the dollar sign for an amount in dollars?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako">Preprocess/Mako</a><ul>

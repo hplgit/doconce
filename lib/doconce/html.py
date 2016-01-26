@@ -708,6 +708,9 @@ def html_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
     """Replace code and LaTeX blocks by html environments."""
 
+    # The test below is not needed anymore: doconce tests valid
+    # refs and labels for all formats now
+    '''
     # Do one fix before verbatim blocks are inserted
     # (where ref{} and label{} constructions are to be as is)
     allow_refs_to_external_docs = option('allow_refs_to_external_docs')
@@ -737,6 +740,7 @@ Causes of missing labels:
 """
             if not allow_refs_to_external_docs:
                 _abort()
+    '''
 
     html_style = option('html_style=', '')
     pygm_style = option('pygments_html_style=', default=None)

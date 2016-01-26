@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 9, 2016
+:Date: Jan 21, 2016
 
 
 .. admonition:: Disclaimer
@@ -1037,6 +1037,19 @@ Suppose the root (main) document is ``mydoc.do.txt``. Run
 
 The output lists all the recursive ``#include`` Preprocess statements so you
 can see how all files are included.
+
+How to write the dollar sign for an amount in dollars?
+------------------------------------------------------
+
+If you want to write ``$1,000``, this is not trivial, because the dollar
+sign is used for inline math formulas, and everything from this dollar sign
+up to the next is interpreted as a math formula.
+
+The solution in DocOnce is to prefix the dollar sign by a backslash.
+This ensures correct output in all output formats.
+
+Another solution is to pre- or postfix the amount by USD instead of the
+dollar sign.
 
 .. !split
 
