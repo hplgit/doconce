@@ -1464,6 +1464,19 @@ def html_figure(m):
     filename = m.group('filename').strip()
     opts = m.group('options').strip()
 
+    # Extract figure label
+    pattern = r'(label\{(.+?)\})'
+    m = re.search(pattern, caption)
+    if m:
+        label = '<!-- figure label: --> %s' % m.group(1)
+        caption = re.sub(pattern,
+                         ' <!-- caption label: %s -->' % m.group(2),
+                         caption)
+    else:
+        label = ''
+    # Place label in top of the figure such that links point to the
+    # top regardless of whether the caption is at the top of bottom
+
     sidecaption = 0
     if opts:
         info = [s.split('=') for s in opts.split()]
@@ -1509,28 +1522,28 @@ def html_figure(m):
        if sidecaption == 0:
            if placement == 'top':
                s = """
-<center> <!-- figure -->%s
+<center> %s <!-- FIGURE -->%s
 <center><p class="caption"> %s </p></center>
 <p>%s</p>%s
 </center>
-""" % (top_hr, caption, image, bottom_hr)
+""" % (label, top_hr, caption, image, bottom_hr)
            else:
                s = """
-<center> <!-- figure -->%s
+<center> %s <!-- FIGURE -->%s
 <p>%s</p>
 <center><p class="caption"> %s </p></center>%s
 </center>
-""" % (top_hr, image, caption, bottom_hr)
+""" % (label, top_hr, image, caption, bottom_hr)
        else:
            # sidecaption is implemented as table
            s = """
-<center> <!-- figure -->%s
+<center> %s <!-- FIGURE -->%s
 <table><tr>
 <td>%s</td>
 <td><p class="caption"> %s </p></td>
 </tr></table>%s
 </center>
-""" % (top_hr, image, caption, bottom_hr)
+""" % (label, top_hr, image, caption, bottom_hr)
        return s
     else:
        # Just insert image file when no caption
@@ -1974,7 +1987,8 @@ def html_ref_and_label(section_label2title, format, filestr):
     # (note: figures are already handled!)
     caption_start = '<p class="caption">'
     caption_pattern = r'%s(.+?)</p>' % caption_start
-    label_pattern = r'%s.+?<a name="(.+?)">' % caption_start
+    #label_pattern = r'%s.+?<a name="(.+?)">' % caption_start
+    label_pattern = r'%s.+? <!-- caption label: (.+?) -->' % caption_start
     # Should have <h\d id=""> type of labels too
     lines = filestr.splitlines()
     label2no = {}

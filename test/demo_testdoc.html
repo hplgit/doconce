@@ -276,7 +276,7 @@ MathJax.Hub.Config({
 <center>[7] <b>Fourth Inst</b></center>
 <br>
 <p>
-<center><h4>Jan 26, 2016</h4></center> <!-- date -->
+<center><h4>Jan 27, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -1029,9 +1029,9 @@ Test of figures. In particular we refer to Figure <a href="#fig:impact">1</a> in
 there is a flow.
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig:impact"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Visualization <b>of</b> a <em>wave</em>. <div id="fig:impact"></div> </p></center>
+<center><p class="caption">Figure 1:  Visualization <b>of</b> a <em>wave</em>.  <!-- caption label: fig:impact --> </p></center>
 <p><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=200></p>
 </center>
 
@@ -1049,11 +1049,11 @@ Here is figure <a href="#myfig">2</a> with a long (illegal) multi-line caption
 containing inline verbatim text:
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="myfig"></div> <!-- FIGURE -->
 <hr class="figure">
 <table><tr>
 <td><img src="../doc/src/manual/fig/wave1D.png" align="bottom" width=500></td>
-<td><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \). <div id="myfig"></div> </p></td>
+<td><p class="caption">Figure 2:  A long caption spanning several lines and containing verbatim words like <code>my_file_v1</code> and <code>my_file_v2</code> as well as math with subscript as in \( t_{i+1} \).  <!-- caption label: myfig --> </p></td>
 </tr></table>
 </center>
 
