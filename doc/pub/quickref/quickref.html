@@ -154,7 +154,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Dec 16, 2015</h4></center> <!-- date -->
+<center><h4>Jan 26, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -939,10 +939,14 @@ will be much more flexible and powerful).
 <p>
 LaTeX writers often have their own writing habits with use of their
 own favorite LaTeX packages. DocOnce is a much simpler format and
-corresponds to writing in quite plain LaTeX.
-Any LaTeX syntax is accepted when DocOnce translates the text to
-LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwiki</code>, <code>html</code>, or
-<code>ipynb</code> formats is also important, one should follow the rules below.
+corresponds to writing in quite plain LaTeX and making the ascii
+text look nice (pay much attention to white spaec!).
+
+<p>
+Any LaTeX syntax in mathematical formulas is accepted when DocOnce
+translates the text to LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>,
+<code>mwiki</code>, <code>html</code>, or <code>ipynb</code> formats is also important, one should
+follow the rules below.
 
 <ul>
  <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
@@ -967,6 +971,9 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    for sections, figures, movies, and equations only.
    MediaWiki (<code>mwiki</code>) does not support references to equations.</li>
  <li> Spaces are not allowed in labels.</li>
+ <li> There is just one <code>ref</code> command (no `\eqref`for equations) and references to
+   equations must use parentheses. Never use the tilde <code>&nbsp;</code> (non-breaking
+   space) character with references.</li>
  <li> Never use <code>\pageref</code> as pages are not a concept in web documents
    (there is only a <code>ref</code> command in DocOnce and it refers to labels).</li>
  <li> Only figures and movies are floating elements in DocOnce, all other elements
@@ -994,7 +1001,8 @@ LaTeX, but if output in the <code>sphinx</code>, <code>pandoc</code>, <code>mwik
    but import from (clean) BibTeX is possible.</li>
  <li> Use <code>idx</code> for index entries, but put the definitions between paragraphs,
    not inside them (required by Sphinx).</li>
- <li> Use the <code>bm</code> package and the <code>\bm</code> command for boldface in mathematics.</li>
+ <li> Use the <code>\bm</code> command (from the <code>bm</code> package, always included by DocOnce)
+   for boldface in mathematics.</li>
  <li> Make sure all ordinary text starts in column 1 on each line. Equations
    can be indented. The <code>\begin{}</code> and <code>\end{}</code> directives should start
    in column 1.</li>
@@ -1044,7 +1052,8 @@ a lot of manual edits and adjustments.
 
 <p>
 For examples, figure environments
-can be translated by <code>doconce latex2doconce</code> only if the label is inside
+can be translated by the program
+<code>doconce latex2doconce</code> only if the label is inside
 the caption and the figure is typeset like
 
 <p>

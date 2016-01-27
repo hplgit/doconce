@@ -67,7 +67,7 @@ also with hypens:
 *pre*-fix, post-*fix*, _pre_-fix, post-_fix_.
 !equote
 
-Here are two references. Equation (ref{my:eq1}) is fine. Eq. (ref{my:eq1}) too.
+Here are two references. Equation~(ref{my:eq1}) is fine. Eq.~(ref{my:eq1}) too.
 Even Equation (ref{my:eq1}) without the tilde.
 # #if FORMAT in ("sphinx", "html")
 This equation appears in another part if this document is split.

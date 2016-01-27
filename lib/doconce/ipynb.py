@@ -573,8 +573,18 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             print '    set --ipynb_version=4 or leave out --ipynb_version=3'
             _abort()
     elif nb_version == 4:
-        from IPython.nbformat.v4 import (
-            new_code_cell, new_markdown_cell, new_notebook)
+        try:
+            from nbformat.v4 import (
+                new_code_cell, new_markdown_cell, new_notebook)
+        except ImportError:
+            # Try old style
+            try:
+                from IPython.nbformat.v4 import (
+                    new_code_cell, new_markdown_cell, new_notebook)
+            except ImportError:
+                print '*** error: cannot do import nbformat.v4 or IPython.nbformat.v4'
+                print '    make sure IPython notebook or Jupyter is installed correctly'
+                _abort()
         cells = []
 
     mdstr = []  # plain md format of the notebook

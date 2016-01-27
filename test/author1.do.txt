@@ -25,7 +25,8 @@ The syntax of generalized references reads
 !bc
 ref[internal][cite][external]
 !ec
-If all `ref{label}` references in the text `internal` are references
+If all standard `ref` references (with curly braces)
+in the text `internal` are references
 to labels in the present document, the above `ref` command is replaced
 by the text `internal`. Otherwise, if cite is non-empty and the format
 is `latex` or `pdflatex` one assumes that the references in `internal`

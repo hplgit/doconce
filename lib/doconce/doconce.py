@@ -386,10 +386,11 @@ def syntax_check(filestr, format):
     # Could add users !bu-X environments too
 
     # Check that we don't have ~ref
-    m = re.findall(r'~ref\{', filestr) + re.findall(r'~\(ref\{', filestr)
+    m = re.findall(r'~ref\{', filestr)
     if m:
         print '*** syntax error: ~ref (%d problems)' % len(m)
-        print '    (non-breaking space character not needed/allowed before reference)'
+        print '    non-breaking space character not needed/allowed before'
+        print '    figure, section, etc. (or other non-equation) references'
         _abort()
 
     # URLs with just one /
