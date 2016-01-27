@@ -72,7 +72,7 @@ standalone_exercises = [
 standalone_exercises = [os.path.join('standalone_exercises', f) for f
                         in standalone_exercises]
 files += standalone_exercises
-standalone_exercises = ['Chapter_3.1.do.txt', 'Chapter_3.2.do.txt',
+standalone_exercises = ['Chapter_2.1.do.txt', 'Chapter_2.2.do.txt',
                         'index.do.txt', 'make.py',]
 standalone_exercises = [os.path.join('Springer_T2',
                                      'standalone_exercises', f) for f

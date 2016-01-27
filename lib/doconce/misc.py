@@ -8616,14 +8616,24 @@ def ipynb2doconce():
     jsonstring = f.read()
     f.close()
     # Turn json string into a NotebookNode object
-    from nbformat.reader import reads
+    try:
+        from nbformat.reader import reads
+    except ImportError:
+        # Try old style
+        try:
+            from IPython.nbformat.reader import reads
+        except ImportError:
+            print '*** error: cannot do import nbformat or IPython.nbformat'
+            print '    make sure IPython notebook or Jupyter is installed correctly'
+            _abort()
+
     nb = reads(jsonstring)
     # nb is dict-like with keys nbformat_minor, cells, nbformat, metadata
 
     # checking if we have modern enough ipynb format
     if nb['nbformat'] < 4:
-        print """*** error: ipynb file format is too old (at least v4 needed). 
-Please, upgrade format of your ipynb-file using Jupyter (just open and save 
+        print """*** error: ipynb file format is too old (at least v4 needed).
+Please, upgrade format of your ipynb-file using Jupyter (just open and save
 the file) and then try again.
 """
         _abort()

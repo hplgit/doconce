@@ -33,9 +33,10 @@ follow the rules below.
    for sections, figures, movies, and equations only.
    MediaWiki (`mwiki`) does not support references to equations.
  * Spaces are not allowed in labels.
- * There is just one `ref` command (no `\eqref`for equations) and references to
+ * There is just one `ref` command (no `\eqref` for equations) and references to
    equations must use parentheses. Never use the tilde `~` (non-breaking
-   space) character with references.
+   space) character before references to figures, sections, etc., but
+   tilde is allowed for references to equations.
  * Never use `\pageref` as pages are not a concept in web documents
    (there is only a `ref` command in DocOnce and it refers to labels).
  * Only figures and movies are floating elements in DocOnce, all other elements

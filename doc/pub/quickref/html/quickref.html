@@ -735,9 +735,10 @@ Use Mako functions if you need macros in the running text.</li>
 for sections, figures, movies, and equations only.
 MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
 <li>Spaces are not allowed in labels.</li>
-<li>There is just one <code class="docutils literal"><span class="pre">ref</span></code> command (no <cite>eqref`for equations) and references to
-equations must use parentheses. Never use the tilde `</cite>&nbsp;`` (non-breaking
-space) character with references.</li>
+<li>There is just one <code class="docutils literal"><span class="pre">ref</span></code> command (no <code class="docutils literal"><span class="pre">\eqref</span></code> for equations) and references to
+equations must use parentheses. Never use the tilde ``&nbsp;`` (non-breaking
+space) character before references to figures, sections, etc., but
+tilde is allowed for references to equations.</li>
 <li>Never use <code class="docutils literal"><span class="pre">\pageref</span></code> as pages are not a concept in web documents
 (there is only a <code class="docutils literal"><span class="pre">ref</span></code> command in DocOnce and it refers to labels).</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements

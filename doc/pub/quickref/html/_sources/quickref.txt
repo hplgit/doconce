@@ -735,9 +735,10 @@ follow the rules below.
 
  * Spaces are not allowed in labels.
 
- * There is just one ``ref`` command (no `\eqref`for equations) and references to
+ * There is just one ``ref`` command (no ``\eqref`` for equations) and references to
    equations must use parentheses. Never use the tilde `` |nbsp| `` (non-breaking
-   space) character with references.
+   space) character before references to figures, sections, etc., but
+   tilde is allowed for references to equations.
 
  * Never use ``\pageref`` as pages are not a concept in web documents
    (there is only a ``ref`` command in DocOnce and it refers to labels).

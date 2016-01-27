@@ -161,9 +161,9 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                     return 'url'
         except IOError, e:
             if msg or debug:
-                print '    NOT found!'
-            if debug:
-                print '    urllib.urlopen error:', e
+                print '    not found!'
+            #if debug:  # not necessary
+            #    print '    urllib.urlopen error:', e
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)
