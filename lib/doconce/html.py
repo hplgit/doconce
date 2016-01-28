@@ -1985,11 +1985,23 @@ def html_ref_and_label(section_label2title, format, filestr):
     # Number all figures, find all figure labels and replace their
     # references by the figure numbers
     # (note: figures are already handled!)
+    #
     caption_start = '<p class="caption">'
     caption_pattern = r'%s(.+?)</p>' % caption_start
     #label_pattern = r'%s.+?<a name="(.+?)">' % caption_start
     label_pattern = r'%s.+? <!-- caption label: (.+?) -->' % caption_start
     # Should have <h\d id=""> type of labels too
+
+    # References to custom numbered environments are also handled here
+    # We look for all such environments, extract their numbers 
+    # from special comment tag and record it to label2no along with Figure's
+    # numbers
+    #
+    # We allow 'no-number numbers' like 'Theorem A', so use number=([^\s]+?) pattern
+    # instead of number=(\d+?)
+
+    custom_env_pattern = r'<!--\s*custom environment:\s*label=([^\s]+?),\s*number=([^\s]+?)\s*-->'
+
     lines = filestr.splitlines()
     label2no = {}
     fig_no = 0
@@ -2006,12 +2018,23 @@ def html_ref_and_label(section_label2title, format, filestr):
             m = re.search(label_pattern, lines[i])
             if m:
                 label2no[m.group(1)] = fig_no
+
+        # process custom environments
+        m = re.search(custom_env_pattern, lines[i])
+        if m:
+            label2no[m.group(1)] = m.group(2)
+
+            # replace the special comment with an anchor
+            lines[i] = re.sub(custom_env_pattern, 
+                    "<div id=\"%s\" />" % m.group(1), lines[i])
+
     filestr = '\n'.join(lines)
 
-    for label in label2no:
+    for label, no in label2no.iteritems():
         filestr = filestr.replace('ref{%s}' % label,
-                                  '<a href="#%s">%d</a>' %
-                                  (label, label2no[label]))
+                                  '<a href="#%s">%s</a>' % (label, str(no)))
+        # we allow 'non-number numbers' for custom environments like 'theorem A'
+        # so str(no)
 
     # replace all other references ref{myname} by <a href="#myname">myname</a>:
     for label in running_text_labels:
