@@ -4012,6 +4012,13 @@ To summarize, the *example* environment together with the `refex` Mako
 function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.
 
+!bnotice Enumerated environments
+It is also possible to make enumerated environments such that their `ref`s use numbers
+instead of section headings in HTML format (just like Figures do). This mimics LaTeX
+behaviour on theorem-style environments. See the example in "DocOnce repository":
+"https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/enumerated_envs".
+!enotice
+
 You may take a look at a complete "`userdef_environments.py`":
 "https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py"
 file to see this example environment and another *highligh* environment
