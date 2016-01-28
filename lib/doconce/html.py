@@ -1996,6 +1996,7 @@ def html_ref_and_label(section_label2title, format, filestr):
     # We look for all such environments, extract their numbers 
     # from special comment tag and record it to label2no along with Figure's
     # numbers
+    #
     # We allow 'no-number numbers' like 'Theorem A', so use number=([^\s]+?) pattern
     # instead of number=(\d+?)
 
