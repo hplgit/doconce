@@ -3294,7 +3294,6 @@ open=right,              %% start new chapters on odd-numbered pages
             # Dark blue linkcolor
             linkcolor_def = r'\definecolor{linkcolor}{rgb}{0,0,0.4}'
 
-    toc_depth = option('toc_depth=', 2)
     INTRO['latex'] += r"""
 %% Hyperlinks in PDF:
 %(linkcolor_def)s
@@ -3312,8 +3311,13 @@ open=right,              %% start new chapters on odd-numbered pages
     bookmarksdepth=3   %% Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
     }
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
+""" % vars()
 
-\setcounter{tocdepth}{%(toc_depth)s}  %% number chapter, section, subsection
+    toc_depth = option('toc_depth=', 2)
+    if chapters:
+        toc_depth += 1
+    INTRO['latex'] += r"""
+\setcounter{tocdepth}{%(toc_depth)s}  %% levels in table of contents
 """ % vars()
 
     # Footnotes with verbatim?

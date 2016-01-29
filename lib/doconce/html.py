@@ -587,10 +587,11 @@ def toc2html(font_size=80, bootstrap=True,
     global tocinfo  # computed elsewhere
     # level_depth: how many levels that are represented in the toc
     level_depth = int(option('toc_depth=', '-1'))
-    if level_depth == -1:
+    if level_depth == -1:  # Use -1 to indicate that doconce decides
         # Compute suitable depth in toc
         if bootstrap:
-            # We can have max 17 lines, so analyze the toc
+            # We can have max 17 lines in a dropdown box without a scrollbar
+            # so see what is suitable to include in such a box
             level2no = {}
             for item in tocinfo['sections']:
                 level = item[1]

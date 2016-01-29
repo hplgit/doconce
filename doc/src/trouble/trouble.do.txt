@@ -40,6 +40,26 @@ idx{acknowledge the DocOnce software}
 See the ``How to cite'' section
 on the "project page": "https://github.com/hplgit/doconce".
 
+===== How to I control the table of contents? =====
+label{sec:toc_depth}
+
+To include a table of contents in the document, insert the line
+
+!bc do
+TOC: on
+!ec
+in the DocOnce source at the place where you want the table of contents
+to be inserted. Often you want to do a pagebreak before the table of
+contents, and in that case, insert `!split` on the line before.
+
+To control the number of section levels in the table of contents
+(chapters, sections,
+subsections), use the `--toc_depth=X` command-line option, where `X` reflects
+the maximum level. Level 0 correspond to chapter. The defaul value of
+`X`, 2, thus means including chapters, sections, and subsections.
+For Sphinx output, one must use the command-line option `toc_depth=X`
+as part of the command `doconce sphinx_dir`.
+
 ===== How can I add links to some resource on every page? =====
 label{sec:custom:navlinks}
 

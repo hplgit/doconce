@@ -46,7 +46,10 @@ chapter: exercises numbered as 1.1, 1.2, ... , 3.1, 3.2, ..., B.1, B.2, etc.
 logical: use the (first) logical filename specified by file=...
 number:  use either absolute exercise number or chapter.localnumber."""),
     ('--toc_depth=',
-     """No of levels in the table of contents. Default: 2 (includes sections and subsections but not subsubsections)."""),
+     """No of levels in the table of contents. Default: 2, which means
+chapters, sections, and subsections. Set to 1 to exclude subsections.
+Applies to all formats, except sphinx: for sphinx, set toc_depth=... as
+part of the command doconce sphinx_dir."""),
     ('--encoding=',
      'Specify encoding (e.g., latin1 or utf-8).'),
     ('--no_ampersand_quote', 'Turn off special treatment of ampersand (&). Needed, e.g., when native latex code for tables are inserted in the document.'),
