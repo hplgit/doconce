@@ -8378,16 +8378,19 @@ and if something goes wrong, the script aborts.
 Spell checking
 --------------
 
-Although not a part of compiling DocOnce to some format, spell checking
+Despite not being a part of compiling DocOnce to some format, spell checking
 is often the first task done in a ``make.sh`` or ``make.py`` file. DocOnce
-comes with a simple support of spell checking, ``doconce spellcheck``, where
-all code and mathematics are stripped from the document, also all inline
+comes with a convenient support for spell checking, ``doconce spellcheck``, where
+all code and mathematics are stripped from the document, as well as all inline
 verbatim expressions, comments, etc. Then the program ``ispell`` is run on
 the stripped document, and a list of misspellings is reported.
 
 Any DocOnce document has its own set of "legal words" (approved by the
 authors) in the file ``.dict4spell.txt``. When ``doconce spellcheck`` reports
 new misspellings, some are corrected and some are added to ``.dict4spell.txt``.
+The spell checker applies an American dictionary and the user's custom
+dictionary in ``.dict4spell.txt``.
+
 The work flow is simple:
 
  1. Run ``doconce spellcheck -d .dict4spell.txt *.do.txt``
@@ -8398,10 +8401,10 @@ The work flow is simple:
  3. Rerun ``doconce spellcheck`` and repeat the procedure.
 
  4. When all words in ``misspellings.txt |nbsp| `` are acceptable, add these to
-    the current dictionary by ``cp new_dictionary.txt~ .dict4spell.txt``.
+    the current custom dictionary by ``cp new_dictionary.txt~ .dict4spell.txt``.
 
 Run ``doconce spellcheck`` without any arguments to get more description of
-what kind of files that are produced. For example, the text in ``mydoc.do.txt``
+what kind of files that are produced. For example, the text in ``mydoc.do.txt``,
 stripped for math, code, and other special constructions, is available
 in ``tmp_stripped_mydoc.do.txt`` and can be copied into (e.g.) Microsoft Word
 for grammar check.

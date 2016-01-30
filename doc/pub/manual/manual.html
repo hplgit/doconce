@@ -9490,10 +9490,10 @@ and if something goes wrong, the script aborts.
 <h2 id="do2any:spellcheck">Spell checking</h2>
 
 <p>
-Although not a part of compiling DocOnce to some format, spell checking
+Despite not being a part of compiling DocOnce to some format, spell checking
 is often the first task done in a <code>make.sh</code> or <code>make.py</code> file. DocOnce
-comes with a simple support of spell checking, <code>doconce spellcheck</code>, where
-all code and mathematics are stripped from the document, also all inline
+comes with a convenient support for spell checking, <code>doconce spellcheck</code>, where
+all code and mathematics are stripped from the document, as well as all inline
 verbatim expressions, comments, etc. Then the program <code>ispell</code> is run on
 the stripped document, and a list of misspellings is reported.
 
@@ -9501,6 +9501,10 @@ the stripped document, and a list of misspellings is reported.
 Any DocOnce document has its own set of &quot;legal words&quot; (approved by the
 authors) in the file <code>.dict4spell.txt</code>. When <code>doconce spellcheck</code> reports
 new misspellings, some are corrected and some are added to <code>.dict4spell.txt</code>.
+The spell checker applies an American dictionary and the user's custom
+dictionary in <code>.dict4spell.txt</code>.
+
+<p>
 The work flow is simple:
 
 <ol>
@@ -9509,11 +9513,11 @@ The work flow is simple:
     the source files.</li>
  <li> Rerun <code>doconce spellcheck</code> and repeat the procedure.</li>
  <li> When all words in <code>misspellings.txt&nbsp;</code> are acceptable, add these to
-    the current dictionary by <code>cp new_dictionary.txt~ .dict4spell.txt</code>.</li>
+    the current custom dictionary by <code>cp new_dictionary.txt~ .dict4spell.txt</code>.</li>
 </ol>
 
 Run <code>doconce spellcheck</code> without any arguments to get more description of
-what kind of files that are produced. For example, the text in <code>mydoc.do.txt</code>
+what kind of files that are produced. For example, the text in <code>mydoc.do.txt</code>,
 stripped for math, code, and other special constructions, is available
 in <code>tmp_stripped_mydoc.do.txt</code> and can be copied into (e.g.) Microsoft Word
 for grammar check.

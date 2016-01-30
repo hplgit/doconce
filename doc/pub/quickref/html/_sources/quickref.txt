@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 27, 2016
+:Date: Jan 30, 2016
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -717,9 +717,8 @@ follow the rules below.
    labels in ``align`` environments work well.)
    This may feel restrictive to LaTeX writers who are used to
    ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
-   ``align`` and use a number for each equation, or use ``\nonumber\\``
-   to end intermediate calculations on multiple lines and use a label
-   in the last, final result).
+   ``align`` and use a label for each equation, or use ``\nonumber\\``
+   if a line should be without equation number).
 
  * Do not use comments inside equations.
 

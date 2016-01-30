@@ -7707,16 +7707,18 @@ and if something goes wrong, the script aborts.</p>
 </div>
 <div class="section" id="spell-checking">
 <span id="do2any-spellcheck"></span><h3>Spell checking<a class="headerlink" href="#spell-checking" title="Permalink to this headline">¶</a></h3>
-<p>Although not a part of compiling DocOnce to some format, spell checking
+<p>Despite not being a part of compiling DocOnce to some format, spell checking
 is often the first task done in a <code class="docutils literal"><span class="pre">make.sh</span></code> or <code class="docutils literal"><span class="pre">make.py</span></code> file. DocOnce
-comes with a simple support of spell checking, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code>, where
-all code and mathematics are stripped from the document, also all inline
+comes with a convenient support for spell checking, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code>, where
+all code and mathematics are stripped from the document, as well as all inline
 verbatim expressions, comments, etc. Then the program <code class="docutils literal"><span class="pre">ispell</span></code> is run on
 the stripped document, and a list of misspellings is reported.</p>
 <p>Any DocOnce document has its own set of &#8220;legal words&#8221; (approved by the
 authors) in the file <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code>. When <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> reports
 new misspellings, some are corrected and some are added to <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code>.
-The work flow is simple:</p>
+The spell checker applies an American dictionary and the user&#8217;s custom
+dictionary in <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code>.</p>
+<p>The work flow is simple:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span> <span class="pre">-d</span> <span class="pre">.dict4spell.txt</span> <span class="pre">*.do.txt</span></code></li>
@@ -7724,11 +7726,11 @@ The work flow is simple:</p>
 the source files.</li>
 <li>Rerun <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> and repeat the procedure.</li>
 <li>When all words in <code class="docutils literal"><span class="pre">misspellings.txt</span> <span class="pre">|nbsp|</span> <span class="pre">``</span> <span class="pre">are</span> <span class="pre">acceptable,</span> <span class="pre">add</span> <span class="pre">these</span> <span class="pre">to</span>
-<span class="pre">the</span> <span class="pre">current</span> <span class="pre">dictionary</span> <span class="pre">by</span> <span class="pre">``cp</span> <span class="pre">new_dictionary.txt~</span> <span class="pre">.dict4spell.txt</span></code>.</li>
+<span class="pre">the</span> <span class="pre">current</span> <span class="pre">custom</span> <span class="pre">dictionary</span> <span class="pre">by</span> <span class="pre">``cp</span> <span class="pre">new_dictionary.txt~</span> <span class="pre">.dict4spell.txt</span></code>.</li>
 </ol>
 </div></blockquote>
 <p>Run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> without any arguments to get more description of
-what kind of files that are produced. For example, the text in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>
+what kind of files that are produced. For example, the text in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>,
 stripped for math, code, and other special constructions, is available
 in <code class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></code> and can be copied into (e.g.) Microsoft Word
 for grammar check.</p>
