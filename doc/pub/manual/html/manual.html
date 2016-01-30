@@ -286,6 +286,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#writing-a-makefile">Writing a Makefile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generating-a-makefile">Generating a Makefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spell-checking">Spell checking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
 </ul>
@@ -327,7 +328,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#the-translation-command">The translation command</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id40">Newcommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id42">Newcommands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#command-line-options">Command-line options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
@@ -607,6 +608,7 @@
 <li><a class="reference internal" href="#from-doconce-to-other-formats">From DocOnce to Other Formats</a><ul>
 <li><a class="reference internal" href="#writing-a-makefile">Writing a Makefile</a></li>
 <li><a class="reference internal" href="#generating-a-makefile">Generating a Makefile</a></li>
+<li><a class="reference internal" href="#spell-checking">Spell checking</a></li>
 <li><a class="reference internal" href="#preprocessing">Preprocessing</a><ul>
 <li><a class="reference internal" href="#variable-substition-with-preprocessors">Variable Substition with Preprocessors</a></li>
 </ul>
@@ -648,7 +650,7 @@
 <li><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
 <li><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
 <li><a class="reference internal" href="#the-translation-command">The translation command</a></li>
-<li><a class="reference internal" href="#id40">Newcommands</a></li>
+<li><a class="reference internal" href="#id42">Newcommands</a></li>
 <li><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
 <li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
 <li><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
@@ -773,7 +775,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 21, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 30, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -1274,7 +1276,7 @@ is up to LaTeX do decide).</p>
 into the text. You can add vertical space in LaTeX and HTML by
 inserting seeral lines with <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code>.</p>
 </div>
-<div class="figure" id="id43">
+<div class="figure" id="id45">
 <span id="fig-viz"></span><a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-text"><em>A wave</em></span></p>
 </div>
@@ -3985,9 +3987,12 @@ say <a href="#equation-myeq1">(1)</a>-<a href="#equation-myeq2">(2)</a>.</p>
 there is only one type of reference syntax in DocOnce, <code class="docutils literal"><span class="pre">ref</span></code>, without
 backslash, and that references to an equation with label <code class="docutils literal"><span class="pre">my:special:eq</span></code>
 look like</p>
-<div class="last highlight-text"><div class="highlight"><pre>..., see (ref{my:special:eq}).
+<div class="highlight-text"><div class="highlight"><pre>..., see (ref{my:special:eq}).
 </pre></div>
 </div>
+<p class="last">LaTeX writers should also notice that the tilde ``&nbsp;` (for
+avoiding linebreaks) must not be used for references (DocOnce
+will automatically insert such characters).</p>
 </div>
 <p>Hyperlinks to files or web addresses are handled as explained
 in the section <a class="reference internal" href="#inline-tagging"><span class="std std-ref">Inline Tagging</span></a>.</p>
@@ -5283,7 +5288,7 @@ is undocumented and must be manipulated and filled with the contents
 of a DocOnce document, e.g., by first translating DocOnce to HTML,
 and then using BeautifulSoup to get an XHTML version of the HTML
 that can act as a starting point for filling the XML file for an
-iBook. See also other &#8220;ideas&#8221; &#8220;<a class="reference external" href="http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html">http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html</a>&#8221;.</p>
+iBook. See also other <a class="reference external" href="http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html">ideas</a>.</p>
 </div>
 <div class="section" id="dealing-with-mathematics-in-formats-without-latex-math-support">
 <h4>Dealing with Mathematics in Formats without LaTeX Math Support<a class="headerlink" href="#dealing-with-mathematics-in-formats-without-latex-math-support" title="Permalink to this headline">¶</a></h4>
@@ -5356,8 +5361,11 @@ in the running text. Here is an example:</p>
 (written in plain Python) is much more flexible. See
 the section <a class="reference internal" href="#manual-mako"><span class="std std-ref">Mako Programming</span></a>.</p>
 </div>
-<p>The newcommands must be defined by the standard LaTeX command
-<code class="docutils literal"><span class="pre">newcommand{name}{definition}</span></code> in a separate file with name
+<p>The newcommands must be defined by the standard LaTeX command</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\newcommand</span><span class="nb">{</span>name<span class="nb">}{</span>definition<span class="nb">}</span>
+</pre></div>
+</div>
+<p>in a separate file with name
 <code class="docutils literal"><span class="pre">newcommands*.tex</span></code>. Use of <code class="docutils literal"><span class="pre">\def</span></code> is ignored. Each newcommand
 definition <em>must</em> appear on a single line.</p>
 <p>Newcommands in a file with name
@@ -5394,9 +5402,8 @@ and other formats such that
 labels in <code class="docutils literal"><span class="pre">align</span></code> environments work well.)
 This may feel restrictive to LaTeX writers who are used to
 <code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">aligned</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>, and other environments (rewrite to
-<code class="docutils literal"><span class="pre">align</span></code> and use a number for each equation, or use <code class="docutils literal"><span class="pre">\nonumber\\</span></code>
-to end intermediate calculations on multiple lines and use a label
-in the last, final result).</li>
+<code class="docutils literal"><span class="pre">align</span></code> and use a label for each equation, or use <code class="docutils literal"><span class="pre">\nonumber\\</span></code>
+if a line should be without equation number).</li>
 <li>Do not use comments inside equations.</li>
 <li>Newcommands in mathematical formulas are allowed, but not in
 the running text. Newcommands must be defined in files with names
@@ -5407,6 +5414,10 @@ Use Mako functions if you need macros in the running text.</li>
 for sections, figures, movies, and equations only.
 MediaWiki (<code class="docutils literal"><span class="pre">mwiki</span></code>) does not support references to equations.</li>
 <li>Spaces are not allowed in labels.</li>
+<li>There is just one <code class="docutils literal"><span class="pre">ref</span></code> command (no <code class="docutils literal"><span class="pre">\eqref</span></code> for equations) and references to
+equations must use parentheses. Never use the tilde ``&nbsp;`` (non-breaking
+space) character before references to figures, sections, etc., but
+tilde is allowed for references to equations.</li>
 <li>Never use <code class="docutils literal"><span class="pre">\pageref</span></code> as pages are not a concept in web documents
 (there is only a <code class="docutils literal"><span class="pre">ref</span></code> command in DocOnce and it refers to labels).</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements
@@ -5485,7 +5496,8 @@ example environments, <code class="docutils literal"><span class="pre">subfigure
 or a lot of newcommands in the running text, there will be need for
 a lot of manual edits and adjustments.</p>
 <p>For examples, figure environments
-can be translated by <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside
+can be translated by the program
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">latex2doconce</span></code> only if the label is inside
 the caption and the figure is typeset like</p>
 <div class="highlight-latex"><div class="highlight"><pre><span class="k">\begin</span><span class="nb">{</span>figure<span class="nb">}</span>
   <span class="k">\centering</span>
@@ -5965,6 +5977,12 @@ That is, the calculation 1+1 appears in Example~\ref{ex:test:1p1}.
 <p>To summarize, the <em>example</em> environment together with the <code class="docutils literal"><span class="pre">refex</span></code> Mako
 function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.</p>
+<div class="admonition-enumerated-environments admonition">
+<p class="first admonition-title">Enumerated environments</p>
+<p class="last">It is also possible to make enumerated environments such that their <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/enumerated_envs">ref`s use numbers
+instead of section headings in HTML format (just like Figures do). This mimics LaTeX
+behaviour on theorem-style environments. See the example in `DocOnce repository</a>.</p>
+</div>
 <p>You may take a look at a complete <a class="reference external" href="https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py">userdef_environments.py</a>
 file to see this example environment and another <em>highligh</em> environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
@@ -7687,6 +7705,34 @@ A handy feature of the generated <code class="docutils literal"><span class="pre
 inserts checks for successful runs of the many <code class="docutils literal"><span class="pre">doconce</span></code> commands,
 and if something goes wrong, the script aborts.</p>
 </div>
+<div class="section" id="spell-checking">
+<span id="do2any-spellcheck"></span><h3>Spell checking<a class="headerlink" href="#spell-checking" title="Permalink to this headline">¶</a></h3>
+<p>Although not a part of compiling DocOnce to some format, spell checking
+is often the first task done in a <code class="docutils literal"><span class="pre">make.sh</span></code> or <code class="docutils literal"><span class="pre">make.py</span></code> file. DocOnce
+comes with a simple support of spell checking, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code>, where
+all code and mathematics are stripped from the document, also all inline
+verbatim expressions, comments, etc. Then the program <code class="docutils literal"><span class="pre">ispell</span></code> is run on
+the stripped document, and a list of misspellings is reported.</p>
+<p>Any DocOnce document has its own set of &#8220;legal words&#8221; (approved by the
+authors) in the file <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code>. When <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> reports
+new misspellings, some are corrected and some are added to <code class="docutils literal"><span class="pre">.dict4spell.txt</span></code>.
+The work flow is simple:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span> <span class="pre">-d</span> <span class="pre">.dict4spell.txt</span> <span class="pre">*.do.txt</span></code></li>
+<li>Examine <a href="#id40"><span class="problematic" id="id41">``</span></a>misspellings.txt&nbsp;`` for misspellings and make corrections in
+the source files.</li>
+<li>Rerun <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> and repeat the procedure.</li>
+<li>When all words in <code class="docutils literal"><span class="pre">misspellings.txt</span> <span class="pre">|nbsp|</span> <span class="pre">``</span> <span class="pre">are</span> <span class="pre">acceptable,</span> <span class="pre">add</span> <span class="pre">these</span> <span class="pre">to</span>
+<span class="pre">the</span> <span class="pre">current</span> <span class="pre">dictionary</span> <span class="pre">by</span> <span class="pre">``cp</span> <span class="pre">new_dictionary.txt~</span> <span class="pre">.dict4spell.txt</span></code>.</li>
+</ol>
+</div></blockquote>
+<p>Run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> without any arguments to get more description of
+what kind of files that are produced. For example, the text in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code>
+stripped for math, code, and other special constructions, is available
+in <code class="docutils literal"><span class="pre">tmp_stripped_mydoc.do.txt</span></code> and can be copied into (e.g.) Microsoft Word
+for grammar check.</p>
+</div>
 <div class="section" id="preprocessing">
 <span id="do2any-pre"></span><h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-147"></span><span class="target" id="index-148"></span><p id="index-149">The <code class="docutils literal"><span class="pre">preprocess</span></code> and <code class="docutils literal"><span class="pre">mako</span></code> programs are used to preprocess the
@@ -8381,8 +8427,8 @@ the <code class="docutils literal"><span class="pre">--latex_code_style=</span><
 that has to be converted to a standard <code class="docutils literal"><span class="pre">mydoc.tex</span></code> LaTeX file via
 the programs <code class="docutils literal"><span class="pre">ptex2tex</span></code> or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>.</p>
 </div>
-<div class="section" id="id40">
-<h4>Newcommands<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id42">
+<h4>Newcommands<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
 <p>LaTeX-specific commands (&#8220;newcommands&#8221;) in math formulas and similar
 can be placed in files <code class="docutils literal"><span class="pre">newcommands.tex</span></code>, <code class="docutils literal"><span class="pre">newcommands_keep.tex</span></code>, or
 <code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> (see the section <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a>).
@@ -8412,7 +8458,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></code> (name of BibTeX style)</li>
 <li><code class="docutils literal"><span class="pre">--latex_title_layout=titlepage,</span> <span class="pre">std,</span> <span class="pre">beamer,</span> <span class="pre">doconce_heading,</span> <span class="pre">Springer_collection</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_sv,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">Springer_T4,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
-<li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id41">[4]</a>)</li>
+<li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id43">[4]</a>)</li>
 <li><code class="docutils literal"><span class="pre">--draft</span></code> (turns on draft mode in documentclass, otherwise final mode)</li>
 <li><code class="docutils literal"><span class="pre">--latex_copyright=everypage,titlepages</span></code> (copyright on every page or on titlepage and chapter pages)</li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
@@ -8461,7 +8507,7 @@ be used to set the journal name, and the style requires
 <table class="docutils footnote" frame="void" id="varioref" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id41">[4]</a></td><td>Listing <code class="docutils literal"><span class="pre">varioref</span></code> in as package
+<tr><td class="label"><a class="fn-backref" href="#id43">[4]</a></td><td>Listing <code class="docutils literal"><span class="pre">varioref</span></code> in as package
 automatically leads to references with page numbers, if the element referred to
 is not on the same page. This is often very helpful, e.g., &#8220;see
 Figure 5.3 on page 67&#8221;.</td></tr>
@@ -9384,7 +9430,10 @@ number:  use either absolute exercise number or chapter.localnumber.
 
 --toc_depth=...
 
-No of levels in the table of contents. Default: 2 (includes sections and subsections but not subsubsections).
+No of levels in the table of contents. Default: 2, which means
+chapters, sections, and subsections. Set to 1 to exclude subsections.
+Applies to all formats, except sphinx: for sphinx, set toc_depth=... as
+part of the command doconce sphinx_dir.
 
 
 --encoding=...

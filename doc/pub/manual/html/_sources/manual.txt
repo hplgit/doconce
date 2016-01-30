@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 21, 2016
+:Date: Jan 30, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -3774,7 +3774,11 @@ say :eq:`myeq1`-:eq:`myeq2`.
    
    .. verbatim blocks, we need a hack to write (:ref:`my:eq`) above:
    
-   .. the make.sh script must translate \eq:ref:`} back to (ref{`)
+   .. the make.sh script must translate \eq:ref:`} back to (ref{``)
+   
+   LaTeX writers should also notice that the tilde `` |nbsp| ` (for
+   avoiding linebreaks) must not be used for references (DocOnce
+   will automatically insert such characters).
 
 
 
@@ -5474,7 +5478,7 @@ is undocumented and must be manipulated and filled with the contents
 of a DocOnce document, e.g., by first translating DocOnce to HTML,
 and then using BeautifulSoup to get an XHTML version of the HTML
 that can act as a starting point for filling the XML file for an
-iBook. See also other "ideas" "http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html".
+iBook. See also other `ideas <http://christian-fries.de/blog/files/2012-10-iBooks-Author-LaTeX.html>`__.
 
 Dealing with Mathematics in Formats without LaTeX Math Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -5566,7 +5570,12 @@ in the running text. Here is an example:
 
 
 The newcommands must be defined by the standard LaTeX command
-``newcommand{name}{definition}`` in a separate file with name
+
+.. code-block:: latex
+
+        \newcommand{name}{definition}
+
+in a separate file with name
 ``newcommands*.tex``. Use of ``\def`` is ignored. Each newcommand
 definition *must* appear on a single line.
 
@@ -5608,9 +5617,8 @@ follow the rules below.
    labels in ``align`` environments work well.)
    This may feel restrictive to LaTeX writers who are used to
    ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
-   ``align`` and use a number for each equation, or use ``\nonumber\\``
-   to end intermediate calculations on multiple lines and use a label
-   in the last, final result).
+   ``align`` and use a label for each equation, or use ``\nonumber\\``
+   if a line should be without equation number).
 
  * Do not use comments inside equations.
 
@@ -5625,6 +5633,11 @@ follow the rules below.
    MediaWiki (``mwiki``) does not support references to equations.
 
  * Spaces are not allowed in labels.
+
+ * There is just one ``ref`` command (no ``\eqref`` for equations) and references to
+   equations must use parentheses. Never use the tilde `` |nbsp| `` (non-breaking
+   space) character before references to figures, sections, etc., but
+   tilde is allowed for references to equations.
 
  * Never use ``\pageref`` as pages are not a concept in web documents
    (there is only a ``ref`` command in DocOnce and it refers to labels).
@@ -5717,7 +5730,8 @@ follow the rules below.
    a lot of manual edits and adjustments.
    
    For examples, figure environments
-   can be translated by ``doconce latex2doconce`` only if the label is inside
+   can be translated by the program
+   ``doconce latex2doconce`` only if the label is inside
    the caption and the figure is typeset like
    
    .. code-block:: latex
@@ -6313,6 +6327,16 @@ capital E anyway:
 To summarize, the *example* environment together with the ``refex`` Mako
 function allows you to work with native LaTeX example environments, while
 there is a neat alternative solution for all other formats.
+
+
+.. admonition:: Enumerated environments
+
+   It is also possible to make enumerated environments such that their `ref`s use numbers
+   instead of section headings in HTML format (just like Figures do). This mimics LaTeX
+   behaviour on theorem-style environments. See the example in `DocOnce repository <https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/enumerated_envs>`__.
+
+
+
 
 You may take a look at a complete `userdef_environments.py <https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py>`__
 file to see this example environment and another *highligh* environment
@@ -8348,6 +8372,39 @@ various options that can be added to the basic commands.
 A handy feature of the generated ``make.py`` script is that it
 inserts checks for successful runs of the many ``doconce`` commands,
 and if something goes wrong, the script aborts.
+
+.. _do2any:spellcheck:
+
+Spell checking
+--------------
+
+Although not a part of compiling DocOnce to some format, spell checking
+is often the first task done in a ``make.sh`` or ``make.py`` file. DocOnce
+comes with a simple support of spell checking, ``doconce spellcheck``, where
+all code and mathematics are stripped from the document, also all inline
+verbatim expressions, comments, etc. Then the program ``ispell`` is run on
+the stripped document, and a list of misspellings is reported.
+
+Any DocOnce document has its own set of "legal words" (approved by the
+authors) in the file ``.dict4spell.txt``. When ``doconce spellcheck`` reports
+new misspellings, some are corrected and some are added to ``.dict4spell.txt``.
+The work flow is simple:
+
+ 1. Run ``doconce spellcheck -d .dict4spell.txt *.do.txt``
+
+ 2. Examine ``misspellings.txt |nbsp| `` for misspellings and make corrections in
+    the source files.
+
+ 3. Rerun ``doconce spellcheck`` and repeat the procedure.
+
+ 4. When all words in ``misspellings.txt |nbsp| `` are acceptable, add these to
+    the current dictionary by ``cp new_dictionary.txt~ .dict4spell.txt``.
+
+Run ``doconce spellcheck`` without any arguments to get more description of
+what kind of files that are produced. For example, the text in ``mydoc.do.txt``
+stripped for math, code, and other special constructions, is available
+in ``tmp_stripped_mydoc.do.txt`` and can be copied into (e.g.) Microsoft Word
+for grammar check.
 
 .. _do2any:pre:
 
@@ -10570,7 +10627,10 @@ here for convenience.
         
         --toc_depth=...
         
-        No of levels in the table of contents. Default: 2 (includes sections and subsections but not subsubsections).
+        No of levels in the table of contents. Default: 2, which means
+        chapters, sections, and subsections. Set to 1 to exclude subsections.
+        Applies to all formats, except sphinx: for sphinx, set toc_depth=... as
+        part of the command doconce sphinx_dir.
         
         
         --encoding=...
