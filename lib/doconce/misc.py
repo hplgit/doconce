@@ -9934,7 +9934,10 @@ def extract_exercises():
             exer.append(line)
         elif line.startswith('========= '):
             exer.append(line)
-        if re.search(exer_heading_pattern, line):
+        elif line.startswith('# Externaldocuments:'):
+            exer.append('\n' + line + '\n')
+
+        if re.search(exer_heading_pattern, line):  # inside exercise?
             #print 'found exercise!'
             inside_exer = True
             exer.append([])
