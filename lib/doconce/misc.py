@@ -9974,10 +9974,10 @@ def extract_exercises():
                     if keyword in keywords:
                         print_this_exer = True
             if print_this_exer:
-                f.write('\n\n# --- begin exercise ---\n\n')
+                #f.write('\n\n# --- begin exercise ---\n\n') # will lead to double numbering
                 for exer_line in line:
                     f.write(exer_line)
-                f.write('\n# --- end exercise ---\n\n')
+                #f.write('\n# --- end exercise ---\n\n')
             i += 1
         elif isinstance(line, str):
             f.write(line)
