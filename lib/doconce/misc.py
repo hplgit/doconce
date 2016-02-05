@@ -2412,7 +2412,7 @@ def _clean(light):
     for dof in doconce_files:
         namestem = dof[:-7]
         generated_files = glob.glob(namestem + '.*')
-        extensions_to_keep = ['.sh', '.do.txt']
+        extensions_to_keep = ['.do.txt', '.sh', '.py', '*.pl']
         if light:
             extensions_to_keep += ['.pdf', '.html', '.txt', '.gwiki', '.mwiki', '.cwiki', '.ipynb', '.m']
         #print 'generated_files:', namestem + '.*', generated_files
