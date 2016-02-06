@@ -1,0 +1,4 @@
+http://qtip1.com/docs
+http://qtip1.com/docs/tutorials
+http://qtip2.com/demos
+http://stackoverflow.com/questions/2950004/how-to-use-jquery-qtip-simple-example-please
