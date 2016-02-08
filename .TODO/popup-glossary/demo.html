@@ -1,0 +1,126 @@
+<!-- Example of pop-up qtip window that can be used as glossary.
+This file contains a minimalistic example. Required HTML code
+is marked with comments containing "new". -->
+
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+
+<title></title>
+
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.css" />
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+div { text-align: justify; text-justify: inter-word; }
+
+<!-- new: style for anchor for pop-up window -->
+a.snippet-ref {
+    color: inherit;
+    border-bottom: 1px dashed #999;
+    cursor: default;
+}
+
+</style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 1, 'sections': [(u'Quiz', 1, None, '___sec0')]}
+end of tocinfo -->
+
+<body>
+
+
+<!-- ------------------- main content ---------------------- -->
+
+<h1 id="___sec0">Quiz </h1>
+
+<!-- new: example on use -->
+Here is a <a class="snippet-ref" data-url="snippet_file.html">snippet</a>.
+
+<!-- ------------------- end of main content --------------- -->
+
+<!-- JavaScript placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- new: qtip2 library is needed; include imagesloaded too -->
+<!-- Include either the minifed or production version, NOT both!! -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<!-- new: js function needed for pop-up window -->
+<script type="text/javascript">
+$('[data-url]').qtip({
+    style: 'qtip-bootstrap',
+    hide: {
+                    fixed: true,
+                    delay: 300
+    },
+    show: {
+            delay: 500
+    },
+    content: {
+        text: function(event, api) {
+            $.ajax({
+                url: api.elements.target.attr('data-url') // Use data-url attribute for the URL
+            })
+            .then(function(content) {
+                // Set the tooltip content upon successful retrieval
+                api.set('content.text', content);
+
+                // Update math
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            }, function(xhr, status, error) {
+                // Upon failure... set the tooltip content to the status and error value
+                api.set('content.text', status + ': ' + error);
+            });
+
+            return '...'; // Set some initial text
+        }
+    }
+});
+</script>
+
+</body>
+</html>
+
