@@ -952,16 +952,18 @@ label{trouble:Externaldocuments}
 idx{Externaldocuments:}
 
 The `# Externaldocuments:` command is used for *generalized
-references* to lables in other documents. The command specifies `.aux`
-files and provides information for the `xr` package in case of LaTeX
+references* to lables in other documents. The command specifies
+directories with `.aux` files and provides the necessary information
+for using `xr` package for external references in case of LaTeX
 output. For all other formts an alternative user-given text is used
 and `# Externaldocuments:` has no effect.  A typical use case is that
 one book refers to another book.  This may cause trouble when the
 `.tex` and `.aux` files specified in the `# Externaldocuments:`
 command do not exist. A quick fix is to follow the advice in the error
 message and use the `touch` command to create empty files so DocOnce
-does not abort the execution. However, the only real fix is to install all the
-directory trees specified in the `# Externaldocuments:` command.
+does not abort the execution. However, the only real fix is to install
+all the directory trees specified in the `# Externaldocuments:`
+command.
 
 References to such external documents may also cause trouble when
 sending the `.tex` files for a book to a publisher, since the

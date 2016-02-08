@@ -874,16 +874,18 @@ dollar sign.</p>
 <div class="section" id="problems-with-externaldocuments-specifications">
 <span id="trouble-externaldocuments"></span><h3>Problems with Externaldocuments specifications<a class="headerlink" href="#problems-with-externaldocuments-specifications" title="Permalink to this headline">¶</a></h3>
 <p id="index-39">The <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command is used for <em>generalized
-references</em> to lables in other documents. The command specifies <code class="docutils literal"><span class="pre">.aux</span></code>
-files and provides information for the <code class="docutils literal"><span class="pre">xr</span></code> package in case of LaTeX
+references</em> to lables in other documents. The command specifies
+directories with <code class="docutils literal"><span class="pre">.aux</span></code> files and provides the necessary information
+for using <code class="docutils literal"><span class="pre">xr</span></code> package for external references in case of LaTeX
 output. For all other formts an alternative user-given text is used
 and <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> has no effect.  A typical use case is that
 one book refers to another book.  This may cause trouble when the
 <code class="docutils literal"><span class="pre">.tex</span></code> and <code class="docutils literal"><span class="pre">.aux</span></code> files specified in the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code>
 command do not exist. A quick fix is to follow the advice in the error
 message and use the <code class="docutils literal"><span class="pre">touch</span></code> command to create empty files so DocOnce
-does not abort the execution. A real fix is to install all the
-directory trees specified in the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command.</p>
+does not abort the execution. However, the only real fix is to install
+all the directory trees specified in the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code>
+command.</p>
 <p>References to such external documents may also cause trouble when
 sending the <code class="docutils literal"><span class="pre">.tex</span></code> files for a book to a publisher, since the
 <code class="docutils literal"><span class="pre">\externaldocument{}</span></code> commands in this file will refer to .`aux`

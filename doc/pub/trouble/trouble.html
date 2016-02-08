@@ -1799,16 +1799,18 @@ dollar sign.
 
 <p>
 The <code># Externaldocuments:</code> command is used for <em>generalized
-references</em> to lables in other documents. The command specifies <code>.aux</code>
-files and provides information for the <code>xr</code> package in case of LaTeX
+references</em> to lables in other documents. The command specifies
+directories with <code>.aux</code> files and provides the necessary information
+for using <code>xr</code> package for external references in case of LaTeX
 output. For all other formts an alternative user-given text is used
 and <code># Externaldocuments:</code> has no effect.  A typical use case is that
 one book refers to another book.  This may cause trouble when the
 <code>.tex</code> and <code>.aux</code> files specified in the <code># Externaldocuments:</code>
 command do not exist. A quick fix is to follow the advice in the error
 message and use the <code>touch</code> command to create empty files so DocOnce
-does not abort the execution. A real fix is to install all the
-directory trees specified in the <code># Externaldocuments:</code> command.
+does not abort the execution. However, the only real fix is to install
+all the directory trees specified in the <code># Externaldocuments:</code>
+command.
 
 <p>
 References to such external documents may also cause trouble when
