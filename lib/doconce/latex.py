@@ -455,6 +455,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                     print '*** error: external document %s listed in # Externaldocuments does not exist' % name2
                     if os.path.isdir(name):
                         print '    The problem is that doconce+latex must be run on the document in %s' % name
+                        print '    such that %s exists!' % name2
                     else:
                         print '    The problem is that the directory %s does not exist (i.e., no DocOnce document found)' % name
                         print '    A quick fix is\n'
