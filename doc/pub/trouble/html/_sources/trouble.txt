@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 21, 2016
+:Date: Feb 8, 2016
 
 
 .. admonition:: Disclaimer
@@ -57,6 +57,29 @@ How do I cite and link to DocOnce?
 
 See the "How to cite" section
 on the `project page <https://github.com/hplgit/doconce>`__.
+
+.. _sec:toc_depth:
+
+How to I control the table of contents?
+---------------------------------------
+
+To include a table of contents in the document, insert the line
+
+.. code-block:: doconce
+
+        TOC: on
+
+in the DocOnce source at the place where you want the table of contents
+to be inserted. Often you want to do a pagebreak before the table of
+contents, and in that case, insert ``!split`` on the line before.
+
+To control the number of section levels in the table of contents
+(chapters, sections,
+subsections), use the ``--toc_depth=X`` command-line option, where ``X`` reflects
+the maximum level. Level 0 correspond to chapter. The defaul value of
+``X``, 2, thus means including chapters, sections, and subsections.
+For Sphinx output, one must use the command-line option ``toc_depth=X``
+as part of the command ``doconce sphinx_dir``.
 
 .. _sec:custom:navlinks:
 
@@ -1045,11 +1068,43 @@ If you want to write ``$1,000``, this is not trivial, because the dollar
 sign is used for inline math formulas, and everything from this dollar sign
 up to the next is interpreted as a math formula.
 
-The solution in DocOnce is to prefix the dollar sign by a backslash.
+The solution in DocOnce is to prefix the dollar sign by a backslash (same
+syntax as required by LaTeX).
 This ensures correct output in all output formats.
 
 Another solution is to pre- or postfix the amount by USD instead of the
 dollar sign.
+
+.. _trouble:Externaldocuments:
+
+Problems with Externaldocuments specifications
+----------------------------------------------
+
+.. index:: Externaldocuments:
+
+The ``# Externaldocuments:`` command is used for *generalized
+references* to lables in other documents. The command specifies ``.aux``
+files and provides information for the ``xr`` package in case of LaTeX
+output. For all other formts an alternative user-given text is used
+and ``# Externaldocuments:`` has no effect.  A typical use case is that
+one book refers to another book.  This may cause trouble when the
+``.tex`` and ``.aux`` files specified in the ``# Externaldocuments:``
+command do not exist. A quick fix is to follow the advice in the error
+message and use the ``touch`` command to create empty files so DocOnce
+does not abort the execution. A real fix is to install all the
+directory trees specified in the ``# Externaldocuments:`` command.
+
+References to such external documents may also cause trouble when
+sending the ``.tex`` files for a book to a publisher, since the
+``\externaldocument{}`` commands in this file will refer to .`aux`
+files. A good fix for this problem is provided by the sample packing
+script `pack_Springer.sh <https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/pack_Springer.sh>`__,
+which calls up another script `grab_stylefiles.py <https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/grab_stylefiles.py>`__,
+which copies the ``.aux`` files in question to a subdirectory and
+autoedits the main ``.tex`` for the DocOnce document accordingly. The
+purpose of ``pack_Springer.sh`` is to make a directory tree with all
+files (including stylefiles) needed to compile a LaTeX version of the
+document. This tree can then be sent to the publisher.
 
 .. !split
 

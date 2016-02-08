@@ -2850,6 +2850,9 @@ def handle_cross_referencing(filestr, format):
     refaux = 'refaux{' in filestr
     from latex import aux_label2number
     label2number = aux_label2number()
+    if refaux and not label2number:
+        print '*** error: used refaux{} reference(s), but no option --replace_ref_by_latex_auxno='
+        _abort()
     # If there is one refaux{...} in the document, only refaux{...}
     # references get replaced by label2number info
     if label2number:

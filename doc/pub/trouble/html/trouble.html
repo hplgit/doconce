@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 21, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 8, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -112,6 +112,23 @@ gives an error message, try to rewrite.</p>
 <span id="sec-cite"></span><h3>How do I cite and link to DocOnce?<a class="headerlink" href="#how-do-i-cite-and-link-to-doconce" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-2"></span><p id="index-3">See the &#8220;How to cite&#8221; section
 on the <a class="reference external" href="https://github.com/hplgit/doconce">project page</a>.</p>
+</div>
+<div class="section" id="how-to-i-control-the-table-of-contents">
+<span id="sec-toc-depth"></span><h3>How to I control the table of contents?<a class="headerlink" href="#how-to-i-control-the-table-of-contents" title="Permalink to this headline">¶</a></h3>
+<p>To include a table of contents in the document, insert the line</p>
+<div class="highlight-doconce"><div class="highlight"><pre><span class="gh">TOC:</span> on
+</pre></div>
+</div>
+<p>in the DocOnce source at the place where you want the table of contents
+to be inserted. Often you want to do a pagebreak before the table of
+contents, and in that case, insert <code class="docutils literal"><span class="pre">!split</span></code> on the line before.</p>
+<p>To control the number of section levels in the table of contents
+(chapters, sections,
+subsections), use the <code class="docutils literal"><span class="pre">--toc_depth=X</span></code> command-line option, where <code class="docutils literal"><span class="pre">X</span></code> reflects
+the maximum level. Level 0 correspond to chapter. The defaul value of
+<code class="docutils literal"><span class="pre">X</span></code>, 2, thus means including chapters, sections, and subsections.
+For Sphinx output, one must use the command-line option <code class="docutils literal"><span class="pre">toc_depth=X</span></code>
+as part of the command <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">sphinx_dir</span></code>.</p>
 </div>
 <div class="section" id="how-can-i-add-links-to-some-resource-on-every-page">
 <span id="sec-custom-navlinks"></span><h3>How can I add links to some resource on every page?<a class="headerlink" href="#how-can-i-add-links-to-some-resource-on-every-page" title="Permalink to this headline">¶</a></h3>
@@ -848,10 +865,36 @@ can see how all files are included.</p>
 <p>If you want to write <code class="docutils literal"><span class="pre">$1,000</span></code>, this is not trivial, because the dollar
 sign is used for inline math formulas, and everything from this dollar sign
 up to the next is interpreted as a math formula.</p>
-<p>The solution in DocOnce is to prefix the dollar sign by a backslash.
+<p>The solution in DocOnce is to prefix the dollar sign by a backslash (same
+syntax as required by LaTeX).
 This ensures correct output in all output formats.</p>
 <p>Another solution is to pre- or postfix the amount by USD instead of the
 dollar sign.</p>
+</div>
+<div class="section" id="problems-with-externaldocuments-specifications">
+<span id="trouble-externaldocuments"></span><h3>Problems with Externaldocuments specifications<a class="headerlink" href="#problems-with-externaldocuments-specifications" title="Permalink to this headline">¶</a></h3>
+<p id="index-39">The <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command is used for <em>generalized
+references</em> to lables in other documents. The command specifies <code class="docutils literal"><span class="pre">.aux</span></code>
+files and provides information for the <code class="docutils literal"><span class="pre">xr</span></code> package in case of LaTeX
+output. For all other formts an alternative user-given text is used
+and <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> has no effect.  A typical use case is that
+one book refers to another book.  This may cause trouble when the
+<code class="docutils literal"><span class="pre">.tex</span></code> and <code class="docutils literal"><span class="pre">.aux</span></code> files specified in the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code>
+command do not exist. A quick fix is to follow the advice in the error
+message and use the <code class="docutils literal"><span class="pre">touch</span></code> command to create empty files so DocOnce
+does not abort the execution. A real fix is to install all the
+directory trees specified in the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command.</p>
+<p>References to such external documents may also cause trouble when
+sending the <code class="docutils literal"><span class="pre">.tex</span></code> files for a book to a publisher, since the
+<code class="docutils literal"><span class="pre">\externaldocument{}</span></code> commands in this file will refer to .`aux`
+files. A good fix for this problem is provided by the sample packing
+script <a class="reference external" href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/pack_Springer.sh">pack_Springer.sh</a>,
+which calls up another script <a class="reference external" href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/grab_stylefiles.py">grab_stylefiles.py</a>,
+which copies the <code class="docutils literal"><span class="pre">.aux</span></code> files in question to a subdirectory and
+autoedits the main <code class="docutils literal"><span class="pre">.tex</span></code> for the DocOnce document accordingly. The
+purpose of <code class="docutils literal"><span class="pre">pack_Springer.sh</span></code> is to make a directory tree with all
+files (including stylefiles) needed to compile a LaTeX version of the
+document. This tree can then be sent to the publisher.</p>
 </div>
 </div>
 <div class="section" id="preprocess-mako">
@@ -871,7 +914,7 @@ to <code class="docutils literal"><span class="pre">'T</span> <span class="pre">
 </div>
 <div class="section" id="the-mako-preprocessor-has-problems-with-lines-starting-with-percent-sign">
 <h3>The Mako preprocessor has problems with lines starting with percent sign<a class="headerlink" href="#the-mako-preprocessor-has-problems-with-lines-starting-with-percent-sign" title="Permalink to this headline">¶</a></h3>
-<p id="index-39">If you have lines starting with <code class="docutils literal"><span class="pre">%</span></code> inside code segments (for example,
+<p id="index-40">If you have lines starting with <code class="docutils literal"><span class="pre">%</span></code> inside code segments (for example,
 SWIG code or Matlab comment lines), the Mako preprocessor will crash
 because it thinks these lines are Mako statements. DocOnce detects
 this problem and emits an error message. The solution to
@@ -893,14 +936,14 @@ end
 </div>
 <div class="section" id="the-mako-preprocessor-gives-syntax-error-in-python-code">
 <h3>The Mako preprocessor gives syntax error in Python code<a class="headerlink" href="#the-mako-preprocessor-gives-syntax-error-in-python-code" title="Permalink to this headline">¶</a></h3>
-<p id="index-40">The information with respect to syntax errors in Python code is
+<p id="index-41">The information with respect to syntax errors in Python code is
 sparse. It is recommended to move the Python code to separate files
 and test it with the ordinary Python interpreter. See the
 section <em>Debugging Python code in Mako</em> in the DocOnce manual.</p>
 </div>
 <div class="section" id="the-mako-preprocessor-gives-strange-error-messages">
 <h3>The Mako preprocessor gives strange error messages<a class="headerlink" href="#the-mako-preprocessor-gives-strange-error-messages" title="Permalink to this headline">¶</a></h3>
-<p id="index-41">If you to a little syntax error in Mako, the consequences can be
+<p id="index-42">If you to a little syntax error in Mako, the consequences can be
 quite unpredictable. Especially, if you forget curly braces around
 variables or function calls, the forthcoming text is processed as
 part of the Mako command. Pay attention to the line number reported
@@ -927,7 +970,7 @@ what can be wrong.</p>
 </div>
 <div class="section" id="the-mako-preprocessor-claims-a-variable-is-undefined">
 <h3>The Mako preprocessor claims a variable is undefined<a class="headerlink" href="#the-mako-preprocessor-claims-a-variable-is-undefined" title="Permalink to this headline">¶</a></h3>
-<p id="index-42">Very often such errors are related to typos when using Mako
+<p id="index-43">Very often such errors are related to typos when using Mako
 variables or functions, or correct yet undesired LaTeX syntax.
 For example,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>${\cal O}(\Delta x^2)$
@@ -959,7 +1002,7 @@ for large books.</p>
 </div>
 <div class="section" id="something-goes-wrong-in-the-preprocessing-step">
 <h3>Something goes wrong in the preprocessing step<a class="headerlink" href="#something-goes-wrong-in-the-preprocessing-step" title="Permalink to this headline">¶</a></h3>
-<p id="index-43">You can examine <code class="docutils literal"><span class="pre">tmp_preprocess__filename</span></code> and <code class="docutils literal"><span class="pre">tmp_mako__filename</span></code>,
+<p id="index-44">You can examine <code class="docutils literal"><span class="pre">tmp_preprocess__filename</span></code> and <code class="docutils literal"><span class="pre">tmp_mako__filename</span></code>,
 where <code class="docutils literal"><span class="pre">filename</span></code> is the complete name of the DocOnce file, to see
 what the preprocessors actually to and if something is wrong in these
 files before DocOnce starts translating the text.
@@ -1240,7 +1283,7 @@ section headings and admon headings.</p>
 </div>
 <div class="section" id="how-can-i-customize-the-look-of-an-admonition">
 <h3>How can I customize the look of an admonition?<a class="headerlink" href="#how-can-i-customize-the-look-of-an-admonition" title="Permalink to this headline">¶</a></h3>
-<p id="index-44">The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
+<p id="index-45">The default environment, <code class="docutils literal"><span class="pre">--latex_admon=mdfbox</span></code>, has many options for
 customization. Say we want the notice environment to have a very small
 font, no background color, no line below the title, no visible frame,
 and a smaller width. All this is a matter of editing the
@@ -1296,7 +1339,7 @@ bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla, bla-bla,
 <span class="k">!enotice</span>
 </pre></div>
 </div>
-<span class="target" id="index-45"></span><span class="target" id="index-46"></span><p id="index-47">A (much) better approach is to define a <em>user-defined environment</em>,
+<span class="target" id="index-46"></span><span class="target" id="index-47"></span><p id="index-48">A (much) better approach is to define a <em>user-defined environment</em>,
 called (e.g.) minipage, see the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html#manual:userdef:envir">manual</a>.
 This environment has begin tag <code class="docutils literal"><span class="pre">!bu-minipage</span></code> and end tag
 <code class="docutils literal"><span class="pre">!eu-minipage</span></code>. The environment is defined in a file
@@ -1651,7 +1694,7 @@ headlines.</p>
 </div>
 <div class="section" id="how-to-typeset-papers-with-specified-style-files">
 <span id="trouble-latex-styles"></span><h3>How to typeset papers with specified style files?<a class="headerlink" href="#how-to-typeset-papers-with-specified-style-files" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="index-48"></span><p id="index-49">DocOnce has the <code class="docutils literal"><span class="pre">--latex_style=</span></code> option for specifying a few LaTeX
+<span class="target" id="index-49"></span><p id="index-50">DocOnce has the <code class="docutils literal"><span class="pre">--latex_style=</span></code> option for specifying a few LaTeX
 styles for papers and books. This option mostly support book styles,
 since traditionally, paper styles in various journals often have
 special commands for authors, institutions, summary, and so on that are
@@ -1906,6 +1949,7 @@ clickable.</p>
 <li><a class="reference internal" href="#general-topics">General topics</a><ul>
 <li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li><a class="reference internal" href="#how-do-i-cite-and-link-to-doconce">How do I cite and link to DocOnce?</a></li>
+<li><a class="reference internal" href="#how-to-i-control-the-table-of-contents">How to I control the table of contents?</a></li>
 <li><a class="reference internal" href="#how-can-i-add-links-to-some-resource-on-every-page">How can I add links to some resource on every page?</a><ul>
 <li><a class="reference internal" href="#bootstrap-html-styles">Bootstrap HTML styles</a></li>
 <li><a class="reference internal" href="#vagrant-html-template">Vagrant HTML template</a></li>
@@ -1964,6 +2008,7 @@ clickable.</p>
 <li><a class="reference internal" href="#lists-look-wrong">Lists look wrong</a></li>
 <li><a class="reference internal" href="#how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document">How can I get an overview of all files that are included in a document?</a></li>
 <li><a class="reference internal" href="#how-to-write-the-dollar-sign-for-an-amount-in-dollars">How to write the dollar sign for an amount in dollars?</a></li>
+<li><a class="reference internal" href="#problems-with-externaldocuments-specifications">Problems with Externaldocuments specifications</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako">Preprocess/Mako</a><ul>

@@ -1994,7 +1994,7 @@ def html_ref_and_label(section_label2title, format, filestr):
     # Should have <h\d id=""> type of labels too
 
     # References to custom numbered environments are also handled here
-    # We look for all such environments, extract their numbers 
+    # We look for all such environments, extract their numbers
     # from special comment tag and record it to label2no along with Figure's
     # numbers
     #
@@ -2026,7 +2026,7 @@ def html_ref_and_label(section_label2title, format, filestr):
             label2no[m.group(1)] = m.group(2)
 
             # replace the special comment with an anchor
-            lines[i] = re.sub(custom_env_pattern, 
+            lines[i] = re.sub(custom_env_pattern,
                     "<div id=\"%s\" />" % m.group(1), lines[i])
 
     filestr = '\n'.join(lines)

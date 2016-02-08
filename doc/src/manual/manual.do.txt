@@ -1893,18 +1893,15 @@ say (ref{myeq1})-(ref{myeq2}).
 LaTeX writers who are used to `\eqref{}` should observe that
 there is only one type of reference syntax in DocOnce, `ref`, without
 backslash, and that references to an equation with label `my:special:eq`
-look like
+must feature parentheses and look like
 
 !bc
 ..., see (ref{my:special:eq}).
 !ec
 # Since any (ref{}) will be translated to \eqref{}, also inside
 # verbatim blocks, we need a hack to write (ref{my:eq}) above:
-# the make.sh script must translate \eqref{} back to (ref{})
+# the make.sh script for manual.do.txt must translate \eqref{} back to (ref{})!
 
-LaTeX writers should also notice that the tilde `~` (for
-avoiding linebreaks) must not be used for references (DocOnce
-will automatically insert such characters).
 !ewarning
 
 
@@ -1924,10 +1921,12 @@ technique, but DocOnce has a special option for this feature:
 information from `../book.aux` and replace all references (`ref`) by the
 corresponding number found in the `../book.aux` file. Sometimes one wants
 to use this feature for selected references. In that case, use `refaux`
-instead of `ref`. If there is a single `refaux` command in the DocOnce
+instead of `ref`. If there one or more `refaux` commands in the DocOnce
 source, only `refaux` references will be replaced by numbers from the
 `.aux` file. Otherwise, all `ref` commands corresponding to labels in
-the `.aux` file will be replaced.
+the `.aux` file will be replaced. In any case, the
+`--replace_ref_by_latex_auxno=` option is needed to specify one
+`.aux` file.
 
 ===== Generalized Cross-Referencing =====
 label{manual:genrefs}
