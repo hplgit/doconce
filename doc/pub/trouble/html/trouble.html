@@ -898,7 +898,30 @@ which automatically copies the <code class="docutils literal"><span class="pre">
 autoedits the main <code class="docutils literal"><span class="pre">.tex</span></code> for the DocOnce document accordingly. The
 purpose of <code class="docutils literal"><span class="pre">pack_Springer.sh</span></code> is to make a directory tree with all
 files (including stylefiles) needed to compile a LaTeX version of the
-document. This tree can then be sent to the publisher.</p>
+document. This tree can then be sent to the publisher and is self contained.</p>
+<p>Another fix for problems with the <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command is to
+hardcode references when files needs to be sent to a publisher. Typically,
+one has</p>
+<div class="highlight-doconce"><div class="highlight"><pre>% if not FOR_PUBLISHER:
+<span class="c"># Externaldocuments: ../../some/path, ../some/other/path</span>
+% endif
+</pre></div>
+</div>
+<p>Every generalized reference to a label in the specified external
+documents must have a special case when files are meant
+for a publisher:</p>
+<div class="highlight-doconce"><div class="highlight"><pre>% if FOR_PUBLISHER
+ref[Section 4.2][ in
+% else:
+ref[Section ref{my:label}][ in
+%endif
+cite {book}][the section ``Guidelines&#39;&#39; in the document
+<span class="s">&quot;A note on everything&quot;</span>: &quot;http://...&quot;].
+</pre></div>
+</div>
+<p>Setting <code class="docutils literal"><span class="pre">FOR_PUBLISHER=True</span></code> as part of the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">pdflatex</span></code>
+command will then effectively remove everything with the
+<code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command and generalized references.</p>
 </div>
 </div>
 <div class="section" id="preprocess-mako">

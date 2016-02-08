@@ -1821,11 +1821,44 @@ files in other directories (which the publisher then must have).
 A good fix to this problem is provided by the sample packing
 script <a href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/pack_Springer.sh" target="_self"><tt>pack_Springer.sh</tt></a>,
 which calls up another script <a href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/grab_stylefiles.py" target="_self"><tt>grab_stylefiles.py</tt></a>,
-which copies the <code>.aux</code> files in question to a subdirectory and
+which automatically copies the <code>.aux</code> files in question to a subdirectory and
 autoedits the main <code>.tex</code> for the DocOnce document accordingly. The
 purpose of <code>pack_Springer.sh</code> is to make a directory tree with all
 files (including stylefiles) needed to compile a LaTeX version of the
-document. This tree can then be sent to the publisher.
+document. This tree can then be sent to the publisher and is self contained.
+
+<p>
+Another fix for problems with the <code># Externaldocuments:</code> command is to
+hardcode references when files needs to be sent to a publisher. Typically,
+one has
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">% if not FOR_PUBLISHER:
+<span style="color: #408080; font-style: italic"># Externaldocuments: ../../some/path, ../some/other/path</span>
+% endif
+</pre></div>
+<p>
+Every generalized reference to a label in the specified external
+documents must have a special case when files are meant
+for a publisher:
+
+<p>
+
+<!-- code=doconce (!bc do) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">% if FOR_PUBLISHER
+ref[Section 4.2][ in
+% else:
+ref[Section ref{my:label}][ in
+%endif
+cite {book}][the section ``Guidelines&#39;&#39; in the document
+<span style="color: #BA2121">&quot;A note on everything&quot;</span>: &quot;http://...&quot;].
+</pre></div>
+<p>
+Setting <code>FOR_PUBLISHER=True</code> as part of the <code>doconce format pdflatex</code>
+command will then effectively remove everything with the
+<code># Externaldocuments:</code> command and generalized references.
 
 <h1 id="___sec57">Preprocess/Mako </h1>
 

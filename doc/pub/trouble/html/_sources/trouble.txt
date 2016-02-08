@@ -1108,7 +1108,35 @@ which automatically copies the ``.aux`` files in question to a subdirectory and
 autoedits the main ``.tex`` for the DocOnce document accordingly. The
 purpose of ``pack_Springer.sh`` is to make a directory tree with all
 files (including stylefiles) needed to compile a LaTeX version of the
-document. This tree can then be sent to the publisher.
+document. This tree can then be sent to the publisher and is self contained.
+
+Another fix for problems with the ``# Externaldocuments:`` command is to
+hardcode references when files needs to be sent to a publisher. Typically,
+one has
+
+.. code-block:: doconce
+
+        % if not FOR_PUBLISHER:
+        # Externaldocuments: ../../some/path, ../some/other/path
+        % endif
+
+Every generalized reference to a label in the specified external
+documents must have a special case when files are meant
+for a publisher:
+
+.. code-block:: doconce
+
+        % if FOR_PUBLISHER
+        ref[Section 4.2][ in
+        % else:
+        ref[Section ref{my:label}][ in
+        %endif
+        cite {book}][the section ``Guidelines'' in the document
+        "A note on everything": "http://..."].
+
+Setting ``FOR_PUBLISHER=True`` as part of the ``doconce format pdflatex``
+command will then effectively remove everything with the
+``# Externaldocuments:`` command and generalized references.
 
 .. !split
 
