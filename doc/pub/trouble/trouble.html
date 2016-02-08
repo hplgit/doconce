@@ -1815,8 +1815,10 @@ command.
 <p>
 References to such external documents may also cause trouble when
 sending the <code>.tex</code> files for a book to a publisher, since the
-<code>\externaldocument{}</code> commands in this file will refer to .`aux`
-files. A good fix for this problem is provided by the sample packing
+<code>\externaldocument{}</code> commands in the <code>.tex</code> file
+in this file will refer to <code>.aux</code>
+files in other directories (which the publisher then must have).
+A good fix to this problem is provided by the sample packing
 script <a href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/pack_Springer.sh" target="_self"><tt>pack_Springer.sh</tt></a>,
 which calls up another script <a href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/grab_stylefiles.py" target="_self"><tt>grab_stylefiles.py</tt></a>,
 which copies the <code>.aux</code> files in question to a subdirectory and

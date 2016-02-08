@@ -1098,11 +1098,13 @@ command.
 
 References to such external documents may also cause trouble when
 sending the ``.tex`` files for a book to a publisher, since the
-``\externaldocument{}`` commands in this file will refer to .`aux`
-files. A good fix for this problem is provided by the sample packing
+``\externaldocument{}`` commands in the ``.tex`` file
+in this file will refer to ``.aux``
+files in other directories (which the publisher then must have).
+A good fix to this problem is provided by the sample packing
 script `pack_Springer.sh <https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/pack_Springer.sh>`__,
 which calls up another script `grab_stylefiles.py <https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/grab_stylefiles.py>`__,
-which copies the ``.aux`` files in question to a subdirectory and
+which automatically copies the ``.aux`` files in question to a subdirectory and
 autoedits the main ``.tex`` for the DocOnce document accordingly. The
 purpose of ``pack_Springer.sh`` is to make a directory tree with all
 files (including stylefiles) needed to compile a LaTeX version of the

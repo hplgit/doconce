@@ -888,11 +888,13 @@ all the directory trees specified in the <code class="docutils literal"><span cl
 command.</p>
 <p>References to such external documents may also cause trouble when
 sending the <code class="docutils literal"><span class="pre">.tex</span></code> files for a book to a publisher, since the
-<code class="docutils literal"><span class="pre">\externaldocument{}</span></code> commands in this file will refer to .`aux`
-files. A good fix for this problem is provided by the sample packing
+<code class="docutils literal"><span class="pre">\externaldocument{}</span></code> commands in the <code class="docutils literal"><span class="pre">.tex</span></code> file
+in this file will refer to <code class="docutils literal"><span class="pre">.aux</span></code>
+files in other directories (which the publisher then must have).
+A good fix to this problem is provided by the sample packing
 script <a class="reference external" href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/pack_Springer.sh">pack_Springer.sh</a>,
 which calls up another script <a class="reference external" href="https://github.com/hplgit/setup4book-doconce/blob/master/doc/src/book/grab_stylefiles.py">grab_stylefiles.py</a>,
-which copies the <code class="docutils literal"><span class="pre">.aux</span></code> files in question to a subdirectory and
+which automatically copies the <code class="docutils literal"><span class="pre">.aux</span></code> files in question to a subdirectory and
 autoedits the main <code class="docutils literal"><span class="pre">.tex</span></code> for the DocOnce document accordingly. The
 purpose of <code class="docutils literal"><span class="pre">pack_Springer.sh</span></code> is to make a directory tree with all
 files (including stylefiles) needed to compile a LaTeX version of the
