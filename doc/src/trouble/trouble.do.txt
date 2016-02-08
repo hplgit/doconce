@@ -979,7 +979,7 @@ which automatically copies the `.aux` files in question to a subdirectory and
 autoedits the main `.tex` for the DocOnce document accordingly. The
 purpose of `pack_Springer.sh` is to make a directory tree with all
 files (including stylefiles) needed to compile a LaTeX version of the
-document. This tree can then be sent to the publisher.
+document. This tree can then be sent to the publisher and is self contained.
 
 
 ======= Preprocess/Mako =======

@@ -453,12 +453,16 @@ def latex_code(filestr, code_blocks, code_block_types,
                 name2 = name + '.do.txt'
                 if not os.path.isfile(name2):
                     print '*** error: external document %s listed in # Externaldocuments does not exist' % name2
-                    print '    a quick fix is'
-                    print '      Terminal> mkdir -p %s' % name
-                    print '      Terminal> touch %s.tex' % name
-                    print '      Terminal> touch %s.aux' % name
-                    print '    but this will just make DocOnce happy for a while end up in empty references.'
-                    print '    A real fix is to install the directory tree containing the external document!'
+                    if os.path.isdir(name):
+                        print '    The problem is that doconce+latex must be run on the document in %s' % name
+                    else:
+                        print '    The problem is that the directory %s does not exist (i.e., no DocOnce document found)' % name
+                        print '    A quick fix is\n'
+                        print '      Terminal> mkdir -p %s' % name
+                        print '      Terminal> touch %s.tex' % name
+                        print '      Terminal> touch %s.aux' % name
+                        print '\n    but this will just make DocOnce happy for a while end up with empty references.'
+                        print '    A real fix is to install the directory tree containing the external document!'
                     _abort()
 
     # labels inside tex envirs must have backslash \label:
