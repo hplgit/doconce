@@ -20,7 +20,7 @@ def aux_label2number():
     """Interpret an .aux file and return dict label2number[label]=number."""
     auxfilename = option('replace_ref_by_latex_auxno=', None)
     if auxfilename is None:
-        return {}
+       return {}
 
     if not os.path.isfile(auxfilename):
         print '*** error: --replace_ref_by_latex_auxno=%s, but file "%s" does not exist' % (auxfilename, auxfilename)

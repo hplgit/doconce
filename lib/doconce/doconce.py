@@ -703,6 +703,8 @@ def syntax_check(filestr, format):
 Causes of missing labels:
 1: label is defined in another document. Use generalized references
    ref[][][], or use --allow_refs_to_external_docs (to ignore this error)
+   (if generalized reference and this error occur: syntax of generalized
+   reference is wrong!)
 2: preprocessor if-else has left the label out
 3: forgotten to define the label
 """
@@ -2850,7 +2852,7 @@ def handle_cross_referencing(filestr, format):
     refaux = 'refaux{' in filestr
     from latex import aux_label2number
     label2number = aux_label2number()
-    if refaux and not label2number:
+    if format not in ('latex', 'pdflatex') and refaux and not label2number:
         print '*** error: used refaux{} reference(s), but no option --replace_ref_by_latex_auxno='
         _abort()
     # If there is one refaux{...} in the document, only refaux{...}
