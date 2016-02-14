@@ -2458,18 +2458,19 @@ solutions can be identified and removed if desired.
 
 !bwarning Avoid headings in solutions
 Headings in solutions in exercises will
-appear in table of contents, but
+appear in table of contents, but if
 solutions are left out of the document (using the
-`--without_solutions` option), the table of contents will be wrong.
-Therefore, *never use headings in solutions*, just use paragraph
-headings (double underscores) if you need headings at all.
+`--without_solutions` option), the table of contents will be wrong
+and contain non-existing headings from the solution parts.
+Therefore, *never use headings in solutions*, just use *paragraph
+headings* (double underscores) if you feel the need for headings.
 !ewarning
 
 !bwarning Avoid numbered equations in solutions
 Numbered equations in solutions will influence the global numbering of
 equations in a document (unless exercises always come at the end of
 chapters). If you compile versions of the document with and without
-solutions, the equation numbering may differ between such version and may
+solutions, the equation numbering may differ between the versions and may
 cause confusion among readers.
 !ewarning
 

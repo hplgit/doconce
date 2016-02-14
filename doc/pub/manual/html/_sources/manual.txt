@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Jan 30, 2016
+:Date: Feb 13, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -3764,7 +3764,7 @@ say :eq:`myeq1`-:eq:`myeq2`.
    LaTeX writers who are used to ``\eqref{}`` should observe that
    there is only one type of reference syntax in DocOnce, ``ref``, without
    backslash, and that references to an equation with label ``my:special:eq``
-   look like
+   must feature parentheses and look like
    
    .. code-block:: text
    
@@ -3774,11 +3774,7 @@ say :eq:`myeq1`-:eq:`myeq2`.
    
    .. verbatim blocks, we need a hack to write (:ref:`my:eq`) above:
    
-   .. the make.sh script must translate \eq:ref:`} back to (ref{``)
-   
-   LaTeX writers should also notice that the tilde `` |nbsp| ` (for
-   avoiding linebreaks) must not be used for references (DocOnce
-   will automatically insert such characters).
+   .. the make.sh script for manual.do.txt must translate \eq:ref:`} back to (ref{`)!
 
 
 
@@ -3798,10 +3794,12 @@ technique, but DocOnce has a special option for this feature:
 information from ``../book.aux`` and replace all references (``ref``) by the
 corresponding number found in the ``../book.aux`` file. Sometimes one wants
 to use this feature for selected references. In that case, use ``refaux``
-instead of ``ref``. If there is a single ``refaux`` command in the DocOnce
+instead of ``ref``. If there one or more ``refaux`` commands in the DocOnce
 source, only ``refaux`` references will be replaced by numbers from the
 ``.aux`` file. Otherwise, all ``ref`` commands corresponding to labels in
-the ``.aux`` file will be replaced.
+the ``.aux`` file will be replaced. In any case, the
+``--replace_ref_by_latex_auxno=`` option is needed to specify one
+``.aux`` file.
 
 .. _manual:genrefs:
 
@@ -4408,11 +4406,12 @@ solutions can be identified and removed if desired.
 .. admonition:: Avoid headings in solutions
 
    Headings in solutions in exercises will
-   appear in table of contents, but
+   appear in table of contents, but if
    solutions are left out of the document (using the
-   ``--without_solutions`` option), the table of contents will be wrong.
-   Therefore, *never use headings in solutions*, just use paragraph
-   headings (double underscores) if you need headings at all.
+   ``--without_solutions`` option), the table of contents will be wrong
+   and contain non-existing headings from the solution parts.
+   Therefore, *never use headings in solutions*, just use *paragraph
+   headings* (double underscores) if you feel the need for headings.
 
 
 
@@ -4423,7 +4422,7 @@ solutions can be identified and removed if desired.
    Numbered equations in solutions will influence the global numbering of
    equations in a document (unless exercises always come at the end of
    chapters). If you compile versions of the document with and without
-   solutions, the equation numbering may differ between such version and may
+   solutions, the equation numbering may differ between the versions and may
    cause confusion among readers.
 
 

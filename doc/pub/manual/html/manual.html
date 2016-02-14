@@ -775,7 +775,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 30, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 13, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -3986,13 +3986,10 @@ say <a href="#equation-myeq1">(1)</a>-<a href="#equation-myeq2">(2)</a>.</p>
 <p>LaTeX writers who are used to <code class="docutils literal"><span class="pre">\eqref{}</span></code> should observe that
 there is only one type of reference syntax in DocOnce, <code class="docutils literal"><span class="pre">ref</span></code>, without
 backslash, and that references to an equation with label <code class="docutils literal"><span class="pre">my:special:eq</span></code>
-look like</p>
-<div class="highlight-text"><div class="highlight"><pre>..., see (ref{my:special:eq}).
+must feature parentheses and look like</p>
+<div class="last highlight-text"><div class="highlight"><pre>..., see (ref{my:special:eq}).
 </pre></div>
 </div>
-<p class="last">LaTeX writers should also notice that the tilde ``&nbsp;` (for
-avoiding linebreaks) must not be used for references (DocOnce
-will automatically insert such characters).</p>
 </div>
 <p>Hyperlinks to files or web addresses are handled as explained
 in the section <a class="reference internal" href="#inline-tagging"><span class="std std-ref">Inline Tagging</span></a>.</p>
@@ -4006,10 +4003,12 @@ technique, but DocOnce has a special option for this feature:
 information from <code class="docutils literal"><span class="pre">../book.aux</span></code> and replace all references (<code class="docutils literal"><span class="pre">ref</span></code>) by the
 corresponding number found in the <code class="docutils literal"><span class="pre">../book.aux</span></code> file. Sometimes one wants
 to use this feature for selected references. In that case, use <code class="docutils literal"><span class="pre">refaux</span></code>
-instead of <code class="docutils literal"><span class="pre">ref</span></code>. If there is a single <code class="docutils literal"><span class="pre">refaux</span></code> command in the DocOnce
+instead of <code class="docutils literal"><span class="pre">ref</span></code>. If there one or more <code class="docutils literal"><span class="pre">refaux</span></code> commands in the DocOnce
 source, only <code class="docutils literal"><span class="pre">refaux</span></code> references will be replaced by numbers from the
 <code class="docutils literal"><span class="pre">.aux</span></code> file. Otherwise, all <code class="docutils literal"><span class="pre">ref</span></code> commands corresponding to labels in
-the <code class="docutils literal"><span class="pre">.aux</span></code> file will be replaced.</p>
+the <code class="docutils literal"><span class="pre">.aux</span></code> file will be replaced. In any case, the
+<code class="docutils literal"><span class="pre">--replace_ref_by_latex_auxno=</span></code> option is needed to specify one
+<code class="docutils literal"><span class="pre">.aux</span></code> file.</p>
 </div>
 <div class="section" id="generalized-cross-referencing">
 <span id="manual-genrefs"></span><h3>Generalized Cross-Referencing<a class="headerlink" href="#generalized-cross-referencing" title="Permalink to this headline">¶</a></h3>
@@ -4450,18 +4449,19 @@ solutions can be identified and removed if desired.</p>
 <div class="admonition-avoid-headings-in-solutions admonition">
 <p class="first admonition-title">Avoid headings in solutions</p>
 <p class="last">Headings in solutions in exercises will
-appear in table of contents, but
+appear in table of contents, but if
 solutions are left out of the document (using the
-<code class="docutils literal"><span class="pre">--without_solutions</span></code> option), the table of contents will be wrong.
-Therefore, <em>never use headings in solutions</em>, just use paragraph
-headings (double underscores) if you need headings at all.</p>
+<code class="docutils literal"><span class="pre">--without_solutions</span></code> option), the table of contents will be wrong
+and contain non-existing headings from the solution parts.
+Therefore, <em>never use headings in solutions</em>, just use <em>paragraph
+headings</em> (double underscores) if you feel the need for headings.</p>
 </div>
 <div class="admonition-avoid-numbered-equations-in-solutions admonition">
 <p class="first admonition-title">Avoid numbered equations in solutions</p>
 <p class="last">Numbered equations in solutions will influence the global numbering of
 equations in a document (unless exercises always come at the end of
 chapters). If you compile versions of the document with and without
-solutions, the equation numbering may differ between such version and may
+solutions, the equation numbering may differ between the versions and may
 cause confusion among readers.</p>
 </div>
 <p>A full exercise set-up can be sketched as follows:</p>
