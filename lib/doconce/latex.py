@@ -793,7 +793,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # (doesn't seem necessary - footnotes in captions are a
                 # a bad thing since figures are floating)
 
-                cmd = ' \\tufteurl{\\footnotesize\emph{%s}}' % texttt_url \
+                cmd = '\\tufteurl{%s}' % texttt_url \
                       if latex_style == 'tufte-book' else \
                       '\\footnote{\\texttt{%s}}' % texttt_url
                 return_str = '\\href{{%s}}{%s}' % (url, text) + cmd
@@ -2895,7 +2895,7 @@ open=right,              %% start new chapters on odd-numbered pages
 %%\IfFileExists{chantill.sty}{\usepackage{chantill}}{}%% Gill Sans
 
 %% Use this command instead of \footnote{} for ULRs if DEVICE == "paper"
-\newcommand{\tufteurl}[1]{(#1)}
+\newcommand{\tufteurl}[1]{ ({\footnotesize\emph{%s}})}
 """ % vars()
     elif latex_style == 'Koma_Script':
         INTRO['latex'] += r"""
