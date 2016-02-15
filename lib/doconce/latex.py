@@ -2895,7 +2895,7 @@ open=right,              %% start new chapters on odd-numbered pages
 %%\IfFileExists{chantill.sty}{\usepackage{chantill}}{}%% Gill Sans
 
 %% Use this command instead of \footnote{} for ULRs if DEVICE == "paper"
-\newcommand{\tufteurl}[1]{ ({\footnotesize\emph{%s}})}
+\newcommand{\tufteurl}[1]{ ({\footnotesize\emph{#1}})}
 """ % vars()
     elif latex_style == 'Koma_Script':
         INTRO['latex'] += r"""
