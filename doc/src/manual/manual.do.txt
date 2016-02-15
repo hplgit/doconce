@@ -2425,7 +2425,7 @@ by a colon and a title of the exercise, problem, or project.
 ===== Examples on Exercise Syntax =====
 
 The next line(s) may contain a label and specification of the
-name of the result file (if the answer to the exercise is to be handed
+name of the result file(s) (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:
 
 !bc do
@@ -2454,7 +2454,12 @@ The solution environment with `!bsol` and `!esol` allows inline
 solution as an alternative to the `solution=...` directive mentioned
 above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
-solutions can be identified and removed if desired.
+solutions can be identified and removed if desired. It seems that
+DocOnce authors prefer `!bsol` and `!esol` over a separate solution file.
+
+The `file=` or `files=` command accepts a comma-separated list of filenames.
+Sometimes it is appropriate to skip the file extension and just give
+a filestem, as in `file=earth2moon`.
 
 !bwarning Avoid headings in solutions
 Headings in solutions in exercises will
@@ -2518,7 +2523,8 @@ directives is always typeset at the end of the exercise.
 |eremarks
 
 |bsol
-Here goes a full solution of the whole exercise.
+Here goes a full solution of the entire exercise, if solutions to
+subexercises are not appropraite.
 |esol
 |ec
 !ec
@@ -2659,7 +2665,7 @@ Terminal> doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
 extracts all exercises in `mydoc.do.txt` with keywords `key1` or `key2`
 in a separate document `mydoc_exer.do.txt`. For example, this feature can
 be used to extract all exercises suitable for being published as
-IPython/Jupyter notebooks (and perhaps automatically graded by "`nbgrader`" "https://github.com/jupyter/nbgrader"). Just attach the keyword `ipynb` to all
+IPython/Jupyter notebooks (and perhaps automatically graded by "`nbgrader`": "https://github.com/jupyter/nbgrader"). Just attach the keyword `ipynb` to all
 exercises suitable for the IPython/Jupyter notebook and run the command
 with `--filter=ipynb`. Without `--filter=`, the `extract_exercises` utility
 extracts all exercises such that one can publish this document separately,
@@ -2733,8 +2739,8 @@ appear as unfolded sections - one must click to open the text.
 !bc do
 ===== Exercise: Compute integrals =====
 label{doconce:manual:exercise:ex}
-file=integrals.py
-keywords=integrals
+files=integrals.py, integrals.pdf
+keywords=1+1; integrals; SymPy
 
 Use the most appropriate tools to answer the various subexercises.
 
@@ -2808,7 +2814,7 @@ definition:
 Cw: It cannot be computed.
 E: That would be correct if computed means ``calculated as
 a closed-form formula by hand'', but the integral
-$\int_a^b e^{-t^2}dt$? can be easily computed numerical
+$\int_a^b e^{-t^2}dt$ can be easily computed numerical
 methods.
 
 Cr: It equals
@@ -2826,7 +2832,8 @@ for definition).
 E: This is correct, as proved by SymPy:
 
 |bc pyshell
->>> F = sp.integrate(sp.exp(-x**4), x)
+>>> import sympy as sym
+>>> F = sym.integrate(sym.exp(-x**4), x)
 >>> F
 gamma(1/4)*lowergamma(1/4, x**4)/(16*gamma(5/4))
 |ec
@@ -2852,8 +2859,8 @@ mathematics and computer code.
 
 ===== Exercise: Compute integrals =====
 label{doconce:manual:exercise:ex}
-file=integrals.py
-keywords=integrals
+files=integrals.py, integrals.pdf
+keywords=1+1; integrals; SymPy
 
 Use the most appropriate tools to answer the various subexercises.
 

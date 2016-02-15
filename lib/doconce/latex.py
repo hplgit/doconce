@@ -775,6 +775,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         # Fix links so that the complete URL is in a footnote
 
         no_footnote = option('latex_no_program_footnotelink')
+        latex_style = option('latex_style=', 'std')
         suffices = ['.py', '.f', '.f90', '.f95', '.c', '.cpp', '.cxx',
                     '.m', '.r', '.js', '.tex', '.h']
 
@@ -792,8 +793,10 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # (doesn't seem necessary - footnotes in captions are a
                 # a bad thing since figures are floating)
 
-                return_str = '\\href{{%s}}{%s}' % (url, text) + \
-                             '\\footnote{\\texttt{%s}}' % texttt_url
+                cmd = ' \\tufteurl{\\footnotesize\emph{%s}}' % texttt_url \
+                      if latex_style == 'tufte-book' else \
+                      '\\footnote{\\texttt{%s}}' % texttt_url
+                return_str = '\\href{{%s}}{%s}' % (url, text) + cmd
                 # See if we shall drop the footnote for programs
                 if text.startswith(r'\nolinkurl{') and no_footnote:
                     for suffix in suffices:
@@ -1480,7 +1483,7 @@ def latex_title(m):
     section_headings = option('latex_section_headings=', 'std')
 
     if latex_style in ("Springer_sv", "Springer_T2", "Springer_T4",
-                       "Springer_lncse", "Springer_lnup"):
+                       "Springer_lncse", "Springer_lnup", "tufte-book"):
         text += r"""
 \frontmatter
 \setcounter{page}{3}
@@ -2674,9 +2677,13 @@ def define(FILENAME_EXTENSION,
     latex_style = option('latex_style=', 'std')
     title_layout = option('latex_title_layout=', 'doconce_heading')
 
-    if latex_style not in ('std', 'Springer_T2', 'Springer_T4',
+    if latex_style not in ('std',
+                           'Springer_T2', 'Springer_T4',
+                           'Springer_sv', 'Springer_lnup',
+                           'tufte-book',
                            'siamltex', 'siamltexmm',
-                           'elsevier', 'Springer_sv', 'Springer_lnup', 'Koma_Script'):
+                           'elsevier',
+                           'Koma_Script'):
         print '*** error: --latex_style=%s not registered' % latex_style
         _abort()
     if latex_style == 'Springer_sv' and title_layout != 'std':
@@ -2707,7 +2714,7 @@ def define(FILENAME_EXTENSION,
 
 \vspace{1cm} % after toc
 """
-    if latex_style in ('Springer_sv', 'Springer_lnup'):
+    if latex_style in ('Springer_sv', 'Springer_lnup', 'tufte-book'):
         toc_part += r"""
 \mainmatter
 """
@@ -2877,6 +2884,19 @@ open=right,              %% start new chapters on odd-numbered pages
 %% Style: Lecture Notes in Computer Science (Springer)
 \documentclass[oribib,%(draft)s]{llncs}
 """ % vars()
+    elif latex_style == 'tufte-book':
+        INTRO['latex'] += r"""
+%% Style: tufte-book
+\documentclass[%(draft)s]{tufte-book}
+
+%% If they're installed, use Bergamo and Chantilly from www.fontsite.com.
+%% They're clones of Bembo and Gill Sans, respectively.
+%%\IfFileExists{bergamo.sty}{\usepackage[osf]{bergamo}}{}%% Bembo
+%%\IfFileExists{chantill.sty}{\usepackage{chantill}}{}%% Gill Sans
+
+%% Use this command instead of \footnote{} for ULRs if DEVICE == "paper"
+\newcommand{\tufteurl}[1]{(#1)}
+""" % vars()
     elif latex_style == 'Koma_Script':
         INTRO['latex'] += r"""
 %% Style: Koma-Script
@@ -2932,7 +2952,13 @@ open=right,              %% start new chapters on odd-numbered pages
   headsep=4mm
   ]{geometry}
 """
-    if latex_style not in ('Springer_lnup', 'Springer_sv'):
+    if latex_style == 'tufte-book':
+        INTRO['latex'] += r"""
+\usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
+\usepackage{xcolor}
+\usepackage{bm,ltablex,microtype}
+"""
+    elif latex_style not in ('Springer_lnup', 'Springer_sv'):
         INTRO['latex'] += r"""
 \usepackage{relsize,epsfig,makeidx,color,setspace,amsmath,amsfonts,amssymb}
 \usepackage[table]{xcolor}

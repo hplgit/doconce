@@ -308,7 +308,7 @@ a = np.linspace(p, q, n)
 | `b = a.copy()`            | copy an array                                             |
 |---------------------------------------------------------------------------------------|
 
-========= Storing results in data files and adding more words here to get a very log chapter heading =========
+========= Storing results in data files and adding more words here to get a very long chapter heading =========
 
 We need to test spaces around footnotes for 2-digit footnotes, which
 means we need a lot of URLs, e.g., to files:
