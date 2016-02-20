@@ -690,6 +690,7 @@ def syntax_check(filestr, format):
     # generalized references (ref[][][])
     ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     filestr2 = re.sub(ref_pattern, '', filestr)
+    filestr2 = re.sub(r'^#.+', '', filestr2, flags=re.MULTILINE) # remove comment
     bu_labels = re.findall(r' label=([^\s]+)', filestr)
     labels = re.findall(r'label\{(.+?)\}', filestr2) + eq_labels + bu_labels
     refs = re.findall(r'ref\{(.+?)\}', filestr2)

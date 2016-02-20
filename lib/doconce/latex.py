@@ -994,15 +994,31 @@ def latex_figure(m):
             if opt == 'sidecap':
                 sidecaption = 1
 
+    latex_style = option('latex_style=', 'std')
+    tufte_frac_limit4marginfig = 0.7  # frac<=0.7: put figure in margin (tufte)
+    tufte_fig_envir = 'figure'
+
     if figure_method == 'includegraphics':
         if filename_ext == '.pgf':
             includeline = r'\input{%s}' % filename
         else:
-            if sidecaption == 1:
-                includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+            if latex_style == 'tufte-book':
+                if frac <= tufte_frac_limit4marginfig:
+                    includeline = r'\centerline{\includegraphics{%s}}' % (filename)
+                    tufte_fig_envir = 'marginfigure'  # margin figure
+                elif frac == 1.0:
+                    includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+                    tufte_fig_envir = 'figure*'  # full width
+                else:
+                    includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+                    tufte_fig_envir = 'figure'  # text width
             else:
-                includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
+                if sidecaption == 1:
+                    includeline = r'\includegraphics[width=%s\linewidth]{%s}' % (frac, filename)
+                else:
+                    includeline = r'\centerline{\includegraphics[width=%s\linewidth]{%s}}' % (frac, filename)
     elif figure_method == 'psfig':
+        # Too old fashioned...
         includeline = r'\centerline{\psfig{figure=%s,width=%s\linewidth}}' % (filename, frac)
 
     caption = m.group('caption').strip()
@@ -1056,7 +1072,18 @@ def latex_figure(m):
         caption = caption.replace(from_, to_)
     #if sidecaption == 1:
     #    includeline='\sidecaption[t] ' + includeline
-    if caption and sidecaption == 0:
+    if caption and latex_style == 'tufte-book':
+        result = r"""
+\begin{%s}[!ht]  %% %s
+  %s
+  \caption{
+  %s
+  }
+\end{%s}
+%%\clearpage %% flush figures %s
+""" % (tufte_fig_envir, label, includeline, caption, tufte_fig_envir, label)
+
+    elif caption and sidecaption == 0:
         result = r"""
 \begin{figure}[!ht]  %% %s
   %s
@@ -2887,7 +2914,9 @@ open=right,              %% start new chapters on odd-numbered pages
     elif latex_style == 'tufte-book':
         INTRO['latex'] += r"""
 %% Style: tufte-book
-\documentclass[%(draft)s]{tufte-book}
+\documentclass[%%
+justified,
+%(draft)s]{tufte-book}
 
 %% If they're installed, use Bergamo and Chantilly from www.fontsite.com.
 %% They're clones of Bembo and Gill Sans, respectively.
@@ -2896,6 +2925,8 @@ open=right,              %% start new chapters on odd-numbered pages
 
 %% Use this command instead of \footnote{} for ULRs if DEVICE == "paper"
 \newcommand{\tufteurl}[1]{ ({\footnotesize\emph{#1}})}
+%% Number sections (not Tufte style, but DocOnce habit)
+\setcounter{secnumdepth}{2}
 """ % vars()
     elif latex_style == 'Koma_Script':
         INTRO['latex'] += r"""
@@ -4125,6 +4156,11 @@ open=right,              %% start new chapters on odd-numbered pages
 % #endif
 
 """
+    if latex_style == 'tufte-book':
+        INTRO['latex'] += r"""
+%\begin{fullwidth}
+"""
+
     if preamble_complete:
         # Forget everything we put in INTRO['latex'] above and replace
         # with user's complete preamble
@@ -4217,6 +4253,10 @@ open=right,              %% start new chapters on odd-numbered pages
         OUTRO['latex'] += r"""
 \cleardoublepage\phantomsection  % trick to get correct link to Index
 \printindex
+"""
+    if latex_style == 'tufte-book':
+        OUTRO['latex'] += r"""
+%\end{fullwidth}
 """
     OUTRO['latex'] += r"""
 \end{document}
