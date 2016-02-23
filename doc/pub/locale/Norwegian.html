@@ -17,6 +17,16 @@ Automatically generated HTML file from DocOnce source
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 -->
 
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+</style>
+
 
 </head>
 
@@ -27,7 +37,11 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec1'),
-              (u'Litteraturliste', 1, None, '___sec2')]}
+              (u'Oppgave 1: Hallo verden.',
+               2,
+               u'exercise:halloverden',
+               u'exercise:halloverden'),
+              (u'Litteraturliste', 1, None, '___sec3')]}
 end of tocinfo -->
 
 <body>
@@ -43,6 +57,7 @@ end of tocinfo -->
     </button>
     <a class="navbar-brand" href="Norwegian.html">Eksempel på ikke-engelsk tekst</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -50,7 +65,8 @@ end of tocinfo -->
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="#sec:intro" style="font-size: 80%;"><b>Introduksjon</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Demonstrasjon av populære DokEngang elementer</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Litteraturliste</b></a></li>
+     <!-- navigation toc: --> <li><a href="#exercise:halloverden" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Oppgave 1: Hallo verden.</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Litteraturliste</b></a></li>
 
         </ul>
       </li>
@@ -95,7 +111,8 @@ Table of contents</h2>
 <p>
 <a href="#sec:intro"> Introduksjon </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec1"> Demonstrasjon av populære DokEngang elementer </a><br>
-<a href="#___sec2"> Litteraturliste </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exercise:halloverden"> Oppgave 1: Hallo verden. </a><br>
+<a href="#___sec3"> Litteraturliste </a><br>
 </p>
 <p>
 </div> <!-- end jumbotron -->
@@ -135,13 +152,32 @@ Vi gjør også en referanse til litteraturen <a href="#norsk_tekst">[1]</a>.
 <!-- Figurs -->
 
 <p>
-<center> <!-- figure -->
+<center> <!-- figure label: --> <div id="fig1"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figur 1:  Figurtekst på norsk går bra. <div id="fig1"></div> </p></center>
+<center><p class="caption">Figur 1:  Figurtekst på norsk går bra.  <!-- caption label: fig1 --> </p></center>
 <p><img src="../manual/fig/wave1D.png" align="bottom" width=500></p>
 </center>
 
-<h1 id="___sec2">Litteraturliste </h1>
+<p>
+<!-- --- begin exercise --- -->
+
+<h2 id="exercise:halloverden">Oppgave 1: Hallo verden.</h2>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Hello_world_program" target="_self">Hallo verden</a> er
+en vanlig måte å teste ut ny teknologi på. I denne oppgaven skal du
+lage ditt første html-hallo-verden-program.
+
+<p>
+Du skal lage siden <code>index.html</code>, som lagres i en egen mappe. Her skal
+du bruke så mye av det du har lært fra første avsnittet. Tittelen på
+siden skal være "Hallo verden!". Innholdet bestemmer du selv. Husk å
+lage oppgaven i en egen mappe.
+
+<p>
+<!-- --- end exercise --- -->
+
+<h1 id="___sec3">Litteraturliste </h1>
 
 <p>
 <!-- begin bibliography -->
@@ -149,6 +185,7 @@ Vi gjør også en referanse til litteraturen <a href="#norsk_tekst">[1]</a>.
 <ol>
  <li> <div id="norsk_tekst"></div> <b>Å. Ø. Ærlundsen and O. Æ. Sørlie</b>. 
     Litt om ting som må skrives på norsk,
+    \emphhttp://doconce.test.net,
     <a href="http://doconce.test.net" target="_self"><tt>http://doconce.test.net</tt></a>.</li>
 </ol>
 

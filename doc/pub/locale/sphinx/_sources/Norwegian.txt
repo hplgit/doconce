@@ -18,8 +18,6 @@ Eksempel på ikke-engelsk tekst
 *Sammendrag.* Dette er et kort notat på norsk for å demonstrere at DokEngang (DocOnce) kan
 håndtere andre språk enn engelsk.
 
-.. !split
-
 .. _sec:intro:
 
 Introduksjon
@@ -73,7 +71,23 @@ Dette er et underkapittel av seksjon :ref:`sec:intro`.
 
    *Figurtekst på norsk går bra*
 
-.. !split
+.. --- begin exercise ---
+
+.. _exercise:halloverden:
+
+Oppgave 1: Hallo verden.
+-------------------------
+
+`Hallo verden <http://en.wikipedia.org/wiki/Hello_world_program>`__ er
+en vanlig måte å teste ut ny teknologi på. I denne oppgaven skal du
+lage ditt første html-hallo-verden-program.
+
+Du skal lage siden ``index.html``, som lagres i en egen mappe. Her skal
+du bruke så mye av det du har lært fra første avsnittet. Tittelen på
+siden skal være "Hallo verden!". Innholdet bestemmer du selv. Husk å
+lage oppgaven i en egen mappe.
+
+.. --- end exercise ---
 
 Litteraturliste
 ===============
