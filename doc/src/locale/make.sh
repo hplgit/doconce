@@ -22,9 +22,12 @@ function common_replacements {
   doconce replace Summary Sammendrag $1
   doconce replace "Tables of Contents" "Innholdsfortegnelse" $1
   doconce replace "Figure" "Figur" $1
+  doconce replace "Exercise" "Oppgave" $1
+  doconce replace "Project" "Prosjekt" $1
+  doconce replace "Example" "Eksempel" $1
 }
 
-system doconce format pdflatex $name --latex_code_style=vrb $options --latex_font=palatino
+system doconce format pdflatex $name --latex_code_style=vrb $options --latex_font=palatino 
 # Tips: http://folk.uio.no/tobiasvl/latex.html
 system common_replacements $name.tex
 doconce replace '10pt]{' '10pt,norsk]{' $name.tex

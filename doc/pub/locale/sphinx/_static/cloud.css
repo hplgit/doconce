@@ -137,21 +137,24 @@
             
         
         
-            
+    
+
+    
         
     
 
     
+        
+            
+            
+        
+        
     
 
-    
-    
 
-    
-    
-
-
-
+/*****************************************************
+ * page layout - body
+ *****************************************************/
 
 * {
   box-sizing: border-box;
@@ -167,7 +170,7 @@ body
     background-attachment: fixed;
     color: #000;
     font-family: "Open Sans", sans-serif;
-    font-size: 100%;
+    font-size: 87.5%;
     line-height: 1.5em;
 
     
@@ -198,7 +201,9 @@ body
 
     
 
-
+/*****************************************************
+ * page layout - relbars (top & bottom)
+ *****************************************************/
 
 div.related
 {
@@ -218,13 +223,11 @@ div.related
 div.relbar-top div.related
 {
   
-  
-      -moz-border-radius: .7em .7em 0 0;
-      -webkit-border-radius: .7em .7em 0 0;
-      -o-border-radius: .7em .7em 0 0;
-      -ms-border-radius: .7em .7em 0 0;
-      border-radius: .7em .7em 0 0;
-  
+  -moz-border-radius: .7em .7em 0 0;
+  -webkit-border-radius: .7em .7em 0 0;
+  -o-border-radius: .7em .7em 0 0;
+  -ms-border-radius: .7em .7em 0 0;
+  border-radius: .7em .7em 0 0;
 
 
 
@@ -235,13 +238,11 @@ div.relbar-top div.related
 div.relbar-bottom div.related
 {
   
-  
-      -moz-border-radius: 0 0 .7em .7em;
-      -webkit-border-radius: 0 0 .7em .7em;
-      -o-border-radius: 0 0 .7em .7em;
-      -ms-border-radius: 0 0 .7em .7em;
-      border-radius: 0 0 .7em .7em;
-  
+  -moz-border-radius: 0 0 .7em .7em;
+  -webkit-border-radius: 0 0 .7em .7em;
+  -o-border-radius: 0 0 .7em .7em;
+  -ms-border-radius: 0 0 .7em .7em;
+  border-radius: 0 0 .7em .7em;
 
 
 
@@ -264,13 +265,11 @@ div.related a
     display: inline-block;
     padding: 0.3em 0.6em;
     
-  
-      -moz-border-radius: 0.8em;
-      -webkit-border-radius: 0.8em;
-      -o-border-radius: 0.8em;
-      -ms-border-radius: 0.8em;
-      border-radius: 0.8em;
-  
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  -o-border-radius: 0.8em;
+  -ms-border-radius: 0.8em;
+  border-radius: 0.8em;
 
 
     font-weight: bold;
@@ -293,13 +292,11 @@ div.related li.right a:hover
     text-decoration: none;
     text-shadow: none;
     
-  
-      -moz-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -webkit-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -o-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -ms-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-  
+  -moz-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -o-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -ms-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
 
 
 }
@@ -312,11 +309,13 @@ div.related li.right a:hover
 
 
 
-
+/*****************************************************
+ * page layout - document
+ *****************************************************/
 
 div.document
 {
-    
+    /* note: relative used by div.sidebartoggle */
     position: relative;
     margin: 0 auto;
     max-width: 11.5in;
@@ -362,7 +361,7 @@ div.document.collapsed-sidebar div.bodywrapper { margin-left: 0; }
 div.body
 {
     min-height: 6in;
-    
+    /* note: this ^ is just a hack to prevent body from being shorter than sidebar */
 
     
     background-color: #ffffff;
@@ -370,13 +369,11 @@ div.body
     
         
             
-  
-      -moz-box-shadow: -1px 0 2px #EDDEDA;
-      -webkit-box-shadow: -1px 0 2px #EDDEDA;
-      -o-box-shadow: -1px 0 2px #EDDEDA;
-      -ms-box-shadow: -1px 0 2px #EDDEDA;
-      box-shadow: -1px 0 2px #EDDEDA;
-  
+  -moz-box-shadow: 1px 0 1px #EDDEDA inset;
+  -webkit-box-shadow: 1px 0 1px #EDDEDA inset;
+  -o-box-shadow: 1px 0 1px #EDDEDA inset;
+  -ms-box-shadow: 1px 0 1px #EDDEDA inset;
+  box-shadow: 1px 0 1px #EDDEDA inset;
 
 
         
@@ -398,11 +395,13 @@ div.body
 
 
 
-
+/*****************************************************
+ * page layout - sidebar
+ *****************************************************/
 
 div.sphinxsidebar
 {
-    
+    /* it's nasty sometimes, but looks prettier than letting too-long module names break into document body*/
     overflow: hidden;
 
     width: 3in;
@@ -507,18 +506,18 @@ div.sphinxsidebar p.logo a
 {
     display: inline-block;
     
-  
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -o-border-radius: 3px;
-      -ms-border-radius: 3px;
-      border-radius: 3px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
 }
 
-
+/* fix margin if h3/h4 is at top of sidebar --
+ * consequence of sidebar boxes not all being wrapped in divs.
+ */
 div.sphinxsidebarwrapper > h3:first-child,
 div.sphinxsidebarwrapper > h4:first-child,
 div.sphinxsidebarwrapper > div:first-child > h3:first-child,
@@ -527,9 +526,11 @@ div.sphinxsidebarwrapper > div:first-child > h4:first-child
   margin-top: .2em;
 }
 
+/*****************************************************
+ * page layout - sidebar TOC sections
+ *****************************************************/
 
-
-
+/* sidebar link lists */
 div.sphinxsidebar ul,
 div.sphinxsidebar ul ul,
 div.sphinxprev p.topless,
@@ -544,7 +545,7 @@ div.sphinxsidebar ul ul
   margin-left: 1.5em;
 }
 
-
+/* sidebar links */
 div.sphinxsidebar ul a,
 div.sphinxprev a,
 div.sphinxnext a
@@ -556,18 +557,16 @@ div.sphinxnext a
   border: 1px solid transparent;
   border-width: 1px 0;
   
-  
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -o-border-radius: 3px;
-      -ms-border-radius: 3px;
-      border-radius: 3px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
 }
 
-
+/* hovered sidebar links */
 div.sphinxsidebar ul a:hover,
 div.sphinxprev a:hover,
 div.sphinxnext a:hover
@@ -578,13 +577,13 @@ div.sphinxnext a:hover
   text-decoration: none;
 }
 
-
+/* current TOC section */
 div.sphinxsidebar li.current > a.local
 {
   color: #EB5703;
 }
 
-
+/* active TOC link */
 div.sphinxsidebar ul ul li.active:not(.current) > a:before
 {
   position: absolute;
@@ -593,7 +592,7 @@ div.sphinxsidebar ul ul li.active:not(.current) > a:before
   color: #EDB08D;
 }
 
-
+/* final+active TOC link */
 div.sphinxsidebar li.active.final > a:not(.child):not(:hover)
 {
   background: #FFF1E4;
@@ -602,7 +601,7 @@ div.sphinxsidebar li.active.final > a:not(.child):not(:hover)
 
 
 
-
+/* TOC collapsed toc lists */
 div.sphinxsidebar li.toc-toggle > a:after
 {
   content: "[–]";
@@ -638,7 +637,9 @@ div.sphinxsidebar li.toc-toggle.collapsed > a:after
 
 
 
-
+/*****************************************************
+ * page layout - sidebar searchbox & search page
+ *****************************************************/
 
 div.sphinxsidebar input,
 h1#search-documentation ~ form > input
@@ -653,13 +654,11 @@ h1#search-documentation ~ form > input[type="submit"]
 {
    background: #F2F2F2;
    
-  
-      -moz-border-radius: 0 0 0.7em 0;
-      -webkit-border-radius: 0 0 0.7em 0;
-      -o-border-radius: 0 0 0.7em 0;
-      -ms-border-radius: 0 0 0.7em 0;
-      border-radius: 0 0 0.7em 0;
-  
+  -moz-border-radius: 0 0 0.7em 0;
+  -webkit-border-radius: 0 0 0.7em 0;
+  -o-border-radius: 0 0 0.7em 0;
+  -ms-border-radius: 0 0 0.7em 0;
+  border-radius: 0 0 0.7em 0;
 
 
 }
@@ -687,13 +686,11 @@ h1#search-documentation ~ form > input[type="submit"]:hover,
 div.sidebartoggle button:hover:not(:active)
 {
   
-  
-      -moz-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -webkit-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -o-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -ms-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-  
+  -moz-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -o-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -ms-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
 
 
 }
@@ -709,7 +706,9 @@ div.sphinxsidebar .searchtip
     color: #999999;
 }
 
-
+/*****************************************************
+ * page layout - collapsible sidebar buttons
+ *****************************************************/
 
 
 div.sidebartoggle
@@ -758,18 +757,16 @@ div.sidebartoggle button
    margin: 0;
    padding: 0 6px;
 
-   background: transparent;
+   background: #FFFBF2;
    border: 1px solid #EDDEDA;
    border-width: 0 1px 1px 1px;
    color: #777777;
      
-  
-      -moz-border-radius: 0 0 0 0.7em;
-      -webkit-border-radius: 0 0 0 0.7em;
-      -o-border-radius: 0 0 0 0.7em;
-      -ms-border-radius: 0 0 0 0.7em;
-      border-radius: 0 0 0 0.7em;
-  
+  -moz-border-radius: 0 0 0 0.7em;
+  -webkit-border-radius: 0 0 0 0.7em;
+  -o-border-radius: 0 0 0 0.7em;
+  -ms-border-radius: 0 0 0 0.7em;
+  border-radius: 0 0 0 0.7em;
 
 
    
@@ -790,13 +787,11 @@ div.document.collapsed-sidebar div.sidebartoggle button
   right: auto;
     border-color: rgba(0,0,0,.15);
      
-  
-      -moz-border-radius: 0 0 0.7em 0;
-      -webkit-border-radius: 0 0 0.7em 0;
-      -o-border-radius: 0 0 0.7em 0;
-      -ms-border-radius: 0 0 0.7em 0;
-      border-radius: 0 0 0.7em 0;
-  
+  -moz-border-radius: 0 0 0.7em 0;
+  -webkit-border-radius: 0 0 0.7em 0;
+  -o-border-radius: 0 0 0.7em 0;
+  -ms-border-radius: 0 0 0.7em 0;
+  border-radius: 0 0 0.7em 0;
 
 
    
@@ -808,7 +803,9 @@ div.document.collapsed-sidebar div.sidebartoggle button
 
 
 
-
+/*****************************************************
+ * page layout - footer
+ *****************************************************/
 
 div.footer
 {
@@ -907,7 +904,7 @@ div.body h1
     
     
         
-    margin: 0.563em 0
+    margin: 0.429em 0
             1.5em 0;
 
     }div.body h2,
@@ -949,25 +946,23 @@ h1#search-documentation
 {
     
         
-        padding: 6px 10px;
+        padding: 10px 6px;
         background-color: #A96C49;
         border: 1px solid rgba(0,0,0,.125);
         border-width: 0 0 0 6px;
+        
+  -moz-border-radius: 3px 10px;
+  -webkit-border-radius: 3px 10px;
+  -o-border-radius: 3px 10px;
+  -ms-border-radius: 3px 10px;
+  border-radius: 3px 10px;
+
+
         color: #ffffff;
         text-shadow: 1px 1px rgba(0,0,0,.125);
 
         
     
-    
-  
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -o-border-radius: 5px;
-      -ms-border-radius: 5px;
-      border-radius: 5px;
-  
-
-
     clear: both; 
 }
 
@@ -993,8 +988,8 @@ h1#search-documentation
     
     
         
-    margin: 0.8em -1px
-            0.8em -1px;
+    margin: 0.8em -12px
+            0.8em -12px;
 
 }
 
@@ -1007,8 +1002,8 @@ h1#search-documentation
     
     
         
-    margin: 0.923em -1px
-            0.923em -1px;
+    margin: 0.923em -12px
+            0.923em -12px;
 
 }
 
@@ -1019,7 +1014,6 @@ div.body p.rubric,
 {
     
         background-color: #C1957C;
-        
     
 }
 
@@ -1095,13 +1089,11 @@ h1#search-documentation
     border: 1px solid transparent;
     border-width: 1px 0;
     
-  
-      -moz-border-radius: 0.35em;
-      -webkit-border-radius: 0.35em;
-      -o-border-radius: 0.35em;
-      -ms-border-radius: 0.35em;
-      border-radius: 0.35em;
-  
+  -moz-border-radius: 0.35em;
+  -webkit-border-radius: 0.35em;
+  -o-border-radius: 0.35em;
+  -ms-border-radius: 0.35em;
+  border-radius: 0.35em;
 
 
 }
@@ -1118,13 +1110,11 @@ div.body a.headerlink:hover
 a.headerlink:hover:active
 {
   
-  
-      -moz-box-shadow: none;
-      -webkit-box-shadow: none;
-      -o-box-shadow: none;
-      -ms-box-shadow: none;
-      box-shadow: none;
-  
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none;
 
 
 }
@@ -1143,23 +1133,19 @@ a.headerlink:hover:active
 
     border-color: #EDB08D;
     
-  
-      -moz-border-radius: 4px;
-      -webkit-border-radius: 4px;
-      -o-border-radius: 4px;
-      -ms-border-radius: 4px;
-      border-radius: 4px;
-  
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
 
 
     
-  
-      -moz-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -webkit-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -o-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      -ms-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-      box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
-  
+  -moz-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -o-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  -ms-box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 2px -1px rgba(0,0,0,0.5);
 
 
 
@@ -1201,7 +1187,9 @@ a.headerlink:hover:active
 
 
 
-
+/*****************************************************
+ * document - misc styles
+ *****************************************************/
 
 div.body p
 {
@@ -1230,14 +1218,26 @@ div.body hr {
     background: none;
     border: 1px dashed rgba(0,0,0,.15);
     border-width: 1px 0 0 0;
-}a.footnote-reference
+}
+
+    /*------------------------------------
+     * footnotes
+     *------------------------------------*/
+
+a.footnote-reference
 {
     font-size: 70%;
     position: relative;
     top: -.75em;
 }
 
-table.docutils.footnote { margin: 1em 0 0 1em; }dl { margin-bottom: 1.5em; }
+table.docutils.footnote { margin: 1em 0 0 1em; }
+
+    /*------------------------------------
+     * lists (UL, OL, DL)
+     *------------------------------------*/
+
+dl { margin-bottom: 1.5em; }
 li > dl:only-child { margin-bottom: 0; }
 
 dd { margin-right: 10px; } 
@@ -1255,7 +1255,9 @@ div.toctree-wrapper + ul { margin-top: -1em; }
 
 dd ul { margin-bottom: 1.5em; }
 
-
+/*****************************************************
+ * document - links
+ *****************************************************/
 
 a
 {
@@ -1282,13 +1284,11 @@ a:hover:active
   left: 1px;
   top: 1px;
   
-  
-      -moz-box-shadow: 0;
-      -webkit-box-shadow: 0;
-      -o-box-shadow: 0;
-      -ms-box-shadow: 0;
-      box-shadow: 0;
-  
+  -moz-box-shadow: 0;
+  -webkit-box-shadow: 0;
+  -o-box-shadow: 0;
+  -ms-box-shadow: 0;
+  box-shadow: 0;
 
 
 }
@@ -1328,16 +1328,22 @@ dt:target,
     margin: -4px;
     background-color: #fbe54e;
    
-  
-      -moz-border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -o-border-radius: 10px;
-      -ms-border-radius: 10px;
-      border-radius: 10px;
-  
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
 
 
 }
+
+/*****************************************************
+ * document - table styles
+ *****************************************************/
+
+    /*------------------------------------
+     * custom table classes
+     *------------------------------------*/
 
 table.fullwidth { width: 100%; }
 
@@ -1346,8 +1352,14 @@ table.centered { margin-left: auto; margin-right: auto; }
 table.docutils.plain { border: none; }
 table.docutils.plain tr.row-odd > * { background: none; }
 
+/* legacy alias for table.plain */
+table.docutils.html-plain-table tr.row-odd > * { background: none; }
 
-table.docutils.html-plain-table tr.row-odd > * { background: none; }table.docutils th {
+    /*------------------------------------
+     * default table styling
+     *------------------------------------*/
+
+table.docutils th {
     border: 0 solid transparent;
     padding: .4em;
     font-family: "Noticia Text", serif;
@@ -1370,7 +1382,12 @@ table.docutils td {
 table.docutils tr.row-odd td { background: rgba(0,0,0,.06); }
 
 h2 + table.docutils { margin-top: 1em; }
-table > caption { margin: 1em 0 .5em; font-style: italic; }table.docutils .left-align { text-align: left; }
+table > caption { margin: 1em 0 .5em; font-style: italic; }
+
+    /*------------------------------------
+     * td/th classes added by .ext.table_styling
+     *------------------------------------*/
+table.docutils .left-align { text-align: left; }
 table.docutils .center-align { text-align: center; }
 table.docutils .right-align { text-align: right; }
 table.docutils .justify-align { text-align: justify; }
@@ -1383,7 +1400,9 @@ table.docutils .double-left-divider { border-left-width: 6px; border-left-style:
 table.docutils .single-right-divider:last-child { border-right-width: 2px; }
 table.docutils .double-right-divider:last-child { border-right-width: 6px; border-right-style: double; }
 
-
+/*****************************************************
+ * document - field-list tables & contents
+ *****************************************************/
 
 
 table.field-list { margin: 1.5em 0; }
@@ -1413,7 +1432,9 @@ td.field-body > ul > li > .admonition { margin-bottom: 0; }
 
 td.field-body > p:empty { display: none; }
 
-
+/*****************************************************
+ * document - admonitions
+ *****************************************************/
 
 div.admonition, p.deprecated
 {
@@ -1433,13 +1454,11 @@ div.admonition, p.deprecated
     border: 1px solid rgba(0,0,0,.05);
     border-width: 1px 0;
     
-  
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -o-border-radius: 5px;
-      -ms-border-radius: 5px;
-      border-radius: 5px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
 
@@ -1503,13 +1522,11 @@ div.admonition.floater
   padding: .5em .5em .5em 2.65em;
   background: rgba(0,0,0,.05);;
   
-  
-      -moz-border-radius: 3px 3px 0 0;
-      -webkit-border-radius: 3px 3px 0 0;
-      -o-border-radius: 3px 3px 0 0;
-      -ms-border-radius: 3px 3px 0 0;
-      border-radius: 3px 3px 0 0;
-  
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -o-border-radius: 3px 3px 0 0;
+  -ms-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
 
  
 }
@@ -1551,7 +1568,9 @@ div#todos div.admonition-todo + p a
     font-size: 130%;
 }
 
-
+/*****************************************************
+ * document - verionchanged/modified/deprecated
+ *****************************************************/
 div.deprecated, div.versionchanged, div.versionadded
 {
   
@@ -1576,7 +1595,9 @@ span.versionmodified
   font-weight: bold;
 }
 
-
+/*****************************************************
+ * document - quoted text (TT & PRE)
+ *****************************************************/
 
 div.highlight
 {
@@ -1602,13 +1623,11 @@ div.highlight pre
     border-width: 1px 0;
     border-style: solid dotted dotted solid;
     
-  
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -o-border-radius: 3px;
-      -ms-border-radius: 3px;
-      border-radius: 3px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
     color: #111111;
@@ -1620,7 +1639,7 @@ div[class|="highlight"] + div[class|="highlight"]
     margin-top: -1.5em;
 }
 
-
+/* for source-view pages */
 div.body > h1 + div.highlight:last-child > pre
 {
     padding-top: 5em;
@@ -1629,7 +1648,7 @@ div.body > h1 + div.highlight:last-child > pre
 }
 
 p + [class|=highlight] > table.highlighttable {
-  margin-top: -1em; 
+  margin-top: -1em; /* hack fixing extra padding being inserted somewhere in table td */
   margin-bottom: -1em;
 }
 
@@ -1649,13 +1668,13 @@ table.highlighttable div.linenodiv pre
     
 
 
-code
+tt
 {
     font-family: "Droid Sans Mono", monospace;
     font-size: 90%;
 }
 
-code.literal
+tt.literal
 {
     background-color: rgba(0,0,0,.075);
     border: 1px solid rgba(0,0,0,.05);
@@ -1663,20 +1682,18 @@ code.literal
     margin: 1px;
 
     
-  
-      -moz-border-radius: 4px;
-      -webkit-border-radius: 4px;
-      -o-border-radius: 4px;
-      -ms-border-radius: 4px;
-      border-radius: 4px;
-  
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
 
 
 }
 
-p code.literal { white-space: nowrap; }
+p tt.literal { white-space: nowrap; }
 
-code.samp.literal > em
+tt.samp.literal > em
 {
     font-family: "Droid Sans Mono", monospace;
     padding: 0 1px;
@@ -1685,24 +1702,24 @@ code.samp.literal > em
 
 }
 
-code.samp.literal > em:before { content: "{"; }
-code.samp.literal > em:after { content: "}"; }
+tt.samp.literal > em:before { content: "{"; }
+tt.samp.literal > em:after { content: "}"; }
 
-h1 code.literal
+h1 tt.literal
 {
 
     font-size: 80%;
 }
 
-h1 code.samp.literal > em
+h1 tt.samp.literal > em
 {
     font-weight: normal;
 }
 
-div.sphinxsidebar code.literal,
-a.reference code.literal,
-div.related a code.literal,
-code.literal.xref
+div.sphinxsidebar tt.literal,
+a.reference tt.literal,
+div.related a tt.literal,
+tt.literal.xref
 {
     background-color: transparent;
     border: none;
@@ -1722,7 +1739,7 @@ div.viewcode-block:target
     border-bottom: 1px solid #ac9;
 }
 
-
+/* code block 'copybutton' */
 .highlight .copybutton
 {
    position: absolute;
@@ -1735,13 +1752,11 @@ div.viewcode-block:target
    background: transparent;
    border: 1px solid transparent;
    
-  
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -o-border-radius: 3px;
-      -ms-border-radius: 3px;
-      border-radius: 3px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
 
@@ -1771,64 +1786,47 @@ div.viewcode-block:target
 
 
 
-
-
-
+/*****************************************************
+ * document - object definition styling
+ *****************************************************/
  
-dl.data > dt:before,
-dl.function > dt:before,
-dl.class > dt:before,
-dl.exception > dt:before,
-dl.attribute > dt:before,
-dl.method > dt:before,
-dl.staticmethod > dt > .property,
-dl.classmethod > dt > .property
+dl.data > dt,
+dl.function > dt,
+dl.class > dt,
+dl.exception > dt,
+dl.attribute > dt,
+dl.method > dt,
+dl.staticmethod > dt,
+dl.classmethod > dt
 {
-    
     display: inline-block;
-    padding: 0.3em 0.6em;
-    margin-right: 5px;
+    margin: 0 -8px; 
+    padding: .3em 0 0.3em 6px;
     background-color: #EEE6D8;
-    border: rgba(0,0,0,0.1) solid 1px;
+    border: rgba(0,0,0,0.08) solid 1px;
     border-width: 0 0 0 4px;
     
-  
-      -moz-border-radius: 4px;
-      -webkit-border-radius: 4px;
-      -o-border-radius: 4px;
-      -ms-border-radius: 4px;
-      border-radius: 4px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
-
-    font-size: 0.8em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: rgba(0,0,0,0.3);
-    content: "obj";
 }
 
-  
-  dl.class > dt:before { content: "class"; background-color: #EEE6D8; }
-  dl.exception > dt:before { content: "exc"; background-color: #EEE6D8; }
+  /* set per-type object colors */
+  dl.class > dt { background-color: #EEE6D8; }
+  dl.exception > dt { background-color: #EEE6D8; }
 
-  dl.class > dt > .property:first-child { display: none; }
-
-  dl.function > dt:before { content: "func"; }
-  dl.method > dt:before { content: "method"; }
-
-  dl.function > dt:before,
-  dl.method > dt:before,
-  dl.staticmethod > dt > .property,
-  dl.classmethod > dt > .property
+  dl.function > dt,
+  dl.method > dt,
+  dl.staticmethod > dt,
+  dl.classmethod > dt
   { background-color: #EEE6D8; }
 
-  dl.data > dt:before { content: "data"; }
-  dl.attribute > dt:before { content: "attr"; }
-
-  dl.data > dt:before,
-  dl.attribute > dt:before
+  dl.data > dt,
+  dl.attribute > dt
   { background-color: #e6e6e6; }
 
 
@@ -1838,7 +1836,10 @@ dl > dt.highlighted
   background: #fbe54e;
 }
 
-
+/*****************************************************
+ * index page styling
+ * requires classes set by .ext.index_styling
+ *****************************************************/
 
 table.indextable span.category
 {
@@ -1906,13 +1907,11 @@ table.indextable td > dl > dd > dl
         div.relbar-bottom div.related
         {
            
-  
-      -moz-border-radius: 0;
-      -webkit-border-radius: 0;
-      -o-border-radius: 0;
-      -ms-border-radius: 0;
-      border-radius: 0;
-  
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  -o-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
 
 
         }
@@ -1979,13 +1978,11 @@ table.indextable td > dl > dd > dl
                 padding-bottom: .25em;
             
             
-  
-      -moz-border-radius: 3px;
-      -webkit-border-radius: 3px;
-      -o-border-radius: 3px;
-      -ms-border-radius: 3px;
-      border-radius: 3px;
-  
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -o-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 
 
         }
@@ -2004,13 +2001,11 @@ table.indextable td > dl > dd > dl
         div.body {
             border: 0;
             
-  
-      -moz-box-shadow: none;
-      -webkit-box-shadow: none;
-      -o-box-shadow: none;
-      -ms-box-shadow: none;
-      box-shadow: none;
-  
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none;
 
 
         }
@@ -2052,3 +2047,6 @@ table.indextable td > dl > dd > dl
 
 }
 
+/*****************************************************
+ * EOF
+ *****************************************************/
