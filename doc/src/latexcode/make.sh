@@ -37,6 +37,11 @@ doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1]@pypro:l
 pdflatex doc
 cp doc.pdf doc_lst_style_primer.pdf
 
+# With syntax highlighting
+doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1_bluegreen]@pypro:lst[style=blue1bar_bluegreen]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
+pdflatex doc
+cp doc.pdf doc_lst_style_primer5.pdf
+
 doconce format pdflatex doc "--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]" --latex_code_bg_vpad
 pdflatex -shell-escape doc
 cp doc.pdf doc_pyg_style_primer_vpad.pdf
@@ -54,14 +59,15 @@ ptex2tex doc
 pdflatex doc
 cp doc.pdf doc_ptex2tex_primer.pdf
 
-doconce format pdflatex doc "--latex_code_style=default:lst-blue1[style=redblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
+# Vertical bar for programs (but too large colored background)
+doconce format pdflatex doc "--latex_code_style=default:lst-blue1[style=greenblue,numbers=left,numberstyle=\\tiny,stepnumber=3,numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_lots.pdf
 
 doconce format pdflatex doc_udef --latex_code_style=lst
 pdflatex doc_udef
 
-doconce format html demo --html_style=bootstrap_bloodish --html_code_style=inherit
+doconce format html demo --html_style=bootstrap_bloodish --html_code_style=inherit --html_links_in_new_window
 
 dest=../../pub/latexcode
 cp doc.do.txt.html doc_*.pdf demo.html $dest

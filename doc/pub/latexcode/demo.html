@@ -20,6 +20,13 @@ Automatically generated HTML file from DocOnce source
 <style type="text/css">
 /* Let inline verbatim have the same color as the surroundings */
 code { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
 </style>
 
 
@@ -51,10 +58,6 @@ code { color: inherit; background-color: transparent; }
                2,
                'latexcode:background',
                'latexcode:background'),
-              ('Blue backgrounds with a darker bar for complete programs',
-               3,
-               None,
-               '___sec7'),
               ('Setting LaTeX environment parameters',
                2,
                'latexcode:latex:prms',
@@ -90,6 +93,7 @@ end of tocinfo -->
     </button>
     <a class="navbar-brand" href="demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -102,7 +106,6 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#latexcode:pyg" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>minted</code> (Pygments) tool</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:lst" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>lstlisting</code> tool</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:background" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Adding a colored background</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blue backgrounds with a darker bar for complete programs</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:latex:prms" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Setting LaTeX environment parameters</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:nonuniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:lst:style" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying the <code>lst</code> style</a></li>
@@ -139,8 +142,10 @@ end of tocinfo -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
+<br>
 <p>
-<center><h4>Aug 4, 2015</h4></center> <!-- date -->
+<center><h4>Feb 23, 2016</h4></center> <!-- date -->
+<br>
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
 code for verbatim blocks of computer code. These new capabilities
@@ -172,22 +177,8 @@ In 2015, a new implementation in DocOnce replaced <code>ptex2tex</code> and
 Rather than offering a range of packages for typesetting computer
 code, as the <code>ptex2tex</code> tool does, the implementation made use of only
 three choices: <code>fancyvrb</code>, <code>minted</code>, or <code>listing</code>, but these choices
-with all their parameters actually span a much richer way typesetting
-code than what <code>ptex2tex</code> offers, though not all <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="The ptex2tex program is not yet made completely redundant by the new implemention. In fact, there is no exact support for colored backgrounds with a thin vertical bar on the left, to indicate a complete program, and as specified by, e.g., the BlueBar environment in the ptex2tex configuration file.  Two styles in the new implementation come close: 1) the blue1 style for lst gives a darker-color rectangular frame, and 2) the vrb-blue1 (or pyg-blue1 or lst-blue1) style has a darker-color vertical bar, but the colored background is then significantly larger than the code. If !bbox is not used in the document, the size of the background is reduced, but it is not as tight as when a colored lst background (or BlueBar in .ptex2tex.cfg) is specified."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button> popular
-<code>ptex2tex</code> environments are supported in the new implementation.
-
-<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> The <code>ptex2tex</code> program is not yet made completely
-redundant by the new implemention. In fact, there is no exact support for
-colored backgrounds with a <em>thin vertical bar</em> on the left, to
-indicate a complete program, and as specified by, e.g., the <code>BlueBar</code>
-environment in the <code>ptex2tex</code> configuration file.  Two styles in the
-new implementation come close: 1) the <code>blue1</code> style for <code>lst</code> gives
-a darker-color rectangular <em>frame</em>, and 2) the <code>vrb-blue1</code> (or
-<code>pyg-blue1</code> or <code>lst-blue1</code>) style has a darker-color vertical bar,
-but the colored background is then significantly larger than the code.
-If <code>!bbox</code> is not used in the document, the size of the background is
-reduced, but it is not as tight as when a colored <code>lst</code> background
-(or <code>BlueBar</code> in <code>.ptex2tex.cfg</code>) is specified.</p>
+with all their parameters actually span a much richer way of
+typesetting code than what <code>ptex2tex</code> offers.
 
 <h2 id="latexcode:overview">Quick overview of the functionality</h2>
 
@@ -239,13 +230,13 @@ environment for all code blocks:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb
 </pre></div>
 <p>
-A <a href="doc.do.txt.html" target="_self">DocOnce demo document</a> has been made to illustrate
+A <a href="doc.do.txt.html" target="_blank">DocOnce demo document</a> has been made to illustrate
 how the various typesettings look like. The document contains
 a data file with the code environment <code>dat</code>, a complete executable
 Python program in the code environment <code>pypro</code>, and a terminal session
 in the code environment <code>sys</code>. The result of
 <code>--latex_code_style=vrb</code> gives the most plain and standard way of
-typesetting verbatim code blocks in LaTeX, see <a href="doc_vrb.pdf" target="_self">the result</a>.
+typesetting verbatim code blocks in LaTeX, see <a href="doc_vrb.pdf" target="_blank">the result</a>.
 Or more precisely, DocOnce generates a <code>Verbatim</code> environment with
 several parameters set:
 
@@ -278,7 +269,7 @@ Replacing <code>vrb</code> by <code>pyg</code> switches the LaTeX environments t
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=pyg
 </pre></div>
 <p>
-Now, <a href="doc_pyg.pdf" target="_self">the resulting PDF file</a>
+Now, <a href="doc_pyg.pdf" target="_blank">the resulting PDF file</a>
 has typesetting of computer code that depends
 on the programming language. For example, the Python program leads to
 
@@ -315,15 +306,15 @@ specified by the <code>--minted_latex_style=</code> option, e.g.,
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_code_style=vrb --minted_latex_style=perldoc
 </pre></div>
 <p>
-The <code>perldoc</code> choice <a href="doc_pyg_perldoc.pdf" target="_self">changes the colors</a> from
-the default (Pygments <code>default</code>) <a href="doc_pyg.pdf" target="_self">choice</a> generated previously.
+The <code>perldoc</code> choice <a href="doc_pyg_perldoc.pdf" target="_blank">changes the colors</a> from
+the default (Pygments <code>default</code>) <a href="doc_pyg.pdf" target="_blank">choice</a> generated previously.
 
 <h2 id="latexcode:lst">Using the <code>lstlisting</code> tool</h2>
 
 <p>
 The third package for typesetting of verbatim blocks of code is
 <code>listingsutf8</code> and the <code>lstlisting</code> LaTeX environment, which in
-the following most plain form gives a <a href="doc_lst.pdf" target="_self">look</a> not
+the following most plain form gives a <a href="doc_lst.pdf" target="_blank">look</a> not
 much different from the <code>Verbatim</code> environment:
 
 <p>
@@ -357,7 +348,7 @@ in DocOnce:
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">doconce format pdflatex doc --latex_code_style=lst-yellow2
 </pre></div>
 <p>
-The <code>yellow2</code> background is <a href="doc_lst_yellow2.pdf" target="_self">light yellow</a>.
+The <code>yellow2</code> background is <a href="doc_lst_yellow2.pdf" target="_blank">light yellow</a>.
 For colored backgrounds, one should notice that the <code>pro</code> code environments
 (as in <code>pypro</code>)
 for complete executable programs get a 1mm slightly darker bar at the left
@@ -402,61 +393,6 @@ or just replace the exact text:
           &#39;cbg_yellow1}{rgb}{.95, .95, 0.8}&#39; mydoc.tex
 </pre></div>
 
-<h3 id="___sec7">Blue backgrounds with a darker bar for complete programs </h3>
-
-<p>
-Typical blueish code environments mimicing those in the author's latest
-books (e.g., <em>A Primer on Scientific Programming with Python</em>) can
-be produced by 1) blue background combined with plain verbatim text
-(see <a href="doc_vrb_style_primer.pdf" target="_self">PDF</a>),
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:vrb-blue1@sys:vrb[frame=lines,
-label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,
-fontsize=\fontsize{9pt}{9pt}]&quot;
-</pre></div>
-<p>
-(without the linebreaks!)
-or 2) blue background combined with the listings package,
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst[style=blue1]@
-pypro:lst[style=blue1bar]@dat:lst[style=gray]@
-sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
-framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
-</pre></div>
-<p>
-(without the linebreaks!).
-
-<p>
-For the <code>vrb/pyg/list-backgroundcolor</code> styles,
-more vertical space before and after the code can be added to the
-background with the <code>--latex_code_bg_vpad</code> option, as
-in this <a href="doc_vrb_style_primer_vpad.pdf" target="_self">vrb-blue1 demo</a>
-or this <a href="doc_pyg_style_primer_vpad.pdf" target="_self">pyg-blue1 demo</a>. The latter
-used
-
-<p>
-
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@
-sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
-framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
-</pre></div>
-<p>
-(without the linebreaks!).
-
-<p>
-Notice that the complete program, which can be run as is, applies
-a darker blue bar to the left (<code>vrb</code>, <code>pyg</code>) while <code>lst</code> has a
-darker frame. This graphical element is used to help readers distinguish
-between a complete program (<code>!bc pypro</code>) and a program snippet
-(<code>!bc pycod</code>).
-
 <h2 id="latexcode:latex:prms">Setting LaTeX environment parameters</h2>
 
 <p>
@@ -472,7 +408,7 @@ numberstyle=\\tiny,numbersep=15pt,breaklines=true]&quot;
 </pre></div>
 <p>
 (but no linebreaks in the <code>--latex_code_style</code> command!).
-These parameters specify <a href="doc_lst_yellow2_linenos.pdf" target="_self">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
+These parameters specify <a href="doc_lst_yellow2_linenos.pdf" target="_blank">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
 <em>Note that any backslash in LaTeX command must be a
 double backslash</em> on the command line!
 
@@ -516,7 +452,7 @@ framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 <p>
 (with no linebreaks though!).
-<a href="doc_lst_sys.pdf" target="_self">Here is the result</a>.
+<a href="doc_lst_sys.pdf" target="_blank">Here is the result</a>.
 
 <h2 id="latexcode:lst:style">Specifying the <code>lst</code> style</h2>
 
@@ -527,10 +463,18 @@ environment:
 <ul>
  <li> <code>simple</code> for no coloring of code (plain verbatim style)</li>
  <li> <code>redblue</code> for coloring of code dominated by red and blue</li>
+ <li> <code>greenblue</code> for coloring of code dominated by green and blue</li>
  <li> <code>gray</code> for a framed gray background and no code coloring</li>
  <li> <code>graycolor</code> for a framed gray background and green comments, pink keywords,
    red strings, and orange variables</li>
  <li> <code>blue1</code> for a light blue/cyan background with no code coloring</li>
+ <li> <code>blue1bar</code> for a light blue/cyan background with a darker think frame
+   and with no code coloring</li>
+ <li> <code>blue1_bluegreen</code> colored code with blue background (combination of
+   <code>blue1</code> background and <code>bluegreen</code> syntax coloring)</li>
+ <li> <code>blue1bar_bluegreen</code> colored code with blue background and darker
+    frame (combination of
+   <code>blue1bar</code> background and <code>bluegreen</code> syntax coloring)</li>
  <li> <code>yellow2_fb</code> for a framed yellow (<code>yellow2</code>) background and
    green comments, blue keywords, red strings, and orange variables
    (the style from the FEniCS book)
@@ -551,7 +495,7 @@ Just include <code>\lstdefinestyle{name}{...}</code> commands in the file.
 <p>
 Here is an example of specifying the <code>yellow2_fb</code> style with yellow
 background, coloring of code, and a frame around all code blocks
-(as made famous in the <a href="http://goo.gl/myz5yp" target="_self">FEniCS book</a>):
+(as made famous in the <a href="http://goo.gl/myz5yp" target="_blank">FEniCS book</a>):
 
 <p>
 
@@ -560,11 +504,11 @@ background, coloring of code, and a frame around all code blocks
   &quot;--latex_code_style=default:lst[style=yellow2_fb]&quot;
 </pre></div>
 <p>
-You may check out the <a href="doc_lst_style_facebook.pdf" target="_self">corresponding result</a>.
+You may check out the <a href="doc_lst_style_fenicsbook.pdf" target="_blank">corresponding result</a>.
 
 <p>
 Blue background and plain verbatim non-colored code (as made
-famous in the <a href="http://goo.gl/OKDAzs" target="_self">Python Primer on Scientific Programming book</a>) results from
+famous in the <a href="http://goo.gl/OKDAzs" target="_blank">Python Primer on Scientific Programming book</a>) results from
 
 <p>
 
@@ -580,10 +524,26 @@ framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 Note that this style does not offer the thin vertical darker-colored bar
 for <code>pypro</code> enviroments (indicating complete programs) as
 <code>ptex2tex</code> offers through the <code>BlueBar</code> environment. Instead, there is a
-<a href="doc_lst_styleprimer.pdf" target="_self">darker-colored frame</a> around <code>pypro</code> code specifications.
+<a href="doc_lst_styleprimer.pdf" target="_blank">darker-colored frame</a> around <code>pypro</code> code specifications.
 The vertical bar is enabled by a <code>pypro:vrb-blue1</code> specification, but then
 with a colored background that is significantly larger than the computer code
 block.
+
+<p>
+The 5th edition of the mention &quot;Primer book&quot; features syntax highlighting,
+offered by the <code>blue1_bluegreen</code> and <code>blue1bar_bluegreen</code> styles:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex doc \
+&quot;--latex_code_style=default:lst[style=blue1_bluegreen]@
+pypro:lst[style=blue1bar_bluegreen]@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
+</pre></div>
+<p>
+(but no linebreaks as here). Look at <a href="doc_lst_style_primer5.pdf" target="_blank">the result</a>.
 
 <h2 id="latexcode:syntax">General syntax for <code>--latex_code_style=</code></h2>
 
@@ -598,7 +558,7 @@ the DocOnce name of a potential background (can be omitted), and
 
 <p>
 As an example, we may specify a default typesetting with <code>lst</code> and the <code>blue1</code>
-background, using the <code>redblue</code> style and numbering of lines;
+background, using the <code>greenblue</code> style and numbering of lines;
 then we let the <code>dat</code> environment be typeset with the <code>Verbatim</code>
 environment with a light gray background; and finally we let <code>sys</code> also use
 <code>Verbatim</code>, but with many parameters for more fancy layout. The
@@ -608,14 +568,14 @@ increased readability - it must be one line as a terminal command!):
 <p>
 
 <!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst-blue1[style=redblue,
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">&quot;--latex_code_style=default:lst-blue1[style=greenblue,
 numbers=left,numberstyle=\\tiny,stepnumber=3,
 numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@
 sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},
 framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]&quot;
 </pre></div>
 <p>
-Here is the <a href="doc_lots.pdf" target="_self">result</a> of this detailed specification.
+Here is the <a href="doc_lots.pdf" target="_blank">result</a> of this detailed specification.
 
 <p>
 <div class="alert alert-block alert-success alert-text-normal"><b>Size of colored background.</b>
@@ -664,7 +624,7 @@ This is fairly easy: we define a <em>user-defined environment</em> in
 DocOnce, here called <code>code</code> and provide a Python module that translates
 this environment into proper format-specific code.
 Details are provided in the DocOnce manual, see the section
-<a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments" target="_self">User-Defined Environments</a>. In the present case,
+<a href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#user-defined-environments" target="_blank">User-Defined Environments</a>. In the present case,
 the syntax in a DocOnce file is to wrap every <code>@@@CODE</code> line or
 <code>!bc</code> environment in a <code>!bu-code</code> and <code>!eu-code</code> environment. The
 code in the figure above is produced by
@@ -812,7 +772,7 @@ the code snippet.
 <p>
 When compiling to <code>pdflatex</code>, we simply use <code>--latex_code_style=lst</code>,
 but we could use more fancy styles if desired.
-You can inspect the <a href="doc_udef.pdf" target="_self">PDF file</a> for this example with
+You can inspect the <a href="doc_udef.pdf" target="_blank">PDF file</a> for this example with
 a tailored, user-defined code environment.
 
 <!-- ------------------- end of main content --------------- -->

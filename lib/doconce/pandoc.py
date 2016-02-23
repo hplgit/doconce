@@ -10,7 +10,7 @@ for syntax.
 
 import re, sys, functools
 from common import default_movie, plain_exercise, table_analysis, \
-     insert_code_and_tex, bibliography, indent_lines
+     insert_code_and_tex, bibliography, indent_lines, fix_ref_section_chapter
 from html import html_movie, html_table
 from misc import option
 
@@ -296,25 +296,7 @@ def pandoc_figure(m):
     return text
 
 def pandoc_ref_and_label(section_label2title, format, filestr):
-    # .... see section ref{my:sec} is replaced by
-    # see the section "...section heading..."
-    pattern = r'[Ss]ection(s?)\s+ref\{'
-    replacement = r'the section\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    pattern = r'[Cc]hapter(s?)\s+ref\{'
-    replacement = r'the chapter\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-
-    # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!]\s+|\n\n|^#+ .+?\n+)the (sections?|chapters?)\s+ref'
-    replacement = r'\g<1>The \g<2> ref'
-    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
-
-    # Remove Exercise, Project, Problem in references since those words
-    # are used in the title of the section too
-    pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
-    replacement = r' ref{'
-    filestr = re.sub(pattern, replacement, filestr)
+    filestr = fix_ref_section_chapter(filestr, format)
 
     # Replace all references to sections. Pandoc needs a coding of
     # the section header as link. (Not using this anymore.)

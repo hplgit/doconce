@@ -15,7 +15,8 @@ does not work properly.
 """
 import re, sys
 from common import default_movie, plain_exercise, bibliography, \
-     cite_with_multiple_args2multiple_cites, insert_code_and_tex
+     cite_with_multiple_args2multiple_cites, insert_code_and_tex, \
+     fix_ref_section_chapter
 from misc import option
 
 
@@ -110,24 +111,7 @@ def matlabnb_code(filestr, code_blocks, code_block_types,
     return filestr
 
 def matlabnb_ref_and_label(section_label2title, format, filestr):
-    # .... see section ref{my:sec} is replaced by
-    # see the section "...section heading..."
-    pattern = r'[Ss]ection(s?)\s+ref\{'
-    replacement = r'the section\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    pattern = r'[Cc]hapter(s?)\s+ref\{'
-    replacement = r'the chapter\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!]\s+|\n\n|[%=~-]\n+)the (sections?|chapters?)\s+ref'
-    replacement = r'\g<1>The \g<2> ref'
-    filestr = re.sub(pattern, replacement, filestr)
-
-    # Remove Exercise, Project, Problem in references since those words
-    # are used in the title of the section too
-    pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
-    replacement = r' ref{'
-    filestr = re.sub(pattern, replacement, filestr)
+    filestr = fix_ref_section_chapter(filestr, format)
 
     # remove label{...} from output (when only label{} on a line, remove
     # the newline too, leave label in figure captions, and remove all the rest)

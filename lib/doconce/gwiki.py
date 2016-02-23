@@ -6,7 +6,8 @@ Here called gwiki to make the dialect clear (g for google).
 
 
 import re, os, commands, sys
-from common import default_movie, plain_exercise, insert_code_and_tex
+from common import default_movie, plain_exercise, insert_code_and_tex, \
+     fix_ref_section_chapter
 from plaintext import plain_quiz
 from misc import _abort
 
@@ -139,24 +140,7 @@ def gwiki_author(authors_and_institutions, auth2index,
     return text
 
 def wiki_ref_and_label_common(section_label2title, format, filestr):
-    # .... see section ref{my:sec} is replaced by
-    # see the section "...section heading..."
-    pattern = r'[Ss]ection(s?)\s+ref\{'
-    replacement = r'the section\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    pattern = r'[Cc]hapter(s?)\s+ref\{'
-    replacement = r'the chapter\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!]\s+|\n\n|[=]{2,}\n+)the (sections?|chapters?)\s+ref'
-    replacement = r'\g<1>The \g<2> ref'
-    filestr = re.sub(pattern, replacement, filestr)
-
-    # Remove Exercise, Project, Problem in references since those words
-    # are used in the title of the section too
-    pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
-    replacement = r'ref{'
-    filestr = re.sub(pattern, replacement, filestr)
+    filestr = fix_ref_section_chapter(filestr, format)
 
     # remove label{...} from output
     filestr = re.sub(r'label\{.+?\}', '', filestr)  # all the remaining

@@ -308,25 +308,7 @@ def rst_author(authors_and_institutions, auth2index,
     return text
 
 def ref_and_label_commoncode(section_label2title, format, filestr):
-    # .... see section ref{my:sec} is replaced by
-    # see the section "...section heading..."
-    pattern = r'[Ss]ection(s?)\s+ref\{'
-    replacement = r'the section\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    pattern = r'[Cc]hapter(s?)\s+ref\{'
-    replacement = r'the chapter\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-
-    # Need special adjustment to handle start of sentence (capital) or not.
-    pattern = r'([.?!]\s+|\n\n|[%=~-]\n+)the (sections?|chapters?)\s+ref'
-    replacement = r'\g<1>The \g<2> ref'
-    filestr = re.sub(pattern, replacement, filestr)
-
-    # Remove Exercise, Project, Problem in references since those words
-    # are used in the title of the section too
-    pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
-    replacement = r'ref{'
-    filestr = re.sub(pattern, replacement, filestr)
+    filestr = fix_ref_section_chapter(filestr, format)
 
     # Deal with the problem of identical titles, which makes problem
     # with non-unique links in reST: add a counter to the title

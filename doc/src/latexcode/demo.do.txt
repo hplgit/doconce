@@ -29,9 +29,13 @@ In 2015, a new implementation in DocOnce replaced `ptex2tex` and
 Rather than offering a range of packages for typesetting computer
 code, as the `ptex2tex` tool does, the implementation made use of only
 three choices: `fancyvrb`, `minted`, or `listing`, but these choices
-with all their parameters actually span a much richer way typesetting
-code than what `ptex2tex` offers, though not all[^ptex2tex] popular
-`ptex2tex` environments are supported in the new implementation.
+with all their parameters actually span a much richer way of
+typesetting code than what `ptex2tex` offers.
+
+# #ifdef THINK_THIS_IS_OUTDATED
+, though not
+all[^ptex2tex] popular `ptex2tex` environments are supported in the
+new implementation.
 
 [^ptex2tex]: The `ptex2tex` program is not yet made completely
 redundant by the new implemention. In fact, there is no exact support for
@@ -41,11 +45,12 @@ environment in the `ptex2tex` configuration file.  Two styles in the
 new implementation come close: 1) the `blue1` style for `lst` gives
 a darker-color rectangular *frame*, and 2) the `vrb-blue1` (or
 `pyg-blue1` or `lst-blue1`) style has a darker-color vertical bar,
-but the colored background is then significantly larger than the code.
+but for `vrb` and `pyg`
+the colored background is then significantly larger than the code.
 If `!bbox` is not used in the document, the size of the background is
 reduced, but it is not as tight as when a colored `lst` background
 (or `BlueBar` in `.ptex2tex.cfg`) is specified.
-
+# #endif
 
 ===== Quick overview of the functionality =====
 label{latexcode:overview}
@@ -218,6 +223,8 @@ Terminal> doconce replace \
           'cbg_yellow1}{rgb}{.95, .95, 0.8}' mydoc.tex
 !ec
 
+# #ifdef TOO_MUCH
+## We repeat this several times...
 === Blue backgrounds with a darker bar for complete programs ===
 
 Typical blueish code environments mimicing those in the author's latest
@@ -260,7 +267,7 @@ a darker blue bar to the left (`vrb`, `pyg`) while `lst` has a
 darker frame. This graphical element is used to help readers distinguish
 between a complete program (`!bc pypro`) and a program snippet
 (`!bc pycod`).
-
+# #endif
 
 
 ===== Setting LaTeX environment parameters =====
@@ -320,10 +327,18 @@ environment:
 
  * `simple` for no coloring of code (plain verbatim style)
  * `redblue` for coloring of code dominated by red and blue
+ * `greenblue` for coloring of code dominated by green and blue
  * `gray` for a framed gray background and no code coloring
  * `graycolor` for a framed gray background and green comments, pink keywords,
    red strings, and orange variables
  * `blue1` for a light blue/cyan background with no code coloring
+ * `blue1bar` for a light blue/cyan background with a darker think frame
+   and with no code coloring
+ * `blue1_bluegreen` colored code with blue background (combination of
+   `blue1` background and `bluegreen` syntax coloring)
+ * `blue1bar_bluegreen` colored code with blue background and darker
+    frame (combination of
+   `blue1bar` background and `bluegreen` syntax coloring)
  * `yellow2_fb` for a framed yellow (`yellow2`) background and
    green comments, blue keywords, red strings, and orange variables
    (the style from the FEniCS book)
@@ -347,7 +362,7 @@ background, coloring of code, and a frame around all code blocks
 Terminal> doconce format pdflatex doc \
   "--latex_code_style=default:lst[style=yellow2_fb]"
 !ec
-You may check out the "corresponding result": "doc_lst_style_facebook.pdf".
+You may check out the "corresponding result": "doc_lst_style_fenicsbook.pdf".
 
 Blue background and plain verbatim non-colored code (as made
 famous in the "Python Primer on Scientific Programming book":
@@ -370,6 +385,18 @@ The vertical bar is enabled by a `pypro:vrb-blue1` specification, but then
 with a colored background that is significantly larger than the computer code
 block.
 
+The 5th edition of the mention ``Primer book'' features syntax highlighting,
+offered by the `blue1_bluegreen` and `blue1bar_bluegreen` styles:
+
+!bc sys
+Terminal> doconce format pdflatex doc \
+"--latex_code_style=default:lst[style=blue1_bluegreen]@
+pypro:lst[style=blue1bar_bluegreen]@dat:lst[style=gray]@
+sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},
+framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
+!ec
+(but no linebreaks as here). Look at "the result": "doc_lst_style_primer5.pdf".
+
 ===== General syntax for `--latex_code_style=` =====
 label{latexcode:syntax}
 
@@ -382,7 +409,7 @@ the DocOnce name of a potential background (can be omitted), and
 `prms` is a list of parameters for the LaTeX environment.
 
 As an example, we may specify a default typesetting with `lst` and the `blue1`
-background, using the `redblue` style and numbering of lines;
+background, using the `greenblue` style and numbering of lines;
 then we let the `dat` environment be typeset with the `Verbatim`
 environment with a light gray background; and finally we let `sys` also use
 `Verbatim`, but with many parameters for more fancy layout. The
@@ -390,7 +417,7 @@ value of `--latex_code_style=` is then (split over several lines for
 increased readability - it must be one line as a terminal command!):
 
 !bc
-"--latex_code_style=default:lst-blue1[style=redblue,
+"--latex_code_style=default:lst-blue1[style=greenblue,
 numbers=left,numberstyle=\\tiny,stepnumber=3,
 numbersep=15pt,xleftmargin=1mm]@dat:vrb-gray@
 sys:vrb[frame=lines,label=\\fbox{{\\tiny Terminal}},

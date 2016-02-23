@@ -222,6 +222,50 @@ def get_copyfile_info(filestr=None, copyright_filename=None, format=None):
 
     return cr_text
 
+def fix_ref_section_chapter(filestr, format):
+    # .... see section ref{my:sec} is replaced by
+    # see the section "...section heading..."
+    pattern = r'[Ss]ection(s?)\s+ref\{'
+    replacement = r'the section\g<1> ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+    pattern = r'[Cc]hapter(s?)\s+ref\{'
+    replacement = r'the chapter\g<1> ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+    # Do not use "the appendix" since the headings in appendices
+    # have "Appendix: title"
+    pattern = r'[Aa]ppendix\s+ref\{'
+    #replacement = r'the appendix ref{'
+    replacement = r' ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+    pattern = r'[Aa]ppendices\s+ref\{'
+    #replacement = r'the appendices ref{'
+    replacement = r' ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+
+    # Need special adjustment to handle start of sentence (capital) or not.
+    if format == 'html':
+        # Might be just an inferior pattern from html.py or actually
+        # needed for HTML... more general pattern below
+        pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?)\s+ref'
+    else:
+        pattern = r'([.?!]\s+|\n\n|[%=~-]\n+)the (sections?|chapters?)\s+ref'
+    replacement = r'\g<1>The \g<2> ref'
+    filestr = re.sub(pattern, replacement, filestr)
+    # Fix side effect: cf. The section ...
+    filestr = re.sub(r'cf\.\s+The', 'cf. the', filestr)
+
+    # Remove Exercise, Project, Problem in references since those words
+    # are used in the title of the section too
+    pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
+    replacement = r'ref{'
+    filestr = re.sub(pattern, replacement, filestr)
+    # Fix side effect from the above that one gets constructions 'the The'
+    filestr = re.sub(r'the\s+The', 'the', filestr)
+
+    # Note that latex.py has its own quite different code since latex
+    # behaves differently and doconce syntax is close to latex writing
+    # when it comes to section/chapter references.
+    return filestr
 
 def indent_lines(text, format, indentation=' '*8, trailing_newline=True):
     """

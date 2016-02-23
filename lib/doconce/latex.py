@@ -272,6 +272,16 @@ stringstyle=\color{darkgreen},
 identifierstyle=\color{darkorange},
 }
 """,
+       greenblue=r"""
+\lstdefinestyle{greenblue}{
+%keywordstyle=\color{black}\bfseries,
+keywordstyle=\color{black},
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+%identifierstyle=\color{blue}\bfseries,
+identifierstyle=\color{darkblue},
+}
+""",
        yellow2_fb=r"""
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
@@ -288,11 +298,16 @@ identifierstyle=\color{darkorange},
 % Use this one without additional background color
 \lstdefinestyle{blue1}{              % blue1 background for code snippets
 backgroundcolor=\color{cbg_blue1},
-%keywordstyle=\color{blue}\bfseries,
-%commentstyle=\color{comment_green}\slshape,
-%stringstyle=\color{string_red},
-%identifierstyle=\color{darkorange},
-%columns=fullflexible,  % tighter character kerning, like verb
+}
+""",
+       blue1_bluegreen=r"""
+% Use this one without additional background color
+\lstdefinestyle{blue1_bluegreen}{    % blue1 background for code snippets
+backgroundcolor=\color{cbg_blue1},
+keywordstyle=\color{black},
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkblue},
 }
 """,
         blue1bar="""
@@ -302,11 +317,19 @@ backgroundcolor=\color{cbg_blue1},
 backgroundcolor=\color{cbg_blue1},
 frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
 rulecolor=\color{bar_blue1},         % frame color
-%keywordstyle=\color{blue}\bfseries,
-%commentstyle=\color{comment_green}\slshape,
-%stringstyle=\color{string_red},
-%identifierstyle=\color{darkorange},
-%columns=fullflexible,  % tighter character kerning, like verb
+}
+""",
+        blue1bar_bluegreen="""
+% Use this one without additional background color
+% (same as blue1, but with bar_blue1 frame)
+\lstdefinestyle{blue1bar_bluegreen}{ % blue1 background for complete programs
+backgroundcolor=\color{cbg_blue1},
+frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
+rulecolor=\color{bar_blue1},         % frame color
+keywordstyle=\color{black},
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkblue},
 }
 """,
        gray=r"""
@@ -363,7 +386,7 @@ identifierstyle=\color{darkorange},
         if style in styles:  # must test: can have user-defined styles too
             s += styles[style]
 
-    filename = option('latex_code_lststyles=', None)
+    filename = option('latex_code_lststyles=', None)  # user-supplied style
     user_styles = []
     if filename is not None:
         # User has specified additional lst styles
@@ -1877,6 +1900,13 @@ def latex_abstract(m):
     return abstract
 
 def latex_ref_and_label(section_label2title, format, filestr):
+    # First, fix ref{} references (and make them fancy with pagenumber
+    # if desired).
+
+    # Note: other formats applies common.fix_ref_section_chapter
+    # to handle section/chapter/appendix references, but doconce syntax
+    # is very close to latex in such constructions so we need much less
+    # and different code below.
     varioref = 'varioref' in option('latex_packages=', '')
     filestr = filestr.replace('label{', r'\label{')
     # add ~\ between chapter/section and the reference

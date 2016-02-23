@@ -1,5 +1,3 @@
-
-#!/usr/bin/env python
 global dofile_basename
 
 import re, os, sys, shutil, subprocess, pprint, time, glob, codecs
@@ -378,12 +376,13 @@ def syntax_check(filestr, format):
     user_defined_envirs = list(set(re.findall(r'^!b(u-[^ ]+)', filestr, flags=re.MULTILINE)))
     envirs = doconce_envirs() + user_defined_envirs
     envirs.remove('u-')
-    for envir1 in envirs:
-        for envir2 in envirs:
-            if envir1 != envir2 and envir1.startswith(envir2):
-                print '*** BUG in doconce: environment ![be]%s cannot start with the text of environment ![be]%s' % (envir1, envir2)
-                _abort()
-    # Could add users !bu-X environments too
+    # Maybe good intentions with this test, but in doc/src/latexcode/demo.do.txt
+    # it causes trouble
+    #for envir1 in envirs:
+    #    for envir2 in envirs:
+    #        if envir1 != envir2 and envir1.startswith(envir2):
+    #            print '*** BUG in doconce: environment !b%s cannot start with the text of environment !b%s' % (envir1, envir2)
+    #            _abort()
 
     # Check that we don't have ~ref
     m = re.findall(r'~ref\{', filestr)

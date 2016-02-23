@@ -2,7 +2,8 @@ import re, os, glob, sys, glob
 from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
      is_file_or_url, envir_delimiter_lines, doconce_exercise_output, \
-     get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url
+     get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url, \
+     fix_ref_section_chapter
 from misc import option, _abort
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
@@ -1907,42 +1908,7 @@ def html_ref_and_label(section_label2title, format, filestr):
     # This is the first format-specific function to be called.
     # We therefore do some HTML-specific fixes first.
 
-    # Section references:
-    # .... see section ref{my:sec} is replaced by
-    # see the section "...section heading..."
-    pattern = r'[Ss]ection(s?)\s+ref\{'
-    replacement = r'the section\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    pattern = r'[Cc]hapter(s?)\s+ref\{'
-    replacement = r'the chapter\g<1> ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    # Do not use "the appendix" since the headings in appendices
-    # have "Appendix: title"
-    pattern = r'[Aa]ppendix\s+ref\{'
-    #replacement = r'the appendix ref{'
-    replacement = r' ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    pattern = r'[Aa]ppendices\s+ref\{'
-    #replacement = r'the appendices ref{'
-    replacement = r' ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-    # Need special adjustment to handle start of sentence (capital) or not.
-    # Check: end of previous sentence (?.!) or start of new paragraph.
-    #pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?|appendix|appendices)\s+ref'
-    pattern = r'([.?!]\s+|\n\n)the (sections?|chapters?)\s+ref'
-    replacement = r'\g<1>The \g<2> ref'
-    filestr = re.sub(pattern, replacement, filestr, flags=re.MULTILINE)
-    # Fix side effect: cf. The section ...
-    filestr = re.sub(r'cf\.\s+The', 'cf. the', filestr)
-
-    # Remove "the" Exercise, Project, Problem in references since those words
-    # are used in the title of the section too
-    pattern = r'(the\s*)?([Ee]xercises?|[Pp]rojects?|[Pp]roblems?)\s+ref\{'
-    replacement = r'ref{'
-    filestr = re.sub(pattern, replacement, filestr)
-
-    # Fix side effect from the above that one gets constructions 'the The'
-    filestr = re.sub(r'the\s+The', 'the', filestr)
+    filestr = fix_ref_section_chapter(filestr, format)
 
     # Recognize mdash ---
     # Must be attached to text or to a quote (ending in ., quotes, or
