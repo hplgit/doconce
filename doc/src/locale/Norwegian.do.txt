@@ -49,6 +49,17 @@ idx{figur}
 
 FIGURE: [../manual/fig/wave1D, width=500 frac=0.7] Figurtekst på norsk går bra. label{fig1}
 
+===== Exercise: Hallo verden. =====
+label{exercise:halloverden}
+"Hallo verden":"http://en.wikipedia.org/wiki/Hello_world_program" er
+en vanlig måte å teste ut ny teknologi på. I denne oppgaven skal du
+lage ditt første html-hallo-verden-program.
+
+Du skal lage siden `index.html`, som lagres i en egen mappe. Her skal
+du bruke så mye av det du har lært fra første avsnittet. Tittelen på
+siden skal være "Hallo verden!". Innholdet bestemmer du selv. Husk å
+lage oppgaven i en egen mappe.
+
 ======= Litteraturliste =======
 
 BIBFILE: papers.pub

@@ -584,6 +584,7 @@ $(document).ready(function (){
   var largest = Math.max.apply(null, $lines.map(function () { return $(this).innerWidth(); })),
       em_to_px = csspx($lines, "font-size");
   $lines.css("width", (largest / em_to_px) + "em").css("text-align", "right");
+  console.debug("lineno", $lines, largest, em_to_px);
 });
 
 /* ==========================================================================
