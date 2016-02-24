@@ -846,14 +846,18 @@ def doconce_exercise_output(
         if sol:
             sol += ' Solution to ' + exer['type']
         if include_numbering:
-            exer_numbering = option('exercise_numbering=', 'absolute')
-            if exer_numbering == 'chapter' and exer['chapter_type'] is not None:
-                s += ' %s.%s' % (exer['chapter_no'], exer['chapter_exercise'])
+            if 'inherited_no' in exer:
+                exer_no = str(exer['inherited_no'])
             else:
-                s += ' ' + str(exer['no'])
+                exer_numbering = option('exercise_numbering=', 'absolute')
+                if exer_numbering == 'chapter' and exer['chapter_type'] is not None:
+                    exer_no = '%s.%s' % (exer['chapter_no'], exer['chapter_exercise'])
+                else:
+                    exer_no = str(exer['no'])
 
+            s += ' ' + exer_no
             if sol:
-                sol += ' ' + str(exer['no'])
+                sol += ' ' + exer_no
         s += ':'
         if sol:
             sol += ':'

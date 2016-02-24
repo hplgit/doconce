@@ -51,7 +51,7 @@ system doconce split_html testdoc.html --method=space10
 cp testdoc.html testdoc_no_solutions.html
 
 system doconce format html testdoc $ex  # just produce the mako file
-doconce extract_exercises tmp_mako__testdoc.do.txt --filter=ipynb
+doconce extract_exercises tmp_mako__testdoc.do.txt --exercise_numbering=section --filter=ipynb
 
 system doconce format latex testdoc --without_answers --without_solutions $ex -DSOMEVAR --sections_down --number_all_equations --latex_packages=varioref --cite_doconce
 cp testdoc.p.tex testdoc_no_solutions.p.tex

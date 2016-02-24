@@ -9893,7 +9893,7 @@ def gitdiff():
 
 def _usage_extract_exercises():
     #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
-    print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt'
+    print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt "--filter=keyword 1;keyword 2; some key word" --exercise_numbering=chapter'
     print "\nMust use tmp_mako__*.do.txt to have includes in place."
     print "Note: extracting exercises may create a need for"
     print "generalized references to the original document (ref[][][])."
@@ -9914,16 +9914,24 @@ def extract_exercises():
     lines = f.readlines()
     f.close()
 
+    # Load .exerinfo file
+    exerinfoname = '.%s.exerinfo' % basename.replace('tmp_mako__', '')
+    if not os.path.isfile(exerinfoname):
+        print '*** error: you must compile the document with doconce format'
+        print '    before running doconce extract_exercises (need the %s file)' % exerinfoname
+        _abort()
+    else:
+        with open(exerinfoname, 'r') as f:
+            exerinfo = eval(f.read())
+
     keywords = []
-    try:
-        if sys.argv[2].startswith('--filter='):
-            dummy, keywords = sys.argv[2].split('=')
-            keywords = re.split(r';\s*', keywords)
-    except IndexError:
-        pass
+    filter = misc_option('filter=', None)
+    if filter is not None:
+        keywords = re.split(r';\s*', filter)
 
     exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project)\}?: *(?P<title>[^ =-].+?)\s*====='
     keywords_pattern = r'^#?\s*(keywords|kw) *= *([A-Za-z0-9\-._;, ]+)'
+    has = dict(DATE=False, TOC=False, Externaldocuments=False)
     exer = []
     exer_tp = []
     inside_exer = False
@@ -9932,14 +9940,22 @@ def extract_exercises():
         if line.startswith('TITLE:'):
             line = line.replace('TITLE: ', 'TITLE: Exercises from ')
             exer.append(line)
+        elif line.startswith('TOC:'):
+            exer.append(line)
+            has['TOC'] = True
         elif line.startswith('AUTHOR:'):
             exer.append(line)
         elif line.startswith('DATE:'):
             exer.append(line)
+            exer.append('\n\n# ExTRALINES\n\n')
+            has['DATE'] = True
         elif line.startswith('========= '):
             exer.append(line)
         elif line.startswith('# Externaldocuments:'):
-            exer.append('\n' + line + '\n')
+            # Copy document list and add mother document
+            exer.append('\n' + line.rstrip() + ', ' +
+                        basename.replace('tmp_mako__', '') + '\n')
+            has['Externaldocuments'] = True
 
         if re.search(exer_heading_pattern, line):  # inside exercise?
             #print 'found exercise!'
@@ -9958,6 +9974,7 @@ def extract_exercises():
 
         if inside_exer and i < len(lines)-1 and lines[i+1].startswith('====='):
             inside_exer = False
+
     # Strip off blank lines at the end of each exercise
     for line in exer:
         if isinstance(line, list):
@@ -9966,13 +9983,16 @@ def extract_exercises():
                     line[i] = ''
                 else:
                     break
+
     filename = basename[10:] + '_exer.do.txt'
     f = open(filename, 'w')
+    exer_numbering = option('exercise_numbering=', 'absolute')
+    labels2numbers = {}
     i = 0
     for line in exer:
         # Is line an ordinary line (chapter heading) or an exercise section?
         if isinstance(line, list):
-            # exercise section: line is list of lines
+            # come to  exercise section since line is list of lines
             print_this_exer = not keywords  # default: print if no filtering
             if keywords and exer_tp[i] is not None:
                 print_this_exer = False
@@ -9980,17 +10000,33 @@ def extract_exercises():
                 for keyword in exer_tp[i]:
                     if keyword in keywords:
                         print_this_exer = True
+
             if print_this_exer:
+                # Find (first) label in this exercise
+                label = None
+                for exer_line in line:
+                    if 'label{' in exer_line:
+                        m = re.search(r'label{(.+?)}', exer_line)
+                        if m:
+                            label = m.group(1)
+                            break
+                # Find corresponding number info of this exercise
+                if label is not None:
+                    for ex in exerinfo:
+                        if ex.get('label', None) == label:
+                            labels2numbers[label] = ex['no'] if exer_numbering == 'absolute' else '%s.%s' % (ex['chapter_no'], ex['chapter_exercise'])
+
                 #f.write('\n\n# --- begin exercise ---\n\n') # will lead to double numbering
                 for exer_line in line:
                     f.write(exer_line)
                 #f.write('\n# --- end exercise ---\n\n')
+                f.write('\n') # nice with a blank line
             i += 1
         elif isinstance(line, str):
             f.write(line)
     f.close()
-    print 'exercises extracted to', filename
-    # Check if we have references to the original document
+    # Check if we have references to the original document,
+    # also add labels2numbers
     f = open(filename, 'r')
     filestr = f.read()
     f.close()
@@ -9998,5 +10034,24 @@ def extract_exercises():
     refs = re.findall(r'ref\{(.+?)\}', filestr)
     for ref in refs:
         if not ref in labels:
-            print '\n*** warning: reference ref{%s} - no label in document' % ref
-            print '    need generalized reference ref[][][] in the original document'
+            print '\n*** warning: reference ref{%s} - no label found in document' % ref
+            print '    need generalized reference ref[][][] in the original document for this label!'
+
+    extra_text = ''
+    if not has['DATE']:
+        # No DATE and hence no # ExTRALINES, add that to the top
+        filestr = '\n# ExTRALINES\n\n' + filestr
+    if not has ['Externaldocuments']:
+        # Need add at least the mother document as external document
+        # because of generalized refs back to that document
+        extra_text += '# Externaldocuments: %s' % basename.replace('tmp_mako__', '')
+    if not has['TOC']:
+        extra_text += '\n\nTOC: off\n\n'
+    # Add labels2numbers data structure
+    extra_text += '\n# Mapping from exercise labels to numbers: label2numbers = %s' % repr(labels2numbers)
+
+    filestr = re.sub(r'# ExTRALINES', extra_text, filestr)
+    f = open(filename, 'w')
+    f.write(filestr)
+    f.close()
+    print 'exercises extracted to', filename

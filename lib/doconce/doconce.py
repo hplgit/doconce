@@ -730,6 +730,10 @@ Causes of missing labels:
                           flags=re.MULTILINE)
         filestr2 = re.sub(r'^@@@CODE .+', '', filestr2,
                           flags=re.MULTILINE)
+        filestr2 = re.sub(r'^keywords=.+', '', filestr2,
+                          flags=re.MULTILINE)
+        filestr2 = re.sub(r'^files?=.+', '', filestr2,
+                          flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['verbatim'], ' ', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['bold'], ' ', filestr2,
@@ -1360,6 +1364,13 @@ def exercises(filestr, format, code_blocks, tex_blocks):
     exer_end = False
     exer_counter = dict(Exercise=0, Problem=0, Project=0, Example=0)
 
+    # Mapping from labels to a given numbering (from a parent document)
+    labels2numbers = {}
+    pattern = r'^# Mapping from exercise labels to numbers: label2numbers = (.*)'
+    m = re.search(pattern, filestr, flags=re.MULTILINE)
+    if m:
+        labels2numbers = eval(m.group(1))
+
     # Regexes: no need for re.MULTILINE since we treat one line at a time
     if option('examples_as_exercises'):
         exer_heading_pattern = r'^(=====) *\{?(Exercise|Problem|Project|Example)\}?: *(?P<title>[^ =-].+?) *====='
@@ -1481,7 +1492,10 @@ def exercises(filestr, format, code_blocks, tex_blocks):
 
             if m_label:
                 if exer['label'] is None:
-                    exer['label'] = m_label.group(1)
+                    label = m_label.group(1)
+                    exer['label'] = label
+                    if label in labels2numbers:
+                        exer['inherited_no'] = labels2numbers[label]
             elif m_keywords:
                 exer['keywords'] = [name.strip() for name in
                                     m_keywords.group(2).split(';')]

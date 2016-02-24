@@ -593,117 +593,121 @@ def latex_code(filestr, code_blocks, code_block_types,
                                   cr_text)
                                   #'Copyright ' + cr_text)
 
-    # Make sure exercises are surrounded by \begin{doconceexercise} and
-    # \end{doconceexercise} with some exercise counter
-    #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
-    comment_pattern = '%% %s'
-    pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
+    if not '% Mapping from exercise labels to numbers: label2numbers' in filestr: # Keep original exercise numbers from parent document?
 
-    if latex_style in ('Springer_lnup', 'Springer_sv') and \
-        not option('exercises_as_subsections'):
-        replacement = pattern
-    else:
-        replacement = pattern + r"""\begin{doconceexercise}
-\refstepcounter{doconceexercisecounter}
-"""
+        # Make sure exercises are surrounded by \begin{doconceexercise} and
+        # \end{doconceexercise} with some exercise counter
 
-    filestr = filestr.replace(pattern, replacement)
-    pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
-    if latex_style == 'Springer_lnup' and \
-           not option('exercises_as_subsections'):
-        replacement = r'\end{exercise}' + '\n' + pattern
-    elif latex_style == 'Springer_sv' and \
-             not option('exercises_as_subsections'):
-        replacement = r'\end{prob}' + '\n' + pattern
-    else:
-        replacement = r'\end{doconceexercise}' + '\n' + pattern
-    filestr = filestr.replace(pattern, replacement)
-
-    if include_numbering_of_exercises:
-        # Remove section numbers of exercise sections
         if option('examples_as_exercises'):
             exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example) +([.\d]+)\s*: +(.+\})'
         else:
             exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project) +([.\d]+)\s*: +(.+\})'
-        # Make table of contents or list of exercises entry
-        # (might have to add \phantomsection right before because
-        # of the hyperref package?)
-#        filestr, n = re.subn(exercise_pattern,
-#                         r"""subsection*{\g<1> \g<2>: \g<3>
-# % table of contents with exercises:
-#\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
-# % separate list of exercises:
-#\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
-#""", filestr)
-        exercise_headings = re.findall(exercise_pattern, filestr)
-        if exercise_headings:
-            if option('latex_list_of_exercises=', 'none') == 'none':
-                if latex_style == 'Springer_lnup' and \
-                       not option('exercises_as_subsections'):
-                    filestr = re.sub(exercise_pattern,
-        r"""begin{exercise}{\g<3>
+
+        #comment_pattern = INLINE_TAGS_SUBST[format]['comment'] # only in doconce.py
+        comment_pattern = '%% %s'
+        pattern = comment_pattern % envir_delimiter_lines['exercise'][0] + '\n'
+
+        if latex_style in ('Springer_lnup', 'Springer_sv') and \
+            not option('exercises_as_subsections'):
+            replacement = pattern
+        else:
+            replacement = pattern + r"""\begin{doconceexercise}
+\refstepcounter{doconceexercisecounter}
+"""
+
+        filestr = filestr.replace(pattern, replacement)
+        pattern = comment_pattern % envir_delimiter_lines['exercise'][1] + '\n'
+        if latex_style == 'Springer_lnup' and \
+               not option('exercises_as_subsections'):
+            replacement = r'\end{exercise}' + '\n' + pattern
+        elif latex_style == 'Springer_sv' and \
+                 not option('exercises_as_subsections'):
+            replacement = r'\end{prob}' + '\n' + pattern
+        else:
+            replacement = r'\end{doconceexercise}' + '\n' + pattern
+        filestr = filestr.replace(pattern, replacement)
+
+        if include_numbering_of_exercises:
+            # Remove section numbers of exercise sections
+            # Make table of contents or list of exercises entry
+            # (might have to add \phantomsection right before because
+            # of the hyperref package?)
+    #        filestr, n = re.subn(exercise_pattern,
+    #                         r"""subsection*{\g<1> \g<2>: \g<3>
+    # % table of contents with exercises:
+    #\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
+    # % separate list of exercises:
+    #\\addcontentsline{loe}{doconceexercise}{\g<1> \g<2>: \g<3>
+    #""", filestr)
+            exercise_headings = re.findall(exercise_pattern, filestr)
+            if exercise_headings:
+                if option('latex_list_of_exercises=', 'none') == 'none':
+                    if latex_style == 'Springer_lnup' and \
+                           not option('exercises_as_subsections'):
+                        filestr = re.sub(exercise_pattern,
+            r"""begin{exercise}{\g<3>
 """, filestr)
-                elif latex_style == 'Springer_sv' and \
-                       not option('exercises_as_subsections'):
-                    filestr = re.sub(exercise_pattern,
-        r"""begin{prob}{\g<3>
+                    elif latex_style == 'Springer_sv' and \
+                           not option('exercises_as_subsections'):
+                        filestr = re.sub(exercise_pattern,
+            r"""begin{prob}{\g<3>
 """, filestr)
-                else:
-                    filestr = re.sub(exercise_pattern,
-        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+                    else:
+                        filestr = re.sub(exercise_pattern,
+            r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
-            elif option('latex_list_of_exercises=', 'none') == 'toc':
-                filestr = re.sub(exercise_pattern,
-        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+                elif option('latex_list_of_exercises=', 'none') == 'toc':
+                    filestr = re.sub(exercise_pattern,
+            r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
 """, filestr)
-            elif option('latex_list_of_exercises=', 'none') == 'loe':
-                 filestr = re.sub(exercise_pattern,
-        r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+                elif option('latex_list_of_exercises=', 'none') == 'loe':
+                     filestr = re.sub(exercise_pattern,
+            r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
-            # Treat {Exercise}/{Project}/{Problem}
-            # Pattern starts with --- begin exercise ... \subsection{
-            # but not \addcontentsline
-            exercise_pattern = r'^% --- begin exercise ---\n\\begin\{doconceexercise\}\n\\refstepcounter\{doconceexercisecounter\}\n\n\\subsection\{(.+?)$(?!\\addcont)'
-            # No increment of exercise counter, but add to contents
-            replacement = r"""% --- begin exercise ---
+                # Treat {Exercise}/{Project}/{Problem}
+                # Pattern starts with --- begin exercise ... \subsection{
+                # but not \addcontentsline
+                exercise_pattern = r'^% --- begin exercise ---\n\\begin\{doconceexercise\}\n\\refstepcounter\{doconceexercisecounter\}\n\n\\subsection\{(.+?)$(?!\\addcont)'
+                # No increment of exercise counter, but add to contents
+                replacement = r"""% --- begin exercise ---
 \begin{doconceexercise}
 
 \subsection{\g<1>"""
-            if option('latex_list_of_exercises=', 'none') != 'none':
-                replacement += r"""
+                if option('latex_list_of_exercises=', 'none') != 'none':
+                    replacement += r"""
 \addcontentsline{loe}{doconceexercise}{\g<1>
 """
-            replacement = fix_latex_command_regex(replacement, 'replacement')
-            filestr = re.sub(exercise_pattern, replacement, filestr,
-                             flags=re.MULTILINE)
-            # Find suitable titles for list of exercises
-            types_of_exer = set()
-            for exer_tp, dummy, dummy in exercise_headings:
-                types_of_exer.add(exer_tp)
-            types_of_exer = list(types_of_exer)
-            types_of_exer = ['%ss' % tp for tp in types_of_exer]  # plural
-            types_of_exer = [tp for tp in sorted(types_of_exer)]  # alphabetic order
-            if len(types_of_exer) == 1:
-                types_of_exer = types_of_exer[0]
-            elif len(types_of_exer) == 2:
-                types_of_exer = ' and '.join(types_of_exer)
-            elif len(types_of_exer) > 2:
-                types_of_exer[-1] = 'and ' + types_of_exer[-1]
-                types_of_exer = ', '.join(types_of_exer)
-            heading = "List of %s" % types_of_exer
-            # Insert definition of \listofexercises
-            if r'\tableofcontents' in filestr:
-                # Here we take fragments normally found in a stylefile
-                # and put them in the .text file, which requires
-                # \makeatletter, \makeatother, etc, see
-                # http://www.tex.ac.uk/cgi-bin/texfaq2html?label=atsigns
-                # Also, the name of the doconce exercise environment
-                # cannot be doconce:exercise (previous name), but
-                # must be doconceexercise because of the \l@... command
-                if chapters:
-                    style_listofexercises = r"""
+                replacement = fix_latex_command_regex(replacement, 'replacement')
+                filestr = re.sub(exercise_pattern, replacement, filestr,
+                                 flags=re.MULTILINE)
+                # Find suitable titles for list of exercises
+                types_of_exer = set()
+                for exer_tp, dummy, dummy in exercise_headings:
+                    types_of_exer.add(exer_tp)
+                types_of_exer = list(types_of_exer)
+                types_of_exer = ['%ss' % tp for tp in types_of_exer]  # plural
+                types_of_exer = [tp for tp in sorted(types_of_exer)]  # alphabetic order
+                if len(types_of_exer) == 1:
+                    types_of_exer = types_of_exer[0]
+                elif len(types_of_exer) == 2:
+                    types_of_exer = ' and '.join(types_of_exer)
+                elif len(types_of_exer) > 2:
+                    types_of_exer[-1] = 'and ' + types_of_exer[-1]
+                    types_of_exer = ', '.join(types_of_exer)
+                heading = "List of %s" % types_of_exer
+                # Insert definition of \listofexercises
+                if r'\tableofcontents' in filestr:
+                    # Here we take fragments normally found in a stylefile
+                    # and put them in the .text file, which requires
+                    # \makeatletter, \makeatother, etc, see
+                    # http://www.tex.ac.uk/cgi-bin/texfaq2html?label=atsigns
+                    # Also, the name of the doconce exercise environment
+                    # cannot be doconce:exercise (previous name), but
+                    # must be doconceexercise because of the \l@... command
+                    if chapters:
+                        style_listofexercises = r"""
 %% --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{
@@ -716,13 +720,13 @@ def latex_code(filestr, code_blocks, code_block_types,
 \makeatother
 %% --- end definition of \listofexercises command ---
 """ % vars()
-                    insert_listofexercises = r"""
+                        insert_listofexercises = r"""
 \clearemptydoublepage
 \listofexercises
 \clearemptydoublepage
 """ % vars()
-                else:
-                    style_listofexercises = r"""
+                    else:
+                        style_listofexercises = r"""
 %% --- begin definition of \listofexercises command ---
 \makeatletter
 \newcommand\listofexercises{\section*{%(heading)s}
@@ -732,26 +736,35 @@ def latex_code(filestr, code_blocks, code_block_types,
 \makeatother
 %% --- end definition of \listofexercises command ---
 """ % vars()
-                    insert_listofexercises = r"""
+                        insert_listofexercises = r"""
 \listofexercises
 """ % vars()
-                target = r'\newcounter{doconceexercisecounter}'
-                filestr = filestr.replace(
-                    target, target + style_listofexercises)
-                if option('latex_list_of_exercises=', 'none') == 'loe':
-                    target = r'\tableofcontents'
+                    target = r'\newcounter{doconceexercisecounter}'
                     filestr = filestr.replace(
-                        target, target + insert_listofexercises)
-        # Fix Solutions chapter/section
-        pattern = r'\\(section|chapter)\{Solutions\}'
-        m = re.search(pattern, filestr)
-        if m and latex_style == 'Springer_sv':
-            filestr = re.sub(pattern, r'\\Extrachap{Solutions}')
-            # Remove subsections with headings for solutions
-            # (Springer_sv relies on \begin{sol} and \end{sol}
-            # which were inserted in common.doconce_exercise_output
-            pattern = r'\\subsection\{Solution to .+?: .+?\}'
-            filestr = re.sub(pattern, '')
+                        target, target + style_listofexercises)
+                    if option('latex_list_of_exercises=', 'none') == 'loe':
+                        target = r'\tableofcontents'
+                        filestr = filestr.replace(
+                            target, target + insert_listofexercises)
+            # Fix Solutions chapter/section
+            pattern = r'\\(section|chapter)\{Solutions\}'
+            m = re.search(pattern, filestr)
+            if m and latex_style == 'Springer_sv':
+                filestr = re.sub(pattern, r'\\Extrachap{Solutions}')
+                # Remove subsections with headings for solutions
+                # (Springer_sv relies on \begin{sol} and \end{sol}
+                # which were inserted in common.doconce_exercise_output
+                pattern = r'\\subsection\{Solution to .+?: .+?\}'
+                filestr = re.sub(pattern, '')
+
+    else:  # document with inherited exercise numbers
+        if option('examples_as_exercises'):
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example)'
+        else:
+            exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project)'
+        filestr = re.sub(exercise_pattern, r"""subsection*{\g<1>""",
+                         filestr)
+        # Remaining problem: list of exercises...
 
     if latex_style != 'Springer_lnup':
         # Subexercise headings should utilize \subex{} and not plain \paragraph{}
@@ -3283,8 +3296,10 @@ justified,
                 INTRO['latex'] += r'\usemintedstyle{%s}' % pygm_style + '\n'
 
 
-    m = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
-    if m and 'usepackage{fancyvrb' not in INTRO['latex']:
+    # Any verbatim construction? `word` or files=...
+    m1 = re.search(INLINE_TAGS['verbatim'], filestr, flags=re.MULTILINE)
+    m2 = re.search(r'^files?=.+', filestr, flags=re.MULTILINE)
+    if (m1 or m2) and 'usepackage{fancyvrb' not in INTRO['latex']:
         INTRO['latex'] += '\\usepackage{fancyvrb}\n'
         # Recall to insert \VerbatimFootnotes later, after hyperref, if
         # we have footnotes with verbatim
@@ -4111,23 +4126,31 @@ justified,
             INTRO['latex'] += '\n\\usepackage{calc}\n'
 
     # Make exercise, problem and project counters
-    exer_envirs = ['Exercise', 'Problem', 'Project']
-    exer_envirs = exer_envirs + ['{%s}' % e for e in exer_envirs]
-    for exer_envir in exer_envirs:
-        if exer_envir + ':' in filestr:
+    if not '# Mapping from exercise labels to numbers: label2numbers' in filestr: # Keep original exercise numbers from parent document?
+        has_exer = False
+        exer_envirs = ['Exercise', 'Problem', 'Project']
+        exer_envirs = exer_envirs + ['{%s}' % e for e in exer_envirs]
+        for exer_envir in exer_envirs:
+            if exer_envir + ':' in filestr:
+                has_exer = True
+                INTRO['latex'] += r"""
+    \newenvironment{doconceexercise}{}{}
+    \newcounter{doconceexercisecounter}
+    """
+                exercise_numbering = option('exercise_numbering=', 'absolute')
+                if chapters and exercise_numbering == 'chapter':
+                    INTRO['latex'] += r"""
+    % Let exercises, problems, and projects be numbered per chapter:
+    \usepackage{chngcntr}
+    \counterwithin{doconceexercisecounter}{chapter}
+    """
+                break
+    else:
+        has_exer = True
+        # Remove subsection numbering[[[
+    if has_exer:
+        if latex_style not in ("Springer_T2", "Springer_T4"):
             INTRO['latex'] += r"""
-\newenvironment{doconceexercise}{}{}
-\newcounter{doconceexercisecounter}
-"""
-            exercise_numbering = option('exercise_numbering=', 'absolute')
-            if chapters and exercise_numbering == 'chapter':
-                INTRO['latex'] += r"""
-% Let exercises, problems, and projects be numbered per chapter:
-\usepackage{chngcntr}
-\counterwithin{doconceexercisecounter}{chapter}
-"""
-            if latex_style not in ("Springer_T2", "Springer_T4"):
-                INTRO['latex'] += r"""
 
 % ------ header in subexercises ------
 %\newcommand{\subex}[1]{\paragraph{#1}}
@@ -4141,12 +4164,11 @@ justified,
 \makeatother
 
 """
-            else:
-                INTRO['latex'] += r"""
+        else:
+            INTRO['latex'] += r"""
 % \subex{} is defined in t2do.sty or t4do.sty
 """
 
-            break
 
     if chapters and latex_style not in ("Koma_Script", "Springer_T2", "Springer_T4", "Springer_lnup", "Springer_sv"):
         # Follow advice from fancyhdr: redefine \cleardoublepage

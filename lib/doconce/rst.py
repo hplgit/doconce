@@ -1,7 +1,7 @@
 import re, os, sys
 from common import insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
-    cite_with_multiple_args2multiple_cites
+    cite_with_multiple_args2multiple_cites, fix_ref_section_chapter
 from html import html_movie, html_quiz
 from doconce import _abort
 from misc import option, _abort
