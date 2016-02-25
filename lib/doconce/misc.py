@@ -9893,8 +9893,12 @@ def gitdiff():
 
 def _usage_extract_exercises():
     #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
-    print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt "--filter=keyword 1;keyword 2; some key word" --exercise_numbering=chapter'
-    print "\nMust use tmp_mako__*.do.txt to have includes in place."
+    print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt "--filter=keyword 1;keyword 2; some key word" --exercise_numbering=chapter --examples_as_exercises'
+    print """
+Extract exercises to a separate document. Inherit numbering from parent
+document.
+"""
+    print "Must use tmp_mako__*.do.txt as file to have includes in place."
     print "Note: extracting exercises may create a need for"
     print "generalized references to the original document (ref[][][])."
 
