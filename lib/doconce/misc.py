@@ -9929,7 +9929,10 @@ def extract_exercises():
     if filter is not None:
         keywords = re.split(r';\s*', filter)
 
-    exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project)\}?: *(?P<title>[^ =-].+?)\s*====='
+    if option('examples_as_exercises'):
+        exer_heading_pattern = r'^ *(=====) *\{?(Example|Exercise|Problem|Project)\}?: *(?P<title>[^ =-].+?)\s*====='
+    else:
+        exer_heading_pattern = r'^ *(=====) *\{?(Exercise|Problem|Project)\}?: *(?P<title>[^ =-].+?)\s*====='
     keywords_pattern = r'^#?\s*(keywords|kw) *= *([A-Za-z0-9\-._;, ]+)'
     has = dict(DATE=False, TOC=False, Externaldocuments=False)
     exer = []
@@ -10010,6 +10013,10 @@ def extract_exercises():
                         if m:
                             label = m.group(1)
                             break
+                if label is None:
+                    print '*** error: doconce extract_exercises requires that every exercise has a label!'
+                    print '    Add missing labels!'
+                    _abort()
                 # Find corresponding number info of this exercise
                 if label is not None:
                     for ex in exerinfo:

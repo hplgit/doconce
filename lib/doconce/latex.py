@@ -336,7 +336,7 @@ identifierstyle=\color{darkblue},
 % Use this one without additional background color
 \lstdefinestyle{gray}{
 backgroundcolor=\color{cbg_gray},
-%frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+%frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
 %framerule=0.4pt                      % thickness of frame
 rulecolor=\color{black!40},           % frame color
 }
@@ -354,7 +354,7 @@ rulecolor=\color{bar_gray1},          % frame color
 % Use this one without additional background color
 \lstdefinestyle{graycolor}{
 backgroundcolor=\color{cbg_gray},
-%frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+%frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
 %framerule=0.4pt                      % thickness of frame
 keywordstyle=\color{keyword_pink}\bfseries,
 commentstyle=\color{comment_green}\slshape,
