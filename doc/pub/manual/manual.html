@@ -719,7 +719,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Feb 13, 2016</h4></center> <!-- date -->
+<center><h4>Feb 25, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -5321,7 +5321,7 @@ by a colon and a title of the exercise, problem, or project.
 
 <p>
 The next line(s) may contain a label and specification of the
-name of the result file (if the answer to the exercise is to be handed
+name of the result file(s) (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:
 
 <p>
@@ -5353,7 +5353,13 @@ The solution environment with <code>!bsol</code> and <code>!esol</code> allows i
 solution as an alternative to the <code>solution=...</code> directive mentioned
 above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
-solutions can be identified and removed if desired.
+solutions can be identified and removed if desired. It seems that
+DocOnce authors prefer <code>!bsol</code> and <code>!esol</code> over a separate solution file.
+
+<p>
+The <code>file=</code> or <code>files=</code> command accepts a comma-separated list of filenames.
+Sometimes it is appropriate to skip the file extension and just give
+a filestem, as in <code>file=earth2moon</code>.
 
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>Avoid headings in solutions.</b>
@@ -5424,7 +5430,8 @@ directives is always typeset at the end of the exercise.
 !eremarks
 
 !bsol
-Here goes a full solution of the whole exercise.
+Here goes a full solution of the entire exercise, if solutions to
+subexercises are not appropraite.
 !esol
 !ec
 </pre></div>
@@ -5500,15 +5507,17 @@ works well in all formats (i.e., no double <code>Problem Problem</code> appears)
 <h3 id="___sec61">Remark on Typesettng of Examples </h3>
 
 <p>
-Examples are <em>not</em> typeset similarly to exercises unless one adds
-the command-line option <code>--examples_as_exercises</code>. That is, without
-this option, any heading and starting with <code>Example:</code> makes DocOnce
-treat the forthcoming text as ordinary text without any interpretation
-of exercise-style instructions.
-With the command-line option <code>--examples_as_exercises</code>,
-one can use the <code>!bsubex</code> and <code>!bsol</code>
-commands to indicate a subproblem and a solution. In this way, the
-typesetting of the example looks like an exercise equipped with a solution.
+Examples are <em>not</em> typeset similarly to exercises unless one adds the
+command-line option <code>--examples_as_exercises</code>. That is, without this
+option, any heading and starting with <code>Example:</code> makes DocOnce treat
+the forthcoming text as ordinary text without any interpretation of
+exercise-style instructions.  With the command-line option
+<code>--examples_as_exercises</code>, one can use the <code>!bsubex</code> and <code>!bsol</code>
+commands to indicate a subproblem and a solution in an example.  In
+this way, the typesetting of the example looks like an exercise
+equipped with a solution.
+As for exercises, the content of the example runs from the heading
+until the next subsection.
 
 <h2 id="___sec62">List of Exercises, Problems, and Projects </h2>
 
@@ -5539,7 +5548,8 @@ A potential problem arises if you produce two versions of your document,
 one with solutions and one without solutions (<code>--without_solutions</code>),
 and there are numbered equations in the solutions. Equations in the
 text of the document <em>after</em> these exercises sections might then be
-numbered differently. There are two ways out of this problem.
+numbered differently in the different versions you produce of the text.
+There are two ways out of this problem.
 
 <h3 id="___sec64">Book </h3>
 
@@ -5550,8 +5560,9 @@ Equations are numbered chapter-wise, and equations in solutions
 will not influence the numbering of equations before this exercise
 section. However, if some of the exercises contain numbered equations
 in the exercise text, numbered equations in solutions to previous exercises
-will influence the numbering of equations. Avoid numbered equations
-in exercise text.
+will influence the numbering of equations in forthcoming exercise texts.
+In such cases, either avoid numbered equations in a solution or in
+the exercise text.
 
 <h3 id="___sec65">Use the tag command </h3>
 
@@ -5586,13 +5597,29 @@ The command
 extracts all exercises in <code>mydoc.do.txt</code> with keywords <code>key1</code> or <code>key2</code>
 in a separate document <code>mydoc_exer.do.txt</code>. For example, this feature can
 be used to extract all exercises suitable for being published as
-IPython/Jupyter notebooks (and perhaps automatically graded by "`nbgrader`" "https://github.com/jupyter/nbgrader"). Just attach the keyword <code>ipynb</code> to all
+IPython/Jupyter notebooks (and perhaps automatically graded by <a href="https://github.com/jupyter/nbgrader" target="_self"><tt>nbgrader</tt></a>). Just attach the keyword <code>ipynb</code> to all
 exercises suitable for the IPython/Jupyter notebook and run the command
 with <code>--filter=ipynb</code>. Without <code>--filter=</code>, the <code>extract_exercises</code> utility
 extracts all exercises such that one can publish this document separately,
 with or without solutions and/or short answers.
 By &quot;exercise&quot; we here mean all exerices, problems,
 and projects.
+
+<p>
+The numbering of the exercises in the new document follows the numbering
+in the original document <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="If you want a new natural numbering of the extracted exercises only, you must go into the DocOnce source file with the extracted exercises and remove the comment line that contains the labels2numbers dictionary."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button>, but you must use the
+<code>--exercise_numbering=chapter</code> option in addition if
+you want a chapter-based numbering when extracting exercises from a book.
+
+<p>
+It is also possible to extract examples along with exercises: just add
+<code>--examples_as_exercises</code> (to extract the examples only, equip them with
+a unique keyword that you can use in the <code>--filter=</code> option).
+
+<p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> If you want a new natural numbering of the extracted
+exercises only, you must go into the DocOnce source file with the
+extracted exercises and remove the comment line that contains the
+<code>labels2numbers</code> dictionary.</p>
 
 <p>
 <b>Note:</b>
@@ -5671,8 +5698,8 @@ appear as unfolded sections - one must click to open the text.
 <!-- code=doconce (!bc do) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">===== Exercise: Compute integrals =====</span>
 <span style="color: #008000">label{doconce:manual:exercise:ex}</span>
-file=integrals.py
-keywords=integrals
+files=integrals.py, integrals.pdf
+keywords=1+1; integrals; SymPy
 
 Use the most appropriate tools to answer the various subexercises.
 
@@ -5746,7 +5773,7 @@ definition:
 Cw: It cannot be computed.
 E: That would be correct if computed means ``calculated as
 a closed-form formula by hand&#39;&#39;, but the integral
-$\int_a^b e^{-t^2}dt$? can be easily computed numerical
+$\int_a^b e^{-t^2}dt$ can be easily computed numerical
 methods.
 
 Cr: It equals
@@ -5764,7 +5791,8 @@ for definition).
 E: This is correct, as proved by SymPy:
 
 !bc pyshell
-&gt;&gt;&gt; F = sp.integrate(sp.exp(-x**4), x)
+&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; F = sym.integrate(sym.exp(-x**4), x)
 &gt;&gt;&gt; F
 gamma(1/4)*lowergamma(1/4, x**4)/(16*gamma(5/4))
 !ec
@@ -5790,7 +5818,7 @@ mathematics and computer code.
 <!-- --- begin exercise --- -->
 
 <h2 id="doconce:manual:exercise:ex">Exercise 1: Compute integrals</h2>
-<!-- keywords = integrals -->
+<!-- keywords = 1 -->
 
 <p>
 Use the most appropriate tools to answer the various subexercises.
@@ -6030,7 +6058,7 @@ e^{-\frac{(t-\mu)^2}{2\sigma}}dt.$$
 
 
 <p>
-Filename: <code>integrals.py</code>.
+Filenames: <code>integrals.py</code>, <code>integrals.pdf</code>.
 
 <p>
 <!-- Closing remarks for this Exercise -->
@@ -6720,7 +6748,7 @@ follow the rules below.
    (there is only a <code>ref</code> command in DocOnce and it refers to labels).</li>
  <li> Only figures and movies are floating elements in DocOnce, all other elements
    (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
-   for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_3" id="link_footnote_3" style="color: white">3</a></button> (refer to inline elements by a section label).
+   for reference <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="There is an exception: by using user-defined environments within !bu-name and !eu-name directives, it is possible to label any type of text and refer to it. For example, one can have environments for examples, tables, code snippets, theorems, lemmas, etc. One can also use Mako functions to implement enviroments."><a href="#def_footnote_4" id="link_footnote_4" style="color: white">4</a></button> (refer to inline elements by a section label).
    The reason is that floating elements are in general
    not used in web documents, but we made an exception with figures
    and movies.</li>
@@ -6761,7 +6789,7 @@ follow the rules below.
  <li> Follow <a href="https://github.com/hplgit/setup4book-doconce" target="_self">recommendations for DocOnce books</a> if you plan to write a book.</li>
 </ul>
 
-<p id="def_footnote_3"><a href="#link_footnote_3"><b>3:</b></a> There is an exception: by using <em>user-defined environments</em>
+<p id="def_footnote_4"><a href="#link_footnote_4"><b>4:</b></a> There is an exception: by using <em>user-defined environments</em>
 within <code>!bu-name</code> and <code>!eu-name</code> directives, it is possible to
 label any type of text and refer to it. For example, one can have
 environments for examples, tables, code snippets, theorems, lemmas, etc.
@@ -10393,7 +10421,7 @@ look for options starting with <code>--latex</code> to get a more verbose descri
  <li> <code>--latex_bibstyle=plain</code> (name of BibTeX style)</li>
  <li> <code>--latex_title_layout=titlepage, std, beamer, doconce_heading, Springer_collection</code></li>
  <li> <code>--latex_style=std, Springer_sv, Springer_lncse, Springer_llncs, Springer_lnup, Springer_T2, Springer_T4, siamltex, siamltexmm, elsevier</code></li>
- <li> <code>--latex_packages=package1,package2,package3</code> (list of extra packages to be included <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Listing varioref in as package automatically leads to references with page numbers, if the element referred to is not on the same page. This is often very helpful, e.g., &quot;see Figure 5.3 on page 67&quot;."><a href="#def_footnote_4" id="link_footnote_4" style="color: white">4</a></button>)</li>
+ <li> <code>--latex_packages=package1,package2,package3</code> (list of extra packages to be included <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="Listing varioref in as package automatically leads to references with page numbers, if the element referred to is not on the same page. This is often very helpful, e.g., &quot;see Figure 5.3 on page 67&quot;."><a href="#def_footnote_5" id="link_footnote_5" style="color: white">5</a></button>)</li>
  <li> <code>--draft</code> (turns on draft mode in documentclass, otherwise final mode)</li>
  <li> <code>--latex_copyright=everypage,titlepages</code> (copyright on every page or on titlepage and chapter pages)</li>
  <li> <code>--latex_list_of_exercises=loe,toc,none</code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
@@ -10440,7 +10468,7 @@ to be submitted to Elsevier journals (<code>--latex_elsevier_journal=</code> can
 be used to set the journal name, and the style requires
 <code>elsarticle.cls</code> and <code>elsarticle-num.bst</code>).
 
-<p id="def_footnote_4"><a href="#link_footnote_4"><b>4:</b></a> Listing <code>varioref</code> in as package
+<p id="def_footnote_5"><a href="#link_footnote_5"><b>5:</b></a> Listing <code>varioref</code> in as package
 automatically leads to references with page numbers, if the element referred to
 is not on the same page. This is often very helpful, e.g., &quot;see
 Figure 5.3 on page 67&quot;.</p>
@@ -11950,12 +11978,16 @@ Switch latex environments such no equations get a number (useful for removing eq
 
 LaTeX style package used for the document.
 std: standard LaTeX article or book style,
+Springer_sv: Springer&#39;s svmono class (new standard for all Springer books),
+Springer_T2: Springer&#39;s T2 book style (replaced by T4),
+Springer_T4: Springer&#39;s T4 book style,
 Springer_lncse: Springer&#39;s Lecture Notes in Computational Science and
    Engineering (LNCSE) style,
 Springer_llncs: Springer&#39;s Lecture Notes in Computer Science style,
-Springer_T2: Springer&#39;s T2 book style,
+Springer_lnup: Springer&#39;s Lecture Notes in University Physics,
 Springer_collection: Springer&#39;s style for chapters in LNCSE proceedings,
-Korma_Script: Korma Script style,
+tufte-book: use of tufte-book.cls for E. Tufte-inspired layout,
+Koma_Script: Koma Script style,
 siamltex: SIAM&#39;s standard LaTeX style for papers,
 siamltexmm: SIAM&#39;s extended (blue) multimedia style for papers.
 

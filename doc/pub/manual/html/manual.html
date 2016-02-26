@@ -328,7 +328,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#the-translation-command">The translation command</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id42">Newcommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id43">Newcommands</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#command-line-options">Command-line options</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
@@ -650,7 +650,7 @@
 <li><a class="reference internal" href="#the-old-ptex2tex-step">The old <code class="docutils literal"><span class="pre">ptex2tex</span></code> step</a></li>
 <li><a class="reference internal" href="#latex-pdf-generate-latex-step-1">LaTeX-PDF: Generate LaTeX (Step 1)</a><ul>
 <li><a class="reference internal" href="#the-translation-command">The translation command</a></li>
-<li><a class="reference internal" href="#id42">Newcommands</a></li>
+<li><a class="reference internal" href="#id43">Newcommands</a></li>
 <li><a class="reference internal" href="#output-for-paper-vs-screen">Output for paper vs screen</a></li>
 <li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
 <li><a class="reference internal" href="#syntax-highlighting">Syntax highlighting</a></li>
@@ -775,7 +775,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 13, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 25, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -1276,7 +1276,7 @@ is up to LaTeX do decide).</p>
 into the text. You can add vertical space in LaTeX and HTML by
 inserting seeral lines with <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code>.</p>
 </div>
-<div class="figure" id="id45">
+<div class="figure" id="id46">
 <span id="fig-viz"></span><a class="reference internal image-reference" href="_images/wave1D.png"><img alt="_images/wave1D.png" src="_images/wave1D.png" style="width: 400px;" /></a>
 <p class="caption"><span class="caption-text"><em>A wave</em></span></p>
 </div>
@@ -4419,7 +4419,7 @@ by a colon and a title of the exercise, problem, or project.</p>
 <div class="section" id="examples-on-exercise-syntax">
 <h3>Examples on Exercise Syntax<a class="headerlink" href="#examples-on-exercise-syntax" title="Permalink to this headline">¶</a></h3>
 <p>The next line(s) may contain a label and specification of the
-name of the result file (if the answer to the exercise is to be handed
+name of the result file(s) (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">===== Project: Determine the Distance to the Moon =====</span>
 <span class="nb">label{proj:moondist}</span>
@@ -4445,7 +4445,11 @@ all must appear on the beginning of a separate line (just as
 solution as an alternative to the <code class="docutils literal"><span class="pre">solution=...</span></code> directive mentioned
 above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
-solutions can be identified and removed if desired.</p>
+solutions can be identified and removed if desired. It seems that
+DocOnce authors prefer <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> over a separate solution file.</p>
+<p>The <code class="docutils literal"><span class="pre">file=</span></code> or <code class="docutils literal"><span class="pre">files=</span></code> command accepts a comma-separated list of filenames.
+Sometimes it is appropriate to skip the file extension and just give
+a filestem, as in <code class="docutils literal"><span class="pre">file=earth2moon</span></code>.</p>
 <div class="admonition-avoid-headings-in-solutions admonition">
 <p class="first admonition-title">Avoid headings in solutions</p>
 <p class="last">Headings in solutions in exercises will
@@ -4506,7 +4510,8 @@ directives is always typeset at the end of the exercise.
 <span class="k">!eremarks</span>
 
 <span class="k">!bsol</span>
-Here goes a full solution of the whole exercise.
+Here goes a full solution of the entire exercise, if solutions to
+subexercises are not appropraite.
 <span class="k">!esol</span>
 <span class="k">!ec</span>
 </pre></div>
@@ -4565,15 +4570,17 @@ or <em>Project:</em> word, so that references like</p>
 <p>works well in all formats (i.e., no double <code class="docutils literal"><span class="pre">Problem</span> <span class="pre">Problem</span></code> appears).</p>
 <div class="section" id="remark-on-typesettng-of-examples">
 <h4>Remark on Typesettng of Examples<a class="headerlink" href="#remark-on-typesettng-of-examples" title="Permalink to this headline">¶</a></h4>
-<p>Examples are <em>not</em> typeset similarly to exercises unless one adds
-the command-line option <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>. That is, without
-this option, any heading and starting with <code class="docutils literal"><span class="pre">Example:</span></code> makes DocOnce
-treat the forthcoming text as ordinary text without any interpretation
-of exercise-style instructions.
-With the command-line option <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>,
-one can use the <code class="docutils literal"><span class="pre">!bsubex</span></code> and <code class="docutils literal"><span class="pre">!bsol</span></code>
-commands to indicate a subproblem and a solution. In this way, the
-typesetting of the example looks like an exercise equipped with a solution.</p>
+<p>Examples are <em>not</em> typeset similarly to exercises unless one adds the
+command-line option <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>. That is, without this
+option, any heading and starting with <code class="docutils literal"><span class="pre">Example:</span></code> makes DocOnce treat
+the forthcoming text as ordinary text without any interpretation of
+exercise-style instructions.  With the command-line option
+<code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>, one can use the <code class="docutils literal"><span class="pre">!bsubex</span></code> and <code class="docutils literal"><span class="pre">!bsol</span></code>
+commands to indicate a subproblem and a solution in an example.  In
+this way, the typesetting of the example looks like an exercise
+equipped with a solution.
+As for exercises, the content of the example runs from the heading
+until the next subsection.</p>
 </div>
 </div>
 <div class="section" id="list-of-exercises-problems-and-projects">
@@ -4598,12 +4605,13 @@ edits the <code class="docutils literal"><span class="pre">.tex</span></code> fi
 command).</p>
 </div>
 <div class="section" id="numbering-of-extra-equations-in-solutions">
-<span id="manual-exercises-sol-no"></span><span id="index-86"></span><h3>Numbering of Extra Equations in Solutions<a class="headerlink" href="#numbering-of-extra-equations-in-solutions" title="Permalink to this headline">¶</a></h3>
+<span id="manual-exercises-sol-no"></span><h3>Numbering of Extra Equations in Solutions<a class="headerlink" href="#numbering-of-extra-equations-in-solutions" title="Permalink to this headline">¶</a></h3>
 <p>A potential problem arises if you produce two versions of your document,
 one with solutions and one without solutions (<code class="docutils literal"><span class="pre">--without_solutions</span></code>),
 and there are numbered equations in the solutions. Equations in the
 text of the document <em>after</em> these exercises sections might then be
-numbered differently. There are two ways out of this problem.</p>
+numbered differently in the different versions you produce of the text.
+There are two ways out of this problem.</p>
 <div class="section" id="book">
 <h4>Book<a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h4>
 <p>In a book with chapters, collect all exercises at the end in a
@@ -4612,8 +4620,9 @@ Equations are numbered chapter-wise, and equations in solutions
 will not influence the numbering of equations before this exercise
 section. However, if some of the exercises contain numbered equations
 in the exercise text, numbered equations in solutions to previous exercises
-will influence the numbering of equations. Avoid numbered equations
-in exercise text.</p>
+will influence the numbering of equations in forthcoming exercise texts.
+In such cases, either avoid numbered equations in a solution or in
+the exercise text.</p>
 </div>
 <div class="section" id="use-the-tag-command">
 <h4>Use the tag command<a class="headerlink" href="#use-the-tag-command" title="Permalink to this headline">¶</a></h4>
@@ -4632,20 +4641,36 @@ assign appropriate numbers in the <code class="docutils literal"><span class="pr
 </div>
 <div class="section" id="extracting-all-exercises-in-a-separate-document">
 <h3>Extracting All Exercises in a Separate Document<a class="headerlink" href="#extracting-all-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
-<p>The command</p>
+<p id="index-86">The command</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
 </pre></div>
 </div>
 <p>extracts all exercises in <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code> with keywords <code class="docutils literal"><span class="pre">key1</span></code> or <code class="docutils literal"><span class="pre">key2</span></code>
 in a separate document <code class="docutils literal"><span class="pre">mydoc_exer.do.txt</span></code>. For example, this feature can
 be used to extract all exercises suitable for being published as
-IPython/Jupyter notebooks (and perhaps automatically graded by &#8220;<cite>nbgrader</cite>&#8221; &#8220;<a class="reference external" href="https://github.com/jupyter/nbgrader">https://github.com/jupyter/nbgrader</a>&#8221;). Just attach the keyword <code class="docutils literal"><span class="pre">ipynb</span></code> to all
+IPython/Jupyter notebooks (and perhaps automatically graded by <a class="reference external" href="https://github.com/jupyter/nbgrader">nbgrader</a>). Just attach the keyword <code class="docutils literal"><span class="pre">ipynb</span></code> to all
 exercises suitable for the IPython/Jupyter notebook and run the command
 with <code class="docutils literal"><span class="pre">--filter=ipynb</span></code>. Without <code class="docutils literal"><span class="pre">--filter=</span></code>, the <code class="docutils literal"><span class="pre">extract_exercises</span></code> utility
 extracts all exercises such that one can publish this document separately,
 with or without solutions and/or short answers.
 By &#8220;exercise&#8221; we here mean all exerices, problems,
 and projects.</p>
+<p>The numbering of the exercises in the new document follows the numbering
+in the original document <a class="footnote-reference" href="#exer-numbering" id="id24">[3]</a>, but you must use the
+<code class="docutils literal"><span class="pre">--exercise_numbering=chapter</span></code> option in addition if
+you want a chapter-based numbering when extracting exercises from a book.</p>
+<p>It is also possible to extract examples along with exercises: just add
+<code class="docutils literal"><span class="pre">--examples_as_exercises</span></code> (to extract the examples only, equip them with
+a unique keyword that you can use in the <code class="docutils literal"><span class="pre">--filter=</span></code> option).</p>
+<table class="docutils footnote" frame="void" id="exer-numbering" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id24">[3]</a></td><td>If you want a new natural numbering of the extracted
+exercises only, you must go into the DocOnce source file with the
+extracted exercises and remove the comment line that contains the
+<code class="docutils literal"><span class="pre">labels2numbers</span></code> dictionary.</td></tr>
+</tbody>
+</table>
 <p><strong>Note:</strong>
 Instead of having all filtered exercises in one document, yoy
 may (especially for notebooks) want stand-alone documents for each
@@ -4708,8 +4733,8 @@ For output in HTML with various Bootstrap styles, hints and answers
 appear as unfolded sections - one must click to open the text.</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">===== Exercise: Compute integrals =====</span>
 <span class="nb">label{doconce:manual:exercise:ex}</span>
-file=integrals.py
-keywords=integrals
+files=integrals.py, integrals.pdf
+keywords=1+1; integrals; SymPy
 
 Use the most appropriate tools to answer the various subexercises.
 
@@ -4783,7 +4808,7 @@ definition:
 Cw: It cannot be computed.
 E: That would be correct if computed means ``calculated as
 a closed-form formula by hand&#39;&#39;, but the integral
-$\int_a^b e^{-t^2}dt$? can be easily computed numerical
+$\int_a^b e^{-t^2}dt$ can be easily computed numerical
 methods.
 
 Cr: It equals
@@ -4801,7 +4826,8 @@ for definition).
 E: This is correct, as proved by SymPy:
 
 <span class="k">!bc</span> pyshell
-&gt;&gt;&gt; F = sp.integrate(sp.exp(-x**4), x)
+&gt;&gt;&gt; import sympy as sym
+&gt;&gt;&gt; F = sym.integrate(sym.exp(-x**4), x)
 &gt;&gt;&gt; F
 gamma(1/4)*lowergamma(1/4, x**4)/(16*gamma(5/4))
 <span class="k">!ec</span>
@@ -4883,7 +4909,7 @@ for definition).</p>
 <p><abbr title="Right!">?</abbr></p>
 <p><strong>Choice D:</strong> It equals the cumulative normal density function.</p>
 <p><abbr title="Wrong!">?</abbr></p>
-<p>Filename: <code class="docutils literal"><span class="pre">integrals.py</span></code>.</p>
+<p>Filenames: <code class="docutils literal"><span class="pre">integrals.py</span></code>, <code class="docutils literal"><span class="pre">integrals.pdf</span></code>.</p>
 <div class="section" id="remarks">
 <h4>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">¶</a></h4>
 <p>This exercise demonstrates subexercise, hint, solution, short answer,
@@ -5422,7 +5448,7 @@ tilde is allowed for references to equations.</li>
 (there is only a <code class="docutils literal"><span class="pre">ref</span></code> command in DocOnce and it refers to labels).</li>
 <li>Only figures and movies are floating elements in DocOnce, all other elements
 (code, tables, algorithms) must appear <em>inline</em> without numbers or labels
-for reference <a class="footnote-reference" href="#exception" id="id24">[3]</a> (refer to inline elements by a section label).
+for reference <a class="footnote-reference" href="#exception" id="id25">[4]</a> (refer to inline elements by a section label).
 The reason is that floating elements are in general
 not used in web documents, but we made an exception with figures
 and movies.</li>
@@ -5466,7 +5492,7 @@ that may later be put together in a book.</li>
 <table class="docutils footnote" frame="void" id="exception" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[3]</a></td><td>There is an exception: by using <em>user-defined environments</em>
+<tr><td class="label"><a class="fn-backref" href="#id25">[4]</a></td><td>There is an exception: by using <em>user-defined environments</em>
 within <code class="docutils literal"><span class="pre">!bu-name</span></code> and <code class="docutils literal"><span class="pre">!eu-name</span></code> directives, it is possible to
 label any type of text and refer to it. For example, one can have
 environments for examples, tables, code snippets, theorems, lemmas, etc.
@@ -5937,7 +5963,7 @@ LaTeX environment.</p>
 </pre></div>
 </div>
 <p>We quickly encounter a problem when referring to a specific example.
-In LaTeX, we want to write <a href="#id25"><span class="problematic" id="id26">`</span></a>Example :ref:<a href="#id27"><span class="problematic" id="id28">`</span></a>label&#8221;, using the label
+In LaTeX, we want to write <a href="#id26"><span class="problematic" id="id27">`</span></a>Example :ref:<a href="#id28"><span class="problematic" id="id29">`</span></a>label&#8221;, using the label
 defined in the example heading. In other formats, this label is a
 section number, or usually the section (example) heading. Different
 wording is needed for different formats. This is easiest accomplished
@@ -6134,22 +6160,22 @@ the output format is <code class="docutils literal"><span class="pre">latex</spa
 </pre></div>
 </div>
 <p>to refer to a publication with bibliographic key <code class="docutils literal"><span class="pre">key</span></code>.
-Here is an example: <a class="reference internal" href="#ref3" id="id29">[Ref3]</a> discussed propagation of
-large destructive water waves, <a class="reference internal" href="#ref4" id="id30">[Ref4]</a> gave
+Here is an example: <a class="reference internal" href="#ref3" id="id30">[Ref3]</a> discussed propagation of
+large destructive water waves, <a class="reference internal" href="#ref4" id="id31">[Ref4]</a> gave
 an overview of numerical methods for solving the Navier-Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
-random vibrations was investigated in <a class="reference internal" href="#ref5" id="id31">[Ref5]</a>.
-The book chapter <a class="reference internal" href="#ref6" id="id32">[Ref6]</a> contains information on
+random vibrations was investigated in <a class="reference internal" href="#ref5" id="id32">[Ref5]</a>.
+The book chapter <a class="reference internal" href="#ref6" id="id33">[Ref6]</a> contains information on
 C++ software tools for programming multigrid methods. A real retro
-reference is <a class="reference internal" href="#ref7" id="id33">[Ref7]</a> about a big FORTRAN package.
+reference is <a class="reference internal" href="#ref7" id="id34">[Ref7]</a> about a big FORTRAN package.
 Multiple references are also possible, e.g., see
-<a class="reference internal" href="#ref3" id="id34">[Ref3]</a> <a class="reference internal" href="#ref6" id="id35">[Ref6]</a>.</p>
+<a class="reference internal" href="#ref3" id="id35">[Ref3]</a> <a class="reference internal" href="#ref6" id="id36">[Ref6]</a>.</p>
 <p>A LaTeX-style cite command with additional detailed reference is also possible,</p>
 <div class="highlight-doconce"><div class="highlight"><pre>cite[details]{key}
 </pre></div>
 </div>
-<p>for example as in <a class="reference internal" href="#ref4" id="id36">[Ref4]</a> (Section 2)
-or <a class="reference internal" href="#ref4" id="id37">[Ref4]</a> (Equation (4.2)).</p>
+<p>for example as in <a class="reference internal" href="#ref4" id="id37">[Ref4]</a> (Section 2)
+or <a class="reference internal" href="#ref4" id="id38">[Ref4]</a> (Equation (4.2)).</p>
 <p>In LaTeX, the <code class="docutils literal"><span class="pre">cite</span></code> command is directly translated to the
 corresponding LaTeX version of the command with a backslash; in reST
 and Sphinx the citations becomes links, with the citation keys as
@@ -6166,7 +6192,7 @@ is done one a line containing <code class="docutils literal"><span class="pre">B
 the database file another name and store it in another directory).
 The references will be inserted at the place where this command appears.
 Before the command you will often want to have a headline with
-<a href="#id38"><span class="problematic" id="id39">``</span></a>References&#8221;, &#8220;Bibliography&#8221;, or similar.
+<a href="#id39"><span class="problematic" id="id40">``</span></a>References&#8221;, &#8220;Bibliography&#8221;, or similar.
 Here is an example:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">======= References =======</span>
 
@@ -7722,7 +7748,7 @@ dictionary in <code class="docutils literal"><span class="pre">.dict4spell.txt</
 <blockquote>
 <div><ol class="arabic simple">
 <li>Run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span> <span class="pre">-d</span> <span class="pre">.dict4spell.txt</span> <span class="pre">*.do.txt</span></code></li>
-<li>Examine <a href="#id40"><span class="problematic" id="id41">``</span></a>misspellings.txt&nbsp;`` for misspellings and make corrections in
+<li>Examine <a href="#id41"><span class="problematic" id="id42">``</span></a>misspellings.txt&nbsp;`` for misspellings and make corrections in
 the source files.</li>
 <li>Rerun <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">spellcheck</span></code> and repeat the procedure.</li>
 <li>When all words in <code class="docutils literal"><span class="pre">misspellings.txt</span> <span class="pre">|nbsp|</span> <span class="pre">``</span> <span class="pre">are</span> <span class="pre">acceptable,</span> <span class="pre">add</span> <span class="pre">these</span> <span class="pre">to</span>
@@ -8429,8 +8455,8 @@ the <code class="docutils literal"><span class="pre">--latex_code_style=</span><
 that has to be converted to a standard <code class="docutils literal"><span class="pre">mydoc.tex</span></code> LaTeX file via
 the programs <code class="docutils literal"><span class="pre">ptex2tex</span></code> or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code>.</p>
 </div>
-<div class="section" id="id42">
-<h4>Newcommands<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id43">
+<h4>Newcommands<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
 <p>LaTeX-specific commands (&#8220;newcommands&#8221;) in math formulas and similar
 can be placed in files <code class="docutils literal"><span class="pre">newcommands.tex</span></code>, <code class="docutils literal"><span class="pre">newcommands_keep.tex</span></code>, or
 <code class="docutils literal"><span class="pre">newcommands_replace.tex</span></code> (see the section <a class="reference internal" href="#newcommands"><span class="std std-ref">Macros (Newcommands)</span></a>).
@@ -8460,7 +8486,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_bibstyle=plain</span></code> (name of BibTeX style)</li>
 <li><code class="docutils literal"><span class="pre">--latex_title_layout=titlepage,</span> <span class="pre">std,</span> <span class="pre">beamer,</span> <span class="pre">doconce_heading,</span> <span class="pre">Springer_collection</span></code></li>
 <li><code class="docutils literal"><span class="pre">--latex_style=std,</span> <span class="pre">Springer_sv,</span> <span class="pre">Springer_lncse,</span> <span class="pre">Springer_llncs,</span> <span class="pre">Springer_lnup,</span> <span class="pre">Springer_T2,</span> <span class="pre">Springer_T4,</span> <span class="pre">siamltex,</span> <span class="pre">siamltexmm,</span> <span class="pre">elsevier</span></code></li>
-<li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id43">[4]</a>)</li>
+<li><code class="docutils literal"><span class="pre">--latex_packages=package1,package2,package3</span></code> (list of extra packages to be included <a class="footnote-reference" href="#varioref" id="id44">[5]</a>)</li>
 <li><code class="docutils literal"><span class="pre">--draft</span></code> (turns on draft mode in documentclass, otherwise final mode)</li>
 <li><code class="docutils literal"><span class="pre">--latex_copyright=everypage,titlepages</span></code> (copyright on every page or on titlepage and chapter pages)</li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
@@ -8509,7 +8535,7 @@ be used to set the journal name, and the style requires
 <table class="docutils footnote" frame="void" id="varioref" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id43">[4]</a></td><td>Listing <code class="docutils literal"><span class="pre">varioref</span></code> in as package
+<tr><td class="label"><a class="fn-backref" href="#id44">[5]</a></td><td>Listing <code class="docutils literal"><span class="pre">varioref</span></code> in as package
 automatically leads to references with page numbers, if the element referred to
 is not on the same page. This is often very helpful, e.g., &#8220;see
 Figure 5.3 on page 67&#8221;.</td></tr>
@@ -9779,12 +9805,16 @@ Switch latex environments such no equations get a number (useful for removing eq
 
 LaTeX style package used for the document.
 std: standard LaTeX article or book style,
+Springer_sv: Springer&#39;s svmono class (new standard for all Springer books),
+Springer_T2: Springer&#39;s T2 book style (replaced by T4),
+Springer_T4: Springer&#39;s T4 book style,
 Springer_lncse: Springer&#39;s Lecture Notes in Computational Science and
    Engineering (LNCSE) style,
 Springer_llncs: Springer&#39;s Lecture Notes in Computer Science style,
-Springer_T2: Springer&#39;s T2 book style,
+Springer_lnup: Springer&#39;s Lecture Notes in University Physics,
 Springer_collection: Springer&#39;s style for chapters in LNCSE proceedings,
-Korma_Script: Korma Script style,
+tufte-book: use of tufte-book.cls for E. Tufte-inspired layout,
+Koma_Script: Koma Script style,
 siamltex: SIAM&#39;s standard LaTeX style for papers,
 siamltexmm: SIAM&#39;s extended (blue) multimedia style for papers.
 
@@ -10869,7 +10899,7 @@ pp. 14-21,
 <table class="docutils citation" frame="void" id="ref3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id29">1</a>, <a class="fn-backref" href="#id34">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
+<tr><td class="label">[Ref3]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id35">2</a>)</em> <strong>H. P. Langtangen and G. Pedersen</strong>. Propagation of Large Destructive Waves,
 <em>International Journal of Applied Mechanics and Engineering</em>,
 7(1),
 pp. 187-204,
@@ -10879,7 +10909,7 @@ pp. 187-204,
 <table class="docutils citation" frame="void" id="ref4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id36">2</a>, <a class="fn-backref" href="#id37">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
+<tr><td class="label">[Ref4]</td><td><em>(<a class="fn-backref" href="#id31">1</a>, <a class="fn-backref" href="#id37">2</a>, <a class="fn-backref" href="#id38">3</a>)</em> <strong>H. P. Langtangen, K.-A. Mardal and R. Winther</strong>. Numerical Methods for Incompressible Viscous Flow,
 <em>Advances in Water Resources</em>,
 25,
 pp. 1125-1146,
@@ -10889,7 +10919,7 @@ pp. 1125-1146,
 <table class="docutils citation" frame="void" id="ref5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id31">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
+<tr><td class="label"><a class="fn-backref" href="#id32">[Ref5]</a></td><td><strong>H. P. Langtangen</strong>. Numerical Solution of First Passage Problems in Random Vibrations,
 <em>SIAM Journal of Scientific and Statistical Computing</em>,
 15,
 pp. 997-996,
@@ -10899,7 +10929,7 @@ pp. 997-996,
 <table class="docutils citation" frame="void" id="ref6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id32">1</a>, <a class="fn-backref" href="#id35">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
+<tr><td class="label">[Ref6]</td><td><em>(<a class="fn-backref" href="#id33">1</a>, <a class="fn-backref" href="#id36">2</a>)</em> <strong>K.-A. Mardal, G. W. Zumbusch and H. P. Langtangen</strong>. Software Tools for Multigrid Methods,
 Advanced Topics in Computational Partial Differential Equations &#8211; Numerical Methods and Diffpack Programming,
 edited by <strong>H. P. Langtangen and A. Tveito</strong>,
 Springer,
@@ -10909,7 +10939,7 @@ Springer,
 <table class="docutils citation" frame="void" id="ref7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id33">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
+<tr><td class="label"><a class="fn-backref" href="#id34">[Ref7]</a></td><td><strong>H. P. Langtangen</strong>. The FEMDEQS Program System,
 <em>Department of Mathematics, University of Oslo</em>,
 1989.</td></tr>
 </tbody>

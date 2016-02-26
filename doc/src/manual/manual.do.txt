@@ -2588,15 +2588,17 @@ works well in all formats (i.e., no double `Problem Problem` appears).
 
 === Remark on Typesettng of Examples ===
 
-Examples are *not* typeset similarly to exercises unless one adds
-the command-line option `--examples_as_exercises`. That is, without
-this option, any heading and starting with `Example:` makes DocOnce
-treat the forthcoming text as ordinary text without any interpretation
-of exercise-style instructions.
-With the command-line option `--examples_as_exercises`,
-one can use the `!bsubex` and `!bsol`
-commands to indicate a subproblem and a solution. In this way, the
-typesetting of the example looks like an exercise equipped with a solution.
+Examples are *not* typeset similarly to exercises unless one adds the
+command-line option `--examples_as_exercises`. That is, without this
+option, any heading and starting with `Example:` makes DocOnce treat
+the forthcoming text as ordinary text without any interpretation of
+exercise-style instructions.  With the command-line option
+`--examples_as_exercises`, one can use the `!bsubex` and `!bsol`
+commands to indicate a subproblem and a solution in an example.  In
+this way, the typesetting of the example looks like an exercise
+equipped with a solution.
+As for exercises, the content of the example runs from the heading
+until the next subsection.
 
 ===== List of Exercises, Problems, and Projects =====
 
@@ -2617,7 +2619,6 @@ use to further tailor the appearance of exercises (given that one
 edits the `.tex` file, preferably by a script after each `doconce format`
 command).
 
-idx{`doconce` commands!`extract_exercises`}
 
 ===== Numbering of Extra Equations in Solutions =====
 label{manual:exercises:sol:no}
@@ -2626,7 +2627,8 @@ A potential problem arises if you produce two versions of your document,
 one with solutions and one without solutions (`--without_solutions`),
 and there are numbered equations in the solutions. Equations in the
 text of the document *after* these exercises sections might then be
-numbered differently. There are two ways out of this problem.
+numbered differently in the different versions you produce of the text.
+There are two ways out of this problem.
 
 === Book ===
 
@@ -2636,8 +2638,9 @@ Equations are numbered chapter-wise, and equations in solutions
 will not influence the numbering of equations before this exercise
 section. However, if some of the exercises contain numbered equations
 in the exercise text, numbered equations in solutions to previous exercises
-will influence the numbering of equations. Avoid numbered equations
-in exercise text.
+will influence the numbering of equations in forthcoming exercise texts.
+In such cases, either avoid numbered equations in a solution or in
+the exercise text.
 
 === Use the tag command ===
 
@@ -2654,8 +2657,18 @@ Equations in solutions can then be given their own numbers (here, `11.5`
 could be chapter 11, section 5). One can use a Mako variable to automatically
 assign appropriate numbers in the `tag` command.
 
+# #ifdef EXTRA
+===== Where to Put Exercises =====
+
+Some prefer exercises scattered around, while others prefer them in
+separate sections. DocOnce has its richest functionality if you
+*collect exercises in a separate section* (usually called `Exercises`).
+See the section above why exercises scattered around might cause problems.
+# #endif
 
 ===== Extracting All Exercises in a Separate Document =====
+
+idx{`doconce` commands!`extract_exercises`}
 
 The command
 
@@ -2672,6 +2685,20 @@ extracts all exercises such that one can publish this document separately,
 with or without solutions and/or short answers.
 By ``exercise'' we here mean all exerices, problems,
 and projects.
+
+The numbering of the exercises in the new document follows the numbering
+in the original document[^exer-numbering], but you must use the
+`--exercise_numbering=chapter` option in addition if
+you want a chapter-based numbering when extracting exercises from a book.
+
+It is also possible to extract examples along with exercises: just add
+`--examples_as_exercises` (to extract the examples only, equip them with
+a unique keyword that you can use in the `--filter=` option).
+
+[^exer-numbering]: If you want a new natural numbering of the extracted
+exercises only, you must go into the DocOnce source file with the
+extracted exercises and remove the comment line that contains the
+`labels2numbers` dictionary.
 
 __Note:__ Instead of having all filtered exercises in one document, yoy
 may (especially for notebooks) want stand-alone documents for each

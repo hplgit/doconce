@@ -234,6 +234,7 @@ def latex_code_lstlisting(latex_code_style):
 % Common lstlisting parameters
 \lstset{
   basicstyle=\small \ttfamily,
+  linewidth=\linewidth,
   breaklines=false,          % break/wrap lines
   breakatwhitespace=true,    % let linebreaks happen at whitespace
   breakindent=40pt,
