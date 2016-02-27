@@ -379,11 +379,11 @@ framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 Note that this style does not offer the thin vertical darker-colored bar
 for `pypro` enviroments (indicating complete programs) as
 `ptex2tex` offers through the `BlueBar` environment. Instead, there is a
-"darker-colored frame":
+"darker-colored top+bottom frame":
 "doc_lst_styleprimer.pdf" around `pypro` code specifications.
-The vertical bar is enabled by a `pypro:vrb-blue1` specification, but then
+(The old vertical bar is enabled by a `pypro:vrb-blue1` specification, but then
 with a colored background that is significantly larger than the computer code
-block.
+block.)
 
 The 5th edition of the mention ``Primer book'' features syntax highlighting,
 offered by the `blue1_bluegreen` and `blue1bar_bluegreen` styles:

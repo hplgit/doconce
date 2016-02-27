@@ -2816,7 +2816,7 @@ be loss of quality. Generate a proper %s file (if possible).""" % \
     return filestr
 
 
-def handle_cross_referencing(filestr, format):
+def handle_cross_referencing(filestr, format, tex_blocks):
     # 1. find all section/chapter titles and corresponding labels
     section_pattern = r'^\s*(={3,9})(.+?)(={3,9})\s*label\{(.+?)\}'
     m = re.findall(section_pattern, filestr, flags=re.MULTILINE)
@@ -2881,7 +2881,13 @@ def handle_cross_referencing(filestr, format):
 
     # 4. Handle references that can be internal or external
     #    (generalized references) ref[internal][cite][external-HTML]
+    # internal labels = those in filestr and those in tex_blocks
     internal_labels = re.findall(r'label\{(.+?)\}', filestr)
+    eq_labels = []
+    for tex_block in tex_blocks:
+        eq_labels += re.findall(r'label\{(.+?)\}', tex_block)
+    internal_labels += eq_labels
+
     ref_pattern = r'ref(ch)?\[([^\]]*?)\]\[([^\]]*?)\]\[([^\]]*?)\]'
     general_refs = re.findall(ref_pattern, filestr)
     for chapref, internal, cite, external in general_refs:
@@ -4245,7 +4251,7 @@ def doconce2format(filestr, format):
     debugpr('The file after handling figures:', filestr)
 
     # Next step: deal with cross referencing (must occur before other format subst)
-    filestr = handle_cross_referencing(filestr, format)
+    filestr = handle_cross_referencing(filestr, format, tex_blocks)
 
     debugpr('The file after handling ref and label cross referencing:', filestr)
     # Next step: deal with index and bibliography (must be done before lists):

@@ -232,6 +232,17 @@ def latex_code_lstlisting(latex_code_style):
     s = ''  # Resulting latex code
     s += r"""
 % Common lstlisting parameters
+
+\usepackage{calc}
+\newlength{\lstboxwidth}  % width of lst box
+\newlength{\framethickness}
+\setlength{\framethickness}{0.5mm}
+% for frame=trbl, define the lst box width as the width (linewidth+2mm)
+% minus the frame (\linewidth+2mm-2\framethickness), set framexleftmargin=0mm
+% and set frame color to background color and frame=trbl
+% (for frame=tb the box remains constant as below with/without frame).
+\setlength{\lstboxwidth}{\linewidth+2mm}
+
 \lstset{
   basicstyle=\small \ttfamily,
   linewidth=\linewidth,
@@ -243,10 +254,10 @@ def latex_code_lstlisting(latex_code_style):
   %belowskip=\smallskipamount,  % space between code and text below
   xleftmargin=5pt,           % indentation of code frame
   xrightmargin=5pt,
-  framexleftmargin=5pt,      % add frame space to the left of code
+  framexleftmargin=2mm,      % add frame space to the left of the code box
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
-  %framerule=0.4pt           % thickness of frame
+  framerule=\framethickness, % thickness of frame
   aboveskip=2ex,             % vertical space above code frame
   showstringspaces=false,    % show spaces in strings with an underscore
   showspaces=false,          % show spaces with an underscore
@@ -267,6 +278,7 @@ commentstyle={},
 """,
        redblue=r"""
 \lstdefinestyle{redblue}{
+linewidth=\lstboxwidth,
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
@@ -275,6 +287,7 @@ identifierstyle=\color{darkorange},
 """,
        greenblue=r"""
 \lstdefinestyle{greenblue}{
+linewidth=\lstboxwidth,
 %keywordstyle=\color{black}\bfseries,
 keywordstyle=\color{black},
 commentstyle=\color{myteal},
@@ -286,8 +299,10 @@ identifierstyle=\color{darkblue},
        yellow2_fb=r"""
 % Use this one without additional background color
 \lstdefinestyle{yellow2_fb}{         % approx same colors as in the FEniCS book
-frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
+frame=tb,                            % top+bottom frame
 rulecolor=\color{black},             % frame color
+framerule=0.4pt,                     % thickness of frame
+linewidth=\lstboxwidth,
 backgroundcolor=\color{yellow!10},
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{comment_green}\slshape,
@@ -299,12 +314,14 @@ identifierstyle=\color{darkorange},
 % Use this one without additional background color
 \lstdefinestyle{blue1}{              % blue1 background for code snippets
 backgroundcolor=\color{cbg_blue1},
+linewidth=\lstboxwidth,
 }
 """,
        blue1_bluegreen=r"""
 % Use this one without additional background color
 \lstdefinestyle{blue1_bluegreen}{    % blue1 background for code snippets
 backgroundcolor=\color{cbg_blue1},
+linewidth=\lstboxwidth,
 keywordstyle=\color{black},
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
@@ -316,8 +333,9 @@ identifierstyle=\color{darkblue},
 % (same as blue1, but with bar_blue1 frame)
 \lstdefinestyle{blue1bar}{           % blue1 background for complete programs
 backgroundcolor=\color{cbg_blue1},
-frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
+frame=tb,                            % include frame
 rulecolor=\color{bar_blue1},         % frame color
+linewidth=\lstboxwidth,
 }
 """,
         blue1bar_bluegreen="""
@@ -325,8 +343,9 @@ rulecolor=\color{bar_blue1},         % frame color
 % (same as blue1, but with bar_blue1 frame)
 \lstdefinestyle{blue1bar_bluegreen}{ % blue1 background for complete programs
 backgroundcolor=\color{cbg_blue1},
-frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
+frame=tb,                            % include frame
 rulecolor=\color{bar_blue1},         % frame color
+linewidth=\lstboxwidth,
 keywordstyle=\color{black},
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
@@ -337,26 +356,29 @@ identifierstyle=\color{darkblue},
 % Use this one without additional background color
 \lstdefinestyle{gray}{
 backgroundcolor=\color{cbg_gray},
-%frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
+%frame=tb,                            % include frame
 %framerule=0.4pt                      % thickness of frame
 rulecolor=\color{black!40},           % frame color
+linewidth=\lstboxwidth,
 }
 """,
         graybar="""
 % Use this one without additional background color
 \lstdefinestyle{graybar}{
 backgroundcolor=\color{cbg_gray},
-frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+frame=tb,                             % include frame
 rulecolor=\color{bar_gray1},          % frame color
-%framerule=0.4pt                      % thickness of frame
+linewidth=\lstboxwidth,
 }
 """,
         graycolor=r"""
 % Use this one without additional background color
 \lstdefinestyle{graycolor}{
 backgroundcolor=\color{cbg_gray},
-%frame=trbl,                          % top+right+bottom+left (tb draws double lines at top + bottom)
-%framerule=0.4pt                      % thickness of frame
+%frame=tb,                            % include frame
+%framerule=1mm                        % thickness of frame
+%linewidth=100mm                      % box width
+linewidth=\lstboxwidth,
 keywordstyle=\color{keyword_pink}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},
@@ -367,9 +389,9 @@ identifierstyle=\color{darkorange},
 % Use this one without additional background color
 \lstdefinestyle{graycolorbar}{
 backgroundcolor=\color{cbg_gray},
-frame=trbl,                           % top+right+bottom+left (tb draws double lines at top + bottom)
+frame=tb,                             % include frame
 rulecolor=\color{bar_gray1},          % frame color
-%framerule=0.4pt                      % thickness of frame
+linewidth=\lstboxwidth,
 keywordstyle=\color{keyword_pink}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},
@@ -2918,8 +2940,8 @@ open=right,              %% start new chapters on odd-numbered pages
 %%\pagestyle{headings}
 \usepackage{mathptmx}
 \usepackage{helvet}
-%%\usepackage{courier} %% note: courier monospace font is too wide
 \usepackage{lmodern}   %% not svmono style, but gives prettier math symbols
+%%\usepackage{courier} %% note: courier monospace font is too wide
 \usepackage{type1cm}
 \usepackage{framed}
 \usepackage{booktabs}

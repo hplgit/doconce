@@ -4,7 +4,9 @@ DATE: today
 
 ======= Data file =======
 
-Suppose we have some data in a file typeset with `!bc dat`:
+Suppose we have some data in a file. The final
+result of including this file with `@@@CODE mydat.txt` (which implies
+a code environment starting with `!bc dat`) looks like this:
 
 @@@CODE mydat.txt envir=dat
 

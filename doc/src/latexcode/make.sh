@@ -41,7 +41,9 @@ cp doc.pdf doc_lst_style_primer.pdf
 doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1_bluegreen]@pypro:lst[style=blue1bar_bluegreen]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_lst_style_primer5.pdf
+cp doc.tex tmp_1_doc.tex  # save for inspection
 
+# With vertical padding of background: --latex_code_bg_vpad
 doconce format pdflatex doc "--latex_code_style=default:pyg-blue1@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]" --latex_code_bg_vpad
 pdflatex -shell-escape doc
 cp doc.pdf doc_pyg_style_primer_vpad.pdf

@@ -2666,7 +2666,7 @@ separate sections. DocOnce has its richest functionality if you
 See the section above why exercises scattered around might cause problems.
 # #endif
 
-===== Extracting All Exercises in a Separate Document =====
+===== Extracting Selected Exercises in a Separate Document =====
 
 idx{`doconce` commands!`extract_exercises`}
 
@@ -2704,7 +2704,7 @@ __Note:__ Instead of having all filtered exercises in one document, yoy
 may (especially for notebooks) want stand-alone documents for each
 exercise, see the next section.
 
-===== Extracting All Exercises as Stand-Alone Documents =====
+===== Extracting Exercises as Stand-Alone Documents =====
 label{exercises:standalone}
 
 It is sometimes convenient to publish exercises from a larger document
@@ -2732,7 +2732,7 @@ __Note:__ Unzipping the archive packs out the files in a subdirectory
 `standalone_exercises`. For figure and movie references to work one
 needs the `--figure_prefix=../` and `--movie_prefix=../` options.
 If the exercise files are distributed to students, make sure figure
-files are also available (check the compiled exercises).
+files are also available (check by compiling the exercises!).
 
 !bwarning References in stand-alone exercises may not work!
 Exercises with references to sections in the running text of the
