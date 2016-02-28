@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import numpy as np
 
 def readfile(filename):
@@ -29,4 +27,3 @@ st.dev=%f
 correlation matrix:
 %s
 """ % (m, s, c)
-

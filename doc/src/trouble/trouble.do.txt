@@ -1536,12 +1536,6 @@ file.  An example is given in this "`userdef_environments.py`":
 "https://github.com/hplgit/doconce/blob/master/doc/src/userdef_envirs/minipage/userdef_environments.py"
 file.
 
-===== Why are admons with code too wide? =====
-
-If you use the `lst` style with background color for code blocks,
-admons become too wide. You can get perfect admons, but 2 mm too
-narrow colored code blocks by using the `--latex_lst_without_linewidth`
-option. Try it out and see what you like best in your document.
 
 ===== How can I have unnumbered sections? =====
 

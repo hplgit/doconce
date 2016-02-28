@@ -248,7 +248,7 @@ def latex_code_lstlisting(latex_code_style):
   tab=,
   tabsize=4,                 % tab means 4 spaces
   %belowskip=\smallskipamount,  % space between code and text below
-  xleftmargin=0mm,           % indentation of code frame
+  xleftmargin=2mm,           % indentation of code frame
   xrightmargin=0mm,
   framexleftmargin=2mm,      % add frame space to the left of the code box
   %numbers=left,             % put line numbers on the left
