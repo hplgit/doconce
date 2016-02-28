@@ -178,8 +178,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#use-the-tag-command">Use the tag command</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-selected-exercises-in-a-separate-document">Extracting Selected Exercises in a Separate Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extracting-exercises-as-stand-alone-documents">Extracting Exercises as Stand-Alone Documents</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#remarks">Remarks</a></li>
@@ -500,8 +500,8 @@
 <li><a class="reference internal" href="#use-the-tag-command">Use the tag command</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#extracting-all-exercises-in-a-separate-document">Extracting All Exercises in a Separate Document</a></li>
-<li><a class="reference internal" href="#extracting-all-exercises-as-stand-alone-documents">Extracting All Exercises as Stand-Alone Documents</a></li>
+<li><a class="reference internal" href="#extracting-selected-exercises-in-a-separate-document">Extracting Selected Exercises in a Separate Document</a></li>
+<li><a class="reference internal" href="#extracting-exercises-as-stand-alone-documents">Extracting Exercises as Stand-Alone Documents</a></li>
 <li><a class="reference internal" href="#example-on-an-exercise">Example on an Exercise</a></li>
 <li><a class="reference internal" href="#exercise-1-compute-integrals">Exercise 1: Compute integrals</a><ul>
 <li><a class="reference internal" href="#remarks">Remarks</a></li>
@@ -775,7 +775,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 25, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 28, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -4639,8 +4639,8 @@ could be chapter 11, section 5). One can use a Mako variable to automatically
 assign appropriate numbers in the <code class="docutils literal"><span class="pre">tag</span></code> command.</p>
 </div>
 </div>
-<div class="section" id="extracting-all-exercises-in-a-separate-document">
-<h3>Extracting All Exercises in a Separate Document<a class="headerlink" href="#extracting-all-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="extracting-selected-exercises-in-a-separate-document">
+<h3>Extracting Selected Exercises in a Separate Document<a class="headerlink" href="#extracting-selected-exercises-in-a-separate-document" title="Permalink to this headline">¶</a></h3>
 <p id="index-86">The command</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce extract_exercises tmp_mako__mydoc.do.txt --filter=key1;key2
 </pre></div>
@@ -4676,8 +4676,8 @@ Instead of having all filtered exercises in one document, yoy
 may (especially for notebooks) want stand-alone documents for each
 exercise, see the next section.</p>
 </div>
-<div class="section" id="extracting-all-exercises-as-stand-alone-documents">
-<span id="exercises-standalone"></span><h3>Extracting All Exercises as Stand-Alone Documents<a class="headerlink" href="#extracting-all-exercises-as-stand-alone-documents" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="extracting-exercises-as-stand-alone-documents">
+<span id="exercises-standalone"></span><h3>Extracting Exercises as Stand-Alone Documents<a class="headerlink" href="#extracting-exercises-as-stand-alone-documents" title="Permalink to this headline">¶</a></h3>
 <p>It is sometimes convenient to publish exercises from a larger document
 as <em>individual documents</em>.
 With the <code class="docutils literal"><span class="pre">--exercises_in_zip</span></code> option, DocOnce will
@@ -4702,7 +4702,7 @@ Unzipping the archive packs out the files in a subdirectory
 <code class="docutils literal"><span class="pre">standalone_exercises</span></code>. For figure and movie references to work one
 needs the <code class="docutils literal"><span class="pre">--figure_prefix=../</span></code> and <code class="docutils literal"><span class="pre">--movie_prefix=../</span></code> options.
 If the exercise files are distributed to students, make sure figure
-files are also available (check the compiled exercises).</p>
+files are also available (check by compiling the exercises!).</p>
 <div class="admonition-references-in-stand-alone-exercises-may-not-work admonition">
 <p class="first admonition-title">References in stand-alone exercises may not work</p>
 <p class="last">Exercises with references to sections in the running text of the
@@ -8392,8 +8392,13 @@ translation, which is simpler and actually more versatile than even
 using the <code class="docutils literal"><span class="pre">ptex2tex</span></code> program.</p>
 <p>Direct translation is specified by the <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> command-line
 option. A separate document, <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html">Demonstration of DocOnce support for LaTeX code block environments</a>, describes how this option is used and the demonstrates
-many possibilities that are available.
-The <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option makes the use of <code class="docutils literal"><span class="pre">ptex2tex</span></code> or
+many possibilities that are available. One popular choice is</p>
+<div class="highlight-text"><div class="highlight"><pre>default:lst[style=blue1_bluegreen]@dat:lst[style=gray]@sys:vrb
+</pre></div>
+</div>
+<p>This value gives syntax-highlighted blue-green code on a blue
+background and sets data files with gray background.</p>
+<p>The <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> option makes the use of <code class="docutils literal"><span class="pre">ptex2tex</span></code> or
 <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">ptex2tex</span></code> redundant.</p>
 </div>
 <div class="section" id="the-old-ptex2tex-step">

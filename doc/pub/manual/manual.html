@@ -144,11 +144,11 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
                'manual:exercises:sol:no'),
               ('Book', 3, None, '___sec64'),
               ('Use the tag command', 3, None, '___sec65'),
-              ('Extracting All Exercises in a Separate Document',
+              ('Extracting Selected Exercises in a Separate Document',
                2,
                None,
                '___sec66'),
-              ('Extracting All Exercises as Stand-Alone Documents',
+              ('Extracting Exercises as Stand-Alone Documents',
                2,
                'exercises:standalone',
                'exercises:standalone'),
@@ -524,8 +524,8 @@ $$
      <!-- navigation toc: --> <li><a href="#manual:exercises:sol:no" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Numbering of Extra Equations in Solutions</a></li>
      <!-- navigation toc: --> <li><a href="#___sec64" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Book</a></li>
      <!-- navigation toc: --> <li><a href="#___sec65" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use the tag command</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec66" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extracting All Exercises in a Separate Document</a></li>
-     <!-- navigation toc: --> <li><a href="#exercises:standalone" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extracting All Exercises as Stand-Alone Documents</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec66" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extracting Selected Exercises in a Separate Document</a></li>
+     <!-- navigation toc: --> <li><a href="#exercises:standalone" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Extracting Exercises as Stand-Alone Documents</a></li>
      <!-- navigation toc: --> <li><a href="#___sec68" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Example on an Exercise</a></li>
      <!-- navigation toc: --> <li><a href="#doconce:manual:exercise:ex" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Exercise 1: Compute integrals</a></li>
      <!-- navigation toc: --> <li><a href="#___sec70" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remarks</a></li>
@@ -719,7 +719,7 @@ $$
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Feb 25, 2016</h4></center> <!-- date -->
+<center><h4>Feb 28, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <!-- lines beginning with # are doconce comment lines -->
@@ -871,8 +871,8 @@ expressions).
 &nbsp; &nbsp; &nbsp; <a href="#___sec60"> Typesetting of Exercises </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec62"> List of Exercises, Problems, and Projects </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#manual:exercises:sol:no"> Numbering of Extra Equations in Solutions </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec66"> Extracting All Exercises in a Separate Document </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#exercises:standalone"> Extracting All Exercises as Stand-Alone Documents </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec66"> Extracting Selected Exercises in a Separate Document </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#exercises:standalone"> Extracting Exercises as Stand-Alone Documents </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec68"> Example on an Exercise </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#doconce:manual:exercise:ex"> Exercise 1: Compute integrals </a><br>
 <a href="#___sec71"> Other Environments </a><br>
@@ -5583,7 +5583,7 @@ Equations in solutions can then be given their own numbers (here, <code>11.5</co
 could be chapter 11, section 5). One can use a Mako variable to automatically
 assign appropriate numbers in the <code>tag</code> command.
 
-<h2 id="___sec66">Extracting All Exercises in a Separate Document </h2>
+<h2 id="___sec66">Extracting Selected Exercises in a Separate Document </h2>
 
 <p>
 The command
@@ -5627,7 +5627,7 @@ Instead of having all filtered exercises in one document, yoy
 may (especially for notebooks) want stand-alone documents for each
 exercise, see the next section.
 
-<h2 id="exercises:standalone">Extracting All Exercises as Stand-Alone Documents</h2>
+<h2 id="exercises:standalone">Extracting Exercises as Stand-Alone Documents</h2>
 
 <p>
 It is sometimes convenient to publish exercises from a larger document
@@ -5658,7 +5658,7 @@ Unzipping the archive packs out the files in a subdirectory
 <code>standalone_exercises</code>. For figure and movie references to work one
 needs the <code>--figure_prefix=../</code> and <code>--movie_prefix=../</code> options.
 If the exercise files are distributed to students, make sure figure
-files are also available (check the compiled exercises).
+files are also available (check by compiling the exercises!).
 
 <p>
 <div class="alert alert-block alert-danger alert-text-normal"><b>References in stand-alone exercises may not work!</b>
@@ -10299,7 +10299,18 @@ using the <code>ptex2tex</code> program.
 <p>
 Direct translation is specified by the <code>--latex_code_style=</code> command-line
 option. A separate document, <a href="http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" target="_self">Demonstration of DocOnce support for LaTeX code block environments</a>, describes how this option is used and the demonstrates
-many possibilities that are available.
+many possibilities that are available. One popular choice is
+
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">default:lst[style=blue1_bluegreen]@dat:lst[style=gray]@sys:vrb
+</pre></div>
+<p>
+This value gives syntax-highlighted blue-green code on a blue
+background and sets data files with gray background.
+
+<p>
 The <code>--latex_code_style=</code> option makes the use of <code>ptex2tex</code> or
 <code>doconce ptex2tex</code> redundant.
 

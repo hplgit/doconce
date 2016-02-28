@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Feb 25, 2016
+:Date: Feb 28, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -4623,8 +4623,8 @@ Equations in solutions can then be given their own numbers (here, ``11.5``
 could be chapter 11, section 5). One can use a Mako variable to automatically
 assign appropriate numbers in the ``tag`` command.
 
-Extracting All Exercises in a Separate Document
------------------------------------------------
+Extracting Selected Exercises in a Separate Document
+----------------------------------------------------
 
 .. index::
    single: doconce commands; extract_exercises
@@ -4667,8 +4667,8 @@ exercise, see the next section.
 
 .. _exercises:standalone:
 
-Extracting All Exercises as Stand-Alone Documents
--------------------------------------------------
+Extracting Exercises as Stand-Alone Documents
+---------------------------------------------
 
 It is sometimes convenient to publish exercises from a larger document
 as *individual documents*.
@@ -4696,7 +4696,7 @@ Unzipping the archive packs out the files in a subdirectory
 ``standalone_exercises``. For figure and movie references to work one
 needs the ``--figure_prefix=../`` and ``--movie_prefix=../`` options.
 If the exercise files are distributed to students, make sure figure
-files are also available (check the compiled exercises).
+files are also available (check by compiling the exercises!).
 
 
 .. admonition:: References in stand-alone exercises may not work
@@ -9258,7 +9258,15 @@ using the ``ptex2tex`` program.
 
 Direct translation is specified by the ``--latex_code_style=`` command-line
 option. A separate document, `Demonstration of DocOnce support for LaTeX code block environments <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__, describes how this option is used and the demonstrates
-many possibilities that are available.
+many possibilities that are available. One popular choice is
+
+.. code-block:: text
+
+        default:lst[style=blue1_bluegreen]@dat:lst[style=gray]@sys:vrb
+
+This value gives syntax-highlighted blue-green code on a blue
+background and sets data files with gray background.
+
 The ``--latex_code_style=`` option makes the use of ``ptex2tex`` or
 ``doconce ptex2tex`` redundant.
 
