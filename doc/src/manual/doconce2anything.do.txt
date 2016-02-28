@@ -882,9 +882,16 @@ using the `ptex2tex` program.
 
 Direct translation is specified by the `--latex_code_style=` command-line
 option. A separate document, "Demonstration of DocOnce support for LaTeX code block environments": "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html", describes how this option is used and the demonstrates
-many possibilities that are available.
-(The `--latex_code_style=` option makes the use of `ptex2tex` or
-`doconce ptex2tex` redundant.)
+many possibilities that are available. One popular choice is
+
+!bc
+default:lst[style=blue1_bluegreen]@dat:lst[style=gray]@sys:vrb
+!ec
+This value gives syntax-highlighted blue-green code on a blue
+background and sets data files with gray background.
+
+The `--latex_code_style=` option makes the use of `ptex2tex` or
+`doconce ptex2tex` redundant.
 
 ===== The old `ptex2tex` step =====
 
