@@ -237,23 +237,19 @@ def latex_code_lstlisting(latex_code_style):
 \newlength{\lstboxwidth}  % width of lst box
 \newlength{\framethickness}
 \setlength{\framethickness}{0.5mm}
-% for frame=trbl, define the lst box width as the width (linewidth+2mm)
-% minus the frame (\linewidth+2mm-2\framethickness), set framexleftmargin=0mm
-% and set frame color to background color and frame=trbl
-% (for frame=tb the box remains constant as below with/without frame).
-\setlength{\lstboxwidth}{\linewidth+2mm}
+% for frame=trbl and a framerule that has significant size, set
+% xleftmargin=5mm and xrightmargin=5mm.
 
 \lstset{
   basicstyle=\small \ttfamily,
-  linewidth=\linewidth,
   breaklines=false,          % break/wrap lines
   breakatwhitespace=true,    % let linebreaks happen at whitespace
   breakindent=40pt,
   tab=,
   tabsize=4,                 % tab means 4 spaces
   %belowskip=\smallskipamount,  % space between code and text below
-  xleftmargin=5pt,           % indentation of code frame
-  xrightmargin=5pt,
+  xleftmargin=0mm,           % indentation of code frame
+  xrightmargin=0mm,
   framexleftmargin=2mm,      % add frame space to the left of the code box
   %numbers=left,             % put line numbers on the left
   %stepnumber=2,             % stepnumber=1 numbers each line, =n every n lines
@@ -270,6 +266,10 @@ def latex_code_lstlisting(latex_code_style):
 
 % Internally defined styles for lstlisting
 """
+    # styles below can have linewidth= specified, but all our experience
+    # is that it is best NOT to specify any linewidth for lst and rely
+    # automatic settings - then admons with code gets the right sizes
+    # etc if xleftmargin=xrightmargin=0mm
     styles = dict(
        simple=r"""
 \lstdefinestyle{simple}{
@@ -278,7 +278,6 @@ commentstyle={},
 """,
        redblue=r"""
 \lstdefinestyle{redblue}{
-linewidth=\lstboxwidth,
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
@@ -287,7 +286,6 @@ identifierstyle=\color{darkorange},
 """,
        greenblue=r"""
 \lstdefinestyle{greenblue}{
-linewidth=\lstboxwidth,
 %keywordstyle=\color{black}\bfseries,
 keywordstyle=\color{black},
 commentstyle=\color{myteal},
@@ -302,7 +300,6 @@ identifierstyle=\color{darkblue},
 frame=tb,                            % top+bottom frame
 rulecolor=\color{black},             % frame color
 framerule=0.4pt,                     % thickness of frame
-linewidth=\lstboxwidth,
 backgroundcolor=\color{yellow!10},
 keywordstyle=\color{blue}\bfseries,
 commentstyle=\color{comment_green}\slshape,
@@ -314,14 +311,12 @@ identifierstyle=\color{darkorange},
 % Use this one without additional background color
 \lstdefinestyle{blue1}{              % blue1 background for code snippets
 backgroundcolor=\color{cbg_blue1},
-linewidth=\lstboxwidth,
 }
 """,
        blue1_bluegreen=r"""
 % Use this one without additional background color
 \lstdefinestyle{blue1_bluegreen}{    % blue1 background for code snippets
 backgroundcolor=\color{cbg_blue1},
-linewidth=\lstboxwidth,
 keywordstyle=\color{black},
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
@@ -335,7 +330,6 @@ identifierstyle=\color{darkblue},
 backgroundcolor=\color{cbg_blue1},
 frame=tb,                            % include frame
 rulecolor=\color{bar_blue1},         % frame color
-linewidth=\lstboxwidth,
 }
 """,
         blue1bar_bluegreen="""
@@ -345,7 +339,6 @@ linewidth=\lstboxwidth,
 backgroundcolor=\color{cbg_blue1},
 frame=tb,                            % include frame
 rulecolor=\color{bar_blue1},         % frame color
-linewidth=\lstboxwidth,
 keywordstyle=\color{black},
 commentstyle=\color{myteal},
 stringstyle=\color{darkgreen},
@@ -359,7 +352,6 @@ backgroundcolor=\color{cbg_gray},
 %frame=tb,                            % include frame
 %framerule=0.4pt                      % thickness of frame
 rulecolor=\color{black!40},           % frame color
-linewidth=\lstboxwidth,
 }
 """,
         graybar="""
@@ -368,7 +360,6 @@ linewidth=\lstboxwidth,
 backgroundcolor=\color{cbg_gray},
 frame=tb,                             % include frame
 rulecolor=\color{bar_gray1},          % frame color
-linewidth=\lstboxwidth,
 }
 """,
         graycolor=r"""
@@ -378,7 +369,6 @@ backgroundcolor=\color{cbg_gray},
 %frame=tb,                            % include frame
 %framerule=1mm                        % thickness of frame
 %linewidth=100mm                      % box width
-linewidth=\lstboxwidth,
 keywordstyle=\color{keyword_pink}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},
@@ -391,7 +381,6 @@ identifierstyle=\color{darkorange},
 backgroundcolor=\color{cbg_gray},
 frame=tb,                             % include frame
 rulecolor=\color{bar_gray1},          % frame color
-linewidth=\lstboxwidth,
 keywordstyle=\color{keyword_pink}\bfseries,
 commentstyle=\color{comment_green}\slshape,
 stringstyle=\color{string_red},

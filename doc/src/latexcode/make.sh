@@ -31,14 +31,19 @@ cp doc.pdf doc_lst_sys.pdf
 
 doconce format pdflatex doc "--latex_code_style=default:lst[style=yellow2_fb]"
 pdflatex doc
-cp doc.pdf doc_lst_style_fenicsbook.pdf
+cp doc.pdf doc_lst_style_fenicsbook1.pdf
+
+doconce format pdflatex doc "--latex_code_style=default:lst[style=yellow2_fb]" --latex_lst_without_linewidth
+pdflatex doc
+cp doc.pdf doc_lst_style_fenicsbook2.pdf
+cp doc.tex tmp_2_doc.tex
 
 doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1]@pypro:lst[style=blue1bar]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
 pdflatex doc
 cp doc.pdf doc_lst_style_primer.pdf
 
 # With syntax highlighting
-doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1_bluegreen]@pypro:lst[style=blue1bar_bluegreen]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]"
+doconce format pdflatex doc "--latex_code_style=default:lst[style=blue1_bluegreen]@pypro:lst[style=blue1bar_bluegreen]@dat:lst[style=gray]@sys:vrb[frame=lines,label=\\fbox{{\tiny Terminal}},framesep=2.5mm,framerule=0.7pt,fontsize=\fontsize{9pt}{9pt}]" --latex_lst_without_linewidth
 pdflatex doc
 cp doc.pdf doc_lst_style_primer5.pdf
 cp doc.tex tmp_1_doc.tex  # save for inspection

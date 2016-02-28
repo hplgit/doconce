@@ -36,11 +36,17 @@ correlation matrix:
 
 <span style="color: #000080; font-weight: bold">======= Code snippet =======</span>
 
-Fortran 77 is also sometimes handy (typeset with `!bc fcod`):
+Fortran 77 is also sometimes handy. Snippets in that language are
+typeset inside `!bc fcod` environments.
+
+<span style="color: #8B008B; font-weight: bold">!bnotice</span> Fortran code box
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ r_i = ca_i,\quad i=1,\ldots,n\]
+<span style="color: #8B008B; font-weight: bold">!et</span>
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> fcod
        subroutine process(a, n, c, r)
-C      Return array r = c*a
+C      This subroutine returns array r = c*a
        integer n
        real*8 a(n), c, r(n)
        integer i
@@ -50,4 +56,5 @@ C      Return array r = c*a
        return
        end
 <span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!enotice</span>
 </pre></div>
