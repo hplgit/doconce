@@ -60,9 +60,11 @@
 \def\fullcolor{\color[gray]{0.85}}
 %\def\shadedcolor{\color[cmyk]{0.19,0.1,0,0}}
 
-\newcommand\mymainmatter{%
-  \mainmatter
-  % These are appropriate for printed book
+%\newcommand\mymainmatter{%
+\newcommand\setpagesize{%
+  %\mainmatter % starts arabic page numbering, wait until later
+  \clearemptydoublepage
+  % These are appropriate values for printed book
   %\evensidemargin48.3mm
   %\oddsidemargin13.3mm
   % These look better in PDF and on paper

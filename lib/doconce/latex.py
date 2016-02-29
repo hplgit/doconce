@@ -1872,9 +1872,9 @@ def latex_date(m):
 """ % vars()
 
     if latex_style in ("Springer_T2", "Springer_T4"):
-        # Use special mainmatter from t2do.sty or t4do.sty
+        # Use special commands from t2do.sty or t4do.sty
         text += r"""
-\mymainmatter
+\setpagesize
 """
     return text
 
@@ -2796,7 +2796,8 @@ def define(FILENAME_EXTENSION,
 
 \vspace{1cm} % after toc
 """
-    if latex_style in ('Springer_sv', 'Springer_lnup', 'tufte-book'):
+    if latex_style in ('Springer_sv', 'Springer_lnup', 'tufte-book',
+                       'Springer_T2', 'Springer_T4'):
         toc_part += r"""
 \mainmatter
 """
