@@ -1002,7 +1002,7 @@ look for options starting with `--latex` to get a more verbose description):
  * `--latex_copyright=everypage,titlepages` (copyright on every page or on titlepage and chapter pages)
  * `--latex_list_of_exercises=loe,toc,none` (LaTeX list of exercises, integrated into the table of contents, or no list)
  * `--latex_fancy_header` (chapter/section headings at top of pages, style depends on value of `--latex_section_headings`)
- * `--latex_section_headings=std,blue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
+ * `--latex_section_headings=std,blue,bookblue,strongblue,gray,gray-wide` (standard LaTeX, blue headings, blue headings for books, strong blue headings, white in gray box, white in gray box that fills the page width)
  * `--latex_table_format=quote, center, footnotesize, tiny` (environment around tables)
  * `--latex_colored_table_rows=blue, gray, no` (color of every two lines in tables)
  * `--latex_table_row_sep=1.5` (increase the separation between table (and matrix) rows by a factor 1.5)

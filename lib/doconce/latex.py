@@ -3411,7 +3411,7 @@ justified,
         if option('device=') == 'paper':
             linkcolor = 'black'
             linkcolor_def = ''
-        elif section_headings in ('blue', 'strongblue'):
+        elif section_headings in ('blue', 'strongblue', 'bookblue'):
             linkcolor = 'seccolor'
             linkcolor_def = ''
         else:
@@ -3546,11 +3546,19 @@ justified,
 % on even (E) pages,
 % chapter name to the right (R) and page number to the right (L)
 % on odd (O) pages
-% (switch twoside to onside in documentclass to just have odd pages)
-\fancyhead[LE]{\rightmark} % section
+% (switch twoside to onside in documentclass to just have odd pages)"""
+            if 'twoside,' in INTRO['latex']:
+                INTRO['latex'] += r"""
+\fancyhead[LE]{\nouppercase{\rightmark}} % section
 \fancyhead[RE]{\thepage}
-\fancyhead[RO]{\leftmark}  % chapter
+\fancyhead[RO]{\nouppercase{\leftmark}}  % chapter
 \fancyhead[LO]{\thepage}"""
+            else:
+                if 'ifthen' not in INTRO['latex']:
+                    INTRO['latex'] += '\n\\usepackage{ifthen}'
+                INTRO['latex'] += r"""
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{\nouppercase{\leftmark}}{\nouppercase{\rightmark}}}
+\fancyhead[R]{\thepage}"""
         elif fancy_header:
             # No chapters, only sections
             INTRO['latex'] += r"""
@@ -3980,7 +3988,7 @@ justified,
 \end{%(admon)s_%(latex_admon)smdframed}
 }
 """ % vars()
-        if section_headings in ("blue", "strongblue") and latex_admon_color is None:
+        if section_headings in ("blue", "strongblue", "bookblue") and latex_admon_color is None:
             # Let admon title background and border reflect the blue sections
             # unless a color is specified
             INTRO['latex'] = INTRO['latex'].replace('linecolor=black', r'linecolor=seccolor')
@@ -4033,6 +4041,7 @@ justified,
 %\usepackage[compact]{titlesec}  % reduce the spacing around section headings
 """
     if section_headings == 'blue':
+        # For books, use bookblue
         INTRO['latex'] += r"""
 % --- section/subsection headings with blue color ---
 \definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
@@ -4049,11 +4058,49 @@ justified,
         if option('latex_fancy_header'):
             INTRO['latex'] += r"""
 % let the header have a thick gray hrule with section and page in blue above
-\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{1pt}
 \renewcommand{\headrule}{{\color{gray!50}%
 \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
-\fancyhead[LE,RO]{{\color{seccolor}\rightmark}} %section
+\fancyhead[LE,RO]{{\color{seccolor}\nouppercase{\rightmark}}} %section
 \fancyhead[RE,LO]{{\color{seccolor}\thepage}}
+"""
+    elif section_headings == 'bookblue':
+        INTRO['latex'] += r"""
+% --- section/subsection headings with blue color ---
+\definecolor{seccolor}{cmyk}{.9,.5,0,.35}  % siamltexmm.sty section color
+\titleformat{name=\section}
+{\color{seccolor}\normalfont\Large\sffamily\bfseries}
+{\color{seccolor}\thesection}{1em}{}
+\titleformat{name=\subsection}
+{\color{seccolor}\normalfont\large\sffamily\bfseries}
+{\color{seccolor}\thesubsection}{1em}{}
+\titleformat{name=\paragraph}[runin]
+{\color{seccolor}\normalfont\normalsize\sffamily\bfseries}
+{}{}{\indent}
+"""
+        if option('latex_fancy_header'):
+            INTRO['latex'] += r"""
+% let the header have a thick blue hrule with section and page in blue above
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{{\color{seccolor}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+% section name to the left (L) and page number to the right (R)
+% on even (E) pages,
+% chapter name to the right (R) and page number to the right (L)
+% on odd (O) pages (requires twoside option in documentclass)
+% (switch twoside to onside in documentclass to just have odd pages)"""
+            if 'twoside,' in INTRO['latex']:
+                INTRO['latex'] += r"""
+\fancyhead[LE]{{\color{seccolor}\nouppercase{\rightmark}}} % section
+\fancyhead[RE]{{\color{seccolor}\thepage}}
+\fancyhead[RO]{{\color{seccolor}\nouppercase{\leftmark}}}  % chapter
+\fancyhead[LO]{{\color{seccolor}\thepage}}"""
+            else:
+                if 'ifthen' not in INTRO['latex']:
+                    INTRO['latex'] += '\n\\usepackage{ifthen}'
+                INTRO['latex'] += r"""
+\fancyhead[L]{\ifthenelse{\isodd{\value{page}}}{{\color{seccolor}\nouppercase{\leftmark}}}{{\color{seccolor}\nouppercase{\rightmark}}}}
+\fancyhead[R]{{\color{seccolor}\thepage}}
 """
     elif section_headings == 'strongblue':
         INTRO['latex'] += r"""
@@ -4147,16 +4194,16 @@ justified,
             if exer_envir + ':' in filestr:
                 has_exer = True
                 INTRO['latex'] += r"""
-    \newenvironment{doconceexercise}{}{}
-    \newcounter{doconceexercisecounter}
-    """
+\newenvironment{doconceexercise}{}{}
+\newcounter{doconceexercisecounter}
+"""
                 exercise_numbering = option('exercise_numbering=', 'absolute')
                 if chapters and exercise_numbering == 'chapter':
                     INTRO['latex'] += r"""
-    % Let exercises, problems, and projects be numbered per chapter:
-    \usepackage{chngcntr}
-    \counterwithin{doconceexercisecounter}{chapter}
-    """
+% Let exercises, problems, and projects be numbered per chapter:
+\usepackage{chngcntr}
+\counterwithin{doconceexercisecounter}{chapter}
+"""
                 break
     else:
         has_exer = True
