@@ -260,7 +260,7 @@ def latex_code_lstlisting(latex_code_style):
   showtabs=false,
   keepspaces=true,
   columns=fullflexible,      % tighter character kerning, like verb
-  escapeinside={||},         % for |\pause| in slides and math in code blocks
+  escapeinside={||},         % for (*@pause@*) in slides and math in code blocks
   extendedchars=\true,       % allows non-ascii chars, does not work with utf-8
 }
 
@@ -924,9 +924,9 @@ def latex_code(filestr, code_blocks, code_block_types,
     if option('section_numbering=', 'on') == 'off':
         filestr = filestr.replace('section{', 'section*{')
 
-    # Support for |\pause| in slides to allow for parts of code blocks
+    # Support for (*@pause@*) in slides to allow for parts of code blocks
     # to pop up
-    if r'|\pause|' in filestr:
+    if r'(*@pause@*)' in filestr:
         if format in ('latex', 'pdflatex'):
             if '\\begin{minted}' in filestr:
                 filestr = re.sub(r'^\\begin\{minted\}\[',
