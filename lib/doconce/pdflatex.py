@@ -79,7 +79,7 @@ def define(FILENAME_EXTENSION,
     EXERCISE['pdflatex'] = EXERCISE['latex']
     INTRO['pdflatex'] = INTRO['latex'].replace('.eps', '.pdf').replace('epsfig,', '')
     latex_style = option('latex_style=', 'std')
-    if latex_style not in ('Springer_T2',):
+    if latex_style not in ('Springer_T2',) and not option('xelatex'):
         INTRO['pdflatex'] = INTRO['pdflatex'].replace(
             'usepackage{graphicx}', 'usepackage[pdftex]{graphicx}')
     OUTRO['pdflatex'] = OUTRO['latex']
