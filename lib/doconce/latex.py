@@ -675,7 +675,7 @@ def latex_code(filestr, code_blocks, code_block_types,
 """, filestr)
                 elif option('latex_list_of_exercises=', 'none') == 'loe':
                      filestr = re.sub(exercise_pattern,
-            r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+                     r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
                 # Treat {Exercise}/{Project}/{Problem}
@@ -686,7 +686,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 replacement = r"""% --- begin exercise ---
 \begin{doconceexercise}
 
-\subsection{\g<1>"""
+\subsection*{\g<1>"""
                 if option('latex_list_of_exercises=', 'none') != 'none':
                     replacement += r"""
 \addcontentsline{loe}{doconceexercise}{\g<1>
