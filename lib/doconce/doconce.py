@@ -3295,22 +3295,29 @@ def typeset_section_numbering(filestr, format):
         if lines[i].startswith('========= '):
             chapter += 1
             section = subsection = subsubsection = 0
-            lines[i] = re.sub(r'^========= ', '========= %s: ' %
+            lines[i] = re.sub(r'^========= ', '========= %s ' %
                               counter(chapter), lines[i])
         elif lines[i].startswith('======= '):
             section += 1
             subsection = subsubsection = 0
-            lines[i] = re.sub(r'^======= ', '======= %s: ' %
+            lines[i] = re.sub(r'^======= ', '======= %s ' %
                               counter(chapter, section), lines[i])
         elif lines[i].startswith('===== '):
+            # Skip exercises
+            if option('examples_as_exercises'):
+                pattern = '===== +\{?(Exercise|Project|Problem|Example)'
+            else:
+                pattern = '===== +\{?(Exercise|Project|Problem)'
+            if re.search(pattern, lines[i]):
+                continue
             subsection += 1
             subsubsection = 0
-            lines[i] = re.sub(r'^===== ', '===== %s: ' %
+            lines[i] = re.sub(r'^===== ', '===== %s ' %
                               counter(chapter, section, subsection),
                               lines[i])
         elif lines[i].startswith('=== '):
             subsubsection += 1
-            lines[i] = re.sub(r'^=== ', '=== %s: ' %
+            lines[i] = re.sub(r'^=== ', '=== %s ' %
                               counter(chapter, section, subsection, subsubsection),
                               lines[i])
     return '\n'.join(lines)
@@ -4203,11 +4210,6 @@ def doconce2format(filestr, format):
             filestr = re.sub(r'^ *%s +(\{?(Exercise|Problem|Project|Example)\}?):\s*(.+?) +%s' % ('='*s, '='*s), '===== \g<1>: \g<3> =====', filestr, flags=re.MULTILINE)
         debugpr('The file after changing the level of section headings:', filestr)
 
-    # Next step: section numbering?
-    if format not in ('latex', 'pdflatex'):
-        if option('section_numbering=', 'off') == 'on':
-            filestr = typeset_section_numbering(filestr, format)
-
     # Remove linebreaks within paragraphs
     if option('oneline_paragraphs'):  # (does not yet work well)
         filestr = make_one_line_paragraphs(filestr, format)
@@ -4249,6 +4251,14 @@ def doconce2format(filestr, format):
 
     report_progress('figures')
     debugpr('The file after handling figures:', filestr)
+
+    # Next step: section numbering?
+    # (Do this late, after exercises, but before TOC[] is called and
+    # sections are substituted)
+    if format not in ('latex', 'pdflatex'):
+        if option('section_numbering=', 'off') == 'on':
+            filestr = typeset_section_numbering(filestr, format)
+            debugpr('The file after numbering of chapters and sections:', filestr)
 
     # Next step: deal with cross referencing (must occur before other format subst)
     filestr = handle_cross_referencing(filestr, format, tex_blocks)

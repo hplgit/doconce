@@ -122,11 +122,11 @@ fi
 def f(x):
     return 42 + x
 
-|\pause|
+(*@\pause@*)
 def g(x):
     return f(42)
 
-|\pause|
+(*@\pause@*)
 print g(13)
 !ec
 

@@ -730,6 +730,10 @@ Note that
  * Many output formats are so primitive that heading and column alignment
    have no effect.
 
+A quick way of generating tables is to place all the entries in a file
+with comma as separator (a CSV file) and then run the utility
+`doconce csv2table` to create a table in the DocOnce format.
+
 The command-line option `--tables2csv` (to `doconce format`)
 makes DocOnce dump each table to CSV format in a file `table_X.csv`,
 where `X` is the table number. This feature makes it easy to

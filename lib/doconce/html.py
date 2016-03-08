@@ -1267,7 +1267,7 @@ Causes of missing labels:
         jumbotron = option('html_bootstrap_jumbotron=', 'on')
         if jumbotron != 'off':
             # Fix jumbotron for title, author, date, toc, abstract, intro
-            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123] id="|^<div class="page-header">)'
+            pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123] id="|^<center><h1 id="|^<div class="page-header">)'
             # Exclude lists (not a good idea if they are part of the intro...)
             #pattern = r'(^<center><h1>[^\n]+</h1></center>[^\n]+document title.+?)(^<!-- !split -->|^<h[123]>[^\n]+?<a name=[^\n]+?</h[123]>|^<div class="page-header">|<[uo]l>)'
             m = re.search(pattern, filestr, flags=re.DOTALL|re.MULTILINE)

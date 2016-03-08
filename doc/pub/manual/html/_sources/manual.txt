@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Feb 28, 2016
+:Date: Mar 7, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -150,60 +150,10 @@ expressions).
 
 .. The mako tool also supports <%doc> .. </%doc>
 
-Demos
------
+Demos and Documentation
+-----------------------
 
 .. index:: demos
-
-The current text is generated from a DocOnce format stored in the
-directory
-
-.. code-block:: text
-
-        doc/manual/manual.do.txt
-
-file in the DocOnce source code tree. Here you can run a
-``make.sh`` script to generate a lot of different
-formats: HTML, LaTeX, plain text, etc., stored in the subdirectory ``demo``.
-To successfully run this script and compile all the different versions,
-you must have quite a lot of software installed, see
-the the section :ref:`install:doconce` for detailed information.
-However,
-the most commonly used formats of this manual are
-fortunately also accessible through the web:
-`HTML <http://hplgit.github.io/doconce/doc/pub/manual/manual.html>`__,
-`Sphinx <http://hplgit.github.io/doconce/doc/pub/manual/html/index.html>`__,
-and
-`PDF <http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf>`__.
-DocOnce supports a lot of different layouts of documents, see
-the `collection of various versions of a scientific report <http://hplgit.github.com/teamods/writing_reports/index.html>`__.
-
-Another demo is found in
-
-.. code-block:: text
-
-        doc/tutorial/tutorial.do.txt
-
-In the ``tutorial`` directory there is also a ``make.sh`` file producing a
-lot of formats in the subdirectory ``demo``.
-The three most common formats can be found on the web:
-`HTML <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html>`__,
-`Sphinx <http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html>`__,
-and
-`PDF <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`__.
-
-
-.. admonition:: Write DocOnce documents in a text editor with monospace font
-
-   Some DocOnce constructions are sensitive to whitespace (indentation in
-   lists is a primary example), so you *must* use a text editor with
-   monospace font (also known as verbatim text). Never use fonts like
-   Arial or Helvetica.
-   Other popular markup languages such as Sphinx and Markdown are also
-   sensitive to whitespace and require a monospace font.
-
-
-
 
 
 .. admonition:: This guide is for the experienced DocOnce writer
@@ -214,6 +164,72 @@ and
 
 
 
+
+The primary demo for what can be achieved as output from DocOnce documents
+regards a little `scientific report <http://hplgit.github.io/teamods/writing_reports/_static/report/do.txt.html>`__ that is compiled to
+a `range of various output documents <http://hplgit.github.io/teamods/writing_reports/index.html>`__. A version of that web page contains the specific
+compilation commands to create each of the output demonstrations.
+
+There is also a demo on the many different ways one can `create slides <http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html>`__.
+
+
+.. admonition:: Write DocOnce documents in a text editor with monospace font
+
+   Some DocOnce constructions are sensitive to whitespace (indentation in
+   lists is a primary example), so you *must* use a text editor with
+   monospace font (also known as verbatim text). Never use fonts like
+   Arial or Helvetica.
+   (Other popular markup languages such as Sphinx and Markdown are also
+   sensitive to whitespace and require a monospace font in the text editor.)
+
+
+
+
+
+.. admonition:: Tip: Read the FAQ
+
+   A lot of tips and problems have over the years been collected in the
+   Troubleshooting and FAQ document, available in
+   `Sphinx <http://hplgit.github.io/doconce/doc/pub/trouble/html/index.html>`__,
+   `HTML <http://hplgit.github.io/doconce/doc/pub/trouble/trouble.html>`__, and
+   `PDF <http://hplgit.github.io/doconce/doc/pub/trouble/trouble.pdf>`__.
+   The FAQ and this manual are the two key references for how to make use
+   of DocOnce.
+
+
+
+
+The DocOnce tutorial (available in
+`Sphinx <http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html>`__,
+`HTML <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html>`__, and
+`PDF <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`__ formats)
+has its source code in the GitHub repository for
+DocOnce, more precisely in the file
+
+.. code-block:: text
+
+        doc/src/tutorial/tutorial.do.txt
+
+One can compare this source with the output in
+`HTML <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html>`__,
+`Sphinx <http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html>`__,
+and
+`PDF <http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf>`__.
+The ``make.sh`` script in the same directory
+tells in detail how the various versions were compiled.
+
+The DocOnce source of the current manual is also found at the GitHub repository
+for DocOnce, in the file
+
+.. code-block:: text
+
+        doc/src/manual/manual.do.txt
+
+You can compare this source with the available output in
+`HTML <http://hplgit.github.io/doconce/doc/pub/manual/manual.html>`__,
+`Sphinx <http://hplgit.github.io/doconce/doc/pub/manual/html/index.html>`__,
+and
+`PDF <http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf>`__.
 
 .. !split
 
@@ -2871,18 +2887,13 @@ vertical rules in LaTeX tables (they are ignored for other formats):
 
 
 
-Tables to/from CSV Data Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quick way of creating tables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The command-line option ``--tables2csv`` (to ``doconce format``) makes
-DocOnce dump each table to CSV format in a file ``table_X.csv``, where
-``X`` is a generated table number. This feature makes it easy to load
-tables from DocOnce documents into spreadsheet programs for further
-analysis.
-
-.. index::
-   single: doconce commands; cvs2table
-
+It takes some efforts to put the pipes and dashes correctly in the
+table format. A quick way of generating a DocOnce table is to first
+put the table entries in a file with comma between the entries.
+This is essentially a file in the famous CSV format.
 Data in CSV format can be transformed to DocOnce table format
 by the ``doconce csv2table`` utility:
 
@@ -2890,8 +2901,7 @@ by the ``doconce csv2table`` utility:
 
         Terminal> doconce csv2table somefile.csv > table.do.txt
 
-This is a quick way of writing tables. For example, we can
-write a text file ``tmp.csv`` with
+For example, we can write a text file ``tmp.csv`` with
 
 .. code-block:: text
 
@@ -2922,6 +2932,18 @@ If the output from ``doconce csv2table`` is redirected to a file:
 one can easily include this file by ``# #include "mytable.do.txt"`` in the
 DocOnce source file. This is an efficient method for generating
 DocOnce tables directly from data.
+
+Tables from DocOnce to CSV Data Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The command-line option ``--tables2csv`` (to ``doconce format``) makes
+DocOnce dump each table to CSV format in a file ``table_X.csv``, where
+``X`` is a generated table number. This feature makes it easy to load
+tables from DocOnce documents into spreadsheet programs for further
+analysis.
+
+.. index::
+   single: doconce commands; cvs2table
 
 Lists
 -----
@@ -4552,13 +4574,29 @@ Examples are *not* typeset similarly to exercises unless one adds the
 command-line option ``--examples_as_exercises``. That is, without this
 option, any heading and starting with ``Example:`` makes DocOnce treat
 the forthcoming text as ordinary text without any interpretation of
-exercise-style instructions.  With the command-line option
+exercise-style instructions.  This is usually what you want.
+With the command-line option
 ``--examples_as_exercises``, one can use the ``!bsubex`` and ``!bsol``
 commands to indicate a subproblem and a solution in an example.  In
 this way, the typesetting of the example looks like an exercise
 equipped with a solution.
 As for exercises, the content of the example runs from the heading
 until the next subsection.
+
+
+.. admonition:: Examples and exercises share the same counter
+
+   If you use the ``--examples_as_exercises``, any subsection starting with
+   ``Example:`` will get a number for the example, and this number corresponds
+   to a counter that is shared with Exercise, Problem, and Project.
+   This may work well if you look at Example, Exercise, Problem, and Project
+   as much of the same thing, basically Example is then an Exercise with
+   solution. However, the same numbering of examples and exercises
+   may look quite odd too, so be careful with the
+   ``--examples_as_exercises`` option.
+
+
+
 
 List of Exercises, Problems, and Projects
 -----------------------------------------
@@ -6937,6 +6975,14 @@ guide.  The slides can either be ordinary, separate slides - or just a
 document with much briefer text and emphasis on bullet lists, figures,
 mathematical formulas, admonitions, and little text.
 
+.. NOTE: (*@pause@*) cannot be written as verbatim text because the two
+
+.. * makes this look like emphasize...can only appear in code blocks but
+
+.. will then be replaced by nothing in all formats except latex...not easy
+
+.. to describe this option...
+
 Points to consider (just sketches...):
 
  * Only some pygments style are suited for a particular reveal.js/deck.js
@@ -6949,7 +6995,7 @@ Points to consider (just sketches...):
  * Use ``--keep_pygments_html_bg`` to avoid big changes in background
    color for code
 
- * ``|\pause|`` command for pop-up in Beamer slides (ignored in other formats).
+ * pause command for pop-up in Beamer slides (ignored in other formats).
 
  * Can use PowerPoint or Google Presenter to design a slide and then
    save as image (GP directly, PP via Save as Picture or
@@ -7024,7 +7070,8 @@ slide sets:
  * Use the ``pop`` environment to pop up list items or blocks
    one by one.
 
- * You can use ``|\pause|`` inside code or math blocks to pop up
+ * You can use ``pause`` prefixed by ``(*@`` and postfixed by ``@*)``
+   inside code or math blocks to pop up
    code lines or formulas in Beamer slides (the pause command is
    simply ignored in other formats).
 
@@ -9407,7 +9454,7 @@ look for options starting with ``--latex`` to get a more verbose description):
 
  * ``--latex_fancy_header`` (chapter/section headings at top of pages, style depends on value of ``--latex_section_headings``)
 
- * ``--latex_section_headings=std,blue,strongblue,gray,gray-wide`` (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)
+ * ``--latex_section_headings=std,blue,bookblue,strongblue,gray,gray-wide`` (standard LaTeX, blue headings, blue headings for books, strong blue headings, white in gray box, white in gray box that fills the page width)
 
  * ``--latex_table_format=quote, center, footnotesize, tiny`` (environment around tables)
 
@@ -11009,13 +11056,13 @@ here for convenience.
         
         LaTeX style package used for the document.
         std: standard LaTeX article or book style,
-        Springer_sv: Springer's svmono class (new standard for all Springer books),
-        Springer_T2: Springer's T2 book style (replaced by T4),
-        Springer_T4: Springer's T4 book style,
+        Springer_sv: Springer's svmono class (the new standard for all Springer books),
+        Springer_T2: Springer's T2 book style,
+        Springer_T4: Springer's T4 book style (smaller pagesize than T2),
         Springer_lncse: Springer's Lecture Notes in Computational Science and
            Engineering (LNCSE) style,
         Springer_llncs: Springer's Lecture Notes in Computer Science style,
-        Springer_lnup: Springer's Lecture Notes in University Physics,
+        Springer_lnup:  Springer's Lecture Notes in University Physics,
         Springer_collection: Springer's style for chapters in LNCSE proceedings,
         tufte-book: use of tufte-book.cls for E. Tufte-inspired layout,
         Koma_Script: Koma Script style,

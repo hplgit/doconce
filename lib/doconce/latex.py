@@ -758,7 +758,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                         target = r'\tableofcontents'
                         filestr = filestr.replace(
                             target, target + insert_listofexercises)
-            # Fix Solutions chapter/section
+            # Fix chapter/section with solutions
             pattern = r'\\(section|chapter)\{Solutions\}'
             m = re.search(pattern, filestr)
             if m and latex_style == 'Springer_sv':

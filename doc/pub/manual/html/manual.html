@@ -95,7 +95,7 @@
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">DocOnce Description</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#demos">Demos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#demos-and-documentation">Demos and Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#markup-based-on-special-lines">Markup Based on Special Lines</a><ul>
@@ -131,7 +131,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tables">Tables</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#index-25">Basic Syntax</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tables-to-from-csv-data-files">Tables to/from CSV Data Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quick-way-of-creating-tables">Quick way of creating tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tables-from-doconce-to-csv-data-files">Tables from DocOnce to CSV Data Files</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#lists">Lists</a></li>
@@ -417,7 +418,7 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">DocOnce Description</a><ul>
 <li><a class="reference internal" href="#what-is-doconce">What Is DocOnce?</a><ul>
-<li><a class="reference internal" href="#demos">Demos</a></li>
+<li><a class="reference internal" href="#demos-and-documentation">Demos and Documentation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#markup-based-on-special-lines">Markup Based on Special Lines</a><ul>
@@ -453,7 +454,8 @@
 <li><a class="reference internal" href="#comments">Comments</a></li>
 <li><a class="reference internal" href="#tables">Tables</a><ul>
 <li><a class="reference internal" href="#index-25">Basic Syntax</a></li>
-<li><a class="reference internal" href="#tables-to-from-csv-data-files">Tables to/from CSV Data Files</a></li>
+<li><a class="reference internal" href="#quick-way-of-creating-tables">Quick way of creating tables</a></li>
+<li><a class="reference internal" href="#tables-from-doconce-to-csv-data-files">Tables from DocOnce to CSV Data Files</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#lists">Lists</a></li>
@@ -775,7 +777,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 28, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 7, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -867,54 +869,64 @@ languages. This disadvantage can be quite easily compensated, however,
 by clever use of the programmable Mako preprocessor used by DocOnce
 and by automatic editing of the generated output (e.g., via regular
 expressions).</p>
-<div class="section" id="demos">
-<h3>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h3>
-<p id="index-1">The current text is generated from a DocOnce format stored in the
-directory</p>
-<div class="highlight-text"><div class="highlight"><pre>doc/manual/manual.do.txt
-</pre></div>
+<div class="section" id="demos-and-documentation">
+<h3>Demos and Documentation<a class="headerlink" href="#demos-and-documentation" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-this-guide-is-for-the-experienced-doconce-writer admonition" id="index-1">
+<p class="first admonition-title">This guide is for the experienced DocOnce writer</p>
+<p class="last">Do not read the detailed descriptions of DocOnce syntax that follows
+(this is a manual!) before you have read the tutorial and played
+a little around with a simple document.</p>
 </div>
-<p>file in the DocOnce source code tree. Here you can run a
-<code class="docutils literal"><span class="pre">make.sh</span></code> script to generate a lot of different
-formats: HTML, LaTeX, plain text, etc., stored in the subdirectory <code class="docutils literal"><span class="pre">demo</span></code>.
-To successfully run this script and compile all the different versions,
-you must have quite a lot of software installed, see
-the the section <a class="reference internal" href="#install-doconce"><span class="std std-ref">Installation of DocOnce and its Dependencies</span></a> for detailed information.
-However,
-the most commonly used formats of this manual are
-fortunately also accessible through the web:
-<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html">HTML</a>,
-<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/index.html">Sphinx</a>,
-and
-<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf">PDF</a>.
-DocOnce supports a lot of different layouts of documents, see
-the <a class="reference external" href="http://hplgit.github.com/teamods/writing_reports/index.html">collection of various versions of a scientific report</a>.</p>
-<p>Another demo is found in</p>
-<div class="highlight-text"><div class="highlight"><pre>doc/tutorial/tutorial.do.txt
-</pre></div>
-</div>
-<p>In the <code class="docutils literal"><span class="pre">tutorial</span></code> directory there is also a <code class="docutils literal"><span class="pre">make.sh</span></code> file producing a
-lot of formats in the subdirectory <code class="docutils literal"><span class="pre">demo</span></code>.
-The three most common formats can be found on the web:
-<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html">HTML</a>,
-<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html">Sphinx</a>,
-and
-<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf">PDF</a>.</p>
+<p>The primary demo for what can be achieved as output from DocOnce documents
+regards a little <a class="reference external" href="http://hplgit.github.io/teamods/writing_reports/_static/report/do.txt.html">scientific report</a> that is compiled to
+a <a class="reference external" href="http://hplgit.github.io/teamods/writing_reports/index.html">range of various output documents</a>. A version of that web page contains the specific
+compilation commands to create each of the output demonstrations.</p>
+<p>There is also a demo on the many different ways one can <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html">create slides</a>.</p>
 <div class="admonition-write-doconce-documents-in-a-text-editor-with-monospace-font admonition">
 <p class="first admonition-title">Write DocOnce documents in a text editor with monospace font</p>
 <p class="last">Some DocOnce constructions are sensitive to whitespace (indentation in
 lists is a primary example), so you <em>must</em> use a text editor with
 monospace font (also known as verbatim text). Never use fonts like
 Arial or Helvetica.
-Other popular markup languages such as Sphinx and Markdown are also
-sensitive to whitespace and require a monospace font.</p>
+(Other popular markup languages such as Sphinx and Markdown are also
+sensitive to whitespace and require a monospace font in the text editor.)</p>
 </div>
-<div class="admonition-this-guide-is-for-the-experienced-doconce-writer admonition">
-<p class="first admonition-title">This guide is for the experienced DocOnce writer</p>
-<p class="last">Do not read the detailed descriptions of DocOnce syntax that follows
-(this is a manual!) before you have read the tutorial and played
-a little around with a simple document.</p>
+<div class="admonition-tip-read-the-faq admonition">
+<p class="first admonition-title">Tip: Read the FAQ</p>
+<p class="last">A lot of tips and problems have over the years been collected in the
+Troubleshooting and FAQ document, available in
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/trouble/html/index.html">Sphinx</a>,
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/trouble/trouble.html">HTML</a>, and
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/trouble/trouble.pdf">PDF</a>.
+The FAQ and this manual are the two key references for how to make use
+of DocOnce.</p>
 </div>
+<p>The DocOnce tutorial (available in
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html">Sphinx</a>,
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html">HTML</a>, and
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf">PDF</a> formats)
+has its source code in the GitHub repository for
+DocOnce, more precisely in the file</p>
+<div class="highlight-text"><div class="highlight"><pre>doc/src/tutorial/tutorial.do.txt
+</pre></div>
+</div>
+<p>One can compare this source with the output in
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.html">HTML</a>,
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/html/index.html">Sphinx</a>,
+and
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/tutorial/tutorial.pdf">PDF</a>.
+The <code class="docutils literal"><span class="pre">make.sh</span></code> script in the same directory
+tells in detail how the various versions were compiled.</p>
+<p>The DocOnce source of the current manual is also found at the GitHub repository
+for DocOnce, in the file</p>
+<div class="highlight-text"><div class="highlight"><pre>doc/src/manual/manual.do.txt
+</pre></div>
+</div>
+<p>You can compare this source with the available output in
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.html">HTML</a>,
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/index.html">Sphinx</a>,
+and
+<a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/manual.pdf">PDF</a>.</p>
 </div>
 </div>
 <div class="section" id="markup-based-on-special-lines">
@@ -3341,20 +3353,18 @@ the format and insert format-specific code for tables.</li>
 </ul>
 </div>
 </div>
-<div class="section" id="tables-to-from-csv-data-files">
-<h4>Tables to/from CSV Data Files<a class="headerlink" href="#tables-to-from-csv-data-files" title="Permalink to this headline">¶</a></h4>
-<p>The command-line option <code class="docutils literal"><span class="pre">--tables2csv</span></code> (to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>) makes
-DocOnce dump each table to CSV format in a file <code class="docutils literal"><span class="pre">table_X.csv</span></code>, where
-<code class="docutils literal"><span class="pre">X</span></code> is a generated table number. This feature makes it easy to load
-tables from DocOnce documents into spreadsheet programs for further
-analysis.</p>
-<p id="index-26">Data in CSV format can be transformed to DocOnce table format
+<div class="section" id="quick-way-of-creating-tables">
+<h4>Quick way of creating tables<a class="headerlink" href="#quick-way-of-creating-tables" title="Permalink to this headline">¶</a></h4>
+<p>It takes some efforts to put the pipes and dashes correctly in the
+table format. A quick way of generating a DocOnce table is to first
+put the table entries in a file with comma between the entries.
+This is essentially a file in the famous CSV format.
+Data in CSV format can be transformed to DocOnce table format
 by the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">csv2table</span></code> utility:</p>
 <div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce csv2table somefile.csv &gt; table.do.txt
 </pre></div>
 </div>
-<p>This is a quick way of writing tables. For example, we can
-write a text file <code class="docutils literal"><span class="pre">tmp.csv</span></code> with</p>
+<p>For example, we can write a text file <code class="docutils literal"><span class="pre">tmp.csv</span></code> with</p>
 <div class="highlight-text"><div class="highlight"><pre>time, velocity, acceleration
 0.0, 1.4186, -5.01
 2.0, 1.376512, 11.919
@@ -3379,9 +3389,17 @@ write a text file <code class="docutils literal"><span class="pre">tmp.csv</span
 DocOnce source file. This is an efficient method for generating
 DocOnce tables directly from data.</p>
 </div>
+<div class="section" id="tables-from-doconce-to-csv-data-files">
+<h4>Tables from DocOnce to CSV Data Files<a class="headerlink" href="#tables-from-doconce-to-csv-data-files" title="Permalink to this headline">¶</a></h4>
+<p>The command-line option <code class="docutils literal"><span class="pre">--tables2csv</span></code> (to <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span></code>) makes
+DocOnce dump each table to CSV format in a file <code class="docutils literal"><span class="pre">table_X.csv</span></code>, where
+<code class="docutils literal"><span class="pre">X</span></code> is a generated table number. This feature makes it easy to load
+tables from DocOnce documents into spreadsheet programs for further
+analysis.</p>
+</div>
 </div>
 <div class="section" id="lists">
-<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<span id="index-26"></span><h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-27"></span><span class="target" id="index-28"></span><span class="target" id="index-29"></span><p id="index-30">An unordered bullet list makes use of the <code class="docutils literal"><span class="pre">*</span></code> as bullet sign
 and is <em>consistently indented</em> by some chosen spaces as follows</p>
 <div class="highlight-doconce"><div class="highlight"><pre>* item 1
@@ -4574,13 +4592,25 @@ or <em>Project:</em> word, so that references like</p>
 command-line option <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>. That is, without this
 option, any heading and starting with <code class="docutils literal"><span class="pre">Example:</span></code> makes DocOnce treat
 the forthcoming text as ordinary text without any interpretation of
-exercise-style instructions.  With the command-line option
+exercise-style instructions.  This is usually what you want.
+With the command-line option
 <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>, one can use the <code class="docutils literal"><span class="pre">!bsubex</span></code> and <code class="docutils literal"><span class="pre">!bsol</span></code>
 commands to indicate a subproblem and a solution in an example.  In
 this way, the typesetting of the example looks like an exercise
 equipped with a solution.
 As for exercises, the content of the example runs from the heading
 until the next subsection.</p>
+<div class="admonition-examples-and-exercises-share-the-same-counter admonition">
+<p class="first admonition-title">Examples and exercises share the same counter</p>
+<p class="last">If you use the <code class="docutils literal"><span class="pre">--examples_as_exercises</span></code>, any subsection starting with
+<code class="docutils literal"><span class="pre">Example:</span></code> will get a number for the example, and this number corresponds
+to a counter that is shared with Exercise, Problem, and Project.
+This may work well if you look at Example, Exercise, Problem, and Project
+as much of the same thing, basically Example is then an Exercise with
+solution. However, the same numbering of examples and exercises
+may look quite odd too, so be careful with the
+<code class="docutils literal"><span class="pre">--examples_as_exercises</span></code> option.</p>
+</div>
 </div>
 </div>
 <div class="section" id="list-of-exercises-problems-and-projects">
@@ -6443,7 +6473,7 @@ theme</li>
 <li>Admon styles are erased in reveal</li>
 <li>Use <code class="docutils literal"><span class="pre">--keep_pygments_html_bg</span></code> to avoid big changes in background
 color for code</li>
-<li><code class="docutils literal"><span class="pre">|\pause|</span></code> command for pop-up in Beamer slides (ignored in other formats).</li>
+<li>pause command for pop-up in Beamer slides (ignored in other formats).</li>
 <li>Can use PowerPoint or Google Presenter to design a slide and then
 save as image (GP directly, PP via Save as Picture or
 Save As + choosing image type,
@@ -6519,7 +6549,8 @@ an extra <code class="docutils literal"><span class="pre">!split</span></code> a
 slide).</li>
 <li>Use the <code class="docutils literal"><span class="pre">pop</span></code> environment to pop up list items or blocks
 one by one.</li>
-<li>You can use <code class="docutils literal"><span class="pre">|\pause|</span></code> inside code or math blocks to pop up
+<li>You can use <code class="docutils literal"><span class="pre">pause</span></code> prefixed by <code class="docutils literal"><span class="pre">(*&#64;</span></code> and postfixed by <code class="docutils literal"><span class="pre">&#64;*)</span></code>
+inside code or math blocks to pop up
 code lines or formulas in Beamer slides (the pause command is
 simply ignored in other formats).</li>
 <li>Use the <code class="docutils literal"><span class="pre">slidecell</span></code> environment (see below) to create
@@ -8496,7 +8527,7 @@ look for options starting with <code class="docutils literal"><span class="pre">
 <li><code class="docutils literal"><span class="pre">--latex_copyright=everypage,titlepages</span></code> (copyright on every page or on titlepage and chapter pages)</li>
 <li><code class="docutils literal"><span class="pre">--latex_list_of_exercises=loe,toc,none</span></code> (LaTeX list of exercises, integrated into the table of contents, or no list)</li>
 <li><code class="docutils literal"><span class="pre">--latex_fancy_header</span></code> (chapter/section headings at top of pages, style depends on value of <code class="docutils literal"><span class="pre">--latex_section_headings</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
+<li><code class="docutils literal"><span class="pre">--latex_section_headings=std,blue,bookblue,strongblue,gray,gray-wide</span></code> (standard LaTeX, blue headings, blue headings for books, strong blue headings, white in gray box, white in gray box that fills the page width)</li>
 <li><code class="docutils literal"><span class="pre">--latex_table_format=quote,</span> <span class="pre">center,</span> <span class="pre">footnotesize,</span> <span class="pre">tiny</span></code> (environment around tables)</li>
 <li><code class="docutils literal"><span class="pre">--latex_colored_table_rows=blue,</span> <span class="pre">gray,</span> <span class="pre">no</span></code> (color of every two lines in tables)</li>
 <li><code class="docutils literal"><span class="pre">--latex_table_row_sep=1.5</span></code> (increase the separation between table (and matrix) rows by a factor 1.5)</li>
@@ -9810,13 +9841,13 @@ Switch latex environments such no equations get a number (useful for removing eq
 
 LaTeX style package used for the document.
 std: standard LaTeX article or book style,
-Springer_sv: Springer&#39;s svmono class (new standard for all Springer books),
-Springer_T2: Springer&#39;s T2 book style (replaced by T4),
-Springer_T4: Springer&#39;s T4 book style,
+Springer_sv: Springer&#39;s svmono class (the new standard for all Springer books),
+Springer_T2: Springer&#39;s T2 book style,
+Springer_T4: Springer&#39;s T4 book style (smaller pagesize than T2),
 Springer_lncse: Springer&#39;s Lecture Notes in Computational Science and
    Engineering (LNCSE) style,
 Springer_llncs: Springer&#39;s Lecture Notes in Computer Science style,
-Springer_lnup: Springer&#39;s Lecture Notes in University Physics,
+Springer_lnup:  Springer&#39;s Lecture Notes in University Physics,
 Springer_collection: Springer&#39;s style for chapters in LNCSE proceedings,
 tufte-book: use of tufte-book.cls for E. Tufte-inspired layout,
 Koma_Script: Koma Script style,

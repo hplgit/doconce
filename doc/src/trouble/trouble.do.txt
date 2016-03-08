@@ -40,6 +40,21 @@ idx{acknowledge the DocOnce software}
 See the ``How to cite'' section
 on the "project page": "https://github.com/hplgit/doconce".
 
+===== Translation aborts when labels are not defined =====
+
+By default, the DocOnce translation aborts when references
+are found to lables not defined in the document (i.e., labels in other
+documents). This abortion can be annoying, and although it can be
+nullified by `--no_abort`, that option also ignores other error messages.
+Instead, use `--allow_refs_to_external_docs` to allow references to labels
+in other documents (these references will of course not work).
+
+References to labels in other documents should anyway appear inside
+*generalized references*, see the "Generalied Cross-Referencing":
+"http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-xross-referencing"
+section in the manual.
+
+
 ===== How to I control the table of contents? =====
 label{sec:toc_depth}
 
@@ -2008,16 +2023,6 @@ is an easy-to-use service that gives you some HTML code to include
 in the document, typically inside a `# #if FORMAT == "html"` and `# #endif`
 block.
 
-===== Translation aborts when labels are not defined =====
-
-By default, the DocOnce translation of HTML document aborts when references
-are found to lables not defined in the document (i.e., labels in other
-documents). This abortion can be annoying, and although it can be
-nullified by `--no_abort`, that option also ignores other error messages.
-Instead, use `--allow_refs_to_external_docs` to allow references to labels
-in other documents. These references will of course not work, but the
-option can be handy, e.g., while compiling chapters for a book individually.
-
 ===== MathJax formulas are not properly rendered =====
 
 Here are some common problems:
@@ -2026,13 +2031,20 @@ Here are some common problems:
    from copying and pasting equations).
  * `[` and `]` brackets must sometimes be replaced by `\lbrack` and `\rbrack`.
  * Inline mathematics cannot have a space after the first dollar sign.
- * Equation environments must be '\[ ...\]`, `equation`, `equation*`,
-   `align`, or `align*` - avoid all other types of environments.
- * Errors in formulas that LaTeX accepts lead to unrendered formulas in MathJax.
+ * Equation environments must be `\[ ...\]`, `equation`, `equation*`,
+   `align`, or `align*` - avoid all other types of environments
+   (`split`, `alignat`, and whatever).
+ * Errors in formulas that LaTeX accepts may still
+   lead to unrendered formulas in MathJax.
 
-If the corresponding PDF output has the correct formula, one must try to
-rewrite the LaTeX mathematics so MathJax accepts it. MathJax can only
-handle a subset of what is legal mathematics in LaTeX.
+If the corresponding LaTeX-based PDF output has the correct formula,
+one must try to rewrite the LaTeX mathematics so MathJax accepts
+it. MathJax can only handle a subset of what is legal mathematics in
+LaTeX.
+
+Even if HTML is your target output format, it is strongly recommended to
+develop the mathematics with `pdflatex` as output to debug formulas
+before you try to render them in MathJax.
 
 
 ===== How can I change the layout of the HTML page? =====
@@ -2042,12 +2054,12 @@ handle a subset of what is legal mathematics in LaTeX.
 The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 DocOnce document to HTML. The edits should therefore be automated
-using `doconce subst` (for regular expression editing) or `doconce replace`
+using the `doconce subst` (for regular expression editing) or `doconce replace`
 (for plain text substitution editing) commands in the file where
 you run `doconce format html mydoc`. For example, say you want narrower
 gray admonition boxes with a much thicker boundary. The `.alert`
 style must then be changed, more precisely the `border` and the `width`
-specification:
+specification. You can then add these statements after running `doconce format html ...`:
 
 !bc shcod
 doconce replace 'border:1px' 'border:11px' mydoc.html
