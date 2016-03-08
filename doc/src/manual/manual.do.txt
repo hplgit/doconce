@@ -2449,6 +2449,8 @@ by a colon and a title of the exercise, problem, or project.
 
 ===== Examples on Exercise Syntax =====
 
+=== Elements in an Exercise ===
+
 The next line(s) may contain a label and specification of the
 name of the result file(s) (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:
@@ -2475,16 +2477,19 @@ directives `!bans`, `!eans`, `!bsol`, `!esol`, `!bhint`, `!ehint`, which
 all must appear on the beginning of a separate line (just as
 `!bc` and `!ec`).
 
+The `file=` or `files=` command accepts a comma-separated list of filenames.
+Sometimes it is appropriate to skip the file extension and just give
+a filestem, as in `file=earth2moon`.
+
+
+=== Solutions ===
+
 The solution environment with `!bsol` and `!esol` allows inline
 solution as an alternative to the `solution=...` directive mentioned
 above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired. It seems that
 DocOnce authors prefer `!bsol` and `!esol` over a separate solution file.
-
-The `file=` or `files=` command accepts a comma-separated list of filenames.
-Sometimes it is appropriate to skip the file extension and just give
-a filestem, as in `file=earth2moon`.
 
 !bwarning Avoid headings in solutions
 Headings in solutions in exercises will
@@ -2503,6 +2508,13 @@ chapters). If you compile versions of the document with and without
 solutions, the equation numbering may differ between the versions and may
 cause confusion among readers.
 !ewarning
+
+The command line options `--without_answers` and `--without_solutions`
+turn off output of answers and solutions, respectively, except for
+examples.
+
+
+=== Example ===
 
 A full exercise set-up can be sketched as follows:
 
@@ -2554,7 +2566,9 @@ subexercises are not appropraite.
 |ec
 !ec
 
-A recommended rule for using the different ``exercise'' types goes as follows:
+=== Exercise versus Problem and Project ===
+
+Recommended rules for using the different ``exercise'' types goes as follows:
 
   * Exercises are smaller problems directly related to the present chapter
     (e.g., with references to the text).
@@ -2564,9 +2578,7 @@ A recommended rule for using the different ``exercise'' types goes as follows:
   * Examples are exercises, problems, or projects, but with full solutions
     not typeset with `!bsol` and `!esol` but as running text
 
-The command line options `--without_answers` and `--without_solutions`
-turn off output of answers and solutions, respectively, except for
-examples.
+=== Modified Heading ===
 
 Sometimes one does not want the heading of an exercise, problem, project,
 or example to contain the keyword `Exercise:`, `Problem:`, `Project:`,
@@ -2576,8 +2588,12 @@ or `Example:`. By enclosing the keyword in braces, as in
 ===== {Problem}: Find a solution to a problem =====
 !ec
 the keyword is marked for being left out of the heading, resulting in
-the heading ``Find a solution to a problem''.
+the heading ``Find a solution to a problem''. In this case, there is
+no numbering of exercises, problems, projects, or examples, so
+`--section_numbering=on` for numbering *all* sections in the document
+may be a desired option.
 
+=== Data Structure for all Exercises ===
 
 The various elements of exercises are collected in a special data
 structure (list of dictionaries) stored in a file `.mydoc.exerinfo`,
