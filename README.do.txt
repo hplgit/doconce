@@ -14,6 +14,10 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 Here are some of the most recent features in DocOnce:
 
+ * Now you can copy code from files and left-adjust the code `X`
+   spaces by the syntax `@@@CODE-X filename`. This is particularly useful
+   when copying code snippets from function bodies and get
+   the snippets to start in column 1.
  * DocOnce supports various types of copyright statements for
    commercial and academic settings (thanks to Louis Criscuolo's
    many suggestions to implement this important feature). See

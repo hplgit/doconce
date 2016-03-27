@@ -3346,6 +3346,19 @@ will be included. If source files have a header with author, email, etc.,
 one can remove this header by the option `'--code_skip_until=# ---'`.
 The lines up to and including (the first) `# ---` will then be excluded.
 
+=== Removing indentation in copied code ===
+
+In general, it is not recommended to have a code block where all lines
+are indented, because in some output formats the indentation is respected
+(e.g., LaTeX) while others ignore it (e.g., Sphinx). Therefore, at least
+one line of the code should start in column 1.
+
+Sometimes you want to copy a part of a function where all code is indented.
+Then you also want to remove the indentation. This is enabled by
+`@@@CODE-X`, where `X` is the number of blanks in the indentation to be
+removed. For example, `@@@CODE-4` will copy the code and remove the first
+4 characters from each line.
+
 !split
 ===== LaTeX Blocks of Mathematical Text =====
 label{mathtext}

@@ -1047,7 +1047,7 @@ def bm2boldsymbol(filestr, format):
     return filestr
 
 def insert_code_from_file(filestr, format):
-    if not '@@@CODE ' in filestr:
+    if not ('@@@CODE ' in filestr or '@@@CODE-' in filestr):
         return filestr, 0
 
     # Create dummy file if specified file not found?
@@ -1073,10 +1073,12 @@ def insert_code_from_file(filestr, format):
         if inside_verbatim:
             continue
 
-        if line.startswith('@@@CODE '):
+        if line.startswith('@@@CODE'):
             num_files += 1
             debugpr('found verbatim copy (line %d):\n%s\n' % (i+1, line))
             code_envir = None
+            m = re.search(r'@@@CODE-(\d+)', line)
+            remove_indentation = int(m.group(1)) if m else 0
             words = line.split()
             try:
                 filename = words[1]
@@ -1247,8 +1249,13 @@ def insert_code_from_file(filestr, format):
                         from_line = line_no+2
                         debugpr('hit (from-to:) start "%s" (as "%s") in line no. %d\n%s\ncode environment: %s' % (from_, codeline[mf.start():mf.end()], line_no+1, codeline, code_envir if code_envir else 'none'))
 
+                if remove_indentation:
+                    for k in range(len(codelines)):  # (don't use i!)
+                        codelines[k] = codelines[k][remove_indentation:]
+
                 code = ''.join(codelines)
                 code = code.rstrip() # remove trailing whitespace
+
                 if code == '' or code.isspace():
                     if not from_found:
                         print 'error: could not find regex "%s"!' % from_,
