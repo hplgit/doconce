@@ -369,10 +369,10 @@ backgroundcolor=\color{cbg_gray},
 %frame=tb,                            % include frame
 %framerule=1mm                        % thickness of frame
 %linewidth=100mm                      % box width
-keywordstyle=\color{keyword_pink}\bfseries,
-commentstyle=\color{comment_green}\slshape,
-stringstyle=\color{string_red},
-identifierstyle=\color{darkorange},
+keywordstyle=\color{black},
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkblue},
 }
 """,
         garycolorbar="""
@@ -381,13 +381,18 @@ identifierstyle=\color{darkorange},
 backgroundcolor=\color{cbg_gray},
 frame=tb,                             % include frame
 rulecolor=\color{bar_gray1},          % frame color
-keywordstyle=\color{keyword_pink}\bfseries,
-commentstyle=\color{comment_green}\slshape,
-stringstyle=\color{string_red},
-identifierstyle=\color{darkorange},
+keywordstyle=\color{black},
+commentstyle=\color{myteal},
+stringstyle=\color{darkgreen},
+identifierstyle=\color{darkblue},
 }
 """,
         )
+    # Orange/pink for graycolor:
+    #keywordstyle=\color{keyword_pink}\bfseries,
+    #commentstyle=\color{comment_green}\slshape,
+    #stringstyle=\color{string_red},
+    #identifierstyle=\color{darkorange},
 
     # Just write styles for the ones that are requested
     requested_styles = re.findall(r'style=([A-Za-z0-9:_]+)[,\]]',
