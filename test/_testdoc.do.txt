@@ -820,7 +820,7 @@ and ``with comma'', ``hyphen''-wise, and ``period''.
 
 Here is an example: cite{Langtangen_Pedersen_2002} discussed propagation of
 large destructive water waves, cite{Langtangen_et_al_2002} gave
-an overview of numerical methods for solving the Navier-Stokes equations,
+an overview of numerical methods for solving the Navier--Stokes equations,
 while the use of Backward Kolmogorov equations for analyzing
 random vibrations was investigated in cite{Langtangen_1994a}.
 The book chapter cite{Mardal_et_al_2003a} contains information on
@@ -1037,7 +1037,7 @@ b &= \nabla^2 u + \nabla^4 x label{eq2}
 \end{align}
 !et
 We can refer to (ref{eq1})-(ref{eq2}). They are a bit simpler than
-the Navier-Stokes equations. And test LaTeX hyphen in `CG-2`.
+the Navier--Stokes equations. And test LaTeX hyphen in `CG-2`.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
 % if FORMAT in ("latex", "pdflatex"):
@@ -1682,6 +1682,9 @@ or in quotes:
 !bquote
 Fun is fun.--- Unknown.
 !equote
+
+The ndash should also be tested: as in the Navier--Stokes equations
+or page references 277--288.
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.

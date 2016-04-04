@@ -1910,12 +1910,6 @@ def html_ref_and_label(section_label2title, format, filestr):
 
     filestr = fix_ref_section_chapter(filestr, format)
 
-    # Recognize mdash ---
-    # Must be attached to text or to a quote (ending in ., quotes, or
-    # emphasis *)
-    pattern = r'''([^-][A-Za-z0-9.'"*])---([A-Za-z ][^-])'''
-    filestr = re.sub(pattern, '\g<1>&mdash;\g<2>', filestr)
-
     # extract the labels in the text (filestr is now without
     # mathematics and associated labels)
     running_text_labels = re.findall(r'label\{(.+?)\}', filestr)

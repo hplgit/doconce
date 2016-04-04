@@ -43,4 +43,5 @@ Subexercises
 multiline
 Ooops
 mdash
+ndash
 mailto

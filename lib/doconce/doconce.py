@@ -728,7 +728,7 @@ Causes of missing labels:
         filestr2 = re.sub(r'idx\{(.+?)\}', '', filestr2, flags=re.MULTILINE)
         filestr2 = re.sub(INLINE_TAGS['paragraph'], '', filestr2,
                           flags=re.MULTILINE)
-        filestr2 = re.sub(r'^@@@CODE .+', '', filestr2,
+        filestr2 = re.sub(r'^@@@CODE.+', '', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(r'^keywords=.+', '', filestr2,
                           flags=re.MULTILINE)
@@ -739,14 +739,18 @@ Causes of missing labels:
         filestr2 = re.sub(INLINE_TAGS['bold'], ' ', filestr2,
                           flags=re.MULTILINE)
         filestr2 = re.sub(r'^#.*\n', '', filestr2, flags=re.MULTILINE)
+        underscore_word_pattern = r'\s[A-Za-z0-9_]*_[A-Za-z0-9_]*\s'
         underscore_words = [word.strip() for word in
-                            re.findall(r'\s[A-Za-z0-9_]*_[A-Za-z0-9_]*\s',
-                                       filestr2)]
+                            re.findall(underscore_word_pattern, filestr2)]
         if underscore_words:
             print '*** warning: latex format will have problem with words'
             print '    containing underscores:\n'
             print '\n'.join(underscore_words)
             print '\n    typeset these words with `inline verbatim` or escape with backslash'
+            m = re.search(underscore_word_pattern, filestr2)
+            if m:
+                print '    First word appears here:\n', filestr2[m.start()-50:m.start()+60]
+
 
     # Check that headings have consistent use of = signs
     for line in filestr.splitlines():
@@ -2915,7 +2919,19 @@ def handle_cross_referencing(filestr, format, tex_blocks):
         else:
             filestr = filestr.replace(ref_text, external)
 
-    # 4. Perform format-specific editing of ref{...} and label{...}
+    # 4  Deal with ndash and mdash
+    # mdash must be attached to text or to a quote (ending in ., quotes, or
+    # emphasis *)
+    mdash_pattern = r'''([^-][A-Za-z0-9.'"*])---([A-Za-z ][^-])'''
+    ndash_pattern = r'''([^-][A-Za-z0-9])--([A-Za-z0-9][^-])'''
+    if format in ('html', 'pandoc'):
+        filestr = re.sub(mdash_pattern, '\g<1>&mdash;\g<2>', filestr)
+        filestr = re.sub(ndash_pattern, '\g<1>&ndash;\g<2>', filestr)
+    elif format not in ('latex', 'pdflatex', 'html', 'pandoc'):
+        # For simple formats, replace ndash by single dash
+        filestr = re.sub(ndash_pattern, '\g<1>-\g<2>', filestr)
+
+    # 5. Perform format-specific editing of ref{...} and label{...}
     filestr = CROSS_REFS[format](section_label2title, format, filestr)
 
     return filestr
@@ -4694,15 +4710,29 @@ preprocess package (sudo apt-get install preprocess).
         for code_block in code_blocks:
             m = re.search(mako_commands, code_block, re.MULTILINE)
             if m:
-                print '\n\n*** warning: detected problem with the code block\n---------------------------'
-                print code_block
-                print '''---------------------------
+                # Check first if we just use mako commands
+                ok_words = '% +if', '% +for', '% +endif', '% +elif', '% +else', '% +endfor'
+                ok_word = False
+                for line in code_block.splitlines():
+                    line = line.lstrip()
+                    if line.startswith('%'):
+                        for w in ok_words:
+                            m2 = re.search('^' + w, line)
+                            if m2:
+                                ok_word = True
+                    elif line.startswith('${'):
+                        ok_word = True
+
+                if not ok_word:
+                    print '\n\n*** warning: detected problem with the code block\n---------------------------'
+                    print code_block
+                    print '''---------------------------
 The above code block contains "%s" on the *beginning of a line*.
 Such lines cause problems for the mako preprocessor
 since it thinks this is a mako statement.
 ''' % (m.group(0))
-                print
-                mako_problems = True
+                    print
+                    mako_problems = True
         if mako_problems:
             print '''\
 Use %% in the code block(s) above to fix the problem with % at the
@@ -4715,7 +4745,7 @@ Including --no_mako on the command line avoids running mako.
 the % char away from the beginning of the line.)
 '''
             print 'mako is not run because of lines starting with %,'
-            print 'fix the lines as described or remove all mako statements.'
+            print 'fix the lines as described or remove the mako statements.'
             _abort()
             return filename if preprocessor is None else resultfile
 
