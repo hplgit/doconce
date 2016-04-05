@@ -1683,8 +1683,8 @@ or in quotes:
 Fun is fun.--- Unknown.
 !equote
 
-The ndash should also be tested: as in the Navier--Stokes equations
-or page references 277--288.
+The ndash should also be tested -- as in the Hanson--Nilson equations
+on page 277--278.
 
 And finally, what about admons, quotes, and boxes? They are tested
 in a separate document: `admon.do.txt`.

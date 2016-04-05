@@ -4969,6 +4969,21 @@ follwing `.gitignore` file is useful:
 
 !bc
 syntax: glob
+# doconce files:
+*.rst
+*.ipynb
+*.gwiki
+*.cwiki
+*.mwiki
+*.pdf
+*.tex
+automake_sphinx.py
+.*_html_file_collection
+.*.exerinfo
+.*.copyright
+sphinx-rootdir
+Trash
+papers.bib
 # compiled files:
 *.o
 *.so
@@ -5007,12 +5022,6 @@ temp*
 .idea
 __pycache__
 _minted-*
-# doconce:
-.*_html_file_collection
-.*.exerinfo
-.*.copyright
-sphinx-rootdir
-Trash
 !ec
 
 

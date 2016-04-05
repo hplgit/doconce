@@ -2923,13 +2923,16 @@ def handle_cross_referencing(filestr, format, tex_blocks):
     # mdash must be attached to text or to a quote (ending in ., quotes, or
     # emphasis *)
     mdash_pattern = r'''([^-][A-Za-z0-9.'"*])---([A-Za-z ][^-])'''
-    ndash_pattern = r'''([^-][A-Za-z0-9])--([A-Za-z0-9][^-])'''
+    ndash_pattern1 = r'''([^-][A-Za-z0-9])--([A-Za-z0-9][^-])'''
+    ndash_pattern2 = r'''(\s)--(\s)'''  # sentence -- with ndash
     if format in ('html', 'pandoc'):
         filestr = re.sub(mdash_pattern, '\g<1>&mdash;\g<2>', filestr)
-        filestr = re.sub(ndash_pattern, '\g<1>&ndash;\g<2>', filestr)
+        filestr = re.sub(ndash_pattern1, '\g<1>&ndash;\g<2>', filestr)
+        filestr = re.sub(ndash_pattern2, '\g<1>&ndash;\g<2>', filestr)
     elif format not in ('latex', 'pdflatex', 'html', 'pandoc'):
         # For simple formats, replace ndash by single dash
-        filestr = re.sub(ndash_pattern, '\g<1>-\g<2>', filestr)
+        filestr = re.sub(ndash_pattern1, '\g<1> - \g<2>', filestr)
+        filestr = re.sub(ndash_pattern2, '\g<1>-\g<2>', filestr)
 
     # 5. Perform format-specific editing of ref{...} and label{...}
     filestr = CROSS_REFS[format](section_label2title, format, filestr)
