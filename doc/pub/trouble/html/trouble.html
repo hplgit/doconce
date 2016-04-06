@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Feb 8, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 6, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -112,6 +112,18 @@ gives an error message, try to rewrite.</p>
 <span id="sec-cite"></span><h3>How do I cite and link to DocOnce?<a class="headerlink" href="#how-do-i-cite-and-link-to-doconce" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="index-2"></span><p id="index-3">See the &#8220;How to cite&#8221; section
 on the <a class="reference external" href="https://github.com/hplgit/doconce">project page</a>.</p>
+</div>
+<div class="section" id="translation-aborts-when-labels-are-not-defined">
+<h3>Translation aborts when labels are not defined<a class="headerlink" href="#translation-aborts-when-labels-are-not-defined" title="Permalink to this headline">¶</a></h3>
+<p>By default, the DocOnce translation aborts when references
+are found to lables not defined in the document (i.e., labels in other
+documents). This abortion can be annoying, and although it can be
+nullified by <code class="docutils literal"><span class="pre">--no_abort</span></code>, that option also ignores other error messages.
+Instead, use <code class="docutils literal"><span class="pre">--allow_refs_to_external_docs</span></code> to allow references to labels
+in other documents (these references will of course not work).</p>
+<p>References to labels in other documents should anyway appear inside
+<em>generalized references</em>, see the <a class="reference external" href="http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#generalized-xross-referencing">Generalied Cross-Referencing</a>
+section in the manual.</p>
 </div>
 <div class="section" id="how-to-i-control-the-table-of-contents">
 <span id="sec-toc-depth"></span><h3>How to I control the table of contents?<a class="headerlink" href="#how-to-i-control-the-table-of-contents" title="Permalink to this headline">¶</a></h3>
@@ -923,6 +935,18 @@ cite {book}][the section ``Guidelines&#39;&#39; in the document
 command will then effectively remove everything with the
 <code class="docutils literal"><span class="pre">#</span> <span class="pre">Externaldocuments:</span></code> command and generalized references.</p>
 </div>
+<div class="section" id="what-is-the-difference-between-doconce-replace-and-doconce-subst">
+<h3>What is the difference between doconce replace and doconce subst?<a class="headerlink" href="#what-is-the-difference-between-doconce-replace-and-doconce-subst" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code> replaces one text by another, exactly as the text is
+written. For example, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span> <span class="pre">float</span> <span class="pre">double</span> <span class="pre">*.do.txt</span></code> is the same as
+invoking an editor and replacing <code class="docutils literal"><span class="pre">float</span></code> by <code class="docutils literal"><span class="pre">double</span></code> in all files <code class="docutils literal"><span class="pre">*.do.txt</span></code>.
+On the other hand, <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> works with <em>regular expressions</em>, so
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span> <span class="pre">from</span> <span class="pre">to</span></code> is the same as <code class="docutils literal"><span class="pre">re.sub(from,</span> <span class="pre">to)</span></code> in Python.
+You need experience with <code class="docutils literal"><span class="pre">re.sub</span></code> and regular expressions to take advantage
+of <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code>.
+Regular expressions are much more powerful for editing text, but also
+more complicated and errorprone.</p>
+</div>
 </div>
 <div class="section" id="preprocess-mako">
 <h2>Preprocess/Mako<a class="headerlink" href="#preprocess-mako" title="Permalink to this headline">¶</a></h2>
@@ -1081,7 +1105,7 @@ indicate a verbatim block of text).</p>
 <h3>Strange errors around code or TeX blocks in reST<a class="headerlink" href="#strange-errors-around-code-or-tex-blocks-in-rest" title="Permalink to this headline">¶</a></h3>
 <p>If <code class="docutils literal"><span class="pre">idx</span></code> commands for defining indices are placed inside paragraphs,
 and especially right before a code block, the reST translator
-(rst and sphinx formats) may get confused and produce strange
+(<code class="docutils literal"><span class="pre">rst</span></code> and <code class="docutils literal"><span class="pre">sphinx</span></code> formats) may get confused and produce strange
 code blocks that cause errors when the reST text is transformed to
 other formats. The remedy is to define items for the index outside
 paragraphs.</p>
@@ -1158,7 +1182,7 @@ DocOnce manual for description of the problem and its solutions.</p>
 <p>HTML generated by Sphinx applies MathJax for rendering LaTeX mathematics.
 Due to the way Sphinx embeds these formulas in HTML, sometimes the
 formulas are not being rendered and instead the pure LaTeX code is
-put in a box.</p>
+put in a box. The same formulas may appear right in pure HTML.</p>
 <p>The first thing to do is to check that the LaTeX generated PDF format
 shows the formula correctly. The next step is to compile to HTML and
 check if MathJax in pure HTML renders the formula correctly. If so,
@@ -1166,9 +1190,24 @@ the formula is correctly typeset, and the problem is related to Sphinx.</p>
 <p>There are basically two remedies: either drop Sphinx and go for HTML, or
 try to rewrite the formula and try until the Sphinx-generated
 HTML code manages to render it.</p>
-<p>The typical problems encountered may include
-formulas with use of <code class="docutils literal"><span class="pre">\bar\boldsymbol{}</span></code>
-and align environments with multiple equations.</p>
+<p>Copy the problematic typesetting to a minimalistic document. If the
+original document is split into pieces via
+<code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_rst</span></code>, make sure your minimalistic document also contains
+a <code class="docutils literal"><span class="pre">!split</span></code> command and is split into at least two pieces. This is because
+equations get tags when documents are split, and with the <code class="docutils literal"><span class="pre">\tag{}</span></code> command,
+it seems that sphinx rewrites the MathJax code, and this may cause
+problems. This also means that dropping <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">split_rst</span></code> and having
+one big HTML file for Sphinx can make the rendering of mathematics
+(much) easier.</p>
+<p>Some typical problems encountered are listed below.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Formulas with use of <code class="docutils literal"><span class="pre">\bar\boldsymbol{}</span></code>.</li>
+<li>Align environments with multiple equations. Try to simplify
+typesetting.</li>
+<li><code class="docutils literal"><span class="pre">\mbox</span></code> or <code class="docutils literal"><span class="pre">\hbox</span></code> commands in equations.</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="sphinx-directory-generation-aborts-with-label-empty-or-too-long">
 <h3>Sphinx directory generation aborts with &#8220;label empty or too long&#8221;<a class="headerlink" href="#sphinx-directory-generation-aborts-with-label-empty-or-too-long" title="Permalink to this headline">¶</a></h3>
@@ -1799,16 +1838,6 @@ is an easy-to-use service that gives you some HTML code to include
 in the document, typically inside a <code class="docutils literal"><span class="pre">#</span> <span class="pre">#if</span> <span class="pre">FORMAT</span> <span class="pre">==</span> <span class="pre">&quot;html&quot;</span></code> and <code class="docutils literal"><span class="pre">#</span> <span class="pre">#endif</span></code>
 block.</p>
 </div>
-<div class="section" id="translation-aborts-when-labels-are-not-defined">
-<h3>Translation aborts when labels are not defined<a class="headerlink" href="#translation-aborts-when-labels-are-not-defined" title="Permalink to this headline">¶</a></h3>
-<p>By default, the DocOnce translation of HTML document aborts when references
-are found to lables not defined in the document (i.e., labels in other
-documents). This abortion can be annoying, and although it can be
-nullified by <code class="docutils literal"><span class="pre">--no_abort</span></code>, that option also ignores other error messages.
-Instead, use <code class="docutils literal"><span class="pre">--allow_refs_to_external_docs</span></code> to allow references to labels
-in other documents. These references will of course not work, but the
-option can be handy, e.g., while compiling chapters for a book individually.</p>
-</div>
 <div class="section" id="mathjax-formulas-are-not-properly-rendered">
 <h3>MathJax formulas are not properly rendered<a class="headerlink" href="#mathjax-formulas-are-not-properly-rendered" title="Permalink to this headline">¶</a></h3>
 <p>Here are some common problems:</p>
@@ -1818,14 +1847,20 @@ option can be handy, e.g., while compiling chapters for a book individually.</p>
 from copying and pasting equations).</li>
 <li><code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code> brackets must sometimes be replaced by <code class="docutils literal"><span class="pre">\lbrack</span></code> and <code class="docutils literal"><span class="pre">\rbrack</span></code>.</li>
 <li>Inline mathematics cannot have a space after the first dollar sign.</li>
-<li>Equation environments must be &#8216;[ ...]`, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">equation*</span></code>,
-<code class="docutils literal"><span class="pre">align</span></code>, or <code class="docutils literal"><span class="pre">align*</span></code> - avoid all other types of environments.</li>
-<li>Errors in formulas that LaTeX accepts lead to unrendered formulas in MathJax.</li>
+<li>Equation environments must be <code class="docutils literal"><span class="pre">\[</span> <span class="pre">...\]</span></code>, <code class="docutils literal"><span class="pre">equation</span></code>, <code class="docutils literal"><span class="pre">equation*</span></code>,
+<code class="docutils literal"><span class="pre">align</span></code>, or <code class="docutils literal"><span class="pre">align*</span></code> - avoid all other types of environments
+(<code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">alignat</span></code>, and whatever).</li>
+<li>Errors in formulas that LaTeX accepts may still
+lead to unrendered formulas in MathJax.</li>
 </ul>
 </div></blockquote>
-<p>If the corresponding PDF output has the correct formula, one must try to
-rewrite the LaTeX mathematics so MathJax accepts it. MathJax can only
-handle a subset of what is legal mathematics in LaTeX.</p>
+<p>If the corresponding LaTeX-based PDF output has the correct formula,
+one must try to rewrite the LaTeX mathematics so MathJax accepts
+it. MathJax can only handle a subset of what is legal mathematics in
+LaTeX.</p>
+<p>Even if HTML is your target output format, it is strongly recommended to
+develop the mathematics with <code class="docutils literal"><span class="pre">pdflatex</span></code> as output to debug formulas
+before you try to render them in MathJax.</p>
 </div>
 <div class="section" id="how-can-i-change-the-layout-of-the-html-page">
 <h3>How can I change the layout of the HTML page?<a class="headerlink" href="#how-can-i-change-the-layout-of-the-html-page" title="Permalink to this headline">¶</a></h3>
@@ -1834,12 +1869,12 @@ handle a subset of what is legal mathematics in LaTeX.</p>
 <p>The easiest way is to edit the HTML style or the HTML code directly.
 However, those edits are overwritten the next time you compile the
 DocOnce document to HTML. The edits should therefore be automated
-using <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> (for regular expression editing) or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code>
+using the <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">subst</span></code> (for regular expression editing) or <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">replace</span></code>
 (for plain text substitution editing) commands in the file where
 you run <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">mydoc</span></code>. For example, say you want narrower
 gray admonition boxes with a much thicker boundary. The <code class="docutils literal"><span class="pre">.alert</span></code>
 style must then be changed, more precisely the <code class="docutils literal"><span class="pre">border</span></code> and the <code class="docutils literal"><span class="pre">width</span></code>
-specification:</p>
+specification. You can then add these statements after running <code class="docutils literal"><span class="pre">doconce</span> <span class="pre">format</span> <span class="pre">html</span> <span class="pre">...</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre>doconce replace <span class="s1">&#39;border:1px&#39;</span> <span class="s1">&#39;border:11px&#39;</span> mydoc.html
 doconce replace <span class="s1">&#39;width: 75%;&#39;</span> <span class="s1">&#39;width: 35%&#39;</span> mydoc.html
 </pre></div>
@@ -1976,6 +2011,7 @@ clickable.</p>
 <li><a class="reference internal" href="#general-topics">General topics</a><ul>
 <li><a class="reference internal" href="#how-do-i-debug-a-doconce-file-that-results-in-a-strange-error-message">How do I debug a DocOnce file that results in a strange error message?</a></li>
 <li><a class="reference internal" href="#how-do-i-cite-and-link-to-doconce">How do I cite and link to DocOnce?</a></li>
+<li><a class="reference internal" href="#translation-aborts-when-labels-are-not-defined">Translation aborts when labels are not defined</a></li>
 <li><a class="reference internal" href="#how-to-i-control-the-table-of-contents">How to I control the table of contents?</a></li>
 <li><a class="reference internal" href="#how-can-i-add-links-to-some-resource-on-every-page">How can I add links to some resource on every page?</a><ul>
 <li><a class="reference internal" href="#bootstrap-html-styles">Bootstrap HTML styles</a></li>
@@ -2036,6 +2072,7 @@ clickable.</p>
 <li><a class="reference internal" href="#how-can-i-get-an-overview-of-all-files-that-are-included-in-a-document">How can I get an overview of all files that are included in a document?</a></li>
 <li><a class="reference internal" href="#how-to-write-the-dollar-sign-for-an-amount-in-dollars">How to write the dollar sign for an amount in dollars?</a></li>
 <li><a class="reference internal" href="#problems-with-externaldocuments-specifications">Problems with Externaldocuments specifications</a></li>
+<li><a class="reference internal" href="#what-is-the-difference-between-doconce-replace-and-doconce-subst">What is the difference between doconce replace and doconce subst?</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#preprocess-mako">Preprocess/Mako</a><ul>
@@ -2112,7 +2149,6 @@ clickable.</p>
 </li>
 <li><a class="reference internal" href="#html">HTML</a><ul>
 <li><a class="reference internal" href="#how-can-i-add-a-search-facility-to-an-html-document">How can I add a search facility to an HTML document?</a></li>
-<li><a class="reference internal" href="#translation-aborts-when-labels-are-not-defined">Translation aborts when labels are not defined</a></li>
 <li><a class="reference internal" href="#mathjax-formulas-are-not-properly-rendered">MathJax formulas are not properly rendered</a></li>
 <li><a class="reference internal" href="#how-can-i-change-the-layout-of-the-html-page">How can I change the layout of the HTML page?</a><ul>
 <li><a class="reference internal" href="#autoedits-of-the-html-file">Autoedits of the <code class="docutils literal"><span class="pre">.html</span></code> file</a></li>
