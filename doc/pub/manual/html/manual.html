@@ -168,7 +168,15 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#elements-in-an-exercise">Elements in an Exercise</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solutions">Solutions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-1">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercise-versus-problem-and-project">Exercise versus Problem and Project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modified-heading">Modified Heading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-structure-for-all-exercises">Data Structure for all Exercises</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
 </ul>
@@ -196,6 +204,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#copying-code-from-source-files">Copying Code from Source Files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-fromto-and-from-to-directives">The <code class="docutils literal"><span class="pre">fromto</span></code> and <code class="docutils literal"><span class="pre">from-to</span></code> directives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#removing-indentation-in-copied-code">Removing indentation in copied code</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a><ul>
@@ -364,7 +373,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#themes-2">Themes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#compiling-multiple-themes">Compiling Multiple Themes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#runestoneinteractive-books">RunestoneInteractive books</a></li>
@@ -491,7 +500,15 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#exercises-problems-projects-and-examples">Exercises, Problems, Projects, and Examples</a><ul>
-<li><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a></li>
+<li><a class="reference internal" href="#examples-on-exercise-syntax">Examples on Exercise Syntax</a><ul>
+<li><a class="reference internal" href="#elements-in-an-exercise">Elements in an Exercise</a></li>
+<li><a class="reference internal" href="#solutions">Solutions</a></li>
+<li><a class="reference internal" href="#example-1">Example</a></li>
+<li><a class="reference internal" href="#exercise-versus-problem-and-project">Exercise versus Problem and Project</a></li>
+<li><a class="reference internal" href="#modified-heading">Modified Heading</a></li>
+<li><a class="reference internal" href="#data-structure-for-all-exercises">Data Structure for all Exercises</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#typesetting-of-exercises">Typesetting of Exercises</a><ul>
 <li><a class="reference internal" href="#remark-on-typesettng-of-examples">Remark on Typesettng of Examples</a></li>
 </ul>
@@ -519,6 +536,7 @@
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#copying-code-from-source-files">Copying Code from Source Files</a></li>
 <li><a class="reference internal" href="#the-fromto-and-from-to-directives">The <code class="docutils literal"><span class="pre">fromto</span></code> and <code class="docutils literal"><span class="pre">from-to</span></code> directives</a></li>
+<li><a class="reference internal" href="#removing-indentation-in-copied-code">Removing indentation in copied code</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#latex-blocks-of-mathematical-text">LaTeX Blocks of Mathematical Text</a><ul>
@@ -687,7 +705,7 @@
 <li><a class="reference internal" href="#themes-2">Themes</a><ul>
 <li><a class="reference internal" href="#using-a-your-own-configuration-file">Using a Your Own Configuration File</a></li>
 <li><a class="reference internal" href="#compiling-multiple-themes">Compiling Multiple Themes</a></li>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#example-2">Example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#runestoneinteractive-books">RunestoneInteractive books</a></li>
@@ -777,7 +795,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Mar 7, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 7, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -869,6 +887,18 @@ languages. This disadvantage can be quite easily compensated, however,
 by clever use of the programmable Mako preprocessor used by DocOnce
 and by automatic editing of the generated output (e.g., via regular
 expressions).</p>
+<p>DocOnce has been used as writing platform for several books:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/doconce_books.jpg"><img alt="_images/doconce_books.jpg" src="_images/doconce_books.jpg" style="width: 600px;" /></a>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
 <div class="section" id="demos-and-documentation">
 <h3>Demos and Documentation<a class="headerlink" href="#demos-and-documentation" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-this-guide-is-for-the-experienced-doconce-writer admonition" id="index-1">
@@ -4436,6 +4466,8 @@ consists of the word <em>Exercise</em>, <em>Problem</em>, <em>Project</em>, or <
 by a colon and a title of the exercise, problem, or project.</p>
 <div class="section" id="examples-on-exercise-syntax">
 <h3>Examples on Exercise Syntax<a class="headerlink" href="#examples-on-exercise-syntax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="elements-in-an-exercise">
+<h4>Elements in an Exercise<a class="headerlink" href="#elements-in-an-exercise" title="Permalink to this headline">¶</a></h4>
 <p>The next line(s) may contain a label and specification of the
 name of the result file(s) (if the answer to the exercise is to be handed
 in) and a solution file. The DocOnce code looks like this:</p>
@@ -4459,15 +4491,18 @@ a subexercise, three other environments are possible: (full) solution,
 directives <code class="docutils literal"><span class="pre">!bans</span></code>, <code class="docutils literal"><span class="pre">!eans</span></code>, <code class="docutils literal"><span class="pre">!bsol</span></code>, <code class="docutils literal"><span class="pre">!esol</span></code>, <code class="docutils literal"><span class="pre">!bhint</span></code>, <code class="docutils literal"><span class="pre">!ehint</span></code>, which
 all must appear on the beginning of a separate line (just as
 <code class="docutils literal"><span class="pre">!bc</span></code> and <code class="docutils literal"><span class="pre">!ec</span></code>).</p>
+<p>The <code class="docutils literal"><span class="pre">file=</span></code> or <code class="docutils literal"><span class="pre">files=</span></code> command accepts a comma-separated list of filenames.
+Sometimes it is appropriate to skip the file extension and just give
+a filestem, as in <code class="docutils literal"><span class="pre">file=earth2moon</span></code>.</p>
+</div>
+<div class="section" id="solutions">
+<h4>Solutions<a class="headerlink" href="#solutions" title="Permalink to this headline">¶</a></h4>
 <p>The solution environment with <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> allows inline
 solution as an alternative to the <code class="docutils literal"><span class="pre">solution=...</span></code> directive mentioned
 above (which requires that the solution is in a separate file). Comment
 lines are inserted so that the beginning and end of answers and
 solutions can be identified and removed if desired. It seems that
 DocOnce authors prefer <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> over a separate solution file.</p>
-<p>The <code class="docutils literal"><span class="pre">file=</span></code> or <code class="docutils literal"><span class="pre">files=</span></code> command accepts a comma-separated list of filenames.
-Sometimes it is appropriate to skip the file extension and just give
-a filestem, as in <code class="docutils literal"><span class="pre">file=earth2moon</span></code>.</p>
 <div class="admonition-avoid-headings-in-solutions admonition">
 <p class="first admonition-title">Avoid headings in solutions</p>
 <p class="last">Headings in solutions in exercises will
@@ -4486,6 +4521,12 @@ chapters). If you compile versions of the document with and without
 solutions, the equation numbering may differ between the versions and may
 cause confusion among readers.</p>
 </div>
+<p>The command line options <code class="docutils literal"><span class="pre">--without_answers</span></code> and <code class="docutils literal"><span class="pre">--without_solutions</span></code>
+turn off output of answers and solutions, respectively, except for
+examples.</p>
+</div>
+<div class="section" id="example-1">
+<h4>Example<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h4>
 <p>A full exercise set-up can be sketched as follows:</p>
 <div class="highlight-doconce"><div class="highlight"><pre><span class="gh">===== Exercise: Determine the Distance to the Moon =====</span>
 <span class="nb">label{exer:moondist}</span>
@@ -4534,7 +4575,10 @@ subexercises are not appropraite.
 <span class="k">!ec</span>
 </pre></div>
 </div>
-<p>A recommended rule for using the different &#8220;exercise&#8221; types goes as follows:</p>
+</div>
+<div class="section" id="exercise-versus-problem-and-project">
+<h4>Exercise versus Problem and Project<a class="headerlink" href="#exercise-versus-problem-and-project" title="Permalink to this headline">¶</a></h4>
+<p>Recommended rules for using the different &#8220;exercise&#8221; types goes as follows:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Exercises are smaller problems directly related to the present chapter
@@ -4546,9 +4590,9 @@ that they make sense on their own, separated from the rest of the docoment.</li>
 not typeset with <code class="docutils literal"><span class="pre">!bsol</span></code> and <code class="docutils literal"><span class="pre">!esol</span></code> but as running text</li>
 </ul>
 </div></blockquote>
-<p>The command line options <code class="docutils literal"><span class="pre">--without_answers</span></code> and <code class="docutils literal"><span class="pre">--without_solutions</span></code>
-turn off output of answers and solutions, respectively, except for
-examples.</p>
+</div>
+<div class="section" id="modified-heading">
+<h4>Modified Heading<a class="headerlink" href="#modified-heading" title="Permalink to this headline">¶</a></h4>
 <p>Sometimes one does not want the heading of an exercise, problem, project,
 or example to contain the keyword <code class="docutils literal"><span class="pre">Exercise:</span></code>, <code class="docutils literal"><span class="pre">Problem:</span></code>, <code class="docutils literal"><span class="pre">Project:</span></code>,
 or <code class="docutils literal"><span class="pre">Example:</span></code>. By enclosing the keyword in braces, as in</p>
@@ -4556,7 +4600,13 @@ or <code class="docutils literal"><span class="pre">Example:</span></code>. By e
 </pre></div>
 </div>
 <p>the keyword is marked for being left out of the heading, resulting in
-the heading &#8220;Find a solution to a problem&#8221;.</p>
+the heading &#8220;Find a solution to a problem&#8221;. In this case, there is
+no numbering of exercises, problems, projects, or examples, so
+<code class="docutils literal"><span class="pre">--section_numbering=on</span></code> for numbering <em>all</em> sections in the document
+may be a desired option.</p>
+</div>
+<div class="section" id="data-structure-for-all-exercises">
+<h4>Data Structure for all Exercises<a class="headerlink" href="#data-structure-for-all-exercises" title="Permalink to this headline">¶</a></h4>
 <p>The various elements of exercises are collected in a special data
 structure (list of dictionaries) stored in a file <code class="docutils literal"><span class="pre">.mydoc.exerinfo</span></code>,
 if <code class="docutils literal"><span class="pre">mydoc.do.txt</span></code> is the name of the DocOnce file.  The file contains
@@ -4564,6 +4614,7 @@ a list of dictionaries, where keys in the dictionary corresponds to
 elements in the exercise: filename, solution file, answer, label, list
 of hints, list of subexercises, closing remarks, and the main body of
 text.</p>
+</div>
 </div>
 <div class="section" id="typesetting-of-exercises">
 <h3>Typesetting of Exercises<a class="headerlink" href="#typesetting-of-exercises" title="Permalink to this headline">¶</a></h3>
@@ -5220,6 +5271,18 @@ in the <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE</spa
 <p>will be included. If source files have a header with author, email, etc.,
 one can remove this header by the option <code class="docutils literal"><span class="pre">'--code_skip_until=#</span> <span class="pre">---'</span></code>.
 The lines up to and including (the first) <code class="docutils literal"><span class="pre">#</span> <span class="pre">---</span></code> will then be excluded.</p>
+</div>
+<div class="section" id="removing-indentation-in-copied-code">
+<h4>Removing indentation in copied code<a class="headerlink" href="#removing-indentation-in-copied-code" title="Permalink to this headline">¶</a></h4>
+<p>In general, it is not recommended to have a code block where all lines
+are indented, because in some output formats the indentation is respected
+(e.g., LaTeX) while others ignore it (e.g., Sphinx). Therefore, at least
+one line of the code should start in column 1.</p>
+<p>Sometimes you want to copy a part of a function where all code is indented.
+Then you also want to remove the indentation. This is enabled by
+<code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE-X</span></code>, where <code class="docutils literal"><span class="pre">X</span></code> is the number of blanks in the indentation to be
+removed. For example, <code class="docutils literal"><span class="pre">&#64;&#64;&#64;CODE-4</span></code> will copy the code and remove the first
+4 characters from each line.</p>
 </div>
 </div>
 <div class="section" id="latex-blocks-of-mathematical-text">
@@ -6459,11 +6522,11 @@ in individual files like <code class="docutils literal"><span class="pre">split_
 <div class="section" id="writing-slides">
 <h2>Writing Slides<a class="headerlink" href="#writing-slides" title="Permalink to this headline">¶</a></h2>
 <span class="target" id="index-134"></span><span class="target" id="index-135"></span><span class="target" id="index-136"></span><p id="index-137">It is a potentially fast procedure to make slides from large amounts
-of DocOnce text, in particular for condensing running material for
-lectures or just providing the slide set as an overview or study
+of DocOnce text, in particular for condensing material for
+lectures or for providing the slide set as an overview or study
 guide.  The slides can either be ordinary, separate slides - or just a
 document with much briefer text and emphasis on bullet lists, figures,
-mathematical formulas, admonitions, and little text.</p>
+mathematical formulas, admonitions, etc.</p>
 <p>Points to consider (just sketches...):</p>
 <blockquote>
 <div><ul class="simple">
@@ -6549,7 +6612,7 @@ an extra <code class="docutils literal"><span class="pre">!split</span></code> a
 slide).</li>
 <li>Use the <code class="docutils literal"><span class="pre">pop</span></code> environment to pop up list items or blocks
 one by one.</li>
-<li>You can use <code class="docutils literal"><span class="pre">pause</span></code> prefixed by <code class="docutils literal"><span class="pre">(*&#64;</span></code> and postfixed by <code class="docutils literal"><span class="pre">&#64;*)</span></code>
+<li>You can use <code class="docutils literal"><span class="pre">\pause</span></code> prefixed by <code class="docutils literal"><span class="pre">(*&#64;</span></code> and postfixed by <code class="docutils literal"><span class="pre">&#64;*)</span></code>
 inside code or math blocks to pop up
 code lines or formulas in Beamer slides (the pause command is
 simply ignored in other formats).</li>
@@ -6792,6 +6855,21 @@ script, we may edit and fine-tune the output from DocOnce.</p>
 <p>For DocOnce repositories using the Git version control system, the
 follwing <code class="docutils literal"><span class="pre">.gitignore</span></code> file is useful:</p>
 <div class="highlight-text"><div class="highlight"><pre>syntax: glob
+# doconce files:
+*.rst
+*.ipynb
+*.gwiki
+*.cwiki
+*.mwiki
+*.pdf
+*.tex
+automake_sphinx.py
+.*_html_file_collection
+.*.exerinfo
+.*.copyright
+sphinx-rootdir
+Trash
+papers.bib
 # compiled files:
 *.o
 *.so
@@ -6830,12 +6908,6 @@ temp*
 .idea
 __pycache__
 _minted-*
-# doconce:
-.*_html_file_collection
-.*.exerinfo
-.*.copyright
-sphinx-rootdir
-Trash
 </pre></div>
 </div>
 </div>
@@ -9190,8 +9262,8 @@ path to the directory containing the Sphinx theme. You must also
 specify a configure file by <code class="docutils literal"><span class="pre">conf.py=path</span></code>, where <code class="docutils literal"><span class="pre">path</span></code> is the
 relative path to your <code class="docutils literal"><span class="pre">conf.py</span></code> file.</p>
 </div>
-<div class="section" id="example">
-<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="example-2">
+<h4>Example<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h4>
 <p>Say you like the <code class="docutils literal"><span class="pre">scipy_lectures</span></code> theme, but you want
 a table of contents to appear <em>to the right</em>, much in the same style
 as in the <code class="docutils literal"><span class="pre">default</span></code> or <code class="docutils literal"><span class="pre">classic</span></code> themes

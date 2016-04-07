@@ -48,6 +48,17 @@ Here are some of the most recent features in DocOnce:
  * [Admonitions](http://hplgit.github.io/doconce/doc/pub/manual/html/manual.html#admonitions), i.e., boxes for notifications, tips, warnings, etc., with
    great [flexibility in the typesetting](http://hplgit.github.io/doconce/doc/pub/admon/index.html) (at least in HTML and LaTeX).
 
+Here are some recent books written in DocOnce:
+
+<br />
+<br />
+
+<!-- <img src="doc/src/manual/fig/doconce_books.jpg" width=600> -->
+![](doc/src/manual/fig/doconce_books.jpg)
+
+<br />
+<br />
+
 ### Installation
 
 DocOnce is a pure Python v2.7 package and installed by

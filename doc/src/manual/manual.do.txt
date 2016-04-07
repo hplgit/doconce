@@ -13,6 +13,20 @@ idx{doconce}
 
 # #include "../tutorial/_what_is.do.txt"
 
+# #if FORMAT not in ("latex", "pdflatex")
+## This figure does not work well with pdflatex
+
+DocOnce has been used as writing platform for several books:
+
+<linebreak>
+<linebreak>
+
+FIGURE: [fig/doconce_books, width=600 frac=0.8]
+
+<linebreak>
+<linebreak>
+# #endif
+
 !split
 TOC: on
 

@@ -1609,7 +1609,7 @@ def combine_images():
     else:
         num_columns = 2
 
-    bitmap_formats = '.png', '.tif.', '.tiff', '.gif', '.jpeg', 'jpg'
+    bitmap_formats = '.png', '.tif', '.tiff', '.gif', '.jpeg', '.jpg'
     imagefiles = sys.argv[1:-1]
     # See if files have extension
     for i in range(len(imagefiles)):
