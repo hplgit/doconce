@@ -54,6 +54,10 @@ code { color: inherit; background-color: transparent; }
                2,
                'latexcode:lst',
                'latexcode:lst'),
+              ('Specifying other packages',
+               2,
+               'latexcode:any',
+               'latexcode:any'),
               ('Adding a colored background',
                2,
                'latexcode:background',
@@ -105,6 +109,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#latexcode:uniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;The simplest choice: a single LaTeX environment for all blocks</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:pyg" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>minted</code> (Pygments) tool</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:lst" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Using the <code>lstlisting</code> tool</a></li>
+     <!-- navigation toc: --> <li><a href="#latexcode:any" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying other packages</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:background" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Adding a colored background</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:latex:prms" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Setting LaTeX environment parameters</a></li>
      <!-- navigation toc: --> <li><a href="#latexcode:nonuniform" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Specifying individual code environments</a></li>
@@ -144,7 +149,7 @@ end of tocinfo -->
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>Feb 28, 2016</h4></center> <!-- date -->
+<center><h4>Apr 8, 2016</h4></center> <!-- date -->
 <br>
 <p>
 <b>Summary.</b> This note demonstrates the DocOnce capabilities for generating LaTeX
@@ -206,9 +211,10 @@ computer code in LaTeX:
  <li> <code>vrb</code>: <code>fancyvrb</code> and the <code>Verbatim</code> LaTeX environment</li>
  <li> <code>pyg</code>: <code>minted</code>, i.e., the Pygments tool, and the <code>minted</code> LaTeX environment</li>
  <li> <code>lst</code>: <code>listingsutf8</code> and the <code>lstlisting</code> LaTeX environment</li>
+ <li> <code>any</code>: any environment named <code>any</code> from any package</li>
 </ul>
 
-The terms <code>vrb</code>, <code>pyg</code>, and <code>lst</code> are the abbreviations for these
+The terms <code>vrb</code>, <code>pyg</code>, <code>lst</code>, and <code>any</code> are the terms for these
 packages/environments on the command line when running <code>doconce format</code>.
 
 <p>
@@ -336,6 +342,29 @@ The resulting LaTeX code is:
 However, all possible <code>lstlisting</code> options can be set, as will
 be shown later.
 
+<h2 id="latexcode:any">Specifying other packages</h2>
+
+<p>
+Say you have a LaTeX package <code>compcode</code> with the environment <code>ultimate</code>
+that you want to use. This can be specified by
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc \
+          --latex_code_style=ultimate --latex_packages=compcode
+</pre></div>
+<p>
+The resulting LaTeX code becomes
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>ultimate<span style="color: #008000">}</span>
+...
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>ultimate<span style="color: #008000">}</span>
+</pre></div>
+
 <h2 id="latexcode:background">Adding a colored background</h2>
 
 <p>
@@ -411,6 +440,31 @@ numberstyle=\\tiny,numbersep=15pt,breaklines=true]&quot;
 These parameters specify <a href="doc_lst_yellow2_linenos.pdf" target="_blank">line numbers in the code blocks</a> as well as wrapping of too long lines (<code>breaklines=true</code>).
 <em>Note that any backslash in LaTeX command must be a
 double backslash</em> on the command line!
+
+<p>
+Here is an example where we use the fictitious code enviroment <code>ultimate</code>
+from the package <code>compcode</code> with a yellow backgrund and with some
+environment parameters <code>arg1</code> and <code>arg2</code>:
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">Terminal&gt; doconce format pdflatex mydoc --latex_packages=compcode \
+         &#39;--latex_code_style=ultimate-yellow2[arg1=val1,arg2=val2]&#39;
+</pre></div>
+<p>
+The resulting LaTeX code becomes
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>cod<span style="color: #008000">}{</span>cbg<span style="color: #008000">_</span>yellow2<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>ultimate<span style="color: #008000">}</span>[arg1=val1,arg2=val2]
+...
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>ultimate<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>cod<span style="color: #008000">}</span>
+</pre></div>
+<p>
+In this way, you can use any environment in any package for typesetting
+code.
 
 <h2 id="latexcode:nonuniform">Specifying individual code environments</h2>
 

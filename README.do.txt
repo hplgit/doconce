@@ -57,11 +57,9 @@ Here are some of the most recent features in DocOnce:
 Here are some recent books written in DocOnce:
 
 <linebreak>
-<linebreak>
 
 FIGURE: [doc/src/manual/fig/doconce_books, width=600 frac=0.8]
 
-<linebreak>
 <linebreak>
 
 ===== Installation =====

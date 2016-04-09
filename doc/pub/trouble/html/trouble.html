@@ -82,7 +82,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 6, 2016</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Apr 8, 2016</td>
 </tr>
 </tbody>
 </table>
@@ -1295,6 +1295,45 @@ all other output formats), for instance <code class="docutils literal"><span cla
 example environment), add a sentence between the table and
 the end-of-environment command.</p>
 </div>
+<div class="section" id="inline-figures-should-have-more-vertical-space">
+<h3>Inline figures should have more vertical space<a class="headerlink" href="#inline-figures-should-have-more-vertical-space" title="Permalink to this headline">¶</a></h3>
+<p>Figures without captions become inline figures in LaTeX, and there is
+usually no space between above and below the figure so the text and
+the figure look very squeezed. Extra space can be
+manually inserted with <code class="docutils literal"><span class="pre">&lt;linebreak&gt;</span></code> (which gives a vertical space if
+alone on a line):</p>
+<div class="highlight-doconce"><div class="highlight"><pre>&lt;linebreak&gt;
+&lt;linebreak&gt;
+
+<span class="nb">FIGURE: [...]</span>
+
+&lt;linebreak&gt;
+&lt;linebreak&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-can-i-use-a-special-package-for-typesetting-code-k-not-pyg-lst-or-vrb">
+<h3>How can I use a special package for typesetting code?K (not <code class="docutils literal"><span class="pre">pyg</span></code>, <code class="docutils literal"><span class="pre">lst</span></code>, or <code class="docutils literal"><span class="pre">vrb</span></code>)<a class="headerlink" href="#how-can-i-use-a-special-package-for-typesetting-code-k-not-pyg-lst-or-vrb" title="Permalink to this headline">¶</a></h3>
+<p>One gets the impression that <code class="docutils literal"><span class="pre">--latex_code_style=</span></code> has only the options
+for Pygments, Listings, or the Verbatim packages, but in fact any package
+can be used.</p>
+<p>Suppose you have the fictitious code enviroment <code class="docutils literal"><span class="pre">ultimate</span></code>
+from the package <code class="docutils literal"><span class="pre">compcode</span></code> that you want to use, together with
+a yellow backgrund, and with some
+environment-specific parameters <code class="docutils literal"><span class="pre">arg1</span></code> and <code class="docutils literal"><span class="pre">arg2</span></code>. Then you can write</p>
+<div class="highlight-text"><div class="highlight"><pre>Terminal&gt; doconce format pdflatex mydoc --latex_packages=compcode \
+         &#39;--latex_code_style=ultimate-yellow2[arg1=val1,arg2=val2]&#39;
+</pre></div>
+</div>
+<p>The resulting LaTeX code in <code class="docutils literal"><span class="pre">mydoc.tex</span></code> becomes</p>
+<div class="highlight-latex"><div class="highlight"><pre><span class="k">\begin</span><span class="nb">{</span>cod<span class="nb">}{</span>cbg<span class="nb">_</span>yellow2<span class="nb">}</span><span class="k">\begin</span><span class="nb">{</span>ultimate<span class="nb">}</span>[arg1=val1,arg2=val2]
+...
+<span class="k">\end</span><span class="nb">{</span>ultimate<span class="nb">}</span><span class="k">\end</span><span class="nb">{</span>cod<span class="nb">}</span>
+</pre></div>
+</div>
+<p>In this way, you can use any environment in any package for typesetting
+code.</p>
+</div>
 <div class="section" id="sphinx-and-html-show-pygmetized-code-but-not-latex">
 <h3>Sphinx and HTML show pygmetized code, but not LaTeX<a class="headerlink" href="#sphinx-and-html-show-pygmetized-code-but-not-latex" title="Permalink to this headline">¶</a></h3>
 <p>You have to explicitly select the <code class="docutils literal"><span class="pre">minted</span></code> environment when running <code class="docutils literal"><span class="pre">ptex2tex</span></code>
@@ -2111,6 +2150,8 @@ clickable.</p>
 <li><a class="reference internal" href="#lines-are-too-long">=====  Lines are too long</a></li>
 <li><a class="reference internal" href="#tables-get-too-wide-need-to-wrap-text-in-the-columns">Tables get too wide - need to wrap text in the columns</a></li>
 <li><a class="reference internal" href="#table-inside-user-defined-environment-does-not-work">Table inside user-defined environment does not work</a></li>
+<li><a class="reference internal" href="#inline-figures-should-have-more-vertical-space">Inline figures should have more vertical space</a></li>
+<li><a class="reference internal" href="#how-can-i-use-a-special-package-for-typesetting-code-k-not-pyg-lst-or-vrb">How can I use a special package for typesetting code?K (not <code class="docutils literal"><span class="pre">pyg</span></code>, <code class="docutils literal"><span class="pre">lst</span></code>, or <code class="docutils literal"><span class="pre">vrb</span></code>)</a></li>
 <li><a class="reference internal" href="#sphinx-and-html-show-pygmetized-code-but-not-latex">Sphinx and HTML show pygmetized code, but not LaTeX</a></li>
 <li><a class="reference internal" href="#latex-error-because-of-underscores">LaTeX error because of underscores</a></li>
 <li><a class="reference internal" href="#latex-does-not-like-underscores-in-urls">LaTeX does not like underscores in URLs</a></li>

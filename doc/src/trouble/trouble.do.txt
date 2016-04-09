@@ -1459,6 +1459,31 @@ FIGURE: [...]
 <linebreak>
 !ec
 
+===== How can I use a special package for typesetting code?K (not `pyg`, `lst`, or `vrb`) =====
+
+One gets the impression that `--latex_code_style=` has only the options
+for Pygments, Listings, or the Verbatim packages, but in fact any package
+can be used.
+
+Suppose you have the fictitious code enviroment `ultimate`
+from the package `compcode` that you want to use, together with
+a yellow backgrund, and with some
+environment-specific parameters `arg1` and `arg2`. Then you can write
+
+!bc sys
+Terminal> doconce format pdflatex mydoc --latex_packages=compcode \
+         '--latex_code_style=ultimate-yellow2[arg1=val1,arg2=val2]'
+!ec
+The resulting LaTeX code in `mydoc.tex` becomes
+
+!bc latexcod
+\begin{cod}{cbg_yellow2}\begin{ultimate}[arg1=val1,arg2=val2]
+...
+\end{ultimate}\end{cod}
+!ec
+In this way, you can use any environment in any package for typesetting
+code.
+
 ===== Sphinx and HTML show pygmetized code, but not LaTeX =====
 
 You have to explicitly select the `minted` environment when running `ptex2tex`

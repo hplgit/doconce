@@ -75,8 +75,9 @@ computer code in LaTeX:
  * `vrb`: `fancyvrb` and the `Verbatim` LaTeX environment
  * `pyg`: `minted`, i.e., the Pygments tool, and the `minted` LaTeX environment
  * `lst`: `listingsutf8` and the `lstlisting` LaTeX environment
+ * `any`: any environment named `any` from any package
 
-The terms `vrb`, `pyg`, and `lst` are the abbreviations for these
+The terms `vrb`, `pyg`, `lst`, and `any` are the terms for these
 packages/environments on the command line when running `doconce format`.
 
 In addition, the user can specify a possibly colored background for
@@ -176,6 +177,25 @@ The resulting LaTeX code is:
 !ec
 However, all possible `lstlisting` options can be set, as will
 be shown later.
+
+===== Specifying other packages =====
+label{latexcode:any}
+
+Say you have a LaTeX package `compcode` with the environment `ultimate`
+that you want to use. This can be specified by
+
+!bc sys
+Terminal> doconce format pdflatex mydoc \
+          --latex_code_style=ultimate --latex_packages=compcode
+!ec
+The resulting LaTeX code becomes
+
+!bc latexcod
+\begin{ultimate}
+...
+\end{ultimate}
+!ec
+
 
 ===== Adding a colored background =====
 label{latexcode:background}
@@ -285,6 +305,24 @@ numberstyle=\\tiny,numbersep=15pt,breaklines=true]"
 These parameters specify "line numbers in the code blocks": "doc_lst_yellow2_linenos.pdf" as well as wrapping of too long lines (`breaklines=true`).
 *Note that any backslash in LaTeX command must be a
 double backslash* on the command line!
+
+Here is an example where we use the fictitious code enviroment `ultimate`
+from the package `compcode` with a yellow backgrund and with some
+environment parameters `arg1` and `arg2`:
+
+!bc sys
+Terminal> doconce format pdflatex mydoc --latex_packages=compcode \
+         '--latex_code_style=ultimate-yellow2[arg1=val1,arg2=val2]'
+!ec
+The resulting LaTeX code becomes
+
+!bc latexcod
+\begin{cod}{cbg_yellow2}\begin{ultimate}[arg1=val1,arg2=val2]
+...
+\end{ultimate}\end{cod}
+!ec
+In this way, you can use any environment in any package for typesetting
+code.
 
 ===== Specifying individual code environments =====
 label{latexcode:nonuniform}

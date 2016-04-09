@@ -10,7 +10,7 @@ DocOnce Troubleshooting and FAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Apr 6, 2016
+:Date: Apr 8, 2016
 
 
 .. admonition:: Disclaimer
@@ -1600,6 +1600,53 @@ Table inside user-defined environment does not work
 If the table appears at the end of the environment (e.g., a theorem or
 example environment), add a sentence between the table and
 the end-of-environment command.
+
+Inline figures should have more vertical space
+----------------------------------------------
+
+Figures without captions become inline figures in LaTeX, and there is
+usually no space between above and below the figure so the text and
+the figure look very squeezed. Extra space can be
+manually inserted with ``<linebreak>`` (which gives a vertical space if
+alone on a line):
+
+.. code-block:: doconce
+
+        <linebreak>
+        <linebreak>
+        
+        FIGURE: [...]
+        
+        <linebreak>
+        <linebreak>
+
+How can I use a special package for typesetting code?K (not ``pyg``, ``lst``, or ``vrb``)
+-----------------------------------------------------------------------------------------
+
+One gets the impression that ``--latex_code_style=`` has only the options
+for Pygments, Listings, or the Verbatim packages, but in fact any package
+can be used.
+
+Suppose you have the fictitious code enviroment ``ultimate``
+from the package ``compcode`` that you want to use, together with
+a yellow backgrund, and with some
+environment-specific parameters ``arg1`` and ``arg2``. Then you can write
+
+.. code-block:: text
+
+        Terminal> doconce format pdflatex mydoc --latex_packages=compcode \
+                 '--latex_code_style=ultimate-yellow2[arg1=val1,arg2=val2]'
+
+The resulting LaTeX code in ``mydoc.tex`` becomes
+
+.. code-block:: latex
+
+        \begin{cod}{cbg_yellow2}\begin{ultimate}[arg1=val1,arg2=val2]
+        ...
+        \end{ultimate}\end{cod}
+
+In this way, you can use any environment in any package for typesetting
+code.
 
 Sphinx and HTML show pygmetized code, but not LaTeX
 ---------------------------------------------------

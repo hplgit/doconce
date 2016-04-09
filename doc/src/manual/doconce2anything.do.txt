@@ -991,7 +991,7 @@ idx{LaTeX style options}
 There are many additional options (run `doconce format --help` and
 look for options starting with `--latex` to get a more verbose description):
 
- * `--latex_code_style=lst,vrb,pyg`
+ * `--latex_code_style=lst,vrb,pyg,any`
  * `--latex_font=helvetica,palatino`
  * `--latex_papersize=a4,a6`
  * `--latex_bibstyle=plain` (name of BibTeX style)
@@ -1060,6 +1060,7 @@ for verbatim type setting:
  * `vrb` for plain `Verbatim` style (`fancyvrb` LaTeX package)
  * `pyg` for the Pygments style (`mintex` LaTeX package)
  * `lst` for the Listings styles (`listingsutf8` LaTeX package)
+ * `any` for any environment named `any` from any package
 
 A separate "demo":
 "http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html" explains

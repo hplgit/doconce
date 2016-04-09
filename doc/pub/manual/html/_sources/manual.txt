@@ -21,7 +21,7 @@ DocOnce Description
 %%%%%%%%%%%%%%%%%%%
 
 :Authors: Hans Petter Langtangen
-:Date: Apr 7, 2016
+:Date: Apr 8, 2016
 
 .. lines beginning with # are doconce comment lines
 
@@ -135,12 +135,10 @@ expressions).
 DocOnce has been used as writing platform for several books:
 
 | 
-| 
 
 .. figure:: doconce_books.jpg
    :width: 600
 
-| 
 | 
 
 .. Here are some comment lines that do not affect any formatting
@@ -9487,7 +9485,7 @@ Command-line options
 There are many additional options (run ``doconce format --help`` and
 look for options starting with ``--latex`` to get a more verbose description):
 
- * ``--latex_code_style=lst,vrb,pyg``
+ * ``--latex_code_style=lst,vrb,pyg,any``
 
  * ``--latex_font=helvetica,palatino``
 
@@ -9586,6 +9584,8 @@ for verbatim type setting:
  * ``pyg`` for the Pygments style (``mintex`` LaTeX package)
 
  * ``lst`` for the Listings styles (``listingsutf8`` LaTeX package)
+
+ * ``any`` for any environment named ``any`` from any package
 
 A separate `demo <http://hplgit.github.io/doconce/doc/pub/latexcode/demo.html>`__ explains
 the many possible settings of ``X``. Popular choices are minimalistic
