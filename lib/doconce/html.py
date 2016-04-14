@@ -1404,7 +1404,7 @@ def process_grid_areas(filestr):
             # order while the output is traversed in correct cell order)
             new_text = '<div class="row"> <!-- begin cell row -->\n'
             for c in range(num_columns):
-                new_text += '  <div class="col-sm-4">'
+                new_text += '  <div class="col-sm-4">\n    <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->'
                 for r in range(num_rows):
                     new_text += table[r][c]
                 new_text += '  </div> <!-- column col-sm-4 -->\n'
@@ -2340,6 +2340,7 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
   </div>""" %% title
             text += """
 <div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
 %%s
 </div>
 </div>

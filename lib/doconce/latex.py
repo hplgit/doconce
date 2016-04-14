@@ -3338,7 +3338,7 @@ justified,
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
 \usepackage{ucs}
-%\usepackage[utf8x]{inputenc}
+\usepackage[utf8x]{inputenc}
 """
     else:
         if option('latex_encoding=', 'utf8') == 'utf8':
@@ -3444,7 +3444,7 @@ justified,
 %%\hyperbaseurl{}   %% hyperlinks are relative to this root
 """ % vars()
 
-    toc_depth = option('toc_depth=', 2)
+    toc_depth = int(option('toc_depth=', 2))
     if chapters:
         toc_depth += 1
     INTRO['latex'] += r"""
