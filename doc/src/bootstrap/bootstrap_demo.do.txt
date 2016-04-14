@@ -80,8 +80,8 @@ DocOnce supports the following themes from the Bootstrap family:
    `THEME` can be
    * `FlatUI` for the "Flat UI": "http://designmodo.github.io/Flat-UI/" theme
    * `bootflat` for the "Bootflat": "http://bootflat.github.io/" theme
-   * `blue`, `red`, `brown`, `bluegray`, and `bloodish` color variations
-     of the original Bootstrap theme
+   * `blue`, `red`, `brown`, `bluegray`, `bloodish`, `cbc`, and `simula`
+     color variations of the original Bootstrap theme
 
 You write Boostrap HTML files as normal DocOnce documents, but there
 are some additional features:
@@ -94,7 +94,7 @@ are some additional features:
  * Other layouts of admons [^admons].
  * Footnotes feature a tooltip functionality such that hovering the mouse
    over the footnote brings up a little window with the footnote
-   (try it on the footnote after *admon* right above!).
+   (try it on the footnote after *admons* right above!).
 
 !bnotice Quick generation of websites
 To make a typical website with Bootstrap layout and different type of
