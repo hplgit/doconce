@@ -643,6 +643,13 @@ command_line_options = ' '.join(['"%%s"' %% arg for arg in sys.argv[1:]])
 sphinx_rootdir = '%(sphinx_rootdir)s'
 source_dir = sphinx_rootdir
 
+if not os.path.isdir(sphinx_rootdir):
+    print """*** error: %%(sphinx_rootdir)s does not exist. This means unsuccessful
+    doconce sphinx_dir command. Try to upgrade to latest DocOnce version.
+    (The script tmp_sphinx_gen.sh runs sphinx-quickstart - it may have failed.)
+""" %% vars()
+    sys.exit(1)
+
 def system(cmd, capture_output=False, echo=True):
     if echo:
         print 'running', cmd
