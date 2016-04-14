@@ -159,10 +159,10 @@ translation).
 
 ##"http://www.springer.com/mathematics/computational+science+%26+engineering/book/978-3-642-54958-8"
 
-A "complete book": "http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_1?s=books&ie=UTF8&qid=1419162166&sr=1-1&keywords=langtangen"
-(900 pages) has been written entirely in DocOnce. The primary format
-is a publisher-specific LaTeX style, but HTML or Sphinx formats can
-easily be generated, such as "this chapter in Bootstrap style":
+Several books (up to over 1000 pages) have been written entirely in
+DocOnce. The primary format is a publisher-specific LaTeX style, but
+HTML or Sphinx formats can easily be generated, such as "this chapter
+in Bootstrap style":
 "http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html",
 or the "solarized color style":
 "http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-solarized.html"

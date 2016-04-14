@@ -148,10 +148,10 @@ translation).
 
 
 
-A [complete book](http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642549586/ref=sr_1_1?s=books&ie=UTF8&qid=1419162166&sr=1-1&keywords=langtangen)
-(900 pages) has been written entirely in DocOnce. The primary format
-is a publisher-specific LaTeX style, but HTML or Sphinx formats can
-easily be generated, such as [this chapter in Bootstrap style](http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html),
+Several books (up to over 1000 pages) have been written entirely in
+DocOnce. The primary format is a publisher-specific LaTeX style, but
+HTML or Sphinx formats can easily be generated, such as [this chapter
+in Bootstrap style](http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-bootstrap.html),
 or the [solarized color style](http://hplgit.github.io/primer.html/doc/pub/looplist/looplist-solarized.html)
 as many prefer. Slides can quickly be generated from the raw text in
 the book.  Here are examples in the [reveal.js](http://hplgit.github.io/scipro-primer/slides/looplist/html/looplist-reveal-beige.html)
