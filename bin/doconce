@@ -420,7 +420,7 @@ EOF
         f.close()
         system('sh tmp_sphinx_gen.sh',
                failure_info='to generate sphinx directory')
-        os.remove('tmp_sphinx_gen.sh')
+        #os.remove('tmp_sphinx_gen.sh')
     os.chdir(sphinx_rootdir)
 
     sphinx_basic_themes = 'agogo basic bizstyle classic default epub haiku nature pyramid scrolls sphinxdoc traditional'.split()

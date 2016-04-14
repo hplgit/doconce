@@ -619,6 +619,8 @@ def syntax_check(filestr, format):
     inside_bt_i = 0
     inside_bc = False
     for i in range(len(lines)):
+        if lines[i].startswith('#'):
+            continue
         if lines[i].startswith('!bt'):
             inside_bt = True
             inside_bt_i = i

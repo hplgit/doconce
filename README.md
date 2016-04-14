@@ -51,12 +51,10 @@ Here are some of the most recent features in DocOnce:
 Here are some recent books written in DocOnce:
 
 <br />
-<br />
 
 <!-- <img src="doc/src/manual/fig/doconce_books.jpg" width=600> -->
 ![](doc/src/manual/fig/doconce_books.jpg)
 
-<br />
 <br />
 
 ### Installation
