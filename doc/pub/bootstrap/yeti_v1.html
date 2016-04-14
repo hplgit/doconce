@@ -21,6 +21,13 @@ Automatically generated HTML file from DocOnce source
 code { color: inherit; background-color: transparent; }
 /* Let pre tags for code blocks have the same color as the surroundings */
 pre { color: inherit; background-color: transparent; }
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
 </style>
 
 
@@ -28,20 +35,20 @@ pre { color: inherit; background-color: transparent; }
 
 <!-- tocinfo
 {'highest level': 0,
- 'sections': [(' More details on writing DocOnce documents with Bootstrap layout ',
+ 'sections': [('More details on writing DocOnce documents with Bootstrap layout',
                0,
                None,
                '___sec0'),
-              (' Navigation ', 1, None, '___sec1'),
-              (' Themes ', 1, None, '___sec2'),
-              (' Demonstrations of admons ', 1, None, '___sec3'),
-              (' Horizontal alignment of document elements ',
+              ('Navigation', 1, None, '___sec1'),
+              ('Themes', 1, None, '___sec2'),
+              ('Demonstrations of admons', 1, None, '___sec3'),
+              ('Horizontal alignment of document elements',
                1,
                'sec:examples',
                'sec:examples'),
-              (' Principles of grid structures ', 2, None, '___sec5'),
-              (' Example on a 1x3 grid structure ', 2, None, '___sec6'),
-              (' Variation of the previous grid structure using admons ',
+              ('Principles of grid structures', 2, None, '___sec5'),
+              ('Example on a 1x3 grid structure', 2, None, '___sec6'),
+              ('Variation of the previous grid structure using admons',
                2,
                None,
                '___sec7')]}
@@ -76,6 +83,7 @@ MathJax.Hub.Config({
     </button>
     <a class="navbar-brand" href="yeti_v1.html">Demo of the Bootstrap style</a>
   </div>
+
   <div class="navbar-collapse collapse navbar-responsive-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
@@ -141,9 +149,9 @@ the document title by a smaller font).
 
 <!-- !split -->
 
-<h1 class="page-header" id="___sec0">More details on writing DocOnce documents with Bootstrap layout <a name="___sec0"></a></h1>
+<center><h1 id="___sec0">More details on writing DocOnce documents with Bootstrap layout </h1></center> <!-- chapter heading -->
 
-<h1 id="___sec1">Navigation <a name="___sec1"></a></h1>
+<h1 id="___sec1">Navigation </h1>
 
 <p>
 A multiple-page document is as usual created by inserting <code>!split</code> at
@@ -169,7 +177,7 @@ to make the pull down menu shorter than the page height. The
 navigation bar on top can be turned off by the option
 <code>--html_bootstrap_navbar=off</code> to the <code>doconce format</code> command.
 
-<h1 id="___sec2">Themes <a name="___sec2"></a></h1>
+<h1 id="___sec2">Themes </h1>
 
 <p>
 DocOnce supports the following themes from the Bootstrap family:
@@ -229,7 +237,7 @@ are some additional features:
    next page.</li>
  <li> Possibility to define a local grid of elements in the document to
    align admons, figures, code, or other elements horisontally.</li>
- <li> Other layouts of admons <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="&quot;Admon&quot; is a short form for admonition: a box that highlights some text, e.g., as extra material or as particularly important material. DocOnce supports different types of admonitions: notice, question, summary, and warning. These can have an optional title, and some admonition styles will also include an icon image. In addition, there is a block admonition without any icon, but with an optional title."><a name="link_footnote_1"><a><a href="#def_footnote_1" style="color: white">1</a></button>.</li>
+ <li> Other layouts of admons <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="&quot;Admon&quot; is a short form for admonition: a box that highlights some text, e.g., as extra material or as particularly important material. DocOnce supports different types of admonitions: notice, question, summary, and warning. These can have an optional title, and some admonition styles will also include an icon image. In addition, there is a block admonition without any icon, but with an optional title."><a href="#def_footnote_1" id="link_footnote_1" style="color: white">1</a></button>.</li>
  <li> Footnotes feature a tooltip functionality such that hovering the mouse
    over the footnote brings up a little window with the footnote
    (try it on the footnote after <em>admon</em> right above!).</li>
@@ -248,15 +256,15 @@ pages for different things, just
 </div>
 
 
-<p><a name="def_footnote_1"></a><a href="#link_footnote_1"><b>1:</b></a> &quot;Admon&quot; is a short form for admonition: a
+<p id="def_footnote_1"><a href="#link_footnote_1"><b>1:</b></a> &quot;Admon&quot; is a short form for admonition: a
 box that highlights some text, e.g., as extra material or as
 particularly important material. DocOnce supports different types
 of admonitions: notice, question, summary, and warning. These
 can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
-without any icon, but with an optional title.
+without any icon, but with an optional title.</p>
 
-<h1 id="___sec3">Demonstrations of admons <a name="___sec3"></a></h1>
+<h1 id="___sec3">Demonstrations of admons </h1>
 
 <p>
 The Bootstrap/Bootswatch styles support two kinds of admons:
@@ -353,14 +361,14 @@ Tables often get a fancy typesetting:
 <tr><td align="left">   6          </td> <td align="right">   71,000       </td> <td align="right">   214               </td> <td align="right">   <code>NaN</code>    </td> </tr>
 </tbody>
     </table>
-  </div>
-</div> <!-- col-xs-5 -->
+  </div> <!-- col-xs-5 -->
+</div> <!-- cell row -->
 <p>
 <!-- !split -->
 
-<h1 id="sec:examples">Horizontal alignment of document elements<a name="sec:examples"></a></h1>
+<h1 id="sec:examples">Horizontal alignment of document elements</h1>
 
-<h2 id="___sec5">Principles of grid structures <a name="___sec5"></a></h2>
+<h2 id="___sec5">Principles of grid structures </h2>
 
 <p>
 The HTML page can feature a grid structure of cells, defined by
@@ -439,7 +447,7 @@ of this grid, we simply change <code>00</code> by <code>02</code> and <code>02</
 </div>
 
 
-<h2 id="___sec6">Example on a 1x3 grid structure <a name="___sec6"></a></h2>
+<h2 id="___sec6">Example on a 1x3 grid structure </h2>
 
 <p>
 <div class="row"> <!-- begin cell row -->
@@ -492,10 +500,10 @@ we can run the program:
 0
 </pre></div>
 <p>
-  </div> <!-- column col-sm-4 -->
+</div> <!-- column col-sm-4 -->
 </div> <!-- end cell row -->
 
-<h2 id="___sec7">Variation of the previous grid structure using admons <a name="___sec7"></a></h2>
+<h2 id="___sec7">Variation of the previous grid structure using admons </h2>
 
 <p>
 <!-- Note: panels are realized as admons, using --admon_style=bootstrap_panel -->

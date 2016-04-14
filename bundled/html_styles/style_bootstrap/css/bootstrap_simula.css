@@ -93,7 +93,7 @@ input[type="color"],
 .btn.active,
 .btn.disabled,
 .btn[disabled] {
-  color: #f15a22;
+  color: #ffffff;
   background-color: #f15a22;
 }
 
@@ -338,5 +338,3 @@ a:focus {
 .panel-danger > .panel-footer+.panel-collapse .panel-body {
   border-bottom-color:transparent;
 };
-
-
