@@ -126,9 +126,9 @@ Typical commands for producing Bootstrap or Bootswatch layouts are
 
 !bc sys
 Terminal> doconce format html mydoc --html_style=bootstrap
-Terminal> doconce format html mydoc --html_style=booswatch
+Terminal> doconce format html mydoc --html_style=bootswatch
 Terminal> doconce format html mydoc --html_style=bootstrap --admon_style=bootstrap_panel
-Terminal> doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
+Terminal> doconce format html mydoc --html_style=bootswatch_superhero --admon_style=bootstrap_panel
 !ec
 
 Below are some examples on admons.
