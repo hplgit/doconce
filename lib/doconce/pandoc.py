@@ -13,6 +13,7 @@ from common import default_movie, plain_exercise, table_analysis, \
      insert_code_and_tex, bibliography, indent_lines, fix_ref_section_chapter
 from html import html_movie, html_table
 from misc import option
+from doconce import errwarn
 
 # Mapping of envirs to correct Pandoc verbatim environment
 language2pandoc = dict(
@@ -143,9 +144,9 @@ def pandoc_code(filestr, code_blocks, code_block_types,
             envir = m.group(1)
             if envir not in ('equation', 'equation*', 'align*', 'align',
                              'array'):
-                print """\
+                errwarn("""\
 *** warning: latex envir \\begin{%s} does not work well.
-""" % envir
+""" % envir)
         # Add $$ on each side of the equation
         tex_blocks[i] = '$$\n' + tex_blocks[i] + '$$\n'
     # Note: HTML output from pandoc requires $$ while latex cannot have
@@ -292,7 +293,6 @@ def pandoc_figure(m):
     text += '![%s](%s)' % (caption, filename)
     # regex for turning the figure spec into raw html:
     # re.sub(r'^<!-- (<img.+?>.*) -->\n!\[.+$', r'\g<1>', text, flags=re.MULTILINE)
-    #print 'pandoc_figure:', text
     return text
 
 def pandoc_ref_and_label(section_label2title, format, filestr):

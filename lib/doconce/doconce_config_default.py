@@ -44,6 +44,7 @@ no_title = False
 #html_code_style = 
 #html_pre_style = 
 #html_toc_indent = 
+#html_body_style = 
 #html_body_font = 
 #html_heading_font = 
 #html_video_autoplay = 

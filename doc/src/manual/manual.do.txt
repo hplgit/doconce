@@ -803,6 +803,41 @@ movies via the option `-latex_movie=...`. Proper values are listed below.
    for movies.
  o `movie15`: the old `movie15` package is used.
 
+!bnotice Where to put the movie file for a PDF document?
+A major concern when using the default (`href`) link to a movie
+in a PDF document, is where to store the movie file. If your
+document is in a repository at GitHub or Bitbucket, one can
+use this address for the movie file. However, for the HTML and
+Sphinx formats, we would like to use some short, local address
+`mov/mymovie.ogg`. For LaTeX PDF we can then use the command-line
+option `--prefix_movie=` to prefix the local address with the
+proper address in the repository in the cloud. Suppose the `mov`
+directory is found in
+
+!bc
+https://github.com/n/p/blob/master/doc/mov
+!ec
+We need, however, the raw movie file, which has the address
+
+!bc
+https://raw.githubusercontent.com/n/p/master/doc/mov/m.ogg
+!ec
+We can then use the line
+
+!bc do
+MOVIE: [mov/m.ogg]
+!ec
+in the document, but compile to LaTeX with the command-line option
+
+!bc
+--movie_prefix=https://raw.githubusercontent.com/n/p/master/doc/
+!ec
+All links to movies in the PDF file will then be links to the
+repository file in the cloud while for HTML and Sphinx we link
+to the local movie files that are stored together with the `.html`
+files for the document.
+!enotice
+
 For all other formats, an HTML file that acts as a movie player is
 generated and linked from the output document. This movie player
 has essentially the same code as the HTML format would have, except
@@ -811,15 +846,6 @@ types do have support for videos, e.g., Wikipedia can work with
 Ogg files, but DocOnce has not yet implemented robust schemes for
 anything but LaTeX, HTML, and Sphinx output.
 
-!bwarning Local movie files must be stored with the PDF document!
-If the movie is a local file, not available on the Internet, the file
-must be available together with the PDF file, in a directory with the
-right path. This is seldom convenient (HTML and Sphinx documents
-are normally read directly on the Internet and can then easily make use
-of local movie and figure files since these are also on the Internet).
-The best solution for LaTeX/PDF is to use an Internet address for the movie,
-at least if you want the distribute the PDF and let it be self-contained.
-!ewarning
 
 === YouTube and Vimeo Movies ===
 
@@ -2684,6 +2710,19 @@ use to further tailor the appearance of exercises (given that one
 edits the `.tex` file, preferably by a script after each `doconce format`
 command).
 
+idx{short title (in sections)}
+
+There is also a command `doconce latex_exercise_toc` that makes a special
+table of contents of the exercises. It truncates too long exercise headings,
+but by inserting `# Short title: Shorter title` right after the heading,
+the `Shorter title` will be used as title. Usually, this option is used
+if the automatic truncation of the title of the exercise fails (truncation
+in the middle of a formula, for instance).
+
+!bc sys
+Terminal> doconce latex_exercise_toc mydoc.do.txt "List of Exercises"
+!ec
+Try it out and compare with other methods for listing the exercises.
 
 ===== Numbering of Extra Equations in Solutions =====
 label{manual:exercises:sol:no}
@@ -4689,6 +4728,8 @@ Points to consider (just sketches...):
    A comment `# Short title: title` after a section is interpreted
    in `latex` and `pdflatex` output as a short title for the section.
 
+idx{short title (for sections)}
+
 !split
 ===== Overview =====
 
@@ -4769,6 +4810,8 @@ part defines the coordinates of the cell, `00` is upper left,
 `01` is upper right. The `f` parameter specifies the fraction
 of the width occupied by this column of cells (can be left out,
 which results in columns of equal widths).
+
+idx{short title (in sections)}
 
 !bc do
 !split

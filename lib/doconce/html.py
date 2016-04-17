@@ -5,6 +5,7 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      get_legal_pygments_lexers, has_custom_pygments_lexer, emoji_url, \
      fix_ref_section_chapter
 from misc import option, _abort
+from doconce import errwarn
 
 box_shadow = 'box-shadow: 8px 8px 5px #888888;'
 #box_shadow = 'box-shadow: 0px 0px 10px #888888'
@@ -645,7 +646,7 @@ def toc2html(font_size=80, bootstrap=True,
         for j in range(uls):
             toc_html += '     </ul>\n'
     if toc_html == '' and tocinfo['sections']:
-        print '*** error: no table of contents generated from toc2html - BUG in doconce'
+        errwarn('*** error: no table of contents generated from toc2html - BUG in doconce')
         _abort()
     return toc_html
 
@@ -723,15 +724,15 @@ def html_code(filestr, code_blocks, code_block_types,
         # leave out eq.ref, verbatim (<code>ref... etc)
         remaining = re.findall('[^(>A-Za-z](ref\{.+?\})[^)<]', filestr)
         if remaining:
-            print '*** error: references to labels not defined in this document'
-            #print '\n', '\n'.join(remaining)
+            errwarn('*** error: references to labels not defined in this document')
+            #errwarn('\n + '\n'.join(remaining))
             index = 0
             for r in remaining:
-                print r + ':'
+                errwarn(r + ':')
                 index = filestr.find(r, index)  # search since last occurence
-                print '  ', filestr[index-35:index+35], '\n---------------'
+                errwarn('   ' + filestr[index-35:index+35] + '\n---------------')
                 index += len(r)
-            print """
+            errwarn("""
 Causes of missing labels:
 1: label is inside a generalized reference ref[][][],
    use the --allow_refs_to_external_docs option to remove
@@ -739,7 +740,7 @@ Causes of missing labels:
 2: label is defined in another file
 3: preprocessor if-else has left the label out
 4: forgotten to define the label
-"""
+""")
             if not allow_refs_to_external_docs:
                 _abort()
     '''
@@ -749,8 +750,8 @@ Causes of missing labels:
     legal_pygm_styles = 'monokai manni rrt perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs vim pastie friendly native'.split()
     if pygm_style not in legal_pygm_styles:
         if pygm_style not in (None, "none", "None", "off", "no"):
-            print '*** error: wrong pygments style "%s"' % pygm_style
-            print '    must be among\n%s' % str(legal_pygm_styles)[1:-1]
+            errwarn('*** error: wrong pygments style "%s"' % pygm_style)
+            errwarn('    must be among\n%s' % str(legal_pygm_styles)[1:-1])
             _abort()
 
     # Mapping from envir (+cod/pro if present) to pygment style
@@ -807,23 +808,23 @@ Causes of missing labels:
             # Fix style for solarized and rossant
             if option('html_style=') == 'solarized':
                 if pygm_style != 'perldoc':
-                    print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized' % pygm_style
-                    print '    automatically changed to --html_style=perldoc'
+                    errwarn('*** warning: --pygm_style=%s is not recommended when --html_style=solarized' % pygm_style)
+                    errwarn('    automatically changed to --html_style=perldoc')
                     pygm_style = 'perldoc'
             elif option('html_style=') == 'solarized_dark':
                 if pygm_style != 'friendly':
-                    print '*** warning: --pygm_style=%s is not recommended when --html_style=solarized_dark' % pygm_style
-                    print '    automatically changed to --html_style=friendly'
-                    print '    (it is recommended not to specify --pygm_style for solarized_dark)'
+                    errwarn('*** warning: --pygm_style=%s is not recommended when --html_style=solarized_dark' % pygm_style)
+                    errwarn('    automatically changed to --html_style=friendly')
+                    errwarn('    (it is recommended not to specify --pygm_style for solarized_dark)')
                     pygm_style = 'friendly'
 
         legal_lexers = get_legal_pygments_lexers()
         legal_styles = list(get_all_styles())
         legal_styles += ['no', 'none', 'off']
         if pygm_style not in legal_styles:
-            print 'pygments style "%s" is not legal, must be among\n%s' % (pygm_style, ', '.join(legal_styles))
+            errwarn('pygments style "%s" is not legal, must be among\n%s' % (pygm_style, ', '.join(legal_styles)))
             #_abort()
-            print 'using the "default" style...'
+            errwarn('using the "default" style...')
             pygm_style = 'default'
         if pygm_style in ['no', 'none', 'off']:
             pygm = None
@@ -895,17 +896,17 @@ Causes of missing labels:
             m_new = re.sub(r'([^ ])<', '\g<1> <', m_new)
             m_new = re.sub(r'<([^ ])', '< \g<1>', m_new)
             if m_new != m:
-                print '*** warning: inline math in HTML must have space around <:'
-                print '    %s  ->  %s' % (m, m_new)
+                errwarn('*** warning: inline math in HTML must have space around <:')
+                errwarn('    %s  ->  %s' % (m, m_new))
             filestr = filestr.replace(r'\( %s \)' % m, r'\( %s \)' % m_new)
     for i in range(len(tex_blocks)):
         if re.search(r'[^ {}]<', tex_blocks[i]) or re.search(r'<[^ {}]', tex_blocks[i]):
-            print '*** warning: math block in HTML must have space around <:'
-            print tex_blocks[i]
+            errwarn('*** warning: math block in HTML must have space around <:')
+            errwarn(tex_blocks[i])
             tex_blocks[i] = re.sub(r'([^ {}])<', '\g<1> <', tex_blocks[i])
             tex_blocks[i] = re.sub(r'<([^ {}])', '< \g<1>', tex_blocks[i])
-            print '    changed to'
-            print tex_blocks[i]
+            errwarn('    changed to')
+            errwarn(tex_blocks[i])
             print
 
     if option('wordpress'):
@@ -942,14 +943,14 @@ Causes of missing labels:
                             '^ *(<a +href=|<em>|<b>|<code>|\$latex |<font)',]
         acceptlines_present = ['([A-Za-z0-9.,;:?)]|</a>|</em>|</b>|</code>|\$|</font>) *$',]
         for i in range(len(lines)-1):
-            #print 'Line:', i, lines[i]
+            #errwarn('Line:', i, lines[i])
             lines[i] += '\n'
             # Ignore merging this line with the next?
             ignore = False
             for pattern in ignorelines:
                 if re.search(pattern, lines[i]):
                     ignore = True
-                    #print 'This is an ignore line', pattern
+                    #errwarn('This is an ignore line ' + pattern)
                     break
             if not ignore:
                 # Next line must not be an ignore line
@@ -957,27 +958,27 @@ Causes of missing labels:
                 for pattern in ignorelines:
                     if re.search(pattern, lines[i+1]):
                         ignore = True
-                        #print 'Next line is an ignore line', pattern
+                        #errwarn('Next line is an ignore line ' + pattern)
                         break
                 # Present line must be an accept line
                 accept_present = False
                 for pattern in acceptlines_present:
                     if re.search(pattern, lines[i]):
                         accept_present = True
-                        #print 'Present line is an accept line', pattern
+                        #errwarn('Present line is an accept line ' + pattern)
                         break
                 # Next line must be an accept line
                 accept_next = False
                 for pattern in acceptlines_next:
                     if re.search(pattern, lines[i+1]):
                         accept_next = True
-                        #print 'Next line is an accept line', pattern
+                        #errwarn('Next line is an accept line', pattern)
                         break
                 if (not ignore) and accept_present and accept_next:
                     # Line ends in correct character
                     # Merge with next line
                     lines[i] = lines[i].rstrip() + ' '
-                    #print 'Merge!'
+                    #errwarn('Merge!')
         filestr = ''.join(lines)
         # Must do the removal of \n in <li>.+?</li> later when </li> is added
 
@@ -1145,9 +1146,9 @@ Causes of missing labels:
     # Add header from external template
     template = option('html_template=', default='')
     if html_style == 'vagrant':
-        print '*** warning: --html_style=vagrant is deprecated,'
-        print '    just use bootstrap as style and combine with'
-        print '    template from bundled/html_styles/style_vagrant'
+        errwarn('*** warning: --html_style=vagrant is deprecated,')
+        errwarn('    just use bootstrap as style and combine with')
+        errwarn('    template from bundled/html_styles/style_vagrant')
         html_style == 'bootstrap'
 
     # Make toc for navigation
@@ -1171,9 +1172,9 @@ Causes of missing labels:
 
         header = '<!-- document title -->' in filestr  # will the html file get a header?
         if header:
-            print """\
+            errwarn("""\
 *** warning: TITLE may look strange with a template -
-             it is recommended to comment out the title: #TITLE:"""
+             it is recommended to comment out the title: #TITLE:""")
             pattern = r'<center><h1>(.+?)</h1></center>  <!-- document title -->'
             m = re.search(pattern, filestr)
             if m:
@@ -1181,10 +1182,10 @@ Causes of missing labels:
 
         authors = '<!-- author(s):' in filestr
         if authors:
-            print """\
+            errwarn("""\
 *** warning: AUTHOR may look strange with a template -
              it is recommended to comment out all authors: #AUTHOR.
-             Usually better to hardcode authors in a footer in the template."""
+             Usually better to hardcode authors in a footer in the template.""")
 
         # Extract title
         if title == '':
@@ -1212,8 +1213,8 @@ Causes of missing labels:
         try:
             f = open(template, 'r'); template = f.read(); f.close()
         except IOError as e:
-            print '*** error: could not find template "%s"' % template
-            print e
+            errwarn('*** error: could not find template "%s"' % template)
+            errwarn(e)
             _abort()
 
         # Check that template does not have "main content" begin and
@@ -1222,10 +1223,10 @@ Causes of missing labels:
         from doconce import main_content_char as _c
         m = re.findall(r'(<!-- %s+ main content %s+)' % (_c,_c), template)
         if m:
-            print '*** error: template contains lines that may interfere'
-            print '    with markers that doconce inserts - remove these'
+            errwarn('*** error: template contains lines that may interfere')
+            errwarn('    with markers that doconce inserts - remove these')
             for line in m:
-                print line
+                errwarn(line)
             _abort()
 
         # template can only have slots for title, date, main, table_of_contents
@@ -1250,8 +1251,8 @@ Causes of missing labels:
         variables.update({'title': title, 'date': date, 'main': filestr,
                           'table_of_contents': toc_html})
         if '%(date)s' in template and date == '':
-            print '*** warning: template contains date (%(date)s)'
-            print '    but no date is specified in the document'
+            errwarn('*** warning: template contains date (%(date)s)')
+            errwarn('    but no date is specified in the document')
         filestr = template % variables
 
     if html_style.startswith('boots'):
@@ -1454,8 +1455,8 @@ def interpret_bokeh_plot(text):
     # Extract the script and all div tags
     scripts = re.findall(r'<script type="text/javascript">.+?</script>', text, flags=re.DOTALL)
     if len(scripts) != 2:
-        print '*** warning: bokeh file contains more than two script tags,'
-        print '    will be using the last one! (use output_file(..., mode="cdn"))'
+        errwarn('*** warning: bokeh file contains more than two script tags,')
+        errwarn('    will be using the last one! (use output_file(..., mode="cdn"))')
     script = scripts[-1]
     divs = re.findall(r'<div class="plotdiv".+?</div>', text, flags=re.DOTALL)
     return script, divs
@@ -1500,7 +1501,7 @@ def html_figure(m):
             bokeh_plot = True
             script, divs = interpret_bokeh_plot(text)
         else:
-            print '*** error: figure file "%s" must be a Bokeh plot' % filename
+            errwarn('*** error: figure file "%s" must be a Bokeh plot' % filename)
             _abort()
 
     if not filename.startswith('http') and not bokeh_plot:
@@ -1579,7 +1580,7 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
         if name in name2index:
             i = name2index[m.group('name')]
         else:
-            print '*** error: found footnote with name "%s", but this one is not defined' % name
+            errwarn('*** error: found footnote with name "%s", but this one is not defined' % name)
             _abort()
         if option('html_style=', '').startswith('boots'):
             # Use a tooltip construction so the footnote appears when hovering over
@@ -1589,25 +1590,25 @@ def html_footnotes(filestr, format, pattern_def, pattern_footnote):
             if '*' in text:
                 newtext, n = re.subn(r'\*(.+?)\*', r'\g<1>', text)
                 if n > 0:
-                    print '*** warning: found emphasis tag *...* in footnote, which was removed'
-                    print '    in tooltip (since it does not work with bootstrap tooltips)'
-                    print '    but not in the footnote itself.'
-                    print text, '\n'
+                    errwarn('*** warning: found emphasis tag *...* in footnote, which was removed')
+                    errwarn('    in tooltip (since it does not work with bootstrap tooltips)')
+                    errwarn('    but not in the footnote itself.')
+                    errwarn(text + '\n')
                 text = newtext
             if '`' in text:
                 newtext, n = re.subn(r'`(.+?)`', r'\g<1>', text)
                 if n > 0:
-                    print '*** warning: found inline code tag `...` in footnote, which was removed'
-                    print '    in tooltip (since it does not work with bootstrap tooltips):'
-                    print text, '\n'
+                    errwarn('*** warning: found inline code tag `...` in footnote, which was removed')
+                    errwarn('    in tooltip (since it does not work with bootstrap tooltips):')
+                    errwarn(text + '\n')
                 text = newtext
             if '"' in text:
                 newtext, n1 = re.subn(r'"(.+?)" ?:\s*"(.+?)"', r'\g<1>', text)
                 newtext, n2 = re.subn(r'URL ?:\s*"(.+?)"', r'\g<1>', newtext)
                 if n1 > 0 or n2 > 0:
-                    print '*** warning: found link tag "...": "..." in footnote, which was removed'
-                    print '    from tooltip (since it does not work with bootstrap tooltips)'
-                    print text
+                    errwarn('*** warning: found link tag "...": "..." in footnote, which was removed')
+                    errwarn('    from tooltip (since it does not work with bootstrap tooltips)')
+                    errwarn(text)
                 text = newtext
             html = ' <button type="button" class="btn btn-primary btn-xs" rel="tooltip" data-placement="top" title="%s"><a href="#def_footnote_%s" id="link_footnote_%s" style="color: white">%s</a></button>' % (text, i, i, i)
             # (<a name=""></a> is later replaced by a div tag)
@@ -1630,8 +1631,6 @@ def html_table(table):
     if bootstrap:
         #span = ncolumns+1
         # Base span on total width of all columns
-        #print 'XXX', table['rows'][3]
-        #print 'XXX total length:', sum(column_width), '%.1f' % (sum(column_width)/100.0*12)
         span = min(int(sum(column_width)/100.0*12), 12)
         s = """
 <div class="row">
@@ -1727,7 +1726,7 @@ def html_movie(m):
             header, jscode, form, footer, frames = \
                     DocWriter.html_movie(filename, **kwargs)
         except ValueError as e:
-            print '*** error: %s' % str(e)
+            errwarn('*** error: %s' % str(e))
             _abort()
         text = jscode + form
         if caption:
@@ -1767,7 +1766,7 @@ def html_movie(m):
         #basename = os.path.basename(filename)
         stem, ext = os.path.splitext(filename)
         if ext == '':
-            print '*** error: never specify movie file without extension'
+            errwarn('*** error: never specify movie file without extension')
             _abort()
 
         if ext in ('.mp4', '.ogg', '.webm'):
@@ -1809,9 +1808,11 @@ def html_movie(m):
                     text += ext2source_command[ext]
                     movie_exists = True
             if not movie_exists:
-                print '*** error: movie "%s" was not found' % filename
+                errwarn('*** warning: movie "%s" was not found' % filename)
                 if sources3:
-                    print '    could not find any .ogg/.mp4/.webm version of this filename'
+                    errwarn('    could not find any .ogg/.mp4/.webm version of this filename')
+                    import time
+                    time.sleep(5)  # let the warning shine for a while
                     _abort()
 
             text += """
@@ -2078,15 +2079,15 @@ def html_index_bib(filestr, index, citations, pubfile, pubdata):
                         bibtext = bibtext.decode('utf-8').replace(
                             'label{%s}' % label, '<a name="%s"></a>' % label)
                     except UnicodeDecodeError, e:
-                        print 'UnicodeDecodeError:', e
-                        print '*** error: problems in %s' % pubfile
-                        print '    with key', label
-                        print '    tried to do decode("utf-8"), but it did not work'
+                        errwarn('UnicodeDecodeError: ' + e)
+                        errwarn('*** error: problems in %s' % pubfile)
+                        errwarn('    with key ' + label)
+                        errwarn('    tried to do decode("utf-8"), but it did not work')
                         _abort()
                 else:
-                    print e
-                    print '*** error: problems in %s' % pubfile
-                    print '    with key', label
+                    errwarn(e)
+                    errwarn('*** error: problems in %s' % pubfile)
+                    errwarn('    with key ' + label)
                     _abort()
 
         bibtext = """
@@ -2176,9 +2177,9 @@ def html_inline_comment(m):
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
-                print '*** wrong syntax in inline comment:'
-                print comment
-                print '(more than two ->)'
+                errwarn('*** wrong syntax in inline comment:')
+                errwarn(comment)
+                errwarn('(more than two ->)')
                 _abort()
             orig, new = comment.split(' -> ')
             return r' <font color="red">(<b>%s</b>:)</font> <del> %s </del> <font color="red">%s</font>' % (name, orig, new)
@@ -2228,9 +2229,9 @@ def html_quiz(quiz):
             if len(choice) == 3 and quiz_expl == 'on':
                 expl = choice[2]
             if '<img' in expl or '$$' in expl or '<pre' in expl:
-                print '*** warning: quiz explanation contains block (fig/code/math)'
-                print '    and is therefore skipped'
-                print expl, '\n'
+                errwarn('*** warning: quiz explanation contains block (fig/code/math)')
+                errwarn('    and is therefore skipped')
+                errwarn(expl + '\n')
                 expl = ''  # drop explanation when it needs blocks
             # Should remove markup
             pattern = r'<a href="(.+?)">(.*?)</a>'  # URL
@@ -2433,10 +2434,10 @@ def html_%(_admon)s(block, format, title='%(_Admon)s', text_size='normal'):
 """ %% (text_size, title, block)
         return paragraph
     else:
-        print '*** error: illegal --html_admon=%%s' %% html_admon_style
-        print '    legal values are colors, gray, yellow, apricot, lyx,'
-        print '    paragraph, paragraph-80, paragraph-120; and'
-        print '    bootstrap_alert or bootstrap_panel for --html_style=bootstrap*|bootswatch*'
+        errwarn('*** error: illegal --html_admon=%%s' %% html_admon_style)
+        errwarn('    legal values are colors, gray, yellow, apricot, lyx,')
+        errwarn('    paragraph, paragraph-80, paragraph-120; and')
+        errwarn('    bootstrap_alert or bootstrap_panel for --html_style=bootstrap*|bootswatch*')
         _abort()
 ''' % vars()
     exec(_text)
@@ -2625,7 +2626,7 @@ def define(FILENAME_EXTENSION,
                     'Architects+Daughter', 'Kotta+One',)
     if body_font_family == '?' or body_font_family == 'help' or \
        heading_font_family == '?' or heading_font_family == 'help':
-        print ' '.join(google_fonts)
+        errwarn(' '.join(google_fonts))
         _abort()
     link = "@import url(http://fonts.googleapis.com/css?family=%s);"
     import_body_font = ''
@@ -2633,13 +2634,13 @@ def define(FILENAME_EXTENSION,
         if body_font_family in google_fonts:
             import_body_font = link % body_font_family
         else:
-            print '*** warning: --html_body_font=%s is not valid' % body_font_family
+            errwarn('*** warning: --html_body_font=%s is not valid' % body_font_family)
     import_heading_font = ''
     if heading_font_family is not None:
         if heading_font_family in google_fonts:
             import_heading_font = link % heading_font_family
         else:
-            print '*** warning: --html_heading_font=%s is not valid' % heading_font_family
+            errwarn('*** warning: --html_heading_font=%s is not valid' % heading_font_family)
     if import_body_font or import_heading_font:
         css = '    ' + '\n    '.join([import_body_font, import_heading_font]) \
               + '\n' + css
@@ -2768,24 +2769,24 @@ div { text-align: justify; text-justify: inter-word; }
                           html_style.split('_')[1]
             legal_bootswatch_styles = 'cerulean cosmo flatly journal lumen readable simplex spacelab united yeti amelia cyborg darkly slate spruce superhero'.split()
             if boots_style not in legal_bootswatch_styles:
-                print '*** error: wrong bootswatch style %s' % boots_style
-                print '    legal choices:\n    %s' % ', '.join(legal_bootswatch_styles)
+                errwarn('*** error: wrong bootswatch style %s' % boots_style)
+                errwarn('    legal choices:\n    %s' % ', '.join(legal_bootswatch_styles))
                 _abort()
             urls = ['http://netdna.bootstrapcdn.com/bootswatch/%s/%s/bootstrap.min.css' % (boots_version, boots_style)]
             # Dark styles need some recommended options
             dark_styles = 'amelia cyborg darkly slate superhero'.split()
             if boots_style in dark_styles:
                 if not option('keep_pygments_html_bg') or option('pygments_html_style=', None) is None or option('html_code_style=', None) is None or option('html_pre_style=', None) is None:
-                    print """\
+                    errwarn("""\
 *** warning: bootswatch style "%s" is dark and some
     options to doconce format html are recommended:
     --pygments_html_style=monokai     # dark background
     --keep_pygments_html_bg           # keep code background in admons
     --html_code_style=inherit         # use <code> style in surroundings (no red)
     --html_pre_style=inherit          # use <pre> style in surroundings
-    """ % boots_style
+    """ % boots_style)
         else:
-            print '*** wrong --html_style=%s' % html_style
+            errwarn('*** wrong --html_style=%s' % html_style)
             _abort()
 
         style = """
@@ -2825,6 +2826,11 @@ in.collapse+a.btn.showdetails:before { content:'Hide details'; }
 .collapse+a.btn.showdetails:before { content:'Show details'; }
 */
 """
+    body_style = option('html_body_style=', None)
+    if body_style is not None:
+        style_changes += """
+body { %s; }
+""" % body_style
     if style_changes:
         style += """
 <style type="text/css">
@@ -3038,7 +3044,7 @@ def latin2html(text):
         try:
             text = text.decode('latin-1')
         except UnicodeDecodeError, e:
-            print 'Tried to interpret the file as utf-8 (failed) and latin-1 (failed) - aborted'
+            errwarn('Tried to interpret the file as utf-8 (failed) and latin-1 (failed) - aborted')
             raise e
     #except UnicodeEncodeError, e:
     #    pass
@@ -3049,8 +3055,8 @@ def latin2html(text):
             else:
                 text_new.append(c)
         except Exception, e:
-            print e
-            print 'character causing problems:', c
+            errwarn(e)
+            errwarn('character causing problems: ' + c)
             raise e.__class__('%s: character causing problems: %s' % \
                               (e.__class__.__name__, c))
     return ''.join(text_new)

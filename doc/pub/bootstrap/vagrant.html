@@ -112,7 +112,7 @@ MathJax.Hub.Config({
 
 <p>
 DocOnce supports a variety of Bootstrap styles for HTML
-documents. To get the <code>journal</code> Bootswatch style, run
+documents. To get the <code>journal</code> Bootswatch style, for instance, run
 
 <p>
 
@@ -122,16 +122,18 @@ documents. To get the <code>journal</code> Bootswatch style, run
 <p>
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap, resulting in large fonts on gray background.  If a
-<code>!split</code> command is used before the first section heading or <code>TOC: on</code>
-instruction, a button with <code>Read...</code> and a link to the next page is
-inserted if the document is split using <code>doconce split_html</code>.  This
-construction results in a short Bootstrap main page that has become
-very popular on web the last couple of years.  The
-<code>--html_bootstrap_jumbotron=value</code> option can be used to adjust the
-jumbotron: <code>value</code> can be <code>on</code> (default), <code>off</code> (to turn the gray
-background and large fonts off), or <code>h2</code> (to replace the large font in
-the document title by a smaller font).
+from Bootstrap, resulting in large fonts on a gray background.
+
+<p>
+If a <code>!split</code> command is used before the first section heading or
+<code>TOC: on</code> instruction, a button with <code>Read...</code> and a link to the next
+page is inserted if the document is split using <code>doconce split_html</code>.
+This construction results in a short Bootstrap main page that has
+become very popular on web.  The <code>--html_bootstrap_jumbotron=value</code>
+option can be used to adjust the jumbotron: <code>value</code> can be <code>on</code>
+(default), <code>off</code> (to turn the gray background and large fonts off), or
+<code>h2</code> (to replace the large font in the document title by a smaller
+font).
 
 <p>
 <!-- A split before the first section will enable a button in the jumbotron -->

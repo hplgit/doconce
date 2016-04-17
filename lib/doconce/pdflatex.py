@@ -1,5 +1,6 @@
 # -*- coding: iso-8859-15 -*-
 from latex import *
+from doconce import errwarn
 
 def pdflatex_emoji(m):
     space1 = m.group(1)
@@ -17,7 +18,7 @@ def pdflatex_emoji(m):
         # Check that this was successful
         with open(emojifile, 'r') as f:
             if 'Not Found' in f.read():
-                print '*** error: emoji "name" is probably misspelled - cannot find any emoji with that name'
+                errwarn('*** error: emoji "name" is probably misspelled - cannot find any emoji with that name')
                 _abort()
     s = space1 + r'\raisebox{-\height+\ht\strutbox}{\includegraphics[height=1.5em]{%s}}' % emojifile + space2
     # NOTE: \ht needs the calc package!

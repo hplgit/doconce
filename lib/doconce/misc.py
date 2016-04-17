@@ -1,4 +1,5 @@
 import os, sys, shutil, re, glob, time, subprocess
+from doconce import errwarn
 
 _part_filename = '._%s%03d'
 _part_filename_wildcard = '._*[0-9][0-9][0-9]'
@@ -128,6 +129,11 @@ avoid white background in code blocks inside colorful admons.
      """No of spaces for indentation of subsections in the table of
 contents in HTML output. Default: 3 (0 gives toc as nested list
 in Bootstrap-based styles)."""),
+    ('--html_body_style=',
+     """Override elements in the <body> style css.
+Used to enlargen bootswatch fonts, for instance:
+"--html_body_style=font-size:20px;line-height:1.5"
+"""),
     ('--html_body_font=',
      """Specify HTML font for text body. =? lists available fonts."""),
     ('--html_heading_font=',
@@ -284,7 +290,7 @@ titlepage: separate page,
 doconce_heading (default): authors with "footnotes" for institutions,
 beamer: layout for beamer slides."""),
     ('--latex_link_color=', """Color used in hyperlinks. Default is dark blue if --device=screen,
-or black if --device=paper (invisible in print out) or special blue
+or black if --device=paper (invisible in printout or special blue
 color if --latex_section_headings=blue or strongblue.
 Values are specified either as comma-separated rgb tuples or as
 color names, e.g., --latex_link_color=0.1,0.9,0.85 or
@@ -588,17 +594,17 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
-    print """
+    errwarn("""
 doconce format X doconcefile
 
 where X can be any of the formats
 html, latex, pdflatex, rst, sphinx, plain, gwiki, mwiki, cwiki,
 pandoc, epytext.
-"""
+""")
     for opt, help in _registered_command_line_options:
         if opt.endswith('='):
             opt += '...'
-        print '\n%s\n\n%s\n' % (opt, help)
+        errwarn('\n%s\n\n%s\n' % (opt, help))
 
 # Import options from config file instead of the command line
 try:
@@ -627,7 +633,7 @@ def option(name, default=None):
 
     option_name = '--' + name
     if not option_name in _legal_command_line_options:
-        print 'test for illegal option:', option_name
+        errwarn('test for illegal option: ' + option_name)
         _abort()
 
     # Check if a command-line option has dash instead of underscore,
@@ -638,8 +644,8 @@ def option(name, default=None):
                 arg = arg.split('=')[0] + '='
             if arg not in _legal_command_line_options and \
               ('--' + arg[2:].replace('-', '_')) in _legal_command_line_options:
-                print 'found option %s, should be %s' % \
-                      (arg, '--' + arg[2:].replace('-', '_'))
+                errwarn('found option %s, should be %s' %
+                        (arg, '--' + arg[2:].replace('-', '_')))
                 _abort()
 
     value = None  # initialization
@@ -675,8 +681,8 @@ def check_command_line_options(option_start):
             arg = arg.split('=')[0] + '='
         if arg[:2] == '--':
             if not arg in _legal_command_line_options:
-                print '*** warning: unrecognized command-line option'
-                print '   ', arg_user
+                errwarn('*** warning: unrecognized command-line option')
+                errwarn('    ' + arg_user)
 
 
 def misc_option(name, default=None):
@@ -699,9 +705,9 @@ def misc_option(name, default=None):
 
 def _abort():
     if '--no_abort' in sys.argv:
-        print 'avoided abortion because of --no-abort'
+        errwarn('avoided abortion because of --no-abort')
     else:
-        print 'Abort! (add --no_abort on the command line to avoid this abortion)'
+        errwarn('Abort! (add --no_abort on the command line to avoid this abortion)')
         sys.exit(1)
 
 def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):
@@ -712,10 +718,10 @@ def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):
     If verbose: print cmd.
     """
     if verbose or '--verbose' in sys.argv:
-        print 'running', cmd
+        print 'running ' + cmd
     failure = os.system(cmd)
     if failure:
-        print 'could not run', cmd, failure_info
+        print 'could not run ' + cmd + ' ' + failure_info
         if abort_on_failure:
             _abort()
     return failure
@@ -826,11 +832,11 @@ def load_preprocessed_doconce_file(filename, dirpath=''):
         dotext = dofile.read()
         dofile.close()
     else:
-        print '*** error: could not find any file related to %s.do.txt in %s' % (filename, os.getcwd())
-        print '    searched for:'
-        print '   ', after_mako
-        print '   ', after_preprocess
-        print '   ', orig_doconce
+        errwarn('*** error: could not find any file related to %s.do.txt in %s' % (filename, os.getcwd()))
+        errwarn('    searched for:')
+        errwarn('    ' + after_mako)
+        errwarn('    ' + after_preprocess)
+        errwarn('    ' + orig_doconce)
         _abort()
     return dotext
 
@@ -856,7 +862,7 @@ def remove_inline_comments():
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
-    print 'inline comments removed in', filename
+    print 'inline comments removed in ' + filename
 
 def apply_inline_edits():
     try:
@@ -888,7 +894,7 @@ def apply_inline_edits():
     f = open(filename, 'w')
     f.write(filestr)
     f.close()
-    print 'inline comments removed in', filename
+    print 'inline comments removed in ' + filename
 
 def latin2html():
     """
@@ -904,7 +910,7 @@ def latin2html():
             continue
         oldfilename = filename + '.old~~'
         shutil.copy(filename, oldfilename)
-        print 'transformin latin characters to HTML encoding in', filename
+        print 'transformin latin characters to HTML encoding in ' + filename
         f = open(oldfilename, 'r')
         try:
             text = f.read()
@@ -914,7 +920,7 @@ def latin2html():
             f.write(newtext)
             f.close()
         except Exception, e:
-            print e.__class__.__name__, ':', e,
+            print e.__class__.__name__ + ' : ' + str(e)
 
 # replace is taken from scitools
 def _usage_find_nonascii_chars():
@@ -969,17 +975,15 @@ def gwiki_figsubst():
     f = open(gwikifile, 'w')
     f.write(fstr)
     f.close()
-    print 'Replaced %d figure references in' % n, gwikifile
+    print 'Replaced %d figure references in %s' % (n, gwikifile)
     if n != n2:
-        print 'Something strange: %d fig references and %g comments... Bug.' % \
-              (n, n2)
+        print 'Something strange: %d fig references and %g comments... Bug.' % (n, n2)
 
 
 
 # subst is taken from scitools
 def _usage_subst():
-    print 'Usage: doconce subst [-s -m -x --restore] pattern '\
-          'replacement file1 file2 file3 ...'
+    print 'Usage: doconce subst [-s -m -x --restore] pattern replacement file1 file2 file3 ...'
     print '--restore brings back the backup files'
     print '-s is the re.DOTALL or re.S modifier'
     print '-m is the re.MULTILINE or re.M modifier'
@@ -1119,20 +1123,21 @@ def replace():
         if from_text in text:
             backup_filename = filename + '.old~~'
             shutil.copy(filename, backup_filename)
-            print 'replacing %s by %s in' % (from_text, to_text), filename
+            print 'replacing %s by %s in %s' % (from_text, to_text, filename)
             text = text.replace(from_text, to_text)
             f = open(filename, 'w')
             f.write(text)
             f.close()
 
 def _usage_replace_from_file():
-    print 'Usage: doconce replace_from_file file-with-from-to file1 file2 ...'
-    print '\nThe file must contain two columns with the from and to parts'
-    print 'for each substitution. Comment lines starting with # are allowed.'
-    print 'The output from doconce list_labels has a form suitable for'
-    print 'being extended with a second column with new labels and run'
-    print 'with this command to clean up label names.'
+    print """Usage: doconce replace_from_file file-with-from-to file1 file2 ...
 
+The file must contain two columns with the from and to parts
+for each substitution. Comment lines starting with # are allowed.
+The output from doconce list_labels has a form suitable for
+being extended with a second column with new labels and run
+with this command to clean up label names.
+"""
 
 def replace_from_file():
     """
@@ -1176,7 +1181,7 @@ def replace_from_file():
                 if from_text in text:
                     backup_filename = filename + '.old~~'
                     shutil.copy(filename, backup_filename)
-                    print 'replacing %s by %s in' % (from_text, to_text), filename
+                    print 'replacing %s by %s in %s' % (from_text, to_text, filename)
                     text = text.replace(from_text, to_text)
                     replacements = True
         if replacements:
@@ -1185,11 +1190,13 @@ def replace_from_file():
             f.close()
 
 def _usage_find():
-    print 'Usage: doconce find expression'
-    print 'Searches for all .do.txt files in subdirectories and'
-    print 'writes out filename, line number and line containing expression'
-    print 'expression is interpreted as a regular expression'
-    print '(the command is similar to a Unix find & grep)'
+    print """Usage: doconce find expression
+
+Searches for all .do.txt files in subdirectories and
+writes out filename, line number and line containing expression
+expression is interpreted as a regular expression
+(the command is similar to a Unix find & grep)
+"""
 
 def find():
     if len(sys.argv) < 2:
@@ -1235,7 +1242,7 @@ def include_map():
             if '#include ' in line:
                 includefile = line.split('#include')[1].strip()[1:-1]
                 includefile = os.path.join(os.path.dirname(name), includefile)
-                print indent, '#include', includefile
+                print indent + ' #include ' + includefile
                 find_include(includefile, indent + '    ')
 
     print filename
@@ -1276,7 +1283,7 @@ def expand_mako():
                 inside_func = False
 
     funcname_text = '\n'.join(func_lines)
-    print 'Extracted function %s from %s:\n' % (funcname, mako_filename), funcname_text
+    print 'Extracted function %s from %s:\n' % (funcname, mako_filename) + funcname_text
     print func_lines
     try:
         exec(funcname_text)
@@ -1306,7 +1313,7 @@ def expand_mako():
         if m:
             backup_filename = filename + '.old~~'
             shutil.copy(filename, backup_filename)
-            print 'expanding mako function %s in' % funcname, filename
+            print 'expanding mako function %s in %s' % (funcname, filename)
             calls = re.findall(pattern, text, flags=re.DOTALL)
             for mako_call, python_call in calls:
                 try:
@@ -1350,9 +1357,9 @@ def linkchecker():
         for link in links:
             check = is_file_or_url(link, msg=None)
             if check in ('file', 'url'):
-                print '%s:' % filename, link, 'exists as', check
+                print '%s:' % filename + ' ' + link + ' exists as ' + check
             else:
-                print '%s:' % filename, link, 'WAS NOT FOUND'
+                print '%s:' % filename + ' ' + link + ' WAS NOT FOUND'
                 missing[-1][1].append(link)
     for filename, missing_links in missing:
         if missing_links:
@@ -1363,8 +1370,7 @@ def linkchecker():
 
 def _dofix_localURLs(filename, exclude_adr):
     if os.path.splitext(filename)[1] != '.rst':
-        print 'Wrong filename extension in "%s" - must be a .rst file' \
-              % filename
+        print 'Wrong filename extension in "%s" - must be a .rst file' % filename
         _abort()
 
     f = open(filename, 'r')
@@ -1383,7 +1389,7 @@ def _dofix_localURLs(filename, exclude_adr):
     num_fixed_links = 0
     for link in links:
         if link in exclude_adr:
-            print 'not modifying', link
+            print 'not modifying ' + link
             if link.endswith('htm') or link.endswith('html'):
                 print 'Note: %s\n      is an HTML file that may link to other files.\n      This may require copying many files! Better: link to _static directly in the doconce document.' % link
             continue
@@ -1394,8 +1400,7 @@ def _dofix_localURLs(filename, exclude_adr):
                     os.mkdir('_static')
                 newlink = os.path.join('_static', os.path.basename(link))
                 text = text.replace('<%s>' % link, '<%s>' % newlink)
-                print 'fixing link to %s as link to %s' % \
-                      (link, newlink)
+                print 'fixing link to %s as link to %s' % (link, newlink)
                 print '       copying %s to _static' % os.path.basename(link)
                 shutil.copy(link, newlink)
                 if link.endswith('htm') or link.endswith('html'):
@@ -1410,7 +1415,7 @@ def _dofix_localURLs(filename, exclude_adr):
 
 
 def _usage_sphinxfix_localURLs():
-    print """\
+    print"""
 Usage: doconce sphinxfix_localURLs file1.rst file2.rst ... -not adr1 adr2 ...
 
 Each link to a local file, e.g., "link": "src/dir1/myfile.txt",
@@ -1571,11 +1576,11 @@ def latex_exercise_toc():
                          filestr, flags=re.MULTILINE)
         f = open(texfile, 'w')
         f.write(filestr)
-        print 'table of exercises inserted in', texfile
+        print 'table of exercises inserted in ' + texfile
         f.close()
     else:
         print '*** error: cannot insert table of exercises because there is no'
-        print '    table of contents requested in the', dofile, 'document'
+        print '    table of contents requested in the ' + dofile + ' document'
 
 
 def _usage_combine_images():
@@ -1656,7 +1661,7 @@ def combine_images():
     print
     for cmd in cmds:
         system(cmd, verbose=True)
-    print 'output in', output_file
+    print 'output in ' + output_file
 
 
 def _usage_expand_commands():
@@ -1769,7 +1774,7 @@ def copy_latex_packages(packages):
     if missing_files:
         # Copy zipfile with styles to current dir
         print '*** missing style files:'
-        print '   ', ', '.join(missing_files)
+        print '    ' + ', '.join(missing_files)
         import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
@@ -1784,7 +1789,7 @@ def copy_latex_packages(packages):
             except:
                 msg = 'could not extract'
             print '%s %s (from %s in the doconce installation)' % \
-            (msg, filename, latexstyle_files)
+                  (msg, filename, latexstyle_files)
     if os.path.isfile(datafile):
         os.remove(datafile)
 
@@ -2010,9 +2015,7 @@ def ptex2tex():
                 latexenvir2package[latexenvir] = package
         else: # str
             latexenvir2package[package2envir[package]] = package
-    #print 'envir_user_spec:' #
     #import pprint; pprint.pprint(envir_user_spec)
-    #print 'latex2envir2package:'; pprint.pprint(latexenvir2package)
     # Run through user's specifications and grab latexenvir from
     # end = \end{latexenvir}, find corresponding package and add to set
     packages = set()
@@ -2028,8 +2031,6 @@ def ptex2tex():
     # fancyvrb is needed for \code{...} -> \Verb!...! translation
     if not 'fancyvrb' in packages:
         packages.append('fancyvrb')
-
-    #print 'packages:';  pprint.pprint(packages)
 
     # Run preprocess
     if not preprocess_options:
@@ -2120,12 +2121,13 @@ download preprocess from http://code.google.com/p/preprocess""")
             output = subprocess.check_output(cmd, shell=True,
                                              stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            print 'You have requested the minted latex style, but this'
-            print 'requires the pygments package to be installed. On Debian/Ubuntu: run'
-            print 'Terminal> sudo apt-get install python-pygments'
-            print 'Or'
-            print 'Terminal> hg clone http://bitbucket.org/birkenfeld/pygments-main pygments'
-            print 'Terminal> cd pygments; sudo python setup.py install'
+            print """You have requested the minted latex style, but this
+requires the pygments package to be installed. On Debian/Ubuntu: run
+Terminal> sudo apt-get install python-pygments
+Or
+Terminal> hg clone http://bitbucket.org/birkenfeld/pygments-main pygments
+Terminal> cd pygments; sudo python setup.py install
+"""
             _abort()
 
     filestr = replace_code_command(filestr)
@@ -2133,7 +2135,7 @@ download preprocess from http://code.google.com/p/preprocess""")
     f = open(output_filename, 'w')
     f.write(filestr)
     f.close()
-    print 'output in', output_filename
+    print 'output in ' + output_filename
 
 def replace_code_command(filestr):
     """Replace \code{...} by \Verb!...! or \textttt{...}."""
@@ -2372,7 +2374,7 @@ def remove_exercise_answers():
     if from_found and to_found:
         pass
     else:
-        print 'no answers/solutions to exercises found in', filename
+        print 'no answers/solutions to exercises found in ' + filename
 
     os.rename(filename, filename + '.old~~')
     f = open(filename, 'w')
@@ -2419,7 +2421,6 @@ def _clean(light):
         extensions_to_keep = ['.do.txt', '.sh', '.py', '*.pl']
         if light:
             extensions_to_keep += ['.pdf', '.html', '.txt', '.gwiki', '.mwiki', '.cwiki', '.ipynb', '.m']
-        #print 'generated_files:', namestem + '.*', generated_files
         for ext in extensions_to_keep:
             filename = namestem + ext
             if os.path.isfile(filename):
@@ -2456,7 +2457,7 @@ def _clean(light):
             removed.append(d)
 
     if removed:
-        print 'Remove:', ' '.join(removed), '(-> Trash)'
+        print 'Remove: ' + ' '.join(removed) + ' (-> Trash)'
         os.mkdir('Trash')
         for f in removed:
             try:
@@ -2465,7 +2466,7 @@ def _clean(light):
                 if 'already exists' in str(e):
                     pass
                 else:
-                    print 'Move problems with', f, e
+                    print 'Move problems with %s %s' % (f, e)
             if os.path.isdir(f):
                 shutil.rmtree(f)
 
@@ -2483,11 +2484,11 @@ def _encoding_guesser(filename, verbose=False):
     for encoding in encodings:
         try:
             if verbose:
-                print 'Trying encoding', encoding, 'with unicode(text, encoding)'
+                print 'Trying encoding ' + encoding + ' with unicode(text, encoding)'
             unicode(text, encoding, "strict")
         except Exception, e:
             if verbose:
-                print 'failed:', e
+                print 'failed: %s' % e
         else:
             break
     return encoding
@@ -2573,7 +2574,7 @@ def copy_datafiles(datafile):
         doconce_datafile = os.path.join(doconce_dir, datafile)
         shutil.copy(doconce_datafile, os.curdir)
         uncompressor(datafile).extractall()
-        print 'made subdirectory', subdir
+        print 'made subdirectory ' + subdir
         os.remove(datafile)
         return True
     else:
@@ -2631,7 +2632,7 @@ def html_colorbullets():
         f.close()
 
 def _usage_split_html():
-    print """\
+    print """
 Usage: doconce split_html mydoc.html --method=... --nav_button=name --pagination --reference="acknowledgment/author" --font_size=slides --copyright=everypage|titlepage
 
 --method=split|space8|hrule|colorline specifies pagebreak
@@ -2886,7 +2887,6 @@ def slides_html():
                      f.write('doconce format html %s --pygments_html_style=%s --keep_pygments_html_bg SLIDE_TYPE=%s SLIDE_THEME=%s\ndoconce slides_html %s %s --html_slide_theme=%s\ncp %s.html %s_%s_%s.html\n\n' % (filestem, pygm_style, sl_tp, style, filestem, sl_tp, style, filestem, filestem, sl_tp, style.replace('.', '_')))
          f.write('echo "Here are the slide shows:"\n/bin/ls %s_*_*.html\n' % filestem)
          print 'run\n  sh tmp_slides_html_all.sh\nto generate the slides'
-         #print 'names:', ' '.join(glob.glob('%s_*_*.html' % filestem))
          return
 
 
@@ -2923,7 +2923,7 @@ def slides_html():
         f = open(filename, 'w')
         f.write(filestr)
         f.close()
-        print 'slides written to', filename
+        print 'slides written to ' + filename
 
 
 def tablify(parts, format="html"):
@@ -2940,7 +2940,6 @@ def tablify(parts, format="html"):
             pattern00 = r'%s !bslidecell +00 *[.0-9 ]*?%s\s+(.+?)%s !eslidecell *%s' % (begin_comment, end_comment, begin_comment, end_comment)
             cpattern = re.compile(pattern, re.DOTALL)
             cells = cpattern.findall(part)
-            #print 'CELLS:'; import pprint; pprint.pprint(cells)
             data = []
             row_max = 0
             col_max = 0
@@ -2961,10 +2960,8 @@ def tablify(parts, format="html"):
             for r in range(len(table)):
                 for s in range(len(table[r])):
                     table[r][s] = ['', None]
-            #print 'data:', data
             for pos, body, width in data:
                 table[pos[0]][pos[1]] = [body, width]
-            #print 'table 1:'; import pprint; pprint.pprint(table)
             # Check consistency of widths
             for r, row in enumerate(table):
                 widths = []
@@ -2989,16 +2986,14 @@ def tablify(parts, format="html"):
                                 column, width = c
                                 print ' %d%d: ' (r, s),
                                 if width is not None:
-                                    print 'no width',
+                                    print 'no width'
                                 else:
-                                    print '%g' % width,
+                                    print '%g' % width
                             _abort()
                 else:
                     width = 1./len(row)
                     for s, c in enumerate(row):
                         table[r][s][1] = width
-
-            #print 'table 2:'; import pprint; pprint.pprint(table)
 
             if format == 'html':
                 # typeset table in html
@@ -3021,7 +3016,6 @@ def tablify(parts, format="html"):
                 part = part.replace('XXXYYY@#$', tbl) # since replace handles \
                 # Let the other cells be empty
                 part = cpattern.sub('', part)
-                #print 'part:'; pprint.pprint(part)
                 part = [line + '\n' for line in part.splitlines()]
                 parts[i] = part
             elif format.endswith('latex'):
@@ -3045,7 +3039,6 @@ def tablify(parts, format="html"):
                 part = part.replace('XXXYYY@#$', tbl) # since replace handles \
                 # Let the other cells be empty
                 part = cpattern.sub('', part)
-                #print 'part:'; pprint.pprint(part)
                 part = [line + '\n' for line in part.splitlines()]
                 parts[i] = part
     return parts
@@ -3370,7 +3363,6 @@ def doconce_split_html(header, parts, footer, basename, filename, slides=False):
                 text = ''.join(part)
                 if n != i:
                     # Reference to equation with label in another file
-                    #print '*** warning: \\eqref{%s} to label in another HTML file will appear as (eq)' % (label)
                     label_def_filename = _part_filename % (basename, n) + '.html'
                     text = text.replace(
                         r'\eqref{%s}' % label,
@@ -4788,7 +4780,7 @@ hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
         # This test will not be run since it is already tested that
         # the slide type is legal (before calling this function)
         print '*** error: slide type "%s" is not known - abort' % slide_tp
-        print 'known slide types:', ', '.join(list(all_combinations.keys()))
+        print 'known slide types: ' + ', '.join(list(all_combinations.keys()))
         _abort()
 
     # We need the subdir with reveal.js, deck.js, or similar to show
@@ -4800,9 +4792,8 @@ hr.figure { border: 0; width: 80%%; border-bottom: 1px solid #aaa}
 
     if theme != 'default':
         if not theme in all_combinations[slide_tp]:
-            print '*** error: %s theme "%s" is not known - abort' % \
-                  (slide_tp, theme)
-            print 'known themes:', ', '.join(list(all_combinations[slide_tp].keys()))
+            print '*** error: %s theme "%s" is not known - abort' % (slide_tp, theme)
+            print 'known themes: ' + ', '.join(list(all_combinations[slide_tp].keys()))
             _abort()
 
     #m = re.search(r'<title>(.*?)</title>', ''.join(parts[0]))
@@ -5020,9 +5011,9 @@ td.padding {
                 print '*** warning: pygments style "%s" is not '\
                       'recommended for "%s"!' % (pygm_style, html_style)
                 print 'recommended styles are %s' % \
-                (', '.join(['"%s"' % combination
-                            for combination in
-                            recommended_combinations[html_style]]))
+                      (', '.join(['"%s"' % combination
+                                  for combination in
+                                  recommended_combinations[html_style]]))
 
         # Fix styles: native should have black background for dark themes
         if slide_syntax[slide_tp]['theme'] in ['neon', 'night', 'moon', 'blood']:
@@ -5154,7 +5145,7 @@ td.padding {
 
 
 def _usage_slides_beamer():
-    print """Usage: doconce slides_beamer mydoc --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout]
+    print """Usage: doconce slides_beamer mydoc --beamer_slide_theme=themename --beamer_slide_navigation=off --beamer_block_style=mdbox [--handout])
 
 themename can be
 red_plain, blue_plain, red_shadow, blue_shadow, dark, dark_gradient, vintage
@@ -5201,7 +5192,7 @@ def slides_beamer():
         f = open(filename, 'w')
         f.write(filestr)
         f.close()
-        print 'slides written to', filename
+        print 'slides written to ' + filename
         if misc_option('handout', False):
             print 'printing for handout:\npdfnup --nup 2x3 --frame true --delta "1cm 1cm" --scale 0.9 --outfile %s.pdf %s.pdf' % (filestem, filestem)
             print 'or uncomment %%\pgfpagesuselayout{... in %s.tex' % filestem
@@ -5892,7 +5883,6 @@ def split_rst0():
         f = open(filename, 'w')
         f.write(text)
         f.close()
-        #print 'Extracted part', parts[i], 'in', filename
     print ' '.join(parts)
 
 def _usage_split_rst():
@@ -5924,7 +5914,6 @@ def split_rst():
     header, parts, footer = get_header_parts_footer(filename, "rst")
     import pprint
     files = doconce_rst_split(parts, basename, filename)
-    #print ' '.join([name[:-4] for name in files])
     print basename, 'split into'
     print ' '.join(files)
 
@@ -6047,7 +6036,7 @@ def list_labels():
         lines = open(filename, 'r').readlines()
         labels = []  # not yet used, but nice to collect all labels
         for line in lines:
-            # Identify heading and print out
+            # Identify heading and printout
             heading = ''
             if dofile:
                 m = re.search(r'={5,9}\s*(.+?)\s*={5,9}', line)
@@ -6058,7 +6047,7 @@ def list_labels():
                 if m:
                     heading = m.group(1).strip()
             if heading:
-                print '# section:', heading
+                print '# section: ' + heading
 
             # Identify label
             if 'label{' in line:
@@ -6294,7 +6283,7 @@ def _old2new(filename):
 
         if oldline != lines[i]:
             nchanges += 1
-            print 'Changing\n  ', oldline, 'to\n  ', lines[i]
+            print 'Changing\n  ' + oldline + ' to\n  ' + lines[i]
 
     print 'Performed %d changes in "%s"' % (nchanges, filename)
     f = open(filename, 'w')
@@ -6686,8 +6675,6 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
             break
     if found:
         pass
-        #print '\nAbort because of double words.'
-        #sys.exit(1)
 
     # Remove inline quotes before inline verbatim
     pattern = "``(.+?)''([\n ,.?:)*_-])"
@@ -6777,7 +6764,6 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
             newdict_add = sorted(list(set(newdict_add)))
             union = accepted_words + newdict_words
             union = sorted(list(set(union)))
-            #print '%s %d: %d misspellings (%d from personal dicts) -> %d' % (newdict, len(newdict_words), len(words2), len(personal_dictionaries), len(union))
         else:
             union = accepted_words
             newdict_add = words2
@@ -6789,8 +6775,6 @@ def _spellcheck(filename, dictionaries=['.dict4spell.txt'], newdict=None,
         f = open('new_dictionary.txt~', 'w')
         f.writelines(union)
         f.close()
-        #if len(newdict_add) > 0:
-        #    print '%s: %d, %s: %d items' % (newdict, len(newdict_add), 'new_dictionary.txt~', len(union))
 
 
 def _spellcheck_all(**kwargs):
@@ -7453,14 +7437,10 @@ def _capitalize(filestr, cap_words, cap_words_fix):
     orig_headings2 = ['__' + t + '__' for t
                       in re.findall(pattern2, filestr, flags=re.MULTILINE)]
 
-    #print orig_titles1
-    #print orig_titles2
-
     def capitalize_titles(orig_titles, cap_words):
         cap_words_lower = [s.lower() for s in cap_words]
         new_titles = []
         for title in orig_titles:
-            #print '*', title
 
             # Exercises, problems, are exceptions (view title as what
             # comes after the initial word)
@@ -7484,24 +7464,17 @@ def _capitalize(filestr, cap_words, cap_words_fix):
                         words.remove(word)
 
             for word in words:
-                #print '    ', word
                 # Strip away non-alphabetic characters
                 word_stripped = ''.join([w for w in list(word)
                                          if w.isalpha()])
-                #if word != word_stripped:
-                    #print '        ', word_stripped
                 if word_stripped.lower() in cap_words_lower:
-                    #print '        found',
                     try:
                         i = cap_words_lower.index(word_stripped.lower())
                         new_word = word.replace(word_stripped, cap_words[i])
                         new_title = new_title.replace(word, new_word)
-                        #print 'as', cap_words[i]
                     except ValueError:
                         pass
-                        #print 'Did not find', word_stripped.lower(), 'in', cap_words_lower
-                        pass
-            #print '>', new_title
+
             for wrong_words, fixed_words in cap_words_fix:
                 if wrong_words in new_title:
                     new_title = new_title.replace(wrong_words, fixed_words)
@@ -7563,7 +7536,7 @@ def md2html():
                                          stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as e:
         print 'could not run\n', cmd
-        print e.output
+        print output
         sys.exit(1)
     f = open('%s.html' % basename, 'r')
     text = f.read()
@@ -7934,10 +7907,8 @@ def _latex2doconce(filestr):
                 pattern, replacement, flags = item
                 cpattern = re.compile(pattern, flags)
             if cpattern.search(filestr):
-                #print 'substituting', item, item[0]
                 filestr = cpattern.sub(replacement, filestr)
             else:
-                #print 'no occurence of', item, item[0]
                 pass
     except Exception, e:
         print 'pattern: %s, replacement: %s' % (pattern, replacement)
@@ -7989,7 +7960,6 @@ def _latex2doconce(filestr):
         if from_ in filestr:
             if filestr != filestr.replace(from_, to_):
                 filestr = filestr.replace(from_, to_)
-                #print '   ....replacing', from_
 
     # Add extra line after label after section
     filestr = re.sub(r'(==={3,9}\n\\label\{.+?\}) *\n(\w)',
@@ -8371,7 +8341,6 @@ def _latex2doconce(filestr):
             # (Make table of chapters, stand-alone docs and their labels - quite easy if associated chapters and their URLs are in a file!!!)
             filestr = filestr.replace(r'\ref{%s}' % ref,
                       r'(_PROBLEM: external ref_) ref{%s}' % ref)
-            #print r'FIX external ref: ref[%(ref)s]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]["section where %(ref)s is": "http URL with %(ref)s" cite{doc_with_%(ref)s}]' % vars()
     '''
     for ref in pagerefs:
         print 'pageref{%s} should be rewritten' % ref
@@ -8436,12 +8405,12 @@ def latex2doconce():
     by files combined to a single file, avoid footnotes, index inside
     paragraphs, do not start code blocks with indentation, ...
     """
-    print '# #ifdef LATEX2DOCONCE'
-    print 'This is the result of the doconce latex2doconce program.'
-    print 'The translation from LaTeX is just a helper. The text must'
-    print 'be carefully examined! (Be prepared that some text might also'
-    print 'be lost in the translation - in seldom cases.)\n'
-
+    print """# #ifdef LATEX2DOCONCE
+This is the result of the doconce latex2doconce program.
+The translation from LaTeX is just a helper. The text must
+be carefully examined! (Be prepared that some text might also
+be lost in the translation - in seldom cases.)
+"""
     filename = sys.argv[1]
     f = open(filename, 'r')
     filestr = f.read()
@@ -8458,11 +8427,12 @@ def html2doconce():
     Apply transformations to an html file to help translate the
     document into DocOnce format.
     """
-    print '# #ifdef HTML2DOCONCE'
-    print 'This is the result of the doconce htmldoconce program.'
-    print 'The translation from HTML is just a helper. The text must'
-    print 'be carefully examined! (Be prepared that some text might also'
-    print 'be lost in the translation - in seldom cases.)\n'
+    print """# #ifdef HTML2DOCONCE
+This is the result of the doconce htmldoconce program.
+The translation from HTML is just a helper. The text must
+be carefully examined! (Be prepared that some text might also
+be lost in the translation - in seldom cases.)
+"""
 
     filename = sys.argv[1]
     f = open(filename, 'r')
@@ -8650,7 +8620,6 @@ the file) and then try again.
     from doconce import markdown2doconce
     cell_type_prev = None
     for cell in nb['cells']:
-        #print 'XXX', cell['cell_type'], 'prev:', cell_type_prev, '\n', cell['source']
         if cell_delimiter and cell['cell_type'] != cell_type_prev:
             dostr_list.append('# ---------- %s cell\n' % cell['cell_type'])
         if cell['cell_type'] == 'markdown':
@@ -8965,8 +8934,8 @@ def pygmentize():
 
 def _usage_makefile():
     print 'Usage:   doconce makefile doconce-file [html pdflatex latex sphinx gwiki pandoc ipynb deck reveal beamer ...]'
-    print 'Example: doconce makefile mydoc.do.txt html sphinx'
-    print """
+    print """Example: doconce makefile mydoc.do.txt html sphinx'
+
 A script make.py is generated with the basic steps for running a
 spellcheck on .do.txt files followed by commands for producing
 output in various formats (in the sequence specified on the command
@@ -9862,7 +9831,6 @@ def diff_files(files1, files2, program='diff'):
             _abort()
 
 def _usage_gitdiff():
-    #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
     print 'Usage: doconce gitdiff file1 file2 file3'
 
 def gitdiff():
@@ -9893,15 +9861,15 @@ def gitdiff():
             #pydiff(filenames, old_files)
 
 def _usage_extract_exercises():
-    #print 'Usage: doconce gitdiff diffprog file1 file2 file3'
     print 'Usage: doconce extract_exercises tmp_mako__mydoc.do.txt "--filter=keyword 1;keyword 2; some key word" --exercise_numbering=chapter --examples_as_exercises'
     print """
 Extract exercises to a separate document. Inherit numbering from parent
 document.
+
+Must use tmp_mako__*.do.txt as file to have includes in place.
+Note: extracting exercises may create a need for
+generalized references to the original document (ref[][][]).
 """
-    print "Must use tmp_mako__*.do.txt as file to have includes in place."
-    print "Note: extracting exercises may create a need for"
-    print "generalized references to the original document (ref[][][])."
 
 def extract_exercises():
     if len(sys.argv) < 2:
@@ -9944,7 +9912,6 @@ def extract_exercises():
     exer_tp = []
     inside_exer = False
     for i, line in enumerate(lines):
-        #print i, inside_exer, line
         if line.startswith('TITLE:'):
             line = line.replace('TITLE: ', 'TITLE: Exercises from ')
             exer.append(line)
@@ -9966,7 +9933,6 @@ def extract_exercises():
             has['Externaldocuments'] = True
 
         if re.search(exer_heading_pattern, line):  # inside exercise?
-            #print 'found exercise!'
             inside_exer = True
             exer.append([])
             exer_tp.append(None)

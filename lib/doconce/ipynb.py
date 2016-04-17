@@ -5,6 +5,7 @@ from html import html_movie, html_table
 from pandoc import pandoc_ref_and_label, pandoc_index_bib, pandoc_quote, \
      language2pandoc, pandoc_quiz
 from misc import option, _abort
+from doconce import errwarn
 
 # Global variables
 figure_encountered = False
@@ -127,7 +128,7 @@ def ipynb_figure(m):
         text += 'Image(%s="%s")\n' % (keyword, filename)
         text += '!ec\n'
     else:
-        print '*** error: --ipynb_figure=%s is illegal, must be md, imgtag or Image' % display_method
+        errwarn('*** error: --ipynb_figure=%s is illegal, must be md, imgtag or Image' % display_method)
         _abort()
     text += '<!-- end figure -->\n'
     return text
@@ -144,7 +145,7 @@ def ipynb_movie(m):
     if 'youtu.be' in filename or 'youtube.com' in filename:
         youtube = True
     if '*' in filename or '->' in filename:
-        print '*** warning: * or -> in movie filenames is not supported in ipynb'
+        errwarn('*** warning: * or -> in movie filenames is not supported in ipynb')
         return text
 
     def YouTubeVideo(filename):
@@ -154,7 +155,7 @@ def ipynb_movie(m):
         elif 'youtu.be/' in filename:
             name = filename.split('youtu.be/')[1]
         else:
-            print '*** error: youtube movie name "%s" could not be interpreted' % filename
+            errwarn('*** error: youtube movie name "%s" could not be interpreted' % filename)
             _abort()
 
         text = ''
@@ -198,8 +199,8 @@ def ipynb_movie(m):
             # Just support .mp4, .ogg, and.webm
             stem, ext = os.path.splitext(filename)
             if ext not in ('.mp4', '.ogg', '.webm'):
-                print '*** error: movie "%s" in format %s is not supported for --ipynb_movie=%s' % (filename, ext, display_method)
-                print '    use --ipynb_movie=HTML instead'
+                errwarn('*** error: movie "%s" in format %s is not supported for --ipynb_movie=%s' % (filename, ext, display_method))
+                errwarn('    use --ipynb_movie=HTML instead')
                 _abort()
             height = 365
             width = 640
@@ -223,7 +224,7 @@ video_tag = '<video controls loop alt="%s" height="%s" width="%s" src="data:vide
                 text += '\nprint "%s"' % caption
         text += '!ec\n'
     else:
-        print '*** error: --ipynb_movie=%s is not supported' % display_method
+        errwarn('*** error: --ipynb_movie=%s is not supported' % display_method)
         _abort()
     text += '<!-- end movie -->\n'
     return text
@@ -315,7 +316,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                     text = title + block + '\n\n'
                 return text
         else:
-            print '*** error: --ipynb_admon=%s is not supported'  % envir_format
+            errwarn('*** error: --ipynb_admon=%s is not supported'  % envir_format)
         filestr = re.sub(pattern, subst, filestr,
                          flags=re.DOTALL | re.MULTILINE)
 
@@ -448,7 +449,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         # Make tar file with all the source dirs with files
         # that need to be executed
         os.system('tar cfz %s %s' % (ipynb_tarfile, ' '.join(src_paths)))
-        print 'collected all required additional files in', ipynb_tarfile, 'which must be distributed with the notebook'
+        errwarn('collected all required additional files in ' + ipynb_tarfile + ' which must be distributed with the notebook')
     elif os.path.isfile(ipynb_tarfile):
         os.remove(ipynb_tarfile)
 
@@ -521,11 +522,11 @@ def ipynb_code(filestr, code_blocks, code_block_types,
             envir = m.group(1)
             if envir not in ('equation', 'equation*', 'align*', 'align',
                              'array'):
-                print """\
+                errwarn("""\
 *** warning: latex envir \\begin{%s} does not work well in Markdown.
     Stick to \\[ ... \\], equation, equation*, align, or align*
     environments in math environments.
-""" % envir
+""" % envir)
         eq_type = 'heading'  # or '$$'
         eq_type = '$$'
         # Markdown: add $$ on each side of the equation
@@ -569,8 +570,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 new_notebook, new_metadata, new_author)
             nb = new_worksheet()
         except ImportError:
-            print '*** error: could not import IPython.nbformat.v3!'
-            print '    set --ipynb_version=4 or leave out --ipynb_version=3'
+            errwarn('*** error: could not import IPython.nbformat.v3!')
+            errwarn('    set --ipynb_version=4 or leave out --ipynb_version=3')
             _abort()
     elif nb_version == 4:
         try:
@@ -582,8 +583,8 @@ def ipynb_code(filestr, code_blocks, code_block_types,
                 from IPython.nbformat.v4 import (
                     new_code_cell, new_markdown_cell, new_notebook)
             except ImportError:
-                print '*** error: cannot do import nbformat.v4 or IPython.nbformat.v4'
-                print '    make sure IPython notebook or Jupyter is installed correctly'
+                errwarn('*** error: cannot do import nbformat.v4 or IPython.nbformat.v4')
+                errwarn('    make sure IPython notebook or Jupyter is installed correctly')
                 _abort()
         cells = []
 
@@ -683,7 +684,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
 
     # Check that there are no empty cells:
     if '"input": []' in filestr:
-        print '*** error: empty cells in notebook - report bug in DocOnce'
+        errwarn('*** error: empty cells in notebook - report bug in DocOnce')
         _abort()
     # must do the replacements here at the very end when json is written out
     # \eqref and labels will not work, but labels (only in math) do no harm
@@ -698,7 +699,7 @@ def ipynb_code(filestr, code_blocks, code_block_types,
         try:
             return r'[(%s)](#%s)' % (label2tag[label], label)
         except KeyError as e:
-            print '*** error: label "%s" is not defined' % str(e)
+            errwarn('*** error: label "%s" is not defined' % str(e))
 
     filestr = re.sub(r'\(ref\{(.+?)\}\)', subst, filestr)
     """
@@ -760,7 +761,7 @@ def ipynb_index_bib(filestr, index, citations, pubfile, pubdata):
     if pubfile is not None:
         # Always produce a new bibtex file
         bibtexfile = pubfile[:-3] + 'bib'
-        print '\nexporting publish database %s to %s:' % (pubfile, bibtexfile)
+        errwarn('\nexporting publish database %s to %s:' % (pubfile, bibtexfile))
         publish_cmd = 'publish export %s' % os.path.basename(bibtexfile)
         # Note: we have to run publish in the directory where pubfile resides
         this_dir = os.getcwd()

@@ -3,7 +3,7 @@ from common import insert_code_and_tex, indent_lines, \
     table_analysis, plain_exercise, bibliography, \
     cite_with_multiple_args2multiple_cites, fix_ref_section_chapter
 from html import html_movie, html_quiz
-from doconce import _abort
+from doconce import _abort, errwarn
 from misc import option, _abort
 
 def rst_abstract(m):
@@ -94,8 +94,8 @@ def rst_movie(m):
 
     filename = m.group('filename')
     if not filename.startswith('http') and not filename.startswith('mov'):
-        print '*** warning: movie file %s' % filename
-        print '    is not in mov* subdirectory - this will give problems with sphinx'
+        errwarn('*** warning: movie file %s' % filename)
+        errwarn('    is not in mov* subdirectory - this will give problems with sphinx')
     return rst_text
 
 # these global patterns are used in st, epytext, plaintext as well:
@@ -172,10 +172,10 @@ def rst_code(filestr, code_blocks, code_block_types,
         c = re.compile(pattern, re.MULTILINE)
         m = c.search(filestr)
         if m:
-            print """
+            errwarn("""
 Still %s left after handling of code and tex blocks. Problem is probably
 that %s is not preceded by text which can be extended with :: (required).
-""" % (pattern, pattern)
+""" % (pattern, pattern))
             _abort()
 
     # Final fixes
@@ -290,9 +290,9 @@ def rst_author(authors_and_institutions, auth2index,
             if email:
                 text += '   :responsible-email: %s\n\n' % email
         else:
-            print '*** error: with --rst_uio there must be an AUTHOR:'
-            print '    field with (at least) one author w/email who will be'
-            print '    listed as the resposible under uio-meta::'
+            errwarn('*** error: with --rst_uio there must be an AUTHOR:')
+            errwarn('    field with (at least) one author w/email who will be')
+            errwarn('    listed as the resposible under uio-meta::')
             _abort()
     else:
         authors = []
@@ -336,8 +336,8 @@ def ref_and_label_commoncode(section_label2title, format, filestr):
         if m:
             title = m.group(1).strip()
             if len(title) > 63:
-                print '*** error: sphinx title cannot be longer than 63 characters'
-                print '    current title: "%s" (%d characters)' % (title, len(title))
+                errwarn('*** error: sphinx title cannot be longer than 63 characters')
+                errwarn('    current title: "%s" (%d characters)' % (title, len(title)))
                 _abort()
     filestr = re.sub(pattern, '.. Document title:\n\n%s \g<1> %s\n' %
                      ('='*max_heading, '='*max_heading),
@@ -441,14 +441,14 @@ def rst_bib(filestr, citations, pubfile, pubdata, numbering=True):
                             bibtext = bibtext.decode('utf-8').replace(
                                 '[%s]' % label, cite % citations[label])
                         except UnicodeDecodeError as e:
-                            print 'UnicodeDecodeError:', e
-                            print '*** error: problems in %s' % pubfile
-                            print '    with key', label
-                            print '    tried to do decode("utf-8"), but it did not work'
+                            errwarn('UnicodeDecodeError: ' + e)
+                            errwarn('*** error: problems in %s' % pubfile)
+                            errwarn('    with key ' + label)
+                            errwarn('    tried to do decode("utf-8"), but it did not work')
                     else:
-                        print e
-                        print '*** error: problems in %s' % pubfile
-                        print '    with key', label
+                        errwarn(e)
+                        errwarn('*** error: problems in %s' % pubfile)
+                        errwarn('    with key ' + label)
                         _abort()
 
 
@@ -577,9 +577,9 @@ def rst_quiz(quiz):
         if len(choice) == 3 and quiz_expl == 'on':
             expl = choice[2]
             if '.. figure::' in expl or 'math::' in expl or '.. code-block::' in expl:
-                print '*** warning: quiz explanation contains block (fig/code/math)'
-                print '    and is therefore skipped'
-                print expl, '\n'
+                errwarn('*** warning: quiz explanation contains block (fig/code/math)')
+                errwarn('    and is therefore skipped')
+                errwarn(expl + '\n')
                 expl = ''  # drop explanation when it needs blocks
             # Should remove markup
             pattern = r'`(.+?) (<https?.+?)>`__'  # URL
@@ -736,9 +736,9 @@ def define(FILENAME_EXTENSION,
         if 'TITLE:' not in filestr:
             import common
             if common.format in ('rst', 'sphinx'):
-                print '*** error: non-breaking space character ~ is used,'
-                print '    but this will give an error when the document does'
-                print '    not have a title.'
+                errwarn('*** error: non-breaking space character ~ is used,')
+                errwarn('    but this will give an error when the document does')
+                errwarn('    not have a title.')
                 _abort()
         else:
             INTRO['rst'] += nbsp

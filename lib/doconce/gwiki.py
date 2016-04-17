@@ -10,6 +10,7 @@ from common import default_movie, plain_exercise, insert_code_and_tex, \
      fix_ref_section_chapter
 from plaintext import plain_quiz
 from misc import _abort
+from doconce import errwarn
 
 def gwiki_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -39,20 +40,20 @@ def gwiki_figure(m):
             cmd = 'convert %s png:%s' % (filename, root+'.png')
             failure, output = commands.getstatusoutput(cmd)
             if failure:
-                print '\n**** Warning: could not run', cmd
-                print 'Convert %s to PNG format manually' % filename
+                errwarn('\n**** Warning: could not run ' + cmd)
+                errwarn('Convert %s to PNG format manually' % filename)
                 _abort()
             filename = root + '.png'
     caption = m.group('caption')
     # keep label if it's there:
     caption = re.sub(r'label\{(.+?)\}', '(\g<1>)', caption)
 
-    print """
+    errwarn("""
 NOTE: Place %s at some place on the web and edit the
       .gwiki page, either manually (seach for 'Figure: ')
       or use the doconce script:
       doconce gwiki_figsubst.py mydoc.gwiki URL
-""" % filename
+""" % filename)
 
     result = r"""
 

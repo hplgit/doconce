@@ -6,6 +6,7 @@ from common import plain_exercise, table_analysis, \
      online_python_tutor, envir_delimiter_lines, safe_join, \
      insert_code_and_tex, is_file_or_url, chapter_pattern
 from misc import option, _abort, replace_code_command
+from doconce import errwarn
 additional_packages = ''  # comma-sep. list of packages for \usepackage{}
 
 include_numbering_of_exercises = True
@@ -23,7 +24,7 @@ def aux_label2number():
        return {}
 
     if not os.path.isfile(auxfilename):
-        print '*** error: --replace_ref_by_latex_auxno=%s, but file "%s" does not exist' % (auxfilename, auxfilename)
+        errwarn('*** error: --replace_ref_by_latex_auxno=%s, but file "%s" does not exist' % (auxfilename, auxfilename))
         _abort()
     f = open(auxfilename, 'r')
     aux = f.read()
@@ -214,11 +215,11 @@ def interpret_latex_code_style():
         parts = latex_code_style.split('@')
         for part in parts:
             if not ':' in part:
-                print '*** error: wrong syntax in --latex_code_style=%s (no ":")' % latex_code_style
+                errwarn('*** error: wrong syntax in --latex_code_style=%s (no ":")' % latex_code_style)
                 _abort()
             envir, spec = part.split(':')
             if envir not in legal_envirs:
-                print '*** warning: not registered code environment "%s"' % envir
+                errwarn('*** warning: not registered code environment "%s"' % envir)
             pkg, bg, style = interpret(spec)
             d[envir] = dict(package=pkg, background=bg, style=style)
     if 'default' not in d:
@@ -412,15 +413,15 @@ identifierstyle=\color{darkblue},
             s += '\n%% user-defined lst styles in file "%s":\n' % filename + text
             user_styles = re.findall(r'\\lstdefinestyle\{(.+)\}', text)
         else:
-            print '*** error: file "%s" does not exist' % filename
+            errwarn('*** error: file "%s" does not exist' % filename)
             _abort()
     s += '\n% end of custom lstdefinestyles\n'
     # Check that styles are defined
     all_styles = list(styles.keys()) + user_styles
     for style in requested_styles:
         if style not in all_styles:
-            print '*** error: lst style=%s is not defined' % style
-            print '    not among', ', '.join(all_styles)
+            errwarn('*** error: lst style=%s is not defined' % style)
+            errwarn('    not among', ', '.join(all_styles))
 
     return s
 
@@ -428,8 +429,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
 
     if option('latex_double_hyphen'):
-        print '*** warning: --latex_double_hyphen may lead to unwanted edits.'
-        print '             search for all -- in the .p.tex file and check.'
+        errwarn('*** warning: --latex_double_hyphen may lead to unwanted edits.')
+        errwarn('             search for all -- in the .p.tex file and check.')
         # Replace - by -- in some cases for nicer LaTeX look of hyphens:
         # Note: really dangerous for inline mathematics: $kx-wt$.
         from_to = [
@@ -488,22 +489,22 @@ def latex_code(filestr, code_blocks, code_block_types,
             name = name.strip()
             name2 = name + '.aux'
             if not os.path.isfile(name2):
-                print '\n*** warning: need external file %s for external references,' % name2
-                print '    but it does not exist (compile latex/pdflatex!)'
+                errwarn('\n*** warning: need external file %s for external references,' % name2)
+                errwarn('    but it does not exist (compile latex/pdflatex!)')
                 name2 = name + '.do.txt'
                 if not os.path.isfile(name2):
-                    print '*** error: external document %s listed in # Externaldocuments does not exist' % name2
+                    errwarn('*** error: external document %s listed in # Externaldocuments does not exist' % name2)
                     if os.path.isdir(name):
-                        print '    The problem is that doconce+latex must be run on the document in %s' % name
-                        print '    such that %s exists!' % name2
+                        errwarn('    The problem is that doconce+latex must be run on the document in %s' % name)
+                        errwarn('    such that %s exists!' % name2)
                     else:
-                        print '    The problem is that the directory %s does not exist (i.e., no DocOnce document found)' % name
-                        print '    A quick fix is\n'
-                        print '      Terminal> mkdir -p %s' % name
-                        print '      Terminal> touch %s.tex' % name
-                        print '      Terminal> touch %s.aux' % name
-                        print '\n    but this will just make DocOnce happy for a while end up with empty references.'
-                        print '    A real fix is to install the directory tree containing the external document!'
+                        errwarn('    The problem is that the directory %s does not exist (i.e., no DocOnce document found)' % name)
+                        errwarn('    A quick fix is\n')
+                        errwarn('      Terminal> mkdir -p %s' % name)
+                        errwarn('      Terminal> touch %s.tex' % name)
+                        errwarn('      Terminal> touch %s.aux' % name)
+                        errwarn('\n    but this will just make DocOnce happy for a while end up with empty references.')
+                        errwarn('    A real fix is to install the directory tree containing the external document!')
                     _abort()
 
     # labels inside tex envirs must have backslash \label:
@@ -545,7 +546,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # option --latex_admon_envir_map=X is used
                 envir = envir[:-1]
             if envir not in envirs:
-                print 'Warning: found "!bc %s", but %s is not a standard predefined code environment' % (envir, envir)
+                errwarn('Warning: found "!bc %s", but %s is not a standard predefined code environment' % (envir, envir))
 
     # --- Final fixes for latex format ---
 
@@ -835,7 +836,7 @@ def latex_code(filestr, code_blocks, code_block_types,
         def subst(m):  # m is match object
             url = m.group(1).strip()
             text = m.group(2).strip()
-            #print 'url:', url, 'text:', text
+            #errwarn('url:', url, 'text:', text)
             #if not ('ftp:' in text or 'http' in text or '\\nolinkurl{' in text):
             if not ('ftp:' in text or 'http' in text):
                 # The link text does not display the URL so we include it
@@ -964,8 +965,8 @@ def latex_code(filestr, code_blocks, code_block_types,
                 # Should not happen since a !bc is encountered first and
                 # current_code_envir is then set above
                 # There should have been checks for this in doconce.py
-                print '*** error: mismatch between !bc and !ec'
-                print '\n'.join(lines[i-3:i+4])
+                errwarn('*** error: mismatch between !bc and !ec')
+                errwarn('\n'.join(lines[i-3:i+4]))
                 _abort()
             if latex_code_style is None:
                 lines[i] = '\\b' + current_code_envir
@@ -976,13 +977,13 @@ def latex_code(filestr, code_blocks, code_block_types,
         if lines[i].startswith('!ec'):
             if current_code_envir is None:
                 # No envir set by previous !bc?
-                print '*** error: mismatch between !bc and !ec'
-                print '    found !ec without a preceding !bc at line'
-                print '\n'.join(lines[i-8:i-1])
-                print 'error line >>>', lines[i]
-                print '\n'.join(lines[i+1:i+8])
-                #print '    check that every !bc matches !ec in the entire text:'
-                #print filestr
+                errwarn('*** error: mismatch between !bc and !ec')
+                errwarn('    found !ec without a preceding !bc at line')
+                errwarn('\n'.join(lines[i-8:i-1]))
+                errwarn('error line >>>', lines[i])
+                errwarn('\n'.join(lines[i+1:i+8]))
+                #errwarn('    check that every !bc matches !ec in the entire text:')
+                #errwarn(filestr)
                 _abort()
             if latex_code_style is None:
                 lines[i] = '\\e' + current_code_envir
@@ -1011,7 +1012,7 @@ def latex_figure(m):
             os.mkdir(figdir)
         os.chdir(figdir)
         if is_file_or_url(filename) != 'url':
-            print '*** error: cannot fetch latex figure %s on the net (no connection or invalid URL)' % filename
+            errwarn('*** error: cannot fetch latex figure %s on the net (no connection or invalid URL)' % filename)
             _abort()
         import urllib
         f = urllib.urlopen(filename)
@@ -1038,8 +1039,8 @@ def latex_figure(m):
         info = [s.split('=') for s in opts.split()]
         for opt, value in info:
             if ',' in value:
-                print '*** error: no comma between figure options!'
-                print '    %s' % opts
+                errwarn('*** error: no comma between figure options!')
+                errwarn('    %s' % opts)
                 _abort()
             if opt == 'frac':
                 frac = float(value)
@@ -1088,13 +1089,13 @@ def latex_figure(m):
         pattern = r'".+?"\s*:\s*"https?:.+?"'
         links = re.findall(pattern, caption, flags=re.DOTALL)
         if links:
-            print '*** error: hyperlinks inside caption pose problems for'
-            print '    latex output and --device=paper because they lead'
-            print '    to footnotes in captions. (Footnotes in floats require'
-            print '    minipage.) The latex document with compile with'
-            print '    \\protect\\footnote, but the footnote is not shown.'
-            print '    Recommendation: rewrite caption.\n'
-            print '-----------\n', caption, '\n-----------\n'
+            errwarn('*** error: hyperlinks inside caption pose problems for')
+            errwarn('    latex output and --device=paper because they lead')
+            errwarn('    to footnotes in captions. (Footnotes in floats require')
+            errwarn('    minipage.) The latex document with compile with')
+            errwarn('    \\protect\\footnote, but the footnote is not shown.')
+            errwarn('    Recommendation: rewrite caption.\n')
+            errwarn('-----------\n' + caption + '\n-----------\n')
             _abort()
 
     # `verbatim_text` in backquotes is translated to \code{verbatim\_text}
@@ -1426,8 +1427,8 @@ def latex_footnotes(filestr, format, pattern_def, pattern_footnote):
         try:
             text = footnotes[name].strip()
         except KeyError:
-            print '*** error: definition of footnote with name "%s"' % name
-            print '    has no corresponding footnote [^%s]' % name
+            errwarn('*** error: definition of footnote with name "%s"' % name)
+            errwarn('    has no corresponding footnote [^%s]' % name)
             _abort()
         # Make the footnote on one line in case it appears in lists
         # (newline will then end the list)
@@ -1464,9 +1465,10 @@ def latex_table(table):
     column_spec = table.get('columns_align', 'c'*ncolumns)
     column_spec = column_spec.replace('|', '')
     if len(column_spec) != ncolumns:  # (allow | separators)
-        print 'Table has column alignment specification: %s, but %d columns' \
-              % (column_spec, ncolumns)
-        print 'Table with rows', table['rows']
+        errwarn('Table has column alignment specification: %s, but %d columns'
+                % (column_spec, ncolumns))
+        errwarn('Table with rows')
+        errwarn(table['rows'])
         _abort()
 
     # we do not support | in headings alignments (could be fixed,
@@ -1474,9 +1476,10 @@ def latex_table(table):
     # right elements are picked in the zip-based loop)
     heading_spec = table.get('headings_align', 'c'*ncolumns)#.replace('|', '')
     if len(heading_spec) != ncolumns:
-        print 'Table has headings alignment specification: %s, '\
-              'but %d columns' % (heading_spec, ncolumns)
-        print 'Table with rows', table['rows']
+        errwarn('Table has headings alignment specification: %s, '\
+                'but %d columns' % (heading_spec, ncolumns))
+        errwarn('Table with rows')
+        errwarn(table['rows'])
         _abort()
 
     s = '\n' + table_align[0] + '\n'
@@ -1825,8 +1828,8 @@ def latex_author(authors_and_institutions, auth2index,
             text += r"""\end{center}
     """
     else:
-        print '*** error: cannot create author field when'
-        print '    --latex_title_layout=%s --latex_style=%s' % (title_layout, latex_style)
+        errwarn('*** error: cannot create author field when')
+        errwarn('    --latex_title_layout=%s --latex_style=%s' % (title_layout, latex_style))
         _abort()
 
     text += """
@@ -2010,7 +2013,7 @@ def latex_ref_and_label(section_label2title, format, filestr):
     # Not implemented
     #for c in chars:
     #    filestr, n = re.subn(c, chars[c], filestr)
-    #    print '%d subst of %s' % (n, c)
+    #    errwarn('%d subst of %s' % (n, c))
     #    #filestr = filestr.replace(c, chars[c])
 
     # Handle "50%" and similar (with initial space or -, does not work
@@ -2049,8 +2052,8 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     # http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib
     # May consider moving to biblatex if it is compatible enough.
 
-    #print 'index:', index
-    #print 'citations:', citations
+    #errwarn('index:', index)
+    #errwarn('citations:', citations)
     filestr = filestr.replace('cite{', r'\cite{')
     filestr = filestr.replace('cite[', r'\cite[')
     # Fix spaces after . inside cite[] and insert ~
@@ -2091,7 +2094,7 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
     if pubfile is not None:
         # Always produce a new bibtex file
         bibtexfile = pubfile[:-3] + 'bib'
-        print '\nexporting publish database %s to %s:' % (pubfile, bibtexfile)
+        errwarn('\nexporting publish database %s to %s:' % (pubfile, bibtexfile))
         publish_cmd = 'publish export %s' % os.path.basename(bibtexfile)
         # Note: we have to run publish in the directory where pubfile resides
         this_dir = os.getcwd()
@@ -2103,9 +2106,9 @@ def latex_index_bib(filestr, index, citations, pubfile, pubdata):
             output = subprocess.check_output(publish_cmd, shell=True,
                                              stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as e:
-            print '*** error: failure of %s' % publish_cmd
-            print e.output
-            print 'Return code:', e.returncode
+            errwarn('*** error: failure of %s' % publish_cmd)
+            errwarn(e.output)
+            errwarn('Return code: ' + e.returncode)
             _abort()
         os.chdir(this_dir)
         # Remove heading right before BIBFILE because latex has its own heading
@@ -2172,9 +2175,9 @@ def latex_exercise_old(exer):
 
 def latex_box(block, format, text_size='normal'):
     if 'begin{figure}' in block:
-        print '*** error: a !bbox-!ebox environment cannot contain a figure with caption.'
-        print '    Remove the figure, remove the caption, or remove the box.'
-        print '\nBox text:\n', block
+        errwarn('*** error: a !bbox-!ebox environment cannot contain a figure with caption.')
+        errwarn('    Remove the figure, remove the caption, or remove the box.')
+        errwarn('\nBox text:\n' + block)
         _abort()
     return r"""
 \begin{center}
@@ -2212,7 +2215,7 @@ def _get_admon_figs(filename):
         import doconce
         doconce_dir = os.path.dirname(doconce.__file__)
         doconce_datafile = os.path.join(doconce_dir, datafile)
-        #print 'copying admon figures from %s to subdirectory %s' % \
+        #errwarn('copying admon figures from %s to subdirectory %s' % \)
         #      (doconce_datafile, latexfigdir)
         shutil.copy(doconce_datafile, os.curdir)
         import zipfile
@@ -2221,7 +2224,7 @@ def _get_admon_figs(filename):
         os.chdir(os.pardir)
     if not os.path.isdir(latexfigdir):
         os.mkdir(latexfigdir)
-        print '*** made directory %s for admon figures' % latexfigdir
+        errwarn('*** made directory %s for admon figures' % latexfigdir)
     if not os.path.isfile(os.path.join(latexfigdir, filename)):
         shutil.copy(os.path.join(latexfigdir_all, filename), latexfigdir)
 
@@ -2305,12 +2308,12 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
         (latex_admon =='graybox2' and '%(_admon)s' != 'summary'):
         for char in ',[]':
             if char in title_mdframed:
-                print '*** error: character "%%s" is not legal in %(_admon)s admon title:' %% char
-                print '   "%%s"' %% title
-                print '    for --latex_admon=%%s' %% latex_admon
+                errwarn('*** error: character "%%s" is not legal in %(_admon)s admon title:' %% char)
+                errwarn('   "%%s"' %% title)
+                errwarn('    for --latex_admon=%%s' %% latex_admon)
                 if char == ',':
-                    print '    see if you can replace , by "and" or a dash...'
-                print '    (the character will simply be removed if you override the abortion)'
+                    errwarn('    see if you can replace , by "and" or a dash...')
+                errwarn('    (the character will simply be removed if you override the abortion)')
                 _abort()
                 title_mdframed = title_mdframed.replace(char, '')
         if '%%' in title_mdframed:  # must be escaped
@@ -2378,7 +2381,7 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
             font_type = latex_admon.split('-')[1]
             legal_types = ('large', 'small', 'footnotesize', 'tiny', 'quote')
             if not font_type in legal_types:
-                print '*** error: wrong font type in --latex_admon=%%s' %% font_type
+                errwarn('*** error: wrong font type in --latex_admon=%%s' %% font_type)
                 _abort()
             if font_type == 'quote':
                 begin, end = '\\begin{quote}\n\\textbf{%%s} %% title', '\n\\end{quote}'
@@ -2397,9 +2400,9 @@ def latex_%(_admon)s(text_block, format, title='%(_Admon)s', text_size='normal')
 %%(envir_graybox2)s
 ''' %% vars()
     else:
-        print '*** error: illegal --latex_admon=%%s' %% latex_admon
-        print '    valid styles are colors1, colors2, mdfbox, graybox2,'
-        print '    grayicon, yellowicon, tcb, and paragraph.'
+        errwarn('*** error: illegal --latex_admon=%%s' %% latex_admon)
+        errwarn('    valid styles are colors1, colors2, mdfbox, graybox2,')
+        errwarn('    grayicon, yellowicon, tcb, and paragraph.')
         _abort()
 
     return text
@@ -2498,9 +2501,9 @@ def latex_inline_comment(m):
         if ' -> ' in comment:
             # Replacement
             if comment.count(' -> ') != 1:
-                print '*** wrong syntax in inline comment:'
-                print comment
-                print '(more than two ->)'
+                errwarn('*** wrong syntax in inline comment:')
+                errwarn(comment)
+                errwarn('(more than two ->)')
                 _abort()
             orig, new = comment.split(' -> ')
             return r'\textcolor{red}{(%s:)} \replace{%s}{%s}' % (name, orig, new)
@@ -2771,14 +2774,14 @@ def define(FILENAME_EXTENSION,
                            'siamltex', 'siamltexmm',
                            'elsevier',
                            'Koma_Script'):
-        print '*** error: --latex_style=%s not registered' % latex_style
+        errwarn('*** error: --latex_style=%s not registered' % latex_style)
         _abort()
     if latex_style == 'Springer_sv' and title_layout != 'std':
-        print '*** error: --latex_style=Springer_sv requires --latex_title_layout=std'
+        errwarn('*** error: --latex_style=Springer_sv requires --latex_title_layout=std')
         _abort()
     if latex_style in ('Springer_sv', 'Springer_lnup') and \
        option('latex_list_of_exercises=', 'none') != 'none':
-        print '*** error: --latex_style=%s requires --latex_list_of_exercises=none' % latex_style
+        errwarn('*** error: --latex_style=%s requires --latex_list_of_exercises=none' % latex_style)
         _abort()
 
     toc_part = ''
@@ -3027,7 +3030,7 @@ justified,
 \makeatother
 """
     INTRO['latex'] += r"""
-\listfiles               % print all files needed to compile this document
+\listfiles               %  print all files needed to compile this document
 """
     if latex_papersize == 'a4':
         INTRO['latex'] += r"""
@@ -3307,8 +3310,8 @@ justified,
                 pygm_style = option('minted_latex_style=', default='default')
                 legal_pygm_styles = 'monokai manni rrt perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs vim pastie friendly native'.split()
                 if pygm_style not in legal_pygm_styles:
-                    print '*** error: wrong minted style "%s"' % pygm_style
-                    print '    must be among\n%s' % str(legal_pygm_styles)[1:-1]
+                    errwarn('*** error: wrong minted style "%s"' % pygm_style)
+                    errwarn('    must be among\n%s' % str(legal_pygm_styles)[1:-1])
                     _abort()
 
                 INTRO['latex'] += r'\usemintedstyle{%s}' % pygm_style + '\n'
@@ -3463,7 +3466,7 @@ justified,
                 break
         if has_footnotes_with_verbatim:
             if 'usepackage{t2do}' in INTRO['latex'] or 'usepackage{t4do}' in INTRO['latex']:
-                print '*** warning: footnotes with verbatim has strange typesetting with svmonodo/t2do/t4do styles'
+                errwarn('*** warning: footnotes with verbatim has strange typesetting with svmonodo/t2do/t4do styles')
                 INTRO['latex'] += '\n% Must use \\VerbatimFootnotes since there are footnotes with inline\n% verbatim text, but \\VerbatimFootnotes interfers\n%with svmonodo/t2do/t4do styles so that the footmisc package settings\n% do not work and the typesetting looks strange...'
             INTRO['latex'] += '\n%\\VerbatimFootnotes must come after hyperref and footmisc packages\n\\VerbatimFootnotes\n'
 
@@ -3668,22 +3671,22 @@ justified,
             # Check
             for element in latex_admon_colors:
                 if len(element) != 2:
-                    print '*** error in --latex_admon_color syntax:'
-                    print '   ', latex_admon_color
-                    print '    split wrt ; and :', latex_admon_colors
+                    errwarn('*** error in --latex_admon_color syntax:')
+                    errwarn('    ' + latex_admon_color)
+                    errwarn('    split wrt ; and : ' + latex_admon_colors)
                     _abort()
             admons_found = {a: False for a in admons}
             for a, c in latex_admon_colors:
                 if a not in admons:
-                    print '*** error: wrong syntax in --latex_admon_color=%s' % latex_admon_color
-                    print '    %s is not an admonition name' % a
+                    errwarn('*** error: wrong syntax in --latex_admon_color=%s' % latex_admon_color)
+                    errwarn('    %s is not an admonition name' % a)
                     _abort()
                 admons_found[a] = True
             for a in admons_found:
                 if not a:
-                    print '*** error in --latex_admon_color syntax: all admon types must be specified!'
-                    print '   ', ', '.join(admons)
-                    print '    missing', a
+                    errwarn('*** error in --latex_admon_color syntax: all admon types must be specified!')
+                    errwarn('    ' + ', '.join(admons))
+                    errwarn('    missing ' + a)
                     _abort()
             try:
                 latex_admon_colors = [[a, eval(c)] for a, c in latex_admon_colors]
@@ -4301,12 +4304,12 @@ justified,
         if os.path.isfile(filename):
             INTRO['latex'] += r"""\input{%s}
 """ % (filename[:-4])
-            #print '... found', filename
+            #errwarn('... found', filename)
         #elif os.path.isfile(pfilename):
-        #    print '%s exists, but not %s - run ptex2tex first' % \
+        #    errwarn('%s exists, but not %s - run ptex2tex first' % \)
         #    (pfilename, filename)
         else:
-            #print '... did not find', filename
+            #errwarn('... did not find', filename)
             pass
 
     OUTRO['latex'] = ''

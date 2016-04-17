@@ -59,7 +59,6 @@ the `--pagination` option replaces buttons with a horizontal "array of page
 numbers": "bootstrap_plain.html".
 
 
-
 ===== Color variations of the original Bootstrap theme =====
 
 Some color variations of the basic Bootstrap theme are bundled with
@@ -111,10 +110,19 @@ doconce format html bootstrap_demo --html_style=bootswatch_slate
         --html_code_style=inherit --html_pre_style=inherit
 !ec
 
+!bnotice Tip: Some Bootswatch styles benefit from larger font!
+Some of the Boostrap/Bootswatch styles come with quite small fonts,
+which make the text very dense. Use the command-line option
+`"--html_body_style=font-size:20px;line-height:1.5"` to override the
+font size and the line height (the chosen values are suitable for
+`bootswatch_journal`).
+!enotice
+
 Admons with `panel` style:
 
  * White background:
    * "journal": "journal.html"
+   * "journal with bigger font and more space": "journal_big.html" (`"--html_body_style=font-size:20px;line-height:1.5"`)
    * "readable": "readable.html"
    * "simplex": "simplex.html"
    * "cerulean": "cerulean.html"

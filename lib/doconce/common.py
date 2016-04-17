@@ -6,6 +6,7 @@ here.
 """
 import re, sys, urllib, os
 from misc import option, _abort
+from doconce import errwarn
 
 format = None   # latex, pdflatex, html, plain, etc
 
@@ -69,10 +70,10 @@ def safe_join(lines, delimiter):
         return filestr
     except UnicodeDecodeError, e:
         if "'ascii' codec can't decode":
-            print '*** error: non-ascii character - rerun with --encoding=utf-8'
+            errwarn('*** error: non-ascii character - rerun with --encoding=utf-8')
             _abort()
         else:
-            print e
+            errwarn(e)
             _abort()
 
 def fix_backslashes(text):
@@ -123,7 +124,7 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
         try:
             # Print a message in case the program hangs a while here
             if msg is not None or debug:
-                print '...', msg, filename, '...'
+                errwarn('... ' +  msg + ' ' +  filename + ' ...')
             import urllib2
             f = urllib2.urlopen(filename, timeout=10)
             text = f.read()
@@ -132,12 +133,12 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
             if ext in ('.html', 'htm'):
                 # Successful opening of an HTML file
                 if msg or debug:
-                    print '    found!'
+                    errwarn('    found!')
                 return 'url'
             elif ext == '':
                 # Successful opening of a directory (meaning index.html)
                 if msg or debug:
-                    print '    found!'
+                    errwarn('    found!')
                 return 'url'
             else:
                 # Seemingly successful opening of a file, but check if
@@ -153,17 +154,17 @@ def is_file_or_url(filename, msg='checking existence of', debug=True):
                     or 'Not Found' in text):
                     # HTML file with an error message: file not found
                     if msg or debug:
-                        print '    %s not found' % filename
+                        errwarn('    %s not found' % filename)
                         return None
                 else:
                     if msg or debug:
-                        print '    found!'
+                        errwarn('    found!')
                     return 'url'
         except IOError, e:
             if msg or debug:
-                print '    not found!'
+                errwarn('    not found!')
             #if debug:  # not necessary
-            #    print '    urllib.urlopen error:', e
+            #    errwarn('    urllib.urlopen error:', e)
             return None
     else:
         return ('file' if os.path.isfile(filename) else None)
@@ -334,14 +335,14 @@ def table_analysis(table):
     if table[0] != ['horizontal rule'] or \
        table[2] != ['horizontal rule'] or \
        table[-1] != ['horizontal rule']:
-        print '*** error: table lacks the right three horizontal rules'
+        errwarn('*** error: table lacks the right three horizontal rules')
     if len(table[1]) < max_num_columns:
-        print '*** warning: table headline with entries'
-        print '   ', '| ' + ' | '.join(table[1]) + ' |'
-        print '   has %d columns while further down there are %d columns' % \
-              (len(table[1]), max_num_columns)
-        print '   the list of columns in the headline reads'
-        print table[1]
+        errwarn('*** warning: table headline with entries')
+        errwarn('    ' + '| ' + ' | '.join(table[1]) + ' |')
+        errwarn('   has %d columns while further down there are %d columns' %
+                (len(table[1]), max_num_columns))
+        errwarn('   the list of columns in the headline reads')
+        errwarn(table[1])
     # Find the width of the various columns
     column_width = [0]*max_num_columns
     for i, row in enumerate(table):
@@ -404,10 +405,10 @@ def align2equations(filestr, format):
                 '\\\\', '\n' + r'\end{equation%s' % postfix + '\n!et\n\n!bt\n' + r'\begin{equation%s ' % postfix)
             if inside_align and ('begin{array}' in lines[i] or
                                  'begin{bmatrix}' in lines[i]):
-                print '*** error: with %s output, align environments' % format
-                print '    cannot have arrays/matrices with & and \\\\'
-                print '    rewrite with single equations!'
-                print '\n'.join(lines[i-4:i+5]).replace('{equation', '{align')
+                errwarn('*** error: with %s output, align environments' % format)
+                errwarn('    cannot have arrays/matrices with & and \\\\')
+                errwarn('    rewrite with single equations!')
+                errwarn('\n'.join(lines[i-4:i+5]).replace('{equation', '{align'))
                 _abort()
             if inside_align and '&' in lines[i]:
                 lines[i] = lines[i].replace('&', '')
@@ -477,7 +478,7 @@ def default_movie(m):
 </body>
 </html>
 """ % text)
-    print '*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename)
+    errwarn('*** made link to new HTML file %s\n    with code to display the movie \n    %s' % (moviehtml, filename))
     text = '%s `%s`: load "`%s`": "%s" into a browser' % \
        (caption, filename, moviehtml, moviehtml)
     return text
@@ -493,8 +494,8 @@ def begin_end_consistency_checks(filestr, envirs):
 
         lines = []
         if nb != ne:
-            print 'ERROR: %d %s do not match %d %s directives' % \
-                  (nb, begin, ne, end)
+            errwarn('ERROR: %d %s do not match %d %s directives' %
+                    (nb, begin, ne, end))
             if not lines:
                 lines = filestr.splitlines()
             begin_ends = []
@@ -506,14 +507,14 @@ def begin_end_consistency_checks(filestr, envirs):
             for k in range(1, len(begin_ends)):
                 pattern, i = begin_ends[k]
                 if pattern == begin_ends[k-1][0]:
-                    print '\n\nTwo', pattern, 'after each other!\n'
+                    errwarn('\n\nTwo ' + pattern + ' after each other!\n')
                     for j in range(begin_ends[k-1][1], begin_ends[k][1]+1):
-                        print lines[j]
+                        errwarn(lines[j])
                     _abort()
             if begin_ends[-1][0].startswith('!b'):
-                print 'Missing %s after final %s' % \
-                      (begin_ends[-1][0].replace('!b', '!e'),
-                       begin_ends[-1][0])
+                errwarn('Missing %s after final %s' %
+                        (begin_ends[-1][0].replace('!b', '!e'),
+                         begin_ends[-1][0]))
                 _abort()
 
 
@@ -605,10 +606,10 @@ def remove_code_and_tex(filestr, format):
             if ref in removed_labels:
                 problematic_refs.append(ref)
         if problematic_refs:
-            print '*** error: removed all equation labels from the DocOnce source,'
-            print '    but there are still references (ref{...}) to equation labels:'
-            print '\n   ', ', '.join(problematic_refs)
-            print '\n    remove all these references!'
+            errwarn('*** error: removed all equation labels from the DocOnce source,')
+            errwarn('    but there are still references (ref{...}) to equation labels:')
+            errwarn('\n   ' + ', '.join(problematic_refs))
+            errwarn('\n    remove all these references!')
             _abort()
 
     # Remove blank lines in tex blocks
@@ -623,20 +624,20 @@ def remove_code_and_tex(filestr, format):
     # Give error if blocks contain !bt
     for i in range(len(tex_blocks)):
         if '!bt' in tex_blocks[i] or '!et' in tex_blocks[i]:
-            print '*** error: double !bt or !et in latex block:'
-            print tex_blocks[i]
+            errwarn('*** error: double !bt or !et in latex block:')
+            errwarn(tex_blocks[i])
             _abort()
 
     # Check that math blocks do not contain edit markup or comments
     for block in tex_blocks:
         m = re.search(INLINE_TAGS['inlinecomment'], block, flags=re.DOTALL)
         if m:
-            print '*** error: tex block with mathematics cannot contain'
-            print '    inline comment or edit markup!'
+            errwarn('*** error: tex block with mathematics cannot contain')
+            errwarn('    inline comment or edit markup!')
             if m.group('name') in ('del', 'add') or '->' in m.group('comment'):
                 # edit markup
-                print '    Place info about editing after the block.'
-            print block
+                errwarn('    Place info about editing after the block.')
+            errwarn(block)
             _abort()
 
     # Remove (*@pause@*) in code blocks if not latex
@@ -702,37 +703,37 @@ def insert_code_and_tex(filestr, code_blocks, tex_blocks, format,
     code_lines = re.findall(pattern, filestr, flags=re.MULTILINE)
     n = len(set(code_lines))
     if complete_doc and len(code_blocks) != n:
-        print '*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks))
-        print """    Possible causes:
+        errwarn('*** error: found %d code block markers for %d initial code blocks' % (n, len(code_blocks)))
+        errwarn("""    Possible causes:
            - mismatch of !bt and !et within one file, such that a !bt
              swallows code
            - mismatch of !bt and !et across files in multi-file documents
            - !bc and !ec inside code blocks - replace by |bc and |ec
     (run doconce on each individual file to locate the problem, then on
-     smaller and smaller parts of each file)"""
+     smaller and smaller parts of each file)""")
         numbers = range(len(code_blocks))  # expected numbers in code blocks
         for e in code_lines:
             # remove number
             number = int(e.split()[0])
             if number not in numbers:
-                print '   Problem: found %s, but the number %d was unexpected' % (e, number)
+                errwarn('   Problem: found %s, but the number %d was unexpected' % (e, number))
             else:
                 numbers.remove(number)
         if numbers:
-            print '    Problem: did not find XX <<<!!CODE_BLOCK for XX in', numbers
+            errwarn('    Problem: did not find XX <<<!!CODE_BLOCK for XX in %s' % numbers)
 
         _abort()
     pattern = r'^\d+ ' + _MATH_BLOCK
     n = len(set(re.findall(pattern, filestr, flags=re.MULTILINE)))
     if complete_doc and len(tex_blocks) != n:
-        print '*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks))
-        print """    Possible causes:
+        errwarn('*** error: found %d tex block markers for %d initial tex blocks\nAbort!' % (n, len(tex_blocks)))
+        errwarn("""    Possible causes:
            - mismatch of !bc and !ec within one file, such that a !bc
              swallows tex blocks
            - mismatch of !bc and !ec across files in multi-file documents
            - !bt and !et inside code blocks - replace by |bt and |et
     (run doconce on each file to locate the problem, then on
-     smaller and smaller parts of each file)"""
+     smaller and smaller parts of each file)""")
         _abort()
 
     from misc import option
@@ -964,7 +965,7 @@ def doconce_exercise_output(
                     if solution_header.endswith('===') and \
                        re.search(r'^\d+ %s' % _CODE_BLOCK,
                                  subex['solution'].lstrip()):
-                        print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
+                        errwarn('\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n')
                         s += 'Code:\n'
                         sol += '\nCode:\n'
                     s += subex['solution'] + '\n'
@@ -999,7 +1000,7 @@ def doconce_exercise_output(
         # Make sure we have a sentence after the heading if real heading
         if solution_header.endswith('===') and \
            re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
-            print '\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n'
+            errwarn('\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n')
             s += 'Code:\n'
             sol += '\nCode:\n'
         s += exer['solution'] + '\n'
@@ -1091,23 +1092,23 @@ def has_custom_pygments_lexer(name):
         try:
             get_lexer_by_name('ipy')
         except Exception as e:
-            print '*** warning: !bc ipy used for IPython sessions, but'
-            print '    ipython is not supported for syntax highlighting!'
-            print '    install:'
-            print '    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install'
-            print e
+            errwarn('*** warning: !bc ipy used for IPython sessions, but')
+            errwarn('    ipython is not supported for syntax highlighting!')
+            errwarn('    install:')
+            errwarn('    git clone https://hplbit@bitbucket.org/hplbit/pygments-ipython-console.git; cd pygments-ipython-console; sudo python setup.py install')
+            errwarn(e)
             return False
     if name == 'doconce':
         try:
             get_lexer_by_name(name)
         except Exception as e:
-            print '*** warning: !bc do used for DocOnce code, but'
-            print '    not supported for syntax highlighting!'
-            print '    install:'
-            print '    sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce'
-            print '\n    or manually:'
-            print '    git clone https://github.com/hplgit/pygments-doconce.git; cd pygments-doconce; sudo python setup.py install'
-            print e
+            errwarn('*** warning: !bc do used for DocOnce code, but')
+            errwarn('    not supported for syntax highlighting!')
+            errwarn('    install:')
+            errwarn('    sudo pip install -e git+https://github.com/hplgit/pygments-doconce#egg=pygments-doconce')
+            errwarn('\n    or manually:')
+            errwarn('    git clone https://github.com/hplgit/pygments-doconce.git; cd pygments-doconce; sudo python setup.py install')
+            errwarn(e)
             return False
     return True
 

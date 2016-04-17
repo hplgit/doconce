@@ -2247,5 +2247,8 @@ Usually the HTML5 slides work best in Firefox.
 
 ===== Online Python Tutor does not work =====
 
-Seems to be a problem with reveal slides. The *Forward* button is not
-clickable.
+ * Check that there are no syntax errors in the code by running the code
+   as an ordinary file. Syntax errors lead to empty space and no tutor
+   in HTML output.
+ * Seems to be a problem with reveal slides. The *Forward* button is not
+   clickable.

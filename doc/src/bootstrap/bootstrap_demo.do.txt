@@ -1,7 +1,7 @@
 TITLE: Demo of the Bootstrap style
 
 DocOnce supports a variety of Bootstrap styles for HTML
-documents. To get the `journal` Bootswatch style, run
+documents. To get the `journal` Bootswatch style, for instance, run
 
 
 !bc sys
@@ -10,16 +10,17 @@ Terminal> doconce format html mydoc --html_style=bootswatch_journal
 
 The title, optionally with authors, date, table of contents, abstract
 and/or a short introduction is typeset using the Jumbotron environment
-from Bootstrap, resulting in large fonts on gray background.  If a
-`!split` command is used before the first section heading or `TOC: on`
-instruction, a button with `Read...` and a link to the next page is
-inserted if the document is split using `doconce split_html`.  This
-construction results in a short Bootstrap main page that has become
-very popular on web the last couple of years.  The
-`--html_bootstrap_jumbotron=value` option can be used to adjust the
-jumbotron: `value` can be `on` (default), `off` (to turn the gray
-background and large fonts off), or `h2` (to replace the large font in
-the document title by a smaller font).
+from Bootstrap, resulting in large fonts on a gray background.
+
+If a `!split` command is used before the first section heading or
+`TOC: on` instruction, a button with `Read...` and a link to the next
+page is inserted if the document is split using `doconce split_html`.
+This construction results in a short Bootstrap main page that has
+become very popular on web.  The `--html_bootstrap_jumbotron=value`
+option can be used to adjust the jumbotron: `value` can be `on`
+(default), `off` (to turn the gray background and large fonts off), or
+`h2` (to replace the large font in the document title by a smaller
+font).
 
 # A split before the first section will enable a button in the jumbotron
 # for going to the first real page
@@ -113,7 +114,6 @@ of admonitions: notice, question, summary, and warning. These
 can have an optional title, and some admonition styles will also
 include an icon image. In addition, there is a block admonition
 without any icon, but with an optional title.
-
 
 ======= Demonstrations of admons =======
 

@@ -23,6 +23,9 @@ doconce format html bootstrap_demo --html_style=bootswatch_$style --pygments_htm
 doconce format html bootstrap_demo --html_style=bootswatch_$style --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit --html_pre_style=inherit --html_output=$style
 done
 
+style=journal
+doconce format html bootstrap_demo --html_style=bootswatch_$style --pygments_html_style=default --html_admon=bootstrap_panel --html_code_style=inherit --html_pre_style=inherit --html_output=${style}_big "--html_body_style=font-size:20px;line-height:1.5"
+
 style=vagrant
 doconce format html bootstrap_demo --html_style=bootstrap --html_template=template_$style.html --pygments_html_style=default --html_admon=bootstrap_panel --html_output=$style --html_code_style=inherit --html_toc_indent=0
 

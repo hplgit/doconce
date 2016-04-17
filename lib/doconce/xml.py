@@ -30,7 +30,7 @@ from common import table_analysis, plain_exercise, insert_code_and_tex, \
      indent_lines, online_python_tutor, bibliography, \
      cite_with_multiple_args2multiple_cites, is_file_or_url
 from misc import option, _abort
-
+from doconce import errwarn
 
 def xml_code(filestr, code_blocks, code_block_types,
               tex_blocks, format):
@@ -393,7 +393,7 @@ def xml_footnotes(filestr, format, pattern_def, pattern_footnote):
         if name in name2index:
             i = name2index[m.group('name')]
         else:
-            print '*** error: found footnote with name "%s", but this one is not defined' % name
+            errwarn('*** error: found footnote with name "%s", but this one is not defined' % name)
             _abort()
         xml = r'<footnote id="%s">%s<footnote>' % (i, name)
         return xml

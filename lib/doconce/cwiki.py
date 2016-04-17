@@ -8,6 +8,7 @@ import re, os, sys
 from common import default_movie, plain_exercise, insert_code_and_tex
 from plaintext import plain_quiz
 from misc import _abort
+from doconce import errwarn
 
 def cwiki_code(filestr, code_blocks, code_block_types,
                tex_blocks, format):
@@ -39,8 +40,8 @@ def cwiki_figure(m):
                 output = subprocess.check_output(cmd, shell=True,
                                                  stderr=subprocess.STDOUT)
             except subprocess.CalledProcessError as e:
-                print '\n**** Warning: could not run', cmd
-                print 'Convert %s to PNG format manually' % filename
+                errwarn('\n**** Warning: could not run ' + cmd)
+                errwarn('Convert %s to PNG format manually' % filename)
                 _abort()
             filename = root + '.png'
     caption = m.group('caption')

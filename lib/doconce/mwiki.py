@@ -36,6 +36,7 @@ import re, os, commands, sys
 from common import default_movie, plain_exercise, insert_code_and_tex
 from plaintext import plain_quiz
 from misc import _abort
+from doconce import errwarn
 
 def align2equations(math_text):
     """
@@ -88,7 +89,7 @@ def mwiki_code(filestr, code_blocks, code_block_types,
         tex_blocks[i], labels = remove_labels(tex_blocks[i])
         for label in labels:
             if label in filestr:
-                print '*** warning: reference to label "%s" in an equation does not work in MediaWiki' % label
+                errwarn('*** warning: reference to label "%s" in an equation does not work in MediaWiki' % label)
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, format)
 
@@ -149,8 +150,8 @@ def mwiki_figure(m):
                 output = subprocess.check_output(cmd, shell=True,
                                                  stderr=subprocess.STDOUT)
             except subprocess.CalledProcessError as e:
-                print '\n**** warning: could not run ', cmd
-                print '       convert %s to PNG format manually' % filename
+                errwarn('\n**** warning: could not run ' + cmd)
+                errwarn('       convert %s to PNG format manually' % filename)
                 _abort()
             filename = root + '.png'
 
@@ -197,7 +198,7 @@ def mwiki_figure(m):
             'prop': 'imageinfo', 'format': 'xml'})
         url = 'http://en.wikipedia.org/w/api.php?' + prms
         try:
-            print ' ...checking if %s is stored at en.wikipedia.org/w/api.php...' % filename
+            errwarn(' ...checking if %s is stored at en.wikipedia.org/w/api.php...' % filename)
             f = urllib.urlopen(url)
 
             imageinfo = f.read()
@@ -224,18 +225,18 @@ def mwiki_figure(m):
             timestamp = get_data('timestamp', imageinfo)
             if user:
                 found_wikimedia = True
-                print ' ...found %s at wikimedia' % filename
+                errwarn(' ...found %s at wikimedia' % filename)
                 result = r"""
     [[File:%s|frame%s|alt=%s%s]] <!-- user: %s, filename: %s, timestamp: %s -->
     """ % (filename, size, filename, caption, user, orig_filename, timestamp)
         except IOError:
-            print ' ...no Internet connection...'
+            errwarn(' ...no Internet connection...')
 
         if not found_wikimedia:
-            print ' ...for wikipedia/wikibooks you must upload image file %s to\n    common.wikimedia.org' % orig_filename
+            errwarn(' ...for wikipedia/wikibooks you must upload image file %s to\n    common.wikimedia.org' % orig_filename)
             # see http://commons.wikimedia.org/wiki/Commons:Upload
             # and http://commons.wikimedia.org/wiki/Special:UploadWizard
-            print ' ...for now we use local file %s' % filename
+            errwarn(' ...for now we use local file %s' % filename)
             # This is fine if we use github wiki
 
             result = r"""

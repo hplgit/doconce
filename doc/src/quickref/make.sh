@@ -21,7 +21,7 @@ fi
 # Make latest bin/doconce doc
 doconce > doconce_program.sh
 
-doconce format html $name --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
+system doconce format html $name --pygments_html_style=none --no_preprocess --no_abort --html_style=bootswatch_readable
 
 # pdflatex
 system doconce format pdflatex $name --no_preprocess --latex_font=helvetica --no_ampersand_quote --latex_code_style=vrb --no_abort

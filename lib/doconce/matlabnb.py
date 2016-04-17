@@ -18,7 +18,7 @@ from common import default_movie, plain_exercise, bibliography, \
      cite_with_multiple_args2multiple_cites, insert_code_and_tex, \
      fix_ref_section_chapter
 from misc import option
-
+from doconce import errwarn
 
 def matlabnb_author(authors_and_institutions, auth2index,
                  inst2index, index2inst, auth2email):
@@ -43,7 +43,7 @@ def matlabnb_code(filestr, code_blocks, code_block_types,
         if m:
             envir = m.group(1)
             if envir not in ('equation', 'equation*'):
-                print '*** warning: \\begin{%s}-\\end{%s} does not work in Matlab notebooks' % (envir, envir)
+                errwarn('*** warning: \\begin{%s}-\\end{%s} does not work in Matlab notebooks' % (envir, envir))
             tex_blocks[i] = re.sub(r'\\begin{%s}\s+' % envir, '', tex_blocks[i])
             tex_blocks[i] = re.sub(r'\\end{%s}\s+' % envir, '', tex_blocks[i])
         tex_blocks[i] = re.sub(r'\\\[', '', tex_blocks[i])
