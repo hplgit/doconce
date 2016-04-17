@@ -1,4 +1,4 @@
-TITLE: Demonstration of Boostrap styles for DocOnce documents
+TITLE: Demonstration of Bootstrap styles for DocOnce documents
 DATE: today
 
 The "Bootstrap": "http://getbootstrap.com" framework for creating
@@ -77,7 +77,7 @@ options="--html_admon=bootstrap_panel --html_code_style=inherit"
  * "red": "bootstrap_red.html" (`--html_style=bootstrap_red  ${options}`)
  * "bloodish": "bootstrap_bloodish.html" (`--html_style=bootstrap_bloodish  ${options}`)
  * "cbc": "cbc.html" (`--html_style=bootstrap_cbc  ${options}`)
- * "simula": "botstrap_simula.html" (`--html_style=bootstrap_simula  ${options}`)
+ * "simula": "bootstrap_simula.html" (`--html_style=bootstrap_simula  ${options}`)
 
 ===== Bootswatch styles =====
 

@@ -83,7 +83,7 @@ DocOnce supports the following themes from the Bootstrap family:
    * `blue`, `red`, `brown`, `bluegray`, `bloodish`, `cbc`, and `simula`
      color variations of the original Bootstrap theme
 
-You write Boostrap HTML files as normal DocOnce documents, but there
+You write Bootstrap HTML files as normal DocOnce documents, but there
 are some additional features:
 
  * Highlighted intro with big title, optionally author(s), date,
@@ -122,13 +122,13 @@ The Bootstrap/Bootswatch styles support two kinds of admons:
  * alert admons (`bootstrap_alert`) with colored background (default)
  * panel admon (`bootstrap_panel`) where only the title has colored background
 
-Typical commands for producing Boostrap or Bootswatch layouts are
+Typical commands for producing Bootstrap or Bootswatch layouts are
 
 !bc sys
-Terminal> doconce format html mydoc --html_style=boostrap
-Terminal> doconce format html mydoc --html_style=booswatch
-Terminal> doconce format html mydoc --html_style=boostrap --admon_style=bootstrap_panel
-Terminal> doconce format html mydoc --html_style=booswatch_superhero --admon_style=bootstrap_panel
+Terminal> doconce format html mydoc --html_style=bootstrap
+Terminal> doconce format html mydoc --html_style=bootswatch
+Terminal> doconce format html mydoc --html_style=bootstrap --admon_style=bootstrap_panel
+Terminal> doconce format html mydoc --html_style=bootswatch_superhero --admon_style=bootstrap_panel
 !ec
 
 Below are some examples on admons.
@@ -163,7 +163,7 @@ This is the admon for warnings or paying attention.
 !ewarning
 
 !bquestion
-How many admon styles are supported by the DocOnce Boostrap and Bootswatch
+How many admon styles are supported by the DocOnce Bootstrap and Bootswatch
 styles?
 !equestion
 
