@@ -14,6 +14,11 @@ DocOnce is a modestly tagged (Markdown-like) markup language targeting scientifi
 
 Here are some of the most recent features in DocOnce:
 
+ * The `doconce format` command may issue a lot of warnings and concerns,
+   which are usually lost in the very long output from translating
+   DocOnce to some output format. Now all the warnings, errors, and comments
+   are available in `mydoc.dolog` (if the main file is named `mydoc.do.txt`).
+   It is recommended to examine this `.dolog` file.
  * Now you can copy code from files and left-adjust the code `X`
    spaces by the syntax `@@@CODE-X filename`. This is particularly useful
    when copying code snippets from function bodies and get

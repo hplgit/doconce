@@ -2066,6 +2066,21 @@ LaTeX output from DocOnce documents. If the journal style employs
 special LaTeX environments, see Section ref{trouble:latex:envir:native}
 how to utilize these from DocOnce.
 
+===== I want exercises to have small headings (not subsections) =====
+
+By default, DocOnce typesets exercises as subsections in LaTeX.
+However, the heading is defined by a newcommand `exercisesection`
+(right after `\begin{document}`) so it is easy to switch to any tailored
+heading. For example, we can use a paragraph heading:
+
+!bc sys
+Terminal> doconce subst \
+          '\{exercisesection\}\[1\]\{\\subsection\*' \
+	  '{exercisesection}[1]{\paragraph' mydoc.tex
+!ec
+This typesetting is perhaps more suitable if you have exercises scattered
+around in the document rather than grouped in sections.
+
 ======= gwiki =======
 
 ===== Strange nested lists in gwiki =====

@@ -651,7 +651,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             # (might have to add \phantomsection right before because
             # of the hyperref package?)
     #        filestr, n = re.subn(exercise_pattern,
-    #                         r"""subsection*{\g<1> \g<2>: \g<3>
+    #                         r"""exercisesection{\g<1> \g<2>: \g<3>
     # % table of contents with exercises:
     #\\addcontentsline{toc}{subsection}{\g<2>: \g<3>
     # % separate list of exercises:
@@ -672,16 +672,16 @@ def latex_code(filestr, code_blocks, code_block_types,
 """, filestr)
                     else:
                         filestr = re.sub(exercise_pattern,
-            r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+            r"""exercisesection{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
                 elif option('latex_list_of_exercises=', 'none') == 'toc':
                     filestr = re.sub(exercise_pattern,
-            r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+            r"""exercisesection{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{toc}{subsection}{\\thedoconceexercisecounter: \g<3>
 """, filestr)
                 elif option('latex_list_of_exercises=', 'none') == 'loe':
                      filestr = re.sub(exercise_pattern,
-                     r"""subsection*{\g<1> \\thedoconceexercisecounter: \g<3>
+                     r"""exercisesection{\g<1> \\thedoconceexercisecounter: \g<3>
 \\addcontentsline{loe}{doconceexercise}{\g<1> \\thedoconceexercisecounter: \g<3>
 """, filestr)
                 # Treat {Exercise}/{Project}/{Problem}
@@ -692,7 +692,7 @@ def latex_code(filestr, code_blocks, code_block_types,
                 replacement = r"""% --- begin exercise ---
 \begin{doconceexercise}
 
-\subsection*{\g<1>"""
+\exercisesection{\g<1>"""
                 if option('latex_list_of_exercises=', 'none') != 'none':
                     replacement += r"""
 \addcontentsline{loe}{doconceexercise}{\g<1>
@@ -780,7 +780,7 @@ def latex_code(filestr, code_blocks, code_block_types,
             exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project|Example)'
         else:
             exercise_pattern = r'subsection\*?\{(Exercise|Problem|Project)'
-        filestr = re.sub(exercise_pattern, r"""subsection*{\g<1>""",
+        filestr = re.sub(exercise_pattern, r"""exercisesection{\g<1>""",
                          filestr)
         # Remaining problem: list of exercises...
 
@@ -4275,6 +4275,8 @@ justified,
 % matching end for #ifdef PREAMBLE
 % #endif
 
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
+
 """
     if latex_style == 'tufte-book':
         INTRO['latex'] += r"""
@@ -4287,6 +4289,7 @@ justified,
         INTRO['latex'] = preamble + r"""
 \begin{document}
 
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
 """
     elif preamble:
         # Insert user-provided part of the preamble
