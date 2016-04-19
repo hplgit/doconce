@@ -594,17 +594,17 @@ def get_legal_command_line_options():
     return _legal_command_line_options
 
 def help_format():
-    errwarn("""
+    print """
 doconce format X doconcefile
 
 where X can be any of the formats
 html, latex, pdflatex, rst, sphinx, plain, gwiki, mwiki, cwiki,
 pandoc, epytext.
-""")
+"""
     for opt, help in _registered_command_line_options:
         if opt.endswith('='):
             opt += '...'
-        errwarn('\n%s\n\n%s\n' % (opt, help))
+        print '\n%s\n\n%s\n' % (opt, help)
 
 # Import options from config file instead of the command line
 try:
