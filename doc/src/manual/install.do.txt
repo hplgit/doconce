@@ -312,7 +312,7 @@ To make OpenOffice or LibreOffice documents from `rst` output, you
 will need more software, typically the following on a Debian system:
 
 !bc sys
-sudo apt-get install unovonv libreoffice libreoffice-dmaths
+sudo apt-get install unoconv libreoffice libreoffice-dmaths
 !ec
 
 #There is a possibility to create PDF files from reST documents

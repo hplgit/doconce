@@ -777,8 +777,8 @@ Causes of missing labels:
         if line.strip().startswith('==='):
             w = line.split()
             if w[0] != w[-1]:
-                errwarn('\n*** error: inconsistent no of = in heading:\n', line)
-                errwarn('      lengths: %d and %d, must be equal and odd' %
+                errwarn('\n*** error: inconsistent no of = in heading:\n' + line)
+                errwarn('    lengths: %d and %d, must be equal and odd' %
                         (len(w[0]), len(w[-1])))
                 _abort()
 
@@ -1148,7 +1148,7 @@ def insert_code_from_file(filestr, format):
                 filetype = os.path.splitext(filename)[1][1:]  # drop dot
 
                 # Adjustments to some names
-                if filetype in ('f', 'c', 'java', 'cpp', 'py', 'pyopt', 'cy', 'm', 'sh', 'html', 'txt', 'dat'):
+                if filetype in ('f', 'c', 'java', 'cpp', 'py', 'pyopt', 'cy', 'pl', 'm', 'sh', 'html', 'txt', 'dat'):
                     pass # standard filetypes
                 elif filetype == 'cxx' or filetype == 'C' or filetype == 'h' \
                        or filetype == 'i':

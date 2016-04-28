@@ -348,8 +348,12 @@ def rst_format_articles(paper):
     values.append(_rst_format_title(paper))
 
     # Journal
-    formatted_venue = '*%s*' % \
-         _format_venue(paper["journal"], paper["journal"], paper)
+    try:
+        formatted_venue = '*%s*' % \
+           _format_venue(paper["journal"], paper["journal"], paper)
+    except KeyError as e:
+        raise ValueError('publish entry: %s\nmissing field: %s'
+                         % (str(paper), str(e)))
 
     values.append(formatted_venue)
 

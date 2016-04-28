@@ -672,6 +672,26 @@ and produce very nice-looking books.  There is support for LaTeX
 mathematics as in WordPress blog posts, meaning that one cannot refer
 to equations.
 
+# #ifdef SAVE_AS_COMMENT
+===== How to view HTML file bundles on iPad =====
+
+PDF files from LaTeX are very easy to transfer to an iPad via a cloud
+service like Dropbox and apps like
+GoodReader or GoodNotes. HTML files can be viewed through a browser,
+but if you want a large HTML document to be viewed offline on
+an iPad you can to that by the following steps.
+
+ o Pack all files necessary for viewing the HTML document in a tarball.
+   Usually, this will be a command like `tar cvzf tmp.tar.gz mydoc.html ._mydoc*.html fig mov` (where `fig` and `mov` are figure and movie directories needed by the `.html` files).
+ o Use the iZip Pro app to download the `tmp.tar.gz` file from a service
+   like Dropbox.
+ o Click on *Files - Dropbox - tmp.tar.gz*, unpack files and follow
+   links to the directory containing the file bundle. Click on the
+   main file, `mydoc.html` and it opens locally in a browser-like app.
+ o No, _LINKS DO NOT WORK!_
+
+# #endif
+
 
 ======= Pandoc and Markdown =======
 label{do2any:pandoc}

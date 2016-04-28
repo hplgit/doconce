@@ -4727,8 +4727,9 @@ Points to consider (just sketches...):
    slide headings. Remember `!split` before each slide (subsection).
    A comment `# Short title: title` after a section is interpreted
    in `latex` and `pdflatex` output as a short title for the section.
+   (Short titles for sections in ordinary text files are not supported.)
 
-idx{short title (for sections)}
+idx{short title (for slides)}
 
 !split
 ===== Overview =====

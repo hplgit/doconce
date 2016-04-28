@@ -280,8 +280,8 @@ commentstyle={},
        redblue=r"""
 \lstdefinestyle{redblue}{
 keywordstyle=\color{blue}\bfseries,
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
+commentstyle=\color{darkgreen},
+stringstyle=\color{myteal},
 identifierstyle=\color{darkorange},
 }
 """,
@@ -289,8 +289,8 @@ identifierstyle=\color{darkorange},
 \lstdefinestyle{greenblue}{
 %keywordstyle=\color{black}\bfseries,
 keywordstyle=\color{black},
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
+commentstyle=\color{darkgreen},
+stringstyle=\color{myteal},
 %identifierstyle=\color{blue}\bfseries,
 identifierstyle=\color{darkblue},
 }
@@ -319,8 +319,8 @@ backgroundcolor=\color{cbg_blue1},
 \lstdefinestyle{blue1_bluegreen}{    % blue1 background for code snippets
 backgroundcolor=\color{cbg_blue1},
 keywordstyle=\color{black},
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
+commentstyle=\color{darkgreen},
+stringstyle=\color{myteal},
 identifierstyle=\color{darkblue},
 }
 """,
@@ -341,8 +341,8 @@ backgroundcolor=\color{cbg_blue1},
 frame=tb,                            % include frame
 rulecolor=\color{bar_blue1},         % frame color
 keywordstyle=\color{black},
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
+commentstyle=\color{darkgreen},
+stringstyle=\color{myteal},
 identifierstyle=\color{darkblue},
 }
 """,
@@ -371,8 +371,8 @@ backgroundcolor=\color{cbg_gray},
 %framerule=1mm                        % thickness of frame
 %linewidth=100mm                      % box width
 keywordstyle=\color{black},
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
+commentstyle=\color{darkgreen},
+stringstyle=\color{myteal},
 identifierstyle=\color{darkblue},
 }
 """,
@@ -383,8 +383,8 @@ backgroundcolor=\color{cbg_gray},
 frame=tb,                             % include frame
 rulecolor=\color{bar_gray1},          % frame color
 keywordstyle=\color{black},
-commentstyle=\color{myteal},
-stringstyle=\color{darkgreen},
+commentstyle=\color{darkgreen},
+stringstyle=\color{myteal},
 identifierstyle=\color{darkblue},
 }
 """,

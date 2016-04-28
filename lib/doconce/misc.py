@@ -681,8 +681,8 @@ def check_command_line_options(option_start):
             arg = arg.split('=')[0] + '='
         if arg[:2] == '--':
             if not arg in _legal_command_line_options:
-                errwarn('*** warning: unrecognized command-line option')
-                errwarn('    ' + arg_user)
+                print '*** warning: unrecognized command-line option'
+                print '    ' + arg_user
 
 
 def misc_option(name, default=None):
@@ -7803,6 +7803,15 @@ def subst_paragraph_latex2doconce(m):
         title += ending
     return '=== %s ===\n' % title
 
+global footnote_counter
+footnote_counter = 0
+
+def subst_footnote_latex2doconce(m):
+    text = m.group(1)
+    global footnote_counter
+    footnote_counter += 1
+    return '[^footnote%d][^footnote%d]: %s' % \
+           (footnote_counter, footnote_counter, text)
 
 def _latex2doconce(filestr):
     """Run latex to doconce transformations on filestr."""
@@ -7868,6 +7877,7 @@ def _latex2doconce(filestr):
         (r'\\refeq\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
         (r'^\bpy\s+', r'\bipy' + '\n', re.MULTILINE),
         (r'^\epy\s+', r'\eipy' + '\n', re.MULTILINE),
+        (r'\\footnote\{(.+?)\}', subst_footnote_latex2doconce, re.DOTALL),
         # general latex constructions
         # (comments are removed line by line below)
         (r'\\author\{(?P<subst>.+)\}', subst_author_latex2doconce),
