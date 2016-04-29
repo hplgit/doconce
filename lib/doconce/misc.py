@@ -707,7 +707,7 @@ def _abort():
     if '--no_abort' in sys.argv:
         errwarn('avoided abortion because of --no-abort')
     else:
-        errwarn('Abort! (add --no_abort on the command line to avoid this abortion)')
+        print 'Abort! (add --no_abort on the command line to avoid this abortion)'
         sys.exit(1)
 
 def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):
@@ -7882,22 +7882,34 @@ def _latex2doconce(filestr):
         # (comments are removed line by line below)
         (r'\\author\{(?P<subst>.+)\}', subst_author_latex2doconce),
         (r'\\title\{(?P<subst>.+)\}', r'TITLE: \g<subst>'),
+        # First one-line headings without short title
         (r'\\chapter\*?\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
         (r'\\section\*?\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
         (r'\\subsection\*?\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
         (r'\\subsubsection\*?\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
         (r'\\paragraph\{(?P<subst>.+?)\}', r'__\g<subst>__'),  # modified later
-        (r'\\chapter\*?\[.+\]\{(?P<subst>.+)\}', r'========= \g<subst> ========='),
-        (r'\\section\*?\[.+\]\{(?P<subst>.+)\}', r'======= \g<subst> ======='),
-        (r'\\subsection\*?\[.+\]\{(?P<subst>.+)\}', r'===== \g<subst> ====='),
-        (r'\\subsubsection\*?\[.+\]\{(?P<subst>.+)\}', r'=== \g<subst> ==='),
+        # Multiple-line headings
+        (r'\\chapter\*?\{(?P<subst>.+?)\}', r'========= \g<subst> =========', re.DOTALL),
+        (r'\\section\*?\{(?P<subst>.+?)\}', r'======= \g<subst> =======', re.DOTALL),
+        (r'\\subsection\*?\{(?P<subst>.+?)\}', r'===== \g<subst> =====', re.DOTALL),
+        (r'\\subsubsection\*?\{(?P<subst>.+?)\}', r'=== \g<subst> ===', re.DOTALL),
+        # Multiple-line headings with short title
+        (r'\\chapter\*?\[.+\]\{(?P<subst>.+?)\}', r'========= \g<subst> =========', re.DOTALL),
+        (r'\\section\*?\[.+\]\{(?P<subst>.+?)\}', r'======= \g<subst> =======', re.DOTALL),
+        (r'\\subsection\*?\[.+\]\{(?P<subst>.+?)\}', r'===== \g<subst> =====', re.DOTALL),
+        (r'\\subsubsection\*?\[.+\]\{(?P<subst>.+?)\}', r'=== \g<subst> ===', re.DOTALL),
         (r'\\bf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
         (r'\\emph\{(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\\texttt\{(?P<subst>[^}]+)\}', r'`\g<subst>`'),
+        (r'\\textit\{(?P<subst>[^}]+)\}', r'*\g<subst>*'),
         (r'\{\\em\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\{\\bf\s+(?P<subst>.+?)\}', r'_\g<subst>_'),
         (r'\{\\it\s+(?P<subst>.+?)\}', r'*\g<subst>*'),
         (r'\\textbf\{(?P<subst>.+?)\}', r'_\g<subst>_'),
+        (r'\\newpage', ''),
+        (r'\\clearpage', ''),
+        (r'\\bigskip', ''),
+        (r'\\medskip', ''),
         (r'\\eqref\{(?P<subst>.+?)\}', r'(ref{\g<subst>})'),
         (r'(\S)\\label\{', r'\g<1> \\label{'),
         (r'(\S)\\idx(.?)\{', r'\g<1> \\idx\g<2>{'),

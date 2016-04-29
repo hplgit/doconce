@@ -5015,13 +5015,13 @@ def format_driver():
                 found = True
                 break
         if not found:
-            errwarn('*** error: given doconce file "%s", but no' % basename)
-            errwarn('    files with extensions %s exist' % ' or '.join(legal_extensions))
+            print '*** error: given doconce file "%s", but no' % basename
+            print '    files with extensions %s exist' % ' or '.join(legal_extensions)
             _abort()
     else:
         # Given extension
         if not os.path.isfile(filename):
-            errwarn('*** error: file %s does not exist' % filename)
+            print '*** error: file %s does not exist' % filename
             _abort()
         if ext == '.txt':
             if filename.endswith('.do.txt'):
@@ -5031,8 +5031,8 @@ def format_driver():
         elif ext == '.do':
             basename = filename[:-3]
         else:
-            errwarn('*** error: illegal file extension %s' % ext)
-            errwarn('    must be %s' % ' or '.join(legal_extensions))
+            print '*** error: illegal file extension %s' % ext
+            print '    must be %s' % ' or '.join(legal_extensions)
             _abort()
 
     dofile_basename = basename  # global variable
