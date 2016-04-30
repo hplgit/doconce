@@ -75,6 +75,9 @@ system('sudo pip install -e git+https://github.com/hplgit/preprocess#egg=preproc
 
 # Publish for handling bibliography
 system('sudo pip install python-Levenshtein')
+system('sudo apt-get -y install libxml2-dev')
+system('sudo apt-get -y install libxslt1-dev')
+system('sudo apt-get -y install zlib1g-dev')
 system('sudo pip install lxml')
 system('sudo pip install -e hg+https://bitbucket.org/logg/publish#egg=publish')
 
