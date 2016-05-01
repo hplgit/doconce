@@ -67,6 +67,9 @@ pip_install -e git+https://github.com/hplgit/preprocess#egg=preprocess
 
 # Publish for handling bibliography
 pip_install python-Levenshtein
+apt_install libxml2-dev
+apt_install libxslt1-dev
+apt_install zlib1g-dev
 pip_install lxml
 pip_install -e hg+https://bitbucket.org/logg/publish#egg=publish
 
