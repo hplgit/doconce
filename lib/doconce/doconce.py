@@ -30,7 +30,6 @@ def errwarn(msg, newline=True):
         print msg
     else:
         print msg,
-    msg = str(msg)
     logfilename = dofile_basename + '.dolog'
     mode = 'a' if os.path.isfile(logfilename) else 'w'
     if encoding:
