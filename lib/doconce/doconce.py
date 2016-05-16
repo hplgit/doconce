@@ -35,7 +35,6 @@ def errwarn(msg, newline=True):
         print msg
     else:
         print msg,
-    msg = str(msg)
     logfilename = dofile_basename + '.dolog'
     mode = 'a' if os.path.isfile(logfilename) else 'w'
     if encoding:
@@ -5006,14 +5005,14 @@ def format_driver():
     except IndexError:
         from misc import get_legal_command_line_options
         options = ' '.join(get_legal_command_line_options())
-        errwarn('Usage: %s format filename [preprocessor options] [%s]\n'
-                % (sys.argv[0], options))
-        errwarn('Run "doconce format --options" to see explanation of all options')
+        print 'Usage: %s format filename [preprocessor options] [%s]\n' \
+                % (sys.argv[0], options)
+        print 'Run "doconce format --options" to see explanation of all options'
         if len(sys.argv) == 1:
-            errwarn('Missing format specification!')
-        errwarn('formats:', ', '.join(supported_format_names()))
-        errwarn('\n-DFORMAT=format is always defined when running preprocess')
-        errwarn('Other -Dvar or -Dvar=value options can be added')
+            print 'Missing format specification!'
+        print 'formats:', ', '.join(supported_format_names())
+        print '\n-DFORMAT=format is always defined when running preprocess'
+        print 'Other -Dvar or -Dvar=value options can be added'
         sys.exit(1)
 
     # Treat some synonyms of format

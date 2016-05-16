@@ -260,7 +260,7 @@ the copyright. The output is typically ``Copyright 2015, Joe Doe, Digital Compan
  AUTHOR: Joe Doe at Digital Company {copyright,2015|CC BY}
  AUTHOR: Jane Doe at Analog Company {copyright,2015|CC BY}
 !ec
-The output becomes ``Copyright 2015, Diginal Company, Analog Company. Released under CC Attribution 4.0 license''.
+The output becomes ``Copyright 2015, Digital Company, Analog Company. Released under CC Attribution 4.0 license''.
 
 
 
@@ -297,7 +297,7 @@ or equal signs (=):
    * 7 for sections
    * 5 for subsections
    * 3 for subsubsections
-   * 2 *underscrores* (only! - it looks best) for paragraphs
+   * 2 *underscores* (only! - it looks best) for paragraphs
      (paragraph heading will be inlined)
 
 Headings can be surrounded by as many blanks as desired, but the
@@ -510,7 +510,7 @@ is up to LaTeX do decide).
 !bnotice Tip: use linebreak to insert space around inline figures
 Sometimes inline figures (`FIGURE` line without caption) get squeezed
 into the text. You can add vertical space in LaTeX and HTML by
-inserting seeral lines with `<linebreak>`.
+inserting several lines with `<linebreak>`.
 !enotice
 
 
@@ -609,7 +609,7 @@ using the `sidecap` feature as figure option, e.g.,
 `latex` and `pdflatex` output then uses the `sidecap` package and
 the `SCfigure` environment to typeset the figure. Remember to
 use a quite low `frac` value for figures with sidecaption (0.5
-for instance). A table is used for typsetting a figure with
+for instance). A table is used for typesetting a figure with
 sidecaption in HTML, and a low `width` value is recommended.
 The `sidecap=True` figure option has no impact on other formats.
 
@@ -1386,10 +1386,10 @@ be no spaces between an asterisk and the emphasized text, as in
 Boldface font is recognized by an underscore instead of an asterisk:
 
 !bc do
-_several words in boldface_ followed by *ephasized text*.
+_several words in boldface_ followed by *emphasized text*.
 !ec
 The line above gets typeset as
-_several words in boldface_ followed by *ephasized text*.
+_several words in boldface_ followed by *emphasized text*.
 One should only have pure text (no mathematical formulas) between the boldface
 or emphasize markers, and no leading or trailing blanks (with such blanks,
 the text will not be recognized as boldface or emphasize).
@@ -1846,7 +1846,7 @@ vertical space.
 
 !bnotice Tip on using forced linebreaks
 The `<linebreak>` tag is often useful in slides to avoid overfull
-lines in bullet lists, partion such lines into separate lines,
+lines in bullet lists, portion such lines into separate lines,
 or to insert vertical
 space. It can be used in admonitions too to get more space between
 the title and the text. Remember to have `<linebreak>` at the end of
@@ -2611,7 +2611,7 @@ Recommended rules for using the different ``exercise'' types goes as follows:
   * Exercises are smaller problems directly related to the present chapter
     (e.g., with references to the text).
   * Problems are sufficiently independent of the chapter's text
-    that they make sense on their own, separated from the rest of the docoment.
+    that they make sense on their own, separated from the rest of the document.
   * Projects are larger problems that also make sense on their own.
   * Examples are exercises, problems, or projects, but with full solutions
     not typeset with `!bsol` and `!esol` but as running text
@@ -2790,7 +2790,7 @@ exercises suitable for the IPython/Jupyter notebook and run the command
 with `--filter=ipynb`. Without `--filter=`, the `extract_exercises` utility
 extracts all exercises such that one can publish this document separately,
 with or without solutions and/or short answers.
-By ``exercise'' we here mean all exerices, problems,
+By ``exercise'' we here mean all exercises, problems,
 and projects.
 
 The numbering of the exercises in the new document follows the numbering
@@ -2807,7 +2807,7 @@ exercises only, you must go into the DocOnce source file with the
 extracted exercises and remove the comment line that contains the
 `labels2numbers` dictionary.
 
-__Note:__ Instead of having all filtered exercises in one document, yoy
+__Note:__ Instead of having all filtered exercises in one document, you
 may (especially for notebooks) want stand-alone documents for each
 exercise, see the next section.
 
@@ -2825,7 +2825,7 @@ attractive to give the students `.tex` with the exercise text such that
 the students can fill in the answers and extend the text to a report.
 Or one may distribute the exercises as IPython/Jupyter Notebook files
 and let the students fill in answers in the notebooks. This approach
-can be combined with "`nbgrader`" "https://github.com/jupyter/nbgrader"
+can be combined with "`nbgrader`": "https://github.com/jupyter/nbgrader"
 for automatic grading.
 
 The zip archive also contains a file `index.do.txt` with a list of all
@@ -3322,7 +3322,7 @@ example above, we copy code from the line matching `subroutine test`
 matching `C END1` (C followed by 5 blanks and then the text END1). The
 final line with the ``to'' text is not included in the verbatim block.
 
-One can also specify the code environment explictly rather than relying
+One can also specify the code environment explicitly rather than relying
 on the file extension:
 
 !bc do
@@ -3395,7 +3395,7 @@ Remark for those familiar with the `listings` package in LaTeX: the
 specified through exact line numbers. The `@@@CODE` directive
 above works with regular expressions which are much less sensitive
 to edits of the source code file than the line numbers.
-Moreover, copy of code from file works in Dococe across formats
+Moreover, copy of code from file works in DocOnce across formats
 (HTML, Sphinx, Markdown, etc.).
 
 The `--code_prefix=text` option adds a path `text` to the filename specified
@@ -4090,7 +4090,7 @@ environment in LaTeX. No initialization is needed for HTML.
 The other keys are the names of the environments. For each environment,
 we use a function to format the code for a specific output format.
 The `do` key is a default DocOnce formatting, expressed in
-DocOnce syntax and applied if the output format is not present amont
+DocOnce syntax and applied if the output format is not present among
 the other keys. The LaTeX output is here defined by the function
 `example`:
 
@@ -4207,7 +4207,7 @@ behaviour on theorem-style environments. See the example in "DocOnce repository"
 
 You may take a look at a complete "`userdef_environments.py`":
 "https://github.com/hplgit/doconce/blob/master/doc/src/manual/userdef_environments.py"
-file to see this example environment and another *highligh* environment
+file to see this example environment and another *highlight* environment
 where we define blue boxes in LaTeX and HTML and rely on a standard
 notice admon for all other formats. The highlight environment is
 written like
@@ -4501,7 +4501,7 @@ formats. Below is an example:
 A variable `DEVICE` is also defined. It equals `screen` by default,
 but the command-line argument `--device=paper` can set `DEVICE` to
 `paper` (or another value). Testing on `DEVICE` inside the document
-makes it possible to test if the output is on paper media, a sreen,
+makes it possible to test if the output is on paper media, a screen,
 or a particular device.
 
 Other user-defined variables for the preprocessor can be set at
@@ -4666,7 +4666,7 @@ the `doconce split_html` fixes this problem. Note, however, that
 running `doconce split_html` leads to another equation numbering
 than in the original HTML document. In the latter, we use AMS
 equation numbering, which means that the standard LaTeX conventions
-are followed, while in the splitted document only the subset of
+are followed, while in the split document only the subset of
 equations with labels are given numbers.
 
 The HTML documents have by default very simple navigation buttons for
@@ -4773,7 +4773,7 @@ idx{short title (for slides)}
 
 DocOnce can generate two types of slides: HTML5+CSS3 type of
 slides to be presented through a web browser, and classical
-LaTeX Beamer slides. A "comprehensive demo": "http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" shows the range of possibile
+LaTeX Beamer slides. A "comprehensive demo": "http://hplgit.github.io/doconce/doc/pub/slides/demo/index.html" shows the range of possible
 layouts.
 
 The following specific types of output is supported:
@@ -5048,7 +5048,7 @@ relevant HTML formats).
 Instead of inserting special code in the DocOnce document, one can
 alternatively script editing of the output from DocOnce. That is,
 we develop a Python or Bash script that runs the translation of
-a DocOnce document to a ready docoment in another format. Inside this
+a DocOnce document to a ready document in another format. Inside this
 script, we may edit and fine-tune the output from DocOnce.
 
 
@@ -5056,7 +5056,7 @@ script, we may edit and fine-tune the output from DocOnce.
 label{gitignore}
 
 For DocOnce repositories using the Git version control system, the
-follwing `.gitignore` file is useful:
+following `.gitignore` file is useful:
 
 !bc
 syntax: glob
@@ -5318,7 +5318,7 @@ to issue a simple command
 to add a symbol and its definition to a nomenclature. The
 command `\printglossary` inserts the nomenclature table in the document.
 
-We can easily create someting similar in DocOnce with the aid of Mako.
+We can easily create something similar in DocOnce with the aid of Mako.
 Here are the basic ideas:
 
  * Collect the nomenclature definitions in a table in a file `.nomenclature.do.txt`.
@@ -5558,7 +5558,7 @@ the figure.
 !bnotice
 A corresponding solution
 for Sphinx will not work because inline figures in Sphinx has
-a syntax with pipe symbols ('|') that interfer with the
+a syntax with pipe symbols ('|') that interfere with the
 column separator in tables in DocOnce. Returning the HTML
 code in case of Sphinx will just display that HTML code
 in the cells, not the rendered HTML code. A solution that
@@ -5645,7 +5645,7 @@ process after DocOnce has created the output file. We show the Mako
 solution here.
 
 !bnotice Tip
-A pure Python function Mako is easiest to develop in a seperate
+A pure Python function Mako is easiest to develop in a separate
 Python program file because Python has better error messages
 than Mako. Also, Python has debugging facilities that make the
 development of the code much more efficient than writing in Mako.
@@ -5941,7 +5941,7 @@ problematic area and debug that small piece of text. DocOnce does a
 series of transformations of the text. The effect of each of these
 transformation steps are dumped to a logfile, named
 `_doconce_debugging.log`, if the to `doconce format` after the filename
-is `debug`. The logfile is inteded for the developers of DocOnce, but
+is `debug`. The logfile is intended for the developers of DocOnce, but
 may still give some idea of what is wrong.  The section ``Basic Parsing
 Ideas'' explains how the DocOnce text is transformed into a specific
 format, and you need to know these steps to make use of the logfile.
@@ -5985,7 +5985,7 @@ the text group will be the line.
 
 When lists are typeset, the text is examined for sections, paragraphs,
 title, author, date, plus all the inline tags for emphasized, boldface,
-and verbatim text. Plain subsitutions based on regular expressions
+and verbatim text. Plain substitutions based on regular expressions
 are used for this purpose.
 
 The final step is to insert the code and TeX blocks again (these should
