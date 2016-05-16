@@ -707,7 +707,7 @@ def _abort():
     if '--no_abort' in sys.argv:
         errwarn('avoided abortion because of --no-abort')
     else:
-        errwarn('Abort! (add --no_abort on the command line to avoid this abortion)')
+        print 'Abort! (add --no_abort on the command line to avoid this abortion)'
         sys.exit(1)
 
 def system(cmd, abort_on_failure=True, verbose=False, failure_info=''):

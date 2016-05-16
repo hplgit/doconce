@@ -7,7 +7,7 @@ Testing admons
 %%%%%%%%%%%%%%
 
 :Authors: H. P. Langtangen
-:Date: Apr 18, 2016
+:Date: May 4, 2016
 
 .. !split
 
@@ -26,15 +26,15 @@ Need some code outside admons for color and font comparisons:
 
 .. code-block:: python
 
-        def some_code(x):
-            return sin(x)*exp(1-x)
+    def some_code(x):
+        return sin(x)*exp(1-x)
 
 And some plain text verbatim:
 
 .. code-block:: text
 
-        x=1.0 y=0.9 z=0.4
-        x=1.1 y=0.3 z=0.1
+    x=1.0 y=0.9 z=0.4
+    x=1.1 y=0.3 z=0.1
 
 Quotes and boxes
 ----------------
@@ -116,8 +116,8 @@ Let's begin a new paragraph and show a box with code only:
 
 .. code-block:: python
 
-        def some_code(x):
-            return sin(x)*exp(1-x)
+    def some_code(x):
+        return sin(x)*exp(1-x)
 
 
 Admonitions
@@ -157,14 +157,14 @@ Test warning with title:
    
    .. code-block:: python
    
-           def f(x):
-               return x
+       def f(x):
+           return x
    
    And a complete program
    
    .. code-block:: python
    
-           print "Hello, World!"
+       print "Hello, World!"
 
 
 
@@ -267,10 +267,10 @@ applies the generic title "Notice:" for the Sphinx format:
    
    .. code-block:: python
    
-           import urllib
-           
-           def grab(url, filename):
-               urllib.urlretrieve(url, filename=filename)
+       import urllib
+       
+       def grab(url, filename):
+           urllib.urlretrieve(url, filename=filename)
 
 
 
@@ -318,56 +318,56 @@ text, math and code.
    
    .. code-block:: python
    
-           def Dudt(u):
-               r = diff(u, t) + u*grad(u)
-               return r
-           
-           half = 0.5
-           x = 2*n
+       def Dudt(u):
+           r = diff(u, t) + u*grad(u)
+           return r
+       
+       half = 0.5
+       x = 2*n
    
    And some more text that can help going into the next page.
    Longer computer code requires vertical space:
    
    .. code-block:: python
    
-           class Diff:
-               def __init__(self, f, h=1E-5):
-                   self.f = f
-                   self.h = float(h)
-           
-           class Forward1(Diff):
-               def __call__(self, x):
-                   f, h = self.f, self.h
-                   return (f(x+h) - f(x))/h
-           
-           class Backward1(Diff):
-               def __call__(self, x):
-                   f, h = self.f, self.h
-                   return (f(x) - f(x-h))/h
-           
-           class Central2(Diff):
-               def __call__(self, x):
-                   f, h = self.f, self.h
-                   return (f(x+h) - f(x-h))/(2*h)
-           
-           class Central4(Diff):
-               def __call__(self, x):
-                   f, h = self.f, self.h
-                   return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
-                          (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
-           
-           class Central6(Diff):
-               def __call__(self, x):
-                   f, h = self.f, self.h
-                   return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
-                          (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
-                          (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
-           
-           class Forward3(Diff):
-               def __call__(self, x):
-                   f, h = self.f, self.h
-                   return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
-                           (1./3)*f(x-h))/h
+       class Diff:
+           def __init__(self, f, h=1E-5):
+               self.f = f
+               self.h = float(h)
+       
+       class Forward1(Diff):
+           def __call__(self, x):
+               f, h = self.f, self.h
+               return (f(x+h) - f(x))/h
+       
+       class Backward1(Diff):
+           def __call__(self, x):
+               f, h = self.f, self.h
+               return (f(x) - f(x-h))/h
+       
+       class Central2(Diff):
+           def __call__(self, x):
+               f, h = self.f, self.h
+               return (f(x+h) - f(x-h))/(2*h)
+       
+       class Central4(Diff):
+           def __call__(self, x):
+               f, h = self.f, self.h
+               return (4./3)*(f(x+h)   - f(x-h))  /(2*h) - \
+                      (1./3)*(f(x+2*h) - f(x-2*h))/(4*h)
+       
+       class Central6(Diff):
+           def __call__(self, x):
+               f, h = self.f, self.h
+               return (3./2) *(f(x+h)   - f(x-h))  /(2*h) - \
+                      (3./5) *(f(x+2*h) - f(x-2*h))/(4*h) + \
+                      (1./10)*(f(x+3*h) - f(x-3*h))/(6*h)
+       
+       class Forward3(Diff):
+           def __call__(self, x):
+               f, h = self.f, self.h
+               return (-(1./6)*f(x+2*h) + f(x+h) - 0.5*f(x) - \
+                       (1./3)*f(x-h))/h
    
    And then we add a figure too.
    

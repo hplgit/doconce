@@ -537,6 +537,10 @@ def remove_code_and_tex(filestr, format):
     if format not in ('ipynb', 'matlabnb'):
         filestr = re.sub(r'^!bc +([a-z0-9]+)-t', r'!bc \g<1>',
                          filestr, flags=re.MULTILINE)
+    # !bc pypro-h for show/hide button
+    if format not in ('html', 'sphinx'):
+        filestr = re.sub(r'^!bc +([a-z0-9]+)-h', r'!bc \g<1>',
+                         filestr, flags=re.MULTILINE)
 
     # (recall that !bc can be followed by extra information that we must keep:)
     code = re.compile(r'^!bc(.*?)\n(.*?)^!ec *\n', re.DOTALL|re.MULTILINE)

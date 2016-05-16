@@ -53,7 +53,8 @@ pip install -e git+https://github.com/ryan-roemer/sphinx-bootstrap-theme#egg=sph
 pip install -e hg+https://bitbucket.org/miiton/sphinxjp.themes.solarized#egg=sphinxjp.themes.solarized
 pip install -e git+https://github.com/shkumagai/sphinxjp.themes.impressjs#egg=sphinxjp.themes.impressjs
 pip install -e git+https://github.com/kriskda/sphinx-sagecell#egg=sphinx-sagecell
-pip install tinkerer
+# tinkerer has several themes: minimal5, modern5, flat, dark, responsive
+pip install tinkerer --upgrade
 
 # Runestone sphinx books
 pip install sphinxcontrib-paverutils

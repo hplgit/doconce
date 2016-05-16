@@ -2616,6 +2616,9 @@ Recommended rules for using the different ``exercise'' types goes as follows:
   * Examples are exercises, problems, or projects, but with full solutions
     not typeset with `!bsol` and `!esol` but as running text
 
+Authors may use `Exercise` everywhere or make use of the convention
+in the first three points.
+
 === Modified Heading ===
 
 Sometimes one does not want the heading of an exercise, problem, project,
@@ -3183,6 +3186,8 @@ in command-line arguments for the `--latex_code_style=` option,
 the `.ptex2tex.cfg` configuration file for `ptex2tex`, and in
 the `sphinx code-blocks` comments for Sphinx, see below.
 
+idx {`-t` code envir postfix}
+
 === Executable and Non-Executable Code ===
 
 The `ipynb` and `matlabnb` formats create notebooks where computer
@@ -3192,6 +3197,17 @@ with a postfix `-t` indicates that the code is not to be executed, only
 displayed. For example, `!bc pycod-t` is a Python snippet not intended
 for execution. All other formats than the notebook formats ignore the
 `-t` postfix.
+
+idx {`-h` code envir postfix}
+
+=== Hiding code blocks in HTML ===
+
+Code blocks in HTML can be visible or not by clicking on an associated
+button _Show/hide code_. The behavior is triggered by a postfix `-h` to
+the code environment, e.g., `!bc pycod-h` or `!bc pro-h`.
+The `-h` postfix has no impact on other output formats.
+
+idx{`sphinx code-blocks:`}
 
 === Customizing Code Environments Types for Sphinx ===
 
@@ -3480,12 +3496,25 @@ idx{epub}
 idx{`epubmaker.py`}
 idx{Calibre}
 
-=== ePub ===
+=== ePub and Mobi ===
 
-Conversion to ePub format can go via HTML and the "Calibre":
-"http://calibre-ebook.com/" tools. However, simple PDF and HTML with
-mathematics has not been well converted to ePub by Calibre (PDF
+Conversion to the ePub and Mobi formats, popular for reading on Kindle
+devices, can go via HTML and the "Calibre":
+"http://calibre-ebook.com/" tools. On Debian/GNU Linux, install
+`sudo apt-get install calibre`, and run (e.g.)
+
+!bc sys
+Terminal> ebook-convert mydoc.html mydoc.epub
+Terminal> ebook-convert mydoc.html mydoc.mobi
+Terminal> ebook-convert mydoc.pdf  mydoc.epub
+Terminal> calibre mydoc.epub  # view ebook
+!ec
+Unfortunately, it seems that HTML and PDF documents with
+mathematics cannot be converted to ePub by Calibre (PDF
 looks strange, MathJax is not used to render formulas in HTML).
+For documents with mathematics, `ebook-convert` is a fine tool, but
+blocks of computer code may need reformatting in terms of shorter lines.
+
 Pandoc is another program that can generate ePub (not tested).  The
 ePub3 format supports mathematics via MathML.  Some dicussions of this
 topic appear in URL:
@@ -3544,7 +3573,13 @@ goes as follows:
 }
 !ec
 Just edit this file, save it as `mydoc.json` and run
-`epubmaker.py mydoc.json` to produce `mydoc.epub`.
+`python3 /some/path/to/epubmaker.py mydoc.json` to produce `mydoc.epub`.
+
+idx{Kindle}
+
+If you want to read your DocOnce document on Kindle, sending the PDF
+file to the email address for the device seems to be a satisfactory option.
+
 
 === Apple iBook Format ===
 

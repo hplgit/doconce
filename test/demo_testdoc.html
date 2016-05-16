@@ -276,7 +276,7 @@ MathJax.Hub.Config({
 <center>[7] <b>Fourth Inst</b></center>
 <br>
 <p>
-<center><h4>Apr 18, 2016</h4></center> <!-- date -->
+<center><h4>May 4, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -621,15 +621,26 @@ show()
 
 </script></div>
 <p>
-Then Cython:
+Then Cython (with -h option so it is hidden in html/sphinx):
+
 <p>
 
-<!-- code=cython (!bc cycod) typeset with pygments style "perldoc" -->
+<!-- code=cython (!bc cycod-h) typeset with pygments style "perldoc" -->
+
+<script type="text/javascript">
+function show_hide_code9(){
+  $("#code9").toggle();
+}
+</script>
+<button type="button" onclick="show_hide_code9()">Show/hide code</button>
+<div id="code9" style="display:none">
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">cpdef</span> <span style="color: #008b45">f</span>(double x):
     <span style="color: #8B008B; font-weight: bold">return</span> x + <span style="color: #B452CD">1</span>
 </pre></div>
-</td></tr></table><p>
+</td></tr></table>
+</div>
+<p>
 Standard Python shell sessions:
 
 <p>
@@ -2601,6 +2612,8 @@ in a separate document: <code>admon.do.txt</code>.
 is at the end with only one newline.</p>
 
 <!-- ------------------- end of main content --------------- -->
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 
 
 </body>

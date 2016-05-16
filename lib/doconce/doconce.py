@@ -24,6 +24,11 @@ def debugpr(heading='', text=''):
         _log.write(text + '\n')
         _log.close()
 
+def _rmdolog():
+    logfilename = dofile_basename + '.dolog'
+    if os.path.isfile(logfilename):
+        os.remove(logfilename)
+
 def errwarn(msg, newline=True):
     """Function for reporting errors and warnings to screen and file."""
     if newline:
@@ -582,7 +587,7 @@ def syntax_check(filestr, format):
 
     begin_end_consistency_checks(filestr, doconce_envirs())
 
-    # Double quotes and not double single quotes in *plain text*:
+    # Check that !bt-!et directives surround math blocks
     inside_code = False
     inside_math = False
     for line in filestr.splitlines():
@@ -711,13 +716,23 @@ def syntax_check(filestr, format):
     filestr2 = re.sub(ref_pattern, '', filestr)
     filestr2 = re.sub(r'^#.+', '', filestr2, flags=re.MULTILINE) # remove comment
     bu_labels = re.findall(r' label=([^\s]+)', filestr)
-    labels = re.findall(r'label\{(.+?)\}', filestr2) + eq_labels + bu_labels
+    labels = re.findall(r'label\{(.+?)\}', filestr) + eq_labels + bu_labels
     refs = re.findall(r'ref\{(.+?)\}', filestr2)
     found_problem = False
+    non_defined = []
     for ref in refs:
         if ref not in labels:
             errwarn('*** error: reference ref{%s} to non-defined label' % ref)
+            non_defined.append(ref)
             found_problem = True
+    if found_problem:
+        # Make Unix helper script to extract these labels
+        with open('tmp_missing_labels.sh', 'w') as f:
+            f.write('rm -rf tmp_mako__* tmp_preprocess__*\n')
+            for ref in non_defined:
+                f.write('echo "\n\*********************** %s *************************"\ngrep --color --with-filename --line-number --context=1 "{%s}" *.do.txt\n' % (ref, ref))
+        errwarn('    run the generated script tmp_missing_labels.sh\n    to search for these missing labels!')
+
     if found_problem and not option('allow_refs_to_external_docs'):
         errwarn("""
 Causes of missing labels:
@@ -781,6 +796,32 @@ Causes of missing labels:
                 errwarn('    lengths: %d and %d, must be equal and odd' %
                         (len(w[0]), len(w[-1])))
                 _abort()
+            if len(w[0]) not in (3,5,7,9):
+                errwarn('\n*** error: wrong number of = in heading (%d):\n    %s' % len(w[0], line))
+                _abort()
+
+    # Check that rst headings come in right order
+    if format in ('sphinx', 'rst'):
+        len2sectype = {3: 'subsubsection', 5: 'subsection',
+                       7: 'section', 9: 'chapter'}
+
+        headlines = [] # levels in headlines (count new levels after each !split)
+        headlines.append([])
+        lines = filestr.splitlines()
+        for i, line in enumerate(lines):
+            if line.startswith('!split'):
+                headlines.append([])
+            elif line.startswith('==='):
+                m = re.search('(=+)', line)
+                if m:
+                    headlines[-1].append((len(m.group(1)), line))
+        for part in headlines:
+            for i in range(len(part)-1):
+                if part[i][0] - part[i+1][0] > 0 and \
+                   part[i][0] - part[i+1][0] != 2:
+                    errwarn('*** error: heading "%s" is %s and\n    comes after %s, but will be treated as %s in %s' % (part[i+1][1], len2sectype[part[i+1][0]], len2sectype[part[i][0]], len2sectype[part[i][0]-2], format))
+                if part[i+1][0] > part[0][0]:
+                    errwarn('*** error: heading "%s" is %s, but\n    this part of the document (after !split) has its first heading as\n    %s - the first heading must have the highest level' % (part[i+1][1], len2sectype[part[i+1][0]], len2sectype[part[0][0]]))
 
     # Check that ref{} and label{} have closing }
     pattern = r'(ref|label)\{([^}]+?)\}'
@@ -992,8 +1033,9 @@ Causes of missing labels:
             if link.startswith('mov') and os.path.isdir(os.path.dirname(link)):
                 pass  # automake_sphinx.py will move mov* dirs to static
             else:
-                errwarn('*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, link))
-                ok = False
+                if 'mailto' not in link:
+                    errwarn('*** warning: hyperlink to URL %s is to a local file,\n    recommended to be _static/%s for sphinx' % (link, link))
+                    ok = False
         if not ok:
             errwarn('    move linked file to _static and change URLs unless')
             errwarn('    you really know that the links will be correct when the')
@@ -1137,7 +1179,7 @@ def insert_code_from_file(filestr, format):
 
             # Check if the code environment is explicitly specified
             if 'envir=' in line:
-                m = re.search(r'envir=([a-zN0-9_]+)', line)
+                m = re.search(r'envir=([a-zN0-9_-]+)', line)
                 if m:
                     code_envir = m.group(1).strip()
                     line = line.replace('envir=%s' % code_envir, '').strip()
@@ -5015,13 +5057,13 @@ def format_driver():
                 found = True
                 break
         if not found:
-            errwarn('*** error: given doconce file "%s", but no' % basename)
-            errwarn('    files with extensions %s exist' % ' or '.join(legal_extensions))
+            print '*** error: given doconce file "%s", but no' % basename
+            print '    files with extensions %s exist' % ' or '.join(legal_extensions)
             _abort()
     else:
         # Given extension
         if not os.path.isfile(filename):
-            errwarn('*** error: file %s does not exist' % filename)
+            print '*** error: file %s does not exist' % filename
             _abort()
         if ext == '.txt':
             if filename.endswith('.do.txt'):
@@ -5031,11 +5073,13 @@ def format_driver():
         elif ext == '.do':
             basename = filename[:-3]
         else:
-            errwarn('*** error: illegal file extension %s' % ext)
-            errwarn('    must be %s' % ' or '.join(legal_extensions))
+            print '*** error: illegal file extension %s' % ext
+            print '    must be %s' % ' or '.join(legal_extensions)
             _abort()
 
     dofile_basename = basename  # global variable
+
+    _rmdolog()     # always start with clean log file with errors
 
     #errwarn('\n----- doconce format %s %s' % (format, filename))
     preprocessor_options = [arg for arg in sys.argv[1:]

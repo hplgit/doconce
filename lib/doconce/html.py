@@ -853,6 +853,11 @@ Causes of missing labels:
             if code_block_types[i].endswith('cod') or \
                code_block_types[i].endswith('pro'):
                 type_ = code_block_types[i][:-3]
+            elif code_block_types[i].endswith('cod-h') or \
+                 code_block_types[i].endswith('pro-h'):
+                type_ = code_block_types[i][:-5]
+            elif code_block_types[i].endswith('-h'):
+                type_ = code_block_types[i][:-2]
             else:
                 type_ = code_block_types[i]
             if type_ in envir2pygments:
@@ -868,6 +873,20 @@ Causes of missing labels:
 
             if code_block_types[i] == 'ccq':
                 result = '<blockquote>\n%s</blockquote>' % result
+
+            if code_block_types[i].endswith('-h'):
+                # Embed some jquery JavaScript for a show/hide button
+                result = """
+<script type="text/javascript">
+function show_hide_code%d(){
+  $("#code%d").toggle();
+}
+</script>
+<button type="button" onclick="show_hide_code%d()">Show/hide code</button>
+<div id="code%d" style="display:none">
+%s
+</div>
+""" % (i, i, i, i, result)
 
             result = '<!-- code=%s%s typeset with pygments style "%s" -->\n' % (language, '' if code_block_types[i] == '' else ' (!bc %s)' % code_block_types[i], pygm_style) + result
             # Fix ugly error boxes
@@ -2995,6 +3014,13 @@ Automatically generated HTML file from DocOnce source
 </footer>
 -->
 """
+    # Need for jquery library? !bc pypro-h (show/hide button for code)
+    m = re.search(r'^!bc +([a-z0-9]+)-h', filestr, flags=re.MULTILINE)
+    if m and 'ajax.googleapis.com/ajax/libs/jquery' not in OUTRO['html']:
+        OUTRO['html'] += """
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+"""
+
     from common import has_copyright
     copyright_, symbol = has_copyright(filestr)
     if copyright_:

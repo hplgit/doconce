@@ -241,7 +241,12 @@ def sphinx_code(filestr, code_blocks, code_block_types,
         if code_block_types[i].startswith('pyoptpro') and not option('runestone'):
             code_blocks[i] = online_python_tutor(code_blocks[i],
                                                  return_tp='iframe')
-        code_blocks[i] = indent_lines(code_blocks[i], format)
+        if code_block_types[i].endswith('-h'):
+            indentation = ' '*8
+        else:
+            indentation = ' '*4
+        code_blocks[i] = indent_lines(code_blocks[i], format,
+                                      indentation)
 
     # After transforming align environments to separate equations
     # the problem with math labels in multiple eqs has disappeared.
@@ -441,6 +446,11 @@ found in line:
                 filestr = re.sub(pattern, '', filestr,
                                  flags=re.MULTILINE|re.DOTALL)
         else:
+            show_hide = False
+            if key.endswith('-h'):
+                key_orig = key
+                key = key[:-2]
+                show_hide = True
             # Use the standard sphinx code-block directive
             if key in envir2pygments:
                 pygments_language = envir2pygments[key]
@@ -451,9 +461,15 @@ found in line:
                 errwarn('    which is not registered in sphinx.py (sphinx_code)')
                 errwarn('    or not a language registered in pygments')
                 _abort()
-            filestr = re.sub(r'^!bc +%s\s*\n' % key,
-                             '\n.. code-block:: %s\n\n' % \
-                             pygments_language, filestr, flags=re.MULTILINE)
+            if show_hide:
+                filestr = re.sub(r'^!bc +%s\s*\n' % key_orig,
+                                 '\n.. container:: toggle\n\n    .. container:: header\n\n        **Show/Hide Code**\n\n    .. code-block:: %s\n\n' % \
+                                 pygments_language, filestr, flags=re.MULTILINE)
+                # Must add 4 indent in corresponding code_blocks[i], done above
+            else:
+                filestr = re.sub(r'^!bc +%s\s*\n' % key,
+                                 '\n.. code-block:: %s\n\n' % \
+                                 pygments_language, filestr, flags=re.MULTILINE)
 
     # any !bc with/without argument becomes a text block:
     filestr = re.sub(r'^!bc.*$', '\n.. code-block:: text\n\n', filestr,

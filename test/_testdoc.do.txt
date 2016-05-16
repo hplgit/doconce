@@ -209,8 +209,9 @@ show()
 
 ## Should also test that one can read .pyopt and .pysc programs
 
-Then Cython:
-!bc cycod-t
+Then Cython (with -h option so it is hidden in html/sphinx):
+
+!bc cycod-h
 cpdef f(double x):
     return x + 1
 !ec

@@ -24,6 +24,7 @@ can go wrong.
 idx{how to debug DocOnce}
 idx{debugging DocOnce}
 
+First, do `doconce clean` to clean up all old files and recompile.
 Isolate the problem by a ``bisection'' method: split the file in two, compile
 both parts, continue with the part that gave the problem, and repeat
 the process. This will quickly narrow down the text so you ultimately understand
@@ -1440,6 +1441,14 @@ text in a column, the `ltablex` package is automatically added by DocOnce.
 If the table appears at the end of the environment (e.g., a theorem or
 example environment), add a sentence between the table and
 the end-of-environment command.
+
+===== Strange `begin{description}` error arising from math =====
+
+If you have an inline math formula that is split over two lines, and the
+formula continues with a minus sign on a line, this minus sign may
+be interpreted as a *description list* and typeset as a list, which is
+nonsense. The remedy is to move the minus sign at the beginning of the
+line to the end of the last line.
 
 ===== Inline figures should have more vertical space =====
 
