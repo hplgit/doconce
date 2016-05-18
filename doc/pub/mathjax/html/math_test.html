@@ -1,0 +1,405 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How various formats can deal with LaTeX math</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+
+        <script src="http://sagecell.sagemath.org/static/jquery.min.js"></script>
+        <script src="http://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+
+        <script>sagecell.makeSagecell({inputLocation: ".sage"});</script>
+
+        <style type="text/css">
+                .sagecell .CodeMirror-scroll {
+                        overflow-y: hidden;
+                        overflow-x: auto;
+                }
+                .sagecell .CodeMirror {
+                        height: auto;
+                }
+        </style>
+
+    
+    <link rel="top" title="How various formats can deal with LaTeX math" href="index.html" />
+    <link rel="prev" title="How various formats can deal with LaTeX math" href="index.html" />
+ 
+  
+       <style type="text/css">
+         div.admonition {
+           background-color: whiteSmoke;
+           border: 1px solid #bababa;
+         }
+       </style>
+      </head>
+    
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="How various formats can deal with LaTeX math"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">How various formats can deal with LaTeX math</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-various-formats-can-deal-with-latex-math">
+<h1>How various formats can deal with LaTeX math<a class="headerlink" href="#how-various-formats-can-deal-with-latex-math" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Hans Petter Langtangen</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">May 18, 2016</td>
+</tr>
+</tbody>
+</table>
+<p>This document is translated to the format <strong>sphinx</strong>. The purpose is to
+test LaTeX math in DocOnce with various output formats.</p>
+<p><strong>Test 1: Inline math.</strong>
+We can get an inline equation
+<code class="docutils literal"><span class="pre">$u(t)=e^{-at}$</span></code> rendered as <span class="math">\(u(t)=e^{-at}\)</span>.</p>
+<p><strong>Test 2: A single equation with label.</strong>
+An equation with number,</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span> u(t)=e<span class="nb">^{</span>-at<span class="nb">}</span> label<span class="nb">{</span>eq1a<span class="nb">}</span><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>looks like</p>
+<div class="math" id="equation-eq1a u(t)=e^{-at}">
+<span class="eqno">(1)</span>\[\]</div>
+<p>Maybe this multi-line version is what we actually prefer to write:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+u(t)=e<span class="nb">^{</span>-at<span class="nb">}</span>
+label<span class="nb">{</span>eq1b<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>The result is the same:</p>
+<div class="math" id="equation-eq1b">
+<span class="eqno">(2)</span>\[     u(t)=e^{-at}\]</div>
+<p>We can refer to this equation through its label <code class="docutils literal"><span class="pre">eq1b</span></code>: <a href="#equation-eq1b">(2)</a>.</p>
+<p><strong>Test 3: Multiple, aligned equations without label and number.</strong>
+MathJax has
+historically had some problems with rendering many LaTeX math environments,
+but the <code class="docutils literal"><span class="pre">align*</span></code> and <code class="docutils literal"><span class="pre">align</span></code> environments have always worked.</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>align*<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>align*<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="math">
+\[\begin{split}u(t)&amp;=e^{-at}\\
+v(t) - 1 &amp;= \frac{du}{dt}\end{split}\]</div>
+<p><strong>Test 4: Multiple, aligned equations with label.</strong>
+Here, we
+use <code class="docutils literal"><span class="pre">align</span></code> with user-prescribed labels:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
+label<span class="nb">{</span>eq2b<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+label<span class="nb">{</span>eq3b<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="math" id="equation-eq2b">
+<span class="eqno">(3)</span>\[     u(t)=e^{-at}\]</div>
+<div class="math" id="equation-eq3b">
+<span class="eqno">(4)</span>\[     v(t) - 1 = \frac{du}{dt}\]</div>
+<p>We can refer to the last equations as the system <a href="#equation-eq2b">(3)</a>-<a href="#equation-eq3b">(4)</a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Actually, <em>Sphinx does not support the align environment with labels</em>,
+such as we write above,
+but DocOnce splits in this case the equations into separate, single equations
+with labels. Hence the user can write one code with align and labels
+and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
+in the present case is</p>
+<div class="last highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+   <span class="nc">:label:</span> <span class="nf">eq2b</span>
+
+        u(t)=e^{-at}
+
+
+<span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+   <span class="nc">:label:</span> <span class="nf">eq3b</span>
+
+        v(t) - 1 = \frac{du}{dt}
+</pre></div>
+</div>
+</div>
+<p><strong>Test 5: Multiple, aligned equations without label.</strong>
+In LaTeX,
+equations within an <code class="docutils literal"><span class="pre">align</span></code> environment is automatically given numbers.
+To ensure that an HTML document with MathJax gets the same equation numbers
+as its LaTeX companion, DocOnce generates labels in equations where
+there is no label prescribed. For example,</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
+<span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>is edited to something like</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
+label<span class="nb">{_</span>auto5<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+label<span class="nb">{_</span>auto6<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>and the HTML output gets the two equation numbered.</p>
+<div class="math" id="equation-_auto1">
+<span class="eqno">(5)</span>\[     u(t)=e^{-at}\]</div>
+<div class="math" id="equation-_auto2">
+<span class="eqno">(6)</span>\[     v(t) - 1 = \frac{du}{dt}\]</div>
+<p><strong>Test 6: Multiple, aligned equations with multiple alignments.</strong>
+The <code class="docutils literal"><span class="pre">align</span></code> environment can be used with two <code class="docutils literal"><span class="pre">&amp;</span></code> alignment characters, e.g.,</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
+<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
+u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>The result becomes</p>
+<div class="math" id="equation-_auto3">
+<span class="eqno">(7)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+     \ t\in (0,T]\]</div>
+<div class="math" id="equation-_auto4">
+<span class="eqno">(8)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
+<p>A better solution is usually to use an <code class="docutils literal"><span class="pre">alignat</span></code> environment:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>alignat<span class="nb">}{</span>2<span class="nb">}</span>
+<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
+<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
+u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
+<span class="k">\end</span><span class="nb">{</span>alignat<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>with the rendered result</p>
+<div class="math" id="equation-_auto5">
+<span class="eqno">(9)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+     \ t\in (0,T]\]</div>
+<div class="math" id="equation-_auto6">
+<span class="eqno">(10)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
+<div class="admonition-align-alignat-environments-with-equation-numbers-are-anti-aligned admonition">
+<p class="first admonition-title">align/alignat environments with equation numbers are anti-aligned</p>
+<p class="last">In the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and <code class="docutils literal"><span class="pre">pandoc</span></code> output formats, DocOnce rewrites
+the equations in an <code class="docutils literal"><span class="pre">alignat</span></code> environment as individual equations in
+<code class="docutils literal"><span class="pre">equation</span></code> environments (or more precisely, <code class="docutils literal"><span class="pre">sphinx</span></code> can work with
+<code class="docutils literal"><span class="pre">alignat*</span></code> so only numbered <code class="docutils literal"><span class="pre">alignat</span></code> equations get rewritten as individual
+equations). If the alignment is somewhat important, try the best with a
+manual rewrite in terms of separate <code class="docutils literal"><span class="pre">equation</span></code> environments, and stick to
+<code class="docutils literal"><span class="pre">align*</span></code> and <code class="docutils literal"><span class="pre">alignat*</span></code> in <code class="docutils literal"><span class="pre">sphinx</span></code>.</p>
+</div>
+<p><strong>Test 7: Multiple, aligned eqnarray equations without label.</strong>
+Let us
+try the old <code class="docutils literal"><span class="pre">eqnarray*</span></code> environment.</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>and results in</p>
+<div class="math">
+\[\begin{split}u(t) &amp;=  e^{-at}\\
+v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\]</div>
+<p><strong>Test 8: Multiple, eqnarrayed equations with label.</strong>
+Here use <code class="docutils literal"><span class="pre">eqnarray</span></code> with labels:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span>
+label<span class="nb">{</span>eq2c<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+label<span class="nb">{</span>eq3c<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>and results in</p>
+<div class="math">
+\[\begin{split}u(t) &amp;=  e^{-at} \\
+v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\]</div>
+<p>Can we refer to the last equations as the system <a href="#equation-eq2c">(?)</a>-<a href="#equation-eq3c">(?)</a>
+in the sphinx format?
+No, unfortunately not.
+Note: DocOnce takes the eqnarray with labels and replaces it automatically
+by the Sphinx code</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
+
+        u(t) &amp;=  e^{-at} \\
+        v(t)  &amp;=  \frac{du}{dt}
+</pre></div>
+</div>
+<p>That is why the equation numbers are gone and that eqnarray seemingly
+works. MathJax does not support eqnarray with labels so Sphinx would
+probably fail to show them (unless one tries PNG images or other
+math engines?). The rule of thumb is to avoid equarray.</p>
+<p><strong>Test 9: The ``multiline`` environment with label and number.</strong>
+The LaTeX code</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>multline<span class="nb">}</span>
+<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
+f(a+(j+1)h)) <span class="k">\\</span>
+=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
+label<span class="nb">{</span>multiline:eq1<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>multline<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>gets rendered as</p>
+<div class="math" id="equation-multiline:eq1">
+<span class="eqno">(11)</span>\[\begin{split}     \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+     f(a+(j+1)h)) \\
+     =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)\end{split}\]</div>
+<p>and we can hopefully refer to the Trapezoidal rule
+as the formula <a href="#equation-multiline:eq1">(11)</a>.</p>
+<p><strong>Test 10: Splitting equations using ``split``.</strong>
+Although <code class="docutils literal"><span class="pre">align</span></code> can be used to split too long equations, a more obvious
+command is <code class="docutils literal"><span class="pre">split</span></code>:</p>
+<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
+<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>split<span class="nb">}</span>
+<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
+f(a+(j+1)h)) <span class="k">\\</span>
+=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
+<span class="k">\end</span><span class="nb">{</span>split<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+!et
+</pre></div>
+</div>
+<p>The result becomes</p>
+<div class="math" id="equation-_auto7">
+<span class="eqno">(12)</span>\[\begin{split}     \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+     f(a+(j+1)h)) \\
+     =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)\end{split}\]</div>
+<p><strong>Test 11: Newcommands and boldface bm vs pmb.</strong>
+We have</p>
+<div class="math">
+\[{\color{blue}\frac{\partial\pmb{u}}{\partial t}} +
+\nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
+\frac{1}{\varrho}\nabla p,\]</div>
+<p>and <span class="math">\(\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}\)</span>
+with plain old pmb. Here are the same formulas using <code class="docutils literal"><span class="pre">\bm</span></code>:</p>
+<div class="math">
+\[{\color{blue}\frac{\partial\boldsymbol{u}}{\partial t}} +
+\nabla\cdot\nabla\boldsymbol{u} = \nu\nabla^2\boldsymbol{u} -
+\frac{1}{\varrho}\nabla p,\]</div>
+<p>and <span class="math">\(\nabla\boldsymbol{u} (\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
+<p>Note: for the sphinx format, <code class="docutils literal"><span class="pre">\bm</span></code> was substituted by DocOnce
+to <code class="docutils literal"><span class="pre">\boldsymbol</span></code>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <center>
+            <p class="logo"><a href="http://cbc.simula.no/" title="Go to Center for Biomedical Computing">
+              <img class="logo" src="_static/cbc_logo.png" alt="Logo"/>
+            </a></p>
+            </center>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">How various formats can deal with LaTeX math</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/math_test.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="How various formats can deal with LaTeX math"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">How various formats can deal with LaTeX math</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="wrapper">
+  <div class="footer">
+    <a href="http://cbc.simula.no"><img src="_static/cbc_banner.png" width="100%"><a>
+    <br />
+    <br />
+      &copy;2016, Hans Petter Langtangen.
+  </div>
+</div>
+
+  </body>
+</html>

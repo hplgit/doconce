@@ -1,0 +1,391 @@
+.. Automatically generated Sphinx-extended reStructuredText file from DocOnce source
+   (https://github.com/hplgit/doconce/)
+
+.. Document title:
+
+How various formats can deal with LaTeX math
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:Authors: Hans Petter Langtangen
+:Date: May 18, 2016
+
+This document is translated to the format **sphinx**. The purpose is to
+test LaTeX math in DocOnce with various output formats.
+
+**Test 1: Inline math.**
+We can get an inline equation
+``$u(t)=e^{-at}$`` rendered as :math:`u(t)=e^{-at}`.
+
+**Test 2: A single equation with label.**
+An equation with number,
+
+.. code-block:: latex
+
+    !bt
+    \begin{equation} u(t)=e^{-at} label{eq1a}\end{equation}
+    !et
+
+looks like
+
+.. math::
+   :label: eq1a
+         u(t)=e^{-at} 
+
+Maybe this multi-line version is what we actually prefer to write:
+
+.. code-block:: latex
+
+    !bt
+    \begin{equation}
+    u(t)=e^{-at}
+    label{eq1b}
+    \end{equation}
+    !et
+
+The result is the same:
+
+.. math::
+   :label: eq1b
+        
+        u(t)=e^{-at} 
+        
+
+We can refer to this equation through its label ``eq1b``: :eq:`eq1b`.
+
+**Test 3: Multiple, aligned equations without label and number.**
+MathJax has
+historically had some problems with rendering many LaTeX math environments,
+but the ``align*`` and ``align`` environments have always worked.
+
+.. code-block:: latex
+
+    !bt
+    \begin{align*}
+    u(t)&=e^{-at}\\ 
+    v(t) - 1 &= \frac{du}{dt}
+    \end{align*}
+    !et
+
+Result:
+
+.. math::
+        
+        u(t)&=e^{-at}\\ 
+        v(t) - 1 &= \frac{du}{dt}
+        
+
+**Test 4: Multiple, aligned equations with label.**
+Here, we
+use ``align`` with user-prescribed labels:
+
+.. code-block:: latex
+
+    !bt
+    \begin{align}
+    u(t)&=e^{-at}
+    label{eq2b}\\ 
+    v(t) - 1 &= \frac{du}{dt}
+    label{eq3b}
+    \end{align}
+    !et
+
+Result:
+
+.. math::
+   :label: eq2b
+        
+        u(t)=e^{-at}
+        
+        
+
+.. math::
+   :label: eq3b
+          
+        v(t) - 1 = \frac{du}{dt}
+        
+        
+
+We can refer to the last equations as the system :eq:`eq2b`-:eq:`eq3b`.
+
+
+.. warning::
+    Actually, *Sphinx does not support the align environment with labels*,
+    such as we write above,
+    but DocOnce splits in this case the equations into separate, single equations
+    with labels. Hence the user can write one code with align and labels
+    and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
+    in the present case is
+    
+    .. code-block:: rst
+    
+        .. math::
+           :label: eq2b
+        
+                u(t)=e^{-at}
+        
+        
+        .. math::
+           :label: eq3b
+        
+                v(t) - 1 = \frac{du}{dt}
+
+
+
+
+**Test 5: Multiple, aligned equations without label.**
+In LaTeX,
+equations within an ``align`` environment is automatically given numbers.
+To ensure that an HTML document with MathJax gets the same equation numbers
+as its LaTeX companion, DocOnce generates labels in equations where
+there is no label prescribed. For example,
+
+.. code-block:: latex
+
+    !bt
+    \begin{align}
+    u(t)&=e^{-at}
+    \\ 
+    v(t) - 1 &= \frac{du}{dt}
+    \end{align}
+    !et
+
+is edited to something like
+
+.. code-block:: latex
+
+    !bt
+    \begin{align}
+    u(t)&=e^{-at}
+    label{_auto5}\\ 
+    v(t) - 1 &= \frac{du}{dt}
+    label{_auto6}
+    \end{align}
+    !et
+
+and the HTML output gets the two equation numbered.
+
+.. math::
+   :label: _auto1
+        
+        u(t)=e^{-at}
+        
+        
+
+.. math::
+   :label: _auto2
+          
+        v(t) - 1 = \frac{du}{dt}
+        
+        
+
+**Test 6: Multiple, aligned equations with multiple alignments.**
+The ``align`` environment can be used with two ``&`` alignment characters, e.g.,
+
+.. code-block:: latex
+
+    !bt
+    \begin{align}
+    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+    \ t\in (0,T]\\ 
+    u(0,t) &= u_0(x), & x\in [0,L]
+    \end{align}
+    !et
+
+The result becomes
+
+.. math::
+   :label: _auto3
+        
+        \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+        \ t\in (0,T]
+        
+        
+
+.. math::
+   :label: _auto4
+          
+        u(0,t) = u_0(x),  x\in [0,L]
+        
+        
+
+A better solution is usually to use an ``alignat`` environment:
+
+.. code-block:: latex
+
+    !bt
+    \begin{alignat}{2}
+    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+    \ t\in (0,T]\\ 
+    u(0,t) &= u_0(x), & x\in [0,L]
+    \end{alignat}
+    !et
+
+with the rendered result
+
+.. math::
+   :label: _auto5
+        
+        \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+        \ t\in (0,T]
+        
+        
+
+.. math::
+   :label: _auto6
+          
+        u(0,t) = u_0(x),  x\in [0,L]
+        
+        
+
+
+.. admonition:: align/alignat environments with equation numbers are anti-aligned
+
+   In the ``sphinx``, ``ipynb``, and ``pandoc`` output formats, DocOnce rewrites
+   the equations in an ``alignat`` environment as individual equations in
+   ``equation`` environments (or more precisely, ``sphinx`` can work with
+   ``alignat*`` so only numbered ``alignat`` equations get rewritten as individual
+   equations). If the alignment is somewhat important, try the best with a
+   manual rewrite in terms of separate ``equation`` environments, and stick to
+   ``align*`` and ``alignat*`` in ``sphinx``.
+
+
+
+
+**Test 7: Multiple, aligned eqnarray equations without label.**
+Let us
+try the old ``eqnarray*`` environment.
+
+.. code-block:: latex
+
+    !bt
+    \begin{eqnarray*}
+    u(t)&=& e^{-at}\\ 
+    v(t) - 1 &=& \frac{du}{dt}
+    \end{eqnarray*}
+    !et
+
+and results in
+
+.. math::
+        
+        u(t) &=  e^{-at}\\ 
+        v(t) - 1  &=  \frac{du}{dt}
+        
+
+**Test 8: Multiple, eqnarrayed equations with label.**
+Here use ``eqnarray`` with labels:
+
+.. code-block:: latex
+
+    !bt
+    \begin{eqnarray}
+    u(t)&=& e^{-at}
+    label{eq2c}\\ 
+    v(t) - 1 &=& \frac{du}{dt}
+    label{eq3c}
+    \end{eqnarray}
+    !et
+
+and results in
+
+.. math::
+        
+        u(t) &=  e^{-at} \\ 
+        v(t) - 1  &=  \frac{du}{dt} 
+        
+
+Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`
+in the sphinx format?
+No, unfortunately not.
+Note: DocOnce takes the eqnarray with labels and replaces it automatically
+by the Sphinx code
+
+.. code-block:: rst
+
+    .. math::
+    
+            u(t) &=  e^{-at} \\ 
+            v(t)  &=  \frac{du}{dt}
+
+That is why the equation numbers are gone and that eqnarray seemingly
+works. MathJax does not support eqnarray with labels so Sphinx would
+probably fail to show them (unless one tries PNG images or other
+math engines?). The rule of thumb is to avoid equarray.
+
+**Test 9: The ``multiline`` environment with label and number.**
+The LaTeX code
+
+.. code-block:: latex
+
+    !bt
+    \begin{multline}
+    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+    f(a+(j+1)h)) \\ 
+    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+    label{multiline:eq1}
+    \end{multline}
+    !et
+
+gets rendered as
+
+.. math::
+   :label: multiline:eq1
+        
+        \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+        f(a+(j+1)h)) \\ 
+        =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+        
+        
+
+and we can hopefully refer to the Trapezoidal rule
+as the formula :eq:`multiline:eq1`.
+
+**Test 10: Splitting equations using ``split``.**
+Although ``align`` can be used to split too long equations, a more obvious
+command is ``split``:
+
+.. code-block:: latex
+
+    !bt
+    \begin{equation}
+    \begin{split}
+    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+    f(a+(j+1)h)) \\ 
+    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+    \end{split}
+    \end{equation}
+    !et
+
+The result becomes
+
+.. math::
+   :label: _auto7
+        
+        
+        \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+        f(a+(j+1)h)) \\ 
+        =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+        
+        
+        
+
+**Test 11: Newcommands and boldface bm vs pmb.**
+We have
+
+.. math::
+         {\color{blue}\frac{\partial\pmb{u}}{\partial t}} +
+        \nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
+        \frac{1}{\varrho}\nabla p,
+
+and :math:`\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}`
+with plain old pmb. Here are the same formulas using ``\bm``:
+
+.. math::
+         {\color{blue}\frac{\partial\boldsymbol{u}}{\partial t}} +
+        \nabla\cdot\nabla\boldsymbol{u} = \nu\nabla^2\boldsymbol{u} -
+        \frac{1}{\varrho}\nabla p,
+
+and :math:`\nabla\boldsymbol{u} (\boldsymbol{x})\cdot\boldsymbol{n}`.
+
+Note: for the sphinx format, ``\bm`` was substituted by DocOnce
+to ``\boldsymbol``.

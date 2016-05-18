@@ -1,0 +1,355 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: How various formats can deal with LaTeX math</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Hans Petter Langtangen at Simula Research Laboratory &amp; University of Oslo
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+
+
+This document is translated to the format _${FORMAT}_. The purpose is to
+test LaTeX math in DocOnce with various output formats.
+
+<span style="color: #800080; font-weight: bold">__Test 1: Inline math.__</span> We can get an inline equation
+<span style="color: #CD5555">`$u(t)=e^{-at}$`</span> rendered as $u(t)=e^{-at}$.
+
+<span style="color: #800080; font-weight: bold">__Test 2: A single equation with label.__</span> An equation with number,
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{equation}</span> u(t)=e^{-at} label{eq1a}\end{equation}
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+looks like
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span> u(t)=e^{-at} label{eq1a}\end{equation}
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Maybe this multi-line version is what we actually prefer to write:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{equation}</span>
+u(t)=e^{-at}
+<span style="color: #658b00">label{eq1b}</span>
+<span style="color: #658b00">\end{equation}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+The result is the same:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+u(t)=e^{-at} label{eq1b}
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+We can refer to this equation through its label `eq1b`: (ref{eq1b}).
+
+
+<span style="color: #800080; font-weight: bold">__Test 3: Multiple, aligned equations without label and number.__</span> MathJax has
+historically had some problems with rendering many LaTeX math environments,
+but the `align*` and `align` environments have always worked.
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{align*}</span>
+u(t)&amp;=e^{-at}\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">\end{align*}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Result:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align*}</span>
+u(t)&amp;=e^{-at}\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">\end{align*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #800080; font-weight: bold">__Test 4: Multiple, aligned equations with label.__</span> Here, we
+use `align` with user-prescribed labels:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{align}</span>
+u(t)&amp;=e^{-at}
+<span style="color: #658b00">label{eq2b}</span>\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">label{eq3b}</span>
+<span style="color: #658b00">\end{align}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+Result:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+u(t)&amp;=e^{-at}
+<span style="color: #658b00">label{eq2b}</span>\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">label{eq3b}</span>
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+We can refer to the last equations as the system (ref{eq2b})-(ref{eq3b}).
+
+<span style="color: #228B22"># #if FORMAT == &quot;sphinx&quot;</span>
+<span style="color: #8B008B; font-weight: bold">!bwarning</span> Warning: align/alignat environments with labels are anti-aligned!
+Actually, *Sphinx does not support the align environment with labels*,
+such as we write above,
+but DocOnce splits in this case the equations into separate, single equations
+with labels. Hence the user can write one code with align and labels
+and have to work in LaTeX, HTML, and Sphinx. The generated Sphinx code
+in the present case is
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> rst
+.. math::
+   :label: eq2b
+
+        u(t)=e^{-at}
+
+
+.. math::
+   :label: eq3b
+
+        v(t) - 1 = \frac{du}{dt}
+
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+<span style="color: #8B008B; font-weight: bold">!ewarning</span>
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #228B22"># #if FORMAT == &quot;pandoc&quot;</span>
+<span style="color: #8B008B; font-weight: bold">!bwarning</span> Fixes are needed for DocOnce to Pandoc to HTML
+Original Pandoc-extended Markdown transformed to HTML via Pandoc
+does not work with labels and multiple equations. `doconce md2html`
+fixes the trouble by adding full support for MathJax and avoiding
+that eqref references become empty.
+
+One can write with align and labels in the DocOnce document and get excellent
+output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without
+<span style="color: #CD5555">`doconce md2html`</span> one must accept that labeles have very limited support
+compared to more advanced MathJax.
+<span style="color: #8B008B; font-weight: bold">!ewarning</span>
+<span style="color: #228B22"># #endif</span>
+
+
+<span style="color: #800080; font-weight: bold">__Test 5: Multiple, aligned equations without label.__</span> In LaTeX,
+equations within an `align` environment is automatically given numbers.
+To ensure that an HTML document with MathJax gets the same equation numbers
+as its LaTeX companion, DocOnce generates labels in equations where
+there is no label prescribed. For example,
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{align}</span>
+u(t)&amp;=e^{-at}
+\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">\end{align}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+is edited to something like
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{align}</span>
+u(t)&amp;=e^{-at}
+<span style="color: #658b00">label{_auto5}</span>\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">label{_auto6}</span>
+<span style="color: #658b00">\end{align}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+and the HTML output gets the two equation numbered.
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+u(t)&amp;=e^{-at}\\
+v(t) - 1 &amp;= \frac{du}{dt}
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #800080; font-weight: bold">__Test 6: Multiple, aligned equations with multiple alignments.__</span>
+The `align` environment can be used with two `&amp;` alignment characters, e.g.,
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{align}</span>
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+<span style="color: #658b00">\end{align}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+The result becomes
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{align}</span>
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+<span style="color: #658b00">\end{align}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+A better solution is usually to use an `alignat` environment:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{alignat}</span>{2}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+<span style="color: #658b00">\end{alignat}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+with the rendered result
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{alignat}</span>{2}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+<span style="color: #658b00">\end{alignat}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+<span style="color: #228B22"># #if FORMAT in (&quot;sphinx&quot;, &quot;ipynb&quot;, &quot;pandoc&quot;)</span>
+<span style="color: #8B008B; font-weight: bold">!bwarning</span> align/alignat environments with equation numbers are anti-aligned!
+In the `sphinx`, `ipynb`, and `pandoc` output formats, DocOnce rewrites
+the equations in an `alignat` environment as individual equations in
+<span style="color: #CD5555">`equation`</span> environments (or more precisely, `sphinx` can work with
+<span style="color: #CD5555">`alignat*`</span> so only numbered `alignat` equations get rewritten as individual
+equations). If the alignment is somewhat important, try the best with a
+manual rewrite in terms of separate `equation` environments, and stick to
+<span style="color: #CD5555">`align*`</span> and `alignat*` in `sphinx`.
+<span style="color: #8B008B; font-weight: bold">!ewarning</span>
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #800080; font-weight: bold">__Test 7: Multiple, aligned eqnarray equations without label.__</span> Let us
+try the old `eqnarray*` environment.
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{eqnarray*}</span>
+u(t)&amp;=&amp; e^{-at}\\
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+<span style="color: #658b00">\end{eqnarray*}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+and results in
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{eqnarray*}</span>
+u(t)&amp;=&amp; e^{-at}\\
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+<span style="color: #658b00">\end{eqnarray*}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #800080; font-weight: bold">__Test 8: Multiple, eqnarrayed equations with label.__</span>
+Here use `eqnarray` with labels:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{eqnarray}</span>
+u(t)&amp;=&amp; e^{-at}
+<span style="color: #658b00">label{eq2c}</span>\\
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+<span style="color: #658b00">label{eq3c}</span>
+<span style="color: #658b00">\end{eqnarray}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+and results in
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{eqnarray}</span>
+u(t)&amp;=&amp; e^{-at} label{eq2c}\\
+v(t) - 1 &amp;=&amp; \frac{du}{dt} label{eq3c}
+<span style="color: #658b00">\end{eqnarray}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})
+in the ${FORMAT} format?
+<span style="color: #228B22"># #if FORMAT == &quot;sphinx&quot;</span>
+No, unfortunately not.
+Note: DocOnce takes the eqnarray with labels and replaces it automatically
+by the Sphinx code
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> rst
+.. math::
+
+        u(t) &amp;=  e^{-at} \\
+        v(t)  &amp;=  \frac{du}{dt}
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+That is why the equation numbers are gone and that eqnarray seemingly
+works. MathJax does not support eqnarray with labels so Sphinx would
+probably fail to show them (unless one tries PNG images or other
+math engines?). The rule of thumb is to avoid equarray.
+<span style="color: #228B22"># #endif</span>
+
+<span style="color: #800080; font-weight: bold">__Test 9: The `multiline` environment with label and number.__</span>
+The LaTeX code
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{multline}</span>
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+<span style="color: #658b00">label{multiline:eq1}</span>
+<span style="color: #658b00">\end{multline}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+gets rendered as
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{multline}</span>
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+<span style="color: #658b00">label{multiline:eq1}</span>
+<span style="color: #658b00">\end{multline}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+and we can hopefully refer to the Trapezoidal rule
+as the formula (ref{multiline:eq1}).
+
+<span style="color: #800080; font-weight: bold">__Test 10: Splitting equations using `split`.__</span>
+Although `align` can be used to split too long equations, a more obvious
+command is `split`:
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> latexcod
+|bt
+<span style="color: #658b00">\begin{equation}</span>
+<span style="color: #658b00">\begin{split}</span>
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+<span style="color: #658b00">\end{split}</span>
+<span style="color: #658b00">\end{equation}</span>
+|et
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+The result becomes
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+<span style="color: #658b00">\begin{equation}</span>
+<span style="color: #658b00">\begin{split}</span>
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+<span style="color: #658b00">\end{split}</span>
+<span style="color: #658b00">\end{equation}</span>
+<span style="color: #8B008B; font-weight: bold">!et</span>
+
+<span style="color: #800080; font-weight: bold">__Test 11: Newcommands and boldface bm vs pmb.__</span>
+We have
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ {\color{blue}\frac{\partial\u}{\partial t}} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,\]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+and $\nabla\u (\x)\cdot\normalvec$
+with plain old pmb. Here are the same formulas using `\bm`:
+
+<span style="color: #8B008B; font-weight: bold">!bt</span>
+\[ {\color{blue}\frac{\partial\ubm}{\partial t}} +
+\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p,\]
+<span style="color: #8B008B; font-weight: bold">!et</span>
+and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
+
+<span style="color: #228B22"># #if FORMAT in (&quot;html&quot;, &quot;sphinx&quot;, &quot;pandoc&quot;, &quot;ipynb&quot;)</span>
+Note: for the ${FORMAT} format, `\bm` was substituted by DocOnce
+to `\boldsymbol`.
+<span style="color: #228B22"># #endif</span>
+</pre></div>

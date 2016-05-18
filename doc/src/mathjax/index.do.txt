@@ -1,0 +1,13 @@
+TITLE: Demo of MathJax support
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo
+DATE: today
+
+Demonstrate how well various LaTeX equation environments work with
+MathJax in HTML and Sphinx.
+
+ * "DocOnce source": "math_test.do.txt.html"
+ * "LaTeX/PDF": "math_test.pdf"
+ * "HTML": "math_test_html.html"
+ * "Sphinx": "html/index.html"
+ * "HTML generated via Pandoc and Markdown": "math_test_pandoc.html"
+ * "Jupyter Notebook": "math_test.ipynb"

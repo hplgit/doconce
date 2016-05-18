@@ -1,0 +1,449 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="How various formats can deal with LaTeX math">
+
+<title>How various formats can deal with LaTeX math</title>
+
+
+<style type="text/css">
+/* blueish style */
+
+/* Color definitions:  http://www.december.com/html/spec/color0.html
+   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+
+body {
+  margin-top: 1.0em;
+  background-color: #ffffff;
+  font-family: Helvetica, Arial, FreeSans, san-serif;
+  color: #000000;
+}
+h1 { font-size: 1.8em; color: #1e36ce; }
+h2 { font-size: 1.6em; color: #1e36ce; }
+h3 { font-size: 1.4em; color: #1e36ce; }
+a { color: #1e36ce; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 4, 'sections': []}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- newcommands.tex -->
+$$
+\renewcommand{\u}{\pmb{u}}
+\newcommand{\xbm}{\boldsymbol{x}}
+\newcommand{\normalvecbm}{\boldsymbol{n}}
+\newcommand{\ubm}{\boldsymbol{u}}
+\newcommand{\x}{\pmb{x}}
+\newcommand{\normalvec}{\pmb{n}}
+$$
+
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1>How various formats can deal with LaTeX math</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+<p>
+<!-- institution(s) -->
+
+<center>[1] <b>Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo</b></center>
+<br>
+<p>
+<center><h4>May 18, 2016</h4></center> <!-- date -->
+<br>
+<p>
+This document is translated to the format <b>html</b>. The purpose is to
+test LaTeX math in DocOnce with various output formats.
+
+<p>
+<b>Test 1: Inline math.</b>
+We can get an inline equation
+<code>$u(t)=e^{-at}$</code> rendered as \( u(t)=e^{-at} \).
+
+<p>
+<b>Test 2: A single equation with label.</b>
+An equation with number,
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>equation<span style="color: #008000">}</span> u(t)=e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span> label<span style="color: #008000">{</span>eq1a<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>equation<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+looks like
+
+$$
+\begin{equation} u(t)=e^{-at} \label{eq1a}\end{equation}
+$$
+
+Maybe this multi-line version is what we actually prefer to write:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>equation<span style="color: #008000">}</span>
+u(t)=e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span>
+label<span style="color: #008000">{</span>eq1b<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>equation<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+The result is the same:
+
+$$
+\begin{equation}
+u(t)=e^{-at} \label{eq1b}
+\end{equation}
+$$
+
+We can refer to this equation through its label <code>eq1b</code>: \eqref{eq1b}.
+
+<p>
+<b>Test 3: Multiple, aligned equations without label and number.</b>
+MathJax has
+historically had some problems with rendering many LaTeX math environments,
+but the <code>align*</code> and <code>align</code> environments have always worked.
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align*<span style="color: #008000">}</span>
+u(t)<span style="color: #008000">&amp;</span>=e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\\</span> 
+v(t) - 1 <span style="color: #008000">&amp;</span>= <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>du<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align*<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+Result:
+
+$$
+\begin{align*}
+u(t)&=e^{-at}\\ 
+v(t) - 1 &= \frac{du}{dt}
+\end{align*}
+$$
+
+<p>
+<b>Test 4: Multiple, aligned equations with label.</b>
+Here, we
+use <code>align</code> with user-prescribed labels:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+u(t)<span style="color: #008000">&amp;</span>=e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span>
+label<span style="color: #008000">{</span>eq2b<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\\</span> 
+v(t) - 1 <span style="color: #008000">&amp;</span>= <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>du<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span>
+label<span style="color: #008000">{</span>eq3b<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+Result:
+
+$$
+\begin{align}
+u(t)&=e^{-at}
+\label{eq2b}\\ 
+v(t) - 1 &= \frac{du}{dt}
+\label{eq3b}
+\end{align}
+$$
+
+We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.
+
+<p>
+<b>Test 5: Multiple, aligned equations without label.</b>
+In LaTeX,
+equations within an <code>align</code> environment is automatically given numbers.
+To ensure that an HTML document with MathJax gets the same equation numbers
+as its LaTeX companion, DocOnce generates labels in equations where
+there is no label prescribed. For example,
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+u(t)<span style="color: #008000">&amp;</span>=e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\\</span> 
+v(t) - 1 <span style="color: #008000">&amp;</span>= <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>du<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+is edited to something like
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+u(t)<span style="color: #008000">&amp;</span>=e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span>
+label<span style="color: #008000">{_</span>auto5<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\\</span> 
+v(t) - 1 <span style="color: #008000">&amp;</span>= <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>du<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span>
+label<span style="color: #008000">{_</span>auto6<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+and the HTML output gets the two equation numbered.
+
+$$
+\begin{align}
+u(t)&=e^{-at}
+\label{_auto1}\\ 
+v(t) - 1 &= \frac{du}{dt}
+\label{_auto2}
+\end{align}
+$$
+
+<p>
+<b>Test 6: Multiple, aligned equations with multiple alignments.</b>
+The <code>align</code> environment can be used with two <code>&</code> alignment characters, e.g.,
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\partial</span> u<span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\partial</span> t<span style="color: #008000">}</span> <span style="color: #008000">&amp;</span>= <span style="color: #008000; font-weight: bold">\nabla</span><span style="color: #008000">^</span>2 u, <span style="color: #008000">&amp;</span> x<span style="color: #008000; font-weight: bold">\in</span> (0,L),
+<span style="color: #008000; font-weight: bold">\ </span>t<span style="color: #008000; font-weight: bold">\in</span> (0,T]<span style="color: #008000; font-weight: bold">\\</span> 
+u(0,t) <span style="color: #008000">&amp;</span>= u<span style="color: #008000">_</span>0(x), <span style="color: #008000">&amp;</span> x<span style="color: #008000; font-weight: bold">\in</span> [0,L]
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>align<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+The result becomes
+
+$$
+\begin{align}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]
+\label{_auto3}\\ 
+u(0,t) &= u_0(x), & x\in [0,L]
+\label{_auto4}
+\end{align}
+$$
+
+<p>
+A better solution is usually to use an <code>alignat</code> environment:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>alignat<span style="color: #008000">}{</span>2<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span><span style="color: #008000; font-weight: bold">\partial</span> u<span style="color: #008000">}{</span><span style="color: #008000; font-weight: bold">\partial</span> t<span style="color: #008000">}</span> <span style="color: #008000">&amp;</span>= <span style="color: #008000; font-weight: bold">\nabla</span><span style="color: #008000">^</span>2 u, <span style="color: #008000">&amp;</span> x<span style="color: #008000; font-weight: bold">\in</span> (0,L),
+<span style="color: #008000; font-weight: bold">\ </span>t<span style="color: #008000; font-weight: bold">\in</span> (0,T]<span style="color: #008000; font-weight: bold">\\</span> 
+u(0,t) <span style="color: #008000">&amp;</span>= u<span style="color: #008000">_</span>0(x), <span style="color: #008000">&amp;</span> x<span style="color: #008000; font-weight: bold">\in</span> [0,L]
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>alignat<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+with the rendered result
+
+$$
+\begin{alignat}{2}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]\\ 
+u(0,t) &= u_0(x), & x\in [0,L]
+\end{alignat}
+$$
+
+<p>
+<b>Test 7: Multiple, aligned eqnarray equations without label.</b>
+Let us
+try the old <code>eqnarray*</code> environment.
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>eqnarray*<span style="color: #008000">}</span>
+u(t)<span style="color: #008000">&amp;</span>=<span style="color: #008000">&amp;</span> e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\\</span> 
+v(t) - 1 <span style="color: #008000">&amp;</span>=<span style="color: #008000">&amp;</span> <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>du<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>eqnarray*<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+and results in
+
+$$
+\begin{eqnarray*}
+u(t)&=& e^{-at}\\ 
+v(t) - 1 &=& \frac{du}{dt}
+\end{eqnarray*}
+$$
+
+<p>
+<b>Test 8: Multiple, eqnarrayed equations with label.</b>
+Here use <code>eqnarray</code> with labels:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>eqnarray<span style="color: #008000">}</span>
+u(t)<span style="color: #008000">&amp;</span>=<span style="color: #008000">&amp;</span> e<span style="color: #008000">^{</span>-at<span style="color: #008000">}</span>
+label<span style="color: #008000">{</span>eq2c<span style="color: #008000">}</span><span style="color: #008000; font-weight: bold">\\</span> 
+v(t) - 1 <span style="color: #008000">&amp;</span>=<span style="color: #008000">&amp;</span> <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>du<span style="color: #008000">}{</span>dt<span style="color: #008000">}</span>
+label<span style="color: #008000">{</span>eq3c<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>eqnarray<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+and results in
+
+$$
+\begin{eqnarray}
+u(t)&=& e^{-at} \label{eq2c}\\ 
+v(t) - 1 &=& \frac{du}{dt} \label{eq3c}
+\end{eqnarray}
+$$
+
+Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c}
+in the html format?
+
+<p>
+<b>Test 9: The <code>multiline</code> environment with label and number.</b>
+The LaTeX code
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>multline<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\int</span><span style="color: #008000">_</span>a<span style="color: #008000">^</span>b f(x)dx = <span style="color: #008000; font-weight: bold">\sum</span><span style="color: #008000">_{</span>j=0<span style="color: #008000">}^{</span>n<span style="color: #008000">}</span> <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>1<span style="color: #008000">}{</span>2<span style="color: #008000">}</span> h(f(a+jh) +
+f(a+(j+1)h)) <span style="color: #008000; font-weight: bold">\\</span> 
+=<span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>h<span style="color: #008000">}{</span>2<span style="color: #008000">}</span>f(a) + <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>h<span style="color: #008000">}{</span>2<span style="color: #008000">}</span>f(b) + <span style="color: #008000; font-weight: bold">\sum</span><span style="color: #008000">_{</span>j=1<span style="color: #008000">}^</span>n f(a+jh)
+label<span style="color: #008000">{</span>multiline:eq1<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>multline<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+gets rendered as
+
+$$
+\begin{multline}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\ 
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\label{multiline:eq1}
+\end{multline}
+$$
+
+and we can hopefully refer to the Trapezoidal rule
+as the formula \eqref{multiline:eq1}.
+
+<p>
+<b>Test 10: Splitting equations using <code>split</code>.</b>
+Although <code>align</code> can be used to split too long equations, a more obvious
+command is <code>split</code>:
+
+<p>
+
+<!-- code=latex (!bc latexcod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>!bt
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>equation<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\begin</span><span style="color: #008000">{</span>split<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\int</span><span style="color: #008000">_</span>a<span style="color: #008000">^</span>b f(x)dx = <span style="color: #008000; font-weight: bold">\sum</span><span style="color: #008000">_{</span>j=0<span style="color: #008000">}^{</span>n<span style="color: #008000">}</span> <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>1<span style="color: #008000">}{</span>2<span style="color: #008000">}</span> h(f(a+jh) +
+f(a+(j+1)h)) <span style="color: #008000; font-weight: bold">\\</span> 
+=<span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>h<span style="color: #008000">}{</span>2<span style="color: #008000">}</span>f(a) + <span style="color: #008000; font-weight: bold">\frac</span><span style="color: #008000">{</span>h<span style="color: #008000">}{</span>2<span style="color: #008000">}</span>f(b) + <span style="color: #008000; font-weight: bold">\sum</span><span style="color: #008000">_{</span>j=1<span style="color: #008000">}^</span>n f(a+jh)
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>split<span style="color: #008000">}</span>
+<span style="color: #008000; font-weight: bold">\end</span><span style="color: #008000">{</span>equation<span style="color: #008000">}</span>
+!et
+</pre></div>
+<p>
+The result becomes
+
+$$
+\begin{equation}
+\begin{split}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\ 
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\end{split}
+\label{_auto5}
+\end{equation}
+$$
+
+<p>
+<b>Test 11: Newcommands and boldface bm vs pmb.</b>
+We have
+
+$$ {\color{blue}\frac{\partial\u}{\partial t}} +
+\nabla\cdot\nabla\u = \nu\nabla^2\u -
+\frac{1}{\varrho}\nabla p,$$
+
+and \( \nabla\u (\x)\cdot\normalvec \)
+with plain old pmb. Here are the same formulas using <code>\bm</code>:
+
+$$ {\color{blue}\frac{\partial\ubm}{\partial t}} +
+\nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
+\frac{1}{\varrho}\nabla p,$$
+
+and \( \nabla\ubm (\xbm)\cdot\normalvecbm \).
+
+<p>
+Note: for the html format, <code>\bm</code> was substituted by DocOnce
+to <code>\boldsymbol</code>.
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+

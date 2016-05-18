@@ -25,13 +25,21 @@ system pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 system doconce format html $name --html_output=${name}_html $options
-exit
 
 system doconce format sphinx $name $options
-system doconce sphinx_dir $name
+#system doconce sphinx_dir theme=fenics_minimal1 $name
+system doconce sphinx_dir theme=cbc $name
 system python automake_sphinx.py
+
+system doconce format ipynb $name $options
 
 system doconce format pandoc $name $options
 # Do not use pandoc directly because it does not support MathJax sufficiently well
 system doconce md2html $name.md
 cp $name.html ${name}_pandoc.html
+
+doconce pygmentize ${name}.do.txt perldoc
+doconce format html index --html_style=bootstrap_FlatUI --html_links_in_new_window --html_bootstrap_navbar=off
+
+dest=../../pub/mathjax
+cp -r index.html ${name}.pdf ${name}.do.txt.html ${name}_html.html ${name}.ipynb ${name}_pandoc.html sphinx-rootdir/_build/html $dest

@@ -1,0 +1,13 @@
+
+.. Master file automatically created by doconce sphinx_dir
+
+
+How various formats can deal with LaTeX math
+============================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   math_test

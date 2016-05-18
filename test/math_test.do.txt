@@ -88,6 +88,7 @@ label{eq3b}
 We can refer to the last equations as the system (ref{eq2b})-(ref{eq3b}).
 
 # #if FORMAT == "sphinx"
+!bwarning Warning: align/alignat environments with labels are anti-aligned!
 Actually, *Sphinx does not support the align environment with labels*,
 such as we write above,
 but DocOnce splits in this case the equations into separate, single equations
@@ -108,9 +109,11 @@ in the present case is
         v(t) - 1 = \frac{du}{dt}
 
 !ec
+!ewarning
 # #endif
 
 # #if FORMAT == "pandoc"
+!bwarning Fixes are needed for DocOnce to Pandoc to HTML
 Original Pandoc-extended Markdown transformed to HTML via Pandoc
 does not work with labels and multiple equations. `doconce md2html`
 fixes the trouble by adding full support for MathJax and avoiding
@@ -120,6 +123,7 @@ One can write with align and labels in the DocOnce document and get excellent
 output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without
 `doconce md2html` one must accept that labeles have very limited support
 compared to more advanced MathJax.
+!ewarning
 # #endif
 
 
@@ -202,11 +206,15 @@ u(0,t) &= u_0(x), & x\in [0,L]
 \end{alignat}
 !et
 # #if FORMAT in ("sphinx", "ipynb", "pandoc")
+!bwarning align/alignat environments with equation numbers are anti-aligned!
 In the `sphinx`, `ipynb`, and `pandoc` output formats, DocOnce rewrites
 the equations in an `alignat` environment as individual equations in
 `equation` environments (or more precisely, `sphinx` can work with
 `alignat*` so only numbered `alignat` equations get rewritten as individual
-equations).
+equations). If the alignment is somewhat important, try the best with a
+manual rewrite in terms of separate `equation` environments, and stick to
+`align*` and `alignat*` in `sphinx`.
+!ewarning
 # #endif
 
 __Test 7: Multiple, aligned eqnarray equations without label.__ Let us

@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Hans Petter Langtangen at Simula Research Laboratory and University of Oslo" />
+  <meta name="date" content="2016-05-18" />
+  <title>How various formats can deal with LaTeX math</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+<div id="header">
+<h1 class="title">How various formats can deal with LaTeX math</h1>
+<h2 class="author"><strong>Hans Petter Langtangen</strong> at Simula Research Laboratory and University of Oslo</h2>
+<h3 class="date">May 18, 2016</h3>
+</div>
+<p>This document is translated to the format <strong>pandoc</strong>. The purpose is to test LaTeX math in DocOnce with various output formats.</p>
+<p><em>Test 1: Inline math.</em> We can get an inline equation <code>$u(t)=e^{-at}$</code> rendered as <span class="math">\(u(t)=e^{-at}\)</span>.</p>
+<p><em>Test 2: A single equation with label.</em> An equation with number,</p>
+<pre><code>!bt
+\begin{equation} u(t)=e^{-at} \label{eq1a}\end{equation}
+!et</code></pre>
+<p>looks like</p>
+<p><span class="math">\[
+\begin{equation} u(t)=e^{-at} \label{eq1a}\end{equation}
+\]</span> Maybe this multi-line version is what we actually prefer to write:</p>
+<pre><code>!bt
+\begin{equation}
+u(t)=e^{-at}
+\label{eq1b}
+\end{equation}
+!et</code></pre>
+<p>The result is the same:</p>
+<p><span class="math">\[
+\begin{equation}
+u(t)=e^{-at} \label{eq1b}
+\end{equation}
+\]</span> We can refer to this equation through its label <code>eq1b</code>: \eqref{eq1b}.</p>
+<p><em>Test 3: Multiple, aligned equations without label and number.</em> MathJax has historically had some problems with rendering many LaTeX math environments, but the <code>align*</code> and <code>align</code> environments have always worked.</p>
+<pre><code>!bt
+\begin{align*}
+u(t)&amp;=e^{-at}\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
+\end{align*}
+!et</code></pre>
+<p>Result:</p>
+<p>$$</p>
+<p>u(t)=e^{-at}</p>
+<p>$$</p>
+<p>$$</p>
+<p>v(t) - 1 = </p>
+<p>$$</p>
+<p><em>Test 4: Multiple, aligned equations with label.</em> Here, we use <code>align</code> with user-prescribed labels:</p>
+<pre><code>!bt
+\begin{align}
+u(t)&amp;=e^{-at}
+\label{eq2b}\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
+\label{eq3b}
+\end{align}
+!et</code></pre>
+<p>Result:</p>
+<p><span class="math">\[
+\begin{equation}
+u(t)=e^{-at}
+\label{eq2b}
+\end{equation}
+\]</span></p>
+<p><span class="math">\[
+\begin{equation}  
+v(t) - 1 = \frac{du}{dt}
+\label{eq3b}
+\end{equation}
+\]</span> We can refer to the last equations as the system \eqref{eq2b}-\eqref{eq3b}.</p>
+<p><em>Fixes are needed for DocOnce to Pandoc to HTML.</em> Original Pandoc-extended Markdown transformed to HTML via Pandoc does not work with labels and multiple equations. <code>doconce md2html</code> fixes the trouble by adding full support for MathJax and avoiding that eqref references become empty.</p>
+<p>One can write with align and labels in the DocOnce document and get excellent output in LaTeX, HTML, Sphinx, and Markdown-based HTML. Without <code>doconce md2html</code> one must accept that labeles have very limited support compared to more advanced MathJax.</p>
+<p><em>Test 5: Multiple, aligned equations without label.</em> In LaTeX, equations within an <code>align</code> environment is automatically given numbers. To ensure that an HTML document with MathJax gets the same equation numbers as its LaTeX companion, DocOnce generates labels in equations where there is no label prescribed. For example,</p>
+<pre><code>!bt
+\begin{align}
+u(t)&amp;=e^{-at}
+\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
+\end{align}
+!et</code></pre>
+<p>is edited to something like</p>
+<pre><code>!bt
+\begin{align}
+u(t)&amp;=e^{-at}
+\label{_auto5}\\ 
+v(t) - 1 &amp;= \frac{du}{dt}
+\label{_auto6}
+\end{align}
+!et</code></pre>
+<p>and the HTML output gets the two equation numbered.</p>
+<p><span class="math">\[
+\begin{equation}
+u(t)=e^{-at}
+\end{equation}
+\]</span></p>
+<p><span class="math">\[
+\begin{equation}  
+v(t) - 1 = \frac{du}{dt}
+\end{equation}
+\]</span></p>
+<p><em>Test 6: Multiple, aligned equations with multiple alignments.</em> The <code>align</code> environment can be used with two <code>&amp;</code> alignment characters, e.g.,</p>
+<pre><code>!bt
+\begin{align}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\ 
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+\end{align}
+!et</code></pre>
+<p>The result becomes</p>
+<p><span class="math">\[
+\begin{equation}
+\frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+\ t\in (0,T]
+\end{equation}
+\]</span></p>
+<p><span class="math">\[
+\begin{equation}  
+u(0,t) = u_0(x),  x\in [0,L]
+\end{equation}
+\]</span></p>
+<p>A better solution is usually to use an <code>alignat</code> environment:</p>
+<pre><code>!bt
+\begin{alignat}{2}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\ 
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+\end{alignat}
+!et</code></pre>
+<p>with the rendered result</p>
+<p><span class="math">\[
+\begin{equation}
+\frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+\ t\in (0,T]
+\end{equation}
+\]</span></p>
+<p><span class="math">\[
+\begin{equation}  
+u(0,t) = u_0(x),  x\in [0,L]
+\end{equation}
+\]</span> <em>align/alignat environments with equation numbers are anti-aligned!</em> In the <code>sphinx</code>, <code>ipynb</code>, and <code>pandoc</code> output formats, DocOnce rewrites the equations in an <code>alignat</code> environment as individual equations in <code>equation</code> environments (or more precisely, <code>sphinx</code> can work with <code>alignat*</code> so only numbered <code>alignat</code> equations get rewritten as individual equations). If the alignment is somewhat important, try the best with a manual rewrite in terms of separate <code>equation</code> environments, and stick to <code>align*</code> and <code>alignat*</code> in <code>sphinx</code>.</p>
+<p><em>Test 7: Multiple, aligned eqnarray equations without label.</em> Let us try the old <code>eqnarray*</code> environment.</p>
+<pre><code>!bt
+\begin{eqnarray*}
+u(t)&amp;=&amp; e^{-at}\\ 
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+\end{eqnarray*}
+!et</code></pre>
+<p>and results in</p>
+<p><span class="math">\[
+\begin{eqnarray*}
+u(t)&amp;=&amp; e^{-at}\\ 
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+\end{eqnarray*}
+\]</span></p>
+<p><em>Test 8: Multiple, eqnarrayed equations with label.</em> Here use <code>eqnarray</code> with labels:</p>
+<pre><code>!bt
+\begin{eqnarray}
+u(t)&amp;=&amp; e^{-at}
+\label{eq2c}\\ 
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+\label{eq3c}
+\end{eqnarray}
+!et</code></pre>
+<p>and results in</p>
+<p><span class="math">\[
+\begin{eqnarray}
+u(t)&amp;=&amp; e^{-at} \label{eq2c}\\ 
+v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
+\end{eqnarray}
+\]</span> Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c} in the pandoc format?</p>
+<p><em>Test 9: The <code>multiline</code> environment with label and number.</em> The LaTeX code</p>
+<pre><code>!bt
+\begin{multline}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\ 
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\label{multiline:eq1}
+\end{multline}
+!et</code></pre>
+<p>gets rendered as</p>
+<p><span class="math">\[
+\begin{multline}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\ 
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\label{multiline:eq1}
+\end{multline}
+\]</span> and we can hopefully refer to the Trapezoidal rule as the formula \eqref{multiline:eq1}.</p>
+<p><em>Test 10: Splitting equations using <code>split</code>.</em> Although <code>align</code> can be used to split too long equations, a more obvious command is <code>split</code>:</p>
+<pre><code>!bt
+\begin{equation}
+\begin{split}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\ 
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\end{split}
+\end{equation}
+!et</code></pre>
+<p>The result becomes</p>
+<p><span class="math">\[
+\begin{equation}
+\begin{split}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\ 
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\end{split}
+\end{equation}
+\]</span></p>
+<p><em>Test 11: Newcommands and boldface bm vs pmb.</em> We have</p>
+<p><span class="math">\[
+ {\color{blue}\frac{\partial\pmb{u}}{\partial t}} +
+\nabla\cdot\nabla\pmb{u} = \nu\nabla^2\pmb{u} -
+\frac{1}{\varrho}\nabla p,
+\]</span> and <span class="math">\(\nabla\pmb{u} (\pmb{x})\cdot\pmb{n}\)</span> with plain old pmb. Here are the same formulas using <code>\bm</code>:</p>
+<p><span class="math">\[
+ {\color{blue}\frac{\partial\boldsymbol{u}}{\partial t}} +
+\nabla\cdot\nabla\boldsymbol{u} = \nu\nabla^2\boldsymbol{u} -
+\frac{1}{\varrho}\nabla p,
+\]</span> and <span class="math">\(\nabla\boldsymbol{u} (\boldsymbol{x})\cdot\boldsymbol{n}\)</span>.</p>
+<p>Note: for the pandoc format, <code>\bm</code> was substituted by DocOnce to <code>\boldsymbol</code>.</p>
+</body>
+</html>
