@@ -1,56 +1,51 @@
 TITLE: How various formats can deal with LaTeX math
-AUTHOR: HPL
+AUTHOR: Hans Petter Langtangen at Simula Research Laboratory & University of Oslo
 DATE: today
 
 
 This document is translated to the format _${FORMAT}_. The purpose is to
-test math and doconce and various output formats.
+test LaTeX math in DocOnce with various output formats.
 
-__Test 1: Inline math.__ Here is a sentence contains the equation $u(t)=e^{-at}$.
+__Test 1: Inline math.__ We can get an inline equation
+`$u(t)=e^{-at}$` rendered as $u(t)=e^{-at}$.
 
-__Test 2: A single equation without label.__ Here it is
+__Test 2: A single equation with label.__ An equation with number,
 
-!bt
-\[ u(t)=e^{-at} \]
-!et
-
-__Test 3: A single equation with label.__ Here it is as a one-line
-latex code,
-
-!bc
+!bc latexcod
 |bt
-\begin{equation} u(t)=e^{-at} label{eq1}\end{equation}
+\begin{equation} u(t)=e^{-at} label{eq1a}\end{equation}
 |et
 !ec
-looking like
+looks like
 
 !bt
-\begin{equation} u(t)=e^{-at} label{eq1}\end{equation}
+\begin{equation} u(t)=e^{-at} label{eq1a}\end{equation}
 !et
-and as a three-line latex code:
+Maybe this multi-line version is what we actually prefer to write:
 
-!bc
+!bc latexcod
 |bt
 \begin{equation}
-u(t)=e^{-at} label{eq1b}
+u(t)=e^{-at}
+label{eq1b}
 \end{equation}
 |et
 !ec
-looking like
+The result is the same:
 
 !bt
 \begin{equation}
 u(t)=e^{-at} label{eq1b}
 \end{equation}
 !et
-This equation has label (ref{eq1b}).
+We can refer to this equation through its label `eq1b`: (ref{eq1b}).
 
 
-__Test 4: Multiple, aligned equations without label.__ Only the align
-environment is supported by other formats than LaTeX for typesetting
-multiple, aligned equations. The code reads
+__Test 3: Multiple, aligned equations without label and number.__ MathJax has
+historically had some problems with rendering many LaTeX math environments,
+but the `align*` and `align` environments have always worked.
 
-!bc
+!bc latexcod
 |bt
 \begin{align*}
 u(t)&=e^{-at}\\
@@ -58,7 +53,7 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 |et
 !ec
-and results in
+Result:
 
 !bt
 \begin{align*}
@@ -67,10 +62,10 @@ v(t) - 1 &= \frac{du}{dt}
 \end{align*}
 !et
 
-__Test 5: Multiple, aligned equations with label.__ We use align with
-labels:
+__Test 4: Multiple, aligned equations with label.__ Here, we
+use `align` with user-prescribed labels:
 
-!bc
+!bc latexcod
 |bt
 \begin{align}
 u(t)&=e^{-at}
@@ -80,12 +75,14 @@ label{eq3b}
 \end{align}
 |et
 !ec
-and results in
+Result:
 
 !bt
 \begin{align}
-u(t)&=e^{-at} label{eq2b}\\
-v(t) - 1 &= \frac{du}{dt} label{eq3b}
+u(t)&=e^{-at}
+label{eq2b}\\
+v(t) - 1 &= \frac{du}{dt}
+label{eq3b}
 \end{align}
 !et
 We can refer to the last equations as the system (ref{eq2b})-(ref{eq3b}).
@@ -126,10 +123,96 @@ compared to more advanced MathJax.
 # #endif
 
 
-__Test 6: Multiple, aligned eqnarray equations without label.__ Let us
-try the old eqnarray environment.
+__Test 5: Multiple, aligned equations without label.__ In LaTeX,
+equations within an `align` environment is automatically given numbers.
+To ensure that an HTML document with MathJax gets the same equation numbers
+as its LaTeX companion, DocOnce generates labels in equations where
+there is no label prescribed. For example,
 
-!bc
+!bc latexcod
+|bt
+\begin{align}
+u(t)&=e^{-at}
+\\
+v(t) - 1 &= \frac{du}{dt}
+\end{align}
+|et
+!ec
+is edited to something like
+
+!bc latexcod
+|bt
+\begin{align}
+u(t)&=e^{-at}
+label{_auto5}\\
+v(t) - 1 &= \frac{du}{dt}
+label{_auto6}
+\end{align}
+|et
+!ec
+and the HTML output gets the two equation numbered.
+
+!bt
+\begin{align}
+u(t)&=e^{-at}\\
+v(t) - 1 &= \frac{du}{dt}
+\end{align}
+!et
+
+__Test 6: Multiple, aligned equations with multiple alignments.__
+The `align` environment can be used with two `&` alignment characters, e.g.,
+
+!bc latexcod
+|bt
+\begin{align}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &= u_0(x), & x\in [0,L]
+\end{align}
+|et
+!ec
+The result becomes
+
+!bt
+\begin{align}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &= u_0(x), & x\in [0,L]
+\end{align}
+!et
+
+A better solution is usually to use an `alignat` environment:
+
+!bc latexcod
+|bt
+\begin{alignat}{2}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &= u_0(x), & x\in [0,L]
+\end{alignat}
+|et
+!ec
+with the rendered result
+
+!bt
+\begin{alignat}{2}
+\frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &= u_0(x), & x\in [0,L]
+\end{alignat}
+!et
+# #if FORMAT in ("sphinx", "ipynb", "pandoc")
+In the `sphinx`, `ipynb`, and `pandoc` output formats, DocOnce rewrites
+the equations in an `alignat` environment as individual equations in
+`equation` environments (or more precisely, `sphinx` can work with
+`alignat*` so only numbered `alignat` equations get rewritten as individual
+equations).
+# #endif
+
+__Test 7: Multiple, aligned eqnarray equations without label.__ Let us
+try the old `eqnarray*` environment.
+
+!bc latexcod
 |bt
 \begin{eqnarray*}
 u(t)&=& e^{-at}\\
@@ -146,10 +229,10 @@ v(t) - 1 &=& \frac{du}{dt}
 \end{eqnarray*}
 !et
 
-__Test 7: Multiple, eqnarrayed equations with label.__ We use eqnarray with
-labels:
+__Test 8: Multiple, eqnarrayed equations with label.__
+Here use `eqnarray` with labels:
 
-!bc
+!bc latexcod
 |bt
 \begin{eqnarray}
 u(t)&=& e^{-at}
@@ -167,7 +250,8 @@ u(t)&=& e^{-at} label{eq2c}\\
 v(t) - 1 &=& \frac{du}{dt} label{eq3c}
 \end{eqnarray}
 !et
-Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})?
+Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})
+in the ${FORMAT} format?
 # #if FORMAT == "sphinx"
 No, unfortunately not.
 Note: DocOnce takes the eqnarray with labels and replaces it automatically
@@ -185,11 +269,64 @@ probably fail to show them (unless one tries PNG images or other
 math engines?). The rule of thumb is to avoid equarray.
 # #endif
 
-__Test 8: newcommands and boldface bm vs pmb.__
+__Test 9: The `multiline` environment with label and number.__
+The LaTeX code
+
+!bc latexcod
+|bt
+\begin{multline}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+label{multiline:eq1}
+\end{multline}
+|et
+!ec
+gets rendered as
+
+!bt
+\begin{multline}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+label{multiline:eq1}
+\end{multline}
+!et
+and we can hopefully refer to the Trapezoidal rule
+as the formula (ref{multiline:eq1}).
+
+__Test 10: Splitting equations using `split`.__
+Although `align` can be used to split too long equations, a more obvious
+command is `split`:
+
+!bc latexcod
+|bt
+\begin{equation}
+\begin{split}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\end{split}
+\end{equation}
+|et
+!ec
+The result becomes
+
+!bt
+\begin{equation}
+\begin{split}
+\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
+f(a+(j+1)h)) \\
+=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
+\end{split}
+\end{equation}
+!et
+
+__Test 11: Newcommands and boldface bm vs pmb.__
 We have
 
 !bt
-\[ \color{blue}{\frac{\partial\u}{\partial t}} +
+\[ {\color{blue}\frac{\partial\u}{\partial t}} +
 \nabla\cdot\nabla\u = \nu\nabla^2\u -
 \frac{1}{\varrho}\nabla p,\]
 !et
@@ -197,7 +334,7 @@ and $\nabla\u (\x)\cdot\normalvec$
 with plain old pmb. Here are the same formulas using `\bm`:
 
 !bt
-\[ \color{blue}{\frac{\partial\ubm}{\partial t}} +
+\[ {\color{blue}\frac{\partial\ubm}{\partial t}} +
 \nabla\cdot\nabla\ubm = \nu\nabla^2\ubm -
 \frac{1}{\varrho}\nabla p,\]
 !et
@@ -207,5 +344,3 @@ and $\nabla\ubm (\xbm)\cdot\normalvecbm$.
 Note: for the ${FORMAT} format, `\bm` was substituted by DocOnce
 to `\boldsymbol`.
 # #endif
-
-

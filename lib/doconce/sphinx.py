@@ -312,8 +312,8 @@ def sphinx_code(filestr, code_blocks, code_block_types,
             tex_blocks[i] = tex_blocks[i].replace(command, '')
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
-        if '{alignat' in tex_blocks[i]:
-            errwarn('*** warning: the "alignat" environment will give errors in Sphinx:\n\n' + tex_blocks[i] + '\n')
+        #if '{alignat' in tex_blocks[i]:
+        #    errwarn('*** warning: the "alignat" environment will give errors in Sphinx:\n\n' + tex_blocks[i] + '\n')
 
     # Replace all references to equations that have labels in math environments:
     for label in math_labels:
@@ -865,8 +865,8 @@ def sphinx_code_orig(filestr, format):
             tex_blocks[i] = tex_blocks[i].replace(command, '')
         tex_blocks[i] = re.sub('&\s*=\s*&', ' &= ', tex_blocks[i])
         # provide warnings for problematic environments
-        if '{alignat' in tex_blocks[i]:
-            errwarn('*** warning: the "alignat" environment will give errors in Sphinx:\n' + tex_blocks[i] + '\n')
+        #if '{alignat' in tex_blocks[i]:
+        #    errwarn('*** warning: the "alignat" environment will give errors in Sphinx:\n' + tex_blocks[i] + '\n')
 
 
     filestr = insert_code_and_tex(filestr, code_blocks, tex_blocks, 'rst')

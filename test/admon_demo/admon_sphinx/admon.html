@@ -86,7 +86,7 @@
 </ol>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">May 4, 2016</p>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body"><p class="first last">May 17, 2016</p>
 </td>
 </tr>
 </tbody>
@@ -100,12 +100,12 @@ so that all styles for admonitions have a colored background.</p>
 <div class="section" id="code">
 <h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
 <p>Need some code outside admons for color and font comparisons:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And some plain text verbatim:</p>
-<div class="highlight-text"><div class="highlight"><pre>x=1.0 y=0.9 z=0.4
+<div class="highlight-text"><div class="highlight"><pre><span></span>x=1.0 y=0.9 z=0.4
 x=1.1 y=0.3 z=0.1
 </pre></div>
 </div>
@@ -150,9 +150,9 @@ The box is more aimed at framing a law or an equation.</p>
 <p>Now test a box with equation only (note that this line continues the
 box, it is not a new paragraph):</p>
 <div class="math" id="equation-_auto1 f(x) = \sin(x)e^{1-x}">
-</div>
+<span class="eqno">(1)</span>\[\]</div>
 <p>Let&#8217;s begin a new paragraph and show a box with code only:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -184,12 +184,12 @@ And more and more text.</p>
 <p class="first admonition-title">Title ending with math <span class="math">\(\sqrt{2}\approx 1.4\)</span></p>
 <p>And here comes some text with bad news in larger font.</p>
 <p>Also some code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>And a complete program</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;Hello, World!&quot;</span>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Hello, World!&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -249,7 +249,7 @@ But first a bit of math where we define <span class="math">\(\theta\)</span> and
 <li>read hints and tips carefully</li>
 </ol>
 <p>Because here the thing is to do</p>
-<div class="last highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">urllib</span>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib</span>
 
 <span class="k">def</span> <span class="nf">grab</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
     <span class="n">urllib</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
@@ -284,7 +284,7 @@ which the LaTeX environment should handle with ease.</p>
 \frac{1}{2}\pmb{x} &amp;= \pmb{n}\end{split}\]</div>
 <p>The implementation of such complicated equations in computer
 code is task that this &#8220;Going deeper&#8221; environment targets.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Dudt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Dudt</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">r</span>
 
@@ -294,7 +294,7 @@ code is task that this &#8220;Going deeper&#8221; environment targets.</p>
 </div>
 <p>And some more text that can help going into the next page.
 Longer computer code requires vertical space:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Diff</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Diff</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
@@ -397,9 +397,6 @@ exercises (and problems and projects too).</p>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -420,7 +417,7 @@ exercises (and problems and projects too).</p>
     </div>
     <div class="footer" role="contentinfo">
         &copy; Copyright 2016, H. P. Langtangen.
-      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx</a> 1.4a0+.
+      Created using <a href="https://github.com/hplgit/doconce">DocOnce</a> and <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
     </div>
   </body>
 </html>

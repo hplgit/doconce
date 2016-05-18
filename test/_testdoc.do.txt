@@ -589,6 +589,109 @@ The labels above are removed in mwiki since mwiki cannot refer to
 labels in equations.
 % endif
 
+% if FORMAT not in ("sphinx", "pandoc", "ipynb"):
+# Must test more complicated align and matrix compositions
+# where DocOnce inserts auto-numbered labels etc.
+
+First one numbered (automatically):
+
+!bt
+\begin{align}
+\begin{pmatrix}
+G_2 + G_3 & -G_3 & -G_2 & 0 \\
+-G_3 & G_3 + G_4 & 0 & -G_4 \\
+-G_2 & 0 & G_1 + G_2 & 0 \\
+0 & -G_4 & 0 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+ v_1 \\
+ v_2 \\
+ v_3 \\
+ v_4
+\end{pmatrix}
++ \cdots \\
+\begin{pmatrix}
+ C_5 + C_6 & -C_6 & 0 & 0 \\
+ -C_6 & C_6 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0
+\end{pmatrix}
+  &= \frac{d}{dt}\begin{pmatrix}
+ v_1 \\
+ v_2 \\
+ v_3 \\
+ v_4
+\end{pmatrix} +
+\begin{pmatrix}
+ 0 \\
+ 0 \\
+ 0 \\
+ -i_0
+\end{pmatrix}
+\nonumber
+\end{align}
+!et
+
+Second numbered (automatically):
+
+!bt
+\begin{align}
+\begin{pmatrix}
+G_1 + G_2\\
+-G_3 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+ v_1 \\
+ v_2
+\end{pmatrix}
++ \cdots\nonumber
+\\
+\left(\begin{array}{ll}
+y & 2\\
+2 & 1
+\end{array}\right)
+\left(\begin{array}{ll}
+0 \\ x
+\end{array}\right)
+&= \begin{pmatrix}
+A \\ B
+\end{pmatrix}
+\end{align}
+!et
+
+Both numbered, with label by the user:
+
+!bt
+\begin{align}
+\begin{pmatrix}
+G_1 + G_2\\
+-G_3 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+ v_1 \\
+ v_2
+\end{pmatrix}
++ \cdots label{mymatrix:eq1}
+\\
+label{mymatrix:eq2}
+\left(\begin{array}{ll}
+y & 2\\
+2 & 1
+\end{array}\right)
+\left(\begin{array}{ll}
+0 \\ x
+\end{array}\right)
+&= \begin{pmatrix}
+A \\ B
+\end{pmatrix}
+\end{align}
+!et
+Now we refer to (ref{mymatrix:eq1})-(ref{mymatrix:eq2}).
+% endif
+
 ===== Custom Environments =====
 
 Here is an attempt to create a theorem environment via Mako
@@ -716,10 +819,9 @@ and `|` right before and after verbatim word (with no space):
 Pipe symbols in verbatim and math text in tables used to pose difficulties,
 but not
 # #if FORMAT in ('plain', 'matlabnb')
-anymore (except for plain text and matlabnb):
+anymore (except for plain text and matlabnb).
 # #else
 anymore:
-# #endif
 
 |-----------------------------|
 | $S$         | command       |
@@ -727,12 +829,7 @@ anymore:
 | $||a_0||$   | `norm|length` |
 | $x\cap y$   | `x|y`         |
 |-----------------------------|
-# #if FORMAT in ('plain', 'matlabnb')
 
-NOTE: The above table is not correctly handled in the plain text
-and matlab notebook formats
-because in this format inline verbatim text look like normal text,
-and the lines in the table then look like more than two columns.
 # #endif
 
 Here is a table with X alignment:
@@ -1041,6 +1138,15 @@ We can refer to (ref{eq1})-(ref{eq2}). They are a bit simpler than
 the Navier--Stokes equations. And test LaTeX hyphen in `CG-2`.
 Also test $a_{i-j}$ as well as $kx-wt$.
 
+Testing `alignat` environment:
+
+!bt
+\begin{alignat}{2}
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 label{eq1a} \\
+b &= \nabla^2 u + \nabla^4 x & x\in\Omega label{eq2a}
+\end{alignat}
+!et
+
 % if FORMAT in ("latex", "pdflatex"):
 Many of the next environments will fail in non-latex formats.
 Testing multiline:
@@ -1071,13 +1177,6 @@ c = d + 7 + 9
 \end{gather}
 !et
 
-Testing alignat:
-!bt
-\begin{alignat}{2}
-a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 label{eq1a} \\
-b &= \nabla^2 u + \nabla^4 x & x\in\Omega label{eq2a}
-\end{alignat}
-!et
 Let us refer to (ref{eq1})-(ref{eq2}) again, and to the
 alignat variant (ref{eq1a})-(ref{eq2a}), and to (ref{my:eq1}).
 

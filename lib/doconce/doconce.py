@@ -697,15 +697,19 @@ def syntax_check(filestr, format):
     for tex_block in tex_blocks:
         if 'label{' in tex_block:
             eq_labels += re.findall(pattern, tex_block)
-    pattern = r'[^(]ref\{%s\}[^)]'
+    pattern1 = r'[^(]ref\{%s\}[^)]' # missing both
+    pattern2 = r'\(ref\{%s\}[^)]'   # missing right
+    pattern3 = r'[^(]ref\{%s\}\)'   # missing left
     found_problem = False
     for eq_label in eq_labels:
-        m = re.search(pattern % eq_label, filestr)
-        if m:
-            errwarn('*** error: reference to equation label "%s" is without parentheses' % eq_label)
-            errwarn('    the equation reference should be type set as (ref{%s})' % eq_label)
-            errwarn('... ' + filestr[m.start()-10:m.start()] + ' ' + filestr[m.start():m.end()+20] + ' ...')
-            found_problem = True
+        m_ = [re.search(pattern % eq_label, filestr) for pattern in
+              pattern1, pattern2, pattern3]
+        for m in m_:
+            if m:
+                errwarn('*** error: reference to equation label "%s" is without parentheses' % eq_label)
+                errwarn('    the equation reference should be type set as (ref{%s})' % eq_label)
+                errwarn('... ' + filestr[m.start()-20:m.start()] + ' ' + filestr[m.start():m.end()+30] + ' ...')
+                found_problem = True
     if found_problem:
         _abort()
 

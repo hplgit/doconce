@@ -276,7 +276,7 @@ MathJax.Hub.Config({
 <center>[7] <b>Fourth Inst</b></center>
 <br>
 <p>
-<center><h4>May 4, 2016</h4></center> <!-- date -->
+<center><h4>May 17, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -471,7 +471,7 @@ Let's do some copying from files too. First from subroutine up to the very end,
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
+13</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
       <span style="color: #a7a7a7; font-weight: bold">integer </span>i
       <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> r
       r = <span style="color: #B452CD">0</span>
@@ -497,7 +497,7 @@ and then just the subroutine,
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>      <span style="color: #8B008B; font-weight: bold">subroutine </span>test()
       <span style="color: #a7a7a7; font-weight: bold">integer </span>i
       <span style="color: #a7a7a7; font-weight: bold">real</span>*<span style="color: #B452CD">8</span> r
       r = <span style="color: #B452CD">0</span>
@@ -527,7 +527,7 @@ and finally the complete file with a plain text verbatim environment
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">C     a comment
+15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>C     a comment
 
       subroutine test()
       integer i
@@ -552,7 +552,7 @@ Testing other code environments. First Python:
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
 3
-4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc pycod
+4</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>!bc pycod
 def f(x):
     return x+1
 !ec
@@ -564,7 +564,7 @@ which gets rendered as
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
     <span style="color: #8B008B; font-weight: bold">return</span> x+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
@@ -578,7 +578,7 @@ before code.
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>
 sys.path.insert(<span style="color: #B452CD">0</span>, os.pardir)
 </pre></div>
 </td></tr></table><h3 id="___sec5">Subsubsection heading before code </h3>
@@ -587,7 +587,7 @@ sys.path.insert(<span style="color: #B452CD">0</span>, os.pardir)
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">h</span>(z):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">h</span>(z):
     <span style="color: #8B008B; font-weight: bold">return</span> z+<span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table><p>
@@ -635,7 +635,7 @@ function show_hide_code9(){
 <button type="button" onclick="show_hide_code9()">Show/hide code</button>
 <div id="code9" style="display:none">
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">cpdef</span> <span style="color: #008b45">f</span>(double x):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">cpdef</span> <span style="color: #008b45">f</span>(double x):
     <span style="color: #8B008B; font-weight: bold">return</span> x + <span style="color: #B452CD">1</span>
 </pre></div>
 </td></tr></table>
@@ -653,7 +653,7 @@ Standard Python shell sessions:
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
 &gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
 &gt;&gt;&gt; x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
 &gt;&gt;&gt; y = sin(x)
@@ -682,7 +682,7 @@ Similar IPython sessions:
 12
 13
 14
-15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+15</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #555555">In [1]: </span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
 <span style="color: #555555">In [2]: </span><span style="color: #228B22"># Some comment</span>
 <span style="color: #555555">In [3]: </span>x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
 <span style="color: #555555">In [4]: </span>y = sin(x)
@@ -711,7 +711,7 @@ Here is the interactive session again, but with <code>pyshell-t</code>.
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&gt;&gt;&gt; <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> linspace, sin
 &gt;&gt;&gt; <span style="color: #228B22"># Some comment</span>
 &gt;&gt;&gt; x = linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>, <span style="color: #B452CD">11</span>)
 &gt;&gt;&gt; y = sin(x)
@@ -732,7 +732,7 @@ C++:
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #1e889b">#include &lt;iostream&gt;</span>
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #1e889b">#include</span> <span style="color: #228B22">&lt;iostream&gt;</span><span style="color: #1e889b"></span>
 
 <span style="color: #a7a7a7; font-weight: bold">int</span> <span style="color: #008b45">main</span>()
 {
@@ -755,7 +755,7 @@ And a little bit of Fortran: <img src="https://raw.githubusercontent.com/hplgit/
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc cod
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>!bc cod
       subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
@@ -775,7 +775,7 @@ which then is typeset as
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">      subroutine midpt(x, length, a, b)
+6</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>      subroutine midpt(x, length, a, b)
       real*8 a, b, x
       x = (a + b)/2
       length = b - a
@@ -792,11 +792,11 @@ HTML:
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">&lt;table&gt;</span>
-<span style="color: #8B008B; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>Column 1<span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>Column 2<span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
-<span style="color: #8B008B; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span>0.67526 <span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;td&gt;</span>0.92871 <span style="color: #8B008B; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>&lt;<span style="color: #8B008B; font-weight: bold">table</span>&gt;
+&lt;<span style="color: #8B008B; font-weight: bold">tr</span>&gt;&lt;<span style="color: #8B008B; font-weight: bold">td</span>&gt;Column 1&lt;/<span style="color: #8B008B; font-weight: bold">td</span>&gt;&lt;<span style="color: #8B008B; font-weight: bold">td</span>&gt;Column 2&lt;/<span style="color: #8B008B; font-weight: bold">td</span>&gt;&lt;/<span style="color: #8B008B; font-weight: bold">tr</span>&gt;
+&lt;<span style="color: #8B008B; font-weight: bold">tr</span>&gt;&lt;<span style="color: #8B008B; font-weight: bold">td</span>&gt;0.67526 &lt;/<span style="color: #8B008B; font-weight: bold">td</span>&gt;&lt;<span style="color: #8B008B; font-weight: bold">td</span>&gt;0.92871 &lt;/<span style="color: #8B008B; font-weight: bold">td</span>&gt;&lt;/<span style="color: #8B008B; font-weight: bold">tr</span>&gt;
 <span style="color: #228B22">&lt;!-- comment --&gt;</span>
-<span style="color: #8B008B; font-weight: bold">&lt;/table&gt;</span>
+&lt;/<span style="color: #8B008B; font-weight: bold">table</span>&gt;
 </pre></div>
 </td></tr></table><p>
 But inline HTML code is also important, like text that starts with
@@ -813,7 +813,7 @@ Matlab with comments requires special typesetting:
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #228B22">% Comment on the beginning of the line can be escaped by %%</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #228B22">% Comment on the beginning of the line can be escaped by %%</span>
 <span style="color: #8B008B; font-weight: bold">if</span> a &gt; b
   <span style="color: #228B22">% Indented comment needs this trick</span>
   c = a + b
@@ -829,7 +829,7 @@ And here is a system call:
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; mkdir test
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>Terminal&gt; mkdir test
 Terminal&gt; cd test
 Terminal&gt; myprog -f
 output1
@@ -847,7 +847,7 @@ Any valid pygments lexer/language name can appear to, e.g.,
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">!bc restructuredtext
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>!bc restructuredtext
 =======
 Heading
 =======
@@ -865,7 +865,7 @@ results in
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">=======</span>
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">=======</span>
 <span style="color: #000080; font-weight: bold">Heading</span>
 <span style="color: #000080; font-weight: bold">=======</span>
 
@@ -915,7 +915,7 @@ Finally, <code>!bc do</code> supports highlighting of DocOnce source:
 32
 33
 34
-35</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
+35</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">======= DocOnce test file =======</span>
 
 <span style="color: #000080; font-weight: bold">===== Computer code =====</span>
 
@@ -977,7 +977,7 @@ the previous blocks with line breaks.
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
+5</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>Terminal&gt; python -c &#39;print &quot;Testing\noutput\nfrom\nPython.&quot;&#39;
 Testing
 output
 from
@@ -1126,7 +1126,7 @@ involving \( \theta \):
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">def f(theta):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>def f(theta):
     return theta**2
 </pre></div>
 </td></tr></table><p>
@@ -1163,6 +1163,113 @@ $$
 \label{aligneq2}
 \end{align}
 $$
+
+<p>
+<!-- Must test more complicated align and matrix compositions -->
+<!-- where DocOnce inserts auto-numbered labels etc. -->
+
+<p>
+First one numbered (automatically):
+
+$$
+\begin{align}
+\begin{pmatrix}
+G_2 + G_3 & -G_3 & -G_2 & 0 \\ 
+-G_3 & G_3 + G_4 & 0 & -G_4 \\ 
+-G_2 & 0 & G_1 + G_2 & 0 \\ 
+0 & -G_4 & 0 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+ v_1 \\ 
+ v_2 \\ 
+ v_3 \\ 
+ v_4
+\end{pmatrix}
++ \cdots  \label{_auto4}
+\\ 
+\begin{pmatrix}
+ C_5 + C_6 & -C_6 & 0 & 0 \\ 
+ -C_6 & C_6 & 0 & 0 \\ 
+ 0 & 0 & 0 & 0 \\ 
+ 0 & 0 & 0 & 0
+\end{pmatrix}
+  &= \frac{d}{dt}\begin{pmatrix}
+ v_1 \\ 
+ v_2 \\ 
+ v_3 \\ 
+ v_4
+\end{pmatrix} +
+\begin{pmatrix}
+ 0 \\ 
+ 0 \\ 
+ 0 \\ 
+ -i_0
+\end{pmatrix}
+\nonumber
+\label{_auto5}
+\end{align}$$
+
+<p>
+Second numbered (automatically):
+
+$$
+\begin{align}
+\begin{pmatrix}
+G_1 + G_2\\ 
+-G_3 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+ v_1 \\ 
+ v_2
+\end{pmatrix}
++ \cdots\nonumber
+\label{_auto6}
+\\ 
+\left(\begin{array}{ll}
+y & 2\\ 
+2 & 1
+\end{array}\right)
+\left(\begin{array}{ll}
+0 \\ x
+\end{array}\right)
+&= \begin{pmatrix}
+A \\ B
+\end{pmatrix}
+\label{_auto7}
+\end{align}$$
+
+<p>
+Both numbered, with label by the user:
+
+$$
+\begin{align}
+\begin{pmatrix}
+G_1 + G_2\\ 
+-G_3 & G_4
+\end{pmatrix}
+&=
+\begin{pmatrix}
+ v_1 \\ 
+ v_2
+\end{pmatrix}
++ \cdots \label{mymatrix:eq1}
+\\ 
+\label{mymatrix:eq2}
+\left(\begin{array}{ll}
+y & 2\\ 
+2 & 1
+\end{array}\right)
+\left(\begin{array}{ll}
+0 \\ x
+\end{array}\right)
+&= \begin{pmatrix}
+A \\ B
+\end{pmatrix}
+\end{align}$$
+
+Now we refer to \eqref{mymatrix:eq1}-\eqref{mymatrix:eq2}.
 
 <h2 id="___sec10">Custom Environments </h2>
 
@@ -1223,7 +1330,7 @@ The DocOnce source code reads
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">  |--------------------------------|
+7</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>  |--------------------------------|
   |time  | velocity | acceleration |
   |--l--------r-----------r--------|
   | 0.0  | 1.4186   | -5.01        |
@@ -1444,7 +1551,7 @@ A sole <code>&</code> must also work.
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"># Just to check that ampersand works in code blocks:
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span># Just to check that ampersand works in code blocks:
 c = a &amp; b
 </pre></div>
 </td></tr></table><p>
@@ -1554,7 +1661,7 @@ implementation of a Python function for addition.
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add</span>(a, b):
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">add</span>(a, b):
     <span style="color: #8B008B; font-weight: bold">return</span> a + b
 
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">test_add</span>():
@@ -1683,6 +1790,16 @@ the Navier&ndash;Stokes equations. And test LaTeX hyphen in <code>CG-2</code>.
 Also test \( a_{i-j} \) as well as \( kx-wt \).
 
 <p>
+Testing <code>alignat</code> environment:
+
+$$
+\begin{alignat}{2}
+a &= q + 4 + 5+ 6\qquad & \mbox{for } q\geq 0 \label{eq1a} \\ 
+b &= \nabla^2 u + \nabla^4 x & x\in\Omega \label{eq2a}
+\end{alignat}
+$$
+
+<p>
 More mathematical typesetting is demonstrated in the coming exercises.
 
 <p>
@@ -1750,7 +1867,7 @@ head, otherwise tail. Repeat this \( N \) number of times.
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>, <span style="color: #008b45; text-decoration: underline">random</span>
+8</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sys</span>, <span style="color: #008b45; text-decoration: underline">random</span>
 N = <span style="color: #658b00">int</span>(sys.argv[<span style="color: #B452CD">1</span>])
 heads = <span style="color: #B452CD">0</span>
 <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
@@ -1904,7 +2021,7 @@ The formula can be used to generate <code>n</code> points on a circle:
 6
 7
 8
-9</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+9</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">circle</span>(R, x0, y0, n=<span style="color: #B452CD">501</span>):
     t = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, n)
@@ -2006,7 +2123,7 @@ And with code (in plain verbatim) returning \( x+1 \) in hint:
 
 <!-- code=text typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
-2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">def func(x):
+2</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>def func(x):
     return x + 1  # with code in hint
 </pre></div>
 </td></tr></table><p>
@@ -2090,7 +2207,7 @@ And code <code>a=b</code> in this solution:
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">a = b  # code in solution
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>a = b  # code in solution
 </pre></div>
 </td></tr></table><p>
 End of solution is here.
@@ -2131,7 +2248,7 @@ And a test that the code <code>lambda x: x+2</code> is correctly placed here:
 <p>
 
 <!-- code=text typeset with pygments style "perldoc" -->
-<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">lambda x: x+2
+<table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span>lambda x: x+2
 </pre></div>
 </td></tr></table><p>
 <!-- Have some comments at the end of the exercise to see that -->
@@ -2165,7 +2282,7 @@ What is the solution of this equation?</p>
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <table class="highlighttable"><tr><td><div class="linenodiv" style="background-color: #f0f0f0; padding-right: 10px"><pre style="line-height: 125%">1
 2
-3</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> exp
+3</pre></div></td><td class="code"><div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">import</span> exp
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">f</span>(x):
     <span style="color: #8B008B; font-weight: bold">return</span> exp(x)
 </pre></div>

@@ -124,6 +124,7 @@ solutions_at_end = False
 without_solutions = False
 without_answers = False
 without_hints = False
+#exercise_solution = 
 wordpress = False
 tables2csv = False
 sections_up = False

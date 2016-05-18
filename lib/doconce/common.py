@@ -342,7 +342,9 @@ def table_analysis(table):
         errwarn('   has %d columns while further down there are %d columns' %
                 (len(table[1]), max_num_columns))
         errwarn('   the list of columns in the headline reads')
-        errwarn(table[1])
+        errwarn(str(table[1]))
+        errwarn('   Here is the entire table:')
+        errwarn(str(table))
     # Find the width of the various columns
     column_width = [0]*max_num_columns
     for i, row in enumerate(table):
@@ -377,12 +379,12 @@ def online_python_tutor(code, return_tp='iframe'):
 
 def align2equations(filestr, format):
     """Turn align environments into separate equation environments."""
-    if not '{align}' in filestr:
+    if '{align}' not in filestr and '{alignat}' not in filestr:
         return filestr
 
     # sphinx: just replace align, pandoc/ipynb: replace align and align*
     # technique: add } if sphinx
-    postfixes = ['}'] if format == 'sphinx' else ['}', '*}']
+    postfixes = ['}', 'at}'] if format == 'sphinx' else ['}', '*}', 'at}', 'at*}']
 
     lines = filestr.splitlines()
     inside_align = False
@@ -400,6 +402,7 @@ def align2equations(filestr, format):
                 inside_align = True
                 lines[i] = lines[i].replace(
                 r'\begin{align%s' % postfix, r'\begin{equation%s' % postfix)
+                # Wrong replacements a la begin{equationat*}{2}, fix below
             if inside_align and '\\\\' in lines[i]:
                 lines[i] = lines[i].replace(
                 '\\\\', '\n' + r'\end{equation%s' % postfix + '\n!et\n\n!bt\n' + r'\begin{equation%s ' % postfix)
@@ -407,7 +410,7 @@ def align2equations(filestr, format):
                                  'begin{bmatrix}' in lines[i]):
                 errwarn('*** error: with %s output, align environments' % format)
                 errwarn('    cannot have arrays/matrices with & and \\\\')
-                errwarn('    rewrite with single equations!')
+                errwarn('    rewrite with single equations (not align)!')
                 errwarn('\n'.join(lines[i-4:i+5]).replace('{equation', '{align'))
                 _abort()
             if inside_align and '&' in lines[i]:
@@ -416,6 +419,10 @@ def align2equations(filestr, format):
                 inside_align = False
                 lines[i] = lines[i].replace(
                 r'\end{align%s' % postfix, r'\end{equation%s' % postfix)
+            # Fixes from too simple replacements:
+            lines[i] = lines[i].replace('{equationat}', '{equation}')
+            lines[i] = lines[i].replace('{equationat*}', '{equation*}')
+            lines[i] = re.sub(r'\{equation\}\{\d+\}', '{equation}', lines[i])
     filestr = '\n'.join(lines)
     return filestr
 
@@ -676,23 +683,57 @@ def add_labels_to_all_numbered_equations(tex_blocks):
                     'end{equation}', 'end{equation*}')
 
         if 'begin{align}' in tex_blocks[i]:
-            # Assume that \\ is only appearing as delimiter between
-            # equations (i.e., no \begin{array} environment with \\
-            # between matrix rows...).
-            eqs = tex_blocks[i].split(r'\\')
-            for j in range(len(eqs)):
-                if not 'label{' in eqs[j] and not r'\nonumber' in eqs[j]:
-                    n += 1
-                    if 'end{align}' in eqs[j]:
-                        eqs[j] = eqs[j].replace(
-                            r'\end{align}', ' label{_auto%d}\n' % n + r'\end{align}')
-                    else:
-                        if eqs[j][-1] != '\n':
-                            eqs[j] += '\n'
+            if '{array}' not in tex_blocks[i] and \
+               '{pmatrix}' not in tex_blocks[i]:
+                # Assume that \\ is only appearing as delimiter between
+                # equations (i.e., no \begin{array} environment with \\
+                # between matrix rows...).
+                eqs = tex_blocks[i].split(r'\\')
+                for j in range(len(eqs)):
+                    if not 'label{' in eqs[j] and not r'\nonumber' in eqs[j]:
+                        n += 1
+                        if 'end{align}' in eqs[j]:
+                            eqs[j] = eqs[j].replace(
+                                r'\end{align}', ' label{_auto%d}\n' % n + r'\end{align}')
                         else:
-                            eqs[j] += ' '
-                        eqs[j] += 'label{_auto%d}' % n
-            tex_blocks[i] = r'\\'.join(eqs)
+                            if eqs[j][-1] != '\n':
+                                eqs[j] += '\n'
+                            else:
+                                eqs[j] += ' '
+                            eqs[j] += 'label{_auto%d}' % n
+                tex_blocks[i] = r'\\'.join(eqs)
+            else:
+                # parse //
+                lines = tex_blocks[i].splitlines()
+                inside_array = False
+                has_label = False
+                for j in range(len(lines)):
+                    if lines[j].count('\\\\') > 1:
+                        errwarn('*** error: two \\\\ on the same line in an equation is considered syntax error:\n    %s\n    -> rewrite using more lines!' % lines[j])
+                        _abort()
+                    if '\\\\' in lines[j] and ('{array}' in lines[j] or \
+                                               '{pmatrix}' in lines[j]):
+                        errwarn('*** error: \\\\ and array/matrix declaration on the same line:\n    %s\n    -> split into multiple lines!' % lines[j])
+                        _abort()
+                    if 'begin{array}' in lines[j] or \
+                       'begin{pmatrix}' in lines[j]:
+                        inside_array = True
+                    if 'end{array}' in lines[j] or \
+                       'end{pmatrix}' in lines[j]:
+                        inside_array = False
+                    if 'label{' in lines[j]:
+                        has_label = True
+                    #print 'XXX', inside_array, lines[j]
+                    if not inside_array and '\\\\' in lines[j]:
+                        if not r'\nonumber' in lines[j] and not has_label:
+                            n += 1
+                            lines[j] = lines[j].replace('\\\\', ' label{_auto%d}\n\\\\' % n)
+                            has_label = False
+                    if 'end{align}' in lines[j] and not has_label:
+                        n += 1
+                        lines[j] = lines[j].replace('\\end{align}', ' label{_auto%d}\n\\end{align}' % n)
+
+                tex_blocks[i] = '\n'.join(lines)
         tex_blocks[i] = re.sub(r'^ +label{', 'label{', tex_blocks[i],
                                flags=re.MULTILINE)
     return tex_blocks
@@ -812,6 +853,7 @@ def doconce_exercise_output(
     # at the beginning of the translation process.
 
     latex_style = option('latex_style=', 'std')
+    solution_style = option('exercise_solution=', 'paragraph')
 
     # Store solutions in a separate string
     has_solutions = False
@@ -964,16 +1006,23 @@ def doconce_exercise_output(
                     s += '\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
-                    s += solution_header + '\n'
+                    if solution_style == 'paragraph':
+                        s += solution_header + '\n'
+                    elif solution_style == 'admon':
+                        s   += '\n!bnotice Solution.\n\n'
+                        sol += '\n!bnotice Solution.\n\n'
                     # Make sure we have a sentence after the heading
                     if solution_header.endswith('===') and \
-                       re.search(r'^\d+ %s' % _CODE_BLOCK,
-                                 subex['solution'].lstrip()):
+                        re.search(r'^\d+ %s' % _CODE_BLOCK,
+                                  subex['solution'].lstrip()):
                         errwarn('\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n')
-                        s += 'Code:\n'
+                        s   += 'Code:\n'
                         sol += '\nCode:\n'
-                    s += subex['solution'] + '\n'
+                    s   +=        subex['solution'] + '\n'
                     sol += '\n' + subex['solution'] + '\n'
+                    if solution_style == 'admon':
+                        s   += '!enotice\n\n'
+                        sol += '!enotice\n\n'
                     if exer['type'] != 'Example':
                         s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 
@@ -1000,15 +1049,22 @@ def doconce_exercise_output(
         # avoid marking such sections for deletion (--without_solutions)
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][0] + '\n'
-        s += solution_header + '\n'
+        if solution_style == 'paragraph':
+            s += solution_header + '\n'
+        elif solution_style == 'admon':
+            s   += '\n!bnotice Solution.\n\n'
+            sol += '\n!bnotice Solution.\n\n'
         # Make sure we have a sentence after the heading if real heading
         if solution_header.endswith('===') and \
-           re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
+            re.search(r'^\d+ %s' % _CODE_BLOCK, exer['solution'].lstrip()):
             errwarn('\nwarning: open the solution in exercise "%s" with a line of\ntext before the code! (Now "Code:" is inserted)' % exer['title'] + '\n')
-            s += 'Code:\n'
+            s   += 'Code:\n'
             sol += '\nCode:\n'
-        s += exer['solution'] + '\n'
+        s   +=       exer['solution'] + '\n'
         sol += '\n'+ exer['solution'] + '\n'
+        if solution_style == 'admon':
+            s   += '!enotice\n\n'
+            sol += '!enotice\n\n'
         if exer['type'] != 'Example':
             s += '\n# ' + envir_delimiter_lines['sol'][1] + '\n'
 

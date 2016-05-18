@@ -154,7 +154,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Informatics, University of Oslo</b></center>
 <br>
 <p>
-<center><h4>May 4, 2016</h4></center> <!-- date -->
+<center><h4>May 17, 2016</h4></center> <!-- date -->
 <br>
 
 <h2>Table of contents</h2>
@@ -951,15 +951,16 @@ follow the rules below.
 <ul>
  <li> AMS LaTeX mathematics is supported, also for the <code>html</code>, <code>sphinx</code>,
    and <code>ipynb</code> formats.</li>
- <li> Only five equation environments can be used: <code>\[ ... \]</code>,
+ <li> Only <em>five</em> equation environments can be used: <code>\[ ... \]</code>,
    <code>equation*</code>, <code>equation</code>, <code>align*</code>, and <code>align</code>.
    (DocOnce performs extensions to <code>sphinx</code>, <code>ipynb</code>,
    and other formats such that
    labels in <code>align</code> environments work well.)
    This may feel restrictive to LaTeX writers who are used to
-   <code>split</code>, <code>aligned</code>, <code>alignat</code>, and other environments (rewrite to
+   <code>split</code>, <code>aligned</code>, <code>alignat</code>, and other environments - you must rewrite to
    <code>align</code> and use a label for each equation, or use <code>\nonumber\\</code>
-   if a line should be without equation number).</li>
+   if a line should be without equation number (<code>align</code> with two <code>&</code> for
+   alignments on each line works).</li>
  <li> Do not use comments inside equations.</li>
  <li> Newcommands in mathematical formulas are allowed, but not in
    the running text. Newcommands must be defined in files with names
@@ -1008,14 +1009,15 @@ follow the rules below.
    in column 1.</li>
  <li> If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement <em>user-defined environments</em> in DocOnce.
-   For instance, examples are normally typeset as subsections in DocOnce.
-   Learn about the exercise support in DocOnce to typeset exercises, problems,
-   and projects.</li>
+   For instance, examples are normally typeset as subsections in DocOnce,
+   but can also utilize a user-defined example environment.
+   Learn about the exercise support in DocOnce for typesetting
+   exercises, problems, and projects.</li>
  <li> Learn about the preprocessors Preprocess and Mako - these are smart
    tools for, e.g., commenting out/in large portions of text and creating
    macros.</li>
- <li> Use <em>generalized referenes</em> with for referring to companion documents
-   that may later be put together in a book.</li>
+ <li> Use <em>generalized referenes</em> when referring to companion documents
+   that may later become part of this document (or migrated out of this document).</li>
  <li> Follow <a href="https://github.com/hplgit/setup4book-doconce" target="_self">recommendations for DocOnce books</a> if you plan to write a book.</li>
 </ul>
 

@@ -10,7 +10,7 @@ DocOnce Quick Reference
 =======================
 
 :Authors: Hans Petter Langtangen
-:Date: May 4, 2016
+:Date: May 17, 2016
 
 **WARNING: This quick reference is very incomplete!**
 
@@ -710,15 +710,16 @@ follow the rules below.
  * AMS LaTeX mathematics is supported, also for the ``html``, ``sphinx``,
    and ``ipynb`` formats.
 
- * Only five equation environments can be used: ``\[ ... \]``,
+ * Only *five* equation environments can be used: ``\[ ... \]``,
    ``equation*``, ``equation``, ``align*``, and ``align``.
    (DocOnce performs extensions to ``sphinx``, ``ipynb``,
    and other formats such that
    labels in ``align`` environments work well.)
    This may feel restrictive to LaTeX writers who are used to
-   ``split``, ``aligned``, ``alignat``, and other environments (rewrite to
+   ``split``, ``aligned``, ``alignat``, and other environments - you must rewrite to
    ``align`` and use a label for each equation, or use ``\nonumber\\``
-   if a line should be without equation number).
+   if a line should be without equation number (``align`` with two ``&`` for
+   alignments on each line works).
 
  * Do not use comments inside equations.
 
@@ -782,16 +783,17 @@ follow the rules below.
 
  * If you depend on various LaTeX environments for your writings, you have
    to give up these, or implement *user-defined environments* in DocOnce.
-   For instance, examples are normally typeset as subsections in DocOnce.
-   Learn about the exercise support in DocOnce to typeset exercises, problems,
-   and projects.
+   For instance, examples are normally typeset as subsections in DocOnce,
+   but can also utilize a user-defined example environment.
+   Learn about the exercise support in DocOnce for typesetting
+   exercises, problems, and projects.
 
  * Learn about the preprocessors Preprocess and Mako - these are smart
    tools for, e.g., commenting out/in large portions of text and creating
    macros.
 
- * Use *generalized referenes* with for referring to companion documents
-   that may later be put together in a book.
+ * Use *generalized referenes* when referring to companion documents
+   that may later become part of this document (or migrated out of this document).
 
  * Follow `recommendations for DocOnce books <https://github.com/hplgit/setup4book-doconce>`__ if you plan to write a book.
 
