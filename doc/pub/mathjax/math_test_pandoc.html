@@ -153,28 +153,29 @@ u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
 u(0,t) = u_0(x),  x\in [0,L]
 \end{equation}
 \]</span> <em>align/alignat environments with equation numbers are anti-aligned!</em> In the <code>sphinx</code>, <code>ipynb</code>, and <code>pandoc</code> output formats, DocOnce rewrites the equations in an <code>alignat</code> environment as individual equations in <code>equation</code> environments (or more precisely, <code>sphinx</code> can work with <code>alignat*</code> so only numbered <code>alignat</code> equations get rewritten as individual equations). If the alignment is somewhat important, try the best with a manual rewrite in terms of separate <code>equation</code> environments, and stick to <code>align*</code> and <code>alignat*</code> in <code>sphinx</code>.</p>
-<p><em>Test 7: Multiple, aligned eqnarray equations without label.</em> Let us try the old <code>eqnarray*</code> environment.</p>
+<p>If we did not do the rewrite of the above equation it would be rendered in pandoc as</p>
+$$
+
+<p><span class="math">\[
+\begin{equation}  
+u(0,t) = u_0(x),  x\in [0,L]
+\end{equation}
+\]</span> <strong>Test 7: Multiple, aligned eqnarray equations without label.</strong> Let us try the old <code>eqnarray*</code> environment.</p>
 <pre><code>!bt
 \begin{eqnarray*}
 u(t)&amp;=&amp; e^{-at}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 \end{eqnarray*}
 !et</code></pre>
-<p>and results in</p>
-<p><span class="math">\[
+and results in
+
+<p>$$</p>
+<p><em>Test 8: Multiple, eqnarrayed equations with label.</em> Here use <code>eqnarray</code> with labels:</p>
+<pre><code>!bt
 \begin{eqnarray*}
 u(t)&amp;=&amp; e^{-at}\\ 
 v(t) - 1 &amp;=&amp; \frac{du}{dt}
 \end{eqnarray*}
-\]</span></p>
-<p><em>Test 8: Multiple, eqnarrayed equations with label.</em> Here use <code>eqnarray</code> with labels:</p>
-<pre><code>!bt
-\begin{eqnarray}
-u(t)&amp;=&amp; e^{-at}
-\label{eq2c}\\ 
-v(t) - 1 &amp;=&amp; \frac{du}{dt}
-\label{eq3c}
-\end{eqnarray}
 !et</code></pre>
 <p>and results in</p>
 <p><span class="math">\[
@@ -185,12 +186,12 @@ v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
 \]</span> Can we refer to the last equations as the system \eqref{eq2c}-\eqref{eq3c} in the pandoc format?</p>
 <p><em>Test 9: The <code>multiline</code> environment with label and number.</em> The LaTeX code</p>
 <pre><code>!bt
-\begin{multline}
-\int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-f(a+(j+1)h)) \\ 
-=\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-\label{multiline:eq1}
-\end{multline}
+\begin{eqnarray}
+u(t)&amp;=&amp; e^{-at}
+\label{eq2c}\\ 
+v(t) - 1 &amp;=&amp; \frac{du}{dt}
+\label{eq3c}
+\end{eqnarray}
 !et</code></pre>
 <p>gets rendered as</p>
 <p><span class="math">\[
@@ -203,13 +204,12 @@ f(a+(j+1)h)) \\
 \]</span> and we can hopefully refer to the Trapezoidal rule as the formula \eqref{multiline:eq1}.</p>
 <p><em>Test 10: Splitting equations using <code>split</code>.</em> Although <code>align</code> can be used to split too long equations, a more obvious command is <code>split</code>:</p>
 <pre><code>!bt
-\begin{equation}
-\begin{split}
+\begin{multline}
 \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
 f(a+(j+1)h)) \\ 
 =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-\end{split}
-\end{equation}
+\label{multiline:eq1}
+\end{multline}
 !et</code></pre>
 <p>The result becomes</p>
 <p><span class="math">\[

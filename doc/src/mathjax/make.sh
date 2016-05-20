@@ -17,8 +17,13 @@ rm -f *.aux
 name=math_test
 
 # Because we exemplify all math blocks with latex code blocks,
-# we get multiple defined lables and need --no_abort
+# we get multiple defined lables and need --no_abort.
+# Also, pure rst math blocks in .do.txt are not inside !bt-!et
+# directives and result in error messages.
 options="--no_abort"
+
+# in error messages from DocOnce. But if we neglect them, the code works
+# as intended.
 
 system doconce format pdflatex $name --no_abort --latex_code_style=pyg $options
 system pdflatex -shell-escape $name

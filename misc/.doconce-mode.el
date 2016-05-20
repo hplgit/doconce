@@ -155,7 +155,7 @@ text...
 
 (make-face 'do-comment-face)
 (set-face-attribute 'do-comment-face nil :slant 'italic)
-(set-face-attribute 'do-comment-face nil :foreground "yellow")
+(set-face-attribute 'do-comment-face nil :foreground "blue")
 
 (make-face 'do-split-face)
 (set-face-attribute 'do-split-face nil :background "red")

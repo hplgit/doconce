@@ -132,47 +132,54 @@ We can refer to the last equations as the system :eq:`eq2b`-:eq:`eq3b`.
 
 
 
-**Test 5: Multiple, aligned equations without label.**
-In LaTeX,
-equations within an ``align`` environment is automatically given numbers.
-To ensure that an HTML document with MathJax gets the same equation numbers
-as its LaTeX companion, DocOnce generates labels in equations where
-there is no label prescribed. For example,
-
-.. code-block:: latex
-
-    !bt
-    \begin{align}
-    u(t)&=e^{-at}
-    \\ 
-    v(t) - 1 &= \frac{du}{dt}
-    \end{align}
-    !et
-
-is edited to something like
-
-.. code-block:: latex
-
-    !bt
-    \begin{align}
-    u(t)&=e^{-at}
-    label{_auto5}\\ 
-    v(t) - 1 &= \frac{du}{dt}
-    label{_auto6}
-    \end{align}
-    !et
-
-and the HTML output gets the two equation numbered.
+If DocOnce had not rewritten the equation it would be rendered in
+sphinx as
 
 .. math::
-   :label: _auto1
+
+        \begin{equation}
+        u(t)=e^{-at}
+        \
+\end{equation}
+
+.. math::
+          
+                v(t) - 1 = \frac{du}{dt}
+                \
+                
+        __Test 5: Multiple, aligned equations without label.__ In LaTeX,
+        equations within an `align` environment is automatically given numbers.
+        To ensure that an HTML document with MathJax gets the same equation numbers
+        as its LaTeX companion, DocOnce generates labels in equations where
+        there is no label prescribed. For example,
+        !bc latexcod
+        !bt
+        
+        u(t)&=e^{-at}
+        \\ 
+        v(t) - 1 &= \frac{du}{dt}
+        
+        !et
+        !ec
+        is edited to something like
+        !bc latexcod
+        !bt
+        
+        u(t)&=e^{-at}
+        \\ 
+        v(t) - 1 &= \frac{du}{dt}
+        
+        
+        !et
+        !ec
+        and the HTML output gets the two equation numbered.
+        !bt
         
         u(t)=e^{-at}
         
-        
 
 .. math::
-   :label: _auto2
+   :label: _auto1
           
         v(t) - 1 = \frac{du}{dt}
         
@@ -185,16 +192,16 @@ The ``align`` environment can be used with two ``&`` alignment characters, e.g.,
 
     !bt
     \begin{align}
-    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
-    \ t\in (0,T]\\ 
-    u(0,t) &= u_0(x), & x\in [0,L]
+    u(t)&=e^{-at}
+    \\ 
+    v(t) - 1 &= \frac{du}{dt}
     \end{align}
     !et
 
 The result becomes
 
 .. math::
-   :label: _auto3
+   :label: _auto2
         
         \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
         \ t\in (0,T]
@@ -202,7 +209,7 @@ The result becomes
         
 
 .. math::
-   :label: _auto4
+   :label: _auto3
           
         u(0,t) = u_0(x),  x\in [0,L]
         
@@ -213,17 +220,18 @@ A better solution is usually to use an ``alignat`` environment:
 .. code-block:: latex
 
     !bt
-    \begin{alignat}{2}
-    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
-    \ t\in (0,T]\\ 
-    u(0,t) &= u_0(x), & x\in [0,L]
-    \end{alignat}
+    \begin{align}
+    u(t)&=e^{-at}
+    label{_auto5}\\ 
+    v(t) - 1 &= \frac{du}{dt}
+    label{_auto6}
+    \end{align}
     !et
 
 with the rendered result
 
 .. math::
-   :label: _auto5
+   :label: _auto4
         
         \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
         \ t\in (0,T]
@@ -231,7 +239,7 @@ with the rendered result
         
 
 .. math::
-   :label: _auto6
+   :label: _auto5
           
         u(0,t) = u_0(x),  x\in [0,L]
         
@@ -251,22 +259,31 @@ with the rendered result
 
 
 
-**Test 7: Multiple, aligned eqnarray equations without label.**
-Let us
-try the old ``eqnarray*`` environment.
+.. math::
 
-.. code-block:: latex
-
-    !bt
-    \begin{eqnarray*}
-    u(t)&=& e^{-at}\\ 
-    v(t) - 1 &=& \frac{du}{dt}
-    \end{eqnarray*}
-    !et
-
-and results in
+        \begin{equation}
+        \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+        \ t\in (0,T]
+\end{equation}
 
 .. math::
+   :label: _auto6
+          
+                u(0,t) = u_0(x),  x\in [0,L]
+        
+        
+        __Test 7: Multiple, aligned eqnarray equations without label.__ Let us
+        try the old `eqnarray*` environment.
+        !bc latexcod
+        !bt
+        
+        u(t) &=  e^{-at}\\ 
+        v(t) - 1  &=  \frac{du}{dt}
+        
+        !et
+        !ec
+        and results in
+        !bt
         
         u(t) &=  e^{-at}\\ 
         v(t) - 1  &=  \frac{du}{dt}
@@ -278,12 +295,11 @@ Here use ``eqnarray`` with labels:
 .. code-block:: latex
 
     !bt
-    \begin{eqnarray}
-    u(t)&=& e^{-at}
-    label{eq2c}\\ 
-    v(t) - 1 &=& \frac{du}{dt}
-    label{eq3c}
-    \end{eqnarray}
+    \begin{align}
+    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+    \ t\in (0,T]\\ 
+    u(0,t) &= u_0(x), & x\in [0,L]
+    \end{align}
     !et
 
 and results in
@@ -297,20 +313,34 @@ and results in
 Can we refer to the last equations as the system :eq:`eq2c`-:eq:`eq3c`
 in the sphinx format?
 No, unfortunately not.
-Note: DocOnce takes the eqnarray with labels and replaces it automatically
+Note: DocOnce takes the ``eqnarray`` environment
+with labels and replaces it automatically
 by the Sphinx code
 
 .. code-block:: rst
 
-    .. math::
-    
-            u(t) &=  e^{-at} \\ 
-            v(t)  &=  \frac{du}{dt}
+    !bt
+    \begin{alignat}{2}
+    \frac{\partial u}{\partial t} &= \nabla^2 u, & x\in (0,L),
+    \ t\in (0,T]\\ 
+    u(0,t) &= u_0(x), & x\in [0,L]
+    \end{alignat}
+    !et
 
 That is why the equation numbers are gone and that eqnarray seemingly
 works. MathJax does not support eqnarray with labels so Sphinx would
 probably fail to show them (unless one tries PNG images or other
 math engines?). The rule of thumb is to avoid equarray.
+
+With no rewrite of ``eqnarray`` environments for sphinx, the above equation
+would be rendered as
+
+.. math::
+
+        \begin{eqnarray}
+        u(t)&=& e^{-at} \\\ 
+        v(t) - 1 &=& \frac{du}{dt} \
+        \end{eqnarray}
 
 **Test 9: The ``multiline`` environment with label and number.**
 The LaTeX code
@@ -318,12 +348,10 @@ The LaTeX code
 .. code-block:: latex
 
     !bt
-    \begin{multline}
-    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-    f(a+(j+1)h)) \\ 
-    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-    label{multiline:eq1}
-    \end{multline}
+    \begin{eqnarray*}
+    u(t)&=& e^{-at}\\ 
+    v(t) - 1 &=& \frac{du}{dt}
+    \end{eqnarray*}
     !et
 
 gets rendered as
@@ -347,13 +375,12 @@ command is ``split``:
 .. code-block:: latex
 
     !bt
-    \begin{equation}
-    \begin{split}
-    \int_a^b f(x)dx = \sum_{j=0}^{n} \frac{1}{2} h(f(a+jh) +
-    f(a+(j+1)h)) \\ 
-    =\frac{h}{2}f(a) + \frac{h}{2}f(b) + \sum_{j=1}^n f(a+jh)
-    \end{split}
-    \end{equation}
+    \begin{eqnarray}
+    u(t)&=& e^{-at}
+    label{eq2c}\\ 
+    v(t) - 1 &=& \frac{du}{dt}
+    label{eq3c}
+    \end{eqnarray}
     !et
 
 The result becomes

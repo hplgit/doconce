@@ -389,13 +389,19 @@ def align2equations(filestr, format):
     lines = filestr.splitlines()
     inside_align = False
     inside_code = False
+    inside_math = False
     for postfix in postfixes:
         for i in range(len(lines)):
             if lines[i].startswith('!bc'):
                 inside_code = True
             if lines[i].startswith('!ec'):
                 inside_code = False
-            if inside_code:
+            if lines[i].startswith('!bt'):
+                inside_math = True
+            if lines[i].startswith('!et'):
+                inside_math = False
+            if not inside_math:
+                # Rewrite only math inside !bt-!et
                 continue
 
             if r'\begin{align%s' % postfix in lines[i]:

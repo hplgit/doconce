@@ -170,12 +170,38 @@ in the present case is</p>
 </pre></div>
 </div>
 </div>
-<p><strong>Test 5: Multiple, aligned equations without label.</strong>
-In LaTeX,
-equations within an <code class="docutils literal"><span class="pre">align</span></code> environment is automatically given numbers.
+<p>If DocOnce had not rewritten the equation it would be rendered in
+sphinx as</p>
+<div class="math">
+\[\begin{equation}
+u(t)=e^{-at}
+\\]</div>
+<p>end{equation}</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}        v(t) - 1 = \frac{du}{dt}
+        \\\__Test 5: Multiple, aligned equations without label.__ In LaTeX,
+equations within an `align` environment is automatically given numbers.
 To ensure that an HTML document with MathJax gets the same equation numbers
 as its LaTeX companion, DocOnce generates labels in equations where
-there is no label prescribed. For example,</p>
+there is no label prescribed. For example,
+!bc latexcod
+!bt\\\begin{split}u(t)&amp;=e^{-at}
+\\
+v(t) - 1 &amp;= \frac{du}{dt}\end{split}\\!et
+!ec
+is edited to something like
+!bc latexcod
+!bt\\\begin{split}u(t)&amp;=e^{-at}
+\\
+v(t) - 1 &amp;= \frac{du}{dt}\end{split}\\
+!et
+!ec
+and the HTML output gets the two equation numbered.
+!bt\\u(t)=e^{-at}\end{aligned}\end{align} \]</div>
+<div class="math" id="equation-_auto1">
+<span class="eqno">(5)</span>\[     v(t) - 1 = \frac{du}{dt}\]</div>
+<p><strong>Test 6: Multiple, aligned equations with multiple alignments.</strong>
+The <code class="docutils literal"><span class="pre">align</span></code> environment can be used with two <code class="docutils literal"><span class="pre">&amp;</span></code> alignment characters, e.g.,</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
 <span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
 u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
@@ -185,7 +211,13 @@ v(t) - 1 <span class="nb">&amp;</span>= <span class="k">\frac</span><span class=
 !et
 </pre></div>
 </div>
-<p>is edited to something like</p>
+<p>The result becomes</p>
+<div class="math" id="equation-_auto2">
+<span class="eqno">(6)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+     \ t\in (0,T]\]</div>
+<div class="math" id="equation-_auto3">
+<span class="eqno">(7)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
+<p>A better solution is usually to use an <code class="docutils literal"><span class="pre">alignat</span></code> environment:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
 <span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
 u(t)<span class="nb">&amp;</span>=e<span class="nb">^{</span>-at<span class="nb">}</span>
@@ -196,44 +228,12 @@ label<span class="nb">{_</span>auto6<span class="nb">}</span>
 !et
 </pre></div>
 </div>
-<p>and the HTML output gets the two equation numbered.</p>
-<div class="math" id="equation-_auto1">
-<span class="eqno">(5)</span>\[     u(t)=e^{-at}\]</div>
-<div class="math" id="equation-_auto2">
-<span class="eqno">(6)</span>\[     v(t) - 1 = \frac{du}{dt}\]</div>
-<p><strong>Test 6: Multiple, aligned equations with multiple alignments.</strong>
-The <code class="docutils literal"><span class="pre">align</span></code> environment can be used with two <code class="docutils literal"><span class="pre">&amp;</span></code> alignment characters, e.g.,</p>
-<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
-<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
-<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
-u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
-<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
-!et
-</pre></div>
-</div>
-<p>The result becomes</p>
-<div class="math" id="equation-_auto3">
-<span class="eqno">(7)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
-     \ t\in (0,T]\]</div>
-<div class="math" id="equation-_auto4">
-<span class="eqno">(8)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
-<p>A better solution is usually to use an <code class="docutils literal"><span class="pre">alignat</span></code> environment:</p>
-<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>alignat<span class="nb">}{</span>2<span class="nb">}</span>
-<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
-<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
-u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
-<span class="k">\end</span><span class="nb">{</span>alignat<span class="nb">}</span>
-!et
-</pre></div>
-</div>
 <p>with the rendered result</p>
-<div class="math" id="equation-_auto5">
-<span class="eqno">(9)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+<div class="math" id="equation-_auto4">
+<span class="eqno">(8)</span>\[     \frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
      \ t\in (0,T]\]</div>
-<div class="math" id="equation-_auto6">
-<span class="eqno">(10)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
+<div class="math" id="equation-_auto5">
+<span class="eqno">(9)</span>\[     u(0,t) = u_0(x),  x\in [0,L]\]</div>
 <div class="admonition-align-alignat-environments-with-equation-numbers-are-anti-aligned admonition">
 <p class="first admonition-title">align/alignat environments with equation numbers are anti-aligned</p>
 <p class="last">In the <code class="docutils literal"><span class="pre">sphinx</span></code>, <code class="docutils literal"><span class="pre">ipynb</span></code>, and <code class="docutils literal"><span class="pre">pandoc</span></code> output formats, DocOnce rewrites
@@ -244,30 +244,30 @@ equations). If the alignment is somewhat important, try the best with a
 manual rewrite in terms of separate <code class="docutils literal"><span class="pre">equation</span></code> environments, and stick to
 <code class="docutils literal"><span class="pre">align*</span></code> and <code class="docutils literal"><span class="pre">alignat*</span></code> in <code class="docutils literal"><span class="pre">sphinx</span></code>.</p>
 </div>
-<p><strong>Test 7: Multiple, aligned eqnarray equations without label.</strong>
-Let us
-try the old <code class="docutils literal"><span class="pre">eqnarray*</span></code> environment.</p>
-<div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
-u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span><span class="k">\\</span>
-v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
-!et
-</pre></div>
-</div>
-<p>and results in</p>
 <div class="math">
-\[\begin{split}u(t) &amp;=  e^{-at}\\
-v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\]</div>
+\[\begin{equation}
+\frac{\partial u}{\partial t} = \nabla^2 u,  x\in (0,L),
+\ t\in (0,T]\]</div>
+<p>end{equation}</p>
+<div class="math" id="equation-_auto6">
+<span class="eqno">(10)</span>\[ \begin{align}\begin{aligned}             u(0,t) = u_0(x),  x\in [0,L]\\
+     __Test 7: Multiple, aligned eqnarray equations without label.__ Let us
+     try the old `eqnarray*` environment.
+     !bc latexcod
+     !bt\\\begin{split}     u(t) &amp;=  e^{-at}\\
+     v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\\     !et
+     !ec
+     and results in
+     !bt\\\begin{split}     u(t) &amp;=  e^{-at}\\
+     v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\end{aligned}\end{align} \]</div>
 <p><strong>Test 8: Multiple, eqnarrayed equations with label.</strong>
 Here use <code class="docutils literal"><span class="pre">eqnarray</span></code> with labels:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
-u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span>
-label<span class="nb">{</span>eq2c<span class="nb">}</span><span class="k">\\</span>
-v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
-label<span class="nb">{</span>eq3c<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>align<span class="nb">}</span>
+<span class="k">\frac</span><span class="nb">{</span><span class="k">\partial</span> u<span class="nb">}{</span><span class="k">\partial</span> t<span class="nb">}</span> <span class="nb">&amp;</span>= <span class="k">\nabla</span><span class="nb">^</span>2 u, <span class="nb">&amp;</span> x<span class="k">\in</span> (0,L),
+<span class="k">\ </span>t<span class="k">\in</span> (0,T]<span class="k">\\</span>
+u(0,t) <span class="nb">&amp;</span>= u<span class="nb">_</span>0(x), <span class="nb">&amp;</span> x<span class="k">\in</span> [0,L]
+<span class="k">\end</span><span class="nb">{</span>align<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -278,27 +278,36 @@ v(t) - 1  &amp;=  \frac{du}{dt}\end{split}\]</div>
 <p>Can we refer to the last equations as the system <a href="#equation-eq2c">(?)</a>-<a href="#equation-eq3c">(?)</a>
 in the sphinx format?
 No, unfortunately not.
-Note: DocOnce takes the eqnarray with labels and replaces it automatically
+Note: DocOnce takes the <code class="docutils literal"><span class="pre">eqnarray</span></code> environment
+with labels and replaces it automatically
 by the Sphinx code</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">math</span><span class="p">::</span>
-
-        u(t) &amp;=  e^{-at} \\
-        v(t)  &amp;=  \frac{du}{dt}
+<div class="highlight-rst"><div class="highlight"><pre><span></span>!bt
+\begin{alignat}{2}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+\end{alignat}
+!et
 </pre></div>
 </div>
 <p>That is why the equation numbers are gone and that eqnarray seemingly
 works. MathJax does not support eqnarray with labels so Sphinx would
 probably fail to show them (unless one tries PNG images or other
 math engines?). The rule of thumb is to avoid equarray.</p>
+<p>With no rewrite of <code class="docutils literal"><span class="pre">eqnarray</span></code> environments for sphinx, the above equation
+would be rendered as</p>
+<div class="math">
+\[\begin{split}\begin{eqnarray}
+u(t)&amp;=&amp; e^{-at} \\\
+v(t) - 1 &amp;=&amp; \frac{du}{dt} \
+\end{eqnarray}\end{split}\]</div>
 <p><strong>Test 9: The ``multiline`` environment with label and number.</strong>
 The LaTeX code</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>multline<span class="nb">}</span>
-<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
-f(a+(j+1)h)) <span class="k">\\</span>
-=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
-label<span class="nb">{</span>multiline:eq1<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>multline<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>eqnarray*<span class="nb">}</span>
 !et
 </pre></div>
 </div>
@@ -313,13 +322,12 @@ as the formula <a href="#equation-multiline:eq1">(11)</a>.</p>
 Although <code class="docutils literal"><span class="pre">align</span></code> can be used to split too long equations, a more obvious
 command is <code class="docutils literal"><span class="pre">split</span></code>:</p>
 <div class="highlight-latex"><div class="highlight"><pre><span></span>!bt
-<span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
-<span class="k">\begin</span><span class="nb">{</span>split<span class="nb">}</span>
-<span class="k">\int</span><span class="nb">_</span>a<span class="nb">^</span>b f(x)dx = <span class="k">\sum</span><span class="nb">_{</span>j=0<span class="nb">}^{</span>n<span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>1<span class="nb">}{</span>2<span class="nb">}</span> h(f(a+jh) +
-f(a+(j+1)h)) <span class="k">\\</span>
-=<span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(a) + <span class="k">\frac</span><span class="nb">{</span>h<span class="nb">}{</span>2<span class="nb">}</span>f(b) + <span class="k">\sum</span><span class="nb">_{</span>j=1<span class="nb">}^</span>n f(a+jh)
-<span class="k">\end</span><span class="nb">{</span>split<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+<span class="k">\begin</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
+u(t)<span class="nb">&amp;</span>=<span class="nb">&amp;</span> e<span class="nb">^{</span>-at<span class="nb">}</span>
+label<span class="nb">{</span>eq2c<span class="nb">}</span><span class="k">\\</span>
+v(t) - 1 <span class="nb">&amp;</span>=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>du<span class="nb">}{</span>dt<span class="nb">}</span>
+label<span class="nb">{</span>eq3c<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>eqnarray<span class="nb">}</span>
 !et
 </pre></div>
 </div>

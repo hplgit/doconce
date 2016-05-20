@@ -110,6 +110,18 @@ in the present case is
 
 <span style="color: #8B008B; font-weight: bold">!ec</span>
 <span style="color: #8B008B; font-weight: bold">!ewarning</span>
+
+If DocOnce had not rewritten the equation it would be rendered in
+${FORMAT} as
+
+.. math::
+
+        \begin{align}
+        u(t)&amp;=e^{-at}
+        \label{eq2b}\\
+        v(t) - 1 &amp;= \frac{du}{dt}
+        \label{eq3b}
+        \end{align}
 <span style="color: #228B22"># #endif</span>
 
 <span style="color: #228B22"># #if FORMAT == &quot;pandoc&quot;</span>
@@ -217,6 +229,32 @@ manual rewrite in terms of separate `equation` environments, and stick to
 <span style="color: #8B008B; font-weight: bold">!ewarning</span>
 <span style="color: #228B22"># #endif</span>
 
+<span style="color: #228B22"># #if FORMAT in (&quot;pandoc&quot;, &quot;ipynb&quot;)</span>
+If we did not do the rewrite of the above equation it would be
+rendered in ${FORMAT} as
+
+$$
+<span style="color: #658b00">\begin{alignat}</span>{2}
+\frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+\ t\in (0,T]\\
+u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+<span style="color: #658b00">\end{alignat}</span>
+$$
+<span style="color: #228B22"># #elif FORMAT in (&quot;sphinx&quot;)</span>
+.. math::
+
+        \begin{alignat}{2}
+        \frac{\partial u}{\partial t} &amp;= \nabla^2 u, &amp; x\in (0,L),
+        \ t\in (0,T]\\
+        u(0,t) &amp;= u_0(x), &amp; x\in [0,L]
+        \end{alignat}
+
+<span style="color: #228B22"># #endif</span>
+
+
+
+
+
 <span style="color: #800080; font-weight: bold">__Test 7: Multiple, aligned eqnarray equations without label.__</span> Let us
 try the old `eqnarray*` environment.
 
@@ -262,7 +300,8 @@ Can we refer to the last equations as the system (ref{eq2c})-(ref{eq3c})
 in the ${FORMAT} format?
 <span style="color: #228B22"># #if FORMAT == &quot;sphinx&quot;</span>
 No, unfortunately not.
-Note: DocOnce takes the eqnarray with labels and replaces it automatically
+Note: DocOnce takes the `eqnarray` environment
+with labels and replaces it automatically
 by the Sphinx code
 
 <span style="color: #8B008B; font-weight: bold">!bc</span> rst
@@ -275,6 +314,17 @@ That is why the equation numbers are gone and that eqnarray seemingly
 works. MathJax does not support eqnarray with labels so Sphinx would
 probably fail to show them (unless one tries PNG images or other
 math engines?). The rule of thumb is to avoid equarray.
+
+With no rewrite of `eqnarray` environments for sphinx, the above equation
+would be rendered as
+
+.. math::
+
+        \begin{eqnarray}
+        u(t)&amp;=&amp; e^{-at} \label{eq2c}\\
+        v(t) - 1 &amp;=&amp; \frac{du}{dt} \label{eq3c}
+        \end{eqnarray}
+
 <span style="color: #228B22"># #endif</span>
 
 <span style="color: #800080; font-weight: bold">__Test 9: The `multiline` environment with label and number.__</span>
