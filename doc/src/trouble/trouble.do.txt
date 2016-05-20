@@ -19,6 +19,14 @@ can go wrong.
 
 ======= General topics =======
 
+===== How can I study error messages and warnings from DocOnce? =====
+
+The output from DocOnce and later compilation by various tools can be
+overwhelming in the terminal window. Fortunately, DocOnce also writes
+its warnings and error message to `mydoc.dlog` if `mydoc.do.txt` is the
+name of the DocOnce root file. It is recommended to study `mydoc.dlog`
+and correct everything that leads to warnings or errors without abortion.
+
 ===== How do I debug a DocOnce file that results in a strange error message? =====
 
 idx{how to debug DocOnce}

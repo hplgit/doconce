@@ -22,19 +22,16 @@ name=math_test
 # directives and result in error messages.
 options="--no_abort"
 
-# in error messages from DocOnce. But if we neglect them, the code works
-# as intended.
-
+system doconce format sphinx $name $options
+#system doconce sphinx_dir theme=fenics_minimal1 $name
+system doconce sphinx_dir theme=fenics $name
+system python automake_sphinx.py
+exit
 system doconce format pdflatex $name --no_abort --latex_code_style=pyg $options
 system pdflatex -shell-escape $name
 pdflatex -shell-escape $name
 
 system doconce format html $name --html_output=${name}_html $options
-
-system doconce format sphinx $name $options
-#system doconce sphinx_dir theme=fenics_minimal1 $name
-system doconce sphinx_dir theme=cbc $name
-system python automake_sphinx.py
 
 system doconce format ipynb $name $options
 

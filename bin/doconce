@@ -129,8 +129,8 @@ scrolls, sphinxdoc, traditional), extra themes that can be installed
 (alabaster, bootstrap, cloud, redcloud, solarized, sphinx_rtd_theme,
 'draft', 'flat', 'modern5', 'minimal5', 'responsive'),
 or themes that come with DocOnce (ADCtheme, agni, basicstrap,
-bloodish, cbc, fenics, fenics_minimal1, fenics_minimal2, jal, pylons,
-scipy_lectures, slim-agogo, uio, vlinux-theme).
+bloodish, cbc, fenics, fenics_classic, fenics_minimal1, fenics_minimal2,
+jal, pylons, scipy_lectures, slim-agogo, uio, uio2, vlinux-theme).
 See bundled/sphinx_themes/install.txt for how to install extra
 themes.
 

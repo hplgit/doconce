@@ -1,0 +1,110 @@
+{% extends "basic/layout.html" %}
+
+{% set css_files = css_files + ['_static/bootstrap-sphinx.css'] %}
+{% set script_files = script_files + ['_static/bootstrap-sphinx.js'] %}
+
+{% block extrahead %}
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Default Bootstrap-->
+  <link rel="stylesheet" href="{{ pathto('_static/css/bootstrap.min.css', 1) }}"/>
+  <link rel="shortcut icon" href="{{ pathto('_static/'+theme_favicon, 1) }}" />
+  <!-- Template styles CSS-->
+  <link rel="stylesheet" href="{{ pathto('_static/css/main.css', 1) }}"/>
+  <link rel="stylesheet" href="{{ pathto('_static/css/custom.css', 1) }}"/>
+  <link rel="stylesheet" href="{{ pathto('_static/css/font-awesome.min.css', 1) }}"/>
+  <link rel="stylesheet" href="{{ pathto('_static/css/animate.min.css', 1) }}"/>
+  <link rel="stylesheet" href="{{ pathto('_static/css/responsive.css', 1) }}"/>
+
+  <!-- Template styles JS-->
+  <script src="{{ pathto('_static/slides.min.jquery.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/jquery-1.11.0.min.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/jquery-fix.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/bootstrap.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/bootstrap.min.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/wow.min.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/main.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/js/jquery.bcSwipe.js', 1) }}"></script>
+  <script>
+    $(document).ready(function() {
+         $("#mycarousel").swiperight(function() {
+            $(this).carousel('prev');
+            });
+         $("#mycarousel").swipeleft(function() {
+            $(this).carousel('next');
+       });
+    });
+  </script>
+{% endblock %}
+
+
+{# override upper relbar to show our navigation menu #}
+{% block relbar1 %}
+<header id="header">
+      <div class="navbar navbar-inverse" role="banner">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#headernavbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+
+                  <a class="navbar-brand" href="http://fenicsproject.org/index.html">
+                      <h1><img src="{{ pathto('_static/%s.%s' % ('fenics_icon', 'png'), 1) }}" alt="FEniCS Project Logo" class="img-responsive center-block banner-image"></h1>
+                  </a>
+
+              </div>
+              <div class="collapse navbar-collapse" id="headernavbar">
+                  <ul class="nav navbar-nav navbar-right">
+                    {%- if prev %}
+                    <li><a href="{{ prev.link|e }}" title="Previous page">
+                    Previous page</a></li>
+                    {%- endif %}
+                    {%- if next %}
+                    <li><a href="{{ next.link|e }}" title="Next page">
+                    Next page</a></li>
+                    {%- endif %}
+                    <li class="page_item"><a href="index.html">Home</a></li>
+		  </ul>
+              </div>
+          </div>
+      </div>
+  </header>
+{% endblock %}
+
+{% set bs_span_prefix = "col-md-" %}
+{%- set bs_content_width = render_sidebar and "9" or "12"%}
+{%- block content %}
+<div class="container">
+  <div class="row">
+    <div class="{{ bs_span_prefix }}{{ bs_content_width }}">
+      {% block body %}{% endblock %}
+    </div>
+  </div>
+</div>
+{%- endblock %}
+
+
+{% block footer %}
+<footer id="footer">
+  <div class="container">
+      <div class="row">
+            {% block navbarsearch %}
+              {% include "navbarsearchbox.html" %}
+            {% endblock %}
+      </div>
+  </div>
+</footer>
+{% endblock %}
+
+{# do not display lower relbar #}
+{% block relbar2 %}{% endblock %}
+
+{# do not display sidebars #}
+{% block sidebar1 %}{% endblock %}
+{% block sidebar2 %}{% endblock %}
